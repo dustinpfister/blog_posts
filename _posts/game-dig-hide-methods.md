@@ -5,8 +5,8 @@ tags: [js,games]
 layout: post
 categories: games
 id: 4
-updated: 2017-04-28 09:59:22
-version: 1.1
+updated: 2018-05-11 14:17:09
+version: 1.2
 ---
 
 {% mytags_postwords phaser,framework,js,game,development,hide,methods %}
@@ -54,7 +54,7 @@ Notice that I am using my hideKit API, this comes in handy for making quick work
 
 ## The hideKit API.
 
-This has lots of helpful little tools that aid in the process of writing a hide method. Such as hideKit.setAmount that as the name suggests it just sets the pebble total, and amount values of a tile. In addition it has other methods such as hideKit.makeOptions that returns an array of tile indexes for a given layer that can be spliced away when distributing an amount of pebble in a layer. I will do my best to keep an up to date list of all hideKit API features in the [readme]((https://github.com/dustinpfister/game_dig) file at the repository
+This has lots of helpful little tools that aid in the process of writing a hide method. Such as hideKit.setAmount that as the name suggests it just sets the pebble total, and amount values of a tile. In addition it has other methods such as hideKit.makeOptions that returns an array of tile indexes for a given layer that can be spliced away when distributing an amount of pebble in a layer. I will do my best to keep an up to date list of all hideKit API features in the [readme](https://github.com/dustinpfister/game_dig) file at the repository
 
 
 ## Some thoughts on distribution of available wealth.
