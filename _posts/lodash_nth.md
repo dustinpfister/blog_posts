@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2017-10-12 11:10:46
-version: 1.1
+updated: 2018-05-10 21:32:44
+version: 1.2
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value between and including zero, and one less of the length of the Array. A trivial matter for even a beginer javaScript developer. There is a question of how to handle index values that fall outside the index range of the array though, it's not hard to resolve it in vanilla js, but if I am using  [lodash](https://lodash.com/) in a project there is [\_.nth](https://lodash.com/docs/4.17.4#nth).
@@ -62,7 +62,7 @@ As such you would need to do something else.
 
 ## Working vanilla js alternative to \_.nth
 
-Making a vanilla js alternative to \_.nth just involves working out how to [make a modulo operation]((/2017/09/02/js-whats-wrong-with-modulo/)) that works a different way in which a positive, valid, in range value is always given.
+Making a vanilla js alternative to \_.nth just involves working out how to [make a modulo operation](/2017/09/02/js-whats-wrong-with-modulo/) that works a different way in which a positive, valid, in range value is always given.
 
 ```js
  var nth = function(arr, index){
