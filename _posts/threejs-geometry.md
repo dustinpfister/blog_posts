@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2018-05-11 14:50:49
-version: 1.8
+updated: 2018-05-11 14:58:44
+version: 1.9
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need for a way to make custom geometry.
@@ -14,7 +14,6 @@ When working with [three.js](https://threejs.org/) there are many built in geome
 <!-- more -->
 
 There are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what is you want to make a geometry my way of some javaScript, rather than json data? This is where the Geometry constructor comes into play.
-
 
 ## What to know before hand.
 
@@ -119,7 +118,7 @@ Here is an example of what it is I am talking about here.
     ());
 ```
 
-In this example I am repeating the use of Vector3, and Face3 constructors over and over again for each instance. However in more advanced examples you can of course get into making helper functions that will involve loops that will involve the use of these constructors in just one line of your code.
+In this example I am repeating the use of [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) constructors over and over again for each instance. However in more advanced examples you can of course get into making helper functions that will involve loops that will involve the use of these constructors in just one line of your code.
 
 ## Creating a helper method that returns a Geometry
 
@@ -255,3 +254,7 @@ If you want to scale a geometry, it can be done with the scale method. This is s
 ```js
 geometry.scale(5,5,1);
 ```
+
+## Conclusion
+
+The geometry constructor is a good place to start when it comes to learning how to make custom geometry from code. In time I will likley update this post at least a few times as my collection of [posts on three.js](/categories/three-js/) continues to grow. Be sure to also read up more on [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) if you have not done so before hand as these are also important constructors that are related to the Geometry constructor in three.js
