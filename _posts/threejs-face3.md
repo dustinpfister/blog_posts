@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2018-05-11 14:17:09
-version: 1.0
+updated: 2018-05-11 14:46:19
+version: 1.1
 ---
 
 The [Face3 constructor](https://threejs.org/docs/#api/core/Face3) in [three.js](https://threejs.org/) is used to define a Face when [making a custom geometry](/2018/04/14/threejs-geometry/). When using any kind of built in geometry, instances of Face3 are created automatically, but whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3.
@@ -78,3 +78,42 @@ So for now I have something like this:
 }
     ());
 ```
+
+## The order of indexes
+
+To some extent when making faces I am just playing connect the dots with vertices, but it is not always just that simple, as the order of index values does matter. When creating a mesh with the geometry, I also give a material. When it comes to materials there is the side property of a material which is used to set which side of a face is to be rendered with the material. This property expects an integer value the default of which is stored in the [constant THREE.FrontSide](https://threejs.org/docs/#api/constants/Materials) which as of this writing is a value of zero.
+
+What I am driving at here is that the order of the indexes is what is used to find out what side of the face is the front side. If you are running into some kind of weird issue where some of your faces are rendering and others are not it could be because you are not getting the index order right.
+
+There are two ways of fixing this one is to just make it so both sides are always rendered no matter what by seting the side value of your material to THREE.DoubleSide.
+
+```js
+var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    side: THREE.DoubleSide
+}));
+scene.add(mesh);
+```
+
+The other way is to just get the index values right in which case the default THREE.FrontSide is not a problem when rendering.
+
+Consider the following:
+
+```js
+    geometry.vertices.push(
+ 
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(1, 0, 0),
+        new THREE.Vector3(1, 1, 0),
+ 
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(-1, 0, 0),
+        new THREE.Vector3(-1, -1, 0));
+ 
+    // FACE3
+    geometry.faces.push(
+ 
+        new THREE.Face3(0, 1, 2),
+        new THREE.Face3(5, 4, 3));
+```
+
+notice that with the first instance of Face3 I am starting with index 0 then counting up, while with the other instance I am staring with the last index and counting backwards. This results in the Front side of both faces being on opposite sides relative to each other.
