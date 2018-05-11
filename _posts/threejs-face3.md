@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2018-05-11 15:29:04
-version: 1.2
+updated: 2018-05-11 18:09:33
+version: 1.3
 ---
 
 The [Face3 constructor](https://threejs.org/docs/#api/core/Face3) in [three.js](https://threejs.org/) is used to define a Face when [making a custom geometry](/2018/04/14/threejs-geometry/). When using any kind of built in geometry, instances of Face3 are created automatically, but whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3.
@@ -123,3 +123,51 @@ Consider the following:
 ```
 
 notice that with the first instance of Face3 I am starting with index 0 then counting up, while with the other instance I am staring with the last index and counting backwards. This results in the Front side of both faces being on opposite sides relative to each other.
+
+## The Material index property
+
+If in case you did not know, it is possible to give an array of materials to the mesh constructor, rather than just one. In this case there should be some way to set which material should be used for which insistence of face3. For this there is the material index property of face3.
+
+Say for example I want to have a cube with three different materials that will each be used for three of the six sides of the cube. To pull that off I might do something like this:
+
+```js
+    // GEOMETRY
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+ 
+    geometry.faces.forEach(function (face3, i) {
+ 
+        face3.materialIndex = Math.floor(i % 6 / 2)
+ 
+    });
+ 
+    var mesh = new THREE.Mesh(
+ 
+            // geometry as first argument
+            geometry,
+ 
+            [
+ 
+                new THREE.MeshBasicMaterial({
+ 
+                    color: 0xff0000
+ 
+                }),
+ 
+                new THREE.MeshBasicMaterial({
+ 
+                    color: 0x00ff00
+ 
+                }),
+ 
+                new THREE.MeshBasicMaterial({
+ 
+                    color: 0x0000ff
+ 
+                })
+ 
+            ]);
+ 
+    scene.add(mesh);
+```
+
+The value that I give to material index should be the index value of the material I want to use in the array of materials.
