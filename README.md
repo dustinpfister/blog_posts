@@ -1,4 +1,4 @@
-## blog_posts
+# blog_posts
 
 These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/)
 
