@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2018-05-03 17:04:40
-version: 1.14
+updated: 2018-05-13 12:43:36
+version: 1.15
 ---
 
 In [three.js](https://threejs.org/) there are some eight materials to choose from to help skin a mesh. There are also additional materials for rendering lines, points, shadows, and sprites. This post will serve as a general overview of materials in general in three.js. I will give a very basic overview of the base Material class, and get into some of the differences between materials used with a Mesh.
@@ -227,6 +227,8 @@ There is one Material in three.js that can be used to set display just points in
  
     scene.add(new THREE.Points(pointsGeometry, new THREE.PointsMaterial({color: 0x00afaf})));
 ```
+
+For more on Points and the points material I have [written a post](/2018/05/12/threejs-points-material/) on the subject, it's fun to just play with points in space when you have some time.
 
 ## Conclusion
 
