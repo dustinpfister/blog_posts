@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2018-05-04 13:32:35
-version: 1.8
+updated: 2018-05-16 09:56:02
+version: 1.9
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Objects with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/). The Mesh Constructor is one of many constructors that you will find yourself using often as you get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/)
@@ -117,6 +117,49 @@ Here I am using the Object3D position property that stores an instance of [Vecto
 That might come off as a mouth full so maybe another way of explaining it is that there is a point in space in which the geometry of the mesh is relative to. The position property can be used to change the value of that point in space.
 
 Also In this demo I am using the lookAt Method, which is another useful methods that is inherited from, use guessed it, Object3D.
+
+## Using an array of materials
+
+Read my full post on [material index](/2018/05/14/threejs-mesh-material-index/), and arrays of materials
+
+It is possible to pass an array of materials rather than just a single instance of some kind of mesh material such as the [basic material](/2018/05/05/threejs-basic-material/). When doing this the material index value of the face3 instances in the geometry used is of interest when it comes to assigning what material is used for what face. 
+
+I have a post on this in which I get into this in detail but I can also provide a basic example of this here:
+
+```js
+    // a box geometry
+    var geometry = new THREE.BoxGeometry(1, 1, 1),
+ 
+    // the materials array
+    materials = [
+        new THREE.MeshBasicMaterial({
+            color: 0xff0000,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+            color: 0x00ff00,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+            color: 0x0000ff,
+            side: THREE.DoubleSide
+        })
+    ];
+ 
+    // for all faces
+    geometry.faces.forEach(function (face,i) {
+ 
+        // use each of the three materials 2 times
+        face.materialIndex = Math.floor(i/2) % 3
+ 
+    });
+ 
+    // add to scene with the Mesh
+    scene.add(new THREE.Mesh(
+ 
+            geometry,
+            materials));
+```
 
 ## Conclusion
 
