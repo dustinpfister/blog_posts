@@ -5,13 +5,17 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2018-05-16 17:30:55
-version: 1.2
+updated: 2018-05-16 17:38:20
+version: 1.3
 ---
 
-After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or more on to something new. I do not care to move on away from three.js, this project is worth a serious investment of time to get solid with for sure. So with that said, it might be time for me to get into animation with three.js. One way is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other, and have the whole group move as well. Or for whatever the reason it might be a good idea to group two or more objects together, so this post today will be about that.
+After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or more on to something new. I do not care to move on away from three.js, this project is worth a serious investment of time to get solid with for sure. So with that said, it might be time for me to get into animation with three.js. One way is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other, and have the whole group move as well. Or for whatever the reason it might be a good idea to group two or more objects together, so this post today will be about the three.js [Group](https://threejs.org/docs/index.html#api/objects/Group) constructor.
 
 <!-- more -->
+
+## What to know
+
+This is not a post on three.js for beginners, I have a post for that, and if you are new you might want to [start there](/2018/04/04/threejs-getting-started/). This is an advanced post on three.js that has to do with grouping two or more [Mesh Object](/2018/05/04/threejs-mesh/) instances into a single Group that can then be worked with by itself in a scene. I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general.
 
 ## THREE.Object3D vs THREE.Group
 
