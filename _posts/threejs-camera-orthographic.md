@@ -1,12 +1,12 @@
 ---
-title: Using an Orthographic Camera three.js
+title: Using an Orthographic Camera in three.js
 date: 2018-05-17 16:24:00
 tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2018-05-17 17:06:49
-version: 1.1
+updated: 2018-05-17 17:15:23
+version: 1.2
 ---
 
 In [three.js](https://threejs.org/) there are a few cameras to work with, typically in must cases I would use the perspective camera, however there is also the orthographic camera as well that can come in handy. In this post I will be writing about the orthographic camera, how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -113,4 +113,11 @@ var CubeStack = (function () {
     ());
 ```
 
-So I have this saved as cube_stack.js, and I link to it in my html after three.js, and before the rest of my demo where I will be using this.
+So I have this saved as cube_stack.js, and I link to it in my html after three.js, and before the rest of my demo where I will be using this. I could get into this in detail, and yes it is far from perfect, but that would be off topic. For now if three.js is loaded in the browser, and then this is loaded I will have a constructor that I can use in a three.js demo like this:
+
+```js
+var stack = new CubeStack();
+scene.add(stack.group);
+```
+
+I could have it be a lot more that what it is but for the purpose of the subject of this post by doing this it will just add a group that contains a bunch of Mesh Object instances positioned in a way that might resemble a city. The reason why this is of interest comes when switching between the kinds of cameras used to view something like this.
