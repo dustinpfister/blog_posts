@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2018-05-16 21:25:26
-version: 1.6
+updated: 2018-05-16 21:59:48
+version: 1.7
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or more on to something new. I do not care to move on away from three.js, this project is worth a serious investment of time to get solid with for sure. So with that said, it might be time for me to get into animation with three.js. One way is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other, and have the whole group move as well. Or for whatever the reason it might be a good idea to group two or more objects together, so this post today will be about the three.js [Group](https://threejs.org/docs/index.html#api/objects/Group) constructor.
@@ -106,6 +106,39 @@ Each time I make a new Mesh I just add it to the instance of group rather than S
  
 }
     ());
+```
+
+## Example of grouping with a camera
+
+Grouping is basically whenever you use the add property of anything that inherits from the Object3D class. This includes things like cameras, as such I can use the add method to add things like lights, and a Mesh, and position them relative to the camera. Say for example I want to have a point light on top of camera, and a Mesh that is always in front of the camera as it moves around in a scene, no problem.
+
+```js
+// Camera
+var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 50);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+ 
+// positioning a light above the camera
+var light = new THREE.PointLight();
+light.position.set(0, 5, 0);
+camera.add(light);
+ 
+// positioning a mesh in front of the camera
+var withCamera = new THREE.Mesh(
+ 
+    new THREE.BoxGeometry(.1, .1, .1),
+    new THREE.MeshStandardMaterial({
+ 
+        color: 0xffffff,
+        emissive: 0x1a1a1a
+ 
+    })
+);
+withCamera.position.set( - .25, .2,  - .75);
+camera.add(withCamera);
+ 
+// adding the camera to the scene
+scene.add(camera);
 ```
 
 ## Using Grouping when making a Model
