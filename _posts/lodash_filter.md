@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2018-05-18 11:08:49
-version: 1.1
+updated: 2018-05-18 11:29:22
+version: 1.2
 ---
 
 It has been a few months sense the last time I wrote a post on [lodash](https://lodash.com/), as I have been trying to find other great things in the javaScript word to write about such as [phaser](/categories/phaser/), and [three.js](/categories/three-js/). However lodash is very popular, and content on it is very much in demand, so maybe I should get back into it for a while, make some new posts, and improve some old ones.
@@ -35,3 +35,59 @@ console.log(
 ); // [4, 7, 7, 1]
 ```
 
+## Array.filter vs \_.filter
+
+The vanilla js Array.filter method can be used in a similar fashion, without the need for lodash. When it comes to something simple, that can work just fine. Also the browser support for Array.filter is pretty good these days, it's only real old versions of IE that come to mind that present a concern if there is actually a far amount of visitors that still use those platforms. Also if in a node.js environment there is no need for lodash at all if this just happens to be the only method that you are using. 
+
+Yet again maybe not, like many of these methods in lodash there are a few things to them that set them apart. So maybe one can rationalize the use of \_.filter these days even when we often have the native alternative to play with in javaScript itself.
+
+### \_.filter is a collection method, not an array method
+
+So \_.filter is one of the many collection methods in lodash, meaning they are made with both arrays, and objects in general in mind. So if I want to I can just use an Object with \_.filter, and it does not even have to be an array like Object.
+
+```js
+var obj = {
+ 
+    foo: 'bar',
+    bool: false,
+    n: 42,
+    c: 7
+ 
+};
+ 
+var numbers = _.filter(obj, function (val, key, obj) {
+ 
+    return typeof val === 'number';
+ 
+});
+ 
+console.log(numbers); // [42,7];
+```
+
+When trying to use an array method with a plan old object that was not an instance of Array using call, it will typically only work if it is array like. Or in other words it is an object that has keys that are numbers from zero upwards, and a length property that reflects the count of those keys.
+
+```js
+// Vanilla js Array.filter will not just work on any object
+var numbers = [].filter.call(obj, function(val,key,obj){
+ 
+    return typeof val === 'number';
+ 
+});
+console.log(numbers); // [];
+ 
+// but it will work on 'array like' objects
+var numbers = [].filter.call({
+ 
+    0 : 'foo',
+    1: 'man',
+    2: 7,
+    length: 3
+ 
+}, function(val,key,obj){
+ 
+    return typeof val === 'number';
+ 
+});
+ 
+console.log(numbers); // [7]
+```
