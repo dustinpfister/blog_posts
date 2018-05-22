@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 192
-updated: 2018-05-22 15:22:35
-version: 1.2
+updated: 2018-05-22 15:27:53
+version: 1.3
 ---
 
 When making a node.js project with [express.js](https://expressjs.com/) I am going to end up setting up a static server, and or defining some paths that will respond to incoming requests with some kind of custom behavior. [Routers](https://expressjs.com/en/4x/api.html#express.router) are a useful way of defining these paths and pulling them into separate javaScript files that can then be linked to from the main script of an app using app.use.
@@ -23,7 +23,9 @@ So Routers are a good way of keeping things more organized compared to defining 
 
 ## Making some files for a routes path
 
-So Routers will come into play if I do get into making my own middleware, however even when it comes to making my own express app from the ground a routes folder is a common folder that will compose most compose an express.js root structurer along with things like a view folder.
+So Routers will come into play if I do get into making my own middleware, however even when it comes to making my own express app from the ground a routes folder is a common folder that will compose most compose an express.js root structure along with things like a view folder.
+
+For now I will be covering making a routes folder for a project, this will be at least one or more javaScript files in a folder typically names "routes" alone side the node_modules, and views folder that will also typically compose an express.js app.
 
 ### All requests Router example
 
@@ -52,7 +54,7 @@ router.post('*', function (req, res, next) {
 });
 ```
 
-This could be used with app.use in the main script before any others, it will just simple log the url of the request an continue on to whats next.
+This could be used with app.use in the main script before any others, it will just simple log the url of the request an continue on to whats next. In a more advanced example that could be used for anything that you would want to do for all the traffic coming into the site. Something similar to this could also be made to be used at the end of a project to catch any traffic that has not went to any known path.
 
 ### static paths example
 
@@ -140,4 +142,4 @@ app.listen(port, function () {
 
 ## Conclusion
 
-Routers are something that I will be using often when making express.js projects. I wanted this to just be a basic post on this subject, but I did not get into something more advanced like making your own middleware, or some kind of actual useful project rather than just a simpe demo.
+Routers are something that I will be using often when making express.js projects. I wanted this to just be a basic post on this subject, but I did not get into something more advanced like making your own middleware, or some kind of actual useful project rather than just a simple demo.
