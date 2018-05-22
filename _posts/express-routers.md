@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 192
-updated: 2018-05-22 15:15:29
-version: 1.1
+updated: 2018-05-22 15:22:35
+version: 1.2
 ---
 
 When making a node.js project with [express.js](https://expressjs.com/) I am going to end up setting up a static server, and or defining some paths that will respond to incoming requests with some kind of custom behavior. [Routers](https://expressjs.com/en/4x/api.html#express.router) are a useful way of defining these paths and pulling them into separate javaScript files that can then be linked to from the main script of an app using app.use.
@@ -106,3 +106,38 @@ router.get(/user_(\w+)/, function (req, res) {
  
 });
 ```
+
+### Using the files
+
+```js
+let express = require('express'),
+path = require('path'),
+app = express(),
+ 
+// getting port this way
+port = process.env.PORT || process.argv[2] || 8080;
+ 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+ 
+// all paths
+app.use('/', require('./routes/all'));
+ 
+// static paths
+app.use('/', require('./routes/static'));
+ 
+// pattern paths
+app.use('/', require('./routes/patt'));
+ 
+// start the app
+app.listen(port, function () {
+ 
+    console.log('app is up on port: ' + port);
+ 
+});
+```
+
+## Conclusion
+
+Routers are something that I will be using often when making express.js projects. I wanted this to just be a basic post on this subject, but I did not get into something more advanced like making your own middleware, or some kind of actual useful project rather than just a simpe demo.
