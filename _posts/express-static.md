@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 193
-updated: 2018-05-25 10:49:56
-version: 1.5
+updated: 2018-05-25 10:58:20
+version: 1.6
 ---
 
 In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). There are some additional options of interest as well thought so lets take a look.
@@ -167,3 +167,7 @@ app.get('/', function(req,res){
 ```
 
 When this is done I will not get any static file but the generated message 'foo' when going to localhost:8080/ in the browser, however I can still get to the static index I just have go directly to localhost:8080/index.html.
+
+## Conclusion
+
+I did not cover everything when it comes to the options that can be given to express.static, in part that it because some of the options look like they might warrant a whole separate post apart from this one. So far I think that I like just working with express.js when it comes to making some kind of full stack application, although I have a [simular post on this using hapi](/2017/10/01/hapi-static-file-server/), and also there is doing this vanilla js style, by just working with the built in node.js [http module](/2018/02/06/nodejs-http/). If you ejoyed this post you might want to check out [my other posts on express](/categories/express/).
