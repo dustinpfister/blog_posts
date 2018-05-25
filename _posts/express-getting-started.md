@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2018-05-22 14:46:22
-version: 1.2
+updated: 2018-05-25 16:05:01
+version: 1.3
 ---
 
 The node.js powered server side framework [express.js](https://expressjs.com/) is a pretty when it comes to making full stack web applications with [node.js](https://nodejs.org/en/). It is part of the MEAN stack, and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone). In any case express is worthy of a series of posts on it for starting with the typical getting started post, so lets get this one out of the way so we can get into making some interesting stuff.
@@ -28,4 +28,28 @@ $ npm init
 $ npm install express --save
 ```
 
-## Getting started with express-generator
+## Basic hello world example
+
+An express.js hello world might involve just getting e reference to what is exported from the express module like with any npm package, then calling the function that is given when doing so which will result in an instance of an express app object.
+
+Once you have the app object you would want to set up one or more paths that will respond to get requests, and use send response method to respond with the sting 'hello world'.
+
+```js
+let express = require('express'),
+app = express(),
+ 
+// getting port this way
+port = process.env.PORT || process.argv[2] || 8080;
+ 
+app.get('*', function (req, res) {
+ 
+    res.send('hello world');
+ 
+});
+ 
+app.listen(port, function () {
+ 
+    console.log('app is up on port: ' + port);
+ 
+});
+```
