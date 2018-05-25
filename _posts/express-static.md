@@ -5,14 +5,19 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 193
-updated: 2018-05-25 10:00:48
-version: 1.2
+updated: 2018-05-25 10:08:06
+version: 1.3
 ---
 
 In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). There are some additional options of interest as well thought so lets take a look.
 
 <!-- more -->
 
+## What to know before you begin
+
+This is a post on setting up a static server in express.js. It is not a getting started post on express.js I have another post on that [here](). It is also not a getting started post on javaScript in general, as well as setting up a node.js environment. I assume that you have a basic working knowledge of what is required to progress with serving static files in an express.js project, and are here to resolve some more specific issue.
+
+I try to make it a habit to always mention what version of a framework, library, ect I am using especially if it is something advanced like express.js, as such in this post I am using express 4.16.3
 
 ## A Basic static server example with express.js
 
