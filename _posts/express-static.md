@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 193
-updated: 2018-05-25 10:40:58
-version: 1.4
+updated: 2018-05-25 10:49:56
+version: 1.5
 ---
 
 In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). There are some additional options of interest as well thought so lets take a look.
@@ -37,6 +37,8 @@ For this demo I only need express installed. In this demo I am using 4.16.3, but
 
 #### index.html
 
+So one of the most important assets to have in a public folder is the index.html file that is placed at public/index.html. It can be called something else using the index property when giving an options object to express.static, but for this basic demo I will just follow the norm. Also if nor some reason I do not want a static index a value of false can be set to the index property.
+
 ```html
 <!doctype html>
 <html lang="en">
@@ -59,6 +61,8 @@ For this demo I only need express installed. In this demo I am using 4.16.3, but
 ```
 
 #### style.css
+
+One of the assets that will also compose my public folder is an external css file, just to have another asset in there other than just an index.html file, and haveing any style coded in page.
 
 ```css
 body{
@@ -87,6 +91,8 @@ body{
 ```
 
 ##### /img/happy_kitty, and /js/foo.js
+
+I also placed some additional assets that I then used in my index.html, and also to showcase that different file types can quickly and easy be used when using express.js. The foo.js file just logs foo to the console, and the happy_kitty.png file can be any image you might like when making your own demo.
 
 ### The app.js file
 
@@ -121,12 +127,17 @@ This will result in the public folder being the root name space of the site. So 
 
 ## Options
 
+So I think I should cover some of the options that can be passed to express.static
 
-### file name extentions
+### file name extensions
+
+The extensions array can be used to set some filename extensions in the event that a file is not found.
 
 ```js
 app.use('/', express.static('public',{extensions: ['htm', 'html']}));
 ```
+
+When I do this going to localhost:8080/index is the same as localhost:8080/index.html
 
 ### Custom index
 
