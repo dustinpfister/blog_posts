@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 193
-updated: 2018-05-25 10:08:06
-version: 1.3
+updated: 2018-05-25 10:40:58
+version: 1.4
 ---
 
 In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). There are some additional options of interest as well thought so lets take a look.
@@ -118,3 +118,41 @@ $ node app.js
 ```
 
 This will result in the public folder being the root name space of the site. So when I go to http://localhost:8080/ in my browser index.html should be what shows up.
+
+## Options
+
+
+### file name extentions
+
+```js
+app.use('/', express.static('public',{extensions: ['htm', 'html']}));
+```
+
+### Custom index
+
+By default it is expected that a file called index.html will exist at the root of the public name space. If for some reason you want a file to be called something else, or have the behavior of the root path change to something different, then the index property is what you want.
+
+```js
+app.use('/', express.static('public',{index:'other.html'}));
+```
+
+This will use a page called other.html in place of the usual index.html which is the default that is often used. in addition to setting a single string it is possible to also give an array of strings.
+
+```
+app.use('/', express.static('public',{index:['home.html', 'index.html','other.html']}));
+```
+
+When this is done a file called home.html will be looked for first, in the event that is not found index.html will be used, and if for some reason that is not there other.html will be used. So in other words the index value of the array will set priority for that files superseded others when looking for a file to serve as an index.
+
+Also if for some reason you want to disable this, and maybe do something else to generate an index server side for example it can be disabled by setting it to false.
+
+```js
+app.use('/', express.static('public',{index:false}));
+app.get('/', function(req,res){
+ 
+    res.send('foo');
+ 
+});
+```
+
+When this is done I will not get any static file but the generated message 'foo' when going to localhost:8080/ in the browser, however I can still get to the static index I just have go directly to localhost:8080/index.html.
