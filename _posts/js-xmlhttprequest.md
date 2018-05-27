@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2018-03-29 16:22:27
-version: 1.2
+updated: 2018-05-27 10:07:53
+version: 1.3
 ---
 
 These days there are a ton of options for scripting http, I have written posts on [axios](/2018/01/10/nodejs-axios/), and [fetch](/2018/03/27/js-fetch/), but I still find myself using [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks. It does have it's draw backs, compared to more modern solutions, but it is not that hard to quickly make a solution that makes use of more modern javaScript features like promises.
@@ -49,76 +49,97 @@ var xhr = new XMLHttpRequest();
 
 ## Using XMLHttprequest to make a method for scripting http
 
-I often prefer to make some kind of easy to use method that can be used with just one ore two arguments, but can also be given additional things to work with via some kind of con fig object, just like that of the popular solutions like axios.
-
+I often prefer to make some kind of easy to use method that can be used with just one or two arguments, but can also be given additional things to work with via an options object, just like that of the popular solutions like axios.
 
 So I might end up with something like this.
 
 ```js
-var http = function(argu, done, fail) {
+var http = function (argu, done, fail) {
  
-  var xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
  
-  // if first argument is a string, assume it is a url for a get request
-  if (typeof argu === 'string') {
+    // if first argument is a string, assume it is a url for a get request
+    if (typeof argu === 'string') {
  
-    argu = {
-      url: argu
-    }
- 
-  }
- 
-  argu = argu || {};
- 
-  // default method is GET, payload is null, and URL is location.href
-  argu.method = argu.method || 'GET';
-  argu.playload = argu.payload || null;
-  argu.url = argu.url || location.href;
- 
-  // default done and fail callbacks
-  argu.done = done || argu.done || function() {};
-  argu.fail = fail || argu.fail || function() {};
- 
-  // default before send method
-  argu.beforeSend = argu.beforeSend || function(xhr, next) {
-    next();
-  };
- 
-  // open the request
-  xhr.open(argu.method, argu.url, true);
- 
-  // setup on ready state method to call done or fail methods
-  xhr.onreadystatechange = function() {
- 
-    console.log(this.readyState);
- 
-    if (this.readyState === 4) {
- 
-      if (this.status === 200) {
- 
-        argu.done.call(this)
- 
-      } else {
- 
-        argu.fail.call(this);
- 
-      }
+        argu = {
+            url: argu
+        }
  
     }
  
-  };
+    // use given argu object or default to an empty object
+    argu = argu || {};
  
-  // call before send, and send request
-  argu.beforeSend(xhr, function() {
+    // default method is GET, payload is null, and URL is location.href
+    argu.method = argu.method || 'GET';
+    argu.playload = argu.payload === undefined ? null : argu.payload;
+    argu.url = argu.url || location.href;
  
-    xhr.send(argu.payload);
+    // default done and fail callbacks
+    argu.done = done || argu.done || function (res) { console.log(res);};
+    argu.fail = fail || argu.fail || function () {};
  
-  });
+    // given, or default beforeSend method
+    argu.beforeSend = argu.beforeSend || function (xhr, next) {
+ 
+        // if POST request, assume JSON
+        if (argu.method.toUpperCase() === 'POST') {
+ 
+            xhr.setRequestHeader('Content-type', 'application/json');
+ 
+            // custom send that uses JSON
+            argu.send = function (xhr,argu) {
+ 
+                xhr.send(JSON.stringify(argu.payload));
+ 
+            };
+ 
+        }
+ 
+        next();
+    };
+ 
+    // given or default send method
+    argu.send = argu.send || function (xhr,argu) {
+ 
+        // just send
+        xhr.send(argu.payload);
+ 
+    };
+ 
+    // open the request
+    xhr.open(argu.method, argu.url, true);
+ 
+    // setup on ready state method to call done or fail methods
+    xhr.onreadystatechange = function () {
+ 
+        if (this.readyState === 4) {
+ 
+            if (this.status === 200) {
+ 
+                argu.done.call(this, this.response);
+ 
+            } else {
+ 
+                argu.fail.call(this);
+ 
+            }
+ 
+        }
+ 
+    };
+ 
+    // call before send, and send request
+    argu.beforeSend(xhr, function () {
+ 
+        argu.send(xhr,argu);
+ 
+    });
  
 };
 ```
 
-So then I can use it like this:
+So then I can use it by just giving a single string, and a callback in a very tired yet true fashion like this:
 
 ```js
 // the method in action
@@ -129,7 +150,7 @@ http('https://openlibrary.org/api/books?bibkeys=ISBN:9780743487733;format=json',
 });
 ```
 
-Or like this:
+Or the same request can be made by giving an object like this.
 
 ```js
 http({
@@ -141,6 +162,43 @@ http({
  
 });
 ```
+
+If I want to do something advanced with post requests or something involving custom headers, I can always give a custom beforeSend, and if necessary send method.
+
+```js
+http(
+
+    // argu object with custom beforeSend
+    {
+        url: '/body',
+        method: 'POST',
+        payload: 'foo',
+        beforeSend: function (xhr, next) {
+ 
+            xhr.setRequestHeader('Content-type', 'text/plain');
+            next();
+ 
+        },
+        send: function (xhr, argu) {
+ 
+            console.log('okay sending now.');
+            xhr.send(argu.payload);
+        }
+    },
+ 
+    // done call back
+    function (res) {
+ 
+        console.log(res);
+ 
+        //g('app_out').value += '**********\n'
+        //g('app_out').value += res + '\n\n';
+ 
+    }
+);
+```
+
+This should be the goal when making any kind of project like this. If I am making a simple get request I should only have to give a url, and a callback. However if I do need to do something more advanced with custom content types, and payloads I can do that without hacking over the source code.
 
 ## Using a fetch pollyfill
 
