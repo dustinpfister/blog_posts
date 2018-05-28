@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 11:30:51
-version: 1.16
+updated: 2018-05-28 11:40:27
+version: 1.17
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post manily on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -146,7 +146,7 @@ router.post('/', function (req, res) {
 });
 ```
 
-## The main app.js of this demo
+## The main app.js of this demo at /app.js
 
 Here in the main app.js file that I can start with node in the command line is where I will add in what I am doing in the routes folders. I am assigning the paths that I have defined in each javaScript file to a path off from root using app.use. So in other words the "/" path in the json.js javaScript file becomes "/json" when using it with app.use in app.js.
 
@@ -184,9 +184,9 @@ app.listen(port, function () {
 
 The public folder is the standard name that I give for a folder in the root name space of an express project where static assets are to be stored, and served up one way or another with express.static. In this demo I just had a js folder that is used to store all my front end javaScript files, in a more advanced project this folder would contain additional folders and assets for things like css, and image files.
 
-### public/js/http.js
+### My vanilla js http client at /public/js/http.js
 
-in my http.js file I have my own http client that I use as my own vanilla js solution for scripting http. In a more advanced project where the focus is not just on body parsing in express.js I might choose to use axios, or $http in angular.js if making a MEAN stack application.
+In my http.js file I have my own http client that I use as my own vanilla js solution for scripting http. In a more advanced project where the focus is not just on body parsing in express.js I might choose to use [axios](/2018/01/10/nodejs-axios/), or $http in angular.js if making a [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) application.
 
 ```js
 // my http method
@@ -275,9 +275,9 @@ var http = function (argu, done, fail) {
 };
 ```
 
-This solution is what I ended up with when just directly working with the tired yet true XMLHttpRequest for scripting http. This is not something that I would use in production code, for that it may be best to stick to something more professional. I have writing posts on XMLHttpRequest, axios, and fetch. In angular.js there is also of course the $http service as well, choose your solutions for scripting http accordingly depending on the project.
+This solution is what I ended up with when just directly working with the tired yet true XMLHttpRequest for scripting http. This is not something that I would use in production code, for that it may be best to stick to something more professional. I have writing posts on [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/), [axios](/2018/01/10/nodejs-axios/), and [fetch](/2018/03/27/js-fetch/). In angular.js there is also of course the $http service as well, choose your solutions for scripting http accordingly depending on the project.
 
-### public/js/getid.js
+### Wraping docuemnt.getElementById at /public/js/getid.js
 
 I also parked a simple function that wraps document.getElementById in a file called getid.js. It has been a practice that I have been doing for ages when doing anything vanilla js style. It may be more appropriate to place it elsewhere, but I decided to just park it there. In a more advanced project I might use some other means of gaining references to DOM elements, with many font end frameworks there are many other ways of keeping these calls concise.
 
