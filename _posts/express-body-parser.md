@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 11:52:30
-version: 1.20
+updated: 2018-05-28 11:54:38
+version: 1.21
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post manily on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -279,7 +279,7 @@ This solution is what I ended up with when just directly working with the tired 
 
 ### Wraping document.getElementById at /public/js/getid.js
 
-I also parked a simple function that wraps document.getElementById in a file called getid.js. It has been a practice that I have been doing for ages when doing anything vanilla js style. It may be more appropriate to place it elsewhere, but I decided to just park it there. In a more advanced project I might use some other means of gaining references to DOM elements, with many font end frameworks there are many other ways of keeping these calls concise.
+I also parked a simple function that wraps document.getElementById in a file called getid.js. It has been a practice that I have been doing for ages when doing anything vanilla js style. It may be more appropriate to place it elsewhere, but I decided to just park it there. In a more advanced project I might use some other means of gaining references to DOM elements, with many font end frameworks there are many ways of keeping these calls more concise compared to typing document.getElementById over and over again.
 
 ```js
 // just wrapping document.getElementById
@@ -289,6 +289,8 @@ var getId = function (id) {
  
 };
 ```
+
+This is a total coding style thing thats about it.
 
 ### The client code that will send json at /public/js/body-json.js
 
