@@ -5,15 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-27 10:07:52
-version: 1.0
+updated: 2018-05-27 20:48:57
+version: 1.1
 ---
 
-[express.js](https://expressjs.com/)
+Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly dpo this thanks to the body-parser module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that included both front and back end code, but I will be mostly covering the body parser module.
 
 <!-- more -->
 
-## A express.js Body Parser basic example
+## An express.js Body Parser example
+
+In this example I will of course be using express.js as a node.js back end framework, but I will also be installing ejs as a rendering engine. In terms of npm packages that is all that I installed in my demo folder. Everything else I used in this demo is just my own vanilla code. In a more advanced project I might be using additional javaScript projects like angular, and mongoose, but I do not want to take the focus away from express.js at least not in this post.
 
 ### /public/index.js
 
