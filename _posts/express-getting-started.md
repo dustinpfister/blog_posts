@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2018-05-25 16:05:01
-version: 1.3
+updated: 2018-05-28 12:04:40
+version: 1.4
 ---
 
 The node.js powered server side framework [express.js](https://expressjs.com/) is a pretty when it comes to making full stack web applications with [node.js](https://nodejs.org/en/). It is part of the MEAN stack, and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone). In any case express is worthy of a series of posts on it for starting with the typical getting started post, so lets get this one out of the way so we can get into making some interesting stuff.
@@ -53,3 +53,7 @@ app.listen(port, function () {
  
 });
 ```
+
+## Conclusion
+
+Thats it for my getting started post on express.js, as mu content and demos on this subject grow it can be expected that this post will be revised.
