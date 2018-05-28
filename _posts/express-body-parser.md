@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 10:21:51
-version: 1.6
+updated: 2018-05-28 10:30:19
+version: 1.7
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly dpo this thanks to the body-parser module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that included both front and back end code, but I will be mostly covering the body parser module.
@@ -240,7 +240,7 @@ var getId = function (id) {
 
 ### public/js/body-json.js
 
-This is the client script that I use in conjunction with my /json path defined in my json.js file that I am using in my routes folder.
+This is the client script that I use in conjunction with my /json path defined in my json.js file that I am using in my routes folder. I am using my getId method which is just a method that wraps document.getElementById to gain a reference to an input element in my ejs templates, and add an event hadler to it that uses my http method to make a post request to the json path.
 
 ```js
 getId('app_send').addEventListener('click', function (e) {
@@ -262,9 +262,11 @@ getId('app_send').addEventListener('click', function (e) {
 });
 ```
 
+This post is about express.js body parser so I want to keep this simple. So just having a front end that makes a simple post request to a path will work for the sake of the scope of this post.
 
+### public/js/body-text.js
 
-### body-text.js
+Another script that makes a post request to one of my express.js powered back end scripts. This one just makes a plain text post rather than a json post. If you look at my http method you will see that by default the built in beforeSend method will convert what I give via the payload property to json. If for some reason I want to do something different than that I can do so by overwriting the beforeSend method with a method that sets the proper headers for what I want to send.
 
 ```js
 getId('app_send').addEventListener('click', function (e) {
@@ -288,6 +290,7 @@ getId('app_send').addEventListener('click', function (e) {
 });
 ```
 
+In most cases JSON will work just fine, I just wanted to have some additional front end code that exercises other aspects of the express body parser.
 
 ## The views folder
 
