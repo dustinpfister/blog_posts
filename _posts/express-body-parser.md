@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-27 21:21:55
-version: 1.3
+updated: 2018-05-28 08:44:44
+version: 1.4
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly dpo this thanks to the body-parser module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that included both front and back end code, but I will be mostly covering the body parser module.
@@ -96,7 +96,7 @@ router.post('/', function (req, res) {
 
 ## The main app.js of this demo
 
-Here in the main app.js file that I can start with node in the command line is where I will add in what I am doing in the routes folders
+Here in the main app.js file that I can start with node in the command line is where I will add in what I am doing in the routes folders. I am assigning the paths that I have defined in each javaScript file to a path off from root using app.use. So in other words the "/" path in the json.js javaScript file becomes "/json" when using it with app.use in app.js.
 
 ```js
 let express = require('express'),
@@ -128,9 +128,11 @@ app.listen(port, function () {
 });
 ```
 
-## the public/js folder
+## The public folder
 
-### http.js
+The public folder is the standard name that I give for a folder in the root name space of an express project where static assets are to be stored, and served up one way or another with express.static. In this demo I just had a js folder that is used to store all my front end javaScript files, in a more advanced project this folder would contain additional folders and assets for things like css, and image files.
+
+### public/js/http.js
 
 ```js
 // just wrapping document.getElementById
