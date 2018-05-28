@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 10:30:19
-version: 1.7
+updated: 2018-05-28 10:49:18
+version: 1.8
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly dpo this thanks to the body-parser module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that included both front and back end code, but I will be mostly covering the body parser module.
@@ -294,7 +294,13 @@ In most cases JSON will work just fine, I just wanted to have some additional fr
 
 ## The views folder
 
-### _parts/nav.ejs
+In this demo I am using a views folder for ejs templates. I often prefer to use ejs in place of just simple static html in the public folder.
+
+With ejs it is possible to define partials that define reusable parts of html that can be used in more than one page. Rather than repeating navigation markup for each page, I can just define it once, and then inject that part into any additional page that is to use that markup. This helps to keep my html examples concise in these demos.
+
+### views/_parts/nav.ejs
+
+this is the only ejs partial I have made for this demo which is the navigation page.
 
 ```
 <div class="wrap_nav">
@@ -310,7 +316,9 @@ In most cases JSON will work just fine, I just wanted to have some additional fr
 </div>
 ```
 
-### _layouts home.ejs, json.ejs, and text.ejs
+### views/_layouts/home.ejs, json.ejs, and text.ejs
+
+These are the layouts for home, as well as the json, and text demos. The json and text layouts are almost the same aside from the fact that they grab different front end code in the static js folder mentioned before hand.
 
 views/_layouts/home.ejs
 ```
@@ -338,7 +346,11 @@ views/_layouts/text.ejs:
 <script src="/js/body-text.js"></script>
 ```
 
-### index.ejs
+These layouts are used inside my index.ejs file, and wich one that is used depends on which path I navigate to. If you look at my routes files mentioned above I am also define what is to be done with get requests in the route files on top of just using body parser with post requests. In these get request handlers I am using res.render to render index.ejs, and am passing a layout property that is used to render the proper layout.
+
+### views/index.ejs
+
+This is my main index.ejs file that is always used when rendering a page when responding to a get request. The layout of the page changes depending on the path because of the different get request handers passing different layout properties.
 
 ```
 <%
@@ -369,3 +381,9 @@ views/_layouts/text.ejs:
     </body>
 </html>
 ```
+
+## Conclusion
+
+In this post I gave some simple examples of using the express.js body parser to parse incoming data from front end javaScript code. In order to have a working example of body parser I need to have at least some kind of front end system in order to send a payload to a backed to to parsed into reg.body. As such in this post I briefly touched base on many other areas that have to do with full stack development.
+
+In the future if I update this post it will be to expand on the content that has to do with the body parser module itself, and maybe try to provide a more basic example of using body parser if possible, maybe with a simple static view.
