@@ -5,13 +5,21 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 11:01:55
-version: 1.11
+updated: 2018-05-28 11:10:51
+version: 1.12
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post manily on req.body, and how to parse that using the body parser module so I will be mostly covering that.
 
 <!-- more -->
+
+## Before you continue reading
+
+This is a post on the use of the body-parser module that is used in express.js to parse incoming payloads from requests made from a front end system in a full stack node.js web application. In this post I am also using routers, and ejs for rendering templates. You will want to have at least a basic working knowledge of javaScript, and node.js. Full stack development is a little complicated, even when you are trying to simplify it.
+
+## A word about version numbers
+
+I have been trying to make it a habit to mention what version of a javaScript project I am using clear in my posts on such things. There are many reasons why this is a good idea beyond just the usual date published, and date last updated. In this post I am using express 4.16.3, and ejs 2.6.1.
 
 ## An express.js Body Parser example
 
