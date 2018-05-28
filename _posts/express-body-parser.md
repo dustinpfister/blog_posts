@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 08:53:24
-version: 1.5
+updated: 2018-05-28 10:21:51
+version: 1.6
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly dpo this thanks to the body-parser module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that included both front and back end code, but I will be mostly covering the body parser module.
@@ -136,16 +136,7 @@ The public folder is the standard name that I give for a folder in the root name
 
 in my http.js file I have my own http client that I use as my own vanilla js solution for scripting http. In a more advanced project where the focus is not just on body parsing in express.js I might choose to use axios, or $http in angular.js if making a MEAN stack application.
 
-I also parked a simple function that wraps document.getElementById, a practice that I have been doing for ages when doing anything vanilla js style. It may be more appropriate to place it elsewhere, but I decided to just park it there.
-
 ```js
-// just wrapping document.getElementById
-var g = function (id) {
- 
-    return document.getElementById(id);
- 
-};
- 
 // my http method
 var http = function (argu, done, fail) {
  
@@ -234,10 +225,49 @@ var http = function (argu, done, fail) {
 
 This solution is what I ended up with when just directly working with the tired yet true XMLHttpRequest for scripting http. This is not something that I would use in production code, for that it may be best to stick to something more professional. I have writing posts on XMLHttpRequest, axios, and fetch. In angular.js there is also of course the $http service as well, choose your solutions for scripting http accordingly depending on the project.
 
-### body-json.js
+### public/js/getid.js
+
+I also parked a simple function that wraps document.getElementById in a file called getid.js. It has been a practice that I have been doing for ages when doing anything vanilla js style. It may be more appropriate to place it elsewhere, but I decided to just park it there. In a more advanced project I might use some other means of gaining references to DOM elements, with many font end frameworks there are many other ways of keeping these calls concise.
 
 ```js
-g('app_send').addEventListener('click', function (e) {
+// just wrapping document.getElementById
+var getId = function (id) {
+ 
+    return document.getElementById(id);
+ 
+};
+```
+
+### public/js/body-json.js
+
+This is the client script that I use in conjunction with my /json path defined in my json.js file that I am using in my routes folder.
+
+```js
+getId('app_send').addEventListener('click', function (e) {
+ 
+    http({
+        url: '/json',
+        method: 'POST',
+        payload: {
+ 
+            action: 'foo'
+ 
+        }
+    }, function (res) {
+ 
+        getId('app_out').value += res + '\n\n';
+ 
+    });
+ 
+});
+```
+
+
+
+### body-text.js
+
+```js
+getId('app_send').addEventListener('click', function (e) {
  
     http({
         url: '/text',
@@ -251,34 +281,13 @@ g('app_send').addEventListener('click', function (e) {
         }
     }, function (res) {
  
-        g('app_out').value += res + '\n\n';
+        getId('app_out').value += res + '\n\n';
  
     });
  
 });
 ```
 
-### body-text.js
-
-```js
-g('app_send').addEventListener('click', function (e) {
- 
-    http({
-        url: '/json',
-        method: 'POST',
-        payload: {
- 
-            action: 'foo'
- 
-        }
-    }, function (res) {
- 
-        g('app_out').value += res + '\n\n';
- 
-    });
- 
-});
-```
 
 ## The views folder
 
