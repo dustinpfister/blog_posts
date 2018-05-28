@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 11:25:54
-version: 1.15
+updated: 2018-05-28 11:30:51
+version: 1.16
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post manily on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -62,7 +62,7 @@ router.use('/js', express.static('public/js'));
 If you wish to lean more about setting up static paths used express.js, I have [a post on express.static](/2018/05/24/express-static/) that you might want to check out.
 
 
-### /routes/json.js
+### The body-parser json demo at /routes/json.js
 
 In the routes folder I have a json.js file that will serve as an example of using the body parser to parse json given from a client system via a post request. This file will be used in my main app.js file at the root of the project folder to create a json path by mounting what I am doing inside this file to a json path there in app.js.
 
@@ -105,6 +105,43 @@ router.post('/', function (req, res) {
     }
  
     res.json(data);
+ 
+});
+```
+
+### The plain text demo of body-parser at /routes/text.js
+
+This is what will be used to define my text path in the main app.js. It is very similar to my json.js file only I am using the body-parser to parse incoming posts that are just plain text, rather than json.
+
+```js
+let express = require('express'),
+bodyParser = require('body-parser'),
+ 
+// the router
+router = module.exports = express.Router();
+ 
+// using body parser for req.body
+router.use(bodyParser.text());
+ 
+router.get('/', function (req, res) {
+ 
+    res.render('index', {
+ 
+        layout: 'text'
+ 
+    });
+ 
+});
+ 
+// post request
+router.post('/', function (req, res) {
+ 
+    var data = {
+        mess: 'yes this is dog.',
+        body: req.body
+    };
+ 
+    res.send('The parsed body is: '+req.body);
  
 });
 ```
