@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 11:54:38
-version: 1.21
+updated: 2018-05-28 11:57:53
+version: 1.22
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post manily on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -400,7 +400,7 @@ These are the layouts for home, as well as the json, and text demos. The json an
 <script src="/js/body-text.js"></script>
 ```
 
-These layouts are used inside my index.ejs file, and wich one that is used depends on which path I navigate to. If you look at my routes files mentioned above I am also define what is to be done with get requests in the route files on top of just using body parser with post requests. In these get request handlers I am using res.render to render index.ejs, and am passing a layout property that is used to render the proper layout.
+These layouts are used inside my index.ejs file, and which one that is used depends on which path I navigate to. If you look at my routes files mentioned above I also define what is to be done with get requests in the route files on top of just using body parser with post requests. In these get request handlers I am using res.render to render index.ejs, and am passing a layout property that is used to render the proper layout.
 
 ### The main index ejs file at /views/index.ejs
 
