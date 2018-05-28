@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 194
-updated: 2018-05-25 15:57:45
-version: 1.2
+updated: 2018-05-28 12:08:41
+version: 1.3
 ---
 
 When rendering a template in [express.js](https://expressjs.com/). there are many options to choose from, however so far I seem to prefer Embedded javaScript or EJS for short. I have written a post on using the ejs module by itself in node.js, however this post is more about using it in an express.js environment. As Such I will be covering how to set up a renderer with ejs.
@@ -30,7 +30,7 @@ $ mkdir views
 
 ## The views folder
 
-As you may have noticed I made a views folder inside the root namespace of the project folder, this is where I will be placing all my ejs template files. For my basic demo I just stared off with a single index.ejs file in the root name space of the views folder.
+As you may have noticed I made a views folder inside the root name space of the project folder, this is where I will be placing all my ejs template files. For my basic demo I just stared off with a single index.ejs file in the root name space of the views folder.
 
 index.ejs would look like this for starters:
 ```
@@ -66,4 +66,6 @@ app.listen(port, function () {
 });
 ```
 
-When I start this and go to localhost:8080 in my browser I am greeted with the "Hello ejs!" message. Simple enough, but maybe I will cover a few more things about this in this post as to keep it from being to thin.
+## Conclusion
+
+When I start this and go to localhost:8080 in my browser I am greeted with the "Hello ejs!" message. I have [another post on ejs](/2017/12/07/nodejs-ejs-javascript-templates/) in which I work with the ejs module by itself, which might be a good idea to do if you want to learn more about ejs.
