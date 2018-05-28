@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 10:49:18
-version: 1.8
+updated: 2018-05-28 10:53:40
+version: 1.9
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly dpo this thanks to the body-parser module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that included both front and back end code, but I will be mostly covering the body parser module.
@@ -387,3 +387,5 @@ This is my main index.ejs file that is always used when rendering a page when re
 In this post I gave some simple examples of using the express.js body parser to parse incoming data from front end javaScript code. In order to have a working example of body parser I need to have at least some kind of front end system in order to send a payload to a backed to to parsed into reg.body. As such in this post I briefly touched base on many other areas that have to do with full stack development.
 
 In the future if I update this post it will be to expand on the content that has to do with the body parser module itself, and maybe try to provide a more basic example of using body parser if possible, maybe with a simple static view.
+
+This post covers the basics of what can become a serious full stack web application using node.js and express.js as a server side framework. In a serious project I would lose my vanilla js code, and use additional popular, well supported alternatives in place of it.
