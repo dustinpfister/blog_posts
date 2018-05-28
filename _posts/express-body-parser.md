@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 11:45:52
-version: 1.18
+updated: 2018-05-28 11:49:29
+version: 1.19
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post manily on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -277,7 +277,7 @@ var http = function (argu, done, fail) {
 
 This solution is what I ended up with when just directly working with the tired yet true XMLHttpRequest for scripting http. This is not something that I would use in production code, for that it may be best to stick to something more professional. I have writing posts on [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/), [axios](/2018/01/10/nodejs-axios/), and [fetch](/2018/03/27/js-fetch/). In angular.js there is also of course the $http service as well, choose your solutions for scripting http accordingly depending on the project.
 
-### Wraping docuemnt.getElementById at /public/js/getid.js
+### Wraping document.getElementById at /public/js/getid.js
 
 I also parked a simple function that wraps document.getElementById in a file called getid.js. It has been a practice that I have been doing for ages when doing anything vanilla js style. It may be more appropriate to place it elsewhere, but I decided to just park it there. In a more advanced project I might use some other means of gaining references to DOM elements, with many font end frameworks there are many other ways of keeping these calls concise.
 
@@ -290,7 +290,7 @@ var getId = function (id) {
 };
 ```
 
-### public/js/body-json.js
+### The client code that will send json at /public/js/body-json.js
 
 This is the client script that I use in conjunction with my /json path defined in my json.js file that I am using in my routes folder. I am using my getId method which is just a method that wraps document.getElementById to gain a reference to an input element in my ejs templates, and add an event hadler to it that uses my http method to make a post request to the json path.
 
@@ -316,7 +316,7 @@ getId('app_send').addEventListener('click', function (e) {
 
 This post is about express.js body parser so I want to keep this simple. So just having a front end that makes a simple post request to a path will work for the sake of the scope of this post.
 
-### public/js/body-text.js
+### The client code that will send plain text at /public/js/body-text.js
 
 Another script that makes a post request to one of my express.js powered back end scripts. This one just makes a plain text post rather than a json post. If you look at my http method you will see that by default the built in beforeSend method will convert what I give via the payload property to json. If for some reason I want to do something different than that I can do so by overwriting the beforeSend method with a method that sets the proper headers for what I want to send.
 
@@ -350,9 +350,9 @@ In this demo I am using a views folder for ejs templates. I often prefer to use 
 
 With ejs it is possible to define partials that define reusable parts of html that can be used in more than one page. Rather than repeating navigation markup for each page, I can just define it once, and then inject that part into any additional page that is to use that markup. This helps to keep my html examples concise in these demos.
 
-### views/_parts/nav.ejs
+### Navigation ejs part at /views/_parts/nav.ejs
 
-this is the only ejs partial I have made for this demo which is the navigation page.
+This is the only ejs partial I have made for this demo which is the navigation page.
 
 ```
 <div class="wrap_nav">
@@ -368,17 +368,17 @@ this is the only ejs partial I have made for this demo which is the navigation p
 </div>
 ```
 
-### views/_layouts/home.ejs, json.ejs, and text.ejs
+### layout files at /views/_layouts/home.ejs, json.ejs, and text.ejs
 
 These are the layouts for home, as well as the json, and text demos. The json and text layouts are almost the same aside from the fact that they grab different front end code in the static js folder mentioned before hand.
 
-views/_layouts/home.ejs
+/views/_layouts/home.ejs:
 ```
 <h2>Home</h2>
 <p>These are some express.js body parser demos.</p>
 ```
 
-views/_layouts/json.ejs:
+/views/_layouts/json.ejs:
 ```
 <h2>JSON</h2>
  
@@ -388,7 +388,7 @@ views/_layouts/json.ejs:
 <script src="/js/body-json.js"></script>
 ```
 
-views/_layouts/text.ejs:
+/views/_layouts/text.ejs:
 ```
 <h2>text</h2>
  
@@ -400,7 +400,7 @@ views/_layouts/text.ejs:
 
 These layouts are used inside my index.ejs file, and wich one that is used depends on which path I navigate to. If you look at my routes files mentioned above I am also define what is to be done with get requests in the route files on top of just using body parser with post requests. In these get request handlers I am using res.render to render index.ejs, and am passing a layout property that is used to render the proper layout.
 
-### views/index.ejs
+### The main index ejs file at /views/index.ejs
 
 This is my main index.ejs file that is always used when rendering a page when responding to a get request. The layout of the page changes depending on the path because of the different get request handers passing different layout properties.
 
