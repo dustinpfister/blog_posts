@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-05-28 11:49:29
-version: 1.19
+updated: 2018-05-28 11:52:30
+version: 1.20
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post manily on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -186,7 +186,7 @@ The public folder is the standard name that I give for a folder in the root name
 
 ### My vanilla js http client at /public/js/http.js
 
-In my http.js file I have my own http client that I use as my own vanilla js solution for scripting http. In a more advanced project where the focus is not just on body parsing in express.js I might choose to use [axios](/2018/01/10/nodejs-axios/), or $http in angular.js if making a [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) application.
+In my http.js file I have my own http client that I use as my own vanilla js solution for scripting http. In a more advanced project where the focus is not just on body parsing in express.js I might choose to use [axios](/2018/01/10/nodejs-axios/), or $http in angular.js if making a [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle) application.
 
 ```js
 // my http method
