@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 197
-updated: 2018-05-29 14:24:55
-version: 1.1
+updated: 2018-05-29 14:34:36
+version: 1.2
 ---
 
 When reviving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in express.js.
@@ -48,7 +48,7 @@ And then use it in a main app.js file like this:
 let express = require('express'),
 app = express();
  
-app.use(/headers,require('./routes/headers'));
+app.use('/headers',require('./routes/headers'));
  
 app.listen(8080);
 ```
