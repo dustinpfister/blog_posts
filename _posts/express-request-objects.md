@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 195
-updated: 2018-05-29 09:49:54
-version: 1.3
+updated: 2018-05-29 10:00:15
+version: 1.4
 ---
 
 When making a node.js application using [express.js](https://expressjs.com/) there is a need to handle incoming requests. To do this there is the request object that is one of three arguments that can be used when making a function that will be given as a callback when using an app or router method like get, or post. The request object contains all kinds of useful information when it comes to working with requests. In this post I will be writing about some of the must know features of request objects when working with express.js.
@@ -16,6 +16,12 @@ When making a node.js application using [express.js](https://expressjs.com/) the
 ## What is a request object in express.js?
 
 When making any kind of request from a client to an express.js app, the incoming request object is the first argument in the function that you give an express.js app method like app.get.
+
+The request object contains important information about the request, such as headers, a data payload if it is a post request, and so on. This object, along with the response object is a major part of what express.js is all about. A request is received, something is done with that request, and an appropriate response is given back to the client.
+
+## Basic request object example
+
+For starters one might make a simple script that just responds to a get request to the root path.
 
 ```js
 let express = require('express'),
@@ -30,7 +36,7 @@ app.get('/', function (req, res) {
    // references replaced by [Circular]
    let str = util.inspect(req);
  
-   // send that string
+   // send that string as a response
     res.send(str);
  
 });
@@ -41,6 +47,8 @@ app.listen(port, function () {
  
 });
 ```
+
+In this example I just sent back the request object. I had to use the node.js built in [util.inspect](https://nodejs.org/api/util.html#util_util_inspect_object_options) to make it into a string, because the request object contains circular references.
 
 ## req.body - Get data payloads send from a client system
 
