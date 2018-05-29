@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2018-05-29 10:21:18
-version: 1.5
+updated: 2018-05-29 10:34:38
+version: 1.6
 ---
 
 The node.js powered server side framework [express.js](https://expressjs.com/) is a pretty when it comes to making full stack web applications with [node.js](https://nodejs.org/en/). It is part of the MEAN stack, and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone). In any case express is worthy of a series of posts on it for starting with the typical getting started post, so lets get this one out of the way so we can get into making some interesting stuff.
@@ -73,6 +73,44 @@ Of course there are options that can be passed to the express.static method via 
 ### Adding a routes folder
 
 I think routers are one of the most important things to be aware of it you are new to express. If not you might find yourself defining all your paths in the main app.js file, eventually ending up with a lengthy mess of code. Routers help to keep things way more neat and organized by allowing me to define a routes folder in which I can add a whole bunch of javaScript files that define all kinds of paths that I can then add into my main app.js file by way of the app.use method.
+
+For example I can make a file at /routes/foo.js that responds to any get request with bar.
+
+```js
+let express = require('express'),
+bodyParser = require('body-parser'),
+ 
+// the router
+router = module.exports = express.Router();
+ 
+router.get('*', function (req, res) {
+ 
+    res.send('bar');
+ 
+});
+```
+
+And then I can then bind it to a certain path, and add it to my main app.js file using app.use.
+
+```js
+let express = require('express'),
+app = express(),
+ 
+// getting port this way
+port = process.env.PORT || process.argv[2] || 8080;
+ 
+// foo
+app.use('/foo', require('./routes/foo'));
+ 
+// start the app
+app.listen(port, function () {
+ 
+    console.log('app is up on port: ' + port);
+ 
+});
+```
+
+As an application grows more complex I can pull paths into these seperate files that make used of routers, export thous routers, and then make use of theme in my main script using app.use.
 
 ## Conclusion
 
