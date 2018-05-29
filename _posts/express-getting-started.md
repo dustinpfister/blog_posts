@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2018-05-28 12:04:40
-version: 1.4
+updated: 2018-05-29 10:21:18
+version: 1.5
 ---
 
 The node.js powered server side framework [express.js](https://expressjs.com/) is a pretty when it comes to making full stack web applications with [node.js](https://nodejs.org/en/). It is part of the MEAN stack, and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone). In any case express is worthy of a series of posts on it for starting with the typical getting started post, so lets get this one out of the way so we can get into making some interesting stuff.
@@ -54,6 +54,26 @@ app.listen(port, function () {
 });
 ```
 
+It is common to call the main script that will start the project app.js, and to place this file in the root name space of the project. In all my demos I tent to stay true to that practice.
+
+## Whats next
+
+The next step from your first express.js hello world project might be to get into how to serve up static files, render templates with a rendering engine like ejs, or pug, or learn more about routing. Once you have those things down you might be in a good place to start experimenting with different stacks, including database options if the project has a need for one.
+
+### Static files
+
+You might want to check out [my post on staic file hosting in express](/2018/05/24/express-static/), but it is not to hard. Just have a public folder in the root of the project, place static assets in there including an index.html file, and add this to the app.js file.
+
+```js
+app.use('/', express.static('public'));
+```
+
+Of course there are options that can be passed to the express.static method via a second argument, and sometimes you might want to bind to a path other than rought but thats the basic idea.
+
+### Adding a routes folder
+
+I think routers are one of the most important things to be aware of it you are new to express. If not you might find yourself defining all your paths in the main app.js file, eventually ending up with a lengthy mess of code. Routers help to keep things way more neat and organized by allowing me to define a routes folder in which I can add a whole bunch of javaScript files that define all kinds of paths that I can then add into my main app.js file by way of the app.use method.
+
 ## Conclusion
 
-Thats it for my getting started post on express.js, as mu content and demos on this subject grow it can be expected that this post will be revised.
+Thats it for my getting started post on express.js, as my content and demos on this subject grow it can be expected that this post will be revised.
