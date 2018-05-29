@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 195
-updated: 2018-05-29 10:04:57
-version: 1.5
+updated: 2018-05-29 14:34:36
+version: 1.6
 ---
 
 When making a node.js application using [express.js](https://expressjs.com/) there is a need to handle incoming requests. To do this there is the request object that is one of three arguments that can be used when making a function that will be given as a callback when using an app or router method like get, or post. The request object contains all kinds of useful information when it comes to working with requests. In this post I will be writing about some of the must know features of request objects when working with express.js.
@@ -59,6 +59,18 @@ In this example I just sent back the request object. I had to use the node.js bu
 The req.body property can be used to get a data payload that was sent from the client system when working with post requests. In order to use this a body parsing middle ware will need to be used, luckily one comes with express itself.
 
 A full working demo of this is a little involved as a front end is needed on top of back end code that uses the body-parser module. I have [written a post](/2018/05/27/express-body-parser/) where I get into this in detail.
+
+## Working with response headers with req.headers, and req.get
+
+In the request object there are of course the htp request headers that can be found at req.headers, and the req.get method can be used to get a header if you know the name of it.
+
+```js
+console.log( req.headers );
+ 
+console.log( req.get('content-type'));
+```
+
+I have a full demo in a [post that I have wrote on http request headers](/2018/05/29/express-request-headers/).
 
 ## Conclusion
 
