@@ -5,14 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 197
-updated: 2018-05-29 14:11:26
-version: 1.0
+updated: 2018-05-29 14:24:55
+version: 1.1
 ---
 
-When reviving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in express.js
-
+When reviving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in express.js.
 
 <!-- more -->
+
+## Different request headers for different request methods
+
+Request headers depend on the method of the request such as GET, and POST. A POST request header for example will contain a content-type header to tell the server the type of content that it is being given in the body of the request. However a GET request would not contain such a header, because it is just simply requesting whatever there is at a given location. Also It goes without saying that response headers differ slightly from request headers.
 
 ## Basic example
 
