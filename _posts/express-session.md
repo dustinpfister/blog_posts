@@ -5,13 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 200
-updated: 2018-06-01 11:45:59
-version: 1.2
+updated: 2018-06-01 13:25:22
+version: 1.3
 ---
 
 As of late I have been writing some content on [express.js](https://expressjs.com/), and as such it was only a matter of time until I came to a point where it is time to look into how to handle session data, and user authentication. If I want to implement user authentication in a way that I perceive as the right way, I will want to use [passport](/2018/05/31/express-passport/). However so far I often find myself making simple hobby apps, as such I can take a more informal route to handling authentication involving some system that is just assignment of a unique id to each client by way of a cookie file for example. In any case this post is about [express-session](https://www.npmjs.com/package/express-session), a great project for working with session data in an express.js project
 
 <!-- more -->
+
+## What to know
+
+This is a post on using the express-session middeware for express to quickly get up and running with session data. This is not a getting started post on express.js, node.js, or javaScript in general. Also It is worth mentioning that in this post I am using express 4.x, and version 1.15.6 of express-session.
 
 ## Authentication With express-session only?
 
