@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 200
-updated: 2018-06-01 17:06:14
-version: 1.7
+updated: 2018-06-01 17:17:51
+version: 1.8
 ---
 
 As of late I have been writing some content on [express.js](https://expressjs.com/), and as such it was only a matter of time until I came to a point where it is time to look into how to handle session data, and user authentication. If I want to implement user authentication in a way that I perceive as the right way, I will want to use [passport](/2018/05/31/express-passport/). However so far I often find myself making simple hobby apps, as such I can take a more informal route to handling authentication involving some system that is just assignment of a unique id to each client by way of a cookie file for example. In any case this post is about [express-session](https://www.npmjs.com/package/express-session), a great project for working with session data in an express.js project
@@ -80,13 +80,19 @@ When I do so I should see what is in the session data object including my simple
 
 For a basic example the simple count should work at helping to show the value of express-session. It can be used to create, and update session data server side. Although The count is set back to the client via res.json, it does not have to be sent. When it comes to something that should stay server side it can, the cookie session id is the only thing that really needs to be shared.
 
-## Options
+## Options used in the basic example
 
 There are at least some basic options that should always be used in most projects regardless of how simple they might be. In addition there are many other options of interest that should be set in different ways depending on the nature of the project.
 
 ### name
 
 This property is used to set the name of the cookie that will be sent in the response, and also read from in requests. This property can be omitted, and result in a default value of "connect.sid" Even Though it is not required, it is good practice to always give a short, concise name that is relevant to the project. Also I set a name per demo to help resolve an issue where the same cookie ends up being used for many different demos. So it is a good idea to always set unique names to eliminate cookie name collisions.
+
+### secret
+
+This is a required option that is used to sign cookies that are used for the sessions. The value can be a string, or an array of strings. When an array of strings is given, the string of index 0 will be used when signing session cookies, and the other strings will be considered when verifying the signature in requests.
+
+You might be wondering if this is something that should be kept...well...secret, and the answer is of course yes. In my basic example I am just using a string literal, which is fine for a simple hello world style example, but not so great for production code.
 
 ## Using the FileStore for storage of session data
 
