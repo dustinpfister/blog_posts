@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 200
-updated: 2018-06-01 13:42:50
-version: 1.4
+updated: 2018-06-01 13:55:51
+version: 1.5
 ---
 
 As of late I have been writing some content on [express.js](https://expressjs.com/), and as such it was only a matter of time until I came to a point where it is time to look into how to handle session data, and user authentication. If I want to implement user authentication in a way that I perceive as the right way, I will want to use [passport](/2018/05/31/express-passport/). However so far I often find myself making simple hobby apps, as such I can take a more informal route to handling authentication involving some system that is just assignment of a unique id to each client by way of a cookie file for example. In any case this post is about [express-session](https://www.npmjs.com/package/express-session), a great project for working with session data in an express.js project
@@ -80,8 +80,65 @@ When I do so I should see what is in the session data object including my simple
 
 For a basic example the simple count should work at helping to show the value of express-session. It can be used to create, and update session data server side. Although The count is set back to the client via res.json, it does not have to be sent. When it comes to something that should stay server side it can, the cookie session id is the only thing that really needs to be shared.
 
-
 ## Using the FileStore for storage of session data
+
+Out of the box express-session uses a mem store to store session data. This might work okay for quick demo apps, but if I do want to start going in the direction of making a production app I will want to use another storage option such as [session-file-store](https://www.npmjs.com/package/session-file-store)
+
+```
+$ npm install session-file-store@1.2.0 --save
+```
+
+I can then use the file store by calling an instance of it, and setting that to the store property of the instance of express-session
+
+```js
+let express = require('express'),
+session = require('express-session'),
+FileStore = require('session-file-store')(session),
+ 
+secret = 'notThatSecretSecret',
+port = process.env.PORT || process.argv[2] || 8080,
+app = express();
+ 
+//use express-session
+app.use(session({
+ 
+        // using FileStore with express-session
+        // as the sore method, replacing the default memory store
+        store: new FileStore({
+ 
+            path: './session-store'
+ 
+        }),
+        name: '_fs-demo', // cookie will show up as foo site
+        secret: secret,
+        resave: false,
+        saveUninitialized: false,
+ 
+    }));
+ 
+app.get('/', function (req, res) {
+ 
+    // simple count for the session
+    if (!req.session.count) {
+        req.session.count = 0;
+    }
+    req.session.count += 1;
+ 
+    // send info as json
+    res.json(req.session);
+ 
+});
+ 
+app.listen(port, function () {
+ 
+    console.log('session-filestore demo is up on port: ' + port);
+ 
+});
+```
+
+To confirm that this is working I can start the app, go to localhost:8080, hit refresh a few times and then restart the app. When I go back I should continue where I left off. Also I can check out the contents of the session folder, and look at the json file that should be there, this will store the state of the session.
+
+There are many more options for this session store, and of course there are many more options for modules that do this in a different way. For the scope of this post at least I thought that I should cover at least one of theme.
 
 ## Authentication With express-session only?
 
