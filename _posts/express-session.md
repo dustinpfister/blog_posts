@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 200
-updated: 2018-06-01 14:24:06
-version: 1.6
+updated: 2018-06-01 17:06:14
+version: 1.7
 ---
 
 As of late I have been writing some content on [express.js](https://expressjs.com/), and as such it was only a matter of time until I came to a point where it is time to look into how to handle session data, and user authentication. If I want to implement user authentication in a way that I perceive as the right way, I will want to use [passport](/2018/05/31/express-passport/). However so far I often find myself making simple hobby apps, as such I can take a more informal route to handling authentication involving some system that is just assignment of a unique id to each client by way of a cookie file for example. In any case this post is about [express-session](https://www.npmjs.com/package/express-session), a great project for working with session data in an express.js project
@@ -84,7 +84,9 @@ For a basic example the simple count should work at helping to show the value of
 
 There are at least some basic options that should always be used in most projects regardless of how simple they might be. In addition there are many other options of interest that should be set in different ways depending on the nature of the project.
 
+### name
 
+This property is used to set the name of the cookie that will be sent in the response, and also read from in requests. This property can be omitted, and result in a default value of "connect.sid" Even Though it is not required, it is good practice to always give a short, concise name that is relevant to the project. Also I set a name per demo to help resolve an issue where the same cookie ends up being used for many different demos. So it is a good idea to always set unique names to eliminate cookie name collisions.
 
 ## Using the FileStore for storage of session data
 
