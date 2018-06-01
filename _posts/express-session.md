@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 200
-updated: 2018-06-01 17:17:51
-version: 1.8
+updated: 2018-06-01 17:37:35
+version: 1.9
 ---
 
 As of late I have been writing some content on [express.js](https://expressjs.com/), and as such it was only a matter of time until I came to a point where it is time to look into how to handle session data, and user authentication. If I want to implement user authentication in a way that I perceive as the right way, I will want to use [passport](/2018/05/31/express-passport/). However so far I often find myself making simple hobby apps, as such I can take a more informal route to handling authentication involving some system that is just assignment of a unique id to each client by way of a cookie file for example. In any case this post is about [express-session](https://www.npmjs.com/package/express-session), a great project for working with session data in an express.js project
@@ -94,6 +94,14 @@ This is a required option that is used to sign cookies that are used for the ses
 
 You might be wondering if this is something that should be kept...well...secret, and the answer is of course yes. In my basic example I am just using a string literal, which is fine for a simple hello world style example, but not so great for production code.
 
+### resave
+
+This is another must have option that has to do with weather the session is saved to the store on every request even if it was not changed. The way I think about this I would assume that this value should be set to false with most use case examples, but it can depend on the store used. The biggest concern that comes to mind is older sates writing over newer ones because of a time race between parallel requests. Still with some stores it may be necessary to set this to true.
+
+### saveUninitialized
+
+This is another required option that has to do with saving uninitialized sessions. When a session is new, but has not yet been modified that is an uninitialized session. My reasoning is that this should be set to false by default.
+
 ## Using the FileStore for storage of session data
 
 Out of the box express-session uses a mem store to store session data. This might work okay for quick demo apps, but if I do want to start going in the direction of making a production app I will want to use another storage option such as [session-file-store](https://www.npmjs.com/package/session-file-store)
@@ -159,11 +167,11 @@ To confirm that this is working I can start the app, go to localhost:8080, hit r
 
 There are many more options for this session store, and of course there are many more options for modules that do this in a different way. For the scope of this post at least I thought that I should cover at least one of theme.
 
-## Authentication With express-session only?
+## Authentication with express-session only?
 
 With authentication in express.js it may be best to go with [passport](/2018/05/31/express-passport/), this is defiantly a professional and versatile way of making quick work of setting up some kind of system that involves user registration and authentication (aka logging in). However if you are just making some simple little hobby app there might be a desire to have some kind of primitive yet effective way of doing this.
 
-Express session involves the use of cookies, and it is possible to have the cookies not expire resulting in a persistent way of setting a unique id to each visitor to the app. The id set in the cookie could be used as a replacement for a user login, and password. Yes there are many draw backs to this, but I see simple games, and projects using this kind of system, and it works for what it is worth.
+Express session involves the use of cookies, and it is possible to have the cookies not expire (at least in a short time) resulting in a persistent way of setting a unique id to each visitor to the app. The id set in the cookie could be used as a replacement for a user login, and password in a way. Yes there are many draw backs to this, but I see simple games, and projects using this kind of system, and it works for what it is worth.
 
 ## Using cookie-parser to parse req.cookies
 
