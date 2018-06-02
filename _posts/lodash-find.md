@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2018-06-01 21:37:38
-version: 1.14
+updated: 2018-06-01 21:51:20
+version: 1.15
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -346,8 +346,10 @@ console.log( _.find(str,function(el,i,col){
 }) ); // !
 ```
 
-This is because strings are also another example of something in javaScript that is kindof Array like, even though it is not an array. Sure it's constructor is String, and not Array asu such it does not have array methods in it's prototype. However it can still be thought of as an array of characters.
+This is because strings are also another example of something in javaScript that is kindof Array like, even though it is not an array. Sure it's constructor is String, and not Array as such it does not have array methods in it's prototype. However it can still be thought of as an array of characters.
 
 ## Conclusion
 
-This post needed a major update, as it was pretty thin before hand. I am still pretty sure I have not covered all bases with the lodash find method, so I will likely update this post again in the future at some point. If you are in the mood check out [my other posts on lodash](/categories/lodash/).
+Many of the methods in lodash provide functionality that is very similar to certain native methods, but often they do bring a little something more to the table.
+
+I have updated this post a few times now, and I will likely update this post again in the future once again at some point. If you are in the mood check out [my other posts on lodash](/categories/lodash/).
