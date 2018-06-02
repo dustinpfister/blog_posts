@@ -5,13 +5,68 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2018-02-09 12:22:25
-version: 1.12
+updated: 2018-06-01 21:36:13
+version: 1.13
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
 
 <!-- more -->
+
+## \_.find vs Array.find
+
+So yes there is of course Array.find, and Array.find works just fine with Arrays:
+
+```js
+var arr = ['a',1,'b','c'];
+ 
+var n = arr.find(function(el){
+ 
+   return typeof el === 'number';
+ 
+});
+ 
+console.log(n); // 1
+```
+
+It also works well with array like objects when used with call.
+
+```js
+var obj = {
+ 
+    0 : 'bar',
+    1: 42,
+    length: 2
+ 
+};
+ 
+var n = [].find.call(obj, function(el){
+ 
+    return typeof el === 'number';
+ 
+});
+ 
+console.log(n); // 42
+```
+
+However \_.find is a collection method, not an Array method. So in addition to working just fine with Arrays \_.find works with plan old objects as well, even if they are not array like.
+
+```js
+var n = _.find({
+ 
+   foo: 'bar',
+   n: 42
+ 
+},function(el){
+ 
+    return typeof el === 'number';
+ 
+});
+ 
+console.log(n); // 42
+```
+
+Also there is the built in iteration methods that can come in handy. The potential for better backward compatibility with old versions of IE if for some reason that is a concern (china). Also this is a lodash post, so...
 
 ## What a collection is, and basic example
 
