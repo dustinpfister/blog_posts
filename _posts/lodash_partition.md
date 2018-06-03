@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2017-11-22 20:31:21
-version: 1.0
+updated: 2018-06-03 07:01:53
+version: 1.1
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method.
@@ -15,7 +15,7 @@ In [lodash](http://lodash.com/) there is a method that can be used to break a co
 
 ## Example of \_.partition
 
-For a quick example of this I thought it would be fun to play with an array that represents a hand of seven French playing cards. The \_.partition method can be used to split the collection of objects into two separate groups that meet a given condition.
+For a quick example of this I thought it would be fun to play with an array that represents a hand of seven French playing cards. The \_.partition method can be used to split the collection of objects into two separate groups that meet a given condition, such as if a card has a value greater than or equal to eleven.
 
 ```js
 var cards = [
@@ -30,21 +30,19 @@ var cards = [
  
 ];
  
-var byPicture = _.partition(cards, function(card){
+_.each(_.partition(cards, function(card){
  
    return card.val >= 11;
  
-});
+}), function(part){
  
-byPicture[0].forEach(function(card){
+    console.log('** part: ' + i + ' **');
  
-    console.log(card.desc); // jack,king,queen
+    part.forEach(function(card){
  
-});
+        console.log(card.desc);
  
-byPicture[1].forEach(function(card){
- 
-    console.log(card.desc); // ace,5,6,7
+    });
  
 });
 ```
