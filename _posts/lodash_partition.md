@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2018-06-03 07:01:53
-version: 1.1
+updated: 2018-06-03 07:20:05
+version: 1.2
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method.
@@ -38,7 +38,7 @@ _.each(_.partition(cards, function(card){
  
     console.log('** part: ' + i + ' **');
  
-    part.forEach(function(card){
+    _.each(part, function(card){
  
         console.log(card.desc);
  
@@ -46,3 +46,20 @@ _.each(_.partition(cards, function(card){
  
 });
 ```
+
+In this example I am using \_.partition to create an Array of Arrays the first of which is an array of cards that meets the criteria of the condition that I gave it, and the second is everything else that remains. I then used \_.each to loop over each of these arrays, and then again to loop over each card.
+
+As such I get what is expected.
+```
+** part: 0 **
+jack
+king
+queen
+** part: 1 **
+ace
+5
+6
+7
+```
+
+So as the name suggested \_.partition is useful for well partitioning an array into two arrays one of which meets the conditions given, and the other does not.
