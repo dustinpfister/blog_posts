@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 199
-updated: 2018-06-02 19:46:34
-version: 1.1
+updated: 2018-06-04 11:49:46
+version: 1.2
 ---
 
 When making a full stack node.js powered application using [express.js](https://expressjs.com/), there will often be a need to set up a way to handle user authentication (aka login in). This process can be a little involved, but there are ways to help make it go a lot faster by using common libraries, and tools to make this process far less painful compared to attempting to do it from scratch. There is a project called [passport](https://www.npmjs.com/package/passport) that can help make authentication a whole word easier.
@@ -118,6 +118,10 @@ app.listen(port, function () {
  
 });
 ```
+
+## Passport local Strategy
+
+A strategy must be used with passport for authentication, in this example I am using [passport-local](https://www.npmjs.com/package/passport-local) which is a strategy involving a user name and password that is local with the application itself rather than depending on something like facebook. However many strategies exist for passport that can also be used to authenticate, making passport a great choice with this aspect of development.
 
 ## Conclusion
 
