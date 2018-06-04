@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 199
-updated: 2018-06-04 12:45:02
-version: 1.3
+updated: 2018-06-04 13:19:16
+version: 1.4
 ---
 
 When making a full stack node.js powered application using [express.js](https://expressjs.com/), there will often be a need to set up a way to handle user authentication (aka login in). This process can be a little involved, but there are ways to help make it go a lot faster by using common libraries, and tools to make this process far less painful compared to attempting to do it from scratch. There is a project called [passport](https://www.npmjs.com/package/passport) that can help make authentication a whole word easier.
@@ -34,7 +34,11 @@ $ npm install passport-local@1.0.0 --save
 
 ## The /views folder
 
-### index.ejs
+Because I am using ejs I have a views folder that will house my ejs template files. If you prefer to go with a static solution you might want to look into [express.static](/2018/05/24/express-static/), I also have another post on using [ejs with express](/2018/05/25/express-rendering-with-ejs/), as well as another older post on ejs in which I am [using ejs by iteslf](/2017/12/07/nodejs-ejs-javascript-templates/) without express. So I will not be getting into ejs in detail here, lets keep it with passport.
+
+### /views/index.ejs
+
+The main index.ejs file is what will always be used when rendering a page, and I will always provide an object that will give the current layout to use with that index.
 
 ```
 <h1>Passport local demo</h1>
@@ -44,9 +48,16 @@ $ npm install passport-local@1.0.0 --save
 </div>
 ```
 
+So this index.ejs file will just render "Passport local demo", and then the current layout but in a more advanced project I could also include standard navigation, and footer markup, with of course the usual additional stuff that will make it valid html.
+
 ### The /views/layouts folder
 
+This nested folder in the views folder will house the layout options. For the sake of keeping this demo as simple as possible I will just have two layouts, one for the login path, and another for root.
+
 #### /views/layouts/login.ejs
+
+This will give the login form element that will be used to make the post request at the login path.
+
 ```
 <form action="/login" method="post">
     <div>
