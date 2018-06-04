@@ -5,13 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 198
-updated: 2018-06-04 14:02:44
-version: 1.2
+updated: 2018-06-04 14:04:40
+version: 1.3
 ---
 
 Cookies are still a great way of tracking visitors to a website including node.js projects made with [express.js](https://expressjs.com/). In express the usual choice for parsing cookies is the [cookie-parser](https://www.npmjs.com/package/cookie-parser) module. In this post I will be covering a basic demo that makes use of cookie parser, as well as some other pitfalls that are common with cookies in express.
 
 <!-- more -->
+
+## what to know before hand
+
+This is a post in which I am writing about a simple demo that makes used of the cookie-parser module in an express.js project. This is not a getting started post on express.js, node.js, or javaScript in general. I am also using express 4.x in this post and version 1.4.3 of cookie-parser.
 
 ## Setting up the demo folder
 
