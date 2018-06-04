@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 197
-updated: 2018-06-04 15:13:47
-version: 1.3
+updated: 2018-06-04 15:15:40
+version: 1.4
 ---
 
 When receiving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in [express.js](https://expressjs.com/) with some help with the req.get method, and the req.headers array that can be found in a request object.
@@ -76,3 +76,7 @@ If you then start app.js in the command line with node and go to localhost:8080/
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
 }
 ```
+
+## Conclusion
+
+I am sorry this is a thin post, I might expand on it more as my collection of content, and demos on express.js grows. In the mean time you might want to check one some of my other [posts on express.js](/categories/express/) if interested.
