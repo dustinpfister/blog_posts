@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 199
-updated: 2018-06-04 11:49:46
-version: 1.2
+updated: 2018-06-04 12:45:02
+version: 1.3
 ---
 
 When making a full stack node.js powered application using [express.js](https://expressjs.com/), there will often be a need to set up a way to handle user authentication (aka login in). This process can be a little involved, but there are ways to help make it go a lot faster by using common libraries, and tools to make this process far less painful compared to attempting to do it from scratch. There is a project called [passport](https://www.npmjs.com/package/passport) that can help make authentication a whole word easier.
@@ -32,47 +32,140 @@ $ npm install passport@0.4.0 --save
 $ npm install passport-local@1.0.0 --save
 ```
 
+## The /views folder
+
+### index.ejs
+
+```
+<h1>Passport local demo</h1>
+ 
+<div>
+    <%- include('./layouts/' + layout) %>
+</div>
+```
+
+### The /views/layouts folder
+
+#### /views/layouts/login.ejs
+```
+<form action="/login" method="post">
+    <div>
+    <label>Username:</label>
+    <input type="text" name="user"/><br/>
+    </div>
+    <div>
+    <label>Password:</label>
+    <input type="password" name="pass"/>
+    </div>
+    <div>
+    <input type="submit" value="Submit"/>
+    </div>
+</form>
+```
+
+### /views/layouts/home.ejs
+
+```
+<p>This is home</p>
+ 
+<% if (!user) { %>
+    <p>Welcome Home! Please <a href="/login">log in</a>.</p>
+<% } else { %>
+    <p>Hello <%= user.username %>, welcome home! <a href="/logout">logout</a></p>
+<% } %>
+```
+
 Once all that is installed I then made a single app.js file that looks like this:
 
 ```js
+// yes this is an express.js app
 let express = require('express'),
+ 
+// I will be using passport, and the local strategy
 passport = require('passport'),
 Strategy = require('passport-local').Strategy,
  
 // my not so secret secret
 secret = 'eeeek',
  
+// the single user record that is hard
+// coded in for the sake of this simple demo
 user = {
     username: 'foo',
     id: 0,
     password: '123'
 },
  
+// will use the PORT environment variable if present,
+// else use first argument from command line for PORT,
+// else default to a hard coded value of 8080
 port = process.env.PORT || process.argv[2] || 8080,
 app = express();
  
+// using ejs for rendering
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+ 
+// using body parser to parse the body of incoming post requests
 app.use(require('body-parser').urlencoded({
-        extended: true
-    }));
+    extended: true // must give a value for extended
+}));
  
-app.use(require('express-session')({
-        secret: secret,
-        resave: false,
-        saveUninitialized: false
-    }));
+// using express-session for session cookies
+app.use(
  
-passport.use(new Strategy(function (username, password, cb) {
+    require('express-session')(
  
-        if (username === user.username && password.toString() === user.password) {
-            return cb(null, user);
+        {
+            name: 'site_cookie',
+            secret: secret,
+            resave: false,
+            saveUninitialized: false,
+            cookie: {
+ 
+                // make session cookies only last 15 seconds
+                // for the sake of this demo
+                maxAge: 15000
+ 
+            }
         }
  
-        // null and false for all other cases
-        return cb(null, false);
+    )
  
-    }));
+);
+ 
+// using the local strategy with passport
+passport.use(
+ 
+    // calling the constructor given by passport-local
+    new Strategy(
+ 
+        // options for passport local
+        {
+ 
+            // using custom field names
+            usernameField: 'user',
+            passwordField: 'pass'
+ 
+        },
+ 
+        // login method
+        function (username, password, cb) {
+ 
+            if (username === user.username && password.toString() === user.password) {
+ 
+                return cb(null, user);
+ 
+            }
+ 
+            // null and false for all other cases
+            return cb(null, false);
+ 
+        }
+ 
+    )
+ 
+);
  
 passport.serializeUser(function (user, cb) {
     cb(null, user.id);
@@ -80,7 +173,7 @@ passport.serializeUser(function (user, cb) {
  
 passport.deserializeUser(function (id, cb) {
  
-    cb(null,user);
+    cb(null, user);
  
 });
  
@@ -89,22 +182,34 @@ app.use(passport.session());
  
 app.get('/', function (req, res) {
  
-        res.render('index',{layout:'home',user: req.user});
+    res.render('index', {
+        layout: 'home',
+        user: req.user
+    });
  
 });
  
 app.get('/login',
+ 
     function (req, res) {
-    res.render('index',{layout:'login',user: req.user});
+    res.render('index', {
+        layout: 'login',
+        user: req.user
+    });
 });
  
 app.post('/login',
     passport.authenticate('local', {
+        // redirect back to /login
+        // if login fails
         failureRedirect: '/login'
     }),
+ 
+    // end up at / if login works
     function (req, res) {
-    res.redirect('/');
-});
+        res.redirect('/');
+    }
+);
  
 app.get('/logout',
     function (req, res) {
@@ -122,6 +227,10 @@ app.listen(port, function () {
 ## Passport local Strategy
 
 A strategy must be used with passport for authentication, in this example I am using [passport-local](https://www.npmjs.com/package/passport-local) which is a strategy involving a user name and password that is local with the application itself rather than depending on something like facebook. However many strategies exist for passport that can also be used to authenticate, making passport a great choice with this aspect of development.
+
+## Body parser
+
+I am using the built in express body parser to parse an incoming post request as 
 
 ## Conclusion
 
