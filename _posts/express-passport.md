@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 199
-updated: 2018-06-04 13:19:16
-version: 1.4
+updated: 2018-06-04 13:40:39
+version: 1.5
 ---
 
 When making a full stack node.js powered application using [express.js](https://expressjs.com/), there will often be a need to set up a way to handle user authentication (aka login in). This process can be a little involved, but there are ways to help make it go a lot faster by using common libraries, and tools to make this process far less painful compared to attempting to do it from scratch. There is a project called [passport](https://www.npmjs.com/package/passport) that can help make authentication a whole word easier.
@@ -76,6 +76,8 @@ This will give the login form element that will be used to make the post request
 
 ### /views/layouts/home.ejs
 
+Here I have another layout file for the root, or home page at path '\/'. Here if user is undefined then a message will show up asking the visitor to log in. If user is defined then the user is loged in, and the name of the user will be displayed.
+
 ```
 <p>This is home</p>
  
@@ -85,8 +87,12 @@ This will give the login form element that will be used to make the post request
     <p>Hello <%= user.username %>, welcome home! <a href="/logout">logout</a></p>
 <% } %>
 ```
+## The /app.js file
 
-Once all that is installed I then made a single app.js file that looks like this:
+Once everything is installed, and I have my view in place I can get started on the main app.js file of this demo. 
+
+
+So my app .js file looks like this:
 
 ```js
 // yes this is an express.js app
@@ -235,13 +241,53 @@ app.listen(port, function () {
 });
 ```
 
-## Passport local Strategy
+### Passport local Strategy
 
 A strategy must be used with passport for authentication, in this example I am using [passport-local](https://www.npmjs.com/package/passport-local) which is a strategy involving a user name and password that is local with the application itself rather than depending on something like facebook. However many strategies exist for passport that can also be used to authenticate, making passport a great choice with this aspect of development.
 
-## Body parser
+### Body parser
 
-I am using the built in express body parser to parse an incoming post request as 
+I am using the built in express body parser to parse an incoming post request via bodyParser.urlencoded. Tne body parser module is an important component in full stack development using node.js, and express.js in the stack. It is a way to parse the body of incoming post requests into something that can then be accessed from the request object. 
+
+```js
+app.use(require('body-parser').urlencoded({
+    extended: true // must give a value for extended
+}));
+```
+
+For more information and examples of body parser you might want to check out my [post on body parser](/2018/05/27/express-body-parser/) if interested.
+
+### using express-session for session cookies
+
+So express-session is another important module that is often used in express.js powered projects. It is a way to quickly get up and running with sessions cookies, and session data. In this simple demo the session data is stored in memory, but it a more serious project I would want to use an additional storage system for express-session.
+
+```js
+app.use(
+ 
+    require('express-session')(
+ 
+        {
+            name: 'site_cookie',
+            secret: secret,
+            resave: false,
+            saveUninitialized: false,
+            cookie: {
+ 
+                // make session cookies only last 15 seconds
+                // for the sake of this demo
+                maxAge: 15000
+ 
+            }
+        }
+ 
+    )
+ 
+);
+```
+
+I made the maxAge of the session cookies only 15 seconds for the sake of just making new users of passport aware that the max age of a cookie is something important to be aware of.
+
+I will not get into every detail about express-session here, but I will say that there is a great deal more to know about it then what is presented here. For more detail on this you might consider reading [my post on express-session](/2018/06/01/express-session/).
 
 ## Conclusion
 
