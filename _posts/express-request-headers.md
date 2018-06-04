@@ -5,13 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 197
-updated: 2018-05-29 14:34:36
-version: 1.2
+updated: 2018-06-04 15:13:47
+version: 1.3
 ---
 
-When reviving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in express.js.
+When receiving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in [express.js](https://expressjs.com/) with some help with the req.get method, and the req.headers array that can be found in a request object.
 
 <!-- more -->
+
+## What to know
+
+This is a post on working with request headers in express.js a node.js powered framework that is used for making full stack web applications. It is not a getting started post on express.js, node.js, javaScript in general, or any additional aspects of full stack web application development. In this post I am using express 4.x, and yes this is a project where the version matters a whole lot.
 
 ## Different request headers for different request methods
 
