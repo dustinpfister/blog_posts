@@ -5,13 +5,19 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 199
-updated: 2018-06-04 13:40:39
-version: 1.5
+updated: 2018-06-04 13:51:00
+version: 1.6
 ---
 
 When making a full stack node.js powered application using [express.js](https://expressjs.com/), there will often be a need to set up a way to handle user authentication (aka login in). This process can be a little involved, but there are ways to help make it go a lot faster by using common libraries, and tools to make this process far less painful compared to attempting to do it from scratch. There is a project called [passport](https://www.npmjs.com/package/passport) that can help make authentication a whole word easier.
 
 <!-- more -->
+
+## what to know before continue to read
+
+This is a simple example of using passport.js to authenticate a user, also known as loggin in. It is not a full working example of an advanced project that involves doing this as I will not cover everything there is to know about this. However if you are looking for a simple working example, and then maybe branching off from there this might eb of value to you.
+
+This is not a getting started post on node.js, express.js, or javaScript in general. Also in this post I am using express 4.x, and passport 0.4.0.
 
 ## Basic example
 
@@ -290,5 +296,7 @@ I made the maxAge of the session cookies only 15 seconds for the sake of just ma
 I will not get into every detail about express-session here, but I will say that there is a great deal more to know about it then what is presented here. For more detail on this you might consider reading [my post on express-session](/2018/06/01/express-session/).
 
 ## Conclusion
+
+There is a great detail more to write about on passport.js, as well as the different strategies that can be used to authenticate users. It would also be nice to have a more advanced demo that involves user registration, and a database solution of some kind. Also I could make a more professional example that involves a session data storage solution other than the built in memory sore of express session, with a more advanced front end as well. In the coming days I might just do that and if I get to it I might improve the quality of this post along with it.
 
 This is my two hundredth blog post here at my [github pages site](https://dustinpfister.github.io), thought I would just throw that in at the end here.
