@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 198
-updated: 2018-06-04 14:04:40
-version: 1.3
+updated: 2018-06-04 14:11:42
+version: 1.4
 ---
 
 Cookies are still a great way of tracking visitors to a website including node.js projects made with [express.js](https://expressjs.com/). In express the usual choice for parsing cookies is the [cookie-parser](https://www.npmjs.com/package/cookie-parser) module. In this post I will be covering a basic demo that makes use of cookie parser, as well as some other pitfalls that are common with cookies in express.
@@ -36,7 +36,10 @@ Once that is all done I can make my app.js file that I will be calling from the 
 
 For a basic cookie parser demo I just wanted to have a simple routes file that will set a cookie if one is not there to begin with, and then allow for things to just continue as normal. In any case there will always be an id in req.cookies.
 
-so then I have a /routes/cookies.js file that looks like this:
+### The /routes/cookies.js file
+
+So then cookie.js file that looks like this:
+
 ```js
 let express = require('express'),
  
@@ -64,7 +67,11 @@ router.use(function (req, res, next) {
 });
 ```
 
-And then I use it in my main app.js like this:
+This will be used in my main app.js file with app.use.
+
+### The /app.js file
+
+In the app.js file I use my cookie.js file with app.use, and do so first before doing anything else with paths.
 
 ```js
 let express = require('express'),
@@ -88,3 +95,7 @@ app.listen(port, function () {
 ```
 
 This works okay, but there is a problem when someone blocks cookies, it will keep assigning a new id each time the site is visited. Thats not a big deal here, but it can become one if I introduce a database and a new record is created each time.
+
+## Conclusion
+
+I will likely update this post at some time in the future if I get to it, and there is a demand for doing so. For now I just wanted to make, and write about a basic demo centering around cookie parser. In the mean time you might want to check out some of my other [posts on express.js](/categories/express/).
