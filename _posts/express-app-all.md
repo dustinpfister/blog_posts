@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 202
-updated: 2018-06-05 12:00:15
-version: 1.1
+updated: 2018-06-05 12:20:23
+version: 1.2
 ---
 
 So one of the application methods in [express.js](https://expressjs.com/) is app.all, which is a method that can be used to work with any kind of http request method. The most commonly used methods are of course 'GET', and 'POST'. However there are many more that also make sense for what they are, and at times it might be desirable to have a way work with any kind of incoming request regardless of the certain method. This is where app.all can be of help. In this post I will be writing about the app.all method in express, I will be showing some use case examples, and will touch base on the different http methods.
@@ -42,6 +42,8 @@ So in this simple demo I have a public folder that will just house an index.html
 
 #### The /public/index.html file
 
+So in the root of the public folder I made a basic index.html file that will be used to serve up some javaScript files. One will be axios.min.js which is a great promise based http client that I will used to make requests in another javaScript file called client.js
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +59,34 @@ So in this simple demo I have a public folder that will just house an index.html
 </html>
 ```
 
+For now this index.js file does not do much of anything aside from loading, and running these two scripts. In a more advanced version I have this do a bit more, but for now this is just the basic demo here.
+
+#### Using axios for a http client at /public/js/axios.min.js
+
+So for this demo I just grab a copy of axios at the official repository dist folder found at github at [https://github.com/axios/axios/blob/master/dist/axios.min.js](https://github.com/axios/axios/blob/master/dist/axios.min.js). I just copied and pasted it in there to keeps things simple when it comes to including front end code in a simple demo like this.
+
+#### The /public/js/client.js file
+
+So for this demo I have a client.js file in which I will be making some additional requests aside from the GET requests for the static assets.
+
+```js
+axios({
+ 
+    method: 'GET',
+    url: '/not/a/path'
+ 
+}).then(function (res) {
+ 
+    console.log(res);
+ 
+});
+```
+
+For now I am just making a GET request for a path that does not exist, in a more advanced demo I could do some other kinds og requests other than GET requests.
+
 ### The /app.js file
+
+So in the root of the demo folder is where I typically place my main app.js file that will be called with node to start the demo.
 
 ```js
 let express = require('express'),
@@ -99,4 +128,10 @@ app.listen(port, function () {
  
 });
 ```
+
+In here I am using app.all to log to the console, any kind of incoming request. For this basic example so far it will only be GET requests, but app.all differs from other methods like app.get, or app.post in that it will apply to any kind of http method.
+
+I also set the path to '\*' this will make it so the method I give to app.all will not just respond to any kind of request, but also at any path. This allows for a sure 'catch all' method of sorts in which I want to do something for any kind of request made to any kind of path. So it goes without saying that app.all can come in handy with many kinds of scenarios.
+
+Notice that I have one such method at both the beginning, and end of the file.
 
