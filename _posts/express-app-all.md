@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 202
-updated: 2018-06-05 12:20:23
-version: 1.2
+updated: 2018-06-05 12:25:01
+version: 1.3
 ---
 
 So one of the application methods in [express.js](https://expressjs.com/) is app.all, which is a method that can be used to work with any kind of http request method. The most commonly used methods are of course 'GET', and 'POST'. However there are many more that also make sense for what they are, and at times it might be desirable to have a way work with any kind of incoming request regardless of the certain method. This is where app.all can be of help. In this post I will be writing about the app.all method in express, I will be showing some use case examples, and will touch base on the different http methods.
@@ -133,5 +133,5 @@ In here I am using app.all to log to the console, any kind of incoming request. 
 
 I also set the path to '\*' this will make it so the method I give to app.all will not just respond to any kind of request, but also at any path. This allows for a sure 'catch all' method of sorts in which I want to do something for any kind of request made to any kind of path. So it goes without saying that app.all can come in handy with many kinds of scenarios.
 
-Notice that I have one such method at both the beginning, and end of the file.
+Notice that I have one such method at both the beginning, and end of the file. When adding one at the very beginning it allows for me to do something that should be done first before proceeding with anything else. In this simple demo I am just logging what is going on to the console, but it could be some kind of request sanitation check when making a real project. In addition I also have one at the very end, which can be used to respond to what should typically be 404 requests, but also any other kind of request that was not satisfied by any anything that is going on above.
 
