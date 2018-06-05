@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 202
-updated: 2018-06-05 12:25:01
-version: 1.3
+updated: 2018-06-05 13:30:01
+version: 1.4
 ---
 
 So one of the application methods in [express.js](https://expressjs.com/) is app.all, which is a method that can be used to work with any kind of http request method. The most commonly used methods are of course 'GET', and 'POST'. However there are many more that also make sense for what they are, and at times it might be desirable to have a way work with any kind of incoming request regardless of the certain method. This is where app.all can be of help. In this post I will be writing about the app.all method in express, I will be showing some use case examples, and will touch base on the different http methods.
@@ -135,3 +135,9 @@ I also set the path to '\*' this will make it so the method I give to app.all wi
 
 Notice that I have one such method at both the beginning, and end of the file. When adding one at the very beginning it allows for me to do something that should be done first before proceeding with anything else. In this simple demo I am just logging what is going on to the console, but it could be some kind of request sanitation check when making a real project. In addition I also have one at the very end, which can be used to respond to what should typically be 404 requests, but also any other kind of request that was not satisfied by any anything that is going on above.
 
+
+## Conclusion
+
+So the app.all method is the most versatile express.js app method of the app methods that have to do with handing incoming http requests. There are many other methods such as app.get, and app.post that can also be used, but they are reserved to just requests of a certain http method. It does make sense to use those of course as a way of breaking code up more, but if for some reason I do want to write something that will apply to all requests there is of course app.all for that.
+
+Thank you for reading, if you enjoyed this post you might want to check out my other posts on [express.js](/categories/express/).
