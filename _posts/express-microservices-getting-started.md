@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 203
-updated: 2018-06-10 13:35:32
-version: 1.2
+updated: 2018-06-10 13:44:41
+version: 1.3
 ---
 
 In my experience so far when making some kind of full stack web application I run into problems with the programing becoming to complex. Often is the case so far that I end up doing everything in a single application. That is rendering and delivering the client system, authentication, database management, and so forth all within a single package. When it comes to simple hobby apps that are  not that complex, and may never have more than 50 visitors at any given moment, maybe this is not such a bad thing. However as a project grows in both complexity, and or popularity there is a threshold where it becomes desirable or necessary to break things down more. 
@@ -57,7 +57,11 @@ $ mkdir js
 
 So the micro_keywords_main demo will just serve up some static assets, and make post requests either directly to the service from the client, or indirectly via it's back end by making the request with the node.js http module for example. The other project micro_keywords_logger will be the actual micro service demo for this post.
 
-### The app.js file for my keywords micro service
+### The app.js file for micro_keywords_logger
+
+This project just needs to have a single app.js file at the root that will make a database for the keywords if it is not there. It will accept incoming post requests, creating a new database record, or updating one that may all ready exist, responding with the current count for that keyword. For the purpose of this post this is all that it will do for now, however going by the definition I have given it meets the basic idea.
+
+So at the root of the service I have an app.js file like this:
 
 ```js
 let express = require('express'),
@@ -159,3 +163,5 @@ mkdirp('db', function () {
  
 });
 ```
+
+I am using mkdirp to make sure a folder exists before creating a file there. If interested I have posts on both mkdirp, and lowdb if interested.
