@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 203
-updated: 2018-06-10 13:19:21
-version: 1.1
+updated: 2018-06-10 13:35:32
+version: 1.2
 ---
 
 In my experience so far when making some kind of full stack web application I run into problems with the programing becoming to complex. Often is the case so far that I end up doing everything in a single application. That is rendering and delivering the client system, authentication, database management, and so forth all within a single package. When it comes to simple hobby apps that are  not that complex, and may never have more than 50 visitors at any given moment, maybe this is not such a bad thing. However as a project grows in both complexity, and or popularity there is a threshold where it becomes desirable or necessary to break things down more. 
@@ -29,6 +29,33 @@ In other words if you take a complex full stack web application, and break it do
 I have been toying with the idea of making a game about bogging. The idea is that people sign up to start an account, and then write short simple blog posts to make in game currency. The amount of currency made depends on how well the posts rank, and how many other people visit them. This might just be yet another one of my unfinished prototypes, but at the very least I should end up making at least one simple micro service example in the process.
 
 I am sure that I will want to keep track of the volume of certain keywords to be used as a way to determine keyword value. So for a simple example of a micro service how about something that just keeps track of a simple count of keywords.
+
+For this demo I will want to make a keyword service that just keeps a simple count for each given keyword. It will have to except post requests for a keyword, and create a database record, or update an existing one. In addition it will have to respond with a count for the given keyword as well.
+
+Also I will need another separate project that will make use of this service.
+
+### Getting started
+
+So for this demo I will actually be making two projects, one will be my micro service, and the other will be an app that makes use of this service. For the keyword service I will want to use express.js, and some kind of database solution. For a simple hobby project like this lowdb will work just fine for now. The other app will be something that just provides a client system, and back end that makes use of this service. This app will not be the highlight of this post, so I can just quickly throw something together involving something like express, and jQuery maybe.
+
+```
+$ mkdir micro_keywords_logger
+$ cd micro_keywords_logger
+$ npm init
+$ npm install express --save
+$ npm install lowdb --save
+$ npm install mkdirp --save
+$ cd ..
+$ mkdir micro_keywords_main
+$ cd micro_keywords_main
+$ npm init
+$ npm install express --save
+$ mkdir public
+$ cd public
+$ mkdir js
+```
+
+So the micro_keywords_main demo will just serve up some static assets, and make post requests either directly to the service from the client, or indirectly via it's back end by making the request with the node.js http module for example. The other project micro_keywords_logger will be the actual micro service demo for this post.
 
 ### The app.js file for my keywords micro service
 
