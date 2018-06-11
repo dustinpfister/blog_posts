@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 203
-updated: 2018-06-11 11:40:43
-version: 1.5
+updated: 2018-06-11 11:46:28
+version: 1.6
 ---
 
 In my experience so far when making some kind of full stack web application I run into problems with the programing becoming to complex. Often is the case so far that I end up doing everything in a single application. That is rendering and delivering the client system, authentication, database management, and so forth all within a single package. When it comes to simple hobby apps that are  not that complex, and may never have more than 50 visitors at any given moment, maybe this is not such a bad thing. However as a project grows in both complexity, and or popularity there is a threshold where it becomes desirable or necessary to break things down more. 
@@ -167,6 +167,10 @@ mkdirp('db', function () {
 I am using mkdirp to make sure a folder exists before creating a file there. If interested I have posts on both mkdirp, and lowdb if interested.
 
 ### The app.js file for micro_keywords_main
+
+So this is a quick project that I threw together to make use of my micro service. This is not the highlight of this post. The idea here is that a micro service should be kind of independent from the rest of the project. It is okay if that is not the case, when getting into some things that are really involved it might be unavoidable. However I would say that a well designed micro service is something that can at least potential be used from a back end, or front end system, from the same domain or even maybe a different one.
+
+So for this demo though I just put together a simple back end that will not start if the micro service is not running before hand, and will make the call from a node.js environment rather than the browser.
 
 ```js
 let express = require('express'),
