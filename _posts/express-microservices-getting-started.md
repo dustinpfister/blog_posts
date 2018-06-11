@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 203
-updated: 2018-06-10 13:50:45
-version: 1.4
+updated: 2018-06-11 11:40:43
+version: 1.5
 ---
 
 In my experience so far when making some kind of full stack web application I run into problems with the programing becoming to complex. Often is the case so far that I end up doing everything in a single application. That is rendering and delivering the client system, authentication, database management, and so forth all within a single package. When it comes to simple hobby apps that are  not that complex, and may never have more than 50 visitors at any given moment, maybe this is not such a bad thing. However as a project grows in both complexity, and or popularity there is a threshold where it becomes desirable or necessary to break things down more. 
@@ -282,3 +282,7 @@ req.on('error', function (e) {
 });
 req.end();
 ```
+
+## Conclusion
+
+There is a whole lot more on micro services to write about, however this is just a getting stared post in which I am just covering a very lose definition of what a micro service is. If you are aiming to make a complex full stack application it is important to avoid the tenancy to do everything in a single app that will be placed in a single deployment.
