@@ -5,13 +5,19 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 204
-updated: 2018-06-11 11:15:19
-version: 1.2
+updated: 2018-06-11 11:27:56
+version: 1.3
 ---
 
-As I continue expanding on [express.js](https://expressjs.com/) this month today I thought I would write about the response download method, which is one of the many methods in express that are part of the standard response object that I might more about this week. This method is useful if you want to have some kind of path that will work as a way to deliver a file as a download when a link is clicked, or something to that effect. It is very easy to use, you do not have to worry about setting the proper headers or anything like that it does it all for you so all that has to be done basicly is to just call a method in the response object.
+As I continue expanding on [express.js](https://expressjs.com/) this month today I thought I would write about the response download method, which is one of the many methods in express that are part of the standard response object that I might more about this week. This method is useful if you want to have some kind of path that will work as a way to deliver a file as a download when a link is clicked, or something to that effect. It is very easy to use, you do not have to worry about setting the proper headers or anything like that it does it all for you so all that has to be done basically is to just call a method in the response object.
 
 <!-- more -->
+
+## What to know
+
+This is a post on express.js a popular node.js framework that is used in many node.js projects. It is not a getting started post on express.js, node.js, or any additional skills required to get something of value out of reading this. I have my [getting started post on express.js](/2018/05/21/express-getting-started/), but you might want to start elsewhere if you are new to [express.js](https://expressjs.com/), [node.js](https://nodejs.org/en/), and [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+
+Also in this post I am working with express.sj version 4.16.3, which as of this writing is the latest version.
 
 
 ## Basic example of res.download in express.js
@@ -58,3 +64,11 @@ app.listen(port, function () {
  
 });
 ``
+
+When I start the app.
+
+```
+node app.js
+```
+
+And go to localhost:8080 in my browser I see the get a doc link, when I click it I end up downloading doc1.txt to the downloads folder.
