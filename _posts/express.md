@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-12 11:36:05
-version: 1.5
+updated: 2018-06-12 16:08:48
+version: 1.6
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something difrenet, have a post that acts as an index for all my content on express.js. This will of course act as an index for all the content on my site for express.js, and serve as a central guide for all things with express.js. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -37,3 +37,26 @@ $ npm install express --save
 ```
 
 read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
+
+## Setting up a static server with express.js
+
+No additional module is needed to set up a static server with express.js, it can quickly and easily be set up using the express.js method with app.use.
+
+```js
+app.use('/',express.static('public'));
+```
+
+Where public is the name of a folder called public in the root name space of the express.js project. The express.static method can be used to quickly set up one or more static paths, in the event that you want to do something involving the use of a rendering engine for some paths, bust just simply serve static files with other paths.
+
+```js
+// static paths
+app.use('/js', express.static('public/js'));
+app.use('/css', express.static('public/css'));
+app.use('/img', express.static('public/img'));
+ 
+app.get('/', function(req,res){
+    res.render('index');
+});
+```
+
+read [more on express.static here](/2018/05/24/express-static/)
