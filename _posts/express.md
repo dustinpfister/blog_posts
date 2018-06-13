@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-12 16:20:33
-version: 1.7
+updated: 2018-06-13 16:01:58
+version: 1.8
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something difrenet, have a post that acts as an index for all my content on express.js. This will of course act as an index for all the content on my site for express.js, and serve as a central guide for all things with express.js. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -91,3 +91,5 @@ app.listen(8080);
 ```
 
 Routers are like little express apps that can be used to help break down routing tasks like this.
+
+read [more on routers here](/2018/05/22/express-routers/)
