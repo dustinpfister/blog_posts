@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 17:58:07
-version: 1.15
+updated: 2018-06-13 18:07:18
+version: 1.16
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -177,6 +177,28 @@ When using app.all the method property of the request object is of interest, as 
 read more on [app.all](/2018/06/05/express-app-all/)
 
 ## The Request Object
+
+The request object is an object that contains all kinds of useful information about an incoming http request.
+
+### Request headers at req.headers and the req.get method.
+
+When working with requests it is often desired to look at the incoming request headers. For exmaple if I want to know the user agent string. For this there is the req.headers array that will contain all the headers that are present in the request, and the req.get method that can be used to get a certain header from that array.
+
+```js
+// add body path
+router.get('/', function (req, res) {
+ 
+    res.json({
+ 
+        headers: req.headers,
+        userAgent: req.get('user-agent')
+ 
+    });
+ 
+});
+```
+
+read more on [request headers in express.js](/2018/05/29/express-request-headers/)
 
 ## The Response Object
 
