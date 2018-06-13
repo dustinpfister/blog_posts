@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 17:06:41
-version: 1.13
+updated: 2018-06-13 17:19:14
+version: 1.14
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something difrenet, have a post that acts as an index for all my content on express.js. This will of course act as an index for all the content on my site for express.js, and serve as a central guide for all things with express.js. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -175,6 +175,41 @@ app.all('/', function(req,res,next){
 When using app.all the method property of the request object is of interest, as it will tell me what kind of method has been used.
 
 read more on [app.all](/2018/06/05/express-app-all/)
+
+## The Request Object
+
+## The Response Object
+
+As the name suggests the response object contains methods and properties relevant to the act of responding to an incoming http request. Here I will be taking a moment to cover relevant topics on the response object, and some of the most important aspects to know about.
+
+### The render method for rending templates
+
+The render method is for rendering a view set via app.set. There are many rendering engines to choose from, but so far I have been sticking to [ejs](/2017/12/07/nodejs-ejs-javascript-templates/).
+
+```js
+let express = require('express'),
+path = require('path'),
+app = express(),
+ 
+// getting port this way
+port = process.env.PORT || process.argv[2] || 8080;
+ 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+ 
+app.get('/', function (req, res) {
+ 
+    res.render('index',{});
+ 
+});
+ 
+app.listen(port, function () {
+ 
+    console.log('app is up on port: ' + port);
+ 
+});
+```
 
 ## Conclusion
 
