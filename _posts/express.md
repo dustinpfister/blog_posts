@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 16:49:08
-version: 1.11
+updated: 2018-06-13 17:01:33
+version: 1.12
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something difrenet, have a post that acts as an index for all my content on express.js. This will of course act as an index for all the content on my site for express.js, and serve as a central guide for all things with express.js. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -131,6 +131,35 @@ read [more on routers here](/2018/05/22/express-routers/)
 There is a great deal more to know about the top level function that is exported. The main thing to know is that it returns a method that is called to create instances of an app object. However there are also some additional useful methods attached to it as well.
 
 To learn more check out my [full post on the express.js top level function](/2018/06/13/express-top-level-function/)
+
+## The app object
+
+When calling the main top level express function that is exported when importing express into a project, and instance of app is returned. This is one of the most important objects when working with express, as it contains methods for setting paths, and handing http requests.
+
+### The app.get method
+
+The first app object method that most people will use when starting with express.js might be app.get. This is a method that is used to define how to work with incoming http GET requests for a given path or pattern.
+
+```js
+// for all incoming get requests
+app.get('*', function(req,res,next){
+    console.log('a get request');
+    console.log('for path: ' + get.path);
+    next();
+});
+ 
+// if the get request is for root
+app.get('/', function(req,res){
+    res.send('the index.');
+});
+ 
+// if we get here it looks like we do not have it
+app.get('*', function(req,res){
+    res.send('sorry');
+});
+```
+
+The order in which I call app.get is important, as the first use of the method is what will be used first for all incoming get requests. The next use of app.get will only fire for the root path, and the last one will fire for all get request that are not satisfied above.
 
 ## Conclusion
 
