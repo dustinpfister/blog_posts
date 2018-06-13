@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 16:26:44
-version: 1.10
+updated: 2018-06-13 16:49:08
+version: 1.11
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something difrenet, have a post that acts as an index for all my content on express.js. This will of course act as an index for all the content on my site for express.js, and serve as a central guide for all things with express.js. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -71,7 +71,7 @@ app.use('/', express.static('public'));
 app.listen(8080);
 ```
 
-## Setting up a static server with the express.staic method
+### Setting up a static server with the express.staic method
 
 No additional module is needed to set up a static server with express.js, it can quickly and easily be set up using the express.js method with app.use.
 
@@ -94,7 +94,7 @@ app.get('/', function(req,res){
 
 read [more on express.static here](/2018/05/24/express-static/)
 
-## Using routers to help break things down, keep things neat and clean.
+### Using routers to help break things down, keep things neat and clean.
 
 Routers are a great way of keeping things well organized. When making an express.js app I find myself setting up many paths. Some just serve up static assets, some render output using a template, others respond to post requests. If you find yourself having a really long main app.js file in your project you might want to check out routers. They can be used to create separate javaScript files that can then be used in the main app.js file with app.use.
 
@@ -126,3 +126,14 @@ app.listen(8080);
 Routers are like little express apps that can be used to help break down routing tasks like this.
 
 read [more on routers here](/2018/05/22/express-routers/)
+
+
+There is a great deal more to know about the top level function that is exported. The main thing to know is that it returns a method that is called to create instances of an app object. However there are also some additional useful methods attached to it as well.
+
+To learn more check out my [full post on the express.js top level function](/2018/06/13/express-top-level-function/)
+
+## Conclusion
+
+I wanted to try something new when writing my content on express. I think having a main post like this that links to everything else on express is very useful. If This post does well, I might start having posts like this for all of my content categories.
+
+I hope this post has done a decent job of giving a general overview of express.js, if not from here you should be able to navigate to more specific posts on various topics on express.
