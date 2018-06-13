@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 18:24:14
-version: 1.19
+updated: 2018-06-13 18:35:46
+version: 1.20
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -235,7 +235,7 @@ app.listen(port, function () {
 
 For more on [using ejs with express.js](/2018/05/25/express-rendering-with-ejs/) I have a post on that.
 
-## Sending a file to be displayed in the browser as a response with res.sendFile
+### Sending a file to be displayed in the browser as a response with res.sendFile
 
 If for some reason I want to send just a single file as a response I can do that with the send file method. This will work in a similar fashion as setting up a static file path, but can be used to just serve up a single file, and not a whole folder.
 
@@ -249,7 +249,7 @@ This will serve up a file called face.png in a folder called img at the root of 
 
 I have a [full post on the sendFile method here](/2018/06/13/express-response-send-file/) if you want to know more.
 
-## responding to a request with a file download with res.download
+### responding to a request with a file download with res.download
 
 If I want to have a path that will result in a file being download to the client that can be done very easily with the download method.
 
@@ -258,6 +258,36 @@ res.download(path.join(__dirname, 'docs/doc1.pdf'));
 ```
 
 To find out more about this I have a post on the [response download method](/2018/06/11/express-response-download/).
+
+## Some important modules to use with express.js
+
+There are many modules for express.js that are closely tied to express.js, some of which come with express such as body-parser, Others need to be installed with npm first. In this section I will be briefly covering some of the must know modules for express.
+
+### body parser for parsing incoming data payloads with post requests.
+
+The body parser module comes in handy whenever I want to do something involving post requests. This module makes the process of parsing an incoming payload into something I can work with a snap. There are methods for parsing the usual json data, as well as others for plain text, and even binary data as well.
+
+```js
+// parse a body as json
+app.use(require('body-parser').json());
+ 
+app.post('/foo', function(req,res){
+ 
+    console.log(req.body); // the json parsed into an object
+ 
+    res.json({
+       mess: 'the body',
+       body: req.body
+    });
+ 
+});
+```
+
+read more about body parser [here](/2018/05/27/express-body-parser/), there is much to know about it.
+
+## cookie parser
+
+## express-session
 
 ## Conclusion
 
