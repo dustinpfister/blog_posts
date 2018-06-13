@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 18:15:38
-version: 1.18
+updated: 2018-06-13 18:24:14
+version: 1.19
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -248,6 +248,16 @@ res.sendFile('face.png',{
 This will serve up a file called face.png in a folder called img at the root of a project. I need to use the root option if I want to use relative paths like this.
 
 I have a [full post on the sendFile method here](/2018/06/13/express-response-send-file/) if you want to know more.
+
+## responding to a request with a file download with res.download
+
+If I want to have a path that will result in a file being download to the client that can be done very easily with the download method.
+
+```js
+res.download(path.join(__dirname, 'docs/doc1.pdf'));
+```
+
+To find out more about this I have a post on the [response download method](/2018/06/11/express-response-download/).
 
 ## Conclusion
 
