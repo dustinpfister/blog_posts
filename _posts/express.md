@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 18:07:18
-version: 1.16
+updated: 2018-06-13 18:10:34
+version: 1.17
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -232,6 +232,8 @@ app.listen(port, function () {
  
 });
 ```
+
+For more on [using ejs with express.js](/2018/05/25/express-rendering-with-ejs/) I have a post on that.
 
 ## Conclusion
 
