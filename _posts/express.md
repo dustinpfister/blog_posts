@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 16:12:09
-version: 1.9
+updated: 2018-06-13 16:26:44
+version: 1.10
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something difrenet, have a post that acts as an index for all my content on express.js. This will of course act as an index for all the content on my site for express.js, and serve as a central guide for all things with express.js. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -54,7 +54,24 @@ Here I am responding to get requests to the root path with the string hello word
 
 read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
 
-## Setting up a static server with express.js
+## The main express function, and additional static methods.
+
+So the main express function can be used to create an instance of an app object when called. This app object contains useful methods that can be used to define paths, and get the app to start listening on a given port. However there are also some static methods attached to the function as well that can be used for things like setting up a static path.
+
+```js
+let express = require('express'), // get the main express function
+app = express(); // call it to create an app object
+ 
+// additional methods are attached to the function
+// like express.static that can be used to create 
+// a static path.
+app.use('/', express.static('public'));
+ 
+// and start the app 
+app.listen(8080);
+```
+
+## Setting up a static server with the express.staic method
 
 No additional module is needed to set up a static server with express.js, it can quickly and easily be set up using the express.js method with app.use.
 
