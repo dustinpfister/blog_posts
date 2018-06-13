@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-13 16:01:58
-version: 1.8
+updated: 2018-06-13 16:12:09
+version: 1.9
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something difrenet, have a post that acts as an index for all my content on express.js. This will of course act as an index for all the content on my site for express.js, and serve as a central guide for all things with express.js. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -35,6 +35,22 @@ $ cd express-demo
 $ npm init
 $ npm install express --save
 ```
+
+### Simple express.js hello word
+
+Once I have a demo folder I will want an app.js file at root that wil be the main javaScript file that is called to start the project. For a simle hello world example that app.js file might look something like this.
+
+```js
+let express = require('express'),
+app = express();
+app.get('/', function(req,res){
+    res.send('hello world')
+});
+app.listen(8080);
+```
+All express projects will involve calling the main method that is given to create an instance of the app object. The app object will then contain methods that I can use to define what to do for certain http methods, and paths.
+
+Here I am responding to get requests to the root path with the string hello word by making use of the send method in the response object. 
 
 read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
 
