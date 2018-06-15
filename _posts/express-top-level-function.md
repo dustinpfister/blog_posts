@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 207
-updated: 2018-06-15 11:37:51
-version: 1.6
+updated: 2018-06-15 11:40:36
+version: 1.7
 ---
 
 When creating an [express.js](https://expressjs.com/) project of any kind the first thing that I work with is the express top level function. It is the function that is exported when grabbing at express with require when making the typical app.js file. This function is used to create instances of an app object, and it also has some additional methods attached to it as well.
@@ -51,6 +51,28 @@ However you can read more on [express.static here](/2018/05/24/express-static/) 
 ## Routers
 
 If you are not aware of routers yet now might be a good idea to give them a try. They are a great way of helping to break your project down into smaller components that can then be used in the main app.js file with app.use.
+
+for an example I could make a router.js file like this:
+
+```js
+let express = require('express'),
+ 
+router = module.exports = express.Router();
+ 
+router.get('*', function (req, res, next) {
+ 
+    console.log('get from: ' + req.url);
+ 
+    next();
+ 
+});
+```
+
+and then use it in a main app.js file like this:
+
+```js
+app.use(require('./router.js'));
+```
 
 Be sure to read more about them in [my post on express.Router](/2018/05/22/express-routers/)
 
