@@ -5,13 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 207
-updated: 2018-06-15 11:19:51
-version: 1.4
+updated: 2018-06-15 11:32:34
+version: 1.5
 ---
 
 When creating an [express.js](https://expressjs.com/) project of any kind the first thing that I work with is the express top level function. It is the function that is exported when grabbing at express with require when making the typical app.js file. This function is used to create instances of an app object, and it also has some additional methods attached to it as well.
 
 <!-- more -->
+
+## What to know
+
+This post will quickly cover some of the most important things to know about with the express.js top level function, but I will not be getting into any of them to an extreme level of detail. In othe words this post acts as an index of sorts for other content that is of greater value. I have my [main mega post on express](/2018/06/12/express/) that acts as the main index of all content on express that might be a good starting point on this site for all things express.
 
 
 ## Calling the express top level method to create an app object
@@ -49,3 +53,5 @@ However you can read more on [express.static here](/2018/05/24/express-static/) 
 If you are not aware of routers yet now might be a good idea to give them a try. They are a great way of helping to break your project down into smaller components that can then be used in the main app.js file with app.use.
 
 Be sure to read more about them in [my post on express.Router](/2018/05/22/express-routers/)
+
+## Conclusion
