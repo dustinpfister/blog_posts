@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 207
-updated: 2018-06-15 11:16:42
-version: 1.3
+updated: 2018-06-15 11:19:51
+version: 1.4
 ---
 
 When creating an [express.js](https://expressjs.com/) project of any kind the first thing that I work with is the express top level function. It is the function that is exported when grabbing at express with require when making the typical app.js file. This function is used to create instances of an app object, and it also has some additional methods attached to it as well.
@@ -43,3 +43,9 @@ app.listen(8080);
 This is just a basic example that should work at serving up a public folder in the same folder as the script. I will not get into express static in detail here, as this post is more of an overview of everything to be aware of in just the top level function.
 
 However you can read more on [express.static here](/2018/05/24/express-static/) if interested.
+
+## Routers
+
+If you are not aware of routers yet now might be a good idea to give them a try. They are a great way of helping to break your project down into smaller components that can then be used in the main app.js file with app.use.
+
+Be sure to read more about them in [my post on express.Router](/2018/05/22/express-routers/)
