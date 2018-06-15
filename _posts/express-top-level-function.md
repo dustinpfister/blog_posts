@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 207
-updated: 2018-06-15 11:32:34
-version: 1.5
+updated: 2018-06-15 11:37:51
+version: 1.6
 ---
 
 When creating an [express.js](https://expressjs.com/) project of any kind the first thing that I work with is the express top level function. It is the function that is exported when grabbing at express with require when making the typical app.js file. This function is used to create instances of an app object, and it also has some additional methods attached to it as well.
@@ -55,3 +55,7 @@ If you are not aware of routers yet now might be a good idea to give them a try.
 Be sure to read more about them in [my post on express.Router](/2018/05/22/express-routers/)
 
 ## Conclusion
+
+I hope this post has given you a good overview of the express.js top level function. If interested in other express.js related content, you should check out the [main express.js mega post](/2018/06/12/express/) that acts as a central index of all express.js content on this site. It is kind of like this post, only it is the main index of sorts.
+
+The main thing to keep in mide here is that the function that is returned can just be called to create an instance of an express app object, but there are also some additional useful methods attached to it as well. This is because in javaScript a function is also an object, and it is possible to define some additional methods for the function, just like one would with an object. The express.js top level function is a great example of this, and it often comes in handy when writing javaScript.
