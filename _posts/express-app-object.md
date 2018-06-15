@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 209
-updated: 2018-06-15 09:53:42
-version: 1.4
+updated: 2018-06-15 10:12:41
+version: 1.5
 ---
 
 The app object in [express.js](https://expressjs.com/) is what is returned when calling the express top level function by itself, rather than one of the additional methods attached to it like express.static. The app object contains many useful methods for working with http requests, setting up a rendering engine like ejs, an using additional middle like express-session, and passport. This post will serve as an overview of that app object, and everything that is of great importance when developing an node.js powered web applaction with express.js as part of the stack.
@@ -46,6 +46,20 @@ The app.get, and app.listen are often the first methods one will become aware of
 
 However this is much more to the object that an express developer should be aware of so lets get to it.
 
-## making and Using routers, and middle ware, with app.use
+## Making and Using routers, and middle ware, with app.use
 
 If you are not all ready aware of app.use this would be a good one to play with a little when it comes to making your own catalog of express demos for the sake of learning express. This methods is what is used to well use additional middle ware, including your own middle ware that can do a whole range of things when working with incoming http requests.
+
+For example if I want a middel ware that just logs the incoming request headers to the conolse, and then continues on like normal I would just give app.use a single function literal log the headers in that function, and then call the next method that is provided as the third argument in that function.
+
+```js
+app.use(function (req, res, next) {
+ 
+   console.log(req.headers);
+ 
+   next();
+   
+});
+```
+
+There is a great deal more to write about with app.use, but I have much to cover in this post.
