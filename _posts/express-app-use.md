@@ -5,11 +5,11 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 210
-updated: 2018-06-18 13:32:59
-version: 1.2
+updated: 2018-06-18 13:48:39
+version: 1.3
 ---
 
-When making an [express.js](https://expressjs.com/) application one of the most important methods in the app object is the app.use method. This method is important for making use of middle ware modules, as well maing your own middle ware methods.
+When making an [express.js](https://expressjs.com/) application one of the most important methods in the app object is the app.use method. This method is important for making use of middle ware modules, as well making your own middle ware methods.
 
 <!-- more -->
 
@@ -33,7 +33,7 @@ When making this demo I was using express 4.16.3, but if you aim to make an actu
 
 ### 1.2 - The set-client.js file
 
-
+In this file I will be using the app.use method to define what will be done with incoming requests. It will look for a user agent header in the request headers using req.get. Base on what is there it may set a value that will eb appended to the request object to something other than what it is by default. In any case it will then call next to continue on with the normal flow of things.
 
 ```js
 let express = require('express'),
@@ -61,7 +61,12 @@ app.use(function (req, res, next) {
 });
 ```
 
+It is also possible to have it so it will look at query strings, or set the value by another means, but you get the idea. If I had a project in which there was more than one client system this can work as a way to set which client system to use based on the incoming request http headers.
+
 ### 1.3 - The app.js file
+
+In the main app.js file I again use app.use to use the middleware that I have defined in my set-client.js file.
+
 ```js
 let express = require('express'),
 app = express();
@@ -82,3 +87,20 @@ app.listen(8080, function () {
  
 });
 ```
+
+I do so before anything else as it will not work if I set up my handler for the root path before hand, as the order in which things happen in express does very much matter.
+
+### 1.4 - start up the demo
+
+So now that I have everything in order I start up the demo by calling the main app.js file with node in the command line.
+
+```
+$ node app.js
+the app is up on port 8080
+```
+
+Once I have the message displayed in the command line I should be able to see what will happen when I navigate to localhost:8080 in my browser. If I do so in chrome I will get a different message compared to if I do so with some other browser as expected.
+
+## Conclusion
+
+The app.use method is an important part of the app object in express. The method is needed to make use of express.js middle ware that is made from the ground up for your own project, or added in via an additional module like with body-parser.
