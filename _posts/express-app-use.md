@@ -5,14 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 210
-updated: 2018-06-18 13:48:39
-version: 1.3
+updated: 2018-06-18 13:56:07
+version: 1.4
 ---
 
 When making an [express.js](https://expressjs.com/) application one of the most important methods in the app object is the app.use method. This method is important for making use of middle ware modules, as well making your own middle ware methods.
 
 <!-- more -->
 
+## What to know
+
+This is a post on a certain methods in an instance of an [app object](/2018/06/15/express-app-object/) in the node.js powered framework know as express. It is not a getting started post on express.js, javaScript, node.js or any additional skill required before hand. If you are new to express you might want to start at my [express.js mega post](/2018/06/12/express/), or my post on [getting started with express](/2018/05/21/express-getting-started/).
 
 ## 1 - A Basic example of a custom middle ware using app.use
 
@@ -103,4 +106,4 @@ Once I have the message displayed in the command line I should be able to see wh
 
 ## Conclusion
 
-The app.use method is an important part of the app object in express. The method is needed to make use of express.js middle ware that is made from the ground up for your own project, or added in via an additional module like with body-parser.
+The app.use method is an important part of the app object in express. The method is needed to make use of express.js middle ware that is made from the ground up for your own project, or added in via an additional module like with [body-parser](/2018/05/27/express-body-parser/).
