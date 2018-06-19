@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 211
-updated: 2018-06-19 12:12:13
-version: 1.1
+updated: 2018-06-19 12:16:23
+version: 1.2
 ---
 
 When making an [express.js](https://expressjs.com/) application security, and privacy should be of at least some concern. A good start with express might be to check out [helmet.js](https://www.npmjs.com/package/helmet). This express.js middleware is actually a collection of middleware modules that can be used to set some headers that may help to improve security, and privacy to some extent. It is not an end all solution of course, but it might be a good start to say the least. In this post I will be writing about one of the middleware methods that is used to set a header that will disable dns prefetching.
@@ -22,6 +22,8 @@ This is an advanced post on express.js, and the use of the helmet.js middeware m
 I used a well known tool called wireshark to help confirm to myself first hand that setting this browser header does have an effect that can help improve privacy. If you wish to do the same you may want to install it yourself as well if you have not done so before hand. It is a very helpful tool to have at the ready if you really want to get into this sort of thing.
 
 ## 2 - Example of helmet dns prefetch control
+
+To make an example of how this works I quickly put together an index.html file that has a few links to some domains. This index.html file is then served up using express.static, but only after I use helmet to set a header called X-DNS-Prefetch-Control. By doing this it stops the browser from prefetching the DNS of the links before hand so that they do not show up from the perspective of an observer using wireshark.
 
 ## 2.2 - The /public/index.html file
 
