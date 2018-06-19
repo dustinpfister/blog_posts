@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 211
-updated: 2018-06-19 12:25:18
-version: 1.4
+updated: 2018-06-19 12:30:57
+version: 1.5
 ---
 
 When making an [express.js](https://expressjs.com/) application security, and privacy should be of at least some concern. A good start with express might be to check out [helmet.js](https://www.npmjs.com/package/helmet). This express.js middleware is actually a collection of middleware modules that can be used to set some headers that may help to improve security, and privacy to some extent. It is not an end all solution of course, but it might be a good start to say the least. In this post I will be writing about one of the middleware methods that is used to set a header that will disable dns prefetching.
@@ -17,7 +17,7 @@ When making an [express.js](https://expressjs.com/) application security, and pr
 
 This is an advanced post on express.js, and the use of the helmet.js middeware module to help better secure a node.js application. This is not a getting started post on express.js, node.js, javaScript, or any other additional skills required.
 
-## 1.1 - wire shark
+### 1.1 - wire shark
 
 I used a well known tool called wireshark to help confirm to myself first hand that setting this browser header does have an effect that can help improve privacy. If you wish to do the same you may want to install it yourself as well if you have not done so before hand. It is a very helpful tool to have at the ready if you really want to get into this sort of thing.
 
@@ -38,7 +38,7 @@ $ npm install helmet@3.12.1 --save
 
 I put the version numbers in to indicate what versions I am using in this demo, so if you run into problems reproducing this check the version numbers.
 
-## 2.2 - The /public/index.html file
+### 2.2 - The /public/index.html file
 
 So In the public folder I put together a simple index.html file that I will serve up using express.static. This file just has some outgoing links to some websites.
 
@@ -60,7 +60,9 @@ So In the public folder I put together a simple index.html file that I will serv
 
 So it is true that if I where to click one of these links the dns would have to be resolved for the domain. However the thing about dns prefetching is that the browser will prefetch the dns of these links even if I do not click on them. I have confirmed this by using wireshark, and sure enough that is the case with the late version of chrome that I am using.
 
-## 2.3 - The app.js file
+### 2.3 - The app.js file
+
+I this file I am just using helmet with the app.use method. By doing so it will always set the header to off unless I set the allow option for dns prefect control to false.
 
 ```js
 let express = require('express'),
@@ -89,3 +91,12 @@ app.listen(8080, function () {
 });
 ```
 
+### 2.4 - Starting the app.
+
+When all is done I just stared the app up by the usual way from the command line.
+
+```
+$ node app
+```
+
+When doing so I then went to localhost:8080 in the browser, to see if it had any effect when looking at what is going on in wireshark. Sure enough setting this header does get chrome to stop preferhing dns, and not it only does so when actually clicking a link as expected.
