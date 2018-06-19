@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 211
-updated: 2018-06-19 12:19:53
-version: 1.3
+updated: 2018-06-19 12:25:18
+version: 1.4
 ---
 
 When making an [express.js](https://expressjs.com/) application security, and privacy should be of at least some concern. A good start with express might be to check out [helmet.js](https://www.npmjs.com/package/helmet). This express.js middleware is actually a collection of middleware modules that can be used to set some headers that may help to improve security, and privacy to some extent. It is not an end all solution of course, but it might be a good start to say the least. In this post I will be writing about one of the middleware methods that is used to set a header that will disable dns prefetching.
@@ -40,6 +40,8 @@ I put the version numbers in to indicate what versions I am using in this demo, 
 
 ## 2.2 - The /public/index.html file
 
+So In the public folder I put together a simple index.html file that I will serve up using express.static. This file just has some outgoing links to some websites.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +57,8 @@ I put the version numbers in to indicate what versions I am using in this demo, 
   </body>
 </html>
 ```
+
+So it is true that if I where to click one of these links the dns would have to be resolved for the domain. However the thing about dns prefetching is that the browser will prefetch the dns of these links even if I do not click on them. I have confirmed this by using wireshark, and sure enough that is the case with the late version of chrome that I am using.
 
 ## 2.3 - The app.js file
 
