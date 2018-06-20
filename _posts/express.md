@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 15:29:30
-version: 1.36
+updated: 2018-06-20 15:46:43
+version: 1.37
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -328,8 +328,22 @@ Read my post on getting started with [passport](/2018/05/31/express-passport/)
 
 So passport may be the best known, and also best supported solution for authentication with express.js. There are many strategies for authorization with passport, including simple local solutions, as well as others that involve [oAuth](https://en.wikipedia.org/wiki/OAuth).
 
-## 9 Conclusion
+## 9 - Making micro services with express.
+
+check out my [getting started with micro servies](/2018/06/08/express-microservices-getting-started/) post.
+
+If you are thinking about the creation of an app being this thing where everything works as just one big chunk of code that is deployed to just a single node at a hosting company and thats all there is to it, then maybe you should start looking into micro services. This is a way of breaking things down into not just one app, but a whole bunch of apps that all work together. This helps make things more manageable, and it can also reduce the work load of an app, by making some things the responsibility of a whole different app, on a whole different node, that may even be at a whole separate hosting company.
+
+## 10 - Conclusion
 
 I wanted to try something new when writing my content on express. I think having a main post like this that links to everything else on express is very useful. If This post does well, I might start having posts like this for all of my content categories.
+
+### 10.1 - The future of this post.
+
+There is much more to test out, and write about with express. Also I might like to get around to building, and deploying some real projects at some point in the future. I have a lot of content on this site thought, and from the perspective of someone that wants to create a successful blog on javaScript, that might not happen if these posts do not preform well.
+
+If I do get to it, I will eventually build one or more real projects using express. This will mean more posts on security, scaling, and deployment, as well as improved quality, and quantity of posts in general.
+
+### 10.2 - Bye for now
 
 I hope this post has done a decent job of giving a general overview of express.js, if not from here you should be able to navigate to more specific posts on various topics on express.
