@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 212
-updated: 2018-06-20 13:05:56
-version: 1.1
+updated: 2018-06-20 13:12:00
+version: 1.2
 ---
 
 The app.get method in [express.js](https://expressjs.com/) has two uses, one is for getting the value of a local app setting, and the other is to define what to do with http GET requests. So in other words it's behavior is very different depending on the number of arguments that are given to it. If I just want to get the value of a certain app setting I only need to give the key of that setting to receive the corresponding key value. However if I want to do something with get requests I will want to not just give the path or pattern, but one or more functions that will do something with that incoming http get request. So this dual use of app.get works out okay, and as such I do not find it that confusing. So this will be a quick post on the ins and outs of app.get.
@@ -14,6 +14,8 @@ The app.get method in [express.js](https://expressjs.com/) has two uses, one is 
 <!-- more -->
 
 ## 2 - Full app.js example of app.get
+
+So for a full working demo of app.get I just quickly put togetaher this simple demo that uses app.get to set a value for a port to listen on when starting the app, and also use app.get to respond to get requests.
 
 ### 2.1 - Setup
 
@@ -36,7 +38,7 @@ let express = require('express'),
 app = express();
  
 // set the port to listen on with app.set
-app.set('port', process.env.PORT || process.argv[2] || 8080);
+app.set('port', process.argv[2] || process.env.PORT || 8080);
  
 // use app.get to get the value of port
 console.log(app.get('port'));
@@ -60,3 +62,14 @@ app.listen(app.get('port'), function () {
 });
 ```
 
+### 2.3 - Starting the demo
+
+So now when I start the app.js file with node in the command line it will default to a hard coded port value of 8080 by default if there is no environment variable, or argument given.
+
+So If I just start the app like this.
+
+```
+$ node app 3000
+```
+
+If I want I can then go to localhost:3000 in my browser I will get the intended message.
