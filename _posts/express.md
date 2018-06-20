@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 13:46:50
-version: 1.25
+updated: 2018-06-20 13:54:45
+version: 1.26
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -42,6 +42,8 @@ $ npm install express --save
 
 ### 2.2 - Simple express.js hello word
 
+Read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
+
 Once I have a demo folder I will want an app.js file at root that wil be the main javaScript file that is called to start the project. For a simle hello world example that app.js file might look something like this.
 
 ```js
@@ -56,9 +58,10 @@ All express projects will involve calling the main method that is given to creat
 
 Here I am responding to get requests to the root path with the string hello word by making use of the send method in the response object. 
 
-read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
 
 ## 3 - The main express function, and additional static methods.
+
+Read [the full post](/2018/06/13/express-top-level-function/) on the top level function, and static methods.
 
 So the main express function can be used to create an instance of an app object when called. This app object contains useful methods that can be used to define paths, and get the app to start listening on a given port. However there are also some static methods attached to the function as well that can be used for things like setting up a static path.
 
@@ -76,6 +79,8 @@ app.listen(8080);
 ```
 
 ### 3.1 - Setting up a static server with the express.staic method
+
+Read [more on express.static here](/2018/05/24/express-static/)
 
 No additional module is needed to set up a static server with express.js, it can quickly and easily be set up using the express.js method with app.use.
 
@@ -96,9 +101,9 @@ app.get('/', function(req,res){
 });
 ```
 
-read [more on express.static here](/2018/05/24/express-static/)
-
 ### 3.2 - Using routers to help break things down, keep things neat and clean.
+
+Read [more on routers here](/2018/05/22/express-routers/)
 
 Routers are a great way of keeping things well organized. When making an express.js app I find myself setting up many paths. Some just serve up static assets, some render output using a template, others respond to post requests. If you find yourself having a really long main app.js file in your project you might want to check out routers. They can be used to create separate javaScript files that can then be used in the main app.js file with app.use.
 
@@ -129,12 +134,7 @@ app.listen(8080);
 
 Routers are like little express apps that can be used to help break down routing tasks like this.
 
-read [more on routers here](/2018/05/22/express-routers/)
-
-
 There is a great deal more to know about the top level function that is exported. The main thing to know is that it returns a method that is called to create instances of an app object. However there are also some additional useful methods attached to it as well.
-
-To learn more check out my [full post on the express.js top level function](/2018/06/13/express-top-level-function/)
 
 ## 4 - The app object
 
@@ -167,6 +167,8 @@ The order in which I call app.get is important, as the first use of the method i
 
 ### 4.2 - The app.all method for responding to any kind of request.
 
+Read more on [app.all](/2018/06/05/express-app-all/)
+
 So where that methods that I give to app.get will only fire for GET requests, app.all will fire for any kind of request that is received.
 
 ```js
@@ -178,13 +180,13 @@ app.all('/', function(req,res,next){
 
 When using app.all the method property of the request object is of interest, as it will tell me what kind of method has been used.
 
-read more on [app.all](/2018/06/05/express-app-all/)
-
 ## 5 - The Request Object
 
 The request object is an object that contains all kinds of useful information about an incoming http request.
 
 ### 5.1 - Request headers at req.headers and the req.get method.
+
+Read more on [request headers in express.js](/2018/05/29/express-request-headers/)
 
 When working with requests it is often desired to look at the incoming request headers. For exmaple if I want to know the user agent string. For this there is the req.headers array that will contain all the headers that are present in the request, and the req.get method that can be used to get a certain header from that array.
 
@@ -202,13 +204,13 @@ router.get('/', function (req, res) {
 });
 ```
 
-read more on [request headers in express.js](/2018/05/29/express-request-headers/)
-
 ## 6 - The Response Object
 
 As the name suggests the response object contains methods and properties relevant to the act of responding to an incoming http request. Here I will be taking a moment to cover relevant topics on the response object, and some of the most important aspects to know about.
 
 ### 6.1 - The render method for rending templates
+
+For more on [using ejs with express.js](/2018/05/25/express-rendering-with-ejs/) I have a post on that.
 
 The render method is for rendering a view set via app.set. There are many rendering engines to choose from, but so far I have been sticking to [ejs](/2017/12/07/nodejs-ejs-javascript-templates/).
 
@@ -237,9 +239,9 @@ app.listen(port, function () {
 });
 ```
 
-For more on [using ejs with express.js](/2018/05/25/express-rendering-with-ejs/) I have a post on that.
-
 ### 6.2 - Sending a file to be displayed in the browser as a response with res.sendFile
+
+I have a [full post on the sendFile method here](/2018/06/13/express-response-send-file/) if you want to know more.
 
 If for some reason I want to send just a single file as a response I can do that with the send file method. This will work in a similar fashion as setting up a static file path, but can be used to just serve up a single file, and not a whole folder.
 
@@ -251,9 +253,9 @@ res.sendFile('face.png',{
 
 This will serve up a file called face.png in a folder called img at the root of a project. I need to use the root option if I want to use relative paths like this.
 
-I have a [full post on the sendFile method here](/2018/06/13/express-response-send-file/) if you want to know more.
+### 6.3 - Responding to a request with a file download with res.download
 
-### 6.3 - responding to a request with a file download with res.download
+To find out more about this I have a post on the [response download method](/2018/06/11/express-response-download/).
 
 If I want to have a path that will result in a file being download to the client that can be done very easily with the download method.
 
@@ -261,13 +263,13 @@ If I want to have a path that will result in a file being download to the client
 res.download(path.join(__dirname, 'docs/doc1.pdf'));
 ```
 
-To find out more about this I have a post on the [response download method](/2018/06/11/express-response-download/).
-
 ## 7 - Some important modules to use with express.js
 
 There are many modules for express.js that are closely tied to express.js, some of which come with express such as body-parser, Others need to be installed with npm first. In this section I will be briefly covering some of the must know modules for express.
 
-### 7.1 - body parser for parsing incoming data payloads with post requests.
+### 7.1 - The body parser for parsing incoming data payloads with post requests.
+
+Read more about body parser [here](/2018/05/27/express-body-parser/), there is much to know about it.
 
 The body parser module comes in handy whenever I want to do something involving post requests. This module makes the process of parsing an incoming payload into something I can work with a snap. There are methods for parsing the usual json data, as well as others for plain text, and even binary data as well.
 
@@ -287,15 +289,13 @@ app.post('/foo', function(req,res){
 });
 ```
 
-read more about body parser [here](/2018/05/27/express-body-parser/), there is much to know about it.
+## 7.2 - The cookie parser middleware
 
-## 7.2 - cookie parser
+Read more on cookie parser [here](/2018/05/30/express-cookie-parser/).
 
-read more on cookie parser [here](/2018/05/30/express-cookie-parser/).
+## 7.3 - The express-session middleware
 
-## 7.3 - express-session
-
-check out my full post on [express session](/2018/06/01/express-session/)
+Check out my full post on [express session](/2018/06/01/express-session/)
 
 ## 8 Conclusion
 
