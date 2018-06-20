@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 14:59:01
-version: 1.29
+updated: 2018-06-20 15:05:56
+version: 1.30
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -304,9 +304,17 @@ Check out my full post on [express session](/2018/06/01/express-session/)
 
 If you are looking into how to get started with session management with express there is of course express-session, it is a decent solution to help with session management.
 
+## 8 - User authentication with express.js
 
+User authentication, or in other words loggin in, is  a complicated subject. This is where things get a little hairy for most people, but luckily there are great solutions to help simplify this process. If you are thinking about coming up with your own solution for this, don't, unless you can really think of some way to rationalize it.
 
-## 8 Conclusion
+### 8.1 - Authentication with passport.js
+
+Read my post on getting started with [passport](/2018/05/31/express-passport/)
+
+So passport may be the best known, and also best supported solution for authentication with express.js. There are many strategies for authorization with passport, including simple local solutions, as well as others that involve [oAuth](https://en.wikipedia.org/wiki/OAuth).
+
+## 9 Conclusion
 
 I wanted to try something new when writing my content on express. I think having a main post like this that links to everything else on express is very useful. If This post does well, I might start having posts like this for all of my content categories.
 
