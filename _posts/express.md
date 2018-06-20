@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 13:43:52
-version: 1.24
+updated: 2018-06-20 13:46:50
+version: 1.25
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -17,7 +17,7 @@ For my posts on [express.js](https://expressjs.com/) I want to try something dif
 
 This is my main post on the node.js powered, server side web application framework known as express.js  this is not a getting stared post on node.js, javaScript, html, css, git, cli tools, and many other subjects of interest that have to do with full stack web application development. I assume that you have at least some background in these subjects, and are here to because you are seeking a guide on learning the ropes when it comes to express.js.
 
-### 1.1 - This is a collection of posts on express.
+### 1.1 - This is an index of a collection of posts on express.
 
 Like many other subjects on by github pages site here, this is a [collection of posts on express.js](/categories/express/). This post aims to be a main index of all content relevant to express on this site. If this works out well I may start to do this with all other categories on the site, as it seems like a good idea. Please note that this is also a relatively new collection as well, and as such this post will likely be updated a great deal as I continue working with express.
 
