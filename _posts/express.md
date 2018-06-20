@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 15:16:35
-version: 1.32
+updated: 2018-06-20 15:18:35
+version: 1.33
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -144,7 +144,7 @@ When calling the main top level express function that is exported when importing
 
 ### 4.1 - The app.get method
 
-The first app object method that most people will use when starting with express.js might be app.get. This is a method that is used to define how to work with incoming http GET requests for a given path or pattern.
+The first app object method that most people will use when starting with express.js might be app.get. This is a method that is used to define how to work with incoming http GET requests for a given path or pattern. In addition to working with get requests, this method can also be used to get app settings as well.
 
 ```js
 // for all incoming get requests
