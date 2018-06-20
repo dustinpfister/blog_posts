@@ -5,27 +5,27 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-15 13:23:52
-version: 1.22
+updated: 2018-06-20 13:33:50
+version: 1.23
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
 
 <!-- more -->
 
-## What to know
+## 1 - What to know
 
 This is my main post on the node.js powered, server side web application framework known as express.js  this is not a getting stared post on node.js, javaScript, html, css, git, cli tools, and many other subjects of interest that have to do with full stack web application development. I assume that you have at least some background in these subjects, and are here to because you are seeking a guide on learning the ropes when it comes to express.js.
 
-## The version number matters with express.js
+### 1.1 - The version number matters with express.js
 
 Yes express.js is a project where the version number matters a whole lot. As of this writing I am using [express 4.16.3](https://github.com/expressjs/express/tree/4.16.3) with many of the posts that I have written so far, so assume that unless noted otherwise. If you run into issues with the content in my posts, aways remember to check the simplest things first like spelling mistakes, and yes the version number relative to what I am using in the content.
 
-## Getting started with express.js
+## 2 - Getting started with express.js
 
 To get started with express.js you will need node.js installed, which should come with the package manager known as npm as well. There is other software of interest as well such as mongoDB, and having a recent web browser, but at a minimum you will need node.js installed.
 
-### Manual install of express.js
+### 2.1 - Manual install of express.js
 
 Once node is installed, and hopefully npm as well. Getting started with any express.js project manually is just a matter of creating a new project folder, using npm to set up a new package.json file, and installing express.js with npm adding it to the package.json file with the save option.
 
@@ -36,7 +36,7 @@ $ npm init
 $ npm install express --save
 ```
 
-### Simple express.js hello word
+### 2.2 - Simple express.js hello word
 
 Once I have a demo folder I will want an app.js file at root that wil be the main javaScript file that is called to start the project. For a simle hello world example that app.js file might look something like this.
 
@@ -54,7 +54,7 @@ Here I am responding to get requests to the root path with the string hello word
 
 read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
 
-## The main express function, and additional static methods.
+## 3 - The main express function, and additional static methods.
 
 So the main express function can be used to create an instance of an app object when called. This app object contains useful methods that can be used to define paths, and get the app to start listening on a given port. However there are also some static methods attached to the function as well that can be used for things like setting up a static path.
 
@@ -71,7 +71,7 @@ app.use('/', express.static('public'));
 app.listen(8080);
 ```
 
-### Setting up a static server with the express.staic method
+### 3.1 - Setting up a static server with the express.staic method
 
 No additional module is needed to set up a static server with express.js, it can quickly and easily be set up using the express.js method with app.use.
 
@@ -94,7 +94,7 @@ app.get('/', function(req,res){
 
 read [more on express.static here](/2018/05/24/express-static/)
 
-### Using routers to help break things down, keep things neat and clean.
+### 3.2 - Using routers to help break things down, keep things neat and clean.
 
 Routers are a great way of keeping things well organized. When making an express.js app I find myself setting up many paths. Some just serve up static assets, some render output using a template, others respond to post requests. If you find yourself having a really long main app.js file in your project you might want to check out routers. They can be used to create separate javaScript files that can then be used in the main app.js file with app.use.
 
@@ -132,11 +132,11 @@ There is a great deal more to know about the top level function that is exported
 
 To learn more check out my [full post on the express.js top level function](/2018/06/13/express-top-level-function/)
 
-## The app object
+## 4 - The app object
 
 When calling the main top level express function that is exported when importing express into a project, and instance of app is returned. This is one of the most important objects when working with express, as it contains methods for setting paths, and handing http requests.
 
-### The app.get method
+### 4.1 - The app.get method
 
 The first app object method that most people will use when starting with express.js might be app.get. This is a method that is used to define how to work with incoming http GET requests for a given path or pattern.
 
@@ -161,7 +161,7 @@ app.get('*', function(req,res){
 
 The order in which I call app.get is important, as the first use of the method is what will be used first for all incoming get requests. The next use of app.get will only fire for the root path, and the last one will fire for all get request that are not satisfied above.
 
-## The app.all method for responding to any kind of request.
+### 4.2 - The app.all method for responding to any kind of request.
 
 So where that methods that I give to app.get will only fire for GET requests, app.all will fire for any kind of request that is received.
 
@@ -176,11 +176,11 @@ When using app.all the method property of the request object is of interest, as 
 
 read more on [app.all](/2018/06/05/express-app-all/)
 
-## The Request Object
+## 5 - The Request Object
 
 The request object is an object that contains all kinds of useful information about an incoming http request.
 
-### Request headers at req.headers and the req.get method.
+### 5.1 - Request headers at req.headers and the req.get method.
 
 When working with requests it is often desired to look at the incoming request headers. For exmaple if I want to know the user agent string. For this there is the req.headers array that will contain all the headers that are present in the request, and the req.get method that can be used to get a certain header from that array.
 
@@ -200,11 +200,11 @@ router.get('/', function (req, res) {
 
 read more on [request headers in express.js](/2018/05/29/express-request-headers/)
 
-## The Response Object
+## 6 - The Response Object
 
 As the name suggests the response object contains methods and properties relevant to the act of responding to an incoming http request. Here I will be taking a moment to cover relevant topics on the response object, and some of the most important aspects to know about.
 
-### The render method for rending templates
+### 6.1 - The render method for rending templates
 
 The render method is for rendering a view set via app.set. There are many rendering engines to choose from, but so far I have been sticking to [ejs](/2017/12/07/nodejs-ejs-javascript-templates/).
 
@@ -235,7 +235,7 @@ app.listen(port, function () {
 
 For more on [using ejs with express.js](/2018/05/25/express-rendering-with-ejs/) I have a post on that.
 
-### Sending a file to be displayed in the browser as a response with res.sendFile
+### 6.2 - Sending a file to be displayed in the browser as a response with res.sendFile
 
 If for some reason I want to send just a single file as a response I can do that with the send file method. This will work in a similar fashion as setting up a static file path, but can be used to just serve up a single file, and not a whole folder.
 
@@ -249,7 +249,7 @@ This will serve up a file called face.png in a folder called img at the root of 
 
 I have a [full post on the sendFile method here](/2018/06/13/express-response-send-file/) if you want to know more.
 
-### responding to a request with a file download with res.download
+### 6.3 - responding to a request with a file download with res.download
 
 If I want to have a path that will result in a file being download to the client that can be done very easily with the download method.
 
@@ -259,11 +259,11 @@ res.download(path.join(__dirname, 'docs/doc1.pdf'));
 
 To find out more about this I have a post on the [response download method](/2018/06/11/express-response-download/).
 
-## Some important modules to use with express.js
+## 7 - Some important modules to use with express.js
 
 There are many modules for express.js that are closely tied to express.js, some of which come with express such as body-parser, Others need to be installed with npm first. In this section I will be briefly covering some of the must know modules for express.
 
-### body parser for parsing incoming data payloads with post requests.
+### 7.1 - body parser for parsing incoming data payloads with post requests.
 
 The body parser module comes in handy whenever I want to do something involving post requests. This module makes the process of parsing an incoming payload into something I can work with a snap. There are methods for parsing the usual json data, as well as others for plain text, and even binary data as well.
 
@@ -285,15 +285,15 @@ app.post('/foo', function(req,res){
 
 read more about body parser [here](/2018/05/27/express-body-parser/), there is much to know about it.
 
-## cookie parser
+## 7.2 - cookie parser
 
 read more on cookie parser [here](/2018/05/30/express-cookie-parser/).
 
-## express-session
+## 7.3 - express-session
 
 check out my full post on [express session](/2018/06/01/express-session/)
 
-## Conclusion
+## 8 Conclusion
 
 I wanted to try something new when writing my content on express. I think having a main post like this that links to everything else on express is very useful. If This post does well, I might start having posts like this for all of my content categories.
 
