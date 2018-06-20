@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 15:09:34
-version: 1.31
+updated: 2018-06-20 15:16:35
+version: 1.32
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -183,6 +183,8 @@ app.all('/', function(req,res,next){
 When using app.all the method property of the request object is of interest, as it will tell me what kind of method has been used.
 
 ## 5 - The Request Object
+
+read my full post on [request objects](/2018/05/26/express-request-objects/).
 
 The request object is an object that contains all kinds of useful information about an incoming http request.
 
