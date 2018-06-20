@@ -5,19 +5,50 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 212
-updated: 2018-06-20 13:12:00
-version: 1.2
+updated: 2018-06-20 13:24:50
+version: 1.3
 ---
 
 The app.get method in [express.js](https://expressjs.com/) has two uses, one is for getting the value of a local app setting, and the other is to define what to do with http GET requests. So in other words it's behavior is very different depending on the number of arguments that are given to it. If I just want to get the value of a certain app setting I only need to give the key of that setting to receive the corresponding key value. However if I want to do something with get requests I will want to not just give the path or pattern, but one or more functions that will do something with that incoming http get request. So this dual use of app.get works out okay, and as such I do not find it that confusing. So this will be a quick post on the ins and outs of app.get.
 
 <!-- more -->
 
-## 2 - Full app.js example of app.get
+### 2 - Using app.get to get app settings values
+
+When only giving one value to app.get that value is treated as a key in an object of key value pairs that are various settings for the app. There are many settings there to begin with, and it is also possible to set values with app.set to be used in various places in the body of an express.js app.
+
+### 2.1 - Getting the environment value
+
+One value that should be there to begin with is the env setting. This is a setting that is used to find out if the app is in development or production mode.
+
+```js
+console.log(app.get('env')); // development
+```
+
+### 2.2 - Setting the full list of settings
+
+If you want to know the full list of setting that currently exist in an app, the object of interest is at app.locals.
+
+```js
+console.log(app.locals.settings);
+```
+
+It would be a good idea to take a look at this to be aware of what is there to begin with, so that you do not write over any values with app.set when setting your own values this way.
+
+### 3 - Using app.set with app.get, to both get and set values.
+
+The app.set method is used with app.get to both set, and get values. This may be preferable than the alternative which would be to have my own conf object, or lengthly list of global variables.
+
+```js
+app.set('foo','bar');
+console.log( app.get('foo') ); // bar
+```
+
+## 4 - Full app.js example of app.get
 
 So for a full working demo of app.get I just quickly put togetaher this simple demo that uses app.get to set a value for a port to listen on when starting the app, and also use app.get to respond to get requests.
 
-### 2.1 - Setup
+### 4.1 - Setup
 
 So for this demo I will just need to create a new folder, and the only dependency I am using is express itself.
 
@@ -28,7 +59,7 @@ $ npm init
 $ npm install express --save
 ```
 
-### 2.2 - The app.js file
+### 4.2 - The app.js file
 
 Once I have my basic demo folder the next step is to have my single app.js file that I will be starting from the command line using node.js. I used app.set to set a value for port, that I then use to start the app listening on that port. I also used app.get to set up a single path for root that will respond to get requests to that path.
 
@@ -62,7 +93,7 @@ app.listen(app.get('port'), function () {
 });
 ```
 
-### 2.3 - Starting the demo
+### 4.3 - Starting the demo
 
 So now when I start the app.js file with node in the command line it will default to a hard coded port value of 8080 by default if there is no environment variable, or argument given.
 
