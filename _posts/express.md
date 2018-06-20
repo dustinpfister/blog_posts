@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 13:54:45
-version: 1.26
+updated: 2018-06-20 13:57:38
+version: 1.27
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -27,6 +27,8 @@ Yes express.js is a project where the version number matters a whole lot. As of 
 
 ## 2 - Getting started with express.js
 
+Read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
+
 To get started with express.js you will need node.js installed, which should come with the package manager known as npm as well. There is other software of interest as well such as mongoDB, and having a recent web browser, but at a minimum you will need node.js installed.
 
 ### 2.1 - Manual install of express.js
@@ -41,8 +43,6 @@ $ npm install express --save
 ```
 
 ### 2.2 - Simple express.js hello word
-
-Read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
 
 Once I have a demo folder I will want an app.js file at root that wil be the main javaScript file that is called to start the project. For a simle hello world example that app.js file might look something like this.
 
