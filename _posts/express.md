@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 15:28:52
-version: 1.35
+updated: 2018-06-20 15:29:30
+version: 1.36
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -142,7 +142,7 @@ Read more on [the app object](/2018/06/15/express-app-object/) in express
 
 When calling the main top level express function that is exported when importing express into a project, and instance of app is returned. This is one of the most important objects when working with express, as it contains methods for setting paths, and handing http requests.
 
-### 4.2 - The app.use method for using middeware
+### 4.1 - The app.use method for using middeware
 
 Click [here](/2018/06/18/express-app-use/) to read more about app.use is is a must know.
 
@@ -152,7 +152,7 @@ The app.use method is your friend when starting to put something complex togethe
 app.use(require('./lib/my-middeware.js')());
 ```
 
-### 4.1 - The app.get method
+### 4.2 - The app.get method
 
 be sure to read more on [the get method](/2018/06/20/express-get/).
 
@@ -179,7 +179,7 @@ app.get('*', function(req,res){
 
 The order in which I call app.get is important, as the first use of the method is what will be used first for all incoming get requests. The next use of app.get will only fire for the root path, and the last one will fire for all get request that are not satisfied above.
 
-### 4.2 - The app.all method for responding to any kind of request.
+### 4.3 - The app.all method for responding to any kind of request.
 
 Read more on [app.all](/2018/06/05/express-app-all/)
 
