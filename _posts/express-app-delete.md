@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 15:19:36
-version: 1.6
+updated: 2018-06-21 15:23:40
+version: 1.7
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -339,6 +339,8 @@ app.delete ('/file', function (req, res, next) {
 ```
 
 ## 5 The app.js file
+
+Because I have placed the bulk of the examples logic off into the additional files in the route folder, the size of my main app.js file is very small. Here I am just using app.use to use each of the route files to handle GET requests for file.txt, post requests to create or overwrite file.txt, and delete requests to delete file.txt.
 
 ```js
 let express = require('express'),
