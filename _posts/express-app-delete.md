@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 15:43:00
-version: 1.12
+updated: 2018-06-21 15:45:11
+version: 1.13
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -392,3 +392,5 @@ When doing so I can write something in the textarea element, click post, and the
 Of course clicking the delete button will make a delete request, and file.txt will then be deleted.
 
 ## 7 - Conclusion
+
+Thats if for now, I just wanted to make a quick app.delete example for today, as I continue to expand my content on express. If this post sparks some interest, maybe I will revise it to get deeper into the DELETE http method, and why it may be a better choice compared to using POST.
