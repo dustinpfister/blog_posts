@@ -1,12 +1,12 @@
 ---
-title: Using app.get in express to get app settings, and handle get requests.
+title: Using app.delete, to delete a server side file via the http delete method in express.
 date: 2018-06-21 12:10:00
 tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 15:23:40
-version: 1.7
+updated: 2018-06-21 15:25:15
+version: 1.8
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
