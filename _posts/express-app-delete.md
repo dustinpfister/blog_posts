@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 15:33:01
-version: 1.10
+updated: 2018-06-21 15:37:22
+version: 1.11
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -251,6 +251,8 @@ app.post('/post',
 
 ### 4.2 - The /routes/file.js file
 
+This is a file that will handle GET requests made to a /file path. If the file is there it will respond with it's contents. If he file is not there it will respond with a message that indicates that.
+
 ```js
 let express = require('express'),
 path = require('path'),
@@ -302,6 +304,8 @@ app.get('/file',
 ```
 
 ### 4.3 - The /routes/delete.js file
+
+This of course is the file that will respond to DELETE requests from the client. For this simple example I am not doing anything fancy, there is only one file to delete, and it will just be deleted. In an actual production app this might be handled differently, but the basic idea is there.
 
 ```js
 let express = require('express'),
