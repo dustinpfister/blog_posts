@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 12:37:16
-version: 1.5
+updated: 2018-06-21 15:19:36
+version: 1.6
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -169,10 +169,199 @@ getFile();
 ## 4- The routes folder
 
 ### 4.1 - The /routes/post.js file
+
+```js
+let express = require('express'),
+path = require('path'),
+fs = require('fs'),
+ 
+app = module.exports = express();
+ 
+app.use(require('body-parser').json());
+ 
+app.post('/post',
+ 
+    // check body
+    function (req, res, next) {
+ 
+        if (req.body) {
+ 
+            if (req.body.mess) {
+ 
+                next();
+ 
+            }else{
+ 
+                res.json({
+ 
+                    mess: 'no message given',
+                    body: req.body
+ 
+                });
+ 
+            }
+ 
+        }else{
+ 
+            res.json({
+ 
+                mess: 'no body parsed',
+                body: req.body
+ 
+            });
+ 
+        }
+ 
+    },
+ 
+    // write file
+    function (req, res) {
+ 
+        fs.writeFile(path.join(__dirname, 'file.txt'), req.body.mess, 'utf8', function (e) {
+ 
+            var mess = 'looks good';
+            if (e) {
+ 
+                mess = e.message;
+ 
+            }
+ 
+            // respond
+            res.json({
+ 
+                mess: mess,
+                body: req.body
+ 
+            });
+ 
+        });
+ 
+    }
+ 
+);
+```
+
 ### 4.2 - The /routes/file.js file
+
+```js
+let express = require('express'),
+path = require('path'),
+fs = require('fs'),
+ 
+app = module.exports = express();
+ 
+app.set('file-path', path.join(__dirname, 'file.txt'));
+app.set('mess', 'foo');
+ 
+app.get('/file',
+ 
+    // read file if there
+    function (req, res, next) {
+ 
+    fs.readFile(app.get('file-path'), 'utf8', function (e, data) {
+ 
+        if (e) {
+ 
+            app.set('mess', e.message);
+            next();
+ 
+        } else {
+ 
+            res.json({
+ 
+                mess: 'got the file',
+                text: data.toString()
+ 
+            })
+ 
+        }
+ 
+    });
+ 
+},
+ 
+    // if this far
+    function (req,res) {
+ 
+    res.json({
+ 
+        mess: app.get('mess'),
+        text: ''
+ 
+    })
+ 
+});
+```
+
 ### 4.3 - The /routes/delete.js file
 
+```js
+let express = require('express'),
+path = require('path'),
+fs = require('fs'),
+ 
+app = module.exports = express();
+ 
+app.set('file-path', path.join(__dirname, 'file.txt'));
+app.set('mess', '');
+ 
+app.delete ('/file', function (req, res, next) {
+ 
+    fs.unlink(app.get('file-path'), function (e) {
+ 
+        if (e) {
+ 
+            app.set('mess', e.message);
+            next();
+ 
+        } else {
+ 
+            res.json({
+ 
+                mess: 'file deleted',
+                path: app.get('file-path')
+ 
+            });
+ 
+        }
+ 
+    });
+ 
+}, function (req, res) {
+ 
+    res.json({
+ 
+        mess: app.get('mess')
+ 
+    });
+ 
+});
+```
+
 ## 5 The app.js file
+
+```js
+let express = require('express'),
+ 
+app = express();
+ 
+// find out the port to listen on
+app.set('port', process.argv[2] || process.env.PORT || 8080);
+ 
+// serve a static client
+app.use('/', express.static('public'));
+ 
+app.use(require('./routes/post.js'));
+app.use(require('./routes/file.js'));
+app.use(require('./routes/delete.js'));
+ 
+// start listening
+app.listen(app.get('port'), function () {
+ 
+    console.log('the demo is up on port: ' + app.get('port'));
+ 
+});
+```
 
 ## 6 - Starting the app.
 
