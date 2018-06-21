@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 12:20:50
-version: 1.2
+updated: 2018-06-21 12:25:19
+version: 1.3
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -17,7 +17,18 @@ Today for my quick morning post on [express.js](https://expressjs.com/) I wanted
 
 This is a post on the app.delete method of the app object in express.js. This is a method that is used to define logic that is used to handle http 1.1 delete requests. This is not a getting started post on express.js, or any additional skills that are required before hand to get something of value from this. If you are new to express you might want to check out my [main post on express](/2018/06/12/express/).
 
-## 2 - setup
+## 2 - Setup
+
+The setup process was not all that different from many of my other examples on express. I just created a new folder, made it the current working folder. I also made a public folder to house a simple static client with express.static. Also I set up a routes folder as a way to keep things a little more organized compared to having everything in the main app.js file.
+
+```
+$ mkdir app-delete
+$ cd app-delete
+$ mkdir public
+$ mkdir routes
+$ npm init
+$ npm install express --save
+```
 
 ## 3 - The public folder
 
