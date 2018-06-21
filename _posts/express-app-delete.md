@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 12:29:47
-version: 1.4
+updated: 2018-06-21 12:37:16
+version: 1.5
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -59,6 +59,112 @@ Just a simple html file that will have a textarea message that can be used to de
 ```
 
 ### 3.2 - The /public/client.js
+
+This file will house the front end javaScript of the example. For the purpose of this simple example I did not choose to use or do anything fancy, or modern. I just used the good old tired yet true XMLHttprequest to make the requests from the browser.
+
+This file includes methods for making a get request for the file, making a post request to create or overwrite the file, and of course a method to make the delete request.
+
+```js
+
+// warping document.getElementById
+var get = function (id) {
+ 
+    return document.getElementById(id);
+ 
+};
+ 
+// get the file
+var getFile = function () {
+ 
+    var xhr = new XMLHttpRequest();
+ 
+    xhr.open('get', '/file');
+ 
+    xhr.onreadystatechange = function () {
+ 
+        if (this.readyState === 4) {
+ 
+            console.log(this.response);
+ 
+            try {
+ 
+                var data = JSON.parse(this.response);
+                get('text').value = data.text;
+ 
+            } catch (e) {
+ 
+                console.log(e.message);
+                get('text').value = e.message;
+ 
+            }
+ 
+        }
+ 
+    };
+ 
+    xhr.send(null);
+ 
+};
+ 
+// send a delete request
+var deleteFile = function (e) {
+ 
+    var xhr = new XMLHttpRequest();
+ 
+    xhr.open('delete', '/file');
+ 
+    xhr.onreadystatechange = function () {
+ 
+        if (this.readyState === 4) {
+ 
+            console.log('status: ' + this.status);
+            console.log(this.response);
+ 
+            // confirm
+            getFile();
+ 
+        }
+ 
+    };
+ 
+    xhr.send(null);
+ 
+};
+ 
+// send a post request
+var sendPost = function (e) {
+ 
+    var xhr = new XMLHttpRequest();
+ 
+    xhr.open('post', '/post');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+ 
+    xhr.onreadystatechange = function () {
+ 
+        if (this.readyState === 4) {
+ 
+            console.log(this.response);
+            getFile();
+ 
+        }
+ 
+    };
+ 
+    //xhr.send(JSON.stringify({mess: 'i am the egg man.'}));
+    //xhr.send(null);
+    xhr.send(JSON.stringify({
+            mess: get('text').value
+        }));
+ 
+};
+ 
+// attach
+get('post').addEventListener('click', sendPost);
+get('delete').addEventListener('click', deleteFile);
+ 
+// first get
+getFile();
+```
 
 ## 4- The routes folder
 
