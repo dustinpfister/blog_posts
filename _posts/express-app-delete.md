@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 12:25:19
-version: 1.3
+updated: 2018-06-21 12:29:47
+version: 1.4
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -32,9 +32,33 @@ $ npm install express --save
 
 ## 3 - The public folder
 
+The public folder will hold the crude yet effective client system for this example. It consists of just an index.html file, and a single client.js file that will house my front end javaScript code.
 
-### 3.1 - index.html
-### 3.2 - client.js
+### 3.1 - The /public/index.html
+
+Just a simple html file that will have a textarea message that can be used to define some text that will then be posed to the back end when clicking a post button element. It will also have another button that will make a delete request as well. The javaScript that will power all of this on the front end will be in a client.js file that will be used in the index via a script tag.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>express demo</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>app.delete</h1>
+ 
+    <!-- text input and post button -->
+    <textarea id="text" rows="10" cols="80"></textarea><br>
+    <input id="post" type="button" value="post">
+    <input id="delete" type="button" value="delete">
+ 
+    <script src="client.js"></script>
+  </body>
+</html>
+```
+
+### 3.2 - The /public/client.js
 
 ## 4- The routes folder
 
