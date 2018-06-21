@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 15:25:15
-version: 1.8
+updated: 2018-06-21 15:29:24
+version: 1.9
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -167,6 +167,10 @@ getFile();
 ```
 
 ## 4- The routes folder
+
+The routes folder is a way to break things down more when making a complex express.js project that involves many different paths responding to many different types of requests. This can be done by making javaScript files in a folder that export an app or router object. What is exported by one of these files can then be used in the main app.js file, or any express javaScript file for that matter with the app.use method.
+
+In this example I have made a file for each type of request that is used including GET, POST, and yes of course DELETE.
 
 ### 4.1 - The /routes/post.js file
 
