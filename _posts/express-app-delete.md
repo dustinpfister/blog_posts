@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 15:37:22
-version: 1.11
+updated: 2018-06-21 15:43:00
+version: 1.12
 ---
 
 Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
@@ -378,5 +378,17 @@ app.listen(app.get('port'), function () {
 ```
 
 ## 6 - Starting the app.
+
+When I start the app from the command line with node like usual
+
+```
+$ node app
+```
+
+The express app starts listening on port 8080, so I can navigate to it in the browser by going to localhost:8080.
+
+When doing so I can write something in the textarea element, click post, and the text will be saved as the contents of file.txt. If it is not there it will be created, if it is there it will be overwritten. In any case a get request is then made to the /file path each time the browser reloads, or when a POST or DELETE request is made to confirm that this works.
+
+Of course clicking the delete button will make a delete request, and file.txt will then be deleted.
 
 ## 7 - Conclusion
