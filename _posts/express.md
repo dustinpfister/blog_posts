@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-20 15:56:54
-version: 1.38
+updated: 2018-06-22 11:55:35
+version: 1.39
 ---
 
 For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -193,6 +193,22 @@ app.all('/', function(req,res,next){
 ```
 
 When using app.all the method property of the request object is of interest, as it will tell me what kind of method has been used.
+
+### 4.4 - Using req.app, or res.app, and having more than one app in a project.
+
+For more on using req.app, or res.app to get at an app object [read this](/2018/06/22/express-app-request-response/).
+
+When I start to make a project that is a little complicated, I end up in a situation in which I am dealing with many instances of an express app. Other times I am interested in grabbing at my main app object without having to export it and then bring it into my other file with require.
+
+Thankfully in both the request, and response objects there is a reference to the app that is using the middeware. Sometimes that can be used as a way to use whatever it is that I need to use from the main app object without having to make a new instance of app.
+
+```js
+module.exports = function (req,res) {
+    res.json({
+        appID : res.app.get('id')
+    });
+};
+```
 
 ## 5 - The Request Object
 
