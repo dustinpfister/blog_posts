@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 143
-updated: 2018-02-05 11:46:08
-version: 1.1
+updated: 2018-06-25 10:27:47
+version: 1.2
 ---
 
 When making a [node.js](https://nodejs.org/en/) project there might come a need to do something involving working with a [query string](https://en.wikipedia.org/wiki/Query_string), that is the parameters that are defined in a url using question marks, equal sign, and ampersands. It is a standard way of communicating some parameters to a server by way of a url, rather than some other means such as a post request payload.
@@ -51,7 +51,7 @@ console.log(qs.parse(str));
 A quick and simple way to do it is to just use String.split.
 
 ```js
-let url = 'http://www.foo.com/bar/answer.html?a=42&t=1000';
+let url = 'http://www.foo.com/bar/answer.html?a=42&t=1000',
  
 str = url.split('?')[1];
  
