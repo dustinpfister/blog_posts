@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 15:04:26
-version: 1.19
+updated: 2018-06-26 15:07:05
+version: 1.20
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -424,7 +424,7 @@ So like many of my express.js projects so far there is a public folder. I put th
 
 ### 5.1 /public/js/list_client.js
 
-
+So this is a javaScript file that provides a simple custom trailered http client using XMLHttprequest, and a bunch of methods that can be called to make certain kinds of requests from the front end. Requests for a certain list if I know the id, and making post requests for new lists, and items.
 
 ```js
 // list client.
