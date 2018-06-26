@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:16:07
-version: 1.28
+updated: 2018-06-26 16:26:50
+version: 1.29
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -1043,10 +1043,220 @@ module.exports = function (req, res, next) {
 ```
 
 #### 6.3.8 - item_edit.js
+
+Edits an item.
+
+```js
+let dbLists = require('../../lib/db_lists');
+ 
+// edit list item middleware
+module.exports = function (req, res, next) {
+ 
+    if (req.body.mode === 'edit_list_item') {
+ 
+        if (req.body.listId && req.body.itemId) {
+ 
+            dbLists.editItemById(req.body).then(function () {
+ 
+                res.json({
+ 
+                    success: true,
+                    mess: 'yes this is edit item',
+                    body: req.body
+ 
+                });
+ 
+            }).catch (function (e) {
+ 
+                res.json({
+ 
+                    success: false,
+                    mess: 'error editing item',
+                    eMess: e.message,
+                    body: req.body
+ 
+                });
+ 
+            });
+ 
+        }
+ 
+    } else {
+ 
+        // not the mode
+        next();
+ 
+    }
+ 
+};
+```
+
 #### 6.3.9 - item_get.js
+
+Gets an item.
+
+```js
+let dbLists = require('../../lib/db_lists');
+ 
+// check body
+module.exports = function (req, res, next) {
+ 
+    if (req.body.mode === 'get_list_item') {
+ 
+        if (req.body.listId && req.body.itemId) {
+ 
+            dbLists.getItemById(req.body).then(function (item) {
+ 
+                res.json({
+                    success: true,
+                    mess: 'got the item',
+                    item: item.value(),
+                    body: req.body
+                });
+ 
+            }).catch (function (e) {
+ 
+                res.json({
+ 
+                    success: false,
+                    mess: 'error getting list',
+                    eMess: e.message
+ 
+                });
+ 
+            });
+ 
+        } else {
+ 
+            res.json({
+ 
+                success: false,
+                mess: 'must give a list, and item id in the body'
+ 
+            });
+ 
+        }
+ 
+    } else {
+ 
+        // not the mode
+        next();
+ 
+    }
+ 
+};
+```
+
 #### 6.3.10 - list_create.js
+
+Creates a list.
+
+```js
+let dbLists = require('../../lib/db_lists');
+
+// create a list
+module.exports = function (req, res, next) {
+ 
+    if (req.body.mode === 'create') {
+ 
+        dbLists.pushList({
+ 
+            name: req.body.name || 'a new list'
+ 
+        }).then(function (list) {
+ 
+            req.postRes.success = true;
+            req.postRes.mess = 'cretaed a new list';
+            req.postRes.list = list;
+            res.json(req.postRes);
+ 
+        }).catch (function (e) {
+ 
+            req.postRes.mess = 'error with database.';
+            req.postRes.eMess = e.message;
+            res.json(req.postRes);
+ 
+        });
+ 
+    } else {
+ 
+        next();
+ 
+    }
+ 
+};
+```
+
 #### 6.3.11 - list_delete.js
+
+Deletes a whole list.
+
+```js
+let dbLists = require('../../lib/db_lists');
+
+// delete a list
+module.exports = function (req, res, next) {
+ 
+    if (req.body.mode === 'delete' && req.body.listId) {
+ 
+        dbLists.deleteListById(req.body).then(function () {
+ 
+            req.postRes.success = true;
+            req.postRes.mess = 'list deleted';
+            res.json(req.postRes);
+ 
+        }).catch (function (e) {
+ 
+            req.postRes.mess = 'error deleteing list';
+            req.postRes.eMess = e.message;
+            res.json(req.postRes);
+ 
+        });
+ 
+    } else {
+ 
+        next();
+ 
+    }
+ 
+};
+```
+
 #### 6.3.12 - list_get.js
+
+Used to get a list.
+
+```js
+let dbLists = require('../../lib/db_lists');
+
+// get a list
+module.exports = function (req, res, next) {
+ 
+    if (req.body.mode === 'get' && req.body.listId) {
+ 
+        dbLists.getListById(req.body.listId).then(function (list) {
+ 
+            req.postRes.success = true;
+            req.postRes.mess = 'got the list.';
+            req.postRes.list = list;
+            res.json(req.postRes);
+ 
+        }).catch (function (e) {
+ 
+            req.postRes.mess = 'error getting the list.';
+            req.postRes.eMess = e.message;
+            res.json(req.postRes);
+ 
+        });
+ 
+    } else {
+ 
+        next()
+ 
+    }
+ 
+};
+```
 
 ## 7 - The /themes folder
 
