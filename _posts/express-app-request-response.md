@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 214
-updated: 2018-06-25 21:02:49
-version: 1.2
+updated: 2018-06-25 21:10:34
+version: 1.3
 ---
 
 In [express.js](https://expressjs.com/) I get into situations in which I am dealing with more than one instnace of an express app object. This is helpful, and to some extent necessary as it helps break things down into more manageable smaller components that are each responsible for a certain task, such as rendering, or grabbing settings from a yaml or json file. In this post I will be writing about req.app, res.app which are both just reference the instance of app that is using the middleware. This can be used as a way to not use require to get a reference to my main app instance from another file, but that is another way of pulling it off. In other words this post is about instances of the app object in express, and how to manage a bunch of theme when starting to make something a little complicated.
@@ -34,8 +34,32 @@ $ npm install express --save
 
 ### 2.1 - The main /app.js file
 
+Here in the main app.js file I create an instance of an app object, and set some app settings with app.set. I then just require a single middleware function called otherapp.js that will do the rendering, but it needs some values that I have set here. There are a few ways to do it, but in this demo I will be using res.app.
+
+```js
+let express = require('express'),
+path = require('path'),
+// the main app instance
+app = express();
+app.set('id','main');
+app.set('port',8080);
+ 
+// path and view engine
+app.set('views', path.join(__dirname, 'view'));
+app.set('view engine', 'ejs');
+ 
+app.use(require('./otherapp.js'));
+ 
+app.listen(app.get('port'), function () {
+ 
+    console.log('express demo is up on port: ' + app.get('port'));
+ 
+});
+```
 
 ### 2.2 - The /otherapp.js file
+
+This is the single middleware method that the main app is using with app.use. In here I am using res.app to gain a reference to the main app object instance in app.js. I am then setting the settings of another instance of the app object in the middleware to the settings in the main app.js file.
 
 ```js
 let express = require('express'),
@@ -68,6 +92,8 @@ module.exports = function (req, res) {
 ```
 
 ### 2.3 - The /view/index.ejs file
+
+Finally I have a single index.ejs file in the view folder that will be rendered by the middleware method.
 
 ```
 <h1>Express Project Settings</h1>
