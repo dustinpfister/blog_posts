@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:26:50
-version: 1.29
+updated: 2018-06-26 16:30:00
+version: 1.30
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -1259,6 +1259,8 @@ module.exports = function (req, res, next) {
 ```
 
 ## 7 - The /themes folder
+
+This is the folder that will store the themes for the project. For now there is only one theme, but if I continue developing this I will likely experiment with different front end solutions. The one and only theme in use so far is called landscape, and it is nothing to write home about. I just wanted to quickly slap something together that just works for this first release.
 
 ### 7.1 - The Landscape theme
 
