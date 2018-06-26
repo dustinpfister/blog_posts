@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:38:44
-version: 1.32
+updated: 2018-06-26 16:42:07
+version: 1.33
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -1508,7 +1508,75 @@ if (get('listid')) {
 }
 ```
 
-#### 7.1.5 - layouts
+#### 7.1.5 - landscape/layouts/create.ejs
+
+```
+    <h2>Create new:</h2>
+    <div id="create">
+        List Name: <input class="meta" name="name" type="text" value="The foo list"><br>
+        <input id="create_submit" type="submit" value="create"><br>
+    </div>
+    <script src="/theme/js/create.js"></script>
+```
+
+#### 7.1.5 - landscape/layouts/edit.ejs
+
+```
+    <h2>EDIT:</h2>
+ 
+    <% if(listId){ %>
+ 
+       <% if(itemId){ %>
+ 
+           <h3>Item Edit: </h3>
+ 
+        <% }else{ %>
+ 
+            <h3><span><%= list.name %></span> (List#: <span id="listid"><%= list.id %></span> ) </h3>
+ 
+            <ul id="list_current">
+ 
+            <% list.items.forEach(function(item){ %>
+                <li id="item_<%= item.id %>" class="<%= item.done ? 'item_done': 'item_not_done'; %>" >
+                    <a href="/edit?l=<%= listId %>&i=<%= item.id %>"><%= item.name %></a> | 
+                    <%= item.id %> | 
+                    <input class="button_done" data-item-id="<%= item.id %>" type="button" value="done">
+                    <input class="button_delete" data-item-id="<%= item.id %>" type="button" value="delete">
+                </li>
+            <% }); %>
+ 
+       </ul>
+ 
+        <input id="newitem_text" type="text" value="foo">
+        <input id="newitem_submit" type="submit" value="add item">
+ 
+        <% } %>
+ 
+    <% }else{ %>
+ 
+       <h3>No List Id: index of lists given</h3>
+       <ul>
+           <% lists.forEach(function(list){ %>
+               <li id="list_<%= list.id %>">
+                   <a href="/edit?l=<%= list.id %>"><%= list.name %></a> | 
+                   <%= list.id %> | 
+                   <input class="list_delete" type="button" value="delete">
+               </li>
+           <% }); %>
+       </ul>
+ 
+    <% } %>
+ 
+    <script src="/theme/js/edit.js"></script>
+```
+
+#### 7.1.5 - landscape/layouts/index.ejs
+
+```
+<h2>Welcome to express_todo</h2>
+ 
+<p>This is an express.js powered todo list app.</p>
+```
 
 #### 7.1.6 - index.ejs
 
