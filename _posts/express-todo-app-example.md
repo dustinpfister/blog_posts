@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:27:10
-version: 1.7
+updated: 2018-06-25 22:32:18
+version: 1.8
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -41,7 +41,23 @@ $ node app
 
 Once everything is installed you would just need to call node app to start the main app.js file, and if all goes well you will be able to use the app when you navigate to localhost:8080 in a web browser.
 
-### 2.2 - reproducing from scratch
+### 2.2 - Reproducing from scratch
+
+If you want to reproduce from scratch there are a few things to install, and study if you are not familiar with them.
+
+However you might start out like this.
+```
+$ mkdir express_todo
+$ cd express_todo
+$ npm init
+$ npm install ejs@2.6.1 --save
+$ npm install express@4.16.3 --save
+$ npm install fs-extra@6.0.1 --save
+$ npm install js-yaml@3.12.0 --save
+$ npm install lodash@4.17.10 --save
+$ npm install lowdb@1.0.0 --save
+$ npm install shortid@2.2.8 --save
+```
 
 ## 3 - At the root
 
