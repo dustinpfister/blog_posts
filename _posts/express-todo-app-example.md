@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 15:09:46
-version: 1.21
+updated: 2018-06-26 16:01:35
+version: 1.22
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -613,7 +613,128 @@ So the routes folder is a way to help break down the many paths that are defined
 
 ### 6.1 - /routes/edit.js
 
+Here in the edit.js file I am setting what should be done for get, and post requests to the /edit path. This path is used by the client to edit a list that was created before hand.
+
+```js
+let express = require('express'),
+dbLists = require('../lib/db_lists'),
+ 
+editApp = express();
+ 
+//editApp.get('/edit', require('../lib/mw_edit_get'));
+ 
+editApp.get('/edit', require('./mw/edit_get'));
+ 
+// POST
+editApp.use(require('body-parser').json());
+editApp.post('/edit',
+ 
+    [
+        // check body
+        require('./mw/check_body'),
+ 
+        // set postRes object
+        require('./mw/setobj_postres'),
+ 
+        // add item?
+        require('./mw/item_add'),
+ 
+        // delete item?
+        require('./mw/item_delete'),
+ 
+        // edit item?
+        require('./mw/item_edit'),
+ 
+        // get item?
+        require('./mw/item_get'),
+ 
+        // fail
+        require('./mw/check_fail')]);
+ 
+module.exports = function (obj) {
+ 
+    // set views from main app
+    editApp.set('views', obj.app.get('views'));
+ 
+    return editApp;
+ 
+};
+```
+
 ### 6.2 - /routes/list.js
+
+The list.js file is where I set up what is to be done for GET and POST requests to the /list path.
+
+```js
+let express = require('express'),
+path = require('path'),
+fs = require('fs-extra'),
+FileAsync = require('lowdb/adapters/FileAsync'),
+low = require('lowdb'),
+shortId = require('shortid'),
+ 
+dbLists = require('../lib/db_lists'),
+ 
+listApp = express();
+ 
+// GET for /list path
+listApp.get('/list', function (req, res) {
+ 
+    // send just a list of names, and ids
+    dbLists.readLists().then(function (list) {
+ 
+        res.json({
+            lists: list.get('lists').value().map(function (l) {
+                return {
+                    name: l.name,
+                    id: l.id
+                }
+            })
+        });
+ 
+    });
+ 
+});
+ 
+// POST for /list path
+listApp.use(require('body-parser').json());
+listApp.post('/list',
+    [
+ 
+        // check for a body
+        require('./mw/check_body'),
+ 
+        // set postRes object
+        require('./mw/setobj_postres'),
+ 
+        // create a list?
+        require('./mw/list_create'),
+ 
+        // delete a list?
+        require('./mw/list_delete'),
+ 
+        // get a list?
+        require('./mw/list_get'),
+ 
+        // fail
+        require('./mw/check_fail')
+ 
+    ]);
+ 
+// export a list app
+module.exports = function (obj) {
+ 
+    listApp.set('dir_root', obj.dir_root || process.cwd());
+    listApp.set('path_lists', path.join(listApp.get('dir_root'), 'db', 'lists.json'));
+ 
+    // ensure db folder
+    dbLists.ensureDB();
+ 
+    return listApp;
+ 
+};
+```
+like with edit.js I am using many middleware methods in an additional folder that I placed in the routes folder.
 
 ### 6.3 - The middleware at the /routes/mw folder
 
