@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:35:27
-version: 1.9
+updated: 2018-06-25 22:40:12
+version: 1.10
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -59,7 +59,67 @@ $ npm install shortid@2.2.8 --save
 
 ## 3 - At the root
 
+At the root of the project folder is a few files of interest, like any other express.js project or demo of mine there is the main app.js file, also there will be a conf.yaml file as well for some app settings. There are also many folders of interest that lead into many other folders and files that compose both a front end, and back end system.
+
 ### 3.2 - The main app.js file
+
+```js
+let express = require('express'),
+path = require('path'),
+app = express();
+ 
+// use lib/conf.js to load app settings from conf.yaml
+require('./lib/conf.js')(app, __dirname).then(function () {
+ 
+    // static paths for all themes
+    app.use('/js', express.static('public/js'));
+ 
+    // static paths for current theme
+    app.use('/theme/js', express.static(path.join(__dirname, 'themes', app.get('theme'), 'js')));
+    app.use('/theme/css', express.static(path.join(__dirname, 'themes', app.get('theme'), 'css')));
+ 
+    // use /list path
+    app.use(require('./routes/list')({
+            dir_root: __dirname
+        }));
+ 
+    // main render
+    app.get('/', function (req, res) {
+ 
+        res.render('index', {
+            layout: 'index'
+        });
+ 
+    });
+ 
+    app.get('/create', function (req, res) {
+ 
+        res.render('index', {
+            layout: 'create'
+        });
+ 
+    });
+ 
+    //app.use('/edit', require('./routes/edit')());
+    app.use(require('./routes/edit')({
+            app: app
+        }));
+ 
+    // start listening
+    app.listen(app.get('port'), function () {
+ 
+        console.log('express_todo is live.');
+        console.log('port: ' + app.get('port'));
+        console.log('theme: ' + app.get('theme'));
+ 
+    });
+ 
+}).catch (function (e) {
+ 
+    console.log(e.message);
+ 
+});
+```
 
 ### 3.1 - config.yaml
 
