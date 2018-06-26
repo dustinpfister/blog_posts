@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:24:14
-version: 1.6
+updated: 2018-06-25 22:27:10
+version: 1.7
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -15,6 +15,7 @@ So I have been working with [express.js](https://expressjs.com/) for a while now
 
 ## 1 - What to know before continuing
 
+This is a post on an example of a full stack web application built using node.js, express.js, and a whole bunch of other modules. This is not at all a getting started post on express.js, javaScript, html, css, and so forth. If you are new to this sort of thing it might be best to start at my [main post on express.js](/2018/06/12/express/), as this is a more advanced post on full stack web development using express.js.
 
 ### 1.1 - This is a full stack application I am writing about
 
