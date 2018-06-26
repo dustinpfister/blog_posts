@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:06:12
-version: 1.24
+updated: 2018-06-26 16:07:48
+version: 1.25
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -833,6 +833,31 @@ module.exports = [
 ```
 
 #### 6.3.2 - setobj_rend.js
+
+I made this middleware as a way to setup a standard object that will be passed to ejs wen rendering templates.
+
+```js
+// a middleware that starts a render object
+module.exports = function (req, res, next) {
+
+    req.rend = {
+ 
+        main: 'index', // main ejs file to use in the root of the theme
+        layout: 'index', // layout ejs file to use
+ 
+        listId: null,
+        itemId: null,
+        lists: [],
+        list: {},
+        item: {}
+ 
+    };
+ 
+    next();
+ 
+};
+```
+
 #### 6.3.3 - setobj_postres.js
 #### 6.3.4 - check_body.js
 #### 6.3.5 - check_fail.js
