@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:03:58
-version: 1.23
+updated: 2018-06-26 16:06:12
+version: 1.24
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -741,6 +741,97 @@ like with edit.js I am using many middleware methods in an additional folder tha
 here I have a much of middleware files that I use with the /edit and /list paths as a way of breaking things down more, so they are easier to understand, and manage.
 
 #### 6.3.1 - edit_get.js
+
+So making a get request to the /edit path will result in server side rendering, and what will be rendered depends on the query string given.
+
+```js
+// a middleware that starts a render object
+let dbLists = require('../../lib/db_lists');
+
+module.exports = [
+ 
+    // set up a standard render object
+    require('./setobj_rend'),
+ 
+    // make sure we are using the edit layout
+    function (req, res, next) {
+ 
+        // use edit layout
+        req.rend.layout = 'edit';
+ 
+        next();
+ 
+    },
+ 
+    // render list of lists, if no listId is given in the query string
+    function (req, res, next) {
+ 
+        if (req.query.l === undefined) {
+ 
+            dbLists.readLists().then(function (lists) {
+ 
+                req.rend.lists = lists.get('lists').value();
+                res.render(req.rend.main, req.rend);
+ 
+            }).catch (function () {
+ 
+                res.render(req.rend.main, req.rend);
+ 
+            });
+ 
+        } else {
+ 
+            // else we where given a list id so set the list id, and continue.
+            req.rend.listId = req.query.l;
+            next();
+ 
+        }
+ 
+    },
+ 
+    // if no item id is given, just send out the list
+    function (req, res, next) {
+ 
+        // no item id given?
+        if (req.query.i === undefined) {
+ 
+            dbLists.getListById(req.query.l).then(function (list) {
+ 
+                req.rend.list = list.value();
+                res.render(req.rend.main, req.rend);
+ 
+            });
+ 
+        } else {
+ 
+            // item id given
+            req.rend.itemId = req.query.i;
+            next();
+ 
+        }
+ 
+    },
+ 
+    // get the item
+    function (req, res) {
+ 
+        dbLists.getItemById({
+ 
+            listId: req.query.l,
+            itemId: req.query.i
+ 
+        }).then(function (item) {
+ 
+            req.rend.item = item.value();
+            res.render(req.rend.main, req.rend);
+ 
+        });
+ 
+    }
+ 
+];
+```
+
 #### 6.3.2 - setobj_rend.js
 #### 6.3.3 - setobj_postres.js
 #### 6.3.4 - check_body.js
