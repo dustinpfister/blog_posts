@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 15:07:05
-version: 1.20
+updated: 2018-06-26 15:09:46
+version: 1.21
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -608,6 +608,8 @@ var lc = (function () {
 ```
 
 ## 6 - The routes folder
+
+So the routes folder is a way to help break down the many paths that are defined by this project. For the most part when I think about it I am going to want to have a path that has to do with editing a list, and another path that has to do with creating, deleting, and getting a main index of lists. So in this folder there is an edit.js, and list.js files, as well as a middleare folder that has all the middleware functions that are used by these two paths.
 
 ### 6.1 - /routes/edit.js
 
