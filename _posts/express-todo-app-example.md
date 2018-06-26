@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 14:52:35
-version: 1.17
+updated: 2018-06-26 15:00:34
+version: 1.18
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -419,6 +419,8 @@ exports.pushItem = function (obj) {
 This is used by my middleware functions to handle everything with respect to the lists.json file in the db folder. Also any additional future middleware will use this as well when it comes to doing anything with the list data.
 
 ## 5 - The /public folder
+
+So like many of my express.js projects so far there is a public folder. I put this folder in as a way to serve up some static assets that will be shared across what might eventually be more than one theme. For the moment I am using it as a way to just host a single javaScript file that acts as a kind of api to access everything of interest in the back end.
 
 ### 5.1 /public/js/list_client.js
 
