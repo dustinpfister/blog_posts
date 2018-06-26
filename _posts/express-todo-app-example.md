@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:30:00
-version: 1.30
+updated: 2018-06-26 16:34:37
+version: 1.31
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -1264,9 +1264,63 @@ This is the folder that will store the themes for the project. For now there is 
 
 ### 7.1 - The Landscape theme
 
-#### 7.1.2 - css
+For the landscape theme I just put together something that is composed of just my own vanilla javaScript, css, and ejs markup.
 
-#### 7.1.3 - js
+#### 7.1.2 - landscape/css/style.css
+
+There is a css path for the theme, but for now there are only two classes so there is not much to write about.
+
+```css
+.item_done{
+ 
+  text-decoration: line-through
+ 
+}
+ 
+.item_not_done{
+ 
+  text-decoration: none
+ 
+}
+```
+
+#### 7.1.3 - landscape/js/create.js
+
+```js
+// when create button is clicked
+get('create_submit').addEventListener('click', function (e) {
+ 
+    // get all inputs with class 'meta'
+    var nodes = get('create').querySelectorAll('.meta'),
+ 
+    // set up a new body to send
+    body = {};
+ 
+    // forEach 'meta' input
+    [].forEach.call(nodes, function (el) {
+ 
+        // make it part of body
+        body[el.name] = el.value;
+ 
+    });
+ 
+    // use list clients createList Method to send the body
+    lc.createList({
+ 
+        body: body,
+        onDone: function () {
+ 
+            var res = JSON.parse(this.response);
+ 
+            // redirect to origin
+            window.location.href = '/edit?l=' + res.list.id;
+ 
+        }
+ 
+    });
+ 
+});
+```
 
 #### 7.1.4 - layouts
 
