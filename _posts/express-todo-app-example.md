@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 15:00:34
-version: 1.18
+updated: 2018-06-26 15:04:26
+version: 1.19
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -423,6 +423,189 @@ This is used by my middleware functions to handle everything with respect to the
 So like many of my express.js projects so far there is a public folder. I put this folder in as a way to serve up some static assets that will be shared across what might eventually be more than one theme. For the moment I am using it as a way to just host a single javaScript file that acts as a kind of api to access everything of interest in the back end.
 
 ### 5.1 /public/js/list_client.js
+
+
+
+```js
+// list client.
+var lc = (function () {
+ 
+    // simple, custom, http client using XMLHttpRequest
+    var http = function (obj) {
+ 
+        obj = obj || {};
+ 
+        // defaults to making GET requests to the /list path
+        this.method = obj.method || 'GET';
+        this.path = obj.path || '/list';
+        this.body = obj.body || null;
+        this.onDone = obj.onDone || function () {
+            console.log(this.response);
+        };
+        this.onFail = obj.onFail || function () {
+            console.log(this.response);
+        };
+ 
+        // start the request
+        var xhr = this.xhr = new XMLHttpRequest();
+        xhr.open(this.method, this.path);
+ 
+        // with this client all GET,and POST request should be for JSON
+        xhr.setRequestHeader('Content-Type', 'application/json');
+ 
+        var req = this;
+        xhr.onreadystatechange = function () {
+ 
+            if (this.readyState === 4) {
+ 
+                if (this.status === 200) {
+ 
+                    req.onDone.call(this, this);
+ 
+                } else {
+ 
+                    req.onFail.call(this, this);
+ 
+                }
+ 
+            }
+ 
+        };
+ 
+        // send
+        xhr.send(this.body);
+ 
+    };
+ 
+    // no call back default
+    var nocb = function () {
+ 
+        console.log(this.response);
+ 
+    };
+ 
+    // public api
+    return {
+ 
+        // expose http
+        http: http,
+ 
+        // just get the main index
+        getIndex: function (obj) {
+ 
+            obj = obj || {};
+ 
+            obj.onDone = obj.onDone || nocb;
+            obj.onFail = obj.onFail || nocb;
+ 
+            new http({
+ 
+                onDone: obj.onDone,
+                onFail: obj.onFail
+ 
+            });
+ 
+        },
+ 
+        // get a list by id
+        getList: function (obj) {
+ 
+            obj = obj || {};
+ 
+            obj.onDone = obj.onDone || nocb;
+            obj.onFail = obj.onFail || nocb;
+            obj.listId = obj.listId || null;
+ 
+            new http({
+                method: 'POST',
+                body: JSON.stringify({
+                    mode: 'get',
+                    listId: obj.listId
+                }),
+                onDone: obj.onDone,
+                onFail: obj.onFail
+ 
+            });
+ 
+        },
+ 
+        // delete a list
+        delList: function (obj) {
+ 
+            obj = obj || {};
+ 
+            obj.onDone = obj.onDone || nocb;
+            obj.onFail = obj.onFail || nocb;
+            obj.listId = obj.listId || null;
+ 
+            new lc.http({
+ 
+                method: 'POST',
+                body: JSON.stringify({
+                    mode: 'delete',
+                    listId: obj.listId
+                }),
+                onDone: obj.onDone,
+                onFail: obj.onFail
+ 
+            });
+ 
+        },
+ 
+        // creates a new list
+        createList: function (obj) {
+ 
+            obj = obj || {};
+ 
+            obj.onDone = obj.onDone || nocb;
+            obj.onFail = obj.onFail || nocb;
+ 
+            obj.body.mode = 'create';
+            obj.body = JSON.stringify(obj.body);
+ 
+            new http({
+ 
+                method: 'POST',
+                body: obj.body,
+                onDone: obj.onDone,
+                onFail: obj.onFail
+ 
+            });
+ 
+        },
+ 
+        // creates a new list
+        addListItem: function (obj) {
+ 
+            obj = obj || {};
+ 
+            obj.onDone = obj.onDone || nocb;
+            obj.onFail = obj.onFail || nocb;
+ 
+            obj.body = obj.body || {};
+            obj.body.mode = 'add_list_item';
+            obj.body.item = obj.body.item || {
+                name: 'cry'
+            };
+            obj.body = JSON.stringify(obj.body);
+ 
+            new http({
+ 
+                method: 'POST',
+                path: '/edit',
+                body: obj.body,
+                onDone: obj.onDone,
+                onFail: obj.onFail
+ 
+            });
+ 
+        }
+ 
+    };
+ 
+}
+    ());
+```
 
 ## 6 - The routes folder
 
