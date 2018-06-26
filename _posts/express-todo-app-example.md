@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:50:17
-version: 1.13
+updated: 2018-06-25 22:51:36
+version: 1.14
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -136,6 +136,85 @@ So the config.yaml is a file that will be created when starting express_todo for
 This lib folder contains tow files, conf.js that is used to make or read the main conf.yaml file that is used to store app settings, and the db_lists file that is used to help work with the lowdb powered database.
 
 ### 4.1 - conf.js
+
+```js
+let express = require('express'),
+fs = require('fs-extra'),
+_ = require('lodash'),
+yaml = require('js-yaml'),
+path = require('path');
+ 
+// set settings to the given app with the given settings object
+let setWithYAML = function (app, root, yamlConf) {
+ 
+    // load yaml
+    let setObj = yaml.safeLoad(yamlConf.toString());
+ 
+    // set settings
+    _.each(setObj, function (val, key) {
+ 
+        app.set(key, val);
+ 
+    });
+ 
+    // insure port is set to the PORT environment variable if present
+    if (process.env.PORT) {
+ 
+        app.set('port', process.env.PORT);
+ 
+    }
+ 
+    // always use ejs for now
+    app.set('views', path.join(root, 'themes',app.get('theme')));
+    app.set('view engine', 'ejs');
+ 
+    return app;
+ 
+};
+ 
+// read conf.yaml
+let readConf = function (app, dir) {
+ 
+    return fs.readFile(path.join(dir, 'conf.yaml')).then(function (yamlConf) {
+ 
+        console.log('conf.yaml found.');
+        return setWithYAML(app, dir,yamlConf);
+ 
+    });
+ 
+};
+ 
+// set settings for the given instance of app
+module.exports = function (app, dirroot) {
+ 
+    // these values should be given from the main app.js
+    app = app || express();
+    dirroot = dirroot || process.cwd();
+ 
+    // read yaml file
+    return readConf(app, dirroot).catch (function (e) {
+ 
+        // create new conf.yaml
+        let conf = {
+ 
+            port: process.env.PORT || process.argv[2] || 8080,
+            theme: 'landscape'
+ 
+        };
+ 
+        let data = yaml.safeDump(conf);
+        return fs.writeFile(path.join(dirroot, 'conf.yaml'), data, 'utf8').then(function (yamlConf) {
+ 
+            console.log('new conf.yaml');
+ 
+            return readConf(app, dirroot);
+ 
+        });
+ 
+    })
+ 
+};
+```
 
 ### 4.2 - db_lists.js
 
