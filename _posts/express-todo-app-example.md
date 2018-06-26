@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:42:07
-version: 1.33
+updated: 2018-06-26 16:43:58
+version: 1.34
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -1519,7 +1519,7 @@ if (get('listid')) {
     <script src="/theme/js/create.js"></script>
 ```
 
-#### 7.1.5 - landscape/layouts/edit.ejs
+#### 7.1.6 - landscape/layouts/edit.ejs
 
 ```
     <h2>EDIT:</h2>
@@ -1570,7 +1570,7 @@ if (get('listid')) {
     <script src="/theme/js/edit.js"></script>
 ```
 
-#### 7.1.5 - landscape/layouts/index.ejs
+#### 7.1.7 - landscape/layouts/index.ejs
 
 ```
 <h2>Welcome to express_todo</h2>
@@ -1578,10 +1578,38 @@ if (get('listid')) {
 <p>This is an express.js powered todo list app.</p>
 ```
 
-#### 7.1.6 - index.ejs
+#### 7.1.8 - landscape/index.ejs
 
-#### 7.1.7 - nav.ejs
+```
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>express_todo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/theme/css/style.css" >
+  </head>
+  <body>
+    <h1>express_todo</h1>
+    <p>Yet another todo list app. <a href="https://www.youtube.com/watch?v=NmPhaG1ud38">hurray!</a></p>
+ 
+    <%- include('nav'); %>
+ 
+    <script src="/js/list_client.js"></script>
+    <script src="/theme/js/main.js"></script>
+ 
+    <%- include('layouts/'+layout); %>
+  </body>
+</html>
+```
+
+#### 7.1.9 - landscape/nav.ejs
+
+```
+<p><a href="/">Home</a> | <a href="/edit">Edit</a> | <a href="/create">Create</a></p>
+```
 
 ## 8 - the /db folder
+
+The db folder is where the list database will be stored.
 
 ## 9 - conclusion
