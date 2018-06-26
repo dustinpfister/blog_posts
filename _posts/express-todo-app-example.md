@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:07:48
-version: 1.25
+updated: 2018-06-26 16:11:46
+version: 1.26
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -859,7 +859,74 @@ module.exports = function (req, res, next) {
 ```
 
 #### 6.3.3 - setobj_postres.js
+
+This one sets a standard object that is send for responses to post requests.
+
+```js
+// a middleware that starts a render object
+module.exports = function (req, res, next) {
+ 
+    // set defaults for an standard object
+    // that will be send back for a post
+    // request
+    req.postRes = {
+        success: false,
+        body: req.body,
+        mess: '',
+        eMess: '',
+        list: [],
+        item: {}
+    };
+ 
+    next();
+ 
+};
+```
+
 #### 6.3.4 - check_body.js
+
+As the name suggests this middeware just checks for a body, and makes sure a mode is set as well. If something is missing it responds, else it does nothing.
+
+```js
+// check body
+module.exports = function (req, res, next) {
+ 
+    // body must be there,
+    if (req.body) {
+ 
+        //  and the body must have a mode property
+        if (req.body.mode) {
+ 
+            // then we are good to continue
+            next();
+ 
+        } else {
+ 
+            // respond with no mode mess
+            res.json({
+ 
+                success: false,
+                mess: 'no mode.',
+                body: req.body
+ 
+            });
+ 
+        }
+ 
+    } else {
+ 
+        // respond with no body mess
+        res.json({
+ 
+            success: false,
+            mess: 'no body was parsed.'
+ 
+        });
+ 
+    }
+ 
+};
+```
 #### 6.3.5 - check_fail.js
 #### 6.3.6 - item_add.js
 #### 6.3.7 - item_delete.js
