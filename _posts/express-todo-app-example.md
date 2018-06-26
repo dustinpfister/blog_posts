@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:46:07
-version: 1.11
+updated: 2018-06-25 22:48:12
+version: 1.12
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -128,6 +128,8 @@ require('./lib/conf.js')(app, __dirname).then(function () {
 Of course this is also where I am calling app.listen to start the project on a port that is in the port app setting.
 
 ### 3.1 - config.yaml
+
+So the config.yaml is a file that will be created when starting express_todo for the first time. as of this writing there are just two settings the port, and the theme. As of this writing the only value you might want to change is the port, as there is only one theme.
 
 ## 4 - The /lib folder
 
