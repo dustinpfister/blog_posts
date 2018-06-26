@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:40:12
-version: 1.10
+updated: 2018-06-25 22:46:07
+version: 1.11
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -62,6 +62,10 @@ $ npm install shortid@2.2.8 --save
 At the root of the project folder is a few files of interest, like any other express.js project or demo of mine there is the main app.js file, also there will be a conf.yaml file as well for some app settings. There are also many folders of interest that lead into many other folders and files that compose both a front end, and back end system.
 
 ### 3.2 - The main app.js file
+
+The main app.js file might always be a good starting location, as this is the file that is called with node to start the app. It is here that the main app object instance is, I am also calling a conf.js file in the lib folder that makes a conf.yaml file, or get settings from it that are used to set app settings like what port or theme to use. 
+
+I am also setting up all my static paths here as well as using some routes defined in the routes folder, that in turn also use some built in middleware methods.
 
 ```js
 let express = require('express'),
@@ -120,6 +124,8 @@ require('./lib/conf.js')(app, __dirname).then(function () {
  
 });
 ```
+
+Of course this is also where I am calling app.listen to start the project on a port that is in the port app setting.
 
 ### 3.1 - config.yaml
 
