@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:54:33
-version: 1.15
+updated: 2018-06-26 14:48:15
+version: 1.16
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -137,6 +137,8 @@ This lib folder contains tow files, conf.js that is used to make or read the mai
 
 ### 4.1 - conf.js
 
+So the conf.js file reads the main conf.yaml file and sets app settings for the main instance of the app object. In the event that the conf.yaml file is not there one is created, and set up with some hard coded default settings.
+
 ```js
 let express = require('express'),
 fs = require('fs-extra'),
@@ -215,6 +217,8 @@ module.exports = function (app, dirroot) {
  
 };
 ```
+
+This file might be a bit overkill at the moment, but if I do take the time to expand this project, then there might come a time where I would want a setup like this.
 
 ### 4.2 - db_lists.js
 
