@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:01:35
-version: 1.22
+updated: 2018-06-26 16:03:58
+version: 1.23
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -737,6 +737,8 @@ module.exports = function (obj) {
 like with edit.js I am using many middleware methods in an additional folder that I placed in the routes folder.
 
 ### 6.3 - The middleware at the /routes/mw folder
+
+here I have a much of middleware files that I use with the /edit and /list paths as a way of breaking things down more, so they are easier to understand, and manage.
 
 #### 6.3.1 - edit_get.js
 #### 6.3.2 - setobj_rend.js
