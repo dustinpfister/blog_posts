@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:34:37
-version: 1.31
+updated: 2018-06-26 16:38:44
+version: 1.32
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -427,6 +427,12 @@ So like many of my express.js projects so far there is a public folder. I put th
 So this is a javaScript file that provides a simple custom trailered http client using XMLHttprequest, and a bunch of methods that can be called to make certain kinds of requests from the front end. Requests for a certain list if I know the id, and making post requests for new lists, and items.
 
 ```js
+var get = function (id) {
+ 
+    return document.getElementById(id);
+ 
+};
+ 
 // list client.
 var lc = (function () {
  
@@ -1322,11 +1328,191 @@ get('create_submit').addEventListener('click', function (e) {
 });
 ```
 
-#### 7.1.4 - layouts
+#### 7.1.4 - landscape/js/edit.js
 
-#### 7.1.5 - index.ejs
+```js
+// edit path client for 'landscape' theme
+ 
+var reload = function (noListId) {
+ 
+    var param = '';
+ 
+    if (!noListId) {
+ 
+        param = '?l=' + get('listid').innerHTML;
+ 
+    }
+ 
+    window.location.href = '/edit' + param;
+ 
+};
+ 
+// when a list item is clicked
+var onItemClick = function () {
+ 
+    console.log('li element clicked');
+ 
+};
+ 
+// when a done button is clicked
+var onDoneClick = function (e, done) {
+ 
+    console.log('Done button clicked');
+ 
+    var li = e.target.parentElement,
+    itemId = li.id.replace(/^item_/, ''),
+    listId = get('listid').innerHTML;
+ 
+    done = done || function () {};
+ 
+    new lc.http({
+ 
+        path: '/edit',
+        method: 'POST',
+        body: JSON.stringify({
+ 
+            mode: 'edit_list_item',
+            listId: listId,
+            itemId: itemId,
+ 
+            toggleDone: true
+ 
+        }),
+        onDone: done
+ 
+    });
+ 
+};
+ 
+// when the delete button is clieck
+var onDeleteClick = function (e, done) {
+ 
+    var itemId = e.target.dataset.itemId,
+    listId = get('listid').innerHTML;
+ 
+    done = done || function () {};
+ 
+    new lc.http({
+ 
+        path: '/edit',
+        method: 'POST',
+        body: JSON.stringify({
+ 
+            mode: 'delete_list_item',
+            listId: listId,
+            itemId: itemId
+ 
+        }),
+        onDone: done
+ 
+    });
+ 
+}
+ 
+if (get('listid')) {
+ 
+    // for each hard coded list item
+    [].forEach.call(document.querySelectorAll('.button_done'), function (el) {
+ 
+        el.addEventListener('click', function (e) {
+ 
+            onDoneClick(e, function () {
+ 
+                reload();
+ 
+            });
+ 
+        });
+ 
+    });
+ 
+    // for each delete button
+    [].forEach.call(document.querySelectorAll('.button_delete'), function (el) {
+ 
+        el.addEventListener('click', function (e) {
+ 
+            onDeleteClick(e, function () {
+                reload();
+            });
+ 
+        });
+ 
+    });
+ 
+    // if add item button is clicked
+    get('newitem_submit').addEventListener('click', function () {
+ 
+         var text = get('newitem_text').value;
 
-#### 7.1.6 - nav.ejs
+        if (text !== '') {
+ 
+            lc.addListItem({
+ 
+                body: {
+                    listId: get('listid').innerText,
+                    item: {
+ 
+                        name: text
+                    }
+ 
+                },
+                onDone: function () {
+ 
+                    var res = JSON.parse(this.response);
+ 
+                    if (res.success) {
+ 
+                        reload();
+ 
+                    } else {
+ 
+                        console.log(this.response);
+ 
+                    }
+ 
+                }
+ 
+            });
+ 
+        }
+ 
+    });
+ 
+} else {
+ 
+    [].forEach.call(document.querySelectorAll('.list_delete'), function (el) {
+ 
+        el.addEventListener('click', function (e) {
+ 
+            var li = e.target.parentElement,
+            listId = li.id.replace(/^list_/, '');
+ 
+            console.log(listId);
+ 
+            lc.delList({
+ 
+                listId: listId,
+                onDone: function () {
+ 
+                    //console.log(this.response);
+                    reload(true);
+ 
+                }
+ 
+            });
+ 
+        });
+ 
+    });
+ 
+}
+```
+
+#### 7.1.5 - layouts
+
+#### 7.1.6 - index.ejs
+
+#### 7.1.7 - nav.ejs
 
 ## 8 - the /db folder
 
