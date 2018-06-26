@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 214
-updated: 2018-06-25 20:35:28
-version: 1.1
+updated: 2018-06-25 21:02:49
+version: 1.2
 ---
 
 In [express.js](https://expressjs.com/) I get into situations in which I am dealing with more than one instnace of an express app object. This is helpful, and to some extent necessary as it helps break things down into more manageable smaller components that are each responsible for a certain task, such as rendering, or grabbing settings from a yaml or json file. In this post I will be writing about req.app, res.app which are both just reference the instance of app that is using the middleware. This can be used as a way to not use require to get a reference to my main app instance from another file, but that is another way of pulling it off. In other words this post is about instances of the app object in express, and how to manage a bunch of theme when starting to make something a little complicated.
@@ -15,11 +15,15 @@ In [express.js](https://expressjs.com/) I get into situations in which I am deal
 
 ## 1 - what to know before hand
 
-[main post on express](/2018/06/12/express/).
+This is a post on working with app objects in express.js using req.app, it is not a getting started post on express.js, or any additional skills required before hand. If you are new to express, or you just want to check out my [main post on express](/2018/06/12/express/) that might be a good starting point.
 
 ### 2 - The req.app demo
 
+The req.app, and res.app properties each hold the same reference to the app that is using a middleware method. For an example of how this can be useful, I made two javaScript files. One file is the usual main app.js file, and the other presents a single middleware method that renders a view. In the middleware I create a separate instnace of an express app, but I want to set some settings from the main app.js file. One way to do this is to use res.app to set values in the middleware app to what is in the main app.
+
 ### 2.1 - Setup
+
+For this demo I just need to install express.
 
 ```
 $ mkdir response-app
@@ -29,6 +33,7 @@ $ npm install express --save
 ```
 
 ### 2.1 - The main /app.js file
+
 
 ### 2.2 - The /otherapp.js file
 
