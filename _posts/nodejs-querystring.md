@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 143
-updated: 2018-06-26 07:31:24
-version: 1.3
+updated: 2018-06-26 07:32:39
+version: 1.4
 ---
 
 When making a [node.js](https://nodejs.org/en/) project there might come a need to do something involving working with a [query string](https://en.wikipedia.org/wiki/Query_string), that is the parameters that are defined in a url using question marks, equal sign, and ampersands. It is a standard way of communicating some parameters to a server by way of a url, rather than some other means such as a post request payload.
@@ -122,5 +122,5 @@ console.log(parseQS('a=1&b=2&c=3&d=4'));
 
 ## A word on security
 
-Like that of post requests a query string can be the result of your own client system, put the client system can also be bypassed. In other words a query string is a potential entry point with respect to a certain type of hacking. I have not taken the time to work out an actual example, but for now I will just say that it is important to be aware of how the object that is parsed from the query string is being used.
+Like that of post requests a query string can be the result of your own client system, but the client system can also be bypassed. In other words a query string is a potential entry point with respect to a certain type of hacking. I have not taken the time to work out an actual example, but for now I will just say that it is important to be aware of how the object that is parsed from the query string is being used.
 
