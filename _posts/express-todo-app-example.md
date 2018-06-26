@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 14:48:15
-version: 1.16
+updated: 2018-06-26 14:52:35
+version: 1.17
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -222,6 +222,8 @@ This file might be a bit overkill at the moment, but if I do take the time to ex
 
 ### 4.2 - db_lists.js
 
+This is the lib that I am using to interact with my database. For this simple todo app I am using lowdb for a database solution, not the best choice for a production app, but this is no production app. I do like the simplicity of lowdb, and for simple projects like this that I do not intent to deploy, it gets the job done.
+
 ```js
 let path = require('path'),
 fs = require('fs-extra'),
@@ -413,6 +415,8 @@ exports.pushItem = function (obj) {
  
 };
 ```
+
+This is used by my middleware functions to handle everything with respect to the lists.json file in the db folder. Also any additional future middleware will use this as well when it comes to doing anything with the list data.
 
 ## 5 - The /public folder
 
