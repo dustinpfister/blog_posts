@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-25 22:02:12
-version: 1.4
+updated: 2018-06-25 22:20:24
+version: 1.5
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -24,7 +24,17 @@ So I have been working with [express.js](https://expressjs.com/) for a while now
 
 ## 2 - install, or setup
 
+Because this has turned out to be a complex project I have made a repo on my github page. So If for some reason you want to install this locally you can by cloning it down, and doing an npm install to install all the dependencies for it.
+
 ### 2.1 - install by cloning the repo
+
+```
+$ git clone https://github.com/dustinpfister/express_todo
+$ cd express_todo
+$ git checkout tags/0.0.125 -b foobar
+$ npm install
+$ node app
+```
 
 ### 2.2 - reproducing from scratch
 
