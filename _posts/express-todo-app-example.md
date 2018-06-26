@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:13:08
-version: 1.27
+updated: 2018-06-26 16:16:07
+version: 1.28
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -942,7 +942,106 @@ module.exports = function (req, res) {
 ```
 
 #### 6.3.6 - item_add.js
+
+adds an item to a list.
+
+```js
+let dbLists = require('../../lib/db_lists');
+ 
+// check body
+module.exports = function (req, res, next) {
+ 
+    if (req.body.mode === 'add_list_item' && req.body.item && req.body.listId) {
+ 
+        dbLists.pushItem(req.body).then(function () {
+ 
+            res.json({
+ 
+                success: true,
+                mess: 'item added to db',
+                body: req.body
+ 
+            });
+ 
+        }).catch (function (e) {
+ 
+            res.json({
+ 
+                success: false,
+                mess: 'error writing item to db',
+                eMess: e.message
+ 
+            });
+ 
+        });
+ 
+    } else {
+ 
+        // else not the mode
+        next();
+ 
+    }
+ 
+};
+```
+
 #### 6.3.7 - item_delete.js
+
+Deletes an item from a list.
+
+```js
+let dbLists = require('../../lib/db_lists');
+ 
+// check body
+module.exports = function (req, res, next) {
+ 
+    if (req.body.mode === 'delete_list_item') {
+ 
+        if (req.body.listId && req.body.itemId) {
+ 
+            dbLists.deleteItemById(req.body).then(function (item) {
+ 
+                res.json({
+ 
+                    success: true,
+                    mess: 'item deleted',
+                    body: req.body
+ 
+                });
+ 
+            }).catch (function (e) {
+ 
+                res.json({
+ 
+                    success: false,
+                    mess: 'error deleteing item',
+                    eMess: e.message
+ 
+                });
+ 
+            });
+ 
+        } else {
+ 
+            res.json({
+ 
+                success: false,
+                mess: 'must give a list, and item id in the body'
+ 
+            });
+ 
+        }
+ 
+    } else {
+ 
+        // not the mode
+        next();
+ 
+    }
+ 
+};
+```
+
 #### 6.3.8 - item_edit.js
 #### 6.3.9 - item_get.js
 #### 6.3.10 - list_create.js
