@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:11:46
-version: 1.26
+updated: 2018-06-26 16:13:08
+version: 1.27
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -928,6 +928,19 @@ module.exports = function (req, res, next) {
 };
 ```
 #### 6.3.5 - check_fail.js
+
+This is a standard middleware that is used at the end of an array of middlewares as a sort of end of the line middleware if nothing happens.
+
+```js
+// end of the line.
+module.exports = function (req, res) {
+ 
+    req.postRes.mess = 'post recived, but nothing was done. Check the given body';
+    res.json(req.postRes);
+ 
+};
+```
+
 #### 6.3.6 - item_add.js
 #### 6.3.7 - item_delete.js
 #### 6.3.8 - item_edit.js
