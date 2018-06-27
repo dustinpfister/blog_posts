@@ -5,18 +5,32 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 217
-updated: 2018-06-27 16:17:01
-version: 1.3
+updated: 2018-06-27 16:23:24
+version: 1.4
 ---
 
 So I have been writing some [express.js](https://expressjs.com/) projects these days, and I seem to be generally making two kinds of paths in my projects. Paths that render html, and paths that respond to requests that are sent via some kind of http client in the browser. Because much of full stack development often has at least a little to do with a database of some kind, I wanted to do some exercises that involve making a path that will spit out json, but the json will be different depending on the query strings that are given. Also it would be a path that will not just spit out a static json file, but a result to some kind of query. So in other words a path that gives on the fly json.
 
 <!-- more -->
 
+## 1 - What to know before hand
+
+This is a post on an express.js project that I have made that provides a path that responds with custom trailered json depending the the query string given to it. In other words it is an advanced post on express.js application development. If you are new to express you might want to start at my [main post on express](/2018/06/12/express/).
+
 
 ## 2 - The express_flyjson project.
 
+
+
 ### 2.1 - install
+
+```
+$ git clone https://github.com/dustinpfister/express_flyjson
+$ cd express_flyjson
+$ git checkout tags/0.0.19 -b post217
+$ npm install
+$ node app
+```
 
 ### 2.2 - The /app.js file
 
