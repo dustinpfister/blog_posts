@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 217
-updated: 2018-06-27 16:23:24
-version: 1.4
+updated: 2018-06-27 16:29:25
+version: 1.5
 ---
 
 So I have been writing some [express.js](https://expressjs.com/) projects these days, and I seem to be generally making two kinds of paths in my projects. Paths that render html, and paths that respond to requests that are sent via some kind of http client in the browser. Because much of full stack development often has at least a little to do with a database of some kind, I wanted to do some exercises that involve making a path that will spit out json, but the json will be different depending on the query strings that are given. Also it would be a path that will not just spit out a static json file, but a result to some kind of query. So in other words a path that gives on the fly json.
@@ -20,7 +20,9 @@ This is a post on an express.js project that I have made that provides a path th
 
 ## 2 - The express_flyjson project.
 
+The project express_flyjson I made is a quick example of using express.js, and a database solution in this case [lowdb](/2017/12/28/nodejs-lowdb/) to make a path that will respond with json data. In this project the data is derived from my google analytics data that I have imported to json thanks to another useful project called [csvtojson](/2018/02/12/nodejs-csv-to-json/).
 
+I made this because at the moment I am also working on another project that visualizes goggle analytics data using three.js, so a project like this seems necessary.
 
 ### 2.1 - install
 
