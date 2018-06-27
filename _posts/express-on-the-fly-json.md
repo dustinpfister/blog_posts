@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 217
-updated: 2018-06-27 16:29:25
-version: 1.5
+updated: 2018-06-27 16:35:24
+version: 1.6
 ---
 
 So I have been writing some [express.js](https://expressjs.com/) projects these days, and I seem to be generally making two kinds of paths in my projects. Paths that render html, and paths that respond to requests that are sent via some kind of http client in the browser. Because much of full stack development often has at least a little to do with a database of some kind, I wanted to do some exercises that involve making a path that will spit out json, but the json will be different depending on the query strings that are given. Also it would be a path that will not just spit out a static json file, but a result to some kind of query. So in other words a path that gives on the fly json.
@@ -26,6 +26,8 @@ I made this because at the moment I am also working on another project that visu
 
 ### 2.1 - install
 
+Because the project that I am writing about here exists in one of my github repos, if interested you can clone it down, and then use npm install to install the dependencies to it.
+
 ```
 $ git clone https://github.com/dustinpfister/express_flyjson
 $ cd express_flyjson
@@ -34,8 +36,11 @@ $ npm install
 $ node app
 ```
 
+Be sure that you are using 0.0.19 if you want to follow along with what I have written in this post.
+
 ### 2.2 - The /app.js file
 
+In the main app.js file I am using a middleware that I have made called json_fly.js. I send this middleware an options object that lets the middleware know where the database it should use is located. In addition I also start the applaction here by calling app.listen like normal.
 
 ```js
 let express = require('express'),
@@ -49,12 +54,6 @@ app.use('/json', require('./mw/json_fly')({
         path_db: path.join(__dirname, 'db', 'days.json')
  
     }));
- 
-app.get('/', function (req, res) {
- 
-    res.send('okay');
- 
-});
  
 app.listen(app.get('port'), function () {
  
