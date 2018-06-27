@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 217
-updated: 2018-06-27 16:46:07
-version: 1.7
+updated: 2018-06-27 16:49:09
+version: 1.8
 ---
 
 So I have been writing some [express.js](https://expressjs.com/) projects these days, and I seem to be generally making two kinds of paths in my projects. Paths that render html, and paths that respond to requests that are sent via some kind of http client in the browser. Because much of full stack development often has at least a little to do with a database of some kind, I wanted to do some exercises that involve making a path that will spit out json, but the json will be different depending on the query strings that are given. Also it would be a path that will not just spit out a static json file, but a result to some kind of query. So in other words a path that gives on the fly json.
@@ -231,6 +231,8 @@ module.exports = function (options) {
 
 ### 2.4 - The example json database at /db/days.json
 
+This is the example data that is in the databse that is used.
+
 ```js
 {
   "days": [
@@ -307,3 +309,5 @@ module.exports = function (options) {
   ]
 }
 ```
+
+Although this might be only two records, the database could have hundreds of such records like this, and I would not want to always send the whole contents of the json file to the client.
