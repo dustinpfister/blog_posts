@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2018-06-27 17:32:00
-version: 1.5
+updated: 2018-06-27 19:41:35
+version: 1.6
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own middleware methods now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is moddleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -100,3 +100,50 @@ app.listen(8080);
 ```
 
 in this example I am using the file system module to read the package.json file of the demo I am making for this post. The plain old fs module by itself uses callbacks, it is in that callback where I will be calling next. In other examples that involve promises I would want to call next in a method that is given to then, or catch.
+
+### 2.3 - An array of methods
+
+
+```js
+let express = require('express'),
+fs = require('fs'),
+app = express();
+ 
+app.use([
+ 
+        // get a and b, from query string
+        // or default to 0
+        function (req, res, next) {
+ 
+            req.a = req.query.a || 0;
+            req.b = req.query.b || 0;
+ 
+            next();
+ 
+        },
+ 
+        // add a + b
+        function (req, res, next) {
+ 
+            req.n = Number(req.a) + Number(req.b);
+ 
+            next();
+ 
+        }
+ 
+    ]);
+ 
+app.get('/', function (req, res) {
+ 
+    res.json({
+ 
+        a: req.a,
+        b: req.b,
+        n: req.n
+ 
+    });
+ 
+});
+ 
+app.listen(8080);
+```
