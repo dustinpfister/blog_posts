@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 215
-updated: 2018-06-26 16:43:58
-version: 1.34
+updated: 2018-06-26 20:08:01
+version: 1.35
 ---
 
 So I have been working with [express.js](https://expressjs.com/) for a while now when it comes to making simple demos, but now I think it is time to start making something that is a full working project of some kind. Often people start with a simple todo list project of some kind, so maybe that will do for now. I do not have to make this the kind of project that I will devote a few years of my life to, it can just be a good start. In this post I will be writing about this first express.js project, and if all goes well maybe this will not be the last post like this, as I progress into something else that is more interesting.
@@ -1612,4 +1612,6 @@ if (get('listid')) {
 
 The db folder is where the list database will be stored.
 
-## 9 - conclusion
+## 9 - Conclusion
+
+This project was put together pretty quickly, but I just wanted a full stack example to write about for my collection of posts on express. I might work on this project a bit more to address some of it's shortcomings. However so far it all ready works good enough as a way of maintaining a todo list. Looks like I might start using it in place of my old txt file solution, to say the least..
