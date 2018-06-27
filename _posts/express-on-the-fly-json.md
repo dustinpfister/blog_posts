@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 217
-updated: 2018-06-27 16:35:24
-version: 1.6
+updated: 2018-06-27 16:46:07
+version: 1.7
 ---
 
 So I have been writing some [express.js](https://expressjs.com/) projects these days, and I seem to be generally making two kinds of paths in my projects. Paths that render html, and paths that respond to requests that are sent via some kind of http client in the browser. Because much of full stack development often has at least a little to do with a database of some kind, I wanted to do some exercises that involve making a path that will spit out json, but the json will be different depending on the query strings that are given. Also it would be a path that will not just spit out a static json file, but a result to some kind of query. So in other words a path that gives on the fly json.
@@ -63,6 +63,10 @@ app.listen(app.get('port'), function () {
 ```
 
 ### 2.3 - The /mw/json_fly.js file
+
+Here is the file that provides the middleware. In this file I created another instance of an express.js app object that I have called flyJS to help eliminate confusion with the main app in app.js. 
+
+Here I give an array of middleware methods to the root path of what will become the json path, or any other path I decide to mount it to for that matter when I use it. The first method defines a standard response object, then the second gets the database. If all goes well getting the database, a third checks for a querystring and will respond with general stats about the database if no string is given. Then there is a fourth method that will respond to a given query, and finally there is an end of the line type method.
 
 ```js
 let express = require('express'),
