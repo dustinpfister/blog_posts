@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 217
-updated: 2018-06-27 16:14:06
-version: 1.2
+updated: 2018-06-27 16:17:01
+version: 1.3
 ---
 
 So I have been writing some [express.js](https://expressjs.com/) projects these days, and I seem to be generally making two kinds of paths in my projects. Paths that render html, and paths that respond to requests that are sent via some kind of http client in the browser. Because much of full stack development often has at least a little to do with a database of some kind, I wanted to do some exercises that involve making a path that will spit out json, but the json will be different depending on the query strings that are given. Also it would be a path that will not just spit out a static json file, but a result to some kind of query. So in other words a path that gives on the fly json.
@@ -14,7 +14,11 @@ So I have been writing some [express.js](https://expressjs.com/) projects these 
 <!-- more -->
 
 
-### 2.1 - The /app.js file
+## 2 - The express_flyjson project.
+
+### 2.1 - install
+
+### 2.2 - The /app.js file
 
 
 ```js
@@ -43,7 +47,7 @@ app.listen(app.get('port'), function () {
 });
 ```
 
-### 2.2 - The /mw/json_fly.js file
+### 2.3 - The /mw/json_fly.js file
 
 ```js
 let express = require('express'),
@@ -204,4 +208,83 @@ module.exports = function (options) {
     return flyJS;
  
 };
+```
+
+### 2.4 - The example json database at /db/days.json
+
+```js
+{
+  "days": [
+    {
+      "date": "1/1/18",
+      "users": "10",
+      "timeStamp": "2018-01-01T05:00:00.000Z",
+      "pages": [
+        {
+          "Page": "/",
+          "Pageviews": "1"
+        },
+        {
+          "Page": "/2017/04/10/nodejs-jimp/",
+          "Pageviews": "2"
+        },
+        {
+          "Page": "/2017/04/17/hexo-theme-start/",
+          "Pageviews": "1"
+        },
+        {
+          "Page": "/2017/05/02/hexo-sitemap-automation/",
+          "Pageviews": "1"
+        },
+        {
+          "Page": "/2017/09/14/lodash-find/",
+          "Pageviews": "2"
+        },
+        {
+          "Page": "/2017/11/28/nodejs-cheerio/",
+          "Pageviews": "1"
+        },
+        {
+          "Page": "/2017/11/28/nodejs-glob/",
+          "Pageviews": "2"
+        },
+        {
+          "Page": "/2017/12/01/canvas-chartjs/",
+          "Pageviews": "1"
+        }
+      ]
+    },
+    {
+      "date": "1/2/18",
+      "users": "12",
+      "timeStamp": "2018-02-01T05:00:00.000Z",
+      "pages": [
+        {
+          "Page": "/",
+          "Pageviews": "1"
+        },
+        {
+          "Page": "/2017/04/10/nodejs-jimp/",
+          "Pageviews": "4"
+        },
+        {
+          "Page": "/2017/05/02/hexo-sitemap-automation/",
+          "Pageviews": "1"
+        },
+        {
+          "Page": "/2017/09/14/lodash-find/",
+          "Pageviews": "3"
+        },
+        {
+          "Page": "/2017/11/28/nodejs-glob/",
+          "Pageviews": "2"
+        },
+        {
+          "Page": "/2017/12/01/canvas-chartjs/",
+          "Pageviews": "1"
+        }
+      ]
+    }
+  ]
+}
 ```
