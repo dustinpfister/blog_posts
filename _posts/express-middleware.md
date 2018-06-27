@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2018-06-27 19:41:35
-version: 1.6
+updated: 2018-06-27 19:44:39
+version: 1.7
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own middleware methods now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is moddleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -103,6 +103,7 @@ in this example I am using the file system module to read the package.json file 
 
 ### 2.3 - An array of methods
 
+An array of methods can be given to app.use. This is useful when I need to do something that involves many different steps, as I can break it down into many smaller parts.
 
 ```js
 let express = require('express'),
@@ -147,3 +148,5 @@ app.get('/', function (req, res) {
  
 app.listen(8080);
 ```
+
+Also I can pull each of these methods into a sepearte file in which I am exporting them, then bring them into this with require.
