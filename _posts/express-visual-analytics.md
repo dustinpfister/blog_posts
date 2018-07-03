@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-03 15:53:03
-version: 1.2
+updated: 2018-07-03 16:06:02
+version: 1.3
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -32,3 +32,13 @@ $ node app
 
 As of this writing I am working on 1.x, if doing this gives you a later version what I am writing about here may be out of date.
 
+## 3 - importing CSV
+
+To import csv download a csv from the audience overview section in google analytics. At present the library that I have made only imports csv data that is exported for daily user counts there. At some point if I do continue to suport this there may me more options.
+
+Once I have a csv file download I then need to place it in a csv folder at the root of the project folder, if it is not there just created it.
+
+Then I just need to call the main build script at root, and the lib at /lib/csv_ga_import should build a json database at /db/db.json that will be used by the project as the date to be visualized.
+```
+$ node build
+```
