@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-03 16:12:58
-version: 1.4
+updated: 2018-07-03 16:17:16
+version: 1.5
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -51,3 +51,5 @@ $ node build
 
 The procress of importing csv was not as time consuming as it would have been if I had not used [csvtojson](https://www.npmjs.com/package/csvtojson), which is a great tool for doing as the name implies. If interested in learning more about that I [have a post](/2018/02/12/nodejs-csv-to-json/) on csvtojson.
 
+
+## 4 - json_fly_va middle ware
