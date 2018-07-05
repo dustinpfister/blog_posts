@@ -5,11 +5,11 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 220
-updated: 2018-07-05 16:58:27
-version: 1.5
+updated: 2018-07-05 19:17:07
+version: 1.6
 ---
 
-In this post I will be giving a quick overview of working with models in [mongoose.js](http://mongoosejs.com/docs/models.html). If you are not aware mongoose.js is a javaScript library to help make it easier to work with [mongodb](https://www.mongodb.com/), a popular javaScript friendly databse solution that is used in node.js powered full stack apps.
+In this post I will be giving a quick overview of working with models in [mongoose.js](http://mongoosejs.com/docs/models.html). If you are not aware mongoose.js is a javaScript library to help make it easier to work with [mongodb](https://www.mongodb.com/), a popular javaScript friendly database solution that is used in node.js powered full stack apps.
 
 <!-- more -->
 
