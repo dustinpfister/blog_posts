@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 11:34:15
-version: 1.12
+updated: 2018-07-05 11:40:15
+version: 1.13
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -336,6 +336,8 @@ The themes folder as the name suggests is where I place my ejs templates when it
 
 ## 7 - The main app.js file
 
+The main app.js file in this project makes use of static paths, sets some settings for the port, and ejs rendering that is used in some paths. Here is also where the /flyjson path is defined that is used by my client to get the data that is used in this project as well.
+
 ```js
 let express = require('express'),
 path = require('path'),
@@ -394,3 +396,5 @@ app.listen(app.get('port'), () => {
 ## 8 - Current lists of Models, or Works
 
 ## 9 - Conclusion
+
+I did not cover everything there is to write about this project as well as the additional projects that I used to help speed things along. If you are interested in reading more about express.js my [main post on express](/2018/06/12/express/) would be a good starting point, I also have many posts on [three.js](/categories/three-js/) as well.
