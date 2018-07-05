@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 11:40:15
-version: 1.13
+updated: 2018-07-05 12:21:35
+version: 1.14
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -394,6 +394,16 @@ app.listen(app.get('port'), () => {
 ```
 
 ## 8 - Current lists of Models, or Works
+
+Here is a current list of all the works that I have so far. So far there are four works that I made for 0.x, and am currently working on 1.x where I have a few more as well.
+
+### 8.1 - The first Model that I just call 'First'
+
+For the first project I made a model that just shows bars for each day of a standard start day to end day query.
+
+![First project](https://dustinpfister.github.io/blog_img/posts/218/first_640.png)
+
+When looking at this model it shows in great detail how much traffic to this site has grown from when I first started in early 2017.
 
 ## 9 - Conclusion
 
