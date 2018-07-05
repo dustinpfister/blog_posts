@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 12:21:35
-version: 1.14
+updated: 2018-07-05 12:29:30
+version: 1.15
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -404,6 +404,18 @@ For the first project I made a model that just shows bars for each day of a stan
 ![First project](https://dustinpfister.github.io/blog_img/posts/218/first_640.png)
 
 When looking at this model it shows in great detail how much traffic to this site has grown from when I first started in early 2017.
+
+### 8.2 - The 'over_time' project
+
+This one is just like the first project, but I used a different material that changes over time based on the date property of the day objects that are given in a query.
+
+### 8.3 - 'spiraled'
+
+In this project I have the day objects broken down into parts for each month, and have them spaced out in a spiraled pattern from the center outward, where the center most groups are the oldest in the query.
+
+### 8.4 - 'spiraled_canvas'
+
+This is the same as spiraled only I experimented with using canvas elements to generate a simple texture that I thne use as a material in the model.
 
 ## 9 - Conclusion
 
