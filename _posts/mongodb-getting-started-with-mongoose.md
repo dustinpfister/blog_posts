@@ -5,13 +5,21 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 219
-updated: 2018-07-05 15:04:16
-version: 1.2
+updated: 2018-07-05 15:20:22
+version: 1.3
 ---
 
 So these days I have been experimenting with express as a way to make node.js powered full stack applications. In many of these simple projects I have been using lowdb as a database solution, which works fine when it comes to simple projects that are going to be used off line. However if I aim to make something that will be deployed to a server, I am going to want to use something a little more professional, for this there is of course mongodb, and mongoose.js. This post will be a getting stared post on using mongoose.js to work with mongodb as a database solution.
 
 <!-- more -->
+
+## 1 - What to know
+
+This is a getting started post on using [mongoose](http://mongoosejs.com/) to connect to [mongodb](https://www.mongodb.com/) to work with a database when making a node.js powreed applaction the requires the use of a databse solution that is a little more professional then something like [lowdb](/2017/12/28/nodejs-lowdb/). I am not going to get into detail about getting started with node.js, or javaScript in general. Also I am not going to cover getting started with mongodb itself, I assume you have it installed, and have the service up and running on the default port of 27017.
+
+### 1.1 Version numbers matter
+
+As of the writing of this post I am using nodejs v8.9.3, with mongodb v4.0.0, and mongoose 5.1.7. If you run into trouble reproducing what I have work out here always check the simplest things first.
 
 ## 2 - A Basic Example using mongoose.js
 
@@ -19,13 +27,24 @@ So This basic example of using mongoose to work with mongodb will be a simple co
 
 ### 2.1 - setup 
 
+For this project I will just need node.js, and mongodb installed, and the mogodb service running on the default port. When it comes to npm packages the only package I need is mongoose.
 
+```
+$ mkdir mongoose_test
+$ cd mongoose_test
+$ npm init
+$ npm install mongoose --save
+```
+
+Once I have eventing I need in the demo project folder I will be making just one javaScript file that will be called from the command line.
 
 ### 2.2 - The basic.js file
 
-
+The basic js file will consist of all the code that will connect to mondodb, parse arguments from the command line, and create instances of a model.
 
 #### 2.2.1 - Make the connection
+
+I stared off basic.js, by grabbing a reference to what is reported by the mongoose package, and then proced to write the code that will define the mongodb url that is used to connect to mongo db. This is a sting that defined the protocol to use to connect to mongodb, as wel as the hostname, port, and the name of the database.
 
 ```js
 // grab mongoose
@@ -46,7 +65,13 @@ mongoose.connect(mongoURL.url);
 let db = mongoose.connection;
 ```
 
+Once I have the mongodb url in order I can then use that to make a connection to the mongodb service that should be up and running. If you run into trouble look into the port and hostname values and make sure they will work with your setup.
+
+I then finish up my making a reference to mongoose.connection.
+
 #### 2.2.2 - The Day Model
+
+After that
 
 ```js
 // a Box Model
