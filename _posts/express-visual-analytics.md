@@ -5,14 +5,15 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 12:48:13
-version: 1.16
+updated: 2018-07-05 13:35:24
+version: 1.17
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
 
 <!-- more -->
 
+![express_visual_analytics banner](https://dustinpfister.github.io/blog_img/posts/218/banner_640.png)
 
 ## 1 - what to know before
 
@@ -413,7 +414,7 @@ This one is just like the first project, but I used a different material that ch
 
 In this project I have the day objects broken down into parts for each month, and have them spaced out in a spiraled pattern from the center outward, where the center most groups are the oldest in the query.
 
-![spiraled project](https://dustinpfister.github.io/blog_img/posts/218/first_640.png)
+![spiraled project](https://dustinpfister.github.io/blog_img/posts/218/spiraled_640.png)
 
 ### 8.4 - 'spiraled_canvas'
 
