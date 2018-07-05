@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 13:35:24
-version: 1.17
+updated: 2018-07-05 14:48:05
+version: 1.18
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -15,7 +15,7 @@ I have been [writing posts](/categories/express/) on [express.js](https://expres
 
 ![express_visual_analytics banner](https://dustinpfister.github.io/blog_img/posts/218/banner_640.png)
 
-## 1 - what to know before
+## 1 - what to know before continuing
 
 This is a post on [a project](https://github.com/dustinpfister/express_visual_analytics) that I have made using express.js that involves visualizing google analytics data using three.js. It is not a getting started post on express.js, three.js, google analytics, node.js, or javaScript in general. I assume that you have a background in at least most of these things. If interested you might want to check out my [main post on express](/2018/06/12/express/) if you are new to express.
 
@@ -93,7 +93,7 @@ The json_fly_va middleware is custom hacked over version of a similar middleware
 
 ### 4.1 - The main index.js of json_fly_va
 
-The main index.js of this middleware creates an instance of the express.js app object by calling the express top level function, and this of course is what is exported by the middleware, and is therefor what is used in the main app.js file via app.use.
+The main index.js of this middleware creates an instance of the [express.js app object](/2018/06/15/express-app-object/) by calling the express top level function, and this of course is what is exported by the middleware, and is therefor what is used in the main app.js file via app.use.
 
 ```js
 let express = require('express'),
@@ -136,7 +136,7 @@ module.exports = function (options) {
 
 ### 4.2 - json_fly_va/response_send_tab for sending tabulated totals
 
-This is a part of the midddleware that allows for be to make querys where I can give a start date, a number of days, and a count of number of days to go back from the start date to give tabulated totals of users. So in other words if I want to go back 28 days from a start date, and break those 28 days down into 7 day chunks, and have a total for each 7 day chunk of that 28 day total this will come in handy.
+This is a part of the midddleware that allows for be to make queries where I can give a start date, a number of days, and a count of number of days to go back from the start date to give tabulated totals of users. So in other words if I want to go back 28 days from a start date, and break those 28 days down into 7 day chunks, and have a total for each 7 day chunk of that 28 day total this will come in handy.
 
 ```js
 let _ = require('lodash');
