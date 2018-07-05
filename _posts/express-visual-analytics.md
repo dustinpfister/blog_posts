@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 10:24:13
-version: 1.6
+updated: 2018-07-05 10:34:38
+version: 1.7
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -26,6 +26,10 @@ When I am writing this I am working on version 0.1.x of this project, and it may
 ## 1.2 - Not meant for deployment at this time.
 
 This project is just one of several projects that I want to mention in my main post on express.js as examples of full stack applications using express. The aim with this project was to just simply make some three.sj models that reflect changes in google analytics data that is imported from CSV files. I do not intent to deploy this project, but I do intent to make it into some kind of offline tool that can be used to make some interesting three.js models that I can then make images, and maybe animations from that can then potential be shard somewhere.
+
+## 1.3 - Relationship with express_flyjson
+
+This project borrows from a tool, and middle ware that I have development as a separate independent project called [express_flyjson](https://github.com/dustinpfister/express_flyjson). Mainly The tool at /lib/csv_ga_import, and the middleware at /mw/json_fly_va are copyes of what I am also using in that project. Changes and improvements that I make with them here may be adopted into that, and vise versa.
 
 ## 2 - Setup
 
@@ -50,6 +54,31 @@ Then I just need to call the main build script at root, and the lib at /lib/csv_
 ```
 $ node build
 ```
+
+### 3.1 - The main build.js file
+
+The script that I call from the command line to build the json database is located in the root name space and is simply called build.js.
+
+```js
+let path = require('path');
+ 
+require('./lib/csv_ga_import')({
+ 
+    dir_csv: path.join(__dirname,'csv'),
+    dir_db: (path.join(__dirname,'db'))
+ 
+}).then((a) => {
+ 
+    console.log('Looks like we did it');
+ 
+}).catch ((e) => {
+ 
+    console.log(e.message);
+ 
+});
+```
+
+As you can see I use a lib called csv_ga_import which is something I put together in a separate project called [express_flyjson](https://github.com/dustinpfister/express_flyjson).
 
 ### 3.1 - csv importing thanks to csvtojson
 
