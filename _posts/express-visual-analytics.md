@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 11:02:48
-version: 1.9
+updated: 2018-07-05 11:25:28
+version: 1.10
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -325,3 +325,15 @@ http://localhost:8080/flyjson?sd=6/28/18&tab=true&days=7&count=2
     ]
 }
 ```
+
+## 5 - The Public folder
+
+This project features a public folder that is used to server certain static assets that I intend to use across different themes. So this folder contains a javaScript folder that contains things like jQuery that is of course used in my bootstrap powered theme in the themes folder, along with three.js, and additional front end code that will be used to provide a common frameworks of sorts when it comes to displaying the models, as well as of course the code that composes the models themselves, although I will go into detail about those in a later section.
+
+## 6 - The themes folder
+
+## 7 - The main app.js file
+
+## 8 - Current lists of Models, or Works
+
+## 9 - Conclusion
