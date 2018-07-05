@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 220
-updated: 2018-07-05 16:25:40
-version: 1.2
+updated: 2018-07-05 16:43:40
+version: 1.3
 ---
 
 In this post I will be giving a quick overview of working with models in [mongoose.js](http://mongoosejs.com/docs/models.html). If you are not aware mongoose.js is a javaScript library to help make it easier to work with [mongodb](https://www.mongodb.com/), a popular javaScript friendly databse solution that is used in node.js powered full stack apps.
@@ -105,4 +105,94 @@ module.exports = function (options, cb) {
 };
 ```
 
+### 3.3 - The create.js file.
+
+```js
+// create a user
+require('./connect')().then(function (mongoose) {
+ 
+    let db = mongoose.connection,
+    User = require('./user'),
+ 
+    // create the user
+    user = new User({
+            name: process.argv[2] || 'foo',
+            password: process.argv[3] || '123',
+            createDate: new Date(),
+            lastOn: new Date()
+        });
+ 
+    // save the day
+    user.save(function (e, day) {
+ 
+        if (e) {
+ 
+            console.log('create: error');
+            db.close();
+ 
+        } else {
+ 
+            console.log('create: saved new user');
+            console.log(day);
+            db.close();
+ 
+        }
+ 
+    });
+ 
+}).catch (function (e) {
+ 
+    console.log('ahh man.');
+    console.log(e.message);
+ 
+});
+```
+
 ### 3.4 - The list.js file.
+
+```js
+// list users
+require('./connect')().then(function (mongoose) {
+ 
+    let db = mongoose.connection,
+    User = require('./user');     // the User model
+ 
+    User.find({}, (e, users) => {
+ 
+        // list the users
+        console.log('********** list users **********');
+        if (e) {
+ 
+            // if an error happens list the message
+            console.log(e.message);
+ 
+        } else {
+ 
+            if (users.length > 0) {
+ 
+                users.forEach(function (user) {
+ 
+                    console.log('name: ' + user.name + ' ; laston ' + user.lastOn + ';');
+ 
+                });
+ 
+            } else {
+ 
+                console.log('no users.');
+ 
+            }
+ 
+        }
+        console.log('********** **********');
+ 
+        db.close();
+ 
+    });
+ 
+}).catch (function (e) {
+ 
+    console.log('ahh man.');
+    console.log(e.message);
+ 
+});
+```
