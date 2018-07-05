@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 219
-updated: 2018-07-05 15:20:22
-version: 1.3
+updated: 2018-07-05 15:26:46
+version: 1.4
 ---
 
 So these days I have been experimenting with express as a way to make node.js powered full stack applications. In many of these simple projects I have been using lowdb as a database solution, which works fine when it comes to simple projects that are going to be used off line. However if I aim to make something that will be deployed to a server, I am going to want to use something a little more professional, for this there is of course mongodb, and mongoose.js. This post will be a getting stared post on using mongoose.js to work with mongodb as a database solution.
@@ -71,7 +71,7 @@ I then finish up my making a reference to mongoose.connection.
 
 #### 2.2.2 - The Day Model
 
-After that
+After that I define the code that will define my Model.
 
 ```js
 // a Box Model
@@ -81,7 +81,11 @@ let Day = mongoose.model('Day', {
     });
 ```
 
+Nothing fancy here I just create an instance of a Day Model by calling mongoose.model, followed by the name of the model, and the schema of the model. There is a great deal more to write about when it comes to models, But this is a basic example so I will be keeping it basic.
+
 #### 2.2.3 - The Options object
+
+After I have my connection setup, and a model defined, then I define an object that will be used to create instnaces of that model, as well as get a list of them, and drop the whole databse.
 
 ```js
 // options for creating Days, getting Days, and Droping the database
@@ -186,6 +190,8 @@ let options = {
  
 };
 ```
+
+These methods will of course be used in the next portion of the script in which I am defining some event handers as to what to do when a connection has been established successfully.
 
 #### 2.2.4 - On Error, and once open
 
