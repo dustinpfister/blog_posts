@@ -5,11 +5,11 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 221
-updated: 2018-07-05 19:10:22
-version: 1.2
+updated: 2018-07-05 19:16:08
+version: 1.3
 ---
 
-In this post on [mongodb](https://www.mongodb.com/), I will be writing about making mongodb shell scripts. These are scripts that can be called from the mongodb shell with the load command, or dirrectly from the main os command line interface my calling mongodb and then passing the path of the js file. These scripts can be used to work with any of the [database methods](https://docs.mongodb.com/manual/reference/method/js-database/) in the mongo shell such as db.getName.
+In this post on [mongodb](https://www.mongodb.com/), I will be writing about making mongodb shell scripts. These are scripts that can be called from the mongodb shell with the load command, or directly from the main os command line interface my calling mongodb and then passing the path of the js file. These scripts can be used to work with any of the [database methods](https://docs.mongodb.com/manual/reference/method/js-database/) in the mongo shell such as db.getName.
 
 <!-- more -->
 
@@ -64,7 +64,9 @@ bye
 
 ## 3 - An example the prints some info about a database
 
-So a script can be used to do anything that would be done manualy in the mongoShell.
+So a script can be used to do anything that would be done manually in the mongoShell. Including using methods that get the name of the current database that is being used, and a list of the collection names.
+
+So I could make a script called connect_users.js that connects to and displays some information about a database called 'mongoose_users'.
 
 ```js
 conn = new Mongo();
@@ -73,3 +75,16 @@ db = conn.getDB('mongoose_users');
  
 printjson({"dbName":db.getName(), "collectionNames": db.getCollectionNames()});
 ```
+
+Works like a charm
+```
+$ mongo connect_users.js
+MongoDB shell version v4.0.0
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 4.0.0
+{ "dbName" : "mongoose_users", "collectionNames" : [ "users" ] }
+```
+
+## 4 - conclusion
+
+So this was just a quick getting stared post on theses kinds of scripts. I might write more posts on this in the future as my content on [mongodb](/categories/mongodb/) continues to grow.
