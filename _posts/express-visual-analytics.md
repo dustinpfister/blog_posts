@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 10:42:38
-version: 1.8
+updated: 2018-07-05 11:02:48
+version: 1.9
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -131,4 +131,197 @@ module.exports = function (options) {
     return flyJS;
  
 };
+```
+
+### 4.2 - json_fly_va/response_send_tab for sending tabulated totals
+
+This is a part of the midddleware that allows for be to make querys where I can give a start date, a number of days, and a count of number of days to go back from the start date to give tabulated totals of users. So in other words if I want to go back 28 days from a start date, and break those 28 days down into 7 day chunks, and have a total for each 7 day chunk of that 28 day total this will come in handy.
+
+```js
+let _ = require('lodash');
+ 
+// trying out new tabulation method
+module.exports = function (req, res, next) {
+ 
+    // must send tab bool is true, and a start date is given
+    if (req.query.tab && req.query.sd) {
+ 
+        let jRes = req.app.locals.jRes,
+        sd = req.query.sd.split('/'), // start date
+        days = Number(req.query.days) || 28, // number of days to tabulate
+        count = req.query.count || 1, // number of times to go back a count of days.
+        startDate = new Date('20' + sd[2], sd[0] - 1, sd[1]); // standard javaScript Date instance of sd
+ 
+        // start by getting days
+        req.db.get('days')
+ 
+        // filter days that are not part of the desired time range
+        .filter(function (day) {
+ 
+            let thisDate = new Date(day.timeStamp),
+            time = startDate - thisDate;
+ 
+            // filter any days that come after sd
+            if (thisDate.getTime() > startDate.getTime()) {
+ 
+                return false;
+ 
+            }
+ 
+            // return true if it is a day that I want
+            return day.date === req.query.sd || time < (days * 24 * 60 * 60 * 1000 * count);
+ 
+        }).write().then(function (data) {
+ 
+            // make sure we have a proper array
+            if (data.length > days * count) {
+ 
+                // drop any extra days.
+                data = _.drop(data, data.length - days * count);
+ 
+            }
+ 
+            // chunk the data by days
+            data = _.chunk(data, days);
+ 
+            // tabulate totals
+            let totals = [];
+            data.forEach(function (dayArray) {
+ 
+                let t = 0;
+                dayArray.forEach(function (day) {
+                    t += Number(day.users);
+                });
+ 
+                // push an object that contains the total, along with other relavent info
+                totals.push({
+                    userTotal: t,
+                    sd: dayArray[0].date,
+                    ed: dayArray[dayArray.length - 1].date,
+                    days: dayArray
+                });
+ 
+            });
+ 
+            // send the response.
+            jRes.success = true;
+            jRes.mess = 'tabulation from ' + req.query.sd + ' going back ' + days + ' days' + ' ' + count + ' times.';
+            jRes.data = totals;
+            res.json(jRes);
+ 
+        }).catch (function (e) {
+ 
+            // send an error response if something goes wrong.
+            res.eMess = e.message;
+            res.json(jRes);
+ 
+        });
+ 
+    } else {
+ 
+        // continue on as the query string is no good.
+        next();
+ 
+    }
+ 
+};
+```
+
+So then this kind of query...
+```
+http://localhost:8080/flyjson?sd=6/28/18&tab=true&days=7&count=2
+```
+
+... will give me this json.
+
+```js
+{
+    "success": true,
+    "mess": "tabulation from 6/28/18 going back 7 days 2 times.",
+    "eMess": "",
+    "data": [{
+            "userTotal": 2876,
+            "sd": "6/15/18",
+            "ed": "6/21/18",
+            "days": [{
+                    "date": "6/15/18",
+                    "users": "399",
+                    "timeStamp": "2018-06-15T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/16/18",
+                    "users": "175",
+                    "timeStamp": "2018-06-16T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/17/18",
+                    "users": "166",
+                    "timeStamp": "2018-06-17T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/18/18",
+                    "users": "524",
+                    "timeStamp": "2018-06-18T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/19/18",
+                    "users": "537",
+                    "timeStamp": "2018-06-19T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/20/18",
+                    "users": "535",
+                    "timeStamp": "2018-06-20T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/21/18",
+                    "users": "540",
+                    "timeStamp": "2018-06-21T04:00:00.000Z",
+                    "pages": []
+                }
+            ]
+        }, {
+            "userTotal": 2943,
+            "sd": "6/22/18",
+            "ed": "6/28/18",
+            "days": [{
+                    "date": "6/22/18",
+                    "users": "454",
+                    "timeStamp": "2018-06-22T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/23/18",
+                    "users": "188",
+                    "timeStamp": "2018-06-23T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/24/18",
+                    "users": "175",
+                    "timeStamp": "2018-06-24T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/25/18",
+                    "users": "533",
+                    "timeStamp": "2018-06-25T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/26/18",
+                    "users": "554",
+                    "timeStamp": "2018-06-26T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/27/18",
+                    "users": "511",
+                    "timeStamp": "2018-06-27T04:00:00.000Z",
+                    "pages": []
+                }, {
+                    "date": "6/28/18",
+                    "users": "528",
+                    "timeStamp": "2018-06-28T04:00:00.000Z",
+                    "pages": []
+                }
+            ]
+        }
+    ]
+}
 ```
