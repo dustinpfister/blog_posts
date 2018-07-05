@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-05 10:34:38
-version: 1.7
+updated: 2018-07-05 10:42:38
+version: 1.8
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -86,3 +86,49 @@ The procress of importing csv was not as time consuming as it would have been if
 
 
 ## 4 - json_fly_va middle ware
+
+The json_fly_va middleware is custom hacked over version of a similar middleware that I developed in my express_flyjson project. ALthoigh I will not get into full detail about the full sorce code of this I will of course cover some of the features of it that I use to make my three.js models.
+
+
+### 4.1 - The main index.js of json_fly_va
+
+The main index.js of this middleware creates an instance of the express.js app object by calling the express top level function, and this of course is what is exported by the middleware, and is therefor what is used in the main app.js file via app.use.
+
+```js
+let express = require('express'),
+FileAsync = require('lowdb/adapters/FileAsync'),
+low = require('lowdb'),
+flyJS = express();
+ 
+flyJS.get('/',
+ 
+    [
+ 
+        // set the standard response object
+        require('./response_set_obj'),
+
+        // get the days database
+        require('./db_get_days'),
+ 
+        // check for query string
+        require('./check_query'),
+ 
+        // tabulate
+        require('./response_send_tab'),
+ 
+        // respond to sd and ed query string values
+        require('./response_send_sded'),
+ 
+        // end of line
+        require('./response_send_fail')
+ 
+    ]);
+ 
+module.exports = function (options) {
+ 
+    flyJS.set('path_db', options.path_db || 'db.json');
+ 
+    return flyJS;
+ 
+};
+```
