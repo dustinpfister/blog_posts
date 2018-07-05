@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 219
-updated: 2018-07-05 15:26:46
-version: 1.4
+updated: 2018-07-05 15:34:39
+version: 1.5
 ---
 
 So these days I have been experimenting with express as a way to make node.js powered full stack applications. In many of these simple projects I have been using lowdb as a database solution, which works fine when it comes to simple projects that are going to be used off line. However if I aim to make something that will be deployed to a server, I am going to want to use something a little more professional, for this there is of course mongodb, and mongoose.js. This post will be a getting stared post on using mongoose.js to work with mongodb as a database solution.
@@ -195,6 +195,8 @@ These methods will of course be used in the next portion of the script in which 
 
 #### 2.2.4 - On Error, and once open
 
+Once I have the bulk of my logic together then it is just a matter of doing what is to be done when everything goes as plain, or not. Here I use the reference to mongoose.connection to set up when is to be done in the event of an error, or once the database is open and ready to be used.
+
 ```js
 // on error
 db.on('error', (e) => {
@@ -244,3 +246,5 @@ db.once('open', function () {
  
 });
 ```
+
+When the script is called from the command line, by default it will just list any instances of the Day model that might be in the database. I can then give it arguments to create instances of day, or drop the whole database and start over.
