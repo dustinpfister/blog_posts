@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 220
-updated: 2018-07-05 16:48:17
-version: 1.4
+updated: 2018-07-05 16:58:27
+version: 1.5
 ---
 
 In this post I will be giving a quick overview of working with models in [mongoose.js](http://mongoosejs.com/docs/models.html). If you are not aware mongoose.js is a javaScript library to help make it easier to work with [mongodb](https://www.mongodb.com/), a popular javaScript friendly databse solution that is used in node.js powered full stack apps.
@@ -22,6 +22,8 @@ This is not a getting started post on node.js, or mongodb both of which are requ
 For this project I will of course need node.js, and mongodb installed, and I assume that the mongodb server is up and running on the default port. If not some values in the project should be changed.
 
 ## 3 - An example of a Model in mongoose.
+
+For an example of using mongoose to create an instance of a Model I made a project in which I created a User Model that represents a user in a client database. I made additional scripts for interacting with that model, as well as connecting to mongodb, an droping the database.
 
 ### 3.1 - The users.js file that will contain the Model
 
@@ -213,3 +215,41 @@ require('./connect')().then(function (mongoose) {
  
 });
 ```
+
+### 3.5 - The dropall.js file
+
+This is a quick script that I use to just drop the whole database, and start over. Not a bit deal for a simple demo project like this.
+
+```js
+// list users
+require('./connect')().then(function (mongoose) {
+ 
+    let db = mongoose.connection;
+ 
+    db.dropDatabase(function (e) {
+ 
+        if (e) {
+ 
+            console.log('drop: error');
+ 
+        } else {
+ 
+            console.log('drop: database droped!');
+ 
+        }
+ 
+        db.close();
+ 
+    });
+ 
+}).catch (function (e) {
+ 
+    console.log('ahh man.');
+    console.log(e.message);
+ 
+});
+```
+
+## 4 - conclusion
+
+I have not covered everything these is to know about models in this post. However I will be writing a lot more content on mongoose and mongodb in the coming days, and as such I may get around to revising this further as well as link to more relevant posts on mongoose as my [collection of content on mongodb](/categories/mongodb/) grows.
