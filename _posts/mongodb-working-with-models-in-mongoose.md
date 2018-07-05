@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 220
-updated: 2018-07-05 16:43:40
-version: 1.3
+updated: 2018-07-05 16:48:17
+version: 1.4
 ---
 
 In this post I will be giving a quick overview of working with models in [mongoose.js](http://mongoosejs.com/docs/models.html). If you are not aware mongoose.js is a javaScript library to help make it easier to work with [mongodb](https://www.mongodb.com/), a popular javaScript friendly databse solution that is used in node.js powered full stack apps.
@@ -107,6 +107,8 @@ module.exports = function (options, cb) {
 
 ### 3.3 - The create.js file.
 
+This file uses the connect.js file to connect to mongodb, and then it also imports the User Model from users.js. Once I have those two things to work with I use it to create a new User.
+
 ```js
 // create a user
 require('./connect')().then(function (mongoose) {
@@ -147,6 +149,21 @@ require('./connect')().then(function (mongoose) {
  
 });
 ```
+
+So when I call the script from the command line  like this.
+
+```
+$ node create Dustin 321
+create: saved new user
+{ _id: 5b3e8396302df12a286562a8,
+  name: 'dustin',
+  password: '321',
+  createDate: 2018-07-05T20:46:14.401Z,
+  lastOn: 2018-07-05T20:46:14.401Z,
+  __v: 0 }
+```
+
+If all goes well a new user named Dustin is added to the database, and the instance of User is logged to the console. To confirm that the instance of the User model is in the database, I can use another script that will list the users.
 
 ### 3.4 - The list.js file.
 
