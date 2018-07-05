@@ -5,8 +5,8 @@ tags: [js,express,node.js,three.js]
 layout: post
 categories: express
 id: 218
-updated: 2018-07-03 16:17:16
-version: 1.5
+updated: 2018-07-05 10:24:13
+version: 1.6
 ---
 
 I have been [writing posts](/categories/express/) on [express.js](https://expressjs.com/), and am now at a point in which I am just making some projects based that include express.js. I have a post on a basic express todo app, a middleware that responds to requests with json, and now the project that I am going to write about in this post that has to do with using three.js to visualizing my google analytics data that I am just calling [express_visual_analytics](https://github.com/dustinpfister/express_visual_analytics). I think one of the best ways to learn something a little complicated, is to just start building something interesting with it, and learn as I go. That has been the case with this project, and as such it only makes sense that I write about it.
@@ -21,7 +21,11 @@ This is a post on [a project](https://github.com/dustinpfister/express_visual_an
 
 ## 1.1 - This is a work in progress
 
-When I am writing this I am working on version 0.1.x of this project, and it may never be a done deal.
+When I am writing this I am working on version 0.1.x of this project, and it may never be a done deal. There are many additional ideas for features that I wanted to add, and I am also relatively new to full stack development.
+
+## 1.2 - Not meant for deployment at this time.
+
+This project is just one of several projects that I want to mention in my main post on express.js as examples of full stack applications using express. The aim with this project was to just simply make some three.sj models that reflect changes in google analytics data that is imported from CSV files. I do not intent to deploy this project, but I do intent to make it into some kind of offline tool that can be used to make some interesting three.js models that I can then make images, and maybe animations from that can then potential be shard somewhere.
 
 ## 2 - Setup
 
