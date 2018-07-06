@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-06 14:33:17
-version: 1.5
+updated: 2018-07-06 14:38:44
+version: 1.6
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -191,4 +191,49 @@ name: foo ; laston Fri Jul 06 2018 14:16:42 GMT-0400 (Eastern Daylight Time);
 
 ### 4.4 - but I can still connect without a password
 
+Event though I have an user set up, I can still just use the database without a password. Thats because authentication will only fail if I give incorrect credentials, or if I drop the user like before. However if I just do not give anything I can still just use it.
+
+```
+{
+   "username": null,
+   "password": null
+}
+```
+
+```
+$ cd user
+$ node list
+********** list users **********
+name: foo ; laston Fri Jul 06 2018 13:59:54 GMT-0400 (Eastern Daylight Time);
+name: foo ; laston Fri Jul 06 2018 14:16:42 GMT-0400 (Eastern Daylight Time);
+********** **********
+```
+
+This is becuase I have not actually enabled authentication in the mongod.cfg file that I mentioned above.
+
 ### 4.5 - enabling authentication
+
+
+```
+$ cd user
+$ node list
+********** list users **********
+command find requires authentication
+********** **********
+```
+
+```js
+{
+   "username": "dustin",
+   "password": "1234"
+}
+```
+
+```
+$ cd user
+$ node list
+********** list users **********
+name: foo ; laston Fri Jul 06 2018 13:59:54 GMT-0400 (Eastern Daylight Time);
+name: foo ; laston Fri Jul 06 2018 14:16:42 GMT-0400 (Eastern Daylight Time);
+********** **********
+```
