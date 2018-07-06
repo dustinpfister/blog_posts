@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-06 12:26:30
-version: 1.2
+updated: 2018-07-06 14:24:38
+version: 1.3
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -66,42 +66,88 @@ security:
 This is a yaml formated file, and the particular value of interest is the authorization property under security. This can have two possible string values 'enabled' or 'disabled'. In order to edit this file I need the proper access permissions, and once I make a change I will want to restart the mongod service that uses this file. In windows I would want to use services administrative tool to stop, and then restart the service.
 
 
-## 3 - Making a mongodb shell script that will add a user, when authentication is disabled
+## 3 - The mongoose_model_user demo
 
+To help show how to set things up with this I made a project complete with mongodb shell scripts, and a simple User model, along with scripts that connect to and use that model.
+
+### 3.1 - setup
+
+If you want to follow along locally you can clone down this demo, and do an npm install.
+
+```
+$ git clone https://github.com/dustinpfister/mongoose_model_user
+$ cd mongoose_model_user
+$ npm install
+```
+
+### 3.2 - The mongo_shell folder
+
+#### 3.2.1 - the users_add.js file
+#### 3.2.2 - the users_list.js file
+#### 3.2.3 - the users_drop.js file
+
+### 3.3 - The user folder
+
+#### 3.3.1 - The connect.js file
+#### 3.3.2 - The user.js file
+#### 3.3.3 - The create.js file
+#### 3.3.4 - The list.js file
+#### 3.3.5 - The dropall.js file
+
+## 3.4 - the conf.json file
+
+
+## 4 - Using the project
+
+### 4.1 - authentication failure when using a /user script
+
+So the main conf.json file in the root of the demo is where I am storing options that will be used in my connect.js file to make the connection to mongodb. This can include a few values, but for the purpose of this post the two key values are of course username, and password.
+
+So If I have a conf.json file like this:
 ```js
-// create a Mongo instance
-conn = new Mongo();
- 
-// get the admin db
-db = conn.getDB('mongoose_users');
- 
-// authenticate
-//db.auth('mrSmith', '1234');
- 
-// if the admin account exists get it, or null
-user = db.getUser('dustin');
- 
-// if we do not have the user, create the user
-if (!user) {
- 
-    // then create the user
-    db.createUser({
-        user: 'dustin',
-        pwd: '1234',
-        roles: [{
-                role: 'readWrite',
-                db: 'mongoose_users'
-            }
-        ]
-    });
- 
-} else {
- 
-    // the user exists, print info.
-    printjson({
-        "dbName": db.getName(),
-        "adminUser": user
-    });
- 
+{
+   "username": "dustin",
+   "password": "123"
 }
 ```
+
+And I have not created a user for the 'mongoose_users' database, then authentication will fail even if I do not have authtaction enabled yet in the mongod.cfg file.
+
+```
+$ cd user
+$ node create
+Authentication failed.
+```
+
+However this can easily be fixed by setting the values for username, and password to null.
+
+```js
+{
+   "username": null,
+   "password": null
+}
+```
+
+At which point it will work just fine if authentication is disabled in the mongod service.
+
+```
+$ cd user
+$ node create
+create: saved new user
+{ _id: 5b3fb20adf7b9427ac961f34,
+  name: 'foo',
+  password: '123',
+  createDate: 2018-07-06T18:16:42.151Z,
+  lastOn: 2018-07-06T18:16:42.151Z,
+  __v: 0 }
+```
+
+So if I want to password protect this database I will need to set up a user for this database, and I will also want to enable authentication in mongod.cfg.
+
+### 4.2 - Using the /mongo_shell/users_add.js file to add a user when authentication is disabled
+
+### 4.3 - /user scripts now work
+
+### 4.4 - but I can still connect without a password
+
+### 4.5 - enabling authentication
