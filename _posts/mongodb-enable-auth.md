@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-06 14:24:38
-version: 1.3
+updated: 2018-07-06 14:29:47
+version: 1.4
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -145,6 +145,27 @@ create: saved new user
 So if I want to password protect this database I will need to set up a user for this database, and I will also want to enable authentication in mongod.cfg.
 
 ### 4.2 - Using the /mongo_shell/users_add.js file to add a user when authentication is disabled
+
+So to set up the user that I defined in my users_add.js mongo shell script, I just need to go to my mongo_shell script folder, and call that script with mongo.
+
+```
+$ cd mongo_shell
+$ mongo users_add.js
+MongoDB shell version v4.0.0
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 4.0.0
+Successfully added user: {
+        "user" : "dustin",
+        "roles" : [
+                {
+                        "role" : "dbOwner",
+                        "db" : "mongoose_users"
+                }
+        ]
+}
+```
+
+This will create the user 'dustin' with the password '1234' that I hard coded in the js file users_add.js, This could be treated differently, but yo get the idea. I set the user up with the role of 'dbOwner' this is a mongodb hard coded role that gives be full control over the database, even droping the whole thing if I want.
 
 ### 4.3 - /user scripts now work
 
