@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-06 14:38:44
-version: 1.6
+updated: 2018-07-06 14:43:27
+version: 1.7
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -98,6 +98,8 @@ $ npm install
 
 
 ## 4 - Using the project
+
+So now I should cover how to use this project to point out some basic things about setting up authentication in mongodb.
 
 ### 4.1 - authentication failure when using a /user script
 
@@ -209,10 +211,18 @@ name: foo ; laston Fri Jul 06 2018 14:16:42 GMT-0400 (Eastern Daylight Time);
 ********** **********
 ```
 
-This is becuase I have not actually enabled authentication in the mongod.cfg file that I mentioned above.
+This is because I have not actually enabled authentication in the mongod.cfg file that I mentioned above.
 
 ### 4.5 - enabling authentication
 
+So to enable authentication I need to find the mongod.cfg file that the mongod service is using and just make sure the follwing is in there.
+
+```
+security:
+  authorization: enabled
+```
+
+This will of course enable authentication when I restart the service. after restarting mongod, I will run into an authentication failure when trying to do something with the database when no credentials are given as expected.
 
 ```
 $ cd user
@@ -222,12 +232,16 @@ command find requires authentication
 ********** **********
 ```
 
+So now I just need to use the proper credentials when connecting.
+
 ```js
 {
    "username": "dustin",
    "password": "1234"
 }
 ```
+
+And of course I can use it agin juts fine then.
 
 ```
 $ cd user
