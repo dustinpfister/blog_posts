@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-06 14:29:47
-version: 1.4
+updated: 2018-07-06 14:33:17
+version: 1.5
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -107,7 +107,7 @@ So If I have a conf.json file like this:
 ```js
 {
    "username": "dustin",
-   "password": "123"
+   "password": "1234"
 }
 ```
 
@@ -168,6 +168,26 @@ Successfully added user: {
 This will create the user 'dustin' with the password '1234' that I hard coded in the js file users_add.js, This could be treated differently, but yo get the idea. I set the user up with the role of 'dbOwner' this is a mongodb hard coded role that gives be full control over the database, even droping the whole thing if I want.
 
 ### 4.3 - /user scripts now work
+
+So now with the conf.json file set like this
+
+```js
+{
+   "username": "dustin",
+   "password": "1234"
+}
+```
+
+Authntacton does not fail, becuase the user is now there.
+
+```
+$ cd user
+$ node list
+********** list users **********
+name: foo ; laston Fri Jul 06 2018 13:59:54 GMT-0400 (Eastern Daylight Time);
+name: foo ; laston Fri Jul 06 2018 14:16:42 GMT-0400 (Eastern Daylight Time);
+********** **********
+```
 
 ### 4.4 - but I can still connect without a password
 
