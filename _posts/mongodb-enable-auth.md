@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 12:27:47
-version: 1.15
+updated: 2018-07-07 12:32:12
+version: 1.16
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -244,6 +244,8 @@ The user folder contains a simple set of javaScript files that connect to, and u
 
 #### 3.3.1 - The connect.js file
 
+This is the file that I use to connect to mongodb.
+
 ```js
 // connect to mongodb with mongoose, and then return mongoose
 module.exports = function (options, cb) {
@@ -305,6 +307,8 @@ module.exports = function (options, cb) {
 
 #### 3.3.2 - The user.js file
 
+This is just a simple user model that is used for this simple example project.
+
 ```js
 // grab mongoose
 let mongoose = require('mongoose');
@@ -322,6 +326,8 @@ module.exports = User;
 ```
 
 #### 3.3.3 - The create.js file
+
+This is the script that I call to create an instance of the User model that is defined in user.js.
 
 ```js
 // create a user
@@ -364,6 +370,8 @@ require('./connect')(require('../conf.json')).then(function (mongoose) {
 ```
 
 #### 3.3.4 - The list.js file
+
+This script will list all the instances of the User model in the database, this is not to be confused with the users that are defined that have access to the database.
 
 ```js
 // list users
@@ -413,6 +421,7 @@ require('./connect')(require('../conf.json')).then(function (mongoose) {
 
 #### 3.3.5 - The dropall.js file
 
+I have made this script for the purpose of dropping the whole database if I want to in order to quickly start over.
 
 ```js
 // list users
