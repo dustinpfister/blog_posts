@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 10:26:51
-version: 1.10
+updated: 2018-07-07 10:33:42
+version: 1.11
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -119,7 +119,17 @@ MongoDB server version: 4.0.0
 }
 ```
 
-#### 3.2.2 - The users_add.js file
+#### 3.2.2 - Using authentication
+
+If authentication is enabled these scripts can still be used just by simply adding the db.auth method to the script.
+
+```js
+db.auth('dustin','1234');
+```
+
+#### 3.2.3 - The users_add.js file
+
+Here is the shell script for creating a user. I start by making an instance of the Mongo Constructor, then get the database I want to create a user for, in this case it is a database called 'mongoose_users'. Once I have the database I just need to get the user to find out if the user is there before hand as it will return null if the user is not there, and give me the user object if it is. In the event that the user is not there, the user is created with a hard coded name, and password.
 
 ```js
 // create a Mongo instance
@@ -156,7 +166,9 @@ if (!user) {
 }
 ```
 
-#### 3.2.3 - the users_list.js file
+In a more professional script these values will not be hard coded, but this still is a huge improvement from having to hand code this into the mongo shell each time I need to do this, no way am I ever doing that.
+
+#### 3.2.4 - the users_list.js file
 
 ```js
 // create a Mongo instance
@@ -172,7 +184,7 @@ printjson({
 });
 ```
 
-#### 3.2.4 - the users_drop.js file
+#### 3.2.5 - the users_drop.js file
 
 ```js
 // create a Mongo instance
