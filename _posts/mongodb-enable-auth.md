@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 11:55:11
-version: 1.14
+updated: 2018-07-07 12:27:47
+version: 1.15
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -444,6 +444,24 @@ require('./connect')(require('../conf.json')).then(function (mongoose) {
 ```
 
 ## 3.4 - the conf.json file
+
+The conf.json file that I have at the root of the project is used to provide login credentials to scripts that use the connect.js file. What I have in the conf.json file will be passed as an options object to connect.js, and will result in a connection string that uses the credentials defined here.
+
+Here I am using login credentials
+```js
+{
+   "username": "dustin",
+   "password": "1234"
+}
+```
+
+This will result in a connection string that does not have login credentials
+```js
+{
+   "username": null,
+   "password": null
+}
+```
 
 
 ## 4 - Using the project
