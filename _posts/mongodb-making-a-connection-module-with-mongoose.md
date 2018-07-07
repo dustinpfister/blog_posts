@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 225
-updated: 2018-07-07 13:01:37
-version: 1.4
+updated: 2018-07-07 13:11:56
+version: 1.5
 ---
 
 The process of connecting to a [mongodb](https://www.mongodb.com/) database can some times be a little complicated. When connecting locally the hostname and port might not be of much interest, if the [mongod](https://docs.mongodb.com/manual/reference/program/mongod/) service is running on the default port, and there are no issues with using localhost as the hostname. However the situation can become very different when it comes to deployment, where not only does the hostname and port matter, but there is often a username and password that need to be specified as well in order to connect to and use a database. As such there seems to be a need to create, and maintain a module, that can be used to quickly connect depending on the environment. In many cases this module may need to be custom trailered depending on the environment, or at the very least bust be able to accept arguments, or look for environment variables.
@@ -15,10 +15,10 @@ The process of connecting to a [mongodb](https://www.mongodb.com/) database can 
 
 ## 1 - what to know
 
-This is a post on making a node.js module that connects to mongo db. It is not a getting started post on mongodb, node.js, or javaScript. I assume that you have at least some background in these things.
+This is a post on making a node.js module example that connects to mongo db. It is not a getting started post on mongodb, node.js, or javaScript. I assume that you have at least some background in these things.
 
 
-## 2 - A connect.js file, or index.js of a mongoose_connect module
+## 2 - A connect.js file, or index.js of a mongoose_connect module example
 
 So for a project in which I am going to be using mongodb as a database solution, and mongoose as a preferred mongodb client, I thought that it might be a good idea to pull everything that has to do with connecting to mongoose into a single js file that is the index.js file of a stand alone module that I might publish to npm, or a js file that I just store in a lib folder of some kind that is just part of a projects source code.
 
