@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 10:24:01
-version: 1.9
+updated: 2018-07-07 10:26:51
+version: 1.10
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -92,8 +92,31 @@ In this project there are just a few scripts that I have put together that have 
 To use one of these scripts authentication must be disabled, and the script must be called with mongo, or from within the mongo shell with the load command.
 
 ```
-cd mongo_shell
-mongo users_list.js
+$ cd mongo_shell
+$ mongo users_list.js
+MongoDB shell version v4.0.0
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 4.0.0
+{
+        "dbName" : "mongoose_users",
+        "users" : [
+                {
+                        "_id" : "mongoose_users.dustin",
+                        "user" : "dustin",
+                        "db" : "mongoose_users",
+                        "roles" : [
+                                {
+                                        "role" : "dbOwner",
+                                        "db" : "mongoose_users"
+                                }
+                        ],
+                        "mechanisms" : [
+                                "SCRAM-SHA-1",
+                                "SCRAM-SHA-256"
+                        ]
+                }
+        ]
+}
 ```
 
 #### 3.2.2 - The users_add.js file
