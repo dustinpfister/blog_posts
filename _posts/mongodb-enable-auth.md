@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 11:51:48
-version: 1.13
+updated: 2018-07-07 11:55:11
+version: 1.14
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -243,10 +243,205 @@ if (user) {
 The user folder contains a simple set of javaScript files that connect to, and use the 'mongoose_users' database. Nothing fancy, just simple scripts that I can call from the command line using node. In a real project these might be express.js middleware functions, or something to that effect.
 
 #### 3.3.1 - The connect.js file
+
+```js
+// connect to mongodb with mongoose, and then return mongoose
+module.exports = function (options, cb) {
+ 
+    // grab mongoose
+    let mongoose = require('mongoose');
+ 
+    options = options || {};
+    options.host = options.host || 'localhost';
+    options.port = options.port || 27017;
+    options.db = options.db || 'mongoose_users';
+    options.username = options.username || null, //'dustin',
+    options.password = options.password || null; //'1234';
+ 
+    cb = cb || function () {};
+ 
+    // the mongodb url
+    let mongoURL = {
+        host: 'localhost', // assuming localhist will work, change if different
+        port: 27017, // default port change this if different
+        db: 'mongoose_users' // name of database
+    };
+ 
+    let logStr = '';
+    if (options.username && options.password) {
+        logStr = options.username + ':' + options.password + '@';
+    }
+ 
+    mongoURL.url = 'mongodb://' + logStr + mongoURL.host + ':' + mongoURL.port + '/' + mongoURL.db;
+ 
+    // make a connection to mongoDB
+    mongoose.connect(mongoURL.url,{ useNewUrlParser: true });
+ 
+    // ref mongoose.connection
+    let db = mongoose.connection;
+ 
+    return new Promise(function (resolve, reject) {
+ 
+        // on error
+        db.on('error', (e) => {
+ 
+            db.close();
+            reject(e.message);
+ 
+        });
+ 
+        // once the database is open
+        db.once('open', function () {
+ 
+            // resolve with mongoose
+            resolve(mongoose);
+ 
+        });
+ 
+    });
+ 
+};
+```
+
 #### 3.3.2 - The user.js file
+
+```js
+// grab mongoose
+let mongoose = require('mongoose');
+ 
+// create a Model
+let User = mongoose.model('User', {
+        name: String,
+        password: String,
+        createDate: Date,
+        lastOn: Date
+    });
+ 
+// export it
+module.exports = User;
+```
+
 #### 3.3.3 - The create.js file
+
+```js
+// create a user
+require('./connect')(require('../conf.json')).then(function (mongoose) {
+ 
+    let db = mongoose.connection,
+    User = require('./user'),
+ 
+    // create the user
+    user = new User({
+            name: process.argv[2] || 'foo',
+            password: process.argv[3] || '123',
+            createDate: new Date(),
+            lastOn: new Date()
+        });
+ 
+    // save the day
+    user.save(function (e, day) {
+ 
+        if (e) {
+ 
+            console.log('create: error');
+            db.close();
+ 
+        } else {
+ 
+            console.log('create: saved new user');
+            console.log(day);
+            db.close();
+ 
+        }
+ 
+    });
+ 
+}).catch (function (e) {
+ 
+    console.log(e);
+ 
+});
+```
+
 #### 3.3.4 - The list.js file
+
+```js
+// list users
+require('./connect')(require('../conf.json')).then(function (mongoose) {
+ 
+    let db = mongoose.connection,
+    User = require('./user');     // the User model
+ 
+    User.find({}, (e, users) => {
+ 
+        // list the users
+        console.log('********** list users **********');
+        if (e) {
+ 
+            // if an error happens list the message
+            console.log(e.message);
+ 
+        } else {
+ 
+            if (users.length > 0) {
+ 
+                users.forEach(function (user) {
+ 
+                    console.log('name: ' + user.name + ' ; laston ' + user.lastOn + ';');
+ 
+                });
+ 
+            } else {
+ 
+                console.log('no users.');
+ 
+            }
+ 
+        }
+        console.log('********** **********');
+ 
+        db.close();
+ 
+    });
+ 
+}).catch (function (e) {
+ 
+    console.log(e);
+ 
+});
+```
+
 #### 3.3.5 - The dropall.js file
+
+
+```js
+// list users
+require('./connect')(require('../conf.json')).then(function (mongoose) {
+ 
+    let db = mongoose.connection;
+ 
+    db.dropDatabase(function (e) {
+ 
+        if (e) {
+ 
+            console.log('drop: error');
+ 
+        } else {
+ 
+            console.log('drop: database droped!');
+ 
+        }
+ 
+        db.close();
+ 
+    });
+ 
+}).catch (function (e) {
+ 
+    console.log(e);
+ 
+});
+```
 
 ## 3.4 - the conf.json file
 
