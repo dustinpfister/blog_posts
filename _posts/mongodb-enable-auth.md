@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 11:00:34
-version: 1.12
+updated: 2018-07-07 11:51:48
+version: 1.13
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -178,6 +178,8 @@ In a more professional script these values will not be hard coded, but this stil
 
 #### 3.2.4 - the users_list.js file
 
+This mongo shell script can be used to list the users in the database.
+
 ```js
 // create a Mongo instance
 var conn = new Mongo(),
@@ -201,6 +203,8 @@ printjson({
 ```
 
 #### 3.2.5 - the users_drop.js file
+
+If I want to drop the user in order to start over I can do so with this.
 
 ```js
 // create a Mongo instance
@@ -235,6 +239,8 @@ if (user) {
 ```
 
 ### 3.3 - The user folder
+
+The user folder contains a simple set of javaScript files that connect to, and use the 'mongoose_users' database. Nothing fancy, just simple scripts that I can call from the command line using node. In a real project these might be express.js middleware functions, or something to that effect.
 
 #### 3.3.1 - The connect.js file
 #### 3.3.2 - The user.js file
