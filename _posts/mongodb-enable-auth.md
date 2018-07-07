@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 10:33:42
-version: 1.11
+updated: 2018-07-07 11:00:34
+version: 1.12
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -121,10 +121,10 @@ MongoDB server version: 4.0.0
 
 #### 3.2.2 - Using authentication
 
-If authentication is enabled these scripts can still be used just by simply adding the db.auth method to the script.
+If authentication is enabled these scripts can still be used just by supplying an auth object to them, via the eval option, or by placing it in another javaScript file and running that first.
 
 ```js
-db.auth('dustin','1234');
+$ mongo users_list.js --eval "var auth={username:\"dustin\",password:\"1234\"}"
 ```
 
 #### 3.2.3 - The users_add.js file
@@ -133,13 +133,21 @@ Here is the shell script for creating a user. I start by making an instance of t
 
 ```js
 // create a Mongo instance
-conn = new Mongo();
+var conn = new Mongo(),
  
 // get the database
-db = conn.getDB('mongoose_users');
+db = conn.getDB('mongoose_users'),
  
 // get the user if it is there
-user = db.getUser('dustin');
+user = db.getUser('dustin'),
+ 
+auth = auth || null;
+ 
+if (auth) {
+ 
+    db.auth(auth.username, auth.password);
+ 
+}
  
 // if we do not have the user, create the user
 if (!user) {
@@ -172,10 +180,18 @@ In a more professional script these values will not be hard coded, but this stil
 
 ```js
 // create a Mongo instance
-conn = new Mongo();
+var conn = new Mongo(),
  
 // get the database
-db = conn.getDB('mongoose_users');
+db = conn.getDB('mongoose_users'),
+ 
+auth = auth || null;
+ 
+if (auth) {
+ 
+    db.auth(auth.username, auth.password);
+ 
+}
  
 // the user info.
 printjson({
@@ -188,13 +204,21 @@ printjson({
 
 ```js
 // create a Mongo instance
-conn = new Mongo();
+var conn = new Mongo(),
  
 // get database
-db = conn.getDB('mongoose_users');
+db = conn.getDB('mongoose_users'),
+ 
+auth = auth || null;
+ 
+if (auth) {
+ 
+    db.auth(auth.username, auth.password);
+ 
+}
  
 // get the user
-user = db.getUser('dustin');
+var user = db.getUser('dustin');
  
 // if we have the user drop them
 if (user) {
