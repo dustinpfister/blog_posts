@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-07 10:20:37
-version: 1.8
+updated: 2018-07-07 10:24:01
+version: 1.9
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -86,7 +86,17 @@ The mongo_shell folder is a folder that I have started placing in projects that 
 
 In this project there are just a few scripts that I have put together that have to do with setting up a user and password for a database, these scripts must be used when authentication is disabled, and the values are hard coded into them. However as far as this post is concerned they should do the job just fine.
 
-#### 3.2.1 - the users_add.js file
+
+#### 3.2.1 - Using one of these scripts
+
+To use one of these scripts authentication must be disabled, and the script must be called with mongo, or from within the mongo shell with the load command.
+
+```
+cd mongo_shell
+mongo users_list.js
+```
+
+#### 3.2.2 - The users_add.js file
 
 ```js
 // create a Mongo instance
@@ -123,7 +133,7 @@ if (!user) {
 }
 ```
 
-#### 3.2.2 - the users_list.js file
+#### 3.2.3 - the users_list.js file
 
 ```js
 // create a Mongo instance
@@ -139,7 +149,7 @@ printjson({
 });
 ```
 
-#### 3.2.3 - the users_drop.js file
+#### 3.2.4 - the users_drop.js file
 
 ```js
 // create a Mongo instance
