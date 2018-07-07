@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 222
-updated: 2018-07-06 14:43:27
-version: 1.7
+updated: 2018-07-07 10:20:37
+version: 1.8
 ---
 
 So I have been experimenting with [mongodb](https://www.mongodb.com/) a little these days as I am interesting in writing some content on the subject, aside from the fact that it will typically be the database solution I will run into when working in a node.js environment. In this post I will be writing abut [enabling authentication](https://docs.mongodb.com/manual/tutorial/enable-authentication/) for a database.
@@ -82,9 +82,88 @@ $ npm install
 
 ### 3.2 - The mongo_shell folder
 
+The mongo_shell folder is a folder that I have started placing in projects that involve mongodb. These are shell scripts, that are not intended to be used from any kind of client system, unless I am willing to take the chance to implement some kind of admin user account. In any case as far as I am concerned with the content of this post, these are scripts that must be called from the command line, either locally, or by remote when dealing with a deployment.
+
+In this project there are just a few scripts that I have put together that have to do with setting up a user and password for a database, these scripts must be used when authentication is disabled, and the values are hard coded into them. However as far as this post is concerned they should do the job just fine.
+
 #### 3.2.1 - the users_add.js file
+
+```js
+// create a Mongo instance
+conn = new Mongo();
+ 
+// get the database
+db = conn.getDB('mongoose_users');
+ 
+// get the user if it is there
+user = db.getUser('dustin');
+ 
+// if we do not have the user, create the user
+if (!user) {
+ 
+    // then create the user
+    db.createUser({
+        user: 'dustin',
+        pwd: '1234',
+        roles: [{
+                role: 'dbOwner',
+                db: 'mongoose_users'
+            }
+        ]
+    });
+ 
+} else {
+ 
+    // the user exists, print info.
+    printjson({
+        "dbName": db.getName(),
+        "adminUser": user
+    });
+ 
+}
+```
+
 #### 3.2.2 - the users_list.js file
+
+```js
+// create a Mongo instance
+conn = new Mongo();
+ 
+// get the database
+db = conn.getDB('mongoose_users');
+ 
+// the user info.
+printjson({
+    "dbName": db.getName(),
+    "users": db.getUsers()
+});
+```
+
 #### 3.2.3 - the users_drop.js file
+
+```js
+// create a Mongo instance
+conn = new Mongo();
+ 
+// get database
+db = conn.getDB('mongoose_users');
+ 
+// get the user
+user = db.getUser('dustin');
+ 
+// if we have the user drop them
+if (user) {
+ 
+    // drop the user
+    db.dropUser('dustin');
+ 
+} else {
+ 
+    // the user is not there to drop
+    print('the user is not there to drop');
+ 
+}
+```
 
 ### 3.3 - The user folder
 
