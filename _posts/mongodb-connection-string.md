@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 224
-updated: 2018-07-08 08:36:56
-version: 1.2
+updated: 2018-07-08 08:40:16
+version: 1.3
 ---
 
 The [mongodb](https://www.mongodb.com/) [connection string](https://docs.mongodb.com/manual/reference/connection-string/) is one of the first things I have become aware of when getting started with using mongodb as a database solution. Understanding this string is critical not just for the sake of using mongodb locally, but also when it comes to deployment as well as the content of the string will typically differ between those two environments. In this post I will be writing about the mongodb connection string, and relevant must know topics surrounding this when it comes to things like authentication.
@@ -17,7 +17,11 @@ The [mongodb](https://www.mongodb.com/) [connection string](https://docs.mongodb
 
 This is a post on the mongodb connection string that is used to connect to a database. This is not a getting started post on mongodb, express, angular, node.js, javascript or any additional skills that are required before hand. I assume that you are hear becuase you want to learn more about the connection string, and common pitfalls surrounding this topic.
 
-## 2 - A Basic example
+## 2 - Some basic examples of a mongodb connection string
+
+Here in this section of this post I will be outlinng some examples of a connection string it string literal format. With many mongo clients such as [mongoose](http://mongoosejs.com/), and object can be give that will be used to build the connection string, more on that later, for now lets just look at the actual format examples of a connection string.
+
+### 2.1 - The most basic example
 
 A very basic example of a connection string might look like this.
 
