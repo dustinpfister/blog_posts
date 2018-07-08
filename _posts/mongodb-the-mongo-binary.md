@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 227
-updated: 2018-07-08 10:17:33
-version: 1.2
+updated: 2018-07-08 10:24:49
+version: 1.3
 ---
 
 The [mongo binary](https://docs.mongodb.com/manual/reference/program/mongo/) in [mongodb](https://www.mongodb.com/) is a tool that can be used to interact with mongodb. It is not the service that runs in the background that responds to requests that would be [mongod](/2018/07/08/mongodb-the-mongod-binary/). Still the mongo binary is a usful tool that can be used to run [mongodb shell scripts](/2018/07/05/mongodb-making-shell-scripts/) that can be used for various admin tasks such as setting up a user account with read only access.
@@ -20,3 +20,19 @@ This is a post on the mongodb binary known as just simply mongo, it is what I us
 ## 2 - The mongo shell.
 
 If I just call mogno from the command line, and do not give it any arguments. I will end up dropping into the mongo shell. Here I can enter certain commands to look around at things, but when it comes to doing anything advanced I will want to use a shell script to do so. A shell script can be run from here, with the load command, but is can also be executed from the command line. In any case I will use this section to cover some basic examples of using the mogno binary to work with mongodb.
+
+### 2.1 - Entering mongodb without logging in first
+
+If I do not have to do anything special before hand, just simple calling the mongo binary from the command line will drop me into the mongo shell.
+
+```
+$ mongo
+MongoDB shell version v4.0.0
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 4.0.0
+>
+```
+
+The problem with this is that I did not set a username and password, as well as a database that I have access to with said account. If I am running mongodb locally, and I have authentication disabled, this is not a problem, otherwise it is as I might be able to get into the shell, but I will not be able to do much of anything.
+
+### 2.2 - listing databases in the mongo shell
