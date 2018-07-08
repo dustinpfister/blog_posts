@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 224
-updated: 2018-07-08 08:58:12
-version: 1.5
+updated: 2018-07-08 09:02:39
+version: 1.6
 ---
 
 The [mongodb](https://www.mongodb.com/) [connection string](https://docs.mongodb.com/manual/reference/connection-string/) is one of the first things I have become aware of when getting started with using mongodb as a database solution. Understanding this string is critical not just for the sake of using mongodb locally, but also when it comes to deployment as well as the content of the string will typically differ between those two environments. In this post I will be writing about the mongodb connection string, and relevant must know topics surrounding this when it comes to things like authentication.
@@ -44,3 +44,11 @@ let mongoURL = 'mongodb://localhost:27017/mydb'
 ```
 
 To know what the port number actually is if it is something different depends on the setup. It could be set via the comand line when the mongod process is started, it could be stored in a mongod.cgf file somewhere. In any case that is how the port would be set in the string, much the same way is it would be in the browser when connection to a web server that is running locally.
+
+### 2.3 - giving a username and password.
+
+In many cases authentication may be enabled, and when that is the case the username, and password should be given in the string in order to connect. This can be done by giving the username after the prefix, followed my the password with : placed between them just as with the host port pair, and then have it end with an at symbol before continuing with everything else.
+
+```js
+let mongoURL = 'mongodb://dustin:1234@localhost:27017/mydb'
+```
