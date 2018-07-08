@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 227
-updated: 2018-07-08 10:24:49
-version: 1.3
+updated: 2018-07-08 10:37:42
+version: 1.4
 ---
 
 The [mongo binary](https://docs.mongodb.com/manual/reference/program/mongo/) in [mongodb](https://www.mongodb.com/) is a tool that can be used to interact with mongodb. It is not the service that runs in the background that responds to requests that would be [mongod](/2018/07/08/mongodb-the-mongod-binary/). Still the mongo binary is a usful tool that can be used to run [mongodb shell scripts](/2018/07/05/mongodb-making-shell-scripts/) that can be used for various admin tasks such as setting up a user account with read only access.
@@ -35,4 +35,36 @@ MongoDB server version: 4.0.0
 
 The problem with this is that I did not set a username and password, as well as a database that I have access to with said account. If I am running mongodb locally, and I have authentication disabled, this is not a problem, otherwise it is as I might be able to get into the shell, but I will not be able to do much of anything.
 
-### 2.2 - listing databases in the mongo shell
+### 2.2 - logging into the shell with a username and password
+
+If authentication is enabled, and I want to work with a database that I do have a username, and password for, I can log in from the command line. To do this I just need to use the -u, and -p options that are short for --username and --password, and then use the --authticationDatabase option to set the name of the database to wich the given user has access.
+
+```
+$ mongo -u "dustin" -p "1234" --authenticationDatabase "mongoose_users"
+MongoDB shell version v4.0.0
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 4.0.0
+>
+```
+
+### 2.3 - listing, and using a databases in the mongo shell
+
+Once in it is nice to see what databases are available, to do this I just need to use the show dbs command. There is also a need to know what database I am currently using, for this there is the db.getName() database method that can be used to get the name of the current database. Once I have that figured out I might want to switch to a different database, for that there is the use command.
+
+```
+> show dbs
+admin           0.000GB
+config          0.000GB
+local           0.000GB
+mongoose_basic  0.000GB
+mongoose_test   0.000GB
+mongoose_users  0.000GB
+test            0.000GB
+> db.getName()
+test
+> use mongoose_users
+switched to db mongoose_users
+> db.getName()
+mongoose_users
+>
+```
