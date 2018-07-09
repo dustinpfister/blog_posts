@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 231
-updated: 2018-07-09 18:22:54
-version: 1.5
+updated: 2018-07-09 18:30:43
+version: 1.6
 ---
 
 This post is about making [Schema middelware using mongoose](http://mongoosejs.com/docs/middleware.html) as a [mongodb](https://www.mongodb.com/) client. Making such middleware for a schema is useful for preforming certain tasks such as sanitation, and producing certain values that are the result of a method before creating or updating a document. For example I could have a user model that has some middleware that makes sure that a username does not violate certain rules before continuing, rules like the username must begin with a letter, only contain permitted characters, and not exceed a set character length.
@@ -64,41 +64,8 @@ let Orb = mongoose.model('Orb', OrbSchema);
 module.exports = Orb;
 ```
 
-So with this example creating an Orb will result in an error if a username of '_none' which is the default for the current User model, or if the owner name results in false for any reason when converter to a boolean. I could also have it check if the user exsits, which would be even better, but you get the idea, these hooks are very useful for these kinds of checks.
+So with this example creating an Orb will result in an error if a username of '_none' which is the default for the current User model, or if the owner name results in false for any reason when converter to a boolean. I could also have it check if the user exists, which would be even better, but you get the idea, these hooks are very useful for these kinds of checks.
 
-### 2.2 - The create_orb script
+## 3 - Conclusion
 
-```js
-require('../lib/connect')(require('../connect.json')).then(function (mongoose) {
- 
-    let db = mongoose.connection,
-    Orb = require('../models/orb'),
- 
-    // create the orb
-    orb = new Orb({owner: process.argv[2] || null});
- 
-    // save the day
-    orb.save(function (e, orb) {
- 
-        if (e) {
- 
-            console.log('create: error');
-            console.log(e.message);
- 
-        } else {
- 
-            console.log('create: saved new orb');
-            console.log(orb);
- 
-        }
- 
-        db.close();
- 
-    });
- 
-}).catch (function (e) {
- 
-    console.log(e.message);
- 
-});
-```
+Mongoose Schema Middleware functions are a great way to set up a bunch of sanitation checks, and other tasks that should happen with respect to certain actions that happen with mongodb collections. For example in this project that I am making I would want all the orbs of a player to be deleted if the user is deleted, that can be done with these methods.
