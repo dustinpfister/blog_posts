@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 230
-updated: 2018-07-10 09:19:17
-version: 1.5
+updated: 2018-07-10 09:22:25
+version: 1.6
 ---
 
 This post is about working with a [database Schema](https://en.wikipedia.org/wiki/Database_schema) with [mongodb](https://www.mongodb.com/), using [mongoose](http://mongoosejs.com/docs/guide.html) as a mongodb client. A Schema can be thought of as a blueprint of sorts for a Model that will be used to create many instances of said Model that will compose a collection. So in other words a Shema is a formal way of setting up the format of a database item, mainly its properties, and what types each property should be. This post will be a quick overview of how to define and use a Schema in with mongoose.
@@ -45,6 +45,8 @@ let UserSchema = new Schema({
 I start out by grabbing a reference to mongoose, and then Schema constructor. I then use the Schema constructor to create an instance of Schema. In doing so I pass the Schema constructor an object that contains the names of all the properties that define an instance of the Model that will use this Schema. In this object at a minimum contains the constructors that will be used for each property, but it can be more than that of course.
 
 ### 2.2 - Setting defaults for properties
+
+It might be desirable to set some default values for each property in the Schema. This can be done by giving an object that contains a property called type that will then have the constructor that is used like before, but now I can add an additional property called default, and as the name suggests, yes this can be used to define what default values should be fore each property in the Schema.
 
 ```js
 // grab mongoose
