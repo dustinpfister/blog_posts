@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 232
-updated: 2018-07-10 13:08:38
-version: 1.7
+updated: 2018-07-10 13:12:06
+version: 1.8
 ---
 
 When making scripts that are to be called from the command line with [node.js](https://nodejs.org/en/), the subject of option parsing becomes of interest. Option parsing is the process of parsing a string of [arguments from a command line interface](https://en.wikipedia.org/wiki/Command-line_argument#Arguments) into a workable object of values. If you are in a situation in which you find yourself trying to work out your own solution for extracting arguments that are given from the command line via process,argv, you might want to stop and check out some of the npm modules that are around that help to make quick work of this such as [commander](https://www.npmjs.com/package/commander). In this post I will be writing about commander as a solution for command line option parsing, and will be giving some examples of it's use.
@@ -23,6 +23,8 @@ I have writne a post on another one called [nopt](/2017/05/05/nodejs-nopt/) and 
 
 ## 2 - A basic example of commander
 
+For a basic example of commander I made a quick little example that will grab the version number from the package.json file, and use that as the version number that is to be displayed when the version argument is given.
+
 ```js
 #!/usr/bin/env node
  
@@ -34,6 +36,9 @@ prog
  .version(pkg.version || '0.0.0','-v, --version')
  .parse(process.argv);
 ```
+
+I start by requiring in commander, which gives me an object that is used to define options, and commands for the program. I finish by parsing and given arguments from the command line that are in process.argv
+
 
 ## 3 - Setting options in commander
 
