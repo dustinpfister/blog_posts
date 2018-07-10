@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 230
-updated: 2018-07-10 09:22:25
-version: 1.6
+updated: 2018-07-10 09:27:09
+version: 1.7
 ---
 
 This post is about working with a [database Schema](https://en.wikipedia.org/wiki/Database_schema) with [mongodb](https://www.mongodb.com/), using [mongoose](http://mongoosejs.com/docs/guide.html) as a mongodb client. A Schema can be thought of as a blueprint of sorts for a Model that will be used to create many instances of said Model that will compose a collection. So in other words a Shema is a formal way of setting up the format of a database item, mainly its properties, and what types each property should be. This post will be a quick overview of how to define and use a Schema in with mongoose.
@@ -63,9 +63,9 @@ let UserSchema = new Schema({
     });
 ```
 
-Here is the beginnings of what will become a User Model, it \
-
 ### 2.3 - Some pre save middleware hooks
+
+it is possible  to define some pre save middleware than can be used to do things like sanitation checks. For example I can have some pre save middleware that will throw an exception if a username is left at default, or has a value that evaluates to false. After that I can call next, or return a promise, and have another middleware that preforms another check and so on.
 
 ```js
 // Must have a name
@@ -98,6 +98,8 @@ UserSchema.pre('save', function (next) {
  
 });
 ```
+
+Schema middleware is pretty useful, and these kinds of checks should be preformed to help keep things clean and sain in a deployment.
 
 ### 2.4 - Static methods
 
