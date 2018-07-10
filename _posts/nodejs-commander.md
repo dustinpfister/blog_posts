@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 232
-updated: 2018-07-10 13:04:56
-version: 1.6
+updated: 2018-07-10 13:08:38
+version: 1.7
 ---
 
 When making scripts that are to be called from the command line with [node.js](https://nodejs.org/en/), the subject of option parsing becomes of interest. Option parsing is the process of parsing a string of [arguments from a command line interface](https://en.wikipedia.org/wiki/Command-line_argument#Arguments) into a workable object of values. If you are in a situation in which you find yourself trying to work out your own solution for extracting arguments that are given from the command line via process,argv, you might want to stop and check out some of the npm modules that are around that help to make quick work of this such as [commander](https://www.npmjs.com/package/commander). In this post I will be writing about commander as a solution for command line option parsing, and will be giving some examples of it's use.
@@ -77,7 +77,21 @@ $ hexo server -s
 
 When doing that the public folder will be hosted locally, and I can view what I have so far before actually publishing. When making a command in commander this allows me to define these kinds of sub commands for commands.
 
-### 4.1 - A polar position example of a command
+### 4.1 - Optional vs required arguments
+
+When defining the string that will be the command it is possible to set one or more arguments that should be given after it, such as a directory or some numbers. These additional arguments can be optional or required.
+
+```js
+prog
+.command('polpos [a] [d]') // the arguments a and b are optional
+```
+
+```js
+prog
+.command('polpos <a> <d>') // the arguments a and b are required
+```
+
+### 4.2 - A polar position example of a command
 
 So for an example of this I made a command that will give me the x, and y position of a pint that lays a given angle, and distance relative to a starting position. The starting position defaults to 0,0 but I can set it with additional options, I also have an additional option that will display more info if given.
 
