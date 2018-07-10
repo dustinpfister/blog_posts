@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 232
-updated: 2018-07-10 13:12:06
-version: 1.8
+updated: 2018-07-10 13:15:33
+version: 1.9
 ---
 
 When making scripts that are to be called from the command line with [node.js](https://nodejs.org/en/), the subject of option parsing becomes of interest. Option parsing is the process of parsing a string of [arguments from a command line interface](https://en.wikipedia.org/wiki/Command-line_argument#Arguments) into a workable object of values. If you are in a situation in which you find yourself trying to work out your own solution for extracting arguments that are given from the command line via process,argv, you might want to stop and check out some of the npm modules that are around that help to make quick work of this such as [commander](https://www.npmjs.com/package/commander). In this post I will be writing about commander as a solution for command line option parsing, and will be giving some examples of it's use.
@@ -41,6 +41,12 @@ I start by requiring in commander, which gives me an object that is used to defi
 
 
 ## 3 - Setting options in commander
+
+Setting options for the program just involves using the option method that can be chained. I can give both long, and short options, and there are a few conventions to look out for about this.
+
+### 3.1 setting boolean options
+
+If I just want to have a simple true or false style option then I just need to give the string of option names, and a description like this.
 
 ```js
 #!/usr/bin/env node
