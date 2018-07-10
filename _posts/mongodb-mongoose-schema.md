@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 230
-updated: 2018-07-09 20:15:35
-version: 1.3
+updated: 2018-07-10 09:04:38
+version: 1.4
 ---
 
 This post is about working with a [database Schema](https://en.wikipedia.org/wiki/Database_schema) with [mongodb](https://www.mongodb.com/), using [mongoose](http://mongoosejs.com/docs/guide.html) as a mongodb client. A Schema can be thought of as a blueprint of sorts for a Model that will be used to create many instances of said Model that will compose a collection. So in other words a Shema is a formal way of setting up the format of a database item, mainly its properties, and what types each property should be. This post will be a quick overview of how to define and use a Schema in with mongoose.
@@ -22,6 +22,26 @@ This post is about making a [Schema with mongoose](http://mongoosejs.com/docs/gu
 
 For an example of a Schema I will be writing about a Schema that I am making for a current project that is used for the User model. This Schema, the Model that uses it, and the project as a whole is a work in progress, but it should still serve well as a basic example of a Schema.
 
+
+### 2.1 - Basic Schema example
+
+```js
+// grab mongoose
+let mongoose = require('mongoose'),
+Schema = mongoose.Schema;
+ 
+// the User Schema
+ 
+let UserSchema = new Schema({
+        name: String,
+        password: String,
+        createDate: Date,
+        lastOn: Date
+    });
+```
+
+### 2.2 - Setting defaults for properties
+
 ```js
 // grab mongoose
 let mongoose = require('mongoose'),
@@ -36,3 +56,5 @@ let UserSchema = new Schema({
         lastOn: { type: Date, default: Date.now}
     });
 ```
+
+Here is the beginnings of what will become a User Model, it 
