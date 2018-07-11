@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2018-07-11 13:19:25
-version: 1.3
+updated: 2018-07-11 13:22:28
+version: 1.4
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names.
@@ -19,6 +19,8 @@ When working with objects it is sometimes nice to quickly be able to make a cust
 This is a post on just the \_.pick method in lodash. Here I will be writing just about that method, and some other related topics, but will not be getting into detail with lodash, or javaScript in general.
 
 ## 2 - An example of using \_.pick involving an object about traffic received in a day.
+
+For a basic example of using \_.pick I will be giving a simple object that is created from the object literal notation. This object contains some simple primitives, and one property that is an Array. This will serve well as an example of what \_.pick does, and also what to look out for when using it.
 
 ### 2.1 - The day object
 
