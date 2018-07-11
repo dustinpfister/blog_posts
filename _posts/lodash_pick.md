@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2018-07-11 13:35:03
-version: 1.7
+updated: 2018-07-11 15:48:18
+version: 1.8
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names.
@@ -90,4 +90,79 @@ day.pages[0].users += 50;
  
 console.log(day.pages[0].users); // 53
 console.log(custom.pages[0].users); // 3
+```
+
+## 3 - Picking from a Class
+
+When using \_.pick a new object is going to be returned, so if I am using an object that has a constructor other than that of Object, then I am going to loose everything attached to the prototype. This is one of the main things to consider when doing anything with objects. Do I want a copy, or are references okay, and do I care about the prototype.
+
+### 3.1 - The Day constructor
+
+Say for example I have a Day constructor that can be used to create in instance of a day object rather than just an object literal.
+
+```js
+let Day = function (options) {
+ 
+    options = options || {};
+    this.date = options.date || '1/1/00';
+    this.pages = [];
+    this.users = 0;
+    this.pageviews = 0;
+ 
+    if (options.pages) {
+ 
+        this.setPages(options.pages, this.date);
+ 
+    }
+ 
+};
+ 
+// set pages
+Day.prototype.setPages = function (pages) {
+ 
+    let day = this;
+    day.pages = _.cloneDeep(pages);
+    day.setFromPages();
+ 
+};
+ 
+Day.prototype.setFromPages = function () {
+ 
+    let day = this;
+    day.users = 0;
+    day.pageviews = 0;
+ 
+    _.each(day.pages, function (page) {
+ 
+        day.users += page.users ? page.users : 0;
+        day.pageviews += page.pageviews ? page.pageviews : 0;
+ 
+    });
+ 
+};
+ 
+Day.prototype.bounceRate = function () {
+ 
+    return this.users / this.pageviews;
+ 
+}
+```
+
+This differs from my earlier example in that now I can create an object that has a prototype with it.
+
+```js
+let day = new Day({
+    date: '1/2/17',
+    pages: [{
+        path: '/2017/01/01/hello/',
+        users: 3,
+        pageviews: 4
+    }, {
+        path: '/2017/01/02/hello-again/',
+        users: 7,
+        pageviews: 9
+    }]
+});
+console.log( day.constructor.name ); // 'Day'
+console.log( {}.constructor.name ); // 'Object'
 ```
