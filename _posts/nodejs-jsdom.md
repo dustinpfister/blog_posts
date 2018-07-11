@@ -5,15 +5,19 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 131
-updated: 2018-01-14 15:04:22
-version: 1.5
+updated: 2018-07-11 12:47:22
+version: 1.6
 ---
 
 There comes a time now and then that I need to work with html in a server side, node.js environment. I have wrriten about a very helpful project called [cheerio](https://www.npmjs.com/package/cheerio) that works well if I just want to grab at something liek a link, or maybe make some kind of edit to html. However cheerio is not an actual emulation of a browser environment. There are other projects that aim to actually emulate an actual usable browser environment for the purpose of getting client side apparitions to work in a node.js project server side. The npm package [jsdom](https://www.npmjs.com/package/jsdom) is one such project, and as such this post will be about how to use jsdom to bring a browser environment to node.
 
 <!-- more -->
 
-Basic example of jsdom
+## 1 - What to know
+
+This is a post on the npm package known as [jsdom](https://www.npmjs.com/package/jsdom) it is not a getting started post on node.js, javaScript in general, or any additional skills required before hand. I assume that you know a thing or two about these things.
+
+## 2 - Basic example of jsdom
 
 For a basic example of using jsdom I started with with a hard coded html string, and loaded it with the constructor that is exported by the jsdom module. What is returned by the jsdom constructor is something that I quickly found to be just like that of the DOM that I am familiar with when it comes to working within a browser environment. 
 
@@ -48,7 +52,7 @@ console.log(el.innerHTML); // hello World
 
 So far it seems like this project might be just what I had in mind when it comes to having a way to run client side code headless on a server.
 
-## Running a script tag with jsdom
+## 3 - Running a script tag with jsdom
 
 So this is what really sets jsdom apart from other projects like cheerio, which is a great project, it's just that it is really just good for transversing over html content, and maybe making an edit or two. Jsdom can actually run most client side scripts headless.
 
@@ -66,7 +70,7 @@ html = ''+
 new jsdom(html,{ runScripts: 'dangerously' });
 ```
 
-## Don't expect everything to work.
+## 4 - Don't expect everything to work.
 
 Do not expect everything to work, at least not out of the box.
 
@@ -74,7 +78,7 @@ For one thing scripts will not just run by default, as you can see in the exampl
 
 In addition to scripts not just working by default without giving the proper runScripts value, many thing will not work without additional modules, other things might work but in a pretend only kind of fashion. Anything that has to do with canvas will for instance not render, because there is nothing to render to if we are going headless. There is still a way to get this working with jsdom, if for some reason you want to, but it involves the use of additional projects.
 
-## Running an external html file, and it's sub resources.
+## 5 - Running an external html file, and it's sub resources.
 
 If I want to run a client side app that exists as something in a \*.html file I can attept to load it using jsdoms fromFile method. When doing so I might often have external resources that are referenced from the \*.html file such as external scripts, and other assets. To make use that jsdom is making use of everything that is referenced from the *\.html file I will want to pass some options to the method, on top of the path to the file.
 
@@ -134,7 +138,7 @@ jsdom.fromFile(uri, options).then(function (dom) {
 
 This worked as expected just fine, but of course it is not at all a real application. The resources that can be loaded also include iframes, stylesheets, and images on top of external scripts.
 
-## Add something to window before html is parsed.
+## 6 - Add something to window before html is parsed.
 
 Jsdom allows for me to define some things before html is parsed to populate the document.
 
@@ -162,10 +166,10 @@ let dom = new jsdom('<script>foo()<\/script>',options);
 
 This can be used to implement something that might not be there if I take the time to do it.
 
-## Canvas support
+## 7 - Canvas support
 
 If I want to do something with canvas in jsdom is looks like I have to install some additional software. Not only do I need to install an additional npm package called juts simply canvas, I also need to install some additional software at the lower level as well, something called Cairo. As of this writing I have not done so, however if interested in doing this I would start by checking out [canvas on npmjs](https://www.npmjs.com/package/canvas).
 
-## Conclusion
+## 8 - Conclusion
 
 js-dom is the most powerful project that I have come across so far that can be used to do this sort of thing in a node.js environment. If I use this project in more of my projects I will likely update this content, and write a few more posts on the subject.
