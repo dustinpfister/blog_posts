@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2018-07-11 15:48:18
-version: 1.8
+updated: 2018-07-11 15:54:14
+version: 1.9
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names.
@@ -165,4 +165,30 @@ let day = new Day({
 });
 console.log( day.constructor.name ); // 'Day'
 console.log( {}.constructor.name ); // 'Object'
+```
+
+### 3.2 - A \_.pick from a class results in the loss of it's prototype
+
+So after creating an instance of Day all my methods work just fine.
+
+```js
+// my bound rate works
+console.log(day.bounceRate()); // 0.7692307692307693
+console.log( day.constructor.name ); // day
+```
+
+However if I use \_.pick I will loose the prototype.
+
+```js
+let custom = _.pick(day, ['date', 'pages']);
+ 
+console.log( custom.constructor.name ); // Object
+```
+
+No big deal thought I would just need to make a new one.
+
+```js
+let custom = new Day(custom);
+ 
+console.log( custom.constructor.name ); // Day
 ```
