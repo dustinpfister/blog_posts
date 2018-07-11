@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2018-07-11 13:14:23
-version: 1.1
+updated: 2018-07-11 13:17:09
+version: 1.2
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names.
@@ -60,4 +60,16 @@ console.log(custom.users); // 10
 day.pages[0].users += 50;
 console.log(day.pages[0].users); // 53
 console.log(custom.pages[0].users); // 53
+```
+
+### 2.4 - If a deep clone is needed try just doing a \_.deepclone on the object that is given to \_.pick.
+
+
+```js
+let custom = _.pick(_.cloneDeep(day), ['date','pages']);
+ 
+day.pages[0].users += 50;
+ 
+console.log(day.pages[0].users); // 53
+console.log(custom.pages[0].users); // 3
 ```
