@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2018-07-11 13:25:07
-version: 1.5
+updated: 2018-07-11 13:32:46
+version: 1.6
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names.
@@ -51,11 +51,17 @@ When dealing with an object like this, there might be scenarios where I might ju
 
 ### 2.2 - Basic example of \_.pick, to get just the date, and users from the day object.
 
+So if I want a new object that is just a shallow copy of some of the primitive values of the day object, \_.pick works just fine out of the gate like this.
+
 ```js
-console.log( _.pick(day, ['date', 'users']) );
+console.log( _.pick(day, ['date', 'users']) ); // { date: '1/2/17', users: 10 }
 ```
 
+I have my object with just the properties that I want, without the rest of the clutter, great. However things can get a little tricky when it comes to properties that have values that are not primitives.
+
 ### 2.3 - With \_.pick the object returned is a shallow clone
+
+So if I get another new object that is the result of using \_.pick, but this time include the pages array, some might think that this array is a copy, or clone of the original. It is not, anything non-primitive will be referenced in.
 
 ```js
 let custom = _.pick(day, ['date','users','pages']);
@@ -70,6 +76,8 @@ day.pages[0].users += 50;
 console.log(day.pages[0].users); // 53
 console.log(custom.pages[0].users); // 53
 ```
+
+In some cases this is not a problem if I actually want references rather than a copy. However if it is a propble one solotuoin is to just make a \_.deepClone of the object, then passing that as the object for \_.pick.
 
 ### 2.4 - If a deep clone is needed try just doing a \_.deepclone on the object that is given to \_.pick.
 
