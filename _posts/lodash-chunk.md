@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2017-09-30 18:56:30
-version: 1.2
+updated: 2018-07-11 12:38:20
+version: 1.3
 ---
 
 So I think I will write a [few posts](/categories/lodash/) on [lodash](https://lodash.com/), and as such why not start with [\_.chunk](https://lodash.com/docs/4.17.4#chunk).
@@ -15,9 +15,13 @@ So how often do I get into a situation in which I need to break down a linear ar
 
 <!-- more -->
 
-## The basic idea of _.chunk
+## 1 - what to know before hand.
 
-It breaks down array into groups of a given size like this:
+This is a post on the \_.chunk method in lodash. If you are new to javaScript and lodash this might not be a good starting point for you.
+
+## 2 - The basic idea of _.chunk
+
+So the \_.chunk method will break down an array into groups of a given size like this:
 
 ```js
 var _ = require('lodash'),
@@ -29,9 +33,9 @@ console.log(_.chunk(arr, 2));
 // [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
 ```
 
-Now my array is an array of arrays, which comes in handy now and then
+Now my array is an array of arrays, which comes in handy now and then.
 
-## Matrix use example of _.chunk
+## 3 - Matrix use example of _.chunk
 
 One example that comes to mind is a situation in which you have some pixel data stored in a linear array, and I want it organized in a 2d matrix. Say some kind of image data format in which an array of color values, a color pallet, and image width are stored in an object.
 
@@ -72,12 +76,8 @@ data.toMatrix().forEach(function (line) {
 });
 ```
 
-## Conclusion
+## 4 - Conclusion
 
-So yes this method will sure come in handy when working on a project, I can see why people like lodash.
-
-## Conclusion
-
-Be sure to check out my other [posts on lodash](/categories/lodash/)
+So yes this method will sure come in handy when working on a project, I can see why people like lodash. Be sure to check out my other [posts on lodash](/categories/lodash/)
 
 Happy coding.
