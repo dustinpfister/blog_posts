@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2018-07-11 13:22:28
-version: 1.4
+updated: 2018-07-11 13:25:07
+version: 1.5
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names.
@@ -23,6 +23,8 @@ This is a post on just the \_.pick method in lodash. Here I will be writing just
 For a basic example of using \_.pick I will be giving a simple object that is created from the object literal notation. This object contains some simple primitives, and one property that is an Array. This will serve well as an example of what \_.pick does, and also what to look out for when using it.
 
 ### 2.1 - The day object
+
+So here is that day object that will be used in some examples here.
 
 ```js
 let _ = require('lodash');
@@ -45,7 +47,9 @@ var day = {
 };
 ```
 
-### 2.2 - Basic exmaple of \_.pick, to get just the date, and users from the day object.
+When dealing with an object like this, there might be scenarios where I might just want the date, and users properties. Also In some cases I might want the pages Array, and have it so it is a deep copy as well.
+
+### 2.2 - Basic example of \_.pick, to get just the date, and users from the day object.
 
 ```js
 console.log( _.pick(day, ['date', 'users']) );
