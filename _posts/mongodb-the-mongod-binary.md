@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 228
-updated: 2018-07-12 16:54:51
-version: 1.7
+updated: 2018-07-12 17:00:02
+version: 1.8
 ---
 
 The [mongod binary](https://docs.mongodb.com/manual/reference/program/mongod/) in [mongodb](https://www.mongodb.com/) is what is used to start a process, daemon, or service if that is what you prefer to call such things. In other words it is something that runs in the background, and it listens on a port waiting to respond to requests. As such when working with mongodb it is important to at least know a thing or two about this process, such as what port it is listening on, and how to change settings for it assuming that you have the authority to do so. This binary is not to be confused with [another binary called just mongo](/2018/07/08/mongodb-the-mongo-binary/) which is used to interact with mongodb, and preform certain tasks. In this post I will be writing about this binary, I might not touch base on everything but I will be covering a few must know things about it.
@@ -48,3 +48,13 @@ $ sudo chown -R mongodb:mongodb /var/lib/mongodb
 ```
 
 Where /var/lib/mongodb is if course the database folder that is used by the mongodb service.
+
+## 4 - Creating a new dbpath
+
+I can create a new dbpath by just simply setting the dbpath option when starting mongod from the command line
+
+```
+$ mongod --dbpath /home/dustin/data --port 3000
+```
+
+However if I want to use this new database with the service I will neet to change the setting in the conf file at /etc/mongodb.conf to point to that, and I would also need to change the file permissions so that the mongodb user does not run into problems with that.
