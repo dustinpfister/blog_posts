@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 229
-updated: 2018-07-09 10:37:06
-version: 1.7
+updated: 2018-07-12 15:32:11
+version: 1.8
 ---
 
 When playing around with mongodb I once ended up with an [unclean shutdown](https://docs.mongodb.com/manual/tutorial/recover-data-following-unexpected-shutdown/) as a result of just killing the process without allowing for mongod to gracefully shutdown. As such I ended up with a non empty mongod.lock file, and I could not restart mongod. For a while I could not figure out what was wrong, but afyer checking the logs and doing a little research it turns out I just need to repair the database by juts giving a few options to mongod, and sure enough I was back up and running in no time. This will be a quick post about that experience.
@@ -31,7 +31,7 @@ Check the mongod.lock file in the database folder and see if it is not empty. It
 To start the repair just start mongod with the repair option and also give the location to the database. In my Linux environment the database was located at /var/lib/mongodb, but it could be at another location.
 
 ```
-$ mongod --repair --dbpath /var/lib/mongodb
+$ sudo mongod --repair --dbpath /var/lib/mongodb
 ```
 
 If you are not sure where the database is located in the files system that would be a good thing to find out when it comes to these things. The location can be set from the command line when mognod is first started, or it can also be set via a configuration file that could at least potential be located anywhere and can be a conf, or yaml formated cfg file.
