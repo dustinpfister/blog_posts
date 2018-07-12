@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 229
-updated: 2018-07-12 16:00:47
-version: 1.9
+updated: 2018-07-12 17:02:03
+version: 1.10
 ---
 
 When playing around with mongodb I once ended up with an [unclean shutdown](https://docs.mongodb.com/manual/tutorial/recover-data-following-unexpected-shutdown/) as a result of just killing the process without allowing for mongod to gracefully shutdown. As such I ended up with a non empty mongod.lock file, and I could not restart mongod. For a while I could not figure out what was wrong, but afyer checking the logs and doing a little research it turns out I just need to repair the database by juts giving a few options to mongod, and sure enough I was back up and running in no time. This will be a quick post about that experience.
@@ -19,7 +19,7 @@ This is a quick post on how to go about repairing a mongodb database when it has
 
 ### 1.1 - What can cause it.
 
-In my experience so far what caused it was an unclean shutdown by directly killing the mongod process, rather than shunting it down gracefully. This can result in a non empty mongod.lock file in the database folder that is being used. It could also happen because of an operating system crash, a power outage, or anything else that could result in an unclean shutdown.
+In my experience so far what caused it was an unclean shutdown by directly killing the mongod process, rather than shunting it down gracefully. This can result in a non empty mongod.lock file in the database folder that is being used. It could also happen because of an operating system crash, a power outage, or anything else that could result in an unclean shutdown. If jornaling is enable mongodb may be able to just deal with this automatically, but if it is not enabled well.
 
 ### 1.2 - May not need to do this if journaling is enabled
 
