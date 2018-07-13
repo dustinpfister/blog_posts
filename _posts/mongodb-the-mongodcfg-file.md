@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 226
-updated: 2018-07-13 19:48:34
-version: 1.4
+updated: 2018-07-13 19:56:24
+version: 1.5
 ---
 
 So with [mongodb](https://www.mongodb.com/) there is the [mongod binary](https://docs.mongodb.com/manual/reference/program/mongod/) that is the actually process daemon or service that handles requests for data in a database. It other words it is what always runs in the background on the computer that is hosting the database that is being used in a project that makes use of mongodb. Well one thing that might come of interest with this is how to configure mongodb with settings like the port to listen on, and if authentication should be enabled or not. Well one way is to give some of these options to the binary via the command line when staring it, but maybe a better way is to park these settings in a configuration file of sorts, thats where [the mongod.cfg file](https://docs.mongodb.com/manual/reference/configuration-options/) comes into play. In this post I will be giving a quick overview of
@@ -75,3 +75,27 @@ systemLog:
   logAppend: true
   path:  C:\Program Files\MongoDB\Server\4.0\log\mongod.log
 ```
+
+### 2.3 - Network interfaces
+
+Here I set the port, and the ip to bind to. In most cases so far I am just working with mongodb locally, when I go to deploy I dot have to wory about much of this, ans the default settings work okay.
+
+```
+net:
+  port: 27017
+  bindIp: 127.0.0.1
+```
+
+### 2.4 - Security settings
+
+So far I have only been playing with authentication, when I go to deploy an app authentication is enabled so I only enabled this and set up user accounts to help better emulate what I am dealing with when I go to deploy. For the most part this is the only reason why I bother with this at all when working with mongodb locally.
+
+```
+## security settings
+security:
+  authorization: enabled
+```
+
+## 3 - Conclusion
+
+Thats it for now, I might write more about this if I play around with mognodb more however do not hold your breath. Most of my future content on mongodb will likely be on mongo clients like mongoose, when it comes to working with mngodb with respect to making apps, rather than fiddling with config files.
