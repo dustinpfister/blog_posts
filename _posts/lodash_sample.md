@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2018-07-13 13:23:56
-version: 1.1
+updated: 2018-07-13 13:34:39
+version: 1.2
 ---
 
 Time for another post on [lodash](https://lodash.com/) becuase it is very popular, and it is still useful. Regardless of what people say methods like [\_.sample](https://lodash.com/docs/4.17.4#sample) help to make coding in javaScript faster, and more concise. In this post I will be writing about \_.sample, and also show some examples of why I do tent to prefer using lodash to help get things done faster, and focus more on what really matters.
@@ -41,7 +41,11 @@ The think about this is that if I am going to bother with lodash, rather than go
 
 ## 3 - The grid object example
 
+For a more advanced example of this I made an object that represents a grid of objects. The objects are stored as a linear array, so I would want some methods that can be used to convert it to an array of arrays. For the sake of this post I would also want a method that I can use to get a random object, ans well as a random row, and col of objects.
+
 ### 3.1 - The lodash version of the gird object
+
+If using lodash there is \_.chunk, and _.zip that are very useful when dealing with these kinds of situations apart from that of just \_.sample. So for my example of the grid object using lodash I would use those methods.
 
 ```js
 let grid = {
@@ -97,12 +101,16 @@ let grid = {
  
 };
  
-console.log(grid.rnd());
-console.log(grid.rnd('row'));
-console.log(grid.rnd('col'));
+console.log(grid.rnd()); // random object
+console.log(grid.rnd('row')); // random row
+console.log(grid.rnd('col')); // random col
 ```
 
+I was able to put this togather in a flash, and the code is very short, and clean. This is what lodash ( and making use of what is all ready out there in general ) is all about, making use of usual suspect methods to make quick work of things, and move on with what really matters.
+
 ### 3.2 - A vanilla js alternative
+
+So for me it's not so hard to make a vanilla js alternative to this, but it was still far more time consuming. When coding with vanilla js I seem to prefer while loops over for loops or for each.
 
 ```js
 let grid = {
@@ -202,3 +210,5 @@ console.log(grid.rnd());
 console.log(grid.rnd('row'));
 console.log(grid.rnd('col'));
 ```
+
+There are many ways to go about crunching this down a little more I am sure.
