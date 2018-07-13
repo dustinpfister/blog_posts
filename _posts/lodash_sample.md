@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2018-07-13 13:34:39
-version: 1.2
+updated: 2018-07-13 13:36:52
+version: 1.3
 ---
 
 Time for another post on [lodash](https://lodash.com/) becuase it is very popular, and it is still useful. Regardless of what people say methods like [\_.sample](https://lodash.com/docs/4.17.4#sample) help to make coding in javaScript faster, and more concise. In this post I will be writing about \_.sample, and also show some examples of why I do tent to prefer using lodash to help get things done faster, and focus more on what really matters.
@@ -211,4 +211,4 @@ console.log(grid.rnd('row'));
 console.log(grid.rnd('col'));
 ```
 
-There are many ways to go about crunching this down a little more I am sure.
+There are many ways to go about crunching this down a little more I am sure, but you get the idea. I know that it is nice to have a situation in which I am not depending on additional external resources, and as such am juts working directly within javaScripot itself. However these days, as I work on more complex projects, I often do just end up making lodash part of the stack, and if it is there I might as well make use of it.
