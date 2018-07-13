@@ -5,19 +5,25 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2018-07-06 21:42:51
-version: 1.1
+updated: 2018-07-13 13:46:39
+version: 1.2
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native Array.sort. Also it is worth pointing out that this is a collection method, so \_.sortBy is a more robust method that brings a bit more to the table. In this post I will be writing about sorting using the \_.sortBy method, and I will also be covering some vanilla js alternates as well.
 
 <!-- more -->
 
+## 1 - What to know
 
-## 1 - basic example of \_.sortBy
+This is one of my many quick posts on lodash methods, this one is on \_.sortBy. Here I will be writing about that method a bit, as well as the corresponding Array.sort when it comes to just working with javaScript by itself. This is not a getting started post on lodash, or javaScript in general.
 
+## 2 - Basic example of \_.sortBy
 
-### 1.1 - sort an array of numbers
+For a basic example of \_.sortBy why not start off with just using it to sort an array of numbers. It does not get more basic than that does it.
+
+### 2.1 - Sort an array of numbers
+
+To sort an array of numbers by numerical value, I just have to give the array of numbers to \_.sortBy.
 
 ```js
 let _ = require('lodash');
@@ -29,7 +35,7 @@ console.log(_.sortBy(nums));
 //[ -5, -1, 3, 5, 6, 7, 27, 42, 52, 158 ]
 ```
 
-### 1.2 - sort an array of numbers by an expression
+### 2.2 - Sort an array of numbers by an expression
 
 ```js
 let lessThanTen = _.sortBy(nums, function (n) {
