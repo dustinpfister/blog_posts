@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2018-07-13 20:25:23
-version: 1.4
+updated: 2018-07-13 20:42:54
+version: 1.5
 ---
 
 So I think I will write a [few posts](/categories/lodash/) on [lodash](https://lodash.com/), and as such why not start with [\_.chunk](https://lodash.com/docs/4.17.4#chunk).
@@ -86,10 +86,9 @@ data.rotated().forEach(function (line) {
 });
 
 console.log(html);
-/*
-<span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><br><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><br><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><br><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><br><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><br>
-*/
 ```
+
+<span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><span style="color: grey;">X</span><span style="color: red;">X</span><br>
 
 ## 4 - Conclusion
 
