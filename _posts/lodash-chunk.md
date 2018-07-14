@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2018-07-11 12:38:20
-version: 1.3
+updated: 2018-07-13 20:25:23
+version: 1.4
 ---
 
 So I think I will write a [few posts](/categories/lodash/) on [lodash](https://lodash.com/), and as such why not start with [\_.chunk](https://lodash.com/docs/4.17.4#chunk).
@@ -15,11 +15,11 @@ So how often do I get into a situation in which I need to break down a linear ar
 
 <!-- more -->
 
-## 1 - what to know before hand.
+## 1 - What to know before hand.
 
 This is a post on the \_.chunk method in lodash. If you are new to javaScript and lodash this might not be a good starting point for you.
 
-## 2 - The basic idea of _.chunk
+## 2 - The basic idea of \_.chunk
 
 So the \_.chunk method will break down an array into groups of a given size like this:
 
@@ -35,49 +35,64 @@ console.log(_.chunk(arr, 2));
 
 Now my array is an array of arrays, which comes in handy now and then.
 
-## 3 - Matrix use example of _.chunk
+## 3 - Matrix use example of \_.chunk, and \_.chunks friend \_.zip
 
 One example that comes to mind is a situation in which you have some pixel data stored in a linear array, and I want it organized in a 2d matrix. Say some kind of image data format in which an array of color values, a color pallet, and image width are stored in an object.
 
+In this example I can use \_.chunk to break the linear array down into a 2d matrix, or grid if you prefer. Once I have that done I can use [\_.zip](/2018/02/01/lodash_zip/) to rotate the matrix if I want to.
+
 ```js
-var _ = require('lodash'),
-chalk = require('chalk'),
- 
 // matrix data example
 data = {
  
-    w : 4,
-    colors : ['white', 'blue'],
-    px : [1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1],
+    w : 10,
+    colors : ['grey', 'blue','red'],
+    px : [
+        1,1,1,1,2,2,2,2,2,2,
+        1,0,0,1,0,0,0,0,0,0,
+        1,1,1,1,2,2,2,2,2,2,
+        0,0,0,0,0,0,0,0,0,0,
+        2,2,2,2,2,2,2,2,2,2],
  
     // my toMatrix method using _.chunk
     toMatrix : function(){
  
         return _.chunk(this.px,this.w);
  
+    },
+
+    // rotation thanks to zip
+    rotated : function(){
+
+        // _.zip is useful for doing this
+        return _.zip.apply(0, this.toMatrix());
+
     }
  
 };
  
 // draw it out like this
-data.toMatrix().forEach(function (line) {
+
+var html = '';
+data.rotated().forEach(function (line) {
  
-    var txt = '';
     line.forEach(function (px) {
  
-        var style = chalk[data.colors[px]];
- 
-        txt += style(px);
+        html += '<span style=\"color: '+data.colors[px]+';\">X<\/span>';
  
     });
- 
-    console.log(txt);
+    html += '<br>';
  
 });
+
+console.log(html);
+/*
+<span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><br><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: blue;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><br><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: blue;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><br><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><span style="color: grey;">X</span><br><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><span style="color: red;">X</span><br>
+*/
 ```
 
 ## 4 - Conclusion
 
-So yes this method will sure come in handy when working on a project, I can see why people like lodash. Be sure to check out my other [posts on lodash](/categories/lodash/)
+So yes this method will sure come in handy when working on a project, I can see why people like lodash. Be sure to check out my other [posts on lodash](/categories/lodash/).
 
 Happy coding.
