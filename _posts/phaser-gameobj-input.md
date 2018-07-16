@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 63
-updated: 2018-07-16 13:27:53
-version: 1.9
+updated: 2018-07-16 13:31:07
+version: 1.10
 ---
 
 This post is an overview of the main [phaser](http://phaser.io/) input hander that can be found at game.input in a phaser game object instance. There is much to be said about [Input](http://phaser.io/docs/2.6.2/Phaser.Input.html) (what is used via game.input), and [InputHander](http://phaser.io/docs/2.6.2/Phaser.InputHandler.html) (what is used in game objects like sprites). However this post is mainly just an outline of what there is to work with via the Input instance at game.input.
@@ -19,7 +19,7 @@ This is a post in the main input handler that is used at game.input in the game 
 
 ## 1.1 - Two general approaches with input
 
-There are two general ways of handling input with phaser. One is to poll certain objects, or setup certain event handlers via game.input, of which this post is mainly about. The other approach is to do something involving the input handlers for game objects like sprites, if you are more interested in the approce you might want to check out my post on [enabling input with a sprite](/2017/10/23/phaser-components-input-enabled/).
+There are two general ways of handling input with phaser. One is to poll certain objects, or setup certain event handlers via game.input, of which this post is mainly about. The other approach is to do something involving the input handlers for game objects like sprites, if you are more interested in the approce you might want to check out my post on [enabling input with a sprite](/2017/10/23/phaser-components-input-enabled/), and another relevant post on that subject about [making sprites draggable](/2017/10/24/phaser-inputhandler-draggable/).
 
 ## 1.2 - Confusion over input and inputHander
 
