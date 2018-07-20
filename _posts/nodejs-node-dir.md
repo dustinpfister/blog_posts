@@ -5,15 +5,20 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 86
-updated: 2017-11-07 12:57:58
-version: 1.2
+updated: 2018-07-20 14:26:34
+version: 1.3
 ---
 
 So you have a bunch of files in a folder, and you want to do something involving the content of each file. You might only want to bother with a certain kind of file, and you might want to know each filename. Well one npm package that I have found that helps a whole lot with that is [node-dir](https://www.npmjs.com/package/node-dir), and I find it a bit of a time saver compared to just making something from the ground up.
 
 <!-- more -->
 
-## Getting started with a new project
+## 1 - what to know
+
+So this is a post on the npm package node-dir that can be used as a file system walker, among a few other things. This is not a post on node.js, and javaScript in general and as such I assume that you have some background with that.
+
+
+## 2- Getting started with a new project
 
 First things first, create a new project folder, cd into it, set up a package.json file, and install node-dir. Maybe call it something like node-dir-demo.
 
@@ -25,7 +30,7 @@ $ npm install node-dir --save
 
 When making a simple demo project like this I often just run threw and set default values for each value in the package.json file. If you are new to node.js development the --save flag adds node-dir to the dependences list of the package.json file.
 
-## Basic readFiles hello world example of node-dir
+## 3 - Basic readFiles hello world example of node-dir
 
 Once that is done it's time to make an index.js file for the project. As with any post of mine where I write about an npm package like this I start off with a simple hello world style example of it's use. For this I thought I would start off with a script that logs to the console the fileNames, and content of all files found in the root path in which it is called.
 
@@ -57,7 +62,7 @@ dir.readFiles('./', function (err, content, fileName, next) {
 
 As You might have guess this method is the one to use if I want to sequentially read threw files.
 
-## Getting files that Match a certain regEx pattern
+## 4 - Getting files that Match a certain regEx pattern
 
 An options object can be passed to readFiles that allows for me to set a certin pattern that is to be matched if I say only want to loop over html files, and it can also be used to set recursive looping on or off.
 
@@ -94,7 +99,7 @@ dir.readFiles(
 ```
 
 
-## Turn the project into a global CLI tool
+## 5 - Turn the project into a global CLI tool
 
 If I feel as thought I am starting to develop some kind of project that will work well as a CLI tool, there is the option of [adding the node.js shebang](/2017/03/26/linux_shebang/) to the top of the index file, and using an [option parser such as nopt](/2017/05/05/nodejs-nopt/) with the project. I will also want to add a bin entry to my package.json file.
 
@@ -214,6 +219,42 @@ $ node-dir-demo -r
 
 Using nopt I can define any options, including shorthands that I want.
 
-## Conclusion
+## 6 - Alternatives to node-dir
+
+So of course node-dir is not the only npm package that can be used as a file system walker, there are many alternatives, and of course there is the option of making your own file system walker with just node.js by itself.
+
+## 6.1 - klaw
+
+So these days [klaw might be my favorite](/2018/07/19/nodejs-klaw/) file system walker that I know of so far. It might not have all the features that I would want in such a dependency, but it is still a nice solution for this sort of thing.
+
+```js
+let klaw = require('klaw'),
+path = require('path'),
+ 
+// the dir to walk
+dir_walk = process.argv[2] || process.cwd();
+ 
+// walking dir_walk with the following options
+klaw(dir_walk, {
+ 
+    // default to full recursion, if now depth is given
+    depthLimit: process.argv[3] || -1
+ 
+})
+ 
+// for each item
+.on('data', function (item) {
+ 
+    if (!item.stats.isDirectory()) {
+ 
+        console.log(path.basename(item.path));
+ 
+    }
+ 
+});
+```
+
+## 7 - Conclusion
 
 I started playing with some of the other methods, but ran into problems with the async alternatives for readFiles in version 0.1.17. For the most part the readFiles method does what I want for most projects that come to mind, for looping over all files, or only files the meet a certain pattern. The readFiles method also works great for getting what it is that I want when doing something like this, the filename, and the content of all files.
+
