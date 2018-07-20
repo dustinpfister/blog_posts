@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 236
-updated: 2018-07-20 11:03:22
-version: 1.4
+updated: 2018-07-20 12:26:23
+version: 1.5
 ---
 
 When making a command line interface program in node.js that needs to walk a file system recursively there are many options. If you do want to work within the core set of node.js modules without installing any additional from npm there is of course the nodedir method in the file system module that may be of interest. However in this post I will be writing about an npm package option that I seem to like a little for this known as [klaw](https://www.npmjs.com/package/klaw), that can also be used with another popular project known as [through2](https://www.npmjs.com/package/through2). I will be giving file system walking examples mainly using this, but will also touch base on some alternatives as well.
@@ -99,6 +99,52 @@ package.json
  
 the walk is over
 ```
+
+## 3 - Using fs-extra as a replacement for graceful-fs
+
+By default klaw uses the fs module replacement package known as [graceful-fs](https://github.com/isaacs/node-graceful-fs), If I want to have klaw use something else such as [fs-extra](https://www.npmjs.com/package/fs-extra) for example, then I just need to pass it as the fs option when using klaw.
+
+So then I just need to install it.
+```
+$ npm install fs-extra --save
+```
+
+And then pass it as the file system module via the fs option.
+
+```js
+let klaw = require('klaw'),
+path = require('path'),
+
+// the dir to walk
+dir_walk = process.argv[2] || process.cwd();
+
+// walking dir_walk with the following options
+klaw(dir_walk, {
+
+    // using fs-extra as the fs module
+    fs: require('fs-extra') 
+
+})
+
+// for each item
+.on('data', function (item) {
+
+    // now using fs-extra in place of graceful-fs
+    // So now I can use promises
+    this.fs.readFile(item.path).then(function (data) {
+
+        console.log(data.toString());
+
+    }).catch (function (e) {
+
+        console.log(e.message);
+
+    });
+
+});
+```
+
+So as you can see fs-extra makes each of the file system methods return a promise, if I comment one the fs option this will of course result in an error. If interested I have writen a post on [fs-extra](/2018/01/08/nodejs-fs-extra/) a while back if you want to read more about that fs module drop in replacement.
 
 ## 3 - klaw alternatives
 
