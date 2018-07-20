@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 236
-updated: 2018-07-20 10:41:36
-version: 1.3
+updated: 2018-07-20 11:03:22
+version: 1.4
 ---
 
 When making a command line interface program in node.js that needs to walk a file system recursively there are many options. If you do want to work within the core set of node.js modules without installing any additional from npm there is of course the nodedir method in the file system module that may be of interest. However in this post I will be writing about an npm package option that I seem to like a little for this known as [klaw](https://www.npmjs.com/package/klaw), that can also be used with another popular project known as [through2](https://www.npmjs.com/package/through2). I will be giving file system walking examples mainly using this, but will also touch base on some alternatives as well.
@@ -21,7 +21,7 @@ This is a post on the klaw npm package that provides a node.js file walker solut
 
 In this post I am using klaw 2.1.1 which as of july 2018 is still the latest version, and there has not been much activity in the repo for the past few months. That is not a deal breaker for me as long as it seems that the project is still fairly solid, and so far I can not say I have not run into any problems with klaw.
 
-## 2 - Some examples of klaw
+## 2 - A Basic example of klaw, and test folder setup
 
 I put together some examples of klaw that have to do with walking a file system folder. Like many of my posts on an npm package I make a test folder, and install the package along with any additional packages I might need to make some demos. For the examples in this section the only additional package I am using is throught2.
 
@@ -33,7 +33,7 @@ $ npm install klaw --save
 $ npm install through2 --save
 ```
 
-## 2.1 - Basic example of using klaw to walk a file system
+## 2.1 - Basic.js example of using klaw to walk a file system
 
 For a basic.js file example I made a quick script that just walks the root name space of a path that I give as the first argument in the command line, else it defaults to the current working directory.
 
@@ -44,12 +44,15 @@ path = require('path'),
 // the dir to walk
 dir_walk = process.argv[2] || process.cwd();
  
+// walking dir_walk with the following options
 klaw(dir_walk, {
  
-    depthLimit: 0, // what is only at root
+    // default to full recursion, if now depth is given
+    depthLimit: process.argv[3] || -1
  
 })
  
+// for each item
 .on('data', function (item) {
  
     if (!item.stats.isDirectory()) {
@@ -58,7 +61,43 @@ klaw(dir_walk, {
  
     }
  
+})
+ 
+// when the walk is over
+.on('end', function () {
+ 
+    console.log('');
+    console.log('the walk is over');
+ 
 });
+```
+
+I am so far only using a single option when calling klaw that can be used to set the depth level of recursion when it comes to walking through a file system, a key feature that just about any walker should have.
+
+### 2.2 - The on data event, and item object
+
+One of the most important aspects of klaw is the data event, as this is what will be called for each file that is not filtered out before hand, more on that later in this post. A single object is given for the method that is provided as the callback for this event that contains the absolute path of the item, as well as the stats for that item.
+
+```js
+// for each item
+.on('data', function (item) {
+ 
+    console.log(item.path); // the full absolute path of of the item
+    console.log(item.stats); // the stats of the item
+ 
+})
+```
+
+The stats object is an instance of what is returned if I where to call an [fs.stat](/2018/02/15/nodejs-filesystem-stat/) for each file, there is no need to do that as it is done foe each file by default. The path given is always an absolute path, as it should be for something like this.
+
+```
+$ node basic ./ 0
+.gitignore
+basic.js
+package-lock.json
+package.json
+ 
+the walk is over
 ```
 
 ## 3 - klaw alternatives
