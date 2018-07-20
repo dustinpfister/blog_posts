@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 236
-updated: 2018-07-20 13:04:54
-version: 1.6
+updated: 2018-07-20 13:53:59
+version: 1.7
 ---
 
 When making a command line interface program in node.js that needs to walk a file system recursively there are many options. If you do want to work within the core set of node.js modules without installing any additional from npm there is of course the nodedir method in the file system module that may be of interest. However in this post I will be writing about an npm package option that I seem to like a little for this known as [klaw](https://www.npmjs.com/package/klaw), that can also be used with another popular project known as [through2](https://www.npmjs.com/package/through2). I will be giving file system walking examples mainly using this, but will also touch base on some alternatives as well.
@@ -145,6 +145,84 @@ klaw(dir_walk, {
 ```
 
 So as you can see fs-extra makes each of the file system methods return a promise, if I comment one the fs option this will of course result in an error. If interested I have writen a post on [fs-extra](/2018/01/08/nodejs-fs-extra/) a while back if you want to read more about that fs module drop in replacement.
+
+## 5 - Using stream.Transfrom to filter items
+
+In this post I am also using through2 as a way to make streams to use with the pipe method. If for some reason I do not want to use through2 one alternative is to just directly use stream.Transform in object mode.
+
+```js
+let klaw = require('klaw'),
+path = require('path'),
+stream = require('stream'),
+dir_walk = process.argv[2] || process.cwd();
+ 
+klaw(dir_walk)
+ 
+// using stream.Transform in objectMode
+.pipe(new stream.Transform({
+ 
+        objectMode: true,
+        transform: function (item, en, cb) {
+ 
+            if (item.stats.size > 0 && item.stats.size < 1024) {
+ 
+                this.push(item);
+ 
+            }
+ 
+            cb();
+ 
+        }
+ 
+    }))
+ 
+// the filtered list of items
+.on('data', function (item) {
+ 
+    console.log(item.path);
+ 
+});
+```
+
+## 4 - Using through2 to filter items
+
+The projects readme file recommends that I use through2 to to quickly help with more advanced filtering operations that, may involve preforming one or more steps, some of which may require additional file io operations such as reading the actual contents of a file rather than just the meta data. Turns out that through2 is a fairly popular project, so I thought I would give it a try.
+
+## 4.1 - filtering by file extension
+
+So if I want to filter by extension I can pass a method to the through2 object method that will return
+
+```js
+let klaw = require('klaw'),
+path = require('path'),
+through2 = require('through2'),
+dir_walk = process.argv[2] || process.cwd();
+ 
+// lets klaw
+klaw(dir_walk)
+ 
+// only html
+.pipe(through2.obj(function (item, enc, next) {
+ 
+        let ext = path.extname(item.path);
+ 
+        if (ext.toLowerCase() === '.html' || ext.toLowerCase() === '.htm') {
+ 
+            this.push(item);
+ 
+        }
+ 
+        next();
+ 
+    }))
+ 
+// for each item that remains
+.on('data', function (item) {
+ 
+    console.log(item.path);
+ 
+});
+```
 
 ## 4 - klaw alternatives
 
