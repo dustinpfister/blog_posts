@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 236
-updated: 2018-07-20 14:28:21
-version: 1.9
+updated: 2018-07-20 15:29:50
+version: 1.10
 ---
 
 When making a command line interface program in node.js that needs to walk a file system recursively there are many options. If you do want to work within the core set of node.js modules without installing any additional from npm there is of course the nodedir method in the file system module that may be of interest. However in this post I will be writing about an npm package option that I seem to like a little for this known as [klaw](https://www.npmjs.com/package/klaw), that can also be used with another popular project known as [through2](https://www.npmjs.com/package/through2). I will be giving file system walking examples mainly using this, but will also touch base on some alternatives as well.
@@ -224,11 +224,91 @@ klaw(dir_walk)
 });
 ```
 
-## 4 - klaw alternatives
+## 4.2 - More advanced filtering that involves looking at the content
+
+In many cases I might want to filter files based on the content of a file as well. For example I with html files I might only want files that have a certain meta tag, and I also might want to append some properties to the item object as well.
+
+For this I can use another npm project that is useful for working with html content, without having to have a working browser environment in node.js, such as cases like this called [cheerio](/2017/11/28/nodejs-cheerio/).
+
+```js
+let klaw = require('klaw'),
+path = require('path'),
+through2 = require('through2'),
+cheerio = require('cheerio'),
+fs = require('fs-extra'),
+dir_walk = process.argv[2] || process.cwd();
+ 
+// lets klaw
+klaw(dir_walk)
+ 
+// only html
+.pipe(through2.obj(function (item, enc, next) {
+ 
+        let ext = path.extname(item.path);
+ 
+        if (ext.toLowerCase() === '.html' || ext.toLowerCase() === '.htm') {
+ 
+            this.push(item);
+ 
+        }
+ 
+        next();
+ 
+    }))
+ 
+// read html
+.pipe(through2.obj(function (item, enc, next) {
+ 
+        let stream = this;
+ 
+        fs.readFile(item.path).then(function (html) {
+ 
+            // buffer to string
+            html = html.toString();
+ 
+            let $ = cheerio.load(html);
+ 
+            // if it is an article
+            if ($('meta[content="article"]').length) {
+ 
+                // title, and paragraph text
+                item.title = $('title').text();
+                item.text_p = $('.article-inner>>p').text();
+ 
+                // push the item
+                stream.push(item);
+ 
+            }
+ 
+            next();
+ 
+        }).catch (function (e) {
+ 
+            console.log(e);
+            next();
+ 
+        })
+ 
+    }))
+ 
+// for each article
+.on('data', function (item) {
+ 
+    console.log('********** ********** **********');
+    console.log(item.title);
+    console.log(item.text);
+    console.log('********** ********** **********');
+ 
+});
+```
+
+This works great at getting all the files that meat that criteria. I could expand this into some kind of actual useful tool that will give me information about a public html folder such as total site wide word count for all blog posts, or something to that effect, but you get the idea.
+
+## 5 - klaw alternatives
 
 So now that I have covered how to use klaw as a node.js file system walker solution, it might be a good call to briefly take a look at some alternatives.
 
-### 4.1 - The nodedir npm package
+### 5.1 - The nodedir npm package
 
 One of the first file systems walkers I have come across is [nodedir](https://www.npmjs.com/package/node-dir), and I have [written a post](/2017/11/05/nodejs-node-dir/) on this on a while back. As of this writing it would look as though the project is no longer supported, as there has not been a single commit at least for over a year now. Still the main method of interest does seem to work okay for what it was designed to do if you want to give it a try anyway.
 
