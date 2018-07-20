@@ -5,13 +5,21 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 236
-updated: 2018-07-20 10:36:04
-version: 1.2
+updated: 2018-07-20 10:41:36
+version: 1.3
 ---
 
 When making a command line interface program in node.js that needs to walk a file system recursively there are many options. If you do want to work within the core set of node.js modules without installing any additional from npm there is of course the nodedir method in the file system module that may be of interest. However in this post I will be writing about an npm package option that I seem to like a little for this known as [klaw](https://www.npmjs.com/package/klaw), that can also be used with another popular project known as [through2](https://www.npmjs.com/package/through2). I will be giving file system walking examples mainly using this, but will also touch base on some alternatives as well.
 
 <!-- more -->
+
+## 1 - What to know before hand.
+
+This is a post on the klaw npm package that provides a node.js file walker solution. I assume that you have some background on node.js, javaScript in general, and are now just looking for options when it comes to recursively walking the contents of a folder in a file system.
+
+### 1.1 - version numbers matter
+
+In this post I am using klaw 2.1.1 which as of july 2018 is still the latest version, and there has not been much activity in the repo for the past few months. That is not a deal breaker for me as long as it seems that the project is still fairly solid, and so far I can not say I have not run into any problems with klaw.
 
 ## 2 - Some examples of klaw
 
