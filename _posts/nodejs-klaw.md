@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 236
-updated: 2018-07-20 13:53:59
-version: 1.7
+updated: 2018-07-20 14:10:35
+version: 1.8
 ---
 
 When making a command line interface program in node.js that needs to walk a file system recursively there are many options. If you do want to work within the core set of node.js modules without installing any additional from npm there is of course the nodedir method in the file system module that may be of interest. However in this post I will be writing about an npm package option that I seem to like a little for this known as [klaw](https://www.npmjs.com/package/klaw), that can also be used with another popular project known as [through2](https://www.npmjs.com/package/through2). I will be giving file system walking examples mainly using this, but will also touch base on some alternatives as well.
@@ -231,3 +231,32 @@ So now that I have covered how to use klaw as a node.js file system walker solut
 ### 4.1 - The nodedir npm package
 
 One of the first file systems walkers I have come across is [nodedir](https://www.npmjs.com/package/node-dir), and I have [written a post](/2017/11/05/nodejs-node-dir/) on this on a while back. As of this writing it would look as though the project is no longer supported, as there has not been a single commit at least for over a year now. Still the main method of interest does seem to work okay for what it was designed to do if you want to give it a try anyway.
+
+```js
+let dir = require('node-dir'),
+path = require('path'),
+dir_walk = process.argv[2] || process.cwd();
+ 
+// read all files in dir_walk recursively
+dir.readFiles(dir_walk, function (err, content, fileName, next) {
+ 
+    if (err) {
+ 
+        // if error
+        console.log(err);
+        next();
+ 
+    } else {
+ 
+        // else we have the item
+        console.log(fileName);
+        console.log(content);
+ 
+        next();
+ 
+    }
+ 
+});
+```
+
+This solution works okay, but I can not say I would prefer it over klaw these days. I have written a [post on node-dir](/2017/11/05/nodejs-node-dir/) a while back if you are interested in reading more about this one anyway for whatever the reason.
