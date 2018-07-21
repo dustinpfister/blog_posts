@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 238
-updated: 2018-07-21 19:20:51
-version: 1.8
+updated: 2018-07-21 19:23:39
+version: 1.9
 ---
 
 The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with node.js development. There are many options when it comes to doing this, some of which are well known npm packages such as walk, and klaw. However in this post I will be writing about how to go about doing so with just the node.js build in file system modules readdir method, along with some others a well.
@@ -263,6 +263,8 @@ let forItem = (opt, item) => {
 I included references to the fs module, as well as a read methid that can quickly be used to read the contents of the current item.
 
 ### 3.4 - The walk method
+
+So then there is also of course the main walk method that is what will be called to start a file system walk. I can just give a string that is the root path to start walking, and then a single onItem method if I want. If I want to take advantage of more advanced options I can also give just an object with all options, and methods that are to be used as well.
 
 ```js 
 // walk
