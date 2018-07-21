@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 238
-updated: 2018-07-21 17:52:45
-version: 1.6
+updated: 2018-07-21 19:05:16
+version: 1.7
 ---
 
 The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with node.js development. There are many options when it comes to doing this, some of which are well known npm packages such as walk, and klaw. However in this post I will be writing about how to go about doing so with just the node.js build in file system modules readdir method, along with some others a well.
@@ -99,58 +99,62 @@ So for a more advanced example of making a file system walker using fs.readdir, 
 
 ### 3.1 - Making a readDir method that returns a promise
 
+So I pulled fs.readdir into a method, and made it so that the method returns a promise. This will help improve error handing, and will also help reduce callback hell as well.
+
 ```js
 let fs = require('fs'),
 path = require('path');
-
+ 
 // use fs.readDir to get the contents of the given dir
-let readDir = function (dir) {
-
+let readDir = (dir) => {
+ 
     return new Promise((resolve, reject) => {
-
-        fs.readdir(dir, function (e, contents) {
-
+ 
+        fs.readdir(dir, (e, contents) => {
+ 
             if (e) {
-
+ 
                 reject(e)
-
+ 
             } else {
-
+ 
                 resolve(contents);
-
+ 
             }
-
+ 
         });
-
+ 
     });
-
+ 
 };
 ```
 
 ### 3.2 - Doing the same with fs.stat
 
+I did the same with the method that will be used to read stats as well.
+
 ```js
 // get the stats of the given item path
-let readStats = function (itemPath) {
-
+let readStats = (itemPath) => {
+ 
     return new Promise((resolve, reject) => {
-
-        fs.stat(itemPath, function (e, stats) {
-
+ 
+        fs.stat(itemPath, (e, stats) => {
+ 
             if (e) {
-
+ 
                 reject(e)
-
+ 
             } else {
-
+ 
                 resolve(stats);
-
+ 
             }
-
+ 
         });
-
+ 
     });
-
+ 
 };
 ```
 
@@ -158,97 +162,97 @@ let readStats = function (itemPath) {
 
 ```js
 // what to do for all items
-let forAllItems = function (opt, items) {
-
-    items.forEach(function (item) {
-
+let forAllItems = (opt, items) => {
+ 
+    items.forEach((item) => {
+ 
         forItem(opt, item);
-
+ 
     });
-
+ 
 };
-
+ 
 // what to do for a single item
-let forItem = function (opt, item) {
-
+let forItem = (opt, item) => {
+ 
     let itemPath = path.join(opt.root, item);
-
+ 
     // read stats
-    readStats(itemPath).then(function (stats) {
-
+    readStats(itemPath).then((stats) => {
+ 
         // the api
         let api = {
-
+ 
             opt: opt,
             fs: fs,
-
+ 
             // read file convenience method
             read: function (cb) {
-
+ 
                 let api = this;
-
-                return fs.readFile(api.item.path, function (e, data) {
-
+ 
+                return fs.readFile(api.item.path, (e, data) => {
+ 
                     if (e) {
-
+ 
                         cb(e, null);
-
+ 
                     }
-
+ 
                     if (data) {
-
+ 
                         let ext = api.item.ext;
-
+ 
                         if (ext === '.js' || ext === '.html' || ext === '.css') {
-
+ 
                             data = data.toString();
-
+ 
                         }
-
+ 
                         cb(null, data);
-
+ 
                     }
-
+ 
                 });
-
+ 
             },
             item: {
-
+ 
                 path: itemPath,
                 filename: item,
                 ext: path.extname(item).toLowerCase(),
                 isDir: stats.isDirectory()
-
+ 
             }
-
+ 
         };
-
+ 
         opt.forItem.call(api, api.item);
-
+ 
         // find next level
         let nextLevel = opt.level + 1;
-
+ 
         // if level is less than maxLevel, or the no maxLevel flag of -1 is set
         if (opt.level < opt.maxLevel || opt.maxLevel === -1) {
-
+ 
             // if dir
             if (stats.isDirectory()) {
-
+ 
                 walk(Object.assign({}, opt, {
                         root: itemPath,
                         level: nextLevel
                     }));
-
+ 
             }
-
+ 
         }
-
-    }).catch (function (e) {
-
+ 
+    }).catch ((e) => {
+ 
         opt.forError.call(opt, e, item);
-
+ 
     });
-
+ 
 };
 ```
 
@@ -256,19 +260,19 @@ let forItem = function (opt, item) {
 
 ```js 
 // walk
-let walk = function (opt, forItem, forError) {
-
+let walk = (opt, forItem, forError) => {
+ 
     // if opt is a string
     if (typeof opt === 'string') {
-
+ 
         opt = {
-
+ 
             root: opt
-
+ 
         };
-
+ 
     }
-
+ 
     opt = opt || {};
     opt.root = path.resolve(opt.root || process.cwd());
     opt.level = opt.level === undefined ? 0 : opt.level;
@@ -277,21 +281,21 @@ let walk = function (opt, forItem, forError) {
         console.log(item);
     };
     opt.forError = opt.forError || forError || function (e) {
-
+ 
         console.log(e);
-
+ 
     };
-
+ 
     // read dir, and call forAll items
     readDir(opt.root).then(function (items) {
-
+ 
         forAllItems(opt, items);
-
-    }).catch (function (e) {
-
+ 
+    }).catch ((e) => {
+ 
         opt.forError.call(opt, e);
-
+ 
     });
-
+ 
 };
 ```
