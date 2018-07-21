@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 238
-updated: 2018-07-21 19:05:16
-version: 1.7
+updated: 2018-07-21 19:20:51
+version: 1.8
 ---
 
 The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with node.js development. There are many options when it comes to doing this, some of which are well known npm packages such as walk, and klaw. However in this post I will be writing about how to go about doing so with just the node.js build in file system modules readdir method, along with some others a well.
@@ -160,6 +160,10 @@ let readStats = (itemPath) => {
 
 ### 3.3 - Methods for what to do for files, and dirs
 
+In the more basic example I just looped over all items in a current folder, and for each item I just logged the path to the console after getting the states for it. In a real walker I will want to do more then just that, so I will want to have some way to defined a method that will be called for each item. For this method It would be nice to have some kind of api that can be accessed via the this keyword. The api would have relevant information about the current item, as well as additional things that are helpful when it comes to quickly reading the contents of the current file if needed.
+
+So I have broken things down into two helper methods, one is a method that calls a forItem method. In this forItem method an api is set up, and an onItem method is called with the api as the value of the this keyword for the onItem method. This onItem method is given when I call the main walk method.
+
 ```js
 // what to do for all items
 let forAllItems = (opt, items) => {
@@ -227,7 +231,7 @@ let forItem = (opt, item) => {
  
         };
  
-        opt.forItem.call(api, api.item);
+        opt.onItem.call(api, api.item);
  
         // find next level
         let nextLevel = opt.level + 1;
@@ -249,18 +253,20 @@ let forItem = (opt, item) => {
  
     }).catch ((e) => {
  
-        opt.forError.call(opt, e, item);
+        opt.onError.call(opt, e, item);
  
     });
  
 };
 ```
 
+I included references to the fs module, as well as a read methid that can quickly be used to read the contents of the current item.
+
 ### 3.4 - The walk method
 
 ```js 
 // walk
-let walk = (opt, forItem, forError) => {
+let walk = (opt, onItem, onError) => {
  
     // if opt is a string
     if (typeof opt === 'string') {
@@ -277,10 +283,10 @@ let walk = (opt, forItem, forError) => {
     opt.root = path.resolve(opt.root || process.cwd());
     opt.level = opt.level === undefined ? 0 : opt.level;
     opt.maxLevel = opt.level === undefined ? -1 : opt.maxLevel;
-    opt.forItem = opt.forItem || forItem || function (item) {
+    opt.onItem = opt.onItem || onItem || function (item) {
         console.log(item);
     };
-    opt.forError = opt.forError || forError || function (e) {
+    opt.onError = opt.onError || onError || function (e) {
  
         console.log(e);
  
@@ -293,7 +299,7 @@ let walk = (opt, forItem, forError) => {
  
     }).catch ((e) => {
  
-        opt.forError.call(opt, e);
+        opt.onError.call(opt, e);
  
     });
  
