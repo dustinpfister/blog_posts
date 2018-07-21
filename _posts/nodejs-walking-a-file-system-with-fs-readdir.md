@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 238
-updated: 2018-07-21 19:43:01
-version: 1.12
+updated: 2018-07-21 19:46:32
+version: 1.13
 ---
 
 The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with node.js development. There are many options when it comes to doing this, some of which are well known npm packages such as walk, and klaw. However in this post I will be writing about how to go about doing so with just the node.js build in file system modules readdir method, along with some others a well.
@@ -384,3 +384,7 @@ walk({
 ```
 
 For now there are just options for setting the level of recursion, however I could add many more options for filtering, and having more than just the onItem callback.
+
+## 4 - Conclusion
+
+I hope this post has helped you gain some insite of how to make a node.js file system walker with fs.readdir, there are many more ways to go about doing this within node.js by itself, but this way seems to work okay for me. It might be a better choiuce however to look into some popular solutions for file system walking in node.js thought as well, as such be sure to check out my main post on this subject before starting work on making your own walker.
