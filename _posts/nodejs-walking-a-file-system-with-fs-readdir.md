@@ -5,17 +5,17 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 238
-updated: 2018-07-21 19:46:32
-version: 1.13
+updated: 2018-07-21 19:55:40
+version: 1.14
 ---
 
-The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with node.js development. There are many options when it comes to doing this, some of which are well known npm packages such as walk, and klaw. However in this post I will be writing about how to go about doing so with just the node.js build in file system modules readdir method, along with some others a well.
+The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with [node.js](https://nodejs.org/en/) development. There are many options when it comes to doing this, some of which are well known npm packages such as [walk](https://www.npmjs.com/package/walk), and [klaw](https://www.npmjs.com/package/klaw). However in this post I will be writing about how to go about doing so with just the node.js build in file system modules [readdir method](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_readdir_path_options_callback), along with some others a well.
 
 <!-- more -->
 
 ## 1 - before continuing
 
-This is a post on using the readdir method in the node.js fs module, along with additional node.js core methods to make a basic file system walker. There are additional ways of doing this, not to mention many npm packages that can be just quickly used to get this done, and move on.
+This is a post on using the [readdir method](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_readdir_path_options_callback) in the [node.js file system module](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html), along with additional node.js core methods to make a basic file system walker. There are additional ways of doing this, not to mention many npm packages that can be just quickly used to get this done, and move on.
 
 ### 1.1 - I am not recommending that this is the best (or worst) option.
 
@@ -23,7 +23,7 @@ I am not suggesting that using fs.readdir along with other node.js built in meth
 
 ### 1.2 - Be sure to explore other options on this
 
-I have [written a post]() that aims to be a central post of sorts on file system walkers, be sure to check that out if you have not before hand to gain a better sense of what there is to work with when it comes to making a file system walker from the ground up, as well as the many other options when it comes to using one that has been made before hand.
+I have [written a post](/2018/07/20/nodejs-ways-to-walk-a-file-system/) that aims to be a central post of sorts on file system walkers, be sure to check that out if you have not before hand to gain a better sense of what there is to work with when it comes to making a file system walker from the ground up, as well as the many other options when it comes to using one that has been made before hand.
 
 ## 2 - Basic example of fs.readdir
 
@@ -387,4 +387,4 @@ For now there are just options for setting the level of recursion, however I cou
 
 ## 4 - Conclusion
 
-I hope this post has helped you gain some insite of how to make a node.js file system walker with fs.readdir, there are many more ways to go about doing this within node.js by itself, but this way seems to work okay for me. It might be a better choiuce however to look into some popular solutions for file system walking in node.js thought as well, as such be sure to check out my main post on this subject before starting work on making your own walker.
+I hope this post has helped you gain some insite of how to make a node.js file system walker with fs.readdir, there are many more ways to go about doing this within node.js by itself, but this way seems to work okay for me. It might be a better choiuce however to look into some popular solutions for file system walking in node.js thought as well, as such be sure to check out [my main post on this subject](/2018/07/20/nodejs-ways-to-walk-a-file-system/) before starting work on making your own walker.
