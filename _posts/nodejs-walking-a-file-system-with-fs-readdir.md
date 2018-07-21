@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 238
-updated: 2018-07-21 12:44:07
-version: 1.4
+updated: 2018-07-21 13:23:09
+version: 1.5
 ---
 
 The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with node.js development. There are many options when it comes to doing this, some of which are well known npm packages such as walk, and klaw. However in this post I will be writing about how to go about doing so with just the node.js build in file system modules readdir method, along with some others a well.
@@ -40,6 +40,58 @@ fs.readdir(process.cwd(), (e,items)=>{
 ```
 
 This by itself can obviously be used as a way to walk a file system, if it is used in a recursive way. To do that I will need to use more than just fs.readdir, because I need to know if an item in a name space is a file or directory. So A simple file walker solution will also need to involve fs.stat to gain more information about an item. Also Both of these methods will need to be used in a method that will be called recursively as well, so as to walk the whole file system rather than just the contents of a single file system name space.
+
+## 2.1 - Crude single method recursive walker using fs.readdir, fs.stat, and Array.forEach
+
+Maybe it world be helpful to start with a simple, crude single method example of a file system walker. One that just does everything in the body of a single method using just a few file system methods, calls itself recursively. Maybe it does not even have proper error handling, and is the beginning of a kind of callback hell, but might still work find as a kind of starting point.
+
+```js
+// just using fs, and path
+let fs = require('fs'),
+path = require('path');
+ 
+// a simple walk method
+let walk = function (dir) {
+ 
+    // get the contents of dir
+    fs.readdir(root, (e, items) => {
+ 
+        // for each item in the contents
+        items.forEach((item) => {
+ 
+            // get the item path
+            let itemPath = path.join(dir, item);
+ 
+            // get the stats of the item
+            fs.stat(itemPath, (e, stats) => {
+ 
+                // Just log the item path for now
+                console.log(itemPath);
+ 
+                // for now just use stats to find out
+                // if the current item is a dir
+                if (stats.isDirectory()) {
+ 
+                    // if so walk that too, by calling this
+                    // method recursively
+                    walk(itemPath);
+ 
+                }
+ 
+            });
+ 
+        });
+ 
+    });
+ 
+};
+ 
+walk(process.cwd());
+```
+
+So this is a good start, yes there are things going on that might give many developers a headache, but still the basic process is there. Start at a root name space, get the contents of that name space, for each item get the stats, preform an action for the item, and if it is a directory walk that as well.
+
+The next step might be to break this process down, and start adding some more features, but the general idea is all ready there.
 
 ## 3 - A file system walker using fs.readdir
 
