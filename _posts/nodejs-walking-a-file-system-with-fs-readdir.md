@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 238
-updated: 2018-07-21 19:23:39
-version: 1.9
+updated: 2018-07-21 19:31:53
+version: 1.10
 ---
 
 The subject of walking, or looping over a file system path recursively for the purpose of doing some kind of file operation on a whole bunch of files in a directory that meet a certain criteria is a subject that comes up often with node.js development. There are many options when it comes to doing this, some of which are well known npm packages such as walk, and klaw. However in this post I will be writing about how to go about doing so with just the node.js build in file system modules readdir method, along with some others a well.
@@ -284,7 +284,7 @@ let walk = (opt, onItem, onError) => {
     opt = opt || {};
     opt.root = path.resolve(opt.root || process.cwd());
     opt.level = opt.level === undefined ? 0 : opt.level;
-    opt.maxLevel = opt.level === undefined ? -1 : opt.maxLevel;
+    opt.maxLevel = opt.maxLevel === undefined ? -1 : opt.maxLevel;
     opt.onItem = opt.onItem || onItem || function (item) {
         console.log(item);
     };
@@ -306,4 +306,72 @@ let walk = (opt, onItem, onError) => {
     });
  
 };
+```
+
+### 3.5 - Basic use case example
+
+
+```js
+walk('./', function (item) {
+ 
+    console.log('level: ' + this.opt.level + ' : ' + item.filename);
+ 
+});
+```
+
+### 3.5 - Read file example
+
+```js
+walk('./', function (item) {
+ 
+    // only log javaScript files
+    if (item.ext === '.js') {
+ 
+        this.read(function (e, js) {
+ 
+            if (js) {
+ 
+                console.log(js);
+ 
+            }
+ 
+        });
+ 
+    }
+ 
+});
+```
+
+### 3.6 - Using the options object example
+
+```js
+walk({
+ 
+    root: './',
+    maxLevel: 0,
+    onItem: function (item) {
+ 
+        console.log('********** item **********');
+        console.log(this.opt);
+        console.log(this.item);
+        console.log('********** **** **********');
+ 
+    },
+    onError: function (e, item) {
+ 
+        console.log('********** ERROR **********');
+ 
+        console.log(e.message);
+ 
+        if (item) {
+ 
+            console.log(item);
+ 
+        }
+ 
+        console.log('********** ***** **********');
+ 
+    }
+ 
+});
 ```
