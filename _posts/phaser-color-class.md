@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 235
-updated: 2018-07-19 13:28:49
-version: 1.2
+updated: 2018-07-21 20:42:37
+version: 1.3
 ---
 
 When making a game with [phaser](http://phaser.io), or with javaScript in general I sometimes come around to the issue of converting color values from one format to another. It is not hard to find or make methods that can be used to convert a decimal color value to a web friendly rgba string format, but still I can help but one can help but think that this should be part of the Phaser framework, well good news, [it is](https://photonstorm.github.io/phaser-ce/Phaser.Color.html).
@@ -20,3 +20,12 @@ This is a post on the phaser color class that has a whole bunch of static method
 ### 1.1 - I am using phaser 2.x, AKA Phaser CE
 
 As of this writing I am using [phaser 2.11.0](https://github.com/photonstorm/phaser-ce/tree/v2.11.0) when making this demo. In other words what is now known as Phaser Community Edition. So far I have not made the switch to Phaser 3, and I do not plan on doing so any time soon, as long as Phaser CE is still supported.
+
+
+## 2 - getWebRGB
+
+The getWebRgb Method of the Color class is one of the methods that comes in hady when working with color in a phaser project. Often I am working with plain canvas, and some methods in phase can accept a canvas as an argument. So there is a need to convert a phaser friendly color to a canvas friendly color, quickly. This is where getWebRgb comes in handy.
+
+```js
+console.log(Phaser.Color.getWebRGB(0x00ff00)); // 'rgb(0,255,0)';
+```
