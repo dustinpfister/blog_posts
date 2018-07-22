@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 237
-updated: 2018-07-21 20:05:45
-version: 1.2
+updated: 2018-07-21 20:11:37
+version: 1.3
 ---
 
 As I work to expand my content on node.js, I have come around to working out some examples on how to walk a files system. This includes both my own vanilla js solutions, as well as some walkers that other people have made for node.js, such as [klaw](https://www.npmjs.com/package/klaw), and [node-dir](https://www.npmjs.com/package/node-dir), just to name a few. In this post I will be covering some options, and if you are looking into this sort of thing for your own project hopefully you will find this post helpful.
@@ -75,3 +75,44 @@ walk(process.cwd());
 A more advanced example might introduce use of promises, and breaking things down into more methods along with an events that can be used to define what to do for each item instead of just logging the path to the console. This might be a crude example, but it works, and I can work from here into something not so crude.
 
 If interested in learning more about this, you might want to read my [full post on using fs.readdir](/2018/07/20/nodejs-walking-a-file-system-with-fs-readdir/) as a file system walker solution.
+
+### 2.2 - Using klaw, and through2
+
+[klaw](https://www.npmjs.com/package/klaw) is a descent option that I have come to like a lot, and it can also be used with the popular [through2](https://www.npmjs.com/package/through2) project that helps with node.js object streams.
+
+```js
+let klaw = require('klaw'),
+path = require('path'),
+ 
+// the dir to walk
+dir_walk = process.argv[2] || process.cwd();
+ 
+// walking dir_walk with the following options
+klaw(dir_walk, {
+ 
+    // default to full recursion, if now depth is given
+    depthLimit: process.argv[3] || -1
+ 
+})
+ 
+// for each item
+.on('data', function (item) {
+ 
+    if (!item.stats.isDirectory()) {
+ 
+        console.log(path.basename(item.path));
+ 
+    }
+ 
+})
+ 
+// when the walk is over
+.on('end', function () {
+ 
+    console.log('');
+    console.log('the walk is over');
+ 
+});
+```
+
+For more on klaw I [have a post on klaw](/2018/07/19/nodejs-klaw/) in which I get into this one in further detail.
