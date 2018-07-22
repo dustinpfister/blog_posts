@@ -1,12 +1,12 @@
 ---
-title: Ways to walk a file system in node.js
+title: Some Ways to walk a file system in node.js
 date: 2018-07-20 17:28:00
 tags: [js,node.js]
 layout: post
 categories: node.js
 id: 237
-updated: 2018-07-21 20:11:37
-version: 1.3
+updated: 2018-07-21 20:27:29
+version: 1.4
 ---
 
 As I work to expand my content on node.js, I have come around to working out some examples on how to walk a files system. This includes both my own vanilla js solutions, as well as some walkers that other people have made for node.js, such as [klaw](https://www.npmjs.com/package/klaw), and [node-dir](https://www.npmjs.com/package/node-dir), just to name a few. In this post I will be covering some options, and if you are looking into this sort of thing for your own project hopefully you will find this post helpful.
@@ -116,3 +116,46 @@ klaw(dir_walk, {
 ```
 
 For more on klaw I [have a post on klaw](/2018/07/19/nodejs-klaw/) in which I get into this one in further detail.
+
+### 2.3 - node-dir
+
+So [node-dir](https://www.npmjs.com/package/node-dir) is an option that I have used in the past with some projects, although I do not use it much these days. It is an older project, and it looks like it is no longer supported, also it does not have many of the features that I like it in walker.
+
+
+```js
+var dir = require('node-dir');
+ 
+dir.readFiles(
+ 
+    './', // the root path
+ 
+    // an options object
+    {
+ 
+        match: /.json$/, // only match json files
+        recursive: false // only the root dir
+ 
+    },
+ 
+    function (err, content, filename, next) {
+ 
+        if (err) {
+ 
+            console.log(err);
+ 
+        } else {
+ 
+            console.log(filename);
+ 
+        }
+ 
+    }
+ 
+);
+```
+
+I wrote a post on [node-dir](/2017/11/05/nodejs-node-dir/) as well a while back.
+
+## 3 - Conclusion
+
+There are many more walkers out there, also there are other ways to make a walker with node.js by itself as well when it comes to making a walker from the ground up. Many of these projects make use of streams. As such I might update this post as I write more content on this subject.
