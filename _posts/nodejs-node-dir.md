@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 86
-updated: 2018-07-20 14:26:34
-version: 1.3
+updated: 2018-07-21 20:47:16
+version: 1.4
 ---
 
 So you have a bunch of files in a folder, and you want to do something involving the content of each file. You might only want to bother with a certain kind of file, and you might want to know each filename. Well one npm package that I have found that helps a whole lot with that is [node-dir](https://www.npmjs.com/package/node-dir), and I find it a bit of a time saver compared to just making something from the ground up.
@@ -17,6 +17,9 @@ So you have a bunch of files in a folder, and you want to do something involving
 
 So this is a post on the npm package node-dir that can be used as a file system walker, among a few other things. This is not a post on node.js, and javaScript in general and as such I assume that you have some background with that.
 
+### 1.1 - be sure to check out other options for file system walkers
+
+This project does still do what it was designed to do, but it is a little old, and it looks like it is no longer supported. As such you might want to check out my [main post on file system walkers](/2018/07/20/nodejs-ways-to-walk-a-file-system/) for more options when it comes to walking a file system.
 
 ## 2- Getting started with a new project
 
