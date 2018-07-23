@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 237
-updated: 2018-07-23 11:17:24
-version: 1.5
+updated: 2018-07-23 11:24:37
+version: 1.6
 ---
 
 As I work to expand my content on node.js, I have come around to working out some examples on how to walk a files system. This includes both my own vanilla js solutions, as well as some walkers that other people have made for node.js, such as [klaw](https://www.npmjs.com/package/klaw), and [node-dir](https://www.npmjs.com/package/node-dir), just to name a few. In this post I will be covering some options, and if you are looking into this sort of thing for your own project hopefully you will find this post helpful.
@@ -136,7 +136,7 @@ require('walk').walk(dir)
 });
 ```
 
-In addition to the onFile method there are many other such methods for directories, and error handling as well. For more on walk you might want to check out my post on it for more.
+In addition to the onFile method there are many other such methods for directories, and error handling as well. For more on walk you might want to [check out my post on walk](/2018/07/23/nodejs-walk/) for more.
 
 ### 2.4 - node-dir
 
