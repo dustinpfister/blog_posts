@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 237
-updated: 2018-07-21 20:27:29
-version: 1.4
+updated: 2018-07-23 11:17:24
+version: 1.5
 ---
 
 As I work to expand my content on node.js, I have come around to working out some examples on how to walk a files system. This includes both my own vanilla js solutions, as well as some walkers that other people have made for node.js, such as [klaw](https://www.npmjs.com/package/klaw), and [node-dir](https://www.npmjs.com/package/node-dir), just to name a few. In this post I will be covering some options, and if you are looking into this sort of thing for your own project hopefully you will find this post helpful.
@@ -117,7 +117,28 @@ klaw(dir_walk, {
 
 For more on klaw I [have a post on klaw](/2018/07/19/nodejs-klaw/) in which I get into this one in further detail.
 
-### 2.3 - node-dir
+### 2.3 - walk
+
+So the npm package that is just simple called walk, is also a decent solution for just quickly getting this done, and moving on with a project.
+
+```js
+let dir = process.argv[2] || process.cwd();
+ 
+require('walk').walk(dir)
+ 
+// on file
+.on('file', function (root, fileStats, next) {
+ 
+    // log absolute path of each file found
+    console.log(require('path').join(root,fileStats.name));
+    next();
+ 
+});
+```
+
+In addition to the onFile method there are many other such methods for directories, and error handling as well. For more on walk you might want to check out my post on it for more.
+
+### 2.4 - node-dir
 
 So [node-dir](https://www.npmjs.com/package/node-dir) is an option that I have used in the past with some projects, although I do not use it much these days. It is an older project, and it looks like it is no longer supported, also it does not have many of the features that I like it in walker.
 
