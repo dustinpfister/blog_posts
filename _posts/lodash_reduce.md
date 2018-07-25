@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 242
-updated: 2018-07-25 11:46:50
-version: 1.1
+updated: 2018-07-25 11:49:23
+version: 1.2
 ---
 
 For todays post on [lodash](https://lodash.com/) I thought I should write a post on the [\_.reduce](https://lodash.com/docs/4.17.10#reduce) collection method, and also of course the corresponding Array.reduce method in core javaScript itself. The Array.reduce method works just fine, however if you are using lodash in a project the \_.reduce method is a little more robust, as it is one of the many lodash collection methods with baked in shorthands as well. In any case the two solutions work very similar, and this post should help gain some insight as to why reduce is useful in some situations that call for it.
@@ -39,6 +39,8 @@ This works fine because the first element in the collection is a number, so then
 
 ### 2.2 Using Array.reduce
 
+So if I am only working with arrays then there is not much need for \_.reduce, because in most cases the Array prototype equivalent of this will work just fine.
+
 ```js
 let sum = [1, 1, 1, 1].reduce((sum, cur)=> {
  
@@ -48,3 +50,5 @@ let sum = [1, 1, 1, 1].reduce((sum, cur)=> {
  
 console.log(sum); // 4
 ```
+
+However this is just a simple example that involves working with an array, and not an object in general, or an array like object such as an instance of HTMLCollection.
