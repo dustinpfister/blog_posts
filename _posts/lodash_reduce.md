@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 242
-updated: 2018-07-25 11:49:23
-version: 1.2
+updated: 2018-07-25 12:08:45
+version: 1.3
 ---
 
 For todays post on [lodash](https://lodash.com/) I thought I should write a post on the [\_.reduce](https://lodash.com/docs/4.17.10#reduce) collection method, and also of course the corresponding Array.reduce method in core javaScript itself. The Array.reduce method works just fine, however if you are using lodash in a project the \_.reduce method is a little more robust, as it is one of the many lodash collection methods with baked in shorthands as well. In any case the two solutions work very similar, and this post should help gain some insight as to why reduce is useful in some situations that call for it.
@@ -52,3 +52,37 @@ console.log(sum); // 4
 ```
 
 However this is just a simple example that involves working with an array, and not an object in general, or an array like object such as an instance of HTMLCollection.
+
+## 3 - Basic example of using reduce with an array like object.
+
+So Arrays in javaScript are Objects that are an instance of Array. So it should be possible to use reduce with array like objects, that is objects that are structured in the same way as Arrays, but are not an instance of Array therefor do not have the Array methods attached to it's prototype including reduce. In this section I will show why some of these methods in lodash are a little more robust, and that doing the same with just vanilla js can be a little more involved to gain the same functionality.
+
+## 3.1 - Using \_.reduce it does not even have to have a length property.
+
+In most cases an array like object will have a length propety just like with an Object created with the Array constructor, but with \_.reduce in lodash it does not even have to have that.
+
+```js
+let sum = _.reduce({0:1,1:1,2:1,3:1}, function (sum, cur) {
+ 
+    return sum + cur;
+ 
+});
+ 
+console.log(sum); // 4
+```
+
+Also the object does not have to have key values that are consistent with index numbers as well. The \_.reduce method will find all that out for me behind the senses, and I do not have to spend time writing, or hunting down a vanilla js solution for thouse kinds of situations as well.
+
+## 3.2 - The same can be done with Array.reduce, but I need to use call, and the object must have a length property.
+
+So [call (also apply, and bind)](/2017/09/21/js-call-apply-and-bind/) come in handy when trying to make a prototype method work with another object that does not have that method in it's prototype. So this does allow for me to get Array.reduce to work, assuming the object does have a length property, and the key values are constant with what would be an Array.
+
+```js
+let sum = Array.prototype.reduce.call({0: 1,1: 1,2: 1,3: 1,length: 4},(sum, cur)=>{
+ 
+    return sum + cur;
+ 
+});
+ 
+console.log(sum); // 4
+```
