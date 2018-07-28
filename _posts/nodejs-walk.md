@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 240
-updated: 2018-07-23 11:28:31
-version: 1.3
+updated: 2018-07-28 12:13:37
+version: 1.4
 ---
 
-For the past few days I have been exploring node.js powered options when it comes to walking over the contents of a file system. I have been looking at methods in the node.js fs module that can be used to just start doing soething like this from the ground up, as well as npm packages. Im my travels I have found what looks like maybe one of the most popular soultions when it comes to npm packages that is just simply called [walk](https://www.npmjs.com/package/walk). In this post I will be covering the use of walk to just get this aspect of development over with quickly.
+For the past few days I have been exploring node.js powered options when it comes to walking over the contents of a file system. I have been looking at methods in the node.js fs module that can be used to just start doing something like this from the ground up, as well as npm packages. Im my travels I have found what looks like maybe one of the most popular solutions when it comes to npm packages that is just simply called [walk](https://www.npmjs.com/package/walk). In this post I will be covering the use of walk to just get this aspect of development over with quickly.
 
 <!-- more -->
 
@@ -25,7 +25,7 @@ It would seem that walk is a decent solution, with many of the features that I w
 
 So walk works by calling the walk or walkSync method that are in the object the is returned when bringing walk into a project with require. When calling the walk method I will of course want to give the path in the file system where walking is to start, as the first argument I can then set one or more events that are to be called for a file, directory, of if some kind of error happens.
 
-### 2.1 - The files event in node.js
+### 2.1 - The files event.
 
 ```js
 let dir = process.argv[2] || process.cwd();
@@ -41,3 +41,7 @@ require('walk').walk(dir)
  
 });
 ```
+
+## Conclusion
+
+one of the major draw backs that I have noticed is that there does not seem to be an option to limit the depth of recursion, a common feature that I have grown to expect in a file system walker. Other than that walk has an interesting approach to this that presents many things of value that should be taken into consideration when looking into file system walkers. Having a way to set handlers for files, and directories, rather than having a single handler for everything in which filtering is preformed is nice.
