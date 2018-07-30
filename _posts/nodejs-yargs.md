@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 241
-updated: 2018-07-30 18:43:34
-version: 1.4
+updated: 2018-07-30 18:52:29
+version: 1.5
 ---
 
 So this week I have been looking into option parsers, for the sake of expanding my horizons when it comes to what the options are for parsing options. I have writing a [post on nopt](/2017/05/05/nodejs-nopt/) a long time ago, which was one of the first option parsers I have dealt with. It works fine, but so far I think I am liking [commander](/2018/07/10/nodejs-commander/) the best. However this post is about another popular option parser for node.js called [yargs](https://www.npmjs.com/package/yargs).
@@ -49,6 +49,8 @@ So if I want to set some defaults for an option then that is just a matter of us
 ```js
 console.log(require('yargs').default('basic','true').argv.basic);
 ```
+
+So when I just call my defaults.js file from the command line, and do not give any option at all, as expected the set default is assumed. I can then use the --no-basic option to set the basic option to false.
 
 ```
 $ node defaults
