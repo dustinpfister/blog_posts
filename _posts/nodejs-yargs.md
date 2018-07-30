@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 241
-updated: 2018-07-30 18:52:29
-version: 1.5
+updated: 2018-07-30 19:50:39
+version: 1.6
 ---
 
 So this week I have been looking into option parsers, for the sake of expanding my horizons when it comes to what the options are for parsing options. I have writing a [post on nopt](/2017/05/05/nodejs-nopt/) a long time ago, which was one of the first option parsers I have dealt with. It works fine, but so far I think I am liking [commander](/2018/07/10/nodejs-commander/) the best. However this post is about another popular option parser for node.js called [yargs](https://www.npmjs.com/package/yargs).
@@ -58,3 +58,58 @@ true
 $ node defaults --no-basic
 false
 ```
+
+## 3 - An example that walks a file system for html
+
+For a more interesting example I put together a quick script that can be used to walk a file system and log any html files that it finds.
+
+```js
+let yargs = require('yargs'),
+klaw = require('klaw'),
+path = require('path'),
+ 
+argv = yargs
+ 
+    .command({
+ 
+        command: '*',
+        handler: function () {
+ 
+            console.log('use the html command to walk');
+            console.log('walker html -p ./public -d 4');
+ 
+        }
+ 
+    })
+ 
+    // html command
+    .command({
+        command: 'html',
+        describe: 'walk for html',
+        handler: function (argv) {
+ 
+            // walk with path, and depth
+            klaw(argv.path, {
+                depthLimit: argv.depth
+            })
+ 
+            .on('data', function (item) {
+ 
+                if (path.extname(item.path).toLowerCase() === '.html') {
+ 
+                    console.log(item.path);
+ 
+                }
+ 
+            });
+ 
+        }
+ 
+    })
+    // options to set path, and depth
+    .option('depth', {alias: 'd',default:'0'})
+    .option('path', {alias: 'p',default:'./'})
+    .argv;
+```
+
+ In this example I am setting up a default command that will display a usage example when the script is called without a command given. I am also defining my commands by giving an object rather than three sets of arguments.
