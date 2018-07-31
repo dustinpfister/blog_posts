@@ -5,10 +5,67 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 243
-updated: 2018-07-31 13:16:55
-version: 1.0
+updated: 2018-07-31 13:23:31
+version: 1.1
 ---
 
 When making a node.js project that is to one extent or another a command line tool, there is often a need to parse options that may be given from the command line when using the tool. In this post i will be breefly covering some options for quickly getting this over with, and continuing with what really matters when making your node.js cli tool.
 
 <!-- more -->
+
+
+
+## 2 - yargs
+
+be sure to check out [Yargs](/2018/07/24/nodejs-yargs/) as it is a great solution for an option parser. In addition to being a great solution for just parsing what is at process.argv into a workable object for me, it also allows for me to set up commands that are a great way of defining the logic of one or more commands that are to happened when my cli tool is called.
+
+For example I can set up a default command that will log a basic usage example, and then one or more additional commands that actually do something.
+
+```js
+let yargs = require('yargs'),
+klaw = require('klaw'),
+path = require('path'),
+ 
+argv = yargs
+ 
+    .command({
+ 
+        command: '*',
+        handler: function () {
+ 
+            console.log('use the html command to walk');
+            console.log('walker html -p ./public -d 4');
+ 
+        }
+ 
+    })
+ 
+    // html command
+    .command({
+        command: 'html',
+        describe: 'walk for html',
+        handler: function (argv) {
+ 
+            // walk with path, and depth
+            klaw(argv.path, {
+                depthLimit: argv.depth
+            })
+ 
+            .on('data', function (item) {
+ 
+                if (path.extname(item.path).toLowerCase() === '.html') {
+ 
+                    console.log(item.path);
+ 
+                }
+ 
+            });
+ 
+        }
+ 
+    })
+    // options to set path, and depth
+    .option('depth', {alias: 'd',default:'0'})
+    .option('path', {alias: 'p',default:'./'})
+    .argv;
+```
