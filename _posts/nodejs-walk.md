@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 240
-updated: 2018-08-01 17:32:10
-version: 1.7
+updated: 2018-08-01 17:44:17
+version: 1.8
 ---
 
 For the past few days I have been exploring node.js powered options when it comes to walking over the contents of a file system. I have been looking at methods in the node.js fs module that can be used to just start doing something like this from the ground up, as well as npm packages. Im my travels I have found what looks like maybe one of the most popular solutions when it comes to npm packages that is just simply called [walk](https://www.npmjs.com/package/walk). In this post I will be covering the use of walk to just get this aspect of development over with quickly.
@@ -20,6 +20,10 @@ This is a post on the npm package known as walk that can be used to walk a file 
 ### 1.1 - Be sure to check out other solutions also
 
 It would seem that walk is a decent solution, with many of the features that I would expect from such a project. There are many others out there as well thought, and it may not be a waste of time to make your own from the ground up as well if it seems like that is what needs to happen. Be sure to check out my [main post on node.js file system walkers](/2018/07/20/nodejs-ways-to-walk-a-file-system/) to gain a batter sense of what is out there.
+
+### 1.2 - version numbers matter
+
+As of this writing I was using walk version 2.3.14, and yargs 12.0.1, I am also using node.js 8.x.
 
 ## 2 - Some basic examples of walk 
 
@@ -66,6 +70,27 @@ walker.on('names', function (root, names, next) {
  
 });
 ```
+
+### 2.3 - dir event
+
+There is a directories event that will fire once for each folder found in the walk.
+
+```js
+let walk = require('walk'),
+dir = process.argv[2] || process.cwd();
+ 
+walker = walk.walk(dir);
+ 
+walker.on('directories', function (root, stats, next) {
+ 
+   console.log(root, stats[0].name);
+ 
+    next();
+ 
+});
+```
+
+The stats argument is an array event though there is only one for each dir which is weird, but that is just how it works, at least in the version I was using when writing this.
 
 ## 3 - A cli tool using walk, and yargs for option parsing
 
@@ -243,6 +268,6 @@ $ node index read -d ./public
 
 Which would display all the html content in the console that exists in the public folder. I could make this more useful by introducing additional packages like [cheerio](/2017/11/28/nodejs-cheerio/) to help work with the html, and display other useful information, build databses about the content, and so forth. However hopefully you get the basic idea.
 
-## Conclusion
+## 4 - Conclusion
 
 One of the major draw backs that I have noticed is that there does not seem to be an option to limit the depth of recursion, a common feature that I have grown to expect in a file system walker. Other than that walk has an interesting approach to this that presents many things of value that should be taken into consideration when looking into file system walkers. Having a way to set handlers for files, and directories, rather than having a single handler for everything in which filtering is preformed is nice.
