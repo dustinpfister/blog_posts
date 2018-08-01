@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 243
-updated: 2018-08-01 18:50:44
-version: 1.2
+updated: 2018-08-01 18:54:41
+version: 1.3
 ---
 
 When making a node.js project that is to one extent or another a command line tool, there is often a need to parse options that may be given from the command line when using the tool. In this post i will be breefly covering some options for quickly getting this over with, and continuing with what really matters when making your node.js cli tool.
@@ -17,7 +17,13 @@ When making a node.js project that is to one extent or another a command line to
 
 This is a post on how to parse commands from the command line in a node.js project. This is not a getting started post on node.js, or javaScript in general. I assume that you have at least some background on these things, and are not researching how to handle this aspect of making command line tools with node.js.
 
+## 2 - Some npm packages for parsing arguemnts
+
+There are many npm packages that can be installed into a node.js project with npm install to add a dependency for quickly parsing command arguments from the command line, into a object that can be worked with. Many of these projects add additional useful features that allow for defining default values, and what to do for each sub command. In most cases this is best as it helps to save time when making a complex project, however there is also process.argv as well in node.js where the raw array of options are stored.
+
 ## 2.1 - commander
+
+
 
 
 ## 2.2 - yargs
