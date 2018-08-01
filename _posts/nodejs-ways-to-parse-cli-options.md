@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 243
-updated: 2018-08-01 18:58:24
-version: 1.4
+updated: 2018-08-01 19:04:09
+version: 1.5
 ---
 
 When making a node.js project that is to one extent or another a command line tool, there is often a need to parse options that may be given from the command line when using the tool. In this post i will be breefly covering some options for quickly getting this over with, and continuing with what really matters when making your node.js cli tool.
@@ -79,4 +79,38 @@ argv = yargs
     .option('depth', {alias: 'd',default:'0'})
     .option('path', {alias: 'p',default:'./'})
     .argv;
+```
+
+## 2.3 - nopt
+
+One of the first option parsers I have worked with is [nopt](/2017/05/05/nodejs-nopt/) this is a good choice if you are looking for a more minimal solution for just option parsing, and not much of anything else.
+
+
+```js
+parsed = nopt(
+ 
+            // options
+        {
+ 
+            "write" : Number,
+            "text" : String,
+            "filename" : String,
+            "path" : path
+ 
+        },
+ 
+            // shorthands
+        {
+ 
+            "w" : "--write",
+            "t" : "--text",
+            "f" : "--filename",
+            "p" : "--path"
+ 
+        },
+ 
+        process.argv,
+        2
+ 
+);
 ```
