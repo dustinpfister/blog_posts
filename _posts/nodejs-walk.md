@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 240
-updated: 2018-08-01 17:29:03
-version: 1.6
+updated: 2018-08-01 17:32:10
+version: 1.7
 ---
 
 For the past few days I have been exploring node.js powered options when it comes to walking over the contents of a file system. I have been looking at methods in the node.js fs module that can be used to just start doing something like this from the ground up, as well as npm packages. Im my travels I have found what looks like maybe one of the most popular solutions when it comes to npm packages that is just simply called [walk](https://www.npmjs.com/package/walk). In this post I will be covering the use of walk to just get this aspect of development over with quickly.
@@ -27,6 +27,8 @@ So walk works by calling the walk or walkSync method that are in the object the 
 
 ### 2.1 - The files event.
 
+The files event will fire for each file that is found while walking the folder. In most cases this is the only event that I would want, but of course there are others for directories, and just a list of names for each path found.
+
 ```js
 let dir = process.argv[2] || process.cwd();
  
@@ -37,6 +39,29 @@ require('walk').walk(dir)
  
     // log absolute path of each file found
     console.log(require('path').join(root,fileStats.name));
+    next();
+ 
+});
+```
+
+### 2.2 -- The names event
+
+This event will give a list of names of both files, and directories that are found in each folder that is found in the given dir.
+
+```js
+let walk = require('walk'),
+path = require('path'),
+ 
+dir = process.argv[2] || process.cwd();
+ 
+walker = walk.walk(dir);
+ 
+walker.on('names', function (root, names, next) {
+ 
+    console.log('names at : ' + root);
+    console.log(names);
+    console.log('');
+ 
     next();
  
 });
