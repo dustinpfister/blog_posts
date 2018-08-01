@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 243
-updated: 2018-08-01 18:54:41
-version: 1.3
+updated: 2018-08-01 18:58:24
+version: 1.4
 ---
 
 When making a node.js project that is to one extent or another a command line tool, there is often a need to parse options that may be given from the command line when using the tool. In this post i will be breefly covering some options for quickly getting this over with, and continuing with what really matters when making your node.js cli tool.
@@ -23,7 +23,7 @@ There are many npm packages that can be installed into a node.js project with np
 
 ## 2.1 - commander
 
-
+By far one of the most popular solutions for option parsing [commander](/2018/07/10/nodejs-commander/) allows for quick option parsing, and also allows for defining commands.
 
 
 ## 2.2 - yargs
