@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 240
-updated: 2018-08-01 17:20:32
-version: 1.5
+updated: 2018-08-01 17:29:03
+version: 1.6
 ---
 
 For the past few days I have been exploring node.js powered options when it comes to walking over the contents of a file system. I have been looking at methods in the node.js fs module that can be used to just start doing something like this from the ground up, as well as npm packages. Im my travels I have found what looks like maybe one of the most popular solutions when it comes to npm packages that is just simply called [walk](https://www.npmjs.com/package/walk). In this post I will be covering the use of walk to just get this aspect of development over with quickly.
@@ -136,6 +136,18 @@ This way I can have many sub commands that will do different things depending on
 
 ### 3.3 - The yargs commands
 
+So then after I have my htmlWalker method I can then define my yargs commands. I start off with a default command that will be called if no sub command is given which will result in a simple usage example help like this:
+
+```
+$ node index
+html file tool demo
+node index list -d ./public
+node read list -d ./public
+
+```
+
+So each command is defined by supplying an object to the yargs command method that will contain things like the sub command name, and then a handler. There is more to it then that, but this is a post on walk not yargs.
+
 ```js
 // process cli arguments with yargs
 yargs
@@ -195,6 +207,16 @@ yargs
  
 .argv;
 ```
+
+## 3.4 - Using the tool
+
+So then If I have a public html folder in the same path as the index.js file then I would call the read sub command like this:
+
+```
+$ node index read -d ./public
+```
+
+Which would display all the html content in the console that exists in the public folder. I could make this more useful by introducing additional packages like [cheerio](/2017/11/28/nodejs-cheerio/) to help work with the html, and display other useful information, build databses about the content, and so forth. However hopefully you get the basic idea.
 
 ## Conclusion
 
