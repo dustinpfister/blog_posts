@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2018-08-02 18:18:22
-version: 1.1
+updated: 2018-08-02 18:21:20
+version: 1.2
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about [\_.concat](https://lodash.com/docs/4.17.10#concat), and of course the corresponding vanilla js method [Array.concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat). For the most part this looks like one of those methods in lodash where there is not much point to it as the Array.concat method has been around for a long time. Still it is there just for the hell of it, and looking into the lodash source code, it looks like the lodash devs are not just directly referencing the native method, as is the case with some of these methods.
@@ -24,3 +24,15 @@ This is a post on the lodash method \_.concat that can be used to combine, or co
 For a basic example of concat what is more basic then just some arrays of primitives right? In this section basic example of array concatenation will be covered using lodash \_.concat, and Array.concat.
 
 ### 2.1 - Basic example using \_.concat
+
+```js
+let start = [1, 2, 3],
+mid = [4, 5, 6],
+end = [7, 8, 9];
+ 
+let full = _.concat(start, mid, end);
+ 
+console.log(full); // [1,2,3,4,5,6,7,8,9]
+```
+
+### 2.2 - Basic example using Array.concat
