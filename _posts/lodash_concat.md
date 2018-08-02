@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2018-08-02 18:39:42
-version: 1.3
+updated: 2018-08-02 18:55:10
+version: 1.4
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about [\_.concat](https://lodash.com/docs/4.17.10#concat), and of course the corresponding vanilla js method [Array.concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat). For the most part this looks like one of those methods in lodash where there is not much point to it as the Array.concat method has been around for a long time. Still it is there just for the hell of it, and looking into the lodash source code, it looks like the lodash devs are not just directly referencing the native method, as is the case with some of these methods.
@@ -57,4 +57,33 @@ console.log( ['a','b','c'].concat(['d','e','f']) ); // [ 'a', 'b', 'c', 'd', 'e'
  
 // with call
 console.log(Array.prototype.concat.call( ['a','b'],['c','d'] )); [ 'a', 'b', 'c', 'd' ];
+```
+
+## 4 - Be aware of references
+
+So when concatenating arrays it is important to rememberer that objects are copied by reference in javaScript. If this is a problem you will want to use something like [\_.cloneDeep](/2017/11/13/lodash_clonedeep/) to see that the objects are full new separate objects by themselves, and are not just being referenced.
+
+```js
+let _ = require('lodash');
+ 
+// some objects
+let objs = [{x:1,y:5}, {x:7,y:10}];
+ 
+// concatenating with another object
+let points = _.concat(objs, {x:0,y:0});
+ 
+// works as exspected
+console.log(points); // [ { x: 1, y: 5 }, { x: 7, y: 10 }, { x: 0, y: 1 } ]
+ 
+// but what if the primitives in the referenced
+// objects change?
+_.each(objs, function(pt){
+ 
+    pt.x = 0;
+    pt.y = 0;
+ 
+});
+ 
+// this is what
+console.log(points); // [ { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 } ]
 ```
