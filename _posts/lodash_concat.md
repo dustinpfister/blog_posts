@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2018-08-02 18:21:20
-version: 1.2
+updated: 2018-08-02 18:39:42
+version: 1.3
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about [\_.concat](https://lodash.com/docs/4.17.10#concat), and of course the corresponding vanilla js method [Array.concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat). For the most part this looks like one of those methods in lodash where there is not much point to it as the Array.concat method has been around for a long time. Still it is there just for the hell of it, and looking into the lodash source code, it looks like the lodash devs are not just directly referencing the native method, as is the case with some of these methods.
@@ -25,6 +25,8 @@ For a basic example of concat what is more basic then just some arrays of primit
 
 ### 2.1 - Basic example using \_.concat
 
+So the \_.concat method works by just calling the method, and then giving the arrays, and elements to combine into an array.
+
 ```js
 let start = [1, 2, 3],
 mid = [4, 5, 6],
@@ -35,4 +37,24 @@ let full = _.concat(start, mid, end);
 console.log(full); // [1,2,3,4,5,6,7,8,9]
 ```
 
+This can be any mixture of arrays or values. primitives like always will be copy's, however objects, will of course be references so be careful about that. However for the most part that is all there is to it, and this is often preferable to a more complex alternative that involves creating a new array, and looping.
+
 ### 2.2 - Basic example using Array.concat
+
+The vanilla js method Array.concat works in a very similar fashion, the only note worth difference would appear to be that is a prototype method of Array rather that a stand alone method that is given arguments like with \_.concat.
+
+```js
+let start = [1, 2, 3],
+mid = [4, 5, 6],
+end = [7, 8, 9];
+ 
+// from an empty array
+let full = [].concat(start, mid, end);
+console.log(full); // [1,2,3,4,5,6,7,8,9]
+ 
+// or an existing one
+console.log( ['a','b','c'].concat(['d','e','f']) ); // [ 'a', 'b', 'c', 'd', 'e', 'f' ]
+ 
+// with call
+console.log(Array.prototype.concat.call( ['a','b'],['c','d'] )); [ 'a', 'b', 'c', 'd' ];
+```
