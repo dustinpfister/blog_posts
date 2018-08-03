@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2018-08-03 12:05:17
-version: 1.4
+updated: 2018-08-03 12:08:23
+version: 1.5
 ---
 
 In [lodash](https://lodash.com/) there is a useful  collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. In other words in can be used to group things together, this post will show some examples of \_.groupBy in action.
@@ -94,7 +94,7 @@ console.log(byBase(nums, [2, 3, 7]));
 //  none: [ 42, 20 ] }
 ```
 
-So now this is a pretty fun, and useful method that can be used in a lot of different ways. notice that in this example I am also using \_.round to round the values that will be set to log to a given precision this helps with a problem where I end up with numbers like 3.0000000001 when finding the power of a number relative to a base.
+So now this is a pretty fun, and useful method that can be used in a lot of different ways. notice that in this example I am also using \_.round to round the values that will be set to log to a given precision this helps with a problem where I end up with numbers like 3.0000000001 when finding the power of a number relative to a base. Also note that even methods like \_.forEach have little tricks that make them a little more robust compared to the native Array.forEach equivalent, as I can return true to break the forEach loop.
 
 ## 3 - Grading classes example of \_.groupBy
 
