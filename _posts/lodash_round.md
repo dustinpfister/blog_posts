@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2018-08-03 15:32:58
-version: 1.3
+updated: 2018-08-03 15:37:53
+version: 1.4
 ---
 
 So today for yet another on eof my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a simular way to that of Math.round, bit with just one little additional feature that I just which the native methods had but does not. Also in this post I will be writing about some related topics that have to do with formating numbers, a common use case example that involves rounding.
@@ -20,3 +20,17 @@ this is a post on the lodash method /_.round that can be used to round numbers i
 ## 2 - Some basic examples of _.round, and Math.round.
 
 So in core javaScript there is of course [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round), as well as other options like [Math.floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil). These methods work just fine, but they only take one argument, which is naturally the number that you want to round. If you want to round to a certain precision, you will need to find a copy, and past solution. However if it just so happens that lodash is part of your stack, then there is no need, as you have a more robust rounding method at the ready that can receive a precision as the second argument.
+
+### 2.1 - Just simple rounding, with \_.round, and Math.round.
+
+If you just want to round a number then \_.round is no different then Math.round in that regard, and there is not much of a difference.
+
+```js
+// so _.round works just fine for just rounding a number...
+console.log(_.round(Math.PI)); // 3
+ 
+// But so does Math.round.
+console.log(Math.round(Math.PI)); // 3
+```
+
+Rounding works following the convention that a fraction of one half or higher is rounded up to the next whole number, and any fraction lower is rounded down. If you want to always round down no matter what there is \_.floor, and \_.ceil, as wel as the corresponding Math.floor, and Math.ceil as well.
