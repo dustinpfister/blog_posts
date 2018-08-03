@@ -5,9 +5,39 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2018-08-02 21:37:58
-version: 1.0
+updated: 2018-08-03 10:47:00
+version: 1.1
 ---
 
 In [lodash](https://lodash.com/) there is a useful  collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. In other words in can be used to group things together, this post will show some examples of \_.groupBy in action.
+
 <!-- more -->
+
+## 1 - Getting started
+
+This is a post on a single collection method called \_.groupBy in the javaScript utility library known as lodash. It is not a beginners guide on lodash, or javaScript in general. I assume that you have at least some background in javaScipt, and are researching lodash wondering if it is something that you should bother with or not.
+
+## 2 - Some basic examples of \_.groupBy
+
+The \_.groupBy method is one of the many collection methods in lodash meaning that it can be used with any object in general, not just Arrays. So the first argument given to it can be an Array, an Array like object, or just any Object, and then the second argument is the method that will be used to group the elements in the array. Whatever is returned by the method, is what will be used as a key for an array that will store the one or more elements that belong to that key, depending on the conditions defined in the method.
+
+### 2.1 - Group an array of numbers by a simple condition
+
+To start off with a very basic example, say you have a simple array of numbers, and you just want to split them into two groups one where the number is below a certian value and as such belongs to a 'fail' group, and all other numbers then end up falling into a 'pass' group.
+
+```js
+let _ = require('lodash');
+ 
+let nums = [2, 20, 4, 3, 7, 8, 32, 42, 256],
+ 
+grouped = _.groupBy(nums, function (n) {
+ 
+    return n < 10 ? 'fail' : 'pass'
+ 
+});
+ 
+console.log(grouped);
+// { fail: [ 2, 4, 3, 7, 8 ], pass: [ 20, 32, 42, 256 ] }
+```
+
+When this is called the method given to \_.groupBy is called for each element in the array, the value can the be subjected to conditions, or any body of code that is placed in the method that will ultimately be used to return a value that will be used as a key to group the item.
