@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2018-08-03 11:33:40
-version: 1.2
+updated: 2018-08-03 12:02:21
+version: 1.3
 ---
 
 In [lodash](https://lodash.com/) there is a useful  collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. In other words in can be used to group things together, this post will show some examples of \_.groupBy in action.
@@ -95,3 +95,68 @@ console.log(byBase(nums, [2, 3, 7]));
 ```
 
 So now this is a pretty fun, and useful method that can be used in a lot of different ways. notice that in this example I am also using \_.round to round the values that will be set to log to a given precision this helps with a problem where I end up with numbers like 3.0000000001 when finding the power of a number relative to a base.
+
+## 3 - Grading classes example of \_.groupBy
+
+For a more interesting example say you are a student that is taking some classes, you know a number grade for each grade, but you want to group all your clasees by a 
+
+```js
+let _ = require('lodash');
+ 
+let clases = [
+    {name: 'Math',grade: 83},
+    {name: 'Programing',grade: 100},
+    {name: 'Art',grade: 98}, 
+    {name: 'PE',grade: 93},
+    {name: 'English',grade: 42},
+    {name: 'Bio',grade: 60}
+];
+ 
+// grade method that uses _.groupBy
+let gradeClases = function (clases) {
+ 
+    let letters = {
+        'A+': 98,
+        'A.': 93,
+        'A-': 90,
+        'B+': 86,
+        'B.': 83,
+        'B-': 80,
+        'C+': 76,
+        'C.': 73,
+        'C-': 70,
+        'D+': 66,
+        'D.': 63,
+        'D-': 60
+    };
+ 
+    return _.groupBy(clases, function (sub) {
+ 
+        // default to an F
+        let key = 'F.';
+ 
+        _.forEach(letters, function (g, letter) {
+ 
+            if (sub.grade >= g) {
+ 
+                key = letter;
+                return false;
+ 
+            }
+ 
+        });
+ 
+        return key;
+ 
+    });
+ 
+};
+ 
+console.log(gradeClases(clases));
+ 
+//{ 'B.': [ { name: 'Math', grade: 83 } ],
+//  'A+': [ { name: 'Programing', grade: 100 },{ name: 'Art', grade: 98 } ],
+//  'A.': [ { name: 'PE', grade: 93 } ],
+//  'F.': [ { name: 'English', grade: 42 } ],
+//  'D-': [ { name: 'Bio', grade: 60 } ] }
+```
