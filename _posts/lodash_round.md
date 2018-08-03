@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2018-08-03 15:44:16
-version: 1.5
+updated: 2018-08-03 15:45:28
+version: 1.6
 ---
 
 So today for yet another on eof my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a simular way to that of Math.round, bit with just one little additional feature that I just which the native methods had but does not. Also in this post I will be writing about some related topics that have to do with formating numbers, a common use case example that involves rounding.
@@ -48,3 +48,41 @@ console.log(Math.round(Math.PI,2)); // 3
 ```
 
 This is useful when it comes rounding a number that has to do with money to just two decimals. However when it comes to formating a number for presentation to the user it will not do everything when it comes formating numbers. To help with this there are padding methods like [\_.padStart](/2018/08/03/lodash_padding/).
+
+## 3 - format money \_.round example
+
+```js
+let _ = require('lodash');
+ 
+let money = 86.5733333333; // must be formated as '$0086.57'
+ 
+let formatMoney = function (money) {
+ 
+    // round with precision of 2, and split ( 1.23 becomes [1,23] )
+    let sp = _.split(_.round(money, 2), '.');
+ 
+    // push a 0 element for cents if there is only a dollar element
+    // ( [7] becomes [ 7, 0] )
+    if (sp.length === 1) {sp.push(0);}
+ 
+    // lodash has methods for clamping and padding
+    // [-12,0] becomes [0,0]
+    // and ( [7,0] becomes ['0007','00'])
+    sp[0] =  _.clamp(sp[0], 0,9999);
+    sp[0] = _.padStart(sp[0], 4, '0');
+    sp[1] = _.padEnd(sp[1], 2, '0');
+ 
+    // join array elements together with a '.' between them
+    // and format the final string
+    // ['1234','12'] becomes '$1234.12'
+    return '$' + _.join(sp, '.');
+ 
+};
+ 
+console.log(formatMoney(money)); // '$0086.57'
+console.log(formatMoney(0)); // $0000.00
+console.log(formatMoney(7)); // $0007.00
+console.log(formatMoney(.1)); // $0000.10
+console.log(formatMoney(99000)); // $9999.00
+console.log(formatMoney(-12)); // $0000.00
+```
