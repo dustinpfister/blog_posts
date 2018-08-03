@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2018-08-03 15:45:28
-version: 1.6
+updated: 2018-08-03 15:53:22
+version: 1.7
 ---
 
 So today for yet another on eof my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a simular way to that of Math.round, bit with just one little additional feature that I just which the native methods had but does not. Also in this post I will be writing about some related topics that have to do with formating numbers, a common use case example that involves rounding.
@@ -51,6 +51,8 @@ This is useful when it comes rounding a number that has to do with money to just
 
 ## 3 - format money \_.round example
 
+For this example I will be making a simple method that formats a plain javaScript number into a string that is both rounded, and padded using lodash methods.
+
 ```js
 let _ = require('lodash');
  
@@ -86,3 +88,7 @@ console.log(formatMoney(.1)); // $0000.10
 console.log(formatMoney(99000)); // $9999.00
 console.log(formatMoney(-12)); // $0000.00
 ```
+
+## 4 - Conclusion
+
+So lodash methods like \_.round are methods that have at least one little feature that makes it a little more useful then just the plain old native method in core javaScript itself. Still it goes without saying that this method alone is not a good reason to make lodash part of you stack. Hopefully you are making great use of the less redundant methods in lodash like \_.merge, if it is part or your code base.
