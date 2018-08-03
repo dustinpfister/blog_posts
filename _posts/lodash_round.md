@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2018-08-03 15:30:11
-version: 1.2
+updated: 2018-08-03 15:32:58
+version: 1.3
 ---
 
 So today for yet another on eof my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a simular way to that of Math.round, bit with just one little additional feature that I just which the native methods had but does not. Also in this post I will be writing about some related topics that have to do with formating numbers, a common use case example that involves rounding.
@@ -19,4 +19,4 @@ this is a post on the lodash method /_.round that can be used to round numbers i
 
 ## 2 - Some basic examples of _.round, and Math.round.
 
-So in core javaScript there is of course [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round), as well as other options like [Math.floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil). These methods work just fine, but they only take one argument, which is naturally the number that you want to round.
+So in core javaScript there is of course [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round), as well as other options like [Math.floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and [Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil). These methods work just fine, but they only take one argument, which is naturally the number that you want to round. If you want to round to a certain precision, you will need to find a copy, and past solution. However if it just so happens that lodash is part of your stack, then there is no need, as you have a more robust rounding method at the ready that can receive a precision as the second argument.
