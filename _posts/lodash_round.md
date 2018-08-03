@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2018-08-03 15:37:53
-version: 1.4
+updated: 2018-08-03 15:44:16
+version: 1.5
 ---
 
 So today for yet another on eof my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a simular way to that of Math.round, bit with just one little additional feature that I just which the native methods had but does not. Also in this post I will be writing about some related topics that have to do with formating numbers, a common use case example that involves rounding.
@@ -34,3 +34,17 @@ console.log(Math.round(Math.PI)); // 3
 ```
 
 Rounding works following the convention that a fraction of one half or higher is rounded up to the next whole number, and any fraction lower is rounded down. If you want to always round down no matter what there is \_.floor, and \_.ceil, as wel as the corresponding Math.floor, and Math.ceil as well.
+
+### 2.2 - Rounding too a certain precision
+
+The one feature that makes \_.round, a little more robust is there a second argument can be given to set the precision of the number.
+
+```js
+// however _.round can make use of a precision argument
+console.log(_.round(Math.PI,2)); // 3.14
+ 
+// where is Math.round out of the box does not
+console.log(Math.round(Math.PI,2)); // 3
+```
+
+This is useful when it comes rounding a number that has to do with money to just two decimals. However when it comes to formating a number for presentation to the user it will not do everything when it comes formating numbers. To help with this there are padding methods like [\_.padStart](/2018/08/03/lodash_padding/).
