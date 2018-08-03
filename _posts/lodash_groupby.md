@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2018-08-03 10:47:00
-version: 1.1
+updated: 2018-08-03 11:33:40
+version: 1.2
 ---
 
 In [lodash](https://lodash.com/) there is a useful  collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. In other words in can be used to group things together, this post will show some examples of \_.groupBy in action.
@@ -41,3 +41,57 @@ console.log(grouped);
 ```
 
 When this is called the method given to \_.groupBy is called for each element in the array, the value can the be subjected to conditions, or any body of code that is placed in the method that will ultimately be used to return a value that will be used as a key to group the item.
+
+### 2.2 -  Group by powers of a base
+
+For a slightly more advanced example that still involves an array of numbers, why not group some numbers by the base of one or more numbers. That is have a method that will group an array of numbers by a given array of bases, where a number in the collection will be check if it is the base of the first number in the array of bases, and so forth untill a base is found, or end up defaulting to a 'none' key.
+
+```js
+let _ = require('lodash');
+ 
+let byBase = function (collection, bases) {
+ 
+    return _.groupBy(collection, function (n) {
+ 
+        let b = -1;
+ 
+        // group by first base that is found in bases
+        _.forEach(bases, function (base) {
+ 
+            let log = _.round(Math.log(n) / Math.log(base), 4);
+ 
+            if (String(log).indexOf('.') === -1) {
+ 
+                b = base;
+                // returning false will break _.forEach
+                return false;
+ 
+            }
+ 
+        });
+ 
+        // if the base is not -1, group by base
+        if (b != -1) {
+ 
+            return b;
+ 
+        }
+ 
+        // else group it under the key 'none'
+        return 'none';
+ 
+    });
+ 
+};
+ 
+let nums = [27,9,256,49,2,16,42,3,1024,20];
+ 
+console.log(byBase(nums, [2, 3, 7]));
+ 
+//{ '2': [ 256, 2, 16, 1024 ],
+//  '3': [ 27, 9, 3 ],
+//  '7': [ 49 ],
+//  none: [ 42, 20 ] }
+```
+
+So now this is a pretty fun, and useful method that can be used in a lot of different ways. notice that in this example I am also using \_.round to round the values that will be set to log to a given precision this helps with a problem where I end up with numbers like 3.0000000001 when finding the power of a number relative to a base.
