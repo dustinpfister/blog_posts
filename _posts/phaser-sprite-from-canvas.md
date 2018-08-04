@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 248
-updated: 2018-08-04 14:16:08
-version: 1.2
+updated: 2018-08-04 14:52:41
+version: 1.3
 ---
 
 So for todays post on the html5 game framework known as phaser ce, I will be writing about a way to go about making sprites form 2d canvas elements. This means making a sprite using the html 5 2d drawing context via a canvas element that has been made before hand elsewhere, or directly drawing to a new one. In any case the canvas can be used to make an instance of bitmap data that can then be used as a texture for a sprite, rather than an external image. I will not be getting into how to go about spritesheets for now, as I think that should be a whole other post.
@@ -20,6 +20,43 @@ This is a post on the html 5 game framework phaser, and how to use canvas elemen
 ## 2 - Some basic examples of using canvas to make a static sprite
 
 For a basic working example of this, the process is to start out by making a canvas element, or using the canvas element that is in an instance of bitmapData, and then draw something to it like always when doing something with canvas. I can not just pass a canvas element as the texture for a sprite, but I can pass an instance of bitmap data. That being said I must then create an instance of bitmap data, which will have a canvas as one of its properties. I can either directly draw to that canvas, or draw another canvas to that canvas with drawImage. Once I have my bitmap data I can then use that as the texture for a sprite.
+
+## 2.1 - drawing directly to a bitmap data canvas
+
+In any case doing this will often involve making an instance of the phaser bitmap data class. This class will have a canvas as one of its properties, and as such if I am not doing anything that involves a canvas element that exists before hand, I can just draw to the context of that canvas.
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+// basic state
+game.state.add('bitmap-only', {
+ 
+    create: function () {
+ 
+        var bitmap,
+        ctx,
+        sprite;
+ 
+        // make a bitmap, and draw to the canvas context
+        bitmap = new Phaser.BitmapData(game, '', 64, 64);
+        ctx = bitmap.context;
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(0, 0, bitmap.width, bitmap.height);
+ 
+        // use that bitmap as the texture for the sprite
+        sprite = game.add.sprite(0, 0, bitmap);
+        sprite.name = 'bx';
+        sprite.x = game.world.centerX - sprite.width / 2;
+        sprite.y = game.world.centerY - sprite.height / 2;
+ 
+    }
+ 
+});
+ 
+game.state.start('bitmap-only');
+```
+
+If I want to cache the bitmap data I would want to use game.add.bitMapdata, and set a boolen with that true rather than directly using the constructor like I am in this example.
 
 ## 2.2 - drawing to the bitmap data canvas with another canvas
 
