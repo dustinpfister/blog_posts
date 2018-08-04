@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 248
-updated: 2018-08-04 15:25:17
-version: 1.4
+updated: 2018-08-04 15:28:10
+version: 1.5
 ---
 
 So for todays post on the html5 game framework known as phaser ce, I will be writing about a way to go about making sprites form 2d canvas elements. This means making a sprite using the html 5 2d drawing context via a canvas element that has been made before hand elsewhere, or directly drawing to a new one. In any case the canvas can be used to make an instance of bitmap data that can then be used as a texture for a sprite, rather than an external image. I will not be getting into how to go about spritesheets for now, as I think that should be a whole other post.
@@ -60,6 +60,8 @@ If I want to cache the bitmap data I would want to use game.add.bitMapdata, and 
 
 ## 2.2 - drawing to the bitmap data canvas with another canvas
 
+In order to pull this off I can just draw to the bitmap data canvas with the other canvas.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -97,6 +99,8 @@ game.state.add('basic', {
  
 game.state.start('demo');
 ```
+
+In this example I am creating the canvas in the same body of code. However I could create a function where something like this would be pulled away into. In a real project I might have some kind of module that returns a canvas and I need to fine a way to make a sprite from it, in such a case a function that does that would be helpful.
 
 ## 3 - bitmap caching
 
