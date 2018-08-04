@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 248
-updated: 2018-08-04 14:52:41
-version: 1.3
+updated: 2018-08-04 15:25:17
+version: 1.4
 ---
 
 So for todays post on the html5 game framework known as phaser ce, I will be writing about a way to go about making sprites form 2d canvas elements. This means making a sprite using the html 5 2d drawing context via a canvas element that has been made before hand elsewhere, or directly drawing to a new one. In any case the canvas can be used to make an instance of bitmap data that can then be used as a texture for a sprite, rather than an external image. I will not be getting into how to go about spritesheets for now, as I think that should be a whole other post.
@@ -97,3 +97,92 @@ game.state.add('basic', {
  
 game.state.start('demo');
 ```
+
+## 3 - bitmap caching
+
+So If I am in a situation in which I want to make a whole bunch of sprites from one bitmap image that is made by drawing to is canvas. Then I would do something similar to the example in which I am drawing directly to a canvas like before. However this time I will want to cache it to phasers cache, and then grab at it when I need to when creating a new sprite in my states update method.
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('bitmap-cache', {
+ 
+    data: {
+ 
+        max: 10,
+        bx: []
+ 
+    },
+ 
+    create: function () {
+ 
+        var bitmap,
+        ctx,
+        sprite;
+ 
+        // make an instance of bitmap data, and cache it.
+        // the final argument here is a boolean that if true will
+        // add the bitmap to the phaser cache.
+        bitmap = game.add.bitmapData(64, 64, 'bitmap-key', true);
+ 
+        // I can just draw to the canvas context on the bitmapData
+        ctx = bitmap.context;
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(0, 0, bitmap.width, bitmap.height);
+ 
+        this.data.bx = [];
+ 
+    },
+ 
+    update: function () {
+ 
+        var bitmap,
+        sprite,
+        i,
+        x,
+        y;
+ 
+        if (this.data.bx.length < this.data.max) {
+ 
+            x = Math.random() * game.world.width;
+            y = Math.random() * game.world.height;
+ 
+            // so I can grab at the cached bitmap like this
+            bitmap = game.cache.getBitmapData('bitmap-key');
+ 
+            // and then use it to make a sprite
+            sprite = game.add.sprite(x, y, bitmap);
+            sprite.data.maxLife = Math.floor(Math.random() * 150 + 50);
+            sprite.data.life = sprite.data.maxLife;
+ 
+            this.data.bx.push(sprite);
+ 
+        }
+ 
+        i = this.data.bx.length;
+        while (i--) {
+ 
+            sprite = this.data.bx[i];
+            sprite.data.life -= 1;
+ 
+            if (sprite.data.life <= 0) {
+ 
+                this.data.bx.splice(i, 1);
+                sprite.kill();
+ 
+            } else {
+ 
+                sprite.alpha = sprite.data.life / sprite.data.maxLife;
+ 
+            }
+ 
+        }
+ 
+    }
+ 
+});
+ 
+game.state.start('bitmap-cache');
+```
+
+So then this way I can make a whole bunch of sprites from just one bitmapData instance that is cached.
