@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 251
-updated: 2018-08-06 12:19:01
-version: 1.4
+updated: 2018-08-06 12:21:40
+version: 1.5
 ---
 
 When making [node.js](https://nodejs.org/en/) command line tools there might be a desire to make a command line tool where I drop into a shell in which I can enter commands to preform certain actions. Some examples of this might be the shell in mongodb where I can call methods, and full scripts from a shell that I can enter when calling the mongodb binary. Another example would be some of these command line text editors that involve entering commands to insert text, delete, and so forth. Once node.js built in module of interest when it comes to this might be the [readline module](https://nodejs.org/api/readline.html), it allows for me to write an event handler for each time return is entered from the standard input in a command line interface. In this post I will be writing about this module, and give some copy and paste examples.
@@ -78,6 +78,8 @@ Of course I can make the script global, add some more useful commands, and so fo
 
 ## 3 - An example involving angles
 
+### 3.1 - The conf object
+
 ```js
 let readline = require('readline');
  
@@ -95,7 +97,10 @@ let conf = {
     }
  
 };
- 
+```
+### 3.2 - setting up the readline interface
+
+```js
 let rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -103,7 +108,11 @@ let rl = readline.createInterface({
     });
  
 rl.prompt();
+```
+
+### 3.3 - The commands
  
+```js
 let commands = {
  
     // set angle command ( >a 45 )
@@ -174,6 +183,9 @@ let commands = {
     }
  
 };
+```
+
+### 3.4 - The on line event, and option parsing.
  
 rl.on('line', (input) => {
  
@@ -203,6 +215,8 @@ rl.on('line', (input) => {
  
 });
 ```
+
+### 3.5 - The angles.js example in action
 
 ```
 $ node angles
