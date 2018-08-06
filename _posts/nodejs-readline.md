@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 251
-updated: 2018-08-06 12:21:40
-version: 1.5
+updated: 2018-08-06 12:25:03
+version: 1.6
 ---
 
 When making [node.js](https://nodejs.org/en/) command line tools there might be a desire to make a command line tool where I drop into a shell in which I can enter commands to preform certain actions. Some examples of this might be the shell in mongodb where I can call methods, and full scripts from a shell that I can enter when calling the mongodb binary. Another example would be some of these command line text editors that involve entering commands to insert text, delete, and so forth. Once node.js built in module of interest when it comes to this might be the [readline module](https://nodejs.org/api/readline.html), it allows for me to write an event handler for each time return is entered from the standard input in a command line interface. In this post I will be writing about this module, and give some copy and paste examples.
@@ -77,6 +77,8 @@ $
 Of course I can make the script global, add some more useful commands, and so forth. However for a basic hello work type example you should get the idea of how this can be useful for making this kind of cli program with node.js.
 
 ## 3 - An example involving angles
+
+For a more advanced example I made a simple cli tool that will give me the point on a cirlce given the centerx, centery, angle, and distance values. I made it so all the current variable sates are displayed in the prompt, and when a change to a value is made the prompt chances. So this is a good example of having a custom prompt that conveys useful information relevant to the shell command. In this example I am also using more commands, and have a way to parse options for those commands.
 
 ### 3.1 - The conf object
 
