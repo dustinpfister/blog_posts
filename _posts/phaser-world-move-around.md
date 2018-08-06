@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 250
-updated: 2018-08-06 16:28:35
-version: 1.2
+updated: 2018-08-06 16:33:10
+version: 1.3
 ---
 
 In phaser the world is where all game display objects are. It is a 2d, well, world in which these display objects can move around by way of player input, or some kind of ai script. In this post I will be writing about some examples in which I am just creating one or more display objects, and then moving around in this world. There are some basic thiongs one should know about such as how to have the camera follow a sprite, which is often desirable for most projects. So this should be a fun post.
@@ -16,6 +16,8 @@ In phaser the world is where all game display objects are. It is a 2d, well, wor
 
 
 ## 2 - An example of having a sprite move around in a phaser world.
+
+For an example of this I will want a phaser project that involves one sprite that is under player control, and a whole bunch of other sprites littered all over the screen as a way to know that the player object is moving around. So one way or another I will need to make some display objects. I will want to make the world bigger than the native size, and pan around in this world. I might want to set some boundaries, and have it so the camera follows the player sprite.
 
 ### 2.1 - My sheet from canvas method
 
