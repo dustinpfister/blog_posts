@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 251
-updated: 2018-08-06 12:25:03
-version: 1.6
+updated: 2018-08-06 12:33:07
+version: 1.7
 ---
 
 When making [node.js](https://nodejs.org/en/) command line tools there might be a desire to make a command line tool where I drop into a shell in which I can enter commands to preform certain actions. Some examples of this might be the shell in mongodb where I can call methods, and full scripts from a shell that I can enter when calling the mongodb binary. Another example would be some of these command line text editors that involve entering commands to insert text, delete, and so forth. Once node.js built in module of interest when it comes to this might be the [readline module](https://nodejs.org/api/readline.html), it allows for me to write an event handler for each time return is entered from the standard input in a command line interface. In this post I will be writing about this module, and give some copy and paste examples.
@@ -82,6 +82,8 @@ For a more advanced example I made a simple cli tool that will give me the point
 
 ### 3.1 - The conf object
 
+So for the begining of my angles.js file I start off by importing just the readline module once again, after that I made a conf object that will store the current values of interest for this example.
+
 ```js
 let readline = require('readline');
  
@@ -100,7 +102,12 @@ let conf = {
  
 };
 ```
+
+In addition there is also a getPrompt method that will return the string value of the current prompt format for this shell command example.
+
 ### 3.2 - setting up the readline interface
+
+So once again the first step with this is to set up the readline interface. The only difference this time is that I am using my getPrompt method that I have made in the conf object shown above. After that I call prompt for the first time.
 
 ```js
 let rl = readline.createInterface({
@@ -112,8 +119,12 @@ let rl = readline.createInterface({
 rl.prompt();
 ```
 
+I will need to update the prompt as needed when changing any of the values via the rl._prompt property.
+
 ### 3.3 - The commands
- 
+
+Now for the commands. This time they require argument data in the form of a text string that will be given after entering the command folowed by a single space. The commands here are used to set the state of the variables, and updating the information displayed in the prompt, as well as a single command for finding the unknown point on a circle.
+
 ```js
 let commands = {
  
