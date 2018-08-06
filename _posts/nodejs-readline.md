@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 251
-updated: 2018-08-06 11:25:13
-version: 1.2
+updated: 2018-08-06 11:28:54
+version: 1.3
 ---
 
 When making [node.js](https://nodejs.org/en/) command line tools there might be a desire to make a command line tool where I drop into a shell in which I can enter commands to preform certain actions. Some examples of this might be the shell in mongodb where I can call methods, and full scripts from a shell that I can enter when calling the mongodb binary. Another example would be some of these command line text editors that involve entering commands to insert text, delete, and so forth. Once node.js built in module of interest when it comes to this might be the [readline module](https://nodejs.org/api/readline.html), it allows for me to write an event handler for each time return is entered from the standard input in a command line interface. In this post I will be writing about this module, and give some copy and paste examples.
@@ -63,3 +63,15 @@ rl.on('line', (input) => {
 ```
 
 When I save this as a file like basic.js, and then call it in node, I drop into a shell with a '>' prompt. From there I can enter 'pwd' to have the example log the current working dir to the standard output, or enter 'close' to exit the shell.
+
+So if I have my basic.js file saved at my homw folder I might end up doing something like this when calling it.
+
+```
+$ node basic
+> pwd
+/home/dustin
+>close
+$
+```
+
+Of course I can make the script global, add some more useful commands, and so forth. However for a basic hello work type example you should get the idea of how this can be useful for making this kind of cli program with node.js.
