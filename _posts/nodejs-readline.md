@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 251
-updated: 2018-08-06 12:33:07
-version: 1.7
+updated: 2018-08-06 12:36:15
+version: 1.8
 ---
 
 When making [node.js](https://nodejs.org/en/) command line tools there might be a desire to make a command line tool where I drop into a shell in which I can enter commands to preform certain actions. Some examples of this might be the shell in mongodb where I can call methods, and full scripts from a shell that I can enter when calling the mongodb binary. Another example would be some of these command line text editors that involve entering commands to insert text, delete, and so forth. Once node.js built in module of interest when it comes to this might be the [readline module](https://nodejs.org/api/readline.html), it allows for me to write an event handler for each time return is entered from the standard input in a command line interface. In this post I will be writing about this module, and give some copy and paste examples.
@@ -199,6 +199,8 @@ let commands = {
 ```
 
 ### 3.4 - The on line event, and option parsing.
+
+Finally I am defining what to do for the line event. Here I am parsing the command that is given by splitting it into two parts to find the command, and the text string after it.
  
 rl.on('line', (input) => {
  
