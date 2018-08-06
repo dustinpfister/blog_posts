@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 250
-updated: 2018-08-06 16:36:06
-version: 1.4
+updated: 2018-08-06 16:40:56
+version: 1.5
 ---
 
 In phaser the world is where all game display objects are. It is a 2d, well, world in which these display objects can move around by way of player input, or some kind of ai script. In this post I will be writing about some examples in which I am just creating one or more display objects, and then moving around in this world. There are some basic thiongs one should know about such as how to have the camera follow a sprite, which is often desirable for most projects. So this should be a fun post.
@@ -225,3 +225,9 @@ game.state.add('world-demo', {
  
 game.state.start('world-demo');
 ```
+
+If you get this example up and running you can move the player object by moving the player keyboard arrow keys. In this example I am also using the [clamp math method](/2018/07/22/phaser-math-wrap-and-clamp/) to make sure that certain values to not exceed a certain range.
+
+## 3 - Conclusion
+
+I was happy that I was able to figure this one out in a flash. I have worked out vanilla js solutions for this is the past, but they proved to be a bit more time consuming. It goes to show that using a game framework like phaser can save a whole lot of time when making a game, allowing me to focus more on what really matters with this.
