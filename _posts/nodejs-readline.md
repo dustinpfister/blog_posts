@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 251
-updated: 2018-08-06 11:28:54
-version: 1.3
+updated: 2018-08-06 12:19:01
+version: 1.4
 ---
 
 When making [node.js](https://nodejs.org/en/) command line tools there might be a desire to make a command line tool where I drop into a shell in which I can enter commands to preform certain actions. Some examples of this might be the shell in mongodb where I can call methods, and full scripts from a shell that I can enter when calling the mongodb binary. Another example would be some of these command line text editors that involve entering commands to insert text, delete, and so forth. Once node.js built in module of interest when it comes to this might be the [readline module](https://nodejs.org/api/readline.html), it allows for me to write an event handler for each time return is entered from the standard input in a command line interface. In this post I will be writing about this module, and give some copy and paste examples.
@@ -75,3 +75,142 @@ $
 ```
 
 Of course I can make the script global, add some more useful commands, and so forth. However for a basic hello work type example you should get the idea of how this can be useful for making this kind of cli program with node.js.
+
+## 3 - An example involving angles
+
+```js
+let readline = require('readline');
+ 
+let conf = {
+ 
+    a: 0,
+    d: 100,
+    sx: 0,
+    sy: 0,
+ 
+    getPrompt: function () {
+ 
+        return 'c=(' + this.sx + ',' + this.sy + ') a=' + this.a.toFixed(2) + ' d=' + this.d + ' >';
+ 
+    }
+ 
+};
+ 
+let rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        prompt: conf.getPrompt()
+    });
+ 
+rl.prompt();
+ 
+let commands = {
+ 
+    // set angle command ( >a 45 )
+    a: function (text) {
+ 
+        conf.a = !text ? 0 : Number(text);
+ 
+        conf.a = Math.PI / 180 * conf.a;
+ 
+        // update the prompt
+        rl._prompt = conf.getPrompt();
+ 
+        rl.prompt();
+ 
+    },
+ 
+    // set distance command ( >d 250 )
+    d: function (text) {
+ 
+        conf.d = !text ? 100 : Number(text);
+ 
+        // update the prompt
+        rl._prompt = conf.getPrompt();
+ 
+        rl.prompt();
+ 
+    },
+ 
+    // set center point command ( >c 90,37 )
+    c: function (text) {
+ 
+        conf.sx = 0;
+        conf.sy = 0;
+ 
+        if (text) {
+ 
+            text = text.split(',');
+ 
+            conf.sx = Number(text[0] || x);
+            conf.sy = Number(text[1] || y);
+ 
+        }
+ 
+        // update the prompt
+        rl._prompt = conf.getPrompt();
+ 
+        rl.prompt();
+ 
+    },
+ 
+    // find unknown point on circle ( >f )
+    f: function () {
+ 
+        let x = Math.cos(conf.a) * conf.d + conf.sx,
+        y = Math.sin(conf.a) * conf.d + conf.sy;
+ 
+        console.log('(' + x.toFixed(2) + ',' + y.toFixed(2) + ')');
+ 
+        rl.prompt();
+ 
+    },
+ 
+    // exit
+    exit: function () {
+ 
+        rl.close();
+ 
+    }
+ 
+};
+ 
+rl.on('line', (input) => {
+ 
+    let firstSpace = input.match(/\s/);
+ 
+    // Get the command
+    let com = input; // com default to input
+    if (firstSpace) { // but if there is a space, it is what is before that space
+        com = input.slice(0, firstSpace.index);
+    }
+ 
+    // get the text
+    let text = ''; // text defaults to a blank sting
+    if (firstSpace) { // but if there is a space, it is what is before that space
+        text = input.slice(firstSpace.index + 1, input.length);
+    }
+ 
+    if (com in commands) {
+ 
+        commands[com](text);
+ 
+    } else {
+ 
+        rl.prompt();
+ 
+    }
+ 
+});
+```
+
+```
+$ node angles
+c=(0,0) a=0.00 d=100 >a 180
+c=(0,0) a=3.14 d=100 >d 250
+c=(0,0) a=3.14 d=250 >c 90,37
+c=(90,37) a=3.14 d=250 >f
+(-160.00,37.00)
+c=(90,37) a=3.14 d=250 >exit
+$
+```
