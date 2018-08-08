@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 252
-updated: 2018-08-08 13:52:51
-version: 1.9
+updated: 2018-08-08 14:07:31
+version: 1.10
 ---
 
 So there are many ways to go about working with time in [Phaser](https://phaser.io/). Yes if I really want to I can just create my own date objects, and use them as a way to control frame rate, and when certain events will happen when making a project. That is a fine and good when it comes to making a game vanilla js style, however if I am using a frame work I should use what is given in that in order to help save time with making my own solutions. In most cases the framework built in solution for something works just fine, and I should only bother making my own solutions if doing so is called for. In any case this post is about [timer events](https://phaser.io/docs/2.6.2/Phaser.Timer.html) in [phaser ce](https://photonstorm.github.io/phaser-ce/), and how working with them can help make quick work of setting up things that need to happen every now and then when making my game logic.
@@ -120,3 +120,136 @@ game.state.add('basic-loops', {
  
 game.state.start('basic-loops');
 ```
+
+## 3 - Comparing the use of a timer to just doing nothing in an update loop
+
+When making a phaser project it is important to do something to make it so the game runs at a consistent speed across different devices that are capable of processing javaScript at different speeds. The use of timers are one such way to do this. In this example I made a project that demonstrates the difference between using timers to set frame rate compared to just letting things flow in the main update loop of a phaser state.
+
+### 3.1 - Making the game object, and adding a global object
+
+I start off my making a new instance of a phaser game, and define a global object that will contain anything that I would use across state methods, and state objects when making a more complex phaser project. In this example this object contains properties that will be the min and max boundaries of two display objects, and some methods that will be used to create, and move those objects.
+
+```js
+// the Phaser game instance
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+// some global stuff
+game.global = {
+ 
+    xMax: 32,
+    xMin: 0,
+ 
+    // a move sprite method
+    moveSprite: function (sprite) {
+ 
+        // step based on a boolean in the sprites data object
+        // that may or may not be there
+        if (sprite.data.goRight) {
+            sprite.x += 5;
+        } else {
+            sprite.x -= 5;
+        }
+ 
+        // find of the sprite is out of bounds, setting the boolean
+        // in it's data object if not there in the process.
+        if (sprite.x >= this.xMax) {
+            sprite.data.goRight = false;
+            sprite.data.x = this.xMax;
+        }
+        if (sprite.x <= this.xMin) {
+            sprite.data.goRight = true;
+            sprite.data.x = this.xMin;
+        }
+ 
+    },
+ 
+    // make a simple sprite sheet
+    mkSheet: function (game) {
+ 
+        // using canvas to make a sprite sheet
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d'),
+        spriteGT,
+        spriteRT;
+ 
+        // will hold two frames that are 32 x 32
+        canvas.width = 64;
+        canvas.height = 32;
+ 
+        // drawing the frames
+        ctx.fillStyle = '#00ff00';
+        ctx.fillRect(0, 0, 32, 32);
+        ctx.fillStyle = '#ff0000';
+        ctx.fillRect(32, 0, 32, 32);
+ 
+        // adding the sheet to the phaser cache
+        game.cache.addSpriteSheet('sheet', null, canvas, 32, 32, 2, 0, 0);
+ 
+    }
+ 
+};
+```
+
+If you would like to read more about sprite sheets I have written a [post on them in general a while back](/2017/10/12/phaser-spritesheets/), however I also have a newer one in which I write about [making sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/) like this without having to load an external asset first which is nice when making quick examples like this.
+
+### 3.2 - The state object
+
+```js
+// compare-real-time demo
+game.state.add('compare-real-time', {
+ 
+    // create method for compare-real-time demo state
+    create: function () {
+ 
+        var spriteGT,
+        spriteRT; // sprite game time, and sprite real time
+ 
+        // calling my method that will give me a sprite sheet
+        game.global.mkSheet(game);
+ 
+        // create game time sprite
+        spriteGT = game.add.sprite(0, 32, 'sheet', 0);
+        spriteGT.name = 'box_game_time';
+ 
+        // create an play an animation using phasers animation manager
+        spriteGT.animations.add('flash', [0, 1], 6, true);
+        spriteGT.play('flash');
+ 
+        // Here is the time event example in action
+        // move 'box_game_time' sprite every 100ms
+        game.time.events.loop(100, function () {
+ 
+            game.global.moveSprite(game.world.getByName('box_game_time'));
+ 
+        });
+ 
+        // real time sprite
+        spriteRT = game.add.sprite(0, 64, 'sheet', 0);
+        spriteRT.name = 'box_real_time';
+ 
+        game.global.xMax = game.world.width - 32;
+ 
+    },
+ 
+    // update method for compare-real-time demo state
+    update: function () {
+ 
+        var spriteRT = game.world.getByName('box_real_time');
+ 
+        // moving 'box_real_time' by whatever speed the update loop ticks at.
+        game.global.moveSprite(spriteRT);
+ 
+        // doing the same with animation
+        spriteRT.frame += 1;
+        if (spriteRT.frame >= 3) {
+            spriteRT.frame = 0;
+            spriteRT.frame = 0;
+        }
+ 
+    }
+ 
+});
+ 
+// start the demo
+game.state.start('compare-real-time');
+````
