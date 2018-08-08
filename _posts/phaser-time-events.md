@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 252
-updated: 2018-08-08 15:48:43
-version: 1.12
+updated: 2018-08-08 15:53:34
+version: 1.13
 ---
 
 So there are many ways to go about working with time in [Phaser](https://phaser.io/). Yes if I really want to I can just create my own date objects, and use them as a way to control frame rate, and when certain events will happen when making a project. That is a fine and good when it comes to making a game vanilla js style, however if I am using a frame work I should use what is given in that in order to help save time with making my own solutions. In most cases the framework built in solution for something works just fine, and I should only bother making my own solutions if doing so is called for. In any case this post is about [timer events](https://phaser.io/docs/2.6.2/Phaser.Timer.html) in [phaser ce](https://photonstorm.github.io/phaser-ce/), and how working with them can help make quick work of setting up things that need to happen every now and then when making my game logic.
@@ -27,6 +27,10 @@ This post is mainly about the phaser [Timer class](https://photonstorm.github.io
 ## 1.2 - The Time class
 
 This post is about using Timers that are used in the [Time class](https://photonstorm.github.io/phaser-ce/Phaser.Time.html). In this post I will not be writing about everything that has to do with this class, just adding timers to it's timer pool, and it's events property which is an instance of a timer that
+
+## 1.3 - Timer event objects
+
+There are also [timer event objects](https://photonstorm.github.io/phaser-ce/Phaser.TimerEvent.html) that is what is returned when using a timer methd like loop, or repeat. These come in handy for controlling a single timer event by setting its loop, or repeat count properties.
 
 
 ## 2 - Some basic examples of time events in phaser CE
