@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 252
-updated: 2018-08-08 13:46:53
-version: 1.7
+updated: 2018-08-08 13:49:42
+version: 1.8
 ---
 
 So there are many ways to go about working with time in [Phaser](https://phaser.io/). Yes if I really want to I can just create my own date objects, and use them as a way to control frame rate, and when certain events will happen when making a project. That is a fine and good when it comes to making a game vanilla js style, however if I am using a frame work I should use what is given in that in order to help save time with making my own solutions. In most cases the framework built in solution for something works just fine, and I should only bother making my own solutions if doing so is called for. In any case this post is about [timer events](https://phaser.io/docs/2.6.2/Phaser.Timer.html) in [phaser ce](https://photonstorm.github.io/phaser-ce/), and how working with them can help make quick work of setting up things that need to happen every now and then when making my game logic.
@@ -57,7 +57,7 @@ game.state.add('delay', {
 });
 ```
 
-Here I am using the instance of Phaser.Timer that is bound to the master clock at game.time.events.
+Here I am using the instance of Phaser.Timer that is bound to the master clock at game.time.events, and instance of timer that is bound to the master game clock found at game.time which is an instance of Phaser.Time.
 
 ### 2.2 - Defining loops in the create method of a state
 
