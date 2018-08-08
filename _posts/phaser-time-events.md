@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 252
-updated: 2018-08-08 14:07:31
-version: 1.10
+updated: 2018-08-08 14:16:17
+version: 1.11
 ---
 
 So there are many ways to go about working with time in [Phaser](https://phaser.io/). Yes if I really want to I can just create my own date objects, and use them as a way to control frame rate, and when certain events will happen when making a project. That is a fine and good when it comes to making a game vanilla js style, however if I am using a frame work I should use what is given in that in order to help save time with making my own solutions. In most cases the framework built in solution for something works just fine, and I should only bother making my own solutions if doing so is called for. In any case this post is about [timer events](https://phaser.io/docs/2.6.2/Phaser.Timer.html) in [phaser ce](https://photonstorm.github.io/phaser-ce/), and how working with them can help make quick work of setting up things that need to happen every now and then when making my game logic.
@@ -194,6 +194,8 @@ If you would like to read more about sprite sheets I have written a [post on the
 
 ### 3.2 - The state object
 
+In the state object of this example I am creating two sprites in the create method of the state, one is using a timer for its movement, and it is also using the phaser built in animation system to loop over the frames in the sheet rather than doing so manually by stepping the frameIndex property of the sprite. Then there is of course another sprite that is using the same sheet, as well as the same simple method that defines it's basic movement, but is being updated in the main update loop without anything governing it's frame rate.
+
 ```js
 // compare-real-time demo
 game.state.add('compare-real-time', {
@@ -253,3 +255,9 @@ game.state.add('compare-real-time', {
 // start the demo
 game.state.start('compare-real-time');
 ````
+
+### 3.4 - The example in action
+
+When starting this project up the 'box_game_time' sprite moves, and animates in a way that is expected white the other one moves and flashes real fast as it is doing so by the raw speed at which the update loop is going.
+
+This is a subject that comes up a lot with javaScript related game development, in short it is just important to find some kind of way to make sure that things are flowing by the system clock, rather than the speed at which the computer can run instructions.
