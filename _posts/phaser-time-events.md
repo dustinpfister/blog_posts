@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 252
-updated: 2018-08-08 14:16:17
-version: 1.11
+updated: 2018-08-08 15:48:43
+version: 1.12
 ---
 
 So there are many ways to go about working with time in [Phaser](https://phaser.io/). Yes if I really want to I can just create my own date objects, and use them as a way to control frame rate, and when certain events will happen when making a project. That is a fine and good when it comes to making a game vanilla js style, however if I am using a frame work I should use what is given in that in order to help save time with making my own solutions. In most cases the framework built in solution for something works just fine, and I should only bother making my own solutions if doing so is called for. In any case this post is about [timer events](https://phaser.io/docs/2.6.2/Phaser.Timer.html) in [phaser ce](https://photonstorm.github.io/phaser-ce/), and how working with them can help make quick work of setting up things that need to happen every now and then when making my game logic.
@@ -119,6 +119,59 @@ game.state.add('basic-loops', {
 });
  
 game.state.start('basic-loops');
+```
+
+### 2.4 - A repeat example
+
+There is a repeat method in the timmer class that can be used to repeat a callback a number of times. I just need to give a count after the delay.
+
+```js
+var game = new Phaser.Game(320,240,Phaser.HEADLESS);
+ 
+game.state.add('repeat', {
+ 
+    create: function () {
+ 
+        var tick = 0;
+        game.time.events.repeat(1000, 5, function () {
+ 
+            console.log('tick: ' + tick);
+            tick++;
+ 
+        });
+ 
+    }
+ 
+});
+ 
+game.state.start('repeat');
+```
+
+However repeating can also be controled by setting the loop value of a timer event to false when using the loop method as well.
+
+```js
+game.state.add('repeat', {
+ 
+    create: function () {
+ 
+        var tick = 0,
+        timer = game.time.events.loop(1000, function () {
+ 
+            console.log('tick: ' + tick);
+ 
+            if (tick === 3) {
+ 
+                timer.loop = false;
+ 
+            }
+ 
+            tick++;
+ 
+        });
+ 
+    }
+ 
+});
 ```
 
 ## 3 - Comparing the use of a timer to just doing nothing in an update loop
