@@ -1,12 +1,12 @@
 ---
-title: Using Phaser time events
+title: Using Phaser timer events
 date: 2018-08-07 10:54:00
 tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 252
-updated: 2018-08-08 12:32:03
-version: 1.5
+updated: 2018-08-08 13:40:20
+version: 1.6
 ---
 
 So there are many ways to go about working with time in Phaser. Yes if I really want to I can just create my own date objects, and use them as a way to control frame rate, and when certain events will happen when making a project. That is a fine and good when it comes to making a game vanilla js style, however if I am using a frame work I should use what is given in that in order to help save time with making my own solutions. In most cases the framework built in solution for something works just fine, and I should only bother making my own solutions if doing so is called for. In any case this post is about time events in phaser, and how working with them can help make quick work of setting up things that need to happen every now and then when making my game logic.
@@ -19,6 +19,15 @@ So there are many ways to go about working with time in Phaser. Yes if I really 
 This is a post on time events in phaser ce, a popular html5 game framework. Time events are a way of defining some code that is to fire after a delay, just once, or over and over again. Time events are one of several ways to go about defining game logic that is to fire after a delay, or in a loop. These events can be used in conjunction with those other methods, however I will not be getting into those in detail here.
 
 The nice thing about these timer events is that they are subject to pausing of the game state. So in other words I do not have to adjust manually, phaser does this for me, making phaser timers one of the many little features that make using the framework a major time saver.
+
+## 1.1 - The Phaser Timer Class
+
+This post is mainly about the phaser [Timer class](https://photonstorm.github.io/phaser-ce/Phaser.Timer.html), as well as the Time Class that is closely associated with it. I might briefly write about other related aspects of phaser as well, however the emphasis is there.
+
+## 1.2 - The Time class
+
+This post is about using Timers that are used in the [Time class](https://photonstorm.github.io/phaser-ce/Phaser.Time.html). In this post I will not be writing about everything that has to do with this class, just adding timers to it's timer pool, and it's events property which is an instance of a timer that
+
 
 ## 2 - Some basic examples of time events in phaser CE
 
