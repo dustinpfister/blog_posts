@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas,animation]
 layout: post
 categories: phaser
 id: 255
-updated: 2018-08-10 19:45:58
-version: 1.1
+updated: 2018-08-10 19:53:30
+version: 1.2
 ---
 
 When making animations for a phaser project, or with animation in general actually the concept of a key frame is important. A key frame can be described as a frame when an animation begins, or ends, and as such it is a beginning state from which an animation will progress from, and then back to in the case of a looping animation. It can also be the two frames at which an animation begins at a starting state, and ends at an ending state when dealing with some kind of non-looping animation sequence. In this post I will be writing about key frames when using the phaser ce game framework, giving some examples of this important animation concept when making sprite sheets for a phaser project.
@@ -23,9 +23,11 @@ In you travels on javscript realed content that has to do with animation to one 
 
 ## 2 - basic example of keyframes in animation
 
+For a basic example of keyframes, and tweening I will just quickly put together a demo that is just a simple circle that starts out at the right, then swings to the left, and then back again. If I get some time maybe I will make some more interesting animations, but for the sake of this post, and the basic concepts to work with that can be used to make more interesting animations, this should work okay for a basic example.
+
 ## 2.1 - sheet from canvas
 
-
+In this example I am using a method I wrote that can be used to quickly make animations with canvas. I have written about this method back in my post on making sprite sheets with canvas, but I will also cover some of the important aspects of this method in detail here as well. If you want to work out something else to make animations thats fine, I think it is often best to have your own system for this kind of thing, but this should still work out okay to help cover some of the important aspects of keyframes and tweening.
 
 ```js
 var sheetFromCanvas = function (opt) {
