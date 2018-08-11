@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 249
-updated: 2018-08-11 17:34:42
-version: 1.2
+updated: 2018-08-11 18:07:19
+version: 1.3
 ---
 
 For this post on [phaser ce](https://photonstorm.github.io/phaser-ce/) I will be writing about ways to go about making a sprite sheet from a canvas element, rather than loading an external asset. This can be done a number of ways, but in this post I will be using the 2d canvas drawing context in a [canvas element](/2017/05/17/canvas-getting-started/) and pass that element to a method that can be used in the phaser cache to create a [sprite sheet](/2017/10/12/phaser-spritesheets/) from a canvas element.
@@ -19,78 +19,87 @@ This is a post on making a sprite sheet using a canvas element in phaser ce a ja
 
 ## 2 - A not so basic, basic example
 
+For a basic example I will create a method that will create a canvas element, and set its native size depding on the frame width, and height, and the number of frames I want the animation to be. Once I have that worked out it will draw each frame using the canvas 2d drawing context. For this basic example it will just be a sprite sheet of a box with a line drawn from it's center outward that rotates. Once the canvas is rendered it then creates a sprite sheet by calling a method in the phaser cache object.
+
+## 2.1 - first a method that will create the sheet
+
+```js
+// make a canvas that is a sprite sheet of a box with
+// a line from it's center outwards.
+var mkCanvas = function () {
+ 
+    var frame = 0,
+    maxFrame = 24,
+    frameWidth = 64,
+    frameHeight = 64,
+    canvas = document.createElement('canvas');
+    ctx = canvas.getContext('2d');
+ 
+    // set the native size of the canvas
+    canvas.width = frameWidth * maxFrame;
+    canvas.height = frameHeight;
+ 
+    // while the current frame is less than max frames
+    while (frame < maxFrame) {
+ 
+        // figure startx, and percent done
+        var sx = frameWidth * frame + 0.5,
+        per = frame / maxFrame;
+ 
+        // draw for current frame
+        ctx.strokeStyle = '#00ff00';
+        ctx.save();
+        ctx.translate(sx + 32, 32);
+        ctx.rotate(Math.PI * 2 * per);
+        ctx.strokeRect(-16, -16, 32, 32);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, 30);
+        ctx.stroke();
+        ctx.restore();
+ 
+        // next frame
+        frame += 1;
+ 
+    }
+ 
+    // add a new sheet to cache
+    this.game.cache.addSpriteSheet('sheet-1', null, canvas, frameWidth, frameHeight, maxFrame, 0, 0);
+ 
+};
+```
+
+This method will be used with call to set the value of this to what it should be inside the body of a create method in the state object for this example which is as follows.
+
+## 2.2 - An example that uses the basic method written about above
+
+So now that I have my method that can be used to create a sprite sheet with canvas in phaser, it is now time to have a phaser project that makes use of that method. I start out my making my instance of a phaser game object with the Phaser.Game constructor, then create just a single state object with a single create method. 
+
+In the create method I call the mkCanvas method with call setting the value of this to the state object which is the same as it is in the body of the create method. This will generate the canvas element, and make the sprite sheet with the key 'sheet-1'. Once I have the sheet I can then create a sprite using that sheet, as well as an animation that uses all the frames in that sheet.
+
+Once that is all done I then start the state.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
-game.antialias = false;
- 
+
 game.state.add('basic', {
- 
-    data: {
-        maxFrame: 24,
-        frameRate: 100,
-        lastFrame: new Date()
-    },
  
     create: function () {
  
-        var frame = 0,
-        maxFrame = this.data.maxFrame,
-        frameWidth = 64,
-        frameHeight = 64,
-        canvas = document.createElement('canvas');
-        ctx = canvas.getContext('2d');
- 
-        canvas.width = frameWidth * maxFrame;
-        canvas.height = frameHeight;
-        while (frame < maxFrame) {
- 
-            // figure startx, and percent done
-            var sx = frameWidth * frame + 0.5,
-            per = frame / maxFrame;
- 
-            // draw for current frame
-            ctx.strokeStyle = '#00ff00';
-            ctx.save();
-            ctx.translate(sx + 32, 32);
-            ctx.rotate(Math.PI * 2 * per);
-            ctx.strokeRect(-16, -16, 32, 32);
-            ctx.beginPath();
-            ctx.moveTo(0, 0);
-            ctx.lineTo(0, 30);
-            ctx.stroke();
-            ctx.restore();
- 
-            // next frame
-            frame += 1;
- 
-        }
- 
-        // add a new sheet to cache
-        game.cache.addSpriteSheet('sheet-1', null, canvas, frameWidth, frameHeight, maxFrame, 0, 0);
+        mkCanvas.call(this);
  
         // create a sprite with the sheet
         var sprite = game.add.sprite(0, 0, 'sheet-1', 0);
-        sprite.smoothed = false;
         sprite.name = 'sp1';
         sprite.x = game.world.centerX - sprite.width / 2;
         sprite.y = game.world.centerY - sprite.height / 2;
  
-    },
+        // create an animation called 'rotate', that uses all the frames (null),\
+        // plays at 12 frames per second, and loops
+        sprite.animations.add('rotate', null, 12, true);
  
-    // loop frames
-    update: function () {
- 
-        var sprite = game.world.getByName('sp1'),
-        now = new Date();
- 
-        if (now - this.data.lastFrame >= this.data.frameRate) {
- 
-            sprite.frame += 1;
-            sprite.frame %= this.data.maxFrame;
- 
-            this.data.lastFrame = new Date();
- 
-        }
+        // start the animation
+        sprite.animations.play('rotate');
  
     }
  
@@ -99,104 +108,8 @@ game.state.add('basic', {
 game.state.start('basic');
 ```
 
-## 3 - A sheet from canvas method
+If you reproduce this on you end, and all goes well you should see a rotating box with a line drawing outward from the center.
 
-```js
-var sheetFromCanvas = function (opt) {
- 
-    var f,
-    per,
-    canvas = document.createElement('canvas');
-    ctx = canvas.getContext('2d');
- 
-    opt = opt || {};
-    opt.name = opt.name || '';
-    opt.frames = opt.frames || 3;
-    opt.frameWidth = opt.frameWidth || 32;
-    opt.frameHeight = opt.frameHeight || 32;
-    opt.forFrame = opt.forFrame || function () {};
-    opt.game = opt.game || null;
- 
-    canvas.width = opt.frameWidth * opt.frames;
-    canvas.height = opt.frameHeight;
- 
-    f = 0;
-    while (f < opt.frames) {
-        per = f / opt.frames;
-        opt.forFrame.call({
-            f: f,
-            sx: opt.frameWidth * f + 0.5,
-            per: per,
-            canvas: canvas,
-            ctx: ctx
-        }, ctx);
-        f += 1;
-    }
- 
-    // add a new sheet to cache if we have a game
-    if (opt.game) {
-        opt.game.cache.addSpriteSheet(opt.name, null, canvas, opt.frameWidth, opt.frameHeight, opt.frames, 0, 0);
-    }
- 
-    // return the canvas
-    return canvas;
- 
-};
- 
-game.state.add('sheet-from-canvas', {
- 
-    data: {
-        maxFrame: 30,
-        frameRate: 100,
-        lastFrame: new Date()
-    },
- 
-    create: function () {
- 
-        sheetFromCanvas({
-            name: 'sheet-1',
-            game: game,
-            frames: 30,
-            frameWidth: 64,
-            frameHeight: 64,
-            forFrame: function (ctx) {
-                ctx.strokeStyle = '#ffff00';
-                ctx.save();
-                ctx.translate(this.sx + 32, 32);
-                ctx.rotate(Math.PI * 2 * this.per);
-                ctx.strokeRect(-16, -16, 32, 32);
-                ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx.lineTo(0, 30);
-                ctx.stroke();
-                ctx.restore();
-            }
-        });
- 
-        // create a sprite with the sheet
-        var sprite = game.add.sprite(0, 0, 'sheet-1', 0);
-        sprite.smoothed = false;
-        sprite.name = 'sp1';
-        sprite.x = game.world.centerX - sprite.width / 2;
-        sprite.y = game.world.centerY - sprite.height / 2;
- 
-    },
- 
-    // loop frames
-    update: function () {
- 
-        var sprite = game.world.getByName('sp1'),
-        now = new Date();
- 
-        if (now - this.data.lastFrame >= this.data.frameRate) {
-            sprite.frame += 1;
-            sprite.frame %= this.data.maxFrame;
-            this.data.lastFrame = new Date();
-        }
- 
-    }
- 
-});
- 
-game.state.start('sheet-from-canvas');
-```
+## 2.3 - wrap up with the basic example
+
+So there is much lacking with this basic example, but to make a better solution I just need to expand on this as much would remain the same. The process would always be to make a canvas element, render one or more set of frames, and then pass the canvas element as the propper argument to game.cache.addSpriteSheet. Then I can make sprites, and animations using this sheet.
