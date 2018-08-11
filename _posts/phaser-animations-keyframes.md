@@ -5,11 +5,11 @@ tags: [js,phaser,games,canvas,animation]
 layout: post
 categories: phaser
 id: 255
-updated: 2018-08-10 20:23:54
-version: 1.6
+updated: 2018-08-11 15:13:57
+version: 1.7
 ---
 
-When making animations for a phaser project, or with animation in general actually the concept of a key frame is important. A key frame can be described as a frame when an animation begins, or ends, and as such it is a beginning state from which an animation will progress from, and then back to in the case of a looping animation. It can also be the two frames at which an animation begins at a starting state, and ends at an ending state when dealing with some kind of non-looping animation sequence. In this post I will be writing about key frames when using the phaser ce game framework, giving some examples of this important animation concept when making sprite sheets for a phaser project.
+When making animations for a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, or with animation in general actually the concept of a key frame is important. A key frame can be described as a frame when an animation begins, or ends, and as such it is a beginning state from which an animation will progress from, and then back to in the case of a looping animation. It can also be the two frames at which an animation begins at a starting state, and ends at an ending state when dealing with some kind of non-looping animation sequence. In this post I will be writing about key frames when using the phaser ce game framework, giving some examples of this important animation concept when making sprite sheets for a phaser project.
 
 <!-- more -->
 
