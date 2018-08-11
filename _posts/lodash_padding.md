@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 11:02:37
-version: 1.3
+updated: 2018-08-11 11:10:20
+version: 1.4
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -52,4 +52,13 @@ console.log( format(Infinity) ); // $9999.99
 console.log( format(.005) ); // $0000.01
 console.log( format(1234.56) ); // $1234.56
 console.log( format(0) ); // $0000.00
+```
+
+## 3 - Vanilla js alternatives to the lodash padding methods
+
+### 3.1 - String.padStart, and String.padEnd.
+
+So there are now pad methods that are very similar to the lodash \_.padStart, and \_.padEnd methods in the String prototype of late specs of core javaScript itself.
+
+```js
 ```
