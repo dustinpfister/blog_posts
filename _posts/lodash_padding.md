@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 11:57:16
-version: 1.6
+updated: 2018-08-11 12:28:18
+version: 1.7
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -73,6 +73,8 @@ these seem to work just the same as the lodash equivalents.
 
 ### 3.2 - making or finding a stand alone method
 
+When I look at my site stats it would appear that there is not much concern with my browser stats at least. However if I am in a situation in which I am getting a fair amount of traffic from people that are using older browsers this is a method where a polly fill may be needed. I often start out my making or finding a stand alone method that can be used with call.
+
 ```js
 let an = 1503345;
  
@@ -97,12 +99,47 @@ var padStart = function (len, filler) {
 console.log(padStart.call(String(an),10, 0)); // '0001503345'
 ```
 
+This is a polly fill that I came up with but there are many others out there as well, as long as the method 
+
 ### 3.3 - Making a stand alone method work as a polly fill
 
+This is why it is nice to work inside the context of a framework where all these things have been figured out before hand so I can just get going with a project, and not get caught up in these rabbit holes. Because My solution make use of Array.map, I might want to also provide a pollyfill for that as well, depending of course on how far back I want to go with backward comparability.
+
+So to assure that both Array.map, and Array.padStart are in the Array, and String prototypes I would want to feature test for both of them, using the native solution if there, and if not monkey patch them in.
+
 ```js
+// map pollyfill
+Array.prototype.map = Array.prototype.map || function (callback /*, thisArg*/) {
+    var T,A,k,O,len,kValue,mappedValue;
+    if (this == null) {
+        throw new TypeError('this is null or not defined');
+    }
+    O = Object(this);
+    len = O.length >>> 0;
+    if (typeof callback !== 'function') {
+        throw new TypeError(callback + ' is not a function');
+    }
+    if (arguments.length > 1) {
+        T = arguments[1];
+    }
+    A = new Array(len);
+    k = 0;
+    while (k < len) {
+        if (k in O) {
+            kValue = O[k];
+            mappedValue = callback.call(T, kValue, k, O);
+            A[k] = mappedValue;
+        }
+        k++;
+    }
+    return A;
+};
+ 
+// monkey patch it with the pollyfill
 String.prototype.padStart = String.prototype.padStart || function (len, filler) {
  
-    var fill = '', toFill = 0;
+    var fill = '',
+    toFill = 0;
  
     len = len || 0;
     filler = String(filler === undefined ? ' ' : filler);
@@ -118,3 +155,5 @@ String.prototype.padStart = String.prototype.padStart || function (len, filler) 
  
 };
 ```
+
+This is why devs like lodash, you just need to know how far backward compatibility goes with the version of lodash that you are using, and if what it supports works fine for you, then you can just get going with development, and be done with this.
