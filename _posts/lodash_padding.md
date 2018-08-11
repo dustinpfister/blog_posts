@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 11:10:20
-version: 1.4
+updated: 2018-08-11 11:40:56
+version: 1.5
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -61,4 +61,52 @@ console.log( format(0) ); // $0000.00
 So there are now pad methods that are very similar to the lodash \_.padStart, and \_.padEnd methods in the String prototype of late specs of core javaScript itself.
 
 ```js
+```
+
+### 3.2 - making or finding a stand alone method
+
+```js
+let an = 1503345;
+ 
+var padStart = function (len, filler) {
+ 
+    var fill = '', toFill = 0;
+ 
+    len = len || 0;
+    filler = String(filler === undefined ? ' ' : filler);
+    toFill = len - String(this).length;
+ 
+    if (toFill > 0) {
+ 
+        fill = Array.apply(null, Array(toFill)).map(String.prototype.valueOf, filler).join('');
+ 
+    }
+ 
+    return fill + this;
+ 
+};
+ 
+console.log(padStart.call(String(an),10, 0)); // '0001503345'
+```
+
+### 3.3 - Making a stand alone method work as a polly fill
+
+```js
+String.prototype.padStart = String.prototype.padStart || function (len, filler) {
+ 
+    var fill = '', toFill = 0;
+ 
+    len = len || 0;
+    filler = String(filler === undefined ? ' ' : filler);
+    toFill = len - String(this).length;
+ 
+    if (toFill > 0) {
+ 
+        fill = Array.apply(null, Array(toFill)).map(String.prototype.valueOf, filler).join('');
+ 
+    }
+ 
+    return fill + this;
+ 
+};
 ```
