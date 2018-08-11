@@ -5,17 +5,17 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2018-08-11 14:49:42
-version: 1.12
+updated: 2018-08-11 14:56:24
+version: 1.13
 ---
 
-So lodash is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
+So [lodash](https://lodash.com/) is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
 
 <!-- more -->
 
 ## 1 - what to know
 
-This is a post on the lodash array method \_.fill, the corresponding es2015+ Array.fill, and vanilla js polly fill solutions for this task when making a project that involves the use of javaScript in which lodash may or may not be part of the stack. This is not a getting started post on lodash, and javaScript in general and I assume that you have some background on these topics. Also when I last updated this post I was using lodash 14.17.10.
+This is a post on the lodash array method \_.fill, the corresponding es2015+ [Array.fill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and vanilla js polly fill solutions for this task when making a project that involves the use of javaScript in which lodash may or may not be part of the stack. This is not a getting started post on lodash, and javaScript in general and I assume that you have some background on these topics. Also when I last updated this post I was using lodash 14.17.10.
 
 ## 2 - Basic fill example using \_.fill, and Array.fill
 
@@ -132,7 +132,7 @@ console.log(b.split('')); // [ '0', '0', '0', '0', '0', '0', '0', '0' ]
 
 ## 5 - Convert a binary string to a number
 
-So you might be wondering if it is possible to quickly parse one of these arrays that represent a byte of data to a number that corresponds to it's value. there sure is this is where parseInt comes in handy to get this done in a flash. Just pass a the string value to parseInt, and set the second argument two 2 for binary.
+So you might be wondering if it is possible to quickly parse one of these arrays that represent a byte of data to a number that corresponds to it's value. there sure is this is where parseInt comes in handy to get this done in a flash. Just pass a the string value to [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and set the second argument two 2 for binary.
 
 ```js
 var b = _.join(_.fill(_.fill(new Array(8),0), 1, 2, 6),'');  //[0,0,1,1,1,1,0,0]
@@ -145,4 +145,4 @@ console.log(parseInt(b,2)); // 60
 
 So when I do come across methods like \_.fill, there is the question about browser support. At this point it may be the only thing that comes to mind as to why it is that I should bother with \_.fill over the native method, there are still a lot of people out there that use these older browsers thart do not have great es2015 support. So if I do want to push support back I can just use the desired version of lodash, or mess around with pollyfills.
 
-Be sure to check out my other [posts on lodash](/categories/lodash/), and thanks for reading. Also be sure to show your support or constructive criticism in the comments.
+You might want to also check out other methods that are relevant to \_.fill such as [\_.pad](/2018/08/03/lodash_padding/), and be sure to check out my other [posts on lodash](/categories/lodash/) as well, and thanks for reading. Also be sure to show your support or constructive criticism in the comments.
