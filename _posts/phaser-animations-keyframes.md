@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas,animation]
 layout: post
 categories: phaser
 id: 255
-updated: 2018-08-10 20:02:42
-version: 1.4
+updated: 2018-08-10 20:12:20
+version: 1.5
 ---
 
 When making animations for a phaser project, or with animation in general actually the concept of a key frame is important. A key frame can be described as a frame when an animation begins, or ends, and as such it is a beginning state from which an animation will progress from, and then back to in the case of a looping animation. It can also be the two frames at which an animation begins at a starting state, and ends at an ending state when dealing with some kind of non-looping animation sequence. In this post I will be writing about key frames when using the phaser ce game framework, giving some examples of this important animation concept when making sprite sheets for a phaser project.
@@ -88,7 +88,11 @@ var sheetFromCanvas = function (opt) {
 
 The method is used by passing an object with values that define the frame width, and height, the number of total animation frames, along with a method that is executed with call function prototype method making the value of the this keyword refer to an api that contains properties about the current frame. In the body of this method is where I define the logic that will be my animation. This includes values like the current frame index, the percentage to completion, and a value I call bias that is a value that starts at one then progresses to zero, and back to one again. There are many other values, and methods that I could add to further expand this api, but whenever I make something like this I have come to find that these are the must have values to start off with.
 
-## 2.2 - The main.js file that uses my sheetFromCanvas method
+## 2.2 - The main.js file that uses my sheetFromCanvas method to make a basic animation
+
+So I can then use my method in the create method of a phaser state, to create a sprite sheet this way. For the animation that I describe it involves a starting state that is the first key frame, and then I am just tweening back to that starting state.
+
+So then I can use my sheet from canvas method like this:
 
 ```js
 // the Phaser game instance
@@ -149,3 +153,7 @@ game.state.add('single-loop', {
  
 game.state.start('single-loop');
 ```
+
+## 3 - conclusion
+
+So keyframes are just the start, and end points of an animation, and in a nut shell that is all there is to it. If you liked this post you might want to check out my manly other [posts on phaser](/categories/phaser/) as well. If you would like me to expand on this post more, and give more animation examples be sure to let me know in the comments. Thanks for reading.
