@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 12:28:18
-version: 1.7
+updated: 2018-08-11 12:31:08
+version: 1.8
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -157,3 +157,7 @@ String.prototype.padStart = String.prototype.padStart || function (len, filler) 
 ```
 
 This is why devs like lodash, you just need to know how far backward compatibility goes with the version of lodash that you are using, and if what it supports works fine for you, then you can just get going with development, and be done with this.
+
+## 4 - conclusion
+
+So the lodash pad methods \_.pad, \_.padStart, and \_.padEnd are great methods for padding a string or number value into a nicely formated string. there are native solutions for this as well, but in any case always be aware of browser supper as always. If you liked this post you might want to check out my many other posts on lodash, and if you would like to add something feel free to let me know in the comments. Thank you for reading.
