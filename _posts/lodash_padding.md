@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-03 18:22:39
-version: 1.1
+updated: 2018-08-11 10:37:46
+version: 1.2
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -19,7 +19,11 @@ This is a post on the lodash padding methods \_.pad, \_.pasStart, and \_.padEnd,
 
 ## 2 - Some padding examples using lodash methods
 
+The padding methods work by just simply giving a string or number that I want to pad with some kind of string pattern, typically a zero or space. The only other issue of concern is where the padding should be done. Should the padding be done at the beginning, or end of a string, or split between the begging and end? Some padding solutions allow for a third option to set this, but with lodash there are three separate padding methods for each of these.
+
 ### 2.1 - Account number example
+
+Say you have unformatted account numbers that must be formatted in a way that if the number is less then ten, then zeros must be appended to the beginning of the number to make it ten numbers. For this I would want to use the \_.padStart method compared to the others.
 
 ```js
 let an = 1503345;
