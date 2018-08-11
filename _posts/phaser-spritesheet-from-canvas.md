@@ -5,11 +5,11 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 249
-updated: 2018-08-04 21:03:33
-version: 1.0
+updated: 2018-08-11 17:32:08
+version: 1.1
 ---
 
-For this post on phaser I will be writing about ways to go about making a sprite sheet from a canvas element, rather than loading an external asset. 
+For this post on [phaser ce](https://photonstorm.github.io/phaser-ce/) I will be writing about ways to go about making a sprite sheet from a canvas element, rather than loading an external asset. This can be done a number of ways, but in this post I will be using the 2d canvas drawing context in a [canvas element](/2017/05/17/canvas-getting-started/) and pass that element to a method that can be used in the phaser cache to create a [sprite sheet](/2017/10/12/phaser-spritesheets/) from a canvas element.
 
 <!-- more -->
 
