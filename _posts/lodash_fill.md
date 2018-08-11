@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2018-08-11 14:20:07
-version: 1.9
+updated: 2018-08-11 14:26:52
+version: 1.10
 ---
 
 So lodash is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
@@ -89,7 +89,7 @@ _.fill(b, 1,2,6);
 console.log(b); //[0,0,1,1,1,1,0,0]
 ```
 
-### 3.2 with Array.fill
+### 3.2 - with Array.fill
 
 Same as with the native equvalent only because the array is the value of the this keyword as is the nature with prototype methods I just need to give the value to fill, and then the start and end index values.
 
@@ -98,6 +98,10 @@ var b = new Array(8).fill(0).fill(1,2,6);
  
 console.log(b); //[0,0,1,1,1,1,0,0]
 ```
+
+## 4 - convert to string, and back with \_.split, and \_.join, or Array.split, and Array.join
+
+With this sort of thing another thing that comes to mind is the ability to quickly convert an array that is filled one way or another to a sting, or convert a string to an array. For this there are the \_.split, and \_.join methods that are of interest as well as the native equivalents for this.
 
 ## conclusion
 
