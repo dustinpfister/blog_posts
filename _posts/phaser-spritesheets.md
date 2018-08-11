@@ -5,19 +5,19 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 62
-updated: 2017-10-22 13:49:03
-version: 1.1
+updated: 2018-08-11 17:27:20
+version: 1.2
 ---
 
-Sprite sheets come into play when starting to work with sprites. As a sprite needs to be skinned with something it is wise to start with sprite sheets before moving on to learning more about sprites. In this post I will be covering how to get started with the basics of sprite sheets in [phaser](http://phaser.io/).
+Sprite sheets come into play when starting to work with sprites. As a sprite needs to be skinned with something it is wise to start with sprite sheets before moving on to learning more about sprites. In this post I will be covering how to get started with the basics of sprite sheets in [phaser](http://phaser.io/) by way of involving an external image that must be loaded. However I will also branch off into other topics that involve making a sprite sheet from canvas with javaScript code, and cover some basics with animations and sprites.
 
 <!-- more -->
 
-{% phaser_top %}
+## 1 - What to know
 
-{% phaser_if_new_mess %}
+This is a post on [loading a spritesheet](https://photonstorm.github.io/phaser-ce/Phaser.Loader.html#spritesheet) that exists as an external image asset in [phaser ce](https://photonstorm.github.io/phaser-ce/). This is not a getting started post on phaser or javaScript in general, for that you might want to check out my [getting started post on phaser ce](/2017/10/04/phaser-getting-started/).
 
-## A quick phaser hello world.
+## 2 - A quick phaser sprite sheet hello world example.
 
 So here is a quick sprite sheet hello world here.
 
