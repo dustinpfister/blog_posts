@@ -5,13 +5,17 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2018-08-11 13:35:27
-version: 1.5
+updated: 2018-08-11 13:39:08
+version: 1.6
 ---
 
 So lodash is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.4#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
 
 <!-- more -->
+
+## 1 - what to know
+
+This is a post on the lodash array method \_.fill, the corresponding es2015+ Array.fill, and vanilla js polly fill solutions for this task when making a project that involves the use of javaScript in which lodash may or may not be part of the stack. This is not a getting started post on lodash, and javaScript in general and I assume that you have some background on these topics. Also when I last updated this post I was using lodash 14.17.10.
 
 ## Array.fill
 
