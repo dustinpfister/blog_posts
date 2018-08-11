@@ -5,11 +5,11 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2018-08-11 13:39:08
-version: 1.6
+updated: 2018-08-11 13:47:54
+version: 1.7
 ---
 
-So lodash is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.4#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
+So lodash is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
 
 <!-- more -->
 
@@ -17,25 +17,33 @@ So lodash is one of those JavaScript projects that is a bit of a mystery when it
 
 This is a post on the lodash array method \_.fill, the corresponding es2015+ Array.fill, and vanilla js polly fill solutions for this task when making a project that involves the use of javaScript in which lodash may or may not be part of the stack. This is not a getting started post on lodash, and javaScript in general and I assume that you have some background on these topics. Also when I last updated this post I was using lodash 14.17.10.
 
-## Array.fill
+## 2 - Basic fill example using \_.fill, and Array.fill
+
+For a basic example of fill, say you have a situation in which you just want to quickly have an array that represents the bit values of a byte of data. So in other words you just want an Array with a length of eight, and have all of the elements default to zero. The lodash \_.fill, or equivalent solution, and be used to make quick work of this, and then allow for me to move on with what really matters with a project.
+
+### 2.1 using the lodash _.fill method
+
+So \_.fill can be used to quickly make such an array, by passing an array with the desired length, and then the value that I want to set to the whole of the array.
+
+```js
+var b = _.fill(new Array(8),0);
+console.log(b); // [0,0,0,0,0,0,0,0]
+```
+
+This makes quick work of this, and also because I am using lodash I know that it will work in all browsers that are supported by the version of lodash that I am uisng. As of this writing lodash 4.17.10, supports browsers as old as IE11, and if I want I can make a custom fork, or use an older version of lodash to push that back even farther if need be.
+
+### 2.2 - Array.fill
 
 So Array.fill is a quick way to fill an array with the same value, say you have an array that represents the status of a byte of data, and you want all the elements set to 1.
 
 ```js
-var byte = new Array(8).fill(1);
-console.log(byte); // [1,1,1,1,1,1,1,1]
+var b = new Array(8).fill(0);
+console.log(b); // [0,0,0,0,0,0,0,0]
 ```
 
 It is also possible to set a start and end point with the fill, but you get the idea. When it comes to a using a vanilla js method it is often important to know the browser support of that method, as such Array.fill is NOT supported in IE11.
 
-## _.fill
 
-So _.fill does the same thing, and lodash does work on IE11.
-
-```js
-var byte = _.fill(new Array(8),1);
-console.log(byte); // [1,1,1,1,1,1,1,1]
-```
 
 ## conclusion
 
