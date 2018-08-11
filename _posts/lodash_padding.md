@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 11:40:56
-version: 1.5
+updated: 2018-08-11 11:57:16
+version: 1.6
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -56,12 +56,20 @@ console.log( format(0) ); // $0000.00
 
 ## 3 - Vanilla js alternatives to the lodash padding methods
 
+So if you are not the kind of person who likes lodash, or you like to always start with javaScript itself first as I sapose one should, it is true that there are some native staring padding methods in late specs of javaScript these days. So this makes the lodash methods \_.padStart, and \_.padEnd yet another example of one of those lodash methods that may only be needed as a kind of safety net when it comes to older browsers. If you only care about supporting late browsers using the native methods should work just fine, and it is not two hard to just throw in a pollyfill if need be.
+
 ### 3.1 - String.padStart, and String.padEnd.
 
 So there are now pad methods that are very similar to the lodash \_.padStart, and \_.padEnd methods in the String prototype of late specs of core javaScript itself.
 
 ```js
+let an = 1503345;
+ 
+console.log( String(an).padStart(10,0) ); // '0001503345'
+console.log( String(an).padEnd(10,0) ); // '1503345000'
 ```
+
+these seem to work just the same as the lodash equivalents.
 
 ### 3.2 - making or finding a stand alone method
 
