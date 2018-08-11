@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 13:20:06
-version: 1.10
+updated: 2018-08-11 13:23:30
+version: 1.11
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -73,7 +73,7 @@ these seem to work just the same as the lodash equivalents.
 
 ### 3.2 - making or finding a stand alone method
 
-When I look at my site stats it would appear that there is not much concern with my browser stats at least. However if I am in a situation in which I am getting a fair amount of traffic from people that are using older browsers this is a method where a polly fill may be needed. I often start out my making or finding a stand alone method that can be used with call.
+When I look at my site stats it would appear that there is not much concern with my browser stats at least. However if I am in a situation in which I am getting a fair amount of traffic from people that are using older browsers this is a method where a polly fill may be needed. I often start out my making or finding a stand alone method that can be used with [call](/2017/09/21/js-call-apply-and-bind/). By making it the kind of method that can be used with call on a String that helps to make it so it is ready to be monkey patched into the string prototype if need be.
 
 ```js
 let an = 1503345;
