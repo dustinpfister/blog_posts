@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 12:32:47
-version: 1.9
+updated: 2018-08-11 13:20:06
+version: 1.10
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -156,7 +156,7 @@ String.prototype.padStart = String.prototype.padStart || function (len, filler) 
 };
 ```
 
-This is why devs like lodash, you just need to know how far backward compatibility goes with the version of lodash that you are using, and if what it supports works fine for you, then you can just get going with development, and be done with this.
+This is why devs like lodash, you just need to know how far backward compatibility goes with the version of lodash that you are using, and if what it supports works fine for you, then you can just get going with development, and be done with this. Here I am using the pollyfill for map that can be found on the [Mozilla page of Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#Polyfill), and you might also want to check out my post on the lodash 
 
 ## 4 - conclusion
 
