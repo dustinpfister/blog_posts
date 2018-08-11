@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2018-08-11 14:12:00
-version: 1.8
+updated: 2018-08-11 14:20:07
+version: 1.9
 ---
 
 So lodash is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
@@ -76,6 +76,28 @@ Polly fills come in handy to push backward compatibility back farther when need 
 ## 3 - Filling sections of an array with fill
 
 So there are two additional arguments that can be given to fill to set the starting and ending array index values of where the filling is to take place. So once again say we have an array that represents a byte of data, and I want to set a certain bit range with \_.fill or Array.fill. No problem
+
+## 3.1 - with \_.fill
+
+With \_.fill it is the same as before only I pass two more arguments that are the start, and end array index values.
+
+```js
+var b = _.fill(new Array(8),0); // [0,0,0,0,0,0,0,0]
+ 
+_.fill(b, 1,2,6);
+ 
+console.log(b); //[0,0,1,1,1,1,0,0]
+```
+
+### 3.2 with Array.fill
+
+Same as with the native equvalent only because the array is the value of the this keyword as is the nature with prototype methods I just need to give the value to fill, and then the start and end index values.
+
+```js
+var b = new Array(8).fill(0).fill(1,2,6);
+ 
+console.log(b); //[0,0,1,1,1,1,0,0]
+```
 
 ## conclusion
 
