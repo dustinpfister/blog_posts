@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2018-08-11 10:37:46
-version: 1.2
+updated: 2018-08-11 11:02:37
+version: 1.3
 ---
 
 So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
@@ -34,6 +34,8 @@ console.log(_.padStart(an,10,'0')); // 0001503345
 ```
 
 ### 2.2 - A format money example
+
+Another common use of padding is to format a value that has to do with money. Say I have a variable that represents a sum of money, and I want to display this sum of money in a way in which it is always a certain standard string size. This could be for some kind of game, or something to that effect where the sum of money can be between $0000.00, and $9999.99.
 
 ```js
 let format = (m) => {
