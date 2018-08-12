@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 253
-updated: 2018-08-12 11:20:05
-version: 1.8
+updated: 2018-08-12 11:32:14
+version: 1.9
 ---
 
 When making a animation from the ground up with javaScript by itself the process often might involve one or more sprite sheets that is brought into the project by way of an external image file, or generated from code. Once I have my sheets I then devise some kind of system to get the proper frames, from the proper animations, from the proper sheets. This process can be time consuming, and is one of the many reasons why it is a good idea to just work in a framework such as phaser ce to one extent or another. In phaser sprite sheets can be added into a project from an external file via the asset loader, or generated with javaScript and added into the cache. Once I have a sprite sheet animations can be made by way of the animation manager of a sprite. In this post I will be writing about using the animation manager with asset less sprite sheet solution.
@@ -16,6 +16,27 @@ When making a animation from the ground up with javaScript by itself the process
 ## 1 - What to know
 
 This is a post on making animations in phaser ce animation manager with an asset free sprite sheet solution I have made. This is not a getting started post on phaser, or javaScript in general, so I assume that you have gotten your feet wet at least with these topics.
+
+## 1.1 - The very basics of animations
+
+So assuming that I have a sprite sheet loaded, or created and cached into the phaser cache. Creating a sprite that will make use of the animations in the sheet is a fairly straght forward process. I of course give the name of the sheet when making the sprite for starters. Then once I have a sprite, with a sprite sheet associated with it sprite I can then add an animation with the app method of the animation property of the sprite which is a reference to its animation manager.
+
+something like this
+```js
+var sprite = game.add.sprite(0,0,'sheet-name');
+sprite.name = 'guy';
+sprite.animations.add('walk',[0,1,2],12,true);
+```
+This animation would be and animation called 'walk' that would consist of the first three frames of the sprite sheet associated with this sprite, will be played back as 12 frames per second, and will loop over and over again until the animation changes to something else.
+
+I can then use the animation later in the state by grabbing a reference to the sprite, and calling the proper animation.
+
+```js
+var sprite = game.world.getByName('guy');
+sprite.animations.play('walk');
+```
+
+However to cover a full working example of this I am going to need to load, or create from code a sprite sheet, so lets take a look as an actual example of this in action.
 
 ## 2 - Box guy phaser animation example
 
