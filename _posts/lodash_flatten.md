@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2018-08-12 13:54:38
-version: 1.2
+updated: 2018-08-12 14:40:15
+version: 1.3
 ---
 
 So some of the method in [lodash](https://lodash.com/) are can come in handy, and really do help to save time with certain projects, todays post on lodash is one of those methods which is [\_.flatten](https://lodash.com/docs/4.17.10#flatten). The \_.flatten, and also \_.flattenDeep methods are one of many methods that help with the task of working with arrays of arrays, or multi dimensional arrays in javaScript. Flatten can be used to flatten down an array of arrays into a single array, thus making it a method that can be thought of as a reversal of [\_.chunk](/2017/09/13/lodash-chunk/).
@@ -82,4 +82,97 @@ console.log( grid2 );
 // all the way to linear
 console.log( grid );
 // [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]
+```
+
+## 4 - A grid example using \_.flatten and friends
+
+### 4.1 - The grid module using \_.chunk
+
+```js
+let grid = (function () {
+ 
+    // public api method
+    let api = {
+        grid: [],
+        w: 8,
+        h: 8
+    };
+ 
+    // generate a map
+    api.genMap = function (opt) {
+ 
+        opt = opt || {};
+        opt.forPos = opt.forPos || function () {};
+        this.w = opt.w || this.w;
+        this.h = opt.h || this.h;
+        this.grid = [];
+ 
+        let i = 0,
+        len = this.w * this.h;
+        while (i < len) {
+ 
+            let obj = {};
+ 
+            obj.i = i;
+            obj.x = i % this.w;
+            obj.y = Math.floor(i / this.w);
+ 
+            opt.forPos.call(obj, obj.x, obj.y, obj.i);
+ 
+            this.grid.push(obj);
+ 
+            i += 1;
+ 
+        }
+ 
+        // chunk the linear array into an array of arrays
+        this.grid = _.chunk(this.grid, this.w);
+ 
+    };
+ 
+    api.genMap();
+ 
+    return api;
+ 
+}
+    ());
+```
+
+### 4.2 - Using \_.flatten to help with tabulating a grid involving money
+ 
+```js
+// gen a map with random amounts of money in it
+grid.genMap({
+    w: 3,
+    h: 3,
+    forPos: function (x, y, i) {
+        this.money = _.random(0, 5);
+    }
+});
+ 
+// A Tab money method that makes use of \_flatten
+// to flatten the grid back to a linear array
+var tabMoney = function () {
+    var grid = this;
+    return _.reduce(_.flatten(grid.grid), function (acc, obj) {
+        return {
+            money: acc.money + obj.money
+        }
+    }).money;
+};
+ 
+console.log(grid.grid);
+console.log(tabMoney.call(grid, grid));
+/*
+[ [ { i: 0, x: 0, y: 0, money: 2 },
+    { i: 1, x: 1, y: 0, money: 5 },
+    { i: 2, x: 2, y: 0, money: 4 } ],
+  [ { i: 3, x: 0, y: 1, money: 4 },
+    { i: 4, x: 1, y: 1, money: 1 },
+    { i: 5, x: 2, y: 1, money: 4 } ],
+  [ { i: 6, x: 0, y: 2, money: 4 },
+    { i: 7, x: 1, y: 2, money: 4 },
+    { i: 8, x: 2, y: 2, money: 2 } ] ]
+30
+*/
 ```
