@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2018-08-12 14:40:15
-version: 1.3
+updated: 2018-08-12 14:52:07
+version: 1.4
 ---
 
 So some of the method in [lodash](https://lodash.com/) are can come in handy, and really do help to save time with certain projects, todays post on lodash is one of those methods which is [\_.flatten](https://lodash.com/docs/4.17.10#flatten). The \_.flatten, and also \_.flattenDeep methods are one of many methods that help with the task of working with arrays of arrays, or multi dimensional arrays in javaScript. Flatten can be used to flatten down an array of arrays into a single array, thus making it a method that can be thought of as a reversal of [\_.chunk](/2017/09/13/lodash-chunk/).
@@ -86,7 +86,13 @@ console.log( grid );
 
 ## 4 - A grid example using \_.flatten and friends
 
+So an example that involves some fun with a gird is in order for a method that has to do with multi dimensional arrays, so lets get into that for a moment as a way to learn why methods like \_.flatten come in handy. Say you are making a game that involves to one extent or another a grid, and each grid position has an object associated with it. This gird might be used in a lot of different ways but so far you just have a single minimal module that uses \_.chunk to break down a linear array into an array of arrays that each have an object for each x, y position.
+
+There is only a few properties of this modules that store the current state of the grid, and a single public method that can be used to generate the grid. When calling the genMap method it will create an object for each position with basic info like x,y, and the index when it does exist as a linear array. The genMap object also allows for a forPos methods that is called for each position which can be used to make custom properties for the position object.
+
 ### 4.1 - The grid module using \_.chunk
+
+So here is the code of the module that I was explaining. In it I create a public api, and return that api after calling the genMap method once with default values to make sure that the gird always has some kind of set of values.
 
 ```js
 let grid = (function () {
@@ -137,6 +143,8 @@ let grid = (function () {
 }
     ());
 ```
+
+The genMap method works by just creating a linear array of objects for each position, and then I use the \_.chunk method to break it down into the propper array of arrays form.
 
 ### 4.2 - Using \_.flatten to help with tabulating a grid involving money
  
