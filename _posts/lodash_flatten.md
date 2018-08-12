@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2018-08-12 14:56:53
-version: 1.5
+updated: 2018-08-12 15:01:05
+version: 1.6
 ---
 
 So some of the method in [lodash](https://lodash.com/) are can come in handy, and really do help to save time with certain projects, todays post on lodash is one of those methods which is [\_.flatten](https://lodash.com/docs/4.17.10#flatten). The \_.flatten, and also \_.flattenDeep methods are one of many methods that help with the task of working with arrays of arrays, or multi dimensional arrays in javaScript. Flatten can be used to flatten down an array of arrays into a single array, thus making it a method that can be thought of as a reversal of [\_.chunk](/2017/09/13/lodash-chunk/).
@@ -188,3 +188,7 @@ console.log(tabMoney.call(grid, grid));
 ```
 
 Here my tab money method works by making use of \_.flatten to flatten the grid into a linear array to which I am then using with \_.reduce to tabulate the amount of money for each position object.
+
+## 5 - conclusion
+
+I hope you enjoyed this post on the lodash \_.flatten method, if you think there should be something more to add to this post be sure to let me know in the comments. Also if you enjoyed this post you might want to check out my many other [posts on lodash](/categories/lodash/). Some other posts of interest that are relavent to \_.flatten migth be my post on [\_.chunk](/2017/09/13/lodash-chunk/), and [\_.zip](/2018/02/01/lodash_zip/)
