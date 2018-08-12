@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 253
-updated: 2018-08-12 09:24:01
-version: 1.6
+updated: 2018-08-12 09:39:12
+version: 1.7
 ---
 
 When making a animation from the ground up with javaScript by itself the process often might involve one or more sprite sheets that is brought into the project by way of an external image file, or generated from code. Once I have my sheets I then devise some kind of system to get the proper frames, from the proper animations, from the proper sheets. This process can be time consuming, and is one of the many reasons why it is a good idea to just work in a framework such as phaser ce to one extent or another. In phaser sprite sheets can be added into a project from an external file via the asset loader, or generated with javaScript and added into the cache. Once I have a sprite sheet animations can be made by way of the animation manager of a sprite. In this post I will be writing about using the animation manager with asset less sprite sheet solution.
@@ -22,6 +22,8 @@ This is a post on making animations in phaser ce animation manager with an asset
 In order to have an phaser animation example I first need a sprite sheet to work with. So for this example I will be using a solution I worked out that allows be to create sprite sheets with the 2d canvas drawing api. This sheet will contain two animations for a sprite. One that will be an animation that is to be played when the sprite is not moving, and another that is to be played when it is moving.
 
 ### 2.1 - my sheetFromCanvas method
+
+First off there is my sheetFromCanvas method that I can use to make a sprite sheet. This works by passing an object to it that contains, among other properties, and array of objects that declare the number of frames, and a method that will be used to render each frame for that animation.
 
 ```js
 var sheetFromCanvas = function (opt) {
@@ -95,6 +97,8 @@ var sheetFromCanvas = function (opt) {
 ```
 
 ### 2.2 - The state
+
+Once I have my sprite sheet worked out, I can now use it to make some animations.
 
 ```js
 game.state.add('ani-box-guy', {
