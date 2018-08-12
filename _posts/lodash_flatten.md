@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2018-08-12 14:52:07
-version: 1.4
+updated: 2018-08-12 14:56:53
+version: 1.5
 ---
 
 So some of the method in [lodash](https://lodash.com/) are can come in handy, and really do help to save time with certain projects, todays post on lodash is one of those methods which is [\_.flatten](https://lodash.com/docs/4.17.10#flatten). The \_.flatten, and also \_.flattenDeep methods are one of many methods that help with the task of working with arrays of arrays, or multi dimensional arrays in javaScript. Flatten can be used to flatten down an array of arrays into a single array, thus making it a method that can be thought of as a reversal of [\_.chunk](/2017/09/13/lodash-chunk/).
@@ -147,7 +147,9 @@ let grid = (function () {
 The genMap method works by just creating a linear array of objects for each position, and then I use the \_.chunk method to break it down into the propper array of arrays form.
 
 ### 4.2 - Using \_.flatten to help with tabulating a grid involving money
- 
+
+So now that I have my grid module it is time to start playing around with some custom maps, and methods that involve the use of \_.flatten among other useful methods like [\_.reduce](/2018/07/25/lodash_reduce/). How about a map that holds random amounts of money, and I must make a method that tabulates the total sum of the money in the grid.
+
 ```js
 // gen a map with random amounts of money in it
 grid.genMap({
@@ -184,3 +186,5 @@ console.log(tabMoney.call(grid, grid));
 30
 */
 ```
+
+Here my tab money method works by making use of \_.flatten to flatten the grid into a linear array to which I am then using with \_.reduce to tabulate the amount of money for each position object.
