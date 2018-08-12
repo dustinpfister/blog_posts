@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2018-08-12 13:41:42
-version: 1.1
+updated: 2018-08-12 13:54:38
+version: 1.2
 ---
 
 So some of the method in [lodash](https://lodash.com/) are can come in handy, and really do help to save time with certain projects, todays post on lodash is one of those methods which is [\_.flatten](https://lodash.com/docs/4.17.10#flatten). The \_.flatten, and also \_.flattenDeep methods are one of many methods that help with the task of working with arrays of arrays, or multi dimensional arrays in javaScript. Flatten can be used to flatten down an array of arrays into a single array, thus making it a method that can be thought of as a reversal of [\_.chunk](/2017/09/13/lodash-chunk/).
@@ -49,4 +49,37 @@ let flat = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
 let grid = _.chunk(flat,3);
  
 console.log( grid ); // [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
+```
+
+## 3 - The lodash \_.flattenDepth method for when there are many levels of nested arrays
+
+If I have a situastion in which I am dealing with many nested levels of arrays I can use the \_.flattenDepth method that is just like \_.flatten only it accepts a second argument that sets the depth at which flattening is to take. With the normal \_.flatten method only a single level will be flattened, and with the \_.flattenDeep method all levels will be flattened, but with \_.flattenDepth I can control the depth of this.
+
+```js
+let grid3 = [
+   [[1,2,3],[4,5,6],[7,8,9]],
+   [[10,11,12],[13,14,15],[16,17,18]],
+   [[19,20,21],[22,23,24],[25,26,27]],
+];
+ 
+let grid2 = _.flattenDepth(grid3,1);
+let grid = _.flattenDepth(grid3,2);
+ 
+// just one level
+console.log( grid2 );
+/*
+[ [ 1, 2, 3 ],
+  [ 4, 5, 6 ],
+  [ 7, 8, 9 ],
+  [ 10, 11, 12 ],
+  [ 13, 14, 15 ],
+  [ 16, 17, 18 ],
+  [ 19, 20, 21 ],
+  [ 22, 23, 24 ],
+  [ 25, 26, 27 ] ]
+*/
+ 
+// all the way to linear
+console.log( grid );
+// [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]
 ```
