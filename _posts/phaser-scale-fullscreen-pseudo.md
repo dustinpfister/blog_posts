@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 258
-updated: 2018-08-13 17:47:20
-version: 1.6
+updated: 2018-08-13 18:09:15
+version: 1.7
 ---
 
 Toggling full screen when making a [phaser](http://phaser.io) project can end up becoming a bit of a rabbit hole, at least that has been my experience with it. Never the less, I think I have worked out some solutions that seem to work okay. With the phaser Scale manager it is possible to make a request to set actual full screen mode in the browser, and with some browsers this works fine without any problems. However on some browsers it will not work, so there might be a desire of a back up plan, one that involves just simply scaling up the game to the full size of the browser window. Doing so with phaser is a little involved, but in the post I will be writing about toggling a kind of pseudo full screen mode in phaser.
@@ -62,11 +62,11 @@ In my main.js file I create my instance of Phaser.Game, and create a single stat
 
 Then I add a handler for any kind of onDown event that will be used to toggle the scale. This works by first checking which scale mode is currently active. If it is NO_SCALE then I will want to have the scale mode change to SHOW_ALL, and scale up the canvas. If it is All ready set to the SHOW_All ScaleMode then I will want to put it back to normal.
 
-When scaling the canvas up I will want to set the windowConstraints bottom value to 'visual', if I do not do this then the canvas might scale relative to the layout of the page which I do not want.
+When scaling the canvas up I will want to set the windowConstraints bottom value to 'visual', if I do not do this then the canvas might scale relative to the layout of the page which I do not want. The pageAlignHorizontally, and pageAlignVertically properties should also be set to true from there default false values. These properties are important because I am using the SHOW_all scale mode that will preserve aspect ration as it scales, so I will want the result centered.
+
+Next I set the target scale by setting the game.scale.width, and game.scale.height properties to the values I want to scale to, in this case it is window.innerWidth, and window.innerHeight. I then also
 
 ```js
-var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
- 
 game.state.add('resize', {
  
     create: function () {
@@ -87,6 +87,19 @@ game.state.add('resize', {
         fixDiv.style.top = '0px';
         fixDiv.style.left = '0px';
  
+        // setFiex to be called when toggling to pseudo full screen
+        // or when the window is resized
+        var setFixed = function () {
+            game.scale.width = window.innerWidth;
+            game.scale.height = window.innerHeight;
+            fixDiv.style.width = game.scale.width + 'px';
+            fixDiv.style.Height = game.scale.height + 'px';
+        };
+ 
+        // call setFixed on window resize
+        window.addEventListener('resize', function () {setFixed();});
+ 
+        // append to body
         document.body.appendChild(fixDiv);
  
         // on input down toggle full screen
@@ -103,10 +116,7 @@ game.state.add('resize', {
                 game.scale.pageAlignVertically = true;
  
                 // set
-                game.scale.width = window.innerWidth;
-                game.scale.height = window.innerHeight;
-                fixDiv.style.width = game.scale.width + 'px';
-                fixDiv.style.Height = game.scale.height + 'px';
+                setFixed();
  
                 // remove from dom
                 Phaser.Canvas.removeFromDOM(game.canvas);
