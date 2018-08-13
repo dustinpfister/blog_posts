@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 258
-updated: 2018-08-13 18:16:56
-version: 1.8
+updated: 2018-08-13 18:21:31
+version: 1.9
 ---
 
 Toggling full screen when making a [phaser](http://phaser.io) project can end up becoming a bit of a rabbit hole, at least that has been my experience with it. Never the less, I think I have worked out some solutions that seem to work okay. With the phaser Scale manager it is possible to make a request to set actual full screen mode in the browser, and with some browsers this works fine without any problems. However on some browsers it will not work, so there might be a desire of a back up plan, one that involves just simply scaling up the game to the full size of the browser window. Doing so with phaser is a little involved, but in the post I will be writing about toggling a kind of pseudo full screen mode in phaser.
@@ -162,4 +162,6 @@ game.state.start('resize');
 
 The process of putting things back is kind of a reversal of the same process as before. I once again use the Phaser.Canvas.removeFromDom method to remove the canvas from the dom, but I now place it back in the container that is in the layout of the page.
 
+## 3 - Conclusion
 
+This project along with just about everything else that I make is a work in progress. I might want to do a great deal more with this to make it more robust, but the basic idea is there. The canvas just needs to be removed from the container in the page layout, and then placed in a new container that is fixed to the browser window, scaled to the size of the window, and hopefully has a zIndex that is above all other content on the page. Once that canvas is in it's new container I just need to set the scale mode that I want, and the size of the scale, alonge with any other relevant properties set in the scale manager.
