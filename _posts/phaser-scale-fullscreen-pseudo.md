@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 258
-updated: 2018-08-13 17:34:13
-version: 1.4
+updated: 2018-08-13 17:36:43
+version: 1.5
 ---
 
 Toggling full screen when making a [phaser](http://phaser.io) project can end up becoming a bit of a rabbit hole, at least that has been my experience with it. Never the less, I think I have worked out some solutions that seem to work okay. With the phaser Scale manager it is possible to make a request to set actual full screen mode in the browser, and with some browsers this works fine without any problems. However on some browsers it will not work, so there might be a desire of a back up plan, one that involves just simply scaling up the game to the full size of the browser window. Doing so with phaser is a little involved, but in the post I will be writing about toggling a kind of pseudo full screen mode in phaser.
@@ -52,6 +52,97 @@ So the html file of this project represents what would be a layout of some kind.
         <script src="./main.js"></script>
     </body>
 </html>
+```
+
+What it does not have is the fixed position div element. This is something that I think should be generated in my code in order to help make the project a little more portable.
+
+### 2.2 - The main.js file
+
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('resize', {
+ 
+    create: function () {
+ 
+        // just a circle
+        var bx = game.add.graphics(160, 120);
+        bx.beginFill(0x008f00);
+        bx.drawCircle(0, 0, 240);
+        bx.endFill();
+        game.stage.backgroundColor = '#2a2a2a';
+ 
+        // disable scrollTo
+        game.scale.compatibility.scrollTo = false;
+ 
+        // inject a fixed position DIV for SCALE
+        var fixDiv = document.createElement('div');
+        fixDiv.style.position = 'fixed';
+        fixDiv.style.top = '0px';
+        fixDiv.style.left = '0px';
+ 
+        document.body.appendChild(fixDiv);
+ 
+        // on input down toggle full screen
+        game.input.onDown.add(function () {
+ 
+            // IF scale mode is NO_SCALE then toggle to SHOW_ALL
+            if (game.scale.scaleMode === Phaser.ScaleManager.NO_SCALE) {
+ 
+                // set window constraints to 'visual' for both right, and bottom
+                //game.scale.windowConstraints.right = 'visual';
+                game.scale.windowConstraints.bottom = 'visual';
+ 
+                // I will want the scaled canvas to align horizontally/Vertically
+                game.scale.pageAlignHorizontally = true;
+                game.scale.pageAlignVertically = true;
+ 
+                // set
+                game.scale.width = window.innerWidth;
+                game.scale.height = window.innerHeight;
+                fixDiv.style.width = game.scale.width + 'px';
+                fixDiv.style.Height = game.scale.height + 'px';
+ 
+                // remove from dom
+                Phaser.Canvas.removeFromDOM(game.canvas);
+ 
+                // append to fixDIV
+                fixDiv.appendChild(game.canvas);
+ 
+                // set scale mode to 'SHOW_ALL'
+                game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+ 
+            } else {
+ 
+                // ELSE if scale mode is not NO_SCALE toggle back
+ 
+                // set window constraints back to default
+                game.scale.windowConstraints.right = 'layout';
+                game.scale.windowConstraints.bottom = '';
+ 
+                // I will want to set these back to there defaults
+                game.scale.pageAlignHorizontally = false;
+                game.scale.pageAlignVertically = false;
+ 
+                // remove from dom
+                Phaser.Canvas.removeFromDOM(game.canvas);
+ 
+                // append back to game.parent
+                document.getElementById(game.parent).appendChild(game.canvas);
+ 
+                // set scale back to NO_SCALE
+                game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
+ 
+            }
+ 
+        });
+ 
+    }
+ 
+});
+ 
+game.state.start('resize');
 ```
 
 
