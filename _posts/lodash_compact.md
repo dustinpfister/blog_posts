@@ -5,11 +5,11 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2018-08-11 10:37:39
-version: 1.5
+updated: 2018-08-12 20:28:17
+version: 1.6
 ---
 
-For today I will be writing another on eof my quick little posts on [lodash](https://lodash.com/), just for the hell of it. My approach with lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, or array like objects. So under that light I think it is a good idea to write some content on the topic. Anyway todays post will center around the [\_.compact](https://lodash.com/docs/4.17.10#compact) method that can be used to quickly remove false values awway from an array. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js, the deal with NaN, and there are other relevant lodash methods of interest as well, so lets do this.
+For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), just for the hell of it. My approach with lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, or array like objects. So under that light I think it is a good idea to write some content on the topic. Anyway todays post will center around the [\_.compact](https://lodash.com/docs/4.17.10#compact) method that can be used to quickly remove false values away from an array. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js.
 
 <!-- more -->
 
@@ -30,3 +30,23 @@ let arr = [null,1,'foo',NaN,false,'bar',undefined,undefined,42];
  
 console.log(_.compact(arr)); // [ 1, 'foo', 'bar', 42 ]
 ```
+
+## 2.2 - Using Array.forEach
+
+It is not to hard to make a vanilla js solution using Array.forEach.
+
+```js
+var arr = [null, 1, 'foo', NaN, false, 'bar', undefined, undefined, 42];
+
+var compact = function (a) {
+    var n = [];
+    a.forEach(function (el) {
+        if (!!el) {n.push(el)}
+    });
+    return n;
+};
+ 
+console.log( compact(arr) ); // [ 1, 'foo', 'bar', 42 ]
+```
+
+## 3 - Conclusion
