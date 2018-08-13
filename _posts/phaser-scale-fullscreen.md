@@ -5,11 +5,11 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 66
-updated: 2017-11-01 12:16:53
-version: 1.3
+updated: 2018-08-13 18:32:28
+version: 1.4
 ---
 
-Switching two and back from full screen is pretty easy in [phaser](http://phaser.io), there are just two methods, and a property of interest via game.scale to get stared with it. There are also properties that can be set to fill to the screen of the device, and preserve aspect ratio.
+Switching two and back from full screen is pretty easy in [phaser](http://phaser.io), there are just two methods, and a property of interest via game.scale to get started with it. There are also properties that can be set to fill to the screen of the device, and preserve aspect ratio. In this post I will be writing about setting a game in actual full screen with the phaser scale manager. However this does not seem to work on some browsers, as it is something that can often be restricted. So I have written [another post on toggling pseudo full screen](/2018/08/13/phaser-scale-fullscreen-pseudo/) in phaser, that is actually just a way to scale up the canvas of the game. So you might want to check that out if what is written here does not work out okay for you.
 
 <!-- more -->
 
