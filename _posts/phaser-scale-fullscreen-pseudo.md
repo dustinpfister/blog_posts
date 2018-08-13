@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 258
-updated: 2018-08-13 17:36:43
-version: 1.5
+updated: 2018-08-13 17:47:20
+version: 1.6
 ---
 
 Toggling full screen when making a [phaser](http://phaser.io) project can end up becoming a bit of a rabbit hole, at least that has been my experience with it. Never the less, I think I have worked out some solutions that seem to work okay. With the phaser Scale manager it is possible to make a request to set actual full screen mode in the browser, and with some browsers this works fine without any problems. However on some browsers it will not work, so there might be a desire of a back up plan, one that involves just simply scaling up the game to the full size of the browser window. Doing so with phaser is a little involved, but in the post I will be writing about toggling a kind of pseudo full screen mode in phaser.
@@ -58,6 +58,11 @@ What it does not have is the fixed position div element. This is something that 
 
 ### 2.2 - The main.js file
 
+In my main.js file I create my instance of Phaser.Game, and create a single state called resize. In this state I create a single simple display object that represents what would be the contents of a game. I am disabling scrollTo as I do with most of my phaser projects, and then I create, and append the fixed div I mentioned earlier.
+
+Then I add a handler for any kind of onDown event that will be used to toggle the scale. This works by first checking which scale mode is currently active. If it is NO_SCALE then I will want to have the scale mode change to SHOW_ALL, and scale up the canvas. If it is All ready set to the SHOW_All ScaleMode then I will want to put it back to normal.
+
+When scaling the canvas up I will want to set the windowConstraints bottom value to 'visual', if I do not do this then the canvas might scale relative to the layout of the page which I do not want.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -91,7 +96,6 @@ game.state.add('resize', {
             if (game.scale.scaleMode === Phaser.ScaleManager.NO_SCALE) {
  
                 // set window constraints to 'visual' for both right, and bottom
-                //game.scale.windowConstraints.right = 'visual';
                 game.scale.windowConstraints.bottom = 'visual';
  
                 // I will want the scaled canvas to align horizontally/Vertically
@@ -118,7 +122,6 @@ game.state.add('resize', {
                 // ELSE if scale mode is not NO_SCALE toggle back
  
                 // set window constraints back to default
-                game.scale.windowConstraints.right = 'layout';
                 game.scale.windowConstraints.bottom = '';
  
                 // I will want to set these back to there defaults
