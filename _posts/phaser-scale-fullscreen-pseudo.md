@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 258
-updated: 2018-08-13 18:09:15
-version: 1.7
+updated: 2018-08-13 18:16:56
+version: 1.8
 ---
 
 Toggling full screen when making a [phaser](http://phaser.io) project can end up becoming a bit of a rabbit hole, at least that has been my experience with it. Never the less, I think I have worked out some solutions that seem to work okay. With the phaser Scale manager it is possible to make a request to set actual full screen mode in the browser, and with some browsers this works fine without any problems. However on some browsers it will not work, so there might be a desire of a back up plan, one that involves just simply scaling up the game to the full size of the browser window. Doing so with phaser is a little involved, but in the post I will be writing about toggling a kind of pseudo full screen mode in phaser.
@@ -64,7 +64,9 @@ Then I add a handler for any kind of onDown event that will be used to toggle th
 
 When scaling the canvas up I will want to set the windowConstraints bottom value to 'visual', if I do not do this then the canvas might scale relative to the layout of the page which I do not want. The pageAlignHorizontally, and pageAlignVertically properties should also be set to true from there default false values. These properties are important because I am using the SHOW_all scale mode that will preserve aspect ration as it scales, so I will want the result centered.
 
-Next I set the target scale by setting the game.scale.width, and game.scale.height properties to the values I want to scale to, in this case it is window.innerWidth, and window.innerHeight. I then also
+Next I set the target scale by setting the game.scale.width, and game.scale.height properties to the values I want to scale to, in this case it is window.innerWidth, and window.innerHeight. I then also set the size of the fixed div as well to make sure that it is the same area as the window.
+
+I then use the Phaser.Canvas.removeFromDom method to remove the canvas from the dom. The canvas element will still be at game.canvas, it will just no longer be appended to the container, as I want to place it in the fixed div I made, which is of couse what I do next with the appnedChild method. Once that is all done I set the scale mode to SHOW_All. This will also trigger a refresh for the scale manager, so I do not have to call that method manually.
 
 ```js
 game.state.add('resize', {
@@ -157,5 +159,7 @@ game.state.add('resize', {
  
 game.state.start('resize');
 ```
+
+The process of putting things back is kind of a reversal of the same process as before. I once again use the Phaser.Canvas.removeFromDom method to remove the canvas from the dom, but I now place it back in the container that is in the layout of the page.
 
 
