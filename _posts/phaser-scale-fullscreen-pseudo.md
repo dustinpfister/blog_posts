@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 258
-updated: 2018-08-13 17:30:44
-version: 1.3
+updated: 2018-08-13 17:34:13
+version: 1.4
 ---
 
 Toggling full screen when making a [phaser](http://phaser.io) project can end up becoming a bit of a rabbit hole, at least that has been my experience with it. Never the less, I think I have worked out some solutions that seem to work okay. With the phaser Scale manager it is possible to make a request to set actual full screen mode in the browser, and with some browsers this works fine without any problems. However on some browsers it will not work, so there might be a desire of a back up plan, one that involves just simply scaling up the game to the full size of the browser window. Doing so with phaser is a little involved, but in the post I will be writing about toggling a kind of pseudo full screen mode in phaser.
@@ -29,6 +29,8 @@ For an example of pseudo full screen, fake full screen, or just simply game canv
 This can be archived by removing the canvas from the layouts container element, and then placing it in a fixed position div. Then when it is toggled back, it will be removed from the fixed div, and back to the original container. As you might guess the fixed div is placed above all other content on the page, and is scaled to fit the whole of the window.
 
 ### 2.1 - The index.html file
+
+So the html file of this project represents what would be a layout of some kind. When I have a game placed in a web site it will often just be a small section of that page, along with other content. So My html file contains that container, as well as links to phaser, and my main.js file that will contain everything else.
 
 ```html
 <!DOCTYPE html>
