@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 258
-updated: 2018-08-14 16:09:43
-version: 1.16
+updated: 2018-08-14 16:23:26
+version: 1.17
 ---
 
 This post is on [buttons](https://photonstorm.github.io/phaser-ce/Phaser.Button.html) in [phaser](http://phaser.io) that javaScript powered game framework for making web based games. In phaser there is a special type of display object called a button, that is very mush like a sprite in many ways, but is geared towards the role of a button. Sprite sheets are handled a little differently, there is not just one frame index, but four indexes to set one for each button state (hover,out,down, and up). Input is enabled be default, and there are also a call back, and a context to set for it. In this post I will be covering buttons, and will also be putting together a basic clicker type game. These buttons are a great way to quickly implement a button compared to using just a plain old sprite, so lets take a look at buttons in phaser.
@@ -27,8 +27,13 @@ For a simple example that makes use of buttons I thought I would make a simple c
 
 ## 2.1 - Making the game object, and boot state.
 
-```js
+Like just about all of my phaser projects these days I start off by making an instance of the [main phaser constructor](/2017/10/11/phaser-main-game-constructor/), rather than just passing it a single state object as the fifth argument. This allows me to make more than one state object with game.state.add, and then choose which state I want to start first, when I want it to start.
 
+Anyway this boot state is where I will set a few things up that will be used else where in the project, for this project I am just setting up a global object that will hold game state data, and setting some values that have to do with scaling. If you would like to know more about that scaling in phaser you might want to check out my post on [pseudo full screen](/2018/08/13/phaser-scale-fullscreen-pseudo/).
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
 // boot state
 game.state.add('boot', {
  
@@ -55,6 +60,8 @@ game.state.add('boot', {
  
 });
 ```
+
+Not much to write about with this state when it comes to buttons thought, so lets move on to the button-sheet state, that will be used to set up the sprite sheet that will be used for the games buttons.
 
 ## 2.2 - the button sheet state
 
