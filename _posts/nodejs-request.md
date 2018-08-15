@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 11:39:24
-version: 1.14
+updated: 2018-08-15 13:24:02
+version: 1.15
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -207,10 +207,48 @@ request(
 
 So request is very much like many of these other popular http clients, that all seem to follow this convention to one extent or another. Allowing for easy basic use, but also allowing for more advanced use as well when called for.
 
-### 4 - Like promises?
+## 4 - Streams
+
+So request has out of the box support for callback methods, and one other option which is streams. Streams are great when dealing with very large files, or any kind of live data stream.
+
+## 4.1 - Using stream.Transform object mode to log out "War and peace" to the console.
+
+So for a fun example of using streams with request, I thought about making something that logs out the text of the book "war and peace" that is a book that is well know for it's very high word count of over five hundred thousand words. In this example I will be using the transform method of the node.js built in stream module.
+
+```js
+let request = require('request'),
+stream = require('stream');
+ 
+// requesting "War, and peace" (it's over 500,000 words)
+request('http://www.textfiles.com/etext/FICTION/war_peace_text')
+ 
+.pipe(new stream.Transform({
+ 
+        objectMode: true,
+        transform: function (a, en, cb) {
+ 
+            // log each chunk as it comes in
+            console.log(a.toString());
+ 
+            cb();
+ 
+        }
+ 
+    }))
+ 
+.on('error', function (err) {
+ 
+    console.log(err);
+ 
+});
+```
+
+Streaming is useful if I am ever dealing with a very large file, such as this. instead of having to wait for the whole thing to download, I can start logging it to the console as it comes in.
+
+## 5 - Like promises?
 
 So one nice think about the http client axios, is that it has promise support out of the box. Nothing against axios, that is a great client as well, but this post is on request. So out of the box there is no promise support. However there are additional packages that can be used to quickly add promise support using either native promises using [request-promise-native](request-promise-native), [bluebird](https://www.npmjs.com/package/bluebird)  using [request-promise](https://www.npmjs.com/package/request-promise), or another one using any-promise called [request-promise-any](https://www.npmjs.com/package/request-promise-any)
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 request is a descent http client, the out of box promises support might not be there, but with some projects I can do without it. Also When it comes to adding promise support I have more than one option to choose from which is nice. This rases all kinds of questions such as how does bluefish compare to just using native promises? So much to write about, and so little time. If you like this post be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
