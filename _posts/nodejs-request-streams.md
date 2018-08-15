@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 18:12:30
-version: 1.7
+updated: 2018-08-15 19:02:25
+version: 1.8
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -59,7 +59,7 @@ request('https://google.com')
 
 This is also handy if I want to do something with the chunks as they come in, but it might not be a true replacement for stream.transform, more on that later.
 
-## 3 - piping chunks
+## 3 - Writing chunks to a file
 
 ## 4 - Stream.transform
 
@@ -97,3 +97,98 @@ request('https://raw.githubusercontent.com/request/request/master/README.md')
 ```
 
 This is just a basic example of what can be done with Stream.transform, but I can define some kind of more complex way of transforming an incoming stream of data with this.
+
+## 5 - Downloading war and peace
+
+So maybe a good example of why streams are important is when dealing with very large files. The novel war an peace has a reputation of being a very large book, of over five hundred thousand words. On a slow connection a file this large will take a little while to download. 
+
+In this example I am checking the headers of a file at a url that holds a text file that is a copy of war and peace via a head request first. Once the head request is done I look for a content length header, and assume that this must be the byte length of the file. Once I have the byte length I can check if it is between some set limits for downloading the body of a file. If all goes well I then start the get request for the file, and for each incoming byte of data I update a percent done variable, and log the current percentage done in the console. While this is happening I am also writing the chunks to a file as well.
+
+```js
+let request = require('request'),
+stream = require('stream'),
+fs = require('fs'),
+ 
+// requesting "War, and peace" (it's over 500,000 words)
+uri = 'http://www.textfiles.com/etext/FICTION/war_peace_text',
+ 
+// a tx file to write to
+txFile = fs.createWriteStream('warpeace_.txt');
+ 
+// start out with a head request
+// as I would likt to know the file
+// size first
+request({
+ 
+    method: 'head',
+    uri: uri
+ 
+})
+ 
+// if an error log it
+.on('error', function (err) {
+ 
+    console.log(err);
+ 
+})
+ 
+// if we have a response for the head request
+.on('response', function (res) {
+ 
+    // get the byte size
+    let byteSize = res.headers['content-length'] || -1,
+    byteDown = 0,
+    per = 0;
+ 
+    // if we have a byteSize between two bounds
+    if (byteSize >= 0 && byteSize <= 10000000) {
+ 
+        // Then make the actual get request
+        // for the body of the file
+        request({
+ 
+            method: 'get',
+            uri: uri
+ 
+        })
+ 
+        // if an error log it
+        .on('error', function (err) {
+ 
+            console.log(err);
+ 
+        })
+ 
+        // for each incoming chunk
+        .on('data', function (chunk) {
+ 
+            byteDown += chunk.length;
+            per = byteDown / byteSize * 100;
+ 
+            console.log('downloading: ' + per.toFixed(2) + '%');
+ 
+            // write the current chunk
+            txFile.write(chunk);
+ 
+        })
+ 
+        .on('end', function () {
+ 
+            console.log('file done');
+            console.log(byteDown + ' bytes downloaded');
+ 
+            txFile.end();
+ 
+        });
+ 
+    } else {
+ 
+        console.log('byteSize: ' + byteSize);
+        console.log('byteSize not in bounds, headers:');
+        console.log(res.headers);
+ 
+    }
+ 
+})
+```
+
