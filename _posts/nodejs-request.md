@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 09:16:13
-version: 1.7
+updated: 2018-08-15 09:25:00
+version: 1.8
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -28,12 +28,17 @@ $ npm init
 $ npm install request --save
 ```
 
-## 2 - A very basic GET request example
+## 2 - Some very basic GET request examples
 
-Here is a quick demo as to how to go about making that simple get request.
+Say you just want to make a get request for something on the open Internet. 
+
+### 2.1 - Just giving the url, and a callback
+
+Here is a quick demo as to how to go about making that simple get to google with request, by just giving the url, and a callback as the second argument.
 
 ```js
-var request = require('request');
+let request = require('request');
+ 
 request('http://www.google.com', function (err, res, body) {
  
     if(err){
@@ -48,6 +53,8 @@ request('http://www.google.com', function (err, res, body) {
  
 });
 ```
+
+The callback follows the usual deal that is expected with most callbacks in node.js where the first argument is an error if an error occurs. Then the second argument is a response object, and the third argument is the body of the request. For most requests there will be no need to parse the body manually, request will do that for you.
 
 ### 2.1 - Using the built in node.js http module.
 
