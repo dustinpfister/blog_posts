@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 19:47:16
-version: 1.11
+updated: 2018-08-15 19:50:41
+version: 1.12
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -367,3 +367,6 @@ request('https://i.stack.imgur.com/R3O9s.png?s=64&g=1')
 
 Its a really cool project for handling this sort of thing, It can also be used to encode to png as well, but that is a matter for another post.
 
+## 7 - Conclusion
+
+So streams can be a nice way to work with requests, the callback system as well is tired yet true as well with request. Also if I want to use promises there is a wealth of options when it comes to adding support for that sort of thing as well, as compared to axios where that is just built in from that start. After spending some time playing around with request I am beginning to see why this is such a popular http client for node.js, there is a lot of versatility with this one.
