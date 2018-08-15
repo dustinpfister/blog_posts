@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 17:59:15
-version: 1.5
+updated: 2018-08-15 18:08:10
+version: 1.6
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -17,6 +17,9 @@ So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/
 
 This is an advanced post on node.js, and JavaScript that has to do with working streams using request over the built in modules for doing so. I will not be covering everything there is to know about request, let alone all the other topics of interest that branch off from this. If you want to learn the basics about request, I have [an older post on that](/2017/05/23/nodejs-request/).
 
+## 1.1 - Buffers
+
+In this post I will be making heavy use of Buffers, they come up a lot in node.js when working with streams. In this post I will be mostly working with chunks of data from requests using request, as that is what this is mainly what the post is on. However in some examples I will also be working with buffers when it comes to writing data to a file as well. If you are not to keen on buffers you might want to check out my [post on buffers](/2018/02/07/nodejs-buffer/), but the [node.js docs](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) might very well be the best source on that subject.
 
 ## 2 - Just logging chunks of data as they come in.
 
@@ -52,11 +55,13 @@ request('https://google.com')
 
 This is also handy if I want to do something with the chunks as they come in, but it might not be a true replacement for stream.transform, more on that later.
 
-## 3 - Stream.transform
+## 3 - piping chunks
+
+## 4 - Stream.transform
 
 The transform method in the node.js built in stream module, can be used to define my own transform methods. That is anything that I might want to do with an incoming stream of data, simple things like converting text to upper case, to more complex things that can be considered a kind of compression, encryption, or obfuscation.
 
-### 3.1 - To upper case
+### 4.1 - To upper case
 
 For a simple example of a transform I made an example that just converts every letter to uppercase.
 
