@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 10:35:39
-version: 1.10
+updated: 2018-08-15 11:00:58
+version: 1.11
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -136,6 +136,38 @@ request('www.google.com', function (err, res, body) {
 This method will still not work as well as what I can just quickly install using request, I could do a better job handling different protocols other than just http for example, notice that I do not give the http when giving a url, it will cause an error if I do. I could resolve that, but you get the idea, these things can eat up time. If I have all the time in the world maybe I would make my own http client, but why bother with that when there are so many other there all ready that work just fine to help put this to rest, and move on to more pressing matters.
 
 When you compare the two it is easy to see why the request npm package helps to make grabbing at resources a little easer. As I see it, I do not think that it can be much more easy then the basic ger request example with request. At a minimum I would need to give a url, and a callback that has access to what is spit back at me when making the call, and thats it. I do not have to spend a good hour, or longer working out all the kinks that I run into when just using http.request in the node.js http module.
+
+## 3 - Head requests
+
+Head requests are a way to just grab some meta data information about a url, without downloading the actual content that may exist at the url. In some cases head requests com in handy as a way to reduce the amount of bandwidth use if I am working on some kind of project that involves a lot of requests, such as a web crawler. In this section I will be should some quick examples of using request to make head requests.
+
+### With request.head
+
+Say I just want to know the content-type header of a given url without downloading the whole page, I can just use request.head in the same way as I would request.get, or just the main request method that is exported when just giving a string as the first argument.
+
+```js
+let request = require('request');
+
+// head requests can be as simple as this
+request.head('http://www.google.com', function (err, req) {
+ 
+    console.log('yeah');
+    console.log(err);
+ 
+    if (err) {
+ 
+        console.log(err);
+ 
+    } else {
+ 
+        console.log(req.headers['content-type']); // text/html; charset=ISO-8859-1
+ 
+    }
+ 
+});
+```
+
+There is a body variable that is given as the third argument, but it will always be an empty string, as it should with head requests.
 
 ## Conclusion
 
