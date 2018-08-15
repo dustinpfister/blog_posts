@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 10:33:55
-version: 1.9
+updated: 2018-08-15 10:35:39
+version: 1.10
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -30,7 +30,7 @@ $ npm install request --save
 
 ## 2 - Some very basic GET request examples
 
-Say you just want to make a get request for something on the open Internet. 
+Say you just want to make a get request for something on the open Internet, like just the html of a page like www.google.com for example. In this section I will be covering thisn very basic use case example using request, and how it compares when using the http module.
 
 ### 2.1 - Just giving the url, and a callback
 
