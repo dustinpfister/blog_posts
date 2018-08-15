@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 09:11:37
-version: 1.6
+updated: 2018-08-15 09:16:13
+version: 1.7
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -19,13 +19,16 @@ This is an advanced post javaScript, node.js, and the module know as request whi
 
 ### 1.1 - Using the NPM package request
 
-Although this is of course something that can be done within node by itself with the [http](https://nodejs.org/api/http.html) core module. A popular NPM package called request is often used to help make requests a little easier.
-
-So go ahead and install request into a demo project, and give it a try.
+Using the npm package request is a simple as with any other npm package, just install with the install command giving the save flag if you want it added to a projects package.json file.
 
 ```
+$ mkdir test_request
+$ cd test_request
+$ npm init
 $ npm install request --save
 ```
+
+## 2 - A very basic GET request example
 
 Here is a quick demo as to how to go about making that simple get request.
 
@@ -46,9 +49,9 @@ request('http://www.google.com', function (err, res, body) {
 });
 ```
 
-## Using the built in node.js http module.
+### 2.1 - Using the built in node.js http module.
 
-For comparison here is how you would go about making the same get request using the built in http module in node itself without the addition of the request npm package.
+For the sake of comparison here is how you would go about making the same get request using the built in http module in node itself without the addition of the request npm package.
 
 ```js
 var http = require('http'),
