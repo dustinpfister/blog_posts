@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 19:36:39
-version: 1.10
+updated: 2018-08-15 19:47:16
+version: 1.11
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -267,4 +267,103 @@ request({
  
 })
 ```
+
+## 6 - Converting a png file to ascii art
+
+Okay now it is time to do something fun involving png files, and ascii art. If you are wondering if there is an npm package that can be used to parse the binary data of a png file into a set of data that is workable with javaScript, yes there is. I was able to fine a nice npm package for this called [pngjs](https://www.npmjs.com/package/pngjs). This works great with request right out of the gate.
+
+All I have to do is just pipe the output of request, to in instance of the PNG constructor that is available via what is exported when I bring pngjs into a project.
+
+```
+$ npm install pngjs --save
+```
+
+after piping the stream from request to PNG there is then a parsed event that I can use to work with the image data in the form of an array of numbers that are the reg,green, blue, and alpha color channels of the png files pixel data.
+
+```js
+// using request of course
+let request = require('request'),
+ 
+// as well as pngjs
+png = require('pngjs').PNG;
+ 
+// using the node.js built in stream, and fs modules
+stream = require('stream'),
+fs = require('fs'),
+ 
+// an output file to write to
+txFile = fs.createWriteStream('ascii.txt');
+ 
+// request my stack overflow icon
+request('https://i.stack.imgur.com/R3O9s.png?s=64&g=1')
+ 
+// pipe the response to pngjs
+.pipe(new png({
+        filterType: 4
+    }))
+ 
+// when the png is parsed into workable data
+.on('parsed', function () {
+ 
+    // the this keyword refers to an object
+    // that contains data on the png file
+    let img = this,
+ 
+    // the char palette
+    palette = ' ,.,:,;,!,i,1,*,3,&'.split(','),
+ 
+    // row will be used to build a row of chars
+    row;
+ 
+    // for all values of y in the image
+    for (let y = 0; y < this.height; y++) {
+ 
+        // start off with a new row
+        row = '';
+ 
+        // far all values of x (in the current row)
+        for (let x = 0; x < this.width; x++) {
+ 
+            // get the current index
+            let index = (this.width * y + x) << 2,
+ 
+            // rgb channel values (in 0-1 form)
+            r = img.data[index] / 255,
+            g = img.data[index + 1] / 255,
+            b = img.data[index + 2] / 255,
+ 
+            // alpha channel (in 0-1 form)
+            a = img.data[index + 3] / 255,
+ 
+            // value between black and white
+            val = (r + g + b) / 3;
+ 
+            // make it so alpha just reduces value
+            val = val * a;
+ 
+            // select char based on value
+            row += palette[Math.floor(val * (palette.length - 1))];
+ 
+        }
+ 
+        // log the current row, and write the row to the txt file
+        console.log(row);
+        txFile.write(row + '\n');
+ 
+    }
+ 
+    console.log('image size: ', img.width, img.height);
+    txFile.end();
+ 
+})
+ 
+// if an error happens log it
+.on('error', function (err) {
+ 
+    console.log(err);
+ 
+});
+```
+
+Its a really cool project for handling this sort of thing, It can also be used to encode to png as well, but that is a matter for another post.
 
