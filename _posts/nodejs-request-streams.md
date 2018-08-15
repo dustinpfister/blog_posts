@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 15:31:57
-version: 1.4
+updated: 2018-08-15 17:59:15
+version: 1.5
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -49,6 +49,8 @@ request('https://google.com')
  
 });
 ```
+
+This is also handy if I want to do something with the chunks as they come in, but it might not be a true replacement for stream.transform, more on that later.
 
 ## 3 - Stream.transform
 
