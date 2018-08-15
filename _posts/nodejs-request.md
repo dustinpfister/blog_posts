@@ -5,13 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2017-09-30 18:43:22
-version: 1.3
+updated: 2018-08-15 09:01:39
+version: 1.4
 ---
 
-In many node.js projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request).
+In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
 
 <!-- more -->
+
+## 1 - what to know about, before continuing with request
 
 ## Using the NPM package request
 
