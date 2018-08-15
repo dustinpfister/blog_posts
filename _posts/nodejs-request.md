@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 11:00:58
-version: 1.11
+updated: 2018-08-15 11:23:30
+version: 1.12
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -141,7 +141,7 @@ When you compare the two it is easy to see why the request npm package helps to 
 
 Head requests are a way to just grab some meta data information about a url, without downloading the actual content that may exist at the url. In some cases head requests com in handy as a way to reduce the amount of bandwidth use if I am working on some kind of project that involves a lot of requests, such as a web crawler. In this section I will be should some quick examples of using request to make head requests.
 
-### With request.head
+### 3.1 - With request.head
 
 Say I just want to know the content-type header of a given url without downloading the whole page, I can just use request.head in the same way as I would request.get, or just the main request method that is exported when just giving a string as the first argument.
 
@@ -150,9 +150,6 @@ let request = require('request');
 
 // head requests can be as simple as this
 request.head('http://www.google.com', function (err, req) {
- 
-    console.log('yeah');
-    console.log(err);
  
     if (err) {
  
@@ -168,6 +165,47 @@ request.head('http://www.google.com', function (err, req) {
 ```
 
 There is a body variable that is given as the third argument, but it will always be an empty string, as it should with head requests.
+
+### 3.2 - With the main method giving an options object with the method property set to head
+
+Like many of these use agents there is a method for each [http request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) that can be used, or I can just use the main function that is exported with an object that has a property for the http method that can be used to set the desired http method such as get,post,head, and so forth.
+
+In this example I am doing just that calling the main method that is returned, and setting the http request method property to head, along with a custom user agent header, and a base url, allowing me to use the uri property as an end point from that base url.
+
+```js
+let request = require('request'),
+url = require('url');
+
+// head requests can be as simple as this
+request(
+ 
+    // options
+    {
+        method: 'head',
+        baseUrl: 'https://api.github.com/repos/dustinpfister/',
+        uri: '/test_request',
+        headers: {
+            'User-Agent': 'request'
+        }
+    },
+ 
+    // call back
+    function (err, req, body) {
+ 
+    if (err) {
+ 
+        console.log(err);
+ 
+    } else {
+ 
+        console.log(req.headers['content-type']); // application/json; charset=utf-8
+ 
+    }
+ 
+});
+```
+
+So request is very much like many of these other popular http clients, that all seem to follow this convention to one extent or another. Allowing for easy basic use, but also allowing for more advanced use as well when called for.
 
 ## Conclusion
 
