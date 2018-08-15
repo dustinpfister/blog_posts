@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 09:01:39
-version: 1.4
+updated: 2018-08-15 09:09:10
+version: 1.5
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -15,7 +15,9 @@ In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab res
 
 ## 1 - what to know about, before continuing with request
 
-## Using the NPM package request
+This is an advanced post javaScript, node.js, and the module know as request which is an http client for scripting http requests in such an environment. I will not be getting into the very basics of javaScript, and node.js this post is only relevant  with respect to scripting http with the request module. Many developers these days thing it terms of doing everything from the ground up with just node.js itself, if you are that kind of person then stick with built in modules like the [http module](https://nodejs.org/api/http.html). If you find the built in modules a bit lacking then there is of course making yet another such client yourself, or researching whats out there to help save time. If so then this post, and others like it may be a bit helpful.
+
+### 1.1 - Using the NPM package request
 
 Although this is of course something that can be done within node by itself with the [http](https://nodejs.org/api/http.html) core module. A popular NPM package called request is often used to help make requests a little easier.
 
