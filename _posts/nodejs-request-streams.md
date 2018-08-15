@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 19:26:50
-version: 1.9
+updated: 2018-08-15 19:36:39
+version: 1.10
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -62,6 +62,27 @@ This is also handy if I want to do something with the chunks as they come in, bu
 ## 3 - Writing chunks to a file
 
 One thing that comes to mind when working with streams using request, is that I will want to write some chunks of data to a file. for this there is the createWriteStream method in the stream module. In this section I will be covering a few examples of this using request.
+
+### 3.1 - CreateWriteStream basic example
+
+So this will be a basic example of using stream.createWriteStream to write chunks of data from a request using request. I can use the on error, and on data events to log any errors, and give a sense of progress. The pipe the incoming chunks to createWriteStream.
+
+```js
+let request = require('request'),
+fs = require('fs');
+ 
+// start the get request
+request(process.argv[2] || 'https://dustinpfister.github.io')
+ 
+// log any error
+.on('error', function(err){ console.log(err);})
+ 
+// log chunks
+.on('data', function (chunk) {console.log(chunk.toString());})
+ 
+// pipe to createWriteStream
+.pipe(fs.createWriteStream('file_' + new Date().getTime() + '.txt'));
+```
 
 ### 3.2 - Using the write method
 
