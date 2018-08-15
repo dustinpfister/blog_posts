@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 11:23:30
-version: 1.12
+updated: 2018-08-15 11:32:32
+version: 1.13
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -206,6 +206,10 @@ request(
 ```
 
 So request is very much like many of these other popular http clients, that all seem to follow this convention to one extent or another. Allowing for easy basic use, but also allowing for more advanced use as well when called for.
+
+### 4 - Like promises?
+
+So one nice think about the http client axios, is that it has promise support out of the box. Nothing against axios, that is a great client as well, but this post is on request. So out of the box there is no promise support. However there are additional packages that can be used to quickly add promise support using either native promises using [request-promise-native](request-promise-native), [bluebird](https://www.npmjs.com/package/bluebird)  using [request-promise](https://www.npmjs.com/package/request-promise), or another one using any-promise called [request-promise-any](https://www.npmjs.com/package/request-promise-any)
 
 ## Conclusion
 
