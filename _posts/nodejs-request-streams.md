@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 19:02:25
-version: 1.8
+updated: 2018-08-15 19:26:50
+version: 1.9
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -60,6 +60,61 @@ request('https://google.com')
 This is also handy if I want to do something with the chunks as they come in, but it might not be a true replacement for stream.transform, more on that later.
 
 ## 3 - Writing chunks to a file
+
+One thing that comes to mind when working with streams using request, is that I will want to write some chunks of data to a file. for this there is the createWriteStream method in the stream module. In this section I will be covering a few examples of this using request.
+
+### 3.2 - Using the write method
+
+If I want to use write stream in a way in wich I call a method each time I want to write a few bytes of data to the file that I have created with create Write stream that is not to hard to pull off. Doing so just requires that I save the instance of the write stream to a variable, and just call the write method, passing the chunks to that method.
+
+```js
+let request = require('request'),
+stream = require('stream'),
+fs = require('fs'),
+ 
+// requesting a url given from the command line, or my home page
+uri = process.argv[2] || 'https://dustinpfister.github.io',
+ 
+// a tx file to write to
+txFile = fs.createWriteStream('file_' + new Date().getTime() + '.txt');
+ 
+// start the get request
+request({
+ 
+    method: 'get',
+    uri: uri
+ 
+})
+ 
+// if an error log it
+.on('error', function (err) {
+ 
+    console.log(err);
+ 
+})
+ 
+// for each chunk
+.on('data', function (chunk) {
+ 
+    // log to the console
+    console.log(chunk.toString());
+ 
+    // and write it to the file
+    txFile.write(chunk);
+ 
+})
+ 
+// when done
+.on('end', function () {
+ 
+    // let me know, and end
+    console.log('file done');
+    txFile.end();
+ 
+});
+```
+
+This is useful for situations in which the writing process might have many pauses, and I just want to write to the file a few bytes at a time.
 
 ## 4 - Stream.transform
 
