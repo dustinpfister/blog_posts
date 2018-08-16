@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 21:45:55
-version: 1.9
+updated: 2018-08-15 21:47:06
+version: 1.10
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -173,4 +173,28 @@ console.log(utf8);
 
 ## 4 - File io examples
 
-So one of the big things about buffers is that they comes up a lot when working with files. When using the file system module, or any kind of readable, writable, or duplex stream involving data from the file system buffers are the node.js standard way of working with binary data stored in on then hard drive. So lets take a look at a few examples that involve files
+So one of the big things about buffers is that they comes up a lot when working with files. When using the file system module, or any kind of readable, writable, or duplex stream involving data from the file system buffers are the node.js standard way of working with binary data stored in on then hard drive. So lets take a look at a few examples that involve files\
+
+### 4.1 - Readable streams
+
+```js
+let fs = require('fs'),
+ 
+buff = Buffer.alloc(0);
+ 
+// start a read stream for a test.txt file
+fs.createReadStream('test.txt')
+ 
+.on('data', function (chunk) {
+ 
+    // concatenate buff, and chunk both of which are buffers
+    buff = Buffer.concat([buff, chunk], buff.length + chunk.length);
+ 
+})
+ 
+.on('end', function () {
+ 
+    console.log(buff.toString());
+ 
+})
+```
