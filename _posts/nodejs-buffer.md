@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 21:51:56
-version: 1.11
+updated: 2018-08-15 22:21:51
+version: 1.12
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -200,3 +200,33 @@ fs.createReadStream('test.txt')
  
 })
 ```
+
+### 4.2 - writable streams
+
+There is of course writable streams as well, for example when using the fs.createWriteStream method, a buffer can be given as an argument to the write method. When creating, or appending a file.
+
+```js
+let fs = require('fs'),
+ 
+// start a write stream in a+ mode
+file = fs.createWriteStream(process.argv[2],{flags:'a+'});
+ 
+// write to the file with a buffer
+file.write(Buffer.from(process.argv[3]));
+ 
+// end
+file.end();
+```
+
+With this example I can use this script from the command line like this if it is called write.js, and the above example on readstreams is called read.js.
+
+```
+$ node write test.txt "this is only a test"
+$ node read
+this is only a test
+$ node write test.txt " looks like it is working okay"
+$ node read
+this is only a test looks like it is working okay
+```
+
+## 5 - Conclusion
