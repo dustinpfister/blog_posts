@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 23
-updated: 2018-08-15 13:24:02
-version: 1.15
+updated: 2018-08-16 07:47:22
+version: 1.16
 ---
 
 In many [node.js](/2018/02/06/nodejs-http/) projects it is necessary to grab resources that may exist on some kind of external source. In general often you may just need to get what is there, just a simple get request, and thats it. It would also be nice to use some kind of package that helps to make it stupid easy, for this there is a popular npm package simply called [request](https://www.npmjs.com/package/request). request is one of many http clients that are available for a node.js environment, another popular such package would be [axios](/2018/01/10/nodejs-axios/). There is also not bothering with any npm package at all, and using a built in nopde.js module like that of [http](/2018/02/06/nodejs-http/). However for the sake of this post I will be keeping the focus on request.
@@ -209,7 +209,7 @@ So request is very much like many of these other popular http clients, that all 
 
 ## 4 - Streams
 
-So request has out of the box support for callback methods, and one other option which is streams. Streams are great when dealing with very large files, or any kind of live data stream.
+So request has out of the box support for callback methods, and one other option which is streams. Streams are great when dealing with very large files, or any kind of live data stream. In this section I might not get into this in depth, but I have a [post on using streams](/2018/08/15/nodejs-request-streams/) with request in which I do.
 
 ## 4.1 - Using stream.Transform object mode to log out "War and peace" to the console.
 
