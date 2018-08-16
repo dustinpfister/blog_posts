@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 19:52:02
-version: 1.13
+updated: 2018-08-15 20:28:03
+version: 1.14
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -182,7 +182,6 @@ In this example I am checking the headers of a file at a url that holds a text f
 
 ```js
 let request = require('request'),
-stream = require('stream'),
 fs = require('fs'),
  
 // requesting "War, and peace" (it's over 500,000 words)
