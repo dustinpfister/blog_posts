@@ -5,15 +5,36 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-02-12 20:02:37
-version: 1.3
+updated: 2018-08-15 20:28:02
+version: 1.4
 ---
 
-When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a server environment.
+When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
 
 <!-- more -->
 
-## Simple example of Buffer in node.js
+## 1 - what to know before continuing
+
+THis is a post on using buffers in nodejs to work with binary data in a node.js environment. There is a lot to know about when working with buffers, such as how to create them in the first place, and how it has changed compared to older versions of node.js. Anyway I hope that you have at least some background with node.js, and javaSciprt in general, as I wuill not be coving the basics of those topics here.
+
+## 2 - Some simple examples of Buffers in node.js
+
+So lets start out with some very basic examples of buffers. There is more than one way to make them, and in both safe, and unsface ways as well. There is also the old way of making them that you might only bother with if you are still using a real old version of node.js for some reason as well. So lets get started with some buffer hello world examples.
+
+### 2.1 - The old way of doing it (do not do it unless for some reason you have to)
+
+So the old way of making a buffer was to use Buffer like that of any old jaavScript constructor method like that of Date. I call Buffer with the new keyword, and pass whatever it is that I want placed in a buffer.
+
+```js
+var buff = new Buffer('this is how it once was');
+ 
+console.log(buff);
+// <Buffer 74 68 69 73 20 69 73 20 68 6f 77 20 69 74 20 6f 6e 63 65 20 77 61 73>
+```
+
+This should not be used any more unless for some reason you are using a real old version of node.js that does not support the newer ways to make a buffer, in which case I guess you have to. 
+
+### 2.2 - Using Buffer.from to create a new buffer.
 
 As of late (node 8.x+) it is advised to not use the Buffer constructor directly, in fact doing so is depreciated, instead when dealing with buffers the various methods of Buffer are what should be used in order to work with buffers.
 
@@ -29,7 +50,9 @@ console.log(buff.toString());
 
 Buffer.from is one such method and in most cases will work just find, allowing for the creating of a buffer from a string value, as well as other types such as arrays of .
 
-## Encoding
+## 3 - Encoding
+
+It is possible to set the encoding that should be used when making a buffer. This can be important when say, creating a buffer from a string that contains characters that are above the ascii range. The number of bytes that a character takes up is different depending on the character encoding. The ascii character encoding is easy to understand, because it is just a single byte per character, however that is not how Unicode works. With Unicode that number of bytes can range from one upwards depending on what the character is.
 
 ```js
 //let dp = [0xe2, 0x82, 0xaf];
