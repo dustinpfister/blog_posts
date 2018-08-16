@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 20:59:26
-version: 1.7
+updated: 2018-08-15 21:20:34
+version: 1.8
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -116,6 +116,38 @@ buff[1] = 0x65;
  
 console.log(buff); // <Buffer 00 65 00 00>
 ```
+
+### 2.6 - concatenating buffers
+
+Concatenating buffers is just a matter of using Buffer.concat. This method works bu just calling it, and passing it an array of two or more buffers. The method will figure out the length of the new buffer that will be returned, this will take a little overhead as you might expect, so if you do know what the length of the result will be before hand it would make sense to pass that as the second argument when calling the method.
+
+```js
+let buffs = [
+   Buffer.from('this '),
+   Buffer.from('might '),
+   Buffer.from('work')
+];
+ 
+let len = buffs.reduce(function(acc,buf){ return {length: acc.length + buf.length};}).length;
+ 
+// this will of course work
+let buff = Buffer.concat(buffs,len);
+console.log(buff);
+// <Buffer 74 68 69 73 20 6d 69 67 68 74 20 77 6f 72 6b>
+ 
+// I can just give the buffers as well
+// this still figures out the length though
+// so if it is know, the value should be passed
+buff = Buffer.concat(buffs);
+console.log(buff);
+// <Buffer 74 68 69 73 20 6d 69 67 68 74 20 77 6f 72 6b>
+ 
+// This will of course just result in the first six bytes
+buff = Buffer.concat(buffs, 6);
+console.log(buff);
+// <Buffer 74 68 69 73 20 6d>
+```
+
 
 ## 3 - Encoding
 
