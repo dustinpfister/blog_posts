@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 20:28:02
-version: 1.4
+updated: 2018-08-15 20:33:13
+version: 1.5
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -49,6 +49,28 @@ console.log(buff.toString());
 ```
 
 Buffer.from is one such method and in most cases will work just find, allowing for the creating of a buffer from a string value, as well as other types such as arrays of .
+
+### 2.4 - Using Buffer.allocUnsafe for faster, but unsafe buffers
+
+So it might be fun to play around with unsafe buffers to see if I can make sense of old data in memory, and find out if they really are unsafe. I can understand why in theory at least, and it is not to hard to reproduce why. Just try out on yourself, and then look at what you get, a whole bunch of old data in memory. Comnpare that to what happens when you just use Buffer.alloc, and you get nothing but zeros.
+
+```js
+let oldData = Buffer.allocUnsafe(256);
+ 
+console.log(oldData);
+// <Buffer 08 00 00 00 07 00 00 00 70 6c dc 90 
+// b1 02 00 00 00 00 00 00 00 00 00 00 00 00 00 
+// 00 00 00 00 00 00 00 00 00 08 00 00 00 30 f0 
+// b7 bd f7 7f 00 00 01 00 ... >
+ 
+let safeBuff = Buffer.alloc(256);
+ 
+console.log(safeBuff);
+// <Buffer 00 00 00 00 00 00 00 00 00 00 00 
+// 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+// 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+// 00 00 00 00 00 00 00 00 00 ... >
+```
 
 ## 3 - Encoding
 
