@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 21:20:34
-version: 1.8
+updated: 2018-08-15 21:45:55
+version: 1.9
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -148,7 +148,6 @@ console.log(buff);
 // <Buffer 74 68 69 73 20 6d>
 ```
 
-
 ## 3 - Encoding
 
 It is possible to set the encoding that should be used when making a buffer. This can be important when say, creating a buffer from a string that contains characters that are above the ascii range. The number of bytes that a character takes up is different depending on the character encoding. The ascii character encoding is easy to understand, because it is just a single byte per character, however that is not how Unicode works. With Unicode that number of bytes can range from one upwards depending on what the character is.
@@ -171,3 +170,7 @@ console.log(ascii);
 console.log(utf8);
 // <Buffer e2 82 af>
 ```
+
+## 4 - File io examples
+
+So one of the big things about buffers is that they comes up a lot when working with files. When using the file system module, or any kind of readable, writable, or duplex stream involving data from the file system buffers are the node.js standard way of working with binary data stored in on then hard drive. So lets take a look at a few examples that involve files
