@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 21:47:06
-version: 1.10
+updated: 2018-08-15 21:51:56
+version: 1.11
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -176,6 +176,8 @@ console.log(utf8);
 So one of the big things about buffers is that they comes up a lot when working with files. When using the file system module, or any kind of readable, writable, or duplex stream involving data from the file system buffers are the node.js standard way of working with binary data stored in on then hard drive. So lets take a look at a few examples that involve files\
 
 ### 4.1 - Readable streams
+
+So when it comes to reading a file using the fs.createReadStream method in the file system module, this will result in a readable stream. This has some events that can be used to define a callback that will fire each time some more chunks of data come along in the readable stream. The chunks are of course instances of buffer, and now that we know a thing or two about buffers we should have no propblem working with them when it comes to doing something with a readable stream.
 
 ```js
 let fs = require('fs'),
