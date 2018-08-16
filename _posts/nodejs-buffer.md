@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 20:40:42
-version: 1.6
+updated: 2018-08-15 20:59:26
+version: 1.7
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -88,6 +88,33 @@ console.log(safeBuff);
 // 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 // 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 // 00 00 00 00 00 00 00 00 00 ... >
+```
+
+### 2.5 - Buffers are array like
+
+It turns out that buffers are yet another example of a kind of object in javaScript that is array like. What I mean by array like is that they are not really arrays, but because they kind of are like arrays, I can get away with using some array methods on them by using call, or apply. They then also have a length property as well, however the length property will give me the size of the array, rather than the number of elements if it was an array.
+
+```js
+let buff = Buffer.from('ABCD');
+ 
+Array.prototype.forEach.call(buff, function (currentByte) {
+ 
+    console.log(currentByte);
+ 
+});
+ 
+/*
+65
+66
+67
+68
+*/
+ 
+buff = Buffer.alloc(4);
+ 
+buff[1] = 0x65;
+ 
+console.log(buff); // <Buffer 00 65 00 00>
 ```
 
 ## 3 - Encoding
