@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2018-08-15 20:33:13
-version: 1.5
+updated: 2018-08-15 20:40:42
+version: 1.6
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -50,9 +50,27 @@ console.log(buff.toString());
 
 Buffer.from is one such method and in most cases will work just find, allowing for the creating of a buffer from a string value, as well as other types such as arrays of .
 
+### 2.3 - Buffer.alloc can be used for safe allocation of memory for a buffer
+
+The Buffer.alloc method is great for just setting up a buffer of a fixed byte size in a safe way that will assure that noting old in memory will end up being part of the buffer.
+
+```js
+let buff = Buffer.alloc(4);
+ 
+console.log(buff);
+// <Buffer 00 00 00 00>
+ 
+buff = Buffer.alloc(5,'hello','ascii');
+ 
+console.log(buff);
+// <Buffer 68 65 6c 6c 6f>
+```
+
+If I want to I can also give a string to pre fill the buffer with, and give a character encoding to observe when parsing the string to a buffer.
+
 ### 2.4 - Using Buffer.allocUnsafe for faster, but unsafe buffers
 
-So it might be fun to play around with unsafe buffers to see if I can make sense of old data in memory, and find out if they really are unsafe. I can understand why in theory at least, and it is not to hard to reproduce why. Just try out on yourself, and then look at what you get, a whole bunch of old data in memory. Comnpare that to what happens when you just use Buffer.alloc, and you get nothing but zeros.
+So it might be fun to play around with unsafe buffers to see if I can make sense of old data in memory, and find out if they really are unsafe. I can understand why in theory at least, and it is not to hard to reproduce why. Just try out on yourself, and then look at what you get, a whole bunch of old data in memory. Compare that to what happens when you just use Buffer.alloc, and you get nothing but zeros.
 
 ```js
 let oldData = Buffer.allocUnsafe(256);
