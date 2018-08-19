@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 264
-updated: 2018-08-19 19:24:27
-version: 1.16
+updated: 2018-08-19 19:33:21
+version: 1.17
 ---
 
 In this point on [Phaser ce](https://photonstorm.github.io/phaser-ce/), I will be writing about finding the angle between two sprites using the Point class. looking over my content on phaser so far I am surprised that I do not have any content on the point class, so lets put and end to that with one of the most useful methods that is at the ready in that class.
@@ -26,9 +26,17 @@ This section will provide some very simple copy and past demos to help get a fee
 
 ### 2.1 - Using Phaser.prototype.angle with call on two objects
 
+The call method of the function prototype is a very powerful method, if you are not familiar with call yet as a jaavScript developer you should get up to speed with it. In a nut shell it allows me to call methods of any prototype, on any object, and if that object has the properties that the method needs, it might very well work. 
+
+Call works by accepting the first argument that I give it as the value of the this keyword. Because Phaser.prototype.angle is a prototype method of Point the first argument that I give it should be some kind object that has proprieties that are similar to that of an instance of Point, namely x, and y properties. The next argument that i give it will be the first argument that I would give it if I was calling it on an instance of Point.
+
+If that all confuses you just check out this example:
+
 ```js
 // very basic
 var angle = Phaser.Point.prototype.angle.call({x:0,y:0},{x:10,y:10});
 console.log( angle );  // 0.7853981633974483
 console.log( angle / Math.PI * 180); // 45
 ```
+
+So in this example I am finding the angle between these two plain old objects, that have x, and y properties by using the call Function prototype method. The angle that is returned is in the range of Math.PI to -Math.PI so if I want degrees i will need to convert.
