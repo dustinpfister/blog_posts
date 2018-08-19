@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 263
-updated: 2018-08-19 11:55:44
-version: 1.6
+updated: 2018-08-19 11:56:48
+version: 1.7
 ---
 
 In the post I will be writing about read streams in [node.js](https://nodejs.org/en/) using the [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options). This method is one of many examples of streams in node.js, so if you are new to streams it makes sense to just start playing around with some of these methods. The fs.createReadStream is an example of a readable stream, and as such it can only be used to read data from a file, which differs from Writable and Duplex streams. This methods can be used in conjunction with a writable stream, including the fs.createWriteStream method. So lets take a look as some examples of working with readable streams with node.js, and it's built in file system module.
@@ -24,6 +24,8 @@ The method I will be writing about in this post is an example of a readable stre
 ## 2 - Some basic examples of fs.createReadStream
 
 For starters lets just look at a few basic examples of using fs.createReadStream to read the contents of a file, one chunk at a time. There are many different ways to create an instance of this kind of readable stream, involving chaining, variables, and both old and new coding styles.
+
+In these examples I will just be used the on data event to log what is being read into the console, or standard output.
 
 ## 2.1 - A basic example that involves chaining
 
