@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 263
-updated: 2018-08-19 12:40:25
-version: 1.11
+updated: 2018-08-19 12:58:54
+version: 1.12
 ---
 
 In the post I will be writing about read streams in [node.js](https://nodejs.org/en/) using the [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options). This method is one of many examples of streams in node.js, so if you are new to streams it makes sense to just start playing around with some of these methods. The fs.createReadStream is an example of a readable stream, and as such it can only be used to read data from a file, which differs from Writable and Duplex streams. This methods can be used in conjunction with a writable stream, including the fs.createWriteStream method. So lets take a look as some examples of working with readable streams with node.js, and it's built in file system module.
@@ -131,7 +131,7 @@ In this example an error will occur because of the nature of the 'r' file mode i
 
 ### 3.3 - The close event
 
-The close event is called once the read stream is all over, this means the stream itself, and any additional resources such as the file descriptor. This event differs from the end event covered later in this section as the close method is part of fs.createReadStream, while the end event is part of any readStream.
+The close event is called once the read stream is all over, this means the stream itself, and any additional resources such as a file descriptor which is the case with this file system method. This event differs from the end event covered later in this section as that methods is called when there is no more data to consume, but certain resources may still be available.
 
 ```js
 let fs = require('fs');
@@ -151,7 +151,7 @@ fs.createReadStream('README.md')
 })
 ```
 
-If you are still a little confused by the difference between the close, and end events just remember that one is exclusive to fs.createRead stream, and the other is part of read streams in general.
+
 
 ### 3.4 - The ready event
 
@@ -161,10 +161,21 @@ If you are still a little confused by the difference between the close, and end 
 
 ### 3.7 - The end event
 
+So with a readable stream the end event files when the stream is out of data to read, but has not been closed just yet. There is an auto close property that is set to true by default, if this is set to false before the stream runs out of data the close event will not fire, but the end event will.
+
+So An example like this might help to illustrate the difference between the close, and end events of a readable stream.
+
 ```js
 let fs = require('fs');
  
 fs.createReadStream('README.md')
+ 
+.on('open', function () {
+ 
+    // setting auto close to false
+    this.autoClose = false;
+ 
+})
  
 .on('data', function (chunk) {
  
@@ -172,9 +183,25 @@ fs.createReadStream('README.md')
  
 })
  
+// the end event is fired when 
+// there is no more data to read, but 
+// has not been closed yet
 .on('end', function () {
  
-    console.log('stream ended');
+    let s = this;
+    setTimeout(function () {
+ 
+       // the destroy method can be used to
+       // close the stream manually
+        s.destroy();
+ 
+    }, 3000);
  
 })
+ 
+.on('close', function () {
+ 
+    console.log('closed now');
+ 
+});
 ```
