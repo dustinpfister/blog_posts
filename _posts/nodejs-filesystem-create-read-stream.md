@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 263
-updated: 2018-08-19 12:00:26
-version: 1.8
+updated: 2018-08-19 12:23:49
+version: 1.9
 ---
 
 In the post I will be writing about read streams in [node.js](https://nodejs.org/en/) using the [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options). This method is one of many examples of streams in node.js, so if you are new to streams it makes sense to just start playing around with some of these methods. The fs.createReadStream is an example of a readable stream, and as such it can only be used to read data from a file, which differs from Writable and Duplex streams. This methods can be used in conjunction with a writable stream, including the fs.createWriteStream method. So lets take a look as some examples of working with readable streams with node.js, and it's built in file system module.
@@ -82,3 +82,36 @@ I will be getting into these options in greater dpeth in the options section of 
 ## 3 - Events for fs.createReadStream
 
 So there are a few events that are part of fs.createReadStream, and there are a few others that are there simple because it is an example of a readable stream. In this section I will be writing about these events, and how that come in handy when dealing with a readable stream via fs.createReadStream.
+
+
+### 3.1 - The data event
+
+So far in this post all of my examples involve the use of the data event. This event is not just an event of fs.createReadStream, but of read streams in general. In any case this event is by far the most important event of a readable stream because in any application that involves the use of a readable stream I will want to do something with that data as it comes in chunk, by chunk.
+
+```js
+let fs = require('fs');
+ 
+fs.createReadStream('README.md')
+ 
+.pipe(fs.createWriteStream('README_copy.md'))
+ 
+.on('data', function (chunk) {
+ 
+    console.log(chunk.toString());
+ 
+});
+```
+
+In any example involving a readable stream I will often want a data event that will be used to work with the data that is being read, however an alternative would be to pipe that data to a writable stream, more on that later
+
+### 3.2 - The error event
+
+### 3.3 - The close event
+
+### 3.4 - The ready event
+
+### 3.5 - The open event
+
+### 3.6 - The readable
+
+### 3.7 - The end event
