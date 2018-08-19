@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 263
-updated: 2018-08-19 12:58:54
-version: 1.12
+updated: 2018-08-19 13:02:02
+version: 1.13
 ---
 
 In the post I will be writing about read streams in [node.js](https://nodejs.org/en/) using the [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options). This method is one of many examples of streams in node.js, so if you are new to streams it makes sense to just start playing around with some of these methods. The fs.createReadStream is an example of a readable stream, and as such it can only be used to read data from a file, which differs from Writable and Duplex streams. This methods can be used in conjunction with a writable stream, including the fs.createWriteStream method. So lets take a look as some examples of working with readable streams with node.js, and it's built in file system module.
@@ -151,8 +151,6 @@ fs.createReadStream('README.md')
 })
 ```
 
-
-
 ### 3.4 - The ready event
 
 ### 3.5 - The open event
@@ -168,20 +166,9 @@ So An example like this might help to illustrate the difference between the clos
 ```js
 let fs = require('fs');
  
-fs.createReadStream('README.md')
+fs.createReadStream('README.md',{autoClose:false})
  
-.on('open', function () {
- 
-    // setting auto close to false
-    this.autoClose = false;
- 
-})
- 
-.on('data', function (chunk) {
- 
-    console.log(chunk);
- 
-})
+.on('data', function (chunk) {console.log(chunk);})
  
 // the end event is fired when 
 // there is no more data to read, but 
@@ -200,8 +187,6 @@ fs.createReadStream('README.md')
 })
  
 .on('close', function () {
- 
     console.log('closed now');
- 
 });
 ```
