@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 264
-updated: 2018-08-19 19:40:17
-version: 1.18
+updated: 2018-08-19 19:46:26
+version: 1.19
 ---
 
 In this point on [Phaser ce](https://photonstorm.github.io/phaser-ce/), I will be writing about finding the angle between two sprites using the Point class. looking over my content on phaser so far I am surprised that I do not have any content on the point class, so lets put and end to that with one of the most useful methods that is at the ready in that class.
@@ -67,3 +67,7 @@ game.state.start('basic');
 ```
 
 So then creating an instance of Phaser.Point is fairly easy, I just need to pass the x, and y properties to the constructor when calling it with the new keyword to get a new instance of Phaser.Point. Once I have My instance Of Point there are all kinds of useful methods that I can call off of it, including Phaser.Point.angle.
+
+## 3 - Conclusion
+
+The Point Class has many more useful methods that I hope to write content on, as I work on expanding, and updating my content on phaser this Month. Needless to say this method will be of use for many typically scenarios that come up when making a project with Phaser. I hope you found this post helpful, if not be sure to tell me what Might be missing in the comments, and be sure to have fun with phaser.
