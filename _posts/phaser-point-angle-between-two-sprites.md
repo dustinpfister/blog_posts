@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 264
-updated: 2018-08-19 19:33:21
-version: 1.17
+updated: 2018-08-19 19:40:17
+version: 1.18
 ---
 
 In this point on [Phaser ce](https://photonstorm.github.io/phaser-ce/), I will be writing about finding the angle between two sprites using the Point class. looking over my content on phaser so far I am surprised that I do not have any content on the point class, so lets put and end to that with one of the most useful methods that is at the ready in that class.
@@ -40,3 +40,30 @@ console.log( angle / Math.PI * 180); // 45
 ```
 
 So in this example I am finding the angle between these two plain old objects, that have x, and y properties by using the call Function prototype method. The angle that is returned is in the range of Math.PI to -Math.PI so if I want degrees i will need to convert.
+
+### 2.2 - Very basic example with two sprites
+
+So for a very Basic example involving two sprites I put together this example in which I make two sprites, and then create an instance of Point with the new keyword. Nothing special here with call, just using the Point.prototype.angle method as intended now here.
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('basic', {
+ 
+    create: function () {
+ 
+        var sprite = game.add.sprite(10, 10),
+        sprite2 = game.add.sprite(10, -20),
+ 
+        angle = new Phaser.Point(sprite.x, sprite.y).angle(sprite2) / Math.PI * 180;
+ 
+        console.log(angle); - 90;
+ 
+    }
+ 
+});
+ 
+game.state.start('basic');
+```
+
+So then creating an instance of Phaser.Point is fairly easy, I just need to pass the x, and y properties to the constructor when calling it with the new keyword to get a new instance of Phaser.Point. Once I have My instance Of Point there are all kinds of useful methods that I can call off of it, including Phaser.Point.angle.
