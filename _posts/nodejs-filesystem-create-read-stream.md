@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 263
-updated: 2018-08-19 13:12:15
-version: 1.14
+updated: 2018-08-19 13:42:19
+version: 1.15
 ---
 
 In the post I will be writing about read streams in [node.js](https://nodejs.org/en/) using the [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options). This method is one of many examples of streams in node.js, so if you are new to streams it makes sense to just start playing around with some of these methods. The fs.createReadStream is an example of a readable stream, and as such it can only be used to read data from a file, which differs from Writable and Duplex streams. This methods can be used in conjunction with a writable stream, including the fs.createWriteStream method. So lets take a look as some examples of working with readable streams with node.js, and it's built in file system module.
@@ -161,7 +161,26 @@ fs.createReadStream('README.md')
 
 ### 3.4 - The open event
 
-### 3.5 - The readable
+This event is fired once the files file descriptor has been opened. That descriptor is available as the first argument of the callback given, it is also a property of the object that can be referenced via the this keyword.
+
+### 3.5 - The readable event
+
+```js
+let fs = require('fs');
+ 
+let reader = fs.createReadStream('README.md',{highWaterMark:16}).pause();
+ 
+reader.on('data', function(chunk){  console.log(chunk);})
+ 
+// readable event
+reader.on('readable', function () {
+ 
+    console.log('ready to read');
+ 
+    this.read();
+ 
+});
+```
 
 ### 3.6 - The end event
 
