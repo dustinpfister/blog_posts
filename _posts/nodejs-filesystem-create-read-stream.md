@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 263
-updated: 2018-08-19 13:02:02
-version: 1.13
+updated: 2018-08-19 13:12:15
+version: 1.14
 ---
 
 In the post I will be writing about read streams in [node.js](https://nodejs.org/en/) using the [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options). This method is one of many examples of streams in node.js, so if you are new to streams it makes sense to just start playing around with some of these methods. The fs.createReadStream is an example of a readable stream, and as such it can only be used to read data from a file, which differs from Writable and Duplex streams. This methods can be used in conjunction with a writable stream, including the fs.createWriteStream method. So lets take a look as some examples of working with readable streams with node.js, and it's built in file system module.
@@ -17,9 +17,17 @@ In the post I will be writing about read streams in [node.js](https://nodejs.org
 
 This is a post on the fs.createReadStream method in node.js, I will not be getting into streams in Depth, let alone the file system module, node.js, and javaScript by itself.
 
-### 1.1 - Readable, writable, and Duplex streams
+### 1.1 - Version numbers matter
+
+In this post I am using node.js 8.x which at the time of this writing is still the latest major release that is an LTS release. If you are using a newer version of node there might be a few more features to be aware of.
+
+### 1.2 - Readable, writable, and Duplex streams
 
 The method I will be writing about in this post is an example of a readable stream, this means that certain methods that can be used in writable streams are not present. So this methods is used as a way to just read a file, but not to write to it. However readable streams allow for piping to a writable stream when working with something like fs.createWriteStream. These other kinds of streams will be touched on breafly, but the focus will be on reading streaming data, rather than writing it.
+
+### 1.3 - Buffers
+
+When working with fs.createReadStream, or streams in general it is important to have a string foundation understanding of buffers in node.js. This is what you will be working with when it comes to working with chunks of data coming in at a certain rate. If you like you can check out my post on buffers that covers the must know features of buffers in node.js.
 
 ## 2 - Some basic examples of fs.createReadStream
 
@@ -151,13 +159,11 @@ fs.createReadStream('README.md')
 })
 ```
 
-### 3.4 - The ready event
+### 3.4 - The open event
 
-### 3.5 - The open event
+### 3.5 - The readable
 
-### 3.6 - The readable
-
-### 3.7 - The end event
+### 3.6 - The end event
 
 So with a readable stream the end event files when the stream is out of data to read, but has not been closed just yet. There is an auto close property that is set to true by default, if this is set to false before the stream runs out of data the close event will not fire, but the end event will.
 
