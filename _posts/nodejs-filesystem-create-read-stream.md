@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 263
-updated: 2018-08-19 12:23:49
-version: 1.9
+updated: 2018-08-19 12:30:45
+version: 1.10
 ---
 
 In the post I will be writing about read streams in [node.js](https://nodejs.org/en/) using the [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options). This method is one of many examples of streams in node.js, so if you are new to streams it makes sense to just start playing around with some of these methods. The fs.createReadStream is an example of a readable stream, and as such it can only be used to read data from a file, which differs from Writable and Duplex streams. This methods can be used in conjunction with a writable stream, including the fs.createWriteStream method. So lets take a look as some examples of working with readable streams with node.js, and it's built in file system module.
@@ -105,6 +105,29 @@ fs.createReadStream('README.md')
 In any example involving a readable stream I will often want a data event that will be used to work with the data that is being read, however an alternative would be to pipe that data to a writable stream, more on that later
 
 ### 3.2 - The error event
+
+In the event that an error happens, I might want to do something about it, or at least know about it. For this there is of course the error event, another event that is there not just in an instance of createReadStream, but with streams in general as it should be.
+
+```js
+let fs = require('fs');
+ 
+fs.createReadStream('file-that-is-not-there.txt',{flags:'r'})
+ 
+.on('data', function (chunk) {
+ 
+    console.log(chunk);
+ 
+})
+ 
+// this will fire if the file is not there
+.on('error', function (err) {
+ 
+    console.log(err);
+ 
+});
+```
+
+In this example an error will occur because of the nature of the 'r' file mode in which an error occurs if a file that does not exist is being read. There are other file modes that will result in the file be created if it is not there, more about that in the section about options.
 
 ### 3.3 - The close event
 
