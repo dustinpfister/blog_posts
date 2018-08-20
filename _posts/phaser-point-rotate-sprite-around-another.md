@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 265
-updated: 2018-08-20 12:23:32
-version: 1.4
+updated: 2018-08-20 12:26:02
+version: 1.5
 ---
 
 So far this week I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) with the Point Class. This is a very helpful Class that helps with common issues that developers run into when dealing with points in a 2d space. In this post I will be writing about the Point.rotate methods, that can be used to rotate a sprite around another sprite, or any object that has exposed x, and y properties for that matter. This should be fun, so lets get into it.
@@ -29,6 +29,7 @@ So like many of the methods in the Point class, they can be used in both a stati
 The Phaser.Point.rotate methods works by first giving the object that I want to rotate around another object, I then give the x, and y values of the point that I want this object to rotate around. Then I give the angle in radians or degrees depending on the state of the next argument that is a boolean to set to degrees or radians. Then at least the final sixth argument is the distance between the two points.
 
 So then an example of the static from of Point.rotate might look like this.
+
 ```js
 // objects for centerPoint, and a thing that
 // I want to rotate around it.
@@ -47,6 +48,7 @@ Phaser.Point.rotate(thing, center.x, center.y, 45, true, 100);
 console.log(Math.floor(thing.x), Math.floor(thing.y)); // 0 100
 ```
 
+So then the static method version is great for working with any kind of object that has exposed x, and y values. No need to use the prototype version with call or apply.
 
 
 ### 2.2 - Using the prototype form of the method
