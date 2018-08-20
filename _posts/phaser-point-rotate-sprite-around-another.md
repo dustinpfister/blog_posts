@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 265
-updated: 2018-08-20 18:22:54
-version: 1.13
+updated: 2018-08-20 18:31:17
+version: 1.14
 ---
 
 So far this week I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) with the Point Class. This is a very helpful Class that helps with common issues that developers run into when dealing with points in a 2d space. In this post I will be writing about the Point.rotate methods, that can be used to rotate a sprite around another sprite, or any object that has exposed x, and y properties for that matter. This should be fun, so lets get into it.
@@ -242,6 +242,8 @@ game.state.add('sprites_2', {
 Notice that I am also using the Phaser.Math.wrap method, another great method in phaser that is useful for setting up a game world in which a display object wraps back around to the beginning when crossing a boundary.
 
 ### 3.6 - Example 3 - A vanilla js alternative
+
+So there is not much need to bother with any kind of vanilla js alternative to Point.rotate, unless for some reason you need to. Doing so is not too hard, you just need to have an understanding of Math.cos, and Math.sin. These trigonometry functions come in handy for situations like this.
 
 ```js
 // sprites3 is a vanilla js solution
