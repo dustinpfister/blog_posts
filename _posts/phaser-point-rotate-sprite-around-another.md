@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 265
-updated: 2018-08-20 18:16:21
-version: 1.12
+updated: 2018-08-20 18:22:54
+version: 1.13
 ---
 
 So far this week I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) with the Point Class. This is a very helpful Class that helps with common issues that developers run into when dealing with points in a 2d space. In this post I will be writing about the Point.rotate methods, that can be used to rotate a sprite around another sprite, or any object that has exposed x, and y properties for that matter. This should be fun, so lets get into it.
@@ -165,7 +165,7 @@ var stateSwitcher = function () {
 
 ### 3.4 - Example 1 - just rotate around another sprite
 
-So for the first example I just wanted to have one sprite rotate around another. I just call my helper methods in the create method of the state. Once I have everything set up, I then just grab some references to the sprites using the World.getByName method, and use Phaser.Point.rotate to rotate the 'thing' sprite, around the 'center' sprite.
+So for the first example I just wanted to have one sprite rotate around another. I just call my helper methods in the create method of the state. Once I have everything set up, I then just grab some references to the sprites using the World.getByName method, and use Phaser.Point.rotate to rotate the 'thing' sprite, around the 'center' sprite in the update method of the state.
 
 ```js
 // sprites1 state in which the thing sprite, just rotates around center
@@ -191,6 +191,10 @@ game.state.add('sprites_1', {
 ```
 
 ### 3.5 - Example 2 - Heart shaped pattern with dynamic distance
+
+So In this example I now experimented with moving the 'center' sprite, and making the distance of the rotation variable, by adding a distance property to the data object of the sprite. If you are not familiar with the data object of a sprite, it is simply the standard official way of appending some project specific properties to a sprite.
+
+In this example I am also using the Phaser.Point.angle method, another great method that can be used to find the angle between two points. I am then using the angle to influence the distance variable of the rotation.
 
 ```js
 // sprites2 state, heart shaped pattern of thing rotating around
@@ -228,13 +232,14 @@ game.state.add('sprites_2', {
         Phaser.Point.rotate(thing, center.x, center.y, 10, true, thing.data.dist);
  
         center.x += 2;
- 
         center.x = Phaser.Math.wrap(center.x, -125, game.world.width + 125);
  
     }
  
 });
 ```
+
+Notice that I am also using the Phaser.Math.wrap method, another great method in phaser that is useful for setting up a game world in which a display object wraps back around to the beginning when crossing a boundary.
 
 ### 3.6 - Example 3 - A vanilla js alternative
 
