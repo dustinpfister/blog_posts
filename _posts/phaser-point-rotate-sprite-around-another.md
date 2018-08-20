@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 265
-updated: 2018-08-20 16:38:39
-version: 1.9
+updated: 2018-08-20 16:42:40
+version: 1.10
 ---
 
 So far this week I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) with the Point Class. This is a very helpful Class that helps with common issues that developers run into when dealing with points in a 2d space. In this post I will be writing about the Point.rotate methods, that can be used to rotate a sprite around another sprite, or any object that has exposed x, and y properties for that matter. This should be fun, so lets get into it.
@@ -100,14 +100,14 @@ game.state.add('boot', {
  
         game.cache.addSpriteSheet('sheet-block', null, canvas, 32, 32, 2, 0, 0);
  
-        //console.log(game.input);
- 
         game.state.start('sprites_1');
  
     }
  
 });
 ```
+
+So in the boot state I create a simple sprite sheet using a canvas element, which is my preferred method when it comes to simple examples like these. Once my sheet is cached, I then start the first state for the first example. The additional states, helper methods and so forth will be defined later in my project, as this boot state will not be stared until everything is all set.
 
 ### 3.2 - A mkSprites method
 
