@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 265
-updated: 2018-08-20 16:42:40
-version: 1.10
+updated: 2018-08-20 18:12:20
+version: 1.11
 ---
 
 So far this week I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) with the Point Class. This is a very helpful Class that helps with common issues that developers run into when dealing with points in a 2d space. In this post I will be writing about the Point.rotate methods, that can be used to rotate a sprite around another sprite, or any object that has exposed x, and y properties for that matter. This should be fun, so lets get into it.
@@ -111,6 +111,8 @@ So in the boot state I create a simple sprite sheet using a canvas element, whic
 
 ### 3.2 - A mkSprites method
 
+For these examples I made a helper method that will create some sprites using the sprite sheet I made in the boot state.
+
 ```js
 // make sprites function
 var mkSprites = function () {
@@ -136,7 +138,11 @@ var mkSprites = function () {
 };
 ```
 
+This method helps to keep me from repeating code for each example in which I just want two sprites to work with.
+
 ### 3.3 - A state switcher
+
+I then have another helper method that will set up some simple controls that will cycle the examples each time the canvas is souched or clicked.
 
 ```js
 // switch states
