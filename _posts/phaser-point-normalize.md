@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 266
-updated: 2018-08-21 13:39:54
-version: 1.3
+updated: 2018-08-21 13:41:56
+version: 1.4
 ---
 
 In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) the html5 powered game framework, I will be writing about the Point.normalize method that can be used to normalize 2d points. Normalizing points is a way to bring one or more Points into a common scale, once that is the case the process of scaling it back up, or down, as well a translating it is much easier.
@@ -19,6 +19,7 @@ This is a post on the Phaser.Point.normalize method in phaser ce the html 5 powe
 
 ## 2 - A very Basic example of Phaser.Point.normalize
 
+So for a very basic example of Point.normalize I will be using the Point.normalize prototype method. There is also a static form of the method as well, but that expects only an instance of Point as the first argument, so you might as well just use the prototype method in most cases.
 
 ```js
 var point = new Phaser.Point(10, 1),
