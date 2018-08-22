@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-22 19:52:06
-version: 1.4
+updated: 2018-08-22 19:54:03
+version: 1.5
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the fs.createWriteStream method in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -19,7 +19,7 @@ This is a post on the fs.createWriteStream method in the node.js built in file s
 
 ## 2 - Some basic examples of fs.createWriteStream
 
-So for starters I put together some simple examples of fs.createWriteStream.
+So for starters I put together some simple examples of fs.createWriteStream. In these examples I will be just should some very basic use case examples, and will not be getting into anything to intense involving piping, and events.
 
 ## 2 - A fs.createWriteStream hello world example
 
