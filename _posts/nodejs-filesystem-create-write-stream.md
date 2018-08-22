@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-22 19:54:03
-version: 1.5
+updated: 2018-08-22 19:59:18
+version: 1.6
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the fs.createWriteStream method in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -17,11 +17,15 @@ In [node.js](https://nodejs.org/en/) streams come up often, even with the most s
 
 This is a post on the fs.createWriteStream method in the node.js built in file system module. This method can be used to quickly make a writable stream for the purpose of writing data to a file. This method may be a smarter option compared to methods like fs.writeFile when it comes to very large amounts of data. This is not a getting started post on node.js, or javaScript in general, and I assume that you have log at least a few hours with these things before hand. If not you might have a hard time enjoying reading this post.
 
+### 1.1 - Writable streams
+
+The fs.createWriteStream is an example of a writable stream, which differs from readable streams, and duplex streams. For example when it comes to piping data from one stream to another a readable stream can pipe to a writable stream, but not the other way around, because there is nothing to read. Some of the base events are different as well, if you want to learn more about streams there is always the [node.js docs on streams](https://nodejs.org/dist/latest-v8.x/docs/api/stream.html), my content on them as of this writing is a little thin.
+
 ## 2 - Some basic examples of fs.createWriteStream
 
 So for starters I put together some simple examples of fs.createWriteStream. In these examples I will be just should some very basic use case examples, and will not be getting into anything to intense involving piping, and events.
 
-## 2 - A fs.createWriteStream hello world example
+### 2.1 - A fs.createWriteStream hello world example
 
 A simple hello world example of fs.createWriteStream might involve just grabbing a reference to the file system module. Then use the fs.createWriteStream by calling it and passing the path to where the data should be saved as the first argument. Once that is done the write method can be used to write a string to the file.
 
