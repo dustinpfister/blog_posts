@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-22 19:45:39
-version: 1.3
+updated: 2018-08-22 19:52:06
+version: 1.4
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the fs.createWriteStream method in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -17,15 +17,20 @@ In [node.js](https://nodejs.org/en/) streams come up often, even with the most s
 
 This is a post on the fs.createWriteStream method in the node.js built in file system module. This method can be used to quickly make a writable stream for the purpose of writing data to a file. This method may be a smarter option compared to methods like fs.writeFile when it comes to very large amounts of data. This is not a getting started post on node.js, or javaScript in general, and I assume that you have log at least a few hours with these things before hand. If not you might have a hard time enjoying reading this post.
 
-
 ## 2 - Some basic examples of fs.createWriteStream
+
+So for starters I put together some simple examples of fs.createWriteStream.
+
+## 2 - A fs.createWriteStream hello world example
+
+A simple hello world example of fs.createWriteStream might involve just grabbing a reference to the file system module. Then use the fs.createWriteStream by calling it and passing the path to where the data should be saved as the first argument. Once that is done the write method can be used to write a string to the file.
 
 ```js
 let fs = require('fs');
  
-let writer = fs.createWriteStream('test.txt');
+let writer = fs.createWriteStream('helloworld.txt');
  
-writer.write('this is only a test');
+writer.write('hello world');
 ```
 
 ## 3 - Events
