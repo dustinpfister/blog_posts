@@ -5,15 +5,17 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 261
-updated: 2018-08-22 14:47:24
-version: 1.1
+updated: 2018-08-22 19:00:44
+version: 1.2
 ---
 
 In [node.js](https://nodejs.org/en/) there is the [crypto.createCipheriv](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options) method than can be used to create an return a cipher object for the purpose of encrypting data. It is typically used as a way to better secure web traffic, but it can also be used as a way to encrypt files on your computer as well. In this post I will be coving some examples of using this method to do just this.
 
 <!-- more -->
 
+## 1 - What to know before hand
 
+This is a post on the crypto.createCipheriv method in the node.js built in crypto module, as well as some related methods, and topics. In this post I am also using streams as well. This is not a comprehensive post on the crypto module as a whole, as well as with related skills necessary to get something of value from this post.
 
 ## 2 - A simple File encryption tool
 
