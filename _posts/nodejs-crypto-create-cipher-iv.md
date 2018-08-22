@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 261
-updated: 2018-08-22 19:10:29
-version: 1.5
+updated: 2018-08-22 19:13:19
+version: 1.6
 ---
 
 In [node.js](https://nodejs.org/en/) there is the [crypto.createCipheriv](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options) method than can be used to create an return a cipher object for the purpose of encrypting data. It is typically used as a way to better secure web traffic, but it can also be used as a way to encrypt files on your computer as well. In this post I will be coving some examples of using this method to do just this.
@@ -94,4 +94,72 @@ fs.createReadStream(filename)
     );
  
 }));
+```
+
+### 2.2 - The decode-file.js file that can be used to decode a file that was encoded with code=file.js
+
+
+```js
+let crypto = require('crypto'),
+path = require('path'),
+fs = require('fs');
+ 
+// Cipher Suites, key, and the iv
+let a = 'aes-256-cbc',
+filename = process.argv[2] || 'test.coded',
+bName = path.basename(filename, path.extname(filename));
+ 
+// read the key.json file
+fs.readFile(bName + '-keys.json', (err, data)=> {
+ 
+    // keyfile will default to an empty object
+    let keyFile = {}
+ 
+    if (err) {
+ 
+        // if error logg it
+        console.log('error reading keys.json file');
+ 
+    } else {
+ 
+        // else parse the JSON
+        try {
+ 
+            keyFile = JSON.parse(data);
+ 
+        } catch (e) {
+ 
+            console.log(e);
+ 
+        }
+ 
+    }
+ 
+    // use key, and iv given from the command line first if given, else use anything from a file, else default to hard coded values
+    let key = Buffer.from(process.argv[3] || keyFile.key || '313233342d737061636562616c6c730000000000000000000000000000000000', 'hex'),
+    iv = Buffer.from(process.argv[4] || keyFile.iv || '00000000000000000000000000000000', 'hex'),
+ 
+    // make the cipher with the current suite, key, and iv
+    cipher = crypto.createDecipheriv(a, key, iv);
+ 
+    // read test.txt
+    fs.createReadStream(filename)
+ 
+    // pipe to cipher
+    .pipe(cipher)
+ 
+    // pipe to writer
+    .pipe(fs.createWriteStream(bName + '.decoded'))
+ 
+    // when done decoding
+    .on('close', ()=> {
+ 
+        console.log(filename + ' has been decoded using:');
+        console.log('key:');
+        console.log(key.toString('hex'));
+        console.log('iv');
+        console.log(iv.toString('hex'));
+    });
+ 
+});
 ```
