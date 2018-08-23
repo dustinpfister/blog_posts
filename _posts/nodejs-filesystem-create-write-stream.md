@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-23 16:35:09
-version: 1.9
+updated: 2018-08-23 16:36:55
+version: 1.10
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the [fs.createWriteStream method](https://nodejs.org/docs/latest-v8.x/api/fs.html) in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -64,6 +64,8 @@ writer.write('this will fail if the file is there before hand');
 A must have event for error handling.
 
 ### 3.2 - The open event
+
+The open event will fire once a file is open, and ready to write to. The first element is the file descriptor of the file.
 
 ```js
 let fs = require('fs');
