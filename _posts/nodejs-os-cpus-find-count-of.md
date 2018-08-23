@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 268
-updated: 2018-08-23 11:03:02
-version: 1.7
+updated: 2018-08-23 11:06:43
+version: 1.8
 ---
 
 As I continue to log time working with [node.js](https://nodejs.org/en/) I start to get into things that are a little advanced such as clustering. When making a node.js project that will spawn additional instances of itself to help make some heavy lifting go faster, there is a need to know how many processors there are on the system that node is running. In this post I will be quickly writing about how to go abound finding that out very fast, and will be giving some quick examples on why this is helpful. This can be done with a method in the node.js [os module](https://nodejs.org/docs/latest-v8.x/api/os.html) know as [os.cpus](https://nodejs.org/docs/latest-v8.x/api/os.html#os_os_cpus)
@@ -15,7 +15,11 @@ As I continue to log time working with [node.js](https://nodejs.org/en/) I start
 
 ## 1 - what to know
 
-This is a post on the os.cpus method in the node.js os module, a helpful module that can be used to work with the underlaying operation system that node.js is running on top of. I will not be getting into the os module in detail in this post, but I will be coving some use case examples of the os.cpus method in this module. When I made these demos I was using node.js 8.x, which at the time of this writing is the latest LTS major release version of node.js.
+This is a post on the os.cpus method in the [os module](https://nodejs.org/docs/latest-v8.x/api/os.html), a helpful module that can be used to work with the underlaying operation system that node.js is running on top of. I will not be getting into the os module in detail in this post, but I will be coving some use case examples of the os.cpus method in this module. When I made these demos I was using node.js 8.x, which at the time of this writing is the latest LTS major release version of node.js.
+
+### 1.1 - The cluster module
+
+Another helpful module in node.js is the cluster module, this helps setup clustering in a node.js project. That is running more than one instance of the same script. [I wrote a post](/2018/01/18/nodejs-cluster/) on cluster a while back if you would like to read more about clustering in node.js.
 
 ## 2 - A very basic example of os.cpus in node.js
 
