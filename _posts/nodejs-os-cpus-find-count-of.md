@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 268
-updated: 2018-08-23 10:29:09
-version: 1.2
+updated: 2018-08-23 10:35:43
+version: 1.3
 ---
 
 As I continue to log time working with [node.js](https://nodejs.org/en/) I start to get into things that are a little advanced such as clustering. When making a node.js project that will spawn additional instances of itself to help make some heavy lifting go faster, there is a need to know how many processors there are on the system that node is running. In this post I will be quickly writing about how to go abound finding that out very fast, and will be giving some quick examples on why this is helpful.
@@ -15,9 +15,11 @@ As I continue to log time working with [node.js](https://nodejs.org/en/) I start
 
 ## 1 - what to know
 
-This is a post on the os.cpus method in the node.js os module, a helpful module that can be used to work with the underlaying operation system that node.js is running on top of. I will not be getting into the os module in detail in this post, but I will be coving some use case examples of the os.cpus method in this module. When I made these demos I was using node.js 8.x, which at the time of this writing is the latest LTS major release verion of node.js.
+This is a post on the os.cpus method in the node.js os module, a helpful module that can be used to work with the underlaying operation system that node.js is running on top of. I will not be getting into the os module in detail in this post, but I will be coving some use case examples of the os.cpus method in this module. When I made these demos I was using node.js 8.x, which at the time of this writing is the latest LTS major release version of node.js.
 
 ## 2 - A very basic example of os.cpus in node.js
+
+The os.cpus method works by just simply calling it with no arguments, and it then returns an array of objects, where each object contains some properties about each processor. So for a very basic example of os.cpus, I made a quick script that just logs out the model, and speed of each cpu object in the array of objects that is returned by is.cpus.
 
 ```js
 let os = require('os'),
@@ -36,6 +38,8 @@ cpus.forEach(function (cpu, i) {
  
 });
 ```
+
+So the count of cpus on the system can be found by just getting the array element length of the array returned by os.cpus. In addition I can gain some additional information about each cpu, but it is not at all a replacement for some other kind of back end that would give more detailed information.
 
 
 ## 3 - An example that involves the cluster module
