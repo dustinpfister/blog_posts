@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 267
-updated: 2018-08-23 12:37:43
-version: 1.10
+updated: 2018-08-23 12:40:44
+version: 1.11
 ---
 
 So these days I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/), because phaser is just awesome, and deserves a fair share of my attention. In todays post I will be writing yet another post on the Point class, and it's many useful methods. This time I will be writing about Point.setMagnitude, and Point.getMagnitude. Just yesterday I wrote a post on Point.normalize which is the same as using Point.setMagnitude(1). So in other words normalizing a Point is the process of making the unit length of a Point one. The methods I will be writing about in this post have to do with setting the length to something other than one.
@@ -178,3 +178,5 @@ game.state.start('boot');
 ```
 
 ## 4 - Conclusion
+
+So Point.setMagnitude is a way to set the length of a point relative to position 0,0. With complex polygons involving a lengthy array of points this can be used as a way to preform a kind of scaling of those points without changing the polar direction of the point, that is the angle will be preserved.
