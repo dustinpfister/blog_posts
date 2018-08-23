@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-23 16:47:39
-version: 1.11
+updated: 2018-08-23 16:51:37
+version: 1.12
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the [fs.createWriteStream method](https://nodejs.org/docs/latest-v8.x/api/fs.html) in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -94,4 +94,26 @@ let writer = fs.createWriteStream('test.txt')
     console.log('fd: ' + fd);
  
 });
+```
+
+### 4.3 - The pipe event
+
+The pipe event will fire whenever something is being piped in from a readable stream
+
+```js
+let fs = require('fs');
+ 
+let writer = fs.createWriteStream('test_copy.txt', {
+        flags: 'w'
+    });
+ 
+writer.on('pipe', function () {
+ 
+    console.log('seomthing is being piped in.');
+ 
+});
+ 
+let reader = fs.createReadStream('test.txt')
+ 
+    .pipe(writer);
 ```
