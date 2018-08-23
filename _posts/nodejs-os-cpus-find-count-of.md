@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 268
-updated: 2018-08-23 10:35:43
-version: 1.3
+updated: 2018-08-23 10:39:49
+version: 1.4
 ---
 
 As I continue to log time working with [node.js](https://nodejs.org/en/) I start to get into things that are a little advanced such as clustering. When making a node.js project that will spawn additional instances of itself to help make some heavy lifting go faster, there is a need to know how many processors there are on the system that node is running. In this post I will be quickly writing about how to go abound finding that out very fast, and will be giving some quick examples on why this is helpful.
@@ -41,8 +41,11 @@ cpus.forEach(function (cpu, i) {
 
 So the count of cpus on the system can be found by just getting the array element length of the array returned by os.cpus. In addition I can gain some additional information about each cpu, but it is not at all a replacement for some other kind of back end that would give more detailed information.
 
-
 ## 3 - An example that involves the cluster module
+
+So for a more interesting example I made a quick example that involves the use of the [cluster module](/2018/01/18/nodejs-cluster/). This module has many properties, and methods that help with forking a script. So it can be used to create more than one child process of the same script.
+
+Of course I will not be getting into cluster in detail here, however I will be using os.cpus to launch a process for each processor that is found using os.cpus.
 
 ```js
 // using the os, and cluster modules
