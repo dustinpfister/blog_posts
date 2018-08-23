@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-22 19:59:18
-version: 1.6
+updated: 2018-08-23 14:35:57
+version: 1.7
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the fs.createWriteStream method in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -39,7 +39,9 @@ writer.write('hello world');
 
 ## 3 - Events
 
-### 3.1 - The on error event
+It is possible to attach events to an instance of fs.createWriteStream, or any stream for that matter. The type of events are the stream as with any writable stream, however there are also a few that are for fs.createWriteStream only. In this section I will be going over some of these events,a dn give simple examples.
+
+### 3.1 - The error event
 
 ```js
 let fs = require('fs');
@@ -55,4 +57,19 @@ let writer = fs.createWriteStream('test.txt',{flags:'wx+'})
 });
  
 writer.write('this will fail if the file is there before hand');
+```
+
+### 3.2 - The open event
+
+```js
+let fs = require('fs');
+ 
+let writer = fs.createWriteStream('test.txt')
+ 
+.on('open', function (fd) {
+ 
+    console.log('file is open!');
+    console.log('fd: ' + fd);
+ 
+});
 ```
