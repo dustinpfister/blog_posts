@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 267
-updated: 2018-08-23 12:34:19
-version: 1.8
+updated: 2018-08-23 12:36:51
+version: 1.9
 ---
 
 So these days I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/), because phaser is just awesome, and deserves a fair share of my attention. In todays post I will be writing yet another post on the Point class, and it's many useful methods. This time I will be writing about Point.setMagnitude, and Point.getMagnitude. Just yesterday I wrote a post on Point.normalize which is the same as using Point.setMagnitude(1). So in other words normalizing a Point is the process of making the unit length of a Point one. The methods I will be writing about in this post have to do with setting the length to something other than one.
@@ -81,6 +81,8 @@ When I want to start this project I will do so my staring this state first, and 
 
 ### 3.2 - The generate sprite sheet state
 
+In this state I generate a canvas that will be used to make a sprite that will be moved by way of a point that will be changed by Point.setMagnitude. I have written a post a little while back in which I get into this in a little more detail if interested.
+
 ```js
 // generate a sprite sheet using canvas
 game.state.add('gen-sheet', {
@@ -110,6 +112,8 @@ game.state.add('gen-sheet', {
  
 });
 ```
+
+I like generating sprites this way compared to loading a sheet, at least for simple demos like this.
 
 ### 3.3 - The example state
 
