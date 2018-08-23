@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 266
-updated: 2018-08-21 13:41:56
-version: 1.4
+updated: 2018-08-23 13:30:57
+version: 1.5
 ---
 
 In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) the html5 powered game framework, I will be writing about the Point.normalize method that can be used to normalize 2d points. Normalizing points is a way to bring one or more Points into a common scale, once that is the case the process of scaling it back up, or down, as well a translating it is much easier.
@@ -33,6 +33,9 @@ console.log(normal); // i.Point {x: 0.9950371902099892, y: 0.09950371902099892,
 
 ## 3 - A Point of Phaser.Point.normalize, easy scaling, and translating.
 
+So the nice thing about normalizing is that it can bring an array of points into a standard once unit long size that can then be easily positioned and scaled. Say you have some kind of constructor that gives you an array of Points, and you want to set them to a certain scale, and translate them somewhere.
+
+To make the process of doing this easy it would be nice to have all the points positioned relative to 0,0, and set to a certain polar distance from 0,0 that is between 0, and 1. Then the process of scaling is just a matter or running through each point and changing the distance from 0,0 to the desired unit length, and then translating to where I want them to be. This is where normalization comes into play.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
