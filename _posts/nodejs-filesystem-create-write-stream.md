@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-23 16:51:37
-version: 1.12
+updated: 2018-08-23 16:58:17
+version: 1.13
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the [fs.createWriteStream method](https://nodejs.org/docs/latest-v8.x/api/fs.html) in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -117,3 +117,7 @@ let reader = fs.createReadStream('test.txt')
  
     .pipe(writer);
 ```
+
+## 5 - Conclusion
+
+The fs.createWriteStream method is one of many examples of a writeable stream in node.js. For the most part streams are something that I consume, and there is no need to make my own custom streams. If for some reason you want to do that, you will want to use [stream.Writable](https://nodejs.org/docs/latest-v8.x/api/stream.html#stream_class_stream_writable). If what needs to happen involves streaming data to a file, on the local system though there is not much need to create a custom stream from the ground up though, in most cases fs.createWritweStream will work just fine.
