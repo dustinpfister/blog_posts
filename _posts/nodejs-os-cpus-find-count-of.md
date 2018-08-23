@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 268
-updated: 2018-08-23 10:39:49
-version: 1.4
+updated: 2018-08-23 10:42:23
+version: 1.5
 ---
 
 As I continue to log time working with [node.js](https://nodejs.org/en/) I start to get into things that are a little advanced such as clustering. When making a node.js project that will spawn additional instances of itself to help make some heavy lifting go faster, there is a need to know how many processors there are on the system that node is running. In this post I will be quickly writing about how to go abound finding that out very fast, and will be giving some quick examples on why this is helpful.
@@ -107,4 +107,6 @@ if (cluster.isMaster) {
 }
 ```
 
-## 4 - conclusion
+## 4 - Conclusion
+
+So if I just want a count of how many processors there are to work with on a system the os.cpus methods works just fine, and with most of the scripts written with node.js there is not much need for detailed information about each processor. If you want more detailed information then you will want to use some other back end that can get that for you, and use it via the child-process module that can be used to work with such back ends from the command line withing a node.js script.
