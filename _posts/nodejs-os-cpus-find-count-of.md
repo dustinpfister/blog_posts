@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 268
-updated: 2018-08-23 10:42:23
-version: 1.5
+updated: 2018-08-23 11:00:08
+version: 1.6
 ---
 
 As I continue to log time working with [node.js](https://nodejs.org/en/) I start to get into things that are a little advanced such as clustering. When making a node.js project that will spawn additional instances of itself to help make some heavy lifting go faster, there is a need to know how many processors there are on the system that node is running. In this post I will be quickly writing about how to go abound finding that out very fast, and will be giving some quick examples on why this is helpful.
@@ -106,6 +106,8 @@ if (cluster.isMaster) {
  
 }
 ```
+
+If I run this script in the command line The main process will fork two additional forks of this script. These two additional scripts will be worker scripts, rather than the master script that is called from the command line. In this example The workers just log a message to the console, and exit. However in a real example of some kind the worker scripts could do something that involves something that will take a lot of time, or processing power to complete. Each worker, and the main script are then free to do there own thing in parallel, and will not hold each other up.
 
 ## 4 - Conclusion
 
