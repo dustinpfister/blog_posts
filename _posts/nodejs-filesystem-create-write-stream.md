@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 262
-updated: 2018-08-23 16:36:55
-version: 1.10
+updated: 2018-08-23 16:47:39
+version: 1.11
 ---
 
 In [node.js](https://nodejs.org/en/) streams come up often, even with the most simple of examples will typically involve logging something to the standard output which is a kind of stream. In this post I will be writing about the [fs.createWriteStream method](https://nodejs.org/docs/latest-v8.x/api/fs.html) in the node.js built in file system module, and why that is often a better choice for writing to a file compared to other options in that module.
@@ -37,11 +37,27 @@ let writer = fs.createWriteStream('helloworld.txt');
 writer.write('hello world');
 ```
 
-## 3 - Events
+## 3 - Piping from readable streams
+
+With writable streams such as the streams created with fs.createWriteStream, data can be piped from a readable stream.
+
+```js
+let fs = require('fs');
+ 
+let writer = fs.createWriteStream('test_copy.txt', {
+        flags: 'w'
+    });
+ 
+let reader = fs.createReadStream('test.txt')
+ 
+    .pipe(writer);
+```
+
+## 4 - Events
 
 It is possible to attach events to an instance of fs.createWriteStream, or any stream for that matter. The type of events are the stream as with any writable stream, however there are also a few that are for fs.createWriteStream only. In this section I will be going over some of these events,a dn give simple examples.
 
-### 3.1 - The error event
+### 4.1 - The error event
 
 The error event will fire if an error occurs, for example if I try to write to a file that all ready exists when set in the w+ file mode using the flag option.
 
@@ -63,7 +79,7 @@ writer.write('this will fail if the file is there before hand');
 
 A must have event for error handling.
 
-### 3.2 - The open event
+### 4.2 - The open event
 
 The open event will fire once a file is open, and ready to write to. The first element is the file descriptor of the file.
 
