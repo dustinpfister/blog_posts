@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 267
-updated: 2018-08-23 12:25:48
-version: 1.6
+updated: 2018-08-23 12:30:48
+version: 1.7
 ---
 
 So these days I have been expanding my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/), because phaser is just awesome, and deserves a fair share of my attention. In todays post I will be writing yet another post on the Point class, and it's many useful methods. This time I will be writing about Point.setMagnitude, and Point.getMagnitude. Just yesterday I wrote a post on Point.normalize which is the same as using Point.setMagnitude(1). So in other words normalizing a Point is the process of making the unit length of a Point one. The methods I will be writing about in this post have to do with setting the length to something other than one.
@@ -41,6 +41,8 @@ console.log('pos: ', point.x, point.y); // 5.00... 2.50...
 So the point with these methods is that they are useful for scaling points up, and down without changing the angle direction of the Point.
 
 ## 3 - A more interesting example of Point.setMagnitude
+
+For a more advanced example of Point.setMagnitude I came up with an example that involves using a Point to set the position of a sprite that moves from one corder of the screen to another using Point.setMagnitude to set the magnitude of that point. This example demonstrates what is meant by length of a point compared to direction. Point.getMagnitude can be used to get the length of a point that is at the bottom right corner of a screen, which can be thought of as a kind of max magnitude compared to 0,0 at the top left corder. This value can then be used to set the magnitude of a point that lays anywhere between those two points.
 
 ### 3.1 - Phaser.Game instance and boot state
 
