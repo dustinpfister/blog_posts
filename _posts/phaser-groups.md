@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-25 11:36:47
-version: 1.1
+updated: 2018-08-25 11:38:41
+version: 1.2
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -98,9 +98,147 @@ var sheetFromCanvas = function (opt) {
 
 ### 3.2 - The SpriteDat Class
 
+```js
+// SpriteDat Class to be used with Sprite data objects
+var SpriteDat = function (opt) {
+ 
+    opt = opt || {};
+ 
+    // will used the Phaser.Game instance given via the
+    // options object, or assume a game variable exists at the global space
+    this.game = opt.game || game;
+ 
+    // ref to the sprite
+    this.sprite = opt.sprite || {};
+ 
+    // default percent done to zero
+    this.per = 0;
+ 
+    // default deltas to zero
+    this.deltaX = 0;
+    this.deltaY = 0;
+ 
+    // full reset
+    // this will set a new starting position,
+    // along with deltas, and all other values
+    this.reset();
+ 
+};
+ 
+// call to fully reset
+SpriteDat.prototype.reset = function () {
+ 
+    // first starting options
+    this.startX = 32 + Math.random() * (game.world.width - 64);
+    this.startY = 32 + Math.random() * (game.world.height - 64);
+ 
+    // new deltas
+    this.newDeltas();
+ 
+};
+ 
+// new starting position and deltas
+SpriteDat.prototype.newDeltas = function () {
+ 
+    this.startX += this.deltaX * this.per;
+    this.startY += this.deltaY * this.per;
+ 
+    // deltas (amount of change)
+    this.deltaX = Math.random() * 50 - 25;
+    this.deltaY = Math.random() * 50 - 25;
+ 
+    // current tick, percent done, and tick count
+    this.tick = 0;
+    this.per = 0;
+    this.tickCount = Math.floor(10 + 40 * Math.random());
+};
+ 
+// return a
+SpriteDat.prototype.clamped = function (per) {
+ 
+    per = per === undefined ? this.per : per;
+ 
+    return {
+ 
+        x: Phaser.Math.wrap(this.startX + this.deltaX * per, -32, game.world.width + 32),
+        y: Phaser.Math.wrap(this.startY + this.deltaY * per, -32, game.world.height + 32)
+ 
+    }
+ 
+};
+ 
+// start the nextTick
+SpriteDat.prototype.nextTick = function (per) {
+ 
+    this.per = this.tick / this.tickCount;
+ 
+    var curPos = this.clamped();
+ 
+    this.sprite.x = curPos.x;
+    this.sprite.y = curPos.y;
+ 
+    // step next tick
+    if (this.tick < this.tickCount) {
+        this.tick += 1;
+    }
+ 
+};
+```
+
 
 ### 3.3 - The SpriteGroup Class
 
+```js
+// Sprite Group - The name should say it all
+var SpriteGroup = function (opt) {
+ 
+    opt = opt || {};
+ 
+    // will used the Phaser.Game instance given via the
+    // options object, or assume a game variable exists at the global space
+    this.game = opt.game || game;
+ 
+    // the key of the sprite sheet to use
+    this.sheetKey = opt.sheetKey || '';
+ 
+    this.group = this.game.add.group();
+    this.group.name = opt.name || '';
+ 
+    var i = 0,
+    len = 32,
+    sprite;
+ 
+    // using group.create to create sprites for the group
+    while (i < len) {
+ 
+        sprite = this.group.create(0, 0, this.sheetKey);
+        sprite.name = this.group.name + '-sprite-' + i;
+        sprite.frame = Math.floor(Math.random() * 3);
+ 
+        sprite.data = new SpriteDat({
+                game: this.game,
+                sprite: sprite
+            });
+ 
+        sprite.x = sprite.data.startX;
+        sprite.y = sprite.data.startY;
+ 
+        i += 1;
+    }
+ 
+};
+ 
+SpriteGroup.prototype.newDeltas = function () {
+ 
+    this.group.forEach(function (sprite) {
+ 
+        // new deltas for all
+        sprite.data.newDeltas();
+ 
+    });
+ 
+};
+```
 
 ### 3.4 - The Phaser Game Instance, and example state
 
