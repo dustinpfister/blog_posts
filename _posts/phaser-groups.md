@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 12:29:12
-version: 1.15
+updated: 2018-08-26 12:35:08
+version: 1.16
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -349,6 +349,8 @@ A use case example of this will be used in another Class that will be used to cr
 
 ### 4.3 - The SpriteGroup Class
 
+This is the Class that will create an instance of Phaser.Group, as well as populate the Group with Sprites that use a Sprite Sheet that I have generated with my asset-less solution for making sprite sheets. It also of course creates an instnace of my SpriteDat Class for each of the Data objects of each sprite in the Group.
+
 ```js
 // Sprite Group - The name should say it all
 var SpriteGroup = function (opt) {
@@ -401,12 +403,14 @@ SpriteGroup.prototype.newDeltas = function () {
 };
 ```
 
+This Class Will be called in the create method in the state in which I will be using all of this. In a real project this Class would end up becoming far more complex, but the basic idea of all of this is there.
+
 ### 4.4 - The Phaser Game Instance, and example state
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-game.state.add('example-3', {
+game.state.add('example-2', {
  
     create: function () {
  
@@ -456,5 +460,5 @@ game.state.add('example-3', {
  
 });
  
-game.state.start('example-3');
+game.state.start('example-2');
 ```
