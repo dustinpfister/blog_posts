@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 12:18:43
-version: 1.13
+updated: 2018-08-26 12:23:03
+version: 1.14
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -173,6 +173,7 @@ For another example of using Groups I Made an example that involves making a Cla
 
 ### 4.1 - Sheet from canvas method
 
+So This example involves the use of a helper method that I have been developing that helps me make assets by way of the 2d canvas drawing context. This is something that I keep hacking over, adding features, and making certain tweaks. So I start off my copying and pasting this into my project.
 
 ```js
 // sheet from canvas helper
@@ -249,6 +250,8 @@ var sheetFromCanvas = function (opt) {
  
 };
 ```
+
+I could get into the details of this, but that is a whole other post. Making assets this way is just a nice alternative to loading external assets, that works okay for simple demos like this.
 
 ### 4.2 - The SpriteDat Class
 
