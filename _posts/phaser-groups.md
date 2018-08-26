@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 12:01:12
-version: 1.11
+updated: 2018-08-26 12:13:37
+version: 1.12
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -36,6 +36,33 @@ aGroup.add(text);
  
 // the display objects of a Group are stored in the children array
 console.log(aGroup.children[0].text); // 'foo'
+```
+
+### 2.2 - Nesting groups
+
+I can nest on e group inside of another group. When doing so the x, and x position of the child group is relative to that of the parent Group.
+
+```js
+// creating two groups
+var group1 = game.add.group(),
+group2 = game.add.group(),
+font = {
+    fill: 'red',
+    font: '20px courier'
+};
+ 
+group1.add(game.add.text(0, 0, 'hello', font));
+group1.add(game.add.text(0, 20, 'world', font));
+group1.x = 50;
+group1.y = 50;
+ 
+group2.add(game.add.text(0, 0, 'phaser', font));
+group2.add(game.add.text(0, 20, 'style!', font));
+group2.x = 100;
+group2.y = 50;
+ 
+// I can nest groups
+group1.add(group2);
 ```
 
 ### 3 - Example 1 of Phaser.Group - A group of text objects
