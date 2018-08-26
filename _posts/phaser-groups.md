@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 11:22:46
-version: 1.6
+updated: 2018-08-26 11:27:16
+version: 1.7
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -21,7 +21,7 @@ There is a great deal to know about phaser ce, as well as javaScript in general 
 
 In this section I will be covering some basic examples of using groups in a phaser project. These examples are just quick silly little demos that help to show how groups are useful, for keeping large collections of display objects organized.
 
-### 3 - A group of text objects using Phaser.Group
+### 3 - Example 1 of Phaser.Group - A group of text objects
 
 Text objects in phaser come in handy for just simply displaying information on the canvas. Of course there is the process of making your own custom fonts with a sprite sheet, but that is off topic. Anyway often it is desirable to just display the current state of some variables on the canvas, for debugging purposes, or even for the sake of game play.
 
@@ -38,7 +38,7 @@ I then create instances of text display objects with game.add.text, and add them
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-game.state.add('basic-1', {
+game.state.add('example-1', {
  
     create: function () {
  
@@ -117,10 +117,10 @@ game.state.add('basic-1', {
  
 });
  
-game.state.start('basic-1');
+game.state.start('example-1');
 ```
 
-## 4 - An example involving blocks
+## 4 - Example 3 of Phaser.Group - An example involving blocks
 
 ### 4.1 - Sheet from canvas method
 
@@ -350,7 +350,7 @@ SpriteGroup.prototype.newDeltas = function () {
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-game.state.add('example-1', {
+game.state.add('example-3', {
  
     create: function () {
  
@@ -400,5 +400,5 @@ game.state.add('example-1', {
  
 });
  
-game.state.start('example-1');
+game.state.start('example-3');
 ```
