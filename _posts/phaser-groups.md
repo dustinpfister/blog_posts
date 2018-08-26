@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 12:35:08
-version: 1.16
+updated: 2018-08-26 12:41:18
+version: 1.17
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -407,6 +407,8 @@ This Class Will be called in the create method in the state in which I will be u
 
 ### 4.4 - The Phaser Game Instance, and example state
 
+So now that I have everything that I need to make a project I now just need to create the instance of Phaser.Game, then make the state object, and start that state object. In the create method of the stat object, I create my sheet with my sheetFromCanvas solution, then create my instance of the SpriteGroup Class. I then set up a loop for seating the deltas of all the children every two seconds.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -462,3 +464,5 @@ game.state.add('example-2', {
  
 game.state.start('example-2');
 ```
+
+In the update loop I demonstrate that I can also just grab an instance of the Group by itself by name if I feel inclined to do so, however mode of the logic should be pulled into that class, that can be pulled into it's own file to help keep this organized.
