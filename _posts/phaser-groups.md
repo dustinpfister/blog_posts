@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 08:59:05
-version: 1.3
+updated: 2018-08-26 10:28:23
+version: 1.4
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -16,6 +16,88 @@ So in many games you end up with one or more collections or groups of sprites. I
 ## 1 - What to know before continuing
 
 There is a great deal to know about phaser ce, as well as javaScript in general before hand. In this post I am writing just about the Phaser.Group Constructor, and even then I am not covering all bases with that, this is just a getting started post on Groups. Phaser is a fairly complex project, and it will take time to get up to speed with it, however it is worth the investment, because it goes without saying that this is one of the more fun, and exciting javaScript projects out on the open Internet.
+
+## 2 - Some Basic examples of groups
+
+In this section I will be covering some basic examples of using groups in a phaser project. These examples are just quick silly little demos that help to show how groups are useful, for keeping large collections of display objects organized.
+
+### 2.1 - A group of text objects using Group.add, Group.filter, and others.
+
+Text objects in phaser come in handy for just simply displaying information on the canvas. Of course there is the process of making your own custom fonts with a sprite sheet, but that is off topic. Anyway often it is desirable to just display the current state of some variables on the canvas, for debugging purposes, or even for the sake of game play.
+
+In this example I am using the Group constructor to create an instance of a group, and then adding a bunch of text elements to it, to which I can then use in another method of the state object to display some data.
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('basic-1', {
+ 
+    create: function () {
+ 
+        var textGroup = game.add.group(),
+        font = {
+            fill: 'red',
+            font: '15px courier'
+        };
+ 
+        textGroup.name = 'text-group';
+ 
+        var i = 0,
+        len = 5;
+        while (i < len) {
+            var text = game.add.text(0, i * 15, '', font);
+ 
+            textGroup.add(text);
+            text.name = 'text-' + i;
+            i += 1;
+        }
+ 
+        //console.log(game.world.getByName('text-group'));
+        //console.log(game.world.getByName('text-group').getByName('text-0'));
+ 
+        //console.log(others);
+ 
+    },
+ 
+    update: function () {
+ 
+        // I can use getByName to grab a ref to the group
+        // if I am using names rather than a global variable
+        // or property of an object appended to the state or
+        // game objects
+        var textGroup = game.world.getByName('text-group'),
+        text;
+ 
+        // If I set names for the children of the group I can use
+        // that to get a certain child element
+        text = textGroup.getByName('text-0');
+        text.text = 'Roll: ' + Math.round(Math.random() * 6);
+ 
+        // or I can use one of the many Phaser.Group Class Methods
+        // such as filter
+        textGroup.filter(function (child, index) {
+ 
+            return index > 0;
+ 
+        }).list.forEach(function (child, i) {
+ 
+            var exp = child.data.exp = child.data.exp || 1,
+            base = 2 + i;
+ 
+            child.text = base + '^' + exp + ' = ' + Math.pow(base, exp);
+ 
+            exp += 1;
+            exp %= 25;
+            child.data.exp = exp;
+ 
+        });
+ 
+    }
+ 
+});
+ 
+game.state.start('basic-1');
+```
 
 ## 3 - An example involving blocks
 
