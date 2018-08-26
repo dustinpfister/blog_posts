@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 12:13:37
-version: 1.12
+updated: 2018-08-26 12:18:43
+version: 1.13
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -168,6 +168,8 @@ In the update loop I am grabbing a reference to the Group using game.world.getBy
 
 
 ## 4 - Example 3 of Phaser.Group - An example involving blocks
+
+For another example of using Groups I Made an example that involves making a Class for each child in a group, as well as A class that works with the Group of children. This is something that I end up developing from the ground up over, and over again when it comes to making a project vanilla js style. However with phaser the Process of doing this is a whole world faster, and many of the usual suspects for working with a collection of something is there to begin with, saving me a great deal of time inventing the wheel yet again. A major reason why it makes sense to bother with a framework like phaser ce.
 
 ### 4.1 - Sheet from canvas method
 
