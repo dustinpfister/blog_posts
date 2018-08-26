@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 11:27:16
-version: 1.7
+updated: 2018-08-26 11:32:00
+version: 1.8
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -119,6 +119,9 @@ game.state.add('example-1', {
  
 game.state.start('example-1');
 ```
+
+In the update loop I am grabbing a reference to the Group using game.world.getByName, once I have my reference to the Group that I created before hand in the create method, I can then then do a number of things with the group. In this example I am getting a reference to a single text object in the Group once again because I assigned names for everything, but I also demonstrated the use of a Group method called filter to gain a list of all the remaining text elements as well.
+
 
 ## 4 - Example 3 of Phaser.Group - An example involving blocks
 
