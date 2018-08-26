@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 12:23:03
-version: 1.14
+updated: 2018-08-26 12:29:12
+version: 1.15
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -251,9 +251,11 @@ var sheetFromCanvas = function (opt) {
 };
 ```
 
-I could get into the details of this, but that is a whole other post. Making assets this way is just a nice alternative to loading external assets, that works okay for simple demos like this.
+I could get into the details of this, but that is a whole other post. Making assets this way is just a nice alternative to loading external assets, that works okay for simple demos like this. Use case examples will follow in later sub sections of this section.
 
 ### 4.2 - The SpriteDat Class
+
+This is a Class that can be used to create an instance of an object that will be used as the data object of children in a group. This is something that I will want to write in very different ways depending on the logic of the project that I am developing. Any kind of property or method that should be parked with a child of the group should be placed here.
 
 ```js
 // SpriteDat Class to be used with Sprite data objects
@@ -341,6 +343,8 @@ SpriteDat.prototype.nextTick = function (per) {
  
 };
 ```
+
+A use case example of this will be used in another Class that will be used to create and instance of Phaser.Group. In that Class an instance of this Class will be made for each instance of a child in the Group. So in other words in this example I have two Classes, one for a Child, and the other for a Group. These classes use as well as extend on the functionality of Groups, and children that is all ready present in phaser, allowing me to make these types of classes more streamlined.
 
 
 ### 4.3 - The SpriteGroup Class
