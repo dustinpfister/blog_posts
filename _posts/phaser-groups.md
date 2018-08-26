@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 11:18:02
-version: 1.5
+updated: 2018-08-26 11:22:46
+version: 1.6
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -25,12 +25,15 @@ In this section I will be covering some basic examples of using groups in a phas
 
 Text objects in phaser come in handy for just simply displaying information on the canvas. Of course there is the process of making your own custom fonts with a sprite sheet, but that is off topic. Anyway often it is desirable to just display the current state of some variables on the canvas, for debugging purposes, or even for the sake of game play.
 
+In this example I am using the Group constructor to create an instance of a group in the create method of the state object, and then adding a bunch of text elements to it. I can then use these text objects in another method of the state object to display some data. 
+
 ### 3.1 - The text group example
 
-In this example I am using the Group constructor to create an instance of a group, and then adding a bunch of text elements to it, to which I can then use in another method of the state object to display some data. I start off by creating the instance of the Group with game.add.group, along with the font I will be using, and other function level variables. 
-
+I start off by creating the instance of the Group with game.add.group, along with the font I will be using, and other function level variables. 
 
 I then gave the Group a name, this is something in phaser that is similar to that of ids, and getElementById when it comes to client side javaScript. There are other ways to gain, and stored references to display objects, and Groups, but this is one option for doing so that I tent to like.
+
+I then create instances of text display objects with game.add.text, and add them to the Group with text.add. Before doing so I can set various initial values if desired, in this textame though I just set a name for each text object. After that
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -63,6 +66,7 @@ game.state.add('basic-1', {
             // display object to the Group
             textGroup.add(text);
             text.name = 'text-' + i;
+ 
             i += 1;
         }
  
