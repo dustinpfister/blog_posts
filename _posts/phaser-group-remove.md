@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 271
-updated: 2018-08-27 07:07:01
-version: 1.8
+updated: 2018-08-27 07:37:04
+version: 1.9
 ---
 
 Today in this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be writing about removing Sprites, and other display objects from a group. There is of course the Group.remove method, but by default it will not destroy the sprite. In some cases this is desirable if I want to move the sprite from one Group to another, or just remove it from a group in place it directly in the world. However it other projects, where Sprites are something that are created and destroyed on demand, then it is important to know about the few little pitfalls when it comes to removing sprites from a group in phaser.
@@ -46,7 +46,7 @@ After doing so the child length of each group is as expected.
 
 ### 2.2 - Removing from group one, and adding to group two
 
-So the Group.remove Method works by passing a reference to the child that I want to remove as the first argument. In order to do that I need a reference first, one way to do so is to just grab one from the children array in the group as in this example. The second argument that I pass to Group.remove is a boolean that if true will truly destroy the display object, rather than just removing it from the group. By default this value is false, but I just pass a false value anyway for the sake of example. The final boolean has to do with making it so an event does not fire, more on that later.
+So the Group.remove Method works by passing a reference to the child that I want to remove as the first argument. In order to do that I need a reference first, one way to do so is to just grab one from the children array in the group as in this example. The second argument that I pass to Group.remove is a boolean that if true will truly destroy the display object, rather than just removing it from the group. By default this value is false, but I just pass a false value anyway for the sake of example.
 
 ```js
 // grabbing a reference to the third child
@@ -65,9 +65,15 @@ console.log(group1.children.length); // 4
 console.log(group2.children.length); // 1
 ```
 
+The final boolean has to do with making it so an event does not fire, more on that later in the events section of this post.
+
 ### 2.3 - Removing for good
 
+So if I want to truly, and fully remove a display object from a group, I can just call the destroy method of the child in the group. I can also set the second argument of Group.remove to true.
+
 ```js
+console.log(group2.children.length); // 1
+
 // if I have a reference I can really destroy
 // the object this way
 text.destroy();
@@ -83,11 +89,16 @@ group1.remove(group1.children[0], true);
 console.log(group1.children.length); // 3
 ```
 
+by looking at the length of the group, or what is going on in the phaser cache, I can confirm first hand that these methods are working as advertised in the docs. Just remember that there is a difference between removing a display object from a group, and removing a display Object from a phaser game instance completely.
+
+
 ## 3 - Events
 
 There are a few events that can be attached to display objects, the two of interest with respect to the content of this post are onAddedToGroup, and onRemoveFromGroup.
 
-### 3.1 - onRemoveFromGroup
+### 3.1 - onRemoveFromGroup, and onAddedToGroup example
+
+The third argument that can be given to Group.remove is a boolean that makes the onRemovedFromGroup event not fire it's callback method.
 
 ```js
 game.state.add('events-1', {
@@ -96,20 +107,30 @@ game.state.add('events-1', {
  
         // display object with an onRemovedFromGroup event
         var text = game.add.text(0, 0, 'foo');
-        text.events.onRemovedFromGroup.add(function (a, b) {
+        text.name = 'text-1';
  
-            console.log(a);
-            console.log(b);
+        // on add to group
+        text.events.onAddedToGroup.add(function (dispObj, group) {
+ 
+            console.log(dispObj.name + ' added to group ' + group.name);
+ 
+        });
+ 
+        // on remove from group
+        text.events.onRemovedFromGroup.add(function (dispObj, group) {
+ 
+            console.log(dispObj.name + ' remove from group ' + group.name);
  
         });
  
         var group = game.add.group();
+        group.name = 'the-group';
  
-        group.add(text);
-        group.remove(text, false, true); // event does not fire
+        group.add(text); // onAddedToGroup event fires
+        group.remove(text, false, false); // onRemovedFromGroup event does fire
  
-        group.add(text);
-        group.remove(text, false, false); // event does file
+        group.add(text); // onAddedToGroup event fires
+        group.remove(text, false, true); // onRemovedFromGroup event does not fire
  
     }
  
