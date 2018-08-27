@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 271
-updated: 2018-08-27 06:12:19
-version: 1.5
+updated: 2018-08-27 06:18:27
+version: 1.6
 ---
 
 Today in this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be writing about removing Sprites, and other display objects from a group. There is of course the Group.remove method, but by default it will not destroy the sprite. In some cases this is desirable if I want to move the sprite from one Group to another, or just remove it from a group in place it directly in the world. However it other projects, where Sprites are something that are created and destroyed on demand, then it is important to know about the few little pitfalls when it comes to removing sprites from a group in phaser.
@@ -44,7 +44,9 @@ console.log(group2.children.length); // 0
 
 After doing so the child length of each group is as expected.
 
-### 2.2 - removing from group one, and adding to group two
+### 2.2 - Removing from group one, and adding to group two
+
+So the Group.remove Method works by passing a reference to the child that I want to remove as the first argument. In order to do that I need a reference first, one way to do so is to just grab one from the children array in the group as in this example. The second argument that I pass to Group.remove is a boolean that if true will truly destroy the display object, rather than just removing it from the group. By default this value is false, but I just pass a false value anyway for the sake of example. The final boolean has to do with making it so an event does not fire, more on that later.
 
 ```js
 // grabbing a reference to the third child
