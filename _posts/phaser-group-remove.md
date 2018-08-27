@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 271
-updated: 2018-08-27 07:37:04
-version: 1.9
+updated: 2018-08-27 07:41:25
+version: 1.10
 ---
 
 Today in this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be writing about removing Sprites, and other display objects from a group. There is of course the Group.remove method, but by default it will not destroy the sprite. In some cases this is desirable if I want to move the sprite from one Group to another, or just remove it from a group in place it directly in the world. However it other projects, where Sprites are something that are created and destroyed on demand, then it is important to know about the few little pitfalls when it comes to removing sprites from a group in phaser.
@@ -138,6 +138,8 @@ game.state.add('events-1', {
 ```
 
 ## 4 - Having a cache, and an active group of sprites.
+
+Dow for an interesting example that might start to resemble the beginnings of an actual game. In this example I have two groups. One is a cache of Sprites that is positioned outside the bounds of the game world, and the other is positioned inside the game world. After a certain amount of time a Sprite from the cache Group is moved from the cache to the active group inside the game world. I made these sprites input enabled so when you click on them they are then moved back to the cache group.
 
 ```js
 // removing from one group, and placing into another, and back again
