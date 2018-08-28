@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 273
-updated: 2018-08-28 11:27:08
-version: 1.3
+updated: 2018-08-28 11:33:30
+version: 1.4
 ---
 
 Sow when making a game with [Phaser ce](https://photonstorm.github.io/phaser-ce/) that is the kind of game where the world is bigger than the native size of the canvas, there will be a need to pan around the world some way. When doing so there might be some display objects that I will want to have fixed to the camera. One way would be to just update the positions of these sprites, text object, and groups manualy in the update loop. However there is a way to have a group fixed to the camera, so when the camera moves all these other objects move with it relative to it's position. In this post I will be writing about doing just that with groups, and some corresponding properties.
@@ -23,6 +23,8 @@ For this example of a fixed group in phaser ce I will be creating a group, and t
 
 ### 2.1 - The fixed group helper
 
+So to start things off I made a fixed group helper method. This is a simple little method that takes care of everything that needs to happen with a fixed group right in a nice neat little reusable helper method. I pass it the instance of Phaser.Game, the name I want to give to the group, and an offset that is an instance of Phaser.Point.
+
 ```js
 // add a fixed group helper
 var addFixedGroup = function (game, name, offset) {
@@ -36,6 +38,8 @@ var addFixedGroup = function (game, name, offset) {
  
 };
 ```
+
+When I call this method in the create method of a game state, it will return a new fixed group that I can then add display objects to such as sprites, and text.
 
 ### 2.2 - 
 
