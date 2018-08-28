@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 235
-updated: 2018-08-28 05:47:51
-version: 1.5
+updated: 2018-08-28 06:23:03
+version: 1.6
 ---
 
 When making a game with [phaser](http://phaser.io), or with javaScript in general I sometimes come around to the issue of converting color values from one format to another. It is not hard to find or make methods that can be used to convert a decimal color value to a web friendly rgba string format, but still I can help but one can help but think that this should be part of the Phaser framework, well good news, [it is](https://photonstorm.github.io/phaser-ce/Phaser.Color.html).
@@ -25,7 +25,7 @@ As of this writing I am using [phaser 2.11.0](https://github.com/photonstorm/pha
 
 In this section I will be covering some must know methods in Phaser.Color.
 
-### 2.1 - getWebRGB
+### 2.1 - getWebRGB - for converting an integer color to a web friendly rgba string
 
 The getWebRgb Method of the Color class is one of the methods that comes in handy when working with color in a phaser project. Often I am working with plain canvas, and some methods in phaser can accept a canvas as an argument. So there is a need to convert a phaser friendly color to a canvas friendly color, quickly. This is where getWebRgb comes in handy.
 
@@ -38,3 +38,36 @@ console.log(Phaser.Color.getWebRGB(65280)); // 'rgba(0,255,0,1)';
 ```
 
 So this method can be used to quickly convert an integer color value to a web friendly rgba color string. No need to hunt down a solution for this, yet alone make you r own from the ground up with this, there is a method in the framework itself.
+
+### 2.2 - webRGB - rgb\/rgba web color strings to a color Object
+
+Want to quickly convert an rgb, or rgba color string to an object with red, grenn ,blue, and alpha values. Then The webRGB method can be used to make quick work of that.
+
+```js
+var webRGB = 'rgba(0,255,0,1)',
+
+colorObj = Phaser.Color.webToColor(webRGB);
+
+console.log(colorObj.r); // 0
+console.log(colorObj.g); // 255
+console.log(colorObj.b); // 0
+console.log(colorObj.a); // 1
+```
+
+This helps to keep me from making some kind of overly complex vanilla js solution for this.
+
+```js
+// vanilla
+var colorObj = {},
+colorArr = webRGB.replace(/rgba\(/, '').replace(/\)/, '').split(',');
+
+colorObj.r = colorArr[0];
+colorObj.g = colorArr[1];
+colorObj.b = colorArr[2];
+colorObj.a = colorArr[3];
+
+console.log(colorObj.r); // 0
+console.log(colorObj.g); // 255
+console.log(colorObj.b); // 0
+console.log(colorObj.a); // 1
+```
