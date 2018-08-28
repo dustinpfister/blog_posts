@@ -1,12 +1,12 @@
 ---
-title: The Color class in Phaser for quick color conversion
+title: Quick color conversion in phaser using Phaser.Color
 date: 2018-07-17 14:01:00
 tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 235
-updated: 2018-07-21 20:47:17
-version: 1.4
+updated: 2018-08-28 05:47:51
+version: 1.5
 ---
 
 When making a game with [phaser](http://phaser.io), or with javaScript in general I sometimes come around to the issue of converting color values from one format to another. It is not hard to find or make methods that can be used to convert a decimal color value to a web friendly rgba string format, but still I can help but one can help but think that this should be part of the Phaser framework, well good news, [it is](https://photonstorm.github.io/phaser-ce/Phaser.Color.html).
@@ -21,11 +21,20 @@ This is a post on the phaser color class that has a whole bunch of static method
 
 As of this writing I am using [phaser 2.11.0](https://github.com/photonstorm/phaser-ce/tree/v2.11.0) when making this demo. In other words what is now known as Phaser Community Edition. So far I have not made the switch to Phaser 3, and I do not plan on doing so any time soon, as long as Phaser CE is still supported.
 
+## Some must know methods in Phaser.Color
 
-## 2 - getWebRGB
+In this section I will be covering some must know methods in Phaser.Color.
 
-The getWebRgb Method of the Color class is one of the methods that comes in hady when working with color in a phaser project. Often I am working with plain canvas, and some methods in phase can accept a canvas as an argument. So there is a need to convert a phaser friendly color to a canvas friendly color, quickly. This is where getWebRgb comes in handy.
+### 2.1 - getWebRGB
+
+The getWebRgb Method of the Color class is one of the methods that comes in handy when working with color in a phaser project. Often I am working with plain canvas, and some methods in phaser can accept a canvas as an argument. So there is a need to convert a phaser friendly color to a canvas friendly color, quickly. This is where getWebRgb comes in handy.
 
 ```js
-console.log(Phaser.Color.getWebRGB(0x00ff00)); // 'rgb(0,255,0)';
+console.log(Phaser.Color.getWebRGB(0x00ff00)); // 'rgba(0,255,0,1)';
+ 
+console.log(Phaser.Color.getWebRGB(0xff00)); // 'rgba(0,255,0,1)';
+ 
+console.log(Phaser.Color.getWebRGB(65280)); // 'rgba(0,255,0,1)';
 ```
+
+So this method can be used to quickly convert an integer color value to a web friendly rgba color string. No need to hunt down a solution for this, yet alone make you r own from the ground up with this, there is a method in the framework itself.
