@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 272
-updated: 2018-08-28 12:56:45
-version: 1.8
+updated: 2018-08-28 13:00:56
+version: 1.9
 ---
 
 For the past few days I have been experimenting with [Groups](https://photonstorm.github.io/phaser-ce/Phaser.Group.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/). Today I worked out some examples that have to do with nesting groups. In other words a group is also a kind of display object, just like that of a Sprite, so another group can be added to a group, along with other display objects. So in this post I will be covering some examples of nesting groups inside of groups, from simple hello world examples, to some that are starting to resemble a game.
@@ -39,6 +39,8 @@ For a more complex use case example of nested groups I made a module that might 
 So to help with the complexities of all this I will want to make some kind of module that will house all nested groups, as well as a bunch of methods that help work with these groups. So In this sub section I will be writing about the round module, that will take care of all of this for me.
 
 #### 3.1.1 - Creating the round module, and setup method.
+
+So I start off by making an object literal that will house all the properties, and methods. The first methods that I make for these kinds of projects is a setup methods of some kind. Here I offset some logic that would otherwise go in the create methods of the phaser state object that uses this module.
 
 ```js
 // round object
@@ -74,6 +76,8 @@ round.setup = function (opt) {
  
 };
 ```
+
+When the setup method is called in the create methods groups will be created for waves, cache, and active. They will start out empty, but can be populated later in the create method, or elsewhere with another method round.genWaves.
 
 #### 3.1.2
 
