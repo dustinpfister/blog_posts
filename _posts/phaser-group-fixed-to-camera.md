@@ -1,0 +1,100 @@
+---
+title: Fixing Sprites and older display objects to a camera in phaser
+date: 2018-08-28 07:54:00
+tags: [js,phaser,games]
+layout: post
+categories: phaser
+id: 273
+updated: 2018-08-28 10:57:37
+version: 1.0
+---
+
+Sow when making a game with [Phaser ce](https://photonstorm.github.io/phaser-ce/) that is the kind of game where the world is bigger than the native size of the canvas, there will be a need to pan around the world some way. When doing so there might be some display objects that I will want to have fixed to the camera. One way would be to just update the positions of these sprites, text object, and groups manualy in the update loop. However there is a way to have a group fixed to the camera, so when the camera moves all these other objects move with it relative to it's position. In this post I will be writing about doing just that with groups, and some corresponding properties.
+
+<!-- more -->
+
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('example', {
+ 
+    create: function () {
+ 
+        // SETING WORLD SIZE
+        game.world.resize(640, 480);
+ 
+        // MAKING THWE FIXED GROUP
+        var fixed = game.add.group();
+        fixed.name = 'fixed';
+        fixed.fixedToCamera = true;
+        fixed.cameraOffset = new Phaser.Point(0, game.camera.height - 20);
+ 
+        // ADDING A TEXT ELEMENT TO THE FIXED GROUP
+        var font = {
+            fill: 'white',
+            font: '15px courier'
+        };
+        var text = game.add.text(5, 5, '', font);
+        text.name = 'mess';
+        fixed.add(text);
+ 
+        // GENERATING SOME BOXES TO THE WORLD
+        var canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+        canvas.width = 32;
+        canvas.height = 32;
+        ctx.strokeStyle = '#ffffff';
+        ctx.strokeRect(0, 0, 32, 32);
+        game.cache.addSpriteSheet('sheet-box', null, canvas, 32, 32, 1, 0, 0);
+ 
+        var bx = 100,
+        x,
+        y;
+        while (bx--) {
+ 
+            x = Math.random() * (game.world.width - 32);
+            y = Math.random() * (game.world.height - 32);
+ 
+            game.add.sprite(x, y, 'sheet-box');
+ 
+        }
+ 
+        // SETTING SOME VALUES
+        // that will be used in the update method
+        var data = game.data = game.data || {};
+ 
+        data.frame = 0;
+        data.maxFrame = 200;
+        data.dist = game.world.height / 4;
+ 
+    },
+ 
+    update: function () {
+ 
+        var per = game.data.frame / game.data.maxFrame,
+        fixed = game.world.getByName('fixed'),
+        angle = Math.PI * 2 * per,
+        x,
+        y;
+ 
+        // updating position of the camera
+        x = Math.floor((game.world.width / 2) - (game.camera.width / 2) + Math.cos(angle) * game.data.dist);
+        y = Math.floor((game.world.height / 2) - (game.camera.height / 2) + Math.sin(angle) * game.data.dist);
+        game.camera.setPosition(x, y);
+ 
+        // displaying current camera position in text object
+        // that is in the fixed group
+        fixed.getByName('mess').text = 'fixed info: (' + x + ',' + y + ') ';
+ 
+        // step frame
+        game.data.frame += 1;
+        game.data.frame %= game.data.maxFrame;
+ 
+    }
+ 
+});
+ 
+game.state.start('example');
+```
+
