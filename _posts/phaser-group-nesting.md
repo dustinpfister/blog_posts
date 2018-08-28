@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 272
-updated: 2018-08-28 10:57:38
-version: 1.5
+updated: 2018-08-28 12:48:52
+version: 1.6
 ---
 
 For the past few days I have been experimenting with [Groups](https://photonstorm.github.io/phaser-ce/Phaser.Group.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/). Today I worked out some examples that have to do with nesting groups. In other words a group is also a kind of display object, just like that of a Sprite, so another group can be added to a group, along with other display objects. So in this post I will be covering some examples of nesting groups inside of groups, from simple hello world examples, to some that are starting to resemble a game.
@@ -35,156 +35,152 @@ console.log(parent.children[0].name); // nested
 
 ### 3.1 - The round module
 
+#### 3.1.1 - Creating the round module, and setup method.
+
 ```js
 // round object
 var round = {
  
-    waves: {},
-    cache: {},
-    active: {},
-    game: {},
+    waves: {}, // the waves group will contain nested groups
+    cache: {}, // the cache will hold enemies to be released
+    active: {}, // active enemies in the game area
+    game: null, // what will be a reference to Phaser.Game
+    enemyCount: 0, // a count of enemies, use to set names
+    playerHP: 1000 // player hp
  
-    enemyCount: 0,
+};
  
-    playerHP: 1000,
+// setup waves
+round.setup = function (opt) {
  
-    // setup waves
-    setup: function (opt) {
+    opt = opt || {};
  
-        var waveCount = 3,
-        enemysPerWave = 5,
-        wave,
-        enemy,
-        wi,
-        ei;
+    this.game = opt.game || game;
  
-        opt = opt || {};
+    this.waves = game.add.group();
+    this.waves.name = 'waves';
+    this.waves.x = -32;
  
-        this.game = opt.game || game;
+    this.cache = game.add.group();
+    this.cache.name = 'cache';
+    this.cache.x = -32;
  
-        this.waves = game.add.group();
-        this.waves.name = 'waves';
-        this.waves.x = -32;
+    this.active = game.add.group();
+    this.active.name = 'active';
+    this.active.x = 0;
  
-        this.cache = game.add.group();
-        this.cache.name = 'cache';
-        this.cache.x = -32;
+};
+```
+
+#### 3.1.2
+
+```js
+// generate the waves
+round.genWaves = function (waveCount, enemysPerWave) {
  
-        this.active = game.add.group();
-        this.active.name = 'active';
-        this.active.x = 0;
+    var wave,
+    enemy,
+    wi,
+    ei;
  
-        // 3 waves of 5
-        this.genWaves(3, 5);
+    // for each
+    wi = 0;
+    while (wi < waveCount) {
  
-        // 1 wave of ten
-        this.genWaves(1, 10);
+        // add new wave as parent of this.waves (nesting)
+        wave = game.add.group(this.waves);
+        wave.name = 'wave-' + (wi + 1);
  
-    },
+        ei = 0;
+        while (ei < enemysPerWave) {
  
-    // generate the waves
-    genWaves: function (waveCount, enemysPerWave) {
+            enemy = wave.create(0, 0, 'badguys');
+            enemy.name = 'enemy-' + this.enemyCount;
+            enemy.inputEnabled = true;
  
-        var wave,
-        enemy,
-        wi,
-        ei;
- 
-        // for each
-        wi = 0;
-        while (wi < waveCount) {
- 
-            // add new wave as parent of this.waves (nesting)
-            wave = game.add.group(this.waves);
-            wave.name = 'wave-' + (wi + 1);
- 
-            ei = 0;
-            while (ei < enemysPerWave) {
- 
-                enemy = wave.create(0, 0, 'badguys');
-                enemy.name = 'enemy-' + this.enemyCount;
-                enemy.inputEnabled = true;
- 
-                // enemies die when clicked
-                enemy.events.onInputDown.add(function (enemy) {
- 
-                    enemy.destroy();
- 
-                });
- 
-                this.enemyCount += 1;
-                ei += 1;
-            }
- 
-            wi += 1;
- 
-        }
- 
-    },
- 
-    // add next wave to cache
-    nextWave: function () {
- 
-        if (this.waves.children.length > 0) {
- 
-            var wave = this.waves.children[0],
-            enemy,
-            cache = this.cache,
-            i = wave.children.length;
-            while (i--) {
-                enemy = wave.children[i];
-                wave.remove(enemy);
-                cache.add(enemy);
-            }
- 
-            wave.destroy();
- 
-        }
- 
-    },
- 
-    // release the next enemy from cache
-    release: function () {
- 
-        if (this.cache.children.length > 0) {
- 
-            var enemy = this.cache.children[0];
-            enemy.x = Math.floor(Math.random() * (this.game.world.width - 32));
-            enemy.y = -32;
- 
-            this.cache.remove(enemy, false);
- 
-            this.active.add(enemy);
- 
-        }
- 
-    },
- 
-    // tick the active group, where the real action happens
-    tick: function () {
- 
-        var game = round.game;
- 
-        this.active.forEach(function (enemy) {
- 
-            enemy.y += 1;
- 
-            if (enemy.y >= game.world.height) {
- 
-                round.playerHP -= 5;
+            // enemies die when clicked
+            enemy.events.onInputDown.add(function (enemy) {
  
                 enemy.destroy();
  
-            }
+            });
  
-        });
+            this.enemyCount += 1;
+            ei += 1;
+        }
+ 
+        wi += 1;
  
     }
  
 };
 ```
 
-### 3.2 - The Phaser game instance, and state object
+#### 3.1.3 - next wave, and release methods
+
+
+```js
+// add next wave to cache
+round.nextWave = function () {
+ 
+    if (this.waves.children.length > 0) {
+ 
+        var wave = this.waves.children[0],
+        enemy,
+        cache = this.cache,
+        i = wave.children.length;
+        while (i--) {
+            enemy = wave.children[i];
+            cache.add(enemy);
+        }
+ 
+        wave.destroy();
+ 
+    }
+ 
+};
+ 
+// release the next enemy from cache
+round.release = function () {
+ 
+    if (this.cache.children.length > 0) {
+ 
+        var enemy = this.cache.children[0];
+        enemy.x = Math.floor(Math.random() * (this.game.world.width - 32));
+        enemy.y = -32;
+        this.active.add(enemy);
+ 
+    }
+ 
+};
+```
+
+#### 3.1.4 - The round tick method
+
+```js
+// tick the active group, where the real action happens
+round.tick = function () {
+ 
+    var game = round.game;
+ 
+    this.active.forEach(function (enemy) {
+ 
+        enemy.y += 1;
+ 
+        if (enemy.y >= game.world.height) {
+ 
+            round.playerHP -= 5;
+ 
+            enemy.destroy();
+ 
+        }
+ 
+    });
+ 
+};
+```
+
+### 3.2 - The Phaser Game instance, and single state object
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -217,6 +213,12 @@ game.state.add('example-1', {
  
         var text2 = game.add.text(5, 15, '', font);
         text2.name = 'text2';
+ 
+        // 3 waves of 5
+        round.genWaves(3, 5);
+ 
+        // 1 wave of ten
+        round.genWaves(1, 10);
  
         // call next wave for first time, and every ten seconds
         round.nextWave.call(round);
