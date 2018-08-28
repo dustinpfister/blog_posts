@@ -1,12 +1,12 @@
 ---
-title: Fixing Sprites and older display objects to a camera in phaser
+title: Fixing Sprites and other display objects to a camera in phaser
 date: 2018-08-28 07:54:00
 tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 273
-updated: 2018-08-28 11:42:32
-version: 1.6
+updated: 2018-08-28 11:47:37
+version: 1.7
 ---
 
 Sow when making a game with [Phaser ce](https://photonstorm.github.io/phaser-ce/) that is the kind of game where the world is bigger than the native size of the canvas, there will be a need to pan around the world some way. When doing so there might be some display objects that I will want to have fixed to the camera. One way would be to just update the positions of these sprites, text object, and groups manualy in the update loop. However there is a way to have a group fixed to the camera, so when the camera moves all these other objects move with it relative to it's position. In this post I will be writing about doing just that with groups, and some corresponding properties.
