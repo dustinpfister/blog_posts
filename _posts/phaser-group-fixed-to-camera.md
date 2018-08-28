@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 273
-updated: 2018-08-28 11:36:23
-version: 1.5
+updated: 2018-08-28 11:42:32
+version: 1.6
 ---
 
 Sow when making a game with [Phaser ce](https://photonstorm.github.io/phaser-ce/) that is the kind of game where the world is bigger than the native size of the canvas, there will be a need to pan around the world some way. When doing so there might be some display objects that I will want to have fixed to the camera. One way would be to just update the positions of these sprites, text object, and groups manualy in the update loop. However there is a way to have a group fixed to the camera, so when the camera moves all these other objects move with it relative to it's position. In this post I will be writing about doing just that with groups, and some corresponding properties.
@@ -66,7 +66,9 @@ var addText = function (game, group, name, x, y) {
 
 In many projects I might have more than one instance of a text object, so it is nice to have something like this to help keep me from repeating code.
 
-### 2.3 - 
+### 2.3 - A simple helper to make a sprite sheet with canvas
+
+Again I made another helper that can be used to quickly make a one frame sprite sheet for a project like this.
 
 ```js
 // just make a simple box sheet
@@ -83,11 +85,13 @@ var mkBoxSheet = function (game, sheetKey) {
 };
 ```
 
-### 2.4 - 
+### 2.4 - The gen Boxes helper
+
+So this helper is called after I have a sheet to give it.
 
 ```js
 // gen boxes
-var genBoxes = function (game, count) {
+var genBoxes = function (game, sheetKey, count) {
 
     var bx = count || 100,
     x,
@@ -97,14 +101,16 @@ var genBoxes = function (game, count) {
         x = Math.random() * (game.world.width - 32);
         y = Math.random() * (game.world.height - 32);
 
-        game.add.sprite(x, y, 'sheet-box');
+        game.add.sprite(x, y, sheetKey);
 
     }
 
 };
 ```
 
-### 2.5 - 
+### 2.5 - The phaser game instance, and single state object
+
+So here is the source of the example in which I am creating an instance of Phaser.Game, and then making sure that the game world is larget than the native canvas size that I set when making the game instance.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -124,7 +130,7 @@ game.state.add('example', {
  
         // GENERATING SOME BOXES TO THE WORLD
         mkBoxSheet(game, 'sheet-box');
-        genBoxes(game,150);
+        genBoxes(game,'sheet-box',150);
  
         // SETTING SOME VALUES
         // that will be used in the update method
