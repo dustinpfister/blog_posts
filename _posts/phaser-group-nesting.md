@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 272
-updated: 2018-09-02 19:41:27
-version: 1.14
+updated: 2018-09-02 19:43:43
+version: 1.15
 ---
 
 For the past few days I have been experimenting with [Groups](https://photonstorm.github.io/phaser-ce/Phaser.Group.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/). Today I worked out some examples that have to do with nesting groups. In other words a group is also a kind of display object, just like that of a Sprite, so another group can be added to a group, along with other display objects. So in this post I will be covering some examples of nesting groups inside of groups, from simple hello world examples, to some that are starting to resemble a game.
@@ -171,6 +171,8 @@ round.release = function () {
 
 #### 3.1.4 - The round tick method
 
+Finally I will want to add in a method that will be called from the update method of the game state that will be called for each frame tick. Here I am just defining the logic that is to apply to each enemy that is in the active group.
+
 ```js
 // tick the active group, where the real action happens
 round.tick = function () {
@@ -193,6 +195,8 @@ round.tick = function () {
  
 };
 ```
+
+For this simple example the enemies are just moving from the top of the screen down to the bottom of the screen.
 
 ### 3.2 - The Phaser Game instance, and single state object
 
