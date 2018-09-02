@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 272
-updated: 2018-09-02 19:46:11
-version: 1.16
+updated: 2018-09-02 19:47:49
+version: 1.17
 ---
 
 For the past few days I have been experimenting with [Groups](https://photonstorm.github.io/phaser-ce/Phaser.Group.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/). Today I worked out some examples that have to do with nesting groups. In other words a group is also a kind of display object, just like that of a Sprite, so another group can be added to a group, along with other display objects. So in this post I will be covering some examples of nesting groups inside of groups, from simple hello world examples, to some that are starting to resemble a game.
@@ -199,6 +199,8 @@ round.tick = function () {
 For this simple example the enemies are just moving from the top of the screen down to the bottom of the screen. During this time the player can click on them to destroy theme, else if they reach the bottom the player looses hit points. Not much I know, but that is the basic mechanics of many defense strategy games.
 
 ### 3.2 - The Phaser Game instance, and single state object
+
+So now that I have my module I can use it in a phaser state object, and get this to start to resemble a game of sorts.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
