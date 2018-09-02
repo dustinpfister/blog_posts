@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 272
-updated: 2018-09-02 19:34:28
-version: 1.12
+updated: 2018-09-02 19:37:39
+version: 1.13
 ---
 
 For the past few days I have been experimenting with [Groups](https://photonstorm.github.io/phaser-ce/Phaser.Group.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/). Today I worked out some examples that have to do with nesting groups. In other words a group is also a kind of display object, just like that of a Sprite, so another group can be added to a group, along with other display objects. So in this post I will be covering some examples of nesting groups inside of groups, from simple hello world examples, to some that are starting to resemble a game.
@@ -85,7 +85,7 @@ When the setup method is called in the create methods groups will be created for
 
 #### 3.1.2 - The round.genWaves method for populating the nested groups of enemies
 
-This is the method that will add a new nested group to the waves group. This nested group will then hold a collection of enemies.
+This is the method that will add a new nested group to the waves group. This nested group will then hold a collection of enemies, and I can also set up any additional stuff that I want to do for each enemy here as well, such as enabling input.
 
 ```js
 // generate the waves
