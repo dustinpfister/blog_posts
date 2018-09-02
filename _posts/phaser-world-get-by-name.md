@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 270
-updated: 2018-08-27 19:34:21
-version: 1.2
+updated: 2018-09-02 10:31:17
+version: 1.3
 ---
 
 So when making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project I end up with a lot of sprites, and other display objects. As such there needs to be a way to obtain a reference to a single specific display object by some kind of id, or name. That is to grab at display objects in phaser in a similar fashion to that of id attributes when it comes to html elements with document.getElementById. After playing around with phaser for a while I came across just such a method called game.world.getByName. This post will be a quick overview of this method, as a way to grab references to display objects across the different methods of a state object in phaser, and why game.world.getByName is the document.getElementById of phaser ce.
@@ -14,6 +14,8 @@ So when making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project I
 <!-- more -->
 
 ## 1 - What to know before continuing
+
+This is a post on the world.getByName method in phaser ce, a javaScript powered html 5 game framework. This method along with name property is a way to get references to groups, and display objects in phaser. This is not a getting started post on phaser ce, let alone javaScript in general. If you are new to phaser ce do not get discouraged, this framework is a little involved and it can take time to learn all the little ins and outs including the world.getByName method.
 
 
 ## 2 - Example 1 - Using game.world.getByname to get a reference to a display object
