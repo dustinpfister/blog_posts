@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 272
-updated: 2018-08-28 13:02:17
-version: 1.10
+updated: 2018-09-02 19:31:56
+version: 1.11
 ---
 
 For the past few days I have been experimenting with [Groups](https://photonstorm.github.io/phaser-ce/Phaser.Group.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/). Today I worked out some examples that have to do with nesting groups. In other words a group is also a kind of display object, just like that of a Sprite, so another group can be added to a group, along with other display objects. So in this post I will be covering some examples of nesting groups inside of groups, from simple hello world examples, to some that are starting to resemble a game.
@@ -19,6 +19,8 @@ This is a post on nesting groups in phaser ce, the community edition of the [pha
 
 ## 2 - A basic example of a nested group in phaser ce
 
+The basic idea here is that I just add another group to a group with the Group.add method.
+
 ```js
 var parent = game.add.group();
 parent.name = 'parent';
@@ -29,6 +31,8 @@ nested.name = 'nested';
  
 console.log(parent.children[0].name); // nested
 ```
+
+In a nut shell thats all there is to it.
 
 ## 3 - Waves of enemies
 
