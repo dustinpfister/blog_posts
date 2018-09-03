@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 274
-updated: 2018-09-03 09:30:37
-version: 1.9
+updated: 2018-09-03 09:33:33
+version: 1.10
 ---
 
 In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be covering some examples of making a collection of sprites using Group.create. There is also Group.add that can be used to add sprites, as well as many display objects as well, however in this post the emphasis will be just on sprites.
@@ -47,6 +47,8 @@ This will get the job done, for this example. In addition I can add to it to mak
 ### 2.2 - The create blocks method
 
 So here is the method where I will be creating the sprites with Group.create. In This method I also made the beginnings of a Block class the instances of which will end up being the data object for each sprite created with Group.create. In this method I just have the Class in the body of the method itself, but if this project where to group more complex the class would of course be placed elsewhere.
+
+This method will not make the group itself, but will accept a group as the old argument that is given to it.
 
 ```js
 // create blocks
