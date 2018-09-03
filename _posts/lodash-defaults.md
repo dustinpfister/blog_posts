@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2018-09-03 11:18:45
-version: 1.3
+updated: 2018-09-03 11:27:05
+version: 1.4
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need ro pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional. In any case There might be a need to set some default values for these properties. In [lodash](https://lodash.com/) there is a quick convenience method that can be used to handle this process which is of couse the [\_.defaults](https://lodash.com/docs/4.17.10#defaults) object method in lodash. In this post I will be showing some quick use case examples of \_.defaults, as well as some vanilla js alternatives.
@@ -18,9 +18,11 @@ So when it comes to making helper methods, or constructor objects that are a lit
 This is a post on the \_.defaults method in lodash that can be used to set default values to an object if there is no properties there. This method is then a solution for dealing with options objects when making constructors, of helper methods that accept an object as an argument that contain many properties, and I want a way to fill in the blanks with many of those properties when using the constructor, helper or method in general. This is not a getting started post on lodash, or javaScript in general, and I assume that you have at least some background on these subjects.
 
 
-### 2 - Using \_.defaults when making a constructor
+## 2 - Using \_.defaults when making a constructor
 
 So one use case example is when making a constructor function, and I want to have an options object that can be passed to the method. This options object contains properties that are to be set as the initial state of an instance of the constructor when used with the new keyword. The \_.defaults method can be used along with \_.merge to make quick work of this.
+
+### 2.1 - A constructor example using \_.defaults
 
 ```js
 let Box = function (opt) {
@@ -37,6 +39,30 @@ let Box = function (opt) {
  
     // merge in opt
     _.merge(this, opt);
+ 
+};
+ 
+// works as expected
+let bx = new Box();
+console.log(bx.width); // 32;
+ 
+let bx2 = new Box({width:64,x:37});
+console.log(bx2.width); // 64
+console.log(bx2.x); // 37
+console.log(bx2.y); // 0
+```
+
+### 2.2 - A vanilla js constructor example using ternary operators
+
+```js
+let Box = function (opt) {
+ 
+    opt = opt || {};
+ 
+    this.width = opt.width === undefined ? 32 : opt.width;
+    this.height = opt.height === undefined ? 32 : opt.height;
+    this.x = opt.x === undefined ? 0 : opt.x;
+    this.y = opt.y === undefined ? 0 : opt.y;
  
 };
  
