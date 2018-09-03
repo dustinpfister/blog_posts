@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 274
-updated: 2018-09-03 09:01:27
-version: 1.6
+updated: 2018-09-03 09:05:23
+version: 1.7
 ---
 
 In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be covering some examples of making a collection of sprites using Group.create. There is also Group.add that can be used to add sprites, as well as many display objects as well, however in this post the emphasis will be just on sprites.
@@ -17,7 +17,9 @@ In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be 
 
 If you want to read about how to create a group of sprites using phaser ce, the javaScript powered game frame work, this post is for you. If you are new to phaser you might want to start with a getting started post on phaser ce. Also in this post I am using phaser ce version 2.11.0.
 
-## 2 - Example of many Sprites in a group
+## 2 - Example of many Sprites in a group, moving around in the group, that is also moving.
+
+So In this example I will be making a group using the phaser.Group constructor, and then add a bunch of sprites to the group using the Group.create method. I will also be creating a very basic sprite sheet using canvas, which is a great way for making basic sprite sheets for simple examples like this.
 
 ### 2.1 - Making a simple block sprite sheet
 
