@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 274
-updated: 2018-09-02 20:00:01
-version: 1.4
+updated: 2018-09-02 20:00:41
+version: 1.5
 ---
 
 In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be covering some examples of making a collection of sprites using Group.create. There is also Group.add that can be used to add sprites, as well as many display objects as well, however in this post the emphasis will be just on sprites.
@@ -108,37 +108,37 @@ var createBlocks = function (group) {
 ```js
 // make a block Group for the given game
 var makeBlockGroup = function (game) {
-
+ 
     var group = game.add.group();
     group.name = 'block-group';
     group.width = 128;
     group.height = 128;
-
+ 
     createBlocks(group);
-
+ 
     group.data = {
-
+ 
         group: group,
         frame: 0,
         maxFrame: 200,
         tick: function () {
-
+ 
             var per = this.frame / this.maxFrame,
             bias = Math.abs(0.5 - per) / 0.5;
-
+ 
             this.group.x = (game.world.width - 64) * bias;
-
+ 
             this.frame += 1;
             this.frame %= this.maxFrame;
-
+ 
         }
-
+ 
     };
     group.x = 0;
     group.y = game.world.height / 2 - 32;
-
+ 
     return group;
-
+ 
 };
 ```
 
@@ -147,35 +147,35 @@ var makeBlockGroup = function (game) {
 ```js
 // the game instance, and state object
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
-
+ 
 game.state.add('example', {
-
+ 
     create: function () {
-
+ 
         game.scale.compatibility.scrollTo = false;
-
+ 
         makeBasicBlockSheet(this.game);
-
+ 
         makeBlockGroup(this.game);
-
+ 
     },
-
+ 
     update: function () {
-
+ 
         var blocks = game.world.getByName('block-group');
-
+ 
         // update children
         blocks.forEach(function (block) {
             block.data.tick();
         });
-
+ 
         // update group position
         //blocks.x += 1;
         blocks.data.tick();
-
+ 
     }
-
+ 
 });
-
+ 
 game.state.start('example');
 ```
