@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 259
-updated: 2018-09-03 14:38:56
-version: 1.22
+updated: 2018-09-03 14:41:29
+version: 1.23
 ---
 
 This post is on [buttons](https://photonstorm.github.io/phaser-ce/Phaser.Button.html) in [phaser](http://phaser.io) that javaScript powered game framework for making web based games. In phaser there is a special type of display object called a button, that is very mush like a sprite in many ways, but is geared towards the role of a button. Sprite sheets are handled a little differently, there is not just one frame index, but four indexes to set one for each button state (hover,out,down, and up). Input is enabled be default, and there are also a call back, and a context to set for it. In this post I will be covering buttons, and will also be putting together a basic clicker type game. These buttons are a great way to quickly implement a button compared to using just a plain old sprite, so lets take a look at buttons in phaser.
@@ -134,7 +134,7 @@ This state will create a sheet that will make four frames for each button state,
 
 ### 2.3 - The game state
 
-Here is the actual game state that will house the logic for the actual game itself.
+Here is the actual game state that will house the logic for the actual game itself. In this state I define callbacks for each button that define what to do for the doTask, and upgrade actions.
 
 ```js
 // game state
@@ -190,3 +190,5 @@ game.state.add('game', {
  
 });
 ```
+
+This all results in a very basic clicker game. Not much to write home about, but there are actually many very successful games that are not that much more complex than this actually.
