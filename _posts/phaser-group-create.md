@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 274
-updated: 2018-09-03 09:52:36
-version: 1.11
+updated: 2018-09-03 10:01:43
+version: 1.12
 ---
 
 In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be covering some examples of making a collection of sprites using Group.create. There is also Group.add that can be used to add sprites, as well as many display objects as well, however in this post the emphasis will be just on sprites.
@@ -163,6 +163,8 @@ This wil result in a group that has everything I need to make the group do what 
 
 ### 2.4 - The phaser Game object instance, and single state object
 
+So now it is time to get all of this working with a Phaser.Game instance, and a single state object. In the create method of the state object I call my helper that makes the block sheet, and then the helper that makes the block group. Then in the update method I can grab a reference to the group with the name that I assigned to it, and use the Group.forEach method to call the tick Block class method that I have made for each sprite in the group. I also Call the main tick method for the group itself as well.
+
 ```js
 // the game instance, and state object
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -198,3 +200,5 @@ game.state.add('example', {
  
 game.state.start('example');
 ```
+
+This results in a bunch of sprites moving around randomly inside the dimensions of the group, and the group itself moving from side to side. For this simple example that is not all that interesting, but a greater potential for this exists where this can be a kind of unit where it is actually a collection of smaller units. There are many games that come to mind where A mechanic like this exists.
