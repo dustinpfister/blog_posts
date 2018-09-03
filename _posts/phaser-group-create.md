@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 274
-updated: 2018-09-03 09:05:23
-version: 1.7
+updated: 2018-09-03 09:16:06
+version: 1.8
 ---
 
 In this post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be covering some examples of making a collection of sprites using Group.create. There is also Group.add that can be used to add sprites, as well as many display objects as well, however in this post the emphasis will be just on sprites.
@@ -22,6 +22,8 @@ If you want to read about how to create a group of sprites using phaser ce, the 
 So In this example I will be making a group using the phaser.Group constructor, and then add a bunch of sprites to the group using the Group.create method. I will also be creating a very basic sprite sheet using canvas, which is a great way for making basic sprite sheets for simple examples like this.
 
 ### 2.1 - Making a simple block sprite sheet
+
+So in order to make a bunch of sprites I will want to have a sprite sheet. In a real project, rather than a simple quick demo, I might want to load external assets, however for this post I will be using a method that involves canvas. This method when called will just make a simple single frame sheet of a red box, that will have a single key set by way of a string literal.
 
 ```js
 
@@ -39,6 +41,8 @@ var makeBasicBlockSheet = function (game) {
 
 };
 ```
+
+This will get the job done, for this example. In addition I can add to it to make it more robust if I choose to make a more interesting example for this. Which I might at some point of this post gets some traction.
 
 ### 2.2 - The create blocks method
 
