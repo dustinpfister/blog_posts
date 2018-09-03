@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2018-09-03 11:27:05
-version: 1.4
+updated: 2018-09-03 11:29:19
+version: 1.5
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need ro pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional. In any case There might be a need to set some default values for these properties. In [lodash](https://lodash.com/) there is a quick convenience method that can be used to handle this process which is of couse the [\_.defaults](https://lodash.com/docs/4.17.10#defaults) object method in lodash. In this post I will be showing some quick use case examples of \_.defaults, as well as some vanilla js alternatives.
@@ -52,7 +52,11 @@ console.log(bx2.x); // 37
 console.log(bx2.y); // 0
 ```
 
+This approach works fine as long as all properties given in the options object can be set to the instance of the Constructor, else I might want this options object to be a separate argument, or have other properties that are just used once during construction handled in another object.
+
 ### 2.2 - A vanilla js constructor example using ternary operators
+
+The same constructor could be made without lodash using ternary operators.
 
 ```js
 let Box = function (opt) {
@@ -76,4 +80,6 @@ console.log(bx2.x); // 37
 console.log(bx2.y); // 0
 ```
 
-This approach works fine as long as all properties given in the options object can be set to the instance of the Constructor, else I might want this options object to be a separate argument, or have other properties that are just used once during construction handled in another object.
+This might work fine if I just have a few properties like in this example, but if the constructor gets a little complex, it is nice to have a better solution for handing this.
+
+
