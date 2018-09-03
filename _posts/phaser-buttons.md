@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 259
-updated: 2018-09-03 14:25:12
-version: 1.19
+updated: 2018-09-03 14:30:32
+version: 1.20
 ---
 
 This post is on [buttons](https://photonstorm.github.io/phaser-ce/Phaser.Button.html) in [phaser](http://phaser.io) that javaScript powered game framework for making web based games. In phaser there is a special type of display object called a button, that is very mush like a sprite in many ways, but is geared towards the role of a button. Sprite sheets are handled a little differently, there is not just one frame index, but four indexes to set one for each button state (hover,out,down, and up). Input is enabled be default, and there are also a call back, and a context to set for it. In this post I will be covering buttons, and will also be putting together a basic clicker type game. These buttons are a great way to quickly implement a button compared to using just a plain old sprite, so lets take a look at buttons in phaser.
@@ -65,7 +65,7 @@ Not much to write about with this state when it comes to buttons thought, so let
 
 ## 2.2 - the button sheet state
 
-This is the state where I will be creating a sprite sheet for the buttons.
+This is the state where I will be creating a sprite sheet for the buttons. In this example I am making a sprite sheet by way of the 2d canvas drawing api, rather than an external sprite sheet that I load into the project during a load state. This kind of approach works just fine for simple projects like this but might not be the best choice for all projects. If you want to read more about making sprite sheets this way I wrote a [post on making sprite sheets with canvas in phaser ce](/2018/08/04/phaser-sprite-from-canvas/) a while back.
 
 ```js
 // button-sheet state
