@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 276
-updated: 2018-09-04 18:42:44
-version: 1.4
+updated: 2018-09-04 18:49:25
+version: 1.5
 ---
 
 When making a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there might comes a time that for one reason of another I will want to have the game run in a frame by frame basis. For the sake of some kind of turn based game, or I need to hunt down a hard to find bug, there comes a time that I need to do this now and then. In phaser ce there is the game.enableStep method along with game.step, that can be used to enable frame by frame stepping in phaser ce. In this post I will be writing about a quick demo I put together to help show how easy this is.
@@ -53,6 +53,8 @@ var makeCircleSheet = function (game) {
 ```
 
 ### 2.2 - Making the circle group
+
+This helper will add a new group, and create a bunch of sprites using the sheet that will be made with my makeCircleSheet helper above.
 
 ```js
 // make a group of circles
