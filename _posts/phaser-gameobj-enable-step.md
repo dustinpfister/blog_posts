@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 276
-updated: 2018-09-04 18:57:58
-version: 1.7
+updated: 2018-09-04 19:01:36
+version: 1.8
 ---
 
 When making a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there might comes a time that for one reason of another I will want to have the game run in a frame by frame basis. For the sake of some kind of turn based game, or I need to hunt down a hard to find bug, there comes a time that I need to do this now and then. In phaser ce there is the game.enableStep method along with game.step, that can be used to enable frame by frame stepping in phaser ce. In this post I will be writing about a quick demo I put together to help show how easy this is.
@@ -128,7 +128,7 @@ var tickCircleGroup = function (circles) {
 
 ### 2.4 - The Phaser.Game instance, along with the boot, and demo states
 
-Now to put everything together with the Phaser.Game instance, and a few state objects. In the boot state I call my makeCircleSheet helper, and enable frame by frame steeping by calling game.enableStep.
+Now to put everything together with the Phaser.Game instance, and a few state objects. In the boot state I call my makeCircleSheet helper, and enable frame by frame steeping by calling game.enableStep. Once I have my sheet to work with, and have called game.enableStep, I then start my demo state. The reason why I call game.enableStep in the boot state is that the update method ends by being called twice for the first time rather than juts once.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
