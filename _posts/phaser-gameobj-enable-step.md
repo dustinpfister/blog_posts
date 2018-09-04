@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 276
-updated: 2018-09-04 15:28:21
-version: 1.1
+updated: 2018-09-04 15:32:21
+version: 1.2
 ---
 
 When making a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there might comes a time that for one reason of another I will want to have the game run in a frame by frame basis. For the sake of some kind of turn based game, or I need to hunt down a hard to find bug, there comes a time that I need to do this now and then. In phaser ce there is the game.enableStep method along with game.step, that can be used to enable frame by frame stepping in phaser ce. In this post I will be writing about a quick demo I put together to help show how easy this is.
@@ -14,6 +14,8 @@ When making a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) a
 <!-- more -->
 
 ## 1 - What to know
+
+This is a post on using the game.enableStep method in phaser ce to enable frame by frame stepping in a game made with the framework. Phaser ce is the community edition of the popular phaser javaScript powered game framework, so in this post I am using that rather than phaser 3. In this post I am also making use of many other aspects of the framework, as well as with javaScript in general. This is not a getting started post on phaser, or any additional skills that you should have before hand. However if you do want to know how to do frame by frame stepping in phaser ce you have come to the right place.
 
 
 ## 2 - A full example of game.enableStep
