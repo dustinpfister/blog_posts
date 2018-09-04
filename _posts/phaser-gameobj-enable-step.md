@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 276
-updated: 2018-09-04 19:01:36
-version: 1.8
+updated: 2018-09-04 19:11:25
+version: 1.9
 ---
 
 When making a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there might comes a time that for one reason of another I will want to have the game run in a frame by frame basis. For the sake of some kind of turn based game, or I need to hunt down a hard to find bug, there comes a time that I need to do this now and then. In phaser ce there is the game.enableStep method along with game.step, that can be used to enable frame by frame stepping in phaser ce. In this post I will be writing about a quick demo I put together to help show how easy this is.
@@ -183,3 +183,5 @@ game.state.add('demo', {
 // start with the boot state
 game.state.start('boot');
 ```
+
+In my demo state I set up an onDown event that calls game.step each time I click or touch the canvas. The game.step method is what needs to be called one way or another to advanced the game to the next frame tick. I then call the tickCircleGroup method To update the state of the group of circles. 
