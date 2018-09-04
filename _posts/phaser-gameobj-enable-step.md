@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 276
-updated: 2018-09-04 15:37:49
-version: 1.3
+updated: 2018-09-04 18:42:44
+version: 1.4
 ---
 
 When making a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there might comes a time that for one reason of another I will want to have the game run in a frame by frame basis. For the sake of some kind of turn based game, or I need to hunt down a hard to find bug, there comes a time that I need to do this now and then. In phaser ce there is the game.enableStep method along with game.step, that can be used to enable frame by frame stepping in phaser ce. In this post I will be writing about a quick demo I put together to help show how easy this is.
@@ -23,7 +23,9 @@ For a full working phaser example that demonstrates the use of game.enableStep, 
 
 In a real project I might have a complex game consisting of many modules, and lines of code, and I want to hunt down a bug. However for just demonstrating the effect of game.enableStep this should do.
 
-### 2.1 - making a quick sprite sheet with canvas
+### 2.1 - Making a quick sprite sheet with canvas
+
+So for this example I will want a way to quickly make a simple sprite sheet that has two frames, one for an inactive state for the circle, and another for an active state when the circle is the current index in a group.
 
 ```js
 // make a basic sprite sheet
