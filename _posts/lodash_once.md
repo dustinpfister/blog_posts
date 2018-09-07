@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 105
-updated: 2017-12-04 10:00:05
-version: 1.2
+updated: 2018-09-07 09:48:24
+version: 1.3
 ---
 
 Part of my debugging process involves placing a console.log in my code at some point to log out to the console the status of some value. Often it might be placed in the body of some code that ends up getting called often, and as such it will get logged to the console a whole bunch of times real fast. This is where using something like [\_.once](https://lodash.com/docs/4.17.4#once) in [lodash](https://lodash.com/) can be helpful when working on a project that uses lodash as part of it's codebase.
@@ -31,7 +31,7 @@ Part of my debugging process involves placing a console.log in my code at some p
 
 ## How \_.once works
 
-If you have some experience with [concept of closures](https://en.wikipedia.org/wiki/Closure_(computer_programming)), and guessed that is how \_.once works then you would be right.
+If you have some experience with <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">concept of closures</a>, and guessed that is how \_.once works then you would be right.
 
 I often like to study the source code of very popular javaScript projects in oder to have at least some understanding as to how it works, as such the source code of \_.once in v4.17.4 of lodash looks like this:
 
