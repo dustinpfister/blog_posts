@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 277
-updated: 2018-09-08 17:53:14
-version: 1.3
+updated: 2018-09-08 17:57:30
+version: 1.4
 ---
 
 So when making a game with [Phaser ce](https://photonstorm.github.io/phaser-ce/) one of the many subjects that come up is how to handle pausing the game. There are many ways to do this such as having an array of update methods, and have it so that there is a string value that will result in a different update method that will not update or change the game state in any way. However there is also of course a phaser ce built in way to pause the game as well, it is just a simple boolean value in the game object instance. There is also the pause method of a state object that can be used to define some logic that will be called once this boolean is set true by whatever means. In any case this post will be an overview of what to know about when it comes to making a pause feature in a phaser ce project.
@@ -24,6 +24,7 @@ So I could just say that game.pause is what one would use to pause, and unpause 
 
 ### 2.1 - A create sheet helper
 
+So The animation for this example will just be a bunch of block sprites moving around in a circle. Not much of anything to get excited over, but will serve the point of this post just fine. So I will need a helper that can be used to make a simple sprite sheet that will be used for the blocks.
 
 ```js
 var createSheet = function () {
@@ -45,7 +46,11 @@ var createSheet = function () {
 };
 ```
 
+This is a nice way to just quickly make a sprite sheet using canvas. For simple examples like this where I am just showcasing how to get started with game.pause as a way to pause a game in phaser ce and that is it, a solution like this is fine.
+
 ### 2.2 - create sprites helper
+
+So when I have my sprite sheet I will want a way to create a bunch of sprites.
 
 ```js
 var createSprites = function () {
