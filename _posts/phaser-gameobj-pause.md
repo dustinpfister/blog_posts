@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 277
-updated: 2018-09-08 18:10:57
-version: 1.7
+updated: 2018-09-10 12:21:50
+version: 1.8
 ---
 
 So when making a game with [Phaser ce](https://photonstorm.github.io/phaser-ce/) one of the many subjects that come up is how to handle pausing the game. There are many ways to do this such as having an array of update methods, and have it so that there is a string value that will result in a different update method that will not update or change the game state in any way. However there is also of course a phaser ce built in way to pause the game as well, it is just a simple boolean value in the game object instance. There is also the pause method of a state object that can be used to define some logic that will be called once this boolean is set true by whatever means. In any case this post will be an overview of what to know about when it comes to making a pause feature in a phaser ce project.
@@ -129,6 +129,8 @@ game.state.add('boot', {
 ```
 
 ### 2.5 - The demo state
+
+In the the create method of the demo state I add an event that that will toggle the game.paused boolean.
 
 ```js
 game.state.add('demo', {
