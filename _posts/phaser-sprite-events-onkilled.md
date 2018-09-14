@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 13:27:40
-version: 1.7
+updated: 2018-09-14 16:49:11
+version: 1.8
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -29,7 +29,9 @@ For this posts full working example I made a simple little project that involves
 
 So in this example I have an enemies.js file that contains many methods that help with the creating of a group of enemies, that is then used in my main.js file where I create an instance of Phaser.Game, and add some states to it. In this file I make a javaScript object literal, and append a few methods to it including a method that makes use of sprite.events.onKilled.
 
-#### 2.1.1 - Staring off the file, and Enemy.setup
+#### 2.1.1 - Staring off the Enemy module, and Enemy.setup
+
+For this module I went with just the Object literal module pattern, which works fine for this example as it is okay that everything is public. I then start off with a setup method that I will call in a boot state when making the phaser game instance later.
 
 ```js
 var Enemy = {};
@@ -47,6 +49,8 @@ Enemy.setup = function () {
  
 };
 ```
+
+When I do call the setup method it will create an append a data object to the game instance when I call it with [Function.call](/2017/09/21/js-call-apply-and-bind/). Just appending a data object to the Phaser.Game instance is a common way to set some game wide variables.
 
 #### 2.1.2 - The Enemy.onKill handler
 
