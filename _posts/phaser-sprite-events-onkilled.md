@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 13:06:03
-version: 1.2
+updated: 2018-09-14 13:09:35
+version: 1.3
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the onKilled event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -193,4 +193,64 @@ Enemy.update = function () {
     });
  
 };
+```
+
+### 2.2 - The Phaser.Game instance, and states
+
+
+#### 2.2.1 - The Phaser.Game instance, and boot state
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('boot', {
+ 
+    create: function () {
+ 
+        // setup game data object
+        Enemy.setup.call(this);
+ 
+        Enemy.mkSheet(this.game);
+ 
+        Enemy.createEnemyPool.call(this);
+ 
+        // start demo, and do not clear the world
+        game.state.start('demo', false, false);
+ 
+    }
+ 
+});
+```
+
+#### 2.2.2 - The demo state
+
+```js
+game.state.add('demo', {
+ 
+    create: function () {
+ 
+        // call Enemy.spawn every second
+        game.time.events.loop(1000, Enemy.spawn, this);
+ 
+        // text display object to show score
+        var text = game.add.text(5, 5, '', {
+                fill: 'white'
+            });
+        text.name = 'disp-score';
+ 
+    },
+ 
+    update: function () {
+ 
+        var data = this.game.data;
+ 
+        Enemy.update.call(this);
+ 
+        game.world.getByName('disp-score').text = 'score: ' + data.score;
+ 
+    }
+ 
+});
+ 
+game.state.start('boot');
 ```
