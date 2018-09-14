@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 16:53:02
-version: 1.10
+updated: 2018-09-14 16:57:40
+version: 1.11
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -96,6 +96,8 @@ Enemy.onInputDown = function (enemy) {
 
 #### 2.1.4 - Generate Sprite Data objects
 
+So this method will create a new data object for a sprite. The sprite.data object is an official phaser ce way of setting some values and methods for a sprite that are specific to the nature of the game itself that I am making. The sprite.data object is not used my phaser itself internally, so it is safe to do whatever seems right with it.
+
 ```js
 // generate a data object for a sprite
 Enemy.genSpriteData = function () {
@@ -108,6 +110,8 @@ Enemy.genSpriteData = function () {
  
 };
 ```
+
+In this example I will just be setting some delta values, and a hit point value.
 
 #### 2.1.5 - Make a sprite sheet with canvas
 
