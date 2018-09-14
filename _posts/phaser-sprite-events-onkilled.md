@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 17:03:36
-version: 1.13
+updated: 2018-09-14 17:13:17
+version: 1.14
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -142,6 +142,8 @@ Enemy.mkSheet = function (game) {
 
 #### 2.1.6 - Create a pool of enemies
 
+So because this is an example of sprite.events.onKilled, I will be working with a pool of sprites. This is because of the differences between the sprite.kill, and the sprite.destroy methods. The sprite.kill method will set a bunch of properties of a sprite to a status that is that considered dead. The sprite can then later be reused by using a method like group.getFirstDead, or sprite.revive. This is very different from the sprite.destroy method that will completely remove the sprite from phaser all together.
+
 ```js
 // create a group of enemies
 Enemy.createEnemyPool = function () {
@@ -173,6 +175,8 @@ Enemy.createEnemyPool = function () {
  
 };
 ```
+
+So I am calling sprite.kill right after making the sprite to start it off in a dead state. I then have another method Enemy.spawn that will revice these at a set rate.
 
 #### 2.1.7 - The spawn method
 
