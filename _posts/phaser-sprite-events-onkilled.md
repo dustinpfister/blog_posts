@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 17:22:35
-version: 1.16
+updated: 2018-09-14 17:26:02
+version: 1.17
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -230,6 +230,7 @@ For this method I am using group.forEach to loop over all sprites an stepping th
 
 ### 2.2 - The Phaser.Game instance, and states
 
+So now to tie everything to together with a Phaser.Game instance an a few state objects. For this example I just have a boot state, and a demo state, I guess I could just have everything in a single state, but I like to start off with this even for simple examples like this one. In a real game there will end up being a lot of state objects, this helps to break things down, making them more fine grain. Fine grain code is often easier to read, and debug.
 
 #### 2.2.1 - The Phaser.Game instance, and boot state
 
