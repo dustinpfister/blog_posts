@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 13:13:57
-version: 1.4
+updated: 2018-09-14 13:20:41
+version: 1.5
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the onKilled event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -23,7 +23,7 @@ In this post I am using phaser ce 2.11.0, not the newer phaser 3.x major release
 
 ## 2 - A full example using sprite.events.onKilled
 
-For this posts full working example I made a simple little project that involves a pool of sprites that spawn from the upper left corner of the screen, and then move across the screen, [wrapping around within the screen](/2018/07/22/phaser-math-wrap-and-clamp/) when going out of bounds.
+For this posts full working example I made a simple little project that involves a pool of sprites that spawn from the upper left corner of the screen, and then move across the screen, [wrapping around within the screen](/2018/07/22/phaser-math-wrap-and-clamp/) when going out of bounds. When a sprite is clicked it looses hp, and will be killed when hp reaches zero. At which point the sprite.events.onKilled event will fire, in this example I have some logic that determines how many points the player should get when killing the enemy.
 
 ### 2.1 - My enemies.js file
 
