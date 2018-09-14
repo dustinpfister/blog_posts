@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 17:26:02
-version: 1.17
+updated: 2018-09-14 17:31:09
+version: 1.18
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -234,6 +234,8 @@ So now to tie everything to together with a Phaser.Game instance an a few state 
 
 #### 2.2.1 - The Phaser.Game instance, and boot state
 
+So like always I create a new instance of Phaser.game, setting a mobile friendly resolution of 32- by 240. I just about always set the renderer to Phaser.AUTO, and often have a div in my html with an id attribute of 'gamearea'.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -255,6 +257,8 @@ game.state.add('boot', {
  
 });
 ```
+
+In my boot state I set up the game.data object with the Enemy.setup method, create the sprite sheet with Enemy.mkSheet, and set up the sprite pool with Enemy.createEnemyPool. Once way or another I need to share the instance of Phaser.Game with these methods, by passing them as an argument, or using Function.call to set the value of the this keyword.
 
 #### 2.2.2 - The demo state
 
