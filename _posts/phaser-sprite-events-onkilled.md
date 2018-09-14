@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 16:49:11
-version: 1.8
+updated: 2018-09-14 16:51:18
+version: 1.9
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -54,6 +54,8 @@ When I do call the setup method it will create an append a data object to the ga
 
 #### 2.1.2 - The Enemy.onKill handler
 
+Here is the handler that I will use with the sprite.events.onKill method.
+
 ```js
 // The onKill method that will be called each time an enemy is killed
 Enemy.onKill = function (sprite) {
@@ -68,6 +70,8 @@ Enemy.onKill = function (sprite) {
  
 };
 ```
+
+So in this example each time an enemy is killed a points value will be figured out, and appended to the score property of my game.data object.
 
 #### 2.1.3 - The Enemy.onInputDown handler
 
