@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 13:25:25
-version: 1.6
+updated: 2018-09-14 13:27:40
+version: 1.7
 ---
 
-When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the onKilled event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
+When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
 
 <!-- more -->
 
@@ -19,7 +19,7 @@ In this post I am writing about the onKilled event that is fired when a sprite i
 
 ### 1.1 - This is a phaser ce 2.x post
 
-In this post I am using phaser ce 2.11.0, not the newer phaser 3.x major release.
+In this post I am using [Phaser ce](https://photonstorm.github.io/phaser-ce/) 2.11.0, not the newer phaser 3.x major release of [phaser](https://phaser.io/).
 
 ## 2 - A full example using sprite.events.onKilled
 
