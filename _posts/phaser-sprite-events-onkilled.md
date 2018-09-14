@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 17:18:46
-version: 1.15
+updated: 2018-09-14 17:22:35
+version: 1.16
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -204,6 +204,8 @@ Here I am using the group.getFirstDead method to get and revive the first dead s
 
 #### 2.1.8 - An update method for the enemies
 
+So when I make a module like this I often have an update method as well that will be called each time there is a frame tick in the main game state when making my state objects of the instance of Phaser.Game
+
 ```js
 // What needs to happen for each frame tick
 Enemy.update = function () {
@@ -222,6 +224,9 @@ Enemy.update = function () {
  
 };
 ```
+
+For this method I am using group.forEach to loop over all sprites an stepping there position with the current deltas in the sprite.data object.
+
 
 ### 2.2 - The Phaser.Game instance, and states
 
