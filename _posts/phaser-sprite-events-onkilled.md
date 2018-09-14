@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 278
-updated: 2018-09-14 17:13:17
-version: 1.14
+updated: 2018-09-14 17:18:46
+version: 1.15
 ---
 
 When making a [Phaser ce](https://photonstorm.github.io/phaser-ce/) powered javaScript game project there are of course sprites, and when working with sprites there are useful events. In this post the focus will be on the [sprite.events.onKilled](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onKilled) event in phaser ce. This is a signal that will fire when the sprite.kill method is called, which is very different from sprite.destroy. The kill method is what I would call if I want to set certain values to what would be appropriate if the sprite has been killed, but I do not want to actually destroy the sprite completely. So in this post I will be coving some use case examples for this method.
@@ -176,9 +176,11 @@ Enemy.createEnemyPool = function () {
 };
 ```
 
-So I am calling sprite.kill right after making the sprite to start it off in a dead state. I then have another method Enemy.spawn that will revice these at a set rate.
+So I am calling sprite.kill right after making the sprite to start it off in a dead state. I then have another method Enemy.spawn that will revive these at a set rate.
 
 #### 2.1.7 - The spawn method
+
+So here is my spawn method that will be called every second or so in the main state that will run this example.
 
 ```js
 // re-spawn a dead enemy
@@ -197,6 +199,8 @@ Enemy.spawn = function (a) {
  
 };
 ```
+
+Here I am using the group.getFirstDead method to get and revive the first dead sprite in the pool or group of sprites. In the event that they are all alive this method will return null, so i test if it is not before setting a new sprite.data object to it with the genSpriteData helper I made earlier.
 
 #### 2.1.8 - An update method for the enemies
 
