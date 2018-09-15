@@ -5,21 +5,21 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2018-09-15 08:59:40
-version: 1.5
+updated: 2018-09-15 09:06:05
+version: 1.6
 ---
 
 The [Face3 constructor](https://threejs.org/docs/#api/core/Face3) in [three.js](https://threejs.org/) is used to define a Face when [making a custom geometry](/2018/04/14/threejs-geometry/). When using any kind of built in geometry, instances of Face3 are created automatically, but whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3.
 
 <!-- more -->
 
-## What to know before you continue reading
+## 1 - What to know before you continue reading
 
 This is an advanced post on three.js which is a javaScript library that is used to work with things in 3d space. If you are new to three.js you might want to start with my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first. As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern, in this post I am using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91/build).
 
 Face3 is just one of several constructors of interest when making a custom geometry. Other constructors of interest are [Vector3](/2018/04/15/threejs-vector3/), and of course [Geometry](/2018/04/14/threejs-geometry/).
 
-## Basic Example of Face3
+## 2 - Basic Example of Face3
 
 For a basic demo of face3 I put together an example where I am just making a single triangle from an array of just three vertices. The [Geometry constructor](/2018/04/14/threejs-geometry/) is used to create an instance of geometry, once I have that I will want to populate the instance of geometry with vertices by adding an array of [Vector3](/2018/04/15/threejs-vector3/) instances. Vector3 of course is another constructor that is used in three.js to create a point in space.
 
@@ -85,7 +85,7 @@ So for now I have something like this:
     ());
 ```
 
-## The order of indexes
+## 3 - The order of indexes with face3
 
 To some extent when making faces I am just playing connect the dots with vertices, but it is not always just that simple, as the order of index values does matter. When creating a mesh with the geometry, I also give a material. When it comes to materials there is the side property of a material which is used to set which side of a face3 instance that is to be rendered with the material. This property expects an integer value the default of which is stored in the [constant THREE.FrontSide](https://threejs.org/docs/#api/constants/Materials) which as of this writing is a value of zero.
 
@@ -93,12 +93,18 @@ What I am driving at here is that the order of the indexes is what is used to fi
 
 There are two ways of fixing this one is to just make it so both sides are always rendered no matter what by setting the side value of your material to THREE.DoubleSide. This will make it so that both sides of the face are always rendered with the material, but the best way of fixing this would be to just get the index order right.
 
+### 3.1 - Setting Three.DoubleSide for the side property of the material
+
 ```js
 var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
     side: THREE.DoubleSide
 }));
 scene.add(mesh);
 ```
+
+This is also just a useful property to be aware of for use with certain Models anyway, for example if I have a plain and I want a material rendered on both sides.
+
+### 3.2 - Just getting the vertex index order right for the Face3 instances
 
 The other way is to just get the index values right in which case the default THREE.FrontSide is not a problem when rendering.
 
@@ -122,9 +128,9 @@ Consider the following:
         new THREE.Face3(5, 4, 3));
 ```
 
-notice that with the first instance of Face3 I am starting with index 0 then counting up, while with the other instance I am staring with the last index and counting backwards. This results in the Front side of both faces being on opposite sides relative to each other.
+Notice that with the first instance of Face3 I am starting with index 0 then counting up, while with the other instance I am staring with the last index and counting backwards. This results in the Front side of both faces being on opposite sides relative to each other.
 
-## The Material index property
+## 4 - The Material index property
 
 If in case you did not know, it is possible to give an array of materials to the mesh constructor, rather than just one. In this case there should be some way to set which material should be used for which insistence of face3. For this there is the material index property of face3.
 
