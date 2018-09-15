@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-15 16:00:38
-version: 1.4
+updated: 2018-09-15 16:02:55
+version: 1.5
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -15,6 +15,7 @@ Recently I wrote a post on the onKilled event that can be used to attach event h
 
 ## 1 - what to know
 
+This is a post on the sprite.events.onDestroy event in phaser ce that can be used to define some javaScript that is to be called when a display object such as a sprite is completely removed from phaser using the destroy method.
 
 ## 2 - A phaser example using sprite.events.onDestroy
 
@@ -230,3 +231,5 @@ game.state.add('demo', {
  
 game.state.start('boot');
 ```
+
+## 3 - Conclusion
