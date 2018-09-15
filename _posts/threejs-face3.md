@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2018-09-14 21:37:23
-version: 1.4
+updated: 2018-09-15 08:59:40
+version: 1.5
 ---
 
 The [Face3 constructor](https://threejs.org/docs/#api/core/Face3) in [three.js](https://threejs.org/) is used to define a Face when [making a custom geometry](/2018/04/14/threejs-geometry/). When using any kind of built in geometry, instances of Face3 are created automatically, but whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3.
@@ -87,11 +87,11 @@ So for now I have something like this:
 
 ## The order of indexes
 
-To some extent when making faces I am just playing connect the dots with vertices, but it is not always just that simple, as the order of index values does matter. When creating a mesh with the geometry, I also give a material. When it comes to materials there is the side property of a material which is used to set which side of a face is to be rendered with the material. This property expects an integer value the default of which is stored in the [constant THREE.FrontSide](https://threejs.org/docs/#api/constants/Materials) which as of this writing is a value of zero.
+To some extent when making faces I am just playing connect the dots with vertices, but it is not always just that simple, as the order of index values does matter. When creating a mesh with the geometry, I also give a material. When it comes to materials there is the side property of a material which is used to set which side of a face3 instance that is to be rendered with the material. This property expects an integer value the default of which is stored in the [constant THREE.FrontSide](https://threejs.org/docs/#api/constants/Materials) which as of this writing is a value of zero.
 
 What I am driving at here is that the order of the indexes is what is used to find out what side of the face is the front side. If you are running into some kind of weird issue where some of your faces are rendering and others are not it could be because you are not getting the index order right.
 
-There are two ways of fixing this one is to just make it so both sides are always rendered no matter what by seting the side value of your material to THREE.DoubleSide.
+There are two ways of fixing this one is to just make it so both sides are always rendered no matter what by setting the side value of your material to THREE.DoubleSide. This will make it so that both sides of the face are always rendered with the material, but the best way of fixing this would be to just get the index order right.
 
 ```js
 var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
