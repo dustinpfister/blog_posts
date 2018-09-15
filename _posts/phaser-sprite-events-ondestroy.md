@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-15 15:43:49
-version: 1.2
+updated: 2018-09-15 15:48:35
+version: 1.3
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -169,4 +169,62 @@ Enemy.update = function (game) {
     });
  
 };
+```
+
+### 2.2
+
+
+#### 2.2.1
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('boot', {
+ 
+    create: function () {
+ 
+        // setup game data object
+        Enemy.setup(this.game);
+ 
+        Enemy.mkSheet(this.game);
+ 
+        //Enemy.createEnemyPool.call(this);
+ 
+        // start demo, and do not clear the world
+        game.state.start('demo',false,false);
+ 
+    }
+ 
+});
+```
+
+```js
+game.state.add('demo', {
+ 
+    create: function () {
+ 
+        // call Enemy.spawn every second
+        game.time.events.loop(1000, Enemy.spawn, this);
+ 
+        // text display object to show score
+        var text = game.add.text(5, 5, '', {
+                fill: 'white'
+            });
+        text.name = 'disp-score';
+ 
+    },
+ 
+    update: function () {
+ 
+        var data = this.game.data;
+ 
+        Enemy.update(game);
+ 
+        game.world.getByName('disp-score').text = 'score: ' + data.score;
+ 
+    }
+ 
+});
+ 
+game.state.start('boot');
 ```
