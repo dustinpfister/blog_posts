@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-15 20:10:49
-version: 1.8
+updated: 2018-09-15 20:15:24
+version: 1.9
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -51,6 +51,8 @@ One of the values game.data.score is a value that will be incremented in my onDe
 
 #### 2.1.2 - The Enemy.onDestroy handler that will be attached to sprite.events.onDestroy
 
+here is the is handler that I will be attaching to sprite.events.onDestroy when creating a new sprite with my spawn method that I will be getting to shortly.
+
 ```js
 // The onDestroy method that will be called each time an enemy is killed
 Enemy.onDestroy = function (sprite) {
@@ -65,6 +67,8 @@ Enemy.onDestroy = function (sprite) {
  
 };
 ```
+
+When using sprite.events.onDestroy I can set the value of the this keyword using one of the arguments when calling sprite.events.onDestroy. In this example each time the onDestroy handler is called the players score will increase with the formula outlined in the method, a common task to happen each time an enemy is destroyed.
 
 #### 2.1.3 - The Enemy.onInputDown handler
 
