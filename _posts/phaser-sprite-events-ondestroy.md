@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-15 20:07:28
-version: 1.7
+updated: 2018-09-15 20:10:49
+version: 1.8
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -27,6 +27,8 @@ For this example I made an enemies.js file that will be a collection of methods 
 
 #### 2.1.1 - Staring off the module with Enemy.setup
 
+I start off this module by just making a object literal to which I will be appending the methods. I often have a setup method in these finds of modules that is to be called in the create method of a boot state, that is used to set up some values that will be used in the other methods.
+
 ```js
 var Enemy = {};
  
@@ -43,6 +45,9 @@ Enemy.setup = function (game) {
  
 };
 ```
+
+One of the values game.data.score is a value that will be incremented in my onDestroy handler that will be coming up later in this example..
+
 
 #### 2.1.2 - The Enemy.onDestroy handler that will be attached to sprite.events.onDestroy
 
