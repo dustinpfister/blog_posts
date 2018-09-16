@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-15 16:09:12
-version: 1.6
+updated: 2018-09-15 20:07:28
+version: 1.7
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -22,6 +22,8 @@ This is a post on the sprite.events.onDestroy event in phaser ce that can be use
 For a full working example of using the onDestroy event I put together something that is very similar to the example that I made for my other post on the onKilled event. There is at least one significant difference though, this example does not involve a group of sprites there where created once and then reused. In this example I am adding sprites to a group as needed, and when they are destroyed there are completely removed. In most projects I might prefer to use a set pool of sprites that I reuse, but never the less this is a different approach that in some ways may be a better solution for working with a group of sprites.
 
 ### 2.1 - The enemies.js file
+
+For this example I made an enemies.js file that will be a collection of methods that pull a lot of logic out of my state objects resulting in more fine grain code examples. These methods setup a main game data object, make a sprite sheet with canvas, and of course provides a handler to be used with the onDestry event.
 
 #### 2.1.1 - Staring off the module with Enemy.setup
 
