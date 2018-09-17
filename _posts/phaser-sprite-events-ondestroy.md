@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 10:21:50
-version: 1.13
+updated: 2018-09-17 10:34:57
+version: 1.14
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -98,6 +98,8 @@ In this example I am not using the phaser built in health system, I have nothing
 
 #### 2.1.4 - Generating a Sprite.data object
 
+Sprite data objects are an official way of attaching some properties, and methods that should be associated with a given sprite. Say you are developing an adventure game, and you have developed a Class that contains properties an methods to be used with a sprite, the data object is the typical standard way of attaching an instance of that class to a sprite in phaser.
+
 ```js
 // generate a data object for a sprite
 Enemy.genSpriteData = function () {
@@ -110,6 +112,8 @@ Enemy.genSpriteData = function () {
  
 };
 ```
+
+In this example I am just storing some delta values, and a health value. In a real project I would have one or more complex classes attached to the data object.
 
 #### 2.1.5 - Making a sheet with canvas
 
