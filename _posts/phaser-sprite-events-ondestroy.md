@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 15:35:09
-version: 1.16
+updated: 2018-09-17 15:38:57
+version: 1.17
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -196,8 +196,9 @@ Enemy.update = function (game) {
 };
 ```
 
-### 2.2
+### 2.2 - The Phaser.Game instance, and state objects
 
+Time to tie everything together with some state objects, and make the magic happen. It is common practice for me in many of these demos to have a boot state, that among many other things calls methods that setup my modules, and creates assets from canvas. In real projects I also do scaling and fix certain issues in the boot state as well.
 
 #### 2.2.1
 
