@@ -5,11 +5,11 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 62
-updated: 2018-09-17 12:47:57
-version: 1.7
+updated: 2018-09-17 12:56:36
+version: 1.8
 ---
 
-Sprite sheets come into play when starting to work with sprites. As a sprite needs to be skinned with something it is wise to start with sprite sheets before moving on to learning more about sprites. In this post I will be covering how to get started with the basics of sprite sheets in [phaser](http://phaser.io/) by way of involving an external image that must be loaded. However I will also branch off into other topics that involve making a sprite sheet from canvas with javaScript code, and cover some basics with animations and sprites.
+Sprite sheets come into play when starting to work with sprites. As a sprite needs to be skinned with something it is wise to start with sprite sheets before moving on to learning more about sprites. In this post I will be covering how to get started with the basics of sprite sheets in phaser ce by way of involving an external image that must be loaded. However I will also branch off into other topics that involve making a sprite sheet from canvas with javaScript code, and cover some basics with animations and sprites.
 
 <!-- more -->
 
@@ -17,7 +17,11 @@ Sprite sheets come into play when starting to work with sprites. As a sprite nee
 
 This is a post on [loading a spritesheet](https://photonstorm.github.io/phaser-ce/Phaser.Loader.html#spritesheet) that exists as an external image asset in [phaser ce](https://photonstorm.github.io/phaser-ce/). This is not a getting started post on phaser or javaScript in general, for that you might want to check out my [getting started post on phaser ce](/2017/10/04/phaser-getting-started/).
 
-### 1.1 - More than one way to make a sheet
+### 1.1 - This is a phaser ce (phaser 2.x post)
+
+This is a post on [phaser ce](https://photonstorm.github.io/phaser-ce/) also known as phaser 2.x of the [phaser ce](http://phaser.io/) javaScript powered game framework. I have not started writing content on phaser 3 as of this writing, but in any case I have gotten into the habit of making it clear in the beginning of posts what version of phaser I am using.
+
+### 1.2 - More than one way to make a sheet
 
 There are many ways to go about loading, or generating a sprite sheet in phaser. If you all ready have an external sprite sheet image that you want to use, then there are ways to use a loader, to bring it into a project during a load state. If you want to generate a sprite sheet with javaScript code then there are ways to do that involving the 2d canvas drawing api. In this post I will be briefly coving some of these topics. and link to other posts in which I get into these things in further detail.
 
