@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 15:43:02
-version: 1.18
+updated: 2018-09-17 15:45:24
+version: 1.19
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -177,6 +177,8 @@ So in this example I am creating sprites as needed rather than generating a reus
 
 #### 2.1.7 - The Enemy.update method to be called on each frame tick
 
+When I make a module like this there is almost always an update method where I define some logic that is to be called on each frame tick in the main update method of a game state that uses the module.
+
 ```js
 // What needs to happen for each frame tick
 Enemy.update = function (game) {
@@ -195,6 +197,8 @@ Enemy.update = function (game) {
  
 };
 ```
+
+For this example I am just moving the sprites based on there current deltas that are set in there data objects when spawned.
 
 ### 2.2 - The Phaser.Game instance, and state objects
 
