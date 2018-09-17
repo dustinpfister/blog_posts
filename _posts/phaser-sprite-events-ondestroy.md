@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 15:45:24
-version: 1.19
+updated: 2018-09-17 15:51:26
+version: 1.20
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -264,3 +264,5 @@ game.state.start('boot');
 ```
 
 ## 3 - Conclusion
+
+The onDestroy event is a great way to set up some logic that is to be executed when a sprite is completely destroyed with the destroy sprite method. It can be used with onKilled, or as a complete replacement. The process of creating sprites on demand rather than making a reusable pool of sprites might have some advantages in terms of speed in some cases. As such this kind of approach might be desirable over the alternative, but really matters most to me is the nature of the game itself regardless of how it works.
