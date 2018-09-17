@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 10:34:57
-version: 1.14
+updated: 2018-09-17 12:04:52
+version: 1.15
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -117,6 +117,8 @@ In this example I am just storing some delta values, and a health value. In a re
 
 #### 2.1.5 - Making a sheet with canvas
 
+For this example I am making a simple sprite sheet made with canvas. This works fine if I just want to skin an area with solid color box when it comes to these simple demos. In addition it event works okay when making some not so simple sheets by way of the 2d canvas drawing context.
+
 ```js
 // make a sprite sheet
 Enemy.mkSheet = function (game) {
@@ -139,6 +141,8 @@ Enemy.mkSheet = function (game) {
  
 };
 ```
+
+For more info on this approach of making a sprite sheet with canvas, you might want to [check out my post](/2018/08/04/phaser-spritesheet-from-canvas/) on that subject.
 
 #### 2.1.6 - The Spawn method that will create a new Sprite and attach Enemy.onDestroy
 
