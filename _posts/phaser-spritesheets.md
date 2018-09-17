@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 62
-updated: 2018-09-17 12:58:02
-version: 1.9
+updated: 2018-09-17 13:04:51
+version: 1.10
 ---
 
 Sprite sheets come into play when starting to work with sprites. As a sprite needs to be skinned with something it is wise to start with sprite sheets before moving on to learning more about sprites. In this post I will be covering how to get started with the basics of sprite sheets in phaser ce by way of involving an external image that must be loaded. However I will also branch off into other topics that involve making a sprite sheet from canvas with javaScript code, and cover some basics with animations and sprites.
@@ -121,4 +121,6 @@ Enemy.mkSheet = function (game) {
 
 At which point I can then use the key 'sheet-block' when making sprites. For more on this topic you will want to check out my [post on making sprite sheets from canvas](/2018/08/04/phaser-spritesheet-from-canvas/).
 
+## 4 - Not using a sprite sheet
 
+In some cases I might not even need to bother with a sprite sheet at all, and just use a singe generated image. To pull this off then making a sprite I pass an instance of phaser bitmap data to the sprite in place of a key to a sprite sheet. I cover this in further detail on making [sprites with canvas](/2018/08/04/phaser-sprite-from-canvas/).
