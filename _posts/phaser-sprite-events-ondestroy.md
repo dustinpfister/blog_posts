@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 12:04:52
-version: 1.15
+updated: 2018-09-17 15:35:09
+version: 1.16
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -146,6 +146,8 @@ For more info on this approach of making a sprite sheet with canvas, you might w
 
 #### 2.1.6 - The Spawn method that will create a new Sprite and attach Enemy.onDestroy
 
+So here is the method where I will be using sprite.events.onDestroy to attach my handler that I defined in Enemy.onDestroy above. I also attach my onInputDown hander as well, and generate a data object for the sprite.
+
 ```js
 // re-spawn a dead enemy
 Enemy.spawn = function (a) {
@@ -170,6 +172,8 @@ Enemy.spawn = function (a) {
  
 };
 ```
+
+So in this example I am creating sprites as needed rather than generating a reusable pool of sprites like I did on my post on onKilled. This method will be called every so often by way of a timer, rather than on every frame tick.
 
 #### 2.1.7 - The Enemy.update method to be called on each frame tick
 
