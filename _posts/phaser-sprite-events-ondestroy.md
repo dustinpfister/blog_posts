@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-16 19:09:38
-version: 1.10
+updated: 2018-09-17 10:16:49
+version: 1.11
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -72,7 +72,7 @@ When using sprite.events.onDestroy I can set the value of the this keyword using
 
 #### 2.1.3 - The Enemy.onInputDown handler
 
-Here I have an onInputdown hadler that will also be attached to sprites when they are generated in my spawn method.
+Here I have an onInputdown handler that will also be attached to sprites when they are generated in my spawn method.
 
 ```js
 // What happens when the player clicks an enemy
@@ -84,8 +84,11 @@ Enemy.onInputDown = function (enemy) {
         enemy.frame = 1;
     }
  
+    // call destroy
     if (enemy.data.hp <= 0) {
-        enemy.kill();
+ 
+        enemy.destroy();
+ 
     }
  
 };
@@ -173,13 +176,6 @@ Enemy.update = function (game) {
         // step position based on current deltas
         enemy.x = Phaser.Math.wrap(enemy.x += enemy.data.dx, -32, game.world.width + 32);
         enemy.y = Phaser.Math.wrap(enemy.y += enemy.data.dy, -32, game.world.height + 32);
- 
-        // call destroy
-        if (enemy.data.hp <= 0) {
- 
-            enemy.destroy();
- 
-        }
  
     });
  
