@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 249
-updated: 2018-09-17 12:15:10
-version: 1.6
+updated: 2018-09-17 12:19:46
+version: 1.7
 ---
 
 For this post on [phaser ce](https://photonstorm.github.io/phaser-ce/) I will be writing about ways to go about making a sprite sheet from a canvas element, rather than loading an external asset. This can be done a number of ways, but in this post I will be using the 2d canvas drawing context in a [canvas element](/2017/05/17/canvas-getting-started/) and pass that element to a method that can be used in the phaser cache to create a [sprite sheet](/2017/10/12/phaser-spritesheets/) from a canvas element.
@@ -19,8 +19,7 @@ This is a post on making a sprite sheet using a canvas element in phaser ce a ja
 
 ## 2 - A quick, basic example of using canvas to make a sprite sheet in phaser.
 
-So for a very quick, and easy getting started example of making a sprite sheet with canvas in phaser ce, I often use a single method to make a basic sheet when making one of my many examples for these posts of mine. The basic idea is to generate a canvas, and draw to it like normal, and then pass a reference to the canvas element as one of the arguments to a method in the cache called [game.cache.addSpriteSheet](https://photonstorm.github.io/phaser-ce/Phaser.Cache.html).
-
+So for a very quick, and easy getting started example of making a sprite sheet with canvas in phaser ce, I often use a single method to make a basic sheet when making one of my many examples for these posts of mine. The basic idea is to generate a canvas, and draw to it like normal, and then pass a reference to the canvas element as one of the arguments to a method in the cache called [game.cache.addSpriteSheet](https://photonstorm.github.io/phaser-ce/Phaser.Cache.html#addSpriteSheet).
 
 What I end up with in many projects might look something like this.
 
@@ -46,6 +45,8 @@ Enemy.mkSheet = function (game) {
  
 };
 ```
+
+When calling the game.cache.addSpriteSheet method the first argument is the key that I want to use to refer to the sheet when making sprites, and the second argument is what would be a url to an asset, but because I am using canvas I leave this at null. The third argument is the sprite sheet data, and for this one of the options for the data is a plain old canvas element. The next arguments are to set the frame width, and frame height, as well as the number of frames, and the spacing between frames.
 
 ## 3 - A more advanced example
 
