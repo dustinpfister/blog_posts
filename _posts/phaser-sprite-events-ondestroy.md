@@ -5,17 +5,21 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 15:51:26
-version: 1.20
+updated: 2018-09-17 15:59:57
+version: 1.21
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
 
 <!-- more -->
 
-## 1 - what to know
+## 1 - What to know
 
-This is a post on the sprite.events.onDestroy event in phaser ce that can be used to define some javaScript that is to be called when a display object such as a sprite is completely removed from phaser using the destroy method.
+This is a post on the [onDestroy event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onDestroy) in phaser ce that can be used to define some javaScript that is to be called when a display object such as a sprite is completely removed from phaser using the destroy method. In this post I am also using a lot of other phaser ce features such as groups, and timers. So this is not a [getting started post on phaser ce](/2017/10/04/phaser-getting-started/), or javaScript in general.
+
+### 1.1 - This is a phaser ce (phaser 2.x) post.
+
+As of this writing all of my posts on phaser, including this one, are on [Phaser ce](https://photonstorm.github.io/phaser-ce/) also known as phaser 2.x. This is the second major release of the javaScript powered game framework known as [phaser](https://phaser.io/), which might be one of the most popular and best supported options to go with when it comes to html5 game development. I have not started playing with phaser 3 yet, but when I do that will likely have to be a completely separate collection of posts as a lot has changed.
 
 ## 2 - A phaser example using sprite.events.onDestroy
 
