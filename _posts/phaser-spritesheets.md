@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 62
-updated: 2018-08-11 17:32:08
-version: 1.4
+updated: 2018-09-17 12:34:43
+version: 1.5
 ---
 
 Sprite sheets come into play when starting to work with sprites. As a sprite needs to be skinned with something it is wise to start with sprite sheets before moving on to learning more about sprites. In this post I will be covering how to get started with the basics of sprite sheets in [phaser](http://phaser.io/) by way of involving an external image that must be loaded. However I will also branch off into other topics that involve making a sprite sheet from canvas with javaScript code, and cover some basics with animations and sprites.
@@ -16,6 +16,14 @@ Sprite sheets come into play when starting to work with sprites. As a sprite nee
 ## 1 - What to know
 
 This is a post on [loading a spritesheet](https://photonstorm.github.io/phaser-ce/Phaser.Loader.html#spritesheet) that exists as an external image asset in [phaser ce](https://photonstorm.github.io/phaser-ce/). This is not a getting started post on phaser or javaScript in general, for that you might want to check out my [getting started post on phaser ce](/2017/10/04/phaser-getting-started/).
+
+### 1.1 - More than one way to make a sheet
+
+There are many ways to go about loading, or generating a sprite sheet in phaser. If you all ready have an external sprite sheet image that you want to use, then there are ways to use a loader, to bring it into a project during a load state. If you want to generate a sprite sheet with javaScript code then there are ways to do that involving the 2d canvas drawing api. In this post I will be briefly coving some of these topics. and link to other posts in which I get into these things in further detail.
+
+### 1.2 - A load State
+
+If you end up eventually having a lot of sheets, and images, it might be a good idea to have a load state. The process of putting together a loader can be a little involved, but there are many methods and events that help with the process I will not cover that here, but I did write a [post on that](/2017/10/07/phaser-state-loader/). 
 
 ## 2 - A quick phaser sprite sheet hello world example.
 
@@ -78,6 +86,4 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
     });
 ```
 
-## 4 - A load State
 
-If you end up eventually having a lot of sheets, and images, it might be a good idea to have a load state. I will not cover that here, but I did write a [post on that](/2017/10/07/phaser-state-loader/).
