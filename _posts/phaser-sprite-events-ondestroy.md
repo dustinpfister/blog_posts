@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 280
-updated: 2018-09-17 10:16:49
-version: 1.11
+updated: 2018-09-17 10:19:33
+version: 1.12
 ---
 
 Recently I wrote a post on the onKilled event that can be used to attach event handlers to display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) that will fire when the kill method is called. In phaser ce the kill method is very different from the destroy method in that the kill method will just put a sprite in a dead state, while the destroy method will completely destroy a sprite all together.
@@ -93,6 +93,8 @@ Enemy.onInputDown = function (enemy) {
  
 };
 ```
+
+In this example I am not using the phaser built in health system, I have nothing against it, I just find myself conflicted between making health a part of my Class that I develop when making a game or not.
 
 #### 2.1.4 - Generating a Sprite.data object
 
@@ -198,8 +200,6 @@ game.state.add('boot', {
         Enemy.setup(this.game);
  
         Enemy.mkSheet(this.game);
- 
-        //Enemy.createEnemyPool.call(this);
  
         // start demo, and do not clear the world
         game.state.start('demo',false,false);
