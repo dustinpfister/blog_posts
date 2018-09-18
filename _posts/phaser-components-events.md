@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-09-18 19:42:59
-version: 1.10
+updated: 2018-09-18 19:44:47
+version: 1.11
 ---
 
 The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
@@ -43,6 +43,17 @@ gra.input.draggable = true;
 ### 1.3 - Be sure to set inputEnabled to true
 
 The events object is there to play with no matter what, but I will want to set inputEnabled true or else some of the input events will not work. This also sets up an instance of inputHandler for the display object. For more on the input handler be sure to check out the post I wrote on [inputEnabled](/2017/10/23/phaser-components-input-enabled/) component.
+
+### 1.4 - Preventing the context menu from showing up with preventDefault
+
+A context menu may show up when I long press, or right click a projects canvas element, there is of course the preventDefault method that I can call to prevent this. A reference to the canvas element can be found at game.canvas where something like this can be done:
+
+```js
+// prevent context menu on long press, or right click
+game.canvas.oncontextmenu = function (e) {
+    e.preventDefault();
+}
+```
 
 ## 2 - A basic example of the events component
 
@@ -212,17 +223,6 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 ```
 
 It is important to Keep in mind that the dragUpdate handler seems to fire before the dragStart handler, so if I use dragStart to set something up, it might not be there the first time dragUpdate fires.
-
-##  Preventing the context menu from showing up with preventDefault
-
-A context menu may show up when I long press, or right click a projects canvas element, there is of course the preventDefault bool that can called. A reference to the canvas element can be found at game.canvas where something like this can be done:
-
-```js
-// prevent context menu on long press, or right click
-game.canvas.oncontextmenu = function (e) {
-    e.preventDefault();
-}
-```
 
 ## Conclusion
 
