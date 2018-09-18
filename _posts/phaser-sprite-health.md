@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 281
-updated: 2018-09-18 08:03:33
-version: 1.11
+updated: 2018-09-18 08:05:46
+version: 1.12
 ---
 
 With [Phaser ce](https://photonstorm.github.io/phaser-ce/) sprite objects there is a health property, this property can be used in conjunction with methods like Sprite.damage to manage hit points for the Sprite. Many kinds of games involve the use of hit points, and when these hit point values reach zero or lower, that often will trigger death animations, and other events. ALthout it is fine to make hit points part of my own separate game logic, the built in health property can be used in conjunction with other properties and methods to help speed things along with managing health. In this post I will be writing about managing hit points in a phaser ce game using the Sprite.health property, and a few closely related methods and properties like Sprite.damage, and Sprite.events.onKilled.
@@ -19,7 +19,7 @@ This is a post on the Sprite.health property, and other methods, and properties 
 
 ## 1.1 - This is a phaser ce (2.x) post
 
-In this post I am using phaser 2.11.0, I have been playing around with phaser 2.c on and off for a long time now, and feel as though I am just starting to get the hand of things. It is only a matter of time until I start to break ground with phaser 3, but for now I am sticking to the tired yet true version of phaser.
+In this post I am using phaser 2.11.0, also know as [phaser community edition]((https://photonstorm.github.io/phaser-ce/)). I have been playing around with phaser 2.c on and off for a long time now, and feel as though I am just starting to get the hand of things. It is only a matter of time until I start to break ground with phaser 3, but for now I am sticking to the tired yet true version of [phaser](https://phaser.io/).
 
 ## 2 - A Basic example of Sprite.health
 
