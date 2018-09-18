@@ -5,15 +5,48 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 279
-updated: 2018-09-14 22:24:48
-version: 1.0
+updated: 2018-09-18 09:29:06
+version: 1.1
 ---
 
 When making sprites for a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there is a standard way of setting some data on a per sprite bases. This is the sprite.data object, an object that defaults to just a plain old javaScript object literal, and is not used my phaser itself internal. So when making a game this is what should be used to park any data, or methods that is part of the game logic that makes up the essence of the project for the sprites. For example if I am making some kind of strategy game that involves the use of a custom Enemy class that I made, then chances are I will be storing an instance of that Enemy Class as a property of sprite.data, or maybe even make sprite.data an instance of that class. In this post I will be writing about an example that will help explain this further.
 
 <!-- more -->
 
+## 1 - what to know first
 
+
+## 2 - Basic example of using a Sprite.data object
+
+### 2.1 - a helper for appending some stuff to Sprite.data
+
+```js
+var setupDataObject = function (game, sprite) {
+ 
+    // appending some values to the data object
+    sprite.data.frame = 0;
+    sprite.data.frame_max = 50;
+    sprite.data.sprite = sprite;
+    sprite.data.game = game;
+ 
+    // step sprite movement method
+    sprite.data.step = function () {
+ 
+        this.per = this.frame / this.frame_max;
+        this.bias = 1 - Math.abs(0.5 - this.per) / 0.5;
+ 
+        this.sprite.x = this.game.world.centerX - 16 - 100 + 200 * this.bias;
+        this.sprite.y = this.game.world.centerY - 16;
+ 
+        this.frame += 1;
+        this.frame %= this.frame_max;
+ 
+    };
+ 
+};
+```
+
+### 2.2 - Making a sprite sheet with canvas
 
 ```js
 // make a sprite sheet
@@ -34,6 +67,8 @@ var mkSheet = function (game) {
 };
 ```
 
+### 2.3 - The Phaser.Game instance, and single state object.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -41,30 +76,15 @@ game.state.add('basic', {
  
     create: function () {
  
+        // make my sprite sheet
         mkSheet(game);
  
+        // make a sprite using my sprite sheet
         var sprite = game.add.sprite(0, 0, 'sheet-block');
         sprite.name = 'bx';
  
-        // appending some values to the data object
-        sprite.data.frame = 0;
-        sprite.data.frame_max = 50;
-        sprite.data.sprite = sprite;
-        sprite.data.game = game;
- 
-        // step sprite movement method
-        sprite.data.step = function () {
- 
-            this.per = this.frame / this.frame_max;
-            this.bias = 1 - Math.abs(0.5 - this.per) / 0.5;
- 
-            this.sprite.x = this.game.world.centerX - 16 - 100 + 200 * this.bias;
-            this.sprite.y = this.game.world.centerY - 16;
- 
-            this.frame += 1;
-            this.frame %= this.frame_max;
- 
-        };
+        // seup the data object
+        setupDataObject(game, sprite);
  
     },
  
@@ -81,3 +101,5 @@ game.state.add('basic', {
  
 game.state.start('basic');
 ```
+
+## 3 - Conclusion
