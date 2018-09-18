@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 279
-updated: 2018-09-18 09:47:54
-version: 1.5
+updated: 2018-09-18 09:54:52
+version: 1.6
 ---
 
 When making sprites for a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there is a standard way of setting some data on a per sprite bases. This is the sprite.data object, an object that defaults to just a plain old javaScript object literal, and is not used my phaser itself internal. So when making a game this is what should be used to park any data, or methods that is part of the game logic that makes up the essence of the project for the sprites. For example if I am making some kind of strategy game that involves the use of a custom Enemy class that I made, then chances are I will be storing an instance of that Enemy Class as a property of sprite.data, or maybe even make sprite.data an instance of that class. In this post I will be writing about an example that will help explain this further.
@@ -84,6 +84,8 @@ This kind of solution can also work for making sprite sheets that are a little m
 
 ### 2.3 - The Phaser.Game instance, and single state object.
 
+So now it is time to tie everything together with a Phaser.Game instance and just a single state for now. After setting up my Phaser.Game instance I create a single state object that I will call 'basic' and in the create method of this basic state I create my sprite sheet with the canvas solution helper described above. After I have my sprite sheet in the cache, I use it to create and skin a new sprite, and give it a name. I then of course use my setupDataObject method to append what I need to the sprites data object my passing the Phaser.Game instance and a reference to the sprite as well. Then in the update method of the basic state I call my step method that is attached to Sprite.data to step the movement of the sprite.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -116,5 +118,7 @@ game.state.add('basic', {
  
 game.state.start('basic');
 ```
+
+When this example is up and running the box move back and forth as expected, using properties and a method that are tucked away into its data object.
 
 ## 3 - Conclusion
