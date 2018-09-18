@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 281
-updated: 2018-09-18 07:52:31
-version: 1.8
+updated: 2018-09-18 07:58:43
+version: 1.9
 ---
 
 With [Phaser ce](https://photonstorm.github.io/phaser-ce/) sprite objects there is a health property, this property can be used in conjunction with methods like Sprite.damage to manage hit points for the Sprite. Many kinds of games involve the use of hit points, and when these hit point values reach zero or lower, that often will trigger death animations, and other events. ALthout it is fine to make hit points part of my own separate game logic, the built in health property can be used in conjunction with other properties and methods to help speed things along with managing health. In this post I will be writing about managing hit points in a phaser ce game using the Sprite.health property, and a few closely related methods and properties like Sprite.damage, and Sprite.events.onKilled.
@@ -103,7 +103,7 @@ When changing to the basic-demo state, I make sure to set the clearWorld, and cl
 
 ### 2.4 - The demo state
 
-So Finally I have my basic-demo state and for the moment I just use the Sprite.damage method on the player Sprite
+So Finally I have my basic-demo state and for the moment I just use the Sprite.damage method on the player Sprite, and log the results with console.log.
 
 ```js
 game.state.add('basic-demo', {
@@ -134,3 +134,9 @@ game.state.add('basic-demo', {
  
 game.state.start('boot');
 ```
+
+The Sprite.damage method will deduct the amount of damage from Sprite.health, and when Sprite.health reaches Zero the Sprite.Kill method will fire. This saves time with making my own solution for handling all of this.
+
+## 3 - Conclusion
+
+So the Sprite.health, and Sprite.damage method are there to help make quick work of something that is very common amongst a lot of games, and in many cases the phaser built in stuff for handing health works just fine. If not there is always just working out my own solution appending to the sprite.data object.
