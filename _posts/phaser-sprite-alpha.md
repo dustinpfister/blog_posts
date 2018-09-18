@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 282
-updated: 2018-09-18 17:00:39
-version: 1.7
+updated: 2018-09-18 17:05:21
+version: 1.8
 ---
 
 Setting sprite transparency in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is pretty simple, I just need to set the [Sprite.alpha](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#alpha) value to a number value between 0, an 1.  There is also playing around with the alpha values in canvas when making sheets that way, but why bother with that when Sprite.alpha works just fine. Never the less I thought I would make a quick post on this, and some other sprite related topics just for the fun of it.
@@ -113,7 +113,7 @@ Blocks.setSpriteDataObject = function (game, sprite) {
 
 ### 2.3 - The spawn method
 
-The spawn method will be used with a timer event to create a new sprite every so often up until a certain limit is reached. In this method I also attach some events including one that calls my Sprite.data onDeath method that will begin the death alpha transparency effect.
+The spawn method will be used with a timer event to create a new sprite every so often up until a certain limit is reached. In this method I also attach some events including one that calls my Sprite.data onDeath method that will begin the death alpha transparency effect. This is pulled off with the [Sprite.events.onKilled](/2018/09/13/phaser-sprite-events-onkilled/) event for handing what happens when the Sprite is killed when [Sprite.damage](/2018/09/17/phaser-sprite-health/) is called enough times when the player clicks a sprite.
 
 ```js
 // spawn another enemy
@@ -148,7 +148,7 @@ Blocks.spawn = function (game) {
 
 ### 2.4 - The Phaser.Game instance, and boot state
 
-Now that I have a module together it is time to use all of this stuff by making a Phaser.Game instance, and at least a few state objects. In many of these examples I like to at least separate things into a boot state, and another state that runs the actual example. In the boot state I make a sprite sheet with canvas, and the game.cache.addSpriteSheet method. The boot state is also the place where I often set the scroll, and scale properties and anything else to that effect.
+Now that I have a module together it is time to use all of this stuff by making a [Phaser.Game instance](/2017/10/11/phaser-main-game-constructor/), and at least a few state objects. In many of these examples I like to at least separate things into a boot state, and another state that runs the actual example. In the boot state I make a sprite sheet with canvas, and the game.cache.addSpriteSheet method. The boot state is also the place where I often set the scroll, and scale properties and anything else to that effect.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
