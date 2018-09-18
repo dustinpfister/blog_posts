@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 281
-updated: 2018-09-18 07:35:27
-version: 1.5
+updated: 2018-09-18 07:47:02
+version: 1.6
 ---
 
 With [Phaser ce](https://photonstorm.github.io/phaser-ce/) sprite objects there is a health property, this property can be used in conjunction with methods like Sprite.damage to manage hit points for the Sprite. Many kinds of games involve the use of hit points, and when these hit point values reach zero or lower, that often will trigger death animations, and other events. ALthout it is fine to make hit points part of my own separate game logic, the built in health property can be used in conjunction with other properties and methods to help speed things along with managing health. In this post I will be writing about managing hit points in a phaser ce game using the Sprite.health property, and a few closely related methods and properties like Sprite.damage, and Sprite.events.onKilled.
@@ -50,6 +50,8 @@ var mkPlayerSprite = function (game) {
 
 ### 2.2 - The sprite sheet helper
 
+For many of my examples like this I often use a canvas solution for making a quick simple sprite sheet. For this example I need a sprite sheet that has just two frames one for an alive state, and one for a death state.
+
 ```js
 // make a sprite sheet
 var mkSheets = function (game) {
@@ -73,7 +75,11 @@ var mkSheets = function (game) {
 };
 ```
 
+For more on using canvas as a way to make quick sprite sheets I have a [post in which I go into deeper detail]() on this.
+
 ### 2.3 - The phaser.Game instance, and boot state
+
+So to pull everything together there I will need to make a [Phaser.Game instance](/2017/10/11/phaser-main-game-constructor/), and some [state objects](/2017/10/06/phaser-state-objects/). In by boot state I will be making my sprite sheet by calling the mkSheet method, and setting up the player sprite with my mkPlayerSprite method.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
