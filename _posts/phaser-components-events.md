@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-09-18 19:44:47
-version: 1.11
+updated: 2018-09-18 19:48:43
+version: 1.12
 ---
 
 The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
@@ -39,6 +39,8 @@ gra.inputEnabled = true;
 // make the graphics draggable
 gra.input.draggable = true;
 ```
+
+You might want to check out my [post on draggable](/2017/10/24/phaser-inputhandler-draggable/) input in phaser, to know a bit more about what there is to know with the inputHander.
 
 ### 1.3 - Be sure to set inputEnabled to true
 
@@ -113,7 +115,7 @@ I use the add method for a certain event handler such as onInputDown to add a si
 
 In this section I will go over some of the events in the events component, and give a basic example. I will also provide links to other relevant posts on the different events.
 
-## onInutDown
+## 3.1 - onInutDown
 
 This is a handler that will fire when a mouse click, or touch start event occurs on the sprite, graphics or other display object. This event fires just once, and will not fire over, and over again after a pause like some other handlers.
 
@@ -131,17 +133,13 @@ gra.events.onInputDown.add(function (dispObj, pointer) {
 
 The method that I give to the add method of the event handler will receive a reference to the relevant display object (in this post I am using [Graphics](/2017/10/21/phaser-graphics/) rather than sprites), and a reference to a [pointer object](/2017/10/17/phaser-input-pointer-objects/).
 
-## onInputUp
+## 3.2 - onInputUp
 
 Same as onInputDown, but if fires when the mouse button is release, or a touch event has ended.
 
-## onInputOver, and onInputOut
+## 3.3 - onInputOver, and onInputOut
 
 These are additional handlers in the events object that are fired when a mouse cursor is hovering over the display object, and when it leaves, which is useful for desktop projects.
-
-
-
-Be sure to check out my [post on draggable](/2017/10/24/phaser-inputhandler-draggable/) input in phaser. To know a bit more about what is need to know with the inputHander, this post will cover more about the events involved.
 
 ## onDragStart, onDragUpdate, and onDragEnd
 
