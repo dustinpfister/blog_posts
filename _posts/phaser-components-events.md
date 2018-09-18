@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-09-18 19:48:43
-version: 1.12
+updated: 2018-09-18 19:55:03
+version: 1.13
 ---
 
 The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
@@ -115,7 +115,7 @@ I use the add method for a certain event handler such as onInputDown to add a si
 
 In this section I will go over some of the events in the events component, and give a basic example. I will also provide links to other relevant posts on the different events.
 
-## 3.1 - onInutDown
+### 3.1 - onInutDown
 
 This is a handler that will fire when a mouse click, or touch start event occurs on the sprite, graphics or other display object. This event fires just once, and will not fire over, and over again after a pause like some other handlers.
 
@@ -133,15 +133,15 @@ gra.events.onInputDown.add(function (dispObj, pointer) {
 
 The method that I give to the add method of the event handler will receive a reference to the relevant display object (in this post I am using [Graphics](/2017/10/21/phaser-graphics/) rather than sprites), and a reference to a [pointer object](/2017/10/17/phaser-input-pointer-objects/).
 
-## 3.2 - onInputUp
+### 3.2 - onInputUp
 
 Same as onInputDown, but if fires when the mouse button is release, or a touch event has ended.
 
-## 3.3 - onInputOver, and onInputOut
+### 3.3 - onInputOver, and onInputOut
 
 These are additional handlers in the events object that are fired when a mouse cursor is hovering over the display object, and when it leaves, which is useful for desktop projects.
 
-## onDragStart, onDragUpdate, and onDragEnd
+### 3.4 - onDragStart, onDragUpdate, and onDragEnd
 
 Any drag event will involve a mouse click down, movement of the mouse, and then release of the mouse button, or a similar situation involving a touch screen. Reslulting in dragStart, dragUpdate, and dragEnd events.
 
@@ -221,6 +221,14 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 ```
 
 It is important to Keep in mind that the dragUpdate handler seems to fire before the dragStart handler, so if I use dragStart to set something up, it might not be there the first time dragUpdate fires.
+
+### 3.5 - onDestroy
+
+The onDestroy event fires whenever a sprite is completely removed from the cache when the destroy method is called. I have a [post on the onDestroy event](/2018/09/15/phaser-sprite-events-ondestroy/) that gives an example of this in action.
+
+### 3.6 - onKilled
+
+The onKilled event differs from the onDestroy event in that this event fires when a sprite is killed, but still remains in the cache. Check out my [full post on the onKilled](/2018/09/13/phaser-sprite-events-onkilled/) event to read more on this one.
 
 ## Conclusion
 
