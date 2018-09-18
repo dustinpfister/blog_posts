@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-09-18 19:40:39
-version: 1.9
+updated: 2018-09-18 19:42:59
+version: 1.10
 ---
 
 The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
@@ -21,7 +21,7 @@ This is a post on the [events component]((https://photonstorm.github.io/phaser-c
 
 In this post I was using phaser 2.11.0 when ruining the examples.
 
-### 1.1 - Getting started with drag events
+### 1.2 - Getting started with drag events
 
 In order to get started with drag events in addition to setting the inputEnabled bool to true, there is also an additional bool to set true in the inputHandler of the display object at gra.input.draggable.
 
@@ -40,7 +40,7 @@ gra.inputEnabled = true;
 gra.input.draggable = true;
 ```
 
-### 1.2 - Be sure to set inputEnabled to true
+### 1.3 - Be sure to set inputEnabled to true
 
 The events object is there to play with no matter what, but I will want to set inputEnabled true or else some of the input events will not work. This also sets up an instance of inputHandler for the display object. For more on the input handler be sure to check out the post I wrote on [inputEnabled](/2017/10/23/phaser-components-input-enabled/) component.
 
@@ -99,6 +99,8 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 I use the add method for a certain event handler such as onInputDown to add a single event handler to an array of methods that are to be called for that handler. That is because onInputDown is an instance of Phasers Signal Constructor, and as such works similarly to addEventListener in vanilla js, in the sense that I can have more than one callback for a certain event.
 
 ## 3 - List of events
+
+In this section I will go over some of the events in the events component, and give a basic example. I will also provide links to other relevant posts on the different events.
 
 ## onInutDown
 
