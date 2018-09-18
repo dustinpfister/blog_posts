@@ -5,19 +5,17 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2017-10-28 18:00:06
-version: 1.7
+updated: 2018-09-18 19:30:24
+version: 1.8
 ---
 
-The events component in phaser adds event handers to a display object such as onInputDown, and onDragStop. I just need to enable them with certain booleans, and I am ready to go with handing input for a certain display object in a project. This post will be a general overview of how to get going with the events display object component.
+The [events component](https://photonstorm.github.io/phaser-ce/Phaser.Events.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
 
 <!-- more -->
 
-{% phaser_top %}
 
-{% phaser_if_new_mess %}
 
-## A basic example of usage of the events component
+## 2 - A basic example of the events component
 
 Although The events component is there to work with off the bat there are some boolean values that need to be set true in order for any of them to work. So a basic example will involve at least a single display object that has both the events, and input components (Sprites, Graphics). This display object will have it's input handler enabled by setting the inputEnabled boolean true, at which point a few event handlers will now work such as onInputDown.
 
@@ -73,7 +71,7 @@ I use the add method for a certain event handler such as onInputDown to add a si
 
 ## Be sure to set inputEnabled to true
 
-The events object is there to play with no matter what, but I will want to set inputEnabled true or else none of them will work. This also sets up an instance of inputHandler for the display object. Be sure to check out the post I wrote on [inputEnabled](/2017/10/23/phaser-components-input-enabled/) component.
+The events object is there to play with no matter what, but I will want to set inputEnabled true or else some of the input events will not work. This also sets up an instance of inputHandler for the display object. For more on the input handler be sure to check out the post I wrote on [inputEnabled](/2017/10/23/phaser-components-input-enabled/) component.
 
 ## onInutDown
 
@@ -218,4 +216,3 @@ game.canvas.oncontextmenu = function (e) {
 
 The events component is very useful for quickly getting started with input involving display objects. As time goes on I may update this post to reference other posts on phaser display object components as time goes by.
 
-{% phaser_bottom %}
