@@ -5,15 +5,44 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-09-18 19:30:24
-version: 1.8
+updated: 2018-09-18 19:40:39
+version: 1.9
 ---
 
-The [events component](https://photonstorm.github.io/phaser-ce/Phaser.Events.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
+The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
 
 <!-- more -->
 
+## 1 - What to know
 
+This is a post on the [events component]((https://photonstorm.github.io/phaser-ce/Phaser.Events.html)) in [Phaser ce](https://photonstorm.github.io/phaser-ce/), the community edition of the [phaser](https://phaser.io/) game framework written in javaScript.
+
+### 1.1 - This is a phaser ce (2.x) post
+
+In this post I was using phaser 2.11.0 when ruining the examples.
+
+### 1.1 - Getting started with drag events
+
+In order to get started with drag events in addition to setting the inputEnabled bool to true, there is also an additional bool to set true in the inputHandler of the display object at gra.input.draggable.
+
+```js
+// make some graphics
+var gra = game.add.graphics(0,0);
+ 
+gra.beginFill(0x00ff00);
+gra.drawRect(0,0,50,50);
+gra.endFill();
+ 
+// enable input for the graphics
+gra.inputEnabled = true;
+ 
+// make the graphics draggable
+gra.input.draggable = true;
+```
+
+### 1.2 - Be sure to set inputEnabled to true
+
+The events object is there to play with no matter what, but I will want to set inputEnabled true or else some of the input events will not work. This also sets up an instance of inputHandler for the display object. For more on the input handler be sure to check out the post I wrote on [inputEnabled](/2017/10/23/phaser-components-input-enabled/) component.
 
 ## 2 - A basic example of the events component
 
@@ -69,9 +98,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 
 I use the add method for a certain event handler such as onInputDown to add a single event handler to an array of methods that are to be called for that handler. That is because onInputDown is an instance of Phasers Signal Constructor, and as such works similarly to addEventListener in vanilla js, in the sense that I can have more than one callback for a certain event.
 
-## Be sure to set inputEnabled to true
-
-The events object is there to play with no matter what, but I will want to set inputEnabled true or else some of the input events will not work. This also sets up an instance of inputHandler for the display object. For more on the input handler be sure to check out the post I wrote on [inputEnabled](/2017/10/23/phaser-components-input-enabled/) component.
+## 3 - List of events
 
 ## onInutDown
 
@@ -99,24 +126,7 @@ Same as onInputDown, but if fires when the mouse button is release, or a touch e
 
 These are additional handlers in the events object that are fired when a mouse cursor is hovering over the display object, and when it leaves, which is useful for desktop projects.
 
-## Getting started with drag events
 
-In order to get started with drag events in addition to setting the inputEnabled bool to true, there is also an additional bool to set true in the inputHandler of the display object at gra.input.draggable.
-
-```js
-// make some graphics
-var gra = game.add.graphics(0,0);
- 
-gra.beginFill(0x00ff00);
-gra.drawRect(0,0,50,50);
-gra.endFill();
- 
-// enable input for the graphics
-gra.inputEnabled = true;
- 
-// make the graphics draggable
-gra.input.draggable = true;
-```
 
 Be sure to check out my [post on draggable](/2017/10/24/phaser-inputhandler-draggable/) input in phaser. To know a bit more about what is need to know with the inputHander, this post will cover more about the events involved.
 
