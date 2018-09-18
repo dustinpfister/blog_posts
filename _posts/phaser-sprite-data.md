@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 279
-updated: 2018-09-18 09:37:18
-version: 1.3
+updated: 2018-09-18 09:45:42
+version: 1.4
 ---
 
 When making sprites for a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there is a standard way of setting some data on a per sprite bases. This is the sprite.data object, an object that defaults to just a plain old javaScript object literal, and is not used my phaser itself internal. So when making a game this is what should be used to park any data, or methods that is part of the game logic that makes up the essence of the project for the sprites. For example if I am making some kind of strategy game that involves the use of a custom Enemy class that I made, then chances are I will be storing an instance of that Enemy Class as a property of sprite.data, or maybe even make sprite.data an instance of that class. In this post I will be writing about an example that will help explain this further.
@@ -23,7 +23,11 @@ In this post I am using phaser 2.11.0, not the latest release of phaser 3 that m
 
 ## 2 - Basic example of using a Sprite.data object
 
-### 2.1 - a helper for appending some stuff to Sprite.data
+For a basic example of using the Sprite.data object I made a simple example that just involves moving a sprite back and forth on the screen using some properties and methods appending to the Sprite.data object.
+
+### 2.1 - A helper for appending some stuff to Sprite.data
+
+So for this very simple getting started example I made a helper in which I pass a reference to a Phaser.Game instance, and a sprite that I have made before hand, and the helper appends some values, and a method that can be used to accomplish the simple back and forth movement.
 
 ```js
 var setupDataObject = function (game, sprite) {
@@ -50,6 +54,8 @@ var setupDataObject = function (game, sprite) {
  
 };
 ```
+
+When I put together a state object that will make use of this helper I use this method to setup the sprites data object in the create method of the state object, and then call the step method in the update method of the state object.
 
 ### 2.2 - Making a sprite sheet with canvas
 
