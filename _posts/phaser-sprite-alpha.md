@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 282
-updated: 2018-09-18 14:37:26
-version: 1.1
+updated: 2018-09-18 14:41:01
+version: 1.2
 ---
 
 Setting sprite transparency in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is pretty simple, I just need to set the [Sprite.alpha](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#alpha) value to a number value between 0, an 1.  There is also playing around with the alpha values in canvas when making sheets that way, but why bother with that when Sprite.alpha works just fine. Never the less I thought I would make a quick post on this, and some other sprite related topics just for the fun of it.
@@ -14,6 +14,12 @@ Setting sprite transparency in [Phaser ce](https://photonstorm.github.io/phaser-
 <!-- more -->
 
 ## 1 - what to know
+
+This is a post on setting Sprite alpha transparency in phaser ce, using Sprite.alpha. In other words this is a post on a very specific topic with phaser the javaScript powered game framework. I trust that you have at least some background with javaScript and phaser in general.
+
+### 1.1 - This is a phaser ce (2.x) post
+
+When I wrote this post I was using phaser ce 2.11.0, and not the later 3.x versions of [phaser](https://phaser.io/).
 
 ## 2 - An example involving blocks
 
