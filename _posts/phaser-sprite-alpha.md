@@ -5,13 +5,15 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 282
-updated: 2018-09-18 16:32:04
-version: 1.5
+updated: 2018-09-18 16:48:56
+version: 1.6
 ---
 
 Setting sprite transparency in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is pretty simple, I just need to set the [Sprite.alpha](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#alpha) value to a number value between 0, an 1.  There is also playing around with the alpha values in canvas when making sheets that way, but why bother with that when Sprite.alpha works just fine. Never the less I thought I would make a quick post on this, and some other sprite related topics just for the fun of it.
 
 <!-- more -->
+
+{% phaser 'phaser-sprite-alpha/main.js' %}
 
 ## 1 - what to know
 
@@ -110,6 +112,8 @@ Blocks.setSpriteDataObject = function (game, sprite) {
 ```
 
 ### 2.3 - The spawn method
+
+The spawn method will be used with a timer event to create a new sprite every so often up until a certain limit is reached. In this method I also attach some events including one that calls my Sprite.data onDeath method that will begin the death alpha transparency effect.
 
 ```js
 // spawn another enemy
