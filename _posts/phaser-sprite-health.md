@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 281
-updated: 2018-09-17 21:28:18
-version: 1.3
+updated: 2018-09-18 07:30:50
+version: 1.4
 ---
 
 With [Phaser ce](https://photonstorm.github.io/phaser-ce/) sprite objects there is a health property, this property can be used in conjunction with methods like Sprite.damage to manage hit points for the Sprite. Many kinds of games involve the use of hit points, and when these hit point values reach zero or lower, that often will trigger death animations, and other events. ALthout it is fine to make hit points part of my own separate game logic, the built in health property can be used in conjunction with other properties and methods to help speed things along with managing health. In this post I will be writing about managing hit points in a phaser ce game using the Sprite.health property, and a few closely related methods and properties like Sprite.damage, and Sprite.events.onKilled.
@@ -18,6 +18,8 @@ With [Phaser ce](https://photonstorm.github.io/phaser-ce/) sprite objects there 
 This is a post on the Sprite.health property, and other methods, and properties in phaser ce the community edition of phaser a javaScript powered game framework.
 
 ## 2 - A Basic example of Sprite.health
+
+For a basic example of using Sprite.health, I made a simple example that makes a Sprite and sets the health property to 100. I then also set up an onKilled event that will be used to set the exists property to true, and set the frame index to a frame that will represent a death frame. The reason for this is that when I use the Sprite.damage method the Sprite.alive, and Sprite.exists properties will be set to false. In this example I want to display a death frame, but in more advanced examples this might advance into a death animation.
 
 
 ### 2.1 - A helper for making a sprite that makes use of Sprite.health
