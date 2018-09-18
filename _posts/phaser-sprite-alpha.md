@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 282
-updated: 2018-09-18 16:24:32
-version: 1.4
+updated: 2018-09-18 16:32:04
+version: 1.5
 ---
 
 Setting sprite transparency in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is pretty simple, I just need to set the [Sprite.alpha](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#alpha) value to a number value between 0, an 1.  There is also playing around with the alpha values in canvas when making sheets that way, but why bother with that when Sprite.alpha works just fine. Never the less I thought I would make a quick post on this, and some other sprite related topics just for the fun of it.
@@ -49,6 +49,8 @@ Blocks.setup = function (game) {
 The Blocks.setup method will set up my game.data object which is the typical way I go about storing things that I will want to use across states.
 
 ### 2.2 - Setting Sprite.alpha with the Sprite.data object
+
+I made a Blocks.setSpriteDataObject helper that will attach properties and method to the [Sprite.data](/2018/09/14/phaser-sprite-data/) object. When this helper is used two methods are added to the data object of the sprite given that both help manage alpha transparency effects. One of them is meant to be called on each frame tick and will help with the effect where the transparency will change depending on the distance to the center of the canvas. The other sets up a death animation that will also be caries out by the method that is called on each frame tick.
 
 ```js
 // setup a data object for a given sprite
@@ -98,7 +100,6 @@ Blocks.setSpriteDataObject = function (game, sprite) {
  
         this.dx = 0;
         this.dy = 0;
-        this.sprite.alpha = 1;
         this.sprite.exists = true;
         this.sprite.frame = 1;
         this.i = 0;
