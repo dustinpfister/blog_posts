@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-09-18 19:55:03
-version: 1.13
+updated: 2018-09-18 19:55:20
+version: 1.14
 ---
 
 The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
@@ -230,7 +230,7 @@ The onDestroy event fires whenever a sprite is completely removed from the cache
 
 The onKilled event differs from the onDestroy event in that this event fires when a sprite is killed, but still remains in the cache. Check out my [full post on the onKilled](/2018/09/13/phaser-sprite-events-onkilled/) event to read more on this one.
 
-## Conclusion
+## 4 - Conclusion
 
 The events component is very useful for quickly getting started with input involving display objects. As time goes on I may update this post to reference other posts on phaser display object components as time goes by.
 
