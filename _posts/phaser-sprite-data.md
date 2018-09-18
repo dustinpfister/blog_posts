@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 279
-updated: 2018-09-18 09:54:52
-version: 1.6
+updated: 2018-09-18 09:57:08
+version: 1.7
 ---
 
 When making sprites for a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there is a standard way of setting some data on a per sprite bases. This is the sprite.data object, an object that defaults to just a plain old javaScript object literal, and is not used my phaser itself internal. So when making a game this is what should be used to park any data, or methods that is part of the game logic that makes up the essence of the project for the sprites. For example if I am making some kind of strategy game that involves the use of a custom Enemy class that I made, then chances are I will be storing an instance of that Enemy Class as a property of sprite.data, or maybe even make sprite.data an instance of that class. In this post I will be writing about an example that will help explain this further.
@@ -122,3 +122,5 @@ game.state.start('basic');
 When this example is up and running the box move back and forth as expected, using properties and a method that are tucked away into its data object.
 
 ## 3 - Conclusion
+
+So the Sprite.data object is the phaser ce standard way of assigning any kind of properties or methods that should be attached to a sprite insistence. One way or another there is often a need to do something like this for just about any phaser ce project, so I might as well stick to the common standard way of doing it via Sprite.data.
