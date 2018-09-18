@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 282
-updated: 2018-09-18 17:05:21
-version: 1.8
+updated: 2018-09-18 17:07:51
+version: 1.9
 ---
 
-Setting sprite transparency in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is pretty simple, I just need to set the [Sprite.alpha](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#alpha) value to a number value between 0, an 1.  There is also playing around with the alpha values in canvas when making sheets that way, but why bother with that when Sprite.alpha works just fine. Never the less I thought I would make a quick post on this, and some other sprite related topics just for the fun of it.
+Setting sprite [transparency](https://en.wikipedia.org/wiki/Alpha_compositing) in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is pretty simple, I just need to set the [Sprite.alpha](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#alpha) value to a number value between 0, an 1.  There is also playing around with the alpha values in canvas when making sheets that way, but why bother with that when Sprite.alpha works just fine. Never the less I thought I would make a quick post on this, and some other sprite related topics just for the fun of it.
 
 <!-- more -->
 
