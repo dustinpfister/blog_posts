@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 279
-updated: 2018-09-18 09:45:42
-version: 1.4
+updated: 2018-09-18 09:47:54
+version: 1.5
 ---
 
 When making sprites for a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there is a standard way of setting some data on a per sprite bases. This is the sprite.data object, an object that defaults to just a plain old javaScript object literal, and is not used my phaser itself internal. So when making a game this is what should be used to park any data, or methods that is part of the game logic that makes up the essence of the project for the sprites. For example if I am making some kind of strategy game that involves the use of a custom Enemy class that I made, then chances are I will be storing an instance of that Enemy Class as a property of sprite.data, or maybe even make sprite.data an instance of that class. In this post I will be writing about an example that will help explain this further.
@@ -59,6 +59,8 @@ When I put together a state object that will make use of this helper I use this 
 
 ### 2.2 - Making a sprite sheet with canvas
 
+For very basic examples like this I just use some very simple solid color box sprite sheet, so a canvas solution like this will work fine.
+
 ```js
 // make a sprite sheet
 var mkSheet = function (game) {
@@ -77,6 +79,8 @@ var mkSheet = function (game) {
  
 };
 ```
+
+This kind of solution can also work for making sprite sheets that are a little more involved as well, for more on that topic you might want to check out [my post on making sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/).
 
 ### 2.3 - The Phaser.Game instance, and single state object.
 
