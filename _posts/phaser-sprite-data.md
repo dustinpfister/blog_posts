@@ -5,21 +5,21 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 279
-updated: 2018-09-18 09:57:08
-version: 1.7
+updated: 2018-09-18 10:01:27
+version: 1.8
 ---
 
-When making sprites for a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there is a standard way of setting some data on a per sprite bases. This is the sprite.data object, an object that defaults to just a plain old javaScript object literal, and is not used my phaser itself internal. So when making a game this is what should be used to park any data, or methods that is part of the game logic that makes up the essence of the project for the sprites. For example if I am making some kind of strategy game that involves the use of a custom Enemy class that I made, then chances are I will be storing an instance of that Enemy Class as a property of sprite.data, or maybe even make sprite.data an instance of that class. In this post I will be writing about an example that will help explain this further.
+When making sprites for a game using [Phaser ce](https://photonstorm.github.io/phaser-ce/) as a framework, there is a standard way of setting some data on a per sprite bases. This is the [Sprite.data object](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#data), an object that defaults to just a plain old javaScript object literal, and is not used my phaser itself internal. So when making a game this is what should be used to park any data, or methods that is part of the game logic that makes up the essence of the project for the sprites. For example if I am making some kind of strategy game that involves the use of a custom Enemy class that I made, then chances are I will be storing an instance of that Enemy Class as a property of sprite.data, or maybe even make sprite.data an instance of that class. In this post I will be writing about an example that will help explain this further.
 
 <!-- more -->
 
 ## 1 - what to know first
 
-This is a post on using the Sprite.data object for appending properties, and methods to a single Sprite object that are project specific in phaser ce. In this post I am using Sprites, and a solution for making a sprite sheet from canvas, as well as many other phaser ce related topics.As such this is not a getting started post on phaser ce, but just a post on one little topic when it comes to phaser ce game development.
+This is a post on using the [Sprite.data object](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#data) for appending properties, and methods to a single Sprite object that are project specific in phaser ce. In this post I am using Sprites, and a solution for making a sprite sheet from canvas, as well as many other phaser ce related topics.As such this is not a getting started post on phaser ce, but just a post on one little topic when it comes to phaser ce game development.
 
 ### 1.1 - This is a phaser ce (2.x) post
 
-In this post I am using phaser 2.11.0, not the latest release of phaser 3 that major release is a complete rebuild from the ground up and the code here will break if trying to use it with phaser 3.
+In this post I am using [phaser ce](https://photonstorm.github.io/phaser-ce/) 2.11.0, not the latest release of [phaser](https://phaser.io/) that major release is a complete rebuild from the ground up and the code here will break if trying to use it with phaser 3.
 
 ## 2 - Basic example of using a Sprite.data object
 
@@ -84,7 +84,7 @@ This kind of solution can also work for making sprite sheets that are a little m
 
 ### 2.3 - The Phaser.Game instance, and single state object.
 
-So now it is time to tie everything together with a Phaser.Game instance and just a single state for now. After setting up my Phaser.Game instance I create a single state object that I will call 'basic' and in the create method of this basic state I create my sprite sheet with the canvas solution helper described above. After I have my sprite sheet in the cache, I use it to create and skin a new sprite, and give it a name. I then of course use my setupDataObject method to append what I need to the sprites data object my passing the Phaser.Game instance and a reference to the sprite as well. Then in the update method of the basic state I call my step method that is attached to Sprite.data to step the movement of the sprite.
+So now it is time to tie everything together with a [Phaser.Game instance](/2017/10/11/phaser-main-game-constructor/) and just a single [state object](/2017/10/06/phaser-state-objects/) for now. After setting up my Phaser.Game instance I create a single state object that I will call 'basic' and in the create method of this basic state I create my sprite sheet with the canvas solution helper described above. After I have my sprite sheet in the cache, I use it to create and skin a new sprite, and give it a name. I then of course use my setupDataObject method to append what I need to the sprites data object my passing the Phaser.Game instance and a reference to the sprite as well. Then in the update method of the basic state I call my step method that is attached to Sprite.data to step the movement of the sprite.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
