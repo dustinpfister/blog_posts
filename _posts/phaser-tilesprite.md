@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 10:32:49
-version: 1.3
+updated: 2018-09-20 10:35:15
+version: 1.4
 ---
 
 Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A tile Sprite is not to be confused with a tile map which is something completely different. For today I spend a little time playing around with tile sprites, and have found that If I every want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
@@ -22,6 +22,39 @@ In this post I will be writing about making and using tile sprites in [phaser ce
 Ever sense the release of phaser 3 earlier this year I have started the habit of making in clear what version of phaser I am using when making a post. This is a practice that I should be doing in one manor or another each time anyway. So for this post I was using phaser ce 2.11.0
 
 ## 2 - Basic example using a tile sprite in phaser ce
+
+
+### 2.1 - The tile sprite helper
+
+```js
+// make a tile sprite
+var mkTileSprite = function (game) {
+ 
+    var tile = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'sheet-block', 0);
+    tile.name = 'tile';
+ 
+    tile.data.i = 0;
+    tile.data.i_max = 150;
+    tile.data.tick = function () {
+ 
+        this.per = this.i / this.i_max;
+ 
+        this.r = Math.PI * 2 * this.per;
+        this.x = Math.cos(this.r) * 64;
+        this.y = Math.sin(this.r) * 64;
+ 
+        // set tile position
+        tile.tilePosition.set(this.x, this.y);
+ 
+        this.i += 1;
+        this.i %= this.i_max;
+ 
+    };
+ 
+};
+```
+
+### 2.2 - Making the sprite sheet
 
 ```js
 var mkSheet = function () {
@@ -67,33 +100,7 @@ var mkSheet = function () {
 };
 ```
 
-```js
-// make a tile sprite
-var mkTileSprite = function (game) {
- 
-    var tile = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'sheet-block', 0);
-    tile.name = 'tile';
- 
-    tile.data.i = 0;
-    tile.data.i_max = 150;
-    tile.data.tick = function () {
- 
-        this.per = this.i / this.i_max;
- 
-        this.r = Math.PI * 2 * this.per;
-        this.x = Math.cos(this.r) * 64;
-        this.y = Math.sin(this.r) * 64;
- 
-        // set tile position
-        tile.tilePosition.set(this.x, this.y);
- 
-        this.i += 1;
-        this.i %= this.i_max;
- 
-    };
- 
-};
-```
+### 2.3 - Now to get things working
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -121,3 +128,5 @@ game.state.add('boot', {
  
 game.state.start('boot');
 ```
+
+## 3 - Conclusion
