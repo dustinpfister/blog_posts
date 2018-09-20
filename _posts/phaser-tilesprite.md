@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 12:39:53
-version: 1.9
+updated: 2018-09-20 12:44:10
+version: 1.10
 ---
 
 Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A [tile Sprite](https://photonstorm.github.io/phaser-ce/Phaser.TileSprite.html) is not to be confused with a tile map which is something completely different. For today I spent a little time playing around with tile sprites, and have found that if I ever want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
@@ -57,7 +57,7 @@ var mkTileSprite = function (game) {
 };
 ```
 
-Once I have my tile sprite I assign a name to it so I can use game.world.getByName as a way to grab a reference to it later on in my code. In addition to that I also assign some code to the data object of the tile sprite to help offset some stuff to the instance of the tile sprite rather than polluting the global name space, or ending up with a lengthly [game.data object](/2018/09/14/phaser-sprite-data/) in the event that this example  grows.
+Once I have my tile sprite I assign a name to it so I can use game.world.getByName as a way to grab a reference to it later on in my code. In addition to that I also assign some code to the [data object of the tile sprite](/2018/09/14/phaser-sprite-data/) to help offset some stuff to the instance of the tile sprite rather than polluting the global name space, or ending up with a lengthly game.data object in the event that this example  grows.
 
 ### 2.2 - Making the sprite sheet
 
@@ -107,7 +107,7 @@ var mkSheet = function () {
 };
 ```
 
-I have found that it is generally good practice to stick to powers of 2 when making the size of a frame to be used in sprite sheets. Although other sizes might work it can some times cause adverse effects, or in some cases not work at all.
+I have found that it is generally a good practice to stick to powers of 2 when making the size of a frame to be used in sprite sheets. Although other sizes might work it can some times cause adverse effects, or in some cases not work at all.
 
 ### 2.3 - Now to get things working
 
@@ -140,7 +140,7 @@ game.state.add('boot', {
 game.state.start('boot');
 ```
 
-This results in a sprite with a repeating texture that scrolls around in a circular motion. In real projects this can of course be used to make repeating backgrounds, and other interesting sprites that call for such an effect. It is also possible to have more than one layer of these kinds of sprites in a Group to make very interesting professional looking backgrounds.
+This results in a sprite with a repeating texture that scrolls around in a circular motion. In real projects this can of course be used to make repeating backgrounds, and other interesting sprites that call for such an effect. It is also possible to have more than one layer of these kinds of sprites [in a Group](/2018/08/24/phaser-groups/) to make very interesting professional looking backgrounds.
 
 ## 3 - Conclusion
 
