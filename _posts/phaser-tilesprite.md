@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 11:05:37
-version: 1.8
+updated: 2018-09-20 12:39:53
+version: 1.9
 ---
 
-Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A tile Sprite is not to be confused with a tile map which is something completely different. For today I spend a little time playing around with tile sprites, and have found that If I every want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
+Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A [tile Sprite](https://photonstorm.github.io/phaser-ce/Phaser.TileSprite.html) is not to be confused with a tile map which is something completely different. For today I spent a little time playing around with tile sprites, and have found that if I ever want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
 
 <!-- more -->
 
@@ -17,7 +17,7 @@ Tile sprites are a useful way to go about making a repeating background in a [Ph
 
 In this post I will be writing about making and using tile sprites in [phaser ce](https://photonstorm.github.io/phaser-ce/) the community edition of the [popular javaScript game frame work](https://phaser.io). I will also be making use of a lot of other aspects of phaser including things like state objects, and making sprite sheets from canvas elements. I will of course not get into every little detail about phaser let alone javaScript in general, but I have written a [getting started post on phaser](/2017/10/04/phaser-getting-started/) a while back.
 
-### 1.1 - this is a phaser ce (2.x) post
+### 1.1 - This is a phaser ce (2.x) post
 
 Ever sense the release of phaser 3 earlier this year I have started the habit of making in clear what version of phaser I am using when making a post. This is a practice that I should be doing in one manor or another each time anyway. So for this post I was using phaser ce 2.11.0
 
@@ -57,7 +57,7 @@ var mkTileSprite = function (game) {
 };
 ```
 
-Once I have my tile sprite I assign a name to it so I can use game.world.getByName as a way to grab a reference to it later on in my code. In addition to that I also assign some code to the data object of the tile sprite to help offset some stuff to the instance of the tile sprite rather than polluting the global name space, or ending up with a lengthly gamer.data object in the event that this example  grows.
+Once I have my tile sprite I assign a name to it so I can use game.world.getByName as a way to grab a reference to it later on in my code. In addition to that I also assign some code to the data object of the tile sprite to help offset some stuff to the instance of the tile sprite rather than polluting the global name space, or ending up with a lengthly [game.data object](/2018/09/14/phaser-sprite-data/) in the event that this example  grows.
 
 ### 2.2 - Making the sprite sheet
 
