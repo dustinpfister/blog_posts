@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 10:35:15
-version: 1.4
+updated: 2018-09-20 10:40:48
+version: 1.5
 ---
 
 Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A tile Sprite is not to be confused with a tile map which is something completely different. For today I spend a little time playing around with tile sprites, and have found that If I every want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
@@ -23,6 +23,7 @@ Ever sense the release of phaser 3 earlier this year I have started the habit of
 
 ## 2 - Basic example using a tile sprite in phaser ce
 
+For a basic example of a tile sprite I will need a texture, in this example I will be making once via a canvas element. Once I have a texture that will repeat well I can then use that texture to make a tile sprite by calling game.add.tileSprite. There are some properties that I then can used to work with the tile sprite, but the most important one might be the Phaser.Point instance at the tileSprite.tilePosition property. This what I use to make a repeating texture scroll. In this section I will be covering a basic working example of this.
 
 ### 2.1 - The tile sprite helper
 
