@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 10:40:48
-version: 1.5
+updated: 2018-09-20 10:48:47
+version: 1.6
 ---
 
 Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A tile Sprite is not to be confused with a tile map which is something completely different. For today I spend a little time playing around with tile sprites, and have found that If I every want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
@@ -26,6 +26,8 @@ Ever sense the release of phaser 3 earlier this year I have started the habit of
 For a basic example of a tile sprite I will need a texture, in this example I will be making once via a canvas element. Once I have a texture that will repeat well I can then use that texture to make a tile sprite by calling game.add.tileSprite. There are some properties that I then can used to work with the tile sprite, but the most important one might be the Phaser.Point instance at the tileSprite.tilePosition property. This what I use to make a repeating texture scroll. In this section I will be covering a basic working example of this.
 
 ### 2.1 - The tile sprite helper
+
+In this method I am creating a tile sprite by calling game.add.tileSprite, the arguments that I give to the constructor are essentially the same as a regular Sprite, so if you are familiar with that constructor you know the drill. If not the first two arguments are the x, and y position, the next two are the width and height, the fifth is a key to the sheet I want to use, and the final argument is the frame index.
 
 ```js
 // make a tile sprite
@@ -54,6 +56,8 @@ var mkTileSprite = function (game) {
  
 };
 ```
+
+Once I have my tile sprite I assign a name to it so I can use game.world.getByName as a way to grab a reference to it later on in my code. In addition to that I also assign some code to the data object of the tile sprite to help offset some stuff to the instance of the tile sprite rather than polluting the global name space, or ending up with a lengthly gamer.data object in the event that this example  grows.
 
 ### 2.2 - Making the sprite sheet
 
