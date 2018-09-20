@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 10:11:49
-version: 1.1
+updated: 2018-09-20 10:23:45
+version: 1.2
 ---
 
 Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A tile Sprite is not to be confused with a tile map which is something completely different. For today I spend a little time playing around with tile sprites, and have found that If I every want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
@@ -14,6 +14,8 @@ Tile sprites are a useful way to go about making a repeating background in a [Ph
 <!-- more -->
 
 ## 1 - what to know
+
+In this post I will be writing about making and using tile sprites in [phaser ce](https://photonstorm.github.io/phaser-ce/) the community edition of the [popular javaScript game frame work](https://phaser.io). I will also be making use of a lot of other aspects of phaser including things like state objects, and making sprite sheets from canvas elements. I will of course not get into every little detail about phaser let alone javaScript in general, but I have written a [getting started post on phaser](/2017/10/04/phaser-getting-started/) a while back.
 
 
 ```js
