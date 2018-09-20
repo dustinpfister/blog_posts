@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 10:48:47
-version: 1.6
+updated: 2018-09-20 10:56:29
+version: 1.7
 ---
 
 Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A tile Sprite is not to be confused with a tile map which is something completely different. For today I spend a little time playing around with tile sprites, and have found that If I every want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
@@ -61,6 +61,8 @@ Once I have my tile sprite I assign a name to it so I can use game.world.getByNa
 
 ### 2.2 - Making the sprite sheet
 
+The above example makes use of a sprite sheet called 'sheet-block', I often like to use canvas as a way to make basic sheets for the purpose of these examples. So here I have a method that will create a simple texture that will repeat well with canvas, and then add it to the cache.
+
 ```js
 var mkSheet = function () {
  
@@ -104,6 +106,8 @@ var mkSheet = function () {
  
 };
 ```
+
+I have found that it is generally good practice to stick to powers of 2 when making the size of a frame to be used in sprite sheets. Although other sizes might work it can some times cause adverse effects, or in some cases not work at all.
 
 ### 2.3 - Now to get things working
 
