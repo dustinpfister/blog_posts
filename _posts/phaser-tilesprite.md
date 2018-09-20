@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 283
-updated: 2018-09-20 10:56:29
-version: 1.7
+updated: 2018-09-20 11:05:37
+version: 1.8
 ---
 
 Tile sprites are a useful way to go about making a repeating background in a [Phaser ce](https://photonstorm.github.io/phaser-ce/) project. A tile Sprite is not to be confused with a tile map which is something completely different. For today I spend a little time playing around with tile sprites, and have found that If I every want to set something up that involves one or more repeating backgrounds, I will want to use a tile sprite.
@@ -111,6 +111,8 @@ I have found that it is generally good practice to stick to powers of 2 when mak
 
 ### 2.3 - Now to get things working
 
+So now that I have my two helper methods I can now make use of them my making a Phaser.Game instance, and a state object. For this example I just need to call my mkSheet helper in in the create method followed by the mkTileSprite helper. Then in the update method I just need to call the tick method in the data object of my tile sprite.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -138,4 +140,8 @@ game.state.add('boot', {
 game.state.start('boot');
 ```
 
+This results in a sprite with a repeating texture that scrolls around in a circular motion. In real projects this can of course be used to make repeating backgrounds, and other interesting sprites that call for such an effect. It is also possible to have more than one layer of these kinds of sprites in a Group to make very interesting professional looking backgrounds.
+
 ## 3 - Conclusion
+
+So tile sprites are a great way to make any kind of sprite that involves the use of a repeating texture. There is also of course tile maps as well that allow for making display Objects that are composed of a bunch of different frames that represent different blocks, but that is a mater for another post.
