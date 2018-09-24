@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 286
-updated: 2018-09-24 15:33:28
-version: 1.4
+updated: 2018-09-24 16:05:41
+version: 1.5
 ---
 
 So it is time for yet another lodash post, this time on the \_.get method which oddly enough I have not wrote about yet. The \_.get method allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. I can also pass an optional default value to the method in case the path to the value is undefined. It might also be a good idea to explore some other options for quickly getting values from an object in javaScript as well, so I will be writing about some vanilla js alternatives to \_.get as well.
@@ -74,30 +74,38 @@ In most cases I can do just fine with one of these just fine, but if for some re
 
 ### 2.3 - Making an alternative to \_.get in plain old javaScirpt
 
-I quickly put together this in a flash, it does not work as well as \_.get as it only supports the dot operator notation, but it would not take that much longer to make it more robust.
+I quickly put together this in a flash, For the most part it seems to work in the same manner, but it is not battle tested.
 
 ```js
-var getByPath = function (obj, path, def) {
+var getByPath = function(obj, path, def) {
  
-    var levels = path.split('.');
+    path = path
+        .replace(/\[/g, '.')
+        .replace(/]/g, '')
+        .split('.');
  
-    levels.forEach(function (level,i) {
+    path.forEach(function (level) {
         obj = obj[level];
     });
  
     if (obj === undefined) {
- 
         return def;
- 
     }
  
     return obj;
  
 };
  
-console.log(getByPath(enemy, 'health.healRate.active')); // false
+console.log(getByPath(enemy, 'targets[1]')); // 6
  
-console.log(getByPath(enemy, 'health.overTime',{amount:0,ticks:0})); // { amount: 0, ticks: 0 }
+console.log(getByPath(enemy, 'health.overTime', {
+        amount: 0,
+        ticks: 0
+    })); // { amount: 0, ticks: 0 }
 ```
 
 Although it might not take to long to make my own solution for a lot of these methods in lodash if there is not a native method to use, it is still way longer than just using \_.get if lodash is part of the stack.
+
+## 3 - Conclusion
+
+Quickly looking over some chatter on stack overflow, and comments at the issues section at the lodash github repo it seems like one of the biggest issues to look out for is that the default value will only return if the value turns out to be undefined. If you expect the default value to return if the path returns a value like null, or false that is one reason why you might want to make your own solution for \_.get. It would not be to hard to add a forth argument to the vanilla js alternative that could be an array of values to return the default for.
