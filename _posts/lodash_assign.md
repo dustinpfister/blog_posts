@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 15:29:31
-version: 1.14
+updated: 2018-09-25 15:34:22
+version: 1.15
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign). The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
@@ -174,7 +174,7 @@ keepIt.tick();
 console.log(keepIt); // Point { x: 5, y: 2, dx: 5, dy: 2, foo: 'bar' }
 ```
 
-This keeps the prototype in the prototype where it should be rather than another solution in which the prototype ends up getting mixed in with regular old object properties.
+This keeps the prototype in the prototype where it should be rather than another solution in which the prototype ends up getting mixed in with regular old object properties. There is also of course the native Object.create which also works the same way.
 
 ### 4.2 - Using \_.assignIn aka \_.extend to combine everything.
 
@@ -193,3 +193,7 @@ console.log(extended); // { x: 30, y: 57, dx: 25, dy: 50, tick: [Function] }
 ```
 
 This can defeat the purpose of the prototype object if dealing with a large collection of objects that share the same prototype, so this solution should be avoided. Unless for some reason you want ot need to do it of course.
+
+## 5 - Conclusion
+
+So \_.assign, as well as other methods like \_.merge, and \_.extend are some of the many useful methods for working with objects in a project where lodash is part of the stack. Although many of the methods are now native in javaScript itself, there is much more that lodash has to offer. In any case if you use the native Object.assign or the \_.assign method hopefully this post has helped you gain a better understanding of what assign does if you did not know before hand. In any case I hope you enjoyed the post, thanks for reading.
