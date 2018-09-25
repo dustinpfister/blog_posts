@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 15:24:24
-version: 1.13
+updated: 2018-09-25 15:29:31
+version: 1.14
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign). The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
@@ -175,3 +175,21 @@ console.log(keepIt); // Point { x: 5, y: 2, dx: 5, dy: 2, foo: 'bar' }
 ```
 
 This keeps the prototype in the prototype where it should be rather than another solution in which the prototype ends up getting mixed in with regular old object properties.
+
+### 4.2 - Using \_.assignIn aka \_.extend to combine everything.
+
+Another option would be to use \_.extend which is an alias for \_.assignIn. The \_.assignIn method works like \_assign, but it will bring in the prototype method as well.
+
+```js
+// EXTEND
+var extended = _.extend({},new Point(5,7,25,50));
+ 
+// the prototype will be lost
+console.log(extended.constructor.name); // Object
+ 
+// but it will be combined the inherited properties into the object.
+extended.tick();
+console.log(extended); // { x: 30, y: 57, dx: 25, dy: 50, tick: [Function] }
+```
+
+This can defeat the purpose of the prototype object if dealing with a large collection of objects that share the same prototype, so this solution should be avoided. Unless for some reason you want ot need to do it of course.
