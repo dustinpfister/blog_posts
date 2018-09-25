@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 09:53:02
-version: 1.4
+updated: 2018-09-25 10:01:11
+version: 1.5
 ---
 
 When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a time map. A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
@@ -24,13 +24,15 @@ For a basic example of using a tile map, I made an example that is just a single
 
 ### 2.1 - Create a tilemap instance
 
+So first I need to have an instance of a tile map to get things started. For this example I have pulled this part of the process into a single helper method that will create the map with some values that are set with number literals, and then also adds a sprite sheet to the map that is assumed to be there, then returns the map. For this simple example it should work fine as long as it is used in the proper order after I have my sprite sheet, more on that laster.
+
 ```js
 // just create a new map, add a tile set image, and return a
 // reference to the map
 var createMap = function (game) {
  
     // CREATE A TILEMAP
-    var map = this.map = game.add.tilemap(null, 32, 32, 6, 6);
+    var map = game.add.tilemap(null, 32, 32, 6, 6);
  
     // ADD A SPRITE SHEET
     map.addTilesetImage('sheet-blocks');
@@ -39,6 +41,8 @@ var createMap = function (game) {
  
 };
 ```
+
+When calling game.add.tilemap the first argument is a key to tilemap data that is stored in the cache, because in this example I am working with a blank tilemap, I leave this value as null. The next augments have to do with setting the tile size, and the grid size. So in this map I am working with tiles that are 32 by 32 pixles, and it is a 6 by 6 grid.
 
 ### 2.2 - Create at least one layer for the tilemap
 
