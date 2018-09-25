@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 10:21:09
-version: 1.6
+updated: 2018-09-25 10:27:11
+version: 1.7
 ---
 
 When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a time map. A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
@@ -77,6 +77,8 @@ You might have noticed that I set fixed to camera to false in this example. By d
 
 ### 2.3 - Generate some index data for the map
 
+So now that I have a map with a sprite sheet, and at least one layer, I now want to have some index data for the map. So for starters I made a method that will generate a bunch of random index values in a range set by a number literal. Nothing fancy, but it will work okay for this simple getting started example.
+
 ```js
 // set random index data
 var setRandomMapIndexData = function (map) {
@@ -89,6 +91,8 @@ var setRandomMapIndexData = function (map) {
  
 };
 ```
+
+The map.forEach method is one of the many tile map method that make working with a tile map a breeze compared to making my own solution from the ground up. The map.forEach method as the name suggests will run over each tile, in a given area. For this example I am setting index values for each tile in the whole map.
 
 ### 2.4 - Have a sprite sheet for the map
 
