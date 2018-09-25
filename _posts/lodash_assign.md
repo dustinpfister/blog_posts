@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 13:26:30
-version: 1.2
+updated: 2018-09-25 13:31:48
+version: 1.3
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on \_.assign in lodash, as well as the native alternative Object.assign. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
@@ -14,7 +14,11 @@ Looking over my content so far I am surprised that I have not yet wrote a post o
 <!-- more -->
 
 
-## 2 - Basic example of 
+## 2 - Basic example of assign
+
+So for a basic example of the assign method I will start out with a bunch of objects that contain properties, and methods that I will like to combine together into a single method. In this example I will not be doing anything advanced involving nested objects or the prototype chain, and I will be giving both lodash, and native Object.assign examples.
+
+### 2.1 - Using the lodash \_.assign method.
 
 ```js
 var pos = {
@@ -39,5 +43,16 @@ var obj = _.assign({}, pos, deltas, methods);
  
 obj.step();
  
+console.log(obj.x,obj.y); // 43.2,12.2
+```
+
+### 2.2 - Object.assign
+
+```js
+// assign everything to a new object
+var obj = Object.assign({}, pos, deltas,methods);
+
+obj.step();
+
 console.log(obj.x,obj.y); // 43.2,12.2
 ```
