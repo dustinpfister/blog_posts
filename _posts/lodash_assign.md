@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 15:14:36
-version: 1.12
+updated: 2018-09-25 15:24:24
+version: 1.13
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign). The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
@@ -160,3 +160,18 @@ console.log(assigned.constructor.name); // Object
 ```
 
 There is a number of ways of resolving this one way would be to use \_.create to set the prototype back to the object. However there is also the \_.extend method which is an alias for \_.assignIn that can be used as a way to keep method from a prototype.These different solutions work in very different ways so in this section I will cover what some of the options are.
+
+### 4.1 - Using \_.create to bring the prototype back
+
+So one way to bring the prototype back after using \_.assign would be to just use \_.create to create a new object with the desired prototype, and pass in the result of an \_.assign as the properties to use with that object.
+
+```js
+var keepIt = _.create(Point.prototype, _.assign({}, new Point(0,0,5,2),{foo:'bar'}));
+ 
+console.log(keepIt.constructor.name); // Point
+keepIt.tick();
+ 
+console.log(keepIt); // Point { x: 5, y: 2, dx: 5, dy: 2, foo: 'bar' }
+```
+
+This keeps the prototype in the prototype where it should be rather than another solution in which the prototype ends up getting mixed in with regular old object properties.
