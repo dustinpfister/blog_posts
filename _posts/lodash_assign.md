@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 14:07:19
-version: 1.10
+updated: 2018-09-25 14:09:32
+version: 1.11
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign). The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
@@ -75,7 +75,7 @@ Assuming that it is always there to work with it would seem that Object.assign w
 
 So when dealing with nested objects you might run into problems, depending on how you expect objects to combine together. As the name suggested \_.assign, well, assigns what is in the objects that you give it to the target object that is given as the first argument. In other worlds objects are copied in by reference and not by value which is the typical case with objects. In many cases this does not present a problem because it may be what is expected or desired. 
 
-However if the typical copy by reference behavior is not what is expected, then when one of the values of the objects that are given to assign changes, then it will also change in the target object where everything is assigned to. If this is not what is desired then there are a number of ways to change that such as using a method like [\_.cloneDeep](/2017/11/13/lodash_clonedeep/) when passing in the objects, or better yet using another lodash method know as \_.merge.
+However if the typical copy by reference behavior is not what is expected, then when one of the values of the objects that are given to assign changes, then it will also change in the target object where everything is assigned to. If this is not what is desired then there are a number of ways to change that such as using a method like [\_.cloneDeep](/2017/11/13/lodash_clonedeep/) when passing in the objects, or better yet using another lodash method know as [\_.merge](/2017/11/17/lodash_merge/).
 
 ```js
 let _ = require('lodash');
@@ -112,3 +112,5 @@ obj.pos.y = 0;
 console.log(merge.pos.x, merge.pos.y); // 2,7
 console.log(assign.pos.x, assign.pos.y); // 0,0
 ```
+
+As you can see when using \_.merge changing the values of the original objects has no effect on the object that had values added in compared to \_.assign.
