@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 10:51:32
-version: 1.12
+updated: 2018-09-25 10:56:27
+version: 1.13
 ---
 
 When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a [time map](https://photonstorm.github.io/phaser-ce/Phaser.Tilemap.html). A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
@@ -19,7 +19,7 @@ There is a great deal to know about [time map](https://photonstorm.github.io/pha
 
 ### 1.1 - This is a phaser ce post (2.x)
 
-In this post I am using phase community edition 2.11.0 of [phaser](http://phaser.io) the javaScript powered game frame work.
+In this post I am using phaser community edition 2.11.0 of [phaser](http://phaser.io) the javaScript powered game frame work.
 
 ## 2 - Basic tile sheet example
 
