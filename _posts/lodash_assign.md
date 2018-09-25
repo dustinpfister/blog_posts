@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 13:42:42
-version: 1.5
+updated: 2018-09-25 13:47:48
+version: 1.6
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on \_.assign in lodash, as well as the native alternative Object.assign. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
@@ -56,7 +56,9 @@ console.log(obj.x,obj.y); // 43.2,12.2
 This results as in an object that works as expected. However There is much that I am not covering in this example such as what happens when there are name space collisions, what happens to the prototype, and what if a nested object is used and it's values change. More on all that later but for now you should get the basic idea of what \_.assign is good for.
 
 
-### 2.2 - Object.assign
+### 2.2 - Using the javaScript native Object.assign
+
+If you are only concerned about supporting native browsers then there is the core javaScript native Object.assign method that works in the same way.
 
 ```js
 // assign everything to a new object
@@ -66,3 +68,5 @@ obj.step();
 
 console.log(obj.x,obj.y); // 43.2,12.2
 ```
+
+Assuming that it is always there to work with it would seem that Object.assign works in more or less the same way.
