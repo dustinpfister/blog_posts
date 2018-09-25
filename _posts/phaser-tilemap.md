@@ -5,17 +5,17 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 10:44:05
-version: 1.10
+updated: 2018-09-25 10:48:52
+version: 1.11
 ---
 
-When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a time map. A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
+When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a [time map](https://photonstorm.github.io/phaser-ce/Phaser.Tilemap.html). A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
 
 <!-- more -->
 
 ## 1 - What to know
 
-There is a great deal to know about tile maps in phaser ce, both with tile maps themselves and what is required before hand. This post will just serve as a getting started post with tile maps, and as my content on tile maps grows I will update this post and link to more advanced topics as needed. I will not be getting into every little key detail about phaser of course, and assume that you have at least some background with phaser ce, and javaScript in general. If not you might choose to start with my getting started post on phaser ce, and check out my many other posts on phaser ce that cover other aspects of the framework.
+There is a great deal to know about [time map](https://photonstorm.github.io/phaser-ce/Phaser.Tilemap.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/), both with tile maps themselves and what is required before hand. This post will just serve as a getting started post with tile maps, and as my content on tile maps grows I will update this post and link to more advanced topics as needed. I will not be getting into every little key detail about phaser of course, and assume that you have at least some background with phaser ce, and javaScript in general. If not you might choose to start with my [getting started post on phaser ce](/2017/10/04/phaser-getting-started/), and [check out my many other posts on phaser ce](/categories/phaser/) that cover other aspects of the framework.
 
 ### 1.1 - This is a phaser ce post (2.x)
 
@@ -76,7 +76,7 @@ var createLayer = function (map) {
 };
 ```
 
-You might have noticed that I set fixed to camera to false in this example. By default this value is set to true, not a big deal in this example, and most projects that make use of time maps for that matter. If it is a project in which the tile map needs to scroll it may be better to change the index values of the tiles rather than making a tilemap that is larger than the canvas size, so it is okay that it is fixed to the camera. However this is one of the few little things to be aware of when working with tile maps.
+You might have noticed that I set fixed to camera to false in this example. By default this value is set to true, not a big deal in this example, and most projects that make use of time maps for that matter. If it is a project in which the tile map needs to scroll it may be better to change the index values of the tiles rather than making a tilemap that is larger than the canvas size, so it is okay that it is fixed to the camera. However this is one of the few little things to be aware of when working with tile maps. For more on haveing tile maps, sprites, groups and other display objects fixed to the camera I have a [post in which I get into this](/2018/08/28/phaser-group-fixed-to-camera/) in greater detail.
 
 ### 2.3 - Generate some index data for the map
 
