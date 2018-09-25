@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 14:09:32
-version: 1.11
+updated: 2018-09-25 15:14:36
+version: 1.12
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign). The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
@@ -114,3 +114,49 @@ console.log(assign.pos.x, assign.pos.y); // 0,0
 ```
 
 As you can see when using \_.merge changing the values of the original objects has no effect on the object that had values added in compared to \_.assign.
+
+## 4 - \_assign and an objects prototype
+
+The \_.assign method will only assign the own enumerable properties from source objects, and will not do anything with inherited properties and methods from a prototype when dealing with objects that are created from a class.
+
+```js
+// Simple Point Class
+var Point = function (x, y, dx, dy) {
+ 
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+ 
+};
+ 
+// With a prototype
+Point.prototype.tick = function () {
+ 
+    this.x += this.dx;
+    this.y += this.dy;
+ 
+};
+ 
+// so if I have an instance of Point
+var pt = new Point(50, 100, 0, 25);
+ 
+// then it's constructor is Point
+console.log(pt.constructor.name); // 'Point'
+ 
+// and the tick method works as expected
+pt.tick();
+console.log(pt.x, pt.y); // 50 125
+ 
+// but if I assign it to a plain old object
+var assigned = _.assign({},pt);
+ 
+// then the prototype is lost
+console.log(assigned.constructor.name); // Object
+ 
+// so then I would be calling undefined if I
+// called assign.tick
+//assigned.tick(); // TypeError: assigned.tick is not a function
+```
+
+There is a number of ways of resolving this one way would be to use \_.create to set the prototype back to the object. However there is also the \_.extend method which is an alias for \_.assignIn that can be used as a way to keep method from a prototype.These different solutions work in very different ways so in this section I will cover what some of the options are.
