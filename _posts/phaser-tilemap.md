@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 10:27:11
-version: 1.7
+updated: 2018-09-25 10:31:43
+version: 1.8
 ---
 
 When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a time map. A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
@@ -96,6 +96,8 @@ The map.forEach method is one of the many tile map method that make working with
 
 ### 2.4 - Have a sprite sheet for the map
 
+So now that I have all the helpers worked out in order for this all to work I will need that sprite sheet that I used in my helper that creates a map to begin with. So here is my mkSheet helper that I use to make a simple sprite sheet consisting of solid color blocks that is made via a canvas element.
+
 ```js
 // make a sprite sheet for the tile sheet
 var mkSheet = function () {
@@ -123,6 +125,8 @@ var mkSheet = function () {
  
 };
 ```
+
+In other real projects I might use a sprite sheet that is loaded from an external file, but for these simple hello world examples a simple solution like this works just fine. I also some times make more complex solutions like this as well for hyper casual style games, where graphics are not really the greatest selling point of a game.
 
 ### 2.5 - Making use of all this with Phaser.Game
 
