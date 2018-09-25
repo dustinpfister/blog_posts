@@ -5,17 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2018-09-25 13:52:14
-version: 1.8
+updated: 2018-09-25 13:55:15
+version: 1.9
 ---
 
-Looking over my content so far I am surprised that I have not yet wrote a post on \_.assign in lodash, as well as the native alternative Object.assign. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
+Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign). The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. The process of doing so is a little involved because there is a lot to know about objects and what happens when there are combined together in javaScript. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature. There is also the question of the prototype, and how that should be handled as well. So in todays post I will be covering some use case scenarios of \_.assign, and alternatives such as \_.merge, and the native Object.assign method.
 
 <!-- more -->
 
 ## 1 - what to know
 
-This is a post on the lodash object method \_.assign, as well as the native javaScript Object.assign method as well. This is not a getting started post on lodash, or javaScrtipt and I expect that you have at least some background with these topics.
+This is a post on the [lodash](https://lodash.com/) object method [\_.assign](https://lodash.com/docs/4.17.10#assign), as well as the native javaScript [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method as well. This is not a getting started post on lodash, or javaScrtipt and I expect that you have at least some background with these topics.
 
 ## 2 - Basic example of assign
 
