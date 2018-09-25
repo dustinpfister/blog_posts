@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 10:48:52
-version: 1.11
+updated: 2018-09-25 10:51:32
+version: 1.12
 ---
 
 When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a [time map](https://photonstorm.github.io/phaser-ce/Phaser.Tilemap.html). A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
@@ -129,11 +129,11 @@ var mkSheet = function () {
 };
 ```
 
-In other real projects I might use a sprite sheet that is loaded from an external file, but for these simple hello world examples a simple solution like this works just fine. I also some times make more complex solutions like this as well for hyper casual style games, where graphics are not really the greatest selling point of a game.
+In other real projects I might use a sprite sheet that is loaded from an external file, but for these simple hello world examples a simple solution like this works just fine. I also some times make more complex solutions like this as well for hyper casual style games, where graphics are not really the greatest selling point of a game. If interested in reading more about this I have a post on [making sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/) in phaser ce.
 
 ### 2.5 - Making use of all this with Phaser.Game
 
-Now that I have everything that I need to get this basic tile map example working all that is left is to make use of it all with an instance of Phaser.Game. For this example I will only need a single state object as well.
+Now that I have everything that I need to get this basic tile map example working all that is left is to make use of it all with an instance of [Phaser.Game](/2017/10/11/phaser-main-game-constructor/). For this example I will only need a single [state object](/2017/10/06/phaser-state-objects/) as well.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
