@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 10:31:43
-version: 1.8
+updated: 2018-09-25 10:42:04
+version: 1.9
 ---
 
 When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a time map. A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
@@ -130,6 +130,8 @@ In other real projects I might use a sprite sheet that is loaded from an externa
 
 ### 2.5 - Making use of all this with Phaser.Game
 
+Now that I have everything that I need to get this basic tile map example working all that is left is to make use of it all with an instance of Phaser.Game. For this example I will only need a single state object as well.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -149,13 +151,17 @@ game.state.add('boot', {
         // some index data is needed
         setRandomMapIndexData(map);
  
-    },
- 
-    update: function () {}
+    }
  
 });
  
 game.state.start('boot');
 ```
 
+I just need to create the sprite sheet first so that my createMap method will work, and then I will want to create a layer before adding index data as well. So the helpers should be called in this order. For this example the only action is event driven so there is no need for an update method, so I only need an create method in the single state object. 
+
+If all goes well when this project runs there should be something that works like a basic pain program where clicking on each tile will result in the colors of the tiles cycling throw each possible index. Noting to get to excited over, but this was a basic example after all.
+
 ## 3 - Conclusion
+
+There is a whole lot more to write about when it comes to tile maps, such as layering, working with external data via json, and the host of methods tips and tricks with just tile maps alone in phaser ce. If you have a particular aspect of tile maps that you would like for me to look into more please fell free to let me know in the comments, I would like to expand on this area more. In any case be sure to have fun with phaser ce, that is kind of the idea right?
