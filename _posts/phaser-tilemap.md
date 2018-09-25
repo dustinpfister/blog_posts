@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 284
-updated: 2018-09-25 10:01:11
-version: 1.5
+updated: 2018-09-25 10:21:09
+version: 1.6
 ---
 
 When working with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects might require the use of a time map. A tile map is a way of creating a an scene with a gird the contains a frame index for eac grid position, and each index refers to a standard texture in a sprite sheet. There is a lot to cover with tile maps, so this post will just be a quick overview of how to get started with them in phaser ce.
@@ -46,6 +46,8 @@ When calling game.add.tilemap the first argument is a key to tilemap data that i
 
 ### 2.2 - Create at least one layer for the tilemap
 
+Once I have a tile map I will want to create at least one layer. A layer is very similar to a Sprite, as it is another example of a kind of display object in phaser ce. As Such many of the properies and method that you may all ready be aware of with sprites are the same. For this example I create a new layer for the map by calling map.create, then enable input, and attach a single onInputDown event that will cycle the index values of a tile when clicked.
+
 ```js
 // create a layer for the given map
 var createLayer = function (map) {
@@ -70,6 +72,8 @@ var createLayer = function (map) {
  
 };
 ```
+
+You might have noticed that I set fixed to camera to false in this example. By default this value is set to true, not a big deal in this example, and most projects that make use of time maps for that matter. If it is a project in which the tile map needs to scroll it may be better to change the index values of the tiles rather than making a tilemap that is larger than the canvas size, so it is okay that it is fixed to the camera. However this is one of the few little things to be aware of when working with tile maps.
 
 ### 2.3 - Generate some index data for the map
 
