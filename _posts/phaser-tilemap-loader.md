@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 287
-updated: 2018-09-27 07:50:35
-version: 1.6
+updated: 2018-09-27 08:17:01
+version: 1.7
 ---
 
 So tile maps are an important component of phaser that allows for making a map of tiles that contain among other things frame index values, that can then be skinned with sprite sheet. So tile maps are useful for many strategy and platform type games, and any other kind of project where they might come in handy. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map, such as frame index data and other useful properties.
@@ -23,9 +23,10 @@ In this post I am using phaser community edition 2.11.0.
 
 ## 2 - An example using an external tile map for level design
 
-For this example I am going to furnish a jason file that follows one of two supported standards in phaser ce.
 
 ### 2.1 - The JSON file
+
+For this example I am going to furnish a json file that follows one of two supported standards in phaser ce. The default format used by the tile map loader is Phaser.Tilemap.CSV, but in this post I will be using Phaser.Tilemap.TILED_JSON. This is a format used my the popular map editor known as [tiled](https://www.mapeditor.org/). I might get around to writing a post on this format in which I will get into this in further detail, but for now I will just link to the official docs on the [tiled json format](https://doc.mapeditor.org/en/stable/reference/json-map-format/).
 
 ```js
 {
