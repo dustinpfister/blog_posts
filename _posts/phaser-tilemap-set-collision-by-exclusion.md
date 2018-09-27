@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:18:03
-version: 1.1
+updated: 2018-09-27 11:22:47
+version: 1.2
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -14,6 +14,12 @@ These days I have been playing around with tilemaps a lot in phaser ce. When doi
 <!-- more -->
 
 ## 1 - What to know
+
+This is a post on setting up tile map collision detection, which is a necessary step in the process of making just about any kind of platform game with phaser ce and tile maps. I will not be covering tile maps in depth in this post, and assume that you have at least some background with phaser ce, and javaScript in general.
+
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser community edition 2.11.0, and not the newer phaser 3.x major release.
 
 ## 2 - Example of setting tile map collision by frame index exclusion
 
@@ -87,7 +93,71 @@ var createGuy = function (game) {
 };
 ```
 
-### 2.4 - The Phaser.Game instance and state object
+### 2.4 - The JSON file
+
+```js
+{
+    "version": 1,
+    "orientation": "orthogonal",
+    "width": 12,
+    "height": 10,
+    "tileheight": 32,
+    "tilewidth": 32,
+    "properties": {
+        "world": 1,
+        "stages": 2
+    },
+    "layers": [{
+            "name": "stage1",
+            "width": 12,
+            "height": 10,
+            "data": [
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+                1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
+                1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1,
+                1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1,
+                1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1,
+                1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1,
+                1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+            ],
+            "opacity": 1,
+            "properties": {
+                "startat": {
+                    "x": 4,
+                    "y": 1
+                }
+            },
+            "type": "tilelayer",
+            "visible": true,
+            "x": 0,
+            "y": 0
+        }
+    ],
+    "tilesets": [{
+            "firstgid": 1,
+            "image": "sheet_blocks.png",
+            "imageheight": 32,
+            "imagewidth": 64,
+            "margin": 0,
+            "name": "blocks",
+            "properties": {},
+            "spacing": 0,
+            "tileheight": 32,
+            "tilewidth": 32,
+            "tileproperties": {
+                "12": {
+                    "home": "true"
+                }
+            }
+        }
+    ]
+}
+```
+
+### 2.5 - The Phaser.Game instance and state object
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
