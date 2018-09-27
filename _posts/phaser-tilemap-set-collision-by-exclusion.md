@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:58:22
-version: 1.9
+updated: 2018-09-27 12:00:04
+version: 1.10
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -245,6 +245,8 @@ game.state.add('boot', {
  
 game.state.start('boot');
 ```
+
+There is also the update method as well there I am just updating the little guys position based on keyboard input.
 
 ## 3 - Conclusion
 
