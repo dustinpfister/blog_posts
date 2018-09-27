@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 289
-updated: 2018-09-27 15:25:56
-version: 1.7
+updated: 2018-09-27 15:27:49
+version: 1.8
 ---
 
 So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the simplest ways to go about doing so that I have come across so far. This way of doing it should work okay for most projects, but with projects where map data is being generated on the fly at run tile, or projects that involve a very large collection of map data across many files, they way of doing here might not cut it.
@@ -100,6 +100,8 @@ createLayer = function (game, stageNum) {
 ```
 
 ### 2.4 - The JSON file
+
+Here is the Json file that I will be using for this example. I will not be getting into this json format in detail here, but there is good [documentation on it](https://doc.mapeditor.org/en/stable/reference/json-map-format/) at the tiled website.
 
 ```js
 {
