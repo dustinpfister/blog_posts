@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 287
-updated: 2018-09-27 08:30:31
-version: 1.10
+updated: 2018-09-27 08:37:32
+version: 1.11
 ---
 
 So tile maps are an important component of phaser that allows for making a map of tiles that contain among other things frame index values, that can then be skinned with sprite sheet. So tile maps are useful for many strategy and platform type games, and any other kind of project where they might come in handy. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map, such as frame index data and other useful properties.
@@ -123,6 +123,8 @@ Calling this method alone will give me a tile map instance, but to actually disp
 
 ### 2.4 - create a stage helper
 
+So when I call my loadWorld method that will get things started, but to actually do something with the map data i will want at least one layer. A Layer is similar to a sprite, as it is a kind of display object that can be used in very much the same manner as one. So My createStae method will create this layer with the layer data in the map. In the JSON file I defined just one layer that I have called 'stage1', in a real project I would typically have more that one stage to a world, and have more than one JSON file, but for now it's just the one.
+
 ```js
 // create a stage from the map
 var createStage = function (game, stageNum) {
@@ -137,6 +139,8 @@ var createStage = function (game, stageNum) {
  
 };
 ```
+
+Just like my loadWorld method I append a reference to the layer in my game data object, and return a reference as well.
 
 ### 2.5 - display map properties
 
