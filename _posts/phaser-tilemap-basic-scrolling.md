@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 289
-updated: 2018-09-27 15:27:49
-version: 1.8
+updated: 2018-09-27 15:31:05
+version: 1.9
 ---
 
 So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the simplest ways to go about doing so that I have come across so far. This way of doing it should work okay for most projects, but with projects where map data is being generated on the fly at run tile, or projects that involve a very large collection of map data across many files, they way of doing here might not cut it.
@@ -180,6 +180,8 @@ Here is the Json file that I will be using for this example. I will not be getti
 
 ### 2.5 - The Phaser.Game instance
 
+So now it is time to put it all together by working out what needs to get done with the main Phaser.Game instance.
+
 ```js
  
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -242,4 +244,6 @@ game.state.add('boot', {
 game.state.start('boot');
 ```
 
+## 3 - Conclusion
 
+So when this project starts up I am able to move my little guy character around in the map, and things scroll around juts fine. A solution like this seems to work fine when it comes to simple little examples like this, but as things scale up it might fall short.
