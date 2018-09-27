@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:51:37
-version: 1.7
+updated: 2018-09-27 11:54:24
+version: 1.8
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -175,6 +175,8 @@ So here I have the JSON file that I will be using that will contain the frame in
 ```
 
 ### 2.5 - The Phaser.Game instance and state object
+
+Now to get the project up and running by bringing everything together with a Phaser.Game instance and a single state object with a preload, create, and update methods. In the preload method I load all my assets, such as the sprite sheets for the tile map, and the little guy, along with the json data with to load.tilemap.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
