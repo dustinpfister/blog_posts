@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 287
-updated: 2018-09-26 21:16:46
-version: 1.3
+updated: 2018-09-27 07:42:11
+version: 1.4
 ---
 
-So tile maps are an important component of phaser that allows for making a map of fram index values from a sprite sheet, which is useful for many strategy and platform type games. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map which is useful for level design.
+So tile maps are an important component of phaser that allows for making a map of tiles that contain among other things frame index values, that can then be skinned with sprite sheet. So tile maps are useful for many strategy and platform type games, and any other kind of project where they might come in handy. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map, such as frame index data and other useful properties.
 
 <!-- more -->
 
