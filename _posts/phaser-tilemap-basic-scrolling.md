@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 289
-updated: 2018-09-27 15:08:59
-version: 1.2
+updated: 2018-09-27 15:13:48
+version: 1.3
 ---
 
 So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the first ways to go about doing so when it comes to simple projects.
@@ -14,6 +14,12 @@ So there are many ways to go about handing scrolling a tilemap in phaser ce, in 
 <!-- more -->
 
 ## 1 - what to know
+
+This is a post where I am writing about a basic way to go about scrolling a tile map in phaser ce. This might be the quick and simple way to go about doing it but it might not always be best depending on the project. I still do not have as much experience with tile maps, and all that relates to them, but in the event that I find other ways of doing this that are better when it comes to large maps I will likely write a new post on it, and hopefully update this one.
+
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser ce 2.11.0 of phaser the popular javaScript framework used to help make quick work of web based game development.
 
 ## 2 - A Basic tile map scrolling demo in phaser ce
 
