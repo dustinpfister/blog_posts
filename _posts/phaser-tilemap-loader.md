@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 287
-updated: 2018-09-27 08:49:18
-version: 1.13
+updated: 2018-09-27 08:50:30
+version: 1.14
 ---
 
 So tile maps are an important component of phaser that allows for making a map of tiles that contain among other things frame index values, that can then be skinned with sprite sheet. So tile maps are useful for many strategy and platform type games, and any other kind of project where they might come in handy. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map, such as frame index data and other useful properties.
@@ -192,5 +192,7 @@ game.state.add('basic', {
  
 game.state.start('basic');
 ```
+
+## 3 - Conclusion
 
 If all goes well this will display the tiles in the canvas in the order that I defined in the JSON tile. Thats all this simple examples does, but these kinds of examples are just what one needs to bother with as a staring point right? After this there is of course getting into making an example that involves placing a player sprite in the world, enemies, and other objects depending on the nature of the project.
