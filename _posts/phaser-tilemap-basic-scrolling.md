@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 289
-updated: 2018-09-27 15:13:48
-version: 1.3
+updated: 2018-09-27 15:16:02
+version: 1.4
 ---
 
-So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the first ways to go about doing so when it comes to simple projects.
+So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the simplest ways to go about doing so that I have come across so far. This way of doing it should work okay for most projects, but with projects where map data is being generated on the fly at run tile, or projects that involve a very large collection of map data across many files, they way of doing here might not cut it.
 
 <!-- more -->
 
