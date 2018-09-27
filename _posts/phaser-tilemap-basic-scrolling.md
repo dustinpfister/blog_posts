@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 289
-updated: 2018-09-27 15:22:09
-version: 1.6
+updated: 2018-09-27 15:25:56
+version: 1.7
 ---
 
 So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the simplest ways to go about doing so that I have come across so far. This way of doing it should work okay for most projects, but with projects where map data is being generated on the fly at run tile, or projects that involve a very large collection of map data across many files, they way of doing here might not cut it.
@@ -61,6 +61,8 @@ Once I have this method together then it is just a matter of setting everything 
 
 ### 2.2 - Create the map
 
+Here is the create map method that will be called once I have all other assets loaded during the preload state.
+
 ```js
 // create the map
 var createMap = function (game, worldNum) {
@@ -79,6 +81,8 @@ var createMap = function (game, worldNum) {
 ```
 
 ### 2.3 - Create the layer
+
+When I create a map I will also need to create a layer. Notice that I am also resizing the game world to the size of that layer as well. This is one way to go about resizing the game world, the nice thing about this method is that it sets it to the size of the tile map layer that will be scrolling.
 
 ```js
 // create the layer
