@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:27:57
-version: 1.3
+updated: 2018-09-27 11:33:11
+version: 1.4
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -29,6 +29,10 @@ In this example I will be using map.setCollisionByExclusion to set the collision
 
 ### 2.1 - The create stage method
 
+I start off my main.js file with some helpers, this helps to break my code down and make it more fine grain which helps to make debugging easier when I run into problems, and I also find it helps to make code more readable for examples like this.
+
+Anyway the first helper is my createStage helper that will be used to create a layer for a map that I will create before calling this, more on that later. In any case once I have a least one layer in the map, and that map is the current layer of the map, I just need to call map.setCollisionByExclusion and pass the frame index values that I do not want collision to happen for.
+
 ```js
 // load a stage from the current map
 createStage = function (game, stageNum) {
@@ -46,6 +50,8 @@ createStage = function (game, stageNum) {
  
 };
 ```
+
+This helper will of course be used in conjunction with many others, but for the most part the main subject matter of this post happens here.
 
 ### 2.2 - The create map method
 
