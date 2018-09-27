@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2018-09-27 18:11:53
-version: 1.3
+updated: 2018-09-27 18:18:59
+version: 1.4
 ---
 
-So in javaScript the Object.create method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
+So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
 
 <!-- more -->
 
@@ -19,9 +19,9 @@ This is a post on the lodash method \_.create, and it's native counter part Obje
 
 ## 2 - A Basic example of \_.create
 
+So for starters if I have an object that contains methods and I want to use those methods with an object there are a number of ways to go about doing that. If the methods are designed in a way in which they could be part of an objects prototype I can use something like Function.call, or another way would be to use \_.create to make it so the object of methods is the prototype object of the object that I want to use with the methods.
+
 ```js
-let _ = require('lodash');
- 
 var methods = {
  
     move: function (x, y) {
