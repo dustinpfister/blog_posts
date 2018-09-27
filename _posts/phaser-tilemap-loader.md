@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 287
-updated: 2018-09-26 12:06:04
-version: 1.1
+updated: 2018-09-26 21:15:24
+version: 1.2
 ---
 
 So tile maps are an important component of phaser that allows for making a map of fram index values from a sprite sheet, which is useful for many strategy and platform type games. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map which is useful for level design.
@@ -16,6 +16,9 @@ So tile maps are an important component of phaser that allows for making a map o
 
 
 ## 2 - Basic example that loads an external tile map
+
+
+### 2.1 - The JSON file
 
 ```js
 {
@@ -72,6 +75,7 @@ So tile maps are an important component of phaser that allows for making a map o
 }
 ```
 
+### 2.2 - load the map and sheet
 
 ```js
 // load json and images
@@ -80,6 +84,8 @@ var loadWorldData = function (game) {
     game.load.image('image-blocks', '/img/sheet_blocks.png');
 };
 ```
+
+### 2.3 - Creates the tile map healper
 
 ```js
 // load a give world number
@@ -98,6 +104,8 @@ var loadWorld = function (game, worldNum) {
 };
 ```
 
+### 2.4 - create a stage helper
+
 ```js
 // create a stage from the map
 var createStage = function (game, stageNum) {
@@ -113,6 +121,8 @@ var createStage = function (game, stageNum) {
 };
 ```
 
+### 2.5 - display map properties
+
 ```js
 // display the properties of a map
 var displayMapProperties = function (game, textObj) {
@@ -124,7 +134,11 @@ var displayMapProperties = function (game, textObj) {
 };
 ```
 
+### 2.6 - The Phaser.Game object
+
 ```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
 game.state.add('basic', {
  
     preload: function () {
@@ -150,4 +164,6 @@ game.state.add('basic', {
     }
  
 });
+ 
+game.state.start('basic');
 ```
