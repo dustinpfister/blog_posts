@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:43:30
-version: 1.5
+updated: 2018-09-27 11:47:56
+version: 1.6
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -76,6 +76,8 @@ var createMap = function (game, worldNum) {
 
 ### 2.3 - Create the guy sprite
 
+Next I have a helper that will create a sprite of a little guy character that I put together in a flash for the sake of these demos. The method creates the sprite using the key of a sprite sheet that I load before calling this. Once I have the instance of the sprite I enable physics for the sprite, and set some additional settings including the start location from the json data.
+
 ```js
 // create the guy sprite
 var createGuy = function (game) {
@@ -103,6 +105,8 @@ var createGuy = function (game) {
  
 };
 ```
+
+In order to confirm that collision is working the little guy sprite is necessary, in a real project there would be much more to do with this, but for now he should serve this example well.
 
 ### 2.4 - The JSON file
 
