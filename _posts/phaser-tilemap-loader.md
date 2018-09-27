@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 287
-updated: 2018-09-27 08:37:32
-version: 1.11
+updated: 2018-09-27 08:40:47
+version: 1.12
 ---
 
 So tile maps are an important component of phaser that allows for making a map of tiles that contain among other things frame index values, that can then be skinned with sprite sheet. So tile maps are useful for many strategy and platform type games, and any other kind of project where they might come in handy. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map, such as frame index data and other useful properties.
@@ -143,6 +143,8 @@ var createStage = function (game, stageNum) {
 Just like my loadWorld method I append a reference to the layer in my game data object, and return a reference as well.
 
 ### 2.5 - display map properties
+
+The tiled json format can be used to store a whole lot more than just frame index information for each tile. It can also be used to store all kinds of data on a map, and per tile bases. I will be writing many more posts on tile maps in the near future as I seem to like getting into this, but for now I made a quick method that can be used to display just a world number and stages count.
 
 ```js
 // display the properties of a map
