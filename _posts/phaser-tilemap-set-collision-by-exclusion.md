@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:47:56
-version: 1.6
+updated: 2018-09-27 11:51:37
+version: 1.7
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -109,6 +109,8 @@ var createGuy = function (game) {
 In order to confirm that collision is working the little guy sprite is necessary, in a real project there would be much more to do with this, but for now he should serve this example well.
 
 ### 2.4 - The JSON file
+
+So here I have the JSON file that I will be using that will contain the frame index data along with many other things. As of this writing I have not yet wrote a post in which I get into this json file standard, but there is the [official documentation](https://doc.mapeditor.org/en/stable/reference/json-map-format/) on it at the [tiled website](https://www.mapeditor.org/).
 
 ```js
 {
