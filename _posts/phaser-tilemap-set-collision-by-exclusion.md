@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 12:00:04
-version: 1.10
+updated: 2018-09-27 12:05:01
+version: 1.11
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -249,4 +249,6 @@ game.state.start('boot');
 There is also the update method as well there I am just updating the little guys position based on keyboard input.
 
 ## 3 - Conclusion
+
+So if all goes well when this project starts up the little guy sprite will start at the starting location that I have defined in the json data, and collision detection does indeed seem to work. He does not fall threw the tiles, and the example seems to work as expected. Of course this is not everything there is to cover with collision detection and tile maps in phaser. I might still need to write more content event attachment, and have some other things going on such as enemies, and death traps. However just getting to this point is a major step forward in making a nice little platform game.
 
