@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:33:11
-version: 1.4
+updated: 2018-09-27 11:43:30
+version: 1.5
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -54,6 +54,8 @@ createStage = function (game, stageNum) {
 This helper will of course be used in conjunction with many others, but for the most part the main subject matter of this post happens here.
 
 ### 2.2 - The create map method
+
+Here I have the create map method, that when called will create an instance of a tile map and appedn a reference to it in a object that I appedn to the Phaser.Game instance. This method will of course be called before I call createStage, but after I load all the assets that I need including the external json file that will contain the frame index data for each tile.
 
 ```js
 // create the tilemap
