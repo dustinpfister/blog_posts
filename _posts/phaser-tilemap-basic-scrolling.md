@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 289
-updated: 2018-09-27 15:16:02
-version: 1.4
+updated: 2018-09-27 15:18:41
+version: 1.5
 ---
 
 So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the simplest ways to go about doing so that I have come across so far. This way of doing it should work okay for most projects, but with projects where map data is being generated on the fly at run tile, or projects that involve a very large collection of map data across many files, they way of doing here might not cut it.
@@ -23,43 +23,9 @@ In this post I am using phaser ce 2.11.0 of phaser the popular javaScript framew
 
 ## 2 - A Basic tile map scrolling demo in phaser ce
 
-### 2.1 - Create the map
+So for this example I will just put together a quick little demo that involves an external map in the tiled json format, and following a sprite by just using game.camera.follow
 
-```js
-// create the map
-var createMap = function (game, worldNum) {
- 
-    worldNum = worldNum || 1;
- 
-    game.data = game.data || {};
- 
-    var map = game.data.map = game.add.tilemap('map-world' + worldNum);
- 
-    map.addTilesetImage('blocks', 'image-blocks');
- 
-    return map;
- 
-};
-```
-
-### 2.2 - Create the layer
-
-```js
-// create the layer
-createLayer = function (game, stageNum) {
- 
-    var map = game.data.map;
- 
-    var stage = game.data.stage = map.createLayer('stage' + stageNum);
- 
-    stage.resizeWorld();
- 
-    return stage;
- 
-};
-```
-
-### 2.3 - Create a little guy sprite
+### 2.1 - Create a little guy sprite
 
 ```js
 // create the guy sprite
@@ -89,7 +55,43 @@ var createGuy = function (game) {
 };
 ```
 
-### 2.6 - The JSON file
+### 2.2 - Create the map
+
+```js
+// create the map
+var createMap = function (game, worldNum) {
+ 
+    worldNum = worldNum || 1;
+ 
+    game.data = game.data || {};
+ 
+    var map = game.data.map = game.add.tilemap('map-world' + worldNum);
+ 
+    map.addTilesetImage('blocks', 'image-blocks');
+ 
+    return map;
+ 
+};
+```
+
+### 2.3 - Create the layer
+
+```js
+// create the layer
+createLayer = function (game, stageNum) {
+ 
+    var map = game.data.map;
+ 
+    var stage = game.data.stage = map.createLayer('stage' + stageNum);
+ 
+    stage.resizeWorld();
+ 
+    return stage;
+ 
+};
+```
+
+### 2.4 - The JSON file
 
 ```js
 {
