@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 11:22:47
-version: 1.2
+updated: 2018-09-27 11:27:57
+version: 1.3
 ---
 
 These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
@@ -23,6 +23,9 @@ In this post I am using phaser community edition 2.11.0, and not the newer phase
 
 ## 2 - Example of setting tile map collision by frame index exclusion
 
+So there are a few ways to set up collision detection with a tile map, most if not all will involve setting an array of tile index values in an instance of a tile map. This could be done manually, but why bother with that if one of the tile map instance methods will work just fine? One such method is map.setCollisionByExclusion. This method works by just calling it and passing an array of tile index values in the map data that should be excluded from collision detection.
+
+In this example I will be using map.setCollisionByExclusion to set the collision index values of a tile map, and have a little guy sprite run around in the map.
 
 ### 2.1 - The create stage method
 
