@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 288
-updated: 2018-09-27 12:05:01
-version: 1.11
+updated: 2018-09-27 12:08:48
+version: 1.12
 ---
 
-These days I have been playing around with tilemaps a lot in phaser ce. When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision.
+These days I have been playing around with [tilemaps](https://photonstorm.github.io/phaser-ce/Phaser.Tilemap.html) a lot in [phaser ce](https://photonstorm.github.io/phaser-ce/). When doing so for some projects I will want to set collision detection for some tiles. In this post I will be covering doing just that with a method that woulds by setting collision tile index values by giving what index values I do not want to result in collision. This can be done with a helpful little method in the tilemap class called [Tilemap.setCollisionByExclusion](https://photonstorm.github.io/phaser-ce/Phaser.Tilemap.html#setCollisionByExclusion)
 
 <!-- more -->
 
@@ -19,7 +19,7 @@ This is a post on setting up tile map collision detection, which is a necessary 
 
 ### 1.1 - This is a phaser ce 2.x post
 
-In this post I am using phaser community edition 2.11.0, and not the newer phaser 3.x major release.
+In this post I am using [phaser community edition](https://photonstorm.github.io/phaser-ce/) 2.11.0, and not the newer phaser 3.x major release of [phaser](https://phaser.io/) the javaScript powered game framework.
 
 ## 2 - Example of setting tile map collision by frame index exclusion
 
