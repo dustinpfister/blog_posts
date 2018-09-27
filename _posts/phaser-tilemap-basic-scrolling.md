@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 289
-updated: 2018-09-27 15:18:41
-version: 1.5
+updated: 2018-09-27 15:22:09
+version: 1.6
 ---
 
 So there are many ways to go about handing scrolling a tilemap in phaser ce, in this post I will be writing about one of the simplest ways to go about doing so that I have come across so far. This way of doing it should work okay for most projects, but with projects where map data is being generated on the fly at run tile, or projects that involve a very large collection of map data across many files, they way of doing here might not cut it.
@@ -23,9 +23,11 @@ In this post I am using phaser ce 2.11.0 of phaser the popular javaScript framew
 
 ## 2 - A Basic tile map scrolling demo in phaser ce
 
-So for this example I will just put together a quick little demo that involves an external map in the tiled json format, and following a sprite by just using game.camera.follow
+So for this example I will just put together a quick little demo that involves an external map in the tiled json format, and following a sprite by just using game.camera.follow.
 
 ### 2.1 - Create a little guy sprite
+
+So for starters I will want to start with a method that creates the sprite that the camera will follow first because of the nature of this post. If you are not aware of it to begin with game.camera.follow can be used to make the camera follow a sprite. This is what will be used to have the camera do that.
 
 ```js
 // create the guy sprite
@@ -54,6 +56,8 @@ var createGuy = function (game) {
  
 };
 ```
+
+Once I have this method together then it is just a matter of setting everything else up including of course the tile map.
 
 ### 2.2 - Create the map
 
