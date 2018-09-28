@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2018-09-28 09:52:05
-version: 1.5
+updated: 2018-09-28 09:59:24
+version: 1.6
 ---
 
 So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
@@ -39,6 +39,8 @@ obj.move(5, 5);
  
 console.log(obj.x, obj.y); // 10 20
 ```
+
+Doing this differs from just making the method part of the object to begin with. For one thing if I where to make a whole bunch of objects with object.create, they will end up taking up less memory because they would all share the same set of methods. This also differs from making just a reference to the methods object as well because doing so would be defining a method as one of the actual own properties of the object rather than it's prototype. As prototype methods can act as a default of sorts if the method is not define in the own properties of the object.
 
 ## 3 - Conclusion
 
