@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2018-09-30 19:00:45
-version: 1.8
+updated: 2018-09-30 19:44:18
+version: 1.9
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. In this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -35,4 +35,21 @@ _.forIn(new A(), function (d) {
     console.log(d); // 42 7
  
 });
+```
+
+## 2 - Vanilla js alternatives to \_.forin
+
+In this section I will be exploring ways to go about looping over both own and inherited properties just using vanilla js.
+
+### 2.1 - A for in loop
+
+Just a plain old for in loop seems to work just fine to loop over own properties of an object as well as what is in the prorotpe object as well.
+
+```js
+let a = new A();
+ 
+// a for in loop works
+for (var prop in a) {
+    console.log(a[prop]);
+}
 ```
