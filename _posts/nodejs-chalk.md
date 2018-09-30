@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 26
-updated: 2017-11-13 14:31:28
-version: 1.4
+updated: 2018-09-30 14:00:52
+version: 1.5
 ---
 
 When making any kind of node.js project that may involve output to the command line interface, it may be desired to style that output, for the sake of adding emphases, or just to make it look nice. Many CLI tools make use of color, for one reason or another, so if you want to add color to the output of you node.js CLI tools, you might want to check out [chalk](https://www.npmjs.com/package/chalk).
@@ -101,9 +101,9 @@ console.log(chalk.underline('bold'));
 
 ## Color level, and color support of the terminal.
 
-There is a boolean where if true it means that color is supported at least at some level higher than that of 0. In windows 10 cmd.exe just seems to support level 1 which is just 16 colors, so even if the terminal supports true color assume its not there.
+Color support for will very across different terminals, for example cmd.exe in windows 10 seems to only support color level 2, which is only 16 colors. Some external terminals might not even support level 2, and ignore the text patterns that are used to switch text style, or even show them in the output.
 
-For the most part I only need a few colors anyway.
+To help with this there is the chalk.supportColor, and chalk level properties. These can be used to feature test for support and act accordingly.
 
 ```js
 var chalk = require('chalk');
