@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 292
-updated: 2018-10-01 19:19:17
-version: 1.4
+updated: 2018-10-01 19:23:03
+version: 1.5
 ---
 
 When working with a group of sprites in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project a common task that comes up is to get a reference to a sprite in a group that is closest to another sprite. There are many ways of doing this that involve using a distance formula when looping over all active children in the group, however there is also a group method called group.getClosestTo that can be used to quickly get that sprite in question.
@@ -18,6 +18,8 @@ When working with a group of sprites in a [phaser ce](https://photonstorm.github
 This is a post on finding the closest display object such as a sprite in a group in phaser ce. In this post I am using many different classes, and other aspects pf phaser ce that I am not going to get into detail. I have written a getting started post on phaser ce that you might want to start with if you are new to phaser ce, I also have other posts on groups in phaser including one that is a starting post of sorts on that subject.
 
 ## 2 - A Basic example of group.getClosestTo in phaser ce
+
+For a basic example of using group.getClosestTo I put together a simple demo that will just set the closest sprite to a player sprite in a group of randomly positioned sprites to a certain frame index. In this post I make use of a canvas solution to make a quick sprite sheet, and also make use of the group.scatter method to randomize the sprites, another group convenience method for doing so.
 
 ### 2.1 - The showClosest method
 
