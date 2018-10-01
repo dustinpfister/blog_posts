@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 292
-updated: 2018-10-01 19:29:00
-version: 1.7
+updated: 2018-10-01 19:32:28
+version: 1.8
 ---
 
 When working with a group of sprites in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project a common task that comes up is to get a reference to a sprite in a group that is closest to another sprite. There are many ways of doing this that involve using a distance formula when looping over all active children in the group, however there is also a group method called group.getClosestTo that can be used to quickly get that sprite in question.
@@ -73,6 +73,8 @@ var mkSheet = function (game) {
 ```
 
 ### 2.3 - Create a group of enemies
+
+I then have a method that will create a group of enemies. Here I just create the group with game.add.group, and then use group.create to create a bunch of sprites. I then also use the group.scatter method to randomly scatter the sprites across the canvas.
 
 ```js
 // create a group of enemies
