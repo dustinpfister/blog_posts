@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 291
-updated: 2018-10-01 08:53:54
-version: 1.8
+updated: 2018-10-01 17:24:06
+version: 1.9
 ---
 
 If you have a collection of sprites in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project and you want to align them into a grid, it is not to hard to just do it by working out a method. However why bother with that when there is a method that is part of the group class itself? There is of course [group.align](https://photonstorm.github.io/phaser-ce/Phaser.Group.html#align) that can be used to do this, and it does it fairly well with some nice features that can be used to tweak things a bit. Never the less in this post I will be writing about some examples that have to do with aligning sprites, and other display objects in a group in phaser ce.
@@ -43,18 +43,13 @@ game.state.add('boot', {
  
         // add text elements
         while (i < len) {
- 
             text = game.add.text(0, 0, i, font);
- 
             group.add(text);
- 
             i += 1;
- 
         }
  
+        // using group.align to align the text objects
         group.align(5, 5, 40, 40, Phaser.TOP_LEFT, 0);
- 
-        console.log(group.width);
  
         group.x = game.world.centerX - group.width / 2;
         group.y = game.world.centerY - group.height / 2;
