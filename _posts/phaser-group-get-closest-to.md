@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 292
-updated: 2018-10-01 19:16:10
-version: 1.3
+updated: 2018-10-01 19:19:17
+version: 1.4
 ---
 
 When working with a group of sprites in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project a common task that comes up is to get a reference to a sprite in a group that is closest to another sprite. There are many ways of doing this that involve using a distance formula when looping over all active children in the group, however there is also a group method called group.getClosestTo that can be used to quickly get that sprite in question.
@@ -124,3 +124,7 @@ game.state.add('boot', {
  
 game.state.start('boot');
 ```
+
+## 3 - Conclusion
+
+So the group.getClosestTo method comes in handy for quickly getting the sprite in a group that is closest to the given sprite object. One of many convenience methods in phaser ce that can be used to help save time with these common tasks in game development. Hope you enjoyed this post, and be sure to have fun with phaser.
