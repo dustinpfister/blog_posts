@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2018-10-01 15:20:33
-version: 1.5
+updated: 2018-10-01 15:26:13
+version: 1.6
 ---
 
 When working with many objects there some times comes a need to combine them all together, when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties. In addition there is also ways of making hidden properties, and also the nature of copying by reference rather than value with objects in javaScript as well. In this post I will be writing about the [lodash](https://lodash.com/) object method known as [\_.extend](https://lodash.com/docs/4.17.10#extend), and how it compares to other methods in lodash, and javaScript by itself. Hopefully this post will help eliminate some confusion that you might have with combining objects in javaScript, or reinforce what you all ready know, so lets get to it.
@@ -25,7 +25,7 @@ The \_.extend lodash method works by assigning the own properties, and prototype
 
 When a javaScript developer refers to an objects own properties, they typically refer to the properties of an object that are not inherited from the objects prototype object that contains properties that are shared across multiple instances of a class of object. So therefor an objects own properties are properties that set the object apart from others that are made from the same constructor method, or that share the same prototype object. The \_.extend method combines both the own properties, as well as anything that may be in the prototype object. In some cases this might be desired, however in other cases it is not, and a method like \_.assign would be a better choice.
 
-## 2 - A Basic example of \_.extend
+## 2 - A Basic example that makes use of \_.extend
 
 For a basic example of \_.extend I put together a quick example that involves an object that is made with \_.create that works in a very similar fashion to that of the native Object.create. The reason why this is important for a \_.extend example is that it will result in object that has a prototype object with some visible properties that will be combined when used with \_.extend which sets the method apart from other alternatives such as \_.assign, and \_.merge.
 
@@ -50,3 +50,15 @@ console.log( _.extend({},a,b) ); // { own_prop: 37, proto_prop: 42, own_prop_two
 ```
 
 So as you can see when I use \_.extend to combine objects a and b into a new empty object, all own and inherited properties are combined, and assigned to the empty object. In a nut shell thats all there is to write about, but there are some additional pit falls to cover, when it comes to deailing with nested objects for instance.
+
+### 2.1 - Compared to \_.assign
+
+\_.extend is very similar to \_.assign, it works in almost the same way only it does not merge in prototype methods. In fact \_.extend is just an alias for \_.assignIn. So compared to \_.extend it will do the same thing, but without combining in prototype key name values.
+
+```js
+// extend will assign own, and inherited properties
+console.log( _.extend({},a,b) ); // { own_prop: 37, proto_prop: 42, own_prop_two: true }
+ 
+// _.assign will not assign inherited properties
+console.log( _.assign({},a,b) ); // { own_prop: 37, proto_prop: 42, own_prop_two: true }
+```
