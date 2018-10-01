@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2018-10-01 15:27:28
-version: 1.7
+updated: 2018-10-01 15:32:02
+version: 1.8
 ---
 
 When working with many objects there some times comes a need to combine them all together, when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties. In addition there is also ways of making hidden properties, and also the nature of copying by reference rather than value with objects in javaScript as well. In this post I will be writing about the [lodash](https://lodash.com/) object method known as [\_.extend](https://lodash.com/docs/4.17.10#extend), and how it compares to other methods in lodash, and javaScript by itself. Hopefully this post will help eliminate some confusion that you might have with combining objects in javaScript, or reinforce what you all ready know, so lets get to it.
@@ -49,7 +49,7 @@ let b = {
 console.log( _.extend({},a,b) ); // { own_prop: 37, proto_prop: 42, own_prop_two: true }
 ```
 
-So as you can see when I use \_.extend to combine objects a and b into a new empty object, all own and inherited properties are combined, and assigned to the empty object. In a nut shell thats all there is to write about, but there are some additional pit falls to cover, when it comes to deailing with nested objects for instance.
+So as you can see when I use \_.extend to combine objects a and b into a new empty object, all own and inherited properties are combined, and assigned to the empty object. In a nut shell thats all there is to write about, but there are some additional pit falls to cover, when it comes to dealing with nested objects for instance.
 
 ### 2.1 - Compared to \_.assign
 
@@ -65,6 +65,7 @@ console.log( _.assign({},a,b) ); // { own_prop: 37, proto_prop: 42, own_prop_two
 
 ### 2.2 - Compared to \_.merge
 
+The \_.merge method also works like \_.extend, but it will deep clone objects, rather than just simply referencing them. In some cases this might be preferred if for some reason I want everything to be copied into new objects that can be manipulated without changing the state of the objects from which they are created, and vis versa. In other cases it is not needed, or will actually result in undesired behavior as I do in fact want to work with references, as such \_.extend, or \_.assign would be the better choice.
 
 ```js
 // and object with own, and inherited properties,
