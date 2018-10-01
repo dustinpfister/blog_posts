@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 292
-updated: 2018-10-01 19:34:11
-version: 1.9
+updated: 2018-10-01 19:38:40
+version: 1.10
 ---
 
 When working with a group of sprites in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project a common task that comes up is to get a reference to a sprite in a group that is closest to another sprite. There are many ways of doing this that involve using a distance formula when looping over all active children in the group, however there is also a group method called group.getClosestTo that can be used to quickly get that sprite in question.
@@ -112,6 +112,8 @@ var createPlayer = function () {
 Not much of anything fancy here just creating a sprite, and placing it in the center.
 
 ### 2.5 - Tie everything together with Phaser.Game
+
+Now I just need to tie everything together with a Phaser.Game instance, and a single state object. In the create method I create the game.data object that will contain references to my sprites, and then call my mkSheet method. Once I have done that I then create the enemies, and the player sprite. Finally I call my showClosest method that makes use of group.getClosestTo to the the frame index of the closest sprite to that of an index value that is not that of the player or any other enemies sprite.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
