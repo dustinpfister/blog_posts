@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2018-09-30 19:44:18
-version: 1.9
+updated: 2018-09-30 20:29:12
+version: 1.10
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. In this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -48,8 +48,20 @@ Just a plain old for in loop seems to work just fine to loop over own properties
 ```js
 let a = new A();
  
-// a for in loop works
-for (var prop in a) {
-    console.log(a[prop]);
+for (let prop in a) {
+  console.log(prop + ' : ' +a[prop]);
 }
+```
+
+### 2.2 - Creating an array of key names with Object.keys
+
+Another way would be to create an array of key names, and loop over that with Array.forEach, while loop ect. Using Object.keys will give me all the enumerable properties of an object, but not it's prototype, unless I give the prototype object itself. So I could use Object.keys twice, and build an array of keys that way.
+
+```js
+let keys = Object.keys(a).concat(Object.keys(a.constructor.prototype));
+ 
+keys.forEach(function (key) {
+    var val = a[key];
+    console.log(key + ' : ' + val);
+});
 ```
