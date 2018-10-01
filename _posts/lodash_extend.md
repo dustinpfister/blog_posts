@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2018-10-01 15:32:02
-version: 1.8
+updated: 2018-10-01 15:36:23
+version: 1.9
 ---
 
-When working with many objects there some times comes a need to combine them all together, when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties. In addition there is also ways of making hidden properties, and also the nature of copying by reference rather than value with objects in javaScript as well. In this post I will be writing about the [lodash](https://lodash.com/) object method known as [\_.extend](https://lodash.com/docs/4.17.10#extend), and how it compares to other methods in lodash, and javaScript by itself. Hopefully this post will help eliminate some confusion that you might have with combining objects in javaScript, or reinforce what you all ready know, so lets get to it.
+When working with many objects there some times comes a need to combine them all together, when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties. In addition there is also ways of making hidden properties, and also the nature of copying by reference rather than value with objects in javaScript as well. In this post I will be writing about the [lodash](https://lodash.com/) object method known as [\_.extend](https://lodash.com/docs/4.17.10#extend), and how it compares to other methods in lodash. Hopefully this post will help eliminate some confusion that you might have with combining objects in javaScript, or reinforce what you all ready know, so lets get to it.
 
 <!-- more -->
 
@@ -104,3 +104,7 @@ let d = _.merge({}, a, b);
 a.nested_prop.foo = 'foobar';
 console.log(d.nested_prop.foo); // baz (no change to merged object)
 ```
+
+## 3 - Conclusion
+
+So that is my post on \_.extend for now, as my content on lodash continues to grow I will likely come back to this post to revise and expand on the content. It might be a good idea to add some vanilla js alternatives to \_.extend, or give some more detailed examples of its use. If there is anything you might like me to add, be sure to let me know in the comments section. Thanks for reading.
