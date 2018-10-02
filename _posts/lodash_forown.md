@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2018-10-01 20:07:29
-version: 1.5
+updated: 2018-10-01 20:09:22
+version: 1.6
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. Sometimes it would be nice to have a method that will only loop over key value pares that are actually part of the object rather than it's prototype. For this there is the [\_.forOwn](https://lodash.com/docs/4.17.4#forOwn) method in [lodash](https://lodash.com/) that makes this very easy. There is also of course the [\_.forIn](/reports/2018/09/30/lodash_forin/) method as well that will loop over the own properties of an object as well as what is in the prototype object as well.
@@ -18,6 +18,8 @@ Looping over all keys in an object is something that comes up a whole lot when w
 This is a post on the \_.forOwn method in lodash, and related topics in javaScript. It is not a getting started post on lodash, or javaScript in general. I also will not be getting into prototype based inheritance in this post as well, as that is a matter for another post.
 
 ## 2 - A Basic example of \_.forOwn
+
+For a basic example of \_.forOwn I put together a quick example that involves a custom made constructor method, and a prototype for that method. The _.forOwn method will loop over just the own properties of the object.
 
 ```js
 var Unit = function (obj) {
