@@ -5,17 +5,21 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 292
-updated: 2018-10-01 19:41:33
-version: 1.11
+updated: 2018-10-01 20:27:56
+version: 1.12
 ---
 
-When working with a group of sprites in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project a common task that comes up is to get a reference to a sprite in a group that is closest to another sprite. There are many ways of doing this that involve using a distance formula when looping over all active children in the group, however there is also a group method called group.getClosestTo that can be used to quickly get that sprite in question.
+When working with a group of sprites in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project a common task that comes up is to get a reference to a sprite in a group that is closest to another sprite. There are many ways of doing this that involve using a distance formula when looping over all active children in the group, however there is also a group method called [group.getClosestTo](https://photonstorm.github.io/phaser-ce/Phaser.Group.html#getClosestTo) that can be used to quickly get that sprite in question.
 
 <!-- more -->
 
 ## 1 - what to know
 
-This is a post on finding the closest display object such as a sprite in a group in phaser ce. In this post I am using many different classes, and other aspects pf phaser ce that I am not going to get into detail. I have written a getting started post on phaser ce that you might want to start with if you are new to phaser ce, I also have other posts on groups in phaser including one that is a starting post of sorts on that subject.
+This is a post on finding the closest display object such as a sprite in a group in phaser ce. In this post I am using many different classes, and other aspects pf phaser ce that I am not going to get into detail. I have written a [getting started post on phaser ce](/2017/10/04/phaser-getting-started/) that you might want to start with if you are new to phaser ce, I also have other posts on groups in phaser including one that is a starting post of sorts on that subject.
+
+### 1.1 - This is a phaser ce post
+
+In this post I am using phaser community edition 2.11.0 of the [phaser](https://phaser.io/) javaScript powered game framework
 
 ## 2 - A Basic example of group.getClosestTo in phaser ce
 
