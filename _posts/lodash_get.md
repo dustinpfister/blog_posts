@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 286
-updated: 2018-09-24 16:24:38
-version: 1.6
+updated: 2018-10-01 20:46:55
+version: 1.7
 ---
 
-So it is time for yet another lodash post, this time on the \_.get method which oddly enough I have not wrote about yet. The \_.get method allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. I can also pass an optional default value to the method in case the path to the value is undefined. It might also be a good idea to explore some other options for quickly getting values from an object in javaScript as well, so I will be writing about some vanilla js alternatives to \_.get as well.
+So it is time for yet another [lodash](https://lodash.com/) post, this time on the [\_.get](https://lodash.com/docs/4.17.10#get) method which oddly enough I have not wrote about yet. The \_.get method allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. I can also pass an optional default value to the method in case the path to the value is undefined. It might also be a good idea to explore some other options for quickly getting values from an object in javaScript as well, so I will be writing about some vanilla js alternatives to \_.get as well.
 
 <!-- more -->
 
