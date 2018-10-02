@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 287
-updated: 2018-09-27 08:50:30
-version: 1.14
+updated: 2018-10-01 20:44:34
+version: 1.15
 ---
 
-So tile maps are an important component of phaser that allows for making a map of tiles that contain among other things frame index values, that can then be skinned with sprite sheet. So tile maps are useful for many strategy and platform type games, and any other kind of project where they might come in handy. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map, such as frame index data and other useful properties.
+So tile maps are an important component of [phaser ce](https://photonstorm.github.io/phaser-ce/) that allows for making a map of tiles that contain among other things frame index values, that can then be skinned with sprite sheet. So tile maps are useful for many strategy and platform type games, and any other kind of project where they might come in handy. In this post I will be covering how to load external data from a json file that can contain all kinds of data for a tile map, such as frame index data and other useful properties. This can be done with the [tilemap method](https://photonstorm.github.io/phaser-ce/Phaser.Loader.html#tilemap) of the loader in phaser ce.
 
 <!-- more -->
 
@@ -19,7 +19,7 @@ This is a post on loading an external json file that contains data for a tile ma
 
 ### 1.1 - This is a phaser 2.x post
 
-In this post I am using phaser community edition 2.11.0.
+In this post I am using phaser community edition 2.11.0 of [phaser](https://phaser.io/).
 
 ## 2 - An example using an external tile map for level design
 
