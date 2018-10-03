@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-09-18 19:55:20
-version: 1.14
+updated: 2018-10-03 13:30:38
+version: 1.15
 ---
 
 The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
@@ -15,7 +15,7 @@ The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) ad
 
 ## 1 - What to know
 
-This is a post on the [events component]((https://photonstorm.github.io/phaser-ce/Phaser.Events.html)) in [Phaser ce](https://photonstorm.github.io/phaser-ce/), the community edition of the [phaser](https://phaser.io/) game framework written in javaScript.
+This is a post on the [events component](https://photonstorm.github.io/phaser-ce/Phaser.Events.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/), the community edition of the [phaser](https://phaser.io/) game framework written in javaScript.
 
 ### 1.1 - This is a phaser ce (2.x) post
 
