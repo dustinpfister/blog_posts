@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 66
-updated: 2018-08-13 18:44:21
-version: 1.5
+updated: 2018-10-03 13:34:11
+version: 1.6
 ---
 
 Switching two and back from full screen is pretty easy in [phaser](http://phaser.io), there are just two methods, and a property of interest via game.scale to get started with it. There are also properties that can be set to fill to the screen of the device, and preserve aspect ratio. In this post I will be writing about setting a game in actual full screen with the phaser scale manager. However this does not seem to work on some browsers, as it is something that can often be restricted. So I have written [another post on toggling pseudo full screen](/2018/08/13/phaser-scale-fullscreen-pseudo/) in phaser, that is actually just a way to scale up the canvas of the game. So you might want to check that out if what is written here does not work out okay for you.
@@ -21,7 +21,7 @@ This is an advanced post on full screen mode in the phaser ce game framework tha
 
 ### 1.1 - This might not be the best way to toggle full screen
 
-There is more than one way to skin a cat as they say, and setting full screen more might not be the best way to give a full screen mode option for your project. With some browsers this will just not work at all, and it is best to to maybe just work out a way to scale the game up instead. If so you might want to check out my newer post on making a [full screen mode that way]((/2018/08/13/phaser-scale-fullscreen-pseudo/)).
+There is more than one way to skin a cat as they say, and setting full screen more might not be the best way to give a full screen mode option for your project. With some browsers this will just not work at all, and it is best to to maybe just work out a way to scale the game up instead. If so you might want to check out my newer post on making a [full screen mode that way](/2018/08/13/phaser-scale-fullscreen-pseudo/).
 
 ### 1.2 - Setting the native size of the project.
 
