@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2018-10-02 21:32:20
-version: 1.7
+updated: 2018-10-02 21:34:54
+version: 1.8
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be a thin post today, but to help beef things up here many I will cover some vanilla js solutions for this as well.
@@ -54,3 +54,49 @@ console.log(nums); // [0,1,2,3,4,5,6,7,8,9]
 ```
 
 However if you aim to use the native Array.map it will not call the function for elements that do not have values, so a solution like this will not work with the native Array.map unless the array is filled before hand some how.
+
+## 4 - Vanilla js range method
+
+Yes it is not to hard at all to make a vanilla js replacement for \_.range
+
+```js
+var range = function (start, end, step) {
+ 
+    let arr = [],
+    len = 0;
+ 
+    step = step === undefined ? 1 : step;
+ 
+    if (arguments.length === 1) {
+ 
+        len = start;
+        start = 0;
+        end = start;
+ 
+    } else {
+ 
+        start = start === undefined ? 1 : start;
+        end = end === undefined ? 1 : end;
+        len = end - start;
+ 
+    }
+ 
+    var i = 0;
+    while (i < len) {
+ 
+        arr.push(start + i * step);
+ 
+        i += 1;
+ 
+    }
+ 
+    return arr;
+ 
+};
+ 
+console.log( range(10) ); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+console.log( range(10,15) ); // [ 10, 11, 12, 13, 14 ]
+console.log( range(8, 16, 2) ); // [ 8, 10, 12, 14, 16, 18, 20, 22 ]
+```
+
+Still making a simple method like this takes a little time, and if it is there in lodash all ready, and lodash is part of the projects stack, then there is no need to bother.
