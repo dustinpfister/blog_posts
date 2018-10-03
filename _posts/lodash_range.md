@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2018-10-02 21:04:59
-version: 1.5
+updated: 2018-10-02 21:11:31
+version: 1.6
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be a thin post today, but to help beef things up here many I will cover some vanilla js solutions for this as well.
@@ -41,4 +41,14 @@ Also when giving three arguments it is possible to set a step rate.
 nums = _.range(100,200,20);
  
 console.log(nums); //  [ 100, 120, 140, 160, 180 ]
+```
+
+## 3 - Using \_.map to create an array of sequential numbers
+
+So a solution for this could be done with \_.map as well by creating an array that has a length that is the desired range, and then using the index argument that is given to the callback to set the numbers.
+
+```js
+let nums = _.map(new Array(10), function(el,i){return i});
+ 
+console.log(nums); // [0,1,2,3,4,5,6,7,8,9]
 ```
