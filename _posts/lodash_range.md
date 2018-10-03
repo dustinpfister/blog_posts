@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2018-10-02 20:54:56
-version: 1.2
+updated: 2018-10-02 20:58:27
+version: 1.3
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be a thin post today, but to help beef things up here many I will cover some vanilla js solutions for this as well.
@@ -17,3 +17,12 @@ Sometimes when working on a javaScript project there is a need to create a range
 
 This is a post on the \_.range method in lodash that can be used to quickly create an array that contains a range of numbers. This is also something that is not that hard to do with plain old vanilla js as well, so I will also be looking at some plain old javaScript solutions for this as well. This is not a getting started post with lodash, or javaScript in general, so I hope you have at least some background with this.
 
+## 2 - Some examples of \_.range
+
+There is not much to write about when it come to using \_.range, just call the method, and pass a count of the number of numbers that you need in the array if you just want a range of numbers from zero upwards like so.
+
+```js
+let nums = _.range(10);
+ 
+console.log(nums); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
