@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2018-10-03 20:46:10
-version: 1.3
+updated: 2018-10-03 20:55:39
+version: 1.4
 ---
 
 Writing more content on [lodash](https://lodash.com/) this month for now, and have noticed that I did not get around to \_.uniqueId yet. The method addresses something that comes up a lot now and then when developing projects, so it deserves a post. Also in these lodash posts I often take a moment to brush up on how hard it is to go about making a vanilla js solution, or if there are native methods that can be used, and as such this post will be no exception. So lets take a look at \_.uniqueId, and some other solutions for generating unique ids.
@@ -18,6 +18,8 @@ Writing more content on [lodash](https://lodash.com/) this month for now, and ha
 This is a post on the \_.uniqueId method in lodash. This method can be used to create a unique id for something each time it is called. This method will work for the purpose of assigning a unique id for most use cases, but not with complex projects that require a unique id always even if the project restarts. In any case this will be a brief post on this topic.
 
 ## 2 - An \_.uniqueId example
+
+Using the \_.uniqueId method is fairly straight forward to use, I just need to call it, passing an optional prefix as the first argument, and a unique id will be returned.
 
 ```js
 let _ = require('lodash');
