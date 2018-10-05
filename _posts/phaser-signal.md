@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 297
-updated: 2018-10-04 20:53:17
-version: 1.7
+updated: 2018-10-04 20:57:18
+version: 1.8
 ---
 
 Events are a big part of [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game development, and the [Phaser.Signal](https://photonstorm.github.io/phaser-ce/Phaser.Signal.html) class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
@@ -49,6 +49,8 @@ var createOnGameOver = function (game) {
 ```
 
 ### 2.2 - The onPlayerOutBounds helper
+
+This helper will add an event handler to the onOutOfBounds event. The event will fire each time the sprite goes out of bounds, resulting in the sprite loosing health. I also check to see if the sprites health is completely gone, and if so fire my onGameOver event by calling the Signal.dispatch method that can be used to fire all handlers for the event.
 
 ```js
 var onPlayerOutBounds = function (game) {
