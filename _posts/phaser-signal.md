@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 297
-updated: 2018-10-04 20:50:33
-version: 1.6
+updated: 2018-10-04 20:53:17
+version: 1.7
 ---
 
 Events are a big part of [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game development, and the [Phaser.Signal](https://photonstorm.github.io/phaser-ce/Phaser.Signal.html) class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
@@ -26,6 +26,8 @@ In this post I am using phaser Community Edition 2.11.0 of [phaser](https://phas
 For this example I will be creating my own instance of Phaser.Signal to define my own event, as well as making use of a phaser ce built in event as well. This example will just be a sprite that falls down off screen, and when doing so will fire the phaser built in signal onOutOfBounds, doing so will result in the sprite taking damage, and will then start over at its starting location. Once the sprite looses all its health I will then use Signal.dispatch to fire mu own onGameOver event.
 
 ### 2.1 - The createOnGameOver helper
+
+This helper when called will create my onGameOver event by calling Phaser.Signal with the new keyword. I can then save a reference to that signal somewhere such as to a game.data object. In this method I also add and event handler to the Signal with Signal.add
 
 ```js
 var createOnGameOver = function (game) {
