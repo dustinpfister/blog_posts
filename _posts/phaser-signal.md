@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 297
-updated: 2018-10-04 20:59:17
-version: 1.9
+updated: 2018-10-04 21:01:43
+version: 1.10
 ---
 
 Events are a big part of [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game development, and the [Phaser.Signal](https://photonstorm.github.io/phaser-ce/Phaser.Signal.html) class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
@@ -84,7 +84,7 @@ var onPlayerOutBounds = function (game) {
 
 ### 2.3 - A helper for making a player sprite
 
-Here I have a simple helper that will create the player sprite that will be used for this example. I set the health property here that will later be used with the damage method in my events above. For more information on why it might be a good idea to handly sprite health this way you can check out my post on that subject of interested.
+Here I have a simple helper that will create the player sprite that will be used for this example. I set the health property here that will later be used with the damage method in my events above. For more information on why it might be a good idea to handle sprite health this way you can [check out my post on sprite health](/2018/09/17/phaser-sprite-health/) and the damage method.
 
 ```js
 // make the player sprite
