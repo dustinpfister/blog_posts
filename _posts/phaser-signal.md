@@ -5,11 +5,11 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 297
-updated: 2018-10-04 20:44:16
-version: 1.4
+updated: 2018-10-04 20:46:06
+version: 1.5
 ---
 
-Events are a big part of phaser ce game development, and the Phaser.Signal class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
+Events are a big part of [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game development, and the [Phaser.Signal](https://photonstorm.github.io/phaser-ce/Phaser.Signal.html) class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
 
 <!-- more -->
 
@@ -19,7 +19,7 @@ This is a post on using Phaser.Signal to create, and use events in phaser ce. In
 
 ### 1.1 - This is a phaser ce 2.x post
 
-In this post I am using phaser Community Edition 2.11.0
+In this post I am using phaser Community Edition 2.11.0 of [phaser](https://phaser.io/).
 
 ## 2 - Example using some Signals
 
