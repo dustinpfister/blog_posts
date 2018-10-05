@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 297
-updated: 2018-10-04 20:43:01
-version: 1.3
+updated: 2018-10-04 20:44:16
+version: 1.4
 ---
 
 Events are a big part of phaser ce game development, and the Phaser.Signal class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
@@ -16,6 +16,10 @@ Events are a big part of phaser ce game development, and the Phaser.Signal class
 ## 1 - What to know
 
 This is a post on using Phaser.Signal to create, and use events in phaser ce. Instances of this class pop up now and then whenever I want to do something that involves attaching an event handler for something like user input, or if a player sprite goes out of bounds for example. A Signal in phaser ce works very much like addEventListener in client side javaScript, allowing for me to attach many event handers to the same event.
+
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser Community Edition 2.11.0
 
 ## 2 - Example using some Signals
 
