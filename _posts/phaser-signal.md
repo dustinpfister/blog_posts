@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 297
-updated: 2018-10-04 19:07:41
-version: 1.1
+updated: 2018-10-04 20:39:28
+version: 1.2
 ---
 
 Events are a big part of phaser ce game development, and the Phaser.Signal class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
@@ -15,6 +15,9 @@ Events are a big part of phaser ce game development, and the Phaser.Signal class
 
 ## 1 - What to know
 
+## 2 - Example using some Signals
+
+### 2.1 - The createOnGameOver helper
 
 ```js
 var createOnGameOver = function (game) {
@@ -34,6 +37,8 @@ var createOnGameOver = function (game) {
  
 };
 ```
+
+### 2.2 - The onPlayerOutBounds helper
 
 ```js
 var onPlayerOutBounds = function (game) {
@@ -65,6 +70,8 @@ var onPlayerOutBounds = function (game) {
 };
 ```
 
+### 2.3 - A helper for making a player sprite
+
 ```js
 // make the player sprite
 var mkPlayerSprite = function (game) {
@@ -80,6 +87,8 @@ var mkPlayerSprite = function (game) {
  
 };
 ```
+
+### 2.4 - Make a sprite sheet helper
 
 ```js
 // make a sprite sheet
@@ -98,7 +107,11 @@ var mkSheet = function (game) {
     game.cache.addSpriteSheet('sheet-block', null, canvas, 32, 32, 3, 0, 0);
  
 };
- 
+```
+
+### 2.5 - Tie everything together
+
+```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
 game.state.add('game', {
