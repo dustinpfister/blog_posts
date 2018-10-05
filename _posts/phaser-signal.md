@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 297
-updated: 2018-10-04 21:05:00
-version: 1.12
+updated: 2018-10-04 21:07:12
+version: 1.13
 ---
 
 Events are a big part of [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game development, and the [Phaser.Signal](https://photonstorm.github.io/phaser-ce/Phaser.Signal.html) class is the phaser ce standard way of creating, and making use of events in phaser ce. There are many instances of Phaser.Signal to begin with in phaser that can be used to define some handers for when those events occur, but the class can also be used to define events as well. In this post I will be giving some use case examples of Phaser.Signal, including how to make one of my own, but  I will not be covering all the different events that are built in. 
@@ -127,7 +127,7 @@ var mkSheet = function (game) {
 
 ### 2.5 - Tie everything together
 
-Now it is time to tie everything together with a Phaser.Game instance and a single state object.
+Now it is time to tie everything together with a [Phaser.Game](/2017/10/11/phaser-main-game-constructor/) instance and a single [state object](/2017/10/06/phaser-state-objects/).
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
