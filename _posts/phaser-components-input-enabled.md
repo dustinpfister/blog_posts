@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 73
-updated: 2018-10-06 16:59:49
-version: 1.16
+updated: 2018-10-06 17:10:24
+version: 1.17
 ---
 
 The [phaser ce]((https://photonstorm.github.io/phaser-ce/index.html) inputEnabled component is used in most game display objects including sprites to allow for input handing in relation to the display object. These are many instances of a [Signal](/2018/10/04/phaser-signal/) than can be used to attach event handers that will fire when a player does something such as clicking or touching the display object. This post will serve as an overview of the [input enabled component in phaser ce](https://photonstorm.github.io/phaser-ce/Phaser.Component.InputEnabled.html), and I will like to other relevant posts on handing input in a phaser ce project where appropriate.
@@ -43,6 +43,8 @@ var mkGraphic = function (game) {
 ```
 
 ### 2.2 - The draw method
+
+The draw method will be called once the example starts, and again each time the sprite is clicked or touched. So this is what will be called to change the state of the graphics based on user input. In a real project much more could be done when the player interacts with a display object, but for this simple hello work style example I will just be changing the color of a graphics object.
 
 ```js
 var draw = function (gra, color) {
