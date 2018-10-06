@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 73
-updated: 2018-10-06 16:41:01
-version: 1.10
+updated: 2018-10-06 16:46:01
+version: 1.11
 ---
 
 The [phaser ce]((https://photonstorm.github.io/phaser-ce/index.html) inputEnabled component is used in most game display objects including sprites to allow for input handing in relation to the display object. These are many instances of a [Signal](/2018/10/04/phaser-signal/) than can be used to attach event handers that will fire when a player does something such as clicking or touching the display object. This post will serve as an overview of the [input enabled component in phaser ce](https://photonstorm.github.io/phaser-ce/Phaser.Component.InputEnabled.html), and I will like to other relevant posts on handing input in a phaser ce project where appropriate.
@@ -19,55 +19,73 @@ In this post I am writing about some of the properties of the input enabled comp
 
 There are also other ways of handing user input that may be a better choice depending on the nature of the game that is being developed. The events that can be used with input enabled will work okay for some projects, however other projects might call for other ways of handing user input that involve directly polling the state of input devices. It is possible to poll pointer objects in general such as with active pointer, touch pointers, and then there is also of course the [keyboard](/2017/10/13/phaser-gameobj-input-keyboard/) and [mouse pointer](/2017/10/12/phaser-input-mousepointer/) when making desktop centric style games. A good starting point might be to check out the [main input handler](/2017/10/13/phaser-gameobj-input/) thought.
 
-## InputEnabled example
+## 2 - InputEnabled example
 
 In Order to do much of anything involving attaching input handers to a certain display object like a sprite, the display object must support the inputEnabled component. If so to get started the inputEnambed boolean must be set to true.
 
 Once the the inputEnabled bool of the display object is set to true, the input property of the display object will have a value that is an instance of inputHandler rather than null. In addition any event handers added with the events component, will now work. Be sure to also read my post on the [events component](/2017/10/26/phaser-components-events/).
 
 ```js
-var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
+var mkGraphic = function (game) {
  
-        create : function () {
+    var gra = game.data.gra = game.add.graphics(160, 120);
  
-            var gra = game.add.graphics(160, 120),
+    // enable the input
+    gra.inputEnabled = true;
  
-            draw = function (gra, color) {
+};
  
-                color = color || 0x0000ff;
+var draw = function (gra, color) {
  
-                gra.clear();
-                gra.beginFill(color);
-                gra.drawRect(-50, -50, 100, 100);
-                gra.endFill();
+    color = color || 0x0000ff;
  
-            };
+    gra.clear();
+    gra.beginFill(color);
+    gra.drawRect(-50, -50, 100, 100);
+    gra.endFill();
  
-            // enable the input
-            gra.inputEnabled = true;
+};
  
-            // I can now use the onInputDown event
-            gra.events.onInputDown.add(function (gra, pt) {
+var attachEvents = function () {
  
-                draw(gra, 0x00ff00);
+    var gra = game.data.gra;
  
-            });
+    // I can now use the onInputDown event
+    gra.events.onInputDown.add(function (gra, pt) {
  
-            // onInputUp also
-            gra.events.onInputUp.add(function (gra, pt) {
- 
-                draw(gra, 0x0000ff);
- 
-            });
- 
-            draw(gra);
-        }
+        draw(gra, 0x00ff00);
  
     });
+ 
+    // onInputUp also
+    gra.events.onInputUp.add(function (gra, pt) {
+ 
+        draw(gra, 0x0000ff);
+ 
+    });
+ 
+};
+ 
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('demo', {
+ 
+    create: function () {
+ 
+        game.data = game.data || {};
+ 
+        mkGraphic(game);
+ 
+        attachEvents();
+ 
+        draw(game.data.gra);
+    }
+ 
+});
+ 
+game.state.start('demo');
 ```
 
-## Conclusion
+## 3 - Conclusion
 
 There is not much to know about the component itself, but there is a great deal to know about the inputHandler, as well as the [Events](/2017/10/26/phaser-components-events/) that can now be used once input is enabled.
-
-{% phaser_bottom %}
