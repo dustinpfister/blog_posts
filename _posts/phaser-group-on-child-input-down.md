@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 298
-updated: 2018-10-05 20:17:38
-version: 1.4
+updated: 2018-10-05 20:35:09
+version: 1.5
 ---
 
 These days I have been playing around with groups in [phaser ce](https://photonstorm.github.io/phaser-ce/), and have learned a lot about what there is to work with in the Phaser.Group class allowing me to make smarter decisions when developing a project with phaser ce. For example when it comes to attaching an event hander for sprites, I can attach one for each sprite in a group. However if it is something that applies to all of the children in a group, I can use [Group.onChildInputDown](https://photonstorm.github.io/phaser-ce/Phaser.Group.html).
@@ -15,7 +15,7 @@ These days I have been playing around with groups in [phaser ce](https://photons
 
 ## 1 - What to know before continuing
 
-This is a post on using Group.onChildInputDown in phaser ce, a Signal that can be used to attach a handler that will fire each time a sprite in the group is clicked assuming that it is input enabled. As such this is an advanced post on phaser ce that deals with a very specific issue, and is therefore not a getting started post on groups, phaser ce, or javaScript in general.
+This is a post on using Group.onChildInputDown in phaser ce, a [Signal](/2018/10/04/phaser-signal/) that can be used to attach a handler that will fire each time a sprite in the group is clicked assuming that it is input enabled. As such this is an advanced post on phaser ce that deals with a very specific issue, and is therefore not a getting started post on groups, phaser ce, or javaScript in general.
 
 
 ```js
