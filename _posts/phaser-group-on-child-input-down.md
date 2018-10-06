@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 298
-updated: 2018-10-05 20:35:09
-version: 1.5
+updated: 2018-10-06 19:52:43
+version: 1.6
 ---
 
 These days I have been playing around with groups in [phaser ce](https://photonstorm.github.io/phaser-ce/), and have learned a lot about what there is to work with in the Phaser.Group class allowing me to make smarter decisions when developing a project with phaser ce. For example when it comes to attaching an event hander for sprites, I can attach one for each sprite in a group. However if it is something that applies to all of the children in a group, I can use [Group.onChildInputDown](https://photonstorm.github.io/phaser-ce/Phaser.Group.html).
@@ -17,6 +17,9 @@ These days I have been playing around with groups in [phaser ce](https://photons
 
 This is a post on using Group.onChildInputDown in phaser ce, a [Signal](/2018/10/04/phaser-signal/) that can be used to attach a handler that will fire each time a sprite in the group is clicked assuming that it is input enabled. As such this is an advanced post on phaser ce that deals with a very specific issue, and is therefore not a getting started post on groups, phaser ce, or javaScript in general.
 
+## 2 - An example using group.onChildInputDown
+
+### 2.1 - The handler to be used with group.onChildInputDown
 
 ```js
 // the onBlockInputDown handler
@@ -34,6 +37,8 @@ var onBlockInputDown = function (block) {
  
 };
 ```
+
+### 2.2 - Create the group, and attach the handler with group.onChildInputDown
 
 ```js
 // create the group
@@ -59,6 +64,8 @@ var createGroup = function (game) {
 };
 ```
 
+### 2.3 - Reset group helper
+
 ```js
 var resetGroup = function (group) {
  
@@ -77,6 +84,8 @@ var resetGroup = function (group) {
  
 };
 ```
+
+### 2.4 - Make a sprite sheet with canvas
 
 ```js
 // make a sprite sheet
@@ -103,6 +112,8 @@ var mkSheet = function (game) {
 };
 ```
 
+### 2.5 - The Phaser.Game instance
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -120,4 +131,6 @@ game.state.add('demo', {
  
 game.state.start('demo');
 ```
+
+## 3 - Conclusion
 
