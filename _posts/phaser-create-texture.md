@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 299
-updated: 2018-10-06 12:19:25
-version: 1.3
+updated: 2018-10-06 12:21:13
+version: 1.4
 ---
 
 So when making a project with [Phaser ce](https://photonstorm.github.io/phaser-ce/) I often go with solutions for graphics that do not involve loading an external sprite sheet. Do not get me wrong that is a great way of handling it, and I have written a post on how to do that in phaser. However for simple hyper casual style games, it is often possible to just quickly throw together some simple graphics with one of the assetless solutions available in phaser ce for making on the fly graphics for a game. I have all ready wrote a post on the graphics display objects, and how to make sprite sheets with a canvas element, and the 2d drawing canvas api. However in this post I will be writing about another option for doing this in phaser ce which is the Create.texture method.
@@ -23,7 +23,7 @@ In this post I am using phaser community edition 2.11.0, and not the latest majo
 
 ## 2 - Basic example of create.texture
 
-For a basic example of create.texture I made a quick little demo that results in a sprite displayed on the screen of a little guy that is made with a texture that I created with create.texture. 
+For a basic example of create.texture I made a quick little demo that results in a sprite displayed on the screen of a little guy that is made with a texture that I created with create.texture. This is just one little helper method that outlines all the basics of using the method, as well as how to make some color changes to a palette, and how to furnish the pixel data. In this example I am not going to get into anything more advanced like animation.
 
 ## 2.1 - The createTexture helper
 
