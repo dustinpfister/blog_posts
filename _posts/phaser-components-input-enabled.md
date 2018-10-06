@@ -5,15 +5,17 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 73
-updated: 2018-10-06 16:26:17
-version: 1.5
+updated: 2018-10-06 16:29:21
+version: 1.6
 ---
 
 The [phaser ce]((https://photonstorm.github.io/phaser-ce/index.html) inputEnabled component is used in most game display objects including sprites to allow for input handing in relation to the display object. These are many instances of a [Signal](/2018/10/04/phaser-signal/) than can be used to attach event handers that will fire when a player does something such as clicking or touching the display object. This post will serve as an overview of the [input enabled component in phaser ce](https://photonstorm.github.io/phaser-ce/Phaser.Component.InputEnabled.html), and I will like to other relevant posts on handing input in a phaser ce project where appropriate.
 
 <!-- more -->
 
+## 1 - what to know
 
+In this post I am writing about some of the properties of the input enabled component in phaser ce. I will be covering a basic example of its use, and how it can be helpful as a way of handling player input when making a phaser ce powered game with javaScript. In this post I am making use of many phaser ce features that I explain in detail in other posts on this site. If you are new to phaser it might be best to start with my getting started post on phaser ce.
 
 ## InputEnabled example
 
