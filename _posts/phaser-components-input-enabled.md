@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 73
-updated: 2018-10-06 17:20:59
-version: 1.20
+updated: 2018-10-06 17:25:22
+version: 1.21
 ---
 
 The [phaser ce]((https://photonstorm.github.io/phaser-ce/index.html) inputEnabled component is used in most game display objects including sprites to allow for input handing in relation to the display object. These are many instances of a [Signal](/2018/10/04/phaser-signal/) than can be used to attach event handers that will fire when a player does something such as clicking or touching the display object. This post will serve as an overview of the [input enabled component in phaser ce](https://photonstorm.github.io/phaser-ce/Phaser.Component.InputEnabled.html), and I will like to other relevant posts on handing input in a phaser ce project where appropriate.
@@ -89,6 +89,8 @@ var attachEvents = function () {
 
 Now to make the example come to life by creating an instance of [Phaser.Game](/2017/10/11/phaser-main-game-constructor/), and making a single [state object]( /2017/10/06/phaser-state-objects/). Because this example is completely event driven there is no need for an update method. I start by creating my game.data object in the create method of the state, in more complex projects there will be more than one value attached other than the graphics object, I always make it though it a lot of these examples because it is just a practice I picked up.
 
+I then create the graphics object, which will also enable input, at which point it is now cool to attach some events, and then I finish my calling the draw method once to set the initial state of the graphics object.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -109,5 +111,7 @@ game.state.add('demo', {
  
 game.state.start('demo');
 ```
+
+If all goes well this results in a simple example the will chance color when the graphics is clicked. Nothing to exciting, but if you are looking for a simple hello world style example I cant make things much more simple than that. In a real project this might be used as a way to make an enemy display object take damage when clicked when making a defense strategy type game for example.
 
 ## 3 - Conclusion
