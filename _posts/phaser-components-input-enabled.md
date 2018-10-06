@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 73
-updated: 2018-10-06 17:25:22
-version: 1.21
+updated: 2018-10-06 17:30:45
+version: 1.22
 ---
 
 The [phaser ce]((https://photonstorm.github.io/phaser-ce/index.html) inputEnabled component is used in most game display objects including sprites to allow for input handing in relation to the display object. These are many instances of a [Signal](/2018/10/04/phaser-signal/) than can be used to attach event handers that will fire when a player does something such as clicking or touching the display object. This post will serve as an overview of the [input enabled component in phaser ce](https://photonstorm.github.io/phaser-ce/Phaser.Component.InputEnabled.html), and I will like to other relevant posts on handing input in a phaser ce project where appropriate.
@@ -115,3 +115,5 @@ game.state.start('demo');
 If all goes well this results in a simple example the will chance color when the graphics is clicked. Nothing to exciting, but if you are looking for a simple hello world style example I cant make things much more simple than that. In a real project this might be used as a way to make an enemy display object take damage when clicked when making a defense strategy type game for example.
 
 ## 3 - Conclusion
+
+So the basic idea here is to just set the inputEnabled boolean of a display object like a sprite, or graphics object to true. After doing that it is possible to attach handlers to certain events in the events component of the display object that can be used to preform actions on a per event type basis. If you would like to see more examples, or have any questions be sure to let me know in the comments section. I have been focusing on making my phaser content more solid and would like to here from my readers. In any case be sure to have fun when working on your own projects, this is a game framework after all.
