@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 298
-updated: 2018-10-07 12:29:58
-version: 1.10
+updated: 2018-10-07 17:24:16
+version: 1.11
 ---
 
 These days I have been playing around with groups in [phaser ce](https://photonstorm.github.io/phaser-ce/), and have learned a lot about what there is to work with in the Phaser.Group class allowing me to make smarter decisions when developing a project with phaser ce. For example when it comes to attaching an event hander for sprites, I can attach one for each sprite in a group. However if it is something that applies to all of the children in a group, I can use [Group.onChildInputDown](https://photonstorm.github.io/phaser-ce/Phaser.Group.html).
@@ -123,6 +123,8 @@ var mkSheet = function (game) {
 ```
 
 ### 2.5 - The Phaser.Game instance
+
+Now it is time to pull everything together with a Phaser.Game instance. With this example I just need to do everything in a single create method in a single state object sense everything is event driven, and I have off set just about all of the logic into small helper methods in an effort to make the code more fine grain.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
