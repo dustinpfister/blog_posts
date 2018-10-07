@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 298
-updated: 2018-10-06 19:52:43
-version: 1.6
+updated: 2018-10-06 20:18:35
+version: 1.7
 ---
 
 These days I have been playing around with groups in [phaser ce](https://photonstorm.github.io/phaser-ce/), and have learned a lot about what there is to work with in the Phaser.Group class allowing me to make smarter decisions when developing a project with phaser ce. For example when it comes to attaching an event hander for sprites, I can attach one for each sprite in a group. However if it is something that applies to all of the children in a group, I can use [Group.onChildInputDown](https://photonstorm.github.io/phaser-ce/Phaser.Group.html).
@@ -19,7 +19,11 @@ This is a post on using Group.onChildInputDown in phaser ce, a [Signal](/2018/10
 
 ## 2 - An example using group.onChildInputDown
 
+For an example of group.onChildInputDown I made a quick project that involves making a small group of block sprites using a canvas solution to make the sprite sheet. Each time a sprite is clicked a handler that is attached to the group thanks to group.onChildInputDown is called that reduces the health property of the sprite that was clicked.  When the health of a sprite reaches zero it dies, and if all sprites in the group die the group is reset. 
+
 ### 2.1 - The handler to be used with group.onChildInputDown
+
+This is the handler that will be called each time a sprite is clicked. I could attach the handler on a per sprite bases, but because it applies to all sprites in the group, I can attach it here.
 
 ```js
 // the onBlockInputDown handler
