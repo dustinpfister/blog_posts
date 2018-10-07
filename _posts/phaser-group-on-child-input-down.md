@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 298
-updated: 2018-10-07 17:24:16
-version: 1.11
+updated: 2018-10-07 17:35:08
+version: 1.12
 ---
 
 These days I have been playing around with groups in [phaser ce](https://photonstorm.github.io/phaser-ce/), and have learned a lot about what there is to work with in the Phaser.Group class allowing me to make smarter decisions when developing a project with phaser ce. For example when it comes to attaching an event hander for sprites, I can attach one for each sprite in a group. However if it is something that applies to all of the children in a group, I can use [Group.onChildInputDown](https://photonstorm.github.io/phaser-ce/Phaser.Group.html).
@@ -145,4 +145,6 @@ game.state.start('demo');
 ```
 
 ## 3 - Conclusion
+
+There is of course also attaching events on a per sprite basis as well, so I a read project there might be a situation in which I attach one or more handlers via group.onChildInputDown as well as a few handers here and there via Sprite.events.onInputDown as well.
 
