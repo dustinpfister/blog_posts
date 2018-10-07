@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 298
-updated: 2018-10-06 20:33:13
-version: 1.8
+updated: 2018-10-07 12:18:27
+version: 1.9
 ---
 
 These days I have been playing around with groups in [phaser ce](https://photonstorm.github.io/phaser-ce/), and have learned a lot about what there is to work with in the Phaser.Group class allowing me to make smarter decisions when developing a project with phaser ce. For example when it comes to attaching an event hander for sprites, I can attach one for each sprite in a group. However if it is something that applies to all of the children in a group, I can use [Group.onChildInputDown](https://photonstorm.github.io/phaser-ce/Phaser.Group.html).
@@ -71,6 +71,8 @@ var createGroup = function (game) {
 ```
 
 ### 2.3 - Reset group helper
+
+Here I have a method that will reset the group, or set it for the first time. Here I make sure that the inputEnabled boolean is set true if it has not yet, and use the revive method to set the health property of the sprite to 5. I then also use Group.align to align the position of the sprites into a grid formation as well, and set the position of the group in a similar matter to that of any other display object in phaser.
 
 ```js
 var resetGroup = function (group) {
