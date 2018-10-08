@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 300
-updated: 2018-10-07 20:59:28
-version: 1.3
+updated: 2018-10-07 21:01:51
+version: 1.4
 ---
 
 In many game projects there is a need to create a grid, either as part of the games mechanics, as a way to dimension space, or as a way to quickly have some way to show that a sprite is moving my having at least some kind of background other than a solid color. In [Phaser ce](https://photonstorm.github.io/phaser-ce/) there is a way to quickly make a grid texture with create.grid, but this might not be the best option for some cases. In any case in this post I will revive a quick simple demo of how to use create.grid, and some pother alternatives as well.
@@ -17,6 +17,9 @@ In many game projects there is a need to create a grid, either as part of the ga
 
 In this post I am writing about ways to go about making a quick simple grid texture in a phaser ce project. There is a phaser build in way to quickly go about doing this, and then there are ways of making my own solutions with the many different ways of how to go about making textures via javaScript code rather than an external image. This is not a getting started post on phaser ce or javaScript in general, but rather a quick post on just one little topic about game development that is very simple, yet can still prove to be a little time consuming.
 
+### 1.1 - This is a phaser ce 2.1x post
+
+In this post I am using phaser community edition 2.11.0, and yes phaser is the kind or project where the version number matters big time, most of all with the major release number. Always check the version number of the revision of phaser that you are using first if you run into any problems.
 
 ## 2 - A quick example of Create.grid
 
