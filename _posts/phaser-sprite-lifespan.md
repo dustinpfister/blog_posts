@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 14:40:59
-version: 1.2
+updated: 2018-10-10 14:45:47
+version: 1.3
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the lifespan property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -19,8 +19,11 @@ In this post I am using the sprite.lifespan property to set an amount of time th
 
 ## 2 - An example of Sprite.lifespan
 
+
+### 2.1 - A launchBalls method that sets Sprite.lifespan
+
 ```js
-var lanuchBalls = function () {
+var launchBalls = function () {
  
     var ballPool = game.data.ballPool,
     button = game.data.button;
@@ -42,6 +45,8 @@ var lanuchBalls = function () {
 };
 ```
 
+### 2.2 - An Alpha effect for the ball sprites
+
 ```js
 var alphaEffect = function (game) {
  
@@ -55,6 +60,8 @@ var alphaEffect = function (game) {
  
 };
 ```
+
+### 2.3 - Create a pool of ball sprites
 
 ```js
 var createBallSpritePool = function (game) {
@@ -79,6 +86,8 @@ var createBallSpritePool = function (game) {
  
 };
 ```
+
+### 2.4 - create a sprite sheet with canvas
 
 ```js
 var createBallSheet = function (game) {
@@ -105,6 +114,8 @@ var createBallSheet = function (game) {
 };
 ```
 
+### 2.5 - create a button sprite that when clicked will launch the balls
+
 ```js
 var createButton = function (game) {
  
@@ -118,6 +129,8 @@ var createButton = function (game) {
  
 };
 ```
+
+### 2.6 - Bringing it all together with Phaser.Game
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
