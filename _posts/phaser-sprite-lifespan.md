@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 15:33:18
-version: 1.7
+updated: 2018-10-10 15:35:50
+version: 1.8
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the [sprite.lifespan](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#lifespan) property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -52,6 +52,8 @@ In this example this method will fire each time the button sprite is clicked, th
 
 
 ### 2.2 - An Alpha effect for the ball sprites
+
+So it would be nice to also have an alpha transparent effect to go along with the use of the Sprite.lifespan property. That is that the sprites will become more transparent as they approach the end of there lifespan. So I will just want a method that I can call in an update method that will go over all the alive sprites in the group, and set the alpha values of each depending on the current lifespan value.
 
 ```js
 var alphaEffect = function (game) {
