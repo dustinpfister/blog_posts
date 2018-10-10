@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 15:47:29
-version: 1.13
+updated: 2018-10-10 15:50:54
+version: 1.14
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the [sprite.lifespan](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#lifespan) property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -150,6 +150,8 @@ There is also a special [button display object](/2018/08/14/phaser-buttons/) as 
 
 ### 2.6 - Bringing it all together with Phaser.Game
 
+So now it is time to tie all these helper method together into a working example by creating the Phaser.Game instance, and calling the methods in the create method of a state object, as well as calling the alpha effect method in the update method.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -173,3 +175,5 @@ game.state.add('boot', {
  
 game.state.start('boot');
 ```
+
+If you want to learn more about state objects you might want to check out my post on theme, it is an important feature of phaser that a developer should be solid with in phaser ce game development.
