@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 15:52:01
-version: 1.15
+updated: 2018-10-10 15:54:36
+version: 1.16
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the [sprite.lifespan](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#lifespan) property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -101,7 +101,7 @@ I also enabled physics for the sprites so I can set velocity when the launchBall
 
 ### 2.4 - create a sprite sheet with canvas
 
-So I will also want a sprite sheet for both the balls in the group, as well as for my button sprite as well. For these simple examples I often go with a canvas solution to quickly create simple on the fly graphics.
+So I will also want a sprite sheet for both the balls in the group, as well as for my button sprite as well. For these simple examples I often go with a [canvas solution](/2018/08/04/phaser-spritesheet-from-canvas/) to quickly create simple on the fly graphics.
 
 ```js
 var createBallSheet = function (game) {
@@ -127,6 +127,8 @@ var createBallSheet = function (game) {
     game.cache.addSpriteSheet('sheet-ball', null, canvas, 16, 16, 2, 0, 0);
 };
 ```
+
+For this sheet O have two frames frame index zero will be fore the balls in the group, and frame index 1 will be fore the sprite that will be clicked to send the balls in the group flying out everywhere.
 
 ### 2.5 - create a button sprite that when clicked will launch the balls
 
