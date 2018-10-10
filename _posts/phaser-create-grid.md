@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 300
-updated: 2018-10-10 10:02:50
-version: 1.6
+updated: 2018-10-10 10:04:32
+version: 1.7
 ---
 
 In many game projects there is a need to create a grid, either as part of the games mechanics, as a way to dimension space, or as a way to quickly have some way to show that a sprite is moving my having at least some kind of background other than a solid color. In [Phaser ce](https://photonstorm.github.io/phaser-ce/) there is a way to quickly make a grid texture with create.grid, but this might not be the best option for some cases. In any case in this post I will revive a quick simple demo of how to use create.grid, and some pother alternatives as well.
@@ -55,7 +55,7 @@ Still as a quick brainless solution for making a grid in a flash, it does get th
 
 ## 3 - A canvas solution for the same thing
 
-If for some reason you do not like create.grid, then you might consider going with a canvas powered solution. I like doping this often for many of my simple examples on this site because I am comfortable with the 2d canvas drawing context, but there are many other ways of drawing a grid on the fly with things the the Graphics display objects, and create.texture as well.
+If for some reason you do not like create.grid, then you might consider going with a [canvas powered solution](/2018/08/04/phaser-spritesheet-from-canvas/). I like doping this often for many of my simple examples on this site because I am comfortable with the 2d canvas drawing context, but there are many other ways of drawing a grid on the fly with things the the Graphics display objects, and create.texture as well.
 
 ```js
 createGridCanvas = function (opt) {
