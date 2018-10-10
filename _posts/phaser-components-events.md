@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 75
-updated: 2018-10-03 13:30:38
-version: 1.15
+updated: 2018-10-10 08:07:17
+version: 1.16
 ---
 
 The events component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) adds event handers to a display object such as onInputDown, and onDragStop. They just need to enable them with certain booleans, and I am ready to go with handing input for a certain display objects in a project. This post will be a general overview of how to get going with the events for the display object component.
@@ -21,7 +21,11 @@ This is a post on the [events component](https://photonstorm.github.io/phaser-ce
 
 In this post I was using phaser 2.11.0 when ruining the examples.
 
-### 1.2 - Getting started with drag events
+### 1.2 - Phaser.Signal
+
+Just about all events in phaser ce are instances of [Phaser.Signal](/2018/10/04/phaser-signal/), this is a class in phaser that allows for attaching more than one event handler and can also be used to create your own events as well.
+
+### 1.3 - Getting started with drag events
 
 In order to get started with drag events in addition to setting the inputEnabled bool to true, there is also an additional bool to set true in the inputHandler of the display object at gra.input.draggable.
 
@@ -42,11 +46,11 @@ gra.input.draggable = true;
 
 You might want to check out my [post on draggable](/2017/10/24/phaser-inputhandler-draggable/) input in phaser, to know a bit more about what there is to know with the inputHander.
 
-### 1.3 - Be sure to set inputEnabled to true
+### 1.4 - Be sure to set inputEnabled to true
 
 The events object is there to play with no matter what, but I will want to set inputEnabled true or else some of the input events will not work. This also sets up an instance of inputHandler for the display object. For more on the input handler be sure to check out the post I wrote on [inputEnabled](/2017/10/23/phaser-components-input-enabled/) component.
 
-### 1.4 - Preventing the context menu from showing up with preventDefault
+### 1.5 - Preventing the context menu from showing up with preventDefault
 
 A context menu may show up when I long press, or right click a projects canvas element, there is of course the preventDefault method that I can call to prevent this. A reference to the canvas element can be found at game.canvas where something like this can be done:
 
