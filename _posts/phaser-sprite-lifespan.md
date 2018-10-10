@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 15:41:47
-version: 1.11
+updated: 2018-10-10 15:46:53
+version: 1.12
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the [sprite.lifespan](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#lifespan) property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -130,6 +130,8 @@ var createBallSheet = function (game) {
 
 ### 2.5 - create a button sprite that when clicked will launch the balls
 
+So then I will also want to have the sprite that will cause the balls in the group to launch out when clicked, so I made a simple method to encapsulate everything that has to do with that as well. I just create the sprite using the same sheet as the balls in the group as well. but use a different frame index. I then set the side of the button sprite, and make sure that input is enabled. The of course I attach the lanuchBalls event I covered earlier in this post with the onInputDown event.
+
 ```js
 var createButton = function (game) {
  
@@ -143,6 +145,8 @@ var createButton = function (game) {
  
 };
 ```
+
+There is also a special button display object as well that can be used for these kinds of sprites as well that may have been a better choice for this kind of project. If you are making a rel project that will involve a mechanic such as this, which is common in many clicker or idle style games then it might be better to go with the button class instead of just a plain old sprite like I did here.
 
 ### 2.6 - Bringing it all together with Phaser.Game
 
