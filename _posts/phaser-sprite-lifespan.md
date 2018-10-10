@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 14:45:47
-version: 1.3
+updated: 2018-10-10 14:49:39
+version: 1.4
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the lifespan property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -19,6 +19,7 @@ In this post I am using the sprite.lifespan property to set an amount of time th
 
 ## 2 - An example of Sprite.lifespan
 
+For an example of Sprite.lifespan I put together a quick example that involves a button sprite that will result in a bunch of sprites springing from the single button sprite when clicked. The sprites will have random lifespans and will spring up and out and fall down by way of gravity. Also as the lifespan of a sprite runs out, and alpha transparency effect will also be in effect on the sprites as then reach death. Once the lifespan time runs out the sprites will be killed automatically by phaser, but will still exist in a group I made from them, ready to be revived once again.
 
 ### 2.1 - A launchBalls method that sets Sprite.lifespan
 
