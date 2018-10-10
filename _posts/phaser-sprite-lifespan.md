@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 15:40:06
-version: 1.10
+updated: 2018-10-10 15:41:47
+version: 1.11
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the [sprite.lifespan](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#lifespan) property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -100,6 +100,8 @@ var createBallSpritePool = function (game) {
 I also enabled physics for the sprites so I can set velocity when the launchBalls method is called, and I am also sure to set gravity for the sprites as well so that they fall down to the bottom of the screen as well.
 
 ### 2.4 - create a sprite sheet with canvas
+
+So I will also want a sprite sheet for both the balls in the group, as well as for my button sprite as well. For these simple examples I often go with a canvas solution to quickly create simple on the fly graphics.
 
 ```js
 var createBallSheet = function (game) {
