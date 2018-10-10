@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 300
-updated: 2018-10-10 08:17:08
-version: 1.5
+updated: 2018-10-10 10:02:50
+version: 1.6
 ---
 
 In many game projects there is a need to create a grid, either as part of the games mechanics, as a way to dimension space, or as a way to quickly have some way to show that a sprite is moving my having at least some kind of background other than a solid color. In [Phaser ce](https://photonstorm.github.io/phaser-ce/) there is a way to quickly make a grid texture with create.grid, but this might not be the best option for some cases. In any case in this post I will revive a quick simple demo of how to use create.grid, and some pother alternatives as well.
@@ -102,3 +102,7 @@ createGridCanvas = function (opt) {
  
 };
 ```
+
+## 4 - Conclusion
+
+So create.grid is an okay little feature for quickly drawing a grid in phaser ce, but it might not be the best solution for doing so in some cases. Also it is not at all a replacement for [tile maps](/2018/09/20/phaser-tilemap/), or having a [group or sprites aligned into a grid like pattern](/2018/09/28/phaser-group-align//).
