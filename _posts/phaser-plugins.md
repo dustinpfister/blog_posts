@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 301
-updated: 2018-10-10 08:07:21
-version: 1.3
+updated: 2018-10-10 19:06:03
+version: 1.4
 ---
 
 So I finally got around to making my first [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plug in, and now I am wishing that I look into how to go about doing this sooner. Although I have not been writing about it yet, I have bean working on a few prototypes for actual games, rather than simple little examples that just show how to work with one little thing in phaser ce. As such I am ruing into issues when it comes to how to go about keeping things well organized as a project grows in size. So far it looks like making plug-ins might be a better way of keeping things well structured compared to other options. So in this post I will me writing about how to make a basic plug-in, and also some slightly more complex examples as well.
@@ -18,6 +18,8 @@ So I finally got around to making my first [phaser ce](https://photonstorm.githu
 This is a post on how to make plug-ins in phaser ce a javaScript powered game framework. This is not a getting started post on phaser ce, or javaScript in general so I trust that you have at least some background with these topics. Phaser is a fairly complex framework, and it takes time to learn all the ins and outs, but it sure is worth the effort. If you run into trouble with the content of this post I have many other posts on phaser that have to do with other topics that are required before hand, and there is also the comments section on my site here as well if you find that something is missing in this post.
 
 ### 1.1 - This is a phaser ce (2.x post)
+
+In this post I am using phaser community edition 2.11.0 of [phaser](https://phaser.io/)
 
 ## 2 - Basic phaser ce plug-in example
 
