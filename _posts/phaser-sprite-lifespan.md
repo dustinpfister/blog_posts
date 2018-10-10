@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 302
-updated: 2018-10-10 14:57:22
-version: 1.6
+updated: 2018-10-10 15:33:18
+version: 1.7
 ---
 
 When making some games with [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when it is necessary to set a millisecond time limit to the existence of a sprite until it is killed. This will come up with things like particles and other short lived sprites that are to just exist on the screen for a short while and then end up in a killed state to be revived later when needed. This is where the [sprite.lifespan](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#lifespan) property can be of use to quickly get this working in a project compared to making a custom solution for this. In this post I will be covering a simple example that makes use of the lifespan property of sprites to set a time limit for how long a sprite will be at play.
@@ -22,6 +22,8 @@ In this post I am using the sprite.lifespan property to set an amount of time th
 For an example of Sprite.lifespan I put together a quick example that involves a button sprite that will result in a bunch of sprites springing from the single button sprite when clicked. The sprites will have random lifespans and will spring up and out and fall down by way of gravity. Also as the lifespan of a sprite runs out, and alpha transparency effect will also be in effect on the sprites as then reach death. Once the lifespan time runs out the sprites will be killed automatically by phaser, but will still exist in a group I made from them, ready to be revived once again.
 
 ### 2.1 - A launchBalls method that sets Sprite.lifespan
+
+Here is the method that will fire when the main button sprite is clicked. This will result in causing each sprite in the group that is dead to be revived and have its position set to the location of the button. Then I set the velocity to some random values that will cause the ball sprites to go up, and away from the button. Here I also set the Sprite.lifeSpan property to a value between 500 and 3000 milliseconds.
 
 ```js
 var launchBalls = function () {
@@ -45,6 +47,9 @@ var launchBalls = function () {
  
 };
 ```
+
+In this example this method will fire each time the button sprite is clicked, the so I will need more method for creating that button sprite, and attaching this method to an event hander for it. Also there is much more that needs to be done such as creating the group of sprites, adding an alpha transparency effect, and more. However the basic idea of the Sprite.lifespan property by itself is all ready covered. One way or another the Sprite needs to be revived, and have it's lifespan property set to a desired millisecond value, once that is done the sprite will automatically be killed by phaser when the time is up.
+
 
 ### 2.2 - An Alpha effect for the ball sprites
 
