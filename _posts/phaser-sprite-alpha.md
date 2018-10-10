@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 282
-updated: 2018-09-18 17:07:51
-version: 1.9
+updated: 2018-10-10 16:14:54
+version: 1.10
 ---
 
 Setting sprite [transparency](https://en.wikipedia.org/wiki/Alpha_compositing) in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is pretty simple, I just need to set the [Sprite.alpha](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html#alpha) value to a number value between 0, an 1.  There is also playing around with the alpha values in canvas when making sheets that way, but why bother with that when Sprite.alpha works just fine. Never the less I thought I would make a quick post on this, and some other sprite related topics just for the fun of it.
@@ -228,3 +228,7 @@ game.state.start('boot');
 ```
 
 The result if all goes well is a simple Sprite.alpha example where sprites move across the canvas, and when clicking on them they undergo a death process as well.
+
+## 3 - Conclusion
+
+So the Sprite.alpha property is there to help with any kind of transparency effects that I might want to implement in a project. These kinds of effects can be used with things like partial like sprites when doing something with [Sprite.lifespan](/2018/10/10/phaser-sprite-lifespan/), or any other kind of situation where transparency effects are desired. Hope you enjoyed reading this post, make sure to let me know if you have any questions or concerns in the comment section.
