@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 301
-updated: 2018-10-10 20:22:39
-version: 1.17
+updated: 2018-10-10 20:39:45
+version: 1.18
 ---
 
 So I finally got around to making my first [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) [plug in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html), and now I am wishing that I look into how to go about doing this sooner. Although I have not been writing about it yet, I have bean working on a few prototypes for actual games, rather than simple little examples that just show how to work with one little thing in phaser ce. As such I am ruing into issues when it comes to how to go about keeping things well organized as a project grows in size. So far it looks like making plug-ins might be a better way of keeping things well structured compared to other options. So in this post I will me writing about how to make a basic plug-in, and also some slightly more complex examples as well.
@@ -131,6 +131,8 @@ var createPaddleSheet = function (game) {
 This way I can pack everything for the functionality of the paddle into a single javaScript file, even the graphics.
 
 ### 3.3 - createPaddleSprite helper
+
+Then I have a helper method for creating the paddle sprite. Here I create the sprite, and use the sheet that will be created with my createPaddleSheet helper. I also enable physics for this sprite, and make sure to make the paddle immovable. making the paddle sprite immovable does not mean it can not be moved, it just means that if something hits it it will not move. Here I also attach the onPaddleCollide handler as well.
 
 ```js
 // create sprite helper
