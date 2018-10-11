@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 301
-updated: 2018-10-10 20:18:56
-version: 1.16
+updated: 2018-10-10 20:22:39
+version: 1.17
 ---
 
 So I finally got around to making my first [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) [plug in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html), and now I am wishing that I look into how to go about doing this sooner. Although I have not been writing about it yet, I have bean working on a few prototypes for actual games, rather than simple little examples that just show how to work with one little thing in phaser ce. As such I am ruing into issues when it comes to how to go about keeping things well organized as a project grows in size. So far it looks like making plug-ins might be a better way of keeping things well structured compared to other options. So in this post I will me writing about how to make a basic plug-in, and also some slightly more complex examples as well.
@@ -113,7 +113,7 @@ var onPaddleCollide = function (paddle, ball) {
 
 ### 3.2 - create sheet helper
 
-Here I have a simple helper that will create a sprite sheet with canvas.
+Here I have a simple helper that will create a [sprite sheet with canvas](/2018/08/04/phaser-spritesheet-from-canvas/) for the paddle sprite. I just need to create a canvas element, and then get the 2d drawing context. Once I have a reference to the drawing context I can use the to draw a rectangle that will function as the image for the paddle. I can then pass the canvas element to game.cache.addSpriteSheet to add the sprite sheet to the games cache.
 
 ```js
 // create sheet helper
@@ -127,6 +127,8 @@ var createPaddleSheet = function (game) {
     game.cache.addSpriteSheet('sheet-paddle', null, canvas, 96, 16, 1, 0, 0);
 };
 ```
+
+This way I can pack everything for the functionality of the paddle into a single javaScript file, even the graphics.
 
 ### 3.3 - createPaddleSprite helper
 
