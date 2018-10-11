@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 301
-updated: 2018-10-10 21:03:59
-version: 1.19
+updated: 2018-10-10 21:07:42
+version: 1.20
 ---
 
 So I finally got around to making my first [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) [plug in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html), and now I am wishing that I look into how to go about doing this sooner. Although I have not been writing about it yet, I have bean working on a few prototypes for actual games, rather than simple little examples that just show how to work with one little thing in phaser ce. As such I am ruing into issues when it comes to how to go about keeping things well organized as a project grows in size. So far it looks like making plug-ins might be a better way of keeping things well structured compared to other options. So in this post I will me writing about how to make a basic plug-in, and also some slightly more complex examples as well.
@@ -210,4 +210,6 @@ var Plugin_paddle = function (game, opt) {
 };
 ```
 
-## 4 
+## 4 - Conclusion
+
+Plug-ins are a great way to keep things well organized, pulling everything that has to do with one little mechanic away into a nice neat little package. I will be writing a lot more of these in the near future, and at some point I will want to update the content of this post at least a few times.
