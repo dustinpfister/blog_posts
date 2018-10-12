@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 303
-updated: 2018-10-11 21:10:29
-version: 1.7
+updated: 2018-10-11 21:12:49
+version: 1.8
 ---
 
 For todays post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) topics I thought I would put together a quick post on [keyboard.createCursorKeys](https://photonstorm.github.io/phaser-ce/Phaser.Keyboard.html#createCursorKeys). This can be used to create an object containing a collection of four hot keys for up down left and right. As such this can be used as a way to quickly get going with directional movement of a display object with the keyboard in phaser. Each hot key object can be used to pull the current state of a key in an update loop, as well as attach events via [Phaser.signal](/2018/10/04/phaser-signal/) instances. So in this post I will be writing about how to go about getting keyboard movement up and running real quick in a phaser ce project with this method.
@@ -17,6 +17,9 @@ For todays post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) topics 
 
 This is a post on using keyboard.createCursor keys to quickly create an object of hot keys for the arrow keys of a keyboard. This is not a post on the [keyboard manager in general](/2017/10/13/phaser-gameobj-input-keyboard/), or other aspects of handling input such as with [pointer objects](/2017/10/17/phaser-input-pointer-objects/). This is not a getting started post on [phaser ce](/2017/10/04/phaser-getting-started/), or javaScript in general as well.
 
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser community edition 2.11.0 of [phaser](https://phaser.io/).
 
 ```js
 var moveSpriteWithCursors = function (game, sprite) {
