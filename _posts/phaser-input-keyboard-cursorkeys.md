@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 303
-updated: 2018-10-11 20:43:03
-version: 1.1
+updated: 2018-10-11 20:50:45
+version: 1.2
 ---
 
-[Phaser ce](https://photonstorm.github.io/phaser-ce/) 
+For todays post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) topics I thought I would put together a quick post on [keyboard.createCursorKeys](https://photonstorm.github.io/phaser-ce/Phaser.Keyboard.html#createCursorKeys). This can be used to create an object containing a collection of four hot keys for up down left and right. As such this can be used as a way to quickly get going with directional movement of a display object with the keyboard in phaser.
 
 <!-- more -->
 
