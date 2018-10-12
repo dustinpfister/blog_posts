@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-12 19:58:09
-version: 1.2
+updated: 2018-10-12 19:58:47
+version: 1.3
 ---
 
-As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the core component and what it brings to a display object, such as a sprite or text object.
+As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
 
 <!-- more -->
 
