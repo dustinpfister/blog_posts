@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-12 20:05:41
-version: 1.4
+updated: 2018-10-12 20:08:06
+version: 1.5
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -17,6 +17,9 @@ As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/
 
 This is a post on the core component in phaser ce that brings some properties and functions to just about all display objects. All display objects use this core module, but all of its features may not be functional depending on the type of display object. For example the core module brings the animations property to a display object, but if the display object does not also include the animation component, then animations will not work. This is the case with Graphics objects, the animations property is there, but an instance of the animation manager is not there and the value is null.
 
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser community edition 2.11.1 of phaser, and not the later phaser 3 major release. As such code in this example will likely break in phaser 3. As long as phaser 2.x is still supported I will continue to expand and revise my 2.x content.
 
 ```js
 // make a sprite sheet
