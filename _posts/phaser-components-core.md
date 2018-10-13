@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-13 11:15:39
-version: 1.7
+updated: 2018-10-13 11:18:20
+version: 1.8
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -46,6 +46,10 @@ var mkSheet = function (game) {
     game.cache.addSpriteSheet('blocks', null, canvas, 32, 32, 2, 0, 0);
 };
 ```
+
+### 2.2 - An animations example
+
+So the core component does bring an animations property to a display object, however not all display objects support animation. In the event that the animations component is not used by the display object, then the value of the animations property will be null.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
