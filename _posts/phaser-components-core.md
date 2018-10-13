@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-13 11:18:20
-version: 1.8
+updated: 2018-10-13 11:26:37
+version: 1.9
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -15,7 +15,7 @@ As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/
 
 ## 1 - What to know
 
-This is a post on the core component in phaser ce that brings some properties and functions to just about all display objects. All display objects use this core module, but all of its features may not be functional depending on the type of display object. For example the core module brings the animations property to a display object, but if the display object does not also include the animation component, then animations will not work. This is the case with Graphics objects, the animations property is there, but an instance of the animation manager is not there and the value is null.
+This is a post on the core component in phaser ce that brings some properties and functions to just about all display objects. All display objects use this core module, but all of its features may not be functional depending on the type of display object. For example the core module brings the animations property to a display object, but if the display object does not also include the animation component, then animations will not work. This is the case with Graphics objects, the animations property is there, but an instance of the animation manager is not there and the value is undefined.
 
 ### 1.1 - This is a phaser ce 2.x post
 
@@ -49,7 +49,7 @@ var mkSheet = function (game) {
 
 ### 2.2 - An animations example
 
-So the core component does bring an animations property to a display object, however not all display objects support animation. In the event that the animations component is not used by the display object, then the value of the animations property will be null.
+So the core component does bring an animations property to a display object, however not all display objects support animation. In the event that the animations component is not used by the display object, then the value of the animations property will be undefined.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
