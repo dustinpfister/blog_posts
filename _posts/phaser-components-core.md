@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-12 20:08:06
-version: 1.5
+updated: 2018-10-13 08:51:34
+version: 1.6
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -20,6 +20,10 @@ This is a post on the core component in phaser ce that brings some properties an
 ### 1.1 - This is a phaser ce 2.x post
 
 In this post I am using phaser community edition 2.11.1 of phaser, and not the later phaser 3 major release. As such code in this example will likely break in phaser 3. As long as phaser 2.x is still supported I will continue to expand and revise my 2.x content.
+
+## 2 - Some examples using core component properties
+
+In this section I will be covering some examples that make use of the properties that are added via the core component.
 
 ```js
 // make a sprite sheet
@@ -50,9 +54,13 @@ game.state.add('animations', {
         sprite.animations.play('flash');
     }
 });
+ 
+game.state.start('animations');
 ```
 
 ```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
 game.state.add('components', {
     create: function () {
         game.data = {};
@@ -68,9 +76,13 @@ game.state.add('components', {
         });
     }
 });
+ 
+game.state.start('components');
 ```
 
 ```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
 // exists
 game.state.add('exists', {
     create: function () {
