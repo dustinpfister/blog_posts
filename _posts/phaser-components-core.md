@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-13 08:51:34
-version: 1.6
+updated: 2018-10-13 11:15:39
+version: 1.7
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -23,7 +23,11 @@ In this post I am using phaser community edition 2.11.1 of phaser, and not the l
 
 ## 2 - Some examples using core component properties
 
-In this section I will be covering some examples that make use of the properties that are added via the core component.
+In this section I will be covering some examples that make use of the properties that are added via the core component. 
+
+### 2.1 - The mkSheet helper
+
+All of these examples make use of features that are present in display objects such as sprites, and as such many of them need a sprite sheet to be skinned with something if I am not getting anything otherwise with the __default key sprite. So for some of the examples I am making use of a simple mkSheet helper that will make a sprite sheet via the 2d canvas drawing api.
 
 ```js
 // make a sprite sheet
