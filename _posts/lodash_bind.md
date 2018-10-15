@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2018-10-15 18:23:05
-version: 1.8
+updated: 2018-10-15 18:27:56
+version: 1.9
 ---
 
 For today I thought I would write a post on [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general, by also covering the native [Function.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) as well. In this post I will be mainly writing about bind in an environment where lodash is part of the stack, and as such \_.bind is available. However I will also link to other relavent content that I have written in the past that elaborates on this more.
@@ -59,6 +59,8 @@ console.log(obj.x, obj.y); // 5,7
 
 ## 3 - Using bind to use prototype methods on objects that do not share the prototype.
 
+So then bind is one of many ways to go about using a prototype method of a class with any object, assuming of course that it just happens to have the properties that are needed in order for that method to function properly. For example an Array method can be used with a plain old object, but it will still need to exist in a form that is similar to that of an array.
+
 ```js
 let _ = require('lodash');
  
@@ -76,3 +78,5 @@ obj.slice =  _.bind(Array.prototype.slice, obj)
  
 console.log(obj.slice(1, 4)); // [ 'how', 'are', 'you' ]
 ```
+
+So in any situation in which I want to get a method to work with an object, I can get it to work as long as it has the proper properties and values in order for it to function.
