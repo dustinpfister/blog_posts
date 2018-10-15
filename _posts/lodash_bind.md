@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2018-10-15 18:27:56
-version: 1.9
+updated: 2018-10-15 18:46:38
+version: 1.10
 ---
 
 For today I thought I would write a post on [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general, by also covering the native [Function.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) as well. In this post I will be mainly writing about bind in an environment where lodash is part of the stack, and as such \_.bind is available. However I will also link to other relavent content that I have written in the past that elaborates on this more.
@@ -80,3 +80,20 @@ console.log(obj.slice(1, 4)); // [ 'how', 'are', 'you' ]
 ```
 
 So in any situation in which I want to get a method to work with an object, I can get it to work as long as it has the proper properties and values in order for it to function.
+
+## 4 - when using settimeout
+
+When using a method like settimeout a function is passed as the first argument, followed by a delay in milliseconds. When doing so I am just passing the function, and what is attached to that function, not the parent object that it may be a part of. This might result in unexpected behavior in some examples.
+
+```js
+let user = {
+    name: 'Jake',
+    say: function() {
+        console.log('Hello ' + this.name + '!');
+    }
+};
+ 
+user.say(); // Hello, Jake!
+setTimeout(user.say, 100); // Hello, undefined!
+setTimeout(user.say.bind(user), 1000); // Hello, Jake!
+```
