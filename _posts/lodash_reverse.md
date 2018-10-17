@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 306
-updated: 2018-10-17 13:29:42
-version: 1.7
+updated: 2018-10-17 13:32:33
+version: 1.8
 ---
 
 For todays [lodash](https://lodash.com/) post I have come around to taking a moment to write a quick post about [\_.reverse](https://lodash.com/docs/4.17.10#reverse). Lodash is a great project, but many of the methods are pretty much just reverences to native methods, and \_.reverse is an example of one of these. Also the native array method on which \_.reverse is based has excellent backward compatibility, as the method will work on browsers as old as IE 5.5. So then \_.reverse is not one of those lodash methods that help support a case that lodash acts as a safety net of sorts when it comes to the question of supporting older browsers. Never the less in this post I will be writing about \_.reverse and the native [Array.reverse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) methods as a means to reverse the order of an array in javaScript, and also cover some related topics as well.
@@ -44,7 +44,7 @@ That is all there is to it, not must to write about with this one. However there
 
 ## 3 - Using _.clone to clone the array before reversing
 
-So if lodash is part of the stack then there is or course methods like \_.clone, \_.cloneDeep, \_.merge, and so forth to work with that cabn be used to make both shallow, and deep clones of objects including arrays.
+So if lodash is part of the stack then there is or course methods like [\_.clone](/2017/10/02/lodash_clone/), [\_.cloneDeep](/2017/11/13/lodash_clonedeep/), [\_.create](/2018/09/27/lodash_create/), and so forth to work with that can be used to make both shallow, and deep clones of objects including arrays.
 
 ```js
 let arr = [1,2,3,4];
