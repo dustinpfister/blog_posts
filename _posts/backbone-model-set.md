@@ -5,17 +5,17 @@ tags: [js,backbone]
 layout: post
 categories: backbone
 id: 84
-updated: 2018-10-17 16:23:22
-version: 1.2
+updated: 2018-10-17 16:27:15
+version: 1.3
 ---
 
-When making a backbone Model, I am going to get into many situations in which I will want to get, and set values for various attributes in the attributes object of a backbone Model. Getting values is not a big deal as the model.get('foo') method is just a shorthand for model.attributes.foo. However it is important to use the set method to set values rather than directly modifying the attributes object so that any events that have been defined will work. In this post I will be showing some simple examples of the set model method in backbone.
+When making a [backbone](http://backbonejs.org/) [Model](http://backbonejs.org/#Model), I am going to get into many situations in which I will want to get, and set values for various attributes in the attributes object of a backbone Model. Getting values is not a big deal as the model.get('foo') method is just a shorthand for model.attributes.foo. However it is important to use the [set method](http://backbonejs.org/#Model-set) to set values rather than directly modifying the attributes object so that any events that have been defined will work. In this post I will be showing some simple examples of the set model method in backbone.
 
 <!-- more -->
 
 ## What To know before hand
 
-This is an advanced post on [backbone Models](http://backbonejs.org/#Model), be sure to check out [my main post on them](/2017/11/02/backbone-model/) before reading this if you are new to backbone.
+This is an advanced post on backbone Models, be sure to check out [my main post on them](/2017/11/02/backbone-model/) before reading this if you are new to backbone. Also this is not a getting [started post on backbone](/2017/11/01/backbone-getting-started/), or javaScript in general so I trust that you have logged at least some time getting up to speed with the basics so far.
 
 ## A Model quick demo 
 
