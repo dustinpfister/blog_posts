@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 306
-updated: 2018-10-17 13:22:18
-version: 1.5
+updated: 2018-10-17 13:26:16
+version: 1.6
 ---
 
 For todays [lodash](https://lodash.com/) post I have come around to taking a moment to write a quick post about \_.reverse. Lodash is a great project, but many of the methods are pretty much just reverences to native methods, and \_.reverse is an example of one of these. Also the native array method on which \_.reverse is based has excellent backward compatibility, as the method will work on browsers as old as IE 5.5. So then \_.reverse is not one of those lodash methods that help support a case that lodash acts as a safety net of sorts when it comes to the question of supporting older browsers. Never the less in this post I will be writing about \_.reverse and the native Array.reverse methods as a means to reverse the order of an array in javaScript, and also cover some related topics as well.
@@ -88,3 +88,5 @@ console.log(arr); // [ 1, 2, 3, 4 ]
 ```
 
 ## 5 - Conclusion
+
+So then \_.reverse in lodash is one of those methods in lodash that are there pretty much just for the sake of consistency, and they do not do much of anything differently from what is available in javaScript by itself. Of course this is not the case with all lodash methods, and if methods like this really bother you lodash methods can be quickly installed on a per method basis.
