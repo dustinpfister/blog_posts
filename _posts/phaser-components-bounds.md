@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 307
-updated: 2018-10-18 18:23:20
-version: 1.4
+updated: 2018-10-18 18:26:32
+version: 1.5
 ---
 
 When working with one or more sprites or display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when the bounds of a sprite are of interest. These are simple values like the y position of the sprite plus its height which results in the bottom y position of the sprite. In phaser ce there is no need to write my own code to fine these values because they are part of the [bounds component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Bounds.html). In some cases it might be necessary to world with these values, and if so they are there all ready at the instance of the display object thanks to this component. This component also adds two useful methods that can be used to align one display object with another as well. Although This component by itself does not do anything with collision detection, it does maintain properties that are needed for things like bounding box collision detection.
@@ -69,6 +69,8 @@ game.state.add('properties', {
 ```
 
 ## 3 - The alignIn method
+
+The bounds component also gives a method that can be used to align a sprite relative to another sprite. It can be used with a number of directional constants other then that of Phaser.BOTTOM_RIGHT which would be the kind of behavior if one where to just align one sprite with another manually.
 
 ```js
 // alignIn method
