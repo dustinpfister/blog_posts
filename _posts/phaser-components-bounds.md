@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 307
-updated: 2018-10-18 18:19:42
-version: 1.3
+updated: 2018-10-18 18:23:20
+version: 1.4
 ---
 
 When working with one or more sprites or display objects in [Phaser ce](https://photonstorm.github.io/phaser-ce/) there might come a time when the bounds of a sprite are of interest. These are simple values like the y position of the sprite plus its height which results in the bottom y position of the sprite. In phaser ce there is no need to write my own code to fine these values because they are part of the [bounds component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Bounds.html). In some cases it might be necessary to world with these values, and if so they are there all ready at the instance of the display object thanks to this component. This component also adds two useful methods that can be used to align one display object with another as well. Although This component by itself does not do anything with collision detection, it does maintain properties that are needed for things like bounding box collision detection.
@@ -18,6 +18,10 @@ When working with one or more sprites or display objects in [Phaser ce](https://
 In this post I am outlining what is added to display objects like sprites in phaser ce thanks to the bounds component, one of many components that are used to add features to display objects like sprites. The reason why I write these posts is because if you are new to phaser studying these components one at a time helps to gain a better sense of everything there is to work with when it comes to using sprites, and other display objects. So the scope of this post is on a very narrow topic, and is not a getting started post on phaser ce or javaScript in general.
 
 ## 2 - Bounds properties that are added by the bounds component
+
+So the bounds component adds a bunch of properties that get updated each frame tick  along with many other things. So if for some reason you need the y position that is at the bottom of the sprite there is no need to preform the extra operation to get that value because it is all ready a property of the sprite object.
+
+In this example I am logging all of the properties that the bounds component adds and updates for the sprite.
 
 ```js
 // make a sprite sheet
