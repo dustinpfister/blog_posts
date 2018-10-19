@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-18 18:47:51
-version: 1.13
+updated: 2018-10-19 19:56:25
+version: 1.14
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -49,7 +49,7 @@ var mkSheet = function (game) {
 };
 ```
 
-### 2.2 - An animations example
+### 2.2 - The animations property
 
 So the core component does bring an animations property to a display object, however not all display objects support animation. In the event that the animations component is not used by the display object, then the value of the animations property will be undefined. So although the animations property is listed as part of the core component it is not really of any use unless the display object aslo includes the animation component as well.
 
@@ -69,6 +69,8 @@ game.state.start('animations');
 ```
 
 I will not be getting into the ins and outs of the animation manager in detail here, however I have wrote a post on the [animation manager](/2018/08/08/phaser-animations/) a while back. As long as you stick to sprites, rather than graphics then the animation manager will also be there at the ready. When using graphics There might be a need to handle animation in a different manager that involves calling a draw method on each frame tick.
+
+### 2.3 - The components property
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -91,6 +93,8 @@ game.state.add('components', {
  
 game.state.start('components');
 ```
+
+### 2.4 - The exists property
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
