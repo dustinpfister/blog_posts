@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 308
-updated: 2018-10-19 17:20:13
-version: 1.2
+updated: 2018-10-19 17:22:44
+version: 1.3
 ---
 
 The auto cull component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is a fairly simple component that just adds a two boolean values. One of which can be used to enable auto culling of sprites in a project keeping sprites that are outside of the camera from rendering, and the other is just an inCamera boolean that can be used to find out if a sprite is outside of the camera or not. In this post I will be outlining a simple example that makes use of what is added to sprites in phaser ce thanks to the auto cull component.
@@ -15,6 +15,7 @@ The auto cull component in [Phaser ce](https://photonstorm.github.io/phaser-ce/)
 
 ## 1 - What to know
 
+This is a post where I am writing about just the auto cull component of phaser ce,the javaScript powered game framework. As such this post just covers a very narrow topic of interest whet it comes to making games with phaser ce as a framework. If you are new to phaser you might want to start with my getting started post on phaser ce.
 
 ## 2 - Example of the sprite.inCamera property
 
