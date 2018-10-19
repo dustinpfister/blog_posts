@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 308
-updated: 2018-10-19 17:38:00
-version: 1.6
+updated: 2018-10-19 17:39:10
+version: 1.7
 ---
 
 The [auto cull](https://photonstorm.github.io/phaser-ce/Phaser.Component.AutoCull.html) component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is a fairly simple component that just adds two boolean values. One of which can be used to enable auto culling of sprites in a project keeping sprites that are outside of the camera from rendering, and the other is just an inCamera boolean that can be used to find out if a sprite is outside of the camera or not. In this post I will be outlining a simple example that makes use of what is added to sprites in phaser ce thanks to the auto cull component.
@@ -15,7 +15,7 @@ The [auto cull](https://photonstorm.github.io/phaser-ce/Phaser.Component.AutoCul
 
 ## 1 - What to know
 
-This is a post where I am writing about just the auto cull component of phaser ce,the javaScript powered game framework. As such this post just covers a very narrow topic of interest whet it comes to making games with phaser ce as a framework. If you are new to phaser you might want to start with my [getting started post on phaser ce](/2017/10/04/phaser-getting-started/). The auto cull component is one of many components that add features to display objects in phaser such as sprites, text, and graphics. I have found that studying each of these components one at a time is helping me understand everything that there is to work with out of the box with phaser, ultimately helping me save time by writing less code. Culling is similar to clipping, only the whole object is not rendered because it is out of view of the camera.
+This is a post where I am writing about just the auto cull component of phaser ce,the javaScript powered game framework. As such this post just covers a very narrow topic of interest whet it comes to making games with phaser ce as a framework. If you are new to phaser you might want to start with my [getting started post on phaser ce](/2017/10/04/phaser-getting-started/). The auto cull component is one of many components that add features to display objects in phaser such as sprites, text, and graphics. I have found that studying each of these components one at a time is helping me understand everything that there is to work with out of the box with phaser, ultimately helping me save time by writing less code. Culling is similar to [clipping](https://en.wikipedia.org/wiki/Clipping_(computer_graphics)) when it comes to 3d games, only the whole object is not rendered because it is out of view of the camera.
 
 ### 1.1 - This is a phaser ce 2.x post
 
