@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 308
-updated: 2018-10-19 17:39:10
-version: 1.7
+updated: 2018-10-19 17:41:14
+version: 1.8
 ---
 
 The [auto cull](https://photonstorm.github.io/phaser-ce/Phaser.Component.AutoCull.html) component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is a fairly simple component that just adds two boolean values. One of which can be used to enable auto culling of sprites in a project keeping sprites that are outside of the camera from rendering, and the other is just an inCamera boolean that can be used to find out if a sprite is outside of the camera or not. In this post I will be outlining a simple example that makes use of what is added to sprites in phaser ce thanks to the auto cull component.
@@ -23,6 +23,7 @@ In this post I was using phaser community edition 2.11.1 of [phaser](https://pha
 
 ## 2 - Example of the sprite.inCamera property
 
+For an example of the inCamera property I made a demo that involves two sprites one represents a ship, and the other represents a pointer sprite that points to the location of the ship when it it outside the view of the camera.
 
 ### 2.1 - The update pointer method
 
