@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 308
-updated: 2018-10-19 17:42:20
-version: 1.9
+updated: 2018-10-19 17:44:15
+version: 1.10
 ---
 
 The [auto cull](https://photonstorm.github.io/phaser-ce/Phaser.Component.AutoCull.html) component in [Phaser ce](https://photonstorm.github.io/phaser-ce/) is a fairly simple component that just adds two boolean values. One of which can be used to enable auto culling of sprites in a project keeping sprites that are outside of the camera from rendering, and the other is just an inCamera boolean that can be used to find out if a sprite is outside of the camera or not. In this post I will be outlining a simple example that makes use of what is added to sprites in phaser ce thanks to the auto cull component.
@@ -54,6 +54,8 @@ var updatePointer = function (game) {
 
 ### 2.2 - Make a sprite sheet
 
+This helper just makes a sprite sheet for the ship, and the pointer sprites using canvas.
+
 ```js
 // make a sprite sheet
 var mkSheet = function (game) {
@@ -81,6 +83,8 @@ var mkSheet = function (game) {
 ```
 
 ### 2.3 - The Phaser.Game instance and state object
+
+So now that I have my helpers I now just need to get everything working with a Phaser.Game instance and a state object.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
