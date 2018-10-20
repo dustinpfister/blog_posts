@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-19 19:56:25
-version: 1.14
+updated: 2018-10-19 20:06:39
+version: 1.15
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -71,6 +71,8 @@ game.state.start('animations');
 I will not be getting into the ins and outs of the animation manager in detail here, however I have wrote a post on the [animation manager](/2018/08/08/phaser-animations/) a while back. As long as you stick to sprites, rather than graphics then the animation manager will also be there at the ready. When using graphics There might be a need to handle animation in a different manager that involves calling a draw method on each frame tick.
 
 ### 2.3 - The components property
+
+The components property is an Object where each key is the name of a component, and the value is a true boolean value if the display object supports the given component. This can be used to find out if a certain kind of display object supports a given component or not.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
