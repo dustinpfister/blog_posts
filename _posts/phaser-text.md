@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 65
-updated: 2018-10-20 09:50:37
-version: 1.3
+updated: 2018-10-20 09:51:59
+version: 1.4
 ---
 
 In just about any [phaser](http://phaser.io) project there is going to be a need to display some text, either because it is something that needs to be displayed, or for debugging purposes. There is of course bitmap text that can be used in Phaser, but that is a bit involved, as it requires a few asset files. If you just simply want to display some text, and are not two concerned about how it will look for now, there are the text game objects that can be used.
@@ -17,7 +17,7 @@ In just about any [phaser](http://phaser.io) project there is going to be a need
 
 This is a post on creating basic text in a phaser project. It is also possible to create custom fonts using a sprite sheet, and json data, however thins post is just on the simple easy to use text display objects for just quickly displaying into in the game. The text display objects are great for debugging purposes, but they might not be the best choice when it comes to presentation. In any case they are very easy to use compared to the more complected time consuming rout of making a custom font, so if you just want to get displaying of text done, and move on they are a great choice for a phaser project.
 
-## Phaser text hello world example
+## 2 - Phaser text hello world example
 
 To add a text display object, just call game.add.text, and pass it a few arguments that have to do with position, content, and style of the text.
 
@@ -39,7 +39,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 
 The first two arguments are the x, and y position of the text. The third argument is the content of the text, and the final argument is a style object.
 
-## Changing text content
+## 3 - Changing text content
 
 To change the content of the text there is the text property of the text display object that is returned when calling game.add.text.
 
@@ -74,7 +74,7 @@ var game = (function () {
     ());
 ```
 
-## The style object
+## 4 - The style object
 
 The style object used to style text follows many of the property names you may be familiar with when working with the 2d drawing context with canvas.
 
@@ -97,7 +97,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 );
 ```
 
-## Changing position of text
+## 5 - Changing position of text
 
 Because a text object is a display object, it has many of the same properties as sprites, including of course x, and y. Changing the position of text is than just as simple.
 
