@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-19 20:15:43
-version: 1.17
+updated: 2018-10-19 20:16:48
+version: 1.18
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -159,4 +159,4 @@ game.state.start('exists');
 
 ## 3 - Conclusion
 
-So I did not get to all of the properties and methods that are used in the core component just yet. I will need to write some more code examples in order to do this subject justice. If you have any questions, or would like for me to give this post another look let me know in the comments. Thanks for reading.
+So I did not get to all of the properties and methods that are used in the core component just yet. I will need to write some more code examples in order to do this subject justice. If you have any questions, or would like for me to give this post another look let me know in the comments. Feedback is a factor I take into concentration when it comes to updating content. In any case thanks for reading.
