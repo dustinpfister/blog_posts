@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 53
-updated: 2018-10-19 21:05:38
-version: 1.8
+updated: 2018-10-19 21:06:34
+version: 1.9
 ---
 
 I have a long history of making games in a vanilla js style in which I am writing everything from the ground up. I do like that approach, but the draw back is that it is time consuming. Another part of me wants to just work with what is out there to begin with, and just focus on whatever it is that sets my project apart from the epic ton of games that are out on the Internet all ready. So That being said I have been focusing in on [phaser](http://phaser.io/) as my first major HTML game framework to help me speed things along on game prototypes.
@@ -128,7 +128,7 @@ In each demo folder there will be an index file that is not much different from 
 </html>
 ```
 
-### 2. 9 The main.js file
+### 2.9 - The main.js file
 
 Okay here is a simple phaser hello world of sorts which I save as a main.js file in a demo project folder.
 
@@ -179,7 +179,7 @@ var game = (function () {
 
 This is actually the main.js of one of my first demos, it is just a circle moving around in a circle on the screen. How is that for hello world like?
 
-## Conclusion.
+## 3 - Conclusion.
 
 There is much that can be done with phaser, so many bases that need to be covered it can be a daunting task as to where to go next. Well if you are still very new to phaser, you might want to learn some more about the [main Phaser Constructor](/2017/10/11/phaser-main-game-constructor/), and the game object that it returns, because that is something that you will be working with a lot. Also there is learning more about how [state machines](/2017/10/05/phaser-state-manager/) are handled in phaser. However if you want to skip ahead to something fun there is checking out how to [work with on the fly graphics](/2017/10/21/phaser-graphics/) in phaser as well that might be a great next step.
 
