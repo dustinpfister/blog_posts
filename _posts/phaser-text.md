@@ -5,17 +5,17 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 65
-updated: 2017-10-22 13:49:05
-version: 1.2
+updated: 2018-10-20 09:50:37
+version: 1.3
 ---
 
 In just about any [phaser](http://phaser.io) project there is going to be a need to display some text, either because it is something that needs to be displayed, or for debugging purposes. There is of course bitmap text that can be used in Phaser, but that is a bit involved, as it requires a few asset files. If you just simply want to display some text, and are not two concerned about how it will look for now, there are the text game objects that can be used.
 
 <!-- more -->
 
-{% phaser_top %}
+# 1 - what to know
 
-{% phaser_if_new_mess %}
+This is a post on creating basic text in a phaser project. It is also possible to create custom fonts using a sprite sheet, and json data, however thins post is just on the simple easy to use text display objects for just quickly displaying into in the game. The text display objects are great for debugging purposes, but they might not be the best choice when it comes to presentation. In any case they are very easy to use compared to the more complected time consuming rout of making a custom font, so if you just want to get displaying of text done, and move on they are a great choice for a phaser project.
 
 ## Phaser text hello world example
 
@@ -150,5 +150,3 @@ var game = (function () {
 ## Conclusion
 
 It many not be a replacement for bitmap text, but it gets the job done. When just starting out on a project it would be best to start out with regular old text at first, concentrate on what really matters in your project, is it how the text looks? If not hold off on bitmap text until you have the core of your project together.
-
-{% phaser_bottom %}
