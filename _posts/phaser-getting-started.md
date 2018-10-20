@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 53
-updated: 2018-10-19 20:56:41
-version: 1.6
+updated: 2018-10-19 21:00:02
+version: 1.7
 ---
 
 I have a long history of making games in a vanilla js style in which I am writing everything from the ground up. I do like that approach, but the draw back is that it is time consuming. Another part of me wants to just work with what is out there to begin with, and just focus on whatever it is that sets my project apart from the epic ton of games that are out on the Internet all ready. So That being said I have been focusing in on [phaser](http://phaser.io/) as my first major HTML game framework to help me speed things along on game prototypes.
@@ -17,11 +17,13 @@ I have a long history of making games in a vanilla js style in which I am writin
 
 There are many javaScript frameworks, libraries, and so forth that a developer can become familiar within a short span of time at most maybe a day or so. Phaser however is not one of those kinds of frameworks. This is the kind of project where I start working with it, and after the course of about a month of making quick simple demos I just start to get the hang of working with it. In this section I will cover some things to know before getting started with phaser.
 
+### 1.1 - Why Phaser?
+
+For one it is popular, and thus also well supported. Also so far it seems to have all the features I can think of that I would want if I where to take the time to write my own framework, which I am not going to do. Speaking of not making a game framework, yes that is the major reason why I have been looking into phaser. I have nothing against the other mindset about this, there are good reasons to write everything from the floor up, but the appeal here is of course to save time. I have come to find that y writing everything from the ground up I waste a great deal of time writing the same things over, and over again. That is silly, part of being a good programmer is finding ways to be more efficient with my time.
+
 This is a post on getting started with phaser community edition, also know as phaser 2.x. So this post, and the whole of my content on this time on phaser does not cover the newer version 3 of phaser. The older 2.x version of phaser is still supported, and the majority of the content on the web still has to do with 2.x as well. Phaser 2.x is still a great version of phaser that is very capable for making web based games, and as long as it is still supported I will continue updating and expanding my phaser 2.x content here.
 
-## Why Phaser?
 
-For one it is popular, and thus also well supported. Also so far it seems to have all the features I can think of that I would want if I where to take the time to write my own framework, which I am not going to do. Speaking of not making a game framework, yes that is the major reason why I have been looking into phaser. I have nothing against the other mindset about this, there are good reasons to write everything from the floor up, but the appeal here is of course to save time.
 
 ## Getting started with phaser, node.js, and hapi
 
