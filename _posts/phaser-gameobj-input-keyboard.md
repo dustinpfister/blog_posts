@@ -5,19 +5,19 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 64
-updated: 2017-10-22 13:48:59
-version: 1.6
+updated: 2018-10-19 20:25:53
+version: 1.7
 ---
 
-In this post I will be outlining a quick demo in which I am moving a sprite around the screen using the keyboard in [phaser](http://phaser.io/), using an instance of the keyboard handler at via [game.input](/2017/10/13/phaser-gameobj-input/). I will also cover the different options on how to work with keyboard input. It is possible to poll a key from an update method, or create an object in which handlers, can be attached, as well as a combination of the two if desired.
+In this post I will be outlining a quick demo in which I am moving a sprite around the screen using the keyboard in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), using an instance of the keyboard handler via [game.input](/2017/10/13/phaser-gameobj-input/). I will also cover the different options on how to work with keyboard input. It is possible to poll a key from an update method, or create an object in which handlers, can be attached, as well as a combination of the two if desired.
 
 <!-- more -->
 
-{% phaser_top %}
+## 1 - What to know
 
-{% phaser_if_new_mess %}
+This is a post in which I am writing about some examples that make use of the [keyboard class](https://photonstorm.github.io/phaser-ce/Phaser.Keyboard.html) in phaser ce. There is a lot to take in when it comes to the keyboard manager, and there is also much more to write about when it comes to handing input in general.
 
-## phaser keyboard isDown example
+## 2 - Phaser keyboard isDown example
 
 One way to make use of keyboard input in phaser is to use the isDown method of the input hander via game.input.keyboard.isDown. This would be used in an update method of a state object, rather than a handler that is fire each time the key is pressed. As such you might end up with something like this:
 
@@ -122,7 +122,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
 
 This works okay, but I tend to prefer for this to be pulled into separate event handlers rather than constantly checking the status of keys in an update method.
 
-## The addKey method
+## 3 - The addKey method
 
 I prefer the use of the addKey method compared to polling keys with isDown method of the keyboard handler. It allows for me to create an object for a certain key such as the "a" key. I can then attach event handlers to this object that will fire when the key is pressed by using the onHoldCallback of this object that is returned using addKey.
 
@@ -324,8 +324,6 @@ var game = (function () {
     ());
 ```
 
-## Conclusion
+## 4 - Conclusion
 
 Phaser is great at handling Keyboard input, as long as I know how to go about using what is provided for it. I hope you found these examples helpful, if so be sure to check out my many other [posts on phaser](/categories/phaser/).
-
-{% phaser_bottom %}
