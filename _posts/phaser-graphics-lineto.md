@@ -5,17 +5,21 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 72
-updated: 2018-10-19 21:16:28
-version: 1.5
+updated: 2018-10-19 21:19:07
+version: 1.6
 ---
 
-I have [made a post on graphics in general](/2017/10/21/phaser-graphics/) in phaser and as such I spent some time playing with Graphics.lineTo, and Graphics.moveTo when it comes to drawing lines in phaser. Because there is a great deal that can be done with lines, and graphics I thought that this needs a post of it's own. This post will mostly be about use examples of lineTo in [phaser](http://phaser.io/).
+I have [made a post on graphics in general](/2017/10/21/phaser-graphics/) in phaser and as such I spent some time playing with Graphics.lineTo, and Graphics.moveTo when it comes to drawing lines in phaser. Because there is a great deal that can be done with lines, and graphics I thought that this needs a post of it's own. This post will mostly be about use examples of lineTo in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html).
 
 <!-- more -->
 
 ## 1 - What to know
 
 This is a post on making lines in phaser ce with graphics display objects. It is also possible to make graphics with the 2d canvas drawing context and then [use that to make a sprite sheet](/2018/08/04/phaser-spritesheet-from-canvas/) as well. However Graphics might be a better option for making graphics that will update for each frame tick.
+
+### 1.1 - This is a phaser 2.x post
+
+In this post I am using the older phaser 2.x version of [phaser](https://phaser.io/).
 
 ## 2 - Getting started with lines in phaser with lineStyle, moveTo, and lineTo
 
