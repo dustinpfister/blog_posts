@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 304
-updated: 2018-10-19 20:06:39
-version: 1.15
+updated: 2018-10-19 20:10:21
+version: 1.16
 ---
 
 As I continue to expand my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I have come around to expanding mu posts centered around the various components that are used with display objects in phaser ce. These components add features to display objects like events, and animation. In this post I will be covering the [core component](https://photonstorm.github.io/phaser-ce/Phaser.Component.Core.html) and what it brings to a display object, such as a sprite or text object.
@@ -97,6 +97,8 @@ game.state.start('components');
 ```
 
 ### 2.4 - The exists property
+
+One of the most important properties that is added to a display object with the core component is the exists property. If this property is set to true then the display object will be removed from the game loop, and it will no longer be viable. So It is very useful for projects where a pool of sprites are being used and they need to be removed, and placed back into the game world given certain conditions.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
