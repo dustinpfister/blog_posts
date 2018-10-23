@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-23 17:26:33
-version: 1.2
+updated: 2018-10-23 17:33:40
+version: 1.3
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -106,10 +106,10 @@ var Plugin_runner = function (game, opt) {
 
 ## 3 - The platforms plugin
 
+### 3.1 - The create platform sheet helper, and start of plugin
+
 ```js
 var Plugin_platforms = function (game, opt) {
-
-    var plug = new Phaser.Plugin(game, game.plugins);
 
     // create a platform sheet
     var createPlatformSheet = function (game) {
@@ -121,7 +121,11 @@ var Plugin_platforms = function (game, opt) {
         ctx.strokeRect(0, 0, 96, 16);
         game.cache.addSpriteSheet('sheet-platfrom', null, canvas, 96, 16, 1, 0, 0);
     };
+```
 
+### 3.2 - create the platform sprite pool
+
+```js
     // Create a Pool Of Platforms
     var createPlatfromPool = function (game) {
         var i = 0,
@@ -147,7 +151,11 @@ var Plugin_platforms = function (game, opt) {
         }
  
     };
- 
+```
+
+### 3.3 - Update platforms
+
+```js
     var updatePlatfroms = function (game) {
  
         var platforms = game.data.platforms,
@@ -179,7 +187,13 @@ var Plugin_platforms = function (game, opt) {
         platforms.lastPlatDist += platforms.delta;
  
     };
- 
+```
+
+### 3.4 - The plugin object, and init method.
+
+```js
+    var plug = new Phaser.Plugin(game, game.plugins);
+
     // call once
     plug.init = function (opt) {
  
@@ -203,7 +217,11 @@ var Plugin_platforms = function (game, opt) {
         });
  
     };
- 
+```
+
+### 3.5 - The update method
+
+```js
     // what to do for each tick
     plug.update = function () {
  
