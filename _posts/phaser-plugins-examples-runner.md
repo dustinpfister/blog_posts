@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-23 17:23:47
-version: 1.1
+updated: 2018-10-23 17:26:33
+version: 1.2
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -17,6 +17,8 @@ Fot the next few days I would like to have some fun with [phaser ce](https://pho
 
 
 ## 2 - The Runner plugin
+
+### 2.1 - The guy sheet helper, and start of plugin.
 
 ```js
 var Plugin_runner = function (game, opt) {
@@ -31,7 +33,11 @@ var Plugin_runner = function (game, opt) {
         ctx.fillRect(0, 0, 16, 32);
         game.cache.addSpriteSheet('sheet-guy', null, canvas, 16, 32, 1, 0, 0);
     };
- 
+```
+
+### 2.2 - Creating the guy sprite
+
+```js
     // GUY SPRITE
     var createGuySprite = function (game) {
  
@@ -52,6 +58,10 @@ var Plugin_runner = function (game, opt) {
         game.input.onDown.add(guyJump, this);
  
     };
+
+### 2.3 - On guy jump
+
+```js
  
     // the player wants to jump
     var guyJump = function () {
@@ -65,7 +75,11 @@ var Plugin_runner = function (game, opt) {
         }
  
     };
- 
+```
+
+### 2.4 - The plugin object, and end of plugin
+
+```js
     // The plugin Object
     var plug = new Phaser.Plugin(game, game.plugins);
  
