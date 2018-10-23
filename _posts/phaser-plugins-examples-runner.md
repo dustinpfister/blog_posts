@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-23 17:19:39
-version: 1.0
+updated: 2018-10-23 17:23:47
+version: 1.1
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -14,4 +14,199 @@ Fot the next few days I would like to have some fun with [phaser ce](https://pho
 <!-- more -->
 
 ## 1 - what to know
+
+
+## 2 - The Runner plugin
+
+```js
+var Plugin_runner = function (game, opt) {
+ 
+    // Guy SPRITE SHEET
+    var createGuySheet = function (game) {
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = 16;
+        canvas.height = 32;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 16, 32);
+        game.cache.addSpriteSheet('sheet-guy', null, canvas, 16, 32, 1, 0, 0);
+    };
+ 
+    // GUY SPRITE
+    var createGuySprite = function (game) {
+ 
+        var runner = game.data.runner,
+        x = game.world.width / 2,
+        y = game.world.height - 32,
+        guy = runner.guy = game.add.sprite(x, y, 'sheet-guy');
+        guy.anchor.set(0.5, 0.5);
+ 
+        // physics
+        game.physics.enable(guy);
+        guy.body.collideWorldBounds = true;
+        guy.checkWorldBounds = true;
+        guy.body.gravity.set(0, 150);
+ 
+        // making jumps event driven
+        runner.cursors.up.onDown.add(guyJump, this);
+        game.input.onDown.add(guyJump, this);
+ 
+    };
+ 
+    // the player wants to jump
+    var guyJump = function () {
+ 
+        var guy = this.game.data.runner.guy;
+ 
+        if (guy.body.touching.down || guy.body.onFloor()) {
+ 
+            guy.body.velocity.y = -175;
+ 
+        }
+ 
+    };
+ 
+    // The plugin Object
+    var plug = new Phaser.Plugin(game, game.plugins);
+ 
+    // call once
+    plug.init = function (opt) {
+ 
+        // create or append game.data
+        game.data = game.data || {};
+ 
+        var runner = game.data.runner = {};
+ 
+        runner.cursors = game.input.keyboard.createCursorKeys();
+ 
+        createGuySheet(game);
+        createGuySprite(game);
+ 
+    };
+ 
+    // add the plugin to the game
+    game.plugins.add(plug, opt);
+ 
+};
+```
+
+## 3 - The platforms plugin
+
+```js
+var Plugin_platforms = function (game, opt) {
+
+    var plug = new Phaser.Plugin(game, game.plugins);
+
+    // create a platform sheet
+    var createPlatformSheet = function (game) {
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = 96;
+        canvas.height = 16;
+        ctx.strokeStyle = 'white';
+        ctx.strokeRect(0, 0, 96, 16);
+        game.cache.addSpriteSheet('sheet-platfrom', null, canvas, 96, 16, 1, 0, 0);
+    };
+
+    // Create a Pool Of Platforms
+    var createPlatfromPool = function (game) {
+        var i = 0,
+        len = 5,
+        plat,
+        platforms = game.data.platforms,
+        pool = platforms.pool = game.add.group();
+ 
+        while (i < len) {
+ 
+            plat = pool.create(0, 0, 'sheet-platfrom');
+ 
+            plat.kill();
+ 
+            game.physics.enable(plat);
+            plat.body.immovable = true;
+ 
+            plat.body.checkCollision.left = false;
+            plat.body.checkCollision.right = false;
+            plat.body.checkCollision.down = false;
+ 
+            i += 1;
+        }
+ 
+    };
+ 
+    var updatePlatfroms = function (game) {
+ 
+        var platforms = game.data.platforms,
+        platPool = platforms.pool,
+        plat;
+ 
+        // revive
+        if (platPool.countDead() > 0 && platforms.lastPlatDist >= 96) {
+            plat = platPool.getFirstDead();
+            plat.revive();
+            plat.x = game.world.width;
+            plat.y = game.world.height - 32 - Math.floor(Math.random() * 100);
+            platforms.lastPlatDist = 0;
+        };
+ 
+        // For All Alive
+        platPool.forEachAlive(function (plat) {
+ 
+            // move
+            plat.x -= platforms.delta;
+ 
+            // kill if old
+            if (plat.x + plat.width <= 0) {
+                plat.kill();
+            }
+ 
+        });
+ 
+        platforms.lastPlatDist += platforms.delta;
+ 
+    };
+ 
+    // call once
+    plug.init = function (opt) {
+ 
+        // create or append game.data
+        game.data = game.data || {};
+ 
+        //var runner = game.data.runner;
+        var platforms = game.data.platforms = {};
+        platforms.lastPlatDist = 0;
+        platforms.delta = 5;
+ 
+        createPlatformSheet(game);
+        createPlatfromPool(game);
+ 
+        game.time.events.loop(33, function () {
+ 
+            //runner.distnace += runner.delta;
+ 
+            updatePlatfroms(game);
+ 
+        });
+ 
+    };
+ 
+    // what to do for each tick
+    plug.update = function () {
+ 
+        var runner = game.data.runner,
+        platforms = game.data.platforms;
+ 
+        if (runner) {
+ 
+        game.physics.arcade.collide(platforms.pool, runner.guy);
+ 
+        }
+ 
+    };
+ 
+    // add the plugin to the game
+    game.plugins.add(plug, opt);
+ 
+};
+```
 
