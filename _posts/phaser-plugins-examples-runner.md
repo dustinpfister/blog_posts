@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-23 20:08:14
-version: 1.8
+updated: 2018-10-24 13:31:25
+version: 1.9
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -65,6 +65,7 @@ For this helper I am using a canvas solution for making a simple sprite sheet fo
         game.input.onDown.add(guyJump, this);
  
     };
+```
 
 ### 2.3 - On guy jump
 
