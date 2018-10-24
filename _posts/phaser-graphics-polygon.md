@@ -5,21 +5,21 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 71
-updated: 2018-10-23 20:18:29
-version: 1.8
+updated: 2018-10-23 20:21:45
+version: 1.9
 ---
 
-When working with on the fly graphics in [phaser](http://phaser.io/), there might come a time in which i might want to do something with a collection of points that form a shape, or drawing, or polygon. In this post I will be writing about how to make on the fly shapes without using any external assets in phaser.
+When working with on the fly graphics in [phaser](http://phaser.io/), there might come a time in which i might want to do something with a collection of points that form a shape, or drawing, or polygon. In this post I will be writing about how to make on the fly shapes without using any external assets in phaser using graphics display objects.
 
 <!-- more -->
 
 ## 1 - What to know
 
-This is a post on using the drawPolygon method with graphics display objects in phaser ce. This is not a getting started post with graphics in phaser ce, phaser ce in general, or any additional skills that are needed with web programing uisng javaScript.
+This is a post on using the [drawPolygon](http://phaser.io/docs/2.6.2/Phaser.Graphics.html#drawPolygon) method with graphics display objects in phaser ce. This is not a getting started post with graphics in phaser ce, phaser ce in general, or any additional skills that are needed with web programing using javaScript.
 
 ## A Graphics.drawPolygon example
 
-I often start a post off with a simple example of what I will be writing about in more detail in post. As such here is a quick, simple example of use for [Graphics.drawPolygon](http://phaser.io/docs/2.6.2/Phaser.Graphics.html#drawPolygon) in phaser.
+I often start a post off with a simple example of what I will be writing about in more detail in post. As such here is a quick, simple example of use for Graphics.drawPolygon in phaser.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', 
