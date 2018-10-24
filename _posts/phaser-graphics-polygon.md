@@ -5,17 +5,17 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 71
-updated: 2018-10-23 20:21:45
-version: 1.9
+updated: 2018-10-23 20:24:18
+version: 1.10
 ---
 
-When working with on the fly graphics in [phaser](http://phaser.io/), there might come a time in which i might want to do something with a collection of points that form a shape, or drawing, or polygon. In this post I will be writing about how to make on the fly shapes without using any external assets in phaser using graphics display objects.
+When working with on the fly graphics in [phaser](https://photonstorm.github.io/phaser-ce/), there might come a time in which i might want to do something with a collection of points that form a shape, or drawing, or polygon. In this post I will be writing about how to make on the fly shapes without using any external assets in phaser using graphics display objects.
 
 <!-- more -->
 
 ## 1 - What to know
 
-This is a post on using the [drawPolygon](http://phaser.io/docs/2.6.2/Phaser.Graphics.html#drawPolygon) method with graphics display objects in phaser ce. This is not a getting started post with graphics in phaser ce, phaser ce in general, or any additional skills that are needed with web programing using javaScript.
+This is a post on using the [drawPolygon](https://photonstorm.github.io/phaser-ce/Phaser.Graphics.html#drawPolygon) method with graphics display objects in phaser ce. This is not a getting started post with [graphics in phaser ce](/2017/10/21/phaser-graphics/), [phaser ce in general](/2017/10/04/phaser-getting-started/), or any additional skills that are needed with web programing using javaScript.
 
 ## A Graphics.drawPolygon example
 
