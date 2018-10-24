@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-23 20:04:06
-version: 1.6
+updated: 2018-10-23 20:05:39
+version: 1.7
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -15,7 +15,7 @@ Fot the next few days I would like to have some fun with [phaser ce](https://pho
 
 ## 1 - what to know
 
-This is a post on a phaser ce plug in-in that I made to serve as an example on how to make phaser plug ins to help keep things more organized as I start to make more complex projects in phaser. This is not a getting started post on phaser ce so if you are new to phaser you might want to start with my getting started post first. I am also using a lot of other features in phaser that I am not covering in detail in this post at least however I will link to other relevant posts where needed.
+This is a post on a phaser ce plug in-in that I made to serve as an example on how to make phaser plug ins to help keep things more organized as I start to make more complex projects in phaser. This is not a getting started post on phaser ce so if you are new to phaser you might want to start with my [getting started post](/2017/10/04/phaser-getting-started/) first. I am also using a lot of other features in phaser that I am not covering in detail in this post at least however I will link to other relevant posts where needed.
 
 ## 2 - The Runner plugin
 
