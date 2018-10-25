@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 11:04:44
-version: 1.5
+updated: 2018-10-25 11:10:32
+version: 1.6
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -47,11 +47,15 @@ while (i < 4) {
 
 #### 2.1.2 - Array.from
 
+The native array.from method can also be used to call a method a bunch of times as well.
+
 ```js
 Array.from({length:4},(_,i)=> console.log('foo'));
 ```
 
-## Use return to build a results array
+So many solutions like this are a little longer, and maybe Array.from does not have the best browser support when it comes to supporting older non every green browsers. However if most of your site traffic is up to date with there software, using solutions like this can lead to no longer needing lodash as part of a stack.
+
+### 2.2 - Use return to build a results array with \_.times, and alternatives
 
 So there is a bit more that can be done compared to just a simple while loop, such as building a results array by using return in the body of the function passed to \_.times.
 
