@@ -5,13 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 10:28:30
-version: 1.2
+updated: 2018-10-25 10:34:11
+version: 1.3
 ---
 
-How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what means of looping over something is the fastest, or the most concise. However this is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/).
+How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
 
 <!-- more -->
+
+## 1 - What to know
+
+This is a lodash post on the \_.times method that can be used to call a given method a number of times, as well as plain old vanilla js alternatives that bring forth a similar effect. The lodash \_.times method is a nice concise solution, but if you care about speed the most first and for most it might be best to stick with native looping.
 
 ## Basic \_.times example
 
@@ -30,9 +34,9 @@ A while loop example that does the same would look like this.
 ```js
 var i = 0;
 while(i < 4){
-
+ 
    console.log('foo');
-
+ 
 }
 ```
 
