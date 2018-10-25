@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 11:37:15
-version: 1.9
+updated: 2018-10-25 11:42:59
+version: 1.10
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -76,6 +76,21 @@ console.log(rnd); // [ 10, 20, 30, 40 ]
 ```
 
 This can be useful for a lot of situations, but it is also unnecessary if it is a situation in which I just need to call a method a few times, and the method is not used to build elements in an array.
+
+#### 2.2.2 - A while loop for building an array
+
+It's not like just using a while loop takes that much more effort as well though. So it might not be as concise, by just sticking to while loops I can work just fine without lodash. Also when it comes to working with larger arrays a while loop solution may prove to be faster as well.
+
+```js
+// a while loop for building an array
+let arr = [],
+i = 0;
+while (i < 4) {
+    arr.push(Math.pow(2, i));
+    i += 1;
+}
+console.log(arr); //[1,2,4,8]
+```
 
 ## vanilla js example
 
