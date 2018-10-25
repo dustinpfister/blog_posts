@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2018-10-24 20:28:07
-version: 1.2
+updated: 2018-10-24 20:32:19
+version: 1.3
 ---
 
 If I am every in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. The \_.keyBy method works a lot like \_.groupBy only it will only create one object for each key. In this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well.
@@ -43,4 +43,20 @@ let keyed = _.keyBy(units, function (unit) {
     });
  
 console.log(keyed.a1.price); // 10
+```
+
+### 2.1 - basic example with vanilla js
+
+```js
+let counts = {
+    a: 0,
+    b: 0
+},
+keyed = {};
+units.forEach((unit) => {
+    let c = counts[unit.type]++;
+    keyed[unit.type + c] = unit;
+});
+ 
+console.log(keyed.a1.price); // 9
 ```
