@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 11:24:06
-version: 1.8
+updated: 2018-10-25 11:37:15
+version: 1.9
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -59,11 +59,23 @@ So many solutions like this are a little longer, and maybe Array.from does not h
 
 So there is a bit more that can be done compared to just a simple while loop, such as building a results array by using return in the body of the function passed to \_.times. The return keyword can be used in the body of a function to return a value for each element in an array that is returned when using \_.times. In this section I will be going over using \_.times to do this, as well as vanilla js alternatives for doing so as well.
 
+#### 2.2.1 - Using \_.times to build an array
+
+The times method can be used to build an array, in fact one is always returned when using it, its just by default the values for each element will be undefined if nothing is returned.
+
 ```js
+// using a native method that returns something
 let arr = _.times(4, (i) => Math.pow(2, i));
- 
 console.log(arr); //[1,2,4,8]
+ 
+// using return keyword
+let rnd = _.times(4, (i) => {
+    return 10 + i * 10;
+});
+console.log(rnd); // [ 10, 20, 30, 40 ]
 ```
+
+This can be useful for a lot of situations, but it is also unnecessary if it is a situation in which I just need to call a method a few times, and the method is not used to build elements in an array.
 
 ## vanilla js example
 
