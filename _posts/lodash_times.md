@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 10:48:03
-version: 1.4
+updated: 2018-10-25 11:04:44
+version: 1.5
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -19,7 +19,7 @@ This is a lodash post on the \_.times method that can be used to call a given me
 
 ## 2 - Some Basic \_.times examples
 
-In this section I will be covering some basic examples of \_.times 
+In this section I will be covering some basic examples of \_.times along with some quick vanilla js alternatives. Keep in mid that more concise solutions are not always better solutions all around. I have not taken the time to do synthetic testing with performance in this post, juts throwing together examples.
 
 ### 2.1 - Just call a method a number of times
 
@@ -30,14 +30,25 @@ _.times(4, ()=> {
     console.log('foo'); // 'foo' (4x)
 });
 ```
+#### 2.1.1 - Just using a while looop
 
 A while loop example that does the same would look like this.
 
 ```js
-var i = 0;
-while(i < 4){
-   console.log('foo');
+let log = (text) => {
+    console.log(text);
+};
+let i = 0;
+while (i < 4) {
+    log('foo');
+    i += 1;
 }
+```
+
+#### 2.1.2 - Array.from
+
+```js
+Array.from({length:4},(_,i)=> console.log('foo'));
 ```
 
 ## Use return to build a results array
