@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 11:10:32
-version: 1.6
+updated: 2018-10-25 11:13:19
+version: 1.7
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -44,6 +44,8 @@ while (i < 4) {
     i += 1;
 }
 ```
+
+Some times just using a good old while loop is just whats called for, no need for lodash, and if I just replace let with var, and use old function literals in place of arrow functions this will work on a wide range of browsers as well.
 
 #### 2.1.2 - Array.from
 
