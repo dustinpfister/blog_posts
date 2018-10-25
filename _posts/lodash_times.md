@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 11:42:59
-version: 1.10
+updated: 2018-10-25 12:02:22
+version: 1.11
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -92,48 +92,68 @@ while (i < 4) {
 console.log(arr); //[1,2,4,8]
 ```
 
-## vanilla js example
+## 3 - vanilla js custom times method with a custom api
 
-here is a vanilla js example I put together in a flash. Not only does it have the same features, I thought it would be great to also pass the times count to the function. In addition I used call to define a bunch of stuff that comes to mind to the this keyword.
+Here is a vanilla js example I put together in a flash. Not only does it have the same features, In addition is has the beginnings of a custom api. This is achieved by using the power of Function.call to set the value of the this keyworld in the body of the function that I pass to my times method. In this example the api has some properties that reflect things like the current percentage value between 0 and 1 relative to the current index and count. That is of course one of many usual suspects when it comes to making anything creative with javaScript in my experience most of the time. The method could be hacked over to add all kinds of additional properties and methods depending on the project.
+
+So here is the times method I put together
 
 ```js
-var times = function(len, func){
- 
+// my own custom times method with a ccustom api
+let times = (count, func)=> {
     var i = 0,
     per,
     results = [];
+    count = count || 0;
+    func = func || function () {};
  
-    len = len || 0;
-    func = func || function(){};
+    // while i is less than len
+    while (i < count) {
+        per = i / count;
  
-    while(i < len){
- 
-        per = i / len;
-        results.push( func.call({
- 
-            i:i,
-            len : len,
-            per : per,
-            bias : 1 - Math.abs(.5 - per) / .5,
-            results : results
- 
-        },i,per) );
- 
+        // call function with a custom api that can be
+        // used via the this keyword
+        results.push(func.call({
+                i: i,
+                count: count,
+                per: per,
+                bias: 1 - Math.abs(.5 - per) / .5,
+                results: results
+            }, i, count, per));
         i += 1;
- 
     }
-
-   return results;
- 
+    return results;
 };
+```
+
+And here is a use case example.
+
+```js
+let points = times(10, function () {
  
-var foos = times(10, function(i,len){
+        var s = this;
  
-    return 'foo ' + i + '/' + len;
+        return {
+            i: s.i,
+            x: 320 / s.count * s.i,
+            y: Math.floor(120 * s.per + 120 * s.bias)
+        }
  
-});
+    });
  
-console.log(foos); // foo x/10
+console.log(points);
+/*
+[ { i: 0, x: 0, y: 0 },
+  { i: 1, x: 32, y: 35 },
+  { i: 2, x: 64, y: 72 },
+  { i: 3, x: 96, y: 108 },
+  { i: 4, x: 128, y: 144 },
+  { i: 5, x: 160, y: 180 },
+  { i: 6, x: 192, y: 168 },
+  { i: 7, x: 224, y: 156 },
+  { i: 8, x: 256, y: 144 },
+  { i: 9, x: 288, y: 132 } ]
+*/
 ```
 
 ## Conclusion
