@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 11:13:19
-version: 1.7
+updated: 2018-10-25 11:24:06
+version: 1.8
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -26,9 +26,7 @@ In this section I will be covering some basic examples of \_.times along with so
 So here is a quick brainless example of of \_.times where I am just calling a method four times. To do this I just call the method and pass the number of times that a function should be called followed by the function.
 
 ```js
-_.times(4, ()=> {
-    console.log('foo'); // 'foo' (4x)
-});
+_.times(4, ()=> console.log('foo')); // 'foo' (4x)
 ```
 #### 2.1.1 - Just using a while looop
 
@@ -59,31 +57,12 @@ So many solutions like this are a little longer, and maybe Array.from does not h
 
 ### 2.2 - Use return to build a results array with \_.times, and alternatives
 
-So there is a bit more that can be done compared to just a simple while loop, such as building a results array by using return in the body of the function passed to \_.times.
+So there is a bit more that can be done compared to just a simple while loop, such as building a results array by using return in the body of the function passed to \_.times. The return keyword can be used in the body of a function to return a value for each element in an array that is returned when using \_.times. In this section I will be going over using \_.times to do this, as well as vanilla js alternatives for doing so as well.
 
 ```js
- // four random dice rolls
- var rolls = _.times(4,function(){
+let arr = _.times(4, (i) => Math.pow(2, i));
  
-     return Math.floor(Math.random() * 6) + 1;
- 
- });
- 
- console.log(rolls); // array of random numbers (1 - 6)
-```
-
-## The index value is passed to the function passed.
-
-Often I will want to do something with the current index value, that passed to the function given as the first argument.
-
-```js
- results = _.times(4,function(i){
- 
-     return i;
- 
- });
- 
- console.log(results); // [0,1,2,3]
+console.log(arr); //[1,2,4,8]
 ```
 
 ## vanilla js example
