@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 10:34:11
-version: 1.3
+updated: 2018-10-25 10:48:03
+version: 1.4
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -17,16 +17,18 @@ How often do I need to use a while loop, or Array.forEach in a project? All the 
 
 This is a lodash post on the \_.times method that can be used to call a given method a number of times, as well as plain old vanilla js alternatives that bring forth a similar effect. The lodash \_.times method is a nice concise solution, but if you care about speed the most first and for most it might be best to stick with native looping.
 
-## Basic \_.times example
+## 2 - Some Basic \_.times examples
 
-So here is a quick brainless example of of \_.times, just call the method and pass the number of times that a function should be called followed by the function.
+In this section I will be covering some basic examples of \_.times 
+
+### 2.1 - Just call a method a number of times
+
+So here is a quick brainless example of of \_.times where I am just calling a method four times. To do this I just call the method and pass the number of times that a function should be called followed by the function.
 
 ```js
- _.times(4,function(){
- 
- console.log('foo'); // 'foo' (4x)
- 
- });
+_.times(4, ()=> {
+    console.log('foo'); // 'foo' (4x)
+});
 ```
 
 A while loop example that does the same would look like this.
@@ -34,9 +36,7 @@ A while loop example that does the same would look like this.
 ```js
 var i = 0;
 while(i < 4){
- 
    console.log('foo');
- 
 }
 ```
 
