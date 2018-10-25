@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 12:07:19
-version: 1.12
+updated: 2018-10-25 12:11:22
+version: 1.13
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -94,7 +94,7 @@ console.log(arr); //[1,2,4,8]
 
 ## 3 - vanilla js custom times method with a custom api
 
-Here is a vanilla js example I put together in a flash. Not only does it have the same features, In addition is has the beginnings of a custom api. This is achieved by using the power of Function.call to set the value of the this keyworld in the body of the function that I pass to my times method. In this example the api has some properties that reflect things like the current percentage value between 0 and 1 relative to the current index and count. That is of course one of many usual suspects when it comes to making anything creative with javaScript in my experience most of the time. The method could be hacked over to add all kinds of additional properties and methods depending on the project.
+Here is a vanilla js example I put together in a flash. Not only does it have the same features, In addition is has the beginnings of a custom api. This is achieved by using the power of [Function.call](/2017/09/21/js-call-apply-and-bind/) to set the value of the [this keyworld](/2017/04/14/js-this-keyword/) in the body of the function that I pass to my times method. In this example the api has some properties that reflect things like the current percentage value between 0 and 1 relative to the current index and count. That is of course one of many usual suspects when it comes to making anything creative with javaScript in my experience most of the time. The method could be hacked over to add all kinds of additional properties and methods depending on the project.
 
 So here is the times method I put together
 
