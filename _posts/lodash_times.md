@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 12:02:22
-version: 1.11
+updated: 2018-10-25 12:07:19
+version: 1.12
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -156,6 +156,8 @@ console.log(points);
 */
 ```
 
-## Conclusion
+## 4 - Conclusion
 
-I am on a roll with my [lodash posts](/categories/lodash/), it's still a useful utility these days.
+So the times might be a nice quick way to create an array of a fixed length, of call a method a few times. However it might not be the best solution in many cases. There is the issue of speed, and also I can not say that this is one of the best methods that lodash has to offer. Some of them do come in handy, and help me to save a fair amount of time writing a solution from the ground up, or hunting something down at stack overflow. 
+
+If you liked this post maybe check out my [many other posts on lodash](/categories/lodash/), also if you have anything more to add I would like to hear from you as well, let me know whats up in the comments. In any case that you for reading.
