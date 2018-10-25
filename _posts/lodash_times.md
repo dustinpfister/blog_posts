@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2017-10-11 17:18:14
-version: 1.1
+updated: 2018-10-25 10:28:30
+version: 1.2
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what means of looping over something is the fastest, or the most concise. However this is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/).
@@ -15,10 +15,9 @@ How often do I need to use a while loop, or Array.forEach in a project? All the 
 
 ## Basic \_.times example
 
-So here is a quick brainless example of of \_.times.
+So here is a quick brainless example of of \_.times, just call the method and pass the number of times that a function should be called followed by the function.
 
 ```js
-
  _.times(4,function(){
  
  console.log('foo'); // 'foo' (4x)
