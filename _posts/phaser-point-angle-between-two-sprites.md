@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 264
-updated: 2018-08-19 19:46:26
-version: 1.19
+updated: 2018-10-26 14:06:09
+version: 1.20
 ---
 
 In this point on [Phaser ce](https://photonstorm.github.io/phaser-ce/), I will be writing about finding the angle between two sprites using the Point class. looking over my content on phaser so far I am surprised that I do not have any content on the point class, so lets put and end to that with one of the most useful methods that is at the ready in that class.
@@ -34,7 +34,7 @@ If that all confuses you just check out this example:
 
 ```js
 // very basic
-var angle = Phaser.Point.prototype.angle.call({x:0,y:0},{x:10,y:10});
+var angle = Phaser.Point.angle({x:0,y:0},{x:10,y:10});
 console.log( angle );  // 0.7853981633974483
 console.log( angle / Math.PI * 180); // 45
 ```
