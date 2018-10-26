@@ -5,17 +5,17 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 312
-updated: 2018-10-25 21:38:41
-version: 1.2
+updated: 2018-10-25 21:40:45
+version: 1.3
 ---
 
-For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the onOutOfBounds event for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
+For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the [onOutOfBounds event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onOutOfBounds) for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
 
 <!-- more -->
 
 ## 1 - What to know
 
-This is a post on using the onOutOfBounds event in phaser ce to define some logic for what to do when a sprite goes out of bounds. In this post I am also using a lot of other phaser ce features, I will try to link to other relevant content where it is called for to help with anything that you might not be familiar with. If you are new to phaser you might want to start with my getting started post on phaser ce first, and a background with javaScript in general is required as well which should go without saying.
+This is a post on using the onOutOfBounds event in phaser ce to define some logic for what to do when a sprite goes out of bounds. In this post I am also using a lot of other phaser ce features, I will try to link to other relevant content where it is called for to help with anything that you might not be familiar with. If you are new to phaser you might want to start with my [getting started post on phaser ce](/2017/10/04/phaser-getting-started/) first, and a background with javaScript in general is required as well which should go without saying.
 
 
 ```js
