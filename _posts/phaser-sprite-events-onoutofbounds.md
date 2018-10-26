@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 312
-updated: 2018-10-25 21:59:55
-version: 1.10
+updated: 2018-10-25 22:01:07
+version: 1.11
 ---
 
 For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the [onOutOfBounds event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onOutOfBounds) for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
@@ -108,7 +108,9 @@ var enemySpawn = function () {
 
 It would seem that there is no getRandomDead method built into phaser so I had to use Group.filter to filter out enemies that are alive, and then spawn a random index from that list so that they are not released in a predictable pattern sense I am keeping the x values of the sprites fixed.
 
-### 2.4 -
+### 2.4 - The sprite sheet
+
+For this example I made a sprite sheet using canvas
 
 ```js
 // Guy SPRITE SHEET
@@ -123,7 +125,7 @@ var createEnemySheet = function (game) {
 };
 ```
 
-### 2.5 -
+### 2.5 - The Phaser.game instance
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
