@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 312
-updated: 2018-10-25 21:49:16
-version: 1.6
+updated: 2018-10-25 21:53:27
+version: 1.7
 ---
 
 For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the [onOutOfBounds event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onOutOfBounds) for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
@@ -44,6 +44,8 @@ var onOutOfBounds = function (enemy) {
 So now that I have my handler I will need to attach it to one or more sprites that make use of it, so I will want a method that will create a pool of enemies and within there I will attach this handler for each sprite.
 
 ### 2.2 - Create a pool of enemies
+
+Here I have a method that I can use to create a pool of enemies. For each enemy I attach my onOutOfBounds hander by attaching it via enemy.events.onOutOfBounds, but first I make sure to set the checkWorldBounds boolean to true as well or else the event will not fire. In this method I also do whatever else is called for each child in the enemies sprite pool.
 
 ```js
 // create a pool of enemies
