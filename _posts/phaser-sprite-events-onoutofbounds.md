@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 312
-updated: 2018-10-25 21:55:26
-version: 1.8
+updated: 2018-10-25 21:57:15
+version: 1.9
 ---
 
 For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the [onOutOfBounds event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onOutOfBounds) for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
@@ -84,7 +84,9 @@ var createEnemySpritePool = function (game) {
 
 All the enemies will start of as dead by calling the kill command, this will not destroy the sprite, but place it in a dead state. I will then have a spawn method that will be called every so often that will revive the dead sprites at which point they will start to cross the screen.
 
-### 2.3 -
+### 2.3 - The Enemy Spawn method
+
+Here Is a method that I will call with a timer every once in a while to revive dead sprites, and cause them to start to cross the screen.
 
 ```js
 // spawn enemies
