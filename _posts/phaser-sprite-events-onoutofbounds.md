@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 312
-updated: 2018-10-25 21:45:48
-version: 1.5
+updated: 2018-10-25 21:49:16
+version: 1.6
 ---
 
 For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the [onOutOfBounds event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onOutOfBounds) for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
@@ -22,6 +22,8 @@ This is a post on using the onOutOfBounds event in phaser ce to define some logi
 For this example I have a project that creates a pool of enemy sprites that will spawn from the bottom of the screen, and then move up to the top of the screen. Once they go out of bounds after reaching the top the onOutOfBounds event will fire resulting in the player losing health, and the enemy being killed which will case it to potentially be reused.
 
 ### 2.1 - The onOutOfBounds handler
+
+This is the handler that will fire each time an enemy reaches the top of the screen, here I check that the y value is indeed less than zero, and so set its y value back to a starting y value, as well as deduct health from the player, and preform other necessary actions.
 
 ```js
 // what to do when an enemy does out of bounds
@@ -39,7 +41,9 @@ var onOutOfBounds = function (enemy) {
 };
 ```
 
-### 2.2 -
+So now that I have my handler I will need to attach it to one or more sprites that make use of it, so I will want a method that will create a pool of enemies and within there I will attach this handler for each sprite.
+
+### 2.2 - Create a pool of enemies
 
 ```js
 // create a pool of enemies
