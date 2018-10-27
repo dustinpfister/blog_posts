@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 309
-updated: 2018-10-27 19:22:05
-version: 1.5
+updated: 2018-10-27 19:26:46
+version: 1.6
 ---
 
 In many [phaser ce](https://photonstorm.github.io/phaser-ce/) projects there will come a time where I will want to rotate a sprite from one angle to another. When doing so i will want to have the sprite rotate in a direction that is the shortest angular distance. Thankfully there is a Math Class method in phaser ce that is there for this very purpose called [Phaser.Math.rotateToAngle](https://photonstorm.github.io/phaser-ce/Phaser.Math.html#rotateToAngle), in this post i will be covering a quick example that makes use of this method.
@@ -22,6 +22,8 @@ This is a post on using a Math class method to rotate a sprite from a starting a
 In this post I am using phaser community edition 2.11.1 of [phaser](https://phaser.io/).
 
 ## 2 - Example of math.rotateToAngle
+
+So for this example I have two sprites one is a ship, and another is a target. I want the ship to rotate to the target, and do so in a way in which it takes the shortest angular distance clockwise or counter clockwise. To do so I make use of Phaser.Math.rotateToAngle.
 
 ### 2.1 - The rotateToTarget method
 
