@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 313
-updated: 2018-10-27 17:33:29
-version: 1.4
+updated: 2018-10-27 17:36:04
+version: 1.5
 ---
 
 When working with time in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) it is often important to now use game.time.now, or a new javaScript date object by itself. Unless you are making a project where things do need to progress with real world time, in most projects it is necessary to have game time be a subject to a pause event, or inactivity. The vale that is returned by [game.time.elapsed](https://photonstorm.github.io/phaser-ce/Phaser.Time.html#elapsed) is the about of time in milliseconds that has elapsed sense the last frame tick. In addition it is.a value that will not keep getting larger as real world time goes by when the game is pause or the window is inactive. As such the elapsed time is great for moving display objects by a pixels per second value, as the display objects will not jump forward if the game is inactive for a sec. So in this post I will be going over some use case examples of the elapsed property in the time object in phaser ce.
@@ -25,6 +25,9 @@ In this post I am using phaser ce 2.11.1 of [phaser](https://phaser.io/).
 
 On use case example of game.time.elapse would be an example that moves a sprite by a pixel per second rate. This helps to ensure that a sprite will always move as the same rate regardless of how fast or slow a device might be, and the value is also automatically adjusted by phaser when the project goes inactive due to a pause of inactive windows event.
 
+### 2.1 - The make Sprite method
+
+In this method I am making a sprite and setting a pixel per second value to the data object of the sprite. I am also creating an update method for the sprite that will use game.time.elapsed to move the sprite. In addition I am also making use of Phaser Wrap method to make the sprite wrap back around to the beginning of the game world when it goes out of bounds.
 
 ```js
 var makeSprite = function (game) {
