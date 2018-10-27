@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 309
-updated: 2018-10-27 19:31:39
-version: 1.9
+updated: 2018-10-27 19:35:55
+version: 1.10
 ---
 
 In many [phaser ce](https://photonstorm.github.io/phaser-ce/) projects there will come a time where I will want to rotate a sprite from one angle to another. When doing so i will want to have the sprite rotate in a direction that is the shortest angular distance. Thankfully there is a Math Class method in phaser ce that is there for this very purpose called [Phaser.Math.rotateToAngle](https://photonstorm.github.io/phaser-ce/Phaser.Math.html#rotateToAngle), in this post i will be covering a quick example that makes use of this method.
@@ -110,7 +110,9 @@ var mkSheet = function (game) {
 };
 ```
 
-### 2.5 -
+### 2.5 - Tie it all together with Phaser.game
+
+Now to get everything to work by creating an instance of Phaser.Game, calling the mkShett, and mkSprite helpers in the create method of a state object. In addition I call my roatteTotarget method on each frame tick in the update method of the state, and of course I start the state.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -137,6 +139,8 @@ game.state.add('demo', {
  
 game.state.start('demo')
 ```
+
+This results in the ship rotating to the target, at which point a new target is created, and the process repeats as expected.
 
 ## 3 - Conclusion
 
