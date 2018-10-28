@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-28 14:03:42
-version: 1.16
+updated: 2018-10-28 14:07:31
+version: 1.17
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -144,6 +144,8 @@ var Plugin_platforms = function (game, opt) {
 After that I again start off with a way to make a sprite sheet to be used with the plug-in. If I where to continue developing this I might make it so I can pass a key for an external sprite sheet, but for this example just a simple canvas solution will get the job done.
 
 ### 3.2 - create the platform sprite pool
+
+here I have a method that will create a pool of platform sprites by making a group, and using the group.create method to create a bunch of platform sprites. I then also use the Sprite.kill method to place the platforms in a dead state to begin with, I will then use the Sprite.revive method to revive the platform sprites and place them into position as needed. I also enable physics for each platform, and set up some physics values for collision and to make sure that they do not move when the guy jumps onto them.
 
 ```js
     // Create a Pool Of Platforms
