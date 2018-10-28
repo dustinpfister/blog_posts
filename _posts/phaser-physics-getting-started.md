@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 18:22:13
-version: 1.6
+updated: 2018-10-28 19:09:26
+version: 1.7
 ---
 
 So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
@@ -24,6 +24,10 @@ it goes without saying that th subject of [physics](https://en.wikipedia.org/wik
 In this post I am using phaser Community edition 2.11.1 of [phaser](https://phaser.io/). As such the code examples in the post might break in older or newer major release of phaser.
 
 ## 2 - A bounding Ball example
+
+So if you are just starting out with using a physics engine in phaser ce A good start would be just a simple bounding ball example. So lets get this one out of the way.
+
+The Phaser.Physics.Arcade physics engine is running by default with phaser so there is no need to call [physics.startSystem](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html#startSystem) to start that engine which will be used in this example.
 
 ### 2.1 - The create ball helper
 
