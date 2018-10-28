@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-28 13:52:33
-version: 1.12
+updated: 2018-10-28 13:53:43
+version: 1.13
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -71,7 +71,7 @@ Here I have a method that will create the guy sprite when called. In here I am s
 
 ### 2.3 - On guy jump
 
-This the hander that is attached to the onDown signal of the keyboard cursor keys instance, and also to the onDown of game.input as well so that it will fire each time the screen is pressed, or clicked, and if the keyboard up arrow button is pressed on desktop systems.
+This the hander that is attached to the onDown [signal](/2018/10/04/phaser-signal/) of the keyboard [cursor keys](/2018/10/11/phaser-input-keyboard-cursorkeys/) instance, and also to the onDown of game.input as well so that it will fire each time the screen is pressed, or clicked, and if the keyboard up arrow button is pressed on desktop systems.
 
 ```js
  
