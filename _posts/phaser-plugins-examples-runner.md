@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-28 14:18:30
-version: 1.21
+updated: 2018-10-28 14:22:43
+version: 1.22
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -270,3 +270,6 @@ I also have an update method for this plugin as well where I check for collision
 };
 ```
 
+## 4 - Conclusion
+
+So this was a fun quick little project, when I use the plug-ins I do get what it is that I would expect. The platforms move from the right to the left, and I can get the little guy sprite to jump up onto them. I am interested in making more plug-ins in which I explore other ideas for games as well. If you would like for me to get some more work done on these, and maybe have a playable demo on the page please let me know in the comments. If no one expresses interest I will not have much desire to continue developing these plug-ins into somewhat that starts to resemble an actual game.
