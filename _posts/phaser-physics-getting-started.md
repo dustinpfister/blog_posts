@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 19:12:22
-version: 1.8
+updated: 2018-10-28 19:16:48
+version: 1.9
 ---
 
 So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
@@ -52,6 +52,8 @@ var createBall = function () {
 ```
 
 ### 2.2 - The create ball sheet helper
+
+Here I have a simple helper that creates a sprite sheet for the ball using canvas.
 
 ```js
 var createBallSheet = function (game) {
