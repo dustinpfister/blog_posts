@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 19:16:48
-version: 1.9
+updated: 2018-10-28 19:22:44
+version: 1.10
 ---
 
 So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
@@ -72,6 +72,8 @@ var createBallSheet = function (game) {
 ```
 
 ### 2.3 - The Phaser.game instance
+
+Now it is time to get the example working by calling the helpers in the create method of a state object that I will be adding to a [Phaser.game](/2017/10/11/phaser-main-game-constructor/) instance.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
