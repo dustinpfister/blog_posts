@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 312
-updated: 2018-10-28 14:34:55
-version: 1.12
+updated: 2018-10-28 14:38:58
+version: 1.13
 ---
 
 For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the [onOutOfBounds event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onOutOfBounds) for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
@@ -127,7 +127,7 @@ var createEnemySheet = function (game) {
 
 ### 2.5 - The Phaser.game instance
 
-Dow it is time to make the magic happen with an instance of Phaser.Game and a state object.
+Dow it is time to make the magic happen with an instance of Phaser.Game and a state object. Here I am using the helper methods that I have wrote about above, and well as setting up a game.data object that I often use as a way to store variables that will be used across the whole project.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -189,3 +189,5 @@ game.state.add('demo', {
  
 game.state.start('demo');
 ```
+
+In the update method I am also using [game.time.elapse](/2018/10/26/phaser-time-elapsed/) as a way to have the sprites move over time by a pixel per second rate as well.
