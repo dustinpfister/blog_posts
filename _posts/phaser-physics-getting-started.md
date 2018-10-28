@@ -5,19 +5,19 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 18:12:24
-version: 1.4
+updated: 2018-10-28 18:15:21
+version: 1.5
 ---
 
 So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
 
-Now that I have covered a great deal about phaser when it comes to the basics such as state objects, groups, making sprite sheets with canvas it is time to get into some use case examples in which I am using the physics engines that come with phaser.
+Now that I have covered a great deal about phaser when it comes to the basics such as [state objects](/2017/10/06/phaser-state-objects/), [groups](/2018/08/24/phaser-groups/), [making sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/) it is time to get into some use case examples in which I am using the physics engines that come with phaser.
 
 <!-- more -->
 
 ## 1 - What to know before continuing.
 
-it goes without saying that th subject of [physics](https://en.wikipedia.org/wiki/Physics) is a broad topic, and I am not going to even scratch the surface in this post. As such in this post I am just going to cover a simple bouncing ball example using the default arcade physics engine in phaser ce. This is not a getting started post with phaser ce, or javaScript in general, a good starting point might be my getting started post on phaser ce if you are new to phaser. Aslo you might want to check out my many other posts on phaser ce to learn all the basics of phaser ce before getting into the physics manager.
+it goes without saying that th subject of [physics](https://en.wikipedia.org/wiki/Physics) is a broad topic, and I am not going to even scratch the surface in this post. As such in this post I am just going to cover a simple bouncing ball example using the default arcade physics engine in phaser ce. This is not a getting started post with phaser ce, or javaScript in general, a good starting point might be [my getting started post on phaser ce](/2017/10/04/phaser-getting-started/) if you are new to phaser. Aslo you might want to check out [my many other posts on phaser ce](/categories/phaser/) to learn all the basics of phaser ce before getting into the physics manager.
 
 
 ```js
