@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-28 13:53:43
-version: 1.13
+updated: 2018-10-28 13:56:27
+version: 1.14
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -90,6 +90,8 @@ This the hander that is attached to the onDown [signal](/2018/10/04/phaser-signa
 ```
 
 ### 2.4 - The plugin object, and end of plugin
+
+Here I am creating the actual plug-in object, and creating an init method that will be called once when the plugin is used in a project. Once I have everything set up I just need to add the plugin object to the game that will happen once the main factory function plugin_runner is called.
 
 ```js
     // The plugin Object
