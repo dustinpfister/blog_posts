@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 237
-updated: 2018-07-23 11:24:37
-version: 1.6
+updated: 2018-10-28 19:53:11
+version: 1.7
 ---
 
 As I work to expand my content on node.js, I have come around to working out some examples on how to walk a files system. This includes both my own vanilla js solutions, as well as some walkers that other people have made for node.js, such as [klaw](https://www.npmjs.com/package/klaw), and [node-dir](https://www.npmjs.com/package/node-dir), just to name a few. In this post I will be covering some options, and if you are looking into this sort of thing for your own project hopefully you will find this post helpful.
@@ -176,6 +176,56 @@ dir.readFiles(
 ```
 
 I wrote a post on [node-dir](/2017/11/05/nodejs-node-dir/) as well a while back.
+
+### 2.5 - Using glob
+
+[Glob](/2017/11/28/nodejs-glob/) is another [npm package](https://www.npmjs.com/package/glob) that can be used to match files using a glob pattern, another useful tool for making a file system walker.
+
+```js
+let glob = require('glob'),
+fs = require('fs');
+ 
+let readFiles = function (pat, forFile) {
+ 
+    pat = pat || '*.js';
+    forFile = forFile || function (content) {
+        console.log(content);
+    };
+ 
+    glob('*.js', function (err, files) {
+ 
+        if (err) {
+ 
+            console.log(err);
+ 
+        } else {
+ 
+            files.forEach(function (file) {
+ 
+                fs.readFile(file, function (err, data) {
+ 
+                    if (err) {
+ 
+                        console.log(err);
+ 
+                    } else {
+ 
+                        forFile(data.toString());
+ 
+                    }
+ 
+                });
+ 
+            });
+ 
+        }
+ 
+    });
+ 
+};
+ 
+readFiles();
+```
 
 ## 3 - Conclusion
 
