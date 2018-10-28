@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 312
-updated: 2018-10-28 14:38:58
-version: 1.13
+updated: 2018-10-28 14:42:25
+version: 1.14
 ---
 
 For this post I will be writing about a [Phaser ce](https://photonstorm.github.io/phaser-ce/) example that I built around the [onOutOfBounds event](https://photonstorm.github.io/phaser-ce/Phaser.Events.html#onOutOfBounds) for sprites. This event will fire if the sprites checkWorldBounds boolean is set to true, and can be used to define some logic that will fire each time a sprite leaves the game world. This event is useful for bringing sprites back to a pool to be reuse again when working with groups, and the example will also cover that as well. In any case this post should give readers a better sense of how to dead with sprites that go out of bounds when making a phaser ce powered game with javaScript.
@@ -191,3 +191,7 @@ game.state.start('demo');
 ```
 
 In the update method I am also using [game.time.elapse](/2018/10/26/phaser-time-elapsed/) as a way to have the sprites move over time by a pixel per second rate as well.
+
+## 3 - Conclusion
+
+So the onOutOfbounds event is great for attaching logic to a sprite that is to be called when the sprite goes out of bounds. For example if making a breakout style game I can attach an event that will result in the player loosing a live when the ball goes out of bounds by falling bellow the game height. If you have any questions, or would like for me to add more to this post for whatever reason be sure to let me know in the comments. Thank you for reading and have fun with phaser!
