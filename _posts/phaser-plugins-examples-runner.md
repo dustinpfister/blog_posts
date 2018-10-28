@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-28 13:59:59
-version: 1.15
+updated: 2018-10-28 14:03:42
+version: 1.16
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -124,6 +124,8 @@ Now that I have my runner plug-in I can then create additional plug-ins that can
 
 ### 3.1 - The create platform sheet helper, and start of plugin
 
+Just like the runner plugin I start off by defining a factory function that will contain everything that will be used in the body of the plugin.
+
 ```js
 var Plugin_platforms = function (game, opt) {
 
@@ -138,6 +140,8 @@ var Plugin_platforms = function (game, opt) {
         game.cache.addSpriteSheet('sheet-platfrom', null, canvas, 96, 16, 1, 0, 0);
     };
 ```
+
+After that I again start off with a way to make a sprite sheet to be used with the plug-in. If I where to continue developing this I might make it so I can pass a key for an external sprite sheet, but for this example just a simple canvas solution will get the job done.
 
 ### 3.2 - create the platform sprite pool
 
