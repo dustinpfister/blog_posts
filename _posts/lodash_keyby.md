@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2018-10-25 10:28:25
-version: 1.6
+updated: 2018-10-28 14:32:44
+version: 1.7
 ---
 
-If I am every in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. The \_.keyBy method works a lot like \_.groupBy only it will only create one object for each key. In this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well.
+If I am every in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. The \_.keyBy method works a lot like [\_.groupBy](/2018/08/02/lodash_groupby/) only it will only create one object for each key. In this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well.
 
 
 <!-- more -->
@@ -64,3 +64,7 @@ units.forEach((unit) => {
  
 console.log(keyed.a1.price); // 9
 ```
+
+## 3 - Conclusion
+
+So \_.keyBy is one of the many methods in lo dash that can come in handle now and then when a situation comes about that calls for it's use. If you have anything you might like to add, or have any questions or concerns about the content of this post please be sure to let me know in the comments, and thank you for reading.
