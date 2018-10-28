@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 310
-updated: 2018-10-28 14:09:29
-version: 1.18
+updated: 2018-10-28 14:14:50
+version: 1.19
 ---
 
 Fot the next few days I would like to have some fun with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), and make some [plug-in](https://photonstorm.github.io/phaser-ce/Phaser.Plugin.html) examples. In this post I will be covering plug-ins that create the beginnings of a simple runner game. I hope to make a few posts like this where I start writing about how to go about making something that is starting to look like an actual game, rather than just simple demos that do not do much of anything interesting.
@@ -177,6 +177,10 @@ Here I have a method that will create a pool of platform sprites by [making a gr
 
 ### 3.3 - Update platforms
 
+Here I have a method that will be called on each frame tick from with the plugin. I could just place the code in the update method for the plugin, but I prefer to pull code into methods like this to make the project more fine grain for the purpose of making this easier to follow.
+
+Here platform sprites will be revived every once in a while depending on the amount of distance that has passed sense the last platform was revived. I also update all alive platforms as will with group.forEachAlive, and while doing so also kill old platforms that have went off screen making them available to be revived again.
+
 ```js
     var updatePlatfroms = function (game) {
  
@@ -231,8 +235,6 @@ Here I have a method that will create a pool of platform sprites by [making a gr
         createPlatfromPool(game);
  
         game.time.events.loop(33, function () {
- 
-            //runner.distnace += runner.delta;
  
             updatePlatfroms(game);
  
