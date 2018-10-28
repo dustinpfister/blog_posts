@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 18:15:21
-version: 1.5
+updated: 2018-10-28 18:22:13
+version: 1.6
 ---
 
 So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
@@ -19,6 +19,13 @@ Now that I have covered a great deal about phaser when it comes to the basics su
 
 it goes without saying that th subject of [physics](https://en.wikipedia.org/wiki/Physics) is a broad topic, and I am not going to even scratch the surface in this post. As such in this post I am just going to cover a simple bouncing ball example using the default arcade physics engine in phaser ce. This is not a getting started post with phaser ce, or javaScript in general, a good starting point might be [my getting started post on phaser ce](/2017/10/04/phaser-getting-started/) if you are new to phaser. Aslo you might want to check out [my many other posts on phaser ce](/categories/phaser/) to learn all the basics of phaser ce before getting into the physics manager.
 
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser Community edition 2.11.1 of [phaser](https://phaser.io/). As such the code examples in the post might break in older or newer major release of phaser.
+
+## 2 - A bounding Ball example
+
+### 2.1 - The create ball helper
 
 ```js
 var createBall = function () {
@@ -40,6 +47,8 @@ var createBall = function () {
 };
 ```
 
+### 2.2 - The create ball sheet helper
+
 ```js
 var createBallSheet = function (game) {
     var canvas = document.createElement('canvas');
@@ -55,6 +64,8 @@ var createBallSheet = function (game) {
     game.cache.addSpriteSheet('sheet-ball', null, canvas, 32, 32, 1, 0, 0);
 };
 ```
+
+### 2.3 - The Phaser.game instance
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -73,3 +84,5 @@ game.state.add('ball-bounce', {
  
 game.state.start('ball-bounce');
 ```
+
+## 3 - Conclusion
