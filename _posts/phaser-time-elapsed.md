@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 313
-updated: 2018-10-27 17:50:39
-version: 1.7
+updated: 2018-10-28 16:07:01
+version: 1.8
 ---
 
 When working with time in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) it is often important to now use game.time.now, or a new javaScript date object by itself. Unless you are making a project where things do need to progress with real world time, in most projects it is necessary to have game time be a subject to a pause event, or inactivity. The vale that is returned by [game.time.elapsed](https://photonstorm.github.io/phaser-ce/Phaser.Time.html#elapsed) is the about of time in milliseconds that has elapsed sense the last frame tick. In addition it is.a value that will not keep getting larger as real world time goes by when the game is pause or the window is inactive. As such the elapsed time is great for moving display objects by a pixels per second value, as the display objects will not jump forward if the game is inactive for a sec. So in this post I will be going over some use case examples of the elapsed property in the time object in phaser ce.
@@ -75,3 +75,7 @@ game.state.add('pps', {
 });
 game.state.start('pps');
 ```
+
+## 3 - Conclusion
+
+So game.time.elapsed is a great way to move a display object by a pixel per second rate commpared to other methods so that the sprite moves at the same rate no matter what. In addition it is effected by game pause and inactivity events so it is better than just going by the current time alone.
