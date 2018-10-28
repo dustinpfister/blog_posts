@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 19:34:35
-version: 1.11
+updated: 2018-10-28 19:37:32
+version: 1.12
 ---
 
 So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
@@ -96,3 +96,5 @@ game.state.start('ball-bounce');
 If all goes well the ball will drop down to the bottom of the game world, and then bounce back up almost to where it started, and then repeat until it stops bouncing completely. If I comment out the line that sets body.drag, the ball will keep bouncing indefinitely, and if I do the same with body.bounce the ball will just hit the bottom of the screen once and stop there.
 
 ## 3 - Conclusion
+
+Thank you for reading my post on getting started with physics in phaser ce. I will be wring more content on physics in phaser, and will likely update this post to link to more content of physics in phaser when it comes available.
