@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2018-10-28 09:08:00
-version: 1.6
+updated: 2018-10-28 10:06:01
+version: 1.7
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use a \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern, and the npm package [glob](
@@ -85,6 +85,56 @@ forFiles = function(err,files){ console.log(files);};
  
 // glob it.
 glob('**/*.md', options, forFiles);
+```
+
+## Reading files
+
+I looks like glob is just for matching files, but when it comes to actually reading the contents of the files and additional solution will need to be used in conjunction with glob. So out of the box it is not really a complete file system walker, but it is a valuable tool to create a walker from the ground up that will have support for glob patterns.
+
+```js
+let glob = require('glob'),
+fs = require('fs');
+ 
+let readFiles = function (pat, forFile) {
+ 
+    pat = pat || '*.js';
+    forFile = forFile || function (content) {
+        console.log(content);
+    };
+ 
+    glob('*.js', function (err, files) {
+ 
+        if (err) {
+ 
+            console.log(err);
+ 
+        } else {
+ 
+            files.forEach(function (file) {
+ 
+                fs.readFile(file, function (err, data) {
+ 
+                    if (err) {
+ 
+                        console.log(err);
+ 
+                    } else {
+ 
+                        forFile(data.toString());
+ 
+                    }
+ 
+                });
+ 
+            });
+ 
+        }
+ 
+    });
+ 
+};
+ 
+readFiles();
 ```
 
 ## conclusion
