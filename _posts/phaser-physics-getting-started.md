@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 19:09:26
-version: 1.7
+updated: 2018-10-28 19:12:22
+version: 1.8
 ---
 
 So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
@@ -25,11 +25,11 @@ In this post I am using phaser Community edition 2.11.1 of [phaser](https://phas
 
 ## 2 - A bounding Ball example
 
-So if you are just starting out with using a physics engine in phaser ce A good start would be just a simple bounding ball example. So lets get this one out of the way.
-
-The Phaser.Physics.Arcade physics engine is running by default with phaser so there is no need to call [physics.startSystem](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html#startSystem) to start that engine which will be used in this example.
+So if you are just starting out with using a physics engine in phaser ce A good start would be just a simple bounding ball example. So lets get this one out of the way. The Phaser.Physics.Arcade physics engine is running by default with phaser so there is no need to call [physics.startSystem](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html#startSystem) to start that engine which will be used in this example.
 
 ### 2.1 - The create ball helper
+
+So this helper will create a ball sprite, and enable physics for the sprite which will make it so I now have a Sprite.body property that contains many THREE.Point values that can be used to set things like gravity, bounce, and drag. For this example I also make sure to set the body.collideWorldBounds boolean set to true so that the ball will bounce off the boundaries of the game world.
 
 ```js
 var createBall = function () {
