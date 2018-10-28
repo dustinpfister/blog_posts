@@ -5,14 +5,18 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2018-10-28 10:06:01
-version: 1.7
+updated: 2018-10-28 10:10:33
+version: 1.8
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use a \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern, and the npm package [glob](
 https://www.npmjs.com/package/glob) is a great solution for selecting files in a [node.js](https://nodejs.org/en/) environment.
 
 <!-- more -->
+
+## 1 - What to know
+
+This is a post on the npm package known as glob that allows for matching files that fit a given glob pattern. Out of the box it is not a complete file system walker, but it is a great tool for making such a project with glob pattern support. For more information on file system walkers you might want to check out my [post on them](/2018/07/20/nodejs-ways-to-walk-a-file-system/) to know about some options that are all ready out there before making your own solution. In this post I am also using version 7.1.3 of glob.
 
 ## what are globs and the \* wildcard
 
