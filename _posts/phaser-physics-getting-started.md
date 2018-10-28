@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 314
-updated: 2018-10-28 16:13:43
-version: 1.2
+updated: 2018-10-28 16:14:57
+version: 1.3
 ---
 
-So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the physics engines it comes with.
+So there are javaScript projects that one can learn the ins and outs in just a few hours or a day or two, and then there are javaScript projects like [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) where it can take a good part of a month or even a whole lot longer just to get a good grasp about everything it has to offer before event starting to get into the [Physics Manager](https://photonstorm.github.io/phaser-ce/Phaser.Physics.html) it comes with.
 
 Now that I have covered a great deal about phaser when it comes to the basics such as state objects, groups, makijng sprite sheets with canvas it is time to get into some use case examples in which I am using the physics engines that come with phaser.
 
