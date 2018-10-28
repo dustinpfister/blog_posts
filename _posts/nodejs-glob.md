@@ -5,24 +5,24 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2017-12-03 12:06:02
-version: 1.5
+updated: 2018-10-28 09:08:00
+version: 1.6
 ---
 
-If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern, and the npm package [glob](
-https://www.npmjs.com/package/glob) is a great solution for selecting files in a workspace this way.
+If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use a \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern, and the npm package [glob](
+https://www.npmjs.com/package/glob) is a great solution for selecting files in a [node.js](https://nodejs.org/en/) environment.
 
 <!-- more -->
 
-## what are globs and the \* whildcard
+## what are globs and the \* wildcard
 
-It is a way of making use of a wildcard character \* to represent any string of characters so that:
+It is a way of making use of a wildcard character \* to represent zero or more characters so that:
 
 ```
 *.txt
 ```
 
-means any file with a .txt extension which will match helloworld.txt, and readme.txt, but not index.js in a given directory.
+Will match any file with a .txt extension which will match helloworld.txt, and readme.txt, but not index.js in a given directory. This is something that I have been using for years when it comes to filtering files in file system managers, command line interface terminals an so forth. Globs might be less powerful then regEx patterns, but for most use case seniors simplified glob patterns are still good enough to get the job done.
 
 ## Basic usage of glob in nodejs
 
