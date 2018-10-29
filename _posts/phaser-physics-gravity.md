@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 315
-updated: 2018-10-28 21:20:47
-version: 1.9
+updated: 2018-10-28 21:24:24
+version: 1.10
 ---
 
 As of late I am diving into expanding my content on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) and have gotten into the arcade physics engine. Todays post will be on [gravity](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#gravity), setting values for gravity is pretty straight forward if you just want to have all objects be pulled down to the ground. In that case all that is required is to set the sprite.body.gravity.y property to a desired value. However with other projects it can get a little complicated, so I have started this post for outlining some use case examples of gravity in phaser ce.
@@ -128,6 +128,8 @@ var createBallSheet = function (game) {
 
 ### 2.5 - Phaser.Game
 
+Now it is time to make it all work with a Phaser.Game instance and a state object. In the create method I call my createBallSheet, and CreateBall group methods, and call the updateGravity method in the update method as it must be called on each frame tick.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -141,16 +143,6 @@ game.state.add('ball-bounce', {
  
         createBallGroup(game);
  
-        // clear gravity of all balls
-        game.data.group.forEach(function (ball) {
- 
-            console.log(ball.body.gravity);
- 
-        });
- 
-        //var ball = game.data.group.children[0];
-        //ball.body.gravity.set(0, 0);
- 
     },
  
     update: function () {
@@ -163,3 +155,5 @@ game.state.add('ball-bounce', {
  
 game.state.start('ball-bounce');
 ```
+
+When I start this project the balls do act as expected as they end up moving to each other.
