@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 315
-updated: 2018-10-28 21:14:11
-version: 1.5
+updated: 2018-10-28 21:16:14
+version: 1.6
 ---
 
 As of late I am diving into expanding my content on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) and have gotten into the arcade physics engine. Todays post will be on [gravity](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#gravity), setting values for gravity is pretty straight forward if you just want to have all objects be pulled down to the ground. In that case all that is required is to set the sprite.body.gravity.y property to a desired value. However with other projects it can get a little complicated, so I have started this post for outlining some use case examples of gravity in phaser ce.
@@ -26,6 +26,8 @@ In this post I am using phaser Community Edition 2.11.1 of [phaser](https://phas
 For this example I have two balls and I want them to attract together depending on there distance from each other. So for this example I will want to work out some kind of method where the gravity property is changed on every frame tick.
 
 ### 2.1 - The update Gravity method
+
+Here is the update gravity method that I worked out. I just start by making sure that the gravity properties for each ball are set to zero for starters. Then I go threw each ball and add to there gravity properties based on the distance and angle to each other.
 
 ```js
 var updateGravity = function (game) {
