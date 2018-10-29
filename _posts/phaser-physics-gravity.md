@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 315
-updated: 2018-10-28 21:08:48
-version: 1.3
+updated: 2018-10-28 21:11:22
+version: 1.4
 ---
 
 As of late I am diving into expanding my content on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) and have gotten into the arcade physics engine. Todays post will be on [gravity](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#gravity), setting values for gravity is pretty straight forward if you just want to have all objects be pulled down to the ground. In that case all that is required is to set the sprite.body.gravity.y property to a desired value. However with other projects it can get a little complicated, so I have started this post for outlining some use case examples of gravity in phaser ce.
@@ -21,6 +21,10 @@ This is a post on setting gravity for physics enabled sprites in phaser ce. This
 
 In this post I am using phaser Community Edition 2.11.1 of [phaser](https://phaser.io/)
 
+## 2 - Two or more Balls in a group
+
+
+### 2.1 - The update Gravity method
 
 ```js
 var updateGravity = function (game) {
@@ -46,6 +50,8 @@ var updateGravity = function (game) {
 };
 ```
 
+### 2.2 - The make mall helper
+
 ```js
 var makeBall = function (game) {
  
@@ -63,6 +69,8 @@ var makeBall = function (game) {
  
 };
 ```
+
+### 2.3 - The create Ball Group helper
 
 ```js
 var createBallGroup = function (game) {
@@ -91,6 +99,8 @@ var createBallGroup = function (game) {
 };
 ```
 
+### 2.4 - Create a Ball sprite sheet with canvas
+
 ```js
 var createBallSheet = function (game) {
     var canvas = document.createElement('canvas');
@@ -106,6 +116,8 @@ var createBallSheet = function (game) {
     game.cache.addSpriteSheet('sheet-ball', null, canvas, 32, 32, 1, 0, 0);
 };
 ```
+
+### 2.5 - Phaser.Game
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
