@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 315
-updated: 2018-10-28 21:05:53
-version: 1.1
+updated: 2018-10-28 21:07:59
+version: 1.2
 ---
 
 As of late I am diving into expanding my content on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) and have gotten into the arcade physics engine. Todays post will be on gravity, setting values for gravity is pretty straight forward if you just want to have all objects be pulled down to the ground. In that case all that is required is to set the sprite.body.gravity.y property to a desired value. However with other projects it can get a little complicated, so I have started this post for outlining some use case examples of gravity in phaser ce.
@@ -14,6 +14,12 @@ As of late I am diving into expanding my content on [phaser ce](https://photonst
 <!-- more -->
 
 ## 1 - What to know before continuing.
+
+This is a post on setting gravity for physics enabled sprites in phaser ce. This is not a getting started post on phaser ce, or javaScript in general.
+
+### 1.1 - This is a phase ce 2.x post
+
+In this post I am using phaser Community Edition 2.11.1 of phaser
 
 
 ```js
