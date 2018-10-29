@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 315
-updated: 2018-10-28 21:24:24
-version: 1.10
+updated: 2018-10-28 21:26:05
+version: 1.11
 ---
 
 As of late I am diving into expanding my content on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) and have gotten into the arcade physics engine. Todays post will be on [gravity](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#gravity), setting values for gravity is pretty straight forward if you just want to have all objects be pulled down to the ground. In that case all that is required is to set the sprite.body.gravity.y property to a desired value. However with other projects it can get a little complicated, so I have started this post for outlining some use case examples of gravity in phaser ce.
@@ -157,3 +157,7 @@ game.state.start('ball-bounce');
 ```
 
 When I start this project the balls do act as expected as they end up moving to each other.
+
+## 3 - Conclusion
+
+Just touching base on this topic for now with this one example. If I continue investing more time into these phaser posts I might come around to update and expand this in the not to distance future.
