@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 316
-updated: 2018-10-29 20:23:20
-version: 1.8
+updated: 2018-10-29 20:26:06
+version: 1.9
 ---
 
 For todays post on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) I thought I would play around with acceleration. Doing so with phaser ce is just a matter of setting point values for the instance of Phaser.Point at Sprite.body.acceleration in a physics enabled Sprite. In this post I will be covering a simple silly use case example of how to go about working with acceleration in phaser ce, and also touch base on some other important tools available in the framework for doing so.
@@ -87,6 +87,8 @@ var createBallSheet = function (game) {
 ```
 
 ### 2.4 - The Phaser.Game instance
+
+Now that I have everything worked out I just need to get it all working with a Phaser.Game instance, and a single state object. I call my CreateBallSheet, and createBall methods in the create method of a state object to set things up. In addition I of course call my updateAccleration method in the update method as well.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
