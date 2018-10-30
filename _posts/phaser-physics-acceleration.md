@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 316
-updated: 2018-10-29 20:26:06
-version: 1.9
+updated: 2018-10-29 20:37:04
+version: 1.10
 ---
 
 For todays post on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) I thought I would play around with acceleration. Doing so with phaser ce is just a matter of setting point values for the instance of Phaser.Point at Sprite.body.acceleration in a physics enabled Sprite. In this post I will be covering a simple silly use case example of how to go about working with acceleration in phaser ce, and also touch base on some other important tools available in the framework for doing so.
@@ -129,3 +129,5 @@ game.state.start('ball-bounce');
 ```
 
 ## 3 - Conclusion
+
+Acceleration is one of many other factors to take into account when starting to play with physics in phaser ce. As I work on expanding and improving my content on phaser I will likely want to expand more on this post on a later date, and provide at least one more example involving acceleration in phaser ce. If you have any suggestions for an additional example, let me know in the comments, and that you for reading.
