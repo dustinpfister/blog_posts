@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 316
-updated: 2018-10-29 20:22:20
-version: 1.7
+updated: 2018-10-29 20:23:20
+version: 1.8
 ---
 
 For todays post on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) I thought I would play around with acceleration. Doing so with phaser ce is just a matter of setting point values for the instance of Phaser.Point at Sprite.body.acceleration in a physics enabled Sprite. In this post I will be covering a simple silly use case example of how to go about working with acceleration in phaser ce, and also touch base on some other important tools available in the framework for doing so.
@@ -66,7 +66,9 @@ var createBall = function (game) {
 };
 ```
 
-### 2.3 -
+### 2.3 - Create the Ball Sprite Sheet
+
+Here I am creating a simple sprite sheet to be used to skin the sprite with.
 
 ```js
 var createBallSheet = function (game) {
@@ -84,7 +86,7 @@ var createBallSheet = function (game) {
 };
 ```
 
-### 2.4 -
+### 2.4 - The Phaser.Game instance
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
