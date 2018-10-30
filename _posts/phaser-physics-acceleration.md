@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 316
-updated: 2018-10-29 20:59:44
-version: 1.11
+updated: 2018-10-29 21:02:56
+version: 1.12
 ---
 
 For todays post on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) I thought I would play around with [acceleration](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#acceleration). Doing so with phaser ce is just a matter of setting point values for the instance of Phaser.Point at Sprite.body.acceleration in a physics enabled Sprite. In this post I will be covering a simple silly use case example of how to go about working with acceleration in phaser ce, and also touch base on some other important tools available in the framework for doing so.
@@ -23,7 +23,7 @@ In this post I am using phaser community edition 2.11.1 of [phaser](http://phase
 
 ## 2 -  Accelerating a ball based on distance from a point
 
-In this example I am changing acceleration of a ball based on the distance and angle to another point of reference at the center of the game world. So in the post on top of using the Phaser.Point instance at Sprite.body.acceleration, I am also using Point methods like Point.angle, and Point.distance as well. This does not aim to be a practical example, just an exercise. In game projects acceleration is something that might be set with user input, or hitting a power up of some kind. In any case it will involve setting values at the Point instance at Sprite.body.acceleration.
+In this example I am changing acceleration of a ball based on the distance and angle to another point of reference at the center of the game world. So in the post on top of using the Phaser.Point instance at Sprite.body.acceleration, I am also using Point methods like [Point.angle](/2018/08/19/phaser-point-angle-between-two-sprites/), and Point.distance as well. This does not aim to be a practical example, just an exercise. In game projects acceleration is something that might be set with user input, or hitting a power up of some kind. In any case it will involve setting values at the Point instance at Sprite.body.acceleration.
 
 ### 2.1 - The updateAccleration method
 
