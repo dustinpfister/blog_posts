@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 316
-updated: 2018-10-29 19:59:52
-version: 1.2
+updated: 2018-10-29 20:01:08
+version: 1.3
 ---
 
 For todays post on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) I thought I would play around with acceleration. Doing so with phaser ce is just a matter of setting point values for the instance of Phaser.Point at Sprite.body.acceleration in a physics enabled Sprite. In this post I will be covering a simple silly use case example of how to go about working with acceleration in phaser ce, and also touch base on some other important tools available in the framework for doing so.
@@ -16,6 +16,10 @@ For todays post on [phaser ce](https://photonstorm.github.io/phaser-ce/index.htm
 ## 1 - What to know before continuing.
 
 This is a post on setting acceleration for a sprite physics body in phaser ce. It is not a getting started post on physics in phaser ce, a getting started post with phaser, or with javaScript in general. To gain anything of value from this post it is important to start with the basics first, there is a whole lot to be aware with in phaser before starting to get into the arcade physics engine.
+
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser community edition 2.11.1 of [phaser](http://phaser.io/).
 
 
 ```js
