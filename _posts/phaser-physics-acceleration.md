@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 316
-updated: 2018-10-29 20:01:08
-version: 1.3
+updated: 2018-10-29 20:10:08
+version: 1.4
 ---
 
 For todays post on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) I thought I would play around with acceleration. Doing so with phaser ce is just a matter of setting point values for the instance of Phaser.Point at Sprite.body.acceleration in a physics enabled Sprite. In this post I will be covering a simple silly use case example of how to go about working with acceleration in phaser ce, and also touch base on some other important tools available in the framework for doing so.
@@ -21,6 +21,10 @@ This is a post on setting acceleration for a sprite physics body in phaser ce. I
 
 In this post I am using phaser community edition 2.11.1 of [phaser](http://phaser.io/).
 
+## 2 -  Accelerating a ball based on distance from a point
+
+
+### 2.1 - The updateAccleration method
 
 ```js
 // a method to update acceleration based an angle and distance to a center point
@@ -36,6 +40,8 @@ var updateAcceleration = function (game) {
  
 };
 ```
+
+### 2.2 -
 
 ```js
 var createBall = function (game) {
@@ -55,6 +61,8 @@ var createBall = function (game) {
 };
 ```
 
+### 2.3 -
+
 ```js
 var createBallSheet = function (game) {
     var canvas = document.createElement('canvas');
@@ -70,6 +78,8 @@ var createBallSheet = function (game) {
     game.cache.addSpriteSheet('sheet-ball', null, canvas, 32, 32, 1, 0, 0);
 };
 ```
+
+### 2.4 -
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -108,3 +118,5 @@ game.state.add('ball-bounce', {
  
 game.state.start('ball-bounce');
 ```
+
+## 3 - Conclusion
