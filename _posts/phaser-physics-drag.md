@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-10-31 21:46:32
-version: 1.1
+updated: 2018-10-31 21:53:55
+version: 1.2
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects.
@@ -15,6 +15,9 @@ For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/inde
 
 ## 1 - What to know before continuing.
 
+## 2 - A Cannon ball example using drag
+
+### 2.1 - The update Drag method
 
 ```js
 var updateDrag = function (game) {
@@ -48,6 +51,8 @@ var updateDrag = function (game) {
  
 };
 ```
+
+### 2.2 - The launchBall method
 
 ```js
 var launchBall = function (game) {
@@ -93,6 +98,8 @@ var launchBall = function (game) {
 };
 ```
 
+### 2.3 - Make The launch pad sprite
+
 ```js
 var mkLaunchPad = function (game) {
  
@@ -123,6 +130,8 @@ var mkLaunchPad = function (game) {
 };
 ```
 
+### 2.4 - make the Cannon sprite
+
 ```js
 var mkCannonSprite = function (game) {
  
@@ -138,6 +147,8 @@ var mkCannonSprite = function (game) {
  
 };
 ```
+
+### 2.5 - Make the Ball Sprite
 
 ```js
 var mkBallSprite = function (game) {
@@ -159,6 +170,8 @@ var mkBallSprite = function (game) {
 };
 ```
 
+### 2.6 - Make a Graphics Object for drawing lines
+
 ```js
 var mkGFX = function (game) {
  
@@ -169,6 +182,8 @@ var mkGFX = function (game) {
  
 };
 ```
+
+#### 2.6.1 - Draw Grid Lines
 
 ```js
 var drawGridLines = function (game) {
@@ -200,6 +215,8 @@ var drawGridLines = function (game) {
 };
 ```
 
+#### 2.6.2 - Draw Launch Lines
+
 ```js
 var drawLaunchLines = function (game) {
  
@@ -224,6 +241,8 @@ var drawLaunchLines = function (game) {
 };
 ```
 
+### 2.7 - Create the launch Object
+
 ```js
 var createLauncher = function (game, cannon) {
  
@@ -245,6 +264,8 @@ var createLauncher = function (game, cannon) {
  
 };
 ```
+
+### 2.8 - Create Sprite Sheets
 
 ```js
 var createBallSheet = function (game) {
@@ -273,6 +294,8 @@ var createCannonSheet = function (game) {
     game.cache.addSpriteSheet('sheet-cannon', null, canvas, 32, 32, 1, 0, 0);
 };
 ```
+
+### 2.9 - Phaser.Game
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
