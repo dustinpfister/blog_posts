@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-10-31 21:53:55
-version: 1.2
+updated: 2018-10-31 21:56:29
+version: 1.3
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects.
@@ -14,6 +14,10 @@ For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/inde
 <!-- more -->
 
 ## 1 - What to know before continuing.
+
+In this post I am writing about an example that I made that makes use of drag using the built in arcade physics engine in phaser ce. This is not a getting started post on the arcade physics engine, or phaser in general. There are many aspects of the phaser ce game framework that are used in this post, and I will not be covering all of them.
+
+
 
 ## 2 - A Cannon ball example using drag
 
