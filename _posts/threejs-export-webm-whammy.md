@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2018-11-01 20:51:19
-version: 1.4
+updated: 2018-11-01 20:54:03
+version: 1.5
 ---
 
 It has been a few months sense I wrote any new content on [three.js](https://threejs.org/) which is a shame because this project does deserve more attention. Anyway when I am playing around with three.js I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable well supported [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share. To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis. In this post I will be outlining a simple example of doing just this using three.js, and whammy.
@@ -19,7 +19,7 @@ This is a post on exporting a three.js animation to webm using an additional jav
 
 ### 1.1 - Version numbers matter
 
-In th
+In this post I was using three.js r91,
 
 ## 2 - Exporting a simple rotating cube example
 
