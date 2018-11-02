@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-02 12:03:42
-version: 1.8
+updated: 2018-11-02 12:13:00
+version: 1.9
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -63,6 +63,10 @@ var updateDrag = function (game) {
 So I get the current body angle of the ball via Sprite.body.angle, and use that with its speed via Sprite.body.speed to set the drag of the ball. However in the event that the ball is rolling along the floor I do make sure that the drag is coming directly from the right using the onFloor method to find out if that should happen or not.
 
 ### 2.2 - The launchBall method
+
+So in this project when a cannon sprite is clicked it will cause the ball to launch from the cannon. So I will need a launchBall handler that will fire when the canon is clicked or when whatever cause the cannon to fire when making a user interface.
+
+So then in this method I set the position of the ball to the position of the cannon, revive the ball if it is in a dead state, have the camera follow the ball, and set the velocity of the ball based on certain values that are set before hand elsewhere.
 
 ```js
 var launchBall = function (game) {
