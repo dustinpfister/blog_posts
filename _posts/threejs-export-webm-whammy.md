@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2018-11-02 10:13:12
-version: 1.15
+updated: 2018-11-02 10:24:30
+version: 1.16
 ---
 
 It has been a few months sense I wrote any new content on [three.js](https://threejs.org/) which is a shame because this project does deserve more attention. Anyway when I am playing around with three.js I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable well supported [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share. To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis. In this post I will be outlining a simple example of doing just this using three.js, and whammy.
@@ -87,19 +87,21 @@ Once the animation is over, and all the frames have been added using the encoder
 
 ### 2.3 - The export Video method
 
-When the encoder is finished compiling, a callback will fire with a blob passed as the first argument for that callback.
+When the encoder is finished compiling, a callback will fire with a blob passed as the first argument for that callback. I Can then use the URL.createObjectURL method to convert the blob to a data url. This data url can then be used as the src attribute when making a video element.
 
 
 ```js
 // export video helper
 var exportVid = function (blob) {
-    const vid = document.createElement('video');
+    var vid = document.createElement('video');
     vid.src = URL.createObjectURL(blob);
     vid.loop = true;
     vid.controls = true;
     document.body.appendChild(vid);
 };
 ```
+
+I make sure to set the controls attribute to true, so that I can play the video element. In addition in chrome there is a download option for the video as well.
 
 ### 2.4 - The Three.js scene, camera, mesh, and renderer
 
