@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2018-11-01 20:56:21
-version: 1.6
+updated: 2018-11-01 20:57:39
+version: 1.7
 ---
 
 It has been a few months sense I wrote any new content on [three.js](https://threejs.org/) which is a shame because this project does deserve more attention. Anyway when I am playing around with three.js I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable well supported [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share. To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis. In this post I will be outlining a simple example of doing just this using three.js, and whammy.
@@ -23,7 +23,7 @@ In this post I was using three.js r91,
 
 ## 2 - Exporting a simple rotating cube example
 
-For the sake of keeping this post simple and to the point I will just be using a simple rotating cube example for this post. This will help to take the focus away from the animation and place it more so with the process of exporting an three.js animation to webm with whammy.
+For the sake of keeping this post simple and to the point I will just be using a simple rotating cube example for this post. This will help to take the focus away from the animation and place it more so with the process of exporting an three.js animation to webm with whammy. Uising whammy is fairly simple, but there are a few pitfalls that I have ran into. Nothing major, but I will be going over them here.
 
 ### 2.1 - Create Whammy instance, and setup some variables
 
@@ -33,7 +33,7 @@ var seconds = 20,
 fps = 12,
 i = 0,
 maxI = 240,
-encoder = new Whammy.Video(12);
+encoder = new Whammy.Video(fps);
 ```
 
 ### 2.2 - The animate method
