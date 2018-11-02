@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2018-11-01 21:06:01
-version: 1.8
+updated: 2018-11-01 21:10:40
+version: 1.9
 ---
 
 It has been a few months sense I wrote any new content on [three.js](https://threejs.org/) which is a shame because this project does deserve more attention. Anyway when I am playing around with three.js I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable well supported [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share. To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis. In this post I will be outlining a simple example of doing just this using three.js, and whammy.
@@ -27,12 +27,14 @@ For the sake of keeping this post simple and to the point I will just be using a
 
 ### 2.1 - Create Whammy instance, and setup some variables
 
+Once I have both whammy, and three.js included in my html with script tags, I start off by setting some variables that I will be using to help with the movement of the animation. Using whammy starts off by just calling the Whammy.Video constructor passing the desired frame rate for the exported video. This will return an encoder that I can use to add frames one by one in a render loop, and then them I am done I just need to call a compile method from this encoder.
+
 ```js
 // create encoder
 var seconds = 20,
 fps = 12,
 i = 0,
-maxI = 240,
+maxI = fps * seconds,
 encoder = new Whammy.Video(fps);
 ```
 
