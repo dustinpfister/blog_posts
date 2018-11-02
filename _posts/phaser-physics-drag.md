@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-02 12:01:39
-version: 1.7
+updated: 2018-11-02 12:03:42
+version: 1.8
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -60,7 +60,7 @@ var updateDrag = function (game) {
 };
 ```
 
-So I get the current body angle of the ball via Sprite.body.angle, and use that with its speed via Sprite.body.speed to set the drag of the ball. However in the event that the ball is rolling along the floor I do make sure that the drag is coming directly from the right using the onFloor method to find out if that shoudl happen or not.
+So I get the current body angle of the ball via Sprite.body.angle, and use that with its speed via Sprite.body.speed to set the drag of the ball. However in the event that the ball is rolling along the floor I do make sure that the drag is coming directly from the right using the onFloor method to find out if that should happen or not.
 
 ### 2.2 - The launchBall method
 
@@ -96,12 +96,6 @@ var launchBall = function (game) {
         ball.body.velocity.set(
             Math.cos(launch.angle) * power,
             Math.sin(launch.angle) * power);
- 
-        // gravity
-        ball.body.gravity.set(0, 100);
- 
-        // bounce
-        ball.body.bounce.set(.4, .4);
  
     }
  
@@ -176,6 +170,12 @@ var mkBallSprite = function (game) {
     game.physics.arcade.checkCollision.up = false;
     game.physics.arcade.checkCollision.left = false;
     game.physics.arcade.checkCollision.right = false;
+
+    // gravity
+    ball.body.gravity.set(0, 100);
+ 
+    // bounce
+    ball.body.bounce.set(.4, .4);
  
 };
 ```
