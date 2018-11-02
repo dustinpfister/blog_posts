@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-02 11:52:39
-version: 1.5
+updated: 2018-11-02 11:58:45
+version: 1.6
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -22,6 +22,10 @@ In this post I am writing about an example that I made that makes use of drag us
 For an example of using drag in phaser ce I thought a simple game prototype that is the beginnings of a cannon launch type game. You know one of those many games that have come out over the years that involve shooting something at a certain angle, and starting velocity. Where the object is typically to get what it is that is begging launched as far of a distance as possible. As such making a prototype of that kind of game might prove to be a good example of not just using drag, but other aspects of physics as well such as gravity, and velocity.
 
 ### 2.1 - The update Drag method
+
+Here I have a method that I worked out that will be used to update drag on each frame tick. There are a few methods that will be called before this is used, so when calling this method in the update method of the game state it will not be grabbing at undefined values for the cannon ball and so forth.
+
+I could just set drag in a way in which it is just fixed, always coming from one direction. The nice thing about game development is that all that really matters is how game play turns out, and realism is not always that important, unless for some reason it is. Still I decided that if I am going to make a post in which I am writing about drag I should make some complex example that updates drag on each tick, changing the direction of drag as the ball changes direction.
 
 ```js
 var updateDrag = function (game) {
