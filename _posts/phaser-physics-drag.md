@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-04 08:33:48
-version: 1.31
+updated: 2018-11-04 08:40:52
+version: 1.32
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -178,13 +178,6 @@ var mkBallSprite = function (game) {
     // enable physics
     game.physics.enable(ball);
  
-    // ball collides with only down bounds
-    ball.body.collideWorldBounds = true;
-    game.physics.arcade.checkCollision.down = true;
-    game.physics.arcade.checkCollision.up = false;
-    game.physics.arcade.checkCollision.left = false;
-    game.physics.arcade.checkCollision.right = false;
-
     // gravity
     ball.body.gravity.set(0, 100);
  
@@ -287,9 +280,6 @@ var createLauncher = function (game, cannon) {
     launch.active = false;
     launch.maxPower = 500;
  
-    // no bounds for camera
-    game.camera.bounds = null;
- 
     mkCannonSprite(game);
     mkGFX(game);
     mkBallSprite(game);
@@ -346,6 +336,15 @@ game.state.add('ball-bounce', {
         createCannonSheet(game);
         createLauncher(game);
         drawLaunchLines(game);
+ 
+        // no bounds for camera
+        game.camera.bounds = null;
+ 
+        // only have collision for the down boundary of the game world
+        game.physics.arcade.checkCollision.down = true;
+        game.physics.arcade.checkCollision.up = false;
+        game.physics.arcade.checkCollision.left = false;
+        game.physics.arcade.checkCollision.right = false;
  
         // create display text
         var disp = game.data.disp = game.add.text(0, 0, '', {
