@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-04 08:43:39
-version: 1.33
+updated: 2018-11-04 08:46:07
+version: 1.34
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -381,3 +381,5 @@ I also of course call my updateDrag method for each frame tick, and draw the gir
 ## 3 - Conclusion
 
 So setting drag is just a matter of coming up with the proper x and y values that can then be set to a sprites physics body. Coming up with those values depends on how it is that I want drag to behave. With some projects just setting simple static values will work just fine, for other projects in which I want to simulate wind or something to that effect a more complex solution will need to be used.
+
+This project could use a fair amount of fine tuning, and maybe I will get around to it if this post gets some traction. If you would like for me to give this project some more attention, or if you have any questions or concerns be sure to let me know in the comments. In any case thank you for reading, and have fun with physics and phaser.
