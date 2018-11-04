@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 320
-updated: 2018-11-04 12:03:15
-version: 1.8
+updated: 2018-11-04 12:08:55
+version: 1.9
 ---
 
 So for the past few months I have been expanding, and updating  my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) the javaScript powered game framework, and have discovered that I do not have a post on the Point Class in general. Having a solid grasp on this class is important because it's use comes up a lot throughout the framework with anything and everything that has to do with a single point in a 2d [coordinate system](https://en.wikipedia.org/wiki/Coordinate_system). So in this post I will be going over some simple examples, as well as more advanced examples of the Point class in phaser ce, and link off into other relevant posts on this Class and it's many important and useful methods.
@@ -75,3 +75,9 @@ thing.rotate(center.x, center.y, 45, true, 100);
  
 console.log(Math.floor(thing.x), Math.floor(thing.y)); // 0 100
 ```
+
+## 5 - Conclusion
+
+So working with Points in phaser is a fairly easy and straight forward process once you become aware of how to go about using the class to help make quick work of common programming tasks with Points.
+
+As I write more posts and update older content on phaser I will update this post with more examples, and links to additional content on working with Points in phaser ce. If you feel as though something is missing, mentioning it in the comments will help expedite the process of expanding this content. I have a lot of content on phaser, and posts that get the most traction do take higher priority when it comes to revision.
