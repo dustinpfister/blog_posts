@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 320
-updated: 2018-11-04 11:40:51
-version: 1.5
+updated: 2018-11-04 11:54:24
+version: 1.6
 ---
 
 So for the past few months I have been expanding, and updating  my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) the javaScript powered game framework, and have discovered that I do not have a post on the Point Class in general. Having a solid grasp on this class is important because it's use comes up a lot throughout the framework with anything and everything that has to do with a single point in a 2d [coordinate system](https://en.wikipedia.org/wiki/Coordinate_system). So in this post I will be going over some simple examples, as well as more advanced examples of the Point class in phaser ce, and link off into other relevant posts on this Class and it's many important and useful methods.
@@ -47,7 +47,16 @@ console.log( angle / Math.PI * 180); // 45
 
 /2018/08/19/phaser-point-angle-between-two-sprites/
 
-## 3 - Rotating one point around another
+## 3 - Getting the distance between two points
+
+```js
+var pt1 = new Phaser.Point(10, 10),
+pt2 = new Phaser.Point(90, 10)
+ 
+console.log( 'distance: ' + pt1.distance(pt2) ); // 'distance: 80';
+```
+
+## 4 - Rotating one point around another
 
 I [wrote a post on this using Point.rotate](/2018/08/20/phaser-point-rotate-sprite-around-another/) but I will also cover it beirfly here as well.
 
