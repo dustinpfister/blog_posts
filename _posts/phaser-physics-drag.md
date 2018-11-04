@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-04 07:59:30
-version: 1.19
+updated: 2018-11-04 08:00:24
+version: 1.20
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -330,6 +330,8 @@ var createCannonSheet = function (game) {
 ```
 
 ### 2.9 - Phaser.Game
+
+So now it is time to get this project working with a Phaser.Game instance.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
