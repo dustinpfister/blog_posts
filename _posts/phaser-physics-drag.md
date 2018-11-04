@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-04 08:11:47
-version: 1.23
+updated: 2018-11-04 08:14:33
+version: 1.24
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -196,7 +196,7 @@ var mkBallSprite = function (game) {
 
 ### 2.6 - Make a Graphics Object for drawing lines
 
-So I will want to draw some lines so I know the current direction and angle that I will be launching the ball, so I will want to make a graphics object for that.
+So I will want to draw some lines so I know the current direction and angle that I will be launching the ball, so I will want to make a [graphics object](/2017/10/21/phaser-graphics/) for that. Graphics objects are great for drawing on the fly graphics that involve drawing lines, and simple shapes that need to be updated on a per frame basic rather than just a single still image. So in this project a Graphics display object will work great for drawing the lines that will show the direction, and current launch power of the ball when it will be launched.
 
 ```js
 var mkGFX = function (game) {
