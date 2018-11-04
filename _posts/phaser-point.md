@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 320
-updated: 2018-11-04 11:54:24
-version: 1.6
+updated: 2018-11-04 11:59:20
+version: 1.7
 ---
 
 So for the past few months I have been expanding, and updating  my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) the javaScript powered game framework, and have discovered that I do not have a post on the Point Class in general. Having a solid grasp on this class is important because it's use comes up a lot throughout the framework with anything and everything that has to do with a single point in a 2d [coordinate system](https://en.wikipedia.org/wiki/Coordinate_system). So in this post I will be going over some simple examples, as well as more advanced examples of the Point class in phaser ce, and link off into other relevant posts on this Class and it's many important and useful methods.
@@ -38,14 +38,14 @@ In addition to prototype methods there are also static methods that can be used 
 
 ## 2 - Getting the angle between two points
 
+So a very common task when working with points is to find the distance between two points. So of course for this there is the [Point.angle](/2018/08/19/phaser-point-angle-between-two-sprites/) method. This method can be used as a prototype method off an instance of Phaser.Point or as a stand alone static method like with this example here.
+
 ```js
 // very basic
 var angle = Phaser.Point.angle({x:0,y:0},{x:10,y:10});
 console.log( angle );  // 0.7853981633974483
 console.log( angle / Math.PI * 180); // 45
 ```
-
-/2018/08/19/phaser-point-angle-between-two-sprites/
 
 ## 3 - Getting the distance between two points
 
