@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-04 08:14:33
-version: 1.24
+updated: 2018-11-04 08:19:45
+version: 1.25
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -211,7 +211,7 @@ var mkGFX = function (game) {
 
 #### 2.6.1 - Draw Grid Lines
 
-This draw method will be used with the graphics object when the ball is launched. It draws grid lines so that I know that the ball is in motion, otherwise it will just be a black background.
+This draw method will be used with the graphics object when the ball is launched. It draws grid lines so that I know that the ball is in motion, otherwise it will just be a black background. Because I am using a graphics object I went with this draw method that will be used with the graphics object rather than the [create.grid method](/2018/10/07/phaser-create-grid/) that could be used to create a texture that could be used with a sprite. In any case this grid solution will help to show reduction in speed as a result of the drag taking effect once that ball launches.
 
 ```js
 var drawGridLines = function (game) {
