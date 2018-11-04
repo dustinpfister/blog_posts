@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 320
-updated: 2018-11-03 20:40:11
-version: 1.3
+updated: 2018-11-04 11:33:58
+version: 1.4
 ---
 
 So for the past few months I have been expanding, and updating  my content on [Phaser ce](https://photonstorm.github.io/phaser-ce/) the javaScript powered game framework, and have discovered that I do not have a post on the Point Class in general. Having a solid grasp on this class is important because it's use comes up a lot throughout the framework with anything and everything that has to do with a single point in a 2d [coordinate system](https://en.wikipedia.org/wiki/Coordinate_system). So in this post I will be going over some simple examples, as well as more advanced examples of the Point class in phaser ce, and link off into other relevant posts on this Class and it's many important and useful methods.
@@ -35,3 +35,21 @@ console.log(angle / Math.PI * 180); // 45
 ```
 
 In addition to prototype methods there are also static methods that can be used as well without having to create point instances first.
+
+## 3 - 
+
+## 5 - Rotating one point around another
+
+I [wrote a post on this using Point.rotate](/2018/08/20/phaser-point-rotate-sprite-around-another/) but I will also cover it beirfly here as well.
+
+```js
+// objects for centerPoint, and a thing that
+// I want to rotate around it.
+var thing = new Phaser.Point(100, 100),
+center = new Phaser.Point(0, 0);
+ 
+// Using the prototype method
+thing.rotate(center.x, center.y, 45, true, 100);
+ 
+console.log(Math.floor(thing.x), Math.floor(thing.y)); // 0 100
+```
