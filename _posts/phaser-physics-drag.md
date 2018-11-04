@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-02 12:13:00
-version: 1.9
+updated: 2018-11-03 20:54:02
+version: 1.10
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -15,7 +15,9 @@ For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/inde
 
 ## 1 - What to know before continuing.
 
-In this post I am writing about an example that I made that makes use of drag using the built in arcade physics engine in phaser ce. This is not a getting started post on the arcade physics engine, or phaser in general. There are many aspects of the phaser ce game framework that are used in this post, and I will not be covering all of them.
+In this post I am writing about an example that I made that makes use of drag using the built in arcade physics engine in phaser ce. This is not a getting started post on the arcade physics engine, or phaser in general. There are many aspects of the phaser ce game framework that are used in this post, and I will not be covering all of them. The drag property is an instance of [Phaser.Point](/2018/11/03/phaser-point/) so I can use the set method or user the x and y properties to set the values for drag.
+
+
 
 ## 2 - A Cannon ball example using drag
 
@@ -23,7 +25,7 @@ For an example of using drag in phaser ce I thought a simple game prototype that
 
 ### 2.1 - The update Drag method
 
-Here I have a method that I worked out that will be used to update drag on each frame tick. There are a few methods that will be called before this is used, so when calling this method in the update method of the game state it will not be grabbing at undefined values for the cannon ball and so forth.
+Here I have a method that I worked out that will be used to update drag on each frame tick. There are a few methods that will be called before this is used, so when calling this method in the update method of the game state it will not be grabbing at undefined values for the cannon ball and so forth. 
 
 I could just set drag in a way in which it is just fixed, always coming from one direction. The nice thing about game development is that all that really matters is how game play turns out, and realism is not always that important, unless for some reason it is. Still I decided that if I am going to make a post in which I am writing about drag I should make some complex example that updates drag on each tick, changing the direction of drag as the ball changes direction.
 
