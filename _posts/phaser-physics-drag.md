@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 317
-updated: 2018-11-03 21:01:27
-version: 1.13
+updated: 2018-11-03 21:11:57
+version: 1.14
 ---
 
 For many projects using [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there will come a time now and then where it will be necessary to set some air resistance or drag for physics enabled display objects. In this post I will be coving the use of the body.drag property of the arcade physics engine in phaser ce, as a way to set drag for a physics body.
@@ -165,6 +165,8 @@ var mkCannonSprite = function (game) {
 ```
 
 ### 2.5 - Make the Ball Sprite
+
+So then I need to make the ball sprite as well. Here I enable physics for the ball sprite, and set gravity, and bounce for the sprite as well.
 
 ```js
 var mkBallSprite = function (game) {
