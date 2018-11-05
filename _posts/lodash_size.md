@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 321
-updated: 2018-11-04 19:51:53
-version: 1.7
+updated: 2018-11-04 20:09:05
+version: 1.8
 ---
 
 Getting the length of an array is a trivial matter in javaScript, but then there is getting the length of Objects that is a little not so trivial. In [lodash](https://lodash.com/) there is the [\_.size](https://lodash.com/docs/4.17.10#size) that is a collection method that will work with both arrays, and objects to return the element length of an array, or the number of enumerable properties of a plain old object. In this post I will be quickly covering the \_.size method, but will also be going over vanilla js solutions for doing this as well.
@@ -70,3 +70,7 @@ var b = {
 };
 console.log(Object.keys(b).length); // 4
 ```
+
+### 3.3 - Getting the key length of both enumerable and non-enumerable object own properties
+
+So both \_.size, and Object.keys(obj).length only return enumerable keys in an non array like object.
