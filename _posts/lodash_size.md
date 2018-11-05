@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 321
-updated: 2018-11-04 20:09:05
-version: 1.8
+updated: 2018-11-04 20:13:51
+version: 1.9
 ---
 
 Getting the length of an array is a trivial matter in javaScript, but then there is getting the length of Objects that is a little not so trivial. In [lodash](https://lodash.com/) there is the [\_.size](https://lodash.com/docs/4.17.10#size) that is a collection method that will work with both arrays, and objects to return the element length of an array, or the number of enumerable properties of a plain old object. In this post I will be quickly covering the \_.size method, but will also be going over vanilla js solutions for doing this as well.
@@ -31,7 +31,7 @@ When an array is passed to \_.size the element length of that array is returned.
 
 ```js
 // array element length
-var a = [1, 2, 3, 4];
+let a = [1, 2, 3, 4];
 console.log(_.size(a)); // 4
 
 ### 2.2 - \_.size with an Object that does not have a length property
@@ -40,7 +40,7 @@ If a plain object without a length property is given to \_.size the enumerable k
 
 ```js
 // Object key length
-var b = {
+let b = {
     a: 1,
     b: 2,
     c: 3,
@@ -56,13 +56,13 @@ Although the \_.size method nice in that it is a robust collection method that w
 ### 3.1 - The Array length Property
 
 ```js
-var a = [1, 2, 3, 4];
+let a = [1, 2, 3, 4];
 console.log(a.length); // 4
 
 ### 3.2 - Object.keys
 
 ```js
-var b = {
+let b = {
     a: 1,
     b: 2,
     c: 3,
@@ -71,6 +71,34 @@ var b = {
 console.log(Object.keys(b).length); // 4
 ```
 
-### 3.3 - Getting the key length of both enumerable and non-enumerable object own properties
+### 3.3 - Object.getOwnPropertyNames(obj).length for getting the key length of both enumerable and non-enumerable object own properties
 
-So both \_.size, and Object.keys(obj).length only return enumerable keys in an non array like object.
+So both \_.size, and Object.keys(obj).length only return enumerable keys in an non array like object. If I am dealing with an object that has non-enumerable properties the full key length of the objects own properties can be obtained by using the Object.getOwnPropertyNames static Object method in native javaScript.
+
+```js
+let obj = {
+    visible: 'I count'
+};
+ 
+Object.defineProperty(obj, 'hidden', {
+ 
+    value: 'I do not count',
+    writable: false,
+ 
+    // default is false actually
+    // just putting this here to be explicit
+    enumerable: false
+ 
+});
+ 
+console.log(obj.hidden); // I count
+console.log(obj.visible); // I do not count
+ 
+// _.size or Object.keys(obj).length 
+// will only return enumerable lengths
+console.log(_.size(obj)); // 1
+console.log(Object.keys(obj).length); // 1
+ 
+// so there is Object.getOwnPropertyNames()
+console.log( Object.getOwnPropertyNames(obj).length ); // 2
+```
