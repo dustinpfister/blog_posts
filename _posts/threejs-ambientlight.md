@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2018-11-05 20:02:32
-version: 1.6
+updated: 2018-11-06 14:08:10
+version: 1.7
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from other light sources in that it will evenly illuminate materials even;y from all directions. This is very different from spot lights or point lights that radiant out light from a certain point in space and only illuminate surfaces that strike the surfaces that they come in contact with.
@@ -48,3 +48,7 @@ renderer.setSize(320, 240);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+## 3 - Conclusion
+
+Ambient light is just on way of adding some light to a scene in general. It will result in light evenly hitting all surfaces of all objects in the scene, this differs from other options when it comes to lighting in three.js such as spotlights.
