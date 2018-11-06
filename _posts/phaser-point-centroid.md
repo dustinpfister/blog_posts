@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 322
-updated: 2018-11-05 19:45:27
-version: 1.5
+updated: 2018-11-05 19:46:58
+version: 1.6
 ---
 
-In todays post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be covering the Point.centroid method than can be used to quickly get the arithmetic average of an array of Phaser.Point instances in the form on a single Phaser.Point instance. This might come of use in certain projects where such a point is of interest.
+In todays post on [Phaser ce](https://photonstorm.github.io/phaser-ce/) I will be covering the [Point.centroid](https://photonstorm.github.io/phaser-ce/Phaser.Point.html#_centroid) method than can be used to quickly get the arithmetic average of an array of Phaser.Point instances in the form on a single Phaser.Point instance. This might come of use in certain projects where such a point is of interest.
 
 <!-- more -->
 
