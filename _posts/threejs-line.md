@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2018-04-22 19:02:22
-version: 1.6
+updated: 2018-11-07 09:25:59
+version: 1.7
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d. 
@@ -145,8 +145,3 @@ Read my [full post on using canvas to make a texture](/2018/04/17/threejs-canvas
 If you are familiar with the 2d canvas drawing api that can be used to draw 2d lines by making a texture using a canvas element. I have [written a post](/2018/04/17/threejs-canvas-texture/) on this that covers how to do this in detail.
 
 How it is done in a nut shell is to use the 2d canvas drawing context line methods to draw a line like normal, then pass the canvas to the Texture constructor, or better yet the CanvasTexture constructor that is put in place for this specific purpose. The texture can then be used with a material that is used in a Mesh. The Mesh can then use any geometry that will have one or more faces that will make use of the texture.
-
-
-
-## Conclusion
-
