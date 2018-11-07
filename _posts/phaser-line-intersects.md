@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 323
-updated: 2018-11-06 19:52:08
-version: 1.4
+updated: 2018-11-06 19:53:58
+version: 1.5
 ---
 
 When making a game with [Phaser ce](https://photonstorm.github.io/phaser-ce/) some projects may involve working with lines. Ither for the sake of making graphics, or for the sake of working out game mechanics. When using lines to work out mechanics there os often a need to find out if one line intersects with another line, or with a rectangle area. For this there is the [Phaser.Line.intersects](https://photonstorm.github.io/phaser-ce/Phaser.Line.html#_intersects), and [Phaser.Line.intersectsRectangle](https://photonstorm.github.io/phaser-ce/Phaser.Line.html#_intersectsRectangle) static [Phaser.Line](/2017/10/28/phaser-line/) methods. In this post I will be outlining some examples of using these methods to find line intersection points.
@@ -35,6 +35,8 @@ console.log(intersect.x, intersect.y); // 10 75
 ```
 
 ## 3 - Basic example of Phaser.Line.intersectsRectangle
+
+For a basic example of the rectangle method as well that is in the Line Class I made a quick example involving a [graphics object](/2017/10/21/phaser-graphics/).
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
