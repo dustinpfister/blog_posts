@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 70
-updated: 2018-11-06 20:17:22
-version: 1.7
+updated: 2018-11-06 20:21:05
+version: 1.8
 ---
 
 In my effort to make a [great series of posts](/categories/phaser/) on [phaser](http://phaser.io/), it is only a matter of time until I started writing on how to make on the fly graphics in phaser. This is something that I often want to do in the early stages of a project where I just want to know the location of what will eventually be a sprite, or even a project with no external assets which can happen sometimes with something pretty simple.
@@ -19,7 +19,7 @@ So this will be a quick how to get started with graphics in phaser post, but als
 
 This is a post on graphics objects in phaser ce, which is a kind of display object like a sprite only it can be used for making graphics on the fly without the use of an external sprite sheet. There are a few other ways of making textures without the use of an external sprite sheet, such as using canvas to do so, there is also the create.texture method as well. However graphics might be one of the best options for when I am making a graphics that need to be updated on each frame tick, and involve some match to do so rather than static frames in a sprite sheet. In any case Graphics objects are one of a few kinds of display objects that a phaser ce developer should be aware of.
 
-## A phaser graphics hello world example (Graphics.drawCircle)
+## 2 - A phaser graphics hello world example (Graphics.drawCircle)
 
 I often start off my posts by giving a quick, simple hello world example of how to get started with something, then everything else is often just different mutations of that example . For graphics I went with just drawing a circle in the center of the canvas. So this will also be an example of the [Graphics.drawCircle](http://phaser.io/docs/2.6.2/Phaser.Graphics.html#drawCircle) method.
 
@@ -50,13 +50,11 @@ Calling game.add.graphics will return an instance of [Graphics](http://phaser.io
 
 So every time I want to do something with graphics in phaser the first thing to do is create a new Graphics display object by calling game.add.graphics, then I use the methods and properties that are provided in that instance of Graphics to create whatever it is that I want. 
 
-## Graphics.beginFill(color, alpha), and Graphics.endFill()
+## 3 - Graphics.beginFill(color, alpha), and Graphics.endFill()
 
 Not much to say these methods are of course what need to be called in order to start, and end a fill operation. I can set both the color and alpha values with the two arguments that can be given to beginFill, and endFill has no arguments, it is just used to end a fill operation.
 
-As you should 
-
-## Drawing a box with Graphics.drawRect()
+## 4 - Drawing a box with Graphics.drawRect()
 
 If not drawing a circle, another very common shape to work with when making a game is of corse a box or rectangle like object. Doing this in phaser is not all that more complicated, I just need to use the [Graphics.drawRect](http://phaser.io/docs/2.6.2/Phaser.Graphics.html#drawRect) method.
 
@@ -79,7 +77,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
 });
 ```
 
-## Drawing lines With Graphics.moveTo, and Graphics.lineTo
+## 5 - Drawing lines With Graphics.moveTo, and Graphics.lineTo
 
 Drawing lines is pretty easy, it just involves a certain combination of calls to moveTo, and line to. I use moveTo to just move the drawing position, and lineTo t actually draw a line.
 
@@ -106,7 +104,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
     });
 ```
 
-## Working with polygons with Graphics.drawPolygon
+## 6 - Working with polygons with Graphics.drawPolygon
 
 Check out my [full post on working with polygons](/2017/10/22/phaser-graphics-polygon/) in phaser. When it comes to working with Graphics.drawPolygon it is all about how you make an array of points first, then it is just a matter of passing that array to the method.
 
@@ -130,8 +128,6 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 );
 ```
 
-## Conclusion
+## 7 - Conclusion
 
 There is a lot to cover with graphics in phaser, this post alone is not going to do it justice, hopefully it has helped you getting started if you did not know how before hand. I will be updating this post, as well as a whole lot more of them as my work on phaser continues.
-
-{% phaser_bottom %}
