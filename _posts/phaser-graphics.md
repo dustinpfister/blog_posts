@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 70
-updated: 2018-11-06 20:12:41
-version: 1.6
+updated: 2018-11-06 20:17:22
+version: 1.7
 ---
 
 In my effort to make a [great series of posts](/categories/phaser/) on [phaser](http://phaser.io/), it is only a matter of time until I started writing on how to make on the fly graphics in phaser. This is something that I often want to do in the early stages of a project where I just want to know the location of what will eventually be a sprite, or even a project with no external assets which can happen sometimes with something pretty simple.
@@ -15,9 +15,9 @@ So this will be a quick how to get started with graphics in phaser post, but als
 
 <!-- more -->
 
-{% phaser_top %}
+## 1 - what to know
 
-{% phaser_if_new_mess %}
+This is a post on graphics objects in phaser ce, which is a kind of display object like a sprite only it can be used for making graphics on the fly without the use of an external sprite sheet. There are a few other ways of making textures without the use of an external sprite sheet, such as using canvas to do so, there is also the create.texture method as well. However graphics might be one of the best options for when I am making a graphics that need to be updated on each frame tick, and involve some match to do so rather than static frames in a sprite sheet. In any case Graphics objects are one of a few kinds of display objects that a phaser ce developer should be aware of.
 
 ## A phaser graphics hello world example (Graphics.drawCircle)
 
