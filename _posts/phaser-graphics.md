@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 70
-updated: 2017-10-22 13:49:00
-version: 1.5
+updated: 2018-11-06 20:12:41
+version: 1.6
 ---
 
 In my effort to make a [great series of posts](/categories/phaser/) on [phaser](http://phaser.io/), it is only a matter of time until I started writing on how to make on the fly graphics in phaser. This is something that I often want to do in the early stages of a project where I just want to know the location of what will eventually be a sprite, or even a project with no external assets which can happen sometimes with something pretty simple.
@@ -24,22 +24,26 @@ So this will be a quick how to get started with graphics in phaser post, but als
 I often start off my posts by giving a quick, simple hello world example of how to get started with something, then everything else is often just different mutations of that example . For graphics I went with just drawing a circle in the center of the canvas. So this will also be an example of the [Graphics.drawCircle](http://phaser.io/docs/2.6.2/Phaser.Graphics.html#drawCircle) method.
 
 ```js
-var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-        // create method
-        create : function () {
+game.state.add('game', {
  
-            // add a graphics object to the world
-            var cir = game.add.graphics(game.world.centerX, game.world.centerY);
+    // create method
+    create: function () {
  
-            // make it a green circle
-            cir.beginFill(0x00ff00);
-            cir.drawCircle(0, 0, 100);
-            cir.endFill();
+        // add a graphics object to the world
+        var cir = game.add.graphics(game.world.centerX, game.world.centerY);
  
-        }
+        // make it a green circle
+        cir.beginFill(0x00ff00);
+        cir.drawCircle(0, 0, 100);
+        cir.endFill();
+ 
+    }
  
 });
+ 
+game.state.start('game');
 ```
 
 Calling game.add.graphics will return an instance of [Graphics](http://phaser.io/docs/2.6.2/Phaser.Graphics.html), which has many properties and methods for making on the fly graphics. Here we are just starting with Graphics.beginFill, Graphics.drawCircle, and Graphics.endFill.
