@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 70
-updated: 2018-11-06 20:25:38
-version: 1.9
+updated: 2018-11-06 20:27:56
+version: 1.10
 ---
 
 In my effort to make a [great series of posts](/categories/phaser/) on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), it is only a matter of time until I started writing on how to make on the fly graphics in phaser. This is something that I often want to do in the early stages of a project where I just want to know the location of what will eventually be a sprite, or even a project with no external assets which can happen sometimes with something pretty simple.
@@ -83,7 +83,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
 
 ## 5 - Drawing lines With Graphics.moveTo, and Graphics.lineTo
 
-Drawing lines is pretty easy, it just involves a certain combination of calls to moveTo, and line to. I use moveTo to just move the drawing position, and lineTo t actually draw a line.
+Drawing lines is pretty easy, it just involves a certain combination of calls to moveTo, and line to. I use moveTo to just move the drawing position, and lineTo t actually draw a line. I [wrote a post on graphics and lines](/2017/10/22/phaser-graphics-lineto/) in which I cover doing this in greater detail as well.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', {
