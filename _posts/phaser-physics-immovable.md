@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-08 14:40:25
-version: 1.1
+updated: 2018-11-08 17:14:37
+version: 1.2
 ---
 
-[phaser ce](https://photonstorm.github.io/phaser-ce/index.html)
+When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
 
 <!-- more -->
 
