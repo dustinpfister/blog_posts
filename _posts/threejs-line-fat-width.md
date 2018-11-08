@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2018-11-08 07:56:56
-version: 1.10
+updated: 2018-11-08 07:59:09
+version: 1.11
 ---
 
 When playing around with lines in [three.js](https://threejs.org/) it would be nice to set the width of lines. Although there is a linewidth property of the lineBasicMaterial, on most platforms any width other than the default value of 1 will not work anyway. However looking over the examples at the three.js site there are some official additional resources that can be used to make think lines that seems to work just fine.
@@ -120,7 +120,7 @@ var createFatLine = function (opt) {
 
 ### 2.2 - Pull it all together
 
-So now that I have my two helper methods I can now use them in a project. Here I created a three.js project using the WebGLRenderer, and append the dom element of the renderer to an element in my html. I then create a scene, and a camera as well like normal. In addition I also am using the official three.js orbit controls in this post as well, which is another external file that can be added to a project.
+So now that I have my two helper methods I can now use them in a project. Here I created a three.js project using the WebGLRenderer, and append the dom element of the renderer to an element in my html. I then create a scene, and a camera as well like normal. In addition I also am using the official [three.js orbit controls](/2018/04/13/threejs-orbit-controls/) in this post as well, which is another external file that can be added to a project.
 
 ```js
 (function () {
