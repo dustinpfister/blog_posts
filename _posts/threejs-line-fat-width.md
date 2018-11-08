@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2018-11-08 07:41:15
-version: 1.8
+updated: 2018-11-08 07:53:10
+version: 1.9
 ---
 
 When playing around with lines in [three.js](https://threejs.org/) it would be nice to set the width of lines. Although there is a linewidth property of the lineBasicMaterial, on most platforms any width other than the default value of 1 will not work anyway. However looking over the examples at the three.js site there are some official additional resources that can be used to make think lines that seems to work just fine.
@@ -95,6 +95,8 @@ var createFatLineGeometry = function (opt) {
 ```
 
 ## 2.1 - The cretaeFatLine helper
+
+This helper makes use of a geometry made with the createFatLineGemomety helper, using it with a material made with the LineMaterial class to return an instance of Line2.
 
 ```js
 var createFatLine = function (opt) {
