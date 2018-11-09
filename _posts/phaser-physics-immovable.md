@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-08 20:06:13
-version: 1.9
+updated: 2018-11-08 20:10:42
+version: 1.10
 ---
 
 When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
@@ -70,7 +70,9 @@ var mkGroup = function (game) {
 };
 ```
 
-### 2.3 - making a sprite sheet with canvas
+### 2.3 - Making a sprite sheet with canvas
+
+Here I have a method that will add a simple sprite sheet using canvas as a way to do so rather than bothering with an external sprite sheet.
 
 ```js
 // just make a simple block sheet
