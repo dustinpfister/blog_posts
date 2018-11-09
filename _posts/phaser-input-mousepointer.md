@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 61
-updated: 2018-11-09 18:04:29
-version: 1.11
+updated: 2018-11-09 18:08:12
+version: 1.12
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, unless I am making some kind of true idle game, will often need to accept input from a user somehow. When making a desktop game, the mouse is often something of interest. As such this post will cover how to work with a mouse pointer object that has current values from the mouse via [game.input.mousePointer](https://photonstorm.github.io/phaser-ce/Phaser.Input.html#mousePointer).
@@ -48,6 +48,8 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea',
 just playing around with this simple demo, you should notice some values of the pointer object such as the position, and duration if the mouse button is down.
 
 ## 3 - Follow the mouse pointer example
+
+In this example I made a sprite follow the mouse pointer. This makes use of the withinGame property of the mouse pointer object so that when the mouse leaves the canvas the sprite goes back to a home location else it follows the mouse pointer. In this example I also make use of some very impoartant Phaser.Point properties as well, mainly Point.angle, and Point.distance. These point methods are used to find both the angle and distance to the mouse pointer, or the home location for that matter.
 
 ```js
 var followPointer = function (game, sprite) {
