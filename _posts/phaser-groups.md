@@ -5,17 +5,19 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-11-08 20:06:12
-version: 1.18
+updated: 2018-11-08 20:07:17
+version: 1.19
 ---
 
-So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
+So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about [groups](https://photonstorm.github.io/phaser-ce/Phaser.Group.html) in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
 
 <!-- more -->
 
 ## 1 - What to know before continuing
 
 There is a great deal to know about phaser ce, as well as javaScript in general before hand. In this post I am writing just about the Phaser.Group Constructor, and even then I am not covering all bases with that, this is just a getting started post on Groups. Phaser is a fairly complex project, and it will take time to get up to speed with it, however it is worth the investment, because it goes without saying that this is one of the more fun, and exciting javaScript projects out on the open Internet.
+
+### 1.1 - 
 
 ## 2 - Some Basic examples of groups
 
