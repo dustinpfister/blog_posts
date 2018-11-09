@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-08 20:20:49
-version: 1.13
+updated: 2018-11-08 20:23:45
+version: 1.14
 ---
 
 When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
@@ -135,3 +135,5 @@ game.state.start('demo');
 ```
 
 ## 3 - Conclusion
+
+Setting a sprite as immovable is a fairly straight forward process of just setting the proper boolean in the body object true.
