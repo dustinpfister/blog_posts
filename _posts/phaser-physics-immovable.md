@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-08 20:11:41
-version: 1.11
+updated: 2018-11-08 20:15:46
+version: 1.12
 ---
 
 When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
@@ -98,6 +98,8 @@ var mkBlockSheet = function (game) {
 
 ### 2.4 - The Phaser.game instance
 
+Now it is time to pull it all together with a Phaser.game instance and a state object. Here I create the sprite sheet, the immovaabul sprite, and the group of sprites in the create method of the single state object.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -131,3 +133,5 @@ game.state.add('demo', {
  
 game.state.start('demo');
 ```
+
+## 3 - Conclusion
