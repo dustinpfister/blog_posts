@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 61
-updated: 2018-11-09 18:17:04
-version: 1.16
+updated: 2018-11-09 18:19:44
+version: 1.17
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, unless I am making some kind of true idle game, will often need to accept input from a user somehow. When making a desktop game, the mouse is often something of interest. As such this post will cover how to work with a mouse pointer object that has current values from the mouse via [game.input.mousePointer](https://photonstorm.github.io/phaser-ce/Phaser.Input.html#mousePointer).
@@ -105,6 +105,10 @@ var createBallSheet = function (game) {
     game.cache.addSpriteSheet('sheet-ball', null, canvas, 32, 32, 1, 0, 0);
 };
 ```
+
+### 3.3 - The Phaser.Game instance
+
+Now it is time to pull everything together in the create method of a state object. In the create method I call my createBallSheet method that gives me the sprite sheet that I will then use when creating the sprite that will follow the mouse pointer.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
