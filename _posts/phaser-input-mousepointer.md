@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 61
-updated: 2018-11-09 18:19:44
-version: 1.17
+updated: 2018-11-09 18:22:17
+version: 1.18
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, unless I am making some kind of true idle game, will often need to accept input from a user somehow. When making a desktop game, the mouse is often something of interest. As such this post will cover how to work with a mouse pointer object that has current values from the mouse via [game.input.mousePointer](https://photonstorm.github.io/phaser-ce/Phaser.Input.html#mousePointer).
@@ -195,4 +195,4 @@ I will not cover pointer objects in detail here, that will be fore another post.
 
 ## 5 - Conclusion
 
-There is a whole lot more on just input in phaser, this post and many more on it will be updated as my content grows
+The mouse pointer object is fine to use in situations in which I just want to reference the mouse pointer, and only the mouse pointer. Also it is useful for pulling the current state of the mouse pointer, so if I want to attach an event instead it is not going to healp with that.
