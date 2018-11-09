@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 61
-updated: 2018-11-09 13:08:58
-version: 1.10
+updated: 2018-11-09 18:04:29
+version: 1.11
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, unless I am making some kind of true idle game, will often need to accept input from a user somehow. When making a desktop game, the mouse is often something of interest. As such this post will cover how to work with a mouse pointer object that has current values from the mouse via [game.input.mousePointer](https://photonstorm.github.io/phaser-ce/Phaser.Input.html#mousePointer).
@@ -27,7 +27,7 @@ In this post I am using phaser ce 2.11.1 of [phaser](https://phaser.io/).
 
 The current [pointer object](/2017/10/17/phaser-input-pointer-objects/) for the mouse can be found at game.input.mousePointer. On a desktop system this is always there to work with when you want to do something involving the mouse.
 
-## 2 - phaser mouse pointer hello world
+## 2 - Phaser mouse pointer hello world
 
 The debug feature of phaser can be used if you just quickly want to know what is up with the current values in the pointer object at game.input.mousePointer
 
@@ -47,7 +47,86 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea',
 
 just playing around with this simple demo, you should notice some values of the pointer object such as the position, and duration if the mouse button is down.
 
-## 3 - Mouse is down
+## 3 - Follow the mouse pointer example
+
+```js
+var followPointer = function (game, sprite) {
+ 
+    // the mouse pointer
+    var pt = game.input.mousePointer,
+    home = {
+        x: game.world.centerX,
+        y: game.world.centerY
+    },
+    angle,
+    distance,
+    power;
+ 
+    if (pt.withinGame) {
+        // if the mouse is in the canvas go there
+        angle = sprite.position.angle(pt);
+        distance = sprite.position.distance(pt);
+    } else {
+        // else go home
+        angle = sprite.position.angle(home);
+        distance = sprite.position.distance(home);
+    }
+ 
+    // set velocity of the sprite
+    power = distance / 150;
+    power = power > 1 ? 1 : power;
+    sprite.body.velocity.set(Math.cos(angle) * 200 * power, Math.sin(angle) * 200 * power);
+ 
+};
+```
+
+```js
+var createBallSheet = function (game) {
+    var canvas = document.createElement('canvas');
+    ctx = canvas.getContext('2d');
+    canvas.width = 32;
+    canvas.height = 32;
+    ctx.strokeStyle = 'white';
+    ctx.fillStyle = '#8f0000';
+    ctx.beginPath();
+    ctx.arc(16.5, 16.5, 15, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    game.cache.addSpriteSheet('sheet-ball', null, canvas, 32, 32, 1, 0, 0);
+};
+```
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('follow-pointer', {
+ 
+    create: function () {
+ 
+        var data = game.data = {};
+ 
+        createBallSheet(game);
+ 
+        var sprite = game.data.sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'sheet-ball');
+        sprite.anchor.set(0.5, 0.5);
+        game.physics.enable(sprite);
+ 
+    },
+    update: function () {
+ 
+        var pt = game.input.mousePointer,
+        sprite = game.data.sprite;
+ 
+        followPointer(game, sprite);
+ 
+    }
+ 
+});
+ 
+game.state.start('follow-pointer');
+```
+
+## 4 - Mouse is down
 
 Now that I know where to look for current mouse values, I would like to do something with that data. Maybe just another quick demo where I am just testing things out with a mouse pointer object. Something like changing text data when the mouse button is down.
 
@@ -100,6 +179,6 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', {
 
 I will not cover pointer objects in detail here, that will be fore another post. However in the above example I am using pointerObject.timeDown to help me find how long the mouse button has been pressed down, a common value of interest in a lot of games.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 There is a whole lot more on just input in phaser, this post and many more on it will be updated as my content grows
