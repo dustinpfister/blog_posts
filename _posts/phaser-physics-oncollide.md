@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-09 10:00:37
-version: 1.2
+updated: 2018-11-09 10:04:15
+version: 1.3
 ---
 
 When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) a common topic that comes up a lot is dealing with collision, there is detecting if a collision has occurred, and then there is doing something with that collision event. In this post I will be coving an examples of both using the default arcade physics engine in phaser ce. However the focus on this post will be on the body.onCollide event and how to use that to do something in the event of a collision.
@@ -14,6 +14,8 @@ When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/inde
 <!-- more -->
 
 ## 1 - What to know before continuing.
+
+This is a post on using the body.onCollide event with an instance of Phaser.signal. So in other words this is one of many posts on using the phaser ce default physics engine, and is not a getting started post on phaser ce. In this post I will be making use of many phaser ce features that I cover in other phaser ce posts of mine, I will try my best to link to other relevant content as needed.
 
 
 ```js
