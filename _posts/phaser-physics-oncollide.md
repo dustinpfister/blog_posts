@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-09 12:45:43
-version: 1.14
+updated: 2018-11-09 12:47:46
+version: 1.15
 ---
 
 When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) a common topic that comes up a lot is dealing with collision, there is detecting if a collision has occurred, and then there is doing something with that collision event. In this post I will be coving an examples of both using the default arcade physics engine in phaser ce. However the focus on this post will be on the [body.onCollide](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#onCollide) event and how to use that to do something in the event of a collision.
@@ -159,3 +159,5 @@ game.state.start('ball-bounce');
 ```
 
 ## 3 - Conclusion
+
+So using body.onCollide is a great way to set up one or more events that are to be fired when a sprite collides with another sprite. It goes without saying that this can be very useful when working with most projects that involve sprites moving around an colliding with each other.
