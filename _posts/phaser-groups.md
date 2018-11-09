@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 269
-updated: 2018-08-26 12:41:18
-version: 1.17
+updated: 2018-11-08 20:06:12
+version: 1.18
 ---
 
 So in many games you end up with one or more collections or groups of sprites. In this case there is a need for all kinds of methods that help with managing that group of display objects. In todays post I will be writing about grops in [Phaser ce](https://photonstorm.github.io/phaser-ce/). There are many methods, and properties with groups, so this will be just a simple getting started post on groups for now.
@@ -23,7 +23,7 @@ In this section I will be covering some basic examples of using groups in a phas
 
 ### 2.1 - Just creating a Group, and adding a single child
 
-So for starters a very basic example might be to juts create a single Group instance, and add a single display object to it. To do this I just need to call game.add.group, and save the reference to it in a variable. At which point I can add a display object to the group with the add method of the Group instance.
+So for starters a very basic example might be to just create a single Group instance, and add a single display object to it. To do this I just need to call game.add.group, and save the reference to it in a variable. At which point I can add a display object to the group with the add method of the Group instance.
 
 ```js
 // create a group with game.add.group
