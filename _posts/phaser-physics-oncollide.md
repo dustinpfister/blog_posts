@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-09 12:41:32
-version: 1.12
+updated: 2018-11-09 12:44:21
+version: 1.13
 ---
 
 When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) a common topic that comes up a lot is dealing with collision, there is detecting if a collision has occurred, and then there is doing something with that collision event. In this post I will be coving an examples of both using the default arcade physics engine in phaser ce. However the focus on this post will be on the [body.onCollide](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#onCollide) event and how to use that to do something in the event of a collision.
@@ -104,6 +104,8 @@ var createBlockSheet = function (game) {
 ```
 
 ### 2.4 - The Phaser.Game instance
+
+So now that I have my helpers worked out it is time to use them with a [Phaser.Game](/2017/10/11/phaser-main-game-constructor/), and [state Object](/2017/10/06/phaser-state-objects/). In the create method I call my helpers to set everything up, and also make a [text object](/2017/10/14/phaser-text/) to display the status of the blocks health.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
