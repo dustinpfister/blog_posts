@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-09 12:23:21
-version: 1.9
+updated: 2018-11-09 12:36:29
+version: 1.10
 ---
 
 When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) a common topic that comes up a lot is dealing with collision, there is detecting if a collision has occurred, and then there is doing something with that collision event. In this post I will be coving an examples of both using the default arcade physics engine in phaser ce. However the focus on this post will be on the [body.onCollide](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#onCollide) event and how to use that to do something in the event of a collision.
@@ -55,7 +55,7 @@ var createBall = function (game) {
 
 ### 2.2 - The create Block helper
 
-So then I will also want a helper that ca be used to quickly create the block sprite that will be used for this example as well. Here I am not doing anything that special just creating the sprite, setting health for the sprite, and enabling physics for it as well. I will be setting the block as immovable, this will make it so that when the ball hits the block sprite that block sprite will not bounce back.
+So then I will also want a helper that ca be used to quickly create the block sprite that will be used for this example as well. Here I am not doing anything that special just creating the sprite, setting health for the sprite, and enabling physics for it as well. I will be setting the block as [immovable](/2018/11/08/phaser-physics-immovable/), this will make it so that when the ball hits the block sprite that block sprite will not bounce back.
 
 ```js
 var createBlock = function (game) {
