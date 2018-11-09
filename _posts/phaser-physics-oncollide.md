@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-09 10:08:23
-version: 1.5
+updated: 2018-11-09 11:47:53
+version: 1.6
 ---
 
 When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) a common topic that comes up a lot is dealing with collision, there is detecting if a collision has occurred, and then there is doing something with that collision event. In this post I will be coving an examples of both using the default arcade physics engine in phaser ce. However the focus on this post will be on the [body.onCollide](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#onCollide) event and how to use that to do something in the event of a collision.
@@ -19,6 +19,8 @@ This is a post on using the body.onCollide event with an instance of Phaser.sign
 
 
 ## 2 - Basic example of onCollide
+
+For this basic example of body.onCollide I mad a quick project that involves a ball sprite that falls down onto a block, and when it hits the block it does damage to it. The block can be destroyed, and also re-spawn as well. Nothing to interesting but it will serve the purpose of demonstrating the use of the body.collide property just fine.
 
 
 ### 2.1 - The create ball helper
