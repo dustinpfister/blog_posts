@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-08 20:02:50
-version: 1.8
+updated: 2018-11-08 20:06:13
+version: 1.9
 ---
 
 When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
@@ -41,7 +41,7 @@ var mkImmovable = function (game) {
 
 ### 2.2 - Making a group of sprites
 
-Here I have a method that will be used to create a group of sprites.
+Here I have a method that will be used to create a [group of sprites](/2018/08/24/phaser-groups/).
 
 ```js
 var mkGroup = function (game) {
