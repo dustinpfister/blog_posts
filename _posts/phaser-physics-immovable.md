@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-08 20:00:09
-version: 1.6
+updated: 2018-11-08 20:02:15
+version: 1.7
 ---
 
 When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
@@ -22,6 +22,8 @@ This is a post on making display objects not move when hit by another display ob
 For this example I made a quick project that involves an immovable sprite that is placed at the center of the game world, and a bunch of sprites that move around the rest of the screen wrapping back around when the leave the bounds of the game world, and of course bounce off the immovable object when they hit it.
 
 ### 2.1 - making an immovable sprite
+
+Here I have a helper method that will be used to make the immovable sprite. When I call this it will add the sprite to a game.data object that I create in the state object later. Making a sprite immovable is as simple as just setting the body.immovable boolean to true after physics have been enabled for the sprite.
 
 ```js
 var mkImmovable = function (game) {
