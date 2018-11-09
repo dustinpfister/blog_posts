@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 61
-updated: 2018-11-09 18:22:17
-version: 1.18
+updated: 2018-11-09 18:40:27
+version: 1.19
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, unless I am making some kind of true idle game, will often need to accept input from a user somehow. When making a desktop game, the mouse is often something of interest. As such this post will cover how to work with a mouse pointer object that has current values from the mouse via [game.input.mousePointer](https://photonstorm.github.io/phaser-ce/Phaser.Input.html#mousePointer).
@@ -32,17 +32,15 @@ The current [pointer object](/2017/10/17/phaser-input-pointer-objects/) for the 
 The debug feature of phaser can be used if you just quickly want to know what is up with the current values in the pointer object at game.input.mousePointer
 
 ```js
-var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', 
-    {
+game.state.add('hello-world', {
  
-        render : function () {
+    render: function () {
  
-            game.debug.pointer(game.input.mousePointer);
- 
-        }
+        game.debug.pointer(game.input.mousePointer);
  
     }
-);
+ 
+});
 ```
 
 just playing around with this simple demo, you should notice some values of the pointer object such as the position, and duration if the mouse button is down.
@@ -146,53 +144,49 @@ Now that I know where to look for current mouse values, I would like to do somet
 
 ```js
 var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', {
+game.state.add('mouse-down', {
  
-        create : function () {
+    create: function () {
  
-            var st = {
-                fill : '#ffffff',
-                font : '15px courier'
-            };
+        var st = {
+            fill: '#ffffff',
+            font: '15px courier'
+        };
  
-            game.add.text(20, 20, 'tx0', st);
-            game.add.text(20, 40, 'tx1', st);
+        game.add.text(20, 20, 'tx0', st);
+        game.add.text(20, 40, 'tx1', st);
  
-        },
+    },
  
-        update : function () {
+    update: function () {
  
-            var pt = game.input.mousePointer,
-            time,
-            tx = game.world.children;
+        var pt = game.input.mousePointer,
+        time,
+        tx = game.world.children;
  
-            if (pt.isDown) {
+        if (pt.isDown) {
  
-                // time can be found thanks to pt.timeDown
-                time = new Date() - pt.timeDown;
+            // time can be found thanks to pt.timeDown
+            time = new Date() - pt.timeDown;
  
-                tx[0].text = 'mouse is down!';
-                tx[1].text = time;
+            tx[0].text = 'mouse is down!';
+            tx[1].text = time;
  
-            } else {
+        } else {
  
-                tx[0].text = 'mouse is not down.';
-                tx[1].text = '';
- 
-            }
- 
-        },
- 
-        render : function () {
- 
-            //game.debug.pointer(game.input.mousePointer);
+            tx[0].text = 'mouse is not down.';
+            tx[1].text = '';
  
         }
  
-    });
+    }
+ 
+});
+game.state.start('mouse-down');
 ```
 
 I will not cover pointer objects in detail here, that will be fore another post. However in the above example I am using pointerObject.timeDown to help me find how long the mouse button has been pressed down, a common value of interest in a lot of games.
 
 ## 5 - Conclusion
 
-The mouse pointer object is fine to use in situations in which I just want to reference the mouse pointer, and only the mouse pointer. Also it is useful for pulling the current state of the mouse pointer, so if I want to attach an event instead it is not going to healp with that.
+The mouse pointer object is fine to use in situations in which I just want to reference the mouse pointer, and only the mouse pointer. Also it is useful for pulling the current state of the mouse pointer, so if I want to attach an event instead it is not going to help with that.
