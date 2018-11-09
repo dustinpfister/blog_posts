@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-09 10:05:35
-version: 1.4
+updated: 2018-11-09 10:08:23
+version: 1.5
 ---
 
 When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) a common topic that comes up a lot is dealing with collision, there is detecting if a collision has occurred, and then there is doing something with that collision event. In this post I will be coving an examples of both using the default arcade physics engine in phaser ce. However the focus on this post will be on the [body.onCollide](https://photonstorm.github.io/phaser-ce/Phaser.Physics.Arcade.Body.html#onCollide) event and how to use that to do something in the event of a collision.
@@ -17,6 +17,11 @@ When making a game with [phaser ce](https://photonstorm.github.io/phaser-ce/inde
 
 This is a post on using the body.onCollide event with an instance of Phaser.signal. So in other words this is one of many posts on using the phaser ce default physics engine, and is not a getting started post on phaser ce. In this post I will be making use of many phaser ce features that I cover in other phaser ce posts of mine, I will try my best to link to other relevant content as needed.
 
+
+## 2 - Basic example of onCollide
+
+
+### 2.1 - The create ball helper
 
 ```js
 var createBall = function (game) {
@@ -42,6 +47,8 @@ var createBall = function (game) {
 };
 ```
 
+### 2.2 - The create Block helper
+
 ```js
 var createBlock = function (game) {
  
@@ -55,6 +62,8 @@ var createBlock = function (game) {
  
 };
 ```
+
+### 2.3 - Create Sprite sheets with canvas
 
 ```js
 var createBallSheet = function (game) {
@@ -83,6 +92,8 @@ var createBlockSheet = function (game) {
     game.cache.addSpriteSheet('sheet-block', null, canvas, 64, 16, 1, 0, 0);
 };
 ```
+
+### 2.4 - The Phaser.Game instance
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -132,3 +143,5 @@ game.state.add('ball-bounce', {
  
 game.state.start('ball-bounce');
 ```
+
+## 3 - Conclusion
