@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 326
-updated: 2018-11-08 20:26:28
-version: 1.15
+updated: 2018-11-09 09:30:01
+version: 1.16
 ---
 
 When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
@@ -117,13 +117,13 @@ game.state.add('demo', {
  
     update: function () {
  
-        game.data.group.forEach(function (gfx) {
+        game.data.group.forEach(function (sprite) {
  
-            gfx.x = Phaser.Math.wrap(gfx.x, -8, game.world.width + 8);
-            gfx.y = Phaser.Math.wrap(gfx.y, -8, game.world.height + 8);
+            sprite.x = Phaser.Math.wrap(sprite.x, -8, game.world.width + 8);
+            sprite.y = Phaser.Math.wrap(sprite.y, -8, game.world.height + 8);
  
-            game.physics.arcade.collide(gfx, game.data.group);
-            game.physics.arcade.collide(gfx, game.data.immovable);
+            game.physics.arcade.collide(sprite, game.data.group);
+            game.physics.arcade.collide(sprite, game.data.immovable);
  
         });
  
