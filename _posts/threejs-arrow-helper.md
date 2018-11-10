@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2018-11-10 10:07:13
-version: 1.2
+updated: 2018-11-10 10:11:34
+version: 1.3
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick bit on arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects. The [THREE.ArrowHelper](https://threejs.org/docs/#api/en/helpers/ArrowHelper) constructor is one such helper that can be used for visualizing directions in three.js.
@@ -14,6 +14,12 @@ For todays post on [three.js](https://threejs.org/) I thought I would write a qu
 <!-- more -->
 
 ## 1 - What to know
+
+This is a post on using the built in arrow helpers in three.js to get a visual on directions. This is a fairly simple post but it is still not a getting started post on three.js, let alone javaScript in general.
+
+### 1.1 - Version numbers matter
+
+In this post I am using revision 98 of three.js, which was released in late October 2018. Three.js is still a project that is being developed, and at a fairly fast rate with new revisions continuing out what seems like every month.
 
 ### 2 - Example of ArrowHelper
 
