@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2018-11-10 11:15:54
-version: 1.4
+updated: 2018-11-10 12:07:00
+version: 1.5
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick bit on arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects. The [THREE.ArrowHelper](https://threejs.org/docs/#api/en/helpers/ArrowHelper) constructor is one such helper that can be used for visualizing directions in three.js.
@@ -56,6 +56,8 @@ renderer.render(scene, camera);
 ```
 
 ### 2.1 - Change direction
+
+It might also be of interest in how to go about changing direction of the arrow helper when working out an animation of some kind or anything to that effect. For this there is the setDirection method of the arrow helper instance.
 
 ```js
 var frame = 0,
