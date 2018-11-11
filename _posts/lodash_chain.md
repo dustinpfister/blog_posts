@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 3328
-updated: 2018-11-11 11:03:02
-version: 1.5
+updated: 2018-11-11 11:06:17
+version: 1.6
 ---
 
 So when working out a javaScript project it may often be a good idea to chain functions together so that what is returned by one method becomes what another method acts on. In [lodash](https://lodash.com/) there is the \_.chain method that can be used to create what are called  explicit method chain sequences, as well as the \_() function that when called can be used to create implicit method chain sequences that work in a similar fashion to what you may all ready be familiar with whe it comes to chaining vanilla js native methods. Although this is a lodash post I will be covering chaining with, and without lodash in this post.
@@ -19,7 +19,7 @@ Chaining methods is useful for taking a whole bunch of different steps and combi
 
 ## 2 - Explicit Chaining with \_.chain
 
-When doing so it results in wrapping the value for explicit chaining. Functions that return arrays, collections, functions, and values of any kind can then be chained together. However in order to unwrap the chain the \_/value method must be called.
+When passing a value to \_.chain the returned result is a wrapped value ready for explicit chaining. Functions that return arrays, collections, functions, and values of any kind can then be chained together. However once done in order to unwrap the chain the \_.value method must be called.
 
 ```js
 let arr = _.chain([1, 2, 3, 4])
