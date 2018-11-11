@@ -1,0 +1,16 @@
+---
+title: Chaining functions in javaScript with lodash or not
+date: 2018-11-11 08:41:00
+tags: [js,lodash]
+layout: post
+categories: lodash
+id: 3328
+updated: 2018-11-11 08:47:00
+version: 1.0
+---
+
+So when working out a javaScript project it may often be a good idea to chain functions together so that what is returned by one method becomes what another method acts on. In [lodash](https://lodash.com/) there is the \_.chain method that can be used to create what are called  explicit method chain sequences, as well as the \_() function that when called can be used to create implicit method chain sequences that work in a simular fashion to what you may all ready be familiar with whe it comes to chaining vanilla js native methods. Although this is a lodash post I will be covering chaining with, and without lodash in this post.
+
+<!-- more -->
+
+## 1 - What to know
