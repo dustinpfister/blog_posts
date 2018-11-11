@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 3328
-updated: 2018-11-11 10:19:10
-version: 1.4
+updated: 2018-11-11 11:03:02
+version: 1.5
 ---
 
 So when working out a javaScript project it may often be a good idea to chain functions together so that what is returned by one method becomes what another method acts on. In [lodash](https://lodash.com/) there is the \_.chain method that can be used to create what are called  explicit method chain sequences, as well as the \_() function that when called can be used to create implicit method chain sequences that work in a similar fashion to what you may all ready be familiar with whe it comes to chaining vanilla js native methods. Although this is a lodash post I will be covering chaining with, and without lodash in this post.
@@ -19,7 +19,7 @@ Chaining methods is useful for taking a whole bunch of different steps and combi
 
 ## 2 - Explicit Chaining with \_.chain
 
-Many of the methods in lodash are properties of the underscore variable that is added to the global name space when using lodash. However the underscore variable is a function rather than just a plain old object, and as such it can be called and passed a value. When doing so it results in wrapping the value for explicit chaining. Functions that return arrays, collections, functions, and values of any kind can then be chained together. However in order to unwrap the chain the \_/value method must be called.
+When doing so it results in wrapping the value for explicit chaining. Functions that return arrays, collections, functions, and values of any kind can then be chained together. However in order to unwrap the chain the \_/value method must be called.
 
 ```js
 let arr = _.chain([1, 2, 3, 4])
@@ -42,7 +42,9 @@ console.log(arr.value()); // 24
 
 This type of chaining is not consistent with the kind of chaining that you might be familiar with when deal with plain vanilla javaScript.
 
-## Implicit Chaining with the main lodash method \_()
+## 3 - Implicit Chaining with the main lodash method \_()
+
+Many of the methods in lodash are properties of the underscore variable that is added to the global name space when using lodash. However the underscore variable is a function rather than just a plain old object, and as such it can be called and passed a value. When using the main lodash method in place of \_.chain that is what is called Implicit chaining.
 
 ```js
 let arr = _([1, 2, 3, 4])
