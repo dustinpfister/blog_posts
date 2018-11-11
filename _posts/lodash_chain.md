@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 3328
-updated: 2018-11-11 11:17:31
-version: 1.9
+updated: 2018-11-11 11:24:10
+version: 1.10
 ---
 
 So when working out a javaScript project it may often be a good idea to chain functions together so that what is returned by one method becomes what another method acts on. In [lodash](https://lodash.com/) there is the \_.chain method that can be used to create what are called  explicit method chain sequences, as well as the \_() function that when called can be used to create implicit method chain sequences that work in a similar fashion to what you may all ready be familiar with whe it comes to chaining vanilla js native methods. Although this is a lodash post I will be covering chaining with, and without lodash in this post.
@@ -58,7 +58,11 @@ let arr = _([1, 2, 3, 4])
 console.log(arr); // 24
 ```
 
-## 4 - Chaining with Vanilla js
+### 4.1 - Chaining with Native array methods
+
+When working with an native array methods as long as what is returned is also an array then I can continuing calling additional array methods on the array. If I am not using lodash then I am limited to what there is to work with in the Array prototype, as well as the prototypes of other built in classes depending on what is returned. 
+
+For example there is no native equivalent of \_.sum, however it is not to hard to quickly sum an array using the native Array.reduce method.
 
 ```js
 let arr = [1, 2, 3, 4]
