@@ -5,11 +5,11 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 330
-updated: 2018-11-13 12:41:51
-version: 1.2
+updated: 2018-11-13 18:39:56
+version: 1.3
 ---
 
-[phaser ce](https://photonstorm.github.io/phaser-ce/index.html)
+When making a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project by default the game will pause when it is no loger in focus by the player. In most cases this is fine, but depending on the nature of the game that is being made some times this might present a problem.
 
 <!-- more -->
 
