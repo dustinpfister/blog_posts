@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 330
-updated: 2018-11-13 20:48:56
-version: 1.10
+updated: 2018-11-13 20:50:11
+version: 1.11
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project by default the game will pause when it is no loger in focus by the player. In most cases this is fine, but depending on the nature of the game that is being made some times this might present a problem. In this post I will be writing about a boolean property in the state object call game.state.disableVisibilityChange that can be used to change this default behavior so the game continues to run even when not in focus. 
@@ -146,3 +146,5 @@ game.state.add('demo', {
  
 game.state.start('demo');
 ```
+
+When this project is up and running the money variable will continue to update event when I am at another browser tab.
