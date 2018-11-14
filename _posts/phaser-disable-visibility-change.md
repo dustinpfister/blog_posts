@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 330
-updated: 2018-11-13 20:40:11
-version: 1.6
+updated: 2018-11-13 20:42:36
+version: 1.7
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project by default the game will pause when it is no loger in focus by the player. In most cases this is fine, but depending on the nature of the game that is being made some times this might present a problem. In this post I will be writing about a boolean property in the state object call game.state.disableVisibilityChange that can be used to change this default behavior so the game continues to run even when not in focus. 
@@ -24,6 +24,8 @@ This is an advanced post on phaser ce, the javaScript powered game framework. I 
 With the examples in this post I was using phaser community edition 2.11.1 of [phaser](https://phaser.io/).
 
 ## 2 - Using stage.disableVisibilityChange
+
+So if I want to have a project where the game will not pause when the player looses focus from the canvas that is as simple as just setting a boolean value to true for game.stage.disableVisibilityChange. By default the value from this property is false, but with some games I might want that feature disabled.
 
 ```js
 var titleLoger = function (text) {
