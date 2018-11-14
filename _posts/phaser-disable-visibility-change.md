@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 330
-updated: 2018-11-13 20:42:36
-version: 1.7
+updated: 2018-11-13 20:44:39
+version: 1.8
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project by default the game will pause when it is no loger in focus by the player. In most cases this is fine, but depending on the nature of the game that is being made some times this might present a problem. In this post I will be writing about a boolean property in the state object call game.state.disableVisibilityChange that can be used to change this default behavior so the game continues to run even when not in focus. 
@@ -76,6 +76,8 @@ game.state.add('demo', {
  
 game.state.start('demo');
 ```
+
+When this example is up and running the sprite will move across the screen even if I loose focus with the canvas by clicking the address bar of the browser. If I set the value for game.stage.disableVisibilityChange  back to false then the game will pause when I do something to that effect.
 
 ## 3 - Having code continue to run during a tab change
 
