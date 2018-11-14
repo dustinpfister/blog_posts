@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 330
-updated: 2018-11-13 20:46:39
-version: 1.9
+updated: 2018-11-13 20:48:56
+version: 1.10
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) project by default the game will pause when it is no loger in focus by the player. In most cases this is fine, but depending on the nature of the game that is being made some times this might present a problem. In this post I will be writing about a boolean property in the state object call game.state.disableVisibilityChange that can be used to change this default behavior so the game continues to run even when not in focus. 
@@ -79,9 +79,11 @@ game.state.start('demo');
 
 When this example is up and running the sprite will move across the screen even if I loose focus with the canvas by clicking the address bar of the browser. If I set the value for game.stage.disableVisibilityChange  back to false then the game will pause when I do something to that effect. 
 
-However the game will still pause when I go to another tab, I know this because of the method that logs the sprite position to the title element. This is not because of phaser, but because of the native methods that phaser uses to implament a game loop, namly requestAnimationFrame.
+However the game will still pause when I go to another tab, I know this because of the method that logs the sprite position to the title element. This is not because of phaser, but because of the native methods that phaser uses to implement a game loop, namely requestAnimationFrame.
 
 ## 3 - Having code continue to run during a tab change
+
+If I do want to make a game where I want things to continue working even when the player is not involved in the game at all, then I will want to break some of my code out of phaser and into my own loop that uses a method like setTimeout. Generally I do not want to use setTimeout to make a game loop, but in this case it does behave differently in browsers.
 
 ```js
 var createStateLoop = function (game) {
