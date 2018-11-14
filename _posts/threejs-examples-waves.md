@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2018-11-14 18:49:11
-version: 1.6
+updated: 2018-11-14 18:50:56
+version: 1.7
 ---
 
 So I wanted to start making some posts on [three.js](https://threejs.org/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be wrirting about  helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -15,7 +15,7 @@ So I wanted to start making some posts on [three.js](https://threejs.org/) examp
 
 ## 1 - What to know
 
-This is a post on a three.js example where I made some waves. In this example I am just using the Points material, as in this example I only have points set out for the buffered geometry that I am using. As such it would be a good idea to get up to speed with the Points material, and buffered geometry if you have not done so before hand. This is also a more advanced post on three.js, if you are new to three.js you might want to look at my getting started post on three.js first.
+This is a post on a three.js example where I made some waves. In this example I am just using the Points material, as in this example I only have points set out for the buffered geometry that I am using. As such it would be a good idea to get up to speed with the [Points material](/2018/05/12/threejs-points-material/), and buffered geometry if you have not done so before hand. This is also a more advanced post on three.js, if you are new to three.js you might want to look at my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first.
 
 ### 1.1 - version numbers matter
 
