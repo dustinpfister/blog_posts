@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2018-11-14 17:14:50
-version: 1.2
+updated: 2018-11-14 17:25:11
+version: 1.3
 ---
 
 So I wanted to start making some posts on [three.js](https://threejs.org/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be wrirting about  helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -15,6 +15,10 @@ So I wanted to start making some posts on [three.js](https://threejs.org/) examp
 
 ## 1 - What to know
 
+
+## 2 - The wave Example
+
+### 2.1 - The waveGrid helper
 
 ```js
     // Wave grid helper
@@ -63,6 +67,8 @@ So I wanted to start making some posts on [three.js](https://threejs.org/) examp
     };
 ```
 
+### 2.2 -Make Points helper
+
 ```js
     // make a points mesh
     var makePoints = function () {
@@ -97,6 +103,8 @@ So I wanted to start making some posts on [three.js](https://threejs.org/) examp
     };
 ```
 
+### 2.3 - Update Points
+
 ```js
     // update points
     var updatePoints = function (points, per) {
@@ -118,6 +126,8 @@ So I wanted to start making some posts on [three.js](https://threejs.org/) examp
  
     }
 ```
+
+### 2.4 - Get it going
 
 ```js
     // RENDER
