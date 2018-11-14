@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2018-11-14 18:38:35
-version: 1.4
+updated: 2018-11-14 18:39:23
+version: 1.5
 ---
 
 So I wanted to start making some posts on [three.js](https://threejs.org/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be wrirting about  helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -17,6 +17,9 @@ So I wanted to start making some posts on [three.js](https://threejs.org/) examp
 
 This is a post on a three.js example where I made some waves.
 
+### 1.1 - version numbers matter
+
+When working out this example I was using revision 98 of htree.js
 
 ## 2 - The wave Example
 
