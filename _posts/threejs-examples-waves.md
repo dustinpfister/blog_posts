@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2018-11-14 17:25:11
-version: 1.3
+updated: 2018-11-14 18:38:35
+version: 1.4
 ---
 
 So I wanted to start making some posts on [three.js](https://threejs.org/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be wrirting about  helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -14,6 +14,8 @@ So I wanted to start making some posts on [three.js](https://threejs.org/) examp
 <!-- more -->
 
 ## 1 - What to know
+
+This is a post on a three.js example where I made some waves.
 
 
 ## 2 - The wave Example
