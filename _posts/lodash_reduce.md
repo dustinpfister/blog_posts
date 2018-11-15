@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 242
-updated: 2018-07-25 12:08:45
-version: 1.3
+updated: 2018-11-15 18:18:26
+version: 1.4
 ---
 
 For todays post on [lodash](https://lodash.com/) I thought I should write a post on the [\_.reduce](https://lodash.com/docs/4.17.10#reduce) collection method, and also of course the corresponding Array.reduce method in core javaScript itself. The Array.reduce method works just fine, however if you are using lodash in a project the \_.reduce method is a little more robust, as it is one of the many lodash collection methods with baked in shorthands as well. In any case the two solutions work very similar, and this post should help gain some insight as to why reduce is useful in some situations that call for it.
@@ -19,7 +19,7 @@ This is a post on the \_.reduce method in lodash a javaScript framework that has
 
 ## 2 - Some basic examples of reduce that just reduces an array of numbers into a sum
 
-For a basic example of using reduce, it would be good to start with just an array of numbers. Often there ends up being a situation it which something needs to be done that involves [summation](https://en.wikipedia.org/wiki/Summation), such as when figuring out an [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean) for example. Although loops can be used, this is a post on reduce so...
+For a basic example of using reduce, it would be good to start with just an array of numbers. Often there ends up being a situation it which something needs to be done that involves [summation](https://en.wikipedia.org/wiki/Summation), such as when figuring out an [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean) for example. Although other more specific methods like [\_.sum](/2018/11/15/lodash_sum/), and native loops can be used, this is a post on reduce so...
 
 ### 2.1 - Using \_.reduce in lodash
 
