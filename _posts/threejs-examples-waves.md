@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2018-11-14 19:28:36
-version: 1.8
+updated: 2018-11-14 20:18:29
+version: 1.9
 ---
 
 So I wanted to start making some posts on [three.js](https://threejs.org/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be wrirting about  helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -26,6 +26,8 @@ When working out this example I was using revision 98 of htree.js
 The wave example I made involves a helper method that can be used to create, or update geometry, buffered geometry, or just about anything by making the helper a [higher-order function](https://en.wikipedia.org/wiki/Higher-order_function). This method accepts another method as one of the arguments that is passed the x,y,and z values for each point that will compose the vertices of the wave. I then use this method in conjunction with others to help make an update the geometry of the wave.
 
 ### 2.1 - The waveGrid helper
+
+Here is the wave grid helper method that accepts a method that I can use to define what to do for each point in the grid of points. I use this to create an instance of buffer geometry and again later to update it in a loop.
 
 ```js
     // Wave grid helper
