@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2018-11-15 17:44:27
-version: 1.8
+updated: 2018-11-15 17:48:43
+version: 1.9
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript.However in some cases it might be nice to have methods that make quick work of trivial tasks allowing me to move forward with s project faster. Also in some cases making a sum is not so trivial, thankfully in [lodash](https://lodash.com/) there are some methods that can be used to help make the process of producing a sum speed along a little faster. In this post I will be writing about [\_.sum](https://lodash.com/docs/4.17.11#sum), [\_.sumBy](https://lodash.com/docs/4.17.11#sumBy), [\_.reduce](https://lodash.com/docs/4.17.11#reduce), and vanilla js alternatives when creating a sum.
@@ -42,7 +42,32 @@ Although I most real world examples I can not say that I often deal with an arra
 
 ### 2.2 - Using \_.sumBy for an array of objects
 
+Say I have a not just an array of numbers, but an array of objects, and I need to make a sum by preforming an operation for each object. For example say I have an array of objects where each object is a report for sales and expenses for a certain business day. I want to add up how much profit has been made for each day, so I will need to subtract expenses from sales and then add that result up for each day. This can easlit be done with \_.sumBy.
 
+```js
+let reports = [{
+        date: '01/01/18',
+        sales: 1200,
+        expenses: 950
+    }, {
+        date: '01/02/18',
+        sales: 800,
+        expenses: 650
+    }, {
+        date: '01/03/18',
+        sales: 300,
+        expenses: 250
+    }
+];
+ 
+let profit = _.sumBy(reports, function (day) {
+ 
+        return day.sales - day.expenses;
+ 
+    });
+ 
+console.log(profit); // 450
+```
 
 ## 3 - Vanilla javaScript examples
 
