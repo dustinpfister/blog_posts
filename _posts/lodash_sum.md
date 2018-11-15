@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2018-11-15 17:48:43
-version: 1.9
+updated: 2018-11-15 17:52:07
+version: 1.10
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript.However in some cases it might be nice to have methods that make quick work of trivial tasks allowing me to move forward with s project faster. Also in some cases making a sum is not so trivial, thankfully in [lodash](https://lodash.com/) there are some methods that can be used to help make the process of producing a sum speed along a little faster. In this post I will be writing about [\_.sum](https://lodash.com/docs/4.17.11#sum), [\_.sumBy](https://lodash.com/docs/4.17.11#sumBy), [\_.reduce](https://lodash.com/docs/4.17.11#reduce), and vanilla js alternatives when creating a sum.
@@ -70,6 +70,8 @@ console.log(profit); // 450
 ```
 
 ## 3 - Vanilla javaScript examples
+
+Now for some plain vanilla JavaScript examples of how to add things up. Lodash is a great project with many useful methods, but it is also true that making a sum is really not all that hard to do with just plain old javaScript. In this section I will be looking at native equivalents to methods like \_.reduce as well as other features that are part of native javaScript by itself.
 
 ### 3.1 - Just using Array.forEach or a loop
 
