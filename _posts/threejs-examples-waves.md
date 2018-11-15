@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2018-11-14 20:18:29
-version: 1.9
+updated: 2018-11-14 22:11:27
+version: 1.10
 ---
 
 So I wanted to start making some posts on [three.js](https://threejs.org/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be wrirting about  helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -77,6 +77,8 @@ Here is the wave grid helper method that accepts a method that I can use to defi
 ```
 
 ### 2.2 -Make Points helper
+
+Here I have a method that makes use of my waveGrid method by making the initial state of the buffered geometry, as well as updating it as well.
 
 ```js
     // make a points mesh
