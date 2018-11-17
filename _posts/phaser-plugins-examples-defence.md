@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 14:36:26
-version: 1.10
+updated: 2018-11-17 16:53:39
+version: 1.11
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -27,6 +27,8 @@ Anyway the plugin contains many helper functions that are used to do things like
 
 ### 2.1 - Starting off the plugin
 
+I started off the plug-in with a function literal assigned to a signal global variable. This function will be called once in the create method of a state object to setup the plug-in. After that I set up some defaults for sprite sheet keys, the col and row size of the grid, the offset position and spawn rate.
+
 ```js
 var Plugin_defence = function (game, opt) {
  
@@ -42,6 +44,8 @@ var Plugin_defence = function (game, opt) {
     opt.yOffset = opt.yOffset || 16;
     opt.spawnRate = opt.spawnRate || 3000;
 ```
+
+Later in development if I continue working on this I will likely add a great deal more in terms of these kinds of variables but for the sake of this post it might be best to keep things simple.
 
 ### 2.2 - The create tile helper
 
