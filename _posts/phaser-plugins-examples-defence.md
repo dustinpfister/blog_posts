@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 17:39:58
-version: 1.14
+updated: 2018-11-17 17:41:22
+version: 1.15
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -18,6 +18,10 @@ So today I got around to making another example that involves [phaser ce](https:
 The plugin I am writing about here is not really a complete game by itself, but contains a fair amount of logic that can then be used in conjunction with other plugins that can produce a full game. This idea here is to offset blocks of logic into septate collections of code that can work by itself, but will work best of enhanced with additional options components.
 
 This is not a getting started post with [plug-ins]([plugins in general](/2018/10/09/phaser-plugins/) ), or with phaser in general. I am also using a lot of other phaser features in this post as well, such as groups, and sprites that you should get up to speed with before hand if you have not done so all ready.
+
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using [phaser](https://phaser.io/) community edition 2.11.1
 
 ## 2 - The defense plug-in
 
