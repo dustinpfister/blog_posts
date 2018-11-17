@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 18:19:53
-version: 1.23
+updated: 2018-11-17 18:23:03
+version: 1.24
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -309,6 +309,8 @@ So now that I have all my helpers worked out I can now create and append the plu
 So to use the plug-in I just need to create an instance of Phaser.Game,a dn call the Plugin_defence global function, passing the instance of the game as well as an option options object.
 
 ### 3.1 - Making some sprite sheets
+
+I can set keys for sprite sheets in the options object that I pass to the plug-in, but for this example I created sprites for the default keys that the plug-in looks for. like with many of the simple sprite sheets that I make for my blog posts on phaser I went with a canvas solution for making a sprite sheet.
 
 ```js
 var createSheetGameBoard = function (game) {
