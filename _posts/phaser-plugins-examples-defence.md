@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 18:13:44
-version: 1.21
+updated: 2018-11-17 18:15:01
+version: 1.22
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -252,6 +252,8 @@ Here I have a method that spawns an enemy sprite by reviving a dead sprite from 
 ```
 
 ### 2.8 - The plug in object
+
+So now that I have all my helpers worked out I can now create and append the plug-in object. For this plug-in i have an init, and update method.
 
 ```js
     // The plugin Object
