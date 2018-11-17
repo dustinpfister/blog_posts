@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 17:38:46
-version: 1.13
+updated: 2018-11-17 17:39:58
+version: 1.14
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -79,6 +79,8 @@ Here I have a method that will create tiles. Although I am not making much use o
  
     };
 ```
+
+For each tile I input enabled it so that when the player clicks a tile sprite it will fire a custom event I have made using Phaser.signal.
 
 ### 2.3 - The create tile group method
 
