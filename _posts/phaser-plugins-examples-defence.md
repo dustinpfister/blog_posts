@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 18:23:03
-version: 1.24
+updated: 2018-11-17 18:31:08
+version: 1.25
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -336,6 +336,8 @@ var createSheetEnemies = function (game) {
 
 ### 3.2 - The Phaser.Game instance
 
+Here I have the actual Phaser.game instance. In the create method of the state object I create my sprite sheets, and then call the plug-ins main function passing the instance of phaser.Game, and an options object. I also tested out my custom event that I have created that fires each time a tile is click by adding a hander to it, and create a text object to display the status of the players health.
+
 ```js
 var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea');
  
@@ -344,7 +346,6 @@ game.state.add('demo', {
     create: function () {
  
         createSheetGameBoard(game);
-        createSheetBuildings(game);
         createSheetEnemies(game);
  
         Plugin_defence(game, {
@@ -376,3 +377,5 @@ game.state.start('demo');
 ```
 
 ## 4 - Conclusion
+
+When all is up and working what I have so far is a situation in which enemy sprites spawn and move from one side of the grid to the other when they do that player looses health,and then end up back in a pool to be reused again later. I can also click on them to kill them as well. Not much to write about for now. Still plug-ins are a great way to keep my code well organized when making a project.
