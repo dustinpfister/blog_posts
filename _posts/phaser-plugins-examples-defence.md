@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 17:57:22
-version: 1.17
+updated: 2018-11-17 18:00:01
+version: 1.18
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -172,6 +172,8 @@ So I also have a method that is used to create a group of enemy sprites.
 ```
 
 ### 2.5 - Update enemies
+
+So here is a method that updated enemies on each frame tick. For now all I do is just move the enemies from the left side to the right side of the grid. Once the enemy sprite reaches the right side of the grid the player looses health, and the enemy is killed and return to the pool of enemy sprites.
 
 ```js
     // what to do for enemies on each tick
