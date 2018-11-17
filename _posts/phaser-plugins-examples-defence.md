@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 18:44:42
-version: 1.27
+updated: 2018-11-17 18:49:44
+version: 1.28
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -132,7 +132,7 @@ So the create tile method that I mentioned above is used in this method that is 
 
 ### 2.4 - Create Enemies Group
 
-So I also have a method that is used to create a group of enemy sprites.
+So I also have a method that is used to create a group of enemy sprites. In this project I went with creating a pool of enemy sprites that end up being stored in a dead state, which can then be revived and placed into a game area. Once they are killed then then go back to this pool. I often like to go with this approach rather than a solution involving creating sprites on demand, and then completely destroying them when they are no longer needed.
 
 ```js 
     // create the enemies group
