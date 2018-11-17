@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 09:49:57
-version: 1.6
+updated: 2018-11-17 10:10:57
+version: 1.7
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -19,8 +19,9 @@ The plugin I am writing about here is not really a complete game by itself, but 
 
 This is not a getting started post with [plug-ins]([plugins in general](/2018/10/09/phaser-plugins/) ), or with phaser in general. I am also using a lot of other phaser features in this post as well, such as groups, and sprites that you should get up to speed with before hand if you have not done so all ready.
 
+## 2 - The plug-in
 
-
+### 2.1 - Starting off the plugin
 
 ```js
 var Plugin_defence = function (game, opt) {
@@ -36,7 +37,11 @@ var Plugin_defence = function (game, opt) {
     opt.xOffset = opt.xOffset || 16;
     opt.yOffset = opt.yOffset || 16;
     opt.spawnRate = opt.spawnRate || 3000;
- 
+```
+
+### 2.2 - The create tile helper
+
+```js
     // create a tile
     var createTile = function (c, r, row, rows) {
         var grid = game.data.grid,
@@ -63,7 +68,11 @@ var Plugin_defence = function (game, opt) {
         return tile;
  
     };
- 
+```
+
+### 2.3 - The create tile group method
+
+```js
     // create a tile group
     var createTileGroup = function (game) {
  
@@ -101,32 +110,11 @@ var Plugin_defence = function (game, opt) {
         rows.x = opt.xOffset;
         rows.y = opt.yOffset;
     };
- 
-    // what to do for enemies on each tick
-    var updateEnemies = function (game) {
- 
-        var enemies = game.data.grid.enemies,
-        player = game.data.player;
- 
-        // for all current active enemies in the grid
-        game.data.grid.activeEnemies.forEach(function (enemy) {
- 
-            // move enemy
-            enemy.x += game.time.elapsed / 1000 * enemy.data.pps;
- 
-            // if the enemy reaches end of row
-            if (enemy.x >= opt.cols * 32) {
-                // the player looses health
-                // and returns to the enemy pool
-                player.health -= 10;
-                enemy.kill();
-                enemies.add(enemy);
-                updateActiveEnemies(game);
-            }
-        });
- 
-    };
- 
+```
+
+### 2.4 - Create Enemies Group
+
+```js 
     // create the enemies group
     var createEnemiesGroup = function (game) {
         var enemies = game.data.grid.enemies = game.add.group(),
@@ -161,7 +149,40 @@ var Plugin_defence = function (game, opt) {
             enemies.add(enemy);
         }
     };
+```
+
+### 2.5 - Update enemies
+
+```js
+    // what to do for enemies on each tick
+    var updateEnemies = function (game) {
  
+        var enemies = game.data.grid.enemies,
+        player = game.data.player;
+ 
+        // for all current active enemies in the grid
+        game.data.grid.activeEnemies.forEach(function (enemy) {
+ 
+            // move enemy
+            enemy.x += game.time.elapsed / 1000 * enemy.data.pps;
+ 
+            // if the enemy reaches end of row
+            if (enemy.x >= opt.cols * 32) {
+                // the player looses health
+                // and returns to the enemy pool
+                player.health -= 10;
+                enemy.kill();
+                enemies.add(enemy);
+                updateActiveEnemies(game);
+            }
+        });
+ 
+    };
+```
+
+### 2.6 - update active enemies list
+
+```js
     // update the list of active enemies in the grid
     var updateActiveEnemies = function (game) {
         var rows = game.data.grid.rows;
@@ -171,7 +192,11 @@ var Plugin_defence = function (game, opt) {
                 }
             }).list;
     };
- 
+```
+
+### 2.7 - Spawn an enemy
+
+```js
     // spawn an enemy
     var spawnEnemy = function (game) {
  
@@ -198,7 +223,11 @@ var Plugin_defence = function (game, opt) {
  
         }
     };
- 
+```
+
+### 2.8 - The plug in object
+
+```js
     // The plugin Object
     var plug = new Phaser.Plugin(game, game.plugins);
  
