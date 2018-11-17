@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 329
-updated: 2018-11-17 10:10:57
-version: 1.7
+updated: 2018-11-17 14:27:03
+version: 1.8
 ---
 
 So today I got around to making another example that involves [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) plugins. This time around the aim was to make a simple defense style game plugin. The process of even making a simple defense game can some times be a compacted one, a greate deal of logic needs to be in effect to govern things like when an enemy is to spawn, and what happens when it reaches a certain point, such as the side of the screen which is typical for most of these kinds of games. In this post I will be writing about a plugin that I made that contains much of the basic component of a simple defense style game.
@@ -275,3 +275,72 @@ var Plugin_defence = function (game, opt) {
  
 };
 ```
+
+## 3 - Using the plug-in
+
+### 3.1 - Making some sprite sheets
+
+```js
+var createSheetGameBoard = function (game) {
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = 32;
+    canvas.height = 32;
+    ctx.strokeStyle = 'white';
+    ctx.strokeRect(0, 0, 31, 31);
+    game.cache.addSpriteSheet('sheet-gameboard', null, canvas, 32, 32, 1, 0, 0);
+};
+ 
+var createSheetEnemies = function (game) {
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = 32;
+    canvas.height = 32;
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 0, 32, 32);
+    game.cache.addSpriteSheet('sheet-enemies', null, canvas, 32, 32, 1, 0, 0);
+};
+```
+
+### 3.2 - The Phaser.Game instance
+
+```js
+var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('demo', {
+ 
+    create: function () {
+ 
+        createSheetGameBoard(game);
+        createSheetBuildings(game);
+        createSheetEnemies(game);
+ 
+        Plugin_defence(game, {
+            xOffset: 32,
+            yOffset: 32,
+            spawnRate: 2000
+        });
+ 
+        game.data.grid.onTileClick.add(function (tile, c, r, row, rows) {
+            console.log(tile, c, r, row, rows);
+        });
+ 
+        game.data.disp = game.add.text(10, game.world.height - 20, 'hello', {
+                fill: 'white',
+                font: '15px courier'
+            });
+ 
+    },
+ 
+    update: function () {
+ 
+        game.data.disp.text = 'health: ' + game.data.player.health;
+ 
+    }
+ 
+});
+ 
+game.state.start('demo');
+```
+
+## 4 - Conclusion
