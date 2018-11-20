@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 334
-updated: 2018-11-20 18:18:41
-version: 1.6
+updated: 2018-11-20 18:19:45
+version: 1.7
 ---
 
 So I have wrote a [post on how to make sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/), which seems to work okay as a way to generate graphics to use in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game project without loading an external image. However in this post I will be writing about how to go about doing so with phaser graphics display objects. Also for whatever the reason it might be nice to just generate textures in generate for whatever the reason using phaser graphics, so in this post I will be writing about some use examples of the [generateTexture method](https://photonstorm.github.io/phaser-ce/Phaser.Graphics.html#generateTexture) of the Phaser Graphics class.
@@ -54,7 +54,7 @@ In this example I cam creating a graphics object and making it so it is not visi
 
 ## 2 - Making a sprite sheet with graphics
 
-So another use case example of Graphics.generateTexture would be to use it to create a sprite sheet with at least two or more frames. Doing so involves creating the state of the graphics that I want with the usual drawing methods, and then creating a texture like before for starters. However this time I need to pass the source property of the baseTexture property of the texture that is returned with Graphics.generateTexture.
+So another use case example of Graphics.generateTexture would be to use it to create a sprite sheet with at least two or more frames. Doing so involves creating the state of the graphics that I want with the usual drawing methods, and then creating a texture like before for starters. However this time I need to pass the source property of the baseTexture property of the texture that is returned with Graphics.generateTexture. The image that is located at the source property is what I can pass as data for the game.cache.addSpriteSheet method.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
