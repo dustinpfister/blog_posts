@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 334
-updated: 2018-11-20 18:19:45
-version: 1.7
+updated: 2018-11-20 18:32:12
+version: 1.8
 ---
 
 So I have wrote a [post on how to make sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/), which seems to work okay as a way to generate graphics to use in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game project without loading an external image. However in this post I will be writing about how to go about doing so with phaser graphics display objects. Also for whatever the reason it might be nice to just generate textures in generate for whatever the reason using phaser graphics, so in this post I will be writing about some use examples of the [generateTexture method](https://photonstorm.github.io/phaser-ce/Phaser.Graphics.html#generateTexture) of the Phaser Graphics class.
@@ -104,6 +104,8 @@ game.state.start('mksheet');
 ```
 
 ## 3 - Custom resolution
+
+Another thing about Graphics.generateTexture is that the resolution can be set with the first argument that by default has a value of 1. The documentation does not explain what the standard is with it, but it looks like it is a value that can be between 0 and 1.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
