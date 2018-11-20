@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 70
-updated: 2018-11-06 20:27:56
-version: 1.10
+updated: 2018-11-20 18:29:54
+version: 1.11
 ---
 
 In my effort to make a [great series of posts](/categories/phaser/) on [phaser ce](https://photonstorm.github.io/phaser-ce/index.html), it is only a matter of time until I started writing on how to make on the fly graphics in phaser. This is something that I often want to do in the early stages of a project where I just want to know the location of what will eventually be a sprite, or even a project with no external assets which can happen sometimes with something pretty simple.
@@ -132,6 +132,37 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 );
 ```
 
-## 7 - Conclusion
+## 7 - Generating a texture from graphics that can then be used to create a sprite or sprite sheet.
+
+It is possible to quickly generate a texture from a graphics object by just calling the Graphics.generateTexture method. This texture can then be used to skin a sprite, or create a sprite sheet.
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+
+game.state.add('basic', {
+
+    // create method
+    create: function () {
+ 
+        var gfx = game.add.graphics(0, 0);
+ 
+        gfx.beginFill(0x00ff00);
+        gfx.drawRect(0, 0, 32, 32);
+        gfx.visible = false;
+ 
+        var texture = gfx.generateTexture();
+ 
+        var sprite = game.add.sprite(32, 32, texture);
+ 
+    }
+ 
+});
+ 
+game.state.start('basic');
+```
+
+For more information on this method and how it can be used to generate a sprite sheet as well as some of its other featurss be sure to check out my [post on Graphics.generateTexture](/2018/11/20/phaser-graphics-generate-texture/).
+
+## 8 - Conclusion
 
 There is a lot to cover with graphics in phaser, this post alone is not going to do it justice, hopefully it has helped you getting started if you did not know how before hand. I will be updating this post, as well as a whole lot more of them as my work on phaser continues.
