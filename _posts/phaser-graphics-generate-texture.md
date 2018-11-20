@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 334
-updated: 2018-11-20 18:05:26
-version: 1.4
+updated: 2018-11-20 18:14:07
+version: 1.5
 ---
 
 So I have wrote a [post on how to make sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/), which seems to work okay as a way to generate graphics to use in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game project without loading an external image. However in this post I will be writing about how to go about doing so with phaser graphics display objects. Also for whatever the reason it might be nice to just generate textures in generate for whatever the reason using phaser graphics, so in this post I will be writing about some use examples of the [generateTexture method](https://photonstorm.github.io/phaser-ce/Phaser.Graphics.html#generateTexture) of the Phaser Graphics class.
@@ -21,8 +21,9 @@ In the content of this post I am writing about a method in the graphics class of
 
 In this post I am using phaser community edition 2.11.1 of [phaser](https://phaser.io/).
 
-
 ## 2 - Basic example of Graphics.generateTexture.
+
+Whenever I create a graphics object the generateTextxure method can eb called to create an instance of [PIXI.texture](https://photonstorm.github.io/phaser-ce/PIXI.Texture.html) this can the be used anywhere where a texture can be used such as with a sprite.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
@@ -48,6 +49,9 @@ game.state.add('basic', {
  
 game.state.start('basic');
 ```
+
+In this example I cam creating a graphics object and making it so it is not visible. However I am creating a texture from that graphics object and then using it to skin a sprite.
+
 
 ## 2 - Making a sprite sheet with graphics
 
