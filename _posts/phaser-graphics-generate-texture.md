@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 334
-updated: 2018-11-20 18:48:37
-version: 1.9
+updated: 2018-11-24 11:38:35
+version: 1.10
 ---
 
 So I have wrote a [post on how to make sprite sheets with canvas](/2018/08/04/phaser-spritesheet-from-canvas/), which seems to work okay as a way to generate graphics to use in a [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) game project without loading an external image. However in this post I will be writing about how to go about doing so with phaser graphics display objects. Also for whatever the reason it might be nice to just generate textures in generate for whatever the reason using phaser graphics, so in this post I will be writing about some use examples of the [generateTexture method](https://photonstorm.github.io/phaser-ce/Phaser.Graphics.html#generateTexture) of the Phaser Graphics class.
@@ -147,4 +147,4 @@ game.state.start('res');
 
 ## 4 - Conclusion
 
-So the Graphics.generateTexture method can be used as a way to generate textures from generated graphics that can then be used to skin sprites. This alows for graphics objects to function as one way to go about making assets by way of javaScript code rather than an external image.
+So the Graphics.generateTexture method can be used as a way to generate textures from generated graphics that can then be used to skin sprites. This allows for graphics objects to function as one way to go about making assets by way of javaScript code rather than an external image.
