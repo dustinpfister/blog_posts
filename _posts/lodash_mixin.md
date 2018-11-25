@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2018-11-25 18:37:17
-version: 1.4
+updated: 2018-11-25 18:40:57
+version: 1.5
 ---
 
-The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17.4#mixin) can be used to extend lodash, or another object with a source object of methods.
+The process of combining objects in lodash can be a little tricky, there are the own properties of an object, it's prorotype object, as well as even hidden properties in some cases. Also there is the idea of extending lodash with custom methods that are not a part of lodash as well. The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17.4#mixin) can be used to extend lodash, or another object with a source object of methods. It is one of many methods in lodash that can be used to combine objects, in some cases it might be useful so lets take a look at \_.mixin.
 
 <!-- more -->
 
