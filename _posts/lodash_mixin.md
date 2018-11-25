@@ -5,13 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2018-11-25 18:31:31
-version: 1.2
+updated: 2018-11-25 18:34:21
+version: 1.3
 ---
 
 The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17.4#mixin) can be used to extend lodash, or another object with a source object of methods.
 
 <!-- more -->
+
+## 1 - What to know
+
+This is a post on the lodash \_.mixin method and what it can be used for. The \_.mixin method is one of many options in lodash that can be used to combine objects with each other. For some applications it might be better to use \_.merge, or \_.assign.
 
 ## 2 - Using \_.mixin to extend lodash
 
@@ -31,7 +35,7 @@ _.mixin({
 console.log(_.foo() ); // bar
 ```
 
-3 - Using \_.mixin to extend an object
+## 3 - Using \_.mixin to extend an object
 
 Say you have an object that has some properties and another object of methods that will work with those properties. If two arguments are given to \_.mixin the first argument id expected to be a detestation object, and the second should be the source object that has the methods that are to be used with that object.
 
