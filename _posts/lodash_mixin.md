@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2018-11-25 18:34:21
-version: 1.3
+updated: 2018-11-25 18:37:17
+version: 1.4
 ---
 
 The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17.4#mixin) can be used to extend lodash, or another object with a source object of methods.
@@ -15,7 +15,7 @@ The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17
 
 ## 1 - What to know
 
-This is a post on the lodash \_.mixin method and what it can be used for. The \_.mixin method is one of many options in lodash that can be used to combine objects with each other. For some applications it might be better to use \_.merge, or \_.assign.
+This is a post on the lodash \_.mixin method and what it can be used for. The \_.mixin method is one of many options in lodash that can be used to combine objects with each other. For some applications it might be better to use [\_.merge](/2017/11/17/lodash_merge/), or [\_.assign](/2018/09/21/lodash_assign/).
 
 ## 2 - Using \_.mixin to extend lodash
 
