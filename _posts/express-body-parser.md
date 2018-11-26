@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-11-26 17:29:44
-version: 1.25
+updated: 2018-11-26 17:34:13
+version: 1.26
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post mainly on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -22,6 +22,8 @@ This is a post on the use of the body-parser module that is used in express.js t
 I have been trying to make it a habit to mention what version of a javaScript project I am using clear in my posts on such things. There are many reasons why this is a good idea beyond just the usual date published, and date last updated. In this post I am using express 4.16.3, and ejs 2.6.1.
 
 ## A Simple Body parser example
+
+First off how about a very simple example of using body-parser. In this example I will just be serving up a very simple client system using res.send to send a string that is just a single script tag. In this script tag I am using xmlHttpRequest to send a post request back to the sever that is just a single object serialized with JSON.stringify. I then use the json body parser to parse this json that was sent from the client into a workable object. I can then do something with that object, and send it back.
 
 ```js
 let express = require('express'),
