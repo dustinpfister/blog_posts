@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 67
-updated: 2018-11-26 09:15:57
-version: 1.7
+updated: 2018-11-26 09:43:42
+version: 1.8
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, these days it's important to try to make games that are well designed with both mobile and traditional desktop systems in mind. As such it is important to understand the nature of touch events, and the mouse. That is how they are different, but more importantly how they are the same, as they are both a means of how to point at something. They can be thought of as pointer devices, as such this post is about how to go about working with [pointer objects](https://photonstorm.github.io/phaser-ce/Phaser.Pointer.html) in phaser.
@@ -18,6 +18,10 @@ When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, the
 In phaser pointer objects are standard objects that contain useful information about a state of a mouse or touch screen. In this post I will be covering pointer objects in general, but will not be getting into detail about the nature of things like activePointer property, as there is much to cover when it comes to this topic. However I will link to other posts as needed, and where doing so is appropriate.
 
 It should go without saying that this is not a getting started post with phaser, or javaScript in general so I trust that you have at least some background with these topics before hand. If you are new to phaser ce you might want to check out my post on getting started with phaser.
+
+### 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser Community edition 2.11.1 of [phaser](https://phaser.io/).
 
 ## 2 - Pointer Object example
 
@@ -56,23 +60,23 @@ All of these pointer objects behave differently, and reference different input d
 The most important values sought after in a pointer object are the container relative x, and y values of the pointer object.
 
 ```js
-var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', 
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-    {
+game.state.add('position', {
  
-        create : function () {
+    create: function () {
  
-            game.input.onDown.add(function (pt) {
+        game.input.onDown.add(function (pt) {
  
-                console.log(pt.x + ',' + pt.y);
+            console.log(pt.x, pt.y);
  
-            });
- 
-        }
+        });
  
     }
  
-);
+});
+ 
+game.state.start('position');
 ```
 
 these values are simply just pt.x, and pt.y in a given pointer object. these values of course differ from pt.clientX, and pt.clientY that of course hold the window relative position values.
