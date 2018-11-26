@@ -5,11 +5,11 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 67
-updated: 2018-11-26 08:47:49
-version: 1.5
+updated: 2018-11-26 08:49:46
+version: 1.6
 ---
 
-When making a [phaser](http://phaser.io/) project, these days it's important to try to make games that are well designed with both mobile and traditional desktop systems in mind. As such it is important to understand the nature of touch events, and the mouse. That is how they are different, but more importantly how they are the same, as they are both a means of how to point at something. They can be thought of as pointer devices, as such this post is about how to go about working with pointer objects in phaser.
+When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, these days it's important to try to make games that are well designed with both mobile and traditional desktop systems in mind. As such it is important to understand the nature of touch events, and the mouse. That is how they are different, but more importantly how they are the same, as they are both a means of how to point at something. They can be thought of as pointer devices, as such this post is about how to go about working with [pointer objects](https://photonstorm.github.io/phaser-ce/Phaser.Pointer.html) in phaser.
 
 <!-- more -->
 
