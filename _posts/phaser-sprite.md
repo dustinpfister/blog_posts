@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 337
-updated: 2018-11-26 13:00:16
-version: 1.11
+updated: 2018-11-26 17:59:18
+version: 1.12
 ---
 
 When it comes to making an html 5 game with javaScript and [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) as a front end game framework, [Sprites](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html) are central to just about any kind of game project. There is a lot to cover with sprites when it comes to creating Sprite sheets, hit detection, motion and physics, handing groups of sprites, among many other topics as well. So I can not possible cover everything there is to write about when it comes to sprites, but I can at least cover the basics, as well as link to other posts on my site that might help cover most of what there is to know about sprites in phaser ce.
@@ -103,3 +103,41 @@ game.state.add('example2', {
  
 game.state.start('example2');
 ```
+
+## 4 - Sprite Data Objects
+
+Another feature of Sprites to be aware of is the data object of a sprite. This is the standard object to use when it comes to parking any kind of data with a single sprite instance. In this simple example I am just using the data object to store a per pixle rate that the sprite is to move by.
+
+```js
+// data objects
+game.state.add('example3', {
+ 
+    create: function () {
+ 
+        mkBlockSheet(game);
+ 
+        var sprite = game.add.sprite(32, 32, 'sheet-block');
+ 
+        sprite.name = 'block';
+        sprite.data.pps = 128;
+ 
+    },
+ 
+    update: function () {
+ 
+        var sprite = game.world.getByName('block');
+ 
+        // move the sprite by per pixel rate
+        sprite.x += game.time.elapsed / 1000 * sprite.data.pps;
+ 
+        // wrap sprite when it goes out of bounds
+        sprite.x = Phaser.Math.wrap(sprite.x, -32, game.world.width + 32);
+ 
+    }
+ 
+});
+ 
+game.state.start('example3');
+```
+
+in a real example I might use the data object to store an instance of some kind of class that contains all kinds of properties and methods that have to do with that sprite. The data Object is just a plain  old object that is not used by phaser internally, if I really wanted to I could just append some other object to the sprite as well as long as I do not overwrite anything. So this is just the standard way of setting any kind of data that should be associated with the sprite.
