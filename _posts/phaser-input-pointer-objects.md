@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 67
-updated: 2018-11-26 09:43:42
-version: 1.8
+updated: 2018-11-26 09:52:00
+version: 1.9
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, these days it's important to try to make games that are well designed with both mobile and traditional desktop systems in mind. As such it is important to understand the nature of touch events, and the mouse. That is how they are different, but more importantly how they are the same, as they are both a means of how to point at something. They can be thought of as pointer devices, as such this post is about how to go about working with [pointer objects](https://photonstorm.github.io/phaser-ce/Phaser.Pointer.html) in phaser.
@@ -28,27 +28,25 @@ In this post I am using phaser Community edition 2.11.1 of [phaser](https://phas
 So this is a quick example of how to go about getting started with pointer objects.
 
 ```js
-var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', 
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-    {
+game.state.add('example1', {
+    create: function () {
  
-        create : function () {
+        game.input.onDown.add(function (ptObj, e) {
  
-            game.input.onDown.add(function (ptObj, ptE) {
+            // pointer object
+            console.log(ptObj);
  
-                // pointer object
-                console.log(ptObj);
+            // Event
+            console.log(e);
  
-                // pointer event
-                console.log(ptE);
- 
-            });
- 
-        }
+        });
  
     }
+});
  
-);
+game.state.start('example1');
 ```
 
 The function that I pass to the add method of onDown receives a pointer object, and a pointer event object as its arguments. By looking in the javaScript console I can look over all the values of each object. The first thing to understand here is that regardless if it is a mouse, or touch event, certain values are the same in the pointer object that is given, such as the container relative x, and y position values.
