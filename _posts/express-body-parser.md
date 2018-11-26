@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 196
-updated: 2018-06-04 15:17:55
-version: 1.24
+updated: 2018-11-26 17:29:44
+version: 1.25
 ---
 
 Being able to parse a payload given to a node.js back end typically via a post request is a very common task when doing something with [express.js](https://expressjs.com/). As such there is a built in way to quickly do this thanks to the [body-parser](https://www.npmjs.com/package/body-parser) module that is included with every express.js install. In order to get into body parsing it is necessary to put together at least a basic full stack application. So in this post I will be giving a an example that will include both front and back end code. However this is a post mainly on req.body, and how to parse that using the body parser module so I will be mostly covering that.
@@ -20,6 +20,50 @@ This is a post on the use of the body-parser module that is used in express.js t
 ## A word about version numbers
 
 I have been trying to make it a habit to mention what version of a javaScript project I am using clear in my posts on such things. There are many reasons why this is a good idea beyond just the usual date published, and date last updated. In this post I am using express 4.16.3, and ejs 2.6.1.
+
+## A Simple Body parser example
+
+```js
+let express = require('express'),
+path = require('path'),
+app = express(),
+ 
+// getting port this way
+port = process.env.PORT || process.argv[2] || 8080;
+ 
+// using the JSON body parser
+app.use(require('body-parser').json());
+ 
+// what to do for get requests to root
+app.get('/', function (req, res) {
+ 
+    // sending a crude yet effective client system
+    res.send('<script>' +
+        'var xhr = new XMLHttpRequest();' +
+        'xhr.open(\'POST\', \'/\', true);' +
+        'xhr.onreadystatechange = function(){console.log(this.response)};' +
+        'xhr.setRequestHeader(\'Content-type\', \'application/json\');' +
+        'xhr.send(JSON.stringify({foo:\'bar\',n:40}));</script>');
+ 
+});
+ 
+// what to do for post requests to root
+app.post('/', function (req, res) {
+ 
+    // body parser works, I have the object sent
+    //from the client system
+    console.log(req.body); // {foo:'bar',n:40}
+ 
+    // I can do something with it and send a response
+    req.body.n += 2;
+    res.json(req.body);
+ 
+})
+ 
+app.listen(port, function () {
+    console.log('body-parser demo is up on port: ' + port);
+});
+```
 
 ## An express.js Body Parser example
 
