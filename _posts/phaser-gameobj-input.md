@@ -5,17 +5,21 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 63
-updated: 2018-07-16 13:31:07
-version: 1.10
+updated: 2018-11-26 12:00:46
+version: 1.11
 ---
 
-This post is an overview of the main [phaser](http://phaser.io/) input hander that can be found at game.input in a phaser game object instance. There is much to be said about [Input](http://phaser.io/docs/2.6.2/Phaser.Input.html) (what is used via game.input), and [InputHander](http://phaser.io/docs/2.6.2/Phaser.InputHandler.html) (what is used in game objects like sprites). However this post is mainly just an outline of what there is to work with via the Input instance at game.input.
+This post is an overview of the main [phaser ce](https://photonstorm.github.io/phaser-ce/) input hander that can be found at game.input in a phaser game object instance. There is much to be said about [Input](http://phaser.io/docs/2.6.2/Phaser.Input.html) (what is used via game.input), and [InputHander](http://phaser.io/docs/2.6.2/Phaser.InputHandler.html) (what is used in game objects like sprites). However this post is mainly just an outline of what there is to work with via the Input instance at game.input.
 
 <!-- more -->
 
 ## 1 - What to know
 
 This is a post in the main input handler that is used at game.input in the game framework known as phaser. It is not a getting started post on phaser, javaScript or any additional skills that are required before hand. If you are new to phaser you might prefer to start with my [getting started post on phaser](/2017/10/04/phaser-getting-started/).
+
+## 1.1 - This is a phaser ce 2.x post
+
+In this post I am using phaser community edition 2.11.1 of [phaser](https://phaser.io/).
 
 ## 1.1 - Two general approaches with input
 
