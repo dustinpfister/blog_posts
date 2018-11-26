@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 337
-updated: 2018-11-26 12:54:24
-version: 1.8
+updated: 2018-11-26 12:56:33
+version: 1.9
 ---
 
 When it comes to making an html 5 game with javaScript and [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) as a front end game framework, [Sprites](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html) are central to just about any kind of game project. There is a lot to cover with sprites when it comes to creating Sprite sheets, hit detection, motion and physics, handing groups of sprites, among many other topics as well. So I can not possible cover everything there is to write about when it comes to sprites, but I can at least cover the basics, as well as link to other posts on my site that might help cover most of what there is to know about sprites in phaser ce.
@@ -71,7 +71,7 @@ game.state.start('example1');
 
 ## 3 - Enabling physics
 
-So now that we have worked out how to just place a sprite on a screen it might be nice to get it to do something. It is possible to just manually move a sprite around by stepping the x and y properties of the sprite object manually, and for some projects that might be the way to do it. However phaser does come with a fairly impressive physics engine built in, and it is enabled by default.
+So now that we have worked out how to just place a sprite on a screen it might be nice to get it to do something. It is possible to just manually move a sprite around by stepping the x and y properties of the sprite object manually, and for some projects that might be the way to do it. However phaser does come with a fairly impressive physics engine built in, and it is enabled by default. I will not be covering every little detail about the physics engine here of course, this post is going to be long enough to begin with. However I have a getting started with physics in phaser post that would be a good starting point.
 
 To physics enable a sprite I just need to call game.physics.eanble and pass a reference to the sprite to which I want to enable physics for. Once That is done there is then a physics body for the sprite that i can then set values for things like gravity, bounce, and velocity.
 
