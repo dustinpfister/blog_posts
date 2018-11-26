@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 67
-updated: 2018-11-26 08:49:46
-version: 1.6
+updated: 2018-11-26 09:15:57
+version: 1.7
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, these days it's important to try to make games that are well designed with both mobile and traditional desktop systems in mind. As such it is important to understand the nature of touch events, and the mouse. That is how they are different, but more importantly how they are the same, as they are both a means of how to point at something. They can be thought of as pointer devices, as such this post is about how to go about working with [pointer objects](https://photonstorm.github.io/phaser-ce/Phaser.Pointer.html) in phaser.
@@ -19,7 +19,7 @@ In phaser pointer objects are standard objects that contain useful information a
 
 It should go without saying that this is not a getting started post with phaser, or javaScript in general so I trust that you have at least some background with these topics before hand. If you are new to phaser ce you might want to check out my post on getting started with phaser.
 
-## Pointer Object example
+## 2 - Pointer Object example
 
 So this is a quick example of how to go about getting started with pointer objects.
 
@@ -51,7 +51,7 @@ The function that I pass to the add method of onDown receives a pointer object, 
 
 All of these pointer objects behave differently, and reference different input devices that may or not may not be available on a client system. However they all hold certain values in comment sense they are all pointer objects.
 
-## Container relative x, and y position.
+## 3 - Container relative x, and y position.
 
 The most important values sought after in a pointer object are the container relative x, and y values of the pointer object.
 
@@ -77,6 +77,6 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea',
 
 these values are simply just pt.x, and pt.y in a given pointer object. these values of course differ from pt.clientX, and pt.clientY that of course hold the window relative position values.
 
-## Conclusion
+## 4 - Conclusion
 
 This post will be expanded on as I see fit. In my experience so far it is just the position values that are of most interest, however there are other values of interest that are useful. In any case it is important that pointer objects are a standard of sorts in phaser, and there are several areas in phaser that are in instance of a pointer object (game.input.activePointer, game.input.pointer1, [game.input.mousePointer](/2017/10/12/phaser-input-mousepointer/), ect). You might want to read over my post on the [pointers array](/2017/10/19/phaser-input-pointers/), as well as my post on [game.input](/2017/10/13/phaser-gameobj-input/) that has been serving as a central point of all things input related in phaser.
