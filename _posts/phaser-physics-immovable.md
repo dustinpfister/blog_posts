@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 325
-updated: 2018-11-09 09:54:07
-version: 1.17
+updated: 2018-11-26 10:27:13
+version: 1.18
 ---
 
 When working out things with physics in [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) there may be a need to set some display objects as immovable when hit by another display object physics body. So that is to not make it so the display object is immovable at all, just immovable when hot by another object.
@@ -15,7 +15,7 @@ When working out things with physics in [phaser ce](https://photonstorm.github.i
 
 ## 1 - What to know before continuing.
 
-This is a post on making display objects not move when hit by another display object when working out physics for a game made with phaser ce as a game framework. This is not a getting started post with physics in phaser ce or with phaser ce in general. In this post I am using many aspects of the framework that you should know a thing or two about before hand.
+This is a post on making display objects not move when hit by another display object when working out physics for a game made with phaser ce as a game framework. This is not a [getting started post](/2017/10/04/phaser-getting-started/) with physics in phaser ce or with phaser ce in general. In this post I am using many aspects of the framework that you should know a thing or two about before hand.
 
 ## 2 - An example of body.immovable
 
