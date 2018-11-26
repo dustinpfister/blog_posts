@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 337
-updated: 2018-11-26 12:34:30
-version: 1.6
+updated: 2018-11-26 12:40:48
+version: 1.7
 ---
 
 When it comes to making an html 5 game with javaScript and [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) as a front end game framework, [Sprites](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html) are central to just about any kind of game project. There is a lot to cover with sprites when it comes to creating Sprite sheets, hit detection, motion and physics, handing groups of sprites, among many other topics as well. So I can not possible cover everything there is to write about when it comes to sprites, but I can at least cover the basics, as well as link to other posts on my site that might help cover most of what there is to know about sprites in phaser ce.
@@ -67,4 +67,35 @@ game.state.add('example1', {
 });
  
 game.state.start('example1');
+```
+
+## 3 - Enabling physics
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+// enabling physics
+game.state.add('example2', {
+ 
+    create: function () {
+ 
+        mkBlockSheet(game);
+ 
+        var sprite = game.add.sprite(32, 32, 'sheet-block');
+ 
+        // enabling physics
+        game.physics.enable(sprite);
+ 
+        // set some gravity, and bounce
+        sprite.body.gravity.set(0, 100);
+        sprite.body.bounce.set(1, 1);
+ 
+        // collide with wourld bounds
+        sprite.body.collideWorldBounds = true;
+ 
+    }
+ 
+});
+ 
+game.state.start('example2');
 ```
