@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 337
-updated: 2018-11-26 12:31:53
-version: 1.5
+updated: 2018-11-26 12:34:30
+version: 1.6
 ---
 
 When it comes to making an html 5 game with javaScript and [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) as a front end game framework, [Sprites](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html) are central to just about any kind of game project. There is a lot to cover with sprites when it comes to creating Sprite sheets, hit detection, motion and physics, handing groups of sprites, among many other topics as well. So I can not possible cover everything there is to write about when it comes to sprites, but I can at least cover the basics, as well as link to other posts on my site that might help cover most of what there is to know about sprites in phaser ce.
@@ -48,6 +48,8 @@ var mkBlockSheet = function () {
 ```
 
 ### 2.2 - Making the sprite
+
+Once I have my sprite sheet I can now use it my passing the key of the sprite sheet as the third argument, after pasing the starting x, and y position. In phaser there is game.add.sprite, and game.make.sprite. In this example I am using game.add.sprite which results in the sprite being created, and being stored in the phaser cache.
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
