@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 68
-updated: 2018-11-26 10:24:36
-version: 1.6
+updated: 2018-11-26 10:26:00
+version: 1.7
 ---
 
 The pointers array in phaser will contain an array of [pointer objects](/2017/10/17/phaser-input-pointer-objects/) for each non mouse pointer object. This can be useful for working on any project that may involve multi touch. It can be thought of as an alternative to the pointer1, pointer2, pointer3, etc objects available via [game.input](/2017/10/13/phaser-gameobj-input/).
@@ -15,9 +15,9 @@ The pointers array in phaser will contain an array of [pointer objects](/2017/10
 
 ## 1 - What to know
 
-This is a post on the pointers array in phaser ce that can be used to do things involving multi touch when making an html 5 game with javaScript and phaser ce as a choice of a framework for such things. This is not a getting started post on phaser ce or javaScript in general so I assume that you have at least some background with these topics.
+This is a post on the pointers array in phaser ce that can be used to do things involving [multi touch](https://en.wikipedia.org/wiki/Multi-touch) when making an html 5 game with javaScript and phaser ce as a choice of a framework for such things. This is not a getting started post on phaser ce or javaScript in general so I assume that you have at least some background with these topics.
 
-## Quickly getting started with the pointers array
+## 2 - Quickly getting started with the pointers array
 
 One way to quickly know what is going on with the current status of the pointers array is by using the pointer debug method.
 
@@ -38,7 +38,7 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', {
 });
 ```
 
-## Using game.input.addPointer to increase the length of the pointers array
+## 3 - Using game.input.addPointer to increase the length of the pointers array
 
 By default there are only two pointer objects in the pointers array, if You want to make a project that makes use of more pointers you will want to use the addPointer method to do so.
 
@@ -70,11 +70,11 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', {
     });
 ```
 
-## Max Pointers
+## 4 - Max Pointers
 
 As of this writing I am using phaser 2.8.8, and the max amount of pointers allow appears to be 10. I can not see a need for there to be more than that, so I would say that is an adequate ceiling for it.
 
-## Comparison with pointer1, pointer2, pointer3, ect
+## 5 - Comparison with pointer1, pointer2, pointer3, ect
 
 There are a number of properties in the game.input object that contain references to the latest pointer object for a certain touch in multi touch. That is if just one finger is on the screen then what is going on with it can be found at game.input.pointer1, if there are two fingers, and you want to do something involving that data, then game.input.pointer2 is of interest.
 
@@ -114,7 +114,7 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea',
 
 So both options are provided, which you use depends on your coding style.
 
-## Multi touch example
+## 6 - Multi touch example
 
 So for full working quick example of the use of the pointers array in phaser I thought I would put together something where the position of a display object is effected by the number of active pointers there are.
 
@@ -178,8 +178,6 @@ var game = new Phaser.Game(640, 480, Phaser.AUTO, 'gamearea', {
 
 Whats nice about the pointers array is that it there to begin with when it comes to doing anything that involves looping over all pointer objects. Keep in mind that if you do not use the active property to weed out any inactive pointers, then values from the latest objects will be used.
 
-## Conclusion
+## 7 - Conclusion
 
 So the pointers array is one of two options in game.input to use when it comes to doing something involving multi touch.
-
-{% phaser_bottom %}
