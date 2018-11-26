@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 68
-updated: 2018-11-26 10:26:00
-version: 1.7
+updated: 2018-11-26 10:29:07
+version: 1.8
 ---
 
 The pointers array in phaser will contain an array of [pointer objects](/2017/10/17/phaser-input-pointer-objects/) for each non mouse pointer object. This can be useful for working on any project that may involve multi touch. It can be thought of as an alternative to the pointer1, pointer2, pointer3, etc objects available via [game.input](/2017/10/13/phaser-gameobj-input/).
@@ -15,7 +15,7 @@ The pointers array in phaser will contain an array of [pointer objects](/2017/10
 
 ## 1 - What to know
 
-This is a post on the pointers array in phaser ce that can be used to do things involving [multi touch](https://en.wikipedia.org/wiki/Multi-touch) when making an html 5 game with javaScript and phaser ce as a choice of a framework for such things. This is not a getting started post on phaser ce or javaScript in general so I assume that you have at least some background with these topics.
+This is a post on the pointers array in phaser ce that can be used to do things involving [multi touch](https://en.wikipedia.org/wiki/Multi-touch) when making an html 5 game with javaScript and phaser ce as a choice of a framework for such things. This is not a [getting started post on phaser ce](/2017/10/04/phaser-getting-started/) or javaScript in general so I assume that you have at least some background with these topics.
 
 ## 2 - Quickly getting started with the pointers array
 
