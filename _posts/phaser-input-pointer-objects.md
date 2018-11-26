@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 67
-updated: 2018-11-26 09:53:18
-version: 1.10
+updated: 2018-11-26 09:59:55
+version: 1.11
 ---
 
 When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, these days it's important to try to make games that are well designed with both mobile and traditional desktop systems in mind. As such it is important to understand the nature of touch events, and the mouse. That is how they are different, but more importantly how they are the same, as they are both a means of how to point at something. They can be thought of as pointer devices, as such this post is about how to go about working with [pointer objects](https://photonstorm.github.io/phaser-ce/Phaser.Pointer.html) in phaser.
@@ -15,7 +15,7 @@ When making a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, the
 
 ## 1 - What to know before getting started with pointer objects
 
-In phaser pointer objects are standard objects that contain useful information about a state of a mouse or touch screen. In this post I will be covering pointer objects in general, but will not be getting into detail about the nature of things like activePointer property, as there is much to cover when it comes to this topic. However I will link to other posts as needed, and where doing so is appropriate.
+In phaser pointer objects are standard objects that contain useful information about a state of a mouse or touch screen. In this post I will be covering pointer objects in general, but will not be getting into detail about the nature of things like activePointer property, as there is much to cover when it comes to this topic. However I will link to other posts as needed, and where doing so is appropriate. For example if you are interested in getting started with multi touch there is the [pointers array](/2017/10/19/phaser-input-pointers/), and when working with a mouse there is the [mouse pointer](/2017/10/12/phaser-input-mousepointer/).
 
 It should go without saying that this is not a getting started post with phaser, or javaScript in general so I trust that you have at least some background with these topics before hand. If you are new to phaser ce you might want to check out [my post on getting started with phaser ce](/2017/10/04/phaser-getting-started/).
 
