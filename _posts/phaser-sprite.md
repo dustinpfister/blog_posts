@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 337
-updated: 2018-11-26 12:24:42
-version: 1.4
+updated: 2018-11-26 12:31:53
+version: 1.5
 ---
 
 When it comes to making an html 5 game with javaScript and [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) as a front end game framework, [Sprites](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html) are central to just about any kind of game project. There is a lot to cover with sprites when it comes to creating Sprite sheets, hit detection, motion and physics, handing groups of sprites, among many other topics as well. So I can not possible cover everything there is to write about when it comes to sprites, but I can at least cover the basics, as well as link to other posts on my site that might help cover most of what there is to know about sprites in phaser ce.
@@ -23,10 +23,11 @@ In this post I am using phaser community edition 2.11.1 of [phaser](https://phas
 
 ## 2 - Basic example of making a Sprite in phaser ce.
 
-For starters here is a very basic example that uses a sprite sheet that is generated using the canvas 2d drawing api. I have a post that I wrote a while back in which I get into using canvas to make sprite sheets in detail
-
+For starters here is a very basic example that uses a sprite sheet that is generated using the canvas 2d drawing api. Once I have a sprite sheet to work with in phasers cache, I can then use it to create a sprite sheet using that sheet.
 
 ### 2.1 - Using canvas to make a simple block sprite sheet
+
+I have a post that I wrote a while back in which I get into using canvas to make sprite sheets in detail, So I will not be getting into detail with this. However the basic idea is to just create a canvas, draw to it with the 2d canvas drawing api, and then pass the canvas to the addSpriteSheet method as extra data, after passing null for what would be a url sense I am not loading an external sprite sheet.
 
 ```js
 var mkBlockSheet = function () {
