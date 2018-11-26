@@ -5,17 +5,14 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 67
-updated: 2017-10-22 13:49:01
-version: 1.3
+updated: 2018-11-26 08:42:39
+version: 1.4
 ---
 
 When making a [phaser](http://phaser.io/) project, these days it's important to try to make games that are well designed with both mobile and traditional desktop systems in mind. As such it is important to understand the nature of touch events, and the mouse. That is how they are different, but more importantly how they are the same, as they are both a means of how to point at something. They can be thought of as pointer devices, as such this post is about how to go about working with pointer objects in phaser.
 
 <!-- more -->
 
-{% phaser_top %}
-
-{% phaser_if_new_mess %}
 
 ## Pointer Object example
 
@@ -78,5 +75,3 @@ these values are simply just pt.x, and pt.y in a given pointer object. these val
 ## Conclusion
 
 This post will be expanded on as I see fit. In my experience so far it is just the position values that are of most interest, however there are other values of interest that are useful. In any case it is important that pointer objects are a standard of sorts in phaser, and there are several areas in phaser that are in instance of a pointer object (game.input.activePointer, game.input.pointer1, [game.input.mousePointer](/2017/10/12/phaser-input-mousepointer/), ect). You might want to read over my post on the [pointers array](/2017/10/19/phaser-input-pointers/), as well as my post on [game.input](/2017/10/13/phaser-gameobj-input/) that has been serving as a central point of all things input related in phaser.
-
-{% phaser_bottom %}
