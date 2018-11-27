@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2018-11-27 12:57:43
-version: 1.10
+updated: 2018-11-27 12:59:01
+version: 1.11
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a getting started post on javaScript until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
@@ -27,7 +27,7 @@ To use the javaScript console in chrome I just need to do a ctrl+shift+j (window
 
 ### 2.1 - Some simple expressions
 
-Lets start out with some simple expressions. Expressions are a series of values, variables and operators that evaluate to a value. They can end up being very complex, or very simple. So in the javaScript console just enter 5 + 5, and hit return, as expected the answer is 10. Now enter 5 + "5" and the answer is the string "55" the reason why this is is because 5 is a number and "5" is a string.
+Lets start out with some simple [expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators). Expressions are a series of values, variables and operators that evaluate to a value. They can end up being very complex, or very simple. So in the javaScript console just enter 5 + 5, and hit return, as expected the answer is 10. Now enter 5 + "5" and the answer is the string "55" the reason why this is is because 5 is a number and "5" is a string.
 
 ```js
 > 5 + 5
