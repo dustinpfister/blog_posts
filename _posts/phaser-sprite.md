@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 337
-updated: 2018-11-26 17:59:56
-version: 1.13
+updated: 2018-11-27 09:50:32
+version: 1.14
 ---
 
 When it comes to making an html 5 game with javaScript and [phaser ce](https://photonstorm.github.io/phaser-ce/index.html) as a front end game framework, [Sprites](https://photonstorm.github.io/phaser-ce/Phaser.Sprite.html) are central to just about any kind of game project. There is a lot to cover with sprites when it comes to creating Sprite sheets, hit detection, motion and physics, handing groups of sprites, among many other topics as well. So I can not possible cover everything there is to write about when it comes to sprites, but I can at least cover the basics, as well as link to other posts on my site that might help cover most of what there is to know about sprites in phaser ce.
@@ -106,7 +106,7 @@ game.state.start('example2');
 
 ## 4 - Sprite Data Objects
 
-Another feature of Sprites to be aware of is the [data object of a sprite](/2018/09/14/phaser-sprite-data/). This is the standard object to use when it comes to parking any kind of data with a single sprite instance. In this simple example I am just using the data object to store a per pixle rate that the sprite is to move by.
+Another feature of Sprites to be aware of is the [data object of a sprite](/2018/09/14/phaser-sprite-data/). This is the standard object to use when it comes to parking any kind of data with a single sprite instance. In this simple example I am just using the data object to store a per pixel rate that the sprite is to move by.
 
 ```js
 // data objects
