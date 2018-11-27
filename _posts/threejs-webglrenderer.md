@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2018-11-25 19:08:32
-version: 1.7
+updated: 2018-11-27 18:56:21
+version: 1.8
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -25,7 +25,7 @@ In this post I am using [three.js r98](https://github.com/mrdoob/three.js/tree/r
 
 To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the web gl renderer. Once I have my web gl renderer instance I can then call methods like setSize to set the native size of the canvas that is to be used to render my project. 
 
-The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I might have in my html.
+The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my html.
 
 ```js
 (function () {
@@ -54,3 +54,5 @@ The domElement property stores the dom element that will be used to render so I 
 }
     ());
 ```
+
+To render the scene I just need to pass the scene, and camera to the render method of the webGLRenderer instance.
