@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2018-11-27 12:23:58
-version: 1.5
+updated: 2018-11-27 12:25:44
+version: 1.6
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a getting started post on javaScript until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
@@ -15,7 +15,7 @@ I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScri
 
 ## 1 - What to know
 
-I will not be covering everything there is to know of course, learning javaScript as with any programing language takes a whole lot of time and patience, as well as dedication. To get started with javaScript all that is needed is a computer with a fairly up to date web browser. In this post I will be writing about very simple examples that can be entered into javaScript console of a web browser.
+I will not be covering everything there is to know of course, learning javaScript as with any programing language takes a whole lot of time and patience, as well as dedication. Still to get started with javaScript all that is needed is a computer with a fairly up to date web browser because in this post I will be writing about very simple examples that can be entered into javaScript console of chrome.
 
 ### 1.1 - Be sure to be using an up to date web browser
 
