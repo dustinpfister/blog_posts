@@ -5,13 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2018-11-27 18:39:50
-version: 1.3
+updated: 2018-11-27 18:45:46
+version: 1.4
 ---
 
 These days I have been doing more reading on lodash and have found that I have not yet wrote a post on [\_.flow](https://lodash.com/docs/4.17.4#flow) which can be used as a way to make a new function that is actually a bunch of functions that work together. There are many ways to go about chaining methods together with just plain old javaScript by itself as well though so I will be writing about vanilla js examples as well, but mainly this post is about \_.flow.
 
 <!-- more -->
+
+## 1 - What to know
+
+This is a post on the lodash method \_.flow, it is not a post for developers that are new to lodash, let alone javaScript in general.
 
 ## 2 - \_.flow example involving a distance formula
 
