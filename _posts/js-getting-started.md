@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2018-11-27 11:49:25
-version: 1.2
+updated: 2018-11-27 12:13:01
+version: 1.3
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a getting started post on javaScript until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
@@ -25,4 +25,21 @@ In this post I am using Google chrome 70.x, and am using examples that can be co
 
 To use the javaScript console in chrome I just need to do a ctrl+shift+j on my keyboard when I have a new tab open. This can also be done at any site as well, and the scripts that are entered operate within the domain of that site. Which is why you get a warning if you do it from certain sites like facebook. In this post I will just be covering some simple examples that do not do anything malicious, however certain forms of hacking is possible from the javaScript console. So do not copy and paste code form just anywhere into it, unless you know what it does.
 
+## 2.1 - Some simple expressions
+
+Lets start out with some simple expressions. Expressions are a series of values, variables and operators that evaluate to a value. They can end up being very complex, or very simple. So in the javaScript console just enter 5 + 5, and hit return, as expected the answer is 10. Now enter 5 + "5" and the answer is the string "55" the reason why this is is because 5 is a number and "5" is a string.
+
+```js
+> 5 + 5
+< 10
+> 5 + "5"
+< "55"
+```
+
+## 2.2 - Some not so simple expressions, and operator precedence
+
+```js
+> 5 + 10 * 3 - 1
+< 34
+```
 
