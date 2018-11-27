@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2018-11-27 12:13:01
-version: 1.3
+updated: 2018-11-27 12:20:18
+version: 1.4
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a getting started post on javaScript until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
@@ -36,10 +36,14 @@ Lets start out with some simple expressions. Expressions are a series of values,
 < "55"
 ```
 
-## 2.2 - Some not so simple expressions, and operator precedence
+## 2.2 - Operator precedence, and grouping
+
+One thing I think javaScript developers should get straight right off the bat is operator precedence. That is the order in which operations are preformed. Each operator in javaScript as a certain precedence over others, for example multiplication and devision is preformed before addition and subtraction.
 
 ```js
 > 5 + 10 * 3 - 1
 < 34
 ```
+
+Expressions in javaScript are evaluated from left to right, however operators of higher precedence are preformed first. Because multiplication has a higher precedence then addition and subtraction 10 * 3 is preformed first, and then the normal flow from left to right happens.
 
