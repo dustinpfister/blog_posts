@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2018-11-27 12:46:11
-version: 1.7
+updated: 2018-11-27 12:51:00
+version: 1.8
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a getting started post on javaScript until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
@@ -56,6 +56,7 @@ If for some reason I want to preform the addition first I can either change the 
 
 ### 2.3 - Creating and using a function
 
+Now to create something useful. Say you have a website that is getting ten thousand visitors a month, and you want to know how many visitors a month you might see in a few months if you can maintain a certain average rate of growth each month. A function can be authored to do something like that, and then copied and pasted into the console. Once it is copied into the console it can be called with arguments passed to it that contain the starting traffic, average rate of growth, and the number of months that I want to project.
 
 ```js
 > var projectGrowth = function (opt) {
