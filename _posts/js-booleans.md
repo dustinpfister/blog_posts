@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2018-11-28 17:59:01
-version: 1.5
+updated: 2018-11-28 18:02:19
+version: 1.6
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is [booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, the Boolean object. In addition booleans can happen as a result of an expression as well. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -38,5 +38,13 @@ var loop = function () {
 loop();
 ```
 
-## 3 - 
+## 3 - Booleans from expressions
+
+Boolean values can also be the result of an expression.
+
+```js
+var x = 5;
+var inRange = x > 4 && x < 10;
+console.log(inRange); // true
+```
 
