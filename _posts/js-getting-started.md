@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2018-11-27 12:59:01
-version: 1.11
+updated: 2018-11-28 14:39:49
+version: 1.12
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a getting started post on javaScript until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
@@ -83,4 +83,4 @@ Now to create something useful. Say you have a website that is getting ten thous
 
 ## 3 - Conclusion
 
-Getting started with javaScript is not so hard, it just takes time and patience. There is a great deal more to write about when it comes to making an actual project of some kind, but for the sake of keeping this post simple I just covered a few pointers for now.
+Getting started with javaScript is not so hard, it just takes time and patience. There is a great deal more to write about when it comes to making an actual project of some kind, but for the sake of keeping this post simple I just covered a few pointers for now. This is a post that I will come back to at some point to revise, and expand. If you are new to javaScript and have anything I think I should add please let me know in the comments.
