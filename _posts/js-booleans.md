@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2018-11-28 17:51:04
-version: 1.3
+updated: 2018-11-28 17:57:01
+version: 1.4
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is [booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, the Boolean object. In addition booleans can happen as a result of an expression as well. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -19,9 +19,24 @@ This is not a getting started post on javaScript, in this post I am writing just
 
 ## 2 - A Boolean literal
 
-For the most part if I want to set a boolean value I just set it using a literal. The true and false boolean literals can be used do do just this.
+For the most part if I want to set a boolean value I just set it using a literal. The true and false boolean literals can be used do do just this. For this example I have a boolean called firstRun that is set to true, I then also have a loop that will fire once every second by way of using settimeout.
 
 ```js
 var firstRun = true;
+var loop = function () {
+ 
+    setTimeout(loop, 1000);
+ 
+    if (firstRun) {
+        console.log('first run!');
+        firstRun = false;
+    }
+ 
+    console.log('tick');
+ 
+}
+loop();
 ```
+
+## 3 - 
 
