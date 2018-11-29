@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2018-11-28 19:33:26
-version: 1.14
+updated: 2018-11-28 19:36:10
+version: 1.15
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is [booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, the Boolean object. In addition booleans can happen as a result of an expression as well. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -96,3 +96,9 @@ console.log(n); // 1
 ### 4.2 - Using the Boolean Object as a method
 
 When omitting the new keyword a boolean primitive value will be returned rather than an object, making it a way to convert to a boolean.
+
+```js
+var a = Boolean(null); // false
+```
+
+I do not use this as well, because the !! operator works just fine to get such a task done. Still the Boolean Object is something to be aware of as it is often used in examples.
