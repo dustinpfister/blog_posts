@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2018-11-28 19:27:51
-version: 1.12
+updated: 2018-11-28 19:31:02
+version: 1.13
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is [booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, the Boolean object. In addition booleans can happen as a result of an expression as well. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -80,4 +80,15 @@ When using the Boolean Object as a constructor it returns an object, and not a b
 ```js
 var b = typeof new Boolean(false); // 'object'
 var c = typeof new Boolean(false).valueOf(); // 'boolean'
+```
+
+Making booleans this way is not such a great idea. It makes doing so far more complicated than it needs to be, and can lean to unexspected results if you are not aware of the fact that an object evaluates to true.
+
+```js
+var foo = new Boolean(false),
+n = 0;
+if (foo) {
+    n += 1;
+}
+console.log(n); // 1
 ```
