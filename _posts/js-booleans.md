@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2018-11-28 19:08:07
-version: 1.8
+updated: 2018-11-28 19:10:48
+version: 1.9
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is [booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, the Boolean object. In addition booleans can happen as a result of an expression as well. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -59,3 +59,6 @@ var b = !1; // false
 
 This works because the number 0 evaluates to false, and the ! operator both converts to boolean and negates the value as well. For projects where I really do want to crunch down file size it might be called for, but it reduces readability for some developers as well.
 
+### 3.2 - Using !!
+
+So the ! operator converts a non boolean value to a boolean, but it is also negated. So just calling the operator twice will then negate it back to its original value.
