@@ -5,17 +5,14 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2017-10-28 18:00:11
-version: 1.3
+updated: 2018-11-28 19:38:19
+version: 1.4
 ---
 
 Making a display object (sprites, graphics, ect) draggable in [phaser](http://phaser.io) is pretty easy, assuming it allows for the enabling of an input handler (Sprites, and Graphics do at least). In this post I will be should how to get started with doing this.
 
 <!-- more -->
 
-{% phaser_top %}
-
-{% phaser_if_new_mess %}
 
 ## Draggable simple hello world example
 
@@ -96,5 +93,3 @@ The snapX, and snapY properties can be used to define the width and height of a 
 ## Conclusion
 
 I hope this post helped you get at least a basic idea of how to get started with dragging sprites, and graphics in phaser. There is a lot more to write about when it comes to the input handler, events, and so forth, when I have more relevant content elsewhere I will update this post.
-
-{% phaser_bottom %}
