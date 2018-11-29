@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2018-11-28 19:15:27
-version: 1.10
+updated: 2018-11-28 19:21:27
+version: 1.11
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is [booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, the Boolean object. In addition booleans can happen as a result of an expression as well. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -68,3 +68,7 @@ var a = !!''; // false
 var b = !!'foo'; // true
 var c = !!1; // true
 ```
+
+## 4 - The Boolean Object
+
+In javaScript there is the Boolean global object that can be used as a constructor with the new keyword, or not. When used with the new keyword it will return an object and not a primitive Boolean value. The primitive value of the object can be retrieved with the valueOf method, but I can not think of much of any reason to create a Boolean variable this way.
