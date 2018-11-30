@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 10:34:09
-version: 1.12
+updated: 2018-11-30 10:42:06
+version: 1.13
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the inputEnabled,a and input.draggable Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snaping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to draging a sprite with a mouse or touch device in phaser ce.
@@ -28,27 +28,27 @@ A basic example of this will involve just creating a Sprite, Graphics object or 
 So if you are looking for a simple getting started example it might look something like this.
 
 ```js
-var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', 
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-{
+game.state.add('basic', {
  
-        // create the sprite
-        create : function () {
+    // create the sprite
+    create: function () {
  
-            var bx = game.add.graphics(game.world.centerX, game.world.centerY);
+        var bx = game.add.graphics(game.world.centerX, game.world.centerY);
  
-            bx.beginFill(0xff0000);
-            bx.drawRect(-50, -50, 100, 100);
-            bx.endFill();
+        bx.beginFill(0xff0000);
+        bx.drawRect(-50, -50, 100, 100);
+        bx.endFill();
  
-            bx.inputEnabled = true;
-            bx.input.draggable = true;
- 
-        }
+        bx.inputEnabled = true;
+        bx.input.draggable = true;
  
     }
  
-);
+});
+ 
+game.state.start('basic');
 ```
 
 When this example is up and running it will result in a simple red box at the center of the screen that can be dragged across the screen with a mouse or touch screen device. If that is all you care about mission accomplish, however chances are you also want to do more than just that. There is having the display object snap in place on a grid, or have an event fire when it is placed in a certain location. So lets take a look at some more examples that get into these other related topics when it comes to dragging sprites with phaser.
