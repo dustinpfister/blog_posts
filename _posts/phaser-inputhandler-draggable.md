@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 11:00:45
-version: 1.15
+updated: 2018-11-30 11:22:03
+version: 1.16
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the [inputEnabled](/2017/10/23/phaser-components-input-enabled/),a and [input.draggable](https://photonstorm.github.io/phaser-ce/Phaser.InputHandler.html#draggable) Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snapping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to dragging a sprite with a mouse or touch device in phaser ce.
@@ -103,6 +103,54 @@ game.state.start('snap');
 
 The snapX, and snapY properties can be used to define the width and height of a snap grid, and then I can make it so that the display object will snap to a location in that grid when release. In addition now that input is enabled, I have event handlers that can be used in the events property of the display object including events like onDragStop. Here I am using that event handler to set the display object back to a certain location when it goes out of bounds.
 
-## 4 - Conclusion
+## 4 - On drag start, update, and end.
+
+```js
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
+ 
+game.state.add('on-drag-methods', {
+ 
+    // create the sprite
+    create: function () {
+ 
+        var bx = game.add.graphics(32, 32);
+        bx.beginFill(0xff0000);
+        bx.drawRect(0, 0, 32, 32);
+        bx.endFill();
+ 
+        // enable input, drag, and snap
+        bx.inputEnabled = true;
+        bx.input.draggable = true;
+        bx.input.snapOnDrag = true;
+        bx.input.snapX = 32;
+        bx.input.snapY = 32;
+ 
+        // what to do when the drag starts
+        bx.events.onDragStart.add(function () {
+            console.log('drag start');
+        });
+ 
+        // what to do when the drag updates
+        bx.events.onDragUpdate.add(function (bx) {
+            console.log(bx.x / 32, bx.y / 32);
+        });
+ 
+        // what to do when the drag ends
+        bx.events.onDragStop.add(function (bx) {
+            // snap back to center
+            if (bx.x <= 0 || bx.x >= game.world.width || bx.y <= 0 || bx.y >= game.world.height) {
+                bx.x = 0;
+                bx.y = 0;
+            }
+        });
+ 
+    }
+ 
+});
+ 
+game.state.start('on-drag-methods');
+```
+
+## 5 - Conclusion
 
 I hope this post helped you get at least a basic idea of how to get started with dragging sprites, and graphics in phaser. There is a lot more to write about when it comes to the input handler, events, and so forth, when I have more relevant content elsewhere I will update this post.
