@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 10:42:06
-version: 1.13
+updated: 2018-11-30 10:56:09
+version: 1.14
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the inputEnabled,a and input.draggable Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snaping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to draging a sprite with a mouse or touch device in phaser ce.
@@ -58,43 +58,47 @@ When this example is up and running it will result in a simple red box at the ce
 There are a lot of other things that are of interest once I have started with draggable display objects. Such as setting some values that have to do with setting snap values, and adding event handlers. This is a simple example that makes use of the input.snapX, and input.snapY properties as well as the onDragStop event that can now be used with a draggable sprite or graphics object.
 
 ```js
-var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea', 
+var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
-{
-
-        // create the sprite
-        create : function () {
+game.state.add('snap', {
  
-            var bx = game.add.graphics(game.world.centerX, game.world.centerY);
+    // create the sprite
+    create: function () {
  
-            bx.beginFill(0xff0000);
-            bx.drawRect(-160, -120, 160, 120);
-            bx.endFill();
+        var bx = game.add.graphics(game.world.centerX, game.world.centerY);
  
-            bx.inputEnabled = true;
-            bx.input.draggable = true;
+        bx.beginFill(0xff0000);
+        bx.drawRect(-160, -120, 160, 120);
+        bx.endFill();
  
-            bx.input.snapOnRelease = true;
-            bx.input.snapX = 160;
-            bx.input.snapY = 120;
+        // enable input, and make the object draggable
+        bx.inputEnabled = true;
+        bx.input.draggable = true;
  
-            bx.events.onDragStop.add(function (bx) {
+        // enable snap by enabling snap on release
+        bx.input.snapOnRelease = true;
+        bx.input.snapX = 160;
+        bx.input.snapY = 120;
  
-                // snap back to center
-                if (bx.x <= 0 || bx.x >= 480 || bx.y <= 0 || bx.y >= 360) {
+        // keep the sprite from snapping out of bounds
+        // with the onDragStop event
+        bx.events.onDragStop.add(function (bx) {
  
-                    bx.x = 160;
-                    bx.y = 120;
+            // snap back to center
+            if (bx.x <= 0 || bx.x >= 480 || bx.y <= 0 || bx.y >= 360) {
+                bx.x = 160;
+                bx.y = 120;
+            }
  
-                }
+            bx.x -= 10;
  
-            });
- 
-        }
+        });
  
     }
  
-);
+});
+ 
+game.state.start('snap');
 ```
 
 The snapX, and snapY properties can be used to define the width and height of a snap grid, and then I can make it so that the display object will snap to a location in that grid when release. In addition now that input is enabled, I have event handlers that can be used in the events property of the display object including events like onDragStop. Here I am using that event handler to set the display object back to a certain location when it goes out of bounds.
