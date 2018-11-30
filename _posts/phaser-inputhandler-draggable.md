@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 16:28:28
-version: 1.20
+updated: 2018-11-30 16:33:16
+version: 1.21
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the [inputEnabled](/2017/10/23/phaser-components-input-enabled/),a and [input.draggable](https://photonstorm.github.io/phaser-ce/Phaser.InputHandler.html#draggable) Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snapping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to dragging a sprite with a mouse or touch device in phaser ce.
@@ -200,6 +200,8 @@ game.state.start('groups');
 ```
 
 ## 6 - Drag Offset
+
+The drag offset property can be used to change the offset location from which dragging happens. For the most part this property should remain at the default value of 0,0. This means that dragging will happen from the point at which the touch or mouse clicked started, which is what I would want to happen in just about any situation in which I would use dragging and snapping.
 
 ```js
 // Offset
