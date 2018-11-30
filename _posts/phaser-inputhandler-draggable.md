@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 16:33:56
-version: 1.22
+updated: 2018-11-30 17:37:22
+version: 1.23
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the [inputEnabled](/2017/10/23/phaser-components-input-enabled/),a and [input.draggable](https://photonstorm.github.io/phaser-ce/Phaser.InputHandler.html#draggable) Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snapping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to dragging a sprite with a mouse or touch device in phaser ce.
@@ -232,4 +232,6 @@ game.state.start('drag-offet');
 
 ## 6 - Conclusion
 
-I hope this post helped you get at least a basic idea of how to get started with dragging sprites, and graphics in phaser. There is a lot more to write about when it comes to the input handler, events, and so forth, when I have more relevant content elsewhere I will update this post.
+So setting up dragging in phaser ce is not all that complected once you are familiar with the properties that are available in an instance of the input hander, and the events components. I hope this post helped you get at least a basic idea of how to get started with dragging sprites, and graphics in phaser. There is a lot more to write about when it comes to the input handler, events, and so forth. 
+
+If there is anything that you think I might have missed or if you have any questions about dragging sprites in phaser ce, please let me know in the comments, and thank you for reading.
