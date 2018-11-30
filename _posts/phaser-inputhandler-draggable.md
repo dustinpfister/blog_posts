@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 11:22:03
-version: 1.16
+updated: 2018-11-30 11:26:11
+version: 1.17
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the [inputEnabled](/2017/10/23/phaser-components-input-enabled/),a and [input.draggable](https://photonstorm.github.io/phaser-ce/Phaser.InputHandler.html#draggable) Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snapping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to dragging a sprite with a mouse or touch device in phaser ce.
@@ -105,6 +105,8 @@ The snapX, and snapY properties can be used to define the width and height of a 
 
 ## 4 - On drag start, update, and end.
 
+There are a few events that can be used when dragging is enabled for a sprite. Handers can be set to define what to do when a drag event starts, updates as it moves, and of course when it ends.
+
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
  
@@ -150,6 +152,8 @@ game.state.add('on-drag-methods', {
  
 game.state.start('on-drag-methods');
 ```
+
+In this example I am using the snapOnDrag boolean rather than the snapOnRelease boolean. This means that the sprite will snap as it is dragged so that it will never be out of the grid, rather than the effect that happens when the alternative snapOnRelease is used.
 
 ## 5 - Conclusion
 
