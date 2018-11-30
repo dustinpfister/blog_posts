@@ -5,14 +5,17 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-28 19:38:19
-version: 1.4
+updated: 2018-11-29 19:27:36
+version: 1.5
 ---
 
 Making a display object (sprites, graphics, ect) draggable in [phaser](http://phaser.io) is pretty easy, assuming it allows for the enabling of an input handler (Sprites, and Graphics do at least). In this post I will be should how to get started with doing this.
 
 <!-- more -->
 
+## 1 - What to know
+
+This is a post on making sprites draggable in phaser ce. I am not going to cover everything there is to know about sprites, signals, and input in phaser ce here as I have many posts on those subjects. If you are new to phaser I have a post on getting stared with phaser ce as well.
 
 ## Draggable simple hello world example
 
