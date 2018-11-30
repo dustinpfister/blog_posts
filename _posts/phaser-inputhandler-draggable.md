@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 10:23:58
-version: 1.10
+updated: 2018-11-30 10:28:38
+version: 1.11
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the inputEnabled,a and input.draggable Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snaping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to draging a sprite with a mouse or touch device in phaser ce.
@@ -51,7 +51,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 );
 ```
 
-First I want to enable the input handler for the display object, by setting it's inputEnable property to true. Once that is done the input property of the display object will be an instance of inputControler rather than null, and as such I can now set the draggable property of the display objects input control to true. The display object should now be draggable.
+When this example is up and running it will result in a simple red box at the center of the screen that can be dragged across the screen with a mouse or touch screen device. If that is all you care about mission accomplish, however chances are you also want to do more than just that. There is having the display object snap in place on a grid, or have an event fire when it is placed in a certain location. So lets take a look at some more examples that get into these other related topics when it comes to dragging sprites with phaser.
 
 ## 3 - Whats next with draggable display objects
 
