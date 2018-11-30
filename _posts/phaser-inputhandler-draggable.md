@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-30 18:18:38
-version: 1.24
+updated: 2018-11-30 18:23:28
+version: 1.25
 ---
 
 Making a display object such as sprites, graphics objects draggable in [phaser](http://phaser.io) is pretty easy. I just need to make sure that the [inputEnabled](/2017/10/23/phaser-components-input-enabled/),a and [input.draggable](https://photonstorm.github.io/phaser-ce/Phaser.InputHandler.html#draggable) Booleans are set to true. There is a bot more to it than just that of course when it comes to some Signal instances, and other properties when it comes to snapping sprites to a grid and so forth. So in this post I will be covering many topics when it comes to dragging a sprite with a mouse or touch device in phaser ce.
@@ -229,6 +229,8 @@ game.state.start('drag-offet');
 ```
 
 ## 7 - Drag and drop sprites on top of each other
+
+Another common task when it comes to dragging sprites is to have it so that something happens when one sprite is dragged and dropped onto another sprite, or for whatever the situation you have more than one sprite in the same location and they overlap ontop of each other. In this example I have a group of box sprites and I loop over all the spites in the group whenever a drag event has ended to check if the box was dropped overlaps one or more other sprites in the group.
 
 ```js
 var createBx = function (game, group, x, y) {
