@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 74
-updated: 2018-11-29 19:27:36
-version: 1.5
+updated: 2018-11-29 19:28:39
+version: 1.6
 ---
 
 Making a display object (sprites, graphics, ect) draggable in [phaser](http://phaser.io) is pretty easy, assuming it allows for the enabling of an input handler (Sprites, and Graphics do at least). In this post I will be should how to get started with doing this.
@@ -17,7 +17,7 @@ Making a display object (sprites, graphics, ect) draggable in [phaser](http://ph
 
 This is a post on making sprites draggable in phaser ce. I am not going to cover everything there is to know about sprites, signals, and input in phaser ce here as I have many posts on those subjects. If you are new to phaser I have a post on getting stared with phaser ce as well.
 
-## Draggable simple hello world example
+## 2 - Draggable simple hello world example
 
 So if you are looking for a simple getting started example it might look something like this.
 
@@ -47,7 +47,7 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 
 First I want to enable the input handler for the display object, by setting it's inputEnable property to true. Once that is done the input property of the display object will be an instance of inputControler rather than null, and as such I can now set the draggable property of the display objects input control to true. The display object should now be draggable.
 
-## Whats next with draggable display objects
+## 3 - Whats next with draggable display objects
 
 There are a lot of other things that are of interest once I have started with draggable display objects. Such as setting some values that have to do with setting snap values, and adding event handlers.
 
@@ -93,6 +93,6 @@ var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea',
 
 The snapX, and snapY properties can be used to define the width and height of a snap grid, and then I can make it so that the display object will snap to a location in that grid when release. In addition now that input is enabled, I have event handlers that can be used in the events property of the display object including events like onDragStop. Here I am using that event handler to set the display object back to a certain location when it goes out of bounds.
 
-## Conclusion
+## 4 - Conclusion
 
 I hope this post helped you get at least a basic idea of how to get started with dragging sprites, and graphics in phaser. There is a lot more to write about when it comes to the input handler, events, and so forth, when I have more relevant content elsewhere I will update this post.
