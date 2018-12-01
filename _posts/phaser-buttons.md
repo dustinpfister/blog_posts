@@ -5,11 +5,11 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 259
-updated: 2018-09-03 14:41:29
-version: 1.23
+updated: 2018-12-01 12:34:57
+version: 1.24
 ---
 
-This post is on [buttons](https://photonstorm.github.io/phaser-ce/Phaser.Button.html) in [phaser](http://phaser.io) that javaScript powered game framework for making web based games. In phaser there is a special type of display object called a button, that is very mush like a sprite in many ways, but is geared towards the role of a button. Sprite sheets are handled a little differently, there is not just one frame index, but four indexes to set one for each button state (hover,out,down, and up). Input is enabled be default, and there are also a call back, and a context to set for it. In this post I will be covering buttons, and will also be putting together a basic clicker type game. These buttons are a great way to quickly implement a button compared to using just a plain old sprite, so lets take a look at buttons in phaser.
+This post is on [buttons](https://photonstorm.github.io/phaser-ce/Phaser.Button.html) in [phaser 2](https://photonstorm.github.io/phaser-ce/) that javaScript powered game framework for making web based games. In phaser there is a special type of display object called a button, that is very mush like a sprite in many ways, but is geared towards the role of a button. Sprite sheets are handled a little differently, there is not just one frame index, but four indexes to set one for each button state (hover,out,down, and up). Input is enabled be default, and there are also a call back, and a context to set for it. In this post I will be covering buttons, and will also be putting together a basic clicker type game. These buttons are a great way to quickly implement a button compared to using just a plain old sprite, so lets take a look at buttons in phaser.
 
 <!-- more -->
 
@@ -19,7 +19,11 @@ This post is on [buttons](https://photonstorm.github.io/phaser-ce/Phaser.Button.
 
 ## 1 - what to know
 
-This is a post on using buttons in phaser ce, it would be a good idea to gain some background in phaser in general if you have not done so before hand, the best place for that might be the [phaser ce docs](https://photonstorm.github.io/phaser-ce/). I have a [getting started post on phaser](/2017/10/04/phaser-getting-started/) that you might want to try, it would also be a good idea to learn a bit about [state machines](/2017/10/05/phaser-state-manager/), and [making sprite sheets with canvas](/2018/08/04/phaser-sprite-from-canvas/) as well. I will be using these things in this post, on top of buttons of course.
+This is a post on using buttons in phaser 2, it would be a good idea to gain some background in phaser in general if you have not done so before hand, the best place for that might be the [phaser 2 docs](). I have a [getting started post on phaser](/2017/10/04/phaser-getting-started/) that you might want to try, it would also be a good idea to learn a bit about [state machines](/2017/10/05/phaser-state-manager/), and [making sprite sheets with canvas](/2018/08/04/phaser-sprite-from-canvas/) as well. I will be using these things in this post, on top of buttons of course.
+
+## 1.1 - This is a phaser 2 post
+
+In this post I am using phaser 2.11.1 of [phaser](http://phaser.io)
 
 ## 2 - Clicker game example
 
@@ -27,7 +31,7 @@ For a simple example that makes use of buttons I thought I would make a simple c
 
 ## 2.1 - Making the game object, and boot state.
 
-Like just about all of my phaser projects these days I start off by making an instance of the [main phaser constructor](/2017/10/11/phaser-main-game-constructor/), rather than just passing it a single state object as the fifth argument. This allows me to make more than one state object with game.state.add, and then choose which state I want to start first, when I want it to start.
+Like just about all of my phaser games these days I start off by making an instance of the [main phaser constructor](/2017/10/11/phaser-main-game-constructor/), rather than just passing it a single state object as the fifth argument. This allows me to make more than one state object with game.state.add, and then choose which state I want to start first, when I want it to start.
 
 Anyway this boot state is where I will set a few things up that will be used else where in the project, for this project I am just setting up a global object that will hold game state data, and setting some values that have to do with scaling. If you would like to know more about that scaling in phaser you might want to check out my post on [pseudo full screen](/2018/08/13/phaser-scale-fullscreen-pseudo/).
 
@@ -65,7 +69,7 @@ Not much to write about with this state when it comes to buttons thought, so let
 
 ## 2.2 - the button sheet state
 
-This is the state where I will be creating a sprite sheet for the buttons. In this example I am making a sprite sheet by way of the 2d canvas drawing api, rather than an external sprite sheet that I load into the project during a load state. This kind of approach works just fine for simple projects like this but might not be the best choice for all projects. If you want to read more about making sprite sheets this way I wrote a [post on making sprite sheets with canvas in phaser ce](/2018/08/04/phaser-sprite-from-canvas/) a while back.
+This is the state where I will be creating a sprite sheet for the buttons. In this example I am making a sprite sheet by way of the 2d canvas drawing api, rather than an external sprite sheet that I load into the project during a load state. This kind of approach works just fine for simple projects like this but might not be the best choice for all projects. If you want to read more about making sprite sheets this way I wrote a [post on making sprite sheets with canvas in phaser 2](/2018/08/04/phaser-sprite-from-canvas/) a while back.
 
 ```js
 // button-sheet state
