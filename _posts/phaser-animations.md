@@ -5,8 +5,8 @@ tags: [js,phaser,games,canvas]
 layout: post
 categories: phaser
 id: 253
-updated: 2018-12-01 12:30:42
-version: 1.10
+updated: 2018-12-01 12:34:57
+version: 1.11
 ---
 
 When making a animation from the ground up with javaScript by itself the process often might involve one or more sprite sheets that is brought into the project by way of an external image file, or generated from code. Once I have my sheets I then devise some kind of system to get the proper frames, from the proper animations, from the proper sheets. This process can be time consuming, and is one of the many reasons why it is a good idea to just work in a framework such as [phaser 2](https://photonstorm.github.io/phaser-ce/) to one extent or another. In phaser sprite sheets can be added into a project from an external file via the asset loader, or generated with javaScript and added into the cache. Once I have a sprite sheet animations can be made by way of the [animation manager](https://photonstorm.github.io/phaser-ce/Phaser.AnimationManager.html) of a sprite. In this post I will be writing about using the animation manager with asset less sprite sheet solution.
@@ -40,7 +40,7 @@ However to cover a full working example of this I am going to need to load, or c
 
 ### 1.2 - This is a phaser 2 post
 
-In this post I am using phaser 2.11.1, and not the newer phaser 3 major release.
+In this post I am using phaser 2.11.1, and not the newer phaser 3 major release. The version number is something that matters a lot when working with a complex javaScript project like the [phaser](http://phaser.io) game framework.
 
 ## 2 - Box guy phaser animation example
 
