@@ -5,21 +5,25 @@ tags: [js,phaser,games,canvas,animation]
 layout: post
 categories: phaser
 id: 255
-updated: 2018-08-11 15:13:57
-version: 1.7
+updated: 2018-12-01 12:27:51
+version: 1.8
 ---
 
-When making animations for a [phaser ce](https://photonstorm.github.io/phaser-ce/) project, or with animation in general actually the concept of a key frame is important. A key frame can be described as a frame when an animation begins, or ends, and as such it is a beginning state from which an animation will progress from, and then back to in the case of a looping animation. It can also be the two frames at which an animation begins at a starting state, and ends at an ending state when dealing with some kind of non-looping animation sequence. In this post I will be writing about key frames when using the phaser ce game framework, giving some examples of this important animation concept when making sprite sheets for a phaser project.
+When making animations for a [phaser 2](https://photonstorm.github.io/phaser-ce/) game, or with animation in general actually the concept of a key frame is important. A key frame can be described as a frame when an animation begins, or ends, and as such it is a beginning state from which an animation will progress from, and then back to in the case of a looping animation. It can also be the two frames at which an animation begins at a starting state, and ends at an ending state when dealing with some kind of non-looping animation sequence. In this post I will be writing about key frames when using the phaser 2 game framework, giving some examples of this important animation concept when making sprite sheets for a phaser game.
 
 <!-- more -->
 
 ## 1 - Before continuing to read
 
-This is a post on [animation keyframes](https://en.wikipedia.org/wiki/Key_frame) using phaser ce, and html5 game framework. This is an advanced post on phaser, and javaScript, and I assume that you have at least some background on these topics before hand.
+This is a post on [animation keyframes](https://en.wikipedia.org/wiki/Key_frame) using phaser 2, and html5 game framework. This is an advanced post on phaser, and javaScript, and I assume that you have at least some background on these topics before hand.
 
-## 1.1 - keyframes, and tweening
+### 1.1 - keyframes, and tweening
 
 In you travels on javscript realed content that has to do with animation to one extent or another you might have heard about the terms [keyframes](https://en.wikipedia.org/wiki/Key_frame), and [tweening](https://en.wikipedia.org/wiki/Key_frame). These are just terms for the end points of an animation and all the other frames that lay in between those end points. For example if you have an animation that loops back to the beginning, resulting in a loading icon type animation, that kind of animation would only have a single keyframe, and all other frames just transition back to that initial state. In other words you start with a key frame, and then tween back to that keyframe. Other animations act as transitions from one state, to another state, these kinds of animations have two key frames, an initial state, and an ending state. In addition with this kind of animation all other frames transition this starting state to an ending state.
+
+### 1.2 - This is a phaser 2 post
+
+In this post I am using phaser 2.x, and not the newer phaser 3.x. As such any code examples here will likely break in 3.x or later.
 
 ## 2 - basic example of keyframes in animation
 
