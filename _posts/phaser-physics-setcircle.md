@@ -5,8 +5,8 @@ tags: [js,phaser]
 layout: post
 categories: phaser
 id: 341
-updated: 2018-12-01 22:12:03
-version: 1.4
+updated: 2018-12-01 22:13:39
+version: 1.5
 ---
 
 In this post on [phaser 2](https://photonstorm.github.io/phaser-ce/index.html) I will be writing about using the body.setCircle method to make the collision detection work with a circle shape rather than the default square shape. For many phaser 2 powered games the default square shape works just fine, but for other games that involve ball shaped display objects it is necessary to set the physics body shape to that of a circle. The reason being that by doing so when a ball like object hits another at an angle it will bounce as expected of a ball shaped object rather than a square.
@@ -20,6 +20,10 @@ This is a post on setting the shape of a physics body when making a phaser 2 gam
 ### 1.1 - This is a phaser 2 post
 
 In this post I was using phaser 2.11.1 of phaser the javaScript powered game framework. So the code examples here will likely break in the newer phaser 3 or later.
+
+## 2 - The setCircle example
+
+### 2.1 - My createBall method that uses body.setCircle
 
 ```js
 var createBall = function (game, x, y) {
@@ -36,6 +40,8 @@ var createBall = function (game, x, y) {
 }
 ```
 
+### 2.2 - Create a Sheel for the balls
+
 ```js
 var createBallSheet = function (game) {
     var canvas = document.createElement('canvas');
@@ -51,6 +57,8 @@ var createBallSheet = function (game) {
     game.cache.addSpriteSheet('sheet-ball', null, canvas, 32, 32, 1, 0, 0);
 };
 ```
+
+### 2.3 - Phaser.Game
 
 ```js
 var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gamearea');
