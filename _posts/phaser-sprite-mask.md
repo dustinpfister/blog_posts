@@ -5,16 +5,17 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 340
-updated: 2018-12-02 21:48:11
-version: 1.2
+updated: 2018-12-02 21:50:08
+version: 1.3
 ---
 
-In [Phaser ce](https://photonstorm.github.io/phaser-ce/) when working with sprites it is possible to use a mask to make only a portion of the sprite visible. This can come in handly for effects that are like that of a spotlight where only a certain area of a sprite is visible that falls inside that of a mask.
+In [Phaser ce](https://photonstorm.github.io/phaser-ce/) when working with sprites it is possible to use a mask to make only a portion of the sprite visible. This can come in handy for effects that are like that of a spotlight where only a certain area of a sprite is visible that falls inside that of a mask.
 
 <!-- more -->
 
 ## 1 - What to know before continuing
 
+This is a post on using a mask to make only a certain area of a sprite visible in phaser 2 the javaScript powered game framework. This is anot a getting started post on phaser 2 , or javaScript in general, so I assume that you have at least some background with these topics before hand.
 
 ## 2 - Basic Mask Demo
 
