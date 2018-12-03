@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 342
-updated: 2018-12-02 21:33:49
-version: 1.4
+updated: 2018-12-02 21:37:30
+version: 1.5
 ---
 
-The [\_.partial](https://lodash.com/docs/4.17.4#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. If you are still confused maybe it would be best to just look at some code examples so lets take a look at \_.partial in lodash, as well as some plain vanilla javaScript code as well.
+The [\_.partial](https://lodash.com/docs/4.17.11#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. If you are still confused maybe it would be best to just look at some code examples so lets take a look at \_.partial in lodash, as well as some plain vanilla javaScript code as well.
 
 <!-- more -->
 
@@ -19,7 +19,7 @@ This is a post on using the \_.partial method in lodash to create a method with 
 
 ## 2 - \_.partial basic example
 
-For a basic example of \_.partial I made this quick example that involves a method that accepts two arguments a, and b called foo. I then create a new method called bar with \_.partial passing foo as the first argument to \_.partial, and then a numb er literal of the value 40. The bar method will then me a method that works just like foo only the a argument is fixed at the value of 40, and the first argument of the resulting bar method will be the value for b in the foo method.
+For a basic example of \_.partial I made this quick example that involves a method that accepts two arguments a, and b called foo. I then create a new method called bar with \_.partial passing foo as the first argument to \_.partial, and then a number literal of the value 40. The bar method will then me a method that works just like foo only the a argument is fixed at the value of 40, and the first argument of the resulting bar method will be the value for b in the foo method.
 
 
 ```js
@@ -34,7 +34,9 @@ let bar = _.partial(foo, 40);
 console.log( bar(2) ); // 42
 ```
 
-### 2.1 - Vanilla js
+### 2.1 - Vanilla js example
+
+It is not that hard at all to achieve a similar effect with just plain old javaScript though. I can just call the foo method inside a function literal that returns the result of a call to foo with the number literal passed as the first argument.
 
 ```js
 var foo = function (a, b) {
