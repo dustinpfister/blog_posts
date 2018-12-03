@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 342
-updated: 2018-12-02 20:07:47
-version: 1.2
+updated: 2018-12-02 21:29:17
+version: 1.3
 ---
 
 The [\_.partial](https://lodash.com/docs/4.17.4#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. If you are still confused maybe it would be best to just look at some code examples so lets take a look at \_.partial in lodash, as well as some plain vanilla javaScript code as well.
@@ -14,6 +14,8 @@ The [\_.partial](https://lodash.com/docs/4.17.4#partial) method in [lodash](http
 <!-- more -->
 
 ## 1 - What to know
+
+This is a post on using the \_.partial method in lodash to create a method with another method that has some arguments fixed and the others that are left as the arguments of the new method that is made with \_.partial. If you are not using lodash that is fine because it is not to hard to accomplish the same effect with plain old javaScript as well.
 
 ## 2 - \_.partial basic example
 
