@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 342
-updated: 2018-12-02 21:37:30
-version: 1.5
+updated: 2018-12-02 21:41:28
+version: 1.6
 ---
 
 The [\_.partial](https://lodash.com/docs/4.17.11#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. If you are still confused maybe it would be best to just look at some code examples so lets take a look at \_.partial in lodash, as well as some plain vanilla javaScript code as well.
@@ -55,6 +55,8 @@ console.log(bar(2)); // 42
 ```
 
 ## 3 - A more complex example of \_.partial
+
+For a more complex example of how this comes in handy sometimes say I have a method that takes a lot of arguments. For example a 3d distance formula that will except six arguments for two points that exist in 3d space. So I want a method that uses this distance method only with one point fixed at the origin call fromOrgin, so that it only takes three arguments.
 
 ```js
 let distance = function (x1, y1, z1, x2, y2, z2) {
