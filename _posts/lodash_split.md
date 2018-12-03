@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2018-12-03 18:51:25
-version: 1.6
+updated: 2018-12-03 18:52:16
+version: 1.7
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) as well in the String prototype that can be used to do just this. Use of this method comes up a lot when researching javaScript code examples for various things, so if you are new to javaScript this is one of many methods that should be well understood.
@@ -40,6 +40,8 @@ console.log(_.initial(items));
 ```
 
 ## 3 - Chaining with \_.split
+
+To chain with split the \_.chain method can be used.
 
 ```js
 let css = 'color:red;font-size:12pt;font-family:arial;';
