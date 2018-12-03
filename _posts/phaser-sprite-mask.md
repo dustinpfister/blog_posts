@@ -5,11 +5,11 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 340
-updated: 2018-11-30 22:25:09
-version: 1.1
+updated: 2018-12-02 21:48:11
+version: 1.2
 ---
 
-In [Phaser ce](https://photonstorm.github.io/phaser-ce/) when working with sprites it is possible to use a mask to make only a portion of the sprite visible.
+In [Phaser ce](https://photonstorm.github.io/phaser-ce/) when working with sprites it is possible to use a mask to make only a portion of the sprite visible. This can come in handly for effects that are like that of a spotlight where only a certain area of a sprite is visible that falls inside that of a mask.
 
 <!-- more -->
 
