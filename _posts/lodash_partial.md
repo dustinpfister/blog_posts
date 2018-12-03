@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 342
-updated: 2018-12-02 21:42:38
-version: 1.7
+updated: 2018-12-02 21:44:58
+version: 1.8
 ---
 
 The [\_.partial](https://lodash.com/docs/4.17.11#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. If you are still confused maybe it would be best to just look at some code examples so lets take a look at \_.partial in lodash, as well as some plain vanilla javaScript code as well.
@@ -71,7 +71,7 @@ console.log(fromOrgin(10, 10, 10)); // 17.32...
 
 ## 4 - Place holders
 
-Place holders can be used to set what arguments will be accepted from the resulting new method, and what arguments will be fixed.
+Place holders can be used to set what arguments will be accepted from the resulting new method, and what arguments will be fixed. So if I want a method where the first argument is to be what is accepted by the new method and the others are fixed that ca be done with place holders.
 
 ```js
 let points = {
