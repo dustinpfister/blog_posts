@@ -5,15 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2018-12-04 16:56:43
-version: 1.2
+updated: 2018-12-04 17:06:36
+version: 1.3
 ---
 
-A few months ago I wrote a post on the \_.get method so for todays post on [lodash](https://lodash.com/) I might as well write one on [\_.set](https://lodash.com/docs/4.17.10#set) as well. The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a propert rather than getting it.
+A few months ago I wrote a post on the [\_.get](/2018/09/24/lodash_get/) method so for todays post on [lodash](https://lodash.com/) I might as well write one on [\_.set](https://lodash.com/docs/4.17.10#set) as well. The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a propert rather than getting it.
 
 <!-- more -->
 
-## 2 - Basic \_.set example
+## 1 - Basic \_.set example
+
+The basic idea of \_.set is that a value can be set by just passing the object, and then a path in string format, followed by the value to set the property to.
 
 ```js
 let enemy = {
