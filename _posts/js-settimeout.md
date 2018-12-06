@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2018-12-06 12:35:50
-version: 1.12
+updated: 2018-12-06 12:42:35
+version: 1.13
 ---
 
 When writing a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop. There are a number of ways to go about doing this, but for this post I will be mainly writing about [settimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout). This method can be used to delay the calling of a function, or setting up a situation in which a function keeps getting called over and over again at a certain rate. It might not be the best option in all situations, often it might be better to use requestAnimationFrame these days. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for.
@@ -56,7 +56,7 @@ So setTimeout may not be the best solution for this kind of situation though com
 
 ### 2.3 - clearTimeout
 
-If I want to stop setTimeout from continuing there is clearTiemout as well. To use it I just need to pass the object that is retruned by setTimeout to clearTimeout.
+If I want to stop setTimeout from continuing there is clearTiemout as well. To use it I just need to pass the timeoutID returned by setTimeout to clearTimeout.
 
 ```js
 var x = 0, t;
@@ -74,5 +74,7 @@ var loop = function () {
 };
 loop();
 ```
+
+The timeoutId will keep stepping forward for the object in which setTimout is used, such as with the window object when it comes to client side javaScript. So I should not have to worry about conflicts when it comes to having more than one loop like this.
 
 ## 3 - Browser throttling of setTiemout when a tab is inactive
