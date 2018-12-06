@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2018-12-06 12:42:35
-version: 1.13
+updated: 2018-12-06 12:49:42
+version: 1.14
 ---
 
 When writing a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop. There are a number of ways to go about doing this, but for this post I will be mainly writing about [settimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout). This method can be used to delay the calling of a function, or setting up a situation in which a function keeps getting called over and over again at a certain rate. It might not be the best option in all situations, often it might be better to use requestAnimationFrame these days. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for.
@@ -78,3 +78,26 @@ loop();
 The timeoutId will keep stepping forward for the object in which setTimout is used, such as with the window object when it comes to client side javaScript. So I should not have to worry about conflicts when it comes to having more than one loop like this.
 
 ## 3 - Browser throttling of setTiemout when a tab is inactive
+
+So one of the few reasons why setTimeout and setInterval are still useful alternatives to that of requestAnimationFrame is that it behaves differently when it comes to inactive windows. For example if I am making some kind of game where I want logic to be called every so often even when the window in which the game is running is not active I can do so with setTimeout, where with requestAnimationFrame the loop would be paused.
+
+### 3.1 - A log to title demo
+
+```js
+var logToTitle = function (mess) {
+    document.title = mess;
+};
+ 
+var money = 0;
+var loop = function () {
+ 
+    setTimeout(loop, 33);
+ 
+    logToTitle(money);
+ 
+    money += 0.25;
+ 
+};
+ 
+loop();
+```
