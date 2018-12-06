@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2018-12-06 12:49:42
-version: 1.14
+updated: 2018-12-06 12:57:30
+version: 1.15
 ---
 
 When writing a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop. There are a number of ways to go about doing this, but for this post I will be mainly writing about [settimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout). This method can be used to delay the calling of a function, or setting up a situation in which a function keeps getting called over and over again at a certain rate. It might not be the best option in all situations, often it might be better to use requestAnimationFrame these days. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for.
@@ -83,6 +83,8 @@ So one of the few reasons why setTimeout and setInterval are still useful altern
 
 ### 3.1 - A log to title demo
 
+To demonstrate an example of what happens with setTimeout when a window is inactive the title element can be used. In client side javaScript there is the document.title property that can be used to set the text of what is displayed for the title of a tab in a browser. This can be used to display something that will update at a certain rate.
+
 ```js
 var logToTitle = function (mess) {
     document.title = mess;
@@ -101,3 +103,5 @@ var loop = function () {
  
 loop();
 ```
+
+When I run this the money value steps at a fairly fast rate as expected, but once I switch tabs it slows down to a rate of about one frame tick per second in  chrome 70.x
