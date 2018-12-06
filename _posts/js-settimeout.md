@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2018-12-06 12:19:47
-version: 1.7
+updated: 2018-12-06 12:24:03
+version: 1.8
 ---
 
 When writing a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop. There are a number of ways to go about doing this, but for this post I will be mainly writing about [settimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout). This method can be used to delay the calling of a function, or setting up a situation in which a function keeps getting called over and over again at a certain rate. It might not be the best option in all situations, often it might be better to use requestAnimationFrame these days. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for.
@@ -19,6 +19,8 @@ I enjoy the process of learning by doing. In this section I will be covering som
 
 ### 2.1 - Delay the call of a function
 
+So to just simple delay the call of a function I just need to pass the function and the amount of time like this.
+
 ```js
 var func = function(){
    console.log('foo');
@@ -27,6 +29,8 @@ var func = function(){
 // call func after 3 seconds
 setTimeout(func,3000);
 ```
+
+It is not a sure thing that the function will call in exactly three seconds though. If there is something else going on that will hold things up it can take longer. The reason why is the javaScript is generally regarded as signal threaded environment, unless you take advantage of a clever way to get around that somehow, but that is all a mater for another post.
 
 ### 2.2 - a basic loop
 
