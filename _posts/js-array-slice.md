@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2018-12-08 11:53:09
-version: 1.2
+updated: 2018-12-08 12:00:13
+version: 1.3
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the Array.slice prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of Array.splice but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
@@ -42,4 +42,18 @@ var a1 = [1,2,3,4],
 last = a1.slice(-1)[0];
  
 console.log(last); // 4
+```
+
+### 1.3 - Clone an array
+
+So because Array.slice returns a new Array rather than mutating one it can, in some cases, be used as a way to clone an array.
+
+```js
+var a1 = [1,2,3,4],
+a2 = a1.slice();
+ 
+a1[1] += 5;
+ 
+console.log(a1); // [1,7,3,4]
+console.log(a2); // [1,2,3,4]
 ```
