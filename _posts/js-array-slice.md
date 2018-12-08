@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2018-12-08 12:00:13
-version: 1.3
+updated: 2018-12-08 12:08:39
+version: 1.4
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the Array.slice prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of Array.splice but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
@@ -38,7 +38,7 @@ The index values are zero relative, and the elements that will end up in the new
 Negative index values can be given to Array.slice this results in the corresponding index value from the end of the length of an array.
 
 ```js
-var a1 = [1,2,3,4],
+let a1 = [1,2,3,4],
 last = a1.slice(-1)[0];
  
 console.log(last); // 4
@@ -49,11 +49,32 @@ console.log(last); // 4
 So because Array.slice returns a new Array rather than mutating one it can, in some cases, be used as a way to clone an array.
 
 ```js
-var a1 = [1,2,3,4],
+let a1 = [1,2,3,4],
 a2 = a1.slice();
  
 a1[1] += 5;
  
 console.log(a1); // [1,7,3,4]
 console.log(a2); // [1,2,3,4]
+```
+
+This works because I am working with an array of primitives, objects however are copied by reference.
+
+```js
+var points = [
+    {
+        x: 5,
+        y: 42
+    }, {
+        x: 27,
+        y: -15
+    }
+];
+ 
+var p = points.slice();
+ 
+points[0].x = 0;
+ 
+console.log(points[0].x); // 0
+console.log(p[0].x); // 0
 ```
