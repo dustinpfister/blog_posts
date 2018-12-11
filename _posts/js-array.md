@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-11 10:06:04
-version: 1.5
+updated: 2018-12-11 10:19:45
+version: 1.6
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -59,3 +59,24 @@ arr.getAnswer = function () {
  
 console.log(arr.getAnswer()); // 42
 ```
+
+## 3 - Looping over an array
+
+When working with arrays often oe way or another a developer must loop over all the elements in an array. With javaScript arrays there are a number of ways to do this such as with a loop such as a while or for loop, a method that is called over and over again, or with an array prototype method such as Array.forEach. In this section I will be covering some of these options that a javaScript developer should be familiar with.
+
+### 3.1 - Using a while loop
+
+When using a loop as a means to loop over the elements in a javaScript array I tend to prefer to use a while loop, beucase I have the option to loop over an array like this:.
+
+```js
+var arr = [1, 2, 3, 4],
+i = arr.length;
+ 
+while(i--){
+    arr[i] = Math.pow(2,arr[i]);
+}
+ 
+console.log(arr); // [2,4,8,16]
+```
+
+This works because a positive number evaluates to true, and a number of zero or lower does not. So I can set a number to the length of an array, and subtract from that number as well in the same location. When the index value reaches a value of zero the loop will end. I have nothing against for loops, and I am not going to say this is the best and only way to loop over an array. However it does has its good points. 
