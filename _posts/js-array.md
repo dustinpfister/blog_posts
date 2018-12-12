@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-12 13:08:42
-version: 1.11
+updated: 2018-12-12 13:13:31
+version: 1.12
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -93,6 +93,8 @@ If you are still confused maybe it is best to just play around with some code ex
 
 ### 6.1 - The arguments object
 
+An example of an Array like object would be the arguments object of function. Whenever a function is called, inside the body of a function there is an arguments object that contains the given arguments to the function. This is useful for defining different logic that is to be used depending on the number of arguments that are given to the function. However for the sake of the content of this post, and this section what is of interest here is the way that the object is structured.
+
 ```js
 var func = function(a,b){
  
@@ -109,6 +111,8 @@ var func = function(a,b){
 };
 func(5,5);
 ```
+
+So because the argument objects constructor is Object and not Array it is just a plain old Object, and as such it does not have Array prototype methods available to it. However it is still very mush structured like an Array so it can be considered an Array like Object.
 
 ## 5 - Looping over an array
 
