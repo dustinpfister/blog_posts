@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-11 10:19:45
-version: 1.6
+updated: 2018-12-12 10:33:27
+version: 1.7
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -16,6 +16,21 @@ In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays 
 ## 1 - What to know
 
 This is a post on javaScript arrays, as such it is important to have at least some background with javaScript. If you are completely new to javaScript it might be a good idea to start with my [getting started with javaScript post](/2018/11/27/js-getting-started/). However if you have at least some background with javaScript, but want to learn more about arrays in general, then this might prove to be a good read.
+
+## 2 - Creating arrays
+
+There is both an array constructor method, and an array literal syntax in javaScript that can be used to create a regular javaScript array. There are also many methods that might return an array as well.
+
+### 2.1 - The array constructor
+
+```js
+var arr = new Array()
+arr.push(1,2,3,4);
+
+console.log(arr); // 1,2,3,4
+```
+
+### 2.2 - The array literal syntax
 
 ## 2 - Arrays are Objects
 
