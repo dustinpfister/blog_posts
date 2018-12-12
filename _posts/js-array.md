@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-12 12:31:15
-version: 1.10
+updated: 2018-12-12 13:08:42
+version: 1.11
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -90,6 +90,25 @@ console.log(arr.getAnswer()); // 42
 Often when working with javaScript you might come across what is often referred to as "array like objects". Arrays themselves are objects as well, so to help clarify this better array like objects are objects that are structured like an array, but are not created with the Array constructor or literal syntax. As such they might be structured like an array, but may not have the various array methods available in the objects prototype.
 
 If you are still confused maybe it is best to just play around with some code examples. Examples of Array like objects in javaScript are the arguments object in the body of a function, and html node lists. It is also possible to create array like objects from scratch. In addition although array methods like Array.splice may not be available it is still possible to use them with array like objects by making use of Function.call.
+
+### 6.1 - The arguments object
+
+```js
+var func = function(a,b){
+ 
+   // the arguments object is structured like an array
+   console.log(arguments[0]); // 5
+   console.log(arguments.length); // 2
+ 
+   // However the constructor is Object, not Array
+   // so it is an "array like object"
+   console.log(arguments.constructor.name); // Object
+   
+   return a + b; // 10
+ 
+};
+func(5,5);
+```
 
 ## 5 - Looping over an array
 
