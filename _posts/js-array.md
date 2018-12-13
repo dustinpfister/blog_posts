@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-13 11:12:48
-version: 1.18
+updated: 2018-12-13 14:38:54
+version: 1.19
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -147,7 +147,7 @@ There is also Function.apply, and Function.bind to be aware of as well I have [w
 
 ## 5 - Looping over an Array
 
-When working with arrays often oe way or another a developer must loop over all the elements in an array. With javaScript arrays there are a number of ways to do this such as with a loop such as a while or for loop, a method that is called over and over again, or with an array prototype method such as Array.forEach. In this section I will be covering some of these options that a javaScript developer should be familiar with.
+When working with arrays often one way or another a developer must loop over all the elements in an array. With javaScript arrays there are a number of ways to do this such as with a loop such as a while or for loop, a method that is called over and over again, or with an array prototype method such as Array.forEach. In this section I will be covering some of these options that a javaScript developer should be familiar with.
 
 ### 5.1 - Using a while loop
 
@@ -176,4 +176,22 @@ var arr = [1, 2, 3, 4];
 arr.forEach(function (n, i) {
     console.log(i, n);
 });
+```
+
+## 6 - Pushing and shifting an array
+
+## 7 - Filtering an Array
+
+One of the most important tasks to preform with arrays is to filter them. One of the many Array prototype methods is Array.filter than can help with filtering tasks. The Array.filter method creates a new array rather than mutating the Array that it is call off of making Array.filter a functional programming friendly method. There are other ways of filtering as well of course, so in this section I will be coving a few examples that involve filtering.
+
+## 7.1 - Using Array.filter
+
+```js
+var arr = [2, 3, 16, 7, 9, 128];
+var pow2 = arr.filter(function (n) {
+    return String(Math.log(n) / Math.log(2)).indexOf('.') == -1;
+});
+ 
+console.log(arr); // [2,3,16,7,9,128]
+console.log(pow2); // [2,16,128]
 ```
