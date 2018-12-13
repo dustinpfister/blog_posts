@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-13 14:38:54
-version: 1.19
+updated: 2018-12-13 15:21:34
+version: 1.20
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -182,9 +182,12 @@ arr.forEach(function (n, i) {
 
 ## 7 - Filtering an Array
 
-One of the most important tasks to preform with arrays is to filter them. One of the many Array prototype methods is Array.filter than can help with filtering tasks. The Array.filter method creates a new array rather than mutating the Array that it is call off of making Array.filter a functional programming friendly method. There are other ways of filtering as well of course, so in this section I will be coving a few examples that involve filtering.
+One of the most important tasks to preform with arrays is to filter them. One of the many Array prototype methods is Array.filter than can help with filtering tasks. The Array.filter method creates a new array rather than mutating the Array that it is call off of making Array.filter a functional programming friendly method.
 
 ## 7.1 - Using Array.filter
+
+To use Array.filter all I need to do is just call the method, and pass a function that will be used to filter the Array that I call filter off of. The current element is passed as the first argument which I can use when defining the logic that will be used to filter. If a true boolean value is returned the current element will be included, else it will not.
+
 
 ```js
 var arr = [2, 3, 16, 7, 9, 128];
