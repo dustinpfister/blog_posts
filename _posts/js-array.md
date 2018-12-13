@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-12 13:13:31
-version: 1.12
+updated: 2018-12-13 10:20:07
+version: 1.13
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -113,6 +113,27 @@ func(5,5);
 ```
 
 So because the argument objects constructor is Object and not Array it is just a plain old Object, and as such it does not have Array prototype methods available to it. However it is still very mush structured like an Array so it can be considered an Array like Object.
+
+### 6.2 - HTMLCollections
+
+```js
+var nodeList = document.getElementsByTagName('div');
+ 
+console.log(nodeList[0]); // (first div)
+console.log(nodeList.length); // (number of divs)
+ 
+console.log(nodeList.constructor.name); // HTMLCollection
+```
+
+### 6.3 - Using Array prototype methods with an Array like object
+
+```js
+Array.prototype.forEach.call(nodeList, function(div){
+ 
+    console.log(div)
+ 
+});
+```
 
 ## 5 - Looping over an array
 
