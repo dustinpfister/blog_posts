@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-13 10:31:17
-version: 1.16
+updated: 2018-12-13 10:41:36
+version: 1.17
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -143,13 +143,13 @@ Array.prototype.forEach.call(nodeList, function(div){
 
 There is also Function.apply, and Function.bind to be aware of as well I have [written a post](/2017/09/21/js-call-apply-and-bind/) in which I get into this in further detail as well.
 
-## 5 - Looping over an array
+## 5 - Looping over an Array
 
 When working with arrays often oe way or another a developer must loop over all the elements in an array. With javaScript arrays there are a number of ways to do this such as with a loop such as a while or for loop, a method that is called over and over again, or with an array prototype method such as Array.forEach. In this section I will be covering some of these options that a javaScript developer should be familiar with.
 
 ### 5.1 - Using a while loop
 
-When using a loop as a means to loop over the elements in a javaScript array I tend to prefer to use a while loop, beucase I have the option to loop over an array like this:.
+When using a loop as a means to loop over the elements in a javaScript array I tend to prefer to use a while loop, because I have the option to loop over an array like this:.
 
 ```js
 var arr = [1, 2, 3, 4],
@@ -162,4 +162,16 @@ while(i--){
 console.log(arr); // [2,4,8,16]
 ```
 
-This works because a positive number evaluates to true, and a number of zero or lower does not. So I can set a number to the length of an array, and subtract from that number as well in the same location. When the index value reaches a value of zero the loop will end. I have nothing against for loops, and I am not going to say this is the best and only way to loop over an array. However it does has its good points. 
+This works because a positive number evaluates to true, and a number of zero or lower does not. So I can set a number to the length of an array, and subtract from that number as well in the same location. When the index value reaches a value of zero the loop will end. I have nothing against for loops, and I am not going to say this is the best and only way to loop over an array. However it does has its good points.
+
+### 5.2 - Array.forEach
+
+Another common way to loop over the contents of an Array in javaScript is to use the Array.forEach method. This is one of the many Array prototype methods that can be called off an instance of Array to preform tasks such as this. When using Array.forEach a function is passed as the first argument, this function will be called for each element in the Array and the current element and index will be passed as arguments to this function.
+
+```js
+var arr = [1, 2, 3, 4];
+ 
+arr.forEach(function (n, i) {
+    console.log(i, n);
+});
+```
