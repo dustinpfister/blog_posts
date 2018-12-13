@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-13 10:41:36
-version: 1.17
+updated: 2018-12-13 11:12:48
+version: 1.18
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -85,13 +85,15 @@ arr.getAnswer = function () {
 console.log(arr.getAnswer()); // 42
 ```
 
-## 6 - Array like objects
+I am not saying doing so is a best practice it is just that in javaScript Arrays are a kind of object, and also plain old objects in general can also be thought of as an array of sorts as well. The core deference is that when working with an Array I am working with an object where the key values are indexed numbers rather than property names.
+
+## 4 - Array like objects
 
 Often when working with javaScript you might come across what is often referred to as "array like objects". Arrays themselves are objects as well, so to help clarify this better array like objects are objects that are structured like an array, but are not created with the Array constructor or literal syntax. As such they might be structured like an array, but may not have the various array methods available in the objects prototype.
 
 If you are still confused maybe it is best to just play around with some code examples. Examples of Array like objects in javaScript are the arguments object in the body of a function, and html node lists. It is also possible to create array like objects from scratch. In addition although array methods like Array.splice may not be available it is still possible to use them with array like objects by making use of Function.call.
 
-### 6.1 - The arguments object
+### 4.1 - The arguments object
 
 An example of an Array like object would be the arguments object of function. Whenever a function is called, inside the body of a function there is an arguments object that contains the given arguments to the function. This is useful for defining different logic that is to be used depending on the number of arguments that are given to the function. However for the sake of the content of this post, and this section what is of interest here is the way that the object is structured.
 
@@ -114,7 +116,7 @@ func(5,5);
 
 So because the argument objects constructor is Object and not Array it is just a plain old Object, and as such it does not have Array prototype methods available to it. However it is still very mush structured like an Array so it can be considered an Array like Object.
 
-### 6.2 - HTMLCollections
+### 4.2 - HTMLCollections
 
 So html collections are another common example of an Array like object when it comes to client side javaScript. When a method like getElementsByTagName is used to get all elements in an html document of a certain tag name, what is returned is not an instance of Array, but HTMLCollection.
 
@@ -129,7 +131,7 @@ console.log(nodeList.constructor.name); // HTMLCollection
 
 Just like with the arguments object in a function these objects are structured just like an Array, but because they are not an instance of Array they do not have Array prototype methods like Array.forEach or Array.filter
 
-### 6.3 - Using Array prototype methods with an Array like object
+### 4.3 - Using Array prototype methods with an Array like object
 
 If an Object that is not an instance of Array is still structured just like an Array where the keys are index values, and there is a single length property that is the number of elements. Then it is possible to still get Array prototype methods to work just fine with these by making use of Function.call.
 
