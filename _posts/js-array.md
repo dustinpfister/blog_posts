@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-14 13:15:34
-version: 1.30
+updated: 2018-12-14 13:19:55
+version: 1.31
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -262,3 +262,15 @@ console.log(pow2); // [2,16,128]
 ## 8 - Mapping an Array
 
 Another handy Array method to know about is of course Array.map. This method is useful when I want to apply some kind of logic to all elements in an array, and remap the contents in the process. This is another array method that excepts a function as its first argument like that of Array.forEach, or Array.filter. However this time the returned value is what will be set as the current index value.
+
+```js
+var a = [1,2,3,4,5,6];
+ 
+a = a.map(function(n){
+ 
+   return Math.pow(2,n);
+ 
+});
+ 
+console.log(a); // [2,4,8,16,32,64]
+```
