@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-14 12:13:41
-version: 1.23
+updated: 2018-12-14 12:19:08
+version: 1.24
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -47,6 +47,21 @@ console.log(arr[1]); // 2
 Once an Array is created it is important to know how to add elements to it. There are a number of ways to do so, with array prototype methods, as well as just directly writing index values. The most common way to go about adding elements to an array in javaScript may be the Array.push method, but there are a number of other ways to do so as well that a javaScript developer should be aware of.
 
 ### 3.1 - Just adding, or overwriting by index
+
+One of the most simple ways to go about adding elements to an Array is to just use the square bracket notation to set the element value of a desired index. To do this just use square brackets after the variable name with the desired index value passed via the brackets. This can be used as a way to both set, and query a certain index value of the array.
+
+```js
+var arr = [],
+i = 0,
+len = 10;
+ 
+while (i < len) {
+    arr[i] = Math.pow(2, i);
+    i += 1;
+}
+ 
+console.log(arr[3]); // 8
+```
 
 ### 3.1 - Use Array.push to add an element to the end of an Array
 
