@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-14 14:18:40
-version: 1.34
+updated: 2018-12-14 14:42:25
+version: 1.35
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -285,16 +285,17 @@ There are two general ways of making Multidimensional Arrays in javaScript as I 
 
 ### 9.2 - Plain old linear Array, but with style.
 
+So I do not have to have an array of arrays, but just a simple plain old linear array. So this can be thought of as a kind of virtual multidimensional array, because it is just a linear collection of elements. When doing this an expression can be used as a way to get the proper index.
+
 ```js
-
 var createGrid = function (w, h) {
-
+ 
     var grid = [],
     i = 0;
-
+ 
     w = w || 8;
     h = h || 6;
-
+ 
     // creating the grid
     while (i < w * h) {
         grid.push({
@@ -304,31 +305,30 @@ var createGrid = function (w, h) {
         });
         i += 1;
     }
-
+ 
+    // I can append a method to grid,
+    // because arrays are still objects
     grid.get = function (ix, y) {
-
+ 
         if (arguments.length === 1) {
-
             return grid[ix];
-
         }
-
+ 
+        // using a formula to get the desired
+        // element
         if (arguments.length === 2) {
-
             return grid[y * w + ix];
-
         }
-
+ 
         return grid[grid.length-1];
-
+ 
     }
-
+ 
     return grid;
-
+ 
 };
-
+ 
 var g = createGrid(4, 3);
-
+ 
 console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
-console.log(g.get()); // {i: 11, x: 3, y: 2}
 ```
