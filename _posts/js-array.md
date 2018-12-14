@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-14 12:08:59
-version: 1.22
+updated: 2018-12-14 12:13:41
+version: 1.23
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -43,6 +43,8 @@ console.log(arr[1]); // 2
 ```
 
 ## 3 - Pushing, shifting, and adding elements to an array
+
+Once an Array is created it is important to know how to add elements to it. There are a number of ways to do so, with array prototype methods, as well as just directly writing index values. The most common way to go about adding elements to an array in javaScript may be the Array.push method, but there are a number of other ways to do so as well that a javaScript developer should be aware of.
 
 ### 3.1 - Just adding, or overwriting by index
 
