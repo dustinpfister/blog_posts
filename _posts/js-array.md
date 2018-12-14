@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-14 12:54:03
-version: 1.26
+updated: 2018-12-14 12:59:20
+version: 1.27
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -65,7 +65,19 @@ console.log(arr[3]); // 8
 
 ### 3.2 - Use Array.push to add an element to the end of an Array
 
-The Array.push method can be used to add one or more additional elements to the end of an Array.
+The Array.push method can be used to add one or more additional elements to the end of an Array. This is often used in place of using the length property of an array as a means of finding out what the current index value is for a new element that will be appended to the end of an array.
+
+```js
+var a = [1, 2, 3];
+ 
+a.push(4);
+ 
+a[a.length] = 5;
+ 
+a.push(6,7,8,9);
+ 
+console.log(a); // [1,2,3,4,5,6,7,8,9]
+```
 
 ### 3.3 - Use Array.shift to add an element to and end of an Array
 
