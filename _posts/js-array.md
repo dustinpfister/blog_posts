@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-14 22:09:36
-version: 1.37
+updated: 2018-12-14 22:33:40
+version: 1.38
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -345,3 +345,7 @@ var g = createGrid(4, 3);
  
 console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
 ```
+
+## 10 - Conclusion
+
+There is a great deal more to write about when it comes to javaScript Arrays. I did not even scratch the surface when it comes to every little thing to know about with Arrays in javaScript. For example there is more to write about when it comes to typed arrays, and how they differ from the regular typical arrays that are used in javaScript. in lodash there is a lengthly collection of methods that can be used to help with common programming tasks surrounding arrays, as well as with objects in general to discus as well. Hopefully this post did a decent job of covering some of the basics and then some though.
