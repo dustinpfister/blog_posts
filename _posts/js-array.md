@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 347
-updated: 2018-12-14 14:42:25
-version: 1.35
+updated: 2018-12-14 21:39:24
+version: 1.36
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -282,6 +282,19 @@ In lodash there is the [\_.map](/2018/02/02/lodash_map/) method that works the s
 There are two general ways of making Multidimensional Arrays in javaScript as I see it. There are arrays of arrays, and then there is using a formula to make a sort of virtual multidimensional array that is really just a plain old linear array.
 
 ### 9.1 - Arrays of Arrays
+
+One way to go about having a multidimensional array in javaScript is to have an Array of Arrays.
+
+```js
+ 
+var grid = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+ 
+console.log( grid[1][1] ); // 5
+```
 
 ### 9.2 - Plain old linear Array, but with style.
 
