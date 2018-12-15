@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2018-12-14 22:14:44
-version: 1.1
+updated: 2018-12-14 22:18:23
+version: 1.2
 ---
 
 Array length in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -19,6 +19,15 @@ So in javaScript Arrays are often a find of Object that is created with the Arra
 
 ```js
 var a = [1,2,3];
+console.log(a.length); // 3
+ 
+var a = Array.from({
+        0: 'a',
+        1: 'b',
+        2: 'c',
+        length: 3
+    });
+ 
 console.log(a.length); // 3
 ```
 
