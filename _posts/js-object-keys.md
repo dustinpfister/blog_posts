@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2018-12-21 12:25:27
-version: 1.12
+updated: 2018-12-21 12:34:01
+version: 1.13
 ---
 
 Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another. There are a few things to know about object keys in javaScript, such as how to get an array of public key names, how to create and get hidden key names, and also the work with inherited keys as well. 
@@ -17,7 +17,7 @@ In this post I will be writing about the basics, and also maybe some of the not 
 
 ## 1 - What to know about Object keys in javaScript
 
-In javaScript there are plain old Objects that can be created with the Object literal syntax, and then there are many other Objects that inherit from the plain old Object class such as Arrays, Functions, Dates, and so forth. These Objects contain property names, or keys, that correspond with values that can be Numbers, Strings, other primitives, or additional nested Objects of one type or another. In this section I will be quickly covering some of the basics of Object keys in javaScript that should be known before continuing.
+In javaScript there are plain old Objects that can be created with the Object literal syntax, and then there are many other Objects that inherit from the plain old Object class such as Arrays, Functions, Dates, and so forth. These Objects contain property names, or keys, that corresponds with values that can be Numbers, Strings, other primitives, or additional nested Objects of one type or another. In this section I will be quickly covering some of the basics of Object keys in javaScript that should be known before continuing.
 
 ## 2 - Object.keys method
 
