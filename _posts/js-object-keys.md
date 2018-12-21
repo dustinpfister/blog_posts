@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2018-12-21 12:19:50
-version: 1.11
+updated: 2018-12-21 12:25:27
+version: 1.12
 ---
 
 Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another. There are a few things to know about object keys in javaScript, such as how to get an array of public key names, how to create and get hidden key names, and also the work with inherited keys as well. 
@@ -17,7 +17,7 @@ In this post I will be writing about the basics, and also maybe some of the not 
 
 ## 1 - What to know about Object keys in javaScript
 
-In javaScript there are plain old Objects that can be created with the Object literal syntax, and then there are many other Objects that inherit from the plain old Object class such as Arrays, Functions, Dates, and so forth. These Objects contain property names, or keys, that corespond with values that can be Numbers, Strings, other primatives, or additional nested Objects of one type or another. In this setion I will be quickly covering some of the basics of Object keys in javaScript that should be known before continuing.
+In javaScript there are plain old Objects that can be created with the Object literal syntax, and then there are many other Objects that inherit from the plain old Object class such as Arrays, Functions, Dates, and so forth. These Objects contain property names, or keys, that correspond with values that can be Numbers, Strings, other primitives, or additional nested Objects of one type or another. In this section I will be quickly covering some of the basics of Object keys in javaScript that should be known before continuing.
 
 ## 2 - Object.keys method
 
@@ -56,7 +56,7 @@ for(k in obj){
 
 ### 4 - Using Object.getOwnPropertyNames to get non enumerable own property object keys as well
 
-In some situations I might have some properties in an Object own properties that are not enumerable. In a way these kinds of properies are still enumerable, it just means that it can not be done with a for in loop or Object.keys. The Object.getOwnProperyNames method can still be used to include these kinds of object keys.
+In some situations I might have some properties in an Object own properties that are not enumerable. In a way these kinds of properties are still enumerable, it just means that it can not be done with a for in loop or Object.keys. The Object.getOwnProperyNames method can still be used to include these kinds of object keys.
 
 ```js
 var point = {
