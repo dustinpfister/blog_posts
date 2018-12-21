@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2018-12-20 20:16:23
-version: 1.8
+updated: 2018-12-21 12:03:15
+version: 1.9
 ---
 
 Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another. There are a few things to know about object keys in javaScript, such as how to get an array of public key names, how to create and get hidden key names, and also the work with inherited keys as well. 
@@ -36,6 +36,8 @@ console.log(keys); // ["x", "y", "attack", "hp"]
 ```
 
 ### 2 - Using a for in loop
+
+A for loop can also be used to get the objects own properties as well.
 
 ```js
 var keys = [],
