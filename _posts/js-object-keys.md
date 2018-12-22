@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2018-12-22 18:35:38
-version: 1.15
+updated: 2018-12-22 18:44:00
+version: 1.16
 ---
 
 Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another. There are a few things to know about object keys in javaScript, such as how to get an array of public key names, how to create and get hidden key names, and also the work with inherited keys as well. 
@@ -21,11 +21,11 @@ In javaScript there are plain old Objects that can be created with the Object li
 
 ### 1.1 - Enumerable, and non-Enumerable Object key names
 
-Object keys can be enumerable mening that it is possible for the key name to be easily aqquired into an array of key names. However it is also possible for them to be non-enumberable as well, when this is the case it is still possible to to include them in an array of key names it just means that a methiod like Object.getOwnPropertyNames needs to be used to do so. It is also possible to set this value for an object key as well, more on that later.
+Object keys can be enumerable meaning that it is possible for the key name to be easily acquired into an array of key names. However it is also possible for them to be non-enumerable as well, when this is the case it is still possible to to include them in an array of key names it just means that a method like Object.getOwnPropertyNames needs to be used to do so. It is also possible to set this value for an object key as well, more on that later.
 
 ### 1.2 - inherited Object keys, and Object Own keys
 
-javaScript supports prototype based ibnheritence, a subject I will not be getting into detial with here. However for the sake of the content of this post I will quickly mention that some keys of any given Object in javaScript are inherited from a propttype object chain and thus are not part of what ity often refered to as an Objects own properties. When an Array of key names is produced in javaScript typically these keys are not needed or desired in such an array, so it is a non isshue, but it is still something to be aware of when it comes to Object keys in javaScript.
+javaScript supports prototype based inheritance, a subject I will not be getting into detail with here. However for the sake of the content of this post I will quickly mention that some keys of any given Object in javaScript are inherited from a prototype object chain and thus are not part of what is often referred to as an Objects own properties. When an Array of key names is produced in javaScript typically these keys are not needed or desired in such an array, so it is a non issue, but it is still something to be aware of when it comes to Object keys in javaScript.
 
 ## 2 - Object.keys method
 
