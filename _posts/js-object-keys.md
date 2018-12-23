@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2018-12-22 18:44:00
-version: 1.16
+updated: 2018-12-22 19:41:24
+version: 1.17
 ---
 
 Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another. There are a few things to know about object keys in javaScript, such as how to get an array of public key names, how to create and get hidden key names, and also the work with inherited keys as well. 
@@ -33,13 +33,13 @@ The Object.keys method can be used to get the objects enumerable own key names. 
 
 ```js
 var obj = {
-   x: 0,
-   y: 35,
-   attack: 12,
-   hp : {
+    x: 0,
+    y: 35,
+    attack: 12,
+    hp : {
       current: 47,
       max: 50
-   }
+    }
 };
  
 var keys = Object.keys(obj);
@@ -47,7 +47,7 @@ var keys = Object.keys(obj);
 console.log(keys); // ["x", "y", "attack", "hp"]
 ```
 
-### 3 - Using a for in loop
+## 3 - Using a for in loop
 
 A for loop can also be used to get the objects own properties as well.
 
@@ -62,7 +62,7 @@ for(k in obj){
 }
 ```
 
-### 4 - Using Object.getOwnPropertyNames to get non enumerable own property object keys as well
+## 4 - Using Object.getOwnPropertyNames to get non enumerable own property object keys as well
 
 In some situations I might have some properties in an Object own properties that are not enumerable. In a way these kinds of properties are still enumerable, it just means that it can not be done with a for in loop or Object.keys. The Object.getOwnProperyNames method can still be used to include these kinds of object keys.
 
@@ -81,3 +81,7 @@ Object.defineProperty(point, 'color', {
 console.log(Object.keys(point)); // ["x","y"]
 console.log(Object.getOwnPropertyNames(point)); // ["x", "y", "color"]
 ```
+
+## 5 - Conclusion
+
+So that is it for my post on Object keys in javaScript. There are keys that are enumerable so a list of key names can be easily obtained by using Object.keys or a for loop, and then Object.getOwnPropertyNames to get all Object own property names.
