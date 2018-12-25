@@ -5,17 +5,14 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 77
-updated: 2017-10-28 16:06:09
-version: 1.5
+updated: 2018-12-24 20:56:03
+version: 1.6
 ---
 
 In this post I will be writing about the [phaser](http://phaser.io) [Line Constructor](http://phaser.io/docs/2.6.2/Phaser.Line.html). This constructor may prove to be somewhat useful when doing anything involving line segments.
 
 <!-- more -->
 
-{% phaser_top %}
-
-{% phaser_if_new_mess %}
 
 ## Quick Phaser Line Hello World.
 
@@ -133,5 +130,3 @@ console.log(line.start.x); // 50
 ## Conclusion
 
 The Line constructor Is very helpful when working with lines, just about all the methods I can think of are there. It's two bad I ran into some problems with a few of the methods, when it comes to finding if a point is on a line or not, but disappointments with phaser are rare so far as I explore Phaser.
-
-{% phaser_bottom %}
