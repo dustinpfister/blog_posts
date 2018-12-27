@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2018-12-26 19:56:58
-version: 1.4
+updated: 2018-12-26 19:59:37
+version: 1.5
 ---
 
 In some situtaions the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certian problems that call for the use of such a method. Its possible that you have all ready come accross the method when it comes to taking advantage of the many copy and paste jaavScript solutions that exist on stack overflow and random sites such as this. However for whatever the reason maybe you wish to know more about it, and other examples of its use so lets take a deeper look at Math.log today.
@@ -15,7 +15,7 @@ In some situtaions the [Math.log](https://developer.mozilla.org/en-US/docs/Web/J
 
 ## 1 - The natural logarithm
 
-So in javaScript the Math.log method with return an exponent that when used with the Matmatical constant E in a Math.pow opertaion will result in that number.
+So in javaScript the Math.log method with return an exponent that when used with the Matmatical constant E in a Math.pow opertaion will result in that number. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm).
 
 ```js
 console.log(Math.pow(Math.E,Math.log(1000))); // 999.99...
