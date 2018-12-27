@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2018-12-26 19:51:46
-version: 1.3
+updated: 2018-12-26 19:56:58
+version: 1.4
 ---
 
-In some situtaions the Math.log method will need to be used to resolve certian problems that call for the use of such a methiod. Its possible that you have all ready come accross the method when it comes to taking adavnatage of the mnay copy and paste jaavScript solutions that existe on stack overflow and random sites such as this. However for whatever the reason maybe you wish to know more about it, and other examples of its use so lets take a deeper look at Math.log today.
+In some situtaions the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certian problems that call for the use of such a method. Its possible that you have all ready come accross the method when it comes to taking advantage of the many copy and paste jaavScript solutions that exist on stack overflow and random sites such as this. However for whatever the reason maybe you wish to know more about it, and other examples of its use so lets take a deeper look at Math.log today.
 
 <!-- more -->
 
@@ -38,4 +38,6 @@ console.log(exp); // 2.99...
  
 console.log(Math.pow(10,exp)); // 999.99...
 ```
+
+So then when it comes to getting a number that is result of a base rased to the exponent of that base there is Math.pow, but when it comes to doing the inverse of this, there is Math.log.
 
