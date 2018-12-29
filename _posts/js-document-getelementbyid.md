@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2018-12-29 17:53:44
-version: 1.3
+updated: 2018-12-29 18:01:20
+version: 1.4
 ---
 
 With front end javaScript it is important to know how to create references to html elements. That is much of front end javaScript devlopment has to do with interacting with the document object model, so creating a reference to an html element is needed in order to get something from and element, change something about it, or add something to it. So in other words there is a need to get an element by its id, or failing that by some other means, so in this post I will be covering some methods and examples of how to go about doing just this.
@@ -57,3 +57,36 @@ get('foo').innerHTML = 'bar';
 ```
 
 If document.getElementById is only used once or twice there is no need, but at some point it might be a good move to do something like this.
+
+## 2 - getElementsByClassName
+
+So one of the many alteratives to getElementById is getElementsByClassName. This is a method that as the name sugests can get elements by a class name that they have assigned to them, rather than an id. This will return an HTMLcollection of each element that has the given class name.
+
+```html
+<html>
+  <head>
+    <title>Demo</title>
+  </head>
+  <body>
+    <div>
+        <span class="foo">one</span>
+        <span>two</span>
+        <span class="foo">three</span>
+        <span class="foo">four</span>
+    </div>
+    <script>
+    
+    var foos = document.getElementsByClassName('foo');
+    
+    [].forEach.call(foos, function(foo){
+    
+        console.log(foo.innerText); // one, three, four
+    
+    });
+    
+    </script>
+  </body>
+</html>
+```
+
+An HTMLCollection is not an Array, but it is an Array like object, so Array methods can be used via Function.call. You might still see this used in code examples now and then, but as of late there is querySelectorAll, more on that one later.
