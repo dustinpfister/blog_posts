@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2018-12-29 16:17:26
-version: 1.3
+updated: 2018-12-29 16:39:28
+version: 1.4
 ---
 
-When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, not just from a search engine prespective, but also for the sake of informing visitors about what a page is about, or what is currently going on with a page. In this post I will be taking a momnent to play around a little with the document.title property in client side javaScript. This property can be used to both get and set the title text of an html document. There is also a little more to cover when it comes to going beyond the basics with this as well when it comes to using the title tag of a page to inform a user about somthing as well with javaScript so lets get to it.
+When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, not just from a search engine perspective, but also for the sake of informing visitors about what a page is about, or what is currently going on with a page. In this post I will be taking a moment to play around a little with the document.title property in client side javaScript. This property can be used to both get and set the title text of an html document. There is also a little more to cover when it comes to going beyond the basics with this as well when it comes to using the title tag of a page to inform a user about something as well with javaScript so lets get to it.
 
 <!-- more -->
 
@@ -32,7 +32,7 @@ The [document.title](https://developer.mozilla.org/en-US/docs/Web/API/Document/t
 </html>
 ```
 
-Thats all there is to it when it comes to just getting or setting the string value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a titles value. 
+That's all there is to it when it comes to just getting or setting the string value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a titles value. 
 
 ## 2 - document title update time when a tab is inactive
 
@@ -58,4 +58,4 @@ var loop = function () {
 loop();
 ```
 
-Will update the title text to the amount of time between function calls, as exspected it will give me around 33ms if the window is active, but will increase to a second if the window is inactive.
+Will update the title text to the amount of time between function calls, as expected it will give me around 33ms if the window is active, but will increase to a second if the window is inactive.
