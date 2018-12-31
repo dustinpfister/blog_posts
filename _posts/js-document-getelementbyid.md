@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2018-12-29 18:01:20
-version: 1.4
+updated: 2018-12-30 22:09:54
+version: 1.5
 ---
 
 With front end javaScript it is important to know how to create references to html elements. That is much of front end javaScript devlopment has to do with interacting with the document object model, so creating a reference to an html element is needed in order to get something from and element, change something about it, or add something to it. So in other words there is a need to get an element by its id, or failing that by some other means, so in this post I will be covering some methods and examples of how to go about doing just this.
@@ -90,3 +90,12 @@ So one of the many alteratives to getElementById is getElementsByClassName. This
 ```
 
 An HTMLCollection is not an Array, but it is an Array like object, so Array methods can be used via Function.call. You might still see this used in code examples now and then, but as of late there is querySelectorAll, more on that one later.
+
+## 3 - document.getElementsByTagName
+
+There is also a way to get a html collection of all elements of a given tag name with document.getElementsByTagName.
+
+```js
+var divs = document.getElementsByTagName('div');
+console.log(divs.length);
+```
