@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 353
-updated: 2019-01-02 18:34:40
-version: 1.4
+updated: 2019-01-02 18:40:17
+version: 1.5
 ---
 
 I have been writing [blog posts](https://en.wikipedia.org/wiki/Blog) for a while now on this site, and every now and then I think about what I should be doing when it comes to my writing process. I have a few posts that are doing well, and a whole bunch that are not so there is a need to improve my strategy. In addition it is the begging of a new year, so all the more reason to take a moment to consider what I am doing, and more importantly what I can do to improve. So I thought I would start a new year with a new post on a topic that I do not touch on often here when it comes to the subject of bogging in general, rather than [javaScript](https://en.wikipedia.org/wiki/JavaScript) related content.
@@ -17,7 +17,7 @@ I have been writing [blog posts](https://en.wikipedia.org/wiki/Blog) for a while
 
 I am not promoting my content on social media, my strategy of blog post promotion is then depending completely on [organic traffic](https://en.wikipedia.org/wiki/Organic_search). This has been the case sense the beginning, and so far it is working out okay. The thing about it though is that when I was first starting out, I was following a strategy that is like throwing a plate of spaghetti against a wall to see what sticks. Although that kind of strategy works, it is not very efficient. It is better to just know what will stick to begin with before I even start writing.
 
-So at present I have a few posts that are preforming very well, and a whole lot that are not doing much of anything. To get my site to preform better I am just going to have to do gain a decent grasp on how to do keyword research effectively. This is something that I aim to improve on in the coming year.
+So at present I have a few posts that are preforming very well, and a whole lot that are not doing much of anything. To get my site to preform better I am just going to have to do gain a decent grasp on how to do [keyword research](https://en.wikipedia.org/wiki/Keyword_research) effectively. This is something that I aim to improve on in the coming year.
 
 ## 2 - Become passionate about what ranks, rather than writing about what I am passionate about to begin with.
 
@@ -30,3 +30,5 @@ So regardless if I like writing about phaser better or not, when it comes to dri
 ## 3 - More Posts on vanilla js content
 
 These days I have been writing more content on plain old vanilla javaScript, rather than a certain library or framework. This is something I am going to continue for a while, with a new strategy that takes into account keyword research. This might result in expanding my collection on plan old javaScript to around one hundred posts, or so maybe. I will also want to revise my older content on vanilla js as well, to improve post quality, and just make necessary updates.
+
+The main reason why I will be doing this is as an experiment when it comes to keyword research. If I can find a way to do this kind of research effectively it should be possible to turn that collection of content into something that preforms as well as my content on lodash. Of course that is not the only reason why, javaScript is just awesome to begin with as well.
