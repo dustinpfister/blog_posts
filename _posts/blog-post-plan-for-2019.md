@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 353
-updated: 2019-01-02 18:40:17
-version: 1.5
+updated: 2019-01-02 18:51:11
+version: 1.6
 ---
 
 I have been writing [blog posts](https://en.wikipedia.org/wiki/Blog) for a while now on this site, and every now and then I think about what I should be doing when it comes to my writing process. I have a few posts that are doing well, and a whole bunch that are not so there is a need to improve my strategy. In addition it is the begging of a new year, so all the more reason to take a moment to consider what I am doing, and more importantly what I can do to improve. So I thought I would start a new year with a new post on a topic that I do not touch on often here when it comes to the subject of bogging in general, rather than [javaScript](https://en.wikipedia.org/wiki/JavaScript) related content.
@@ -19,7 +19,7 @@ I am not promoting my content on social media, my strategy of blog post promotio
 
 So at present I have a few posts that are preforming very well, and a whole lot that are not doing much of anything. To get my site to preform better I am just going to have to do gain a decent grasp on how to do [keyword research](https://en.wikipedia.org/wiki/Keyword_research) effectively. This is something that I aim to improve on in the coming year.
 
-## 2 - Become passionate about what ranks, rather than writing about what I am passionate about to begin with.
+## 2 - I aim to become passionate about what ranks, rather than writing about what I am passionate about to begin with.
 
 There is the idea of writing about areas of javaScript that I am all ready passionate about, and then there is the idea of just jumping around all over the board, and just writing about any area of javaScript that I manage to rank with in google search. For example many people get into programming with the aspiration of becoming a successful indie game developer, but the problem with that is that becoming an indie game developer is kind of the programming equivalent of becoming a rock star. It is something that one should pursue sure, simply because it is an example of something that help keep things interesting. Still there are other aspects of programing as well, and writing about other aspects of programming with javaScript might prove to be more rewarding in terms of traffic.
 
@@ -32,3 +32,9 @@ So regardless if I like writing about phaser better or not, when it comes to dri
 These days I have been writing more content on plain old vanilla javaScript, rather than a certain library or framework. This is something I am going to continue for a while, with a new strategy that takes into account keyword research. This might result in expanding my collection on plan old javaScript to around one hundred posts, or so maybe. I will also want to revise my older content on vanilla js as well, to improve post quality, and just make necessary updates.
 
 The main reason why I will be doing this is as an experiment when it comes to keyword research. If I can find a way to do this kind of research effectively it should be possible to turn that collection of content into something that preforms as well as my content on lodash. Of course that is not the only reason why, javaScript is just awesome to begin with as well.
+
+## 4 - Additional sites, and maybe some projects as well.
+
+Now that this site is doing okay at least it is time to start scaling up. Of course that means more content on this site, but it also means updating existing content, and starting additional sites as well. When making a website what is really going to make a break a sites success is its content. People do not visit sites, and keep coming back to them because of the layout.
+
+Blog posts are an example of content that is a great way to start bringing in traffic to a site, but there are other examples of content as well. When it comes to javaScript development there is of course making games as a from of content, but that is not even the half of it. There is also making animations with javaScript as well, which can be used to furnish yet another kind of content that might help produce a successful site also. So I aim to diversify a bit more this year, and not just with this site, a few new projects sounds like a good idea.
