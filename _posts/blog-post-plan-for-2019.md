@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 353
-updated: 2019-01-02 19:01:56
-version: 1.7
+updated: 2019-01-02 19:04:50
+version: 1.8
 ---
 
 I have been writing [blog posts](https://en.wikipedia.org/wiki/Blog) for a while now on this site, and every now and then I think about what I should be doing when it comes to my writing process. I have a few posts that are doing well, and a whole bunch that are not so there is a need to improve my strategy. In addition it is the begging of a new year, so all the more reason to take a moment to consider what I am doing, and more importantly what I can do to improve. So I thought I would start a new year with a new post on a topic that I do not touch on often here when it comes to the subject of bogging in general, rather than [javaScript](https://en.wikipedia.org/wiki/JavaScript) related content.
@@ -42,3 +42,7 @@ Blog posts are an example of content that is a great way to start bringing in tr
 ## 5 - Write longer, higher quality posts
 
 When looking over a lot of my older content I have discovered something, a great deal of my content is a little thin. I have over three hundred posts at this point, but many of them are around five hundred words or less even. I know that a longer post does not necessarily mean that it is a better post. However still with much of my content it seems like I could elaborate a whole lot more on things.
+
+## 6 - Conclusion
+
+So when it comes to writing blog posts for 2019 I will be trying out some new strategies and ideas when it comes to my process of how to go about writing and updating content. It might be a while yet until I get the hang of things when it comes to being a webmaster, but I think this is something that is worth while.
