@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 353
-updated: 2019-01-02 18:51:11
-version: 1.6
+updated: 2019-01-02 19:01:56
+version: 1.7
 ---
 
 I have been writing [blog posts](https://en.wikipedia.org/wiki/Blog) for a while now on this site, and every now and then I think about what I should be doing when it comes to my writing process. I have a few posts that are doing well, and a whole bunch that are not so there is a need to improve my strategy. In addition it is the begging of a new year, so all the more reason to take a moment to consider what I am doing, and more importantly what I can do to improve. So I thought I would start a new year with a new post on a topic that I do not touch on often here when it comes to the subject of bogging in general, rather than [javaScript](https://en.wikipedia.org/wiki/JavaScript) related content.
@@ -38,3 +38,7 @@ The main reason why I will be doing this is as an experiment when it comes to ke
 Now that this site is doing okay at least it is time to start scaling up. Of course that means more content on this site, but it also means updating existing content, and starting additional sites as well. When making a website what is really going to make a break a sites success is its content. People do not visit sites, and keep coming back to them because of the layout.
 
 Blog posts are an example of content that is a great way to start bringing in traffic to a site, but there are other examples of content as well. When it comes to javaScript development there is of course making games as a from of content, but that is not even the half of it. There is also making animations with javaScript as well, which can be used to furnish yet another kind of content that might help produce a successful site also. So I aim to diversify a bit more this year, and not just with this site, a few new projects sounds like a good idea.
+
+## 5 - Write longer, higher quality posts
+
+When looking over a lot of my older content I have discovered something, a great deal of my content is a little thin. I have over three hundred posts at this point, but many of them are around five hundred words or less even. I know that a longer post does not necessarily mean that it is a better post. However still with much of my content it seems like I could elaborate a whole lot more on things.
