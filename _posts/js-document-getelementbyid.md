@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2018-12-31 17:59:46
-version: 1.6
+updated: 2019-01-02 19:10:08
+version: 1.7
 ---
 
 With front end javaScript it is important to know how to create references to html elements. That is much of front end javaScript development has to do with interacting with the document object model, so creating a reference to an html element is needed in order to get something from and element, change something about it, or add something to it. So in other words there is a need to get an element by its id, or failing that by some other means, so in this post I will be covering some methods and examples of how to go about doing just this.
@@ -99,3 +99,7 @@ There is also a way to get a html collection of all elements of a given tag name
 var divs = document.getElementsByTagName('div');
 console.log(divs.length);
 ```
+
+## 4 - Document.querySelector, and Document.querySelectorAll
+
+If you are familial with jQuery then you will like [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) when as a way to gain references to elements in javaScript. This allows for a wide range of possibilities for gaining accesses to dom elements, by Id, class, tag name, and more.
