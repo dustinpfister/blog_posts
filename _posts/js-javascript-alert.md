@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-01-07 19:13:16
-version: 1.2
+updated: 2019-01-07 19:19:36
+version: 1.3
 ---
 
-When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the window.alert method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
+When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
 
 <!-- more -->
 
@@ -35,3 +35,5 @@ alert(n >= 40); // true
     </body>
 </html>
 ```
+
+The alert method is a property of the window object so there is no real difference between window.alert, this.alert, and just plain alert by itself.
