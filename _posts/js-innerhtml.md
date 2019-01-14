@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-01-14 17:36:13
-version: 1.3
+updated: 2019-01-14 17:50:19
+version: 1.4
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML so in this post I will also be coverning some alternative ways of injecting html into a page with javaScript. 
@@ -15,7 +15,7 @@ With client side javaScript projects the [innerHtml](https://developer.mozilla.o
 
 ## 1 - innerHTML example
 
-The innerHTML property of an element is one way to go abount changing the content of an element. There are other ways that are considered more profesional by many devlopers becuase of some secerity conserns, but the nice thing about innerHTML is that it is fairly easy to use. The use of just involves creating a string repersentation of the html that you want, and set that string to the value of innerHTML.
+The innerHTML property of an element is one way to go abount changing the content of an element. There are other ways that are considered more profesional by many devlopers becuase of some security conserns, but the nice thing about innerHTML is that it is fairly easy to use. The use of just involves creating a string repersentation of the html that you want, and set that string to the value of innerHTML.
 
 ```html
 <html>
@@ -42,3 +42,7 @@ html += '<li>'+n+'</li>'
  
 el.innerHTML = html += '<\/ul>';
 ```
+
+## 2 - Security concerns with innerHTML
+
+The isshue of security concerns with innerHTML often comes up in. The thing about innerHTML is that when script tags are used in the html string, the code in the string will run. As such this can potentaly result in code injecttion attacks compared to the use of an alternative like createTextNode, or innerText.
