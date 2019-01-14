@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-01-14 17:50:19
-version: 1.4
+updated: 2019-01-14 17:52:23
+version: 1.5
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML so in this post I will also be coverning some alternative ways of injecting html into a page with javaScript. 
@@ -46,3 +46,9 @@ el.innerHTML = html += '<\/ul>';
 ## 2 - Security concerns with innerHTML
 
 The isshue of security concerns with innerHTML often comes up in. The thing about innerHTML is that when script tags are used in the html string, the code in the string will run. As such this can potentaly result in code injecttion attacks compared to the use of an alternative like createTextNode, or innerText.
+
+```js
+var el = document.getElementById('out');
+ 
+el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad times\")'>";
+```
