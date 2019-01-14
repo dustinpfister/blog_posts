@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-01-14 17:55:09
-version: 1.6
+updated: 2019-01-14 18:02:13
+version: 1.7
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML so in this post I will also be coverning some alternative ways of injecting html into a page with javaScript. 
@@ -54,3 +54,9 @@ var el = document.getElementById('out');
  
 el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad times\")'>";
 ```
+
+## 3 - innerHTML alternatives
+
+In this section I will be covering alteratives to innerHTML. This includes the use of many methods that are used togeather, and simple alteratives that work in a simular way as is the case with innerText.
+
+### 3.1 - document.createElement, document.createTextNode, and el.appendChild
