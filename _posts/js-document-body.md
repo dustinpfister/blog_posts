@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-01-14 20:08:57
-version: 1.2
+updated: 2019-01-14 20:12:29
+version: 1.3
 ---
 
-The [body element](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of an html document is where all additional elements will be placed that have to do with the documents layout an structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
+The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
 
 <!-- more -->
 
