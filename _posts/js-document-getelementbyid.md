@@ -1,19 +1,19 @@
 ---
-title: document.getElementById and other ways to gain references to elements in javaScript
+title: Get by id with document.getElementById and other ways to gain references to elements in javaScript
 date: 2018-12-27 19:08:00
 tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2019-01-18 18:13:06
-version: 1.9
+updated: 2019-01-18 18:21:45
+version: 1.10
 ---
 
-With front end javaScript it is important to know how to create references to html elements. That is much of front end javaScript development has to do with interacting with the document object model, so creating a reference to an html element is needed in order to get something from and element, change something about it, or add something to it. So in other words there is a need to get an element by its id, such as with [document.getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) or failing that by some other means, so in this post I will be covering some methods and examples of how to go about doing just this.
+With front end javaScript it is important to know how to create references to html elements. That is much of front end javaScript development has to do with interacting with the document object model, so creating a reference to an html element is needed in order to get something from and element, change something about it, or add something to it. So in other words there is a need to get an element by its id, such as with [document.getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById). In addition it is possible to get a reference to an element by other means, so in this post I will be covering some methods and examples of how to go aboutgrabbing references to html elements in client side javaScript.
 
 <!-- more -->
 
-## 1 - Using document.getElementById to get a reference to an element
+## 1 - Get by id by using document.getElementById to get a reference to an element
 
 One of the most common ways of getting a reference to an html element with javaScript is to use document.getElementById. This is seen in tones of code examples, and is still often a favorite way of going about accessing an element in front end javaScript.
 
