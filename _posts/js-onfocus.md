@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-01-20 18:17:03
-version: 1.9
+updated: 2019-01-20 18:19:23
+version: 1.10
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user focus on an element. This often happens when a user clicks on an element, but the event does behave a little different from a click event. In this post I will be covering some quick examples when it comes to working with focus javaScript events, how to attach handers for such events, and how to simulate them as well with the [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method of an element.
@@ -39,6 +39,8 @@ document.getElementById('bar').focus();
 Here I have a simple example where I am just setting the focus of the input element that has an id of bar. When I load this in the browser the bar element is focus on for starters as exspected so the focus method is useful for setting focus via javaScript.
 
 ## 2 - onfocus event hander for an element
+
+There might be situations in which I will want to define some javaScript that will run each time a focus event happens for one or more elements. For this there is the onfocus event.
 
 ```html
 <html>
