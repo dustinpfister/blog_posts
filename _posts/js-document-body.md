@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-01-20 17:59:04
-version: 1.5
+updated: 2019-01-20 18:02:14
+version: 1.6
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -45,3 +45,5 @@ canvas.height = 240;
 ctx.fillStyle='#000000';
 ctx.fillRect(0,0,canvas.width,canvas.height);
 ```
+
+ If all goes well this example just results in a black blank canvas, nothing to interesting, but you get the idea. So as you can see the document.body property is always there to serve as a quick reference to the body element.
