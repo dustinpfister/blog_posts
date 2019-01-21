@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-01-19 19:26:39
-version: 1.1
+updated: 2019-01-21 18:20:24
+version: 1.2
 ---
 
 [Script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web devlopment when I want to do anything that involves the use of client side javaScript in a website. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
@@ -29,4 +29,25 @@ console.log(n+2); // 42
         </script>
     </body>
 </html>
+```
+
+## 2 - script tags and external javaScript files
+
+```html
+<html>
+    <head>
+        <title>script tag</title>
+    </head>
+    <body>
+        <script>
+        </script>
+        
+        <div id="out"></div>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+```js
+document.getElementById('out').innerText = 'external';
 ```
