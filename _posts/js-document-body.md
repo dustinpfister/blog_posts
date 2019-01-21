@@ -1,12 +1,12 @@
 ---
-title: document body and some related DOM topics
+title: document body property in vanilla js
 date: 2019-01-03 21:00:00
 tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-01-20 18:02:14
-version: 1.6
+updated: 2019-01-21 12:26:56
+version: 1.7
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
