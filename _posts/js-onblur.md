@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-01-21 13:12:58
-version: 1.3
+updated: 2019-01-21 15:51:57
+version: 1.4
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is the opposite of the on focus event. A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired.
@@ -31,6 +31,8 @@ In this example I am attaching some handlers for both the on focus, and on blur 
     </body>
 </html>
 ```
+
+The main.js file looks as follows.
 
 ```js
 var forBlur = function (e) {
