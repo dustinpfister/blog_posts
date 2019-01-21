@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-01-21 18:20:24
-version: 1.2
+updated: 2019-01-21 18:57:33
+version: 1.3
 ---
 
-[Script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web devlopment when I want to do anything that involves the use of client side javaScript in a website. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
+[Script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
 
 <!-- more -->
 
@@ -32,6 +32,8 @@ console.log(n+2); // 42
 ```
 
 ## 2 - script tags and external javaScript files
+
+It is also possible to load external scripts as well. This can be done by making use of the src attribute of the script tag to point to the url of the external javaScript file.
 
 ```html
 <html>
