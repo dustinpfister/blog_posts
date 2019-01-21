@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-01-21 12:32:08
-version: 1.3
+updated: 2019-01-21 15:54:45
+version: 1.4
 ---
 
 In javaScript event listeners are methods that fire when a given event happens, such as when a mouse button is clicked, or an element looses focus. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -38,3 +38,5 @@ button.addEventListener('click', function(e){
  
 });
 ```
+
+For the most part addEventListener should be used as a way to attach events to an element. This way if I want I can attach more than one handler for the same event and element. 
