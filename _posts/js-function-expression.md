@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2019-01-29 14:23:55
-version: 1.6
+updated: 2019-01-29 14:27:14
+version: 1.7
 ---
 
 [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. In this post I will be going over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
@@ -56,23 +56,32 @@ However if the bar method where to be called outside the scope of the function e
 Variable hoisting in javaScript is where a variable can get hoisted up to the top of the variable scope. With function expressions that are assigned to a variable using the var keyword, the variable does get hoisted to the top, but with the value of undefined. This is one of the reasons why many javaScript developers tend to prefer function statements because the identifiers that are used with function statements can be used anywhere within the variable scope.
 
 ```js
-
-
+// a function expression where the bar variable
+// is getting hoisted but with the value of undefined
 try {
     bar(); // ERROR calling undefined
- 
+
 } catch (e) {
- 
+
     console.log(typeof bar); // undefined
- 
+
 }
 var bar = function () {
- 
+
     return 'foo';
- 
+
 };
 console.log(typeof bar); // function
-
+ 
+// with function statements this is not a problem
+ 
+console.log(foo()); // bar
+ 
+function foo() {
+    return 'bar';
+};
+ 
+console.log(foo()); // bar
 ```
 
 ## 3 - Not so typical use case examples of function expressions in javaScript
