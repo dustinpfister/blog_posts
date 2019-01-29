@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2019-01-29 14:27:14
-version: 1.7
+updated: 2019-01-29 14:39:38
+version: 1.8
 ---
 
 [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. In this post I will be going over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
@@ -84,11 +84,30 @@ function foo() {
 console.log(foo()); // bar
 ```
 
-## 3 - Not so typical use case examples of function expressions in javaScript
+## 4 - Using a function expression as an object
+
+So functions are a kind of object in javaScript, so they can be used just like plain old objects.
+
+```js
+var foo = function () {
+    return 'bar';
+};
+ 
+// function expressions are a kind of object
+// and they can be used as such
+foo.bar = function () {
+    return 'foobar';
+};
+ 
+console.log(foo()); // bar
+console.log(foo.bar()); // foobar
+```
+
+## 5 - Not so typical use case examples of function expressions in javaScript
 
 So I covered some typical use case examples of function expressions, now it is time to cover some weird things that can be done with function expressions. I am not saying any of this is a best practice or not. However maybe this section will help you gain some deeper insight of what is possible with function expressions.
 
-## 3.1 - Using a function expression as part of a larger expression
+## 5.1 - Using a function expression as part of a larger expression
 
 I do not run into many situations in which it is call for, but one of the benefits of function expressions is that they can be used as part of a larger expression by doing something like this.
 
