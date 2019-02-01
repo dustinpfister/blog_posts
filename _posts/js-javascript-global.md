@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2019-02-01 10:37:51
-version: 1.7
+updated: 2019-02-01 10:48:54
+version: 1.8
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScfipt this is typically the window object but it can also be other objects as well such as when working with a web worker environment. In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative when would be local function level, and not block level scoped variables.
@@ -71,6 +71,26 @@ document.getElementsByTagName('div')[0].innerText = bar;
 ```
 
 The reason why this works is because in client side javaScript the window object is often the global object. At least in most cases it is. The situation changes when dealing with a web worker environment for example. It is also possible to define a global via the this keyword as well, but in some situations the this keyword may not always refer to the global object.
+
+## Elements with ids are globals in client side javaScript
+
+It is true that when an id attribute is assigned to an html element in client side javaScript a reference to that element becomes a global variable.
+
+```js
+<html>
+    <head>
+        <title>ids are globals</title>
+    </head>
+    <body>
+        <div id="foo"></div>
+        <script>
+foo.innerText='bar';
+        </script>
+    </body>
+</html>
+```
+
+Something to watch out for, and this is also one of the reasons why javaScript developers get a little aggregated when defining globals. It is true that the global name space is all ready a little polluted event to begin with these days. However if you are sure that you are not over writing a global, or that there is no name space collisions of any kind, then defining a global now and then is no big deal when called for.
 
 ## Implicit Globals
 
