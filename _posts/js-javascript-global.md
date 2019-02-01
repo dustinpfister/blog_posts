@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2019-02-01 10:25:51
-version: 1.6
+updated: 2019-02-01 10:37:51
+version: 1.7
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScfipt this is typically the window object but it can also be other objects as well such as when working with a web worker environment. In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative when would be local function level, and not block level scoped variables.
@@ -45,6 +45,32 @@ try {
 ```
 
 The opposite of a global variable is often referred to as a local variable. Traditionally javaScript had function level local scope only, but now there is block level scope as well that can be used when using the let keyword in place of the traditional var keyword.
+
+## Creating a global by appending to window in client side javaScript
+
+It is possible to create globals in client side javaScript by just simply appending to the window object.
+
+```js
+<html>
+    <head>
+        <title>javascript globals with window</title>
+    </head>
+    <body>
+        <div></div>
+        <script>
+let foo = function(){
+
+window.bar = 'foobar';
+
+};
+foo();
+document.getElementsByTagName('div')[0].innerText = bar;
+        </script>
+    </body>
+</html>
+```
+
+The reason why this works is because in client side javaScript the window object is often the global object. At least in most cases it is. The situation changes when dealing with a web worker environment for example. It is also possible to define a global via the this keyword as well, but in some situations the this keyword may not always refer to the global object.
 
 ## Implicit Globals
 
