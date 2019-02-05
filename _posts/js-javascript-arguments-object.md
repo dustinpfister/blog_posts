@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-02-05 12:27:00
-version: 1.5
+updated: 2019-02-05 12:39:52
+version: 1.6
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special identifier that can be used to access any and all arguments that have been passed to the function when it is called. This identifier is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, alone with the values of course.
@@ -56,4 +56,39 @@ let func = function () {
 };
  
 console.log( func(1,2,3,4,5)); // 15
+```
+
+## 3 - The length property
+
+The length property can be used to know the number of arguments that where passed to the function when it was called. This can then be used as a way to have more than one expression that is used for something depending on the number of arguments that are given. For example say I want a method that will just get an element in an array by index if it is given one argument, but will use a more complex expression when given two arguments. 
+
+```js
+let mod = {
+ 
+    grid: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+ 
+    w: 3,
+ 
+    get: function (xi, y) {
+ 
+        if (arguments.length < 1) {
+            return null;
+        }
+ 
+        if (arguments.length === 1) {
+ 
+            return this.grid[xi];
+ 
+        } else {
+ 
+            return this.grid[y * this.w + xi];
+ 
+        }
+ 
+    }
+ 
+};
+console.log(mod.get(1)); // 2
+console.log(mod.get(2,1)); // 6
+
 ```
