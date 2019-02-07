@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-02-07 13:38:18
-version: 1.8
+updated: 2019-02-07 13:48:40
+version: 1.9
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -35,6 +35,7 @@ When making an equal comparison between n and n + 1 the returned value should be
 ## 3 - Converting Numbers to Strings in javaScript
 
 The process of converting a number to a string is fairly easy, there is of course the String method that can be used. However in javaScript conversion to a string can also occur when just adding a number to a string as well. Often I see that method used as a way to do so by just adding an empty string to a number.
+
 ```js
 let n = 42;
  
@@ -42,11 +43,18 @@ console.log(typeof n); // number
  
 console.log(typeof String(n)); // string
 console.log(typeof (n + '')); // string
+console.log(typeof n.toString(16)); // string
 ```
 
-This works because in javaScript the addition operator is not just used to add Numbers but also to concatenate strings together as well. So when a number and string are added together that results in string concatenation rather than addition and the result is a string not a number.
+This works because in javaScript the addition operator is not just used to add Numbers but also to concatenate strings together as well. So when a number and string are added together that results in string concatenation rather than addition and the result is a string not a number. I will get into this sort of thing more so in the expressions section of this post.
 
-This can result in problems if you are not aware of what is going on with data types. It is true that javaScript is a typeless language, but typeless means that a variable can be any one type at any given time. It does not mean that javaScript does not have primitives, of course it does, you would not have much of a language without them.
+### 3.1 - Number.toString in detail
+
+One more thing about the Number.toString prototype method, there is an option to give a base as the first argument to this method. So if you are looking for a quick way to get a string representation of a number in binary for example the number to can be given to the toSting method sense binary is a base two system.
+
+```js
+console.log( (42).toString(2) ); // '101010'
+``` 
 
 ## 4 - javaScript number literals
 
