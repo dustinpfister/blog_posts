@@ -1,15 +1,15 @@
 ---
-title: Help with confusion over javaScripts Not a Number (NaN), and the isNan methods.
+title: NaN (Not a Number) in javaScript and the isNaN methods.
 date: 2017-09-23 16:46:00
 tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 42
-updated: 2017-09-24 10:37:57
-version: 1.1
+updated: 2019-02-07 10:27:00
+version: 1.2
 ---
 
-In JavaScript there is a special number value that happens as a result of a math operation with a String, or a variety of other situations such as division of zero over zero. 
+In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) or [Not A Number](https://en.wikipedia.org/wiki/NaN) is a special number value that happens as a result of a math operation with a String, or a variety of other situations such as division of zero over zero. This value has some unique things going on with it such as the fact that its data type is a Number, yet it is called Not A Number. However maybe one of the most concerning things about it is that by itself it does not equal anything including itself, so special methods must be used to make comparisons.
 
 <!-- more -->
 
