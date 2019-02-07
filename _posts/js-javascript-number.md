@@ -5,17 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-01-25 12:49:29
-version: 1.5
+updated: 2019-02-07 13:25:29
+version: 1.6
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
 
 <!-- more -->
 
-## 1 - javaScript Numbers are only one data type IEEE_754 (at least traditionally)
+## 1 - javaScript Numbers are only one data type IEEE_754
 
-In javaScript, traditionally at least all Numbers are 64 bit double precision (IEEE_754)[https://en.wikipedia.org/wiki/IEEE_754-1985] floating point numbers. If you would like to dive into the subject of IEEE 754 to gain a better understanding of the data type by all means do so, but getting into the depth of that is not necessarily required as long as you are aware that there are some limitations with that data type. There are new standards such as [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), as well as other libraries that can be used to address those limitations. However for the most plain old javaScript Numbers work just fine, and in this post I will be writing about things that pertain to the use of them.
+In javaScript, traditionally at least all Numbers are 64 bit double precision (IEEE_754)[https://en.wikipedia.org/wiki/IEEE_754-1985] floating point numbers. If you would like to dive into the subject of IEEE 754 to gain a better understanding of the data type by all means do so, but getting into the depth of that is not necessarily required as long as you are aware that there are some limitations with that data type. There are new standards such as [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), as well as other libraries that can be used to address those limitations. However for the most plain old javaScript Numbers work just fine, and in this post I will be writing mainly about this.
 
 ## 2 - javaScript Numbers and max safe integer.
 
@@ -50,6 +50,8 @@ This can result in problems if you are not aware of what is going on with data t
 
 ## 4 - javaScript number literals
 
+There are a number of ways to create a javaScript number by way of a Number Literal rather than the result of an expression or any other means. The most common way would be in plain old decimal form, however there are base16, and base8 options as well. There are also exponents, and other options that can be considered a kind of literal as well.
+
 ```js
 // decimal integer and floating points
 console.log( 42 ); // 42
@@ -65,4 +67,8 @@ console.log(0o52); // 42
 // exponents
 console.log(2e3); // 2000
 console.log(2e-1); // 0.2
+ 
+// NaN and infinity literals
+console.log(NaN);
+console.log(Infinity);
 ```
