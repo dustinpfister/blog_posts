@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2019-02-07 09:34:53
-version: 1.4
+updated: 2019-02-07 09:39:43
+version: 1.5
 ---
 
 So the javaScipt == operator is used to find equality in expressions, in addition there is also the === operator that is used to find what is called identity as well. So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This is a subject that comes up often in javaSciprt related discussions so it goes without saying that I should write a post on this one.
@@ -26,7 +26,7 @@ Simple enough for the most part however there are some things to be ware of, and
 
 ### 1.1 - The == operator preforms type conversion
 
-The main difference between == and === is that == preforms type conversion.
+The main difference between == and === is that == preforms type conversion. In the event that both operands that are used in the operation are not of the same type then type conversion is used to check if they equal each other when converted.
 
 ```js
 let str = '7';
