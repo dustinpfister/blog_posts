@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-02-07 13:51:16
-version: 1.10
+updated: 2019-02-07 14:11:56
+version: 1.11
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -59,6 +59,17 @@ console.log( (42).toString(2) ); // '101010'
 ## 4 - converting Strings to Numbers
 
 So now that I have covered converting Numbers to strings there is the process of doing the opposite as well. The same can be done with some operators when working out an expression, and there are a few options when it comes to methods as well.
+
+```js
+let str = '42.2';
+ 
+console.log(typeof (str * 1)); // number
+console.log(typeof parseInt(str)); // number
+console.log(typeof parseFloat(str)); // number
+console.log(typeof Number(str)); // number
+```
+
+One trick is to multiply the string by 1, if the string can successfully be converted to a number it will result in a number with the corresponding value, otherwise it will result in NaN. There is also parseInit,parseFloat and the Number method as well that can work.
 
 ## 5 - javaScript number literals
 
