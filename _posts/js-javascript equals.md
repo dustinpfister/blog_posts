@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2019-02-07 09:55:02
-version: 1.8
+updated: 2019-02-07 10:03:51
+version: 1.9
 ---
 
 So the javaScipt == operator is used to find equality in expressions, in addition there is also the === operator that is used to find what is called identity as well. So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This is a subject that comes up often in javaSciprt related discussions so it goes without saying that I should write a post on this one.
@@ -54,7 +54,7 @@ Even if another object has the same set of property names, and values it is anot
 
 ### 1.3 - Two booleans
 
-Same as with numbers and strings if a boolean is compared to a non boolean value type conversion is preformed.
+Same as with numbers and strings if a boolean is compared to a non boolean value type conversion is preformed. The resulting boolean value depends on the data type and the value of the type.
 
 ```js
 // two booleans
@@ -71,7 +71,7 @@ console.log('' == false); // true
 
 ## 2 - javaScript === can be used to find identity (AKA strict comparison)
 
-The identity strict comparison
+The identity, or strict comparison is another type of comparison operator in javaScript that does the same thing but with one significant difference which is of course that it does not preform type conversion. So both operands in the expression must be of the same type, as well as have the same value as well.
 
 ```js
 let str = '7',
