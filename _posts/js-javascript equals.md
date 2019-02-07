@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2019-02-07 09:39:43
-version: 1.5
+updated: 2019-02-07 09:44:45
+version: 1.6
 ---
 
 So the javaScipt == operator is used to find equality in expressions, in addition there is also the === operator that is used to find what is called identity as well. So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This is a subject that comes up often in javaSciprt related discussions so it goes without saying that I should write a post on this one.
@@ -33,6 +33,21 @@ let str = '7';
  
 console.log(str == 7); // true
 console.log(str == '7'); // true
+```
+
+## 1.2 - Comparing objects
+
+When comparing two objects the result is true when both operands are references to the same object.
+
+```js
+let obj = {n:42},
+ref = obj;
+ 
+// if both operands are references to the same object that is true
+ console.log(obj == ref); // true
+ 
+// else it is not true
+console.log(obj == {n:42}); // false
 ```
 
 ## 2 - javaScript === can be used to find identity (AKA strict comparison)
