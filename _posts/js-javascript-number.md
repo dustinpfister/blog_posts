@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-02-07 13:48:40
-version: 1.9
+updated: 2019-02-07 13:51:16
+version: 1.10
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -56,7 +56,11 @@ One more thing about the Number.toString prototype method, there is an option to
 console.log( (42).toString(2) ); // '101010'
 ``` 
 
-## 4 - javaScript number literals
+## 4 - converting Strings to Numbers
+
+So now that I have covered converting Numbers to strings there is the process of doing the opposite as well. The same can be done with some operators when working out an expression, and there are a few options when it comes to methods as well.
+
+## 5 - javaScript number literals
 
 There are a number of ways to create a javaScript number by way of a Number Literal rather than the result of an expression or any other means. The most common way would be in plain old decimal form, however there are base16, and base8 options as well. There are also exponents, and other options that can be considered a kind of literal as well.
 
@@ -81,7 +85,7 @@ console.log(NaN);
 console.log(Infinity);
 ```
 
-## 5 - Numbers as the result of an expression
+## 6 - Numbers as the result of an expression
 
 When creating an expression of one or more operations a Number can often be the result of that expression. In some cases however it can some times evaluate to something else such as a string depending on the data type of the value. For example if an operator such as the multiplication operator is used with a Number and a string the string will be converted to a number, and the result will be a number. However if addition is used with two strings then the result will be string concatenation, and not addition. 
 
