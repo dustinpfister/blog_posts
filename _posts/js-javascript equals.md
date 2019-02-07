@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2019-02-07 10:09:45
-version: 1.10
+updated: 2019-02-07 10:14:34
+version: 1.11
 ---
 
 So the javaScipt == operator is used to find equality in expressions, in addition there is also the === operator that is used to find what is called identity as well. So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This is a subject that comes up often in javaSciprt related discussions so it goes without saying that I should write a post on this one.
@@ -90,4 +90,9 @@ console.log(n === Number(str)); // true
 
 ## 3 - Comparing to NAN
 
-I [wrote a post in the past about NAN](/2017/09/23/js-nan/) which is a spechial kind of Number value in javaScript that is a Number yet also stands for Not A Number. The problem in a nutshell is that NaN does not equal anything even itself so a special method called isNaN, or some other kind of method needs to be used to check if two values equal NaN or not.
+I [wrote a post in the past about NAN](/2017/09/23/js-nan/) which is a special kind of Number value in javaScript that is a Number yet also stands for Not A Number. The problem in a nutshell is that NaN does not equal anything even itself so a special method called isNaN, or some other kind of method needs to be used to check if two values equal NaN or not.
+
+```js
+console.log(NaN == NaN); // false
+console.log(isNaN(NaN) == isNaN(isNaN)); // true
+```
