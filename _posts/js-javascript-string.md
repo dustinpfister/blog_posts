@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-02-08 18:32:28
-version: 1.6
+updated: 2019-02-08 18:39:37
+version: 1.7
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -58,3 +58,20 @@ console.log(n); // 9
 ## 2 - String length
 
 To get the character length of a string there is the length property of a string. Also strings can be worked with as if they are array like objects as well. When this is the case the character length of the string can also be though of as the corresponding array length as well. So in this post I will be showing some examples of how to convert a string to an array and vice versa as well.
+
+```js
+let str = 'foobar';
+ 
+console.log(str.length); // 6
+ 
+let arr = str.split('');
+ 
+console.log(arr.constructor.name); // Array
+console.log(arr); // [ 'f', 'o', 'o', 'b', 'a', 'r' ]
+console.log(arr.length); // 6
+ 
+let str2 = arr.join('');
+ 
+console.log(str2.constructor.name); // String
+console.log(str2); // 'foobar'
+```
