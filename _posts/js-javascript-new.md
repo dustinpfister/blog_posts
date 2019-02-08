@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2019-02-08 14:34:40
-version: 1.4
+updated: 2019-02-08 14:36:57
+version: 1.5
 ---
 
-The javaScript new operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator.
+The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator.
 
 <!-- more -->
 
@@ -27,7 +27,7 @@ In this example the d variable is an instance of Date that was created using the
 
 ## 2 - Creating a Constructor for use with the new operator in javaScript
 
-To create my own constructor function I just need to create a function and in the body of the constructor function or any prototype method use the this keyword as a way to refer to any property that is to be an OwnProperty of the instance of this constructor when created using the new operator.
+To create my own constructor function I just need to create a function and in the body of the constructor function or any prototype method use the [this keyword](/2017/04/14/js-this-keyword/) as a way to refer to any property that is to be an OwnProperty of the instance of this constructor when created using the new operator.
 
 ```js
 let Guy = function (x, y) {
