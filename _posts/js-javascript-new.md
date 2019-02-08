@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2019-02-08 14:24:00
-version: 1.1
+updated: 2019-02-08 14:29:35
+version: 1.2
 ---
 
 The javaScript new operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator.
@@ -24,3 +24,27 @@ console.log( d.getDate() ); // 6
 ```
 
 In this example the d variable is an instance of Date that was created using the new operator with the Date constructor function. Once I have my instance of Date I can use any of the prototype methods of the Date constructor, as well as any additional methods that may be in the prototype chain as well, such as Date.getDate
+
+## 2 - Creating a Constructor for use with the new operator in javaScript
+
+```js
+let Guy = function (x, y) {
+ 
+    this.x = x;
+    this.y = y;
+ 
+};
+ 
+Guy.prototype.move = function (dx, dy) {
+ 
+    this.x += dx;
+    this.y += dy;
+ 
+};
+ 
+let g = new Guy(10, 12);
+ 
+g.move(-5, 7);
+ 
+console.log(g.x,g.y); // 5 19
+```
