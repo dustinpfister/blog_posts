@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-02-08 18:19:40
-version: 1.3
+updated: 2019-02-08 18:25:43
+version: 1.4
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -42,3 +42,7 @@ let str = `n=${getN()}`;
  
 console.log(str); // 'n=17'
 ```
+
+### 1.3 - The result of an expression
+
+Strings can often end up being the result of an expression with one or more operators. This can sometimes be an unintended result when respecting a number. When adding two strings together the result is another string, and when adding a string and a number together the result is also a string. Sometimes a method or property will supply a string where a number might be expected resulting in string concatenation where addition was expected. 
