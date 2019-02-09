@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2019-02-09 12:20:23
-version: 1.4
+updated: 2019-02-09 12:25:55
+version: 1.5
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined. If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
@@ -18,7 +18,7 @@ The var keyword is what was traditionally the only keyword that was available fo
 
 ### 1.1 - Having a variable with the same name at the top level, and inside a function
 
-Here I have two variables declared with var one at the top level, and another inside the body of a function. this does not result in a name space collision, the reason why being that the n variable inside the body of the function is within the varible scope of that function and not that of the top level code.
+Here I have two variables declared with var one at the top level, and another inside the body of a function. this does not result in a name space collision, the reason why being that the n variable inside the body of the function is within the variable scope of that function and not that of the top level code.
 
 ```js
 var n = 13;
@@ -56,3 +56,18 @@ console.log(mod(n)); // 6
 ```
 
 If I want to access a variable of the same name lower down the scope chain I will want to omit the use of the var keyword to do so.
+
+## 2 - block variable scope with let
+
+With let block scope is possible rather than just function level scope. So the same situation is possible as with var, only now it is something that is in effect each time there is any kind of block of code. This can also be a function as well, but it can also be an if statement or a loop of one kind or another.
+
+```js
+let n = 40;
+ 
+if (n > 32) {
+    let n = 16;
+    console.log(n);
+}
+ 
+console.log(n);
+```
