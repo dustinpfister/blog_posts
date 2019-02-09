@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 374
-updated: 2019-02-09 09:15:40
-version: 1.3
+updated: 2019-02-09 09:18:28
+version: 1.4
 ---
 
 When it comes to writing modern javaScript code the let keyword is available for declaring block, rather than function level variables scoped variables. When it comes to a node.js environment where I have control over the version of node.js is used, and can use a modern version that supports let there are not any concerns when it comes to the question of code breaking on older platforms. That issue is of greater concern when it comes to front end development where there is less control over the environment in which the javaScript code runs when thinking about older browsers. Still as time goes by this will become less of an issue, and block level scope for me is a welcome addition to javaScript, so in this post I will be writing about some concerns when it comes to the use of let in a javaScript project.
@@ -44,8 +44,18 @@ Of course there are ways of writing javaScript in a way in which I am taking adv
 
 It is easier to just continue to write javaScript code in a way in which it will work in older browsers while still functioning just find in more modern browsers as well. I have this attitude where as long as I make my code clean, and minimal the process of modernizing it should not be to hard or time consuming.
 
-## 3 - Redeclaring
+## 3 - Redeclaring variables
 
 One thing that comes up with using let over the traditional var is redeclaring a variable with the let keyword over var. The var keyword is more forgiving with this, allowing for a variable to be redeclared over and over again in the same bit of code. The let keyword on the other hand will throw a nasty error if this is done.
+
+```js
+// var can be redeclared
+var n = 7;
+var n = 42;
+ 
+// let can not
+let x = 7;
+let x = 42; // SyntaxError: Identifier 'x' has already been declared
+```
 
 For the most part this is not a big problem for me, as I generally do not do this when writing legacy javaScrip style code. There may be some rare extenuating circumstances in which this might get annoying, but I am sure I could find a way to manage.
