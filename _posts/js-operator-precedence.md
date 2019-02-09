@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-02-09 18:06:16
-version: 1.4
+updated: 2019-02-09 18:12:23
+version: 1.5
 ---
 
-When writing javaScript expressions knowing the order in which operations is important to make sure that desired results will always be achieved. So operator precedence or just simply the order of operations in javaScript is the order in which operations are preformed and in this post I will be covering some of the basics with this.
+When writing javaScript expressions knowing the order in which operations is important to make sure that desired results will always be achieved. So [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) or just simply the order of operations in javaScript is the order in which operations are preformed and in this post I will be covering some of the basics with this.
 
 <!-- more -->
 
