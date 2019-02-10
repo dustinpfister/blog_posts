@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2019-02-10 16:41:16
-version: 1.8
+updated: 2019-02-10 17:15:52
+version: 1.9
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) when it comes to developing a client system with javaScript. The subject of iframes can become a little complicated there is much to write about with them when it comes to more advanced topics involving hidden iframes, and security concerns when with things like click jacking. So in this post I will be sticking to just the basics for now.
@@ -74,7 +74,7 @@ w.document.body.appendChild(div);
 
 ```
 
-## 2 - Pointing and iframe to a url
+## 2 - Pointing an iframe to a url
 
 This can sometimes work, but it might not also these days because of security concerns. When pointing to a url that is at a different domain than that of the domain at which the parent page exists at it can some times result in an same origin related error. Some websites send a header that informs the browser to not display the site in the iframe to prevent a kind of attack known as [click jacking](https://en.wikipedia.org/wiki/Clickjacking). This is a more advanced topic for iframes, so I will not get into this is detail here in this beginners post on javaScript and iframes.
 
@@ -98,3 +98,7 @@ iFrame.setAttribute('src', './basic.html');
 ```
 
 To do so I just need to set the src attribute of the iframe to the url of the resource that I want to load and display in the iframe. If all goes well that alone should work, if not finding a solution to this is outside the scope of this post.
+
+## 3 - Conclusion
+
+The basics of iframes are not so hard but there is mcuh more to write about them when it comes to sandboxing, hidden iframes, and cross domain issues. Hopefully thing post has served you well when it comes to the basics of iframes and javaScript for now.
