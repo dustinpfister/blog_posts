@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2019-02-10 09:50:15
-version: 1.2
+updated: 2019-02-10 10:02:04
+version: 1.3
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) when it comes to developing a client system with javaScript.
@@ -41,3 +41,29 @@ w.document.body.appendChild(div);
 ```
 
 Once a reference to the iFrame is obtained it is possible to access the window object of that iFrame via the contentWindow property of the iFrame element. This works in much the same way as the window object of the page itself as such I can add content to the iFrame in the same manner as i would with the main window object.
+
+### 1.2 - Creating and injecting an iframe with javaScript
+
+```html
+<html>
+    <head>
+        <title>javascript iframe basic example</title>
+    </head>
+    <body>
+        <script src="inject.js"></script>
+    </body>
+</html>
+```
+
+```js
+// create and append the iframe
+let iFrame = document.createElement('iframe');
+document.body.appendChild(iFrame);
+
+// create and inject content into it
+let div = document.createElement('div'),
+w = iFrame.contentWindow;
+div.innerHTML = 'Hello World';
+w.document.body.appendChild(div);
+
+```
