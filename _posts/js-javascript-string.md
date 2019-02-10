@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-02-08 18:51:28
-version: 1.8
+updated: 2019-02-10 17:34:40
+version: 1.9
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -92,3 +92,22 @@ console.log(str); // '1234-best-4321'
 ```
 
 Setting a char might prove to be a bit more complicated and may involve concatenation and the use of the String.slice prototype method.
+
+## 4 - Converting an array to a string and back
+
+There is the process of converting an array to a string and doing the inverse of that as well. Typically this is doe with the Arry.join method. With Array.join just call the prototype method off of the array instance and pass a string that will be the string that will be placed between each element in the array, this can be an empty string if nothing is desired to be between elements
+
+```js
+let arr =[1,2,3,4],
+str = arr.join('');
+ 
+console.log(str); // '1234';
+console.log(typeof str); // string
+ 
+let b = str.split('');
+ 
+console.log(b); // [1,2,3,4]
+console.log(b.constructor.name); // Array
+```
+
+To convert a string back to an array there is the String.split method. The argument that is given to the String.split method is what is to be used as an indicator as to where the various points in a string are to be split into elements in an array. This value as well can be an empty string which will result in each character being a single element in the array.
