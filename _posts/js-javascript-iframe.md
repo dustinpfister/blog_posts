@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2019-02-10 10:04:18
-version: 1.4
+updated: 2019-02-10 10:05:05
+version: 1.5
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) when it comes to developing a client system with javaScript.
@@ -46,6 +46,8 @@ Once a reference to the iFrame is obtained it is possible to access the window o
 
 Another way to work with an iframe is to create and inject the iframe with javaScript. This will involve the use of document.createElement, and the appendChild methods. Again once a reference is gained to the element the contentWindow property can be used to place content into it.
 
+With this kind of approach you might have some html like this.
+
 ```html
 <html>
     <head>
@@ -56,6 +58,8 @@ Another way to work with an iframe is to create and inject the iframe with javaS
     </body>
 </html>
 ```
+
+And some javaScript like this.
 
 ```js
 // create and append the iframe
