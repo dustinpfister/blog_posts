@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-02-10 15:57:14
-version: 1.8
+updated: 2019-02-10 16:03:58
+version: 1.9
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -59,16 +59,26 @@ var b = new Array(10);
 console.log(b); // 10
 ```
 
-## 2 - Negative index values
+## 2.2 - Negative index values
 
-It is possible to set negative index values for an array. When doing so this might result in unexpected length values as negative index values will not be counted. However as long as the index values are enumerable the Object.keys method can be used to get an array of enumerable keys for an object, including possible negative index values.
-
+It is possible to set negative index values for an array. When doing so this might result in unexpected length values as negative index values will not be counted. 
 ```js
-var a = ['a','b','c'];
- 
-a[-1] = '!';
+var a = Array.from({
+        0: 2,
+        1: 3,
+        2: 4,
+        length: 3
+    });
+a[-1] = 1;
  
 console.log(a.length); // 3
-console.log(Object.keys(a).length); // 4
+ 
+var b = ['a', 'b', 'c'];
+ 
+b[-1] = '!';
+ 
+console.log(b.length); // 3
+console.log(Object.keys(b).length); // 4
 ```
 
+However as long as the index values are enumerable the Object.keys method can be used to get an array of enumerable keys for an object, including possible negative index values. Which would be one way to get the true index value if these negative index values are to be counted.
