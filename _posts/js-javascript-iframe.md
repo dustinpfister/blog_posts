@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2019-02-10 11:03:41
-version: 1.6
+updated: 2019-02-10 11:18:47
+version: 1.7
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) when it comes to developing a client system with javaScript.
@@ -78,4 +78,23 @@ w.document.body.appendChild(div);
 
 This can sometimes work, but it might not also these days because of security concerns. When pointing to a url that is at a different domain than that of the domain at which the parent page exists at it can some times result in an same origin related error. Some websites send a header that informs the browser to not display the site in the iframe to prevent a kind of attack known as [click jacking](https://en.wikipedia.org/wiki/Clickjacking). This is a more advanced topic for iframes, so I will not get into this is detail here in this beginners post on javaScript and iframes.
 
-Never the less if the url is at the same domain, or if it is a url where this sort of thing will happen without issue then the following might work out okay.
+Never the less if the url is at the same domain, or if it is a url where this sort of thing will happen without issue then the following might work out okay. 
+
+```html
+<html>
+    <head>
+        <title>javascript iframe</title>
+    </head>
+    <body>
+        <iframe id="theframe" width="320" height="240"></iframe>
+        <script>
+let iFrame = document.querySelector('#theframe'),
+w = iFrame.contentWindow;
+ 
+iFrame.setAttribute('src', './basic.html');
+        </script>
+    </body>
+</html>
+```
+
+To do so I just need to set the src attribute of the iframe to the url of the resource that I want to load and display in the iframe. If all goes well that alone should work, if not finding a solution to this is outside the scope of this post.
