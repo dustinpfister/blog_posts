@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-02-10 17:40:58
-version: 1.10
+updated: 2019-02-10 17:49:28
+version: 1.11
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -123,4 +123,16 @@ console.log(str.length); // 42
 str = str.trim();
 console.log(str.length); // 33
 console.log(str);
+```
+
+## 6 - Strring.match
+
+If you are not familiar with regular expressions, it might be a good idea to look into them more at some point. Every now and then they do come in handy when it comes to doing anything complex with pattern detection with strings.
+
+```js
+var str = '<div><p>foo<\/p><\/div><div><span>bar<\/span><\/div>';
+ 
+var m = str.match(/<div>(.*?)<\/div>/g);
+ 
+console.log(m[1]); // <div><span>bar</span></div>
 ```
