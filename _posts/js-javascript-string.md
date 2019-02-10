@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-02-10 17:34:40
-version: 1.9
+updated: 2019-02-10 17:40:58
+version: 1.10
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -111,3 +111,16 @@ console.log(b.constructor.name); // Array
 ```
 
 To convert a string back to an array there is the String.split method. The argument that is given to the String.split method is what is to be used as an indicator as to where the various points in a string are to be split into elements in an array. This value as well can be an empty string which will result in each character being a single element in the array.
+
+## 5 - String.trim
+
+The trim String prorotype method can be used to remove any additional while space that may be at the beginning or end of a string.
+
+```js
+var str = '    this string has extra white space     ';
+ 
+console.log(str.length); // 42
+str = str.trim();
+console.log(str.length); // 33
+console.log(str);
+```
