@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-02-10 15:46:12
-version: 1.6
+updated: 2019-02-10 15:50:24
+version: 1.7
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -27,7 +27,9 @@ The value that is returned is going to be a number that is typically one larger 
 
 ## 2 - Array length When making an array from an object
 
-So in javaScript Arrays are often a find of Object that is created with the Array constructor, or more often the Array literal context. The way that arrays or array like objects are structured is one or more numbered key names with a corresponding length property that is often the element count of this kind of object.
+So in javaScript Arrays are created with the Array constructor, or more often the Array literal syntax. The way that arrays or array like objects are structured is one or more numbered key value pares with a corresponding length property that is often the element count of this kind of object.
+
+In other words something like this:
 
 ```js
 var a = Array.from({
@@ -40,7 +42,7 @@ var a = Array.from({
 console.log(a.length); // 3
 ```
 
-So for the most part that is all there is to know about array length, however things can get a little confusing when it comes to thinks like negative index values, additional enumerable key values, and undefined index values. 
+Understanding this can help eliminate confusion with some situations in which the length of an array is in fact really not the length of the array. In this section I will cover some more examples like this to help elaborate more with this.
 
 ## 2 - Negative index values
 
