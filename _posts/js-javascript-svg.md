@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 16:56:33
-version: 1.5
+updated: 2019-02-11 16:58:01
+version: 1.6
 ---
 
 <!-- more -->
@@ -54,7 +54,7 @@ It may be preferable to have svg graphics as an external file that can then be l
 </html>
 ```
 
-With the external.svg file it will need to be formated in xml and might look something like this example I worked out that makes use of many of the bost basic, yet still useful elements there are to work with.
+With the external.svg file it will need to be formated in xml and might look something like this example I worked out that makes use of many of the most basic, yet still useful elements there are to work with.
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -67,6 +67,8 @@ With the external.svg file it will need to be formated in xml and might look som
   <use xlink:href="external.svg#the_svg"/>
 </svg>
 ```
+
+I can then access and work with the values of the svg data with javaScript like this.
 
 ```js
 var obj = document.getElementById('svg-external');
