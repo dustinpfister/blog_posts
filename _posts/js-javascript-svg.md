@@ -5,13 +5,14 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 17:33:42
-version: 1.8
+updated: 2019-02-11 17:40:02
+version: 1.9
 ---
+
+In javaScript svg graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. When it comes to making graphics with javaScript there are a number of options these days, such as the 2d canvas drawing api. However [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is a [vector based graphics](https://en.wikipedia.org/wiki/Vector_graphics) solution rather than the [raster based graphics](https://en.wikipedia.org/wiki/Raster_graphics) used in canvas..
 
 <!-- more -->
 
-When it comes to making graphics with javaScript there are a number of options these days, such as the 2d canvas drawing api. However in this post I will be writing about a vector rather than raster base alternative called [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) or just svg for short.
 
 ## 1 - javaScript svg graphics basics
 
