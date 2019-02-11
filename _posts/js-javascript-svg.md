@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 16:35:42
-version: 1.3
+updated: 2019-02-11 16:54:46
+version: 1.4
 ---
 
 <!-- more -->
@@ -18,6 +18,25 @@ When it comes to making graphics with javaScript there are a number of options t
 In this section I will be just starting out with the basics of svg graphics. There is creating svg graphics inline in html itself, and then there is having an external svg file that can then be loaded into the html via and object tag.
 
 ### 1.1 - inline svg graphics
+
+With inline svg graphics the svg elements as well as all other elements with svg can just be included in the html itself just like all the other html elements. This can be used in conjunction with inline scripts as a way to access the svg in a very simulate way of accessing the pain old document object model as usual.
+
+```html
+<html>
+    <head>
+        <title>javascript svg inline</title>
+    </head>
+    <body>
+        <svg version="1.1" width="320" height="240" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <circle cx="160" cy="120" r="120" fill="red" />
+        </svg>
+        <script>
+var circle = document.getElementsByTagName('circle')[0];
+circle.setAttributeNS(null, 'r', 75);
+        </script>
+    </body>
+</html>
+```
 
 ### 1.2 - external svg graphics
 
