@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 17:32:48
-version: 1.7
+updated: 2019-02-11 17:33:42
+version: 1.8
 ---
 
 <!-- more -->
@@ -84,6 +84,8 @@ obj.addEventListener('load', function () {
 
 Another option is to create an svg element with javaScript and inject the svg element into the html with a method like appendChild. To do this I must use the document.createElementNS method that works just like the regular document.createElement method only this is a speshal name space method for creating svg elements.
 
+So then in my html I can just like to an external javaScript file.
+
 ```html
 <html>
     <head>
@@ -94,6 +96,8 @@ Another option is to create an svg element with javaScript and inject the svg el
     </body>
 </html>
 ```
+
+And then in the javaScript file I can do everything of interest.
 
 ```js
 var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
