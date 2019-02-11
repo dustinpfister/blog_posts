@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 16:31:50
-version: 1.2
+updated: 2019-02-11 16:35:42
+version: 1.3
 ---
 
 <!-- more -->
@@ -20,6 +20,8 @@ In this section I will be just starting out with the basics of svg graphics. The
 ### 1.1 - inline svg graphics
 
 ### 1.2 - external svg graphics
+
+It may be preferable to have svg graphics as an external file that can then be loaded into an html file, and accessed with javaScript. Here I have an example of going just that, with the html there needs to be an object element that is used to load the external svg data. To load the svg I only need a data attribute that points to the url of the external svg file.
 
 ```html
 <html>
