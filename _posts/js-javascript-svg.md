@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 16:58:01
-version: 1.6
+updated: 2019-02-11 17:32:48
+version: 1.7
 ---
 
 <!-- more -->
@@ -78,4 +78,34 @@ obj.addEventListener('load', function () {
     cir.setAttributeNS(null, 'r', 75);
 });
 
+```
+
+### 1.3 - Generating svg with javaScript
+
+Another option is to create an svg element with javaScript and inject the svg element into the html with a method like appendChild. To do this I must use the document.createElementNS method that works just like the regular document.createElement method only this is a speshal name space method for creating svg elements.
+
+```html
+<html>
+    <head>
+        <title>javascript svg generate</title>
+    </head>
+    <body>
+        <script src="generate.js"></script>
+    </body>
+</html>
+```
+
+```js
+var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svg.setAttributeNS(null, 'width', 320);
+svg.setAttributeNS(null, 'height', 240);
+ 
+var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+circle.setAttributeNS(null, 'cx', 160);
+circle.setAttributeNS(null, 'cy', 120);
+circle.setAttributeNS(null, 'r', 75);
+circle.setAttributeNS(null, 'fill', 'green');
+svg.appendChild(circle);
+ 
+document.body.appendChild(svg);
 ```
