@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 16:54:46
-version: 1.4
+updated: 2019-02-11 16:56:33
+version: 1.5
 ---
 
 <!-- more -->
@@ -53,6 +53,8 @@ It may be preferable to have svg graphics as an external file that can then be l
     </body>
 </html>
 ```
+
+With the external.svg file it will need to be formated in xml and might look something like this example I worked out that makes use of many of the bost basic, yet still useful elements there are to work with.
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
