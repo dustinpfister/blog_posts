@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2019-02-12 16:32:14
-version: 1.4
+updated: 2019-02-12 18:34:19
+version: 1.5
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) api is one way to go about changing css value with javaScript. This is not to be confused with javaScript coding style, which is of course a whole other subject. There are other ways of changing css values with javaScript such as changing the className property value of one or more elements with respect to a collection of hard coded css classes to work with. The style api is not the best choice for doing anything that might involve complex animations, or a great deal of rapid fast change for that there are canvas elements and svg to work with. There are many tools to a web developer and the style api is not always the best tool for the job, but it is there, and in some cases the use of it may be called for, so lets take a look at the style api in javaScript today.
@@ -23,7 +23,7 @@ In case you did not know inline style supersedes all other style rules that may 
 
 To get a style value that was set via the style attribute in the html a reference to the element in question must be obtained first. Then once there is a reference the style property of that reference is where the value will exist.
 
-```js
+```html
 <html>
     <head>
         <title>javaScript get style example</title>
@@ -38,3 +38,21 @@ console.log(document.getElementsByTagName('h1')[0].style.color); // red
 ```
 
 ## 3 - Property names differ from CSS
+
+When setting the css property and value pairs for inline style via the html style attribute, the property names are the same as they would be in a style element or external css file. However when accessing those values via the javaScript style api, the property names follow a camel case pattern.
+
+```html
+<html>
+    <head>
+        <title>javaScript style property names</title>
+    </head>
+    <body>
+        <h1 style="background-color:red;z-index:1">Red Header</h1>
+        <script>
+var el = document.getElementsByTagName('h1')[0];
+console.log(el.style.backgroundColor); // red
+console.log(el.style.zIndex); // 1
+        </script>
+    </body>
+</html>
+```
