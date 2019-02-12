@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2019-02-12 18:50:47
-version: 1.6
+updated: 2019-02-12 18:53:32
+version: 1.7
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) api is one way to go about changing css value with javaScript. This is not to be confused with javaScript coding style, which is of course a whole other subject. There are other ways of changing css values with javaScript such as changing the className property value of one or more elements with respect to a collection of hard coded css classes to work with. The style api is not the best choice for doing anything that might involve complex animations, or a great deal of rapid fast change for that there are canvas elements and svg to work with. There are many tools to a web developer and the style api is not always the best tool for the job, but it is there, and in some cases the use of it may be called for, so lets take a look at the style api in javaScript today.
@@ -37,7 +37,28 @@ console.log(document.getElementsByTagName('h1')[0].style.color); // red
 </html>
 ```
 
-## 3 - Property names differ from CSS
+## 3 - set inline style
+
+Setting inline style is just a matter of using the assignment operator with the desired property.
+
+```html
+<html>
+    <head>
+        <title>javaScript set style example</title>
+    </head>
+    <body>
+        <h1>Red Header</h1>
+        <script>
+var el = document.getElementsByTagName('h1')[0];
+console.log(el.style.color); // ''
+el.style.color = 'red';
+console.log(el.style.color); // 'red'
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Property names differ from CSS
 
 When setting the css property and value pairs for inline style via the html style attribute, the property names are the same as they would be in a style element or external css file. However when accessing those values via the javaScript style api, the property names follow a camel case pattern.
 
@@ -57,7 +78,7 @@ console.log(el.style.zIndex); // 1
 </html>
 ```
 
-## 4 - Get unknown inline style values
+## 5 - Get unknown inline style values
 
 So the CSS Style Declaration object that the style api is an instance of apears to have an array like nature to it when it comes to the styles that are set via the style attribute. In other words there is a collection of key value pairs and a length property that is consistent with the way that arrays are structured in JavaScript. This means that an Array method like Array.forEach can be used to loop over any and all css properties that are set via the style attribute in the event that the properties are not know. 
 
