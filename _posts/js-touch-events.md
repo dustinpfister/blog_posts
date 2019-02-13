@@ -5,15 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2019-02-13 09:15:37
-version: 1.1
+updated: 2019-02-13 09:57:46
+version: 1.2
 ---
 
 There are touch events in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens. There is of course also using mouse events as well to help bring a more general way of interactivity to a project that will work on a wider range of client systems. Still if you have a large volume of traffic coming to a project that is from clients that are using a mobile device it might be nice to add some custom functionality for those kinds of clients. So in this post I will be covering some basic examples of using touch events with javaScript.
 
 <!-- more -->
 
-## 1 - touch events basics
+## 1 - touch events basics, and touchstart
+
+Touch events differ a little from mouse events, however there is also a great deal in common as well. With touch events there is the possibility of multi touch, and it is also true that there is not an equivalent to a mouse hover event. However both mouse events and touch events can be though of as pointers, and as such can be used to create an interface of some kind.
 
 ```js
 <html>
