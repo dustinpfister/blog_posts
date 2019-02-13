@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2019-02-13 10:04:03
-version: 1.3
+updated: 2019-02-13 10:21:03
+version: 1.4
 ---
 
 There are touch events in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens. There is of course also using mouse events as well to help bring a more general way of interactivity to a project that will work on a wider range of client systems. Still if you have a large volume of traffic coming to a project that is from clients that are using a mobile device it might be nice to add some custom functionality for those kinds of clients. So in this post I will be covering some basic examples of using touch events with javaScript.
@@ -60,3 +60,69 @@ canvas.addEventListener('touchstart', function(e){
 ```
 
 In this example I am also using the getBoundingClientRect method to get a canvas rather than window relative position of the touch event. When it comes to touch events there is also the preventDefault method as well that will cancel browser level type actions when a user interacts with the canvas. One major difference from mouse events is that the clientX, and clientY values are gained from an array of touch objects, this is because unlike a mouse a touch screen can support multi touch.
+
+## 2 - touch start, move, and end events
+
+```html
+<html>
+    <head>
+        <title>touch events example</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="startendmove.js"></script>
+    </body>
+</html>
+```
+
+```js
+// Get the canvas and 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// clear
+var cls = function () {
+    // fill black
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+// get first pointer object
+var getFirst = function (e) {
+    var bx = e.target.getBoundingClientRect();
+    return {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+    }
+};
+ 
+var touchStart = function (e) {
+    var f = getFirst(e);
+    e.preventDefault();
+    cls();
+    ctx.strokeStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, 15, 0, Math.PI * 2);
+    ctx.stroke();
+};
+ 
+var touchMove = function (e) {
+    var f = getFirst(e);
+    e.preventDefault();
+    ctx.strokeStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, 15, 0, Math.PI * 2);
+    ctx.stroke();
+};
+ 
+var touchEnd = function (e) {
+    console.log(e.timeStamp);
+};
+ 
+// attach a touch events
+canvas.addEventListener('touchstart', touchStart);
+canvas.addEventListener('touchend', touchEnd);
+canvas.addEventListener('touchmove', touchMove);
+ 
+cls();
+```
