@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2019-02-13 10:21:03
-version: 1.4
+updated: 2019-02-13 10:28:53
+version: 1.5
 ---
 
 There are touch events in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens. There is of course also using mouse events as well to help bring a more general way of interactivity to a project that will work on a wider range of client systems. Still if you have a large volume of traffic coming to a project that is from clients that are using a mobile device it might be nice to add some custom functionality for those kinds of clients. So in this post I will be covering some basic examples of using touch events with javaScript.
@@ -63,6 +63,10 @@ In this example I am also using the getBoundingClientRect method to get a canvas
 
 ## 2 - touch start, move, and end events
 
+In addition to touch start events there are also the touch move and touch end events as well. In this example I have a simple project that will create the red circles in the previous example each time a touch move event fires as well on top of just the touch start event.
+
+This time around I will be pulling what I am working on into an external javaScript file and linking to it from the html.
+
 ```html
 <html>
     <head>
@@ -74,6 +78,8 @@ In this example I am also using the getBoundingClientRect method to get a canvas
     </body>
 </html>
 ```
+
+In the javaScript file I now have a more advanced version of the previous example. I now have a clean event that I call once the project starts and also each time a touch start event fires. For the touch end event I am not doing much of anything aside from just loging the time stamp value of the full touch event from start to end.
 
 ```js
 // Get the canvas and 2d context
