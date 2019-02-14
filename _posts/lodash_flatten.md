@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2018-08-12 15:01:05
-version: 1.6
+updated: 2019-02-14 18:37:09
+version: 1.7
 ---
 
 So some of the method in [lodash](https://lodash.com/) are can come in handy, and really do help to save time with certain projects, todays post on lodash is one of those methods which is [\_.flatten](https://lodash.com/docs/4.17.10#flatten). The \_.flatten, and also \_.flattenDeep methods are one of many methods that help with the task of working with arrays of arrays, or multi dimensional arrays in javaScript. Flatten can be used to flatten down an array of arrays into a single array, thus making it a method that can be thought of as a reversal of [\_.chunk](/2017/09/13/lodash-chunk/).
@@ -15,7 +15,7 @@ So some of the method in [lodash](https://lodash.com/) are can come in handy, an
 
 ## 1 - what to know
 
-This is a post on the \_.flatten method in lodash, than ca be used to flatten nested arrays down into a single array. I will not be getting into lodash, arrays, and javaScript in general in depth, and assume that you have at least some background with javaScript and using lodash in a project.
+This is a post on the \_.flatten method in lodash, than can be used to flatten nested arrays down into a single array. The flatten method is one of the many [array methods](/2019/02/14/lodash_array/) in lodash. I will not be getting into lodash, arrays, and javaScript in general in depth, and assume that you have at least some background with javaScript and using lodash in a project.
 
 ## 2 - Basic example of \_.flatten, and \_.chunk
 
