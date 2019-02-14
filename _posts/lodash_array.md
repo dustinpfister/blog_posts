@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-02-14 18:40:26
-version: 1.7
+updated: 2019-02-14 18:42:46
+version: 1.8
 ---
 
-The lodash array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods, explaining which ones are still useful event today.
+The lodash array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
 
 
 <!-- more -->
