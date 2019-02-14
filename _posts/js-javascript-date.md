@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2019-02-14 12:36:23
-version: 1.4
+updated: 2019-02-14 12:39:37
+version: 1.5
 ---
 
 The javaScript Date constructor can be used to create Date objects that represent a single moment in time. In javaScript date objects use [Unix time](https://en.wikipedia.org/wiki/Unix_time), A system of time based on a number of seconds passed a fixed point in the past. In this post I will be covering some of the basics of javaScript Dates as well as maybe some more advanced related topics as well centered around time. 
@@ -44,6 +44,8 @@ console.log( z.getTimezoneOffset()); // 300
 
 ## 3 - Setting from two or more arguments
 
+
+When setting from two or more arguments the first argument is the full year followed by the zero relative month of the year and then so on all the way to milliseconds.
 ```js
 let d = new Date(2009,1,13,18,31,30);
  
