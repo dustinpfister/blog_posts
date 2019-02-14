@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-02-14 18:39:39
-version: 1.6
+updated: 2019-02-14 18:40:26
+version: 1.7
 ---
 
 The lodash array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods, explaining which ones are still useful event today.
@@ -50,7 +50,7 @@ console.log( flat ); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 ## 4 - The \_.zip method
 
-The zip method takes two or more arrays and zips theme together.
+The [zip method](/2018/02/01/lodash_zip/) takes two or more arrays and zips theme together.
 
 ```js
 var x = [10,20,30],
