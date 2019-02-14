@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-02-14 18:20:09
-version: 1.2
+updated: 2019-02-14 18:22:03
+version: 1.3
 ---
 
 The lodash array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods, explaining which ones are still useful event today.
@@ -20,4 +20,16 @@ In lodash there are a number of methods that are consisted array methods, rather
 
 ## 2 - The \_.chunk method
 
-The chunk methods is a lodash array method that can be used to break a linear array into an array of arrays of a given length. The need to do this comes up now and then and the chunk method helps to make quick work of this, and allow me to move on with a project rather than writing this usual suspect from scratch.
+The [\_.chunk method](/2017/09/13/lodash-chunk/) is a lodash array method that can be used to break a linear array into an array of arrays of a given length. The need to do this comes up now and then and the chunk method helps to make quick work of this, and allow me to move on with a project rather than writing this usual suspect from scratch.
+
+```js
+```js
+var _ = require('lodash'),
+ 
+// basic example
+arr = ['one', 'two', 'three', 'four', 'five', 'six'];
+ 
+console.log(_.chunk(arr, 2));
+// [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
+```
+```
