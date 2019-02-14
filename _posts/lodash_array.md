@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-02-14 18:37:09
-version: 1.5
+updated: 2019-02-14 18:39:39
+version: 1.6
 ---
 
 The lodash array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods, explaining which ones are still useful event today.
@@ -32,7 +32,7 @@ console.log(_.chunk(arr, 2));
 // [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
 ```
 
-## 3 The \_.flatten method
+## 3 - The \_.flatten method
 
 So when it comes to doing the opposite of \_.chunk and quickly turning an array of arrays back into a simple linear array there is the [\_.flatten](/2018/08/12/lodash_flatten/) method as well.
 
@@ -48,4 +48,22 @@ let flat = _.flatten(grid);
 console.log( flat ); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
 
-## 3 - The \_.zip method
+## 4 - The \_.zip method
+
+The zip method takes two or more arrays and zips theme together.
+
+```js
+var x = [10,20,30],
+y = [8,16,32],
+ 
+matrix = _.zip(x,y,[5,5,5],[3,3,3]);
+ 
+_.each(matrix, function(pt){
+ 
+    console.log(pt);
+    // [10,8,5,3]
+    // [20,16,5,3]
+    // [30,32,5,3]
+ 
+});
+```
