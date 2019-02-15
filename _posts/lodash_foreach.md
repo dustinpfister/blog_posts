@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2019-02-15 10:19:21
-version: 1.1
+updated: 2019-02-15 10:22:45
+version: 1.2
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently then its native js counterpart, this appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach).
@@ -64,4 +64,4 @@ Just like with Array.forEach it some times makes sense to just use a loop of som
 
 ## Conclusion
 
-Hopefully answering a certain question many javaScript developers have these days. Which is the question of the relevance of lodash today. I would say the answer is to some effect yes, but if you say otherwise I understand why.
+Hopefully this post answered a certain question many javaScript developers may have these days, which is the question of the relevance of lodash today. I would say yes, but I can also understand the alternative mindset with this as well. If you enjoyed this post you might want to check out my main post on [lodash in general](/2019/02/15/lodash/), in any case thank you for reading.
