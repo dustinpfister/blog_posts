@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2019-02-15 09:25:28
-version: 1.2
+updated: 2019-02-15 09:27:07
+version: 1.3
 ---
 
 [Lodash](https://en.wikipedia.org/wiki/Lodash) is a JavaScript library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. Many of the methods are [functional](https://en.wikipedia.org/wiki/Functional_programming) in nature conforming to rules that are constant with the concept of a [pure function](https://en.wikipedia.org/wiki/Pure_function). It is true that many of the functions in lodash, and underscore the older library from which it was forked, are now part of core javaScript itself. However many of the functions in lodash to work a little differently, and there is still some people out there using older browsers. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library.
@@ -21,3 +21,7 @@ There is much to write about when it comes to [lodash](https://lodash.com/) beyo
 ## 2  - lodash methods
 
 The lodash methods can be broken down into many categories that have to do with arrays, collections which can be javaScript arrays or objects, objects in general, functions, Strings and additional categories that have to do with other aspects of javaScript development.
+
+### 2.1 - lodash array methods.
+
+There are a number of lodash array methods that are interned to be used with objects that are created with the javaScript Array constructor.
