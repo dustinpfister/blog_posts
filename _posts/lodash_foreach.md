@@ -5,13 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2017-11-20 11:03:49
-version: 1.0
+updated: 2019-02-15 10:19:21
+version: 1.1
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently then its native js counterpart, this appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach).
 
 <!-- more -->
+
+## 1 - lodash forEach
+
+The lodash \_.forEach method is one of the many methods in lodash that is a collection method meaning it will work well with just about any object that is a collection of key value pairs in general, not just keys that are numbered and an instance of the javaScript array constructor.
 
 ## \_.forEach(Array,iteratee) vs Array.forEach(iteratee)
 
