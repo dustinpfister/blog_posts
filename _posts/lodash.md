@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2019-02-15 10:05:47
-version: 1.8
+updated: 2019-02-15 10:07:51
+version: 1.9
 ---
 
 [Lodash](https://en.wikipedia.org/wiki/Lodash) is a JavaScript library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. Many of the methods are [functional](https://en.wikipedia.org/wiki/Functional_programming) in nature conforming to rules that are constant with the concept of a [pure function](https://en.wikipedia.org/wiki/Pure_function). It is true that many of the functions in lodash, and underscore the older library from which it was forked, are now part of core javaScript itself. However many of the functions in lodash to work a little differently, and there is still some people out there using older browsers. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library.
@@ -22,7 +22,11 @@ There is much to write about when it comes to [lodash](https://lodash.com/) beyo
 
 Even before ecmascript 2015 there where many methods within lodash, and undescore that had a native counterpart method. There seem to be many developers that focus on methods in lodash like \_.concat or \_.isArray that in late versions of lodash just reference native methods and declare that lodash is no longer needed.
 
+### 2.1 - Many lodash methods do not have a native counterpart.
+
 First off there are many methods in lodash in which there is no native counterpart and as such having them there at the ready help save me the economy of time that I would spend writing my own solution. 
+
+### 2.2 - Some lodash counterparts to native methods bring a bit more to the table
 
 Second there are many lodash methods like \_.map, and \_.forEach that are collection methods rather than Array methods. Which means that they will work just fine with a wider range of objects that are objects with a collection of key value pairs in general. Also the [\_.forEach](/2017/11/20/lodash_foreach) method in lodash behaves a little differently allowing me to return a boolean value to break out of the forEach loop, so there is often additional functionality added that does sometimes bring a little more to the table compared to what the native method alone will do.
 
