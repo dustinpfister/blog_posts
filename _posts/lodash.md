@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2019-02-15 09:46:46
-version: 1.6
+updated: 2019-02-15 09:50:07
+version: 1.7
 ---
 
 [Lodash](https://en.wikipedia.org/wiki/Lodash) is a JavaScript library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. Many of the methods are [functional](https://en.wikipedia.org/wiki/Functional_programming) in nature conforming to rules that are constant with the concept of a [pure function](https://en.wikipedia.org/wiki/Pure_function). It is true that many of the functions in lodash, and underscore the older library from which it was forked, are now part of core javaScript itself. However many of the functions in lodash to work a little differently, and there is still some people out there using older browsers. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library.
@@ -29,3 +29,7 @@ There are a number of [lodash array methods](/2019/02/14/lodash_array/) that are
 ### 2.2 - lodash collection methods
 
 There are a number of methods in lodash that are considered collection methods. These are methods that will also work with javaScript arrays, but will also work with array like objects in most cases without using Function.call to do so as with native array methods. They also work with associative arrays which in javaScript is just plain old objects, in fact arrays in javaScript are just objects as well. The thing here is that regardless if I am dealing with an array that has numbered property keys and values, or just an object with names keys and values, in either case I am dealing with something that is a collection of sorts. So there is a desire to have robust collection methods that will work just fine with any kind of object that is treated as a collection.
+
+### 2.3 - lodash object methods
+
+Another category of lodash methods are [lodash object](/2019/02/13/lodash_object/) methods. These are methods that are intended to be used with any kind of object in javaScript, many of them have to do with cloning objects, as well as merging them together.
