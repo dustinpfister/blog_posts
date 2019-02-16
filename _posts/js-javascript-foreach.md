@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-02-16 15:03:38
-version: 1.8
+updated: 2019-02-16 15:06:34
+version: 1.9
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -128,3 +128,21 @@ console.log(obj.forEach); // undefined
 ```
 
 So in this section I will be outlining some ways to loop over these kinds of objects.
+
+The Array.from method is one way to go about converting one of these array like objects into an Array. Once that is done it is possible to use some Array prototype methods such as Array.forEach
+
+### 3.1 - Array.from, and Array.forEach
+
+```js
+var obj = {0:1, 1:2, 2:3, length: 3};
+ 
+// Using Array.from can help change an array like
+// object into an array
+var arr = Array.from(obj);
+console.log(arr.constructor.name); // 'Array'
+ 
+// Now we have the methods
+var sum = 0;
+arr.forEach((n)=>{ sum += n; });
+console.log(sum); // 6
+```
