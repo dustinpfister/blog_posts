@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2019-02-15 19:02:09
-version: 1.3
+updated: 2019-02-15 19:19:07
+version: 1.4
 ---
 
 The javaScript typeof operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used. The typeof operator might not always give the desired results, so there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with.
@@ -35,3 +35,21 @@ console.log(n); // 'string'
 ```
 
 So if you do need to group then use parentheses otherwise they are not needed.
+
+## 5 - Instanceof for fining out what an object is an instnace of
+
+In most cases the typeof operator works just fine if I want to find out if something is a number, or an object. However if I want to find out what kind of object I am dealing with then in most cases typeof does not help much unless it is a function. The instanceof operator accepts two operands one to the left that is what should be an object, and the other is a constructor function. If the variable or value that is being evaluated is an instance of the constructor then the expression will evaluate to true, else false.
+
+```js
+let d = new Date();
+
+let Foo = function(){};
+let f = new Foo();
+
+console.log(typeof d); // object
+console.log(typeof f); // object
+ 
+console.log(d instanceof Date); // true
+console.log(f instanceof Foo); // true
+console.log(f instanceof Date); // false
+```
