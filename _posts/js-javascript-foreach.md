@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-02-16 14:44:06
-version: 1.7
+updated: 2019-02-16 15:03:38
+version: 1.8
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -105,3 +105,26 @@ console.log(sum); // 6
 ```
 
 Loops are often more flexible then Array methods, for one think I can use the break and continue keywords as ways of breaking out of a loop when a condition is met, or spiking over values and additional blocks of logic along with it. A such when it comes to getting into things that involve a lot of heavy lifting they may prove to be a more efficient solution. However when it comes to simple things like this it does not make much difference.
+
+## 3 - ForEach and Array like Objects
+
+So in javaScript Arrays are a kind of object, but the typical situation is that an Array is a special kind of object that is formated in a way in which there are numbered key values with corresponding values. In addition to this there is a length property that reflects the number of these key value pairs, and there are a number of useful methods accessible via the Array prototype object. So an Array is not just an Object, it is an Object that is formated a certain way and is an instance of the Array constructor.
+
+However often in javaScirpt I come across Objects that are formatted like an Array, but they are an instance of another kind of constructor. Sometimes the values of these objects might be read only, but even then it is possible to get a method like Array.froEach to work with these it just requires some trickery with Function.call, or Array.from.
+
+An Example of an Array like object might look like this
+
+```js
+var obj = {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+};
+// so this is just a plain object so it does not
+// have the Array.prototype methods
+console.log(obj.constructor.name); // 'Object'
+console.log(obj.forEach); // undefined
+```
+
+So in this section I will be outlining some ways to loop over these kinds of objects.
