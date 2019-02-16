@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-02-16 17:06:05
-version: 1.11
+updated: 2019-02-16 17:20:03
+version: 1.12
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -160,7 +160,9 @@ Array.prototype.forEach.call(obj, (n) => {
 console.log(sum); // 6
 ```
 
-## 4 - Named keys
+## 4 - Named key Collections
+
+Some times I am dealing with an object that is not an instance of an Array but it is a named collection of sorts. In these situations I need to loop over the contents of a collection of named keys and corresponding values rather than numbered ones.
 
 ### 4.1 - Object.values
 
