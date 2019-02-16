@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-02-16 13:05:39
-version: 1.6
+updated: 2019-02-16 14:44:06
+version: 1.7
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -32,7 +32,7 @@ console.log(sum); // 6
 
 In real projects want might need to happen for each element in an array might end up being far more complex than just adding up each number in the array. There might come a time where I might not want to start at index 0 each time, or I might want to do something with each array index and so forth. So lets look as some more basic examples that are written differently, but do more or less the same thing for now before moving on to so more advanced examples.
 
-## 2.1 - ECMA rev5 compliant
+### 2.1 - ECMA rev5 compliant
 
 As time goes by it is becoming less, and less of an issue to worry about code breaking on clients when delivering modern javaScript exclusively. Still depending on your websites analytics with browser versions, it might still be better to stick to the tired yet true way of doing things with client side javaScript.
 
@@ -47,7 +47,7 @@ console.log(sum); // 6
 
 Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients.
 
-## 2.2 - Array.reduce
+### 2.2 - Array.reduce
 
 When it comes to doing anything that might involve a sum of any kind, it might be better to use Array.reduce in place of Array.forEach. 
 
@@ -61,7 +61,21 @@ console.log(sum); // 6
 
 This is one of many other Array prototype methods that work in a very similar way to that of Array.forEach, but behave a little differently. For one thing the Array.reduce method does not start looping at index 0, but rather index 1. the reason why is that the first element at index 0 is the initial value of an accumulator argument that is the first argument that is given to the function that is passed to Array.reduce. So in this example the value of s starts out as 1 and the value of r is 2, then on the next call the value of s is 3 and the value of r is 3 making the final value that is reduced to 6;
 
-## 2.4 - While loops
+### 2.3 - Array.map
+
+Another way to loop over elements in an array is to use Array.map. This method works more or less the same way as Array.forEach but with one significant difference. That difference is that whatever is returned will become that element in the array, or at least a copy of it that can then be reassigned to the variable that is.
+
+```js
+var arr = [1, 2, 3],
+sum = 0;
+ 
+arr = arr.map((n)=>{sum+=n;return Math.pow(2,n);});
+ 
+console.log(sum); // 6
+console.log(arr); // [2,4,8]
+```
+
+### 2.4 - While loops
 
 Another way would be to use a while loop.
 
