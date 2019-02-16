@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-02-16 12:49:40
-version: 1.5
+updated: 2019-02-16 13:05:39
+version: 1.6
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -60,3 +60,34 @@ console.log(sum); // 6
 ```
 
 This is one of many other Array prototype methods that work in a very similar way to that of Array.forEach, but behave a little differently. For one thing the Array.reduce method does not start looping at index 0, but rather index 1. the reason why is that the first element at index 0 is the initial value of an accumulator argument that is the first argument that is given to the function that is passed to Array.reduce. So in this example the value of s starts out as 1 and the value of r is 2, then on the next call the value of s is 3 and the value of r is 3 making the final value that is reduced to 6;
+
+## 2.4 - While loops
+
+Another way would be to use a while loop.
+
+```js
+var arr = [1, 2, 3],
+sum = 0,
+i = 0,
+len = arr.length;
+ 
+while (i < len) {
+    sum += arr[i];
+    i += 1;
+}
+console.log(sum); // 6
+```
+
+More than one way to skin a cat when it comes to while loops, and loops in general.
+
+```js
+var arr = [1, 2, 3],
+sum = 0,
+i = arr.length;
+while (i--) {
+    sum += arr[i];
+}
+console.log(sum); // 6
+```
+
+Loops are often more flexible then Array methods, for one think I can use the break and continue keywords as ways of breaking out of a loop when a condition is met, or spiking over values and additional blocks of logic along with it. A such when it comes to getting into things that involve a lot of heavy lifting they may prove to be a more efficient solution. However when it comes to simple things like this it does not make much difference.
