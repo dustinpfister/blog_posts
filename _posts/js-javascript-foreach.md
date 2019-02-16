@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-02-16 15:06:34
-version: 1.9
+updated: 2019-02-16 15:14:00
+version: 1.10
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -144,5 +144,18 @@ console.log(arr.constructor.name); // 'Array'
 // Now we have the methods
 var sum = 0;
 arr.forEach((n)=>{ sum += n; });
+console.log(sum); // 6
+```
+
+### 3.2 - Function.call, and Array.forEach
+
+Another trick is to leverage the power of Function.call. If you are not familiar with Function.call, Function.apply, and Function.bind it would be a good idea to look into them at some point. If any kind of object has properties that will work with a prototype method of another it can be done with these Function prototype methods.
+
+```js
+var obj = {0: 1,1: 2,2: 3,length: 3},
+sum = 0;
+Array.prototype.forEach.call(obj, (n) => {
+    sum += n;
+});
 console.log(sum); // 6
 ```
