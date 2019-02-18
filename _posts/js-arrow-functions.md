@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2019-02-18 11:56:48
-version: 1.1
+updated: 2019-02-18 12:00:03
+version: 1.2
 ---
 
 In ecma2015 spec javaScript Arrow functions where introduced as a more concise ways of defining functions. These kinds of functions preform more or less the same way as traditional function expressions and function declarations. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do that in some cases it might work okay, but other times the code might break. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions and how they compare to the alternatives.
@@ -15,3 +15,4 @@ In ecma2015 spec javaScript Arrow functions where introduced as a more concise w
 
 ## 1 - Arrow functions
 
+Arrow functions in javaScipt are a much more concise way to write a function in javaScript compared to the alternatives. To do so In it's most primitive form I just need to type an equal sign followed my a greater than symbol followed by something that is to be implicitly returned when the function is called.
