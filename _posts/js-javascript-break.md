@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-02-19 13:57:28
-version: 1.1
+updated: 2019-02-19 13:58:26
+version: 1.2
 ---
 
 The break statement in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as well. In this post however I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
@@ -25,4 +25,53 @@ while (i--) {
 }
 console.log(i); // 1
 
+```
+
+## 2 - break and labels
+
+```js
+let findGuy = (grid) => {
+ 
+    let y = 0,
+    x,
+    c = 0,
+    cell = {};
+ 
+    outer: while (y < grid.h) {
+        x = 0;
+        while (x < grid.w) {
+            cell = grid.cells[y * grid.w + x];
+            if (cell.guy) {
+                break outer;
+            }
+            c += 1;
+            x += 1;
+        }
+        y += 1;
+    }
+ 
+    if (cell.hp > 0) {
+        return {
+            guy: cell,
+            c: c
+        };
+    }
+    return {
+        guy: false,
+        c: c
+    };
+ 
+};
+ 
+console.log(findGuy({
+        h: 3,
+        w: 3,
+        cells: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    })); // {guy: false, c:9}
+ 
+console.log(findGuy({
+        h: 3,
+        w: 3,
+        cells: [0, 0, {guy:true,hp:10}, 0, 0, 0, 0, 0, 0]
+    })); // { guy: { guy: true, hp: 10 }, c: 2 }
 ```
