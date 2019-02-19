@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2019-02-19 17:41:51
-version: 1.4
+updated: 2019-02-19 17:58:10
+version: 1.5
 ---
 
 In ecma2015 spec javaScript Arrow functions where introduced as a more concise ways of defining functions. These kinds of functions preform more or less the same way as traditional function expressions and function declarations. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do that in some cases it might work okay, but other times the code might break. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions and how they compare to the alternatives.
@@ -57,3 +57,30 @@ console.log(baz(1, 1)); // 2
 ```
 
 The main difference between the two other options has to do with how the this keyword is handled in the body of an arrow function. With function expressions and declarations it is possible to set the value of the this keyword with Function.call, Function.apply, or Function.bind. However with arrow functions this does not work.
+
+## 3 - The this statement and arrow functions
+
+So with arrow functions the this keyword is not treated the same way. When Working with nested functions or closures the self variable is often used as a way to store that value of the this keyword that can then be accessed from within another function within the function. In addition a Function prototype method like Function.call can be used to set the value of the this keyword as well. However with arrow functions this is not the case.
+
+```js
+var func1 = function () {
+    var self = this;
+    self.x = self.x === undefined ? 5 : self.x;
+    return function (dx) {
+        return self.x + dx;
+    };
+};
+ 
+console.log( func1()(40)); // 45
+console.log( func1.call({x:2})(2)); // 4
+ 
+var func2 = () => {
+    this.x = this.x === undefined ? 5 : this.x;
+    return (dx) => {
+        return this.x + dx;
+    };
+};
+ 
+console.log( func2()(40)); // 45
+console.log( func2.call({x:2})(2)); // 7
+```
