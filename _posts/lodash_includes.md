@@ -1,21 +1,21 @@
 ---
-title: Using _.includes in lodash to check Strings, Arrays, and Objects for a value
+title: lodash includes method to check Strings, Arrays, and Objects for a value
 date: 2017-11-21 10:01:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2017-11-22 19:58:44
-version: 1.2
+updated: 2019-02-19 16:25:55
+version: 1.3
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method and why It might be useful in some situations.
 
 <!-- more -->
 
-## What it does
+## lodash includes
 
-\_.includes is one of the collection methods in lodash that work with Arrays, and Objects in general. In addition this method can also be used with strings.
+The \_.includes method is one of the collection methods in lodash that work with Arrays, and Objects in general. In addition this method can also be used with strings. The nature of the method is one where it can be used as a means to test if a value is included in a collection. 
 
 ## Example of \_.includes With strings
 
