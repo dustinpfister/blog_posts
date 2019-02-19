@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-02-10 16:16:02
-version: 1.10
+updated: 2019-02-19 18:26:16
+version: 1.11
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -116,3 +116,25 @@ console.log(Object.keys(b).length); // 4
 ```
 
 However as long as the index values are enumerable the Object.keys method can be used to get an array of enumerable keys for an object, including possible negative index values. Which would be one way to get the true index value if these negative index values are to be counted.
+
+## 3 - Ways of getting an actual element count
+
+Say you are dealing with an object that also has some named object keys, and a single index value that is way ahead of the others. As I have covered in the previous section the length property of an array in javaScript is just the highest index value plus one. However there are a number of ways to go about getting the actual count of elements in these situations.
+
+```js
+var a = [1,2,3];
+a[-1] = 0;
+a['foo'] = 'bar';
+a[10] = 'baz';
+ 
+// length is just one more that the highest
+// index value
+console.log(a.length); // 11
+ 
+// get the actual count of elements
+console.log(Object.keys(a).length); // 6
+console.log(Object.values(a).length); // 6
+ 
+// get a count of all keys, even the length property
+console.log(Object.getOwnPropertyNames(a).length); // 7
+```
