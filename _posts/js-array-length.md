@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-02-19 18:30:16
-version: 1.12
+updated: 2019-02-19 18:58:55
+version: 1.13
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -140,3 +140,25 @@ console.log(Object.getOwnPropertyNames(a).length); // 7
 ```
 
 The Object.keys method can be used to get an array of enumerable key names of an object, and the Object.values method can be used to get an array of the corresponding values. Then there is Object.getOwnPropertyNames that can be used to get all of the objects own Property names even ones like length, and any additional key value pairs that are set to be not enumerable.
+
+## 4 - Typed Arrays and length
+
+When working with typed arrays the length property refers to the number of bit sized units the array is. For example if it is a Unit16Array and it has 3 elements the length of it is 3, and the byte length of it is 6.
+
+```js
+var a = [255,25,257];
+ 
+var buff = Uint8Array.from(a);
+ 
+console.log(buff); // [255,25,1]
+console.log(buff.length); // 3
+console.log(buff.byteLength); // 3
+ 
+var buff = Uint16Array.from(a);
+ 
+console.log(buff); // [255,25,257]
+console.log(buff.length); // 3
+console.log(buff.byteLength); // 6
+```
+
+The length of an array generally refers to the number of elements, or the highest index value plus one. It does not always refer to the the size of the array in terms of data.
