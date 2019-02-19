@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2019-02-19 16:30:33
-version: 1.5
+updated: 2019-02-19 16:33:28
+version: 1.6
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method and why It might be useful in some situations.
@@ -70,3 +70,5 @@ console.log(_.includes(['a','b','c'],'b',-1)); // false
 ```
 
 ## 7 - Conclusion
+
+The includes method in lodash can be used as a quick way to find if a given value is in a collection in general. It is not like there are other ways of doing this in plain old javaScript by itself, but if lodash is part of the stack it is there to help with this sort of thing. If you enjoyed this post you might want to check out my main post on [lodash](/2019/02/15/lodash/) ingeneral.
