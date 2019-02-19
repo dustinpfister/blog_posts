@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-02-14 18:42:46
-version: 1.8
+updated: 2019-02-19 16:00:17
+version: 1.9
 ---
 
-The lodash array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
+The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
 
 
 <!-- more -->
@@ -67,3 +67,9 @@ _.each(matrix, function(pt){
  
 });
 ```
+
+## 5 - Conclusion
+
+Many of the lodash Array methods help to quickly complete common tasks that are not always in the native javaScript Array prototype object. In addition many of the lodash equivalents to Array prototype methods are not array methods but collection methods such as is the case with methods like \_.map.
+
+If you enjoyed this post you might want to check out my main post on [lodash](/2019/02/15/lodash) in general.
