@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2019-02-14 18:24:53
-version: 1.6
+updated: 2019-02-19 16:04:49
+version: 1.7
 ---
 
 So I think I will write a [few posts](/categories/lodash/) on [lodash](https://lodash.com/), and as such why not start with [\_.chunk](https://lodash.com/docs/4.17.4#chunk).
@@ -92,6 +92,6 @@ console.log(html);
 
 ## 4 - Conclusion
 
-So yes this method will sure come in handy when working on a project, I can see why people like lodash. Be sure to check out my other [posts on lodash](/categories/lodash/).
+So yes this method will sure come in handy when working on a project, I can see why people like lodash. Be sure to check out my other [posts on lodash](/categories/lodash/), I also have my main post on [lodash](/2019/02/15/lodash/) in general as well.
 
 Happy coding.
