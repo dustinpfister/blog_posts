@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-02-19 18:58:55
-version: 1.13
+updated: 2019-02-19 19:01:49
+version: 1.14
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -15,14 +15,14 @@ version: 1.13
 
 ## 1 - javaScript array length basics
 
-So the element length of an array can always be obtained by just referencing the length property of an array like so.
+So the element length of an array can often be obtained by just referencing the length property of an array like so.
 
 ```js
 var a = [1,2,3];
 console.log(a.length); // 3
 ```
 
-The value that is returned is going to be a number that is typically one larger than the highest index of the array. This is because the array length of an array is one relative while the actual index values are zero relative. For the most part that is all there is to it except for maybe some rare but possible situations in which this is not the case.
+The value that is returned is going to be a number that is typically one larger than the highest index of the array. This is because the array length of an array is one relative while the actual index values are zero relative. For the most part that is all there is to it except for maybe some rare but possible situations in which this is not the case. See the length of an array is not always the length of an array, read on if you want to know why.
 
 ### 1.1 - Setting the length property
 
