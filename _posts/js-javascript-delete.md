@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2019-02-20 11:19:27
-version: 1.5
+updated: 2019-02-20 11:27:23
+version: 1.6
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. In this post I will be checking out the delete operator, and some related topics that seem to center around the use of it when it comes to managing object properties in javaScript.
@@ -61,3 +61,29 @@ console.log(this.n); // 42
 delete this.n;
 console.log(this.n); // undefined
 ```
+
+## 5 - The delete operator mangles an existing object. 
+
+Some times I might want to create a new independent object from an existing object, and that new object will have just some properties from the older object. There is a lot to be said about that when it comes to cloning objects, in lodash there are methods like \_.pick, and \_.omit that can be used to make quick work with this. However when dealing with just plain vanilla js the process might be just a little involved.
+
+```js
+var obj = {
+    x: 15,
+    y: 27,
+    time: 300,
+    lastCall: 30
+};
+ 
+// clone the object somehow
+var objCopy = JSON.parse(JSON.stringify(obj));
+delete objCopy.time;
+delete objCopy.lastCall;
+ 
+objCopy.x = 0;
+objCopy.y += 3;
+ 
+console.log(objCopy.x, objCopy.y); // 0 30
+console.log(obj.x, obj.y); // 15 27
+```
+
+In this example I am using the JSON trick to clone an object, maybe not the best way to go about doing it but one way or another the object will need to be cloned. Once I have a cloned object I can then delete properties and change the values of the properties that remain and not effect the original object from which the new object was cloned.
