@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2019-02-20 11:27:23
-version: 1.6
+updated: 2019-02-20 11:32:44
+version: 1.7
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. In this post I will be checking out the delete operator, and some related topics that seem to center around the use of it when it comes to managing object properties in javaScript.
@@ -61,6 +61,30 @@ console.log(this.n); // 42
 delete this.n;
 console.log(this.n); // undefined
 ```
+
+## 4 - The return value of the delete operator.
+
+The delete operator returns a value of course, and that value is a true or false boolean value. In the event that the property can not be deleted for whatever the reason then the value will be false, otherwise true will be returned if all is well.
+
+```js
+var obj = {
+    foo: 'bar'
+};
+ 
+Object.defineProperty(obj, 'bar', {
+    value: 'foobar',
+    enumerable: true,
+    configurable: false,
+    writable: false
+});
+ 
+console.log(delete obj.foo); // true
+console.log(delete obj.bar); // false
+ 
+console.log(obj); // { bar: 'foobar' }
+```
+
+Here I am using the Object.defineProperty method to set a property of an object so that it can not be deleted. When The configurable property of the options object that I give to Object.defineProperty is set to false, then the property can not be deleted.
 
 ## 5 - The delete operator mangles an existing object. 
 
