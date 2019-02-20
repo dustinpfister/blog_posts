@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2019-02-20 10:25:04
-version: 1.1
+updated: 2019-02-20 10:27:13
+version: 1.2
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. In this post I will be checking out the delete operator, and some related topics that seem to center around the use of it when it comes to managing object properties in javaScript.
@@ -14,3 +14,5 @@ The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 <!-- more -->
 
 ## 1 - javaScript delete
+
+The delete operator as you might expect is there to help delete things, but not just anything, only object properties.
