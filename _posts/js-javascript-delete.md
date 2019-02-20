@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2019-02-20 11:32:44
-version: 1.7
+updated: 2019-02-20 11:34:34
+version: 1.8
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. In this post I will be checking out the delete operator, and some related topics that seem to center around the use of it when it comes to managing object properties in javaScript.
@@ -88,7 +88,7 @@ Here I am using the Object.defineProperty method to set a property of an object 
 
 ## 5 - The delete operator mangles an existing object. 
 
-Some times I might want to create a new independent object from an existing object, and that new object will have just some properties from the older object. There is a lot to be said about that when it comes to cloning objects, in lodash there are methods like \_.pick, and \_.omit that can be used to make quick work with this. However when dealing with just plain vanilla js the process might be just a little involved.
+Some times I might want to create a new independent object from an existing object, and that new object will have just some properties from the older object. There is a lot to be said about that when it comes to cloning objects, in lodash there are methods like [\_.pick](/2018/07/11/lodash_pick/), and \_.omit that can be used to make quick work with this. However when dealing with just plain vanilla js the process might be just a little involved.
 
 ```js
 var obj = {
