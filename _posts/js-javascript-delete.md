@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2019-02-20 11:34:34
-version: 1.8
+updated: 2019-02-20 11:37:04
+version: 1.9
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. In this post I will be checking out the delete operator, and some related topics that seem to center around the use of it when it comes to managing object properties in javaScript.
@@ -111,3 +111,7 @@ console.log(obj.x, obj.y); // 15 27
 ```
 
 In this example I am using the JSON trick to clone an object, maybe not the best way to go about doing it but one way or another the object will need to be cloned. Once I have a cloned object I can then delete properties and change the values of the properties that remain and not effect the original object from which the new object was cloned.
+
+## 6 - Conclusion
+
+Hopefully you learned a thing or two about the delete operator in javaScript today. It can come in handy in some situations but is not always the best tool for the job. For the most part when I am working on projects I can not say that I use the delete operator often, but it is nice to know that it is there in the event that I do need it for some reason.
