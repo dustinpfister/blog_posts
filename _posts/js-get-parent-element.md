@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-02-21 18:42:53
-version: 1.0
+updated: 2019-02-21 18:50:39
+version: 1.1
 ---
 
 So this will be a quick post on getting parent elements for today. There are two properties of concern with this when it come to an element in javaScript which are parentElement and parentNode. The two of these more or less do the same thing but with just one little subtle difference.
@@ -34,3 +34,5 @@ console.log(container.className); // wrap
     </body>
 </html>
 ```
+
+In the event that the element does not have a parent element, or the parent element is not a DOM element the property will have a value of null.
