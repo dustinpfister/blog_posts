@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-02-21 18:53:56
-version: 1.2
+updated: 2019-02-21 18:58:27
+version: 1.3
 ---
 
 So this will be a quick post on getting parent elements for today. There are two properties of concern with this when it come to an element in javaScript which are parentElement and parentNode. The two of these more or less do the same thing but with just one little subtle difference.
@@ -55,3 +55,7 @@ console.log(el.parentNode); // #document
     </body>
 </html>
 ```
+
+## 3 - Other possible future ways with querySelector
+
+As of this writing there is no css selector that I know of that can be used to get a parent element, so there is no way of getting a parent element with querySelector. There is of course chatter about possible future selectors and pseudo classes that might be a way to do so, but so far nothing solid or well supported. 
