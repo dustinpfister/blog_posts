@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2019-02-21 21:46:39
-version: 1.8
+updated: 2019-02-21 21:47:31
+version: 1.9
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out. The trouble was mainly with looping threw an array from zero upwards, each time an element is removed it of course changes the length of an array. The way I would resolve the problem is often by looping threw the array backwards. Anyway this post is about the [_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/) that helps to make quick work of removing elements from an array. I will also be looking at some vanilla js alternatives to the lodash remove array method as well as well.
@@ -33,7 +33,7 @@ console.log(arr); // ['foo','man',chew];
 
 So the method that you pass will return true of false, if what is returned is true the element will be removed.
 
-## Array of enemy objects
+## 2 - Array of enemy objects
 
 When it comes to making a game that involves an array of enemies that the player interacts with, often there will be some kind of process that involves purging enemies from an array. The _.remove method can be used to make quick work of that.
 
@@ -63,7 +63,7 @@ console.log(enemy);
 //  { id: 'en_3', hp: 50, maxHP: 50 } ]
 ```
 
-### conclusion
+## 3 - Conclusion
 
 So lodash is packed full of helpful little methods like this, in addition even if it is redundant it is possible that it might provide higher backward compatibility with older browsers.
 
