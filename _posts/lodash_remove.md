@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2019-02-22 09:09:13
-version: 1.16
+updated: 2019-02-22 10:08:30
+version: 1.17
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out. The trouble was mainly with looping threw an array from zero upwards, each time an element is removed it of course changes the length of an array. The way I would resolve the problem is often by looping threw the array backwards. Anyway this post is about the [_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/) that helps to make quick work of removing elements from an array. I will also be looking at some vanilla js alternatives to the lodash remove array method as well as well.
@@ -114,7 +114,7 @@ console.log(arr); // [3,5]
  
 ### 3.3 - Remove method using Array.splice
  
-
+So making a remove method with Array.splice is not to hard. If you are not familiar with how to write your own higher order functions then it is not a bad idea to make one or two now and then, even if they are kind of basic. A higher order function is just a fancy term that is used to refer to a function that accepts another function as an argument and or returns another function when called. This example is then an exercise of writing something that is the latter of the two, sense I will be returning an Array..
  
  ```js
 var remove = function (arr, forEach) {
