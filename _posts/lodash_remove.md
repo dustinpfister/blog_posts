@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2019-02-22 08:48:11
-version: 1.15
+updated: 2019-02-22 09:09:13
+version: 1.16
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out. The trouble was mainly with looping threw an array from zero upwards, each time an element is removed it of course changes the length of an array. The way I would resolve the problem is often by looping threw the array backwards. Anyway this post is about the [_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/) that helps to make quick work of removing elements from an array. I will also be looking at some vanilla js alternatives to the lodash remove array method as well as well.
@@ -79,7 +79,7 @@ console.log(arr); // [ 1, 2, 4 ]
 
 The problem with Array.splice by itself at least is that I must know the index of the element that I want to remove. It is not to hard to write a method like the lodash remove method with native javaScript that makes use of Array.splice though. There are a few things to be ware of when doing so though when removing more than one element.
 
-## 3.2 - Array.splice in while loops
+### 3.2 - Array.splice in while loops
 
 When removing more than one element with Array.splice in a loop such as a while loop a problem may come up that has to do with the fact that the length of the array changing when one or more elements are removed.
 
@@ -111,7 +111,29 @@ while (i--) {
 }
 console.log(arr); // [3,5]
 ```
+ 
+### 3.3 - Remove method using Array.splice
+ 
+
+ 
+ ```js
+var remove = function (arr, forEach) {
+    var i = arr.length;
+    while (i--) {
+        if (forEach(arr[i])) {
+            arr.splice(i, 1);
+        }
+    }
+    return arr;
+};
+ 
+var nums = [-1, 3, -3, -4, 5, 0, 7];
+ 
+console.log(remove(nums, function (n) {
+        return n <= 0;
+    }));
+```
 
 ## 4 - Conclusion
 
-So lodash is packed full of helpful little methods like the lodash remove method. It is true that many of the methods in lodash are redundant, but that is not always the case. Sometimes a lodash method does bring a little more to the table compared to a native counterpart. If you engoyed reading this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general.
+So lodash is packed full of helpful little methods like the lodash remove method. It is true that many of the methods in lodash are redundant, but that is not always the case. Sometimes a lodash method does bring a little more to the table compared to a native counterpart. If you enjoyed reading this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general.
