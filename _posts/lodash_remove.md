@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2019-02-22 08:38:18
-version: 1.13
+updated: 2019-02-22 08:42:04
+version: 1.14
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out. The trouble was mainly with looping threw an array from zero upwards, each time an element is removed it of course changes the length of an array. The way I would resolve the problem is often by looping threw the array backwards. Anyway this post is about the [_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/) that helps to make quick work of removing elements from an array. I will also be looking at some vanilla js alternatives to the lodash remove array method as well as well.
@@ -67,7 +67,7 @@ console.log(enemy);
 
 In this section I will be going over vanilla js solutions for removing elements from an array.
 
-### 3.2 - Using Array.splice to remove a element
+### 3.1 - Using Array.splice to remove a element
 
 So one way to remove an element from an Array with native core javaScript is to use the Array.splice prototype method. This is often confused with Array.slice that does the same thing only it returns a new array rather than mangling an existing one.
 
@@ -77,7 +77,9 @@ arr.splice(2,1);
 console.log(arr); // [ 1, 2, 4 ]
 ```
 
-## 3.1 - Array.splice in while loops
+The problem with Array.splice by itself at least is that I must know the index of the element that I want to remove. It is not to hard to write a method like the lodash remove method with native javaScript that makes use of Array.splice though. There are a few things to be ware of when doing so though when removing more than one element.
+
+## 3.2 - Array.splice in while loops
 
 When removing more than one element with Array.splice in a loop such as a while loop a problem may come up that has to do with the fact that the length of the array changing when one or more elements are removed.
 
