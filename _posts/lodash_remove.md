@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2019-02-21 21:47:31
-version: 1.9
+updated: 2019-02-21 21:51:31
+version: 1.10
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out. The trouble was mainly with looping threw an array from zero upwards, each time an element is removed it of course changes the length of an array. The way I would resolve the problem is often by looping threw the array backwards. Anyway this post is about the [_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/) that helps to make quick work of removing elements from an array. I will also be looking at some vanilla js alternatives to the lodash remove array method as well as well.
@@ -65,6 +65,4 @@ console.log(enemy);
 
 ## 3 - Conclusion
 
-So lodash is packed full of helpful little methods like this, in addition even if it is redundant it is possible that it might provide higher backward compatibility with older browsers.
-
-Be sure to check out my other [posts on lodash](/categories/lodash/)
+So lodash is packed full of helpful little methods like the lodash remove method. It is true that many of the methods in lodash are redundant, but that is not always the case. Sometimes a lodash method does bring a little more to the table compared to a native counterpart. If you engoyed reading this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general.
