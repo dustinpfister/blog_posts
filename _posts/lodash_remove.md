@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2017-09-30 18:56:32
-version: 1.4
+updated: 2019-02-21 21:41:01
+version: 1.5
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out. The trouble was mainly with looping threw an array from zero upwards, each time an element is removed it of course changes the length of an array. The way I would resolve the problem is often by looping threw the array backwards.
@@ -15,7 +15,7 @@ The process of removing a few elements from an array can sometimes be a little t
 
 Anyway this post is about the [_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/) that helps to make quick work of removing elements from an array.
 
-## Basic example
+## 1 - lodash remove basic example
 
 It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element.
 
