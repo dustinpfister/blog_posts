@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2019-02-22 20:57:46
-version: 1.3
+updated: 2019-02-22 21:05:19
+version: 1.4
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of closures. There are many ways to go about defining what a closure is. Some definitions are very simple yet technically still correct, while other definitions are a bit of a mouth full but do a better job doing them justice. There are all ready many posts on this subject, just about any javaScript developer that writes a blog on javaScript will likely get around to writing a post on them sooner or later, along with things like the this keyword, and the nature of prototype inheritance. So it was only a matter of time until I wrote this post, so as such, here it is. Today I will be looking into closures.
@@ -27,7 +27,7 @@ Okay that one was a little more intense, sure, but maybe it still does not cover
 
 ## 2 - Basic closure example
 
-For starters here is a basic example of a closure where the outer function is one where I pass and x and y argument. When I do so those arguments become local variables within the scope of that outer function. I then return an inner function that has parameters of it's own.
+For starters here is a basic example of a closure where the outer function is one where I pass and x and y argument. When I do so those arguments become local variables within the scope of that outer function. I then return an inner function that has parameters of it's own, that are used with the parameters of the outer function.
 
 ```js
 var point = function (x, y) {
@@ -44,3 +44,5 @@ var pt = point(15,5);
 console.log( pt(-5,5) ); // { x: 10, y: 10 }
 console.log( pt(32,90) ); // { x: 42, y: 100 }
 ```
+
+When calling the outer function the inner function is returned, and I can then use that inner function as a way to work with a state that exists in the scope of the outer function. This comes in handy now and then when a situation arises that calls for it, the nature of this is one that helps to sore a state, and keep things organized.
