@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-02-25 21:41:18
-version: 1.8
+updated: 2019-02-25 21:46:27
+version: 1.9
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements as well.
@@ -84,6 +84,8 @@ console.log(isNeg(-1)); // true
 ```
 
 ## 4 - Conditional operator
+
+There is also a conditional operator in JavaScript this is an operator that takes three operands and returns one of two values depending on the boolean value of the left most operand before the question mark symbol that is used..
 
 ```js
 var obj = undefined;
