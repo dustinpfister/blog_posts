@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-02-25 21:10:33
-version: 1.5
+updated: 2019-02-25 21:21:54
+version: 1.6
 ---
 
-In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project.
+In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements as well.
 
 <!-- more -->
 
