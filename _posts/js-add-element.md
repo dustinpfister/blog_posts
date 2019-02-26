@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2019-02-26 11:45:12
-version: 1.4
+updated: 2019-02-26 11:50:47
+version: 1.5
 ---
 
 Adding elements in javaScript generally refers to creating and appending html elements to an html document, in core javaScript in general it may refer to creating and appending elements for an Array as well. I have written a [post on innerHTML](/2019/01/13/js-innerhtml/) not to long ago which is one typical way of doing so, however in this post I will be covering the subject in general. There are of course alternatives to innerHTML that involve the use of a collection of methods, such as [createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement), and appendChild. Also there is some things to cover when it comes to html node lists as well, and how they are like arrays.
@@ -20,7 +20,7 @@ To add an element in javaScript I first need to gain a reference to a hard coded
 ```html
 <html>
     <head>
-        <title>javascript alert</title>
+        <title>add elements</title>
     </head>
     <body>
         <script>
@@ -31,3 +31,5 @@ el.innerHTML += '<p>hello world<\/p>'
     </body>
 </html>
 ```
+
+In this post I am not going to be going into detail about innerHTML as I have written a post on that all ready. However innerHTML is of course one option for making quick work of this when it comes to simple projects. When it comes to more advanced projects though there are some situations in which the alliterative way of doing this should be used.
