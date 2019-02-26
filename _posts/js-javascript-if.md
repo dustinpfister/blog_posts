@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-02-25 20:57:38
-version: 1.3
+updated: 2019-02-25 21:04:40
+version: 1.4
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project.
@@ -32,6 +32,8 @@ it must start out with the if keyword followed by parenthesis, and within the pa
 
 ## 2 - Some more basic examples
 
+if statements can have brackets or not, and can also be used with an option else block as well.
+
 ```js
 var n = 42;
 
@@ -47,7 +49,7 @@ if (n >= 40)
 // > 'the answer'
 
 if (n === '42') {
-    console.log('the answser is a string');
+    console.log('the answer is a string');
 } else {
     if (n === 42) {
         console.log('the answer is a number.')
