@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-02-25 21:04:40
-version: 1.4
+updated: 2019-02-25 21:10:33
+version: 1.5
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project.
@@ -59,4 +59,26 @@ if (n === '42') {
 }
 // > 'the answer is a number'
 
+```
+
+## 3 - Else is not needed when making a function that returns something
+
+If a function that is being made that is using the return keyword to return a result when called then else does not need to be used. The reason why is that return will stop any further execution of any additional code, so it can be used as a way to break out of a function. This differs from blocks of code where I might only want some code to run if and only if a condition is not met. 
+
+```js
+var isNeg = function (n) {
+    // if type is number and less than zero
+    if (typeof n === 'number' && n < 0) {
+        // return true
+        return true;
+    }
+    // if we get here return false
+    return false;
+};
+ 
+console.log(isNeg(NaN)); // false
+console.log(isNeg('foo')); // false
+console.log(isNeg('-1')); // false
+console.log(isNeg(42)); // false
+console.log(isNeg(-1)); // true
 ```
