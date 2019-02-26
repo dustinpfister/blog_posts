@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-02-21 18:58:27
-version: 1.3
+updated: 2019-02-25 21:18:52
+version: 1.4
 ---
 
-So this will be a quick post on getting parent elements for today. There are two properties of concern with this when it come to an element in javaScript which are parentElement and parentNode. The two of these more or less do the same thing but with just one little subtle difference.
+So this will be a quick post on getting parent elements for today. There are two properties of concern with this when it come to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference.
 
 <!-- more -->
 
