@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-02-25 21:46:27
-version: 1.9
+updated: 2019-02-25 21:48:44
+version: 1.10
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements as well.
@@ -94,6 +94,8 @@ obj = obj === undefined ? {} : obj;
  
 console.log(typeof obj); // 'object'
 ```
+
+Because the conditional operator is a kind of expression it can be used in conjunction with if statements. 
 
 ```js
 var func = function (g) {
