@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-03-01 20:38:05
-version: 1.0
+updated: 2019-03-01 20:43:05
+version: 1.1
 ---
 
-The return statement in javaScript is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or function. In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding return as well.
+The [return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) in javaScript is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or function. In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding return as well.
 
 <!-- more -->
 
