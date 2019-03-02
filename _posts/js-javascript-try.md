@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2019-03-02 11:51:35
-version: 1.1
+updated: 2019-03-02 11:57:15
+version: 1.2
 ---
 
 The try catch statement in javaScript is one way to go about preforming error handling when developing a javaScript project. The try catch statement is not just a one stop solution for all Error handling tasks when it comes to working with Errors in javaScript, but is certainly one aspect of doing so along with error objects in certain callbacks, and when working with promises as well. In this post I will be outlining some things to know about when working with the try catch.
@@ -15,14 +15,20 @@ The try catch statement in javaScript is one way to go about preforming error ha
 
 ## 1 - javaScript try basic example
 
-```js
-var str = '{\"n\":\"foo\"';
+For a basic example of a try catch block I have a sting that represents an invalid JSON string. When I attempt to try to parse the JSON string into a workable object this results in an Error.
 
+```js
+var str = '{\"n\":\"27\"',
+obj = {
+    n: 42
+};
+ 
 try {
-    JSON.parse(str);
+    obj = JSON.parse(str);
 } catch (e) {
     console.log(e.message); // Unexpected end of JSON input
 }
+console.log(obj.n); // 42
 ```
 
 ## 2 - 
