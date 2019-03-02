@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-03-02 12:23:12
-version: 1.2
+updated: 2019-03-02 12:39:31
+version: 1.3
 ---
 
 The [return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) in javaScript is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or function. In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding return as well.
@@ -27,6 +27,25 @@ console.log(foo(5,2)); // 7
 ```
 
 So the return statement is necessary when it comes to authoring any kind of function that will ultimately return a number, string or any kind of product in the form of an Object or another inner function. In this example it is just a simple single operation expression, but it could be a lengthly expression that I do not care to repeat each time I need to use it in a lengthy body of code.
+
+### 1.1 - Another example of return with a lengthy expression
+
+```js
+var figMoney = function (score, compare, rpm, imp, ctr) {
+    ctr = ctr === undefined ? 0.5 : ctr;
+    imp = imp === undefined ? 6.5 : imp;
+    rpm = rpm === undefined ? 1.5 : rpm;
+    compare = compare === undefined ? 1 : compare;
+    score = score === undefined ? 0 : score;
+ 
+    // lengthly expression
+    return '$' + (score / compare * imp * ctr * rpm).toFixed(2);
+};
+ 
+console.log( figMoney() ); // '$0.00'
+console.log( figMoney(77, 5, 2) ); // '$100.10'
+console.log( figMoney(7, 5, 1.4,6.5,0.12) ); // '$1.53'
+```
 
 ## 2 - 
 
