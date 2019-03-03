@@ -1,19 +1,19 @@
 ---
-title: Getting started with canvas
+title: Getting started with canvas basics
 date: 2017-05-17 14:19:17
 tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2017-09-30 18:29:02
-version: 1.3
+updated: 2019-03-03 17:09:19
+version: 1.4
 ---
 
 I thought it would be nice to write a few blog posts on html 5 canvas. Mainly just some posts on doing some fun things with the 2d drawing context. As such maybe it is best to start with a post that is a kind of getting started post on the subject.
 
 <!-- more -->
 
-## The black screen app
+## 1 - Canvas basics
 
 Whenever I start a new canvas project with plain old vanilla js, I often start with something like this.
 
@@ -45,7 +45,7 @@ In this example I am creating the canvas, and appending it to the body of an htm
 
 By native size I mean the actual with and height of the canvas in terms of the dimentions of the 2d matrix, not any kind of scaled width and height.
 
-## Actual size vs scaled size
+## 2 - Actual size vs scaled size
 
 There is the actual width and height of a 2d matrix, and then there is the size of each x, and y position in the matrix. I try to avoid calling theme pixels because in most cases that it not the case when getting into the deep of it when it comes to actual hardware pixels, screen resolution, scaling, and so forth.
 
@@ -66,7 +66,7 @@ canvas.style.height = 480 + 'px';
 
 You may choose to set the scaled size by some other means such as defining a CSS class. Whatever the case may be there is both the actual size, and the scaled size.
 
-## Having a single draw method
+## 3 - Having a single draw method
 
 After having the blank black canvas, and size in order it's now time to actual draw something on it, for this example I will just be drawing a white circle in the center of the canvas.
 
@@ -129,7 +129,7 @@ So now I have pulled things into functions, You do not have to do this of course
 
 Getting started with canvas is often just a means of knowing how to use the various methods, and properties on the [2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). It can take a little while, but assuming you have a basic working knowledge of javaScript to begin with, it should not take to long.
 
-## Throwing in the loop method.
+## 4 - Throwing in the loop method.
 
 Now it's time to start getting into doing something fun.
 
@@ -226,11 +226,11 @@ Now it's time to start getting into doing something fun.
 
 So not I am putting together an object that contains values, and so far a single update method. Often I end up going in some kind of direction in which I try to separate a model or sorts from the way that it is being rendered. There is also now a loop method that keeps getting called over, and over again, that updates the model, and draws the current state of that model.
 
-## requestAnimationFrame, setTimeout, and setInterval
+## 5 - requestAnimationFrame, setTimeout, and setInterval
 
 With a canvas project it is best to use requestAnimationFrame over setTimeout, or setInterval. Getting into the reasons why is a whole new post in itself, but for the most part the only reason why you might want to use setTimeout is if you want to push backward compatibility back farther. For the most part I would say that you do not have to worry about that these days though.
 
-## Conclusion
+## 6 - Conclusion
 
 The purpose of this post was to just set the basics on how I go about starting a canvas project. Doing canvas justice would require writing a whole book on the subject, and even then I am confident that I would not touch base on everything that is need to be known on the matter. I have not even mentioned layering, event attachment, how to go about exporting animations that you make, and a wide range of other topics on canvas. Still I hope that this post may get you interested in canvas at least, as it can become very fun to play with.
 
