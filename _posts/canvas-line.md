@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 18:02:27
-version: 1.18
+updated: 2019-03-05 18:04:24
+version: 1.19
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
@@ -143,6 +143,8 @@ drawPoints(ctx,[15,15,15,5,25,5,25,20,5,30],true);
 ```
 
 There might be a need for more than one draw points function, or to hack over something like this to add additional features such as to close the line or not, to fill or not and so forth. Still many draw points functions work in a similar fashion, give it a context and an array of points and it will draw it for me.
+
+So now that I have a draw points function the real fun can begin when it comes to writing all kinds of methods that can be used to create an array of points.
 
 ### 5.2 - Create Polygon Points for a canvas line
 
