@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 13:10:57
-version: 1.7
+updated: 2019-03-05 13:12:13
+version: 1.8
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
@@ -60,7 +60,9 @@ ctx.lineTo(20,20);
 ctx.stroke();
 ```
 
-## 3 - 
+## 3 - canvas line width
+
+There is the lineWidth property that can be used to set the width of a line in terms of the pixel thickness.
 
 ```js
 var canvas = document.getElementById('the-canvas'),ctx;
