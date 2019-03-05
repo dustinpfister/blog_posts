@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 16:05:30
-version: 1.14
+updated: 2019-03-05 16:18:25
+version: 1.15
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
@@ -140,3 +140,23 @@ drawPoints(ctx,[15,15,15,5,25,5,25,20,5,30]);
 ```
 
 There might be a need for more than one draw points function, or to hack over something like this to add additional features such as to close the line or not, to fill or not and so forth. Still many draw points functions work in a similar fashion, give it a context and an array of points and it will draw it for me.
+
+### 5.2 - Create Polygon Points for a canvas line
+
+Now that I have a draw points function worked out I can start creating all kinds of functions that create a collection of points that can then be given to the draw points function. A simple one that comes to mind is one that can be used to draw polygons for example.
+
+```js
+var createPolygonPoints = function(cx,cy,r,s){
+    var i = 0,points=[];
+    while(i < s){
+        a = Math.PI * 2 * (i/s);
+        x = Math.cos(a) * r + cx;
+        y = Math.sin(a) * r + cy;
+       points.push(x,y);
+     i += 1;
+   }
+    return points;
+}
+ 
+drawPoints(ctx,createPolygonPoints(15,15,5,4),true);
+```
