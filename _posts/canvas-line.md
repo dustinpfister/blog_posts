@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 14:08:50
-version: 1.10
+updated: 2019-03-05 14:28:14
+version: 1.11
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
@@ -90,3 +90,28 @@ ctx.stroke();
 canvas.style.width = '320px';
 canvas.style.height = '320px';
 ```
+
+## 4 - Stroke and fill canvas lines
+
+The stroke method can be used in conjunction with the fill method to both stroke and fill a shape that was drawn with the moveTo and lineTo methods.
+
+```js
+var canvas = document.getElementById('the-canvas'),ctx;
+canvas.width = 30;
+canvas.height = 30;
+ctx = canvas.getContext('2d');
+ 
+ctx.beginPath();
+ctx.moveTo(10,20);
+ctx.lineTo(20,20);
+ctx.lineTo(15,10);
+ctx.closePath()
+ 
+ctx.lineWidth = 3;
+ctx.fillStyle = 'black';
+ctx.strokeStyle='red'
+ctx.fill();
+ctx.stroke();
+```
+
+The order in which the fill and stroke methods is call does matter and can effect the z order in which these actions take place. In other words if you want a stroke to happen on top of a fill then be sure to call the stroke method after the fill method is call like in the above example.
