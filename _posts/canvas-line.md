@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 17:59:19
-version: 1.17
+updated: 2019-03-05 18:02:27
+version: 1.18
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
@@ -150,7 +150,7 @@ Now that I have a draw points function worked out I can start creating all kinds
 
 ```js
 var createPolygonPoints = function(cx,cy,r,s){
-    var i = 0,points=[];
+    var i = 0,points=[],a,x,y;
     while(i < s){
         a = Math.PI * 2 * (i/s);
         x = Math.cos(a) * r + cx;
@@ -165,6 +165,8 @@ drawPoints(ctx,createPolygonPoints(15,15,5,4),true);
 ```
 
 ### 5.3 - An exponential curve example
+
+For another example of a method that can be used as a way to create an array of points used to create a canvas line here is an exponential curve example.
 
 ```js
 var createExpCurvePoints = function (base, ptCount, width) {
@@ -183,3 +185,5 @@ var createExpCurvePoints = function (base, ptCount, width) {
  
 drawPoints(ctx, createExpCurvePoints(1.4, 12, 30))
 ```
+
+It is fun to start to explore all the different possibilities when it comes to writing these kinds of methods. In any case the basic idea is the same create a collection of x and y values that will be passed to a draw function.
