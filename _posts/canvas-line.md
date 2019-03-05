@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 14:28:14
-version: 1.11
+updated: 2019-03-05 15:50:03
+version: 1.12
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
@@ -115,3 +115,7 @@ ctx.stroke();
 ```
 
 The order in which the fill and stroke methods is call does matter and can effect the z order in which these actions take place. In other words if you want a stroke to happen on top of a fill then be sure to call the stroke method after the fill method is call like in the above example.
+
+## 5 - Complex Paths with canvas lines
+
+When it comes to drawing any kind of complex path it gets to the point where I would want to work out a ways to create and draw a collection of points. When things start to get intense there are many canvas libraries that help to abstract things away, but in this section I will be covering some basics of this without the use of a library.
