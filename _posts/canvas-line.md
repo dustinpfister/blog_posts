@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 15:50:03
-version: 1.12
+updated: 2019-03-05 15:53:20
+version: 1.13
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
@@ -119,3 +119,22 @@ The order in which the fill and stroke methods is call does matter and can effec
 ## 5 - Complex Paths with canvas lines
 
 When it comes to drawing any kind of complex path it gets to the point where I would want to work out a ways to create and draw a collection of points. When things start to get intense there are many canvas libraries that help to abstract things away, but in this section I will be covering some basics of this without the use of a library.
+
+### 5.1 - The drawPoints function
+
+The first thing I would do is work out a function that will draw a standard collection of points. This standard collection of points could be a collection of objects each with an x, and y property. However in this section I will be working with a simple linear array of number primitives.
+
+```js
+// draw a polygon for the given context
+var drawPoints = function (ctx, points) {
+    var i = 2,
+    len = points.length;
+    ctx.moveTo(points[0], points[1]);
+    while (i < len) {
+        ctx.lineTo(points[i], points[i + 1]);
+        i += 2;
+    }
+    ctx.stroke();
+};
+drawPoints(ctx,[15,15,15,5,25,5,25,20,5,30]);
+```
