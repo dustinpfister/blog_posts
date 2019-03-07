@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-03-07 18:52:29
-version: 1.1
+updated: 2019-03-07 18:58:04
+version: 1.2
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the scale context method as well. In this post I will be writing about all things canvas scale related.
@@ -78,4 +78,43 @@ ctx.strokeRect.apply(ctx, rect);
         </script>
     </body>
 </html>
+```
+
+## 4 - The scale 2d context method
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// sets the actual native size of the canvas
+canvas.width = 64;
+canvas.height = 48;
+ 
+// Scales the canvas via in-line css
+canvas.style.width = '640px';
+canvas.style.height = '480px';
+ 
+// adds a scaling transformation
+ctx.scale(.5,.5);
+ctx.fillStyle = 'black';
+ctx.fillRect(5, 5, 16, 16);
+ 
+ctx.scale(2,2);
+ctx.strokeStyle = 'red';
+ctx.strokeRect(5, 5, 16, 16);
+```
+
+### 4.1 - Using ctx.scale to flip things
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+canvas.width = 640;
+canvas.height= 480;
+ 
+ctx.scale(1, -1);
+ctx.font = '20px serif';
+ctx.textBaseline = 'top';
+ctx.fillText('foobar', 0, -20);
 ```
