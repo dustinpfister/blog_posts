@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-03-08 18:59:04
-version: 1.8
+updated: 2019-03-08 18:59:41
+version: 1.9
 ---
 
-There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the scale context method as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
+There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
 
 <!-- more -->
 
