@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-03-08 14:47:54
-version: 1.5
+updated: 2019-03-08 18:55:30
+version: 1.6
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the scale context method as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
@@ -53,7 +53,7 @@ So then in this example I am creating a canvas with a native size of only 32 by 
 
 ## 3 - Scale a canvas with the style api
 
-It is possible to set the native size as well as the scaled size of the canvas with javaScript rather than with hard coded html and css. This can be done by geting a reference to the canvas element by one way or another and then using the width and height properties of that element reference to set the native size. In addition the style api can be used to set the scale canvas size as well.
+It is possible to set the native size as well as the scaled size of the canvas with javaScript rather than with hard coded html and css. This can be done by getting a reference to the canvas element by one way or another and then using the width and height properties of that element reference to set the native size. In addition the style api can be used to set the scale canvas size as well.
 
 ```html
 <html>
