@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-03-08 18:55:30
-version: 1.6
+updated: 2019-03-08 18:58:23
+version: 1.7
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the scale context method as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
@@ -89,6 +89,8 @@ ctx.strokeRect.apply(ctx, rect);
 ```
 
 ## 4 - The scale 2d context method
+
+There is also the scale method that can be used with via the 2d drawing context. This method is used to transform the until scale of the pixels of a canvas.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
