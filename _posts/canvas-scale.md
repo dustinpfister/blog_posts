@@ -5,15 +5,17 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-03-07 18:58:04
-version: 1.2
+updated: 2019-03-07 19:07:26
+version: 1.3
 ---
 
-There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the scale context method as well. In this post I will be writing about all things canvas scale related.
+There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the scale context method as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
 
 <!-- more -->
 
 ## 1 - Canvas scale
+
+Canvas scale can refer to a number of things. In this post I will be trying to address just about everything that has to do with scaling and the html 5 canvas element that can be used to draw graphics with javaScript code. In this post I assume that you have at least some background with canvas and javaScript, but are scratching you head when it comes to scaling with canvas.
 
 ## 2 - Scale a canvas with CSS
 
