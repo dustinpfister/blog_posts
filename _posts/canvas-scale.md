@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-03-08 18:58:23
-version: 1.7
+updated: 2019-03-08 18:59:04
+version: 1.8
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the scale context method as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
@@ -115,6 +115,8 @@ ctx.strokeRect(5, 5, 16, 16);
 ```
 
 ### 4.1 - Using ctx.scale to flip things
+
+Negative values can be used to flip things.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
