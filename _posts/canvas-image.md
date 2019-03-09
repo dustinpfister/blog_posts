@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-03-08 19:38:43
-version: 1.3
+updated: 2019-03-09 08:32:50
+version: 1.4
 ---
 
-When it comes to canvas and images most of the time that means knowing a thing or two about how to use the drawImage 2d context method. There are other ways of creating and working with images in canvas as well though, so lets take a looks at some canvas image basics.
+When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage). There are other ways of creating and working with images in canvas as well though, so lets take a looks at some canvas image basics.
 
 <!-- more -->
 
