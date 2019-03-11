@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2019-03-11 14:41:48
-version: 1.10
+updated: 2019-03-11 14:58:41
+version: 1.11
 ---
 
 In javaScript the subject of constructor functions comes up often, as it should as it is a major part of development when it comes javaScript development, and object oriented programing in general. There are built in examples of constructors that chances are you have at least some experience with, as well as ways to create your own. There is the traditional way of creating a javaScript constructor function, and then the more modern es2015+ spec javaScript way of making them as well with the class keyword. In this post I will be covering the basics, as well as some other aspects of constructors that a javaScript developer should be aware of.
@@ -70,3 +70,9 @@ let foo = new Foo('foo', 'bar');
 console.log(foo.foobar()); // 'foo-bar'
 console.log(foo.hasOwnProperty('foobar')); // false
 ```
+
+## 4 - Alternatives to constructors
+
+A constructor or class is not always the best option. It does have some good points when it comes to anything where there might be more than one instance of something. However it might not be the best choice when it is just a single object, and there are other ways of handling things of course. 
+
+Constructors can be thought of as a situation in which there is one or more instances of an object that can be though of as a state, and then there are a number of methods that can be used to mutate that state. An alternative to this is to have a collection of pure functions that accept this state as an one of its arguments.
