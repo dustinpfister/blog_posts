@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-03-11 19:11:51
-version: 1.4
+updated: 2019-03-11 19:17:13
+version: 1.5
 ---
 
 The [return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) in javaScript is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or function. In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding return as well.
@@ -51,7 +51,9 @@ console.log( figMoney(77, 5, 2) ); // '$100.10'
 console.log( figMoney(7, 5, 1.4,6.5,0.12) ); // '$1.53'
 ```
 
-## 2 - 
+## 2 - return and function types.
+
+There is more than one way to define a function that returns something in javaScript. There are function expressions, function declarations, and arrow functions.
 
 ```js
 // ES5- Style function expression that returns a 
@@ -75,3 +77,5 @@ console.log(foo(5,2)); // 7
 console.log(bar(5,2)); // 7
 console.log(baz(5,2)); // 7
 ```
+
+The return keyword must be used with function expressions, and function declarations. However with arrow functions it depends on how they are authored. If brackets are not used with an arrow function then a return is implicate and the return keyword is not needed. However if brackets are used with an arrow function then the return keyword must be used just like with expressions, and declarations.
