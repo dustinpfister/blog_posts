@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2019-03-11 14:39:46
-version: 1.9
+updated: 2019-03-11 14:41:48
+version: 1.10
 ---
 
 In javaScript the subject of constructor functions comes up often, as it should as it is a major part of development when it comes javaScript development, and object oriented programing in general. There are built in examples of constructors that chances are you have at least some experience with, as well as ways to create your own. There is the traditional way of creating a javaScript constructor function, and then the more modern es2015+ spec javaScript way of making them as well with the class keyword. In this post I will be covering the basics, as well as some other aspects of constructors that a javaScript developer should be aware of.
@@ -50,7 +50,9 @@ var foo = new Foo('foo','bar');
 console.log(foo.foobar()); // 'foo-bar'
 ```
 
-## 4 - 
+## 3.1 - Making a constructor es2015+ style
+
+To make a constructor in modern es2015+ spec javaScript there is of course the class keyword.
 
 ```js
 class Foo {
