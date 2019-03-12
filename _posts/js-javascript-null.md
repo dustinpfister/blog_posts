@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 399
-updated: 2019-03-12 11:46:29
-version: 1.4
+updated: 2019-03-12 14:06:34
+version: 1.5
 ---
 
 So [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time in javaScript. It would seem that null is more or less the same as undefined, but this is not the case. In this post I will be writing around some of the things to know about the javaScript null value.
@@ -57,3 +57,13 @@ console.log( foo() ); // 'foobar'
 console.log( foo(undefined) ); // 'foobar'
 console.log( foo(null) ); // null
 ```
+
+## 2 - Typeof null is object.
+
+So when the typeof operator is used to find the type of a value that is null, the result is an object.
+
+```js
+console.log(typeof null); // 'object'
+```
+
+Apparently this is a bug that has been around sense the beginning of javaScript way back in the day. However given that the meaning of null is the absence of an object value, then maybe it is not such a bad thing. Still this can result in problems in some situations, requiring something like this to fix it.
