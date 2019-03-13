@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-03-13 16:37:24
-version: 1.5
+updated: 2019-03-13 18:15:54
+version: 1.6
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage). There are other ways of creating and working with images in canvas as well though, so lets take a looks at some canvas image basics.
@@ -47,7 +47,11 @@ img.src='./pic.png';
 </html>
 ```
 
+In this example I am giving the drawImage method just three arguments in this case the whole image will be drawn at the given location set by the following two arguments after the image is given. However the drawImage method can be given up to nine arguments in total. SO lets look at some more examples of drawImage.
+
 ## 3 - Canvas images and scaling
+
+The drawImage method can be given five arguments 
 
 ```js
 var canvas = document.getElementById('the-canvas'),
