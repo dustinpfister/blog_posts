@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-03-09 08:32:50
-version: 1.4
+updated: 2019-03-13 16:37:24
+version: 1.5
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage). There are other ways of creating and working with images in canvas as well though, so lets take a looks at some canvas image basics.
@@ -45,4 +45,54 @@ img.src='./pic.png';
         </script>
     </body>
 </html>
+```
+
+## 3 - Canvas images and scaling
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// create an instance of image
+var img = new Image();
+// what to do when the image is loaded
+img.addEventListener('load', function(){
+    // destination x and y
+    var dx = 0,dy = 0,
+    // destination width and height
+    dw = 64,dh = 64;
+    // draw an image
+    ctx.drawImage(img,dx,dy,dw,dh);
+});
+// when src is set the download will begin
+img.src='./pic.png';
+```
+
+## 4 - Canvas images and sprite sheets
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// create an instance of image
+var img = new Image();
+// what to do when the image is loaded
+img.addEventListener('load', function(){
+ 
+    // image source x and y
+    var sx = 32, sy =0,
+ 
+    // image source width and height
+    sw = 32, sh = 32,
+ 
+    // destination x and y
+    dx = 0,dy = 0,
+    // destination width and height
+    dw = 64,dh = 64;
+ 
+    // draw the image
+    ctx.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh);
+});
+// when src is set the download will begin
+img.src='./pic-sheet.png';
 ```
