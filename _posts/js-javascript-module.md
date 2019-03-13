@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2019-03-13 18:56:24
-version: 1.3
+updated: 2019-03-13 18:58:28
+version: 1.4
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
@@ -14,6 +14,8 @@ When starting to develop a complex project with javaScript the importance of usi
 <!-- more -->
 
 ## 1 - JavaScript Module basics
+
+There are many ways to go about designing something in javaScript that can be thought of as a kind of module. There is also much to cover when it comes to how to go about designing a module when working in a node.js environment compared to client side javaScript.
 
 ```js
 // declaring point global variable
