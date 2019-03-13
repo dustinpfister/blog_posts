@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2019-03-13 18:55:26
-version: 1.2
+updated: 2019-03-13 18:56:24
+version: 1.3
 ---
 
-When starting to develop a complex project with javaScript the importance of using modules becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
+When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
 
 <!-- more -->
 
