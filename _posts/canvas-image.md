@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-03-13 18:19:37
-version: 1.7
+updated: 2019-03-13 18:21:26
+version: 1.8
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage). There are other ways of creating and working with images in canvas as well though, so lets take a looks at some canvas image basics.
@@ -75,6 +75,8 @@ img.src='./pic.png';
 Doing this eats up a little overhead, it is best to keep your assets native, but on the fly scaling can be preformed.
 
 ## 4 - Canvas images and sprite sheets
+
+So there is then the most complicated use case example of the drawImage method that can be used to set the source location and size in the image to be drawn, as well as the destination values when it comes to the location and scale in the canvas as well. 
 
 ```js
 var canvas = document.getElementById('the-canvas'),
