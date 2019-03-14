@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-03-14 17:45:45
-version: 1.3
+updated: 2019-03-14 17:50:29
+version: 1.4
 ---
 
 Canvas position might refer to positioning a canvas element using css style rules, but there are some other topics that come to mind as well. Such as repositioning a canvas element on a browser window resize, and also how to get a mouse or touch pointer event location relative to the current position of the canvas element rather than the window of the browser. In this post I will be covering some topics when it comes to canvas position related topics.
@@ -37,6 +37,8 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 ```
 
 ## 2 - Canvas position on resize
+
+Another canvas position topic might be to position the canvas when the window is resized. This can be done with the resize window event and a simple callback function that positions the canvas with the style api.
 
 ```html
 <html>
@@ -73,6 +75,8 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 ```
 
 ## 3 - Canvas mouse position
+
+
 
 ```html
 <html>
