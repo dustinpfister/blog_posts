@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 94
-updated: 2017-11-19 21:05:30
-version: 1.0
+updated: 2019-03-15 18:21:01
+version: 1.1
 ---
 
-These days I have been playing around more with a [node.js](https://nodejs.org/en/) project I am familiar with called [marked](https://www.npmjs.com/package/marked). This is a package that can be used to parse markdown into html, in addition it is possible to define a custom renderer that can be used to render out plain text, or some other standard other than html. In any case it is a great little package for doing that sort of thing, so it's wort a post for sure.
+These days I have been playing around more with a [node.js](https://nodejs.org/en/) project I am familiar with called [marked](https://www.npmjs.com/package/marked). This is a package that can be used to parse markdown into html, in addition it is possible to define a custom renderer that can be used to render out plain text, or some other standard other than html. In any case it is a great little package for doing that sort of thing, so it's worth a post for sure.
 
 <!-- more -->
 
