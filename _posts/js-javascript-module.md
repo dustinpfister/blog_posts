@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2019-03-15 16:58:59
-version: 1.10
+updated: 2019-03-15 17:00:39
+version: 1.11
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
@@ -92,6 +92,8 @@ mod.print(); // '(0,20)'
 ```
 
 ## 3 - javaScript module with function API
+
+A function can also be what is returned as well.
 
 ```js
 var mod = (function () {
