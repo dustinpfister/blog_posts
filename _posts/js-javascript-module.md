@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2019-03-15 16:50:08
-version: 1.8
+updated: 2019-03-15 16:55:21
+version: 1.9
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
@@ -61,6 +61,8 @@ var point;
 // of  function level scope
 console.log(point); // undefined
 ```
+
+There are also ways of creating an API that can be accessed from outside the module as well. A global can be declared from outside the function expression, or the global object can be passed as an argument as well. In other cases the expression can just be used to accomplish some things without polluting the global name space, or argument an object that exists before hand.
 
 
 ### 2 -javaScript Module with Object API;
