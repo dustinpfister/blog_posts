@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2019-03-15 17:00:39
-version: 1.11
+updated: 2019-03-15 17:03:39
+version: 1.12
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
@@ -93,7 +93,7 @@ mod.print(); // '(0,20)'
 
 ## 3 - javaScript module with function API
 
-A function can also be what is returned as well.
+A function can also be what is returned as well. This allows for creating a custom API that works with an argument that is given. In javaScript a function is also a kind of object so it is possible to make a module where there is a function that can be called via the global variable, as well as a bunch of static methods attached to the object.
 
 ```js
 var mod = (function () {
