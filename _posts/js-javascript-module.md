@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2019-03-15 16:55:21
-version: 1.9
+updated: 2019-03-15 16:58:59
+version: 1.10
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
@@ -66,6 +66,8 @@ There are also ways of creating an API that can be accessed from outside the mod
 
 
 ### 2 -javaScript Module with Object API;
+
+A public API can be returned in the form of an object literal. This object literal can be the actual thing that is returned to a global variable, or it can be a variable that contains such an object that was declared elsewhere in the body of the function expression.
 
 ```js
 var mod = (function () {
