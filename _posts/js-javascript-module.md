@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2019-03-15 13:51:17
-version: 1.5
+updated: 2019-03-15 14:07:47
+version: 1.6
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage. In this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript.
@@ -15,7 +15,9 @@ When starting to develop a complex project with javaScript the importance of usi
 
 ## 1 - JavaScript Module basics
 
-There are many ways to go about designing something in javaScript that can be thought of as a kind of module. There is also much to cover when it comes to how to go about designing a module when working in a node.js environment compared to client side javaScript.
+There are many ways to go about designing something in javaScript that can be thought of as a kind of module. In this post I will mainly be writing modules with core javaScript by itself that can often work out okay in any javaScript environment. There are specifics to be aware of when it comes to a node.js environment though. There are also many standards that come to mind such as AMD. It goes without saying that this is an advanced topic when it comes to javaScript development. There are many different design patterns, and standards for modules so this can get a littler overwhelming.
+
+## 1.2 - JavaScript Module by Closure
 
 ```js
 // declaring point global variable
@@ -37,6 +39,8 @@ var point;
 // of  function level scope
 console.log(point); // undefined
 ```
+
+## 1.2 - JavaScript Module by Object literal
 
 ### 2 -javaScript Module with Object API;
 
