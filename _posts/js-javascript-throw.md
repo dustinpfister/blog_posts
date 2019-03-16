@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2019-03-15 20:43:28
-version: 1.2
+updated: 2019-03-15 20:45:45
+version: 1.3
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to internationally throw a user-defined exception. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order.
@@ -14,6 +14,8 @@ The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/R
 <!-- more -->
 
 ## 1 - javaScript throw basics
+
+To use a throw statement just type the throw keyword followed by a value that reflects what the error is about. The value can be a string, number boolean or an object that should be given certain standard key value pairs more on that later.
 
 ```js
 var addNumbers = function (a, b) {
