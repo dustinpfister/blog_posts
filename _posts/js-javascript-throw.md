@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2019-03-15 20:37:22
-version: 1.1
+updated: 2019-03-15 20:43:28
+version: 1.2
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to internationally throw a user-defined exception. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order.
@@ -35,4 +35,24 @@ throw {
     name: 'ObjectDefinedError'
 }
 // ObjectDefinedError: this error is defined with an object
+```
+
+## 3 - javaScript throw and try catch blocks
+
+```js
+var process = function (str) {
+    if (str === 'bar') {
+        console.log('foobar');
+    }
+    throw {
+        message: 'must give bar',
+        name: 'NoBarError'
+    };
+};
+ 
+try {
+    process('foo');
+} catch (e) {
+    console.log(e.message); // 'must give bar'
+}
 ```
