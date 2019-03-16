@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2019-03-15 20:45:45
-version: 1.3
+updated: 2019-03-16 08:24:57
+version: 1.4
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to internationally throw a user-defined exception. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order.
@@ -30,6 +30,8 @@ addNumbers('foo', []); // Error must give numbers
 ```
 
 ## 2 - javaScript throw defined with an object
+
+So a string can be used to describe the user defined Error, but it might be best to use an Object or The Error constructor to create an object with message and name properties that help to better identify what is wrong when the Error is thrown.
 
 ```js
 throw {
