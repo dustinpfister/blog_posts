@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 17:46:40
-version: 1.17
+updated: 2019-03-17 17:53:01
+version: 1.18
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -19,7 +19,11 @@ So the lodadh \_.find method is a nice little method that works in a very simila
 
 Still it is not to hard to just find something in an array with just plain old javaScript by itself, in many cases the native Array.find method will work just fine, and in some cases it is possible to get it working with array like objects as well. So in this post I will also be writing about some plain old vanilla js ways of finding an object or something to that effect with plain javaScript as well.
 
-## \_.find vs Array.find
+## 2 - \_.find vs Array.find
+
+So there seems to be a lot of debate these days where it comes to lodash even being relevant or necessary when it comes to writing modern javaScript. It is ture that a lot of the functionality in lodash is now baked into core javaScript itself. So there are many methods in lodash that are not really needed any more, if a developer is only concerned about supporting modern evergreen browsers as least.
+
+However there are some methods that are not a part of core javaScript at all, and there are many methods where there is a native counterpart, but it works just a little differently, brings some more features, is a little more robust and so forth. That being said the lodash \_.find method is one of those methods and in this section I will be pointing out some of the deferences between \_.find and the native Array.find method.
 
 So yes there is of course Array.find, and Array.find works just fine with Arrays:
 
