@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 18:03:58
-version: 1.23
+updated: 2019-03-17 18:13:03
+version: 1.24
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -45,8 +45,7 @@ In this example I just have a simple array of primitives. I which to just find t
 
 ### 2.2 - Array.find with Array like objects
 
-It also works well with array like objects when used with call.
-
+It also works well with array like objects when used with call. If you are not aware of what array like objects are they are it is a trem that if often used to describe an object that is formated very much like an Array in that all of the object keys are numbers, and it has a length property. However the so called array like object is not an instance of the Array constructor so it does not have Array prototype methods associated with it.
 ```js
 var obj = {
  
