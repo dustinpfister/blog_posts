@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 17:53:01
-version: 1.18
+updated: 2019-03-17 17:55:56
+version: 1.19
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -25,7 +25,9 @@ So there seems to be a lot of debate these days where it comes to lodash even be
 
 However there are some methods that are not a part of core javaScript at all, and there are many methods where there is a native counterpart, but it works just a little differently, brings some more features, is a little more robust and so forth. That being said the lodash \_.find method is one of those methods and in this section I will be pointing out some of the deferences between \_.find and the native Array.find method.
 
-So yes there is of course Array.find, and Array.find works just fine with Arrays:
+### 2.1 - Native Array.find overview
+
+So yes there is of course Array.find, and Array.find works just fine with arrays. Just call the find prototype method off of an instance of any plain old javaScript array as with any Array prototype method, and pass a function that will be used to find what it is that needs to be found in the Array.
 
 ```js
 var arr = ['a',1,'b','c'];
