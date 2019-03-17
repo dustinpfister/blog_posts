@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 18:01:41
-version: 1.21
+updated: 2019-03-17 18:02:31
+version: 1.22
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -15,7 +15,7 @@ So there is the old do I use objects or arrays problem that I run into when work
 
 ## 1 - lodash find method and alternatives
 
-So the lodadh \_.find method is a nice little method that works in a very similar fashion to the Array.find method in core javaScript. However the Array.find method is an array protoype method and not a collection with like with \_.find in lodash. So there is more that the \_.find brings to the table compared to the native array method alternative, and in this post I will be pointing out what these features are that set ot array from Array.find.
+So the lodash \_.find method is a nice little method that works in a very similar fashion to the [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method in core javaScript. However the Array.find method is an array protoype method and not a collection with like with \_.find in lodash. So there is more that the \_.find brings to the table compared to the native array method alternative, and in this post I will be pointing out what these features are that set ot array from Array.find.
 
 Still it is not to hard to just find something in an array with just plain old javaScript by itself, in many cases the native Array.find method will work just fine, and in some cases it is possible to get it working with array like objects as well. So in this post I will also be writing about some plain old vanilla js ways of finding an object or something to that effect with plain javaScript as well.
 
