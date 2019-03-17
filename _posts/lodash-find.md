@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 18:14:40
-version: 1.25
+updated: 2019-03-17 18:23:58
+version: 1.26
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -365,7 +365,69 @@ console.log( _.find(str,function(el,i,col){
 
 This is because strings are also another example of something in javaScript that is kindof Array like, even though it is not an array. Sure it's constructor is String, and not Array as such it does not have array methods in it's prototype. However it can still be thought of as an array of characters.
 
-## 9 - Conclusion
+## 9 - Vanilla javaScript and finding things in an array
+
+Depending on what needs to happen sometimes finding something in an array is really not all that hard. With simple hobby projects and so forth often just a loop and a conditional will get the job done. In some cases I might want to write my my own custom find method when making some kind of module or something to that effect as well. In a previous section I covered the native Array.find method well but in this section I will cover some more ways of finding things with just plain old javaScript by itself.
+
+### 9.1 - Making a crude yet affective find method
+
+```js
+// crude yet effective find method
+let find = function (col, forEach) {
+    let prop;
+    for (prop in col) {
+        if (forEach(col[prop], prop)) {
+            return col[prop];
+        }
+    }
+    return false;
+};
+```
+
+```js
+// array of objects
+let people = [{
+        name: 'John',
+        age: 32,
+        sex: 'M'
+    }, {
+        name: 'Mike',
+        age: 24,
+        sex: 'M'
+    }, {
+        name: 'Jen',
+        age: 42,
+        sex: 'F'
+    }
+];
+// works with array of objects
+var mike = find(people, function (val, key) {
+        if (val.age === 24) {
+            return true;
+        }
+        return false;
+    });
+console.log(mike.age); // 24
+```
+
+```js
+// Just an object
+let obj = {
+    foo: 'bar',
+    salty: true,
+    n: 42
+};
+ 
+var aNumber = find(obj, function (val, key) {
+        if (typeof val === 'number') {
+            return true;
+        }
+    });
+ 
+console.log(aNumber); // 42
+```
+
+## 10 - Conclusion
 
 Many of the methods in lodash provide functionality that is very similar to certain native methods, but often they do bring a little something more to the table.
 
