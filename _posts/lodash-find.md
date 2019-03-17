@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 18:02:31
-version: 1.22
+updated: 2019-03-17 18:03:58
+version: 1.23
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -64,6 +64,8 @@ var n = [].find.call(obj, function(el){
  
 console.log(n); // 42
 ```
+
+### 2.3 - Lodash \_.find will work with Arrays, Array like Objects and plain old objects in general as well.
 
 However \_.find is a collection method, not an Array method. So in addition to working just fine with Arrays \_.find works with plan old objects as well, even if they are not array like.
 
