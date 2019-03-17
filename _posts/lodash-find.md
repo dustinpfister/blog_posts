@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 18:13:03
-version: 1.24
+updated: 2019-03-17 18:14:40
+version: 1.25
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -85,7 +85,7 @@ console.log(n); // 42
 
 Also there is the built in iteration methods that can come in handy. The potential for better backward compatibility with old versions of IE if for some reason that is a concern. Also this is a lodash post, so...
 
-## What a collection is, and basic example
+## 3 - What a collection is, and basic example
 
 The lodash \_.find method works not just with Arrays but also any object, so \_.find is considered one of the many collection methods in lodash. So find can help solve that problem when it comes to choosing between using Arrays and plain old Objects, as in any case I can use \_.find to get at what I want in an Object of any kind, not just an Array.
 
@@ -139,7 +139,7 @@ console.log( _.find(notAnArray, method) ); // not
 console.log( _.find(soNotAnArray, method) ); // totally
 ```
 
-## The iteration method
+## 4 - The iteration method
 
 The second argument that is given to \_.find is an iteration method, or some kind of short hand for such a method. This method can have three arguments, the first of which is the current element in the collection that is being looked at. In addition the second argument is the current index, and the last argument is a reference to the collection that was given.
 
@@ -166,7 +166,7 @@ console.log(result); // b
 
 In the body of the iteration method, if what is returned by the method evaluates to true then, then that will count as the element being found.
 
-## Custom iteration methods and lodash method shorthands
+## 5 - Custom iteration methods and lodash method shorthands
 
 As shown above I can make my own methods that are used to define the terms of whether or not an element in a collection is what it is that I am looking for. I can of course make a method that returns a iteration method that \_.find can use. However I might not even have to do that if such a method is in lodash to begin with, and there are even some shorthands that can be used in \_.find that allow for me to not even have to call the lodash method directly.
 
@@ -214,7 +214,7 @@ console.log( _.find(data, ['action','sing']) );  // {action:'sing'}
 console.log( _.find(data, {action:'dance'}) );  // {action:'dance'}
 ```
 
-## FromIndex example
+## 6 - FromIndex example
 
 This lodash method can accept a third argument that is the index where to start looking in the collection.
 
@@ -234,7 +234,7 @@ console.log( _.find(collection, method) ); // 'a'
 console.log( _.find(collection, method , 6) ); // 'b'
 ```
 
-## Finding an Object in an Array, a basic usage example of \_.find
+## 7 - Finding an Object in an Array, a basic usage example of \_.find
 
 So \_.find will help with returning an element in an array, rather than it's index. So if you have an array of objects and you want to find a single object in the array by a certain key value pare \_.find is the right tools for the job.
 
@@ -275,7 +275,7 @@ q = _.find(db_array, function (obj) {
 });
 ```
 
-## Using \_.find to find the index of an element in an Array, or the key of a property in an Object.
+## 8 - Using \_.find to find the index of an element in an Array, or the key of a property in an Object.
 
 In lodash there is the [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) method, that works just fine with Arrays, as it is an Array method. However it will not work with Objects in general, as it is not a collection method. It is possible to use \_.find to get the index of an element in an Array, or the key of a property in any Object. As you might have read earlier in this post the second argument that is given in the iteration method is the index, or key value if it is a plain Object.
 
@@ -365,7 +365,7 @@ console.log( _.find(str,function(el,i,col){
 
 This is because strings are also another example of something in javaScript that is kindof Array like, even though it is not an array. Sure it's constructor is String, and not Array as such it does not have array methods in it's prototype. However it can still be thought of as an array of characters.
 
-## Conclusion
+## 9 - Conclusion
 
 Many of the methods in lodash provide functionality that is very similar to certain native methods, but often they do bring a little something more to the table.
 
