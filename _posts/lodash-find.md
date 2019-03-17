@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-17 17:55:56
-version: 1.19
+updated: 2019-03-17 18:00:15
+version: 1.20
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -40,6 +40,10 @@ var n = arr.find(function(el){
  
 console.log(n); // 1
 ```
+
+In this example I just have a simple array of primitives. I which to just find the first element in the array that is a number. I just need to use the typeof operator when making an expression that will return true when an element is found that is a number. In more complex situations involving arrays of objects for example the function that I pass might be a bot more complex, but you get the basic idea.
+
+### 2.2 - Array.find with Array like objects
 
 It also works well with array like objects when used with call.
 
