@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-18 18:39:52
-version: 1.33
+updated: 2019-03-18 18:42:20
+version: 1.34
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -333,7 +333,7 @@ console.log(findIndex({what: 'foo',how: 'bar'}, 'bar')); // -1
 
 ## 9 - Using \_.find on an array of primitives, and a single primitive.
 
-Find is fairly robust, of course it can be used with an array of primitives.
+Find is fairly robust, of course it can be used with an array of primitives. However it can also be used with a single string primitive as well.
 
 ```js
 var words = ['foo**', '*foo*', '**foo'];
@@ -351,7 +351,7 @@ var result = _.find(words, function (str, i) {
 console.log(result); // '**foo'
 ```
 
-However \_.find can be used on a single stand alone String as well
+However \_.find can be used on a single stand alone String as well. The reason why is that a although a string is a primitive it can be treaded as a collection of characters.
 
 ```js
 var str = 'This is a single string! Yes it can be used with find.';
