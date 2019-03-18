@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-18 15:07:41
-version: 1.31
+updated: 2019-03-18 18:29:25
+version: 1.32
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -369,7 +369,7 @@ This is because strings are also another example of something in javaScript that
 
 Depending on what needs to happen sometimes finding something in an array is really not all that hard. With simple hobby projects and so forth often just a loop and a conditional will get the job done. In some cases I might want to write my my own custom find method when making some kind of module or something to that effect as well. In a previous section I covered the native Array.find method well but in this section I will cover some more ways of finding things with just plain old javaScript by itself.
 
-### 9.1 - Making a crude yet affective find method
+### 9.1 - Using a for in loop
 
 So it is not to hard to make a find method that works in a similar way to that of the lodash find method. The for in loop is of course one way to go about looping over the public key value pairs of any object in javaScript. So the for in loop can be used as a way to make a collection method that will work okay for any kind of object, not just Arrays. There are performance concerns with for in, but for many projects it will work okay when performance is not of grave concern.
 
@@ -434,6 +434,46 @@ var aNumber = find(obj, function (val, key) {
     });
  
 console.log(aNumber); // 42
+```
+
+### 9.2 - Using Object.keys
+
+Another approche to making a find method might be to use an Object static method like Object.keys which can be used to get an array of key names of any object. The key names will be any public key of the object that is passed to it. This array can then be looped over, and a condition can be used to find out if this is an example of something that is to be found.
+
+```js
+var find = function (col, forEach) {
+    var keys = Object.keys(col),
+    i = keys.length,
+    results = [];
+    while (i--) {
+        if (forEach(col[keys[i]], keys[i])) {
+            results.push(col[keys[i]]);
+        }
+    }
+    return results;
+};
+ 
+var nums = [7, 8, 13, -5, 32, 2.5];
+var pow2 = find(nums, function (val, key) {
+        var p = Math.log(val) / Math.log(2);
+        return p > 0 && String(p).indexOf('.') === -1;
+    });
+ 
+console.log(pow2); // [32,8]
+ 
+var obj = {
+ 
+    foo: 'bar',
+    n: 42,
+    mess: 'hello world',
+    bar: true,
+    baz: null
+};
+ 
+var strings = find(obj, function (val) {
+        return typeof val === 'string';
+    });
+console.log(strings); // ['hello world', 'bar']
 ```
 
 ## 10 - Conclusion
