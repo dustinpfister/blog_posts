@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-18 08:44:03
-version: 1.27
+updated: 2019-03-18 08:54:33
+version: 1.28
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -371,7 +371,10 @@ Depending on what needs to happen sometimes finding something in an array is rea
 
 ### 9.1 - Making a crude yet affective find method
 
-So it is not to hard to make a find method that works in a similar way to that of the lodash find method. The for in loop is of course one way to go about looping over the public key value pairs of any object in javaScript. So the for in loop can be used as a way to make a collection method that will work okay for any kind of object, not just Arrays. There are performance concerns with for in, but 
+So it is not to hard to make a find method that works in a similar way to that of the lodash find method. The for in loop is of course one way to go about looping over the public key value pairs of any object in javaScript. So the for in loop can be used as a way to make a collection method that will work okay for any kind of object, not just Arrays. There are performance concerns with for in, but for many projects it will work okay when performance is not of grave concern.
+
+
+Making a basic find method with for in might look something like this:
 
 ```js
 // crude yet effective find method
