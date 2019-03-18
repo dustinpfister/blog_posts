@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-03-18 08:54:33
-version: 1.28
+updated: 2019-03-18 14:09:01
+version: 1.29
 ---
 
 So there is the old do I use objects or arrays problem that I run into when working on a project. Of course [arrays are objects](/2017/05/12/js-arrays-are-objects/), but I gather that you may know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy for this kind of thing.
@@ -389,6 +389,8 @@ let find = function (col, forEach) {
 };
 ```
 
+The find method can then be used on an array of objects.
+
 ```js
 // array of objects
 let people = [{
@@ -414,6 +416,8 @@ var mike = find(people, function (val, key) {
     });
 console.log(mike.age); // 24
 ```
+
+Or just a plain old object by itself than can be thought of as a kind of associative array.
 
 ```js
 // Just an object
