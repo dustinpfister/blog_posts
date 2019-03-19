@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 13:05:24
-version: 1.15
+updated: 2019-03-19 13:08:13
+version: 1.16
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -108,8 +108,9 @@ In the update method of this example I am using the lastTick property of the sta
 
 In the expressions that change the values of x, and y I am using the Math.cos, and Math.sin methods of the Math object. If you are not familiar with these methods that will it would be a good idea to make a few projects in which you are playing around with them a little, as they are often used a lot in these kinds of projects.
 
-
 #### 2.2.4 - The draw method
+
+Now it is time to create a draw methods that will be used to draw each frame of the canvas game. In complex games I might get into layering and other advanced topics, but for this example there is no need to get that involved. Here I am just using the fillRect 2d context method to paint the whole of the canvas black, and then use it once more to draw the box at its current position.
 
 ```js
 // draw method
