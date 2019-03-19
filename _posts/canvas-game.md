@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 12:32:20
-version: 1.9
+updated: 2019-03-19 12:35:33
+version: 1.10
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -74,6 +74,8 @@ var bx = {
     lastTick: new Date()
 };
 ```
+
+Along with the current x and y position of the box, I will also store the current angle to which the box will be moving. In addition I will also be storing a pixels per second value that will be the number of pixels that the box will move per second. There will be more on this and the lastTick date object when I get to the update loop of this canvas game example.
 
 #### 2.2.3 - The update loop, and Mathematical Modulo
 
