@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 13:12:02
-version: 1.17
+updated: 2019-03-19 13:19:18
+version: 1.18
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -143,6 +143,8 @@ Here I am also using the atan2 method as a way to find out the angle from the ce
 
 #### 2.2.6 - The app loop
 
+So then there is the main app loop of the project. Here I am using requestAnimationFrame to create the loop rather than setTimeout, and just calling the update and draw methods on each loop.
+
 // main app loop
 var loop = function () {
     // use RAF over setTimeout
@@ -154,3 +156,5 @@ var loop = function () {
  
 loop();
 ```
+
+In more complex projects the main app loop might turn into some kind of state machine, a topic I might get into with additional examples. Other projects might take a more event driven approach rather than updating things constantly on a frame by frame basis.
