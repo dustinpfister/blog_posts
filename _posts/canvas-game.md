@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 12:35:33
-version: 1.10
+updated: 2019-03-19 12:53:15
+version: 1.11
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -78,6 +78,8 @@ var bx = {
 Along with the current x and y position of the box, I will also store the current angle to which the box will be moving. In addition I will also be storing a pixels per second value that will be the number of pixels that the box will move per second. There will be more on this and the lastTick date object when I get to the update loop of this canvas game example.
 
 #### 2.2.3 - The update loop, and Mathematical Modulo
+
+One of the many things a javaScript developer might run into at one point or another is how the native modulo operator in javaScript works when it comes to dealing with negative numbers. I wrote a post on this subject before so I will not get into the details about it, however in this example I will be using a mathematical modulo method to help with wrapping the x and y values of the box when it moves out of boubds.
 
 ```js
 // mathematical modulo
