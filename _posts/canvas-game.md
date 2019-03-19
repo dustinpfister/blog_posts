@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 12:19:52
-version: 1.6
+updated: 2019-03-19 12:26:10
+version: 1.7
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -39,6 +39,12 @@ For the html I will keep things very simple. The main area of concern is that I 
 
 ### 2.2 - The game1.js file for the Canvas Game
 
+In this section I will covering the javaScript file I am linking to for this simple canvas game example. There are many topics to cover briefly at least even for a simple example like this, so lets get to it.
+
+### 2.2.1 - Get a reference to the canvas and 2d context
+
+So at the very top of the file I just grab a reference to the canvas element. Once that is done I can use the getContext method of the canvas element to get a reference to the 2d drawing context. I will not be covering every little detail about the 2d drawing context here, but there will be an example of using it later on in this section when it comes to making a draw method.
+
 ```js
 // get the canvas and context
 var canvas = document.getElementById('gamearea'),
@@ -47,7 +53,12 @@ ctx = canvas.getContext('2d');
 // set native size of the canvas
 canvas.width = 320;
 canvas.height = 240;
- 
+```
+
+Here I also set the native size of the canvas as well via the width and height properties of the canvas element. I will also be attaching an event handler to the canvas as well for accepting user input that will be used to move the canvas as well later on in the file.
+
+
+```js
 // a simple state that is just a single object
 // that will be the moving box
 var bx = {
