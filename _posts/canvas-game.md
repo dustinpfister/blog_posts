@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 12:59:32
-version: 1.14
+updated: 2019-03-19 13:05:24
+version: 1.15
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -103,6 +103,11 @@ var update = function () {
     bx.y = mod(bx.y, canvas.height - 32);
 };
 ```
+
+In the update method of this example I am using the lastTick property of the state object to find out how much time as passed sense the last frame tick. This value will be used in the expressions that will set the delta values of the x and y properties of the box, resulting in its movement for each frame tick. The deltas can be thought of as the amount that something changes from one point in time to another.
+
+In the expressions that change the values of x, and y I am using the Math.cos, and Math.sin methods of the Math object. If you are not familiar with these methods that will it would be a good idea to make a few projects in which you are playing around with them a little, as they are often used a lot in these kinds of projects.
+
 
 #### 2.2.4 - The draw method
 
