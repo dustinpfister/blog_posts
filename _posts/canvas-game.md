@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 13:08:13
-version: 1.16
+updated: 2019-03-19 13:12:02
+version: 1.17
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -126,6 +126,8 @@ var draw = function () {
 
 #### 2.2.5 - The single event handler
 
+So for this example I will add a single event handler to the canvas that will be used to change the course of the box when the user clicks the canvas. I use the getBoundingClientRect method of the target element which in this case is the canvas element to get canavs element relative x and y values as to where the canvas was clicked.
+
 ```js
 // attach single event handler
 canvas.addEventListener('mousedown', function (e) {
@@ -136,6 +138,8 @@ canvas.addEventListener('mousedown', function (e) {
     // using Math.atan2 to set bx angle
     bx.a = Math.atan2(y - canvas.width / 2, x - canvas.height / 2);
 });
+
+Here I am also using the atan2 method as a way to find out the angle from the center of the canvas to the point at which the canvas was clicked, and I am just simple setting the direction of the box to that angle.
 
 #### 2.2.6 - The app loop
 
