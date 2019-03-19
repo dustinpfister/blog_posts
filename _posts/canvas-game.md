@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 13:19:18
-version: 1.18
+updated: 2019-03-19 13:23:02
+version: 1.19
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -19,7 +19,7 @@ There are many other examples of how to go about making a canvas game with javaS
 
 So in order to get started with canvas it would be a good idea to learn a thing or two about javaScript to begin with if you have not done so before hand. I will not be covering the basics of javaScript development here, there will be some simple copy and past examples, but you need to know the basics of how to get them working.
 
-## 2 - Canvas game one - Simple moving box example
+## 2 - Canvas Game One - Simple moving box example
 
 In this example I have worked out just a simple moving box example. Many Games might start out with this kind of structure that just involves moving a box around a screen. So it would be a good idea to start of with something just very simple like this if you are new to canvas game development. We all need to start somewhere when it comes to this sort of thing, so lets get this one out of the way.
 
@@ -158,3 +158,7 @@ loop();
 ```
 
 In more complex projects the main app loop might turn into some kind of state machine, a topic I might get into with additional examples. Other projects might take a more event driven approach rather than updating things constantly on a frame by frame basis.
+
+### 2.3 - Conclusion with Canvas Game One
+
+When this project is up and running it might not feel like much of a game yet. Still I have covered many of the basics when it comes to making a canvas game. There is an update and draw method, I am using methods like Math.cos, and Math.atan2. I addressed some basic problems that a javaScript developer might run into when making a project like this with plain vanilla javaScript such as the situation with the module operator, and how to get canvas rather than window relative x and y values when dealing with user input.
