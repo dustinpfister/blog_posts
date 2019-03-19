@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 12:30:21
-version: 1.8
+updated: 2019-03-19 12:32:20
+version: 1.9
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -75,6 +75,8 @@ var bx = {
 };
 ```
 
+#### 2.2.3 - The update loop, and Mathematical Modulo
+
 ```js
 // mathematical modulo
 var mod = function (x, m) {
@@ -94,7 +96,11 @@ var update = function () {
     bx.x = mod(bx.x, canvas.width - 32);
     bx.y = mod(bx.y, canvas.height - 32);
 };
- 
+```
+
+#### 2.2.4 - The draw method
+
+```js
 // draw method
 var draw = function () {
     // black background
@@ -104,7 +110,11 @@ var draw = function () {
     ctx.fillStyle = 'red';
     ctx.fillRect(bx.x, bx.y, 32, 32);
 };
- 
+```
+
+#### 2.2.5 - The single event handler
+
+```js
 // attach single event handler
 canvas.addEventListener('mousedown', function (e) {
     // get bounding client rect
@@ -114,7 +124,9 @@ canvas.addEventListener('mousedown', function (e) {
     // using Math.atan2 to set bx angle
     bx.a = Math.atan2(y - canvas.width / 2, x - canvas.height / 2);
 });
- 
+
+#### 2.2.6 - The app loop
+
 // main app loop
 var loop = function () {
     // use RAF over setTimeout
