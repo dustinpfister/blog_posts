@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 11:26:33
-version: 1.4
+updated: 2019-03-19 12:02:58
+version: 1.5
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -19,7 +19,7 @@ So in order to get started with canvas it would be a good idea to learn a thing 
 
 ## 2 - Canvas game one - simple moving box example
 
-In this example I have worked out just a simple moving box example. Many Games might start out with this kind of structure that just involves moving a box around a screen. So it would be a good idea to start of with something just very simple like this if you are new to canvas game development.
+In this example I have worked out just a simple moving box example. Many Games might start out with this kind of structure that just involves moving a box around a screen. So it would be a good idea to start of with something just very simple like this if you are new to canvas game development. We all need to start somewhere when it comes to this sort of thing, so lets get this one out of the way.
 
 ```js
 var canvas = document.getElementById('gamearea'),
