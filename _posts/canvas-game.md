@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-03-19 12:53:15
-version: 1.11
+updated: 2019-03-19 12:54:28
+version: 1.12
 ---
 
 In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
@@ -79,7 +79,7 @@ Along with the current x and y position of the box, I will also store the curren
 
 #### 2.2.3 - The update loop, and Mathematical Modulo
 
-One of the many things a javaScript developer might run into at one point or another is how the native modulo operator in javaScript works when it comes to dealing with negative numbers. I wrote a post on this subject before so I will not get into the details about it, however in this example I will be using a mathematical modulo method to help with wrapping the x and y values of the box when it moves out of boubds.
+One of the many things a javaScript developer might run into at one point or another is how the native modulo operator in javaScript works when it comes to dealing with negative numbers. I [wrote a post on this subject](/2017/09/02/js-whats-wrong-with-modulo/) before so I will not get into the details about it, however in this example I will be using a mathematical modulo method to help with wrapping the x and y values of the box when it moves out of boubds.
 
 ```js
 // mathematical modulo
