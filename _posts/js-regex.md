@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-03-21 18:59:23
-version: 1.3
+updated: 2019-03-21 19:10:44
+version: 1.4
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -21,5 +21,23 @@ In javaScript a regex, regexp or regular expression is a way to achieve text pat
 let data = 'regexp is **good** for pattern matching tasks',
 change = data.replace(/\*\*good\*\*/, 'great');
 console.log(change); // 'regexp is great for pattern matching tasks'
+
+```
+
+## 2 - Some basic regex examples
+
+### 2.1 - Match the begining of a string
+
+```js
+let data = ['foobar', 'baz', 'foo'];
+
+data.forEach(function (str,i) {
+    var beginFoo = str.match(/^foo/);
+    if (beginFoo) {
+        console.log(i,beginFoo.index);
+    }
+});
+// 0 0
+// 2 0
 
 ```
