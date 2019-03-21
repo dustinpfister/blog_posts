@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-03-21 13:16:06
-version: 1.1
+updated: 2019-03-21 13:19:51
+version: 1.2
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of regular expressions in javaScript that can be used to text search and replace tasks.
@@ -14,6 +14,8 @@ When working on a javaScript project there might be a need now and then to do so
 <!-- more -->
 
 ## 1 - regex
+
+In javaScript a regex, regexp or regular expression is a way to achieve text pattern matching, or search and replace tasks. There are ways of defining the patten to look for, and then there are String prototype methods that make use of these patterns to find one or more matches for that pattern in a given string, as well as replacing any and all matches with something else.
 
 ```js
 let data = 'regexp is **good** for pattern matching tasks',
