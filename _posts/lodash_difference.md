@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2019-03-29 11:31:14
-version: 1.5
+updated: 2019-03-29 11:36:39
+version: 1.6
 ---
 
 In this post I will be writing about some lodash difference method examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays when using ht method.
@@ -31,7 +31,11 @@ The order of the arrays is important, and there is also more to write about when
 
 ## 3 - lodash difference alternatives
 
+There is more than one way to get something like this done. In some cases a lodash method such as difference can help make quick work of this kind of task. It is often a nice concise way of doing so at times sure. However there are many other lodash methods that can be used as well. Also when it comes to kicking lodash to the curb it is not to hard to accomplish these kinds of tasks with just plain native javaScript as well. So in this section I will be looking at some alternatives to the lodash difference method.
+
 ### 3.1 - lodash or native filter
+
+However if you are not all ready up to speed with the lodash filter method as well as the native Array.filter equivalent, then maybe it would be a good idea to look into
 
 ```js
 let _ = require('lodash');
