@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2019-03-29 11:36:39
-version: 1.6
+updated: 2019-03-29 17:42:48
+version: 1.7
 ---
 
 In this post I will be writing about some lodash difference method examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays when using ht method.
@@ -18,8 +18,6 @@ In this post I will be writing about some lodash difference method examples. In 
 The lodash distance method can be used to find the difference between two arrays. just give an array as the first argument, and another as the second and what will be returned is a new array of values that are not in second array.
 
 ```js
-let _ = require('lodash');
- 
 let data = ['foo', 'bar', 'baz']
  
 let noGood = _.difference(['foo', 'man', 'chew'], data);
@@ -28,6 +26,26 @@ console.log(noGood); // ['man', 'chew']
 ```
 
 The order of the arrays is important, and there is also more to write about when it comes to working with arrays of arrays. Also it is not to hard to get a similar effect with just plain old javaScript by itself as well. So if thouse things come to mind as well feel free to read on.
+
+## 2 - lodash difference with
+
+```js
+let data = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+],
+kill = [
+    [5, 6, 7, 8],
+    [13, 14, 15, 16]
+];
+ 
+let result = _.differenceWith(data, kill, _.isEqual);
+ 
+console.log(result);
+// [ [ 1, 2, 3, 4 ], [ 9, 10, 11, 12 ] ] ```
+```
 
 ## 3 - lodash difference alternatives
 
