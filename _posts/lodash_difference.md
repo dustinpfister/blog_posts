@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2019-03-29 17:42:48
-version: 1.7
+updated: 2019-03-29 18:35:14
+version: 1.8
 ---
 
-In this post I will be writing about some lodash difference method examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays when using ht method.
+In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays when using ht method.
 
 <!-- more -->
 
@@ -28,6 +28,8 @@ console.log(noGood); // ['man', 'chew']
 The order of the arrays is important, and there is also more to write about when it comes to working with arrays of arrays. Also it is not to hard to get a similar effect with just plain old javaScript by itself as well. So if thouse things come to mind as well feel free to read on.
 
 ## 2 - lodash difference with
+
+There is also the [lodash difference](https://lodash.com/docs/4.17.11#differenceWith) with method as well.
 
 ```js
 let data = [
