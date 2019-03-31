@@ -1,9 +1,10 @@
 let klaw = require('klaw'),
 fs = require('fs-extra'),
 through2 = require('through2'),
-yaml = require('js-yaml');
+yaml = require('js-yaml'),
+path = require('path')
 
-let dir = process.argv[2] || '../_posts',
+    let dir = process.argv[2] || '../_posts',
 pat_lb = /\r\n|\n/;
 
 // get the header from markdown
@@ -17,12 +18,35 @@ let getHeader = function (text) {
 
     }
 
-    return yaml.safeLoad(head[0].replace(/---/g,''));
+    try {
+
+        return yaml.safeLoad(head[0].replace(/---/g, ''));
+
+    } catch (e) {
+
+        //console.log(head[0].replace(/---/g,''))
+
+        console.log('error')
+
+    }
 
 };
 
 // klaw over the dir
 klaw(dir)
+
+// if item is a file and is markdown
+.pipe(through2.obj(function (item, enc, next) {
+
+        if (item.stats.isFile() && path.extname(item.path).toLowerCase() === '.md') {
+
+            this.push(item);
+
+        }
+
+        next();
+
+    }))
 
 .pipe(through2.obj(function (item, enc, next) {
 
@@ -49,6 +73,7 @@ klaw(dir)
 
 .on('data', function (item) {
 
-    console.log(item);
+    console.log(path.basename(item.path,path.extname(item.path)));
+
 
 });
