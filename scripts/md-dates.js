@@ -1,37 +1,27 @@
-let klawFiles = require('./klaw.js').klawFiles,
-marked = require('marked'),
-cheerio = require('cheerio'),
-fs = require('fs');
+let klawFiles = require('./klaw.js').klawFiles;
 
-var report = {};
+let report = {};
 
 klawFiles(function (item) {
 
-    var d = new Date(item.header.date),
-    fy = d.getFullYear();
+    let d = new Date(item.header.date),
+    fy = d.getFullYear(),
+    m = d.getMonth();
 
-	if(!report[fy]){
-		
-		report[fy] = {};
-		
-	}
-	
-    /*
-    fs.readFile(item.path, function (e, data) {
-    if (data) {
-    let html = marked(data.toString().replace(/---[\s|\S]*---/, '')),
-    $ = cheerio.load(html);
+    if (!report[fy]) {
+        report[fy] = {};
     }
-    })
-     */
+    if (!report[fy][m]) {
+        report[fy][m] = 1;
+    } else {
+        report[fy][m] += 1;
 
-}, 
+    }
 
-function(){
-	
-	
-	console.log(report);
-	 
+},
+
+    function () {
+
+    console.log(report);
+
 });
-
-//console.log(report);
