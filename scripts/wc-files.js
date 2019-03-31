@@ -1,7 +1,16 @@
+/*
+wc-files:
+
+Stands for word count files.
+*/
 let klawFiles = require('./klaw.js').klawFiles,
 marked = require('marked'),
 cheerio = require('cheerio'),
-fs = require('fs');
+natural = require('natural'),
+fs = require('fs'),
+path = require('path'),
+
+tokenizer = new natural.WordTokenizer();
 
 klawFiles(function (item) {
 
@@ -11,10 +20,7 @@ klawFiles(function (item) {
             let html = marked(data.toString().replace(/---[\s|\S]*---/, '')),
             $ = cheerio.load(html);
 
-            console.log('********** ' + item.header.title + '**********')
-            console.log();
-            console.log($('p').text());
-            console.log('********** **********');
+            console.log(path.basename(item.path) + ' : ' + tokenizer.tokenize($('p').text()).length);
 
         }
     })

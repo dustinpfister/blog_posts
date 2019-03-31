@@ -1,3 +1,9 @@
+/*
+md-dates:
+
+So this is a file that just logs counts for the number of posts
+for each month of each year
+*/
 let klawFiles = require('./klaw.js').klawFiles;
 
 let report = {};
