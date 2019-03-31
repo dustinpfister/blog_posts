@@ -1,12 +1,12 @@
 ---
-title: Making Mongodb Shell scripts, getting started.
+title: Making Mongodb Shell scripts getting started
 date: 2018-07-05 18:45:00
 tags: [js,mongodb]
 layout: post
 categories: mongodb
 id: 221
-updated: 2018-07-05 19:16:08
-version: 1.3
+updated: 2019-03-31 13:08:08
+version: 1.4
 ---
 
 In this post on [mongodb](https://www.mongodb.com/), I will be writing about making mongodb shell scripts. These are scripts that can be called from the mongodb shell with the load command, or directly from the main os command line interface my calling mongodb and then passing the path of the js file. These scripts can be used to work with any of the [database methods](https://docs.mongodb.com/manual/reference/method/js-database/) in the mongo shell such as db.getName.
@@ -53,7 +53,6 @@ $ mongo
 MongoDB shell version v4.0.0
 connecting to: mongodb://127.0.0.1:27017
 MongoDB server version: 4.0.0
----
 
 > load('helloworld.js')
 "hello World"
