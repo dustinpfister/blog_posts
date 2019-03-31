@@ -71,13 +71,15 @@ let klawFiles = function (forFile, onDone) {
                 item.header = getHeader(data.toString());
                 self.push(item);
 
-                next();
+                //next();
+				forFile(item,next);
 
             })
             .catch (function (e) {
 
                 console.log(e);
-                next();
+                //next();
+				forFile(item,next);
 
             });
 
@@ -87,7 +89,7 @@ let klawFiles = function (forFile, onDone) {
 
         //console.log(path.basename(item.path, path.extname(item.path)));
 
-        forFile(item);
+        //forFile(item);
 
     })
 

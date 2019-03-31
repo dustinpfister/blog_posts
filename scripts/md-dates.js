@@ -3,12 +3,12 @@ md-dates:
 
 So this is a file that just logs counts for the number of posts
 for each month of each year
-*/
+ */
 let klawFiles = require('./klaw.js').klawFiles;
 
 let report = {};
 
-klawFiles(function (item) {
+klawFiles(function (item, next) {
 
     let d = new Date(item.header.date),
     fy = d.getFullYear(),
@@ -23,6 +23,8 @@ klawFiles(function (item) {
         report[fy][m] += 1;
 
     }
+
+    next();
 
 },
 
