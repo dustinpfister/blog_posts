@@ -1,19 +1,22 @@
 let klawFiles = require('./klaw.js').klawFiles,
-fs = require('fs')
+marked = require('marked'),
+cheerio = require('cheerio'),
+fs = require('fs');
 
-klawFiles(function(item){
-	
-	//console.log(item.path);
-	
-	fs.readFile(item.path, function(e,data){
-		
-		if(data){
-			
-			console.log(data.toString());
-			
-		}
-		
-		
-	})
-	
+klawFiles(function (item) {
+
+    fs.readFile(item.path, function (e, data) {
+        if (data) {
+
+            let html = marked(data.toString().replace(/---[\s|\S]*---/, '')),
+            $ = cheerio.load(html);
+
+            console.log('********** ' + item.header.title + '**********')
+            console.log();
+            console.log($('p').text());
+            console.log('********** **********');
+
+        }
+    })
+
 });
