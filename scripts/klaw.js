@@ -34,12 +34,15 @@ let getHeader = function (text) {
 
 };
 
-let klawFiles = function (forFile) {
+let klawFiles = function (forFile, onDone) {
 
     forFile = forFile === undefined ? function (item) {
         console.log(item.header.title)
     }
      : forFile;
+
+    onDone = onDone === undefined ? function () {}
+     : onDone;
 
     // klaw over the dir
     klaw(dir)
@@ -86,7 +89,13 @@ let klawFiles = function (forFile) {
 
         forFile(item);
 
-    });
+    })
+
+    .on('end', function () {
+
+        onDone();
+
+    })
 
 };
 
