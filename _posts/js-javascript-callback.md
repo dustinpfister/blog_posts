@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2019-04-01 14:20:06
-version: 1.7
+updated: 2019-04-01 15:27:43
+version: 1.8
 ---
 
 In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. They are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
@@ -40,6 +40,8 @@ The important thing to note here is that in this example the no delay message lo
 When it comes to a node.js project callbacks come up a lot. They where used all the time in the early days of node.js as a way to define javaScript code that is to run after a task that will take some time is completed. They are still often used as one way of going about doing that sort of thing when needed.
 
 ### 2.1 - Using an fs module method
+
+One of the most common examples of a callback in node.js examples might be with a method in the node.js file system module. Many of these methods have to do with reading or writing something to a local file system. These kinds of tasks can take a little time compared to doing something that involves just doing a little math. So one way or another it is necessary to define some code that will run which the task completes so that anything else that needs to happen is not put on pause while waiting for that to happen. So a callback is one way to go about doing that.
 
 ```js
 let fs = require('fs');
