@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2019-04-01 16:13:19
-version: 1.6
+updated: 2019-04-01 16:14:57
+version: 1.7
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I wan to find the angle from one point to another in a Cartesian coordinate grid.
@@ -60,6 +60,8 @@ console.log(a / Math.PI * 180); // 63.43
 Keep in mind that the y value needs to be given first. In addition the method always gives an angle relative to 0 0 so getting the angle between two points is just a matter of using one point to adjust the other.
 
 ## 2 - atan2 canvas example
+
+Now for an actual use case example of math.atan2 using canvas. 
 
 ```html
 <html>
