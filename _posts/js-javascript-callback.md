@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2019-04-01 14:12:25
-version: 1.5
+updated: 2019-04-01 14:17:43
+version: 1.6
 ---
 
 In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. They are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
@@ -34,3 +34,25 @@ console.log('no delay')
 ```
 
 The important thing to note here is that in this example the no delay message logs to the console first. So the execution of javaScript is not delayed. So this qualifies as a basic example of a callback in javaScript as it is a function that is to be called at a later time. This might not be the best example of a callback though so lets look at some additional examples.
+
+## 2 - Node.js callback examples
+
+
+### 2.1 - Using an fs module method
+
+```js
+let fs = require('fs');
+ 
+// using readFile with a callback method
+fs.readFile('basic.js', function (e, data) {
+    if (e) {
+        console.log(e.message);
+    }
+    if (data) {
+        console.log(data.toString());
+    }
+});
+ 
+// this will log first.
+console.log('first!');
+```
