@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2019-04-01 15:44:13
-version: 1.10
+updated: 2019-04-01 15:49:15
+version: 1.11
 ---
 
 In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. They are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
@@ -64,6 +64,10 @@ There are other ways of going about handling these kinds of situations such as w
 
 ### 2.2 - Callback hell in node.js
 
+So say you want to get a list of files in a directory, then for each file get stats for each file. Once stats are obtained use the states object to find out if an item in the directory is a file or folder, and if so if it is a javaScript file. If the conditions are meet then read the file and log the javaScript code to the console.
+
+Complex tasks like this can be done with the node.js file system module alone, but it often involves the use of more than one file system method each requiring a callback resulting in the so called callback hell.
+
 ```js
 let fs = require('fs'),
 path = require('path'),
@@ -101,3 +105,5 @@ fs.readdir(root, function (e, files) {
  
 });
 ```
+
+There are ways of resolving this that involve the use of promises.
