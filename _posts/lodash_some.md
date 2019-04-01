@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2019-04-01 13:57:29
-version: 1.5
+updated: 2019-04-01 14:07:24
+version: 1.6
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. In this post I will be going over some simple examples of both, as well as some ways of doing so with just plain old vanilla js as well.
@@ -38,6 +38,8 @@ console.log(_.some(arr2, tester)); // false
 In this section I will be covering some quick vanilla ja examples of how to do what the \_.some method in lodash can do with just plain old javaScript by itself. In some situations it is not to hard to just loop over the contents of an array or Object and just test to see if one object key value meets a given condition. So lets take  look at some quick examples of doing what the \_.some method can do with just plain vanilla javaScript.
 
 ### 2.1 - Writing a some method
+
+It is not to hard to write a some method of my own. The Object.keys method can be used to get all publc keys of an Object in general. This can then be used as a way to loop over all they keys and call a given test function that will return true if an element meets the desired condition. Such a method will work just fine with most Arrays and Object collections in general.
 
 ```js
 let some = function (col, tester) {
