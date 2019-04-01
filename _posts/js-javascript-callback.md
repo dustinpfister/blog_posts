@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2019-04-01 15:27:43
-version: 1.8
+updated: 2019-04-01 15:29:26
+version: 1.9
 ---
 
 In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. They are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
@@ -59,3 +59,5 @@ fs.readFile('basic.js', function (e, data) {
 // this will log first.
 console.log('first!');
 ```
+
+There are other ways of going about handling these kinds of situations such as with promises. When using callbacks all the time in more complex node.js projects this can quickly result in callback hell, a term which refers to situations in which there are many nesed callbacks.
