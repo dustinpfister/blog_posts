@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2019-04-01 15:49:15
-version: 1.11
+updated: 2019-04-01 15:53:05
+version: 1.12
 ---
 
 In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. They are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
@@ -106,4 +106,4 @@ fs.readdir(root, function (e, files) {
 });
 ```
 
-There are ways of resolving this that involve the use of promises.
+There are ways of resolving this that involve the use of promises. In late versions of node.js (11.x) there is what is at the time of this writing experimental support for promises. For older versions of node.js there is npm packages like [fs-extra](/2018/01/08/nodejs-fs-extra/) that add promise support to the fs module.
