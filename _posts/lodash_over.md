@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 410
-updated: 2019-04-04 10:39:15
-version: 1.7
+updated: 2019-04-04 10:59:59
+version: 1.8
 ---
 
 In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result. It might prove useful in some situations so lets take a quick look.
@@ -15,7 +15,7 @@ In this post I will be taking a look at the [lodash \_.over](https://lodash.com/
 
 ## 1 - lodash over
 
-The idea here is that if I have more than one method that has uniform arguments, and I want a method that will return and array of results for all of them, then the \_.over method can be used to do just that. I just call the \_.over methid and pass in an array of the methods that I want to be used.
+The idea here is that if I have more than one method that has uniform arguments, and I want a method that will return and array of results for all of them, then the \_.over method can be used to do just that. I just call the \_.over method and pass in an array of the methods that I want to be used.
 
 ```js
 let _ = require('lodash');
@@ -57,4 +57,28 @@ let pow2n4 = _.over([powN(2),powN(3)]);
  
 console.log(pow2n4(2, 4));
 // [ [ 4, 16 ], [ 9, 81 ] ] 
+```
+
+## 3 - Vanilla js alternatives to lodash \_.over
+
+```js
+let over = function (funcs) {
+    return function () {
+        let result = [];
+        funcs.forEach((func) => {
+            result.push(func.apply(null, Array.from(arguments)));
+        });
+        return result;
+    }
+};
+ 
+let a = (x, y) => {
+    return x + y;
+},
+b = (x, y) => {
+    return x * y;
+},
+c = over([a,b]);
+ 
+console.log( c(10,2) ); // [12,20]
 ```
