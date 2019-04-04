@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 410
-updated: 2019-04-04 08:59:46
-version: 1.5
+updated: 2019-04-04 09:05:49
+version: 1.6
 ---
 
 In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result. It might prove useful in some situations so lets take a quick look.
@@ -35,7 +35,9 @@ console.log( c(10,2) ); // [12,20]
 In the above example I have two methods that accept an x and y variable in the same order, one just adds and the other just multiplies them. Passing references to each of these methods in an array to the \_.over method results in a new method that when used will return an array of results for each method.
 
 
-## 2 - Pow N example
+## 2 - The arguments object, closure, and Pow N example
+
+When it comes to making a method for \_.over the arguments object might be of interest, as well as closures. I will not be getting into the nature of the arguments object in detail as I have all ready wrote a post on it, same is true of closures. I will mention that the arguments object is useful when you want to design a method that will accept a variable number of arguments.
 
 ```js
 let powN = function (n) {
