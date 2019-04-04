@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 410
-updated: 2019-04-04 11:51:33
-version: 1.10
+updated: 2019-04-04 11:55:12
+version: 1.11
 ---
 
 In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result. It might prove useful in some situations so lets take a quick look.
@@ -89,5 +89,5 @@ c = over([a,b]);
 console.log( c(10,2) ); // [12,20]
 ```
 
-The over method that I slapped together here is a good example of the power of closure. It is a method that returns a method that acts on something that is within another function level variable scope that is created when I call the over method and pass the methods I want it to use. It is also a good example of the Function.apply method as well that comes in handy often as well. If you are not up to speed with Function.call, apply, and bind be sure to check out my post on that, and write some examples, I find myself using them all the time.
+The over method that I slapped together here is a good example of the power of closure. It is a method that returns a method that acts on something that is within another function level variable scope that is created when I call the over method and pass the methods I want it to use. It is also a good example of the Function.apply method as well that comes in handy often as well. If you are not up to speed with Function.call, apply, and bind be sure to [check out my post on that](/2017/09/21/js-call-apply-and-bind/), and write some examples, I find myself using them all the time.
 
