@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 410
-updated: 2019-04-04 10:59:59
-version: 1.8
+updated: 2019-04-04 11:20:37
+version: 1.9
 ---
 
 In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result. It might prove useful in some situations so lets take a quick look.
@@ -59,14 +59,20 @@ console.log(pow2n4(2, 4));
 // [ [ 4, 16 ], [ 9, 81 ] ] 
 ```
 
-## 3 - Vanilla js alternatives to lodash \_.over
+## 3 - Vanilla js alternative to lodash \_.over
+
+So often it is not to hard to achieve a similar result with native javaScript in place of many lodash methods. Sometimes there is a direct native alternative to a lodash method, but other times there is not, or there is but it works a little differently. In any case if you are the kind of developer that has decided to kick lodash to the curb it is true that it is not to hard to do the saem thing that the lodash \_.over method does with plain old native javaScript by itself.
+
+### 3.1 - Making an over function
+
+It is possible to install just a single lodash method by itself, often it seems like there is just that one method here or there when it comes to using lodash these days in conjunction with what is available natively. However it is also of course possible to write, or just copy and paste something like this:
 
 ```js
 let over = function (funcs) {
     return function () {
         let result = [];
         funcs.forEach((func) => {
-            result.push(func.apply(null, Array.from(arguments)));
+            result.push(func.apply(null, arguments));
         });
         return result;
     }
