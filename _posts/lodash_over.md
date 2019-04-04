@@ -5,15 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 410
-updated: 2019-04-04 08:52:22
-version: 1.3
+updated: 2019-04-04 08:53:50
+version: 1.4
 ---
 
-In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result.
+In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result. It might prove useful in some situations so lets take a quick look.
 
 <!-- more -->
 
 ## 1 - lodash over
+
+
 
 ```js
 let _ = require('lodash');
