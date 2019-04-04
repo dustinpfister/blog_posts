@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 410
-updated: 2019-04-04 08:53:50
-version: 1.4
+updated: 2019-04-04 08:59:46
+version: 1.5
 ---
 
 In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result. It might prove useful in some situations so lets take a quick look.
@@ -15,7 +15,7 @@ In this post I will be taking a look at the [lodash \_.over](https://lodash.com/
 
 ## 1 - lodash over
 
-
+The idea here is that if I have more than one method that has uniform arguments, and I want a method that will return and array of results for all of them, then the \_.over method can be used to do just that. I just call the \_.over methid and pass in an array of the methods that I want to be used.
 
 ```js
 let _ = require('lodash');
@@ -31,6 +31,8 @@ let c = _.over([a, b])
  
 console.log( c(10,2) ); // [12,20]
 ```
+
+In the above example I have two methods that accept an x and y variable in the same order, one just adds and the other just multiplies them. Passing references to each of these methods in an array to the \_.over method results in a new method that when used will return an array of results for each method.
 
 
 ## 2 - Pow N example
