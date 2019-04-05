@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-03-24 20:07:10
-version: 1.7
+updated: 2019-04-05 19:54:04
+version: 1.8
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -44,4 +44,16 @@ data.forEach(function (str,i) {
 // 0 0
 // 2 0
 
+```
+
+### 2.2 - Match the end of a string
+
+
+The dollar sign symbol can be used to test for a pattern that is to be expected at the end of a string.
+```js
+let str = 'foo,bar,baz',
+ 
+m = str.match(/baz$/);
+ 
+console.log(m.index); // 8
 ```
