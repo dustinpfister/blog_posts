@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2019-04-05 15:19:53
-version: 1.6
+updated: 2019-04-05 16:38:26
+version: 1.7
 ---
 
 The [lodash \_.template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way. This is where options like the \_.template method in lodash can be useful, so lets take a look at some lodash template examples.
@@ -29,6 +29,8 @@ In this basic example I am using the interpolate delimiter that is an equal sign
 
 
 ## 2 - lodash template interpolate and escape delimiters
+
+There is a significant dereference between using an equals (interpolate) sign and a dash (escape) when delimiters. For the most part when creating a template I would want to use the equal sign so that tags are made in a way that will render in the browser. However in some cases I would want to use a dash so that the resulting string is escaped.
 
 ```js
 let init = _.template('<div><%= html %></div>'),
