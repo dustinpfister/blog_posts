@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2019-04-05 16:52:41
-version: 1.8
+updated: 2019-04-05 16:56:32
+version: 1.9
 ---
 
 The [lodash \_.template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way. This is where options like the \_.template method in lodash can be useful, so lets take a look at some lodash template examples.
@@ -69,7 +69,9 @@ console.log(tests2); // 'all passed: false'
 
 So then what will be render as the result of a delimiter like that of the escape delimiter does not have to always be just an object property it can be the result of a method like \_.every that returns true then all elements in an array are truthy.
 
-### 3.2 - Looping
+### 3.2 - Looping and evaluate delimiters
+
+So when I do not use an equal sign or dath when making an opening pointy bracket that can be called an evaluation delimiter when can be used to embed javaScript into the template, and combine doing so with an escape or interpolate delimiter.
 
 ```js
 comp = _.template('<% _.forEach(cans,function(can){ %><span><%- can %><\/span><br><%});%>'),
