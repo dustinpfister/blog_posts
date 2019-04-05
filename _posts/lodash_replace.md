@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2019-04-05 12:43:51
-version: 1.8
+updated: 2019-04-05 12:46:14
+version: 1.9
 ---
 
-The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with another pattern. However it might be best to just know how to use regular expressions to do the same with the String.replace method in native javaScript by itself. So in this post I will be writing bout some quick examples on this subject that comes up a lot when working out a javaScript project.
+The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with another pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. So in this post I will be writing bout some quick examples on this subject that comes up a lot when working out a javaScript project.
 
 <!-- more -->
 
@@ -44,7 +44,7 @@ Regular expressions come in handy when it comes to replacing not just all instan
 
 Lodash replace is one of many methods in lodash that are somewhat redundant when it comes to what is available in plain old native javaScript by itself. The lodash \_.replace method is a String method, and in the native javaScript String prototype there is the String.replace method that works in more or less the same way as the lodash method.
 
-Some methods in lodash do work a littler differently, for example the \_.map method is a collection method that will work well on most objects in general while the Array.map method is just an Array prototype method. However when it comes to \_.replace there does not seem to be much of anything that really sets it apart. 
+Some methods in lodash do work a littler differently, for example the [\_.map](/2018/02/02/lodash_map/) method is a collection method that will work well on most objects in general while the Array.map method is just an Array prototype method. However when it comes to \_.replace there does not seem to be much of anything that really sets it apart. 
 
 ### 3.1 - Basic sxample of String.replace
 
