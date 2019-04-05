@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2019-04-05 11:55:54
-version: 1.2
+updated: 2019-04-05 11:57:52
+version: 1.3
 ---
 
 The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with another pattern. However it might be best to just know how to use regular expressions to do the same with the String.replace method in native javaScript by itself. So in this post I will be writing bout some quick examples on this subject that comes up a lot when working out a javaScript project.
@@ -14,6 +14,8 @@ The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be u
 <!-- more -->
 
 ## 1 - lodash replace basic example
+
+So if I just want to replace the first instance of a text pattern in a string when reading it from left to right, and lodash is part of the stack, then the \_.replace method could be used to do just that very easily.
 
 ```js
 let _ = require('lodash');
