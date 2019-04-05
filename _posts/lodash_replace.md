@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2019-04-05 12:46:14
-version: 1.9
+updated: 2019-04-05 12:47:41
+version: 1.10
 ---
 
 The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with another pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. So in this post I will be writing bout some quick examples on this subject that comes up a lot when working out a javaScript project.
@@ -48,12 +48,16 @@ Some methods in lodash do work a littler differently, for example the [\_.map](/
 
 ### 3.1 - Basic sxample of String.replace
 
+So the above basic example can also be done with the native String.replace like this.
+
 ```js
 let str = 'Hello Mr Early Cuyler'.replace('Early Cuyler','Dan Halen');
 console.log(str); // 'Hello Mr Dan Halen'
 ```
 
 ### 3.2 - Regex example of String.replace
+
+And regular expressions can be done with it as well.
 
 ```js
 let strP = '<p>this is an element</p>',
