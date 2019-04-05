@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2019-04-05 14:35:18
-version: 1.2
+updated: 2019-04-05 15:13:13
+version: 1.3
 ---
 
 The [lodash \_.template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way. This is where options like the \_.template method in lodash can be useful, so lets take a look at some lodash template examples.
@@ -14,6 +14,8 @@ The [lodash \_.template](https://lodash.com/docs/4.17.11#template) method is one
 <!-- more -->
 
 ## 1 - lodash template basic example
+
+So a basic lodash template involves passing a string that will be the template as the first argument to the \_.template method. This string can contain one or more delimiters that are used to inject data from an object when using the method that is retruned when calling the \_.template method.
 
 ```js
 let comp = _.template('(<%= x %>,<%= y %>)'),
