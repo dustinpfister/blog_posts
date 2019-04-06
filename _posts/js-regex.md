@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-04-06 15:54:17
-version: 1.11
+updated: 2019-04-06 15:57:16
+version: 1.12
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -35,7 +35,12 @@ console.log('-- dat_20120822.json -- dat_2013.json'.match(pat_datfile)[1]);
 // 'dat_2013.json'
 ```
 
+I generally prefer to go with the literal syntax, but a javaScript developer should be familiar with both options.
+
+
 ### 1.2 - Using a regular expression
+
+There is knowing how to create a pattern, and then there is knowing how to use one. For the most part there are two String prototype methods to be aware of then it comes to this String.match, and String.replace. I will be getting into these methods in detail later but for now here is a quick example of the replace method.
 
 ```js
 let data = 'regexp is **good** for pattern matching tasks',
