@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-04-06 15:50:45
-version: 1.10
+updated: 2019-04-06 15:54:17
+version: 1.11
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -19,7 +19,7 @@ In javaScript a regex, regexp or regular expression is a way to achieve text pat
 
 ### 1.1 - Creating a regex pattern
 
-To create a regular expression the RegExp constructor can be used to create an expression from a string, the other way is to use the regular expression literal syntax.
+To create a regular expression the [RegExp constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) can be used to create an expression from a string, the other way is to use the regular expression literal syntax. When using the constructor the first argument will be a string of the pattern, and the second argument will contain one or more option flags for the pattern, more on that later. When creating a string representation of the pattern make sure to double up on the backslashes when they are needed, more on backslashes later as well.
 
 ```js
 // when using the RegEx constructor backslashes must be doubled up.
