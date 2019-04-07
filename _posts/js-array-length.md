@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 13:37:25
-version: 1.29
+updated: 2019-04-07 13:42:59
+version: 1.30
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual defined elements in he array. So then for the most part the length property in an array is pretty easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -175,7 +175,7 @@ console.log(a.length); // 3
 
 Understanding this can help eliminate confusion with some situations in which the length of an array is in fact really not the length of the array. In this section I will cover some more examples like this to help elaborate more with this.
 
-## 4 - Just a length property
+## 4 - Just a length property with empty elements
 
 It is possible to have an array that has a set length, but all of the elements are undefined. This is the case if the array is created from an object that just has a length property. A similar situation can happen if the array is created with the Array constructor syntax and given an argument that will be the length of the array.
 
