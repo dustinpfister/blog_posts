@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 10:46:33
-version: 1.19
+updated: 2019-04-07 10:50:42
+version: 1.20
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -17,16 +17,21 @@ version: 1.19
 
 For the most part array length in javaScript is a fairly simple and straight forward process, all Arrays and Array like objects have a length property. This length property is updated each time one or more elements are added to the array, as well as when they are removed as well when using an array prototype method like Array.pop. However there is a difference between length and what is often called count. More on that later on in this post, but for now lets cover the basics of array length in javaScript.
 
+### 1.1 - Array length, and Array index
+
 So the element length of an array can often be obtained by just referencing the length property of an array like so.
 
 ```js
-var a = [1,2,3];
+
 console.log(a.length); // 3
+ 
+console.log( a[0]); // 1
+console.log( a[2]); // 3
 ```
 
 The value that is returned is going to be a number that is typically one larger than the highest index of the array. This is because the array length of an array is one relative while the actual index values are zero relative. For the most part that is all there is to it except for maybe some rare but possible situations in which this is not the case. See the length of an array is not always the length of an array, read on if you want to know why.
 
-### 1.1 - Pushing in new elements increases length
+### 1.2 - Pushing in new elements increases length
 
 When using a method like Array.push to add new elements to an array, the length will be updated each time. In many cases the length of an array is also the count of an array, but in some cases this is not the case more on that later in this section. In the following example I am just creating an empty array with the array literal syntax, pushing in a new element for each iteration, and also loging the current count each time.
 
@@ -44,7 +49,7 @@ while (i < count) {
 
 As expected the length of the array goes from one upwards to 5 as I am logging the length after pushing in new elements to it. Fairly simple of course, but in some situations things can get a little confusing when it comes to adding elements to an array in other ways, as well as when removing them.
 
-### 1.2 - Popping out old elements decreases length
+### 1.3 - Popping out old elements decreases length
 
 ```js
 let a = [1,2,3,4,5],
@@ -56,7 +61,7 @@ while (i--) {
 }
 ```
 
-### 1.3 - Setting something to a high index value will set the length of the Array
+### 1.4 - Setting something to a high index value will set the length of the Array
 
 ```js
 let a = [1,2,3,4,5];
@@ -64,7 +69,7 @@ a[10] = 10;
 console.log(a.length); // 11
 ```
 
-### 1.4 - length is not always what is expected when dealing with associative Arrays
+### 1.5 - length is not always what is expected when dealing with associative Arrays
 
 ```js
 let a = [0, 1, 2];
