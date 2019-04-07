@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 10:58:24
-version: 1.21
+updated: 2019-04-07 11:03:19
+version: 1.22
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -67,11 +67,15 @@ There are of course many other ways to remove elements from an array that will r
 
 ### 1.4 - Setting something to a high index value will set the length of the Array
 
+Take into account a basic example such as this for a moment.
+
 ```js
 let a = [1,2,3,4,5];
 a[10] = 10;
 console.log(a.length); // 11
 ```
+
+Here we have an array with a length of 11, but in a way there is only 6 elements in the array. This is what I am talking about when it comes to the difference between array length and array count. The length of the array is just the highest defined index value of he array plus one, while the count of an array is the actual count of defined elements in the array.
 
 ### 1.5 - length is not always what is expected when dealing with associative Arrays
 
