@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 11:19:03
-version: 1.24
+updated: 2019-04-07 11:20:28
+version: 1.25
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -87,6 +87,8 @@ a[4] = 5
 console.log(a.length); // the length is 5
 console.log(Object.keys(a).length); // the count is 4
 ```
+
+The Object.keys method will work fine for a simple example such as this, but in some cases it will result in unexpected results when dealing with an array that has some additional public keys attached to it.
 
 ### 1.5 - length, and count is not always what is expected when dealing with associative Arrays
 
