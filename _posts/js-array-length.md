@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 10:11:00
-version: 1.17
+updated: 2019-04-07 10:38:49
+version: 1.18
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the count of elements in the array from zero to the highest index value. So then For the most part the length property in an array is pretty straight forward, however there are a few situations that might cause a degree of confusion so a quick post may be called for . The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. 
@@ -25,6 +25,53 @@ console.log(a.length); // 3
 ```
 
 The value that is returned is going to be a number that is typically one larger than the highest index of the array. This is because the array length of an array is one relative while the actual index values are zero relative. For the most part that is all there is to it except for maybe some rare but possible situations in which this is not the case. See the length of an array is not always the length of an array, read on if you want to know why.
+
+### 1.1 - Pushing in new elements increases length
+
+```js
+let a = [],
+count = 5,
+i = 0;
+while (i < count) {
+    a.push(Math.pow(2, i));
+    console.log(a.length);
+    // 1 2 3 4 5
+    i += 1;
+}
+```
+
+### 1.2 - Popping out old elements decreases length
+
+```js
+let a = [1,2,3,4,5],
+i = a.length;
+while (i--) {
+    a.pop();
+    console.log(a.length);
+    // 4 3 2 1 0
+}
+```
+
+### 1.3 - Setting something to a high index value will set the length of the Array
+
+```js
+let a = [1,2,3,4,5];
+a[10] = 10;
+console.log(a.length); // 11
+```
+
+### 1.4 - length is not always what is expected when dealing with associative Arrays
+
+```js
+let a = [0, 1, 2];
+ 
+a['zero'] = 0;
+a['one'] = 1;
+a['two'] = 2;
+ 
+console.log(a.length); // 3
+console.log(Object.keys(a).length); // 6
+```
 
 ## 2 - Setting the length property
 
