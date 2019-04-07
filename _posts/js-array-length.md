@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 13:42:59
-version: 1.30
+updated: 2019-04-07 14:02:36
+version: 1.31
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual defined elements in he array. So then for the most part the length property in an array is pretty easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -216,7 +216,7 @@ console.log(Object.keys(b).length); // 4
 
 However as long as the index values are enumerable the Object.keys method can be used to get an array of enumerable keys for an object, including possible negative index values. Which would be one way to get the true index value if these negative index values are to be counted.
 
-## 6 - Ways of getting an actual element count
+## 6 - Array count, and ways of getting an actual element count
 
 Say you are dealing with an object that also has some named object keys, and a single index value that is way ahead of the others. As I have covered in the previous section the length property of an array in javaScript is just the highest index value plus one. However there are a number of ways to go about getting the actual count of elements in these situations.
 
@@ -261,3 +261,56 @@ console.log(buff.byteLength); // 6
 ```
 
 The length of an array generally refers to the number of elements, or the highest index value plus one. It does not always refer to the the size of the array in terms of data.
+
+## 8 - The delete operator and Array length
+
+So in javaScript there is the delete operator which can be used to delete object properties. Once might thing that using it might effect array length, but it does not. It would seem that it is no different from just setting an array element to undefined.
+
+```js
+// delete
+let a = [1,2,3];
+ 
+console.log(a.length); // 3
+ 
+delete a[2];
+ 
+console.log(a[2]); // undefined
+console.log(a.length); // 3
+ 
+// set undefined
+let b = [1,2,3];
+ 
+console.log(b.length); // 3
+ 
+b[2] = undefined;
+ 
+console.log(b[2]); // undefined
+console.log(b.length); // 3
+```
+
+### 8.1 - Deleting a source object property will effect length sometimes though
+
+Although using the delete keyword to delete an array element will not effect length, deleting a property of an object that will be used to create an array might effect the resulting length of that array.
+
+```js
+let fromObj = function (obj) {
+    let arr = [];
+    Object.values(obj).forEach((val) => {
+        arr.push(val)
+    });
+    return arr;
+};
+ 
+let obj = {
+    0: 'bar',
+    1: 42,
+    3: false
+};
+ 
+console.log(fromObj(obj).length); // 3
+ 
+// deleting a source object property
+delete obj[1];
+ 
+console.log(fromObj(obj).length); // 2
+```
