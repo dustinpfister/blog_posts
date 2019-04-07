@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 11:55:44
-version: 1.28
+updated: 2019-04-07 13:37:25
+version: 1.29
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual defined elements in he array. So then for the most part the length property in an array is pretty easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -187,8 +187,10 @@ var a = Array.from({
 console.log(a.length); // 5
  
 var b = new Array(10);
-console.log(b); // 10
+console.log(b); // [ <10 empty items> ] 
 ```
+
+Yet another good example of why it is that length differs from the actual element count of an array.
 
 ## 5 - Negative index values
 
