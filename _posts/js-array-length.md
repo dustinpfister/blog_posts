@@ -5,17 +5,31 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 11:47:02
-version: 1.27
+updated: 2019-04-07 11:55:44
+version: 1.28
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual defined elements in he array. So then for the most part the length property in an array is pretty easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
 
 <!-- more -->
 
-## 1 - javaScript array length basics
+## 1 - Array length basics in javaScript
 
 For the most part array length in javaScript is a fairly simple and straight forward process, all Arrays and Array like objects have a length property. This length property is updated each time one or more elements are added to the array, as well as when they are removed as well when using an array prototype method like Array.pop. However there is a difference between length and what is often called count. More on that later on in this post, but for now lets cover the basics of array length in javaScript.
+
+### 1.1 - Array length is one relative, and index values are zero relative
+
+One other aspect of arrays other than the length is the nature of array index values in ajavaScript. Arrays in javaScript are Objects that have a numbered set of public key value pairs. These numbered index values are zero relative, meaning that they start at zero and go upward from there. However the length of an array is one relative so this often results in an inconsistency between length and index values of an array in javaScript.
+
+```js
+let a = ['foo'];
+ 
+// array length is one relative
+console.log(a.length); // 1
+ 
+// but index values are zero relative
+console.log(a[0]); // 'foo'
+```
 
 ### 1.1 - Array length, and Array index
 
