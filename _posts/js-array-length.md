@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-08 09:22:20
-version: 1.34
+updated: 2019-04-08 09:27:45
+version: 1.35
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual defined elements in he array. So then for the most part the length property in an array is pretty easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -245,6 +245,41 @@ console.log(Object.getOwnPropertyNames(a).length); // 7
 The Object.keys method can be used to get an array of enumerable key names of an object, and the Object.values method can be used to get an array of the corresponding values. Then there is Object.getOwnPropertyNames that can be used to get all of the objects own Property names even ones like length, and any additional key value pairs that are set to be not enumerable.
 
 One drawback to using these methods as a way to obtain element count of an array is that if some additional named properties are added to the array that will effect the count, to resolve this a method that involves just counting the positive numbered keys of the array. 
+
+### 6.2 - Just loop for Array count
+
+So one way of getting actual element count that comes to mind is to just loop from zero to the length of the array of vice versa and preform some kind of condition for each for each potential element to determine if there is actually something there or not.
+
+```js
+let count = (arr) => {
+ 
+    let i = arr.length,
+    ct = 0;
+    while (i--) {
+        if (arr[i] !== undefined) {
+            ct += 1;
+        }
+    }
+    return ct;
+}
+ 
+// empty array with a length of 100
+let a = new Array(100);
+ 
+a[49] = 'foo';
+a[70] = 'bar';
+ 
+console.log(a.length); // 100
+console.log(count(a)); // 2
+ 
+a[71] = undefined;
+ 
+// however declared yet undefined keys will not be counted
+console.log(count(a)); // 2
+console.log(Object.keys(a).length); // 3
+```
+
+This presents some issues of concern when it comes to arrays with a length property that might be set to a very high number for example. It is a silly waste of resources to loop over all those undeclared numbered key values, when I could find some way to just filter a list of declared key values that can be obtained via the Object.keys static method.
 
 ### 6.3 - Get Array count with Array.filter
 
