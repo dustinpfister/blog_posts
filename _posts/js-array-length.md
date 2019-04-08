@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-08 09:27:45
-version: 1.35
+updated: 2019-04-08 09:30:20
+version: 1.36
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual defined elements in he array. So then for the most part the length property in an array is pretty easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -282,6 +282,8 @@ console.log(Object.keys(a).length); // 3
 This presents some issues of concern when it comes to arrays with a length property that might be set to a very high number for example. It is a silly waste of resources to loop over all those undeclared numbered key values, when I could find some way to just filter a list of declared key values that can be obtained via the Object.keys static method.
 
 ### 6.3 - Get Array count with Array.filter
+
+So another way to get the actual count of an array would be to still use a method like Object.keys, but filter the results of that method. The Array.filter method could be used as a way to create an array of Object keys that are numbered keys equal to or grater than that of zero. The length of that array could then be used as a way to determine the count or an array.
 
 ```js
 let count = (arr) => {
