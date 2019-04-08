@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-04-07 14:02:36
-version: 1.31
+updated: 2019-04-08 08:34:12
+version: 1.32
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual defined elements in he array. So then for the most part the length property in an array is pretty easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -218,7 +218,11 @@ However as long as the index values are enumerable the Object.keys method can be
 
 ## 6 - Array count, and ways of getting an actual element count
 
-Say you are dealing with an object that also has some named object keys, and a single index value that is way ahead of the others. As I have covered in the previous section the length property of an array in javaScript is just the highest index value plus one. However there are a number of ways to go about getting the actual count of elements in these situations.
+Say you are dealing with an object that also has some named object keys, and a single index value that is way ahead of the others. As I have covered in the previous section the length property of an array in javaScript is often just the highest index value plus one, and in some cases it is not even that it is just a property of an object. However there are a number of ways to go about getting the actual count of elements in these situations.
+
+### 6.1 - Object.keys and Object.values
+
+There are two static methods of the main Object Object in core javaScript that in most cases will work okay for getting element count, but there are some drawbacks to be aware of.
 
 ```js
 var a = [1,2,3];
