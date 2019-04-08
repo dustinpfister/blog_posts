@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2019-04-08 09:48:56
-version: 1.39
+updated: 2019-04-08 09:59:42
+version: 1.40
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
@@ -348,7 +348,7 @@ console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
 
 ## 10 - Array length and count
 
-Another subject of arrays is what is often referred to as the length of an array. In many situations the length of the array might be the number of declared elements in the array, but this is not always the case. There is a difference between length, count, and data size of an array in javaScript.
+Another subject of arrays is what is often referred to as the [length of an array](/2018/12/14/js-array-length/). In many situations the length of the array might be the number of declared elements in the array, but this is not always the case. There is a difference between length, count, and data size of an array in javaScript.
 
 ## 11 - Conclusion
 
