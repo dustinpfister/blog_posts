@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2019-04-08 14:05:13
-version: 1.0
+updated: 2019-04-08 14:06:25
+version: 1.1
 ---
 
-The String Replace String prototype method in javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions.
+The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) String prototype method in javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions.
 
 
 <!-- more -->
