@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2019-04-08 14:41:52
-version: 1.3
+updated: 2019-04-08 14:52:29
+version: 1.4
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) String prototype method in javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions.
@@ -26,4 +26,17 @@ result = str.replace(/bad/g, 'good');
  
 console.log(result);
 // 'It is a good day to do good things for good people'
+```
+
+## 2 - Using a function to create replacement strings
+
+In place of a static string as the replacement, a function can be used to generate replacement strings that will differ depending on the nature of the instance of the pattern match. For example if the patter contains numbers or dates they can be extracted and used to generate the result in the resulting string.
+
+```js
+let str = 'Some numbers for you are 2, 6, and 10 also.',
+ 
+result = str.replace(/\d+/g, (num) => Math.pow(2, num));
+ 
+console.log(result);
+// 'Some numbers for you are 4, 64, and 1024 also.'
 ```
