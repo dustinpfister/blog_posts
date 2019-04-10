@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 18:34:11
-version: 1.8
+updated: 2019-04-10 18:48:24
+version: 1.9
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -25,6 +25,30 @@ str = 'Here is one file called dat_2017.json, and another called dat_2018.json',
 m = str.match(patt);
 console.log(m);
 // [ 'dat_2017.json', 'dat_2018.json' ]
+```
+
+## 2 - String.match returns an Array or null
+
+One thing to be aware of when using String.match is that it will return an Array or null depending if one or more matches are found or not. So testing for null may be necessary in many use case examples of String.match.
+
+```js
+let str1 = 'This string has a foobar here',
+str2 = 'this string does not have that',
+ 
+// getFooIndex method using String.match that will
+// return -1 when null is returned
+getFooIndex = (str) => {
+    let m = str.match(/foo/);
+    // if not null return index
+    if (m) {
+        return m.index;
+    }
+    // else return -1
+    return -1;
+};
+ 
+console.log(getFooIndex(str1)); // 18
+console.log(getFooIndex(str2)); // -1
 ```
 
 ## 2 - Single pattern match and many
