@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 18:53:56
-version: 1.11
+updated: 2019-04-10 19:02:35
+version: 1.12
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -97,7 +97,20 @@ In regex using the group flag will result in matching all the instances of a pat
 
 For the most part the string.match method works great for simple pattern matching, but depending on what you want to do sometimes a more simple solution will work out okay. There are also some additional things that come to mind where string.match might not be the best tool for the job, so in this section I will be looking at some alternatives to String.match.
 
-### 4.1 - Using exec to do a String Match
+### 4.1 - String.indexOf
+
+So if I am just searching for instances of a simple static string rather than a more dynamic pattern that involves numbers or other forms of variance then the String.indexOf method can work okay for getting the first index of that pattern, and even all of them if use in a loop with an optional fromIndex argument that can be passed as the second argument.
+
+```js
+let str= 'okay so here is a foo, and another foo, and foo foo';
+ 
+// returns the index of the first instance of the 
+// string 'foo', or -1 if it is not found
+console.log(str.indexOf('foo')); // 18
+console.log('bar'.indexOf('foo')); // -1
+```
+
+### 4.2 - Using exec to do a String Match
 
 If you are trying to use string.match to create an array of objects for each instance of a pattern that contains additional information like the index in which each pattern is found, then you might want to consider RegExp.exec to do so. It might be possible to work out some kind of solution using string.match to do that, but you might find this method works great for doing so.
 
