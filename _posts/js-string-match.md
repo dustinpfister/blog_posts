@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 18:52:43
-version: 1.10
+updated: 2019-04-10 18:53:56
+version: 1.11
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -55,7 +55,7 @@ console.log(getFooIndex(str2)); // -1
 
 So the possibility of null being returned by the String.match method is something to look out for when using it.
 
-## 2 - Single pattern match and many
+## 3 - Single pattern match and many
 
 When using the String.match method there might be some additional properties attached to the Array that might be returned when it is called depending on the flags set for the regular expression pattern. If the Group flag of the pattern is not set then additional properties for the index in the string in which the pattern was found will be set to the array as well.
 
@@ -93,11 +93,11 @@ console.log(manyFoos.index); // undefined
 
 In regex using the group flag will result in matching all the instances of a patter rather than just the first or last depending on the nature of the pattern. If you want an array of objects that each contain the index in which the pattern begins from the right to left of the string, then you will want to use the patt.exec method in place of String.match.
 
-### 3 - Alternatives to String.match
+### 4 - Alternatives to String.match
 
 For the most part the string.match method works great for simple pattern matching, but depending on what you want to do sometimes a more simple solution will work out okay. There are also some additional things that come to mind where string.match might not be the best tool for the job, so in this section I will be looking at some alternatives to String.match.
 
-### 3.1 - Using exec to do a String Match
+### 4.1 - Using exec to do a String Match
 
 If you are trying to use string.match to create an array of objects for each instance of a pattern that contains additional information like the index in which each pattern is found, then you might want to consider RegExp.exec to do so. It might be possible to work out some kind of solution using string.match to do that, but you might find this method works great for doing so.
 
