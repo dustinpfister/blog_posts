@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 18:28:41
-version: 1.7
+updated: 2019-04-10 18:34:11
+version: 1.8
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -65,9 +65,13 @@ console.log(manyFoos.index); // undefined
 
 In regex using the group flag will result in matching all the instances of a patter rather than just the first or last depending on the nature of the pattern. If you want an array of objects that each contain the index in which the pattern begins from the right to left of the string, then you will want to use the patt.exec method in place of String.match.
 
-## 2 - Using exec to do a String Match
+### 3 - Alternatives to String.match
 
-If you are trying to use string.match to create an array of objects for each instance of a pattern that contains additional information like the index in which each pattern is found, then stop what you are doing. it might be possible to work out some kind of solution using string.match to do that, but it might be better to use RegExp.exec.
+For the most part the string.match method works great for simple pattern matching, but depending on what you want to do sometimes a more simple solution will work out okay. There are also some additional things that come to mind where string.match might not be the best tool for the job, so in this section I will be looking at some alternatives to String.match.
+
+### 3.1 - Using exec to do a String Match
+
+If you are trying to use string.match to create an array of objects for each instance of a pattern that contains additional information like the index in which each pattern is found, then you might want to consider RegExp.exec to do so. It might be possible to work out some kind of solution using string.match to do that, but you might find this method works great for doing so.
 
 The RegExp.exec is like String.match only it is a prototype method of the regular expression that you pass the string to serach for the pattern. In addition each time it is called with a pattern that uses the group flag, the next instance is returned until null is reached.
 
@@ -81,4 +85,4 @@ console.log(patt.exec(str)); // null
 console.log(patt.exec(str)); // ['dat_2017.json...'
 ```
 
-Each time an array is returned, it has the additional properties that are only received when the group flag is not used as with String.match. So this method can be used to build an array of objects that have detailed information about each instance of the pattern.
+Each time an array is returned, it has the additional properties that are only received when the group flag is not used as with String.match. So this method can be used to build an array of objects that have detailed information about each instance of the pattern. Working out a solution to do so with String.macth will have to involve string manipulation.
