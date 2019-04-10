@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 19:53:48
-version: 1.14
+updated: 2019-04-10 19:54:38
+version: 1.15
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -143,7 +143,7 @@ console.log(createIndexObjects(str).map((m) => {
     })); // [16,32,80]
 ```
 
-Although these kinds of solutions might work okay for this, it does string me as being a bit to complex.
+Although these kinds of solutions might work okay for this, it does string me as being a bit to complex. So it might be better to work out or more simple solution involving the RegExp.exec method maybe.
 
 ## 5 - Alternatives to String.match
 
