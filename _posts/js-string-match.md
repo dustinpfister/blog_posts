@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 19:02:35
-version: 1.12
+updated: 2019-04-10 19:48:16
+version: 1.13
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -93,11 +93,59 @@ console.log(manyFoos.index); // undefined
 
 In regex using the group flag will result in matching all the instances of a patter rather than just the first or last depending on the nature of the pattern. If you want an array of objects that each contain the index in which the pattern begins from the right to left of the string, then you will want to use the patt.exec method in place of String.match.
 
-### 4 - Alternatives to String.match
+## 4 - Get all index values for a match
+
+```js
+let createIndexObjects = (str) => {
+ 
+    let patt = /\d+(\.js|\.html)/,
+    arr = [],
+    m,
+    i = 0;
+ 
+    // loop while m is true
+    do {
+ 
+        // get match from a substring from the current
+        // index
+        m = str.substring(i).match(patt);
+ 
+        // break if null
+        if (!m) {
+            break;
+        }
+ 
+        // step index by index of match plus the size
+        // of the pattern match string
+        i += m.index + m[0].length;
+ 
+        // adjust m.index to reflect index values
+        // in original string rather than the substring
+        m.index = i - m[0].length;
+ 
+        // push the match object
+        arr.push(m);
+ 
+    } while (m);
+ 
+    // return the array
+    return arr;
+ 
+};
+ 
+// a string with many instances of 'foo'
+let str = 'Okay so here is 20190410.js and 20190410.html, you might also want to check out 20180410.js';
+ 
+console.log(createIndexObjects(str).map((m) => {
+        return m.index;
+    })); // [16,32,80]
+```
+
+## 5 - Alternatives to String.match
 
 For the most part the string.match method works great for simple pattern matching, but depending on what you want to do sometimes a more simple solution will work out okay. There are also some additional things that come to mind where string.match might not be the best tool for the job, so in this section I will be looking at some alternatives to String.match.
 
-### 4.1 - String.indexOf
+### 5.1 - String.indexOf
 
 So if I am just searching for instances of a simple static string rather than a more dynamic pattern that involves numbers or other forms of variance then the String.indexOf method can work okay for getting the first index of that pattern, and even all of them if use in a loop with an optional fromIndex argument that can be passed as the second argument.
 
@@ -110,7 +158,7 @@ console.log(str.indexOf('foo')); // 18
 console.log('bar'.indexOf('foo')); // -1
 ```
 
-### 4.2 - Using exec to do a String Match
+### 5.2 - Using exec to do a String Match
 
 If you are trying to use string.match to create an array of objects for each instance of a pattern that contains additional information like the index in which each pattern is found, then you might want to consider RegExp.exec to do so. It might be possible to work out some kind of solution using string.match to do that, but you might find this method works great for doing so.
 
