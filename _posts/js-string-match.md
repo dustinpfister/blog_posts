@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 18:20:38
-version: 1.6
+updated: 2019-04-10 18:28:41
+version: 1.7
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -67,6 +67,10 @@ In regex using the group flag will result in matching all the instances of a pat
 
 ## 2 - Using exec to do a String Match
 
+If you are trying to use string.match to create an array of objects for each instance of a pattern that contains additional information like the index in which each pattern is found, then stop what you are doing. it might be possible to work out some kind of solution using string.match to do that, but it might be better to use RegExp.exec.
+
+The RegExp.exec is like String.match only it is a prototype method of the regular expression that you pass the string to serach for the pattern. In addition each time it is called with a pattern that uses the group flag, the next instance is returned until null is reached.
+
 ```js
 let patt = /dat_\d+.json/ig,
 str = 'Here is one file called dat_2017.json, and another called dat_2018.json';
@@ -76,3 +80,5 @@ console.log(patt.exec(str)); // ['dat_2018.json...'
 console.log(patt.exec(str)); // null
 console.log(patt.exec(str)); // ['dat_2017.json...'
 ```
+
+Each time an array is returned, it has the additional properties that are only received when the group flag is not used as with String.match. So this method can be used to build an array of objects that have detailed information about each instance of the pattern.
