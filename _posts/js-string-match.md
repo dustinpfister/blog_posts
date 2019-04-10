@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2019-04-10 19:48:16
-version: 1.13
+updated: 2019-04-10 19:53:48
+version: 1.14
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method in javaScript can be used in combination with a regular expression to find detailed information about the first pattern match in a string, or an array of results depending on the group flag of the regular expression used. It is a great method that come sin handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. Never the less this will be a quick post on the String.match method in javaScript, with some examples.
@@ -95,6 +95,8 @@ In regex using the group flag will result in matching all the instances of a pat
 
 ## 4 - Get all index values for a match
 
+Although it might be better to use a method like RegExp.exec to do so it is possible to use String.match to create an array of index values for each instance of a pattern. The solution that I have worked out here seems to work okay for the one string that I have used it for, but it is not at all battle tested. In any case I just wanted something to show that it can be done of course by using the index values that are given when using a regular expression that does not use the group flag in conjunction with a method like String.substring.
+
 ```js
 let createIndexObjects = (str) => {
  
@@ -140,6 +142,8 @@ console.log(createIndexObjects(str).map((m) => {
         return m.index;
     })); // [16,32,80]
 ```
+
+Although these kinds of solutions might work okay for this, it does string me as being a bit to complex.
 
 ## 5 - Alternatives to String.match
 
