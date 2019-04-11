@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2019-04-11 18:12:34
-version: 1.3
+updated: 2019-04-11 18:19:14
+version: 1.4
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not. So it is important to understand the differences between them so you know which to use in a given situation. In this post I will be writing about function declarations, but for comparison I will also be touching base on function expressions and arrow functions as well.
@@ -32,6 +32,8 @@ However there is more to a function declaration in javaScript than just the lexi
 Sure there are some wried ways of defining them that involve passing a string to the Function constructor or making use of eval, but for the sake of this post  I do not want to get to far off topic from function declarations.
 
 ## 2 - Function declarations compared to Function Expressions
+
+Aside from function declarations the other most common way to go about defining functions before the introduction of arrow functions was the so called function expression or function literal as it is also often referred to as. The function expression has a slightly different syntax that involves typing the function keyword followed by opening and closing parentheses and then the brackets. it is the result of this expression that is typically stored in a variable, and then it is that variable that is called to execute the function.
 
 ```js
 // function declarations can be called anywhere
