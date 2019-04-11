@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-04-11 10:24:50
-version: 1.7
+updated: 2019-04-11 10:33:41
+version: 1.8
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -55,6 +55,8 @@ In this event object I am using the target property of the event object as a way
 ## 2 - Setting onchange for many elements
 
 For a more advanced example of the onchange event, it made a quick little app that can be used to estimate the amount of money that a blog can make if the revenue per mille, and page views counts are known. In this example I am attaching the same event handler for more than one input element.
+
+So I just have a simple html file that has some input elements for rpm and pageviews, and then I am linking o an external javaScript file that makes use of the onchange event to update the output via the inner text of a div element each time the value of the rpm or pageviews input elements changes.
 
 ```html
 <html>
