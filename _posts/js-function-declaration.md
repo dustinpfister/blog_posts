@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2019-04-11 19:48:28
-version: 1.7
+updated: 2019-04-11 19:54:50
+version: 1.8
 ---
 
-In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not. So it is important to understand the differences between them so you know which to use in a given situation. In this post I will be writing about function declarations, but for comparison I will also be touching base on function expressions and arrow functions as well.
+In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not. So it is important to understand the differences between them so you know which to use in a given situation. In this post I will be writing about [function declarations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but for comparison I will also be touching base on function expressions and arrow functions as well.
 
 <!-- more -->
 
@@ -33,7 +33,7 @@ Sure there are some wried ways of defining them that involve passing a string to
 
 ## 2 - Function declarations compared to Function Expressions
 
-Aside from function declarations the other most common way to go about defining functions before the introduction of arrow functions was the so called function expression or function literal as it is also often referred to as. The function expression has a slightly different syntax that involves typing the function keyword followed by opening and closing parentheses and then the brackets. it is the result of this expression that is typically stored in a variable, and then it is that variable that is called to execute the function.
+Aside from function declarations the other most common way to go about defining functions before the introduction of arrow functions was the so called [function expression](/2019/01/27/js-function-expression/) or function literal as it is also often referred to as. The function expression has a slightly different syntax that involves typing the function keyword followed by opening and closing parentheses and then the brackets. it is the result of this expression that is typically stored in a variable, and then it is that variable that is called to execute the function.
 
 The same basic function declaration above cound then be written like this as an expression then
 
@@ -74,7 +74,7 @@ console.log(bar()); // 'foo'
 
 ## 3 - Function declarations compared to Arrow Functions
 
-Arrow functions where introduced in es2015+ spec javaScript, these functions work fine in most typical situations that require a function or two, but they can not be used as a full drop in replacement for all functions i javaScript code. The scope of the this keyword is handled differently compared to function declarations so when it comes to anything that involves the use of Function.call or the new operator a function declaration or function expression still needs to be used in place of an arrow function.
+[Arrow functions](/2019/02/17/js-arrow-functions/) where introduced in es2015+ spec javaScript, these functions work fine in most typical situations that require a function or two, but they can not be used as a full drop in replacement for all functions i javaScript code. The scope of the this keyword is handled differently compared to function declarations so when it comes to anything that involves the use of Function.call or the new operator a function declaration or function expression still needs to be used in place of an arrow function.
 
 ```js
 // with arrow functions the this
