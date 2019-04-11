@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-04-11 11:15:01
-version: 1.10
+updated: 2019-04-11 11:17:44
+version: 1.11
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -52,7 +52,7 @@ When adding an event listener for the onchange event with addEventListener the f
 
 In this event object I am using the target property of the event object as a way to gain a reference to the input element as well. In this example it is not a big deal to just use the inputPow global, however in a more complex project that involves a lot of elements it is often better to use the target property inside the body of a callback method as a way to gain access to the element from which an event like onchange as fired.
 
-## 2 - The onchange attrabute and addEventListener
+## 2 - The onchange attribute and addEventListener
 
 For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, bu generally most developers might prefer the use of addEventListener as it allows for the attachment of more than one hander for an element.
 
