@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-04-11 10:36:31
-version: 1.9
+updated: 2019-04-11 11:15:01
+version: 1.10
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -52,7 +52,33 @@ When adding an event listener for the onchange event with addEventListener the f
 
 In this event object I am using the target property of the event object as a way to gain a reference to the input element as well. In this example it is not a big deal to just use the inputPow global, however in a more complex project that involves a lot of elements it is often better to use the target property inside the body of a callback method as a way to gain access to the element from which an event like onchange as fired.
 
-## 2 - Setting onchange for many elements
+## 2 - The onchange attrabute and addEventListener
+
+For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, bu generally most developers might prefer the use of addEventListener as it allows for the attachment of more than one hander for an element.
+
+```js
+var el = document.querySelector('input.pow'),
+out = document.querySelector('#out');
+ 
+var func1 = function(e){
+    out.innerHTML = Math.pow(2,e.target.value);
+};
+ 
+var func2 = function(e){
+console.log('change event for ');
+console.log(e.target);
+}
+ 
+// the onchange attribute can be used to set a single handler
+el.onchange = func1;
+ 
+// however add event listener can be used to set more
+// than one onchange event for the same element
+el.addEventListener('change', func1);
+el.addEventListener('change', func2);
+```
+
+## 3 - Setting onchange for many elements
 
 For a more advanced example of the onchange event, it made a quick little app that can be used to estimate the amount of money that a blog can make if the revenue per mille, and page views counts are known. In this example I am attaching the same event handler for more than one input element.
 
@@ -98,4 +124,4 @@ var state = {
 state.figure();
 ```
 
-Here I am using Function.call to use the Array.forEach method as a way to loop over the children property of my controls div. This is necessary if I want to use an Array method like Array.forEach with the children property becuase it is not an Array but rather an HTMLCollection.
+Here I am using Function.call to use the Array.forEach method as a way to loop over the children property of my controls div. This is necessary if I want to use an Array method like Array.forEach with the children property because it is not an Array but rather an HTMLCollection.
