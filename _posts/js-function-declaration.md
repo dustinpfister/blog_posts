@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2019-04-11 18:25:42
-version: 1.6
+updated: 2019-04-11 19:48:28
+version: 1.7
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not. So it is important to understand the differences between them so you know which to use in a given situation. In this post I will be writing about function declarations, but for comparison I will also be touching base on function expressions and arrow functions as well.
@@ -74,7 +74,7 @@ console.log(bar()); // 'foo'
 
 ## 3 - Function declarations compared to Arrow Functions
 
-When it comes to es2015+ spec javaScript
+Arrow functions where introduced in es2015+ spec javaScript, these functions work fine in most typical situations that require a function or two, but they can not be used as a full drop in replacement for all functions i javaScript code. The scope of the this keyword is handled differently compared to function declarations so when it comes to anything that involves the use of Function.call or the new operator a function declaration or function expression still needs to be used in place of an arrow function.
 
 ```js
 // with arrow functions the this
