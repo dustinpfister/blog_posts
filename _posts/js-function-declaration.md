@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2019-04-11 18:21:25
-version: 1.5
+updated: 2019-04-11 18:25:42
+version: 1.6
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not. So it is important to understand the differences between them so you know which to use in a given situation. In this post I will be writing about function declarations, but for comparison I will also be touching base on function expressions and arrow functions as well.
@@ -45,6 +45,10 @@ let foo = function() {
  
 console.log( foo() ); // 'bar'
 ``` 
+
+### 2.1 - Function Declarations can be called anywhere while expressions can not
+
+One of the major differences between function declarations and expressions is that declarations can be called anywhere within the body of code in which the function declaration is defined. So a function declaration can be placed at the bottom of a javaScript file, and called at above it, attempting to do so with a function expression will typically result calling undefined which will of course throw a nasty error.
 
 ```js
 // function declarations can be called anywhere
