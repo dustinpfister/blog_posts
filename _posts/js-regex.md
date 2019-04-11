@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-04-06 16:07:02
-version: 1.14
+updated: 2019-04-10 20:02:49
+version: 1.15
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -49,11 +49,7 @@ console.log(change); // 'regexp is great for pattern matching tasks'
 
 ```
 
-## 2 - regex flags
-
-## 3 - regex and backslashes
-
-## 4 - Match the beginning of a string
+## 2 - Match the beginning of a string
 
 To match the begging of a string.I just need to use the ^ symbol followed be the pattern I want to match for.
 
@@ -71,7 +67,7 @@ data.forEach(function (str,i) {
 
 ```
 
-## 5 - Match the end of a string
+## 3 - Match the end of a string
 
 
 The dollar sign symbol can be used to test for a pattern that is to be expected at the end of a string.
