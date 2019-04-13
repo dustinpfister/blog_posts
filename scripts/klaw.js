@@ -72,14 +72,14 @@ let klawFiles = function (forFile, onDone) {
                 self.push(item);
 
                 //next();
-				forFile(item,next);
+                forFile(item, next);
 
             })
             .catch (function (e) {
 
                 console.log(e);
                 //next();
-				forFile(item,next);
+                forFile(item, next);
 
             });
 
@@ -104,7 +104,7 @@ let klawFiles = function (forFile, onDone) {
 // if called from CLI
 if (require.main === module) {
 
-    // call law files
+    // call klaw files
     klawFiles();
 
 } else {
