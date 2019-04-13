@@ -1,10 +1,10 @@
 # blog_posts
 
-These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/)
+These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/).
 
 ## Setup
 
-After setting up a new instance of hexo by calling hexo init, clone this repo down, then delete the _posts folder in the hexo folder and create a new symbloic link for _posts in place of it pointing to the _posts folder in this repo.
+After setting up a new instance of hexo by calling hexo init, clone this repo down, then delete the _posts folder in the hexo folder and create a new symbloic link for _posts in place of it pointing to the _posts folder in this repo. Some of the posts do use custom hexo tags that can be found in my [hexo_sitesource](https://github.com/dustinpfister/hexo_sitesource) repo.
 
 ### Windows 10
 
