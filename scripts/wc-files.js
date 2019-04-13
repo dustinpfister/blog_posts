@@ -15,7 +15,12 @@ siteTotal = 0;
 
 klawFiles(function (item, next) {
 
-    fs.readFile(item.path)
+    // make sure there is a data folder
+    fs.mkdirs('../data')
+    // then read the file
+    .then(() => {
+        return fs.readFile(item.path)
+    })
     .then((data) => {
 
         let html = marked(data.toString().replace(/---[\s|\S]*---/, '')),
