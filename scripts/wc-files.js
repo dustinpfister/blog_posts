@@ -1,7 +1,7 @@
 /*
 wc-files:
 
-Stands for word count files.
+Stands for word count files. creates a data folder and populates it with JSON files with a word count for each file
  */
 let klawFiles = require('./klaw.js').klawFiles,
 marked = require('marked'),
@@ -25,11 +25,22 @@ klawFiles(function (item, next) {
 
         let html = marked(data.toString().replace(/---[\s|\S]*---/, '')),
         $ = cheerio.load(html),
-        wc = tokenizer.tokenize($('p').text()).length;
+        json = {};
 
-        console.log(path.basename(item.path) + ' : ' + wc);
+        json.wc = tokenizer.tokenize($('p').text()).length;
+        json.filename = path.basename(item.path, '.md');
 
-        siteTotal += wc;
+        console.log(json.filename + ' : ' + json.wc);
+
+        siteTotal += json.wc;
+
+        //next();
+
+
+        return fs.writeFile(path.join('../data', json.filename + '.json'), JSON.stringify(json))
+
+    })
+    .then(() => {
 
         next();
 
