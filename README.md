@@ -1,12 +1,12 @@
 # blog_posts
 
-These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/).
+These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/). The build process involves the use of the node.js powered static site generator called [hexo](https://github.com/hexojs/hexo).
 
-## Setup
+## 1 - Setup
 
 After setting up a new instance of hexo by calling hexo init, clone this repo down, then delete the _posts folder in the hexo folder and create a new symbloic link for _posts in place of it pointing to the _posts folder in this repo. Some of the posts do use custom hexo tags that can be found in my [hexo_sitesource](https://github.com/dustinpfister/hexo_sitesource) repo.
 
-### Windows 10
+### 1.1 - Making a symbolic link in Windows 10
 
 In windows I use the mklink command to make a symbolic link to the _posts folder in this repo.
 
@@ -16,7 +16,7 @@ mklink /d C:\path\to\hexo-project-folder\source\_posts C:\path\to\blog_posts\_po
 
 cmd.exe will need to be started with admin privileges, and the /d option will need to be used as this is a like to a directory.
 
-### Linux
+### 1. 2 - Making a symbolic link in Linux
 
 In linux systems I would use the ln command to make a soft link
 
