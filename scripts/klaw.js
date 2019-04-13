@@ -4,35 +4,9 @@ let klaw = require('klaw'),
 fs = require('fs-extra'),
 through2 = require('through2'),
 yaml = require('js-yaml'),
-path = require('path');
-
-let dir = process.argv[2] || '../_posts',
-pat_lb = /\r\n|\n/;
-
-// get the header from markdown
-let getHeader = function (text) {
-
-    let head = text.match(/---[\s|\S]*---/);
-
-    if (!head) {
-
-        return {};
-
-    }
-
-    try {
-
-        return yaml.safeLoad(head[0].replace(/---/g, ''));
-
-    } catch (e) {
-
-        console.log('ERROR loading yaml:');
-        console.log(e.message);
-        return {};
-
-    }
-
-};
+path = require('path'),
+getHeader = require('./get-md-header').getHeader,
+dir = process.argv[2] || '../_posts';
 
 let klawFiles = function (forFile, onDone) {
 
