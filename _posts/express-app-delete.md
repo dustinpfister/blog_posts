@@ -1,19 +1,19 @@
 ---
-title: Using app.delete, to delete a server side file via the http delete method in express.
+title: Express app.delete, to delete a server side file via the http delete method.
 date: 2018-06-21 12:10:00
 tags: [js,express,node.js]
 layout: post
 categories: express
 id: 213
-updated: 2018-06-21 15:45:11
-version: 1.13
+updated: 2019-04-14 17:41:48
+version: 1.14
 ---
 
-Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the app.delete method.
+Today for my quick morning post on [express.js](https://expressjs.com/) I wanted to start taking a look at some of the other http request methods other than get, and post. So for today I put together a quick demo that makes use of the [app.delete method](https://expressjs.com/en/api.html#app.delete.method). This is a express app object method that can be used to define what to do for an [http delete request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE) in express.
 
 <!-- more -->
 
-## 1 - what to know before hand
+## 1 - Express app.delete and what to know before hand
 
 This is a post on the app.delete method of the app object in express.js. This is a method that is used to define logic that is used to handle http 1.1 delete requests. This is not a getting started post on express.js, or any additional skills that are required before hand to get something of value from this. If you are new to express you might want to check out my [main post on express](/2018/06/12/express/).
 
