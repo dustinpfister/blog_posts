@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 415
-updated: 2019-04-15 16:08:39
-version: 1.1
+updated: 2019-04-15 16:14:33
+version: 1.2
 ---
 
-In express.js there is the app.listen convenience method that can be used to get an express app to start listening for requests on a given port. In many projects this express.js app object method will work just find, but in some situations you might want to use the native node.js http or https methods to get your express app up and running. In this post in will be giving some quick examples of app.listen in express.js as well as the http.createServer node.js http modules methods as well.
+In [express.js](https://expressjs.com/) there is the [app.listen](https://expressjs.com/en/api.html#app.listen) convenience method that can be used to get an express app to start listening for requests on a given port. In many projects this express.js app object method will work just find, but in some situations you might want to use the native node.js http or https methods to get your express app up and running. In this post in will be giving some quick examples of app.listen in express.js as well as the [http.createServer](https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener) node.js http module method as well.
 
 <!-- more -->
 
