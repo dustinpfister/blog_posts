@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 416
-updated: 2019-04-16 10:49:30
-version: 1.4
+updated: 2019-04-16 10:57:02
+version: 1.5
 ---
 
 In [express.js](https://expressjs.com/) there are a number of options for view engines, or template languages. I am somewhat partial to ejs, but another popular option is [pug](https://pugjs.org/api/getting-started.html). I have all ready wrote a post on using the [pug node.js npm package](/2017/12/05/nodejs-pug-getting-started/) by itself, but in this post I will be writing on setting up pug in express.js so it can be used with the render response method.
@@ -66,6 +66,8 @@ app.listen(8080);
 ```
 
 ## 2 - Using local variables for the express pug project
+
+It is also possible to pass local variables to a view with the render method. This is useful if the back end strip has some data that I want to have rendered into the html that will be sent back to the client. To do so I just need to pass an Object with the names of the variables as the key names and then they values as the properties. Inside the pug file I can then use those values in the rendering process.
 
 ```
 html
