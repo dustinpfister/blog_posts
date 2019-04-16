@@ -39,3 +39,19 @@ This will print all posts that have not been updated sense Jan 2019. I must set 
 ```
 $ node to-update 2019 1 2019 1
 ```
+
+## Using as a module
+
+to-update can also be used as a module in scripts as well
+
+```js
+// testing out toUpdate
+let toUpdate = require('./index').toUpdate;
+ 
+toUpdate({
+    yearHigh: process.argv[2] || 2017,
+    forPost: (item) => {
+        console.log('#' + item.header.id, item.fn);
+    }
+});
+```
