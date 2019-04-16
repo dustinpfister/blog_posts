@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 416
-updated: 2019-04-16 11:02:54
-version: 1.6
+updated: 2019-04-16 11:05:16
+version: 1.7
 ---
 
 In [express.js](https://expressjs.com/) there are a number of options for view engines, or template languages. I am somewhat partial to ejs, but another popular option is [pug](https://pugjs.org/api/getting-started.html). I have all ready wrote a post on using the [pug node.js npm package](/2017/12/05/nodejs-pug-getting-started/) by itself, but in this post I will be writing on setting up pug in express.js so it can be used with the render response method.
@@ -82,7 +82,9 @@ html
     p= n
 ```
 
-### 2.2 - 
+### 2.2 - The express file the makes use of locals.pug
+
+So then once again the process is more or less the same as before only now I am passing an object as the second argument to the res.render method that will contain the values that are to be used to render in locals.pug.
 
 ```js
 let express = require('express'),
