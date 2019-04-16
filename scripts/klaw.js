@@ -27,6 +27,13 @@ let klawFiles = (opt) => {
 
     // klaw over the dir
     klaw(opt.dir_posts)
+    //klaw('../_posts')
+
+    .on('end', function () {
+
+        opt.onDone();
+
+    })
 
     // if item is a file and is markdown
     .pipe(through2.obj(function (item, enc, next) {
@@ -54,26 +61,20 @@ let klawFiles = (opt) => {
                 // file name convenience property
                 item.fn = path.basename(item.path, '.md');
 
-                self.push(item);
-
                 opt.forFile(item, next);
 
             })
             .catch (function (e) {
 
-                console.log(e);
-                //next();
-                opt.forFile(item, next);
+                console.log(e.message);
+
+                //opt.forFile(item, next);
+
+                next();
 
             });
 
-        }))
-
-    .on('end', function () {
-
-        opt.onDone();
-
-    })
+        }));
 
 };
 
