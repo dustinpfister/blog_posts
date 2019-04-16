@@ -10,6 +10,7 @@ dir = process.argv[2] || '../_posts',
 
 // default options
 opt_defaults = {
+    read: true,
     // default path to _posts folder
     dir_posts: path.resolve(__dirname, '../_posts'),
     // defaults for forFile and forDone callbacks
@@ -52,27 +53,39 @@ let klawFiles = (opt) => {
 
             let self = this;
 
-            fs.readFile(item.path)
-            .then(function (data) {
+            // if we are reading files
+            if (opt.read) {
 
-                // append item header
-                item.header = getHeader(data.toString());
+                // read file
+                fs.readFile(item.path)
 
-                // file name convenience property
-                item.fn = path.basename(item.path, '.md');
+                // if read is good
+                .then(function (data) {
+
+                    // append item header
+                    item.header = getHeader(data.toString());
+
+                    // file name convenience property
+                    item.fn = path.basename(item.path, '.md');
+
+                    opt.forFile(item, next);
+
+                })
+
+                // if read error
+                .catch (function (e) {
+
+                    console.log(e.message);
+                    next();
+
+                });
+
+            } else {
+                // else we are not reading files
 
                 opt.forFile(item, next);
 
-            })
-            .catch (function (e) {
-
-                console.log(e.message);
-
-                //opt.forFile(item, next);
-
-                next();
-
-            });
+            }
 
         }));
 
