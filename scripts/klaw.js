@@ -48,11 +48,14 @@ let klawFiles = (opt) => {
             fs.readFile(item.path)
             .then(function (data) {
 
-                //item.text = data.toString();
+                // append item header
                 item.header = getHeader(data.toString());
+
+                // file name convenience property
+                item.fn = path.basename(item.path, '.md');
+
                 self.push(item);
 
-                //next();
                 opt.forFile(item, next);
 
             })
@@ -65,14 +68,6 @@ let klawFiles = (opt) => {
             });
 
         }))
-
-    .on('data', function (item) {
-
-        //console.log(path.basename(item.path, path.extname(item.path)));
-
-        //forFile(item);
-
-    })
 
     .on('end', function () {
 
