@@ -5,12 +5,13 @@ fs = require('fs-extra'),
 through2 = require('through2'),
 yaml = require('js-yaml'),
 path = require('path'),
-getHeader = require('./get-md-header').getHeader,
+header = require('./get-md-header'),
 dir = process.argv[2] || '../_posts',
 
 // default options
 opt_defaults = {
     read: true,
+    getText: false,
     // default path to _posts folder
     dir_posts: path.resolve(__dirname, '../_posts'),
     // defaults for forFile and forDone callbacks
@@ -63,10 +64,16 @@ let klawFiles = (opt) => {
                 .then(function (data) {
 
                     // append item header
-                    item.header = getHeader(data.toString());
+                    item.header = header.get(data.toString());
 
                     // file name convenience property
                     item.fn = path.basename(item.path, '.md');
+
+                    if (opt.getText) {
+
+                        item.text = header.remove(data.toString());
+
+                    }
 
                     opt.forFile(item, next);
 
