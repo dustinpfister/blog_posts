@@ -6,20 +6,27 @@ through2 = require('through2'),
 yaml = require('js-yaml'),
 path = require('path'),
 getHeader = require('./get-md-header').getHeader,
-dir = process.argv[2] || '../_posts';
+dir = process.argv[2] || '../_posts',
 
-let klawFiles = function (forFile, onDone) {
+// default options
+opt_defaults = {
+    // default path to _posts folder
+    dir_posts: path.resolve(__dirname, '../_posts'),
+    // defaults for forFile and forDone callbacks
+    forFile: (item, next) => {
+        console.log(item.header.title);
+        next();
+    },
+    onDone: () => {}
+};
 
-    forFile = forFile === undefined ? function (item) {
-        console.log(item.header.title)
-    }
-     : forFile;
+//let klawFiles = function (forFile, onDone) {
+let klawFiles = (opt) => {
 
-    onDone = onDone === undefined ? function () {}
-     : onDone;
+    opt = Object.assign({}, opt_defaults, opt);
 
     // klaw over the dir
-    klaw(dir)
+    klaw(opt.dir_posts)
 
     // if item is a file and is markdown
     .pipe(through2.obj(function (item, enc, next) {
@@ -46,14 +53,14 @@ let klawFiles = function (forFile, onDone) {
                 self.push(item);
 
                 //next();
-                forFile(item, next);
+                opt.forFile(item, next);
 
             })
             .catch (function (e) {
 
                 console.log(e);
                 //next();
-                forFile(item, next);
+                opt.forFile(item, next);
 
             });
 
@@ -69,7 +76,7 @@ let klawFiles = function (forFile, onDone) {
 
     .on('end', function () {
 
-        onDone();
+        opt.onDone();
 
     })
 
