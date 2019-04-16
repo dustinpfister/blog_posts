@@ -5,15 +5,19 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 109
-updated: 2019-04-16 10:15:15
-version: 1.2
+updated: 2019-04-16 10:26:17
+version: 1.3
 ---
 
-When it comes to node.js template engines I am a big fan of ejs, but a pretty nice alternative is [pug](https://www.npmjs.com/package/pug) (formerly known as jade). It uses a clean whitespace sensitive syntax similar to markdown, but a bit more powerful. I still like ejs a lot becuase it is pretty much just an argument html, put pug is kind of like markdown in the sense that it helps keep things clean and simple.
+When it comes to node.js template engines I am a big fan of [ejs](/2017/12/07/nodejs-ejs-javascript-templates/), but a pretty nice alternative is [pug](https://www.npmjs.com/package/pug) (formerly known as jade). It uses a clean whitespace sensitive syntax similar to markdown, but a bit more powerful. I still like ejs a lot because it is pretty much just like html but allows for embedded javaScript, put pug is kind of like markdown in the sense that it helps keep things neat, clean, and maybe more readable.
 
 <!-- more -->
 
-## 1 - pug js setup
+## 1 - pug js by itself or with a framework like express
+
+If you are interested in learning more about the language itself there is a good guild for that at the official [pug website](https://pugjs.org/api/getting-started.html). In this post I am going to be focusing on the use of the node.js npm package without any additional framework being used like express. However I have wrote a post in which I write more about [using pug js with express.js](/2019/04/16/express-pug/)
+
+## 2 - pug js setup
 
 As with most projects like this I set up a test folder, and install the package with npm.
 
@@ -38,7 +42,7 @@ $ node basic
 <p>This is some pug</p>
 ```
 
-## 2 - Some basics of the language
+## 3 - Some basics of the language
 
 With pug the first few characters are interpreted as a tag, and a return is considered an end of the tag. Tags can also be nested by placing a return right after writing the first tag.
 
@@ -58,7 +62,7 @@ becomes
 
 For a more compleate overview of the laguage it might be a good idea to [check out the site on pug](https://pugjs.org/api/getting-started.html).
 
-## 3 - Read *.pug files
+## 4 - Read *.pug files
 
 Storing pug as an external file should have the *.pug extension, in addition reading pug files is a pretty straightforward process of just using the pug.readFile method.
 
@@ -185,6 +189,6 @@ which will give me this html from full.pug
 </html>
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 There is a great deal more to pug such has how to handle partials, I might write a few more posts on pug if I get to it but I have a lot on my plate when it comes to what more to write about in the wonderful world of javaScript and node.js programing.
