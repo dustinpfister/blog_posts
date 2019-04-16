@@ -3,7 +3,6 @@
 let klaw = require('klaw'),
 fs = require('fs-extra'),
 through2 = require('through2'),
-yaml = require('js-yaml'),
 path = require('path'),
 header = require('./get-md-header'),
 dir = process.argv[2] || '../_posts',
