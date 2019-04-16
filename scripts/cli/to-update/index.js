@@ -1,7 +1,9 @@
 let klawFiles = require('../../klaw.js').klawFiles;
 
-let sY = 2017,
-sM = 12;
+let yearHigh = 2017,
+yearLow = 0,
+monthHigh = 12,
+monthLow = 01;
 
 klawFiles({
 
@@ -12,11 +14,11 @@ klawFiles({
         luY = lastUpdate.getFullYear(),
         luM = lastUpdate.getMonth() + 1;
 
-        if (luY <= sY) {
-            //console.log('**********');
-            console.log(item.path);
-            //console.log(item.header.updated, luY, luM);
-            //console.log('**********');
+        // if the date at which the post was last updated falls
+        // between the set range.
+        if (luY <= yearHigh && luY >= yearLow && luM <= monthHigh && luM >= monthLow) {
+            // then log
+            console.log(item.fn, '(' + luY + '/' + luM + ')');
         }
 
         next();
