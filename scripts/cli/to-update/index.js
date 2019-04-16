@@ -7,7 +7,8 @@ let opt_defaults = {
     yearLow: argv[4] || 1970,
     monthLow: argv[5] || 1,
     forPost: function (item) {
-        console.log(item.fn, ' : ' + item.luY + '/' + item.luM + '/' + item.lu.getDate());
+        let u = item.header.updated;
+        console.log(item.fn, ' : ' + u.getFullYear() + '/' + u.getMonth() + '/' + u.getDate());
     }
 }
 
@@ -23,13 +24,13 @@ let toUpdate = (opt) => {
 
         forFile: (item, next) => {
 
-            item.lu = new Date(item.header.updated);
-            item.luY = item.lu.getFullYear();
-            item.luM = item.lu.getMonth() + 1;
+            let lu = new Date(item.header.updated),
+            luY = lu.getFullYear(),
+            luM = lu.getMonth() + 1;
 
             // if the date at which the post was last updated falls
             // between the set range.
-            if (item.lu.getTime() <= dateHigh.getTime() && item.lu.getTime() >= dateLow.getTime()) {
+            if (lu.getTime() <= dateHigh.getTime() && lu.getTime() >= dateLow.getTime()) {
                 // then call forPost
                 opt.forPost(item);
             }
@@ -42,12 +43,8 @@ let toUpdate = (opt) => {
 
 };
 
-
 // if called from CLI
 if (require.main === module) {
-
-    //let argv = process.argv;
-    //toUpdate(argv[2] || new Date().getFullYear() - 1, argv[3] || 12, argv[4] || 1970, argv[5] || 1);
 
     toUpdate();
 
