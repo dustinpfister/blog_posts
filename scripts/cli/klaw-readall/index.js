@@ -70,18 +70,23 @@ let klawAll = (opt) => {
 
 };
 
-klawAll({
+// if called from CLI
+if (require.main === module) {
 
-    forPost: (item, next) => {
+    klawAll({
+        forPost: (item, next) => {
+            console.log(item.header.title, item.wc);
+            next();
+        },
+        onDone: () => {
+            console.log('done');
+        }
 
-        console.log(item.header.title, item.wc);
+    });
 
-        next();
+} else {
 
-    },
+    // else export
+    exports.klawAll = klawAll;
 
-    onDone: () => {
-        console.log('done');
-    }
-
-});
+}
