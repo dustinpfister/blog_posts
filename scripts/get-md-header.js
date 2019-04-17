@@ -1,5 +1,6 @@
 let yaml = require('js-yaml'),
-patt_matchHeader = /---[\s|\S]*---/;
+
+patt_matchHeader = exports.patt_matchHeader = /---[\s|\S]*---/;
 
 // get the header from markdown text
 exports.get = function (text) {

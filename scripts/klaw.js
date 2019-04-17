@@ -21,6 +21,22 @@ opt_defaults = {
     onDone: () => {}
 };
 
+let marked = require('marked'),
+cheerio = require('cheerio'),
+natural = require('natural'),
+
+tokenizer = new natural.WordTokenizer(),
+
+getWC = function (text) {
+
+    let html = marked(text, ''),
+    $ = cheerio.load(html),
+    json = {};
+
+    return tokenizer.tokenize($('p').text()).length;
+
+};
+
 //let klawFiles = function (forFile, onDone) {
 let klawFiles = (opt) => {
 
@@ -71,6 +87,7 @@ let klawFiles = (opt) => {
                     if (opt.getText) {
 
                         item.text = header.remove(data.toString());
+                        item.wc = getWC(item.text);
 
                     }
 
