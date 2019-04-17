@@ -44,7 +44,13 @@ let klawAll = (opt) => {
 
                     })
 
-                });
+                })
+
+                .catch ((e) => {
+
+                    console.log(e.message);
+                    next();
+                })
 
             }
 
