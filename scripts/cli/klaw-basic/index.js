@@ -8,9 +8,7 @@ opt_defaults = {
         console.log(item.path);
         next();
     },
-    onDone: function () {
-        console.log('done');
-    }
+    onDone: function () {}
 };
 
 let klawPosts = (opt) => {
