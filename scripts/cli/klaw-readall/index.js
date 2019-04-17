@@ -1,37 +1,71 @@
 let getId = require('../next-id').getId,
 fs = require('fs-extra'),
+path = require('path'),
 klawPosts = require('../klaw-basic').klawPosts;
 
-getId().then((nextId) => {
+opt_defaults = {
+    dir_posts: process.argv[2] || '../../../_posts',
+    forPost: function (item, next) {
+        console.log(item.path);
+        next();
+    },
+    onDone: function () {}
+};
 
-    let ct = 0;
+let klawAll = (opt) => {
 
-    klawPosts({
+    opt = Object.assign({}, opt_defaults, opt || {});
 
-        forPost: (item, next) => {
+    getId().then((nextId) => {
 
-            ct += 1;
+        let ct = 0;
 
-            fs.readFile(item.path)
+        // using klaw-basic
+        klawPosts({
+            dir_posts: opt.dir_posts,
+            forPost: (item, next) => {
 
-            .then((data) => {
+                ct += 1;
 
-                console.log(item.path);
-                console.log(data.toString());
+                fs.readFile(item.path)
 
-                // if ct === nextId then we are done for real
-                if (ct === nextId) {
+                .then((data) => {
 
-                    console.log('done');
+                    opt.forPost(item, () => {
 
-                } else {
-                    next();
-                }
+                        // if ct === nextId then we are done for real
+                        if (ct === nextId) {
 
-            });
+                            opt.onDone();
 
-        }
+                        } else {
+                            next();
+                        }
 
-    })
+                    })
+
+                });
+
+            }
+
+        })
+
+    });
+
+};
+
+klawAll({
+
+    forPost: (item, next) => {
+
+        console.log(path.basename(item.path))
+
+        next();
+
+    },
+
+    onDone: () => {
+        console.log('done');
+    }
 
 });
