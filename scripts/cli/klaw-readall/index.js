@@ -3,7 +3,9 @@ let fs = require('fs-extra'),
 path = require('path'),
 klawPosts = require('../klaw-basic').klawPosts,
 getId = require('../next-id').getId,
+
 header = require('./header'),
+wc = require('./wc'),
 
 opt_defaults = {
     dir_posts: process.argv[2] || '../../../_posts',
@@ -37,6 +39,7 @@ let klawAll = (opt) => {
 
                     item.md = header.remove(md);
                     item.header = header.get(md);
+                    item.wc = wc.getWC(item.md);
 
                     opt.forPost(item, () => {
 
@@ -71,7 +74,7 @@ klawAll({
 
     forPost: (item, next) => {
 
-        console.log(item.header);
+        console.log(item.header.title, item.wc);
 
         next();
 
