@@ -7,6 +7,9 @@ opt_defaults = {
     forPost: function (item, next) {
         console.log(item.path);
         next();
+    },
+    onDone: function () {
+        console.log('done');
     }
 };
 
@@ -15,6 +18,11 @@ let klawPosts = (opt) => {
     opt = Object.assign({}, opt_defaults, opt || {});
 
     klaw(opt.dir_posts)
+
+    // when done
+    .on('end', function () {
+        opt.onDone();
+    })
 
     // if item is a file and is markdown
     .pipe(through2.obj(function (item, enc, next) {
