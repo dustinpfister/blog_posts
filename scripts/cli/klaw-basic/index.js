@@ -1,0 +1,35 @@
+let klaw = require('klaw'),
+through2 = require('through2'),
+path = require('path'),
+
+opt_defaults = {
+    dir_posts: process.argv[2] || '../../../_posts',
+    forPost: function (item, next) {
+        console.log(item.path);
+        next();
+    }
+};
+
+let klawPosts = (opt) => {
+
+    opt = Object.assign({}, opt_defaults, opt || {});
+
+    klaw(opt.dir_posts)
+
+    // if item is a file and is markdown
+    .pipe(through2.obj(function (item, enc, next) {
+            if (item.stats.isFile() && path.extname(item.path).toLowerCase() === '.md') {
+                this.push(item);
+            }
+            next();
+        }))
+
+    .pipe(through2.obj(function (item, enc, next) {
+
+            opt.forPost(item, next)
+
+        }));
+
+};
+
+klawPosts();
