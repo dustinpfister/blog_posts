@@ -8,7 +8,6 @@ header = require('./header'),
 wc = require('./wc'),
 
 opt_defaults = {
-    dir_posts: process.argv[2] || '../../../_posts',
     forPost: function (item, next) {
         console.log(item.path);
         next();
@@ -26,7 +25,6 @@ let klawAll = (opt) => {
 
         // using klaw-basic
         klawPosts({
-            dir_posts: opt.dir_posts,
             forPost: (item, next) => {
 
                 ct += 1;

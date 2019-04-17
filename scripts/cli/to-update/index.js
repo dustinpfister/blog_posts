@@ -2,7 +2,7 @@ let klawAll = require('../klaw-readall/index').klawAll;
 
 total = 0, ct = 0;
 klawAll({
-    dir_posts: '../../../_posts',
+    //dir_posts: '../../../_posts',
     forPost: (item, next) => {
         console.log(ct, total);
         total += item.wc;
