@@ -39,6 +39,8 @@ let klawAll = (opt) => {
                     item.header = header.get(md);
                     item.wc = wc.getWC(item.md);
 
+                    item.fn = path.basename(item.path, '.md');
+
                     opt.forPost(item, () => {
 
                         // if ct === nextId then we are done for real
