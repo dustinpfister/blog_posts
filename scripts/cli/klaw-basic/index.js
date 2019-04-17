@@ -32,4 +32,15 @@ let klawPosts = (opt) => {
 
 };
 
-klawPosts();
+// if called from CLI
+if (require.main === module) {
+
+    // call klaw files
+    klawPosts();
+
+} else {
+
+    // else export
+    exports.klawPosts = klawPosts;
+
+}
