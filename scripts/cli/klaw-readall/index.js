@@ -1,7 +1,9 @@
-let getId = require('../next-id').getId,
-fs = require('fs-extra'),
+
+let fs = require('fs-extra'),
 path = require('path'),
-klawPosts = require('../klaw-basic').klawPosts;
+klawPosts = require('../klaw-basic').klawPosts,
+getId = require('../next-id').getId,
+header = require('./header'),
 
 opt_defaults = {
     dir_posts: process.argv[2] || '../../../_posts',
@@ -30,6 +32,11 @@ let klawAll = (opt) => {
                 fs.readFile(item.path)
 
                 .then((data) => {
+
+                    let md = data.toString();
+
+                    item.md = header.remove(md);
+                    item.header = header.get(md);
 
                     opt.forPost(item, () => {
 
@@ -64,7 +71,7 @@ klawAll({
 
     forPost: (item, next) => {
 
-        console.log(path.basename(item.path))
+        console.log(item.header);
 
         next();
 
