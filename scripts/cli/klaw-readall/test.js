@@ -1,4 +1,4 @@
-let klawAll = require('./index').klawAll;
+let klawAll = require('../klaw-readall').klawAll;
 
 total = 0, ct = 0;
 klawAll({
