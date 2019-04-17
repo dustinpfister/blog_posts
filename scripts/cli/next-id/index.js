@@ -1,21 +1,25 @@
-let klawPosts = require('../klaw-basic').klawPosts,
-ct;
+let klawPosts = require('../klaw-basic').klawPosts;
 
 let getId = (cb) => {
 
-    // start ct at zero
-    ct = 0;
-
     cb = cb || function () {};
 
-    klawPosts({
-        forPost: (item, next) => {
-            ct += 1;
-            next();
-        },
-        onDone: () => {
-            cb(ct);
-        }
+    return new Promise((resolve, reject) => {
+
+        // start ct at zero
+        let ct = 0;
+
+        klawPosts({
+            forPost: (item, next) => {
+                ct += 1;
+                next();
+            },
+            onDone: () => {
+                cb(ct);
+                resolve(ct);
+            }
+        });
+
     });
 
 };
