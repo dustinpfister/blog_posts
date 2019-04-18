@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 417
-updated: 2019-04-18 13:29:03
-version: 1.5
+updated: 2019-04-18 13:31:55
+version: 1.6
 ---
 
 The app.post method can be used in [express.js](https://expressjs.com/) to define what is to be done in the event that a post request is received from a client system. Working with express post requests can be a somewhat complicated process, there is much to cover in terms of how to go about making a client system that will send post requests, and also how to parse the incoming request as well. I will not be going into every little detail about this in this post of course, but I will be covering some basic examples, and link to other relevant works when it comes to how to get up and running with express post requests.
@@ -21,6 +21,8 @@ So in this example I am just using express.js on top of node.js, and when it com
 
 ### 1.1 - The public/static.html file
 
+Here is the html of the file that I have in the public folder. Nothing to interesting here I just have a div element with an id of 'out' assigned to it. In addition I am linking to an external javaScript file that will act as a crude yet effective client system for this simple express post example.
+
 ```html
 <html>
   <head>
@@ -32,6 +34,8 @@ So in this example I am just using express.js on top of node.js, and when it com
   </body>
 </html>
 ```
+
+This html file will serve as an index of sorts for the backend code that I will get to latter in this section.
 
 ### 1.2 - The public/sttaic_client.js file
 
