@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 417
-updated: 2019-04-18 13:31:55
-version: 1.6
+updated: 2019-04-18 13:45:11
+version: 1.7
 ---
 
 The app.post method can be used in [express.js](https://expressjs.com/) to define what is to be done in the event that a post request is received from a client system. Working with express post requests can be a somewhat complicated process, there is much to cover in terms of how to go about making a client system that will send post requests, and also how to parse the incoming request as well. I will not be going into every little detail about this in this post of course, but I will be covering some basic examples, and link to other relevant works when it comes to how to get up and running with express post requests.
@@ -37,7 +37,9 @@ Here is the html of the file that I have in the public folder. Nothing to intere
 
 This html file will serve as an index of sorts for the backend code that I will get to latter in this section.
 
-### 1.2 - The public/sttaic_client.js file
+### 1.2 - The public/static_client.js file
+
+Here I have the javaScript client for the html file that will be used to just make a simple post request to the express.js powered pack end that I will get to shortly. To keep away from making things to complicated for the example I am just using the tired yet true browser built in way to go about making a post request to a server via the XMLHttpRequest method.
 
 ```js
 var xhr = new XMLHttpRequest();
@@ -54,6 +56,8 @@ xhr.send(JSON.stringify({
         pow: 4
     }));
 ```
+
+I will not be getting into every little detail here when it comes to making post requests with XMLHTTPRequest, but one of the most important things to be aware of here is the request header that I am setting. In this example I am using JSON as a way to transmit data from a client system back to the back end system. The body parser that I am using in express will only work as expected if the proper headers are sent along with the request.
 
 ### 1.3 - The app_static.js file
 
