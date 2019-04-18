@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 417
-updated: 2019-04-18 12:57:01
-version: 1.3
+updated: 2019-04-18 13:03:33
+version: 1.4
 ---
 
 The app.post method can be used in [express.js](https://expressjs.com/) to define what is to be done in the event that a post request is received from a client system. Working with express post requests can be a somewhat complicated process, there is much to cover in terms of how to go about making a client system that will send post requests, and also how to parse the incoming request as well. I will not be going into every little detail about this in this post of course, but I will be covering some basic examples, and link to other relevant works when it comes to how to get up and running with express post requests.
@@ -24,11 +24,11 @@ So in this example I am just using express.js on top of node.js, and when it com
 ```html
 <html>
   <head>
-    <title>Express Post basic example</title>
+    <title>Express Post static example</title>
   </head>
   <body>
     <p>n = <span id="out"></span></p>
-    <script src="basic_client.js"></script>
+    <script src="static_client.js"></script>
   </body>
 </html>
 ```
@@ -39,7 +39,7 @@ So in this example I am just using express.js on top of node.js, and when it com
 var xhr = new XMLHttpRequest();
 xhr.open('POST', '/', true);
 xhr.onreadystatechange = function () {
-
+ 
     if (this.readyState === 4) {
         document.getElementById('out').innerHTML = this.response;
     }
@@ -60,9 +60,9 @@ app = express();
 // using the JSON body parser
 app.use(require('body-parser').json());
  
-// using basic.html to serve as the index of root at /
+// using static.html to serve as the index of root at /
 app.use('/', express.static('public', {
-        index: 'basic.html'
+        index: 'static.html'
     }));
  
 // using app.post to define express post requests
@@ -73,6 +73,6 @@ app.post('/', (req, res) => {
 });
  
 app.listen(8080, () => {
-    console.log('express post basic example up on port 8080');
+    console.log('express static basic example up on port 8080');
 });
 ```
