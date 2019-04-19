@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 419
-updated: 2019-04-19 14:52:31
-version: 1.4
+updated: 2019-04-19 16:58:12
+version: 1.5
 ---
 
 In [express.js](https://expressjs.com/) the concept of middleware is something that should be grasped in order to make significant headway with express applications. If you have fiddled around with express a little so far, chances are you have used some middleware so far without even realizing it. There is some express built in middleware, one example if this would be the express.js body parser, but for the most part express itself is fairly minimal. So as such creating a fairly capable express.js application will involve installing additional middleware, as well as writing original middleware functions. So then in this post I will be covering express middleware basics.
@@ -58,7 +58,11 @@ app.get('/', (req, res) => res.send(req.n + ''));
 app.listen(8080);
 ```
 
+Breaking things down into separate functions is one thing, but it is also a good idea to keep things in separate files as well. 
+
 ## 3 -  Express Middleware can be required in from an external javaScript file
+
+It is also possible to define the logic of an express middleware method in an external javaScript file and then export it. That middleware can then be used in an express app by using require. There is more than one way to go about doing this but the most basic form would be to just export a function that is written in the same way as any other middleware function as shown in the previous examples.
 
 ```js
 let express = require('express'),
