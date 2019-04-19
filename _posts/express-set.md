@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 418
-updated: 2019-04-18 20:30:11
-version: 1.0
+updated: 2019-04-18 20:35:07
+version: 1.1
 ---
 
-This will be a quick post on the express set method in [express.js](https://expressjs.com/) 
+This will be a quick post on the [express set](https://expressjs.com/en/api.html#app.set) method in [express.js](https://expressjs.com/). The app.set method to be specific can be used to set application settings like the view engine to use. In addition it can be used as an alternative to defining global variables for just about anything that has to be stored and accessed at a later point elsewhere in the app. 
 
 <!-- more -->
 
