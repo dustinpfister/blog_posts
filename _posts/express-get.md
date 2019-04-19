@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 212
-updated: 2019-04-17 11:28:55
-version: 1.5
+updated: 2019-04-18 21:14:34
+version: 1.6
 ---
 
 The app.get method in [express.js](https://expressjs.com/) has two uses, one is for getting the value of a local app setting, and the other is to define what to do with http GET requests. So in other words it's behavior is very different depending on the number of arguments that are given to it. If I just want to get the value of a certain app setting I only need to give the key of that setting to receive the corresponding key value. However if I want to do something with get requests I will want to not just give the path or pattern, but one or more functions that will do something with that incoming http get request. So this dual use of app.get works out okay, and as such I do not find it that confusing. So this will be a quick post on the ins and outs of app.get.
@@ -19,7 +19,7 @@ This is a post on the app.get method in express.js, I will noe be getting into d
 
 ### 2 - Using app.get to get app settings values
 
-When only giving one value to app.get that value is treated as a key in an object of key value pairs that are various settings for the app. There are many settings there to begin with, and it is also possible to set values with app.set to be used in various places in the body of an express.js app.
+When only giving one value to app.get that value is treated as a key in an object of key value pairs that are various settings for the app. There are many settings there to begin with, and it is also possible to set values with [app.set](/2019/04/18/express-set) to be used in various places in the body of an express.js app.
 
 ### 2.1 - Getting the environment value
 
