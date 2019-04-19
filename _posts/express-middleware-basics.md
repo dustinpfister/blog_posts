@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 419
-updated: 2019-04-19 17:23:12
-version: 1.7
+updated: 2019-04-19 18:41:22
+version: 1.8
 ---
 
 In [express.js](https://expressjs.com/) the concept of [middleware](https://expressjs.com/en/guide/using-middleware.html) is something that should be grasped in order to make significant headway with express applications. If you have fiddled around with express a little so far, chances are you have used some middleware so far without even realizing it. There is some express built in middleware, one example if this would be the express.js body parser, but for the most part express itself is fairly minimal. So as such creating a fairly capable express.js application will involve installing additional middleware, as well as writing original middleware functions. So then in this post I will be covering express middleware basics.
@@ -54,6 +54,37 @@ app.use(
     }
 );
 app.get('/', (req, res) => res.send(req.n + ''));
+app.listen(8080);
+```
+
+They can also be group together as an array of methods as well.
+
+```js
+let express = require('express'),
+fs = require('fs'),
+app = express();
+ 
+app.use([
+        (req, res, next)=> {
+            req.a = req.query.a || 0;
+            req.b = req.query.b || 0;
+            next();
+        },
+        (req, res, next)=> {
+            req.n = Number(req.a) + Number(req.b);
+            next();
+        }
+ 
+    ]);
+ 
+app.get('/', (req, res)=> {
+    res.json({
+        a: req.a,
+        b: req.b,
+        n: req.n
+    });
+ 
+});
 app.listen(8080);
 ```
 
