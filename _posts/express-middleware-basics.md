@@ -5,17 +5,17 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 419
-updated: 2019-04-19 17:02:55
-version: 1.6
+updated: 2019-04-19 17:23:12
+version: 1.7
 ---
 
-In [express.js](https://expressjs.com/) the concept of middleware is something that should be grasped in order to make significant headway with express applications. If you have fiddled around with express a little so far, chances are you have used some middleware so far without even realizing it. There is some express built in middleware, one example if this would be the express.js body parser, but for the most part express itself is fairly minimal. So as such creating a fairly capable express.js application will involve installing additional middleware, as well as writing original middleware functions. So then in this post I will be covering express middleware basics.
+In [express.js](https://expressjs.com/) the concept of [middleware](https://expressjs.com/en/guide/using-middleware.html) is something that should be grasped in order to make significant headway with express applications. If you have fiddled around with express a little so far, chances are you have used some middleware so far without even realizing it. There is some express built in middleware, one example if this would be the express.js body parser, but for the most part express itself is fairly minimal. So as such creating a fairly capable express.js application will involve installing additional middleware, as well as writing original middleware functions. So then in this post I will be covering express middleware basics.
 
 <!-- more -->
 
 ## 1 - Express Middleware Basic example
 
-So a middleware method can be just a function that receives arguments for an incoming request, a response, and the next middleware to call after what has been done in the middleware method is completed. This method is then often used with am express app object method like app.use as a way to preform some kind of task involving an incoming http request of one type of another.
+So a middleware method can be just a function that receives arguments for an incoming request, a response, and the next middleware to call after what has been done in the middleware method is completed. This method is then often used with am express app object method like [app.use](/2018/06/18/express-aap-use/) as a way to preform some kind of task involving an incoming http request of one type of another.
 
 So for a very basic example here is a quick express app that just appends an rnd property to the request object of an incoming http request that is then used to render an incoming get request to the root name space.
 
