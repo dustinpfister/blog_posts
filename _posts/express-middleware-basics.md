@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 419
-updated: 2019-04-19 14:49:07
-version: 1.3
+updated: 2019-04-19 14:52:31
+version: 1.4
 ---
 
 In [express.js](https://expressjs.com/) the concept of middleware is something that should be grasped in order to make significant headway with express applications. If you have fiddled around with express a little so far, chances are you have used some middleware so far without even realizing it. There is some express built in middleware, one example if this would be the express.js body parser, but for the most part express itself is fairly minimal. So as such creating a fairly capable express.js application will involve installing additional middleware, as well as writing original middleware functions. So then in this post I will be covering express middleware basics.
@@ -37,6 +37,8 @@ app.listen(8080);
 All middleware does something like this, that is creating a property that is to then be used elsewhere, set a response header, get some information from a database or so forth. Once the task is complated the next method is called to continue the flow forward to the next middleware method or path.
 
 ## 2 - Express Middleware Functions can be chained
+
+More than one middleware method can be passed to the app.use method in the form of two or more arguments. It is always generally a good idea to break things down, and make things more fine grain. In other words breaking down a complex task into many smaller tasks that are to be preformed in a certain sequence rather than doing everything in a single method.
 
 ```js
 let express = require('express'),
