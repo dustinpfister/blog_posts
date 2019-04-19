@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2019-04-19 17:20:05
-version: 1.16
+updated: 2019-04-19 17:23:12
+version: 1.17
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own [middleware methods](https://expressjs.com/en/guide/using-middleware.html) now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is middleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -15,7 +15,7 @@ So after getting into [express.js](https://expressjs.com/) for about a month now
 
 ## 1 - Express middleware, and what to know before hand.
 
-This is an advanced post on express.js, if you are new to express or just want to check out what else I have on express you might want to check out my [main post on the subject](/2018/02/12/nodejs-csv-to-json/).
+This is an advanced post on express.js, if you are new to express or just want to check out what else I have on express you might want to check out my [main post on the subject](/2018/02/12/nodejs-csv-to-json/). I assume that you have at least some background with javaScript, and node.js in general as that is all outside the scope of this post.
 
 ## 2 - [Express Middleware basics](/2019/04/19/express-middleware-basics/)
 
