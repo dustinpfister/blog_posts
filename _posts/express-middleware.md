@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2019-04-19 13:07:32
-version: 1.13
+updated: 2019-04-19 13:13:40
+version: 1.14
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own [middleware methods](https://expressjs.com/en/guide/using-middleware.html) now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is middleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -22,11 +22,10 @@ This is an advanced post on [express.js](https://expressjs.com/), if you are new
 
 ## 2 - Express Middleware basics
 
-So I did write a post on the basics of express middleware in which I cover some very basic examples of how to go about writing middleware for an express application. I will go over a quick basic example hear as well though.
-
-In this section I will be covering some basic examples of middleware.
+So I did write a post on [the basics of express middleware](/2019/04/19/express-middleware-basics/) in which I cover some very basic examples of how to go about writing middleware for an express application. I will go over a quick basic example hear as well though.
 
 ### 2.1 - Just a function literal that is used with app.use
+
 
 So a simple middleware can be just be a single method that is given to app.use like this.
 
