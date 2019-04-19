@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 418
-updated: 2019-04-18 21:12:05
-version: 1.6
+updated: 2019-04-18 21:12:55
+version: 1.7
 ---
 
 This will be a quick post on the [express set](https://expressjs.com/en/api.html#app.set) method in [express.js](https://expressjs.com/). The app.set method to be specific can be used to set application settings like the view engine to use. In addition it can be used as an alternative to defining global variables for just about anything that has to be stored and accessed at a later point elsewhere in the app. 
@@ -31,7 +31,7 @@ app.get('/', (req, res) => res.send('foo'));
 app.listen(app.get('port'), ()=> console.log('app up on port: ' + app.get('port')));
 ```
 
-The express app.set method is used in conjunction with the app.get method as a way to get application setting values, however the app.get method has more than one function depending on how it is used. In the above example the app.get method is used to get the port application setting, but it is also used to define what to do for http get requests for the root path.
+The express app.set method is used in conjunction with the [app.get](/2018/06/20/express-get/) method as a way to get application setting values, however the app.get method has more than one function depending on how it is used. In the above example the app.get method is used to get the port application setting, but it is also used to define what to do for http get requests for the root path.
 
 ## 2 - Express setting view engine
 
