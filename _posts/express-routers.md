@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 192
-updated: 2019-04-20 10:14:29
-version: 1.5
+updated: 2019-04-20 10:16:07
+version: 1.6
 ---
 
 When making a node.js project with [express.js](https://expressjs.com/) I am going to end up setting up a static server, and or defining some paths that will respond to incoming requests with some kind of custom behavior. [Routers](https://expressjs.com/en/4x/api.html#express.router) are a useful way of defining these paths and pulling them into separate javaScript files that can then be linked to from the main script of an app using app.use.
@@ -19,15 +19,15 @@ This is a post on using Routers in express.js. Routers are useful for creating s
 
 ## 2 - Keeping your code more organized
 
-So Routers are a good way of keeping things more organized compared to defining all of this logic in the main script that is called to start the project. After all when working on something that does become a little complicated I can end up with a lot of code when it comes to defining these paths. This is often the case when defining a path that will handle post requests where sanitation is of concern.
+So Express Routers are a good way of keeping things more organized compared to defining all of this logic in the main script that is called to start the project. After all when working on something that does become a little complicated I can end up with a lot of code when it comes to defining these paths. This is often the case when defining a path that will handle post requests where sanitation is of concern.
 
 ## 3 - Making some files for a routes path
 
-So Routers will come into play if I do get into making my own middleware, however even when it comes to making my own express app from the ground a routes folder is a common folder that will compose most compose an express.js root structure along with things like a view folder.
+Express Routers will come into play if I do get into making my own middleware, however even when it comes to making my own express app from the ground a routes folder is a common folder that will compose most compose an express.js root structure along with things like a view folder.
 
 For now I will be covering making a routes folder for a project, this will be at least one or more javaScript files in a folder typically names "routes" alone side the node_modules, and views folder that will also typically compose an express.js app.
 
-### 3.1 - All requests Router example
+### 3.1 - All requests Express Router example
 
 A common task in full stack development involving express.js is that for whatever the reason you might want to do something involving all traffic coming through to an app. Say you want to preform some kind of sanitation, or check of some kind, or to keep things simple maybe you just want to log to the console where reach request is going.
 
@@ -149,4 +149,4 @@ app.listen(port, function () {
 
 ## 4 - Conclusion
 
-Routers are something that I will be using often when making express.js projects. I wanted this to just be a basic post on this subject, but I did not get into something more advanced like making your own middleware, or some kind of actual useful project rather than just a simple demo.
+Routers in Express are something that I will be using often when making express.js projects. I wanted this to just be a basic post on this subject, but I did not get into something more advanced like making your own middleware, or some kind of actual useful project rather than just a simple demo.
