@@ -20,7 +20,7 @@ router.get('*', [
             next()
         },
 
-        // check query
+        // check params
         (req, res, next) => {
             if (!req.params) {
                 req.data.mess = 'A post name must be given';
@@ -31,18 +31,36 @@ router.get('*', [
             }
         },
 
+        // get keywords json file
         (req, res, next) => {
-
             fs.readFile(path.join(dir_keywords, req.data.filename + '.json'), 'utf-8', (e, json) => {
-
                 if (e) {
                     req.data.mess = e.message;
-                    next();
+                    next('router');
                 } else {
                     req.data.keywords = JSON.parse(json);
                     next();
                 }
             })
+
+        },
+
+        // get post text
+        (req, res, next) => {
+
+            fs.readFile(path.join(dir_posts, req.data.filename + '.md'), 'utf-8', (e, md) => {
+
+                req.data.html = md;
+
+                req.data.keywords.forEach((kw) => {
+
+                    req.data.html = req.data.html.replace(new RegExp(kw.keyword,'g'), '<span style=\"color:red;\">'+kw.keyword+'<\/span>')
+
+                })
+
+                next();
+
+            });
 
         }
 
