@@ -13,4 +13,11 @@ app.get('/', [
         }
     ]);
 
+app.get('/blog_post/:postname', [
+        require('./middleware/process_post.js'),
+        (req, res) => {
+            res.render('blog_post', req.data);
+        }
+    ]);
+
 app.listen(app.get('port'), () => console.log('Keyword viewer is up on Port: ' + app.get('port')));
