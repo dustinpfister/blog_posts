@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2019-04-20 07:53:04
-version: 1.20
+updated: 2019-04-20 07:59:19
+version: 1.21
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own [middleware methods](https://expressjs.com/en/guide/using-middleware.html) now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is middleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -15,9 +15,10 @@ So after getting into [express.js](https://expressjs.com/) for about a month now
 
 ## 1 - Express middleware, and what to know before hand.
 
-If you have done even just a little node.js development now and then chances are that you have played around with express a little now and then.
+If you have done even just a little node.js development now and then chances are that you have played around with express a little now and then. In order to have a solid understanding of express, it is important to have a solid understanding of express middleware. middleware can be thought of as something that is placed between one layer and another, and in express that is more or less what it is. 
+Middleware does things like populating an object with arguments that where transmitted from a client via a post request body, grabbing data from a database to be used in the rendering of a view, set response headers, preform sever side sanitation tasks, and much more. There is way to much to cover in a single post, so this will be a general overview of express middleware, and I will link to additional posts on this subject to keep this post from being to long winded.
 
-This is an advanced post on express.js, if you are new to express or just want to check out what else I have on express you might want to check out my [main post on express](/2018/06/12/express/) that is a good starting point for all this express.js related on my site. I assume that you have at least some background with javaScript, and node.js in general as that is all outside the scope of this post, and the whole collection of content on express here for that matter.
+So then this is an advanced post on express.js, if you are new to express or just want to check out what else I have on express you might want to check out my [main post on express](/2018/06/12/express/) that is a good starting point for all this express.js related on my site. I assume that you have at least some background with javaScript, and node.js in general as that is all outside the scope of this post, and the whole collection of content on express here for that matter.
 
 ## 2 - [Express Middleware basics](/2019/04/19/express-middleware-basics/)
 
