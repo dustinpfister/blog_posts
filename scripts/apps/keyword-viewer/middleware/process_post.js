@@ -12,34 +12,37 @@ router.get('*', [
         // set defaults for reg.data
         (req, res, next) => {
             req.data = {
-                text: '',
-                filename: null
+                html: '',
+                mess: '',
+                filename: null,
+                keywords: []
             };
             next()
         },
 
         // check query
         (req, res, next) => {
-            if (!req.params.postname) {
-                req.data.text = JSON.stringify(req.params);
+            if (!req.params) {
+                req.data.mess = 'A post name must be given';
                 next('router');
             } else {
+                req.data.filename = req.params[0].split('/')[2];
                 next();
             }
         },
 
         (req, res, next) => {
 
-            req.data.text = req.params; //path.join(dir_keywords, '');
-            next();
+            fs.readFile(path.join(dir_keywords, req.data.filename + '.json'), 'utf-8', (e, json) => {
 
-            /*
-            fs.readFile(path.join(dir_keywords, req.query.p), 'utf-8', (e, json) => {
-            data.text = json;
-            next();
+                if (e) {
+                    req.data.mess = e.message;
+                    next();
+                } else {
+                    req.data.keywords = JSON.parse(json);
+                    next();
+                }
             })
-
-             */
 
         }
 

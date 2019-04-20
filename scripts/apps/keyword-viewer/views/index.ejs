@@ -4,7 +4,7 @@
 <body>
 <h1>Keyword Viewer</h1>
 <% filenames.forEach((fn)=>{ %>
-   <p><%= fn %></p>
+   <p><a href="/blog_post/<%= fn %>"><%= fn %></a></p>
 <% }); %>
 </body>
 </html>
