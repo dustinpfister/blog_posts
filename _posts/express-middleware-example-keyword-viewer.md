@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 13:21:35
-version: 1.5
+updated: 2019-04-21 13:50:46
+version: 1.6
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -37,6 +37,8 @@ $ mkdir middleware
 ```
 
 ## 2 - The middleware folder
+
+The middleware folder is where I will be placing all of my router level middleware that I will then be using in the main express application at the root name space of the project folder. In here I have two files, one is used when a get request is received the the root name space of the site, and as such it serves an index of links to posts that I have keyword targeting data for. The other is used to render the text for a given post with matches for that keyword highlighted.
 
 ### 2.1 - The middleware/list_all.js
 
