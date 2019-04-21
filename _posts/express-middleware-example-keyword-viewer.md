@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 13:55:21
-version: 1.7
+updated: 2019-04-21 13:58:54
+version: 1.8
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -73,6 +73,8 @@ router.get('*', (req, res, next) => {
 The actual rendering of this list of filenames is done in the ejs template for the index of the project, more on that as well as the json file format later.
 
 ### 2.2 - The middleware/process_post.js
+
+This is the middleware that creates html form the markdown of a post in the post folder, and also injects span tags that highlight each instance of a keyword that I am targeting in the corresponding json file. Like the other router level middleware in this folder this does not do any actual rendering, but rather builds something that will be used in the rendering process by passing the data that it acquires and generates as an object to an ejs template.
 
 ```js
 let express = require('express'),
