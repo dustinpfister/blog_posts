@@ -5,16 +5,19 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-20 21:42:27
-version: 1.2
+updated: 2019-04-21 08:02:52
+version: 1.3
 ---
 
-In this post I will be writing about a simple app I have made that is an example of express middleware in action.
+In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
 
 <!-- more -->
 
+## 1 - The Express Middleware Example overview
 
+I wanted to start developing some tools that will help me gain some insight into how it is that some of my content is prefroming well with organic search, while much of it is not. There are many metrics that come to mind when it comes to this sort of thing, but one of them is the number of times that an full pattern match for a keyword is found in the content. 
 
+So that being said I wanted to make a tool that will loop over the contents of a folder that contains json files in which I am storing one or more keywords that I am targeting in another corresponding markdown file in another folder. For each file in the keyword folder a link will appear in an index that when clicked on will result in another view in which the content of the post is displayed with each instance of the keyword highlighted.
 
 ## 2 - The middleware folder
 
