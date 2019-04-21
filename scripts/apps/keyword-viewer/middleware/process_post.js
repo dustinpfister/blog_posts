@@ -1,5 +1,6 @@
 let express = require('express'),
 path = require('path'),
+marked = require('marked'),
 fs = require('fs'),
 dir_keywords = path.resolve('../../../keywords'),
 dir_posts = path.resolve('../../../_posts');
@@ -50,13 +51,33 @@ router.get('*', [
 
             fs.readFile(path.join(dir_posts, req.data.filename + '.md'), 'utf-8', (e, md) => {
 
-                req.data.html = md;
+                req.data.html = marked(md.replace(/---/g,''));
 
+                /*
+                // full pattern matches
                 req.data.keywords.forEach((kw) => {
 
-                    req.data.html = req.data.html.replace(new RegExp(kw.keyword,'g'), '<span style=\"color:red;\">'+kw.keyword+'<\/span>')
+                req.data.html = req.data.html.replace(
+                new RegExp(kw.keyword, 'g'),
+                '<span style=\"color:red;\">' + kw.keyword + '<\/span>');
 
+
+                let words = kw.keyword.split(' ');
+                if (words.length > 1) {
+
+                console.log(words);
+
+                words.forEach((w) => {
+                console.log(w);
+                req.data.html = req.data.html.replace(
+                new RegExp(w, 'g'),
+                '<span style=\"outline:1px solid #00ff00;\">' + w + '<\/span>');
                 })
+                }
+
+
+                });
+                 */
 
                 next();
 
