@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 13:50:46
-version: 1.6
+updated: 2019-04-21 13:55:21
+version: 1.7
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -42,6 +42,8 @@ The middleware folder is where I will be placing all of my router level middlewa
 
 ### 2.1 - The middleware/list_all.js
 
+Here is the middleware that creates a list of filenames to which there is keyword data. This is achieved by using the node.js file system modules fs.readdir method to get a list of json files in the keyword folder. Each of the filenames in this keyword folder corresponds with a markdown file in the posts folder.
+
 ```js
 let express = require('express'),
 path = require('path'),
@@ -67,6 +69,8 @@ router.get('*', (req, res, next) => {
  
 });
 ```
+
+The actual rendering of this list of filenames is done in the ejs template for the index of the project, more on that as well as the json file format later.
 
 ### 2.2 - The middleware/process_post.js
 
