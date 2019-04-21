@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 17:27:15
-version: 1.9
+updated: 2019-04-21 17:32:21
+version: 1.10
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -188,7 +188,11 @@ app.listen(app.get('port'), () => console.log('Keyword viewer is up on Port: ' +
 
 ## 4 - The /views folder
 
+Here in my view folder I have an ejs file for both the index that is rendered when doing to the root path, and then one for when rendering the content of a blog post as well. I will not be getting into ejs in depth here as I have wrote a post on that all ready.
+
 ### 4.1 - /views/index.ejs
+
+Here is the index.ejs file, I am just creating a link for each post for which there is a keywords file. Nothing fancy with pagination or anything to that effect.
 
 ```
 <html>
