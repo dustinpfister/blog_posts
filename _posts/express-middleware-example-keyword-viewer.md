@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 17:48:18
-version: 1.12
+updated: 2019-04-21 17:49:56
+version: 1.13
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -257,3 +257,5 @@ This is another post on the keyword express middleware that has [links to things
 ```
 
 ## 6 - Conclusion
+
+There is much more I would like to do with this project if I get the time to work on it more. So far I am happy with it though, using express and node.js is a great way to make useful little tools like this.
