@@ -5,23 +5,23 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 17:49:56
-version: 1.13
+updated: 2019-04-21 17:55:11
+version: 1.14
 ---
 
-In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
+In this post I will be writing about an app I have made that is an example of [express middleware](https://expressjs.com/en/guide/using-middleware.html) in action. I have wrote a [main post on express middleware](/2018/06/25/express-middleware/) in which I explore the subject in general, as well as another post in which I cover just the [very basics](/2019/04/19/express-middleware-basics/) of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
 
 <!-- more -->
 
 ## 1 - The Express Middleware Example overview
 
-I wanted to start developing some tools that will help me gain some insight into how it is that some of my content is prefroming well with organic search, while much of it is not. There are many metrics that come to mind when it comes to this sort of thing, but one of them is the number of times that an full pattern match for a keyword is found in the content. 
+I wanted to start developing some tools that will help me gain some insight into how it is that some of my content is preforming well with organic search, while other posts are not so much. There are many metrics that come to mind when it comes to this sort of thing, but one of them is the number of times that an full pattern match for a keyword is found in the content. 
 
 So that being said I wanted to make a tool that will loop over the contents of a folder that contains json files in which I am storing one or more keywords that I am targeting in another corresponding markdown file in another folder. For each file in the keyword folder a link will appear in an index that when clicked on will result in another view in which the content of the post is displayed with each instance of the keyword highlighted.
 
 ### 1.1 - Setup
 
-In this project on top of using express I am also using marked as a way to quickly parse markdown into html, and I am also useing ejs as a template system. I also made a few folders where I will be placing router level middleware, markdown, and json files.
+In this project on top of using express I am also using [marked](/2017/11/19/nodejs-marked/) as a way to quickly parse markdown into html, and I am also [useing ejs](/2018/05/25/express-rendering-with-ejs/) as a template system. I also made a few folders where I will be placing router level middleware, markdown, and json files.
 
 ```
 $ mkdir express-middleware-example-keyword-viewer
