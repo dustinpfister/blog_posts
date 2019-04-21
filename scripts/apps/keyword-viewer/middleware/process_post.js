@@ -46,43 +46,18 @@ router.get('*', [
 
         },
 
-        // get post text
+        // create html from markdown, and create special style for keywords
         (req, res, next) => {
-
             fs.readFile(path.join(dir_posts, req.data.filename + '.md'), 'utf-8', (e, md) => {
-
-                req.data.html = marked(md.replace(/---/g,''));
-
-                /*
+                req.data.html = marked(md.replace(/---/g, ''));
                 // full pattern matches
                 req.data.keywords.forEach((kw) => {
-
-                req.data.html = req.data.html.replace(
-                new RegExp(kw.keyword, 'g'),
-                '<span style=\"color:red;\">' + kw.keyword + '<\/span>');
-
-
-                let words = kw.keyword.split(' ');
-                if (words.length > 1) {
-
-                console.log(words);
-
-                words.forEach((w) => {
-                console.log(w);
-                req.data.html = req.data.html.replace(
-                new RegExp(w, 'g'),
-                '<span style=\"outline:1px solid #00ff00;\">' + w + '<\/span>');
-                })
-                }
-
-
+                    req.data.html = req.data.html.replace(
+                            new RegExp(kw.keyword, 'g'),
+                            '<span style=\"border:3px solid red;\">' + kw.keyword + '<\/span>');
                 });
-                 */
-
                 next();
-
             });
-
         }
 
     ]);
