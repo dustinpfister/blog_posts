@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 13:58:54
-version: 1.8
+updated: 2019-04-21 17:27:15
+version: 1.9
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -157,6 +157,9 @@ router.get('*', [
 
 
 ## 3 - The /app.js file
+
+Here is the main app.js file of the project. I am using require to input by router level middleware in the middleware folder, and I am using ejs to render templates with that is appended to the request objects by that middleware.
+
 ```js
 let express = require('express'),
 app = express();
