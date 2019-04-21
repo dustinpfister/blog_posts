@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 08:02:52
-version: 1.3
+updated: 2019-04-21 11:42:34
+version: 1.4
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -33,11 +33,8 @@ dir_keywords = path.resolve('_keywords');
 router = module.exports = express.Router();
  
 router.get('*', (req, res, next) => {
- 
     req.filenames = [];
- 
     fs.readdir(dir_keywords, (err, files) => {
- 
         if (err) {
             console.log(err.message);
             next()
@@ -61,12 +58,12 @@ marked = require('marked'),
 fs = require('fs'),
 dir_keywords = path.resolve('_keywords'),
 dir_posts = path.resolve('_posts');
- 
+
 // create a router, and use body-parser
 router = module.exports = express.Router();
- 
+
 router.get('*', [
- 
+
         // set defaults for reg.data
         (req, res, next) => {
             req.data = {
@@ -77,7 +74,7 @@ router.get('*', [
             };
             next()
         },
- 
+
         // check params
         (req, res, next) => {
             if (!req.params) {
@@ -88,7 +85,7 @@ router.get('*', [
                 next();
             }
         },
- 
+
         // get keywords json file
         (req, res, next) => {
             fs.readFile(path.join(dir_keywords, req.data.filename + '.json'), 'utf-8', (e, json) => {
@@ -100,9 +97,9 @@ router.get('*', [
                     next();
                 }
             })
- 
+
         },
- 
+
         // create html from markdown, and create special style for keywords
         (req, res, next) => {
             fs.readFile(path.join(dir_posts, req.data.filename + '.md'), 'utf-8', (e, md) => {
@@ -110,8 +107,16 @@ router.get('*', [
                     req.data.mess = e.message;
                     next();
                 } else {
-                    req.data.html = marked(md.replace(/---/g, ''));
-                    // full pattern matches
+                    // remove headers from markdown
+                    md = md.replace(/---/g, '');
+
+                    // create html from markdown
+                    req.data.html = marked(md);
+
+                    // remove a tags
+                    req.data.html = req.data.html.replace(/<a [^>]*>|<\/a>/g, '');
+
+                    // highlight full pattern matches with span elements
                     req.data.keywords.forEach((kw) => {
                         req.data.html = req.data.html.replace(
                                 new RegExp(kw.keyword, 'g'),
@@ -121,7 +126,7 @@ router.get('*', [
                 }
             });
         }
- 
+
     ]);
 ```
 
@@ -178,6 +183,7 @@ app.listen(app.get('port'), () => console.log('Keyword viewer is up on Port: ' +
 </head>
 <body>
 <h1>Blog Post: <%= filename %></h1>
+<p><a href="/">Back to Index</a></p>
 <p>mess: <%= mess %></p>
 <p>keywords: <%= keywords.map((kw)=> kw.keyword) %></p>
 <pre style="white-space: pre-wrap;">
@@ -185,4 +191,27 @@ app.listen(app.get('port'), () => console.log('Keyword viewer is up on Port: ' +
 </pre>
 </body>
 </html>
+```
+
+## 5 - The /keywords, and /posts folders
+
+### 5.1 - keywords JSON file example /_keywords/express-middleware-links.json
+
+```
+[{
+        "keyword": "express middleware",
+        "value": 6500
+    }, {
+        "keyword": "expressjs",
+        "value": 3500
+    }
+]
+```
+
+### 5.2 - A markdown example /_posts/express-middleware-links.md
+
+```
+## 1 - express middleware links
+ 
+This is another post on the keyword express middleware that has [links to things like the expressjs website](https://expressjs.com/). For the sake of this project at least links should be removed, or somthing should be done to avoid injecting tags for keywords that might appear in a tag urls.
 ```
