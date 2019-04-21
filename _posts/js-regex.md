@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-04-10 20:02:49
-version: 1.15
+updated: 2019-04-21 11:35:02
+version: 1.16
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -69,7 +69,6 @@ data.forEach(function (str,i) {
 
 ## 3 - Match the end of a string
 
-
 The dollar sign symbol can be used to test for a pattern that is to be expected at the end of a string.
 ```js
 let str = 'foo,bar,baz',
@@ -78,3 +77,21 @@ m = str.match(/baz$/);
  
 console.log(m.index); // 8
 ```
+
+## 4 - Matching html tags, and negated character sets
+
+A task that comes up often for me is to find a way to match html tags in a string and replace them with something else, or remove them completely. For this I have found that a a negated character set is a good way to go about matching anything and everything that might be in the tag except the ending pointy bracket.
+
+```js
+let html = '<p>This is some html with a <a href=\"https://foo.com\">link<\/a> in it<\/p>',
+html_nolinks = html.replace(/<a [^>]*>|<\/a>/gi,'');
+ 
+console.log(html);
+// <p>This is some html with a <a href="https://foo.com">link</a> in it</p>
+console.log(html_nolinks);
+// <p>This is some html with a link in it</p>
+```
+
+## 5 -Conclusion
+
+Of course this post does not do regular expressions justice, as there is way more to write about when it comes to them. I will update this post from time to time of course as I keep running into more note worthy things to write about when it comes to them, but it might be best to just keep paying around with them in order to get a sound grasp on regex. There are also other tools at your disposal when it comes to these kinds of tasks, and sometimes it is necessary to make use of those as well rather than depending completely on regex.
