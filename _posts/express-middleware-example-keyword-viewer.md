@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 420
-updated: 2019-04-21 17:44:06
-version: 1.11
+updated: 2019-04-21 17:48:18
+version: 1.12
 ---
 
 In this post I will be writing about an app I have made that is an example of express middleware in action. I have wrote a main post on express middleware in which I explore the subject in general, as well as another post in which I cover just the very basics of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
@@ -229,7 +229,11 @@ The ejs file for rendering the blog post content including the highlighted insta
 
 ## 5 - The /keywords, and /posts folders
 
+There is then the keywords and posts folders that contain the json file with the keywords I am targeting, and the markdown of the content of the post itself.
+
 ### 5.1 - keywords JSON file example /_keywords/express-middleware-links.json
+
+the format of a json file in the keywords folder looks like this.
 
 ```
 [{
@@ -244,8 +248,12 @@ The ejs file for rendering the blog post content including the highlighted insta
 
 ### 5.2 - A markdown example /_posts/express-middleware-links.md
 
+I then have a markdown file in which I am using the keyword one or more times.
+
 ```
 ## 1 - express middleware links
  
 This is another post on the keyword express middleware that has [links to things like the expressjs website](https://expressjs.com/). For the sake of this project at least links should be removed, or somthing should be done to avoid injecting tags for keywords that might appear in a tag urls.
 ```
+
+## 6 - Conclusion
