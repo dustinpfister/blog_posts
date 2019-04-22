@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 07:12:25
-version: 1.7
+updated: 2019-04-22 07:15:27
+version: 1.8
 ---
 
 maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
@@ -71,6 +71,8 @@ app.listen(8080);
 Just like with the built in middleware express.static I am using the app.use method to use my custom router level middleware to define what will happen for requests to the /file path.
 
 ## 4 - The public folder
+
+So I could put togeather some more complex client system involving ejs templates, and a front end library of some kind. However to keep this example simple I am sticking to just what there is to work within the browser by itself. When it comes to scripting http requests in the browser one option is to use XMLHttpRequest, and in this client system I will be using that to make GET and POST requests to the backend code that I went over above.
 
 ### 4.1 - The index.html file
 
