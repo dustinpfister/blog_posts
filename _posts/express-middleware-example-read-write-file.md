@@ -5,17 +5,17 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 07:56:46
-version: 1.11
+updated: 2019-04-22 08:05:16
+version: 1.12
 ---
 
-maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
+maybe one of the best ways to learn about the value of [express middleware](https://expressjs.com/en/guide/using-middleware.html) is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
 
 <!-- more -->
 
 ## 1 - Express Middleware and what to know before continuing
 
-I have wrote a post before hand in which I cover [the basics of express middleware](/2019/04/19/express-middleware-basics/), and I also have another post in which I am covering express middleware in general as well. So I will not be getting into detail about the basics of express here, I also assume that you have at least some background with node.js, and javaScript in general.
+I have wrote a post before hand in which I cover [the basics of express middleware](/2019/04/19/express-middleware-basics/), and I also have another post on [express middleware in general](/2018/06/25/express-middleware/) also. So I will not be getting into detail about the basics of express here, I also assume that you have at least some background with node.js, and javaScript in general.
 
 ## 2 - The Middleware that will read and write to the file
 
@@ -49,7 +49,7 @@ router.post('*', function (req, res) {
 });
 ```
 
-In this file I am creating and exporting an express router, and defining what will happen for all get and post requests when this middleware is used in a main app.js file with the app.use method. For get requests I am just simply reading the file and sending the data of that file or an empty string in the event of an error. For post requests I am parsing some incoming json and using the text property of that object sent from the client to write the contents of the file.
+In this file I am creating and exporting an express router, and defining what will happen for all get and post requests when this middleware is used in a main app.js file with the [app.use method](/2018/06/18/express-app-use/). For get requests I am just simply reading the file and sending the data of that file or an empty string in the event of an error. For post requests I am parsing some incoming json and using the text property of that object sent from the client to write the contents of the file.
 
 In a more serious example I would do a better job handling errors, but for the sake of keeping this post wimple I will not be getting into that here.
 
@@ -97,7 +97,7 @@ I am then loading a single client side javaScript file just simply called client
 
 ### 4.2 - The client.js file
 
-Here I have my client side javaScript where I am using XMLHttpRequest to send both GET and POST requests.
+Here I have my client side javaScript where I am using [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/) to send both GET and POST requests.
 
 ```js
 var getIt = function (cb) {
