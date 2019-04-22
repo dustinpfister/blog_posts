@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 06:38:18
-version: 1.3
+updated: 2019-04-22 06:54:00
+version: 1.4
 ---
 
 maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
@@ -18,6 +18,8 @@ maybe one of the best ways to learn about the value of express middleware is to 
 I have wrote a post before hand in which I cover the basics of express middleware, and I also have another post in which I am covering express middleware in general as well. So I will not be getting into detail about the basics of express here, I also assume that you have at least some background with node.js, and javaScript in general.
 
 ## 2 - The Middleware that will read and write to the file
+
+Here I have the router level middleware file that will use the node.js fs module to read and write just a simple plain text file that can be created and edited from a basic client system that I will be getting to later in this post. For more on router level middleware be sure to check out my post on [routers in express.js](/2018/05/22/express-routers/).
 
 ```js
 let express = require('express'),
