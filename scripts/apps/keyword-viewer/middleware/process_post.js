@@ -49,14 +49,27 @@ router.get('*', [
         // create html from markdown, and create special style for keywords
         (req, res, next) => {
             fs.readFile(path.join(dir_posts, req.data.filename + '.md'), 'utf-8', (e, md) => {
-                req.data.html = marked(md.replace(/---/g, ''));
-                // full pattern matches
-                req.data.keywords.forEach((kw) => {
-                    req.data.html = req.data.html.replace(
-                            new RegExp(kw.keyword, 'g'),
-                            '<span style=\"border:3px solid red;\">' + kw.keyword + '<\/span>');
-                });
-                next();
+                if (e) {
+                    req.data.mess = e.message;
+                    next();
+                } else {
+                    // remove headers from markdown
+                    md = md.replace(/---/g, '');
+
+                    // create html from markdown
+                    req.data.html = marked(md);
+
+                    // remove a tags
+                    req.data.html = req.data.html.replace(/<a [^>]*>|<\/a>/g, '');
+
+                    // highlight full pattern matches with span elements
+                    req.data.keywords.forEach((kw) => {
+                        req.data.html = req.data.html.replace(
+                                new RegExp(kw.keyword, 'g'),
+                                '<span style=\"border:3px solid red;\">' + kw.keyword + '<\/span>');
+                    });
+                    next();
+                }
             });
         }
 
