@@ -5,15 +5,15 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 422
-updated: 2019-04-22 11:51:11
-version: 1.1
+updated: 2019-04-22 11:59:11
+version: 1.2
 ---
 
 So there is a lot to write about concerning [express middleware](https://expressjs.com/en/guide/using-middleware.html), I have all ready covered the [basics of middleware in express](/2019/04/19/express-middleware-basics/), and I have a post on [express middleware in general](/2018/06/25/express-middleware/) as well. However in this post I thought I would focus on application level middleware specifically.
 
 <!-- more -->
 
-## 1 - Applaction level Express Middleware basic example
+## 1 - App.get
 
 ```js
 let express = require('express'),
@@ -22,4 +22,41 @@ app = express();
 app.get('/', (req, res) => res.json('foo'));
  
 app.listen(8080);
+```
+
+## 2 - App.all
+
+```js
+let express = require('express'),
+app = express();
+ 
+app.all('*', (req, res, next) => {
+    if (req.method === 'GET') {
+        res.send('foo');
+    } else {
+        next();
+    }
+});
+ 
+app.all('*', (req, res) => {
+    res.sendStatus(404);
+});
+ 
+app.listen(8080);
+```
+
+## 3 - App.all vs app.use
+
+```
+let express = require('express'),
+app = express();
+ 
+app.use((req, res, next) => {
+    req.n = 42;
+    next();
+});
+ 
+app.all('*', (req, res, next) => res.send(req.n + ''));
+ 
+app.listen(8080);js
 ```
