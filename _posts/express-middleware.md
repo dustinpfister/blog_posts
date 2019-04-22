@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2019-04-22 12:09:11
-version: 1.22
+updated: 2019-04-22 12:16:42
+version: 1.23
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own [middleware methods](https://expressjs.com/en/guide/using-middleware.html) now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is middleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -58,6 +58,10 @@ app.listen(8080);
 ```
 
 Ultimately the goal with all of this is to respond to http requests with the use of application level middleware, but often there is much to be done before that, such as parsing the body of a post request. When it comes to everything that needs to get done before rendering some kind of response to a request there is router level middleware as well as built in middleware.
+
+## 4 - [Express router level middleware](/2018/05/22/express-routers/)
+
+Router level middleware is what you would want to get into when it comes to offsetting things into independent extremal files.
 
 ## 3 - When doing some kind of async task make sure you call next in the right place
 
