@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 06:59:06
-version: 1.5
+updated: 2019-04-22 07:00:19
+version: 1.6
 ---
 
 maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
@@ -54,6 +54,8 @@ In this file I am creating and exporting an express router, and defining what wi
 In a more serious example I would do a better job handling errors, but for the sake of keping this post wimple I will not be getting into that here.
 
 ## 3 - The App.js file
+
+Here I have the main app.js file of this example where I am requiring in express, and creating an instance of an app object as always.
 
 ```js
 let express = require('express'),
