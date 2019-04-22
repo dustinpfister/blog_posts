@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 422
-updated: 2019-04-22 16:10:18
-version: 1.4
+updated: 2019-04-22 16:12:35
+version: 1.5
 ---
 
 So there is a lot to write about concerning [express middleware](https://expressjs.com/en/guide/using-middleware.html#middleware.application), I have all ready covered the [basics of middleware in express](/2019/04/19/express-middleware-basics/), and I have a post on [express middleware in general](/2018/06/25/express-middleware/) as well. However in this post I thought I would focus on application level middleware specifically.
@@ -33,6 +33,8 @@ app.listen(8080);
 Just call app.get pass the path or pattern to attach to, and then the middleware in the form of a function or array of functions involving used the next callback to move between them.
 
 ## 2 - App.all
+
+Another application level express middleware example would be the use of the app.all method that can be used to respond to all types of http requests regardless if they are GET, POST, HEAD, and so forth requests. The app.all method differs slightly from that of the app.use method, more on that and how it compares to app.all later in this post.
 
 ```js
 let express = require('express'),
