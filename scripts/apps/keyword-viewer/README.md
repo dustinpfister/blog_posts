@@ -1,0 +1,3 @@
+# keyword-viewer
+
+I would like to start making some tools to help me gain some insight into the nature of my content with respect to certain keywords in organic search. This project is nothing to interesting as it just highlights all instances of a given keyword full pattern match in the text of a blog post. A simple basic feature that I could also often accomplish by just doing a ctrl+f in a web browser, or most text editors. However it is a start, and I might add some additional features.
