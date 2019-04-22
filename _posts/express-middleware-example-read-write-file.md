@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 07:19:41
-version: 1.9
+updated: 2019-04-22 07:20:46
+version: 1.10
 ---
 
 maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
@@ -96,6 +96,8 @@ For the index html file that will be use for the root path of the project thanks
 I am then loading a single client side javaScript file just simply called client.js that will contain the client side javaScrit that I am sing in this example.
 
 ### 4.2 - The client.js file
+
+Here I have my client side javaScript where I am using XMLHttpRequest to send both GET and POST requests.
 
 ```js
 var getIt = function (cb) {
