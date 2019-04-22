@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 05:30:23
-version: 1.1
+updated: 2019-04-22 06:34:34
+version: 1.2
 ---
 
-This post is one of several posts on express middleware examples. In this post I will be going over a very simple example of router level middleware that just reads and writes to a file.
+maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
 
 <!-- more -->
 
