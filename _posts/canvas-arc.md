@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-04-22 08:43:10
-version: 1.7
+updated: 2019-04-22 08:47:09
+version: 1.8
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -45,9 +45,9 @@ ctx.stroke();
 
 
 
-## 2 - Drawing a full circle
+## 2 - Drawing a full canvas arc circle
 
-To draw a full circle with the arc method just set radian values from zero to Math.Pi * 2.
+To draw a full circle with the canvas arc method just set radian values from zero to Math.Pi * 2. This is a much quicker option to taking the time to write a polygon method to draw a circle, although writing that kind of method would give a greater deal of control over the various factors when it comes to daring a circle in canvas.
 
 ```js
 ctx.beginPath();
