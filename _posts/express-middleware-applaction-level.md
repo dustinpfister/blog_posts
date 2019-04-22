@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 422
-updated: 2019-04-22 16:12:35
-version: 1.5
+updated: 2019-04-22 16:26:22
+version: 1.6
 ---
 
 So there is a lot to write about concerning [express middleware](https://expressjs.com/en/guide/using-middleware.html#middleware.application), I have all ready covered the [basics of middleware in express](/2019/04/19/express-middleware-basics/), and I have a post on [express middleware in general](/2018/06/25/express-middleware/) as well. However in this post I thought I would focus on application level middleware specifically.
@@ -55,18 +55,33 @@ app.all('*', (req, res) => {
 app.listen(8080);
 ```
 
-## 3 - App.all vs app.use
+## 3 - App.all vs app.use when using paths
+
+For the most part the app.all, and app.use methods work the same way, but with some significant differences. Maybe the most significant thing to mention is the way that they respond to path pattrens with the given middlewares are attached to with them. With the app.use method the middleware will be used when a request matches the path give or any nested path within that path as well, while the app.all method will not.
 
 ```
 let express = require('express'),
 app = express();
  
-app.use((req, res, next) => {
-    req.n = 42;
+app.use('/foo', (req, res, next) => {
+    req.a = 40;
     next();
 });
  
-app.all('*', (req, res, next) => res.send(req.n + ''));
+app.all('/foo', (req, res, next) => {
+    req.b = 2;
+    next();
+});
  
-app.listen(8080);js
+app.all('*', (req, res, next) => {
+    req.a = req.a || 0;
+    req.b = req.b || 0;
+    res.send(req.a + req.b + '');
+});
+ 
+app.listen(8080);
+ 
+// http://localhost:8080/         <-- 0
+// http://localhost:8080/foo      <-- 42
+// http://localhost:8080/foo/bar  <-- 40
 ```
