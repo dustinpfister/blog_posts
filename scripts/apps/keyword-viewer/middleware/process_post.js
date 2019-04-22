@@ -57,17 +57,18 @@ router.get('*', [
                     md = md.replace(/---/g, '');
 
                     // create html from markdown
-                    req.data.html = marked(md.toLowerCase());
+                    req.data.html = marked(md, {headerIds:false});
 
                     // remove a tags
-                    req.data.html = req.data.html.replace(/<a [^>]*>|<\/a>/g, '');
+                    req.data.html = req.data.html.replace(/<a [^>]*>|<\/a>/gi, '');
 
                     // highlight full pattern matches with span elements
                     req.data.keywords.forEach((kw) => {
                         req.data.html = req.data.html.replace(
-                                new RegExp(kw.keyword, 'g'),
+                                new RegExp(kw.keyword, 'gi'),
                                 '<span style=\"border:3px solid red;\">' + kw.keyword + '<\/span>');
                     });
+
                     next();
                 }
             });
