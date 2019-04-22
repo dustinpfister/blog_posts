@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 07:15:27
-version: 1.8
+updated: 2019-04-22 07:19:41
+version: 1.9
 ---
 
 maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
@@ -76,6 +76,8 @@ So I could put togeather some more complex client system involving ejs templates
 
 ### 4.1 - The index.html file
 
+For the index html file that will be use for the root path of the project thanks to express.static I am just using a textarea element as a way to write text that is to be transmitted to the backend via a POST request, as well as how to display the content of the file that is retrieve via a GET request as well. I also have a single input button that can be used to send a POST request with what is currently in the textarea element.
+
 ```html
 <html>
   <head>
@@ -90,6 +92,8 @@ So I could put togeather some more complex client system involving ejs templates
   </body>
 </html>
 ```
+
+I am then loading a single client side javaScript file just simply called client.js that will contain the client side javaScrit that I am sing in this example.
 
 ### 4.2 - The client.js file
 
