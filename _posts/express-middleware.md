@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2019-04-20 07:59:19
-version: 1.21
+updated: 2019-04-22 12:09:11
+version: 1.22
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own [middleware methods](https://expressjs.com/en/guide/using-middleware.html) now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is middleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -43,6 +43,21 @@ app.listen(8080);
 ```
 
 This middleware appends an object in the request object that can then be used later in the app, as I get to another section that responds to get requests I send that object as a response. Many middlewares do something like this, they append some kind of useful data to a response object that can later be used with other middlewares, and paths when it comes to rendering. However middleware can be used to do a wide range of things beyond just that as well of course.
+
+## 3 - [Application level Express Middleware](/2019/04/22/express-middleware-applaction-level/)
+
+In express Application middleware is any kind of middleware that is used via methods like app.use, or any of the methods that define what to do for an http request like app.get, or app.all.
+
+```js
+let express = require('express'),
+app = express();
+ 
+app.get('/', (req, res) => res.json('foo'));
+ 
+app.listen(8080);
+```
+
+Ultimately the goal with all of this is to respond to http requests with the use of application level middleware, but often there is much to be done before that, such as parsing the body of a post request. When it comes to everything that needs to get done before rendering some kind of response to a request there is router level middleware as well as built in middleware.
 
 ## 3 - When doing some kind of async task make sure you call next in the right place
 
