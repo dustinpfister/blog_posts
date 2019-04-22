@@ -57,7 +57,7 @@ router.get('*', [
                     md = md.replace(/---/g, '');
 
                     // create html from markdown
-                    req.data.html = marked(md);
+                    req.data.html = marked(md.toLowerCase());
 
                     // remove a tags
                     req.data.html = req.data.html.replace(/<a [^>]*>|<\/a>/g, '');
