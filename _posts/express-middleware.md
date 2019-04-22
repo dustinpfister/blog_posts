@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 216
-updated: 2019-04-22 12:16:42
-version: 1.23
+updated: 2019-04-22 12:18:08
+version: 1.24
 ---
 
 So after getting into [express.js](https://expressjs.com/) for about a month now, I find myself writing my own [middleware methods](https://expressjs.com/en/guide/using-middleware.html) now. If you do not know what middleware is then this post might be of help. A middleware is a module, or actually even just a method that does something with incoming traffic in an express.js application. There is middleware for doing all kinds of things, like authentication, setting http headers, and parsing cookies just to mention a few things that can be done with middleware. In other words it is a term given to plugins, or extensions for express.js, as by itself I can only do so much. So this is where middleware comes in. 
@@ -63,7 +63,23 @@ Ultimately the goal with all of this is to respond to http requests with the use
 
 Router level middleware is what you would want to get into when it comes to offsetting things into independent extremal files.
 
-## 3 - When doing some kind of async task make sure you call next in the right place
+```js
+let express = require('express'),
+ 
+router = module.exports = express.Router();
+ 
+router.get('*', function (req, res, next) {
+    console.log('get from: ' + req.url);
+    next();
+});
+ 
+router.post('*', function (req, res, next) {
+    console.log('post from: ' + req.url);
+    next();
+});
+```
+
+## 5 - When doing some kind of async task make sure you call next in the right place
 
 When doing some kind of aysnc task, such as reading a file, make sure that you are calling next in the right place.
 
@@ -103,7 +119,7 @@ app.listen(8080);
 
 in this example I am using the file system module to read the package.json file of the demo I am making for this post. The plain old fs module by itself uses callbacks, it is in that callback where I will be calling next. In other examples that involve promises I would want to call next in a method that is given to then, or catch.
 
-## 4 - Other app example
+## 6 - Other app example
 
 So I can have a app.js like this:
 
@@ -141,6 +157,6 @@ module.exports = function (options) {
 };
 ```
 
-### 5 - Conclusion
+### 7 - Conclusion
 
 This post does not do everything that there is to write about with middleware justice, but if you are new to this sort of thing hopefully this post has help gave you a good starting point.
