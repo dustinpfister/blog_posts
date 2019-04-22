@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-04-22 12:33:38
-version: 1.10
+updated: 2019-04-22 12:35:59
+version: 1.11
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -15,7 +15,7 @@ When making a canvas project with the html 5 canvas element and javaScript there
 
 ## 1 - Canvas arc basics
 
-The arc method can be used when drawing a line by using the beginPath method at which point the arc method can be used in conjunction with other method like moveTo lineTo and so forth to help draw shapes such as but not limited to a circle. The canvas arc method takes up to six arguments. The first two arguments given to the arc method set the center x and center y values of the arc. The third argument is the radius of the arc, and then the next two arguments after that is the beginning and ending angle in radians. The last optional argument is used to set clockwise of counter clockwise direction of the arc.
+The arc method can be used when drawing a line by using the beginPath method at which point the arc method can be used in conjunction with other methods like moveTo lineTo and so forth to help draw shapes such as but not limited to a circle. The canvas arc method takes up to six arguments. The first two arguments given to the arc method set the center x and center y values of the arc. The third argument is the radius of the arc, and then the next two arguments after that is the beginning and ending angle in radians. The last optional argument is used to set clockwise of counter clockwise direction of the arc.
 
 ```html
 <html>
