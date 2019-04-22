@@ -5,15 +5,19 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 06:34:34
-version: 1.2
+updated: 2019-04-22 06:38:18
+version: 1.3
 ---
 
 maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
 
 <!-- more -->
 
-## 1 - The Express Middleware That will read and write to the file
+## 1 - Express Middleware and what to know before continuing
+
+I have wrote a post before hand in which I cover the basics of express middleware, and I also have another post in which I am covering express middleware in general as well. So I will not be getting into detail about the basics of express here, I also assume that you have at least some background with node.js, and javaScript in general.
+
+## 2 - The Middleware that will read and write to the file
 
 ```js
 let express = require('express'),
@@ -43,7 +47,7 @@ router.post('*', function (req, res) {
 });
 ```
 
-## 2 - The App.js file
+## 3 - The App.js file
 
 ```js
 let express = require('express'),
@@ -56,9 +60,9 @@ app.use('/file', require('./file.js'))
 app.listen(8080);
 ```
 
-## 3 - The public folder
+## 4 - The public folder
 
-### 3.1 - The index.html file
+### 4.1 - The index.html file
 
 ```html
 <html>
@@ -75,7 +79,7 @@ app.listen(8080);
 </html>
 ```
 
-### 3.2 - The client.js file
+### 4.2 - The client.js file
 
 ```js
 var getIt = function (cb) {
