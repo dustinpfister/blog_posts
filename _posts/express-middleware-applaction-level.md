@@ -5,13 +5,17 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 422
-updated: 2019-04-22 11:59:11
-version: 1.2
+updated: 2019-04-22 16:07:25
+version: 1.3
 ---
 
-So there is a lot to write about concerning [express middleware](https://expressjs.com/en/guide/using-middleware.html), I have all ready covered the [basics of middleware in express](/2019/04/19/express-middleware-basics/), and I have a post on [express middleware in general](/2018/06/25/express-middleware/) as well. However in this post I thought I would focus on application level middleware specifically.
+So there is a lot to write about concerning [express middleware](https://expressjs.com/en/guide/using-middleware.html#middleware.application), I have all ready covered the [basics of middleware in express](/2019/04/19/express-middleware-basics/), and I have a post on [express middleware in general](/2018/06/25/express-middleware/) as well. However in this post I thought I would focus on application level middleware specifically.
 
 <!-- more -->
+
+## 1 - Application level Express Middleware
+
+In express application level middleware is when an app object method like app.use or app.get is used to attach on eor more methods thar are used to respond to incoming http requests. This differers slightly from router level middleware, or built in middleware, but all middleware has to do with handling incoming traffic and requests from client systems.
 
 ## 1 - App.get
 
