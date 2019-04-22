@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 07:00:19
-version: 1.6
+updated: 2019-04-22 07:12:25
+version: 1.7
 ---
 
 maybe one of the best ways to learn about the value of express middleware is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
@@ -51,11 +51,11 @@ router.post('*', function (req, res) {
 
 In this file I am creating and exporting an express router, and defining what will happen for all get and post requests when this middleware is used in a main app.js file with the app.use method. For get requests I am just simply reading the file and sending the data of that file or an empty string in the event of an error. For post requests I am parsing some incoming json and using the text property of that object sent from the client to write the contents of the file.
 
-In a more serious example I would do a better job handling errors, but for the sake of keping this post wimple I will not be getting into that here.
+In a more serious example I would do a better job handling errors, but for the sake of keeping this post wimple I will not be getting into that here.
 
 ## 3 - The App.js file
 
-Here I have the main app.js file of this example where I am requiring in express, and creating an instance of an app object as always.
+Here I have the main app.js file of this example where I am requiring in express, and creating an instance of an app object as always. I am using the express.static built in middleware to host a public folder that contains the crude yet effective client system for this example.
 
 ```js
 let express = require('express'),
@@ -67,6 +67,8 @@ app.use('/file', require('./file.js'))
  
 app.listen(8080);
 ```
+
+Just like with the built in middleware express.static I am using the app.use method to use my custom router level middleware to define what will happen for requests to the /file path.
 
 ## 4 - The public folder
 
