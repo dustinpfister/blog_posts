@@ -2,20 +2,10 @@
 <head>
 </head>
 <body>
-<h1>Keyword Viewer</h1>
+<h1>Keyword Search</h1>
 <input id="search_text" type="text"><input id="search_button" type="button" value="search">
+<div id="search_out"></div>
 <script src="/js/http.js"></script>
-<script>
-
-var el_search_text = document.getElementById('search_text'),
-el_search_button = document.getElementById('search_button');
-
-el_search_button.addEventListener('click', function(e){
-    http.search(el_search_text.value, function(res){
-        console.log(res);
-    });
-});
-
-</script>
+<script src="/js/client.js"></script>
 </body>
 </html>
