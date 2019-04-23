@@ -15,29 +15,31 @@ router.use(require('body-parser').json());
 router.post('*', (req, res) => {
 
     let ct = 0,
-    total = 0;
+    total = 0,
+    posts = [];
     klawAll({
 
         forPost: (item, next) => {
 
-            let match = item.md.match(new RegExp(req.body.keyword,'gi'));
+            let match = item.md.match(new RegExp(req.body.keyword, 'gi'));
 
             if (match) {
                 console.log(item.fn, match.length);
+                posts.push({
+                    fn: item.fn,
+                    count: match.length
+                });
             }
-
-            //console.log(ct,  );
-            //console.log(ct);
             ct += 1;
             next();
         },
 
         onDone: () => {
-            console.log(ct);
-
+            console.log('done with request for posts');
             res.json({
                 foo: 'bar',
-                body: req.body
+                body: req.body,
+                posts: posts
             });
         }
 
