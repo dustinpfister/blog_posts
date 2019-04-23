@@ -19,7 +19,8 @@ router.post('*', (req, res) => {
             if (match) {
                 posts.push({
                     fn: item.fn,
-                    count: match.length
+                    count: match.length,
+                    wc: item.wc
                 });
                 match_ct += 1;
             }

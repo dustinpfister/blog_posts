@@ -7,11 +7,13 @@ el_search_button.addEventListener('click', function (e) {
     http.search(el_search_text.value, function (res) {
         //console.log(res);
         let data = JSON.parse(res),
-        html = '';
+        html = '<p>Posts Found: ' + data.match_ct + '</p>';
 
         data.posts.forEach((post) => {
 
-            html += '<p>' + post.fn + ' (' + post.count + ')' + '</p>'
+            html += '<p>' + post.fn + '</p>' +
+            '<ul><li>keyword count: ' + post.count + '</li>' +
+            '<li>Word Count: ' + post.wc  + '</li></ul><hr>';
         });
 
         el_out.innerHTML = html;
