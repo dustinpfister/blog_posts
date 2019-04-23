@@ -1,10 +1,12 @@
 let express = require('express'),
-klaw = require('klaw'),
-through2 = require('through2'),
-fs = require('fs-extra'),
-path = require('path'),
+//klaw = require('klaw'),
+//through2 = require('through2'),
+//fs = require('fs-extra'),
+path = require('path');
 
-dir_posts = '../../../_posts';
+let klawAll = require('../../../cli/klaw-readall/index.js').klawAll;
+
+//dir_posts = '../../../_posts';
 
 let router = module.exports = express.Router();
 
@@ -12,9 +14,33 @@ router.use(require('body-parser').json());
 
 router.post('*', (req, res) => {
 
-    res.json({
-        foo: 'bar',
-        body: req.body
+    let ct = 0,
+    total = 0;
+    klawAll({
+
+        forPost: (item, next) => {
+
+            let match = item.md.match(new RegExp(req.body.keyword,'gi'));
+
+            if (match) {
+                console.log(item.fn, match.length);
+            }
+
+            //console.log(ct,  );
+            //console.log(ct);
+            ct += 1;
+            next();
+        },
+
+        onDone: () => {
+            console.log(ct);
+
+            res.json({
+                foo: 'bar',
+                body: req.body
+            });
+        }
+
     });
 
 });
