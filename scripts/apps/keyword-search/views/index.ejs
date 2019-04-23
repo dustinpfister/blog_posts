@@ -3,8 +3,19 @@
 </head>
 <body>
 <h1>Keyword Viewer</h1>
-<% filenames.forEach((fn)=>{ %>
-   <p><a href="/blog_post/<%= fn %>"><%= fn %></a></p>
-<% }); %>
+<input id="search_text" type="text"><input id="search_button" type="button" value="search">
+<script src="/js/http.js"></script>
+<script>
+
+var el_search_text = document.getElementById('search_text'),
+el_search_button = document.getElementById('search_button');
+
+el_search_button.addEventListener('click', function(e){
+    http.search(el_search_text.value, function(res){
+        console.log(res);
+    });
+});
+
+</script>
 </body>
 </html>
