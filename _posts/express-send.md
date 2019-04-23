@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 423
-updated: 2019-04-23 11:54:37
-version: 1.3
+updated: 2019-04-23 12:01:24
+version: 1.4
 ---
 
 The express send, or res.send method can be used to send a string or object when it comes to making very simple basic express middleware methods that respond to incoming client requests. It is not always the best tool for the job though and in some situations it should at least be used in conjunction with other express app.methods. So this will be a quick post on the res.send method, and related topics.
@@ -32,9 +32,11 @@ app.listen(8080);
 
 There is often more to a response then just the content that is sent though. In some cases I might want to set a status header before hand, and also the question of sending objects and files as well. In some cases the res.send method can still be used, just not by itself. In other cases another method should really be used over res.send as well, so lets continue with some more examples.
 
-
-
 ## 3 - Express send Number
+
+If the data tyoe that is being sent is a number rather than a string that will end up being considered a status code by res.send. Using res.send in this matter is not a good idea. In the 4.x version that I was using for this post a message was spit out in the console informing me that using res.send in this matter is depreciated, and that res.sendStatus should be used in place of that.
+
+The res.sendStatus method will work fine for this, but another option would be to use the res.status method in conjunction with res.send, or better yet res.render when it comes to making more interesting and useful status pages for things like 404, 403, and so forth. 
 
 ```js
 let express = require('express'),
@@ -44,12 +46,14 @@ app = express();
 app.get('/', (req, res) => res.send(42 + ''));
  
 // even if you want to set the status to say 404, you do not want to
-// just do it with res.send alone as this is deprecated.
+// just do it with res.send alone as this is depreciated.
 // use res.status, or res.sendStatus
 app.get('*', (req, res) => res.status(404).send('file not found'));
  
 app.listen(8080);
 ```
+
+If I do just want to send a number as the content then that should be converted to a string like in the above example.
 
 ## 4 - Express send Object
 
