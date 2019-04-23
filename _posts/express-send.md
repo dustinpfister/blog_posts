@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 423
-updated: 2019-04-23 11:47:22
-version: 1.2
+updated: 2019-04-23 11:54:37
+version: 1.3
 ---
 
 The express send, or res.send method can be used to send a string or object when it comes to making very simple basic express middleware methods that respond to incoming client requests. It is not always the best tool for the job though and in some situations it should at least be used in conjunction with other express app.methods. So this will be a quick post on the res.send method, and related topics.
@@ -19,12 +19,20 @@ This is a post on the node.js framework express, and the use of the res.send met
 
 ## 2 - Express send string
 
+For the most part the res.send method is used to just send a simple string message when it comes to very simple, basic express.js examples. However it is not such a bad choice when it comes to making a far more advanced project with express as well. It is just that there are of course alternatives. For example if I am doing something with ejs templates I would often use res.render in conjunction with an ejs template file, and an object that contains data that will be used in that template.
+
+However if I do just simply want to send a plain text string as a response to a request then of course the res.send method gets the job done just fine.
+
 ```js
 let express = require('express'),
 app = express();
 app.get('/', (req, res) => res.send('foo'));
 app.listen(8080);
 ```
+
+There is often more to a response then just the content that is sent though. In some cases I might want to set a status header before hand, and also the question of sending objects and files as well. In some cases the res.send method can still be used, just not by itself. In other cases another method should really be used over res.send as well, so lets continue with some more examples.
+
+
 
 ## 3 - Express send Number
 
