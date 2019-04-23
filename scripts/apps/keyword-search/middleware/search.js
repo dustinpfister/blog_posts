@@ -39,7 +39,15 @@ router.post('*', (req, res) => {
             res.json({
                 foo: 'bar',
                 body: req.body,
-                posts: posts
+                posts: posts.sort((a, b) => {
+                    if (a.count < b.count) {
+                        return 1;
+                    }
+                    if (a.count > b.count) {
+                        return -1;
+                    }
+                    return 0;
+                })
             });
         }
 
