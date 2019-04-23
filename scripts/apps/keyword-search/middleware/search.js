@@ -8,10 +8,13 @@ dir_posts = '../../../_posts';
 
 let router = module.exports = express.Router();
 
+router.use(require('body-parser').json());
+
 router.post('*', (req, res) => {
 
     res.json({
-        foo: 'bar'
+        foo: 'bar',
+        body: req.body
     });
 
 });
