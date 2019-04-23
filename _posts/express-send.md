@@ -5,21 +5,21 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 423
-updated: 2019-04-23 12:02:16
-version: 1.5
+updated: 2019-04-23 12:06:28
+version: 1.6
 ---
 
-The express send, or res.send method can be used to send a string or object when it comes to making very simple basic express middleware methods that respond to incoming client requests. It is not always the best tool for the job though and in some situations it should at least be used in conjunction with other express app.methods. So this will be a quick post on the res.send method, and related topics.
+The [express send](https://expressjs.com/en/api.html#res.send), or res.send method can be used to send a string or object when it comes to making very simple basic express middleware methods that respond to incoming client requests. It is not always the best tool for the job though and in some situations it should at least be used in conjunction with other express app.methods. So this will be a quick post on the res.send method, and related topics.
 
 <!-- more -->
 
 ## 1 - Express send, and what to know
 
-This is a post on the node.js framework express, and the use of the res.send method when authoring express middleware. I will not be getting into detail about node.js, express, express middleware, and javaScript in general in this post. However if you might not know everything surrounding the use of the res.send method in express this post might be of some value to you.
+This is a post on the node.js framework express, and the use of the res.send method when authoring express middleware. I will not be getting into detail about node.js, [express](/2018/06/12/express/), [express middleware](/2018/06/25/express-middleware/), and javaScript in general in this post. However if you might not know everything surrounding the use of the res.send method in express this post might be of some value to you.
 
 ## 2 - Express send string
 
-For the most part the res.send method is used to just send a simple string message when it comes to very simple, basic express.js examples. However it is not such a bad choice when it comes to making a far more advanced project with express as well. It is just that there are of course alternatives. For example if I am doing something with ejs templates I would often use res.render in conjunction with an ejs template file, and an object that contains data that will be used in that template.
+For the most part the res.send method is used to just send a simple string message when it comes to very simple, basic express.js examples. However it is not such a bad choice when it comes to making a far more advanced project with express as well. It is just that there are of course alternatives. For example if I am doing something with [ejs templates](/2018/05/25/express-rendering-with-ejs/) I would often use res.render in conjunction with an ejs template file, and an object that contains data that will be used in that template.
 
 However if I do just simply want to send a plain text string as a response to a request then of course the res.send method gets the job done just fine.
 
@@ -34,7 +34,7 @@ There is often more to a response then just the content that is sent though. In 
 
 ## 3 - Express send Number
 
-If the data tyoe that is being sent is a number rather than a string that will end up being considered a status code by res.send. Using res.send in this matter is not a good idea. In the 4.x version that I was using for this post a message was spit out in the console informing me that using res.send in this matter is depreciated, and that res.sendStatus should be used in place of that.
+If the data type that is being sent is a number rather than a string that will end up being considered a status code by res.send. Using res.send in this matter is not a good idea. In the 4.x version that I was using for this post a message was spit out in the console informing me that using res.send in this matter is depreciated, and that res.sendStatus should be used in place of that.
 
 The res.sendStatus method will work fine for this, but another option would be to use the res.status method in conjunction with res.send, or better yet res.render when it comes to making more interesting and useful status pages for things like 404, 403, and so forth. 
 
