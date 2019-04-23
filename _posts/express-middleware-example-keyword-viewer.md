@@ -11,6 +11,7 @@ version: 1.14
 
 In this post I will be writing about an app I have made that is an example of [express middleware](https://expressjs.com/en/guide/using-middleware.html) in action. I have wrote a [main post on express middleware](/2018/06/25/express-middleware/) in which I explore the subject in general, as well as another post in which I cover just the [very basics](/2019/04/19/express-middleware-basics/) of this topic as well. However this post will be one of several posts in which I demonstrate the usefulness of express middleware, mainly when it comes to writing your own to accomplish whatever needs to get done server side.
 
+
 <!-- more -->
 
 ## 1 - The Express Middleware Example overview

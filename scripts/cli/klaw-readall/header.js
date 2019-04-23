@@ -1,6 +1,6 @@
 let yaml = require('js-yaml'),
 
-patt_matchHeader = exports.patt_matchHeader = /---[\s|\S]*---/;
+patt_matchHeader = exports.patt_matchHeader = /---[\s|\S]*?---/;
 
 // get the header from markdown text
 exports.get = function (text) {
@@ -21,6 +21,9 @@ exports.get = function (text) {
 
         console.log('ERROR loading yaml:');
         console.log(e.message);
+        console.log('**********');
+        console.log();
+        console.log('**********');
         return {};
 
     }
