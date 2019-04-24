@@ -57,14 +57,28 @@ router.post('*', [
             });
         },
 
+        // figure post weight
+        (req, res, next) => {
+            req.data.posts.forEach((post) => {
+                let wordWeight = 0;
+                post.wordCounts.forEach((word) => {
+                    wordWeight += word.count * 5;
+                });
+                post.wordWeight = wordWeight;
+                post.fullMatchWeight = post.fullMatchCount * 100;
+                post.weight = post.wc / 10 + (post.fullMatchWeight+ post.wordWeight) * (post.wordCounts.length);
+            });
+            next();
+        },
+
         // send
         (req, res) => {
-
+            // sort by full match count
             req.data.posts.sort((a, b) => {
-                if (a.fullMatchCount < b.fullMatchCount) {
+                if (a.weight < b.weight) {
                     return 1;
                 }
-                if (a.fullMatchCount > b.fullMatchCount) {
+                if (a.weight > b.weight) {
                     return -1;
                 }
                 return 0;
