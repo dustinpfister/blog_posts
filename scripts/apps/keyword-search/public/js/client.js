@@ -9,11 +9,10 @@ el_search_button.addEventListener('click', function (e) {
         let data = JSON.parse(res),
         html = '<p>Posts Found: ' + data.match_ct + '</p>';
 
-        data.posts.forEach((post) => {
-
+        data.posts.forEach(function(post){
             html += '<p>' + post.fn + '</p>' +
             '<ul>' +
-            '<li>keyword full match count: ' + post.count + '<\/li>' +
+            '<li>keyword full match count: ' + post.fullMatchCount + '<\/li>' +
             '<li>Word Counts: ' + JSON.stringify(post.wordCounts) + '<\/li>' +
             '<li>Post word count: ' + post.wc + '<\/li>' +
             '<\/ul><hr>'
