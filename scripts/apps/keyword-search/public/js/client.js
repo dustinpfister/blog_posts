@@ -17,6 +17,7 @@ el_search_button.addEventListener('click', function (e) {
             '<li>Post word count: ' + post.wc + '<\/li>' +
             '<li>weight (full match): ' + post.fullMatchWeight + '<\/li>' +
             '<li>weight (word match): ' + post.wordWeight + '<\/li>' +
+            '<li>word ratio (kw count / post word count): ' + post.wordRatio + '<\/li>' +
             '<li>weight: ' + post.weight + '<\/li>' +
             '<\/ul><hr>'
         });

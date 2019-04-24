@@ -38,7 +38,7 @@ router.post('*', [
                     }
                     // if there is a result for the post
                     if (result) {
-						match_ct += 1;
+                        match_ct += 1;
                         result.fn = item.fn;
                         result.wc = item.wc;
                         result.fullMatchCount = result.fullMatchCount || 0;
@@ -61,13 +61,16 @@ router.post('*', [
         // figure post weight
         (req, res, next) => {
             req.data.posts.forEach((post) => {
-                let wordWeight = 0;
+                let kwWordTotal = 0;
                 post.wordCounts.forEach((word) => {
-                    wordWeight += word.count * 5;
+                    kwWordTotal += word.count;
                 });
-                post.wordWeight = wordWeight;
+                post.wordWeight = kwWordTotal * 5;
+                post.wordRatio = kwWordTotal / post.wc;
                 post.fullMatchWeight = post.fullMatchCount * 100;
+                //post.weight = post.wc / 10 + (post.fullMatchWeight + post.wordWeight) * (post.wordCounts.length);
                 post.weight = post.wc / 10 + (post.fullMatchWeight + post.wordWeight) * (post.wordCounts.length);
+                post.weight *= post.wordRatio;
             });
             next();
         },
