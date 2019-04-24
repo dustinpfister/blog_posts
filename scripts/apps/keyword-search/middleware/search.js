@@ -22,7 +22,7 @@ router.post('*', [
                         result.fullMatchCount = match_full.length;
                     }
                     // if the number of words in keyword is greater than 1
-                    if (words.length > 1) {
+                    //if (words.length > 1) {
                         words.forEach((word) => {
                             let match_word = item.md.match(new RegExp(word, 'gi'));
                             if (match_word) {
@@ -35,7 +35,7 @@ router.post('*', [
                                 });
                             }
                         });
-                    }
+                    //}
                     // if there is a result for the post
                     if (result) {
                         match_ct += 1;
