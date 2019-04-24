@@ -12,8 +12,11 @@ el_search_button.addEventListener('click', function (e) {
         data.posts.forEach((post) => {
 
             html += '<p>' + post.fn + '</p>' +
-            '<ul><li>keyword count: ' + post.count + '</li>' +
-            '<li>Word Count: ' + post.wc  + '</li></ul><hr>';
+            '<ul>' +
+            '<li>keyword full match count: ' + post.count + '<\/li>' +
+            '<li>Word Counts: ' + JSON.stringify(post.wordCounts) + '<\/li>' +
+            '<li>Post word count: ' + post.wc + '<\/li>' +
+            '<\/ul><hr>'
         });
 
         el_out.innerHTML = html;
