@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 424
-updated: 2019-04-25 09:37:04
-version: 1.10
+updated: 2019-04-25 09:41:03
+version: 1.11
 ---
 
 The [express type](https://expressjs.com/en/api.html#res.type) response object method can be used to quickly set the Content-Type response header to a desired [mime type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types), and in most cases it will work fine, but it might still be better to use the res.set method as a way to set Content-Type to make sure that the correct mime type is set for the content that is being sent to the browser. Never the less this will be a quick post on the express type convenience method as well as some related topics with Content-Type and response headers.
@@ -83,6 +83,10 @@ app.listen(8080);
 In most cases the mime type that is set by the type method will work just fine, but this is one thing that comes to mind as to why it might be better to just use the set response method instead, and just know what headers, and values are important and why. Sometimes it might be necessary to just set the Content-Type header manually, but using the set request method I always have a clear understanding of what I am setting for mime type..
 
 ## 3 - Response Set method as an alternative to The Express Type response method
+
+Another nice thing about using the set response method as a way to set the Content-Type header, is that I can set more than one header by giving an object of header field names for each key, and of source the field value for each corresponding object key value.
+
+So If I want to set the Content-Type, and another header such as Cache-Control I can do so with just a single call with the set method, rather than using the type method to just set the Content-Type header, and then the set method to set Cache-Control.
 
 ```js
 let express = require('express'),
