@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 424
-updated: 2019-04-25 09:02:40
-version: 1.4
+updated: 2019-04-25 09:05:28
+version: 1.5
 ---
 
 The [express type](https://expressjs.com/en/api.html#res.type) response object method can be used to quickly set the Content-Type response header to a desired [mime type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types), and in most cases it will work fine, but it might still be better to use the res.set method as a way to set Content-Type to make sure that the correct mime type is set for the content that is being sent to the browser. Never the less this will be a quick post on the express type convenience method as well as some related topics with Content-Type and response headers.
@@ -47,6 +47,8 @@ app.get('/', (req, res) => {
  
 app.listen(8080);
 ```
+
+It generally might be better to use the response set method in replace of the type method, it gives a greater deal of control of mime types, and in addition I can use it to set multiple headers at once as well. I will write more about the response set method as a way to set Content-Type in express in a later section in this post.
 
 ## 2 - Express Type and express static
 
