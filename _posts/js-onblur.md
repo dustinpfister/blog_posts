@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-04-26 18:39:46
-version: 1.6
+updated: 2019-04-26 19:00:55
+version: 1.7
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is the opposite of the on focus event. A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired.
@@ -45,3 +45,47 @@ foo.addEventListener('focus', function (e) {
 ```
 
 When I open this up in the browser the on focus event fires for the input element when I click on it. When I click outside of the input element the on blur event will fire changing the value of the text in the input element  The on blur event does not bubble though so if I where to attach an on blur event to a div container it will not bubble down to an input element. The focus out event however will bubble down, which it would seem is the only note worth difference between on blur, and focus out.
+
+## 2 - On blur and on focus out
+
+The on blur event works find, but there is just one little difference between on blur and on focus out. That difference has to do with event bubbling. The focus out event when attached to a container element will bubble down the DOM tree until it finds an inut element, it will then fire for any element that has focus in the tree.
+
+```html
+<html>
+    <head>
+        <title>bubble example</title>
+    </head>
+    <body>
+        <div id="container" style="background:red;height:200px;">
+            <input id="foo" type="text" placeholder="foo">
+        </div>
+        <script src="bubble.js"></script>
+    </body>
+</html>
+```
+
+```js
+var container = document.getElementById('container');
+
+// when focusout and focusin are attached to the container
+// of an input element they will work because of bubbling
+container.addEventListener('focusout', function (e) {
+    e.target.value = 'focus out';
+});
+container.addEventListener('focusin', function (e) {
+    e.target.value = 'has focus';
+});
+ 
+// blur will not fire when attached to a div container
+// because the blur event does not bubble
+container.addEventListener('blur', function (e) {
+    console.log('will not fire on blur');
+});
+ 
+// blur will only work if it is attached to the input
+// element directly
+document.getElementById('foo')
+.addEventListener('blur', function (e) {
+    console.log('will fire on blur');
+});
+```
