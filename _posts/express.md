@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2019-04-26 15:12:51
-version: 1.40
+updated: 2019-04-26 15:18:21
+version: 1.41
 ---
 
 For my posts on [expressjs](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on expressjs. This will serve as a central guide for all things with expressjs, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on expressjs, and will likely grow over time as I keep adding, and updating content on express. Getting solid with expressjs is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
@@ -294,6 +294,15 @@ If I want to have a path that will result in a file being download to the client
 ```js
 res.download(path.join(__dirname, 'docs/doc1.pdf'));
 ```
+
+### 6.4 - Making a redirect with res.redirect
+
+Read more on [redirects in expressjs](/2019/04/26/express-redirect/)
+
+Another response method of interest is the res.redirect method that can be used to redirect a request for one resource to another resource.
+
+```js
+``` 
 
 ## 7 - Some important modules to use with expressjs
 
