@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 426
-updated: 2019-04-26 14:38:34
-version: 1.0
+updated: 2019-04-26 14:42:13
+version: 1.1
 ---
 
 An express redirect is one of several options when it comes to responding to an incoming http request. Often a response will involve just sending some json, text, or html, but in some cases a redirect is called for. In express redirects can be done with the res.redirect response method, for the most part just the url of the resource to redirect to is all that needs to be passed, but some times it is not that simple when it comes to the response status codes. So in this post I will be writing about all things express redirect related that I come across that are note worthy.
@@ -14,3 +14,20 @@ An express redirect is one of several options when it comes to responding to an 
 <!-- more -->
 
 ## 1 - Express redirect basic example
+
+```js
+let express = require('express'),
+app = express();
+ 
+app.get('/', (req, res) => {
+    res.send('you can not escape me');
+});
+ 
+app.get('*', (req, res) => res.redirect('/'));
+ 
+app.listen(8080);
+```
+
+## 2 - Express redirect and 3xx http status codes
+
+When it comes to http sttaus codes [3xx codes are of interest](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) when it comes to express redirects. By default the status code that is set by res.redirect is 302
