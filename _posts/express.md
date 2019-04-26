@@ -1,39 +1,39 @@
 ---
-title: My Express.js mega post
+title: Expressjs mega post a good starting point for all this expressjs related
 date: 2018-06-12 11:18:00
 tags: [js,express,node.js]
 layout: post
 categories: express
 id: 205
-updated: 2018-06-22 11:55:35
-version: 1.39
+updated: 2019-04-26 15:12:51
+version: 1.40
 ---
 
-For my posts on [express.js](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on express.js. This will serve as a central guide for all things with express.js, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on express.js, and will likely grow over time as I keep adding, and updating content on express. Getting solid with express.js is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
+For my posts on [expressjs](https://expressjs.com/) I want to try something different, have a post that acts as an index for all my content on expressjs. This will serve as a central guide for all things with expressjs, at least much of the must know stuff that one should be aware of. This post will also branch off into many other posts on expressjs, and will likely grow over time as I keep adding, and updating content on express. Getting solid with expressjs is not something that will happen over night, and it branches off into other subjects like database management, deployment, front end frameworks, and security. So this seems like it might be a good idea to help keep things more organized.
 
 <!-- more -->
 
-## 1 - What to know
+## 1 - Expressjs, and What to know
 
-This is my main post on the node.js powered, server side web application framework known as express.js  this is not a getting stared post on node.js, javaScript, html, css, git, cli tools, and many other subjects of interest that have to do with full stack web application development. I assume that you have at least some background in these subjects, and are here to because you are seeking a guide on learning the ropes when it comes to express.js.
+This is my main post on the node.js powered, server side web application framework known as expressjs  this is not a getting stared post on node.js, javaScript, html, css, git, cli tools, and many other subjects of interest that have to do with full stack web application development. I assume that you have at least some background in these subjects, and are here to because you are seeking a guide on learning the ropes when it comes to expressjs.
 
 ### 1.1 - This is an index of a collection of posts on express.
 
-Like many other subjects on by github pages site here, this is a [collection of posts on express.js](/categories/express/). This post aims to be a main index of all content relevant to express on this site. If this works out well I may start to do this with all other categories on the site, as it seems like a good idea. Please note that this is also a relatively new collection as well, and as such this post will likely be updated a great deal as I continue working with express.
+Like many other subjects on by github pages site here, this is a [collection of posts on expressjs](/categories/express/). This post aims to be a main index of all content relevant to express on this site. If this works out well I may start to do this with all other categories on the site, as it seems like a good idea. Please note that this is also a relatively new collection as well, and as such this post will likely be updated a great deal as I continue working with express.
 
-### 1.2 - The version number matters with express.js
+### 1.2 - The version number matters with expressjs
 
-Yes express.js is a project where the version number matters a whole lot. As of this writing I am using [express 4.16.3](https://github.com/expressjs/express/tree/4.16.3) with many of the posts that I have written so far, so assume that unless noted otherwise. If you run into issues with the content in my posts, aways remember to check the simplest things first like spelling mistakes, and yes the version number relative to what I am using in the content.
+Yes expressjs is a project where the version number matters a whole lot. As of this writing I am using [express 4.16.3](https://github.com/expressjs/express/tree/4.16.3) with many of the posts that I have written so far, so assume that unless noted otherwise. If you run into issues with the content in my posts, aways remember to check the simplest things first like spelling mistakes, and yes the version number relative to what I am using in the content.
 
-## 2 - Getting started with express.js
+## 2 - Getting started with expressjs
 
-Read my [full post on getting started with express.js](/2018/05/21/express-getting-started/)
+Read my [full post on getting started with expressjs](/2018/05/21/express-getting-started/)
 
-To get started with express.js you will need node.js installed, which should come with the package manager known as npm as well. There is other software of interest as well such as mongoDB, and having a recent web browser, but at a minimum you will need node.js installed.
+To get started with expressjs you will need node.js installed, which should come with the package manager known as npm as well. There is other software of interest as well such as mongoDB, and having a recent web browser, but at a minimum you will need node.js installed.
 
-### 2.1 - Manual install of express.js
+### 2.1 - Manual install of expressjs
 
-Once node is installed, and hopefully npm as well. Getting started with any express.js project manually is just a matter of creating a new project folder, using npm to set up a new package.json file, and installing express.js with npm adding it to the package.json file with the save option.
+Once node is installed, and hopefully npm as well. Getting started with any expressjs project manually is just a matter of creating a new project folder, using npm to set up a new package.json file, and installing expressjs with npm adding it to the package.json file with the save option.
 
 ```
 $ mkdir express-demo
@@ -42,7 +42,7 @@ $ npm init
 $ npm install express --save
 ```
 
-### 2.2 - Simple express.js hello word
+### 2.2 - Simple expressjs hello word
 
 Once I have a demo folder I will want an app.js file at root that wil be the main javaScript file that is called to start the project. For a simle hello world example that app.js file might look something like this.
 
@@ -82,13 +82,13 @@ app.listen(8080);
 
 Read [more on express.static here](/2018/05/24/express-static/)
 
-No additional module is needed to set up a static server with express.js, it can quickly and easily be set up using the express.js method with app.use.
+No additional module is needed to set up a static server with expressjs, it can quickly and easily be set up using the expressjs method with app.use.
 
 ```js
 app.use('/',express.static('public'));
 ```
 
-Where public is the name of a folder called public in the root name space of the express.js project. The express.static method can be used to quickly set up one or more static paths, in the event that you want to do something involving the use of a rendering engine for some paths, bust just simply serve static files with other paths.
+Where public is the name of a folder called public in the root name space of the expressjs project. The express.static method can be used to quickly set up one or more static paths, in the event that you want to do something involving the use of a rendering engine for some paths, bust just simply serve static files with other paths.
 
 ```js
 // static paths
@@ -105,7 +105,7 @@ app.get('/', function(req,res){
 
 Read [more on routers here](/2018/05/22/express-routers/)
 
-Routers are a great way of keeping things well organized. When making an express.js app I find myself setting up many paths. Some just serve up static assets, some render output using a template, others respond to post requests. If you find yourself having a really long main app.js file in your project you might want to check out routers. They can be used to create separate javaScript files that can then be used in the main app.js file with app.use.
+Routers are a great way of keeping things well organized. When making an expressjs app I find myself setting up many paths. Some just serve up static assets, some render output using a template, others respond to post requests. If you find yourself having a really long main app.js file in your project you might want to check out routers. They can be used to create separate javaScript files that can then be used in the main app.js file with app.use.
 
 For example I could have a file at \/routes\/main.js like this:
 
@@ -156,7 +156,7 @@ app.use(require('./lib/my-middeware.js')());
 
 be sure to read more on [the get method](/2018/06/20/express-get/).
 
-The first app object method that most people will use when starting with express.js might be app.get. This is a method that is used to define how to work with incoming http GET requests for a given path or pattern. In addition to working with get requests, this method can also be used to get app settings as well.
+The first app object method that most people will use when starting with expressjs might be app.get. This is a method that is used to define how to work with incoming http GET requests for a given path or pattern. In addition to working with get requests, this method can also be used to get app settings as well.
 
 ```js
 // for all incoming get requests
@@ -218,7 +218,7 @@ The request object is an object that contains all kinds of useful information ab
 
 ### 5.1 - Request headers at req.headers and the req.get method.
 
-Read more on [request headers in express.js](/2018/05/29/express-request-headers/)
+Read more on [request headers in expressjs](/2018/05/29/express-request-headers/)
 
 When working with requests it is often desired to look at the incoming request headers. For exmaple if I want to know the user agent string. For this there is the req.headers array that will contain all the headers that are present in the request, and the req.get method that can be used to get a certain header from that array.
 
@@ -242,7 +242,7 @@ As the name suggests the response object contains methods and properties relevan
 
 ### 6.1 - The render method for rending templates
 
-For more on [using ejs with express.js](/2018/05/25/express-rendering-with-ejs/) I have a post on that.
+For more on [using ejs with expressjs](/2018/05/25/express-rendering-with-ejs/) I have a post on that.
 
 The render method is for rendering a view set via app.set. There are many rendering engines to choose from, but so far I have been sticking to [ejs](/2017/12/07/nodejs-ejs-javascript-templates/).
 
@@ -295,9 +295,9 @@ If I want to have a path that will result in a file being download to the client
 res.download(path.join(__dirname, 'docs/doc1.pdf'));
 ```
 
-## 7 - Some important modules to use with express.js
+## 7 - Some important modules to use with expressjs
 
-There are many modules for express.js that are closely tied to express.js, some of which come with express such as body-parser, Others need to be installed with npm first. In this section I will be briefly covering some of the must know modules for express.
+There are many modules for expressjs that are closely tied to expressjs, some of which come with express such as body-parser, Others need to be installed with npm first. In this section I will be briefly covering some of the must know modules for express.
 
 ### 7.1 - The body parser for parsing incoming data payloads with post requests.
 
@@ -325,7 +325,7 @@ app.post('/foo', function(req,res){
 
 Read more on cookie parser [here](/2018/05/30/express-cookie-parser/).
 
-The cookie-parser middeware is an offical express.js middeware that is used to parse a cookie header, and populate req.cookies.
+The cookie-parser middeware is an offical expressjs middeware that is used to parse a cookie header, and populate req.cookies.
 
 
 ### 7.3 - The express-session middleware
@@ -334,7 +334,7 @@ Check out my full post on [express session](/2018/06/01/express-session/)
 
 If you are looking into how to get started with session management with express there is of course express-session, it is a decent solution to help with session management.
 
-## 8 - User authentication with express.js
+## 8 - User authentication with expressjs
 
 User authentication, or in other words loggin in, is  a complicated subject. This is where things get a little hairy for most people, but luckily there are great solutions to help simplify this process. If you are thinking about coming up with your own solution for this, don't, unless you can really think of some way to rationalize it.
 
@@ -342,7 +342,7 @@ User authentication, or in other words loggin in, is  a complicated subject. Thi
 
 Read my post on getting started with [passport](/2018/05/31/express-passport/)
 
-So passport may be the best known, and also best supported solution for authentication with express.js. There are many strategies for authorization with passport, including simple local solutions, as well as others that involve [oAuth](https://en.wikipedia.org/wiki/OAuth).
+So passport may be the best known, and also best supported solution for authentication with expressjs. There are many strategies for authorization with passport, including simple local solutions, as well as others that involve [oAuth](https://en.wikipedia.org/wiki/OAuth).
 
 ## 9 - Making micro services with express.
 
@@ -360,7 +360,7 @@ Read more on [dns prefect control with helmet](/2018/06/19/express-helmet-dns-pr
 
 The Subject of DNS prefetching is something that can be considered a bit of a privacy concern. The thing about it is that it seems many browsers do it by default, for the purpose of speeding things up a bit. However if someone where to observe my traffic with something like wrireshark it would look like I am going to all kinds of sites, but in reality there are just links to those sites on the page.
 
-the express middeware helmet can be used to set headers that keep this from happening as well as do a whole bunch of other things that might help improve security, and provacy for an express.js app.
+the express middeware helmet can be used to set headers that keep this from happening as well as do a whole bunch of other things that might help improve security, and provacy for an expressjs app.
 
 ## 11 - Conclusion
 
@@ -374,4 +374,4 @@ If I do get to it, I will eventually build one or more real projects using expre
 
 ### 11.2 - Bye for now
 
-I hope this post has done a decent job of giving a general overview of express.js, if not from here you should be able to navigate to more specific posts on various topics on express.
+I hope this post has done a decent job of giving a general overview of expressjs, if not from here you should be able to navigate to more specific posts on various topics on express.
