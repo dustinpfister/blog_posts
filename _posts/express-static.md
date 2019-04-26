@@ -5,11 +5,11 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 193
-updated: 2019-04-26 13:59:04
-version: 1.8
+updated: 2019-04-26 14:01:21
+version: 1.9
 ---
 
-In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). There are some additional options of interest as well thought so lets take a look.
+In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). The express static middleware can be used in conjunction with or as a replacement for a [view engine](/2019/04/25/express-view). There are some additional options of interest as well thought so lets take a look.
 
 <!-- more -->
 
