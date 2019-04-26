@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 193
-updated: 2019-04-26 14:01:21
-version: 1.9
+updated: 2019-04-26 14:05:11
+version: 1.10
 ---
 
 In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). The express static middleware can be used in conjunction with or as a replacement for a [view engine](/2019/04/25/express-view). There are some additional options of interest as well thought so lets take a look.
@@ -19,9 +19,9 @@ This is a post on setting up a static server in express.js. It is not a getting 
 
 I try to make it a habit to always mention what version of a framework, library, ect I am using especially if it is something advanced like express.js, as such in this post I am using express 4.16.3
 
-## 2 - A Basic static server example with express.js
+## 2 - A Basic express static server example
 
-For a basic example of using express.js to make a static server I made a project folder, and inside that project folder I will want a public folder with some simple hand coded assets in it. In a more advanced real word example you might use some kind of static site generator such as hexo to generate this structure.
+For a basic example of using the express static middleware to make a static server I made a project folder, and inside that project folder I will want a public folder with some simple hand coded assets in it. In a more advanced real word example you might use some kind of static site generator such as hexo to generate this structure.
 
 ```
 $ mkdir express_static
@@ -34,6 +34,8 @@ $ mkdir public
 For this demo I only need express installed. In this demo I am using 4.16.3, but if no major code breaking changes happen in the future, you should be able to use the latest version by dropping the @4.16.3
 
 ### 2.1 - The public folder
+
+The public folder is something that will be needed of course in order to use the express static middleware as there needs to be sttaic assets to serve. In this subsection I will be going over the public folder that is used in this example that will serve an index.html file along with some additional assets.
 
 #### 2.1.1 - index.html
 
