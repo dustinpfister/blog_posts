@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 425
-updated: 2019-04-26 09:59:16
-version: 1.1
+updated: 2019-04-26 13:22:28
+version: 1.2
 ---
 
 An express view folder contains template files that are use for server side rendering. It can be used in place of, or in conjunction with other assets that can be served via express.static. In order to use a view folder there must be a template engine to use. I tend to prefer ejs, but there are many other options such as pug. So this post will be centered around setting up the beginnings of an express view folder, and maybe I will get into some more advanced topics when it comes to creating a client system for a project.
@@ -30,6 +30,8 @@ In this example there will just be a single express app.js file in the root name
 
 ### 1.1 - The app.js file at root
 
+In the main app.js file that will be called to start the server, I am using the app.set method to set the view engine to ejs. Now I can use the res.render method to render html using an ejs template file and some local variables. In this example I am just going to be passing some string literals to the template, but in a more advanced project this could be some data that is retrieved from a database or something to that effect.
+
 ```js
 let express = require('express'),
 app = express();
@@ -44,10 +46,11 @@ app.get('/', (req, res) => {
 });
  
 app.listen(8080);
-
 ```
 
 ### 1.2 - The view/index.ejs file in the view folder
+
+
 
 ```
 <html>
