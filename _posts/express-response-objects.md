@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 427
-updated: 2019-04-27 10:56:44
-version: 1.8
+updated: 2019-04-27 17:41:32
+version: 1.9
 ---
 
 An [express response](https://expressjs.com/en/api.html#res) object is one of four possible arguments that is passed to an [express middleware](/2018/06/25/express-middleware/) function. Expressjs has to do with the use of middleware that does something with incoming http requests. So [request objects](/2018/05/26/express-request-objects) have to do with the incoming http request from a client system, and response objects have to do with the response to that system. The other two arguments in an middleware method have to do with error handling, and passing along control to another middleware method. However in this post I will be focusing on just response objects today.
@@ -67,5 +67,30 @@ app.get('/', (req, res) => {
  
 app.get('*', (req, res) => res.redirect('/'));
  
+app.listen(8080);
+```
+
+## 3 - The Express response set method for setting response headers
+
+So a very important aspect of express response objects is response headers. The res.set method of an express response object can be used to set response headers for an http request response. Response headers can be set one at a time, or an object of key value pairs can be given to it as well.
+
+```js
+let express = require('express'),
+app = express();
+// using res.set to set the Content-Type header
+// for a javaScript resource
+app.get('/js/foo.js', (req, res) => {
+    res.set('Content-Type', 'application/javascript');
+    res.send('var foo = document.createElement(\'p\');foo.innerHTML=\'foo\';document.body.appendChild(foo);');
+});
+// using res.set to set more than one response header
+// at once
+app.get('/', (req, res) => {
+    res.set({
+        'Content-Type': 'text/html',
+        'Cache-Control': 'no-store'
+    });
+    res.send('<body><script src=\"\/js\/foo.js\"><\/script><\/body>');
+});
 app.listen(8080);
 ```
