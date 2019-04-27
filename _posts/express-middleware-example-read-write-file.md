@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 421
-updated: 2019-04-22 08:05:16
-version: 1.12
+updated: 2019-04-27 12:31:49
+version: 1.13
 ---
 
 maybe one of the best ways to learn about the value of [express middleware](https://expressjs.com/en/guide/using-middleware.html) is to just start developing example after example in which one uses express middleware to accomplish all kids of tasks. So this post will be one of several posts on express middleware examples. Today in this post I will be going over a very simple example of router level middleware that just reads and writes to a file. It will also involve a very basic client system that exists as some static files hosted via express.static.
@@ -15,7 +15,7 @@ maybe one of the best ways to learn about the value of [express middleware](http
 
 ## 1 - Express Middleware and what to know before continuing
 
-I have wrote a post before hand in which I cover [the basics of express middleware](/2019/04/19/express-middleware-basics/), and I also have another post on [express middleware in general](/2018/06/25/express-middleware/) also. So I will not be getting into detail about the basics of express here, I also assume that you have at least some background with node.js, and javaScript in general.
+I have wrote a post before hand in which I cover [the basics of express middleware](/2019/04/19/express-middleware-basics/), and I also have another post on [express middleware in general](/2018/06/25/express-middleware/) also. So I will not be getting into detail about the basics of express here, I also assume that you have at least some background with node.js, and javaScript in general. For more on express realted topics be sure to check out my [main post on expressjs](/2018/06/12/express).
 
 ## 2 - The Middleware that will read and write to the file
 
