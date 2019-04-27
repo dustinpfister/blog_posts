@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 419
-updated: 2019-04-19 18:41:22
-version: 1.8
+updated: 2019-04-27 12:30:13
+version: 1.9
 ---
 
 In [express.js](https://expressjs.com/) the concept of [middleware](https://expressjs.com/en/guide/using-middleware.html) is something that should be grasped in order to make significant headway with express applications. If you have fiddled around with express a little so far, chances are you have used some middleware so far without even realizing it. There is some express built in middleware, one example if this would be the express.js body parser, but for the most part express itself is fairly minimal. So as such creating a fairly capable express.js application will involve installing additional middleware, as well as writing original middleware functions. So then in this post I will be covering express middleware basics.
@@ -115,4 +115,4 @@ module.exports = () => {
 
 ## 4 - Conclusion
 
-If you found this post helpful, and would like to read into some more advanced topics when it comes writing middleware be sure to check out my [main post on express middleware](/2018/06/25/express-middleware/).
+If you found this post helpful, and would like to read into some more advanced topics when it comes writing middleware be sure to check out my [main post on express middleware](/2018/06/25/express-middleware/). For more on express in general you might want to check out my [main post on expressjs](/2018/06/12/express/).
