@@ -5,11 +5,11 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 214
-updated: 2019-04-27 12:19:39
-version: 1.4
+updated: 2019-04-27 12:21:24
+version: 1.5
 ---
 
-In [express.js](https://expressjs.com/) I get into situations in which I am dealing with more than one instance of an express app object. This is helpful, and to some extent necessary as it helps break things down into more manageable smaller components that are each responsible for a certain task, such as rendering, or grabbing settings from a yaml or json file. In this post I will be writing about req.app, res.app which are both just reference the instance of app that is using the middleware. This can be used as a way to not use require to get a reference to my main app instance from another file, but that is another way of pulling it off. In other words this post is about instances of the app object in express, and how to manage a bunch of theme when starting to make something a little complicated.
+In [express.js](https://expressjs.com/) I get into situations in which I am dealing with more than one instance of an express app object. This is helpful, and to some extent necessary as it helps break things down into more manageable smaller components that are each responsible for a certain task, such as rendering, or grabbing settings from a yaml or json file. In this post I will be writing about req.app, res.app which are both just reference the instance of app that is using the [express middleware](/2018/06/25/express-middleware/). This can be used as a way to not use require to get a reference to my main app instance from another file, but that is another way of pulling it off. In other words this post is about instances of the app object in express, and how to manage a bunch of theme when starting to make something a little complicated.
 
 <!-- more -->
 
