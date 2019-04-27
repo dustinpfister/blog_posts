@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 427
-updated: 2019-04-27 10:43:11
-version: 1.7
+updated: 2019-04-27 10:56:44
+version: 1.8
 ---
 
 An [express response](https://expressjs.com/en/api.html#res) object is one of four possible arguments that is passed to an [express middleware](/2018/06/25/express-middleware/) function. Expressjs has to do with the use of middleware that does something with incoming http requests. So [request objects](/2018/05/26/express-request-objects) have to do with the incoming http request from a client system, and response objects have to do with the response to that system. The other two arguments in an middleware method have to do with error handling, and passing along control to another middleware method. However in this post I will be focusing on just response objects today.
@@ -56,3 +56,16 @@ In the above example I am passing an empty object as the second argument after t
 ### 2.3 - The res.redirect response method
 
 Another way to end a request is to redirect the request to another path, this can be done with the [express redirect](/2019/04/26/express-redirect/) response method.
+
+```js
+let express = require('express'),
+app = express();
+ 
+app.get('/', (req, res) => {
+    res.send('you can not escape me');
+});
+ 
+app.get('*', (req, res) => res.redirect('/'));
+ 
+app.listen(8080);
+```
