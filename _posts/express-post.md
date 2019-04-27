@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 417
-updated: 2019-04-18 14:03:39
-version: 1.9
+updated: 2019-04-27 12:42:30
+version: 1.10
 ---
 
 The app.post method can be used in [express.js](https://expressjs.com/) to define what is to be done in the event that a [post request](https://expressjs.com/en/api.html#app.post.method) is received from a client system. Working with express post requests can be a somewhat complicated process, there is much to cover in terms of how to go about making a client system that will send post requests, and also how to parse the incoming request as well. I will not be going into every little detail about this in this post of course, but I will be covering some basic examples, and link to other relevant works when it comes to how to get up and running with express post requests.
@@ -88,3 +88,7 @@ app.listen(8080, () => {
     console.log('express static basic example up on port 8080');
 });
 ```
+
+## 2 - Conclusion
+
+So the app.post method is one of many app object methods in express that are key to the process of defining application level middleware in express. For more on app object methods be sure to check out my post on the [app object in express](/2018/06/15/express-app-object/), there is also my [main post on express](/2018/06/12/express/) in general as well.
