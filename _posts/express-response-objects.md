@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 427
-updated: 2019-04-27 17:47:07
-version: 1.10
+updated: 2019-04-27 17:52:11
+version: 1.11
 ---
 
 An [express response](https://expressjs.com/en/api.html#res) object is one of four possible arguments that is passed to an [express middleware](/2018/06/25/express-middleware/) function. Expressjs has to do with the use of middleware that does something with incoming http requests. So [request objects](/2018/05/26/express-request-objects) have to do with the incoming http request from a client system, and response objects have to do with the response to that system. The other two arguments in an middleware method have to do with error handling, and passing along control to another middleware method. However in this post I will be focusing on just response objects today.
@@ -70,9 +70,9 @@ app.get('*', (req, res) => res.redirect('/'));
 app.listen(8080);
 ```
 
-## 3 - The Express response set, and type methods for setting response headers
+## 3 - The Express response object response headers
 
-So a very important aspect of express response objects is response headers. 
+So a very important aspect of express response objects is response headers. Headers can be set using methods like res.set, and res.type. I will not be getting into http response headers in deapth here, that will be a whole other post naturally. However I will cover some basics about setting response headers in express in this section.
 
 ### 3.1 - The response type method
 
