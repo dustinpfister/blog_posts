@@ -5,17 +5,17 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 210
-updated: 2019-04-27 11:13:20
-version: 1.5
+updated: 2019-04-27 11:18:29
+version: 1.6
 ---
 
-When making an [express.js](https://expressjs.com/) application one of the most important methods in the app object is the app.use method. This method is important for making use of middle ware modules, as well making your own middle ware methods.
+When making an [express.js](https://expressjs.com/) application one of the most important methods in the app object is the app.use method. This method is important for making use of middleware modules, as well making your own middle ware methods. I will not be getting into middleware in depth here though but I have a post that is a good starting point for [express middleware](/2018/06/25/express-middleware/). There is also the [app.all](/2018/06/05/express-all/) method that does work in a similar way to that of app.use, but they are not the same thing.
 
 <!-- more -->
 
 ## What to know
 
-This is a post on a certain methods in an instance of an [app object](/2018/06/15/express-app-object/) in the node.js powered framework know as express. It is not a getting started post on express.js, javaScript, node.js or any additional skill required before hand. If you are new to express you might want to start at my [express.js mega post](/2018/06/12/express/), or my post on [getting started with express](/2018/05/21/express-getting-started/).
+This is a post on a certain methods in an instance of an [app object](/2018/06/15/express-app-object/) in the node.js powered framework known as expressjs. It is not a getting started post on express.js, javaScript, node.js or any additional skill required before hand. If you are new to express you might want to start at my [express.js mega post](/2018/06/12/express/), or my post on [getting started with express](/2018/05/21/express-getting-started/).
 
 ## 2 - An example of a custom middle ware using app.use
 
