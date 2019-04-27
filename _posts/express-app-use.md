@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 210
-updated: 2018-06-18 13:56:07
-version: 1.4
+updated: 2019-04-27 11:13:20
+version: 1.5
 ---
 
 When making an [express.js](https://expressjs.com/) application one of the most important methods in the app object is the app.use method. This method is important for making use of middle ware modules, as well making your own middle ware methods.
@@ -17,11 +17,11 @@ When making an [express.js](https://expressjs.com/) application one of the most 
 
 This is a post on a certain methods in an instance of an [app object](/2018/06/15/express-app-object/) in the node.js powered framework know as express. It is not a getting started post on express.js, javaScript, node.js or any additional skill required before hand. If you are new to express you might want to start at my [express.js mega post](/2018/06/12/express/), or my post on [getting started with express](/2018/05/21/express-getting-started/).
 
-## 1 - A Basic example of a custom middle ware using app.use
+## 2 - An example of a custom middle ware using app.use
 
 For a basic example of app.use I came up with a quick demo that just sets a property called useClient in the request object. In a more advanced project this might be used as a means to set what client system to use for certain browsers.
 
-### 1.1 - Setup the demo folder
+### 2.1 - Setup the demo folder
 
 To start things off just like any other express demo I create a new folder, and cd into it to make it the current working folder. Once that is done I use npm init to set up a new package.json file for the demo, and then install express as one of the dependencies.
 
@@ -34,7 +34,7 @@ $ npm install express@4.16.3 --save
 
 When making this demo I was using express 4.16.3, but if you aim to make an actual production app chances are you will want to always use the latest version.
 
-### 1.2 - The set-client.js file
+### 2.2 - The set-client.js file
 
 In this file I will be using the app.use method to define what will be done with incoming requests. It will look for a user agent header in the request headers using req.get. Base on what is there it may set a value that will eb appended to the request object to something other than what it is by default. In any case it will then call next to continue on with the normal flow of things.
 
@@ -66,7 +66,7 @@ app.use(function (req, res, next) {
 
 It is also possible to have it so it will look at query strings, or set the value by another means, but you get the idea. If I had a project in which there was more than one client system this can work as a way to set which client system to use based on the incoming request http headers.
 
-### 1.3 - The app.js file
+### 2.3 - The app.js file
 
 In the main app.js file I again use app.use to use the middleware that I have defined in my set-client.js file.
 
@@ -93,7 +93,7 @@ app.listen(8080, function () {
 
 I do so before anything else as it will not work if I set up my handler for the root path before hand, as the order in which things happen in express does very much matter.
 
-### 1.4 - start up the demo
+### 2.4 - start up the demo
 
 So now that I have everything in order I start up the demo by calling the main app.js file with node in the command line.
 
@@ -104,6 +104,6 @@ the app is up on port 8080
 
 Once I have the message displayed in the command line I should be able to see what will happen when I navigate to localhost:8080 in my browser. If I do so in chrome I will get a different message compared to if I do so with some other browser as expected.
 
-## Conclusion
+## 3 - Conclusion
 
 The app.use method is an important part of the app object in express. The method is needed to make use of express.js middle ware that is made from the ground up for your own project, or added in via an additional module like with [body-parser](/2018/05/27/express-body-parser/).
