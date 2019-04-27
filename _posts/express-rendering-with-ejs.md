@@ -5,15 +5,13 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 194
-updated: 2018-05-28 12:08:41
-version: 1.3
+updated: 2019-04-27 12:46:44
+version: 1.4
 ---
 
 When rendering a template in [express.js](https://expressjs.com/). there are many options to choose from, however so far I seem to prefer Embedded javaScript or EJS for short. I have written a post on using the ejs module by itself in node.js, however this post is more about using it in an express.js environment. As Such I will be covering how to set up a renderer with ejs.
 
 <!-- more -->
-
-
 
 ## Basic example
 
@@ -68,4 +66,4 @@ app.listen(port, function () {
 
 ## Conclusion
 
-When I start this and go to localhost:8080 in my browser I am greeted with the "Hello ejs!" message. I have [another post on ejs](/2017/12/07/nodejs-ejs-javascript-templates/) in which I work with the ejs module by itself, which might be a good idea to do if you want to learn more about ejs.
+When I start this and go to localhost:8080 in my browser I am greeted with the "Hello ejs!" message. I have [another post on ejs](/2017/12/07/nodejs-ejs-javascript-templates/) in which I work with the ejs module by itself, which might be a good idea to do if you want to learn more about ejs. If you liked this post be sure to check out my [main post on expressjs](/2018/06/12/express/) in general.
