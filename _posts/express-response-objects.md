@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 427
-updated: 2019-04-27 17:41:32
-version: 1.9
+updated: 2019-04-27 17:47:07
+version: 1.10
 ---
 
 An [express response](https://expressjs.com/en/api.html#res) object is one of four possible arguments that is passed to an [express middleware](/2018/06/25/express-middleware/) function. Expressjs has to do with the use of middleware that does something with incoming http requests. So [request objects](/2018/05/26/express-request-objects) have to do with the incoming http request from a client system, and response objects have to do with the response to that system. The other two arguments in an middleware method have to do with error handling, and passing along control to another middleware method. However in this post I will be focusing on just response objects today.
@@ -70,9 +70,15 @@ app.get('*', (req, res) => res.redirect('/'));
 app.listen(8080);
 ```
 
-## 3 - The Express response set method for setting response headers
+## 3 - The Express response set, and type methods for setting response headers
 
-So a very important aspect of express response objects is response headers. The res.set method of an express response object can be used to set response headers for an http request response. Response headers can be set one at a time, or an object of key value pairs can be given to it as well.
+So a very important aspect of express response objects is response headers. 
+
+### 3.1 - The response type method
+
+### 3.2 - The response set method
+
+The res.set method of an express response object can be used to set response headers for an http request response. Response headers can be set one at a time, or an object of key value pairs can be given to it as well.
 
 ```js
 let express = require('express'),
@@ -94,3 +100,5 @@ app.get('/', (req, res) => {
 });
 app.listen(8080);
 ```
+
+I generally like to use the response set method over the response type method for setting the Content-Type header of a response. For the most part the mime types that are set by the response type method will work just fine, but setting Content-Type this way gives me a better degree of control over what is being set. It just makes things far more clear.
