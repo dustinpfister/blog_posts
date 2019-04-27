@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 209
-updated: 2019-04-27 12:08:23
-version: 1.8
+updated: 2019-04-27 12:11:40
+version: 1.9
 ---
 
 The app object in [express.js](https://expressjs.com/) is what is returned when calling the express top level function by itself, rather than one of the additional methods attached to it like express.static. The app object contains many useful methods for working with http requests, setting up a rendering engine like ejs, an using additional middle like express-session, and passport. This post will serve as an overview of that app object, and everything that is of great importance when developing an node.js powered web applaction with express.js as part of the stack.
@@ -63,3 +63,7 @@ app.use(function (req, res, next) {
 ```
 
 There is a great deal more to write about with app.use, but I have much to cover in this post.
+
+## 3 - app.all app object method to respond to all http requests
+
+There is also the [app.all](/2018/06/05/express-app-all/) method app object method that works in a similar way to app.use.
