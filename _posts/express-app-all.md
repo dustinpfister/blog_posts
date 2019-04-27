@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 202
-updated: 2018-06-05 13:30:01
-version: 1.4
+updated: 2019-04-27 11:06:42
+version: 1.5
 ---
 
 So one of the application methods in [express.js](https://expressjs.com/) is app.all, which is a method that can be used to work with any kind of http request method. The most commonly used methods are of course 'GET', and 'POST'. However there are many more that also make sense for what they are, and at times it might be desirable to have a way work with any kind of incoming request regardless of the certain method. This is where app.all can be of help. In this post I will be writing about the app.all method in express, I will be showing some use case examples, and will touch base on the different http methods.
@@ -15,7 +15,7 @@ So one of the application methods in [express.js](https://expressjs.com/) is app
 
 ## What to know
 
-This is a post on the app.all method in express.js, it is not a getting started post on express.js or any additional subjects that relate to express.js. If you are new to express, you might wan to start with my getting started post on express.js. Also in this post I am using express 4.16.3, and yes express is something where the version number matters a lot.
+This is a post on the app.all method in express.js, it is not a getting started post on express.js or any additional subjects that relate to express.js. If you are new to express, you might wan to start with my [getting started post on express.js](/2018/05/21/express-getting-started/), or my [main post on express](/2018/06/12/express/). Also in this post I am using express 4.16.3, and yes express is something where the version number matters a lot.
 
 ## Basic Example of app.all in express
 
