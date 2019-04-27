@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 210
-updated: 2019-04-27 11:45:02
-version: 1.7
+updated: 2019-04-27 11:46:17
+version: 1.8
 ---
 
 When making an [express.js](https://expressjs.com/) application one of the most important methods in the app object is the [app use](https://expressjs.com/en/api.html#app.use) method. This method is important for making use of middleware modules, as well making your own middle ware methods. I will not be getting into middleware in depth here though but I have a post that is a good starting point for [express middleware](/2018/06/25/express-middleware/). There is also the [app.all](/2018/06/05/express-all/) method that does work in a similar way to that of app.use, but they are not the same thing.
@@ -106,4 +106,4 @@ Once I have the message displayed in the command line I should be able to see wh
 
 ## 3 - Conclusion
 
-The app.use method is an important part of the app object in express. The method is needed to make use of express.js middle ware that is made from the ground up for your own project, or added in via an additional module like with [body-parser](/2018/05/27/express-body-parser/).
+The Express app use method is an important part of the app object in express. The method is needed to make use of express middleware that is made from the ground up for your own project, or added in via an additional module like with [body-parser](/2018/05/27/express-body-parser/).
