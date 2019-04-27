@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 211
-updated: 2018-06-19 12:30:57
-version: 1.5
+updated: 2019-04-27 12:23:32
+version: 1.6
 ---
 
 When making an [express.js](https://expressjs.com/) application security, and privacy should be of at least some concern. A good start with express might be to check out [helmet.js](https://www.npmjs.com/package/helmet). This express.js middleware is actually a collection of middleware modules that can be used to set some headers that may help to improve security, and privacy to some extent. It is not an end all solution of course, but it might be a good start to say the least. In this post I will be writing about one of the middleware methods that is used to set a header that will disable dns prefetching.
@@ -15,7 +15,7 @@ When making an [express.js](https://expressjs.com/) application security, and pr
 
 ## 1 - what to know before hand
 
-This is an advanced post on express.js, and the use of the helmet.js middeware module to help better secure a node.js application. This is not a getting started post on express.js, node.js, javaScript, or any other additional skills required.
+This is an advanced post on express.js, and the use of the helmet.js middeware module to help better secure a node.js application. This is not a getting started post on express.js, node.js, javaScript, or any other additional skills required. If you would like to check out other express retaliated topics on this site you might want to check out my [main post on express](/2018/06/12/express).
 
 ### 1.1 - wire shark
 
