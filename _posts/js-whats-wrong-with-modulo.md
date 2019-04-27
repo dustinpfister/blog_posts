@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2017-09-02 14:47:00
-version: 1.1
+updated: 2019-04-27 19:57:40
+version: 1.2
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is a Operator in core javaScript that often does work as expected, however it does follow a certain convention, and sometimes it can cause problems.
@@ -14,7 +14,7 @@ When working with many javaScript projects the use of [modulo](https://en.wikipe
 
 <!-- more -->
 
-## What is modulo used for?
+## 1 - javaScript modulo and what is modulo used for?
 
 In short the modulo operation is used to find the remainder of a division operation, and for the most part that is how the modulo operation works in javaScript. However there is more than one convention, and sometimes javaScripts modulo operator will not work as expected.
 
@@ -34,7 +34,7 @@ console.log(x + ',' + y); // 3,1
 
 However when starting to work with negative numbers, this is where problems happen.
 
-## Negative Number problem
+## 2 - The Negative Number problem with javaScript modulo
 
 Say you have a spinner in a game that is used to find the number of spaces a player moves, like in many board games. In can be spin forwards, but also backwards, and should always reflect a certain number within a range, say 1 to 6.
 
@@ -65,7 +65,7 @@ console.log(spin.index); // -3
 
 This is not the way I would expect modulo to work for me most of the time when given a negative number. The spinner example reflects what I expect from a modulo operation most of the time where -8 would whip back around and land on 2. It's not wrong in the sense that 5 - 3 = 2, but with certain values it gives numbers like negative zero so I end up with 5 - -0 = 5 where I want the value to be 0.
 
-## Using another a modulo method.
+## 3 - Using another a javaScript modulo method.
 
 Sometimes it seems like the best thing to do is to just use a different method compared to what is used in core javaScript alone, as such my problem is solved.
 
