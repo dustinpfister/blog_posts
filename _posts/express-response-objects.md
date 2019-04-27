@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 427
-updated: 2019-04-27 17:52:11
-version: 1.11
+updated: 2019-04-27 18:07:37
+version: 1.12
 ---
 
 An [express response](https://expressjs.com/en/api.html#res) object is one of four possible arguments that is passed to an [express middleware](/2018/06/25/express-middleware/) function. Expressjs has to do with the use of middleware that does something with incoming http requests. So [request objects](/2018/05/26/express-request-objects) have to do with the incoming http request from a client system, and response objects have to do with the response to that system. The other two arguments in an middleware method have to do with error handling, and passing along control to another middleware method. However in this post I will be focusing on just response objects today.
@@ -75,6 +75,23 @@ app.listen(8080);
 So a very important aspect of express response objects is response headers. Headers can be set using methods like res.set, and res.type. I will not be getting into http response headers in deapth here, that will be a whole other post naturally. However I will cover some basics about setting response headers in express in this section.
 
 ### 3.1 - The response type method
+
+So the [response type](/2019/04/24/express-type/) method can be used to set just the Content-Type header of a response object. The nice thing about this method is that I do not have to know the mime types, I can just use file extension names or some more common name for a file type. For example I can use text to set the text/plain mime type.
+
+```js
+let express = require('express'),
+app = express();
+ 
+app.get('/', (req, res) => {
+    res.type('text');
+    console.log(res.get('Content-Type')); // 'text/plain; charset=utf-8'
+    res.send('<h1>This should just be plain text so the tags should show in the browser</h1>')
+});
+ 
+app.listen(8080);
+```
+
+This might work okay for the most part, but it does not give the higher degree of control that the response set method will give.
 
 ### 3.2 - The response set method
 
