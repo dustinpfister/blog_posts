@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 195
-updated: 2019-04-27 11:01:35
-version: 1.9
+updated: 2019-04-27 11:06:43
+version: 1.10
 ---
 
 An [request express](https://expressjs.com/en/api.html#req) object comes into play when using [expressjs](https://expressjs.com/) to help work with incoming http requests. The express request object that is one of four potential arguments that can be used when making an middleware function that that can be used when making application or router level middleware typically with a method like app.get, or app.use. The request object contains all kinds of useful properties and methods when it comes to working with incoming http requests. There are also of course [response objects](/2019/04/27/express-response-objects/) as well but, in this post I will be writing about some of the must know features of request objects when working with express.js.
@@ -15,7 +15,7 @@ An [request express](https://expressjs.com/en/api.html#req) object comes into pl
 
 ## 1 - Express request objects and what to know
 
-This is a post on express request objects in general in expressjs. It is not a getting started post on express.js, node.js, or javaScript in general. I have my [main post on express](/2018/06/12/express) that might prove to be a good starting point for all things express related on this site. Also it is worth mentioning that while I was writing this post I was using express 4.16.3
+This is a post on express request objects in general in expressjs. It is not a getting started post on express.js, node.js, or javaScript in general. I have my [main post on express](/2018/06/12/express/) that might prove to be a good starting point for all things express related on this site. Also it is worth mentioning that while I was writing this post I was using express 4.16.3
 
 ## 2 - What is a request object in express.js?
 
