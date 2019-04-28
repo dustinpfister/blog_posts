@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 428
-updated: 2019-04-28 10:22:13
-version: 1.1
+updated: 2019-04-28 10:25:52
+version: 1.2
 ---
 
-The express end response method is one of several ways to go about ending an incoming http request from a client system. The express end method is used for situations in which the request is to just simply be put to an end without sending any data to the client. It is true that the method can be used to send data in the form of a string or buffer to the client, but another response method should be used such as res.send, or res.json.
+The [express end](https://expressjs.com/en/api.html#res.end) response method is one of several ways to go about ending an incoming http request from a client system. The express end method is used for situations in which the request is to just simply be put to an end without sending any data to the client. It is true that the method can be used to send data in the form of a string or buffer to the client, but another response method should be used such as res.send, or res.json.
 
 
 <!-- more -->
@@ -100,3 +100,7 @@ app.get('*', (req, res) => {
  
 app.listen(8080);
 ```
+
+## 4 - Conclusion
+
+So then the express end response method is one of several ways to end an http request from a client that is a good choice when no data needs to be sent to the client. For more expressjs related content on this site be sure to check out the main post on [expressjs](/2018/06/12/express/).
