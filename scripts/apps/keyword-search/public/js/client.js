@@ -21,12 +21,12 @@ el_search_button.addEventListener('click', function (e) {
 
             html += '<p>' + (i + 1) + ') ' + post.fn + '</p>' +
             '<ul>' +
-            '<li>keyword full match count: ' + post.fullMatchCount + '<\/li>' +
-            '<li>Word Counts: ' + JSON.stringify(post.wordCounts) + '<\/li>' +
+            '<li>keyword full match count: ' + post.fullMatch.count + '<\/li>' +
+            '<li>Word Counts: ' + JSON.stringify(post.keyWords.counts) + '<\/li>' +
             '<li style=\"color:' + color_wc + ';\">Post word count: ' + post.wc + '<\/li>' +
-            '<li>weight (full match): ' + post.fullMatchWeight + '<\/li>' +
-            '<li>weight (word match): ' + post.wordWeight + '<\/li>' +
-            '<li>word ratio (kw count / post word count): ' + post.wordRatio + '<\/li>' +
+            '<li>weight (full match): ' + post.weight_full + '<\/li>' +
+            '<li>weight (word match): ' + post.weight_word + '<\/li>' +
+            '<li>kw per (kw count / post word count): ' + post.keyWords.wcPer + '<\/li>' +
             '<li>weight: ' + post.weight + '<\/li>' +
             '<\/ul><hr>'
         });
