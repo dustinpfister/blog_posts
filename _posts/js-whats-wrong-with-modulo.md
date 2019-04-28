@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2019-04-27 20:19:23
-version: 1.6
+updated: 2019-04-27 20:22:32
+version: 1.7
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers. Most of the time the javaScript modulo operator does work as expected, however it follow a certain convention, and sometimes it can cause problems when dealing with negative numbers.
@@ -48,6 +48,7 @@ However when starting to work with negative numbers, this is where a result that
 Say you have a spinner in a game that is used to find the number of spaces a player moves, like in many board games. In can be spin forwards, but also backwards, and should always reflect a certain number within a range, say 1 to 6.
 
 As such say you put together something like this:
+
 ```js
 var spin = {
  
@@ -76,7 +77,7 @@ This is not the way I would expect modulo to work for me most of the time when g
 
 ## 3 - Using another a javaScript modulo method.
 
-Sometimes it seems like the best thing to do is to just use a different method compared to what is used in core javaScript alone, as such my problem is solved.
+Sometimes it seems like the best thing to do is to just use a different method compared to what is used in core javaScript alone, as such the problem of the javaScript module operator not working as expected can be solved.
 
 ```js
 var spin = {
