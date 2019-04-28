@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2019-04-27 20:05:00
-version: 1.4
+updated: 2019-04-27 20:18:23
+version: 1.5
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers. Most of the time the javaScript modulo operator does work as expected, however it follow a certain convention, and sometimes it can cause problems when dealing with negative numbers.
@@ -14,25 +14,34 @@ When working with many javaScript projects the use of [modulo](https://en.wikipe
 
 <!-- more -->
 
-## 1 - javaScript modulo and what is modulo used for?
+## 1 - javaScript modulo and some examples of it in action
 
 In short the modulo operation is used to find the remainder of a division operation, and for the most part that is how the modulo operation works in javaScript. However there is more than one convention, and sometimes javaScripts modulo operator will not work as expected.
 
-One typically use case might be something like this, say you have a grid that is ten by ten sections. You want to write a method where if given a certain index value from 0-99, you can get the x, and y grid position.
+### 1.1 - A simple module example showing order of operations of javaScript modulo
 
+The Operator precedence of javaScript Modulo is the same as division and multiplication, so it will out rank addition when making an expression.
 
-As such javaScripts modulo works just fine by itself as expected, not problem.
+```js
+console.log( 5 + 12 % 7 ); // 10
+console.log( (5 + 12) % 7 ); // 3
+```
+
+### 1.2 - A grid example
+
+One typically use case might be something like this, say you have a grid that is ten by ten sections. You want to write a method where if given a certain index value from 0-99, you can get the x, and y grid position. In such a case javaScripts modulo works just fine by itself as expected no problem.
 
 ```js
 var width = 10,
 i = 13,
 y = Math.floor(i / width),
-x = i % width; // whats remains when diving by width
+x = i % width; // what remains when diving by width
  
 console.log(x + ',' + y); // 3,1
 ```
 
-However when starting to work with negative numbers, this is where problems happen.
+However when starting to work with negative numbers, this is where a result that is not expected might occur.
+
 
 ## 2 - The Negative Number problem with javaScript modulo
 
