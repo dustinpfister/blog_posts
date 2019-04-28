@@ -19,16 +19,17 @@ el_search_button.addEventListener('click', function (e) {
                 color_wc = 'green';
             }
 
-            html += '<p>' + (i + 1) + ') ' + post.fn + '</p>' +
-            '<ul>' +
-            '<li>keyword full match count: ' + post.fullMatch.count + '<\/li>' +
-            '<li>Word Counts: ' + JSON.stringify(post.keyWords.counts) + '<\/li>' +
-            '<li style=\"color:' + color_wc + ';\">Post word count: ' + post.wc + '<\/li>' +
-            '<li>weight (full match): ' + post.weight_full + '<\/li>' +
-            '<li>weight (word match): ' + post.weight_word + '<\/li>' +
-            '<li>kw per (kw count / post word count): ' + post.keyWords.wcPer + '<\/li>' +
-            '<li>weight: ' + post.weight + '<\/li>' +
-            '<\/ul><hr>'
+            html += '<h3>' + (i + 1) + ') ' + post.fn + '</h3>' +
+            '<span>total weight: ' + post.weight + '<\/span><br>' +
+            '<span style=\"color:' + color_wc + ';\">post total word count: ' + post.wc + '<\/span><br>' +
+            '<ul><li>weights:</span><ul>';
+
+            post.weights.forEach((w) => {
+                html += '<li>' + w.name + ' : ' + w.weight +'<\/li>';
+            });
+
+            html += '<\/ul><\/li><\/ul><hr>';
+
         });
 
         el_out.innerHTML = html;

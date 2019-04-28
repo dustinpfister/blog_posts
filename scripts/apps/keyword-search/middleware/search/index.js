@@ -11,10 +11,34 @@ router.post('*', [
         // figure post weight
         (req, res, next) => {
             req.data.posts.forEach((post, i) => {
-                post.weight_word = post.keyWords.total * 5;
-                post.weight_full = post.fullMatch.count * 100;
-                post.weight = post.wc / 10 + (post.weight_full + post.weight_word) * post.keyWords.inPost;
-                post.weight *= post.keyWords.wcPer;
+
+                post.weights = [{
+                        name: 'key words total * 5',
+                        weight: post.keyWords.total * 5
+                    }, {
+                        name: 'full match * 100',
+                        weight: post.fullMatch.count * 100
+                    }, {
+                        name: 'post total word count',
+                        weight: post.wc / 10
+                    }, {
+                        name: '(key words percent) * (key words total * 5 + full match * 100)',
+                        weight: post.keyWords.wcPer * (post.keyWords.total * 5 + post.fullMatch.count * 100)
+                    }, {
+                        name: 'key words in post * 1000',
+                        weight: post.keyWords.inPost * 1000
+                    }
+                ];
+
+                post.weight = 0;
+                post.weights.forEach((w) => {
+                    post.weight += w.weight;
+                });
+
+                //post.weight_word = post.keyWords.total * 5;
+                //post.weight_full = post.fullMatch.count * 100;
+                //post.weight = post.wc / 10 + (post.weight_full + post.weight_word) * post.keyWords.inPost;
+                //post.weight *= post.keyWords.wcPer;
             });
             next();
         },
