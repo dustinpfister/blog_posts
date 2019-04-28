@@ -8,8 +8,9 @@ router.post('*', [
 
         require('./getkwdata.js'),
 
-        // figure post weight
+        // figure post weights
         (req, res, next) => {
+
             req.data.posts.forEach((post, i) => {
 
                 post.weights = [{
@@ -30,15 +31,21 @@ router.post('*', [
                     }
                 ];
 
-                post.weight = 0;
-                post.weights.forEach((w) => {
-                    post.weight += w.weight;
-                });
-
                 //post.weight_word = post.keyWords.total * 5;
                 //post.weight_full = post.fullMatch.count * 100;
                 //post.weight = post.wc / 10 + (post.weight_full + post.weight_word) * post.keyWords.inPost;
                 //post.weight *= post.keyWords.wcPer;
+            });
+            next();
+        },
+
+        // tabulate weights
+        (req, res, next) => {
+            req.data.posts.forEach((post, i) => {
+                post.weight = 0;
+                post.weights.forEach((w) => {
+                    post.weight += w.weight;
+                });
             });
             next();
         },
