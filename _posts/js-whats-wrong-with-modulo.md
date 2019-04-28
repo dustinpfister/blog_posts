@@ -5,11 +5,11 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2019-04-27 20:01:00
-version: 1.3
+updated: 2019-04-27 20:05:00
+version: 1.4
 ---
 
-When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that often does work as expected, however it does follow a certain convention, and sometimes it can cause problems.
+When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers. Most of the time the javaScript modulo operator does work as expected, however it follow a certain convention, and sometimes it can cause problems when dealing with negative numbers.
 
 
 <!-- more -->
