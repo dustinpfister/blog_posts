@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2019-04-27 20:18:23
-version: 1.5
+updated: 2019-04-27 20:19:23
+version: 1.6
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers. Most of the time the javaScript modulo operator does work as expected, however it follow a certain convention, and sometimes it can cause problems when dealing with negative numbers.
@@ -20,7 +20,7 @@ In short the modulo operation is used to find the remainder of a division operat
 
 ### 1.1 - A simple module example showing order of operations of javaScript modulo
 
-The Operator precedence of javaScript Modulo is the same as division and multiplication, so it will out rank addition when making an expression.
+The [Operator precedence](/2019/02/02/js-operator-precedence/) of javaScript Modulo is the same as division and multiplication, so it will out rank addition when making an expression.
 
 ```js
 console.log( 5 + 12 % 7 ); // 10
