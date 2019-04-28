@@ -5,11 +5,11 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2019-04-27 19:57:40
-version: 1.2
+updated: 2019-04-27 20:01:00
+version: 1.3
 ---
 
-When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is a Operator in core javaScript that often does work as expected, however it does follow a certain convention, and sometimes it can cause problems.
+When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that often does work as expected, however it does follow a certain convention, and sometimes it can cause problems.
 
 
 <!-- more -->
