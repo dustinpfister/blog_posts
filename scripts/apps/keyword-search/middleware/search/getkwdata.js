@@ -23,20 +23,35 @@ router.use(
             // if full match
             if (match_full) {
                 result = {}
-                result.fullMatchCount = match_full.length;
+                //result.fullMatchCount = match_full.length;
+
+                result.fullMatch = {
+                    count: match_full.length
+                };
+
             }
 
             // if the number of words in keyword is greater than 1
             words.forEach((word) => {
                 let match_word = item.md.match(new RegExp(word, 'gi'));
                 if (match_word) {
-                    //foundWord = true;
                     result = result || {}
+                    /*
                     result.wordCounts = result.wordCounts || [];
                     result.wordCounts.push({
+                    word: word,
+                    count: match_word.length
+                    });
+                     */
+
+                    result.keyWords = result.keyWords || {
+                        counts: []
+                    };
+                    result.keyWords.counts.push({
                         word: word,
                         count: match_word.length
                     });
+
                 }
             });
 
@@ -45,8 +60,35 @@ router.use(
                 match_ct += 1;
                 result.fn = item.fn;
                 result.wc = item.wc;
+
+                // full Match
+                result.fullMatch = result.fullMatch || {
+                    count: 0
+                };
+
+				// key words
+				result.keyWords.inPost = result.keyWords.counts.length;
+				result.keyWords.inPostPer = result.keyWords.inPost / words.length;
+				result.keyWords.total = 0;
+				result.keyWords.counts.forEach((word)=>{
+					result.keyWords.total += word.count;
+				});
+				result.keyWords.wcPer = result.keyWords.total / result.wc;
+				
+                /*
+                // key word full match
                 result.fullMatchCount = result.fullMatchCount || 0;
+
+                // key words
                 result.wordCounts = result.wordCounts || [];
+                result.keyWordsInPost = result.wordCounts.length;
+                result.keyWordsTotalCount = 0;
+                result.wordCounts.forEach((word) => {
+                result.keyWordsTotalCount += word.count;
+                });
+                result.keyWordsRatio = result.keyWordsTotalCount / result.wc;
+                 */
+
                 posts.push(result);
             }
 

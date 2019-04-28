@@ -10,20 +10,51 @@ router.post('*', [
 
         // figure post weight
         (req, res, next) => {
-            req.data.posts.forEach((post) => {
+
+		    let f = true;
+            req.data.posts.forEach((post, i) => {
+
+                if (f && post.fullMatch.count > 0) {
+					f = false;
+                    console.log(JSON.stringify(post));
+                }
+
+                post.weight = post.wc;
+
+                /*
                 let kwWordTotal = 0;
                 post.wordCounts.forEach((word) => {
-                    kwWordTotal += word.count;
+                kwWordTotal += word.count;
                 });
                 post.wordWeight = kwWordTotal * 5;
                 post.wordRatio = kwWordTotal / post.wc;
                 post.fullMatchWeight = post.fullMatchCount * 100;
-                //post.weight = post.wc / 10 + (post.fullMatchWeight + post.wordWeight) * (post.wordCounts.length);
                 post.weight = post.wc / 10 + (post.fullMatchWeight + post.wordWeight) * (post.wordCounts.length);
                 post.weight *= post.wordRatio;
+                 */
             });
             next();
         },
+
+        /*
+        // figure post weight
+        (req, res, next) => {
+
+
+        req.data.posts.forEach((post,i) => {
+        let kwWordTotal = 0;
+        post.wordCounts.forEach((word) => {
+        kwWordTotal += word.count;
+        });
+        post.wordWeight = kwWordTotal * 5;
+        post.wordRatio = kwWordTotal / post.wc;
+        post.fullMatchWeight = post.fullMatchCount * 100;
+        post.weight = post.wc / 10 + (post.fullMatchWeight + post.wordWeight) * (post.wordCounts.length);
+        post.weight *= post.wordRatio;
+        });
+        next();
+        },
+         */
 
         // send
         (req, res) => {
