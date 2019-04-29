@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 429
-updated: 2019-04-29 19:05:39
-version: 1.3
+updated: 2019-04-29 19:40:23
+version: 1.4
 ---
 
 In express status codes can be both get and set with properties and methods in an express response object. There is the res.statusCode property than can be used to find out the current http status code, and the [res.status](https://expressjs.com/en/api.html#res.status) method that can be used to set that code. In addition there is the res.sendStatus method that can be used to just set a status code and end the request without sending any data in the same way as the express end response method. So this will be a post on http status codes in express, getting it, setting it and some status code use examples.
@@ -32,6 +32,8 @@ app.listen(8080);
 Some times there is something that might happen that would call for setting a status code other than that of 200 though. For example if the requested resource does not exist it is typical to send a 404 status code. For this there are methods like res.status, and res.sendStatus.
 
 ## 2 - Express status send and end
+
+If a status code is it be sent but with no data body then there is the res.sendStatus response method that can be used. Another option would be to use the status method combined with the end method, or the send method with no arguments given.
 
 ```js
 let express = require('express'),
