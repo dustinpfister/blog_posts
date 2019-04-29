@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 429
-updated: 2019-04-29 19:40:23
-version: 1.4
+updated: 2019-04-29 19:48:03
+version: 1.5
 ---
 
 In express status codes can be both get and set with properties and methods in an express response object. There is the res.statusCode property than can be used to find out the current http status code, and the [res.status](https://expressjs.com/en/api.html#res.status) method that can be used to set that code. In addition there is the res.sendStatus method that can be used to just set a status code and end the request without sending any data in the same way as the express end response method. So this will be a post on http status codes in express, getting it, setting it and some status code use examples.
@@ -61,6 +61,8 @@ app.listen(8080);
 ```
 
 ## 3 - An Express Status example that involves a 500 (Server Error) status code
+
+Here I put together a quick example that responds with a 500 Internal Server Error if any kind of error happens when attempting to get a resource, or if the resource is not there.
 
 ```js
 let express = require('express'),
