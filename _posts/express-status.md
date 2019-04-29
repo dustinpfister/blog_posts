@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 429
-updated: 2019-04-29 18:02:46
-version: 1.1
+updated: 2019-04-29 19:00:37
+version: 1.2
 ---
 
-In express status codes can be both get and set with properties and methods in an express response object. There is the res.statusCode property than can be used to find out the current http status code, and the res.status method that can be used to set that code. In addition there is the res.sendStatus method that can be used to just set a status code and end the request without sending any data in the same way as the express end response method. So this will be a post on http status codes in express, getting it, setting it and some status code use examples.
+In express status codes can be both get and set with properties and methods in an express response object. There is the res.statusCode property than can be used to find out the current http status code, and the [res.status](https://expressjs.com/en/api.html#res.status) method that can be used to set that code. In addition there is the res.sendStatus method that can be used to just set a status code and end the request without sending any data in the same way as the express end response method. So this will be a post on http status codes in express, getting it, setting it and some status code use examples.
 
 <!-- more -->
 
