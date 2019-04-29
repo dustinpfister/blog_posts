@@ -14,27 +14,32 @@ router.post('*', [
             req.data.posts.forEach((post, i) => {
 
                 post.weights = [{
-                        name: 'key words total * 5',
-                        weight: post.keyWords.total * 5
-                    }, {
-                        name: 'full match * 100',
-                        weight: post.fullMatch.count * 100
-                    }, {
-                        name: 'post total word count',
-                        weight: post.wc / 10
-                    }, {
-                        name: '(key words percent) * (key words total * 5 + full match * 100)',
-                        weight: post.keyWords.wcPer * (post.keyWords.total * 5 + post.fullMatch.count * 100)
-                    }, {
-                        name: 'key words in post * 1000',
-                        weight: post.keyWords.inPost * 1000
+                        name: '( pwc / 10 + ( fmc * 100 + kwt * 5 ) * wip ) * wcPer',
+                        weight: (post.wc / 10 + (post.fullMatch.count * 100 + post.keyWords.total * 5) *
+                            post.keyWords.inPost) * post.keyWords.wcPer
                     }
                 ];
 
-                //post.weight_word = post.keyWords.total * 5;
-                //post.weight_full = post.fullMatch.count * 100;
-                //post.weight = post.wc / 10 + (post.weight_full + post.weight_word) * post.keyWords.inPost;
-                //post.weight *= post.keyWords.wcPer;
+                /*
+                post.weights = [{
+                name: 'key words total * 5',
+                weight: post.keyWords.total * 5
+                }, {
+                name: 'full match * 100',
+                weight: post.fullMatch.count * 100
+                }, {
+                name: 'post total word count',
+                weight: post.wc / 10
+                }, {
+                name: '(key words percent) * (key words total * 25 + full match * 500)',
+                weight: post.keyWords.wcPer * (post.keyWords.total * 25 + post.fullMatch.count * 500)
+                }, {
+                name: 'key words in post * 1000',
+                weight: post.keyWords.inPost * 100
+                }
+                ];
+                 */
+
             });
             next();
         },

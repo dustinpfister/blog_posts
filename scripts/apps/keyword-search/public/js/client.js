@@ -20,12 +20,13 @@ el_search_button.addEventListener('click', function (e) {
             }
 
             html += '<h3>' + (i + 1) + ') ' + post.fn + '</h3>' +
-            '<span>total weight: ' + post.weight + '<\/span><br>' +
+            '<span>total weight: ' + post.weight.toFixed(2) + '<\/span><br>' +
+            '<span>key words percent: ' + Math.round(post.keyWords.wcPer * 100) + '<\/span><br>' +
             '<span style=\"color:' + color_wc + ';\">post total word count: ' + post.wc + '<\/span><br>' +
             '<ul><li>weights:</span><ul>';
 
             post.weights.forEach((w) => {
-                html += '<li>' + w.name + ' : ' + w.weight +'<\/li>';
+                html += '<li>' + w.name + ' : ' + w.weight.toFixed(2) + '<\/li>';
             });
 
             html += '<\/ul><\/li><\/ul><hr>';
