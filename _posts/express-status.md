@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 429
-updated: 2019-04-29 20:01:05
-version: 1.8
+updated: 2019-04-29 20:09:30
+version: 1.9
 ---
 
 In express status codes can be both get and set with properties and methods in an express [response object](/2019/04/27/express-response-objects/). There is the res.statusCode property than can be used to find out the current [http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes), and the [res.status](https://expressjs.com/en/api.html#res.status) method that can be used to set that code. In addition there is the res.sendStatus method that can be used to just set a status code and end the request without sending any data in the same way as the express end response method. So this will be a post on http status codes in express, getting it, setting it and some status code use examples.
@@ -127,3 +127,7 @@ app.listen(app.get('port'), () => console.log('app is up on port: ' + app.get('p
 The example generates an index of files that are in the current working directory when the root path is visited. All other get requests result in the example attempting to read a file at the path relative to the current working directory. In the event that the file is not there, or an attempt is made to read a directory, an error occurs resulting in a 500 error status being sent.
 
 A 500 status code is very general of course, it just means an internal or server side error has occurred.
+
+## 4 - Conclusion
+
+In express status codes can be set with the res.status response method, and the current http status can always be found via the res.statusCode property. Of course there is much more to write about when it comes to the many different status codes, and writing much more complicated express middlewares and client systems. I wanted to at least start a post on this subject though, and hopefully I will get around to expanding on this at some point as well. In the mean time you might want to check out my main post on express for more content on expressjs related topics.
