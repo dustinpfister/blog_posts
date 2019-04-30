@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 429
-updated: 2019-04-29 20:09:30
-version: 1.9
+updated: 2019-04-29 20:11:09
+version: 1.10
 ---
 
 In express status codes can be both get and set with properties and methods in an express [response object](/2019/04/27/express-response-objects/). There is the res.statusCode property than can be used to find out the current [http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes), and the [res.status](https://expressjs.com/en/api.html#res.status) method that can be used to set that code. In addition there is the res.sendStatus method that can be used to just set a status code and end the request without sending any data in the same way as the express end response method. So this will be a post on http status codes in express, getting it, setting it and some status code use examples.
@@ -130,4 +130,4 @@ A 500 status code is very general of course, it just means an internal or server
 
 ## 4 - Conclusion
 
-In express status codes can be set with the res.status response method, and the current http status can always be found via the res.statusCode property. Of course there is much more to write about when it comes to the many different status codes, and writing much more complicated express middlewares and client systems. I wanted to at least start a post on this subject though, and hopefully I will get around to expanding on this at some point as well. In the mean time you might want to check out my main post on express for more content on expressjs related topics.
+In express status codes can be set with the res.status response method, and the current http status can always be found via the res.statusCode property. Of course there is much more to write about when it comes to the many different status codes, and writing much more complicated [express middlewares](/2018/06/25/express-middleware/) and client systems. I wanted to at least start a post on this subject though, and hopefully I will get around to expanding on this at some point as well. In the mean time you might want to check out my [main post on express](/2018/06/12/express/) for more content on expressjs related topics.
