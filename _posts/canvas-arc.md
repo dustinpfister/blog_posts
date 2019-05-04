@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-04-22 12:35:59
-version: 1.11
+updated: 2019-05-03 20:50:20
+version: 1.12
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -85,7 +85,11 @@ ctx.closePath();
 ctx.stroke();
 ```
 
-## 4 - Using a custom method for drawing a canvas arc circle
+## 4 - Drawing chords and just plain arcs
+
+Drawing both chords and just plain arcs can be achieved with the canvas arc method by just simply including or excluding the closePath context method. The close path method will draw the final line back to the starting point, while not calling it will not do that of course.
+
+## 5 - Using a custom method for drawing a canvas arc circle
 
 It is fun to write these kind of methods now and then to gain a better degree of control over how the arc, or circle is drawn. Many canvas libraries have a polygon method built in, but with plain vanilla js it is not to hard to start to get together some methods for drawing a polygon with a set number or points.
 
