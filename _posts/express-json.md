@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 434
-updated: 2019-05-04 18:41:27
-version: 1.2
+updated: 2019-05-04 18:45:22
+version: 1.3
 ---
 
 In [express json](https://expressjs.com/en/api.html#res.json) can be sent from the server to a client with response methods like res.json, it can also be received from clients by making post requests from a client system, and then parsing the incoming body with the [body parser](/2018/05/27/express-body-parser/) middleware. In this post I will be coving some basics and more about expressjs and json.
@@ -14,6 +14,8 @@ In [express json](https://expressjs.com/en/api.html#res.json) can be sent from t
 <!-- more -->
 
 ## 1 - Express JSON - Sending JSON from expressjs
+
+To send JSON from a server side script with expressjs just use the json response method, by just calling the method and passing the object that you want sent as JSON as the first argument.
 
 ```js
 let express = require('express'),
@@ -30,6 +32,8 @@ app.get('/', (req, res) => {
 // listen
 app.listen(app.get('port'), () => console.log('app up on port: ' + app.get('port')));
 ```
+
+Sending JSON from a server to a client is simple and straight forward enough, but posting JSON from a client to a server is where things can become a little more complicated actually.
 
 ## 2 - Express JSON - Receiving from a client parsing and sending
 
