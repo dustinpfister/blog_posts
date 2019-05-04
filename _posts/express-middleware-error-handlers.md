@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 433
-updated: 2019-05-03 20:27:02
-version: 1.2
+updated: 2019-05-03 21:12:11
+version: 1.3
 ---
 
 With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html). When writing an error handling middleware for express the process of doing so is more or less the same as writing any other middleware in express only there are four arguments to be aware of rather than the usual three.
@@ -40,6 +40,8 @@ app.listen(8080);
 To define an error handling middleware in express just do so in the same way as any other middleware, but with just one little difference. The first argument in the function will be for the error object, and not the request object.
 
 ## 2 - Express Error handing middleware async example
+
+When it comes to anything async that is happening in a express middleware that might result in an error, the error should be passed as an argument to the next method.
 
 ```js
 let express = require('express'),
