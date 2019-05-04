@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 434
-updated: 2019-05-04 18:45:22
-version: 1.3
+updated: 2019-05-04 18:50:11
+version: 1.4
 ---
 
 In [express json](https://expressjs.com/en/api.html#res.json) can be sent from the server to a client with response methods like res.json, it can also be received from clients by making post requests from a client system, and then parsing the incoming body with the [body parser](/2018/05/27/express-body-parser/) middleware. In this post I will be coving some basics and more about expressjs and json.
@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 app.listen(app.get('port'), () => console.log('app up on port: ' + app.get('port')));
 ```
 
-Sending JSON from a server to a client is simple and straight forward enough, but posting JSON from a client to a server is where things can become a little more complicated actually.
+Sending JSON from a server to a client is simple and straight forward when using the express JSON response method to do so. The reason why is that the express JSON response method is a convenience method that sets the proper content type response header, and uses the [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) the object for you.
 
 ## 2 - Express JSON - Receiving from a client parsing and sending
 
