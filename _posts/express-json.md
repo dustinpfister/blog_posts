@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 434
-updated: 2019-05-04 18:50:11
-version: 1.4
+updated: 2019-05-04 19:05:44
+version: 1.5
 ---
 
 In [express json](https://expressjs.com/en/api.html#res.json) can be sent from the server to a client with response methods like res.json, it can also be received from clients by making post requests from a client system, and then parsing the incoming body with the [body parser](/2018/05/27/express-body-parser/) middleware. In this post I will be coving some basics and more about expressjs and json.
@@ -34,6 +34,34 @@ app.listen(app.get('port'), () => console.log('app up on port: ' + app.get('port
 ```
 
 Sending JSON from a server to a client is simple and straight forward when using the express JSON response method to do so. The reason why is that the express JSON response method is a convenience method that sets the proper content type response header, and uses the [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) the object for you.
+
+### 1.1 - Sending JSON the hard way
+
+To gain a deeper understating and appreciation for the res.json response method take into account the following example that does the same thing as the above one.
+
+```js
+let express = require('express'),
+app = express();
+app.set('port', process.env.PORT || process.argv[2] || 8080);
+// path for root
+app.get('/', (req, res) => {
+    // json can also be sent this way, but it is a bit more involved
+    try {
+        let json = JSON.stringify({
+                foo: 'bar'
+            });
+        res.set('Content-Type', 'application/json ');
+        res.send(json);
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+ 
+});
+// listen
+app.listen(app.get('port'), () => console.log('app up on port: ' + app.get('port')));
+```
+
+Express has a few methods like this that help make code cleaner, sometimes they might not always be the best choice though. If for some reason you want to have control over the Content-Type header you would have to do something like this.
 
 ## 2 - Express JSON - Receiving from a client parsing and sending
 
