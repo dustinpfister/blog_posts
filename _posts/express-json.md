@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 434
-updated: 2019-05-04 17:47:41
-version: 1.1
+updated: 2019-05-04 18:41:27
+version: 1.2
 ---
 
-In express json can be sent from the server to a client with response methods like res.json, it can also be received from clients by baking post requests from a client system, and then parsing the incoming body with the body parser middleware. In this post I will be coving some basics and more about expressjs and json.
+In [express json](https://expressjs.com/en/api.html#res.json) can be sent from the server to a client with response methods like res.json, it can also be received from clients by making post requests from a client system, and then parsing the incoming body with the [body parser](/2018/05/27/express-body-parser/) middleware. In this post I will be coving some basics and more about expressjs and json.
 
 <!-- more -->
 
