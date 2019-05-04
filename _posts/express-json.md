@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 434
-updated: 2019-05-04 19:48:50
-version: 1.8
+updated: 2019-05-04 19:52:06
+version: 1.9
 ---
 
 In [express json](https://expressjs.com/en/api.html#res.json) can be sent from the server to a client with response methods like res.json, it can also be received from clients by making post requests from a client system, and then parsing the incoming body with the [body parser](/2018/05/27/express-body-parser/) middleware. In this post I will be coving some basics and more about expressjs and json.
@@ -65,7 +65,9 @@ Express has a few methods like this that help make code cleaner, sometimes they 
 
 ## 2 - Express JSON - Receiving from a client parsing and sending
 
-There is sending JSON from a server to a client as a response to a request from that client, and then there is sending JSON from a client system to a server as a payload by way of a [POST request](/2019/04/17/express-post/). There are a number of ways to send a post request from a client system to express when it comes to what is available in terms of front end frameworks. However when it comes to plain native javaScript the tired yet true way of sending one is to use XMLHttpRequest.
+There is sending JSON from a server to a client as a response to a request from that client, and then there is sending JSON from a client system to a server as a payload by way of a [POST request](/2019/04/17/express-post/). There are a number of ways to send a post request from a client system to express when it comes to what is available in terms of front end frameworks. However when it comes to plain native javaScript the tired yet true way of sending one is to use [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/).
+
+So in this example I just have a basic client system that just sends a post request, and then the body parser middleware is then used to parse the body of that request into a workable object via the req.body property of a request object. The incoming payload can then be used.
 
 ```js
 let express = require('express'),
