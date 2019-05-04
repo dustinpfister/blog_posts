@@ -5,11 +5,64 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 433
-updated: 2019-05-03 19:52:05
-version: 1.0
+updated: 2019-05-03 20:20:47
+version: 1.1
 ---
 
 With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html). When writing an error handling middleware for express the process of doing so is more or less the same as writing any other middleware in express only there are four arguments to be aware of rather than the usual three.
 
 <!-- more -->
 
+## 1 - Express Error handing middleware sync example
+
+```js
+let express = require('express'),
+app = express();
+ 
+app.get('/', (req, res, next) => {
+ 
+    throw new Error('My Custom Error');
+ 
+});
+ 
+app.use((err, req, res, next) => {
+    let html = '<h1>Custom Error Handler<\/h1>' +
+        '<p>ERROR MESSAGE: ' + err.message + '<\/p>' +
+        '<p>STATUS CODE: ' + res.statusCode + '<\/p>';
+    res.send(html);
+});
+ 
+app.listen(8080);
+```
+
+## 2 - Express Error handing middleware async example
+
+```js
+let express = require('express'),
+fs = require('fs'),
+app = express();
+ 
+app.get('/', (req, res, next) => {
+    fs.readFile('./nofile.txt', 'utf8', (err, data) => {
+        if (err) {
+            next(err);
+        } else {
+            res.send(data);
+        }
+    })
+});
+ 
+app.use((err, req, res, next) => {
+ 
+    res.status(500);
+ 
+    let html = '<h1>500 Interal Service Error<\/h1>' +
+        '<p>ERROR MESSAGE: ' + err.message + '<\/p>' +
+        '<p>STATUS CODE: ' + res.statusCode + '<\/p>';
+ 
+    res.send(html); // 'My Custom Error'
+ 
+});
+ 
+app.listen(8080);
+```
