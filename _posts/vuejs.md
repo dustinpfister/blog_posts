@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2019-05-05 21:15:31
-version: 1.4
+updated: 2019-05-05 21:18:42
+version: 1.5
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vue starting](https://vuejs.org/v2/guide/) out topics. In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs.
@@ -29,6 +29,8 @@ $ npm install express --save
 $ mkdir public
 $ mkdir middleware
 ```
+
+In the public folder I also made an forpost folder that will contain folders for each post I write for vue.js including this one, as well as the js folder as well to hold vue.js and any other front end javaScript that I might use across examples.
 
 ```
 $ cd public
