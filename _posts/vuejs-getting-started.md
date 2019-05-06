@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2019-05-05 21:25:59
-version: 1.8
+updated: 2019-05-06 12:23:04
+version: 1.9
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vue starting](https://vuejs.org/v2/guide/) out topics. In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs.
@@ -56,7 +56,9 @@ $ cd forpost
 $ mkdir vuejs-getting-started
 ```
 
-### 2.2 - The hello-world.html file
+### 2.2 - The vuejs hello-world example
+
+So here I have a single html file that contains both the html code as well as a script tag that links to the development version of vuejs that I am using so far. In addition I also have a script tag with some javaScript that constitutes the hello world example.
 
 ```html
 <html>
