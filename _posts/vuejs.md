@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2019-05-05 21:06:18
-version: 1.2
+updated: 2019-05-05 21:10:12
+version: 1.3
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vue starting](https://vuejs.org/v2/guide/) out topics. In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs.
@@ -14,6 +14,8 @@ So this week I think I will be starting a new collection of posts on [vuejs](htt
 <!-- more -->
 
 ## 1 - vue start
+
+There is more than one way to get started with vue.js, some ways might be easier, others maybe not so easy. When I started experimenting with vue.js I made it into a bit of a project involving some back end code with express. After all what is a front end javaScript framework without at least some back end code as well? 
 
 ### 1.1 - setup
 
