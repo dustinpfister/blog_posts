@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2019-05-05 21:10:12
-version: 1.3
+updated: 2019-05-05 21:15:31
+version: 1.4
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vue starting](https://vuejs.org/v2/guide/) out topics. In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs.
@@ -17,7 +17,9 @@ So this week I think I will be starting a new collection of posts on [vuejs](htt
 
 There is more than one way to get started with vue.js, some ways might be easier, others maybe not so easy. When I started experimenting with vue.js I made it into a bit of a project involving some back end code with express. After all what is a front end javaScript framework without at least some back end code as well? 
 
-### 1.1 - setup
+### 1.1 - vuejs test folder setup
+
+So I started out by making a new folder called test_vuejs and made it the current working directory. I then did the usual npm init for any project folder that is going to contain at least some node.js code. In then installed express and added it to my package.json folder. I then also added a public folder that will contain vuejs and all other front end assets that will be hosted by express.static. I also made a middleware folder that will contain express middleware that will work with vue.js examples, as well as help with the automation of the creating of an index.
 
 ```
 $ mkdir test_vuejs
