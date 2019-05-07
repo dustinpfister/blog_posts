@@ -5,18 +5,33 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 431
-updated: 2019-05-07 18:03:11
-version: 1.6
+updated: 2019-05-07 19:19:54
+version: 1.7
 ---
 
 I want to write a few posts on [express examples](/2019/04/30/express-example/) that are actual full working application examples, rather than just simple hello world type examples. There is of course the typical todo app that is often the case, but I want to make a few more that go beyond that into other examples as well. As of late I have been transitioning from using windows to linux, and so far have been having a hard time finding a text editor that stacks up to notepad++ which I have grown accustomed to in windows. So why not make my own text editor on top of node.js, and express that I can take with me to any operating system that I can get node.js installed on? Sounds like a good idea to me compared to being dependent on a windows exclusive app, so I put together a quick basic [expressjs](https://expressjs.com/) powered text editor example.
 
 <!-- more -->
 
-## 1 - What to know before hand
+## 1 - What to know about this Express Example before hand
 
 For the sake of this post I am thinking more in terms of an express example that is starting to look like an actual project of one sort or another rather than a more basic example. If you are new to express you might want to start with my getting started post on express, and also my main post on express as well. I also assume that you have loged a fair amount of time playing around with javaScript and node.js in general, I will not be getting into that or anything else that is outside the scope of this post.
 
+### 1.1 - Setup
+
+For this project I am just using express when it comes to node.js dependencies, and I am just using a vanilla js client system. In the root of the project folder I have a folder for [express middleware](/2018/06/15/express-middleware/), and a public folder for all assets the compose the client system. 
+
+```
+$ mkdir express-example-text-editor
+$ cd express-example-text-editor
+$ npm init
+$ npm install express@4.16.4 --save
+$ mkdir middleware
+$ mkdir public
+$ cd public
+$ mkdir html
+$ mkdir js
+```
 
 ## 2 - The /app.js file
 
