@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 431
-updated: 2019-05-07 19:36:50
-version: 1.8
+updated: 2019-05-07 19:44:06
+version: 1.9
 ---
 
 I want to write a few posts on [express examples](/2019/04/30/express-example/) that are actual full working application examples, rather than just simple hello world type examples. There is of course the typical todo app that is often the case, but I want to make a few more that go beyond that into other examples as well. As of late I have been transitioning from using windows to linux, and so far have been having a hard time finding a text editor that stacks up to notepad++ which I have grown accustomed to in windows. So why not make my own text editor on top of node.js, and express that I can take with me to any operating system that I can get node.js installed on? Sounds like a good idea to me compared to being dependent on a windows exclusive app, so I put together a quick basic [expressjs](https://expressjs.com/) powered text editor example.
@@ -79,7 +79,11 @@ I am then using a bunch of middleware methods that I have made and placed in my 
 
 ## 3 - The /middleware folder
 
+The middleware folder is where I offset much of the logic for getting the current file, saving the current file, and checking for a proper request body and so forth. By breaking things down into fine grain methods and files, it helps to keep things better structured.
+
 ### 3.1 - /middleware/check_body.js
+
+Here I have my body check middleware in this file I am just checking for the presence of a request body, and creating an object that will be a reply for all post requests made from the client system to the path that this middleware is mounted to. In the event that a body is not present a 400 status is sent.
 
 ```js
 let path = require('path'),
@@ -122,6 +126,8 @@ module.exports = [
     }
 ]
 ```
+
+In the event that a request body is there, application settings will be updated here if values are given. In addition if not action property is given that will also send a 400 status as well. All post requests sent to the path should have an action property that will be used to know which action should be preformed.
 
 ### 3.2 - /middleware/action_open.js
 
