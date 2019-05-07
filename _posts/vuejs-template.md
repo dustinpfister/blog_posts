@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 437
-updated: 2019-05-07 15:35:13
-version: 1.6
+updated: 2019-05-07 15:37:51
+version: 1.7
 ---
 
 The [vue template option](https://vuejs.org/v2/api/#template) is one of the DOM options when making an instance of Vue in [vuejs](https://vuejs.org/). It is a way of defining a template that will be used in place of any content that might be in the mount point set with the [vue el](/2019/05/06/vuejs-el/) option. There are a few options when it comes to defining a template, but in this post I will just be writing about the string and X-Template options for templates in vuejs.
@@ -41,7 +41,7 @@ Using a string template just simply involves setting a string form of the templa
 
 ## 2 - vue templates on x-template form
 
-Another option is to use an x-template this will require a script tag, but with the type attribute of the script tag set to 'text/x-template'. This is a nice option becuase it allows for me to define the html of the template in just pure raw html form.
+Another option is to use an x-template this will require a script tag, but with the type attribute of the script tag set to 'text/x-template'. This is a nice option because it allows for me to define the html of the template in just pure raw html form.
 
 ```html
 <html>
@@ -67,3 +67,7 @@ Another option is to use an x-template this will require a script tag, but with 
   </body>
 </html>
 ```
+
+## 3 - Conclusion
+
+Hope this post helps with the basics of templates in vuejs. As of this writing I am still fairly new with vuejs, so I will likely update this post at some point as my content on vuejs grows.
