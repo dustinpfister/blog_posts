@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 431
-updated: 2019-05-07 19:19:54
-version: 1.7
+updated: 2019-05-07 19:36:50
+version: 1.8
 ---
 
 I want to write a few posts on [express examples](/2019/04/30/express-example/) that are actual full working application examples, rather than just simple hello world type examples. There is of course the typical todo app that is often the case, but I want to make a few more that go beyond that into other examples as well. As of late I have been transitioning from using windows to linux, and so far have been having a hard time finding a text editor that stacks up to notepad++ which I have grown accustomed to in windows. So why not make my own text editor on top of node.js, and express that I can take with me to any operating system that I can get node.js installed on? Sounds like a good idea to me compared to being dependent on a windows exclusive app, so I put together a quick basic [expressjs](https://expressjs.com/) powered text editor example.
@@ -35,10 +35,11 @@ $ mkdir js
 
 ## 2 - The /app.js file
 
+So in the main app.js file in the root of the project folder I am just using express to create an instance of an app object. I am also using the built in [path module](/2017/12/27/nodejs-paths/) as well here. The [app.set](/2019/04/18/express-set/) method is then used to set some application settings for port, the current working directory and so forth. I then use [express static](/2018/05/24/express-static/) to host static assets in the public folder that will compose the client system, and I am also using the built in [body parser](/2018/05/27/express-body-parser/) middleware to parse incoming json from the client system as well.
+
 ```js
 let express = require('express'),
 path = require('path'),
-fs = require('fs'),
 app = express();
  
 app.set('dir', process.cwd());
@@ -73,6 +74,8 @@ app.post('/data',
  
 app.listen(app.get('port'), () => console.log('example text editor is up on port: ' + app.get('port')));
 ```
+
+I am then using a bunch of middleware methods that I have made and placed in my middleware folder. These preform all kinds of actions when it such as getting the current file, saving the current file, and listing the contents of the current directory.
 
 ## 3 - The /middleware folder
 
