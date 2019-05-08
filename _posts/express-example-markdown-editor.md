@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 13:35:36
-version: 1.11
+updated: 2019-05-08 13:38:14
+version: 1.12
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -177,6 +177,8 @@ router.use([
 I also update application settings with any values that may be present in the object as well.
 
 ### 2.3 - The /middleware/action.js file
+
+This middleware calls another middleware method depending on the action property value. If the middleware method does not exist then as one would expect the method responds to the request with a 400 http status.
 
 ```js
 let express = require('express'),
