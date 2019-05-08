@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 12:44:26
-version: 1.3
+updated: 2019-05-08 12:46:06
+version: 1.4
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -19,7 +19,7 @@ This [express example](/2019/04/30/express-example/) requires at least some back
 
 ## 2 - The Main app.js file
 
-In the main app.js file I creates the main express app object instance, and add some application settings with the app.set method. These settings have to do with what port to listen on, as well at the current working directory in which mark down files are to be found.
+In the main app.js file I creates the main express app object instance, and add some application settings with [the app.set](/2019/04/18/express-set/) method. These settings have to do with what port to listen on, as well at the current working directory in which mark down files are to be found.
 
 Here I am also using the [express static](/2018/05/24/express-static/) built in middleware as well as a way to host all static assets for the client system. I am also using the built in [body parser](/2018/05/27/express-body-parser/) middleware as a way to parse incoming [post request](/2019/04/17/express-post/) body's from the client system as well.
 
