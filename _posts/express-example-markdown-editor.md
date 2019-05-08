@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 13:31:15
-version: 1.10
+updated: 2019-05-08 13:35:36
+version: 1.11
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -108,6 +108,7 @@ Beyond the use of marked I am just using the node.js built in file system module
 
 ### 2.2 - The /middleware/body_check.js file
 
+Here I have a middleware that is the first of many when it comes to handing post requests that are made from the client system. Here I create an object that will untamitly be the response for the post request, I also check for a post body, and if it has an action property.
 
 ```js
 let express = require('express'),
@@ -172,6 +173,8 @@ router.use([
         }
     ]);
 ```
+
+I also update application settings with any values that may be present in the object as well.
 
 ### 2.3 - The /middleware/action.js file
 
