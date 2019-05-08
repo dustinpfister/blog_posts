@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 13:43:50
-version: 1.14
+updated: 2019-05-08 13:45:21
+version: 1.15
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -236,6 +236,8 @@ Actions can be simple lik this one or far more complex, it just so happens that 
 
 ### 2.6 - The /middleware/action_save.js file
 
+Here I have the middleware that will save the current file with the data that is given from the client system.
+
 ```js
 let express = require('express'),
 path = require('path'),
@@ -266,6 +268,8 @@ module.exports = (req, res, next) => {
 };
 ```
 ### 2.4 - The /middleware/action_list.js file
+
+Here I have a middleware that will send back a list of all files in the current directory.
 
 ```js
 let express = require('express'),
