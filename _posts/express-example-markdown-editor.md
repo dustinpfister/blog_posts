@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 18:30:12
-version: 1.18
+updated: 2019-05-08 18:51:06
+version: 1.19
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -312,3 +312,15 @@ module.exports = (req, res, next) => {
 
 };
 ```
+
+## 3 - The public folder
+
+This express example makes use of just a plain old vanilla js client system. In this section I will be quickly going over the state of that system.
+
+### 3.1 - The /public/html/index.html file
+### 3.2 - The /public/html/edit.css file
+### 3.3 - The /public/js/get.js file
+### 3.4 - The /public/js/menu.js file
+### 3.5 - The /public/js/client.js file
+
+## 4 - The _posts folder
