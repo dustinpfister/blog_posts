@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 18:51:06
-version: 1.19
+updated: 2019-05-08 18:54:16
+version: 1.20
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -318,9 +318,281 @@ module.exports = (req, res, next) => {
 This express example makes use of just a plain old vanilla js client system. In this section I will be quickly going over the state of that system.
 
 ### 3.1 - The /public/html/index.html file
+
+```html
+<html>
+<head>
+  <title>Express Example Markdown Editor</title>
+  <link rel="stylesheet" type="text/css" href="edit.css">
+</head>
+<body>
+<div class="wrap_main">
+<div class="list">
+  <br><br><iframe id="list_files" class="list_files"></iframe>
+</div>
+ <div class="editor">
+  <textarea id="text_edit"></textarea>
+  <br><br>dir : <input id="text_dir" type="text">
+     <input id="text_list" type="button" value="list">
+  <br><br>fn  : <input id="text_fn" type="text">
+    <input id="text_open" type="button" value="open">
+    <input id="text_save" type="button" value="save">
+  <br><br><hr>
+    <span id="text_emess" class="text_emess"></span>
+    <span id="text_mess" class="text_mess"></span>
+</div>
+<div class="viewer">
+  <iframe id="viewer_md" src="/html"></iframe>
+</div>
+</div>
+<script src="/js/get.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/client.js"></script>
+</body>
+</html>
+```
+
 ### 3.2 - The /public/html/edit.css file
+
+```css
+* {
+	padding:0px;
+	margin:0px;
+}
+div {
+	position:relative;
+	float:left;
+}
+.wrap_main{
+	width:98%;
+	padding:1%;
+}
+.list{
+	width:20%;
+}
+#list_files{
+	width:100%;
+}
+.editor{
+	width:40%;
+	padding:1%;
+}
+#text_edit{
+	width:100%;
+	min-height:400px;
+}
+.viewer{
+	width:38%;
+	
+}
+#viewer_md{
+	width:100%;
+	height:400px;
+}
+```
+
 ### 3.3 - The /public/js/get.js file
+
+```js
+var get = function (sOpt) {
+ 
+    // if STRING get is a wrapper for document.getElementById
+    if (typeof sOpt === 'string') {
+ 
+        return document.getElementById(sOpt);
+ 
+    } else {
+ 
+        // else an OBJECT is assumed and used to make http requests
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/action', true);
+ 
+        sOpt = sOpt || {};
+        sOpt.payload = sOpt.payload || {};
+        sOpt.action = sOpt.action || 'open';
+        sOpt.onDone = sOpt.onDone || function (res,resObj) {
+            console.log(resObj);
+        };
+        sOpt.onError = sOpt.onError || function (e) {
+            console.log(e);
+        };
+ 
+        // what to do for ready state
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                try {
+                    var resObj = JSON.parse(this.response);
+                    if (this.status === 200) {
+                        sOpt.onDone.call(this, resObj.data, resObj);
+                    } else {
+                        sOpt.onError.call(this, resObj.mess, resObj);
+                    }
+                } catch (e) {
+                    sOpt.onError.call(this, 'JSON Parse Error in get.js', {});
+                }
+            }
+        };
+ 
+        // in this project all requests will be for JSON data
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.send(JSON.stringify(sOpt.payload));
+    }
+
+};
+```
+
 ### 3.4 - The /public/js/menu.js file
+
+```js
+// Module to help work with the
+// back end system for the editor
+var Menu = (function () {
+ 
+    // set / clear messages
+    var mess = (function () {
+        var el_mess = get('text_mess'),
+        el_eMess = get('text_emess');
+        var func = function (mess) {
+            el_mess.innerHTML = mess;
+        };
+        func.eMess = function (eMess) {
+            el_eMess.innerHTML = eMess;
+        };
+        func.clear = function () {
+            el_mess.innerHTML = '';
+            el_eMess.innerHTML = '';
+        };
+        return func;
+    }
+        ());
+ 
+    // set the dir and fn input elements values to
+    // what is in the given reply object
+    var setInputs = function (reply) {
+        get('text_dir').value = reply.dir;
+        get('text_fn').value = reply.fn;
+    };
+ 
+    // public api
+    var api = {};
+    api.noop = function () {};
+    api.done = function (text) {
+        console.log(text)
+    };
+    api.error = function (eMess) {
+        console.log(eMess);
+        mess.eMess(eMess);
+    }
+ 
+    // Open a file
+    api.Open = function (opt) {
+        // if null for dir or fn the default will
+        // be whatever is set server side
+        opt = opt || {};
+        mess.clear();
+        get({
+            payload: {
+                action: 'open',
+                dir: opt.dir || null,
+                fn: opt.fn || null
+            },
+            onDone: function (text, resObj) {
+                get('text_edit').value = text;
+                get('viewer_md').contentWindow.location.reload();
+                mess(resObj.mess);
+                setInputs(resObj);
+            },
+            onError: api.error
+        });
+    };
+ 
+    // save the current file
+    api.Save = function (opt) {
+        opt = opt || {};
+        mess.clear();
+        get({
+            payload: {
+                action: 'save',
+                dir: opt.dir || null,
+                fn: opt.fn || null,
+                data: get('text_edit').value
+            },
+            onDone: function (text, resObj) {
+                get('text_edit').value = text;
+                get('viewer_md').contentWindow.location.reload();
+                mess(resObj.mess);
+            },
+            onError: api.error
+        });
+ 
+    };
+ 
+    // List files in the current dir
+    var emptyList = function () {
+        var list = get('list_files').contentWindow.document.body;
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
+        }
+    };
+    api.List = function (opt) {
+        opt = opt || {};
+        mess.clear();
+        get({
+            payload: {
+                action: 'list',
+                dir: opt.dir || null,
+            },
+            onDone: function (files, resObj) {
+                emptyList();
+                var list = get('list_files');
+                files.forEach(function (fn) {
+                    var item = document.createElement('p');
+                    item.innerText = fn;
+                    item.addEventListener('click', function (e) {
+                        // open the file clicked
+                        api.Open({
+                            fn: e.target.innerText
+                        })
+                    })
+                    list.contentWindow.document.body.appendChild(item);
+                });
+            },
+            onError: api.error
+        });
+ 
+    };
+ 
+    return api;
+ 
+}
+    ());
+```
+
 ### 3.5 - The /public/js/client.js file
+
+```js
+// open the current file
+Menu.Open();
+Menu.List();
+ 
+get('text_open').addEventListener('click', function (e) {
+    Menu.Open({
+        fn: get('text_fn').value,
+        dir: get('text_dir').value
+    });
+});
+ 
+get('text_save').addEventListener('click', function (e) {
+    Menu.Save({
+        fn: get('text_fn').value
+    });
+});
+ 
+get('text_list').addEventListener('click', function (e) {
+    Menu.List({
+        dir: get('text_dir').value
+    });
+});
+```
 
 ## 4 - The _posts folder
