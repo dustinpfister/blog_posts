@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 13:29:03
-version: 1.9
+updated: 2019-05-08 13:31:15
+version: 1.10
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -103,6 +103,8 @@ router.get('*', (req, res) => {
 
 });
 ```
+
+Beyond the use of marked I am just using the node.js built in file system module to read the current markdown file, there are other options for doing so as well such as fs-extra, but I do not want to pull to much focus away from the fact that this is an express example, and not an example on other node.js dependencies.
 
 ### 2.2 - The /middleware/body_check.js file
 
