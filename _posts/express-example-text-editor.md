@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 431
-updated: 2019-05-07 22:06:52
-version: 1.20
+updated: 2019-05-07 22:08:13
+version: 1.21
 ---
 
 I want to write a few posts on [express examples](/2019/04/30/express-example/) that are actual full working application examples, rather than just simple hello world type examples. There is of course the typical todo app that is often the case, but I want to make a few more that go beyond that into other examples as well. As of late I have been transitioning from using windows to linux, and so far have been having a hard time finding a text editor that stacks up to notepad++ which I have grown accustomed to in windows. So why not make my own text editor on top of node.js, and express that I can take with me to any operating system that I can get node.js installed on? Sounds like a good idea to me compared to being dependent on a windows exclusive app, so I put together a quick basic [expressjs](https://expressjs.com/) powered text editor example.
@@ -403,7 +403,7 @@ var get = function (sOpt) {
 
 ### 4.4 - / public/js/menu.js
 
-Here I have another module that I worked out that has to do with making all the various requests to the express middleware backends that I put togeather.
+Here I have another module that I worked out that has to do with making all the various requests to the express middleware back ends that I put together.
 
 ```js
 // Module to help work with the
@@ -544,6 +544,8 @@ var Menu = (function () {
 ```
 
 ### 4.5 - / public/js/client.js
+
+An additional javaScript file that attaches some event handers, and makes the initial calls for certain methods in the menu module.
 
 ```js
 // open the current file
