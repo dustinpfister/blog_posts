@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 13:24:29
-version: 1.7
+updated: 2019-05-08 13:27:13
+version: 1.8
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -70,6 +70,8 @@ In this exmpress example I am using my own external express middleware methods f
 
 
 ### 2.1 - The /middleware/md_html.js file
+
+Here Is the middleware that I worked out that is used to parse the current mark down file to plain old html. In this middleware I am using marked.js, the only other dependency for this express example to do so. There is much more to write about when it comes to using marked.js, but I have all ready wrote a post on marekd, so I will not be getting into detail about that here.
 
 ```js
 let express = require('express'),
