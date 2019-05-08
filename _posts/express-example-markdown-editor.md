@@ -5,7 +5,7 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 11:18:04
+updated: 2019-05-08 12:38:12
 version: 1.1
 ---
 
@@ -19,10 +19,13 @@ This [express example](/2019/04/30/express-example/) requires at least some back
 
 ## 2 - The Main app.js file
 
+In the main app.js file I creates the main express app object instance, and add some application settings with the app.set method. These settings have to do with what port to listen on, as well at the current working directory in which mark down files are to be found.
+
+Here I am also using the express static built in middleware as well as a way to host all static assets for the client system.
+
 ```js
 let express = require('express'),
 path = require('path'),
-fs = require('fs'),
 app = express();
  
 app.set('dir', path.join(process.cwd(), '_posts'));
