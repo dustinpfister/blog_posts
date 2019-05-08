@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 12:48:25
-version: 1.5
+updated: 2019-05-08 12:59:26
+version: 1.6
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -63,3 +63,7 @@ app.listen(app.get('port'), () => console.log('example markdown editor is up on 
 ```
 
 In addition to built in middleware I am also using much of my own middleware methods for reading the current file at the current directory, parsing the markdown to html and sending it to the client.
+
+## 2 - The middleware folder.
+
+In this exmpress example I am using my own external express middleware methods for preforming all kinds of tasks that I want to accomplish via node.js rather than the browser. To keep my main app.js file from becoming a long monolithic block of code that is hard to follow in a blog post I have broken things down into many external files, and placed them in a middleware folder. In this section I will be going over these including the one the parses the mark down to plain html.
