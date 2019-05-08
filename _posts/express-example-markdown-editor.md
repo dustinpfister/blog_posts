@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 18:23:51
-version: 1.16
+updated: 2019-05-08 18:28:30
+version: 1.17
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -20,6 +20,21 @@ This [express example](/2019/04/30/express-example/) requires at least some back
 ### 1.1 - Setup
 
 This project involves just the use of express and marked when it comes to node.js dependences. All other code is just pure vanilla js code.
+
+```
+$ mkdir express-example-markdown-editor
+$ cd express-example-markdown-editor
+$ npm init
+$ npm install express@4.16.4 --save
+$ npm install marked@0.6.2 --save
+$ mkdir middleware
+$ mkdir public
+$ mkdir _posts
+$ cd public
+$ mkdir html
+$ mkdir js
+
+```
 
 ## 2 - The Main app.js file
 
