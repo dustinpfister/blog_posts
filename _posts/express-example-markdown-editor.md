@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 12:46:06
-version: 1.4
+updated: 2019-05-08 12:48:25
+version: 1.5
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -40,7 +40,6 @@ app.use('/js', express.static('public/js'));
 app.use('/', express.static('public/html'));
  
 // html of current md file
-//app.use('/html', require('./middleware/md_html.js'));
 app.use('/html', require(path.join(app.get('dir_mw'), 'md_html.js')));
  
 // body parser
@@ -62,3 +61,5 @@ app.post('/action',
  
 app.listen(app.get('port'), () => console.log('example markdown editor is up on port: ' + app.get('port')));
 ```
+
+In addition to built in middleware I am also using much of my own middleware methods for reading the current file at the current directory, parsing the markdown to html and sending it to the client.
