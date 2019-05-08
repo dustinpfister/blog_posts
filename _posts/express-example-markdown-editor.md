@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 432
-updated: 2019-05-08 13:40:24
-version: 1.13
+updated: 2019-05-08 13:43:50
+version: 1.14
 ---
 
 I have been having a hard time finding a markdown editor that has all the features that I want, also I want one that I can use in any operating system environment that I can get node.js installed on. So for today's express example why not a markdown editor, after all if you want a job done right sometimes you have to do it yourself. 
@@ -207,6 +207,8 @@ this way in order to add more actions I just have to add the file to the middlew
 
 ### 2.5 - The /middleware/action_open.js file
 
+This action can be used to just send back the raw text of the current file. The encoding is one of the application settings set in the main app.js file, there is no way to change it as of yet, but that might change at some point maybe.
+
 ```js
 let express = require('express'),
 path = require('path'),
@@ -229,6 +231,8 @@ module.exports = (req, res, next) => {
 
 };
 ```
+
+Actions can be simple lik this one or far more complex, it just so happens that I do want at least some like this that are just read that current file and give me that text.
 
 ### 2.6 - The /middleware/action_save.js file
 
