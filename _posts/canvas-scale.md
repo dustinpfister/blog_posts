@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-05-09 19:33:59
-version: 1.11
+updated: 2019-05-09 19:54:33
+version: 1.12
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
@@ -92,29 +92,36 @@ So with a reference to a canvas element the width and height attributes will set
 
 ## 4 - The canvas scale 2d context method
 
-There is also the scale method that can be used with via the 2d drawing context. This method is used to transform the until scale of the pixels of a canvas.
+There is also the scale method that can be used with via the 2d drawing context. This method is used to transform the until scale of the pixels of a canvas. So what is drawn to the canvas after the method is called will be smaller or bigger depending on the scale set with the canvas scale method, even if the values given to the method that is drawing is the same.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
  
 // sets the actual native size of the canvas
-canvas.width = 64;
-canvas.height = 48;
+canvas.width = 40;
+canvas.height = 40;
  
 // Scales the canvas via in-line css
-canvas.style.width = '640px';
-canvas.style.height = '480px';
+canvas.style.width = '100px';
+canvas.style.height = '100px';
+ 
+ctx.fillStyle='grey';
+ctx.fillRect(0,0,canvas.width,canvas.height)
+ 
+// red rect is 1/4 the size of the canvas
+ctx.strokeStyle = 'red';
+ctx.strokeRect(0, 0, 20, 20);
  
 // adds a scaling transformation
 ctx.scale(.5,.5);
 ctx.fillStyle = 'black';
-ctx.fillRect(5, 5, 16, 16);
- 
-ctx.scale(2,2);
-ctx.strokeStyle = 'red';
-ctx.strokeRect(5, 5, 16, 16);
+// black rect is 1/16 the size of the canvas
+ctx.fillRect(0, 0, 20, 20);
+console.log(canvas)
 ```
+
+In this example the first rectangle drawn is one fourth the size of the canvas as expected, but the next black rectangle is one sixteenth the size of the canvas because of the unit scale that was set. This method can be used in conjunction with the canvas sav e and restore methods to change the unit scale, and then restore it back.
 
 ### 4.1 - Using ctx.scale to flip things
 
