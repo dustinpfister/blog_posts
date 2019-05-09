@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-05-09 14:21:31
-version: 1.6
+updated: 2019-05-09 14:25:55
+version: 1.7
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function. It can then be used to make custom constructors that have templates, base data, and methods for one or more instances of something in a project. To help elaborate with this it would be best to check out some examples of the vue extend global api method, so lets hop to it.
@@ -76,7 +76,7 @@ The reason why the data option must be a function when making a custom construct
   <script>
 var Count = Vue.extend({
     template: '<div><input type=\"button\" v-on:click=\"n++\" value=\"Step\"> {{n}} </div>',
-    data: function (a) {
+    data: function () {
         return {
             n:0
         }
@@ -91,3 +91,5 @@ var Count = Vue.extend({
   </body>
 </html>
 ```
+
+Here I have an example of vue extend that makes a Count constructor. When I do so each instance of it has its own independent count, the reason why is because of closure, otherwise both instances would be referencing the same data object and I do not want that.
