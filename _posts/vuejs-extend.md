@@ -1,12 +1,12 @@
 ---
-title: vue extend
+title: The vue extend global api method in vuejs
 date: 2019-05-09 13:07:00
 tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-05-09 13:38:05
-version: 1.5
+updated: 2019-05-09 14:21:31
+version: 1.6
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function. It can then be used to make custom constructors that have templates, base data, and methods for one or more instances of something in a project. To help elaborate with this it would be best to check out some examples of the vue extend global api method, so lets hop to it.
@@ -57,3 +57,37 @@ var Post = Vue.extend({
 ```
 
 Here I am just using string literals for starters but that of course can change to something more that pulls this info from a back end or so forth. The important thing to note here is that I am giving a function for data rather than an object. The reason why that is important is to provide an independent function level variable scope for each instance made with the constructor that returned by vue extend. Here it is had to see why this matters, but in other examples it will be clear as to why it matters.
+
+## 3 - Vue extend and closure
+
+The reason why the data option must be a function when making a custom constructor with the vue extend method is so that there is a closure over the data. I will not be getting into closures in javaScript in detail here, but if you do not know much about them it is a good idea to work out some examples of your own with closures as to get a sense of why they are important. I have a [post on closures](/2019/02/22/js-javascript-closure/) as well if interested.
+
+```html
+<html>
+  <head>
+    <title>Vue extend closure example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  
+  <div id="count1"></div>
+  <div id="count2"></div>
+  
+  <script>
+var Count = Vue.extend({
+    template: '<div><input type=\"button\" v-on:click=\"n++\" value=\"Step\"> {{n}} </div>',
+    data: function (a) {
+        return {
+            n:0
+        }
+    }
+});
+  
+  new Count().$mount('#count1');
+  new Count().$mount('#count2');
+  
+  
+  </script>
+  </body>
+</html>
+```
