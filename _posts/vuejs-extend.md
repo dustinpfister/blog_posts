@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-05-09 13:14:56
-version: 1.0
+updated: 2019-05-09 13:23:58
+version: 1.1
 ---
 
-The vue extend method can be used to extend the base Vue class.
+The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function.
 
 <!-- more -->
 
