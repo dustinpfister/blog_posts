@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-05-09 16:17:51
-version: 1.8
+updated: 2019-05-09 16:20:48
+version: 1.9
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules, but there are some other topics that come to mind as well. Such as repositioning a canvas element on a browser window resize, and also how to get a mouse or touch pointer event location relative to the current position of the canvas element rather than the window of the browser. The of course there is positioning things inside a canvas when it comes to drawing things in the canvas as well. 
@@ -80,7 +80,7 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 
 ## 3 - Canvas mouse position
 
-So another thing about canvas position is how to go about getting the mouse pointer position when clicking on a canvas. There is a need to get the canvas element relative position rather than the browser window relative position. This can be achieved with the [getBoundingCLientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method.
+So another thing about canvas position is how to go about getting the mouse pointer position when clicking on a canvas. There is a need to get the canvas element relative position rather than the browser window relative position. This can be achieved with the [getBoundingCLientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method. This is a useful method that can be used to adjust the window relative x and y position that is gained from the e.clientX, and e.clientY properties of an event object to a canvas relative position.
 
 ```html
 <html>
