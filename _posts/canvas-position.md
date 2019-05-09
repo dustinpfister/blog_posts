@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-05-09 16:44:53
-version: 1.10
+updated: 2019-05-09 16:49:19
+version: 1.11
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules, but there are some other topics that come to mind as well. Such as repositioning a canvas element on a browser window resize, and also how to get a mouse or touch pointer event location relative to the current position of the canvas element rather than the window of the browser. The of course there is positioning things inside a canvas when it comes to drawing things in the canvas as well. 
@@ -117,9 +117,29 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 
 ## 4 - Center the canvas position
 
+A common task that is often encountered when starting to play around with canvas is to find a way to center the canvas in the middle of the browser window. There is a whole lot of ways to go about doing this for a canvas of any element in general really, way back in the day it was not frowned upon to do so with table elements for example. However most solutions that would be used today would involve just some quick css, or a more complex solution with javaScript.
+
 ### 4.1 - Using the margin auto trick to center a canvas
 
 ```html
+<html>
+    <head>
+        <title>canvas center position </title>
+    </head>
+    <body>
+           <canvas 
+            id="the-canvas" 
+             width="320" height="240" 
+             style="display:block;margin-left:auto;margin-right:auto;">
+           </canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+        </script>
+    </body>
+</html>
 ```
 
 ### 4.2 - Using window.innerWidth, height, fixed positioning and javaScript
