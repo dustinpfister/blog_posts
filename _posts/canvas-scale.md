@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-05-09 19:54:33
-version: 1.12
+updated: 2019-05-09 19:55:27
+version: 1.13
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
@@ -125,7 +125,7 @@ In this example the first rectangle drawn is one fourth the size of the canvas a
 
 ### 4.1 - Using ctx.scale to flip things
 
-Negative values can be used to flip things.
+An interesting thing happens when passing negative values for the unit scale for the canvas scale method, doing so can be used to flip things.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
