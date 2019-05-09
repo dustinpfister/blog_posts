@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-05-09 16:20:48
-version: 1.9
+updated: 2019-05-09 16:44:53
+version: 1.10
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules, but there are some other topics that come to mind as well. Such as repositioning a canvas element on a browser window resize, and also how to get a mouse or touch pointer event location relative to the current position of the canvas element rather than the window of the browser. The of course there is positioning things inside a canvas when it comes to drawing things in the canvas as well. 
@@ -110,6 +110,51 @@ canvas.addEventListener('mousedown', getPos);
 // draw
 ctx.fillStyle='black';
 ctx.fillRect(0,0,canvas.width,canvas.height);
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Center the canvas position
+
+### 4.1 - Using the margin auto trick to center a canvas
+
+```html
+```
+
+### 4.2 - Using window.innerWidth, height, fixed positioning and javaScript
+
+Another approach to centering a canvas, or any dom element for that matter would be to use javaScript, fixed positioning, and the window inner width and height properties of the window object.
+
+```html
+<html>
+    <head>
+        <title>canvas center position </title>
+    </head>
+    <body>
+           <canvas 
+            id="the-canvas" 
+             width="320" height="240",
+             style="position:fixed;">
+           </canvas>
+        <script>
+ 
+var centerCanvasPosition = function(canvas){
+  canvas.style.left = window.innerWidth / 2 - canvas.width / 2 + 'px';
+  canvas.style.top =window.innerHeight / 2 - canvas.height / 2 + 'px';
+};
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ 
+// center canvas for starters
+centerCanvasPosition(canvas);
+// and on every resize
+window.addEventListener('resize',function(){
+  centerCanvasPosition(canvas);
+});
         </script>
     </body>
 </html>
