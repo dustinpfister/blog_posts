@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-05-09 16:51:49
-version: 1.12
+updated: 2019-05-09 17:02:24
+version: 1.13
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules, but there are some other topics that come to mind as well. Such as repositioning a canvas element on a browser window resize, and also how to get a mouse or touch pointer event location relative to the current position of the canvas element rather than the window of the browser. The of course there is positioning things inside a canvas when it comes to drawing things in the canvas as well. 
@@ -181,3 +181,7 @@ window.addEventListener('resize',function(){
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+So the canvas position could refer to a few things, but only so much. The positioning of a canvas is not all that different from that of positioning any other html element when it comes to setting the dom element position. It is a good idea to get up to speed with the differences between the various types of values for the position css property if you have not done so all ready at this point.
