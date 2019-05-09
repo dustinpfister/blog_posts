@@ -1,12 +1,12 @@
 ---
-title: Canvas scale
+title: Canvas scale as in DOM element scale and the scale 2d context method
 date: 2019-03-06 20:05:00
 tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-03-08 18:59:41
-version: 1.9
+updated: 2019-05-09 19:32:03
+version: 1.10
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
@@ -49,11 +49,11 @@ ctx.strokeRect(11, 7, 10, 10);
 </html>
 ```
 
-So then in this example I am creating a canvas with a native size of only 32 by 24, and then scaling it up to a size of 640 by 480.
+So then in this example I am creating a canvas with a native size of only 32 by 24, and then scaling it up to a size of 640 by 480 with css. Everything could be done inline by using the width and height attributes of the canvas element to set the native size, and the style attribute to set the scaled size of the canvas
 
-## 3 - Scale a canvas with the style api
+## 3 - Set canvas scale with javaScript
 
-It is possible to set the native size as well as the scaled size of the canvas with javaScript rather than with hard coded html and css. This can be done by getting a reference to the canvas element by one way or another and then using the width and height properties of that element reference to set the native size. In addition the style api can be used to set the scale canvas size as well.
+It is possible to set the native size as well as the scaled size of the canvas with javaScript rather than with hard coded html and css. This can be done by getting a reference to the canvas element by one way or another and then using the width and height properties of that canvas element reference to set the native size. In addition the style api can be used to set the scale canvas size as well.
 
 ```html
 <html>
@@ -87,6 +87,8 @@ ctx.strokeRect.apply(ctx, rect);
     </body>
 </html>
 ```
+
+So with a reference to a canvas element the width and height attributes will set the actual native size, but if you want to scale the canvas element then that should be done via the style api of the canvas element reference.
 
 ## 4 - The scale 2d context method
 
