@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-05-09 13:32:11
-version: 1.4
+updated: 2019-05-09 13:38:05
+version: 1.5
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function. It can then be used to make custom constructors that have templates, base data, and methods for one or more instances of something in a project. To help elaborate with this it would be best to check out some examples of the vue extend global api method, so lets hop to it.
@@ -39,10 +39,10 @@ var Post = Vue.extend({
        '</ul>',
     data: function () {
         return {
-            title: 'Vue extend example',
+            title: 'untitled',
             date: {
-                publish: '2019/05/09',
-                update: '2019/05/09'
+                publish: '2000/01/01',
+                update: '2000/01/01'
             }
         }
     }
@@ -55,3 +55,5 @@ var Post = Vue.extend({
   </body>
 </html>
 ```
+
+Here I am just using string literals for starters but that of course can change to something more that pulls this info from a back end or so forth. The important thing to note here is that I am giving a function for data rather than an object. The reason why that is important is to provide an independent function level variable scope for each instance made with the constructor that returned by vue extend. Here it is had to see why this matters, but in other examples it will be clear as to why it matters.
