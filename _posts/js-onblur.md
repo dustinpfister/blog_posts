@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-05-09 15:22:42
-version: 1.9
+updated: 2019-05-09 15:23:41
+version: 1.10
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired. In this post I will be going over some examples using the on blur event with plain old vanilla javaScript, rather than a certain front end frame work.
@@ -50,7 +50,7 @@ foo.addEventListener('focus', function (e) {
 
 When I open this up in the browser the on focus event fires for the input element when I click on it. When I click outside of the input element the on blur event will fire changing the value of the text in the input element  The on blur event does not bubble though so if I where to attach an on blur event to a div container it will not bubble down to an input element. The focus out event however will bubble down, which it would seem is the only note worth difference between on blur, and focus out.
 
-## 3 - On blur and on focus out
+## 3 - On blur, on focus out ans bubbling
 
 The on blur event works find, but there is just one little difference between on blur and on focus out. That difference has to do with event bubbling. The focus out event when attached to a container element will bubble down the DOM tree until it finds an inut element, it will then fire for any element that has focus in the tree.
 
