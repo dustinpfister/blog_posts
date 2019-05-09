@@ -5,9 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 438
-updated: 2019-05-08 20:47:47
-version: 1.0
+updated: 2019-05-09 14:52:57
+version: 1.1
 ---
+
+The [vue set](https://vuejs.org/v2/api/#Vue-set) global api method in vuejs can be used to set a property of a reactive object. In other words it is a way to add a property to an object in the data of a Vue constructor instance, and have the view update. The thing about this is that many frameworks have a method like this, because sometimes you can not just simply add a property to an object, sometimes some additional things need to happen on top of that.
 
 <!-- more -->
 
