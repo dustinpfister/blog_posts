@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-05-03 20:51:19
-version: 1.13
+updated: 2019-05-09 16:07:45
+version: 1.14
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -131,3 +131,7 @@ drawPoints(ctx, createPolygonPoints(15,15,radius,pointCount), true);
 ```
 
 This method can only be used to draw a circle, rather than say a half circle as I have choses to omit arguments for a start and end radian, and direction. It is true that writing a clone of the canvas arc method would not to be to hard, but doing so would not make sense, unless there are some additional features to add, such as being able to set the number of sides in the canvas arc.
+
+## 6 - Conclusion
+
+The canvas arc method is just one of many methods in the canvas 2d drawing context of course, however it is one that seems to come up often. I hope that you have gain something of value from reading this post, canvas is a lot of fun of course, and it can also be very helpful as well when it comes to working out basic graphics in canvas.
