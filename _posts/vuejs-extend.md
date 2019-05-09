@@ -5,13 +5,17 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-05-09 13:26:06
-version: 1.2
+updated: 2019-05-09 13:29:11
+version: 1.3
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function. It can then be used to make custom constructors that have templates, base data, and methods for one or more instances of something in a project. To help elaborate with this it would be best to check out some examples of the vue extend global api method, so lets hop to it.
 
 <!-- more -->
+
+## 1 - Vue extend and what to know before hand
+
+This is a post on the vuejs global api method vue extend, it is not a getting started post on vuejs, html, or javaScript. I assume that you have at least some experience when it comes to making web applications with javaScript, and are just in the process of getting up to speed with using vuejs as a way to do so when it comes to the use of front end frameworks rather than just vanilla javaScript.
 
 ## 2 - Vue extend blog post Example
 
