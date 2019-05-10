@@ -5,15 +5,15 @@ tags: [js,JSON, automation]
 layout: post
 categories: api
 id: 1
-updated: 2017-05-19 15:55:50
-version: 1.2
+updated: 2019-05-10 18:36:04
+version: 1.3
 ---
-
-{% mytags_postwords fixer.io,api&#32;fixer,jsonp %}
 
 Lately I was helping a friend of mine prepare for a trip to India. While doing so one of the things she wanted to get done was to type up a table that included US dollar amounts on one column, and the rupee equivalent in the other.
 
 <!-- more -->
+
+## 1 - The problem API fixer can solve
 
 I have been developing scripts involving finding ways of automating a great deal of my work flow to help reduce the amount of time I spend on repetitive tasks, so I have more time to spend on the novel stuff. That got me thinking that maybe it would be fun to see if I could automate the process of making her table, for the heck of it, and maybe doing so would be a bit helpful for her. Exchange rates are always jumping up and down, and every time a significant change happens she would have to write the table again.
 
@@ -34,6 +34,8 @@ console.log(rupees);
 ```
 
 Then of course it is just a matter of rendering these two parallel arrays into an HTML table. However there is just one problem, she would have to still manually edit the exchange rate value to generate an up to date list. Thats when I thought that there must be some kind of JSONP service that spits out up to date exchange rate values for say US Dollars, and Indian Rupees. After some quick google searches I was able to find a few API's that do just that. 
+
+## 2 - Api fixer basic example
 
 Most of the sites that offer this service cost money, or there is a limit on the number of requests per month. A lot of them give current rates up to the second, which is cool. However I thought that maybe there was a free service that updates just once a day, as that would work okay for now. To my satisfaction I was able to find one that was just what I was looking for called [fixer.io](http://fixer.io)
 
