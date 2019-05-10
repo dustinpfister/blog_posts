@@ -5,8 +5,8 @@ tags: [js,blog,discovery]
 layout: post
 categories: blog
 id: 27
-updated: 2019-05-10 16:18:25
-version: 1.4
+updated: 2019-05-10 16:28:30
+version: 1.5
 ---
 
 One of the great things about writing a blog on [javaScript](https://en.wikipedia.org/wiki/JavaScript) is that there is never a shortage of things to write about. It's not like I have to write about a single line of products, form a single brand, and as such there is only so much to cover until I start repeating myself. With javaScript there is an ocean of content potential to be taped into, but that can also be my undoing. It is easy to get overwhelmed, as such I thought it might be a good idea to throw together some ideas on this matter.
@@ -21,7 +21,7 @@ So I have been writing javaScript related content for a little over two years no
 
 There is a certain strategy that involves writing content that exists in a sort of sweet spot between popular, and obscure. Where if I write a post that manages to hit that sweet spot my post will rank on the first page of Google search results with respect to that sweet spot.
 
-So far I have written some 26 blog posts, out of the total of that sum of posts is [my post](/2017/02/09/api-fixer/) on the [fixer.io](http://fixer.io) free exchange rate api. This post is by far my best preforming post with respect to organic search results in terms of impressions, and has been for quite some time now. 
+When I first wrote this post I had 26 blog posts in total, and my best performing post in terms of impressions was [my post on fixer.io](/2017/02/09/api-fixer/). At that time just getting to one hundred impressions site wide was a big deal. Now my best preforming post is on [lodash find](/2017/09/14/lodash-find/) which pulls in over thirty thousand impressions a month. This post on lodash is by far my best preforming post with respect to organic search results in terms of impressions, and has been for quite some time now.
 
 I do not have a clear strategy in place that may help me write this kind of content all the time, but I might not need one. I had no strategy in mind when writing my best preforming posts thus far, it just happened by chance. Maybe the best thing to do for now is to just keep writing, rather than going nuts with keyword research, and try to write content solely centered around trying to improve organic search results.
 
