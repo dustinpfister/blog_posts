@@ -39,7 +39,10 @@ app.get('/', (req, res) => {
             if (fresh < 0) {
                 fresh = 0;
             }
+
+            // month fresh
             month.fresh += fresh;
+            // post count
             month.pc += 1;
 
             next();
@@ -47,14 +50,18 @@ app.get('/', (req, res) => {
         onDone: () => {
             let arr = [];
             Object.keys(report).forEach((key) => {
-                arr.push(report[key]);
+
+                let month = report[key];
+                month.freshPer = month.fresh / month.pc;
+
+                arr.push(month);
             });
             arr.sort((a, b) => {
-                if (a.fresh > b.fresh) {
-                    return 1;
-                }
-                if (a.fresh < b.fresh) {
+                if (a.freshPer > b.freshPer) {
                     return -1;
+                }
+                if (a.freshPer < b.freshPer) {
+                    return 1;
                 }
                 return 0;
             });
