@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2019-05-10 12:58:29
-version: 1.4
+updated: 2019-05-10 13:00:19
+version: 1.5
 ---
 
 A vue filter can be a filter in vuejs that is registered at the global level, or it can be an asset of a single Vue constructor instance. Filters can be used to help with formating tasks, and anything else that might require the use of them. In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript.
@@ -22,6 +22,8 @@ This is a post on filters in vuejs, the popular front end javaScript framework. 
 When making a new instance of the Vue Constructor, one of the options that can be passed via the object that is passed as the first argument to the constructor is the filters option. This is one way to define some filters that apply just to the single instance of the Vue Constructor, rather than a filter that might be registered globally.
 
 ### 2.1 - vue filter option basic example
+
+For a basic example of a vue filter option here I have just a filter that appends the string 'foo' to the beginning of anything that it is used with via the pipe symbol when using the mustache interpolation syntax. 
 
 ```js
 <html>
