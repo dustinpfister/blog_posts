@@ -92,8 +92,23 @@ app.get('/', [
 
         // send report
         (req, res) => {
-            res.json(res.report);
-            console.log('sent report:');
+
+            let html = '';
+
+            res.report.forEach((month, i) => {
+
+                html += '<ul>';
+                html += '<li><h2>' + (i + 1) + ') ' + month.key + '</h2><\/li>';
+                html += '<li><h3>Fresh Per: ' + Math.round(month.freshPer * 100) + '%<\/h3><\/li>';
+                html += '<li> Fresh / Post Count: ' + month.fresh.toFixed(2) + '/' + month.pc + '<\/li>';
+                html += '<li> Word Count: ' + month.wc + '<\/li>';
+                html += '<\/ul>';
+                html += '<hr>';
+
+            });
+
+            res.send(html);
+            console.log('sent html');
         }
 
     ]);
