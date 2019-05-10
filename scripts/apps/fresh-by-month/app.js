@@ -13,7 +13,8 @@ klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
 app.get('/', (req, res) => {
 
-    let report = {};
+    let report = {},
+    now = new Date();
 
     klawAll({
         forPost: (item, next) => {
@@ -21,8 +22,12 @@ app.get('/', (req, res) => {
 
             // the publish date
             let date = new Date(item.header.date),
-            y = date.getFullYear();
-            report[y] = report[y] ? report[y] : {};
+            y = date.getFullYear(),
+            m = date.getMonth();
+
+            let key = y + '-' + (m + 1);
+            let month = report[key] = report[key] ? report[key] : {};
+            month.wc = month.wc ? month.wc += item.wc : item.wc;
 
             next();
         },
