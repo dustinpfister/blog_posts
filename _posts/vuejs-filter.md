@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2019-05-10 13:00:19
-version: 1.5
+updated: 2019-05-10 13:01:59
+version: 1.6
 ---
 
 A vue filter can be a filter in vuejs that is registered at the global level, or it can be an asset of a single Vue constructor instance. Filters can be used to help with formating tasks, and anything else that might require the use of them. In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript.
@@ -53,6 +53,8 @@ For a basic example of a vue filter option here I have just a filter that append
 ```
 
 ### 2.2 - vue filter option to text example
+
+For a more advanced example of a vue filter that is used via the filters Vue constructor option, here is an example that creates a plain text presentation of data from an array of objects.
 
 ```html
 <html>
