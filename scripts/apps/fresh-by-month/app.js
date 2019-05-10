@@ -5,7 +5,7 @@ app = express();
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || process.argv[2] || 8080);
 
-app.set('days_back', 90);
+app.set('days_back', 365 * 3);
 
 let dir_cli = path.resolve('../../cli'),
 dir_posts = path.resolve('../../../_posts'),
