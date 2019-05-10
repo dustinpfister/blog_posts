@@ -5,13 +5,17 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2019-05-10 12:47:43
-version: 1.2
+updated: 2019-05-10 12:56:20
+version: 1.3
 ---
 
 A vue filter can be a filter in vuejs that is registered at the global level, or it can be an asset of a single Vue constructor instance. Filters can be used to help with formating tasks, and anything else that might require the use of them. In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript.
 
 <!-- more -->
+
+## 1 - Vue filter basics
+
+This is a post on filters in vuejs, the popular front end javaScript framework. In vuejs filters are methods that are often used for text formating, but they can also be used to preform a wide range of things when are where needed.
 
 ## 2 - Vue filter as an Vue Constructor Option
 
