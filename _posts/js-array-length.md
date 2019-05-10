@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-05-09 20:39:41
-version: 1.40
+updated: 2019-05-09 20:52:02
+version: 1.41
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative, however in some cases it is just an object property that does not even reflect that. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array. So then for the most part the length property in an array is easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -91,7 +91,7 @@ console.log(a.length); // 11
 
 Here we have an array with a length of 11, but in a way there is only 6 elements in the array. This is what I am talking about when it comes to the difference between array length and array count. The length of the array is just the highest defined index value of he array plus one, while the count of an array is the actual count of defined elements in the array.
 
-### 1.6 - Array length and array count
+### 1.5 - Array length and array count
 
 So the length of an array can be found by simply taking a look at the current value of the length property of an array, but the count must be obtained by some other means such as using the Object.keys static method.
 
@@ -104,7 +104,7 @@ console.log(Object.keys(a).length); // the count is 4
 
 The Object.keys method will work fine for a simple example such as this, but in some cases it will result in unexpected results when dealing with an array that has some additional public keys attached to it.
 
-### 1.5 - length, and count is not always what is expected when dealing with associative Arrays
+### 1.6 - length, and count is not always what is expected when dealing with associative Arrays
 
 So if I have an array that has some elements added to it that are attached to indexed key names, and then some that are attached to key names that are not numbered index key values, this will result in an unexpected array count with Object.keys.
 
@@ -123,7 +123,7 @@ This is because of the nature of the Object.keys method, it will give an array o
 
 ## 2 - Setting the length property
 
-It is possible to set the length property of an array. When setting a length that is lower than the current length that will result in what would be expected. Setting a higher length property will result in a situation in which any index values above the previous length will result in being undefined. This might result in unexpected behavior with some array methods like Array.forEach.
+It is possible to set the length property of an array. When setting a length that is lower than the current length that will result in what would be expected which is the array will end up being truncated to that length that was set. Setting a higher length property will result in a situation in which any index values above the previous length will result in being undefined. This might result in unexpected behavior with some array methods like Array.forEach.
 
 ```js
 var print = function (arr) {
