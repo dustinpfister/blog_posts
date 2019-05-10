@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-05-09 19:55:27
-version: 1.13
+updated: 2019-05-09 20:23:45
+version: 1.14
 ---
 
 There is the canvas scale in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling object within the canvas. In this post I will be writing about all things canvas scale related.
@@ -139,3 +139,42 @@ ctx.font = '20px serif';
 ctx.textBaseline = 'top';
 ctx.fillText('foobar', 0, -20);
 ```
+
+## 5 - Canvas scale with another canvas and the drawImage 2d context method
+
+Another thing to be aware of when it comes to scaling things with canvas is that you can use the drawImage 2d context method to draw one canvas to another canvas. The drawImage method can accept up to nine arguments that can be used to set the position and size of a source image in the canvas as well as additional arguments to set the destination position and the scaled size.
+
+```js
+var scaledDraw = function(opt){
+   var fromCanvas = document.createElement('canvas'),
+   ctx = fromCanvas.getContext('2d');
+   fromCanvas.width = opt.w;
+   fromCanvas.height = opt.h;
+   opt.draw(ctx);
+   opt.toCanvas.getContext('2d').drawImage(fromCanvas,opt.sx,opt.sy,opt.sw,opt.sh,opt.dx,opt.dy,opt.dw,opt.dh);
+};
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+scaledDraw({
+  toCanvas: canvas,
+  draw: function(ctx){
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0,0,40,40);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(40,0,40,40);
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0,40,40,40);
+  },
+  w: 80, h: 80,
+  sx:20,sy:20,sw:40,sh:40,
+  dx:20,dy:20,dw:280,dh:200
+});
+```
+
+In this example I made a quick scaledDraw method that creates a new canvas and then draws to it with a given draw method. It then draws to a canvas that I give it via a toCanvas property.
