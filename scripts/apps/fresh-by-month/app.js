@@ -37,12 +37,19 @@ app.get('/', [
                     month.wc = month.wc ? month.wc += item.wc : item.wc;
                     month.pc = month.pc === undefined ? 0 : month.pc;
                     month.fresh = month.fresh === undefined ? 0 : month.fresh;
+                    month.posts = month.posts === undefined ? [] : month.posts;
 
                     let days = (now - update) / 1000 / 60 / 60 / 24,
                     fresh = (days_back - days) / days_back;
                     if (fresh < 0) {
                         fresh = 0;
                     }
+
+                    month.posts.push({
+                        fn: item.fn,
+                        header: item.header,
+                        fresh: fresh
+                    });
 
                     // month fresh
                     month.fresh += fresh;
@@ -103,6 +110,13 @@ app.get('/', [
                 html += '<li> Fresh / Post Count: ' + month.fresh.toFixed(2) + '/' + month.pc + '<\/li>';
                 html += '<li> Word Count: ' + month.wc + '<\/li>';
                 html += '<\/ul>';
+
+                month.posts.forEach((post) => {
+
+                    html += '<span>' + post.fn + ':' + Math.round(post.fresh * 100) + '; <\/span>'
+
+                });
+
                 html += '<hr>';
 
             });
