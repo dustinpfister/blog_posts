@@ -11,51 +11,70 @@ let dir_cli = path.resolve('../../cli'),
 dir_posts = path.resolve('../../../_posts'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
-app.get('/', (req, res) => {
+app.get('/', [
 
-    let report = {},
-    now = new Date(),
-    days_back = app.get('days_back');
+        // get data for all files
+        (req, res, next) => {
 
-    klawAll({
-        forPost: (item, next) => {
-            console.log(item.header.date, item.wc);
+            let report = res.report = {},
+            now = new Date(),
+            days_back = app.get('days_back');
 
-            // the publish date
-            let date = new Date(item.header.date),
-            update = new Date(item.header.updated),
-            y = date.getFullYear(),
-            m = date.getMonth();
+            console.log('klawing posts:');
+            klawAll({
+                forPost: (item, nextPost) => {
+                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.date);
 
-            let key = y + '-' + (m + 1);
-            let month = report[key] = report[key] ? report[key] : {};
-            month.key = key;
-            month.wc = month.wc ? month.wc += item.wc : item.wc;
-            month.pc = month.pc === undefined ? 0 : month.pc;
-            month.fresh = month.fresh === undefined ? 0 : month.fresh;
+                    // the publish date
+                    let date = new Date(item.header.date),
+                    update = new Date(item.header.updated),
+                    y = date.getFullYear(),
+                    m = date.getMonth();
 
-            let days = (now - update) / 1000 / 60 / 60 / 24,
-            fresh = (days_back - days) / days_back;
-            if (fresh < 0) {
-                fresh = 0;
-            }
+                    let key = y + '-' + (m + 1);
+                    let month = report[key] = report[key] ? report[key] : {};
+                    month.key = key;
+                    month.wc = month.wc ? month.wc += item.wc : item.wc;
+                    month.pc = month.pc === undefined ? 0 : month.pc;
+                    month.fresh = month.fresh === undefined ? 0 : month.fresh;
 
-            // month fresh
-            month.fresh += fresh;
-            // post count
-            month.pc += 1;
+                    let days = (now - update) / 1000 / 60 / 60 / 24,
+                    fresh = (days_back - days) / days_back;
+                    if (fresh < 0) {
+                        fresh = 0;
+                    }
 
-            next();
+                    // month fresh
+                    month.fresh += fresh;
+                    // post count
+                    month.pc += 1;
+
+                    nextPost();
+                },
+                onDone: () => {
+
+                    console.log('done klawing posts:');
+                    console.log('months: ' + Object.keys(res.report).length);
+                    // next middleware
+                    next();
+                }
+            });
+
         },
-        onDone: () => {
+
+        // create an array, and sort by fresh percent
+        (req, res, next) => {
+
+            console.log('sorting');
+            // to array
             let arr = [];
-            Object.keys(report).forEach((key) => {
-
-                let month = report[key];
+            Object.keys(res.report).forEach((key) => {
+                let month = res.report[key];
                 month.freshPer = month.fresh / month.pc;
-
                 arr.push(month);
             });
+
+            // sort by fresh percent
             arr.sort((a, b) => {
                 if (a.freshPer > b.freshPer) {
                     return -1;
@@ -65,10 +84,18 @@ app.get('/', (req, res) => {
                 }
                 return 0;
             });
-            res.json(arr);
-        }
-    });
 
-});
+            res.report = arr;
+            next();
+
+        },
+
+        // send report
+        (req, res) => {
+            res.json(res.report);
+            console.log('sent report:');
+        }
+
+    ]);
 
 app.listen(app.get('port'), () => console.log('Fresh by month is up on Port: ' + app.get('port')));
