@@ -50,7 +50,20 @@ app.get('/', (req, res) => {
             next();
         },
         onDone: () => {
-            res.json(report);
+            let arr = [];
+            Object.keys(report).forEach((key) => {
+                arr.push(report[key]);
+            });
+            arr.sort((a, b) => {
+                if (a.fresh > b.fresh) {
+                    return 1;
+                }
+                if (a.fresh < b.fresh) {
+                    return -1;
+                }
+                return 0;
+            });
+            res.json(arr);
         }
     });
 
