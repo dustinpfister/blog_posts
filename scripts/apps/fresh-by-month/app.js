@@ -78,6 +78,19 @@ app.get('/', [
             Object.keys(res.report).forEach((key) => {
                 let month = res.report[key];
                 month.freshPer = month.fresh / month.pc;
+
+                // sort posts
+                month.posts.sort((a, b) => {
+                    if (a.fresh > b.fresh) {
+                        return -1;
+                    }
+                    if (a.fresh < b.fresh) {
+                        return 1;
+                    }
+                    return 0;
+
+                });
+
                 arr.push(month);
             });
 
@@ -112,9 +125,7 @@ app.get('/', [
                 html += '<\/ul>';
 
                 month.posts.forEach((post) => {
-
                     html += '<span>' + post.fn + ':' + Math.round(post.fresh * 100) + '; <\/span>'
-
                 });
 
                 html += '<hr>';
