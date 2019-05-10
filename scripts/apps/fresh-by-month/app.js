@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
             let month = report[key] = report[key] ? report[key] : {};
             month.key = key;
             month.wc = month.wc ? month.wc += item.wc : item.wc;
-            //month.fresh = month.fresh ? month.fresh : [];
+            month.pc = month.pc === undefined ? 0 : month.pc;
             month.fresh = month.fresh === undefined ? 0 : month.fresh;
 
             let days = (now - update) / 1000 / 60 / 60 / 24,
@@ -40,12 +40,7 @@ app.get('/', (req, res) => {
                 fresh = 0;
             }
             month.fresh += fresh;
-            /*
-            month.fresh.push({
-            title: item.header.title,
-            fresh: fresh
-            });
-             */
+            month.pc += 1;
 
             next();
         },
