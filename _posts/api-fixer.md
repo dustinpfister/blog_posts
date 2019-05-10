@@ -5,15 +5,19 @@ tags: [js,JSON, automation]
 layout: post
 categories: api
 id: 1
-updated: 2019-05-10 18:36:04
-version: 1.3
+updated: 2019-05-10 18:43:04
+version: 1.4
 ---
 
-Lately I was helping a friend of mine prepare for a trip to India. While doing so one of the things she wanted to get done was to type up a table that included US dollar amounts on one column, and the rupee equivalent in the other.
+Lately I was helping a friend of mine prepare for a trip to India. While doing so one of the things she wanted to get done was to type up a table that included US dollar amounts on one column, and the rupee equivalent in the other. The [fixer api](http://fixer.io) is one way to go about getting up to date exchange rates.
 
 <!-- more -->
 
-## 1 - The problem API fixer can solve
+## 1 - API fixer is no longer free
+
+The fixer api was once a free way to go about getting up to date exchange rates, but now it costs money. There is still a free account plan, but an account still needs to be set up to get an access token and use the api.
+
+## 2 - The problem API fixer can solve
 
 I have been developing scripts involving finding ways of automating a great deal of my work flow to help reduce the amount of time I spend on repetitive tasks, so I have more time to spend on the novel stuff. That got me thinking that maybe it would be fun to see if I could automate the process of making her table, for the heck of it, and maybe doing so would be a bit helpful for her. Exchange rates are always jumping up and down, and every time a significant change happens she would have to write the table again.
 
@@ -37,7 +41,7 @@ Then of course it is just a matter of rendering these two parallel arrays into a
 
 ## 2 - Api fixer basic example
 
-Most of the sites that offer this service cost money, or there is a limit on the number of requests per month. A lot of them give current rates up to the second, which is cool. However I thought that maybe there was a free service that updates just once a day, as that would work okay for now. To my satisfaction I was able to find one that was just what I was looking for called [fixer.io](http://fixer.io)
+Most of the sites that offer this service cost money, or there is a limit on the number of requests per month. A lot of them give current rates up to the second, which is cool. However I thought that maybe there was a free service that updates just once a day, as that would work okay for now. To my satisfaction I was able to find one that was just what I was looking for called fixer.io
 
 With fixer if I make a GET request with a url like this.
 ```
@@ -53,6 +57,7 @@ fixer will give me this JSON Data.
 There's my up to date rate, to help make life yet even more lazy. Now I just need to generate a table with that rate and my friend can have an up to date table of rates each time she visits a page, say maybe this one. Yeah that sounds good, why not, I'll put it here.
 
 <div id="fixer_table"></div>
+<!--
 <script>
 
 // default data
@@ -169,7 +174,8 @@ req.send();
 
 
 </script>
+-->
 
-## UPDATE: Using data from fixer in a tag, and other concerns
+## 3 - UPDATE: Using data from fixer in a tag, and other concerns
 
 When I first wrote this post a few months ago I have not yet figured out how to go about directly writing html content with a hexo tag. In this post I am directly rendering html content with data from an scripted http request, without any static fall back. Sense then I have [wrote a post on how to do that](/2017/05/19/hexo-tags-http-requests/), as well as another [post on progressive enhancement](/2017/05/18/api-fixer-progressive-enhancement/).
