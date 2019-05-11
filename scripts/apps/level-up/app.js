@@ -33,6 +33,7 @@ app.get('/', [
                         res.reply.cat[catName] === undefined ? {}
                      : res.reply.cat[catName];
                     cat.wc = cat.wc === undefined ? item.wc : cat.wc += item.wc;
+                    cat.name = catName;
 
                     nextPost();
                 },
@@ -78,13 +79,31 @@ app.get('/', [
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
 
             html += '<ul>';
+            let catArr = []
             Object.keys(res.reply.cat).forEach((catName) => {
 
-                let cat = res.reply.cat[catName];
+                catArr.push(res.reply.cat[catName]);
 
-                html += '<li>catName: ' + catName + ', wc: ' + cat.wc + '<\/li>';
+                //let cat = res.reply.cat[catName];
+
+                //html += '<li>catName: ' + catName + ', wc: ' + cat.wc + '<\/li>';
 
             });
+
+            catArr.sort((a, b) => {
+                if (a.wc > b.wc) {
+                    return -1;
+                }
+                if (a.wc < b.wc) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            catArr.forEach((cat) => {
+                html += '<li>catName: ' + cat.name + ', wc: ' + cat.wc + '<\/li>';
+            })
+
             html += '<\/ul>';
 
             res.send(html);
