@@ -76,7 +76,17 @@ app.get('/', [
             html += '<span>AVG Post Word Count: ' + Math.round(res.reply.avgwc) + '/' + cap.avgwc + '<\/span><br>';
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
-			
+
+            html += '<ul>';
+            Object.keys(res.reply.cat).forEach((catName) => {
+
+                let cat = res.reply.cat[catName];
+
+                html += '<li>catName: ' + catName + ', wc: ' + cat.wc + '<\/li>';
+
+            });
+            html += '<\/ul>';
+
             res.send(html);
         }
 
