@@ -78,16 +78,11 @@ app.get('/', [
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
 
-            html += '<ul>';
+            html += '<br><br><table>';
+            html += '<tr><th>Cat name<\/th><th>Word Count<\/th><\/tr>';
             let catArr = []
             Object.keys(res.reply.cat).forEach((catName) => {
-
                 catArr.push(res.reply.cat[catName]);
-
-                //let cat = res.reply.cat[catName];
-
-                //html += '<li>catName: ' + catName + ', wc: ' + cat.wc + '<\/li>';
-
             });
 
             catArr.sort((a, b) => {
@@ -101,10 +96,10 @@ app.get('/', [
             });
 
             catArr.forEach((cat) => {
-                html += '<li>catName: ' + cat.name + ', wc: ' + cat.wc + '<\/li>';
+                html += '<tr><td>' + cat.name + '<\/td><td>' + cat.wc + '<\/td><\/tr>';
             })
 
-            html += '<\/ul>';
+            html += '<\/table>';
 
             res.send(html);
         }
