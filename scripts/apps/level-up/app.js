@@ -15,13 +15,25 @@ app.get('/', [
             console.log('klawing posts:');
             res.reply = {
                 wc: 0,
-                pc: 0
+                pc: 0,
+                cat: {}
             };
             klawAll({
                 forPost: (item, nextPost) => {
-                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'));
+                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.categories);
+
+                    // total word count
                     res.reply.wc += item.wc;
+                    // post count
                     res.reply.pc += 1;
+
+                    // cat
+                    let catName = item.header.categories;
+                    let cat = res.reply.cat[catName] =
+                        res.reply.cat[catName] === undefined ? {}
+                     : res.reply.cat[catName];
+                    cat.wc = cat.wc === undefined ? item.wc : cat.wc += item.wc;
+
                     nextPost();
                 },
                 onDone: () => {
@@ -37,7 +49,7 @@ app.get('/', [
             let html = '';
             let cap = {
                 level: 100,
-                avgwc: 1000,
+                avgwc: 500,
                 pc: 1000,
                 wc: 500000
             };
@@ -64,6 +76,7 @@ app.get('/', [
             html += '<span>AVG Post Word Count: ' + Math.round(res.reply.avgwc) + '/' + cap.avgwc + '<\/span><br>';
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
+			
             res.send(html);
         }
 
