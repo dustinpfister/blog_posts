@@ -33,6 +33,7 @@ app.get('/', [
                         res.reply.cat[catName] === undefined ? {}
                      : res.reply.cat[catName];
                     cat.wc = cat.wc === undefined ? item.wc : cat.wc += item.wc;
+                    cat.pc = cat.pc === undefined ? 1 : cat.pc +=1;
                     cat.name = catName;
 
                     nextPost();
@@ -78,8 +79,8 @@ app.get('/', [
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
 
-            html += '<br><br><table>';
-            html += '<tr><th>Cat name<\/th><th>Word Count<\/th><\/tr>';
+            html += '<br><br><table style=\"width:100%;text-align:center;\">';
+            html += '<tr><th>Cat name<\/th><th>Word Count<\/th><th>Post Count<\/th><th>AVG Word Count per post<\/th><\/tr>';
             let catArr = []
             Object.keys(res.reply.cat).forEach((catName) => {
                 catArr.push(res.reply.cat[catName]);
@@ -96,7 +97,7 @@ app.get('/', [
             });
 
             catArr.forEach((cat) => {
-                html += '<tr><td>' + cat.name + '<\/td><td>' + cat.wc + '<\/td><\/tr>';
+                html += '<tr><td>' + cat.name + '<\/td><td>' + cat.wc + '<\/td><td>' + cat.pc + '<\/td><td>' + Math.floor(cat.wc / cat.pc) + '<\/td><\/tr>';
             })
 
             html += '<\/table>';
