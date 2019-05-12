@@ -51,7 +51,6 @@ app.get('/', [
             let html = '';
 
             let getLevel = (state, cap) => {
-
                 return [
                     state.wc / cap.wc, // metric 1 (site wide word count)
                     state.avgwc / cap.avgwc, // metric 2 (avg post word count)
@@ -61,7 +60,6 @@ app.get('/', [
                 }).reduce(function (acc, n) {
                     return acc + n;
                 }) / 3 * cap.level;
-
             };
 
             let cap = {
