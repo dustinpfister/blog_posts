@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 442
-updated: 2019-05-12 17:00:12
-version: 1.4
+updated: 2019-05-12 17:01:59
+version: 1.5
 ---
 
 So for the most part vue templates work find for most projects, but it is not always the best solution when it comes to taking full advantage of javaScript to render DOM elements. If a template will not cut it than an alternative would be a [vue render](https://vuejs.org/v2/api/#render) method. When working out a render method a createElement method can be used to create virtual dom elements that can then be used to render a view rather that of a static template.
@@ -42,6 +42,9 @@ So a very basic example of a vue render method could be just a single vNode that
   </body>
 </html>
 ```
+
+The first argument can be just a string, and object or a function that resolves to a tag name of one sort or another. The second argument can just be a string like above, or it can be an array of additional vNodes made with the createElement method.
+
 
 ## 2 - Vue render list example
 
