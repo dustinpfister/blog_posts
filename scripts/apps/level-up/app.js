@@ -50,7 +50,7 @@ app.get('/', [
         (req, res) => {
             let html = '';
 
-            let getLevel = (state,cap) => {
+            let getLevel = (state, cap) => {
 
                 return [
                     state.wc / cap.wc, // metric 1 (site wide word count)
@@ -83,9 +83,9 @@ app.get('/', [
             html += '<span>AVG Post Word Count: ' + Math.round(res.reply.avgwc) + '/' + cap.avgwc + '<\/span><br>';
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
-            html += '<br><br><table style=\"width:100%;text-align:center;\">';
-            html += '<tr><th>Cat name<\/th><th>Word Count<\/th><th>Post Count<\/th><th>AVG Word Count per post<\/th><\/tr>';
 
+            html += '<br><br><table style=\"width:100%;text-align:center;\">';
+            html += '<tr><th>Level<\/th><th>Cat name<\/th><th>Word Count<\/th><th>Post Count<\/th><th>AVG Word Count per post<\/th><\/tr>';
             let catArr = []
             Object.keys(res.reply.cat).forEach((catName) => {
                 catArr.push(res.reply.cat[catName]);
@@ -102,7 +102,20 @@ app.get('/', [
             });
 
             catArr.forEach((cat) => {
-                html += '<tr><td>' + cat.name + '<\/td><td>' + cat.wc + '<\/td><td>' + cat.pc + '<\/td><td>' + Math.floor(cat.wc / cat.pc) + '<\/td><\/tr>';
+
+                cat.avgwc = Math.floor(cat.wc / cat.pc);
+                html += '<tr>' +
+                '<td>' + Math.floor(getLevel(cat, {
+                        level: 100,
+                        avgwc: 500,
+                        pc: 50,
+                        wc: 50000
+                    })) + '<\/td>' +
+                '<td>' + cat.name + '<\/td>' +
+                '<td>' + cat.wc + '<\/td>' +
+                '<td>' + cat.pc + '<\/td>' +
+                '<td>' + cat.avgwc + '<\/td>' +
+                '<\/tr>';
             })
 
             html += '<\/table>';
