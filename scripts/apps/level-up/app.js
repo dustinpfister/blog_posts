@@ -50,12 +50,12 @@ app.get('/', [
         (req, res) => {
             let html = '';
 
-            let getLevel = (cap) => {
+            let getLevel = (state,cap) => {
 
                 return [
-                    res.reply.wc / cap.wc, // metric 1 (site wide word count)
-                    res.reply.avgwc / cap.avgwc, // metric 2 (avg post word count)
-                    res.reply.pc / cap.pc // metric 3 (post count);
+                    state.wc / cap.wc, // metric 1 (site wide word count)
+                    state.avgwc / cap.avgwc, // metric 2 (avg post word count)
+                    state.pc / cap.pc // metric 3 (post count);
                 ].map(function (val) {
                     return val > 1 ? 1 : val;
                 }).reduce(function (acc, n) {
@@ -70,7 +70,7 @@ app.get('/', [
                 pc: 1000,
                 wc: 500000
             };
-            let level = getLevel(cap);
+            let level = getLevel(res.reply, cap);
 
             html += '<h1>Level: ' + Math.floor(level) + '<\/h1>';
             html += '<div style="width:300px;height:30px;background:grey;">' +
