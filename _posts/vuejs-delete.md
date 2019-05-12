@@ -5,10 +5,44 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 441
-updated: 2019-05-11 21:26:52
-version: 1.0
+updated: 2019-05-11 21:30:51
+version: 1.1
 ---
 
 If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary. However there is the built in Vue delete method as well that can also be used to delete an object property and update the view in one shot.
 
 <!-- more -->
+
+## 1 - Vue delete with just the javaScript delete keyword
+
+The way to go about deleting an object property with native javaScript is to use the delete keyword. If I really want to I can use that as a way to delete an object key of the data object of a view, but the view will not update to reflect that. However I can use the force update method to update the view afterwards to do so.
+
+```html
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <ul class="foo">
+    <li id="bar" >{{ obj }}</li>
+  </ul>
+  <script>
+  
+  var vm = new Vue({
+    el:'#bar',
+    data: {
+        obj: {foo:'bar', baz:'chew'}
+    }
+  });
+  
+  // delete will not update the view
+  // so force update must be used to
+  // render the change
+  delete vm.obj.baz
+  vm.$forceUpdate();
+  
+  </script>
+  </body>
+</html>
+```
