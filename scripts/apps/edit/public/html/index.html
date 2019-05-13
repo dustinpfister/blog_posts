@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Express Example Markdown Editor</title>
+  <link rel="stylesheet" type="text/css" href="edit.css">
+</head>
+<body>
+<div class="wrap_main">
+<div class="list">
+  <br><br><iframe id="list_files" class="list_files"></iframe>
+</div>
+ <div class="editor">
+  <textarea id="text_edit"></textarea>
+  <br><br>dir : <input id="text_dir" type="text">
+     <input id="text_list" type="button" value="list">
+  <br><br>fn  : <input id="text_fn" type="text">
+    <input id="text_open" type="button" value="open">
+    <input id="text_save" type="button" value="save">
+  <br><br><hr>
+    <span id="text_emess" class="text_emess"></span>
+    <span id="text_mess" class="text_mess"></span>
+</div>
+<div class="viewer">
+  <iframe id="viewer_md" src="/html"></iframe>
+</div>
+</div>
+<script src="/js/get.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/client.js"></script>
+</body>
+</html>
