@@ -19,7 +19,8 @@ app.get('/', [
                 wc: 0,
                 pc: 0,
                 cat: {},
-                oldest: new Date()
+                oldest: new Date(),
+                newest: new Date(0)
             };
             klawAll(
             {
@@ -28,9 +29,14 @@ app.get('/', [
                     console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.categories);
 
                     let date = new Date(item.header.date);
+                    let updated = new Date(item.header.updated);
                     if (date < res.reply.oldest)
                     {
                         res.reply.oldest = date;
+                    }
+                    if (updated > res.reply.newest)
+                    {
+                        res.reply.newest = updated;
                     }
 
                     // total word count
@@ -102,7 +108,8 @@ app.get('/', [
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
 
-            html += '<span>'+res.reply.oldest+'<\/span><br>';
+            html += '<span> oldest: ' + res.reply.oldest + '<\/span><br>';
+            html += '<span> newest: ' + res.reply.newest + '<\/span><br>';
 
             html += '<br><br><table style=\"width:100%;text-align:center;\">';
             html += '<tr><th>Level<\/th><th>Cat name<\/th><th>Word Count<\/th><th>Post Count<\/th><th>AVG Word Count per post<\/th><\/tr>';
