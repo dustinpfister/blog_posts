@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 443
-updated: 2019-05-13 12:37:51
-version: 1.5
+updated: 2019-05-13 12:52:18
+version: 1.6
 ---
 
 So the vue use global api method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. It seems like vue.js is following a more minimal approach with its design, pulling many features out of the framework itself, and leaving it up to the developer how to go about adding that feature.
@@ -68,6 +68,8 @@ When we have a plugin then it is just a matter of including the plug in in a pag
 Once the plugin is installed I can then use that instance method that it added to the Vue class prototype. So then this is just a silly basic hello world example, but lets look at some more examples that actually do something useful.
 
 ## 2 - Simple http get request example
+
+One of the features that is not built into vuejs at least when it comes to late 2.x versions is an http client. In this section I will be showing how to make a quick simple http client that just makes get requests using XMLHttpRequest.
 
 ```js
 // Simple http get request client for vuejs
