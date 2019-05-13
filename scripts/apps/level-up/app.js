@@ -38,6 +38,7 @@ app.get('/', [
                     {
                         res.reply.newest = updated;
                     }
+                    res.reply.time = res.reply.newest - res.reply.oldest;
 
                     // total word count
                     res.reply.wc += item.wc;
@@ -110,6 +111,7 @@ app.get('/', [
 
             html += '<span> oldest: ' + res.reply.oldest + '<\/span><br>';
             html += '<span> newest: ' + res.reply.newest + '<\/span><br>';
+            html += '<span> time: ' + res.reply.time + '<\/span><br>';
 
             html += '<br><br><table style=\"width:100%;text-align:center;\">';
             html += '<tr><th>Level<\/th><th>Cat name<\/th><th>Word Count<\/th><th>Post Count<\/th><th>AVG Word Count per post<\/th><\/tr>';
