@@ -11,16 +11,27 @@ klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 app.get('/', [
 
         // get data for all files
-        (req, res, next) => {
+        (req, res, next) =>
+        {
             console.log('klawing posts:');
-            res.reply = {
+            res.reply =
+            {
                 wc: 0,
                 pc: 0,
-                cat: {}
+                cat: {},
+                oldest: new Date()
             };
-            klawAll({
-                forPost: (item, nextPost) => {
+            klawAll(
+            {
+                forPost: (item, nextPost) =>
+                {
                     console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.categories);
+
+                    let date = new Date(item.header.date);
+                    if (date < res.reply.oldest)
+                    {
+                        res.reply.oldest = date;
+                    }
 
                     // total word count
                     res.reply.wc += item.wc;
@@ -38,31 +49,40 @@ app.get('/', [
 
                     nextPost();
                 },
-                onDone: () => {
+                onDone: () =>
+                {
                     console.log('done klawing posts:');
                     res.reply.avgwc = res.reply.wc / res.reply.pc;
                     next();
                 }
-            });
+            }
+            );
         },
 
         // send report
-        (req, res) => {
+        (req, res) =>
+        {
             let html = '';
 
-            let getLevel = (state, cap) => {
+            let getLevel = (state, cap) =>
+            {
                 return [
                     state.wc / cap.wc, // metric 1 (site wide word count)
                     state.avgwc / cap.avgwc, // metric 2 (avg post word count)
                     state.pc / cap.pc // metric 3 (post count);
-                ].map(function (val) {
+                ].map(function (val)
+                {
                     return val > 1 ? 1 : val;
-                }).reduce(function (acc, n) {
+                }
+                ).reduce(function (acc, n)
+                {
                     return acc + n;
-                }) / 3 * cap.level;
+                }
+                ) / 3 * cap.level;
             };
 
-            let cap = {
+            let cap =
+            {
                 level: 100,
                 avgwc: 500,
                 pc: 1000,
@@ -82,39 +102,51 @@ app.get('/', [
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
             html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
 
+            html += '<span>'+res.reply.oldest+'<\/span><br>';
+
             html += '<br><br><table style=\"width:100%;text-align:center;\">';
             html += '<tr><th>Level<\/th><th>Cat name<\/th><th>Word Count<\/th><th>Post Count<\/th><th>AVG Word Count per post<\/th><\/tr>';
             let catArr = []
-            Object.keys(res.reply.cat).forEach((catName) => {
+            Object.keys(res.reply.cat).forEach((catName) =>
+            {
                 catArr.push(res.reply.cat[catName]);
-            });
+            }
+            );
 
-            catArr.sort((a, b) => {
-                if (a.wc > b.wc) {
+            catArr.sort((a, b) =>
+            {
+                if (a.wc > b.wc)
+                {
                     return -1;
                 }
-                if (a.wc < b.wc) {
+                if (a.wc < b.wc)
+                {
                     return 1;
                 }
                 return 0;
-            });
+            }
+            );
 
-            catArr.forEach((cat) => {
+            catArr.forEach((cat) =>
+            {
 
                 cat.avgwc = Math.floor(cat.wc / cat.pc);
                 html += '<tr>' +
-                '<td>' + Math.floor(getLevel(cat, {
+                '<td>' + Math.floor(getLevel(cat,
+                    {
                         level: 100,
                         avgwc: 500,
                         pc: 50,
                         wc: 50000
-                    })) + '<\/td>' +
+                    }
+                    )) + '<\/td>' +
                 '<td>' + cat.name + '<\/td>' +
                 '<td>' + cat.wc + '<\/td>' +
                 '<td>' + cat.pc + '<\/td>' +
                 '<td>' + cat.avgwc + '<\/td>' +
                 '<\/tr>';
-            })
+            }
+            )
 
             html += '<\/table>';
 
