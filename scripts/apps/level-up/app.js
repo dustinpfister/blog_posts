@@ -60,6 +60,10 @@ app.get('/', [
                 {
                     console.log('done klawing posts:');
                     res.reply.avgwc = res.reply.wc / res.reply.pc;
+
+                    // posts per day
+                    res.reply.ppd = res.reply.pc / (res.reply.time / 1000 / 60 / 60 / 24);
+
                     next();
                 }
             }
@@ -104,14 +108,16 @@ app.get('/', [
             html += '<div style="width:300px;height:10px;background:#afafff;">' +
             '<div style="width:' + Math.round((level % Math.floor(level)) * 300) + 'px;height:10px;background:blue;"><\/div>' +
             '<\/div><br>';
+
+            html += '<span>% to next level: ' + Math.round(level % Math.floor(level) * 100) + '%<\/span><br>';
             html += '<span>Word Count: ' + res.reply.wc + '/' + cap.wc + '<\/span><br>';
             html += '<span>AVG Post Word Count: ' + Math.round(res.reply.avgwc) + '/' + cap.avgwc + '<\/span><br>';
             html += '<span>Post Count: ' + res.reply.pc + '/' + cap.pc + '<\/span><br>';
-            html += '<span>% to next level: ' + (level % Math.floor(level)) + '<\/span><br>';
 
             html += '<span> oldest: ' + res.reply.oldest + '<\/span><br>';
             html += '<span> newest: ' + res.reply.newest + '<\/span><br>';
             html += '<span> time: ' + res.reply.time + '<\/span><br>';
+            html += '<span> Posts per day: ' + res.reply.ppd.toFixed(2) + '<\/span><br>';
 
             html += '<br><br><table style=\"width:100%;text-align:center;\">';
             html += '<tr><th>Level<\/th><th>Cat name<\/th><th>Word Count<\/th><th>Post Count<\/th><th>AVG Word Count per post<\/th><\/tr>';
