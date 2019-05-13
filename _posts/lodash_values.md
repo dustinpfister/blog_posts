@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2019-05-13 14:24:36
-version: 1.3
+updated: 2019-05-13 14:30:24
+version: 1.4
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in lodash where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one little additional feature. The lodash values object method might be one such method that supports a case that lodash is not dead just yet. The reason being that the native Object.values method is still fairly new, and as such there is limited browser support for older browsers. 
@@ -36,3 +36,5 @@ console.log( Object.values(obj) ); // [ 'bar', 42 ]
 console.log(_.keys(obj)); // ['foo', n]
 console.log(Object.keys(obj)); // ['foo', n]
 ```
+
+There is also the native Object.values method that was introduced in recent years, this method works in the same way as lodash values but it might not be there in some older environments. As such this is one such method that helps to support a case that lodash is not a dead library just yet depending on your sites bowser user agent stats.
