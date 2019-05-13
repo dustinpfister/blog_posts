@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 443
-updated: 2019-05-13 12:54:36
-version: 1.7
+updated: 2019-05-13 13:01:54
+version: 1.8
 ---
 
 So the vue use global api method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. It seems like vue.js is following a more minimal approach with its design, pulling many features out of the framework itself, and leaving it up to the developer how to go about adding that feature.
@@ -113,6 +113,10 @@ var httpGet = (function (){
     ());
 ```
 
+This results in a simpe javaScript module that if I want to I can use with just plain old vanillajavaScript by itself to make get requests. However it also of course has an install method that adds an $httpGetVue class prototype instance method to Vuw when used with the vue use global api method of Vue.
+
+So then I can use it to add a method to Vue that can be used to make simple get requests.
+
 ```html
 <html>
   <head>
@@ -148,3 +152,7 @@ var httpGet = (function (){
   </body>
 </html>
 ```
+
+Of course when it comes to writing this kind of module there are all kinds of things that can be added to it, such as adding support for more than just get requests, making use of promises rather than callbacks and so forth. It might make better sense to just use an http client that is all ready written, rather than making your own. However the idea here is that an http client is something that should maybe not be baled into a font end framework. 
+
+In some projects a simple client like this that just makes get requests might work okay, in other projects maybe not, in any case it is up to you how to go about adding this functionality to a project that involves the use of vuejs in the client system of the project.
