@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 443
-updated: 2019-05-13 12:31:52
-version: 1.3
+updated: 2019-05-13 12:36:07
+version: 1.4
 ---
 
 So the vue use global api method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. It seems like vue.js is following a more minimal approach with its design, pulling many features out of the framework itself, and leaving it up to the developer how to go about adding that feature.
@@ -16,6 +16,8 @@ So the vue use global api method in vue.js is there to use plugins designed for 
 ## 1 - Vue use basic plugin example
 
 In order to ise the vue use method there first needs to be a plugin to use with the method. This is typically something that will be stored in an external javaScript file and declare a global variable. That global variable should be an Object, and this object should at a minimum have an install property. The install property should be a function, and this function will receive Vue and an optional options object as arguments. Inside the body of this install function the plugin will append any instance methods, directives, and so forth that ads functionality to vuejs.
+
+Here I have a very basic example of a vuejs plugin that can be used with the vue use global method. This plugin just adds a single vue instance method that just returns a string when called.
 
 ```js
 var basic ={
@@ -31,6 +33,8 @@ var basic ={
 };
 
 ```
+
+When we have a plugin then it is just a matter of including the plug in in a page with a script tag. When the plugin is available in can the be added to vue by just calling the vue use method and passing the object that has the install function in it to as the first argument. 
 
 ```html
 <html>
