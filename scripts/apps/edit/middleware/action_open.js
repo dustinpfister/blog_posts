@@ -5,12 +5,9 @@ fs = require('fs');
 module.exports = (req, res) =>
 {
 
-    console.log('yes');
-
     if (!res.app.get('fn'))
     {
 
-        console.log('well');
         res.reply.success = true;
         res.reply.mess = 'No file name sent empty string';
         res.reply.data = '';

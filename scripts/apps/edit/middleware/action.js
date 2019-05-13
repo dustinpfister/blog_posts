@@ -11,8 +11,6 @@ router.use((req, res, next) =>
 
         let action = require(path.join(res.app.get('dir_mw'), './action_' + req.body.action + '.js'));
 
-        action = action.constructor.name === 'Array' ? action[0] : action;
-
         action(req, res, next);
 
     }
