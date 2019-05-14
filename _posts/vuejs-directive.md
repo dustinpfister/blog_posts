@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2019-05-14 12:08:45
-version: 1.6
+updated: 2019-05-14 12:11:06
+version: 1.7
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are, how to use them, and also how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html). If you have some background with angular chances are you will be able to get up and running with vue directives fairly fast. However in any case in this post I will be showing off some simple, and maybe not so simple vue directive examples.
@@ -55,6 +55,8 @@ var vm = new Vue({
 ```
 
 When this example is up and running it results in the messages and style set in the data object of the vue being used in the text nodes and style attributes of the elements in which the v-text, and v-bind directives are being used. As such this should help to give you at least a basic idea of that a directive is in vuejs, it is a way to set the attributes and values of dome elements.
+
+Understanding directives along with templates, render functions, and the Vue use method can lead to an understanding of how to go about making vuejs plug ins.
 
 ## 2 - Vue directive on:click event example
 
