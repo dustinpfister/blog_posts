@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2019-05-14 11:49:36
-version: 1.3
+updated: 2019-05-14 11:59:59
+version: 1.4
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are, how to use them, and also how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html). If you have some background with angular chances are you will be able to get up and running with vue directives fairly fast. However in any case in this post I will be showing off some simple, and maybe not so simple vue directive examples.
@@ -15,7 +15,13 @@ If you start getting into vuejs the concept of a [vue directive](https://012.vue
 
 ## 1 - Vue directive basic v-text, and v-bind example
 
-For a basic example of a vue directive I made this quick example that makes use of some built in directives in vuejs. There are a few of these, but for starters this example makes use of the v-text, and v-bind vuejs directives.
+For a basic example of a vue directive I made this quick example that makes use of some built in directives in vuejs. There are a few of these, but for starters this example makes use of the v-text, and v-bind vuejs directives. 
+
+The v-text directive can be used as an alternative to the mustache syntax when it comes to setting the value of a text node of an element. It is a fairly simple directive that just sets the text value of a property of the data object of a view to the inner text node, so it is a good one to start playing with if you are new to vuejs directives. 
+
+The v-bind argument is another directive that comes with vuejs that comes in handy often. This one can be used to set the value of html attributes with values in the data object of a vue. It takes one argument that is the name of the attribute to set, and then the value of the attribute is set to what is given via data object property that is assigned to it.
+
+If you find what I wrote a little confusing maybe it would be best to look at some code examples. Here I have an html file in which I am linking to vuejs, and an external javaScript file that has a Vue class instance.
 
 ```html
 <html>
@@ -32,6 +38,8 @@ For a basic example of a vue directive I made this quick example that makes use 
   </body>
 </html>
 ```
+
+In the html here you will notice the v-text directive this just sets the innerText of the h1 element to the mess_h1 property of the data object in my Vue instance in the text.js file.
 
 ```js
 var vm = new Vue({
