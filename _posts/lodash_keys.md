@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 446
-updated: 2019-05-14 16:26:33
-version: 1.3
+updated: 2019-05-14 16:37:12
+version: 1.4
 ---
 
 The [lodash keys](https://lodash.com/docs/4.17.11#keys) method in lodash can be used to get an array of public key names of an object. There is also the native Object.keys method as well that has been introduced as well, so this makes the lodash \_.keys method one of many methods in lodash where it mostly just comes down to a question of browser support.
@@ -18,8 +18,6 @@ The [lodash keys](https://lodash.com/docs/4.17.11#keys) method in lodash can be 
 The lodash keys method works by just simply passing an object as the first argument, and an array of public key names is returned by the method. The native Object.keys method works in the same manner as well.
 
 ```js
-let _ = require('lodash');
- 
 let obj = {
     foo: 'bar',
     n: 42
@@ -42,3 +40,38 @@ console.log(Object.values(obj)); // [ 'bar', 42 ]
 So because there is a native method for getting public key names of an Object, what bother with lodash? Well first off this is just one method, and there are many lodash methods where there is no native counter part at all. Also there are many lodash methods where the lodash method works a little differently, or brings a little something more to the table.
 
 The lodash keys method might not be the best example of the worth of lodash these days, but there is something to say about browser support with the Object.keys method. The native Object.keys method is still fairly new in light of the history of web development, and it is also true that the method is not supported at all when it comes to Internet Explorer. So it still makes sense to use the lodash keys method as a way to bring better browser support. If you do not want to use lodash, it is still wise to use a polyfill for this one.
+
+## 2 - A for in loop as a lodash keys replacement, and Object.keys pollyfill
+
+It is not to hard to write a keys method using a for in loop. If backward compatibility is of concern using for in might be the best option, however if performance is a concern you might wish to work something else out. Still both a stand alone keys method can be added super easy, and it can also be used as a polyfill in the event that Object.keys is not there.
+
+```js
+let obj = {
+    foo: 'bar',
+    n: 42
+};
+ 
+// stand alone method
+var keys = function (obj) {
+    var keyNames = [],
+    keyName;
+    for (keyName in obj) {
+        keyNames.push(keyName);
+    }
+    return keyNames;
+};
+ 
+console.log( keys(obj) ); // ['foo', 'n']
+ 
+// polyfill
+Object.keys = Object.keys || function (obj) {
+    var keyNames = [],
+    keyName;
+    for (keyName in obj) {
+        keyNames.push(keyName);
+    }
+    return keyNames;
+};
+ 
+console.log( Object.keys(obj) ); // ['foo', 'n']
+```
