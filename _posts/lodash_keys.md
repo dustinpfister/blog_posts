@@ -5,15 +5,17 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 446
-updated: 2019-05-14 13:07:50
-version: 1.0
+updated: 2019-05-14 15:59:36
+version: 1.1
 ---
 
 The lodash keys method in lodash can be used to get an array of public key names of an object. There is also the native Object.keys method as well that has been introduced as well, so this makes the lodash \_.keys method one of many methods in lodash where it mostly just comes down to a question of browser support.
 
 <!-- more -->
 
-## 1 - lodash keys example
+## 1 - lodash keys and Object.keys example
+
+The lodash keys method works by just simply passing an object as the first argument, and an array of public key names is returned by the method. The native Object.keys method works in the same manner as well.
 
 ```js
 let _ = require('lodash');
