@@ -5,11 +5,147 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2019-05-14 11:15:33
-version: 1.1
+updated: 2019-05-14 11:47:23
+version: 1.2
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are, how to use them, and also how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html). If you have some background with angular chances are you will be able to get up and running with vue directives fairly fast. However in any case in this post I will be showing off some simple, and maybe not so simple vue directive examples.
 
 <!-- more -->
 
+## 1 - Vue directive basic v-text, and v-bind example
+
+```html
+<html>
+  <head>
+    <title>vue directive example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="header">
+    <h1 v-text="mess_h1" >Something went wrong.</h1>
+    <p v-text="mess_p" v-bind:style="style_red"></p>
+  </div>
+  <script src="./text.js"></script>
+  </body>
+</html>
+```
+
+```js
+var vm = new Vue({
+    el: '#header',
+    data: {
+        mess_h1: 'This is a v-text dirrective example',
+        mess_p: 'Uisng the v-text and v-bind:style dirrectives here',
+        style_red: 'color:red;'
+    }
+});
+```
+
+## 2 - Vue directive on:click event example
+
+```html
+<html>
+  <head>
+    <title>vue directive example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="interface">
+    <input v-on:click="step" type="button" value="step">
+    <p>{{ frame }}</p>
+  </div>
+  <script src="./event_click.js"></script>
+  </body>
+</html>
+```
+
+```js
+
+var vm = new Vue({
+    el: '#interface',
+    data: {
+        frame: 0,
+        maxFrame: 10
+    },
+    methods: {
+        step: function (e) {
+            this.frame += 1;
+            this.frame %= this.maxFrame;
+        }
+    }
+});
+```
+
+## 3 - vue directive template example
+
+```html
+<html>
+  <head>
+    <title>vue directive example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="interface"></div>
+  <script src="./template.js"></script>
+  </body>
+</html>
+```
+
+```js
+var vm = new Vue({
+    el: '#interface',
+    template: '<div>' +
+    '<input v-on:click="step" type="button" value="step">' +
+    '<input v-on:click="reset" type="button" value="reset">' +
+    '<p>frame: {{ frame }} / {{ maxFrame }}</p>' +
+    '</div>',
+    data: {
+        frame: 0,
+        maxFrame: 10
+    },
+    methods: {
+        step: function (e) {
+            this.frame += 1;
+            this.frame %= this.maxFrame;
+        },
+        reset: function () {
+            this.frame = 0;
+        }
+    }
+});
+```
+
+## 4 - Custom vue directive to binary
+
+```html
+<html>
+  <head>
+    <title>vue directive example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="content">
+     <h1>There is a=a and then there is a=<span v-tobin >a</span></h1>
+  </div>
+  <script src="./custom_tobin.js"></script>
+  </body>
+</html>
+```
+
+```js
+Vue.directive('tobin', {
+    bind: function (el, binding, vnode) {
+        if (!el.dataset.text) {
+            el.dataset.text = el.innerText;
+        }
+        el.innerText = [].map.call(el.dataset.text, (c) => {
+            return c.charCodeAt(0).toString(2);
+        }).join('');
+    }
+});
+ 
+var vm = new Vue({
+        el: '#content'
+    });
+```
