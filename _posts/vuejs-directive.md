@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2019-05-14 11:47:23
-version: 1.2
+updated: 2019-05-14 11:49:36
+version: 1.3
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are, how to use them, and also how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html). If you have some background with angular chances are you will be able to get up and running with vue directives fairly fast. However in any case in this post I will be showing off some simple, and maybe not so simple vue directive examples.
@@ -14,6 +14,8 @@ If you start getting into vuejs the concept of a [vue directive](https://012.vue
 <!-- more -->
 
 ## 1 - Vue directive basic v-text, and v-bind example
+
+For a basic example of a vue directive I made this quick example that makes use of some built in directives in vuejs. There are a few of these, but for starters this example makes use of the v-text, and v-bind vuejs directives.
 
 ```html
 <html>
