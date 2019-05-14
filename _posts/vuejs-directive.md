@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2019-05-14 12:11:06
-version: 1.7
+updated: 2019-05-14 12:14:07
+version: 1.8
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are, how to use them, and also how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html). If you have some background with angular chances are you will be able to get up and running with vue directives fairly fast. However in any case in this post I will be showing off some simple, and maybe not so simple vue directive examples.
@@ -59,6 +59,8 @@ When this example is up and running it results in the messages and style set in 
 Understanding directives along with templates, render functions, and the Vue use method can lead to an understanding of how to go about making vuejs plug ins.
 
 ## 2 - Vue directive on:click event example
+
+In this example I will be showing another example of a built in vue directive that can be used for event attachment. understanding event attachment is an important part of designing user interfaces with vuejs. The v-on directive can be used to do just this, for example the v-on method can be used to set a method defined in the methods object of a view to file when an element is clicked by passing an argument to it like in the v-bind directive
 
 ```html
 <html>
