@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 446
-updated: 2019-05-14 16:40:29
-version: 1.5
+updated: 2019-05-14 16:41:34
+version: 1.6
 ---
 
-The [lodash keys](https://lodash.com/docs/4.17.11#keys) method in lodash can be used to get an array of public key names of an object. There is also the native [Object.keys method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) as well that has been introduced as well. In addition a [for in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop is another option for getting object keys that has great backward compatibility with older environments, so this makes the lodash \_.keys method one of many methods in lodash that make me scratch my head wondering if I should bother or not.
+The [lodash keys](https://lodash.com/docs/4.17.11#keys) method in lodash can be used to get an array of public key names of an object. There is also the native [Object.keys method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) as well that has been introduced in recent years. In addition a [for in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop is another option for getting object keys that has great backward compatibility with older environments, so this makes the lodash \_.keys method one of many methods in lodash that make me scratch my head wondering if I should bother or not.
 
 <!-- more -->
 
