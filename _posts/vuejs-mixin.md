@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2019-05-15 13:25:38
-version: 1.6
+updated: 2019-05-15 13:29:39
+version: 1.7
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
@@ -80,6 +80,8 @@ new Vue({
 In this example as expected the Vue instance that has the mixin that defines the logic for the startMess option works, and displays the startMess option value as the value of the mess data object property.
 
 ## 1.2 - Adding a global Vue mixin for all Vue constructor instances.
+
+Here I have an example that does more or less the same thing as the first
 
 ```html
 <html>
