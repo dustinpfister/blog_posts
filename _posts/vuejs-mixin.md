@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2019-05-15 13:29:39
-version: 1.7
+updated: 2019-05-15 14:02:13
+version: 1.8
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
@@ -81,7 +81,7 @@ In this example as expected the Vue instance that has the mixin that defines the
 
 ## 1.2 - Adding a global Vue mixin for all Vue constructor instances.
 
-Here I have an example that does more or less the same thing as the first
+Here I have an example that does more or less the same thing as the first basic example that just defines a simple local mixin with the mixin option. However when using the Vue mixin global api method this results in the mixin being available in all additional Vue constructor instances from then on.
 
 ```html
 <html>
