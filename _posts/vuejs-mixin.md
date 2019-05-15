@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2019-05-15 13:08:59
-version: 1.3
+updated: 2019-05-15 13:10:23
+version: 1.4
 ---
 
-There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a vue mixin is, one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
+There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
 
 <!-- more -->
 
