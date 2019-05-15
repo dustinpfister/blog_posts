@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2019-05-15 13:10:23
-version: 1.4
+updated: 2019-05-15 13:14:01
+version: 1.5
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
@@ -15,7 +15,7 @@ There sure is a lot to cover to get up and running with vuejs to get into a spac
 
 ## 1 - Vue mixin basics
 
-So a vue mixin is a way to go about defining custom Vue constructor options like that of the vue data, and vue el options. It is possible to define one or more mixins for a single Vue constructor instance via the mixins option, and the same can be done globally as well via the Vue mixin global method also.
+So a vue mixin is a way to go about defining custom Vue constructor options like that of the vue data, and [vue el](/2019/05/06/vuejs-el/) options. It is possible to define one or more mixins for a single Vue constructor instance via the [mixins option](https://vuejs.org/v2/api/#mixins), and the same can be done globally as well via the [Vue mixin global method](https://vuejs.org/v2/api/#Vue-mixin) also.
 
 ## 1.1 - Vue mixin option for adding custom options just for a single Vue constructor instance
 
