@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2019-05-15 12:38:01
-version: 1.1
+updated: 2019-05-15 12:42:54
+version: 1.2
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a vue mixin is, one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
@@ -70,3 +70,49 @@ new Vue({
 ```
 
 ## 1.2 - Adding a global Vue mixin for all Vue constructor instances.
+
+```html
+<html>
+  <head>
+    <title>vue mixin example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div>
+    <span id="one">{{ mess }}</span><br>
+    <span id="two">{{ mess }}</span><br>
+  </div>
+  <script src="./basic_global.js"></script>
+  </body>
+</html>
+```
+
+```js
+Vue.mixin({
+    created: function () {
+        var startMess = this.$options.startMess;
+        console.log(this.$data.mess);
+        if (startMess) {
+            //console.log(startState);
+            this.$data.mess = startMess;
+        } else {
+            this.$data.mess = 'no start mess option given.';
+        }
+    }
+});
+ 
+new Vue({
+    el: '#one',
+    data: {
+        mess: '' // 'hello'
+    },
+    startMess : 'hello'
+});
+ 
+new Vue({
+    el: '#two',
+    data: {
+        mess: '' // 'no start mess option given'
+    }
+});
+```
