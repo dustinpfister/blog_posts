@@ -5,7 +5,7 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2019-05-15 21:30:32
+updated: 2019-05-15 21:39:13
 version: 1.1
 ---
 
@@ -13,3 +13,39 @@ In javaScript [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 <!-- more -->
 
+## 1 - parseInt basic examples
+
+```js
+console.log( parseInt('42') ); // 42
+console.log( parseInt('  6' * '7') ); // 42
+console.log( parseInt(42) ); // 42
+console.log( parseInt(42.1234) ); // 42
+```
+
+## 2 - The deal with max safe integer
+
+```js
+let n = Number.MAX_SAFE_INTEGER;
+console.log(n); // 9007199254740991
+console.log(parseInt(n + 100)); // 9007199254741092
+```
+
+## 3 - parseInt and Number
+
+```js
+let str = '42.1234';
+// number will parse to float if there
+// is a fraction
+console.log( Number(str) ); // 42.1234
+ 
+// paser Int will not
+console.log( parseInt(str) ); // 42
+ 
+let str2 = '42abc';
+// Number will result in NaN
+// if there are non number chars
+// in the end of a string
+console.log( Number(str2) ); // NaN
+// parseInt will not
+console.log( parseInt(str2) ); // 42
+```
