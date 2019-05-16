@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2019-05-15 22:05:31
-version: 1.5
+updated: 2019-05-15 22:08:05
+version: 1.6
 ---
 
 In javaScript [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to convert a string to a number. parseInt does convert a string or number to an integer, but technically it is still a float as all numbers in javaScript a double precision floating point numbers. So it is really just a float with the fraction part removed. There are other was to parse to an integer, or float in javaScript as well so lets take a look at the options.
@@ -53,6 +53,8 @@ console.log(parseInt(n + 100)); // 9007199254741092
 ```
 
 ## 3 - parseInt and Number
+
+The Number function can be used to convert a string to a number as well. However it will not parse to an integer, at least not my itself.
 
 ```js
 let str = '42.1234';
