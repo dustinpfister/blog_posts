@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 450
-updated: 2019-05-16 19:42:54
-version: 1.3
+updated: 2019-05-16 21:00:45
+version: 1.4
 ---
 
 A [vue component](https://vuejs.org/v2/guide/components.html) is a way to create reusable Vue constructor instances. A component has a name assigned to it, and can be used as a way to make custom elements that can be used in templates.
@@ -57,4 +57,44 @@ new Vue({
     el: '#step-demo'
 })
 
+```
+
+## 2 - Adding properties to a custom vue component tag
+
+```html
+<html>
+  <head>
+    <title>vue component example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="step-demo">
+    <step></step>
+    <step si="5"></step>
+  </div>
+  <script src="./props.js"></script>
+  </body>
+</html>
+```
+
+```js
+// A Basic step Component
+Vue.component('step', {
+    props: ['si'],
+    template: '<div><button v-on:click="step">step</button> i: {{ i }} </div>',
+    data: function (a) {
+        return {
+            i: parseInt(this.si === undefined ? 0 : this.si)
+        }
+    },
+    methods: {
+        step: function (e) {
+            this.$data.i += 1;
+        }
+    }
+});
+ 
+new Vue({
+    el: '#step-demo'
+})
 ```
