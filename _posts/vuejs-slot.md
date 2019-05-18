@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 451
-updated: 2019-05-17 21:03:58
-version: 1.9
+updated: 2019-05-17 21:05:30
+version: 1.10
 ---
 
 When making vue components there might be a time now and then to use a [vue slot](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots) when working out a template, or render method for a component. A vue slot is what can be used to define in the template where anything that is passed inside the custom element of the component should go. If you still are a little confused, maybe it would be a good idea to look at a few simple code examples. So lets take a look at one or two then.
@@ -22,7 +22,7 @@ Here is the html of the example I just have a single div element hard coded and 
 ```html
 <html>
   <head>
-    <title>vue data example</title>
+    <title>vue slot example</title>
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
@@ -45,10 +45,7 @@ Vue.component('foo', {
 // simple text node
 new Vue({
     el: '#demo-data',
-    template: '<foo>hello</foo>',
-    data: {
-        foo: 'bar'
-    }
+    template: '<foo>hello</foo>'
 });
 ```
 
@@ -57,3 +54,35 @@ I then of course have a plain old vue instance that makes use of the custom foo 
 ## 2 - More that une vue slot
 
 If for some reason I need more than one slot there is the named property that can be used to define what slot should be used when making a template that makes use of a component.
+
+```html
+<html>
+  <head>
+    <title>vue slot example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-slot"></div>
+  <script src="./named.js"></script>
+  </body>
+</html>
+```
+
+```js
+Vue.component('foo', {
+    template: '<div>' +
+    '<slot name="title" ></slot>' +
+    '<slot></slot>' +
+    '<slot name="footer"></slot>' +
+    '</div>'
+})
+ 
+new Vue({
+    el: '#demo-slot',
+    template: '<div>' +
+    '<foo v-slot:title>Slots are fun</foo>' +
+    '<foo>If no name is given then it is the defulat slot</foo>' +
+    '<foo v-slot:footer>So names help with more than one slot</foo>' +
+    '</div>'
+});
+```
