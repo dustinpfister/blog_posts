@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 451
-updated: 2019-05-17 20:29:52
-version: 1.8
+updated: 2019-05-17 21:03:58
+version: 1.9
 ---
 
 When making vue components there might be a time now and then to use a [vue slot](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots) when working out a template, or render method for a component. A vue slot is what can be used to define in the template where anything that is passed inside the custom element of the component should go. If you still are a little confused, maybe it would be a good idea to look at a few simple code examples. So lets take a look at one or two then.
@@ -53,3 +53,7 @@ new Vue({
 ```
 
 I then of course have a plain old vue instance that makes use of the custom foo element that the component creates.
+
+## 2 - More that une vue slot
+
+If for some reason I need more than one slot there is the named property that can be used to define what slot should be used when making a template that makes use of a component.
