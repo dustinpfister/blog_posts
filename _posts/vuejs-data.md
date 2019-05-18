@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2019-05-18 12:43:37
-version: 1.2
+updated: 2019-05-18 12:45:19
+version: 1.3
 ---
 
 When working out a project with vuejs there will be heavy use of the vue data option when making the vue components and plan old vue instances. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function. This post will center around the vue data option in vuejs, but it will also branch off into some other topics as well.
@@ -44,3 +44,5 @@ new Vue({
 });
 
 ```
+
+When this example is up and working the string bar is the inner text of the paragraph element in the template, and that is then used as the content for the mount point in the html which is of course that single div element with the id demo-data.
