@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2019-05-18 12:40:32
-version: 1.1
+updated: 2019-05-18 12:43:37
+version: 1.2
 ---
 
 When working out a project with vuejs there will be heavy use of the vue data option when making the vue components and plan old vue instances. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function. This post will center around the vue data option in vuejs, but it will also branch off into some other topics as well.
@@ -31,6 +31,8 @@ So then here is a basic example of the vue data option in action. In the hard co
 ```
 
 All other examples in this post use variations of this html where all I am changing is the filename. The focus here will be on javaScript code and not html.
+
+The basic.js file looks like this. I am just creating a new instance of the Vue class constructor and using the data option to define some data that will be used in a template.
 
 ```js
 new Vue({
