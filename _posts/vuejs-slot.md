@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 451
-updated: 2019-05-17 20:14:51
-version: 1.5
+updated: 2019-05-17 20:18:24
+version: 1.6
 ---
 
 When making vue components there might be a time now and then to use a [vue slot](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots) when working out a template, or render method for a component. A vue slot is what can be used to define in the template where anything that is passed inside the custom element of the component should go. If you still are a little confused, maybe it would be a good idea to look at a few simple code examples. So lets take a look at one or two then.
@@ -15,9 +15,9 @@ When making vue components there might be a time now and then to use a [vue slot
 
 ## 1 - vue slot basic example
 
-Vue slots come into play when making a vue component, I will not be getting into components in general here but I have wrote a post on that. However understanding slots is an important part of vue component design.
+Vue slots come into play when making a vue component, I will not be getting into components in general here but I have wrote a post on that. However understanding slots is an important part of vue component design. In this basic vue slot example I am just using a component that is just template. When I use the custom element of the component in a Vue instance I can define the inner html of what the slot is in the component within the template of the vue instance. 
 
-In this basic vue slot example I am just using a component that is just template. When I use the custom element of the component in a Vue instance I can define the inner html of what the slot is in the component within the template of the vue instance. 
+Here is the html of the example I just have a single div element hard coded and I am linking to a basic.js file. In this file I will have my component and the vue instance that makes use of that component and mounts to the div element.
 
 ```html
 <html>
