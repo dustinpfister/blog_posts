@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2019-05-18 13:04:41
-version: 1.5
+updated: 2019-05-18 13:09:54
+version: 1.6
 ---
 
 When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function. Vue data objects are what is used as the model of a vue instance, they are just plain old objects, but when something is changed the [vue updates](https://vuejs.org/v2/guide/reactivity.html). This post will center around the vue data option in vuejs, but it will also branch off into some other topics as well.
@@ -67,4 +67,60 @@ new Vue({
     }
 });
 
+```
+
+## 3 - vue data ans components
+
+```js
+Vue.component('stepper', {
+    template: '<div><input type="button" value="step" v-on:click="bar" ><span> i: {{ i }}</span><slot></slot></div>',
+    data: function () {
+        return {
+            i: 0
+        }
+    },
+    methods: {
+        bar: function () {
+            this.$data.i += 1;
+        }
+    }
+})
+ 
+new Vue({
+    el: '#demo-data',
+    template: '<div><stepper></stepper><br><stepper></stepper></div>',
+});
+```
+
+## 4 - Adding in properties
+
+```js
+Vue.component('stepper', {
+ 
+    // using props
+    props: ['si'],
+ 
+    // setting i to si prop if given
+    data: function () {
+        return {
+            i: this.si === undefined ? 0 : parseInt(this.si)
+        }
+    },
+ 
+    template: '<div><input type="button" value="step" v-on:click="stepit" ><span> {{i}} </span></div>',
+    methods: {
+        stepit: function () {
+            this.$data.i += 1;
+        }
+    }
+})
+ 
+// can use a si attribute to set starting index
+new Vue({
+    el: '#demo-data',
+    template: '<div>' +
+    '<stepper si=\"5\"></stepper><br>' +
+    '<stepper></stepper>' +
+    '</div>'
+});
 ```
