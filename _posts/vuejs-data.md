@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2019-05-18 13:09:54
-version: 1.6
+updated: 2019-05-18 13:20:12
+version: 1.7
 ---
 
 When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function. Vue data objects are what is used as the model of a vue instance, they are just plain old objects, but when something is changed the [vue updates](https://vuejs.org/v2/guide/reactivity.html). This post will center around the vue data option in vuejs, but it will also branch off into some other topics as well.
@@ -69,7 +69,9 @@ new Vue({
 
 ```
 
-## 3 - vue data ans components
+## 3 - vue data and components
+
+in vuejs components are a way of making reusable collections of templates, methods, data and more. They allow for the creating of custom elements that can then be used in other vuejs templates. Here vue data plays an important role in the process of vuejs component design.
 
 ```js
 Vue.component('stepper', {
@@ -91,6 +93,8 @@ new Vue({
     template: '<div><stepper></stepper><br><stepper></stepper></div>',
 });
 ```
+
+One not worth difference is that a function must be used that returns an object that will be the data object for the vue data option of the component. This is to the data object has its own function level variable scope. When making a single vue instance this is not a problem and just a plan old object can be used for data, however a component is something where there will often be more that one instance of, so we do not want all of those instances referencing the same data object.
 
 ## 4 - Adding in properties
 
