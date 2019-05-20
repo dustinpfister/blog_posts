@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-05-20 17:49:10
-version: 1.14
+updated: 2019-05-20 17:50:47
+version: 1.15
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as well. In this post however I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
@@ -185,4 +185,4 @@ while (i < len) {
 }
 ```
 
-here I have an example that will break out of the loop in the event that anything other than a number is detected, and will continue if the number is not a power of two.
+here I have an example that will break out of the loop in the event that anything other than a number is detected, and will continue if the number is not a power of two. This might not be the best example, but if there was some code that did some heavy lifting after a continue statement, and it was a fairly lengthly array of elements that need to be looped over it might make a difference.
