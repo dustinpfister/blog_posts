@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-05-20 16:14:22
-version: 1.11
+updated: 2019-05-20 16:51:38
+version: 1.12
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as well. In this post however I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
@@ -56,49 +56,83 @@ When making something that has two or more nested loops it is possible to use la
 
 ```js
 let findGuy = (grid) => {
- 
-    let y = 0,
-    x,
-    c = 0,
-    cell = {};
- 
-    outer: while (y < grid.h) {
+    let x,
+    y = 0,
+    guy = {};
+    height: while (y < grid.h) {
         x = 0;
-        while (x < grid.w) {
-            cell = grid.cells[y * grid.w + x];
-            if (cell.guy) {
-                break outer;
+        width: while (x < grid.w) {
+            let cell = grid.cells[y][x];
+            if (typeof cell === 'object') {
+                if (cell.type==='guy') {
+                    guy = cell;
+                    break height;
+                }
             }
-            c += 1;
             x += 1;
         }
         y += 1;
     }
- 
-    if (cell.hp > 0) {
-        return {
-            guy: cell,
-            c: c
-        };
+    if (guy.type === 'guy') {
+        guy.x = x;
+        guy.y = y;
     }
-    return {
-        guy: false,
-        c: c
-    };
- 
+    return guy;
 };
- 
 console.log(findGuy({
-        h: 3,
         w: 3,
-        cells: [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    })); // {guy: false, c:9}
- 
-console.log(findGuy({
         h: 3,
-        w: 3,
-        cells: [0, 0, {guy:true,hp:10}, 0, 0, 0, 0, 0, 0]
-    })); // { guy: { guy: true, hp: 10 }, c: 2 }
+        cells: [
+            [0, 0, 0],
+            [0, {type: 'guy'}, 0],
+            [0, 0, 0]]
+    }));
+// { type: 'guy', x: 1, y: 1 }
 ```
 
-Some developers do not recommend the use of break and labels as it is similar to goto. It is then recommended to make a more functional approach with something like this, that would also be a a little more fine grain as well. Still this is one other way to go about using the break stament and can be used in conjunction with labels not just in switch statements but with loops as well.
+Some developers do not recommend the use of break and labels as it is similar to goto. It is then recommended to make a more functional approach with something like this, that would also be a a little more fine grain as well. Still this is one other way to go about using the break statement and can be used in conjunction with labels not just in switch statements but with loops as well.
+
+### 3.1 - The same example without javaScript break and labels
+
+The same example that makes use of javaScript break and labels could be written in a more functional and fine grain form. This would involve working with a copy of the object so as not to mangle the original object that is passed to the fine guy method, and breaking the process down into several methods that each do just one little thing.
+
+```js
+
+// return a grid with flat cells array
+let flat = (grid) => {
+    let gridC = JSON.parse(JSON.stringify(grid)),
+    c = [];
+    gridC.cells.forEach((cells, y) => {
+        cells.forEach((cell, x) => {
+            if (typeof cell === 'object') {
+                cell.x = x;
+                cell.y = y;
+            }
+            c.push(cell);
+        });
+    });
+    gridC.cells = c;
+    return gridC;
+};
+// find a guy
+let findGuy = (grid) => {
+    return flat(grid).cells.find((cell) => {
+        if (typeof cell === 'object') {
+            if (cell.type === 'guy') {
+                return true
+            }
+        }
+    });
+};
+console.log(findGuy({
+        w: 3,
+        h: 3,
+        cells: [
+            [0, 0, 0],
+            [0, {
+                    type: 'guy'
+                }, 0],
+            [0, 0, 0]]
+    }));
+// { type: 'guy', x: 1, y: 1 }
+```
