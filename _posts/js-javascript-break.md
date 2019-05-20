@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-05-20 16:09:00
-version: 1.9
+updated: 2019-05-20 16:13:20
+version: 1.10
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as well. In this post however I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
@@ -100,3 +100,5 @@ console.log(findGuy({
         cells: [0, 0, {guy:true,hp:10}, 0, 0, 0, 0, 0, 0]
     })); // { guy: { guy: true, hp: 10 }, c: 2 }
 ```
+
+Some developers do not recommend the use of break and labels as it is similar to goto. It is then recommended to make a more functional approach with something like this, that would also be a a little more fine grain as well.
