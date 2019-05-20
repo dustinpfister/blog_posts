@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-02-19 18:04:18
-version: 1.8
+updated: 2019-05-20 16:09:00
+version: 1.9
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as well. In this post however I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
 
 <!-- more -->
 
-## 1 - javaScript break
+## 1 - javaScript break basics
 
 The break keyword can be used to break out of a loop when a certain condition is met. This can help avoid having to loop threw the full contents of an array for example.
 
@@ -29,7 +29,7 @@ console.log(i); // 1
 
 With a simple example like this it does not make much of any difference really, but then it comes to a far more complex block of code that involves a much larger array, and some resource intensive code that does not need to be applied for all elements in an array, or all permutations of a loop the break keyword can be used in conjunction with if statements and continue to help reduce the number of operations preformed.
 
-## 2 - switch statements
+## 2 - switch statements and javaScript break
 
 I do not come across switch statements often, and I do my best to avoid using them but never the less when working with a switch statment the break keyword is also used for each case of a switch.
 
@@ -50,7 +50,7 @@ console.log(foo('foo')); // 'foobar'
 console.log(foo('answer')); // 42
 ```
 
-## 3 - break and labels
+## 3 - javaScrpt break and labels
 
 When making something that has two or more nested loops it is possible to use labels as a way to break out of the desired loop within the nested loops. By default the break keyword will break out of the loop from which it is called, but if for some reason I want to break out of a loop that is one other than that one I can use labels as a way to go about doing just that.
 
