@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-01-21 12:32:07
-version: 1.8
+updated: 2019-05-20 18:29:08
+version: 1.9
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -15,7 +15,7 @@ The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Do
 
 ## 1 - document body example
 
-The document body property of the document object can always be used to quickly gain a reference to the body element. So it can be used as an alternative to something like document.getElementById, or document.getElementsByTagName when it is only just the single body tag of an html document that is of concern. In this example I am creating a canvas element with the create element method, and then appending it to the body element of an html document with the append child method.
+The document body property of the document object can always be used to quickly [gain a reference to the body element](https://stackoverflow.com/questions/26067590/get-body-element-of-site-using-only-javascript). So it can be used as an alternative to something like document.getElementById, or document.getElementsByTagName when it is only just the single body tag of an html document that is of concern. In this example I am creating a canvas element with the create element method, and then appending it to the body element of an html document with the append child method.
 
 So for this example I might have some html that looks like this.
 
