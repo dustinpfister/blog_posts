@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-05-20 17:23:32
-version: 1.13
+updated: 2019-05-20 17:49:10
+version: 1.14
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as well. In this post however I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
@@ -160,3 +160,29 @@ getFirstString = (arr) => {
 a = getFirstString(arr);
 console.log(a.i, a.str); // 1 'foo'
 ```
+
+## 5 - javaScript break and continue
+
+Another javaScript keyword worth mentioning is the continue keyword which can be used in conjunction with the break keyword. The javaScript break keyword will of course break out of the loop, however the continue keyword will not break out of the loop, but continue on with the loop, ignoring any additional code that may be in the body of the loop. 
+
+```js
+let arr = [8, 3, 16, 5, 32, 7, 2, null, 4, 19],
+i = 0,
+len = arr.length;
+while (i < len) {
+    n = arr[i];
+    i += 1;
+    // break if not number
+    if (typeof n != 'number') {
+        break;
+    }
+    // continue if not pow of 2
+    if (String(Math.log(n) / Math.log(2)).indexOf('.') != -1) {
+        continue;
+    }
+    console.log(n);
+    // 8 16 32 2
+}
+```
+
+here I have an example that will break out of the loop in the event that anything other than a number is detected, and will continue if the number is not a power of two.
