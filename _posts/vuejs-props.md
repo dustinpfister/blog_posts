@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2019-05-20 15:31:57
-version: 1.5
+updated: 2019-05-20 15:55:25
+version: 1.6
 ---
 
 When making a vue component there is sometimes a need to have properties for the custom element that is made when developing a component. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. There is a little bit to cover when it comes to vue props such as how to set default values for them an so fort so lets take a look at some examples.
@@ -41,5 +41,29 @@ Vue.component('custom', {
 new Vue({
     el: '#demo-props',
     template: '<div><custom foo="baz"></custom><custom></custom></div>'
+});
+```
+
+Once I have the property for my component define I can the use it in other templates that use the custom element in a template.
+
+## 2 - Setting defaults for a vue prop
+
+```js
+Vue.component('custom', {
+    props: {
+        foo: {
+        default:
+            'foobar'
+        }
+    },
+    template: '<div>{{ foo }}</div>'
+});
+ 
+new Vue({
+    el: '#demo-props',
+    template: '<div>' +
+    '<custom foo="baz"></custom>' + // 'baz'
+    '<custom></custom>' + // 'foobar'
+    '</div>'
 });
 ```
