@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2019-05-20 15:28:36
-version: 1.3
+updated: 2019-05-20 15:31:18
+version: 1.4
 ---
 
 When making a vue component there is sometimes a need to have properties for the custom element that is made when developing a component. This is where the vue props option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. There is a little bit to cover when it comes to vue props such as how to set default values for them an so fort so lets take a look at some examples.
@@ -29,6 +29,8 @@ Here I have a basic example of vue props in action. In my html I am just linking
   </body>
 </html>
 ```
+
+Here I have the javaScript that is in the basic.js file that I am linking ot in my html. I just use the vue props option to define a single property for my custom component. The vue props option can also be define with an object notation that might be a better play when it comes to making a more serious vue component, but for a simple example such as this just an array of string names for the properties should work just fine.
 
 ```js
 Vue.component('custom', {
