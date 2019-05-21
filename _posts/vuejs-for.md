@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2019-05-21 09:17:32
-version: 1.5
+updated: 2019-05-21 09:19:46
+version: 1.6
 ---
 
 The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an array of items in the data object in vuejs. In this post I will be looking at some examples that I put together when it comes to using this directive as a way to generate a list.
@@ -29,7 +29,7 @@ new Vue({
 });
 ```
 
-In the example above it is just an array of strings, but they can also of course be objects, it is also possible to do nesting as well.
+In the example above it is just an array of strings, but they can also of course be objects, it is also possible to do nesting as well. In the html of this example I just have a div element with an id of list that I am using as the mount point and I am linking to this javaScript example with a script tag.
 
 ```html
 <html>
@@ -44,6 +44,7 @@ In the example above it is just an array of strings, but they can also of course
 </html>
 ```
 
+All additional examples in this post use html that is the same as this the only difference is the filename.
 
 ## 2 - Vue for alias
 
