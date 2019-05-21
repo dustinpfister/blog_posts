@@ -5,17 +5,17 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2019-05-21 14:28:48
-version: 1.6
+updated: 2019-05-21 14:36:23
+version: 1.7
 ---
 
-In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project. In native client side javaScript events can be attached to dome elements with addEventListener, or some similar method, as a way to define what needs to happen when a user clicks on something with a mouse, or preform one of many other such actions. In vuejs the methods option is one of many options that can be used to define what a Vue call instance of constructor is, keeping everything neat, tidy, and well structured. So in this post I will be going over some quick examples of using the vue methods option.
+In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project. In native client side javaScript events can be attached to dome elements with [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), or some similar method, as a way to define what needs to happen when a user clicks on something with a mouse, or preform one of many other such actions. In vuejs the methods option is one of many options that can be used to define what a Vue call instance of constructor is, keeping everything neat, tidy, and well structured. So in this post I will be going over some quick examples of using the vue methods option.
 
 <!-- more -->
 
 ## 1 - vue method basic example
 
-The basic example for the vue methods option is just a single clicker method that is fried when an input element in a template is clicked. So this is an example of using the methods option as a way to define the event handers for the one or more elements in a template.
+The basic example for the vue methods option is just a single clicker method that is fried when an input element in a template is clicked. So this is an example of using the methods option as a way to define the event handers for the one or more elements in a template. The v-on:event directive must be used as a way to attach a method in the vue methods option object as an event hander.
 
 ```js
 new Vue({
@@ -33,6 +33,7 @@ new Vue({
 
 ```
 
+In the html of this example I am just using a single div as a mount point, and linking to the above javaScript in a basic.js file
 
 ```html
 <html>
