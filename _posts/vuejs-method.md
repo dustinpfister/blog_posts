@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2019-05-20 12:31:55
-version: 1.3
+updated: 2019-05-21 14:22:02
+version: 1.4
 ---
 
-In vuejs there is the methods option of a vue class constructor that can be used to define event handers for a vuejs project. In native client side javaScript events can be attached to dome elements with addEventListener, or some similar method, as a way to define what needs to happen when a user clicks on something with a mouse, or preform one of many other such actions. In vuejs the methods option is one of many options that can be used to define what a Vue call instance of constructor is, keeping everything neat, tidy, and well structured. So in this post I will be going over some quick examples of using the vue methods option.
+In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project. In native client side javaScript events can be attached to dome elements with addEventListener, or some similar method, as a way to define what needs to happen when a user clicks on something with a mouse, or preform one of many other such actions. In vuejs the methods option is one of many options that can be used to define what a Vue call instance of constructor is, keeping everything neat, tidy, and well structured. So in this post I will be going over some quick examples of using the vue methods option.
 
 <!-- more -->
 
