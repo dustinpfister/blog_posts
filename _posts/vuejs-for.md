@@ -5,15 +5,31 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2019-05-21 09:10:55
-version: 1.4
+updated: 2019-05-21 09:17:32
+version: 1.5
 ---
 
 The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an array of items in the data object in vuejs. In this post I will be looking at some examples that I put together when it comes to using this directive as a way to generate a list.
 
 <!-- more -->
 
-## 1 - vue for basic example
+## 1 - Vue for basic example
+
+To use the vue for directive I just need to use the v-for directive inside a child element of a template followed by an item in array syntax where the item is a name that will be used to refer to the current item in the array in the template, and the array is the name of the array in the data object.
+
+If you are still a little confused maybe it would be best to just look at a code example.
+
+```js
+new Vue({
+    el: '#list',
+    template: '<ul><li v-for="kw in keywords" >{{ kw }}</li></ul>',
+    data: {
+        keywords: ['lodash find', 'canvas arc', 'vue for']
+    }
+});
+```
+
+In the example above it is just an array of strings, but they can also of course be objects, it is also possible to do nesting as well.
 
 ```html
 <html>
@@ -28,15 +44,6 @@ The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be us
 </html>
 ```
 
-```js
-new Vue({
-    el: '#list',
-    template: '<ul><li v-for="kw in keywords" >{{ kw }}</li></ul>',
-    data: {
-        keywords: ['lodash find', 'canvas arc', 'vue for']
-    }
-});
-```
 
 ## 2 - Vue for alias
 
