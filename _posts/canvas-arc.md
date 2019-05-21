@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-05-21 15:55:27
-version: 1.21
+updated: 2019-05-21 16:03:49
+version: 1.22
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -45,20 +45,29 @@ The canvas arc method takes up to six arguments. The first two arguments given t
         <title>canvas arc</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="30" height="30"></canvas>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
         <script>
 // get canvas can 2d context
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
- 
-// create arc
+// create a canvas arc
+// begin by calling ctx.beginPath
 ctx.beginPath();
-ctx.arc(15,15,10,0,1);
+var x = 150,
+y = 120,
+radius = 100,
+radianStart = 0,
+radianEnd = Math.PI / 2,
+clockwise = true;
+ 
+// calling canvas src with all arguments
+ctx.arc(x,y,radius,radianStart,radianEnd, clockwise);
  
 // set stroke and fill style
 ctx.strokeStyle = 'red';
- 
-// stroke
+ctx.fillStyle='black';
+// fill, and stroke
+ctx.fill();
 ctx.stroke();
         </script>
     </body>
