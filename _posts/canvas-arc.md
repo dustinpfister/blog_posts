@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-05-21 14:49:44
-version: 1.19
+updated: 2019-05-21 14:52:31
+version: 1.20
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -19,7 +19,7 @@ The arc method can be used when drawing a line in canvas by using the beginPath 
 
 ### 1.1 - Know a thing or two about radians
 
-The arguments that that canvas arc takes for the start and stop angles should be in [radians](https://en.wikipedia.org/wiki/Radian) and not [degrees](https://en.wikipedia.org/wiki/Degree_(angle)). The concept of a radian is thinking of angles in terms of the value of pi times two rather than 360 degrees. If you prefer to think in depress you will still want to know how to convert from degrees to radians as well as the inversion of that.
+The arguments that that canvas arc takes for the start and stop angles should be in [radians](https://en.wikipedia.org/wiki/Radian) and not [degrees](https://en.wikipedia.org/wiki/Degree_(angle). The concept of a radian is thinking of angles in terms of the value of pi times two rather than 360 degrees. If you prefer to think in depress you will still want to know how to convert from degrees to radians as well as the inversion of that.
 
 ### 1.2 - Using the canvas arc method
 
