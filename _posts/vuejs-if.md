@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2019-05-22 09:47:50
-version: 1.1
+updated: 2019-05-22 09:48:41
+version: 1.2
 ---
 
-The vue if directive in vuejs can be used when making templates to create an element or not based on a condition.
+The [vue if](https://vuejs.org/v2/guide/conditional.html) directive in vuejs can be used when making templates to create an element or not based on a condition.
 
 <!-- more -->
 
