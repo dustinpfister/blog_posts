@@ -5,15 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 457
-updated: 2019-05-23 09:27:50
-version: 1.3
+updated: 2019-05-23 19:19:59
+version: 1.4
 ---
 
 In vuejs there is the [vue next](https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/) global api method that can come into play now and then when something needs to be done after a view is updated because of a change to the model. Vue updates the DOM in a [very async kind of way](https://vuejs.org/v2/guide/reactivity.html#Async-Update-Queue), and there might come a time now and then that something might need to happen with the post updated DOM state of the view. For this there is the vue next tick global api method as well as the $nextTick instance methods. these methods can be used to set a callback that will fire when a view has finished updating.
 
 <!-- more -->
 
-## 1 - vue next example 1
+## 1 - vue next tick example using the global api
 
 So for my first example of the vue next tick global method I wanted to do something a little more advanced then the very simple examples that I often make for these posts. In any example about vue next tick I will at least want a data object, and some kind of template or hard coded html. However in this example I am also using a method defined in the vue methods option as well.
 
@@ -54,4 +54,30 @@ Vue.nextTick(function () {
   <script src="basic.js"></script>
   </body>
 </html>
+```
+
+## 2 - vue next tick example using the instance method version
+
+It is also possible to use a instance method example of the next tick method. This is more or less the same thing as the global static method, but will only fire for updates to a single vue class instance that it is used for.
+
+```js
+var vm = new Vue({
+        el: '#demo-nexttick',
+        template: '<p>{{ mess }}</p>',
+        data: {
+            mess: 'bar'
+        },
+        methods: {
+            setMess: function (mess) {
+                var self = this;
+                self.mess = mess;
+                // The $nextTick instance method can
+                // also be used
+                self.$nextTick(function () {
+                    console.log(self.$el.textContent); // 'foo'
+                });
+            }
+        }
+    });
+vm.setMess('foo');
 ```
