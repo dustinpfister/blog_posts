@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-05-23 11:48:32
-version: 1.13
+updated: 2019-05-23 12:04:48
+version: 1.14
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user focus on an element. This often happens when a user clicks on an element for example, but it can also happen by other means as well. These other ways in which a focus event can fire is if the user cycles to it with the tab key, and also if the focus is set to the element with an element method like [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
@@ -44,6 +44,8 @@ Here I have a simple example where I am just setting the focus of the input elem
 
 There might be situations in which I will want to define some javaScript that will run each time a focus event happens for one or more elements. For this there is the onfocus event, and addEventListener. These days it might be best to stick with addEventLisneter for attaching an on focus event, or any event for that matter. However if you do want to push backward compatibility back farther, there are other options.
 
+Here in the html of a basic example that makes use of the javaScript focus event I have two input tags with ids assigned to them, I also have a script tag that links to some external javaScript that attaches some event handlers to the elements.
+
 ```html
 <html>
     <head>
@@ -58,19 +60,22 @@ There might be situations in which I will want to define some javaScript that wi
 </html>
 ```
 
+here I have some javaScript that attaches event handers for the on focus event.
+
 ```js
- 
-var onfocus = function (e) {
- 
+// get a reference to the element
+var el = document.getElementById('foo');
+// a single focus event can be attached this way
+el.onfocus = function (e) {
     console.log(e);
- 
 };
- 
-document.getElementById('foo').addEventListener('focus', function () {
- 
+// attaching two or more will require the use of addEventListener
+el.addEventListener('focus', function () {
     console.log('foo');
- 
 });
+
 ```
+
+When I open this file up in the browser and click on the foo input tag the event tag of the element and the string 'foo' log to the console as expected.
 
 
