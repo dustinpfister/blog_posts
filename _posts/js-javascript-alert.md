@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-05-23 13:09:45
-version: 1.11
+updated: 2019-05-23 13:13:56
+version: 1.12
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -98,6 +98,8 @@ out.innerText = 'This can be used to set a message';
 ```
 
 ## 3 - Writing a custom log function in place of using javaScript alert
+
+Maybe one of the best alternatives to using javaScript alert for the purpose of logging something for the purpose of debugging might be to have some kind of custom log method. This is something that I see going on in a log or projects and when I think about it for a second it makes a whole lot of sense. I can define the custom log method in an external javaScript file and then link to it in any page or module, and redefine what the logic of the custom log method is not and then when necessary.
 
 ```js
 let log = (mess) => {
