@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-05-23 12:48:00
-version: 1.9
+updated: 2019-05-23 12:59:44
+version: 1.10
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -70,4 +70,29 @@ console.log({
     x: 60,
     y: 40
 });
+```
+
+### 2.2 - innerText
+
+When it comes to displaying a message in a html document there are a wide range of alternatives to using yet anotherjavaScript alter as a way to gain a sense of what is going on with what you are working on. I will cover a few of them in this section, and and for starters there is the innerText property.
+
+```js
+<html>
+    <head>
+        <title>javaScript alert innerText alternative</title>
+    </head>
+    <body>
+        <div id = "out"></div>
+        <script>
+// get a ref to the element by any means
+// possible
+var out = document.getElementById('out');
+ 
+// the innerText property can be used to set or get
+// the inner text node of an element
+out.innerText = 'This can be used to set a message';
+ 
+        </script>
+    </body>
+</html>
 ```
