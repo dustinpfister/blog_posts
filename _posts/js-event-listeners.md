@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-05-23 14:59:25
-version: 1.8
+updated: 2019-05-23 15:02:23
+version: 1.9
 ---
 
 In javaScript event listeners are methods that fire when a given event happens, such as when a mouse button is clicked, or an element looses focus. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -53,7 +53,9 @@ For the most part addEventListener should be used as a way to attach events to a
 
 When setting an event listener there is the first argument of the callback that is given. This argument is the [event object](https://developer.mozilla.org/en-US/docs/Web/API/Event) which contains all kinds of useful information about the event when the event triggers. This can contain things like a reference to the element that was clicked on an on click event, or the x and y position of where a canvas element was clicked and much more. In this section I will be going over some examples of event objects when working with event listeners.
 
-### 3.1 - basic example of the event object
+### 3.1 - Basic example of the event object
+
+In this basic example of using an event object I am setting the href property of an anchor element using the target property of the event object. the target property is a reference to the element in which the event took place. In many cases this is the element where an event listener was attached, but it can also be a child of that element because of bubbling, more on that later.
 
 ```js
 <html>
