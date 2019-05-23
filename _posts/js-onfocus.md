@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-05-23 12:25:44
-version: 1.15
+updated: 2019-05-23 12:32:20
+version: 1.16
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user focus on an element. This often happens when a user clicks on an element for example, but it can also happen by other means as well. These other ways in which a focus event can fire is if the user cycles to it with the tab key, and also if the focus is set to the element with an element method like [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
@@ -80,7 +80,9 @@ When I open this file up in the browser and click on the foo input tag the event
 
 ## 3 - JavaScript focus and blur events
 
-So there is the focus event that fires when an element gets the focus, and then there is the blur event that fires when that element looses the focus for whatever the reason. The focus can be lost for a wide range of reasons, but often it is because the user just simply moved on to another element in a form or click another area of the page.
+So there is the focus event that fires when an element gets the focus, and then there is the [blur event](/2019/01/08/js-onblur/) that fires when that element looses the focus for whatever the reason. The focus can be lost for a wide range of reasons, but often it is because the user just simply moved on to another element in a form or click another area of the page.
+
+In this example I will be making use of both the focus and blur events. I have two text input events that can be used to set some x and y values, and a div element that can be used to display messages. in the event that an input looses focus the message divs content is cleared, while the message div displays a message for the input element when it gains focus.
 
 ```html
 <html>
