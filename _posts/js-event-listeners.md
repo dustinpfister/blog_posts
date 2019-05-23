@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-05-23 15:02:23
-version: 1.9
+updated: 2019-05-23 15:47:45
+version: 1.10
 ---
 
 In javaScript event listeners are methods that fire when a given event happens, such as when a mouse button is clicked, or an element looses focus. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -53,7 +53,7 @@ For the most part addEventListener should be used as a way to attach events to a
 
 When setting an event listener there is the first argument of the callback that is given. This argument is the [event object](https://developer.mozilla.org/en-US/docs/Web/API/Event) which contains all kinds of useful information about the event when the event triggers. This can contain things like a reference to the element that was clicked on an on click event, or the x and y position of where a canvas element was clicked and much more. In this section I will be going over some examples of event objects when working with event listeners.
 
-### 3.1 - Basic example of the event object
+### 3.1 - Basic example of the event object involving a hyper link
 
 In this basic example of using an event object I am setting the href property of an anchor element using the target property of the event object. the target property is a reference to the element in which the event took place. In many cases this is the element where an event listener was attached, but it can also be a child of that element because of bubbling, more on that later.
 
@@ -71,6 +71,84 @@ var link = document.getElementById('link');
 link.addEventListener('click', function(e){
    e.target.href='https://www.google.com/'
 });
+        </script>
+    </body>
+</html>
+```
+
+### 3.2 - Not so basic example that uses canvas
+
+```html
+<html>
+    <head>
+        <title>Event Listeners</title>
+    </head>
+    <body>
+        <div style="padding:50px;">
+            <canvas id="thecanvas" width="320" height="240"></canvas>
+        </div>
+        <script>
+var app = {
+    canvas: document.getElementById('thecanvas'),
+    ctx: null,
+    circles: [],
+    // Using the event object to get the canvas
+    // relative position
+    getCanvasPos: function (e) {
+        var bx = app.canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top
+        }
+    },
+    // set circle position based on event object
+    // and given circle index
+    setCircle: function(e, index){
+        var circle = app.circles[index],
+        pos = app.getCanvasPos(e);
+        circle.x = pos.x;
+        circle.y = pos.y;
+        app.draw();
+    },
+    clicked: function (e) {
+       app.setCircle(e,0);
+    },
+    move: function (e) {
+        app.setCircle(e,1);
+    },
+    init: function () {
+        this.ctx = this.canvas.getContext('2d');
+        this.circles.push({
+            x: 0,
+            y: 0,
+            radius: 25,
+            color: 'lime'
+        });
+        this.circles.push({
+            x: 0,
+            y: 0,
+            radius: 15,
+            color: 'red'
+        });
+        this.draw();
+    },
+    draw: function () {
+        var ctx = this.ctx;
+        ctx.fillStyle = 'grey';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.circles.forEach(function (circle) {
+            ctx.strokeStyle = circle.color;
+            ctx.lineWidth = 3;
+            ctx.beginPath()
+            ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+            ctx.stroke();
+        });
+    }
+};
+app.init();
+// attach event listeners to the canvas
+app.canvas.addEventListener('click', app.clicked);
+app.canvas.addEventListener('mousemove', app.move);
         </script>
     </body>
 </html>
