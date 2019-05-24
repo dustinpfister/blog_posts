@@ -1,15 +1,15 @@
 ---
-title: vue create lifecycle hook
+title: vue created lifecycle hook
 date: 2019-05-24 10:23:00
 tags: [vuejs]
 layout: post
 categories: vuejs
 id: 458
-updated: 2019-05-24 11:12:24
-version: 1.2
+updated: 2019-05-24 11:15:21
+version: 1.3
 ---
 
-In vuejs there is the vue create lifecycle hook method that can be used to define some logic that should run after the vue instance is created, but before the vue is mounted to a mount point in html via the vue el option or the mount instance method.
+In vuejs there is the [vue created](https://vuejs.org/v2/api/#created) lifecycle hook method that can be used to define some logic that should run after the vue instance is created, but before the vue is mounted to a mount point in html via the vue el option or the mount instance method. This is one of many hook methods that can be used when creating a vue instance to define some logic that will happen at the various statges of the [vue instance lifecycle](https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks).
 
 <!-- more -->
 
