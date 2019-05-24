@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 442
-updated: 2019-05-24 17:04:05
-version: 1.8
+updated: 2019-05-24 17:44:11
+version: 1.9
 ---
 
 So for the most part vue templates work find for most projects, but it is not always the best solution when it comes to taking full advantage of javaScript to render DOM elements. If a template will not cut it than an alternative would be a [vue render](https://vuejs.org/v2/api/#render) method. When working out a render method a createElement method can be used to create virtual dom elements that can then be used to render a view rather that of a static template.
@@ -75,7 +75,31 @@ new Vue(
 
 ```
 
-## 3 - adding events when using the vue render option
+## 3 - Adding CSS to a vNode created with the createElement method in vue render
+
+```js
+new Vue({
+    el: '#demo-render',
+    render: function (createElement) {
+        return createElement(
+            // tag name
+            'p',
+            // options
+            {
+                class: {
+                    theClassName: true
+                },
+                style: {
+                    color: 'red'
+                }
+            },
+            // text node
+            'red text');
+    }
+});
+```
+
+## 4 - adding events when using the vue render option
 
 So to add one or more event handers for elements created with the createElement method in a vue render an object should be given as the second argument and this object can contain an on property that is also an object. The object assigned to the on property can then be used to attach events to the element where each object key is the type of event, and the value is the method that is to fire for that event.
 
