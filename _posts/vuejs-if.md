@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2019-05-23 19:29:54
-version: 1.5
+updated: 2019-05-23 20:52:13
+version: 1.6
 ---
 
 The [vue if](https://vuejs.org/v2/guide/conditional.html) directive in vuejs can be used when making templates to create an element or not based on a condition.It can come in handy when working out a template, but there are other options as well when it comes to using render methods for example an actual javaScript if statement can be used. Never the less this will be q quick post on the vue if directive, and some alternative options as well in vuejs.
@@ -43,4 +43,18 @@ new Vue({
   <script src="basic.js"></script>
   </body>
 </html>
+```
+
+## 2 -Render methods as a vue if alternative
+
+```js
+new Vue({
+    el: '#demo-if',
+    render: function (createElement) {
+        return createElement('div',[createElement('p', typeof this.n === 'number' ? this.n.toFixed(2) : this.n)])
+    },
+    data: {
+        n: Math.PI
+    }
+});
 ```
