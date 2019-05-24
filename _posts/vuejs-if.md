@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2019-05-23 20:58:17
-version: 1.8
+updated: 2019-05-23 21:01:27
+version: 1.9
 ---
 
 The [vue if](https://vuejs.org/v2/guide/conditional.html) directive in vuejs can be used when making templates to create an element or not based on a condition.It can come in handy when working out a template, but there are other options as well when it comes to using render methods for example an actual javaScript if statement can be used. Never the less this will be q quick post on the vue if directive, and some alternative options as well in vuejs.
@@ -19,6 +19,7 @@ So when working out a [template](/2019/05/07/vuejs-template/) the vue if directi
 
 In this quick example if the type of a data object property is a number it will be fixed to two decimal points, else if it is a string then the full value of the number will be displayed. One element or another will be rendered, but not both depending on the type of the property.
 
+So for this example I have a basic.js file that looks like this.
 ```js
 new Vue({
     el: '#demo-if',
@@ -32,6 +33,8 @@ new Vue({
 });
 ```
 
+And html that makes use of it that looks like this.
+
 ```html
 <html>
   <head>
@@ -44,6 +47,8 @@ new Vue({
   </body>
 </html>
 ```
+
+So then because the type of the data.n property is a number, the value of PI is fixed to two decimal points. A silly example but you get the idea, this directive can be used to set some conditions for the tendering of elements, and any children within them.
 
 ## 2 -Render methods as a vue if alternative
 
