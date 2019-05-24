@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 442
-updated: 2019-05-24 17:44:11
-version: 1.9
+updated: 2019-05-24 17:53:52
+version: 1.10
 ---
 
 So for the most part vue templates work find for most projects, but it is not always the best solution when it comes to taking full advantage of javaScript to render DOM elements. If a template will not cut it than an alternative would be a [vue render](https://vuejs.org/v2/api/#render) method. When working out a render method a createElement method can be used to create virtual dom elements that can then be used to render a view rather that of a static template.
@@ -76,6 +76,10 @@ new Vue(
 ```
 
 ## 3 - Adding CSS to a vNode created with the createElement method in vue render
+
+To add CSS to an element that is made with the create element method the class and style properties of an options object that can be passed as a second argument can be used. When it comes to the class object in this options object each key name is the class name, and then a boolean can be used to set that css class to the element.
+
+There is also of course the style attribute as well that can be used to set in-line style as well. 
 
 ```js
 new Vue({
