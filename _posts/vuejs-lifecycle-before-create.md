@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 460
-updated: 2019-05-26 12:45:42
-version: 1.3
+updated: 2019-05-26 12:49:38
+version: 1.4
 ---
 
 The [vue before create](https://vuejs.org/v2/api/#beforeCreate) lifecycle hook is the first of many hooks that fire throughout the lifecycle of a vuejs instance. It is in this hook that I would go about doing anything that I might want to happen before the data object is created in the created hook, and it is also the very first hook that fires in the lifecycle process of a vuejs class instance.
@@ -56,6 +56,10 @@ And some hard coded html
 So this is a hook that I do not think I would use often, because there is not much to work with at this point, still if for some reason I want to do something before the data object of the vue class instance is even created for whatever the reason this is one way to go about doing just that.
 
 ## 2 - Hard coded object vue before create example
+
+So here is another example that comes to mind. Although there is not much that can be done during the before create hook of the vue lifecycle, one thing that can be done is to append a plain old object to the vue instance.
+
+So in this example I am creating a hard coded data object for the vue instance in the before create hook. The thing about the vue data object is that it contains the current state of a vuejs project model, but not any kind f hard coded initial state. So maybe the before Create hook would be a good place to create such an object, maybe not, In any case that is what I am doing here.
 
 ```js
 new Vue({
