@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 460
-updated: 2019-05-26 12:32:19
-version: 1.2
+updated: 2019-05-26 12:45:42
+version: 1.3
 ---
 
 The [vue before create](https://vuejs.org/v2/api/#beforeCreate) lifecycle hook is the first of many hooks that fire throughout the lifecycle of a vuejs instance. It is in this hook that I would go about doing anything that I might want to happen before the data object is created in the created hook, and it is also the very first hook that fires in the lifecycle process of a vuejs class instance.
@@ -15,6 +15,11 @@ The [vue before create](https://vuejs.org/v2/api/#beforeCreate) lifecycle hook i
 
 ## 1 - Vue before create basic example
 
+The vue create hook is the very first hook that fires, just before the created hook that will come after. Both the before create, and created hooks will fire synchronously so anything that might involve heavy lifting that is not delayed somehow, might cause this to hang a bot as a result.
+
+In the body of the before create method the vue data object will be undefined, as this is not available until the created hook fires.
+
+So here is some javaScript of a basic vue before create hook example in vuejs
 ```js
 new Vue({
     el: '#demo-lifecycle-before-create',
@@ -33,6 +38,8 @@ new Vue({
 });
 ```
 
+And some hard coded html
+
 ```html
 <html>
   <head>
@@ -46,6 +53,8 @@ new Vue({
 </html>
 ```
 
+So this is a hook that I do not think I would use often, because there is not much to work with at this point, still if for some reason I want to do something before the data object of the vue class instance is even created for whatever the reason this is one way to go about doing just that.
+
 ## 2 - Hard coded object vue before create example
 
 ```js
@@ -56,30 +65,28 @@ new Vue({
         n: null,
         mess: ''
     },
- 
     // default create hook
-    beforeCreate: function () {
+    beforeCreate: ()=> {
         // define hard coded data object
         this.hardData = {
             n: 21,
             mess: 'hard coded data is used'
         };
     },
- 
     // create hook
     created: function () {
         var self = this;
         // fetch data
         fetch('/data')
-        .then(function (res) {
+        .then((res)=> {
             return res.json();
         })
-        .then(function (data) {
+        .then((data)=> {
             // if all goes well use that
             self.$data.n = data.n;
             self.$data.mess = 'Got data from back end';
         })
-        .catch (function (e) {
+        .catch ((e)=> {
             // else use hard data
             self.$data.n = self.hardData.n;
             self.$data.mess = self.hardData.mess + ' : ' + e.message;
