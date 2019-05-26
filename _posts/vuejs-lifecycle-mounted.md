@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 459
-updated: 2019-05-25 20:42:32
-version: 1.0
+updated: 2019-05-25 20:54:24
+version: 1.1
 ---
 
-The vue mounted lifecycle hook is a way to define some logic that will run when a vue instance is mounted to a mount point in html with th vue el option or the $mount method.
+The vue mounted lifecycle hook is a way to define some logic that will run when a vue instance is mounted to a mount point in html with the vue el option or the $mount method. The vue mounted hook is one of several such hooks when working with vue class instances.
 
 <!-- more -->
 
