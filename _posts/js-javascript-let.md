@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 374
-updated: 2019-05-26 13:52:56
-version: 1.7
+updated: 2019-05-26 13:56:53
+version: 1.8
 ---
 
 When it comes to writing modern javaScript code the [let keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) is available for declaring block, rather than function level variables scoped variables. When it comes to a node.js environment where I have control over the version of node.js is used, and can use a modern version that supports let there are not any concerns when it comes to the question of code breaking on older platforms. That issue is of greater concern when it comes to front end development where there is less control over the environment in which the javaScript code runs when thinking about older browsers. Still as time goes by this will become less of an issue, and block level scope for me is a welcome addition to javaScript, so in this post I will be writing about some concerns when it comes to the use of let in a javaScript project.
@@ -78,3 +78,7 @@ try {
 ```
 
 It may be ugly, but for the most part the same desired effect is achieved.
+
+## 5 - Conclusion
+
+The use of javaScript let is a nice addition when it comes to later javaScript specs. Although browser support is decent with javaScript let these days depending on how far I want to push backward compatibility back, I still find myself shying away from using in when writing client side code at least. When it comes to an environment in which I have control however there is less reservations about using late javaScript features such as the let keyword, and arrow functions.
