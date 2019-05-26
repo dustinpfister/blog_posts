@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-05-21 16:03:49
-version: 1.22
+updated: 2019-05-26 13:07:37
+version: 1.23
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -27,12 +27,11 @@ var rad = Math.PI / 4,
 // radians to degrees
 deg = 180 / Math.PI * rad;
 console.log(deg); // 45
-
+ 
 deg = 90;
 // degrees to radians
 rad = deg / 180 * Math.PI;
 console.log(rad); // 1.57...
-
 ```
 
 ### 1.2 - Using the canvas arc method
@@ -68,6 +67,46 @@ ctx.strokeStyle = 'red';
 ctx.fillStyle='black';
 // fill, and stroke
 ctx.fill();
+ctx.stroke();
+        </script>
+    </body>
+</html>
+```
+
+## 1.3 - There is also Math.cos, and Math.sin as well
+
+So the canvas arc method will come in handy for most situations when it comes to drawing arcs, and circles in canvas. However there is also using the Math.cos and Math.sin methods in combination with canvas methods like ctx.moveTo and ctx.lineTo as well. If for some reason you want better control over the drawing of arc like curves in canvas, and feel compelled to write your own solution for drawing arcs, or something to that effect you might want to play around with those methods a little as well.
+
+```html
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d'),
+// some values
+i = 0,
+maxI = 50,
+cx = 160,
+cy = 120,
+radius = 50,
+radian, x, y;
+// draw
+ctx.beginPath();
+while (i < maxI) {
+    radian = Math.PI / 2 * (i / maxI);
+    x = Math.cos(radian) * radius + cx;
+    y = Math.sin(radian) * radius + cy;
+    if (i === 0) {
+        ctx.moveTo(x, y);
+    } else {
+        ctx.lineTo(x, y);
+    }
+    i += 1;
+}
 ctx.stroke();
         </script>
     </body>
