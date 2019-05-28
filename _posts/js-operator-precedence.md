@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-04-13 11:16:04
-version: 1.9
+updated: 2019-05-28 17:16:06
+version: 1.10
 ---
 
 When writing javaScript expressions knowing the order in which operations is important to make sure that desired results will always be achieved. So [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) or just simply the order of operations in javaScript is the order in which operations are preformed and in this post I will be covering some of the basics with this.
@@ -22,7 +22,7 @@ console.log( 10 + 5 * 2 ); // 20
 console.log( (10 + 5) * 2 ); // 30
 ```
 
-So there is the questing of what operators are preformed first, and the direction in which they are preformed as well which is called Associativity.
+So there is the questing of what operators are preformed first, and the direction in which they are preformed as well which is called Associativity. To know if grouping with parentheses is really needed or not it is just a matter of know what comes first with operations
 
 ## 2 - Associativity of operators
 
