@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-05-28 17:22:09
-version: 1.11
+updated: 2019-05-28 17:24:51
+version: 1.12
 ---
 
 When writing javaScript expressions knowing the order in which operations is important to make sure that desired results will always be achieved. So [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) or just simply the order of operations in javaScript is the order in which operations are preformed and in this post I will be covering some of the basics with this.
@@ -51,3 +51,5 @@ console.log(a, b); // 6 0
 No matter what else is going on anything inside the parentheses or grouping if you prefer will be preformed first.
 
 ## 4 - Assignment - Precedence 3
+
+When it comes to the order of operations in javaScript the assignment operator is fairly low on the list. So low in fact that for most expressions it will be preformed last.
