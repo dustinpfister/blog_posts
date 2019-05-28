@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 374
-updated: 2019-05-26 14:09:58
-version: 1.9
+updated: 2019-05-28 11:48:28
+version: 1.10
 ---
 
 When it comes to writing modern javaScript code the [let keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) is available for declaring block, rather than function level variables scoped variables. When it comes to a node.js environment where I have control over the version of node.js is used, and can use a modern version that supports let there are not any concerns when it comes to the question of code breaking on older platforms. That issue is of greater concern when it comes to front end development where there is less control over the environment in which the javaScript code runs when thinking about older browsers. Still as time goes by this will become less of an issue, and block level scope for me is a welcome addition to javaScript, so in this post I will be writing about some concerns when it comes to the use of let in a javaScript project.
@@ -47,13 +47,15 @@ try {
 
 In addition even if I where to increase the value of n so that the code in the body of the if statement runs, I will still get the same error message. This is of course what is expected as the whole point of using let is to have block level scope, rather than function level scope that var alone can achieve.
 
-## 2 - Older Browser support
+## 2 - No older browser support for javaScript let
 
-As I have stated one of the biggest concerns with using let is backward compatibility. Unlike many other new methods and features that have been introduces in late javaScript specs the let keyword can not be pollyfilled. When thinking in terms of older platforms there just is not any block level variable scope.
+As I have stated one of the biggest concerns with using let is backward compatibility. Unlike many other new methods and features that have been introduces in late es2015+ javaScript specs the let keyword can not be pollyfilled. When thinking in terms of older platforms there just is not any block level variable scope.
 
 Of course there are ways of writing javaScript in a way in which I am taking advantage of modern features such as let, and then also maintain an alternative work of that JavaScript that will run on older platforms as well. There are also tools that can be used to help automate that process, but for the most part that complicates things. 
 
 It is easier to just continue to write javaScript code in a way in which it will work in older browsers while still functioning just find in more modern browsers as well. I have this attitude where as long as I make my code clean, and minimal the process of modernizing it should not be to hard or time consuming.
+
+When it comes to server side javaScript though the use of the javaScript let keyword is not as big of a cover though of course, assuming that I have control over the version of node.js to use, and it is a late version that supports the javaScript let keyword along with other modern javaScript features.
 
 ## 3 - Redeclaring variables
 
