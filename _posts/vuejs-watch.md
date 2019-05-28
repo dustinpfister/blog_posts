@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 462
-updated: 2019-05-28 11:00:21
-version: 1.2
+updated: 2019-05-28 11:08:28
+version: 1.3
 ---
 
 Today I started playing around with the [vue watch](https://vuejs.org/v2/guide/computed.html) option that can be used to define some callbacks that fire when a property in the vue data object changes. Watchers can be defined in a number of ways in vuejs, they can just be function expressions, strings that refer to methods in the vue method option, or objects that can have a number of options along with a handler. So lets take a look at some vue watch option examples.
@@ -14,6 +14,8 @@ Today I started playing around with the [vue watch](https://vuejs.org/v2/guide/c
 <!-- more -->
 
 ## 1 - vue watch basic example that just uses a function for the value
+
+So lets start of with a fairly simple vue watch example that is just a function expression for the value of the key in the watch object for the vue watch option when making a vue class instance.
 
 ```js
 var vm = new Vue({
@@ -38,6 +40,8 @@ var vm = new Vue({
 vm.x =  - 25;
 ```
 
+In the html of this example I am of course linking to vuejs, and the external javaScript of the example above.
+
 ```html
 <html>
   <head>
@@ -52,6 +56,8 @@ vm.x =  - 25;
 ```
 
 ## 2 - Using a string for a vue watch option property
+
+Another option for a vue watch option object property would be a string. When using this as a value the string should refer to a key in the methods object. The methodid at that key will then be used as the handler for the watcher for the vue data object property that is being watched.
 
 ```js
 var vm = new Vue({
