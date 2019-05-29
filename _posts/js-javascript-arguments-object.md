@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-05-29 15:08:35
-version: 1.7
+updated: 2019-05-29 15:13:39
+version: 1.8
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special identifier that can be used to access any and all arguments that have been passed to the function when it is called. This identifier is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, alone with the values of course.
@@ -34,7 +34,7 @@ console.log(func1(40,2)); // 42
 console.log(func1(42)); // 42
 ```
 
-Without using the arguments object to find the number of arguments that is given the function would return NaN when used with just a single argument. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given.
+Without using the arguments object to find the number of arguments that is given the function would return NaN when used with just a single argument in the event that just a single argument is given. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given, and it can also be used as an alternative way to get the values of argument apart from the named parameter names.
 
 ## 2 - Why it is the javaScript arguments object rather than arguments array
 
