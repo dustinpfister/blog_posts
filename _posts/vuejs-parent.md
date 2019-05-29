@@ -5,15 +5,19 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 464
-updated: 2019-05-29 06:50:50
-version: 1.1
+updated: 2019-05-29 08:04:13
+version: 1.2
 ---
 
-In vuejs there are times when I am going to need some kind of parent child relationship with two or more vue instances, one option for this is the [vue parent](https://vuejs.org/v2/api/#parent) option. This option will result in a reference to a parent vue instance within the child vue instance in which the vue parent option is used, and will also result in the child vue instnace being added to the children property of the parent vue instance.
+In vuejs there are times when I am going to need some kind of parent child relationship with two or more vue instances, one option for this is the [vue parent](https://vuejs.org/v2/api/#parent) option. This option will result in a reference to a parent vue instance within the child vue instance in which the vue parent option is used, and will also result in the child vue instance being added to the children property of the parent vue instance.
 
 <!-- more -->
 
 ## 1 - vue parent example
+
+The vue parent option can be used by just making it a key of the object that is passed to the Vue class constructor, and giving the parent Vue class instance as the value for that key. That is just about all there is to it, once that is done the parent is accessible via the $parent property in the child, and the parent can access the child from the $children array.
+
+To get a better sense of how this works check out the following vue parent example.
 
 ```js
 // parent
