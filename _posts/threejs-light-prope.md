@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2019-05-28 21:39:52
-version: 1.3
+updated: 2019-05-28 21:41:35
+version: 1.4
 ---
 
 So in threejs r104 light probes have been introduced. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repo as well as another asset of interest in the repo that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
@@ -94,3 +94,5 @@ new THREE.CubeTextureLoader()
         loop();
 });
 ```
+
+Playing around with the intensity property of the light probe can then be used as a way to get an idea of what kind of effect a light probe has on an object that makes use of the cube texture as an environment map.
