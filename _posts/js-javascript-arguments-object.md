@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-02-05 12:39:52
-version: 1.6
+updated: 2019-05-29 15:08:35
+version: 1.7
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special identifier that can be used to access any and all arguments that have been passed to the function when it is called. This identifier is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, alone with the values of course.
@@ -36,7 +36,7 @@ console.log(func1(42)); // 42
 
 Without using the arguments object to find the number of arguments that is given the function would return NaN when used with just a single argument. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given.
 
-## 2 - Why it is the arguments object rather than arguments array
+## 2 - Why it is the javaScript arguments object rather than arguments array
 
 The arguments object is called the arguments object because it is not an instance of an Array. So it is actually just a plain old object, however it can be considered an array like object. This is because although it is not an instance of an Array it is structured like an array, so some Array methods can be used with it via something like Function.call.
 
@@ -58,7 +58,7 @@ let func = function () {
 console.log( func(1,2,3,4,5)); // 15
 ```
 
-## 3 - The length property
+## 3 - The length property of the javaScript arguments object
 
 The length property can be used to know the number of arguments that where passed to the function when it was called. This can then be used as a way to have more than one expression that is used for something depending on the number of arguments that are given. For example say I want a method that will just get an element in an array by index if it is given one argument, but will use a more complex expression when given two arguments. 
 
@@ -90,5 +90,8 @@ let mod = {
 };
 console.log(mod.get(1)); // 2
 console.log(mod.get(2,1)); // 6
-
 ```
+
+## 4 - Conclusion
+
+Hope this post helps to put some confusion to rest when it comes to the nature of the arguments object in javaScript.
