@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-05-29 15:13:39
-version: 1.8
+updated: 2019-05-29 15:31:23
+version: 1.9
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special identifier that can be used to access any and all arguments that have been passed to the function when it is called. This identifier is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, alone with the values of course.
@@ -92,6 +92,39 @@ console.log(mod.get(1)); // 2
 console.log(mod.get(2,1)); // 6
 ```
 
-## 4 - Conclusion
+## 4 - Make urls array example of argument object use
 
-Hope this post helps to put some confusion to rest when it comes to the nature of the arguments object in javaScript.
+okay now for an example that might intrastate something that is actual useful in some cases. Say you want a method where you pass a base url as the first argument, and then an array of file names as the second argument, and what the function produces is an array of urls to each file name from the base url. However there is one more thing, you also have the option to pass each file name as an argument rather than an array. For this the javaScript arguments object can be used to create an array from arguments when the number of arguments is not always known before hand.
+
+```js
+let makeURLArray = function (base, fn) {
+    let arr = [];
+    // if typeof fn === object assume an array
+    if (typeof fn === 'object') {
+        return fn.map((str) => {
+            return base + '/' + str;
+        });
+    }
+    // if typeof fn === string then loop over
+    // all elements of arguments object except the first
+    // one of course
+    if (typeof fn === 'string') {
+        let len = arguments.length,
+        i = 1;
+        while (i < len) {
+            arr.push(base + '/' + arguments[i]);
+            i += 1;
+        }
+        return arr;
+    }
+    return arr;
+};
+console.log(makeURLArray('./img', ['foo.png', 'bar.png', 'baz.png']));
+console.log(makeURLArray('./img', 'foo.png', 'bar.png', 'baz.png'));
+// both ways of using the method result in:
+// [ './img/foo.png', './img/bar.png', './img/baz.png' ]
+```
+
+## 5 - Conclusion
+
+Hope this post helps to put some confusion to rest when it comes to the nature of the arguments object in javaScript. The arguments object does come in handy know and then whenever a situation arises where it is needed.
