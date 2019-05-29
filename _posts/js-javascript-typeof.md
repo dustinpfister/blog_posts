@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2019-05-29 16:19:09
-version: 1.9
+updated: 2019-05-29 16:27:52
+version: 1.10
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used. The typeof operator might not always give the desired results, so there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with.
@@ -45,7 +45,7 @@ So there is something strange with the typeof operator and the value of null. Wh
 console.log( typeof null ); // 'object'
 ```
 
-From  what I have gather so far it is not clear if this is a bug or if it is actually intentional.
+From  what I have [gather so far with the typeof null equals object](https://stackoverflow.com/questions/18808226/why-is-typeof-null-object) deal in javaScript it it would seem that this is a mistake that dates all the way to the beginning of javaScript. There is some talk as to the subject of if it will be fixed or not but so far it seems like that is not happening.
 
 ## 4 - Instanceof for fining out what an object is an instance of
 
