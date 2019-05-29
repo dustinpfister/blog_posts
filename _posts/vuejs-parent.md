@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 464
-updated: 2019-05-29 09:17:48
-version: 1.5
+updated: 2019-05-29 09:18:54
+version: 1.6
 ---
 
 In vuejs there are times when I am going to need some kind of parent child relationship with two or more vue instances, one option for this is the [vue parent](https://vuejs.org/v2/api/#parent) option. This option will result in a reference to a parent vue instance within the child vue instance in which the vue parent option is used, and will also result in the child vue instance being added to the children property of the parent vue instance.
@@ -92,4 +92,4 @@ new Vue({
 });
 ```
 
-So Something like this can be used as a way to make a whole bunch of children for something if needed. It would be nice to work out some kind of practical example for this if I can get the time to do so but you get the basic idea.
+So Something like this can be used as a way to make a whole bunch of children for something if needed. It would be nice to work out some kind of practical example for this if I can get the time to do so but you get the basic idea. Still just like before something like this should only be done if for some reason making a component is not working out well.
