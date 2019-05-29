@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2019-05-29 16:03:44
-version: 1.8
+updated: 2019-05-29 16:19:09
+version: 1.9
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used. The typeof operator might not always give the desired results, so there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with.
@@ -20,7 +20,7 @@ The typeof operator has right to level [associativity](/2019/02/02/js-operator-p
 ```js
 let ty = typeof 42;
 console.log(ty); // 'number'
-``` 
+```
 
 ## 2 - no need to call typeof as it is an operator and not a function
 
@@ -36,7 +36,18 @@ console.log(n); // 'string'
 
 So if you do need to group then use parentheses otherwise they are not needed.
 
-## 3 - Instanceof for fining out what an object is an instance of
+
+## 3 - The deal with javaScript typeof and null
+
+So there is something strange with the typeof operator and the value of null. When the value of null is what is uded with the typeof operator the result is object.
+
+```js
+console.log( typeof null ); // 'object'
+```
+
+From  what I have gather so far it is not clear if this is a bug or if it is actually intentional.
+
+## 4 - Instanceof for fining out what an object is an instance of
 
 In most cases the typeof operator works just fine if I want to find out if something is a number, or an object. However if I want to find out what kind of object I am dealing with then in most cases typeof does not help much unless it is a function. The instanceof operator accepts two operands one to the left that is what should be an object, and the other is a constructor function. If the variable or value that is being evaluated is an instance of the constructor then the expression will evaluate to true, else false.
 
@@ -52,14 +63,6 @@ console.log(typeof f); // object
 console.log(d instanceof Date); // true
 console.log(f instanceof Foo); // true
 console.log(f instanceof Date); // false
-```
-
-## 4 - The deal with javaScript typeof and null
-
-So there is something strange with the typeof operator and the value of null. When the value of null is what is uded with the typeof operator the result is object.
-
-```js
-console.log( typeof null ); // 'object'
 ```
 
 ## 5 - constructor name
