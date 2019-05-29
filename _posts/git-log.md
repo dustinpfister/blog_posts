@@ -5,8 +5,8 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 465
-updated: 2019-05-29 11:50:56
-version: 1.7
+updated: 2019-05-29 11:52:44
+version: 1.8
 ---
 
 The [git log](https://git-scm.com/docs/git-log) command can be used to log out a list of comment subject messages, commit hash numbers, and A wide range of other things about each commit in a git folder. It is a useful little command with many format options that can be useful when it comes to writing some kind of script that loops over all commits in a repository. There is just using the command by itself in the command line, and then there is piping it to something else, or better yet making a node.js script that uses it via the spawn method in the child process module. In this post I will be going over some quick examples of doing bolth.
@@ -68,6 +68,8 @@ git.on('close', (code) => {
 ```
 
 ## 3 - Filtering
+
+Now that I have the basic idea of how to go about making use of the git log command to create an array of git commits there is now filtering those commits to get a list of commits that meet a given criteria.
 
 ```js
 let spawn = require('child_process').spawn,
