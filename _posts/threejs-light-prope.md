@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2019-05-28 21:26:01
-version: 1.1
+updated: 2019-05-28 21:33:13
+version: 1.2
 ---
 
-So in threejs r104 light probes have been introduced. As of this writing there is not much in terms of documentation at the three.js website, but there is an official example in the github repo as well as some other assets of interest in the repo that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
+So in threejs r104 light probes have been introduced. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repo as well as another asset of interest in the repo that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
 
 <!-- more -->
 
@@ -18,6 +18,10 @@ So in threejs r104 light probes have been introduced. As of this writing there i
 This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript project. This is not a getting started post on three.js, or javaScript in general, so it would be a good idea to start with some basics before geting into light probes and other advanced three.js topics if you are new to three.js.
 
 From what I have gathered so far it seems that light probes are a way to pull in light from a given point and then use that in conjunction with environment maps that can be used with a mesh. They can allow for some interesting effects when it comes to backgrounds and reflections of that background in a mesh.
+
+### 1 - Revision 104+ of three.js as well as one additional assets needed
+
+To use this feature you will need revision 104 or later of three.js, as this is a new feature that was introduced in that revision. If you are using and older version of three.js the code example here will break. In addition there is at least one more additional asset that you will need to get this example working. That asset can be found in the three.js repo and is called [LightProbeGenerator.js](https://github.com/mrdoob/three.js/blob/master/examples/js/lights/LightProbeGenerator.js). This file will need to be linked to along with three.js in the html of a project making use of the new light probe feature.
 
 ## 2 - Light probe example in threejs r104
 
