@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2019-05-29 16:27:52
-version: 1.10
+updated: 2019-05-29 16:30:31
+version: 1.11
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used. The typeof operator might not always give the desired results, so there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with.
@@ -73,3 +73,7 @@ When dealing with an object another way to get the actual constructor name of th
 let d = new Date();
 console.log(d.constructor.name); // Date
 ```
+
+## 6 - Conclusion
+
+So it would seem that the javaScript typeof operator can be used as a way to find out the type of something in javaScript, but it might not aways work as expected. In addition when it comes to objects it is vague and can even return a value of object for null, so it still needs to be used with other operators to find out more in these situations.
