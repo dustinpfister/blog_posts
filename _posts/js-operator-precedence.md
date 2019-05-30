@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-05-30 06:22:35
-version: 1.17
+updated: 2019-05-30 06:24:39
+version: 1.18
 ---
 
 When writing javaScript expressions knowing the order in which operations is important to make sure that desired results will always be achieved. So [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) or just simply the order of operations in javaScript is the order in which operations are preformed and in this post I will be covering some of the basics with this.
@@ -105,7 +105,11 @@ So now that we know the basics when it comes to order of operations in javaScrip
 
 ### 4.1 - Estimating income example
 
-Say you want to estimate the amount of money that you might make for a blog post if you manage to rank at the top of a search engine result page. You know the score that a keyword of interest gets relative to a compare keyword to which you know the average money traffic. You also know what is average when it comes to click threw rates for the first position, second position and so forth, and also your average page revenue per mille
+Say you want to estimate the amount of money that you might make for a blog post if you manage to rank at the top of a search engine result page. You know the score that a keyword of interest gets relative to a compare keyword to which you know the average money traffic. You also know what is average when it comes to click threw rates for the first position, second position and so forth, and also your average page revenue per mille.
+
+So in order to figure estimates for amount of money you might make for each rang position you will need to work out some kind of lengthly expression and use that in a function in which you pass arguments for all of this.
+
+So you might end up with something like this:
 
 ```js
 let pageMoney = (s, c, ct, ctr, rpm) => {
