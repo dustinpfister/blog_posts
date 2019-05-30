@@ -49,8 +49,18 @@ app.get('/', [
         // send report
         (req, res) => {
             let html = '<table>';
+
             req.data.forEach((post, i) => {
-                html += '<tr><td>' + (i + 1) + '</td><td>' + post.wc + '</td><td>' + post.fn + '</td></tr>'
+                let color = 'red';
+
+                color = post.wc >= 500 ? 'orange' : color;
+                color = post.wc >= 1000 ? 'green' : color;
+
+                html += '<tr>' +
+                '<td>' + (i + 1) + '</td>' +
+                '<td style="color:' + color + ';">' + post.wc + '</td>' +
+                '<td>' + post.fn + '</td></tr>';
+
             });
             res.send(html + '</table>');
         }
