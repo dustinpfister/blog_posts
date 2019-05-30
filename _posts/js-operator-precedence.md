@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-05-30 06:14:55
-version: 1.16
+updated: 2019-05-30 06:22:35
+version: 1.17
 ---
 
 When writing javaScript expressions knowing the order in which operations is important to make sure that desired results will always be achieved. So [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) or just simply the order of operations in javaScript is the order in which operations are preformed and in this post I will be covering some of the basics with this.
@@ -99,7 +99,13 @@ let d = (4 + 5 * 2) / 2 - 7 || 3 + --c;
 console.log(d); // 1
 ```
 
-## 4 - Estimating income example
+## 4 - javaScript order of operations examples
+
+So now that we know the basics when it comes to order of operations in javaScript lets take a look at some actual code examples when it comes to some lengthly expressions with more than one operator.
+
+### 4.1 - Estimating income example
+
+Say you want to estimate the amount of money that you might make for a blog post if you manage to rank at the top of a search engine result page. You know the score that a keyword of interest gets relative to a compare keyword to which you know the average money traffic. You also know what is average when it comes to click threw rates for the first position, second position and so forth, and also your average page revenue per mille
 
 ```js
 let pageMoney = (s, c, ct, ctr, rpm) => {
