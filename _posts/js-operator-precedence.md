@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-05-30 06:30:10
-version: 1.19
+updated: 2019-05-30 06:32:14
+version: 1.20
 ---
 
 When writing javaScript expressions knowing the order in which operations is important to make sure that desired results will always be achieved. So [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) or just simply the order of operations in javaScript is the order in which operations are preformed and in this post I will be covering some of the basics with this.
@@ -126,4 +126,4 @@ ctrRates.forEach((ctr, i) => {
 // 4 $0.36
 ```
 
-The expression that is used in the pageMoney function is composed of operations that are all division and multiplication, both of which have the same operator precedence. So for this expression the operations are just simply preformed from left to right as the Associativity of all operators used is the same as well.
+So getting back to the subject of this post the expression that is used in the pageMoney function is composed of operators that are all division and multiplication, both of which have the same operator precedence, as well as associativity. So for this expression the operations are just simply preformed from left to right.
