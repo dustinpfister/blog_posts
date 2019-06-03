@@ -5,15 +5,19 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2019-06-03 11:39:52
-version: 1.2
+updated: 2019-06-03 11:44:30
+version: 1.3
 ---
 
 In three js there is a number of options with it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
 
 <!-- more -->
 
-## 1 - Point lights example in threejs
+## 1 - Point lights in threejs and what to know before hand
+
+The example in this post is a little involved but so is any three.js project when it comes to all the various aspects of three.js that a developer needs understand in oder o do anything interesting with three.js. I assume that you have at least some background with three.js and javaScript in general as I will not be getting into the basics with three.js and javaScript here.
+
+## 2 - A point light examples in three.js
 
 ```js
 var scene = new THREE.Scene();
