@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2019-06-03 12:07:07
-version: 1.8
+updated: 2019-06-03 12:08:31
+version: 1.9
 ---
 
 In three js there is a number of options with it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
@@ -87,6 +87,8 @@ document.getElementById('demo').appendChild(renderer.domElement);
 Here I can also setup a camera and the renderer as well. However I cam not calling the render method of the renderer here, I course if I just wanted to make it a static scene, but I want this example to be a cool little animation so I will do that in the loop of this project.
 
 ### 2.4 - The app loop
+
+Here I have the loop of the project in which I will be rendering the current state of the scene as well as updating the scene as well.
 
 ```js
 // loop
