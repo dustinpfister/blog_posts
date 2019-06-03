@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2019-06-03 11:49:48
-version: 1.5
+updated: 2019-06-03 11:59:19
+version: 1.6
 ---
 
 In three js there is a number of options with it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
@@ -21,9 +21,9 @@ The example in this post is a little involved but so is any three.js project whe
 
 This example I put together makes use of a few point lights that shine light in all directions in a three.js scene. A point light by itself will not display anything in the scene just shine light in all directions from the current location in which it is located. So for this example I added a Sphere for each point light as a way to see the current location of each point light in the example.
 
+### 2.1 - The add point light method
+
 ```js
-var scene = new THREE.Scene();
-// create some point lights and add it to the scene
 var addPointLight = function (scene, color, x, y, z) {
     var pointLight = new THREE.PointLight(color);
     pointLight.position.set(x, y, z);
@@ -35,10 +35,11 @@ var addPointLight = function (scene, color, x, y, z) {
     scene.add(pointLight);
     return pointLight;
 };
-var whitePointLight = addPointLight(scene, 0xffffff, 0, 0, 0),
-redPointLight = addPointLight(scene, 0xff0000, 30, 0, 0),
-greenPointLight = addPointLight(scene, 0x00ff00, 0, 30, 0),
-bluePointLight = addPointLight(scene, 0x0000ff, 0, 0, 30);
+```
+
+### 2.2 - The add cube method
+
+```js
 // create some cubes
 var addCube = function (scene, size, x, y, z) {
     var geometry = new THREE.BoxGeometry(size, size, size),
@@ -50,6 +51,18 @@ var addCube = function (scene, size, x, y, z) {
     mesh.position.set(x, y, z);
     scene.add(mesh);
 };
+```
+
+### 2.3 - The scene setup
+
+```js
+var scene = new THREE.Scene();
+// create some point lights and add it to the scene
+var whitePointLight = addPointLight(scene, 0xffffff, 0, 0, 0),
+redPointLight = addPointLight(scene, 0xff0000, 30, 0, 0),
+greenPointLight = addPointLight(scene, 0x00ff00, 0, 30, 0),
+bluePointLight = addPointLight(scene, 0x0000ff, 0, 0, 30);
+// create some cubes
 addCube(scene, 10, 15, 0, 0);
 addCube(scene, 10, -15, 0, 0);
 addCube(scene, 10, 0, 0, 15);
@@ -63,6 +76,11 @@ var renderer = new THREE.WebGLRenderer({
     });
 renderer.setSize(320, 240);
 document.getElementById('demo').appendChild(renderer.domElement);
+```
+
+### 2.4 - The app loop
+
+```js
 // loop
 var frame = 0,
 maxFrame = 180,
