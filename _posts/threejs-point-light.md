@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2019-06-03 12:03:17
-version: 1.7
+updated: 2019-06-03 12:07:07
+version: 1.8
 ---
 
 In three js there is a number of options with it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
@@ -59,6 +59,8 @@ var addCube = function (scene, size, x, y, z) {
 
 ### 2.3 - The scene setup
 
+Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to create a scene. I just create a new three.js scene with the THREE.Scebe constructor, and then I can use that scene with my add point light and add cube methods.
+
 ```js
 var scene = new THREE.Scene();
 // create some point lights and add it to the scene
@@ -81,6 +83,8 @@ var renderer = new THREE.WebGLRenderer({
 renderer.setSize(320, 240);
 document.getElementById('demo').appendChild(renderer.domElement);
 ```
+
+Here I can also setup a camera and the renderer as well. However I cam not calling the render method of the renderer here, I course if I just wanted to make it a static scene, but I want this example to be a cool little animation so I will do that in the loop of this project.
 
 ### 2.4 - The app loop
 
