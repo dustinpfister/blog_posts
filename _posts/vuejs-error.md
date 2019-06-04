@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 461
-updated: 2019-06-03 20:28:56
-version: 1.4
+updated: 2019-06-03 20:31:20
+version: 1.5
 ---
 
 In todays post I will be writing about some quick examples that have to do with [vue error](https://vuejs.org/v2/api/#errorHandler) handers. A main global error handler can be set at the global config object of the Vue global. However not all errors can be cached
@@ -43,6 +43,8 @@ new Vue({
 ```
 
 ## 2 - Handle all errors in the page
+
+Although the error handlers in vuejs will work okay with some errors that happen during rendering they will not work for errors in general within the vuejs instance or in the page in general. To handle all errors in the page you will want to attach an event to the window object.
 
 ```js
 var vmError = new Vue({
