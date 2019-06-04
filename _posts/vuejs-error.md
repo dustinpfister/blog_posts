@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 461
-updated: 2019-05-28 10:51:21
-version: 1.2
+updated: 2019-06-03 20:06:30
+version: 1.3
 ---
 
-In todays post I will be writing about some quick examples that have to do with vue error handers. A main global error handler can be set at the global config object of the Vue global. However not all errors can be cached
+In todays post I will be writing about some quick examples that have to do with [vue error](https://vuejs.org/v2/api/#errorHandler) handers. A main global error handler can be set at the global config object of the Vue global. However not all errors can be cached
 
 <!-- more -->
 
