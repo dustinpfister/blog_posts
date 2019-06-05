@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2019-06-05 14:48:38
-version: 1.4
+updated: 2019-06-05 15:08:04
+version: 1.5
 ---
 
 The lodash \_.method method can be used to call a method at a given path when used with another lodash method like _.map, or _.filter. This is one of the lesser known methods in lodash that I do not see myself using often, and if you are scratching your head wondering if this is a feature that makes lodash worth the hassle or not you have come to the right place.
@@ -15,7 +15,7 @@ The lodash \_.method method can be used to call a method at a given path when us
 
 ## 1 - lodash _.method in range example
 
-The _.method method is intended to be used with other lodash methods like \_.map that accept a collection as the first argument and then a second argument that is a function that is to be called for each element in that collection.
+The \_.method method is intended to be used with other lodash methods like \_.map that accept a collection as the first argument and then a second argument that is a function that is to be called for each element in that collection.
 
 ```js
 let inRange = function(){
