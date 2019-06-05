@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2019-06-03 22:16:20
-version: 1.2
+updated: 2019-06-05 15:12:27
+version: 1.3
 ---
 
 It is time for me to revisit the face3 constructor in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://threejs.org/docs/#api/en/core/Face3.color), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
@@ -14,6 +14,8 @@ It is time for me to revisit the face3 constructor in three.js, in fact I will b
 <!-- more -->
 
 ## 1 - Face3 color in vertices 
+
+In order to use face3 vertex colors the vertexColors property of the material that is being used must be set to the THREE.FaceColors constant. A quick example of the use of face3 vertex colors might look something like this.
 
 ```js
 // SCENE
