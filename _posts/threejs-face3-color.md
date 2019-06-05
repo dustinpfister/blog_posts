@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2019-06-05 15:12:27
-version: 1.3
+updated: 2019-06-05 15:24:20
+version: 1.4
 ---
 
 It is time for me to revisit the face3 constructor in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://threejs.org/docs/#api/en/core/Face3.color), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
@@ -36,11 +36,22 @@ var geometry = new THREE.Geometry();
 geometry.vertices = [
     new THREE.Vector3(0, 0, 0),
     new THREE.Vector3(0, 1, 0),
-    new THREE.Vector3(1, 1, 0)
+    new THREE.Vector3(1, 1, 0),
+    new THREE.Vector3(1, 0, 0)
 ];
-geometry.faces.push(new THREE.Face3(0, 1, 2, new THREE.Vector3(0, 0, 1), new THREE.Color(0x00ff00), 0));
+var colors = [
+    new THREE.Color(0xff0000),
+    new THREE.Color(0x00ff00),
+    new THREE.Color(0x0000ff)];
+var normal = new THREE.Vector3(0, 0, 1);
+// set a single color for a face3 instance
+geometry.faces.push(new THREE.Face3(0, 1, 2, normal, colors[0], 0));
+// set an array of colors for each vertex
+geometry.faces.push(new THREE.Face3(3, 2, 0, normal, colors, 0));
 geometry.computeVertexNormals();
 geometry.computeFaceNormals();
+ 
+console.log(geometry);
  
 var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
             side: THREE.DoubleSide,
