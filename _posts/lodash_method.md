@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2019-06-05 14:47:17
-version: 1.3
+updated: 2019-06-05 14:48:38
+version: 1.4
 ---
 
 The lodash \_.method method can be used to call a method at a given path when used with another lodash method like _.map, or _.filter. This is one of the lesser known methods in lodash that I do not see myself using often, and if you are scratching your head wondering if this is a feature that makes lodash worth the hassle or not you have come to the right place.
@@ -31,3 +31,7 @@ let f = _.filter(points, _.method('pt.tester'));
 let r = _.map(f, function(el){ return el.pt.x})
 console.log(r); // [5, 3]
 ```
+
+## 2 - Conclusion
+
+Thats it for now today, I could not think about more to write about with this one, and could also not come up with any actual use case examples as well.
