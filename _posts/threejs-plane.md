@@ -5,10 +5,109 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2019-06-05 21:08:25
-version: 1.1
+updated: 2019-06-05 21:11:18
+version: 1.2
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a materials in a mesh. One of these is for plane geometry that is just flat 2d plane. The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) constructor allows for setting the width and height, but also a count for section width, and section height as well. There is then the question of how to go about styling a checkered plane in threejs then, so lets take a look on how to do that and more with plane geometry in three js.
 
 <!-- more -->
+
+## 1 - Three Plane basic example
+
+```js
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
+renderer.setSize(320, 240);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+// add a plane
+var plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(10, 10, 1),
+        new THREE.MeshBasicMaterial({
+            color: 0x0000ff
+        }));
+plane.rotation.set(-Math.PI/2,0,0);
+scene.add(plane);
+ 
+renderer.render(scene, camera);
+```
+
+## 2 -Styling a plane as a checkered board
+
+```js
+var mkCheckerGeo = function (w, h, sw, sh) {
+    w = w === undefined ? 16 : w;
+    h = h === undefined ? 16 : h;
+    sw = sw === undefined ? 8 : sw;
+    sh = sh === undefined ? 8 : sh;
+    console.log(sh);
+    var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh);
+    planeGeo.faces.forEach(function (face, i) {
+        var tile = Math.floor(i / 2),
+        w = planeGeo.parameters.widthSegments,
+        h = planeGeo.parameters.heightSegments,
+        y = Math.floor(tile / w);
+        if (w % 2) {
+            face.materialIndex = tile % 2;
+        } else {
+            face.materialIndex = y % 2 ? 1 - tile % 2 : tile % 2
+        }
+    });
+    return planeGeo;
+};
+ 
+var mkChecker = function (opt) {
+    opt = opt || {};
+    opt.materials = opt.materials || [
+            new THREE.MeshBasicMaterial({
+                color: 0xe0e0e0
+            }),
+            new THREE.MeshBasicMaterial({
+                color: 0x505050
+            })
+        ];
+    // add a plane
+    var plane = new THREE.Mesh(
+            mkCheckerGeo(opt.w, opt.h, opt.sw, opt.sh),
+            opt.materials);
+    plane.rotation.set(-Math.PI / 2, 0, 0);
+    return plane;
+};
+```
+
+```js
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
+renderer.setSize(320, 240);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+// standard checker
+var check = mkChecker({
+        w: 5,
+        h: 5
+    });
+scene.add(check);
+ 
+// odd checker
+var oddCheck = mkChecker({
+        w: 4,
+        h: 5,
+        sw: 3,
+        sh: 5
+    });
+oddCheck.position.set(8, 0, 0);
+scene.add(oddCheck);
+ 
+renderer.render(scene, camera);
+```
