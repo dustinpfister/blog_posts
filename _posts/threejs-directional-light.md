@@ -1,12 +1,12 @@
 ---
 title: directional light in three js
-date: 2019-06-03 18:46:00
+date: 2019-06-04 09:08:00
 tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2019-06-05 13:32:24
-version: 1.6
+updated: 2019-06-05 21:00:41
+version: 1.7
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) with is one of several types of light to choose from. A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing as the light is coming from a certain direction to a certain target location, rather than just a base light intensity for all materials in a scene as is the case with ambient light. A directional light is also like a spot light in the sense that it is coming from a certain location to a certain target location, but not in a cone like manner.
