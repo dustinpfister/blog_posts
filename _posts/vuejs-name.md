@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 466
-updated: 2019-06-05 21:30:01
-version: 1.2
+updated: 2019-06-05 21:33:17
+version: 1.3
 ---
 
 The [vue name](https://vuejs.org/v2/api/#name) option is something that comes into play when getting into vue component design. Depending on how you go about adding a component into vuejs the vue name might not need to be specified in the object that defines the nature of the component. However when  making local components it might be a good idea to set the name in the object, but doing so is optional. 
@@ -38,6 +38,8 @@ new Vue({
 ```
 
 ## 2 - vue name and local components
+
+Using a name property in a vue component object might be a good idea if you are doing something with local components. There is still a way to define the names anyway in the form of object keys in the components option object that is used to create local components. However I have noticed that the name of the component will return undefined if the name is not given in the object.
 
 ```js
 var Foo = {
