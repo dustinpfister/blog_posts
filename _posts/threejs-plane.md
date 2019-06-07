@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2019-06-05 21:21:59
-version: 1.5
+updated: 2019-06-06 20:26:37
+version: 1.6
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a materials in a mesh. One of these is for plane geometry that is just flat 2d plane. The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) constructor allows for setting the width and height, but also a count for section width, and section height as well. There is then the question of how to go about styling a checkered plane in threejs then, so lets take a look on how to do that and more with plane geometry in three js.
@@ -90,6 +90,8 @@ var mkChecker = function (opt) {
 ```
 
 ### 2.2 - The checker helpers in action
+
+So now I can use my mkCheker to create a mesh that uses a plane geometry with the material index values set to the right values for each section in the plane.
 
 ```js
 var scene = new THREE.Scene();
