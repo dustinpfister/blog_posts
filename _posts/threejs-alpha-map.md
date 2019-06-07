@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2019-06-06 21:41:20
-version: 1.6
+updated: 2019-06-06 21:45:41
+version: 1.7
 ---
 
 When working with materials in three js many of the materials support one or more types of maps for skinning the faces of a geometry one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent.
@@ -15,7 +15,7 @@ When working with materials in three js many of the materials support one or mor
 
 ## 1 - Alpha maps and what to know before hand
 
-This is a post on three js the javaScript powered 3d modeling library, in addition it is on a very specific topic with three js which is of course alpha maps. It is not a getting started post on three js of javaScript in general, I assume that you have at least some background with these topics otherwsie you are going to have a hard time getting anything of value from this post.
+This is a post on three js the javaScript powered 3d modeling library, in addition it is on a very specific topic with three js which is of course alpha maps. It is not a getting started post on three js of javaScript in general, I assume that you have at least some background with these topics otherwise you are going to have a hard time getting anything of value from this post.
 
 ## 2 - Alpha map example in three js
 
@@ -64,3 +64,7 @@ renderer.render(scene, camera);
 ```
 
 The transparent property of the material also needs to be set to true, and a renderer that supports transparency also needs to be used. The usual webGl renderer worked just fine fr me in this example.
+
+## 3 - Conclusion
+
+There are a whole bunch of different maps to be aware of when it comes to skinning faces of a geometry with a material in three js. There is the plain old color map that can also be used, and it materials that respond to light sources there are many other maps of interest as well such as an emissive map. Still alpha maps are one ogf the many types of maps to be aware of, and they can be fun to play around with.
