@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2019-06-06 21:28:56
-version: 1.2
+updated: 2019-06-06 21:31:24
+version: 1.3
 ---
 
 When working with materials in three js many of the materials support one or more types of maps for skinning the faces of a geometry one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent.
@@ -15,14 +15,13 @@ When working with materials in three js many of the materials support one or mor
 
 ## 1 - Alpha map example in three js
 
+So for a basic example of an alpha map in three js I have this example that makes used of a texture that is created from a canvas element. I just create a canvas and then make gray scale areas of the canvas, I then used the THREE.CanvasTexture constructor to create a texture that I can then use with the alpha map property of a material that supports alpha maps such as the Mesh basic Material.
 ```js
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(1, 1.3, 1);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
+var renderer = new THREE.WebGLRenderer();
 renderer.setSize(320, 240);
 document.getElementById('demo').appendChild(renderer.domElement);
  
