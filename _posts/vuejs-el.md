@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 436
-updated: 2019-05-06 10:01:14
-version: 1.6
+updated: 2019-06-07 23:01:42
+version: 1.7
 ---
 
 The [vue el](https://vuejs.org/v2/api/#el) option for a vuejs instance is what can be used to select a mount point for a vuejs project. A mount point is an element in a html structure in which all elements that are nested from that element will be subject to the vuejs instance in which the vue el option is being used. A mount point that is selected with the el option can be obtained by a query string that allows for selection by id, class and so forth. In addition an actual reference to the element of interest can be done as well if there is a need to do so for whatever the reason. There might be some things to be concerned about at this point when it comes to selection by class, and having more than one vue instance on a page as well.
@@ -89,3 +89,7 @@ my reasoning is that any Vue instance that exists before hand in the DOM tree sh
   </body>
 </html>
 ```
+
+## 3 - The $mount method to mount to an element at a later point in time
+
+An alternative to using the vue el method is to use the $mount instance method. This allows for delaying the process of mounting to an html document if needed for some reason.
