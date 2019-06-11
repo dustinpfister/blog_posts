@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2019-06-11 12:30:48
-version: 1.2
+updated: 2019-06-11 12:34:37
+version: 1.3
 ---
 
 In late releases of Three.js the 2d canvas software renderer has been removed from the core of threejs itself. It is possible to still use it of course it just needs to be added as an additional asset for a project on top of just three js by itself.
@@ -98,3 +98,7 @@ if (isWebGL()) {
     renderer.render(scene, camera);
 }
 ```
+
+## 2 - Conclusion
+
+Even if a client does support webgl that does not mean that all the webgl features will work as expected. For example I have noticed that on raspberry pi webgl support is fairly poor, at least out of the box. A simple check if webgl is there or not will result in a true response with a simple feature test for webgl alone, but things will still not render as expected.
