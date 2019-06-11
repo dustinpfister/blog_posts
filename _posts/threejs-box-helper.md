@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2019-06-11 18:43:16
-version: 1.6
+updated: 2019-06-11 18:56:42
+version: 1.7
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or an Object3d instance. The box can be moved and rotated just like many other objects in three js, and it can also be resized as well. So lets take a look at some quick examples of the box helper in three js.
@@ -45,6 +45,8 @@ This is a nice simple example of the box helper, but what about resizing the hel
 
 ## 2 - Moving an object with a Box Helper
 
+When moving a box helper it is impotent to know if the box helper was added to a mesh or the scene. If a mesh that a box helper was created for is moved, but the box helper is added to the scene or any object or group outside of that mesh, then the box helper will not move with the mesh but will stay relative to the group or object that it was added to.
+
 ```js
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
@@ -54,13 +56,26 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(320, 240);
 document.getElementById('demo').appendChild(renderer.domElement);
  
-var mesh = new THREE.Mesh(new THREE.SphereGeometry(2, 30, 30), new THREE.MeshStandardMaterial({
+var mesh1 = new THREE.Mesh(
+        new THREE.SphereGeometry(2, 30, 30),
+        new THREE.MeshStandardMaterial({
             color: 0xff0000,
             emissive: 0x0a0a0a
         }));
-var box = new THREE.BoxHelper(mesh, 0xffff00);
-mesh.add(box);
-scene.add(mesh);
+scene.add(mesh1);
+var mesh2 = new THREE.Mesh(
+        new THREE.SphereGeometry(2, 30, 30),
+        new THREE.MeshStandardMaterial({
+            color: 0x00ff00,
+            emissive: 0x0a0a0a
+        }));
+scene.add(mesh2);
+ 
+// just add a helper to mesh1
+mesh1.add(new THREE.BoxHelper(mesh1, 0xffff00));
+ 
+var boxHelper = new THREE.BoxHelper(mesh2, 0xffffff);
+scene.add(boxHelper);
  
 // light
 var light = new THREE.PointLight(0xffffff);
@@ -75,9 +90,16 @@ var loop = function () {
     var per = frame / maxFrame,
     bias = 1 - Math.abs(0.5 - per) / 0.5;
  
-    // change position and rotation
-    mesh.position.z = 5 * bias;
-    mesh.rotation.y = Math.PI * per;
+    // change position and rotation of mesh1
+    // this also changes the position of the box helper
+    // that is relative to the mesh
+    mesh1.position.z = 5 * bias;
+    mesh1.rotation.y = Math.PI * per;
+ 
+    // when mesh2 is moved the boxHelper does not move
+    // the reason why is that it was added to the scene
+    // rather than mesh2
+    mesh2.position.x = 10 * bias;
  
     renderer.render(scene, camera);
  
