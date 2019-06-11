@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2019-06-11 14:23:40
-version: 1.9
+updated: 2019-06-11 14:26:02
+version: 1.10
 ---
 
 In late releases of Three.js the 2d canvas software renderer has been removed from the core of threejs itself. It is possible to still use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. For the most part these days there is no need to bother with the 2d canvas powered software renderer as the built in [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) will work just fine on most clients, but if for some reason you do want to add more robust support for older clients that do not have great web gl support than the software renderer will have to be added in, and feature testing for web gl will need to be preformed.
@@ -43,6 +43,8 @@ In order to get this demo to work on top of using r104 of three.js the [projecto
 </body>
 </html>
 ```
+
+So in the html of this example I am linking to three.js like normal, but I am also linking to the additional assets in the github repo as well. I am also linking to some additional assets that feature test for webGL and render a scene differently depending on the state of webGL support in the client which are as follows.
 
 ### 2.2 - The webgl.js file
 
