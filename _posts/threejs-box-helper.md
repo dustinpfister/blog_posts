@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2019-06-11 18:35:46
-version: 1.3
+updated: 2019-06-11 18:36:49
+version: 1.4
 ---
 
-In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging things.
+In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or an Object3d instance.
 
 <!-- more -->
 
