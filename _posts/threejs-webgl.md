@@ -5,17 +5,23 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2019-06-11 12:43:46
-version: 1.4
+updated: 2019-06-11 12:48:03
+version: 1.5
 ---
 
 In late releases of Three.js the 2d canvas software renderer has been removed from the core of threejs itself. It is possible to still use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. For the most part these days there is no need to bother with the 2d canvas powered software renderer as the built in webgl renderer will work just fine on most clients, but if for some reason you do want to add more robust support for older clients that do not have great web gl support than the software renderer will have to be added in, and feature testing for web gl will need to be preformed.
 
 <!-- more -->
 
-## 1 - Using the Software Renderer in the event there is no WebGl support
+## 1 - WebGL in three.js and what to know before hand
 
-### 1.1 - The html
+This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a getting started post with three.js, webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
+
+When writing this post I was using revision 104 of three.js, and on top of that I am also using some additional assets when it comes to rendering a three js scene with a renderer other than the built in webGL renderer.
+
+## 2 - Using the Software Renderer in the event there is no WebGl support
+
+### 2.1 - The html
 
 ```html
 <html>
@@ -34,7 +40,7 @@ In late releases of Three.js the 2d canvas software renderer has been removed fr
 </html>
 ```
 
-### 1.2 - The webgl.js file
+### 2.2 - The webgl.js file
 
 ```js
 var isWebGL = function (ctxNum) {
@@ -49,7 +55,7 @@ var isWebGL = function (ctxNum) {
 };
 ```
 
-### 1.3 - The setup.js file
+### 2.3 - The setup.js file
 
 ```js
 var container = document.getElementById('demo'),
@@ -99,6 +105,6 @@ if (isWebGL()) {
 }
 ```
 
-## 2 - Conclusion
+## 3 - Conclusion
 
 Even if a client does support webgl that does not mean that all the webgl features will work as expected. For example I have noticed that on raspberry pi webgl support is fairly poor, at least out of the box. A simple check if webgl is there or not will result in a true response with a simple feature test for webgl alone, but things will still not render as expected.
