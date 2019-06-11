@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2019-06-11 19:37:51
-version: 1.6
+updated: 2019-06-11 19:46:41
+version: 1.7
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined. If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
@@ -73,3 +73,29 @@ console.log(n); // 40
 ```
 
 In the above example the value for n in the body of the if statement differs from the value of n outside of the if statement. If all instances of let where to be replaced with var this would not be the case, it would be the same scoped variable that is changed inside the if statement then.
+
+## 3 - Block variable scope with const
+
+Another option for declaring variables that was introduced in es2015 javaScript was by using the const keyword as yet another option to var. Like let this also results in block level variable scope rather than the function level scope that is the result of using var. However unlike bolt var and let const is intended to be used for constants, and thus whatever is define with const can only be declared once. After than any attempt to change a vale set with const will result in an error.
+
+```js
+const n = 40;
+ 
+// changing the value of n here
+// will result in an error
+try {
+    n = 42;
+} catch (e) {
+    console.log(e.message);
+    // Assignment to constant variable.
+}
+ 
+// however a new n can be declared in any
+// block because like let it has block scope
+if (n > 32) {
+    const n = 16;
+    console.log(n); // 16
+}
+ 
+console.log(n); // 40
+```
