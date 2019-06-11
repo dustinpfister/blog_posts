@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2019-06-11 18:38:16
-version: 1.5
+updated: 2019-06-11 18:43:16
+version: 1.6
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or an Object3d instance. The box can be moved and rotated just like many other objects in three js, and it can also be resized as well. So lets take a look at some quick examples of the box helper in three js.
@@ -14,6 +14,8 @@ In [three js](https://threejs.org/) there is a built in [box helper](https://thr
 <!-- more -->
 
 ## 1 - Box helper basic example in threejs
+
+A basic example of a box helper in three js might involve just calling the THREE.BoxHelper constructor by calling that constructor, and then passing the object that is to be boxed in with the helper in as the first argument. A second argument can then also be used to set the color of the box helper lines. Once the instance of the box helper is created it just needs to be added to the scene, or to a group or object that is in the scene of course, such as in this example right here.
 
 ```js
 var scene = new THREE.Scene();
@@ -27,8 +29,8 @@ document.getElementById('demo').appendChild(renderer.domElement);
 var mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 30, 30), new THREE.MeshStandardMaterial({
             color: 0xff0000
         }));
-var box = new THREE.BoxHelper(mesh, 0xffffff);
-mesh.add(box);
+// add a box helper
+mesh.add(new THREE.BoxHelper(mesh, 0xffffff));
 scene.add(mesh);
  
 // light
@@ -36,10 +38,10 @@ var light = new THREE.PointLight(0xffffff);
 light.position.set(0,2,2);
 scene.add(light);
  
-var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1));
-scene.add(mesh);
 renderer.render(scene, camera);
 ```
+
+This is a nice simple example of the box helper, but what about resizing the helper, and moving it as well. Lets take a look at some more examples of the box helper then.
 
 ## 2 - Moving an object with a Box Helper
 
