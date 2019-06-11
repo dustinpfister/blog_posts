@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2019-06-11 14:58:43
-version: 1.13
+updated: 2019-06-11 15:01:30
+version: 1.14
 ---
 
 In late releases of Three.js the 2d canvas software renderer has been removed from the core of threejs itself. It is possible to still use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. For the most part these days there is no need to bother with the 2d canvas powered software renderer as the built in [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) will work just fine on most clients, but if for some reason you do want to add more robust support for older clients that do not have great web gl support than the software renderer will have to be added in, and feature testing for web gl will need to be preformed.
@@ -67,9 +67,9 @@ var isWebGL = function (ctxNum) {
 
 Here I have the setup.js file that makes use of the webGL method in webgl.js, as well as the additional assets depending if webGl is supported or not.
 
-The demo involves creating a mesh with an array of materials the first of which is the Depth Material that works great in the Software Renderer and the second material is the standard material that is one of the several materials that will respond to a light source in three js.
+The demo involves creating a mesh with an array of [materials](/2018/04/30/threejs-materials/) the first of which is the Depth Material that works great in the Software Renderer and the second material is the standard material that is one of the several materials that will respond to a light source in three js.
 
-The Material index property of a Face3 instance in three js is what can be used to set the material in this array of materials to use when skinning A Face3 instance in a geometry. So in the event that webGL is supported then the Standard Material will be used else the Depth material will be used as a fall back or sorts that will work okay with the Software Renderer.
+The [Material index](/2018/05/14/threejs-mesh-material-index/) property of a [Face3](/2018/05/11/threejs-face3/) instance in three js is what can be used to set the material in this array of materials to use when skinning A Face3 instance in a geometry. So in the event that webGL is supported then the Standard Material will be used else the Depth material will be used as a fall back or sorts that will work okay with the Software Renderer.
 
 ```js
 var container = document.getElementById('demo'),
