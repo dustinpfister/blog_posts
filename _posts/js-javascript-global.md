@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2019-06-11 20:43:31
-version: 1.14
+updated: 2019-06-11 20:46:24
+version: 1.15
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScfipt this is typically the window object but it can also be other objects as well such as when working with a web worker environment. In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative when would be local function level, and not block level scoped variables.
@@ -171,6 +171,8 @@ try {
 This will work fine as a way to stop declaring variables as long as you are sure that you will always be working in a modern javaScript environment that supports block variable scope.
 
 ### 5.3 - Monkey patching
+
+Another option that comes to mind is the process of just adding to objects that are defined before hand and native to javaScript itself. This process of adding properties to built in objects in javaScript is known as monkey patching. Although it might work, most developers will give you hell for doing so as this is generally regarded as a bad practice.
 
 ```js
 this.n = 42;
