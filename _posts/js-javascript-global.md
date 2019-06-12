@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2019-06-11 20:16:36
-version: 1.10
+updated: 2019-06-11 20:26:01
+version: 1.11
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScfipt this is typically the window object but it can also be other objects as well such as when working with a web worker environment. In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative when would be local function level, and not block level scoped variables.
@@ -127,6 +127,26 @@ console.log(y); // 2
 
 This might work as expected when it comes to the returned value, but it does result in two very different variables. One of which is coped locally within the function, and the other has become a global variable that can be accessed outside of the function. This can some times create problems if there is a situation in which there is a global variable of the same name all ready. In that case I would end up overwriting any value that that variable might have.
 
-## 5 - Conclusion
+## 5 - Avoiding the use of javaScript globals
+
+Many javaScript developers believe that global variables are something that should only be declared when doing so can not be avoided, others might go so far is to say that they should never be used at all. In some cases though avoiding the use of a global is something that just can not be avoided. However in this section I will be going over some examples of how to go about avoiding  the use of javaScript globals.
+
+### 5.1 - Closures
+
+```js
+(function () {
+    var n = 42;
+    console.log(n); // 42
+}());
+ 
+try {
+    console.log(n);
+} catch (e) {
+    console.log(e.message);
+    // 'n is not defined'
+}
+```
+
+## 6 - Conclusion
 
 Understanding javaScript global variables is an important part of becoming proficient with javaScript. Some times a variable just needs to be a global variable and there is no way of getting around it, but for the most part defining a global, variable is something that should be done only when that is the case if you can manage doing so. Every time a global is defined there is a greater chance that it can result in hard to track errors that have to do with name space collisions. 
