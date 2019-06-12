@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2019-06-11 19:59:40
-version: 1.7
+updated: 2019-06-11 20:08:08
+version: 1.8
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. The undefined value is the default value for variables that are declared but do not have any value assigned to them. When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. In this post I will be outlining some examples that point out some things that a javaScript developer should be aware of when it comes to undefined in javaScript.
@@ -57,6 +57,31 @@ console.log(sum(5)); // 5
 console.log(sum(2,6)); // 8
 ```
 
-## 2 - Conclusion
+## 2 - Calling javaScript undefined
+
+When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. This can happen when you do not yet know the difference between javaScript declarations and javaScript expressions.
+
+```js
+// function declaration
+console.log(func1()); // 'foo'
+function func1() {
+    return 'foo';
+};
+console.log(func1()); // 'foo'
+ 
+// function expression
+try {
+    console.log(func2());
+} catch (e) {
+    console.log(e.message); // func2 is not a function
+    console.log(func2 === undefined); // true
+}
+var func2 = function () {
+    return 'bar';
+};
+console.log(func2()); // 'bar'
+```
+
+## 3 - Conclusion
 
 The undefined value in javaScript comes up a lot in discussions when learning javaScript for the first time. A common mistake most new javaScript developers make involves errors resulting in calling undefined.
