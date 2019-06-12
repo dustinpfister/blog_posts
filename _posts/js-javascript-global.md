@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2019-06-11 20:29:10
-version: 1.12
+updated: 2019-06-11 20:39:43
+version: 1.13
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScfipt this is typically the window object but it can also be other objects as well such as when working with a web worker environment. In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative when would be local function level, and not block level scoped variables.
@@ -150,6 +150,45 @@ try {
 ```
 
 It does not matter if var let or const is used inside the body of the function they will all result in a variable that is local to that function and not the global object.
+
+### 5.2 - Blocks
+
+```js
+{
+    let n = 42;
+    console.log(n); // 42
+}
+try {
+    console.log(n);
+} catch (e) {
+    console.log(e.message);
+    // 'n is not defined'
+}
+```
+
+### 5.3 - Monkey patching
+
+```js
+this.n = 42;
+ 
+try {
+    console.log(n);
+} catch (e) {
+    console.log(e.message);
+    // 'n is not defined'
+}
+ 
+// However monkey patching some objects
+// might not be such a great idea,
+// and may defeat the whole purpose in the process
+Object.prototype.n = 42;
+console.log(Object.n); // 42
+console.log(Math.n); // 42
+console.log({}
+    .n); // 42
+ 
+console.log(n); // 42
+```
 
 ## 6 - Conclusion
 
