@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2019-06-11 20:39:43
-version: 1.13
+updated: 2019-06-11 20:43:31
+version: 1.14
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScfipt this is typically the window object but it can also be other objects as well such as when working with a web worker environment. In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative when would be local function level, and not block level scoped variables.
@@ -153,6 +153,8 @@ It does not matter if var let or const is used inside the body of the function t
 
 ### 5.2 - Blocks
 
+So in es2015+ spec javaScript there is not block level variable scope, as such block variable scope can be used as a way to avoid declaring javaScript global variables. Just use let or const to declare a variable and do so in a block such as an if statement, loop, or just a set of curly graces by themselves even.
+
 ```js
 {
     let n = 42;
@@ -165,6 +167,8 @@ try {
     // 'n is not defined'
 }
 ```
+
+This will work fine as a way to stop declaring variables as long as you are sure that you will always be working in a modern javaScript environment that supports block variable scope.
 
 ### 5.3 - Monkey patching
 
