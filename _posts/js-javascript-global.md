@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2019-06-11 20:26:01
-version: 1.11
+updated: 2019-06-11 20:29:10
+version: 1.12
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScfipt this is typically the window object but it can also be other objects as well such as when working with a web worker environment. In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative when would be local function level, and not block level scoped variables.
@@ -131,7 +131,9 @@ This might work as expected when it comes to the returned value, but it does res
 
 Many javaScript developers believe that global variables are something that should only be declared when doing so can not be avoided, others might go so far is to say that they should never be used at all. In some cases though avoiding the use of a global is something that just can not be avoided. However in this section I will be going over some examples of how to go about avoiding  the use of javaScript globals.
 
-### 5.1 - Closures
+### 5.1 - Functions
+
+The first are for most way of how to go about avoiding the use of global variables in javaScript is to use closures, or just simply functions if you prefer. When using var, or any keyword that is used to define a variable inside the body of a function that variable will be local to that function and not the global object.
 
 ```js
 (function () {
@@ -146,6 +148,8 @@ try {
     // 'n is not defined'
 }
 ```
+
+It does not matter if var let or const is used inside the body of the function they will all result in a variable that is local to that function and not the global object.
 
 ## 6 - Conclusion
 
