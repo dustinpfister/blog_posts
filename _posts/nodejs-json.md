@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 477
-updated: 2019-06-13 12:26:20
-version: 1.4
+updated: 2019-06-13 12:30:09
+version: 1.5
 ---
 
 In nodejs json is often used as the standard data serialization language of choice for most applications. There are alternatives such as yaml, but for this post I will be goijg over some of the basics of json in node.js.
@@ -53,6 +53,8 @@ loadJSON('./my-bad-json.json')
 This way if an error happens when loading a json file I can write some logic that will do something in the event that an error occurs.
 
 ## 3 - write json
+
+So require can be used to import json but it can not be used to export it. For this something more will need to be used on top of just require. The file system module in node.js can be used to read and write files and do a wide range of additional file io related tasks. So in this section I will be going over a simple example that can be used as a way to write some json to a file using the file system write method and the JSON stringify method.
 
 ```js
 let fs = require('fs');
