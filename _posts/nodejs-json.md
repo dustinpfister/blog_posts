@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 477
-updated: 2019-06-13 12:32:01
-version: 1.6
+updated: 2019-06-13 12:34:15
+version: 1.7
 ---
 
-In nodejs json is often used as the standard data serialization language of choice for most applications. There are alternatives to json such as yaml, but for this post I will be going over some of the basics of json in node.js as a way of handing data serialization and config files.
+In nodejs json is often used as the standard data serialization language of choice for most applications. When it comes to working with json in general in javaScript there is the JSON.parse, and JSON.stringify methods that are of interest. In addition in nodejs there is the require global that can be used to quickly load json, and the file system module can be used as a built in way to write files including json. There are alternatives to json such as yaml, but for this post I will be going over some of the basics of json in node.js as a way of handing data serialization and config files.
 
 <!-- more -->
 
