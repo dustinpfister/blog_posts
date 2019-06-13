@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 477
-updated: 2019-06-13 12:12:52
-version: 1.3
+updated: 2019-06-13 12:26:20
+version: 1.4
 ---
 
 In nodejs json is often used as the standard data serialization language of choice for most applications. There are alternatives such as yaml, but for this post I will be goijg over some of the basics of json in node.js.
@@ -49,6 +49,8 @@ loadJSON('./my-bad-json.json')
     console.log(e.message);
 });
 ```
+
+This way if an error happens when loading a json file I can write some logic that will do something in the event that an error occurs.
 
 ## 3 - write json
 
