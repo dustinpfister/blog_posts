@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 477
-updated: 2019-06-13 11:57:09
-version: 1.2
+updated: 2019-06-13 12:12:52
+version: 1.3
 ---
 
 In nodejs json is often used as the standard data serialization language of choice for most applications. There are alternatives such as yaml, but for this post I will be goijg over some of the basics of json in node.js.
@@ -26,7 +26,9 @@ console.log(json.foo); // 'bar'
 
 Although this might work okay there are still some drawbacks when it comes to error handling at least in the event that the json file is not there, or is not property formated for whatever the reason. So lets take a look at some other options.
 
-## 2 - However what about the possibility of bad json
+## 2 - So about the possibility of bad json and other errors
+
+When when loading in json in a nodejs project with require there is a possibility that some kind of error might happen in the process. So a common way of going about handling errors with async tasks such as grabbing json these days with javaScript is to use promises.
 
 ```js
 let loadJSON = (dir_file) => {
