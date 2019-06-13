@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 478
-updated: 2019-06-13 15:17:02
-version: 1.4
+updated: 2019-06-13 15:30:37
+version: 1.5
 ---
 
 In nodejs the [require global](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require) is something that will end up being used often in projects as a way to make use of built in as well as custom made nodejs modules. There is more to it then just a way to load modules though, it can also be used as a way to load json files and other assets, so lets take a look at some nodejs require examples today.
@@ -26,7 +26,9 @@ In the above example I am using the operating system module to find out the curr
 
 ## 2 - nodejs require can also be used to load custom modules
 
-So the nodejs require global can also be used to load an external modules in the from of an external javaScript file.
+So the nodejs require global can also be used to load an external modules in the from of an external javaScript file. When writing an external javaScript file there is the module.exports property this is of interest when it comes to making what is exported a function.
+
+A function is a kind of object in javaScript so the function can be extended with additional properties as well.
 
 ```js
 let api = function (a, b) {
@@ -35,6 +37,8 @@ let api = function (a, b) {
 api.myFunc = api;
 module.exports = api
 ```
+
+once I have an external javaScript file that exports something I can then bring it into another file with the nodejs require global, just like that of built in modules, only now I pass a relative path to the external javaScript file.
 
 ```js
 let mm = require('./mymod.js');
