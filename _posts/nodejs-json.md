@@ -1,12 +1,12 @@
 ---
 title: Nodejs json read write and convert
-date: 2019-06-22 09:22:00
+date: 2019-06-12 09:22:00
 tags: [js,node.js]
 layout: post
 categories: node.js
 id: 477
-updated: 2019-06-13 12:36:12
-version: 1.8
+updated: 2019-06-13 15:07:30
+version: 1.9
 ---
 
 In nodejs json is often used as the standard data serialization language of choice for most applications. When it comes to working with json in general in javaScript there is the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse), and [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) methods that are of interest. In addition in nodejs there is the [nodejs require](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require) global that can be used to quickly load json, and the [file system module](/2018/02/08/nodejs-filesystem/) can be used as a built in way to write files including json. There are alternatives to json such as yaml, but for this post I will be going over some of the basics of json in node.js as a way of handing data serialization and config files.
