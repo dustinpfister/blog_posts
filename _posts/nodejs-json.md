@@ -5,17 +5,17 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 477
-updated: 2019-06-13 12:34:15
-version: 1.7
+updated: 2019-06-13 12:36:12
+version: 1.8
 ---
 
-In nodejs json is often used as the standard data serialization language of choice for most applications. When it comes to working with json in general in javaScript there is the JSON.parse, and JSON.stringify methods that are of interest. In addition in nodejs there is the require global that can be used to quickly load json, and the file system module can be used as a built in way to write files including json. There are alternatives to json such as yaml, but for this post I will be going over some of the basics of json in node.js as a way of handing data serialization and config files.
+In nodejs json is often used as the standard data serialization language of choice for most applications. When it comes to working with json in general in javaScript there is the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse), and [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) methods that are of interest. In addition in nodejs there is the [nodejs require](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require) global that can be used to quickly load json, and the [file system module](/2018/02/08/nodejs-filesystem/) can be used as a built in way to write files including json. There are alternatives to json such as yaml, but for this post I will be going over some of the basics of json in node.js as a way of handing data serialization and config files.
 
 <!-- more -->
 
 ## 1 - In nodejs json can be quickly loaded with require
 
-If I just want to simply load in some JSON from an external javaScript [nodejs require](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require) can be used to do so without having to bother with the file system module or any other kind of additional third party module.
+If I just want to simply load in some JSON from an external javaScript nodejs require can be used to do so without having to bother with the file system module or any other kind of additional third party module.
 
 So in a pinch if you know the relative path to the json that you want to load, and the json is property formated json could be parsed just like this.
 
