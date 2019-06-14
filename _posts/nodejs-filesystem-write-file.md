@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 479
-updated: 2019-06-14 10:02:44
-version: 1.4
+updated: 2019-06-14 10:05:50
+version: 1.5
 ---
 
 The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is the old way of how to go about using the nodejs write file method that can lead to a kind of call back hell, and then there is the more modern way of using write file that involves the use of promises.
@@ -35,6 +35,8 @@ fs.writeFile(dir, text, 'utf-8', (e)=> {
 this is the old school way to go about using the nodejs write file method that can lead to a kind of callback hell if a whole much of read and write operations need to be preformed in sequence. So in es2015+ javaScript there is now native support for Promises which many javaScript developers argue is a far batter way to deal with reading and writing to fines in node.
 
 ## 2 - Write file method using promises
+
+So in later versions of nodejs it looks like there might now be native support for Promises when using nodejs file system method like the write file method. However in this section I am assuming that you might be using an older version of node. SO you just need to use some kind of dependency like fs-extra to promisify the fs module, or just write some read and write methods that return promises.
 
 ```js
 let fs = require('fs'),
