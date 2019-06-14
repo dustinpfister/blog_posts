@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 479
-updated: 2019-06-14 09:58:18
-version: 1.2
+updated: 2019-06-14 09:59:56
+version: 1.3
 ---
 
 The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is the old way of how to go about using the nodejs write file method that can lead to a kind of call back hell, and then there is the more modern way of using write file that involves the use of promises.
@@ -14,6 +14,8 @@ The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_opti
 <!-- more -->
 
 ## 1 - nodejs write file method basic example
+
+A baisc example of the nodejs write file method is to require in the nodejs file system module, and then call the fs.wrietFile method passing the path of the file to write to as the first argument, followed by the data to write to, and then the encoding and callback to fire when done.
 
 ```js
 let fs = require('fs'),
