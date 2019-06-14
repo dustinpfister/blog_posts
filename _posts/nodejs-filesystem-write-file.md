@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 479
-updated: 2019-06-14 09:54:33
-version: 1.1
+updated: 2019-06-14 09:58:18
+version: 1.2
 ---
 
-The nodejs write file method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is the old way of how to go about using the nodejs write file method that can lead to a kind of call back hell, and then there is the more modern way of using write file that involves the use of promises.
+The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is the old way of how to go about using the nodejs write file method that can lead to a kind of call back hell, and then there is the more modern way of using write file that involves the use of promises.
 
 <!-- more -->
 
