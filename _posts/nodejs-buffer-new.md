@@ -5,10 +5,10 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2019-06-17 10:24:20
-version: 1.0
+updated: 2019-06-17 10:27:35
+version: 1.1
 ---
 
-So when making a new Buffer in nodejs there are some things to be aware of.
+So when making a new Buffer in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
 
 <!-- more -->
