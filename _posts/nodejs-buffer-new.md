@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2019-06-17 16:29:42
-version: 1.6
+updated: 2019-06-17 16:33:21
+version: 1.7
 ---
 
 So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
@@ -15,13 +15,17 @@ So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buff
 
 ## 1 - New buffer basic example.
 
+So in many code examples the Buffer constructor is used as a way to create a new Buffer.
+
 ```js
 let buff = new Buffer('ABCD');
 console.log(buff[0]); // 65
 console.log(String.fromCharCode(buff[0])); // 'A'
 ```
 
-## 2 - Why not use new Buffer to create a Buffer?
+In late versions of nodejs 8.x and later a buffer that is created this way will be initialized. That is that the byte values will all be set to zero, and will therefrom not contain any old data that was in memory some of which might be sensitive. In older versions of node before 8.x this was not the case.
+
+## 2 - Other ways to create a new Buffer in nodejs
 
 In older versions of node before 8.x a Buffer that is created with the new keyword would return a buffer that is not initialized with zeros when created by calling the Buffer constructor with the new keyword.
 
