@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 462
-updated: 2019-05-28 11:11:44
-version: 1.4
+updated: 2019-06-16 21:36:04
+version: 1.5
 ---
 
 Today I started playing around with the [vue watch](https://vuejs.org/v2/guide/computed.html) option that can be used to define some callbacks that fire when a property in the vue data object changes. Watchers can be defined in a number of ways in vuejs, they can just be function expressions, strings that refer to methods in the vue method option, or objects that can have a number of options along with a handler. So lets take a look at some vue watch option examples.
@@ -145,3 +145,5 @@ new Vue({
     }
 });
 ```
+
+## 4 - conclusion
