@@ -5,8 +5,8 @@ tags: [js,node.js,blog,linux]
 layout: post
 categories: node.js
 id: 92
-updated: 2019-06-19 11:53:53
-version: 1.4
+updated: 2019-06-19 11:57:47
+version: 1.5
 ---
 
 When making some kind of CLI tool in node.js there is often a need to test if a certain path exists, and if it does do nothing, else make the path. There are ways of doing so with just plain old vanilla javaScript in node.js itself, there are also many user land projects that bring this functionality along with much more to node.js such as with fs-extra. However if you are looking for a user land npm package that just provides this kind of functionality to node.js then there is the npm package [mkdirp](https://www.npmjs.com/package/mkdirp).
@@ -25,29 +25,27 @@ But what if I need to do that but with node.js? Well there is using the child pr
 
 ## 2 - Basic use example of mkdirp in nodejs
 
-Start by making it part of the project it it is not there all ready.
+So the mkdirp npm package is a user land nodejs package that must be added to a nodejs project. So then a basic example of mkdirp in nodejs will begin by making it part of the project if it is not there all ready.
 
 ```
 $ npm install mkdirp --save
 ```
 
-Then making a path if it is not there is as simple as this:
+Then in the javaScript code of the project making a path if it is not there is as simple as this:
 
 ```js
 var mkdirp = require('mkdirp');
     
 mkdirp('/tmp/foo/bar/baz', function (err) {
     if (err){
- 
         console.log(e);
- 
     }else{
- 
         console.log('we are good.')
- 
     }
 });
 ```
+
+Just pass the relative or absolute path at which you want the path created if it is not there, followed by a callback that will fire once the path is created or found to exist.
 
 ## 3 - fs-extra as an Alternative to mkdirp
 
