@@ -5,8 +5,8 @@ tags: [js,node.js,blog,linux]
 layout: post
 categories: node.js
 id: 92
-updated: 2019-06-19 11:32:09
-version: 1.3
+updated: 2019-06-19 11:53:53
+version: 1.4
 ---
 
 When making some kind of CLI tool in node.js there is often a need to test if a certain path exists, and if it does do nothing, else make the path. There are ways of doing so with just plain old vanilla javaScript in node.js itself, there are also many user land projects that bring this functionality along with much more to node.js such as with fs-extra. However if you are looking for a user land npm package that just provides this kind of functionality to node.js then there is the npm package [mkdirp](https://www.npmjs.com/package/mkdirp).
@@ -21,7 +21,7 @@ In Linux there is giving the parents argument to the mkdir command like this:
 $ mkdir -p foo/bar
 ```
 
-But what if I need to do that but with node.js? For this there is the npm package 
+But what if I need to do that but with node.js? Well there is using the child process module to just call the command that way. However what if you want things to be more cross platform, including platforms that do not have mkdirp installed out of the box? To solve that problem the functionality of mkdirp will need to exists in some kind of javaScript like form. It is possible to take the time to write such a method, but why bother doing that when there is all ready the npm package mkdirp? So lets take a quick look at this npm package.
 
 ## 2 - Basic use example of mkdirp in nodejs
 
