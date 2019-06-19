@@ -5,8 +5,8 @@ tags: [js,node.js,blog,linux]
 layout: post
 categories: node.js
 id: 92
-updated: 2019-06-19 11:59:56
-version: 1.6
+updated: 2019-06-19 12:02:22
+version: 1.7
 ---
 
 When making some kind of CLI tool in node.js there is often a need to test if a certain path exists, and if it does do nothing, else make the path. There are ways of doing so with just plain old vanilla javaScript in node.js itself, there are also many user land projects that bring this functionality along with much more to node.js such as with fs-extra. However if you are looking for a user land npm package that just provides this kind of functionality to node.js then there is the npm package [mkdirp](https://www.npmjs.com/package/mkdirp).
@@ -54,4 +54,4 @@ mkdirp is great if making a path if it is not there to begin with is all that yo
 
 ## 4 - conclusion
 
-Ensuring that path is there if it is not is a pretty common task in most projects, if you are not using mkdirp, make sure that you are using some kind of solution for this task.
+Ensuring that path is there if it is not is a pretty common task in most projects, if you are not using mkdirp, make sure that you are using some kind of solution for this task. Many frameworks bring this kind of functionality, along with much more so be sure that adding this in is not redundant.
