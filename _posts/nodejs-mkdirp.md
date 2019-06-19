@@ -5,8 +5,8 @@ tags: [js,node.js,blog,linux]
 layout: post
 categories: node.js
 id: 92
-updated: 2019-06-19 13:54:43
-version: 1.10
+updated: 2019-06-19 13:58:08
+version: 1.11
 ---
 
 When making some kind of CLI tool in node.js there is often a need to test if a certain path exists, and if it does do nothing, else make the path. There are ways of doing so with just plain old vanilla javaScript in node.js itself, there are also many user land projects that bring this functionality along with much more to node.js such as with fs-extra. However if you are looking for a user land npm package that just provides this kind of functionality to node.js then there is the npm package [mkdirp](https://www.npmjs.com/package/mkdirp).
@@ -100,6 +100,8 @@ mkdirp('./test/foo/bar', function (e) {
     }
 });
 ```
+
+You might want to read up more on the native file system module in nodejs if you have not done so before hand. There is also making sure that functionality like this is not baked into the version of node that you are now using. Again when I last updated this post I was using node 8.x,in later versions of node you might be able to do this with node by itself. In that case you might only want to bother with something like this if supporting older versions of node is impotent to you for whatever the reason.
 
 ## 5 - conclusion
 
