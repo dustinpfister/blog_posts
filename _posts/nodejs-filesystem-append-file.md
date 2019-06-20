@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 483
-updated: 2019-06-20 10:44:10
-version: 1.4
+updated: 2019-06-20 16:30:43
+version: 1.5
 ---
 
 In nodejs projects file system management comes up a lot, and so does the act of [appending a file](https://nodejs.org/docs/latest-v8.x/api/fs.html#fs_fs_appendfile_file_data_options_callback) that all ready exists rather than completely rewriting a file all together. The node append file fs module method is a file system method that can be used to quickly finish most tasks that have to do with creating a file if it does not exist, or just simply appending to the end of it if it does. A task that is common of most log files that have to do with just simply spitting out a recode or what is going on with something.
@@ -32,3 +32,7 @@ fs.appendFile('./test.txt', text, function (e) {
     }
 });
 ```
+
+## 2 - The node append file method and the EMFILE Error
+
+In some situations the appendFile method might work out okay, but there is one little thing at least to be aware of and that is the [EMFILE error](https://stackoverflow.com/questions/10355501/connect-emfile-error-in-node-js) that can happen when there are to many open files. So in the event that this becomes a problem it might be best to take advatage of one of the alteratives to that of the append file method such as fs.createWriteStream.
