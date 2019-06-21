@@ -9,6 +9,16 @@ header = require('./header.js'),
 
 tokenizer = new natural.WordTokenizer();
 
+let sectionFromArray = exports.sectionFromArray = (arr) => {
+    let section = {
+        worth: 0
+    };
+    arr.forEach((w) => {
+        section.worth += w.length
+    });
+    return section;
+};
+
 exports.fromPosts = (opt) => {
 
     opt = opt || {};
@@ -23,11 +33,9 @@ exports.fromPosts = (opt) => {
     klaw(opt.dir_posts)
 
     // when done
-    .on('end', function () {
+    .on('end', () => {
         //opt.onDone();
-
         writer.write(']');
-
     })
 
     .pipe(through2.obj((item, enc, next) => {
@@ -48,7 +56,9 @@ exports.fromPosts = (opt) => {
                     //console.log(tokens);
 
                     console.log(h.title);
-                    writer.write('[' + tokens.map((w)=>{ return '\"'+w+'\"';}).toString() + '],');
+                    writer.write('[' + tokens.map((w) => {
+                            return '\"' + w + '\"';
+                        }).toString() + '],');
 
                 }
 
