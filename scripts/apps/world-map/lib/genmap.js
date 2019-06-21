@@ -3,7 +3,11 @@ through2 = require('through2'),
 fs = require('fs'),
 marked = require('marked'),
 path = require('path'),
-header = require('./header.js');
+natural = require('natural'),
+cheerio = require('cheerio'),
+header = require('./header.js'),
+
+tokenizer = new natural.WordTokenizer();
 
 exports.fromPosts = (opt) => {
 
@@ -20,12 +24,14 @@ exports.fromPosts = (opt) => {
 
                     let md = data.toString(),
                     h = header.get(md);
+                    html = '<h1>' + h.title + '</h1>\n\n';
 
-                    let html = '<h1>' + h.title + '</h1>\n\n';
                     html += marked(header.remove(md));
 
-                    console.log('********** ********** **********');
-                    console.log(html);
+                    let $ = cheerio.load(html);
+
+                    let tokens = tokenizer.tokenize($('p').text());
+                    console.log(tokens);
 
                 }
 
