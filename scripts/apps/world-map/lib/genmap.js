@@ -12,9 +12,23 @@ tokenizer = new natural.WordTokenizer();
 exports.fromPosts = (opt) => {
 
     opt = opt || {};
-    opt.dir_posts = opt.dir_posts || path.resolve('../../../_posts');
+    opt.dir_posts = path.resolve(opt.dir_posts || '../../../_posts');
+    opt.dir_target = path.resolve(opt.dir_target || './');
+    opt.filename = opt.filename || 'tokens.json';
+
+    let writer = fs.createWriteStream(path.join(opt.dir_target, opt.filename));
+
+    writer.write('[');
 
     klaw(opt.dir_posts)
+
+    // when done
+    .on('end', function () {
+        //opt.onDone();
+
+        writer.write(']');
+
+    })
 
     .pipe(through2.obj((item, enc, next) => {
 
@@ -31,13 +45,16 @@ exports.fromPosts = (opt) => {
                     let $ = cheerio.load(html);
 
                     let tokens = tokenizer.tokenize($('p').text());
-                    console.log(tokens);
+                    //console.log(tokens);
+
+                    console.log(h.title);
+                    writer.write('[' + tokens.map((w)=>{ return '\"'+w+'\"';}).toString() + '],');
 
                 }
 
                 next();
 
-            })
+            });
 
         }));
 
