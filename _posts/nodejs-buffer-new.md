@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2019-06-17 16:33:21
-version: 1.7
+updated: 2019-06-21 10:43:14
+version: 1.8
 ---
 
 So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
@@ -29,7 +29,9 @@ In late versions of nodejs 8.x and later a buffer that is created this way will 
 
 In older versions of node before 8.x a Buffer that is created with the new keyword would return a buffer that is not initialized with zeros when created by calling the Buffer constructor with the new keyword.
 
-### 2.1 - Create a new buffer with Buffer.alloc if performance is not a concern
+### 2.1 - Create a new buffer with Buffer.alloc
+
+If you want to create a new empty buffer then Buffer.alloc is generally a better choice compared to calling the Buffer constructor with the new keyword. Although the security concern has been addressed in nodejs 8.x, it is still helps to make things more clear. Generally there is the Buffer.alloc, and Buffer.allocUnsafe that helps to better represent what the approach is compared to using new Buffer.
 
 ```js
 let buff = Buffer.alloc(512);
