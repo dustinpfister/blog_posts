@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2019-06-21 10:43:14
-version: 1.8
+updated: 2019-06-21 10:56:00
+version: 1.9
 ---
 
 So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
@@ -40,6 +40,9 @@ console.log(safe); // true
 ```
 
 ### 2.2 - Create a new buffer with Buffer.allocUnsafe if performance is of concern
+
+There is then also the option  of using Buffer.allocUnsafe as well, this results to a similar effect with new Buffer in versions of node before 8.x. When using it the reason why it is called unsafe is because old data in memory is not written over out of the box when it is used. However because of that it is a littler faster to get a blank buffer.
+
 ```js
 let buff = Buffer.allocUnsafe(512);
 let safe  = buff.every((b) => b === 0);
