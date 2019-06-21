@@ -1,0 +1,1 @@
+let genMap = require('./lib/genmap.js')();
