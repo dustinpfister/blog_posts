@@ -16,15 +16,29 @@ let sectionFromArray = exports.sectionFromArray = (arr, opt) => {
     opt.figWorth = opt.figWorth || function (w) {
         this.worth += w.length
     };
+    opt.sectionSize = opt.sectionSize || 2;
 
     let section = {
         worth: 0,
         tiles: []
     };
 
-    arr.forEach((w) => {
+    var len = Math.pow(opt.sectionSize, 2),
+    i = len;
+    while (i--) {
+        section.tiles.push({
+            worth: 0
+        })
+    }
+
+    arr.forEach((w, i) => {
         //section.worth += w.length
         opt.figWorth.call(section, w, section);
+
+        var tileIndex = i % len;
+
+        section.tiles[tileIndex].worth += w.length;
+
     });
     return section;
 };
