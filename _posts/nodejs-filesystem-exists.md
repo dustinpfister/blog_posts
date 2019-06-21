@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 484
-updated: 2019-06-21 08:00:40
-version: 1.3
+updated: 2019-06-21 08:04:23
+version: 1.4
 ---
 
 The fs exists method in the file system module of nodejs should not be used at all these days. In node 8.x it has been deprecated, and it is reasonable that it might not work at all in future versions of nodejs. So then how does one test if a file is there or not, well there are a number of ways to do that by just opening the file, and then handle the error in the event that the file is not there.In all fairness that is how it should be done anyway using the fs exists method just makes things more complacted than they need to be.
@@ -36,6 +36,10 @@ let open = (path_file, flags) => {
 ```
 
 Keep in mode that I was using nodejs 8.x when I wrote this, in later versions of nodejs the fs.open method itself might return a promise.
+
+### 1.2 - Using fs open to throw and error in the event that a file is not there
+
+So then the fs open method could be used to throw and error in the event that a file is not there, then somethign can be done such as calling the fs open method again but with the w+ flag then continue g on like normal.
 
 ```js
 let path_file = './test.txt';
