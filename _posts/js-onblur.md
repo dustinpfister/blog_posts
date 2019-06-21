@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-06-21 11:48:59
-version: 1.19
+updated: 2019-06-21 11:54:05
+version: 1.20
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired. In this post I will be going over some examples using the on blur event with plain old vanilla javaScript, rather than a certain front end frame work.
@@ -90,6 +90,10 @@ If I where to use on blur and on focus in place of these events when attaching t
 
 ## 4 - Canvas elements and the tab index property
 
+By default canvas elements and a whole bunch of other elements can not be focused by default. There is however the [tab index](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) html element attribute. Once a tab index attribute is set for an element then it can be focused just like an input element or any other kind of element that can be focused by default. So the on focus event will fire when the canvas element gains focus, and the on blur event will fire when it looses focus as well.
+
+In this example I have a canvas project where I define some event handers for the on blur, and on focus events once it has become focusable in the browser thanks to the tab index attribute.
+
 ```html
 <html>
     <head>
@@ -134,6 +138,8 @@ loop();
     </body>
 </html>
 ```
+
+It just displays if the canvas has the users focus or not, but of course I could have it do something else when the project has focus.
 
 ## 5 - Conclusion
 
