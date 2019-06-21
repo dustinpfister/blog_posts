@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2019-06-21 10:56:44
-version: 1.10
+updated: 2019-06-21 11:23:03
+version: 1.11
 ---
 
 So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
@@ -51,7 +51,7 @@ console.log(safe); // false
 
 ### 2.3 - New buffers can also be created with Buffer.from as well.
 
-Then there are a nummber of ways to create a new buffer with some data it it right away such as using the Buffer.from method for example.
+Then there are a number of ways to create a new buffer with some data it it right away such as using the Buffer.from method for example.
 
 ```js
 let buff = Buffer.from('ABCD');
