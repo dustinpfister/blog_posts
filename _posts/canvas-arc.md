@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-05-28 13:45:10
-version: 1.24
+updated: 2019-06-21 09:46:37
+version: 1.25
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -33,6 +33,8 @@ deg = 90;
 rad = deg / 180 * Math.PI;
 console.log(rad); // 1.57...
 ```
+
+Radians come up a lot when it comes to anything having to do with angles in javaScript and not just with the canvas arc method. there are other methods of interest such as Math.sin, Math.cos, and Math.atan2 just to name a few. It would seem that radians are the preferred way to go about working with angles in javaScript so take a moment to become familiar with them if you have not done so before hand.
 
 ### 1.2 - Using the canvas arc method
 
