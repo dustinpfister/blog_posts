@@ -43,6 +43,18 @@ let sectionFromArray = exports.sectionFromArray = (arr, opt) => {
     return section;
 };
 
+let dataToTokens = (data) => {
+
+    let md = data.toString(),
+    h = header.get(md);
+    html = '<h1>' + h.title + '</h1>\n\n';
+    html += marked(header.remove(md));
+	console.log(h.title);
+    let $ = cheerio.load(html);
+    return tokenizer.tokenize($('p').text());
+
+}
+
 exports.fromPosts = (opt) => {
 
     opt = opt || {};
@@ -51,57 +63,29 @@ exports.fromPosts = (opt) => {
     opt.filename = opt.filename || 'map.json';
 
     let writer = fs.createWriteStream(path.join(opt.dir_target, opt.filename));
-
-    //writer.write('[');
-
     let sections = [];
-
     klaw(opt.dir_posts)
 
     // when done
     .on('end', () => {
-        //opt.onDone();
-        //writer.write(']');
         writer.write(JSON.stringify({
                 sectionSize: 4,
                 sections: sections
             }));
-        //  fs.writeFile(path.join(opt.dir_target, opt.filename), JSON.stringify(sections), function () {});
     })
 
     .pipe(through2.obj((item, enc, next) => {
-
             fs.readFile(item.path, (e, data) => {
-
                 if (data) {
 
-                    let md = data.toString(),
-                    h = header.get(md);
-                    html = '<h1>' + h.title + '</h1>\n\n';
-
-                    html += marked(header.remove(md));
-
-                    let $ = cheerio.load(html);
-
-                    let tokens = tokenizer.tokenize($('p').text());
-                    //console.log(tokens);
-
-                    console.log(h.title);
-                    //writer.write('[' + tokens.map((w) => {
-                    //        return '\"' + w + '\"';
-                    //    }).toString() + '],');
+                    let tokens = dataToTokens(data);
 
                     let section = JSON.stringify(sectionFromArray(tokens));
-                    //writer.write(section + '\n');
-
+                    
                     sections.push(section);
-
                 }
-
                 next();
-
             });
-
         }));
 
 };
