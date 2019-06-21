@@ -18,7 +18,8 @@ let sectionFromArray = exports.sectionFromArray = (arr, opt) => {
     };
 
     let section = {
-        worth: 0
+        worth: 0,
+        tiles: []
     };
 
     arr.forEach((w) => {
@@ -33,7 +34,7 @@ exports.fromPosts = (opt) => {
     opt = opt || {};
     opt.dir_posts = path.resolve(opt.dir_posts || '../../../_posts');
     opt.dir_target = path.resolve(opt.dir_target || './');
-    opt.filename = opt.filename || 'sections.json';
+    opt.filename = opt.filename || 'map.json';
 
     let writer = fs.createWriteStream(path.join(opt.dir_target, opt.filename));
 
@@ -47,7 +48,10 @@ exports.fromPosts = (opt) => {
     .on('end', () => {
         //opt.onDone();
         //writer.write(']');
-        writer.write(JSON.stringify(sections));
+        writer.write(JSON.stringify({
+                sectionSize: 4,
+                sections: sections
+            }));
         //  fs.writeFile(path.join(opt.dir_target, opt.filename), JSON.stringify(sections), function () {});
     })
 
