@@ -6,6 +6,11 @@ dir_posts = path.resolve('../../../_posts');
 //    dir_posts: dir_posts
 //});
 
-let section = genMap.sectionFromArray(['foo', 'bar', 'baz']);
+let opt = {
+    figWorth: function (w) {
+        this.worth += 1;
+    }
+}
+let section = genMap.sectionFromArray(['foo', 'bar', 'baz'], opt);
 
 console.log(section);

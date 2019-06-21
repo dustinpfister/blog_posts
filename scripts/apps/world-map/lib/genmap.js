@@ -9,12 +9,21 @@ header = require('./header.js'),
 
 tokenizer = new natural.WordTokenizer();
 
-let sectionFromArray = exports.sectionFromArray = (arr) => {
+// generate a section from an array of words
+let sectionFromArray = exports.sectionFromArray = (arr, opt) => {
+
+    opt = opt || {};
+    opt.figWorth = opt.figWorth || function (w) {
+        this.worth += w.length
+    };
+
     let section = {
         worth: 0
     };
+
     arr.forEach((w) => {
-        section.worth += w.length
+        //section.worth += w.length
+        opt.figWorth.call(section, w, section);
     });
     return section;
 };
