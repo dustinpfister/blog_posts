@@ -1,12 +1,12 @@
 ---
-title: Working with the filesystem module in node.js
+title: Working with the file system module in node.js
 date: 2018-02-08 22:23:00
 tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2018-02-09 11:26:10
-version: 1.1
+updated: 2019-06-21 08:10:36
+version: 1.2
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
