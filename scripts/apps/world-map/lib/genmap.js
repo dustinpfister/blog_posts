@@ -33,18 +33,22 @@ exports.fromPosts = (opt) => {
     opt = opt || {};
     opt.dir_posts = path.resolve(opt.dir_posts || '../../../_posts');
     opt.dir_target = path.resolve(opt.dir_target || './');
-    opt.filename = opt.filename || 'tokens.json';
+    opt.filename = opt.filename || 'sections.json';
 
     let writer = fs.createWriteStream(path.join(opt.dir_target, opt.filename));
 
-    writer.write('[');
+    //writer.write('[');
+
+    let sections = [];
 
     klaw(opt.dir_posts)
 
     // when done
     .on('end', () => {
         //opt.onDone();
-        writer.write(']');
+        //writer.write(']');
+        writer.write(JSON.stringify(sections));
+        //  fs.writeFile(path.join(opt.dir_target, opt.filename), JSON.stringify(sections), function () {});
     })
 
     .pipe(through2.obj((item, enc, next) => {
@@ -65,9 +69,14 @@ exports.fromPosts = (opt) => {
                     //console.log(tokens);
 
                     console.log(h.title);
-                    writer.write('[' + tokens.map((w) => {
-                            return '\"' + w + '\"';
-                        }).toString() + '],');
+                    //writer.write('[' + tokens.map((w) => {
+                    //        return '\"' + w + '\"';
+                    //    }).toString() + '],');
+
+                    let section = JSON.stringify(sectionFromArray(tokens));
+                    //writer.write(section + '\n');
+
+                    sections.push(section);
 
                 }
 
