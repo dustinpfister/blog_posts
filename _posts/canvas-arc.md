@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-06-21 09:46:37
-version: 1.25
+updated: 2019-06-21 09:51:11
+version: 1.26
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -74,6 +74,8 @@ ctx.stroke();
     </body>
 </html>
 ```
+
+The canvas arc method can be used in conjunction with other line methods such as ctx.lineTo, more on that later. There is also the ctx.stroke, and ctx.fill methods and setting the style of lines and fills as well that you should be familiar with as well, but I do not want to get to far of base when it comes to drawing in general with canvas.
 
 ## 1.3 - There is also Math.cos, and Math.sin as well
 
