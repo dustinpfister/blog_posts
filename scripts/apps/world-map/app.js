@@ -15,11 +15,13 @@ genMap.fromPosts({
 
     fs.mkdir('./public', () => {
 
-        let html = '';
+        let html = '<div style="width:1024px;">';
         map.sections.forEach((section) => {
             section = JSON.parse(section);
-            html += '<div>' + section.worth + '</div>'
+            let color = 'rgb(0,' + Math.floor(section.worth / map.bestWorth * 120 + 130) + ',0)';
+            html += '<div style=\"display:inline-block;width:64px;height:64px;background:' + color + ';\"></div>'
         });
+        html += '</div>';
         console.log(html);
         fs.writeFile('./public/index.html', html, () => {
 
