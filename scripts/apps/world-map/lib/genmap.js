@@ -17,10 +17,12 @@ let sectionFromArray = exports.sectionFromArray = (arr, opt) => {
         this.worth += w.length
     };
     opt.sectionSize = opt.sectionSize || 2;
+    opt.name = opt.name || new Date().getTime();
 
     let section = {
         worth: 0,
-        tiles: []
+        tiles: [],
+        name: opt.name
     };
 
     var len = Math.pow(opt.sectionSize, 2),
@@ -80,7 +82,11 @@ exports.fromPosts = (opt) => {
 
                         let tokens = dataToTokens(data);
 
-                        let section = sectionFromArray(tokens);
+                        let md = data.toString(),
+                        h = header.get(md);
+                        let section = sectionFromArray(tokens, {
+                                name: h.title.replace(/ /g, '-')
+                            });
 
                         best = section.worth > best ? section.worth : best;
 

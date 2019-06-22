@@ -16,10 +16,11 @@ genMap.fromPosts({
     fs.mkdir('./public', () => {
 
         let html = '<div style="width:1024px;">';
+        html += '<script>var onclick=function(e){ console.log(e.target)}</script>'
         map.sections.forEach((section) => {
             section = JSON.parse(section);
             let color = 'rgb(0,' + Math.floor(section.worth / map.bestWorth * 120 + 130) + ',0)';
-            html += '<div style=\"display:inline-block;width:64px;height:64px;background:' + color + ';\"></div>'
+            html += '<div title=\"'+section.name+'\" id=\"'+ section.name +'\" onclick=\"onclick\" style=\"display:inline-block;width:32px;height:32px;background:' + color + ';\"></div>'
         });
         html += '</div>';
         console.log(html);
