@@ -43,16 +43,15 @@ let sectionFromArray = exports.sectionFromArray = (arr, opt) => {
     return section;
 };
 
+// raw buffer data to and array of tokens
 let dataToTokens = (data) => {
-
     let md = data.toString(),
     h = header.get(md);
-    html = '<h1>' + h.title + '</h1>\n\n';
-    html += marked(header.remove(md));
-	console.log(h.title);
+    //html = '<h1>' + h.title + '</h1>\n\n';
+    let html = marked(header.remove(md));
+    //console.log(h.title);
     let $ = cheerio.load(html);
     return tokenizer.tokenize($('p').text());
-
 }
 
 exports.fromPosts = (opt) => {
@@ -62,30 +61,49 @@ exports.fromPosts = (opt) => {
     opt.dir_target = path.resolve(opt.dir_target || './');
     opt.filename = opt.filename || 'map.json';
 
-    let writer = fs.createWriteStream(path.join(opt.dir_target, opt.filename));
-    let sections = [];
-    klaw(opt.dir_posts)
+    return new Promise((resolve, reject) => {
 
-    // when done
-    .on('end', () => {
-        writer.write(JSON.stringify({
+        let writer = fs.createWriteStream(path.join(opt.dir_target, opt.filename));
+        let sections = [];
+
+        klaw(opt.dir_posts)
+
+        .on('error', (e) => {
+            reject(e);
+        })
+
+        .pipe(through2.obj((item, enc, next) => {
+
+                fs.readFile(item.path, (e, data) => {
+                    if (data) {
+
+                        let tokens = dataToTokens(data);
+
+                        let section = JSON.stringify(sectionFromArray(tokens));
+
+                        sections.push(section);
+                    }
+                    console.log(item.path);
+                    next();
+                });
+            }))
+
+        .on('data', (item) => {
+
+            console.log(item);
+
+        })
+
+        .on('end', () => {
+            let map = {
                 sectionSize: 4,
+                sectionCount: sections.length,
                 sections: sections
-            }));
-    })
+            };
+            writer.write(JSON.stringify(map));
+            resolve(map);
+        })
 
-    .pipe(through2.obj((item, enc, next) => {
-            fs.readFile(item.path, (e, data) => {
-                if (data) {
-
-                    let tokens = dataToTokens(data);
-
-                    let section = JSON.stringify(sectionFromArray(tokens));
-                    
-                    sections.push(section);
-                }
-                next();
-            });
-        }));
+    });
 
 };
