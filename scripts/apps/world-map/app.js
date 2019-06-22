@@ -23,7 +23,15 @@ genMap.fromPosts({
         console.log(html);
         fs.writeFile('./public/index.html', html, () => {
 
-            console.log('done');
+            console.log('done building html starting server');
+
+            app.use('/', express.static('./public'));
+
+            app.listen(8080, () => {
+
+                console.log('server is up on 8080');
+
+            })
 
         })
 

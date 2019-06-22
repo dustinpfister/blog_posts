@@ -65,6 +65,7 @@ exports.fromPosts = (opt) => {
 
         let writer = fs.createWriteStream(path.join(opt.dir_target, opt.filename));
         let sections = [];
+        let best = 0;
 
         klaw(opt.dir_posts)
 
@@ -79,9 +80,11 @@ exports.fromPosts = (opt) => {
 
                         let tokens = dataToTokens(data);
 
-                        let section = JSON.stringify(sectionFromArray(tokens));
+                        let section = sectionFromArray(tokens);
 
-                        sections.push(section);
+                        best = section.worth > best ? section.worth : best;
+
+                        sections.push(JSON.stringify(section));
                     }
                     console.log(item.path);
                     next();
@@ -97,6 +100,7 @@ exports.fromPosts = (opt) => {
         .on('end', () => {
             let map = {
                 sectionSize: 4,
+                bestWorth: best,
                 sectionCount: sections.length,
                 sections: sections
             };
