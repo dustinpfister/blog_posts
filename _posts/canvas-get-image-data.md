@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2019-06-23 16:33:19
-version: 1.3
+updated: 2019-06-23 16:34:52
+version: 1.4
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from a canvas. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method as well that can be used to put that data into a canvas, and there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch.
@@ -51,6 +51,8 @@ while (i < imgData.data.length) {
 What is returned is an instance of the ImageData constructor.
 
 ## 2 - put image data example
+
+So once I have an instance of ImageData I can then do something with that data, but then I might want to draw that data back to a canvas element. So this is where the put image data method comes into play.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
