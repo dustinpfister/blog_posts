@@ -5,11 +5,11 @@ tags: [js,jquery]
 layout: post
 categories: jquery
 id: 41
-updated: 2019-06-23 10:25:53
-version: 1.2
+updated: 2019-06-23 10:26:39
+version: 1.3
 ---
 
-So the $.each method is a simple tool to loop over an object or array. This is not the first post I have written on a tool that does this, I wrote a post on the npm package traverse that is another tool that does basically the same thing. yes there is Array.forEach, the for in loop, and a wide range of other options that come to mind, but for now lets just keep it with an option in jQuery.
+So the [jQuery each](https://api.jquery.com/jquery.each/) method is a simple tool to loop over an object or array. This is not the first post I have written on a tool that does this, I wrote a post on the npm package traverse that is another tool that does basically the same thing. yes there is Array.forEach, the for in loop, and a wide range of other options that come to mind, but for now lets just keep it with an option in jQuery.
 
 <!-- more -->
 
