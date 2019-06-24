@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2019-06-24 14:26:01
-version: 1.4
+updated: 2019-06-24 14:31:02
+version: 1.5
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise.
@@ -33,3 +33,5 @@ Promise.all([
     console.log(e.message);
 });
 ```
+
+Once all the promises are resolved a resolved promise is returned and then what is given via the then method is called, and in the event of an error what is given via catch is called just like any other promise.
