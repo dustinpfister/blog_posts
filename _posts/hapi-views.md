@@ -5,8 +5,8 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 487
-updated: 2019-06-24 12:04:32
-version: 1.3
+updated: 2019-06-24 12:08:55
+version: 1.4
 ---
 
 So when starting out with hapi js one of the first things that comes up is how to go about setting up a client system, serve static assets, and provide a view. A view can be set up by just hosting static assets, but what about server side, on demand rending with templates? In this post I will be going over how to get started with a view in hapi js.
@@ -59,3 +59,5 @@ html(lang="en")
       | So this is all 
       span= mess
 ```
+
+### 2.1 - Uisng locals
