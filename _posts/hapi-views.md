@@ -5,8 +5,8 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 487
-updated: 2019-06-24 12:12:22
-version: 1.5
+updated: 2019-06-24 12:16:38
+version: 1.6
 ---
 
 So when starting out with hapi js one of the first things that comes up is how to go about setting up a client system, serve static assets, and provide a view. A view can be set up by just hosting static assets, but what about server side, on demand rending with templates? In this post I will be going over how to get started with a view in hapi js.
@@ -20,6 +20,19 @@ To set up a view more dependencies need to be installed into a project beyond ju
 ## 2 - Setting up a view in hapi 17.x
 
 In this section I am using hapi 17.9.0 which differs significantly from older versions of hapi, in older, and possibly newer major releases of hapi the code example here might break.
+
+So I set up a project folder for this example and I am using the following dependences and version of hapi.
+
+```
+$ mkdir view-pug
+$ cd view-pug
+$ npm init
+$ npm install @hapi/hapi@17.9.0 --save
+$ npm install @hapi/vision@5.2.2 --save
+$ npm install pug@2.0.4 --save
+```
+
+I then have a main index.js file that looks like this:
 
 ```js
 let Hapi = require('@hapi/hapi');
@@ -50,6 +63,8 @@ let init = async() => {
 };
 init();
 ```
+
+And a index.pug file in the views folder.
 
 ```
 doctype html
