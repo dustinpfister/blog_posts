@@ -5,8 +5,8 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 487
-updated: 2019-06-24 12:16:38
-version: 1.6
+updated: 2019-06-24 12:18:35
+version: 1.7
 ---
 
 So when starting out with hapi js one of the first things that comes up is how to go about setting up a client system, serve static assets, and provide a view. A view can be set up by just hosting static assets, but what about server side, on demand rending with templates? In this post I will be going over how to get started with a view in hapi js.
@@ -76,7 +76,9 @@ html(lang="en")
     p So Pug can be used as a way to make templates for Hapi js projects
 ```
 
-### 2.1 - Uisng locals
+### 2.1 - Using locals
+
+So then there is also a desire to use local variables for the template in most cases. For that just pass an object that contains the locals that are to be used in the template when calling the view method in the response toolkit.
 
 ```js
     // use pug
