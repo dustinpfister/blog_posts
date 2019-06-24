@@ -5,8 +5,8 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 487
-updated: 2019-06-24 12:08:55
-version: 1.4
+updated: 2019-06-24 12:12:22
+version: 1.5
 ---
 
 So when starting out with hapi js one of the first things that comes up is how to go about setting up a client system, serve static assets, and provide a view. A view can be set up by just hosting static assets, but what about server side, on demand rending with templates? In this post I will be going over how to get started with a view in hapi js.
@@ -29,6 +29,7 @@ let init = async() => {
             host: 'localhost'
         });
     await server.register(require('@hapi/vision'));
+    // set up pug as a view engine
     server.views({
         engines: {
             pug: require('pug')
@@ -36,11 +37,12 @@ let init = async() => {
         relativeTo: __dirname,
         path: 'views'
     });
+    // use pug
     server.route({
         method: 'GET',
         path: '/',
         handler: (request, h) => {
-            return h.view('index.pug',{mess:'foobar'});
+            return h.view('index.pug');
         }
     });
     await server.start();
@@ -53,11 +55,32 @@ init();
 doctype html
 html(lang="en")
   head
+    title This is Pug
+  body
+    h1 Hello World Pug Style
+    p So Pug can be used as a way to make templates for Hapi js projects
+```
+
+### 2.1 - Uisng locals
+
+```js
+    // use pug
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            return h.view('index.pug', {mess:'foobar'});
+        }
+    });
+```
+
+```
+doctype html
+html(lang="en")
+  head
     title Using locals
   body
     h1 
       | So this is all 
       span= mess
 ```
-
-### 2.1 - Uisng locals
