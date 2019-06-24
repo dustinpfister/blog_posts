@@ -5,8 +5,8 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 487
-updated: 2019-06-24 12:18:35
-version: 1.7
+updated: 2019-06-24 12:24:21
+version: 1.8
 ---
 
 So when starting out with hapi js one of the first things that comes up is how to go about setting up a client system, serve static assets, and provide a view. A view can be set up by just hosting static assets, but what about server side, on demand rending with templates? In this post I will be going over how to get started with a view in hapi js.
@@ -90,6 +90,8 @@ So then there is also a desire to use local variables for the template in most c
         }
     });
 ```
+
+So the the local variable can be used in the template.
 
 ```
 doctype html
