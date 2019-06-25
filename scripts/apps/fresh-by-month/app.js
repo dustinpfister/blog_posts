@@ -48,7 +48,8 @@ app.get('/', [
                     month.posts.push({
                         fn: item.fn,
                         header: item.header,
-                        fresh: fresh
+                        fresh: fresh,
+                        wc: item.wc
                     });
 
                     // month fresh
@@ -130,7 +131,10 @@ app.get('/', [
                     color = 'red';
                     color = freshPer > 25 ? 'orange' : color;
                     color = freshPer > 75 ? 'green' : color;
-                    html += '<li style=\"color:' + color + ';\">' + post.fn + ':' + freshPer + '; <\/li>'
+                    html += '<li style=\"color:' + color + ';\">' +
+                    post.fn +
+                    ' - fresh%: ' + freshPer +
+                    '; word count: ' + post.wc + ';<\/li>'
                 });
                 html += '<\/ul><hr>';
 
