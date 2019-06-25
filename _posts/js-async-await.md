@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2019-06-25 13:35:25
-version: 1.2
+updated: 2019-06-25 13:37:16
+version: 1.3
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function.
@@ -36,3 +36,5 @@ let func = async function() {
 };
 func();
 ```
+
+The foo function returns a promise that resolves after a delay. When used inside the body of the func async function that execution of code is paused, and thus the string end is not logged to the console until the delay has completed.
