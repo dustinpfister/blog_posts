@@ -5,8 +5,8 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 47
-updated: 2019-06-25 15:39:25
-version: 1.6
+updated: 2019-06-25 15:42:06
+version: 1.7
 ---
 
 I did some reading on the [hapi framework](https://hapijs.com/) for quickly making full stack applications. From what I have gathered it is a little more full featured out of the box compared to [express](https://expressjs.com/), so I thought I would give it a try. As such this will be a sort of getting started, and first impressions kind of post. When I first wrote this post I was using hapi 16.x which it would seem is still being supported in 2019, as I can see the occasional bug fix and so forth in the github repo of the project.
@@ -28,6 +28,10 @@ $ cd hapi_demos_17x
 $ npm init
 $ npm install @hapi/hapi@17.9.0 --save
 ```
+
+### 1.2 - A hello world server js file
+
+Here is a hapi 17.x hello world server.js file.
 
 ```js
 let Hapi = require('@hapi/hapi');
@@ -52,6 +56,8 @@ process.on('unhandledRejection', (err) => {
 });
 init();
 ```
+
+Call Hapi.server to create a new server, and then use the server.route to create a route for the root path.
 
 ## 2 - Getting started with hapi js 16.x
 
