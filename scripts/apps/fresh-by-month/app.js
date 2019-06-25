@@ -71,81 +71,9 @@ app.get('/', [
         },
 
         // create an array, and sort by fresh percent
-        (req, res, next) => {
-
-            console.log('sorting');
-            // to array
-            let arr = [];
-            Object.keys(res.report).forEach((key) => {
-                let month = res.report[key];
-                month.freshPer = month.fresh / month.pc;
-
-                // sort posts
-                month.posts.sort((a, b) => {
-                    if (a.fresh > b.fresh) {
-                        return -1;
-                    }
-                    if (a.fresh < b.fresh) {
-                        return 1;
-                    }
-                    return 0;
-
-                });
-
-                arr.push(month);
-            });
-
-            // sort by fresh percent
-            arr.sort((a, b) => {
-                if (a.freshPer > b.freshPer) {
-                    return -1;
-                }
-                if (a.freshPer < b.freshPer) {
-                    return 1;
-                }
-                return 0;
-            });
-
-            res.report = arr;
-            next();
-
-        },
-
-		require('./middleware/send_html.js')
-        // send report
-		/*
-        (req, res) => {
-
-            let html = '';
-
-            res.report.forEach((month, i) => {
-
-                html += '<ul>';
-                html += '<li><h2>' + (i + 1) + ') ' + month.key + '</h2><\/li>';
-                html += '<li><h3>Fresh Per: ' + Math.round(month.freshPer * 100) + '%<\/h3><\/li>';
-                html += '<li> Fresh / Post Count: ' + month.fresh.toFixed(2) + '/' + month.pc + '<\/li>';
-                html += '<li> Word Count: ' + month.wc + '<\/li>';
-                html += '<\/ul>';
-
-                html += '<ul>';
-                month.posts.forEach((post) => {
-                    let freshPer = Math.round(post.fresh * 100),
-                    color = 'red';
-                    color = freshPer > 25 ? 'orange' : color;
-                    color = freshPer > 75 ? 'green' : color;
-                    html += '<li style=\"color:' + color + ';\">' +
-                    post.fn +
-                    ' - fresh%: ' + freshPer +
-                    '; word count: ' + post.wc + ';<\/li>'
-                });
-                html += '<\/ul><hr>';
-
-            });
-
-            res.send(html);
-            console.log('sent html');
-        }
-		*/
+        require('./middleware/sort_by_fresh.js'),
+        // send html
+        require('./middleware/send_html.js')
 
     ]);
 
