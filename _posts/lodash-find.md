@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-06-25 17:34:17
-version: 1.37
+updated: 2019-06-25 17:37:05
+version: 1.38
 ---
 
 So the lodash find collection method can be used to find a single item in a collection. There is also the native Array.find method as well, but that is just an array prototype method, and as such it can not just be used to find an object key in general.
@@ -483,6 +483,8 @@ console.log(strings); // ['hello world', 'bar']
 ### 10.3 - Using array.sort to find one or more in an array
 
 So there is also the Array.sort native array prototype method that can be used as a vanilla js alternative to the lodash find method. So when it cokes to using this there is the idea of just finding one object in an array of objects, but then there is also the idea of ranking things by some kind of process. Then once the ranking process is done, take the first element in the results of that process, or even the first few results as well maybe.
+
+Say you have an array of text examples and you want to sort them with respect to the relevance of a certain search term such as well, how about lodash find. The array.Sort method can be used with some additional logic to rank all the text examples and then just take the first result if you only want to find the most relevant example based on that process.
 
 ```js
 let arr = [
