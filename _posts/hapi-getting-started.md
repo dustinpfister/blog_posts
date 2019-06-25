@@ -5,15 +5,14 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 47
-updated: 2017-12-13 13:38:19
-version: 1.2
+updated: 2019-06-25 15:09:29
+version: 1.3
 ---
 
-I did some reading on the [hapi framework](https://hapijs.com/) for quickly making full stack applications. From what I have gathered it is a little more full featured out of the box compared to [express](https://expressjs.com/), so I thought I would give it a try.
+I did some reading on the [hapi framework](https://hapijs.com/) for quickly making full stack applications. From what I have gathered it is a little more full featured out of the box compared to [express](https://expressjs.com/), so I thought I would give it a try. As such this will be a sort of getting started, and first impressions kind of post. When I first wrote this post I was using hapi 16.x which it would seem is still being supported in 2019, as I can see the occasional bug fix and so forth in the github repo of the project.
+
 
 <!-- more -->
-
-As such this will be a sort of getting started, and first impressions kind of post. 
 
 ## Getting started
 
