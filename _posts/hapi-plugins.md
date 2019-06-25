@@ -5,8 +5,8 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 489
-updated: 2019-06-25 10:55:20
-version: 1.6
+updated: 2019-06-25 10:56:35
+version: 1.7
 ---
 
 In this post I will be going over some [hapi js plugin](https://hapijs.com/tutorials/plugins?lang=en_US) examples. A plugin in hapi like most other frameworks is just an object that is formated a certain way. There just needs to be a register property and a name at a minimum, but there are a few more properties that are also of concern.
@@ -57,6 +57,8 @@ init();
 ```
 
 ### 1.1 - Same basic example as external js
+
+So in this sub section I will be going over what is the same example before, only now things are broken down into two completely different files.
 
 ```js
 exports.pluginRoot = {
