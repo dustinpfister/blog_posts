@@ -5,8 +5,8 @@ tags: [js,node.js,hapi]
 layout: post
 categories: hapi
 id: 47
-updated: 2019-06-25 15:35:46
-version: 1.5
+updated: 2019-06-25 15:39:25
+version: 1.6
 ---
 
 I did some reading on the [hapi framework](https://hapijs.com/) for quickly making full stack applications. From what I have gathered it is a little more full featured out of the box compared to [express](https://expressjs.com/), so I thought I would give it a try. As such this will be a sort of getting started, and first impressions kind of post. When I first wrote this post I was using hapi 16.x which it would seem is still being supported in 2019, as I can see the occasional bug fix and so forth in the github repo of the project.
@@ -17,6 +17,17 @@ I did some reading on the [hapi framework](https://hapijs.com/) for quickly maki
 ## 1 - Getting started with hapi 17.x
 
 Most of the documentation including the official documentation with hapi as of this writing at least is on hapi 17.x. In this section I will be covering a very basic hello world example for hapi 17.x.
+
+### 1.1 - setup
+
+For versions of hapi thar are greater than 16.x you will now want to install hapi via @hapi/hapi rather than just simply hapi. So setting up a new hapi js project with hapi 17.x+ might look something like this:
+
+```
+$ mkdir hapi_demos_17x
+$ cd hapi_demos_17x
+$ npm init
+$ npm install @hapi/hapi@17.9.0 --save
+```
 
 ```js
 let Hapi = require('@hapi/hapi');
