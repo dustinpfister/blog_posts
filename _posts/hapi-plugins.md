@@ -5,8 +5,8 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 489
-updated: 2019-06-25 10:47:36
-version: 1.3
+updated: 2019-06-25 10:51:07
+version: 1.4
 ---
 
 In this post I will be going over some [hapi js plugin](https://hapijs.com/tutorials/plugins?lang=en_US) examples. A plugin in hapi like most other frameworks is just an object that is formated a certain way. There just needs to be a register property and a name at a minimum, but there are a few more properties that are also of concern.
@@ -15,7 +15,11 @@ In this post I will be going over some [hapi js plugin](https://hapijs.com/tutor
 
 ## 1 - Basic Hapi plugin example
 
+In this section I will be going over some very basic hello world style plugin examples, it is also worth noting that in this section I am using hapi 17.9.0, in older and newer versions of hapi these code examples might break.
+
 So a very basic hapi plugin example can just be an object. This way of using plugins can be used as a good starting point when it comes to the process of breaking things down into smaller more manageable, and reusable blocks of code.
+
+The object must have a register property and a name property.
 
 ```js
 let Hapi = require('@hapi/hapi');
@@ -27,7 +31,6 @@ let pluginRoot = {
             method: 'GET',
             path: '/',
             handler: function (request, h) {
-
                 return 'hello world this is ' + options.mess;
             }
         });
