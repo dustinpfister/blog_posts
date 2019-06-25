@@ -5,8 +5,8 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 489
-updated: 2019-06-25 10:52:56
-version: 1.5
+updated: 2019-06-25 10:55:20
+version: 1.6
 ---
 
 In this post I will be going over some [hapi js plugin](https://hapijs.com/tutorials/plugins?lang=en_US) examples. A plugin in hapi like most other frameworks is just an object that is formated a certain way. There just needs to be a register property and a name at a minimum, but there are a few more properties that are also of concern.
@@ -36,6 +36,8 @@ let pluginRoot = {
         });
     }
 };
+
+The server argument will be a reference to the server object that is created with Hapi.server in the main script that uses the plugin. The options object is what will also be given when the plugin is used in the main script as well with server.register.
  
 let init = async() => {
     let server = Hapi.server({
