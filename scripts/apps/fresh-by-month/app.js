@@ -111,7 +111,9 @@ app.get('/', [
 
         },
 
+		require('./middleware/send_html.js')
         // send report
+		/*
         (req, res) => {
 
             let html = '';
@@ -143,6 +145,7 @@ app.get('/', [
             res.send(html);
             console.log('sent html');
         }
+		*/
 
     ]);
 
