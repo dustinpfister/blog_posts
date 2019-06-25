@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2019-06-25 14:22:37
-version: 1.8
+updated: 2019-06-25 14:24:12
+version: 1.9
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These kinds of functions still operate in the main event loop, so they still can not be used as a way to achieve true threading with javaScript, at least not by themselves.
@@ -76,7 +76,7 @@ In this example when the heavyAsync function is called it still ends up delaying
 
 ### 2.2 - However in nodejs the child_process module can help avoid that
 
-In nodejs there is the child_process built in module. This can be used to launch an application from the command line, including node itself. When doing so it results in an additional, independent process on the operating system. Thus it is a way to do something involving more than one event loop with javaScript, thus it is a kind of so called trude threading that differs from what is typical when it comes to async functions, setTiemout, and so forth by itself.
+In nodejs there is the [child_process](/2018/02/04/nodejs-child-process/) built in module. This can be used to launch an application from the command line, including node itself. When doing so it results in an additional, independent process on the operating system. Thus it is a way to do something involving more than one event loop with javaScript, thus it is a kind of so called trude threading that differs from what is typical when it comes to async functions, setTiemout, and so forth by itself.
 
 ```js
 let heavyAsync = async function () {
