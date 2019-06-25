@@ -5,8 +5,8 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 489
-updated: 2019-06-25 10:56:35
-version: 1.7
+updated: 2019-06-25 10:57:28
+version: 1.8
 ---
 
 In this post I will be going over some [hapi js plugin](https://hapijs.com/tutorials/plugins?lang=en_US) examples. A plugin in hapi like most other frameworks is just an object that is formated a certain way. There just needs to be a register property and a name at a minimum, but there are a few more properties that are also of concern.
@@ -60,6 +60,8 @@ init();
 
 So in this sub section I will be going over what is the same example before, only now things are broken down into two completely different files.
 
+In a module.js file I just have the following.
+
 ```js
 exports.pluginRoot = {
     name: 'pluginRoot',
@@ -74,6 +76,8 @@ exports.pluginRoot = {
     }
 };
 ```
+
+An then I use it in the main script just like before only now I use require to load it in.
 
 ```js
 let Hapi = require('@hapi/hapi');
