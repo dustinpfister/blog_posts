@@ -126,7 +126,11 @@ app.get('/', [
 
                 html += '<ul>';
                 month.posts.forEach((post) => {
-                    html += '<li>' + post.fn + ':' + Math.round(post.fresh * 100) + '; <\/li>'
+                    let freshPer = Math.round(post.fresh * 100),
+                    color = 'red';
+                    color = freshPer > 25 ? 'orange' : color;
+                    color = freshPer > 75 ? 'green' : color;
+                    html += '<li style=\"color:' + color + ';\">' + post.fn + ':' + freshPer + '; <\/li>'
                 });
                 html += '<\/ul><hr>';
 
