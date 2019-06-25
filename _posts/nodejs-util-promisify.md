@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 485
-updated: 2019-06-24 20:21:38
-version: 1.6
+updated: 2019-06-24 20:25:04
+version: 1.7
 ---
 
 In versions of node before that of 8.x if I wanted to make a node js method return a promise rather than having to deal with callbacks I would have to use some kind of user land module to promisify that method, do so manually with the Promise constructor, or use a dependency that does so out of the box such as with fs-extra for example. However in versions of node 8+ there is now the [util.promisify](https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original) method that can be used to promisify one of these callbacks.
@@ -35,3 +35,7 @@ writeFile('./test.txt', 'hello world')
 ```
 
 There is still no native Promise.promisify when it comes to native javaScript, and before nodejs 8.x this would have to be accomplished with a user space npm package like bluebird. However if you are using node 8.x or later than there is a promisify method in the util module, and if that is the only additional Promise related feature that you care about, then you may not need to bother with an additional dependency.
+
+## 2 - Conclusion
+
+In the new node 10.x LTS release it looks like there is now and experimental promise api of the file system module, so it is evident that eventually one will not even need to bother with this any more as well, and out of the box file system methods will work just like that of what I have come to know when using fs-extra. 
