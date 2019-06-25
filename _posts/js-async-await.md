@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2019-06-25 14:15:01
-version: 1.5
+updated: 2019-06-25 14:16:13
+version: 1.6
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function.
@@ -71,6 +71,8 @@ let loop = function () {
 };
 loop();
 ```
+
+In this example when the heavyAsync function is called it still ends up delaying the whole application. This is because I am still just working with a single event loop.
 
 ### 2.2 - However in nodejs the child_process module can help avoid that
 
