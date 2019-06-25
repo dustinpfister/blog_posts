@@ -5,11 +5,11 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 489
-updated: 2019-06-25 10:30:56
-version: 1.0
+updated: 2019-06-25 10:33:52
+version: 1.1
 ---
 
-In this post I will be going over some hapi js plugins examples.
+In this post I will be going over some hapi js plugin examples. A plugin in hapi like most other frameworks is just an object that is formated a certain way. There just needs to be a register property at a minimum, but there are a few more properties that are also of concern.
 
 <!-- more -->
 
