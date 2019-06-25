@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-06-25 15:53:12
-version: 1.36
+updated: 2019-06-25 17:34:17
+version: 1.37
 ---
 
 So the lodash find collection method can be used to find a single item in a collection. There is also the native Array.find method as well, but that is just an array prototype method, and as such it can not just be used to find an object key in general.
@@ -19,7 +19,7 @@ This post will aim to be a fairly through post on the lodash find method, but al
 
 ## 1 - lodash find method and alternatives
 
-So the lodash \_.find method is a nice little method that works in a very similar fashion to the [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method in core javaScript. However the Array.find method is an array protoype method and not a collection with like with \_.find in lodash. So there is more that the \_.find brings to the table compared to the native array method alternative, and in this post I will be pointing out what these features are that set ot array from Array.find.
+So the lodash \_.find method is a nice little method that works in a very similar fashion to the [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method in core javaScript. However the Array.find method is an array protoype method and not a collection with like with \_.find in lodash. So there is more that the \_.find brings to the table compared to the native array method alternative, and in this post I will be pointing out what these features are that set it apart from Array.find.
 
 Still it is not to hard to just find something in an array with just plain old javaScript by itself, in many cases the native Array.find method will work just fine, and in some cases it is possible to get it working with array like objects as well. So in this post I will also be writing about some plain old vanilla js ways of finding an object or something to that effect with plain javaScript as well.
 
@@ -49,7 +49,7 @@ In this example I just have a simple array of primitives. I which to just find t
 
 ### 2.2 - Array.find with Array like objects
 
-It also works well with array like objects when used with call. If you are not aware of what array like objects are they are it is a trem that if often used to describe an object that is formated very much like an Array in that all of the object keys are numbers, and it has a length property. However the so called array like object is not an instance of the Array constructor so it does not have Array prototype methods associated with it.
+It also works well with array like objects when used with call. If you are not aware of what array like objects are they are it is a term that if often used to describe an object that is formated very much like an Array in that all of the object keys are numbers, and it has a length property. However the so called array like object is not an instance of the Array constructor so it does not have Array prototype methods associated with it.
 ```js
 var obj = {
  
@@ -478,6 +478,81 @@ var strings = find(obj, function (val) {
         return typeof val === 'string';
     });
 console.log(strings); // ['hello world', 'bar']
+```
+
+### 10.3 - Using array.sort to find one or more in an array
+
+So there is also the Array.sort native array prototype method that can be used as a vanilla js alternative to the lodash find method. So when it cokes to using this there is the idea of just finding one object in an array of objects, but then there is also the idea of ranking things by some kind of process. Then once the ranking process is done, take the first element in the results of that process, or even the first few results as well maybe.
+
+```js
+let arr = [
+    {text: 'In this post I will be writing about something else completely'}, 
+    {text: 'This is on lodash find and other topics related to lodash find'}, 
+    {text: 'Sorry not what you want to find here'}, 
+    {text: 'This is on lodash but not what you are looking for so you must find it elsewhere'}
+];
+ 
+// get a score based on count of term words
+let getWordScore = (str, term) => {
+    let words = str.split(' ');
+    return words.map((w) => {
+        let tw = term.split(' '),
+        i = tw.length;
+        while (i--) {
+            if (tw[i] === w) {
+                return true;
+            }
+        }
+        return false;
+    }).reduce((a, b) => {
+        return a + b;
+    });
+};
+ 
+// get a score based on full term match
+let getFullTermScore = (str, term) => {
+    let full = str.match(new RegExp(term, 'g'));
+    return full === null ? 0 : full.length;
+};
+ 
+// get score for a string and term
+let getScore = (str, term) => {
+    return getFullTermScore(str, term) + getWordScore(str, term);
+};
+ 
+let find = (arr, term, count) => {
+ 
+    // work with a copy
+    arr = arr.slice(0, arr.length);
+ 
+    count = count || 1;
+ 
+    arr.sort((a, b) => {
+        if (getScore(a.text, term) > getScore(b.text, term)) {
+            return -1;
+        }
+        if (getScore(a.text, term) < getScore(b.text, term)) {
+            return 1;
+        }
+        return 0;
+    });
+ 
+    if (count === 1) {
+        return arr[0];
+    } else {
+        return arr.slice(0, count);
+    }
+ 
+};
+ 
+// just one
+console.log( find(arr, 'lodash find') );
+// { text: 'This is on lodash find and other topics related to lodash find' }
+ 
+// top two results
+console.log( find(arr, 'lodash find',2) );
+// [ { text: 'This is on lodash find and other topics related to lodash find' },
+//   { text: 'This is on lodash but not what you are looking for so you must find it elseware' } ]
 ```
 
 ## 11 - Conclusion
