@@ -124,11 +124,11 @@ app.get('/', [
                 html += '<li> Word Count: ' + month.wc + '<\/li>';
                 html += '<\/ul>';
 
+                html += '<ul>';
                 month.posts.forEach((post) => {
-                    html += '<span>' + post.fn + ':' + Math.round(post.fresh * 100) + '; <\/span>'
+                    html += '<li>' + post.fn + ':' + Math.round(post.fresh * 100) + '; <\/li>'
                 });
-
-                html += '<hr>';
+                html += '<\/ul><hr>';
 
             });
 
