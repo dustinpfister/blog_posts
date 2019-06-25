@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2019-06-25 14:20:57
-version: 1.7
+updated: 2019-06-25 14:22:37
+version: 1.8
 ---
 
-A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function.
+A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These kinds of functions still operate in the main event loop, so they still can not be used as a way to achieve true threading with javaScript, at least not by themselves.
 
 <!-- more -->
 
