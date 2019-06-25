@@ -26,18 +26,17 @@ module.exports = (req, res) => {
         html += '<li> Word Count: ' + month.wc + '<\/li>';
         html += '<\/ul>';
 
-        html += '<ul>';
+        html += '<table style=\"width:100%;\">';
+        html += '<tr><th>Post Name:<\/th><th>fresh %:<\/th><th>Word Count:<\/th><\/tr>';
         month.posts.forEach((post) => {
             let freshPer = Math.round(post.fresh * 100);
-            //color = 'red';
-            //color = freshPer > 25 ? 'orange' : color;
-            //color = freshPer > 75 ? 'green' : color;
-            html += '<li >' +
-            post.fn +
-            '- <span style=\"color:' + getFreshColor(freshPer) + ';\">fresh%: ' + freshPer + '<\/span>' +
-            '; <span style=\"color:' + getWordCountColor(post.wc) + ';\">word count: ' + post.wc + ';<\/span><\/li>'
+            html += '<tr>' +
+            '<td style=\"outline: thin solid;\">' + post.fn + '<\/td>' +
+            '<td style=\"outline: thin solid;color:' + getFreshColor(freshPer) + ';\">' + freshPer + '%<\/td>' +
+            '<td style=\"outline: thin solid;color:' + getWordCountColor(post.wc) + ';\">' + post.wc + ';<\/td>' +
+            '<\/tr>'
         });
-        html += '<\/ul><hr>';
+        html += '<\/table><hr>';
 
     });
 
