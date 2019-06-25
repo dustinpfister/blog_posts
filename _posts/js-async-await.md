@@ -5,14 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2019-06-25 13:28:41
-version: 1.0
+updated: 2019-06-25 13:29:22
+version: 1.1
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function.
 
 <!-- more -->
 
+## 1 - js async basic example
+
+A basic exmaple of an async function in javaScript might look like this:
 
 ```js
 
