@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 492
-updated: 2019-06-26 15:33:35
-version: 1.6
+updated: 2019-06-26 15:35:21
+version: 1.7
 ---
 
 The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) array prototype method of course, and that is fairly well supported these days. There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
@@ -44,6 +44,8 @@ let arr = ['zero', 'one', 'two', 'three'],
 index = arr.indexOf('two');
 console.log(index, arr[index]); // 2 'two'
 ```
+
+However just like with the lodash method there is still having a greater amount of control when it comes to from where to where, and what to look for when it comes to getting one or more index values. SO lets look as some more examples.
 
 ### 3.2 -
 
