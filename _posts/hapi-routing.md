@@ -5,15 +5,19 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 491
-updated: 2019-06-26 11:34:18
-version: 1.2
+updated: 2019-06-26 11:40:08
+version: 1.3
 ---
 
 In this post I will be going over some examples of how to go about getting started with routing and creating paths in hapi js. The basic components of a route in hapi is a path, a method, and a handler for incoming http requests. These comments are given to hapi in the from of an object to the server.route method. There are many little things here and there to be awre of when setting up some routes in hapi though so lets look at a few examples of routes in hapi js.
 
 <!-- more -->
 
-## 1 -
+## 1 - Getting started with routes and hapi
+
+It is worth noting this post I was using hapi 17.9.0, in older versions of hapi the code examples here will most likely not work, and might also break in more resent versions as well. This is not a geting started post on hapi, nodejs, or javaScript in general, but I will try to keep things more or less basic here.
+
+## 2 -
 
 ```js
 let Hapi = require('@hapi/hapi');
@@ -36,7 +40,7 @@ let init = async() => {
 init();
 ```
 
-## 2 - 
+## 3 - 
 
 ```js
 let Hapi = require('@hapi/hapi'),
@@ -73,7 +77,7 @@ let init = async() => {
 init();
 ```
 
-## 3 - Paths
+## 4 - Paths
 
 ```js
 let Hapi = require('@hapi/hapi'),
