@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2019-06-26 16:55:23
-version: 1.6
+updated: 2019-06-26 16:57:41
+version: 1.7
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise.
@@ -37,7 +37,7 @@ Once all the promises are resolved a resolved promise is returned and then what 
 
 ## 2 - Promise all client side example
 
-So if a browser does support Promise all it can also be used in the front end as well.
+So if a browser does support Promise all it can also be used in the front end as well. New browser technologies such as fetch return promises, and it is also possible to create custom promises as well with the Promise constructor. However there is just one little concern when it comes to browser support, if you care about supporting any version of IE at all you will need to use something that will bring promise all support to those older platforms.
 
 ```html
 <html>
