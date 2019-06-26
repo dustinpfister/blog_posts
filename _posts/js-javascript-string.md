@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-02-10 18:02:12
-version: 1.13
+updated: 2019-06-25 20:53:39
+version: 1.14
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -20,7 +20,7 @@ The basics of strings in JavaScript might include how to go about creating, and 
 
 ### 1.1 - Creating a string with quotes
 
-The most common and basic way to go about creating a string in javaScript would be to use quotes.
+The most common and basic way to go about creating a string in javaScript would be to use quotes. They can be single or double quotes in mode cases, but some times one or the other must be used, such is the case with JavaScript Object Notation.
 
 ```js
 let str = 'foobar';
