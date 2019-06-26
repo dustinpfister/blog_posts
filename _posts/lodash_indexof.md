@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 492
-updated: 2019-06-26 15:08:59
-version: 1.3
+updated: 2019-06-26 15:15:10
+version: 1.4
 ---
 
 The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) array prototype method of course, and that is fairly well supported these days. There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
@@ -17,13 +17,19 @@ The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of m
 
 The lodash indexOf method can be used as a way to get the first index that matches the value that is given as the second argument when called. There is however also the \_.findIndex method as well that is a little more advanced as it can be used with arrays of objects rather than just a string of primitives. In addition there are a number of ways of just doing what the lodash indexOf method does with just plain old vanilla javaScript as well including the Array.indexOf array prototype method.
 
-## 2 - 
+## 2 - A basic lodash indexof example
+
+So if you have an array of primitives and you want to know the index of the first element from index zero forwards the  the lodash indexOf method could be used to do just that.
 
 ```js
 let arr = ['zero', 'one', 'two', 'three'],
 index = _.indexOf(arr, 'two');
 console.log(index, arr[index]); // 2 'two'
 ```
+
+However what if you want to know the index of an element from the end backwards when there is more that one primitive of the same value? What if you want to know all of the index values of all primitives that match the given value? Also what if you are dealing with an array of objects, and you need a way to reference a property that is to be found in the objects? Also is it not true that this method is baked into javaScript itself? why not just use that then? 
+
+Well that being said lets look at some other options then.
 
 ## 3 -
 
