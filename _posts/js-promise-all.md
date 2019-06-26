@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2019-06-26 17:22:57
-version: 1.8
+updated: 2019-06-26 17:25:38
+version: 1.9
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise.
@@ -80,6 +80,8 @@ Promise.all([get('https://dustinpfister.github.io/'), delay(3000)])
 ```
 
 ## 3 - File walker use case example of promise all
+
+So say I want to walk a file system path for all items in a path, and then filter out all the folders. After that I want to read all of the files in that path. In nodejs I can use the readdir method to read the contents of a dir, and then I can use promise all for each item in the path, getting the stats for each item. That can the be used to filter out all the folders, at which point I can the use promise all again to read all the files then as well.
 
 ```js
 let util = require('util'),
