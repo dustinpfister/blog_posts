@@ -5,8 +5,8 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 491
-updated: 2019-06-26 11:44:44
-version: 1.5
+updated: 2019-06-26 11:46:05
+version: 1.6
 ---
 
 In this post I will be going over some examples of how to go about getting started with routing and creating paths in hapi js. The basic components of a route in hapi is a path, a method, and a handler for incoming http requests. These comments are given to hapi in the from of an object to the server.route method. There are many little things here and there to be awre of when setting up some routes in hapi though so lets look at a few examples of routes in hapi js.
@@ -19,7 +19,7 @@ It is worth noting this post I was using hapi 17.9.0, in older versions of hapi 
 
 ## 2 - A Basic hapi route example
 
-So a very basic example of setting up a route in hapi 17.x might involve just calling the server.route method, and passing an object that contains a method, path, and handler properties. The method property can be a string or an array of strings where each string is the type of http request method that this route will respond to such as GET and POST. The Path property must be a string but it can be formated in a certain way to include some parameters.
+So a very basic example of setting up a route in hapi 17.x might involve just calling the server.route method, and passing an object that contains a method, path, and handler properties. The method property can be a string or an array of strings where each string is the type of http request method that this route will respond to such as GET and POST. The Path property must be a string but it can be formated in a certain way to include some parameters. The handler must be a function and that function will receive a request option and a response toolkit object as its arguments.
 
 ```js
 let Hapi = require('@hapi/hapi');
