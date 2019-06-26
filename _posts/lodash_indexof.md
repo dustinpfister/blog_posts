@@ -5,15 +5,19 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 492
-updated: 2019-06-26 14:58:06
-version: 1.1
+updated: 2019-06-26 15:07:20
+version: 1.2
 ---
 
 The lodash indexof method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the Array.indexOf array prototype method of course, and that is fairly well supported these days. There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
 
 <!-- more -->
 
-## 1 - 
+## 1 - lodash indexOf and what to know before continuing
+
+The lodash indexOf method can be used as a way to get the first index that matches the value that is given as the second argument when called. There is however also the \_.findIndex method as well that is a little more advanced as it can be used with arrays of objects rather than just a string of primitives. In addition there are a number of ways of just doing what the lodash indexOf method does with just plain okd vanilla javaScript as well including the Array.indexOf array prototype method.
+
+## 2 - 
 
 ```js
 let arr = ['zero', 'one', 'two', 'three'],
@@ -21,9 +25,9 @@ index = _.indexOf(arr, 'two');
 console.log(index, arr[index]); // 2 'two'
 ```
 
-## 2 -
+## 3 -
 
-### 2.1 -
+### 3.1 -
 
 ```js
 let arr = ['zero', 'one', 'two', 'three'],
@@ -31,7 +35,7 @@ index = arr.indexOf('two');
 console.log(index, arr[index]); // 2 'two'
 ```
 
-### 2.2 -
+### 3.2 -
 
 ```js
 let findIndexes = (arr, term) => {
@@ -52,7 +56,7 @@ console.log(indexes[0]); // 2
 console.log(indexes); // [2,4]
 ```
 
-### 2.3 -
+### 3.3 -
 
 ```js
 let findIndexes = (opt) => {
