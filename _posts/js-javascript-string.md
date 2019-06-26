@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-06-25 21:02:59
-version: 1.17
+updated: 2019-06-25 21:21:55
+version: 1.18
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -68,6 +68,36 @@ console.log(str); // 'foobar'
 ```
 
 In addition to the Array.join method there is also the String.split method that can do the revers of this spiting a string into an array of strings.
+
+### 1.5 Creating a javaScript string from an object
+
+There are a number of ways to create a string from an Object in general. There are many native methods to work with such as Object.keys, Array.map, and so forth. There is also for in loops and the JSON.stringify method that come to mind also just to name a few options.
+
+```js
+let obj = {
+    intro: 'Hello, ',
+    mess: 'This is Dustin. ',
+    end: 'Have a nice day'
+};
+ 
+// Object.keys, Array.map, and Array.join
+let str = Object.keys(obj).map((key) => {
+        return obj[key];
+    }).join('');
+console.log(str);
+// 'Hello, This is Dustin. Have a nice day'
+ 
+// for in
+let str2 = '';
+for (let prop in obj) {
+    str2 += obj[prop];
+}
+console.log(str2);
+// 'Hello, This is Dustin. Have a nice day'
+ 
+console.log(JSON.stringify(obj));
+// {"intro":"Hello, ","mess":"This is Dustin. ","end":"Have a nice day"}
+```
 
 ## 2 - String length
 
