@@ -5,8 +5,8 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 491
-updated: 2019-06-26 11:48:50
-version: 1.8
+updated: 2019-06-26 11:52:41
+version: 1.9
 ---
 
 In this post I will be going over some examples of how to go about getting started with [routing](https://hapijs.com/tutorials/routing) and creating paths in hapi js. The basic components of a route in hapi is a path, a method, and a handler for incoming http requests. These comments are given to hapi in the from of an object to the server.route method. There are many little things here and there to be awre of when setting up some routes in hapi though so lets look at a few examples of routes in hapi js.
@@ -44,7 +44,9 @@ init();
 
 Here I have a basic example that just responds to get requests to the root path with the string get request to root. Of course when it comes to an actual project of some kind there might be some async tasks that might need to be accomplished, and some response toolkit methods might need to be used when it comes to furnishing a response, but this is just a basic hello world style example for now.
 
-## 3 - 
+## 3 - Methods
+
+So lets take a closer look at the method property in this section. In the more basic examples thus far the method property can be just a string, however sometimes you might want to have a route that will respond to more than one type of http request rather than just GET. For example say I want a route that will always respond with the same data for both GET and POST requests. To do so I just need to give an array rather than a string for the method property, and have an array of strings where each string is a type of http request.
 
 ```js
 let Hapi = require('@hapi/hapi'),
