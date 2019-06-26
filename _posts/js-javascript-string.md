@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-06-25 20:53:39
-version: 1.14
+updated: 2019-06-25 20:55:44
+version: 1.15
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -32,7 +32,7 @@ console.log(str); // 'foobar'
 Single or double quotes can be used.
 
 
-### 1.2 - backticks
+### 1.2 - Making a javaScriot string with backticks
 
 There are also backticks that can be used as well. These can be used in the same way as quotes, but also allow for things like function calls.
 
