@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2019-06-26 17:31:04
-version: 1.10
+updated: 2019-06-26 17:33:57
+version: 1.11
 ---
 
-When a whole bunch of tasks need to be accomplished before moving on with things, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise.
+When a whole bunch of tasks need to be accomplished before moving on with things, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise. So it goes without saying that the promise all method is fairly useful whenever I am in a situation in which I need to do a whole bunch of async tasks and then continue with more to do once all of that has complected. So then lets take a look at a few examples of the promise all method in action.
 
 <!-- more -->
 
