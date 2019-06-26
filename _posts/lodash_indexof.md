@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 492
-updated: 2019-06-26 15:31:08
-version: 1.5
+updated: 2019-06-26 15:33:35
+version: 1.6
 ---
 
 The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) array prototype method of course, and that is fairly well supported these days. There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
@@ -35,7 +35,9 @@ Well that being said lets look at some other options then.
 
 The lodash indexOf method does not bring much of anything new to the table compared to the native Array.indexOf method, and browser support with Array.indexOf is fairly good these days. This is of course not the case with all lodash methods as some of them work a little differently add additional features, and help to function as a safety net of sorts. However this is not so much the case with \_.indexOf it would seem, so lets look at what we can do with just plain old vanilla js.
 
-### 3.1 -
+### 3.1 - The Array.indexOf method
+
+So of course the first alternative that comes to mind is the native Array.indexOf method. This works in more or less the same fashion as the lodash \.indexOf method, but it is a array prototype method. So there is no need to pass the array, just call it off the array and pass the value that you want the first index of from index zero forward.
 
 ```js
 let arr = ['zero', 'one', 'two', 'three'],
