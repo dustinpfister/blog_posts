@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 492
-updated: 2019-06-26 15:15:10
-version: 1.4
+updated: 2019-06-26 15:31:08
+version: 1.5
 ---
 
 The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) array prototype method of course, and that is fairly well supported these days. There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
@@ -31,7 +31,9 @@ However what if you want to know the index of an element from the end backwards 
 
 Well that being said lets look at some other options then.
 
-## 3 -
+## 3 - Vanilla js alternatives to the lodash indexOf method
+
+The lodash indexOf method does not bring much of anything new to the table compared to the native Array.indexOf method, and browser support with Array.indexOf is fairly good these days. This is of course not the case with all lodash methods as some of them work a little differently add additional features, and help to function as a safety net of sorts. However this is not so much the case with \_.indexOf it would seem, so lets look at what we can do with just plain old vanilla js.
 
 ### 3.1 -
 
