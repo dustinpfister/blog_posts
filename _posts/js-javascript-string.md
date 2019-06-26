@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-06-25 20:55:44
-version: 1.15
+updated: 2019-06-25 21:01:47
+version: 1.16
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -55,6 +55,16 @@ console.log(str); // '72'
  
 let n = 7 + Number('2');
 console.log(n); // 9
+```
+
+### 1.4 - From an Array
+
+One way to create a string from an array is ti use the Array.join method. This is one of the many Array prototype methods that can be used to join all elements together and return a string when dealing with an array of strings.
+
+```js
+let arr = ['f', 'o', 'o', 'b', 'a', 'r'],
+str = arr.join('');
+console.log(str); // 'foobar'
 ```
 
 ## 2 - String length
