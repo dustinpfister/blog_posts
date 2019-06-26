@@ -5,8 +5,8 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 491
-updated: 2019-06-26 11:59:59
-version: 1.11
+updated: 2019-06-26 19:39:18
+version: 1.12
 ---
 
 In this post I will be going over some examples of how to go about getting started with [routing](https://hapijs.com/tutorials/routing) and creating paths in hapi js. The basic components of a route in hapi is a path, a method, and a handler for incoming http requests. These comments are given to hapi in the from of an object to the server.route method. There are many little things here and there to be awre of when setting up some routes in hapi though so lets look at a few examples of routes in hapi js.
@@ -152,6 +152,49 @@ let init = async() => {
             return file;
         }
     });
+    await server.start();
+    console.log('Server running on %s', server.info.uri);
+};
+init();
+```
+
+## 5 - Handlers
+
+In this section I will be going over some quick examples of the hander property of the route object that is passed to the server.route method to create a route in hapi js. The handler sound aways return something that will be the response. it can just be a string, but it can also be a response object created with the h.response method.
+
+```js
+let Hapi = require('@hapi/hapi');
+ 
+let init = async() => {
+    let server = Hapi.server({
+            port: process.env.PORT || process.argv[2] || 3000,
+            host: 'localhost'
+        });
+ 
+    server.route({
+        method: 'GET',
+        path: '/',
+        // a handler can just return a static
+        // string
+        handler: function (request, h) {
+            return '<a href=\"/rresponse\">response</a>';
+        }
+    });
+ 
+    server.route({
+        method: 'GET',
+        path: '/response',
+        // Another options is the h.response
+        // response toolkit method
+        handler: function (request, h) {
+            response = h.response({
+                    foo: 'bar'
+                });
+            response.type('application/json');
+            return response;
+        }
+    });
+ 
     await server.start();
     console.log('Server running on %s', server.info.uri);
 };
