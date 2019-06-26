@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 492
-updated: 2019-06-26 15:52:17
-version: 1.10
+updated: 2019-06-26 15:55:30
+version: 1.11
 ---
 
 The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) array prototype method of course, and that is fairly well supported these days. There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
@@ -78,6 +78,8 @@ Well there is what can be done with a while loop, it is something where I can de
 
 In addition I can make it a high order function of sorts in the sense that it can accept a function as one of its arguments and inside the body of that function I can define some custom logic that can change the behavior of the method when it comes to what it is that results in an element being pushed to an array of index values or not.
 
+maybe something like this:
+
 ```js
 let findIndexes = (opt) => {
     opt = opt || {};
@@ -105,6 +107,8 @@ let findIndexes = (opt) => {
 };
 ```
 
+I have all kinds of defaults for it so then I can just use it like this when it comes to an array of primitives like so.
+
 ```js
 // check it
 let indexes = findIndexes({
@@ -116,6 +120,10 @@ console.log(indexes[0]); // 2
 // all of them
 console.log(indexes); // [2,4]
 ```
+
+However say I have an array of objects and the text of interest is a property of each object. Also say I want to change up the logic in a way in which I do not just want to log items in that array that are just an exact pattern match for the value that I give, and I want to log index values from the end of the array backwards.
+
+No problem
 
 ```js
 // Now for an array of objects
