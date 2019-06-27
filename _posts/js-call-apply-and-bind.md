@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-06-27 18:20:21
-version: 1.6
+updated: 2019-06-27 18:33:02
+version: 1.7
 ---
 
 I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
@@ -96,6 +96,32 @@ mod.moveAD(Math.PI / 180 * 45,100);
 console.log('*****');
 console.log(obj.x +','+obj.y); // unchanged
 console.log(mod.x +','+mod.y); // moved 100
+```
+
+## Using call to create a custom api in a higher order function
+
+```js
+var setFrame = function (frame, opt) {
+    opt = opt || {};
+    opt.frame = frame === undefined ? 0 : frame;
+    opt.maxFrame = opt.maxFrame === undefined ? 50 : opt.maxFrame;
+    opt.forFrame = opt.forFrame || function () {
+        console.log(this);
+    };
+    var per = opt.frame / opt.maxFrame;
+    opt.forFrame.call({
+        frame: opt.frame,
+        maxFrame: opt.maxFrame,
+        per: per,
+        bias: 1 - Math.abs(0.5 - per) / 0.5
+    });
+};
+ 
+setFrame(10, {
+    forFrame: function () {
+        console.log(this.per); // 0.2
+    }
+})
 ```
 
 ## conclusion
