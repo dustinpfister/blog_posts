@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2019-06-26 20:07:33
-version: 1.10
+updated: 2019-06-26 20:11:42
+version: 1.11
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. The undefined value is the default value for variables that are declared but do not have any value assigned to them. When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. In this post I will be outlining some examples that point out some things that a javaScript developer should be aware of when it comes to undefined in javaScript.
@@ -19,7 +19,7 @@ In javaScript undefined is a primitive value, and a global property that represe
 
 ### 1.1 - when a variable is declared, but not assigned anything.
 
-When a variable is declare but is not assigned a value other than undefined, the default value for that variable is undefined.
+When a variable is declare but is not assigned a value other than undefined, the default value for that variable is undefined.The same is true of object properties that have not been added to an object yet, this also includes array elements sense arrays are a kind of object in javaScript.
 
 ```js
 var n;
