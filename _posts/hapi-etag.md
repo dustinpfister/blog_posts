@@ -5,11 +5,11 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 493
-updated: 2019-06-27 12:48:36
-version: 1.1
+updated: 2019-06-27 17:06:21
+version: 1.2
 ---
 
-This will be a quick post on etags and hapi js.
+This will be a quick post on [etags](https://en.wikipedia.org/wiki/HTTP_ETag), and the [entity](https://hapijs.com/api#-hentityoptions) response toolkit method in hapi 17.x.
 
 <!-- more -->
 
