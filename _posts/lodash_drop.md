@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 44
-updated: 2019-06-27 17:50:47
-version: 1.10
+updated: 2019-06-27 18:13:51
+version: 1.11
 ---
 
 It looks like [lodash](https://lodash.com/) is a bit of a mixed bag of methods some of which do not exist in javaScripts built in Array prototype, and other methods that appear to be redundant. There are also some methods that on the surface seem redundant but are actuality collection methods that will work with both arrays and objects in general. So maybe some of these methods are not so redundant and there is also the question of backward compatibility as well when it comes to defending the use of lodash these days. Still more often then not I tend to prefer to just work within core js by itself.
@@ -70,6 +70,27 @@ console.log(arr); //[1,2,3,4,5,6]
 
 I often get the two mixed up, they both do the same thing but with one very big difference. Array.slice is the method that is more functional like because it does not mangle the original array that is given to it.
 
-## 4 - Conclusion
+## 4 - Making my own drop method with a while loop
+
+Another option is to make my own drop method with a while loop. This makes doing so a little more complicated then it needs to be but it is yet another option that comes to mind when it comes to doing this.
+
+```js
+let drop = (arr, count) => {
+    let newArr = [],
+    len = arr.length,
+    i = count === undefined ? 1 : count;
+    while (i < len) {
+        newArr.push(arr[i]);
+        i += 1;
+    }
+    return newArr;
+};
+let arr = [1, 2, 3, 4, 5, 6],
+newArr = drop(arr, 3);
+console.log(newArr);
+console.log(arr);
+```
+
+## 5 - Conclusion
 
 So the lodash drop method is a way to create a new array with the first few elements dropped from the beginning of the array, and the Array.slice method is another method that does more or less the same thing.
