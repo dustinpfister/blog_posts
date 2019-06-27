@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 44
-updated: 2019-06-27 17:31:12
-version: 1.6
+updated: 2019-06-27 17:33:55
+version: 1.7
 ---
 
 It looks like [lodash](https://lodash.com/) is a bit of a mixed bag of methods some of which do not exist in javaScripts built in Array prototype, and other methods that appear to be redundant. There are also some methods that on the surface seem redundant but are actuality collection methods that will work with both arrays and objects in general. So maybe some of these methods are not so redundant and there is also the question of backward compatibility as well when it comes to defending the use of lodash these days. Still more often then not I tend to prefer to just work within core js by itself.
@@ -33,9 +33,9 @@ console.log(arr); // [1,2,3,4,5,6]
 
 Pretty straight forward, but is _.drop a good example of why one should use lodash? After all is it really all that hard to do something like this in plain old vanilla javaScript? What about Array.shift, Array.splice, and Array.slice? Good question lets take a look at these vanilla javaScript alternatives for a moment then.
 
-## What does Array.shift do?
+## 2 - What does Array.shift do?
 
-It returns the first element from the beginning of the Array, and it also directly modifies the Array that it is invoked on resulting in an array that is now one element shorter each time it is called.
+It returns the first element from the beginning of the Array, and it also directly modifies the Array that it is invoked on resulting in an array that is now one element shorter each time it is called. So although it can be used as a way to remove one element from the beginning of an array also it does work a little differently.
 
 ```js
 var arr = [1,2,3,4,5,6],
@@ -48,6 +48,8 @@ console.log(first); // 1
 // shift also modifies the array, 
 console.log(arr); // [2,3,4,5,6]
 ```
+
+Because Array.shift mangles the original array it is not very functional like, and I can also only remove one element at a time as well, but there are other options in vanilla javaScript so lets look at more examples when it comes to dropping some elements from the beginning of an array in JavaScript.
 
 ## What about Array.splice, and Array.slice
 
