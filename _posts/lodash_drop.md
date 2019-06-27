@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 44
-updated: 2019-06-27 17:27:49
-version: 1.5
+updated: 2019-06-27 17:31:12
+version: 1.6
 ---
 
 It looks like [lodash](https://lodash.com/) is a bit of a mixed bag of methods some of which do not exist in javaScripts built in Array prototype, and other methods that appear to be redundant. There are also some methods that on the surface seem redundant but are actuality collection methods that will work with both arrays and objects in general. So maybe some of these methods are not so redundant and there is also the question of backward compatibility as well when it comes to defending the use of lodash these days. Still more often then not I tend to prefer to just work within core js by itself.
@@ -15,9 +15,9 @@ It looks like [lodash](https://lodash.com/) is a bit of a mixed bag of methods s
 
 Sometimes it seems like I come across something like [_.drop](https://lodash.com/docs/4.17.4#drop) in lodash, and scratch my head wondering if looking into lodash is a wise investment of time. A lot of these methods do work differently, and provide a certain something that does go beyond what may be in the core of js itself, so yes maybe it is worth it. However I do not thing that the lodash drop method might be the best example of this. In any case in this post I will be doing over some quick examples of the lodash drop method, as well as some plain old vanilla js alternatives.
 
-## So what does _.drop do?
+## 1 So what does lodash _.drop do?
 
-Its a quick way to create a new array in which one or more elements are dropped from the beginning of the array. 
+Its a quick way to create a new array in which one or more elements are dropped from the beginning of the array. So it makes it a kind of functional programing method example sense the original array is not mutated in any way.
 
 ```js
 var arr = [1,2,3,4,5,6],
@@ -31,7 +31,7 @@ console.log(newArr); // [4,5,6]
 console.log(arr); // [1,2,3,4,5,6]
 ```
 
-Pretty straight forward, but is _.drop a good example of why one should use lodash? What about what there is in core js, is just using vanilla js really all that more difficult? As such Array.shift, Array.splice, and Array.slice come to mind.
+Pretty straight forward, but is _.drop a good example of why one should use lodash? After all is it really all that hard to do something like this in plain old vanilla javaScript? What about Array.shift, Array.splice, and Array.slice? Good question lets take a look at these vanilla javaScript alternatives for a moment then.
 
 ## What does Array.shift do?
 
