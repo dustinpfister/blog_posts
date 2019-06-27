@@ -5,11 +5,11 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 493
-updated: 2019-06-27 17:10:15
-version: 1.4
+updated: 2019-06-27 17:14:26
+version: 1.5
 ---
 
-This will be a quick post on [etags](https://en.wikipedia.org/wiki/HTTP_ETag), and the [entity](https://hapijs.com/api#-hentityoptions) response toolkit method in hapi 17.x. Etags are a way to go about taging a response with a unique value that can be used as a way for a browser to know if it still has an up to date version of the content or not, and thus can still continue to use the cached resource rather than downloading the resource yet again.
+This will be a quick post on [etags](https://en.wikipedia.org/wiki/HTTP_ETag), and the [entity](https://hapijs.com/api#-hentityoptions) response toolkit method in hapi 17.x. This might be the first of a few posts on hapi, and web cache, but there is all ready some great content out there on the subject with the official [hapi docs](https://hapijs.com/tutorials/caching?lang=en_US#overview), which also links to a resource [at developers.google.com](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) when it comes to etags and more. Still I thought I would work out some of my own examples when it comes to this. Etags are a way to go about taging a response with a unique value that can be used as a way for a browser to know if it still has an up to date version of the content or not, and thus can still continue to use the cached resource rather than downloading the resource yet again.
 
 <!-- more -->
 
