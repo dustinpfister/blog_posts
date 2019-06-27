@@ -5,11 +5,11 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 491
-updated: 2019-06-26 19:42:33
-version: 1.13
+updated: 2019-06-27 12:47:07
+version: 1.14
 ---
 
-In this post I will be going over some examples of how to go about getting started with [routing](https://hapijs.com/tutorials/routing) and creating paths in hapi js. The basic components of a route in hapi is a path, a method, and a handler for incoming http requests. These comments are given to hapi in the from of an object to the server.route method. There are many little things here and there to be awre of when setting up some routes in hapi though so lets look at a few examples of routes in hapi js.
+In this post I will be going over some examples of how to go about getting started with [routing](https://hapijs.com/tutorials/routing) and creating paths in hapi js. The basic components of a route in hapi is a path, a method, and a handler for incoming http requests. These comments are given to hapi in the from of an object to the server.route method. There are many little things here and there to be aware of when setting up some routes in hapi though so lets look at a few examples of routes in hapi js.
 
 <!-- more -->
 
