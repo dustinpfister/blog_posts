@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-26 20:16:41
-version: 1.11
+updated: 2019-06-26 20:20:22
+version: 1.12
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -43,7 +43,7 @@ html += '<li>'+n+'</li>'
 el.innerHTML = html += '<\/ul>';
 ```
 
-In this example I am just creating an unordered list from elements in an array. It is generally a good idea to add things up with a varaible and then just set innerHTML once, as each time innerHTML is used it can trigger page re-flow.
+In this example I am just creating an unordered list from elements in an array. It is generally a good idea to add things up with a variable and then just set innerHTML once, as each time innerHTML is used it can trigger page re-flow.
 
 ## 2 - Security concerns with innerHTML
 
