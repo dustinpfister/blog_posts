@@ -5,15 +5,15 @@ tags: [hapi]
 layout: post
 categories: hapi
 id: 493
-updated: 2019-06-27 17:08:52
-version: 1.3
+updated: 2019-06-27 17:10:15
+version: 1.4
 ---
 
 This will be a quick post on [etags](https://en.wikipedia.org/wiki/HTTP_ETag), and the [entity](https://hapijs.com/api#-hentityoptions) response toolkit method in hapi 17.x. Etags are a way to go about taging a response with a unique value that can be used as a way for a browser to know if it still has an up to date version of the content or not, and thus can still continue to use the cached resource rather than downloading the resource yet again.
 
 <!-- more -->
 
-## 1 - 
+## 1 - Basic etag example in hapi 17.x
 
 ```js
 let Hapi = require('@hapi/hapi');
@@ -47,7 +47,7 @@ let init = async() => {
 init();
 ```
 
-## 2 - 
+## 2 - updating an etag
 
 ```js
 let Hapi = require('@hapi/hapi'),
