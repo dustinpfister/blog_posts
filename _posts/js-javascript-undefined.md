@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2019-06-26 20:02:00
-version: 1.9
+updated: 2019-06-26 20:07:33
+version: 1.10
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. The undefined value is the default value for variables that are declared but do not have any value assigned to them. When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. In this post I will be outlining some examples that point out some things that a javaScript developer should be aware of when it comes to undefined in javaScript.
@@ -84,6 +84,14 @@ console.log(func2()); // 'bar'
 
 There are a number of other reasons why calling undefined might happen. If for whatever the reason there is not a function in what is being called that will result in this kind of error.
 
-## 3 - Conclusion
+## 3 - javaScript undefined will result in a true value when used with isNaN
+
+One of the weird things about the isNaN method is that it will return true for some values that are not NaN including the undefined value. Because of this there are often isNaN methods in various frameworks besides the fact that there is a native method for doing so that do a better job of finding out if a value is nan or not.
+
+```js
+console.log(isNaN(undefined)); // true
+```
+
+## 4 - Conclusion
 
 The undefined value in javaScript comes up a lot in discussions when learning javaScript for the first time. A common mistake most new javaScript developers make involves errors resulting in calling undefined.
