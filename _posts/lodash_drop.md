@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 44
-updated: 2019-06-27 17:34:26
-version: 1.8
+updated: 2019-06-27 17:41:14
+version: 1.9
 ---
 
 It looks like [lodash](https://lodash.com/) is a bit of a mixed bag of methods some of which do not exist in javaScripts built in Array prototype, and other methods that appear to be redundant. There are also some methods that on the surface seem redundant but are actuality collection methods that will work with both arrays and objects in general. So maybe some of these methods are not so redundant and there is also the question of backward compatibility as well when it comes to defending the use of lodash these days. Still more often then not I tend to prefer to just work within core js by itself.
@@ -51,9 +51,9 @@ console.log(arr); // [2,3,4,5,6]
 
 Because Array.shift mangles the original array it is not very functional like, and I can also only remove one element at a time as well, but there are other options in vanilla javaScript so lets look at more examples when it comes to dropping some elements from the beginning of an array in JavaScript.
 
-## What about Array.splice, and Array.slice
+## 3 - What about Array.splice, and Array.slice
 
-So there is also the core js Array.slice, and splice methods that can be used to do this as well. Both methods do the same thing only one directly modifies (Array.splice), and the other returns a copy (Array.slice). Also they return arrays, still the above can be done with them as well.
+So there is also the core js Array.slice, and splice methods that can be used to do this as well. Both methods do the same thing only one directly modifies (Array.splice), and the other returns a copy (Array.slice). Also they return arrays, rather than just a single element as is the case with Array.shift. However it is not to hard to just adjust for that.
 
 ```js
  
@@ -64,8 +64,8 @@ newArr = arr.slice(3,arr.length);
 first = arr.splice(0,1)[0];
 ```
 
-## Conclusion
+I often get the two mixed up, they both do the same thing but with one very big difference. Array.slice is the method that is more functional like because it does not mangle the original array that is given to it.
 
-These things do tend to drive me a little nuts, I guess lodash might help to make code that is a little easier to follow, yet again maybe not. Are the vanilla js alternatives really that much harder to follow? 
+## 4 - Conclusion
 
-Be sure to check out my other [posts on lodash](/categories/lodash/)
+So the lodash drop method is a way to create a new array with the first few elements dropped from the beginning of the array, and the Array.slice method is another method that does more or less the same thing.
