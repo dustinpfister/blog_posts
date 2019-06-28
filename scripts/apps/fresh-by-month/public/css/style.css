@@ -21,13 +21,16 @@ table, th, td {
 .month_title{
 	font-size: 24pt;
 }
+.month_rank{
+	color: black;
+	background:white;
+}
 .month_key{
 	text-decoration: underline;
 }
 .month_fresh{
 	color: black;
 	background:white;
-	padding:5px;
 }
 
 

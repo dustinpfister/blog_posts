@@ -1,8 +1,9 @@
 <% report.forEach((month, i)=>{ %>
   <div>
     <h2 class="month_title">
-      <span class="month_key"><%= month.key %></span> : 
-      <span class="month_fresh"><%= (month.fresh / month.pc * 100).toFixed(2) %>%</span>
+      <span class="month_rank"><%= i + 1 %> )</span> -
+      <span class="month_key"><%= month.key %></span> - 
+      <span class="month_fresh">(<%= (month.fresh / month.pc * 100).toFixed(2) %>%)</span>
     </h2>
     <p>WC: <%= month.wc %></p>
     <ul>
