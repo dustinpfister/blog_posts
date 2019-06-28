@@ -1,6 +1,16 @@
 <% report.forEach((month, i)=>{ %>
   <div>
-    <p><%= JSON.stringify(month) %></p>
+    <h2><%= month.key %></h2>
+	<table>
+	  <tr><th>File Name</th><th>Fresh %</th><th>Word Count</th></tr>
+	  <% month.posts.forEach((post, i)=>{ %>
+	    <tr>
+	      <td><%= post.fn %></td>
+		  <td><%= post.fresh %></td>
+		  <td><%= post.wc %></td>
+		</tr>
+	  <% }); %>
+	</table>
 	<hr>
   </div>
 <% }); %>
