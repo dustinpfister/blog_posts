@@ -11,6 +11,8 @@ app.set('days_back', 365 * 2);
 let dir_cli = path.resolve('../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
+app.use('/css', express.static('./public/css'));
+
 app.get('/', [
         // get posts
         require('./middleware/get_posts.js')({
