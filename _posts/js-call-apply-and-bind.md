@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-06-27 18:33:02
-version: 1.7
+updated: 2019-06-28 10:15:23
+version: 1.8
 ---
 
 I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
@@ -100,6 +100,9 @@ console.log(mod.x +','+mod.y); // moved 100
 
 ## Using call to create a custom api in a higher order function
 
+One use case example of Function.call would be to use it to make a custom api that can be used via the this keyword inside the body of a function that is used with call to set the value of this. For example say I want to make a function that can be used to set the state of something based on a current frame relative to a max frame count basis.
+
+In that case I might make something like this.
 ```js
 var setFrame = function (frame, opt) {
     opt = opt || {};
