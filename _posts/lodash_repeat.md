@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2019-06-28 19:36:55
-version: 1.6
+updated: 2019-06-28 19:48:25
+version: 1.7
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method. The lodash repeat method is just a quick way of repeating a string a few times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. Still it is not to hard to just do this vanilla javaScript style so lets look at more than one solution for this.
@@ -25,7 +25,31 @@ console.log(bil); // 1000000000
 
 Simple enough, but how hard is it to just do this with plain old vanilla javaScript? not so hard, so lets look at some vanilla javaScript examples that do the same thing. Also lets explore some other topics as well such as how to go about doing the same thing only with arrays and objects.
 
-## 2 - What about arrays and objects?
+## 2 - What about arrays and objects? Check out \_.times
+
+A similar method that comes to mind is the lodash times method.
+
+```js
+// the same can be done as
+// with repeat
+let str = '1';
+_.times(9, () => {
+    str += '0';
+});
+console.log(str);
+// 1000000000
+ 
+// but it can also be used
+// with anything that can be
+// placed in a function
+let arr = [1, 2, 3],
+str2 = '';
+_.times(3, () => {
+    str2 += _.join(arr, ',') + ',';
+});
+let arr2 = _.dropRight(_.split(str2,','),1);
+console.log(arr2);
+```
 
 ## 3 - vanilla javaScript alternatives to lodash \_.repeat and \_.times
 
