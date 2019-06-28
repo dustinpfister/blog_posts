@@ -48,13 +48,20 @@ app.get('/beta/all', [
                 title: 'fresh by month',
                 layout: 'report',
                 report: res.report,
-                getFreshStyle: (fresh) => {
+                getFreshClassName: (fresh) => {
                     let cn = 'fresh_0';
                     //cn = fresh >= 0.25 ? 'fresh_middle' : cn;
                     //cn = fresh >= 0.75 ? 'fresh_new' : cn;
                     cn = fresh >= 0.25 ? 'fresh_25' : cn;
                     cn = fresh >= 0.50 ? 'fresh_50' : cn;
                     cn = fresh >= 0.75 ? 'fresh_75' : cn;
+                    return cn;
+                },
+                getWcClassName: (wc) => {
+                    let cn = 'wordcount_0';
+                    cn = wc >= 500 ? 'wordcount_500' : cn;
+                    cn = wc >= 1000 ? 'wordcount_1000' : cn;
+                    cn = wc >= 1800 ? 'wordcount_1800' : cn;
                     return cn;
                 }
             });

@@ -55,3 +55,17 @@ table, th, td {
 .fresh_75{
 	color:lime;
 }
+
+/* word count styles*/
+.wordcount_0{
+	color:red;
+}
+.wordcount_500{
+	color:orange;
+}
+.wordcount_1000{
+	color:green;
+}
+.wordcount_1800{
+	color:lime;
+}
