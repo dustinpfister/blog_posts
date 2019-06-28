@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2019-06-28 19:19:10
-version: 1.3
+updated: 2019-06-28 19:23:17
+version: 1.4
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method. The lodash repeat method is just a quick way of repeating a string a few times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. Still it is not to hard to just do this vanilla javaScript style so lets look at more than one solution for this.
@@ -25,7 +25,11 @@ console.log(bil); // 1000000000
 
 Simple enough, but how hard is it to just do this with plain old vanilla javaScript? not so hard, so lets look at some vanilla javaScript examples that do the same thing. Also lets explore some other topics as well such as how to go about doing the same thing only with arrays and objects.
 
-## 2 -
+## 2 - vanilla javaScript alternatives to lodash \_.repeat
+
+In this section I will be looking at some options when it comes to doing the same ting as the \_.repeat method only with just plain old vanilla javaScript by itself.
+
+### 2.1 - Making a repeat method with a while loop.
 
 ```js
 let repeat = (str, c) => {
