@@ -42,3 +42,16 @@ table, th, td {
 .fresh_new{
 	color:green;
 }
+
+.fresh_0{
+	color:red;
+}
+.fresh_25{
+	color:orange;
+}
+.fresh_50{
+	color:green;
+}
+.fresh_75{
+	color:lime;
+}

@@ -49,12 +49,12 @@ app.get('/beta/all', [
                 layout: 'report',
                 report: res.report,
                 getFreshStyle: (fresh) => {
-				
-				    let cn = 'fresh_old';
-					
-					cn = fresh >= 0.25 ? 'fresh_middle': cn;
-					cn = fresh >= 0.75 ? 'fresh_new': cn;
-				
+                    let cn = 'fresh_0';
+                    //cn = fresh >= 0.25 ? 'fresh_middle' : cn;
+                    //cn = fresh >= 0.75 ? 'fresh_new' : cn;
+                    cn = fresh >= 0.25 ? 'fresh_25' : cn;
+                    cn = fresh >= 0.50 ? 'fresh_50' : cn;
+                    cn = fresh >= 0.75 ? 'fresh_75' : cn;
                     return cn;
                 }
             });
