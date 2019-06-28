@@ -10,7 +10,7 @@
       <% month.posts.forEach((post, i)=>{ %>
         <tr>
           <td><%= post.fn %></td>
-          <td><%= post.fresh %></td>
+          <td class="<%= getFreshStyle(post.fresh); %>"><%= post.fresh %></td>
           <td><%= post.wc %></td>
         </tr>
       <% }); %>

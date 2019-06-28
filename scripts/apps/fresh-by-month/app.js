@@ -47,7 +47,16 @@ app.get('/beta/all', [
             res.render('index', {
                 title: 'fresh by month',
                 layout: 'report',
-                report: res.report
+                report: res.report,
+                getFreshStyle: (fresh) => {
+				
+				    let cn = 'fresh_old';
+					
+					cn = fresh >= 0.25 ? 'fresh_middle': cn;
+					cn = fresh >= 0.75 ? 'fresh_new': cn;
+				
+                    return cn;
+                }
             });
         }
 
