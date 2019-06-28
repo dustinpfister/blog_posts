@@ -4,6 +4,13 @@
     <title><%= title %></title>
   </head>
   <body>
-    <%- include('header', this) %>
+    <div id="wrap_main">
+      <div id="wrap_header">
+        <%- include('header', this) %>
+      </div>
+      <div id="wrap_content">
+        <%- include(layout, this) %>
+      </div>
+    </div>
   </body>
 </html>

@@ -25,11 +25,30 @@ app.get('/', [
     ]);
 
 app.get('/beta', (req, res) => {
-
     res.render('index', {
-        title: 'fresh by month'
+        title: 'fresh by month',
+        layout: 'home',
+        report: []
     });
-
 });
+
+app.get('/beta/all', [
+        // get posts
+        require('./middleware/get_posts.js')({
+            dir_cli: dir_cli,
+            app: app
+        }),
+        // create an array, and sort by fresh percent
+        require('./middleware/sort_by_fresh.js'),
+        // send html
+        (req, res) => {
+            res.render('index', {
+                title: 'fresh by month',
+                layout: 'report',
+                report: res.report
+            });
+        }
+
+    ]);
 
 app.listen(app.get('port'), () => console.log('Fresh by month is up on Port: ' + app.get('port')));
