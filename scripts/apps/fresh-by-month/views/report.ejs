@@ -5,6 +5,11 @@
       <span class="month_fresh"><%= (month.fresh / month.pc * 100).toFixed(2) %>%</span>
     </h2>
     <p>WC: <%= month.wc %></p>
+    <ul>
+      <% Object.keys(month.cats).forEach((catName)=>{ %>
+        <li><%= catName + ' : ' + month.cats[catName] %></li>
+      <% }); %>
+    </ul>
     <table>
       <tr><th>File Name</th><th>Fresh %</th><th>Word Count</th></tr>
       <% month.posts.forEach((post, i)=>{ %>
