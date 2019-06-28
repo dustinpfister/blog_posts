@@ -3,3 +3,21 @@ body{
 	background:black;
 	
 }
+table{
+	width:100%;
+}
+table, th, td {
+  border: 1px solid white;
+}
+
+.month_title{
+	font-size: 24pt;
+}
+.month_key{
+	text-decoration: underline;
+}
+.month_fresh{
+	color: black;
+	background:white;
+	padding:5px;
+}

@@ -1,16 +1,20 @@
 <% report.forEach((month, i)=>{ %>
   <div>
-    <h2><%= month.key %></h2>
-	<table>
-	  <tr><th>File Name</th><th>Fresh %</th><th>Word Count</th></tr>
-	  <% month.posts.forEach((post, i)=>{ %>
-	    <tr>
-	      <td><%= post.fn %></td>
-		  <td><%= post.fresh %></td>
-		  <td><%= post.wc %></td>
-		</tr>
-	  <% }); %>
-	</table>
-	<hr>
+    <h2 class="month_title">
+      <span class="month_key"><%= month.key %></span> : 
+      <span class="month_fresh"><%= (month.fresh / month.pc * 100).toFixed(2) %>%</span>
+    </h2>
+    <p>WC: <%= month.wc %></p>
+    <table>
+      <tr><th>File Name</th><th>Fresh %</th><th>Word Count</th></tr>
+      <% month.posts.forEach((post, i)=>{ %>
+        <tr>
+          <td><%= post.fn %></td>
+          <td><%= post.fresh %></td>
+          <td><%= post.wc %></td>
+        </tr>
+      <% }); %>
+    </table>
+    <hr>
   </div>
 <% }); %>
