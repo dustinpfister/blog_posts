@@ -3,6 +3,7 @@ path = require('path'),
 app = express();
 
 app.set('view engine', 'ejs');
+app.set('views', './views');
 app.set('port', process.env.PORT || process.argv[2] || 8080);
 
 app.set('days_back', 365 * 2);
@@ -22,5 +23,13 @@ app.get('/', [
         require('./middleware/send_html.js')
 
     ]);
+
+app.get('/beta', (req, res) => {
+
+    res.render('index', {
+        title: 'fresh by month'
+    });
+
+});
 
 app.listen(app.get('port'), () => console.log('Fresh by month is up on Port: ' + app.get('port')));
