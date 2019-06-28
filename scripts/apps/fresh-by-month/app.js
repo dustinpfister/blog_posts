@@ -12,7 +12,7 @@ let dir_cli = path.resolve('../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
 app.use('/css', express.static('./public/css'));
-
+/*
 app.get('/', [
         // get posts
         require('./middleware/get_posts.js')({
@@ -25,8 +25,8 @@ app.get('/', [
         require('./middleware/send_html.js')
 
     ]);
-
-app.get('/beta', (req, res) => {
+*/
+app.get('/', (req, res) => {
     res.render('index', {
         title: 'fresh by month',
         layout: 'home',
@@ -34,7 +34,7 @@ app.get('/beta', (req, res) => {
     });
 });
 
-app.get('/beta/all', [
+app.get('/all', [
         // get posts
         require('./middleware/get_posts.js')({
             dir_cli: dir_cli,
