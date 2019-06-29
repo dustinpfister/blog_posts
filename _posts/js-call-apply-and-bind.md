@@ -5,15 +5,15 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-06-28 10:47:05
-version: 1.10
+updated: 2019-06-28 21:35:07
+version: 1.11
 ---
 
 I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
 
 <!-- more -->
 
-## Where to get started with Call, Apply, and Bind.
+## 1 - Where to get started with Call, Apply, and Bind.
 
 Maybe a good place to start is to know that in javaScript you often have a situation in which you are working with one or more objects, and you also have methods that act on those objects. For example there are Arrays and then there are methods like join that act on those arrays.
 
@@ -33,11 +33,11 @@ console.log(mess); // foo man chew is always in style
 
 The main point here is that yes there are methods that are associated with a certain kind of Object that is made with a certain kind of constructor function. However if any object just happens to have values that a method uses, call can be used to invoke a method on any object regardless if it is an instance of the constructor that it is associated with or not. A real simple way of thinking about it, is that Call can be used to free methods from there prototype.
 
-## Using Call
+## 2 - Using Function.call
 
 So call is a property of the Function prototype, which means it is a method that works with any function, including methods that are part of the prototype of any kind of Object like Date, and Array. Call works by using the call method on any function that I want to use with a certain object in which it might work by passing that object as the first argument. This Object will become the value of the this keyword when it comes to the body of the code that defines the method I am using. Any additional arguments are just the arguments that normally get passed to the method that I am using with call like normal.
 
-## Using Apply
+## 3 - Using Apply
 
 Apply works the same way as call, but you pass an array of arguments.
 
@@ -48,7 +48,7 @@ console.log( [].concat.call({length:3},'foo','man','chew') );
 // both produce ['foo','man','chew'];
 ```
 
-## Using Bind
+## 4 - Using Function.bind
 
 Bind will return a new method that can be used with the given object. It Works just like call, and apply, but will give you a new function that can be assigned to a variable, and called all over the place.
 
@@ -98,7 +98,7 @@ console.log(obj.x +','+obj.y); // unchanged
 console.log(mod.x +','+mod.y); // moved 100
 ```
 
-## Using call to create a custom api in a higher order function
+## 5 - Using call to create a custom api in a higher order function
 
 One use case example of Function.call would be to use it to make a custom api that can be used via the this keyword inside the body of a function that is used with call to set the value of this. For example say I want to make a function that can be used to set the state of something based on a current frame relative to a max frame count basis.
 
@@ -128,6 +128,6 @@ setFrame(10, {
 })
 ```
 
-## conclusion
+## 6 - conclusion
 
 Yes call, apply, and bind are pretty helpful. They allow for me to break methods from there prototypes and use those methods with any object.
