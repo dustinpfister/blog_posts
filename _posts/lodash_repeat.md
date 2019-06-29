@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2019-06-28 19:49:43
-version: 1.8
+updated: 2019-06-28 20:00:14
+version: 1.9
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method. The lodash repeat method is just a quick way of repeating a string a few times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. Still it is not to hard to just do this vanilla javaScript style so lets look at more than one solution for this.
@@ -27,7 +27,7 @@ Simple enough, but how hard is it to just do this with plain old vanilla javaScr
 
 ## 2 - What about arrays and objects? Check out \_.times
 
-A similar method that comes to mind is the lodash times method.
+A similar method that comes to mind is the [lodash times](/2017/10/11/lodash_times/) method. This method is a method that just simply called a given function a number of given times. It is a quick convenient way of doing something that would otherwise require writing a loop.
 
 ```js
 // the same can be done as
