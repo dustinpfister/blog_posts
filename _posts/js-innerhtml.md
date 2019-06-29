@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-28 22:29:27
-version: 1.14
+updated: 2019-06-28 22:30:03
+version: 1.15
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -50,7 +50,7 @@ In this example I am just creating an unordered list from elements in an array. 
 
 ## 2 - Using eval to execute javaScript code in an element
 
-So it is generally not a good idea to place script tags into a project with innerHTML, if you want to create script tags with javaScript that should be done with the createElement, and appendChild methids. However there are ways of gettig javaScript code to run that is in an element one way to do so would be with eval.
+So it is generally not a good idea to place script tags into a project with innerHTML, if you want to create script tags with javaScript that should be done with the createElement, and appendChild methods. However there are ways of getting javaScript code to run that is in an element one way to do so would be with eval.
 
 ```html
 <html>
