@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-28 22:39:06
-version: 1.16
+updated: 2019-06-28 22:41:07
+version: 1.17
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -15,7 +15,7 @@ With client side javaScript projects the [innerHtml](https://developer.mozilla.o
 
 ## 1 - innerHTML example for beginners
 
-The innerHTML property of an element is one way to go about changing the content of an element. There are other ways that are considered more professional by many developers because of some security concerns, but the nice thing about innerHTML is that it is fairly easy to use. The use of just involves creating a string representation of the html that you want, and set that string to the value of innerHTML.
+The innerHTML property of an element is one way to go about changing the content of an element. There are other ways that are considered more professional by many developers because of some security concerns, and also other factors as well, but the nice thing about innerHTML is that it is fairly easy to use. The use of just involves creating a string representation of the html that you want, and set that string to the value of innerHTML.
 
 For example say I have some html that looks like this.
 ```html
