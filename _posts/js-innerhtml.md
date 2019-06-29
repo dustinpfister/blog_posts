@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-29 09:15:49
-version: 1.24
+updated: 2019-06-29 09:18:44
+version: 1.25
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -70,9 +70,12 @@ console.log(typeof header); // 'object'
 </html>
 ```
 
-So we can both get and set the content of an html element with the innerHTML property, so then it is possible to use the innerHTML property as a way to create complex user interfaces that both get and set html content. For the most part that is true but there are a few draw backs to using innerHTML and ways of addresing it. lets look at some more basic examples befreo moving on to more complext topics.
+So we can both get and set the content of an html element with the innerHTML property, so then it is possible to use the innerHTML property as a way to create complex user interfaces that both get and set html content. For the most part that is true but there are a few draw backs to using innerHTML and ways of addressing it. lets look at some more basic examples before moving on to more complex topics.
 
-### 1.3 - Using a variable to concatante a string before using innerHTML to set the conettnof an element
+### 1.3 - Using a variable to concatenate a string before using innerHTML to set the content of an element
+
+So it is a common practice to use a variable to help with the process of concatenating a string before using innerHTML to set the content of an element. The reasoning here is that each time the innerHTML property is used it can result in page re-flow, so it is a good idea to minimize that by using innerHTML just once, rather than a whole bunch of times in a loop.
+
 
 ```html
 <html>
