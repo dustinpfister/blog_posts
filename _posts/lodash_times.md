@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2019-06-28 20:05:10
-version: 1.14
+updated: 2019-06-28 20:05:36
+version: 1.15
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -159,6 +159,12 @@ console.log(points);
 ## 4 - The lodash repeat method
 
 Another lodash method that comes to mind that is like the times method is the [repeat method](/2019/06/28/lodash_repeat). The repeat method in lodash is a way to just repeat a string a bunch of times. It is less advanced then the times method as it will only work with a string, but in many situations in which I just need to repeat a text pattern a few times it gets the job done okay.
+
+```js
+let _ = require('lodash');
+let bil = '1' + _.repeat('0', 9);
+console.log(bil); // 1000000000
+```
 
 ## 5 - Conclusion
 
