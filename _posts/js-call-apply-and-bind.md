@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-06-28 21:38:56
-version: 1.13
+updated: 2019-06-28 21:43:41
+version: 1.14
 ---
 
 I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
@@ -39,7 +39,7 @@ So call is a property of the Function prototype, which means it is a method that
 
 ## 3 - Using Apply
 
-Apply works the same way as call, but you pass an array of arguments.
+Apply works the same way as call, but you pass an array of arguments. This array of arguments will then be used with the method that apply is called off of where the value given in index zero will be the first argument and so forth.
 
 ```js
 console.log( [].concat.apply({length:3},['foo','man','chew']) );
