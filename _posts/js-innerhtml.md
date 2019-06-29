@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-29 08:49:23
-version: 1.20
+updated: 2019-06-29 09:02:10
+version: 1.21
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -38,6 +38,37 @@ out.innerHTML = '<h1>Hello World><\/h1>';
 
 So the Basic idea of the innerHTML property is fairly simple and straight forward for the most part, but in some cases things can get a little confusing so lets look at some more examples related to the use of the innerHTML property in client side javaScript.
 
+### 1.2 - Getting an html string of an element with innerHTML
+
+The innerHTML property of an element can be used to set the content of an element but it can also be used as a way to get a string representation of the current dom state of that element as well. Say I want to pull the content of an element in string form into a text area element, that can be done with innerHTML.
+
+```html
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="header">
+            <h1>Hello world</h1>
+            <p>
+                <a href="/home">Home</a> | 
+                <a href="/blog">Blog</a> | 
+                <a href="/about">About</a>
+            </p>
+            <br>
+        </div>
+        <textarea id="out" cols="60" rows="20">
+        </textarea>
+        <script>
+var out = document.getElementById('out'),
+header = document.getElementById('header');
+out.value = header.innerHTML;
+console.log(typeof header.innerHTML); // 'string'
+console.log(typeof header); // 'object'
+        </script>
+    </body>
+</html>
+```
 
 ## 2 - Using eval to execute javaScript code in an element
 
