@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2018-10-25 12:11:22
-version: 1.13
+updated: 2019-06-28 20:05:10
+version: 1.14
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well.
@@ -19,7 +19,7 @@ This is a lodash post on the \_.times method that can be used to call a given me
 
 ## 2 - Some Basic \_.times examples
 
-In this section I will be covering some basic examples of \_.times along with some quick vanilla js alternatives. Keep in mid that more concise solutions are not always better solutions all around. I have not taken the time to do synthetic testing with performance in this post, juts throwing together examples.
+In this section I will be covering some basic examples of \_.times along with some quick vanilla js alternatives. Keep in mind that more concise solutions are not always better solutions all around. I have not taken the time to do synthetic testing with performance in this post, juts throwing together examples.
 
 ### 2.1 - Just call a method a number of times
 
@@ -156,7 +156,11 @@ console.log(points);
 */
 ```
 
-## 4 - Conclusion
+## 4 - The lodash repeat method
+
+Another lodash method that comes to mind that is like the times method is the [repeat method](/2019/06/28/lodash_repeat). The repeat method in lodash is a way to just repeat a string a bunch of times. It is less advanced then the times method as it will only work with a string, but in many situations in which I just need to repeat a text pattern a few times it gets the job done okay.
+
+## 5 - Conclusion
 
 So the times might be a nice quick way to create an array of a fixed length, of call a method a few times. However it might not be the best solution in many cases. There is the issue of speed, and also I can not say that this is one of the best methods that lodash has to offer. Some of them do come in handy, and help me to save a fair amount of time writing a solution from the ground up, or hunting something down at stack overflow. 
 
