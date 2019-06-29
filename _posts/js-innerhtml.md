@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-29 09:02:10
-version: 1.21
+updated: 2019-06-29 09:04:52
+version: 1.22
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -69,6 +69,8 @@ console.log(typeof header); // 'object'
     </body>
 </html>
 ```
+
+So we can both get and set the content of an html element with the innerHTML property, so then it is possible to use the innerHTML property as a way to create complex user interfaces that both get and set html content right? Well yes a lot can be done with innerHTML but there are also some things that are best done other ways with with the element reference. So now that we have a good grasp on the basics lets look at some more advanced examples of the innerHTML property in action.
 
 ## 2 - Using eval to execute javaScript code in an element
 
