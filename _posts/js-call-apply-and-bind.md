@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-06-28 21:43:41
-version: 1.14
+updated: 2019-06-28 21:52:16
+version: 1.15
 ---
 
 I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
@@ -130,6 +130,26 @@ setFrame(10, {
 
 This is an example of a high order function which is a fancy term for a function that accepts a function as one of its arguments. When it comes to calling a function that is passed as an argument, it can just be called like normal, but using something like Function.call can be used to set what the value of the this keyword is inside the body of that function that is passed as an argument.
 
-## 6 - conclusion
+## 6 - Using Array prototype methods with other objects that are not arrays
+
+So Function.call and the similar methods can be used to use prototype methods of a class with objects that are not an instance of that class. If the object just happens to have all the properties that the method uses, then chances are, in most cases it will work.
+
+```js
+// not an array
+let obj = {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+};
+// Can use call to use an Array method with an object
+let arr = Array.prototype.map.call(obj, (n) => {
+        return Math.pow(2, n);
+    });
+console.log(arr.constructor.name); // 'Array'
+console.log(arr); // [2,4,8]
+```
+
+## 7 - conclusion
 
 Yes call, apply, and bind are pretty helpful. They allow for me to break methods from there prototypes and use those methods with any object. They can also be used to apply a prototype method of a Class to any object, and in some cases it will work.
