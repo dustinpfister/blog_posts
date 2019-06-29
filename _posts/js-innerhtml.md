@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-28 21:08:58
-version: 1.13
+updated: 2019-06-28 22:29:27
+version: 1.14
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -48,7 +48,29 @@ el.innerHTML = html += '<\/ul>';
 
 In this example I am just creating an unordered list from elements in an array. It is generally a good idea to add things up with a variable and then just set innerHTML once, as each time innerHTML is used it can trigger page re-flow.
 
-## 2 - Security concerns with innerHTML
+## 2 - Using eval to execute javaScript code in an element
+
+So it is generally not a good idea to place script tags into a project with innerHTML, if you want to create script tags with javaScript that should be done with the createElement, and appendChild methids. However there are ways of gettig javaScript code to run that is in an element one way to do so would be with eval.
+
+```html
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="out" style="display:none;"></div>
+        <script>
+var out = document.getElementById('out');
+out.innerHTML = 'console.log(\'foo\')';
+eval(out.innerHTML)
+        </script>
+    </body>
+</html>
+```
+
+I cant say eval is something that I use often, and a lot of developers frown on its use. Chance are if you are using eval there is a better way to do whatever it is that you are trying to accomplish.
+
+## 3 - Security concerns with innerHTML
 
 The issue of security concerns with innerHTML often comes up in. The thing about innerHTML is that when script tags are used in the html string, the code in the string will run. As such this can potentially result in code injection attacks compared to the use of an alternative like createTextNode, or innerText.
 
@@ -58,11 +80,11 @@ var el = document.getElementById('out');
 el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad times\")'>";
 ```
 
-## 3 - innerHTML alternatives
+## 4 - innerHTML alternatives
 
 In this section I will be covering alternatives to innerHTML. This includes the use of many methods that are used together, and simple alternatives that work in a similar way as is the case with innerText.
 
-### 3.1 - document.createElement, document.createTextNode, and el.appendChild
+### 4.1 - document.createElement, document.createTextNode, and el.appendChild
 
 If you are not familiar with document.createElement, then you should play around with that one a little at some point. The createElement method as the name suggests is what can be used in client side javaScript to create an element with javaScript. The method can be used with additional methods like document.createTextNode, and el.appendChild to do the same thing as innerHTML.
 
