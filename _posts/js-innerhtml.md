@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-29 08:46:11
-version: 1.19
+updated: 2019-06-29 08:49:23
+version: 1.20
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -19,7 +19,7 @@ The innerHTML property of an element is one way to go about changing the content
 
 ### 1.1 - innerHTML hello world example
 
-Here I have a very simple example of inneHTML. The basic process is to just get a reference to an element that I want to inject html for by whatever means and then set the value of the innerHTML property of the element with an html string.
+Here I have a very simple example of inneHTML. The basic process is to just get a reference to an element that I want to inject html for by whatever means and then set the value of the innerHTML property of the element with an html string. In this example I am using the document.getElementBYId method to get a reference to a div element that I have assigned an id of the value out to. I then just set the value of the innerHTML property of that element to a sting with header elements in it.
 
 ```html
 <html>
@@ -30,12 +30,13 @@ Here I have a very simple example of inneHTML. The basic process is to just get 
         <div id="out"></div>
         <script>
 var out = document.getElementById('out');
-out.innerHTML = 'Hello World';
+out.innerHTML = '<h1>Hello World><\/h1>';
         </script>
     </body>
 </html>
 ```
 
+So the Basic idea of the innerHTML property is fairly simple and straight forward for the most part, but in some cases things can get a little confusing so lets look at some more examples related to the use of the innerHTML property in client side javaScript.
 
 
 ## 2 - Using eval to execute javaScript code in an element
