@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-28 22:30:03
-version: 1.15
+updated: 2019-06-28 22:39:06
+version: 1.16
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -94,3 +94,9 @@ var p = document.createElement('p');
 p.appendChild(document.createTextNode('foo'));
 el.appendChild(p);
 ```
+
+## 5 - Conclusion
+
+So suing innerHTNL as a way to inject content is nice because it makes the process fairly easy as the content can just be created by generating a string representation of html markup. However it is no replacement for the more professional alternatives that involve create an new element object with the createElement method and then appending that with an element method like appendChild.
+
+Although innerHTML and html in general is a great way to go about creating a user interface, it might not be the best choice for all projects. There are many other ways of creating an interface in a web browser and not all of them are subject to page re-flow, there is of course canvas elements and svg that are there to play with as well.
