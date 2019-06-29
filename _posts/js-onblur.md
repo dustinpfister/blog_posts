@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-06-21 11:58:54
-version: 1.22
+updated: 2019-06-28 22:07:22
+version: 1.23
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired. In this post I will be going over some examples using the on blur event with plain old vanilla javaScript, rather than a certain front end frame work.
@@ -143,4 +143,4 @@ It just displays if the canvas has the users focus or not, but of course I could
 
 ## 5 - Conclusion
 
-So the the on blur event is useful for defining some logic that will fire when a user moves the focus of an element away from an element. It is often used in conjunction with the on focus event that will fore when the focus of an element is gained.
+So the the on blur event is useful for defining some logic that will fire when a user moves the focus of an element away from an element. It is often used in conjunction with the on focus event that will fore when the focus of an element is gained. If I get some more time sooner or later I might get around to writing some better examples that involve a great deal more going on whe it comes to using the on blur event in a project. For now I hope you enjoyed this post and got at least something of value out of reading it.
