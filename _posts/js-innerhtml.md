@@ -5,19 +5,18 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-06-28 22:41:07
-version: 1.17
+updated: 2019-06-29 08:43:54
+version: 1.18
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
 
 <!-- more -->
 
-## 1 - innerHTML example for beginners
+## 1 - Basic innerHTML example
 
-The innerHTML property of an element is one way to go about changing the content of an element. There are other ways that are considered more professional by many developers because of some security concerns, and also other factors as well, but the nice thing about innerHTML is that it is fairly easy to use. The use of just involves creating a string representation of the html that you want, and set that string to the value of innerHTML.
+The innerHTML property of an element is one way to go about changing the content of an element. There are other ways that are considered more professional by many developers because of several factors that I will get to later in this post. However the nice thing about innerHTML is that it is fairly easy to use, as I can just use a string representation of the innerHTML that I want to inject. This string value can then be set to the value of the innerHTML property of the element that I want to inject html for and in most cases it will work just fine.
 
-For example say I have some html that looks like this.
 ```html
 <html>
     <head>
@@ -25,25 +24,12 @@ For example say I have some html that looks like this.
     </head>
     <body>
         <div id="out"></div>
-        <script src="main.js"></script>
+        <script>
+var out = document.getElementById('out');
+out.innerHTML = 'Hello World';
+        </script>
     </body>
 </html>
-```
-
-As you can see I am linking to an external javaScript file. In this external javaScript file I am making use of innerHTML as a way to inject some additional content that will do into the div element that I have assigned an id to. The content can be in the form of a sting of html markup like this:
-
-```js
-var el = document.getElementById('out'),
-arr = [1,2,3,4];
-html = '<ul>';
- 
-arr.forEach(function(n){
- 
-html += '<li>'+n+'</li>'
- 
-});
- 
-el.innerHTML = html += '<\/ul>';
 ```
 
 In this example I am just creating an unordered list from elements in an array. It is generally a good idea to add things up with a variable and then just set innerHTML once, as each time innerHTML is used it can trigger page re-flow.
