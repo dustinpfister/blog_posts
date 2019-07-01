@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2019-07-01 13:36:20
-version: 1.4
+updated: 2019-07-01 13:42:13
+version: 1.5
 ---
 
 The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. This method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. The act of getting the last element in an array is a fairly simple task as well though, so the lodash last method is not a great example of why javaScript developers should bother with lodash. Still in this post I will be taking a look at the \_.last method in lodash as well as a whole bunch of other options when it comes to getting the last element in an array as with lodash, as well as plain old vanilla javaScript by itself as well.
@@ -32,6 +32,8 @@ Siple enough, but what if I want the last element, and I want it to be removed f
 
 ## 2 - lodash remove
 
+So there is also the lodash \_.remove method that can be used to get the last element of an array. However it is a far more complex solution for something that is fairly simple. The lodash remove method works by passing the array as the first argument and then a function that will be called for each element. In the body of the function that is called I could give an expression that will return true when it is the last index in the array.
+
 ```js
 let arr = [1, 2, 3, 4],
 last = _.remove(arr, (el,i)=>{
@@ -41,9 +43,11 @@ last = _.remove(arr, (el,i)=>{
 // for getting the last element. However it will
 // also mutate the array, and is a complex 
 // solution for a fairly simple task
-console.log(last); // 4
+console.log(last[0]); // 4
 console.log(arr); // [1,2,3,4]
 ```
+
+It works sure, but for something so simple it is a bit much. The lodash remove method should be used when there is some far more complex set of criteria that is required when it comes to removing and returning the last element in an array.
 
 ## 3 - Vanilla javaScript alternatives to lodash last
 
