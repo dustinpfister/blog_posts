@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2019-07-01 16:20:25
-version: 1.15
+updated: 2019-07-01 16:25:16
+version: 1.16
 ---
 
 [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. In this post I will be going over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
@@ -169,6 +169,8 @@ var loop = function () {
 };
 setInterval(loop, 1000);
 ```
+
+The function that I pass as an argument when using the frames higher order function is of course a function expression as well, and in most cases it should be. In fact if if an arrow function is used it will result in an array because I am using the Function.call method and the value of the this keyword is handled differently with arrow functions compared to function expressions and function declarations.
 
 ## 7 - Not so typical use case examples of function expressions in javaScript
 
