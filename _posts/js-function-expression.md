@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2019-07-01 15:58:06
-version: 1.14
+updated: 2019-07-01 16:20:25
+version: 1.15
 ---
 
 [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. In this post I will be going over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
@@ -126,11 +126,55 @@ console.log(mod()); // 'bar'
 console.log(mod.bar()); // 'foo'
 ```
 
-## 6 - Not so typical use case examples of function expressions in javaScript
+## 6 - Higher order functions and function expressions
+
+When starting to get into advanced javaScript topics sooner or later you might get around to something called [higher order functions](https://en.wikipedia.org/wiki/Higher-order_function). The term higher order function is just a fancy terms for a function that accepts one or more functions as an argument. In addition it might also return a function  as well, or does at least one of those things.
+
+Regardless of what you call them they do come in handy now and then and I find myself writing them all the time. In this section I will be covering an example of a higher order function that makes use of a few function expressions for the creation of the higher order function itself, as well the function that it returns and the default value for the function that is expected to be passed to it as an argument as well.
+
+```js
+// a high order function example
+// that accepts a function as an argument
+// and returns a function as well
+var frames = function (forFrame) {
+    var frame = 0,
+    maxFrame = 50;
+    forFrame = forFrame || function () {
+        console.log(this.per)
+    };
+    return function () {
+        forFrame.call({
+            frame: frame,
+            maxFrame: maxFrame,
+            per: frame / maxFrame
+        });
+        frame += 1;
+        frame %= maxFrame;
+    }
+};
+ 
+var box = {
+    x: 0,
+    y: 30,
+    w: 32,
+    h: 32
+}
+var ani = frames(function () {
+        box.x = 50 + 100 * this.per;
+        console.log(box);
+    });
+ 
+var loop = function () {
+    ani();
+};
+setInterval(loop, 1000);
+```
+
+## 7 - Not so typical use case examples of function expressions in javaScript
 
 So I covered some typical use case examples of function expressions, now it is time to cover some weird things that can be done with function expressions. I am not saying any of this is a best practice or not. However maybe this section will help you gain some deeper insight of what is possible with function expressions.
 
-### 6.1 - Using a function expression as part of a larger expression
+### 7.1 - Using a function expression as part of a larger expression
 
 I do not run into many situations in which it is call for, but one of the benefits of function expressions is that they can be used as part of a larger expression by doing something like this.
 
@@ -147,7 +191,7 @@ let n = 10 + (function () {
 console.log(n); // 42
 ```
 
-### 6.2 - Compute a value for an if statement on the fly
+### 7.2 - Compute a value for an if statement on the fly
 
 So because function expressions can self invoke they can be used just about anywhere such as a part of a lengthly expression or in an if statement on the fly. I cant say that I do that sort of thing often, also can not say I recommend it, but it is one of the many things that comes to mind when it comes to what is possible with function expressions.
 
@@ -159,6 +203,6 @@ if ((function () { return Math.floor(Math.random() * 2)}())) {
 }
 ```
 
-## 7 - Conclusion
+## 8 - Conclusion
 
 Well that is it for now when it comes to function expressions in javaScript. There is a whole lot more to write about functions when it comes to javaScript, but function expressions or literals as you might prefer are a big part of understanding functions to a great deal in javaScriot. There are other types of functions of course that also work more or less the same ways as expressions but with some minor and not so minor differences. Such is the case with function declarations and arrow functions but that is all a matter for another post.
