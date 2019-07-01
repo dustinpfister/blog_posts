@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2019-07-01 15:37:03
-version: 1.25
+updated: 2019-07-01 15:48:54
+version: 1.26
 ---
 
 The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An addition to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
@@ -116,7 +116,16 @@ if(location.protocol === 'file:'){
 }
 ```
 
-So the values of many of these properties of course depending on the state of the url string. If the protocol is the file: protocol the of couse I am not going to get a domain name, or port, becuase the url is just a path to a local asset.
+So the values of many of these properties of course depending on the state of the url string. If the protocol is the file: protocol the of course I am not going to get a domain name, or port, because the url is just a path to a local asset.
+
+## 7 - the path name of a document location
+
+The path name of the location object in document will refer to the path name after the protocol host name and port, and before any additional parts of the url afterwards such as query strings and hash tags to any items in the page
+
+```js
+//  at https://dustinpfister.github.io/2017/09/14/lodash-find/
+console.log(document.location.pathname); // "/2017/09/14/lodash-find/"
+```
 
 ## 7 - Conclusion
 
