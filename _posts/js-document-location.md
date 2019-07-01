@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2019-07-01 15:30:52
-version: 1.23
+updated: 2019-07-01 15:34:26
+version: 1.24
 ---
 
 The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An addition to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
@@ -53,6 +53,8 @@ document.location.href = 'https://www.google.com/';
     </body>
 </html>
 ```
+
+The same can also be done with the location href property of the window object as well. In fact in most modern browsers there is not any note worth difference between the two, but that might not always be the case when it comes to older browsers. Some developers seem to suggest that the window location property should be used for this, and anything else that has to do with the location object of the page. However this is a post on document location so that is what I use that in this example, in production code though maybe window location would be best.
 
 ## 3 - Document location and window location
 
