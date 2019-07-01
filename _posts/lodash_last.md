@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2019-07-01 13:34:20
-version: 1.3
+updated: 2019-07-01 13:36:20
+version: 1.4
 ---
 
 The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. This method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. The act of getting the last element in an array is a fairly simple task as well though, so the lodash last method is not a great example of why javaScript developers should bother with lodash. Still in this post I will be taking a look at the \_.last method in lodash as well as a whole bunch of other options when it comes to getting the last element in an array as with lodash, as well as plain old vanilla javaScript by itself as well.
@@ -26,8 +26,9 @@ last = _.last(arr);
 // and will leave the array unchanged
 console.log(last); // 4
 console.log(arr); // [1,2,3,4]
-
 ```
+
+Siple enough, but what if I want the last element, and I want it to be removed from the array. Also do I really need lodash to do this? Well there are other ways of getting the last element in the array, and removing it as well, with and without lodash. So lets look at some more examples of how to to get that last element in an array in javaScript.
 
 ## 2 - lodash remove
 
