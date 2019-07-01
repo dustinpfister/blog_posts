@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2019-07-01 13:47:04
-version: 1.8
+updated: 2019-07-01 13:50:27
+version: 1.9
 ---
 
 The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. This method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. The act of getting the last element in an array is a fairly simple task as well though, so the lodash last method is not a great example of why javaScript developers should bother with lodash. Still in this post I will be taking a look at the \_.last method in lodash as well as a whole bunch of other options when it comes to getting the last element in an array as with lodash, as well as plain old vanilla javaScript by itself as well.
@@ -80,12 +80,14 @@ console.log(arr); // [1,2,3]
 
 ### 3.3 - Array.splice
 
+Of course there is also Array.splice that can be used to return a a new array that is a slice of the array from which it is used. So then this can be used as an alternative that works just like lodash last as well sense it does not remove the last element just gives it to you.
+
 ```js
 let arr = [1, 2, 3, 4],
 last = arr.splice(arr.length-1,1);
 // array.splice will have the same effect as
 // arrar.pop
-console.log(last); // 4
+console.log(last[0]); // 4
 console.log(arr); // [1,2,3]
 ```
 
@@ -95,6 +97,6 @@ console.log(arr); // [1,2,3]
 let arr = [1, 2, 3, 4],
 last = arr.slice(arr.length-1,arr.length);
 // array.slice will work like lodash last
-console.log(last); // 4
+console.log(last[0]); // 4
 console.log(arr); // [1,2,3,4]
 ```
