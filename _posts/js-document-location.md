@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2019-06-29 09:28:31
-version: 1.12
+updated: 2019-06-30 20:31:16
+version: 1.13
 ---
 
 The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An additon to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
@@ -66,6 +66,30 @@ if (location.protocol == 'file:') {
 }
 ```
 
-## 4 - Conclusion
+## 4 -reload a page with javaScript via document.location
+
+So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object.
+
+```js
+<html>
+    <head>
+        <title>document location</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <input type="button" id="button_reload" value="reload">
+        <script>
+document.getElementById('out').innerHTML = Math.random();
+document.getElementById('button_reload')
+.addEventListener('click', function(){
+console.log('yes');
+  location.reload();
+});
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 So the document location property is very useful when it comes to client side redirects as well as knowing the current protocol and more about the current location of the page.
