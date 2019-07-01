@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2019-07-01 14:19:48
-version: 1.2
+updated: 2019-07-01 15:26:53
+version: 1.3
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick.
@@ -14,6 +14,8 @@ In html 5 canvas there might come a time in which [canvas layers](https://stacko
 <!-- more -->
 
 ## 1 - canvas layer basic example
+
+So the basic idea of canvas layers is that you just have a collection of canvas elements. A canvas element that is created and added to a container element first will have a lower z index value then canvas elements added after. anything that should have a lower z index value such as a background can be drawn to a canvas that is behind another canvas the draws something that updates on every frame tick. In some situations this can help to improves frame rate, as it allows for a situation in which what is being updated is only that what changes.
 
 ```html
 <html>
