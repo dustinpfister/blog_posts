@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2019-07-01 09:41:16
-version: 1.17
+updated: 2019-07-01 09:46:09
+version: 1.18
 ---
 
 The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An addition to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
@@ -94,9 +94,9 @@ console.log('yes');
 </html>
 ```
 
-## 6 - document location hoast and hostname
+## 6 - document location host and hostname
 
-In a location object there is a host and hostname properties that can get the domain name if there is one to get depending on the protocol. For exampe if I create an htnl document and just open it up in the browser then the prototcol is file: and then the values for host and hostname are empty strings. However if I host that file locally with an http server then the prototcol will be http: and the host and hostname properties will not return an empty string.
+In a location object there is a host and hostname properties that can get the domain name if there is one to get depending on the protocol. For example if I create an html document and just open it up in the browser then the protocol is file: and then the values for host and hostname are empty strings. However if I host that file locally with an http server then the protocol will be http: and the host and hostname properties will not return an empty string.
 
 The two properties more or less give the same thing, but with one note worth difference the hostname will also give a post if there is one in the url string.
 
