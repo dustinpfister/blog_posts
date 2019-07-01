@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-04-11 11:17:44
-version: 1.11
+updated: 2019-07-01 17:17:58
+version: 1.12
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -82,7 +82,7 @@ el.addEventListener('change', func2);
 
 For a more advanced example of the onchange event, it made a quick little app that can be used to estimate the amount of money that a blog can make if the revenue per mille, and page views counts are known. In this example I am attaching the same event handler for more than one input element.
 
-So I just have a simple html file that has some input elements for rpm and pageviews, and then I am linking o an external javaScript file that makes use of the onchange event to update the output via the inner text of a div element each time the value of the rpm or pageviews input elements changes.
+So I just have a simple html file that has some input elements for rpm and page views, and then I am linking o an external javaScript file that makes use of the onchange event to update the output via the inner text of a div element each time the value of the rpm or page views input elements changes.
 
 ```html
 <html>
@@ -100,7 +100,7 @@ So I just have a simple html file that has some input elements for rpm and pagev
 </html>
 ```
 
-Here I have the code in my onchange.js file that makes use of the onchange event to update the text each time a change event fires. I have a state object that holds the current values for money, pageviews and rpm.
+Here I have the code in my onchange.js file that makes use of the onchange event to update the text each time a change event fires. I have a state object that holds the current values for money, page views and rpm.
 
 ```js
 var state = {
@@ -125,3 +125,7 @@ state.figure();
 ```
 
 Here I am using Function.call to use the Array.forEach method as a way to loop over the children property of my controls div. This is necessary if I want to use an Array method like Array.forEach with the children property because it is not an Array but rather an HTMLCollection.
+
+## 4 - Conclusion
+
+So the onchange event is useful for setting one or more callbacks for an element that will fire when its value changes. The onchange event can be used in conjunction with a wide range of other events such as on blur, and on focus to define a user interface that can be used to gather information that will be posted back to a server.
