@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2019-07-01 16:27:54
-version: 1.17
+updated: 2019-07-01 16:33:51
+version: 1.18
 ---
 
 [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. In this post I will be going over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
@@ -130,7 +130,7 @@ console.log(mod.bar()); // 'foo'
 
 When starting to get into advanced javaScript topics sooner or later you might get around to something called [higher order functions](https://en.wikipedia.org/wiki/Higher-order_function). The term higher order function is just a fancy terms for a function that accepts one or more functions as an argument. In addition it might also return a function  as well, or does at least one of those things.
 
-Regardless of what you call them they do come in handy now and then and I find myself writing them all the time. In this section I will be covering an example of a higher order function that makes use of a few function expressions for the creation of the higher order function itself, as well the function that it returns and the default value for the function that is expected to be passed to it as an argument as well.
+Regardless of what you call them they do come in handy now and then and I find myself writing them all the time. In this section I will be covering an example of a higher order function that makes use of a few function expressions for the creation of the higher order function itself, as well the function that it returns and the default value for the function that is expected to be passed to it as an argument as well. It will have to do with creating and running some logic that has to do with a simple animation, or a not so simple animation depending on the nature of the code that I pass to it via a function expression that I pass to it as an argument.
 
 I start out by creating a function expression and assigning it to a variable called frames, I then make sure that I am calling an argument that is expected to be a function as well called forFrame. I then return a function expression as well that will be called to step an animation logic that is created by calling the frames function.
 
