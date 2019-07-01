@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2019-07-01 14:19:00
-version: 1.1
+updated: 2019-07-01 14:19:48
+version: 1.2
 ---
 
-In html 5 canvas there might come a time in which canvas layers should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick.
+In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick.
 
 <!-- more -->
 
