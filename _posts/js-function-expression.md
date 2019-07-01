@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2019-02-10 17:22:28
-version: 1.12
+updated: 2019-07-01 15:55:03
+version: 1.13
 ---
 
 [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. In this post I will be going over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
@@ -149,7 +149,7 @@ console.log(n); // 42
 
 ### 6.2 - Compute a value for an if statement on the fly
 
-So because function expressions can self invoke they can be used as a way to do something like this with if statements.
+So because function expressions can self invoke they can be used just about anywhere such as a part of a lengthly expression or in an if statement on the fly. I cant say that I do that sort of thing often, also can not say I recommend it, but it is one of the many things that comes to mind when it comes to what is possible with function expressions.
 
 ```js
 if ((function () { return Math.floor(Math.random() * 2)}())) {
