@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2019-06-30 20:36:37
-version: 1.14
+updated: 2019-06-30 20:38:08
+version: 1.15
 ---
 
-The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An additon to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
+The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An addition to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
 
 <!-- more -->
 
@@ -68,7 +68,7 @@ if (location.protocol == 'file:') {
 
 ## 4 -reload a page with javaScript via document.location
 
-So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object.
+So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object. This could be done in an event handler like in the following example, or by whatever means that would be appropriate when doing so.
 
 ```js
 <html>
