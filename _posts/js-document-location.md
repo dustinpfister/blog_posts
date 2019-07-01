@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2019-06-30 20:46:59
-version: 1.16
+updated: 2019-07-01 09:41:16
+version: 1.17
 ---
 
 The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An addition to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
@@ -34,7 +34,7 @@ el.innerText = document.location.href;
 
 So this basic example just displays the current href of the page in the browser window, but one of the most useful aspects of the document location property is that it can be used to preform a client side redirect as well as other tasks as well. There are a few more methods and properties of a location object in client side javaScript so lets look at some more examples of the document location property.
 
-## 3 - redirect example with document location
+## 2 - redirect example with document location
 
 The href property of a location object can also be set to a url, and when doing so will result in a redirect to that url. Although the location object of the document location property is read only a DOMString can be assigned to it that will result in a similar effect as doing so to the href property of the location object
 
@@ -54,7 +54,7 @@ document.location.href = 'https://www.google.com/';
 </html>
 ```
 
-## 2 - Document location and window location
+## 3 - Document location and window location
 
 It would seem that in some browser environments document location and window location are the same thing, however in others they are not. It might be best to actually stick with window location becuase that might be more consistent across environments, but don't just take my word for it there is a good [thread on stack overflow](https://stackoverflow.com/questions/2430936/whats-the-difference-between-window-location-and-document-location-in-javascrip) on this one that is worth checking out.
 
@@ -94,6 +94,24 @@ console.log('yes');
 </html>
 ```
 
-## 6 - Conclusion
+## 6 - document location hoast and hostname
+
+In a location object there is a host and hostname properties that can get the domain name if there is one to get depending on the protocol. For exampe if I create an htnl document and just open it up in the browser then the prototcol is file: and then the values for host and hostname are empty strings. However if I host that file locally with an http server then the prototcol will be http: and the host and hostname properties will not return an empty string.
+
+The two properties more or less give the same thing, but with one note worth difference the hostname will also give a post if there is one in the url string.
+
+```js
+if(location.protocol === 'file:'){
+    console.log(location.protocol); // 'file:'
+    console.log(location.host); // ''
+    console.log(location.hostname); // ''
+}else{
+    console.log(location.protocol); // 'http:'
+    console.log(location.host); // localhost:8080
+    console.log(location.hostname); // localhost
+}
+```
+
+## 7 - Conclusion
 
 So the document location property is very useful when it comes to client side redirects as well as knowing the current protocol and more about the current location of the page.
