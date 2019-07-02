@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-07-02 12:45:15
-version: 1.16
+updated: 2019-07-02 12:47:13
+version: 1.17
 ---
 
 I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
@@ -163,6 +163,8 @@ There are many things to go by when it comes to garaging the quality of a piece 
     return acc + words + ' ';
 }).split(' ').length;
 ```
+
+The use of Function.call allows for me to use an Array prototype method with an instance of HTMLCollection. I then create an Array of strings of the inner text of each paragraph element in the page, and then of course use that to get a ruff idea of word count.
 
 ## 8 - conclusion
 
