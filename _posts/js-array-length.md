@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-07-02 12:27:33
-version: 1.44
+updated: 2019-07-02 12:31:52
+version: 1.45
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative, however in some cases it is just an object property that does not even reflect that. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array. So then for the most part the length property in an array is easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -31,14 +31,15 @@ console.log(a.length); // 1
 console.log(a[0]); // 'foo'
 ```
 
-### 1.1 - Array length, and Array index
+### 1.1 - Array length, count, and Array index
 
-An array has a length property and in most situations the length property is also the number of elements in the array as well. However this is not always the case so an arrays count of elements might actually differ from the length of the array depding on how you go about counting elements of course.
+An array has a length property and in most situations the length property is also the number of elements in the array as well. However this is not always the case so an arrays count of elements might actually differ from the length of the array depending on how you go about counting elements of course.
 
-So the element length of an array can often be obtained by just referencing the length property of an array like so.
+In addition to the length of an array and the count of the elements in the array there is also the array index value. This is often a number or a string that can be easily converted to a number that reflects the index of a certain element in an array. Index values are zero relative so they go from zero up to one less of the length of the array.
+
+So the element length of an array can often be obtained by just referencing the length property of the array, and index values can be used to get the value of a certain element in the array by used of square brackets.
 
 ```js
-
 console.log(a.length); // 3
  
 console.log( a[0]); // 1
