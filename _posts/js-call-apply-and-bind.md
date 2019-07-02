@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-06-28 21:52:16
-version: 1.15
+updated: 2019-07-02 12:45:15
+version: 1.16
 ---
 
 I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
@@ -150,6 +150,20 @@ console.log(arr.constructor.name); // 'Array'
 console.log(arr); // [2,4,8]
 ```
 
-## 7 - conclusion
+## 7 - A Function call use case example that involves getting the word count of a page
+
+As a content writer I do a little keyword research now and then, and in the process of doing so I check out the content of the competition. If I want to rank well with a given keyword I must of course write content that is at least just as good if not far better than the content that is all ready ranking for a keyword of interest.
+
+There are many things to go by when it comes to garaging the quality of a piece of content, but one of many metrics that come to mind is of course word count. So when looking at a piece of content I like to know the word count of it along with many other things. I should use some kind of browser plug-in, and I have plans to eventually develop or use some kind of software that will do the job. However I can also just copy and past something like this into the javaScript console of the page that I am looking at as well.
+
+```js
+[].map.call(document.getElementsByTagName('p'), (p) => {
+    return p.innerText;
+}).reduce((acc, words) => {
+    return acc + words + ' ';
+}).split(' ').length;
+```
+
+## 8 - conclusion
 
 Yes call, apply, and bind are pretty helpful. They allow for me to break methods from there prototypes and use those methods with any object. They can also be used to apply a prototype method of a Class to any object, and in some cases it will work.
