@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-06-21 09:51:11
-version: 1.26
+updated: 2019-07-02 07:47:45
+version: 1.27
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -175,7 +175,44 @@ ctx.closePath();
 ctx.stroke();
 ```
 
-## 5 - Using a custom method for drawing a canvas arc circle
+## 5 - Wrapping the canvas arc method
+
+Another topic that comes to mind is the idea of wrapping the canvas arc method in a function and then setting some hard coed defaults for the method. For example in just about all use case examples of the canvas arc method I am using the method to draw a circle. So why not make a method where there are some defaults for arguments that make the starting radian value zero, and the ending radian value the value of pi times two. This way I do not have to do so each time I call the canvas arc method, and if I need to I can still pass different values for the starting and ending radian.
+
+```js
+// wrapping canvas arc
+var arc = function (opt) {
+    opt = opt || {};
+    // use given ctx, or attempt to get a global one
+    opt.ctx = opt.ctx || ctx;
+    opt.cx = opt.cx === undefined ? 0 : opt.cx;
+    opt.cy = opt.cy === undefined ? 0 : opt.cy;
+    opt.radius = opt.radius === undefined ? 50 : opt.radius;
+    opt.radStart = opt.radStart === undefined ? 0 : opt.radStart;
+    opt.radEnd = opt.radEnd === undefined ? Math.PI * 2 : opt.radEnd;
+    ctx.arc(opt.cx, opt.cy, opt.radius, opt.radStart, opt.radEnd);
+};
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+// now I can just call arc
+ctx.strokeStyle='red';
+ctx.beginPath();
+arc();
+ctx.stroke();
+ 
+// or give just the values I want to give,
+// if the hard coded values I set for myself work fine
+ctx.beginPath();
+arc({
+  cx: canvas.width / 2,
+  cy: canvas.height / 2,
+});
+ctx.stroke();
+```
+
+## 6 - Using a custom method for drawing a canvas arc circle
 
 It is fun to write these kind of methods now and then to gain a better degree of control over how the arc, or circle is drawn. Many canvas libraries have a polygon method built in, but with plain vanilla js it is not to hard to start to get together some methods for drawing a polygon with a set number or points.
 
@@ -218,6 +255,6 @@ drawPoints(ctx, createPolygonPoints(15,15,radius,pointCount), true);
 
 This method can only be used to draw a circle, rather than say a half circle as I have choses to omit arguments for a start and end radian, and direction. It is true that writing a clone of the canvas arc method would not to be to hard, but doing so would not make sense, unless there are some additional features to add, such as being able to set the number of sides in the canvas arc.
 
-## 6 - Conclusion
+## 7 - Conclusion
 
 The canvas arc method is just one of many methods in the canvas 2d drawing context of course, however it is one that seems to come up often. I hope that you have gain something of value from reading this post, canvas is a lot of fun of course, and it can also be very helpful as well when it comes to working out basic graphics in canvas.
