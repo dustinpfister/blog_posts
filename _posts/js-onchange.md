@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-07-03 16:17:31
-version: 1.18
+updated: 2019-07-03 16:20:03
+version: 1.19
 ---
 
-The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
+The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. There are many other events that come to might that are important as well such as onblur and onfocus, but the onchange event might be the most important as it is the event that will fire when a vlue actually changes in the input tag. In this post I will be going over some quick examples of the onchange event in client side javaScript.
 
 <!-- more -->
 
