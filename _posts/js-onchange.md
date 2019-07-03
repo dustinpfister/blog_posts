@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-07-03 16:03:07
-version: 1.13
+updated: 2019-07-03 16:05:07
+version: 1.14
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -127,6 +127,8 @@ state.figure();
 Here I am using Function.call to use the Array.forEach method as a way to loop over the children property of my controls div. This is necessary if I want to use an Array method like Array.forEach with the children property because it is not an Array but rather an HTMLCollection.
 
 ## 4 - onchange event handler example with on focus, on blur, events as well and more
+
+For this section I wanted to make a quick little project that is more of an actual project rather than a simple little example. Still it is not much of a project, but it is something a bit more advanced that takes into account more than one type of event on top of just the on change event.
 
 ```js
 var aTaner = function (opt) {
