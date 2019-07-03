@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2019-05-13 14:30:24
-version: 1.4
+updated: 2019-07-02 21:21:24
+version: 1.5
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in lodash where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one little additional feature. The lodash values object method might be one such method that supports a case that lodash is not dead just yet. The reason being that the native Object.values method is still fairly new, and as such there is limited browser support for older browsers. 
@@ -15,7 +15,7 @@ The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of man
 
 ## 1 - lodash values basic example
 
-The lodash values method works bu just passing an object to it as the first argument, and then an array of values for each public keys is returned. There is also the lodash keys object method as well that does the same thing but returns the key public key names of the object.
+The lodash values method works by just passing an object to it as the first argument, and then an array of values for each public keys is returned. There is also the lodash keys object method as well that does the same thing but returns the key public key names of the object.
 
 ```js
 let obj = {
