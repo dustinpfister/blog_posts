@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 446
-updated: 2019-05-14 16:45:28
-version: 1.7
+updated: 2019-07-02 21:24:20
+version: 1.8
 ---
 
 The [lodash keys](https://lodash.com/docs/4.17.11#keys) method in lodash can be used to get an array of public key names of an object. There is also the native [Object.keys method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) as well that has been introduced in recent years. In addition a [for in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop is another option for getting object keys that has great backward compatibility with older environments, so this makes the lodash \_.keys method one of many methods in lodash that make me scratch my head wondering if I should bother or not.
@@ -77,3 +77,7 @@ console.log( Object.keys(obj) ); // ['foo', 'n']
 ```
 
 There is also a [\_.forIn](/2018/09/30/lodash_forin/) lodash method that can also be used to create an array of public or own property names of an Object as well.
+
+## 3 - Conclusion
+
+There is also the [\_.values](/2019/05/13/lodash_values/) method that is similar to the \_.keys method only it gives an array of object values rather than the key names.
