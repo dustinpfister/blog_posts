@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-07-03 16:07:41
-version: 1.15
+updated: 2019-07-03 16:12:53
+version: 1.16
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -130,7 +130,7 @@ Here I am using Function.call to use the Array.forEach method as a way to loop o
 
 For this section I wanted to make a quick little project that is more of an actual project rather than a simple little example. Still it is not much of a project, but it is something a bit more advanced that takes into account more than one type of event on top of just the on change event.
 
-Here I have made a function that when called will create a container and inject some input elements and a canvas element into the container. The container element will then be appended to the actual html when called.
+Here I have made a function that when called will create a container and inject some input elements and a canvas element into the container. The container element will then be appended to the actual html when called. I have on change events attached for both the input elements, as well as handlers for when they both gain and loose focus. When focus is gained the canvas element will be shown, when they loose focus the canvas element will no longer be shown. The canvas element can also be used as a way to set the values for the input elements as well.
 
 ```js
 var aTaner = function (opt) {
@@ -227,6 +227,8 @@ var aTaner = function (opt) {
 
 };
 ```
+
+So this project was just a simple little project that I made to just show what can be made when using the on change event along with many other events and other native methods available in client side javaScript to make an interesting project. When I click on an input take a canvas element shows up that displays the position of a point that is the x and w values that can be set with the input elements. I can also click on the canvas to change the position of the point to the point on that canvas and update the value of the input tags in the process.
 
 ## 5 - Conclusion
 
