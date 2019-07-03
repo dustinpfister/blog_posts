@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2018-08-11 14:56:24
-version: 1.13
+updated: 2019-07-02 21:36:34
+version: 1.14
 ---
 
 So [lodash](https://lodash.com/) is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment. There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
@@ -30,7 +30,7 @@ var b = _.fill(new Array(8),0);
 console.log(b); // [0,0,0,0,0,0,0,0]
 ```
 
-This makes quick work of this, and also because I am using lodash I know that it will work in all browsers that are supported by the version of lodash that I am uisng. As of this writing lodash 4.17.10, supports browsers as old as IE11, and if I want I can make a custom fork, or use an older version of lodash to push that back even farther if need be.
+This makes quick work of this, and also because I am using lodash I know that it will work in all browsers that are supported by the version of lodash that I am using. As of this writing lodash 4.17.10, supports browsers as old as IE11, and if I want I can make a custom fork, or use an older version of lodash to push that back even farther if need be.
 
 ### 2.2 - The Array.fill vanilla js Array prototype method
 
@@ -91,7 +91,7 @@ console.log(b); //[0,0,1,1,1,1,0,0]
 
 ### 3.2 - with Array.fill
 
-Same as with the native equvalent only because the array is the value of the this keyword as is the nature with prototype methods I just need to give the value to fill, and then the start and end index values.
+Same as with the native equivalent only because the array is the value of the this keyword as is the nature with prototype methods I just need to give the value to fill, and then the start and end index values.
 
 ```js
 var b = new Array(8).fill(0).fill(1,2,6);
@@ -143,6 +143,6 @@ console.log(parseInt(b,2)); // 60
 
 ## 6 -conclusion
 
-So when I do come across methods like \_.fill, there is the question about browser support. At this point it may be the only thing that comes to mind as to why it is that I should bother with \_.fill over the native method, there are still a lot of people out there that use these older browsers thart do not have great es2015 support. So if I do want to push support back I can just use the desired version of lodash, or mess around with pollyfills.
+So when I do come across methods like \_.fill, there is the question about browser support. At this point it may be the only thing that comes to mind as to why it is that I should bother with \_.fill over the native method, there are still a lot of people out there that use these older browsers that do not have great es2015 support. So if I do want to push support back I can just use the desired version of lodash, or mess around with pollyfills.
 
 You might want to also check out other methods that are relevant to \_.fill such as [\_.pad](/2018/08/03/lodash_padding/), and be sure to check out my other [posts on lodash](/categories/lodash/) as well, and thanks for reading. Also be sure to show your support or constructive criticism in the comments.
