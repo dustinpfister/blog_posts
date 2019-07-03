@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-07-03 17:39:31
-version: 1.13
+updated: 2019-07-03 17:48:14
+version: 1.14
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -62,3 +62,25 @@ console.log(body);
 ```
 
 This tired yet true way to go about getting a reference to the body element will return an html collection rather than a reference to the body element. It will always do this for a tag even if there is just one of theme such is the case with body.
+
+## 3 - Create a new document body element
+
+The document body property can be set to a new element. When doing so it goes without saying that all content in the page that is inside the body tag will be replaced. This can be done more or less the same way as with any other element when it comes to creating the new body tag as well. Just call the document createElement method and pass the string body as the first argument to create a new body tag. Then it is just a matter of appending some content to the new body tag and setting it as the value of the document body property.
+
+```html
+<html>
+    <head>
+        <title>document body create new</title>
+        <script>
+var body = document.createElement('body'),
+h1 = document.createElement('h1');
+h1.appendChild(document.createTextNode('Well that seems to work okay.'));
+body.appendChild(h1);
+document.body = body;
+        </script>
+    </head>
+    <body>
+        <h1>Oh no looks like javaScript is not working.</h1>
+    </body>
+</html>
+```
