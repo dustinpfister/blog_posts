@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-07-03 18:25:57
-version: 1.16
+updated: 2019-07-03 18:46:59
+version: 1.17
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -127,3 +127,36 @@ window.addEventListener('load', function () {
 ```
 
 The above create canvas element will throe an error if it is called an given an image that has a zero width size. If I just pass the image to it right away without waiting for it to load first that will of course result in an error, however if I pass the image via document body after the on load window event has fired then the example works just fine.
+
+## 5 - Using document body as a default in the event that an container is not given
+
+```html
+<html>
+    <head>
+        <title>document body as a default element</title>
+    </head>
+    <body>
+        <div></div>
+        <div id="game-area"></div>
+        <script>
+var createCanvas = function (container, w, h, draw) {
+    container = container === undefined ? document.body : container;
+    container = typeof container === 'string' ? document.querySelector(container) : container;
+    draw = draw || function (ctx, canvas) {
+        ctx.fillStyle = '#afafaf';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    container.appendChild(canvas);
+    canvas.width = w || 160;
+    canvas.height = h || 120;
+    draw(ctx, canvas);
+};
+createCanvas('#game-area'); // appends to game area
+createCanvas(document.getElementsByTagName('div')[0]); // appends to first div
+createCanvas(); // appends to body
+        </script>
+    </body>
+</html>
+```
