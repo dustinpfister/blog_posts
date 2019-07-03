@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-07-03 18:52:46
-version: 1.19
+updated: 2019-07-03 18:56:44
+version: 1.20
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -84,6 +84,8 @@ document.body = body;
     </body>
 </html>
 ```
+
+There are other ways of destroying everything on the page such as using document write. In most cases it is not necessary to do so though. In real life examples I can not say that I am creating new body elements and then setting them as the new body via the document body property but never the less it can be done.
 
 ## 4 - Document body and window onload
 
