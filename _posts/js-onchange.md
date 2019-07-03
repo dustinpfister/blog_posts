@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-07-03 16:15:01
-version: 1.17
+updated: 2019-07-03 16:17:31
+version: 1.18
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -229,6 +229,8 @@ var aTaner = function (opt) {
 ```
 
 So this project was just a simple little project that I made to just show what can be made when using the on change event along with many other events and other native methods available in client side javaScript to make an interesting project. When I click on an input take a canvas element shows up that displays the position of a point that is the x and w values that can be set with the input elements. I can also click on the canvas to change the position of the point to the point on that canvas and update the value of the input tags in the process.
+
+This example might be kind of still and pointless, but taking just a moment to use my imagination of course there are all kinds of things that comes to might that might prove to be more practical, or interesting. An input element is a way of letting a user set some kind of value, what is to be done with that value depends on the nature of the application.
 
 ## 5 - Conclusion
 
