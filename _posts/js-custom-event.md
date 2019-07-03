@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2019-07-03 12:25:21
-version: 1.2
+updated: 2019-07-03 12:34:53
+version: 1.3
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. There are a number of other ways of creating custom events when it comes to using a framework like phaser and threejs. However in this post I will be sticking to the custom way of how to go about making custom events in just plain old vanilla javaScript in the browser.
@@ -14,6 +14,10 @@ In client side javaScript there is the [custom event](https://developer.mozilla.
 <!-- more -->
 
 ## 1 - Custom Event constructor basic example
+
+In this section I will be touching base on just a basic example of the [CustomEvent constructor](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). The process just involves creating an event with the custom event constructor, and then passing that object to the dispatch event method of a DOM element reference. Once the dispatch event method is called any event handlers that are attached for that custom event will fire.
+
+So lets start out with just some basic html like this and attach to an external javaScript file.
 
 ```html
 <html>
@@ -25,6 +29,8 @@ In client side javaScript there is the [custom event](https://developer.mozilla.
     </body>
 </html>
 ```
+
+In the basic.js file that I am linking to in the html I am creating a custom event object with the Custom Event constructor, attaching a handler to the body element of the htl document for it, and then dispatching the event for the body element like so.
 
 ```js
 var myEvent = new CustomEvent(
@@ -50,3 +56,4 @@ document.body.addEventListener('my-event', function (e) {
 document.body.dispatchEvent(myEvent)
 ```
 
+This might not be the best example of why creating my own events is a good idea, but you get the basic idea of the process. Just call the Custom event constructor with the new keyword just like any other constructor function in javaScript. When doing so pass the name of the custom event as the first argument, followed by and object. This object should have at least a detail property that contains data about the nature of the event.
