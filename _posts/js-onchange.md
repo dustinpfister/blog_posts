@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-07-03 16:12:53
-version: 1.16
+updated: 2019-07-03 16:15:01
+version: 1.17
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event hander is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. In this post I will be going over some quick examples of the onchange event in client side javaScript.
@@ -232,4 +232,4 @@ So this project was just a simple little project that I made to just show what c
 
 ## 5 - Conclusion
 
-So the onchange event is useful for setting one or more callbacks for an element that will fire when its value changes. The onchange event can be used in conjunction with a wide range of other events such as on blur, and on focus to define a user interface that can be used to gather information that will be posted back to a server.
+So the onchange event is useful for setting one or more callbacks for an element that will fire when the value of the element changes. The onchange event can be used in conjunction with a wide range of other events such as on blur, and on focus to define a user interface that can be used to do things like gather information that will be posted back to a server, or update the position of something in a canvas element, or anything else that can be set or changed with an input element.
