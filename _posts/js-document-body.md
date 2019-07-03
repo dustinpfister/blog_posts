@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-07-03 18:24:06
-version: 1.15
+updated: 2019-07-03 18:25:57
+version: 1.16
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -125,3 +125,5 @@ window.addEventListener('load', function () {
     </body>
 </html>
 ```
+
+The above create canvas element will throe an error if it is called an given an image that has a zero width size. If I just pass the image to it right away without waiting for it to load first that will of course result in an error, however if I pass the image via document body after the on load window event has fired then the example works just fine.
