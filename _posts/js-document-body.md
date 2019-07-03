@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-07-03 17:48:14
-version: 1.14
+updated: 2019-07-03 18:24:06
+version: 1.15
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -81,6 +81,47 @@ document.body = body;
     </head>
     <body>
         <h1>Oh no looks like javaScript is not working.</h1>
+    </body>
+</html>
+```
+
+## 4 - Document body and window onload
+
+In a lot of examples you might see and event handler set for the window onload event before doing anything with body. This makes sense if for some reason you need to wait until content for the body has been loaded completely before continuing. For example if I place an image element in the body element, and then a script that depends on the content of that image then the script might not work as expected because the image has not completed loading just yet.
+
+```html
+<html>
+    <head>
+        <title>document body on load</title>
+    </head>
+    <body>
+<img src="https://dustinpfister.github.io/css/images/banner.jpg">
+        <script>
+var createCanvas = function (image) {
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    // throw error if zero with image
+    if (image.naturalWidth === 0) {
+        throw new Error('zero width image!')
+    }
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 0.25;
+    ctx.drawImage(image,0,0);
+    document.body.appendChild(canvas);
+}
+// calling right away
+try{
+createCanvas(document.body.children[0]);
+}catch(e){
+console.log(e.message);
+}
+// calling after window load
+window.addEventListener('load', function () {
+    createCanvas(document.body.children[0]);
+});
+        </script>
     </body>
 </html>
 ```
