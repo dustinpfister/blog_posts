@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-05-20 18:37:17
-version: 1.11
+updated: 2019-07-03 17:27:05
+version: 1.12
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -50,7 +50,7 @@ If all goes well this example just results in a black blank canvas, nothing to i
 
 ## 2 - Using getByTagName to get the document body element with javaScript
 
-Although the document body property is the quickest way to go about getting a reference to the body element of an html document with javaScript there are of course a number of other ways both new and old. One such way would be to use the document.getElementsByTagName method.
+Although the document body property is the quickest way to go about getting a reference to the body element of an html document, with javaScript there are of course a number of other ways both new and old to get references to an element including the body element. One such way would be to use the document.getElementsByTagName method.
 
 ```js
 var body = document.getElementsByTagName('body')[0];
