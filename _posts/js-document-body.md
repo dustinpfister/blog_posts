@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-07-03 18:56:44
-version: 1.20
+updated: 2019-07-03 19:22:40
+version: 1.21
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element.
@@ -62,6 +62,47 @@ console.log(body);
 ```
 
 This tired yet true way to go about getting a reference to the body element will return an html collection rather than a reference to the body element. It will always do this for a tag even if there is just one of theme such is the case with body.
+
+### 2.2 - by the document children property
+
+So if you are looking for a totally over complicated solution for something that is really simple look no further get a load of this one.
+
+```html
+<html>
+    <head>
+        <title>document body</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var forTag = function (tagName, cb, children) {
+    children = children === undefined ? document.children : children;
+    tagName = tagName === undefined ? 'body' : tagName;
+    tagName = tagName.toLowerCase();
+    cb = cb || function (tag) {
+        console.log(tag);
+    };
+    var i = children.length,
+    tag;
+    while (i--) {
+        tag = children[i];
+        if (tag.children.length > 0) {
+            forTag(tagName, cb, tag.children);
+        }
+        if (tag.nodeName.toLowerCase() === tagName) {
+            cb(tag);
+        }
+    }
+};
+forTag('body', function(body){
+   console.log(body);
+});
+        </script>
+    </body>
+</html>
+```
+
+So I made a method that involves looping over all children via a recursive method that calls itself from with itself and uses the children property of elements to keep looking for tags of a given type. Each time it finds an element with a tag name that matches the given string it fires a callback for the tag. Maybe not the best way to just go about getting the document body element though, but if you want to walk over the full content of an html document it might be a decent way of doing so.
 
 ## 3 - Create a new document body element
 
