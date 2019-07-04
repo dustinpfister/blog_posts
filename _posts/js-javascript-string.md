@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-07-04 07:43:16
-version: 1.21
+updated: 2019-07-04 07:46:05
+version: 1.22
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -104,6 +104,8 @@ console.log(JSON.stringify(obj));
 
 So then there are input text tags in client side javaScript. In order to do this full justice I will need to get into the various event handers that can be attached to an input element, as well as the event objects that are passed to the callbacks that fire when and event happens. Getting into this in depth will be a bit of subject for the tone of this post, so I will just be going over a simple little example here.
 
+The target property of an event object is a reference to the element in which the event has occurred. Once that value has been obtained there is the value property of an input element. The value property is of course the current value of the input tag, and in the case of input tags the value is a javaScript string.
+
 ```html
 <html>
     <head>
@@ -129,6 +131,8 @@ input.addEventListener('keyup', function(e){
     </body>
 </html>
 ```
+
+In many projects this is often the typical way of going about getting a string that is the result of user input. It is genraly a better idea to use input tags rather that using prompt.
 
 ## 2 - String length
 
