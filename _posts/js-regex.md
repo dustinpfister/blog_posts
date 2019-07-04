@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-04-23 15:53:00
-version: 1.17
+updated: 2019-07-04 07:16:42
+version: 1.18
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -92,10 +92,6 @@ console.log(html_nolinks);
 // <p>This is some html with a link in it</p>
 ```
 
-## 5 -Conclusion
-
-Of course this post does not do regular expressions justice, as there is way more to write about when it comes to them. I will update this post from time to time of course as I keep running into more note worthy things to write about when it comes to them, but it might be best to just keep paying around with them in order to get a sound grasp on regex. There are also other tools at your disposal when it comes to these kinds of tasks, and sometimes it is necessary to make use of those as well rather than depending completely on regex.
-
 ## 5 - Match all between two instances of a string
 
 When it comes to the mark down of my blog posts there is from data at the top of each file that is between two instances of three dashes. If I want to match that I have worked out this pattern.
@@ -105,3 +101,8 @@ let text = '--- title: foo --- bla bla beween --- other: stuff ---'
 console.log(text.match(/---[\s|\S]*?---/g)[0]);
 // --- title: foo ---
 ```
+
+## 6 -Conclusion
+
+Of course this post does not do regular expressions justice, as there is way more to write about when it comes to them. I will update this post from time to time of course as I keep running into more note worthy things to write about when it comes to them, but it might be best to just keep paying around with them in order to get a sound grasp on regex. There are also other tools at your disposal when it comes to these kinds of tasks, and sometimes it is necessary to make use of those as well rather than depending completely on regex.
+
