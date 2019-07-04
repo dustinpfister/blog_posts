@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-06-25 21:21:55
-version: 1.18
+updated: 2019-07-04 07:16:41
+version: 1.19
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -169,7 +169,7 @@ console.log(str.length); // 33
 console.log(str);
 ```
 
-## 6 - String.match
+## 6 - String.match pattern matching
 
 If you are not familiar with regular expressions, it might be a good idea to look into them more at some point. Every now and then they do come in handy when it comes to doing anything complex with pattern detection with strings.
 
@@ -181,7 +181,7 @@ var m = str.match(/<div>(.*?)<\/div>/g);
 console.log(m[1]); // <div><span>bar</span></div>
 ```
 
-## 7 - String.replace
+## 7 - String.replace for pattern matching and replacement
 
 The String.replace prototype method is another very helpful and powerful method that can be used for advanced search and replace operations using regular expressions. The first argument is the regular expression and the second argument is what the pattern is to be replace with when found.
 
