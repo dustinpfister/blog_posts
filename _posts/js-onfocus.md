@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-07-04 13:32:55
-version: 1.20
+updated: 2019-07-04 13:35:27
+version: 1.21
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user focus on an element. This often happens when a user clicks on an element for example, but it can also happen by other means as well. These other ways in which a focus event can fire is if the user cycles to it with the tab key, and also if the focus is set to the element with an element method like [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
@@ -101,7 +101,7 @@ In this example I will be making use of both the focus and blur events. I have t
 </html>
 ```
 
-Here in the javaScript for this example I have put together a quick way to go about getting references to all the elements that I want, and then I use addEvent listener to attach events to them.
+Here in the javaScript for this example I have put together a quick way to go about getting references to all the elements that I want, and then I use addEvent listener to attach events to them. these are the kinds of things that I run into when making a vanilla javaScript project. If I where using a framework like vuejs things might be structured a little better.
 
 ```js
 var get = function (id) {
