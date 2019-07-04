@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-05-23 12:36:20
-version: 1.18
+updated: 2019-07-04 13:29:09
+version: 1.19
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user focus on an element. This often happens when a user clicks on an element for example, but it can also happen by other means as well. These other ways in which a focus event can fire is if the user cycles to it with the tab key, and also if the focus is set to the element with an element method like [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
@@ -139,4 +139,4 @@ add('y', 'focus', onTextFocus('set the value of y'));
 
 ## 4 - conclusion
 
-So the javaScript focus event is used to define some logic that will fire when an element looses focus that is gained by a range or reasons such as clicking on the element. There is also the blur event that is used to attach some logic that will do something when that focus is lost.
+So the javaScript focus event is used to define some logic that will fire when an element looses focus that is gained by a range or reasons such as clicking on the element. There is also the [blur event](/2019/01/08/js-onblur/) that is used to attach some logic that will do something when that focus is lost. There are also a wide rage of other events that come into play when making an actually user interface of one kind or another such as on change, on keyup and more.
