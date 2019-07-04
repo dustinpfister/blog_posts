@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-07-04 10:21:19
-version: 1.14
+updated: 2019-07-04 10:25:04
+version: 1.15
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -18,6 +18,8 @@ In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 In javaScript a number can be just a literal, there are a number of was of creating a number literal actually but the most common is the decimal format. In order words just type the number in base 10 common base 10 format, if you want a fraction use a decimal point where needed.
 
 Number literals by themselves do not do much good, so often they need to be stored in a variable. There once was a time when there was just var when it comes to storing values in javaScript, but now there is let and const as well. I will not be getting into the differences between them here that is off topic, if you are not sure which to use then start off with var. So then type var followed by the assignment operator, and then the number value you want to store.
+
+Or better yet just look at some code examples, and learn by doing.
 
 ```js
 // just logging a number literal
@@ -53,6 +55,8 @@ let d = function (x1, y1, z1, x2, y2, z2) {
 };
 console.log(d(x, y, z, 0, 0, 0)); // 60.166435825965294
 ```
+
+As you can see from the basic examples numbers can be the result of expressions, what is returned by a method, and can also be used as arguments for a function. In the body of a function numbers can be declared with the var let or const keywords and when doing so will have function or even block level variable scope inside the body of that function when used with those keywords. There are also a number of number class prototype methods such as toFIxed that can be called off of any instance of a number.
 
 ## 2 - javaScript Numbers are only one data type IEEE_754
 
