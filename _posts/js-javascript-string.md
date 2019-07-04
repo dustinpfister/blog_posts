@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-07-04 07:16:41
-version: 1.19
+updated: 2019-07-04 07:21:08
+version: 1.20
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -29,10 +29,11 @@ console.log(typeof str); // string
 console.log(str.constructor.name); // String
 console.log(str); // 'foobar'
 ```
-Single or double quotes can be used.
+
+This can be thought of as a string literal when the value of the string exists in the actual hard coded javaScript itself. In most real projects a string is a type of value that is obtained from and input element, or from a parsed object from JSON data that was pulled in via an http request. So there are many other ways to go about getting, or creating a string so lets look as some more examples.
 
 
-### 1.2 - Making a javaScriot string with backticks
+### 1.2 - Making a javaScript string with backticks
 
 There are also backticks that can be used as well. These can be used in the same way as quotes, but also allow for things like function calls.
 
@@ -158,7 +159,7 @@ To convert a string back to an array there is the String.split method. The argum
 
 ## 5 - String.trim
 
-The trim String prorotype method can be used to remove any additional while space that may be at the beginning or end of a string.
+The trim String prototype method can be used to remove any additional while space that may be at the beginning or end of a string.
 
 ```js
 var str = '    this string has extra white space     ';
