@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2019-07-04 07:21:08
-version: 1.20
+updated: 2019-07-04 07:43:16
+version: 1.21
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A string is a collection of characters that compose a text pattern, and as such can serve a number of functions beyond just simply displaying text. In this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
@@ -70,7 +70,7 @@ console.log(str); // 'foobar'
 
 In addition to the Array.join method there is also the String.split method that can do the revers of this spiting a string into an array of strings.
 
-### 1.5 Creating a javaScript string from an object
+### 1.5 - Creating a javaScript string from an object
 
 There are a number of ways to create a string from an Object in general. There are many native methods to work with such as Object.keys, Array.map, and so forth. There is also for in loops and the JSON.stringify method that come to mind also just to name a few options.
 
@@ -98,6 +98,36 @@ console.log(str2);
  
 console.log(JSON.stringify(obj));
 // {"intro":"Hello, ","mess":"This is Dustin. ","end":"Have a nice day"}
+```
+
+### 1.6 - Getting a string from an input tag in client side javaScript
+
+So then there are input text tags in client side javaScript. In order to do this full justice I will need to get into the various event handers that can be attached to an input element, as well as the event objects that are passed to the callbacks that fire when and event happens. Getting into this in depth will be a bit of subject for the tone of this post, so I will just be going over a simple little example here.
+
+```html
+<html>
+    <head>
+        <title>javaScript string from input element</title>
+    </head>
+    <body>
+        <input type="text">
+        <div id="out"></div>
+        <script>
+// get references to elements
+var input = document.getElementsByTagName('input')[0],
+out = document.getElementById('out');
+// attach event
+input.addEventListener('keyup', function(e){
+    var str = e.target.value;
+    console.log(typeof str); // 'string'
+    // do something with it
+    out.innerText = str.split('').map(function(ch){
+        return ch.charCodeAt(0);
+    }).join(':');
+});
+        </script>
+    </body>
+</html>
 ```
 
 ## 2 - String length
