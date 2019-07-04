@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-07-04 10:15:46
-version: 1.13
+updated: 2019-07-04 10:21:19
+version: 1.14
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -14,6 +14,10 @@ In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 <!-- more -->
 
 ## 1 - javaScript number basics
+
+In javaScript a number can be just a literal, there are a number of was of creating a number literal actually but the most common is the decimal format. In order words just type the number in base 10 common base 10 format, if you want a fraction use a decimal point where needed.
+
+Number literals by themselves do not do much good, so often they need to be stored in a variable. There once was a time when there was just var when it comes to storing values in javaScript, but now there is let and const as well. I will not be getting into the differences between them here that is off topic, if you are not sure which to use then start off with var. So then type var followed by the assignment operator, and then the number value you want to store.
 
 ```js
 // just logging a number literal
