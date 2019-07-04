@@ -5,8 +5,8 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 497
-updated: 2019-07-04 16:28:16
-version: 1.1
+updated: 2019-07-04 16:29:16
+version: 1.2
 ---
 
 The git reset command can be used to undo the last comment in a git folder, and much more than just that. In this post I will be going over some example of the git reset command.
@@ -14,6 +14,14 @@ The git reset command can be used to undo the last comment in a git folder, and 
 <!-- more -->
 
 ## 2 - Creating an undo last comment command with nodejs
+
+I just need to add the following to the package.json file of the project.
+
+```js
+"bin": {
+    "g-undo": "./index.js"
+}
+```
 
 ```js
 #!/usr/bin/env node
