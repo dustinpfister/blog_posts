@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-07-04 13:40:18
-version: 1.14
+updated: 2019-07-04 13:42:50
+version: 1.15
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -138,3 +138,7 @@ log({x: 40, y: 2});
     </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+So a javaScript alert in client side javaScript might be okay for some hello world examples, and also maybe the use of it is called for with some actual projects as well. However there are still often better alternatives when it comes to letting the user know that something is up. Also when it comes to debugging there are a wide range of better options that are far more useful, even beyond that of just console.lof by itself.
