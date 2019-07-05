@@ -5,8 +5,8 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 499
-updated: 2019-07-05 18:36:56
-version: 1.4
+updated: 2019-07-05 18:44:20
+version: 1.5
 ---
 
 The [git init](https://git-scm.com/docs/git-init) command can be used to create a new git folder, So this is one of the first things to look into when it comes to [getting started with git](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) after having installed git. There is also the git clone command that can be used to make a copy of an existing git folder as well, in either case you end up with a git folder. In this post I will be going over some of the basics when it comes to creating new git folders, there is not much to it when it comes to the basics. However I thought I would make a quick post on this subject just for the heck of it sense I am expanding my content on git as of late. So lets get this one oit of the way so I can get on to more advanced posts on git and source control.
@@ -46,3 +46,22 @@ $
 ```
 
 So now that I did that I can see that I have an untracked file that I have added to the folder with a text editor called file.md. I would like to track this file. In order to do so I will need to state the file using the git add command.
+
+## 1.2 - git add command for adding an untracked file to be committed
+
+So now I can use the git add command by just calling git add and then the name of the file I want to stage to be committed. Once I do that when I do a git status I get a very different message.
+
+```
+$ git add file.md
+$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   file.md
+```
+
+At this point if I feel that I ahve made a mistake I can use the git rm command as a way to unstage, however I have also found that the git rest command by itself without any additional arguments will give the same result. However If all looks good and I want to continue then the nest step is to make my first commit.
