@@ -5,11 +5,11 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 499
-updated: 2019-07-05 18:27:17
-version: 1.1
+updated: 2019-07-05 18:29:21
+version: 1.2
 ---
 
-The git init command can be used to create a new git folder, there is also the git clone command that can be used to make a copy of an existing git folder as well. In this post I will be going over some of the basics when it comes to creating new git folders, there is not much to it when it comes to the basics. However I thought I would make a quick post on this subject just for the heck of it sense I am expanding my content on git as of late. So lets get this one oit of the way so I can get on to more advanced posts on git and source control.
+The [git init](https://git-scm.com/docs/git-init) command can be used to create a new git folder, So this is one of the first things to look into when it comes to getting started with git after having installed git. There is also the git clone command that can be used to make a copy of an existing git folder as well, in either case you end up with a git folder. In this post I will be going over some of the basics when it comes to creating new git folders, there is not much to it when it comes to the basics. However I thought I would make a quick post on this subject just for the heck of it sense I am expanding my content on git as of late. So lets get this one oit of the way so I can get on to more advanced posts on git and source control.
 
 <!-- more -->
 
