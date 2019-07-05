@@ -5,8 +5,8 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 499
-updated: 2019-07-05 18:30:00
-version: 1.3
+updated: 2019-07-05 18:36:56
+version: 1.4
 ---
 
 The [git init](https://git-scm.com/docs/git-init) command can be used to create a new git folder, So this is one of the first things to look into when it comes to [getting started with git](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) after having installed git. There is also the git clone command that can be used to make a copy of an existing git folder as well, in either case you end up with a git folder. In this post I will be going over some of the basics when it comes to creating new git folders, there is not much to it when it comes to the basics. However I thought I would make a quick post on this subject just for the heck of it sense I am expanding my content on git as of late. So lets get this one oit of the way so I can get on to more advanced posts on git and source control.
@@ -22,3 +22,27 @@ $ mkdir project_folder
 $ cd project_folder
 $ git init
 ```
+
+Once this is down I now have a git folder. However nothing is tracked, and I also do not have any commits. So there is more to it then just that when it comes to starting a git folder.
+
+### 1.1 - git status to find the current status of the new git folder.
+
+So aside from the git init command there is also the git status command that will give me the current status of the git folder. This will show any files in the folder that have not yet been tracked.
+
+So a git status command might give me something like this.
+```
+$ git status
+On branch master
+ 
+Initial commit
+ 
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+ 
+        file.md
+ 
+nothing added to commit but untracked files present (use "git add" to track)
+$
+```
+
+So now that I did that I can see that I have an untracked file that I have added to the folder with a text editor called file.md. I would like to track this file. In order to do so I will need to state the file using the git add command.
