@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 500
-updated: 2019-07-06 10:22:24
-version: 1.1
+updated: 2019-07-06 10:25:04
+version: 1.2
 ---
 
 In todays post I will be writing about the CreateCipher method in the nodejs crypto module. This method and the corresponding createDecipher method is a great starting point when it comes to getting started with encryption using nodejs, however when it comes to making an actually project it might be best to go with the createCipheriv method as that gives more control over the creation of the key, and iv variable. Still in this post I will be going over some quick examples when it comes to simple encryption using nodejs.
@@ -14,7 +14,7 @@ In todays post I will be writing about the CreateCipher method in the nodejs cry
 <!-- more -->
 
 
-## 1 - The node crypto CreateCipher basic example
+## 1 - The node crypto CreateCipher basic example using the update and final methods
 
 ```js
 let crypto = require('crypto'),
@@ -25,4 +25,22 @@ let hex = cipher.update('This is something I want encrypted', 'utf8', 'hex');
 hex += cipher.final('hex')
 console.log(hex);
 // 84808c0d587c6c1259e65054f6779c2ba5db0c95c594bed97118b8c718381dab7a87ad880b4fbf71f05a21980dc9f409
+```
+
+### 1.1 - Now to decipher
+
+```js
+let crypto = require('crypto'),
+algorithm = 'aes192',
+password = process.argv[2] || 'password1234',
+cipher = crypto.createCipher(algorithm, password),
+decipher = crypto.createDecipher(algorithm, password),
+hex = cipher.update('This is something I want encrypted', 'utf8', 'hex');
+hex += cipher.final('hex');
+console.log(hex);
+ 
+// the hex can be deciphered in a similar way
+let str = decipher.update(hex, 'hex', 'utf8');
+str += decipher.final('utf8');
+console.log(str);
 ```
