@@ -5,8 +5,8 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 497
-updated: 2019-07-07 14:13:23
-version: 1.7
+updated: 2019-07-07 14:15:35
+version: 1.8
 ---
 
 The [git reset](https://git-scm.com/docs/git-reset) command can be used to undo the last comment in a git folder, and much more than just that. When called with no additional arguments it can be used as a way to unstage what has been staged for committing using the git add command. However with additional arguments it can be used as a way to make is called a soft reset, as well as also a hard reset. This is a command that I do find myself using now and then, so it is worth taking a moment to write a quick post on it.
@@ -30,6 +30,10 @@ using the git reset method this way will not result in a loss of changes that wh
 
 ## 2 - Creating an undo last comment command with nodejs
 
+So in this section I will be going over a simple script that makes it so I just have to enter a single command into the command line to preform a soft reset. I am sure there are a number of ways to go about doing this, however my preferred programing environment is javaScript so this will be a nodejs project.
+
+### 2.1 - Making this a global script
+
 I just need to add the following to the package.json file of the project to make it so I can install the project globally and then use it anywhere with the name that I set for it..
 
 ```js
@@ -37,6 +41,8 @@ I just need to add the following to the package.json file of the project to make
     "g-undo": "./index.js"
 }
 ```
+
+### 2.2 - The index.js file
 
 ```js
 #!/usr/bin/env node
