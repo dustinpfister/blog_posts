@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 500
-updated: 2019-07-07 12:19:06
-version: 1.9
+updated: 2019-07-07 12:28:20
+version: 1.10
 ---
 
 In todays post I will be writing about the [CreateCipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method in the [Nodejs Crypto](https://nodejs.org/api/crypto.html) module. This method and the corresponding [createDecipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method is a great starting point when it comes to getting started with encryption using nodejs, however when it comes to making an actual real project it might be best to go with the [createCipheriv](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options) method as that gives more control over the creation of the key, and iv variable. In addition in late versions of nodejs it would appear that this method is now depreciated in favor of createCipheriv. Still in this post I will be going over some quick examples when it comes to simple encryption using nodejs.
@@ -33,6 +33,8 @@ console.log(hex);
 ```
 
 ### 2.1 - Now to decipher
+
+When you have an encrypted string, and know the algorithm and password it is possible to decipher the string using the createDecipter method. This method works in more or less the same way as createCipher however the the encodings used must be inverted when updating and concatenating.
 
 ```js
 let crypto = require('crypto'),
