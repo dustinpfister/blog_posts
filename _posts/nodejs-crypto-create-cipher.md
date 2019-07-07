@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 500
-updated: 2019-07-07 12:08:07
-version: 1.6
+updated: 2019-07-07 12:12:53
+version: 1.7
 ---
 
 In todays post I will be writing about the [CreateCipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method in the [Nodejs Crypto](https://nodejs.org/api/crypto.html) module. This method and the corresponding [createDecipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method is a great starting point when it comes to getting started with encryption using nodejs, however when it comes to making an actual real project it might be best to go with the [createCipheriv](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options) method as that gives more control over the creation of the key, and iv variable. In addition in late versions of nodejs it would appear that this method is now depreciated in favor of createCipheriv. Still in this post I will be going over some quick examples when it comes to simple encryption using nodejs.
@@ -14,6 +14,8 @@ In todays post I will be writing about the [CreateCipher](https://nodejs.org/api
 <!-- more -->
 
 ## 1 - Use the Node Crypto method CreateCipheriv if you aim to make a real project that makes use of encryption in node.js
+
+Depending on your experience with node, the crypto module, and the version of node that you are using. The createCipher method might be a good starting point because of the ease of making a key. The reason why is I just need to give a password and then the createCipher method makes a key and iv value for me based off of that password. However this is also its downfall as well, and the CreateCipheriv method gives a greater deal of control over these values. So in any kind of actual professional software package it would be a better move to go with that method. I have a corresponding post on the CreateCipheriv that might be worth checking out.
 
 ## 2 - The Node Crypto CreateCipher basic example using the update and final methods
 
