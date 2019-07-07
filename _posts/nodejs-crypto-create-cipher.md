@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 500
-updated: 2019-07-07 12:34:01
-version: 1.13
+updated: 2019-07-07 12:39:47
+version: 1.14
 ---
 
 In todays post I will be writing about the [CreateCipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method in the [Nodejs Crypto](https://nodejs.org/api/crypto.html) module. This method and the corresponding [createDecipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method is a great starting point when it comes to getting started with encryption using nodejs, however when it comes to making an actual real project it might be best to go with the [createCipheriv](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options) method as that gives more control over the creation of the key, and iv variable. In addition in late versions of nodejs it would appear that this method is now depreciated in favor of createCipheriv. Still in this post I will be going over some quick examples when it comes to simple encryption using nodejs.
@@ -60,6 +60,8 @@ The CreateCipher method can also be used when working with streams. In this sect
 
 When calling the createCipher method what is returned can be used as a stream, and with other streams as well. The createCipher method is an example of what can be called a duplex stream that is a kind of combination of a readable and writable stream.
 
+In this example I am using the createCipher method as a stream, and once the stream is completed it results in a resolved promise, or a rejected one if something goes wrong. 
+
 ```js
 let crypto = require('crypto');
  
@@ -99,6 +101,8 @@ CryptIt('hello there yes this is a stream.')
 ```
 
 ### 3.2 - CreateCipher and CreateDecipher
+
+Because the createDecipher method is so similar when it comes to making some kind of method that wraps them it is possible to make some kind of method that actually uses both methods, and not much needs to change. Just use the right method depending if you want to encrypt or decrypt. On top of that make sure that the algorithm and password are the same, and that the encodings used are appropriate depending if you are encrypting to hex or deciphering to plain old text.
 
 ```js
 let crypto = require('crypto');
