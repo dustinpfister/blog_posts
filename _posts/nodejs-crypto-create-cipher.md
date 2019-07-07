@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 500
-updated: 2019-07-07 12:29:04
-version: 1.11
+updated: 2019-07-07 12:31:05
+version: 1.12
 ---
 
 In todays post I will be writing about the [CreateCipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method in the [Nodejs Crypto](https://nodejs.org/api/crypto.html) module. This method and the corresponding [createDecipher](https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options) method is a great starting point when it comes to getting started with encryption using nodejs, however when it comes to making an actual real project it might be best to go with the [createCipheriv](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options) method as that gives more control over the creation of the key, and iv variable. In addition in late versions of nodejs it would appear that this method is now depreciated in favor of createCipheriv. Still in this post I will be going over some quick examples when it comes to simple encryption using nodejs.
@@ -54,7 +54,7 @@ console.log(str);
 
 ## 3 - Streams and Node Crypto Create Cipher
 
-The CreateCipher method can also be used when working with streams.
+The CreateCipher method can also be used when working with streams. In this section I will be going over some examples of the crypto module createCipher and createDecipher methods using streams rather than using the update and final methods.
 
 ### 3.1 - createCipher
 
