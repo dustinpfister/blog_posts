@@ -1,20 +1,20 @@
 ---
-title: Getting started with node Crypto CreateCipher method with basic examples and more
+title: Getting started with Node Crypto CreateCipher method with basic examples and more
 date: 2019-07-06 08:49:00
 tags: [node.js]
 layout: post
 categories: node.js
 id: 500
-updated: 2019-07-06 10:25:04
-version: 1.2
+updated: 2019-07-07 11:56:44
+version: 1.3
 ---
 
-In todays post I will be writing about the CreateCipher method in the nodejs crypto module. This method and the corresponding createDecipher method is a great starting point when it comes to getting started with encryption using nodejs, however when it comes to making an actually project it might be best to go with the createCipheriv method as that gives more control over the creation of the key, and iv variable. Still in this post I will be going over some quick examples when it comes to simple encryption using nodejs.
+In todays post I will be writing about the CreateCipher method in the Nodejs Crypto module. This method and the corresponding createDecipher method is a great starting point when it comes to getting started with encryption using nodejs, however when it comes to making an actually project it might be best to go with the createCipheriv method as that gives more control over the creation of the key, and iv variable. Still in this post I will be going over some quick examples when it comes to simple encryption using nodejs.
 
 <!-- more -->
 
 
-## 1 - The node crypto CreateCipher basic example using the update and final methods
+## 1 - The Node Crypto CreateCipher basic example using the update and final methods
 
 ```js
 let crypto = require('crypto'),
@@ -43,4 +43,116 @@ console.log(hex);
 let str = decipher.update(hex, 'hex', 'utf8');
 str += decipher.final('utf8');
 console.log(str);
+```
+
+## 2 - Streams and Node Crypto Create Cipher
+
+### 2.1 - createCipher
+
+```js
+let crypto = require('crypto');
+ 
+let CryptIt = (text, algorithm, password) => {
+    let hex = '';
+    algorithm = algorithm || 'aes192';
+    password = password || '1234-spaceballs';
+    if (text === undefined) {
+        return Promise.reject('no text given');
+    }
+    return new Promise((resolve, reject) => {
+        let cipher = crypto.createCipher(algorithm, password);
+        cipher.on('readable', () => {
+            let data = cipher.read();
+            if (data) {
+                hex += data.toString('hex');
+            }
+        });
+        cipher.on('end', () => {
+            resolve(hex);
+        });
+        cipher.on('error', (e) => {
+            reject(e.message);
+        });
+        cipher.write(text);
+        cipher.end();
+    });
+};
+ 
+CryptIt('hello there yes this is a stream.')
+.then((hex) => {
+    console.log(hex);
+})
+.catch ((e) => {
+    console.log(e);
+})
+```
+
+### 2.2 - CreateCipher and CreateDecipher
+
+```js
+let crypto = require('crypto');
+ 
+let Crypter = (textHex, mode, algorithm, password) => {
+ 
+    algorithm = algorithm || 'aes192';
+    password = password || '1234-spaceballs';
+    mode = mode || 'cipher';
+ 
+    // give a rejected promise if no input is given
+    if (textHex === undefined) {
+        return Promise.reject('no input given');
+    }
+ 
+    // output string
+    let out = '';
+ 
+    // encodings for input and output
+    let encoding = {
+        input: 'utf8',
+        output: 'hex'
+    }
+ 
+    // create the cipher or decipher,
+    // and set appropriate encodings
+    // depending on mode
+    let Create = crypto.createCipher;
+    if (mode === 'decipher') {
+        Create = crypto.createDecipher;
+        encoding.input = 'hex';
+        encoding.output = 'utf8';
+    }
+    let cipher = Create(algorithm, password);
+ 
+    // return a promise
+    return new Promise((resolve, reject) => {
+        cipher.on('readable', () => {
+            let data = cipher.read();
+            if (data) {
+                out += data.toString(encoding.output);
+            }
+        });
+        cipher.on('end', () => {
+            resolve(out);
+        });
+        cipher.on('error', (e) => {
+            reject(e.message);
+        });
+        cipher.write(textHex, encoding.input);
+        cipher.end();
+    });
+ 
+};
+ 
+// works of cipher and decipher
+Crypter('hello there yes this is a stream.')
+.then((hex) => {
+    console.log(hex);
+    return Crypter(hex, 'decipher');
+})
+.then((str) => {
+    console.log(str);
+})
+.catch ((e) => {
+    console.log(e);
+})
 ```
