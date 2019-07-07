@@ -5,11 +5,11 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 497
-updated: 2019-07-04 16:29:16
-version: 1.2
+updated: 2019-07-07 12:53:59
+version: 1.3
 ---
 
-The git reset command can be used to undo the last comment in a git folder, and much more than just that. In this post I will be going over some example of the git reset command.
+The [git reset](https://git-scm.com/docs/git-reset) command can be used to undo the last comment in a git folder, and much more than just that. When called with no additional arguments it can be used as a way to unstage what has been staged for committing using the git add command. However with additional arguments it can be used as a way to make is called a soft reset, as well as also a hard reset. This is a command that I do find myself using now and then, so it is worth taking a moment to write a quick post on it.
 
 <!-- more -->
 
