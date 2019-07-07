@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2019-07-07 14:31:40
-version: 1.4
+updated: 2019-07-07 14:33:12
+version: 1.5
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick. There are many was to go about increasing the efficiency of a canvas project, but layering might be a good starting point. Take a moment to think about what is going on in your project, are there things that are being redrawn on each frame tick that do not need to be redrawn each time? If so then take a moment to look into layering.
@@ -67,3 +67,7 @@ loop();
     </body>
 </html>
 ```
+
+## 2 - Conclusion
+
+That is it for canvas layering now, if I get some spare time, or work on a vanilla js canvas project I will likely update this post with some more examples. In any case thanks for reading, and have fun with canvas.
