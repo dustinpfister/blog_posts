@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-07-09 15:07:37
-version: 1.21
+updated: 2019-07-09 15:12:50
+version: 1.22
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -127,6 +127,8 @@ I just need to get a reference to an element by one means or another such as wit
 
 ### 3.3 - javaScript Prompt
 
+The prompt method works just like the javaScript alert method, but with one little difference. It allows for the use to input a value. However just like with the alert method it will pause all other javaScript while the prompt dialog box is open, which in most cases might be an undesired side effect of its use.
+
 ```html
 <html>
     <head>
@@ -146,6 +148,8 @@ n = prompt('Give a number', 0);
     </body>
 </html>
 ```
+
+The prompt method might still come in handy now and then, but for the most part I would prefer to go with input elements, or some other means of gathering user input that will not delay the event loop.
 
 ## 3 - Writing a custom log function in place of using javaScript alert
 
