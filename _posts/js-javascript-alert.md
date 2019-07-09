@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-07-09 14:32:22
-version: 1.19
+updated: 2019-07-09 14:37:10
+version: 1.20
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -41,7 +41,9 @@ The alert method is a property of the window object so there is no real differen
 
 ## 2 - JavaScript Alert and loops
 
-With some javaScript examples it can get annoying to have a whole much of alerts happen one after another, luckily there are many other ways to log something to confirm that it is working in both a browser and node.js environment. 
+With some javaScript examples it can get annoying to have a whole much of alerts happen one after another. So for the most part using an alert in the body of a loop or any kind of method that is called a whole bunch of times such as Array.map is not such a good idea.
+
+One nice thing about it though is that it will pause the execution of any additional javaScriot until the alert is clicked, so it is a way to get a loop to stop for a second, which might be okay for debugging purposes now and then. Still There are alternatives a javaScript developer should be aware of that I will be getting to later in this post.
 
 ```js
 <html>
