@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 502
-updated: 2019-07-09 11:59:52
-version: 1.2
+updated: 2019-07-09 12:03:41
+version: 1.3
 ---
 
 So when it comes to doing something in the command line in a posix system, or windows system there is the subject of piping in the command line. That is taking the output of one command line tool and piping it to another tool. For example taking the output of a command that spits out a list of information about the computer the operating system is running on and then piping it to a terminal based txt editor that then saves it as a file in the current working directory.
@@ -14,3 +14,29 @@ So when it comes to doing something in the command line in a posix system, or wi
 As of late I wanted to write a nodejs script that can accept input from the standard input, but oddly enough that is something I have not done before, so I had to look into it. In nodejs there is the [process global](https://nodejs.org/api/process.html#process_process) that contains many useful properties, some of which can be used pipe in data from the standard input, as well as out to the standard error and standard output as well. So to get started with this I thought I would write a quick post on the [process.stdin](https://nodejs.org/api/process.html#process_process_stdin) property that can be used to stream in the standard input from the command line into a nodejs project.
 
 <!-- more -->
+
+## 1 - Process stdin basic example
+
+So lets start out with a basic example of using the process stdin property of the process global in nodejs.
+
+```js
+process.stdin.on('readable', () => {
+    let chunk;
+    while ((chunk = process.stdin.read()) !== null) {
+        process.stdout.write('we have a chunk: \n');
+        console.log(chunk.length);
+        process.stdout.write(chunk);
+    }
+});
+```
+
+Cool so lets test it out in the command line
+
+```
+$ echo "hello word" | node stdin_basic
+we have a chunk:
+15
+"hello word"
+```
+
+So far so good.
