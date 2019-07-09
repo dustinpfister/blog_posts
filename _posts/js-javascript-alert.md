@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-07-09 12:26:10
-version: 1.18
+updated: 2019-07-09 14:32:22
+version: 1.19
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -38,7 +38,31 @@ alert(n >= 40); // true
 
 The alert method is a property of the window object so there is no real difference between window.alert, this.alert, and just plain alert by itself. So that is just about it when it comes to using alert, just pass in what you want to log and it should alert out to you.
 
-However with some javaScript examples it can get annoying to have a whole much of alerts happen one after another, luckily there are many other ways to log something to confirm that it is working in both a browser and node.js environment. Also when it comes to using alert in an actual production app of some kind there is a whole range of options that come to mind when it comes to alerting a user that something has happened.
+
+## 2 - JavaScript Alert and loops
+
+With some javaScript examples it can get annoying to have a whole much of alerts happen one after another, luckily there are many other ways to log something to confirm that it is working in both a browser and node.js environment. 
+
+```js
+<html>
+    <head>
+        <title>javascript alert map example</title>
+    </head>
+    <body>
+        <script>
+let arr = [1,2,3,4];
+arr = arr.map((n)=>{
+   n = Math.pow(4, n);;
+   alert(n);
+   return n;
+});
+alert(arr);
+        </script>
+    </body>
+</html>
+```
+
+This might work out okay if a developer is just working something out, but is not going to leave it that way, but when it comes to using alert in an actual production app of some kind that can get very annoying. There are other ways to log what is going on where even if it is left in place, will not greatly effect the behavior of the application.
 
 ## 2 - javaScript alert alternatives
 
