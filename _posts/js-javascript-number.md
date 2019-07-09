@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-07-09 15:33:47
-version: 1.16
+updated: 2019-07-09 15:37:34
+version: 1.17
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -120,7 +120,7 @@ So now that I have covered converting Numbers to strings there is the process of
 
 ### 6.1 - The Number function
 
-The main Number function can be used as a way to convert something such as a string, boolean, or in some cases even an object to a number if it has a valueOf method.
+The main Number function can be used as a way to convert something such as a string, boolean, or in some cases even an object to a number if it has a valueOf method. In some cases though it will result in NaN depending on what type it is, the value of the type, and in the event of an object the presence and state of any valueOf method that may or may not be there.
 
 ```js
 let n = Number('17');
@@ -149,6 +149,8 @@ n = Number(obj);
 console.log(n); // 52
 console.log(parseInt(obj)); // NaN
 ```
+
+For the most part using the Number function is the standard way of converting something that is not a number to a number, I say that mostly because of the valueOf method of objects. Many built in constructors such as Date have valueOf methods, and as you can see in the example above it can be included in my own custom objects as well.
 
 ### 6.2 - parseInt and parseFloat
 
