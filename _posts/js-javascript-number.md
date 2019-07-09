@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-07-04 10:25:04
-version: 1.15
+updated: 2019-07-09 15:33:47
+version: 1.16
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -116,7 +116,41 @@ console.log( (42).toString(2) ); // '101010'
 
 ## 6 - converting Strings to Numbers
 
-So now that I have covered converting Numbers to strings there is the process of doing the opposite as well. The same can be done with some operators when working out an expression, and there are a few options when it comes to methods as well.
+So now that I have covered converting Numbers to strings there is the process of doing the opposite as well. The same can be done with some operators when working out an expression, and there are a few options when it comes to methods as well. So in this section I will be looking at some examples of converting something that is not a number to a number in javaScript.
+
+### 6.1 - The Number function
+
+The main Number function can be used as a way to convert something such as a string, boolean, or in some cases even an object to a number if it has a valueOf method.
+
+```js
+let n = Number('17');
+console.log(typeof n); // 'number'
+console.log(n); // 17
+ 
+// String with a space results in NaN
+n = Number('17 6');
+console.log(typeof n); // 'number'
+console.log(n); // NaN
+ 
+// Booleans
+n = Number(true);
+console.log(typeof n); // 'number'
+console.log(n); // 1
+ 
+// Objects with valueOf methods
+let obj = {
+    x: 10,
+    y: 42,
+    valueOf: function () {
+        return this.x + this.y;
+    }
+}
+n = Number(obj);
+console.log(n); // 52
+console.log(parseInt(obj)); // NaN
+```
+
+### 6.2 - parseInt and parseFloat
 
 ```js
 let str = '42.2';
