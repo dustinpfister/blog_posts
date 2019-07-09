@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-07-09 14:37:10
-version: 1.20
+updated: 2019-07-09 15:07:37
+version: 1.21
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -17,7 +17,7 @@ When starting with javaScript alert is something that often comes up in many exa
 
 In many basic javaScript examples that aim to help people that are new to javaScript get started. The window.alert method is often used as a way to log the result of something so that the developer can confirm that the little javaScript example is working. So that being said one of these simple javaScript examples might look something like this.
 
-```js
+```html
 <html>
     <head>
         <title>javaScript alert</title>
@@ -45,7 +45,7 @@ With some javaScript examples it can get annoying to have a whole much of alerts
 
 One nice thing about it though is that it will pause the execution of any additional javaScriot until the alert is clicked, so it is a way to get a loop to stop for a second, which might be okay for debugging purposes now and then. Still There are alternatives a javaScript developer should be aware of that I will be getting to later in this post.
 
-```js
+```html
 <html>
     <head>
         <title>javascript alert map example</title>
@@ -66,11 +66,11 @@ alert(arr);
 
 This might work out okay if a developer is just working something out, but is not going to leave it that way, but when it comes to using alert in an actual production app of some kind that can get very annoying. There are other ways to log what is going on where even if it is left in place, will not greatly effect the behavior of the application.
 
-## 2 - javaScript alert alternatives
+## 3 - javaScript alert alternatives
 
 The javaScript alert method might come in handy now and then, but for the most part I would avoid using it for production projects, and also I would not even use it for debugging in most cases as well. There are many other ways to go about displaying a message, for the purpose of debugging or informing a user of something so lets look at some alternatives to javaScript alert.
 
-### 2.1 - console.log
+### 3.1 - console.log
 
 The console.log method is a favorite for me and many other developers, it will of course log to the javaScript console rather than log a message as an alert box.
 
@@ -96,13 +96,13 @@ console.log({
 });
 ```
 
-### 2.2 - innerText element property
+### 3.2 - innerText element property
 
 When it comes to displaying a message in a html document there are many other options to display something aside from javaScript alert. When gaining a reference to an html element in client side javaScript there are properties like innerText that can be used to set to change the inner text node of certain elements that have text nodes such as paragraph elements. 
 
 So lets take a quick look at a simple innerText example for displaying something.
 
-```js
+```html
 <html>
     <head>
         <title>javaScript alert innerText alternative</title>
@@ -124,6 +124,28 @@ out.innerText = 'This can be used to set a message';
 ```
 
 I just need to get a reference to an element by one means or another such as with document.getElementById. Once I have a reference to an element I can then use that as a way to display a message. A method like this can then be used to display a message in a browser window without having an annoying dialog box pop up each time.
+
+### 3.3 - javaScript Prompt
+
+```html
+<html>
+    <head>
+        <title>javaScript alert map example</title>
+    </head>
+    <body>
+        <script>
+var startTime = new Date(),n;
+setTimeout(()=>{
+   let el = document.createElement('p'),
+   time = new Date() - startTime;
+   el.innerText = time + ' : ' + n;
+   document.body.appendChild(el);
+},1000);
+n = prompt('Give a number', 0);
+        </script>
+    </body>
+</html>
+```
 
 ## 3 - Writing a custom log function in place of using javaScript alert
 
