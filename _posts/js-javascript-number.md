@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-07-09 15:37:34
-version: 1.17
+updated: 2019-07-09 15:44:54
+version: 1.18
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
@@ -152,18 +152,25 @@ console.log(parseInt(obj)); // NaN
 
 For the most part using the Number function is the standard way of converting something that is not a number to a number, I say that mostly because of the valueOf method of objects. Many built in constructors such as Date have valueOf methods, and as you can see in the example above it can be included in my own custom objects as well.
 
+### 6.2 - An expression that evaluates to a number
+
+One trick is to multiply the string by 1, if the string can successfully be converted to a number it will result in a number with the corresponding value, otherwise it will result in NaN. There is also parseInit,parseFloat and the Number method as well that can work.
+
+```js
+let str = '42.2';
+console.log(typeof (str * 1)); // number
+```
+
 ### 6.2 - parseInt and parseFloat
 
 ```js
 let str = '42.2';
- 
-console.log(typeof (str * 1)); // number
+
 console.log(typeof parseInt(str)); // number
 console.log(typeof parseFloat(str)); // number
 console.log(typeof Number(str)); // number
 ```
 
-One trick is to multiply the string by 1, if the string can successfully be converted to a number it will result in a number with the corresponding value, otherwise it will result in NaN. There is also parseInit,parseFloat and the Number method as well that can work.
 
 ## 7 - javaScript number literals
 
