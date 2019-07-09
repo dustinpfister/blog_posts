@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2019-07-09 12:20:52
-version: 1.17
+updated: 2019-07-09 12:26:10
+version: 1.18
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -70,9 +70,11 @@ console.log({
 });
 ```
 
-### 2.2 - innerText
+### 2.2 - innerText element property
 
-When it comes to displaying a message in a html document there are a wide range of alternatives to using yet anotherjavaScript alter as a way to gain a sense of what is going on with what you are working on. I will cover a few of them in this section, and and for starters there is the innerText property.
+When it comes to displaying a message in a html document there are many other options to display something aside from javaScript alert. When gaining a reference to an html element in client side javaScript there are properties like innerText that can be used to set to change the inner text node of certain elements that have text nodes such as paragraph elements. 
+
+So lets take a quick look at a simple innerText example for displaying something.
 
 ```js
 <html>
@@ -94,6 +96,8 @@ out.innerText = 'This can be used to set a message';
     </body>
 </html>
 ```
+
+I just need to get a reference to an element by one means or another such as with document.getElementById. Once I have a reference to an element I can then use that as a way to display a message. A method like this can then be used to display a message in a browser window without having an annoying dialog box pop up each time.
 
 ## 3 - Writing a custom log function in place of using javaScript alert
 
