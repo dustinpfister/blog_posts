@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 502
-updated: 2019-07-09 12:03:41
-version: 1.3
+updated: 2019-07-10 18:08:10
+version: 1.4
 ---
 
 So when it comes to doing something in the command line in a posix system, or windows system there is the subject of piping in the command line. That is taking the output of one command line tool and piping it to another tool. For example taking the output of a command that spits out a list of information about the computer the operating system is running on and then piping it to a terminal based txt editor that then saves it as a file in the current working directory.
@@ -17,7 +17,7 @@ As of late I wanted to write a nodejs script that can accept input from the stan
 
 ## 1 - Process stdin basic example
 
-So lets start out with a basic example of using the process stdin property of the process global in nodejs.
+So lets start out with a basic example of using the process stdin property of the process global in nodejs. I just attach an event handler for the readable event of the stream, and then use that to read incoming chunks.
 
 ```js
 process.stdin.on('readable', () => {
