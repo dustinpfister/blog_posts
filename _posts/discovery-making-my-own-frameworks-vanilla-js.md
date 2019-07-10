@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: discovery
 id: 35
-updated: 2017-09-30 18:46:07
-version: 1.3
+updated: 2019-07-09 21:36:27
+version: 1.4
 ---
 
 In the spirit of vanilla js, I have been working on my own collection of frameworks. Don't get me wrong I sure do understand the other mindset on this, I have a series of posts on node.js that mainly have to do with npm packages that help to save time. Still sometimes if I want a job done right, I need to just do it myself.
@@ -45,7 +45,7 @@ This is a big part of most games, as such there might end up being a lot of thes
 
 ### [mf_shots](https://github.com/dustinpfister/mf_shots)
 
-My First atteped at making a general units framework, it is a dead project.
+My First attempt at making a general units framework, it is a dead project.
 
 ### [mf_units](https://github.com/dustinpfister/mf_units)
 
