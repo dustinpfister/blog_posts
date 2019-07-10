@@ -5,8 +5,11 @@
       <span class="month_key"><%= month.key %></span> - 
       <span class="month_fresh">(<%= (month.fresh / month.pc * 100).toFixed(2) %>%)</span>
     </h2>
-    <p>word count: <%= month.wc %></p>
-    <p>fresh/post count (<%= month.fresh.toFixed(2) + ' \/ ' +month.pc %>)</p>
+    <p>
+      <span>word count total: <%= month.wc %> - </span>
+      <span>avg word count per post: <%= Math.round(month.wc / month.pc) %> - </span>
+      <span>fresh/post count (<%= month.fresh.toFixed(2) + ' \/ ' +month.pc %>)</span>
+    </p>
     <p>cat counts: 
       <% Object.keys(month.cats).forEach((catName)=>{ %>
         <span><%= catName + ':' + month.cats[catName] %>; </span>
