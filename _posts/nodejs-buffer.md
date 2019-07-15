@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2019-07-15 11:14:43
-version: 1.19
+updated: 2019-07-15 11:19:28
+version: 1.20
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -25,7 +25,7 @@ So lets start out with some very basic examples of buffers that have to do with 
 
 ### 2.1 - The old way of doing it (do not do it unless for some reason you have to)
 
-So the old way of making a buffer was to use Buffer like that of any old jaavScript constructor method like that of Date. I call Buffer with the new keyword, and pass whatever it is that I want placed in a buffer.
+So the old way of making a buffer was to use the Nodejs Buffer global like that of any old jaavScript constructor method. In other words like that of the Date constructor that is used with the new keyword to create a new instance of Date. I call Buffer with the new keyword, and pass whatever it is that I want placed in a buffer.
 
 ```js
 var buff = new Buffer('this is how it once was');
@@ -34,7 +34,7 @@ console.log(buff);
 // <Buffer 74 68 69 73 20 69 73 20 68 6f 77 20 69 74 20 6f 6e 63 65 20 77 61 73>
 ```
 
-This should not be used any more unless for some reason you are using a real old version of node.js that does not support the newer ways to make a buffer, in which case I guess you have to. This way of creating a new buffer still shows up a lot with code examples on the open web, but it does open up some security concerns, and it has been deprecated when it comes to more modern versions of nodejs.
+This should not be used any more unless for some reason you are using a real old version of node.js that does not support the newer ways to make a buffer, in which case I guess you have to. This way of creating a new buffer still shows up a lot with code examples on the open web, but it does open up some security concerns, and it has been deprecated when it comes to more modern versions of nodejs. I will not be getting into this in detail in this post as I have done so in [another post](/2019/06/17/nodejs-buffer-new/) on creating a new buffer with the new keyword, you can check that out if you want to.
 
 ### 2.2 - Using Buffer.from to create a new buffer.
 
