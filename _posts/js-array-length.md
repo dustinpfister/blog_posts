@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-07-02 12:31:52
-version: 1.45
+updated: 2019-07-15 10:39:33
+version: 1.46
 ---
 
 [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative, however in some cases it is just an object property that does not even reflect that. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array. So then for the most part the length property in an array is easy to understand, however there are a few situations that might cause a degree of confusion, so a post on this subject might be called for to help clear some of that confusion.
@@ -398,4 +398,6 @@ console.log(fromObj(obj).length); // 2
 
 ## 9 - Conclusion
 
-So in javaScript array length is fairly easy to understand, but there are some things about it that can result in some confusion. There can be a difference between the length of an array and the actual element count for example. The length property is really only just a property of an object that reflects the highest element index of the array, not it could just be nothing but empty elements.
+So in javaScript array length is fairly easy to understand, but there are some things about it that can result in some confusion. There can be a difference between the length of an array and the actual element count for example. The length property is really only just a property of an object that reflects the highest element index of the array, and the array could be nothing but empty elements. There are also many little tricks about array length when it comes to setting the value of the length property of an array as a way to delete unwanted elements at the end of an array, and atypical ways of creating arrays fro plain old objects that juts have a length property.
+
+In nay case I hope you enjoyed this post on array length in javaScript, I am sure that I have still managed to not cover everything when it comes to array length in javaScript alone, let alone the subject in general. If you have anything of relevant interest to add be sure to bring it up in the comments if you feel compelled to do so. Thank you for reading.
