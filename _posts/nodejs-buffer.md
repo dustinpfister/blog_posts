@@ -5,15 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2019-06-17 10:14:15
-version: 1.18
+updated: 2019-07-15 11:14:43
+version: 1.19
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
 
 <!-- more -->
 
-## 1 - what to know before continuing
+## 1 - nodejs buffer global and what to know before continuing
 
 THis is a post on using buffers in nodejs to work with binary data in a node.js environment. There is a lot to know about when working with buffers, such as how to create them in the first place, and how it has changed compared to older versions of node.js. Anyway I hope that you have at least some background with node.js, and javaSciprt in general, as I will not be coving the basics of those topics here.
 
