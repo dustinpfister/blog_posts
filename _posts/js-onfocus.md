@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-07-16 10:19:49
-version: 1.23
+updated: 2019-07-16 10:22:05
+version: 1.24
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user focus on an element. This often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. These other ways in which a focus event can fire is if the user cycles to it with the tab key, and also if the focus is set to the element with an element method like [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
@@ -79,6 +79,8 @@ el.addEventListener('focus', function () {
 When I open this file up in the browser and click on the foo input tag the event tag of the element and the string 'foo' log to the console as expected.
 
 ## 3 - tabindex and the onfocus event
+
+Another subject of interest when it comes to the on focus event is the tab index attribute of html elements.
 
 ```js
 var draw = function (canvas, mode) {
