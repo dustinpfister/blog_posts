@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-07-14 21:38:49
-version: 1.22
+updated: 2019-07-16 10:19:49
+version: 1.23
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user focus on an element. This often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. These other ways in which a focus event can fire is if the user cycles to it with the tab key, and also if the focus is set to the element with an element method like [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
@@ -15,7 +15,7 @@ In this post I will be covering some quick examples when it comes to working wit
 
 <!-- more -->
 
-## 1 - focus javaScript method for simulating a focus
+## 1 - focus javaScript method for simulating a focus event
 
 The focus method of an element can be used to set the focus of an element it such a thing can be done with the element. Normally a focus event happens when the user sets the focus to an element by clicking on it, or using the tab key on desktops systems to cycle threw all elements that can be focused on in a page. However it is possible to also simulate this kind of event via javaScript as well by using the focus method of an element.
 
@@ -78,7 +78,39 @@ el.addEventListener('focus', function () {
 
 When I open this file up in the browser and click on the foo input tag the event tag of the element and the string 'foo' log to the console as expected.
 
-## 3 - JavaScript focus and blur events
+## 3 - tabindex and the onfocus event
+
+```js
+var draw = function (canvas, mode) {
+    console.log(canvas);
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = mode === 'focus' ? 'red' : 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+var onfocus = function (e) {
+    var canvas = e.target;
+    if (canvas.getContext) {
+        draw(canvas, 'focus');
+    }
+};
+ 
+var onblur = function (e) {
+    var canvas = e.target;
+    if (canvas.getContext) {
+        draw(canvas, 'blur');
+    }
+};
+ 
+var nodes = document.getElementsByTagName('canvas');
+[].forEach.call(nodes, function (canvas) {
+    canvas.addEventListener('focus', onfocus);
+    canvas.addEventListener('blur', onblur);
+    draw(canvas);
+});
+```
+
+## 4 - JavaScript focus and blur events
 
 So there is the focus event that fires when an element gets the focus, and then there is the [blur event](/2019/01/08/js-onblur/) that fires when that element looses the focus for whatever the reason. The focus can be lost for a wide range of reasons, but often it is because the user just simply moved on to another element in a form or click another area of the page.
 
@@ -139,6 +171,6 @@ add('y', 'focus', onTextFocus('set the value of y'));
 
 I am not suggesting that this is the best way of how to go about attaching events, in actually projects chances are I will be using some kind of framework when it comes to making the attachment of events more streamlined. In these posts I like to stick to vanilla javaScript by itself though, and when doing so I work out all kinds of ways of wrapping addEventListener, and experiment with different way to go about handing event attachment for on focus events, and events in general. 
 
-## 4 - conclusion
+## 5 - conclusion
 
 So the javaScript focus event is used to define some logic that will fire when an element looses focus that is gained by a range or reasons such as clicking on the element. There is also the [blur event](/2019/01/08/js-onblur/) that is used to attach some logic that will do something when that focus is lost. There are also a wide rage of other events that come into play when making an actually user interface of one kind or another such as on change, on keyup and more.
