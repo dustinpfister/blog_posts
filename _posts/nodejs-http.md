@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2018-02-11 11:14:12
-version: 1.3
+updated: 2019-07-18 15:10:40
+version: 1.4
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack application a quick process compared to working with just the core node.js modules. I might prefer to use hapi, or express, but still it is important to at least write a few simple demos using just the node.js [http module](https://nodejs.org/dist/latest-v8.x/docs/api/http.html).
@@ -31,6 +31,55 @@ server.on('request', function (req, res) {
 });
  
 server.listen(port);
+```
+
+## A not so basic example
+
+Some times I find myself in a situation in which I need to do something with streams. This often the case with post requests as the incoming body can be large and needs to be processed on a per chunk basis. However the same can be said of outgoing data as well when it comes to get requests. The response object of a request is a kind of stream so the write method of the request object can be used to send data on a per chunk basis.
+
+```js
+let http = require('http'),
+fs = require('fs');
+ 
+let server = http.createServer();
+ 
+// on request
+server.on('request', (req, res) => {
+ 
+    if (req.url === '/' && req.method === 'GET') {
+ 
+        let reader = fs.createReadStream('./public/index.html', {
+                highWaterMark: 128
+            });
+ 
+        res.setHeader('Content-Type', 'text/html');
+ 
+        reader.on('data', (data) => {
+            console.log('sent chunk: ')
+            res.write(data);
+        });
+ 
+        reader.on('end', () => {
+            console.log('done');
+            res.end();
+        });
+ 
+    } else {
+        res.end();
+ 
+    }
+ 
+});
+ 
+server.on('clientError', (err, socket) => {
+    socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
+ 
+server.listen(8080, 'localhost', 200, () => {
+    let add = server.address();
+    console.log('static server up on http://' + add.address + ':' + add.port);
+});
+ 
 ```
 
 ## Processing a post request
