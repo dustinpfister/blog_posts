@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 505
-updated: 2019-07-19 15:36:26
-version: 1.4
+updated: 2019-07-19 15:44:50
+version: 1.5
 ---
 
 The [Buffer from](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_array) method in nodejs can be used to create a new Buffer from a string, or array of numbers, or object in general. In many cases it might be one of th best ways to create a new Buffer, but there are [other options as well of course](/2019/06/17/nodejs-buffer-new/). In any case when creating a nodejs project buffers do come up now and then, and the from method of the [Buffer global](/2018/02/07/nodejs-buffer/) comes in handy when there is a desire to quickly create a buffer with an initial value derives from a hex string for example. So lets take a quick look at some examples of the buffer from method in action in nodejs.
@@ -38,6 +38,8 @@ So there is more to creating a buffer from a string that just giving the string 
 
 ### 2.1 - Utf8 and ascii encoding
 
+So when it comes to character encoding the two main forms that come to mind for most javaScript developers might be utf8 and ascii. On the surface these two encoding might apear to be about the same, but only when it comes to byte values of 127 and lower. With utf8 encoding if any character has a value of 128 to 255 it would be two bytes in utf8 and only one is ascii.
+
 ```js
 // a string with char 80 in hex
 // or 128 in decimal
@@ -53,6 +55,8 @@ console.log(buff.length); // two bytes
 buff = Buffer.from(str, 'ascii');
 console.log(buff.length); // one byte
 ```
+
+What is nice about ascii is that it is a simple and easy to understand encoding in which each character is one byte, but that it not the case with utf8. The eight in utf8 does not mean eight bits per character, it just means that single byte units of data are used to represent characters. Sure it it one byte per character when it comes to sticking to the ascii range of characters, but that is not the case when going into extended ascii and beyond with utf8 of course.
 
 ### 2.2 - Hex encoding
 
