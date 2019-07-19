@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 505
-updated: 2019-07-19 15:50:58
-version: 1.7
+updated: 2019-07-19 15:53:07
+version: 1.8
 ---
 
 The [Buffer from](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_array) method in nodejs can be used to create a new Buffer from a string, or array of numbers, or object in general. In many cases it might be one of th best ways to create a new Buffer, but there are [other options as well of course](/2019/06/17/nodejs-buffer-new/). In any case when creating a nodejs project buffers do come up now and then, and the from method of the [Buffer global](/2018/02/07/nodejs-buffer/) comes in handy when there is a desire to quickly create a buffer with an initial value derives from a hex string for example. So lets take a quick look at some examples of the buffer from method in action in nodejs.
@@ -96,6 +96,8 @@ buff.forEach((byt) => {
 ```
 
 ### 3.2 - An array of hex strings
+
+So the Array should be an array of numbers, if however you are dealing with an array of string values such as hex values. The the way to go about doing it will involve converting the array of string values to a single string, and then using that with the desired encoding as covered in the section in which I went over creating buffers from strings above.
 
 ```js
 // array of numbers
