@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 505
-updated: 2019-07-19 16:13:36
-version: 1.9
+updated: 2019-07-19 16:14:48
+version: 1.10
 ---
 
 The [Buffer from](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_array) method in nodejs can be used to create a new Buffer from a string, or array of numbers, or object in general. In many cases it might be one of th best ways to create a new Buffer, but there are [other options as well of course](/2019/06/17/nodejs-buffer-new/). In any case when creating a nodejs project buffers do come up now and then, and the from method of the [Buffer global](/2018/02/07/nodejs-buffer/) comes in handy when there is a desire to quickly create a buffer with an initial value derives from a hex string for example. So lets take a quick look at some examples of the buffer from method in action in nodejs.
@@ -116,6 +116,8 @@ buff.forEach((byt) => {
 So then there is creating buffers from objects in general. Any object that has a valueOf property can be passed as the first argument. In this case as the value that is the result of calling the valueOf property of the object is what will be used to create the starting size and content of the buffer.
 
 ### 4.1 - Custom Object with a valueOf property
+
+In this example I am creating my one custom object with a valueOf property to show what happens when creating a buffer with an object.
 
 ```js
 let myThing = {
