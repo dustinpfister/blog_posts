@@ -5,11 +5,11 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 504
-updated: 2019-07-18 20:24:35
-version: 1.1
+updated: 2019-07-18 20:28:28
+version: 1.2
 ---
 
-This post will be on the node net module.
+This post will be on the node net module that can be used to accomplish tasks involving the tpc protocol rather than http. The net module includes constructors that return insistences of streams that allow for data to be transmitted on a per data chunk basics like that of the createReadStream method in the file system module.
 
 <!-- more -->
 
