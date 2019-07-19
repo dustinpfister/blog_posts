@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2019-07-15 11:19:28
-version: 1.20
+updated: 2019-07-19 14:46:53
+version: 1.21
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -38,7 +38,7 @@ This should not be used any more unless for some reason you are using a real old
 
 ### 2.2 - Using Buffer.from to create a new buffer.
 
-As of late (node 8.x+) it is advised to not use the Buffer constructor directly, in fact doing so is depreciated, instead when dealing with buffers the various methods of Buffer are what should be used in order to work with buffers.
+As of late (node 8.x+) it is advised to not use the Buffer constructor directly, in fact doing so is depreciated, instead when dealing with buffers the various methods of Buffer are what should be used in order to work with buffers. For example the buffer from method works great for quickly creating a new buffer with an initial value that is derived from a string.
 
 ```js
 let buff = Buffer.from('hello buffer!');
@@ -50,7 +50,7 @@ console.log(buff.toString());
 // 'hello buffer!'
 ```
 
-Buffer.from is one such method and in most cases will work just find, allowing for the creating of a buffer from a string value, as well as other types such as arrays of .
+So then [Buffer.from](/2019/07/19/nodejs-buffer-from/) is one such method and in most cases however maybe it is desired to create a blank buffer that is filled with zeros, or maybe you do not event want to do that. That being said there are of course other options such as Buffer.alloc, and Buffer.allocUnsafe.
 
 ### 2.3 - Buffer.alloc can be used for safe allocation of memory for a buffer
 
