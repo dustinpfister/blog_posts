@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2019-06-21 11:23:03
-version: 1.11
+updated: 2019-07-19 14:50:24
+version: 1.12
 ---
 
 So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
@@ -57,3 +57,5 @@ Then there are a number of ways to create a new buffer with some data it it righ
 let buff = Buffer.from('ABCD');
 console.log(buff.toString()); // 'ABCD'
 ```
+
+In this sub section I am just creating a new buffer from a string and the default encoding is utf8. It is also possible to set the encoding as well as create buffers from arrays and objects also. For more on the buffer from method check out my post on [Buffer.from](/2019/07/19/nodejs-buffer-from/) in which I get into this method in detail.
