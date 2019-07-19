@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 504
-updated: 2019-07-19 19:56:44
-version: 1.4
+updated: 2019-07-19 19:58:06
+version: 1.5
 ---
 
 This post will be on the [node net](https://nodejs.org/api/net.html) module that can be used to accomplish tasks involving the [tcp protocol](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) rather than [http](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). The net module includes constructors that return insistences of streams that allow for data to be transmitted on a per data chunk basics like that of the createReadStream method in the file system module.
@@ -46,6 +46,8 @@ server.listen(8080, 'localhost', 200, () => {
 Once this example is up and running I can use a TCP client like telnet to connect to it an sure enough I get the message hello world. However if you do not have a TCP client installed it is also possible to connect to the server with another script so leys look into how to do that as well.
 
 ## 2 - Using the Socket Constructor to connect to a server
+
+So the socket constructor can be used to connect to a server by creating and instance of socket and then connecting to a server by using the connect method of socket.
 
 ```js
 let net = require('net'),
