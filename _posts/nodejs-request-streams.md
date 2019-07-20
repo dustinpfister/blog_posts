@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 260
-updated: 2018-08-15 20:28:03
-version: 1.14
+updated: 2019-07-20 11:45:16
+version: 1.15
 ---
 
 So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/en/) and the many useful packages that can be installed via [npm](https://www.npmjs.com/) I thought I would write another post on the npm package request, that is a popular http client for scripting http. Although I think this time around I will be focusing on streams. Out of the box request only gives to ways to work with incoming data, callback methods, and streams. Promise support can be added, but that is off topic for this post.
@@ -15,7 +15,7 @@ So for [yet another post](/categories/node-js/) on [node.js](https://nodejs.org/
 
 ## 1 - What to know
 
-This is an advanced post on node.js, and JavaScript that has to do with working streams using request over the built in modules for doing so. I will not be covering everything there is to know about request, let alone all the other topics of interest that branch off from this. If you want to learn the basics about request, I have [an older post on that](/2017/05/23/nodejs-request/). In this post I am usingh node 8.x, and the version of request is 2.88.0.
+This is an advanced post on node.js, and JavaScript that has to do with working streams using request over the built in modules for doing so. I will not be covering everything there is to know about request, let alone all the other topics of interest that branch off from this. If you want to learn the basics about request, I have [an older post on that](/2017/05/23/nodejs-request/). In this post I am using node 8.x, and the version of request is 2.88.0.
 
 ## 1.1 - Buffers
 
@@ -23,7 +23,7 @@ In this post I will be making heavy use of Buffers, they come up a lot in node.j
 
 ## 1.2 - Streams
 
-This post has to do with streams involving the http client request. Request gives two ways to work with data that is the reponse to an http request, callbacks, and streams. If you do not know a great deal about streams you might want to check out the [node.js docs on streams](https://nodejs.org/dist/latest-v8.x/docs/api/stream.html) as well.
+This post has to do with streams involving the http client request. Request gives two ways to work with data that is the response to an http request, callbacks, and streams. If you do not know a great deal about streams you might want to check out the [node.js docs on streams](https://nodejs.org/dist/latest-v8.x/docs/api/stream.html) as well.
 
 ## 2 - Just logging chunks of data as they come in.
 
@@ -31,7 +31,7 @@ As chunks of data come in from a request there are many things that I might want
 
 ### 2.1 - Using process.stdout
 
-One way to log that data to the console, is to pipe it to process.stdout. This will work in a simular way to that of using console.log, the incoming chunks will be logged out to the console.
+One way to log that data to the console, is to pipe it to process.stdout. This will work in a similar way to that of using console.log, the incoming chunks will be logged out to the console.
 
 ```js
 let request = require('request');
@@ -86,7 +86,7 @@ request(process.argv[2] || 'https://dustinpfister.github.io')
 
 ### 3.2 - Using the write method
 
-If I want to use write stream in a way in wich I call a method each time I want to write a few bytes of data to the file that I have created with create Write stream that is not to hard to pull off. Doing so just requires that I save the instance of the write stream to a variable, and just call the write method, passing the chunks to that method.
+If I want to use write stream in a way in which I call a method each time I want to write a few bytes of data to the file that I have created with create Write stream that is not to hard to pull off. Doing so just requires that I save the instance of the write stream to a variable, and just call the write method, passing the chunks to that method.
 
 ```js
 let request = require('request'),
