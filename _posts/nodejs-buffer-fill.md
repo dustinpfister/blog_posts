@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-07-19 20:37:36
-version: 1.9
+updated: 2019-07-19 20:44:27
+version: 1.10
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a pattern. There is also other methods like the buffer write method also that might be more appropriate when it comes to just writing data to a certain location and length of a buffer. So this post will be mostly on the buffer fill method, but also on filling a buffer with data in general, so lets get to some examples.
@@ -72,18 +72,11 @@ console.log(buff.reduce((acc, byt) => {
 So another way to fill a buffer is to use the buffer write method. This is one way to just go about putting some data into a buffer, but it cal also be used to fill it as well if the arguments are given that will do so.
 
 ```js
-let buff = Buffer.allocUnsafe(8);
+let buff = Buffer.allocUnsafe(4);
  
-buff.fill('f1', 'hex');
- 
+buff.write('f1a20306', 0, 8, 'hex');
 console.log(buff.toString('hex'));
-// f1f1f1f1f1f1f1f1
- 
-buff.fill('00','hex');
-console.log(buff.toString('hex'));
-// 0000000000000000
- 
-buff.write('f1a8', 1, 2, 'hex');
-console.log(buff.toString('hex'));
-// 00f1a80000000000
+// f1a20306
 ```
+
+So if I want to fill with the buffer write method then the byte length of the string that I am using to fill with should be as long as the buffer. I will also want to be sure to set the right values for offset, length, and make sure that the encoding match up also.
