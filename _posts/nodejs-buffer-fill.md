@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-07-19 21:04:24
-version: 1.13
+updated: 2019-07-19 21:17:01
+version: 1.14
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a pattern. There is also other methods like the buffer write method also that might be more appropriate when it comes to just writing data to a certain location and length of a buffer. So this post will be mostly on the buffer fill method, but also on filling a buffer with data in general, so lets get to some examples.
@@ -103,4 +103,16 @@ So the concat method can be used to concatenate two or more buffers together and
 let buff = Buffer.concat([Buffer.from('afaf','hex'),Buffer.from('2828','hex')], 3);
 console.log(buff.toString('hex'));
 // afaf28
+```
+
+### 3.4 - The copy method
+
+So the copy method is yet another option that could be used as a way to fill a buffer with a pattern also.
+
+```js
+let patt = Buffer.alloc(4, 'ff', 'hex'),
+buff = Buffer.allocUnsafe(4);
+patt.copy(buff, 0, 0, buff.length);
+console.log(buff.toString('hex'));
+// ffffffff
 ```
