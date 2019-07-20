@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2019-07-20 11:57:36
-version: 1.5
+updated: 2019-07-20 12:08:04
+version: 1.6
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like express, and hapi just to name a few. I might prefer to use express when I make such projects, but still on occasion I find myself writing at least a few simple demos using just the [node http module](https://nodejs.org/api/http.html) by itself without any additional framework on top of nodejs.
@@ -33,7 +33,7 @@ server.on('request', function (req, res) {
 server.listen(port);
 ```
 
-## A not so basic example
+## 2 - A not so basic example
 
 Some times I find myself in a situation in which I need to do something with streams. This often the case with post requests as the incoming body can be large and needs to be processed on a per chunk basis. However the same can be said of outgoing data as well when it comes to get requests. The response object of a request is a kind of stream so the write method of the request object can be used to send data on a per chunk basis.
 
@@ -82,7 +82,7 @@ server.listen(8080, 'localhost', 200, () => {
  
 ```
 
-## Processing a post request
+## 3 - Processing a post request
 
 When making a simple project that will end up doing something with post requests there is a need to process the incoming body of the post request. That is to parse the body into an Object that can be worked with.
 
@@ -141,9 +141,9 @@ server.on('request', function (req, res) {
 server.listen(port);
 ```
 
-## Making http requests from node.js
+## 4 - http request for making server side requests
 
-There are many npm packages for this that may help to make requests easier, or add helpful features, but it is not to hard to just make requests from node.js with the built in http module.
+There are many npm packages for this that may help to make requests easier, or add helpful features, but it is not to hard to just make requests from node.js with the built in http module by using the [http request method](https://nodejs.org/docs/latest-v8.x/api/http.html#http_http_request_options_callback).
 
 
 This basic example will make a get request for www.google.com
