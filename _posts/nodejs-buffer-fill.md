@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-07-19 21:00:49
-version: 1.12
+updated: 2019-07-19 21:04:24
+version: 1.13
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a pattern. There is also other methods like the buffer write method also that might be more appropriate when it comes to just writing data to a certain location and length of a buffer. So this post will be mostly on the buffer fill method, but also on filling a buffer with data in general, so lets get to some examples.
@@ -94,3 +94,13 @@ console.log(buff.toString('hex'));
 ```
 
 So if I want to fill with the buffer write method then the byte length of the string that I am using to fill with should be as long as the buffer. I will also want to be sure to set the right values for offset, length, and make sure that the encoding match up also.
+
+### 3.3 - Concat
+
+So the concat method can be used to concatenate two or more buffers together and then return a new buffer that is the sum of all those buffers that will be filled with the contents of the list of buffers given to it. It can also be given another argument that can limit the size of the resulting buffer.
+
+```js
+let buff = Buffer.concat([Buffer.from('afaf','hex'),Buffer.from('2828','hex')], 3);
+console.log(buff.toString('hex'));
+// afaf28
+```
