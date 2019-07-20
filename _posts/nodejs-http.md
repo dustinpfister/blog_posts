@@ -1,19 +1,19 @@
 ---
-title: The node.js http module
+title: The node.js http module and setting up a simple web server with just native javaScript.
 date: 2018-02-06 20:32:00
 tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2019-07-18 15:10:40
-version: 1.4
+updated: 2019-07-20 11:57:36
+version: 1.5
 ---
 
-There are many frameworks that help to make the process of making a node.js powered full stack application a quick process compared to working with just the core node.js modules. I might prefer to use hapi, or express, but still it is important to at least write a few simple demos using just the node.js [http module](https://nodejs.org/dist/latest-v8.x/docs/api/http.html).
+There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like express, and hapi just to name a few. I might prefer to use express when I make such projects, but still on occasion I find myself writing at least a few simple demos using just the [node http module](https://nodejs.org/api/http.html) by itself without any additional framework on top of nodejs.
 
 <!-- more -->
 
-# Basic example of http.
+## 1 - A basic example of the built in node http module in action.
 
 For a basic hello world example I made a new instance of a server object, by calling http.createServer, and then used the 'request' event with the server object to respond to any incoming request with 'hello world' by way of res.end. Finally the server is started my calling server.listen, and giving a port to listen on.
 
