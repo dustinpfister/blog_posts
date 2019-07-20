@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-07-19 20:28:37
-version: 1.7
+updated: 2019-07-19 20:31:24
+version: 1.8
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a pattern. There is also other methods like the buffer write method also that might be more appropriate when it comes to just writing data to a certain location and length of a buffer. So this post will be mostly on the buffer fill method, but also on filling a buffer with data in general, so lets get to some examples.
@@ -54,6 +54,8 @@ console.log(buff.toString('hex'));
 The allocUnsafe method does not zero fill a buffer for starters and on top of that it does not have arguments that can be used to fill the buffer as well. This is the reason why it is called allocUnsafe. So the buffer fill method can be used as one way to make it safe by zero filling the buffer, it is just that doing so is now an option, as in n some cases I might not want a buffer zero filled.
 
 ## 3 - Write to a buffer
+
+So another way to fill a buffer is to use the buffer write method. This is one way to just go about putting some data into a buffer, but it cal also be used to fill it as well if the arguments are given that will do so.
 
 ```js
 let buff = Buffer.allocUnsafe(8);
