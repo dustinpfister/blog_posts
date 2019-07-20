@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-07-19 20:48:16
-version: 1.11
+updated: 2019-07-19 21:00:49
+version: 1.12
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a pattern. There is also other methods like the buffer write method also that might be more appropriate when it comes to just writing data to a certain location and length of a buffer. So this post will be mostly on the buffer fill method, but also on filling a buffer with data in general, so lets get to some examples.
@@ -38,6 +38,18 @@ console.log(buff.reduce((acc, byt) => {
         return acc + ',' + byt
     }));
 // 10,10,10,10
+```
+
+### 1.2 - Filling with another buffer
+
+A string and encoding can be used to fill a buffer the the fill method, but another buffer can be used also. THis buffer can be created by and means possible such as the Buffer.from method. Once the buffer exists it just needs to be passed as the first argument when calling the fill method and the buffer will be filled wit th contents of the other buffer.
+
+```js
+let buff = Buffer.allocUnsafe(4);
+buff.fill(Buffer.from([255]));
+console.log(buff.toString('hex'));
+// ffffffff
+
 ```
 
 ## 2 - Fill an unsafe buffer
