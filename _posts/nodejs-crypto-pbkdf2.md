@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 501
-updated: 2019-07-21 12:30:14
-version: 1.6
+updated: 2019-07-21 12:41:08
+version: 1.7
 ---
 
 This is a post on the Node Crypto module [pbkdf2 method](https://nodejs.org/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback) in nodejs. So [pbkdf2](https://en.wikipedia.org/wiki/PBKDF2) stands for Password Based Key Derivation Function 2, and is a method that can be used to create a key that is to be used with a node crypto module method like createCipheriv.
@@ -34,7 +34,7 @@ crypto.pbkdf2(pw, salt, i, len, digest, (e, key) => {
 
 ## 2 - The salt value
 
-The salt value is a way to provide an additional input on top of the password so that a different key will result for the same password. It makes sense to do this as one of the typical use case scenarios with this method is to hash a database of passwords. In the event that one hash is cracked all instances of the same password are not necessary compromised given that a unique salt is used each time a password is hashed.
+The [salt value](https://en.wikipedia.org/wiki/Salt_(cryptography)) is a way to provide an additional input on top of the password so that a different key will result for the same password. It makes sense to do this as one of the typical use case scenarios with this method is to hash a database of passwords. In the event that one hash is cracked all instances of the same password are not necessary compromised given that a unique salt is used each time a password is hashed.
 
 ```js
 let crypto = require('crypto');
@@ -78,3 +78,5 @@ hashIt('weak123', 'pu77fbaz')
     // fa5e869e389ff97f7a00bde481a91ae5
 });
 ```
+
+There is still the concern of storing the salt, and doing so in the same database as the hashed passwords. Still the use of salts does help to slow the process down, and make things more complicated.
