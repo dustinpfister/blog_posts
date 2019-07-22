@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 501
-updated: 2019-07-22 11:24:01
-version: 1.10
+updated: 2019-07-22 11:39:12
+version: 1.11
 ---
 
 This is a post on the Node Crypto module [pbkdf2 method](https://nodejs.org/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback) in nodejs. So [pbkdf2](https://en.wikipedia.org/wiki/PBKDF2) stands for Password Based Key Derivation Function 2, and is a method that can be used to create a key that is to be used with a node crypto module method like createCipheriv.
@@ -85,7 +85,7 @@ The salt value should be unique for each password event when the password is the
 
 ## 3 - iterations
 
-The iterations argument is a number that reflects the volume of computational work to preform to produce the key. Generally speaking the bugger the number the longer it will take to generate they key, but it will be a stronger key that is harder to crack.
+The iterations argument is a number that reflects the volume of computational work to preform to produce the key. Generally speaking the bugger the number the longer it will take to generate they key, but it will be a stronger key that is harder to crack. A good starting point today might be around five thousand, but you might want to set it as high as one hundred thousand.
 
 ```js
 let crypto = require('crypto');
