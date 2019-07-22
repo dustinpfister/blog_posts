@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-07-22 11:51:27
-version: 1.28
+updated: 2019-07-22 11:53:57
+version: 1.29
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user sets the focus on an element. The focus event often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. There other ways in which a focus event can fire by way of javaScript code by using an element reference object method like the [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method. So there are ways that a focus event can fire by way of user action, and there are also ways to which a focus event can be simulated also.
@@ -44,7 +44,7 @@ Here I have a simple example where I am just setting the focus of the input elem
 
 ## 2 - onfocus event hander for an element
 
-There might be situations in which I will want to define some javaScript that will run each time a focus event happens for one or more elements. For this there is the onfocus event, and addEventListener. These days it might be best to stick with addEventLisneter for attaching an on focus event, or any event for that matter. However if you do want to push backward compatibility back farther, there are other options.
+There might be situations in which I will want to define some javaScript that will run each time a focus event happens for one or more elements. For this there is the onfocus event, and addEventListener. These days it might be best to stick with addEventLisneter for attaching an on focus event, or any event for that matter. However if you do want to push backward compatibility back farther for whatever the reason, there are other options that will work on old platforms.
 
 Here in the html of a basic example that makes use of the javaScript focus event I have two input tags with ids assigned to them, I also have a script tag that links to some external javaScript that attaches some event handlers to the elements.
 
