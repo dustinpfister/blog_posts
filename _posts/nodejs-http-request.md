@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 506
-updated: 2019-07-22 19:35:20
-version: 1.1
+updated: 2019-07-22 19:57:56
+version: 1.2
 ---
 
 In nodejs there is the built in http module, this module can be used to set up a basic web server, but there are some additional features as well. One such feature is the http request method that can eb used to script http request from a nodejs environment.
@@ -32,3 +32,26 @@ req.end();
 ```
 
 This will work okay it most situations with just plain od get requests, but if I need to set some additional options, or do something involving a post request then there is a more complicated way of doing the same thing that involves giving an object as the first argument.
+
+## 2 - Options example
+
+So and Object can be given as the first argument in place of a url string that can be used to set various options just as port number, method and so forth.
+
+```js
+let http = require('http');
+let req = http.request({
+        hostname: 'www.google.com',
+        port: 80,
+        path: '/',
+        method: 'GET'
+    }, (res) => {
+        let html = '';
+        res.on('data', function (chunk) {
+            html += chunk.toString('ascii');
+        });
+        res.on('end', () => {
+            console.log(html);
+        });
+    });
+req.end();
+```
