@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-07-20 08:57:16
-version: 1.26
+updated: 2019-07-22 11:47:43
+version: 1.27
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user sets the focus on an element. The focus event often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. There other ways in which a focus event can fire by way of javaScript code by using an element reference object method like the [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method. So there are ways that a focus event can fire by way of user action, and there are also ways to which a focus event can be simulated also.
@@ -17,7 +17,9 @@ In this post I will be covering some quick examples when it comes to working wit
 
 ## 1 - focus javaScript method for simulating a focus event
 
-The focus method of an element can be used to set the focus of an element it such a thing can be done with the element. Normally a focus event happens when the user sets the focus to an element by clicking on it, or using the tab key on desktops systems to cycle threw all elements that can be focused on in a page. However it is possible to also simulate this kind of event via javaScript as well by using the focus method of an element.
+The focus method of an element can be used to set the focus of an element if such a thing can be done with the element, as not all elements can gain a focus by default. Normally a focus event happens when the user sets the focus to an element by clicking on it, or using the tab key on desktops systems to cycle threw all elements that can be focused on in a page. However it is possible to also simulate this kind of event via javaScript as well by using the focus method of an element.
+
+So in  this section I will be going over a simple example that simulates a focus event by gaining a reference to an input element that can be focused in the browser and calling the focus element method of that element.
 
 ```html
 <html>
