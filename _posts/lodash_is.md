@@ -1,15 +1,15 @@
 ---
 title: lodash is a bunch of things
 date: 2019-07-23 11:48:00
-tags: [js,lodash,node.js]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 507
-updated: 2019-07-23 15:24:49
-version: 1.3
+updated: 2019-07-23 15:29:47
+version: 1.4
 ---
 
-[Lodash is](https://lodash.com/docs/4.17.14) a javaScript utility library based of another similar library known as underscore. In this post I will be writing about what lodash is, as there is more than one way to describe what lodash is to begin with.
+[Lodash is](https://lodash.com/docs/4.17.14) a javaScript utility library based off another similar library known as underscore. However there are a number of other ways one could go about defining what lodash is. In this post I will be writing about some definitions when it comes to describing what lodash is, as there is more than one way to describe what lodash is to begin with before even getting started with lodash, functional programing, and so forth.
 
 <!-- more -->
 
