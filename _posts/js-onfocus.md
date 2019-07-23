@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-07-22 11:53:57
-version: 1.29
+updated: 2019-07-22 20:08:52
+version: 1.30
 ---
 
 The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user sets the focus on an element. The focus event often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. There other ways in which a focus event can fire by way of javaScript code by using an element reference object method like the [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method. So there are ways that a focus event can fire by way of user action, and there are also ways to which a focus event can be simulated also.
@@ -82,7 +82,7 @@ When I open this file up in the browser and click on the foo input tag the event
 
 ## 3 - tabindex and the onfocus event
 
-Another subject of interest when it comes to the on focus event is the tab index attribute of html elements. This tab index attribute is one way to make it so elements that can not be focused by default focusable.
+Another subject of interest when it comes to the on focus event is the tab index attribute of html elements. This tab index attribute is one way to make it so elements that can not be focused by default focusable such as canvas elements. This might not always be such a great idea, but it can be done with the tabindex property
 
 ```js
 var draw = function (canvas, mode) {
@@ -113,6 +113,8 @@ var nodes = document.getElementsByTagName('canvas');
     draw(canvas);
 });
 ```
+
+WHen it comes to things like canvas elements there are many other events to work with that might be more appropriate, but still for whatever reason if I want to make a canvas element something that can be focused on via the tab button this will work.
 
 ## 4 - JavaScript focus and blur events
 
