@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 507
-updated: 2019-07-23 15:29:47
-version: 1.4
+updated: 2019-07-23 15:44:39
+version: 1.5
 ---
 
 [Lodash is](https://lodash.com/docs/4.17.14) a javaScript utility library based off another similar library known as underscore. However there are a number of other ways one could go about defining what lodash is. In this post I will be writing about some definitions when it comes to describing what lodash is, as there is more than one way to describe what lodash is to begin with before even getting started with lodash, functional programing, and so forth.
@@ -16,6 +16,42 @@ version: 1.4
 ## 1 - lodash is a utility library
 
 One way to go about describing what lodash is would be to say that it is a utility library. However calling it just that by itself is very vague, as a utility library can be a great many different things that provides all kinds of different sets of functionality.
+```js
+// a NaN value
+let n = NaN;
+ 
+// the native isNaN does not work as
+// expected
+console.log(isNaN(n)); // true
+console.log(isNaN(undefined)); // true
+ 
+// So I make my own that does
+let myIsNaN = (a) => {
+    if (typeof a != 'number') {
+        return false;
+    }
+    return a + '' === 'NaN';
+};
+console.log(myIsNaN(n)); // true
+console.log(myIsNaN(undefined)); // false
+ 
+// If I want to I can start making methods
+// like this as part of my own utility library
+let foo = {};
+foo.isNaN = (a) => {
+    if (typeof a != 'number') {
+        return false;
+    }
+    return a + '' === 'NaN';
+};
+console.log(foo.isNaN(n)); // true
+console.log(foo.isNaN(undefined)); // false
+ 
+// but why bother writing my own utility library
+// if one like lodash is all ready out there?
+console.log(_.isNaN(n)); // true
+console.log(_.isNaN(undefined)); // false
+```
 
 ## 2 - lodash is a functional programing library
 
