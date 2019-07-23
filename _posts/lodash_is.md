@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 507
-updated: 2019-07-23 15:44:39
-version: 1.5
+updated: 2019-07-23 15:47:38
+version: 1.6
 ---
 
 [Lodash is](https://lodash.com/docs/4.17.14) a javaScript utility library based off another similar library known as underscore. However there are a number of other ways one could go about defining what lodash is. In this post I will be writing about some definitions when it comes to describing what lodash is, as there is more than one way to describe what lodash is to begin with before even getting started with lodash, functional programing, and so forth.
@@ -16,6 +16,8 @@ version: 1.5
 ## 1 - lodash is a utility library
 
 One way to go about describing what lodash is would be to say that it is a utility library. However calling it just that by itself is very vague, as a utility library can be a great many different things that provides all kinds of different sets of functionality.
+Maybe one way to go about defining what a utility library is would be to say that it is a collection of methods on top of what is provided nativity. In addition this collection of methods brings something more to the table, functions in a different way, or just helps to ensure what should be there is in fact there.
+
 ```js
 // a NaN value
 let n = NaN;
