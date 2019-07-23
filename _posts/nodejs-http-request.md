@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 506
-updated: 2019-07-22 20:00:37
-version: 1.3
+updated: 2019-07-22 20:03:43
+version: 1.4
 ---
 
 In nodejs there is the built in http module, this module can be used to set up a basic web server, but there are some additional features as well. One such feature is the [http request method](https://nodejs.org/api/http.html#http_http_request_url_options_callback) that can eb used to script http request from a nodejs environment. There are many options when it comes to having a server side http client, one of the most best known might be axios, but in this post I will be writing about just the plain old native JavaScript option in node today.
@@ -55,3 +55,7 @@ let req = http.request({
     });
 req.end();
 ```
+
+## 3 - Conclusion
+
+So the node http request method can be used as a way to script http requests in a nodejs environment, there is much more to the http module though when it comes to responding to http requests.
