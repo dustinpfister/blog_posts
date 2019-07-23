@@ -1,19 +1,19 @@
 ---
-title: The history of _.isArray and it's relevance in 2017
+title: The history of the lodash is array method and it's relevance today
 date: 2017-09-27 11:49:00
 tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 46
-updated: 2019-07-02 21:34:46
-version: 1.6
+updated: 2019-07-23 11:45:49
+version: 1.7
 ---
 
 Detecting if an Object is an Array is a trivial matter, or at least it is if you do not care a whole lot about backward compatibility. If you do want to march backward compatibility back to say IE 8 (latest ie for win xp), or even further to IE 6 (latest for win 9.x) then you can not depend on Array.isArray, or [_.isArray](https://lodash.com/docs/4.17.4#isArray) in [loash](https://lodash.com/) ether for that matter because in late versions lodash just references Array.isArray.
 
 <!-- more -->
 
-## 1 - The _.isArray in lodash 4.17.4
+## 1 - The lodash is array method in lodash 4.17.4
 
 In late versions of lodash the native Array.isArray method is just being referenced, for some developers this might not sit well. However if you just care about modern evergreen browsers then it might not be much of a problem.
 
