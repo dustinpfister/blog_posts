@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2019-07-22 20:19:46
-version: 1.13
+updated: 2019-07-23 16:10:19
+version: 1.14
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. The undefined value is the default value for variables that are declared but do not have any value assigned to them. When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. In this post I will be outlining some examples that point out some things that a javaScript developer should be aware of when it comes to undefined in javaScript.
@@ -94,7 +94,7 @@ console.log(isNaN(undefined)); // true
 
 ## 4 - The undefined literal or keyword
 
-There is also the undefined keyword or literal as it might sometime be called. This is often used as a way to test for undefined.
+There is also the undefined keyword or literal as it might sometimes be called. This is often used as a way to test for undefined.I can not say that there are many instances in which I set a variable or property to undefined, or pass undefined as an argument, but it can also be used that way as well. Still for the most part I find myself using it in expressions to test for the undefined.
 
 ```js
 
@@ -106,6 +106,7 @@ console.log( a === undefined ); // true
 console.log( b === undefined ); // false
 console.log( c === undefined ); // false
 ```
+
 
 ## 5 - Conclusion
 
