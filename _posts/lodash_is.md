@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 507
-updated: 2019-07-23 15:21:07
-version: 1.2
+updated: 2019-07-23 15:24:49
+version: 1.3
 ---
 
 [Lodash is](https://lodash.com/docs/4.17.14) a javaScript utility library based of another similar library known as underscore. In this post I will be writing about what lodash is, as there is more than one way to describe what lodash is to begin with.
@@ -19,11 +19,11 @@ One way to go about describing what lodash is would be to say that it is a utili
 
 ## 2 - lodash is a functional programing library
 
-Saying that lodash is a functional programing library is another way one could go about defining what lodash is. However it might still require a little elaboration beyond just saying that. Functional programing is a style of programing in which a functions output is the result of only its arguments. The same arguments will aways result in the same result being returned in so called pure functions that follow this functional programing rule. This is on contrast to imperative programming in which something weird involving application state, the scope chain or a class instance could result in a different result being returned even when called with the same arguments.
+Saying that lodash is a functional programing library is another way one could go about defining what lodash is. However it might still require a little elaboration beyond just saying that. Functional programing is a style of programing in which a functions output is the result of only its arguments. The same arguments will aways result in the same result being returned in so called pure functions that follow this functional programing rule. This is in contrast to imperative programming in which something weird involving application state, the scope chain or a class instance could result in a different result being returned even when called with the same arguments.
 
 ### 2.1 - Mutation of arguments
 
-A big part of functional programing is having methods that do no mutate arguments. If you write a methods that takes an object as an argument what is returned is a new object that is created from that object, rather than mutating the given object. A good example of this would be the \_.slice method and the native Array.prototype.slice method.
+A big part of functional programing is having methods that do not mutate arguments. If you write a methods that takes an object as an argument what is returned is a new object that is created from that object, rather than mutating the given object. A good example of this would be the \_.slice method and the native Array.prototype.slice method.
 
 The \_.slice method accepts an array as the first argument followed by starting and ending array index values that are to be used to create a new array from that given array.
 
@@ -37,6 +37,8 @@ console.log(arr2); // [2,3]
 // does not mutate the old array
 console.log(arr); // [1,2,3,4]
 ```
+
+Sure there is also the native slice array method that works more or less the same way, but then there are methods like splice that do not.
 
 ```js
 let arr = [1,2,3,4];
@@ -53,6 +55,8 @@ let arr3 = arr.splice(1,2);
 console.log(arr3); // [2,3]
 console.log(arr); // [1,4]
 ```
+
+So by using lodash it forces me to think in a more functional rather than imperative way about my code when it comes to how functions should be designed.
 
 ## 3 - Lodash is dead
 
