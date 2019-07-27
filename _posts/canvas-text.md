@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-07-27 10:43:38
-version: 1.3
+updated: 2019-07-27 11:24:44
+version: 1.4
 ---
 
 So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d content method. There is a bit more to know about when it comes to setting the position of text, font and so forth, so lets look at some quick examples of working with text in canvas.
@@ -41,3 +41,45 @@ ctx.fillText('hello world', 10, 10);
 ```
 
 There is more to cover when it comes to the text base line as well as centering text, and controlling the size and font of text. So now that we have a basic example covered we can now get to those examples as well now.
+
+## 2 - The text base line method
+
+```js
+// get the canvas, context and set size
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+// some variables for the example
+// baseY is used to position a baseline
+// and is also the same y value that will
+// be used for the fill text method
+var mess = 'Hello',
+baseY = 10,
+stepX = 30;
+ 
+// drawing a line across the canvas
+// with a y value of baseY
+ctx.strokeStyle = 'blue';
+ctx.lineWidth = 1;
+ctx.beginPath();
+ctx.moveTo(0, baseY);
+ctx.lineTo(canvas.width, baseY);
+ctx.stroke();
+ 
+// looping over all values for baseLine to
+// compare the differences.
+ctx.fillStyle = 'red';
+[
+    'alphabetic',
+    'bottom',
+    'hanging',
+    'ideographic',
+    'middle',
+    'top'
+].forEach(function (baseLineValue, index) {
+    ctx.textBaseline = baseLineValue;
+    ctx.fillText(mess, stepX * index, baseY);
+});
+```
