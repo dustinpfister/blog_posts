@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-07-26 16:45:01
-version: 1.1
+updated: 2019-07-26 20:50:58
+version: 1.2
 ---
 
-So in html 5 canvas text can be rendred with methods like the fill text 2d content method. There is a bit more to know about when it comes to setting the position of text, font and so forth, so lets look at some quick examples of working with text in canvas.
+So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d content method. There is a bit more to know about when it comes to setting the position of text, font and so forth, so lets look at some quick examples of working with text in canvas.
 
 <!-- more -->
 
