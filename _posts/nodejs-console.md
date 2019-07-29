@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 508
-updated: 2019-07-29 17:49:38
-version: 1.4
+updated: 2019-07-29 17:53:12
+version: 1.5
 ---
 
 In nodejs there is the console global that works much like the console global in web browsers that can be used to log the status of variables and messages in general to the javaScript console. The [node console](https://nodejs.org/api/console.html) log method will print what is passed to it in the standard output with a newline after what is given as the first argument. There is also the standard error as well that can be logged to with the node console warn method. There are a few more things to be aware of when it comes to the node console global so in this post I will be going over some basics with it, as well as some other related topics.
@@ -38,6 +38,8 @@ foo baz 42
 ```
 
 ## 2 - File logger example using the console.Console constructor
+
+It is possible to create a custom logger that will log to some other kind of stream such as a file write stream in the file system module, or a tpc connecting using the net module. To do this I just need to call the console constructor of the node console global to create a new logger. When doing so I pass the stream that I want to use for the normal output as the first argument and then another stream that I want to use for the standard error output as the second argument when calling the constructor.
 
 ```js
 let fs = require('fs'),
