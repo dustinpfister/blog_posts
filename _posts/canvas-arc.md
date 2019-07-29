@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-07-02 07:47:45
-version: 1.27
+updated: 2019-07-29 16:04:06
+version: 1.28
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -255,6 +255,65 @@ drawPoints(ctx, createPolygonPoints(15,15,radius,pointCount), true);
 
 This method can only be used to draw a circle, rather than say a half circle as I have choses to omit arguments for a start and end radian, and direction. It is true that writing a clone of the canvas arc method would not to be to hard, but doing so would not make sense, unless there are some additional features to add, such as being able to set the number of sides in the canvas arc.
 
-## 7 - Conclusion
+## 7 - Time to have some fun with canvas arc by making animations
+
+So I think it games without saying that canvas is one of the more fun an interesting aspects of programing with javaScript. Canvas can be used to make html 5 games, and interesting animations that can be a whole world of fun. In this section I will be going over some simple canvas animation examples that make use of the canvas arc method.
+
+```html
+<html>
+    <head>
+        <title>canvas arc animation</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// state
+var frame = 0,
+maxFrame = 50,
+startRad,
+endRad;
+ 
+// update
+var update = function(){
+   // do something cool with the start and end radians
+   var per = frame / maxFrame,
+   bias = Math.abs(per - 0.5) / 0.5;
+   startRad = Math.PI * 2 * per;
+   endRad = startRad + 1 + 2 * bias;
+   // step frame
+   frame += 1;
+   frame = frame % maxFrame;
+ 
+};
+ 
+// draw
+var draw = function(){
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(160, 120, 50, startRad, endRad);
+    ctx.stroke();
+};
+ 
+// loop
+var loop = function(){
+    requestAnimationFrame(loop);
+    update();
+    draw();
+ 
+};
+loop();
+ 
+        </script>
+    </body>
+</html>
+```
+
+## 8 - Conclusion
 
 The canvas arc method is just one of many methods in the canvas 2d drawing context of course, however it is one that seems to come up often. I hope that you have gain something of value from reading this post, canvas is a lot of fun of course, and it can also be very helpful as well when it comes to working out basic graphics in canvas.
