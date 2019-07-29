@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 508
-updated: 2019-07-24 21:36:01
-version: 1.2
+updated: 2019-07-29 17:25:00
+version: 1.3
 ---
 
-In nodejs there is the console global that works much like the console in web browsers. The [node console](https://nodejs.org/api/console.html) log will print what is passed to it in the standard output with a newline after what is given. There is also the standard error as well that can be logged to with the node console warn method. In this post I will be going over some basics with the console global in nodejs, as well as some other related topics.
+In nodejs there is the console global that works much like the console global in web browsers that can be used to log the status of variables and messages in general to the javaScript console. The [node console](https://nodejs.org/api/console.html) log method will print what is passed to it in the standard output with a newline after what is given as the first argument. There is also the standard error as well that can be logged to with the node console warn method. There are a few more things to be aware of when it comes to the node console global so in this post I will be going over some basics with it, as well as some other related topics.
 
 <!-- more -->
 
