@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-07-29 16:09:52
-version: 1.29
+updated: 2019-07-29 16:33:20
+version: 1.30
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -261,6 +261,8 @@ So I think it games without saying that canvas is one of the more fun an interes
 
 These animation examples make use of the requestAnimationFrame method as a way of creating a render loop for canvas that is often the standard method for doing so with canvas projects. I often like to make animations that are deterministic in nature so that they can potentially be turned into perfectly looping gifs or webm videos. In other words there are a fixed number of frames and I am just working out the logic that is to be applied for each frame with javaScript. This differs from other styles of animation that involve generating a new frame on each tick that will not necessarily be deterministic. I would like to get into the subject deeper, but I do not want to get to far off topic from the canvas arc method in this post.
 
+### 7.1 - The canvas arc method in an animation
+
 ```html
 <html>
     <head>
@@ -311,6 +313,82 @@ var loop = function(){
 };
 loop();
  
+        </script>
+    </body>
+</html>
+```
+
+### 7.2 - Uisng Math.cos and Math.sin to create an arc like movement in canvas
+
+In this post I also touched base on the Math.sin and Math.cos methods in core javaScript that can be used to create an arc as well in canvas. When it comes to making something move in an arc like pattern in canvas such as an array of box like objects that can be rendered using the fillRect method cos and sin can be used to move such objects in an arc like pattern.
+
+```html
+<html>
+    <head>
+        <title>canvas arc animation</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+// state
+var frame = 0,
+maxFrame = 100,
+bxCount = 5,
+radPos,
+bx;
+// init
+var init = function () {
+    var i = 0;
+    bx = [];
+    while (i < bxCount) {
+        bx.push({
+            x: 0,
+            y: 0,
+            w: 32,
+            h: 32
+        });
+        i += 1;
+    }
+};
+// update
+var update = function () {
+    // do something cool with the start and end radians
+    var per = frame / maxFrame,
+    bias = Math.abs(per - 0.5) / 0.5;
+    // update radPos
+    radPos = Math.PI * 2 * per;
+    // update boxes
+    bx.forEach((b, i) => {
+        var rOff = Math.PI * 2 / bx.length * i,
+        radius = 25 + 50 * bias;
+        var x = Math.cos(radPos + rOff) * radius + 160 - b.w / 2,
+        y = Math.sin(radPos + rOff) * radius + 120 - b.h / 2;
+        b.x = x;
+        b.y = y;
+    });
+    // step frame
+    frame += 1;
+    frame = frame % maxFrame;
+};
+// draw
+var draw = function () {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    bx.forEach((bx, i) => {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(bx.x, bx.y, 32, 32);
+    });
+};
+// loop
+var loop = function () {
+    requestAnimationFrame(loop);
+    update();
+    draw();
+};
+init();
+loop();
         </script>
     </body>
 </html>
