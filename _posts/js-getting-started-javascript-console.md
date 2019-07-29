@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2019-07-29 14:59:36
-version: 1.4
+updated: 2019-07-29 15:14:20
+version: 1.5
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript). This console can be used as a way of getting started with javaScript without installing any additional software beyond the web browser that you all ready have installed on your computer. No need to even look into editors and javaScript related plug-ins for such editors, no need for any expensive software or hardware. If you are reading this in a modern web browser such as chrome 70 or higher, that is running on top of a modern fully featured traditional desktop operating system such as windows 10, mac OSX or linux, then that is all that is needed. So lets start out with the javaScript console as a way to get started learning the javaScript programing language.
@@ -30,3 +30,17 @@ So lets getting started with javaScript in the google chrome javaScript console 
 ```
 
 So in the above example I entered five plus five which of course returns ten as expected, however the same does not happen when one of the operands is a string of the number five. It does not result in an error, but returns the string "55". This is because in javaScrit the addition operator is used for both addition and string concatenation.
+
+## 3 - Doing something with the page
+
+So now that we have something basic covered lets get into something that actually does something with the page. One of the fun things about that javaScript console is that it can be used to do something involving the content of the page. Of course it will only effect the current loaded state in the browser locally, and undoing any changes is as simple as just reloading the browser. However it can still be a fun way to get started with client side web programing. In this section I will be going over some javaScript examples that can be copied and pasted into the javaScript console that do something cool with the content of the page.
+
+### 3.1 - Concatenate all the paragraph elements in the page
+
+There are many ways to go about getting references to one or more html elements in the page. In this example I am using the query selector all method to get all paragraph elements in the page. This method returns an HTMLCollection class instance rather than a plain old javaScript array, so in order to do anything with a javaScript array method I need to do some magic with the function call method.
+
+```js
+> document.body.innerHTML = [].map.call(document.querySelectorAll('p'), (el) => {
+    return el.innerText;
+}).join('<hr>');
+```
