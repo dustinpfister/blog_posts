@@ -1,19 +1,19 @@
 ---
-title: Whats the deal with Call, Apply, and Bind
+title: Whats the deal with JavaScript Call, Apply, and Bind
 date: 2017-09-21 08:56:00
 tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2019-07-02 12:47:13
-version: 1.17
+updated: 2019-07-29 13:55:06
+version: 1.18
 ---
 
-I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call,apply, and bind in detail.
+I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) properties of the Function prototype. Seems like something I just have to get out of the way before moving on to less heavily traveled (but still traveled) paths when it comes to writing content for a javaScript blog. I did cover the [this keyword](/2017/04/14/js-this-keyword/) before, but I did not get into call, apply, and bind in detail.
 
 <!-- more -->
 
-## 1 - Where to get started with Call, Apply, and Bind.
+## 1 - Where to get started with JavaScript Call, Apply, and Bind.
 
 Maybe a good place to start is to know that in javaScript you often have a situation in which you are working with one or more objects, and you also have methods that act on those objects. For example there are Arrays and then there are methods like join that act on those arrays.
 
