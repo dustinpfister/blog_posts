@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-07-29 16:04:06
-version: 1.28
+updated: 2019-07-29 16:09:52
+version: 1.29
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -258,6 +258,8 @@ This method can only be used to draw a circle, rather than say a half circle as 
 ## 7 - Time to have some fun with canvas arc by making animations
 
 So I think it games without saying that canvas is one of the more fun an interesting aspects of programing with javaScript. Canvas can be used to make html 5 games, and interesting animations that can be a whole world of fun. In this section I will be going over some simple canvas animation examples that make use of the canvas arc method.
+
+These animation examples make use of the requestAnimationFrame method as a way of creating a render loop for canvas that is often the standard method for doing so with canvas projects. I often like to make animations that are deterministic in nature so that they can potentially be turned into perfectly looping gifs or webm videos. In other words there are a fixed number of frames and I am just working out the logic that is to be applied for each frame with javaScript. This differs from other styles of animation that involve generating a new frame on each tick that will not necessarily be deterministic. I would like to get into the subject deeper, but I do not want to get to far off topic from the canvas arc method in this post.
 
 ```html
 <html>
