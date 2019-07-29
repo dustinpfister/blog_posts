@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2019-07-29 15:14:20
-version: 1.5
+updated: 2019-07-29 15:35:59
+version: 1.6
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript). This console can be used as a way of getting started with javaScript without installing any additional software beyond the web browser that you all ready have installed on your computer. No need to even look into editors and javaScript related plug-ins for such editors, no need for any expensive software or hardware. If you are reading this in a modern web browser such as chrome 70 or higher, that is running on top of a modern fully featured traditional desktop operating system such as windows 10, mac OSX or linux, then that is all that is needed. So lets start out with the javaScript console as a way to get started learning the javaScript programing language.
@@ -44,3 +44,9 @@ There are many ways to go about getting references to one or more html elements 
     return el.innerText;
 }).join('<hr>');
 ```
+
+## 4 - Conclusion
+
+So the javaScript console is a great way to get started with the javaScript programing language, but there are many other ways to get started with JavaScript as well. There is hand coding an html file and having some javaScript code in a script tag that can then be used via the file protocol in the web browser as well that can still work okay for some simple examples. There is also getting into nodejs and finding all kind sof ways to serve javaScript to the browser via the http protocol also.
+
+What is great about javaScript is that it can be used right away in the browser right now, but can also be used to write client systems, back end code, and even Command line tools. These days javaScript is really hot, and given the nature of the web will likely remain so for a long time, making javaScript one of the best choices for a first language.
