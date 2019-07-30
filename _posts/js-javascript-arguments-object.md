@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-05-29 15:31:23
-version: 1.9
+updated: 2019-07-30 15:35:35
+version: 1.10
 ---
 
-When writing a function in javaScript, inside the body of that function there is an special identifier that can be used to access any and all arguments that have been passed to the function when it is called. This identifier is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, alone with the values of course.
+When writing a function in javaScript, inside the body of that function there is an special variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, along with the values of course. It can be used as a way to know the number of arguments that where passed when the function was called. So if you every came across a function that behaves differently depending on the number of arguments given the arguments object is one way to go about making such a function.
 
 
 <!-- more -->
