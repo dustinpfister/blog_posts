@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-07-30 12:22:42
-version: 1.36
+updated: 2019-07-30 12:27:22
+version: 1.37
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -276,6 +276,8 @@ These animation examples make use of the requestAnimationFrame method as a way o
 ### 7.1 - The canvas arc method in an animation
 
 In this canvas animation example I am updating two variables that have to do with changing the starting and ending radian values when calling the canvas arc method in a draw method that is called on each frame tick.
+
+The basic structure of a canvas animation or any kind of canvas project will likely include at least some kind of state that is updated on each frame tick, and a method that draws that state to the canvas. There are other ways of course that involve clumping everything together, developers do have all kinds of different coding styles when it comes to making a project after all. However I think it is a good idea to make at least some kind if effort to break things down when I start to get into something that is a little advanced.
 
 ```html
 <html>
