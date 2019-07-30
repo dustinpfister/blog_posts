@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-05-29 14:55:05
-version: 1.10
+updated: 2019-07-30 14:16:35
+version: 1.11
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript, and can also be used to link to external javaScript as well. It is also possible to create javaScript script tags with javaScript as well as a way to load additional external assets with code. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
@@ -124,4 +124,8 @@ console.log('bar script running');
 });
 ```
 
-this simple script loader will load scripts in order one at a time which is important if one script depends on something that a previous script does. There is the question of loading all scripts at once, and then executing them all in the proper order, this is where module patterns like AMD come into play, and more sophisticated script loaders that make use of that standard.
+According to the Mozilla documentation when a script is created with the create element method the scripts are loaded async by default.
+
+So then it seems that this simple script loader will load scripts in order one at a time which is important if one script depends on something that a previous script does. There is the question of loading all scripts at once, and then executing them all in the proper order when that is a factor of concern
+
+## 4 - Loading Scripts async
