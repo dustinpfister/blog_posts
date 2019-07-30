@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-07-30 12:10:05
-version: 1.34
+updated: 2019-07-30 12:15:38
+version: 1.35
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -151,7 +151,7 @@ This works fine in most cases when I just want to quickly draw a circle. However
 
 ## 3 - Drawing a canvas arc clockwise and counter clockwise
 
-The sixth option argument can be used to set clockwise or counter clockwise direction of the drawing of the canvas arc. This can be used in conjunction with proper values for the start and end radian values to do things like drawing a shape that looks like an eaten watermelon slice for example.
+The sixth argument that can be passed to the canvas arc method is used to set clockwise or counter clockwise direction of the drawing of the canvas arc. The default value for this argument is false for a counter clockwise direction resulting in a clockwise direction from the starting radian to the ending radian value. This can be used in conjunction with proper values for the start and end radian values to do things like drawing a shape that looks like an eaten watermelon slice for example.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -164,6 +164,8 @@ ctx.arc(150,150,50,0,Math.PI,false);
 ctx.closePath();
 ctx.stroke();
 ```
+
+More than one instance of the canvas arc method can be used, and the canvas arc method can be used in conjunction with other line methods such as lineTo and close path as a way to draw shapes.
 
 ## 4 - Drawing chords and just plain arcs
 
