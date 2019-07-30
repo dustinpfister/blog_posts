@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-07-30 12:27:22
-version: 1.37
+updated: 2019-07-30 12:41:16
+version: 1.38
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -412,4 +412,6 @@ loop();
 
 ## 8 - Conclusion
 
-The canvas arc method is just one of many methods in the canvas 2d drawing context of course, however it is one that seems to come up often. I hope that you have gain something of value from reading this post, canvas is a lot of fun of course, and it can also be very helpful as well when it comes to working out basic graphics in canvas.
+The canvas arc method is just one of many methods in the canvas 2d drawing context of course, however it is one that seems to come up often. I hope that you have gain something of value from reading this post, canvas is a lot of fun of course, and it can also be very helpful as well when it comes to working out basic graphics in canvas. 
+
+There is also much more that can be done with canvas once you have a decent grasp on how to work with it when it comes to native javaScript by itself of course, but also when it comes to working with certain popular libraries in addition to plain old javaScript by itself. For example in [threejs a canvas element](/2018/04/17/threejs-canvas-texture/) can be used as a way to create a texture that can be used to skill faces on solid geometry objects.
