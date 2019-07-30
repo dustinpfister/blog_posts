@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-07-30 14:25:26
-version: 1.12
+updated: 2019-07-30 15:05:06
+version: 1.13
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript, and can also be used to link to external javaScript as well. It is also possible to create javaScript script tags with javaScript as well as a way to load additional external assets with code. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
@@ -128,8 +128,40 @@ console.log('bar script running');
 });
 ```
 
-According to the Mozilla documentation when a script is created with the create element method the scripts are loaded async by default.
-
 So then it seems that this simple script loader will load scripts in order one at a time which is important if one script depends on something that a previous script does. There is the question of loading all scripts at once, and then executing them all in the proper order when that is a factor of concern
+
+### 3.2 - Loading Script Tags sync style the easy way
+
+So in the first example in this section I created and loaded script tags with javaScript using the create element method. By default when creating script tags this way with javaScript, the scripts will load async. That is that they will not always load in the order in which they are given in the array of scripts. However they still loaded in order each time because I would not create a new script tag and start loading it until the first script finishes loading.
+
+However another way to load scripts sync style is to make sure that the async attribute of the script tag is set to false.
+
+```js
+console.log('loading scripts...');
+var base = 'https://cdnjs.cloudflare.com/ajax/libs/';
+var libs = [
+    'jquery/3.4.1/jquery.js',
+    'three.js/106/three.js',
+    'axios/0.19.0/axios.js'
+];
+var loaded = 0;
+libs.forEach(function (libPath, i) {
+    var scriptTag = document.createElement('script');
+    // load in sync order (jquery, three, then axios)
+    scriptTag.async = false;
+    scriptTag.addEventListener('load', function (e) {
+        console.log(e.target.src);
+        loaded += 1;
+        if (loaded === libs.length) {
+            console.log('all loaded');
+        }
+    });
+    scriptTag.src = base + libPath;
+    document.body.appendChild(scriptTag);
+
+});
+```
+
+In this example the Script tags load in sync order as well.
 
 ## 4 - Loading Scripts async
