@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2019-07-31 16:01:12
-version: 1.5
+updated: 2019-07-31 16:12:08
+version: 1.6
 ---
 
 So this is another [three js example](https://threejs.org/examples/) post this time I made a quick model of a tree. This model makes use of the three js built in cone geometry constructor, and groups to make collections of cones sized and positioned in such a way that they look like evergreen trees.
@@ -153,3 +153,63 @@ Tree.setConePos = function (coneObj, secObj) {
 ```
 
 When I use the model to create an instance of the tree model there are a wide range of options that I can give alone with methods that are to be called for each cone that I can use to override some of the values that are used to position and size the cones.
+
+## 3 - Basic example of the tree model
+
+
+```js
+(function () {
+    // SCENE
+    var scene = new THREE.Scene();
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    // LIGHT
+    scene.add(camera);
+    var light = new THREE.PointLight(0xffffff);
+    camera.add(light);
+ 
+    // BASIC TREE
+    var tree = new Tree({
+            coneMaterial: new THREE.MeshStandardMaterial({
+                color: 0x00af00
+            })
+        });
+    scene.add(tree.group);
+ 
+    // RENDER
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(320, 240);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // CONTROLS
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        renderer.render(scene, camera);
+    };
+    loop();
+}
+    ());
+```
+
+## 4 - Using the forConeValues option
+
+```js
+// TREE with custom forConeValues method
+var tree = new Tree({
+        coneMaterial: new THREE.MeshStandardMaterial({
+            color: 0x00af00
+        }),
+        sections: 10,
+        forConeValues: function (cone, section) {
+            cone.length = 4;
+            cone.radius = 1.1 - 0.4 * (section.i / this.sections);
+            var radius = cone.length - cone.length * 0.80 * (section.i / this.sections);
+            cone.x = Math.cos(cone.radian) * radius;
+            cone.z = Math.sin(cone.radian) * radius;
+        }
+    });
+scene.add(tree.group);
+```
