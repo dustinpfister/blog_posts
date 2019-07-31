@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2019-07-31 16:12:08
-version: 1.6
+updated: 2019-07-31 16:15:17
+version: 1.7
 ---
 
 So this is another [three js example](https://threejs.org/examples/) post this time I made a quick model of a tree. This model makes use of the three js built in cone geometry constructor, and groups to make collections of cones sized and positioned in such a way that they look like evergreen trees.
@@ -156,6 +156,7 @@ When I use the model to create an instance of the tree model there are a wide ra
 
 ## 3 - Basic example of the tree model
 
+For a basic example I just called the constructor and only used a custom material that will respond to a light source, the standard material is one such material that will work light. In this example I am also using the three js built in orbit controls also.
 
 ```js
 (function () {
