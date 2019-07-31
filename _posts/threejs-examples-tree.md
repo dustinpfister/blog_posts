@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2019-07-31 16:15:17
-version: 1.7
+updated: 2019-07-31 16:16:53
+version: 1.8
 ---
 
 So this is another [three js example](https://threejs.org/examples/) post this time I made a quick model of a tree. This model makes use of the three js built in cone geometry constructor, and groups to make collections of cones sized and positioned in such a way that they look like evergreen trees.
@@ -196,6 +196,8 @@ For a basic example I just called the constructor and only used a custom materia
 ```
 
 ## 4 - Using the forConeValues option
+
+If for some reason I want to use a custom expression when it comes to setting the position and rotation of the cones I can use the forConeValues option to do so.
 
 ```js
 // TREE with custom forConeValues method
