@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2019-07-31 16:36:10
-version: 1.10
+updated: 2019-07-31 16:36:48
+version: 1.11
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need for a way to make custom geometry.
@@ -257,4 +257,4 @@ geometry.scale(5,5,1);
 
 ## Conclusion
 
-The geometry constructor is a good place to start when it comes to learning how to make custom geometry from code. In time I will likley update this post at least a few times as my collection of [posts on three.js](/categories/three-js/) continues to grow. Be sure to also read up more on [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) if you have not done so before hand as these are also important constructors that are related to the Geometry constructor in three.js
+The geometry constructor is a good place to start when it comes to learning how to make custom geometry from code. In time I will likely update this post at least a few times as my collection of [posts on three.js](/categories/three-js/) continues to grow. Be sure to also read up more on [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) if you have not done so before hand as these are also important constructors that are related to the Geometry constructor in three.js
