@@ -5,13 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2019-07-31 18:19:29
-version: 1.2
+updated: 2019-07-31 18:22:43
+version: 1.3
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes. One of these is the cone geometry constructor.
 
 <!-- more -->
+
+## 1 - This is a post on three js
+
+this is a post on a built in geometry constructor in three js that can be used with a bunch of other features in three js to make a cone shape. This is not a getting started post on three js let alone javaScript in general so I aasume that you have at least some exposure with three js.
 
 ## 2 - Three js geometry cone basic example
 
