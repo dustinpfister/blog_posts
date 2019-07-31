@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2019-07-31 16:16:53
-version: 1.8
+updated: 2019-07-31 16:18:57
+version: 1.9
 ---
 
 So this is another [three js example](https://threejs.org/examples/) post this time I made a quick model of a tree. This model makes use of the three js built in cone geometry constructor, and groups to make collections of cones sized and positioned in such a way that they look like evergreen trees.
@@ -216,3 +216,7 @@ var tree = new Tree({
     });
 scene.add(tree.group);
 ```
+
+## 5 - Conclusion
+
+I hope to get around to making some more three js examples in the near future. I have forgot how fun it can be to make these kinds of projects.
