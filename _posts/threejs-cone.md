@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2019-07-31 17:28:00
-version: 1.1
+updated: 2019-07-31 18:19:29
+version: 1.2
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes. One of these is the cone geometry constructor.
@@ -46,4 +46,31 @@ The cone Geometry constructor can accept a few arguments. However just the first
  
 }
     ());
+```
+
+## 3 - making a half cone
+
+To make a half cone I just need to use the last to arguments that are given to the cone geometry constructor.
+
+```js
+    // CONE
+    var radius = 1,
+    height = 5,
+    radSegs = 4,
+    hightSegs = 1;
+    var cone = new THREE.ConeGeometry(
+            1, // radius
+            5, // height
+            4, //radial segments,
+            1, // height segments
+            false,
+            0, // start angle
+            Math.PI // angle length from start
+        );
+    matreial = new THREE.MeshStandardMaterial({
+            color: 0x00ff00,
+            side: THREE.DoubleSide
+        }),
+    mesh = new THREE.Mesh(cone, matreial);
+    scene.add(mesh);
 ```
