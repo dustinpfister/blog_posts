@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2019-07-31 15:40:40
-version: 1.1
+updated: 2019-07-31 15:44:49
+version: 1.2
 ---
 
-So this is another three js example post this time I made a quick tree model.
+So this is another three js example post this time I made a quick model of a tree. This model makes use of the three js built in cone geometry constructor, and groups to make collections of cones sized and positioned in such a way that they look like evergreen trees.
 
 <!-- more -->
 
