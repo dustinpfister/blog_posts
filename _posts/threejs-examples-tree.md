@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2019-07-31 15:50:47
-version: 1.4
+updated: 2019-07-31 16:01:12
+version: 1.5
 ---
 
 So this is another [three js example](https://threejs.org/examples/) post this time I made a quick model of a tree. This model makes use of the three js built in cone geometry constructor, and groups to make collections of cones sized and positioned in such a way that they look like evergreen trees.
@@ -18,6 +18,10 @@ So this is another [three js example](https://threejs.org/examples/) post this t
 This is a post on using the javaScript library three js that can be used to work with 3d objects. This is not a getting started post on three js as well as the many constructors and so forth in the library. It is assumed that you have at least some background with the basics when it comes to suing three js as well as javaScript programing in general. If not you might have a hard time following the content of this post.
 
 ## 2 - The tree constructor
+
+Here is the javaScript that I worked out that gave me a decent tree model to work with. The Model is a constructor that creates an instance of the tree module and has a group as one of its properties that I add to a scene when creating a project that makes use of the model.
+
+I am not doing much of anything with the prototype but it contains a few static methods. This might change if I ever get around to doing more work on this at some point in the future.
 
 ```js
 var Tree = function (opt) {
@@ -147,3 +151,5 @@ Tree.setConePos = function (coneObj, secObj) {
     coneObj.z = Math.sin(radian) * secObj.radius;
 };
 ```
+
+When I use the model to create an instance of the tree model there are a wide range of options that I can give alone with methods that are to be called for each cone that I can use to override some of the values that are used to position and size the cones.
