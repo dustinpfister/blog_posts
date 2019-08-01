@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2019-08-01 13:14:54
-version: 1.2
+updated: 2019-08-01 13:17:33
+version: 1.3
 ---
 
 The lodash every collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number. In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object meet a given condition.
@@ -40,7 +40,7 @@ console.log(_.every(arr2, tester)); // false
 
 ## 2 - The \_.every method can be used on plain old objects
 
-So becuase the lodash every method is a collection method that means that it can be used on plain old objects that are a collection of sorts.
+So because the lodash every method is a collection method that means that it can be used on plain old objects that are a collection of sorts. Say I have an object with a bunch of public keys, and I want to make sure that each key meets a certain set of criteria. For example I want each propert to be an object, and I want each of those objects to have a property of a certain name, and for that property to be of a specific type and vaue. There are many ways of going about doing that, but if lodash is there it can be quickly done with the lodash every method.
 
 ```js
 let _ = require('lodash');
