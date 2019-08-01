@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-08-01 09:41:09
-version: 1.11
+updated: 2019-08-01 09:46:55
+version: 1.12
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
@@ -16,9 +16,13 @@ The [lodash](https://lodash.com/) array methods are methods that can be used to 
 
 ## 1 - lodash array methods
 
-In lodash there are a number of methods that are consisted array methods, rather than object methods and collection methods. In javaScript an array is actually a kind of object, it is just a certain kind of object that is formated in a way in which it is a collection of numbered index and value key pairs, along with a length property that reflects the count of those key value pairs. In addition an array in javaScript has some built in prototype methods. Many of the lodash array methods are now part of this prototype, but that is not the case with all of them. In addition many of the lodash equivalents of the core javaScript array prototype methods are collection methods that are designed to work with arrays as well as most objects in general as well.
+In lodash there are a number of methods that are consisted array methods, rather than object methods and collection methods. In javaScript an array is actually a kind of object, it is just a certain kind of object that is formated in a way in which it is a collection of numbered index and value key pairs, along with a length property that reflects the count of those key value pairs. In addition an array in javaScript has some built in prototype methods that are inherited such as Array.forEach. 
 
-## 2 - The \_.chunk method
+Many of the lodash array methods are now part of the native javaScript prototype, but that is not the case with all of them. In addition many of the lodash equivalents of the core javaScript array prototype methods are collection methods that are designed to work with arrays as well as most objects in general on top of that. So this makes the process of covering lodash array methods a little complicated, as there are just plain old lodash array methods, and then there are collection methods that work with objects in general.
+
+So in this section I will be going just over some array methods in lodash, and briefly cover some of the collection methods as well later in this post.
+
+### 1.1 - The \_.chunk method
 
 The [\_.chunk method](/2017/09/13/lodash-chunk/) is a lodash array method that can be used to break a linear array into an array of arrays of a given length. The need to do this comes up now and then and the chunk method helps to make quick work of this, and allow me to move on with a project rather than writing this usual suspect from scratch.
 
@@ -32,7 +36,7 @@ console.log(_.chunk(arr, 2));
 // [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
 ```
 
-## 3 - The \_.flatten method
+### 1.2 - The \_.flatten method
 
 So when it comes to doing the opposite of \_.chunk and quickly turning an array of arrays back into a simple linear array there is the [\_.flatten](/2018/08/12/lodash_flatten/) method as well.
 
@@ -48,7 +52,7 @@ let flat = _.flatten(grid);
 console.log( flat ); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
 
-## 4 - The \_.zip method
+### 1.3 - The \_.zip method
 
 The [zip method](/2018/02/01/lodash_zip/) takes two or more arrays and zips theme together.
 
@@ -68,7 +72,7 @@ _.each(matrix, function(pt){
 });
 ```
 
-## 5 - Conclusion
+## 2 - Conclusion
 
 Many of the lodash Array methods help to quickly complete common tasks that are not always in the native javaScript Array prototype object. In addition many of the lodash equivalents to Array prototype methods are not array methods but collection methods such as is the case with methods like \_.map.
 
