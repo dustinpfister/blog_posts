@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2019-08-01 10:45:17
-version: 1.1
+updated: 2019-08-01 13:14:54
+version: 1.2
 ---
 
 The lodash every collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number. In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object meet a given condition.
@@ -36,4 +36,47 @@ tester = (el) => {
 // using the tester method with _.every
 console.log(_.every(arr1, tester)); // true
 console.log(_.every(arr2, tester)); // false
+```
+
+## 2 - The \_.every method can be used on plain old objects
+
+So becuase the lodash every method is a collection method that means that it can be used on plain old objects that are a collection of sorts.
+
+```js
+let _ = require('lodash');
+// a plan old object that is
+// a collection of sorts
+let items = {
+    apple: {
+        cost: 2
+    },
+    raspberry: {
+        cost: 5
+    },
+    blackberry: {
+        cost: 4
+    }
+};
+// a method to check each key in the object
+let hasCost = function (item) {
+    // is item an object?
+    if (typeof item === 'object') {
+        // false if null
+        if (item === null) {
+            return false;
+        }
+        // Some rules for a cost property
+        if (typeof item.cost === 'number' && item.cost >= 0) {
+            return true;
+        }
+    }
+    // if we get here yeah false
+    return false;
+};
+ 
+// Evey can be used to check that every item
+// meets the given set of conditions
+console.log(_.every(items, hasCost)); // true
+items.newProduct = null;
+console.log(_.every(items, hasCost)); // false
 ```
