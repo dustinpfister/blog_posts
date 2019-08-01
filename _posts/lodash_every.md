@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2019-08-01 18:38:45
-version: 1.9
+updated: 2019-08-01 18:42:06
+version: 1.10
 ---
 
 The lodash every collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number. In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object meet a given condition.
@@ -18,7 +18,7 @@ The lodash every collection method can be used to test if each key value in a co
 
 So I often start of a post by quickly getting into a basic example of what it is that I am writing about in the post. So for this post on the lodash every method here is a simple example where I just have two arrays. One of which is all numbers, and the other of which contains one string.
 
-I then have a function that can be used with the lodash \_.every method that will return true of a given element in an array or kety value in an object is a number. When I call the lodash every method I pass an array as the first argument and give the method that checks for a number as the second argument.
+I then have a function that can be used with the lodash \_.every method that will return true of a given element in an array or key name in an object is a number. When I call the lodash every method I pass an array as the first argument and give the method that checks for a number as the second argument.
 
 
 ```js
@@ -40,7 +40,7 @@ console.log(_.every(arr2, tester)); // false
 
 ## 2 - The \_.every method can be used on plain old objects
 
-So because the lodash every method is a collection method that means that it can be used on plain old objects that are a collection of sorts. Say I have an object with a bunch of public keys, and I want to make sure that each key meets a certain set of criteria. For example I want each propert to be an object, and I want each of those objects to have a property of a certain name, and for that property to be of a specific type and vaue. There are many ways of going about doing that, but if lodash is there it can be quickly done with the lodash every method.
+So because the lodash every method is a collection method that means that it can be used on plain old objects that are a collection of sorts. Say I have an object with a bunch of public keys, and I want to make sure that each key meets a certain set of criteria. For example I want each property to be an object, and I want each of those objects to have a property of a certain name, and for that property to be of a specific type and value. There are many ways of going about doing that, but if lodash is there it can be quickly done with the lodash every method.
 
 ```js
 let _ = require('lodash');
