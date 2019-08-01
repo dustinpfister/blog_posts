@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-08-01 09:46:55
-version: 1.12
+updated: 2019-08-01 09:52:36
+version: 1.13
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
@@ -72,7 +72,11 @@ _.each(matrix, function(pt){
 });
 ```
 
-## 2 - Conclusion
+## 2 - lodash collections methods that also work with arrays, and also collection objects in general
+
+So as I mentioned in the previous section, there are lodash array methods and then there are also lodash collection methods that work with objects in general. In native javaScript there are array prototype methods like Array.map, array.filter, and so forth. These methods in lodash are not just array methods, but collection methods that work with just about any kind of key value pair, not just numbered index keys and values that are an instance of Array.
+
+## 3 - Conclusion
 
 Many of the lodash Array methods help to quickly complete common tasks that are not always in the native javaScript Array prototype object. In addition many of the lodash equivalents to Array prototype methods are not array methods but collection methods such as is the case with methods like \_.map.
 
