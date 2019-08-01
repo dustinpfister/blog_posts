@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2019-08-01 13:43:22
-version: 1.6
+updated: 2019-08-01 13:57:47
+version: 1.7
 ---
 
 The lodash every collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number. In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object meet a given condition.
@@ -126,3 +126,44 @@ console.log([].every.call(arrLike, tester)); // true
 ```
 
 This is typically of course of many of the native Array methods, they will work okay in most situations. However because they are very much array methods rather than collection methods they will not work in some situations involving plain old objects that are being used as a kind of named array.
+
+### 3.2 - Making my own every method with Object.values
+
+So then there is the idea of making my own vanilla js version of the lodash every method. Doing so is not to hard and there are a wide range of ways that I can think of to go about doing it involving loops and other native methods. I will not be going through the process of finding every which way to do this of course, but for this example I will be using the Object.values static Object method.
+
+```js
+
+// An every method could be written like this
+// with Object.values
+let every = (obj, forEach) => {
+    let i = 0,
+    values = Object.values(obj),
+    len = values.length;
+    while (i < len) {
+        if (!forEach(values[i])) {
+            return false;
+        }
+        i += 1;
+    }
+    return true;
+};
+// lets put it to the test
+let arr1 = [1, 2, 3, 4],
+arr2 = [1, 2, 'c', 4],
+obj1 = {
+    foo: 5,
+    bar: 7
+},
+obj2 = {
+    foo: 'string',
+    bar: null
+},
+tester = (el) => {
+    return typeof el === 'number';
+};
+// works as exspected
+console.log( every(arr1, tester) ); // true
+console.log( every(arr2, tester) ); // false
+console.log( every(obj1, tester) ); // true
+console.log( every(obj2, tester) ); // false
+```
