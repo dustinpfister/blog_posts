@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2019-08-01 13:17:33
-version: 1.3
+updated: 2019-08-01 13:37:34
+version: 1.4
 ---
 
 The lodash every collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number. In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object meet a given condition.
@@ -79,4 +79,46 @@ let hasCost = function (item) {
 console.log(_.every(items, hasCost)); // true
 items.newProduct = null;
 console.log(_.every(items, hasCost)); // false
+```
+
+## 3 - Vanilla js alternatives to lodash every
+
+So now that we know the basic deal about that lodash every method, maybe we should now look at some plain old vanilla javaScript alternatives to using the lodash every method. After all there is now a native Array.every method that can be used to replace it, and this can be chalked up as yet another reason as to not bother with lodash anymore right? Well yes and no, lets look at the reasons why, and also some additional ways of going about checking all keys in an object for some kind of condition.
+
+### 3.1 - The Array.every method will work okay with Ararys and array like objects with Function.call
+
+```js
+let items = {
+    apple: {cost: 2},
+    raspberry: {cost: 5},
+    blackberry: {cost: 4}
+};
+let hasCost = (item) => {
+    if (typeof item === 'object') {
+        if (item === null) {return false;}
+        if (typeof item.cost === 'number' && item.cost >= 0) {
+            return true;
+        }
+    }
+    return false;
+};
+// does not seem to work as expected with my items
+// object
+console.log([].every.call(items, hasCost)); // true
+items.fooberry = null;
+console.log([].every.call(items, hasCost)); // true
+ 
+let arrLike = {
+    0 : 7,
+    1 : 8,
+    2 : 'nope',
+    length: 3
+},
+tester = (el) => {
+    return typeof el === 'number';
+};
+ 
+console.log([].every.call(arrLike, tester)); // false
+arrLike[2] = 9;
+console.log([].every.call(arrLike, tester)); // true
 ```
