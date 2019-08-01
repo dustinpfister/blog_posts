@@ -1,12 +1,12 @@
 ---
-title: lodash array
+title: lodash array methods collection methods and more
 date: 2019-02-14 16:41:00
 tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-02-19 16:04:50
-version: 1.10
+updated: 2019-08-01 09:41:09
+version: 1.11
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
@@ -14,7 +14,7 @@ The [lodash](https://lodash.com/) array methods are methods that can be used to 
 
 <!-- more -->
 
-## 1 - lodash array
+## 1 - lodash array methods
 
 In lodash there are a number of methods that are consisted array methods, rather than object methods and collection methods. In javaScript an array is actually a kind of object, it is just a certain kind of object that is formated in a way in which it is a collection of numbered index and value key pairs, along with a length property that reflects the count of those key value pairs. In addition an array in javaScript has some built in prototype methods. Many of the lodash array methods are now part of this prototype, but that is not the case with all of them. In addition many of the lodash equivalents of the core javaScript array prototype methods are collection methods that are designed to work with arrays as well as most objects in general as well.
 
