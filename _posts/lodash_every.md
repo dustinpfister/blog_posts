@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2019-08-01 13:57:47
-version: 1.7
+updated: 2019-08-01 14:00:17
+version: 1.8
 ---
 
 The lodash every collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number. In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object meet a given condition.
@@ -167,3 +167,5 @@ console.log( every(arr2, tester) ); // false
 console.log( every(obj1, tester) ); // true
 console.log( every(obj2, tester) ); // false
 ```
+
+So the nice thing about this is that it works just like the lodash every method in the sense that it works okay with arrays, and objects in general. Even if they are not formated like and array, and are thus array like objects. Most browsers support the Object.values method okay, but this example might still break on some older clients, so lets see about another example.
