@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2019-07-01 16:39:09
-version: 1.19
+updated: 2019-08-01 21:14:19
+version: 1.20
 ---
 
-[Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. In this post I will be going over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
+[Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function) (also sometimes called function literals) in javaScript is a way to define a function as an expression rather than a statement, or declaration. Function Expressions have some advantages over [function statements (aka declarations)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. There are also may other ways to create a function in javaScript such as array functions and the Function constructor.  However in this post I will be going mainly over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
 
 <!-- more -->
 
