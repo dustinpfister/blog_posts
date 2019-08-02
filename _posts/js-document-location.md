@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2019-07-01 15:48:54
-version: 1.26
+updated: 2019-08-01 20:57:55
+version: 1.27
 ---
 
-The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. An addition to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property.
+The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the url of the current page, along with other useful properties about the current location. In addition to being a way to know the current url, it can also be used to preform a redirect to a new location. That is because although the object itself is read only a new url can be set to the property that will cause the browser to load that url. So in this post I will be outlining some basic use case examples of the document.location property as well as some other related topics such as window location and how it compares to document location.
 
 <!-- more -->
 
@@ -58,7 +58,7 @@ The same can also be done with the location href property of the window object a
 
 ## 3 - Document location and window location
 
-It would seem that in some browser environments document location and window location are the same thing, however in others they are not. It might be best to actually stick with window location becuase that might be more consistent across environments, but don't just take my word for it there is a good [thread on stack overflow](https://stackoverflow.com/questions/2430936/whats-the-difference-between-window-location-and-document-location-in-javascrip) on this one that is worth checking out.
+It would seem that in some browser environments document location and window location are the same thing, however in others they are not. It might be best to actually stick with window location because that might be more consistent across environments, but don't just take my word for it there is a good [thread on stack overflow](https://stackoverflow.com/questions/2430936/whats-the-difference-between-window-location-and-document-location-in-javascrip) on this one that is worth checking out.
 
 ## 4 - The protocol property of document location
 
