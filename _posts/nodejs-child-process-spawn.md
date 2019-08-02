@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-02 16:25:14
-version: 1.4
+updated: 2019-08-02 16:28:46
+version: 1.5
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -36,7 +36,9 @@ script.stdout.on('data', function(data){
 });
 ```
 
-And the basic_test.js file that I am calling looks like this:
+The stdout property of the child process instance that is returned by the node spawn method can be used to set some events for the standard output of the child process. For this basic example I am just logging the output from the basic_test.js file, if I did not do this nothing would be displayed.
+
+The basic_test.js file that I am calling looks like this:
 
 ```js
 console.log('this is a test');
