@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2019-08-01 20:00:41
-version: 1.18
+updated: 2019-08-01 20:15:25
+version: 1.19
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. The undefined value is the default value for variables that are declared but do not have any value assigned to them. When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. In this post I will be outlining some examples that point out some things that a javaScript developer should be aware of when it comes to undefined in javaScript.
@@ -138,7 +138,12 @@ console.log(r); // -1
 
 In this above example the value of r can be zero which is the default and will remain so if the variable myVar is both declared and defined. It will have a value of one if the variable is declared but undefined, and a value of negative one if it is undeclared.
 
-## 6 - The javaScript undefined value is one of several values that converts to a false boolean value
+## 6 - Undefined is a primitive value in javaScript
+
+In javaScript the undefined value is an example of a primitive value. A primitive value if a value that is not an object of any kind like objects, arrays, and functions. Some primitive values have objects that wrap around them, this is the case with Strings and Numbers for example. A String might have prototype methods, and as such it might seem like it is another kind of Object, but it is very much a primitive value. In any case the undefined value in javaScript is one of two primitive values in which this is not the case anyway the other being the null value.
+
+
+## 7 - The javaScript undefined value is one of several values that converts to a false boolean value
 
 The boolean value of undefined is false, alone with a bunch of other values in javaScript. One way to confirm this is to use the not operator twice. The reason why the not operator show be used twice is because the operator converts a value to boolean, but it also negates its value. So the operator can then be used again to convert it back to is true boolean value.
 
@@ -153,9 +158,18 @@ console.log(!!false); // false
 
 Because the javaScript undefined value is evaluates to false it can be used as a way to feature test if a property is present in an object.
 
-## 7 - Undefined is a primitive value in javaScript
+### 7.1 - Comparing undefined to null
 
-In javaScript the undefined value is an example of a primitive value. A primitive value if a value that is not an object of any kind like objects, arrays, and functions. Some primitive values have objects that wrap around them, this is the case with Strings and Numbers for example. A String might have prototype methods, and as such it might seem like it is another kind of Object, but it is very much a primitive value. In any case the undefined value in javaScript is one of two primitive values in which this is not the case anyway the other being the null value.
+So null is another interesting value in javaScript. Just like undefined the null value is also a primitive value. Also they are two primitive values in javaScript that do not have objects wrapped around them such as the case with Strings and Numbers. 
+
+When using the equality operator a value of true is the result. This is because the equality operator converts types to a common type and then compares the result. Both the null and undefined values convert to false, and false equals false, so the result is a true value.
+
+```js
+console.log(undefined == null); // true
+console.log(undefined === null); // false
+```
+
+However when the identity operator is used to make a comparison a false value is the result. This is because when the identity value is used type conversion does not occur. The null and undefined values are two different types, so the result is false.
 
 ## 8 - Conclusion
 
