@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-02 16:28:46
-version: 1.5
+updated: 2019-08-02 17:07:09
+version: 1.6
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -49,4 +49,36 @@ I can then call the main basic.js file which in turn calls the basic_test.js fil
 ```
 $ node basic
 this is a test
+```
+
+## 2 - node spawn child process method options
+
+### 2.1 - The stdio option
+
+```js
+let spawn = require('child_process').spawn,
+// set up io as ipc
+options = {
+    stdio: ['ipc', 'pipe', 'pipe']
+},
+script = spawn('node', ['option_stdio_test.js'], options);
+// what to do when this parent process
+// receives a message from the node child process
+script.on('message', (m) => {
+    console.log(m.b); // 12
+    script.kill();
+});
+// send an IPC message to the
+// child process
+script.send({
+    a: 5
+});
+```
+
+```js
+process.on('message', (m) => {
+    process.send({
+        b: m.a + 7
+    })
+});
 ```
