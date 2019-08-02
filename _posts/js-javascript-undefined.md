@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2019-08-01 19:52:10
-version: 1.17
+updated: 2019-08-01 20:00:41
+version: 1.18
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. The undefined value is the default value for variables that are declared but do not have any value assigned to them. When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. In this post I will be outlining some examples that point out some things that a javaScript developer should be aware of when it comes to undefined in javaScript.
@@ -153,6 +153,10 @@ console.log(!!false); // false
 
 Because the javaScript undefined value is evaluates to false it can be used as a way to feature test if a property is present in an object.
 
-## 7 - Conclusion
+## 7 - Undefined is a primitive value in javaScript
+
+In javaScript the undefined value is an example of a primitive value. A primitive value if a value that is not an object of any kind like objects, arrays, and functions. Some primitive values have objects that wrap around them, this is the case with Strings and Numbers for example. A String might have prototype methods, and as such it might seem like it is another kind of Object, but it is very much a primitive value. In any case the undefined value in javaScript is one of two primitive values in which this is not the case anyway the other being the null value.
+
+## 8 - Conclusion
 
 The undefined value in javaScript comes up a lot in discussions when learning javaScript for the first time. A common mistake most new javaScript developers make involves errors resulting in calling undefined that can happen because of the nature of function expressions as well as a wide rang of other reasons. There is also the undefined keyword that us often used to test for undefined.
