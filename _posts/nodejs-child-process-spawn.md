@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-02 16:12:11
-version: 1.3
+updated: 2019-08-02 16:25:14
+version: 1.4
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -16,6 +16,10 @@ I find myself using the [node spawn](https://nodejs.org/api/child_process.html#c
 ## 1 - lets start out with the node spawn method with a basic example
 
 So lets start out with the node spawn method by quickly getting together a basic example that I often start a post like this with. In this example I am just using the node spawn method to launch another instance of node and run a different script that just logs something to the standard output with the console log method.
+
+When writing my basic.js file I start out my requiring in the spawn method from the child process module. Once I have that I can call the spawn method to create a new instance of the child process class. When doing so I pass a string of the command that I want to run in the command line as the first argument. Arguments can then also be passed as a second argument in the form of an array where each option is a string. So in this case the first argument is the string \'node\', and then second argument is an array with one one string value that is path of the script that I want to run.
+
+So then basic.js looks like this:
 
 ```js
 // using spawn
@@ -32,9 +36,13 @@ script.stdout.on('data', function(data){
 });
 ```
 
+And the basic_test.js file that I am calling looks like this:
+
 ```js
 console.log('this is a test');
 ```
+
+I can then call the main basic.js file which in turn calls the basic_test.js file from within the main basic.js file as a child process with the node spawn method.
 
 ```
 $ node basic
