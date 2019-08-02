@@ -5,23 +5,21 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-06-28 22:10:07
-version: 1.24
+updated: 2019-08-01 20:33:21
+version: 1.25
 ---
 
-The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired. An on blur event will only fire for elements that can gain a focus, such as input elements. However it is sometimes possible to set other elements that can not be focus by default with the tab index property. In this post I will be going over some examples using the on blur event with plain old vanilla javaScript, rather than a certain front end frame work.
+The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired. An on blur event will only fire for elements that can gain a focus, such as input elements. However it is possible to set other elements that can not be focus by default with the tab index property. In this post I will be going over some examples that make use of the on blur event with plain old vanilla javaScript, rather than a certain front end frame work.
 
 <!-- more -->
 
 ## 1 - On blur and what to know before continuing to read
 
-This is a post on the on blur event in client side javaScript, one of many events that can be attached to an element using the onblur property of an element or a method like addEventListener to attach event handers that will fore when the bur event happens. I assume that you have at least some background with javaScript and html as this is required in order to get anything of value from this post.
-
-This post will be on just using native javaScript by itself rather than a particular frame work.
+This is a post on the on blur event in client side javaScript, one of many events that can be attached to an element using the onblur property of an element or a method like addEventListener to attach event handers that will fire when the bur event happens. I assume that you have at least some background with javaScript and html as this is required in order to get anything of value from this post.
 
 ## 2 - On blur basic example
 
-The use of a blur events might be used in conjunction with focus events as well. The focused element is the current element that the user is focused on in an html document. This typically might be something like an input tag in a form or something to that effect. So when an element looses focus that is what is known as a blur event.
+The use of a blur event might be used in conjunction with a focus event, as well as a whole range of other events to create a user interface or form. The focused element in the interface is the current element that the user is focused on, and as such the value of the element can be manipulated with input from the keyboard.
 
 In this example I am attaching some handlers for both the on focus, and on blur events for a single input element.
 
@@ -45,7 +43,7 @@ foo.addEventListener('focus', function (e) {
 </html>
 ```
 
-So in the script tag I am just getting a reference to a single input element, and then attaching some event handers for the on blur event, as well as the corresponding on focus event as well.In there I will be grabbing a reference to the input element and will be attaching events for on blur, and on focus.
+So in the script tag I am just getting a reference to a single input element, and then attaching some event handers for the on blur event, as well as the corresponding on focus event as well. In there I will be grabbing a reference to the input element and will be attaching events for on blur, and on focus.
 
 When I open this up in the browser the on focus event fires for the input element when I click on it. When I click outside of the input element the on blur event will fire changing the value of the text in the input element  The on blur event does not bubble though so if I where to attach an on blur event to a div container it will not bubble down to an input element. The focus out event however will bubble down, which it would seem is the only note worth difference between on blur, and focus out.
 
