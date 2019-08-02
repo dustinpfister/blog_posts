@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-08-01 09:55:11
-version: 1.14
+updated: 2019-08-01 21:05:33
+version: 1.15
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
@@ -76,7 +76,23 @@ _.each(matrix, function(pt){
 
 So as I mentioned in the previous section, there are lodash array methods and then there are also lodash collection methods that work with objects in general. In native javaScript there are array prototype methods like Array.map, array.filter, and so forth. These methods in lodash are not just array methods, but collection methods that work with just about any kind of key value pair, not just numbered index keys and values that are an instance of Array.
 
-### 2.1 - Lodash filter
+### 2.1 - Lodash find
+
+The lodash fine collection method can be used to find a single value in an array of values. It can also be used to find an Object in an array of objects also. The lodash find method is useful for fining a single value in an array, but it is not the same thing as sorting, filtering, reducing, or mapping. In some cases I might want to find the top five of something for example, so for that I would want to sort and slice.
+
+```js
+var arr = ['a',1,'b','c'];
+ 
+var n = arr.find(function(el){
+ 
+   return typeof el === 'number';
+ 
+});
+ 
+console.log(n); // 1
+```
+
+### 2.2 - Lodash filter
 
 So there is the lodash filter collection method that can be though of as a kind of lodash equivalent to Array.filter in native javaScript.
 
