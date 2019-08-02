@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2019-07-30 15:41:05
-version: 1.8
+updated: 2019-08-01 20:46:45
+version: 1.9
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined. If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
@@ -100,6 +100,24 @@ if (n > 32) {
 console.log(n); // 40
 ```
 
-## 4 - Conclusion
+## 4 - implicit global
+
+It is possible to create an implicit global scope variable. This can often happen by accident actually by forgetting to use the var let or const keyword when declaring a variable. It is generally a good idea to always use one of the keyword options when declaring a variable, even if you do want it to be a global. Always declare the variable outside the body of a function at the top level, even if you do not want to give it a value yet.
+
+```js
+var func = function () {
+    var local = 5;
+    global = 3;
+};
+func();
+console.log(global); // 3
+try {
+    console.log(local);
+} catch (e) {
+    console.log(e.message); // local is not defined
+}
+```
+
+## 5 - Conclusion
 
 Understanding javaScript scope is one of several core aspects of javaScript that a new developer should get a solid understanding of right away. When writing ECMA 5 style javaScript one is dealing with function level scope only, but when dealing with modern ECMA 2015+ style javaScript there is now block level variable scope as well in javaScript also.
