@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-02 14:27:48
-version: 1.1
+updated: 2019-08-02 14:28:37
+version: 1.2
 ---
 
-I find myself using the node spawn child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
+I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
 
 <!-- more -->
 
