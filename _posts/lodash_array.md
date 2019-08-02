@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-08-01 21:05:33
-version: 1.15
+updated: 2019-08-01 21:10:55
+version: 1.16
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
@@ -92,7 +92,20 @@ var n = arr.find(function(el){
 console.log(n); // 1
 ```
 
-### 2.2 - Lodash filter
+### 2.2 - lodash map method can be used map values to an array
+
+The lodash map method is another method in lodash where the native counterpart Array.map only works with arrays. The lodash map method can map values to an array or any collection object with the value that is returned by the function that it is given.
+
+```js
+var arr = [1,2,3,4,5];
+arr = _.map(arr, function(el){
+    return el * 10;
+});
+console.log(arr);
+// [10,20,30,40,50]
+```
+
+### 2.3 - Lodash filter
 
 So there is the lodash filter collection method that can be though of as a kind of lodash equivalent to Array.filter in native javaScript.
 
