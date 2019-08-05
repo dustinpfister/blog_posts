@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-05 12:57:15
-version: 1.11
+updated: 2019-08-05 12:59:20
+version: 1.12
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -113,6 +113,29 @@ script.stdout.on('data', function(data){
 script.stderr.on('data', function(data){
     console.log(data.toString()); // 'this is a test'
 });
+
+```
+
+### 1.3 - The standard in
+
+```js
+process.stdin.on('data', (data) => {
+    process.stdout.write(data.toString());
+    process.stdout.write(data.toString('hex'))
+});
+
+```
+
+```js
+let spawn = require('child_process').spawn,
+script = spawn('node', ['stdin_test.js']);
+
+script.stdout.on('data', (data) => {
+    console.log(data.toString());
+    script.kill();
+});
+
+script.stdin.write('um yeah I would think so');
 
 ```
 
