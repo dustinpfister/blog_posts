@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-05 11:51:40
-version: 1.7
+updated: 2019-08-05 12:36:03
+version: 1.8
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -57,6 +57,8 @@ There are a number of options for the node spawn child process method. In this s
 
 ### 2.1 - The stdio option and IPC
 
+I was wondering if IPC \(Inter-Process Communication \)[https://en.wikipedia.org/wiki/Inter-process_communication] can be done with the spawn method. I was able to see a lot of examples for IPC in node, but it seems like all of them use Fork rather than Spawn. Maybe in most cases that might be the way to go about doing it, but I would think that there is a way to do so with Spawn. Well it turns out that there is, and it can be done with the stdio option.
+
 ```js
 let spawn = require('child_process').spawn,
 // set up io as ipc
@@ -84,3 +86,5 @@ process.on('message', (m) => {
     })
 });
 ```
+
+By default the pipe value is set for the standard input, output and error. However that can be changed by setting the ipc value for the desired out or in.
