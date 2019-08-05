@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-05 12:40:26
-version: 1.9
+updated: 2019-08-05 12:52:30
+version: 1.10
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -54,6 +54,39 @@ this is a test
 So there we have a simple example of the node spawn child process method in action. However there are some more basics at least to cover when it comes to command line arguments for the child process, and also the different kinds of steams and events. So lets look at a few more basic examples of spawn in action.
 
 ### 1.1 - Using arguments
+
+So many commands accept one or more arguments, options or whatever you might call them when called from the command line. These arguments are to be given to spawn in the form of an array where each element is a string of the sub command, argument name, value, or anything else that is separated by spaces when using them in the command line.
+
+So lets say I have a script that adds to arguments together like this.
+```js
+let a = process.argv[2] === undefined ? 0 : process.argv[2];
+b = process.argv[3] === undefined ? 0 : process.argv[3];
+console.log(Number(a) + Number(b));
+```
+
+
+I can then use those arguments when using the node spawn method like this.
+
+```js
+let spawn = require('child_process').spawn,
+a = process.argv[2] || 25,
+b = process.argv[3] || 75,
+script = spawn('node', ['argu_test.js', a, b]);
+script.stdout.on('data', function(data){
+    console.log(data.toString()); // 100
+});
+
+```
+
+
+```
+$ node argu
+100
+$ node argu 5
+80
+$ node argu 1 1
+2
+```
 
 ## 2 - node spawn child process method options
 
