@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-02 17:07:09
-version: 1.6
+updated: 2019-08-05 11:51:40
+version: 1.7
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -53,7 +53,9 @@ this is a test
 
 ## 2 - node spawn child process method options
 
-### 2.1 - The stdio option
+There are a number of options for the node spawn child process method. In this section I will touching base with a few of them.
+
+### 2.1 - The stdio option and IPC
 
 ```js
 let spawn = require('child_process').spawn,
