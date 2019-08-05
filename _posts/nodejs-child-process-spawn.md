@@ -5,15 +5,15 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-05 12:36:03
-version: 1.8
+updated: 2019-08-05 12:40:26
+version: 1.9
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
 
 <!-- more -->
 
-## 1 - lets start out with the node spawn method with a basic example
+## 1 - lets start out with the node spawn method with some basic examples
 
 So lets start out with the node spawn method by quickly getting together a basic example that I often start a post like this with. In this example I am just using the node spawn method to launch another instance of node and run a different script that just logs something to the standard output with the console log method.
 
@@ -50,6 +50,10 @@ I can then call the main basic.js file which in turn calls the basic_test.js fil
 $ node basic
 this is a test
 ```
+
+So there we have a simple example of the node spawn child process method in action. However there are some more basics at least to cover when it comes to command line arguments for the child process, and also the different kinds of steams and events. So lets look at a few more basic examples of spawn in action.
+
+### 1.1 - Using arguments
 
 ## 2 - node spawn child process method options
 
