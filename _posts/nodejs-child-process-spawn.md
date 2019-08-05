@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-05 12:52:30
-version: 1.10
+updated: 2019-08-05 12:57:15
+version: 1.11
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -86,6 +86,34 @@ $ node argu 5
 80
 $ node argu 1 1
 2
+```
+
+### 1.2 - Standard error when using spawn
+
+```js
+let fs = require('fs'),
+filename = process.argv[2] || 'not-there.txt';
+console.log(filename);
+fs.readFile(filename, 'utf8', (e, data) => {
+    if (e) {
+        console.warn('\u001b[31m' + e.message + '\u001b[39m');
+    } else {
+        console.log('\u001b[32m' + data.toString() + '\u001b[39m');
+    }
+});
+```
+
+```js
+let spawn = require('child_process').spawn,
+script = spawn('node', ['stderror_test.js', process.argv[2]]);
+script.stdout.on('data', function(data){
+    console.log(data.toString()); // 'this is a test'
+});
+// what to do for the standard error output
+script.stderr.on('data', function(data){
+    console.log(data.toString()); // 'this is a test'
+});
+
 ```
 
 ## 2 - node spawn child process method options
