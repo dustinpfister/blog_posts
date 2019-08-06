@@ -5,15 +5,19 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 516
-updated: 2019-08-06 11:21:58
-version: 1.1
+updated: 2019-08-06 11:30:28
+version: 1.2
 ---
 
-The buffer write method in nodejs can be used to write data to a buffer that has been created before hand one way of another. There are a few basics to cover when it comes to putting data into a buffer such as encoding and buffer index values. So I thought I would writing a quick post on the buffer write prototype method in nodejs, and may branch off with some other related topics on buffers.
+The [buffer write](https://nodejs.org/api/buffer.html#buffer_buf_write_string_offset_length_encoding) method in nodejs can be used to write data to a buffer that has been created before hand one way of another. There are a few basics to cover when it comes to putting data into a buffer such as encoding and buffer index values. So I thought I would writing a quick post on the buffer write prototype method in nodejs, and may branch off with some other related topics on buffers.
 
 <!-- more -->
 
 ## 1 - buffer write basic example in nodejs.
+
+So first we need to create a new buffer, or some across a buffer instance by whatever other means such as inside the body of a handler for a data stream of some kind. In any case once there is a buffer instance to work with the write prototype method can be used to write some data to that buffer.
+
+A string value should be given as the first argument, and then also an encoding as the second argument for starters at least when maying around with this method for the first time. More on encoing shortly, but for now lets look at a basic example of the buffer write method in action.
 
 ```js
 let buff = Buffer.alloc(4);
@@ -25,6 +29,8 @@ buff.write('ff', 'hex');
 console.log(buff.toString('hex'));
 // ff000000
 ```
+
+So as one would expect this writes the hex value ff as the first byte of the buffer. However what if I want the string to be treated as a different encoding, and what if I want to place it at a different byte index in the buffer. No problem there are additional arguments for the method.
 
 ## 2 - nodejs buffer write and encoding
 
