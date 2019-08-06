@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-08-06 17:46:09
-version: 1.24
+updated: 2019-08-06 18:09:08
+version: 1.25
 ---
 
 In javaScript event listeners are methods that fire some javaScript code when a given event happens. An event that fires or dispatches an handler can be something like a mouse button being clicked, or an element loosing focus. Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -97,6 +97,35 @@ var link = document.getElementById('link');
 // to set the href property of a link
 link.addEventListener('click', function(e){
    e.target.href='https://www.google.com/'
+});
+        </script>
+    </body>
+</html>
+```
+
+### 2.2 - Stop propagation
+
+When I have a situation in which I have a bunch of nested elements, and I have a handler attached for each of them. If an event happens in a child event, that event listener will of course fire. However each event listener all the way up to the parent event will also fire as well on top of that. If I want to prevent this from happening I will want to use the stop propagation event object method. 
+
+```html
+<html>
+    <head>
+        <title>Event Listeners</title>
+    </head>
+    <body>
+        <div id="container" style="width:640px;height:240px;background:red;">
+            <div id="child1" style="width:240px;height:120px;background:green;">
+                <div id="child2" style="width:120px;height:60px;background:blue;">
+            </div>
+            </div>
+        </div>
+        <script>
+[].forEach.call(document.getElementsByTagName('div'), function(div){
+div.addEventListener('click', function(e){
+   e.stopPropagation();
+   console.log(e.target.id);
+   console.log(e.currentTarget.id);
+});
 });
         </script>
     </body>
