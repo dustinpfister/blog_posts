@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 516
-updated: 2019-08-06 11:33:30
-version: 1.3
+updated: 2019-08-06 11:35:05
+version: 1.4
 ---
 
 The [buffer write](https://nodejs.org/api/buffer.html#buffer_buf_write_string_offset_length_encoding) method in nodejs can be used to write data to a buffer that has been created before hand one way of another. There are a few basics to cover when it comes to putting data into a buffer such as encoding and buffer index values. So I thought I would writing a quick post on the buffer write prototype method in nodejs, and may branch off with some other related topics on buffers.
@@ -34,7 +34,7 @@ So as one would expect this writes the hex value ff as the first byte of the buf
 
 ## 2 - nodejs buffer write and encoding
 
-So a second, third, or final argument can be used to set the character encoding to be used when writing the given string value to a buffer. By default the encoding is utf8, but it makes sense to always set the encoding even if it is the default to help make things more clear and readable as to what it is going on in your project. 
+So a second, third, or final argument can be used to set the character encoding to be used when writing the given string value to a buffer. By default the encoding is utf8, but it makes sense to always set the encoding even if it is the default to help make things more clear and readable as to what it is going on in a project of mine. 
 
 ```js
 let buff = Buffer.alloc(4);
@@ -49,6 +49,8 @@ console.log(buff.toString('hex'));
 ```
 
 ## 3 - Buffer write index offset and length of bytes to put in the buffer
+
+So then there is the subject of having control over the index value in the buffer to start writing, and the number of bytes to write to that buffer index forward.
 
 ```js
 let buff = Buffer.alloc(4);
