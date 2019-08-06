@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-06 11:55:03
-version: 1.13
+updated: 2019-08-06 11:58:25
+version: 1.14
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -119,6 +119,8 @@ script.stderr.on('data', function(data){
 ```
 
 ### 1.3 - The standard in
+
+The standard input of a child process created with the node span method is another subject of interest. The write method of the stdin property of the spawn child process can be used to write some data to the standard input of the script that is being launched with spawn.
 
 ```js
 process.stdin.on('data', (data) => {
