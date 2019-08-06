@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 515
-updated: 2019-08-05 20:43:07
-version: 1.3
+updated: 2019-08-05 20:51:17
+version: 1.4
 ---
 
 When working with arrays the length property is not really a good way to go about getting the data length of a string. The reason why is because of the nature of Unicode. However in nodejs when working with buffers the [buffer length](https://nodejs.org/api/buffer.html#buffer_buf_length) property of a buffer can be used to get the amount of memory that the buffer is taking up at least. In addition if buffers are used the right way buffer length can be used as a way to get the actual data size of a string. So this will be a quick post on the buffer length property in nodejs and some related topic when it comes to array length.
@@ -34,8 +34,12 @@ buff = buff.slice(0,4);
 console.log(buff.length); // 4
 ```
 
-## 3 - Array length and Buffer length
+## 3 - String length and Buffer length
 
+So the length property of a string is sometimes used to find the data size of a string. This might work okay if the string is composed of characters with a value of 127 or lower, but if that is not the case it will result in values that are a little off. However using the buffer from method and the buffer length property should get correct results.
+
+
+Here I have a string that is composed of 8 characters and when I use buffer from and buffer length it is indeed 8 bytes in size.
 ```js
 let str = 'jalapeno';
 console.log(str); // 'jalapeno'
@@ -43,6 +47,8 @@ console.log(str.length); // 8
 let buff = Buffer.from(str);
 console.log(buff.length); // 8
 ```
+
+So far the string length property seems like an okay way to know the data size of a string right? However lets looks at just one more example.
 
 ```js
 let str = 'jalape\u00f1o';
@@ -55,3 +61,5 @@ console.log(str.length);
 let buff = Buffer.from(str, 'utf8');
 console.log(buff.length); // 9
 ```
+
+Turns out that the String length property is not a good way to get the size of a string, I could get into the nature of Unicode to explain better why this is, but that is a whole other post maybe.
