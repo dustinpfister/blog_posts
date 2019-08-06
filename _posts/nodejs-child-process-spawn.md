@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-05 12:59:20
-version: 1.12
+updated: 2019-08-06 11:55:03
+version: 1.13
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -89,6 +89,8 @@ $ node argu 1 1
 ```
 
 ### 1.2 - Standard error when using spawn
+
+The standard error is a stream that has to do with data that logs what is going wrong with a child process. When using a script that logs something to the standard error it often gets displayed in the console. However when using the node spawn child process method to launch the script any errors that occur when doing so will not display in the console unless you do so my attaching a handler for it.
 
 ```js
 let fs = require('fs'),
