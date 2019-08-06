@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-07-30 13:17:36
-version: 1.39
+updated: 2019-08-06 11:42:57
+version: 1.40
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -277,7 +277,7 @@ These animation examples make use of the requestAnimationFrame method as a way o
 
 In this canvas animation example I am updating two variables that have to do with changing the starting and ending radian values when calling the canvas arc method in a draw method that is called on each frame tick.
 
-The basic structure of a canvas animation or any kind of canvas project will likely include at least some kind of state that is updated on each frame tick, and a method that draws that state to the canvas. There are other ways of course that involve clumping everything together, developers do have all kinds of different coding styles when it comes to making a project after all. However I think it is a good idea to make at least some kind if effort to break things down when I start to get into something that is a little advanced.
+The basic structure of a canvas animation or any kind of canvas project will likely include at least some kind of state that is updated on each frame tick, and a method that draws that state to the canvas. There are other ways of course that involve clumping everything together, developers do have all kinds of different coding styles when it comes to making a project after all. However I think it is a good idea to make at least some kind of effort to break things down when I start to get into something that is a little advanced.
 
 ```html
 <html>
@@ -333,6 +333,8 @@ loop();
     </body>
 </html>
 ```
+
+In the update method I am updating the state of the animation based on the current frame value relative to the total frame count that I have set, and then I also step the frame count. In the draw method of the animation I then use the canvas arc method with the startRad and endRad values that are updated in the update method. I then have a main loop method in which I am updating and drawing this animation.
 
 ### 7.2 - Uisng Math.cos and Math.sin to create an arc like movement in canvas
 
