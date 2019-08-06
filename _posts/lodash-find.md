@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-06-25 17:37:05
-version: 1.38
+updated: 2019-08-06 12:46:36
+version: 1.39
 ---
 
 So the lodash find collection method can be used to find a single item in a collection. There is also the native Array.find method as well, but that is just an array prototype method, and as such it can not just be used to find an object key in general.
@@ -19,7 +19,7 @@ This post will aim to be a fairly through post on the lodash find method, but al
 
 ## 1 - lodash find method and alternatives
 
-So the lodash \_.find method is a nice little method that works in a very similar fashion to the [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method in core javaScript. However the Array.find method is an array protoype method and not a collection with like with \_.find in lodash. So there is more that the \_.find brings to the table compared to the native array method alternative, and in this post I will be pointing out what these features are that set it apart from Array.find.
+So the lodash \_.find method is a nice little method that works in a very similar fashion to the [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method in core javaScript. However the Array.find method is an array prototype method and not a collection with like with \_.find in lodash. So there is more that the \_.find brings to the table compared to the native array method alternative, and in this post I will be pointing out what these features are that set it apart from Array.find.
 
 Still it is not to hard to just find something in an array with just plain old javaScript by itself, in many cases the native Array.find method will work just fine, and in some cases it is possible to get it working with array like objects as well. So in this post I will also be writing about some plain old vanilla js ways of finding an object or something to that effect with plain javaScript as well.
 
@@ -87,7 +87,7 @@ var n = _.find({
 console.log(n); // 42
 ```
 
-Also there is the built in iteration methods that can come in handy. The potential for better backward compatibility with old versions of IE if for some reason that is a concern. Also this is a lodash post, so...
+Also there is the built in iteration methods that can come in handy. The potential for better backward compatibility with old versions of IE if for some reason that is a concern. Also this is a lodash post, so of course I am going to point out some of the reasons why one would bother with lodash rather than just using native javaScript by itself.
 
 ## 3 - What a collection is, and basic example
 
