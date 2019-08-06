@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-08-06 16:49:28
-version: 1.17
+updated: 2019-08-06 16:51:51
+version: 1.18
 ---
 
 In javaScript event listeners are methods that fire some javaScript code when a given event happens. An event that fires or dispatches an handler can be something like a mouse button being clicked, or an element loosing focus. Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -17,9 +17,9 @@ In javaScript event listeners are methods that fire some javaScript code when a 
 
 There is more than one way to attach event listeners in client side javaScript. For the most part it is a good idea to just stick to the addEventListener method as a way to attach events. The reason why is because more than one handler can be attach for a single event type. However there are also some alternative ways to do so as well that involve defining a method for certain properties of the window object..
 
-## 2 - Attaching Event listeners using addEventListener
+## 1.1 - Attaching Event listeners using addEventListener
 
-In this section I will be covering a simple example of an event listener using the addEventListener method. This works by gaining a reference to an element by whatever means, such as with document.getElementById, and then calling the addEventListener method of that element. The first argument that I give to addEventListener is the type of event I which to attach for, and the second argument is the method that I want to fire when this event occurs.
+So lets start out with event listeners using the addEventListener method which is well supported with most modren web browsers these days. This works by gaining a reference to an element by whatever means, such as with document.getElementById, and then calling the addEventListener method of that element. The first argument that I give to addEventListener is the type of event I which to attach for, and the second argument is the method that I want to fire when this event occurs.
 
 So I have some html for this example that looks like this.
 
