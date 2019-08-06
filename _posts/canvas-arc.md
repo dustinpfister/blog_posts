@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-08-06 11:45:20
-version: 1.41
+updated: 2019-08-06 11:49:05
+version: 1.42
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
@@ -411,6 +411,8 @@ loop();
     </body>
 </html>
 ```
+
+When it comes to making cool little canvas projects like this I often do find myself moving things in arc like patterns. There is using the native canvas arc method to draw arcs, but if I want to just pan things out in an arc, and move them in an arc like fashion then I do of course need to write my own method for doing so often using the Math.cos, and Math.sin methods to do so.
 
 ## 8 - Conclusion
 
