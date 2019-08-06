@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-07-29 10:00:49
-version: 1.13
+updated: 2019-08-06 12:56:45
+version: 1.14
 ---
 
 In javaScript event listeners are methods that fire when a given event happens, such as when a mouse button is clicked, or an element looses focus. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -159,3 +159,7 @@ app.canvas.addEventListener('mousemove', app.move);
 ```
 
 When the example is up and running I can change the position of the circles by moving the mouse over the canvas, as well as clicking with the canvas with the click and mouse move event listeners. I could add many more listeners and make the project far more interesting, but you get the idea.
+
+## 4 - Conclusion
+
+There is way more to write about when it comes to event listeners in javaScript, there are a wide range of different types that have to do with all kinds of events. Events such as touch events, mouse events and there are even ways to write my own events and define what it is that triggers such custom events.
