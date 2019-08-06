@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-08-06 17:28:28
-version: 1.22
+updated: 2019-08-06 17:34:59
+version: 1.23
 ---
 
 In javaScript event listeners are methods that fire some javaScript code when a given event happens. An event that fires or dispatches an handler can be something like a mouse button being clicked, or an element loosing focus. Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -74,13 +74,15 @@ button.onclick = function(e){
 
 There are also a range of events that can be attached to the window object also.
 
-## 3 - The event Object of a call back when setting event listeners in javaScript
+## 2 - The event Object of a call back when setting event listeners in javaScript
 
 When setting an event listener there is the first argument of the callback that is given. This argument is the [event object](https://developer.mozilla.org/en-US/docs/Web/API/Event) which contains all kinds of useful information about the event when the event triggers. This can contain things like a reference to the element that was clicked on an on click event, or the x and y position of where a canvas element was clicked on such an event and much more. Some parts of an event object depend on the type of event, for example you would not find a touches array of points on a touch screen for a keyboard event. However many other parts of such an event object are more or less consistent across different types. In this section I will be going over some examples of event objects when working with event listeners.
 
-### 3.1 - Basic example of the event object involving a hyper link
+### 2.1 - event object target property event handler example involving a hyper link
 
-In this basic example of using an event object I am setting the href property of an anchor element using the target property of the event object. the target property is a reference to the element in which the event took place. In many cases this is the element where an event listener was attached, but it can also be a child of that element because of bubbling, more on that later.
+In this basic example of using an event object I am setting the href property of an anchor element using the target property of the event object. The target property is a reference to the element in which the event took place. In many cases this is the element where an event listener was attached, but it can also be a child of that element because of bubbling, more on that later.
+
+For this example I am just attaching a click event listener that will set the href property of a link when it is clicked.
 
 ```js
 <html>
@@ -101,7 +103,7 @@ link.addEventListener('click', function(e){
 </html>
 ```
 
-### 3.2 - Not so basic example that uses canvas
+## 4 - Not so basic example that uses canvas
 
 Here I have a not so basic example of using event objects and event listeners that makes use of the canvas element. Here I am drawing some circles to a canvas with the [arc canvas](/2019/03/05/canvas-arc/) method. The position of the circles can be changed with the mouse click and mouse move event listeners.
 
@@ -185,6 +187,6 @@ app.canvas.addEventListener('mousemove', app.move);
 
 When the example is up and running I can change the position of the circles by moving the mouse over the canvas, as well as clicking with the canvas with the click and mouse move event listeners. I could add many more listeners and make the project far more interesting, but you get the idea.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 There is way more to write about when it comes to event listeners in javaScript, there are a wide range of different types that have to do with all kinds of events. Events such as touch events, mouse events and there are even ways to write my own events and define what it is that triggers such custom events.
