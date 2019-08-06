@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-08-06 17:11:07
-version: 1.20
+updated: 2019-08-06 17:27:43
+version: 1.21
 ---
 
 In javaScript event listeners are methods that fire some javaScript code when a given event happens. An event that fires or dispatches an handler can be something like a mouse button being clicked, or an element loosing focus. Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
@@ -52,6 +52,8 @@ For the most part addEventListener should be used as a way to attach events to a
 ### 1.2 - element and window event properties
 
 Another way of attaching event handlers is to set a function to one of many named properties of an element or the window object. One of the down sides of this is that only one event can be attached at a time. However doing so will work on a wide range of clients.
+
+The process is more or less the same for elements in the sense that a reference to the element must be obtained first. Once a reference is gained an event listener function just needs to be set to a property name of the desired  event.
 
 ```html
 <html>
