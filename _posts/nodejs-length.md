@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 515
-updated: 2019-08-05 20:40:05
-version: 1.2
+updated: 2019-08-05 20:43:07
+version: 1.3
 ---
 
 When working with arrays the length property is not really a good way to go about getting the data length of a string. The reason why is because of the nature of Unicode. However in nodejs when working with buffers the [buffer length](https://nodejs.org/api/buffer.html#buffer_buf_length) property of a buffer can be used to get the amount of memory that the buffer is taking up at least. In addition if buffers are used the right way buffer length can be used as a way to get the actual data size of a string. So this will be a quick post on the buffer length property in nodejs and some related topic when it comes to array length.
@@ -22,6 +22,10 @@ console.log(buff.length); // 8
 ```
 
 ## 2 - Do not set buffer length to change buffer size
+
+When it comes to Array length setting the length property is one way to go about trimming the size of an array. That might work okay with arrays, but you do not really want to do the same with buffers. So the buffer length property should be considered read only, and another way should be used to set the size of a buffer.
+
+One way to go about changing the buffer length would be to just use a method like buffer slice to create a new buffer of the desired size and then set that to the variable that is being used.
 
 ```js
 let buff = Buffer.alloc(8);
