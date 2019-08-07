@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 517
-updated: 2019-08-07 11:47:12
-version: 1.5
+updated: 2019-08-07 11:50:42
+version: 1.6
 ---
 
 I have been doing a lot of work revolving the use of the child process module as of late, so I thought I would write some demos about the [node fork](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) child process method. This node fork method does not launch a copy of the current process, but it does start a new node process with the given external script given as the first argument. It is similar to other methods in the child process module such as spawn, but it is set up a little different by default, and might be a better alternative to using spawn when it comes to launching an additional node process on the host os.
@@ -46,6 +46,8 @@ hello node fork!
 
 ### 1.2 - The standard input in a child script used with node fork
 
+The same can be said of the standard input also, it is inherited from the parent script that used node fork to launch it.
+
 ```js
 // and the standard in is inherited from
 // the parent process by default also
@@ -55,4 +57,10 @@ process.stdin.on('data', (data) => {
 process.stdin.on('end', (data) => {
     console.log('end of data');
 });
+```
+
+```
+$ node basic | node basic basic-test-stdin 
+68656c6c6f206e6f646520666f726b21
+end of data
 ```
