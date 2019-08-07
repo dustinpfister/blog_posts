@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-07 13:24:59
-version: 1.15
+updated: 2019-08-07 13:27:36
+version: 1.16
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -183,7 +183,9 @@ By default the pipe value is set for the standard input, output and error. Howev
 
 ## 3 - node spawn and read streams
 
-So in a recent project of mine I started making all kinds of CLI tools that accept input via the standard input that does something to that input and then spits something out to the standard output. In a previous section I touched base on the standard input, but things do start to get a little complicated when it comes to working with streams.
+So in a recent project of mine I started making all kinds of CLI tools that accept input via the standard input that does something to that input and then spits something out to the standard output. In a previous section I touched base on the standard input, but things do start to get a little complicated when it comes to working with streams. So in this section I thought I would put together a little example of something that I am running into with this project of mine.
+
+In the parent script of this example I am creating a file read stream, and then I am piping the output of that read stream to thee standard input of a child process that I have created with node spawn.
 
 ```js
 let spawn = require('child_process').spawn,
