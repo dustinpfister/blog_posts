@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-08-07 15:19:08
-version: 1.11
+updated: 2019-08-07 15:41:28
+version: 1.12
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, along with the values of course. Because it can be used as a way to know how many arguments where passed when the function was called the javaScript arguments object can be used to make functions that behave differently depending on the number of arguments given to the function. So if you every came across a function that behaves differently depending on the number of arguments given the arguments object is one way to go about making such a function.
@@ -15,25 +15,36 @@ When writing a function in javaScript, inside the body of that function there is
 
 ## 1 - javaScript arguments object basic example
 
-For a basic example of the javaScript arguments object here is a simple function that uses this as a way to return a different result depending on the number of arguments that is given when the function is called.
+For a basic example of the javaScript arguments object here is a function that uses the arguments object as a way to return a different result depending on the number of arguments that is given when the function is called. If just one argument is given then the Cosine and Sin values are given for the first argument in the form of a point object of sorts. However if a second argument is given this is treated as a distance from and origin, and the additional arguments are used to offset the point object.
 
 ```js
-var func1 = function (a, b) {
+let func1 = function (angle, distance, offsetX, offsetY) {
+    angle = angle === undefined ? 0 : angle;
+    distance = distance === undefined ? 0 : distance;
+    offsetX = offsetX === undefined ? 0 : offsetX;
+    offsetY = offsetY === undefined ? 0 : offsetY;
+    let point = {
+        x: Math.cos(angle),
+        y: Math.sin(angle)
+    };
  
-    if (arguments.length == 2) {
-        return a + b;
+    // if two or more arguments are given
+    if (arguments.length >= 2) {
+        point.x = point.x * distance + offsetX;
+        point.y = point.y * distance + offsetY;
     }
  
-    return a;
- 
+    return point;
 };
  
-console.log(func1(40,2)); // 42
+console.log(func1(Math.PI / 2, 10, 5, 5));
+// { x: 5.000000000000001, y: 15 }
  
-console.log(func1(42)); // 42
+console.log(func1(Math.PI / 2));
+// { x: 6.123233995736766e-17, y: 1 }
 ```
 
-Without using the arguments object to find the number of arguments that is given the function would return NaN when used with just a single argument in the event that just a single argument is given. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given, and it can also be used as an alternative way to get the values of argument apart from the named parameter names.
+If I where to comment out the lines of code that have to do with the conditional that checks the arguments object length, then the second use example will result in a point value of zero for both x and y. However because of the check that does not happen, and I am given something more useful. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given, and it can also be used as an alternative way to get the values of argument apart from the named parameter names when it comes to accessing the key values of this object.
 
 ## 2 - Why it is the javaScript arguments object rather than arguments array
 
