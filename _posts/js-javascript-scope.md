@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2019-08-01 20:46:45
-version: 1.9
+updated: 2019-08-07 16:42:50
+version: 1.10
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined. If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
@@ -36,7 +36,7 @@ So with the var keyword it is functions that must be used to compartmentalize th
 
 ### 1.2 - The Scope chain with var
 
-When having nested functions each function has its own variable scope it is then possible to have a variable with the same name for each function within that scope by using the var keyword.
+When having nested functions each function has its own variable scope it is then possible to have a variable with the same name for each function within that scope by using the var keyword. This might seem a little confusing but once you have a good feel for the nature of function level scope it will make more sense.
 
 ```js
 var n = 1;
@@ -55,7 +55,7 @@ var mod = (function () {
 console.log(mod(n)); // 6
 ```
 
-If I want to access a variable of the same name lower down the scope chain I will want to omit the use of the var keyword to do so.
+If I want to access a variable of the same name lower down the scope chain I will want to omit the use of the var keyword to do so. However these days I try to avoid doing this as I am more in tune to the nature of functional programing where everything that I need to work with withing a function should be inside the body of that single function. Still this is something to be aware of when it comes to variable scope in javaScript.
 
 ## 2 - block variable scope with let
 
@@ -102,7 +102,7 @@ console.log(n); // 40
 
 ## 4 - implicit global
 
-It is possible to create an implicit global scope variable. This can often happen by accident actually by forgetting to use the var let or const keyword when declaring a variable. It is generally a good idea to always use one of the keyword options when declaring a variable, even if you do want it to be a global. Always declare the variable outside the body of a function at the top level, even if you do not want to give it a value yet.
+It is possible to create an implicit global scope variable. This can often happen by accident actually by forgetting to use the var let or const keyword when declaring a variable. It is generally a good idea to always use one of the keyword options when declaring a variable, even if you do want it to be a global. Always declare the variable outside the body of a function at the top level, even if you do not want to give it a value yet when making globals.
 
 ```js
 var func = function () {
