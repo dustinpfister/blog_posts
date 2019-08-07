@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-08-07 15:51:55
-version: 1.15
+updated: 2019-08-07 15:56:25
+version: 1.16
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, along with the values of course. Because it can be used as a way to know how many arguments where passed when the function was called the javaScript arguments object can be used to make functions that behave differently depending on the number of arguments given to the function. So if you every came across a function that behaves differently depending on the number of arguments given the arguments object is one way to go about making such a function.
@@ -106,7 +106,7 @@ console.log(mod.get(2,1)); // 6
 
 ## 4 - Make urls array example of argument object use
 
-okay now for an example that might intrastate something that is actual useful in some cases. Say you want a method where you pass a base url as the first argument, and then an array of file names as the second argument, and what the function produces is an array of urls to each file name from the base url. However there is one more thing, you also have the option to pass each file name as an argument rather than an array. For this the javaScript arguments object can be used to create an array from arguments when the number of arguments is not always known before hand.
+Okay now for an example that might illustrate something that is actual useful in some cases. Say you want a method where you pass a base url as the first argument, and then an array of file names as the second argument, and what the function produces is an array of urls to each file name from the base url. However there is one more thing, you also have the option to pass each file name as an argument rather than an array. For this the javaScript arguments object can be used to create an array from arguments when the number of arguments is not always known before hand.
 
 ```js
 let makeURLArray = function (base, fn) {
@@ -136,6 +136,8 @@ console.log(makeURLArray('./img', 'foo.png', 'bar.png', 'baz.png'));
 // both ways of using the method result in:
 // [ './img/foo.png', './img/bar.png', './img/baz.png' ]
 ```
+
+I see methods like this all the time, there might be other ways of doing so such as checking if the second argument is an object or a primitive value. However it is nice to know that the arguments object is there as an option when it comes to making a function that behaves such as this.
 
 ## 5 - Conclusion
 
