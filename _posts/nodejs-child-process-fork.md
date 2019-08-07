@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 517
-updated: 2019-08-07 11:41:23
-version: 1.3
+updated: 2019-08-07 11:42:09
+version: 1.4
 ---
 
-I have been doing a lot of work revolving the use of the child process module as of late, so I thought I would write some demos about the node fork child process method. This node fork method does not launch a copy of the current process, but it does start a new node process with the given external script given as the first argument. It is similar to other methods in the child process module such as spawn, but it is set up a little different by default, and might be a better alternative to using spawn when it comes to launching an additional node process on the host os.
+I have been doing a lot of work revolving the use of the child process module as of late, so I thought I would write some demos about the [node fork](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) child process method. This node fork method does not launch a copy of the current process, but it does start a new node process with the given external script given as the first argument. It is similar to other methods in the child process module such as spawn, but it is set up a little different by default, and might be a better alternative to using spawn when it comes to launching an additional node process on the host os.
 
 <!-- more -->
 
