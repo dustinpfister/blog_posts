@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-08-07 15:44:26
-version: 1.13
+updated: 2019-08-07 15:48:19
+version: 1.14
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, along with the values of course. Because it can be used as a way to know how many arguments where passed when the function was called the javaScript arguments object can be used to make functions that behave differently depending on the number of arguments given to the function. So if you every came across a function that behaves differently depending on the number of arguments given the arguments object is one way to go about making such a function.
@@ -48,7 +48,9 @@ If I where to comment out the lines of code that have to do with the conditional
 
 ## 2 - Why it is the javaScript arguments object rather than arguments array
 
-The arguments object is called the arguments object because it is not an instance of an Array. So it is actually just a plain old object, however it can be considered an array like object because of the way that it is formated. This is because although it is not an instance of an Array it is structured like an array, because its key values are numbered and it has a length property that reflects the number of those numbered key values just like an array. So some Array methods can be used with it via something like Function.call.
+The arguments object is called the arguments object because it is not an instance of an Array. So it is actually just a plain old object, however it can be considered an array like object because of the way that it is formated. This is because although it is not an instance of an Array it is structured like an array, because its key values are numbered and it has a length property that reflects the number of those numbered key values just like an array. So some Array methods can be used with it via something like Function.call or a similar Function prototype method.
+
+For example say I want to make a method that just adds up all the numbers that I give it as arguments. I can use the Array.forEach method by way of creating an empty array, and then using the call Function prototype method off of the forEach array prototype method and give the arguments object as the first argument. I can then pass a function to call for each javaScript argument just like usual as if it was an array.
 
 ```js
 let func = function () {
