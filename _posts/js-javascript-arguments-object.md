@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2019-08-07 15:56:25
-version: 1.16
+updated: 2019-08-07 16:29:06
+version: 1.17
 ---
 
 When writing a function in javaScript, inside the body of that function there is an special variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable is known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) which is an array like object that can be used to find out things like the number of arguments that was given to the function when it was called, along with the values of course. Because it can be used as a way to know how many arguments where passed when the function was called the javaScript arguments object can be used to make functions that behave differently depending on the number of arguments given to the function. So if you every came across a function that behaves differently depending on the number of arguments given the arguments object is one way to go about making such a function.
@@ -139,6 +139,69 @@ console.log(makeURLArray('./img', 'foo.png', 'bar.png', 'baz.png'));
 
 I see methods like this all the time, there might be other ways of doing so such as checking if the second argument is an object or a primitive value. However it is nice to know that the arguments object is there as an option when it comes to making a function that behaves such as this.
 
-## 5 - Conclusion
+## 5 - Weight example
+
+In one of the projects that I am working on I am making all kinds of functions that have to do with figuring how much weight a piece of content has in relation to a given keyword. There are all kinds of ways of how to go about writing such functions that take into account all kinds of factors that might have to do with how relevant a piece of content is in relation to a certain keyword or search term.
+
+In this example I made a weight function that takes a text sample as the first argument
+
+```js
+// a weight function that adds up any number
+// of weight metric functions
+let weight = function (text, keyword) {
+    let w = 0,
+    i = 2,
+    len = arguments.length;
+    while (i < len) {
+        w += arguments[i](text.toLowerCase(), keyword.toLowerCase());
+        i += 1;
+    }
+    return w;
+ 
+};
+ 
+// 100 point for each total match
+let totalMatch = (text, keyword) => {
+    let w = 0,
+    m = text.match(new RegExp(keyword, 'g'));
+    if (m) {
+        w = m.length * 100;
+    }
+    return w;
+};
+ 
+// 25 points for each word
+let keywords = (text, keyword) => {
+    let w = 0,
+    kwArr = keyword.split(' ')
+        text.split(' ').forEach((tw) => {
+            kwArr.forEach((kw) => {
+                w += kw === tw ? 25 : 0;
+            });
+        });
+    return w;
+};
+ 
+// 1 point for each word
+let wordCount = (text, keyword) => {
+    return text.split(' ').length;
+};
+ 
+// the text and keyword to find the weight for
+let text = 'this is some text about fuzzy cats in action becuase cats are cool',
+kw = 'fuzzy cats';
+ 
+// find the weight
+let w1 = weight(
+        text,
+        kw,
+        totalMatch,
+        keywords,
+        wordCount);
+console.log(w1);
+// 188
+```
+
+## 6 - Conclusion
 
 Hope this post helps to put some confusion to rest when it comes to the nature of the arguments object in javaScript. The arguments object does come in handy now and then whenever a situation arises where it is needed to find the number of arguments that where used when a function was called. Although the arguments object is not an instance of an array it is still an array like object and can be used with array prototype methods by using the function prototype methods call, apply and bind.
