@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 518
-updated: 2019-08-08 12:32:42
-version: 1.4
+updated: 2019-08-08 12:36:43
+version: 1.5
 ---
 
 So I have wrote a few posts on streams when it comes to the create read stream and create write stream file system module methods, as well as many other such methods in various native nodejs modules. However I have not wrote much on the node stream module by itself, and how to go about using that module to make my own custom streams. Also it is important to know a thing or two about this module and the nature of streams in general when it comes to working on nodejs projects. So I thought I would put together a piece of content in which I am focusing on the node stream module and custom made streams, rather than something else in nodejs that inherits from the base classes in this module.
@@ -80,6 +80,8 @@ Using a pipe is one way to go about setting the stream into flowing mode, so the
 
 ### 1.3 - Using a pipe with custom stop method that gives to condition to stop
 
+One of the options that is possible with this module I put together is the option to give a custom stop if method that can be used to define the condition required to push null ending the stream, or not. In this example I am not defining any condition to push null, I just keep pushing the current buffer value created in the read method. 
+
 ```js
 // Using my Random Letters Read Stream
 let RandomLetters = require('./read_random_letters.js').RandomLetters;
@@ -96,6 +98,8 @@ let readStream = RandomLetters({
 // because piping is a way to enter flowing state
 readStream.pipe(process.stdout);
 ```
+
+So this example results in data being generated and spit out to the standard output non stop the only way is to break out some how in the console by pressing ctr + C for example.
 
 ### 1.4 - Fine grain pause and resume control
 
