@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-08-08 08:12:42
-version: 1.17
+updated: 2019-08-08 08:21:11
+version: 1.18
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript, and can also be used to link to external javaScript as well. It is also possible to create javaScript script tags with javaScript as well as a way to load additional external assets with code. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
@@ -37,9 +37,9 @@ I some times use in line javaScript for simple projects, but often the code will
 
 ## 2 - script tags and external javaScript files loaded by way of the src attribute
 
-It is also possible to load external scripts as well with script tags of course. Doing so helps to keep things clean, and better structured, and in some cases doing so might be required as in-line scripts might not be allowed. So then loading an exteral javaScript file with a script tag can be done by making use of the src attribute of the script tag to point to the url of the external javaScript file.
+It is also possible to load external scripts with script tags of course on top of just in-line javaScript. Doing so helps to keep things clean, and better structured, and in some cases doing so might be required as in-line scripts might not be allowed. So then loading an external javaScript file with a script tag can be done by making use of the src attribute of the script tag to point to the url of the external javaScript file. In this section I will be doing so with hard coded script tags that are written in the html itself, rather than doing something complex involving the create element method, or the function constructor.
 
-For example here I have some html, and I am linking to the external javaScript file by adding a script tag in the body element just before the end body tag.
+So for this section I again have a simple example of a script tag only now with an scr attribute that links to a main.js file that should be in the same relative path as the html file. I make sure that I am placing the script tag just before the end body tag because in this case the javaScript code in the javaScript file makes use of an element that is hard coded in the html.
 
 ```html
 <html>
@@ -56,7 +56,7 @@ For example here I have some html, and I am linking to the external javaScript f
 </html>
 ```
 
-I then have this javaScript in the external file that just grabs the div tag with and id of out and just adds some text to that element.
+I then have this javaScript code in the external file that just grabs the div tag with and id of out and just adds some text to that element.
 
 ```js
 document.getElementById('out').innerText = 'external';
