@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-08-08 08:21:11
-version: 1.18
+updated: 2019-08-08 08:28:16
+version: 1.19
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript, and can also be used to link to external javaScript as well. It is also possible to create javaScript script tags with javaScript as well as a way to load additional external assets with code. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
@@ -64,9 +64,9 @@ document.getElementById('out').innerText = 'external';
 
 ## 3 - Creating script tags with javaScript
 
-So then there is creating script tags with javaScipt and then appending them to the html document. This can be done with the document.createElement method which will return a script tag when the tag name of script is given as the first argument. Once a reference to the script tag is obtained that script tag can then be appended to the html with something like the appendChild method just like any other html element. The reference can then be used to set an src attribute to the external javaScript file to load which will cause the browser to start to load the script.
+So then there is creating script tags with javaScipt and then appending them to the html document with an element method. One way that this can be done is with the document.createElement method which will return a script tag when the tag name of script is given as the first argument. Then once a reference to the script tag is obtained that script tag can then be appended to the html with something like the appendChild method just like any other html element. The reference can then be used to set an src attribute to the external javaScript file to load which will cause the browser to start to load the script.
 
-Script tags are loaded async by default according to the Mozilla documentation any way. Depending on the situation This may or may not be a problem. If one script depends on another then it might be best for them to be loaded in the proper order, otherwise it might be better for them to be loaded async. In any case in this section I will be going over some examples of creating and loading script tags with native javaScript.
+Script tags are loaded async by default, depending on the situation this may or may not be a problem. For example if the javaScript code of one script tag depends on another, then it might be best for them to be loaded in the proper sync order. However if each script is a stand alone utility library that does not have any dependencies at all, then it might be better for them to be loaded async. In any case in this section I will be going over some examples of creating and loading script tags with native javaScript with very little dependence on hard coded script tags in the html itself.
 
 ### 3.1 - Creating and Loading scripts sync style the hard way
 
