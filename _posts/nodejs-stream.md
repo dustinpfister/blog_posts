@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 518
-updated: 2019-08-08 12:40:21
-version: 1.6
+updated: 2019-08-08 14:00:54
+version: 1.7
 ---
 
-So I have wrote a few posts on streams when it comes to the create read stream and create write stream file system module methods, as well as many other such methods in various native nodejs modules. However I have not wrote much on the node stream module by itself, and how to go about using that module to make my own custom streams. Also it is important to know a thing or two about this module and the nature of streams in general when it comes to working on nodejs projects. So I thought I would put together a piece of content in which I am focusing on the node stream module and custom made streams, rather than something else in nodejs that inherits from the base classes in this module.
+So I have wrote a few posts on streams when it comes to the create read stream and create write stream file system module methods, as well as many other such methods in various native nodejs modules. However I have not wrote much on the [node stream](https://nodejs.org/api/stream.html) module by itself, and how to go about using that module to make my own custom streams. Also it is important to know a thing or two about this module and the nature of streams in general when it comes to working on nodejs projects. So I thought I would put together a piece of content in which I am focusing on the node stream module and custom made streams, rather than something else in nodejs that inherits from the base classes in this module.
 
 <!-- more -->
 
@@ -103,7 +103,7 @@ So this example results in data being generated and spit out to the standard out
 
 ### 1.4 - Fine grain pause and resume control
 
-So I have wrote a few examples that involve piping the readable node stream to another node stream that is writable such as the standard output. By using the readable.pipe method this places the stream in the flowing state, but what if I want to pause and resume that state from some reason so that I have fine grain control over the process. For thsi there is the resume, read, and puse methods.
+So I have wrote a few examples that involve piping the readable node stream to another node stream that is writable such as the standard output. By using the readable.pipe method this places the stream in the flowing state, but what if I want to pause and resume that state from some reason so that I have fine grain control over the process. For this there is the resume, read, and puse methods.
 
 ```js
 // Using my Random Letters Read Stream
