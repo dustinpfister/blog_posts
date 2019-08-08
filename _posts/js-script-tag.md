@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-08-08 08:42:56
-version: 1.20
+updated: 2019-08-08 08:45:57
+version: 1.21
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript, and can also be used to link to external javaScript as well. It is also possible to create javaScript script tags with javaScript as well as a way to load additional external assets with code. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
@@ -170,3 +170,6 @@ In this example the Script tags load in sync order as well.
 
 In oder to load script tags async style I just need to use the create element method to create the script tag, append to the html document, and set the src attribute to the location of the script. By default script tags create this way will load asycn style.
 
+## 4 - Conclusion
+
+There is a great deal more to write about when it comes to the ins and outs of script tags in client side javaScript. There is also a lot more to write about when it comes to alternative means of pulling javaScript code from a server and running it on the client. For now though that is all. At least from now to the point that I get a little more done with editing on this post.
