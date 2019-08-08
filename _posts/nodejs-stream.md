@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 518
-updated: 2019-08-08 11:25:47
-version: 1.1
+updated: 2019-08-08 11:28:45
+version: 1.2
 ---
 
 So I have wrote a few posts on streams when it comes to the create read stream and create write stream file system module methods, as well as many other such methods in various native nodejs modules. However I have not wrote much on the node stream module by itself, and how to go about using that module to make my own custom streams. Also it is important to know a thing or two about this module and the nature of streams in general when it comes to working on nodejs projects. So I thought I would put together a piece of content in which I am focusing on the node stream module and custom made streams, rather than something else in nodejs that inherits from the base classes in this module.
@@ -15,7 +15,11 @@ So I have wrote a few posts on streams when it comes to the create read stream a
 
 ## 1 - Readable Node Stream example that streams random letters
 
-So there are writable streams and duplex streams that can both read and write, but for starters readable streams might be a good place to begin with streams in nodejs. So I made a quick example that can be used to stream random letters to a writable stream that can console the data. This might not be the most piratical example of a readable stream, but the basic concepts can surly be applied to a stream that might have some kind of piratical application.
+So there are writable streams and duplex streams that can both read and write, but for starters readable streams might be a good place to begin with streams in nodejs. So I made a quick example that can be used to stream random letters to a writable stream that can console the data. This might not be the most piratical example of a readable stream, but the basic concepts can surly be applied to a stream that might have some kind of piratical application. So in this section I will be writing about using the node stream module to make a custom readable stream, and some basic examples that make use of it.
+
+### 1.1 - The Random Letters Readable stream file
+
+So I started out by making a readable node stream module that exports a method that can be used to create an instance of the Random Letters readable stream.
 
 ```js
 let stream = require('stream');
