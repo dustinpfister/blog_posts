@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2019-08-08 16:56:53
-version: 1.11
+updated: 2019-08-08 17:10:21
+version: 1.12
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined. If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
@@ -82,7 +82,7 @@ console.log( func2() );
 
 ## 2 - block variable scope with let
 
-With let block scope is possible rather than just function level scope. So the same situation is possible as with var, only now it is something that is in effect each time there is any kind of block of code. This can also be a function as well, but it can also be an if statement or a loop of one kind or another.
+With let block scope is possible rather than just function level scope. So the same situation is possible as with var, only now it is something that is in effect each time there is any kind of block of code. This can also be a function as well, but it can also be an if statement, a loop or just about any kind of block of code enclosed with curly brackets.
 
 ```js
 let n = 40;
@@ -96,6 +96,8 @@ console.log(n); // 40
 ```
 
 In the above example the value for n in the body of the if statement differs from the value of n outside of the if statement. If all instances of let where to be replaced with var this would not be the case, it would be the same scoped variable that is changed inside the if statement then.
+
+The other option for block level variable javaScript scope is the const keyword, but one nice thing about let is that the value can be rewritten many times just like with var. So in many respects let can be used as a drop in replacement for var, and there are not many extenuating circumstances to bother with var anymore outside of backward compatibility. However with const that can not always be used as a drop in replacement for var, speaking of which lets continue with getting into const as a way to create block scope variables.
 
 ## 3 - Block variable scope with const
 
