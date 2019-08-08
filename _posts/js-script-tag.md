@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2019-08-08 08:10:02
-version: 1.16
+updated: 2019-08-08 08:12:42
+version: 1.17
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript, and can also be used to link to external javaScript as well. It is also possible to create javaScript script tags with javaScript as well as a way to load additional external assets with code. In this post I will be sharing all the little things there are to know about when working with script tags to get things working with client side javaScript.
@@ -35,9 +35,9 @@ console.log(n+2); // 42
 
 I some times use in line javaScript for simple projects, but often the code will ultimately end up in an external javaScript file. When that is the case the src attribute must be used to load the javaScriot file, or a script tag must be created and injected into the document. So with that in mind lets look at some more examples of the script tag in action.
 
-## 2 - script tags and external javaScript files
+## 2 - script tags and external javaScript files loaded by way of the src attribute
 
-It is also possible to load external scripts as well. This can be done by making use of the src attribute of the script tag to point to the url of the external javaScript file.
+It is also possible to load external scripts as well with script tags of course. Doing so helps to keep things clean, and better structured, and in some cases doing so might be required as in-line scripts might not be allowed. So then loading an exteral javaScript file with a script tag can be done by making use of the src attribute of the script tag to point to the url of the external javaScript file.
 
 For example here I have some html, and I am linking to the external javaScript file by adding a script tag in the body element just before the end body tag.
 
