@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2019-08-08 17:10:21
-version: 1.12
+updated: 2019-08-08 17:28:43
+version: 1.13
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined. If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
@@ -143,6 +143,55 @@ try {
 }
 ```
 
-## 5 - Conclusion
+## 5 - Apply what you have learned and start making some real examples
+
+So do not just take my word for it, and do not stop by just reading this one post on javScript varavle scope and thing that you are up to speed with anything. The best way to learn javaScript is by doing, just start coding some of your own projects. Whatever that might really be may be up to you the reader, but maybe in this section I cen get you started by some examples of putting javaScript variable scope to use.
+
+### 5.1 - Start out with something simple that just moves a point object
+```js
+var pointer = function () {
+    // point variable local to Pointer function
+    var point = {
+        x: 5,
+        y: 5
+    };
+ 
+    // another global
+    var api = {
+        dx: 5,
+        dy: 5
+    };
+ 
+    // move the point
+    api.movePoint = function (dx, dy) {
+        // accessing a global variable from within
+        // this other nested function within the api
+        // object
+        point.x += dx === undefined ? this.dx: dx;
+        point.y += dy === undefined ? this.dy: dy;
+    };
+ 
+    api.log = function () {
+        console.log(point.x, point.y);
+    };
+ 
+    // return api
+    return api;
+ 
+};
+ 
+var pt = pointer();
+ 
+pt.log();
+// 5 5
+pt.movePoint();
+pt.log();
+// 10 10
+pt.movePoint(-10,-10);
+pt.log();
+// 0 0
+```
+
+## 6 - Conclusion
 
 Understanding javaScript scope is one of several core aspects of javaScript that a new developer should get a solid understanding of right away. When writing ECMA 5 style javaScript one is dealing with function level scope only, but when dealing with modern ECMA 2015+ style javaScript there is now block level variable scope as well in javaScript also.
