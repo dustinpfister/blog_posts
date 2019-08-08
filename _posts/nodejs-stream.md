@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 518
-updated: 2019-08-08 15:43:53
-version: 1.8
+updated: 2019-08-08 16:09:13
+version: 1.9
 ---
 
 So I have wrote a few posts on streams when it comes to the create read stream and create write stream file system module methods, as well as many other such methods in various native nodejs modules. However I have not wrote much on the [node stream](https://nodejs.org/api/stream.html) module by itself, and how to go about using that module to make my own custom streams. Also it is important to know a thing or two about this module and the nature of streams in general when it comes to working on nodejs projects. So I thought I would put together a piece of content in which I am focusing on the node stream module and custom made streams, rather than something else in nodejs that inherits from the base classes in this module.
@@ -130,6 +130,8 @@ setInterval(function () {
 ```
 
 ## 2 - Writable node stream example that has to do with base64 encoding
+
+In this section I will be going over a simple example of making a custom writable node stream. This example involves making a function that returns a writable stream that can encode text as base64, and another that can decode it back to plan text.
 
 ```js
 let stream = require('stream');
