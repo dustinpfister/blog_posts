@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 519
-updated: 2019-08-09 18:22:54
-version: 1.11
+updated: 2019-08-09 18:26:15
+version: 1.12
 ---
 
 So I am working on a [express](https://expressjs.com/) project in which I would like to stream to the client progress that is being made. I have some more demos to work out until I get a better grasp on what I want to go with, but have learn some great stuff in the process, about [express streams](https://stackoverflow.com/questions/38788721/how-do-i-stream-response-in-express). So it turns out that the response object in middle ware methods is a kind of stream and it inherits from the node http response method. So in express streams can be used by way of the response object to send data to the client in a chunk by chunk basis. In this post I will be going over some examples of how to do this, and how to check on progress on a request with the on process XMLHttpRequest event.
@@ -104,6 +104,8 @@ app.listen(port, () => {
 So in express streams can be used to send large amounts of data on a per chunk basis, rather than eating up a bunch of memory in order to build an object that I than pass to response json, or response send. So now lets take a look at the simple client system that I am hosting via express static.
 
 ### 2.2 - The /public/index.html file
+
+So here is the html file that is served up by way of express static. The client side javaScript will change the width of the inner div as the data rolls in from the express stream.
 
 ```html
 <h1>Express Stream Example</h1>
