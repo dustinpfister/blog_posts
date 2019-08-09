@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 519
-updated: 2019-08-09 18:05:17
-version: 1.8
+updated: 2019-08-09 18:15:28
+version: 1.9
 ---
 
 So I am working on a [express](https://expressjs.com/) project in which I would like to stream to the client progress that is being made. I have some more demos to work out until I get a better grasp on what I want to go with, but have learn some great stuff in the process, about [express streams](https://stackoverflow.com/questions/38788721/how-do-i-stream-response-in-express). So it turns out that the response object in middle ware methods is a kind of stream and it inherits from the node http response method. So in express streams can be used by way of the response object to send data to the client in a chunk by chunk basis. In this post I will be going over some examples of how to do this, and how to check on progress on a request with the on process XMLHttpRequest event.
@@ -44,7 +44,9 @@ So What I want to work out with my project is to have a progress bar when the se
 
 I will be working out something that has to do with streams using express, and I will also have to work out something on the client side as well. The XMLHttpRequest constructor is a tired yet true way to go about making http requests from the client, and it has an event called on progress that can be used to create my progress bar. In this section I will be writing about one demo that I worked out while exploring solutions for this.
 
-### 2.1 - The express app file
+### 2.1 - The express stream app file
+
+So this is just a far more advanced version of the basic example earlier I am not getting the stats of a file, and using the size property to set the content length of the content length header when writing the response headers for the response. The reason why I do this is so when I am using the on progress event in the client system the method knows the total size of the file that is being upstreamed to the client. By knowing the current count of bytes received and the total yet to be received that can be used to create the progress bar I want.
 
 ```js
 let express = require('express'),
