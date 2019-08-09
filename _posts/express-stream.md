@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 519
-updated: 2019-08-09 17:49:24
-version: 1.5
+updated: 2019-08-09 17:56:20
+version: 1.6
 ---
 
 So I am working on a [express](https://expressjs.com/) project in which I would like to stream to the client progress that is being made. I have some more demos to work out until I get a better grasp on what I want to go with, but have learn some great stuff in the process, about [express streams](https://stackoverflow.com/questions/38788721/how-do-i-stream-response-in-express). So it turns out that the response object in middle ware methods is a kind of stream and it inherits from the node http response method. So in express streams can be used by way of the response object to send data to the client in a chunk by chunk basis. In this post I will be going over some examples of how to do this, and how to check on progress on a request with the on process XMLHttpRequest event.
@@ -17,6 +17,7 @@ So I am working on a [express](https://expressjs.com/) project in which I would 
 
 For starters with express streams can be used when working with the response object. The reason why is because the response object inherits from the native node [http server response class](https://nodejs.org/api/http.html#http_class_http_serverresponse) which inherits from [stream](https://nodejs.org/api/stream.html#stream_stream).
 
+So because the response object inherits from stream it has a write method that can be used to write data on a per chunk basis and then once that is done the res.end method can be used to end the stream.
 ```js
 let express = require('express'),
 app = express(),
@@ -33,6 +34,8 @@ app.listen(port, () => {
     console.log('app id up on port ' + port);
 });
 ```
+
+So this can be used to write and send data to the client on a per chunk basis rather than always sending giving a whole body at once by way of the response object send or json methods.
 
 
 ## 2 - Express stream get request and on process XMLHttpRequest event example.
