@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2019-08-09 18:53:28
-version: 1.18
+updated: 2019-08-09 18:56:22
+version: 1.19
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often, but still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
@@ -217,3 +217,7 @@ $ node stdin_filestream
 54686973206973206a757374206120666f6f2062617220746578742066696c65
 done
 ```
+
+## 4 - Conclusion
+
+The node spawn method is great, I use it all the time to launch process from within a node script. As I write more projects that make use of it I might very well come back to this post to update and expand my content on this one with more examples.
