@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-08-12 13:16:08
-version: 1.24
+updated: 2019-08-12 13:24:08
+version: 1.25
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -36,6 +36,10 @@ console.log(a,b); // 3 -3
 ```
 
 Here subtraction is an example of left to right associativity.
+
+## 3 - The javaScript precedence values
+
+There are Twenty levels of operator precedence in javaScript. Operators with a higher precedence value will be preformed first over those with a lower precedence value. In addition the associativity is different depending on the operator as well, however most of the operators typically used when writing expressions have left to right associativity. In this section I will be going over some of the operators in order pf the precedence value.
 
 ### 3.1 - Grouping - Precedence 20 ( highest, prefromed first)
 
