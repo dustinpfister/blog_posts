@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-08-12 13:24:08
-version: 1.25
+updated: 2019-08-12 14:03:45
+version: 1.26
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -53,6 +53,20 @@ console.log(a, b); // 6 0
 ```
 
 No matter what else is going on anything inside the parentheses or grouping if you prefer will be preformed first.
+
+### 3.2 - Function calls Precedence 19
+
+Grouping hands down does have the highest precedence in javaScript, but right behind it is also function calls. So any additional expression within a function call will be preformed first in most situations unless it is superseded by grouping somehow.
+
+```js
+// simple echo function
+let echo = (n) => {
+    return n;
+};
+console.log(3 + echo(7 - 3) * 5); // 23
+console.log(3 + 7 - 3 * 5); // - 5
+console.log(3 + (7 - 3) * 5); // 23
+```
 
 ### 3.2 - Logical Or - Precedence 5
 
