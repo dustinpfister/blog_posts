@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-08-12 12:48:06
-version: 1.23
+updated: 2019-08-12 13:16:08
+version: 1.24
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -127,3 +127,35 @@ ctrRates.forEach((ctr, i) => {
 ```
 
 So getting back to the subject of this post the expression that is used in the pageMoney function is composed of operators that are all division and multiplication, both of which have the same operator precedence, as well as associativity. So for this expression the operations are just simply preformed from left to right.
+
+### 4.2 - Frames javaScript Operator precedence exercise
+
+Say you want to write a function that will spit out a value between zero and one from zero up to one and then back down again depending on a current frame index value compared to a total max frame count. These are the kinds of functions I end up writing when I am playing around with animations that are governed by logic that is writing in a functional, deterministic kind of way.
+
+In this exercise I made a function that gives a value that behaves as expected and when doing so wrote several expressions that make use of a few operators including a native function call.
+
+```js
+let getPosition = (frame, maxFrame) => {
+    // many expressions involving assignment, and the
+    // ternary operator
+    frame = frame === undefined ? 0 : frame;
+    maxFrame = maxFrame === undefined ? 0 : maxFrame;
+    frame = frame < 0 ? 0 : frame;
+    frame %= maxFrame;
+ 
+    // division operation inside the native function call is preformed first
+    // and then that value is subtracted from 0.5. Then that value is divided over
+    // 0.5 and is then finally that value is subtracted from one.
+    return 1 - Math.abs(0.5 - frame / maxFrame) / 0.5;
+ 
+};
+ 
+let maxFrame = 50;
+console.log(getPosition(-25,maxFrame)); // 0
+console.log(getPosition(0,maxFrame)); // 0
+console.log(getPosition(50,maxFrame)); // 0
+console.log(getPosition(25,maxFrame)); // 1
+console.log(getPosition(75,maxFrame)); // 1
+```
+
+The particular expression of interest here is the one that returns the value between zero and one depending on the current state provided via the functions arguments. This expression was fairly easy for me to write because I have a decent grasp on order of operations these days, however in the past it would have taken a lot longer as I would have followed a kind of time consuming trial and error process. 
