@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2019-02-08 14:36:57
-version: 1.5
+updated: 2019-08-12 15:05:12
+version: 1.6
 ---
 
-The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator.
+The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator and constructor functions in general.
 
 <!-- more -->
 
