@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 370
-updated: 2019-08-12 14:28:09
-version: 1.4
+updated: 2019-08-12 14:35:51
+version: 1.5
 ---
 
 The Call object in javaScript is used as a way to store local variables this contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers as way to have a separate collection of variables that are only local to a functions call object. This is not to be confused with the [call method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call) of a function that can be used to set the value of the this keyword for a function. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion. So in this post I will be writing about the call object, and function scope local variables in javaScript.
@@ -36,7 +36,7 @@ console.log(func(3, 2)); // 15
 
 ```
 
-This example shows just about everything there is to be aware of when it comes to the call object when it comes to the properties that it defines for the functions context. In a nut shell the call or activation object refers to arguments, the arguments object, and any local variables defined in the body of the function.
+This example shows just about everything there is to be aware of when it comes to the call object. In a nut shell the call or activation object refers to arguments, the arguments object, and any local variables defined in the body of the function. The values of the properties of the call object depend on the values that are passed at the time that the function was called, and any additional logic inside the body of the function as well as the current values of any additional global variables that are used as well.
 
 ## 2 - Conclusion
 
