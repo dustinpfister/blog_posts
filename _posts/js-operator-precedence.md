@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-08-12 11:27:46
-version: 1.21
+updated: 2019-08-12 11:51:23
+version: 1.22
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -15,7 +15,7 @@ When writing javaScript expressions knowing the order in which operations are pr
 
 ## 1 - Order of operations basics in javaScript
 
-With operators some operators have higher precedence than others. For example multiplication has higher precedence than addition. So if an expression contains addition first and then multiplication from left to right, the multiplication operation will be preformed first and then the addition. If for some reason I want the addition to happen first in can use parentheses to achieve that.
+So lets start out with some very simple examples of order of operations in javaScript, then cover some more complex real examples later in this post. That being said if an expression contains addition first and then multiplication from left to right, then the multiplication operation will be preformed first and then the addition. The reason why is because multiplication and division have a higher precedence value then that of addition and subtraction. If for some reason I want the addition to happen first then I  will want to use parentheses or group operators to achieve just that. The reason why is because parentheses have the highest precedence value of all when it comes to the order of how operations are preformed with javaScript expressions.
 
 ```js
 console.log( 10 + 5 * 2 ); // 20
