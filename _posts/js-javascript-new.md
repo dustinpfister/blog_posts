@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2019-08-12 16:12:18
-version: 1.8
+updated: 2019-08-12 16:23:42
+version: 1.9
 ---
 
 The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator and constructor functions in general.
@@ -52,3 +52,27 @@ console.log(g.x,g.y); // 5 19
 ```
 
 If I where to to call this method without using the new operator the method would return the undefined value which is the default value that is return when a function is called in that manner without the use of the new keyword.
+
+## 3 - To use javaScript new, to not use javaScript new, and to use both.
+
+```js
+let Point = function (x, y) {
+ 
+    this.x = x;
+    this.y = y;
+    this.dx = 0;
+    this.dy = 0;
+ 
+    if (!(this instanceof Point)) {
+        return {
+            x: x,
+            y: y
+        }
+    }
+ 
+};
+console.log(new Point(5, 5));
+// Point { x: 5, y: 5, dx: 0, dy: 0 }
+console.log(Point(5, 5));
+// { x: 5, y: 5}
+```
