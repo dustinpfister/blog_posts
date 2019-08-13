@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-08-13 12:23:03
-version: 1.28
+updated: 2019-08-13 12:28:52
+version: 1.29
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -22,7 +22,7 @@ console.log( 10 + 5 * 2 ); // 20
 console.log( (10 + 5) * 2 ); // 30
 ```
 
-So there is the questing of what operators are preformed first, and then also the direction in which they are preformed as well which is called Associativity. To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is used an expression.
+So there is the question of what operators are preformed first ([operator precedence aka order of operations](https://en.wikipedia.org/wiki/Order_of_operations)), and then also the direction in which they are preformed as well ( [associativity](https://en.wikipedia.org/wiki/Associative_property) ). To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is used an expression.
 
 ## 2 - Associativity of operators
 
