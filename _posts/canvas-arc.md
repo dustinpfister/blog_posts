@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-08-13 14:29:21
-version: 1.45
+updated: 2019-08-13 14:34:21
+version: 1.46
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context.
@@ -38,7 +38,7 @@ Radians come up a lot when it comes to anything having to do with angles in java
 
 ### 1.2 - Using the canvas arc method
 
-The canvas arc method takes up to six arguments. The first two arguments given to the arc method set the center x and center y values of the arc. The third argument is the radius of the arc, and then the next two arguments after that is the beginning and ending angle in radians. The last optional argument is used to set clockwise of counter clockwise direction of the arc.
+The canvas arc method takes up to six arguments. The first two arguments given to the arc method set the center x and center y values of the arc. The third argument is the radius of the arc from that center point set with the first two arguments, and then the next two arguments after that is the beginning and ending angle in radians. The last optional argument is used to set clockwise of counter clockwise direction of the arc between the start and ending angles of the arc, in other words drawing a pac man like shape or a wedge like shape that will fit in pac mans mouth.
 
 ```html
 <html>
