@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2019-02-14 12:39:37
-version: 1.5
+updated: 2019-08-13 11:55:57
+version: 1.6
 ---
 
 The javaScript Date constructor can be used to create Date objects that represent a single moment in time. In javaScript date objects use [Unix time](https://en.wikipedia.org/wiki/Unix_time), A system of time based on a number of seconds passed a fixed point in the past. In this post I will be covering some of the basics of javaScript Dates as well as maybe some more advanced related topics as well centered around time. 
@@ -54,4 +54,12 @@ console.log(d.getTime()); // 1234567890000
 let t = new Date(2009,1,13,18,31,30,321);
  
 console.log(t.getTime()); // // 1234567890321
+```
+
+## 4 - Getting the number of days in a month with javaScript Date
+
+So there are native javaScript Date prototype methods for getting the current day of the month, but no native method for getting the number of days in a month the value of which world range from 28 to 31 depending on what month it is and if it is leap year. There is however a cleaver trick that can be used to get the last date of the month which would also be the number of days in that month. To do so when creating a date instance just give zero as the day of the month.
+
+```js
+console.log( new Date(2019,7,0).getDate()); // 31
 ```
