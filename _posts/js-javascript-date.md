@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2019-08-13 16:37:27
-version: 1.9
+updated: 2019-08-13 17:02:24
+version: 1.10
 ---
 
 The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) constructor can be used to create Date objects that represent a single moment in time. In javaScript date objects use [Unix time](https://en.wikipedia.org/wiki/Unix_time), A system of time based on a number of seconds passed a fixed point in the past. In this post I will be covering some of the basics of javaScript Dates as well as maybe some more advanced related topics as well centered around time. 
@@ -34,7 +34,7 @@ When creating a Date object with a single argument if the single argument is a n
 
 ### 2.1 - Setting a value of zero
 
-When setting a value of zero the values that are received when using a Date prototype method such as todateString might not end up being what is expected. This is because of time zones, for example I am dealing with Eastern Standard Time where I live so there is a three hundred minute offset.
+When setting a value of zero the values that are received when using a Date prototype method such as todateString might not end up being what is expected. This is because of time zones, for example I am dealing with Eastern Standard Time where I live so there is a three hundred minute offset. So there is the get time method, but then there is also the get time zone offset methid as well that can be use as a way to adjust for these inconstancies.
 
 ```js
 let z = new Date(0);
