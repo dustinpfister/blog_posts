@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-08-12 14:03:45
-version: 1.26
+updated: 2019-08-13 12:21:49
+version: 1.27
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -177,3 +177,44 @@ console.log(getPosition(75,maxFrame)); // 1
 ```
 
 The particular expression of interest here is the one that returns the value between zero and one depending on the current state provided via the functions arguments. This expression was fairly easy for me to write because I have a decent grasp on order of operations these days, however in the past it would have taken a lot longer as I would have followed a kind of time consuming trial and error process. 
+
+### 4.3 - Getting my cell phone plan data target for the day
+
+So where I live I do not have and kind of hard wired broadband Internet access, just mobile broadband via my cell phone. So with my plan I only have so much high speed data until I get throttled down to 128kbps, as such I need to budget my data or pay out the node for a higher data cap.
+
+With that in mind it would be nice to know a certain figure each day that will tell be if I am above or below budget when it comes to data. If I am above budget I can watch a video or two, if not I have to change my browsing habits and focus more on work which does not eat up a whole lot of data as I just need to push and pull text.
+
+```js
+// the expression I would out is like this
+console.log(80192 - 80192 / 31 * 13); // 46563.096774193546
+ 
+// grouping like this is not necessary but might help
+// make what is going on more clear
+console.log(80192 - ((80192 / 31) * 13)); // 46563.096774193546
+ 
+// now to replace the literals with variables
+let dataCap = 80192,
+daysInMonth = 31,
+currentDayOfMonth = 13;
+ 
+console.log(dataCap - ((dataCap / daysInMonth) * currentDayOfMonth)); // 46563.096774193546
+ 
+// And now I can make a method
+let getDataCap = (dataCap, now) => {
+ 
+    // assume 8GB and todays date if nothing
+    // is given
+    dataCap = dataCap || 1024 * 8;
+    now = now || new Date();
+ 
+    // get number of days, and day of month, from the given now date object.
+    let daysInMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate(),
+    currentDayOfMonth = now.getDate();
+ 
+    // return the result with the expression I worked out with a knowledge
+    // of operator precedence in javaScript
+    return dataCap - ((dataCap / daysInMonth) * currentDayOfMonth);
+ 
+};
+console.log( getDataCap(80192,new Date(2019,7,13)) ); // 46563.096774193546
+```
