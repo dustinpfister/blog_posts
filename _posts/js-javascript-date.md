@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2019-08-13 16:31:39
-version: 1.7
+updated: 2019-08-13 16:34:49
+version: 1.8
 ---
 
 The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) constructor can be used to create Date objects that represent a single moment in time. In javaScript date objects use [Unix time](https://en.wikipedia.org/wiki/Unix_time), A system of time based on a number of seconds passed a fixed point in the past. In this post I will be covering some of the basics of javaScript Dates as well as maybe some more advanced related topics as well centered around time. 
@@ -16,7 +16,8 @@ The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Re
 
 ## 1 - javaScript Date
 
-To create a javaScript Date object all that needs to happen is to call the Date constructor with the new keyword to gain an instance of Date. What will be returned as a result of this will be an object that is an instance of the Date constructor, and as such there is a great number of prototype methods that can be used with the instance of date.
+To create a javaScript Date object all that needs to happen is to call the Date constructor with the new keyword to gain an instance of Date. Once that is done the result that will be returned will be an object that is an instance of the Date class and as such there will be a whole bunch of date prototype methods that can be used with that date instance object. Many of these methods have to do with getting a certain kind of value from the date instance, such as the day of the month it works out to, many others have to do with formating and so forth.
+
 
 ```js
 let d = new Date(2019,1,14);
