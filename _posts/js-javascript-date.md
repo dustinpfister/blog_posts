@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2019-08-13 17:13:44
-version: 1.12
+updated: 2019-08-13 17:30:03
+version: 1.13
 ---
 
 The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) constructor can be used to create Date objects that represent a single moment in time. In javaScript date objects use [Unix time](https://en.wikipedia.org/wiki/Unix_time), A system of time based on a number of seconds passed a fixed point in the past. In this post I will be covering some of the basics of javaScript Dates as well as maybe some more advanced related topics as well centered around time. 
@@ -34,7 +34,7 @@ When creating a Date object with a single argument if the single argument is a n
 
 ### 2.1 - Setting a value of zero
 
-When setting a value of zero the values that are received when using a Date prototype method such as todateString might not end up being what is expected. This is because of time zones, for example I am dealing with Eastern Standard Time where I live so there is a three hundred minute offset. So there is the get time method, but then there is also the get time zone offset methid as well that can be use as a way to adjust for these inconstancies.
+When setting a value of zero the values that are received when using a Date prototype method such as todateString might not end up being what is expected. This is because of time zones, for example I am dealing with Eastern Standard Time where I live so there is a three hundred minute offset. So there is the get time method, but then there is also the get time zone offset method as well that can be use as a way to adjust for these inconstancies.
 
 ```js
 let z = new Date(0);
@@ -47,9 +47,11 @@ console.log( z.getTimezoneOffset()); // 300
 
 So if the first value given to the date constructor is a string that can be treaded as a year rather than a ms time stamp. Also there is creating a javaScript Date from two or more arguments. In this section I will be going over some of the other options when it comes to creating a javaScript date from a value or set of values other hen that of a number that is a number of milliseconds past January 1 1970 as I did in the previous section.
 
-### 3.1 - Using a string for a year rather than a number
+### 3.1 - Using a dateString rather than a number
 
-If the first argument is a string, and that string can be converted to a number than it will be treated as a year.
+It is not a good idea to just pass a string as the first argument and expect it to work on all platforms. There are many different formats both standard and not so standard, and not a platforms will support all formats. So in some cases it will work as expected on one platform, but not on another.
+
+So it is generally a good idea to parse a date string manually and feed the date constructor a number as the first argument or use two or more arguments.
 
 ```js
 // date created with the number 2019
