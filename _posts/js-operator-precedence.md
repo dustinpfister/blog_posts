@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-08-13 12:21:49
-version: 1.27
+updated: 2019-08-13 12:23:03
+version: 1.28
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -182,7 +182,7 @@ The particular expression of interest here is the one that returns the value bet
 
 So where I live I do not have and kind of hard wired broadband Internet access, just mobile broadband via my cell phone. So with my plan I only have so much high speed data until I get throttled down to 128kbps, as such I need to budget my data or pay out the node for a higher data cap.
 
-With that in mind it would be nice to know a certain figure each day that will tell be if I am above or below budget when it comes to data. If I am above budget I can watch a video or two, if not I have to change my browsing habits and focus more on work which does not eat up a whole lot of data as I just need to push and pull text.
+With that in mind it would be nice to know a certain figure each day that will tell be if I am above or below budget when it comes to data. If I am above budget I can watch a video or two, if not I have to change my browsing habits and focus more on work which does not eat up a whole lot of data as I just need to push and pull text. So to write some kind of function that can help me get that data target figure I can exercise my knowledge of operator precedence to work out an expression that will do just that.
 
 ```js
 // the expression I would out is like this
