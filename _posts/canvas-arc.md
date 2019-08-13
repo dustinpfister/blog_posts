@@ -5,17 +5,17 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-08-06 11:49:05
-version: 1.42
+updated: 2019-08-13 14:15:34
+version: 1.43
 ---
 
-When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware if when it comes to canvas arcs in javaScript.
+When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context.
 
 <!-- more -->
 
 ## 1 - Canvas arc example starting with the basics
 
-The arc method can be used when drawing a line in canvas by using the beginPath method at which point the arc method can be used in conjunction with other methods like moveTo lineTo and so forth to help draw shapes such as but not limited to a circle. In order to use the canvas arc method it is important to have at least some background with javaScript and canvas in general. This is not a getting started post with these subjects, but a post on the canvas arc method in the 2d canvas drawing content.
+The arc method can be used when drawing a line in canvas by using the beginPath method at which point the arc method can be used in conjunction with other methods like moveTo, lineTo, stroke, fill, and so forth to help draw shapes. The canvas arc method helps make quick work of drawing any shape that is or contains a circle or arc like line to it. In order to use the canvas arc method it is important to have at least some background with html, javaScript, and canvas in general. This is not a getting started post with the base subjects that are required to get something of value from this post, however if you want to learn more about the canvas arc method, and other ways to draw circles and place things in a circle like pattern this post might be of interest.
 
 ### 1.1 - Know a thing or two about radians
 
