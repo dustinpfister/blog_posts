@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2019-08-13 16:34:49
-version: 1.8
+updated: 2019-08-13 16:37:27
+version: 1.9
 ---
 
 The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) constructor can be used to create Date objects that represent a single moment in time. In javaScript date objects use [Unix time](https://en.wikipedia.org/wiki/Unix_time), A system of time based on a number of seconds passed a fixed point in the past. In this post I will be covering some of the basics of javaScript Dates as well as maybe some more advanced related topics as well centered around time. 
@@ -30,7 +30,7 @@ When calling the Date constructor it is possible to supply one or more arguments
 
 ## 2 - javaScript Dates set from millisecond time stamp
 
-When creating a Date object with a single argument if the single argument is a number that argument is treated as a number of milliseconds that has passed sense the first of January 1970, as the nature of unix time is based off that date in time.
+When creating a Date object with a single argument if the single argument is a number that argument is treated as a number of milliseconds that has passed sense the first of January 1970, as the nature of unix time is based off that date in time. This is useful for creating new date objects from a number value that is the result of operations that resolve to such a value which can come up from time to time. The value must be a number data type though rather than a string, as that will be recognized as a year.
 
 ### 2.1 - Setting a value of zero
 
