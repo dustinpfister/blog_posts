@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2019-02-10 17:15:52
-version: 1.9
+updated: 2019-08-14 20:16:03
+version: 1.10
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) when it comes to developing a client system with javaScript. The subject of iframes can become a little complicated there is much to write about with them when it comes to more advanced topics involving hidden iframes, and security concerns when with things like click jacking. So in this post I will be sticking to just the basics for now.
@@ -101,4 +101,4 @@ To do so I just need to set the src attribute of the iframe to the url of the re
 
 ## 3 - Conclusion
 
-The basics of iframes are not so hard but there is mcuh more to write about them when it comes to sandboxing, hidden iframes, and cross domain issues. Hopefully thing post has served you well when it comes to the basics of iframes and javaScript for now.
+The basics of iframes are not so hard but there is much more to write about them when it comes to sandboxing, hidden iframes, and cross domain issues. Hopefully thing post has served you well when it comes to the basics of iframes and javaScript for now.
