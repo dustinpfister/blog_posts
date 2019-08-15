@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2019-08-14 20:20:52
-version: 1.2
+updated: 2019-08-14 20:21:49
+version: 1.3
 ---
 
-The canvas save 2dcontext method can be used to save the state of a 2d canvas drawing context that can later be restored with the canvas restore method. So this method can be used to save a current state of a drawing content, then changes can be made to the fill style, translations and rotations can be preformed, something can be drawn with these new settings, and then put back the way it was with the restore method.
+The canvas save 2dcontext method can be used to save the state of a 2d canvas drawing context that can later be restored with the canvas restore method. So this method can be used to save a current state of a drawing content, then changes can be made to the fill style, translations and rotations can be preformed, something can be drawn with these new settings, and then put back the way it was with the restore method. So in this post I will be going over some quick examples of the canvas save methid to point out some reasons why the method is so useful.
 
 <!-- more -->
 
