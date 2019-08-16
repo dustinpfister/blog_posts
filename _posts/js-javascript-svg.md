@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-08-16 14:18:21
-version: 1.11
+updated: 2019-08-16 15:07:31
+version: 1.12
 ---
 
 In javaScript svg graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. When it comes to making graphics with javaScript there are a number of options these days, including the 2d canvas drawing api which is often the preferred raster graphics option. However [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is a [vector based graphics](https://en.wikipedia.org/wiki/Vector_graphics) solution rather than the [raster based graphics](https://en.wikipedia.org/wiki/Raster_graphics) used in canvas. So Scalable Vector Graphics is still a viable option for creating on the fly graphics with javaScript.
@@ -113,4 +113,46 @@ circle.setAttributeNS(null, 'fill', 'green');
 svg.appendChild(circle);
  
 document.body.appendChild(svg);
+```
+
+## 2 - JavaScript SVG example 1 setting all properties of a circle in a loop
+
+For this javaScript SVG example I worked out a quick simple little animation that moves a circle in an elliptical pattern, while also adjusting the radius of the circle. I Just get a reference to the circle element with any typical method that will work just like with any other DOM element. Once I have a reference I then just need to use the setAttributeNS method to change the values for cx cy and radius inside the body of the loop.
+
+```html
+<html>
+    <head>
+        <title>javaScript svg example</title>
+    </head>
+    <body>
+        <svg 
+            width="320" height="240" 
+            xmlns="http://www.w3.org/2000/svg" 
+            style="background:black;"
+            stroke-width="3"
+        >
+            <circle cx="160" cy="120" r="50" fill="white" stroke="red" />
+        </svg>
+        <script>
+var circle = document.getElementsByTagName('circle')[0];
+ 
+var frame = 0, maxFrame = 100;
+var loop = function(){
+    requestAnimationFrame(loop);
+    var per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    radian = Math.PI * 2 * per,
+    x = 160 + Math.cos(radian) * 75,
+    y = 120 + Math.sin(radian) * 25,
+    r = 10 + 50 * bias;
+    circle.setAttributeNS(null, 'cx', x);
+    circle.setAttributeNS(null, 'cy', y);
+    circle.setAttributeNS(null, 'r', r);
+    frame += 1;
+    frame %= maxFrame;
+};
+loop();
+        </script>
+    </body>
+</html>
 ```
