@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2019-08-15 21:38:59
-version: 1.3
+updated: 2019-08-15 22:21:54
+version: 1.4
 ---
 
 So this will be a quick post on using the linux echo command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input I am putting together that will accept such input from something else when it comes to a read use case scenario.
@@ -67,6 +67,8 @@ process.stdin.on('data', (data) => {
 With many of my real projects so far what is actually being piped in might be the full body of text of a blog post that is actually being piped in via another script. Also the script that I am piping into does something more than just convert that text to hex, but this is the basic idea never the less.
 
 ## 3 - The deal with a backslash
+
+One of the options of the Linux echo command is the -e option that can be used to enable the processing of backslashes as a way to inject certain characters.
 
 ```js
 let spawn = require('child_process').spawn;
