@@ -1,12 +1,12 @@
 ---
-title: node process exit
+title: The Node process exit method to end a node process
 date: 2019-08-13 15:56:00
 tags: [node.js]
 layout: post
 categories: node.js
 id: 521
-updated: 2019-08-13 16:15:41
-version: 1.2
+updated: 2019-08-15 22:29:17
+version: 1.3
 ---
 
 So there is the question pf how to make a node process exit when it does not do so normally, and also how to go about setting some events that will fire when the process exits. In this post I will be going over the process exit method and well as exit codes, exit events, and other related topics that mainly have to do with the use of the process module.
@@ -27,7 +27,9 @@ process.on('exit', (code) => {
 process.exit(0);
 ```
 
-## 2 - 
+## 2 - The node process exit method can be used to end what would otherwise be an endless loop
+
+So most of the time the use of the process exit method is not required, often by default the process will just end if there is nothing left to do. However in some situations it is required in the body of code to use it, such as in a loop that involves the use of setTimeout. Maybe it is not the best example as the clearTimeout method could also be used, but still if a condition occurs that is desired to end the process then the process exit method can be used as a way to do so.
 
 ```js
 // keep looping until a condition is met
