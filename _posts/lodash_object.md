@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2019-08-16 15:40:13
-version: 1.7
+updated: 2019-08-16 16:07:08
+version: 1.8
 ---
 
 [Lodash Object methods](https://lodash.com/docs/4.17.11#assign) start with [assign](/2018/09/21/lodash_assign/), and end with valuesIn but that is of course only the lodash methods that work with just about any object in javaScript. There are also the lodash array methods, and in JavaScript an [array is just a certain kind of object](/2017/05/12/js-arrays-are-objects/). There are also collection methods that designed to work with plain old objects by themselves, array like objects, and objects that are javaScipt arrays. In this post I hope to give a general overview of lodash object methods, and also of objects in general in javaScript.
@@ -30,7 +30,32 @@ obj.a.b = 13;
 console.log(obj2.a.b);
 ```
 
-However there is also the native Object.assign methods as well now.
+However there is also the native Object.assign methods as well now that works more or less the same way.
+
+### 1.1 - Lodash merge and lodash assign
+
+The lodash assign and merge methods are two good examples of lodash object methods. They both do more or less the same thing but with just some note worthy differences. The merge lodash object methods will recursively merge down own and inherited object properties while the lodash assign will just assign properties. Also the merge method will skip source object properties that will evaluate to undefined, while assign will not skip them and just assign everything in the source objects.
+
+```js
+let b = {
+    n: 42
+},
+c = {
+    n: undefined,
+    d: {
+        e: 12
+    }
+}
+ 
+let m = _.merge(b, c);
+console.log(m);
+// { n: 42, d: { e: 12 } }
+ 
+//
+let a = _.assign(b, c);
+console.log(a);
+// { n: undefined, d: { e: 12 } }
+```
 
 ## 2 - lodash array object methods
 
