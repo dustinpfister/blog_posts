@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 521
-updated: 2019-08-15 22:29:17
-version: 1.3
+updated: 2019-08-15 22:36:10
+version: 1.4
 ---
 
 So there is the question pf how to make a node process exit when it does not do so normally, and also how to go about setting some events that will fire when the process exits. In this post I will be going over the process exit method and well as exit codes, exit events, and other related topics that mainly have to do with the use of the process module.
@@ -44,7 +44,9 @@ let loop = () => {
 loop();
 ```
 
-## 3 - 
+## 3 - The process exit code property
+
+The process exit method can be used as a way to end the process right away, but there is also the process exit code property that can be used as a way to set a code that will be handled in different ways when the process ends as normal.
 
 ```js
 let rollCount = 0;
