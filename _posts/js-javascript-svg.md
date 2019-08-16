@@ -1,15 +1,15 @@
 ---
-title: Javascript svg graphics the basics and more
+title: Javascript svg graphics including the basics and more
 date: 2019-02-11 10:03:00
 tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-02-11 17:40:02
-version: 1.9
+updated: 2019-08-16 14:11:55
+version: 1.10
 ---
 
-In javaScript svg graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. When it comes to making graphics with javaScript there are a number of options these days, such as the 2d canvas drawing api. However [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is a [vector based graphics](https://en.wikipedia.org/wiki/Vector_graphics) solution rather than the [raster based graphics](https://en.wikipedia.org/wiki/Raster_graphics) used in canvas..
+In javaScript svg graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. When it comes to making graphics with javaScript there are a number of options these days, including the 2d canvas drawing api which is often the preferred raster graphics option. However [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is a [vector based graphics](https://en.wikipedia.org/wiki/Vector_graphics) solution rather than the [raster based graphics](https://en.wikipedia.org/wiki/Raster_graphics) used in canvas. So Scalable Vector Graphics is still a viable option for creating on the fly graphics with javaScript.
 
 <!-- more -->
 
@@ -83,7 +83,7 @@ obj.addEventListener('load', function () {
 
 ### 1.3 - Generating svg with javaScript
 
-Another option is to create an svg element with javaScript and inject the svg element into the html with a method like appendChild. To do this I must use the document.createElementNS method that works just like the regular document.createElement method only this is a speshal name space method for creating svg elements.
+Another option is to create an svg element with javaScript and inject the svg element into the html with a method like appendChild. To do this I must use the document.createElementNS method that works just like the regular document.createElement method only this is a special name space method for creating svg elements.
 
 So then in my html I can just like to an external javaScript file.
 
