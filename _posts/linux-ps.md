@@ -5,11 +5,11 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2019-08-16 20:04:23
-version: 1.1
+updated: 2019-08-16 20:07:59
+version: 1.2
 ---
 
-So today I am taking a look at the Linux ps command.
+So today I am taking a look at the Linux ps command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the linux ps command, and a use case example with nodejs.
 
 <!-- more -->
 
