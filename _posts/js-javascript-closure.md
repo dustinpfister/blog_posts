@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2019-02-23 11:42:19
-version: 1.5
+updated: 2019-08-18 15:44:49
+version: 1.6
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). There are many ways to go about defining what a closure is. Some definitions are very simple yet technically still correct, while other definitions are a bit of a mouth full but do a better job doing them justice. There are all ready many posts on this subject, just about any javaScript developer that writes a blog on javaScript will likely get around to writing a post on them sooner or later, along with things like the this keyword, and the nature of prototype inheritance. So it was only a matter of time until I wrote this post, so as such, here it is. Today I will be looking into closures.
@@ -46,3 +46,22 @@ console.log( pt(32,90) ); // { x: 42, y: 100 }
 ```
 
 When calling the outer function the inner function is returned, and I can then use that inner function as a way to work with a state that exists in the scope of the outer function. This comes in handy now and then when a situation arises that calls for it, the nature of this is one that helps to sore a state, and keep things organized.
+
+## 3 - JavaScript closure example involving setTimeout
+
+So there are many javaScript examples out on the open web that have to do with the use of setTimeout that can be used to delay the execution of a javaScript function by a set amount of time.
+
+```js
+var arr = [1, 2, 3, 4],
+len = arr.length,
+i = -1;
+do {
+    i += 1;
+    (function (n) {
+        setTimeout(function () {
+            console.log(arr[n]);
+        }, 1000);
+    }
+        (i));
+} while (i < len - 1);
+```
