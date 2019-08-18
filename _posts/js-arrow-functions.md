@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2019-08-18 15:16:53
-version: 1.10
+updated: 2019-08-18 15:19:21
+version: 1.11
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining functions compared to the older function declarations and expressions. These kinds of functions preform more or less the same way as traditional function expressions and function declarations. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do that in some cases it might work okay, but other times the code might break manly because of the differences with how the this keyword is treated with javaScript arrow functions compared to other alternatives. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions, and how they compare to the other options available when writing functions in javaScript.
@@ -38,7 +38,7 @@ If I am writing pure functions rather than any function that will be part of a p
 
 ## 2 - Comparison to traditional functions
 
-Arrow functions are now yet another option on top of function expressions, and function declarations. I will not be getting into detail about expressions and declarations here. However I will say that arrow functions are not a replacement to these, just yet another option to work with.
+Arrow functions are now yet another option on top of function expressions, and function declarations. I will not be getting into detail about expressions and declarations here. However I will say that arrow functions are not a replacement to these, they are just yet another option to work with.
 
 ```js
 // function expression AKA function literal
@@ -60,7 +60,7 @@ console.log(bar(1, 1)); // 2
 console.log(baz(1, 1)); // 2
 ```
 
-The main difference between the two other options has to do with how the this keyword is handled in the body of an arrow function. With function expressions and declarations it is possible to set the value of the this keyword with Function.call, Function.apply, or Function.bind. However with arrow functions this does not work.
+The main difference between the two other options has to do with how the this keyword is handled in the body of an arrow function. With function expressions and declarations it is possible to set the value of the this keyword with Function.call, Function.apply, or Function.bind. However with arrow functions this does not work. An arrow function is also not a good choice when writing prototype methods for a class, again because of the nature of the this keyword when using arrow functions.
 
 ## 3 - The this statement and arrow functions
 
