@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 520
-updated: 2019-08-18 13:58:02
-version: 1.2
+updated: 2019-08-18 14:31:00
+version: 1.3
 ---
 
 In node js there is the path module that is there for working with file system paths, but there is also the [node url](https://nodejs.org/api/url.html) module as well for working for web adders urls.
@@ -38,4 +38,22 @@ console.log(urls);
 'https://nodejs.org/docs/latest-v11.x/api/',
 'https://nodejs.org/docs/latest-v12.x/api/']
 */
+```
+
+## 2 - The node url format method
+
+The node url format method can be used to create a url from an object
+
+```js
+let url = require('url');
+ 
+let page = url.format({
+        protocol: 'https',
+        hostname: 'en.wikipedia.org',
+        pathname: 'wiki/Node.js',
+        hash: 'Overview'
+    });
+
+console.log(page);
+// https://en.wikipedia.org/wiki/Node.js#Overview
 ```
