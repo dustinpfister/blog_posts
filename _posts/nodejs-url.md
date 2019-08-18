@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 520
-updated: 2019-08-18 14:31:00
-version: 1.3
+updated: 2019-08-18 14:51:29
+version: 1.4
 ---
 
 In node js there is the path module that is there for working with file system paths, but there is also the [node url](https://nodejs.org/api/url.html) module as well for working for web adders urls.
@@ -56,4 +56,39 @@ let page = url.format({
 
 console.log(page);
 // https://en.wikipedia.org/wiki/Node.js#Overview
+```
+
+## 3 - The URL constructor
+
+The module returns a constructor function that can be used to create an object from a given URL. This object contains properties for all the various parts of a url that it might have including the port number, path, the query string and more.
+
+```js
+let url = require('url');
+ 
+let page = new url.URL('http://myname:1234@localhost:8080/edit/posts?k=foobar#text');
+ 
+console.log(page.origin);
+// http://localhost:8080
+console.log(page.protocol);
+// http:
+console.log(page.username);
+// myname
+console.log(page.password);
+// 1234
+console.log(page.host);
+// localhost:8080
+console.log(page.hostname);
+// localhost
+console.log(page.port);
+// 8080
+console.log(page.pathname);
+// /edit/posts
+console.log(page.search);
+// ?k=foobar
+console.log(page.hash);
+// #text
+console.log(page.href);
+// http://myname:1234@localhost:8080/edit/posts?k=foobar#text
+console.log(page.toString());
+//http://myname:1234@localhost:8080/edit/posts?k=foobar#text
 ```
