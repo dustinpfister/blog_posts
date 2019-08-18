@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-02-16 17:20:03
-version: 1.12
+updated: 2019-08-18 15:01:14
+version: 1.13
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -45,7 +45,7 @@ arr.forEach(function(n){
 console.log(sum); // 6
 ```
 
-Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients.
+Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients. Also if you want to support very old browsers that do not support Array.forEach, then even this code example will break in which case and even older method of doing so will have to be used to loop over the contents of an array.
 
 ### 2.2 - Array.reduce
 
