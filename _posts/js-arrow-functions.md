@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2019-08-18 15:11:17
-version: 1.8
+updated: 2019-08-18 15:14:09
+version: 1.9
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining functions compared to the older function declarations and expressions. These kinds of functions preform more or less the same way as traditional function expressions and function declarations. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do that in some cases it might work okay, but other times the code might break manly because of the differences with how the this keyword is treated with javaScript arrow functions compared to other alternatives. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions, and how they compare to the other options available when writing functions in javaScript.
@@ -15,7 +15,7 @@ In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow f
 
 ## 1 - Arrow functions
 
-Arrow functions in javaScipt are a much more concise way to write a function in javaScript compared to the alternatives. To do so in it's most primitive form I just need to type  a single argument, then an equal sign followed my a greater than symbol, followed by something that is to be implicitly returned when the function is called.
+Arrow functions in javaScipt are a much more concise way to write a function in javaScript compared to the alternatives. To do so in it's most primitive form I just need to type  a single argument, then an equal sign followed my a greater than symbol, followed by something that is to be implicitly returned when the function is called. However I often will also want to include the parentheses that can be used to declare some arguments that I can use in an expression, and also some curly brackets if the function is going  to be a few lines of code.
 
 ```js
 let foo = _ => 'bar';
