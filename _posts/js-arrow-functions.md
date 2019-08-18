@@ -5,17 +5,19 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2019-08-18 15:14:09
-version: 1.9
+updated: 2019-08-18 15:16:53
+version: 1.10
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining functions compared to the older function declarations and expressions. These kinds of functions preform more or less the same way as traditional function expressions and function declarations. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do that in some cases it might work okay, but other times the code might break manly because of the differences with how the this keyword is treated with javaScript arrow functions compared to other alternatives. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions, and how they compare to the other options available when writing functions in javaScript.
 
 <!-- more -->
 
-## 1 - Arrow functions
+## 1 - Arrow functions in javaScript
 
 Arrow functions in javaScipt are a much more concise way to write a function in javaScript compared to the alternatives. To do so in it's most primitive form I just need to type  a single argument, then an equal sign followed my a greater than symbol, followed by something that is to be implicitly returned when the function is called. However I often will also want to include the parentheses that can be used to declare some arguments that I can use in an expression, and also some curly brackets if the function is going  to be a few lines of code.
+
+So Some basic examples of arrow functions might look like this.
 
 ```js
 let foo = _ => 'bar';
@@ -30,6 +32,8 @@ let est = (s,c) => {
 console.log(foo()); // 'bar'
 console.log(foo(4)); // 'pow: 16'
 ```
+
+If I am writing pure functions rather than any function that will be part of a prototype object that arrow functions will work just fine. However the value of the this keyword differs inside the body of an arrow function, so lets look at some more examples so we know when to use arrow functions and when to make use of one of the other options such as a function declaration.
 
 
 ## 2 - Comparison to traditional functions
