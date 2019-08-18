@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2019-08-18 15:19:21
-version: 1.11
+updated: 2019-08-18 15:22:02
+version: 1.12
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining functions compared to the older function declarations and expressions. These kinds of functions preform more or less the same way as traditional function expressions and function declarations. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do that in some cases it might work okay, but other times the code might break manly because of the differences with how the this keyword is treated with javaScript arrow functions compared to other alternatives. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions, and how they compare to the other options available when writing functions in javaScript.
@@ -88,3 +88,7 @@ var func2 = () => {
 console.log( func2()(40)); // 45
 console.log( func2.call({x:2})(2)); // 7
 ```
+
+## 4 - Concluson
+
+So arrow functions are a nice addition but they are not always a drop in replacement for all functions that might exist in some legacy code. However when it comes to writing new code in a very functional way then just using arrow functions alone might work out okay. Still it might be a good idea to at least be aware of the older function declaration and expression options and why it is that the use of them is not necessarily out dated.
