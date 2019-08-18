@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2019-08-18 15:27:42
-version: 1.10
+updated: 2019-08-18 15:37:12
+version: 1.11
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. In this post I will be checking out the delete operator, and some related topics that seem to center around the use of it when it comes to managing object properties in javaScript.
@@ -52,7 +52,7 @@ So then the delete operator serves a purpose because it can potentially be used 
 The delete operator expects an object property to the right of it when used in an expression. It can not be used to delete variables, unless it is a property of an object, and that property can be deleted.
 
 ```js
-// can not delete variables
+// can not delete variables (in nodejs)
 var n = 42;
 delete n;
 console.log(n); // 42
@@ -63,6 +63,8 @@ console.log(this.n); // 42
 delete this.n;
 console.log(this.n); // undefined
 ```
+
+However it is possible to delete global variables in client side javaScript the reason why is because they are really properties of the window object.
 
 ## 4 - The return value of the delete operator.
 
