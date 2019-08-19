@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 525
-updated: 2019-08-19 17:22:24
-version: 1.6
+updated: 2019-08-19 17:26:50
+version: 1.7
 ---
 
 The [lodash omit](https://lodash.com/docs/4.17.15#omit) method can be used to create a new object by omitting properties from an existing object that is give as the first argument. This method is like the lodash pick method only it creates a new object by omitting properties that are not wanted rather than picking properties that are wanted.
@@ -75,3 +75,5 @@ let obj = {
 console.log(omit(obj, ['index', 'z']));
 // { x: 5, y: 12 }
 ```
+
+This way of making an omit method should work okay on most browsers as the array some method works on versions of ie that are as old as ie 9, and the object keys method also works on a wide range of browsers also. I could make another set of methods that would work on even older browser of need be but you get the idea. The lodash omit methods helps out a little because writing something like this over and over again when and where I need it can end up being a little time consuming.
