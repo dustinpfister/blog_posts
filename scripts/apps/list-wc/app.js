@@ -48,8 +48,10 @@ app.get('/', [
 
         // send report
         (req, res) => {
-            let html = '<body style="background:grey;"><table style="width:100%;text-align:center;border-spacing:5px;color:white;">';
-            html += '<tr><th>#</th><th>Word Count</th><th>file name</th></tr>';
+            let html = '<body style="background:grey;">';
+
+            let tableHTML = '<table style="width:100%;text-align:center;border-spacing:5px;color:white;">';
+            tableHTML += '<tr><th>#</th><th>Word Count</th><th>file name</th></tr>';
             req.data.forEach((post, i) => {
                 let color = 'red';
 
@@ -57,13 +59,14 @@ app.get('/', [
                 color = post.wc >= 1000 ? 'green' : color;
                 color = post.wc >= 1800 ? 'lime' : color;
 
-                html += '<tr style="background: black;">' +
+                tableHTML += '<tr style="background: black;">' +
                 '<td>' + (i + 1) + '</td>' +
                 '<td style="color:' + color + ';">' + post.wc + '</td>' +
                 '<td>' + post.fn + '</td></tr>';
 
             });
-            res.send(html + '</table></body>');
+            tableHTML += '</table>';
+            res.send(html + tableHTML + '</body>');
         }
 
     ]);
