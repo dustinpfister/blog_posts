@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 520
-updated: 2019-08-19 19:28:17
-version: 1.6
+updated: 2019-08-19 19:31:36
+version: 1.7
 ---
 
 In node js there is the path module that is there for working with file system paths, but there is also the [node url](https://nodejs.org/api/url.html) module as well for working for web address urls. A url can consist of many parts inclusing the protocol such as https, the hostname, query string values and more. The url module has methods that can be used to quickly convert a url string to an object of these many properties. Also there are methods that can be used to format such an object into a url also, so lets look at some quick examples of the node url module.
@@ -42,7 +42,7 @@ console.log(urls);
 
 ## 2 - The node url format method
 
-The node url format method can be used to create a url from an object
+The node url format method can be used to create a url from an object. This object must have at least a protocol hostname, and path property. However the object can have much more properties for things like hash links, and query strings. For all the examples of what can go into the object check out the next section on the URL constructor.
 
 ```js
 let url = require('url');
