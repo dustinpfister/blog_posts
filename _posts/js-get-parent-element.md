@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-08-19 11:09:34
-version: 1.8
+updated: 2019-08-19 11:17:51
+version: 1.9
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post. I might also touch base on some other related topics as well when it comes to a chain of elements from document up to a given element as well, that is getting all parent elements of a given node.
@@ -97,6 +97,8 @@ getParents(el).forEach(function (el) {
 
 ## 4 - Parent Elements and Event bubbling
 
+So a realted topic of interest when it comes to getting parent elements is the subject of [event bubbling](https://en.wikipedia.org/wiki/Event_bubbling). When an element is clicked for example it will fire an on click event that is set for that element, but it will also bubble up to the top most parent element and fire event handlers all the way up unless this is stopped.
+
 ```html
 <html>
     <head>
@@ -110,13 +112,16 @@ getParents(el).forEach(function (el) {
         </div>
         <script>
 var onClick = function(e){
-    console.log(e.target);
+    console.log(e.target); // the element that was clicked
+    console.log(e.currentTarget ); // the element this handler is attached to
 };
 document.body.addEventListener('click', onClick);
         </script>
     </body>
 </html>
 ```
+
+So When it comes to event handers the target property of the event object will refer to the element where the event happened and the current target property will refer to the element where the event handler is attached.
 
 ## 5 - Other possible future ways with querySelector
 
