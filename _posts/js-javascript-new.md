@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2019-08-19 16:49:58
-version: 1.14
+updated: 2019-08-19 16:52:50
+version: 1.15
 ---
 
 The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator and [constructor functions](/2019/02/27/js-javascript-constructor/) in general.
@@ -85,7 +85,7 @@ console.log(Point(5, 5));
 
 ## 4 - Arguments and calling is optional
 
-When using the new keyword with no arguments passed to the constructor calling the function is optional.
+When using the new keyword with no arguments passed to the constructor this will still result in a new instance of the constructor. As one might expect the instance of the constructor will have default values for all of its arguments.
 
 ```js
 let Point = function (x, y) {
