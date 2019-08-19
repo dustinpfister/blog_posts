@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-08-19 11:00:35
-version: 1.7
+updated: 2019-08-19 11:09:34
+version: 1.8
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post. I might also touch base on some other related topics as well when it comes to a chain of elements from document up to a given element as well, that is getting all parent elements of a given node.
@@ -95,6 +95,29 @@ getParents(el).forEach(function (el) {
 </html>
 ```
 
-## 4 - Other possible future ways with querySelector
+## 4 - Parent Elements and Event bubbling
+
+```html
+<html>
+    <head>
+        <title>Get parent element on event</title>
+    </head>
+    <body>
+        <div id="wrap" style="width:640px;height:480px;background:red;">
+            <div id="header" style="height:120px;background:green;">
+                <div id="logo" style="width:120px;height:120px;background:blue;"></div>
+            </div>
+        </div>
+        <script>
+var onClick = function(e){
+    console.log(e.target);
+};
+document.body.addEventListener('click', onClick);
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Other possible future ways with querySelector
 
 As of this writing there is no css selector that I know of that can be used to get a parent element, so there is no way of getting a parent element with querySelector. There is of course chatter about possible future selectors and pseudo classes that might be a way to do so, but so far nothing solid or well supported. 
