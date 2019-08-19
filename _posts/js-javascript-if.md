@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-08-19 11:29:44
-version: 1.13
+updated: 2019-08-19 11:33:37
+version: 1.14
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements.
@@ -113,3 +113,7 @@ console.log( func(10) ); // 'high'
 console.log( func(-20) ); // 'high'
 console.log( func(-32) ); // 'low'
 ```
+
+## 5 - Conclusion
+
+So the javaScript if statement s one of the many core aspects of javaScript programing and programing in general actually. There are many other ways of controlling the flow of code though such the use of switch statements and state machines. In any case getting comfortable with if statements is a must when it comes to getting up to speed with javaScript.
