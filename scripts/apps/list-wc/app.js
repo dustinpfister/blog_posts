@@ -52,12 +52,15 @@ app.get('/', [
 
             let tableHTML = '<table style="width:100%;text-align:center;border-spacing:5px;color:white;">';
             tableHTML += '<tr><th>#</th><th>Word Count</th><th>file name</th></tr>';
+            let wcTotal = 0;
             req.data.forEach((post, i) => {
                 let color = 'red';
 
                 color = post.wc >= 500 ? 'orange' : color;
                 color = post.wc >= 1000 ? 'green' : color;
                 color = post.wc >= 1800 ? 'lime' : color;
+
+                wcTotal += post.wc;
 
                 tableHTML += '<tr style="background: black;">' +
                 '<td>' + (i + 1) + '</td>' +
@@ -66,6 +69,7 @@ app.get('/', [
 
             });
             tableHTML += '</table>';
+            html += '<p>Word Count Site Total ' + wcTotal + '</p>';
             res.send(html + tableHTML + '</body>');
         }
 
