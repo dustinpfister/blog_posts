@@ -11,6 +11,17 @@ let dir_cli = path.resolve('../../cli'),
 dir_posts = path.resolve('../../../_posts'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
+// tabulate
+let tab = () => {
+    let counts = {};
+    return (color) => {
+        if (color) {
+            counts[color] = counts[color] === undefined ? 1 : counts[color] += 1;
+        }
+        return counts;
+    }
+};
+
 app.get('/', [
 
         // get data for all files
@@ -53,14 +64,18 @@ app.get('/', [
             let tableHTML = '<table style="width:100%;text-align:center;border-spacing:5px;color:white;">';
             tableHTML += '<tr><th>#</th><th>Word Count</th><th>file name</th></tr>';
             let wcTotal = 0;
+
+            colorTab = tab();
+
             req.data.forEach((post, i) => {
                 let color = 'red';
-
                 color = post.wc >= 500 ? 'orange' : color;
                 color = post.wc >= 1000 ? 'green' : color;
                 color = post.wc >= 1800 ? 'lime' : color;
 
                 wcTotal += post.wc;
+
+                colorTab(color);
 
                 tableHTML += '<tr style="background: black;">' +
                 '<td>' + (i + 1) + '</td>' +
@@ -70,6 +85,7 @@ app.get('/', [
             });
             tableHTML += '</table>';
             html += '<p>Word Count Site Total ' + wcTotal + '</p>';
+            html += '<p>' + JSON.stringify(colorTab()) + '</p>';
             res.send(html + tableHTML + '</body>');
         }
 
