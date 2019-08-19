@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-08-13 14:34:21
-version: 1.46
+updated: 2019-08-19 09:37:06
+version: 1.47
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context.
@@ -267,7 +267,7 @@ drawPoints(ctx, createPolygonPoints(15,15,radius,pointCount), true);
 
 This method can only be used to draw a circle, rather than say a half circle as I have choses to omit arguments for a start and end radian, and direction. It is true that writing a clone of the canvas arc method would not to be to hard, but doing so would not make sense, unless there are some additional features to add, such as being able to set the number of sides in the canvas arc.
 
-## 7 - Time to have some fun with canvas arc by making animations
+## 7 - Time to have some fun with canvas arc by making deterministic animations
 
 So I think it games without saying that canvas is one of the more fun an interesting aspects of programing with javaScript. Canvas can be used to make html 5 games, and interesting animations that can be a whole world of fun. In this section I will be going over some simple canvas animation examples that make use of the canvas arc method.
 
@@ -413,6 +413,86 @@ loop();
 ```
 
 When it comes to making cool little canvas projects like this I often do find myself moving things in arc like patterns. There is using the native canvas arc method to draw arcs, but if I want to just pan things out in an arc, and move them in an arc like fashion then I do of course need to write my own method for doing so often using the Math.cos, and Math.sin methods to do so.
+
+### 7.3 - Using canvas arc as a way to track the location of points in an animation
+
+So for this animation example that I started working out I am just using canvas arc as a way to track the movement of my points as I work out the expressions, logic, and structure of the animation. Compared to the previous animation examples I am now separating things into a state object, and having everything that has to do with rendering inclusing the use of the canvas arc method outside the body of that state object.
+
+```html
+<html>
+    <head>
+        <title>canvas arc animation</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+(function () {
+    // STATE
+    var state = {
+        frame: 0,
+        frameMax: 50,
+        per: 0,
+        bias: 0,
+        points: [],
+        pointsMax: 9,
+        cx: 160,
+        cy: 120,
+        updateValues: function () {
+            this.per = this.frame / this.frameMax;
+            this.bias = 1 - Math.abs(0.5 - this.per) / 0.5;
+        },
+        stepFrame: function () {
+            this.frame += 1;
+            this.frame %= this.frameMax;
+        },
+        update: function () {
+            var i = 0,
+            sx = this.pointsMax * 32 / 2 - 16,
+            by = 32 * this.bias,
+            h = 64 * this.bias,
+            len = this.pointsMax;
+            this.points = [];
+            this.updateValues();
+            while (i < len) {
+                this.points[i] = {
+                    x: this.cx - sx + 32 * i,
+                    y: this.cy - by + h * (i % 2)
+                }
+                i += 1;
+            }
+            this.stepFrame();
+        }
+    };
+    // RENDER
+    var canvas = document.getElementById('the-canvas'),
+    ctx = canvas.getContext('2d');
+    // draw
+    var draw = function (state, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // draw circles around each point with canvas arc
+        ctx.strokeStyle = 'white';
+        state.points.forEach(function (pt) {
+            ctx.beginPath()
+            ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
+            ctx.stroke();
+        });
+    };
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        state.update();
+        draw(state, ctx, canvas);
+    };
+    loop();
+}
+    ());
+        </script>
+    </body>
+</html>
+```
+
+I often do just use the canvas arc method as a way to just track the movement of points by just keeping the radius of the circle very small. I find doing so quick and easy compared to drawing two lines, and also like it over using the stroke rect method.
 
 ## 8 - Conclusion
 
