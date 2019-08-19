@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-08-19 16:39:56
-version: 1.17
+updated: 2019-08-19 16:42:43
+version: 1.18
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as yet another way to break out of a loop in javaScript. The break keyword also comes into play when doing something with a switch statement. In this post I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
@@ -33,7 +33,7 @@ With a simple example like this it does not make much of any difference really, 
 
 ## 2 - switch statements and javaScript break
 
-I do not come across switch statements often, and I do my best to avoid using them but never the less when working with a switch statment the break keyword is also used for each case of a switch.
+I do not come across switch statements often, and I do my best to avoid using them but never the less when working with a switch statement the break keyword is also used for each case of a switch.
 
 ```js
 let foo = (bar) => {
@@ -188,3 +188,7 @@ while (i < len) {
 ```
 
 here I have an example that will break out of the loop in the event that anything other than a number is detected, and will continue if the number is not a power of two. This might not be the best example, but if there was some code that did some heavy lifting after a continue statement, and it was a fairly lengthly array of elements that need to be looped over it might make a difference.
+
+## 6 - Conclusion
+
+So the javaScript break keyword can be used to break out of a loop when doing so is called for. However in many cases the break statement is not required when writing many fine grain functions that make use of the [return keyword](/2019/03/01/js-javascript-return/).
