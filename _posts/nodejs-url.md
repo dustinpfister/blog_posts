@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 520
-updated: 2019-08-18 14:51:29
-version: 1.4
+updated: 2019-08-19 19:25:20
+version: 1.5
 ---
 
-In node js there is the path module that is there for working with file system paths, but there is also the [node url](https://nodejs.org/api/url.html) module as well for working for web adders urls.
+In node js there is the path module that is there for working with file system paths, but there is also the [node url](https://nodejs.org/api/url.html) module as well for working for web address urls. A url can consist of many parts inclusing the protocol such as https, the hostname, query string values and more. The url module has methods that can be used to quickly convert a url string to an object of these many properties. Also there are methods that can be used to format such an object into a url also, so lets look at some quick examples of the node url module.
 
 <!-- more -->
 
