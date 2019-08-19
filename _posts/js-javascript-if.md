@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-08-19 11:33:37
-version: 1.14
+updated: 2019-08-19 11:50:57
+version: 1.15
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements.
@@ -114,6 +114,58 @@ console.log( func(-20) ); // 'high'
 console.log( func(-32) ); // 'low'
 ```
 
-## 5 - Conclusion
+## 5 - State machines as a way to control logic
+
+Another way to control the flow of logic is to use state machines. This is typically a collection of two or more methods that will fire only when a variable or object property is a given value that will cause the method to fire. So I could have an object and a bunch of methods for a bunch of key names. I can then have a property that will be the key name of the current method to fire when a method is called. I then have some kind of way to change the value of this property that will control what method to fire.
+
+```js
+var state = {
+    current: 'init',
+    i: 0,
+    // init state
+    init: function () {
+        console.log('this is the init state.');
+        state.i = 0;
+        // changing the current value will cause
+        // the tick method to call another state function
+        state.current = 'count';
+    },
+    // count state
+    count: function () {
+        state.i += 1;
+        console.log('this is count state. i=' + state.i);
+        if (state.i >= 3) {
+            state.current = 'end';
+        }
+    },
+    // end state
+    end: function () {
+        console.log('this is the end state');
+        console.log('i=' + state.i);
+    },
+    // calls the current state
+    tick: function () {
+        state[state.current]();
+    }
+};
+ 
+state.tick();
+state.tick();
+state.tick();
+state.tick();
+state.tick();
+/*
+this is the init state.
+this is count state. i=1
+this is count state. i=2
+this is count state. i=3
+this is the end state
+i=3
+*/
+```
+
+State machines come into play when working on some kind of project that is a little advanced in which there are many application states. Such as a state in which assets need to be loaded, and a state that will run when all those assets are done loading.
+
+## 6 - Conclusion
 
 So the javaScript if statement s one of the many core aspects of javaScript programing and programing in general actually. There are many other ways of controlling the flow of code though such the use of switch statements and state machines. In any case getting comfortable with if statements is a must when it comes to getting up to speed with javaScript.
