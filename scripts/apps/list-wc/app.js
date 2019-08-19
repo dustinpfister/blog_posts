@@ -22,6 +22,26 @@ let tab = () => {
     }
 };
 
+// create a colors div bar
+let colorBar = (tab) => {
+    let colorTabs = tab(),
+    total = 0,
+    html = '<div style="width:100px;height:20px;">';
+    Object.keys(colorTabs).forEach((color) => {
+        total += colorTabs[color];
+    });
+    ['lime', 'green', 'orange', 'red'].forEach((color) => {
+        let t = colorTabs[color] / total;
+        t = String(t) === 'NaN' ? 0 : t;
+        let w = Math.floor(t * 100);
+        if (w) {
+            html += '<div style="display:inline-block;width:' + w + 'px;height:20px;background:' + color + ';"></div>';
+        }
+    });
+    html += '</div>';
+    return html
+};
+
 app.get('/', [
 
         // get data for all files
@@ -86,6 +106,7 @@ app.get('/', [
             tableHTML += '</table>';
             html += '<p>Word Count Site Total ' + wcTotal + '</p>';
             html += '<p>' + JSON.stringify(colorTab()) + '</p>';
+            html += colorBar(colorTab);
             res.send(html + tableHTML + '</body>');
         }
 

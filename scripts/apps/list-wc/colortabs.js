@@ -13,7 +13,7 @@ let tab = () => {
 let colorBar = (tab) => {
     let colorTabs = tab(),
     total = 0,
-    html = '<div style="width:100px;height:20px;">';
+    html = '<div style="display:inline-block;width:100px;height:20px;">';
     Object.keys(colorTabs).forEach((color) => {
         total += colorTabs[color];
     });
@@ -22,13 +22,11 @@ let colorBar = (tab) => {
         t = String(t) === 'NaN' ? 0 : t;
         let w = Math.floor(t * 100);
         if (w) {
-            html += '<div style="width:' + w + 'px;height:20px;background:' + color + ';"></div>';
+            html += '<div style="display:inline-block;width:' + w + 'px;height:20px;background:' + color + ';"></div>';
         }
     });
     html += '</div>';
-    console.log(total);
-    console.log(html);
-
+    return html
 };
 
 colorTabs = tab();
@@ -43,4 +41,4 @@ colorTabs('lime');
 
 console.log(colorTabs());
 
-colorBar(colorTabs)
+console.log( colorBar(colorTabs) );
