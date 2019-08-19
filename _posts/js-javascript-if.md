@@ -5,17 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-02-25 21:48:44
-version: 1.10
+updated: 2019-08-19 11:22:20
+version: 1.11
 ---
 
-In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements as well.
+In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements.
 
 <!-- more -->
 
 ## 1 - javaScript if
 
-A basic if statement in javaScript might look something like this.
+A basic if statement in javaScript would involve using the if keyword followed by a set of parenthesis in which an expression or value will evaluated to or contain a value that will be used as condition. If the condition is true then the code in the if statement will execute else it will not.
 
 ```js
 var str = 'foo';
