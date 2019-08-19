@@ -1,19 +1,19 @@
 ---
-title: Get parent elements with javaScript
+title: Get parent elements with native javaScript
 date: 2019-02-21 18:37:00
 tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-08-19 10:55:49
-version: 1.6
+updated: 2019-08-19 11:00:35
+version: 1.7
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post. I might also touch base on some other related topics as well when it comes to a chain of elements from document up to a given element as well, that is getting all parent elements of a given node.
 
 <!-- more -->
 
-## 1 - Get parent element
+## 1 - Get parent element AKA DOM NODE if there is one
 
 Once a reference to an element is gained by use of a method like getElementById or querySelector, there is the parentElement property of the elements parentElement if it has one.
 
@@ -35,11 +35,11 @@ console.log(container.className); // wrap
 </html>
 ```
 
-In the event that the element does not have a parent element, or the parent element is not a DOM element the property will have a value of null.
+In the event that the element does not have a parent element, or the parent element is not a DOM element the property will have a value of null. This might be desired in some cases as the value of null will evaluate to false and can then be used as a way to break out of looping for example. In the event that the node is not a DOM node it will return null, this would make sense because the name of the property is indeed parent element, so if the parent is not a DOM Element, but some other kind of node then it should return false. If for some reason I want to use another property that will work with nodes in general then there is the parent node property.
 
-## 2 - Parent Node 
+## 2 - Parent Node for getting any kind of node.
 
-Another option is the parent node property, this works in more or less the same way as parentElement but with one note worth difference. If there is a non DOM element node  of sorts it will give that in place of what would otherwise be a null value.
+Another option is the parent node property, this works in more or less the same way as parentElement but with one note worthy difference. If there is a non DOM element node of sorts it will give that in place of what would otherwise be a null value.
 
 ```js
 <html>
