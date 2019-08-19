@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-08-19 10:52:44
-version: 1.5
+updated: 2019-08-19 10:55:49
+version: 1.6
 ---
 
-So this will be a quick post on getting parent elements for today. There are two properties of concern with this when it come to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference.
+So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post. I might also touch base on some other related topics as well when it comes to a chain of elements from document up to a given element as well, that is getting all parent elements of a given node.
 
 <!-- more -->
 
