@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2019-02-20 11:42:06
-version: 1.11
+updated: 2019-08-19 16:27:35
+version: 1.12
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names.
@@ -21,6 +21,10 @@ This is a post on just the \_.pick method in lodash. Here I will be writing just
 ### 1.1 - The delete operator in vanilla js
 
 So when it comes to just working with vanilla js by itself there is the [delete operator](/2019/02/20/js-javascript-delete/). This can be used as a way to remove unwanted properties from an object, but it will of course mutate an existing object rather than create a new one. When using delete as a way to create a new object with a selection of properties from original object, and not mutate the original the original will have to be cloned first.
+
+### 1.2 - The lodash omit method
+
+There is also the [lodash omit](/2019/08/19/lodash_omit/) method that works more or less the same way as the loadh pick method only it creates a new object from and old object by omitting properties that are not wanted. In this case the new object contains all properties that are not in the array of properties names rather than just the properties names in the give array.
 
 ## 2 - An example of using \_.pick involving an object about traffic received in a day.
 
