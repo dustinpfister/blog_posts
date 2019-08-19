@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 525
-updated: 2019-08-19 16:22:05
-version: 1.4
+updated: 2019-08-19 16:22:53
+version: 1.5
 ---
 
 The [lodash omit](https://lodash.com/docs/4.17.15#omit) method can be used to create a new object by omitting properties from an existing object that is give as the first argument. This method is like the lodash pick method only it creates a new object by omitting properties that are not wanted rather than picking properties that are wanted.
@@ -30,7 +30,7 @@ console.log(_.omit(obj, ['index', 'z']));
 
 ### 1.1 - The lodash pick method can also be used to create a new object but by picking not omiting
 
-So there is also the lodash pick method that works more or less the same way but by giving an array or properties that are to be picked for the new object from the given object rather than omitting properties.
+So there is also the [lodash pick](/2018/07/11/lodash_pick/) method that works more or less the same way but by giving an array or properties that are to be picked for the new object from the given object rather than omitting properties.
 
 ```js
 let obj = {
