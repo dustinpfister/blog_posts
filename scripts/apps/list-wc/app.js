@@ -26,14 +26,14 @@ let tab = () => {
 let colorBar = (tab) => {
     let colorTabs = tab(),
     total = 0,
-    html = '<div style="width:100px;height:20px;">';
+    html = '<div style="width:640px;height:20px;">';
     Object.keys(colorTabs).forEach((color) => {
         total += colorTabs[color];
     });
     ['lime', 'green', 'orange', 'red'].forEach((color) => {
         let t = colorTabs[color] / total;
         t = String(t) === 'NaN' ? 0 : t;
-        let w = Math.floor(t * 100);
+        let w = Math.floor(t * 640);
         if (w) {
             html += '<div style="display:inline-block;width:' + w + 'px;height:20px;background:' + color + ';"></div>';
         }
