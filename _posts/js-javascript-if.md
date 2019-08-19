@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2019-08-19 11:22:20
-version: 1.11
+updated: 2019-08-19 11:25:07
+version: 1.12
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general when making a javaScript project. In javaScript there is also a conditional operator as well that can be used as a short hand for if else statements.
 
 <!-- more -->
 
-## 1 - javaScript if
+## 1 - javaScript if basic example
 
 A basic if statement in javaScript would involve using the if keyword followed by a set of parenthesis in which an expression or value will evaluated to or contain a value that will be used as condition. If the condition is true then the code in the if statement will execute else it will not.
 
@@ -28,7 +28,7 @@ if (str === 'foo') {
 
 ```
 
-it must start out with the if keyword followed by parenthesis, and within the parentheses must be and expression of anything that will evaluate to a true of false value of one kind of another. It does not have to be a boolean value, as just about any kind of value in javaScript has a true or false equivalent depending on the type and value of what is being evaluated.
+So the value or expression that evaluates to a value does not have to be a boolean value, as just about any kind of value in javaScript has a true or false equivalent depending on the type and value of what is being evaluated. For example an empty string will evaluate to false, and a string with one or more characters will evaluate to true. So all kinds of expressions and values can eb use as a way to control when a set of logic will execute or not in a javaScript if statement.
 
 ## 2 - Some more basic examples
 
