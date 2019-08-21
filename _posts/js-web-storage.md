@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2019-08-21 13:02:33
-version: 1.3
+updated: 2019-08-21 13:33:15
+version: 1.4
 ---
 
 There are a number of ways to store data client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other options for client side persistence of data. The Web Storage API is easy to use as everything can just simply be stored as key value pairs of the localSorage global on clients that support the Web Storage API. However depending on the nature of the project it might not always be the best choice. Cookie files will always give better backward compatibility when it comes to older browsers, and the indexed db option is a better choice when it comes to storage large amounts of data. Still the Web Storage API is a good option for quickly getting the job done, and most modern browsers support the standard well.
@@ -14,6 +14,8 @@ There are a number of ways to store data client side, but in this post I will be
 <!-- more -->
 
 ## 1 - web storage basic example
+
+Working with the Web Storage API is as easy as working with an plain old javaScript object. The localStoarge global can then be used just like that of any javaScript Object, whatever you want to save on the client just define it as a property of the localStorage global. However there are also setItem and getItem methods also that can be used to do get and set properties of the localStoarge global as well. Once a property is set then that value will be there again every page load, serving the purpose of client side persistence of data.
 
 ```html
 <html>
