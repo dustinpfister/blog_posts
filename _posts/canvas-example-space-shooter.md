@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-21 19:49:34
-version: 1.2
+updated: 2019-08-21 20:24:59
+version: 1.3
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -15,7 +15,11 @@ So this post might be the first of several [canvas examples](https://developer.m
 
 ## 1 - The Canvas Example
 
+This canvas example consists of several javaScript files and a single html file. The project seems to work just fine via the file protocol, and does not depend on any external assets in terms of images, or scene data.
+
 ### 1.1 - The html file of the canvas example
+
+First off I have an html file that I use to create a single html canvas element and to link to several extremal javaScript files with script tags.
 
 ```html
 <html>
