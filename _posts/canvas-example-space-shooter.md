@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-21 20:28:22
-version: 1.4
+updated: 2019-08-21 20:36:30
+version: 1.5
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -74,6 +74,8 @@ disp.distance = function (obj1, obj2) {
 ```
 
 ### 1.2 - The Base Display Object Class
+
+Here I have the base display object class. This serves as the base Class of all display objects used in the canvas example. For now there is just one Class the inherits from this class which is the Ship Class. However if I where to continue developing this project further there would be many more classes that inherit from this one.
 
 ```js
 var disp = disp || {};
