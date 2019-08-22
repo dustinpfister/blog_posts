@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2019-08-15 11:32:04
-version: 1.6
+updated: 2019-08-21 21:07:12
+version: 1.7
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2dcontext method can be used to save the state of a 2d canvas drawing context that can later be restored with the canvas restore method. So this method can be used to save a current state of a drawing content, then changes can be made to the fill style, translations and rotations can be preformed, something can be drawn with these new settings, and then put back the way it was with the restore method. So in this post I will be going over some quick examples of the canvas save method to point out some reasons why the method is so useful.
@@ -105,3 +105,7 @@ loop();
     </body>
 </html>
 ```
+
+## 3 - Conclusion
+
+So then the canvas save method just save the state of the 2d drawing context. Once the context is saved changes can be base to the various properties of the 2d canvas drawing context. When the older state of the context is to be restored the restore method can then be used to do just that.
