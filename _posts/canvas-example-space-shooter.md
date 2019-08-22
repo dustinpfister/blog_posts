@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-21 20:24:59
-version: 1.3
+updated: 2019-08-21 20:28:22
+version: 1.4
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -38,9 +38,10 @@ First off I have an html file that I use to create a single html canvas element 
 
 ### 1.2 - The helpers file
 
+So I ended up making several javaScript files that have to do with display objects. A display object is just an object that has values like x and y and is used to display something in a game area. This file contains a bunch of static methods that I use with display objects for applying bounds, moving them by a standard uniform way, and finding the distance between two of them.
+
 ```js
 var disp = disp || {};
- 
 // apply canvas bounds to given display object with the given canvas
 disp.applyBounds = function (obj, canvas) {
     var w = obj.w || 16,
@@ -58,7 +59,6 @@ disp.applyBounds = function (obj, canvas) {
         obj.y = obj.y % (canvas.height + h);
     }
 };
- 
 // move a display Obj with the current heading and pps relative to the
 // given amount of time in ms
 disp.moveObj = function (obj, t) {
@@ -67,7 +67,6 @@ disp.moveObj = function (obj, t) {
     obj.x += Math.cos(obj.heading) * delta;
     obj.y += Math.sin(obj.heading) * delta;
 };
- 
 // distance
 disp.distance = function (obj1, obj2) {
     return Math.sqrt(Math.pow(obj1.x - obj2.x, 2) + Math.pow(obj1.y - obj2.y, 2));
