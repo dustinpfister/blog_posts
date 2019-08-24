@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-23 20:51:23
-version: 1.15
+updated: 2019-08-23 20:57:07
+version: 1.16
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -397,6 +397,8 @@ In the events.js file I worked out a few event handlers for moving the player sh
 ```
 
 ## 5 - Renderer
+
+So then there is also the renderer.js file. Here I have the code that will draw to the canvas. There is are draw methods the correspond to some of the states in the state machine.
 
 ```js
 // RENDER
