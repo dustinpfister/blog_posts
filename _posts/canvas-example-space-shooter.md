@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-23 20:43:26
-version: 1.13
+updated: 2019-08-23 20:49:43
+version: 1.14
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -235,6 +235,8 @@ Ship.prototype.draw = function (ctx, shipStyle, shotStyle) {
 ```
 
 ## 3 - The State Machine
+
+Here I have the state machine file stats.js. A state machine is a way to break an application such as this space shooter game into separate states for the main game for example. In this canvas example there is a main game state, as well as an initialization state, and a game over state. I did not put an awful lot of time into this canvas example, but if I where to continue working on this there would be a title state, as well as several other states and more.
 
 ```js
 var States = (function () {
