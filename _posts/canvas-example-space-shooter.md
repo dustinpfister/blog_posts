@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-23 20:49:43
-version: 1.14
+updated: 2019-08-23 20:51:23
+version: 1.15
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -356,6 +356,7 @@ var States = (function () {
 
 ## 4 - Events
 
+In the events.js file I worked out a few event handlers for moving the player ship and continuing when the game is over. Nothing major for this canvas example just a crude yet functional solution for this.
 ```js
 // EVENTS
 (function () {
