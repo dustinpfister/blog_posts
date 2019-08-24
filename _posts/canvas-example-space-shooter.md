@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-23 20:57:07
-version: 1.16
+updated: 2019-08-23 20:58:41
+version: 1.17
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -441,6 +441,8 @@ var draw = (function () {
     ());
 ```
 ## 6 - Main app loop
+
+Then there is the main app loop. Here I am using requestAnimatuonFrame to create the loop, and call the States tick method and the draw method each frame.
 
 ```js
 // Main APP loop
