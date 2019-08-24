@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-08-23 20:26:07
-version: 1.11
+updated: 2019-08-23 20:32:58
+version: 1.12
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I have some fun with this one, and I might get around to putting more time into this one at some point.
@@ -107,7 +107,11 @@ Disp.prototype.distance = function (disp2) {
 };
 ```
 
+The methods here have to do with just moving a display object in a uniform way.
+
 ### 2.2 - The Shot Class
+
+The Shot class is one of two classes that I have that extend the functionality of the Disp Class. A Shot Class is used with A Ship Class.
 
 ```js
 // SHOT CLASS
@@ -124,6 +128,8 @@ Shot.prototype = new Disp();
 ```
 
 ### 2.3 - The Ship Class
+
+Here I have the Ship Class that is used for both the Player Ship as well as enemies.
 
 ```js
 // SHIP CLASS
