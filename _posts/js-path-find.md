@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2019-08-27 17:00:59
-version: 1.3
+updated: 2019-08-27 17:06:15
+version: 1.4
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one point to another. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of piratical application also. There are many game frameworks that might have this built in, there are also well know javaScript dependencies such as [pathfinding.js](https://github.com/qiao/PathFinding.js/) that [can be used](https://qiao.github.io/PathFinding.js/visual/) to make quick work of this. Still there might be a need to work out a custom solution for path finding also. So in this post I will be writing about path finding in javaScript.
@@ -14,6 +14,8 @@ In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a sub
 <!-- more -->
 
 ## 1 - Vanilla js path find solution example for nodejs
+
+In this section I will be writing about my own js path fining solution that I put together after studying the source code of the PathFinding.js repo. I have not battle tested this, but the basic idea seems to work okay. The solution makes use of a grid that is created by another dependency that I am also going to go over in this section. Creating a Grid module is a whole other can of worms, but is also closely rated to path finding so the two need to work out okay with each other.
 
 ### 1.1 - Grid module
 
