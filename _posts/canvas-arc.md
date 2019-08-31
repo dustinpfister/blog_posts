@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-08-19 09:37:06
-version: 1.47
+updated: 2019-08-31 14:31:02
+version: 1.48
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. This is of course one of the basic shapes that can be used to get some basic things worked out with a javaScript project that will involve the use of canvas as a way to draw graphics to the browser window. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context.
@@ -416,7 +416,7 @@ When it comes to making cool little canvas projects like this I often do find my
 
 ### 7.3 - Using canvas arc as a way to track the location of points in an animation
 
-So for this animation example that I started working out I am just using canvas arc as a way to track the movement of my points as I work out the expressions, logic, and structure of the animation. Compared to the previous animation examples I am now separating things into a state object, and having everything that has to do with rendering inclusing the use of the canvas arc method outside the body of that state object.
+So for this animation example that I started working out I am just using canvas arc as a way to track the movement of my points as I work out the expressions, logic, and structure of the animation. Compared to the previous animation examples I am now separating things into a state object, and having everything that has to do with rendering including the use of the canvas arc method outside the body of that state object.
 
 ```html
 <html>
