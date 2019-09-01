@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-09-01 17:41:21
-version: 1.29
+updated: 2019-09-01 17:43:43
+version: 1.30
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event the fires when an element looses focus, in other words it is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired. An on blur event will only fire for elements that can gain a focus, such as input elements. However it is possible to set other elements that can not be focus by default with the tab index property. In this post I will be going over some examples that make use of the on blur event with plain old vanilla client side javaScript, rather than a certain front end frame work.
@@ -21,7 +21,7 @@ I will not be going over [event listeners](/2019/01/16/js-event-listeners/) in g
 
 ## 2 - On blur basic example
 
-The use of a blur event might be used in conjunction with a focus event, as well as a whole range of other events to create a user interface or form. The focused element in the interface is the current element that the user is focused on, and as such the value of the element can be manipulated with input from the keyboard.
+The use of a blur event might be used in conjunction with a focus event, as well as a whole range of other events to create a user interface for a form, single input element, or anything else for the matter to which focus events apply. The focused element in the interface is the current element that the user is focused on, and as such the value of the element can be manipulated with input from the keyboard.
 
 In this example I am attaching some handlers for both the on focus, and on blur events for a single input element. I will be keeping this example simple so it will just involve changing the value of an text input tag.
 
