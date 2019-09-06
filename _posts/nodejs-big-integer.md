@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 25
-updated: 2019-09-06 15:48:57
-version: 1.5
+updated: 2019-09-06 15:49:58
+version: 1.6
 ---
 
 Want to do some math in a node.js environment involving really big numbers? Then you might want to look into the npm package called [big-integer](https://www.npmjs.com/package/big-integer). That is unless you are using a version of node that is 10.4.x or later in which case you might have BigInt support in the node.js environment that you are using. In this post I will be going over some nodejs example that have to do with the big-integer npm package, but if you are using a late version of node I have another post that I have [wrote on the BigInt](/2019/09/06/js-bigint/) native support that there is for big integers in javaScript now.
@@ -28,7 +28,7 @@ console.log(jsHigh === jsHigh + jsLow); // true
 
 You might think that this should not result in true, and you would be right. However after a certain point, this is what happens when you add a small number to a very large one. If you are interested in knowing why you can dive into the deep end when it comes to understating double precision [iee-754](https://en.wikipedia.org/wiki/IEEE_floating_point) standard that is used to represent numbers in javaScript. If you just want to cut to the chase, yes there are limits with how numbers are represented in javaScript.
 
-## The big-integer demo
+## 2 - The big-integer demo
 
 With the problem presented in mind, there may come a time where you might want to use some kind of dependency that stores numbers as a string value, and will have it's own methods for adding, subtracting, and so forth.
 
@@ -58,9 +58,9 @@ console.log(bigHigh.add(bigLow).toString());
 
 Now the problem is resolved, I can add a very small number to a very large one, and it still counts for what it is worth.
 
-## Conclusion
+## 3 - Conclusion
 
-Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
+Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/) and native nodejs modules as well if you enjoyed this post.
 
 <!--
 
