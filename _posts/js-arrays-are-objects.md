@@ -1,12 +1,12 @@
 ---
-title: JavaScript Arrays are Objects.
+title: Array like objects and Arrays are Objects in JavaScript examples and explanations.
 date: 2017-05-12 07:59:00
 tags: [js]
 layout: post
 categories: js
 id: 18
-updated: 2017-09-30 18:23:23
-version: 1.3
+updated: 2019-09-06 15:14:19
+version: 1.4
 ---
 
 In core javaScript Arrays are technically not Arrays, but Objects. The thing about Arrays that are made with the core js Array constructor, is that they are a special kind of object in which the objects constructor name is Array. If any object contains a length property that has a value that is a number from 0 to the max safe integer, then it is "Array like" and can be used with methods that act on arrays.
