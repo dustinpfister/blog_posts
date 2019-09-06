@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 25
-updated: 2019-09-06 15:45:56
-version: 1.4
+updated: 2019-09-06 15:48:57
+version: 1.5
 ---
 
 Want to do some math in a node.js environment involving really big numbers? Then you might want to look into the npm package called [big-integer](https://www.npmjs.com/package/big-integer). That is unless you are using a version of node that is 10.4.x or later in which case you might have BigInt support in the node.js environment that you are using. In this post I will be going over some nodejs example that have to do with the big-integer npm package, but if you are using a late version of node I have another post that I have [wrote on the BigInt](/2019/09/06/js-bigint/) native support that there is for big integers in javaScript now.
@@ -15,9 +15,9 @@ Want to do some math in a node.js environment involving really big numbers? Then
 
 ## 1 - The limits of JavaScript numbers
 
-In most cases normal old JavaScript numbers work fine, but if you are working on some kind of project that requires a high degree of precession beyond that of the limit of the max safe integer limit of regular javaScriot numbers then this package is one way to get around that limit. when working with numbers of a high magnitude regular javaScript numbers do have there limits.
+In most cases normal old JavaScript numbers work fine, but if you are working on some kind of project that requires a high degree of precession beyond that of the limit of the [max safe integer limit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) of regular javaScript numbers then this npm package is one way to get around that limit. When working with numbers of a high magnitude regular javaScript numbers do have there limits so lets start out with knowing what those limits are.
 
-Take the following into consideration.
+For example take the following into consideration.
 
 ```js
 var jsHigh = Math.pow(2,256),
