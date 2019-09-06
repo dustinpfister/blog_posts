@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2019-08-01 20:53:40
-version: 1.26
+updated: 2019-09-06 19:03:16
+version: 1.27
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element can be used as a way to create and append html with just a string representation of the desired markup. The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple examples, but might present problems when working on a more complex project. That being said using innerHTML is not the only option when it comes to creating and adding elements in javaScript, so I have another post in which I get into [this subject in general](/2019/02/26/js-add-element/) if interested.
@@ -127,6 +127,30 @@ eval(out.innerHTML);
 ```
 
 I cant say eval is something that I use often, and a lot of developers frown on its use. Chance are if you are using eval there is a better way to do whatever it is that you are trying to accomplish.
+
+## 3 - Using innerText, textContent, and innerHTML
+
+So on top of the innerHTML property there is also innerText and textContent properties of elements. The innerText property has to do with the rendered text content of a DOM element rather than the html markup.
+
+```html
+<html>
+    <head>
+        <title>innerText example</title>
+    </head>
+    <body>
+        <div id="content">
+            <h1>So this is a header</h1>
+            <p>This is some text in a paragraph element</p>
+        </div>
+        <script>
+var el = document.getElementById('content');
+console.log(el.innerText.length); // 61
+console.log(el.textContent.length); // 94
+console.log(el.innerHTML.length); // 110
+        </script>
+    </body>
+</html>
+```
 
 ## 3 - Security concerns with innerHTML
 
