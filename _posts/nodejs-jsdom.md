@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 131
-updated: 2019-09-06 19:11:55
-version: 1.7
+updated: 2019-09-06 19:17:29
+version: 1.8
 ---
 
 There comes a time now and then that I need to work with html in a server side, node.js environment. I have written about a very helpful project called [cheerio](https://www.npmjs.com/package/cheerio) that works well if I just want to grab at something like a link, or maybe make some kind of edit to html. However cheerio is not an actual emulation of a browser environment. There are other projects that aim to actually emulate an actual usable browser environment for the purpose of getting client side apparitions to work in a node.js project server side. The npm package [jsdom](https://www.npmjs.com/package/jsdom) is one such project, and as such this post will be about how to use jsdom to bring a browser environment to node.
@@ -80,7 +80,7 @@ In addition to scripts not just working by default without giving the proper run
 
 ## 5 - Running an external html file, and it's sub resources.
 
-If I want to run a client side app that exists as something in a \*.html file I can attept to load it using jsdoms fromFile method. When doing so I might often have external resources that are referenced from the \*.html file such as external scripts, and other assets. To make use that jsdom is making use of everything that is referenced from the *\.html file I will want to pass some options to the method, on top of the path to the file.
+If I want to run a client side app that exists as something in a \*.html file I can attempt to load it using jsdoms fromFile method. When doing so I might often have external resources that are referenced from the \*.html file such as external scripts, and other assets. To make use that jsdom is making use of everything that is referenced from the *\.html file I will want to pass some options to the method, on top of the path to the file.
 
 So I set up a public html folder, and placed the following index.html file at the root name space.
 ```html
@@ -172,4 +172,4 @@ If I want to do something with canvas in jsdom is looks like I have to install s
 
 ## 8 - Conclusion
 
-js-dom is the most powerful project that I have come across so far that can be used to do this sort of thing in a node.js environment. If I use this project in more of my projects I will likely update this content, and write a few more posts on the subject.
+js-dom is the most powerful project that I have come across so far that can be used to do this sort of thing in a node.js environment. I am sure that there is even a more capable way of doing client side javaScript related things in a nodejs environment on top of this though. For the most part so far I find myself using cheerio in most projects as that alone will work okay, but js-dom gives a greater deal of functionality then cheerio.  If I use this project in more of my projects I will likely update this content, and write a few more posts on the subject.
