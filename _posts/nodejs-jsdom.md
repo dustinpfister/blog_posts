@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 131
-updated: 2018-07-11 12:47:22
-version: 1.6
+updated: 2019-09-06 19:11:55
+version: 1.7
 ---
 
-There comes a time now and then that I need to work with html in a server side, node.js environment. I have wrriten about a very helpful project called [cheerio](https://www.npmjs.com/package/cheerio) that works well if I just want to grab at something liek a link, or maybe make some kind of edit to html. However cheerio is not an actual emulation of a browser environment. There are other projects that aim to actually emulate an actual usable browser environment for the purpose of getting client side apparitions to work in a node.js project server side. The npm package [jsdom](https://www.npmjs.com/package/jsdom) is one such project, and as such this post will be about how to use jsdom to bring a browser environment to node.
+There comes a time now and then that I need to work with html in a server side, node.js environment. I have written about a very helpful project called [cheerio](https://www.npmjs.com/package/cheerio) that works well if I just want to grab at something like a link, or maybe make some kind of edit to html. However cheerio is not an actual emulation of a browser environment. There are other projects that aim to actually emulate an actual usable browser environment for the purpose of getting client side apparitions to work in a node.js project server side. The npm package [jsdom](https://www.npmjs.com/package/jsdom) is one such project, and as such this post will be about how to use jsdom to bring a browser environment to node.
 
 <!-- more -->
 
@@ -136,7 +136,7 @@ jsdom.fromFile(uri, options).then(function (dom) {
 });
 ```
 
-This worked as expected just fine, but of course it is not at all a real application. The resources that can be loaded also include iframes, stylesheets, and images on top of external scripts.
+This worked as expected just fine, but of course it is not at all a real application. The resources that can be loaded also include iframes, style sheets, and images on top of external scripts.
 
 ## 6 - Add something to window before html is parsed.
 
