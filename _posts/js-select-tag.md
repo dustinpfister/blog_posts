@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2019-09-06 11:26:04
-version: 1.4
+updated: 2019-09-06 13:44:33
+version: 1.5
 ---
 
-When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from. In this post I will be writing about a few quick examples of select input tags and javaScript.
+When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from. A select tag or select element consists of a select tag and then a few nested option tags for each option in the selection tag. In this post I will be writing about a few quick examples of select input tags and javaScript.
 
 <!-- more -->
 
