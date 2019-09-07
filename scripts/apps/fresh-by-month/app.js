@@ -12,20 +12,7 @@ let dir_cli = path.resolve('../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
 app.use('/css', express.static('./public/css'));
-/*
-app.get('/', [
-        // get posts
-        require('./middleware/get_posts.js')({
-            dir_cli: dir_cli,
-            app: app
-        }),
-        // create an array, and sort by fresh percent
-        require('./middleware/sort_by_fresh.js'),
-        // send html
-        require('./middleware/send_html.js')
 
-    ]);
-*/
 app.get('/', (req, res) => {
     res.render('index', {
         title: 'fresh by month',

@@ -8,7 +8,10 @@ module.exports = (opt) => {
 
     klawAll = require(path.join(opt.dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
-    return [(req, res, next) => {
+    return [
+
+        // walk file system
+        (req, res, next) => {
 
             let report = res.report = {},
             now = new Date(),
