@@ -1,15 +1,15 @@
 ---
 title: The lodash is empty object method for finding out if an object is empty or not
 date: 2019-09-01 17:23:00
-tags: [js,lodash,node.js]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 529
-updated: 2019-09-03 19:03:16
-version: 1.1
+updated: 2019-09-07 09:38:36
+version: 1.2
 ---
 
-In lodash there is the \_.isEmpty method than can be used to find if an object is empty or not. There are also a number of ways to go about doing the same when it comes to working with just plain old native javaScript also. 
+In lodash there is the \_.isEmpty method than can be used to find if a collection object is empty or not. This is not to be confused with other possible values that might be considered empty such as null, a false boolean value or so forth. There are also a number of ways to go about doing the same when it comes to working with just plain old native javaScript in addition to using the lodash is empty method. 
 
 <!-- more -->
 
