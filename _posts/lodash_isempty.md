@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 529
-updated: 2019-09-07 09:43:43
-version: 1.3
+updated: 2019-09-07 19:10:07
+version: 1.4
 ---
 
 In lodash there is the \_.isEmpty method than can be used to find if a collection object is empty or not. This is not to be confused with other possible values that might be considered empty such as null, a false boolean value or so forth. There are also a number of ways to go about doing the same when it comes to working with just plain old native javaScript in addition to using the lodash is empty method. 
@@ -25,4 +25,31 @@ console.log( _.isEmpty({x:42}) ); // false
 // and Array Object Collections
 console.log( _.isEmpty([]) ); // true
 console.log( _.isEmpty([12,42,87]) ); // false
+```
+
+This is the intended use of the is empty method in lodash
+
+## 1 - Lodash is empty and types
+
+The lodash is empty method is for finding out if a collection does not have any items and that is it. It is not for finding out if a value fits other meanings of the word empty. For example when passing boolean values to the is empty method a boolean value will always return true even if the value is false.
+
+```js
+// Booleans
+console.log( _.isEmpty(true) ); // true
+console.log( _.isEmpty(false) ); // true
+ 
+// Numbers
+console.log( _.isEmpty(123) ); // true
+console.log( _.isEmpty(0) ); // true
+console.log( _.isEmpty(-123) ); // true
+console.log( _.isEmpty(NaN) ); // true
+console.log( _.isEmpty(Infinity) ); // true
+ 
+// Strings
+console.log( _.isEmpty('') ); // true
+console.log( _.isEmpty('foo') ); // false
+ 
+// Other
+console.log( _.isEmpty(null) ); // true
+console.log( _.isEmpty(undefined) ); // true
 ```
