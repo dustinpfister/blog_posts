@@ -14,7 +14,7 @@ module.exports = (opt) => {
         (req, res, next) => {
 
             let report = res.report = {},
-            now = new Date(),
+            now = new Date(new Date() - new Date().getTimezoneOffset() * 60 * 1000),
             days_back = opt.app.get('days_back'),
             sy = opt.app.get('year_start') || 2017,
             ey = opt.app.get('year_end') || 2017;
@@ -23,13 +23,14 @@ module.exports = (opt) => {
             klawAll({
                 forPost: (item, nextPost) => {
 
-                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.date);
-
                     // the publish date
                     let date = new Date(item.header.date),
                     update = new Date(item.header.updated),
                     y = date.getFullYear(),
-                    m = date.getMonth();
+                    m = date.getMonth(),
+                    t = now - update;
+
+                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
 
                     if (y >= sy && y <= ey) {
 
@@ -41,7 +42,7 @@ module.exports = (opt) => {
                         month.fresh = month.fresh === undefined ? 0 : month.fresh;
                         month.posts = month.posts === undefined ? [] : month.posts;
 
-                        let days = (now - update) / 1000 / 60 / 60 / 24,
+                        let days = t / 1000 / 60 / 60 / 24,
                         fresh = (days_back - days) / days_back;
                         if (fresh < 0) {
                             fresh = 0;
