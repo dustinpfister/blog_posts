@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-08 16:38:59
-version: 1.6
+updated: 2019-09-08 16:39:24
+version: 1.7
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -57,7 +57,7 @@ chart = new Chart(ctx, {
 </script>
 ```
 
-## updating a chart
+## 3 - updating a chart
 
 Updating a chart is as simple as just changing the dataset values and calling the chart.update method in the instance of Chart that is returned when calling the constructor.
 
@@ -129,6 +129,6 @@ setInterval(function(){
  
 </script>
 
-## Conclusion
+## 4 - Conclusion
 
 Chart.js is pretty cool for doing anything with charts. I just wanted to put together a quick post on this one, I will likely write more about it in the future.
