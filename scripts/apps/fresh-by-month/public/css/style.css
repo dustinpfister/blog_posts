@@ -2,10 +2,28 @@
 body{
 	color:white;
 	background:black;
-	
+	padding:0px;
+	margin:0px;
 }
 
+/* header */
+#wrap_header{
+	padding:5px;
+	margin:0px;
+	position:fixed;
+	height:190px;
+	width:100%;
+	top:0px;
+	background:#006a00;
+	opacity:0.9;
+	
+	font-size:13px;
+}
 
+/* content */
+#wrap_content{
+	margin-top:200px;
+}
 
 /* table basics */
 table{
@@ -14,8 +32,6 @@ table{
 table, th, td {
   border: 1px solid #8a8a8a;
 }
-
-
 
 /* month title */
 .month_title{
@@ -72,3 +88,6 @@ table, th, td {
 .wordcount_1800{
 	color:lime;
 }
+a:link{color:#00ff80;}
+a:visited{color:#00cf00;}
+a:hover{color:#ffffff;}
