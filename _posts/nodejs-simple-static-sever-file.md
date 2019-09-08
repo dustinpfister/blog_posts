@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2019-09-08 16:12:47
-version: 1.7
+updated: 2019-09-08 16:24:26
+version: 1.8
 ---
 
 When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over http:// rather than file://. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in http module in node itself. It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported framework such as express to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
@@ -25,7 +25,7 @@ $ node sever
 ```
 
 And the script will serve static files that I have in a public folder localed at the current working path where I have the script. I could also install the script globally, but for now I just want to make a script that is closely tiles to the project folder.
-## 1.1 - Using express static is you do not might using express
+## 1.1 - Using express static if you do not might using express
 
 If you do not might adding express to a project folders static this can be done very quickly with the [express static](/2018/05/24/express-static/) method. By doing so it will not be a native javaScript only solution for this, but express is a great project for getting going with a serious back end project. Still this post is about working out a native javaScript solution for this so on with that.
 
