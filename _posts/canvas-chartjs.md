@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2017-12-03 20:06:47
-version: 1.3
+updated: 2019-09-08 16:32:39
+version: 1.4
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -15,6 +15,8 @@ These days I am working out some projects that have to do with analyzing text, a
 <script src="/js/chart.min.js"></script>
 
 ## Basic example of charts.js use
+
+Here I am working out just my first basic example of chartjs.
 
 ```html
 <div style="width:320px;">
