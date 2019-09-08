@@ -1,20 +1,22 @@
 ---
-title: Making a simple static sever file with just node.js built in modules.
+title: A simple Node Static file server with just the node.js built in modules.
 date: 2017-12-04 17:48:00
 tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2019-09-08 15:43:14
-version: 1.3
+updated: 2019-09-08 15:52:32
+version: 1.4
 ---
 
-When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over http:// rather than file://. There are many npm packages to pull this off, but I often fined myself, just working out a simple solution using the built in http module in node itself. It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a framework to make quick work of this. However in this post I will be using just plain old native javaScript in nodejs to create a simple nodejs static file server.
+When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over http:// rather than file://. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in http module in node itself. It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported framework such as express to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
 
 
 <!-- more -->
 
-As such I have been making files now and then that serve as a simple solution that can be dropped into a project path and then called from the cli with node like this:
+## 1 - Node Static Basics
+
+So I have been making files now and then that serve as a simple solution that can be dropped into a project path and then called from the cli with node like this:
 
 ```
 $ node sever
@@ -22,7 +24,7 @@ $ node sever
 
 As such I thought I would write a quick post on one of the latest solutions I have written for doing this:
 
-## 1 - Sever.js file solution one
+## 2 - Sever.js file solution one
 
 ```js
 /*
@@ -105,6 +107,6 @@ server.listen(port, function () {
 
 So of course this solution just handles GET requests which works fine in most situations. In the event that a path is given such as '/' then '/index.html' is assumed. In addition in the event of any kind of error the request is just ended, and I do not serve any kind of 404 page.
 
-## 2 - Conclusion
+## 3 - Conclusion
 
 Writing these kinds of files now and then is fun. Of course it is not battle tested, but it seems to work fine for me in most cases when it just comes to playing with some kind of javaScript project that needs to be severed up over http.
