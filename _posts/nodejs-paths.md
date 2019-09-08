@@ -5,15 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2019-09-08 14:39:06
-version: 1.5
+updated: 2019-09-08 15:15:51
+version: 1.6
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice framework to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems, along with many other common path related tasks. So I could look for some kind of npm package, write my own code.However for starters there is no need to bother with an npm package of any kind, or write my own code, as the node.js built in [path module](https://nodejs.org/api/path.html) can help with a great deal of these kinds of tasks when working with a file system.
 
 <!-- more -->
 
-## Joining two paths together
+## 1 - Joining two paths together
 
 This is a task that I use the path module for all the time. I have a base path to a working folder or any kind of folder or interest where there are resources of some kind. I then also have a relative path from that working path and I want to create a path from the base path and the relative path. One way to go about doing so with the path module in nodejs is to use the path join method.
 
@@ -26,6 +26,19 @@ console.log(p);
 ```
 
 In the above example I am using the posix property of the path module to make sure that I end up getting a posix rather than win32 friendly path result. I could just call path.join but that would give a result that is different depending on the underlaying operating system that node is running on. In some situations I might want to do something that way actually but for this example I wanted to make a simple code example of the path join method that will return the same result on any kind of platform.
+
+## 2 - Path resolve method
+
+So another node path method module method that I use a lot is the resolve method. This also works like path join but will resolve the path to an abolsute path.
+
+```js
+let path = require('path');
+let p = path.resolve(process.cwd(),'new_foo_project');
+ 
+console.log(path.isAbsolute(p)); // true
+console.log(p);
+// (absolute path to ./new_foo_project)
+```
 
 ## Getting the base name of a path
 
