@@ -5,21 +5,20 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 121
-updated: 2019-09-08 16:26:22
-version: 1.3
+updated: 2019-09-08 16:29:29
+version: 1.4
 ---
 
-When focusing on a javaScript related project, there can be a great many [distractions](https://en.wikipedia.org/wiki/Distraction) that can interfere with my ability to focus on a project. Some of them are just complete wasts of time, others are somewhat pleasant or necessary. However all of them can derail my chain of thought, or get in the way of me making progress. I do not write these kinds of posts often but I thought I would break from the norm with this one.
+When focusing on a javaScript related project, there can be a great many [distractions](https://en.wikipedia.org/wiki/Distraction) that can interfere with my ability to focus on a project. Some of them are just complete wasts of time, others are somewhat pleasant or necessary. However all of them can derail my chain of thought, or get in the way of me making progress.  However with a little effort it might be possible to get some of these under control, ether by stopping them completely, or finding was to keep them from monopolizing to much of my time. Some of them I have made progress with, others still seem to get in the way, but regardless writing about them might help. I do not write these kinds of posts often but I thought I would break from the norm with this one.
 
 <!-- more -->
 
-However with a little effort it might be possible to get some of these under control, ether by stopping them completely, or finding was to keep them from monopolizing to much of my time. Some of them I have made progress with, others still seem to get in the way, but regardless writing about them might help.
 
 ## Distracting thoughts
 
 I have a lot of things that I worry about, at a personal, local, national, and global level. All kinds of distracting thoughts about things most of which I do not have control over. It is a major distraction to be lost in thoughts about how bad things are out there in the world, and concerns about how people close to me are also suffering a little for various reasons.
 
-Meditation has helped me get all of this under better control. The basic idea behind what I do is to just get into a comfortable position, and focus on my breathing. Thoughts come, and when they do I let them go by returning to focusing on my breathing.
+[Meditation](https://en.wikipedia.org/wiki/Meditation) has helped me get all of this under better control. The basic idea behind what I do is to just get into a comfortable position, and focus on my breathing. Thoughts come, and when they do I let them go by returning to focusing on my breathing.
 
 Eventually there is the idea of replacing focusing on my breathing with what it is that I am working on. Focusing on work in some ways is just like focusing on the breathing, thoughts come, and then they go once I get myself focused back on work.
 
