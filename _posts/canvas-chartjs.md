@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-08 16:37:34
-version: 1.5
+updated: 2019-09-08 16:38:59
+version: 1.6
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -16,7 +16,7 @@ These days I am working out some projects that have to do with analyzing text, a
 
 ## 1 - Canvas Chart basics
 
-So there is more that one way to make charts with canvas of course. In this post I am using a project called chart js that is pretty flashy, but it is also not to hard to just work out a chart with just the canvas 2d drawing context by itself.
+So there is more that one way to make charts with canvas of course. In this post I am using a project called chart js that is pretty flashy, but it is also not to hard to just work out a chart with just the canvas 2d drawing context by itself. So a canvas chart could be created by adding chartjs to a project, or it could be just created with methods like line to, move to, and stroke when just working with the plain old canvas 2d drawing context.
 
 ## 2 - Basic example of charts.js use
 
