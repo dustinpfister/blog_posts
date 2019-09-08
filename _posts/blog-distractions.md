@@ -5,11 +5,11 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 121
-updated: 2019-09-08 16:24:25
-version: 1.2
+updated: 2019-09-08 16:26:22
+version: 1.3
 ---
 
-When focusing on a javaScript related project, there can be a great many distractions that can interfere with my ability to focus on a project. Some of them are just complete wasts of time, others are somewhat pleasant or necessary. However all of them can derail my chain of thought, or get in the way of me making progress. I do not write these kinds of posts often but I tought I would break from the norm with this one.
+When focusing on a javaScript related project, there can be a great many [distractions](https://en.wikipedia.org/wiki/Distraction) that can interfere with my ability to focus on a project. Some of them are just complete wasts of time, others are somewhat pleasant or necessary. However all of them can derail my chain of thought, or get in the way of me making progress. I do not write these kinds of posts often but I thought I would break from the norm with this one.
 
 <!-- more -->
 
