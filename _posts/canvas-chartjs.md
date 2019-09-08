@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-08 16:39:24
-version: 1.7
+updated: 2019-09-08 19:20:39
+version: 1.8
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -20,41 +20,39 @@ So there is more that one way to make charts with canvas of course. In this post
 
 ## 2 - Basic example of charts.js use
 
-Here I am working out just my first basic example of chartjs.
+So to get started with chartjs first I need to grab the version of chartjs that I want to use. In this post I was using [chartjs 2.7.1](https://github.com/chartjs/Chart.js/tree/v2.7.1/dist). Once I have a copy of chartjs to link to with a script tag I can then write some code for a basic line chart.
 
 ```html
-<div style="width:320px;">
-    <canvas id="chart-demo-1"></canvas>
-</div>
-<script>
+<html>
+  <head>
+      <title>chart.js basic</title>
+  </head>
+  <body>
+    <div style="width:320px;">
+      <canvas id="chart-demo-1"></canvas>
+    </div>
+    <script src="chart.min.js"></script>
+    <script>
 var ctx = document.getElementById('chart-demo-1').getContext('2d'),
- 
 // chart
 chart = new Chart(ctx, {
- 
         type: 'line',
- 
         data: {
- 
             labels: ['week1', 'week2', 'week3'],
             datasets: [{
- 
                 label: 'impressions',
                 borderColor: '#ff0000',
                 data: [450, 375, 680]
- 
             },{
- 
                 label: 'clicks',
                 borderColor: '#0000ff',
                 data: [70, 20, 120]
- 
             }]
- 
         }
- 
     });
-</script>
+    </script>
+  </body>
+</html>
 ```
 
 ## 3 - updating a chart
