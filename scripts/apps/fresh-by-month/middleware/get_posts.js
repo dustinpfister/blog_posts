@@ -15,11 +15,14 @@ module.exports = (opt) => {
 
             let report = res.report = {},
             now = new Date(),
-            days_back = opt.app.get('days_back');
+            days_back = opt.app.get('days_back'),
+            sy = opt.app.get('year_start') || 2017,
+            ey = opt.app.get('year_end') || 2017;
 
             console.log('klawing posts:');
             klawAll({
                 forPost: (item, nextPost) => {
+
                     console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.date);
 
                     // the publish date
@@ -28,31 +31,35 @@ module.exports = (opt) => {
                     y = date.getFullYear(),
                     m = date.getMonth();
 
-                    let key = y + '-' + (m + 1);
-                    let month = report[key] = report[key] ? report[key] : {};
-                    month.key = key;
-                    month.wc = month.wc ? month.wc += item.wc : item.wc;
-                    month.pc = month.pc === undefined ? 0 : month.pc;
-                    month.fresh = month.fresh === undefined ? 0 : month.fresh;
-                    month.posts = month.posts === undefined ? [] : month.posts;
+                    if (y >= sy && y <= ey) {
 
-                    let days = (now - update) / 1000 / 60 / 60 / 24,
-                    fresh = (days_back - days) / days_back;
-                    if (fresh < 0) {
-                        fresh = 0;
+                        let key = y + '-' + (m + 1);
+                        let month = report[key] = report[key] ? report[key] : {};
+                        month.key = key;
+                        month.wc = month.wc ? month.wc += item.wc : item.wc;
+                        month.pc = month.pc === undefined ? 0 : month.pc;
+                        month.fresh = month.fresh === undefined ? 0 : month.fresh;
+                        month.posts = month.posts === undefined ? [] : month.posts;
+
+                        let days = (now - update) / 1000 / 60 / 60 / 24,
+                        fresh = (days_back - days) / days_back;
+                        if (fresh < 0) {
+                            fresh = 0;
+                        }
+
+                        month.posts.push({
+                            fn: item.fn,
+                            header: item.header,
+                            fresh: fresh,
+                            wc: item.wc
+                        });
+
+                        // month fresh
+                        month.fresh += fresh;
+                        // post count
+                        month.pc += 1;
+
                     }
-
-                    month.posts.push({
-                        fn: item.fn,
-                        header: item.header,
-                        fresh: fresh,
-                        wc: item.wc
-                    });
-
-                    // month fresh
-                    month.fresh += fresh;
-                    // post count
-                    month.pc += 1;
 
                     nextPost();
                 },
