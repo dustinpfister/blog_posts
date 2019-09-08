@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2019-09-08 15:52:32
-version: 1.4
+updated: 2019-09-08 15:57:12
+version: 1.5
 ---
 
 When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over http:// rather than file://. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in http module in node itself. It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported framework such as express to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
@@ -16,13 +16,15 @@ When working with many node projects I often run into a situation in which I nee
 
 ## 1 - Node Static Basics
 
-So I have been making files now and then that serve as a simple solution that can be dropped into a project path and then called from the cli with node like this:
+So the general idea of a node static server is that I have some plain old static files in a public folder and I just want to server them up over the http protocol on my local computer. Maybe what I am working on will be deployed to a site elsewhere at a latter time, and for whatever the reason I just need to serve it up on my computer via something other than the file protocol.
+
+So I just need a script that I can call from node like this.
 
 ```
 $ node sever
 ```
 
-As such I thought I would write a quick post on one of the latest solutions I have written for doing this:
+And the script will serve static files that I have in a public folder localed at the current working path where I have the script. I could also install the script globally, but for now I just want to make a script that is closely tiles to the project folder.
 
 ## 2 - Sever.js file solution one
 
