@@ -1,11 +1,11 @@
 ---
-title: Using Chart.js to make and work with canvas charts with javaScript
+title: Using Chart.js to make and work with Canvas Charts with javaScript
 tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-08 16:32:39
-version: 1.4
+updated: 2019-09-08 16:37:34
+version: 1.5
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -14,7 +14,11 @@ These days I am working out some projects that have to do with analyzing text, a
 
 <script src="/js/chart.min.js"></script>
 
-## Basic example of charts.js use
+## 1 - Canvas Chart basics
+
+So there is more that one way to make charts with canvas of course. In this post I am using a project called chart js that is pretty flashy, but it is also not to hard to just work out a chart with just the canvas 2d drawing context by itself.
+
+## 2 - Basic example of charts.js use
 
 Here I am working out just my first basic example of chartjs.
 
