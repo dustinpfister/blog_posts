@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2017-12-28 22:53:18
-version: 1.2
+updated: 2019-09-08 14:03:40
+version: 1.3
 ---
 
-Working with paths in node.js is something that comes up all the time. A nice way to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. For this there is no need to bother with an npm package of any kind the node.js built in [path module](https://nodejs.org/api/path.html) can help with a great deal of these kinds of tasks.
+Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice framework to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems, along with many other common path related tasks. So I could look for some kind of npm package, write my own code.However for starters there is no need to bother with an npm package of any kind, or write my own code, as the node.js built in [path module](https://nodejs.org/api/path.html) can help with a great deal of these kinds of tasks when working with a file system.
 
 <!-- more -->
 
