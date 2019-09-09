@@ -5,17 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 105
-updated: 2018-09-07 09:48:24
-version: 1.3
+updated: 2019-09-09 14:48:46
+version: 1.4
 ---
 
-Part of my debugging process involves placing a console.log in my code at some point to log out to the console the status of some value. Often it might be placed in the body of some code that ends up getting called often, and as such it will get logged to the console a whole bunch of times real fast. This is where using something like [\_.once](https://lodash.com/docs/4.17.4#once) in [lodash](https://lodash.com/) can be helpful when working on a project that uses lodash as part of it's codebase.
+Part of my debugging process involves placing a console.log in my code at some point to log out to the console the status of some value. Often it might be placed in the body of some code that ends up getting called often, and as such it will get logged to the console a whole bunch of times real fast. This is where using something like [\_.once](https://lodash.com/docs/4.17.4#once) in [lodash](https://lodash.com/) can be helpful when working on a project that uses lodash as part of it's code base.
 
 <!-- more -->
 
-## Basic use example of \_.once in lodash
+## 1 - Basic use example of \_.once in lodash
 
-\_.once works by returning a function that will call the given function only once when called.
+The lodash \_.once method works by returning a function that will call the given function only once when called. Any additionally calls to the function will result in nothing happening.
 
 ```js
  
@@ -29,7 +29,9 @@ Part of my debugging process involves placing a console.log in my code at some p
  trap('nope'); // ( nothing )
 ```
 
-## How \_.once works
+So the lodash once method can come in handy when I want to log something to the console just once and only once inside a loop of some kind. That being said the lodash once method can come in handy as a kind of debugging tool.
+
+## 2 - How \_.once works
 
 If you have some experience with <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">concept of closures</a>, and guessed that is how \_.once works then you would be right.
 
@@ -60,7 +62,7 @@ function once(func){
 
 So the \_.once method is a good example of how closures come in handy. Once returns a function within a function, and the value of result in the before helper is what gets returned each time \_.once is called.
 
-## The nature of what is returned.
+## 3 - The nature of what is returned.
 
 When it comes to whatever is returned with the method that is given to \_.once, the same value will be given each time it is called after it has been called once. The method given will never be called again, but the value returned when it was called will be returned each time.
 
@@ -75,7 +77,7 @@ When it comes to whatever is returned with the method that is given to \_.once, 
  console.log(grab(43)); // 42
 ```
 
-## Be mindful of references when dealing with objects
+## 4- Be mindful of references when dealing with objects
 
 There is still the matter of objects being references in javaScript though. This is why we have methods like [\_.cone](/2017/10/02/lodash_clone/) in lodash.
 
@@ -111,7 +113,7 @@ obj.x += 1;
 console.log(grab(obj)); // {x:42}
 ```
 
-## Using \_.once in a loop
+## 5 - Using \_.once in a loop
 
 As I mention earlier \_.once comes in handy when I am working with some kind of project that involves one or more instances of something like [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout), or [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) going on.
 
@@ -150,6 +152,6 @@ var loop = function(){
 loop();
 ```
 
-## Conclusion
+## 6 - Conclusion
 
-The \_.once method is a great example of closures in action. For me it was also a great experience to look into the source code of lodash to find that many of these methods work very much the sme way as if I was to take the time t write them myself.
+The \_.once method is a great example of closures in action. For me it was also a great experience to look into the source code of lodash to find that many of these methods work very much the same way as if I was to take the time t write them myself.
