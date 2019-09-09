@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-08 20:06:07
-version: 1.10
+updated: 2019-09-09 11:50:16
+version: 1.11
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -129,7 +129,7 @@ setInterval(function(){
 
 ## 4 - Vanilla js Draw line chart alternative
 
-Although using chartjs is a great solution for quickly getting a lije chart as well as several other types of charts in a project, it is not to hard to work out a vanilla javaScript solution. Of course it will be a bot time consuming, but it can often prove to be a fun little project.
+Although using chartjs is a great solution for quickly getting a line chart as well as several other types of charts in a project, it is not to hard to work out a vanilla javaScript solution. Of course it will be a bit time consuming compared to just adding chartjs to a project and moving on. However I have found that it is really not to hard to get a basic working solution up and running, and I also have the option to make the solution more streamlined, with features that I want, and no additional bulk that will slow down site performance.
 
 ```js
 var drawLineChart = (function () {
