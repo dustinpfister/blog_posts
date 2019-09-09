@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-08 19:20:39
-version: 1.8
+updated: 2019-09-08 20:04:23
+version: 1.9
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -127,6 +127,65 @@ setInterval(function(){
  
 </script>
 
-## 4 - Conclusion
+## 4 - Vanilla js Draw line chart alternative
+
+```js
+var drawLineChart = (function () {
+    // set scale helper
+    var setScale = function (canvas, values) {
+        var highest = Math.max.apply(null, values);
+        return values.map(function (val) {
+            return val / highest * canvas.height;
+        });
+    };
+    // return the draw function
+    return function (canvas, opt) {
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        Object.keys(opt.data).forEach(function (setName, di) {
+            var values = setScale(canvas, opt.data[setName]);
+            ctx.beginPath();
+            ctx.strokeStyle = opt.colors[di] || 'white';
+            values.forEach(function (n, i) {
+                var x = canvas.width / (values.length - 1) * i,
+                y = canvas.height - n;
+                ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+        });
+    };
+}
+    ());
+```
+
+```html
+<html>
+  <head>
+      <title>chart.js basic</title>
+  </head>
+  <body>
+    <div style="width:320px;">
+      <canvas id="chart-demo-1"></canvas>
+    </div>
+    <script src="drawlinechart.js"></script>
+    <script>
+var canvas = document.getElementById('chart-demo-1'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+drawLineChart(canvas, {
+  colors: ['blue', 'red'],
+  data:{
+    clicks: [12,30,24,250, 200],
+    impres: [120,60,50,400, 375]
+  }
+});
+    </script>
+  </body>
+</html>
+```
+
+## 5 - Conclusion
 
 Chart.js is pretty cool for doing anything with charts. I just wanted to put together a quick post on this one, I will likely write more about it in the future.
