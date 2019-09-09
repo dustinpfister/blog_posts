@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-09 11:50:16
-version: 1.11
+updated: 2019-09-09 11:57:04
+version: 1.12
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great!
@@ -131,6 +131,12 @@ setInterval(function(){
 
 Although using chartjs is a great solution for quickly getting a line chart as well as several other types of charts in a project, it is not to hard to work out a vanilla javaScript solution. Of course it will be a bit time consuming compared to just adding chartjs to a project and moving on. However I have found that it is really not to hard to get a basic working solution up and running, and I also have the option to make the solution more streamlined, with features that I want, and no additional bulk that will slow down site performance.
 
+## 4.1 - The draw Line chart method
+
+So I worked out a simple stand alone method that can be passed a canvas element, and an object that is formated a certain way to produce a line chart. This example is not necessary a done deal, but for the sake of this post alone the basic idea of what I had in mind seems to work okay.
+
+I have a self executing function expression that returns the method that will be used to draw the line chart and inside the body of the closure I have a single helper function worked out that sets the scale of the data based on the height of the canvas. In addition the width of the canvas stipulates the delta x value that will process of each item in the data set.
+
 ```js
 var drawLineChart = (function () {
     // set scale helper
@@ -160,6 +166,8 @@ var drawLineChart = (function () {
 }
     ());
 ```
+
+### 4.2 - Uisng the Draw line chart method
 
 ```html
 <html>
