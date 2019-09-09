@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 105
-updated: 2019-09-09 14:48:46
-version: 1.4
+updated: 2019-09-09 15:10:19
+version: 1.5
 ---
 
 Part of my debugging process involves placing a console.log in my code at some point to log out to the console the status of some value. Often it might be placed in the body of some code that ends up getting called often, and as such it will get logged to the console a whole bunch of times real fast. This is where using something like [\_.once](https://lodash.com/docs/4.17.4#once) in [lodash](https://lodash.com/) can be helpful when working on a project that uses lodash as part of it's code base.
@@ -152,6 +152,29 @@ var loop = function(){
 loop();
 ```
 
-## 6 - Conclusion
+## 6 - Vanilla javaScript Once method
+
+Writing a vanilla javaScript once method is not that hard at all. If you have a basic understanding of [closures in JavaScript](/2019/02/22/js-javascript-closure/) slapping together a vanilla ajvaScript alternative to the lodash once method is a snap. Just have a function that returns a function and inside the body of that inner function call a method that is given as an argument of the outer function, and change the state of a variable that is in the body of the outer function that is used to find out if the function should be called or not with a conditional statement.
+
+```js
+let once = (func) => {
+    let calls = 1;
+    return function(){
+        if (calls > 0) {
+            func.apply(null, arguments);
+            calls--;
+        }
+    };
+};
+ 
+let trap = once((mess) => {
+        console.log(mess);
+    });
+ 
+trap('okay'); // 'okay' logged to the console
+trap('nope'); // (nothing)
+```
+
+## 7 - Conclusion
 
 The \_.once method is a great example of closures in action. For me it was also a great experience to look into the source code of lodash to find that many of these methods work very much the same way as if I was to take the time t write them myself.
