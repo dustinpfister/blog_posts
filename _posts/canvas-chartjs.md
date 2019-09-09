@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2019-09-09 12:01:35
-version: 1.14
+updated: 2019-09-09 12:16:10
+version: 1.15
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great. Still it is not to hard to work out a simple native javaScript solution as well, so in this post I will be taking a quick look at chartjs, and also be writing about a vanilla js option that I slapped together also.
@@ -171,6 +171,8 @@ This single stand alone function is then placed into an external javaScript file
 
 ### 4.2 - Uisng the Draw line chart method
 
+So here I have an html file example in which I am using the draw line chart method that I worked out.
+
 ```html
 <html>
   <head>
@@ -197,6 +199,8 @@ drawLineChart(canvas, {
   </body>
 </html>
 ```
+
+The project works as expected, but there is a bit more that comes to mind. I might want better control over the location and size of the area where the line chart will be placed in the canvas for example. In addition I would also want to add some labeling for the scale and a legend. However there is still only so much more that comes to mind and it still fulfills the most important aspect of such a project.
 
 ## 5 - Conclusion
 
