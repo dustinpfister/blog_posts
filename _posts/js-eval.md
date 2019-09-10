@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2019-09-09 20:37:47
-version: 1.2
+updated: 2019-09-09 20:54:33
+version: 1.3
 ---
 
 In javaScript and many other programing languages there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. The eval function is a way to interpret javaScript from within javaScript itself. This will be a quick post on the js [eval function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval).
@@ -14,3 +14,20 @@ In javaScript and many other programing languages there is the [eval function](h
 <!-- more -->
 
 ## 1 - js eval basic example
+
+```js
+var str = '2+2';
+console.log(str);
+// '2+2'
+console.log(eval(str));
+// 4
+```
+
+## 2 - js eval can create variables in the scope in which it is used
+
+```js
+// when using var in Non-strict mode eval
+// can create variables in the scope in which it is used
+eval('var n = 42;');
+console.log(n);
+```
