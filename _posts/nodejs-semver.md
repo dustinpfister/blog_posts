@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 533
-updated: 2019-09-13 17:16:04
-version: 1.3
+updated: 2019-09-13 17:19:28
+version: 1.4
 ---
 
 Thought I would write a quick post on semver the nodejs npm package that helps with the [semver.org Semantic Versioning standard](https://semver.org/) for version numbers. If you are planing to make a serious nodejs project it is a good standard to at least be somewhat aware of. For many not so serious projects I still conform to it as to many other developers. Even if you do not wish to conform to the standard there are still many concerns when it comes to making a project that involves a public API of some kind. Making any changes to a public API might result in code breaking in any and all projects that depend on it for example. So learning a thing or two about the standard, can help with concerns that will arise as a project is maintained.
@@ -23,7 +23,7 @@ The valid method of the semver npm package will return a parsed version number i
 
 ### 1.3 - A simple version bump script Uisng the increment method
 
-So then the valid and inc (increment) methods can be used to set up a simple version bump script.
+So then the valid and inc (increment) methods can be used to set up a simple version bump script. In this section I will be going over a very simple script that I just threw together in a flash. However in a real project the semver npm package can be used with other libraries and modules such as the child process module to automate the process of running tests, preforming various checks to make everything looks good, and event automate the process of commenting and pushing to a remote.
 
 ```js
 let semver = require('semver'),
