@@ -5,13 +5,21 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 533
-updated: 2019-09-13 20:16:16
-version: 1.7
+updated: 2019-09-13 20:22:36
+version: 1.8
 ---
 
 Thought I would write a quick post on semver the nodejs npm package that helps with the [semver.org Semantic Versioning standard](https://semver.org/) for version numbers. If you are planing to make a serious nodejs project it is a good standard to at least be somewhat aware of. For many not so serious projects I still conform to it as to many other developers. Even if you do not wish to conform to the standard there are still many concerns when it comes to making a project that involves a public API of some kind. Making any changes to a public API might result in code breaking in any and all projects that depend on it for example. So learning a thing or two about the standard, can help with concerns that will arise as a project is maintained.
 
 <!-- more -->
+
+## 1 - node semver basics
+
+The basic idea of node semver is that a version number should consist of three numbers that reflect a current major minor and path release. 
+
+### 1.1 - The major release number 
+
+A project should start out as a major release of zero, and during this time a clearly defined public API does need need to be in place. However A clearly defined public API should be in place by major release version one. Once a public API is in place no code breaking changes should be made to that major release, unless the aim is to start a new major release in which case code breaking changes can be made to that public API.
 
 ## 2 - The node semver npm package
 
