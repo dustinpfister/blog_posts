@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 533
-updated: 2019-09-13 20:22:36
-version: 1.8
+updated: 2019-09-13 20:28:00
+version: 1.9
 ---
 
 Thought I would write a quick post on semver the nodejs npm package that helps with the [semver.org Semantic Versioning standard](https://semver.org/) for version numbers. If you are planing to make a serious nodejs project it is a good standard to at least be somewhat aware of. For many not so serious projects I still conform to it as to many other developers. Even if you do not wish to conform to the standard there are still many concerns when it comes to making a project that involves a public API of some kind. Making any changes to a public API might result in code breaking in any and all projects that depend on it for example. So learning a thing or two about the standard, can help with concerns that will arise as a project is maintained.
@@ -20,6 +20,10 @@ The basic idea of node semver is that a version number should consist of three n
 ### 1.1 - The major release number 
 
 A project should start out as a major release of zero, and during this time a clearly defined public API does need need to be in place. However A clearly defined public API should be in place by major release version one. Once a public API is in place no code breaking changes should be made to that major release, unless the aim is to start a new major release in which case code breaking changes can be made to that public API.
+
+### 1.2 - The minor release number
+
+A minor release should be made each time new features are added that will not break the public api of the current major release. for example new options could be added to an option object of a a function that can be accessed via the public api as long as the old options are still in place and work as expected. If a feature removes old options or functions completely from the public api that should only be done if a new major release is being made. Think in terms of code that depends on this API, if the new feature will break that code then it should be a new major release not a new minor.
 
 ## 2 - The node semver npm package
 
