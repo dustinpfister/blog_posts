@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 533
-updated: 2019-09-13 20:31:52
-version: 1.10
+updated: 2019-09-13 20:36:42
+version: 1.11
 ---
 
 Thought I would write a quick post on semver the nodejs npm package that helps with the [semver.org Semantic Versioning standard](https://semver.org/) for version numbers. If you are planing to make a serious nodejs project it is a good standard to at least be somewhat aware of. For many not so serious projects I still conform to it as to many other developers. Even if you do not wish to conform to the standard there are still many concerns when it comes to making a project that involves a public API of some kind. Making any changes to a public API might result in code breaking in any and all projects that depend on it for example. So learning a thing or two about the standard, can help with concerns that will arise as a project is maintained.
@@ -67,3 +67,7 @@ if (v) {
 ```
 
 This will just bump the patch version number be default, or another release type provided from the command line. A more advanced script might preform some tests, and other checks that must all pass before bumping the version number.
+
+## 3 - Staying in alpha
+
+For some projects I just stay in alpha the whole time, just bumping up the minor release number each time I add a new feature. This is often the case if it is a project that is not meant to be used as a node module, or something that I do not intend to release to npm. This way I am still kind of conforming to the rules of semver by never really getting to the point where a final public api is in place. Some projects that are in a rapid state of development that aways have the public api change on every revision might follow this approve, one project that seems to follow this is threejs.
