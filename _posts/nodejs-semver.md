@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 533
-updated: 2019-09-13 20:28:00
-version: 1.9
+updated: 2019-09-13 20:31:52
+version: 1.10
 ---
 
 Thought I would write a quick post on semver the nodejs npm package that helps with the [semver.org Semantic Versioning standard](https://semver.org/) for version numbers. If you are planing to make a serious nodejs project it is a good standard to at least be somewhat aware of. For many not so serious projects I still conform to it as to many other developers. Even if you do not wish to conform to the standard there are still many concerns when it comes to making a project that involves a public API of some kind. Making any changes to a public API might result in code breaking in any and all projects that depend on it for example. So learning a thing or two about the standard, can help with concerns that will arise as a project is maintained.
@@ -24,6 +24,10 @@ A project should start out as a major release of zero, and during this time a cl
 ### 1.2 - The minor release number
 
 A minor release should be made each time new features are added that will not break the public api of the current major release. for example new options could be added to an option object of a a function that can be accessed via the public api as long as the old options are still in place and work as expected. If a feature removes old options or functions completely from the public api that should only be done if a new major release is being made. Think in terms of code that depends on this API, if the new feature will break that code then it should be a new major release not a new minor.
+
+### 1.3 - The patch version number
+
+The patch version number should be bumped up each time a bug is fixed, or any kind of improvement that does not add a new feature break code. So bug fixes, a more efficient function that does the same thing, a security fix, or any superficial change such as comments, spelling mistakes in the README file and so forth.
 
 ## 2 - The node semver npm package
 
