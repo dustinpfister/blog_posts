@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 534
-updated: 2019-09-15 07:55:25
-version: 1.7
+updated: 2019-09-15 07:59:56
+version: 1.8
 ---
 
 This will be a post on the [node command](https://nodejs.org/api/cli.html) that is used to start nodejs projects written in javaScript. The node command is used to run scripts written in javaScript by way of an external javaScript file, or other means such as from the command line via the eval option. This post is mainly aimed at developers that are new to nodejs, but even if you are a more seasoned nodejs developer there might be a few more aspects of using the node command that you might not yet be aware of that might be of use in some situations when it comes to advanced topics such as [piping](https://en.wikipedia.org/wiki/Pipeline_(Unix)).
@@ -56,3 +56,19 @@ $ echo 40 + 2 | node -i
 ## 4 - Using script files with the node command
 
 Using the node command to run a line of javaScript or work within interactive mode is nice but in my experience so far for the most part the node command is used to start an external javaScript file of a package. There is an awful lot to cover when it comes to this so I might not get into every tittle detail about this. However in this section I will start out with some of the basics and then progress into some things that are not so basic when it comes to using the node command to start or use an external javaScript file with the node command.
+
+### 4.1 - Writing an external javaScript file and starting it with the node command
+
+So to get started with external javaScript files and the node command just create a new text file with any basic text editor and save it as something like script.js. The name should just conform to the rules of filenames where there are just certain characters that you should not use even through you can such as spaces, but the file extension should be js.
+
+```js
+let func = (a, b) => {
+    return a + b;
+};
+console.log( func(40,2) );
+```
+
+```js
+$ node script
+42
+```
