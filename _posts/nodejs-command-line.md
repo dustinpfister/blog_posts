@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 534
-updated: 2019-09-15 07:59:56
-version: 1.8
+updated: 2019-09-15 13:57:27
+version: 1.9
 ---
 
 This will be a post on the [node command](https://nodejs.org/api/cli.html) that is used to start nodejs projects written in javaScript. The node command is used to run scripts written in javaScript by way of an external javaScript file, or other means such as from the command line via the eval option. This post is mainly aimed at developers that are new to nodejs, but even if you are a more seasoned nodejs developer there might be a few more aspects of using the node command that you might not yet be aware of that might be of use in some situations when it comes to advanced topics such as [piping](https://en.wikipedia.org/wiki/Pipeline_(Unix)).
@@ -61,6 +61,8 @@ Using the node command to run a line of javaScript or work within interactive mo
 
 So to get started with external javaScript files and the node command just create a new text file with any basic text editor and save it as something like script.js. The name should just conform to the rules of filenames where there are just certain characters that you should not use even through you can such as spaces, but the file extension should be js.
 
+For starters here is an example where I am just creating a simple add function and then using that function within the same script. There is also the idea of writing a function like this in another javaScript file and then using it in another file, but for now lets start out with just one very simple script.
+
 ```js
 let func = (a, b) => {
     return a + b;
@@ -68,7 +70,11 @@ let func = (a, b) => {
 console.log( func(40,2) );
 ```
 
+Once I have a basic script worked out I can start it with the node command by just simply calling the command and passing the path to the file as an argument like this:
+
 ```js
 $ node script
 42
 ```
+
+Simple enough right, but there is much more to it than this, lets look at some more examples when it comes to using the node command to run a script.
