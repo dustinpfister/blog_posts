@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2019-09-09 21:03:00
-version: 1.6
+updated: 2019-09-16 16:49:19
+version: 1.7
 ---
 
 In javaScript and many other programing languages there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. The eval function is a way to interpret javaScript from within javaScript itself. The eval function should not be used if it can be avoided, the use of the eval function can slow things down, and can also open up some security concerns. Still in some situations the use of it can not be avoided, and it is there for a reason after all. So then this will be a post on some of the ins and outs of the js [eval function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval).
@@ -35,3 +35,7 @@ When the js eval function is used with a string of javaScript that contains the 
 eval('var n = 42;');
 console.log(n);
 ```
+
+## 3 - Conclusion
+
+The use of eval is something that I can not say I use very often, or at all actually. There is generally always a way to go about not using it, and if so that is most likely the way that it should be done. Still it is nice to know that it is there when and if I am in a situation in which there is no other option. Using eval and the function constructor just does not strike me as a way that I should be writing and using javaScript, and there are additional concerns about using it that I have not covered in this post.
