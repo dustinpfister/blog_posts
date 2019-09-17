@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 111
-updated: 2017-12-14 09:43:19
-version: 1.6
+updated: 2019-09-17 14:38:21
+version: 1.7
 ---
 
 I have been writing this blog for the better part of a year, and so far it seems like it is just starting to take off. I am not spaming my content on social media (as of this writing at least), and I also so far am not spending even so much as a single penny a month on paid advertising. In stead I am focusing entirely on what needs to be done to help improve organic search results, so far I am doing okay, but there is much room for improvement. As such I have wanted to find, or make some tools to help me with keyword planing, and general evaluation of my sites content in a [node.js](https://nodejs.org/en/) environment.. In my travels browsing and searching I have come across the npm package called [natural](https://www.npmjs.com/package/natural).
@@ -136,7 +136,7 @@ At the time of this writing the readme states that natural is still in developme
 
 ## Naturals word tokenizer
 
-Natural has it's own word tokenizer like the vanilla js one I gave earler in this post. To use it just use the natural.WordTokenizer constructor. In my project folder I made a token.js demo file in the root space that looks like this:
+Natural has it's own word tokenizer like the vanilla js one I gave earlier in this post. To use it just use the natural.WordTokenizer constructor. In my project folder I made a token.js demo file in the root space that looks like this:
 
 ```js
 var natural = require('natural'),
@@ -154,7 +154,7 @@ console.log( tokens );
 
 ## naturals jaro winkler string distance
 
-natural has a jaavScript implmantation of the [Jaro Winkler](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance) string edit distance method.
+natural has a jaavScript implementation of the [Jaro Winkler](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance) string edit distance method.
 
 ```js
 var natural = require('natural'),
