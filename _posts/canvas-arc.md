@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-09-18 11:09:15
-version: 1.51
+updated: 2019-09-18 11:13:40
+version: 1.52
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project. Not just for the sake of drawing graphics, but to also get an idea where a certain range is from a given point outward to a certain radius. So the canvas arc method can be used as a way to quickly draw circles and arcs in a canvas project, however there are also many other related topics to canvas arcs also such as the nature of radians, Math.cos, and Math.sin. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context so lets get to it.
@@ -117,7 +117,7 @@ ctx.stroke();
 </html>
 ```
 
-The core javaScript Math sin and cos methods can be used to not just draw arcs, but also to position things in an arc like pattern as well. So the methods also come in handy when it comes to drawing and moving objects in arc like patterns when it comes to working out animations. More on that later in this post.
+The core javaScript Math sin and cos methods can be used to not just draw arcs, but also to position things in an arc like pattern as well. So the methods also come in handy when it comes to drawing and moving objects in arc like patterns when it comes to working out animations. More on that later in this post as there is a lot to cover when it comes to using Math.cos, and Math.sin as a way to draw canvas arcs and other arc like shapes in canvas.
 
 So now that you know the basics of the canvas arc method, as well as other options for drawing arcs in canvas. Lets look at some more canvas code examples that have to do with this subject.
 
