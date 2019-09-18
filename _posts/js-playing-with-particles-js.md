@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2017-12-04 17:34:31
-version: 1.0
+updated: 2019-09-18 14:36:43
+version: 1.1
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github. This is a fun little toy to play with for a short while if you are looking for something such as that.
@@ -23,7 +23,7 @@ $ cd test_particles
 $ npm install particles.js
 ```
 
-I will also need a means to setup a static server to serve up the index.html as this is one of those projects that will not work well fia the file:// protocol. I put togeather this simple sever.js example that worked for me.
+I will also need a means to setup a static server to serve up the index.html as this is one of those projects that will not work well with the file:// protocol. So with that said I put together this simple sever.js example that worked for me.
 
 ```js
 /*
@@ -32,62 +32,42 @@ I will also need a means to setup a static server to serve up the index.html as 
  *   This just provides a simple static server for the project.
  *
  */
-
 var http = require('http'),
 fs = require('fs'),
 path = require('path'),
-
 port = 8888, // port 8888 for now
 root = process.cwd(); // assume current working path is root
-
 // create and start the server
 http.createServer(function (req, res) {
- 
     // get the path
     var p = path.join(root, req.url);
- 
     // get stats of that path
     fs.lstat(p, function (e, stat) {
- 
         // if error end
         if (e) {
- 
             res.end();
- 
         }
- 
         // if stats check it out
         if (stat) {
- 
             // if it is not a file append index.html to path, and try that
             if (!stat.isFile()) {
                 p = path.join(p, 'index.html')
             }
- 
             // try to read the path
             fs.readFile(p, 'binary', function (e, file) {
- 
                 // if error end
                 if (e) {
- 
                     res.end();
- 
                 }
- 
                 // if file, send it out
                 if (file) {
- 
                     res.writeHead(200);
                     res.write(file, 'binary');
                     res.end();
                 }
- 
             });
- 
         }
- 
     });
- 
 }).listen(port);
 ```
 
@@ -95,7 +75,7 @@ If you have something better in mind go with that, as long as you have a way to 
 
 ## The index.html file
 
-Now that I have everything installed, and I have my sever.js file ready to go it's time to throw togetaher a simple index.html file for the project.
+Now that I have everything installed, and I have my sever.js file ready to go it's time to throw together a simple index.html file for the project.
 
 ```html
 <div id="the-container"></div>
