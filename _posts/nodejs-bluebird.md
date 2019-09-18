@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 103
-updated: 2017-12-03 09:50:28
-version: 1.3
+updated: 2019-09-18 09:57:48
+version: 1.4
 ---
 
 Today I will be writing about the npm package [bluebird](https://www.npmjs.com/package/bluebird), which is a fully featured featured promise library for [node.js](https://nodejs.org/en/). There is built in support for promises in node.js as well in any version that is up to spec with [ES2015+ javaScript](http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects), so I will see about how bluebird compares to native promise support.
@@ -126,6 +126,66 @@ getStats('README.md').then(function (stats) {
 ```
 
 It is common practice to overwrite (or monkey patch) the built in Promise Constructor but for this post I decided not to in order to compare what it is that is gained in features. In production I see no reason why not though bluebird just gives you a more powerful, and capable Promise constructor with additional helpful methods like this.
+
+## Bluebirds promise any method
+
+So one of the features of blue bird that is not found in native javaScript promises is the promise any method. This is one of the many blue bird collection methods beyond that of promise all. An array of value can be given to promise any, and a vale can be a promise. If one or more values resolves in the array the first value that does so is what the promise that is returned with the promise any method will resolve with.
+
+```js
+var Prom = require('bluebird');
+
+let roll = () => {
+    return Math.floor(Math.random() * 6) + 1;
+}
+ 
+// if doubles defense1 will apply
+let Defence1 = () => {
+    let d1 = roll(),
+    d2 = roll();
+    if (d1 === d2) {
+        return Promise.resolve({
+            message: 'Defence 1 (doubles)',
+            d1: d1,
+            d2: d2,
+            defence: 10 * (d1 / 6)
+        });
+    }
+    return Promise.reject({
+        d1: d1,
+        d2: d2,
+        message: 'defence 1 failed'
+    });
+}
+ 
+// if sum of 7 defense2 will apply
+let Defence2 = () => {
+    let d1 = roll(),
+    d2 = roll();
+    if (d1 + d2 === 7) {
+        return Promise.resolve({
+            message: 'Defence 2 (sum of 7)',
+            d1: d1,
+            d2: d2,
+            defence: 10
+        });
+    }
+    return Promise.reject({
+        d1: d1,
+        d2: d2,
+        message: 'defence 2 failed'
+    });
+}
+ 
+Prom.any([Defence1(), Defence2()])
+.then((result) => {
+    console.log(result);
+})
+.catch((e) => {
+    console.log('no defence worked');
+    console.log(e[0]);
+    console.log(e[1]);
+});
+```
 
 ## Conclusion
 
