@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2019-09-18 12:14:09
-version: 1.3
+updated: 2019-09-18 12:43:50
+version: 1.4
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. Well luckily even with native javaScript promises there is the [Promise.resolve](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve), and [Promise.reject](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject) methods that can do just that. These methods will come in handy often when creating a long chain of promises and then method calls where I just want to return a resolve or rejected promise inside the body of a method that I am using with the then promise prototype method. It is basically a more appropriate alternative to using the promise constructor to just call resolve inside the body of a function that is given to the promise constructor, which will also work but why bother when you have Promise.resolve.
@@ -59,5 +59,74 @@ delayTest()
 })
 .catch((e) => {
     console.log(e);
+});
+```
+
+## 2 - Using Promise or reject resolve in place of the Promise constructor
+
+```js
+// if you find yourself doing this
+let justGiveAResolvedPromise = (obj) => {
+    obj = obj || {};
+    return new Promise((resolve) => {
+        resolve(obj)
+    })
+};
+
+justGiveAResolvedPromise({
+    mess: 'we are good'
+})
+.then((obj) => {
+    console.log(obj.mess);
+});
+
+// You Could just do this with Promise.reject
+Promise.resolve({
+    mess: 'we are good'
+})
+.then((obj) => {
+    console.log(obj.mess);
+});
+```
+
+## 3 - nodejs check file example of promise reject use in a promise chain
+
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify;
+ 
+let stat = promisify(fs.stat),
+readFile = promisify(fs.readFile);
+ 
+let thePath = path.resolve(process.argv[2] || process.cwd());
+ 
+// get stats of path
+stat(thePath)
+ 
+// just check if dir
+.then((stats) => {
+    let isDir = stats.isDirectory();
+    if (isDir) {
+        // if dir using Promise.reject to reject
+        // breaking the chain and jumping to catch
+        return Promise.reject(new Error('the given path is a dir'));
+    }
+    return stats;
+})
+ 
+// read file
+.then((stats) => {
+    return readFile(thePath)
+})
+ 
+// log the data
+.then((data) => {
+    console.log(data.toString());
+})
+ 
+.catch((e) => {
+    console.log(e.message);
 });
 ```
