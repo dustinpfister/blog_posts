@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 103
-updated: 2019-09-18 10:01:25
-version: 1.5
+updated: 2019-09-18 10:04:37
+version: 1.6
 ---
 
 Today I will be writing about the npm package [bluebird](https://www.npmjs.com/package/bluebird), which is a fully featured featured promise library for [node.js](https://nodejs.org/en/). There is built in support for promises in node.js as well in any version that is up to spec with [ES2015+ javaScript](http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects), so I will see about how bluebird compares to native promise support.
@@ -124,7 +124,7 @@ getStats('README.md').then(function (stats) {
 });
 ```
 
-It is common practice to overwrite (or monkey patch) the built in Promise Constructor but for this post I decided not to in order to compare what it is that is gained in features. In production I see no reason why not though bluebird just gives you a more powerful, and capable Promise constructor with additional helpful methods like this.
+It is common practice to overwrite (or monkey patch) the built in Promise Constructor but for this post I decided not to in order to compare what it is that is gained in features. In production I see no reason why not though bluebird just gives you a more powerful, and capable Promise constructor with additional helpful methods like this. When it comes to using the native util module if it is just this method that is of interest I have a [post on the uril promisify method](/2019/06/22/nodejs-util-promisify/).
 
 ## 3 - Bluebirds promise any method
 
