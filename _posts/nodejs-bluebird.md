@@ -5,15 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 103
-updated: 2019-09-18 09:57:48
-version: 1.4
+updated: 2019-09-18 10:01:25
+version: 1.5
 ---
 
 Today I will be writing about the npm package [bluebird](https://www.npmjs.com/package/bluebird), which is a fully featured featured promise library for [node.js](https://nodejs.org/en/). There is built in support for promises in node.js as well in any version that is up to spec with [ES2015+ javaScript](http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects), so I will see about how bluebird compares to native promise support.
 
 <!-- more -->
 
-## Some Basics with promises
+## 1 - Some Basics with promises
 
 If you do not know anything about promises they are [worth checking out](https://en.wikipedia.org/wiki/Futures_and_promises). In a nut shell promises are a great way to handle anything that needs to be done in an async kind of way and or anything that may result in a pass or fail result.
 
@@ -92,10 +92,9 @@ so add it to a project can check it out:
 $ npm install bluebird --save
 ```
 
-## Bluebirds promisify method
+## 2 - Bluebirds promisify method
 
-This is a great method in bluebird as it can quickly turn a node.js function like fs.stat used in the above example, and turn it into a promise.
-
+This is a great method in bluebird as it can quickly turn a node.js function like fs.stat used in the above example, and turn it into a promise. However in late versions of nodejs this is now also a native nodejs feature as well that can be found in the util module of nodejs. So it only makes sense to still bother with bluebird for this reason alone when it comes to pushing backward compatibility to older versions of nodejs that do not support promisify or even promises in general.
 
 As such the above example I gave that uses the built in node.js Promise constructor can be simplified to just this with bluebird.
 
@@ -127,7 +126,7 @@ getStats('README.md').then(function (stats) {
 
 It is common practice to overwrite (or monkey patch) the built in Promise Constructor but for this post I decided not to in order to compare what it is that is gained in features. In production I see no reason why not though bluebird just gives you a more powerful, and capable Promise constructor with additional helpful methods like this.
 
-## Bluebirds promise any method
+## 3 - Bluebirds promise any method
 
 So one of the features of blue bird that is not found in native javaScript promises is the promise any method. This is one of the many blue bird collection methods beyond that of promise all. An array of value can be given to promise any, and a vale can be a promise. If one or more values resolves in the array the first value that does so is what the promise that is returned with the promise any method will resolve with.
 
@@ -187,6 +186,6 @@ Prom.any([Defence1(), Defence2()])
 });
 ```
 
-## Conclusion
+## 4 - Conclusion
 
 There are many more methods to write about, as well as a whole lot more to write about when it comes to promises in general, for now there is the [bluebird website](http://bluebirdjs.com/docs/api-reference.html) that is pretty helpful if you want to learn more about that api.
