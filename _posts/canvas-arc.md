@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-09-18 11:13:40
-version: 1.52
+updated: 2019-09-18 11:20:59
+version: 1.53
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project. Not just for the sake of drawing graphics, but to also get an idea where a certain range is from a given point outward to a certain radius. So the canvas arc method can be used as a way to quickly draw circles and arcs in a canvas project, however there are also many other related topics to canvas arcs also such as the nature of radians, Math.cos, and Math.sin. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context so lets get to it.
@@ -224,9 +224,10 @@ ctx.stroke();
 
 The general point is that just because there is a native method that does not mean that is what must always be what is used in a project. If I can still rationalize a reason to write my own method to do something natively, or in this case wrap a native method so that I can have control over default values and more, I might very well just do that.
 
-## 6 - Using a custom method for drawing a canvas arc circle
+## 6 - Using a custom method for drawing a canvas arc circle using Math.cos Math.sin and much more
 
-It is fun to write these kind of methods now and then to gain a better degree of control over how the arc, or circle is drawn. Many canvas libraries have a polygon method built in, but with plain vanilla js it is not to hard to start to get together some methods for drawing a polygon with a set number or points.
+So now that we have a good feel for how to go about using the native canvas arc method in the 2d drawing context of the canvas api, lets take a moment to explore some more advanced ways to go about drawing circles arcs and circle like patterns. In the section I will be used Math.cos, and Math.sin as a way to create an array of points in the form of a linear array of x and y vales. In other words a one dimensional array where each first point of a split of two is the x value and the second is the y value. This seams to be a common format for an array of point value that is used in many framework as it it is a more efficient alternative to an array of objects.
+
 
 ```js
 // get canvas can 2d context
@@ -264,6 +265,9 @@ var pointCount = 50,
 radius = 10;
 drawPoints(ctx, createPolygonPoints(15,15,radius,pointCount), true);
 ```
+
+
+It is fun to write these kind of methods now and then to gain a better degree of control over how the arc, or circle is drawn. Many canvas libraries have a polygon method built in, but with plain vanilla js it is not to hard to start to get together some methods for drawing a polygon with a set number or points.
 
 This method can only be used to draw a circle, rather than say a half circle as I have choses to omit arguments for a start and end radian, and direction. It is true that writing a clone of the canvas arc method would not to be to hard, but doing so would not make sense, unless there are some additional features to add, such as being able to set the number of sides in the canvas arc.
 
