@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2019-09-18 12:43:50
-version: 1.4
+updated: 2019-09-18 12:49:14
+version: 1.5
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. Well luckily even with native javaScript promises there is the [Promise.resolve](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve), and [Promise.reject](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject) methods that can do just that. These methods will come in handy often when creating a long chain of promises and then method calls where I just want to return a resolve or rejected promise inside the body of a method that I am using with the then promise prototype method. It is basically a more appropriate alternative to using the promise constructor to just call resolve inside the body of a function that is given to the promise constructor, which will also work but why bother when you have Promise.resolve.
@@ -17,7 +17,7 @@ So todays post will just be on the Promise.resolve, and promise.reject methods.
 
 ## 1 - First a Basic Promise example that will resolve or reject
 
-So if you are new to using promises or just want to review how they are use in this section I will be going over a basic example that uses the promise constructor.
+So if you are new to using promises or just want to review how they are use in this section I will be going over a basic example that uses the promise constructor. The basic idea of a promise is that it will return an object that represents a task that will resolve of reject over a period of time. So it is an alternative to using callbacks, and the use of promises often results in a promise chain rather than the so called call back hell that happens when callbacks are used in a nested way rather than promises
 
 ```js
 let defaultTest = () => {
@@ -63,6 +63,8 @@ delayTest()
 ```
 
 ## 2 - Using Promise or reject resolve in place of the Promise constructor
+
+Say for some reason I just simply want to start off with a resolve promise object, or for whatever extenuating circumstance I want a resolve promise object right now for a task that will not take much time. I could use the Promise constructor to create a promise and then just call resolve inside the body of the function that I pass the resolve constructor. However there is no need to do that as there is the Promise.resolve method that can be use for this purpose.
 
 ```js
 // if you find yourself doing this
