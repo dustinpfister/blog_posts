@@ -5,19 +5,18 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 110
-updated: 2019-09-18 16:59:30
-version: 1.7
+updated: 2019-09-18 17:07:40
+version: 1.8
 ---
 
-I just recently [wrote a post](/2017/12/05/nodejs-pug-getting-started/) on the node.js powered html template engine called pug. That is a decent template engine and language, but for the most part I find myself using ejs over pug. In many respects I seem to like ejs more so then pug, it just seems more natural with respect to what I am used to writing plain old static html by itself. So in the post I will be writing about the use of the ejs npm package that can be used to make templates with embedded javaScript as a template language.
+I just recently [wrote a post](/2017/12/05/nodejs-pug-getting-started/) on the node.js powered html template engine called pug. That is a decent template engine and language, but for the most part I find myself using ejs over pug. In many respects I seem to like ejs more so then pug, it just seems more natural with respect to what I am used to writing plain old static html by itself. 
+ejs is a popular template format used in many node.js projects, and is one of several options that works out of the box in [hexo](/categories/hexo/). However in this post I will be writing about the use of the ejs npm package by itself to make templates with embedded javaScript as a template language in a nodejs project.
 
 <!-- more -->
 
-ejs is a popular template format used in many node.js projects, and is one of several options that works out of the box in [hexo](/categories/hexo/).
-
 ## Why EJS
 
-EJS stands for Embedded JavaScript and it I see it as an enhanced HTML. It differs from the syntax used in pug and markdown in the sense that it might not be a clean language, but it more closely resembles tired yet true plain old Hyper Text.
+There will come a time now and then where I will want to do some server side rendering in a noidejs project, there are many ways of doing so, but I find that I like ejs the best with what I have worked with so far. EJS stands for Embedded JavaScript, and the syntax of it is not to dissimular to that of plain old html as it also uses a pointy bracket like syntax. It differs from the syntax used in pug and markdown in the sense that it might not be a clean simplified language similar to that of yaml.
 
 ## Getting stared with the EJS npm package
 
