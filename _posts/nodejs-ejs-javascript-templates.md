@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 110
-updated: 2018-01-07 21:55:14
-version: 1.6
+updated: 2019-09-18 16:59:30
+version: 1.7
 ---
 
-I just recently wrote a post on the node.js powered html template engine called pug, and mentioned that I have some experience working with ejs, which so far I seem to like the best when it come to doing this sort of thing in a node.js environment. However so far I have not wrote a post on ejs, so why not get one together right?
+I just recently [wrote a post](/2017/12/05/nodejs-pug-getting-started/) on the node.js powered html template engine called pug. That is a decent template engine and language, but for the most part I find myself using ejs over pug. In many respects I seem to like ejs more so then pug, it just seems more natural with respect to what I am used to writing plain old static html by itself. So in the post I will be writing about the use of the ejs npm package that can be used to make templates with embedded javaScript as a template language.
 
 <!-- more -->
 
