@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2019-09-19 11:12:21
-version: 1.17
+updated: 2019-09-19 11:14:37
+version: 1.18
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well when it comes to making my own lodash times style method with plain old javaScript by itself.
@@ -94,7 +94,7 @@ console.log(arr); //[1,2,4,8]
 
 ## 3 - Plain old vanilla js clones of the lodash times method
 
-It is not to hard to make a plain old native javaScript clone of the lodash times method. In addition by doing so it is possible to make all kinds of custom tailored functionality of course. Writing a clone of the lodash times method is a great simple example of closure and high ordered functions as well. So writing at least one or two is a great way of getting used to closures and high order functions which comes in handy all the time in javaScript development.
+It is not to hard to make a plain old native javaScript clone of the lodash times method. In addition by doing so it is possible to make all kinds of custom tailored functionality of course. Writing a clone of the lodash times method is a great simple example of closure and high ordered functions as well. So writing at least one or two is a great way of getting used to closures and high order functions which comes in handy all the time in javaScript development. So in this section I will be going over some examples of a vanilla js lodash times method clones.
 
 ### 3.1 - A Basic lodash times clone
 
