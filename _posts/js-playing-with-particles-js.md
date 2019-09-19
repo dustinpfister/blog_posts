@@ -1,19 +1,19 @@
 ---
-title: Playing around with particles with particles.js
+title: Particles js is a fun little javaScript project
 date: 2017-12-04 16:42:00
 tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-18 14:40:23
-version: 1.3
+updated: 2019-09-19 07:45:49
+version: 1.4
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github. This is a fun little toy to play with for a short while if you are looking for something alone those lines. I can not think of any piratical use for particles.js really it is just a fun artful thing to do with javaScript just for the sake of fun, which is the main reason why I got into javaScript to begin with.
 
 <!-- more -->
 
-## Installing, and setting up.
+## Starting up a node project because of issues with file protocol.
 
 I went with using npm as the way to go about getting started with this project. You do not need to realy bother with node at al if you do not want to, as particals.js is a front end javaScript project. However if you do so you will still want to host what you are making via the http protocol.
 
