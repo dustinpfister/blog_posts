@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 26
-updated: 2019-09-19 09:12:36
-version: 1.7
+updated: 2019-09-19 09:36:11
+version: 1.8
 ---
 
 When making any kind of node.js project that may involve output to the command line interface, it may be desired to style that output, for the sake of adding emphases, or just to make it look nice. Many CLI tools make use of color, for one reason or another, so if you want to add color to the output of you node.js CLI tools, you might want to check out [chalk](https://www.npmjs.com/package/chalk). Chalk makes changing the color of a terminal fairly easy, but if you are wondering how chalk works the answer is [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). If you just simply know the codes that you want to use you can just append them to the start and end of a string that you are outputting to the console. Chalk just makes working with ANSI escape codes easy
@@ -14,6 +14,16 @@ When making any kind of node.js project that may involve output to the command l
 When I first wrote this post back in may I was using chalk 1.1.3, but as of this writing the latest version is now 2.3.0 as such there are a few new features, and some things just still work the same as aways.
 
 <!-- more -->
+
+## 1 - Chalk js an ANSI escape codes
+
+Chalk js is a great project for quickly changing the color of terminal text, but it might be best to just know what the proper ANSI escape codes are for the color that you want to set. For example if you have node js installed you can just do this in the console right now without chalk js installed.
+
+```
+$ node --eval "console.log('\u001b[31m red text \u001b[39m')" 
+```
+
+I am using two CSI \( Control Sequence Introducer \) sequences to change the color to red, and then back to the default for the terminal. I could go on about these codes but maybe that is a matter for another post, for the sake of this content peice I will be sticking mainly to just using chalk js.
 
 # 1 - The Chalk js Hello world app.
 
