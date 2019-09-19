@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 08:03:03
-version: 1.5
+updated: 2019-09-19 08:33:18
+version: 1.6
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
@@ -15,7 +15,9 @@ Particles js is a fun little toy to play with for a short while if you are looki
 
 <!-- more -->
 
-## Starting up a node project because of issues with file protocol.
+## 1 - particles js basics
+
+## 2 - Starting up a node project because of issues with file protocol.
 
 I went with using npm as the way to go about getting started with this project. You do not need to realy bother with node at al if you do not want to, as particals.js is a front end javaScript project. However if you do so you will still want to host what you are making via the http protocol.
 
@@ -27,26 +29,24 @@ $ npm install particles.js
 
 I will also need a means to setup a static server to serve up the index.html as this is one of those projects that will not work well with the file:// protocol. So with that said I put together this simple sever.js example that worked for me.
 
+### 2.1 - The server.js file at the root of the project folder
+
 ```js
-/*
- *  server.js
- *
- *   This just provides a simple static server for the project.
- *
- */
 var http = require('http'),
 fs = require('fs'),
 path = require('path'),
-port = 8888, // port 8888 for now
-root = process.cwd(); // assume current working path is root
+port = process.argv[2] || 8888, // port 8888
+root = path.join(process.cwd(), 'demos'); // assume current working path is root
 // create and start the server
 http.createServer(function (req, res) {
-    // get the path
+    // get the path to the request file
     var p = path.join(root, req.url);
     // get stats of that path
-    fs.lstat(p, function (e, stat) {
-        // if error end
+    fs.stat(p, function (e, stat) {
+        // if error end request
         if (e) {
+            res.writeHead(500);
+            res.write(e.message);
             res.end();
         }
         // if stats check it out
@@ -57,8 +57,10 @@ http.createServer(function (req, res) {
             }
             // try to read the path
             fs.readFile(p, 'binary', function (e, file) {
-                // if error end
+                // if error end request
                 if (e) {
+                    res.writeHead(500);
+                    res.write(e.message);
                     res.end();
                 }
                 // if file, send it out
@@ -70,7 +72,10 @@ http.createServer(function (req, res) {
             });
         }
     });
-}).listen(port);
+}).listen(port, function () {
+    console.log('particles.js project is up on port: ' + port);
+    console.log('hosting root path at : ' + root);
+});
 ```
 
 If you have something better in mind go with that, as long as you have a way to sever up the index.html via http.
