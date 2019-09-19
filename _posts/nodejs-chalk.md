@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 26
-updated: 2019-09-19 09:11:07
-version: 1.6
+updated: 2019-09-19 09:12:36
+version: 1.7
 ---
 
 When making any kind of node.js project that may involve output to the command line interface, it may be desired to style that output, for the sake of adding emphases, or just to make it look nice. Many CLI tools make use of color, for one reason or another, so if you want to add color to the output of you node.js CLI tools, you might want to check out [chalk](https://www.npmjs.com/package/chalk). Chalk makes changing the color of a terminal fairly easy, but if you are wondering how chalk works the answer is [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). If you just simply know the codes that you want to use you can just append them to the start and end of a string that you are outputting to the console. Chalk just makes working with ANSI escape codes easy
@@ -15,9 +15,9 @@ When I first wrote this post back in may I was using chalk 1.1.3, but as of this
 
 <!-- more -->
 
-# The Chalk Hello world app.
+# 1 - The Chalk js Hello world app.
 
-Getting started with chalk is real simple, after adding it to your project with the usual
+Getting started with chalk js is real simple, after adding it to your project with the usual npm install command I can the use it in a nodejs script with require just like any other user space npm package.
 
 ```
 $ npm install chalk --save
