@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 537
-updated: 2019-09-19 15:16:06
-version: 1.5
+updated: 2019-09-19 16:45:57
+version: 1.6
 ---
 
 The use of [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) is what can be used to control the format and behavior of a command line interface when making some kind of node cli tool. in node npm packages like chalk use ANSI escape codes to control the color of text, but they can be used to do far more than just that in the terminal. In this post I will be covering some basic examples of the use of ANSI escape codes to control things like the color of text, as well as cursor movement and more in nodejs.
@@ -96,3 +96,79 @@ process.stdout.write('\u001b[u');
 ```
 
 The first value I give after the open bracket is the number of positions I want to move the cursor and then I want to give the letter A to move up, B to move down, C to move forward or right, and D to move backward or left.
+
+### 2.2 - Cursor set example
+
+here I have an example that sets the position of the cursor with wasd key style movement from the keyboard. This also features setting the standard input stream into raw mode, and is starting to work like an actual terminal base application.
+
+```js
+let out = process.stdout;
+// Set the position of a cursor
+let setCur = (x, y) => {
+    x = x || 0;
+    y = y || 0;
+    out.write('\u001b[' + y + ';' + x + 'H');
+}
+let clearScreen = () => {
+    out.write('\u001b[2J');
+}
+let colorsSet = () => {
+    out.write('\u001b[47m');
+    out.write('\u001b[30m');
+};
+let colorsDefault = () => {
+    out.write('\u001b[39m\u001b[49m');
+};
+// draw the area and at symbol
+let draw = (opt) => {
+    opt = opt || {};
+    opt.x = opt.x || 1;
+    opt.y = opt.y || 1;
+    clearScreen();
+    setCur(1, 1);
+    colorsSet();
+    // draw area
+    out.write('..........\n');
+    out.write('..........\n');
+    out.write('..........\n');
+    out.write('..........\n');
+    out.write('move: wasd; exit: x');
+    // draw at symbol
+    setCur(opt.x, opt.y);
+    out.write('@');
+    colorsDefault();
+};
+// start position
+let pos = {
+    x: 1,
+    y: 1,
+    w: 10,
+    h: 4
+};
+draw(pos);
+setCur(1, 6);
+// set in raw mode and capture key strokes
+process.stdin.setRawMode(true)
+process.stdin.on('data', (data) => {
+    let input = data.toString().trim();
+    if (input === 'd') {
+        pos.x += 1;
+    }
+    if (input === 'a') {
+        pos.x -= 1;
+    }
+    if (input === 'w') {
+        pos.y -= 1;
+    }
+    if (input === 's') {
+        pos.y += 1;
+    }
+    if (input === 'x') {
+        process.exit()
+    }
+    pos.x = pos.x > pos.w ? pos.w: pos.x;
+    pos.y = pos.y > pos.h ? pos.h: pos.y;
+    draw(pos);
+    setCur(1, 6);
+});
+```
