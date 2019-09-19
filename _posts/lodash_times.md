@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2019-09-19 10:46:56
-version: 1.16
+updated: 2019-09-19 11:12:21
+version: 1.17
 ---
 
 How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well when it comes to making my own lodash times style method with plain old javaScript by itself.
@@ -92,7 +92,33 @@ while (i < 4) {
 console.log(arr); //[1,2,4,8]
 ```
 
-## 3 - vanilla js custom times method with a custom api
+## 3 - Plain old vanilla js clones of the lodash times method
+
+It is not to hard to make a plain old native javaScript clone of the lodash times method. In addition by doing so it is possible to make all kinds of custom tailored functionality of course. Writing a clone of the lodash times method is a great simple example of closure and high ordered functions as well. So writing at least one or two is a great way of getting used to closures and high order functions which comes in handy all the time in javaScript development.
+
+### 3.1 - A Basic lodash times clone
+
+```js
+// basic vanilla javaScript lodash times method clone
+let times = (count, func) => {
+    var i = 0,
+    results = [];
+    while (i < count) {
+        results.push(func(i));
+        i += 1;
+    }
+    return results;
+};
+ 
+// looks good
+let nums = times(10, (i) => {
+        return Math.pow(2, i);
+    });
+console.log(nums);
+// [ 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 ]
+```
+
+### 3.2 - vanilla js custom times method with a custom api
 
 Here is a vanilla js example I put together in a flash. Not only does it have the same features, In addition is has the beginnings of a custom api. This is achieved by using the power of [Function.call](/2017/09/21/js-call-apply-and-bind/) to set the value of the [this keyworld](/2017/04/14/js-this-keyword/) in the body of the function that I pass to my times method. In this example the api has some properties that reflect things like the current percentage value between 0 and 1 relative to the current index and count. That is of course one of many usual suspects when it comes to making anything creative with javaScript in my experience most of the time. The method could be hacked over to add all kinds of additional properties and methods depending on the project.
 
