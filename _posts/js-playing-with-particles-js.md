@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 08:33:18
-version: 1.6
+updated: 2019-09-19 08:36:53
+version: 1.7
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
@@ -16,6 +16,10 @@ Particles js is a fun little toy to play with for a short while if you are looki
 <!-- more -->
 
 ## 1 - particles js basics
+
+The particles js project is a client side javaScript project, but it can still be installed via npm. It is an older project that as of this writing appears to no longer be supported. However just because an older project is not longer supported that does not mean that it no longer works. It also does not mean that there might even be anything wrong with it.
+
+In this post I will not just be giving a simple particles js example, but will also be going over a simple static server script that will work with nodejs also in the process. You do not need to bother with this script assuming that you have another means to host particles js, and the additional code via http.
 
 ## 2 - Starting up a node project because of issues with file protocol.
 
