@@ -5,11 +5,13 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 07:45:49
-version: 1.4
+updated: 2019-09-19 08:03:03
+version: 1.5
 ---
 
-These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github. This is a fun little toy to play with for a short while if you are looking for something alone those lines. I can not think of any piratical use for particles.js really it is just a fun artful thing to do with javaScript just for the sake of fun, which is the main reason why I got into javaScript to begin with.
+These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
+
+Particles js is a fun little toy to play with for a short while if you are looking for something alone those lines. I can not think of any piratical use for particles.js really it is just a fun artful thing to do with javaScript just for the sake of fun, which is the main reason why I got into javaScript to begin with.
 
 <!-- more -->
 
