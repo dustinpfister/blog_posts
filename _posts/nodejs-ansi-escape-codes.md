@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 537
-updated: 2019-09-19 14:07:48
-version: 1.3
+updated: 2019-09-19 15:07:02
+version: 1.4
 ---
 
 The use of [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) is what can be used to control the format and behavior of a command line interface when making some kind of node cli tool. in node npm packages like chalk use ANSI escape codes to control the color of text, but they can be used to do far more than just that in the terminal. In this post I will be covering some basic examples of the use of ANSI escape codes to control things like the color of text, as well as cursor movement and more in nodejs.
@@ -59,4 +59,36 @@ console.log(color.blue(text));
 console.log(color.magenta(text));
 console.log(color.cyan(text));
 console.log(color.white(text, 40));
+```
+
+## 2 - Cursor Movement plus save and restore
+
+There is much more to ANSI escape codes beyond that of just setting the foreground and background colors of text. The escape codes can also be used to control the movement of the cursor in the console as well. So then this can be used as a way to create a terminal based interface. In this section I will be covering some of these escape codes that can control cursor movement when making a node cli tool.
+
+### 2.1 - Move a cursor and also save and restore
+
+In this example I am not just moving the cursor I am also saving the position of the cursor after drawing the display area so that when I am done I can then restore to that location.
+
+```js
+process.stdout.write('\u001b[47m');
+process.stdout.write('\u001b[30m');
+process.stdout.write('..........\n');
+process.stdout.write('..........\n');
+process.stdout.write('..........\n');
+process.stdout.write('..........\n');
+process.stdout.write('\u001b[s');
+// move up 4 and back 5
+process.stdout.write('\u001b[4A');
+process.stdout.write('\u001b[5D@');
+// reset colors
+process.stdout.write('\u001b[39m\u001b[49m');
+// restore cursor
+process.stdout.write('\u001b[u');
+ 
+/*
+@.........
+..........
+..........
+..........
+*/
 ```
