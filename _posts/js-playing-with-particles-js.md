@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 08:36:53
-version: 1.7
+updated: 2019-09-19 08:42:24
+version: 1.8
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
@@ -23,7 +23,7 @@ In this post I will not just be giving a simple particles js example, but will a
 
 ## 2 - Starting up a node project because of issues with file protocol.
 
-I went with using npm as the way to go about getting started with this project. You do not need to realy bother with node at al if you do not want to, as particals.js is a front end javaScript project. However if you do so you will still want to host what you are making via the http protocol.
+So even though particles js is a client side javaScipt project it can still be installed via npm. I ended up creating a demo folder in the root of the project folder and that is where I places particles.js though. So I coped and pasted it from the node_modules folder in other words. If you want you can grab a copy of particles js from the github folder, or check out my [test_particles](https://github.com/dustinpfister/test_particles) github folder that goes with this post.
 
 ```
 $ mkdir test_particles
