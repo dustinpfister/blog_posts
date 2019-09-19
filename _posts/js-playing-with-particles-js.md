@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 08:49:49
-version: 1.10
+updated: 2019-09-19 08:53:01
+version: 1.11
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
@@ -86,9 +86,14 @@ http.createServer(function (req, res) {
 
 If you have something better in mind go with that, as long as you have a way to sever up the index.html via http.
 
-## The index.html file
+## 3 - The demos folder
 
-Now that I have everything installed, and I have my sever.js file ready to go it's time to throw together a simple index.html file for the project.
+
+So in the root of the project folder I have made a demos folder that will be the folder that will be hosted. In this folder I have an index.html file that will load particles.js that I have in a js folder of this demos folder. I also have a basic.json file that contains the basic stats that are to be used with paricles js.
+
+### 3.1 - The index.html file
+
+Now that I have everything set up with demos folder, and I have my sever.js file ready to go it's time to throw together a simple index.html file for the project.
 
 ```html
 <div id="the-container"></div>
@@ -108,7 +113,7 @@ console.log('we be good man.');
 
 This html file just needs to grab the particles.js file, and also a json file that will be used to set up the particles.
 
-## Basic example with basic.json
+### 3.2 - Basic example with basic.json
 
 As you may have gathered the load method will use what is in the given json file to setup particles which will be used in the given container element. as such also in the root path of the project I places my basic.json file that looks like this:
 
