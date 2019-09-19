@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 08:48:16
-version: 1.9
+updated: 2019-09-19 08:49:49
+version: 1.10
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
@@ -35,7 +35,7 @@ I will also need a means to setup a static server to serve up the index.html as 
 
 ### 2.1 - The server.js file at the root of the project folder
 
-here is the server.js file that I worked out for this project. A file like this is something that I keep reinventing now and then when it comes to some of these projects when it comes to just using nodejs by itself. If interested a better alternative might be to just use express static. This will make things a little more complicated as I am now depending on more than just node, but onces express is part of the project it is very easy to just set up a static web sever to host files via http.
+here is the server.js file that I worked out for this project. A file like this is something that I keep reinventing now and then when it comes to some of these projects when it comes to just using nodejs by itself. If interested a better alternative might be to just use [express static](/2018/05/24/express-static/). This will make things a little more complicated as I am now depending on more than just node, but once express is part of the project it is very easy to just set up a static web sever to host files via http.
 
 ```js
 var http = require('http'),
