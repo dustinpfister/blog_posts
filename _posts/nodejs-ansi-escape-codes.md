@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 537
-updated: 2019-09-19 15:07:02
-version: 1.4
+updated: 2019-09-19 15:16:06
+version: 1.5
 ---
 
 The use of [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) is what can be used to control the format and behavior of a command line interface when making some kind of node cli tool. in node npm packages like chalk use ANSI escape codes to control the color of text, but they can be used to do far more than just that in the terminal. In this post I will be covering some basic examples of the use of ANSI escape codes to control things like the color of text, as well as cursor movement and more in nodejs.
@@ -67,7 +67,9 @@ There is much more to ANSI escape codes beyond that of just setting the foregrou
 
 ### 2.1 - Move a cursor and also save and restore
 
-In this example I am not just moving the cursor I am also saving the position of the cursor after drawing the display area so that when I am done I can then restore to that location.
+In this example I am not just moving the cursor I am also saving the position of the cursor after drawing the display area so that when I am done I can then restore to that location. This works more or less the same as the codes that are used to change the color of the text only there are are range of characters that can be used to move a cursor a number of positions up down left or right there are also characters that can be used to save and restore the cursor position.
+
+In this example I am using what we have covered with colors to create a few lines of text that represent and area, and then an at symbol for the current cursor position. I use the ANSI escape codes to move the cursor to the beginning of this area, and then write that at symbol. In addition I also use save and restore options.
 
 ```js
 process.stdout.write('\u001b[47m');
@@ -92,3 +94,5 @@ process.stdout.write('\u001b[u');
 ..........
 */
 ```
+
+The first value I give after the open bracket is the number of positions I want to move the cursor and then I want to give the letter A to move up, B to move down, C to move forward or right, and D to move backward or left.
