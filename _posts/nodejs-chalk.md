@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 26
-updated: 2019-09-19 09:36:11
-version: 1.8
+updated: 2019-09-19 09:37:25
+version: 1.9
 ---
 
 When making any kind of node.js project that may involve output to the command line interface, it may be desired to style that output, for the sake of adding emphases, or just to make it look nice. Many CLI tools make use of color, for one reason or another, so if you want to add color to the output of you node.js CLI tools, you might want to check out [chalk](https://www.npmjs.com/package/chalk). Chalk makes changing the color of a terminal fairly easy, but if you are wondering how chalk works the answer is [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). If you just simply know the codes that you want to use you can just append them to the start and end of a string that you are outputting to the console. Chalk just makes working with ANSI escape codes easy
@@ -25,7 +25,7 @@ $ node --eval "console.log('\u001b[31m red text \u001b[39m')"
 
 I am using two CSI \( Control Sequence Introducer \) sequences to change the color to red, and then back to the default for the terminal. I could go on about these codes but maybe that is a matter for another post, for the sake of this content peice I will be sticking mainly to just using chalk js.
 
-# 1 - The Chalk js Hello world app.
+# 2 - The Chalk js Hello world app.
 
 Getting started with chalk js is real simple, after adding it to your project with the usual npm install command I can the use it in a nodejs script with require just like any other user space npm package.
 
@@ -41,7 +41,7 @@ var chalk = require('chalk');
 console.log( chalk.red('hello world this is red terminal text!') );
 ```
 
-## Color Style methods
+## 3 - Color Style methods
 
 there are some 16 options in chalk when it comes to just setting a text color by calling one of the methods that is a color name, like so:
 
@@ -72,7 +72,7 @@ The full list of color options is as follows:
 * cyanBright
 * whiteBright
 
-## Background color style methods
+## 4 - Background color style methods
 
 Sometimes I might want to have a certain background color for the terminal text when making my CLI tool, and just have the plain old white foreground color. This can be done with the background style methods.
 
@@ -87,7 +87,7 @@ console.log( chalk.bgMagenta('magenta') );
 
 The full list of options is the same as with foreground colors, I just need to to ad 'bg' to the front of the name and capitalize the name of the color.
 
-## Modifier methods
+## 5 - Modifier methods
 
 there are some methods for logging text with certain text styles, such as bold, and underline. The support for these is mixed underline for example does not seem to work in windows 10 cmd.exe, and nothing with chalk works in cygwin64 terminal in windows as it has a color level of 0 there.
 
@@ -109,7 +109,7 @@ console.log(chalk.underline('bold'));
 * strikethrough
 * visible (Text is emitted only if enabled)
 
-## Color level, and color support of the terminal.
+## 6 - Color level, and color support of the terminal.
 
 Color support for will very across different terminals, for example cmd.exe in windows 10 seems to only support color level 2, which is only 16 colors. Some external terminals might not even support level 2, and ignore the text patterns that are used to switch text style, or even show them in the output.
 
@@ -134,7 +134,7 @@ console.log('color level: ' + chalk.level);
 
 As you may have gathered you can use the supportsColor property of chalk to find out if the terminal that you are using supports color in the first place or not.
 
-## Defining your own style
+## 7 - Defining your own style
 
 You can use a chainable API to define a custom style, and set it to a variable, like so.
 
@@ -146,7 +146,7 @@ myStyle = chalk.bold.green;
 console.log(myStyle('This is my term text style'));
 ```
 
-## Using the hex method to set color
+## 8 - Using the hex method to set color
 
 It is possible to set text color using a hex method. In the case of the terminal not supporting a certain color, it will be scaled down to whatever is close. That makes it a great choice allowing for more advanced control over terminal color, while still working okay if the terminal only supports 16 colors.
 
@@ -156,7 +156,7 @@ var chalk = require('chalk');
 console.log(chalk.hex('#ff0000')('This is red text set via a hex value'));
 ```
 
-## Using an RGB value
+## 9 - Using an RGB value
 
 This method works the same way as hex, only I can pass some dec values in place of a hex string.
 
@@ -166,7 +166,7 @@ var chalk = require('chalk');
 console.log(chalk.rgb(255,0,0)('This is red text set via a rgb value'));
 ```
 
-## Conclusion
+## 10 - Conclusion
 
 I have been following the development of chalk for some time now, it's a fun little dependency for setting terminal color to help add emphasis for things like error messages. The go to solution for adding stylish text to CLI tools in node.js for sure.
 
