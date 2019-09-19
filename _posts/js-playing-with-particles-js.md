@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 08:53:01
-version: 1.11
+updated: 2019-09-19 08:55:37
+version: 1.12
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
@@ -164,3 +164,7 @@ As you may have gathered the load method will use what is in the given json file
 ```
 
 This allows me to define some values for the particles that are going to be displayed. Also for my basic example I decided to disable interactivity.
+
+## 4 - Conclusion
+
+So particles js is a fun little project to play around with, but there is not much to it really just a way to have a bunch of particles floating around. If I get around to it I might expand this post one day when it comes to writing my own particles js project, but for now there is some more more to write about when it comes to javaScript, and all it has to offer.
