@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2019-09-20 16:40:16
-version: 1.11
+updated: 2019-09-20 16:45:22
+version: 1.12
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I wan to find the angle from one point to another in a Cartesian coordinate grid.
@@ -82,6 +82,8 @@ Now for an actual use case example of math atan2 using canvas. In this example I
 
 This example makes use of canvas, event handlers, and many other aspects of front end javaScript that I will not be getting into detail in this post.
 
+So here is some html for the example where I am creating a hard coded canvas element, and a script tag that will link to my external javaScript file that will contain the rest of my code.
+
 ```html
 <html>
     <head>
@@ -93,6 +95,8 @@ This example makes use of canvas, event handlers, and many other aspects of fron
     </body>
 </html>
 ```
+
+Here I have that external javaScript file.
 
 ```js
 // SETUP CANVAS
@@ -179,3 +183,5 @@ var loop = function () {
  
 loop();
 ```
+
+This is a nice visual way of confirming that the math atan2 method in javaScript works as expected when one knows how to adjust for it. I have worked out many projects in which I use atan2 in games to find the direction in which I want and enemy to fire for example when working out an AI script. If I get around to it many I will expand this post in the future to help outline some additional interesting use case examples of atan2.
