@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2019-09-20 16:22:34
-version: 1.10
+updated: 2019-09-20 16:40:16
+version: 1.11
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I wan to find the angle from one point to another in a Cartesian coordinate grid.
@@ -78,7 +78,9 @@ The nature of the expression can be tweaked depending on the project. The exampl
 
 ## 2 - atan2 canvas example
 
-Now for an actual use case example of math.atan2 using canvas. 
+Now for an actual use case example of math atan2 using canvas. In this example I create a circle that will change position based on mouse movement, and another circle that is at a set position. The circle at the set position can be changed by way of a mouse down event, and at any moment a line is drawn from the set circle to the circle that can be moved by a mouse move event.
+
+This example makes use of canvas, event handlers, and many other aspects of front end javaScript that I will not be getting into detail in this post.
 
 ```html
 <html>
