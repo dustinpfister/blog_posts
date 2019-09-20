@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 537
-updated: 2019-09-19 16:45:57
-version: 1.6
+updated: 2019-09-20 17:06:25
+version: 1.7
 ---
 
 The use of [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) is what can be used to control the format and behavior of a command line interface when making some kind of node cli tool. in node npm packages like chalk use ANSI escape codes to control the color of text, but they can be used to do far more than just that in the terminal. In this post I will be covering some basic examples of the use of ANSI escape codes to control things like the color of text, as well as cursor movement and more in nodejs.
@@ -172,3 +172,7 @@ process.stdin.on('data', (data) => {
     setCur(1, 6);
 });
 ```
+
+## 3 - Conclusion
+
+So ANSI escape codes are a way to control the presentation of a console allowing a developer to create terminal based interfaces. It is much more than just color allowing for control over the position of a cursor, and the deletion of content as well. It is a way to go about making terminal based games, and other apparitions such as terminal based text editors.
