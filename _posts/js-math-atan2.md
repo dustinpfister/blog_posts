@@ -1,21 +1,23 @@
 ---
-title: atan2 javaScript native Math method examples.
+title: Math atan2 javaScript native Math object method use case examples.
 date: 2019-03-19 17:29:00
 tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2019-04-01 16:14:57
-version: 1.7
+updated: 2019-09-20 15:39:19
+version: 1.8
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I wan to find the angle from one point to another in a Cartesian coordinate grid.
 
 <!-- more -->
 
-## 1 - atan2
+## 1 - Math atan2 in javaScript
 
-The Math.atan2 method in javaScript is strange in the sense that the y argument is what is passed to the method first, followed by x. Aside from that when passed an y and x value the method will return an angle to that point relative the origin. It is then just a matter of offsetting things to get the desired angle between any two points.
+The Math.atan2 method in javaScript is strange in the sense that the y argument is what is passed to the method first, followed by x. Aside from that when passed an y and x value the method will return an angle to that point relative to the origin or a point of 0 for both y an x. So then it is just a matter of offsetting things to get the desired angle between any two points in a 2d grid system. This of course is the most common use example of Math atan2 in javaScript, at least speaking from my experience with it so far.
+
+There are a few things that a developer should be aware of in addition to the nature of the arguments passed in relation to an origin. There is also the nature of the value that is returned which is a value between PI and negative PI which is different from the results that other methods might return. So lets look at some examples of the math atan2 method to help address some of these concerns.
 
 ### 1.1 - atan2 basic example
 
