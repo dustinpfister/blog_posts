@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2019-09-22 14:21:50
-version: 1.8
+updated: 2019-09-22 14:24:04
+version: 1.9
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing a javaScript project. The try catch statement is not just a one stop solution for all Error handling tasks when it comes to working with Errors in javaScript, but is certainly one aspect of doing so along with error objects in certain callbacks, and when working with promises as well. In this post I will be outlining some things to know about when working with the try catch.
@@ -77,6 +77,8 @@ console.log(valJSON('{\"n\":\"foo\"')); // 'baz'
 ```
 
 ## 3 - Catch id or error object and throw statement
+
+The catch block of a try catch statement will have a reference to the error object or catch id of the error that occurred in the try block. This can be used to set custom error handling conditions for specific errors.
 
 ```js
 var checkValue = function (n) {
