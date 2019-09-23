@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 26
-updated: 2019-09-19 09:37:25
-version: 1.9
+updated: 2019-09-23 09:49:13
+version: 1.10
 ---
 
 When making any kind of node.js project that may involve output to the command line interface, it may be desired to style that output, for the sake of adding emphases, or just to make it look nice. Many CLI tools make use of color, for one reason or another, so if you want to add color to the output of you node.js CLI tools, you might want to check out [chalk](https://www.npmjs.com/package/chalk). Chalk makes changing the color of a terminal fairly easy, but if you are wondering how chalk works the answer is [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). If you just simply know the codes that you want to use you can just append them to the start and end of a string that you are outputting to the console. Chalk just makes working with ANSI escape codes easy
@@ -15,9 +15,9 @@ When I first wrote this post back in may I was using chalk 1.1.3, but as of this
 
 <!-- more -->
 
-## 1 - Chalk js an ANSI escape codes
+## 1 - Chalk js and ANSI escape codes
 
-Chalk js is a great project for quickly changing the color of terminal text, but it might be best to just know what the proper ANSI escape codes are for the color that you want to set. For example if you have node js installed you can just do this in the console right now without chalk js installed.
+Chalk js is a great project for quickly changing the color of terminal text, but it might be best to just know what the proper ANSI escape codes are for the color that you want to set. For example if you have node js installed you can just do this in the console right now without chalk js installed. I will not be getting into detail with ansi escape codes here as I have another [post on using ansi escape codes to change color](/2019/09/19/nodejs-ansi-escape-codes/), and much more.
 
 ```
 $ node --eval "console.log('\u001b[31m red text \u001b[39m')" 
