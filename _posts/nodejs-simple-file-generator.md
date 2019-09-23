@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 538
-updated: 2019-09-23 16:53:22
-version: 1.5
+updated: 2019-09-23 16:55:17
+version: 1.6
 ---
 
 So way back I made a post on a simple static web sever using nodejs. Sense then I have not really continued with posts that have to do with making very simple versions of basic actual projects rather than simple demo like scripts for just one little native method or npm package with nodejs development. So I thought it would be a nice change of pace to start making a few more posts like that, starting with this one that has to do with just making a simple file generator.
@@ -26,7 +26,7 @@ $ npm init
 $ npm install mkdirp --save
 ```
 
-Once I have my project folder set up it is not tile to work out the main index.js file for the project. For this it will be just one file for the sake of keeping things real simple.
+Once I have my project folder set up it is not tile to work out the main index.js file for the project. For this it will be just one file for the sake of keeping things real simple. If you are interest I also have a github repository set up for what I am working [out here](https://github.com/dustinpfister/nodejs-simple-file-generator).
 
 ## 2 - The Simple node file generator main index.js file
 
