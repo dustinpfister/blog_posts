@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 538
-updated: 2019-09-23 17:00:51
-version: 1.7
+updated: 2019-09-23 17:07:18
+version: 1.8
 ---
 
-So way back I made a [post on a simple node static web sever](/2017/12/04/nodejs-simple-static-server-file/) that is a subject that seems to come up now and then. Sense then I have not really continued with posts that have to do with making very simple versions of basic actual projects rather than simple demo like scripts for just one little native method or npm package with nodejs development. So I thought it would be a nice change of pace to start making a few more posts like that, starting with this one that has to do with just making a simple file generator.
+So way back I made a [post on a simple node static web sever](/2017/12/04/nodejs-simple-static-server-file/) that is a subject that seems to come up now and then. Sense then I have not really continued with posts like that which have to do with making [very simple versions](https://nodejs.org/en/docs/guides/getting-started-guide/) of basic actual projects when [getting started with node](/2017/04/05/nodejs-helloworld/). than simple demo like scripts for just one little native method or npm package with nodejs development. So I thought it would be a nice change of pace to start making a few more posts like that, starting with this one that has to do with just making a simple file generator.
 
 <!-- more -->
 
