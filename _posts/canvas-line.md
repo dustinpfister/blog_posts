@@ -1,19 +1,19 @@
 ---
-title: canvas lines
+title: Canvas lines the basics and much more
 date: 2019-03-03 17:17:00
 tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-03-05 18:04:24
-version: 1.19
+updated: 2019-09-23 17:24:43
+version: 1.20
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
 
 <!-- more -->
 
-## 1 - Canvas line
+## 1 - Canvas line basic example
 
 To make a canvas line I first need to gain a reference to a canvas element, and get a reference to the 2d drawing context as well. I can then set the stroke style and begin a line by calling the beginPath method. Once I have called begin path I can then use the moveTo method to move to a certain point, and then the lineTo method to create a line from the moveTo point to the lineTo point. Once done I can call the stroke method to draw the line.
 
@@ -120,7 +120,7 @@ The order in which the fill and stroke methods is call does matter and can effec
 
 When it comes to drawing any kind of complex path it gets to the point where I would want to work out a ways to create and draw a collection of points. When things start to get intense there are many canvas libraries that help to abstract things away, but in this section I will be covering some basics of this without the use of a library.
 
-### 5.1 - The drawPoints function
+### 5.1 - Making a drawPoints function
 
 The first thing I would do is work out a function that will draw a standard collection of points. This standard collection of points could be a collection of objects each with an x, and y property. However in this section I will be working with a simple linear array of number primitives.
 
