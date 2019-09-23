@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 538
-updated: 2019-09-23 16:43:43
-version: 1.3
+updated: 2019-09-23 16:51:23
+version: 1.4
 ---
 
 So way back I made a post on a simple static web sever using nodejs. Sense then I have not really continued with posts that have to do with making very simple versions of basic actual projects rather than simple demo like scripts for just one little native method or npm package with nodejs development. So I thought it would be a nice change of pace to start making a few more posts like that, starting with this one that has to do with just making a simple file generator.
@@ -78,3 +78,49 @@ module.exports = (fileObjects, options, forGen) => {
 ```
 
 The gen file method will create a filePaths dirname that is the full dirname minus the file name part if the path is not there thanks to mkdirp. The use of mkdirp will return a promise because of the use of the util promisify method, so if all goes well with creating the path I wil then also write the file with the given data.
+
+## 3 - Demos
+
+So now that I have my simple node file generator worked out I can now use it with some simple examples just to make sure that it works as expected.
+
+So a single file can be created like this:
+
+```js
+let genFile = require('./index.js');
+ 
+genFile({
+    path: './test/foo.md',
+    data: 'This is the foo data'
+})
+.then(() => {
+    console.log('generated file');
+})
+.catch((e) => {
+    console.log(e.message);
+});
+```
+
+And a collection of files can be created like this:
+
+```js
+let genFile = require('./index.js');
+ 
+genFile([{
+    path: './test/2019/01/index.html',
+    data: '<p>This is a foo page</p>'
+},
+{
+    path: './test/2019/02/index.html',
+    data: '<p>This is a bar page</p>'
+}])
+.then(() => {
+    console.log('generated file');
+})
+.catch((e) => {
+    console.log(e.message);
+});
+```
+
+These scripts work as expected so it looks like it is a done deal for what I has in mind. This project could now be made into a public npmjs project which I might do at some point. Of course these simple examples do not reflect any kind of real project one thing that comes to mind is some kind of static site generator where I am building a site with templates markdown and other assets. A simple node file generator such as this could be a small part of a project like that.
+
+## 4
