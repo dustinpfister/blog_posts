@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 26
-updated: 2019-09-23 09:52:04
-version: 1.11
+updated: 2019-09-23 09:53:43
+version: 1.12
 ---
 
 When making any kind of node.js project that may involve output to the command line interface, it may be desired to style that output, for the sake of adding emphases, or just to make it look nice. Many CLI tools make use of color, for one reason or another, so if you want to add color to the output of you node.js CLI tools, you might want to check out [chalk](https://www.npmjs.com/package/chalk). Chalk makes changing the color of a terminal fairly easy, but if you are wondering how chalk works the answer is [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). If you just simply know the codes that you want to use you can just append them to the start and end of a string that you are outputting to the console. Chalk just makes working with ANSI escape codes easy
@@ -23,7 +23,7 @@ Chalk js is a great project for quickly changing the color of terminal text, but
 $ node --eval "console.log('\u001b[31m red text \u001b[39m')" 
 ```
 
-I am using two CSI \( Control Sequence Introducer \) sequences to change the color to red, and then back to the default for the terminal. I could go on about these codes but maybe that is a matter for another post, for the sake of this content peice I will be sticking mainly to just using chalk js.
+I am using two CSI \( Control Sequence Introducer \) sequences to change the color to red, and then back to the default for the terminal. I could go on about these codes but maybe that is a matter for another post, for the sake of this content piece I will be sticking mainly to just using chalk js.
 
 # 2 - The Chalk js Hello world app.
 
