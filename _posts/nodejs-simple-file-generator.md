@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 538
-updated: 2019-09-23 16:37:44
-version: 1.1
+updated: 2019-09-23 16:40:33
+version: 1.2
 ---
 
 So way back I made a post on a simple static web sever using nodejs. Sense then I have not really continued with posts that have to do with making very simple versions of basic actual projects rather than simple demo like scripts for just one little native method or npm package with nodejs development. So I thought it would be a nice change of pace to start making a few more posts like that, starting with this one that has to do with just making a simple file generator.
@@ -30,7 +30,7 @@ Once I have my project folder set up it is not tile to work out the main index.j
 
 ## 2 - The Simple node file generator main index.js file
 
-So then in this section I will be going over the index.js file of the project. In here I am using the mkdirp method that I made the only dependency of course, and on top of that I am also using a few nodejs build in modules also.
+So then in this section I will be going over the index.js file of the project. In here I am using the mkdirp method that I made the only dependency of course, and on top of that I am also using a few nodejs build in modules also. I am using the built in nodejs file system module, and I am also using the util module to promisify the write file method of the file system module as well as mkdirp. I am also using the path module as a way to make sure that I am working with an absolute path as well as a way to strip that dir part of a path form a full path to what will be a file with the path dirname method.
 
 ```js
 let fs = require('fs'),
