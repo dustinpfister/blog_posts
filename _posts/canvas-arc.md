@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-09-18 11:24:47
-version: 1.54
+updated: 2019-09-24 11:16:40
+version: 1.55
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project. Not just for the sake of drawing graphics, but to also get an idea where a certain range is from a given point outward to a certain radius. So the canvas arc method can be used as a way to quickly draw circles and arcs in a canvas project, however there are also many other related topics to canvas arcs also such as the nature of radians, Math.cos, and Math.sin. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context so lets get to it.
@@ -121,7 +121,7 @@ The core javaScript Math sin and cos methods can be used to not just draw arcs, 
 
 So now that you know the basics of the canvas arc method, as well as other options for drawing arcs in canvas. Lets look at some more canvas code examples that have to do with this subject.
 
-## 2 - Drawing a full canvas arc circle
+## 2 - Drawing a full circle with the canvas arc method
 
 To draw a full circle with the canvas arc method just set radian values from zero to Math.Pi \* 2, apart from the usual values that set the center point an radius. The angular direction of the arc is of little consequence as long as the proper values for the starting and ending radian are set of course.
 
@@ -224,7 +224,7 @@ ctx.stroke();
 
 The general point is that just because there is a native method that does not mean that is what must always be what is used in a project. If I can still rationalize a reason to write my own method to do something natively, or in this case wrap a native method so that I can have control over default values and more, I might very well just do that.
 
-## 6 - Using a custom method for drawing a canvas arc circle using Math.cos Math.sin and much more
+## 6 - Using a custom method for drawing a canvas arc circle using Math.cos Math.sin and a drawPoints method
 
 So now that we have a good feel for how to go about using the native canvas arc method in the 2d drawing context of the canvas api, lets take a moment to explore some more advanced ways to go about drawing circles arcs and circle like patterns. In the section I will be used Math.cos, and Math.sin as a way to create an array of points in the form of a linear array of x and y vales. In other words a one dimensional array where each first point of a split of two is the x value and the second is the y value. This seams to be a common format for an array of point value that is used in many framework as it it is a more efficient alternative to an array of objects.
 
@@ -272,13 +272,42 @@ It is fun to write these kind of methods now and then to gain a better degree of
 
 This method can only be used to draw a circle, rather than say a half circle as I have choses to omit arguments for a start and end radian, and direction. It is true that writing a clone of the canvas arc method would not to be to hard, but doing so would not make sense, unless there are some additional features to add, such as being able to set the number of sides in the canvas arc.
 
-## 7 - Time to have some fun with canvas arc by making deterministic animations
+## 7 - drawing an ellipse with canvas
+
+```js
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// a drawEllipse method that takes a center x and y point
+// along with width and height
+var drawEllipse = function(ctx, cx, cy, w, h, pointCount){
+    var i = 0,
+    x,y,r;
+    pointCount = pointCount || 100,
+    ctx.beginPath();
+    while(i < pointCount){
+        r = Math.PI * 2 * (i / pointCount);
+        x = cx + Math.cos(r) * w;
+        y = cy + Math.sin(r) * h;
+        ctx.lineTo(x,y);
+        i += 1;
+    }
+    ctx.closePath();
+    ctx.stroke();
+};
+ 
+// looks good
+drawEllipse(ctx, 160, 120, 100, 50, 25)
+```
+
+## 8 - Time to have some fun with canvas arc by making deterministic animations
 
 So I think it games without saying that canvas is one of the more fun an interesting aspects of programing with javaScript. Canvas can be used to make html 5 games, and interesting animations that can be a whole world of fun. In this section I will be going over some simple canvas animation examples that make use of the canvas arc method.
 
 These animation examples make use of the requestAnimationFrame method as a way of creating a render loop for canvas that is often the standard method for doing so with canvas projects. I often like to make animations that are deterministic in nature so that they can potentially be turned into perfectly looping gifs or webm videos. In other words there are a fixed number of frames and I am just working out the logic that is to be applied for each frame with javaScript. This differs from other styles of animation that involve generating a new frame on each tick that will not necessarily be deterministic. I would like to get into the subject deeper, but I do not want to get to far off topic from the canvas arc method in this post.
 
-### 7.1 - The canvas arc method in an animation
+### 8.1 - The canvas arc method in an animation
 
 In this canvas animation example I am updating two variables that have to do with changing the starting and ending radian values when calling the canvas arc method in a draw method that is called on each frame tick.
 
@@ -341,7 +370,7 @@ loop();
 
 In the canvas animations update method I am updating the state of the animation based on the current frame value relative to the total frame count that I have set, and then I also step the frame count. In the draw method of the animation I then use the canvas arc method with the startRad and endRad values that are updated in the update method. I then have a main loop method in which I am updating and drawing this canvas animation.
 
-### 7.2 - Uisng Math.cos and Math.sin to create an arc like movement in canvas
+### 8.2 - Uisng Math.cos and Math.sin to create an arc like movement in canvas
 
 In this post I also touched base on the Math.sin and Math.cos methods in core javaScript that can be used to create an arc as well in canvas. When it comes to making something move in an arc like pattern in canvas such as an array of box like objects that can be rendered using the fillRect method cos and sin can be used to move such objects in an arc like pattern.
 
@@ -419,7 +448,7 @@ loop();
 
 When it comes to making cool little canvas projects like this I often do find myself moving things in arc like patterns. There is using the native canvas arc method to draw arcs, but if I want to just pan things out in an arc, and move them in an arc like fashion then I do of course need to write my own method for doing so often using the Math.cos, and Math.sin methods to do so.
 
-### 7.3 - Using canvas arc as a way to track the location of points in an animation
+### 8.3 - Using canvas arc as a way to track the location of points in an animation
 
 So for this animation example that I started working out I am just using canvas arc as a way to track the movement of my points as I work out the expressions, logic, and structure of the animation. Compared to the previous animation examples I am now separating things into a state object, and having everything that has to do with rendering including the use of the canvas arc method outside the body of that state object.
 
@@ -499,7 +528,7 @@ So for this animation example that I started working out I am just using canvas 
 
 I often do just use the canvas arc method as a way to just track the movement of points by just keeping the radius of the circle very small. I find doing so quick and easy compared to drawing two lines, and also like it over using the stroke rect method.
 
-## 8 - Conclusion
+## 9 - Conclusion
 
 The canvas arc method is just one of many methods in the canvas 2d drawing context of course, however it is one that seems to come up often. Canvas is a lot of fun of course, and it can also be very helpful as well when it comes to working out basic graphics with javaScript code. 
 
