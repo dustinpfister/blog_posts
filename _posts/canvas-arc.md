@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-09-24 11:16:40
-version: 1.55
+updated: 2019-09-24 11:22:17
+version: 1.56
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project. Not just for the sake of drawing graphics, but to also get an idea where a certain range is from a given point outward to a certain radius. So the canvas arc method can be used as a way to quickly draw circles and arcs in a canvas project, however there are also many other related topics to canvas arcs also such as the nature of radians, Math.cos, and Math.sin. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context so lets get to it.
@@ -273,6 +273,10 @@ It is fun to write these kind of methods now and then to gain a better degree of
 This method can only be used to draw a circle, rather than say a half circle as I have choses to omit arguments for a start and end radian, and direction. It is true that writing a clone of the canvas arc method would not to be to hard, but doing so would not make sense, unless there are some additional features to add, such as being able to set the number of sides in the canvas arc.
 
 ## 7 - drawing an ellipse with canvas
+
+So there is drawing arcs, chords and circles with the canvas arc method, as well as Math cos and sin methods, and then there is getting into drawing an ellipse and more complex curves which is where things can start to really get interesting. There is a native canvas ellipse method that can be used to just go ahead and draw an ellipse with the 2d canvas drawing api. However the browser support with that one goes back only so far. In any case it makes sense to have at least a basic idea of how to go about drawing an ellipse, and also how to go about positioning things in an elliptical like position. So then in this section I will be going over some examples of how to go about drawing an ellipse with canvas, as there is more than one way to skin a cat with this one like many things in programing.
+
+### 7.1 - Drawing an ellipse in canvas with Math sin and cos and giving a center point along with width and height
 
 ```js
 // get canvas can 2d context
