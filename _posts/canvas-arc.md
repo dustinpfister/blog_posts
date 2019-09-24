@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-09-24 13:51:33
-version: 1.57
+updated: 2019-09-24 13:56:42
+version: 1.58
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) for the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project. Not just for the sake of drawing graphics, but to also get an idea where a certain range is from a given point outward to a certain radius. So the canvas arc method can be used as a way to quickly draw circles and arcs in a canvas project, however there are also many other related topics to canvas arcs also such as the nature of radians, Math.cos, and Math.sin. In this post I will be covering what there is to be aware of when it comes to the canvas arc method and other related topics in client side javaScript and the 2d canvas drawing context so lets get to it.
@@ -301,6 +301,8 @@ This solution might work out okay if you are all right with dropping support for
 
 ### 7.2 - Drawing an ellipse in canvas with Math sin and cos and giving a center point along with width and height
 
+So then making my own method to draw an ellipse with canvas has not proved to be all that more complex then what is required to do the same for drawing an arc or circle. The one little difference is that I am just using two different radius values one for the x value and the other for y.
+
 ```js
 // get canvas can 2d context
 var canvas = document.getElementById('the-canvas'),
@@ -327,6 +329,8 @@ var drawEllipse = function(ctx, cx, cy, w, h, pointCount){
 // looks good
 drawEllipse(ctx, 160, 120, 100, 50, 25)
 ```
+
+Just like with the custom canvas arc method I can do things like set the number of points that will be used.
 
 ## 8 - Time to have some fun with canvas arc by making deterministic animations
 
