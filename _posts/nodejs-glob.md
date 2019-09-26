@@ -5,12 +5,12 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2019-09-26 08:46:52
-version: 1.12
+updated: 2019-09-26 08:53:58
+version: 1.13
 ---
 
-If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use a \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern, and the npm package [glob](
-https://www.npmjs.com/package/glob) is a great solution for selecting files in a [node.js](https://nodejs.org/en/) environment.
+If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use a \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern this way, so it would be nice to quickly go about doing so in a nodejs programing environment. I could go about writing my own solution for doing so, but why bother putting time nd energy into that when there is all ready the popular npm package called simply [glob](
+https://www.npmjs.com/package/glob). The npm package glob is a great solution for selecting files in a [node.js](https://nodejs.org/en/) environment with glob patterns, so lets take a moment to look at some examples of glob in action.
 
 <!-- more -->
 
