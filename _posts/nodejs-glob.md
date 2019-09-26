@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2019-09-26 08:53:58
-version: 1.13
+updated: 2019-09-26 09:05:24
+version: 1.14
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use a \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern this way, so it would be nice to quickly go about doing so in a nodejs programing environment. I could go about writing my own solution for doing so, but why bother putting time nd energy into that when there is all ready the popular npm package called simply [glob](
@@ -30,13 +30,13 @@ Will match any file with a .txt extension which will match helloworld.txt, and r
 
 ## 2 - Basic usage of glob in nodejs
 
-The name of the package is just simply glob, as such I can add it to a node.js project link this
+The name of the package is just simply glob, so it can be added to an node project with the usual syntax like this:
 
 ```
-$ npm install glob
+$ npm install glob --save
 ```
 
-In a test project folder I made a simple basic.js file that looks like this:
+Once the glob npm package is installed it can then be required into a script just like with any other built in nodejs module or user land project that has been installed into a node modules folder of a project. In a test project folder I made a simple basic.js file that will match any javaScript file in the current working path.
 
 ```js
 var glob = require('glob');
