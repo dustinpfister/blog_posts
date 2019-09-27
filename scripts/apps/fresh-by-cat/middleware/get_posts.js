@@ -28,7 +28,7 @@ module.exports = (opt) => {
                     m = date.getMonth(),
                     t = now - update;
 
-                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
+                    //console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
 
                     let catPosts = report[cat] = report[cat] || [];
 
@@ -43,6 +43,8 @@ module.exports = (opt) => {
                     if (fresh < 0) {
                         fresh = 0;
                     }
+					
+					//console.log(catPosts);
 
                     nextPost();
                 },

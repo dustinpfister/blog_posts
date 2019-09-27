@@ -27,15 +27,7 @@ app.get('*', (req, res, next) => {
 
 });
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'fresh by month',
-        layout: 'home',
-        report: []
-    });
-});
-
-app.get('/all', [
+app.get('/', [
         // get posts
         require('./middleware/get_posts.js')({
             dir_cli: dir_cli,

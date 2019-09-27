@@ -7,8 +7,12 @@
   </head>
   <body>
      <h1>Fresh By Cat</h1>
-	 <% for( var cat in report ){ %>
-	    <%= cat %>
-	 <% } %>
+     <% for( var cat in report ){ %>
+        <h2><%= cat %></h2>
+        <% report[cat].forEach(function(post){ %>
+            <span><%= post.title %></span><br>
+        <% }); %>
+        <br>
+     <% } %>
   </body>
 </html>
