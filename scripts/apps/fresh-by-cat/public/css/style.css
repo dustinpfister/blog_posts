@@ -1,0 +1,93 @@
+/* body*/
+body{
+	color:white;
+	background:black;
+	padding:0px;
+	margin:0px;
+}
+
+/* header */
+#wrap_header{
+	padding:5px;
+	margin:0px;
+	position:fixed;
+	height:190px;
+	width:100%;
+	top:0px;
+	background:#006a00;
+	opacity:0.9;
+	
+	font-size:13px;
+}
+
+/* content */
+#wrap_content{
+	margin-top:200px;
+}
+
+/* table basics */
+table{
+	width:100%;
+}
+table, th, td {
+  border: 1px solid #8a8a8a;
+}
+
+/* month title */
+.month_title{
+	font-size: 24pt;
+}
+.month_rank{
+	color: black;
+	background:white;
+}
+.month_key{
+	text-decoration: underline;
+}
+.month_fresh{
+	color: black;
+	background:white;
+}
+
+
+
+/* fresh styles */
+.fresh_old{
+	color:red;
+}
+.fresh_middle{
+	color:orange;
+}
+.fresh_new{
+	color:green;
+}
+
+.fresh_0{
+	color:red;
+}
+.fresh_25{
+	color:orange;
+}
+.fresh_50{
+	color:green;
+}
+.fresh_75{
+	color:lime;
+}
+
+/* word count styles*/
+.wordcount_0{
+	color:red;
+}
+.wordcount_500{
+	color:orange;
+}
+.wordcount_1000{
+	color:green;
+}
+.wordcount_1800{
+	color:lime;
+}
+a:link{color:#00ff80;}
+a:visited{color:#00cf00;}
+a:hover{color:#ffffff;}
