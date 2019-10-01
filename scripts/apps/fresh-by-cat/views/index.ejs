@@ -7,12 +7,18 @@
   </head>
   <body>
      <h1>Fresh By Cat</h1>
-     <% for( var cat in report ){ %>
-        <h2><%= cat %></h2>
-        <% report[cat].forEach(function(post){ %>
-            <span><%= post.title %></span><br>
+     <% report.cats.forEach(function(cat, i){ %>
+        <h2><%= ( i + 1 ) + ') '+ cat.catName %></h2>
+        <p class="<%- getFreshClassName(cat.fresh) %>">freshPer: <%= cat.fresh.toFixed(2) %></p>
+        <table>
+        <tr><th>file name</th><th>fresh</th><th>word count</th></tr>
+        <% cat.posts.forEach(function(post){ %>
+            <tr><td><%= post.fn %></td>
+            <td class="<%- getFreshClassName(post.fresh) %>"><%= post.fresh.toFixed(2) %></td>
+            <td class="<%- getWcClassName(post.wc) %>"><%= post.wc %></td></tr>
         <% }); %>
+        </table>
         <br>
-     <% } %>
+     <% }); %>
   </body>
 </html>

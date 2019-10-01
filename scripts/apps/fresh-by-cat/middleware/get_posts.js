@@ -10,10 +10,13 @@ module.exports = (opt) => {
 
     return [
 
-        // walk file system
+        // walk file system and get post data
         (req, res, next) => {
 
-            let report = res.report = {},
+            let report = res.report = {
+                cats: []
+            },
+            cats = report.cats,
             now = new Date(new Date() - new Date().getTimezoneOffset() * 60 * 1000),
             days_back = opt.app.get('days_back');
 
@@ -23,28 +26,40 @@ module.exports = (opt) => {
                     // the publish date
                     let date = new Date(item.header.date),
                     update = new Date(item.header.updated),
-                    cat = item.header.categories,
+                    catName = item.header.categories,
                     y = date.getFullYear(),
                     m = date.getMonth(),
                     t = now - update;
 
-                    //console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
+                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
 
-                    let catPosts = report[cat] = report[cat] || [];
+                    let cat = cats.find((c) => {
 
-                    catPosts.push({
+                            return c.catName === catName;
 
-                        title: item.header.title
+                        });
 
-                    })
+                    if (!cat) {
+                        cat = {
+                            catName: catName,
+                            posts: []
+                        };
+                        cats.push(cat);
+                    }
 
                     let days = t / 1000 / 60 / 60 / 24,
                     fresh = (days_back - days) / days_back;
                     if (fresh < 0) {
                         fresh = 0;
                     }
-					
-					//console.log(catPosts);
+
+                    cat.posts.push({
+                        fn: item.fn,
+                        title: item.header.title,
+                        fresh: fresh,
+                        wc: item.wc
+
+                    })
 
                     nextPost();
                 },
@@ -56,6 +71,18 @@ module.exports = (opt) => {
                 }
             });
 
+        },
+
+        // tabulate cat.fresh
+        (req, res, next) => {
+            res.report.cats.forEach((cat) => {
+                cat.fresh = 0;
+                cat.posts.forEach((post) => {
+                    cat.fresh += post.fresh;
+                });
+                cat.fresh /= cat.posts.length;
+            })
+            next();
         }
 
     ];

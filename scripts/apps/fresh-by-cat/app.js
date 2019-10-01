@@ -6,9 +6,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.set('port', process.env.PORT || process.argv[2] || 8080);
 
-app.set('days_back', process.argv[3] || 365 * 2);
-app.set('year_start', 1983);
-app.set('year_end', 2053);
+app.set('days_back', process.argv[3] || 90);
 
 let dir_cli = path.resolve('../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
@@ -20,8 +18,6 @@ app.get('*', (req, res, next) => {
     console.log(req.query);
 
     app.set('days_back', req.query.d || app.get('days_back'));
-    app.set('year_start', req.query.ys || app.get('year_start'));
-    app.set('year_end', req.query.ye || app.get('year_end'));
 
     next();
 
@@ -34,7 +30,7 @@ app.get('/', [
             app: app
         }),
         // create an array, and sort by fresh percent
-        //require('./middleware/sort_by_fresh.js'),
+        require('./middleware/sort_by_fresh.js'),
         // send html
         (req, res) => {
             res.render('index', {
