@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 141
-updated: 2019-02-14 18:30:55
-version: 1.3
+updated: 2019-10-02 08:09:27
+version: 1.4
 ---
 
 The [lodash](https://lodash.com/) [\_.zip method](https://lodash.com/docs/4.17.4#zip) can be used to zip some separate arrays into one array of arrays. It is one of several helpful methods in lodash for working with multi-definitional arrays, as \_.zip can be used as a way to create them. Another such method is [\_.chunk](/2017/09/13/lodash-chunk/) that can be used to make a multi deferential array from a single array, while \_.zip can make them from two, or more arrays.
@@ -126,4 +126,4 @@ console.log(_.chunk(_.flatten(_.zip(r1,r2,r3,r4)),w));
 
 ## 5 - Conclusion
 
-So \_.zip is a useful method, and it seems like a good match  with [\_.chunk](/2017/09/13/lodash-chunk/), and \_.flatten as well.
+So \_.zip is a useful method, and it seems like a good match with the  [\_.chunk](/2017/09/13/lodash-chunk/), method that will break a linear array into an array of arrays. There is also the [\_.flatten](/2018/08/12/lodash_flatten/) method as well that can be used to flatten an array of arrays into a linear array.
