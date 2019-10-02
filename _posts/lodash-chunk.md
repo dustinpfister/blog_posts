@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2019-10-02 10:53:53
-version: 1.9
+updated: 2019-10-02 11:04:23
+version: 1.10
 ---
 
 So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays.
@@ -17,7 +17,7 @@ So how often do I get into a situation in which I need to break down a linear ar
 
 ## 1 - What to know before hand.
 
-This is a post on the \_.chunk method in lodash which is one of the many [lodash array methods](/2019/02/14/lodash_array/) that can be used with arrays rather than any collection or object in general. If you are new to javaScript and lodash this might not be a good starting point for you.
+This is a post on the \_.chunk method in lodash which is one of the many [lodash array methods](/2019/02/14/lodash_array/) that are intended to be used with arrays only rather than any collection or object in general. If you are new to javaScript and lodash this might not be a good starting point for you, as I assume that you have at least got you feet wet with javaScript before hand .
 
 ## 2 - The basic idea of \_.chunk
 
