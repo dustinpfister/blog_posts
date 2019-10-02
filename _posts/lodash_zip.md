@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 141
-updated: 2019-10-02 09:30:41
-version: 1.6
+updated: 2019-10-02 09:34:44
+version: 1.7
 ---
 
 The [lodash](https://lodash.com/) [\_.zip method](https://lodash.com/docs/4.17.4#zip) can be used to zip some separate arrays into one array of arrays. It is one of several helpful methods in lodash for working with multi-definitional arrays, as \_.zip can be used as a way to create them. Another such method is [\_.chunk](/2017/09/13/lodash-chunk/) that can be used to make a multi deferential array from a single array, while \_.zip can make them from two, or more arrays.
@@ -17,7 +17,7 @@ The [lodash](https://lodash.com/) [\_.zip method](https://lodash.com/docs/4.17.4
 
 This is a post on the \_.zip method in lodash one of the many [array methods in lodash](/2019/02/14/lodash_array/). I will be writing about this method, some use case examples with it, as well as many other related topics. I assume that you have at least some background with javaScript, and are just currently exploring lodash, what lodash has to offer, and native javaScript alternatives to many of the lodash methods such as lodash zip. So in this section I will be going over a few things to be aware of, but will not be getting into the basics of javaScript and html in general.
 
-### 1.1 - Some background on multi-deferential arrays in javaScript
+### 1.1 - Multidimensional arrays as arrays of arrays in javaScript
 
 In javaScript I can have an array of arrays, or just a single array that follows a certain formula.
 
@@ -54,7 +54,21 @@ console.log(el); // 5
 
 It's just two different ways of doing the same thing. In lodash there are a few methods of interest that help make quick work of converting between these two ways have having data organized in arrays. In this post I will be covering mainly how \_.zip can be useful in these situations.
 
-## 3- Basic example of \_.zip
+### 1.2 - Multidimensional arrays as just a single linear array
+
+```js
+// just a single array
+var matrix = [1,2,3,4,1,0,5,1,1,0,0,1,2,1,1,3],
+w = 4;
+ 
+var x = 2, y = 1,
+// I can do the same thing with a single array
+// if I know the width
+el = matrix[ y * w + x];
+console.log(el); // 5
+```
+
+## 2 - Basic example of \_.zip
 
 \_.zip works by making the first element of the first array given to it also the first element of the first array in what is returned, but then the second element in what is returned comes from the first element in the second array given to it, and so forth. \_.unzip can then be used to unzip what is returned back into a collection of the original arrays that where given.
 
@@ -74,7 +88,7 @@ _.each(matrix, function(pt){
 });
 ```
 
-## 4 - \_.zip, \_.unzip, \_.flatten, and \_.chunk
+## 3 - \_.zip, \_.unzip, \_.flatten, and \_.chunk
 
 So if I have a bunch of single stand alone arrays, and I want to zip them together into an array of arrays I can do that with \_.zip. I can then unzip them back into the way there where before using \_.unzip. Another method of interest is \_.flatten that will flatten an array of arrays into a single array, and then [\_.chunk](/2017/09/13/lodash-chunk/) can be used to break it back down into an array of arrays with a given width.
 
@@ -124,6 +138,6 @@ console.log(_.chunk(_.flatten(_.zip(r1,r2,r3,r4)),w));
 //  [2,1,1,3]]
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So \_.zip is a useful method, and it seems like a good match with the  [\_.chunk](/2017/09/13/lodash-chunk/), method that will break a linear array into an array of arrays. There is also the [\_.flatten](/2018/08/12/lodash_flatten/) method as well that can be used to flatten an array of arrays into a linear array.
