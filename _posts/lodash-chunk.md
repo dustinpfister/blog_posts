@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2019-10-02 11:04:23
-version: 1.10
+updated: 2019-10-02 11:08:12
+version: 1.11
 ---
 
 So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays.
@@ -21,7 +21,9 @@ This is a post on the \_.chunk method in lodash which is one of the many [lodash
 
 ## 2 - The basic idea of \_.chunk
 
-So the \_.chunk method will break down an array into groups of a given size like this:
+So the \_.chunk method will break down an array into an array of arrays of a given size for each child array. The first argument given to the lodash chunk method should be the array that is to be broken down, and the second argument is the number of elements per chunk or child array within the resulting array that is returned.
+
+So a basic example of the lodash chunk method might be like this:
 
 ```js
 var _ = require('lodash'),
@@ -33,7 +35,7 @@ console.log(_.chunk(arr, 2));
 // [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
 ```
 
-Now my array is an array of arrays, which comes in handy now and then.
+It breaks a single dimensional array into a multidimensional array and that is more or less the basic idea of the chunk method.
 
 ## 3 - Matrix use example of \_.chunk, and \_.chunks friend \_.zip
 
