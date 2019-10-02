@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2019-02-14 18:37:09
-version: 1.7
+updated: 2019-10-02 09:26:24
+version: 1.8
 ---
 
 So some of the method in [lodash](https://lodash.com/) are can come in handy, and really do help to save time with certain projects, todays post on lodash is one of those methods which is [\_.flatten](https://lodash.com/docs/4.17.10#flatten). The \_.flatten, and also \_.flattenDeep methods are one of many methods that help with the task of working with arrays of arrays, or multi dimensional arrays in javaScript. Flatten can be used to flatten down an array of arrays into a single array, thus making it a method that can be thought of as a reversal of [\_.chunk](/2017/09/13/lodash-chunk/).
@@ -23,7 +23,7 @@ So for a basic example of \_.flatten and the corresponding \_.chunk method I wil
 
 ### 2.1 - flattening an array of arrays into a linear array with \_.flatten
 
-So If I make an array of arrays with the array literal notation I can flatten it down into a straght linear array with the lodash \_.flatten method, but just passing the array of arrays as the first argument.
+So If I make an array of arrays with the array literal notation I can flatten it down into a straight linear array with the lodash \_.flatten method, but just passing the array of arrays as the first argument.
 
 ```js
 let grid = [
@@ -53,7 +53,7 @@ console.log( grid ); // [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
 
 ## 3 - The lodash \_.flattenDepth method for when there are many levels of nested arrays
 
-If I have a situastion in which I am dealing with many nested levels of arrays I can use the \_.flattenDepth method that is just like \_.flatten only it accepts a second argument that sets the depth at which flattening is to take. With the normal \_.flatten method only a single level will be flattened, and with the \_.flattenDeep method all levels will be flattened, but with \_.flattenDepth I can control the depth of this.
+If I have a situation in which I am dealing with many nested levels of arrays I can use the \_.flattenDepth method that is just like \_.flatten only it accepts a second argument that sets the depth at which flattening is to take. With the normal \_.flatten method only a single level will be flattened, and with the \_.flattenDeep method all levels will be flattened, but with \_.flattenDepth I can control the depth of this.
 
 ```js
 let grid3 = [
@@ -144,7 +144,7 @@ let grid = (function () {
     ());
 ```
 
-The genMap method works by just creating a linear array of objects for each position, and then I use the \_.chunk method to break it down into the propper array of arrays form.
+The genMap method works by just creating a linear array of objects for each position, and then I use the \_.chunk method to break it down into the proper array of arrays form.
 
 ### 4.2 - Using \_.flatten to help with tabulating a grid involving money
 
@@ -191,4 +191,4 @@ Here my tab money method works by making use of \_.flatten to flatten the grid i
 
 ## 5 - conclusion
 
-I hope you enjoyed this post on the lodash \_.flatten method, if you think there should be something more to add to this post be sure to let me know in the comments. Also if you enjoyed this post you might want to check out my many other [posts on lodash](/categories/lodash/). Some other posts of interest that are relavent to \_.flatten migth be my post on [\_.chunk](/2017/09/13/lodash-chunk/), and [\_.zip](/2018/02/01/lodash_zip/)
+I hope you enjoyed this post on the lodash \_.flatten method, if you think there should be something more to add to this post be sure to let me know in the comments. Also if you enjoyed this post you might want to check out my many other [posts on lodash](/categories/lodash/). Some other posts of interest that are relevant to \_.flatten might be my post on [\_.chunk](/2017/09/13/lodash-chunk/), and [\_.zip](/2018/02/01/lodash_zip/)
