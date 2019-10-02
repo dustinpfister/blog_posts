@@ -5,17 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 141
-updated: 2019-10-02 09:26:25
-version: 1.5
+updated: 2019-10-02 09:30:41
+version: 1.6
 ---
 
 The [lodash](https://lodash.com/) [\_.zip method](https://lodash.com/docs/4.17.4#zip) can be used to zip some separate arrays into one array of arrays. It is one of several helpful methods in lodash for working with multi-definitional arrays, as \_.zip can be used as a way to create them. Another such method is [\_.chunk](/2017/09/13/lodash-chunk/) that can be used to make a multi deferential array from a single array, while \_.zip can make them from two, or more arrays.
 
 <!-- more -->
 
-## 1 - What to know
+## 1 - What to know with lodash zip and more before continuing
 
-This is a post on the \_.zip method in lodash one of the many [array methods in lodash](/2019/02/14/lodash_array/). I will be writing about this method, and some use case examples with it. I assume that you have at least some background with javaScript, and are just currently exploring lodash, and what it has to offer.
+This is a post on the \_.zip method in lodash one of the many [array methods in lodash](/2019/02/14/lodash_array/). I will be writing about this method, some use case examples with it, as well as many other related topics. I assume that you have at least some background with javaScript, and are just currently exploring lodash, what lodash has to offer, and native javaScript alternatives to many of the lodash methods such as lodash zip. So in this section I will be going over a few things to be aware of, but will not be getting into the basics of javaScript and html in general.
 
 ### 1.1 - Some background on multi-deferential arrays in javaScript
 
