@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 141
-updated: 2019-10-02 09:34:44
-version: 1.7
+updated: 2019-10-02 09:45:15
+version: 1.8
 ---
 
 The [lodash](https://lodash.com/) [\_.zip method](https://lodash.com/docs/4.17.4#zip) can be used to zip some separate arrays into one array of arrays. It is one of several helpful methods in lodash for working with multi-definitional arrays, as \_.zip can be used as a way to create them. Another such method is [\_.chunk](/2017/09/13/lodash-chunk/) that can be used to make a multi deferential array from a single array, while \_.zip can make them from two, or more arrays.
@@ -19,40 +19,24 @@ This is a post on the \_.zip method in lodash one of the many [array methods in 
 
 ### 1.1 - Multidimensional arrays as arrays of arrays in javaScript
 
-In javaScript I can have an array of arrays, or just a single array that follows a certain formula.
+In javaScript there are going to be times where I will want to structure data in a multidimensional kind of way. You might be wondering what this might have to do with the lodash zip method, well we will be getting to that shortly, but this is a related topic that you should be up to speed with before hand.
+
+So then in javaScript one way to have a multidimensional array is as an array of arrays like this:
 
 ```js
-// array of arrays
+// an array of arrays
 var matrix = [
- 
     [1,2,3,4],
     [1,0,5,1],
     [1,0,0,1],
     [2,1,1,3]
- 
 ];
- 
 var x = 2, y = 1,
- 
 // I can get a single element like this
 el = matrix[y][x];
- 
 console.log( el ); // 5
- 
-// just a single array
-var matrix = [1,2,3,4,1,0,5,1,1,0,0,1,2,1,1,3],
-w = 4;
- 
-var x = 2, y = 1,
- 
-// I can do the same thing with a single array
-// if I know the width
-el = matrix[ y * w + x];
- 
-console.log(el); // 5
 ```
 
-It's just two different ways of doing the same thing. In lodash there are a few methods of interest that help make quick work of converting between these two ways have having data organized in arrays. In this post I will be covering mainly how \_.zip can be useful in these situations.
 
 ### 1.2 - Multidimensional arrays as just a single linear array
 
@@ -67,6 +51,9 @@ var x = 2, y = 1,
 el = matrix[ y * w + x];
 console.log(el); // 5
 ```
+
+
+So you have arrays of arrays, and just arrays with elements positioned in a way in which they follow a pattern with respect to the index values. In other words there are just two different general ways of doing the same thing when it comes to having a multidimensional array. In lodash there are a few methods of interest that help make quick work of converting between these two ways have having data organized in arrays. In this post I will be covering mainly how \_.zip can be useful in these situations.
 
 ## 2 - Basic example of \_.zip
 
