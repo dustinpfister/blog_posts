@@ -5,13 +5,13 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2019-10-02 10:48:55
-version: 1.8
+updated: 2019-10-02 10:53:53
+version: 1.9
 ---
 
 So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays.
 
-So how often do I get into a situation in which I need to break down a linear array into an array of arrays? Maybe not to often but often enough that it would be nice to have a method that is part of a toolkit of sorts that makes quick work of it. In this case the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) method in is just that.
+So how often do I get into a situation in which I need to break down a linear array into an array of arrays? Maybe not to often but often enough that it would be nice to have a method that is part of a toolkit of sorts that makes quick work of it. In this case the lodash chunk method in is just that. There is also the question of flattening an array of arrays into a single array, for that there is the [lodash flatten](/2018/08/12/lodash_flatten/) method.
 
 <!-- more -->
 
