@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 141
-updated: 2019-10-02 09:47:13
-version: 1.9
+updated: 2019-10-02 09:49:02
+version: 1.10
 ---
 
 The [lodash](https://lodash.com/) [\_.zip method](https://lodash.com/docs/4.17.4#zip) can be used to zip some separate arrays into one array of arrays. It is one of several helpful methods in lodash for working with multi-definitional arrays, as \_.zip can be used as a way to create them. Another such method is [\_.chunk](/2017/09/13/lodash-chunk/) that can be used to make a multi deferential array from a single array, while \_.zip can make them from two, or more arrays.
@@ -39,6 +39,8 @@ console.log( el ); // 5
 
 
 ### 1.2 - Multidimensional arrays as just a single linear array
+
+Another way of having a Multidimensional is as just a single array that follows a pattern when it comes to the index values. In that case it is just a matter of knowing the proper expression that needs to be used to get and set elements in the matrix. For an example of this consider the following.
 
 ```js
 // just a single array
