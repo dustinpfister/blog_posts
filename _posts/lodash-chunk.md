@@ -5,11 +5,11 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2019-02-19 16:04:49
-version: 1.7
+updated: 2019-10-02 10:48:55
+version: 1.8
 ---
 
-So I think I will write a [few posts](/categories/lodash/) on [lodash](https://lodash.com/), and as such why not start with [\_.chunk](https://lodash.com/docs/4.17.4#chunk).
+So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays.
 
 So how often do I get into a situation in which I need to break down a linear array into an array of arrays? Maybe not to often but often enough that it would be nice to have a method that is part of a toolkit of sorts that makes quick work of it. In this case the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) method in is just that.
 
