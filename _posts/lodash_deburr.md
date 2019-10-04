@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 541
-updated: 2019-10-04 12:04:48
-version: 1.3
+updated: 2019-10-04 12:05:25
+version: 1.4
 ---
 
 When it comes to Unicode blocks there are the first few blocks that have to do with Latin characters. These kinds of characters come up now and then for cretin words that come from languages like Spanish. If for some reason I might be interested in just simply converting these kinds of strings into a string that contains just the first few ASCCI range characters I can used the [lodash debuff method](https://lodash.com/docs/4.17.15#deburr). This method in lodash just simply takes away any additional accent over a letter and just converts into a plain English style form of the word.
@@ -31,4 +31,4 @@ The word given is in spanish, and I just want the word to be in a form that just
 
 ## 2 - Conclusion
 
-So that is just about it for now at least. There is getting into Unicode to greater deal a depth, but there are other great sources on that so far. I guess there is also writing or finding a vanilla js alternative for this as well.
+So that is just about it for now at least. There is getting into Unicode to greater deal a depth, but there are other great sources on that so far. I guess there is also writing or finding a vanilla js alternative for this as well. If I get around to editing this maybe I will do just that.
