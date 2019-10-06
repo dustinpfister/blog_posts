@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 540
-updated: 2019-10-01 16:02:19
-version: 1.1
+updated: 2019-10-05 20:12:53
+version: 1.2
 ---
 
 So there is the native javaScript array map method, and then there is the lodash map collection method. The map method is often used in conjunction with many other methods to produce an array of collection in a certain format, including methods like then flatten method. With lodash there are a few methods that are a single method that combines the functionality of two methods such as the lodash flatmap method which I will be going over in this post.
@@ -14,6 +14,8 @@ So there is the native javaScript array map method, and then there is the lodash
 <!-- more -->
 
 ## 1 - lodash flatmap basic example
+
+The lodash flat map method works more or less the same way as the lodash map method.
 
 ```js
 let fromRed = (r) => {
