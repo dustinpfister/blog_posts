@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 540
-updated: 2019-10-06 18:21:02
-version: 1.7
+updated: 2019-10-06 18:23:55
+version: 1.8
 ---
 
 So there is the native javaScript array map method, and then there is the lodash map collection method. The map method is often used in conjunction with many other methods to produce an array of collection in a certain format, including methods like then flatten method. With lodash there are a few methods that are a single method that combines the functionality of two methods such as the [lodash flatmap](https://lodash.com/docs/4.17.15#flatMap) method which I will be going over in this post.
@@ -55,6 +55,8 @@ This is a post on lodash, but many developers these days prefer to just go with 
 
 ### 3.1 - Array map, reduce, and concat chain
 
+Maybe one of the best options to go with these days will still involve chaining a few native method that include array map, along with array reduce and array concat.
+
 ```js
 // the native map method can be used to create
 // an array of arrays for starters
@@ -67,3 +69,5 @@ flat = arr.reduce((acc, val) => acc.concat(val));
 console.log(flat);
 // [ 0, 128, 255, 255, 192, 0 ]
 ```
+
+This solution might still break on older browsers, but often so will lodash code as well in some cases it it is a late version of lodash.
