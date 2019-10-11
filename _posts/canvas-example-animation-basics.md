@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2019-10-11 15:25:35
-version: 1.11
+updated: 2019-10-11 15:28:46
+version: 1.12
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with animations using canvas. Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -124,7 +124,7 @@ This canvas example might prove to be a better approach to animation in the sens
 
 In this example I am moving the ball in relation to a current frame index relative to a set number of max frames. This is an approach that I take when working out any kind of canvas powered animation that is going to be a fixed set of frames, rather than something that is subject to user input, or any kind of variation factor.
 
-The basic idea is simple I have a variable that represents the current frame index, and another that represents the total number of frames.
+The basic idea is simple I have a variable that represents the current frame index, and another that represents the total number of frames. I can then use those to values to find the current value for all kinds of other values that are used to set the position, size, and other values of the animation.
 
 ```html
 <html>
@@ -172,3 +172,5 @@ loop();
     </body>
 </html>
 ```
+
+This kind of approve to canvas animation seems to be a good way to go about any kind of animation that is to just be a certain collection of frames. There are ways of exporting these frames, and then from that point forward it is just a matter of setting a frame rate at which the animation is to be played back at.
