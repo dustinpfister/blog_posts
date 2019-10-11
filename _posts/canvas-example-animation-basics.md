@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2019-10-11 08:57:28
-version: 1.7
+updated: 2019-10-11 08:58:24
+version: 1.8
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with animations using canvas. Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -59,7 +59,7 @@ loop();
 ```
 
 This might be a good starting point for making canvas animations, but there are a few issues of concern with this kind of approach with animation. The first of which is that I am just stepping the x value for each frame, but I am not taking into account that the abut of time it will take might vary a little from system to system. Even if the ball moves back and forth at the same speed across different platforms, at what speed? It might be better to have some kind  pixels per second value, and the delta value is determined by the amount of time that has elapsed sense the last frame update and that pixels per second value.
-Another thought that comes to mind is the nature of the animation that I am making here, this is a kind of animation that just loops over and over again. So in other words it is an animation that can be expressed as a collections of static frames, rather than a state that changes as a result of user input, or some kind of randomization factor.
+Another thought that comes to mind is the nature of the animation that I am making here, this is a kind of animation that just loops over and over again. So in other words it is an animation that can be expressed as a collections of static frames, rather than a state that changes as a result of user input, or some kind of randomization factor. So lets look at some more examples that do the same thing more or less, but in very different ways.
 
 ### 1.2 - Frame and maxFrame values
 
