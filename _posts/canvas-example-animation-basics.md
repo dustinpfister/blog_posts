@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2019-10-11 08:58:24
-version: 1.8
+updated: 2019-10-11 09:13:56
+version: 1.9
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with animations using canvas. Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -61,7 +61,64 @@ loop();
 This might be a good starting point for making canvas animations, but there are a few issues of concern with this kind of approach with animation. The first of which is that I am just stepping the x value for each frame, but I am not taking into account that the abut of time it will take might vary a little from system to system. Even if the ball moves back and forth at the same speed across different platforms, at what speed? It might be better to have some kind  pixels per second value, and the delta value is determined by the amount of time that has elapsed sense the last frame update and that pixels per second value.
 Another thought that comes to mind is the nature of the animation that I am making here, this is a kind of animation that just loops over and over again. So in other words it is an animation that can be expressed as a collections of static frames, rather than a state that changes as a result of user input, or some kind of randomization factor. So lets look at some more examples that do the same thing more or less, but in very different ways.
 
-### 1.2 - Frame and maxFrame values
+### 1.2 - Pixles per second
+
+So then there is making the same animation but now with a pixels per second value. Now I have a clear speed at which I would like the ball to move at, and I am using the Date constructor to create a late time value that can be used to know the amount of time that has elapsed sense the last frame tick.
+
+```html
+<html>
+    <head>
+        <title>canvas example animation basics</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas and context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+// some kind of state for the animation
+var x = 0,
+pps = 128,
+lt = new Date(),
+right = 1;
+// update method
+var update = function(){
+    // now and time and dx
+    var now = new Date(),
+    t = now - lt,
+    dx = t / 1000 * pps * right;
+    // update state
+    x += dx;
+    if (x >= canvas.width) {
+       x = canvas.width - (x - canvas.width);
+       right = -1;
+    }
+    if (x <= 0) {
+       x = Math.abs(x);
+       right = 1;
+    }
+    lt = now;
+};
+// Main APP loop
+var loop = function () {
+    //request next frame
+    requestAnimationFrame(loop);
+    update();
+    // draw
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(x, canvas.height / 2, 10, 0, Math.PI * 2);
+    ctx.fill();
+};
+loop();
+        </script>
+    </body>
+</html>
+```
+
+### 1.3 - Frame and maxFrame values
 
 ```html
 <html>
