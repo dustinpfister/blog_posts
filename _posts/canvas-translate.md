@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-10-13 19:13:12
-version: 1.5
+updated: 2019-10-13 19:14:49
+version: 1.6
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -28,6 +28,8 @@ For a very basic example of the canvas translate method I just put together this
     </body>
 </html>
 ```
+
+In the javaScript of the example I just grab a reference to the canvas element, and then a reference to the 2d drawing context.
 
 ```js
 // get the canvas, context and set size
