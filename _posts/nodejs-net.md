@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 504
-updated: 2019-07-19 19:59:25
-version: 1.6
+updated: 2019-10-14 17:39:23
+version: 1.7
 ---
 
 This post will be on the [node net](https://nodejs.org/api/net.html) module that can be used to accomplish tasks involving the [tcp protocol](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) rather than [http](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). The net module includes constructors that return insistences of streams that allow for data to be transmitted on a per data chunk basics like that of the createReadStream method in the file system module.
@@ -15,7 +15,7 @@ This post will be on the [node net](https://nodejs.org/api/net.html) module that
 
 ## 1 - Node net basic example
 
-For a basic example of the nodejs net module here is a hello world example of using the create server net meethod to set up a TPC server on localhost at port 8080.
+For a basic example of the nodejs net module here is a hello world example of using the create server net method to set up a TPC server on localhost at port 8080.
 
 ```js
 let net = require('net');
