@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2019-10-17 09:49:40
-version: 1.3
+updated: 2019-10-17 16:15:10
+version: 1.4
 ---
 
 The javaScript not operator can be used to negate a value and turn the value into a boolean value. The operator can come in handy when writing many expressions that might come up when working with conditional statements, and also with feature testing. In some code examples I see it being used to trim down the size of a boolean literal expression, and I am sure that there are many other use examples for the [js not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators) operator.
@@ -15,7 +15,7 @@ The javaScript not operator can be used to negate a value and turn the value int
 
 ## 1 - js not basic example
 
-The js not operator is an exclamation point when it comes to the syntax of javaScript.
+The js not operator is an exclamation point when it comes to the syntax of javaScript. The operator has right to left associativity so any value that is left of the operator will be what is converted to a boolean. The operator both converts to boolean and inverts the value, so A good starting example might be to just give the number zero as the value for starters.
 
 ```js
 let bool = !0;
@@ -23,3 +23,5 @@ let bool = !0;
 console.log(typeof bool); // boolean
 console.log(bool); // true
 ```
+
+In javaScript zero will evaluate as false so then not zero will end up being true. The most important thing about this is that the operator will produce a boolean value and that the value will be inverted. With that being said lets look at some more examples some of which might prove to be a little more piratical.
