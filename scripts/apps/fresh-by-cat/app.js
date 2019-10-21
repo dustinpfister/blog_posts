@@ -34,7 +34,7 @@ app.get('/', [
         // send html
         (req, res) => {
             res.render('index', {
-                title: 'fresh by month',
+                title: 'fresh by cat',
                 layout: 'report',
                 report: res.report,
                 getFreshClassName: (fresh) => {

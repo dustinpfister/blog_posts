@@ -10,6 +10,7 @@
      <% report.cats.forEach(function(cat, i){ %>
         <h2><%= ( i + 1 ) + ') '+ cat.catName %></h2>
         <p class="<%- getFreshClassName(cat.fresh) %>">freshPer: <%= cat.fresh.toFixed(2) %></p>
+
         <table>
         <tr><th>file name</th><th>fresh</th><th>word count</th></tr>
         <% cat.posts.forEach(function(post){ %>
