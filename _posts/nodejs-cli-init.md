@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 547
-updated: 2019-10-21 10:56:16
-version: 1.5
+updated: 2019-10-21 11:24:08
+version: 1.6
 ---
 
 So I thought I would write a whole bunch of posts on [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I have started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
@@ -46,6 +46,7 @@ Once the two modules are loaded the script just checks the target folder that is
 
 ## 2 - Check the target path
 
+Here is the source code of the check target module. Here I am using the built in nodejs file system module, along with the promisify method of the built in util module, to make sure that the stat and readdir methods return promises in older versions of node.
 
 ```js
 // using the fs module, and the promisify method
