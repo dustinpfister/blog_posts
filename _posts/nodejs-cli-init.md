@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 547
-updated: 2019-10-21 10:50:50
-version: 1.3
+updated: 2019-10-21 10:53:43
+version: 1.4
 ---
 
-So I thought I would write a whole bunch of posts on [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I hve started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
+So I thought I would write a whole bunch of posts on [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I have started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
 
 <!-- more -->
 
@@ -18,6 +18,8 @@ So I thought I would write a whole bunch of posts on [node cli](https://www.twil
 So I started out by making a init folder in the bin folder of my [node_cli_tools repository](https://github.com/dustinpfister/node_cli_tools). In this folder I have several javaScript files, but in this section I will be going over the file that will be called when the command is used.
 
 The index javaScript file has the [nodejs shebang](/2017/03/26/linux_shebang/) on the top of the file, I will not be getting into detail with that here, it is just a line of code that I want to have at the top of the file that will be the starting point of the command.
+
+After the shebang I am requiring in two other scripts that I have thrown together that have to do with the general process of what I want my initialization command to do. The first thing to come to mind is to check that a target folder is exists, and if so if it is empty, for this there is the check target module. Once that check works out okay, I then want another module that is used to create a starting point for a new project.
 
 ```js
 #!/usr/bin/env node
