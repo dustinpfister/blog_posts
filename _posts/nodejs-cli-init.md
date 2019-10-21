@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 547
-updated: 2019-10-20 19:04:07
-version: 1.2
+updated: 2019-10-21 10:50:50
+version: 1.3
 ---
 
 So I thought I would write a whole bunch of posts on [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I hve started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
@@ -14,6 +14,10 @@ So I thought I would write a whole bunch of posts on [node cli](https://www.twil
 <!-- more -->
 
 ## 1 - The index.js file of the node cli ini command
+
+So I started out by making a init folder in the bin folder of my [node_cli_tools repository](https://github.com/dustinpfister/node_cli_tools). In this folder I have several javaScript files, but in this section I will be going over the file that will be called when the command is used.
+
+The index javaScript file has the [nodejs shebang](/2017/03/26/linux_shebang/) on the top of the file, I will not be getting into detail with that here, it is just a line of code that I want to have at the top of the file that will be the starting point of the command.
 
 ```js
 #!/usr/bin/env node
