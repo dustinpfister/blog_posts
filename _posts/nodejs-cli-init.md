@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 547
-updated: 2019-10-21 10:53:43
-version: 1.4
+updated: 2019-10-21 10:56:16
+version: 1.5
 ---
 
 So I thought I would write a whole bunch of posts on [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I have started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
@@ -19,7 +19,7 @@ So I started out by making a init folder in the bin folder of my [node_cli_tools
 
 The index javaScript file has the [nodejs shebang](/2017/03/26/linux_shebang/) on the top of the file, I will not be getting into detail with that here, it is just a line of code that I want to have at the top of the file that will be the starting point of the command.
 
-After the shebang I am requiring in two other scripts that I have thrown together that have to do with the general process of what I want my initialization command to do. The first thing to come to mind is to check that a target folder is exists, and if so if it is empty, for this there is the check target module. Once that check works out okay, I then want another module that is used to create a starting point for a new project.
+After the shebang I am requiring in two other scripts that I have thrown together that have to do with the general process of what I want my initialization command to do. The first thing to come to mind is to check that a target folder is exists, and if so if it is empty, for this there is the check target module. Once that check works out okay, I then want another module that is used to create a starting point for a new project, for this there is the create project module.
 
 ```js
 #!/usr/bin/env node
@@ -41,6 +41,8 @@ checkTarget(target)
 
 })
 ```
+
+Once the two modules are loaded the script just checks the target folder that is given which by default is the current working directory. If the check works out okay the create project method is then used for the target directory. The basic idea that I have in mind for an initialization command is more or less this, but if the project grows I might want to add additional features.
 
 ## 2 - Check the target path
 
