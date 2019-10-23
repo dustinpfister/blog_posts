@@ -5,10 +5,10 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 550
-updated: 2019-10-23 16:07:51
-version: 1.0
+updated: 2019-10-23 16:09:24
+version: 1.1
 ---
 
-So this post is a genral overview of my node cli tools project, that is a collection of nodejs powered command line interface tools. The main idea of this project is to just have a collection of node cli tools to write about for the sake of new content for my site here. However the tools also follow a general theme of creating tools that help with the creating and maintenance of simple static websites.
+So this post is a general overview of [my node cli tools project](https://github.com/dustinpfister/node_cli_tools), that is a collection of nodejs powered command line interface tools. The main idea of this project is to just have a collection of node cli tools to write about for the sake of new content for my site here. However the tools also follow a general theme of creating tools that help with the creating and maintenance of simple static websites.
 
 <!-- more -->
