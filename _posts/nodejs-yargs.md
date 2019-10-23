@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 241
-updated: 2018-07-30 19:50:39
-version: 1.6
+updated: 2019-10-22 21:42:28
+version: 1.7
 ---
 
 So this week I have been looking into option parsers, for the sake of expanding my horizons when it comes to what the options are for parsing options. I have writing a [post on nopt](/2017/05/05/nodejs-nopt/) a long time ago, which was one of the first option parsers I have dealt with. It works fine, but so far I think I am liking [commander](/2018/07/10/nodejs-commander/) the best. However this post is about another popular option parser for node.js called [yargs](https://www.npmjs.com/package/yargs).
@@ -113,3 +113,7 @@ argv = yargs
 ```
 
  In this example I am setting up a default command that will display a usage example when the script is called without a command given. I am also defining my commands by giving an object rather than three sets of arguments.
+
+## 4 - Using external files
+
+So the way I often like to use yargs in actual projects is to create a commands folder that will contains a whole bunch of scripts and each script is a command. So I will want to make it so each script exports an object that is formated the same way as the obejcts that I use to define what a command is.
