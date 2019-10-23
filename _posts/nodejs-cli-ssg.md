@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 549
-updated: 2019-10-22 21:36:57
-version: 1.2
+updated: 2019-10-22 21:43:49
+version: 1.3
 ---
 
 So for todays node cli project I started working on a basic static site generator. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk.
@@ -19,7 +19,7 @@ this is a post on the nc-ssg command for my node cli tools project. I will not b
 
 ## 2 - The node cli ssg bin folder
 
-In the bin folder of the node cli tools project I creates a folder called ssg. This folder will contain the main file that will be called when the nc-bin command is called. In this file I am using yargs to parse options that are passed when calling the command.
+In the bin folder of the node cli tools project I creates a folder called ssg. This folder will contain the main file that will be called when the nc-bin command is called. In this file I am using [yargs](/2018/07/24/nodejs-yargs/) to parse options that are passed when calling the command.
 
 ```js
 #!/usr/bin/env node
