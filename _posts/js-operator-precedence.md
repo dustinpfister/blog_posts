@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-10-24 18:46:29
-version: 1.32
+updated: 2019-10-24 20:43:38
+version: 1.33
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
@@ -220,6 +220,8 @@ console.log( getDataCap(80192,new Date(2019,7,13)) ); // 46563.096774193546
 ```
 
 ### 4.4 - Finding out a monthly payment for a mortgage
+
+Here is yet another real world example that is a function that helps figure the monthly payment of a [fixed rate mortgage](https://en.wikipedia.org/wiki/Fixed-rate_mortgage)
 
 ```js
 var payment = (apr, years, prin) => {
