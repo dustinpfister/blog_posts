@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-10-25 12:51:08
-version: 1.44
+updated: 2019-10-25 12:55:37
+version: 1.45
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or otherwise when it comes to preforming operations.
@@ -85,6 +85,10 @@ console.log(3 + (7 - 3) * 5); // 23
 ### 3.3 - New operator without arguments ( 18 )
 
 It is possible to use the new operator without arguments when this is the case it results in the new operator having a precedence value of 18.
+
+### 3.3 - Postfix Increment and postfix decrement ( 17 )
+
+There are the increment and decrement operators that are two plus signs, or negative signs. This operator can be placed before of after a variable that is to be incremented or decremented. If one of them is used after a variable then it is postfix and has a precedence value of 17.
 
 ### 3.3 - Logical Or - Precedence 5
 
