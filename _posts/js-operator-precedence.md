@@ -5,11 +5,14 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-10-24 20:45:46
-version: 1.34
+updated: 2019-10-25 09:37:06
+version: 1.35
 ---
 
-When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, for example multiplication is always preformed before addition. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in which operations are preformed is something that a javaScript developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, associativity, and maybe some other little things here and there when it comes to writing expressions and functions.
+When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. 
+
+For example multiplication is always preformed before addition, and a lengthy expression that is contained within a grouping operator is preformed before any additional operations that are to be preformed outside of it. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in javaScript is something that a developer should have a solid grasp on as it will come up when writing expressions. In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, as well as associativity, and maybe some other little things here that branch off when it comes to writing some actual real functioning examples of order of operations in action.
+
 
 <!-- more -->
 
