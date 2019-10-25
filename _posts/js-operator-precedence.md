@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-10-25 09:39:11
-version: 1.36
+updated: 2019-10-25 09:41:29
+version: 1.37
 ---
 
-When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or otherwise when it comes to preforming operations. 
+When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or otherwise when it comes to preforming operations.
 
-For example multiplication is always preformed before addition, and a lengthy expression that is contained within a grouping operator is preformed before any additional operations that are to be preformed outside of it. So then in javaScript [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply the order of operations in javaScript is something that a developer should have a solid grasp on as it will come up when writing expressions. 
+For example multiplication is always preformed before addition, and a lengthy expression that is contained within a grouping operator is preformed before any additional operations that are to be preformed outside of it. So then in javaScript operator precedence, and associativity is something that a developer should have a solid grasp on as it will come up when writing expressions. 
 
 In this post I will be going over many examples of this that should help with gaining at least a basic understanding of order of operations, as well as associativity, and maybe some other little things here that branch off when it comes to writing some actual real functioning examples of order of operations in action.
 
