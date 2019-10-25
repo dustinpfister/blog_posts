@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-10-25 11:02:39
-version: 1.41
+updated: 2019-10-25 11:13:19
+version: 1.42
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or otherwise when it comes to preforming operations.
@@ -51,11 +51,11 @@ Here subtraction is an example of left to right associativity, you start with 5 
 
 ## 3 - The javaScript precedence values
 
-There are Twenty levels of operator precedence in javaScript. Operators with a higher precedence value will be preformed first over those with a lower precedence value. In addition the associativity is different depending on the operator as well, however most of the operators typically used when writing expressions have left to right associativity. In this section I will be going over some of the operators in order pf the precedence value.
+There are twenty levels of operator precedence in javaScript, and operators with a higher precedence value will be preformed first over those with a lower precedence value. In addition the associativity is different depending on the operator as well, however most of the operators typically used when writing expressions have left to right associativity. In this section I will be going over some of the operators in order of the precedence value.
 
 ### 3.1 - Grouping - Precedence 20 ( highest, prefromed first)
 
-Parentheses in javaScript are used to make function calls, however they also have another purpose when it comes to grouping an expression. In other words a pare of parentheses is considered a so called [grouping operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Grouping), and when it comes to authoring any kind of expression in javaScript this grouping operator has the highest Operator precedence of all the available operators in javaScript.
+Parentheses in javaScript are used to make function calls, however they also have another purpose when it comes to grouping an expression. In other words a pare of parentheses by itself is considered a so called [grouping operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Grouping), and when it comes to authoring any kind of expression in javaScript this grouping operator has the highest operator precedence of all the available operators in javaScript.
 
 ```js
 let a = !0 + 1 * 5,
@@ -63,6 +63,8 @@ b = !(0 + 1) * 5;
  
 console.log(a, b); // 6 0
 ```
+
+Here in the first expression the logical not operator is preformed first because it has a value of 16, and multiplication is 14. So then not zero converts to the boolean value true, then the multiplication operation is preformed resulting in 5. Finally the true boolean value is added to 5, when doing so true converts to the number 1 resulting in a number value of 6. 
 
 No matter what else is going on anything inside the parentheses or grouping if you prefer will be preformed first.
 
