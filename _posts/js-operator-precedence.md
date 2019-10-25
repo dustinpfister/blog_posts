@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-10-25 11:13:19
-version: 1.42
+updated: 2019-10-25 11:18:10
+version: 1.43
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or otherwise when it comes to preforming operations.
@@ -64,9 +64,9 @@ b = !(0 + 1) * 5;
 console.log(a, b); // 6 0
 ```
 
-Here in the first expression the logical not operator is preformed first because it has a value of 16, and multiplication is 14. So then not zero converts to the boolean value true, then the multiplication operation is preformed resulting in 5. Finally the true boolean value is added to 5, when doing so true converts to the number 1 resulting in a number value of 6. 
+Here in the first expression the logical not operator is preformed first because it has a value of 16, and multiplication is 14. So then not 0 converts to the boolean value true, then the multiplication operation is preformed resulting in 5. Finally the true boolean value is added to 5, when doing so true converts to the number 1 resulting in a number value of 6. 
 
-No matter what else is going on anything inside the parentheses or grouping if you prefer will be preformed first.
+By grouping the 0 and one together the addition operation is now preformed first because the grouping precedence value of 20 superseding the value of the logical not operator again at 16. So now when the logical not operator is preformed this results in not 1 which results in a false boolean value that will convert to 0 when converted to a number, resulting in zero being multiplied by 4 which is 0. So no matter what else is going on anything inside the parentheses or grouping if you prefer will be preformed first.
 
 ### 3.2 - Function calls Precedence 19
 
