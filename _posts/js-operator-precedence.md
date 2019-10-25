@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2019-10-25 09:55:03
-version: 1.40
+updated: 2019-10-25 11:02:39
+version: 1.41
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or otherwise when it comes to preforming operations.
@@ -20,7 +20,7 @@ In this post I will be going over many examples of this that should help with ga
 
 ## 1 - Order of operations basics in javaScript
 
-So lets start out with some very simple examples of order of operations in javaScript, then cover some more complex real examples later in this post. That being said if an expression contains addition first and then multiplication from left to right, then the multiplication operation will be preformed first and then the addition. The reason why is because multiplication and division have a higher precedence value then that of addition and subtraction. If for some reason I want the addition to happen first then I  will want to use parentheses or group operators to achieve just that. Changing the order of the operations from left to right will not make a difference becuase it will not change the situation with precedence. 
+So lets start out with some very simple examples of order of operations in javaScript, then cover some more complex real examples later in this post. That being said if an expression contains addition first and then multiplication from left to right, then the multiplication operation will be preformed first and then the addition. The reason why is because multiplication and division have a higher precedence value then that of addition and subtraction. If for some reason I want the addition to happen first then I  will want to use parentheses or group operators to achieve just that. Changing the order of the operations from left to right will not make a difference because it will not change the situation with precedence. 
 
 So a good javaScript example of this would be something like this.
 
@@ -32,11 +32,13 @@ console.log( (10 + 5) * 2 ); // 30
 
 The reason why is because parentheses have the highest precedence value of all when it comes to the order of how operations are preformed with javaScript expressions. So this will help to bump up the precedence value of the addition operation above that of the multiplication.
 
-So there is the question of what operators are preformed first ([operator precedence aka order of operations](https://en.wikipedia.org/wiki/Order_of_operations)), and then also the direction in which they are preformed as well ( [associativity](https://en.wikipedia.org/wiki/Operator_associativity) ). To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is used an expression.
+So there is the question of what operators are preformed first ([operator precedence aka order of operations](https://en.wikipedia.org/wiki/Order_of_operations)), and then also the direction in which they are preformed as well ( [associativity](https://en.wikipedia.org/wiki/Operator_associativity) ). To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is to be used an expression.
 
 ## 2 - Associativity of operators
 
 So Associativity is the direction in which operations are preformed such as left to right, or right to left. Operators like addition, subtraction and so forth have left to right associativity. However other operators such as the assignment, and logical not operator have right to left Associativity.
+
+So subtraction is a good example of an operator where associativity matters because taking 2 from 5 is not the something as taking 5 from 2.
 
 ```js
 var a = 5 - 2;
@@ -45,7 +47,7 @@ var b = 2 - 5;
 console.log(a,b); // 3 -3
 ```
 
-Here subtraction is an example of left to right associativity.
+Here subtraction is an example of left to right associativity, you start with 5 and then subtract 2 in the first example, things flow from left to right.
 
 ## 3 - The javaScript precedence values
 
