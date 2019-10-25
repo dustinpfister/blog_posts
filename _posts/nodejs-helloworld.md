@@ -4,12 +4,12 @@ date: 2017-04-05 16:25:00
 tags: [js,node.js]
 layout: post
 categories: node.js
-updated: 2017-09-30 18:43:21
+updated: 2019-10-25 13:17:30
 id: 11
-version: 1.3
+version: 1.4
 ---
 
-I am sure I am not alone when I say that I love [node.js](https://nodejs.org/en/). The ability to create complex full stack web applications with a single uniform scripting language for both the front, and back end is really changing things for the better if you ask me. 
+I am sure I am not alone when I say that I love [node.js](https://nodejs.org/en/), and javaScript. The ability to create complex full stack web applications with a single uniform scripting language for both the front, and back end is really changing things for the better if you ask me. However there is much more to that also, nodejs can also be used for many general programing tasks, I like making all kinds of useful and interesting command line interface tools with nodejs that ca be used to create files, walk over a file system structure, and so much more I do not event know where to begin.
 
 <!-- more -->
 
