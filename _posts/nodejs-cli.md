@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 550
-updated: 2019-10-24 21:27:47
-version: 1.6
+updated: 2019-10-26 15:31:44
+version: 1.7
 ---
 
 So this post is a general overview of [my node cli tools project](https://github.com/dustinpfister/node_cli_tools), that is a collection of nodejs powered command line interface tools. The main idea of this project is to just have a collection of node cli tools to write about for the sake of new content for my site here. However the tools also follow a general theme of creating tools that help with the process of creating and maintaining one ore more simple static websites.
@@ -17,11 +17,19 @@ So this post is a general overview of [my node cli tools project](https://github
 
 The way I started this project is by creating a new folder, make it the current working path, and use npm to initialize a new node project. I then npm install all the various npm packages I intend to use with the node cli tools as needed just with any other nodejs project, but I do something different with the package.json file. I added a bin key to the JSON of the package.json file that is an object with a bunch of key object pairs where the key name is the command name that I want to use in the command line when using a command, the the value is a path to the script that I want to run when calling the command.
 
+### 1.1 - create the project folder
+
+So I started out making a project folder and initializing it just like any other npm project.
+
 ```
 $ mkdir node-cli-tools
 $ cd node-cli-tools
 $ npm init
 ```
+
+### 1.2 - install some npm packages
+
+I installed some packages that I will be using with the various node cli tools such as yargs for option parsing, mkdirp for creating paths, ejs as a template engine, and marked to quickly parse markdown into html.
 
 ```
 $ npm install yargs --save
@@ -29,6 +37,10 @@ $ npm install mkdirp -- save
 $ npm install ejs --save
 $ npm install marked --save
 ```
+
+### 1.3 - Create the bin key in the package.json file
+
+The bin key of a package.json file can be used to set the names of the various node cli tools. The value of the key is an object and then each key of the object is the command name I want, along with a path to the javaScript file that will be called for each command.
 
 ```js
 {
