@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 551
-updated: 2019-10-29 14:45:57
-version: 1.9
+updated: 2019-10-29 14:49:36
+version: 1.10
 ---
 
 So when it comes to [developing a node cli tool](/2019/10/23/node-cli/) that is a text editor of sorts there are two general ideas that come to mind. One idea is a text editor that is terminal based in which I am using [ansi escape codes](/2019/09/19/nodejs-ansi-escpe-codes) to make a text editor like that of nano or vim. The other idea is a text editor that works in a browser window, and I am using nodejs as a way to serve a client system that is that editor, and also have some back end code that is used to save the file I am working on.
@@ -124,10 +124,13 @@ The main method that is exported and called in default.js creates some static pa
 
 I also make use of several middileware modules for this project that preform the actions of opening and writing files in the target folder.
 
-
 ## 3 - the /edit/commands/middleware files
 
+In this section I will be going over the server [express middileware](/2018/06/25/express-middleware/) methods that I have put together for this project.
+
 ### 3.1 - file-open
+
+This middleware opens a current file, and then sends back the contents of that file.
 
 ```js
 // open a file
@@ -160,6 +163,8 @@ module.exports = (conf) => {
 ```
 
 ### 3.2 - file-save
+
+This middleware writes the contents that have been submitted from the client system to the file in the target folder.
 
 ```js
 // save a file
