@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 551
-updated: 2019-10-29 14:23:07
-version: 1.5
+updated: 2019-10-29 14:29:31
+version: 1.6
 ---
 
 So when it comes to [developing a node cli tool](/2019/10/23/node-cli/) that is a text editor of sorts there are two general ideas that come to mind. One idea is a text editor that is terminal based in which I am using [ansi escape codes](/2019/09/19/nodejs-ansi-escpe-codes) to make a text editor like that of nano or vim. The other idea is a text editor that works in a browser window, and I am using nodejs as a way to serve a client system that is that editor, and also have some back end code that is used to save the file I am working on.
@@ -19,10 +19,12 @@ This post is on a text editor i made for my [node_cli_tools project](https://git
 
 ## 2 - The edit/index and edit/command/default script of the nc-edit node cli tool
 
-So in the main root directory of my node_cli_tools project I have a bin folder, and in this bin folder I have the edit folder that composes everything that is my nc-edit command. At the root of the edit folder is an index.js file that is what will be called within the project when i call the nc-edit command in the command line interface. One of the resources that I am uses is called yargs which is an option parser which is used in the main index.js file, to wich I then load one or more commands for the nc-edit command in the commands folder that is also in the edit folder. In this section I will be quickly goinf over the index.js file and the default.js file in the commands folder.
+So in the main root directory of my node_cli_tools project I have a bin folder, and in this bin folder I have the edit folder that composes everything that is my nc-edit command. At the root of the edit folder is an index.js file that is what will be called within the project when i call the nc-edit command in the command line interface. One of the resources that I am uses is called [yargs](/2018/07/24/nodejs-yargs) which is an option parser which is used in the main index.js file, to which I then load one or more commands for the nc-edit command in the commands folder that is also in the edit folder. In this section I will be quickly going over the index.js file and the default.js file in the commands folder.
 
 
-### 2.1 - edit/index.js
+### 2.1 - edit/index.js and package.json of node_cli_tools
+
+The index.js file is where I am using yargs for option parsing, and I am just loading in one default command for the nc-edit command as of this writing. The logic for the default command is in the default.js file in the command folder, a common folder for all commands in this project.
 
 ```js
 #!/usr/bin/env node
@@ -31,6 +33,17 @@ So in the main root directory of my node_cli_tools project I have a bin folder, 
 require('yargs')
 .command(require('./commands/default.js'))
 .argv;
+```
+
+This file of course makes use of the nodejs shebang becuase it is the script that will first be called when calling the nc-edit command, and this is for course the entry point that I have defined in the bin key of the package.json file in the root of the node_cli_tools project folder.
+
+```js
+  "bin": {
+    "nc-init": "bin/init/index.js",
+    "nc-walk": "bin/walk/index.js",
+    "nc-ssg": "bin/ssg/index.js",
+    "nc-edit": "bin/edit/index.js"
+  }
 ```
 
 ### 2.2 - /edit/commands/default.js
