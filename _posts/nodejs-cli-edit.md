@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 551
-updated: 2019-10-29 14:52:54
-version: 1.11
+updated: 2019-10-29 14:56:52
+version: 1.12
 ---
 
 So when it comes to [developing a node cli tool](/2019/10/23/node-cli/) that is a text editor of sorts there are two general ideas that come to mind. One idea is a text editor that is terminal based in which I am using [ansi escape codes](/2019/09/19/nodejs-ansi-escpe-codes) to make a text editor like that of nano or vim. The other idea is a text editor that works in a browser window, and I am using nodejs as a way to serve a client system that is that editor, and also have some back end code that is used to save the file I am working on.
@@ -124,11 +124,11 @@ The main method that is exported and called in default.js creates some static pa
 
 I also make use of several middileware modules for this project that preform the actions of opening and writing files in the target folder.
 
-## 3 - the /edit/commands/middleware files
+## 4 - the /edit/commands/middleware files
 
 In this section I will be going over the server [express middileware](/2018/06/25/express-middleware/) methods that I have put together for this project.
 
-### 3.1 - file-open
+### 4.1 - file-open
 
 This middleware opens a current file, and then sends back the contents of that file.
 
@@ -162,7 +162,7 @@ module.exports = (conf) => {
 
 ```
 
-### 3.2 - file-save
+### 4.2 - file-save
 
 This middleware writes the contents that have been submitted from the client system to the file in the target folder.
 
@@ -196,13 +196,13 @@ module.exports = (conf) => {
 
 ```
 
-## 4 - the edit/commands/public folder
+## 5 - the edit/commands/public folder
 
 This section is on the public folder of the edit folder for the nc-edit command. This contains and index.html file that is the single page of the editor, and a client.js file that is the javaScript logic for the client system.
 
-### 4.1 - index.html
+### 5.1 - index.html
 
-Here I have the main index.html file that has a div element that will server as a mount point for my vuejs vue that is defined in the client.js file. I am slo of course linking to that client.js file, but first I am loading some resource that are used by the client system mainly vuejs and vue-resource.
+Here I have the main index.html file that has a div element that will server as a mount point for my vuejs vue that is defined in the client.js file. I am also of course linking to that client.js file, but first I am loading some resource that are used by the client system mainly vuejs and vue-resource.
 
 ```html
 <html>
@@ -227,7 +227,9 @@ Here I have the main index.html file that has a div element that will server as 
 </html>
 ```
 
-### 4.2 - client.js
+### 5.2 - client.js
+
+Here I have the client system that I am using for the nc-edit command.
 
 ```js
 var vue = new Vue({
@@ -275,3 +277,7 @@ var vue = new Vue({
     });
 
 ```
+
+## 6 - Conclusion
+
+There is much more work to be done, but the basic idea of an editor is working so far. When I start it up in the command line and go to the address in my browser I can use the project to open and write files in the target folder That I have set. The only question now is how much more time I want to put into this project, and what more features does it need of any. There are some concerns with security too, but if I am just using this on my home network it should not be to big of a concern.
