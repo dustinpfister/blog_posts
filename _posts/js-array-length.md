@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-10-29 09:03:52
-version: 1.52
+updated: 2019-10-29 09:24:45
+version: 1.53
 ---
 
 One might think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it then what one might expect. Array length in js often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However in some cases it is just an object property that does not even reflect that really. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array might differ in many respects depending on how you go about counting elements. So then for the most part, on the surface at least, the length property of an array is easy to understand, however there are a few situations that might cause a degree of confusion. So in this post on the subject of array length in javaScript I will take a moment to see about trying to  clear some of the confusion.
@@ -40,13 +40,39 @@ In addition to the length of an array, and the count of the elements in the arra
 So the element length of an array can often be obtained by just referencing the length property of the array, and index values can be used to get the value of a certain element in the array by used of square brackets.
 
 ```js
-console.log(a.length); // 3
+// a plain old object
+// with numbered keys and
+// a length property
+var obj = {
+    2: 'array',
+    4: 'length',
+    6: 'in',
+    8: 'javaScript',
+    length: 10
+};
  
-console.log( a[0]); // 1
-console.log( a[2]); // 3
+// creating an array from this object
+var arr = Array.from(obj),
+ 
+// getting the length value
+len = arr.length,
+ 
+// getting the count value by way of a
+// certain method
+count = arr.filter(function (el) {
+        return !!el ? el : false;
+    }).length,
+ 
+// setting an index value
+index = 2,
+ 
+// using that index value to get an element
+el = arr[index];
+ 
+console.log(arr.length, count, index, el);
+ // 10 4 2 'array'
 ```
 
-The value that is returned is going to be a number that is typically one larger than the highest index of the array. This is because the array length of an array is one relative while the actual index values are zero relative. For the most part that is all there is to it except for maybe some rare but possible situations in which this is not the case. See the length of an array is not always the same thing as what is often referred to as the count of an array. later in this section I will get into the count of an array, and how it can sometimes differ from the value of the length property.
 
 ### 1.2 - Pushing in new elements increases length
 
