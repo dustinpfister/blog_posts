@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-10-29 09:40:33
-version: 1.57
+updated: 2019-10-29 09:43:10
+version: 1.58
 ---
 
 One might think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it then what one might expect. Array length in js often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However in some cases it is just an object property that does not even reflect that really. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array might differ in many respects depending on how you go about counting elements. So then for the most part, on the surface at least, the length property of an array is easy to understand, however there are a few situations that might cause a degree of confusion. So in this post on the subject of array length in javaScript I will take a moment to see about trying to  clear some of the confusion.
@@ -135,7 +135,7 @@ The Object.keys method will work fine for a simple example such as this, but in 
 
 ### 1.6 - length, and count is not always what is expected when dealing with associative Arrays
 
-So if I have an array that has some elements added to it that are attached to indexed key names, and then some that are attached to key names that are not numbered index key values, this will result in an unexpected array count with Object.keys.
+So say I have an array that has some elements added to it that are attached to indexed key names as usual with an array, but then some that are attached to key names that are not numbered index key values but non numbed string values. This will result in what might be an undesired array count with Object.keys.
 
 ```js
 let a = [0, 1, 2];
