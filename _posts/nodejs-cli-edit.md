@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 551
-updated: 2019-10-29 14:35:58
-version: 1.7
+updated: 2019-10-29 14:43:23
+version: 1.8
 ---
 
 So when it comes to [developing a node cli tool](/2019/10/23/node-cli/) that is a text editor of sorts there are two general ideas that come to mind. One idea is a text editor that is terminal based in which I am using [ansi escape codes](/2019/09/19/nodejs-ansi-escpe-codes) to make a text editor like that of nano or vim. The other idea is a text editor that works in a browser window, and I am using nodejs as a way to serve a client system that is that editor, and also have some back end code that is used to save the file I am working on.
@@ -82,6 +82,45 @@ exports.handler = function (argv) {
 };
 
 ```
+
+## 3 - The server.js file
+
+This is the main server.js file it is what will start when the default command is used. The port and target folder can be set in the command line when starting the command, but much of the other properties of a main conf object are internal. I am using express as a server side framework, because I have found that it saves me a great deal of time compared to working out a backend system without a framework such as express.
+
+```js
+// nc-edit default command sever
+let express = require('express'),
+path = require('path');
+ 
+module.exports = (conf) => {
+    
+    let app = express();
+    
+    conf = conf || {};
+    conf.port = conf.port || 8080;
+    conf.target = conf.target || process.cwd();
+    conf.dir_public = conf.dir_public || path.join(__dirname, 'public');
+    conf.dir_shared_public = conf.dir_shared_public || path.join(__dirname, '../../../shared/public');
+    conf.app = app;
+ 
+    app.use('/', express.static( conf.dir_public ));
+    app.use('/shared', express.static( path.join(conf.dir_shared_public) ));
+    
+    app.use('/file-list', require(path.join(__dirname, 'middleware/file-list.js'))(conf) );
+    app.use('/file-open', require(path.join(__dirname, 'middleware/file-open.js'))(conf) );
+    app.use('/file-save', require(path.join(__dirname, 'middleware/file-save.js'))(conf) );
+    
+    app.listen(conf.port, () => {
+        
+        console.log('nc-edit server running on port ' + conf.port);
+        
+    });
+    
+    
+};
+```
+
+The main method that is exported and called in default.js creates some static paths for the client system in a public folder that is also contained with the commands folder of the edit folder, more on that latter. In additional a public static folder that is local to the nc-edit command I also have a public folder in a main shared folder at the root of the node_cli_tools project folder. In that folder I am making use of additional resources that are used in the client system, mainly vuejs, and vue-resource as an http client.
 
 
 ## 3 - the /edit/commands/middleware files
