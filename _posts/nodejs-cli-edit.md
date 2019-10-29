@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 551
-updated: 2019-10-29 14:49:36
-version: 1.10
+updated: 2019-10-29 14:52:54
+version: 1.11
 ---
 
 So when it comes to [developing a node cli tool](/2019/10/23/node-cli/) that is a text editor of sorts there are two general ideas that come to mind. One idea is a text editor that is terminal based in which I am using [ansi escape codes](/2019/09/19/nodejs-ansi-escpe-codes) to make a text editor like that of nano or vim. The other idea is a text editor that works in a browser window, and I am using nodejs as a way to serve a client system that is that editor, and also have some back end code that is used to save the file I am working on.
@@ -198,7 +198,11 @@ module.exports = (conf) => {
 
 ## 4 - the edit/commands/public folder
 
+This section is on the public folder of the edit folder for the nc-edit command. This contains and index.html file that is the single page of the editor, and a client.js file that is the javaScript logic for the client system.
+
 ### 4.1 - index.html
+
+Here I have the main index.html file that has a div element that will server as a mount point for my vuejs vue that is defined in the client.js file. I am slo of course linking to that client.js file, but first I am loading some resource that are used by the client system mainly vuejs and vue-resource.
 
 ```html
 <html>
