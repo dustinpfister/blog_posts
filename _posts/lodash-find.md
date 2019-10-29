@@ -5,13 +5,13 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2019-10-29 09:48:44
-version: 1.40
+updated: 2019-10-29 09:52:28
+version: 1.41
 ---
 
 So the lodash find collection method can be used to find a single item in a collection. There is also the native Array.find method as well, but that is just an array prototype method, and as such it can not just be used to find an object key in general unless the object is an array or array like object.
 
-So in other words there is the old do I use objects or arrays problem that comes up now and then when working on a JavaScript project. the thing about it is that [arrays are a kind of object](/2017/05/12/js-arrays-are-objects/) in javaScript. However If you know what I mean if you are like me, and have been coding with javaScript for a few years. I try not to get caught up on these things, it does not matter a whole lot, plus there are ways of always dealing with whatever it may be anyway. As such methods like [\_.find](https://lodash.com/docs/4.17.5#find) in [lodash](https://lodash.com/) come in handy when you want to have a kind of method that will work great with objects in general, not just a certain kind of object like Arrays.
+So the [\_.find](https://lodash.com/docs/4.17.5#find) method in [lodash](https://lodash.com/) might be a little more robust then the native Array.find method, and as such can come in handy when I want to have a kind of method that will work great with collections in general, rather than just arrays. Still when it comes to finding something in an array or collection there is more than one way to go about doing it, so lets look at the lodash find method as well as some other options.
 
 <!-- more -->
 
