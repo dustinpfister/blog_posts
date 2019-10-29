@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-10-29 09:31:14
-version: 1.54
+updated: 2019-10-29 09:34:22
+version: 1.55
 ---
 
 One might think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it then what one might expect. Array length in js often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However in some cases it is just an object property that does not even reflect that really. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array might differ in many respects depending on how you go about counting elements. So then for the most part, on the surface at least, the length property of an array is easy to understand, however there are a few situations that might cause a degree of confusion. So in this post on the subject of array length in javaScript I will take a moment to see about trying to  clear some of the confusion.
@@ -76,7 +76,7 @@ In the above example I have an array that was created from an object that has nu
 
 ### 1.2 - Pushing in new elements increases length
 
-When using a method like Array.push to add new elements to an array, the length will be updated each time. In many cases the length of an array is also the count of an array, but in some cases this is not the case more on that later in this section. In the following example I am just creating an empty array with the array literal syntax, pushing in a new element for each iteration, and also logging the current count each time.
+When using a method like Array.push to add new elements to an array, the length will be updated each time. In the following example I am just creating an empty array with the array literal syntax, pushing in a new element for each iteration, and also logging the current length each time.
 
 ```js
 let a = [],
