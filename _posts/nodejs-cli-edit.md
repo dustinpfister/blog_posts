@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 551
-updated: 2019-10-29 14:43:23
-version: 1.8
+updated: 2019-10-29 14:45:57
+version: 1.9
 ---
 
 So when it comes to [developing a node cli tool](/2019/10/23/node-cli/) that is a text editor of sorts there are two general ideas that come to mind. One idea is a text editor that is terminal based in which I am using [ansi escape codes](/2019/09/19/nodejs-ansi-escpe-codes) to make a text editor like that of nano or vim. The other idea is a text editor that works in a browser window, and I am using nodejs as a way to serve a client system that is that editor, and also have some back end code that is used to save the file I am working on.
@@ -121,6 +121,8 @@ module.exports = (conf) => {
 ```
 
 The main method that is exported and called in default.js creates some static paths for the client system in a public folder that is also contained with the commands folder of the edit folder, more on that latter. In additional a public static folder that is local to the nc-edit command I also have a public folder in a main shared folder at the root of the node_cli_tools project folder. In that folder I am making use of additional resources that are used in the client system, mainly vuejs, and vue-resource as an http client.
+
+I also make use of several middileware modules for this project that preform the actions of opening and writing files in the target folder.
 
 
 ## 3 - the /edit/commands/middleware files
