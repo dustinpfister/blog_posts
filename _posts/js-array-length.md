@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-10-29 09:00:26
-version: 1.51
+updated: 2019-10-29 09:03:52
+version: 1.52
 ---
 
 One might think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it then what one might expect. Array length in js often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However in some cases it is just an object property that does not even reflect that really. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array might differ in many respects depending on how you go about counting elements. So then for the most part, on the surface at least, the length property of an array is easy to understand, however there are a few situations that might cause a degree of confusion. So in this post on the subject of array length in javaScript I will take a moment to see about trying to  clear some of the confusion.
@@ -35,7 +35,7 @@ console.log(a[0]); // 'foo'
 
 An array has a length property and in most situations the length property is also the number of actual elements in the array as well. However this is not always the case depending on how you go about counting elements. So an arrays count of elements might differ from the length of the array depending on the methodology of how a developer might go about counting elements in an array. One way of putting it would be thinking of an empty liter sized bottle, it might be an empty bottle but it still has a capacity of one liter. The count of the liter could be the same as the length if we are counting empty space, otherwise it is not.
 
-In addition to the length of an array and the count of the elements in the array there is also the array index value. This is often a number or a string that can be easily converted to a number that reflects the index of a certain element in an array. Index values are zero relative so they go from zero up to one less of the length of the array.
+In addition to the length of an array, and the count of the elements in the array there is also the array index value. This is often a number or a string that can be easily converted to a number that reflects the index of a certain element in an array. That being said there are at least three general numerical values of interest when it cokes to working with an array then, the max capacity or array length, the element count, and the current index value when it comes to looping over the contents of an array.
 
 So the element length of an array can often be obtained by just referencing the length property of the array, and index values can be used to get the value of a certain element in the array by used of square brackets.
 
