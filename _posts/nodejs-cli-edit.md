@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 551
-updated: 2019-10-29 14:29:31
-version: 1.6
+updated: 2019-10-29 14:35:58
+version: 1.7
 ---
 
 So when it comes to [developing a node cli tool](/2019/10/23/node-cli/) that is a text editor of sorts there are two general ideas that come to mind. One idea is a text editor that is terminal based in which I am using [ansi escape codes](/2019/09/19/nodejs-ansi-escpe-codes) to make a text editor like that of nano or vim. The other idea is a text editor that works in a browser window, and I am using nodejs as a way to serve a client system that is that editor, and also have some back end code that is used to save the file I am working on.
@@ -35,7 +35,7 @@ require('yargs')
 .argv;
 ```
 
-This file of course makes use of the nodejs shebang becuase it is the script that will first be called when calling the nc-edit command, and this is for course the entry point that I have defined in the bin key of the package.json file in the root of the node_cli_tools project folder.
+This file of course makes use of the nodejs shebang because it is the script that will first be called when calling the nc-edit command, and this is for course the entry point that I have defined in the bin key of the package.json file in the root of the node_cli_tools project folder.
 
 ```js
   "bin": {
@@ -47,6 +47,8 @@ This file of course makes use of the nodejs shebang becuase it is the script tha
 ```
 
 ### 2.2 - /edit/commands/default.js
+
+Here I have the logic for the single default command for nc-edit that sets up a server for a port and target folder that contains files that are to be edited. The module defines an object that will be used with yargs in the main index.js file. In loads the server.js file in the edit folder that will set up the server that will host the client system that will be used to edit files in a browser window.
 
 ```js
 // default command for nc-edit
