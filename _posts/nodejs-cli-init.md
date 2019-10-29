@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 547
-updated: 2019-10-21 11:26:00
-version: 1.7
+updated: 2019-10-29 14:18:33
+version: 1.8
 ---
 
 So I thought I would write a whole bunch of posts on [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I have started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
@@ -87,7 +87,7 @@ module.exports = (target) => {
 
 ## 3 - The create project module
 
-Here I have the source code of the create project module. For now the command just creates a \_posts folder and places a demo post in the folder that is stored in the init folder of this project. If I do continue working on this project it will likley do a great deal more but for now that is it.
+Here I have the source code of the create project module. For now the command just creates a \_posts folder and places a demo post in the folder that is stored in the init folder of this project. If I do continue working on this project it will likely do a great deal more but for now that is it.
 
 ```js
 let fs = require('fs'),
@@ -116,3 +116,7 @@ module.exports = (target) => {
  
 };
 ```
+
+## 4 - Conclusion
+
+That is it for not on my nc-init command for ny node cli tools project, I am still working on this one and might keep doing so for a while until I have something better to do. So In the future I might get around to editing this post as I keep working on it and have the init command do more.
