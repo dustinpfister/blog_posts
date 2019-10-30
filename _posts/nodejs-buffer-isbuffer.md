@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 553
-updated: 2019-10-30 16:43:01
-version: 1.2
+updated: 2019-10-30 16:44:52
+version: 1.3
 ---
 
 The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project. The standard is buffer method is right there as part of the Buffer global, and can be used bu just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not. In addition there is also the is the [is-buffer npm package](https://www.npmjs.com/package/is-buffer) as well which is a user space option for this kind of task. One might think that a task such as this would be a trivial matter, and in most cases it is, but in other cases it is not such as with isNaN. So lets take a look at this one real quick so we can move on to more interesting things to write about.
@@ -54,4 +54,4 @@ console.log(obj.constructor.name); // 'Buffer'
 console.log( Buffer.isBuffer(obj) ); // false
 ```
 
-So that works out okay, I guess the native node is buffer method works just fine, so why bother with a user space module with this?
+So that works out okay, I guess the native node is buffer method works just fine, so why bother with a user space module with this? Well there is the fact that the Buffer.isBuffer method is part of the node Buffer global, so there is the idea of making the method portable between node and a browser environment. Aside from that maybe I cant thing of any reason to bother with making a user space solution for this.
