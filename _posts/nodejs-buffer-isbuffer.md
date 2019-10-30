@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 553
-updated: 2019-10-30 16:30:44
-version: 1.1
+updated: 2019-10-30 16:43:01
+version: 1.2
 ---
 
 The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project. The standard is buffer method is right there as part of the Buffer global, and can be used bu just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not. In addition there is also the is the [is-buffer npm package](https://www.npmjs.com/package/is-buffer) as well which is a user space option for this kind of task. One might think that a task such as this would be a trivial matter, and in most cases it is, but in other cases it is not such as with isNaN. So lets take a look at this one real quick so we can move on to more interesting things to write about.
@@ -25,3 +25,33 @@ console.log(Buffer.isBuffer(buff)); // true
 ```
 
 Simple enough so far, but lets throw a whole bunch of other values to see if there is anything weird going on.
+
+## 2 - Throw all kinds of values at it time
+
+So when it comes to other naive methods like this there are some times some weird situation in which there is a need to write my own solution, or use another methods that does the same thing in a user space framework. To find out if that is the case I just need to trow all kinds of values at the method to see if it returns true for something other than a Buffer.
+
+```js
+console.log( Buffer.isBuffer(Buffer.alloc(4)) ); // true
+ 
+// some other possible values
+console.log( Buffer.isBuffer(4) ); // false
+console.log( Buffer.isBuffer('foo') ); // false
+console.log( Buffer.isBuffer(0) ); // false
+console.log( Buffer.isBuffer('') ); // false
+console.log( Buffer.isBuffer(undefined) ); // false
+console.log( Buffer.isBuffer(null) ); // false
+console.log( Buffer.isBuffer(NaN) ); // false
+console.log( Buffer.isBuffer([]) ); // false
+console.log( Buffer.isBuffer({}) ); // false
+console.log( Buffer.isBuffer( new Uint8Array()) ); // false
+ 
+// looks good
+// in fact even if I do something like this is still works
+let buff = Buffer.alloc(5);
+let obj = {};
+obj.constructor = buff.constructor;
+console.log(obj.constructor.name); // 'Buffer'
+console.log( Buffer.isBuffer(obj) ); // false
+```
+
+So that works out okay, I guess the native node is buffer method works just fine, so why bother with a user space module with this?
