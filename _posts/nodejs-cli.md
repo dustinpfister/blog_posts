@@ -5,9 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 550
-updated: 2019-10-29 14:16:27
-version: 1.8
+updated: 2019-10-31 18:38:13
+version: 1.9
 ---
+
+One of the great things about node.js is that it can be used as a way to create [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tools using javaScript. A node cli tool can be used to create just about any kind of command line interface type application when it comes to general programing style tasks at least. Typically applications might be projects that are static site generators, and projects that involving walking the contents of a file system. However nodejs can be used to create a wide range of command line interface projects, as well as host a server that can be used to do all kinds of things in a browser window.
 
 So this post is a general overview of [my node cli tools project](https://github.com/dustinpfister/node_cli_tools), that is a collection of nodejs powered command line interface tools. The main idea of this project is to just have a collection of [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tools to write about for the sake of new content for my site here. However the tools also follow a general theme of creating tools that help with the process of creating and maintaining one ore more simple static websites.
 
