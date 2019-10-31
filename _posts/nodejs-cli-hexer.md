@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 552
-updated: 2019-10-31 19:02:11
-version: 1.3
+updated: 2019-10-31 19:04:01
+version: 1.4
 ---
 
 So for todays post a [node cli](/2019/10/23/nodejs-cli/) tool example from my on my node_cli_tools project I will be writing about a quick tool that I put together that can be used to convert a plain text file to a hex format. This kind of tool might come in handy when it comes to creating a collection of content that I want to store in a format that is not necessary encrypted, but is just in a format that is not human readable. The main use case is that I just want a simple tool that will convert markdown files for example into a format that just makes it so the content is not indexed by Google bot, but can easily be converted back to a plain text format.
@@ -19,6 +19,8 @@ This is a post on my cd-hexer command that is part of my node_cli_tools project 
 
 
 ## 2 - /bin/hexer/index.js
+
+So each of my commands in the node_cli_tools projects has a bin folder in the root of the project folder. In the package.json file there is a bin key and that points to this file. This is why I am suing the nodejs shebang at the top of the file, as this is the first file to be called when the nc-hexer command is used.
 
 ```js
 #!/usr/bin/env node
