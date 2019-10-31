@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 548
-updated: 2019-10-31 17:54:30
-version: 1.3
+updated: 2019-10-31 18:20:01
+version: 1.4
 ---
 
 So for todays node cli tool example I will be writing about a basic file system walker that I have put together for this series of posts. I have wrote a few posts on file system walkers such as klaw, and just simply walk, as well as the many native nodejs module methods that can be used to make a file system walker from the ground up. This is a post on making node cli tools so for todays post I will be making a file system walker using the node file system method like readdir, stat, and so forth.
@@ -19,11 +19,12 @@ This is an example of a basic file system walker that can be used from the comma
 
 If you would like to reproduce what I am writing about here you might want to start with my main post on the node_cli_tools project, as well as check out the repo itself where you can just clone it down, install it globally,  and be done with it. 
 
-
 I assume that you have a fair amount of experience with javaScript, node.js, and many of the frameworks that I am using in the core of the project. If not covering all of that is outside the scope of this post.
 
 
 ## 2 - The /bin/walk/index.js file
+
+The index.js file for the nc-walk command of my node_cli_tools project uses yargs to parse options for the command, as with all my other commands in this project. This is the script that will run first when the nc-walk command is used, so that is what I have the nodejs shebang at the top of the file.
 
 ```js
 #!/usr/bin/env node
@@ -32,6 +33,8 @@ require('yargs')
 .command(require('./commands/default.js'))
 .argv;
 ```
+
+So with that out of the way lets move on to the default.js file that contains the rest of the logic for the single default command.
 
 ## 3 - The /bin/commands/default.js file
 
