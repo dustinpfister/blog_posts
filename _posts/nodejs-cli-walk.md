@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 548
-updated: 2019-10-31 18:29:54
-version: 1.7
+updated: 2019-10-31 18:38:13
+version: 1.8
 ---
 
-So for todays node cli tool example I will be writing about a basic file system walker that I have put together for this series of posts. I have wrote a few posts on file system walkers such as klaw, and just simply walk, as well as the many native nodejs module methods that can be used to make a file system walker from the ground up. This is a post on making node cli tools so for todays post I will be making a file system walker using the node file system method like readdir, stat, and so forth.
+So for todays [node cli tool](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) example I will be writing about a basic file system walker that I have put together for this series of posts. I have wrote a few posts on file system walkers such as klaw, and just simply walk, as well as the many native nodejs module methods that can be used to make a file system walker from the ground up. This is a post on making node cli tools so for todays post I will be making a file system walker using the node file system method like readdir, stat, and so forth.
 
 <!-- more -->
 
