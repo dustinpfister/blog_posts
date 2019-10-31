@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 549
-updated: 2019-10-23 16:02:58
-version: 1.4
+updated: 2019-10-31 18:40:19
+version: 1.5
 ---
 
-So for todays node cli project I started working on a basic static site generator, one of many project ides of node cli tool examples. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk that make part of my node cli tools repository project. This static site generator might not really be of production quality as of yet, but if I do put more time into this project I am sure it will get there.
+So for todays [node cli](/2019/10/23/nodejs-cli/) project I started working on a basic static site generator, one of many project ides of node cli tool examples. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk that make part of my node cli tools repository project. This static site generator might not really be of production quality as of yet, but if I do put more time into this project I am sure it will get there.
 
 <!-- more -->
 
