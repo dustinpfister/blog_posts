@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 548
-updated: 2019-10-31 18:25:59
-version: 1.6
+updated: 2019-10-31 18:29:54
+version: 1.7
 ---
 
 So for todays node cli tool example I will be writing about a basic file system walker that I have put together for this series of posts. I have wrote a few posts on file system walkers such as klaw, and just simply walk, as well as the many native nodejs module methods that can be used to make a file system walker from the ground up. This is a post on making node cli tools so for todays post I will be making a file system walker using the node file system method like readdir, stat, and so forth.
@@ -93,6 +93,8 @@ exports.handler = function (argv) {
 The handler calls the main method of the walk.js shared lib that I have worked out for the nc-walk command, as well as file system walking in general for every command in the project. So now it is just a question of taking a look at that module, and that is all here is to this command.
 
 ## 3 - The /shared/lib/walk/walk.js file
+
+So here is the state of my walk.js module as of this writing at least. The general idea here is that I have a walk method that is called just once for the contents of a folder without following any nested folders, but can also be called recursively.
 
 ```js
 let fs = require('fs'),
