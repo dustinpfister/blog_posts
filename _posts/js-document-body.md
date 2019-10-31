@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-10-31 19:31:40
-version: 1.22
+updated: 2019-10-31 19:38:21
+version: 1.23
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element. The property is one of many ways to go about getting a reference to an element in client side javaScript, but I often use this property if it is the body element alone that I am interested in.
@@ -65,7 +65,7 @@ This tired yet true way to go about getting a reference to the body element will
 
 ### 2.2 - by the document children property
 
-So if you are looking for a totally over complicated solution for something that is really simple look no further get a load of this one.
+So if you are looking for a totally over complicated solution for something that is really simple look no further get a load of this one. like I said in the beginning of this post there are many ways to go about getting a reference to an element in client side javaScript. For the most part I figured just to throw this example together just for the sake of having yet another examples of how to get the js body element.
 
 ```html
 <html>
