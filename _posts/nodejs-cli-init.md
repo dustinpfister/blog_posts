@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 547
-updated: 2019-10-29 14:18:33
-version: 1.8
+updated: 2019-10-31 18:40:19
+version: 1.9
 ---
 
-So I thought I would write a whole bunch of posts on [node cli](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I have started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
+So I thought I would write a whole bunch of posts on [node cli](/2019/10/23/nodejs-cli/) tool examples. This is of course one of the many reasons why one would want to get into nodejs development. Sure there is writing server side systems with nodejs, but I have started enjoying writing simple command line interface tools using node and javaScript. So in this post I will be starting out with a node cli tool that is a tool that initializes a project folder.
 
 <!-- more -->
 
