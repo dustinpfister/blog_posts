@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 549
-updated: 2019-10-31 20:15:11
-version: 1.10
+updated: 2019-10-31 20:17:51
+version: 1.11
 ---
 
 So for todays [node cli](/2019/10/23/nodejs-cli/) project I started working on a basic static site generator, one of many project ides of node cli tool examples. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk that make part of my node cli tools repository project. This static site generator might not really be of production quality as of yet, but if I do put more time into this project I am sure it will get there.
@@ -50,6 +50,8 @@ exports.handler = function (argv) {
 
 ### 3.2 - gen.js
 
+Here I have the logic for the sub command that will be used to generate a public folder with the posts and theme of a site folder that was created with the nc-init command.
+
 ```js
 let path = require('path'),
 gen = require('../lib/gen.js');
@@ -82,6 +84,8 @@ exports.handler = function (argv) {
 
 };
 ```
+
+The script requires in another gen.js file that is in the lib folder of this command, that is where I have most of my logic that composes the ssg.
 
 ## 4 - The /bin/ssg/lib folder
 
