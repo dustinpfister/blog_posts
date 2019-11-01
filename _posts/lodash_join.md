@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2019-11-01 09:55:59
-version: 1.13
+updated: 2019-11-01 10:15:50
+version: 1.14
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a wrapper for a native javaScript method in this case Array.prototype.join. This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash.
@@ -17,7 +17,7 @@ In any case this is a method that come sup a lot when working out all kinds of s
 
 ## 1 - what to know
 
-This is a post on the lodash method \_.join, as well as the corresponding Array.prototype.join method that is being referenced. The join method in general then in javaScript is used to join an array of elements together into an string. So this will not be a getting started post on lodash, or javaScript in general. In addition to this I assume that you have at least a little background with javaScript,a nd how to get started with lodash or any javaScript asset before hand.
+This is a post on the lodash method \_.join, as well as the corresponding Array.prototype.join method that is being referenced. The join method in general then in javaScript is used to join an array of elements together into an string. So this will not be a getting started post on lodash, or javaScript in general. In addition to this I assume that you have at least a little background with javaScript, and how to get started with lodash or any javaScript asset before hand.
 
 ## 2 - Basic example of joining an Array in javaScript with \_.join, and Array.join.
 
@@ -29,10 +29,13 @@ To use the lodash method I just need to call \_.join, pass the array, and then g
 
 ```js
 var str = _.join(['home','dustin','github','test_lodash'], '/');
+console.log('str:', str);
+console.log('join:', str); 
+console.log('split back:', _.split(str,'/'));
  
-console.log(str); //'home/dustin/github/test_lodash'
- 
-console.log(_.split(str,'/')); // [ 'home', 'dustin', 'github', 'test_lodash' ]
+// 'str:' 'home/dustin/github/test_lodash'
+// 'join:' 'home/dustin/github/test_lodash'
+// 'split back:' [ 'home', 'dustin', 'github', 'test_lodash' ]
 ```
 
 ### 2.2 - The same example using Array.join
@@ -41,12 +44,31 @@ The native Array.join method works in very much the same manor only it is a prot
 
 ```js
 var str = ['home','dustin','github','test_lodash'].join('/');
- 
-console.log(str); //'home/dustin/github/test_lodash'
- 
-console.log(str.split('/')); // [ 'home', 'dustin', 'github', 'test_lodash' ]
+console.log(str); 
+console.log(str.split('/'));
+//'home/dustin/github/test_lodash'
+// [ 'home', 'dustin', 'github', 'test_lodash' ]
 ```
 
-## 3 - Conclusion
+## 3 - lodash join and chaining methods
+
+So in lodash one way to go about chaining methods together is by using the [\_.chain](/2018/11/11/lodash_chain/) method. To do this I call the \_.chain method, pass the array, and then I can call lodash methods off of the resulting object just like in native javaScript. I just need to call value at the end to get the final value in the case a string.
+
+```js
+let arr = [0, 1, 2, 3, 4, 5]
+// simple chain example
+// using _.map, _.join and then
+// creating the string value
+let str = _.chain(arr)
+    .map((n) => {
+        return Math.pow(n, 2);
+    })
+    .join(':')
+    .value();
+console.log(str);
+// 0:1:4:9:16:25
+```
+
+## 4 - Conclusion
 
 The Array.join method has been in the javaScript spec for ages making \_.join one of the method in lodash where there is not much point of it being there aside from just making this consistent in the code, as this native method has great browser support going way back. Do not assume that this is the case of all lodash methods though, with some of them like [\_.map](/2018/02/02/lodash_map/), and [\_.fill](/2017/09/26/lodash_fill/) this is not the case.
