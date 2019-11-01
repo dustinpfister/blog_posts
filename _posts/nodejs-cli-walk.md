@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 548
-updated: 2019-10-31 18:40:20
-version: 1.9
+updated: 2019-10-31 20:47:37
+version: 1.10
 ---
 
 So for todays [node cli](/2019/10/23/nodejs-cli/) tool example I will be writing about a basic file system walker that I have put together for this series of posts. I have wrote a few posts on file system walkers such as klaw, and just simply walk, as well as the many native nodejs module methods that can be used to make a file system walker from the ground up. This is a post on making node cli tools so for todays post I will be making a file system walker using the node file system method like readdir, stat, and so forth.
@@ -15,16 +15,16 @@ So for todays [node cli](/2019/10/23/nodejs-cli/) tool example I will be writing
 
 ## 1 - node cli walk command example
 
-This is an example of a basic file system walker that can be used from the command line. The idea of the project is to have a command that I can call from the command line where I pass a target folder to walk, and a script that I would like to apply for each file found in that target folder. This command example is one of many node cli examples that I have made for my node_cli_tools project that I am working on these days. This command line interface tool, along with many others is still a work in progress along with everything else in the project.
+This is an example of a basic file system walker that can be used from the command line. The idea of the project is to have a command that I can call from the command line where I pass a target folder to walk, and a script that I would like to apply for each file found in that target folder. This command example is one of many node cli examples that I have made for my node\_cli\_tools project that I am working on these days. This command line interface tool, along with many others is still a work in progress along with everything else in the project.
 
-If you would like to reproduce what I am writing about here you might want to start with my main post on the node_cli_tools project, as well as check out the repo itself where you can just clone it down, install it globally,  and be done with it. 
+If you would like to reproduce what I am writing about here you might want to start with my main post on the node\_cli\_tools project, as well as check out the repo itself where you can just clone it down, install it globally,  and be done with it. 
 
 I assume that you have a fair amount of experience with javaScript, node.js, and many of the frameworks that I am using in the core of the project. If not covering all of that is outside the scope of this post.
 
 
 ## 2 - The /bin/walk/index.js file
 
-The index.js file for the nc-walk command of my node_cli_tools project uses yargs to parse options for the command, as with all my other commands in this project. This is the script that will run first when the nc-walk command is used, so that is what I have the nodejs shebang at the top of the file.
+The index.js file for the nc-walk command of my node\_cli\_tools project uses yargs to parse options for the command, as with all my other commands in this project. This is the script that will run first when the nc-walk command is used, so that is what I have the nodejs shebang at the top of the file.
 
 ```js
 #!/usr/bin/env node
