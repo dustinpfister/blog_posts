@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 549
-updated: 2019-10-31 20:26:29
-version: 1.14
+updated: 2019-10-31 20:47:36
+version: 1.15
 ---
 
 So for todays [node cli](/2019/10/23/nodejs-cli/) project I started working on a basic static site generator, one of many project ides of node cli tool examples. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk that make part of my node cli tools repository project. This static site generator might not really be of production quality as of yet, but if I do put more time into this project I am sure it will get there.
@@ -32,7 +32,7 @@ require('yargs')
 
 # 3 - The /bin/ssg/commands folder
 
-This folder is a common folder that I have for all the commands of my node_cli_tools project. some commands might have more that one sub command and although that is not yet the case for nc-ssg, it might be the case at some point in the future for this one if I do continue working on this project. So far there is a default command, and a gen command which is short for generate. Future sub commands might be something like watch, which will automatically generate each time changes are made t the sites content.
+This folder is a common folder that I have for all the commands of my node\_cli\_tools project. some commands might have more that one sub command and although that is not yet the case for nc-ssg, it might be the case at some point in the future for this one if I do continue working on this project. So far there is a default command, and a gen command which is short for generate. Future sub commands might be something like watch, which will automatically generate each time changes are made t the sites content.
 
 ### 3.1 - default.js
 
@@ -93,7 +93,7 @@ So with some commands I might have a lib folder that is local to the folder of t
 
 ### 4.1 - for_post.js
 
-Here I have the file that exports a method that will be used to generate each page for each blog post in the \_posts folder of the site folder that was created with the nc-init command. This method is used with my walk.js module that is in the shared folder of the node_cli_tools project.
+Here I have the file that exports a method that will be used to generate each page for each blog post in the \_posts folder of the site folder that was created with the nc-init command. This method is used with my walk.js module that is in the shared folder of the node\_cli\_tools project.
 
 ```js
 let fs = require('fs'),
