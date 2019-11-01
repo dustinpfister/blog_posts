@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2019-11-01 09:53:01
-version: 1.12
+updated: 2019-11-01 09:55:59
+version: 1.13
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a wrapper for a native javaScript method in this case Array.prototype.join. This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash.
@@ -21,11 +21,11 @@ This is a post on the lodash method \_.join, as well as the corresponding Array.
 
 ## 2 - Basic example of joining an Array in javaScript with \_.join, and Array.join.
 
-For a basic example of the join methods I put together some examples that involve an array of folder names that need to be combined together into an string that can be used as a corresponding path with a '\/' separator. Maybe not the best use case example, especially if you are working in a nodejs environment as the [path.join method](/2017/12/27/nodejs-paths) should be used there for something lik this, but still it should server the purpose of a simple example.
+For a basic example of the join methods I put together some examples that involve an array of folder names that need to be combined together into an string that can be used as a corresponding path with a '\/' separator. Maybe not the best use case example, especially if you are working in a nodejs environment as the [path.join method](/2017/12/27/nodejs-paths) should be used there for something like this, but still it should server the purpose of a simple example.
 
 ### 2.1 - joining an array of strings that represent folder names into a path using \_.join
 
-To use the lodash method I just need to call \_.join, pass the array, and then give the separator that I want between elements when making the string. This will give me a string that will work okay as a path. If I all ready have a string that is formated in a way in wich there is a '\/' separator between folder names I can use the \_.split method to split that string into an array of elements, reversing the process.
+To use the lodash method I just need to call \_.join, pass the array, and then give the separator that I want between elements when making the string. This will give me a string that will work okay as a path in some cases. If I all ready have a string that is formated in a way in which there is a '\/' separator between folder names I can use the \_.split method to split that string into an array of elements, reversing the process.
 
 ```js
 var str = _.join(['home','dustin','github','test_lodash'], '/');
@@ -46,5 +46,7 @@ console.log(str); //'home/dustin/github/test_lodash'
  
 console.log(str.split('/')); // [ 'home', 'dustin', 'github', 'test_lodash' ]
 ```
+
+## 3 - Conclusion
 
 The Array.join method has been in the javaScript spec for ages making \_.join one of the method in lodash where there is not much point of it being there aside from just making this consistent in the code, as this native method has great browser support going way back. Do not assume that this is the case of all lodash methods though, with some of them like [\_.map](/2018/02/02/lodash_map/), and [\_.fill](/2017/09/26/lodash_fill/) this is not the case.
