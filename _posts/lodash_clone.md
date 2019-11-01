@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2019-11-01 19:49:13
-version: 1.2
+updated: 2019-11-01 19:49:53
+version: 1.3
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. thereIn native javaScript there is [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), but there is poor browser support, so [\_.clone](https://lodash.com/docs/4.17.4#clone) is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
 
 <!-- more -->
 
-## The deal with referencing, and copying.
+## 1 - The deal with referencing, and copying.
 
 If you do not yet know about the deal with copying and referencing in javaScript I will quickly give the low down on it here. When you are dealing with primitives copying is done by value, not reference, so then when you do something like this:
 
@@ -42,7 +42,7 @@ n.foo = 42;
 console.log(obj.foo); // 42
 ```
 
-## Cloning objects is copying an object my value.
+## 2 - Cloning objects is copying an object my value.
 
 If I want to work with a copy of an object, rather than simply making a reference to it, I will want to use some kind of cloning method. \_.clone is one such method.
 
@@ -67,6 +67,6 @@ console.log(n.foo); // 'foobar'
 console.log(obj.foo); // 42
 ```
 
-## Conclusion
+## 3 - Conclusion
 
 Like a lot of methods in lodash, this functionality is now native in modern browsers. As is the case with Object.assign. However because I do care at least to some extent about backward compatibility, and do not want to invest a great deal of time making platform specific client systems, just suing lodash will help march things back a bit more. This is maybe the main reason why projects like lodash, and jQuery, are not dead just yet.
