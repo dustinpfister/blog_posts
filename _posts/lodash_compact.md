@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2019-11-01 18:39:29
-version: 1.12
+updated: 2019-11-01 18:50:31
+version: 1.13
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), just for the hell of it. My approach with lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, or array like objects. So under that light I think it is a good idea to write some content on the topic. Anyway todays post will center around the [\_.compact](https://lodash.com/docs/4.17.10#compact) method that can be used to quickly remove false values away from an array. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js.
@@ -73,3 +73,15 @@ console.log(arr); // [ 1, 'foo', 'bar', 42 ]
 ```
 
 However it is yet another option when it comes to removing false values from an array in javaScript.
+
+## 3 - The native javaScript filter array prototype can be used to easily compact an array
+
+So lets not forget about the [filter array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that is well supported these days as it is an ecma r5 spec javaScript feature. That being said the following can be done with native javaScript real easy like withput lodash.
+
+```js
+var arr = [null, 1, 'foo', NaN, false, 'bar', undefined, undefined, 42];
+arr = arr.filter(function (el) {
+    return !!el;
+});
+console.log(arr); // [ 1, 'foo', 'bar', 42 ]
+```
