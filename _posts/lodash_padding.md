@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2019-11-01 10:33:36
-version: 1.15
+updated: 2019-11-01 10:37:26
+version: 1.16
 ---
 
-So today I will be putting togeather another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well.
+So today I will be putting together another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well when it comes to native javaScript. In late javaScript specs there are padding methods baked into core javaScript now, and if you want better backward support there are some concise tricks for this of course. So lets get to it.
 
 <!-- more -->
 
