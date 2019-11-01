@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2019-11-01 18:34:18
-version: 1.10
+updated: 2019-11-01 18:38:11
+version: 1.11
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), just for the hell of it. My approach with lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, or array like objects. So under that light I think it is a good idea to write some content on the topic. Anyway todays post will center around the [\_.compact](https://lodash.com/docs/4.17.10#compact) method that can be used to quickly remove false values away from an array. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js.
@@ -21,7 +21,7 @@ This is a post centered around the \_.compact method in lodash, a popular javaSc
 
 For a basic example of this say we just have a simple array with some values in it. Some of these values will evaluate to false if you where to convert them to boolean, others will not. Say you want to just remove all the values that will evaluate to false, and keep the ones that do not. there are many ways to go about doing this, but if lodash is part of your projects stack the \_.compact method can be used to make quick work of this. There are of course other methods in lodash, and doing so with plain old vanilla js is not big deal as well, so lets take a look at some examples.
 
-### 2.1 - Using \_.compact
+### 2.1 - Using lodash \_.compact
 
 So of course lets start of with using lodash \_.compact method first, doing so is stupid simple just call the method passing the array that you want false values removed, and the desired array will be returned.
 
@@ -55,7 +55,7 @@ So the basic idea of compacting an array can be done in a wide range of differen
 
 ### 2.3 - Using Array.splice
 
-If I use Array.splice not only will it will edit the array in place, and not create a new array.
+If I use Array.splice is another option when it comes to writing my own compact method with plain old native javaScript, the method also mutates the array in place, which in some cases might not be desired as it violates the rules of functional programing. However if that bothers you yet another option would be to use the Array slice prototype methods that will create a new array.
 
 ```js
 var compact = function (a) {
