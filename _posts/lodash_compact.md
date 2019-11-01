@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2018-08-12 20:43:19
-version: 1.7
+updated: 2019-11-01 18:24:59
+version: 1.8
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), just for the hell of it. My approach with lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, or array like objects. So under that light I think it is a good idea to write some content on the topic. Anyway todays post will center around the [\_.compact](https://lodash.com/docs/4.17.10#compact) method that can be used to quickly remove false values away from an array. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js.
@@ -23,13 +23,15 @@ For a basic example of this say we just have a simple array with some values in 
 
 ### 2.1 - Using \_.compact
 
-So of course lets start of with using \_.compact first, doing so is stupid simple just call the method passing the array that you want false values removed, and the desired array will be returned.
+So of course lets start of with using lodash \_.compact method first, doing so is stupid simple just call the method passing the array that you want false values removed, and the desired array will be returned.
 
 ```js
 let arr = [null,1,'foo',NaN,false,'bar',undefined,undefined,42];
  
 console.log(_.compact(arr)); // [ 1, 'foo', 'bar', 42 ]
 ```
+
+So then it is a very simple method to just go about moving false methods from and array. However sometimes what should count as false, or just simply what should not be part of an array might differ from time to time depending on the situation. SO with that said lets take a look as some other ways of how to go abut compacting an array down with lodash and native javaScript.
 
 ### 2.2 - Using Array.forEach
 
