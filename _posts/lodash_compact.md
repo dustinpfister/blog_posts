@@ -1,12 +1,12 @@
 ---
-title: removing false values from an array with _.compact.
+title: Removing false values from an array with lodash _.compact and native javaScript.
 date: 2018-08-09 13:41:00
 tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2019-11-01 18:32:35
-version: 1.9
+updated: 2019-11-01 18:34:18
+version: 1.10
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), just for the hell of it. My approach with lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, or array like objects. So under that light I think it is a good idea to write some content on the topic. Anyway todays post will center around the [\_.compact](https://lodash.com/docs/4.17.10#compact) method that can be used to quickly remove false values away from an array. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js.
