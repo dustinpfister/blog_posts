@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 549
-updated: 2019-10-31 20:06:12
-version: 1.6
+updated: 2019-10-31 20:08:32
+version: 1.7
 ---
 
 So for todays [node cli](/2019/10/23/nodejs-cli/) project I started working on a basic static site generator, one of many project ides of node cli tool examples. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk that make part of my node cli tools repository project. This static site generator might not really be of production quality as of yet, but if I do put more time into this project I am sure it will get there.
@@ -78,3 +78,65 @@ exports.handler = function (argv) {
 
 };
 ```
+
+## 4 - The /bin/ssg/lib folder
+
+### 4.1 - for_post.js
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+readFile = promisify(fs.readFile),
+writeFile = promisify(fs.writeFile),
+marked = require('marked');
+ 
+// is markdown helper
+let isMarkdown = (item) => {
+    // is the item a markdown file?
+    if (item.stat.isFile && item.fileName.match(/.md$/)) {
+        return Promise.resolve()
+    } else {
+        return Promise.reject(new Error('item in posts folder is not a markdown file'));
+    }
+}
+ 
+// main forFile method to be used with nc-walk
+module.exports = (api, item, next) => {
+ 
+    console.log('generating post files for public folder: ' + api.dir_public);
+    // the dir for the new html file
+    let dir_html = path.join( api.dir_public, path.basename(item.fileName, '.md') + '.html' );
+    // is the item markdown?
+    isMarkdown(item)
+    // read the markdown file
+    .then(() => {
+        return readFile(item.path)
+    })
+    // use marked to convert post to html
+    // and write the new html file in the public folder
+    .then((data) => {
+        let html = marked(data.toString());
+        // write the file
+        //return writeFile(dir_html, html, 'utf8');
+        return api.render({
+            layout: 'post',
+            path: '/blog',
+            content: html
+        });
+        next();
+    })
+    // then log gen file message
+    .then(()=>{
+        //console.log('gen: ');
+        //console.log(api);
+    })
+    // if and error happens
+    .catch((e) => {
+        console.log(e);
+        next();
+    })
+};
+```
+
+### 4.2 - gen.js
