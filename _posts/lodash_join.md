@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2019-11-01 09:51:56
-version: 1.11
+updated: 2019-11-01 09:53:01
+version: 1.12
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a wrapper for a native javaScript method in this case Array.prototype.join. This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash.
@@ -21,7 +21,7 @@ This is a post on the lodash method \_.join, as well as the corresponding Array.
 
 ## 2 - Basic example of joining an Array in javaScript with \_.join, and Array.join.
 
-For a basic example of the join methods I put together some examples that involve an array of folder names that need to be combined together into an string that can be used as a corresponding path with a '\/' separator. Maybe not the best use case example, especially if you are working in a nodejs environment as the path.join method should be used there for something lik this, but still it should server the purpose of a simple example.
+For a basic example of the join methods I put together some examples that involve an array of folder names that need to be combined together into an string that can be used as a corresponding path with a '\/' separator. Maybe not the best use case example, especially if you are working in a nodejs environment as the [path.join method](/2017/12/27/nodejs-paths) should be used there for something lik this, but still it should server the purpose of a simple example.
 
 ### 2.1 - joining an array of strings that represent folder names into a path using \_.join
 
