@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 549
-updated: 2019-10-31 20:23:53
-version: 1.13
+updated: 2019-10-31 20:26:29
+version: 1.14
 ---
 
 So for todays [node cli](/2019/10/23/nodejs-cli/) project I started working on a basic static site generator, one of many project ides of node cli tool examples. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk that make part of my node cli tools repository project. This static site generator might not really be of production quality as of yet, but if I do put more time into this project I am sure it will get there.
@@ -152,6 +152,8 @@ module.exports = (api, item, next) => {
 ```
 
 ### 4.2 - gen.js
+
+Here I have the current state of gen.js of the nc-ssg command. I am making use of ejs as a template system that is one of the npm packages that I have made as part of the stack for node\_cli\_tools.
 
 ```js
 let ejs = require('ejs'),
