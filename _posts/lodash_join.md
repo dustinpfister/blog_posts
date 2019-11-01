@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2019-11-01 09:15:11
-version: 1.6
+updated: 2019-11-01 09:19:15
+version: 1.7
 ---
 
-So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods \_.join in lodash, and Array.join when it comes to native javaScript. In any case this is a method that come sup a lot when working out all kinds of solutions for problems when working in a javaScript programing environment. These methods are used to join all the elements of an array together with a given separator furnishing a string from those array elements. It can be thought of as the opposite of \_.split, or String.split that can be used to split a string down into an array of elements with a given separator. In any case this post will outline some examples of joining the elements of a javaScript array together into a string.
+So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. In any case this is a method that come sup a lot when working out all kinds of solutions for problems when working in a javaScript programing environment. These methods are used to join all the elements of an array together with a given separator furnishing a string from those array elements. It can be thought of as the opposite of \_.split, or String.split that can be used to split a string down into an array of elements with a given separator. In any case this post will outline some examples of joining the elements of a javaScript array together into a string.
 
 <!-- more -->
 
