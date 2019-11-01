@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2018-08-11 15:40:36
-version: 1.5
+updated: 2019-11-01 09:15:11
+version: 1.6
 ---
 
-So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods \_.join in lodash, and Array.join when it comes to native javaScript. In any case this is a method that come sup a lot when working out all kinds of solutions for problems when working in a javaScript programing environment. These methods are used to join all the elements of an array together with a given separator furnishing a string from those array elements. It can be thought of as the opposite of \_.split, or String.split that can be used to split a string down into an array of elements with a given separator. In any case this post will outline some examples of joining the elements of a javaScript array togeather into a string.
+So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods \_.join in lodash, and Array.join when it comes to native javaScript. In any case this is a method that come sup a lot when working out all kinds of solutions for problems when working in a javaScript programing environment. These methods are used to join all the elements of an array together with a given separator furnishing a string from those array elements. It can be thought of as the opposite of \_.split, or String.split that can be used to split a string down into an array of elements with a given separator. In any case this post will outline some examples of joining the elements of a javaScript array together into a string.
 
 <!-- more -->
 
@@ -35,7 +35,7 @@ console.log(_.split(str,'/')); // [ 'home', 'dustin', 'github', 'test_lodash' ]
 
 ### 2.2 - The same example using Array.join
 
-The native Array.join method works in verry much the same mannor only it is a prototype method of Array, so I call it as such, and only give the separator.
+The native Array.join method works in very much the same manor only it is a prototype method of Array, so I call it as such, and only give the separator.
 
 ```js
 var str = ['home','dustin','github','test_lodash'].join('/');
