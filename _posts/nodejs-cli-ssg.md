@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 549
-updated: 2019-10-31 20:21:20
-version: 1.12
+updated: 2019-10-31 20:23:53
+version: 1.13
 ---
 
 So for todays [node cli](/2019/10/23/nodejs-cli/) project I started working on a basic static site generator, one of many project ides of node cli tool examples. The project makes use of the npm package known as marked which can be used to parse markdown files into html, as well as some of my other node cli projects such as nc-walk that make part of my node cli tools repository project. This static site generator might not really be of production quality as of yet, but if I do put more time into this project I am sure it will get there.
@@ -92,6 +92,8 @@ The script requires in another gen.js file that is in the lib folder of this com
 So with some commands I might have a lib folder that is local to the folder of the command in the bin folder. This local lib folder is where I might park all kinds of files that are close to the command, rather than modules that might be used by more that one command in the project. Here I have a file that is used with my walk.js module to generate posts, as well as a gen.js file that contains the bulk of the logic for the static site generator at this time.
 
 ### 4.1 - for_post.js
+
+Here I have the file that exports a method that will be used to generate each page for each blog post in the \_posts folder of the site folder that was created with the nc-init command. This method is used with my walk.js module that is in the shared folder of the node_cli_tools project.
 
 ```js
 let fs = require('fs'),
