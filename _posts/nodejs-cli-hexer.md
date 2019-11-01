@@ -5,22 +5,22 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 552
-updated: 2019-10-31 19:13:42
-version: 1.8
+updated: 2019-10-31 20:47:36
+version: 1.9
 ---
 
-So for todays post a [node cli](/2019/10/23/nodejs-cli/) tool example from my on my node_cli_tools project I will be writing about a quick tool that I put together that can be used to convert a plain text file to a hex format. This kind of tool might come in handy when it comes to creating a collection of content that I want to store in a format that is not necessary encrypted, but is just in a format that is not human readable. The main use case is that I just want a simple tool that will convert markdown files for example into a format that just makes it so the content is not indexed by Google bot, but can easily be converted back to a plain text format.
+So for todays post a [node cli](/2019/10/23/nodejs-cli/) tool example from my on my node\_cli\_tools project I will be writing about a quick tool that I put together that can be used to convert a plain text file to a hex format. This kind of tool might come in handy when it comes to creating a collection of content that I want to store in a format that is not necessary encrypted, but is just in a format that is not human readable. The main use case is that I just want a simple tool that will convert markdown files for example into a format that just makes it so the content is not indexed by Google bot, but can easily be converted back to a plain text format.
 
 <!-- more -->
 
 ## 1 - The node cli nc-hexer command basics
 
-This is a post on my cd-hexer command that is part of my node_cli_tools project that can be found on my github account. This node cli tool depends on yargs which is one of several npm packages that make part of a stack that is the core of the project as a whole. So the code examples here will not work out of the box by just copying and parsing the code. If you want to reproduce what is going on here it would be best to clone done the project and install it globally.
+This is a post on my cd-hexer command that is part of my node\_cli\_tools project that can be found on my github account. This node cli tool depends on yargs which is one of several npm packages that make part of a stack that is the core of the project as a whole. So the code examples here will not work out of the box by just copying and parsing the code. If you want to reproduce what is going on here it would be best to clone done the project and install it globally.
 
 
 ## 2 - /bin/hexer/index.js
 
-So each of my commands in the node_cli_tools projects has a bin folder in the root of the project folder. In the package.json file there is a bin key and that points to this file. This is why I am suing the nodejs shebang at the top of the file, as this is the first file to be called when the nc-hexer command is used.
+So each of my commands in the node\_cli\_tools projects has a bin folder in the root of the project folder. In the package.json file there is a bin key and that points to this file. This is why I am suing the nodejs shebang at the top of the file, as this is the first file to be called when the nc-hexer command is used.
 
 ```js
 #!/usr/bin/env node
