@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2019-11-01 09:42:36
-version: 1.9
+updated: 2019-11-01 09:45:29
+version: 1.10
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a wrapper for a native javaScript method in this case Array.prototype.join. This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash.
@@ -17,7 +17,7 @@ In any case this is a method that come sup a lot when working out all kinds of s
 
 ## 1 - what to know
 
-This is a post on the lodash method \_.join, as well as the corresponding Array.join methods that are used in javaScript to join an array of elements together into an array. It is not a getting started post on lodash, or javaScript in general, and I assume that you have at least a little background with javaScript before hand.
+This is a post on the lodash method \_.join, as well as the corresponding Array.prototype.join method that is being referenced. The join method in general then in javaScript is used to join an array of elements together into an string. So this will not be a getting started post on lodash, or javaScript in general. In addition to this I assume that you have at least a little background with javaScript,a nd how to get started with lodash or any javaScript asset before hand.
 
 ## 2 - Basic example of joining an Array in javaScript with \_.join, and Array.join.
 
