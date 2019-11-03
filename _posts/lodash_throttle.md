@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-03 14:37:12
-version: 1.8
+updated: 2019-11-03 14:42:49
+version: 1.9
 ---
 
 There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
@@ -44,7 +44,9 @@ The lodash \_.throttle method is a good example of what can be done with closure
 
 ## 2.1 - Using closures.
 
-So I started out with writing a function expression, and then just have it so that function expression returns another function expression. Inside the body of the outer function I have a variable that will store the amount of time that has elapsed sense the function was fist created, or sense the last time the function that is passed as an argument is called.
+So I started out with writing a function expression, and then just have it so that function expression returns another function expression. Inside the body of the outer function I have a variable that will store the amount of time that has elapsed sense the function was fist created, or sense the last time the function that is passed as an argument is called. Inside the body of the inner function I am testing if the amount of time that has elapsed is greater than the set rate, if so I am calling the given method, and setting the last time variable to the current time.
+
+So something like this:
 
 ```js
 var throttle = function (func, rate) {
@@ -60,6 +62,11 @@ var throttle = function (func, rate) {
         }
     };
 };
+```
+
+And it works more or less the same way as lodash throttle.
+
+```js
 // using it to make a function
 // throttled at one sec
 var sec = throttle(function () {
