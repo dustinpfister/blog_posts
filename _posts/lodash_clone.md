@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2019-11-03 11:02:52
-version: 1.10
+updated: 2019-11-03 11:13:01
+version: 1.11
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but there is poor browser support. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. So there are many options in lodash when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method might be a good starting point at least. It is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
@@ -76,6 +76,38 @@ console.log(a.foo); // 'foobar'
 
 So now I have an actual copy of an object, but it is a simple object that does not have any references to other objects. There is also nothing going on with the prototype chain outside of just having the object prototype methods, and There are no circular references as well. Still If I just want to copy the first level of primitives values, this will work just fine if lodash is part of the applications stack of library's that are there at the ready.
 
-## 3 - Conclusion
+## 3 - lodash clone and deep cloning of nested objects
+
+So the plain old lodash clone method will work okay with shallow copy clones, but what if I want to copy an object with nested objects in it? The lodash clone method will just reference those objects, as only the primitive values at the first level of the object are copied. I do have a new separate object, but only just that a single new object, all nested objects are still just referenced as before.
+
+```js
+// here I have an object with a nested object in it
+let obj = {
+    point: {
+        x: 54,
+        y: 127
+    },
+    mess: 'foobar',
+    n: 42
+};
+
+// using clone to clone the object
+let a = _.clone(obj);
+
+// changing a value of the nested object
+a.point.x = 0;
+a.point.y = 0;
+
+// This effects the cloned object
+// as well as the original because the
+// nested object is still referenced rather than
+// copied
+console.log(obj.point.x, obj.point.y);
+console.log(a.point.x, a.point.y);
+```
+
+So to fix this I must do something to deep clone the object. In lodash there are a number of methods that can be used to do this, but the first that comes to mind would be the lodash deep clone method.
+
+## 4 - Conclusion
 
 Like a lot of methods in lodash, this functionality is now native in modern browsers, as a similar effect can be done with the use of [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), as long as you do not case about suporting older browsers and versions of node that are not ecma2015+ compliant. However because I do care at least to some extent about backward compatibility, and do not want to invest a great deal of time making platform specific client systems, just suing lodash will help march things back a bit more depending on the version of lodash used. This is maybe the main reason why projects like lodash, and jQuery, are not dead just yet but there is more to it then just that.
