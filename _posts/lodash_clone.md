@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2019-11-03 11:13:01
-version: 1.11
+updated: 2019-11-03 11:18:09
+version: 1.12
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but there is poor browser support. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. So there are many options in lodash when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method might be a good starting point at least. It is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
@@ -90,23 +90,53 @@ let obj = {
     mess: 'foobar',
     n: 42
 };
-
+ 
 // using clone to clone the object
 let a = _.clone(obj);
-
+ 
 // changing a value of the nested object
 a.point.x = 0;
 a.point.y = 0;
-
+ 
 // This effects the cloned object
 // as well as the original because the
 // nested object is still referenced rather than
 // copied
-console.log(obj.point.x, obj.point.y);
-console.log(a.point.x, a.point.y);
+console.log(obj.point.x, obj.point.y); // 0 0
+console.log(a.point.x, a.point.y); // 0 0
 ```
 
-So to fix this I must do something to deep clone the object. In lodash there are a number of methods that can be used to do this, but the first that comes to mind would be the lodash deep clone method.
+So to fix this I must do something to deep clone the object. In lodash there are a number of methods that can be used to do this, but the first that comes to mind would be the lodash clone deep method.
+
+### 3.1 - Using lodash cloneDeep
+
+So the above example where the lodash clone did not work as I wanted the lodash clone deep method can clone all objects concerned including the nested one.
+
+```js
+// here I have an object with a nested object in it
+let obj = {
+    point: {
+        x: 54,
+        y: 127
+    },
+    mess: 'foobar',
+    n: 42
+};
+ 
+// using cloneDeep to clone the object
+let a = _.cloneDeep(obj);
+ 
+// changing a value of the nested object
+a.point.x = 0;
+a.point.y = 0;
+ 
+// This effects the cloned object
+// as well as the original because the
+// nested object is still referenced rather than
+// copied
+console.log(obj.point.x, obj.point.y); // 54 127
+console.log(a.point.x, a.point.y); // 0 0
+```
 
 ## 4 - Conclusion
 
