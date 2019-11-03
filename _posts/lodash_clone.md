@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2019-11-03 10:39:23
-version: 1.7
+updated: 2019-11-03 10:45:21
+version: 1.8
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but there is poor browser support. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. So there are many options in lodash when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method might be a good starting point at least. It is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
@@ -48,7 +48,7 @@ However in some cases this might present a problem, I want to copy an object. Do
 
 ## 2 - Cloning objects is copying an object my value.
 
-If I want to work with a copy of an object, rather than simply making a reference to it, I will want to use some kind of cloning method. \_.clone is one such method.
+If I want to work with a copy of an object, rather than simply making a reference to it, I will want to use some kind of cloning method. The lodash \_.clone method is one such method that will work okay when it comes to making shallow clones of simple object such as the one in this example.
 
 ```js
 // I created an object
@@ -70,6 +70,8 @@ n.foo = 'foobar';
 console.log(n.foo); // 'foobar'
 console.log(obj.foo); // 42
 ```
+
+So now I have an actual copy of an object, but it is a simple object that does not have any references to other objects. There is also nothing going on with the prototype chain outside of just having the object prototype methods, and There are no circular references as well. Still If I just want to copy the first level of primitives values, this will work just fine if lodash is part of the applications stack of library's that are there at the ready.
 
 ## 3 - Conclusion
 
