@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-03 14:42:49
-version: 1.9
+updated: 2019-11-03 14:54:52
+version: 1.10
 ---
 
 There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
@@ -79,3 +79,5 @@ var loop = function () {
 };
 loop();
 ```
+
+So if you are new to writing closures writing a lodash throttle clone is a good starting point. When it comes to writing a clone of this kind of method there is making it so that it works more or less the same way, and with the same set of features, but there is also adding additional features to make it a custom trailered kind of throttle method.
