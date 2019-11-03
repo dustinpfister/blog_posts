@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2019-11-03 10:54:33
-version: 1.9
+updated: 2019-11-03 11:02:52
+version: 1.10
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but there is poor browser support. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. So there are many options in lodash when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method might be a good starting point at least. It is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
@@ -78,4 +78,4 @@ So now I have an actual copy of an object, but it is a simple object that does n
 
 ## 3 - Conclusion
 
-Like a lot of methods in lodash, this functionality is now native in modern browsers. As is the case with Object.assign. However because I do care at least to some extent about backward compatibility, and do not want to invest a great deal of time making platform specific client systems, just suing lodash will help march things back a bit more. This is maybe the main reason why projects like lodash, and jQuery, are not dead just yet.
+Like a lot of methods in lodash, this functionality is now native in modern browsers, as a similar effect can be done with the use of [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), as long as you do not case about suporting older browsers and versions of node that are not ecma2015+ compliant. However because I do care at least to some extent about backward compatibility, and do not want to invest a great deal of time making platform specific client systems, just suing lodash will help march things back a bit more depending on the version of lodash used. This is maybe the main reason why projects like lodash, and jQuery, are not dead just yet but there is more to it then just that.
