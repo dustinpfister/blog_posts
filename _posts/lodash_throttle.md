@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-03 11:42:53
-version: 1.5
+updated: 2019-11-03 14:15:25
+version: 1.6
 ---
 
 There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
@@ -38,47 +38,33 @@ loop();
 
 \_.throttle differers from setTimeout and setInterval as it returns a new function that will only fire once the amount of time has passed when it is being called, rather than setting a function to call after an amount of time has passed, or at a certain interval.
 
-## 2 - The power of closures, and high order functions.
+## 2 - Vanilla js alternative example
 
-\_.throttle is a good example of what can be done with closures, and high order functions. Which are just fancy terms for functions within functions that accept functions as one or more of there arguments.
+\_.throttle is a good example of what can be done with closures, and high order functions. Which are just fancy terms for functions within functions, and functions that accept functions as one or more of there arguments.
 
-## 3 - Vanilla js alternative example
+## 2.1 - Using closures.
 
 I was able to put this together in a flash. I love quick little examples like this, and also If I wanted to I could go in a novel, custom direction with it.
 
 ```js
 var throttle = function (func, rate) {
- 
     var lastTime = new Date(),
     api;
- 
     rate = rate || 1000;
- 
     // define the api
     api = function () {
- 
         var now = new Date();
- 
         if (now - lastTime >= rate) {
- 
             func();
- 
             lastTime = now;
- 
         }
- 
     };
- 
    // call now
     api.now = function(){
- 
         func();
- 
     };
- 
     // return the api
     return api;
- 
 };
 ```
 
@@ -89,23 +75,17 @@ I also have the beginning of a more complex api starting in which I can also jus
 ```js
 // using my throttle function
 var foo = throttle(function(){
- 
     console.log('foo');
- 
 },3000),
- 
 // a basic loop
 loop = function(){
- 
     setTimeout(loop,33);
- 
     foo(); // foo every three seconds
- 
 };
- 
 // call once now
 foo.now();
- 
 // start loop
 loop();
 ```
+
+
