@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-03 11:39:39
-version: 1.4
+updated: 2019-11-03 11:42:53
+version: 1.5
 ---
 
 There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
@@ -15,7 +15,7 @@ There are times when I want to fire a method once an amount of time has passed. 
 
 ## 1 -  A lodash _.throttle basic example
 
-So here are some quick examples.
+So here is a quick basic example of the lodash throttle method in action. I am using the lodash throttle method by passing a function as the first argument that is to be called each time a certain about of time has passed. After the function as the first argument is passed I then pass a number value that is the amount of time to let pass between times that the function is called as the second argument. What is then returned is a throttled method that will only file once that amount of time has passed.
 
 ```js
 // call once every 1000ms
