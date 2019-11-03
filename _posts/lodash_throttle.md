@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-03 14:54:52
-version: 1.10
+updated: 2019-11-03 14:58:03
+version: 1.11
 ---
 
 There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
@@ -49,11 +49,12 @@ So I started out with writing a function expression, and then just have it so th
 So something like this:
 
 ```js
+// the outer method
 var throttle = function (func, rate) {
     var lastTime = new Date();
     func = func || function () {};
     rate = rate || 1000;
-    // define the api
+    // the inner method
     return function () {
         var now = new Date();
         if (now - lastTime >= rate) {
