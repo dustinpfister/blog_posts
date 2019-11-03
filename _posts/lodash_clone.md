@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2019-11-03 11:18:09
-version: 1.12
+updated: 2019-11-03 11:21:05
+version: 1.13
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but there is poor browser support. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. So there are many options in lodash when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method might be a good starting point at least. It is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
@@ -110,7 +110,7 @@ So to fix this I must do something to deep clone the object. In lodash there are
 
 ### 3.1 - Using lodash cloneDeep
 
-So the above example where the lodash clone did not work as I wanted the lodash clone deep method can clone all objects concerned including the nested one.
+So the above example where the lodash clone did not work as I wanted the [lodash clone deep](/2017/11/13/lodash_clonedeep/) method can clone all objects concerned including the nested one.
 
 ```js
 // here I have an object with a nested object in it
