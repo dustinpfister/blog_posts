@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 88
-updated: 2018-04-12 09:44:56
-version: 1.2
+updated: 2019-11-03 11:26:33
+version: 1.3
 ---
 
-The issue with deep cloning objects in javaScript comes up now and then. Maybe one day I will write a full post on the matter, and all the ways to go about doing it, but this is a post on [lodash](https://lodash.com/), as such I will just be writing about the [\_.cloneDeep](https://lodash.com/docs/4.17.4#cloneDeep) method.
+The issue with deep cloning objects in javaScript comes up now and then. Maybe one day I will write a full post on the matter, and all the ways to go about doing it. However this is a post on [lodash](https://lodash.com/), and as such I will just be writing about the [\_.cloneDeep](https://lodash.com/docs/4.17.4#cloneDeep) method. I have wrote a post on the lodash clone method before which is okay for shallow copy clones of objects, but if I want to copy nested objects as well the [lodash clone](/2017/10/02/lodash_clone/) deep method should be used, or some other means to make a so called deep copy clone of an object.
 
 <!-- more -->
 
-## The deal With copying objects in javaScript
+## 1 - The deal With copying objects in javaScript
 
 If you know about the situation with copying by value vs copying by reference you can skip over what I am writing here. If not it is important to note that making a copy of an object is not as easy as making a copy of a primitive value such as a String or Number. With primitives you can just do something like this:
 
@@ -52,7 +52,7 @@ Objects on the other hand are a bit more of a pain, because when I attempt to co
 ```
 Often this is the effect that is desired, when doing something like grabbing a reference to a DOM element, or something to that effect. However if it is a situation in which I want to change values without effecting the object I am referencing, I need to do something to make an actual copy of the object. 
 
-## Shallow Cloning (or copying) of objects with \_.clone in lodash.
+## 2 - Shallow Cloning (or copying) of objects with \_.clone in lodash.
 
 There are many ways to do this, but because this is a post on lodash, there is the \_.clone method that works well If I just want to make a quick shallow copy of an object.
 
@@ -99,9 +99,9 @@ To understand the problem that can happen with shallow cloning take a look at th
 
 This happens because although I am making a new object rather than just referencing one that all ready exists, one of the properties is another Object ([arrays are objects](/2017/05/12/js-arrays-are-objects/)), and as such that still remains a reference. So I need some kind of way to make not just one new object, but a new object for every object in the object as well. In short I need to deep clone an object.
 
-## Deep Clone with \_.cloneDeep
+## 3 - Deep Clone with \_.cloneDeep
 
-The \_.cloneDeep method in lodash works basicly the same way, only it deep clones the object. As such I just have to make one simple change to the above example to get it to be a full copy of everything in the object.
+The \_.cloneDeep method in lodash works basically the same way, only it deep clones the object. As such I just have to make one simple change to the above example to get it to be a full copy of everything in the object.
 
 ```js
  var obj = {
@@ -122,7 +122,7 @@ The \_.cloneDeep method in lodash works basicly the same way, only it deep clone
  console.log(copy.words[0]); // changed
 ```
 
-## Conclusion
+## 4 -- Conclusion
 
 Sure there are plenty of other ways to shallow and deep clone objects in javaScript. One of just many is to use JSON.parse, and JSON.stringify like this:
 
