@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2019-11-03 10:35:47
-version: 1.6
+updated: 2019-11-03 10:39:23
+version: 1.7
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but there is poor browser support. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. So there are many options in lodash when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method might be a good starting point at least. It is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
@@ -44,7 +44,7 @@ console.log(obj.foo); // 42
 
 In some cases this might be what is desired actually, if I am working with DOM elements in client side javaScript I do not typically want to create a new element, but rather reference an existing one. In a nodejs environment I might create an object that contains a public api for a module, I would like a reference to that api locally within the module, as well as set it is an object that is exported, so no problem there as well.
 
-However in some cases this might present a problem, I want to copy, or clone an object.
+However in some cases this might present a problem, I want to copy an object. Doing so is not always so easy, because objects can contain references to other objects as property values that would also have to be cloned for example. However one way to go about doing so is with the lodash \_.clone method when it comes to making what is often called a shallow clone with simple objects that do not have nested objects, or its okay if those are left as references when making the new object.
 
 ## 2 - Cloning objects is copying an object my value.
 
