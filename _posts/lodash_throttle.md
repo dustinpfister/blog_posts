@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-03 14:58:03
-version: 1.11
+updated: 2019-11-04 10:19:16
+version: 1.12
 ---
 
 There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
@@ -38,11 +38,11 @@ loop();
 
 \_.throttle differers from setTimeout and setInterval as it returns a new function that will only fire once the amount of time has passed when it is being called, rather than setting a function to call after an amount of time has passed, or at a certain interval.
 
-## 2 - Vanilla js alternative example
+## 2 - Vanilla js lodash throttle alternative examples
 
 The lodash \_.throttle method is a good example of what can be done with closures, and high order functions. Which are just fancy terms for functions within functions, and functions that accept functions as one or more of there arguments. In this section I will be going over an example of just using javaScript by itself to make a throttle method.
 
-## 2.1 - Using closures.
+## 2.1 - Basic Lodash throttle clone Using closures.
 
 So I started out with writing a function expression, and then just have it so that function expression returns another function expression. Inside the body of the outer function I have a variable that will store the amount of time that has elapsed sense the function was fist created, or sense the last time the function that is passed as an argument is called. Inside the body of the inner function I am testing if the amount of time that has elapsed is greater than the set rate, if so I am calling the given method, and setting the last time variable to the current time.
 
@@ -82,3 +82,62 @@ loop();
 ```
 
 So if you are new to writing closures writing a lodash throttle clone is a good starting point. When it comes to writing a clone of this kind of method there is making it so that it works more or less the same way, and with the same set of features, but there is also adding additional features to make it a custom trailered kind of throttle method.
+
+### 2.2 - A not so basic lodash throttle clone
+
+```js
+// the outer method
+var throttle2 = function (func, rate) {
+    var lastTime = new Date(),
+    getTime = function () {
+        var now = new Date();
+        return {
+            now: now,
+            time: now - lastTime
+        }
+    };
+    func = func || function () {};
+    rate = rate || 1000;
+    // the inner method and api
+    var api = function () {
+        var t = getTime();
+        if (t.time >= rate) {
+            func(t.time);
+            lastTime = t.now;
+        }
+    };
+    // now method
+    api.now = function () {
+        var t = getTime();
+        func(t.time);
+        lastTime = t.now;
+    };
+    // setRate
+    api.setRate = function (r) {
+        rate = r;
+    };
+    return api;
+};
+```
+
+```js
+// using it in a loop
+var i = 0, iMax = 50, per, bias, rate = 0;
+var throt = throttle2(function (time) {
+        per = i / iMax;
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        rate = 25 + 475 * bias;
+        console.log(
+            'tick time: ' + ('0000' + String(time)).slice(-4) + '; ' +
+            'bias: ' + bias.toFixed(2) + '; ' +
+            'rate: ' + Math.round(rate));
+        i += 1;
+        i %= iMax;
+    });
+var loop = function () {
+    setTimeout(loop, 33);
+    throt();
+    throt.setRate(rate);
+};
+loop();
+```
