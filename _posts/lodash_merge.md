@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 93
-updated: 2019-11-04 10:56:23
-version: 1.4
+updated: 2019-11-04 10:57:54
+version: 1.5
 ---
 
 These days I have been exploring all the options out there when it comes to merging down two or more objects into a single object. There are many ways to go about doing it that have different effects, there is the idea of just copying over key values, or just referencing them even. However it most cases I often want to merge them down like that of a bunch of sheets of acetate rather than that of paper. That is if a certain value is in one object, but not any other, it is the value that will end up in the final object. That is the effect that is achieved when using the lodash [\_.merge](https://lodash.com/docs/4.17.4#merge) method.
@@ -15,7 +15,7 @@ These days I have been exploring all the options out there when it comes to merg
 
 ## 1 - Basic example of lodash merge compared to assign
 
-So for starters there is taking a look at a very simple example of using the merge method compared to assign which is another popular method used for merging together objects. The lodash assign method or the native Object.assign method just copy references to any nested objects that might exist in the given source objects. In many cases this might not preset a problem, but it can result in unexpected behavior now and then it you do not understand the differences between these various methods that are used to merge objects together in lodash and native javaScript.
+So for starters there is taking a look at a very simple example of using the merge method compared to [lodash assign](/2018/09/21/lodash_assign/) which is another popular method used for merging together objects. The lodash assign method or the native Object.assign method just copy references to any nested objects that might exist in the given source objects. In many cases this might not preset a problem, but it can result in unexpected behavior now and then it you do not understand the differences between these various methods that are used to merge objects together in lodash and native javaScript.
 
 ```js
 // s source object
