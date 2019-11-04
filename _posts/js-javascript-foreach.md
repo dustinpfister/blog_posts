@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-11-04 12:32:02
-version: 1.16
+updated: 2019-11-04 12:34:35
+version: 1.17
 ---
 
-In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays, and then objects in general, as such there might come a need to loop over the contents of those kinds of objects. In lodash there is the \_.forEach method that works more or less the same way as the native Array.prototype.forEach method, but is a collection method that will work on objects in general. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
+In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays, and then objects in general, as such there might come a need to loop over the contents of those kinds of objects. In lodash there is the [\_.forEach method](/2017/11/20/lodash_foreach/) that works more or less the same way as the native Array.prototype.forEach method, but is a collection method that will work on objects in general. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
 
 <!-- more -->
 
