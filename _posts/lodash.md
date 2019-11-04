@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2019-11-04 13:49:13
-version: 1.19
+updated: 2019-11-04 13:54:55
+version: 1.20
 ---
 
 [Lodash](https://en.wikipedia.org/wiki/Lodash) is a JavaScript library that provides over some hundred modular utility functions to help work with arrays, functions, and objects in general. Many of the methods are in line with the concepts of [functional programming](https://en.wikipedia.org/wiki/Functional_programming) such as conforming to rules that are constant with the concept of a [pure function](https://en.wikipedia.org/wiki/Pure_function). It is true that many of the functions in lodash, and underscore the older library from which it was forked, are now part of core javaScript itself. However many of the functions in lodash to work a little differently, and there is still some people out there using older browsers that do not support all of these native methods. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library, and there is still a desire to abstract and wrap away many native methods.
@@ -15,7 +15,11 @@ version: 1.19
 
 ## 1 - lodash is
 
-There is much to write about when it comes to [lodash](https://lodash.com/) beyond just writing about the methods themselves. Lodash branches off into many other topics of interested with javaScript development such as [functional programing](https://en.wikipedia.org/wiki/Functional_programming) compared to [imperative programing](https://en.wikipedia.org/wiki/Imperative_programming programing). There is also a lot of blog posts that I see on the web that seem to focus on the fact that many of the methods in lodash are now part of javaScript itself, and that lodash is no longer needed as part of a stack when making any kind of new project. Then there are of course posts that point out some of the redeeming qualities of lodash that still remain to this day. So in this post I will be just writing about lodash in general, and many of these topics that come to mind, this post will also serve as a sort of main index for all other lodash content on this site.
+There is much to write about when it comes to [lodash](https://lodash.com/) beyond just writing about the methods themselves. Lodash branches off into many other topics of interested with javaScript development such as [functional programing](https://en.wikipedia.org/wiki/Functional_programming) compared to [imperative programing](https://en.wikipedia.org/wiki/Imperative_programming). There is also a lot of blog posts that I see on the web that seem to focus on the fact that many of the methods in lodash are now part of javaScript itself, and that lodash is no longer needed as part of a stack when making any kind of new project. 
+
+Then there are of course posts that point out some of the redeeming qualities of lodash that still remain to this day. For example the lodash forEach method will work with objects in general rather than just arrays, and if the method that is passed to it returns false it will stop the loop. The idea that lodash helps to function as a safety net of sorts still remains true to this day to some extent, and it is still nice to abstract things away into a single framework or sorts. In addition even if you choose to not use lodash in new projects it is still a project that is worth studying because of the way that it is designed.
+
+So in this post I will be just writing about lodash in general, and many of these topics that come to mind, this post will also serve as a sort of main index for all other lodash content on this site.
 
 ## 2 - lodash relevancy in light of ecmascript 2015+
 
