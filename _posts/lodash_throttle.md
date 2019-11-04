@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-04 10:19:16
-version: 1.12
+updated: 2019-11-04 10:31:33
+version: 1.13
 ---
 
 There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
@@ -85,6 +85,8 @@ So if you are new to writing closures writing a lodash throttle clone is a good 
 
 ### 2.2 - A not so basic lodash throttle clone
 
+So I made a more complex version of this lodash throttle clone just for the sake of writing about some additional talking points as to why it might not be such a bad idea to take the time to write a custom method for this sort of thing. In this lodash throttle clone I am still returning a function, but I am also appending some additional methods to the function object for calling the given method right away, and also for ajusting the rate.
+
 ```js
 // the outer method
 var throttle2 = function (func, rate) {
@@ -120,6 +122,8 @@ var throttle2 = function (func, rate) {
 };
 ```
 
+I then made an example using it where the rate at which the function is called goes up and down.
+
 ```js
 // using it in a loop
 var i = 0, iMax = 50, per, bias, rate = 0;
@@ -141,3 +145,5 @@ var loop = function () {
 };
 loop();
 ```
+
+Maybe this is not a practical use case example, but if I has a more clear idea of an actual project that would make use of a method like lodash throttle then I might want to add some custom functionality to it. Or fine and alternative way all together for this sort of thing actually. The lodash throttle method is no replacement for state machines, or any kind of main app loop that might need to be called at a certain fixed rate.
