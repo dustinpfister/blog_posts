@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 555
-updated: 2019-11-04 13:29:15
-version: 1.2
+updated: 2019-11-04 13:31:15
+version: 1.3
 ---
 
 The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create an array of values from an object with a given array of paths to values from the object that are to be included in the array.
@@ -14,6 +14,8 @@ The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create
 <!-- more -->
 
 ## 1 - lodash at method basic example
+
+For a basic example of the lodash at method I put together a quick example that has to do with a color object. In this color object I have property key value pairs for each color channel, and and alpha value.
 
 ```js
 let color = {
