@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 93
-updated: 2019-11-04 10:57:54
-version: 1.5
+updated: 2019-11-04 11:04:27
+version: 1.6
 ---
 
 These days I have been exploring all the options out there when it comes to merging down two or more objects into a single object. There are many ways to go about doing it that have different effects, there is the idea of just copying over key values, or just referencing them even. However it most cases I often want to merge them down like that of a bunch of sheets of acetate rather than that of paper. That is if a certain value is in one object, but not any other, it is the value that will end up in the final object. That is the effect that is achieved when using the lodash [\_.merge](https://lodash.com/docs/4.17.4#merge) method.
@@ -107,3 +107,7 @@ console.log(assign.delta.x + ',' + assign.delta.y); // 325,undefined
 ```
 
 In some cases this might be a desired effect, but in the example I am presenting here, obviously not.
+
+## 4 - Conclusion
+
+So the lodash merge method is one such method that seems to be something of use compared to what is available in just native javaScript by itself at least at the time of this writing. There is more than one method in lodash for merging object together as well as for making deep and shallow clones of objects. In addition there is what there is to work with when it comes to native javaScript static objects for doing this sort of thing as well as working out my own methods for copying and merging objects. It can all be a little confusing, and at times I myself still do not thing I have everything as sold as I would like with this. However by just taking a breath and working put some simple examples it can quickly become clear as to the differences between all these options for copying and merging objects in lodash and native javaScript.
