@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-08-01 21:10:55
-version: 1.16
+updated: 2019-11-04 14:41:30
+version: 1.17
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
@@ -22,7 +22,7 @@ Many of the lodash array methods are now part of the native javaScript prototype
 
 So in this section I will be going just over some array methods in lodash, and briefly cover some of the collection methods as well later in this post.
 
-### 1.1 - The \_.chunk method
+### 1.1 - The \_.chunk lodash array method
 
 The [\_.chunk method](/2017/09/13/lodash-chunk/) is a lodash array method that can be used to break a linear array into an array of arrays of a given length. The need to do this comes up now and then and the chunk method helps to make quick work of this, and allow me to move on with a project rather than writing this usual suspect from scratch.
 
@@ -36,7 +36,17 @@ console.log(_.chunk(arr, 2));
 // [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
 ```
 
-### 1.2 - The \_.flatten method
+### 1.2 - The \_.compact lodash array method
+
+The [lodash \_.compact](/2018/08/09) method can be used to quickly remove false values from an array. It is a quick convenience method for just using \_.filter to do the same thing.
+
+```js
+let arr = [null,1,'foo',NaN,false,'bar',undefined,undefined,42];
+ 
+console.log(_.compact(arr)); // [ 1, 'foo', 'bar', 42 ]
+```
+
+### 1.3 - The \_.flatten method
 
 So when it comes to doing the opposite of \_.chunk and quickly turning an array of arrays back into a simple linear array there is the [\_.flatten](/2018/08/12/lodash_flatten/) method as well.
 
@@ -52,7 +62,7 @@ let flat = _.flatten(grid);
 console.log( flat ); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
 
-### 1.3 - The \_.zip method
+### 1.4 - The \_.zip method
 
 The [zip method](/2018/02/01/lodash_zip/) takes two or more arrays and zips theme together.
 
