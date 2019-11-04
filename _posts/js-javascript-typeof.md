@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2019-11-04 14:59:25
-version: 1.12
+updated: 2019-11-04 15:02:13
+version: 1.13
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used. The typeof operator might not always give the desired results, in many cases. So there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with when it comes to types in javaScript.
@@ -15,12 +15,14 @@ The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 
 ## 1 - javaScript typeof lowdown
 
-The typeof operator has right to level [associativity](/2019/02/02/js-operator-precedence/) so to use it I just need to type the typeof operator followed by what it is that I want to find the type of. For the most part the typeof operator is fairly straight forward to use but it has a few quirks, so lets get into it by starting off with a basic example of javaScript typeof.
+The typeof operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so to use it I just need to type the typeof operator followed by what it is that I want to find the type of. For the most part the typeof operator is fairly straight forward to use but it has a few quirks, so lets get into it by starting off with a basic example of javaScript typeof.
 
 ```js
 let ty = typeof 42;
 console.log(ty); // 'number'
 ```
+
+Here the javaScript typeof operator works as expected, I give it a number and it returns the string 'number'. So far the type of operator works the way it should without issue. However things get a little weird when I pass it the null value for example so lets continue.
 
 ## 2 - no need to call typeof as it is an operator and not a function
 
