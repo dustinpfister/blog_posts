@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-08-18 15:03:38
-version: 1.14
+updated: 2019-11-04 12:28:47
+version: 1.15
 ---
 
 In javaScript there is the [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array like Array.map, and Array.filter. Then there are other objects in javaScript that are structured like arrays, but are not arrays. In addition there are also plain old objects that are named collections of key value pairs rather than indexed by numbers. As such this post will be on Array.forEach, but also the many other options in native javaScript  and libraries like [lodash](/2019/02/15/lodash/).
@@ -77,7 +77,7 @@ console.log(arr); // [2,4,8]
 
 ### 2.4 - While loops
 
-Another way would be to use a while loop.
+Another way to loop over all the contents of an array in javaScript would be to use a while loop, or any of the other loop options.
 
 ```js
 var arr = [1, 2, 3],
