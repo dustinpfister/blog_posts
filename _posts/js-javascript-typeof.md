@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2019-11-04 15:02:13
-version: 1.13
+updated: 2019-11-04 15:08:07
+version: 1.14
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used. The typeof operator might not always give the desired results, in many cases. So there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with when it comes to types in javaScript.
@@ -41,7 +41,7 @@ So if you do need to group then use parentheses otherwise they are not needed.
 
 ## 3 - The deal with javaScript typeof and null
 
-So there is something strange with the typeof operator and the value of null. When the value of null is what is uded with the typeof operator the result is object.
+So there is something strange with the typeof operator and the value of null. When the value of null is what is used with the typeof operator the result is object.
 
 ```js
 console.log( typeof null ); // 'object'
