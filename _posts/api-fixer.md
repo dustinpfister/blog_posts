@@ -5,17 +5,17 @@ tags: [js,JSON, automation]
 layout: post
 categories: api
 id: 1
-updated: 2019-05-10 18:43:04
-version: 1.4
+updated: 2019-11-04 15:22:00
+version: 1.5
 ---
 
 Lately I was helping a friend of mine prepare for a trip to India. While doing so one of the things she wanted to get done was to type up a table that included US dollar amounts on one column, and the rupee equivalent in the other. The [fixer api](http://fixer.io) is one way to go about getting up to date exchange rates.
 
 <!-- more -->
 
-## 1 - API fixer is no longer free
+## 1 - UPDATE! API fixer is no longer free
 
-The fixer api was once a free way to go about getting up to date exchange rates, but now it costs money. There is still a free account plan, but an account still needs to be set up to get an access token and use the api.
+The fixer api was once a free way to go about getting up to date exchange rates, but now it costs money. There is still a free account plan, but an account still needs to be set up to get an access token and use the api. So the content that I have here will no longer work without setting up and account, and getting an access token first.
 
 ## 2 - The problem API fixer can solve
 
