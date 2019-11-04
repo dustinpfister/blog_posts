@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 93
-updated: 2017-11-17 13:25:18
-version: 1.1
+updated: 2019-11-04 10:41:10
+version: 1.2
 ---
 
 These days I have been exploring all the options out there when it comes to merging down two or more objects into a single object. There are many ways to go about doing it that have different effects, there is the idea of just copying over key values, or just referencing them even. However it most cases I often want to merge them down like that of a bunch of sheets of acetate rather than that of paper. That is if a certain value is in one object, but not any other, it is the value that will end up in the final object. That is the effect that is achieved when using the lodash [\_.merge](https://lodash.com/docs/4.17.4#merge) method.
 
 <!-- more -->
 
-## A lodash \_.merge example
+## 1 - A lodash \_.merge example with many objects
 
 For an example say I have an object that has default values from something, another object that holds input values, and yet another object that holds methods that act on those values. I want everything merged down together in a way where the values in the input object will override any default values, and I want the this keyword in the methods object to refer to the values in the resulting object of an object that is created from all of this.
 
@@ -65,9 +65,9 @@ console.log(obj.x); // 325
 
 This differs from other methods that might copy inputs.delta over in a way in which I will end up with an undefined value for delta.y, this is the case with \_.assign or Object.assign.
 
-## \_.merge vs \_.assign
+## 2 -  The lodash \_.merge vs the lodash \_.assign method
 
-The \_.merge differs from \_.assign in that \_.assign will create a new object for my deltas overwriting any values that may exist in any lower object. In other words I would end up with an undefined value for delta.y in my example.
+The lodash \_.merge differs from lodash \_.assign method in that \_.assign will create a new object for my deltas overwriting any values that may exist in any lower object. In other words I would end up with an undefined value for delta.y in my example.
 
 ```js
 // merge everything down into a new object
