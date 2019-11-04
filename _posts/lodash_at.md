@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 555
-updated: 2019-11-04 13:34:50
-version: 1.4
+updated: 2019-11-04 13:37:40
+version: 1.5
 ---
 
 The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create an array of values from an object with a given array of paths to values from the object that are to be included in the array.
@@ -34,6 +34,8 @@ console.log(cArr);
 ```
 
 ## 2 - An Array of objects and lodash at
+
+I have an array of my color objects then I can again use the lodash \_.at method to create and array of arrays by using a method like lodash map for example. I can also create just one object by changing the value of the paths string to do so.
 
 ```js
 let colors = [
