@@ -5,15 +5,41 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 93
-updated: 2019-11-04 10:41:10
-version: 1.2
+updated: 2019-11-04 10:53:25
+version: 1.3
 ---
 
 These days I have been exploring all the options out there when it comes to merging down two or more objects into a single object. There are many ways to go about doing it that have different effects, there is the idea of just copying over key values, or just referencing them even. However it most cases I often want to merge them down like that of a bunch of sheets of acetate rather than that of paper. That is if a certain value is in one object, but not any other, it is the value that will end up in the final object. That is the effect that is achieved when using the lodash [\_.merge](https://lodash.com/docs/4.17.4#merge) method.
 
 <!-- more -->
 
-## 1 - A lodash \_.merge example with many objects
+## 1 - Basic example of lodash merge compared to assign
+
+So for starters there is taking a look at a very simple example of using the merge method compared to assign which is another popular method used for merging together objects. The lodash assign method or the native Object.assign method just copy references to any nested objects that might exist in the given source objects. In many cases this might not preset a problem, but it can result in unexpected behavior now and then it you do not understand the differences between these various methods that are used to merge objects together in lodash and native javaScript.
+
+```js
+// s source object
+let source = {
+    x: 1,
+    y: 2,
+    z: {
+        val: 42,
+        mess: 'foo'
+    }
+};
+// creating new objects with _.merge, and _.assign
+let m = _.merge({}, source),
+a = _.assign({}, source);
+// changing a value in nested object of the source object
+source.z.val = 0;
+// new object created with _.merge is not effected
+// by the change to the source object while the new
+// object created with _.assign is
+console.log(m.z.val); // 42
+console.log(a.z.val); // 0
+```
+
+## 2 - A lodash \_.merge example with many objects
 
 For an example say I have an object that has default values from something, another object that holds input values, and yet another object that holds methods that act on those values. I want everything merged down together in a way where the values in the input object will override any default values, and I want the this keyword in the methods object to refer to the values in the resulting object of an object that is created from all of this.
 
@@ -65,7 +91,7 @@ console.log(obj.x); // 325
 
 This differs from other methods that might copy inputs.delta over in a way in which I will end up with an undefined value for delta.y, this is the case with \_.assign or Object.assign.
 
-## 2 -  The lodash \_.merge vs the lodash \_.assign method
+## 3 -  The lodash \_.merge vs the lodash \_.assign method
 
 The lodash \_.merge differs from lodash \_.assign method in that \_.assign will create a new object for my deltas overwriting any values that may exist in any lower object. In other words I would end up with an undefined value for delta.y in my example.
 
