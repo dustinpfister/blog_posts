@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 140
-updated: 2019-11-04 11:13:00
-version: 1.2
+updated: 2019-11-04 11:14:39
+version: 1.3
 ---
 
 The [lodash](https://lodash.com/) [\_.property method](https://lodash.com/docs/4.17.4#property) is one of several methods in lodash that can be used to create a method that is to be used with another lodash method such as [\_.find](/2017/09/14/lodash-find/) or [\_.map](/2018/02/02/lodash_map/). The lodash property method returns a method that when used with a lodash method like \_.map will return a property of an element object in an array. So lets look at some simple quick examples of this method to see what the lodash property method is all about, and also if it is not that big of a deal to not even bother with it.
 
 <!-- more -->
 
-## Basic example of \_.property
+## 1 - Basic example of \_.property
 
 \_.property can be used as a stand alone method, by calling it with a given path in string format it will then return a method that ca be used by calling the method with an object, and then it will return the value of the path.
 
@@ -35,7 +35,7 @@ monster = {
 console.log( getHealth(monster) ); // 37
 ```
 
-## Using \_.map with \_.property
+## 2 - Using \_.map with \_.property
 
 Many real life uses for \_.property might be used with \_.map. If I am every in a situation in which I want a whole bunch of values that exist at a certain path in a bunch of objects fattened down into a simple array of primitives that can be done very quickly using \_.property with \_.map.
 
