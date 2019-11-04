@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 93
-updated: 2019-11-04 10:53:25
-version: 1.3
+updated: 2019-11-04 10:56:23
+version: 1.4
 ---
 
 These days I have been exploring all the options out there when it comes to merging down two or more objects into a single object. There are many ways to go about doing it that have different effects, there is the idea of just copying over key values, or just referencing them even. However it most cases I often want to merge them down like that of a bunch of sheets of acetate rather than that of paper. That is if a certain value is in one object, but not any other, it is the value that will end up in the final object. That is the effect that is achieved when using the lodash [\_.merge](https://lodash.com/docs/4.17.4#merge) method.
@@ -38,6 +38,8 @@ source.z.val = 0;
 console.log(m.z.val); // 42
 console.log(a.z.val); // 0
 ```
+
+One of the key factors to keep in mind here is the nature of copying by reference rather than by value. In javaScript copying objects is just not the same thing as copying primitive values. When you have a whole bunch of nested objects in an object do you want to just copy the first level into a new object, or do you want to recursively copy everything? In sort a shallow clone of an object is nit the same thing as a deep clone of one.
 
 ## 2 - A lodash \_.merge example with many objects
 
