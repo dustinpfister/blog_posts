@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 448
-updated: 2019-05-15 14:21:14
-version: 1.3
+updated: 2019-11-04 15:18:58
+version: 1.4
 ---
 
-This will be a quick post on the [lodash has](https://lodash.com/docs/4.17.11#has) method, a simple object method that can be used to check if an object has a certain path to it or not. If you are more interested in what lodash has to offer in general you might want to check out my mian post on [lodash](/2019/02/15/lodash/) in general.
+This will be a quick post on the [lodash has](https://lodash.com/docs/4.17.11#has) method, a simple object method that can be used to check if an object has a certain path to it or not. This is one of many methods in lodash that accept a string form of a object path to a value. Another such method of note in lodash would be the [\_.get](/2018/09/24/lodash_get/), and [\_.set](/2018/12/04/lodash_set/) methods. This is not one of the most compelling methods in lodash, in fact when it comes down to it there are only really a handful that I find myself still  using in projects.
 
 <!-- more -->
 
@@ -39,4 +39,4 @@ console.log( _.has(obj, 'dust.in.x') ); // false
 console.log( _.has(obj, 'foo.bar.x') ); // true
 ```
 
-So this object method can be used as a way to feature test if a path exist in an object and if not can be used with another method like the [lodash set](/2018/12/04/lodash_set/) method to set the path.
+So this object method can be used as a way to feature test if a path exist in an object and if not can be used with another method like the lodash set method to set the path. If you are more interested in what lodash has to offer in general you might want to check out my main post on [lodash](/2019/02/15/lodash/).
