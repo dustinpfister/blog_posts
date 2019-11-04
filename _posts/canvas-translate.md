@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-04 16:01:59
-version: 1.10
+updated: 2019-11-04 18:36:42
+version: 1.11
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -52,7 +52,7 @@ ctx.fillRect(0,0,32,32);
 
 ## 2 - Using canvas translate, rotate, save, and restore.
 
-So now for an example that uses the canvas translate method along with the canvas rotate method, and save and restore to rotate a box with the center of the box centered at the center of the canvas.
+So now for an example that uses the canvas translate method along with the canvas rotate method, and save and restore to rotate a box with the center of the box centered at the center of the canvas. The [save and restore methods](/2019/08/14/canvas-save/) can be used to save and then later restore the current state of the drawing context. So if I use the canvas translate method to change the translation of the matrix, I can use save first to store the previous status of the context. Once I am done translating, rotating, and so forth I can then use the restore method to put things back the way they where.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
