@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 140
-updated: 2019-11-04 11:14:39
-version: 1.3
+updated: 2019-11-04 11:29:48
+version: 1.4
 ---
 
 The [lodash](https://lodash.com/) [\_.property method](https://lodash.com/docs/4.17.4#property) is one of several methods in lodash that can be used to create a method that is to be used with another lodash method such as [\_.find](/2017/09/14/lodash-find/) or [\_.map](/2018/02/02/lodash_map/). The lodash property method returns a method that when used with a lodash method like \_.map will return a property of an element object in an array. So lets look at some simple quick examples of this method to see what the lodash property method is all about, and also if it is not that big of a deal to not even bother with it.
@@ -15,9 +15,9 @@ The [lodash](https://lodash.com/) [\_.property method](https://lodash.com/docs/4
 
 ## 1 - Basic example of \_.property
 
-\_.property can be used as a stand alone method, by calling it with a given path in string format it will then return a method that ca be used by calling the method with an object, and then it will return the value of the path.
+The \_.property can be used as a stand alone method, by calling it with a given path in string format it will then return a method that ca be used by calling the method with an object, and then it will return the value of the path.
 
-For example say you have a collection of objects that have a value at a given path in each object, such as a current hp value in an hp object, along with other relevant values. \_.property can be used to make a method that will get a value at that path if it is there, else it will returned undefined.
+For example say you have a collection of objects that have a value at a given path in each object, such as a current hp value in an hp object, along with other relevant values. In this case the  \_.property method can be used to make a method that will get a value at that path if it is there, else it will returned undefined.
 
 ```js
 var getHealth = _.property('hp.current'),
@@ -34,6 +34,8 @@ monster = {
  
 console.log( getHealth(monster) ); // 37
 ```
+
+So there you have ot there is a basic example of the lodash property method. Oddly enough this is a topic that comes up now and then. Say I have a value that is at a lengthly name space of sorts in a bunch of nested objects, something that does come up now and then. There is just typing out that lengthly chain of object property names each time, but then there is saving a reference to a variable, or using some other way of doing so such as using the lodash property method.
 
 ## 2 - Using \_.map with \_.property
 
