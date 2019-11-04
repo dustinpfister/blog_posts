@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 374
-updated: 2019-11-04 14:53:01
-version: 1.11
+updated: 2019-11-04 14:55:08
+version: 1.12
 ---
 
 When it comes to writing modern javaScript code the [let keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) is available for declaring [block level](https://en.wikipedia.org/wiki/Scope_(computer_science)#Block_scope), rather than [function level](https://en.wikipedia.org/wiki/Scope_(computer_science)#Function_scope) variables scoped variables. When it comes to a node.js environment where I have control over the version of node.js is used, and can use a modern version that supports let there are not any concerns when it comes to the question of code breaking on older platforms. That issue is of greater concern when it comes to front end development where there is less control over the environment in which the javaScript code runs when thinking about older browsers. Still as time goes by this will become less of an issue, and block level scope for me is a welcome addition to javaScript, so in this post I will be writing about some concerns when it comes to the use of let in a javaScript project.
@@ -15,7 +15,7 @@ When it comes to writing modern javaScript code the [let keyword](https://develo
 
 ## 1 - javaScript let keyword basics
 
-When the let keyword is used this results in a block level variable scoped value. So the variable can also be accessed from within a block of code in which it is declared. Conciser the following example.
+When the let keyword is used this results in a block level variable scoped value. So the variable can also be accessed from within a block of code in which it is declared, this can be considered a major improvement from the older javaScript specs that support function level only scope. Conciser the following example.
 
 ```js
 let n = 40;
