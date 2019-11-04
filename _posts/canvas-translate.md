@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-10-13 19:16:44
-version: 1.8
+updated: 2019-11-04 15:59:06
+version: 1.9
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -48,4 +48,46 @@ ctx.fillStyle = 'red';
 ctx.globalAlpha = 0.5;
 // now drawing a rect at 0,0 is actually at 16,16
 ctx.fillRect(0,0,32,32);
+```
+
+## 2 - Using canvas translate, rotate, save, and restore.
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+var bx = {
+    a: 0,
+    cx: canvas.width / 2,
+    cy: canvas.height / 2,
+    w: 64,
+    h: 64,
+    section: 0,
+    update: function () {
+        this.a = Math.PI * 2 / 360 * this.section;
+        this.section += 1;
+        this.section %= 360;
+    }
+};
+ 
+// draw method using canvas translate, save, restore, and rotate
+var draw = function () {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(bx.cx, bx.cy);
+    ctx.rotate(bx.a);
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(-bx.w / 2, -bx.h / 2, bx.w, bx.h);
+    ctx.restore();
+};
+ 
+var loop = function () {
+    requestAnimationFrame(loop);
+    draw();
+    bx.update();
+};
+loop();
 ```
