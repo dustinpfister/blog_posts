@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 09:28:27
-version: 1.15
+updated: 2019-11-05 09:29:39
+version: 1.16
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -54,7 +54,7 @@ ctx.fillRect(0,0,32,32);
 
 In this section I will be going over a far more advanced example that has to do with normalized points, and using the canvas translate method to translate the canvas matrix when it comes to drawing those normalized points to the canvas. This example involves creating an object that contains a small amount of data about how well a websites blog post is preforming in terms of search impressions, clicks, and a click threw rate.
 
-This example is an exercise of separating the concerns of data and view. The reason why is that the data object contains raw data as well as data that is formatted for viewing, but is not an actual view. This data object is septate from the javaScript that actually renders that data to the canvas.
+This example is an exercise of [separating the concerns of data and view](/2017/08/29/canvas-separation-of-concerns-model-and-view/). The reason why is that the data object contains raw data as well as data that is formatted for viewing, but is not an actual view. This data object is septate from the javaScript that actually renders that data to the canvas.
 
 In this canvas example I am also making normalized points where each point of interest is centered around a relative origin. It is then up to the developer how to go about scaling up the set of 2d points. One way would be to apply an offset to each point, and another would be to use the canvas translate method.
 
