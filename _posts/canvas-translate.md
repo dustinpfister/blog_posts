@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 09:44:16
-version: 1.18
+updated: 2019-11-05 09:47:22
+version: 1.19
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -132,6 +132,8 @@ var draw = function (ctx, data) {
 
 ### 2.3 - The draw stat objects draw method
 
+Here I have the draw method that can be used to draw the chart data to the canvas.
+
 ```js
 // draw a stat objects normalized chart value points
 var drawStatObjects = function (ctx, data) {
@@ -151,6 +153,8 @@ var drawStatObjects = function (ctx, data) {
 
 ### 2.4 - The draw base lines method
 
+Here I have another draw method that is used to draw the base lines of the chart based on values in the data object.
+
 ```js
 // draw normalized base lines of chart
 var drawBaseLines = function (ctx, data) {
@@ -164,6 +168,8 @@ var drawBaseLines = function (ctx, data) {
 ```
 
 ### 2.5 - Pull it all together
+
+So now that everything is worked out nice and need it is time to play around with things with some additional javaScript that composes the actual state of the canvas project.
 
 ```js
 // the app
