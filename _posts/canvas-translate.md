@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 12:00:37
-version: 1.21
+updated: 2019-11-05 12:03:39
+version: 1.22
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -62,6 +62,8 @@ In this canvas example I am also making normalized points where each point of in
 ### 2.1 - The data object with noramlized points
 
 So lets start out with the data object. Here I used a self executing function expression to wrap up everything that has to do with the data object into a closure. Inside this closure I created and returned a public api that contains the raw data, as well as normalized and scaled data. This normalized and scaled data is what I will be using when writing my view that will make use of the canvas translate method along with many other aspects of the canvas 2d drawing api.
+
+The public api for the data object contains two methods of interest including a normalize method, and a scale method. The normalize method will create and array of points where each point has a value between negative one and positive one. So in other words all points are at a minimal scale of sorts that can then be scaled up by some kind of multiplier. This is of course where the scale method comes into play.
 
 ```js
 // data objects
