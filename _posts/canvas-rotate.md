@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2019-11-05 13:12:41
-version: 1.3
+updated: 2019-11-05 14:11:19
+version: 1.4
 ---
 
 The canvas rotate method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method and save and restore.
@@ -15,7 +15,7 @@ The canvas rotate method can be useful for doing quick on the fly rotations, but
 
 ## 1 - A Basic canvas rotate example
 
-So lets start off with a basic example of the canvas rotate method.
+So lets start off with a basic example of the canvas rotate method. Here I am using a hard coded canvas tag in my html file, and am using a single script tag to like to an external javaScript file where I will have javaScript code of this basic canvas rotate example.
 
 ```html
 <html>
