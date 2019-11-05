@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2019-11-05 14:11:19
-version: 1.4
+updated: 2019-11-05 14:16:18
+version: 1.5
 ---
 
 The canvas rotate method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method and save and restore.
@@ -28,6 +28,10 @@ So lets start off with a basic example of the canvas rotate method. Here I am us
     </body>
 </html>
 ```
+
+Here I have the external basic.js file, in which I start out by getting a reference to the canvas element and the 2d drawing content of that element just as with any other canvas project. 
+
+I then worked out a simple draw method that just strokes a rectangle to the canvas. When I call this method I pass a reference to the context, and an additional object that passes the dimensions of the box I want to draw. By default It will place the box centered around the top left corner of the canvas, and this is intentional when it comes to using the canvas translate method along with the canvas rotate method.
 
 ```js
 // get canvas can 2d context
