@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 09:47:22
-version: 1.19
+updated: 2019-11-05 11:46:04
+version: 1.20
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -67,8 +67,36 @@ So lets start out with the data object.
 // data objects
 var data = (function () {
     var api = {
+        stats: [],
         chartWidth: 160,
         chartHeight: 120,
+        points: [],
+        // normalize points
+        normalize: function () {
+            return api.points = api.stats.map(function (statObj) {
+                    var max = Math.max.apply(null, statObj.values),
+                    deltaX = api.chartWidth / (stats[0].values.length - 1);
+                    return statObj.values.map(function (val, i) {
+                        return {
+                            x: (deltaX * i - api.chartWidth / 2) / api.chartWidth,
+                            y: ((1 - val / max) * api.chartHeight - api.chartHeight / 2) / api.chartHeight
+                        }
+                    });
+                });
+        },
+        // set scale of points by normalizing, and then scaling
+        scale: function (scaleW, scaleH) {
+            api.chartWidth = scaleW || api.chartWidth;
+            api.chartHeight = scaleH || api.chartHeight;
+            api.normalize();
+            return api.points = api.points.map(function (statPoints) {
+                    return statPoints.map(function (pt) {
+                        pt.x = pt.x * api.chartWidth;
+                        pt.y = pt.y * api.chartHeight;
+                        return pt;
+                    });
+                });
+        }
     };
     // hard coded stats
     var stats = [{
@@ -92,41 +120,32 @@ var data = (function () {
             }
         }
             ()));
-    // the stats
+    // set stats and update points for first time
     api.stats = stats;
-    // create an array of normalized points
-    api.points = stats.map(function (statObj) {
-            var max = Math.max.apply(null, statObj.values),
-            deltaX = api.chartWidth / (stats[0].values.length - 1);
-            return statObj.values.map(function (val, i) {
-                return {
-                    x: deltaX * i - api.chartWidth / 2,
-                    y: (1 - val / max) * api.chartHeight - api.chartHeight / 2
-                }
-            });
-        })
-        // return stats array
-        return api
+    api.normalize();
+    api.scale();
+    // return the api
+    return api
 }
     ());
 ```
 
-### 2.2 - canvas translate and the main draw method
+### 2.2 - canvas translate and the Draw Graph method
 
 Now here is the main draw method that uses the canvas translate method to translate the canvas to the center point of the canvas. Once one canvas is translated to the center I then call by additional draw methods that will draw oit the points that are normalized.
 
 ```js
+
 // main draw method that uses canvas translate
-var draw = function (ctx, data) {
-    // black background
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+var drawGraph = function (ctx, data, x, y) {
+    ctx.save();
     // translate to the center of the canvas
-    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.translate(x, y);
     // draw stat object points
     drawStatObjects(ctx, data);
     // draw base lines
     drawBaseLines(ctx, data);
+    ctx.restore();
 };
 ```
 
@@ -172,12 +191,27 @@ var drawBaseLines = function (ctx, data) {
 So now that everything is worked out nice and need it is time to play around with things with some additional javaScript that composes the actual state of the canvas project.
 
 ```js
-// the app
+// draw background
+var drawBackground = function (ctx) {
+    // black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+// Lets use it
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
-draw(ctx, data);
+ 
+drawBackground(ctx);
+ 
+// draw Graph at default
+drawGraph(ctx, data, canvas.width / 2, canvas.height / 2);
+ 
+// using scale method to make a smaller version of the graph
+data.scale(50,50);
+drawGraph(ctx, data, 30, 30);
 ```
 
 ## 3 - Using canvas translate, rotate, save, and restore.
