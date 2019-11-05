@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2019-11-05 14:16:18
-version: 1.5
+updated: 2019-11-05 14:18:32
+version: 1.6
 ---
 
 The canvas rotate method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method and save and restore.
@@ -71,3 +71,5 @@ drawBox(ctx, {
 });
 ctx.restore();
 ```
+
+I then paint a black background for the whole canvas followed by using the drawBox method by itself. After that I use the save method to store the state of the context, translate the canvas to the point that I want the center of the box to be, and then use the canvas rotate method to rotate the canvas.
