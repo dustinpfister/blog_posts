@@ -5,11 +5,11 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2018-07-13 19:31:46
-version: 1.3
+updated: 2019-11-05 15:19:22
+version: 1.4
 ---
 
-So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native Array.sort. Also it is worth pointing out that this is a collection method, so \_.sortBy is a more robust method that brings a bit more to the table. In this post I will be writing about sorting using the \_.sortBy method.
+So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method. I do still use it of course when it comes to working with a project where lodash is not part of the stack. It is just that the method works in a way that I find more natural, and I will be elaborating what I mean by that in this post. Also it is worth pointing out that this is a collection method, so \_.sortBy is a more robust method that brings a bit more to the table. In this post I will be writing about sorting using the \_.sortBy method.
 
 <!-- more -->
 
