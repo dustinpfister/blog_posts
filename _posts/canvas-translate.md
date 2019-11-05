@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 09:41:53
-version: 1.17
+updated: 2019-11-05 09:44:16
+version: 1.18
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -113,7 +113,7 @@ var data = (function () {
 
 ### 2.2 - canvas translate and the main draw method
 
-Now here is the draw method that uses the canvas translate method to translate the canvas.
+Now here is the main draw method that uses the canvas translate method to translate the canvas to the center point of the canvas. Once one canvas is translated to the center I then call by additional draw methods that will draw oit the points that are normalized.
 
 ```js
 // main draw method that uses canvas translate
