@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 09:29:39
-version: 1.16
+updated: 2019-11-05 09:41:53
+version: 1.17
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -61,6 +61,8 @@ In this canvas example I am also making normalized points where each point of in
 
 ### 2.1 - The data object with noramlized points
 
+So lets start out with the data object.
+
 ```js
 // data objects
 var data = (function () {
@@ -110,6 +112,8 @@ var data = (function () {
 ```
 
 ### 2.2 - canvas translate and the main draw method
+
+Now here is the draw method that uses the canvas translate method to translate the canvas.
 
 ```js
 // main draw method that uses canvas translate
