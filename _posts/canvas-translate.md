@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 09:14:00
-version: 1.12
+updated: 2019-11-05 09:18:57
+version: 1.13
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -51,6 +51,8 @@ ctx.fillRect(0,0,32,32);
 ```
 
 ## 2 - A normalized chart data canvas translate example
+
+In this section I will be going over a far more advanced example that has to do with normalized points, and using the canvas translate method to translate the canvas matrix when it comes to drawing those normalized points to the canvas.
 
 ### 2.1 - The data object with noramlized points
 
