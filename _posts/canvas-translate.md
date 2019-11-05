@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 12:11:52
-version: 1.24
+updated: 2019-11-05 12:16:37
+version: 1.25
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -157,7 +157,7 @@ Here I ams also using the canvas save and restore methods as well so if I want t
 
 ### 2.3 - The draw stat objects draw method
 
-Here I have the draw method that can be used to draw the chart data to the canvas.
+Here I have the draw method that can be used to draw the charts normalized and scaled points to the canvas. This is of course what I am calling in the draw graph method outline above, the reason why I did this is to help make things more fine grain when t comes to drawing something like this.
 
 ```js
 // draw a stat objects normalized chart value points
@@ -173,8 +173,7 @@ var drawStatObjects = function (ctx, data) {
         ctx.stroke();
     });
 };
- 
- ```
+```
 
 ### 2.4 - The draw base lines method
 
@@ -220,7 +219,7 @@ data.scale(50,50);
 drawGraph(ctx, data, 30, 30);
 ```
 
-In the data object I called the scale method for the first time that sets everything to a default state of sorts.
+In the data object I called the scale method for the first time that sets everything to a default state of sorts. I can the use the scale method to change the size of the chart. The thing to note here about normalizing points is that everything is centered around a single point, and from there it can be scaled up, this works well in relationship with the canvas translate method that can be used to change the location of where that center point of interest is.
 
 ## 3 - Using canvas translate, rotate, save, and restore.
 
