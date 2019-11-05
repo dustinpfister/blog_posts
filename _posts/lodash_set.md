@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2018-12-04 18:16:53
-version: 1.5
+updated: 2019-11-05 15:06:54
+version: 1.6
 ---
 
-A few months ago I wrote a post on the [\_.get](/2018/09/24/lodash_get/) method so for todays post on [lodash](https://lodash.com/) I might as well write one on [\_.set](https://lodash.com/docs/4.17.10#set) as well. The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a property rather than getting it.
+A few months ago I wrote a post on the [\_.get](/2018/09/24/lodash_get/) method so for todays post on [lodash](https://lodash.com/) I might as well write one on [\_.set](https://lodash.com/docs/4.17.10#set) as well. The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a property rather than getting it when using path strings to do so. Another lodash method that comes to mind that might be considered a part of this set of method is the [lodash \_.has](/2019/05/15/lodash_has/) method that can be used to not get, or set, but simply check it an object has a certain path or not.
 
 <!-- more -->
 
