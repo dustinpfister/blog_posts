@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 12:06:12
-version: 1.23
+updated: 2019-11-05 12:11:52
+version: 1.24
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -136,7 +136,7 @@ The data object contains are coded data, but if I where to continue working on t
 
 ### 2.2 - canvas translate and the Draw Graph method
 
-Now here is the main draw method that uses the canvas translate method to translate the canvas to the center point of the canvas. Once one canvas is translated to the center I then call by additional draw methods that will draw oit the points that are normalized.
+Now here is the main draw graph method that uses the canvas translate method to translate the canvas to any point in the area of the canvas element. Once one canvas is translated to a given point in interest I then call additional methods that will draw the current state of the points that have been normalized and scaled.
 
 ```js
 
@@ -152,6 +152,8 @@ var drawGraph = function (ctx, data, x, y) {
     ctx.restore();
 };
 ```
+
+Here I ams also using the canvas save and restore methods as well so if I want to call this method more than once it will not keep changing the state of the canvas matrix each time the method is called.
 
 ### 2.3 - The draw stat objects draw method
 
@@ -217,6 +219,8 @@ drawGraph(ctx, data, canvas.width / 2, canvas.height / 2);
 data.scale(50,50);
 drawGraph(ctx, data, 30, 30);
 ```
+
+In the data object I called the scale method for the first time that sets everything to a default state of sorts.
 
 ## 3 - Using canvas translate, rotate, save, and restore.
 
