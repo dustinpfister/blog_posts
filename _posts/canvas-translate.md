@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 12:03:39
-version: 1.22
+updated: 2019-11-05 12:06:12
+version: 1.23
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -131,6 +131,8 @@ var data = (function () {
 }
     ());
 ```
+
+The data object contains are coded data, but if I where to continue working on this and make it some kind of long term project I would change this into some kind of constructor that can be fed new raw data of course. The central theme of this example has to do with the concept of normalizing points in a 2d plain, as this is what is most relevant to the over all theme of this post on the canvas translate method.
 
 ### 2.2 - canvas translate and the Draw Graph method
 
