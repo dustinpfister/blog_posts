@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 149
-updated: 2019-11-06 18:33:43
-version: 1.3
+updated: 2019-11-06 18:40:01
+version: 1.4
 ---
 
 The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lodash](https://lodash.com/) can be used to find the first index of an element in an Array that meets a specific condition. In modern browsers there is now [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that works in very much the same manor as \_.findIndex. So that would make the lodash find index method yet another one of those lodash methods that you might only bother with for the sake of backward compatibility with older browsers, or just for the sake of consistency if you are using lodash in a project. Yet again maybe not, it seems that the lodash alternatives often do have a little more going on with them, in addition there are additional helper methods that can be used with \_.findIndex that come in handy. So maybe I should not be to quick to judge as many of these methods are not just referencing native methods, [although some of them are](/2019/11/01/lodash_wrapper_methods/).
@@ -15,7 +15,9 @@ The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lo
 
 ## 1 - Basic example of \_.findIndex
 
-So even when it comes to older browsers, Array.indexOf works fine when dealing with an array of primitives. As such typical use case scenarios of \_.findIndex involve arrays of Objects.
+So even when it comes to older browsers such as MSIE9, [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) works fine when dealing with an array of primitives. However if falls short when it comes to working with an array of objects. There is the native findIndex array prototype method but that will not work in any version of Microsoft Internet explorer so if you are still a little word about browsers that are not evergreen there is a need for a pollyfil or the lodash \.findIndex method.
+
+As such typical use case scenarios of \_.findIndex involve arrays of Objects.
 
 ```js
 var users = [
