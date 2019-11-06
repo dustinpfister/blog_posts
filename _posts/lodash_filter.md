@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2019-11-06 18:21:20
-version: 1.4
+updated: 2019-11-06 18:22:39
+version: 1.5
 ---
 
 Looking over what [I have on lodash](/categories/lodash) so far I am surprised that I forgot to write one on [\_.filter method](https://lodash.com/docs/4.17.10#filter), also oddly enough I don't have any post on the core js [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) equivalent as well. The filter method both in lodash and in native javaScript compes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter.
 
 <!-- more -->
 
-## Basic example of \_.filter in lodash
+## 1 - Basic example of \_.filter in lodash
 
 To use the \_.filter methods the first argument that you give it is a collection, such as an array of numbers. The second argument you give is an iteratee method, that can be your own method, or one of the lodash iteratee methods such as \_.matches. Also some of those methods are built in, more on that later.
 
@@ -33,13 +33,13 @@ console.log(
 ); // [4, 7, 7, 1]
 ```
 
-## Array.filter vs \_.filter
+## 2 - Array.filter vs \_.filter
 
 The vanilla js Array.filter method can be used in a similar fashion, without the need for lodash. When it comes to something simple, that can work just fine. Also the browser support for Array.filter is pretty good these days, it's only real old versions of IE that come to mind that present a concern if there is actually a far amount of visitors that still use those platforms. Also if in a node.js environment there is no need for lodash at all if this just happens to be the only method that you are using. 
 
 Yet again maybe not, like many of these methods in lodash there are a few things to them that set them apart. So maybe one can rationalize the use of \_.filter these days even when we often have the native alternative to play with in javaScript itself.
 
-### \_.filter is a collection method, not an array method
+### 3 - \_.filter is a collection method, not an array method
 
 So \_.filter is one of the many collection methods in lodash, meaning they are made with both arrays, and objects in general in mind. So if I want to I can just use an Object with \_.filter, and it does not even have to be an array like Object.
 
@@ -90,6 +90,6 @@ var numbers = [].filter.call({
 console.log(numbers); // [7]
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 It has been a few months sense the last time I wrote a post on [lodash](https://lodash.com/), as I have been trying to find other great things in the javaScript word to write about such as [phaser](/categories/phaser/), and [three.js](/categories/three-js/). However lodash is very popular, and content on it is very much in demand, so maybe I should get back into it for a while, make some new posts, and improve some old ones.
