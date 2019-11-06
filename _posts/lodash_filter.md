@@ -5,13 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2018-05-18 11:29:22
-version: 1.2
+updated: 2019-11-06 18:16:33
+version: 1.3
 ---
 
-It has been a few months sense the last time I wrote a post on [lodash](https://lodash.com/), as I have been trying to find other great things in the javaScript word to write about such as [phaser](/categories/phaser/), and [three.js](/categories/three-js/). However lodash is very popular, and content on it is very much in demand, so maybe I should get back into it for a while, make some new posts, and improve some old ones.
-
-Looking over what [I have on lodash](/categories/lodash) so far I am surprised that I forgot to write one on [\_.filter method](https://lodash.com/docs/4.17.10#filter), also oddly enough I don't have any post on the core js Array.filter equivalent as well. So for the heck of it why not write one on \_.filter and how it compares to what is in javaScript by itself, as there are a lot of lodash methods that are like that.
+Looking over what [I have on lodash](/categories/lodash) so far I am surprised that I forgot to write one on [\_.filter method](https://lodash.com/docs/4.17.10#filter), also oddly enough I don't have any post on the core js [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) equivalent as well. So for the heck of it why not write one on \_.filter and how it compares to what is in javaScript by itself, as there are a lot of lodash methods that are like that.
 
 <!-- more -->
 
@@ -91,3 +89,7 @@ var numbers = [].filter.call({
  
 console.log(numbers); // [7]
 ```
+
+## 5 - Conclusion
+
+It has been a few months sense the last time I wrote a post on [lodash](https://lodash.com/), as I have been trying to find other great things in the javaScript word to write about such as [phaser](/categories/phaser/), and [three.js](/categories/three-js/). However lodash is very popular, and content on it is very much in demand, so maybe I should get back into it for a while, make some new posts, and improve some old ones.
