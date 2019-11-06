@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2019-11-06 13:42:59
-version: 1.4
+updated: 2019-11-06 13:55:29
+version: 1.5
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. There is the document.createElement method which is what is often used, but there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
@@ -15,10 +15,14 @@ So now and then when I work out various projects I sometimes want to use a [sele
 
 ## 1 - JavaScript Option constructor basic example.
 
+The javaScript Option constructor can be used as an alternative to document.createElement and given the additional parameters that can eb given to it, it can also result in a more concise solution when it comes to create Option elements for a select element.
+
+Here I have some very basic example of both general options when it comes to creating an option element with javaScript, as well as some options when it comes to how to append such and element to a select element.
+
 ```html
 <html>
     <head>
-        <title>javascript option</title>
+        <title>javaScript option</title>
     </head>
     <body>
         <select id="select_modes">
@@ -47,6 +51,10 @@ sel.add(new Option('mode3'));
     </body>
 </html>
 ```
+
+So the javaScript Option constructor is yet another constructor like that of the Image constructor that is another way to go about creating an element in client side javaScript. The basic process is create the element, add some properties to it, and then append it to an existing mount point in the actual html by gaining a reference to a parent element in this case a select element.
+
+So now that we have the very basics out of the way lets more on to some additional simple examples about using the javaScript Option constructor, such as the additional parameter options, and event handlers.
 
 ## 2 - Parameter options for the javaScript Option constructor
 
