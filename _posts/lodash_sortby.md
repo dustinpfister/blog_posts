@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2019-11-06 09:57:26
-version: 1.6
+updated: 2019-11-06 10:43:46
+version: 1.7
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural. I will be elaborating what I mean by that in this post. 
@@ -48,4 +48,43 @@ let lessThanTen = _.sortBy(nums, function (n) {
  
 console.log(lessThanTen);
 // [ 42, 52, 27, 158, 5, -5, 7, 6, 3, -1 ]
+```
+
+## 3 - \_.sortBy and \_.find
+
+```js
+let posts = [{
+        wordCount: 240
+    }, {
+        wordCount: 300
+    }, {
+        wordCount: 1600
+    }, {
+        wordCount: 800
+    }, {
+        wordCount: 1800
+    }, {
+        wordCount: 550
+    }
+];
+ 
+// a common iterator that will be
+// used with _.find and _.sortBy
+let iterator = (a) => {
+    return a.wordCount;
+};
+ 
+// find will just return the first item that
+// will return true for the iterator it will
+// not sort
+let findPost = _.find(posts, iterator);
+console.log(findPost.wordCount); // 240
+ 
+// Sort by will actually sort all elements
+// that meet the condition, and leave
+// those that do not
+topPosts = _.sortBy(posts, iterator);
+console.log(topPosts.pop().wordCount); // 1800
+console.log(topPosts.pop().wordCount); // 1600
+console.log(topPosts.pop().wordCount); // 800
 ```
