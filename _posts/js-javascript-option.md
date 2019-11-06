@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2019-11-06 13:35:53
-version: 1.3
+updated: 2019-11-06 13:42:59
+version: 1.4
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. There is the document.createElement method which is what is often used, but there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
@@ -43,6 +43,27 @@ sel.appendChild(opt)
 // also the add method of a select element
 // that will also work in most clients
 sel.add(new Option('mode3'));
+        </script>
+    </body>
+</html>
+```
+
+## 2 - Parameter options for the javaScript Option constructor
+
+```html
+<html>
+    <head>
+        <title>javaScript option</title>
+    </head>
+    <body>
+        <select id="select_modes">
+            <option>default</option>
+        </select>
+        <script>
+var sel = document.getElementById('select_modes');
+// params to set the innerText, value, default element boolean, and the selected boolean
+opt = new Option('mode2', '2', true, true);
+sel.add(opt);
         </script>
     </body>
 </html>
