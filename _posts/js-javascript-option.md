@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2019-11-06 13:55:29
-version: 1.5
+updated: 2019-11-06 13:58:44
+version: 1.6
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. There is the document.createElement method which is what is often used, but there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
@@ -58,6 +58,8 @@ So now that we have the very basics out of the way lets more on to some addition
 
 ## 2 - Parameter options for the javaScript Option constructor
 
+Here I have a simpe example of the Option constructor where I am using all the avalabule options.
+
 ```html
 <html>
     <head>
@@ -76,3 +78,5 @@ sel.add(opt);
     </body>
 </html>
 ```
+
+This results in an option element that has an inner text value of mode2, but a value of 2, more on that when we get into events. In addition there are two boolean values that can be passed to set the option as the default option and to make it selected when the page loads.
