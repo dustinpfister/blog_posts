@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2019-11-06 17:43:30
-version: 1.8
+updated: 2019-11-06 17:46:44
+version: 1.9
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. There is the document.createElement method which is what is often used, but there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
@@ -83,7 +83,7 @@ This results in an option element that has an inner text value of mode2, but a v
 
 ## 3 - On change event for a select and options
 
-There are many options for event handlers when it comes to working with a select element, but the typical event to use will be the on change event. This is an event that you will want to attach to the select element, and not each option. The reason why is that it is really the select option that stores the value of interest and all the options are just simple that, optional values for the select element.
+There are many options for event handlers when it comes to working with a select element, but the typical event to use will be the [on change](/2019/01/04/js-onchange/) event. This is an event that you will want to attach to the select element, and not each option. The reason why is that it is really the select option that stores the value of interest and all the options are just simple that, optional values for the select element.
 
 ```js
 var sel = document.getElementById('select_modes');
