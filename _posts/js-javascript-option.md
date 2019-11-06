@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2019-11-06 17:46:44
-version: 1.9
+updated: 2019-11-06 17:49:17
+version: 1.10
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. There is the document.createElement method which is what is often used, but there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
@@ -97,3 +97,5 @@ sel.addEventListener('change', (el) => {
 var opt = new Option('mode2', '2', true, true);
 sel.add(opt);
 ```
+
+In this example I get the string 'default' in the console because I did not set an actual value attribute for the hard coded option, so the inner text of the element is what is used in that case. However if I select the mode2 option I get 2 as a value because I set a value for that option with the javaScript Option constructor.
