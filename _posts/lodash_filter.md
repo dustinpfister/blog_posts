@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2019-11-06 18:16:33
-version: 1.3
+updated: 2019-11-06 18:21:20
+version: 1.4
 ---
 
-Looking over what [I have on lodash](/categories/lodash) so far I am surprised that I forgot to write one on [\_.filter method](https://lodash.com/docs/4.17.10#filter), also oddly enough I don't have any post on the core js [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) equivalent as well. So for the heck of it why not write one on \_.filter and how it compares to what is in javaScript by itself, as there are a lot of lodash methods that are like that.
+Looking over what [I have on lodash](/categories/lodash) so far I am surprised that I forgot to write one on [\_.filter method](https://lodash.com/docs/4.17.10#filter), also oddly enough I don't have any post on the core js [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) equivalent as well. The filter method both in lodash and in native javaScript compes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter.
 
 <!-- more -->
 
