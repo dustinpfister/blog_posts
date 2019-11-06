@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2019-11-06 10:43:46
-version: 1.7
+updated: 2019-11-06 11:39:08
+version: 1.8
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural. I will be elaborating what I mean by that in this post. 
@@ -51,6 +51,8 @@ console.log(lessThanTen);
 ```
 
 ## 3 - \_.sortBy and \_.find
+
+When it comes to finding an item in a collection there is finding a single item, and then there is sorting the collection and taking the top or bottom item of that collection.
 
 ```js
 let posts = [{
