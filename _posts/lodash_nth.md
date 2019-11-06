@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2019-11-06 17:57:43
-version: 1.4
+updated: 2019-11-06 18:09:13
+version: 1.5
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element and that last element in the array will end up having a value one less that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of. There is a question of how to handle index values that fall outside the index range of the array though, that is when a negative index value is given. If I want to there are plenty of waysto handle that sort of thing with just plain old vanilla javaScript, but if I am using  [lodash](https://lodash.com/) in a project there is the [\_.nth](https://lodash.com/docs/4.17.4#nth) method.
@@ -15,9 +15,9 @@ When grabbing an element from an Array I need to give a zero relative index valu
 
 ## 1 - The Situation
 
-When grabbing an index from an array if I give an index that is below zero, or above the length of the array, it does not wrap around and give me whatever element it would be if I adjusted the index value.
+When getting an element from an array by using the bracket syntax and giving an index value if I give an index that is below zero, or above or equal to the length of the array it will result in undefined. That is unless for some reason I set some negative index value for the array which I could, but that is another matter. With respect of the theme of this post when I get array elements this way I will not just get the corresponding element from the end of the array, and effect that might be desired in some situations.
 
-That is if I think about an array being this thing like that of a circle, rather than an infinite line than I am going to be disappointed without some kind of helper method.
+That is if I think about an array being this thing like that of a circle, rather than an finite line. If I do think about it that way than I am going to be disappointed without some kind of helper method maybe. So to get to the point say I have a sime array of string elements, that is five elements in total.
 
 ```js
  var arr = ['fear','the','foo','man','chew'];
@@ -28,8 +28,11 @@ That is if I think about an array being this thing like that of a circle, rather
  console.log(arr[5]); // undefined
 ```
 
-## 2 - \_.nth's lodash method will help here.
+If I get index zero with the bracket notation I get the first element, if I get index four with the bracket notation, no problem. However if I get index negative three I will not end up getting index element two, and if I get index five that will not swing around and get me the first element.
 
+### 1.2 - Using the \_.nth lodash method
+
+The lodash \_.nth method can be used to supply this kind of functionality in line with thinking of an array as being like a circle rather than a line segment.
 
 ```js
  var arr = ['fear','the','foo','man','chew'];
@@ -37,6 +40,8 @@ That is if I think about an array being this thing like that of a circle, rather
  console.log(arr[-3]); // undefined
  console.log(_.nth(arr,-3)); // 'foo'
 ```
+
+Any number value that is given outside the range of the array will just be converted to whatever the corresponding index would work out to.
 
 ## 3 - Running into trouble with making my own method, because javaScripts modulo operator
 
