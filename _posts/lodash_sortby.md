@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2019-11-06 11:39:08
-version: 1.8
+updated: 2019-11-06 11:47:04
+version: 1.9
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural. I will be elaborating what I mean by that in this post. 
@@ -52,7 +52,9 @@ console.log(lessThanTen);
 
 ## 3 - \_.sortBy and \_.find
 
-When it comes to finding an item in a collection there is finding a single item, and then there is sorting the collection and taking the top or bottom item of that collection.
+When it comes to finding an item in a collection there is finding a single item, and then there is sorting the collection and taking the top or bottom item of that collection. The lodash \_.find method will work okay in most situations depending on the nature of the condition that is used. In some cases it would be better to sort the collection by a condition, and then take the first element.
+
+For example say I have a bunch of blog posts and I want to find the post in my collection of posts that has the highest word count. Using the lodash \_.find method in that case, would not work out so well because the nature of condition must be applied to all items in the collection. It is a situation in which there is a value that is unique to just one item, but that value is not known it must be found first in order to know what I am looking for. So a better alternative would be to sort.
 
 ```js
 let posts = [{
