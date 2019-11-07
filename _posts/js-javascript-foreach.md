@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-11-06 19:01:45
-version: 1.19
+updated: 2019-11-06 19:03:00
+version: 1.20
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them.
@@ -73,7 +73,7 @@ console.log(sum); // 6
 console.log(arr); // [2,4,8]
 ```
 
-### 2.4 - While loops
+## 3 - While loops
 
 Another way to loop over all the contents of an array in javaScript would be to use a while loop, or any of the other loop options.
 
@@ -104,7 +104,7 @@ console.log(sum); // 6
 
 Loops are often more flexible then Array methods, for one think I can use the break and continue keywords as ways of breaking out of a loop when a condition is met, or spiking over values and additional blocks of logic along with it. A such when it comes to getting into things that involve a lot of heavy lifting they may prove to be a more efficient solution. However when it comes to simple things like this it does not make much difference.
 
-## 3 - ForEach and Array like Objects
+## 4 - ForEach and Array like Objects
 
 So in javaScript Arrays are a kind of object, but the typical situation is that an Array is a special kind of object that is formated in a way in which there are numbered key values with corresponding values. In addition to this there is a length property that reflects the number of these key value pairs, and there are a number of useful methods accessible via the Array prototype object. So an Array is not just an Object, it is an Object that is formated a certain way and is an instance of the Array constructor.
 
@@ -129,7 +129,7 @@ So in this section I will be outlining some ways to loop over these kinds of obj
 
 The Array.from method is one way to go about converting one of these array like objects into an Array. Once that is done it is possible to use some Array prototype methods such as Array.forEach
 
-### 3.1 - Array.from, and Array.forEach
+### 4.1 - Array.from, and Array.forEach
 
 ```js
 var obj = {0:1, 1:2, 2:3, length: 3};
@@ -145,7 +145,7 @@ arr.forEach((n)=>{ sum += n; });
 console.log(sum); // 6
 ```
 
-### 3.2 - Function.call, and Array.forEach
+### 4.2 - Function.call, and Array.forEach
 
 Another trick is to leverage the power of Function.call. If you are not familiar with Function.call, Function.apply, and Function.bind it would be a good idea to look into them at some point. If any kind of object has properties that will work with a prototype method of another it can be done with these Function prototype methods.
 
@@ -158,11 +158,11 @@ Array.prototype.forEach.call(obj, (n) => {
 console.log(sum); // 6
 ```
 
-## 4 - Named key Collections
+## 5 - Named key Collections
 
 Some times I am dealing with an object that is not an instance of an Array but it is a named collection of sorts. In these situations I need to loop over the contents of a collection of named keys and corresponding values rather than numbered ones.
 
-### 4.1 - Object.values
+### 5.1 - Object.values
 
 The Object values method is one way to loop over the contents of an object in general. Assuming that all the key names that I want to loop over are public, and I do not care about anything that might be in the prototype chain.
 
