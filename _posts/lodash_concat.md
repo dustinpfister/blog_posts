@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2019-11-07 11:34:39
-version: 1.7
+updated: 2019-11-07 12:28:34
+version: 1.8
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat). Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays.
@@ -76,7 +76,7 @@ let objs = [{x:1,y:5}, {x:7,y:10}];
 // concatenating with another object
 let points = _.concat(objs, {x:0,y:0});
  
-// works as exspected
+// works as expected
 console.log(points); // [ { x: 1, y: 5 }, { x: 7, y: 10 }, { x: 0, y: 1 } ]
  
 // but what if the primitives in the referenced
