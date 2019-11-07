@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2019-11-07 03:42:38
-version: 1.11
+updated: 2019-11-07 04:09:40
+version: 1.12
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural. I will be elaborating what I mean by that in this post. 
@@ -54,7 +54,28 @@ console.log(lessThanTen);
 
 That is all fine and good, but in many projects I am working with an array of objects. So lets look at some more basic examples.
 
-## 3 - \_.sortBy and \_.find
+## 3 - Arrays of Objects and lodash sortby
+
+When it comes to an array of objects a property name can be given as a second argument to a number value that will be used t sort the collection. If that does not cut it a function can be given to create and return a numbered value that will be used to sort the collection.
+
+```js
+let arr = [{x:20,y:20}, {x:23,y:32},{x:100,y:6}];
+ 
+// strings can be used to set a property to a number value
+let sortX = _.sortBy(arr, 'x'),
+sortY = _.sortBy(arr, 'y'),
+ 
+// or a function can be given to define some logic
+distance = _.sortBy(arr, (pt)=>{
+    return Math.sqrt( Math.pow(pt.x - 70, 2) + Math.pow(pt.y -70, 2) );
+});
+ 
+console.log(sortX.pop().x); // 100
+console.log(sortY.pop().y); // 32
+console.log(distance.pop().x); // 20
+```
+
+## 4 - \_.sortBy and \_.find
 
 When it comes to finding an item in a collection there is finding a single item, and then there is sorting the collection and taking the top or bottom item of that collection. The lodash \_.find method will work okay in most situations depending on the nature of the condition that is used. In some cases it would be better to sort the collection by a condition, and then take the first element.
 
