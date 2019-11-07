@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2019-11-07 10:51:24
-version: 1.4
+updated: 2019-11-07 11:04:09
+version: 1.5
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. It is also not to hard to work out some simple solutions for doing more or less the same with plain old vanilla javaScript as well, but never the less lets look at some examples of spliting and array into two parts with lodash, and native javaScript.
@@ -14,6 +14,21 @@ In [lodash](http://lodash.com/) there is a method that can be used to break a co
 <!-- more -->
 
 ## 1 - Basic example of lodash \_.partition
+
+So lets start out with a very basic example of lodash partition. Here I have an array with mixed types, and values of types including numbers. Say I want the array split into two arrays one of which is just numbers that are not NAN, and the other is everything else. The lodash partition method is one way to go about doing that right away. I just have to call the lodash partition method, pass the array of interest as the first argument, and then a function that outlines the condition that will result in each element being placed in the first or second array within the array of arrays that will be returned.
+
+```js
+let arr = [8, null, 32, 'foo', NaN, 'bar', false, {}, 64, 128];
+let parts = _.partition(arr, (el) => {
+        return typeof el === 'number' && !_.isNaN(el);
+    });
+console.log(parts[0]);
+// [ 8, 32, 64, 128 ]
+console.log(parts[1]);
+// [ null, 'foo', NaN, 'bar', false, {} ] 
+```
+
+So that is the basic idea, but lets look at some more examples using lodash, and native javaScript.
 
 ## 2 - Example of lodash \_.partition that involves playing cards
 
