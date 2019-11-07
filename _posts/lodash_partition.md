@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2019-11-07 11:04:09
-version: 1.5
+updated: 2019-11-07 11:17:50
+version: 1.6
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. It is also not to hard to work out some simple solutions for doing more or less the same with plain old vanilla javaScript as well, but never the less lets look at some examples of spliting and array into two parts with lodash, and native javaScript.
@@ -82,3 +82,25 @@ ace
 So as the name suggested \_.partition is useful for well partitioning an array into two arrays one of which meets the conditions given, and the other does not.
 
 ## 3 - Lets split an array into two with native javaScript
+
+Okay so getting back to my basic lodash partition example, it is not to hard to do the same with native javaScript of course. I was able to throw this together in a flash that does more or less the same thing.
+
+```js
+let arr = [8, null, 32, 'foo', NaN, 'bar', false, {}, 64, 128];
+let i = arr.length,
+parts = [[], []],
+condition = (el) => {
+    return typeof el === 'number' && !_.isNaN(el);
+};
+while (i--) {
+    let el = arr[i],
+    pi = condition(el) ? 0 : 1;
+    parts[pi].unshift(el);
+}
+console.log(parts[0]);
+// [ 8, 32, 64, 128 ]
+console.log(parts[1]);
+// [ null, 'foo', NaN, 'bar', false, {} ]
+```
+
+If partitioning an array into two parts is something that just happens once in the body of my code that is one thing, but if I start running into this sort of thing over and over again, I am going to want to abstract it away into a framework.
