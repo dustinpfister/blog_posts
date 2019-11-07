@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-11-06 18:56:56
-version: 1.18
+updated: 2019-11-06 19:01:45
+version: 1.19
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them.
@@ -16,11 +16,21 @@ Then there is of course lodash and the [\_.forEach method](/2017/11/20/lodash_fo
 
 <!-- more -->
 
-## 1 - javaScript forEach
+## 1 - javaScript forEach and what to know before hand
 
 The Array.forEach method in native javaScript is one of many ways to loop over the contents of a collection in javaScript. However the Array.forEach method is only useful for looping over the contents of an Array, it can also in some cases be used to loop over the contents of an array like object, but it might not always be the best solution when it comes to looping over named collections when it comes to clever ways to get it to work with such collections. In any case there are other ways of doing this that involve the use of a library like javaScript as well as other native solutions.
 
-## 2 - javaScript forEach basic examples
+### 1.2 - ECMA rev5 compliant methods
+
+As time goes by it is becoming less, and less of an issue to worry about code breaking on clients when delivering modern javaScript exclusively. Still depending on your websites analytics with browser versions, it might still be better to stick to the tired yet true way of doing things with client side javaScript.
+
+Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients. Also if you want to support very old browsers that do not support Array.forEach, then even this code example will break in which case and even older method of doing so will have to be used to loop over the contents of an array.
+
+## 2 - javaScript forEach and other basic examples of similar array prototype methods
+
+So there is the Array forEach method, but there are other array prototype methods like map, filter and reduce. In this section i will be going over some quick examples of these methods.
+
+### 2.1 - First off javaScripts forEach array protoype method
 
 So a basic example of Array.forEach might look something like this.
 
@@ -34,21 +44,6 @@ console.log(sum); // 6
 ```
 
 In real projects want might need to happen for each element in an array might end up being far more complex than just adding up each number in the array. There might come a time where I might not want to start at index 0 each time, or I might want to do something with each array index and so forth. So lets look as some more basic examples that are written differently, but do more or less the same thing for now before moving on to so more advanced examples.
-
-### 2.1 - ECMA rev5 compliant
-
-As time goes by it is becoming less, and less of an issue to worry about code breaking on clients when delivering modern javaScript exclusively. Still depending on your websites analytics with browser versions, it might still be better to stick to the tired yet true way of doing things with client side javaScript.
-
-```js
-var arr = [1, 2, 3],
-sum = 0;
-arr.forEach(function(n){
-    sum += n;
-});
-console.log(sum); // 6
-```
-
-Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients. Also if you want to support very old browsers that do not support Array.forEach, then even this code example will break in which case and even older method of doing so will have to be used to loop over the contents of an array.
 
 ### 2.2 - Array.reduce
 
