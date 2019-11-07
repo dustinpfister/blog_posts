@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2019-11-07 13:10:02
-version: 1.11
+updated: 2019-11-07 14:41:09
+version: 1.12
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be a thin post today, but to help beef things up with the post a little I will cover some vanilla js solutions for this sort of task as well as I often do for my posts on lodash.
@@ -42,6 +42,8 @@ nums = _.range(100,200,20);
  
 console.log(nums); //  [ 100, 120, 140, 160, 180 ]
 ```
+
+So that is all there is to when when it comes to the lodash range method. However it is true that this is not one of the most compelling methods in lodash that help support a case for its continued use. There are of course a number of ways to get a similar result using other lodash methods, as well as native javaScript so lets look at some other ways to create a range of numbers with javaScript.
 
 ## 3 - Using \_.map to create an array of sequential numbers
 
