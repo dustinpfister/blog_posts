@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2019-11-07 11:17:50
-version: 1.6
+updated: 2019-11-07 11:20:18
+version: 1.7
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. It is also not to hard to work out some simple solutions for doing more or less the same with plain old vanilla javaScript as well, but never the less lets look at some examples of spliting and array into two parts with lodash, and native javaScript.
@@ -103,4 +103,4 @@ console.log(parts[1]);
 // [ null, 'foo', NaN, 'bar', false, {} ]
 ```
 
-If partitioning an array into two parts is something that just happens once in the body of my code that is one thing, but if I start running into this sort of thing over and over again, I am going to want to abstract it away into a framework.
+If partitioning an array into two parts is something that just happens once in the body of my code that is one thing, but if I start running into this sort of thing over and over again, I am going to want to abstract it away into a framework. I could start developing my own framework for these sorts of things, but why bother when there is all ready lodash?
