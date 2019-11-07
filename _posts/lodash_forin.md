@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2019-11-07 12:58:49
-version: 1.16
+updated: 2019-11-07 13:01:40
+version: 1.17
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. In this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -19,7 +19,7 @@ This is a post on the \_.forIn method in lodash, and other related topics. The _
 
 ## 2 - Basic example of \_.forIn
 
-The \_.forIn lodash method will loop over all own, and inherited properties of an object. In other words the key value pairs that are specific to the object, as well as anything that is part of the objects prototype.
+The \_.forIn lodash method will loop over all own, and inherited properties of an object. In other words the key value pairs that are specific to the object, as well as anything that is part of the objects prototype. Other options for loping over the contents of an object might just loop over what is an actual Constructor object instance property, rather than any additional properties that might be present in the prototype of the Constructor.
 
 ```js
 // Simple Constructor and Prototype
