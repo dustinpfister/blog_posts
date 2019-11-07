@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2019-11-07 13:14:15
-version: 1.5
+updated: 2019-11-07 13:22:46
+version: 1.6
 ---
 
-Time for another post on [lodash](https://lodash.com/) because it is very popular, and it is still useful. Regardless of what people say methods like [\_.sample](https://lodash.com/docs/4.17.4#sample) help to make coding in javaScript faster, and more concise. In this post I will be writing about \_.sample, and also show some examples of why I do tent to prefer using lodash to help get things done faster, and focus more on what really matters.
+Time for another post on [lodash](https://lodash.com/) because it is still widely used these days, and it is still useful even in light of new features added to native javaScript in late specs of the language. Regardless of what people say, methods like [\_.sample](https://lodash.com/docs/4.17.4#sample) help to make coding in javaScript faster, and more concise. However it is still not to hard to clone many such methods with plain vanilla javaScript. In this post I will be writing about \_.sample, as well as native javaScript solutions for the same task. These examples might help to show why many still like to use lodash to help get things done faster, and focus more on what really matters when working on a project.
 
 <!-- more -->
 
