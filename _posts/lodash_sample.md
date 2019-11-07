@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2018-07-13 13:42:05
-version: 1.4
+updated: 2019-11-07 13:14:15
+version: 1.5
 ---
 
-Time for another post on [lodash](https://lodash.com/) becuase it is very popular, and it is still useful. Regardless of what people say methods like [\_.sample](https://lodash.com/docs/4.17.4#sample) help to make coding in javaScript faster, and more concise. In this post I will be writing about \_.sample, and also show some examples of why I do tent to prefer using lodash to help get things done faster, and focus more on what really matters.
+Time for another post on [lodash](https://lodash.com/) because it is very popular, and it is still useful. Regardless of what people say methods like [\_.sample](https://lodash.com/docs/4.17.4#sample) help to make coding in javaScript faster, and more concise. In this post I will be writing about \_.sample, and also show some examples of why I do tent to prefer using lodash to help get things done faster, and focus more on what really matters.
 
 <!-- more -->
 
@@ -109,7 +109,7 @@ console.log(grid.rnd('row')); // random row
 console.log(grid.rnd('col')); // random col
 ```
 
-I was able to put this togather in a flash, and the code is very short, and clean. This is what lodash ( and making use of what is all ready out there in general ) is all about, making use of usual suspect methods to make quick work of things, and move on with what really matters.
+I was able to put this together in a flash, and the code is very short, and clean. This is what lodash ( and making use of what is all ready out there in general ) is all about, making use of usual suspect methods to make quick work of things, and move on with what really matters.
 
 ### 3.2 - A vanilla js alternative
 
