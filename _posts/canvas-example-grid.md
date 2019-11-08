@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 10:29:03
-version: 1.7
+updated: 2019-11-08 10:36:39
+version: 1.8
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -55,6 +55,10 @@ So for now the constructor just creates a standard object that just contains som
 
 ### 1.3 - The Draw Grid Lines Method
 
+After I define the Gird constructor I write my first draw method that can be used to draw the current state of an instance of my Grid constructor. For now this draw method just renders the lines of the gird, a method that I might want to have when ot comes to using something like this in an actual project.
+
+There are many ways to go about writing this kind of method, for this example I decided to go with the two loops kind of approach that seems to be common when it comes to this kind of thing. You might think that it is possible to have just one loop wrapped up into a single separate method and then just call that method twice with deferent arguments. You would be right about that and I will be getting to that in a latter section in this post, however doing so might make things more complicated then they need to be.
+
 ```js
 // draw grid lines method
 var drawGridLines = function (ctx, grid, style) {
@@ -85,6 +89,9 @@ var drawGridLines = function (ctx, grid, style) {
     }
 };
 ```
+
+The draw grid lines method seems to work okay, but there is the question of drawing more than just grid lines for the canvas Grid. Doing so might require some more work on the Grid constructor, and the introduction of cell objects though, and for now I would like to keep this basic example of a Canvas Grid clean and simple.
+
 
 ### 1.4 - Setup
 
