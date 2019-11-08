@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 09:31:39
-version: 1.4
+updated: 2019-11-08 10:21:44
+version: 1.5
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -14,6 +14,8 @@ Time for yet another canvas example, this time I am thinking just a basic [canva
 <!-- more -->
 
 ## 1 - Canvas grid basic example with draw grid lines method and basic Grid constructor
+
+So in this section I will start out with a very basic Grid Constructor that will serve as a way to pull away the data state of the Grid away from the logic that is used to render that grid. In addition I will just have one draw method that will render the grid lines of the Grid. All other canvas examples in this post will just be improvements, additions, or just simply changes to this basic Canvas Grid example.
 
 ### 1.1 - The html file
 
