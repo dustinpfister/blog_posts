@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2019-11-08 14:41:21
-version: 1.1
+updated: 2019-11-08 17:48:22
+version: 1.2
 ---
 
 With canvas moving objects is one of the first things I started to get up to speed with. However years later I am not aware with many different ways to go about moving a display object in a canvas project. In my earliest projects I would just step the position of an object by delta values on each frame tick, but now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state.
@@ -14,6 +14,12 @@ With canvas moving objects is one of the first things I started to get up to spe
 <!-- more -->
 
 ## 1 - canvas move objects by pixels per second basic example
+
+In this section I will be going over a simple example of moving an object in canvas by a pixel per second rate. This is for the most part one of the best, if not the best ways to go about moving an object in canvas. It might not always be necessary though with some canvas projects, for example when working out any kind of deterministic animation rather than a game or simulation of some kind.
+
+The basic idea is to just have a value that represents the number of pixels to move the object every second. On each frame tick find out how much time has elapses sense the last frame tick as a second value, then just move that object by multiplying the amount of time by that per pixel per second value.
+
+### 1.1 - The HTML file
 
 ```html
 <html>
@@ -26,6 +32,8 @@ With canvas moving objects is one of the first things I started to get up to spe
     </body>
 </html>
 ```
+
+### 1.2 - The javaScript file
 
 ```js
 var canvas = document.getElementById('the-canvas'),
