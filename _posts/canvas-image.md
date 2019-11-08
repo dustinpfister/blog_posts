@@ -5,20 +5,22 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-11-08 11:48:58
-version: 1.10
+updated: 2019-11-08 13:09:24
+version: 1.11
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded. However that is just it the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. There are other ways of creating and working with images in canvas as well though, some of which do not need an external resource loaded first, so lets take a looks at some canvas image basics.
 
 <!-- more -->
 
-## 1 - Canvas image
+## 1 - Canvas image must know basics
+
+This is a post on the HTML canvas element, and using images with a canvas project. This is not a getting started post with canvas, let alone javaScript in general. If you are new to javaScript and canvas you might want to start out elsewhere.
 
 There is the drawImage method that is used to draw an image onto a canvas. This can be an external image, or another canvas element as well. There is also ways to create an image from a canvas, and create images with just context drawing methods using no external assets at all. 
 
 
-## 2 - canvas drawImage method basic example
+## 2 - Canvas drawImage method basic example
 
 Here I have a basic example of the drawImage method. To use the draw image method with an external image that external image must be loaded first.
 
