@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-11-08 13:12:27
-version: 1.13
+updated: 2019-11-08 13:44:50
+version: 1.14
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded. However that is just it the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. There are other ways of creating and working with images in canvas as well though, some of which do not need an external resource loaded first, so lets take a looks at some canvas image basics.
@@ -107,4 +107,74 @@ img.addEventListener('load', function(){
 img.src='./pic-sheet.png';
 ```
 
-In this example the four arguments given after the image are not the values that have to do with the location and size when drawing to the canvas, but the same values when pulling image data from the source image. So this is useful when working with a spitesheet where there is a collection of frames in a static image format.
+In this example the four arguments given after the image are not the values that have to do with the location and size when drawing to the canvas, but the same values when pulling image data from the source image. So this is useful when working with a spite sheet where there is a collection of frames in a static image format.
+
+## 5 - Using another canvas and an image source for drawImage
+
+```html
+<html>
+    <head>
+        <title>canvas image</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+// sheet
+var sheet = document.createElement('canvas'),
+ctxSheet = sheet.getContext('2d');
+sheet.width = 32 * 16;
+sheet.height = 32;
+var drawPlayerSheet = function (ctx, canvas, cells) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var i = 0,
+    r,
+    x,
+    y;
+    cells = cells || 30;
+    ctx.save();
+    ctx.lineWidth = 3;
+    while (i < cells) {
+        r = Math.PI * 2 * (i / cells),
+        x = Math.cos(r) * 16 + 16,
+        y = Math.sin(r) * 16 + 16;
+        ctx.beginPath();
+        ctx.arc(16, 16, 8, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(16, 16);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.translate(32, 0);
+        i += 1;
+    }
+    ctx.restore();
+};
+drawPlayerSheet(ctxSheet, sheet, 16);
+ 
+// using the sheet with
+// the main canvas
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+var cellIndex = 0,
+x = 160,
+y = 120;
+var loop = function () {
+    requestAnimationFrame(loop);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(-16, -16);
+    // using the other 'sheet' canvas as an image source
+    ctx.drawImage(sheet, 32 * cellIndex, 0, 32, 32, x, y, 32, 32);
+    ctx.restore();
+    cellIndex += 1;
+    cellIndex %= 16;
+
+};
+loop();
+        </script>
+    </body>
+</html>
+```
