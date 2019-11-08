@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 11:11:35
-version: 1.15
+updated: 2019-11-08 11:36:06
+version: 1.16
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -244,3 +244,7 @@ var drawCellLines = function (ctx, grid, style) {
     }
 };
 ```
+
+## 4 - Conclusion
+
+This is my no means the end all be all solution for creating a canvas grid there are many different ways of going about doing this, such is the nature of programing in general of course. I was considering making more of a functional approach to this for example where there would be a method that just creates a plain old object that can then be passed to all kinds f methods that act on that object. In any case I might use what is written here in additional posts on canvas examples that make used of a grid to do something interesting.
