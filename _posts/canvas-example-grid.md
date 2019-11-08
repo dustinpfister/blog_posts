@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 11:09:14
-version: 1.14
+updated: 2019-11-08 11:11:35
+version: 1.15
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -224,6 +224,8 @@ Grid.prototype.setCells = function (forCell) {
 I have decided to go with a single linear array design rather than an array of arrays design. Having to choose between one or the other ends u being a rabbit hole of sorts for me that I wish to avoid by just simply choosing this kind of approach of that other general option that I see often.
 
 ### 3.2 - The Draw Canvas Grid Cell Lines method
+
+Here I have the draw canvas grid lines method that is yet another way of going about drawing a grid in canvas with javaScript. This might be a better way though considering that I can do so with just a single loop without making things more complicated.
 
 ```js
 // draw Cell Lines
