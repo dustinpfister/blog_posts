@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 10:25:26
-version: 1.6
+updated: 2019-11-08 10:29:03
+version: 1.7
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -37,6 +37,8 @@ The html file also has a single script tag that links to an external main.js fil
 
 ### 1.2 - The Grid constructor in main.js
 
+So I start off my main javaScript file for this Canvas Grid example with a basic Grid constructor. This constructor does not have anything going on with the prototype object at least in this example at least.
+
 ```js
 // GRID
 var Grid = function (opt) {
@@ -48,6 +50,8 @@ var Grid = function (opt) {
     this.cellHeight = opt.cellHeight || 6;
 };
 ```
+
+So for now the constructor just creates a standard object that just contains some values that outline the values of a grid such as the x and y offset values of the upper left corner of the gird in the canvas matrix. The cellSize of each grid cell or tile f you prefer, and the width and height of the gird in cell count rather than pixel size.
 
 ### 1.3 - The Draw Grid Lines Method
 
