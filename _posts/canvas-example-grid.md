@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 10:48:49
-version: 1.10
+updated: 2019-11-08 10:54:29
+version: 1.11
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -175,6 +175,12 @@ var drawGridLines = function(ctx, grid, style){
 This satisfies a desire to find a way to keep from repeating the same code, but it also results in a more complacted way of doing the same thing.
 
 ## 3 - Draw Canvas Grid Cells method and first Grid Constructor Prototype method
+
+So now lets make a more advanced version of the Gird constructor that introduces at least one prototype method. In addition I think it is time to have a cells array as part of the Grid constructor as well.
+
+The single prototype method will be used to build the cells array, and will be called with the constructor, but it could also be used after the instance is created to rebuild the cells of the grid.
+
+In addition to creating a prototype method for the Grid constructor in this section I will also be going over a draw Cell lines method that will be yet another way to draw the lines of a grid, however in some respects this might be a better way of doing so, and the other draw methods that I have outlined so far may not be necessary. There is more than one way to solve a problem, and if I am going to have a cells array for my Grid constructor this might be the preferred way to go about drawing canvas Grid lines.
 
 ### 3.1 - The Canvas Grid Constructor
 
