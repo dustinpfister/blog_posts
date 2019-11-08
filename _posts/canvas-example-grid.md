@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 10:21:44
-version: 1.5
+updated: 2019-11-08 10:25:26
+version: 1.6
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -19,6 +19,8 @@ So in this section I will start out with a very basic Grid Constructor that will
 
 ### 1.1 - The html file
 
+Here I have the html file that I am using for the example. In the html I just have a single div element that I am using as a container for the canvas example where I will be creating a canvas element with javaScript and then injecting it.
+
 ```html
 <html>
     <head>
@@ -30,6 +32,8 @@ So in this section I will start out with a very basic Grid Constructor that will
     </body>
 </html>
 ```
+
+The html file also has a single script tag that links to an external main.js file where I will have all the javaScript code for the example in this section. Any additional sections in this post will just be different renditions of this main.js file.
 
 ### 1.2 - The Grid constructor in main.js
 
