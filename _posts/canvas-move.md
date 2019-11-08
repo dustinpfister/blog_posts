@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2019-11-08 17:50:47
-version: 1.3
+updated: 2019-11-08 17:54:06
+version: 1.4
 ---
 
 With canvas moving objects is one of the first things I started to get up to speed with. However years later I am not aware with many different ways to go about moving a display object in a canvas project. In my earliest projects I would just step the position of an object by delta values on each frame tick, but now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state.
@@ -36,6 +36,8 @@ I start this project off with an HTML file with a canvas element, and a single s
 ```
 
 ### 1.2 - The javaScript file
+
+So here I have the javaScript file that will create the object as well as update it by a pixel per second value. I get a reference to the canvas element and the drawing context as with any other canvas project. I then wrote my update method that will be used to update a state object on each frame tick, followed by a draw method for the state object, and a main app loop.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
