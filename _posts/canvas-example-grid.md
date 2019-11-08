@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 11:07:56
-version: 1.13
+updated: 2019-11-08 11:09:14
+version: 1.14
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -172,7 +172,7 @@ var drawGridLines = function(ctx, grid, style){
 };
 ```
 
-This satisfies a desire to find a way to keep from repeating the same code, but it also results in a more complacted way of doing the same thing.
+This satisfies a desire to find a way to keep from repeating the same code, but it also results in a more complicated way of doing the same thing.
 
 ## 3 - Draw Canvas Grid Cells method and first Grid Constructor Prototype method
 
@@ -186,7 +186,7 @@ In addition to creating a prototype method for the Grid constructor in this sect
 
 So here is the updated Grid constructor, things are more or less the same only now I am calling a set cells method in the body of the constructor, and of course I have that method in the prototype object of the Grid constructor.
 
-I made it so that the set cells method can accept a single argument that is a function that will be called for each cell in the Grid. I am not sure if I really want or even need that feature though I could always just do an Array.prototype.forEach call over the cells array as it is a public property of a Grid constructor instance. This might be getting off topic for this section at least, as here I just want a slightly more advanced version of the grid constructor that introduces cells, and a single prototype method that creates that array of cells.
+I made it so that the set cells method can accept a single argument that is a function that will be called for each cell in the Grid. I am not sure if I really want or even need that feature though I could always just do an [Array.prototype.forEach](/2019/02/16/js-javascript-foreach/) call over the cells array as it is a public property of a Grid constructor instance. This might be getting off topic for this section at least, as here I just want a slightly more advanced version of the grid constructor that introduces cells, and a single prototype method that creates that array of cells.
 
 ```js
 // GRID
