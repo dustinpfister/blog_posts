@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 10:54:29
-version: 1.11
+updated: 2019-11-08 11:05:33
+version: 1.12
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -184,6 +184,10 @@ In addition to creating a prototype method for the Grid constructor in this sect
 
 ### 3.1 - The Canvas Grid Constructor
 
+So here is the updated Grid constructor, things are more or less the same only now I am calling a set cells method in the body of the constructor, and of course I have that method in the prototype object of thr Grid constructor.
+
+I made it so that the set cells method can accept a single argument that is a function that will be called for each cell in the Grid, but that might be getting off topic for this section at least. Here I just want a slightly more advanced version of the grid constructor that introduces cells, and a single prototype method that creates that array of cells.
+
 ```js
 // GRID
 var Grid = function (opt) {
@@ -216,6 +220,8 @@ Grid.prototype.setCells = function (forCell) {
     }
 };
 ```
+
+I have decided to go with a single linear array design rather than an array of arrays design. Having to choose between one or the other ends u being a rabbit hole of sorts for me that I wish to avoid by just simply choosing this kind of approach of that other general option that I see often.
 
 ### 3.2 - The Draw Canvas Grid Cell Lines method
 
