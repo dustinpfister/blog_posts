@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2019-11-08 18:48:07
-version: 1.7
+updated: 2019-11-08 18:53:31
+version: 1.8
 ---
 
 The canvas rotate method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method and save and restore.
@@ -77,3 +77,5 @@ I then paint a black background for the whole canvas followed by using the drawB
 ## 2 - Conclusion
 
 The canvas rotate method works okay for on the fly rotations, but it might not always be a good idea to rely on it all the time for all projects. It can cost a fair amount of system resources to preform a rotation, and if you have a lot of display objects all at once on the canvas it can really slow things down on clients that do not a great deal of CPU overhead to work with.
+
+So a better solution sometimes might be to create a sprite sheet with all the rotations preformed before hand and then use that as a way to change the rotation of display objects. Other solutions that might involve collections of points might be just as expensive if not more expensive depending on the number of points.
