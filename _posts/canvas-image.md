@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-11-08 13:44:50
-version: 1.14
+updated: 2019-11-08 13:46:43
+version: 1.15
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded. However that is just it the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. There are other ways of creating and working with images in canvas as well though, some of which do not need an external resource loaded first, so lets take a looks at some canvas image basics.
@@ -110,6 +110,8 @@ img.src='./pic-sheet.png';
 In this example the four arguments given after the image are not the values that have to do with the location and size when drawing to the canvas, but the same values when pulling image data from the source image. So this is useful when working with a spite sheet where there is a collection of frames in a static image format.
 
 ## 5 - Using another canvas and an image source for drawImage
+
+Another canvas element can be used in place of an image element for the first argument of the drawImage method. To do this I just need to create an extra canvas element by one way or another, and the extra canvas element does not need to be appended to the html at all.
 
 ```html
 <html>
