@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2019-11-09 11:25:12
-version: 1.8
+updated: 2019-11-09 11:27:21
+version: 1.9
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from a canvas. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method as well that can be used to put that data into a canvas, and there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch. These methods give a way to have total pixel by pixel control over the creation and editing of images in canvas which is something that might be desired now and then. Doing so might be expensive in terms of system resources, but if it has to happen these methods are there to help with this sort of thing so lets look at some examples.
@@ -48,7 +48,7 @@ while (i < imgData.data.length) {
 }
 ```
 
-What is returned is an instance of the ImageData constructor. An instance of this constructor has three public properties a data property that contains the actual image data, along with a width and height property.
+What is returned is an instance of the ImageData constructor. An instance of this constructor has three public properties a data property that contains the actual image data, along with a width and height property. That is about it though there are no public properties actually, but there is of course making some depending on what it is that I want or need to do with that data naturally.
 
 ## 2 - put image data example
 
