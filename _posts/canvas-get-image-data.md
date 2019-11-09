@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2019-11-09 11:19:24
-version: 1.6
+updated: 2019-11-09 11:21:50
+version: 1.7
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from a canvas. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method as well that can be used to put that data into a canvas, and there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch. These methods give a way to have total pixel by pixel control over the creation and editing of images in canvas which is something that might be desired now and then. Doing so might be expensive in terms of system resources, but if it has to happen these methods are there to help with this sort of thing so lets look at some examples.
@@ -15,7 +15,7 @@ So when it comes to working with canvas there is the [get image data](https://de
 
 ## 1 - Get image data basic example
 
-So a basic example of using the get image data method might involve just a hard coded html element and a link to an external javaScript file that will contain some javaScript that will make used of the get image data method.
+So a basic example of using the get image data method might involve just a hard coded HTML canvas element and a link to an external javaScript file via a string tag that will contain some javaScript that will make used of the get image data method. SO with that said the starting HTML of such a canvas get image data example might look something like this:
 
 ```html
 <html>
