@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2019-11-08 19:31:23
-version: 1.9
+updated: 2019-11-09 09:26:02
+version: 1.10
 ---
 
 The canvas rotate method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method and save and restore.
@@ -74,7 +74,11 @@ ctx.restore();
 
 I then paint a black background for the whole canvas followed by using the drawBox method by itself. After that I use the save method to store the state of the context, translate the canvas to the point that I want the center of the box to be, and then use the canvas rotate method to rotate the canvas.
 
-## 2 - Rotation point example
+## 2 - Rotation point and render point example
+
+In this section I will be going over a canvas rotate example that involves changing the point at which an object rotates. 
+
+Just about all canvas rotate examples involve saving the context, translating to a point in the canvas matrix, and rotating the canvas around that point that the canvas was translated to. At that point the object is then rendered at a point that is a negative value that is half the width and height of the object. However it does not always have to be that way, there are in effect two points of interest here, the point that I am translating to, and another point that is relative to that point.
 
 ```js
 // get canvas can 2d context
