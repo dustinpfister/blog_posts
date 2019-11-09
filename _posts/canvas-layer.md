@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2019-11-09 12:44:07
-version: 1.10
+updated: 2019-11-09 12:46:51
+version: 1.11
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick. There are many was to go about increasing the efficiency of a canvas project, but layering might be a good starting point. Take a moment to think about what is going on in your project, are there things that are being redrawn on each frame tick that do not need to be redrawn each time? If so then take a moment to look into layering.
@@ -126,7 +126,7 @@ Layers.prototype.draw = function (draw, index) {
 
 ### 2.2 - An example of the Canvas Layer Class
 
-So then I worked out a very simple use example of they canvas layers class.
+So then I worked out a very simple use example of they canvas layers class. I just linked to an external javaScript file where I have the javaScript of the layers class parked, and then make used of it in another script tag. This time around the canvas layers class creates canvas elements so I just have a hard coded container div in the HTML itself that I will be using as a mount point.
 
 ```html
 <html>
