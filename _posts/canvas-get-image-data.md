@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2019-06-23 16:36:31
-version: 1.5
+updated: 2019-11-09 11:19:24
+version: 1.6
 ---
 
-So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from a canvas. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method as well that can be used to put that data into a canvas, and there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch.
+So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from a canvas. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method as well that can be used to put that data into a canvas, and there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch. These methods give a way to have total pixel by pixel control over the creation and editing of images in canvas which is something that might be desired now and then. Doing so might be expensive in terms of system resources, but if it has to happen these methods are there to help with this sort of thing so lets look at some examples.
 
 <!-- more -->
 
