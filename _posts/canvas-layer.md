@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2019-11-09 12:26:41
-version: 1.8
+updated: 2019-11-09 12:43:14
+version: 1.9
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick. There are many was to go about increasing the efficiency of a canvas project, but layering might be a good starting point. Take a moment to think about what is going on in your project, are there things that are being redrawn on each frame tick that do not need to be redrawn each time? If so then take a moment to look into layering.
@@ -73,6 +73,10 @@ loop();
 There are many canvas libraries that have been developed all ready, and for the most part it might be best to just go with one of them and be done with it. Still it is not to hard to put together a basic canvas library that just supports layers. In this section I will be going over a very basic canvas layer class that can be considered a very basic canvas library of sorts. Just about any canvas library should at the very least support some kind of layering, so why not just start with that, and many even leave it at that.
 
 ### 2.1 - The Layer Class
+
+Here I have the layer class that I worked out. I just created a basic [constructor function](/2019/02/27/js-javascript-constructor) and fr the sake of keeping this simple just a single prototype method.
+
+In the body of the constructor function I am parsing properties for the Layer class instance, and then create the stack of canvas layers. I make sure that the position of the container as well as all the canvas elements is set to absolute positioning so that they stack on top of each other as they should.
 
 ```js
 var Layers = function (obj) {
