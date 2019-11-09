@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2019-11-09 11:32:37
-version: 1.10
+updated: 2019-11-09 11:35:11
+version: 1.11
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from a canvas. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method as well that can be used to put that data into a canvas, and there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch. These methods give a way to have total pixel by pixel control over the creation and editing of images in canvas which is something that might be desired now and then. Doing so might be expensive in terms of system resources, but if it has to happen these methods are there to help with this sort of thing so lets look at some examples.
@@ -54,7 +54,7 @@ What is returned is an instance of the ImageData constructor. An instance of thi
 
 The ImageData instances data property is an instance of a [Unit8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) that is just a single dimensional or linear array. Because of this the image data fro each pixel is in the form of a repeating RGBA order where the first element is a byte value for the red channel of the first pixel, the second element is the green channel, then the blue channel and finally the alpha channel of the first pixel in the upper left corner.
 
-## 2 - put image data example
+## 2 - Put image data example
 
 So once I have an instance of ImageData I can then do something with that data, but then I might want to draw that data back to a canvas element. So this is where the put image data method comes into play.
 
@@ -76,7 +76,7 @@ ctx.putImageData(imgData,3,3);
 
 ## 3 - ImageData constructor example
 
-I might want to just create an instance of ImageData by itself without having to use the get image data method to do so.
+I might want to just create an instance of ImageData by itself without having to use the get image data method to do so first. In this case I just need to use the ImageData constructor and pass a Unit8ClampedArray as the first argument followed by a width and height value.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -89,3 +89,5 @@ var data = new Uint8ClampedArray([ 255,255,0,255]);
 var img = new ImageData( data,1,1)
 ctx.putImageData( img, 1,1);
 ```
+
+I can then use the put image data method to place this instance down onto the canvas.
