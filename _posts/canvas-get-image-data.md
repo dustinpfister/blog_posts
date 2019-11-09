@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2019-11-09 11:21:50
-version: 1.7
+updated: 2019-11-09 11:25:12
+version: 1.8
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from a canvas. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method as well that can be used to put that data into a canvas, and there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch. These methods give a way to have total pixel by pixel control over the creation and editing of images in canvas which is something that might be desired now and then. Doing so might be expensive in terms of system resources, but if it has to happen these methods are there to help with this sort of thing so lets look at some examples.
@@ -29,7 +29,7 @@ So a basic example of using the get image data method might involve just a hard 
 </html>
 ```
 
-In the basic.js javaScript file I just get the canvas and the 2d drawing context and use the 2d drawing context to draw a little something to the canvas. I can then use the get image data method to get a image data for a section of that canvas. I just need to call ctx.getImageData and pass the x and y position and width and height that I want.
+In the basic.js javaScript file I just get the canvas and the 2d drawing context and use the 2d drawing context to draw a little something to the canvas. For now it does not matter what that something is a great deal it is just so that I have something in the canvas to get. I can then use the canvas get image data method to get the image data for a section of that canvas. I just need to call ctx.getImageData and pass the x and y position and width and height of the section of the canvas matrix that I want.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -48,7 +48,7 @@ while (i < imgData.data.length) {
 }
 ```
 
-What is returned is an instance of the ImageData constructor.
+What is returned is an instance of the ImageData constructor. An instance of this constructor has three public properties a data property that contains the actual image data, along with a width and height property.
 
 ## 2 - put image data example
 
