@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2019-11-08 18:21:39
-version: 1.5
+updated: 2019-11-09 10:41:22
+version: 1.6
 ---
 
 With canvas moving objects is one of the first things I started to get up to speed with. However years later I am not aware with many different ways to go about moving a display object in a canvas project. In my earliest projects I would just step the position of an object by delta values on each frame tick, but now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state.
@@ -26,7 +26,7 @@ I start this project off with an HTML file with a canvas element, and a single s
 ```html
 <html>
     <head>
-        <title>canvas arc</title>
+        <title>canvas move</title>
     </head>
     <body>
         <canvas id="the-canvas"></canvas>
