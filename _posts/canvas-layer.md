@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2019-11-09 12:20:39
-version: 1.6
+updated: 2019-11-09 12:23:45
+version: 1.7
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick. There are many was to go about increasing the efficiency of a canvas project, but layering might be a good starting point. Take a moment to think about what is going on in your project, are there things that are being redrawn on each frame tick that do not need to be redrawn each time? If so then take a moment to look into layering.
@@ -68,7 +68,9 @@ loop();
 </html>
 ```
 
-## 2 - A Basic Canvas Layers lib example
+## 2 - A Basic Canvas Layer Class example
+
+### 2.1 - The Layer Class
 
 ```js
 var Layers = function (obj) {
@@ -114,6 +116,54 @@ Layers.prototype.draw = function (draw, index) {
     draw.call(layer, layer.ctx, layer.canvas);
  
 };
+```
+
+### 2.2 - An example of the Canvas Layer Class
+
+```html
+<html>
+    <head>
+        <title>canvas layer example</title>
+    </head>
+    <body>
+        <div id="gamearea" style="position:absolute;left:50px;top:25px;">
+        </div>
+        <script src="layers-lib.js"></script>
+        <script>
+// create new layers stack
+var layers = new Layers({
+        container: document.getElementById('gamearea')
+    });
+// draw background on layer 0 once
+layers.draw(function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}, 0);
+// draw another area to layer 1 once
+layers.draw(function (ctx, canvas) {
+    ctx.fillStyle = 'rgba(0,128,128,0.8)';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(5, 5, 310, 50);
+}, 1);
+// can use the top layer for animation
+var canvas = layers.layers[2].canvas,
+ctx = layers.layers[2].ctx,
+obj = {
+    x: 0,
+    y: 120
+};
+var loop = function () {
+    requestAnimationFrame(loop);
+    obj.x += 5;
+    obj.x %= canvas.width;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(obj.x, obj.y, 32, 32);
+};
+loop();
+        </script>
+    </body>
+</html>
 ```
 
 ## 3 - Conclusion
