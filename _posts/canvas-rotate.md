@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2019-11-08 18:53:31
-version: 1.8
+updated: 2019-11-08 19:31:23
+version: 1.9
 ---
 
 The canvas rotate method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method and save and restore.
@@ -74,7 +74,72 @@ ctx.restore();
 
 I then paint a black background for the whole canvas followed by using the drawBox method by itself. After that I use the save method to store the state of the context, translate the canvas to the point that I want the center of the box to be, and then use the canvas rotate method to rotate the canvas.
 
-## 2 - Conclusion
+## 2 - Rotation point example
+
+```js
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+canvas.width = 320;
+canvas.height = 240;
+ 
+var obj = {
+    x: 160,
+    y: 120,
+    w: 64,
+    h: 64,
+    rotation: {
+        x: 0,
+        y: 0,
+        r: 0
+    },
+    fillStyle: 'red'
+};
+ 
+var drawPoint = function (ctx, x, y, style, strokeStyle) {
+    ctx.lineWidth = 3;
+    ctx.fillStyle = style || 'white';
+    ctx.strokeStyle = strokeStyle || '#4a4a4a';
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+};
+ 
+var drawObj = function (ctx, obj) {
+    ctx.fillStyle = obj.fillStyle || 'white';
+    ctx.save();
+    ctx.translate(obj.x, obj.y);
+    ctx.rotate(obj.rotation.r);
+    ctx.fillRect(-obj.w / 2 + obj.rotation.x, -obj.h / 2 + obj.rotation.y, obj.w, obj.h);
+    drawPoint(ctx, 0, 0, 'green');
+    drawPoint(ctx, obj.rotation.x, obj.rotation.y, 'blue');
+    ctx.restore();
+};
+ 
+var frame = 0, maxFrame = 100;
+var loop = function () {
+    requestAnimationFrame(loop);
+ 
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+    drawObj(ctx, obj);
+ 
+    var per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    obj.rotation.r = Math.PI * 2 * per;
+    obj.rotation.x = -16 * bias
+    frame += 1;
+    frame %= maxFrame;
+ 
+};
+
+loop();
+```
+
+## 3 - Conclusion
 
 The canvas rotate method works okay for on the fly rotations, but it might not always be a good idea to rely on it all the time for all projects. It can cost a fair amount of system resources to preform a rotation, and if you have a lot of display objects all at once on the canvas it can really slow things down on clients that do not a great deal of CPU overhead to work with.
 
