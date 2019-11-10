@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-11-10 11:21:06
-version: 1.14
+updated: 2019-11-10 11:24:27
+version: 1.15
 ---
 
 So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of a text outline. 
@@ -60,6 +60,8 @@ ctx.fillText('hello world', 0, 20);
 ```
 
 ## 3 - Canvas text color with fillStyle strokeStyle.
+
+The canvas text color can be set a number of ways. There is the fill style and stroke style properties that can be used to set the text color depending on what methods are being used to draw the text. There is also the values that are used for these properties and other canvas drawing context methods that have an impact on canvas text color such as the [global alpha](/2019/10/11/canvas-alpha/) property.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
