@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-11-10 10:59:54
-version: 1.11
+updated: 2019-11-10 11:01:40
+version: 1.12
 ---
 
 So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of a text outline. 
@@ -46,7 +46,7 @@ There is more to cover when it comes to the text base line as well as centering 
 
 ## 2 - Canvas text and setting the font
 
-There is the font 2d drawing context property that will come into play when I want to set the font size, and font-family of the text. I do so by setting the font property to a string value where I set a pixel value for the text size followed by the string 'px' to set the value in pixels. After that I can use a space followed by the web safe font I would like to use for the text such as courier.
+There is the [canvas font](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font) 2d drawing context property that will come into play when I want to set the font size, and font-family of the text. I do so by setting the font property to a string value where I set a pixel value for the text size followed by the string 'px' to set the value in pixels. After that I can use a space followed by the web safe font I would like to use for the text such as courier.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
