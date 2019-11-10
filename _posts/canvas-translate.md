@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-05 12:16:37
-version: 1.25
+updated: 2019-11-10 13:31:57
+version: 1.26
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -15,7 +15,7 @@ The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRe
 
 ## 1 - Canvas translate basic example
 
-For a very basic example of the canvas translate method I just put together this simple little example where I am just translating the canvas so that a rectangle at 0,0 is actually rendered at 16,16. In the html I just have a canvas element, and then a script tag that links to an external javaScript file where I have the basic canvas translate example.
+For a very basic example of the canvas translate method I just put together this simple little example where I am just translating the canvas so that a rectangle at 0,0 is actually rendered at 16,16. In the HTML I just have a canvas element, and then a script tag that links to an external javaScript file where I have the basic canvas translate example.
 
 ```html
 <html>
