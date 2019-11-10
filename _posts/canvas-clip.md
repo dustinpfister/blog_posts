@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2019-11-10 15:47:53
-version: 1.6
+updated: 2019-11-10 15:56:23
+version: 1.7
 ---
 
 The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas. This is an area of the canvas that will be drawn to where everything outside of the clip area will not actually be drawn to the canvas. So in other words it is a way to go about making a mask of sorts for a canvas. 
@@ -50,7 +50,11 @@ You would think it would be easy to just invert the clipping area, but it would 
 
 In any case in this section I will be going over ways to go about having an inverted clipping area in canvas.
 
-### 2.1 - globalCompositeOperation and source-over, source-atop, and destination-over
+### 2.1 - Global Composite Operation and source-over, source-atop, and destination-over
+
+In this example I am using the Global Composite Operation property to set the composite operation from source-over to source-atop, and then destination-over. I do not have much experience working with these, but so far it would seem that these are the three basic composite operations of interest when it comes to having an inverted clipping area in a single canvas without getting into layering many canvas elements.
+
+The source-over composite operation is the default mode for the Global Composite Operation property in this operation new content is always just drawn over existing content and transparent areas. However there are other operations that just draw to areas where there is content (such as source-atop), or only to areas where there is only transparent area (such as destination-over).
 
 ```js
 // get canvas can 2d context
