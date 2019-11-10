@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-11-10 11:01:40
-version: 1.12
+updated: 2019-11-10 11:06:15
+version: 1.13
 ---
 
 So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of a text outline. 
 
-There is a bit more to know about when it comes to setting the position of text, font and so forth of canvas text. There are at least a few properties that a javaScript developer should be aware of when it comes to using canvas to render text. So lets look at some quick examples of working with text and HTML 5 canvas elements.
+There is a bit more to know about when it comes to setting the position of text, canvas text color, canvas text font, and so forth of canvas text. There are at least a few properties that a javaScript developer should be aware of when it comes to using canvas to render text. So lets look at some quick examples of working with text and HTML 5 canvas elements.
 
 <!-- more -->
 
@@ -44,7 +44,7 @@ ctx.fillText('hello world', 10, 10);
 
 There is more to cover when it comes to the text base line as well as centering text, and controlling the size and font of text. So now that we have a basic example covered we can now get to those examples as well now.
 
-## 2 - Canvas text and setting the font
+## 2 - Setting the canvas text font
 
 There is the [canvas font](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font) 2d drawing context property that will come into play when I want to set the font size, and font-family of the text. I do so by setting the font property to a string value where I set a pixel value for the text size followed by the string 'px' to set the value in pixels. After that I can use a space followed by the web safe font I would like to use for the text such as courier.
 
