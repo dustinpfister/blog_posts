@@ -1,15 +1,17 @@
 ---
-title: On blur event in javaScript
+title: On blur event in javaScript and basic interface design
 date: 2019-01-08 13:59:00
 tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2019-10-31 19:24:46
-version: 1.32
+updated: 2019-11-10 18:42:44
+version: 1.33
 ---
 
-The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event the fires when an element no longer has focus, in other words it is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. So then a blur event fires when an element losses this focus, once it has been acquired in the first place. An on blur event will only fire for elements that can gain a focus, such as input elements. However it is possible to set other elements that can not be focus by default with the [tab index](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/tabIndex) property. In this post I will be going over some examples that make use of the on blur event with plain old vanilla client side javaScript, rather than a certain front end frame work.
+The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event the fires when an element no longer has focus, in other words it is the opposite of the on [focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. 
+
+So then a blur event fires when an element losses this focus, once it has been acquired in the first place. An on blur event will only fire for elements that can gain a focus, such as input elements. However it is possible to set other elements that can not be focus by default with the [tab index](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/tabIndex) property. In this post I will be going over some examples that make use of the on blur event with plain old vanilla client side javaScript, rather than a certain front end frame work.
 
 <!-- more -->
 
@@ -17,11 +19,13 @@ The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandle
 
 This is a post on the on blur event in client side javaScript, one of many events to which an event handler can be attached for an element. An on blur event can be attached to an element using the onblur property of an element, or a method like addEventListener to attach event handers that will fire when the bur event happens. 
 
-I will not be going over [event listeners](/2019/01/16/js-event-listeners/) in general in this post as I have writing a post on that subject in the past, this post will be focusing on just the on blur event and related topics such as the tab index property. I assume that you have at least some background with javaScript and html as this is required in order to get anything of value from this post.
+I will not be going over [event listeners](/2019/01/16/js-event-listeners/) in general in this post as I have wrote a post on that subject in the past. So then this post will be focusing on mainly the on blur event and related topics such as the tab index property. I assume that you have at least some background with javaScript and HTML as this is required in order to get anything of value from this post.
 
 ## 2 - On blur basic example
 
-The use of a blur event might be used in conjunction with a focus event, as well as a whole range of other events to create a user interface for a form, single input element, or anything else for the matter to which focus events apply. The focused element in the interface is the current element that the user is focused on, and as such the value of the element can be manipulated with input from the keyboard. So the on focus event will fire when an element gets this focus, and the on blur event will fire when this focus is lost.
+The use of an on blur event might be used in conjunction with an on focus event, as well as a whole range of other events to create a user interface for a form, single input element, or anything else for the matter to which focus events apply. 
+
+The focused element in the interface is the current element that the user is focused on, and as such the value of the element can be manipulated with input from the keyboard. So with that being said the on change event is also yet another event of interest when it comes to setting events for that kind of change. So the on focus event will fire when an element gets this focus, and the on blur event will fire when this focus is lost.
 
 So with that being said here is a basic example of the on blur event in which I am attaching some event handlers for both the on focus, and on blur events for a single input element. I will be keeping this example simple so it will just involve changing the value of an text input tag.
 
