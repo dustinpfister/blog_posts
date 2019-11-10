@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-11-10 11:06:15
-version: 1.13
+updated: 2019-11-10 11:21:06
+version: 1.14
 ---
 
 So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of a text outline. 
@@ -57,6 +57,45 @@ canvas.height = 240;
 ctx.fillStyle='red';
 ctx.font = '20px courier';
 ctx.fillText('hello world', 0, 20);
+```
+
+## 3 - Canvas text color with fillStyle strokeStyle.
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 400;
+canvas.height = 270;
+ 
+var mess = 'Hello World';
+ 
+ctx.font = '50px arial';
+ctx.lineWidth = 3;
+ctx.translate(-0.5, -0.5);
+ 
+// just using fillStyle and fillText
+ctx.fillStyle='red';
+ctx.fillText(mess, 0, 50);
+ 
+// just using strokeStyle and strokeText
+ctx.strokeStyle='red';
+ctx.strokeText(mess, 0, 100);
+ 
+// using fillStyle and strokeStyle
+ctx.fillStyle='red';
+ctx.strokeStyle='black';
+ctx.fillText(mess, 0, 150);
+ctx.strokeText(mess, 0, 150);
+ 
+// using Global alpha for transparency
+ctx.globalAlpha = 0.2;
+ctx.strokeStyle='red';
+ctx.strokeText(mess, 0, 200);
+ctx.globalAlpha = 1;
+ 
+// using RGBA color style values for transparency
+ctx.strokeStyle='rgba(255,0,0,0.2)';
+ctx.strokeText(mess, 0, 250);
 ```
 
 ## 3 - The text base line property
