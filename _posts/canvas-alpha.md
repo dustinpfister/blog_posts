@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2019-10-13 19:01:03
-version: 1.5
+updated: 2019-11-10 09:54:44
+version: 1.6
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) transparency can be achieved in a number of ways. There is the global alpha property of the 2d drawing context, and then there is also using the rgba way of setting a web color. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear react method and having a background behind the canvas element. So lets look at some example that have to do with alpha transparency in html 5 canvas and javaScript.
@@ -53,7 +53,7 @@ When done set the value back to one, or use save and restore to set opacity back
 
 ## 2 - Using a css color value
 
-A css color value can also be used to set an alpha-channel transparency value Suing the rgba functional notation for example. This way it is just a matter of setting the desired color value when setting the fill or stroke style when maing graphics with the 2d context drawing methods.
+A css color value can also be used to set an alpha-channel transparency value Suing the rgba functional notation for example. This way it is just a matter of setting the desired color value when setting the fill or stroke style when making graphics with the 2d context drawing methods.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -72,3 +72,7 @@ ctx.beginPath();
 ctx.arc(180,140, 40, 0, Math.PI * 2);
 ctx.fill();
 ```
+
+## 3 - Conclusion
+
+So there are some basic when it comes to working with canvas alpha transparency, there is much more to write about on this topic as well as many other canvas related topics.
