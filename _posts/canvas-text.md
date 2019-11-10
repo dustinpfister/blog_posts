@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-07-29 09:53:52
-version: 1.5
+updated: 2019-11-10 09:29:27
+version: 1.6
 ---
 
 So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d content method. There is a bit more to know about when it comes to setting the position of text, font and so forth, so lets look at some quick examples of working with text in canvas.
@@ -84,4 +84,24 @@ ctx.fillStyle = 'red';
     ctx.textBaseline = baseLineValue;
     ctx.fillText(mess, stepX * index, baseY);
 });
+```
+
+## 3 - The canvas text align property
+
+
+```js
+// get the canvas, context and set size
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 640;
+canvas.height = 150;
+ 
+ctx.fillStyle = 'back';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+ctx.fillStyle = 'white';
+ctx.font = '120px arial';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
 ```
