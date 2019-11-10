@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2019-11-10 09:50:14
-version: 1.9
+updated: 2019-11-10 09:52:26
+version: 1.10
 ---
 
 So in html 5 canvas text can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of a text outline. 
@@ -46,7 +46,7 @@ There is more to cover when it comes to the text base line as well as centering 
 
 ## 2 - The text base line property
 
-When working with text in the 2d canvas drawing context the base line property can be used to set the vertical alignment of text when setting the position of a fill text method call.
+When working with text in the 2d canvas drawing context the [canvas text base line](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textBaseline) property can be used to set the vertical alignment of text when setting the position of a fill text method call.
 
 ```js
 // get the canvas, context and set size
@@ -90,7 +90,7 @@ ctx.fillStyle = 'red';
 
 ## 3 - The canvas text align property
 
-The text baseline property is what I would want to use in a canvas project to set the vertical alignment of text. However there is also the question of horizontal alignment also, and for this there is the text align property of the 2d drawing context. For this property there are values such as left right and center that can be used to set how text is to be rendered relative to the x value that is given when using a method like fill text..
+The text baseline property is what I would want to use in a canvas project to set the vertical alignment of text. However there is also the question of horizontal alignment also, and for this there is the [text align](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textAlign) property of the 2d drawing context. For this property there are values such as left right and center that can be used to set how text is to be rendered relative to the x value that is given when using a method like fill text..
 
 ```js
 // get the canvas, context and set size
