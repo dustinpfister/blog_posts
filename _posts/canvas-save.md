@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2019-11-10 14:11:23
-version: 1.12
+updated: 2019-11-10 14:14:52
+version: 1.13
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the canvas restore method. 
@@ -114,4 +114,4 @@ This way of doing rotations works okay with some projects but it does eat up som
 
 ## 3 - Conclusion
 
-So then the canvas save method just save the state of the 2d drawing context. Once the context is saved changes can be base to the various properties of the 2d canvas drawing context. When the older state of the context is to be restored the restore method can then be used to do just that.
+So then the canvas save method just saves the state of the 2d drawing context. Once the context is saved changes can be made to the various properties of the 2d canvas drawing context. When the older state of the context is to be restored the restore method can then be used to put everything back to the way it was when the save method was called. The canvas save method is then a great way to go back to a default drawing state that does not involve having to go threw each property and set things back for each property that was changed.
