@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2019-11-10 10:45:45
-version: 1.5
+updated: 2019-11-10 15:47:53
+version: 1.6
 ---
 
 The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas. This is an area of the canvas that will be drawn to where everything outside of the clip area will not actually be drawn to the canvas. So in other words it is a way to go about making a mask of sorts for a canvas. 
@@ -43,3 +43,57 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 ```
 
 So this is just a fancy way of drawing a filled circle with the canvas arc method, only the canvas clip and fill rect methods are used. Still this demonstrates the basic idea, a path is used to define a clipping area and then the canvas clip method is used to set that area. Once the area is set then anything that is drawn will only be rendered in the clipped area.
+
+## 2 - Inverting the clip area
+
+You would think it would be easy to just invert the clipping area, but it would seem that inverting a clipping area is not is easy as just setting a boolean value. There are of course ways of getting a desired effect when it comes to layering, in other words working with more than one canvas element. There is also a 2d context property called [Global Composite Operation](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation) that can be used to set compositing operations other than the default source-over mode when it comes to setting what areas of the canvas to draw to.
+
+In any case in this section I will be going over ways to go about having an inverted clipping area in canvas.
+
+### 2.1 - globalCompositeOperation and source-over, source-atop, and destination-over
+
+```js
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+var drawMask = function () {
+    // set default composite source-over 
+    // clear the clear canvas and draw a mask
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, 50);
+    ctx.fillRect(50, 50, 100, canvas.height);
+    ctx.fillRect(0, 200, canvas.width, canvas.height);
+};
+ 
+var drawToMask = function () {
+    var i = 100,x,y,r;
+    // set to source-atop to draw to canvas content only
+    // ( just the mask ) transparent areas are not effected
+    ctx.globalCompositeOperation = 'source-atop';
+    while (i--) {
+        x = Math.random() * canvas.width;
+        y = Math.random() * canvas.height;
+        r = 15 + 60 * Math.random();
+        ctx.fillStyle = '#' + Math.floor(16000000 * Math.random()).toString(16);
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+    }
+};
+ 
+var drawToClear = function(){
+    // set to destination-over, only the remaining 
+    // transparent areas are rendered to
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+drawMask();
+drawToMask();
+drawToClear();
+```
