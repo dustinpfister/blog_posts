@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2019-11-11 15:31:56
-version: 1.2
+updated: 2019-11-11 15:37:48
+version: 1.3
 ---
 
 The vue update life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -15,6 +15,8 @@ The vue update life cycle hook is one of several hooks that can be used to defin
 
 
 ## 1 - vue updated array example
+
+In this section I will be going over an example that is again the beginnings of a simple idle game. this will just start adding money to a variable each time a tick method is called outside the vue instance with setInterval. In addition there is also a work button that will add more money and a higher rate, but will do so manually.
 
 This example involves the use of an array as a data object property. The tricky thing about arrays as data properties is that adding and removing elements will not trigger an update of the vue, so a force update is needed.
 
@@ -48,7 +50,6 @@ var app = new Vue({
         // what to do on an update
         updated: function () {
             var data = this.$data;
-            console.log('update')
             if (data.log.length === 1) {
                 data.money += data.log[0].money;
                 data[data.log[0].type] += 1;
