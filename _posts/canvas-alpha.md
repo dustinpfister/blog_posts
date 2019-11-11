@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2019-11-10 18:59:26
-version: 1.8
+updated: 2019-11-10 19:02:41
+version: 1.9
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) transparency can be achieved in a number of ways. There is the global alpha property of the 2d drawing context, and then there is also using the rgba way of setting a web color. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear react method and having a background behind the canvas element. So lets look at some example that have to do with alpha transparency in html 5 canvas and javaScript.
@@ -15,7 +15,9 @@ In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderi
 
 ## 1 - canvas alpha transparency using the global alpha property
 
-The global alpha property of the 2d drawing canvas context is maybe the most common typical way to go about setting transparency for something that is going to be rendered in canvas. Just set a value from zero to one for the property and anything that will be drawn or stroked will have the degree of transparency.
+The global alpha property of the 2d drawing canvas context is maybe the most common typical way to go about setting transparency for something that is going to be rendered in canvas. Just set a value from zero to one for the property and anything that will be drawn or stroked will have that degree of transparency.
+
+This can be useful if I want to set a canvas alpha channel transparency for everything that I end up drawing to the context, rather than just having it apply to a stroke or fill style and not everything else like draw image calls.
 
 ```html
 <html>
