@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-11 06:56:55
-version: 1.21
+updated: 2019-11-11 06:58:01
+version: 1.22
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -251,7 +251,7 @@ var drawCellLines = function (ctx, grid, style) {
 };
 ```
 
-This method should maybe be keep separate from any additional draw methods such as one that draws the backgrounds of each cell in the grid.
+This method should maybe be keep separate from any additional draw methods such as one that draws the backgrounds of each cell in the grid. This will help to keep things more fine grain, and also I might only want to draw grid lines alone for the grid, or I might want to draw the grid lines after drawing the backgrounds.
 
 ## 4 - Conclusion
 
