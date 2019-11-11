@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-11 06:58:01
-version: 1.22
+updated: 2019-11-11 07:37:25
+version: 1.23
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -218,7 +218,8 @@ Grid.prototype.setCells = function (forCell) {
         cellObj = {
             i: ci,
             y: Math.floor(ci / this.cellWidth),
-            x: ci % this.cellWidth
+            x: ci % this.cellWidth,
+            backgroundIndex: 0
         };
         forCell(cellObj);
         this.cells.push(cellObj);
@@ -252,6 +253,88 @@ var drawCellLines = function (ctx, grid, style) {
 ```
 
 This method should maybe be keep separate from any additional draw methods such as one that draws the backgrounds of each cell in the grid. This will help to keep things more fine grain, and also I might only want to draw grid lines alone for the grid, or I might want to draw the grid lines after drawing the backgrounds.
+
+### 3.3 - Draw the canvas grid cell backgrounds
+
+So now on top of having a draw method that draws the grid lines I now have a methods that will draw the backgrounds also. This method works more or less the same way, only now I am using the draw image method, and I am passing a reference to a tile sheet in the from of an image or another canvas element. This of course makes use of the background index value that I added to the cell objects.
+
+```js
+// draw cell backgrounds
+var drawCellBackgrounds = function (ctx, grid, sheet) {
+    var ci = 0,
+    cell,
+    cLen = grid.cells.length;
+    while (ci < cLen) {
+        cell = grid.cells[ci];
+        ctx.drawImage(
+            sheet,
+            // source
+            cell.backgroundIndex * grid.cellSize + 0.5,
+            -0.5,
+            grid.cellSize, grid.cellSize,
+            // placement
+            cell.x * grid.cellSize + grid.xOffset + 0.5,
+            cell.y * grid.cellSize + grid.yOffset + 0.5,
+            grid.cellSize, grid.cellSize)
+        ci += 1;
+    }
+};
+```
+
+I will not be getting into the draw image method in depth here but the first argument is of course a reference to the sheet that I will be using to draw the backgrounds, and then there are values for the source position as well as width in height when it comes to getting the tile in the tile sheet, followed by the same set of values for drawing it to the canvas.
+
+### 3.4 - Using the new Grid Constructor and draw methods
+
+```js
+// SETUP CANVAS
+(function () {
+    // create and append canvas element, and get 2d context
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    container = document.getElementById('gamearea') || document.body;
+    container.appendChild(canvas);
+    // set width and height
+    canvas.width = 320;
+    canvas.height = 240;
+ 
+    // creating a grid instance
+    var grid = new Grid({
+            xOffset: 15,
+            yOffset: 25,
+            cellSize: 32,
+            cellWidth: 9
+        });
+ 
+    // create a sheet
+    var sheet = document.createElement('canvas'),
+    ctx_sheet = sheet.getContext('2d');
+    sheet.width = 64;
+    sheet.height = 32;
+    ctx_sheet.fillStyle = 'orange';
+    ctx_sheet.fillRect(0, 0, sheet.width, sheet.height);
+    ctx_sheet.fillStyle = 'green';
+    ctx_sheet.fillRect(grid.cellSize, 0, grid.cellSize, grid.cellSize);
+ 
+    // setting some cells to a background index
+    // other that the default 0
+    grid.cells[10].backgroundIndex = 1;
+    grid.cells[18].backgroundIndex = 1;
+    grid.cells[19].backgroundIndex = 1;
+    grid.cells[20].backgroundIndex = 1;
+    grid.cells[28].backgroundIndex = 1;
+ 
+    // fill black
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+    // draw backgrounds
+    drawCellBackgrounds(ctx, grid, sheet);
+    // draw grid lines
+    drawCellLines(ctx, grid, 'grey');
+ 
+}
+    ());
+```
 
 ## 4 - Conclusion
 
