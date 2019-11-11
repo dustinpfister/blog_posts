@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2019-09-18 17:18:21
-version: 1.7
+updated: 2019-11-11 07:52:25
+version: 1.8
 ---
 
 I thought it would be nice to write a few blog posts on [html 5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics) in a client side javaScript environment. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to canvas basics and beyond. As such maybe it is best to start with a post that is a kind of getting started post on the subject.
@@ -15,7 +15,7 @@ I thought it would be nice to write a few blog posts on [html 5 canvas](https://
 
 ## 1 - Canvas basics
 
-When it comes to the canvas basics there is not much to it to get stared assuming that you have at least some knowledge of html and javaScript to begin with. The basic process is get a reference to a canvas element in html, or create and inject one first. Once you have a reference ot the canvas element you can then use the get context method of the canvas element reference to ger an instance of the 2d drawing api. This drawing api then has all kind of methods that can be used to draw to the canvas with javaScript.
+When it comes to the canvas basics there is not much to it to get stared assuming that you have at least some knowledge of html and javaScript to begin with. The basic process is to get a reference to a canvas element in html, or create and inject one first. Once you have a reference to the canvas element you can then use the get context method of the canvas element reference to get an instance of the 2d drawing context. This drawing context or api then has all kind of methods and properties that can be used to draw to the canvas with javaScript.
 
 Whenever I start a new canvas project with plain old vanilla js, I often start with something like this.
 
@@ -45,7 +45,7 @@ This results in just a simple black screen that has a actual matrix width of 320
 
 In this example I am creating the canvas, and appending it to the body of an html document all with javaScript, rather than getting a reference to a canvas element that may exist before hand.
 
-By native size I mean the actual with and height of the canvas in terms of the dimentions of the 2d matrix, not any kind of scaled width and height.
+By native size I mean the actual with and height of the canvas in terms of the dimensions of the 2d matrix, not any kind of scaled width and height.
 
 ## 2 - Actual size vs scaled size
 
