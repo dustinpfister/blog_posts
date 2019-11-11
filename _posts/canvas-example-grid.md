@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-11 07:39:16
-version: 1.24
+updated: 2019-11-11 07:46:41
+version: 1.25
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -285,7 +285,9 @@ I will not be getting into the draw image method in depth here but the first arg
 
 ### 3.4 - Using the new Grid Constructor and draw methods
 
-So then once again I just need to use everything I worked out.
+So then once again I just need to use everything I worked out. This time I am still using the same options as before, but now I am also creating a sprite sheet as a canvas element rather than loading an extremal image, and using the canvas as the tile sheet when calling the draw cell backgrounds method. 
+
+I also set some background index properties of cell objects to something other than the default zero value. For this sheet I just have two cell values, but in a real project there would of course be many more.
 
 ```js
 // SETUP CANVAS
@@ -337,6 +339,8 @@ So then once again I just need to use everything I worked out.
 }
     ());
 ```
+
+When this example is working I see what I would expect I have orange tiles as the default background, and then green tiles for each one that I have set to a value of one. I then have gray grid lines over this.
 
 ## 4 - Conclusion
 
