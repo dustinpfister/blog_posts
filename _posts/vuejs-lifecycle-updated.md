@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2019-11-11 17:16:25
-version: 1.8
+updated: 2019-11-11 17:17:10
+version: 1.9
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -68,6 +68,8 @@ In this section I will be going over an example that is again the beginnings of 
 
 This example involves the use of an array as a data object property. The tricky thing about arrays as data properties is that adding and removing elements will not trigger an update of the vue, so a force update is needed.
 
+So lets start off with the html.
+
 ```html
 <html>
   <head>
@@ -80,6 +82,8 @@ This example involves the use of an array as a data object property. The tricky 
   </body>
 </html>
 ```
+
+Here is the javaScript of the example
 
 ```js
 var app = new Vue({
