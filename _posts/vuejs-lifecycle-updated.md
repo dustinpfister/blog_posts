@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2019-11-11 17:08:57
-version: 1.7
+updated: 2019-11-11 17:16:25
+version: 1.8
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -138,3 +138,7 @@ setInterval(function () {
     app.tick();
 }, 1000);
 ```
+
+## 3 - Conclusion
+
+The the vue update hook can be useful for defining some logic that will fire each time a reactive data object updates, or in the event that something is not reactive when the force update method is called. There are many other hooks that fire over the course of a vue instances life span such as the created hook that will fire once the vue instance is created buy not mounted to html, and then there is of course a hook for that also. Hooks come in handy when working out a custom vue constructor of component, I use them all the time where and when needed.
