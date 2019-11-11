@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 09:17:44
-version: 1.9
+updated: 2019-11-11 09:47:28
+version: 1.10
 ---
 
-The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
+The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
 
-It can then be used to make custom constructors that have templates, base data, and methods for one or more instances of something in a project. To help elaborate with this it would be best to check out some examples of the vue extend global api method, so lets hop to it.
+So then the Vue extend method can be used to make custom constructors of Vue that have templates, base data, and methods for one or more instances of something in a project. For example if I am making some kind of idle game that involves a page where I have two or more assets that are making money for me then the Vue extend method might be a good option for making an Asset class for that aspect of the game. To help elaborate with this it would be best to check out some examples of the vue extend global api method, so lets hop to it.
 
 <!-- more -->
 
