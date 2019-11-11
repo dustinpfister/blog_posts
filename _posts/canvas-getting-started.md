@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2019-11-11 07:59:10
-version: 1.10
+updated: 2019-11-11 09:00:42
+version: 1.11
 ---
 
 I thought it would be nice to write a few blog posts on [html 5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics) in a client side javaScript environment. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to canvas basics and beyond. As such maybe it is best to start with a post that is a kind of getting started post on the subject.
@@ -127,7 +127,9 @@ After having the blank black canvas, and size in order it's now time to actual d
   ());
 ```
 
-So now I have pulled things into functions, You do not have to do this of course, but it does help to keep things compartmentalized. For now I am just using [ctx.strokeStyle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle), [ctx.beginPath()](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/beginPath), [ctx.arc](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc), and [ctx.stroke](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/stroke) to draw a circle on the canvas.
+So now I have pulled things into functions, You do not have to do this of course, but it does help to keep things compartmentalized, and as a project grows I might be calling certain methds more than once that allows for be to reduce the volume of code that is being repeated. 
+
+For now I am just using [ctx.strokeStyle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle), [ctx.beginPath()](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/beginPath), [ctx.arc](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc), and [ctx.stroke](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/stroke) to draw a circle on the canvas. There are of course ways to go about drawing images from external files, or another canvas, and many other topics, but for now I just want to keep things simple. This is a getting started post on canvas afetr all.
 
 Getting started with canvas is often just a means of knowing how to use the various methods, and properties on the [2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). It can take a little while, but assuming you have a basic working knowledge of javaScript to begin with, it should not take to long.
 
