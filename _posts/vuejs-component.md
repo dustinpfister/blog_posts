@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 450
-updated: 2019-05-18 19:35:34
-version: 1.7
+updated: 2019-11-11 09:20:39
+version: 1.8
 ---
 
-A [vue component](https://vuejs.org/v2/guide/components.html) is a way to create reusable Vue constructor instances. A component has a name assigned to it, and can be used as a way to make custom elements that can be used in templates. There is a great deal to cover about components, as well as the many other vuejs related topics that a developer should be up to speed with before hand, but lets take a look at some basic vue component examples for starters. 
+A [vue component](https://vuejs.org/v2/guide/components.html) is a way to create an asset of sorts for a vuejs instance. It is similar to but also very different from [vue extend](/2019/05/09/vuejs-extend/) that can be used to create custom vuejs constructors.
+
+A component has a name assigned to it, and can be used as a way to make custom elements that can be used in templates. There is a great deal to cover about components, as well as the many other vuejs related topics that a developer should be up to speed with before hand, but lets take a look at some basic vue component examples for starters. 
 
 <!-- more -->
 
