@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-08 11:36:06
-version: 1.16
+updated: 2019-11-11 06:36:39
+version: 1.17
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -95,7 +95,9 @@ The draw grid lines method seems to work okay, but there is the question of draw
 
 ### 1.4 - Setup
 
-So now for the setup of the canvas element, and to make use of what I worked out here.
+So now for the setup of the canvas element, and to make use of what I worked out here. I start out by creating a canvas element and setting that to a variable that I also used to get a reference to the 2d drawing context. I then append that canvas element to the container element which in this case is a div element in the HTML.
+
+I then call my Grid constructor using the new keyword,and pass some options for the grid. I then save a reference to the grid instance and use that to draw the gird lines by passing that to my draw grid lines method along with the drawing context and a style to use when stroking the grid lines.
 
 ```js
 // SETUP CANVAS
@@ -129,7 +131,7 @@ So now for the setup of the canvas element, and to make use of what I worked out
 
 ## 2 - An attempt at a draw grid axis method
 
-So as I mentioned in the previous section on the basic canvas grid example it is of course possible to create a sort of draw grid axis lines method that would then be called twice. Just a method could be called twice in the body of the draw grid lines method. 
+So as I mentioned in the previous section on the basic canvas grid example it is of course possible to create a sort of draw grid axis lines method that would then be called twice. Just a method could be called twice in the body of the draw grid lines method.
 
 ```js
 // Draw a grid Axis
