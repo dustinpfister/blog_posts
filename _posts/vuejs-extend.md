@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 10:44:06
-version: 1.13
+updated: 2019-11-11 11:53:20
+version: 1.14
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -111,16 +111,20 @@ So I would want an interface for each instance of this asset sub class created w
   <body>
   
   <div id="asset-1"></div>
+  <div id="asset-2"></div>
   
   <script>
 var Asset = Vue.extend({
+        // template for an asset
         template: '<div style="background:grey;padding:5px;">' +
         '<h2>{{ name }}</h2>' +
         '<div style="width:320px;height:20px;background:black;">' +
         '<div id="pbar" style="width:100px;height:20px;background:lime;"></div>' +
         '</div>' +
-        '<p>money: {{ money }} </p>' +
+        '<p>money: {{ money }} level: {{ level.current }} next level: {{ level.nextCost }} rate: {{ rate.amount }}</p>' +
+        '<input type="button" value="upgrade" v-on:click="upgrade">' +
         '</div>',
+        // data
         data: function () {
             return {
                 name: 'House 1',
@@ -129,11 +133,23 @@ var Asset = Vue.extend({
                 per: 0,
                 rate: {
                     amount: 10,
+                    powAmount: 2,
+                    baseAmount: 10,
                     time: 3000
+                },
+                level: {
+                    current: 1,
+                    nextCost: 100
                 }
             }
         },
+        // on create call upgrade for the first time
+        created: function () {
+            this.upgrade();
+        },
+        // methods
         methods: {
+            // update method to be called in the main app loop
             update: function () {
                 var now = new Date(),
                 time = now - this.$data.lastTick;
@@ -145,19 +161,49 @@ var Asset = Vue.extend({
                     this.$data.per = 0;
                 }
                 this.$el.querySelector('#pbar').style.width = Math.floor(per * 320) + 'px';
+            },
+            // upgrade method
+            upgrade: function () {
+                var data = this.$data;
+                if (data.money >= data.level.nextCost) {
+                    data.money -= data.level.nextCost;
+                    data.level.current += 1;
+                    data.level.nextCost = 100 + Math.pow(data.rate.powAmount + 1, data.level.current);
+                }
+                data.rate.amount = data.rate.baseAmount + Math.pow(data.rate.powAmount, data.level.current);
             }
         }
     });
- 
-var a = new Asset().$mount('#asset-1');
+// slow house asset
+var a = new Asset({
+        data: {
+            name: 'Slow House',
+            rate: {
+                amount: 50,
+                time: 20000
+            }
+        }
+    }).$mount('#asset-1');
+// fast house asset
+var a2 = new Asset({
+        data: {
+            name: 'Fast House',
+            rate: {
+                amount: 1,
+                time: 500
+            }
+        }
+    }).$mount('#asset-2');
+// app loop
 var loop = function () {
     setTimeout(loop, 1000 / 30);
     a.update();
+    a2.update();
 };
 loop();
- 
-  
   </script>
   </body>
 </html>
 ```
+
+This example also uses the created life cycle hook where I can define some logic that is to fire after the data object is created, but before the vue is mounted to the mount point element. In this hook I am just calling the upgrade method for the first time to make sure that the rate amount is set by the formula that is used to set it rather than the hard coded default value.
