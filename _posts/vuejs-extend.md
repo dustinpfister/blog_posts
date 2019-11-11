@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 12:12:40
-version: 1.17
+updated: 2019-11-11 12:16:22
+version: 1.18
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -207,6 +207,8 @@ loop();
   </body>
 </html>
 ```
+
+In the update method I am using the vue el property to do a query search for the element that will be used for the progress bar. Once I have a reference to that div I am using the style api to change the width of the inner div that is used to display the amount of progress that has been made in making the next sum of money. This could have been done a number of other ways such as using a canvas element.
 
 This example also uses the [created life cycle hook](/2019/05/24/vuejs-lifecycle-create/) where I can define some logic that is to fire after the data object is created, but before the vue is mounted to the mount point element. In this hook I am just calling the upgrade method for the first time to make sure that the rate amount is set by the formula that is used to set it rather than the hard coded default value.
 
