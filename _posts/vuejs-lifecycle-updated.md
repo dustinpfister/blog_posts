@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2019-11-11 17:03:04
-version: 1.6
+updated: 2019-11-11 17:08:57
+version: 1.7
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -14,6 +14,10 @@ The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of se
 <!-- more -->
 
 ## 1 - vue update basics
+
+Lets start out with a basic example of the vue updated life cycle hook. Here I am using the updated hook to call an additional method that will update the value of another variable when the pow variable is updated by way of user input.
+
+This is also a basic example of the before update hook also that I am using to enforce some rules about that value that is given by way of user input. The example uses a value that is given via the input element to figure a power of two where the power is that value given in the input element. So I use the before update hook to check the value, and default to zero or one thousand twenty three in the event of errors. They after the before update hook the updated hook fires and I figure the current power of two and set it to the n property of the data object.
 
 ```html
 <html>
