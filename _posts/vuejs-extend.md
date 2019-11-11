@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 11:53:20
-version: 1.14
+updated: 2019-11-11 11:55:29
+version: 1.15
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -206,4 +206,4 @@ loop();
 </html>
 ```
 
-This example also uses the created life cycle hook where I can define some logic that is to fire after the data object is created, but before the vue is mounted to the mount point element. In this hook I am just calling the upgrade method for the first time to make sure that the rate amount is set by the formula that is used to set it rather than the hard coded default value.
+This example also uses the [created life cycle hook](/2019/05/24/vuejs-lifecycle-create/) where I can define some logic that is to fire after the data object is created, but before the vue is mounted to the mount point element. In this hook I am just calling the upgrade method for the first time to make sure that the rate amount is set by the formula that is used to set it rather than the hard coded default value.
