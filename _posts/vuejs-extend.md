@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 11:55:29
-version: 1.15
+updated: 2019-11-11 12:09:03
+version: 1.16
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -121,7 +121,8 @@ var Asset = Vue.extend({
         '<div style="width:320px;height:20px;background:black;">' +
         '<div id="pbar" style="width:100px;height:20px;background:lime;"></div>' +
         '</div>' +
-        '<p>money: {{ money }} level: {{ level.current }} next level: {{ level.nextCost }} rate: {{ rate.amount }}</p>' +
+        '<h3>money: ${{ money.toFixed(2) }}</h3>'+ 
+        '<p>level: {{ level.current }} next level: {{ level.nextCost.toFixed(2) }} rate: {{ rate.amount.toFixed(2) }}</p>' +
         '<input type="button" value="upgrade" v-on:click="upgrade">' +
         '</div>',
         // data
@@ -179,8 +180,9 @@ var a = new Asset({
         data: {
             name: 'Slow House',
             rate: {
-                amount: 50,
-                time: 20000
+                time: 20000,
+                baseAmount: 100,
+                powAmount: 3
             }
         }
     }).$mount('#asset-1');
@@ -189,8 +191,8 @@ var a2 = new Asset({
         data: {
             name: 'Fast House',
             rate: {
-                amount: 1,
-                time: 500
+                time: 500,
+                powAmount: 1.25
             }
         }
     }).$mount('#asset-2');
@@ -207,3 +209,5 @@ loop();
 ```
 
 This example also uses the [created life cycle hook](/2019/05/24/vuejs-lifecycle-create/) where I can define some logic that is to fire after the data object is created, but before the vue is mounted to the mount point element. In this hook I am just calling the upgrade method for the first time to make sure that the rate amount is set by the formula that is used to set it rather than the hard coded default value.
+
+When I go to use the Asset sub class I give it an options object with some values that will change how that asset works compared to others. I created a slow house that takes longer to pay out, but when it does it pays out more money. In addition to the slow house I also made a fast house that pays out faster, but with less money. I also made some tweaks that change the upgrade costs.
