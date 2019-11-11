@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-11 06:36:39
-version: 1.17
+updated: 2019-11-11 06:42:28
+version: 1.18
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -128,6 +128,10 @@ I then call my Grid constructor using the new keyword,and pass some options for 
 }
     ());
 ```
+
+When this example is up in running in my browser it results in a simple grid being rendered in the canvas. I can change the options that I pass to the gird constructor and that changes the state of this grid.
+
+Not much to get excited over at this point, however in this section the aim is to just start out with a very simple canvas grid example. At this point the Grid constructor is just simply that a constructor function without any methods added to the prototype just yet. Also although my draw grid lines method is working okay I am not sure if I am happy with it, I might like replace that with something else. So lets look at some additional revisions of this in the additional sections in this post.
 
 ## 2 - An attempt at a draw grid axis method
 
