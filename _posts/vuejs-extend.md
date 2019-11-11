@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 09:47:28
-version: 1.10
+updated: 2019-11-11 10:16:25
+version: 1.11
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -95,3 +95,66 @@ var Count = Vue.extend({
 ```
 
 Here I have an example of vue extend that makes a Count constructor. When I do so each instance of it has its own independent count, the reason why is because of closure, otherwise both instances would be referencing the same data object and I do not want that.
+
+## 4 - An Asset constructor example with an update method
+
+
+```html
+<html>
+  <head>
+    <title>Vue extend example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  
+  <div id="asset-1"></div>
+  
+  <script>
+var Asset = Vue.extend({
+        template: '<div style="background:grey;padding:5px;">' +
+        '<h2>{{ name }}</h2>' +
+        '<div style="width:320px;height:20px;background:black;">' +
+        '<div id="pbar" style="width:100px;height:20px;background:lime;"></div>' +
+        '</div>' +
+        '<p>money: {{ money }} </p>' +
+        '</div>',
+        data: function () {
+            return {
+                name: 'House 1',
+                money: 0,
+                lastTick: new Date(),
+                per: 0,
+                rate: {
+                    amount: 10,
+                    time: 3000
+                }
+            }
+        },
+        methods: {
+            update: function () {
+                var now = new Date(),
+                time = now - this.$data.lastTick;
+                per = time / this.$data.rate.time;
+                per = per > 1 ? 1 : per;
+                if (per === 1) {
+                    this.$data.money += this.$data.rate.amount;
+                    this.$data.lastTick = now;
+                    this.$data.per = 0;
+                }
+                this.$el.querySelector('#pbar').style.width = Math.floor(per * 320) + 'px';
+            }
+        }
+    });
+ 
+var a = new Asset().$mount('#asset-1');
+var loop = function () {
+    setTimeout(loop, 1000 / 30);
+    a.update();
+};
+loop();
+ 
+  
+  </script>
+  </body>
+</html>
+```
