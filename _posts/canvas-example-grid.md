@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-11 07:37:25
-version: 1.23
+updated: 2019-11-11 07:39:16
+version: 1.24
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -284,6 +284,8 @@ var drawCellBackgrounds = function (ctx, grid, sheet) {
 I will not be getting into the draw image method in depth here but the first argument is of course a reference to the sheet that I will be using to draw the backgrounds, and then there are values for the source position as well as width in height when it comes to getting the tile in the tile sheet, followed by the same set of values for drawing it to the canvas.
 
 ### 3.4 - Using the new Grid Constructor and draw methods
+
+So then once again I just need to use everything I worked out.
 
 ```js
 // SETUP CANVAS
