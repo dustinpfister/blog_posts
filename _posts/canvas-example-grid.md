@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2019-11-11 06:47:48
-version: 1.19
+updated: 2019-11-11 06:54:03
+version: 1.20
 ---
 
 Time for yet another canvas example, this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well. When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid. In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
@@ -182,7 +182,7 @@ This satisfies a desire to find a way to keep from repeating the same code, but 
 
 ## 3 - Draw Canvas Grid Cells method and first Grid Constructor Prototype method
 
-So now lets make a more advanced version of the Gird constructor that introduces at least one prototype method. In addition I think it is time to have a cells array as part of the Grid constructor as well.
+So now lets make a more advanced version of the Gird constructor that introduces at least one prototype method. In addition I think it is time to have a cells array as part of the Grid constructor as well. This gird cells array will be a collection of objects, and each object can contain values like the cell position in the grid, and also an index value for a type of background for the cell. So I can just loop over this array and use that data in the drawing method, to draw grid lines as well as backgrounds.
 
 The single prototype method will be used to build the cells array, and will be called with the constructor, but it could also be used after the instance is created to rebuild the cells of the grid.
 
