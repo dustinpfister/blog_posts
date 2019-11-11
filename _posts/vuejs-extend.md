@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-05-09 14:25:55
-version: 1.7
+updated: 2019-11-11 09:09:57
+version: 1.8
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function. It can then be used to make custom constructors that have templates, base data, and methods for one or more instances of something in a project. To help elaborate with this it would be best to check out some examples of the vue extend global api method, so lets hop to it.
@@ -19,7 +19,7 @@ This is a post on the vuejs global api method vue extend, it is not a getting st
 
 ## 2 - Vue extend blog post Example
 
-Say I have a project in which I want to display the title, and date information of a blog post. I would like to abstract away a template, and data object shema away into a nice neet little package, and then use that where and when I want to in a page. One way to go about ddoing just that would be with vue extend.
+Say I have a project in which I want to display the title, and date information of a blog post. I would like to abstract away a template, and data object schema away into a nice neat little package, and then use that where and when I want to in a page. One way to go about doing just that would be with vue extend.
 
 ```html
 <html>
