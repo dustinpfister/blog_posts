@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 10:16:25
-version: 1.11
+updated: 2019-11-11 10:37:03
+version: 1.12
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -98,6 +98,7 @@ Here I have an example of vue extend that makes a Count constructor. When I do s
 
 ## 4 - An Asset constructor example with an update method
 
+It is time to something that is a little fun for a change, so for this example of the vue extend method I made a sub class of vuejs that is for an Asset that might eventually be part of an idle game.
 
 ```html
 <html>
