@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2019-11-11 07:52:25
-version: 1.8
+updated: 2019-11-11 07:55:45
+version: 1.9
 ---
 
 I thought it would be nice to write a few blog posts on [html 5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics) in a client side javaScript environment. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to canvas basics and beyond. As such maybe it is best to start with a post that is a kind of getting started post on the subject.
@@ -133,7 +133,7 @@ Getting started with canvas is often just a means of knowing how to use the vari
 
 ## 4 - Throwing in the loop method.
 
-Now it's time to start getting into doing something fun.
+Now it's time to start getting into doing something fun. In this section I will be pulling everything together above and adding in a loop method that will be called over and over again. Just about all canvas project will involve some kind of main update loop, or will be event driven when it comes to the way that the content of the canvas will be updated.
 
 ```js
 (function() {
