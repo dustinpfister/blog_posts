@@ -5,16 +5,60 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2019-11-11 16:36:28
-version: 1.5
+updated: 2019-11-11 17:03:04
+version: 1.6
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
 
 <!-- more -->
 
+## 1 - vue update basics
 
-## 1 - vue updated array example
+```html
+<html>
+  <head>
+    <title>vue updated lifecycle example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+new Vue({
+    el: '#demo',
+    template: '<div><p>2^{{ pow }} = {{ n }}</p><input type="text" v-model:value="pow"></div>',
+    data: {
+        pow: 0,
+        n: 0
+    },
+    // before figure
+    beforeUpdate: function () {
+        var data = this.$data;
+        data.pow = Number(data.pow);
+        if (data.pow + '' === 'NaN' || data.pow < 0) {
+            data.pow = 0;
+        }
+        if (data.pow > 1023) {
+            data.pow = 1023;
+        }
+    },
+    // good to figure
+    updated: function () {
+        this.figure()
+    },
+    methods: {
+        figure: function () {
+            this.$data.n = Math.pow(2, this.$data.pow);
+        }
+    }
+});
+
+  </script>
+  </body>
+</html>
+```
+
+## 2 - vue updated array example and force update
 
 In this section I will be going over an example that is again the beginnings of a simple idle game. this will just start adding money to a variable each time a tick method is called outside the vue instance with setInterval. In addition there is also a work button that will add more money and a higher rate, but will do so manually. However it will not happen right away only after each time the data object is updated will a log array of objects be tabulated and added to main money property of the data object.
 
