@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2019-11-11 07:55:45
-version: 1.9
+updated: 2019-11-11 07:59:10
+version: 1.10
 ---
 
 I thought it would be nice to write a few blog posts on [html 5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics) in a client side javaScript environment. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to canvas basics and beyond. As such maybe it is best to start with a post that is a kind of getting started post on the subject.
@@ -230,10 +230,12 @@ So not I am putting together an object that contains values, and so far a single
 
 ## 5 - requestAnimationFrame, setTimeout, and setInterval
 
-With a canvas project it is best to use requestAnimationFrame over setTimeout, or setInterval. Getting into the reasons why is a whole new post in itself, but for the most part the only reason why you might want to use setTimeout is if you want to push backward compatibility back farther. For the most part I would say that you do not have to worry about that these days though.
+With a canvas project it is best to use [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) over setTimeout, or setInterval. Getting into the reasons why is a whole new post in itself, but for the most part the only reason why you might want to use setTimeout is if you want to push backward compatibility back farther. For the most part I would say that you do not have to worry about that these days though.
 
 ## 6 - Conclusion
 
-The purpose of this post was to just set the basics on how I go about starting a canvas project. Doing canvas justice would require writing a whole book on the subject, and even then I am confident that I would not touch base on everything that is need to be known on the matter. I have not even mentioned layering, event attachment, how to go about exporting animations that you make, and a wide range of other topics on canvas. Still I hope that this post may get you interested in canvas at least, as it can become very fun to play with.
+The purpose of this post was to just set the basics on how I go about starting a canvas project. Doing canvas justice would require writing a whole book on the subject, and even then I am confident that I would not touch base on everything that one may need to be known on the subject of canvas elements and javaScript. 
+
+I have not even mentioned layering, event attachment, how to go about exporting animations that you make, and a wide range of other topics on canvas. Still I hope that this post may get you interested in canvas at least, as it can become very fun to play with.
 
 Be sure to check out my [other posts on canvas](/categories/canvas/).
