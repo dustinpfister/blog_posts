@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-12 18:43:35
-version: 1.20
+updated: 2019-11-12 18:45:03
+version: 1.21
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -194,6 +194,8 @@ So if I have an array of points I can normalize them fist, and then scale up tha
 
 ### 6.1 - The Points lib
 
+So for starters lets go over the points libary.
+
 ```js
 var p = {};
  
@@ -287,6 +289,8 @@ p.draw = function (points, ctx, strokeStyle, fillStyle, lineWidth, close) {
 ```
 
 ### 6.2 - The points lib in action
+
+Now to test out my points library.
 
 ```html
 <html>
