@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-12 18:38:45
-version: 1.19
+updated: 2019-11-12 18:43:35
+version: 1.20
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -186,6 +186,11 @@ In this example I made a quick scaledDraw method that creates a new canvas and t
 
 ## 6 - Scaling and translating normalized arrays of points
 
+In this section I will be going over a simple points library that I put together that is a bunch of methods for working with an array of points. 
+
+Of course there is a scale method that accepts an array of points, and then a value that will be used to scale up those points as well as translate the points to a point of interest in the canvas matrix. However there is also a point normalization methods also that will create and array of points where each point value is a value between -0.5 and 0.5 which can be thought of as the smallest possible scale of an array of points.
+
+So if I have an array of points I can normalize them fist, and then scale up that normalized array of points to the desired scale.
 
 ### 6.1 - The Points lib
 
