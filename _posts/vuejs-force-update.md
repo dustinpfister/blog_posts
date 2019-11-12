@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2019-11-12 12:00:36
-version: 1.5
+updated: 2019-11-12 12:05:55
+version: 1.6
 ---
 
-Most of the time when a value in the data object of a Vue Class instance changes the view with render again automatically, but it some cases it will not, or for whatever the reason I might want to force Vue to render again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that.
+Most of the time when a value in the data object of a Vue Class instance changes the view with render again automatically, but it some cases it will not. For this reason or any other extending circumstance I might want to force Vue to render the vue again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that. 
+
+If I do find myself using it though I cant help but think that I should not be using it, most of the time the reason why a vue is not updating is because an object added to the vue is not reactive, so maybe a better solution would be to make it reactive. So lets look at some examples that make use of the force update method, and some others that do the same thing without the use of the method.
 
 <!-- more -->
 
