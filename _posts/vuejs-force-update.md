@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2019-11-12 10:42:02
-version: 1.1
+updated: 2019-11-12 11:32:08
+version: 1.2
 ---
 
-Most of the time when a value in the data object of a Vue Class instance changes the view with render again automatically, but it some cases it will not, or for whatever the reason I might want to force Vue to render again. This is where the force update method will come into play as a way to do just that.
+Most of the time when a value in the data object of a Vue Class instance changes the view with render again automatically, but it some cases it will not, or for whatever the reason I might want to force Vue to render again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that.
 
 <!-- more -->
 
