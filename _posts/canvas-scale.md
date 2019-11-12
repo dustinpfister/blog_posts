@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-12 16:24:05
-version: 1.18
+updated: 2019-11-12 18:38:45
+version: 1.19
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -183,3 +183,139 @@ scaledDraw({
 ```
 
 In this example I made a quick scaledDraw method that creates a new canvas and then draws to it with a given draw method. It then draws to a canvas that I give it via a toCanvas property.
+
+## 6 - Scaling and translating normalized arrays of points
+
+
+### 6.1 - The Points lib
+
+```js
+var p = {};
+ 
+// scale points
+p.scale = function (points, scale, dx, dy) {
+    if (!points) {
+        return [];
+    }
+    scale = scale == undefined ? 1 : scale;
+    dx = dx == undefined ? 0 : dx;
+    dy = dy == undefined ? 0 : dy;
+    var i = 0,
+    len = points.length,
+    scaledPoints = [];
+    while (i < len) {
+        scaledPoints.push(
+            points[i] * scale + dx,
+            points[i + 1] * scale + dy);
+        i += 2;
+    }
+    return scaledPoints;
+};
+ 
+// get ranges
+p.getRanges = function (points) {
+    var min = [Infinity, Infinity],
+    max = [-Infinity, -Infinity],
+    i = 0,
+    len = points.length;
+    while (i < len) {
+        var x = points[i],
+        y = points[i + 1];
+        min[0] = x < min[0] ? x : min[0];
+        min[1] = y < min[1] ? y : min[1];
+        max[0] = x > max[0] ? x : max[0];
+        max[1] = y > max[1] ? y : max[1];
+        i += 2;
+    }
+    return {
+        min: min,
+        max: max
+    };
+};
+ 
+// normalize points
+p.normalize = function (points, center) {
+    if (!points) {
+        return [];
+    }
+    center = center === undefined ? true : center;
+    var ranges = p.getRanges(points),
+    dx = ranges.min[0] > 0 ? -ranges.min[0] : Math.abs(ranges.min[0]),
+    dy = ranges.min[1] > 0 ? -ranges.min[1] : Math.abs(ranges.min[1]),
+    w = Math.abs(ranges.max[0] - ranges.min[0]),
+    h = Math.abs(ranges.max[1] - ranges.min[1]),
+    normals = [],
+    i = 0,
+    len = points.length,
+    ajustAxis = center ? -0.5 : 0;
+ 
+    while (i < len) {
+        normals.push(
+            (points[i] + dx) / w + ajustAxis,
+            (points[i + 1] + dy) / h + ajustAxis);
+        i += 2
+    }
+    return normals;
+};
+ 
+// draw to a canvas context
+p.draw = function (points, ctx, strokeStyle, fillStyle, lineWidth, close) {
+    ctx.save();
+    ctx.strokeStyle = strokeStyle || 'black';
+    ctx.fillStyle = fillStyle || 'white';
+    ctx.lineWidth = lineWidth || 3;
+    var i = 2,
+    len = points.length;
+    ctx.beginPath();
+    ctx.moveTo(points[0], points[1]);
+    while (i < len) {
+        ctx.lineTo(points[i], points[i + 1])
+        i += 2;
+    }
+    if (close === undefined ? true : close) {
+        ctx.closePath();
+    }
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+};
+```
+
+### 6.2 - The points lib in action
+
+```html
+<html>
+    <head>
+        <title>canvas scale normalize points</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="lib_points.js"></script>
+        <script>
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+// source, normalized, and scaled points
+var points_source = [0, 0, 32, 0, 32, 32, 0, 32],
+points_normalized = p.normalize(points_source, true),
+points_scaled = p.scale(points_normalized, 128, canvas.width / 2, canvas.height/ 2);
+ 
+// clear and draw
+ctx.fillStyle = 'red';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+p.draw(points_scaled, ctx)
+ 
+console.log( points_source.join(',') );
+// 0,0,32,0,32,32,0,32
+console.log( points_normalized.join(',') );
+// -0.5,-0.5,0.5,-0.5,0.5,0.5,-0.5,0.5
+console.log( points_scaled.join(',') );
+// 96,56,224,56,224,184,96,184
+ 
+        </script>
+    </body>
+</html>
+```
