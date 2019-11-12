@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2019-11-12 11:39:20
-version: 1.3
+updated: 2019-11-12 11:55:26
+version: 1.4
 ---
 
 Most of the time when a value in the data object of a Vue Class instance changes the view with render again automatically, but it some cases it will not, or for whatever the reason I might want to force Vue to render again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that.
@@ -123,3 +123,57 @@ setInterval(function () {
     app.tick();
 }, 1000);
 ```
+
+I am still tabulating the total of the data object in the updated lifecycle hook, I am not sure of that is a bad thing or not, but in any case it does not have to happen there. So lets look at yet another revision of this basic example in which I am just pulling that logic out of the updated hook.
+
+### 1.2 - Do away with the updated hook completely
+
+I cant help but thing that the vue force update method is a duck tape solution for something that should not be happening in the first place. I am not sure if changing the state of the vue data object in the updated life cycle hook is a bad practice or not. In any case I think I should be able to if I want to, it is just that seems to be the source of the problem here.
+
+For this example at least it would say that I do not have to tabulate the number values in the array in the updated hook, and only in the updated hook. I can just pull that logic into the tick method, or a new method of its own.
+
+```js
+var app = new Vue({
+        el: '#container',
+        template: '<div>total: {{ total }}</div>',
+        data: {
+            total: 0,
+            nums: []
+        },
+        methods: {
+            // tick method
+            tick: function () {
+                var data = this.$data;
+                if (data.nums.length < 3) {
+                    data.nums.push({
+                        n: 10 + Math.floor(Math.random() * 10)
+                    });
+                }
+                // no force update, just tabulate with other method
+                this.tabulate();
+            },
+            // tabulate nums array
+            tabulate: function () {
+                var data = this.$data;
+                if (data.nums.length === 0) {
+                    data.total = 0;
+                }
+                if (data.nums.length === 1) {
+                    data.total = data.nums[0].n
+                }
+                if (data.nums.length >= 2) {
+                    data.total = data.nums.reduce(function (acc, obj) {
+                            acc = typeof acc === 'object' ? acc.n : acc;
+                            return acc + obj.n;
+                        });
+                }
+            }
+        }
+    });
+// app loop
+setInterval(function () {
+    app.tick();
+}, 1000);
+```
+
+This too seems to work just fine without any problems and allows for me to avoid having to use the vue force update method.
