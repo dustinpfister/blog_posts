@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2019-11-12 11:32:08
-version: 1.2
+updated: 2019-11-12 11:39:20
+version: 1.3
 ---
 
 Most of the time when a value in the data object of a Vue Class instance changes the view with render again automatically, but it some cases it will not, or for whatever the reason I might want to force Vue to render again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that.
@@ -71,4 +71,55 @@ setInterval(function () {
   </script>
   </body>
 </html>
+```
+
+### 1.1 - Using the array in the template
+
+If I take the same example, and just use the nums array in the template then the vue force update method is not needed.
+
+```js
+var app = new Vue({
+        el: '#container',
+        template: '<div>'+
+            '<p>total: {{ total }}</p>'+
+            '<ul><li v-for="obj in nums">{{ obj.n }}</li></ul>'+
+        '</div>',
+        data: {
+            total: 0,
+            nums: []
+        },
+        // updated hook
+        updated: function () {
+            var data = this.$data;
+            if (data.nums.length === 0) {
+                data.total = 0;
+            }
+            if (data.nums.length === 1) {
+                data.total = data.nums[0].n
+            }
+            if (data.nums.length >= 2) {
+                data.total = data.nums.reduce(function (acc, obj) {
+                        acc = typeof acc === 'object' ? acc.n : acc;
+                        return acc + obj.n;
+                    });
+            }
+        },
+        methods: {
+            // tick method
+            tick: function () {
+                var data = this.$data;
+                if (data.nums.length < 3) {
+                    data.nums.push({
+                        n: 10 + Math.floor(Math.random() * 10)
+                    });
+                }
+                // force update is not needed because nums array
+                // is being used in the template
+            }
+        }
+    });
+// app loop
+setInterval(function () {
+    app.tick();
+}, 1000);
 ```
