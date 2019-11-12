@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-11 17:50:47
-version: 1.16
+updated: 2019-11-12 14:09:33
+version: 1.17
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -19,9 +19,10 @@ So in canvas a scale could mean a few things as there is the actual canvas matri
 
 Canvas scale can refer to a number of things. In this post I will be trying to address just about everything that has to do with scaling and the html 5 canvas element that can be used to draw graphics with javaScript code. In this post I assume that you have at least some background with canvas and javaScript, but are scratching you head when it comes to scaling with canvas.
 
-## 2 - Scale a canvas with CSS
+## 2 - Scale a canvas with in line or external CSS
 
-Lets start with the basics here. When it comes to creating a canvas to begin with there is the actual native pixel size of the canvas, and then there is a scaled size that can be set via CSS values.
+Lets start with the basics here whe it comes to scaling and canvas. When it comes to creating a canvas to begin with there is the actual native pixel size of the canvas, and then there is a scaled size that can be set via CSS values.
+The native width can be set by hard coded attributes or with a reference to the canvas element with javaScript. The css scale of that native image can be set with the css width and height style rules. The css can be in-line css with the style attribute, in a style tag, or linked to in an external css file.
 
 ```html
 <html>
@@ -51,7 +52,7 @@ ctx.strokeRect(11, 7, 10, 10);
 </html>
 ```
 
-So then in this example I am creating a canvas with a native size of only 32 by 24, and then scaling it up to a size of 640 by 480 with css. Everything could be done inline by using the width and height attributes of the canvas element to set the native size, and the style attribute to set the scaled size of the canvas
+So then in this example I am creating a canvas with a native size of only 32 by 24, and then scaling it up to a size of 640 by 480 with css. The important thing to remember here is that that is the matrix size of the canvas and then the scaled up or down pixle size of the canvas. Use the canvas eleemnt with and height properties to set the size of the matrix, and then css can be used to scale that canvas just like that of an Image.
 
 ## 3 - Set canvas scale with javaScript
 
