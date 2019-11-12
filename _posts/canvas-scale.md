@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-12 14:09:33
-version: 1.17
+updated: 2019-11-12 16:24:05
+version: 1.18
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -52,11 +52,11 @@ ctx.strokeRect(11, 7, 10, 10);
 </html>
 ```
 
-So then in this example I am creating a canvas with a native size of only 32 by 24, and then scaling it up to a size of 640 by 480 with css. The important thing to remember here is that that is the matrix size of the canvas and then the scaled up or down pixle size of the canvas. Use the canvas eleemnt with and height properties to set the size of the matrix, and then css can be used to scale that canvas just like that of an Image.
+So then in this example I am creating a canvas with a native size of only 32 by 24, and then scaling it up to a size of 640 by 480 with css. The important thing to remember here is that that is the matrix size of the canvas and then the scaled up or down pixel size of the canvas. Use the canvas element with and height properties to set the size of the matrix, and then css can be used to scale that canvas just like that of an Image.
 
-## 3 - Set canvas scale with javaScript
+## 3 - Set canvas scale with canvas.style.width and canvas.style.height
 
-It is possible to set the native size as well as the scaled size of the canvas with javaScript rather than with hard coded html and css. This can be done by getting a reference to the canvas element by one way or another and then using the width and height properties of that canvas element reference to set the native size. In addition the style api can be used to set the scale canvas size as well.
+It is possible to set the native size as well as the scaled size of the canvas with javaScript rather than with hard coded html and css. This can be done by getting a reference to the canvas element by one way or another and then using the width and height properties of that canvas element reference to set the native size. In addition the style api can be used to set the same CSS values with javaScript.
 
 ```html
 <html>
@@ -91,7 +91,9 @@ ctx.strokeRect.apply(ctx, rect);
 </html>
 ```
 
-So with a reference to a canvas element the width and height attributes will set the actual native size, but if you want to scale the canvas element then that should be done via the style api of the canvas element reference.
+So with a reference to a canvas element the width and height attributes will set the actual native size, but if you want to scale the canvas element then that should be done via the style api of the canvas element reference. 
+
+However there are a lot more things to cover when it comes to scaling things in a canvas with javaScript. What I have covered hear is just what can also be done on the section where I was just writing about what can be done with just CSS and HTML by itself. There is getting into logical pixels, physical pixels, normalizing points and then scaling theme up from there smallest possible form. So lets look at some more examples of the topic of canvas scale.
 
 ## 4 - The canvas scale 2d context method
 
@@ -124,7 +126,7 @@ ctx.fillRect(0, 0, 20, 20);
 console.log(canvas)
 ```
 
-In this example the first rectangle drawn is one fourth the size of the canvas as expected, but the next black rectangle is one sixteenth the size of the canvas because of the unit scale that was set. This method can be used in conjunction with the canvas sav e and restore methods to change the unit scale, and then restore it back.
+In this example the first rectangle drawn is one fourth the size of the canvas as expected, but the next black rectangle is one sixteenth the size of the canvas because of the unit scale that was set. This method can be used in conjunction with the canvas save and restore methods to change the unit scale, and then restore it back.
 
 ### 4.1 - Using ctx.scale to flip things
 
