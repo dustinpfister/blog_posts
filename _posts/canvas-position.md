@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-11-13 13:35:29
-version: 1.20
+updated: 2019-11-13 13:39:19
+version: 1.21
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default for elements which is static positioning, to relative, absolute, or fixed positioning, and then using additional rules like top and left to position the actual canvas element that way. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general.
@@ -87,7 +87,11 @@ This is not just an example of canvas position but of canvas scale also. When it
 
 ## 3 - Canvas mouse position
 
-So another thing about canvas position is how to go about getting the mouse pointer position when clicking on a canvas. There is a need to get the canvas element relative position rather than the browser window relative position. This can be achieved with the [getBoundingCLientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method. This is a useful method that can be used to adjust the window relative x and y position that is gained from the e.clientX, and e.clientY properties of an event object to a canvas relative position.
+So another thing about canvas position is how to go about getting the mouse pointer position when clicking on a canvas element. There is a need to get the canvas element relative position of the point that was clicked, or touched, rather than the browser window relative position. So this is another canvas position related topic that will come up now and then when working out a canvas project.
+
+The canvas element relative position of a mouse click, touch start, or similar event can be achieved with the use of the [getBoundingCLientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method. This is a useful method that can be used to get values that can be used to adjust the window relative x and y position that is gained from the e.clientX, and e.clientY properties of a mouse event object to a canvas relative position.
+
+Something like this might be a good example of that:
 
 ```html
 <html>
