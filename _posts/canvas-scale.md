@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 06:35:42
-version: 1.22
+updated: 2019-11-13 06:42:50
+version: 1.23
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -220,7 +220,12 @@ p.scale = function (points, scale, dx, dy) {
     }
     return scaledPoints;
 };
- 
+```
+
+So in order to normalize I first need to get the max and min range values of each axis of the array of points so that I can then use that data to normalize an array of points.
+
+
+```
 // get ranges
 p.getRanges = function (points) {
     var min = [Infinity, Infinity],
@@ -241,7 +246,12 @@ p.getRanges = function (points) {
         max: max
     };
 };
- 
+```
+
+
+Once I have my get ranges method I can use that method in my normalize method.
+
+```js
 // normalize points
 p.normalize = function (points, center) {
     if (!points) {
@@ -266,7 +276,11 @@ p.normalize = function (points, center) {
     }
     return normals;
 };
- 
+```
+
+Then also finally have a draw method that accepts an array of points, and also a canvas context reference to draw an array of points to the canvas.
+
+```js
 // draw to a canvas context
 p.draw = function (points, ctx, strokeStyle, fillStyle, lineWidth, close) {
     ctx.save();
@@ -289,6 +303,8 @@ p.draw = function (points, ctx, strokeStyle, fillStyle, lineWidth, close) {
     ctx.restore();
 };
 ```
+
+So now that I have my points library together I can link to it from an HTML file and use it in an example that involves scaling normalized points in canvas.
 
 ### 6.2 - The points lib in action
 
