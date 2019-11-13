@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-11-13 13:28:23
-version: 1.19
+updated: 2019-11-13 13:35:29
+version: 1.20
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default for elements which is static positioning, to relative, absolute, or fixed positioning, and then using additional rules like top and left to position the actual canvas element that way. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general.
@@ -47,7 +47,7 @@ So for a brief overview static positioning is the default position property for 
 
 ## 2 - Canvas position on resize
 
-Another canvas position topic might be to position the canvas when the window is resized. This can be done with the resize window event and a simple callback function that positions the canvas with the style api.
+Another canvas position topic might be to position the canvas when the window is resized. This can be done with the resize window event and a simple callback function that positions the canvas with the style api. The [style api](/2019/02/12/js-javascript-style/) is one way to go about setting css rules with javaScript, so it is a way that the canvas can be resized, and positioned by way of some kind of event or condition with javaScript rather than static css rules.
 
 ```html
 <html>
@@ -82,6 +82,8 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
     </body>
 </html>
 ```
+
+This is not just an example of canvas position but of canvas scale also. When it comes to canvas scale that is another rabbit hole of sorts, so I have a [post on the topic of canvas scale](/2019/03/06.canvas-scale/) where I have a lot of that worked out.
 
 ## 3 - Canvas mouse position
 
