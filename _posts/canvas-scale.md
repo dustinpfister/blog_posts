@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 06:42:50
-version: 1.23
+updated: 2019-11-13 06:49:30
+version: 1.24
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -308,7 +308,7 @@ So now that I have my points library together I can link to it from an HTML file
 
 ### 6.2 - The points lib in action
 
-Now to test out my points library.
+Now to test out my points library. TO do so I just link to it with a script tag and, and then work out my example in-line with another script tag. Once again I just get a reference to a canvas tag, and then use my normalize and scale methods to set the desired scale for the points. I then just paint a background, and use the draw method ti draw the array of points to the canvas. Works just as expected.
 
 ```html
 <html>
@@ -346,3 +346,5 @@ console.log( points_scaled.join(',') );
     </body>
 </html>
 ```
+
+So when it comes to canvas and scale there are a lot of topics that branch off from that, there is just scaling the canvas as in the size of it in the browser, and then there is scaling something up or down in the canvas matrix when it com es to working with logical pixels.
