@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 562
-updated: 2019-11-13 11:52:56
-version: 1.5
+updated: 2019-11-13 11:56:20
+version: 1.6
 ---
 
 There is a vue set global method in vuejs, but it is not what one might think compared to other frameworks. The vue set method is used to set reactive properties to an object, so there is not vue get global method, and no set or get method of any kind when it comes to Vue class instance methods.
@@ -132,6 +132,8 @@ So then there is getting some value in the vue data object, and then there is ge
 So far these vue get method examples are just very complex additions to do something that I can all ready do without it. Still maybe there is a way to go about making a vue get method that really does bring something that I can nit just do right out of the gate with vuejs by itself. One thing that comes to mind is a simple http client that just makes get requests, now that might be something sense vue does not have any http client built in, so lets look into that as an option.
 
 ## 3 - A vue get method that is a simple http client that just makes you guessed it get requests.
+
+So now for a vue get method that makes http get requests. One might think that an http client should be built into vuejs itself like with other frameworks like angular. I am not so sure if that is a good idea though, I like that with vuejs the framework is left in a somewhat more minimal state. One reason why is that in some projects I might not want or need an html client at all, and with other projects I might want an http client, but I only really need it to make get requests.
 
 ```js
 var vueGet = {
