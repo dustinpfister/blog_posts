@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-13 17:57:20
-version: 1.23
+updated: 2019-11-13 18:00:20
+version: 1.24
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -141,7 +141,7 @@ For now there is not much to this class I am just adding a damage property that 
 
 ### 2.3 - The Ship Class
 
-Here I have the Ship Class that is used for both the Player Ship as well as enemies.
+Here I have the Ship Class that is used for both the Player Ship as well as enemy ships. Here I add a lot of properties that have to do with shooting shot and getting hit by a shot, as well as a custom draw method that overrides the main generic draw method used for other display objects that just displays a white square.
 
 ```js
 // SHIP CLASS
