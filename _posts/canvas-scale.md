@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 07:57:08
-version: 1.25
+updated: 2019-11-13 08:11:06
+version: 1.26
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -249,7 +249,9 @@ p.getRanges = function (points) {
 ```
 
 
-Once I have my get ranges method I can use that method in my normalize method.
+Once I have my get ranges method I can use that method in my normalize method when it comes to getting the ranges. Once I have the ranges I can get the delta values that I need to add or subtract for each source point in the array that will be given. I can also use these ranges to get the width and height of the points relative to that range.
+
+The delta values and width and height can then be applied to each point in the array to create the new array or normalized points. By default I made it so the range of points is from -0.5 to 0.5, but I can also set a boolean for one of the varies to make it the 0 to 1 range also.
 
 ```js
 // normalize points
