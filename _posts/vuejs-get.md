@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 562
-updated: 2019-11-13 11:16:16
-version: 1.2
+updated: 2019-11-13 11:28:25
+version: 1.3
 ---
 
 There is a vue set global method in vuejs, but it is not what one might think compared to other frameworks. The vue set method is used to set reactive properties to an object, so there is not vue get global method, and no set or get method of any kind when it comes to Vue class instance methods.
@@ -15,7 +15,7 @@ So if I want a vue get method I need to add one via a plugin, and maybe this is 
 
 <!-- more -->
 
-## 1 - vue get data props method like lodash \_.get
+## 1 - vue get method that gets vue data object properties like the lodash \_.get method
 
 I have wrote a lot of posts on lodash, more than I care to mention. In lodash there is the [\_.get](/2018/09/24/lodash_get) method of that utility library that can be used to get object properties by way of a string of key names separated by periods. This is just one of many possible things a generic get method can do, and I have to start somewhere so lets start off with this one.
 
@@ -85,6 +85,45 @@ var app = new Vue({
             this.$get().f = this.$get('c.d.e') + 2;
         }
     });
+  </script>
+  </body>
+</html>
+```
+
+Seems to work okay when it comes to properties that are separated by periods, but I did not take the time to support the array syntax that the lodash \_.get method supports. In any case I am not sure that I would want to have a vue get method like this in most projects anyway, there are other ways to get references to nested objects that I am willing to except that make this whole vue get method example more or less pointless. So with that said lets look at some other ways I could go about making a vue get method.
+
+## 2 - vue get method that gets template elements
+
+So then there is getting some value in the vue data object, and then there is getting a reference to a DOM element in the template of a vue instance. I guess that could be another vue get method of sorts right. Well such a method could just be an abstraction for the vue el instance property. So this kind of vue get method plug-in would be very simple in that case.
+
+```js
+<html>
+  <head>
+    <title>vue get example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+    // a simple vue.$get plug-in that is just an abstraction
+    // for vue.$el.querySelectorAll
+    var vueGet = {
+        install : function(Vue){
+            Vue.prototype.$get = function(what){
+                return this.$el.querySelectorAll(what);
+            };
+        }
+    };
+    // using it to get a collection of elements
+    Vue.use(vueGet);
+    var app = new Vue({
+        el: '#demo',
+        template:'<div><div class="mess">Hello World</div><div class="mess">Hello Mars</div></div>'
+    });
+    var mess = app.$get('.mess');
+    console.log(mess[0].innerText); // 'Hello World'
+    console.log(mess[1].innerText); // 'Hello Mars'
+  
   </script>
   </body>
 </html>
