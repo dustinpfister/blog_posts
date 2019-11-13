@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 562
-updated: 2019-11-13 11:38:47
-version: 1.4
+updated: 2019-11-13 11:52:56
+version: 1.5
 ---
 
 There is a vue set global method in vuejs, but it is not what one might think compared to other frameworks. The vue set method is used to set reactive properties to an object, so there is not vue get global method, and no set or get method of any kind when it comes to Vue class instance methods.
@@ -130,3 +130,47 @@ So then there is getting some value in the vue data object, and then there is ge
 ```
 
 So far these vue get method examples are just very complex additions to do something that I can all ready do without it. Still maybe there is a way to go about making a vue get method that really does bring something that I can nit just do right out of the gate with vuejs by itself. One thing that comes to mind is a simple http client that just makes get requests, now that might be something sense vue does not have any http client built in, so lets look into that as an option.
+
+## 3 - A vue get method that is a simple http client that just makes you guessed it get requests.
+
+```js
+var vueGet = {
+    install: function (Vue) {
+        Vue.prototype.$get = function (url, cb) {
+            url = url || '/';
+            cb = cb || function () {};
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    cb.call(xhr, null, this.response, xhr);
+                }
+                if (this.readyState === 4 && this.status === !200) {
+                    cb.call(xhr, new Error('non 200 status'), this.response, xhr);
+                };
+            }
+            xhr.send();
+            return xhr;
+        };
+    }
+};
+// using it to get a collection of elements
+Vue.use(vueGet);
+new Vue({
+    el: '#demo',
+    template: '<textarea cols="120" rows="30">{{ html }}</textarea>',
+    data: {
+        html: ''
+    },
+    mounted: function () {
+        var app = this;
+        app.$get('https://dustinpfister.github.io/', function (err, html, xhr) {
+            if (err) {
+                app.$data.html = '<p>Error getting HTML</p>'
+            } else {
+                app.$data.html = html;
+            }
+        });
+    }
+});
+```
