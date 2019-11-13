@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-11-13 13:24:55
-version: 1.18
+updated: 2019-11-13 13:28:23
+version: 1.19
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default for elements which is static positioning, to relative, absolute, or fixed positioning, and then using additional rules like top and left to position the actual canvas element that way. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general.
@@ -43,7 +43,7 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 
 This above example of course makes use of of relative positioning, but in some situations you might want to use absolute or fixed positioning. I will not be getting into the differences in depth, but those three values for positioning are still the most common and tropical values for the position property. I would say that at least those three should be solid in the mind of a jaavScript developer, when it comes to css positioning.
 
-So for a brief overview static positioning is the default position property for elements where the div can not be moved with rules like top and left. Relative positioning is about the same as static but the element can be moved with rules like top and left.
+So for a brief overview static positioning is the default position property for elements where the div can not be moved with rules like top and left. Relative positioning is about the same as static but the element can be moved with rules like top and left. Absolute positioning is about the same as relative positioning but it breaks the element free from the normal flow of rendering and not positioning happens relative to the parent element, rather than that flow.
 
 ## 2 - Canvas position on resize
 
