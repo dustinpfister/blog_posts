@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 08:28:59
-version: 1.29
+updated: 2019-11-13 08:44:39
+version: 1.30
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -226,25 +226,32 @@ So in order to normalize I first need to get the max and min range values of eac
 
 
 ```
-// get ranges
-p.getRanges = function (points) {
-    var min = [Infinity, Infinity],
-    max = [-Infinity, -Infinity],
+// split an single dimension array of pints
+// into an array of arrays of axis values
+p.toAxisArrays = function (points) {
+    var axisArrays = [[], []],
     i = 0,
     len = points.length;
     while (i < len) {
-        var x = points[i],
-        y = points[i + 1];
-        min[0] = x < min[0] ? x : min[0];
-        min[1] = y < min[1] ? y : min[1];
-        max[0] = x > max[0] ? x : max[0];
-        max[1] = y > max[1] ? y : max[1];
+        axisArrays[0].push(points[i]);
+        axisArrays[1].push(points[i + 1]);
         i += 2;
     }
+    return axisArrays;
+};
+// get ranges
+p.getRanges = function (points) {
+    var axis = p.toAxisArrays(points);
     return {
-        min: min,
-        max: max
-    };
+        min: [
+            Math.min.apply(null, axis[0]),
+            Math.min.apply(null, axis[1])
+        ],
+        max: [
+            Math.max.apply(null, axis[0]),
+            Math.max.apply(null, axis[1])
+        ]
+    }
 };
 ```
 
