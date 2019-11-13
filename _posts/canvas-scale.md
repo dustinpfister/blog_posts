@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 08:21:28
-version: 1.27
+updated: 2019-11-13 08:25:00
+version: 1.28
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -280,7 +280,7 @@ p.normalize = function (points, center) {
 };
 ```
 
-Then also finally have a draw method that accepts an array of points, and also a canvas context reference to draw an array of points to the canvas.
+Then also finally have a draw method that accepts an array of points, and also a canvas context reference to draw an array of points to the canvas. I can also set the stroke and fill style and choose to not close the points when it comes to the additional arguments. There are many other ways I could go about writing this method, but for the sake of this post it will work okay.
 
 ```js
 // draw to a canvas context
