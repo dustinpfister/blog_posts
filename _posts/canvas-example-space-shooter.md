@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-13 17:41:18
-version: 1.20
+updated: 2019-11-13 17:47:53
+version: 1.21
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -51,7 +51,11 @@ This file is also an example of prototype based inheritance in javaScript, as th
 
 ### 2.1 - The Base Disp Class
 
-So the file starts off with the Base Display Object class here I define a constructor function that will be used for all Display Objects in the canvas example. This of course has properties like x and y but also a heading in radians, and a value that reflects the current pixels per second rate of movement. So in this canvas example all display objects have these properties they have a 2d position in the canvas as well as a heading and speed in pixels per second.
+So the file starts off with the Base Display Object class. Here I define a constructor function that will be used for all Display Objects in the canvas example. 
+
+The base display object class of course has properties like x and y but also a heading in radians, and a value that reflects the current pixels per second rate of movement. This kind of game is a real time rather than turn base system game so it is best to move the display objects by way of the system clock rather than just stepping by a delta each frame tick.
+
+So in this canvas example all display objects have these properties they have a 2d position in the canvas as well as a heading and speed in pixels per second. This class also has many methods that are common for all display objects such as the move object method that accepts a time arguments and then moves the object by its current heading and pixels per second value.
 
 ```js
 // DISP BASE CLASS
