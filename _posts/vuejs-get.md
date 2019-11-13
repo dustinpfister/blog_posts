@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 562
-updated: 2019-11-13 11:59:56
-version: 1.7
+updated: 2019-11-13 12:06:28
+version: 1.8
 ---
 
 There is a vue set global method in vuejs, but it is not what one might think compared to other frameworks. The vue set method is used to set reactive properties to an object, so there is not vue get global method, and no set or get method of any kind when it comes to Vue class instance methods.
@@ -180,3 +180,13 @@ new Vue({
 There are all kinds of additional features I could add to this kind of vue get method plug-in of course. It would be nice that it would return promises rather than just using the old call back only syntax. That is the thing about http clients though, there are a lot of theme out there and it is something that I can never seem to get just right.
 
 Still depending on the project a http client that is not all that different from this might work just fine. I want to just make get requests and I would like for the http client to work on a wide range of browsers, so some simple solution that makes use of XMLHttpRequest might work just fine in that case.
+
+## 4 - Conclusion
+
+So there is no vue get method built into vuejs, well of course there is not. It is up to you the developer to make that method whatever you want it to be. Having a simple get method can be so many different things, I have not even scratched the surface of what it could be.
+
+Say I am making a game that involves the use of a gird, in that case maybe I want the vue get method to get a cell reference in that grid. 
+
+Also maybe I would like to have a vue get method that is actually more than feature pack together into one package. That is the case with frameworks like express after all. The get method in express can be used to get an app setting, but it can also be used to define what middleware should fire for incoming get requests for a certain url pattern to a website.
+
+So vue get can be what you want it to be, or depending on the project, what you need it to be.
