@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-13 17:54:27
-version: 1.22
+updated: 2019-11-13 17:57:20
+version: 1.23
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -121,7 +121,7 @@ The methods here have to do with just moving a display object in a uniform way, 
 
 ### 2.2 - The Shot Class
 
-The Shot class is one of two classes that I have that extend the functionality of the Disp Class. A Shot Class is used with A Ship Class.
+The Shot class is one of two classes that I have that extend the functionality of the Disp Class. A Shot Class is used with A Ship Class an as the name implies represents a shot from a ship that can hurt another ship.
 
 ```js
 // SHOT CLASS
@@ -136,6 +136,8 @@ var Shot = function (opt) {
 // inherit from Disp
 Shot.prototype = new Disp();
 ```
+
+For now there is not much to this class I am just adding a damage property that is the amount of damage that the shot will cause to a ship, and a lifespan property that will serve as away to flag the shot for removal if it has just been around for to long.
 
 ### 2.3 - The Ship Class
 
