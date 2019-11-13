@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-13 17:47:53
-version: 1.21
+updated: 2019-11-13 17:54:27
+version: 1.22
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -117,7 +117,7 @@ Disp.prototype.distance = function (disp2) {
 };
 ```
 
-The methods here have to do with just moving a display object in a uniform way.
+The methods here have to do with just moving a display object in a uniform way, and there is also a common method for applying boundaries, and the distance formula. So any property or method that should apply to all display object class should be placed in this class, as it would have the same effect as monkey patching something into the main javaScript Object prototype object only not to that extreme.
 
 ### 2.2 - The Shot Class
 
