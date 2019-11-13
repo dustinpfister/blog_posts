@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-11-13 13:39:19
-version: 1.21
+updated: 2019-11-13 13:43:39
+version: 1.22
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default for elements which is static positioning, to relative, absolute, or fixed positioning, and then using additional rules like top and left to position the actual canvas element that way. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general.
@@ -128,7 +128,9 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 
 ## 4 - Center the canvas position
 
-A common task that is often encountered when starting to play around with canvas is to find a way to center the canvas in the middle of the browser window. There is a whole lot of ways to go about doing this for a canvas of any element in general really, way back in the day it was not frowned upon to do so with table elements for example. However most solutions that would be used today would involve just some quick css, or a more complex solution with javaScript.
+A common task that is often encountered when starting to play around with canvas is to find a way to center the canvas in the middle of the browser window. There is a whole lot of ways to go about doing this for a canvas of any element in general really. Way back in the day it was not frowned upon to do so with table elements for example, but now that would likely always be considered poor practice. 
+
+So most solutions that would be used today would involve just some quick css. I is also of course possible to do so with javaScript, but more often than not that might prove to be an over complicated solution to a simple problem. Always start with simple HTML, and CSS first if you can not solve the problem with that then look into javaScript powered solutions.
 
 ### 4.1 - Using the margin auto trick to center a canvas
 
