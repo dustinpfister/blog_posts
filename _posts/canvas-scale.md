@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 08:44:39
-version: 1.30
+updated: 2019-11-13 08:46:50
+version: 1.31
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -222,7 +222,7 @@ p.scale = function (points, scale, dx, dy) {
 };
 ```
 
-So in order to normalize I first need to get the max and min range values of each axis of the array of points so that I can then use that data to normalize an array of points.
+So in order to normalize I first need to get the max and min range values of each axis of the array of points so that I can then use that data to normalize an array of points. To do this I made two methods one of which will split an array of points into to arrays where each array is all the x values and then the other is all the y values. One I have that I can just use the Math.min and Math.max methods with the Function.apply prototype method to get my object of ranges for the points.
 
 
 ```
