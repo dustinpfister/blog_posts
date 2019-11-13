@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 08:11:06
-version: 1.26
+updated: 2019-11-13 08:21:28
+version: 1.27
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -352,3 +352,9 @@ console.log( points_scaled.join(',') );
 So when it comes to canvas and scale there are a lot of topics that branch off from that, there is just scaling the canvas as in the size of it in the browser, and then there is scaling something up or down in the canvas matrix when it comes to working with logical pixels.
 
 There is of course much more that could be added to this points library such as a method that could be used to rotate the array of points around a fixed point, as well as just about everything else that comes to mind when it comes to working out a real library that like this that has a robust set of methods. However that would be getting off topic with the theme of this post on canvas scale.
+
+## 7 - Conclusion
+
+So it would seem that the subject of canvas scale is not so simple as there is a great deal that branches off from the subject. There is increasing the actual logic pixel size, canvas matrix size, or native size if you prefer which is one way of scaling the canvas. Then there is leaving the canvas matrix size the same, and scaling up that matrix by chaining the logic pixel size. The there is of course scaling objects within the canvas when it comes to using all the arguments of the draw image method, and point normalization.
+
+Everything I mentioned there is a mouth full, sure. Also to make matters worse I still thing that I have managed to do this subject justice. Learning these things takes time, but that is the whole reason why I started getting into canvas, javaScript, and programing in general. There is always something more to learn
