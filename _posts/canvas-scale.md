@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 08:25:00
-version: 1.28
+updated: 2019-11-13 08:28:59
+version: 1.29
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -349,7 +349,9 @@ console.log( points_scaled.join(',') );
 </html>
 ```
 
-So when it comes to canvas and scale there are a lot of topics that branch off from that, there is just scaling the canvas as in the size of it in the browser, and then there is scaling something up or down in the canvas matrix when it comes to working with logical pixels.
+This results in a square at the center of the canvas element that is 128 pixels on each size that was created from an array of points that would have been a 32 by 32 square at the upper left corner of the canvas. As I play around with the source points, and scale arguments the methods seem to work as expected.
+
+So when it comes to canvas and scale there are a lot of topics that branch off from that, there is just scaling the canvas as in the size of it in the browser, and then there is scaling something up or down in the canvas matrix when it comes to working with logical pixels when it comes to what was covered in this section.
 
 There is of course much more that could be added to this points library such as a method that could be used to rotate the array of points around a fixed point, as well as just about everything else that comes to mind when it comes to working out a real library that like this that has a robust set of methods. However that would be getting off topic with the theme of this post on canvas scale.
 
