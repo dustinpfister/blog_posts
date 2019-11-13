@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-12 18:45:03
-version: 1.21
+updated: 2019-11-13 06:35:42
+version: 1.22
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -194,7 +194,9 @@ So if I have an array of points I can normalize them fist, and then scale up tha
 
 ### 6.1 - The Points lib
 
-So for starters lets go over the points libary.
+So for starters lets go over the points library. the nature of the library is just a bunch of pure function style methods that accept and array of points and do things with that array of points that does not involve mutating the original array of points that was given in place.
+
+It starts off with a scale function that takes an array of points and then just scales them all up by a scale value that is given as a second argument and then also translates with delta values also. However what if I have an array of points that is not normalized first? In other words not in the form of an array of values between 1 and 0, or -0.5 and 0.5. That makes scaling a little difficult, so it would be nice to have a method that does that first.
 
 ```js
 var p = {};
