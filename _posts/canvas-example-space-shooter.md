@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-13 17:31:34
-version: 1.19
+updated: 2019-11-13 17:41:18
+version: 1.20
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -21,7 +21,7 @@ This project is an example of the canvas element in action as well as many other
 
 ## 2 - The html file
 
-To start off with here is the html file that I have for the canvas example. For this one I am using a hard coded canvas element rather than creating and injecting a canvas element with javaScript. I am also lining to all the extremal javaScript files that I have worked out when it comes to handling display objects, a state machine, events rendering and a main app loop.
+To start off with here is the html file that I have for the canvas example. For this one I am using a hard coded canvas element rather than creating and injecting a canvas element with javaScript. I am also linking to all the extremal javaScript files that I have worked out when it comes to handling display objects, a state machine, events, rendering and a main app loop.
 
 ```html
 <html>
@@ -39,11 +39,15 @@ To start off with here is the html file that I have for the canvas example. For 
 </html>
 ```
 
-So now that is out of the way lets get to the actual javaScript.
+If I start to put together a project that is even just a little involved I often like to break things down a lot to keep everything better organized. So now that just the plain old boring HTML is out of the way lets get to the actual fun and interesting javaScript stuff.
 
 ## 2 - The Display Object Classes
 
-The first javaScript file disp.js is a file that I worked out for display objects that will be used in the canvas example. A display object is a sprite or graphic that represents some kind of object that is used in the game. In this canvas example display objects are things like this player ship, enemy ships, and shots that are being fired. This file is also an example of prototype based inheritance in javaScript. There is a Base Display object that contains properties and methods that are common for all display objects in the canvas example, and then other classes that extend that base class for Ships and Shots.
+The first javaScript file disp.js is a file that I worked out for display objects that will be used in this canvas example. A display object is often a sprite or graphic in the canvas that represents some kind of object that is used in the game such as a ship, enemy, power up, or anything to that effect. 
+
+So then in this canvas example display objects are things like this player ship, enemy ships, and shots that are being fired from the player or enemy ships. So these objects have values like x and y that represent the current location of the object in the canvas matrix, but also values like the current heading.
+
+This file is also an example of prototype based inheritance in javaScript, as there is a base class and then additional class that inherit from that base class but have additional properties and methods. So then there is a Base Display object class that creates objects that contains properties and methods that are common for all display objects for starters. Then in addition there are other classes that extend that base class for Ships and Shots to be used in this canvas game example.
 
 ### 2.1 - The Base Disp Class
 
