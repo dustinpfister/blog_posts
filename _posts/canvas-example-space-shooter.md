@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-14 07:52:03
-version: 1.25
+updated: 2019-11-14 07:58:16
+version: 1.26
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -252,7 +252,9 @@ The update method of the ship class supersedes the Disp class update method so i
 
 ## 3 - The State Machine
 
-Here I have the state machine file stats.js. A state machine is a way to break an application such as this space shooter game into separate states for the main game for example. In this canvas example there is a main game state, as well as an initialization state, and a game over state. I did not put an awful lot of time into this canvas example, but if I where to continue working on this there would be a title state, as well as several other states and more.
+A state machine is a way to break an application such as this space shooter game into separate states, where each state is a method or collection of methods that define a set of logic that is to run for different states of the application or game play. For example A game might have a loading state, title screen state, menu state, game state, pause state, and game over state and it might not end there.
+
+In this canvas example there is a main game state, as well as an initialization state, and a game over state. I did not put an awful lot of time into this canvas example, but if I where to continue working on this there would be a title state, as well as several other states that have to do with various menus to say the least.
 
 ```js
 var States = (function () {
