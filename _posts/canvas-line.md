@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-11-14 18:54:48
-version: 1.28
+updated: 2019-11-14 18:58:17
+version: 1.29
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -199,3 +199,7 @@ drawPoints(ctx, createExpCurvePoints(1.4, 12, 30))
 ```
 
 It is fun to start to explore all the different possibilities when it comes to writing these kinds of methods. In any case the basic idea is the same create a collection of x and y values that will be passed to a draw function.
+
+## 7 - Conclusion
+
+Of course I have not covered everything when it comes to drawing lines with canvas. I could go on and on about everything that comes to mind about methods that are used to create arrays of points and then draw lines between them. I would never cover everything with that, the power of imagination has not bounds with that.
