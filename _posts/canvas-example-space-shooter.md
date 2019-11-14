@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-14 08:00:05
-version: 1.27
+updated: 2019-11-14 08:14:47
+version: 1.28
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -462,7 +462,8 @@ var draw = (function () {
 ```
 ## 6 - Main app loop
 
-Then there is the main app loop. Here I am using requestAnimatuonFrame to create the loop, and call the States tick method and the draw method each frame.
+Then there is the main app of the canvas game example. Here I am using requestAnimatuonFrame to create the loop, and call the States tick method and the draw method for each frame over and over again.
+
 
 ```js
 // Main APP loop
@@ -473,6 +474,12 @@ var loop = function () {
 };
 loop();
 ```
+
+It goes without saying that I made this very basic, and it seems to work okay this way. The reason why is that I am figuring how much time has went by in the state machine, and then passing that value to the update methods that I am using for the display objects.
+
+I would design this kind of loop all kinds of different ways. Ways where I would move display objects by just steeping by deltas each frame. Ways where I would use some other means to go about limiting the frame rate, but testing if a certain amount of time has elapses here in the main app loop, and then call my update and draw methods. However I have come to find that this kind of approach seems to work good when it comes to a real time space shooter type game. 
+
+Other games could be event driven and when it comes to that kind of game I might not need a main app loop at all, however that f course is not the case here, so no matter what i am always going to need something like this, at least for the game state anyway.
 
 ## 7 - Conclusion
 
