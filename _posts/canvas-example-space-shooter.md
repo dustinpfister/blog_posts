@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-14 08:29:12
-version: 1.29
+updated: 2019-11-14 08:30:52
+version: 1.30
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -376,7 +376,7 @@ In here I also parked some logic that has to do with what might eventually be a 
 
 ## 4 - Events
 
-In the events.js file I worked out a few event handlers for moving the player ship and continuing when the game is over. Nothing major for this canvas example just a crude yet functional solution for this.
+In the events.js file I worked out a few event handlers for moving the player ship and continuing when the game is over. Nothing major for this canvas example just a crude yet functional solution for accepting user input and using it to move the player ship.
 ```js
 // EVENTS
 (function () {
@@ -463,7 +463,7 @@ var draw = (function () {
     ());
 ```
 
-There is more that comes to mind, such as pulling the draw methods that I have in the classes out of the classes and place it here. Making the method at least a little more functional by making it so that the state object is passed as an argument to the factory function and make it so the factory function needs to be called in the state machine. However when it comes to making a first alpha state of a project those kinds of things take a back seat. the real concern here is if i am starting to make something that people will actually want to play or not.
+There is more that comes to mind, such as pulling the draw methods that I have in the classes out of the classes and place it here. Making the method at least a little more functional by making it so that the state object is passed as an argument to the factory function and make it so the factory function needs to be called in the state machine. However when it comes to making a first alpha state of a project those kinds of things take a back seat. The real concern here is if i am starting to make something that people will actually want to play or not.
 ## 6 - Main app loop
 
 Then there is the main app of the canvas game example. Here I am using requestAnimatuonFrame to create the loop, and call the States tick method and the draw method for each frame over and over again.
