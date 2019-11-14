@@ -5,17 +5,17 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-09-25 09:40:28
-version: 1.21
+updated: 2019-11-14 18:26:43
+version: 1.22
 ---
 
-When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods.
+When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
 
 <!-- more -->
 
 ## 1 - Canvas line basics
 
-this is a post on drawing lines with html 5 canvas. I assume that you have at least some background with html, css and javaScript. If not this is not the place to get started with any of that. This post is also not necessary a starting point for getting started with canvas as well, but I will keep some of the first examples simple copy and past line examples.
+This is a post on drawing lines with html 5 canvas for drawing graphics with javaScript. I assume that you have at least some background with html, css and javaScript to begin with. If not this is not the place to get started with any of those subjects. This post is also not necessary a starting point for [getting started with canvas](/2017/05/17/canvas-getting-started/) as well, but I will keep some of the first examples simple copy and past canvas line examples.
 
 Draing lines in canvas involves getting a reference to the 2d
 
