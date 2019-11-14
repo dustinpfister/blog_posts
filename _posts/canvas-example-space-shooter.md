@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-13 18:00:20
-version: 1.24
+updated: 2019-11-14 07:52:03
+version: 1.25
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -245,6 +245,10 @@ Ship.prototype.draw = function (ctx, shipStyle, shotStyle) {
     });
 };
 ```
+
+For now I am using this class as a way to also deal with a collection of shots. I am doing this as a way to help keep things simpler, but if I where to continue working on this example I might want to have a shot collection class, as well as a similar class for collections of ships. However for this example at least I decided to have an updateShots method in the Ship class, and for the Ship class to also work as a shot collection class by storing an array of Shot Class instances.
+
+The update method of the ship class supersedes the Disp class update method so it is called first,  but within the body of that update method I am still calling the main Disp class update method. The reason why is I still want the same rules to apply for all display objects when it comes to movement. Alter that I call the update shots method.
 
 ## 3 - The State Machine
 
