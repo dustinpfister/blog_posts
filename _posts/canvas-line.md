@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-11-14 18:30:51
-version: 1.23
+updated: 2019-11-14 18:33:31
+version: 1.24
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -44,6 +44,8 @@ ctx.stroke();
     </body>
 </html>
 ```
+
+So there we have a good getting started with canvas lines example. However of course there is much more to it than then when it comes to getting into many aspects of geometry, and writing all kinds of methods for drawing shapes and deterministic style animations. Also there are still a few other things to cover when it just comes to the basics so lets look at some more examples.
 
 ## 3 - The moveTo method
 
