@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2019-11-14 08:14:47
-version: 1.28
+updated: 2019-11-14 08:29:12
+version: 1.29
 ---
 
 So this post might be the first of several [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
@@ -418,7 +418,9 @@ In the events.js file I worked out a few event handlers for moving the player sh
 
 ## 5 - Renderer
 
-So then there is also the renderer.js file. Here I have the code that will draw to the canvas. There is are draw methods the correspond to some of the states in the state machine.
+So then there is also the renderer.js file. Here I have the code that will draw to the canvas. This returns a main draw method that will render one of many other draw methods depending on the current state of the game. 
+
+It also have one helper draw method of sorts that is called just once in the main draw method, but methods like that could be used in many such draw method. So for now it is just an example of keeping this a little more fine grain by pulling it into a stand alone method.
 
 ```js
 // RENDER
@@ -460,6 +462,8 @@ var draw = (function () {
 }
     ());
 ```
+
+There is more that comes to mind, such as pulling the draw methods that I have in the classes out of the classes and place it here. Making the method at least a little more functional by making it so that the state object is passed as an argument to the factory function and make it so the factory function needs to be called in the state machine. However when it comes to making a first alpha state of a project those kinds of things take a back seat. the real concern here is if i am starting to make something that people will actually want to play or not.
 ## 6 - Main app loop
 
 Then there is the main app of the canvas game example. Here I am using requestAnimatuonFrame to create the loop, and call the States tick method and the draw method for each frame over and over again.
