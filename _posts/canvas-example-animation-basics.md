@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2019-11-14 18:13:35
-version: 1.13
+updated: 2019-11-14 18:21:03
+version: 1.14
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with animations using canvas. Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -175,6 +175,8 @@ loop();
 </html>
 ```
 
-This kind of canvas animation seems to be a good way to go about making any kind of animation that is to just be a certain collection of fixed frames that is defined by javaScript. It is a great way to go about getting into what might be expressed as a kind of deterministic style of animation where each frame is rendered by a current state that is mutated purely by a changed in frame value relative to a max frame value.
+This kind of canvas animation seems to be a good way to go about making any kind of animation that is to just be a certain collection of fixed frames that is defined by javaScript code. It is a great way to go about getting into what might be expressed as a kind of deterministic style of animation where each frame is rendered by a current state that is mutated purely by a changed in frame value relative to a max frame value.
+
+Although this might not be the best example of it, this style of canvas animation can also be thought of maybe as a kind of functional style of animation. This is of course if implemented differently where the animation is a pure function where the only arguments that are given to the function is a frame index, and max frame index value. If so the same set of arguments should return the same state every time to be in line with the rules of functional programin
 
 There are ways of exporting these frames, and then from that point forward it is just a matter of setting a frame rate at which the animation is to be played back at.
