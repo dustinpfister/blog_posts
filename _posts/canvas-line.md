@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-11-14 18:49:39
-version: 1.26
+updated: 2019-11-14 18:53:01
+version: 1.27
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -173,6 +173,8 @@ var createPolygonPoints = function(cx,cy,r,s){
  
 drawPoints(ctx,createPolygonPoints(15,15,5,4),true);
 ```
+
+So for this I just call the method, pass a center x and center y value, and then a radius and number of sides. I then have my points that form a polygon, just pass it to the draw points method with a context.
 
 ### 6.3 - An exponential curve example
 
