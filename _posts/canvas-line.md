@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-11-14 18:46:09
-version: 1.25
+updated: 2019-11-14 18:49:39
+version: 1.26
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -126,11 +126,11 @@ The order in which the fill and stroke methods is called does matter, but it can
 
 ## 6 - Complex Paths with canvas lines
 
-When it comes to drawing any kind of complex path it gets to the point where I would want to work out a ways to create and draw a collection of points. When things start to get intense there are many canvas libraries that help to abstract things away, but in this section I will be covering some basics of this without the use of a library.
+When it comes to drawing any kind of complex path it gets to the point where I would want to work out a way to create and draw a collection of points. When things start to get intense there are many canvas libraries that help to abstract things away, but in this section I will be covering some basics of this without the use of a library.
 
 ### 6.1 - Making a drawPoints function
 
-The first thing I would do is work out a function that will draw a standard collection of points. This standard collection of points could be a collection of objects each with an x, and y property. However in this section I will be working with a simple linear array of number primitives.
+The first thing I would do is work out a function that will draw a standard collection of points. This standard collection of points could be a collection of objects each with an x, and y property if you prefer. However in this section I will be working with a simple linear array of number primitives which is a more efficient solution of course.
 
 ```js
 // draw a polygon for the given context
@@ -150,9 +150,9 @@ var drawPoints = function (ctx, points,close) {
 drawPoints(ctx,[15,15,15,5,25,5,25,20,5,30],true);
 ```
 
-There might be a need for more than one draw points function, or to hack over something like this to add additional features such as to close the line or not, to fill or not and so forth. Still many draw points functions work in a similar fashion, give it a context and an array of points and it will draw it for me.
+There might be a need for more than one draw points function, or to hack over something like this to add additional features such as to close the line or not, to fill or not and so forth. Still many draw points functions work in a similar fashion, give it a context and an array of points and it will draw the points for me as a line.
 
-So now that I have a draw points function the real fun can begin when it comes to writing all kinds of methods that can be used to create an array of points.
+So now that I have a draw points function the real fun can begin when it comes to writing all kinds of methods that can be used to create an array of points that will be passed to this method.
 
 ### 6.2 - Create Polygon Points for a canvas line
 
