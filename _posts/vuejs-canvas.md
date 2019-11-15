@@ -5,11 +5,158 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2019-11-15 10:53:20
-version: 1.0
+updated: 2019-11-15 13:37:14
+version: 1.1
 ---
 
 I would like to expand and update my collection of posts on canvas here, but maybe I should also do the same for my vuejs content also. So for today maybe it would be a smart move to write a post on using vuejs, and canvas elements. Oddly enough that is a rock i have not flipped over just yet. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
 
 <!-- more -->
 
+
+## 1 - vue canvas basic example
+
+```html
+<html>
+  <head>
+    <title>vue canvas example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+new Vue({
+    el:'#demo',
+    template: '<canvas v-bind:width="width" v-bind:height="height"></canvas>',
+    data: {
+        width: 320,
+        height: 240
+    },
+    // using the mounted lifecycle hook
+    mounted: function(){
+        // get canvas and context
+        var canvas = this.$el,
+        ctx = canvas.getContext('2d');
+        // draw something
+        ctx.fillStyle = '#00afaf';
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font='30px arial';
+        ctx.fillText('Hello Vue Canvas!', canvas.width / 2, canvas.height / 2);
+    }
+});
+    </script>
+  </body>
+</html>
+```
+
+## 2 - vue canvas and scaling the canvas element
+
+```js
+var vm = new Vue({
+        el: '#demo',
+        template: '<canvas v-bind:width="width" v-bind:height="height"></canvas>',
+        data: {
+            width: 320,
+            height: 240,
+            canvas: null,
+            ctx: null
+        },
+        // get canvas, context, and draw for the first time
+        // lifecycle hook
+        mounted: function () {
+            // get canvas and context
+            this.$data.canvas = this.$el;
+            this.$data.ctx = this.$el.getContext('2d');
+            this.draw();
+        },
+        // draw on updated hook
+        updated: function () {
+            this.draw();
+        },
+        // single draw method
+        methods: {
+            draw: function () {
+                var canvas = this.$data.canvas,
+                ctx = this.$data.ctx;
+                var px = Math.floor(canvas.width / 10);
+                // draw something
+                ctx.fillStyle = '#00afaf';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = px + 'px arial';
+                ctx.fillText('Hello Vue Canvas!', canvas.width / 2, canvas.height / 2);
+            }
+        }
+    });
+// change size of canvas
+vm.$data.width = 800;
+vm.$data.height = 600;
+```
+
+## 3 - Adding an click and touch support
+
+```js
+new Vue({
+    el: '#demo',
+    template: '<canvas ' +
+    'v-bind:width="width" ' +
+    'v-bind:height="height"' +
+    'v-on:click="click"' +
+    'v-on:touchstart="click"' +
+    '></canvas>',
+    data: {
+        width: 320,
+        height: 240,
+        canvas: null,
+        ctx: null,
+        points: []
+    },
+    // on mounted
+    mounted: function () {
+        // get canvas and context
+        this.$data.canvas = this.$el;
+        this.$data.ctx = this.$el.getContext('2d');
+        this.draw();
+    },
+    // on updated
+    updated: function () {
+        this.draw();
+    },
+    // single draw method
+    methods: {
+        // on click or touch
+        click: function (e) {
+            var bx = e.target.getBoundingClientRect();
+            this.$data.points.push({
+                x: (e.touches ? e.touches[0].x : e.clientX) - bx.left,
+                y: (e.touches ? e.touches[0].y : e.clientY) - bx.top
+            });
+            if (this.$data.points.length > 10) {
+                this.$data.points = this.$data.points.slice(1, 11);
+            }
+            this.draw();
+        },
+        // draw the current state
+        draw: function () {
+            var canvas = this.$data.canvas,
+            ctx = this.$data.ctx;
+            var px = Math.floor(canvas.width / 10);
+            // clear
+            ctx.fillStyle = '#00afaf';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ffffff';
+            // draw circles
+            this.$data.points.forEach(function (pt) {
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+    }
+});
+```
