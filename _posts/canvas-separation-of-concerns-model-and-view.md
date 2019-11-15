@@ -4,13 +4,13 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-08-29 10:23:00
 id: 33
-updated: 2019-11-11 17:35:28
-version: 1.6
+updated: 2019-11-15 07:23:08
+version: 1.7
 ---
 
-In my first [getting started post](/2017/05/17/canvas-getting-started/) on html 5 canvas I made a simple example on how to quickly throw together a canvas project in a way in which I usually do so. If it is something stupid simple things like [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) does not strike me as something that is that important. However if I do start to put together something that is a little advanced, it does become important as a means of avoiding writing the dreaded spaghetti code.
+In my first [getting started post](/2017/05/17/canvas-getting-started/) on HTML 5 canvas I made a simple example on how to quickly throw together a canvas project in a way in which I usually do so with simple projects. So if a project is something stupid simple things like [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) does not strike me as something that is that important. However if I do start to put together something that is a little advanced, it does become more important to separate what is often called state, or a model from what is often called a view. Doing so is a good way of avoiding writing the dreaded spaghetti code as a project advances.
 
-So to help keep things more organized javaScript code that has to do with the state of something is keep septate from code that renders that state. That is there is a canvas model that holds the current state, and then a canvas view that renders that state. There is then something that changes the state that can be thought of as a controller.
+So to help keep things more organized, javaScript code that has to do with the state of something is keep septate from code that renders that state. That is there is a canvas model that holds the current state, and then a canvas view that renders that state. There is then also something that changes the state that can be thought of as a controller resulting in what is often called [MVC or Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller).
 
 <!-- more -->
 
@@ -185,7 +185,7 @@ So for this post I will just be covering the Model and having at least one or mo
  
 ```
 
-So now I just have a simple loop that for now will act as a Controller in the [Model View Controller (MVC)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) software architectural pattern. Just with the View I can have more that one Controller, one that updates a model by way of user input, and another by way of some kind of AI script, but that is a whole other ball of wax.
+So now I just have a simple loop that for now will act as a Controller in the Model View Controller \(MVC\) software architectural pattern. Just with the View I can have more that one Controller, one that updates a model by way of user input, and another by way of some kind of AI script, but that is a whole other ball of wax.
 
 ## 4  - Conclusion
 
