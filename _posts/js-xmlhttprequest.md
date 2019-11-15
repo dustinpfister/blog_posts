@@ -5,12 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2018-05-27 10:07:53
-version: 1.3
+updated: 2019-11-15 18:09:47
+version: 1.4
 ---
 
-These days there are a ton of options for scripting http, I have written posts on [axios](/2018/01/10/nodejs-axios/), and [fetch](/2018/03/27/js-fetch/), but I still find myself using [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks. It does have it's draw backs, compared to more modern solutions, but it is not that hard to quickly make a solution that makes use of more modern javaScript features like promises.
+These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/). Call be old fashion by I still find myself using [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
 
+It does have it's draw backs, compared to more modern solutions, but it is not that hard to quickly make a solution that makes use of more modern javaScript features like promises. It is true however that if I am going to start to invest a great deal of time into making my own http client, I should probably stop there are many great solutions out there all ready and I am not sure if I really need to be yet another developer re inventing the wheel with this one.
+
+Still if I do choose to make my own custom tailored http client I will most likely use XMLHttpRequest as a way of making the request, and the client will just be a modernized, or tired yet true abstraction of that method.
 <!-- more -->
 
 ## Using an XMLHTTPRequest pollyfill
