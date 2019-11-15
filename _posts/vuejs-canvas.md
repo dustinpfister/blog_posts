@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2019-11-15 17:10:38
-version: 1.3
+updated: 2019-11-15 17:11:58
+version: 1.4
 ---
 
 I would like to expand and update my collection of posts on canvas here, but maybe I should also do the same for my vuejs content also. So for today maybe it would be a smart move to write a post on using vuejs, and canvas elements. Oddly enough that is a rock i have not flipped over just yet. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
@@ -106,7 +106,9 @@ vm.$data.height = 600;
 
 When I change the logical pixel resolution I get the desired behavior, the resolution changes, and the content I have will be drawn. So there is drawing to the canvas for the first time, and then there is drawing to the canvas whenever something changes in the data object. Now there is just starting out with some user input.
 
-## 3 - Adding an click and touch support
+## 3 - Adding click and touch support
+
+So now on top of the vue bind directive I am also now using the vue on directive to do some event attachment.
 
 ```js
 new Vue({
