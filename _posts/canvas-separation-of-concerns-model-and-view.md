@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-08-29 10:23:00
 id: 33
-updated: 2019-11-15 07:27:04
-version: 1.8
+updated: 2019-11-15 07:44:53
+version: 1.9
 ---
 
 In my first [getting started post](/2017/05/17/canvas-getting-started/) on HTML 5 canvas I made a simple example on how to quickly throw together a canvas project in a way in which I usually do so with simple projects. So if a project is something stupid simple things like [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) does not strike me as something that is that important. However if I do start to put together something that is a little advanced, it does become more important to separate what is often called state, or a model from what is often called a view. Doing so is a good way of avoiding writing the dreaded spaghetti code as a project advances.
@@ -16,11 +16,13 @@ So to help keep things more organized, javaScript code that has to do with the s
 
 The main thing of concern it seems is to try to find a way to keep a model completely independent from a view. That is that you have javaScript that has to do with the storage of the state, and manipulation of that state, and a completely separate chuck of JavaScript that renders that state in some way, such as with canvas. Then typically there will still need to be some additional code that ties everything together, along with some means to change that state.
 
-So I will put together a [jsfiddle](https://jsfiddle.net/dustinpfister/mf215hrn/4/) and talk about it in detail here.
+So I will put together a [jsfiddle](https://jsfiddle.net/dustinpfister/mf215hrn/4/) and talk about it in detail here
 
-## 1 - The Canvas Model
+## 1 - The Canvas Model or State
 
-First off is the model this is what makes up the current state of data, and it also might contain some additional code that has to do with it's storage, retrieval, and manipulation. Yet again maybe not, maybe you might break things down further. The idea here though is to try to break things down into independent parts that may or may not depend on each other.
+First off is the model this is what makes up the current state of data, and it also might contain some additional code that has to do with it's storage, retrieval, and manipulation. Yet again maybe not, maybe you might break things down further. The idea here though is to try to break things down into independent parts that may or may not depend on each other. 
+
+One way is to create a Class for the state, but a more functional approach can also be done where the state of a project is just some properties in a plain old object, and that objects is passed to one or more methods that return a new state object without changing the state of the object that was given as an argument.
 
 In this post I will just work with a hacked over version of what I was dealing with in my first canvas post, that looks like this:
 
