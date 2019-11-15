@@ -5,11 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-10-29 09:43:10
-version: 1.58
+updated: 2019-11-15 18:19:06
+version: 1.59
 ---
 
-One might think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it then what one might expect. Array length in js often refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However in some cases it is just an object property that does not even reflect that really. The length differs from the size of an array which may refer to the amount of data that an array might take up in memory, and the count of an array that refers to the number of actual declared elements in the array might differ in many respects depending on how you go about counting elements. So then for the most part, on the surface at least, the length property of an array is easy to understand, however there are a few situations that might cause a degree of confusion. So in this post on the subject of array length in javaScript I will take a moment to see about trying to  clear some of the confusion.
+One might think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it then what one might expect. Array length in js refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. 
+
+However in some cases array length is just an object property that does not even reflect the highest indexed object key of the array, because there is nothing there actually. So in a way it is just a way of declaring an element size of sorts, but many of those elements can be undefined, the default value for an object key that is not there.
+
+The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. there is also what if often called the count of an array that refers to the number of actual declared elements in the array, and that array count might differ in many respects depending on how you go about counting elements. 
+
+So then for the most part, on the surface at least, the length property of an array is easy to understand, however there are a few situations that might cause a degree of confusion. So in this post on the subject of array length in javaScript I will take a moment to see about trying to clear up some of the confusion. As such this will be a lengthy post that I will be updating often.
 
 <!-- more -->
 
