@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-08-29 10:23:00
 id: 33
-updated: 2019-11-15 07:23:08
-version: 1.7
+updated: 2019-11-15 07:27:04
+version: 1.8
 ---
 
 In my first [getting started post](/2017/05/17/canvas-getting-started/) on HTML 5 canvas I made a simple example on how to quickly throw together a canvas project in a way in which I usually do so with simple projects. So if a project is something stupid simple things like [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) does not strike me as something that is that important. However if I do start to put together something that is a little advanced, it does become more important to separate what is often called state, or a model from what is often called a view. Doing so is a good way of avoiding writing the dreaded spaghetti code as a project advances.
@@ -14,8 +14,7 @@ So to help keep things more organized, javaScript code that has to do with the s
 
 <!-- more -->
 
-The main thing of concern it seems is to try to find a way to keep a model independent from a view. That is that
-you have javaScript that has to do with the state, and manipulation of a model, and a completely separate chuck of JavaScript that renders that model in some way, and then typically some code that ties everything together.
+The main thing of concern it seems is to try to find a way to keep a model completely independent from a view. That is that you have javaScript that has to do with the storage of the state, and manipulation of that state, and a completely separate chuck of JavaScript that renders that state in some way, such as with canvas. Then typically there will still need to be some additional code that ties everything together, along with some means to change that state.
 
 So I will put together a [jsfiddle](https://jsfiddle.net/dustinpfister/mf215hrn/4/) and talk about it in detail here.
 
