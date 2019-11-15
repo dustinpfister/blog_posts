@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2019-11-15 17:13:32
-version: 1.5
+updated: 2019-11-15 17:21:25
+version: 1.6
 ---
 
 I would like to expand and update my collection of posts on canvas here, but maybe I should also do the same for my vuejs content also. So for today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/). Oddly enough that is a rock i have not flipped over just yet. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
@@ -16,7 +16,7 @@ I would like to expand and update my collection of posts on canvas here, but may
 
 ## 1 - vue canvas basic example
 
-This basic example of canvas and vuejs involves just mounting to a single container div, and having a single canvas element as the template. In the template I am using the vue bind directive to bind width and height properties in the vue data object. I then have a single mounted life cucyem hook that will draw to the canvas when the vew instance is mounted to the container element.
+This basic example of canvas and vuejs involves just mounting to a single container div, and having a single canvas element as the [template](/2019/05/07/vuejs-template/). In the template I am using the [vue bind](/2019/05/31/vuejs-bind/) directive to bind width and height properties in the [vue data](/2019/05/18/vuejs-data/) object. I then have a single [mounted life cycle hook](/2019/05/25/vuejs-lifecycle-mounted/) that will draw to the canvas when the vue instance is mounted to the container element.
 
 ```html
 <html>
@@ -58,7 +58,7 @@ So far so good that canvas ends up being the logical pixel resolution I set in t
 
 ## 2 - vue canvas and scaling the canvas element
 
-So now I took the rendering logic that I first worked out in the mounted hook, and transfered it to its own method in the methods option object. I am now creating references to the canvas and 2d drawing context in the mounted hook, and calling my new draw method in the mounted hook, and now also my new updated life cycle hook also.
+So now I took the rendering logic that I first worked out in the mounted hook, and transfered it to its own method in the [methods option object](/2019/05/20/vuejs-method/). I am now creating references to the canvas and 2d drawing context the mounted hook, but now calling my new draw method in the method object to draw the content. In addition I now also have my new [updated life cycle hook](/2019/11/11/vuejs-lifecycle-updated/) that will call that draw method each time the state updates.
 
 ```js
 var vm = new Vue({
@@ -108,7 +108,7 @@ When I change the logical pixel resolution I get the desired behavior, the resol
 
 ## 3 - Adding click and touch support
 
-So now on top of the vue bind directive I am also now using the vue on directive to do some event attachment.
+So now on top of the vue bind directive I am also now using the [vue on](/2019/11/14/vuejs-on/) directive to do some event attachment.
 
 ```js
 new Vue({
