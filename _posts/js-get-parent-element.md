@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 18:33:02
-version: 1.12
+updated: 2019-11-15 18:36:06
+version: 1.13
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post. 
@@ -43,7 +43,7 @@ In the event that the node is not a DOM node it will return null, this would mak
 
 ## 2 - Parent Node for getting any kind of node.
 
-Another option is the parent node property, this works in more or less the same way as parentElement but with one note worthy difference. If there is a non DOM element node of sorts it will give that in place of what would otherwise be a null value.
+Another option is the parent node property, this works in more or less the same way as parentElement but with one note worthy difference. If there is a non DOM element node of sorts it will give that in place of what would otherwise be a null value when using the parent element property.
 
 ```js
 <html>
@@ -59,6 +59,8 @@ console.log(el.parentNode); // #document
     </body>
 </html>
 ```
+
+So then these are the two main properties of interest when it comes to getting a parent element with native javaScript by itself, but there are of course event more ways of getting a parent element. Maybe for whatever the reason I do not just want a single element but the whole tree of elements. So lets look at some additional examples of this task.
 
 ## 3 - Get all parent elements
 
