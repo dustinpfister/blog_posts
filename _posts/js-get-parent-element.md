@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 18:31:32
-version: 1.11
+updated: 2019-11-15 18:33:02
+version: 1.12
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post. 
@@ -37,7 +37,9 @@ console.log(container.className); // wrap
 </html>
 ```
 
-In the event that the element does not have a parent element, or the parent element is not a DOM element the property will have a value of null. This might be desired in some cases as the value of null will evaluate to false and can then be used as a way to break out of looping for example. In the event that the node is not a DOM node it will return null, this would make sense because the name of the property is indeed parent element, so if the parent is not a DOM Element, but some other kind of node then it should return false. If for some reason I want to use another property that will work with nodes in general then there is the parent node property.
+In the event that the element does not have a parent element, or the parent element is not a DOM element the property will have a value of null. This might be desired in some cases as the value of null will evaluate to false and can then be used as a way to break out of looping for example. 
+
+In the event that the node is not a DOM node it will return null, this would make sense because the name of the property is indeed parent element, so if the parent is NOT A DOM Element, but some other kind of node then it should return false. If for some reason I want to use another property that will work with nodes in general then there is the parent node property which might be a more robust option for this sort of thing.
 
 ## 2 - Parent Node for getting any kind of node.
 
