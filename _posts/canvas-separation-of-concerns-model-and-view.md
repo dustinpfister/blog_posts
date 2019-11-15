@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-08-29 10:23:00
 id: 33
-updated: 2019-11-15 07:44:53
-version: 1.9
+updated: 2019-11-15 07:49:55
+version: 1.10
 ---
 
 In my first [getting started post](/2017/05/17/canvas-getting-started/) on HTML 5 canvas I made a simple example on how to quickly throw together a canvas project in a way in which I usually do so with simple projects. So if a project is something stupid simple things like [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) does not strike me as something that is that important. However if I do start to put together something that is a little advanced, it does become more important to separate what is often called state, or a model from what is often called a view. Doing so is a good way of avoiding writing the dreaded spaghetti code as a project advances.
@@ -190,6 +190,8 @@ So now I just have a simple loop that for now will act as a Controller in the Mo
 
 ## 4  - Conclusion
 
-The goal I had in mind here was to just express the first step with writing better code when in comes to getting into making canvas projects vanilla js style. If a project is very simple it is not that important to think in modular terms, but as things start to get a little complicated, yes it is a good idea to start breaking things down.
+The goal I had in mind here was to just express the first step with writing better code when in comes to getting into making canvas projects vanilla js style. If a project is very simple it is not that important to think in modular terms, but as things start to get a little complicated, yes it is a good idea to start breaking things down more.
+
+It is okay if I do not get things perfect the first time, in fact I never will of course. However even if I do find myself having to completely restructure a whole project from top to bottom I do not always really have to start over completely. Changing a class into a more functional from often just means replacing instances of the this keyword with a reference to an argument for example assuming that a method is more or less a pure function otherwise.
 
 Be sure to check out my [other posts on canvas](/categories/canvas/).
