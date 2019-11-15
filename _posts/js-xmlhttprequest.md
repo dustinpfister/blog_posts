@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2019-11-15 18:09:47
-version: 1.4
+updated: 2019-11-15 18:10:39
+version: 1.5
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/). Call be old fashion by I still find myself using [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -16,7 +16,7 @@ It does have it's draw backs, compared to more modern solutions, but it is not t
 Still if I do choose to make my own custom tailored http client I will most likely use XMLHttpRequest as a way of making the request, and the client will just be a modernized, or tired yet true abstraction of that method.
 <!-- more -->
 
-## Using an XMLHTTPRequest pollyfill
+## 1 - Using an XMLHTTPRequest pollyfill
 
 There was once a time where the use of a pollyfill for XMLHttpRequest was a must, today more often then not it might not be as big of a deal. Of course it really comes down to browser share of your site, for me it does not seem to matter everyone is using late versions of IE, when they are using IE, which is not often.
 
@@ -50,7 +50,7 @@ In which case you can just use the constructor.
 var xhr = new XMLHttpRequest();
 ```
 
-## Using XMLHttprequest to make a method for scripting http
+## 2 - Using XMLHttprequest to make a method for scripting http
 
 I often prefer to make some kind of easy to use method that can be used with just one or two arguments, but can also be given additional things to work with via an options object, just like that of the popular solutions like axios.
 
@@ -203,11 +203,11 @@ http(
 
 This should be the goal when making any kind of project like this. If I am making a simple get request I should only have to give a url, and a callback. However if I do need to do something more advanced with custom content types, and payloads I can do that without hacking over the source code.
 
-## Using a fetch pollyfill
+## 3 - Using a fetch pollyfill
 
 Of course you could do what I just did, and throw together your own solution, but it might be best to just use something that is out there all ready, and see that it confroms to some kind of newer standard for this sort of thing. Because fetch is poised to be the new replacement for XMLHttprequest it might be a good idea to make (or find) some kind of pollyfill that does a good job of bringing fetch to older browsers. for that you might want to check out [fetch.js](https://github.com/github/fetch/blob/master/fetch.js).
 
-## Conclusion
+## 4 - Conclusion
 
 XMLhttprequest is the best solution for scripting http if you care about trying to get your code to work on a wide range of browsers, as it is the tired yet way of doing it. For the most part I would not loose sleep over it thought if you choose to go with something more modern.
 
