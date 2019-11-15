@@ -5,8 +5,8 @@ tags: [js,blog,corejs]
 layout: post
 categories: js
 id: 13
-updated: 2019-11-15 17:52:27
-version: 1.7
+updated: 2019-11-15 17:56:53
+version: 1.8
 ---
 
 Every javaScript developer that runs a blog ends up writing at least one post on the [this keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), it is just something that all of us get to sooner or later. So I thought I should get this one out of the way quick, so I can get to writing about more obscure and uncovered aspects of the JavaScript language. There is all ready a great many posts on this subject, and in many respects this is just yet another post on the same things that are well covered elsewhere. 
@@ -17,7 +17,7 @@ Still if I am going to make yet another one, I should take the time to try to do
 
 ## 1 - javascript this is dynamic
 
-The this keywords value changes with a wide range of situations, such as if the code is executed at the top level, if you are using strict mode, and even the JavaScript spec of the browser (es3,es5,es2015+).
+The this keywords value changes with a wide range of situations, such as if the code is executed at the top level, if you are using strict mode, and even the JavaScript spec of the browser (es3,es5,es2015+). In es2015+ spec JavaScript the this keyword acts completely differently inside the body of an arrow function compared to old yet true function expressions and declarations.
 
 This is why I see code like this in many JavaScript modules.
 
@@ -25,7 +25,7 @@ This is why I see code like this in many JavaScript modules.
 var global = this || (typeof window !== 'undefined' ? window : global);
 ```
 
-More on why that is later, but for now I thought I would start out by saying yes the this keyword is a little tricky. Once you think you have this all snuffed out you end up leaning more about it. 
+As you might expect this has to do with the fact that the this keyword works a little differently at the top level in nodejs vs a browser environment. More on why that is later, but for now I thought I would start out by saying yes the this keyword is a little tricky. Once you think you have this all snuffed out you end up leaning more about it. 
 
 ## 2 - The js this keyword at the top level
 
