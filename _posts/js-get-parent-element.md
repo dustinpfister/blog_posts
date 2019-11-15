@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 18:36:06
-version: 1.13
+updated: 2019-11-15 18:39:46
+version: 1.14
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post. 
@@ -64,7 +64,9 @@ So then these are the two main properties of interest when it comes to getting a
 
 ## 3 - Get all parent elements
 
-So for now I am not aware of any native browser method that can be used to get all the parent elemets of a given element, but it is not to hard to write one. The solution I put together for this in a flash just involves looping until the current parentNode equals the document. For each loop that the current parent node is not the document just keep pushing the parent node to an array and then return the array once the looping has finished.
+So for now I am not aware of any native browser method that can be used to get all the parent elements of a given element, but it is not to hard to write one.
+
+The solution I put together for this in a flash just involves looping until the current parentNode equals the document element. For each loop that the current parent node is not the document just keep pushing the parent node to an array and then return the array once the looping has finished.
 
 ```html
 <html>
@@ -100,6 +102,8 @@ getParents(el).forEach(function (el) {
     </body>
 </html>
 ```
+
+I am sure there are many other ways to go about doing this. There are also all kinds of other topics in javaScript that come to mind, one thing that comes to mind right of the bat is event bubbling. That is when an event happens in a child element and then the event fires for each parent element also.
 
 ## 4 - Parent Elements and Event bubbling
 
