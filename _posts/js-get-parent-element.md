@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 19:25:32
-version: 1.20
+updated: 2019-11-15 19:28:18
+version: 1.21
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post.
@@ -137,7 +137,7 @@ Making a variation of this that looks at the class name property would not be so
 
 So for now I am not aware of any native browser method that can be used to get all the parent elements of a given element, but it is not to hard to write one.
 
-The solution I put together for this in a flash just involves looping until the current parentNode equals the document element. For each loop that the current parent node is not the document just keep pushing the parent node to an array and then return the array once the looping has finished.
+The solution I put together for this in a flash just involves looping until the current parentNode equals the document element. For each loop that the current parent node is not the document just keep pushing the parent node to an array and then return the array once the looping has finished. I can do whatever it is that I want to do with all the parent nodes, using an array method like filter to get all the ones I want for example.
 
 ```html
 <html>
