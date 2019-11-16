@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2019-11-16 12:14:34
-version: 1.11
+updated: 2019-11-16 12:16:24
+version: 1.12
 ---
 
-So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vuejs starting](https://vuejs.org/v2/guide/) out topics. In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs.
+So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vuejs starting](https://vuejs.org/v2/guide/) out topics. 
+
+In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs. This might not always be necessary, but one way or another what you are working on should be served up via the http protocol rather than that of the file protocol, in some examples you will run into errors that can happen relating to that.
 
 <!-- more -->
 
