@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2019-11-15 19:39:19
-version: 1.15
+updated: 2019-11-15 19:42:52
+version: 1.16
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I want to find the angle from one point to another in a Cartesian coordinate grid. 
@@ -23,7 +23,7 @@ There are a few things that a developer should be aware of in addition to the na
 
 ### 1.1 - atan2 basic example
 
-So the Math.atan2 method is used by giving two arguments the first of which is a y cornet followed by x. What is then returned by the method is a value between negative and positive PI, which is the angle to the given point from the origin.
+So the Math.atan2 method is used by giving two arguments the first of which is a y coordinate followed by x. What is then returned by the method is a value between negative and positive PI, which is the angle to the given point from the origin.
 
 So for a basic example if I where to give Math.atan2 a point that is any one to one ratio between x and y that should give me a 45 degree angle. That should at least be the case if zero degrees faces right, and I start to approach positive PI as the angle to a point moves to the left side of the screen. In other words a clockwise increase in the value of the angle.
 
@@ -40,8 +40,7 @@ console.log(a / Math.PI * 180); // 90
 
 The above example seems to correlate with that understanding of the angles returned by atan2. The point (x=83 y=83) is of course at a 45 degree angle from right side of the screen heading clock wise from the right side to the left side. In addition the point at (x=0,y=83) is at the bottom of the screen so it would be at 90 degrees.
 
-So that being said the Math.atan2 method can be used as a way to find an angle from the origin to the point given via its two arguments. It is also possible to find the angle to any two points by just simply offsetting or normalizing one of the points.
-
+So that being said the Math.atan2 method can be used as a way to find an angle from the origin to the point given via its two arguments. It is also possible to find the angle to any two points by just simply offsetting or normalizing the points of concern so that everything is relative to an object of concern to another object of concern rather than the upper left corner of an element or the window.
 ## 2 - atan2 and two points
 
 Using math.atan2 to find the angle between two points is just a matter of offsetting the points. This can be done by subtracting the values of one point from another in most cases so a code example like the following seems to work okay.
