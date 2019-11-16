@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2019-05-06 12:31:48
-version: 1.10
+updated: 2019-11-16 12:14:34
+version: 1.11
 ---
 
-So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vue starting](https://vuejs.org/v2/guide/) out topics. In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs.
+So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/). When I start a new collection of content I often start out with a getting started post on that collection. So this will be a quick post on [vuejs starting](https://vuejs.org/v2/guide/) out topics. In this post I will be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs.
 
 <!-- more -->
 
@@ -82,4 +82,4 @@ So here I have a single html file that contains both the html code as well as a 
 </html>
 ```
 
-So vuejs involves the use of a Vue constructor that is called with the new keyword just like any other constructor function in javaScript. I then use the [vue el](/2019/05/06/vuejs-el/) option to set the mount point of the example to a paragraph element with an id of mess. I then used the interpolation or mustash syntax to place the message in the data object into the paragraph element 
+So vuejs involves the use of a Vue constructor that is called with the new keyword just like any other constructor function in javaScript. I then use the [vue el](/2019/05/06/vuejs-el/) option to set the mount point of the example to a paragraph element with an id of mess. I then used the interpolation or mustache syntax to place the message in the data object into the paragraph element 
