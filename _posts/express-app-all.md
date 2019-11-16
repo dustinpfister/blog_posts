@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 202
-updated: 2019-04-27 11:11:56
-version: 1.6
+updated: 2019-11-15 19:52:29
+version: 1.7
 ---
 
 So one of the application methods in [express.js](https://expressjs.com/) is app.all, which is a method that can be used to work with any kind of http request method. The most commonly used methods are of course 'GET', and 'POST'. However there are many more that also make sense for what they are, and at times it might be desirable to have a way work with any kind of incoming request regardless of the certain method. This is where app.all can be of help. In this post I will be writing about the app.all method in express, I will be showing some use case examples, and will touch base on the different http methods.
@@ -86,7 +86,7 @@ For now I am just making a GET request for a path that does not exist, in a more
 
 ### 2.2 - The /app.js file
 
-So in the root of the demo folder is where I typically place my main app.js file that will be called with node to start the demo.
+So in the root of the demo folder is where I typically place my main app.js file that will be called with node to start the demo. I am using app.all to define middleware for all types of requests, coming from all possible paths by using an asterisk for the path.
 
 ```js
 let express = require('express'),
