@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2019-11-15 20:07:01
-version: 1.7
+updated: 2019-11-15 20:11:37
+version: 1.8
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) String prototype method in javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. In order to really get into using replace it is important to get up to speed with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), a subject that I hate, but never the less when it does come to search and replace, and matching tasks with text regular expressions are a very powerful tool for doing so.
@@ -32,7 +32,7 @@ In this example I used a pattern that has the global flag set, that is what the 
 
 ## 2 - Using a function to create replacement strings
 
-In place of a static string as the replacement, a function can be used to generate replacement strings that will differ depending on the nature of the instance of the pattern match. For example if the patter contains numbers or dates they can be extracted and used to generate the result in the resulting string.
+In place of a static string as the replacement, a function can be used to generate replacement strings that will differ depending on the nature of the instance of the pattern match. For example if the pattern contains numbers or dates they can be extracted and used to generate the result in the resulting string.
 
 ```js
 let str = 'Some numbers for you are 2, 6, and 10 also.',
@@ -42,3 +42,5 @@ result = str.replace(/\d+/g, (num) => Math.pow(2, num));
 console.log(result);
 // 'Some numbers for you are 4, 64, and 1024 also.'
 ```
+
+So that is a neat tick for string replacement related tasks that I am sure can come in handy now and then. Just this simple example of it is one thing, but say I want to replace all uppercase instances of tag names in an HTML string with lower case ones, this can be used as a way to do so real easy.
