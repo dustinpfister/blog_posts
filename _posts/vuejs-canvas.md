@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2019-11-16 11:29:34
-version: 1.11
+updated: 2019-11-16 11:32:21
+version: 1.12
 ---
 
 I would like to expand and update my collection of posts on canvas here, but maybe I should also do the same for my vuejs content also. So for today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/). Oddly enough that is a rock i have not flipped over just yet. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
@@ -54,7 +54,7 @@ new Vue({
 </html>
 ```
 
-So far so good that canvas ends up being the logical pixel resolution I set in the data object as expected. However what if I where to change that resolution? Do ing so might work but I would need to redraw what I worked out in the mounted hook. Still this is a simple starting point, so lets progress into something more advanced.
+So far so good that canvas ends up being the logical pixel resolution I set in the data object as expected. However what if I where to change that resolution? Doing so might work but I would need to redraw what I worked out in the mounted hook. Still this is a simple starting point, so lets progress into something more advanced.
 
 ## 2 - vue canvas and scaling the canvas element
 
@@ -110,7 +110,7 @@ When I change the logical pixel resolution I get the desired behavior, the resol
 
 So now on top of the vue bind directive I am also now using the [vue on](/2019/11/14/vuejs-on/) directive to do some event attachment. I am using the same method for both mouse clicks, and touch start events. When it comes to maybe turning this into some kind of real project it would be something that would work well with that kind of treatment of both mouse and touch events.
 
-The click method in the methods object is what is called for every mouse click and touch start event. I am using a [ternary operator](/2019/02/02/js-operator-precedence/) to address the differences between mouse and touch events where just the first touch object is what will be seen as an equivalent to a mouse click.
+The click method in the methods object is what is called for every mouse click and touch start event. I am using a [ternary operator](/2019/02/02/js-operator-precedence/) to address the differences between mouse and touch events where just the first touch object is what will be seen as an equivalent to a mouse click. The get bounding client rect of the target element which in this case is the canvas is what I used to offset the x and y values so that they are relative to the canvas element, and not the windows object of the browser.
 
 ```js
 new Vue({
