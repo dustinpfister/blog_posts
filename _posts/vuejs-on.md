@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2019-11-16 12:01:24
-version: 1.6
+updated: 2019-11-16 12:03:47
+version: 1.7
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in vue templates to preform [event attachment](https://vuejs.org/v2/guide/events.html). In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. There are a number of event and key modifiers that can be used to help make it so the methods that I write are more about the actual logic of what the method does rather than having additional code that helps with DOM element related quirks. So lets take a look at a few quick examples of the vue on directive in action.
@@ -51,7 +51,9 @@ new Vue({
 
 ## 2 - A vue on key up  and on change example
 
-Now for a vue on directive example that uses the on key up, and the on change events, along with the [vue model directive](https://vuejs.org/v2/guide/forms.html).
+Now for a vue on directive example that uses the on key up, and the on change events, along with the [vue model directive](https://vuejs.org/v2/guide/forms.html). 
+
+The on key up event will fire when a keyboard key returns from the down position to the up position. SO this is the event that I would want to use when it comes to preforming some kind of action that should happen each time a key is presses, such as checking the character length, and updating a message as it goes up or down. A common task when working out a form.
 
 ```js
 new Vue({
