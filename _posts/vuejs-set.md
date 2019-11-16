@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 438
-updated: 2019-11-16 12:21:58
-version: 1.4
+updated: 2019-11-16 14:38:41
+version: 1.5
 ---
 
 The [vue set](https://vuejs.org/v2/api/#Vue-set) global api method in vuejs can be used to set a property of a reactive object. In other words it is a way to add a property to an object in the data of a Vue constructor instance, and have the view update when a change happens to that property. Many times this should happen automatically, but in some cases it might not when it comes to nested objects.
@@ -46,3 +46,21 @@ For a quick example of vue set, I put something together that makes use of a pro
 ```
 
 When I use the vue set method to set the value of the mess property of the u object in the data object the message bar is displayed as expected. If I where to just add the property directly the message will not display, because it is not reactive. This is the whole reason why there is the vue set method in the global api of vuejs, it is a way to add properties to a reactive object after the fact.
+
+### 1.1 - Using force update as an alternative to making properties reactive
+
+Another option is to use the vue force update method to force the vue to render again.
+
+```js
+  var vm = new Vue({
+    el:'#foo',
+    data: {
+    u:{}
+    }
+  });
+  
+  // force update can be used as an alternative
+  // to making a property reactive
+  vm.$data.u.mess = 'bar';
+  vm.$forceUpdate();
+```
