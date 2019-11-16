@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2019-11-16 11:50:35
-version: 1.5
+updated: 2019-11-16 12:01:24
+version: 1.6
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in vue templates to preform [event attachment](https://vuejs.org/v2/guide/events.html). In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. There are a number of event and key modifiers that can be used to help make it so the methods that I write are more about the actual logic of what the method does rather than having additional code that helps with DOM element related quirks. So lets take a look at a few quick examples of the vue on directive in action.
@@ -49,8 +49,9 @@ new Vue({
 </html>
 ```
 
-## 2 - A vue on key up example
+## 2 - A vue on key up  and on change example
 
+Now for a vue on directive example that uses the on key up, and the on change events, along with the [vue model directive](https://vuejs.org/v2/guide/forms.html).
 
 ```js
 new Vue({
