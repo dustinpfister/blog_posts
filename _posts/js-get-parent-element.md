@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 18:59:10
-version: 1.16
+updated: 2019-11-15 19:00:51
+version: 1.17
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post.
@@ -65,6 +65,8 @@ console.log(el.parentNode); // #document
 So then these are the two main properties of interest when it comes to getting a parent element with native javaScript by itself, but there are of course event more ways of getting a parent element. Maybe for whatever the reason I do not just want a single element but the whole tree of elements. So lets look at some additional examples of this task.
 
 ## 3 - The closest method for getting parent nodes with a query string
+
+So a modern option now is the closest element method that works on most modern browsers. One draw back though is that it will get the closest element that matches the query string including the child element from which it is called.
 
 ```html
 <html>
