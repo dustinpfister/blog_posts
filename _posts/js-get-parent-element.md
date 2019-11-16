@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 19:00:51
-version: 1.17
+updated: 2019-11-15 19:21:23
+version: 1.18
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post.
@@ -19,7 +19,7 @@ I might also touch base on some other related topics as well when it comes to a 
 
 ## 1 - Get parent element AKA DOM NODE if there is one
 
-Once a reference to an element is gained by use of a method like getElementById or querySelector, there is the parentElement property of the element reference if it has one. This property is there to get a parent DOm element rather than a node in general, as there are some kinds of nodes that are often used that are not really actual html elements, such is the case with things like SVG.
+Once a reference to an element is gained by use of a method like getElementById or querySelector, there is the parentElement property of the element reference if it has one. This property is there to get a parent DOM element rather than a node in general, as there are some kinds of nodes that are often used that are not really actual html elements, such is the case with things like SVG.
 
 ```js
 <html>
@@ -92,7 +92,46 @@ console.log( parent.id ); // 'f1'
 </html>
 ```
 
-## 4 - Get all parent elements
+## 4 - Wrting a simple vanilla js get by tag method
+
+So when it comes to making a quick vanilla javaScript solution for getting parent elements by tag, something can be slapped together fairly quickly using a while loop, and the parent node property. In addition to the parent node property there is also of course the tagName property than can be used as something to compare to as I loop threw the elements.
+
+```html
+<html>
+    <head>
+        <title>get parent by tag</title>
+    </head>
+    <body>
+        <div id="f1">
+            <div id="b1">
+                <ul id="u1">
+                    <li id="li1">foo</li>
+                    <li id="li2">bar</li>
+                    <li id="li3">baz</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+var getParentByTag = function(child, tagName) {
+  var el = child;
+  tagName = tagName.toLowerCase();
+  while (el && el.parentNode) {
+    el = el.parentNode;
+    if (el.tagName && el.tagName.toLowerCase() == tagName) {
+      return el;
+    }
+  }
+  return null;
+};
+ 
+var li = document.getElementById('li3');
+console.log( getParentByTag(li, 'div').id ); // 'b1'
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Get all parent elements
 
 So for now I am not aware of any native browser method that can be used to get all the parent elements of a given element, but it is not to hard to write one.
 
@@ -135,7 +174,7 @@ getParents(el).forEach(function (el) {
 
 I am sure there are many other ways to go about doing this. There are also all kinds of other topics in javaScript that come to mind, one thing that comes to mind right of the bat is event bubbling. That is when an event happens in a child element and then the event fires for each parent element also.
 
-## 5 - Parent Elements and Event bubbling
+## 6 - Parent Elements and Event bubbling
 
 So a related topic of interest when it comes to getting parent elements is the subject of [event bubbling](https://en.wikipedia.org/wiki/Event_bubbling). When an element is clicked for example it will fire an on click event that is set for that element, but it will also bubble up to the top most parent element and fire event handlers all the way up unless this is stopped.
 
@@ -163,6 +202,6 @@ document.body.addEventListener('click', onClick);
 
 So when it comes to event handers the target property of the event object will refer to the element where the event happened and the current target property will refer to the element where the event handler is attached.
 
-## 6 - Other possible future ways with querySelector
+## 7 - Other possible future ways with querySelector
 
 As of this writing there is no css selector that I know of that can be used to get a parent element, so there is no way of getting a parent element with querySelector. There is of course chatter about possible future selectors and pseudo classes that might be a way to do so, but so far nothing solid or well supported.
