@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 19:21:23
-version: 1.18
+updated: 2019-11-15 19:23:16
+version: 1.19
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post.
@@ -130,6 +130,8 @@ console.log( getParentByTag(li, 'div').id ); // 'b1'
     </body>
 </html>
 ```
+
+Making a variation of this that looks at the class name property would not be so hard as well, and this could also be developed into a poly fill for the closest method that I wrote about in a previous section.
 
 ## 5 - Get all parent elements
 
