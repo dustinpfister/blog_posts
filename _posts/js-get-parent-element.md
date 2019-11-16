@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2019-11-15 19:23:16
-version: 1.19
+updated: 2019-11-15 19:25:32
+version: 1.20
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript today. There are two properties of concern with this when it comes to an element in javaScript which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post.
@@ -94,7 +94,7 @@ console.log( parent.id ); // 'f1'
 
 ## 4 - Wrting a simple vanilla js get by tag method
 
-So when it comes to making a quick vanilla javaScript solution for getting parent elements by tag, something can be slapped together fairly quickly using a while loop, and the parent node property. In addition to the parent node property there is also of course the tagName property than can be used as something to compare to as I loop threw the elements.
+So when it comes to making a quick [vanilla javaScript method](https://stackoverflow.com/questions/6856871/getting-the-parent-div-of-element/6857116#6857116) solution for getting parent elements by tag, something can be slapped together fairly quickly using a while loop, and the parent node property. In addition to the parent node property there is also of course the tagName property than can be used as something to compare to as I loop threw the elements.
 
 ```html
 <html>
@@ -131,7 +131,7 @@ console.log( getParentByTag(li, 'div').id ); // 'b1'
 </html>
 ```
 
-Making a variation of this that looks at the class name property would not be so hard as well, and this could also be developed into a poly fill for the closest method that I wrote about in a previous section.
+Making a variation of this that looks at the class name property would not be so hard as well, and this could also be developed into a pollyfill for the closest method that I wrote about in a previous section.
 
 ## 5 - Get all parent elements
 
