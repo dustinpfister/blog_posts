@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2019-11-14 17:52:21
-version: 1.4
+updated: 2019-11-16 11:50:35
+version: 1.5
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in vue templates to preform [event attachment](https://vuejs.org/v2/guide/events.html). In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. There are a number of event and key modifiers that can be used to help make it so the methods that I write are more about the actual logic of what the method does rather than having additional code that helps with DOM element related quirks. So lets take a look at a few quick examples of the vue on directive in action.
@@ -47,4 +47,38 @@ new Vue({
     </script>
   </body>
 </html>
+```
+
+## 2 - A vue on key up example
+
+
+```js
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+    '<input type="text" v-model="username" v-on:keyup="check" v-on:change="end"><br>' +
+    '<p> {{ mess }}</p>' +
+    '</div>',
+    data: {
+        username: '',
+        valid: false,
+        mess: 'enter a username'
+    },
+    methods: {
+        check: function () {
+            this.$data.valid = false;
+            this.$data.mess = 'need 8 chars or more here';
+            if (this.$data.username.length >= 8) {
+                this.$data.valid = true;
+                this.$data.mess = 'looking good so far';
+            }
+        },
+        end: function () {
+            this.$data.mess = 'Not a vaild username'
+                if (this.$data.valid) {
+                    this.$data.mess = 'Okay Good thanks';
+                }
+        }
+    }
+});
 ```
