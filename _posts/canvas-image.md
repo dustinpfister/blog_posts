@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-11-17 10:33:43
-version: 1.21
+updated: 2019-11-17 10:35:41
+version: 1.22
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded before hand. However that is just it, the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. As I now need to think about how to go about loading images, before continuing into another state of the project where it is safe to go ahead and use those external assets that must be loaded first.
@@ -117,9 +117,9 @@ In this example the four arguments given after the image are not the values that
 
 ## 5 - Using another canvas and an image source for drawImage
 
-Another canvas element can be used in place of an image element for the first argument of the drawImage method. To do this I just need to create an extra canvas element by one way or another, and the extra canvas element does not need to be appended to the HTML at all.
+Another canvas element can be used in place of an image element for the first argument of the drawImage method. To do this I just need to create an extra canvas element by one way or another. The extra canvas element does not need to be appended to the HTML at all, and in most cases that is what I would want.
 
-Say I want to work out a sprite sheet with canvas and javaScript that might take a lot of overhead to create. I could draw to the sheet canvas once, and then reference it in my other main canvas when it comes to drawing from it. This can be used with other techniques like layering to help make canvas projects run smoother.
+So say I want to work out a sprite sheet with canvas and javaScript that might take a lot of overhead to create. I could draw to the sheet canvas once, and then reference it in my other main canvas when it comes to drawing from it. This can be used with other techniques like layering to help make canvas projects run smoother by reducing the amount of behind the scees math that needs to be preformed on each frame tick.
 
 ```html
 <html>
