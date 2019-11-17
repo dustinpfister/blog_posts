@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.8
-updated: 2019-11-17 12:50:01
+version: 1.9
+updated: 2019-11-17 12:56:44
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -16,13 +16,13 @@ Also because a lot of applications have to do with manipulation of simple 2d are
 
 <!-- more -->
 
-## 1 - The basic box class
+## 1 - The basic Canvas Rect or Box class if you prefer
 
 At a minimum a box class should have an x,y,w, and h properties that define the size, and position of the box. A more advanced Box class may have additional properties that have to do with rotation, and current delta values, but for this section I will be keeping it simple. In addition to the basic values that define a box it should also have a just one method that has to do with the manipulation of the box state position.
 
-Maybe something like this:
-
 ### 1.1 - The Box Class
+
+So for a starting canvas box class I am just making a constructor method that creates a Box Class instance that is just the basic properties. Just the current x and y position of the box area, as well as width and height. In addition to this there is just one move method that just steps the box instance by passing some delta values.
 
 ```js
 var Box = function (op) {
@@ -33,9 +33,6 @@ var Box = function (op) {
     // with and height
     this.w = op.w === undefined ? 32 : op.w;
     this.h = op.h === undefined ? 32 : op.h;
-    // style
-    this.fillColor = '#ffffff' || op.fillColor;
-    this.strokeColor = '#000000' || op.strokeColor;
 };
 
 // move the box
