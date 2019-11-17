@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.10
-updated: 2019-11-17 13:00:58
+version: 1.11
+updated: 2019-11-17 13:02:29
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -49,6 +49,8 @@ Nothing much to write about here, but in this section I am just starting out wit
 Also there is moving a box by passing an angle and a distance rather than delta values for x, and y. So even when it comes to just moving a box there is a great deal more to cover.
 
 ### 1.2 - The Basic Box class demo
+
+So Here I have a demo that makes use of this Basic Box class. I am just creating and injecting a canvas element, and then setting up a basic draw method to render the basic scene here that will be just a single box moving across the canvas.
 
 ```js
 (function () {
