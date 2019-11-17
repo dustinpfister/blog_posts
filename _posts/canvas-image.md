@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-11-17 10:20:29
-version: 1.18
+updated: 2019-11-17 10:26:06
+version: 1.19
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded before hand. However that is just it, the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. As I now need to think about how to go about loading images, before continuing into another state of the project where it is safe to go ahead and use those external assets that must be loaded first.
@@ -28,7 +28,7 @@ There is also ways to create an image from a canvas, that is create images with 
 
 ## 2 - Canvas drawImage method basic example
 
-Here I have a basic example of the drawImage method. To use the draw image method with an external image that external image must be loaded first.
+Here I have a basic example of the drawImage method. To use the draw image method with an external image that external image must be loaded first. To do so I start out by creating a new Image Object instance with the [Image constructor](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image). Once I have that I can attach an on load event that should fire when the image is done loading, at which point it is safe to draw the image to the canvas. I then set an src attribute to the location of the image, the very instant that I do that the image will start to load.
 
 ```html
 <html>
