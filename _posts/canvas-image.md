@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-11-17 10:26:06
-version: 1.19
+updated: 2019-11-17 10:30:52
+version: 1.20
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded before hand. However that is just it, the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. As I now need to think about how to go about loading images, before continuing into another state of the project where it is safe to go ahead and use those external assets that must be loaded first.
@@ -55,11 +55,11 @@ img.src='./pic.png';
 </html>
 ```
 
-In this example I am giving the drawImage method just three arguments in this case the whole image will be drawn at the given location set by the following two arguments after the image is given. However the drawImage method can be given up to nine arguments in total. SO lets look at some more examples of drawImage.
+In this example I am giving the drawImage method just three arguments in this case the whole image will be drawn at the given location set by the following two arguments after the image is given. However the drawImage method can be given up to nine arguments in total. So lets look at some more advanced examples of drawImage.
 
 ## 3 - Canvas images and scaling with the drawImage method
 
-The drawImage method can be given five arguments in total, just like the simple three argument example the first is a reference to the image that is to be drawn to the canvas. In addition just like before the second two arguments set the location that the image is to be drawn at in the canvas as well. However now an additional two arguments can be used to scale the image when it is drawn to the canvas as well.
+The drawImage method can be given five arguments in total out of a maximum of nine. Just like the simple three argument example in the first argument is a reference to the image, or other supported resource such as a canvas . In addition just like before the second two arguments set the location that the image is to be drawn at in the canvas as well. However now an additional two arguments can be used to scale the image when it is drawn to the canvas.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -80,7 +80,7 @@ img.addEventListener('load', function(){
 img.src='./pic.png';
 ```
 
-Doing this eats up a little overhead, it is best to keep your assets native, but on the fly scaling can be preformed.
+Doing this eats up a little overhead, it is best to keep your assets native, but on the fly scaling can be preformed this way. Finally there is using all the arguments of the draw image method to not just set variables for the process of drawing the image, but getting an area from the source image also.
 
 ## 4 - Canvas images and sprite sheets
 
