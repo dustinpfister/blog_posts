@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.11
-updated: 2019-11-17 13:02:29
+version: 1.12
+updated: 2019-11-17 13:03:02
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -90,7 +90,7 @@ So Here I have a demo that makes use of this Basic Box class. I am just creating
         if (bx.x >= canvas.width) {
             bx.x = bx.x % canvas.width - bx.w;
         }
-        draw();
+        draw(ctx);
     };
     loop();
 }
