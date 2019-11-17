@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2019-11-17 09:57:55
-version: 1.17
+updated: 2019-11-17 10:20:29
+version: 1.18
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded before hand. However that is just it, the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. As I now need to think about how to go about loading images, before continuing into another state of the project where it is safe to go ahead and use those external assets that must be loaded first.
@@ -19,9 +19,11 @@ Still sometimes I just want or need to work with extremal sprite sheets, and oth
 
 ## 1 - Canvas image must know basics
 
-This is a post on the HTML canvas element, and using images with a canvas project. This is not a getting started post with canvas, let alone javaScript in general. If you are new to javaScript and canvas you might want to start out elsewhere.
+This is a post on the HTML canvas element, and using images with a such canvas elements. This is not a getting started post with canvas, let alone javaScript in general. If you are new to javaScript and canvas you might want to start out elsewhere.
 
-In canvas there is the drawImage method that is used to draw an image onto a canvas. WIth the drawImage method an external image, a Data URL, or another canvas element can be used as a source. There is also ways to create an image from a canvas, and create images with just context drawing methods using no external assets at all which I often seem to prefer for starters at least, and more often then not the only way to go about making graphics. 
+In canvas there is the drawImage method that is used to draw an image onto a canvas. With the drawImage method an external image, a Data URL, or another canvas element can be used as a source as passed as the first argument to this method. Additional arguments can then be used to define a source position and size, as well as a destination position and size when it comes to drawing to the canvas with this source image.
+
+There is also ways to create an image from a canvas, that is create images with just context drawing methods using no external assets at all which I often seem to prefer for starters at least in most projects. As I mentioned another canvas element can be used as a source for the draw image method, so canvas elements can be used as a way to create sprite sheets with javaScript and then that other canvas can then be used as a resource in place of an external image.
 
 
 ## 2 - Canvas drawImage method basic example
