@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.14
-updated: 2019-11-17 13:06:26
+version: 1.15
+updated: 2019-11-17 13:11:25
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -96,6 +96,12 @@ So Here I have a demo that makes use of this Basic Box class. I am just creating
 }
     ());
 ```
+
+So then this demo works as expected A white box just moves from the left of the screen to the right and then loops around back to the beginning.
+
+So far so good, but when it comes to making a real canvas rect class I will of course want a whole lot more methods that have to do with finding out things like distance between the box, and another box. I might also want to have it so that the x and y point of the class instance refers to the center of the box rather than the upper left corner, and also do some things with rotation and collision detection.
+
+There are all kinds of additional features that come to mind, also even when it comes to the single feature so far I might want to handle that a different way, so lets look at a more advanced example of this class now, with better movement, and some additional features.
 
 ## 6 - Where to go from here.
 
