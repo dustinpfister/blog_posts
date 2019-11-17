@@ -4,21 +4,19 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.6
-updated: 2019-11-17 10:48:31
+version: 1.7
+updated: 2019-11-17 10:50:23
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
 
 For example if I am making a game I will want some kind of enemy class, but I would also want some kind of base class that the class inherits from as well that is shared by all classes that are a display object of sorts in such a game. So a box class would make a good starting base class for all kinds of display objects in a game beyond that of just enemies. The player ship, power ups, and shots coming from player and enemy ships would all inherit from this box class.
 
-Also because a lot of applications have to do with manipulation of simple 2d areas on a screen, as such having a solid understanding of this aspect of 2d geometry is important.
-
-Taking the time to make a box class strikes me as something that is a good example of an exercise of sorts that can often progress into an interesting project of some kind. It has helped me gain a better understand of 2d geometry, and also the nature of a class.
+Also because a lot of applications have to do with manipulation of simple 2d areas on a screen, as such having a solid understanding of this aspect of 2d geometry is important. Taking the time to make a box class strikes me as something that is a good example of an exercise of sorts that can often progress into an interesting project of some kind. It has helped me gain a better understand of 2d geometry, and also the nature of a class.
 
 <!-- more -->
 
-## The basic box class
+## 1 - The basic box class
 
 At a minimum a box class should have an x,y,w, and h properties that define the size, and position of the box. A more advanced Box class may have additional properties that have to do with rotation, and current delta values, but for this post I will be keeping it simple. In addition to the basic values that define a box it should also have a few methods that have to do with the manipulation of the box state.
 
@@ -61,18 +59,18 @@ Box.prototype.draw = function(ctx) {
 };
 ```
 
-## The moveHD method
+## 2 - The moveHD method
 
 So when it comes to just changing the position of the box there are a great many different ways to go about doing so. Because this is just 2d, any method that changes the position of the box is going to have some kind of impact on the x, and y properties of the box class instance.
 
 My moveHD method moves the box by allowing me to pass a heading in radians, and a distance from that point. 
 
-## Other movement method ideas.
+## 3 - Other movement method ideas.
 
 Because I am taking the time to write my own box class, I can add whatever methods I want to the Class when it comes to changing the box position. I could for example add additional properties to the class such as delta values that store the current rate of change for x that is to be updated by calling an update method.
 
 
-## The simple canvas demo app
+## 4 - The simple canvas demo app
 
 In [the first post](/2017/05/17/canvas-getting-started/) that I have made on html5 canvas I have outlined a simple demo app that can be used to get started with a vanilla js canvas project. All my canvas projects end up having at least a main app loop method, a draw method, and some kind of display object(s) that are displayed in the canvas. It also typically contains some kind of way to change the state of what is being displayed in the canvas by way of either an update method, or event handlers.
 
@@ -147,7 +145,7 @@ I will not go to nuts for this post, I'll save that for another one in this [can
   ());
 ```
 
-## Having some fun
+## 5 - Having some fun
 
 So now that I have [the basic idea working in a jsfiddle](https://jsfiddle.net/dustinpfister/sdbcLk94/) maybe I should start doing something fun like making a random heading change on every app loop tick.
 
@@ -298,7 +296,7 @@ Box.prototype.draw = function(ctx) {
 
 Maybe not the best example of where things are heading but you get the idea, from here on out it's all about just paying around with things.
 
-## Where to go from here.
+## 6 - Where to go from here.
 
 It's all about the project that I have in mind. Thats what will determine what kind of additional properties and methods I will be adding to the class. With some projects I will need to add sprites, or write methods that will allow for more advanced movement. Whatever the project may be, coming back to the simple old box class is often a good starting point.
 
