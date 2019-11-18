@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 94
-updated: 2019-11-18 10:28:21
-version: 1.2
+updated: 2019-11-18 10:33:53
+version: 1.3
 ---
 
 These days I have been playing around more with a [node.js](https://nodejs.org/en/) project I am familiar with called [marked](https://www.npmjs.com/package/marked). This is a package that can be used to parse markdown into html. In addition to the usual use case of parsing to html, it is possible to define a custom renderer that can be used to render out plain text, or some other standard other than html. 
@@ -15,12 +15,17 @@ In any case it is a great little package when it comes to working with markdown 
 
 <!-- more -->
 
-## Getting started with marked
+## 1 - Getting started with marked
 
-I assume that you know the basics when working with an npm package, but even so you might still want to know the name of the package to feed to npm right? So here it is:
+I assume that you know the basics when working with an npm package, and nodejs, and javaScript in general. However even so you might still want to know the name of the package to feed to npm. This is a user space npm package afetr all, so to add it to a node project you might want to start out by doing an npm install save in the working directory of a project folder that has a package.json file.
+
+So for a getting starting example I might start a new node project folder and install marked with npm.
 
 ```
-# npm install marked --save
+$ mkdir newproject
+$ cd newroject
+$ npm init
+$ npm install marked --save
 ```
 
 Once installed in a new project folder I made an index.js file and did this:
@@ -30,14 +35,16 @@ var marked = require('marked');
 console.log(marked('#hello world of mark down!'));
 ```
 
-Will give me the following when called from the CLI
+When I call that file from the command line with node it will give me the following.
 
 ```
 $ node index
 <h1 id="hello-world-of-mark-down-">hello world of mark down!</h1>
 ```
 
-## Using a custom renderer for marked to not render links.
+So there you have the basic use case of marked. I pass it some markdown, it spits out some HTML.
+
+## 2 - Using a custom renderer for marked to not render links.
 
 There are some npm projects that can be used to do this such as [remove-markdown](https://www.npmjs.com/package/remove-markdown), but it is possible to format the output of marked in many different ways, including plain text, buy writing a custom render.
 
@@ -77,7 +84,7 @@ console.log(marked(md, {
 
 So here I am making a custom render that renders links differently, I could have it just render the text, or do anything I want really. As You would expect this can be done for a number of elements, including paragraph, and heading elements.
 
-## rendering to plain text
+## 3 - Rendering to plain text
 
 Rendering to plain text, or in any manner that I want is just a matter of overwriting the render methods by passing a custom renderer.
 
@@ -156,6 +163,6 @@ console.log(marked(md, {
 
 For any method not specified the hard coded method will be used resulting in html being rendered. The full list of methods can be found in [the readme](https://github.com/chjj/marked/blob/master/README.md)
 
-## Conclusion
+## 4 - Conclusion
 
 Marked is a great project that has helped me a great deal with getting into text processing. I will update, and expand on this post as I work more with the current project I am working on now that makes use of marked.
