@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 12:25:29
-version: 1.2
+updated: 2019-11-18 12:29:37
+version: 1.3
 ---
 
 Looking back I have wrote a few posts on promises in nodejs, and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on node promise topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -22,6 +22,10 @@ So in the section I will start out with the basics surrounding node promise topi
 This section serves as the getting start point of promises in nodejs, if you have some experience with promises all ready and want to go beyond the basics of them in node, then you should maybe skip over this section.
 
 ### 1.1 - The old node callback style way
+
+So here I have an example of the old callback style way of using a method that accepts a callback method that will fire when the task is finished. That is I call the method, give it some arguments, and one of the arguments is a function that will fire when the task is done. Within this callback method I then do what it is that I want to do with the result of that task, or handle and error that might happen.
+
+So this example is an example of the read file file system method in the file system module of node. I call the method pass the path to the file that I want to read as the first argument, followed by an option encoding, or options object, and finally pass a callback that will fire when the file is read, or an error happens.
 
 ```js
 let fs = require('fs');
