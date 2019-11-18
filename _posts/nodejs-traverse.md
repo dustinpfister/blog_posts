@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 32
-updated: 2019-11-18 09:25:12
-version: 1.4
+updated: 2019-11-18 09:27:57
+version: 1.5
 ---
 
 Sometimes I get into a situation in which I may want to loop over all the nodes of a given object. That is I want to traverse, or loop over an object and preform a certain action with certain key value pairs of an object that has one or more nested objects in it. 
@@ -25,7 +25,7 @@ $ npm install traverse --save
 
 This will install traverse into the current project folder and save it as a dependency of the project in the package.json file.
 
-## The Object
+## 2 - The Object
 
 So just for the sake of this post I will be starting with the following code for each example.
 
@@ -54,9 +54,9 @@ foo = {
 };
 ```
 
-Each following example will be code that is written after the above code. Notice that the object has a nested object within yet another nested object, in addition one of each primitive is used as a key value (String, Boolen, and Number). Although this is a silly example object, in the wild I come across objects like this all the time, and sometimes I would like to walk over them for some reason.
+Each following example will be code that is written after the above code. Notice that the object has a nested object within yet another nested object, in addition to having some primitive key values also (String, Boolean, and Number). Although this is a silly example object, in the wild I come across objects like this all the time, and sometimes I would like to walk over them for one reason or another.
 
-## forEach example
+## 3 - forEach example
 
 So I thought I would start off with a simple forEach example.
 
@@ -77,9 +77,9 @@ traverse(foo).forEach(function (node) {
 });
 ```
 
-So this works a whole lot like Array.forEach in that it loops over each key value pare of the Object. As you would expect it does not work just the same way because I am looping over just a plain old object rather than an instance of Array. Also via the use of the this keyword I have access to a whole lot of helpful properties when walking over the objest such as this.path, also this.node can be used as an alternative to the node argument.
+So this works a whole lot like Array.forEach in that it loops over each key value pare of the Object. As you would expect it does not work just the same way because I am looping over just a plain old object rather than an instance of Array. Also via the use of the this keyword I have access to a whole lot of helpful properties when walking over the object such as this.path, also this.node can be used as an alternative to the node argument.
 
-## Paths example
+## 3 - Paths example
 
 So there are a lot of useful methods in this dependency that help with what comes to mind when dealing with this certain aspect of node.js development. The Path method for example will return an array of all possible paths in the object which I am sure will come in handy now and then.
 
@@ -101,7 +101,7 @@ paths.forEach(function (path) {
 });
 ```
 
-## reduce example
+## 4 - reduce example
 
 Okay now for an example using the reduce method, this should be fun.
 
@@ -153,6 +153,6 @@ console.log(obj); // { foobar: { foo: { b: 41, a: 43, r: 42 } } }
 
 Reduce can be used to return a new object that is constructed during the process of looping over the contents on the object. Here I am creating a new object that only has the structure of my foo object that contains keys that have numbers.
 
-## Conclusion
+## 5 - Conclusion
 
 Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
