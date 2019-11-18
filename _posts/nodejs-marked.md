@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 94
-updated: 2019-11-18 10:33:53
-version: 1.3
+updated: 2019-11-18 10:37:44
+version: 1.4
 ---
 
 These days I have been playing around more with a [node.js](https://nodejs.org/en/) project I am familiar with called [marked](https://www.npmjs.com/package/marked). This is a package that can be used to parse markdown into html. In addition to the usual use case of parsing to html, it is possible to define a custom renderer that can be used to render out plain text, or some other standard other than html. 
@@ -46,7 +46,9 @@ So there you have the basic use case of marked. I pass it some markdown, it spit
 
 ## 2 - Using a custom renderer for marked to not render links.
 
-There are some npm projects that can be used to do this such as [remove-markdown](https://www.npmjs.com/package/remove-markdown), but it is possible to format the output of marked in many different ways, including plain text, buy writing a custom render.
+There are some npm projects that can be used to do this such as [remove-markdown](https://www.npmjs.com/package/remove-markdown), but it is possible to format the output of marked in many different ways, including plain text, by writing a custom render for marked.
+
+Just using marked for all things markdown related when it comes to parsing at least has become a default of sorts for me. Why add yet another project to a stack when I can just used a well supported project I am all ready using in a different way?
 
 One step in parsing to plain text is to just render the text of a hyper link, and not add an anchor element in the output.
 
@@ -82,7 +84,7 @@ console.log(marked(md, {
 // <p>this is some example markdown with a link ( link to: github.com ).</p>
 ```
 
-So here I am making a custom render that renders links differently, I could have it just render the text, or do anything I want really. As You would expect this can be done for a number of elements, including paragraph, and heading elements.
+So here I am making a custom render that renders links differently, I could have it just render the text, or do anything I want really. This of course can be done with all kinds of elements that might be used in the markdown source. As You would expect this can be done for a number of elements, including paragraph, and heading elements.
 
 ## 3 - Rendering to plain text
 
