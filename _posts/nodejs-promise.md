@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 13:02:35
-version: 1.11
+updated: 2019-11-18 15:24:41
+version: 1.12
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -122,6 +122,102 @@ readFile('./README.md')
 
 This example once again does the same thing as the others, but now it does so with promises, and is far more concise then the example that used the promise constructor. So whenever I want to make sure a node method will return a promise, I use this method. If I need to work out some custom logic, or create an abstraction for whatever the reason the promise constructor would be a better option.
 
-## 2 - Conclusion
+## 2 - node promise all example
+
+### 2.1 - Make maps folder method
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify;
+
+let mkdir = promisify(fs.mkdir),
+writeFile = promisify(fs.writeFile);
+
+// make the maps folder
+let mkMapsFolder = () => {
+    // attempt to make a new maps folder
+    return mkdir('./maps')
+    // if successful just resolve
+    .then(() => {
+        return Promise.resolve();
+    })
+    // folder is there or other error
+    .catch((e) => {
+        // if it is just there all ready resolve
+        if (e.code === 'EEXIST') {
+            return Promise.resolve();
+        } else {
+            // else reject because of other error
+            return Promise.reject(e);
+        }
+    });
+};
+```
+
+### 2.2 - Write Map file method
+
+```js
+// write a map file
+let writeMapFile = (opt) => {
+    opt = opt || {};
+    opt.name = opt.name || '';
+    opt.root = opt.root || path.resolve('./');
+    opt.fileName = opt.fileName || 'map_' + opt.name + '.json';
+    opt.width = opt.width || 10;
+    opt.height = opt.height || 10;
+    // create cells
+    let i = 0,
+    cells = [],
+    len = opt.width * opt.height;
+    while (i < len) {
+        cells.push({
+            type: 'blank'
+        });
+        i += 1;
+    }
+    // create map object
+    let map = {
+        name: opt.name,
+        width: opt.width,
+        height: opt.height,
+        cells: cells
+    };
+    console.log('writing map: ' + opt.fileName);
+    // write map
+    return writeFile(path.join(opt.root, opt.fileName), JSON.stringify(map), 'utf8');
+};
+```
+
+### 2.3 - Using Promise all to make an array of map file writes
+
+```js
+// make maps folder with all maps
+mkMapsFolder()
+.then(() => {
+    console.log('all is good with maps folder, creating maps.');
+    let maps = [],
+    i = 0,
+    mapCount = 100;
+    while (i < mapCount) {
+        maps.push(writeMapFile({
+                root: './maps',
+                name: i + 1
+            }));
+        i += 1;
+    }
+    // resolve when map writes resolve
+    return Promise.all(maps);
+})
+.then(() => {
+    console.log('all maps created');
+})
+.catch((e) => {
+    console.log(e.message);
+});
+
+```
+
+## 3 - Conclusion
 
 So there is way more to cover on promises in nodejs, as well as in javaScript in general. I have other posts on the promise all method, the promise resolve and reject Promise object static methods. In addition I have posts on the npm package bluebird that provides way more to work with beyond what is provided with just native Promises.
