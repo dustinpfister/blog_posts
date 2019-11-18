@@ -5,21 +5,17 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 9
-updated: 2019-11-18 07:59:19
-version: 1.2
+updated: 2019-11-18 08:04:24
+version: 1.3
 ---
 
-Harp is a very minimalistic static site sever, but it can also be used to generate a static site in addition to this. So far I have been using [hexo](https://hexo.io) as my static site generator, but as of late I have been trying out some others that exist in the [node.js](https://nodejs.org/en/) world.
+In the npm ecosystem [Harp.js](http://harpjs.com/) is a very minimalistic static site sever, but it can also be used to generate a static site in addition to this. So far I have been using [hexo](https://hexo.io) as my static site generator, but as of late I have been trying out some others that exist in the [node.js](https://nodejs.org/en/) world.
 
 I have also made several attempts at making my own static site generator which at times seems like he best option if I really get into websites rather than anything else that one might develop with javaScript. So far I still do not have anything together that I would call production ready with this.
 
+As of the last time I updated this there is still some activity on the [harp.js git hub](https://github.com/sintaxi/harp) when it comes to support. Given that this is a very minimal static site generator, as long as the project is fairly solid, then a great deal of support might not be needed. One of the benefits of keeping thins simple and streamlined.
+
 <!-- more -->
-
-# About Harp
-
-* [site](http://harpjs.com/)
-* [github](https://github.com/sintaxi/harp)
-* [twitter presence](https://twitter.com/harpwebserver)
 
 ## Getting started with harp
 
@@ -72,4 +68,4 @@ Still I am pretty paschal to hexo still for the moment, it's popular, and has mo
 
 ## Conclusion
 
-Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
+Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/). Also it would seem harp has a [twitter](https://twitter.com/harpwebserver) that might be worth checking out.
