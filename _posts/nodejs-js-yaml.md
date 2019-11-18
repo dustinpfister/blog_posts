@@ -4,8 +4,8 @@ date: 2017-08-02 15:23:49
 tags: [js,node.js,JSON, hexo]
 layout: post
 categories: node.js
-updated: 2019-11-18 08:21:39
-version: 1.4
+updated: 2019-11-18 08:26:35
+version: 1.5
 id: 29
 ---
 
@@ -15,7 +15,7 @@ Because of the support of comments often I see it used for configuration files i
 
 <!-- more -->
 
-In most cases JSON works just fine, but YAML is used in a wider range of programing environments outside that of javaScript. In addition YAML allows for additional features such as comments. As such it is sometimes used as an alternative to JSON that comes up now and then in node.js projects.
+In most cases JSON works just fine, but YAML might be a better option for anything that is not going to be sent to or from a web based client system. The main reason why I find myself using it now and then in projects is because of the comments support, it allows for me to place comments above each setting in a configuration file that is nice when it comes to making a project a little more user friendly. Also it strikes me as a more appropriate option when it comes to a more standard from of data storage when it comes to other programing environments outside of that of javaScript.
 
 In this post will be writing a thing or two about [js-yaml](https://www.npmjs.com/package/js-yaml) as a means of parsing a YAML file into an object that you can then use to soft code you node.js application.
 
