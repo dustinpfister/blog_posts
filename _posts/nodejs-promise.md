@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 12:29:37
-version: 1.3
+updated: 2019-11-18 12:33:32
+version: 1.4
 ---
 
 Looking back I have wrote a few posts on promises in nodejs, and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on node promise topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -41,6 +41,10 @@ fs.readFile('./README.md', 'utf8', function (e, data) {
     }
 });
 ```
+
+The problem here is that I have to do both error handing, and what it is that I do if all goes well in the body of the same function. However this also causes things to get yet even more messy when I need to do several tasks like this on top of each other. When doing so this results in what is often called callback hell.
+
+So promises then are a way to go about breaking down what to do into septate functions that are called in the event of an error, and if all goes well. In addition things can be chained together, resulting in code that is easier to follow and debug. So lets look as some more examples that do the same thing only this time with node promises.
 
 ### 1.2 - The Node Promise native constructor
 
