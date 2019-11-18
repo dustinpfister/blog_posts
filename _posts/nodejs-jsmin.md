@@ -5,8 +5,8 @@ tags: [js,node.js,js13k]
 layout: post
 categories: node.js
 id: 31
-updated: 2019-11-18 09:00:13
-version: 1.4
+updated: 2019-11-18 09:04:33
+version: 1.5
 ---
 
 Today I am working on my 2017 submission to [js13kgames.com](http://js13kgames.com/) in which I must make a JavaScript game in which all the source code and any additional assets takes up 13kb or less of space. As such it is important to crunch the size of the source code down, as the development form of any game I make often surpasses that limit in a heart beat. 
@@ -34,7 +34,7 @@ Here I just created a minified version on my development file main.js. As of thi
 
 ## 2 - Using jsmin in a script
 
-I have a few files that I would like to combine together in a single js file that is minified. this is something that would not take that long to do manually, but I have gotten into the habit of throwing together quick little scripts that automate process like this.
+I have a few files that I would like to combine together in a single js file that is minified. This is something that would not take that long to do manually, but I have gotten into the habit of throwing together quick little scripts that automate a process like this which can save a little time as a keep developing.
 
 To use jsmin in a script I will want to install it as a dev dependency of my node project.
 
@@ -99,9 +99,11 @@ var build = function () {
 build();
 ```
 
-The script recursively keeps calling itself until all of the files have been opened the js inside minified, and added to a variable that is then written to build.js in the root folder of my project. this as you may gather is the fine that I will eventfully be using in my zip file that I will be submitting to the competition. 
+The script recursively keeps calling itself until all of the files have been opened the js inside minified, and added to a variable that is then written to build.js in the root folder of my project. This as you may gather is the file that I will eventfully be using in my zip file that I will be submitting to the competition. 
 
 ## 3 - Conclusion
+
+So jsmin is a great little project for crunching down the size of a javaScript file. I am not going to say that it is the best solution though as there are so many others and I have not tested them all out yet.
 
 Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
 
