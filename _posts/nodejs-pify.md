@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 159
-updated: 2019-11-18 10:16:28
-version: 1.4
+updated: 2019-11-18 10:19:21
+version: 1.5
 ---
 
 When making a node.js project, many methods in the node.js core work by giving a callback that will return an error, or what it is that you want from the method. This is a callback style method that can result in the so called callback hell when it comes to doing anything where many of these kinds of calls need to be nested.
@@ -44,7 +44,7 @@ fs.readFile('readme.md', function (e, text) {
 ```
 
 This can work okay, but can lead to what is called call back hell when making a complex project. Promises can help to keep things neater by having a long chain of calls for promises and then calling the then method off the resolve promise object.
-This is where pify can be used as a way to make it so that a promise is what is returned rather than having to use the callback style way of doing things.
+This is where pify can be used as a way to make it so that a promise is what is returned rather than having to use the callback style way of doing things. Just require in pify, then call the method that it exports passing the function that I want to promisify. I can then call the method that returns which returns a promise, at which point I can then use then and catch just like with any other promise.
 
 
 ```js
