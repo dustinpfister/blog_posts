@@ -5,13 +5,13 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 9
-updated: 2017-09-30 18:43:20
-version: 1.1
+updated: 2019-11-18 07:59:19
+version: 1.2
 ---
 
-{% mytags_postwords !js_core,!js_node,harp,server,static&32;site %}
+Harp is a very minimalistic static site sever, but it can also be used to generate a static site in addition to this. So far I have been using [hexo](https://hexo.io) as my static site generator, but as of late I have been trying out some others that exist in the [node.js](https://nodejs.org/en/) world.
 
-Harp is a very minimalistic static site sever, but it can also be used to generate a static site. So far I have been using [hexo](https://hexo.io) as my static site generator, but as of late I have been trying out some others that exist in the [node.js](https://nodejs.org/en/) world.
+I have also made several attempts at making my own static site generator which at times seems like he best option if I really get into websites rather than anything else that one might develop with javaScript. So far I still do not have anything together that I would call production ready with this.
 
 <!-- more -->
 
