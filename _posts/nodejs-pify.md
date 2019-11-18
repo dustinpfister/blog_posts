@@ -5,11 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 159
-updated: 2018-02-28 17:23:05
-version: 1.1
+updated: 2019-11-18 10:05:11
+version: 1.2
 ---
 
-When making a node.js project, many methods in the node.js core work by giving a callback that will return an error, or what it is that you want from the method. It may be desireable to have these methods return promises instead to be used as a means to work with the method. I could juts do so with the Promise constructor, but [pify](https://www.npmjs.com/package/pify) is a nice little project that can help to make quick work of this.
+When making a node.js project, many methods in the node.js core work by giving a callback that will return an error, or what it is that you want from the method. This is a callback style method that can result in the so called callback hell when it comes to doing anything where many of these kinds of calls need to be nested.
+
+In late versions of nodejs many core modules now return a promise as an alternative to this cllback style way of doing things. Also there is the [promisify method in the util module](/2019/06/22/nodejs-util-promisify/) that I often use as a way to promsify these built in methods. That solution will also work on most older versions of nodejs, at least all the one that are still supported anyway.
+
+Another option would be to just make a quick method where I am returning a new instance of a promise constructor when it comes to any version of node that supports Promises, or failing that, by using a user space module like bluebird to add promises. However this is a post on the npm package [pify](https://www.npmjs.com/package/pify), one of many project created and maintained by [sindresorhus](https://github.com/sindresorhus), it is a nice little project that can help to make quick work of this also so lets look at some quick examples.
 
 <!-- more -->
 
