@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 9
-updated: 2019-11-18 08:04:24
-version: 1.3
+updated: 2019-11-18 08:05:18
+version: 1.4
 ---
 
 In the npm ecosystem [Harp.js](http://harpjs.com/) is a very minimalistic static site sever, but it can also be used to generate a static site in addition to this. So far I have been using [hexo](https://hexo.io) as my static site generator, but as of late I have been trying out some others that exist in the [node.js](https://nodejs.org/en/) world.
@@ -17,7 +17,7 @@ As of the last time I updated this there is still some activity on the [harp.js 
 
 <!-- more -->
 
-## Getting started with harp
+## 1 - Getting started with harp
 
 Installing harp is as simple as with any other node project, and like most static site generators you will want to install it as a global script like so.
 
@@ -34,11 +34,11 @@ $ harp server newProject
 
 you should get a message saying that the site is being hosted at localhost:9000, just open that up in the browser, and you will see what you start with.
 
-## Starting theme
+## 2 - Starting theme
 
 Harps out of the box theme is pretty minimal. In fact it is just a single index.jade file. I can't say this is a deal breaker for me though, with hexo I am currently using just a hacked over version of the default theme. Themes are not the most important aspect of a site, that would be content, still I am all wondering how I will be dealing with pagination, will I have to write my own thing for that?
 
-## Adding content
+## 3 - Adding content
 
 Adding new content is as simple as just creating a new *.jade, or in my case a *.ejs file. It makes use coffee script, and Harp also supports both Sass, and Less as well as Stylus for style. 
 
@@ -50,7 +50,7 @@ So I just did a little hello world by saving a page1.ejs file, that was really j
 
 While running as a server any changes I make will take effect right away with having to regenerate each time. The page showed up right away when I pointed my browser to localhost:9000/page1
 
-## Generating a static site
+## 4 - Generating a static site
 
 calling generate like this
 
@@ -60,12 +60,12 @@ $ harp generate
 
 will result in an html,css structure that can be severed up by whatever means, which is of course the basic feature that I expect from any static site generator. I noticed that the style was lost for some reason though, I was able to see a *.css file in the public name space, so maybe it is just a simple fix on my part.
 
-## My thoughts on harp
+## 5 - My thoughts on harp
 
 If I where to take the time to make a static site generator I might very well come up with something like harp. My thinking is that I would make something pretty minimal, and stream line. When it comes to my site, all that really matters is that I can server up simple plain out static content.
 
 Still I am pretty paschal to hexo still for the moment, it's popular, and has more features for what they are worth. Still a minimal site generator like harp comes to mind when working on a very simple site where all the client cares about is the content and thats it.
 
-## Conclusion
+## 6 - Conclusion
 
 Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/). Also it would seem harp has a [twitter](https://twitter.com/harpwebserver) that might be worth checking out.
