@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 17
-updated: 2017-09-30 18:43:22
-version: 1.5
+updated: 2019-11-18 08:52:20
+version: 1.6
 ---
 
-So you find yourself writing some kind of [Command Line Interface tool](https://en.wikipedia.org/wiki/Command-line_interface) with [node.js](https://nodejs.org/en/), and as such you want to make it so it will accept some arguments from the command line. Just like that of many other CLI tools that you may be familiar with if you are somewhat POSIX or powerShell savvy. If so you will want to check out [nopt](https://www.npmjs.com/package/nopt).
+So you find yourself writing some kind of [Command Line Interface tool](https://en.wikipedia.org/wiki/Command-line_interface) with [node.js](https://nodejs.org/en/), and as such you want to make it so it will accept some arguments from the command line. So you want something that works just like that of many other CLI tools that you may be familiar with if you are somewhat POSIX or powerShell savvy. If so you might want to check out [yargs](/2018/07/24/nodejs-yargs) as that is the option parser that I have come to prefer. However there are [many other options](/2018/07/31/nodejs-ways-to-parse-cli-options/) of course, and as such this post is mainly just on [nopt](https://www.npmjs.com/package/nopt).
 
 <!-- more -->
 
