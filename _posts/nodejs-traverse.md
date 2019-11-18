@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 32
-updated: 2019-11-18 09:27:57
-version: 1.5
+updated: 2019-11-18 09:38:50
+version: 1.6
 ---
 
 Sometimes I get into a situation in which I may want to loop over all the nodes of a given object. That is I want to traverse, or loop over an object and preform a certain action with certain key value pairs of an object that has one or more nested objects in it. 
@@ -154,5 +154,7 @@ console.log(obj); // { foobar: { foo: { b: 41, a: 43, r: 42 } } }
 Reduce can be used to return a new object that is constructed during the process of looping over the contents on the object. Here I am creating a new object that only has the structure of my foo object that contains keys that have numbers.
 
 ## 5 - Conclusion
+
+So the the traverse npm package is a good way to go about looping over all the contents of an object in a nodejs project. Although it looks like it is not supported any more, so maybe another solution should be looked into on this one. It is true that just because a project is not being supported it does not mean that it is broken, there is a difference between supporting and mangling.
 
 Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
