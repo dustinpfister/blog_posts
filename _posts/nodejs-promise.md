@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 12:41:31
-version: 1.7
+updated: 2019-11-18 12:48:18
+version: 1.8
 ---
 
 Looking back I have wrote a few posts on promises in nodejs, and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on node promise topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -89,6 +89,14 @@ readFile('./README.md')
 });
 
 ```
+
+So then this example works more or less the same way as the first example that just used callbacks. So far it would seem that I just made something that could be very simple far more complex. That is the case hear actually, there is a far more simple way to go about doing this.
+
+In late versions of node you do not need to bother making a readFile method like this, as the native read file method returns a promise to begin with. Using the Promise constructor is not maybe the best option to do something like this, when it comes to supporting older versions of node as well. If I just want to make sure read file will return a promise on all versions of node concerned, it might be better to use a promsify method of one type or another
+
+Still this example is here to serve as an example of using the promise constructor to create a method that returns a promise. In some situations it might make sense to make a method with the promise constructor if the aim is to make some kind of custom method where the use of the constructor is really called for.
+
+Any way lets look at some more examples of promises in nodejs.
 
 ### 1.3 - THe Util module and the promisify method
 
