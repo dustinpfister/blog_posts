@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 12:33:32
-version: 1.4
+updated: 2019-11-18 12:35:58
+version: 1.5
 ---
 
 Looking back I have wrote a few posts on promises in nodejs, and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on node promise topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -47,6 +47,8 @@ The problem here is that I have to do both error handing, and what it is that I 
 So promises then are a way to go about breaking down what to do into septate functions that are called in the event of an error, and if all goes well. In addition things can be chained together, resulting in code that is easier to follow and debug. So lets look as some more examples that do the same thing only this time with node promises.
 
 ### 1.2 - The Node Promise native constructor
+
+So one way to get started with promises in node is to create one with the promise constructor. As long as you are using a recent version of node the promise constructor should be there, all I have to do is just call it with the new keyword just like any other constructor, and pass it a function where I will define what needs to get done for the promise.
 
 ```js
 let fs = require('fs');
