@@ -4,8 +4,8 @@ date: 2017-08-02 15:23:49
 tags: [js,node.js,JSON, hexo]
 layout: post
 categories: node.js
-updated: 2019-11-18 08:26:35
-version: 1.5
+updated: 2019-11-18 08:28:20
+version: 1.6
 id: 29
 ---
 
@@ -19,7 +19,7 @@ In most cases JSON works just fine, but YAML might be a better option for anythi
 
 In this post will be writing a thing or two about [js-yaml](https://www.npmjs.com/package/js-yaml) as a means of parsing a YAML file into an object that you can then use to soft code you node.js application.
 
-## YAML file example
+## 1 - YAML basic file example
 
 First start with a basic YAML file example such as this.
 
@@ -35,7 +35,7 @@ options :
 
 As you can see you can use the number sign to indicate a comment. I am also defining a object called options by just defining some more properties rather than giving a value.
 
-## installing js-yaml
+## 2 - installing js-yaml
 
 Now that you have an example file to work with you will need a yaml parser to parse the yaml file into a javascript object that can be worked with in the project.
 
@@ -45,7 +45,7 @@ So start a new node.js test project cd into the folder of it as usual and the ad
 $ npm install js-yaml --save
 ```
 
-## Parsing YAML for use in a node project.
+## 3 - Parsing YAML for use in a node project.
 
 Once you have js-yaml in your node_modules folder working with it is pretty straight forward.
 
@@ -82,7 +82,7 @@ fs.readFile('./config.yml', 'utf8', function (e, data) {
 });
 ```
 
-## Further reading
+## 4 - Further reading
 
 In this post I will not be going over the full scope of YAML, there are some [good resources](http://www.yaml.org/start.html) that do just that. This is just another quick post of mine on one of the many [node.js](/categories/node-js/) packages I have fiddled around with.
 
