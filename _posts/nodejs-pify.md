@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 159
-updated: 2019-11-18 10:12:49
-version: 1.3
+updated: 2019-11-18 10:16:28
+version: 1.4
 ---
 
 When making a node.js project, many methods in the node.js core work by giving a callback that will return an error, or what it is that you want from the method. This is a callback style method that can result in the so called callback hell when it comes to doing anything where many of these kinds of calls need to be nested.
@@ -63,3 +63,7 @@ pify(fs.readFile)('readme.md').then(function (text) {
  
 });
 ```
+
+## 2 - Conclusion
+
+So pify is not the inly way to go about doing this when it comes to making a project that will work nice with older versions of node, and the use of user space projects that do not return promises. As I have mentioned there is a built in method in the util module of nodejs that can also be used to do this. In addition other projects like fs-extra return promise for all file system methods' Also when it comes to late versions of node there is no need to bother with any of these any more assuming that you do not care abut supporting older versions of node at all.
