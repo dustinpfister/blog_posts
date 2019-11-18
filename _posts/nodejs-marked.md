@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 94
-updated: 2019-11-18 10:37:44
-version: 1.4
+updated: 2019-11-18 10:39:17
+version: 1.5
 ---
 
 These days I have been playing around more with a [node.js](https://nodejs.org/en/) project I am familiar with called [marked](https://www.npmjs.com/package/marked). This is a package that can be used to parse markdown into html. In addition to the usual use case of parsing to html, it is possible to define a custom renderer that can be used to render out plain text, or some other standard other than html. 
@@ -88,7 +88,7 @@ So here I am making a custom render that renders links differently, I could have
 
 ## 3 - Rendering to plain text
 
-Rendering to plain text, or in any manner that I want is just a matter of overwriting the render methods by passing a custom renderer.
+Rendering to plain text, or in any manner that I want is just a matter of overwriting the render methods by passing a custom renderer. For plain text I will want a method for all elements that are used in the markdown source which for me is paragraphs headers and links.
 
 ```js
 var marked = require('marked'),
