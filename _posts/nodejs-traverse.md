@@ -5,23 +5,25 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 32
-updated: 2019-11-18 09:07:16
-version: 1.3
+updated: 2019-11-18 09:25:12
+version: 1.4
 ---
 
-Sometimes I get into a situation in which I may want to loop over all the nodes of a given object. That is I want to traverse, or loop over an object and preform a certain action with certain node values. 
+Sometimes I get into a situation in which I may want to loop over all the nodes of a given object. That is I want to traverse, or loop over an object and preform a certain action with certain key value pairs of an object that has one or more nested objects in it. 
 
 I could slap together my own solution for looping over all nested object keys, maybe starting with a for in loop that I use in a method that is called recursively. However a much better option would likely be to just go ahead and use [traverse](https://www.npmjs.com/package/traverse) as this seems to work just fine for this kind of task.
 
 <!-- more -->
 
-## Install
+## 1 - Install the traverse npm package
 
-You know the deal, unless you don't in which case.
+You know the deal whe it comes to adding an npm package to a stack, unless you do not in which case.
 
 ```
-$ npm install traverse
+$ npm install traverse --save
 ```
+
+This will install traverse into the current project folder and save it as a dependency of the project in the package.json file.
 
 ## The Object
 
