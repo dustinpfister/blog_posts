@@ -5,8 +5,8 @@ tags: [js,node.js,js13k]
 layout: post
 categories: node.js
 id: 31
-updated: 2019-11-18 08:57:58
-version: 1.3
+updated: 2019-11-18 09:00:13
+version: 1.4
 ---
 
 Today I am working on my 2017 submission to [js13kgames.com](http://js13kgames.com/) in which I must make a JavaScript game in which all the source code and any additional assets takes up 13kb or less of space. As such it is important to crunch the size of the source code down, as the development form of any game I make often surpasses that limit in a heart beat. 
@@ -18,13 +18,13 @@ There are many solutions for javascript minification, but for this post I will b
 
 ## 1 - Using jsmin from the command line
 
-If I want to just quickly compress some file that is pretty easy. Just install jsmin as a global script.
+If I want to just quickly compress some file that is pretty easy. Just install jsmin as a global script as the project can be used as both a command line tool, as well as a javaScript library that can be used in a script with require.
 
 ```
 $ npm install -g jsmin
 ```
 
-Once jsmin is installed as a global script it can then be used from the command line.
+Once jsmin is installed as a global script it can then be used from the command line like so:
 
 ```
 $ jsmin -o main.min.js main.js
