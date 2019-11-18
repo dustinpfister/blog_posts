@@ -4,8 +4,8 @@ date: 2017-08-02 15:23:49
 tags: [js,node.js,JSON, hexo]
 layout: post
 categories: node.js
-updated: 2017-09-30 18:43:21
-version: 1.2
+updated: 2019-11-18 08:15:07
+version: 1.3
 id: 29
 ---
 
@@ -13,11 +13,9 @@ id: 29
 
 <!-- more -->
 
-## Why use YAML over JSON?
-
 In most cases JSON works just fine, but YAML is used in a wider range of programing environments outside that of javaScript. In addition YAML allows for additional features such as comments. As such it is sometimes used as an alternative to JSON that comes up now and then in node.js projects.
 
-This post will help you get started with js-yaml as a means of parsing a YAML file into an object that you can then use to soft code you node.js application.
+In this post will be writing a thing or two about [js-yaml](https://www.npmjs.com/package/js-yaml) as a means of parsing a YAML file into an object that you can then use to soft code you node.js application.
 
 ## YAML file example
 
