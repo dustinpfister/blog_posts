@@ -4,8 +4,8 @@ date: 2017-08-02 15:23:49
 tags: [js,node.js,JSON, hexo]
 layout: post
 categories: node.js
-updated: 2019-11-18 08:40:13
-version: 1.8
+updated: 2019-11-18 08:42:49
+version: 1.9
 id: 29
 ---
 
@@ -55,7 +55,7 @@ The js-yaml parser can now be required in just as with any other user space or b
 
 ## 3 - Parsing YAML for use in a node project.
 
-Once you have js-yaml in your node_modules folder working with it is pretty straight forward.
+Once you have js-yaml in your node_modules folder working with it is pretty straight forward. The safe load method is the usual way to go about loading in some yaml, but first I need to get that yaml code. The built in nodejs file system module is one way to go about doing so.
 
 ```js
 var yaml = require('js-yaml'),
