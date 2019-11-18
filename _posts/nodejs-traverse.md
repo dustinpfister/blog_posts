@@ -5,11 +5,13 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 32
-updated: 2017-09-30 18:43:23
-version: 1.2
+updated: 2019-11-18 09:07:16
+version: 1.3
 ---
 
-Sometimes I get into a situation in which I may want to loop over all the nodes of a given object. That is I want to traverse, or loop over an object an preform a certain action with certain node values. I could slap together my own solution, maybe starting with a for in loop that I use in a method that is called recursively. However a much better option would likely be to just go ahead and use [traverse](https://www.npmjs.com/package/traverse).
+Sometimes I get into a situation in which I may want to loop over all the nodes of a given object. That is I want to traverse, or loop over an object and preform a certain action with certain node values. 
+
+I could slap together my own solution for looping over all nested object keys, maybe starting with a for in loop that I use in a method that is called recursively. However a much better option would likely be to just go ahead and use [traverse](https://www.npmjs.com/package/traverse) as this seems to work just fine for this kind of task.
 
 <!-- more -->
 
