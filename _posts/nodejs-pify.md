@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 159
-updated: 2019-11-18 10:05:11
-version: 1.2
+updated: 2019-11-18 10:12:49
+version: 1.3
 ---
 
 When making a node.js project, many methods in the node.js core work by giving a callback that will return an error, or what it is that you want from the method. This is a callback style method that can result in the so called callback hell when it comes to doing anything where many of these kinds of calls need to be nested.
@@ -17,11 +17,12 @@ Another option would be to just make a quick method where I am returning a new i
 
 <!-- more -->
 
-## A basic example of pify
+## 1 - Basic example of pify
 
-So normally most node.js methods are used by giving one or more arguments ending with a callback. 
+So normally most node.js methods are used by giving one or more arguments ending with a callback. That callback will then give an error object, or null value as the first argument, and then a result of some kind as the second argument when there is something to that effect.
 
-like this:
+In other words something like this:
+
 ```js
 let fs = require('fs');
  
@@ -42,7 +43,8 @@ fs.readFile('readme.md', function (e, text) {
 });
 ```
 
-This can work okay, but can lead to what is called call back hell when making a complex project. Promises can help to keep things neater, and pify can be used as a way to do just that.
+This can work okay, but can lead to what is called call back hell when making a complex project. Promises can help to keep things neater by having a long chain of calls for promises and then calling the then method off the resolve promise object.
+This is where pify can be used as a way to make it so that a promise is what is returned rather than having to use the callback style way of doing things.
 
 
 ```js
