@@ -4,8 +4,8 @@ date: 2017-08-02 15:23:49
 tags: [js,node.js,JSON, hexo]
 layout: post
 categories: node.js
-updated: 2019-11-18 08:35:30
-version: 1.7
+updated: 2019-11-18 08:40:13
+version: 1.8
 id: 29
 ---
 
@@ -39,15 +39,19 @@ As you can see the number sign can be used to indicate a comment. I started off 
 
 I am also defining a object called options by just using a line break followed by whitespace indentation with spaces and not tabs. The white space indentation is what is used to inform a parser that the values are object keys of the current object.
 
+So I saved this example as config.yaml, and now I just need a way to parse it into a workable object in node. To do this I will need a parser, I could make my own but why do that whne I can save a whole lot of time by using js-yaml.
+
 ## 2 - installing js-yaml
 
-Now that you have an example file to work with you will need a yaml parser to parse the yaml file into a javascript object that can be worked with in the project.
+Now that you have an example file to work with you will need a yaml parser to parse the yaml file into a javaScript object that can be worked with in the project.
 
 So start a new node.js test project cd into the folder of it as usual and the add js-yaml to the project.
 
 ```
 $ npm install js-yaml --save
 ```
+
+The js-yaml parser can now be required in just as with any other user space or built in nodejs module. So lets get together a simple javaScript file that will load this external conf.yaml file of ours.
 
 ## 3 - Parsing YAML for use in a node project.
 
