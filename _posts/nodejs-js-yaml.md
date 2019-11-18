@@ -4,12 +4,14 @@ date: 2017-08-02 15:23:49
 tags: [js,node.js,JSON, hexo]
 layout: post
 categories: node.js
-updated: 2019-11-18 08:15:07
-version: 1.3
+updated: 2019-11-18 08:21:39
+version: 1.4
 id: 29
 ---
 
-[YAML](http://yaml.org/) is a recursive acronym for YAML Ain't Markup Language, that is used for data serialization. Often I see it used for configuration files in place of JSON (JavaScript Object Notation), as a means of soft coding settings. This is the case in [hexo](https://hexo.io), for the purpose of configuring settings for hexo itself, as well as the theme that is being used.
+[YAML](http://yaml.org/) is a recursive acronym for [YAML Ain't Markup Language](https://en.wikipedia.org/wiki/YAML) that is used for data serialization, but does so in a more human readable style format, by supporting features like comments. 
+
+Because of the support of comments often I see it used for configuration files in place of JSON (JavaScript Object Notation), as a means of soft coding settings, and storing other forms of data where YAML may be an appropriate option. This is the case in the static site generator that I use called [hexo](https://hexo.io), for the purpose of configuring settings for hexo itself as well as for a site project folder such as what theme I am using.
 
 <!-- more -->
 
