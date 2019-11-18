@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 9
-updated: 2019-11-18 08:05:18
-version: 1.4
+updated: 2019-11-18 08:11:05
+version: 1.5
 ---
 
 In the npm ecosystem [Harp.js](http://harpjs.com/) is a very minimalistic static site sever, but it can also be used to generate a static site in addition to this. So far I have been using [hexo](https://hexo.io) as my static site generator, but as of late I have been trying out some others that exist in the [node.js](https://nodejs.org/en/) world.
@@ -19,7 +19,7 @@ As of the last time I updated this there is still some activity on the [harp.js 
 
 ## 1 - Getting started with harp
 
-Installing harp is as simple as with any other node project, and like most static site generators you will want to install it as a global script like so.
+Installing harp is as simple as with any other npm package, and like most static site generators you will want to install it as a global script like so.
 
 ```
 $ npm install -g harp
@@ -32,7 +32,7 @@ $ harp init newProject
 $ harp server newProject
 ```
 
-you should get a message saying that the site is being hosted at localhost:9000, just open that up in the browser, and you will see what you start with.
+You should get a message saying that the site is being hosted at localhost:9000, just open that up in the browser, and you will see what you start with.
 
 ## 2 - Starting theme
 
