@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 12:35:58
-version: 1.5
+updated: 2019-11-18 12:37:31
+version: 1.6
 ---
 
 Looking back I have wrote a few posts on promises in nodejs, and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on node promise topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -89,6 +89,8 @@ readFile('./README.md')
 ```
 
 ### 1.3 - THe Util module and the promisify method
+
+So then thee is the promsify method of the node core util module. I use this method all the time as a node built in way to convert an old callback style method into a method that will return a promise.
 
 ```js
 let fs = require('fs'),
