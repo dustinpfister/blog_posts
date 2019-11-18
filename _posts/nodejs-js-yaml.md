@@ -4,8 +4,8 @@ date: 2017-08-02 15:23:49
 tags: [js,node.js,JSON, hexo]
 layout: post
 categories: node.js
-updated: 2019-11-18 08:28:20
-version: 1.6
+updated: 2019-11-18 08:35:30
+version: 1.7
 id: 29
 ---
 
@@ -21,7 +21,9 @@ In this post will be writing a thing or two about [js-yaml](https://www.npmjs.co
 
 ## 1 - YAML basic file example
 
-First start with a basic YAML file example such as this.
+So for starters we need to work out just a basic YAML file example that has some foo bar like settings. An example that just has a single key value pair, and then maybe some nested key value pairs maybe.
+
+So then lets first start with a basic YAML file example such as this:
 
 ```yaml
 # Set a username here
@@ -33,7 +35,9 @@ options :
    displayGreating : true
 ```
 
-As you can see you can use the number sign to indicate a comment. I am also defining a object called options by just defining some more properties rather than giving a value.
+As you can see the number sign can be used to indicate a comment. I started off by making a comment that informs someone looking over my simple configuration file that a user name value can be changed by changing the value for the user name key in this file.
+
+I am also defining a object called options by just using a line break followed by whitespace indentation with spaces and not tabs. The white space indentation is what is used to inform a parser that the values are object keys of the current object.
 
 ## 2 - installing js-yaml
 
