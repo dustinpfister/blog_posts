@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 12:20:35
-version: 1.1
+updated: 2019-11-18 12:25:29
+version: 1.2
 ---
 
 Looking back I have wrote a few posts on promises in nodejs, and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on node promise topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -17,6 +17,9 @@ It would also be nice to have one post where I go beyond just the basics of prom
 
 ## 1 - Node promise basics
 
+So in the section I will start out with the basics surrounding node promise topics. Starting out with just a simple example of an old callback style use example of the read file file system module method. I will then give two examples that do the same thing with promises. One of which will use the Promise Constructor, and the other will use the promisify method of the util method to quickly create a method that returns a promise for the read file file system module.
+
+This section serves as the getting start point of promises in nodejs, if you have some experience with promises all ready and want to go beyond the basics of them in node, then you should maybe skip over this section.
 
 ### 1.1 - The old node callback style way
 
