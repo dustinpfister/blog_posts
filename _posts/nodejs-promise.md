@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 12:59:19
-version: 1.10
+updated: 2019-11-18 13:02:35
+version: 1.11
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -121,3 +121,7 @@ readFile('./README.md')
 ```
 
 This example once again does the same thing as the others, but now it does so with promises, and is far more concise then the example that used the promise constructor. So whenever I want to make sure a node method will return a promise, I use this method. If I need to work out some custom logic, or create an abstraction for whatever the reason the promise constructor would be a better option.
+
+## 2 - Conclusion
+
+So there is way more to cover on promises in nodejs, as well as in javaScript in general. I have other posts on the promise all method, the promise resolve and reject Promise object static methods. In addition I have posts on the npm package bluebird that provides way more to work with beyond what is provided with just native Promises.
