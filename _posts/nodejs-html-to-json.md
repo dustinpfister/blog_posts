@@ -5,8 +5,8 @@ tags: [js,node.js,blog]
 layout: post
 categories: node.js
 id: 87
-updated: 2019-11-19 09:49:03
-version: 1.9
+updated: 2019-11-19 09:50:12
+version: 1.10
 ---
 
 So I wanted to make a simple tool to run threw all of my blog posts that have been parsed into html, and find certain values such as word count for my posts. In other words I want to create a collection of objects for each html file, or have a way to convert to a JSON format from HTML. So there should be some kind of dependency in the npmjs ecosystem that I can use to just quickly turn html into an object tyoe form that I can work with in a node environment, similarly to that of what I can work with in a browser or client side javaScript environment.
@@ -50,7 +50,7 @@ So far so good, looks like this project is more or less what I had in mind, but 
 
 To do this I used another javaScript dependency called node-dir, which comes in handy when I want to grab the content of many files that exist in a complex file structure. I [wrote a post](/2017/11/05/nodejs-node-dir/) on it if you want to learn more about how to loop over files recursively with it.
 
-There are other options that can be used to walk the contents of a file system, in fact I am not sure if I can say node dir is the best option when it comes to file system walkers. I wrote a post on this subject that you might want to check out when it does come to other options for this. However in any case I just need a way to loop over the contents of a file system recursively, open each html file, and then use this project to parse the html into a workable object.
+There are other options that can be used to walk the contents of a file system, in fact I am not sure if I can say node dir is the best option when it comes to file system walkers. [I wrote a post on the subject of file system walking](/2018/07/20/nodejs-ways-to-walk-a-file-system/) that you might want to check out when it does come to other options for this. However in any case I just need a way to loop over the contents of a file system recursively, open each html file, and then use this project to parse the html into a workable object.
 
 Anyway using node-dir with html-to-json i was able to quickly build the json report that I wanted.
 
