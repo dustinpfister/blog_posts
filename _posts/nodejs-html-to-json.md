@@ -5,8 +5,8 @@ tags: [js,node.js,blog]
 layout: post
 categories: node.js
 id: 87
-updated: 2019-11-19 09:35:57
-version: 1.7
+updated: 2019-11-19 09:46:28
+version: 1.8
 ---
 
 So I wanted to make a simple tool to run threw all of my blog posts that have been parsed into html, and find certain values such as word count for my posts. In other words I want to create a collection of objects for each html file, or have a way to convert to a JSON format from HTML. So there should be some kind of dependency in the npmjs ecosystem that I can use to just quickly turn html into an object tyoe form that I can work with in a node environment, similarly to that of what I can work with in a browser or client side javaScript environment.
@@ -22,7 +22,9 @@ So of course as always the first thing is to install the package into a node pro
 ```
 $ npm install html-to-json --save
 ```
-After that I wanted to make my typical hello world example of how to get started with html to json. As such I put together a simple example to just test out how it works, by seeing if I can just pull the text from a single paragraph element.
+After that I wanted to make my typical hello world example of how to get started with html to json. As such I put together a simple example to just test out how it works, by seeing if I can just pull the text from a single paragraph element just for starters.
+
+So with that said there is the parse method of this project where the first argument that is given is an html string, and the second argument given is an object the serves as a filter. Then a third argument can be given that is a callback, but the method also returns a promise. The resulting object that is given via a callback, or in a resolved promise via the this method contains what I would expect.
 
 ```js
 var htmlToJson = require('html-to-json'),
@@ -41,6 +43,8 @@ htmlToJson.parse('<p>This is only an example</p>', {
  
 });
 ```
+
+So far so good, looks like this project is more or less what I had in mind, but lets look at a few more examples just for the hell of it.
 
 ## 2 - Converting many files to javaScript objects
 
