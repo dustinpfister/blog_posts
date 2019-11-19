@@ -5,13 +5,13 @@ tags: [js,node.js,blog]
 layout: post
 categories: node.js
 id: 87
-updated: 2019-11-19 09:06:06
-version: 1.5
+updated: 2019-11-19 09:34:47
+version: 1.6
 ---
 
 So I wanted to make a simple tool to run threw all of my blog posts that have been parsed into html, and find certain values such as word count for my posts. In other words I want to create a collection of objects for each html file, or have a way to convert to a JSON format from HTML. So there should be some kind of dependency in the npmjs ecosystem that I can use to just quickly turn html into an object tyoe form that I can work with in a node environment, similarly to that of what I can work with in a browser or client side javaScript environment.
 
-WIth that being said I took a little time to see what there is to work with if anything and after doing so I found a few projects that work nice. However in this post I will mostly be writing about a npm package called [html-to-json](https://www.npmjs.com/package/html-to-json).
+WIth that being said I took a little time to see what there is to work with if anything and after doing so I found a few projects that work nice. However in this post I will mostly be writing about a npm package called [html-to-json](https://www.npmjs.com/package/html-to-json). This package has a method where I can feed it an html string, and what is returned is a workable object.
 
 <!-- more -->
 
