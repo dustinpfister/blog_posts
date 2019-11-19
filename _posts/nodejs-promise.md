@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-18 15:24:41
-version: 1.12
+updated: 2019-11-19 06:44:43
+version: 1.13
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -122,22 +122,25 @@ readFile('./README.md')
 
 This example once again does the same thing as the others, but now it does so with promises, and is far more concise then the example that used the promise constructor. So whenever I want to make sure a node method will return a promise, I use this method. If I need to work out some custom logic, or create an abstraction for whatever the reason the promise constructor would be a better option.
 
-## 2 - node promise all example
+## 2 - node promise map file collection and index example
 
 ### 2.1 - Make maps folder method
 
 ```js
+// using node modules
 let fs = require('fs'),
 path = require('path'),
 promisify = require('util').promisify;
-
+// promisify file system methods
 let mkdir = promisify(fs.mkdir),
-writeFile = promisify(fs.writeFile);
-
+writeFile = promisify(fs.writeFile),
+readFile = promisify(fs.readFile),
+readdir = promisify(fs.readdir);
 // make the maps folder
-let mkMapsFolder = () => {
+let mkMapsFolder = (root) => {
+    root = root || process.cwd();
     // attempt to make a new maps folder
-    return mkdir('./maps')
+    return mkdir(path.join(root, 'maps'))
     // if successful just resolve
     .then(() => {
         return Promise.resolve();
@@ -164,58 +167,164 @@ let writeMapFile = (opt) => {
     opt.name = opt.name || '';
     opt.root = opt.root || path.resolve('./');
     opt.fileName = opt.fileName || 'map_' + opt.name + '.json';
-    opt.width = opt.width || 10;
-    opt.height = opt.height || 10;
+    opt.width = opt.width || 4;
+    opt.height = opt.height || 4;
+    opt.forCell = opt.forCell || function (cell) {
+        return cell;
+    };
+    opt.forMap = opt.forMap || function (map) {
+        return map;
+    };
     // create cells
     let i = 0,
     cells = [],
     len = opt.width * opt.height;
     while (i < len) {
-        cells.push({
-            type: 'blank'
-        });
+        cells.push(opt.forCell({
+                type: 'blank',
+                i: i,
+                x: i % opt.width,
+                y: Math.floor(i / opt.width)
+            }, i));
         i += 1;
     }
     // create map object
-    let map = {
-        name: opt.name,
-        width: opt.width,
-        height: opt.height,
-        cells: cells
-    };
+    let map = opt.forMap({
+            name: opt.name,
+            width: opt.width,
+            height: opt.height,
+            cells: cells
+        });
     console.log('writing map: ' + opt.fileName);
     // write map
     return writeFile(path.join(opt.root, opt.fileName), JSON.stringify(map), 'utf8');
 };
 ```
 
-### 2.3 - Using Promise all to make an array of map file writes
+### 2.3 - build index
+
+```js
+// build an index
+let writeMapIndex = (opt) => {
+    opt = opt || {};
+    opt.root = path.resolve(opt.root || process.cwd());
+    opt.indexBy = opt.indexBy || function (a, b) {
+        return 0;
+    };
+    return readdir(path.join(opt.root, 'maps'))
+    .then((files) => {
+        // read all map files
+        return Promise.all(files.map((fileName) => {
+                return readFile(path.join(path.join(opt.root, 'maps', fileName)), 'utf8')
+                .then((map) => {
+                    console.log('read ' + fileName);
+                    map = JSON.parse(map);
+                    map.fileName = fileName;
+                    return map
+                });
+            }))
+        // build index for all map files
+        .then((maps) => {
+            console.log('building index for ' + maps.length + ' map files');
+            let json = JSON.stringify(maps.sort(opt.indexBy).map((map) => {
+                        return path.join(opt.root, 'maps', map.fileName);
+                    }));
+            return writeFile(path.join(opt.root, 'map_index.json'), json, 'utf8');
+        });
+    });
+};
+```
+
+### 2.4 - write map file collection and index
 
 ```js
 // make maps folder with all maps
-mkMapsFolder()
-.then(() => {
-    console.log('all is good with maps folder, creating maps.');
-    let maps = [],
-    i = 0,
-    mapCount = 100;
-    while (i < mapCount) {
-        maps.push(writeMapFile({
-                root: './maps',
-                name: i + 1
-            }));
-        i += 1;
+let writeMapsFolder = (opt) => {
+    opt = opt || {};
+    opt.root = opt.root || process.cwd();
+    opt.forCell = opt.forCell || function (cell) {
+        return cell;
+    };
+    opt.forMap = opt.forMap || function (map) {
+        return map;
+    };
+    opt.indexBy = opt.indexBy || function (a, b) {
+        return 0;
+    };
+    opt.mapCount = opt.mapCount || 10;
+    opt.cellWidth = opt.cellWidth || 12;
+    opt.cellHeight = opt.cellHeight || 12;
+    // start by making maps folder if it is not there
+    return mkMapsFolder(opt.root)
+    // then write a map file for each mapCount
+    .then(() => {
+        console.log('all is good with maps folder, creating maps.');
+        let maps = [],
+        i = 0;
+        while (i < opt.mapCount) {
+            maps.push(writeMapFile({
+                    root: path.join(opt.root, 'maps'),
+                    name: i + 1,
+                    forCell: opt.forCell,
+                    forMap: opt.forMap,
+                    width: opt.cellWidth,
+                    height: opt.cellHeight,
+                }));
+            i += 1;
+        }
+        // resolve when map writes resolve
+        return Promise.all(maps);
+    })
+    // then build index
+    .then(() => {
+        console.log('done writing map files building index now.');
+        return writeMapIndex({
+            root: opt.root,
+            indexBy: opt.indexBy
+        });
+    })
+};
+```
+
+### 2.5 - demo
+
+```js
+// demo
+writeMapsFolder({
+    root: './',
+    mapCount: 5,
+    cellWidth: 2,
+    cellHeight: 2,
+    // worth value for each cell
+    forCell: function (cell) {
+        cell.type = 'grass';
+        cell.worth = 50 + Math.round(50 * Math.random());
+        return cell;
+    },
+    // tabulate map cell worth
+    forMap: function (map) {
+        map.worth = map.cells.reduce((acc, cell) => {
+                acc = typeof acc === 'object' ? acc.worth : acc;
+                return acc + cell.worth;
+            });
+        return map;
+    },
+    // index maps by worth
+    indexBy: function (a, b) {
+        if (a.worth > b.worth) {
+            return -1;
+        }
+        if (a.worth < b.worth) {
+            return 1;
+        }
+        return 0;
     }
-    // resolve when map writes resolve
-    return Promise.all(maps);
-})
-.then(() => {
-    console.log('all maps created');
+}).then(() => {
+    console.log('done creating map files and map index');
 })
 .catch((e) => {
     console.log(e.message);
 });
-
 ```
 
 ## 3 - Conclusion
