@@ -5,11 +5,15 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 482
-updated: 2019-11-19 10:57:25
-version: 1.6
+updated: 2019-11-19 11:03:06
+version: 1.7
 ---
 
-So when it comes to making a new folder in nodejs there is the [fs mkdir](https://nodejs.org/api/fs.html#fs_fs_mkdir_path_options_callback) method that can be used to make a folder. There is also how to go about making a whole bunch of folders recursively, depending on the version of node that you are using doing so can be very simple, or a little hard.
+So when it comes to making a new folder in nodejs there is the [fs mkdir](https://nodejs.org/api/fs.html#fs_fs_mkdir_path_options_callback) method that can be used to make a folder. If I just want to make a single folder at a given root folder, then the process of doing so is fairly easy with the core node file system module by itself.
+
+There is however how to go about making a whole bunch of folders recursively just like that of the mkdirp command in posixs systems. When it comes to that I could use the child process module as a way to call that external command, but still there should be a way to do so in nodejs.
+
+So in this post I will be going over the fs mkdir method in node in the file system module that can be used to create a new folder in nodjes, and branch off into some other related topics when it comes to making nested folders and so forth linking to other posts where doing so is called for when it comes to npm packages.
 
 <!-- more -->
 
