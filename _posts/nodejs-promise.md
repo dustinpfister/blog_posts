@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 08:32:54
-version: 1.22
+updated: 2019-11-19 08:35:55
+version: 1.23
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -316,7 +316,9 @@ once that instance of Promise all for all map files resolves it is then safe to 
 
 ### 2.5 - demo
 
-Now to take all of this for a test drive.
+Now to take all of this for a test drive with a demo that calls the main write maps folder method that makes the maps folder fills it with maps and builds an index for that collection.
+
+For this demo I created some custom methods for each cell, and map as well as a custom index by method. These are all passed to the write maps folder method, along with other custom options. The aim here is to create a collection of maps with worth values for each cell, and have a total worth value for the map, finally index the maps bu that worth value.
 
 ```js
 // demo
