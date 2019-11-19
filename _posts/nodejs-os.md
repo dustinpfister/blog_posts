@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 566
-updated: 2019-11-19 16:09:24
-version: 1.3
+updated: 2019-11-19 16:18:15
+version: 1.4
 ---
 
 So you might be wondering if there is a node built in way to access all kinds of data about the host operating system that your nodejs project is running on top of. Maybe you want to work out some logic where you want to handle things a little differently if the project is running on top of windows rather than linux of another posix system. 
@@ -49,6 +49,8 @@ console.log(Buffer.from('\n').toString('hex'));
 
 Now for something fun with the node os module, and the node child process module. The platform method of the node os module can be used to find out if the operating system is windows or not. If it is windows I can try a windows command such as [ver](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/ver) that will give me some more detailed information about the version of windows. If the os is not windows I can try some command that should be on most posix systems such as [uname](https://en.wikipedia.org/wiki/Uname).
 
+So this example does just that I create a method that returns a promise that will resolve if a command works, and reject if there is some kind of error. The exec method of the node child process module is used to call ver if windows and uname if anything else.
+
 ```js
 let os = require('os'),
 exec = require('child_process').exec;
@@ -86,3 +88,5 @@ getOSVersion()
     console.log(e);
 })
 ```
+
+I have tested this out on windows 10, and raspbian and it works as expected on those systems at least. This is a cool little script as it is a good simple example of the potential that is possible with the node os module, and the node child process module. There are windows commands, and then there are equivalent commands that are on just about any posix system. So a method can be created that will parse a common set of info, or preform a command task of one kind or another on any system.
