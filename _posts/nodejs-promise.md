@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 08:08:44
-version: 1.20
+updated: 2019-11-19 08:27:49
+version: 1.21
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -221,7 +221,7 @@ Another method will call this method a whole bunch of times using the promise al
 
 Now for the method that will build the index for the map files. This method accepts a root folder that is used to find the maps folder. It also accepts a index by method that is used to sort the index by the logic given via that method. The fine product is an array of absolute paths to each map file ordered by the index by method that is written as an index json file in the root folder location.
 
-The promise all method is used to read all map files so that the collection can be applied to the index by method. Once the promise all call is finished the array is sorted and the array map prototype method is used to create the array of absolute paths to each file.
+The promise all method is used to read all map files so that the collection can be applied to the index by method. Once the promise all call is finished the array is sorted and the array map prototype method is used to create the array of absolute paths to each file. The the write file method is used to write that array of paths as json to an index json file.
 
 ```js
 // build an index
@@ -254,6 +254,8 @@ let writeMapIndex = (opt) => {
     });
 };
 ```
+
+This method mush be called once the creation of a collection map files has finished. One final method mush now be made that uses all of these methods thus far, finishing with this one when the collection is created.
 
 ### 2.4 - write map file collection and index
 
