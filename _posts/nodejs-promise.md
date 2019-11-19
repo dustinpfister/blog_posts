@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 08:35:55
-version: 1.23
+updated: 2019-11-19 08:39:05
+version: 1.24
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -358,6 +358,8 @@ writeMapsFolder({
     console.log(e.message);
 });
 ```
+
+When I run this I get what I would exspect a collection of map files in a maps folder where each cell has a worth value, and there is also a total worth value for the map. I look at the index for the maps and sure enough each path to the maps is sorted by the worth value of each map where the first map in the index is the most valuable one.
 
 ## 3 - Conclusion
 
