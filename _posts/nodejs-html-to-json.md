@@ -5,8 +5,8 @@ tags: [js,node.js,blog]
 layout: post
 categories: node.js
 id: 87
-updated: 2019-11-19 09:05:29
-version: 1.4
+updated: 2019-11-19 09:06:06
+version: 1.5
 ---
 
 So I wanted to make a simple tool to run threw all of my blog posts that have been parsed into html, and find certain values such as word count for my posts. In other words I want to create a collection of objects for each html file, or have a way to convert to a JSON format from HTML. So there should be some kind of dependency in the npmjs ecosystem that I can use to just quickly turn html into an object tyoe form that I can work with in a node environment, similarly to that of what I can work with in a browser or client side javaScript environment.
@@ -15,7 +15,7 @@ WIth that being said I took a little time to see what there is to work with if a
 
 <!-- more -->
 
-## Basic example of html-to-json in node.
+## 1 - Basic example of html-to-json in node.
 
 So of course as always the first thing is to install the package into a node project
 
@@ -42,7 +42,7 @@ htmlToJson.parse('<p>This is only an example</p>', {
 });
 ```
 
-## Converting many files to javaScript objects
+## 2 - Converting many files to javaScript objects
 
 To do this I used another javaScript dependency called node-dir, which comes in handy when I want to grab the content of many files that exist in a complex file structure. I [wrote a post](/2017/11/05/nodejs-node-dir/) on it if you want to learn more about how to loop over files recursively with it.
 
@@ -110,6 +110,6 @@ dir.readFiles(source,
 });
 ```
 
-## Conclusion
+## 3 - Conclusion
 
 So I might want to work on my content analysis tool some more as a great deal more comes to mind other than just word count of my posts. It seems like what is a lot more important than a high word count is targeting the right string of keywords that people are searching for. Anyway this is a great solution for helping me with the task of converting html to json, I hope this post helped you.
