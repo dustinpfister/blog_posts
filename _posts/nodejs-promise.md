@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 06:59:13
-version: 1.16
+updated: 2019-11-19 07:01:28
+version: 1.17
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -169,6 +169,8 @@ let mkMapsFolder = (root) => {
 This method will be used in a later method, and its only purpose is to make sure that a folder is at a given root path.
 
 ### 2.2 - Write Map file method
+
+Here I have a method that is used to write a single map file in the maps folder.
 
 ```js
 // write a map file
