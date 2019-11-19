@@ -5,15 +5,50 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 482
-updated: 2019-11-19 10:03:53
-version: 1.3
+updated: 2019-11-19 10:52:54
+version: 1.4
 ---
 
 So when it comes to making a new folder in nodejs there is the [fs mkdir](https://nodejs.org/api/fs.html#fs_fs_mkdir_path_options_callback) method that can be used to make a folder. There is also how to go about making a whole bunch of folders recursively, depending on the version of node that you are using doing so can be very simple, or a little hard.
 
 <!-- more -->
 
-## 1 - fs mkdir and making folders recursively
+## 1 - node mkdir basic examples
+
+So lets start off this post with some simple fs mkdir examples in nodejs. The mkdir method can just be used by itself callback style as a way to use the method, and have it work on a wide range version range of nodejs. However these days I would recommend doing something to ensure that the method will return a promise when called by using a npm package to do so, or the built in method in the util module that will work with all modern versions of node that I use at least (8.x+)
+
+### 1.1 - Basic callback style examples of fs mkdir
+
+```js
+var fs = require('fs'),
+path = require('path');
+fs.mkdir(path.join(process.cwd(), 'test'), function (e) {
+    if (e) {
+        console.log(e)
+    } else {
+        console.log('created test folder');
+    }
+});
+```
+
+### 1.2 - Using promisify with fs mkdir
+
+```js
+var fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+mkdir = promisify(fs.mkdir);
+ 
+mkdir(path.join(process.cwd(), 'test'))
+.then(() => {
+    console.log('created test folder');
+})
+.catch((e) => {
+    console.log(e);
+});
+```
+
+## 2 - fs mkdir and making folders recursively
 
 Say you want to use mkdir to make a full path if it is there or not, rather than just one folder at a time. Also say that you want to make it so the method will work on older versions of nodejs, before doing so was very simple. There is mush to write about when it comes to what is available in user space which it comes to npm packages such as [mkdirp](/2017/11/14/nodejs-mkdirp/), and [fs-extra](/2018/01/08/nodejs-fs-extra/) when it comes to adding this functionality to a project.
 
