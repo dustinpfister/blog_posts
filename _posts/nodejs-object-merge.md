@@ -5,13 +5,13 @@ tags: [js,node.js,blog]
 layout: post
 categories: node.js
 id: 91
-updated: 2019-11-19 11:30:36
-version: 1.3
+updated: 2019-11-19 11:31:38
+version: 1.4
 ---
 
 When making any kind of CLI tool, or project with node.js I am often faced with a situation in witch I need to merge down two or more objects into one, and do so recursively. There are many options for doing so, but there is also doing so it a way in which I do not alter the source objects, and also clone the objects rather than just simple copying references.
 
-Although there might be a method in a framework I am using, or maybe even something native that is getting added in, to help with this, I have found another stand alone package for this of course. That package is called [object-merge](https://www.npmjs.com/package/object-merge), and it works great for this.
+Although there might be a method in a framework I am using such as with the [lodash merge](/2017/11/17/lodash_merge/) method, or maybe even something native that is getting added in, to help with this, I have found another stand alone package for this of course. That package is called [object-merge](https://www.npmjs.com/package/object-merge), and it works great for this.
 
 <!-- more -->
 
