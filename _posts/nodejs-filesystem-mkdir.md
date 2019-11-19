@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 482
-updated: 2019-11-19 10:52:54
-version: 1.4
+updated: 2019-11-19 10:55:38
+version: 1.5
 ---
 
 So when it comes to making a new folder in nodejs there is the [fs mkdir](https://nodejs.org/api/fs.html#fs_fs_mkdir_path_options_callback) method that can be used to make a folder. There is also how to go about making a whole bunch of folders recursively, depending on the version of node that you are using doing so can be very simple, or a little hard.
@@ -17,7 +17,11 @@ So when it comes to making a new folder in nodejs there is the [fs mkdir](https:
 
 So lets start off this post with some simple fs mkdir examples in nodejs. The mkdir method can just be used by itself callback style as a way to use the method, and have it work on a wide range version range of nodejs. However these days I would recommend doing something to ensure that the method will return a promise when called by using a npm package to do so, or the built in method in the util module that will work with all modern versions of node that I use at least (8.x+)
 
+So lets look at some examples of this.
+
 ### 1.1 - Basic callback style examples of fs mkdir
+
+Here I have a Basic callback style example of the fs mkdir method.
 
 ```js
 var fs = require('fs'),
@@ -32,6 +36,8 @@ fs.mkdir(path.join(process.cwd(), 'test'), function (e) {
 ```
 
 ### 1.2 - Using promisify with fs mkdir
+
+Here we have another example this time using the util promisify method to make a new method that will return a promise as a way to handy what to do when the process of making a folder works, and what to do when there is a problem.
 
 ```js
 var fs = require('fs'),
