@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 482
-updated: 2019-06-19 13:54:42
-version: 1.1
+updated: 2019-11-19 10:00:37
+version: 1.2
 ---
 
-So when it comes to making a new folder in nodejs there is the fs mkdir method that can be used to make a folder. There is also how to go about making a whole bunch of folders recursively, depending on the version of node that you are using doing so can be very simple, or a little hard.
+So when it comes to making a new folder in nodejs there is the [fs mkdir](https://nodejs.org/api/fs.html#fs_fs_mkdir_path_options_callback) method that can be used to make a folder. There is also how to go about making a whole bunch of folders recursively, depending on the version of node that you are using doing so can be very simple, or a little hard.
 
 <!-- more -->
 
