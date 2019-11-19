@@ -5,8 +5,8 @@ tags: [js,node.js,jimp,automation]
 layout: post
 id: 12
 categories: node.js
-updated: 2019-11-19 11:18:32
-version: 1.7
+updated: 2019-11-19 11:19:36
+version: 1.8
 ---
 
 As of late I have touched base on how to go about setting up a gallery for a website, something that can be simple, or not so simple depending on how much thought you put into it. Lots of thoughts come to mind with this such as how to go about storing the images when it comes to the file system structure. Should they be stored as part of the sites structure itself? Should they be stored in a database, and accessed by way of an api or sorts? Should everything be developed and maintained by me, or should I look into what services are available for such a thing?
@@ -71,11 +71,11 @@ jimp.read('img.png').then(function (img) {
 
 If all goes well I will have an img object to work with, and there are a bunch of methods that can be called to do something with that image, such as scaling it down.
 
-## Image resize
+## 3 - Image resize
 
 One thing that is important when it comes to maintaining a large collection on images is having a system in place to automate the process of producing alternate resolution versions of each image. Say each source image is over five megapixels resulting in file sizes of about two to three mega bytes per image. If I place say about sixteen images per page that will result in a page download size of over forty megabytes.
 
-Jimp can help with this process, doing a simple resize is as easy as this.
+JIMP can help with this process, doing a simple resize is as easy as this.
 
 ```js
 // open a file called "test.png"
@@ -89,9 +89,9 @@ Jimp.read("test.png", function (err, img) {
 
 As you would expect this will result in an image called test.png to be resized to a 32 by 32 sized thumb image.
 
-## preserving aspect ratio
+## 4 - preserving aspect ratio
 
-Most images do not come in a one by one aspect ratio, and in some cases I might want lower resolution images with the same aspect ratio as the source image. For example say I have a source image that is 1600 by 900, and I want a scaled down version that is 32 by 18 rather than 32 by 32. This can be achieved with Jimps scaleToFit method.
+Most images do not come in a one by one aspect ratio, and in some cases I might want lower resolution images with the same aspect ratio as the source image. For example say I have a source image that is 1600 by 900, and I want a scaled down version that is 32 by 18 rather than 32 by 32. This can be achieved with JIMPs scaleToFit method.
 
 ```js
 // open a file called "test.png"
@@ -104,7 +104,7 @@ Jimp.read("test.png", function (err, img) {
 ```
 This will result in just what I wanted, using Jimp.AUTO will set the height to the proper scaled down resolution with respect to the aspect ratio of the source image.
 
-## More then one size
+## 5 - More then one size
 
 I will most likely want to make an array of files. Some mobile friendly, some a bit more detailed.
 
@@ -140,8 +140,8 @@ Jimp.read('./source/blues.jpg', function (err, img) {
 
 I was thinking about making a structure in which the next write will not start until the first completes, but this seems to work okay.
 
-# Conclusion
+# 6 - Conclusion
 
-The great thing about jimp is that it is all written in JavaScript, which allows for it to function as a dependency that eases the process of deployment, or setting up a project on the client if you are making some kind of CLI tool with it like I am. However there are the drawbacks as well, mainly with speed as you may expect. Still if it is a project where speed is not of grave concern jimp does get the job done just fine.
+The great thing about JIMP is that it is all written in JavaScript, which allows for it to function as a dependency that eases the process of deployment, or setting up a project on the client if you are making some kind of CLI tool with it like I am. However there are the drawbacks as well, mainly with speed as you may expect. Still if it is a project where speed is not of grave concern JIMP does get the job done just fine.
 
 Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
