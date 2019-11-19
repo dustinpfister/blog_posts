@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 566
-updated: 2019-11-19 14:40:41
-version: 1.2
+updated: 2019-11-19 16:09:24
+version: 1.3
 ---
 
 So you might be wondering if there is a node built in way to access all kinds of data about the host operating system that your nodejs project is running on top of. Maybe you want to work out some logic where you want to handle things a little differently if the project is running on top of windows rather than linux of another posix system. 
@@ -43,4 +43,46 @@ console.log(Buffer.from('\r\n').toString('hex'));
 // '0d0a'
 console.log(Buffer.from('\n').toString('hex'));
 // '0a'
+```
+
+## 3 - Using node os module and node child process module to run the right command in winodws or posix
+
+Now for something fun with the node os module, and the node child process module. The platform method of the node os module can be used to find out if the operating system is windows or not. If it is windows I can try a windows command such as [ver](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/ver) that will give me some more detailed information about the version of windows. If the os is not windows I can try some command that should be on most posix systems such as [uname](https://en.wikipedia.org/wiki/Uname).
+
+```js
+let os = require('os'),
+exec = require('child_process').exec;
+ 
+let getOSVersion = function () {
+    return new Promise((resolve, reject) => {
+        let info,
+        report = '';
+        // figure out what command to use
+        if (os.platform() === 'win32') {
+            // if windows try ver
+            info = exec('ver');
+        } else {
+            // else assume uname -a will work
+            info = exec('uname -a');
+        }
+        // the rest should work okay
+        info.stdout.on('data', (data) => {
+            report += data.toString();
+        });
+        info.on('close', () => {
+            resolve(report.trim())
+        });
+        info.on('error', () => {
+            reject(new Error('error getting os version'));
+        });
+    });
+};
+ 
+getOSVersion()
+.then((version) => {
+    console.log(version);
+})
+.catch((e) => {
+    console.log(e);
+})
 ```
