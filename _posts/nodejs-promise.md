@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 07:03:32
-version: 1.18
+updated: 2019-11-19 07:51:20
+version: 1.19
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -170,7 +170,9 @@ This method will be used in a later method, and its only purpose is to make sure
 
 ### 2.2 - Write Map file method
 
-Here I have a method that is used to write a single map file in the maps folder.
+Here I have a method that is used to write a single map file in the maps folder. The method uses my node promise style writeFile method that was created with the promisify util module method to write just a single map json file.
+
+before doing so it creates cells for the map given the various options via a single option argument object. this contains value like the cell width and height, and a method to call for each cell that will be used to define any custom properties for each cell in the map.
 
 ```js
 // write a map file
@@ -212,6 +214,8 @@ let writeMapFile = (opt) => {
     return writeFile(path.join(opt.root, opt.fileName), JSON.stringify(map), 'utf8');
 };
 ```
+
+Another method will call this method a whole bunch of times using the promise all static promise method.
 
 ### 2.3 - build index
 
