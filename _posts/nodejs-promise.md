@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 08:27:49
-version: 1.21
+updated: 2019-11-19 08:32:54
+version: 1.22
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -261,6 +261,8 @@ This method mush be called once the creation of a collection map files has finis
 
 Here is the method that will create the whole collection of map files in the map folder, and then build the index file for that collection.
 
+It starts out by calling the first method that just makes sure that the maps folder is there. Once that promise resolves it then calls the write map file method a whole bunch of times by creating an array of write map file methods calls all of which return a promise. This array is then returned to the promise all method and that is what is returned in the then method that is called after the make maps folder promise resolves.
+
 ```js
 // make maps folder with all maps
 let writeMapsFolder = (opt) => {
@@ -309,6 +311,8 @@ let writeMapsFolder = (opt) => {
     })
 };
 ```
+
+once that instance of Promise all for all map files resolves it is then safe to build the index by calling the build index method. So then this is the main method of sorts that should be called by any demo application that would make use of this, so lets move on to that now.
 
 ### 2.5 - demo
 
