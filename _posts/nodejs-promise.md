@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 06:44:43
-version: 1.13
+updated: 2019-11-19 06:49:55
+version: 1.14
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -123,6 +123,10 @@ readFile('./README.md')
 This example once again does the same thing as the others, but now it does so with promises, and is far more concise then the example that used the promise constructor. So whenever I want to make sure a node method will return a promise, I use this method. If I need to work out some custom logic, or create an abstraction for whatever the reason the promise constructor would be a better option.
 
 ## 2 - node promise map file collection and index example
+
+In this section I will be going over a note so basic example of using promises, that involves creating and indexing a collection of map files. These map files are a resource that could be used in a game of sorts, but I have not went that far with this example. The main index here is to just create an example of using promises as a way to keep things organized, and to wait until a bunch of aysn tasks complete before continuing on to the next thing.
+
+The basic process of all of this is to create a maps folder at a root folder it it is not there, then create a bunch of maps in that maps folder, then build an index for the collection of the maps at the root folder.
 
 ### 2.1 - Make maps folder method
 
