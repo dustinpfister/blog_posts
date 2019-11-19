@@ -5,13 +5,13 @@ tags: [js,node.js,blog]
 layout: post
 categories: node.js
 id: 87
-updated: 2017-11-12 20:44:47
-version: 1.3
+updated: 2019-11-19 09:05:29
+version: 1.4
 ---
 
-I have been writing a javaScript blog for a little under a year now, and would like to have some tools at my disposal that will help me improve the quality of the content in my posts.
+So I wanted to make a simple tool to run threw all of my blog posts that have been parsed into html, and find certain values such as word count for my posts. In other words I want to create a collection of objects for each html file, or have a way to convert to a JSON format from HTML. So there should be some kind of dependency in the npmjs ecosystem that I can use to just quickly turn html into an object tyoe form that I can work with in a node environment, similarly to that of what I can work with in a browser or client side javaScript environment.
 
-So I wanted to make a simple tool to run threw all of my blog posts that have been parsed into html, and find certain values such as word count for my posts. So I wanted to find some kind of javaScript project that I can use in my CLI tool that would help easily turn some html into a javaScript object that I can then work with. I found a few projects that work nice, but settled in on something called [html-to-json](https://www.npmjs.com/package/html-to-json).
+WIth that being said I took a little time to see what there is to work with if anything and after doing so I found a few projects that work nice. However in this post I will mostly be writing about a npm package called [html-to-json](https://www.npmjs.com/package/html-to-json).
 
 <!-- more -->
 
@@ -20,7 +20,7 @@ So I wanted to make a simple tool to run threw all of my blog posts that have be
 So of course as always the first thing is to install the package into a node project
 
 ```
-$ npm install node-to-json --save
+$ npm install html-to-json --save
 ```
 After that I wanted to make my typical hello world example of how to get started with html to json. As such I put together a simple example to just test out how it works, by seeing if I can just pull the text from a single paragraph element.
 
