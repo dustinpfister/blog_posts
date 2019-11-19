@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 07:01:28
-version: 1.17
+updated: 2019-11-19 07:03:32
+version: 1.18
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -215,6 +215,8 @@ let writeMapFile = (opt) => {
 
 ### 2.3 - build index
 
+Now for the method that will build the index for the map files.
+
 ```js
 // build an index
 let writeMapIndex = (opt) => {
@@ -248,6 +250,8 @@ let writeMapIndex = (opt) => {
 ```
 
 ### 2.4 - write map file collection and index
+
+Here is the method that will create the whole collection of map files in the map folder, and then build the index.
 
 ```js
 // make maps folder with all maps
@@ -299,6 +303,8 @@ let writeMapsFolder = (opt) => {
 ```
 
 ### 2.5 - demo
+
+Now to take all of this for a test drive.
 
 ```js
 // demo
