@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 482
-updated: 2019-11-19 11:03:06
-version: 1.7
+updated: 2019-11-19 11:06:06
+version: 1.8
 ---
 
 So when it comes to making a new folder in nodejs there is the [fs mkdir](https://nodejs.org/api/fs.html#fs_fs_mkdir_path_options_callback) method that can be used to make a folder. If I just want to make a single folder at a given root folder, then the process of doing so is fairly easy with the core node file system module by itself.
@@ -25,7 +25,7 @@ So lets look at some examples of this.
 
 ### 1.1 - Basic callback style examples of fs mkdir
 
-Here I have a Basic callback style example of the fs mkdir method.
+Here I have a Basic callback style example of the fs mkdir method. This will work on just about any version of node I thing, if not you must be using a crazy old version that is no longer supported.
 
 ```js
 var fs = require('fs'),
@@ -38,6 +38,10 @@ fs.mkdir(path.join(process.cwd(), 'test'), function (e) {
     }
 });
 ```
+
+This might work okay for simple examples like this, but it is generally a good idea to work the use of promises into a project to help keep things more organized.
+
+When I call this example it works as expected, creating a new test folder in the current working path where I called the file. It does so the first time at least, any additional calls will result in an error, because the folder is there to begin with.
 
 ### 1.2 - Using promisify with fs mkdir
 
