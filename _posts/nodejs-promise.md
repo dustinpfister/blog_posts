@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2019-11-19 06:49:55
-version: 1.14
+updated: 2019-11-19 06:58:13
+version: 1.15
 ---
 
 Looking back I have wrote a few posts on [promises]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return promises.
@@ -129,6 +129,10 @@ In this section I will be going over a note so basic example of using promises, 
 The basic process of all of this is to create a maps folder at a root folder it it is not there, then create a bunch of maps in that maps folder, then build an index for the collection of the maps at the root folder.
 
 ### 2.1 - Make maps folder method
+
+The example starts off with using require to make use of the core node file system module, and the util module promisify method to make sure the file system methods that I will be using return promises. I  then start out with my make maps folder helper method.
+
+The make maps folder method uses the mkdir file system method that has been promisifyed, I then also use the Promise resolve and reject static methods to make sure that the helper method always returns a resolve promise even if there is an error, but the error is a code that means the file is there all ready. As such the method will only return a rejected promise in the event that there is some other kind of error that might have to do with file access permissions for example.
 
 ```js
 // using node modules
