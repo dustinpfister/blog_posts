@@ -5,11 +5,11 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-11-20 10:16:26
-version: 1.17
+updated: 2019-11-20 10:22:47
+version: 1.18
 ---
 
-Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a data pattern, so it similar to [buffer write](/2019/08/06/nodejs-buffer-write/) but is not a replacement for it, in fact that method is a more robust alternative to buffer fill. The buffer fill method is just a convenience method for something that can be done with buffer write that can be used to write to a buffer in general, rather than just filling a buffer with a pattern.
+Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in the [nodejs buffer](/2018/02/07/nodejs-buffer/) global. The buffer fill method can be used to fill a buffer with a data pattern, so it similar to [buffer write](/2019/08/06/nodejs-buffer-write/) but is not a replacement for it, in fact that method is a more robust alternative to buffer fill. The buffer fill method is just a convenience method for something that can be done with buffer write that can be used to write to a buffer in general, rather than just filling a buffer with a pattern.
 
 So then the buffer write method might be more appropriate when it comes to just writing data to a certain location and length to a buffer instance. As such this post will be mostly on the buffer fill method, but also on filling a buffer with data in general, with buffer write, and also the ways that buffers are created to begin with.
 
@@ -46,15 +46,16 @@ I then get the desired result by passing the string 0a that worked out to a byte
 
 ### 1.2 - Filling with another buffer
 
-A string and encoding can be used to fill a buffer the the fill method, but another buffer can be used also. THis buffer can be created by and means possible such as the Buffer.from method. Once the buffer exists it just needs to be passed as the first argument when calling the fill method and the buffer will be filled wit th contents of the other buffer.
+A string and encoding can be used to fill a buffer with the fill method, but another buffer can be used also when desired. This buffer can be created by and means possible such as the Buffer.from method that can also be used as a way to both create and fill. Once the buffer exists it just needs to be passed as the first argument when calling the fill method and the buffer will be filled with the contents of the other buffer that was passed to buffer fill.
 
 ```js
 let buff = Buffer.allocUnsafe(4);
 buff.fill(Buffer.from([255]));
 console.log(buff.toString('hex'));
 // ffffffff
-
 ```
+
+Here I have chose to use buffer from from method and passed it an array of bytes values. This array just has one element with a number value of 255, so that results in a buffer with a byte length of one and a value of 255 for that single byte. I then passed that value to the buffer fill metod oh another buffer that I created with the alloc unsafe method which fills the buffer with the value 255 rather than leaving any old contents that might be there.
 
 ## 2 - Fill an unsafe buffer
 
