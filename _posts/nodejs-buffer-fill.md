@@ -5,11 +5,11 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-11-20 10:10:17
-version: 1.16
+updated: 2019-11-20 10:16:26
+version: 1.17
 ---
 
-Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a data pattern, so it similar to buffer write but is not a replacement for it, in fact that method is a more robust alternative to buffer fill. The buffer fill method is just a convenience method for something that can be done with buffer write that can be used to write to a buffer in general, rather than just filling a buffer with a pattern.
+Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in nodejs. The buffer fill method can be used to fill a buffer with a data pattern, so it similar to [buffer write](/2019/08/06/nodejs-buffer-write/) but is not a replacement for it, in fact that method is a more robust alternative to buffer fill. The buffer fill method is just a convenience method for something that can be done with buffer write that can be used to write to a buffer in general, rather than just filling a buffer with a pattern.
 
 So then the buffer write method might be more appropriate when it comes to just writing data to a certain location and length to a buffer instance. As such this post will be mostly on the buffer fill method, but also on filling a buffer with data in general, with buffer write, and also the ways that buffers are created to begin with.
 
@@ -27,11 +27,11 @@ console.log(buff.toString('hex'));
 
 ```
 
-If you want the byte value of ten to be used the you will want to set the encoding to something other than utf8, and that is of course one of the additional arguments for the method.
+If you want the byte value of ten to be used the you will want to set the encoding to hex rather than utf8, and that is of course one of the additional arguments for the method. So lets look at another very basic example of the buffer fill method in action.
 
 ### 1.1 - Changing the encoding to hex
 
-So then  when it comes to filling a buffer with a value from a hex string then the string needs to be in the forum a hex string characters of course and it must be sets of two characters for one or more byte values. When passing the hex string to the fill method I also just need to pass the string hex as the second argument to change the encoding from the default utf8 value tot hat of hex.
+So then when it comes to filling a buffer with a value from a hex string then the string needs to be in the forum of hex string characters of course to begin with. Also the hex string must be sets of two characters for one or more byte values, as that is the smallest unit of data that we are working with when it comes to node buffers. When passing the hex string to the fill method I also just need to pass the string hex as the second argument to change the encoding from the default utf8 value tot hat of hex.
 
 ```js
 let buff = Buffer.allocUnsafe(4);
@@ -41,6 +41,8 @@ console.log(buff.reduce((acc, byt) => {
     }));
 // 10,10,10,10
 ```
+
+I then get the desired result by passing the string 0a that worked out to a byte value of 10, and that then is what the buffer ends up getting filled with.
 
 ### 1.2 - Filling with another buffer
 
