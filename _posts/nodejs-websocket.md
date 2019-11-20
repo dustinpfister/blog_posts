@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 18:40:58
-version: 1.10
+updated: 2019-11-20 18:44:45
+version: 1.11
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -96,7 +96,9 @@ module.exports = (opt) => {
 };
 ```
 
-Once the accept upgrade method is done I then call an on ready callback that will provide an api that contains the socket and a send text method that makes streaming text to the client very simple.
+Once the accept upgrade method is done I then call an on ready callback that will provide an api that contains the socket and a send text method that makes streaming text to the client very simple. For now it is just that one methid that I can use to send text to the client one frame at a time, for the sake of this idea that I had for an example, and what I mainly want to do with websockts it works okay. 
+
+However web sockets are duplex streams, so It would be nice to work out a better version of this that can also receive frames from the client also, or better yet just use a framework.
 
 ### 1.2 - The server.js file
 
