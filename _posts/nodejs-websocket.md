@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 18:02:52
-version: 1.4
+updated: 2019-11-20 18:12:54
+version: 1.5
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -28,6 +28,8 @@ The frame format is also a little tricky, not impossible to follow, but a little
 ### 1.1 - The node websocket module
 
 So first for the module that I worked out to make setting up a simple web socket project easy for me, by abstracting things away. The basic process here is to set up a basic http server, and then allow for it to be upgraded to a web socket server when a proper request is made from the client system with the web socket constructor. Then I just need to use a method that I work out to send simple text frames to the client one frame at a time.
+
+I started out by making just a plain old http server with the node http module, and created an handler for the upgrade event of the http server. From there I call my accept upgrade method passing the request object, and the socket. Inside the body of the accept upgrade method I call my generate accept key method passing just the request object, which gives me the sec-websocket-accept key value to inform the client that the server has accepted the request.
 
 ```js
 let crypto = require('crypto');
@@ -93,6 +95,8 @@ module.exports = (opt) => {
     return wsServer;
 };
 ```
+
+Once the accept upgrade method is done I then call an on ready callback that will provide an api that contains the socket and a send text method that makes streaming text to the client very simple.
 
 ### 1.2 - The server.js file
 
