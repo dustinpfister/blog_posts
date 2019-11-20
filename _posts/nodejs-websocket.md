@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 17:34:39
-version: 1.2
+updated: 2019-11-20 17:57:59
+version: 1.3
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -17,7 +17,18 @@ This post will contain a very simple web [socket server](https://developer.mozil
 
 <!-- more -->
 
-## 1 - The node websocket module
+## 1 - A very simple node websocket project that just streams simple text frames to a client
+
+Making a vanilla javaScript node websocket project is little easier said then done. First there must be a handshake between the client and the server, before frames can be sent to the client. Luckily sending frames tot he client is easier then the other way around that I did not get to in this example (again use an npm package for a real project this one gets involved). In Addition once the handshake process is done, I cant just start streaming data to the client, it must be done so following a certain frame format. 
+
+The handshake process alone was a little tricky to work out, but I managed to find a way by reading other posts on this topic, and studying the source code of npm packages that do a better job abstracting what needs to happen.
+
+The frame format is also a little tricky, not impossible to follow, but a little tricky. You need to be fairly comfortable on how to work with buffers, and the bitwise or operator. The reason why is because there a certain bits that act is flags, and values to inform a client or server about the size, and other aspects of each frame that is set or received.
+
+### 1.1 - The node websocket module
+
+So first for the module that I worked out to make setting up a simple web socket project easy for me. The basic process here is to set up a basic http server, and then allow for it to be upgraded to a web socket server when a proper request is made from the client system with the web socket constructor.
+
 
 ```js
 let crypto = require('crypto');
@@ -84,7 +95,7 @@ module.exports = (opt) => {
 };
 ```
 
-## 2 - The server.js file
+### 1.2 - The server.js file
 
 ```js
 let http = require('http'),
@@ -168,7 +179,7 @@ sws({
 });
 ```
 
-## 3 - The public folder and websocket client
+### 1.3 - The public folder and websocket client
 
 ```html
 <html>
