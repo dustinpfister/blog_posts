@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2019-07-19 14:46:53
-version: 1.21
+updated: 2019-11-20 09:02:31
+version: 1.22
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -231,6 +231,10 @@ $ node read
 this is only a test looks like it is working okay
 ```
 
-## 7 - Conclusion
+## 7 - How to find out if you are dealing with a buffer
+
+So if you are testing a whole bunch of values to find out if a value is a buffer or not there is the [native is buffer](/2019/10/30/nodejs-buffer/) method of the buffer global.
+
+## 8 - Conclusion
 
 I hope you found this post on buffers a little helpful, if you did not know much about them before hand. If you enjoyed reading this post you might want to also check out my post on using [request to work with streams](/2018/08/15/nodejs-request-streams/) when scripting http. Buffers do come up a lot when it comes to working with file io, streams, and just about anything that has to do with binary data, so this is one aspect of node.js development that developers should get solid.
