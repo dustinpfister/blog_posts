@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-11-20 10:22:47
-version: 1.18
+updated: 2019-11-20 10:26:22
+version: 1.19
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in the [nodejs buffer](/2018/02/07/nodejs-buffer/) global. The buffer fill method can be used to fill a buffer with a data pattern, so it similar to [buffer write](/2019/08/06/nodejs-buffer-write/) but is not a replacement for it, in fact that method is a more robust alternative to buffer fill. The buffer fill method is just a convenience method for something that can be done with buffer write that can be used to write to a buffer in general, rather than just filling a buffer with a pattern.
@@ -59,7 +59,7 @@ Here I have chose to use buffer from from method and passed it an array of bytes
 
 ## 2 - Fill an unsafe buffer
 
-So when using the alloc buffer method the buffer starts out filled with zeros for starters by default. It is also possible to fill with other patterns just like with the fill method as well. But for the sake of this section now say you have an Unsafe buffer allocated and you want to fill over any sensitive data that might be in it. One way to do so is to use the buffer fill method.
+So when using the alloc buffer method the buffer starts out filled with zeros for starters by default. It is also possible to fill with other patterns just like with the fill method as well. But for the sake of this section now say you have an Unsafe buffer allocated, and you want to fill over any sensitive data that might be in it. One way to do so is to use the buffer fill method.
 
 ```js
 let buff = Buffer.allocUnsafe(8);
@@ -68,7 +68,9 @@ console.log(buff.toString('hex'));
 // ffffffffffffffff
 ```
 
-The allocUnsafe method does not zero fill a buffer for starters and on top of that it does not have arguments that can be used to fill the buffer as well. This is the reason why it is called allocUnsafe. So the buffer fill method can be used as one way to make it safe by zero filling the buffer, it is just that doing so is now an option, as in n some cases I might not want a buffer zero filled.
+The allocUnsafe method does not zero fill a buffer for starters and on top of that it does not have arguments that can be used to fill the buffer in addition to this. So then this is the reason why it is called allocUnsafe, because there could be old data in there that might be of interest to a bad actor. 
+
+So the buffer fill method can be used as one way to make it safe by zero filling the buffer, it is just that doing so is now an option, rather than a requirement. In some cases I might not want a buffer zero filled to begin with for performance reasons.
 
 ## 3 - Alteratives to buffer fill
 
