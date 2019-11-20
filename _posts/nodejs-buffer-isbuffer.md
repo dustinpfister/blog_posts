@@ -5,11 +5,15 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 553
-updated: 2019-10-30 16:44:52
-version: 1.3
+updated: 2019-11-20 08:38:02
+version: 1.4
 ---
 
-The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project. The standard is buffer method is right there as part of the Buffer global, and can be used bu just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not. In addition there is also the is the [is-buffer npm package](https://www.npmjs.com/package/is-buffer) as well which is a user space option for this kind of task. One might think that a task such as this would be a trivial matter, and in most cases it is, but in other cases it is not such as with isNaN. So lets take a look at this one real quick so we can move on to more interesting things to write about.
+The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project. The standard is buffer method is right there as part of the Buffer global, and can be used by just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not a buffer.
+
+In addition there is also the [is-buffer npm package](https://www.npmjs.com/package/is-buffer) as well, which is a user space option for this kind of task. One might thing that there is no need for such a package, but oddly enough there are often some extending situations in which there might actually need to be some additional logic, or the same task needs to be done a different way.
+
+One might think that a task such as this would be a trivial matter, and in most cases it is, but in other cases it is not. There is a long history of having to make user space solutions for native methods in javaScript, such is the case with the native isNaN method returning true for values other than NaN. So lets take a look at this one real quick to find out if this is the case with the is Buffer method in nodejs..
 
 <!-- more -->
 
