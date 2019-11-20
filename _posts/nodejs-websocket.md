@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 18:36:10
-version: 1.9
+updated: 2019-11-20 18:40:58
+version: 1.10
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -100,7 +100,9 @@ Once the accept upgrade method is done I then call an on ready callback that wil
 
 ### 1.2 - The server.js file
 
-So now that I have my node websocket module, I can now use it in a project. This main server file I work out sets up a simple web server that will just host a basic client system that is independent of the websocket server. It also uses the websocket module to set up a web socket server on a different port.
+So now that I have my node websocket module, I can now use it in a project. This main server file I work out sets up a simple web server that will just host a basic client system that is independent of the websocket server. I just need for this server to serve up my simple static client system that I will be getting to later.
+
+It also uses the websocket module to set up a web socket server on a different port at the end of the file.
 
 ```js
 let http = require('http'),
@@ -186,7 +188,7 @@ sws({
 
 ### 1.3 - The public folder and websocket client
 
-Now for the public folder that contains the websocket client system. First the html file that is the index of the client system. Here I just have a single text area elelemt that will be used to log data that is being streamed from the web socket server, and a single script tag that links to my client side javaScript for this.
+Now for the public folder that contains the websocket client system. First the html file that is the index of the client system. Here I just have a single text area element that will be used to log data that is being streamed from the web socket server, and a single script tag that links to my client side javaScript for this.
 
 ```html
 <html>
