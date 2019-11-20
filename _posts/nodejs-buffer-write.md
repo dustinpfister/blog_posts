@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 516
-updated: 2019-08-06 11:35:05
-version: 1.4
+updated: 2019-11-20 10:35:25
+version: 1.5
 ---
 
-The [buffer write](https://nodejs.org/api/buffer.html#buffer_buf_write_string_offset_length_encoding) method in nodejs can be used to write data to a buffer that has been created before hand one way of another. There are a few basics to cover when it comes to putting data into a buffer such as encoding and buffer index values. So I thought I would writing a quick post on the buffer write prototype method in nodejs, and may branch off with some other related topics on buffers.
+The [buffer write](https://nodejs.org/api/buffer.html#buffer_buf_write_string_offset_length_encoding) method in the nodejs [buffer global](/2018/02/07/nodejs-buffer/) can be used to write data to a buffer that has been created before hand one way of another. There are a few basics to cover when it comes to putting data into a buffer such as encoding and buffer index values. So I thought I would writing a quick post on the buffer write prototype method in nodejs, and may branch off with some other related topics on buffers.
 
 <!-- more -->
 
