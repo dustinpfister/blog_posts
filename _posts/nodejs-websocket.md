@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 18:12:54
-version: 1.5
+updated: 2019-11-20 18:29:25
+version: 1.6
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -224,3 +224,7 @@ socket.onclose = function (e) {
     }
 };
 ```
+
+## 2 - Conclusion
+
+That is it for now, just the one simple node websocket example. If I get around to it I might expand this post to get into more details about websockets. In any case when it comes to using node websockets in a real project I am going to be going with a well supported npm package with this one. Still it was fun to do this in order to gain a deeper understanding of these projects and why they help to make the process of working with web sockets a whole world easier.
