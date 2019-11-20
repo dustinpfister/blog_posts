@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 18:32:26
-version: 1.7
+updated: 2019-11-20 18:34:47
+version: 1.8
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -200,6 +200,8 @@ Now for the public folder that contains the websocket client system.
   </body>
 </html>
 ```
+
+Here I have the client that just uses the WebSocket constructor to create a new web socket for the server that I have set up, at which point it starts the handshake process. Once that is done, the server starts sending data, and then I just start logging that in the text area element.
 
 ```js
 let socket = new WebSocket("ws://localhost:8095/"),
