@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 17:57:59
-version: 1.3
+updated: 2019-11-20 18:02:52
+version: 1.4
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -27,8 +27,7 @@ The frame format is also a little tricky, not impossible to follow, but a little
 
 ### 1.1 - The node websocket module
 
-So first for the module that I worked out to make setting up a simple web socket project easy for me. The basic process here is to set up a basic http server, and then allow for it to be upgraded to a web socket server when a proper request is made from the client system with the web socket constructor.
-
+So first for the module that I worked out to make setting up a simple web socket project easy for me, by abstracting things away. The basic process here is to set up a basic http server, and then allow for it to be upgraded to a web socket server when a proper request is made from the client system with the web socket constructor. Then I just need to use a method that I work out to send simple text frames to the client one frame at a time.
 
 ```js
 let crypto = require('crypto');
@@ -96,6 +95,8 @@ module.exports = (opt) => {
 ```
 
 ### 1.2 - The server.js file
+
+So now that I have my node websocket module, I can now use it in a project. This main server file I work out sets up a simple web server that will just host a basic client system that is independent of the websocket server. It also uses the websocket module to set up a web socket server on a different port.
 
 ```js
 let http = require('http'),
@@ -180,6 +181,8 @@ sws({
 ```
 
 ### 1.3 - The public folder and websocket client
+
+Now for the public folder that contains the websocket client system.
 
 ```html
 <html>
