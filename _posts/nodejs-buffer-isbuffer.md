@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 553
-updated: 2019-11-20 08:38:02
-version: 1.4
+updated: 2019-11-20 08:43:07
+version: 1.5
 ---
 
 The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project. The standard is buffer method is right there as part of the Buffer global, and can be used by just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not a buffer.
@@ -28,11 +28,13 @@ let buff = Buffer.from('0a0b0c0d', 'hex');
 console.log(Buffer.isBuffer(buff)); // true
 ```
 
-Simple enough so far, but lets throw a whole bunch of other values to see if there is anything weird going on.
+Simple enough so far, but lets throw a whole bunch of other values to see if there is anything weird going on, whih is the case some times with methods like this.
 
 ## 2 - Throw all kinds of values at it time
 
-So when it comes to other naive methods like this there are some times some weird situation in which there is a need to write my own solution, or use another methods that does the same thing in a user space framework. To find out if that is the case I just need to trow all kinds of values at the method to see if it returns true for something other than a Buffer.
+So when it comes to other naive methods like this there are some times some weird situation in which there is a need to write my own solution, or use another method that does the same thing in a user space framework. To find out if that is the case I just need to trow all kinds of values at the method to see if it returns true for something other than a Buffer.
+
+If the is buffer method in nodejs works as I would expect it to, it should return true for a buffer, and only a buffer. So if I give it an instance of a buffer it should give me a true boolean value, and false for every conceivable other type of value that might end up being passed to it in a project. So lets through together a quick test of sorts for that.
 
 ```js
 console.log( Buffer.isBuffer(Buffer.alloc(4)) ); // true
@@ -58,4 +60,4 @@ console.log(obj.constructor.name); // 'Buffer'
 console.log( Buffer.isBuffer(obj) ); // false
 ```
 
-So that works out okay, I guess the native node is buffer method works just fine, so why bother with a user space module with this? Well there is the fact that the Buffer.isBuffer method is part of the node Buffer global, so there is the idea of making the method portable between node and a browser environment. Aside from that maybe I cant thing of any reason to bother with making a user space solution for this.
+So that works out okay, I guess the native node is buffer method works just fine, so why bother with a user space module with this? Well there is the fact that the Buffer.isBuffer method is part of the node Buffer global, so there is the idea of making the method portable between node and a browser environment. Aside from that maybe I cant thing of any reason to bother with making a user space solution for this in a pure nodejs environment.
