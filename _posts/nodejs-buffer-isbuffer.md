@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 553
-updated: 2019-11-20 08:49:26
-version: 1.6
+updated: 2019-11-20 09:02:30
+version: 1.7
 ---
 
 The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project. The standard is buffer method is right there as part of the Buffer global, and can be used by just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not a buffer.
@@ -67,3 +67,5 @@ So that works out okay, I guess the native node is buffer method works just fine
 I am not sure if I want or need to give this post more attention, I guess I could but together some more code examples surrounding this one, but why? It would seem that the native is buffer method in nodejs works the way that it should. So with the method working find there is no need to make a user defied replacement really, at least not when working in just a nodejs space. 
 
 There is still working out a user space method for the sake of having something that will work in client side code, but the package I liked to does just that, also why use nodes buffer objects on the client side when there are more appropriate alternatives? I might come back to this post at some time maybe, but I think there is only so much more to write about on this one.
+
+For more on buffers you might want to check out my main post on the [nodejs buffer](/2018/02/07/nodejs-buffer/) global here.
