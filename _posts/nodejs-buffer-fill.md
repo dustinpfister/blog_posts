@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 503
-updated: 2019-11-20 10:30:39
-version: 1.20
+updated: 2019-11-20 10:32:26
+version: 1.21
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in the [nodejs buffer](/2018/02/07/nodejs-buffer/) global. The buffer fill method can be used to fill a buffer with a data pattern, so it similar to [buffer write](/2019/08/06/nodejs-buffer-write/) but is not a replacement for it, in fact that method is a more robust alternative to buffer fill. The buffer fill method is just a convenience method for something that can be done with buffer write that can be used to write to a buffer in general, rather than just filling a buffer with a pattern.
@@ -94,7 +94,7 @@ So if I am using alloc as away to create buffers if will be filled to begin with
 
 ### 3.2 - Fill a buffer with the buffer write method
 
-So another way to fill a buffer is to use the buffer write method. This is one way to just go about putting some data into a buffer, but it cal also be used to fill it as well if the arguments are given that will do so.
+So another way to fill a buffer is to use the buffer write method. This is one way to just go about putting some data into a buffer, but it can also be used to fill it as well if the arguments are given that will do so.
 
 ```js
 let buff = Buffer.allocUnsafe(4);
@@ -104,7 +104,7 @@ console.log(buff.toString('hex'));
 // f1a20306
 ```
 
-So if I want to fill with the buffer write method then the byte length of the string that I am using to fill with should be as long as the buffer. I will also want to be sure to set the right values for offset, length, and make sure that the encoding match up also.
+So if I want to fill with the buffer write method then the byte length of the string that I am using to fill with should be as long as the buffer. I will also want to be sure to set the right values for offset, and length. Also it should go without saying that I should make sure that the encodings match up also.
 
 ### 3.3 - Concat
 
