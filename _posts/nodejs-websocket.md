@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 567
-updated: 2019-11-20 18:29:25
-version: 1.6
+updated: 2019-11-20 18:32:26
+version: 1.7
 ---
 
 So you want to get break ground with a [node websocket](https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61) project, and so you want to write everything vanilla javaScript style? First things first, reconsider and just use a package such as [websocket-node](https://github.com/theturtle32/WebSocket-Node/), trust me this one is going to be time consuming. If you still want to just put together a very simple web socket server, and client then this post is my take on doing so.
@@ -224,6 +224,8 @@ socket.onclose = function (e) {
     }
 };
 ```
+
+So when this project Is up and running the client makes a request to the node websocket server which just goes right ahead and accepts the request, and then just starts sending hex strings every second. This example is not all that practical or interesting, but a real example might be some kind of project that steams progress to the client as it does some server side work such as looping over files.
 
 ## 2 - Conclusion
 
