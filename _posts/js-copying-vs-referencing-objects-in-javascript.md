@@ -5,11 +5,11 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2017-11-13 12:45:42
-version: 1.1
+updated: 2019-11-21 06:52:24
+version: 1.2
 ---
 
-I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). As such A thought occurred that maybe I should write a post on the deal with refencing vs copying objects in javaScript, and cover a bunch of ways to go about making a copy of an object.
+I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). As such A thought occurred that maybe I should write a post on the deal with referencing vs copying objects in javaScript, and cover a bunch of ways to go about making a copy of an object.
 
 <!-- more -->
 
@@ -67,11 +67,11 @@ pt.x = 0;
 console.log(ref.x); // 32
 ```
 
-This will work okay, as long as I don't need a deep cone of the object in which case it will not work okay, as it just copy's the keys of the object to a new object. Never the less many clone methods work just like this in some fashon, and it is often called a shallow clone of an object.
+This will work okay, as long as I don't need a deep cone of the object in which case it will not work okay, as it just copy's the keys of the object to a new object. Never the less many clone methods work just like this in some fashion, and it is often called a shallow clone of an object.
 
 ## Deep Cloning with a for in loop
 
-So when in a situation when I need to not just have a shallo copy of an object, but a full copy of the object, and all objects in it, I need some kind of deep clone method.
+So when I am in a situation when I need to not just have a shallow copy of an object, but a full copy of the object, and all objects in it, I need some kind of deep clone method.
 
 ```js
 // and example object to copy
