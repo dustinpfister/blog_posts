@@ -5,8 +5,8 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 09:35:18
-version: 1.10
+updated: 2019-11-21 09:37:07
+version: 1.11
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
@@ -105,7 +105,7 @@ console.log(copy.pos.x, source.pos.x); // 0 0
 
 So in order to resolve this I mist find a way to deep clone, rather than shallow clone the object and its nested object. One way to do this is the same way as before it is just that now I need to do so recursively.
 
-## 2 - Copying objects, and the for in method of doing it.
+## 3 - Copying objects, and the for in method of doing it.
 
 One common way to go about copying an object is to use a for in loop.
 
@@ -142,7 +142,7 @@ console.log(ref.x); // 32
 
 This will work okay, as long as I don't need a deep cone of the object in which case it will not work okay, as it just copy's the keys of the object to a new object. Never the less many clone methods work just like this in some fashion, and it is often called a shallow clone of an object.
 
-## 3 - Deep Cloning with a for in loop
+## 4 - Deep Cloning with a for in loop
 
 So when I am in a situation when I need to not just have a shallow copy of an object, but a full copy of the object, and all objects in it, I need some kind of deep clone method.
 
@@ -193,7 +193,7 @@ console.log(pt.delta.x); // 0
 
 This will work okay, but one problem that comes to mind right off that bat is what happens when I feed this method an object with a circular reference in it. That will of course result in an infinite loop. 
 
-## 4 - Deep Cloning Objects with recursive references in them with a for in loop
+## 5 - Deep Cloning Objects with circular references in them with a for in loop
 
 It is possible to make a reference to an object within the same object which is common occurrence in javaScript. When making a clone of an object should these references be with the new object, or the old one? Although there might be exceptions, I can only think that most of the time I would want those reference to be pointing to the new object I am making.
 
@@ -248,7 +248,7 @@ var forInCloneDeep = function (obj) {
 };
 ```
 
-## 5 - Object.assign
+## 6 - Object.assign
 
 I never really got into ES2015+, Still I guess it is time to get current. As such If I am in a situation in which I do not care much about backward compatibility there is of course [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
@@ -272,7 +272,7 @@ console.log(copy.x); // 0
 console.log(ref.x); // 32
 ```
 
-## 6 - Cloning with lodash
+## 7 - Cloning with lodash
 
 As I have mention earlier I have written some posts on how to clone with lodash. As such I will provide some links to my posts on [\_.clone](/2017/10/02/lodash_clone/), and [\_.cloneDeep](/2017/11/13/lodash_clonedeep/).
 
@@ -283,7 +283,7 @@ var fullCopy = _.cloneDeep(obj); // full deep copy
 
 Using something like lodash to clone might be the best option still these days. I know that there are some nice features in EX2015+ for cloning built into the browser itself these days, but I am the kind of person that worries about my code breaking when someone visits my project with an older browser. It's still nice to have a method in something that will work on modern browsers, and also that older platform that most people still use.
 
-## 7 - Cloning with JSON.parse, and JSON.stringify
+## 8 - Cloning with JSON.parse, and JSON.stringify
 
 This one is pretty simple, as long as I am always dealing with a client that has JSON which is most browsers in use these days.
 
