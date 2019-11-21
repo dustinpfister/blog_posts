@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 479
-updated: 2019-11-21 12:55:16
-version: 1.8
+updated: 2019-11-21 13:03:15
+version: 1.9
 ---
 
 The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is more that one method in the file system module that can eb used to write data to a file system, but this is the one that I find myself using all the time over the others.
@@ -44,7 +44,9 @@ this is the old school way to go about using the nodejs write file method that c
 
 ## 1.2 - Write file method using promises
 
-So in later versions of nodejs it looks like there might now be native support for Promises when using nodejs file system method like the write file method. However in this section I am assuming that you might be using an older version of node. SO you just need to use some kind of dependency like fs-extra to promisify the fs module, or just write some read and write methods that return promises.
+So in later versions of nodejs it looks like there might now be native support for Promises when using nodejs file system method like the write file method. However in this section I am assuming that you might be using an older version of node, or you might still want to support older versions of node for your project. So you just need to use some kind of dependency like fs-extra, or the util module promisify method to promisify the fs module or methods you want to use. One way or another you might still want to do something to make sure methods like fs.readFile and fs.writeFile will return promises one way or another in all versions of node that are concerned.
+
+So here is an example where I am using the util promsiify methd to make sure that the node write file method retruns a promise. I am also doing so with the node read file methods also, and using the two methods to bolth read and write a simple json file.
 
 ```js
 let fs = require('fs'),
@@ -87,3 +89,5 @@ read(path_conf)
     }
 });
 ```
+
+When I call this example in the command line with node it will create a json file if it is not there, if it is there it will read the file step a value and then write it back to the file. As simple as it might be this basic node write file method example is the begining of something that is starting to look like an actual node project examples of some kind.
