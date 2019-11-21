@@ -5,11 +5,13 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 479
-updated: 2019-06-14 10:05:50
-version: 1.5
+updated: 2019-11-21 12:37:35
+version: 1.6
 ---
 
-The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is the old way of how to go about using the nodejs write file method that can lead to a kind of call back hell, and then there is the more modern way of using write file that involves the use of promises.
+The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is more that one method in the file system module that can eb used to write data to a file system, but this is the one that I find myself using all the time over the others.
+ 
+There is the old way of how to go about using the nodejs write file method that can lead to a kind of call back hell, and then there is the more modern way of using write file that involves the use of promises and the util promisify method. I generally choose to use promises over callbacks because I use write file along with many other methods and I find that promises are a much better way of making many calls to methods like this in a certain order.
 
 <!-- more -->
 
