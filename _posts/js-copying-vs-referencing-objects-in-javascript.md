@@ -5,8 +5,8 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 08:56:52
-version: 1.8
+updated: 2019-11-21 09:33:33
+version: 1.9
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
@@ -69,6 +69,10 @@ Although this might work okay for this kind of example, other times I have an ob
 So now that we have the very basics of coping by referencing, and copying b value understood lets take things just one step further and working with a few examples that have to do with introducing just one nested object. In this section I am still just working with plain old objects, and not doing anything to weird with the prototype chain, or any other advanced topic when it comes to this subject.
 
 ### 2.1 - Basic nested object example where I am cloning just the first object, but referencing the first nested object.
+
+So when it comes to having an object within an object the basic way of cloning an object or shallow cloning will still work okay with primitive values of the object that is being clone just as before. However it will not work with any nested object as that is an example of just repeating what we where doing in the first place. 
+
+In other words I am still creating a new object, but that is just it, one object and not any additional nested objects.
 
 ```js
 // start out with an object with
