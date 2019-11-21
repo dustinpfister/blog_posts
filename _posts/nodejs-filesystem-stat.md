@@ -5,18 +5,23 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 153
-updated: 2019-11-21 10:21:46
-version: 1.9
+updated: 2019-11-21 10:28:46
+version: 1.10
 ---
 
 Getting the stats of a file is quick and easy in [node.js](https://nodejs.org/en) with just the nodejs built in core file system module, and the [fs.stat](https://nodejs.org/api/fs.html#fs_fs_fstat_fd_options_callback) method. A stat object contains useful information about a file such as when it was last modified, and the data size of it. A stat object also contains methods that can be used to find if the current file is in fact a file, or a directory. So in this post I will be going over a few quick examples of using the fs.stat method in a nodejs environment.
 
 <!-- more -->
 
-## 1 - basic example of fs.stat
+## 1 - basic examples of fs.stat
 
-For a basic example of fs.stat how about just getting the stats of a readme file in a demo folder. to do this I just need to require in the filesystem module, and then I can use the fs.stat method to get the stats of a file by passing the path to the file as the first argument, and then a callback as the second argument. In recent versions of nodejs version 12 and forward promises can be used as well, but for now I am using callbacks as a way to ensure better backward compatibility with older versions of node.
+For a basic example of fs.stat how about just getting the stats of a readme file in a demo folder. To do this I just need to require in the filesystem module, and then I can use the fs.stat method to get the stats of the readme file. 
 
+In this section I will be going over two basic examples of how to go about doing this. One of which will I will be using callbacks, and the other will make use of promises.
+
+### 1.1 - basic fs.stat example using the old callback style
+
+So for a basic callback style way of doing this I just need to pass the path to the file as the first argument for startets when calling the fs.sat method. After that I can pass a callback as the second argument that will fire when the stats of the file are available. 
 ```js
 let fs = require('fs'),
 path = require('path'),
@@ -35,7 +40,9 @@ fs.stat(path.join(cwd, 'README.md'), function (e, stats) {
 });
 ```
 
-### 1.1 - fs.stat promise style
+In recent versions of nodejs version 12 and forward promises can be used as well, but for now I am using callbacks as a way to ensure better backward compatibility with older versions of node.
+
+### 1.2 - fs.stat promise style with confidence
 
 The same example can be created in a different way in which promises are used, rather than the old school callback style ways of doing things. For a very basic example such as this maybe it does not make much of a difference, but as I start to get into doing something where I need to make a whole bunch of async calls for things it makes sense to start using promises as a way to keep things neat and sane as things move forward.
 
