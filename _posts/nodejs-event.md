@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 568
-updated: 2019-11-21 17:05:53
-version: 1.1
+updated: 2019-11-21 17:07:40
+version: 1.2
 ---
 
 This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs. It can come in handy now and then to make my own custom events, and attach handers for them, I just need to know where and when to call the emit method in my code when a custom event happens. However maybe it would be best to learn by doing, and to do so it might be best to just jump ahead to the code examples here on the node event emitter class.
@@ -14,8 +14,9 @@ This is a nodejs core build in module that is in node itself, so no npm package 
 
 <!-- more -->
 
-
 ## 1 - Basic node event emitter class example
+
+So for a basic example of the node event emitter class here is an example that just involves stepping an object property, and emitting and overload event when that property reaches a defined max value. 
 
 ```js
 let Emitter = require('events'),
