@@ -5,8 +5,8 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 08:20:48
-version: 1.4
+updated: 2019-11-21 08:35:21
+version: 1.5
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
@@ -16,6 +16,14 @@ So in this post I will be covering a bunch of ways to go about making a copy of 
 <!-- more -->
 
 ## 1 - js copy object and js reference object basics
+
+In this section I will be going over two very basic examples of copying objects in javaScript. One example involves creating two references to the same object, and the other is one that has to do with creating a whole new independent copy or clone of an object. 
+
+These examples are very simple though, and as such I am not going to be covering everything that is no know about when it comes to making copies of objects in javaScript when it comes to things like the prototype chain, and circular references.
+
+However this is of course just a sort of basic section of this post where I am just writing about a very simple warted down form of things for the sake of outline the theme of the post here. If you think you have a basic understanding of how referencing and copying of objects works in javaScript you might want to move on to some of the more advanced sections in this post.
+
+### 1.2 - Basic js reference example
 
 By default whenever I have a situation in which I have an object assigned to a variable it is a reference to that object. When I use the assignment operator to create another variable and assign that reference to an object as its value, it is not a copy of that object it is just yet another reference to the same object. This is what is meant by copying by reference rather than value.
 
@@ -33,7 +41,26 @@ console.log(obj.x); // 0;
 
 In many cases this is actually what I want, but some times I want to work with a copy of an object so that I do not mutate the original source object, a typical task in functional programing. As such I need some kind of way to make a copy (or clone) of an object where it is not a reference but a whole new independent copy of that object with the same set of values. 
 
-Sometimes just a simple shallow clone of the object will work, which out be the case with this very simple object example that does not have any nested objects, or references to other objects outside of it.
+### 1.1 - Basic js copy object example
+
+Sometimes just a simple shallow clone of the object will work, which is the case with this very simple object example. The reason why is because it does not have any nested objects, or references to other objects outside of it. So just something
+
+```js
+// start out with a simple object
+var source = {x: 32,y: 50},
+// create a whole new object
+copy = {};
+// populate the new object with the primitives
+// from the source object
+Object.keys(source).forEach(function (key) {
+    copy[key] = source[key];
+});
+
+copy.x += 8;
+
+console.log(copy.x, source.x); // 40 32
+
+```
 
 Other times I have an object with objects in it, and as such I will want to deep clone that object.
 
