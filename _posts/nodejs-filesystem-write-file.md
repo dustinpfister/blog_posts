@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 479
-updated: 2019-11-21 12:43:24
-version: 1.7
+updated: 2019-11-21 12:55:16
+version: 1.8
 ---
 
 The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is more that one method in the file system module that can eb used to write data to a file system, but this is the one that I find myself using all the time over the others.
@@ -49,35 +49,18 @@ So in later versions of nodejs it looks like there might now be native support f
 ```js
 let fs = require('fs'),
 path = require('path'),
-path_conf = path.join(process.cwd(), 'conf.json'),
+promisify = require('util').promisify,
+ 
+// promisifying node write and read methods
+write = promisify(fs.writeFile),
+read = promisify(fs.readFile);
+ 
+let path_conf = path.join(process.cwd(), 'conf.json'),
 default_conf = {
     reset: false,
     count: 0
 };
-// write
-let write = (file_path, text) => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(file_path, text, 'utf-8', (e) => {
-            if (e) {
-                reject(e);
-            } else {
-                resolve(text);
-            }
-        });
-    });
-};
-// read
-let read = (file_path) => {
-    return new Promise((resolve, reject) => {
-        fs.readFile(file_path, 'utf-8', (e, text) => {
-            if (e) {
-                reject(e);
-            } else {
-                resolve(text);
-            }
-        });
-    });
-};
+ 
 // read conf.json
 read(path_conf)
 // then if we have a conf.json
@@ -93,10 +76,14 @@ read(path_conf)
     return write(path_conf, JSON.stringify(conf));
 })
 // else an error
-.catch ((e) => {
+.catch((e) => {
     let conf = default_conf;
-    console.log('ERROR reading conf.json, writing a new one');
-    console.log(conf);
-    return write(path_conf, JSON.stringify(conf));
+    if (e.code === 'ENOENT') {
+        console.log('No conf.json, writing a new one');
+        console.log(conf);
+        return write(path_conf, JSON.stringify(conf));
+    } else {
+        console.log(e);
+    }
 });
 ```
