@@ -5,11 +5,13 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 06:52:24
-version: 1.2
+updated: 2019-11-21 08:12:49
+version: 1.3
 ---
 
-I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). As such A thought occurred that maybe I should write a post on the deal with referencing vs copying objects in javaScript, and cover a bunch of ways to go about making a copy of an object.
+I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
+
+So in this post I will be covering a bunch of ways to go about making a copy of an object with native javaScript by itself. In addition I will try to do my best to get the core of the situation with objects in general down when it comes to copying and referencing them.
 
 <!-- more -->
 
@@ -18,16 +20,15 @@ I have been cranking out [posts on lodash](/categories/lodash/) as of late, and 
 By default whenever I have a situation in which I have an object assigned to a variable it is a reference to that object.
 
 ```js
-var ref = {x:32,y:50},
- 
-// this makes a refence to the object,
+// start out with a simple object
+var obj = {x:32,y:50},
+// this makes a reference to the object,
 // it does not copy it.
-pt = ref;
- 
+pt = obj;
 // as such any change will effect the reference object
+// as it is just another reference to the same object
 pt.x = 0;
- 
-console.log(ref.x); // 0;
+console.log(obj.x); // 0;
 ```
 
 In many cases this is actual what I want, but some times I want to work with a copy. As such I need some kind of way to make a copy (or clone) of an object. Sometimes just a simple shallow clone of the object will work, other times I have an object with objects in it, and as such I will want to deep clone that object.
