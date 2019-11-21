@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 479
-updated: 2019-11-21 13:03:15
-version: 1.9
+updated: 2019-11-21 14:12:55
+version: 1.10
 ---
 
 The [nodejs write](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) nodejs [file system module](/2018/02/08/nodejs-filesystem/) method will come up a lot when it comes to do anything with, well writing a file in nodejs. There is more that one method in the file system module that can eb used to write data to a file system, but this is the one that I find myself using all the time over the others.
@@ -90,4 +90,99 @@ read(path_conf)
 });
 ```
 
-When I call this example in the command line with node it will create a json file if it is not there, if it is there it will read the file step a value and then write it back to the file. As simple as it might be this basic node write file method example is the begining of something that is starting to look like an actual node project examples of some kind.
+When I call this example in the command line with node it will create a json file if it is not there, if it is there it will read the file step a value and then write it back to the file. As simple as it might be this basic node write file method example is the beginning of something that is starting to look like an actual node project examples of some kind.
+
+## 2 - A node write file method game example about probability
+
+So now that we have the basics of writing files in nodejs, as well as reading them lets do something fun. Here I worked out a very simple silly game example that has to do with what happens if the probability of winning a bet is even just one percent above fifty percent, and the bet remains low and constant. In the kind of situation of course you will make money over the long run if you play enough rounds.
+
+This example involves a read state method that creates a state json file if it is not there, or just reads it, and returns the state file. In addition it also has a play round method that calls the read state method, plays a round of a game, updates the state, and then writes the updated state to the file.
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+ 
+// promisifying node write and read methods
+write = promisify(fs.writeFile),
+read = promisify(fs.readFile);
+ 
+// robust read state method that will create a state
+// if it is not there
+let readState = (dir_root, fileName) => {
+ 
+    dir_root = path.resolve(dir_root || process.cwd());
+    fileName = fileName || 'game_prob_state.json';
+    let path_state = path.join(dir_root, fileName);
+ 
+    return read(fileName)
+    .catch((e) => {
+        if (e.code === 'ENOENT') {
+            let json = JSON.stringify({
+                    won: 0,
+                    lost: 0,
+                    prob: 51,
+                    money: 0
+                });
+            return write(path_state, json, 'utf8');
+        } else {
+            return Promise.reject(e);
+        }
+    })
+    .then(() => {
+        return read(fileName);
+    });
+ 
+};
+ 
+// play a round
+let playRound = (dir_root, fileName) => {
+ 
+    dir_root = path.resolve(dir_root || process.cwd());
+    fileName = fileName || 'game_prob_state.json';
+    let path_state = path.join(dir_root, fileName);
+ 
+    let state = {},
+    roll = Math.random() * 100,
+    bet = 1;
+ 
+    return readState(dir_root, fileName)
+    .then((json) => {
+        state = JSON.parse(json);
+        if (roll <= state.prob) {
+            state.won += 1;
+            state.money += bet;
+        } else {
+            state.lost += 1;
+            state.money -= bet;
+        }
+        return write(path_state, JSON.stringify(state), 'utf8');
+    })
+    .catch((e) => {
+        return Promise.reject(e);
+    })
+    .then(() => {
+        return Promise.resolve(state);
+    });
+ 
+};
+ 
+let count = 0,
+maxCount = process.argv[2] || 1000;
+let loop = function () {
+    playRound(process.cwd(), process.argv[3] || 'game_default.json')
+    .then((result) => {
+        console.log(count, result);
+        count += 1;
+        if (count < maxCount) {
+            loop();
+        }
+    })
+    .catch((e) => {
+        console.log(e);
+    });
+};
+loop();
+```
+
+When I run this a few times, and set the maxCount high enough over time sure enough the money property of the state does slowly but surly go up. The basic idea of this could be expanded to make all kinds of idle games where you just run it a  bunch of times and then progress is made. If only real life was like that.
