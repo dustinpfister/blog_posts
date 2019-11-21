@@ -5,11 +5,12 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 568
-updated: 2019-11-21 17:01:16
-version: 1.0
+updated: 2019-11-21 17:05:53
+version: 1.1
 ---
 
-This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs.
+This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs. It can come in handy now and then to make my own custom events, and attach handers for them, I just need to know where and when to call the emit method in my code when a custom event happens. However maybe it would be best to learn by doing, and to do so it might be best to just jump ahead to the code examples here on the node event emitter class.
+This is a nodejs core build in module that is in node itself, so no npm package of any kind needs to be installed to get started with this, you just need node itself.
 
 <!-- more -->
 
