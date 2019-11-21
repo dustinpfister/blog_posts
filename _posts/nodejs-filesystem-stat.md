@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 153
-updated: 2019-11-21 09:53:29
-version: 1.7
+updated: 2019-11-21 10:08:41
+version: 1.8
 ---
 
 Getting the stats of a file is quick and easy in [node.js](https://nodejs.org/en) with just the nodejs built in core file system module, and the [fs.stat](https://nodejs.org/api/fs.html#fs_fs_fstat_fd_options_callback) method. A stat object contains useful information about a file such as when it was last modified, and the data size of it. A stat object also contains methods that can be used to find if the current file is in fact a file, or a directory. So in this post I will be going over a few quick examples of using the fs.stat method in a nodejs environment.
@@ -32,6 +32,30 @@ fs.stat(path.join(cwd, 'README.md'), function (e, stats) {
  
     console.log(stats);
  
+});
+```
+
+### 1.1 - fs.stat promise style
+
+```js
+// use fs.stat promise style with confidence
+let fs = require('fs'),
+path = require('path'),
+cwd = process.cwd(),
+promisify = require('util').promisify,
+stat = promisify(fs.stat),
+path_item = process.argv[2] || cwd;
+ 
+stat(path_item)
+.then((stats) => {
+    console.log('**********');
+    console.log('item at: ' + path_item);
+    console.log('stats:');
+    console.log(stats);
+    console.log('**********');
+})
+.catch((e) => {
+    console.log(e);
 });
 ```
 
