@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 153
-updated: 2019-11-21 10:30:33
-version: 1.11
+updated: 2019-11-21 12:23:11
+version: 1.12
 ---
 
 Getting the stats of a file is quick and easy in [node.js](https://nodejs.org/en) with just the nodejs built in core file system module, and the [fs.stat](https://nodejs.org/api/fs.html#fs_fs_fstat_fd_options_callback) method. A stat object contains useful information about a file such as when it was last modified, and the data size of it. A stat object also contains methods that can be used to find if the current file is in fact a file, or a directory. So in this post I will be going over a few quick examples of using the fs.stat method in a nodejs environment.
@@ -70,7 +70,77 @@ stat(path_item)
 
 Now that we have some basic examples worked out lets move on to some more advanced topics when it comes to using the fs.stat method in nodejs projects.
 
-## 2 - Get a list of just files in a path
+## 2 - Now for a get item info method using fs.stat, fs.readFile, promises, and more.
+
+So now that we have the basics out of the way lets get into some examples that are maybe a little not so basic. When it comes to making any kind of real project I am often going to want to do more than just get stats for an item that is a directory or a file. If an Item is a file I might want to read that file, if the item is a directory I might want to read the contents of that directory and see what items are there.
+
+In this section I will not be getting into every little thing when it comes to walking the contents of a file system, but I will be going over examples that involve getting file stats, and then getting some data in that file if it is a file, but in any case furnish a standard object of sorts that contains the stats object, the file path, and if it is a file the data of that file.
+
+### 2.1 - A basic get item method
+
+```js
+let fs = require('fs'),
+path = require('path'),
+cwd = process.cwd(),
+promisify = require('util').promisify,
+stat = promisify(fs.stat),
+readFile = promisify(fs.readFile),
+path_item = process.argv[2] || cwd;
+ 
+// a get item info method
+let getItemInfo = (path_item, encoding) => {
+    // starting result object
+    let result = {
+        path_item: path.resolve(path_item),
+        stats: null,
+        data: null,
+        isFile: false,
+        encoding: encoding || ''
+    };
+    // start out by getting stats
+    return stat(path_item)
+    // then save stats, and if it is a file
+    // read the file returning another promise
+    .then((stats) => {
+        result.stats = stats;
+        result.isFile = stats.isFile();
+        if (result.isFile) {
+            return readFile(path_item);
+        }
+    })
+    // if all goes well return a resolved
+    // promise object with the result object
+    .then((data) => {
+        // if we have data from a readFile promise
+        if (data) {
+            // default to raw buffer
+            result.data = data;
+            // give a string if an encoding is given
+            if (result.encoding) {
+                result.data = result.data.toString(result.encoding);
+            }
+        }
+        // return the result
+        return Promise.resolve(result);
+    })
+    // if something goes wrong return
+    // a rejected promise object
+    .catch((e) => {
+        return Promise.reject(e);
+    });
+};
+ 
+// demo
+getItemInfo(process.argv[2] || cwd)
+.then((result) => {
+    console.log(result)
+})
+.catch((e) => {
+    console.log(e);
+});
+```
+
+## 3 - Get a list of just files in a path
 
 When getting a stat object with fs.stat, there are many useful stats on the file, but there are also useful methods like stat.isFile that can be used to find out if an item in a directory is a file, or a another directory. In this example I am using the stat.isFile method to create a list of just files. 
 
