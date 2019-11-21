@@ -5,8 +5,8 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 08:41:35
-version: 1.7
+updated: 2019-11-21 08:56:52
+version: 1.8
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
@@ -63,6 +63,41 @@ console.log(copy.x, source.x); // 40 32
 ```
 
 Although this might work okay for this kind of example, other times I have an object with nested objects in it. There is also the question of the object prototype chain, circular references, references to native objects like window and, and laying when it comes to merging down a collection of objects. So now that we understand the very basic idea of copying and referencing with objects in javaScript lets move on to some more advanced related topics here.
+
+## 2 - copying nested objects by references, and basic deep cloning
+
+So now that we have the very basics of coping by referencing, and copying b value understood lets take things just one step further and working with a few examples that have to do with introducing just one nested object. In this section I am still just working with plain old objects, and not doing anything to weird with the prototype chain, or any other advanced topic when it comes to this subject.
+
+### 2.1 - Basic nested object example where I am cloning just the first object, but referencing the first nested object.
+
+```js
+// start out with an object with
+// a nested object
+var source = {
+    pos: {
+        x: 40,
+        y: 25
+    },
+    heading: 1.57
+},
+// create a whole new object
+copy = {};
+// populate the new object with the keys
+// from the source object
+Object.keys(source).forEach(function (key) {
+    copy[key] = source[key];
+});
+ 
+// mutating the copy
+copy.heading = 0;
+copy.pos.x = 0;
+ 
+// works as exspected when it comes to heading
+console.log(copy.heading, source.heading); // 0 1.57
+// does not work with pos because it just copied a
+// reference it did not deep clone
+console.log(copy.pos.x, source.pos.x); // 0 0
+```
 
 ## 2 - Copying objects, and the for in method of doing it.
 
