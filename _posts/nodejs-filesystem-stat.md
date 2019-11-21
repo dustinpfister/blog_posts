@@ -1,15 +1,15 @@
 ---
-title: Getting file system stats with fs.stat
+title: The fs.stat method and getting stats of a file and directory in nodejs
 date: 2018-02-15 21:00:58
 tags: [js,node.js]
 layout: post
 categories: node.js
 id: 153
-updated: 2019-10-25 14:23:20
-version: 1.6
+updated: 2019-11-21 09:53:29
+version: 1.7
 ---
 
-Getting the stats of a file is quick and easy in [node.js](https://nodejs.org/en) with just the nodejs built in core file system module fs.stat method. A stat object contains useful information about a file such as when it was last modified, and the data size of it. A stat object also contains methods that can be used to find if the current file is in fact a file, or a directory. So in this post I will be going over a few quick examples of using the fs.stat method in a nodejs environment.
+Getting the stats of a file is quick and easy in [node.js](https://nodejs.org/en) with just the nodejs built in core file system module, and the [fs.stat](https://nodejs.org/api/fs.html#fs_fs_fstat_fd_options_callback) method. A stat object contains useful information about a file such as when it was last modified, and the data size of it. A stat object also contains methods that can be used to find if the current file is in fact a file, or a directory. So in this post I will be going over a few quick examples of using the fs.stat method in a nodejs environment.
 
 <!-- more -->
 
@@ -37,7 +37,7 @@ fs.stat(path.join(cwd, 'README.md'), function (e, stats) {
 
 ## 2 - Get a list of just files in a path
 
-When getting a stat object with fs.stat, there are many useful stats on the file, but there are also useful methods like stat.isFile that can be used to find out of an item in a dir is a file, or a directory. In this example I am using the stat.isFile method to create a list of just files. This example makes used of many other aspects of nodejs and javaScript in general including the uril modules promisify method, fs.readdir, Promise.all, and Array.filter just to name a few all of which are worth checking out if you are not familiar with them.
+When getting a stat object with fs.stat, there are many useful stats on the file, but there are also useful methods like stat.isFile that can be used to find out of an item in a dir is a file, or a directory. In this example I am using the stat.isFile method to create a list of just files. This example makes used of many other aspects of nodejs and javaScript in general including the util modules promisify method, fs.readdir, Promise.all, and Array.filter just to name a few all of which are worth checking out if you are not familiar with them.
 
 ```js
 let fs = require('fs'),
