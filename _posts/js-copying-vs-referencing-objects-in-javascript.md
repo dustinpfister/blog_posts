@@ -5,8 +5,8 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 08:35:21
-version: 1.5
+updated: 2019-11-21 08:40:02
+version: 1.6
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
@@ -62,7 +62,7 @@ console.log(copy.x, source.x); // 40 32
 
 ```
 
-Other times I have an object with objects in it, and as such I will want to deep clone that object.
+Although this might work okay for this kind of example, other times I have an object with nested objects in it. There is also the question of the object prototype chain, circular references, references to native objects like window and, and laying when it comes to merging down a collection of objects. So now that we understand the very basic idea of copying and referencing with objects in javaScript lets move on to some more advanced related topics here.
 
 ## Copying objects, and the for in method of doing it.
 
