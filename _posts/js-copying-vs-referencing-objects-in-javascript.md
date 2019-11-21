@@ -5,8 +5,8 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 08:12:49
-version: 1.3
+updated: 2019-11-21 08:20:48
+version: 1.4
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
@@ -15,9 +15,9 @@ So in this post I will be covering a bunch of ways to go about making a copy of 
 
 <!-- more -->
 
-## Referencing objects
+## 1 - js copy object and js reference object basics
 
-By default whenever I have a situation in which I have an object assigned to a variable it is a reference to that object.
+By default whenever I have a situation in which I have an object assigned to a variable it is a reference to that object. When I use the assignment operator to create another variable and assign that reference to an object as its value, it is not a copy of that object it is just yet another reference to the same object. This is what is meant by copying by reference rather than value.
 
 ```js
 // start out with a simple object
@@ -31,7 +31,11 @@ pt.x = 0;
 console.log(obj.x); // 0;
 ```
 
-In many cases this is actual what I want, but some times I want to work with a copy. As such I need some kind of way to make a copy (or clone) of an object. Sometimes just a simple shallow clone of the object will work, other times I have an object with objects in it, and as such I will want to deep clone that object.
+In many cases this is actually what I want, but some times I want to work with a copy of an object so that I do not mutate the original source object, a typical task in functional programing. As such I need some kind of way to make a copy (or clone) of an object where it is not a reference but a whole new independent copy of that object with the same set of values. 
+
+Sometimes just a simple shallow clone of the object will work, which out be the case with this very simple object example that does not have any nested objects, or references to other objects outside of it.
+
+Other times I have an object with objects in it, and as such I will want to deep clone that object.
 
 ## Copying objects, and the for in method of doing it.
 
