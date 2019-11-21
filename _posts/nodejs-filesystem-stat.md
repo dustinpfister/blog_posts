@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 153
-updated: 2019-11-21 10:28:46
-version: 1.10
+updated: 2019-11-21 10:30:33
+version: 1.11
 ---
 
 Getting the stats of a file is quick and easy in [node.js](https://nodejs.org/en) with just the nodejs built in core file system module, and the [fs.stat](https://nodejs.org/api/fs.html#fs_fs_fstat_fd_options_callback) method. A stat object contains useful information about a file such as when it was last modified, and the data size of it. A stat object also contains methods that can be used to find if the current file is in fact a file, or a directory. So in this post I will be going over a few quick examples of using the fs.stat method in a nodejs environment.
@@ -21,7 +21,7 @@ In this section I will be going over two basic examples of how to go about doing
 
 ### 1.1 - basic fs.stat example using the old callback style
 
-So for a basic callback style way of doing this I just need to pass the path to the file as the first argument for startets when calling the fs.sat method. After that I can pass a callback as the second argument that will fire when the stats of the file are available. 
+So for a basic callback style way of doing this I just need to pass the path to the file as the first argument for starters when calling the fs.sat method. After that I can pass a callback as the second argument that will fire when the stats of the file are available. 
 ```js
 let fs = require('fs'),
 path = require('path'),
@@ -67,6 +67,8 @@ stat(path_item)
     console.log(e);
 });
 ```
+
+Now that we have some basic examples worked out lets move on to some more advanced topics when it comes to using the fs.stat method in nodejs projects.
 
 ## 2 - Get a list of just files in a path
 
