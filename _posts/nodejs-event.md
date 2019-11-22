@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 568
-updated: 2019-11-21 18:12:22
-version: 1.4
+updated: 2019-11-22 10:45:39
+version: 1.5
 ---
 
 This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs. It can come in handy now and then to make my own custom events, and attach handers for them, I just need to know where and when to call the emit method in my code when a custom event happens. However maybe it would be best to learn by doing, and to do so it might be best to just jump ahead to the code examples here on the node event emitter class.
@@ -50,4 +50,4 @@ setInterval(function () {
 }, 250);
 ```
 
-So when this example starts it counts up to 10 at which point the overload event is used to set the count back to zero. This is a silly pointless example, but you get the general idea. The node event emitter class is a way to go about defining my own events. I just need to have a way to go about calling the emit method where and when doign so is called for, setting a name, and passing arguments that are needed.
+So when this example starts it counts up to 10 at which point the overload event is used to set the count back to zero. This is a silly pointless example, but you get the general idea. The node event emitter class is a way to go about defining my own events. I just need to have a way to go about calling the emit method where and when doing so is called for, setting a name, and passing arguments that are needed.
