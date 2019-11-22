@@ -5,11 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-06-21 08:10:36
-version: 1.2
+updated: 2019-11-22 10:45:39
+version: 1.3
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
+
+Depending on the version range of node you wish to support, you might not need to make a user space module that extends the file system module part of the stack. For example if you want file system methods that return promises there is the nodejs build in util promisify method that can be used to get that effect fairly quick, and easy. If you want more than just that maybe you still do need to bother with something more, in any case in this post I will be going vanilla javaScript style when it comes to file io tasks.
+
+This post will also serve as a general overview of the file system module, and I will link to additional posts on more specific topics where doing so is called for.
 
 <!-- more -->
 
