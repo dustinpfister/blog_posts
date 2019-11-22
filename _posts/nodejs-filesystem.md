@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-22 10:58:21
-version: 1.4
+updated: 2019-11-22 15:38:55
+version: 1.5
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -19,7 +19,7 @@ This post will also serve as a general overview of the file system module, and I
 
 ## 1 - Some very basic node file system getting started examples
 
-
+In this section I will be going over some very basic examples of the node file system module.
 
 ### 1.1 - read a file callback style
 
