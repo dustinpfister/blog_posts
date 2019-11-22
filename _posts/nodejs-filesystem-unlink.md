@@ -5,17 +5,21 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 569
-updated: 2019-11-22 18:44:50
-version: 1.4
+updated: 2019-11-22 18:47:18
+version: 1.5
 ---
 
 The way to go about deleting files in nodejs with the built in file system module is with the [fs.unlink](https://nodejs.org/docs/latest/api/fs.html#fs_fs_unlink_path_callback) method. So there is no node delete method, but there is fs.unlink, and fs.rmdir that can be used to delete files an folders. There is also of course all kinds of user space npm packages that can help making the process of deleting recursively, and selectively easy, such as rimraf, but in this post I will be sticking to vanilla javaScript examples.
 
 <!-- more -->
 
-## 1 - Node delete file basic example
+## 1 - Some basic node delete file examples
 
-Here we have a basic example of the fs.unlink method example that will delete a file that is given as an argument when used in the command line with node. In this example I am using the old callback style of these kinds of method where I just call the metod, pass the path to the file I want to delete, and then pass a callback that will fire when the task is over.
+In this section I will be going over some basic node delete file examples, using the fs.unlink method in the file system module. There is an older callback style way of using it and then there is doing what is squire to ensure a promise is returned.
+
+### 1.1 - Node delete file basic callback style example
+
+Here we have a basic example of the fs.unlink method example that will delete a file that is given as an argument when used in the command line with node. In this example I am using the old callback style of these kinds of method where I just call the method, pass the path to the file I want to delete, and then pass a callback that will fire when the task is over.
 
 ```jslet fs = require('fs'),
 path = require('path'),
@@ -33,7 +37,7 @@ fs.unlink(filePath, (e) => {
 
 If there is an error there will be an error object, if not the value of the argument will be null. This style of example will work on a wide range of node versions, but most developers myself included prefer promises these days, o lets look at another basic example of the node delete fs.unlink method.
 
-## 2 - delete files promise style
+### 1.2 - delete files promise style
 
 Then there is making sure that the use of the fs.unlink method will return a promise when used.
 
