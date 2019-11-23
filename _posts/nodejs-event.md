@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 568
-updated: 2019-11-22 10:45:39
-version: 1.5
+updated: 2019-11-23 10:08:11
+version: 1.6
 ---
 
 This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs. It can come in handy now and then to make my own custom events, and attach handers for them, I just need to know where and when to call the emit method in my code when a custom event happens. However maybe it would be best to learn by doing, and to do so it might be best to just jump ahead to the code examples here on the node event emitter class.
@@ -51,3 +51,139 @@ setInterval(function () {
 ```
 
 So when this example starts it counts up to 10 at which point the overload event is used to set the count back to zero. This is a silly pointless example, but you get the general idea. The node event emitter class is a way to go about defining my own events. I just need to have a way to go about calling the emit method where and when doing so is called for, setting a name, and passing arguments that are needed.
+
+## 2 - Game board example of a node event emitter
+
+Okay great now that we have the boring part out of the way lets do something fun, or at least something where there is a potential for fun anyway.
+
+In this example I worked out a basic game board module. It contains the beginnings of two classes one for a unit, and another for a game board that will also function as a unit collection class. The Board class will contain an instance of the node event emitter class that I can use to define some events for certain events, such as when a unit moves, or goes out of bounds for the game board.
+
+### 2.1 - The game board lib
+
+```js
+let Emitter = require('events');
+ 
+let c = 0;
+let genUID = () => {
+    return Number(100 + c).toString('hex');
+};
+ 
+// A Unit Class
+let Unit = function (opt) {
+    opt = opt || {};
+    this.uid = opt.uid || genUID();
+    this.x = opt.x === undefined ? 0 : opt.x;
+    this.y = opt.y === undefined ? 0 : opt.y;
+};
+ 
+// A Board Class
+let Board = function (opt) {
+    opt = opt || {};
+    this.width = opt.width || 8;
+    this.height = opt.height || 8;
+    this.units = opt.units || [];
+    this.events = new Emitter();
+};
+ 
+// get Unit method
+Board.prototype.getUnit = function (u) {
+    // if object assume it is a unit
+    // all ready and just return
+    if (typeof u === 'object' && u != null) {
+        return u;
+    }
+ 
+    // if string get unit by it
+    if (typeof u === 'string') {
+        let i = this.units.length,
+        unit;
+        while (i--) {
+            unit = this.units[i];
+            if (unit.uid === u) {
+                return unit;
+            }
+        }
+        this.events.emit('error', new Error('unit uid ' + u + ' not found'))
+        return false;
+    }
+    // if number assume it is an index
+    if (typeof u === 'number') {
+        let unit = this.units[u];
+        if (typeof unit === 'object') {
+            return unit;
+        }
+        this.events.emit('error', new Error('Unit index ' + u + ' is out of range'));
+        return false;
+    }
+    // if all fails emit an error event, and return and empty object
+    this.events.emit('error', new Error('Attempt to get a unit with invalid value: ' + u));
+    return false;
+ 
+};
+ 
+Board.prototype.moveUnit = function (u, dx, dy) {
+    // get unit
+    let unit = this.getUnit(u);
+    // if unit move it
+    if (unit) {
+        let ox = unit.x,
+        oy = unit.y,
+        x = unit.x = unit.x + dx,
+        y = unit.y = unit.y + dy;
+        // emit a 'unit-move' event
+        this.events.emit('unit-move', unit, ox, oy);
+        // if unit is out of bounds emit an out-of-bounds event
+        if (unit.x < 0 || unit.y >= this.width || unit.y < 0 || unit.y >= this.height) {
+            this.events.emit('unit-out-of-bounds', unit);
+        }
+    }
+}
+ 
+module.exports = {
+    Board: Board,
+    Unit: Unit
+};
+```
+
+### 2.2 - A simple demo
+
+```js
+let board = require('./lib_board_class.js');
+ 
+let gameBoard = new board.Board({
+        width: 5,
+        height: 5,
+        units: [
+            new board.Unit({
+                x: 1,
+                y: 1,
+                uid: 'player'
+            })
+        ]
+    });
+ 
+// set some handlers for my events
+gameBoard.events.on('error', function (e) {
+    console.log('')
+    console.log('Error:')
+    console.log(e.message);
+    console.log('');
+});
+gameBoard.events.on('unit-move', function (unit, ox, oy) {
+    console.log('')
+    console.log('Unit moved:');
+    console.log('from: ' + ox + ',' + oy);
+    console.log('to: ' + unit.x + ',' + unit.y);
+    console.log('')
+});
+gameBoard.events.on('unit-out-of-bounds', function (unit) {
+    console.log('')
+    console.log('Unit is out of bounds:');
+    console.log('unit uid: ' + unit.uid);
+    console.log('')
+});
+ 
+gameBoard.moveUnit('player', -1, 0);
+gameBoard.moveUnit('player', -1, 0);
+gameBoard.moveUnit(null, -1, 0);
+```
