@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 568
-updated: 2019-11-23 10:18:19
-version: 1.10
+updated: 2019-11-23 10:20:54
+version: 1.11
 ---
 
 This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs. It can come in handy now and then to make my own custom events, and attach handers for them, I just need to know where and when to call the emit method in my code when a custom event happens. However maybe it would be best to learn by doing, and to do so it might be best to just jump ahead to the code examples here on the node event emitter class.
@@ -195,3 +195,5 @@ gameBoard.moveUnit(null, -1, 0);
 ```
 
 When I run this example I get the expected behavior the unit-move event fires each time for the Unit class instance I created with the uid property of player. The unit-out-of-bounds event fires once when the player unit goes out of bounds, and an error event happens when I attempt to get and move a unit with a value of null.
+
+So things are working as I would expect so far, but the module is still lacking many must needed features. It would also be nice to expand the Unit class as well. I am not sure I would care to put a great deal of time into this though, I thing I would prefer to make a class like this that would work okay on the client side. However you get the idea when it comes to using the node event emitter class it is a way to go about defining some events for a project like this.
