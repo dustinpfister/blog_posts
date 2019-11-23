@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 568
-updated: 2019-11-23 10:10:12
-version: 1.7
+updated: 2019-11-23 10:12:18
+version: 1.8
 ---
 
 This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs. It can come in handy now and then to make my own custom events, and attach handers for them, I just need to know where and when to call the emit method in my code when a custom event happens. However maybe it would be best to learn by doing, and to do so it might be best to just jump ahead to the code examples here on the node event emitter class.
@@ -61,6 +61,8 @@ In this example I worked out a basic game board module. It contains the beginnin
 ### 2.1 - The game board lib
 
 So here is the game board module that I put together for this post. Here I define my Unit Class, and my Board class, and have just a plain object that is exported as public api. The public api of this module is just two references to the Unit and Board Classes.
+
+In the Board class Constructor I created an instance of a node event emitter, and make that one of the properties of a Board class instance. That way when I use the Class in a project I can define event handlers for the Board class instance for certain events of interest that will happen as I move a unit around the board.
 
 ```js
 let Emitter = require('events');
