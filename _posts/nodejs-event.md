@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 568
-updated: 2019-11-23 10:20:54
-version: 1.11
+updated: 2019-11-23 10:53:28
+version: 1.12
 ---
 
 This will be a post on the [node event](https://nodejs.org/api/events.html#events_class_eventemitter) emitter class for making custom events in nodejs. It can come in handy now and then to make my own custom events, and attach handers for them, I just need to know where and when to call the emit method in my code when a custom event happens. However maybe it would be best to learn by doing, and to do so it might be best to just jump ahead to the code examples here on the node event emitter class.
@@ -148,6 +148,8 @@ module.exports = {
     Unit: Unit
 };
 ```
+
+There is way more that could be added when it comes to turning this into a module that would be used in an actual game project. However for the sake of the theme of this post you get the idea. With the node event emitter class I can add all kinds of events for various events that are custom tailer to the nature of the module that I am making.
 
 ### 2.2 - A simple demo
 
