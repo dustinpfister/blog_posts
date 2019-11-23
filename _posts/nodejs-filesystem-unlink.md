@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 569
-updated: 2019-11-23 10:58:20
-version: 1.8
+updated: 2019-11-23 11:00:29
+version: 1.9
 ---
 
 The way to go about deleting files in nodejs with the built in file system module is with the [fs.unlink](https://nodejs.org/docs/latest/api/fs.html#fs_fs_unlink_path_callback) method. So there is no node delete method, but there is fs.unlink, and fs.rmdir that can be used to delete files an folders. There is also of course all kinds of user space npm packages that can help making the process of deleting recursively, and selectively easy, such as rimraf, but in this post I will be sticking to vanilla javaScript examples.
@@ -138,3 +138,4 @@ Run(process.argv[2])
 });
 ```
 
+Then of course there is the delete count method that uses the fs.unlink method to delete the json file. The I have a run metgid that will process the current command when it comes to using the script from the command line with node. I can just call the script and it will create or update the json file, and I can also give a kill command option that will delete the file.
