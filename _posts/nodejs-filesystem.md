@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-24 08:31:38
-version: 1.6
+updated: 2019-11-24 09:39:57
+version: 1.7
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -72,3 +72,43 @@ readFile(path.join(cwd, 'README.md'), 'utf8')
 ```
 
 If you want to push backward compatibility back even further it might require the use of a promise library such as bluebird.
+
+## 2 - Writing to files using the node file system module
+
+So now that we have the basics out of the way when of comes to using the nodejs file system module lets progress into writing to file. There is more than one method, and file mode when it comes to writing to files, as well as reading from theme. However in this section I will be focusing on the fs.wirFile method, and the fs.createWriteStream methods.
+
+I will not be getting into these methods in depth here, however I do have posts in which I do with both the fs.writeFile, and fs.createWriteStreams methods.
+
+### 2.1 - An fs.writeFile basic example
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+cwd = process.cwd(),
+write = promisify(fs.writeFile);
+ 
+let path_db = path.join(cwd, 'db.json'),
+db = [{
+        cost: 2.8,
+        shelfPrice: 2.99,
+        desc: 'Cheepo Red Wine'
+    }
+],
+json = JSON.stringify(db);
+ 
+// write the json file
+write(path_db, json, 'utf8')
+.then(() => {
+    console.log('created db')
+})
+.catch(() => {
+    console.log(e.message);
+});
+```
+
+
+### 2.2 - An fs.createWriteStream basic example
+
+```js
+```
