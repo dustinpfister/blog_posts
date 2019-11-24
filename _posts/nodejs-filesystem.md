@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-24 09:39:57
-version: 1.7
+updated: 2019-11-24 10:24:52
+version: 1.8
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -80,6 +80,10 @@ So now that we have the basics out of the way when of comes to using the nodejs 
 I will not be getting into these methods in depth here, however I do have posts in which I do with both the fs.writeFile, and fs.createWriteStreams methods.
 
 ### 2.1 - An fs.writeFile basic example
+
+So here is a basic example of the fs write file method. 
+
+I am also using the promsify method of the node util module to make a new write method that will return a promise. If you are using a modern version of node and do not care about backward compatibility with older node versions, you could skip the use of the promisify method. However I do care so I often work out something like this for starters when making any kind of script that uses the fs.wirtFile method.
 
 ```js
 let fs = require('fs'),
