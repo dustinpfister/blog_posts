@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-24 10:24:52
-version: 1.8
+updated: 2019-11-24 11:50:01
+version: 1.9
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -111,8 +111,15 @@ write(path_db, json, 'utf8')
 });
 ```
 
+There is way more to write about when it comes to using the fs.write method when it comes to using custom file flags, access modes, and encodings. Even so it is not necessary a magical method that will work well for all situations such as writing data  on a stream basis, and writing to just a certain byte index in a file. So lets look at some more examples of writing data to a file using the core node file system by itself.
+
 
 ### 2.2 - An fs.createWriteStream basic example
 
 ```js
+let fs = require('fs');
+ 
+let writer = fs.createWriteStream('helloworld.txt');
+ 
+writer.write('hello world');
 ```
