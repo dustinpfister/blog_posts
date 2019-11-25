@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-25 13:17:05
-version: 1.14
+updated: 2019-11-25 13:18:19
+version: 1.15
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -179,12 +179,6 @@ This might not be the most compelling example of the the fs.write method, but th
 
 Maybe a better example of this would be a database where each recored is a certain fixed byte length. By diving the total file size by the data size of a recored the number of records can be obtained. Also by multiplying the record size by a record index value a starting position for that record can be obtained. However in this section I am trying to not get to carried away, and focus on just the use of the fs.write method.
 
-### 2.3 - A fs.createWriteStream basic example
+## 3 - Conclusion
 
-```js
-let fs = require('fs');
- 
-let writer = fs.createWriteStream('helloworld.txt');
- 
-writer.write('hello world');
-```
+So I did not get to everything I wanted to just yet for this post, but I might get around to expanding this one more so when I get some more time to improve my nodejs content.
