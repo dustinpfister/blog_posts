@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-25 13:07:10
-version: 1.11
+updated: 2019-11-25 13:11:22
+version: 1.12
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -118,6 +118,8 @@ There is way more to write about when it comes to using the fs.write method when
 The fs.writeFile method might work okay for most simple project where I am just interested in writing the whole contents of a file at once. However if I am more interesting in opening a file in a mode that can be used to both read and write to a file, and at certain byte locations with the file, then there is not one but several method in the node file system module of interest.
 
 There is the fs.write method, and also the fs.read method, but before I can use those I need a file descriptor. To get that value I first need to use the fs.open method, and when I am done I need to use the fs.close method.
+
+So here I have an example that uses the fs.stat method to get file stats including the byte size of the file if it is there to begin with, else a byte size of zero is assumed. The file is then opened with the fs.open method using the append flag, and a mode that allows for both reading and writing. I then use the fs.write method to write a string value to the end of the file.
 
 ```js
 let fs = require('fs'),
