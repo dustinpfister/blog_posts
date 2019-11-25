@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-24 11:50:01
-version: 1.9
+updated: 2019-11-25 10:34:38
+version: 1.10
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -113,8 +113,47 @@ write(path_db, json, 'utf8')
 
 There is way more to write about when it comes to using the fs.write method when it comes to using custom file flags, access modes, and encodings. Even so it is not necessary a magical method that will work well for all situations such as writing data  on a stream basis, and writing to just a certain byte index in a file. So lets look at some more examples of writing data to a file using the core node file system by itself.
 
+### 2.2 - Using the fs.write method along with fs.open, and fs.close
 
-### 2.2 - An fs.createWriteStream basic example
+The fs.writeFile method might work okay for most simple project where I am just interested in writing the whole contents of a file at once. However if I am more interesting in opening a file in a mode that can be used to both read and write to a file, and at certain byte locations with the file, then there is not one but several method in the node file system module of interest.
+
+There is the fs.write method, and also the fs.read method, but before I can use those I need a file descriptor. To get that value I first need to use the fs.open method, and when I am done I need to use the fs.close method.
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+cwd = process.cwd(),
+open = promisify(fs.open),
+close = promisify(fs.close),
+read = promisify(fs.read),
+write = promisify(fs.write),
+ 
+path_file = path.join(cwd, 'db.txt');
+ 
+let fd = null;
+open(path_file, 'w+', 0o666)
+ 
+.then((nFd) => {
+    fd = nFd;
+    return write(fd, Buffer.from('foo'), 0, Buffer.length, 0);
+})
+ 
+.then(() => {
+    return close(fd);
+})
+ 
+.catch((e) => {
+ 
+    console.log('\n', 'Error: ');
+    console.log('code:' + e.code);
+    console.log('mess: ' + e.message);
+    console.log('');
+ 
+});
+```
+
+### 2.3 - A fs.createWriteStream basic example
 
 ```js
 let fs = require('fs');
