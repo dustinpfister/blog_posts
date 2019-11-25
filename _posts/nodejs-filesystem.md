@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-25 10:34:38
-version: 1.10
+updated: 2019-11-25 13:07:10
+version: 1.11
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -125,31 +125,51 @@ path = require('path'),
 promisify = require('util').promisify,
 cwd = process.cwd(),
 open = promisify(fs.open),
+stat = promisify(fs.stat),
 close = promisify(fs.close),
-read = promisify(fs.read),
 write = promisify(fs.write),
- 
+
 path_file = path.join(cwd, 'db.txt');
  
-let fd = null;
-open(path_file, 'w+', 0o666)
+let fd = null,
+fileByteLength = 0;
  
+// get stats
+stat(path_file)
+.then((stat) => {
+    fileByteLength = stat.size;
+})
+.catch((e) => {
+    if (e.code === "ENOENT") {
+        fileByteLength = 0;
+        return Promise.resolve();
+    }
+    return Promise.reject(e);
+})
+// open
+open(path_file, 'a', 0o666)
+// write
 .then((nFd) => {
     fd = nFd;
-    return write(fd, Buffer.from('foo'), 0, Buffer.length, 0);
+    console.log('writing to file of size: ' + fileByteLength);
+    // buffer
+    let buff = Buffer.from('foo', 'utf8'),
+    buff_start = 0,
+    buff_end = buff.length,
+    // byte start position
+    startPosition = fileByteLength;
+    // using fs.write
+    return write(fd, buff, buff_start, buff_end, startPosition);
 })
- 
+// close
 .then(() => {
     return close(fd);
 })
- 
 .catch((e) => {
- 
     console.log('\n', 'Error: ');
     console.log('code:' + e.code);
     console.log('mess: ' + e.message);
     console.log('');
- 
 });
 ```
 
