@@ -4,9 +4,9 @@ date: 2017-04-05 16:25:00
 tags: [js,node.js]
 layout: post
 categories: node.js
-updated: 2019-11-25 13:33:52
+updated: 2019-11-25 13:38:54
 id: 11
-version: 1.6
+version: 1.7
 ---
 
 I am sure I am not alone when I say that I love [node.js](https://nodejs.org/en/), and javaScript. The ability to create complex full stack web applications with a single uniform scripting language for both the front, and back end is really changing things for the better if you ask me. 
@@ -20,17 +20,20 @@ However I guess you always need to start somewhere when it comes to node.js and 
 
 ## 1 - The simplest my_script nodejs hello world example
 
-If the aim is to make back end scripts that ultimately spit something out to the standard output of the console, then writing a node.js hello world can be as simple as just doing a single console.log call.
+If the aim is to just make a script that just spits something out to the standard output of the console, then writing a node.js hello world can be as simple as just doing a single console.log call in a new text file, and then save it as something like my\_script.js.
 
 ```js
 console.log('hello world');
 ```
 
-Yes thats it, just save it as something like my_script.js with your favorite ASCII or Unicode editor then navigate to the working directory and just call it with node.
+Yes thats it once that is saved as a file make the working directory the same as the location of the file and then just call node in the terminal passing the name of the file as the first argument to it like so
 
 ```
 $ node my_script.js
+hello world
 ```
+
+There is more than one way even to do just this, but the console log method gets the job done. The only draw back that comes to mind when using it to write to the standard output is that it will always write an end of line char to the end of the output, so another way would be to use process.stdout.write.
 
 ## 2 - A module nodejs hello world style
 
