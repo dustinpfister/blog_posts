@@ -4,16 +4,19 @@ date: 2017-04-05 16:25:00
 tags: [js,node.js]
 layout: post
 categories: node.js
-updated: 2019-10-25 13:24:20
+updated: 2019-11-25 13:33:52
 id: 11
-version: 1.5
+version: 1.6
 ---
 
-I am sure I am not alone when I say that I love [node.js](https://nodejs.org/en/), and javaScript. The ability to create complex full stack web applications with a single uniform scripting language for both the front, and back end is really changing things for the better if you ask me. However there is much more to that also, nodejs can also be used for many general programing tasks, I like making all kinds of useful and interesting command line interface tools with nodejs that ca be used to create files, walk over a file system structure, and so much more I do not event know where to begin.
+I am sure I am not alone when I say that I love [node.js](https://nodejs.org/en/), and javaScript. The ability to create complex full stack web applications with a single uniform scripting language for both the front, and back end is really changing things for the better if you ask me. 
+
+However there is much more to that also, nodejs can also be used for all kinds of general programing tasks. For example I like making all kinds of useful and interesting command line interface tools with nodejs that ca be used to create files, walk over a file system structure, and so much more I do not event know where to begin.
+
 
 <!-- more -->
 
-I have already written [a few posts](https://dustinpfister.github.io/categories/node-js/) on node.js based projects such as [hexo](https://hexo.io), and [grunt](https://gruntjs.com/), I realize that I have jumped the gun sort of speak for not throwing together my take on node.js [hello world](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) examples. Although I am sure it has been done before many times sense it's release in 2009, I thought I would throw my own together for the hell of it so here it is.
+However I guess you always need to start somewhere when it comes to node.js and the concept of a [hello world](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) example. in addition although I am sure it has been done before many times sense it's release in 2009, I thought I would throw my own hello world examples together for the hell of it so here it is.
 
 ## 1 - The simplest my_script nodejs hello world example
 
