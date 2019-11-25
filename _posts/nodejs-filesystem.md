@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 148
-updated: 2019-11-25 13:11:22
-version: 1.12
+updated: 2019-11-25 13:13:45
+version: 1.13
 ---
 
 Working with files is a big part of most [node.js](https://nodejs.org/en) projects. I have written a [post on fs-extra](/2018/01/08/nodejs-fs-extra/) a while back, but so far never got around to the core file system module in node.js itself.
@@ -174,6 +174,8 @@ open(path_file, 'a', 0o666)
     console.log('');
 });
 ```
+
+This might not be the most compelling example of the the fs.write method, but the basic idea is there. You open a file with the desired flag and mode, and then you have an fd number that can be passed to methods like fs.write. The fs.write method can then be used to write just a certain number of bytes to a byte position in the file.
 
 ### 2.3 - A fs.createWriteStream basic example
 
