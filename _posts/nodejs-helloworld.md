@@ -4,9 +4,9 @@ date: 2017-04-05 16:25:00
 tags: [js,node.js]
 layout: post
 categories: node.js
-updated: 2019-11-25 13:42:28
+updated: 2019-11-25 13:43:36
 id: 11
-version: 1.8
+version: 1.9
 ---
 
 I am sure I am not alone when I say that I love [node.js](https://nodejs.org/en/), and javaScript. The ability to create complex full stack web applications with a single uniform scripting language for both the front, and back end is really changing things for the better if you ask me. 
@@ -20,7 +20,7 @@ However I guess you always need to start somewhere when it comes to node.js and 
 
 ## 1 - What to knw first
 
-I assume that you know enough when it comes to installing node, and I also assume that you have at least some background when it comes to using a terminal window ( CMD or PowerSHell in Windows, or Bash in POSIX systems such as Linux and Apple Darwin ).
+I assume that you know enough when it comes to installing node, and I also assume that you have at least some background when it comes to using a terminal window ( CMD or PowerSHell in Windows, or Bash in POSIX systems such as Linux and Apple Darwin ). Because this is a hello world post on nodejs I assume that you might be a total beginner when it comes to javaScript, so I will try to keep things as simple as possible when it comes to that.
 
 ## 2 - The simplest my_script nodejs hello world example
 
