@@ -4,9 +4,9 @@ date: 2017-04-05 16:25:00
 tags: [js,node.js]
 layout: post
 categories: node.js
-updated: 2019-11-25 13:43:36
+updated: 2019-11-26 09:56:38
 id: 11
-version: 1.9
+version: 1.10
 ---
 
 I am sure I am not alone when I say that I love [node.js](https://nodejs.org/en/), and javaScript. The ability to create complex full stack web applications with a single uniform scripting language for both the front, and back end is really changing things for the better if you ask me. 
@@ -18,7 +18,7 @@ However there is much more to that also, nodejs can also be used for all kinds o
 
 However I guess you always need to start somewhere when it comes to node.js and the concept of a [hello world](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) example. in addition although I am sure it has been done before many times sense it's release in 2009, I thought I would throw my own hello world examples together for the hell of it so here it is.
 
-## 1 - What to knw first
+## 1 - What to know first
 
 I assume that you know enough when it comes to installing node, and I also assume that you have at least some background when it comes to using a terminal window ( CMD or PowerSHell in Windows, or Bash in POSIX systems such as Linux and Apple Darwin ). Because this is a hello world post on nodejs I assume that you might be a total beginner when it comes to javaScript, so I will try to keep things as simple as possible when it comes to that.
 
