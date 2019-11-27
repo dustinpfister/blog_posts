@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:19:24
-version: 1.10
+updated: 2019-11-27 17:22:58
+version: 1.11
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting. This canvas example will be of a very simple defense game that involves the use of a grid like the one I work out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional classes that build on top of a grid class.
@@ -80,7 +80,9 @@ I went for two get cell methods one that accepts cell index values, and the othe
 
 ## 2 - grid unit module
 
-So now for a more advanced class that extends the grid class, and an enemy class.
+So now for a more advanced class that extends the grid class, and an enemy class. The Unit Grid class extends the base Grid class that I went over in the previous section, and on top of that adds some additional methods that have to do with spawning and updating enemies.
+
+The spawn method when called will place a new enemy in a cell that is all the way to the right side of the grid. If there number of enemies is at or above a set limit in the Unit Grid class instance the enemy will not spawn.
 
 ```js
 // ENEMY OBJECT CLASS
