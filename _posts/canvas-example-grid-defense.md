@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:24:20
-version: 1.12
+updated: 2019-11-27 17:25:37
+version: 1.13
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting. This canvas example will be of a very simple defense game that involves the use of a grid like the one I work out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional classes that build on top of a grid class.
@@ -176,7 +176,7 @@ The update method will loop over all cells in the gird, and for now the only thi
 
 ## 3 - draw
 
-Now to work out some draw methods for the game board, and to display some other basic info.
+Now to work out some draw methods for the game board, and to display some other basic info. I have a draw method that will just blank the screen, and then a draw method that will draw the grid lines, as well as the current enemies. I also have a draw method that will print some values of interest so far with the canvas example.
 
 ```js
 // draw Cell Lines
