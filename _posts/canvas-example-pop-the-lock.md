@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2019-11-27 07:04:40
-version: 1.5
+updated: 2019-11-27 07:05:44
+version: 1.6
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target you need to tap the screen or else you loose. So todays canvas example will be a game that is a clone of this to some extent, but a little different.
@@ -157,3 +157,7 @@ So now to make use of everything I work out here. I just create a canvas and get
 }
     ());
 ```
+
+## 4 - Conclusion
+
+This was a quick, and fun little project that i put together in a flash, but is all ready starting to feel like a game.
