@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2019-08-12 15:02:47
-version: 1.15
+updated: 2019-11-27 18:13:01
+version: 1.16
 ---
 
 So the javaScipt == or Equality operator is used to find equality in expressions, in addition there is also the === or identity operator that is used to preform a more strict type sensitive kind of comparison between two values. So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. A variable can be of any kind of type at any given moment, at one time it can be the number 5 and at another moment it can be the string 5. So there is a need for a comparison operator that does type conversion, and another that does not. This is a subject that comes up often in javaSciprt related discussions so it goes without saying that I should write a post on this one.
@@ -34,6 +34,8 @@ let str = '7';
 console.log(str == 7); // true
 console.log(str == '7'); // true
 ```
+
+This is why I generally prefer to use the javaScript identity or === operator for most comparisons, because it forces be to be more mindful of what is going on with types.
 
 ### 1.2 - Comparing objects
 
