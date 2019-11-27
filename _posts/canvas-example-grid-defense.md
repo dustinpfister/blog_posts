@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:12:06
-version: 1.7
+updated: 2019-11-27 17:14:05
+version: 1.8
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting.
@@ -264,3 +264,7 @@ Now that I have my grid class, and drawing methods together I can now tie everyt
 }
     ());
 ```
+
+## 5 - Conclusion
+
+So for now this canvas example of a basic defense game works okay, but there is much more to be done before this really starts to feel like a game. Still for one of my canvas example posts I do aim to keep things simple, and the basic idea that I had in mind is there.
