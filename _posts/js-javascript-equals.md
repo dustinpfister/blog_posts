@@ -1,12 +1,12 @@
 ---
-title: Javascript == ,and === or equality and identity comparison operators
+title: JavaScript == ,and === or equality and identity comparison operators
 date: 2019-02-06 17:47:00
 tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2019-11-27 18:21:40
-version: 1.18
+updated: 2019-11-27 18:26:58
+version: 1.19
 ---
 
 So the javaScipt == or Equality operator is used to find equality in expressions, in addition there is also the === or identity operator that is used to preform a more strict type sensitive kind of comparison between two values. So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This might case some confusion, but if you take a moment to just work out some simple examples that confusion can be quickly dispelled.
