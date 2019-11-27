@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:22:58
-version: 1.11
+updated: 2019-11-27 17:24:20
+version: 1.12
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting. This canvas example will be of a very simple defense game that involves the use of a grid like the one I work out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional classes that build on top of a grid class.
@@ -171,6 +171,8 @@ UnitGrid.prototype.update = function () {
     }
 };
 ```
+
+The update method will loop over all cells in the gird, and for now the only thing there is to update are enemies. So the update method just spawns new enemies, and updates any enemies on the board before hand.
 
 ## 3 - draw
 
