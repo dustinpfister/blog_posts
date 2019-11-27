@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2019-11-27 06:58:12
-version: 1.4
+updated: 2019-11-27 07:04:40
+version: 1.5
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target you need to tap the screen or else you loose. So todays canvas example will be a game that is a clone of this to some extent, but a little different.
@@ -128,6 +128,8 @@ var drawPTL = function (ptl, ctx, canvas) {
 ```
 
 ## 3 - The canvas and loop
+
+So now to make use of everything I work out here. I just create a canvas and get the drawing context to it, and then append to a gamearea div that I have in my html. I set the width and height, and attach a single event that I worked out in my state object. I then set the first random section, and define and start the main game loop.
 
 ```js
 // SETUP CANVAS
