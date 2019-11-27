@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:05:26
-version: 1.4
+updated: 2019-11-27 17:09:27
+version: 1.5
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting.
@@ -17,6 +17,8 @@ This canvas example will be of a very simple defense game that involves the use 
 
 
 ## 1 - A grid.js module to use with the grid defense canvas example
+
+Here Is the grid.js file for starters, this will be used as a base class that will then be extended into another class that will server as a game board of sorts for the canvas example. This file just outlines the base constructor of the Grid class, as well as a few prototype methods that have to do with creating grid cells, and getting grid cells.
 
 ```js
 // GRID
@@ -73,6 +75,8 @@ Grid.prototype.setCells = function (forCell) {
     }
 };
 ```
+
+I went for two get cell methods one that accepts cell index values, and the other that accepts canvas relative pixel values. So for this project that is all there is for the base grid class. This style of defense game is not going to be tower defense, enemies are just going to move from one side to the other so there is no need for path detection of anything to that effect.
 
 ## 2 - grid unit module
 
