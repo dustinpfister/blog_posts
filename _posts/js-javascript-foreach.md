@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-11-27 17:39:52
-version: 1.22
+updated: 2019-11-27 17:42:27
+version: 1.23
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
@@ -33,7 +33,7 @@ Sticking to an older javaScript spec will help to assure that what it is that yo
 
 So there is the Array forEach method, but there are other array prototype methods like map, filter and reduce. In this section i will be going over some quick examples of these methods.
 
-### 2.1 - First off javaScripts forEach array protoype method
+### 2.1 - First off javaScripts forEach array prototype method
 
 So a basic example of Array.forEach might look something like this.
 
@@ -133,6 +133,8 @@ So in this section I will be outlining some ways to loop over these kinds of obj
 The Array.from method is one way to go about converting one of these array like objects into an Array. Once that is done it is possible to use some Array prototype methods such as Array.forEach
 
 ### 4.1 - Array.from, and Array.forEach
+
+The array from method is one way to go about creating an array from an array like object. I just pass the object to array from when calling it, the returned result is an instance of array to which I can then use the array for each method, or any array prototype method.
 
 ```js
 var obj = {0:1, 1:2, 2:3, length: 3};
