@@ -5,20 +5,22 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-11-06 19:03:00
-version: 1.20
+updated: 2019-11-27 17:37:29
+version: 1.21
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them.
 
-Then there are other objects in javaScript that are structured like arrays, but are not arrays, and then objects in general, as such there might come a need to loop over the contents of those kinds of objects. So then there are Object static methids like Object.keys, and the for in loop that can be used as ways to help loop over the contents of Objects in general in javaScript.
+Then there are other objects in javaScript that are structured like arrays, but are not arrays, and then objects in general, as such there might come a need to loop over the contents of those kinds of objects. So then there are Object static methods like Object.keys, and the for in loop that can be used as ways to help loop over the contents of Objects in general in javaScript.
 Then there is of course lodash and the [\_.forEach method](/2017/11/20/lodash_foreach/) that works more or less the same way as the native Array.prototype.forEach method, but is a collection method that will work on objects in general. However in this post I will be sticking to topics surrounding the native forEach array prototype method and other related topics when it comes to just plain old native javaScript.
 
 <!-- more -->
 
 ## 1 - javaScript forEach and what to know before hand
 
-The Array.forEach method in native javaScript is one of many ways to loop over the contents of a collection in javaScript. However the Array.forEach method is only useful for looping over the contents of an Array, it can also in some cases be used to loop over the contents of an array like object, but it might not always be the best solution when it comes to looping over named collections when it comes to clever ways to get it to work with such collections. In any case there are other ways of doing this that involve the use of a library like javaScript as well as other native solutions.
+The Array.forEach method in native javaScript is one of many ways to loop over the contents of a collection in javaScript. However the Array.forEach method is only generally useful for looping over the contents of an Array. it can also in some cases be used to loop over the contents of an array like object, but it might not always be the best solution when it comes to looping over named collections, or in other words plain old objects with named rather than indexed key names.
+
+In any case there are other ways of looping over collections that involve the use of a library like lodash, as well as other native javaScript solutions such as while loops.
 
 ### 1.2 - ECMA rev5 compliant methods
 
