@@ -5,13 +5,13 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:14:05
-version: 1.8
+updated: 2019-11-27 17:18:18
+version: 1.9
 ---
 
-Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting.
+Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting. This canvas example will be of a very simple defense game that involves the use of a grid like the one I work out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional classes that build on top of a grid class.
 
-This canvas example will be of a very simple defense game that involves the use of a grid like the one I work out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional classes that build on top of a grid class.
+This will not be a tower defense game, or any such game that will involve path detection, as it will be the kind of simple defense game that involves units just moving from one side of the screen to another.
 
 <!-- more -->
 
