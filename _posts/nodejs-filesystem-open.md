@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 570
-updated: 2019-11-26 19:23:13
-version: 1.4
+updated: 2019-11-26 19:26:01
+version: 1.5
 ---
 
 So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile methods when it comes to working with files. With many of my projects just working with those methods get the job done just file. However of course there are more tools in the box, and sometimes it might be better to go with the [fs.open](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback) method, and then methods like fs.write, and fs.read.
@@ -14,6 +14,8 @@ So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile me
 <!-- more -->
 
 ## 1 - An fs open basic example in node with the file system core module
+
+In this Section I will be starting out with just a few basic examples of the fs open method in the node file system module.
 
 ### 1.1 - Basic fs open example callback style
 
