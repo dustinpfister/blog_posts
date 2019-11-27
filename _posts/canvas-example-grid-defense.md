@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:10:47
-version: 1.6
+updated: 2019-11-27 17:12:06
+version: 1.7
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting.
@@ -217,6 +217,8 @@ draw.disp = function (state, ctx) {
 ```
 
 ## 4 - Main
+
+Now that I have my grid class, and drawing methods together I can now tie everything together with a main app loop, and other code that sets things up for the first time.
 
 ```js
 // SETUP CANVAS
