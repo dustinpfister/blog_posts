@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:09:27
-version: 1.5
+updated: 2019-11-27 17:10:47
+version: 1.6
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting.
@@ -79,6 +79,8 @@ Grid.prototype.setCells = function (forCell) {
 I went for two get cell methods one that accepts cell index values, and the other that accepts canvas relative pixel values. So for this project that is all there is for the base grid class. This style of defense game is not going to be tower defense, enemies are just going to move from one side to the other so there is no need for path detection of anything to that effect.
 
 ## 2 - grid unit module
+
+So now for a more advanced class that extends the grid class, and an enemy class.
 
 ```js
 // ENEMY OBJECT CLASS
@@ -169,6 +171,8 @@ UnitGrid.prototype.update = function () {
 ```
 
 ## 3 - draw
+
+Now to work out some draw methods for the game board, and to display some other basic info.
 
 ```js
 // draw Cell Lines
