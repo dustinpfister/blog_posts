@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2019-11-27 18:15:22
-version: 1.17
+updated: 2019-11-27 18:21:40
+version: 1.18
 ---
 
 So the javaScipt == or Equality operator is used to find equality in expressions, in addition there is also the === or identity operator that is used to preform a more strict type sensitive kind of comparison between two values. So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This might case some confusion, but if you take a moment to just work out some simple examples that confusion can be quickly dispelled.
@@ -41,7 +41,7 @@ This is why I generally prefer to use the javaScript identity or === operator fo
 
 ### 1.2 - Comparing objects
 
-When comparing two objects the result is true when both operands are references to the same object.
+When comparing two objects the result is true when both operands are references to the same object. However any comparison of two objects that are different objects in memory will also result in false, even if they have the same set of values.
 
 ```js
 let obj = {n:42},
@@ -54,7 +54,7 @@ ref = obj;
 console.log(obj == {n:42}); // false
 ```
 
-Even if another object has the same set of property names, and values it is another separate object in memory rather than two references to the same object.
+So when comparing objects the only thing of interest is if they are both the same object or not. If you want to find out if two objects have the same set of values or not you will want to loop over the contents, and compare each key. If you want to find out if they are both objects of the same class you could try the constructor property that would work in most cases.
 
 ### 1.3 - Two booleans
 
