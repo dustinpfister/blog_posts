@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 570
-updated: 2019-11-26 19:26:01
-version: 1.5
+updated: 2019-11-26 19:31:02
+version: 1.6
 ---
 
 So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile methods when it comes to working with files. With many of my projects just working with those methods get the job done just file. However of course there are more tools in the box, and sometimes it might be better to go with the [fs.open](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback) method, and then methods like fs.write, and fs.read.
@@ -18,6 +18,8 @@ So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile me
 In this Section I will be starting out with just a few basic examples of the fs open method in the node file system module.
 
 ### 1.1 - Basic fs open example callback style
+
+Here is a basic hello world example of the fs open method, in the old callback style. Right off the bat you can see that there is a problem forming with the so called callback hell. The fs open method just opens a file and gives a file descriptor value as an argument via the callback method that is given. That file descriptor or fd for short is then what can be used with methods like fs read, and fs right all of which also used callbacks.
 
 ```js
 let fs = require('fs'),
@@ -50,6 +52,8 @@ fs.open(path_file, 'w+', 0o666, (err, fd) => {
     }
 });
 ```
+
+So then there is a desire to use some other way of handling this so that I do not end up with so many nested callbacks like this. One way is to use promises so lets look at another example that does the same thing only promise style.
 
 ### 1.2 - Basic fs open example promise style
 
