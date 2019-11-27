@@ -5,13 +5,78 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 570
-updated: 2019-11-26 19:19:03
-version: 1.3
+updated: 2019-11-26 19:23:13
+version: 1.4
 ---
 
 So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile methods when it comes to working with files. With many of my projects just working with those methods get the job done just file. However of course there are more tools in the box, and sometimes it might be better to go with the [fs.open](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback) method, and then methods like fs.write, and fs.read.
 
 <!-- more -->
+
+## 1 - An fs open basic example in node with the file system core module
+
+### 1.1 - Basic fs open example callback style
+
+```js
+let fs = require('fs'),
+path = require('path'),
+ 
+path_file = path.join(process.cwd(), 'db.txt');
+ 
+fs.open(path_file, 'w+', 0o666, (err, fd) => {
+    if (err) {
+        console.log(err);
+        console.log(fd);
+    } else {
+        let buff = Buffer.from('Hello World', 'utf8'),
+        buff_start = 0,
+        buff_length = buff.length,
+        file_pos = 0;
+        fs.write(fd, buff, buff_start, buff_length, file_pos, (err) => {
+            if (err) {
+                console.log(err);
+                fs.close(fd, () => {
+                    console.log('file closed');
+                });
+            } else {
+                console.log('write done');
+                fs.close(fd, () => {
+                    console.log('file closed');
+                });
+            }
+        });
+    }
+});
+```
+
+### 1.2 - Basic fs open example promise style
+
+```js
+let fs = require('fs'),
+promisify = require('util').promisify,
+path = require('path'),
+open = promisify(fs.open),
+close = promisify(fs.close),
+write = promisify(fs.write),
+path_file = path.join(process.cwd(), 'db.txt');
+let fd;
+open(path_file, 'w+', 0o666)
+.then((nFd) => {
+    fd = nFd;
+    let buff = Buffer.from('Hello World', 'utf8'),
+    buff_start = 0,
+    buff_length = buff.length,
+    file_pos = 0;
+    return write(fd, buff, buff_start, buff_length, file_pos);
+})
+.then(() => {
+    console.log('write done');
+    return close(fd);
+})
+.catch((e) => {
+    console.log(e);
+});
+```
 
 ## 2 - Use the r+ flag over w and w+ as they do not seem to work the way they should
 
