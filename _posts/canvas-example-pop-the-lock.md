@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2019-11-26 21:27:54
-version: 1.1
+updated: 2019-11-26 21:30:18
+version: 1.2
 ---
 
-A long time ago I played a game called pop the lock on android. It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target you need to tap the screen or else you loose. So todays canvas example will be a game that is a clone of this to some extent, but a little different.
+A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target you need to tap the screen or else you loose. So todays canvas example will be a game that is a clone of this to some extent, but a little different.
 
 <!-- more -->
 
