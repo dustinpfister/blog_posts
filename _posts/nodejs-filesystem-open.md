@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 570
-updated: 2019-11-26 19:33:22
-version: 1.7
+updated: 2019-11-26 19:38:37
+version: 1.8
 ---
 
 So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile methods when it comes to working with files. With many of my projects just working with those methods get the job done just file. However of course there are more tools in the box, and sometimes it might be better to go with the [fs.open](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback) method, and then methods like fs.write, and fs.read.
@@ -58,6 +58,8 @@ The basic idea of the fs open method is there though, I call the fs open method 
 So then there is a desire to use some other way of handling this so that I do not end up with so many nested callbacks like this. One way is to use promises so lets look at another example that does the same thing only promise style.
 
 ### 1.2 - Basic fs open example promise style
+
+Here now is the same example as before but now I am using the promisify method of the util module to make new methods that return a promise. I can now use these methods as a way to make use of the fs open method along with fs read, write, and close.
 
 ```js
 let fs = require('fs'),
