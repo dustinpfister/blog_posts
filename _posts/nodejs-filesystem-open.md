@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 570
-updated: 2019-11-26 12:14:15
-version: 1.1
+updated: 2019-11-26 19:15:32
+version: 1.2
 ---
 
-So in most of my nodejs project I just use the fs.writeFile, and fs.readFile methods. With many of my projects just working with those methods get the job done just file. However of course there are more tools in the box, and sometimes it might be better to go with the fs.open method, and then methods like fs.write, and fs.read.
+So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile methods when it comes to working with files. With many of my projects just working with those methods get the job done just file. However of course there are more tools in the box, and sometimes it might be better to go with the [fs.open](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback) method, and then methods like fs.write, and fs.read.
 
 <!-- more -->
 
