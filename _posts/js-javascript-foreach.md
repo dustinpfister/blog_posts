@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-11-27 17:42:27
-version: 1.23
+updated: 2019-11-27 18:04:16
+version: 1.24
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
@@ -183,3 +183,11 @@ Object.values(obj).forEach((n) => {
 });
 console.log(sum); // 6
 ```
+
+## 6 - Conclusion
+
+The javaScript foreach method might work okay for quickly looping over an array, and it some cases it still works okay. Still I often find myself using other array methods, while loops, Promise.all, and many other similar tools. There is also trying to thunk for a moment if I even need a loop at all when it comes to using an expression rather than a loop when doing so will work.
+
+It is true that the  javaScript foreach method is not a magical one stop solution for looping over all the contents of an array. I see many developers writing posts in which they go on about how array foreach is the best solution for looping and that everything else should not be used, or that while loops should always be used over for loops because if used a certain way they are even faster, and so forth. I am not interested in taking sides when it comes to these kinds of things, I like using array foreach now and then, but I also use map, filter, reduce, while loops and more. 
+
+Simply put I like to use different tools for the job, and also try to always pick the best choice depending on the situation. There is readability, but also performance. There is functional programing which is great, but there is also working with classes, state, and other ways of programing that are not necessary inherently inferior. There is trying to be perfect, and then there is just getting together a working proof of concept today rather than six months from now. So just pick a way to loop, and move on with your project, and your life.
