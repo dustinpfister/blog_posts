@@ -5,11 +5,13 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2019-11-27 17:02:38
-version: 1.2
+updated: 2019-11-27 17:04:21
+version: 1.3
 ---
 
 Time for another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting.
+
+This canvas example will be of a ver simple defence game that involves the use of a grid like the one I work out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids.
 
 <!-- more -->
 
