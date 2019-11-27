@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 570
-updated: 2019-11-26 19:31:02
-version: 1.6
+updated: 2019-11-26 19:33:22
+version: 1.7
 ---
 
 So in most of my nodejs projects I just use the fs.writeFile, and fs.readFile methods when it comes to working with files. With many of my projects just working with those methods get the job done just file. However of course there are more tools in the box, and sometimes it might be better to go with the [fs.open](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback) method, and then methods like fs.write, and fs.read.
@@ -52,6 +52,8 @@ fs.open(path_file, 'w+', 0o666, (err, fd) => {
     }
 });
 ```
+
+The basic idea of the fs open method is there though, I call the fs open method pass a path to a file that I want to open, along with a flag, and file access mode, and then a means to do something later on with the file descriptor once it is available.
 
 So then there is a desire to use some other way of handling this so that I do not end up with so many nested callbacks like this. One way is to use promises so lets look at another example that does the same thing only promise style.
 
