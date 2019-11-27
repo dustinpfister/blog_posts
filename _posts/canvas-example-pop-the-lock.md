@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2019-11-27 06:54:27
-version: 1.3
+updated: 2019-11-27 06:58:12
+version: 1.4
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target you need to tap the screen or else you loose. So todays canvas example will be a game that is a clone of this to some extent, but a little different.
@@ -69,6 +69,8 @@ var ptl = {
 ```
 
 ## 2 - The draw method
+
+So now that I have the state object worked out it is time to work out a draw method for it. In this example I am not doing anything fancy with layering, sprites, and so forth. Just a single draw method that renders the current state of the game that will be called on each frame tick.
 
 ```js
 // DRAW
