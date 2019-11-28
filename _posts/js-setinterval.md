@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2019-11-28 13:32:38
-version: 1.3
+updated: 2019-11-28 13:38:09
+version: 1.4
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval). It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for.
@@ -31,7 +31,9 @@ The above example will fire the function that logs the string tick to the consol
 
 ## 2 - Basic state machine example
 
-One of the many use case examples of setInterval is as a means to setup some kind of state machine. Many projects will involve ruining the same code over, and over again and often that code can become somewhat complicated. Breaking code down into many separate states will help to make the project more manageable.
+One of the many use case examples of setInterval is as a means to setup some kind of state machine. Many projects will involve ruining the same code over, and over again and often that code can become somewhat complicated. Also it might chnage depending on the state of the application. If you have a strategy game, it does not make sense to have game code running when you are navigating around a map system, or a main game options menu.
+
+So then breaking code down into many separate states will help to make the project more manageable, and in many cases doing so is just necessary. The basic idea would be to have not just one, but several update methods, and a property that is used to know which method to call at the current moment.
 
 ```js
 var currentState = 'start',
