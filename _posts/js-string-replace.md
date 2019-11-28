@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2019-11-28 10:10:38
-version: 1.9
+updated: 2019-11-28 10:32:53
+version: 1.10
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) String prototype method in javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. In order to really get into using replace it is important to get up to speed with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), a subject that I hate, but never the less when it does come to search and replace, and matching tasks with text regular expressions are a very powerful tool for doing so.
@@ -66,3 +66,31 @@ console.log(result);
 ```
 
 The pattern will of course need to be tweaked a little down and then, but the basic idea is there. 
+
+### 3.1 - Replacing what is between two patterns with something involving what is between them
+
+So I could replace what is between the two patterns with just an empty string or other static text. However I could also make something new with the content that is between then also of course. This just needs to involve using a function in place of a string as the value for what to replace. The function will then be used as a way to generate content.
+
+So I could use the string replace method as a way to start replacing instances of a table in some markdown, but then I can use the string replace method again in the body of the function that I give the string replace method.
+
+```js
+let str = 'foo bar foo bar \n' +
+    '---\n' +
+    'foo: bar \n' +
+    'n: 42 \n' +
+    '---\n' +
+    'foo bar foo bar';
+
+let result = str.replace(/---\n[\s|\S]*?---\n/, (table) => {
+        return table.replace(/---/, '<pre>')
+        .replace(/---/, '</pre>');
+    });
+
+console.log(result);
+// 'foo bar foo bar 
+// <pre>
+// foo: bar
+// n: 42
+// </pre>
+// foo bar foo bar'
+```
