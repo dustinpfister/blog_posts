@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2019-11-15 20:11:37
-version: 1.8
+updated: 2019-11-28 10:10:38
+version: 1.9
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) String prototype method in javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. In order to really get into using replace it is important to get up to speed with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), a subject that I hate, but never the less when it does come to search and replace, and matching tasks with text regular expressions are a very powerful tool for doing so.
@@ -44,3 +44,25 @@ console.log(result);
 ```
 
 So that is a neat tick for string replacement related tasks that I am sure can come in handy now and then. Just this simple example of it is one thing, but say I want to replace all uppercase instances of tag names in an HTML string with lower case ones, this can be used as a way to do so real easy.
+
+## 3 - Replacing something that is between two patterns
+
+A command task that a development might run into now and then is how to go about replacing something that is between two patterns of one kind or another. Say you have some markdown that has tables in it, but you want the tables removed. Such a task can be done with the string replace method and the right pattern.
+
+I have come to find that something like the following works for me when I want to remove the beginning table of my mark down source files.
+
+```js
+let str = 'This is some text that also ' +
+'---\n' +
+'foo: bar \n' +
+'n: 42 \n' +
+'---\n' + 
+'has some tables in it, but I do not want theme there for some reason.';
+ 
+let result = str.replace(/---\n[\s|\S]*?---\n/, '');
+ 
+console.log(result);
+// 'This is some text that also has some tables in it, but I do not want theme there for some reason.'
+```
+
+The pattern will of course need to be tweaked a little down and then, but the basic idea is there. 
