@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2019-11-28 13:28:15
-version: 1.2
+updated: 2019-11-28 13:32:38
+version: 1.3
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval). It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for.
@@ -17,7 +17,7 @@ The setInterval method will fire a given method after a given millisecond value 
 
 ## 1 - Basic example of setInterval
 
-At a minimum setInterval must be given at least two arguments, the first of which is the function to call, and the second is the minimum amount of time that should pass before the function is called.
+At a minimum setInterval must be given at least two arguments. The first argument is the function to call, and the second is the minimum amount of time that should pass in milliseconds before the function is called.
 
 ```js
 setInterval(function(){
@@ -26,6 +26,8 @@ setInterval(function(){
  
 },1000);
 ```
+
+The above example will fire the function that logs the string tick to the console ruffly once every second. I say ruffly because it is not always guaranteed that it will fire every one second right on the nose. The reason why is because of the nature of event loops, and javaScripts single threaded like nature. How ever when it comes to something very simple like this, the function should fire on time more or less.
 
 ## 2 - Basic state machine example
 
