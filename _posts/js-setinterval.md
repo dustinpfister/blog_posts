@@ -5,15 +5,17 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2018-03-12 12:09:15
-version: 1.1
+updated: 2019-11-28 13:28:15
+version: 1.2
 ---
 
-Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval). The setInterval method will fire a given method after a given millisecond value has elapsed, after which point it will fire again after the given millisecond value has elapsed again, and so forth. It is therefor a popular, and well known way of implementing an application loop. It can also be thought of as a starting point that can branch off into other topics such as state management, and the nature of threading.
+Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval). It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for.
+
+The setInterval method will fire a given method after a given millisecond value has elapsed, after which point it will fire again after the given millisecond value has elapsed again, and so on. It is therefor a popular, and well known way of implementing an application loop. It can also be thought of as a starting point that can branch off into other topics such as state management, and the nature of how threading, and event loops in a javaScript environment.
 
 <!-- more -->
 
-## Basic example of setInterval
+## 1 - Basic example of setInterval
 
 At a minimum setInterval must be given at least two arguments, the first of which is the function to call, and the second is the minimum amount of time that should pass before the function is called.
 
@@ -25,7 +27,7 @@ setInterval(function(){
 },1000);
 ```
 
-## Basic state machine example
+## 2 - Basic state machine example
 
 One of the many use case examples of setInterval is as a means to setup some kind of state machine. Many projects will involve ruining the same code over, and over again and often that code can become somewhat complicated. Breaking code down into many separate states will help to make the project more manageable.
 
@@ -85,6 +87,6 @@ setInterval(loop, 1000);
 
 A more advanced example might include some kind of State object constructor with all kinds of methods that can be used for any given state, but you should get the basic idea.
 
-## setInterval vs requestAnimationFrame
+## 3 setInterval vs requestAnimationFrame
 
 In my examples to far I am not doing anything that involves updating a canvas, or DOM element in a client side environment. If that was the case I would opt to use requestAnimationFrame as it is a far better alternative to setInterval or setTimeout.
