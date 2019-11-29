@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-11-29 08:16:07
-version: 1.63
+updated: 2019-11-29 08:23:46
+version: 1.64
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing content method is the standard typical solution for doing so.
@@ -162,7 +162,7 @@ ctx.fill();
 ctx.stroke();
 ```
 
-This works fine in most cases when I just want to quickly draw a circle. However there might be a desire in some cases to set other values such as the number of points in the arc and so forth. In that case I might need to take the time to write my own method for drawing an arc, or fine something else.
+So if I just want to draw a circle and be done with it, for the most part the canvas arc method will work just fine. It is not however and end all solution for doing so though. There is drawing a circle, and then there is drawing a polygon with a set number of sides. As the number of sides approaches positive infinity, a polygon approaches but never truly becomes a circle. With that said you might notice that there is no argument to set the number of sides for arc, if you want control over that you will just want to work out a methods for doing so, or use a framework.
 
 ## 3 - Drawing a canvas arc clockwise and counter clockwise
 
