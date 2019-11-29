@@ -5,13 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2019-11-29 08:45:18
-version: 1.9
+updated: 2019-11-29 08:50:37
+version: 1.10
 ---
 
 With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with. However years later I am now aware with many different ways to go about moving a display object in a canvas project. 
 
-In my earliest projects I would just step the position of an object by delta values on each frame tick, and maybe that is still not such a bad way of doing so with some projects. However now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state when it comes to certain projects that need to move in real time ( mainly games ).
+In my earliest projects I would just step the position of an object by delta values on each frame tick, and maybe that is still not such a bad way of doing so with some projects. However now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state when it comes to certain projects that need to move in real time ( mainly games ). 
+
+In addition there are other ways of moving objects that center around a current index or frame value relative to a set number of max frames. This kind of way of moving display objects in canvas can be though of as a very functional way of going about moving objects. Methods can be authored where I pass a frame index, and max frame value, and what is returned is an animation state that will always be the same for the same values that are passed to the method. In other words an animation methods that is in line with the rules of what is often called a pure function.
 
 <!-- more -->
 
