@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2019-11-09 11:00:16
-version: 1.8
+updated: 2019-11-29 08:45:18
+version: 1.9
 ---
 
-With canvas moving objects is one of the first things I started to get up to speed with. However years later I am not aware with many different ways to go about moving a display object in a canvas project. In my earliest projects I would just step the position of an object by delta values on each frame tick, but now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state.
+With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with. However years later I am now aware with many different ways to go about moving a display object in a canvas project. 
+
+In my earliest projects I would just step the position of an object by delta values on each frame tick, and maybe that is still not such a bad way of doing so with some projects. However now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state when it comes to certain projects that need to move in real time ( mainly games ).
 
 <!-- more -->
 
