@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2019-11-29 11:33:14
-version: 1.12
+updated: 2019-11-29 16:02:15
+version: 1.13
 ---
 
 With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with. However years later I am now aware with many different ways to go about moving a display object in a canvas project. 
@@ -139,7 +139,7 @@ This results in a circle just moving across the canvas, but should do so in a co
 
 ## 3 - canvas movement by way of frame over maxFrame
 
-I have come to find that I enjoy creating movement in a canvas project by way of thinking in terms of everything moving in relation to a frame index value relative to a max frame value.
+I have come to find that I enjoy creating movement in a canvas project by way of thinking in terms of everything moving in relation to a frame index value relative to a max frame value. This way the movement of an object can be set by way of an expression that will change from one state to another, or loop back around again, based on the relationship between frame index and total frames.
 
 ```js
 // point movement function
