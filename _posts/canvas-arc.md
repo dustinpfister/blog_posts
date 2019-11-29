@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-11-29 08:28:28
-version: 1.67
+updated: 2019-11-29 08:31:59
+version: 1.68
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing content method is the standard typical solution for doing so.
@@ -200,7 +200,9 @@ ctx.stroke();
 
 ## 5 - Wrapping the canvas arc method
 
-Another topic that comes to mind is the idea of wrapping the canvas arc method in a function and then setting some hard coded defaults for the method so that I can have control over defaults and set them to values other than what is the browser default. This can sometimes make sense not just with the canvas arc method, but many native methods in general when working with a javaScript project. For example the forEach method in lodash works a little differently from the native forEach array prototype method as it can be used with objects in general rather than just arrays, and a value of false can be returned to break out of the loop.
+Another topic that comes to mind is the idea of wrapping the canvas arc method in a function and then setting some hard coded defaults for the method so that I can have control over defaults and set them to values other than what is the browser default. In other words creating a kind of abstraction for the canvas arc method that provides an alternative interface for its use.
+
+This can sometimes make sense not just with the canvas arc method, but many native methods in general when working with a javaScript project. For example the forEach method in lodash works a little differently from the native forEach array prototype method as it can be used with objects in general rather than just arrays, and a value of false can be returned to break out of the loop.
 
 For example in just about all use case examples of the canvas arc method I am using the method to draw a circle. So why not make a method where there are some defaults for arguments that make the starting radian value zero, and the ending radian value the value of pi times two. This way I do not have to do so each time I call the canvas arc method, and if I need to I can still pass different values for the starting and ending radian.
 
@@ -237,7 +239,7 @@ arc({
 ctx.stroke();
 ```
 
-The general point is that just because there is a native method that does not mean that is what must always be what is used in a project. If I can still rationalize a reason to write my own method to do something natively, or in this case wrap a native method so that I can have control over default values and more, I might very well just do that.
+The general point is that just because there is a native method that does not mean that is what must always be what is used in a project. If I can still rationalize a reason to write my own method to do something that can be done with a native method, or in this case wrap a native method so that I can have control over default values and more, I might very well just do that.
 
 ## 6 - Using a custom method for drawing a canvas arc circle using Math.cos Math.sin and a drawPoints method
 
