@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2019-11-29 08:50:37
-version: 1.10
+updated: 2019-11-29 08:51:58
+version: 1.11
 ---
 
 With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with. However years later I am now aware with many different ways to go about moving a display object in a canvas project. 
@@ -21,7 +21,7 @@ In addition there are other ways of moving objects that center around a current 
 
 In this section I will be starting off with a very basic canvas movement example. If you have at least some experience with canvas chances are you might all ready be moving display object around this way.
 
-### 2.1 - The HTML file
+### 1.2 - The HTML file
 
 I start this project off with an HTML file with a canvas element, and a single script tag linking to the external javaScript file that will contain all the javaScript for this canvas movement example.
 
@@ -37,7 +37,7 @@ I start this project off with an HTML file with a canvas element, and a single s
 </html>
 ```
 
-### 2.2 - The javaScript file where I am just steping an object on each tick
+### 1.2 - The javaScript file where I am just stepping an object on each tick
 
 Here I have the actual javaScript of the example. I just have a simple object that serves as a display object of sorts. This object has just an x, y width, and height properties and that is it. This is often what I would put together when I was first starting out with canvas many years ago now. This kind of example might still work okay with very simple examples, but as a canvas project grows this might eventually result in some problems depending on the nature of the project.
 
