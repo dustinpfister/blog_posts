@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-11-29 08:08:16
-version: 1.62
+updated: 2019-11-29 08:16:07
+version: 1.63
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing content method is the standard typical solution for doing so.
@@ -90,7 +90,9 @@ The canvas arc method can be used in conjunction with other line methods such as
 
 ## 1.3 - There is also Math.cos, and Math.sin that can be used to draw arcs
 
-So the canvas arc method will come in handy for most situations when it comes to drawing arcs, and circles in canvas. It is a nice native built in way to draw arcs in the 2d canvas drawing api, a task that does come up often when making a canvas project. However there is also using the Math.cos and Math.sin methods in combination with canvas methods like moveTo, lineTo, in place of the native canvas arc method. If for some reason you want better control over the drawing of arc like curves in canvas, and feel compelled to write your own solution for drawing arcs, or something to that effect, you might want to play around with those methods a little as well.
+So the canvas arc method will come in handy for most situations when it comes to drawing arcs, and circles in canvas. It is a nice native built in way to draw arcs in the 2d canvas drawing api, a task that does come up all the time when making a canvas project. 
+
+However there is also the alternative that is using the Math.cos and Math.sin methods in combination with canvas methods like moveTo, lineTo, in place of the native canvas arc method. Sometimes for one reason or another I want better control over the drawing of arc like curves in canvas, and feel compelled to write my own solutions for drawing arcs and other types of curves.
 
 ```html
 <html>
@@ -128,9 +130,11 @@ ctx.stroke();
 </html>
 ```
 
-The core javaScript Math sin and cos methods can be used to not just draw arcs, but also to position things in an arc like pattern as well. So the methods also come in handy when it comes to drawing and moving objects in arc like patterns when it comes to working out animations. More on that later in this post as there is a lot to cover when it comes to using Math.cos, and Math.sin as a way to draw canvas arcs and other arc like shapes in canvas.
+The core javaScript Math sin and cos methods can be used to not just draw arcs, but also to position things in an arc like pattern. There is also of course all kinds of other expressions that can be worked out that involves these methods that will produce all kinds of curves such as sign and cos waves. So there is a far greater potential for control and flexibility when using these methods, and expressions over just a simple convenience method.
 
-So now that you know the basics of the canvas arc method, as well as other options for drawing arcs in canvas. Lets look at some more canvas code examples that have to do with this subject.
+So the methods also come in handy when it comes to drawing and moving objects in arc like patterns when it comes to working out animations. More on that later in this post as there is a lot to cover when it comes to using Math.cos, and Math.sin as a way to draw canvas arcs and other arc like shapes in canvas.
+
+Now that you know the basics of the canvas arc method, as well as other options for drawing arcs in canvas. Lets look at some more canvas code examples that have to do with this subject as it can branch off into a whole lot.
 
 ## 2 - Drawing a full circle with the canvas arc method
 
