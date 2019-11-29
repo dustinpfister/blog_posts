@@ -1,12 +1,12 @@
 ---
-title: Canvas arc method and other methods for drawing circles and arcs in html5 canvas
+title: Canvas arc method for drawing arcs and circles in html5 canvas
 date: 2019-03-05 18:37:00
 tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2019-11-28 14:44:09
-version: 1.59
+updated: 2019-11-29 07:56:04
+version: 1.60
 ---
 
 When making a canvas project with the html 5 canvas element and javaScript there is a [built in method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing content method is the standard typical solution for doing so.
