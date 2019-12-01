@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-12-01 17:09:34
-version: 1.6
+updated: 2019-12-01 17:20:11
+version: 1.7
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longe required, and is also an important part of creating closures.
 
-In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding the javascript return keyword as well.
+In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding the javaScript return keyword as well.
 
 <!-- more -->
 
@@ -81,3 +81,27 @@ console.log(baz(5,2)); // 7
 ```
 
 The return keyword must be used with function expressions, and function declarations. However with arrow functions it depends on how they are authored. If brackets are not used with an arrow function then a return is implicate and the return keyword is not needed. However if brackets are used with an arrow function then the return keyword must be used just like with expressions, and declarations.
+
+## 3 - The javaScript return keyword and closures
+
+One aspect of javaScript that is often considered advanced javaScript is the use of closures. A closure is a situation in which the function is what is returned by another function using the javaScript return keyword. In this section I will be going over some examples of closures that make used of the return keyword.
+
+## 1 - Very basic count closure example
+
+So lets start out with a very simple examples of a closure.
+
+```js
+var count = function (si) {
+    var i = si === undefined ? 0 : si;
+    return function () {
+        i += 1;
+        return i;
+    };
+};
+ 
+var c = count();
+ 
+console.log( c() ); // 1
+console.log( c() ); // 2
+console.log( c() ); // 3
+```
