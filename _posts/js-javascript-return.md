@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-12-01 17:53:01
-version: 1.8
+updated: 2019-12-01 17:56:03
+version: 1.9
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longe required, and is also an important part of creating closures.
@@ -88,7 +88,7 @@ One aspect of javaScript that is often considered advanced javaScript is the use
 
 ### 3.1 - Very basic count closure example
 
-So lets start out with a very simple examples of a closure.
+So lets start out with a very simple example of a closure that is just a basic counter. This example is then just a function that returns an inner function with the return keyword, and that function in turn also uses the javaScript return keyword to return the current value of a variable that is local to the outer most function.
 
 ```js
 var count = function (si) {
