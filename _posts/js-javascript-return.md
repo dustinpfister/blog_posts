@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-12-01 17:20:11
-version: 1.7
+updated: 2019-12-01 17:53:01
+version: 1.8
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longe required, and is also an important part of creating closures.
@@ -86,7 +86,7 @@ The return keyword must be used with function expressions, and function declarat
 
 One aspect of javaScript that is often considered advanced javaScript is the use of closures. A closure is a situation in which the function is what is returned by another function using the javaScript return keyword. In this section I will be going over some examples of closures that make used of the return keyword.
 
-## 1 - Very basic count closure example
+### 3.1 - Very basic count closure example
 
 So lets start out with a very simple examples of a closure.
 
@@ -104,4 +104,70 @@ var c = count();
 console.log( c() ); // 1
 console.log( c() ); // 2
 console.log( c() ); // 3
+```
+
+### 3.2 - Framed closure example that uses javaScrit return keyword
+
+Now that we understand the basics lets look at another example of closures and the javaScript return keyword that is not so basic. With this example I have a function that returns a function but also some additional static methods that are attached to the function that is returned. It also accepts a function as a property of an options argument that is passed to it when it is called.
+
+```js
+var framed = function (opt) {
+    // local options
+    opt = opt || {};
+    opt.forFrame = opt.forFrame || function () {};
+    opt.maxFrame = opt.maxFrame || 50;
+    opt.frame = opt.frame === undefined ? 0 : opt.frame;
+    // helpers
+    var wrapFrame = function (frame) {
+        if (frame >= opt.maxFrame) {
+            return frame % opt.maxFrame;
+        }
+        if (frame < 0) {
+            return opt.maxFrame - Math.abs(frame) % opt.maxFrame;
+        }
+        return frame;
+    };
+    var getState = function (frame, maxFrame) {
+        var per = frame / maxFrame;
+        return {
+            frame: frame,
+            maxFrame: maxFrame,
+            per: per,
+            bias: 1 - Math.abs(0.5 - per) / 0.5
+        };
+    };
+    var step = function (delta) {
+        opt.frame = wrapFrame(opt.frame + delta);
+        return opt.frame;
+    };
+    var call = function () {
+        var state = getState(opt.frame, opt.maxFrame);
+        opt.forFrame.call(state, state, opt.frame, opt.maxFrame);
+    };
+ 
+    // the public api
+    var api = function (frame) {
+        opt.frame = wrapFrame(frame === undefined ? opt.frame : frame);
+        call();
+        step(1);
+    };
+    // make some additional methods public
+    api.step = step;
+    api.getState = getState;
+    api.call = call;
+    // return the public API that is a function
+    // with some methods attached
+    return api;
+};
+ 
+var ani = framed({
+        maxFrame: 100,
+        forFrame: function () {
+            console.log(this.per);
+        }
+    });
+ 
+setInterval(function () {
+    ani();
+}, 100);
 ```
