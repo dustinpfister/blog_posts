@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-12-01 18:30:19
-version: 1.12
+updated: 2019-12-01 18:35:10
+version: 1.13
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longe required, and is also an important part of creating closures.
@@ -111,6 +111,8 @@ The current value of I can not be accessed from the outside, however the value i
 ### 3.2 - PPS example
 
 So now here is an example that moves an object my a pixel per second value. There is a current PPS value as well as heading, an x and y position that can be set when the closure is called for the first time. There is also an internal variable that stores the last time the inner function was called that is used to find the number of seconds that has elapsed, and then that amount of time is then used to move the object.
+
+This example returns an inner function just like before, but that function is stored to a variable, and an additional method is attached to it that can also be used to mutate the state of the object that is local to the outer function. In javaScript a function is a kind of object, so additional propertied including additional methods can be returns with the function that is returned.
 
 ```js
 var pps = function (obj) {
