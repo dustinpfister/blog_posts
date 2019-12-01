@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-12-01 17:58:05
-version: 1.10
+updated: 2019-12-01 18:27:29
+version: 1.11
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longe required, and is also an important part of creating closures.
@@ -108,7 +108,61 @@ console.log( c() ); // 3
 
 The current value of I can not be accessed from the outside, however the value is stepped and returned each time the inner function is called. This is the basic idea of a closure, there are variables that are location to an other function and then inner functions that work with those local variables.
 
-### 3.2 - Framed closure example that uses javaScrit return keyword
+### 3.2 - PPS example
+
+```js
+var pps = function (obj) {
+    obj = obj || {};
+    obj.pps = obj.pps === undefined ? 32 : obj.pps;
+    obj.x = obj.x === undefined ? 0 : obj.x;
+    obj.y = obj.y === undefined ? 0 : obj.y;
+    obj.r = obj.r === undefined ? 0 : obj.r;
+    var lastTime = new Date();
+    // Main API Method
+    var api = function () {
+        var now = new Date(),
+        t = now - lastTime,
+        sec = t / 1000;
+        obj.x += Math.cos(obj.r) * obj.pps * sec;
+        obj.y += Math.sin(obj.r) * obj.pps * sec;
+        lastTime = now;
+        return obj;
+    };
+    // single static method
+    api.set = function (opt) {
+        opt = opt || {};
+        obj.x = opt.x === undefined ? obj.x : opt.x;
+        obj.y = opt.y === undefined ? obj.y : opt.y;
+        obj.r = opt.r === undefined ? obj.r : opt.r;
+        return obj;
+    };
+    // return the public API
+    return api;
+};
+ 
+// Demo
+var boxState = pps({
+        x: 0,
+        y: 50,
+        r: 0,
+        pps: 100
+    }), bx;
+var loop = function () {
+    setTimeout(loop, 100);
+    bx = boxState();
+    if (bx.x >= 500) {
+        boxState.set({
+            x: 0,
+            y: 50,
+            r: Math.PI * 1.9 + Math.random() * (Math.PI * 0.2)
+        });
+    }
+    console.log(bx.x.toFixed(2), bx.y.toFixed(2));
+};
+loop();
+```
+
+### 3.3 - Framed closure example that uses javaScrit return keyword
 
 Now that we understand the basics lets look at another example of closures and the javaScript return keyword that is not so basic. With this example I have a function that returns a function but also some additional static methods that are attached to the function that is returned. It also accepts a function as a property of an options argument that is passed to it when it is called.
 
