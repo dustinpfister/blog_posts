@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2018-08-03 12:08:23
-version: 1.5
+updated: 2019-12-02 12:46:28
+version: 1.6
 ---
 
 In [lodash](https://lodash.com/) there is a useful  collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. In other words in can be used to group things together, this post will show some examples of \_.groupBy in action.
@@ -23,7 +23,7 @@ The \_.groupBy method is one of the many collection methods in lodash meaning th
 
 ### 2.1 - Group an array of numbers by a simple condition
 
-To start off with a very basic example, say you have a simple array of numbers, and you just want to split them into two groups one where the number is below a certian value and as such belongs to a 'fail' group, and all other numbers then end up falling into a 'pass' group.
+To start off with a very basic example, say you have a simple array of numbers, and you just want to split them into two groups one where the number is below a certain value and as such belongs to a 'fail' group, and all other numbers then end up falling into a 'pass' group.
 
 ```js
 let _ = require('lodash');
@@ -44,7 +44,7 @@ When this is called the method given to \_.groupBy is called for each element in
 
 ### 2.2 -  Group by powers of a base
 
-For a slightly more advanced example that still involves an array of numbers, why not group some numbers by the base of one or more numbers. That is have a method that will group an array of numbers by a given array of bases, where a number in the collection will be check if it is the base of the first number in the array of bases, and so forth untill a base is found, or end up defaulting to a 'none' key.
+For a slightly more advanced example that still involves an array of numbers, why not group some numbers by the base of one or more numbers. That is have a method that will group an array of numbers by a given array of bases, where a number in the collection will be check if it is the base of the first number in the array of bases, and so forth until a base is found, or end up defaulting to a 'none' key.
 
 ```js
 let _ = require('lodash');
@@ -98,7 +98,7 @@ So now this is a pretty fun, and useful method that can be used in a lot of diff
 
 ## 3 - Grading classes example of \_.groupBy
 
-For a more interesting example say you are a student that is taking some classes, you know a number grade for each grade, but you want to group all your clasees by a 
+For a more interesting example say you are a student that is taking some classes, you know a number grade for each grade, but you want to group all your classes by a 
 
 ```js
 let _ = require('lodash');
