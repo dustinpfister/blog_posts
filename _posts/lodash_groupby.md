@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2019-12-02 13:07:13
-version: 1.9
+updated: 2019-12-02 13:17:43
+version: 1.10
 ---
 
 In [lodash](https://lodash.com/) there is a useful  collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. 
@@ -29,7 +29,7 @@ Whatever is returned by the method thst is given as the second argument, is what
 
 ### 2.1 - Group an array of numbers by a simple condition
 
-To start off with a very basic example, say you have a simple array of numbers, and you just want to split them into two groups one where the number is below a certain value and as such belongs to a 'fail' group, and all other numbers then end up falling into a 'pass' group.
+To start off with a very basic example, say you have a simple array of numbers, and you just want to split them into two groups. Say one where the number is below a certain value, and as such belongs to a 'fail' group, and all other numbers then end up falling into a 'pass' group.
 
 ```js
 let _ = require('lodash');
@@ -46,11 +46,11 @@ console.log(grouped);
 // { fail: [ 2, 4, 3, 7, 8 ], pass: [ 20, 32, 42, 256 ] }
 ```
 
-When this is called the method given to \_.groupBy is called for each element in the array, the value can the be subjected to conditions, or any body of code that is placed in the method that will ultimately be used to return a value that will be used as a key to group the item.
+When this is called the method given to \_.groupBy is called for each element in the array, the value can the be subjected to conditions, or any body of code that is placed in the method that will ultimately be used to return a value that will be used as a key to group the current item.
 
 ### 2.2 -  Group by powers of a base
 
-For a slightly more advanced example that still involves an array of numbers, why not group some numbers by the base of one or more numbers. That is have a method that will group an array of numbers by a given array of bases, where a number in the collection will be check if it is the base of the first number in the array of bases, and so forth until a base is found, or end up defaulting to a 'none' key.
+For a slightly more advanced example that still involves an array of numbers, why not group some numbers by the base of one or more numbers. That is have a method that will group an array of numbers by a given array of bases, where a number in the collection will be checked if it is the base of the first number in the array of bases, and so forth until a base is found, or end up defaulting to a 'none' key.
 
 ```js
 let _ = require('lodash');
@@ -100,11 +100,13 @@ console.log(byBase(nums, [2, 3, 7]));
 //  none: [ 42, 20 ] }
 ```
 
-So now this is a pretty fun, and useful method that can be used in a lot of different ways. notice that in this example I am also using \_.round to round the values that will be set to log to a given precision this helps with a problem where I end up with numbers like 3.0000000001 when finding the power of a number relative to a base. Also note that even methods like \_.forEach have little tricks that make them a little more robust compared to the native Array.forEach equivalent, as I can return true to break the forEach loop.
+So now this is a pretty fun, and useful method that can be used in a lot of different ways. Notice that in this example I am also using \_.round to round the values that will be set to log to a given precision this helps with a problem where I end up with numbers like 3.0000000001 when finding the power of a number relative to a base. 
+
+Also note that even methods like \_.forEach have little tricks that make them a little more robust compared to the native Array.forEach equivalent, as I can return true to break the forEach loop.
 
 ## 3 - Grading classes example of \_.groupBy
 
-For a more interesting example say you are a student that is taking some classes, you know a number grade for each grade, but you want to group all your classes by a 
+For a more interesting example say you are a student that is taking some classes, you know a number grade for each grade, but you want to group all your classes by a letter value.
 
 ```js
 let _ = require('lodash');
@@ -166,6 +168,8 @@ console.log(gradeClases(clases));
 //  'F.': [ { name: 'English', grade: 42 } ],
 //  'D-': [ { name: 'Bio', grade: 60 } ] }
 ```
+
+So then the lodash group by method works as expected when it comes to something like this. However is it really all that hard to do something like this with native javaScript by itself?
 
 ## 4 - Conclusion
 
