@@ -5,10 +5,10 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2019-12-02 21:42:33
-version: 1.0
+updated: 2019-12-02 21:43:12
+version: 1.1
 ---
 
-In native javaScript there is the array sort method in the array prototype object. This methods can be used to sort an array in place. 
+In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This methods can be used to sort an array in place. 
 
 <!-- more -->
