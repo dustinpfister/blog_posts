@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2019-12-03 14:34:39
-version: 1.5
+updated: 2019-12-03 14:47:57
+version: 1.6
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place, but will not create and return a new sorted array, which is one reason why you might want to use an alternative such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method. 
@@ -16,6 +16,7 @@ In native javaScript there is the [array sort](https://developer.mozilla.org/en-
 
 ## 1 - Array sort basic examples
 
+In this section I will be going over a few quick basic examples of the array sort prototype method. In the event that I am working with an array of numbers or strings, and I want to sort by value of alphabetically I can just call the array sort method off of the array instance and be done with it. However in most real cases I need to give a sort method as the first argument to the array sort method.
 
 ### 1.1 - Arrays of primitives and array sort without a function
 
