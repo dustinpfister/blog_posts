@@ -5,32 +5,23 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2019-02-19 16:34:16
-version: 1.7
+updated: 2019-12-04 09:06:08
+version: 1.9
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method and why It might be useful in some situations.
 
+The lodash \_.includes method is one of the collection methods in lodash that will work with Arrays, and Objects in general, and even strings. The nature of the method is one where it can be used as a means to test if a value is included in a collection or not
+
 <!-- more -->
 
-## 1 - lodash includes
+## 1 - lodash includes basics
 
-The \_.includes method is one of the collection methods in lodash that work with Arrays, and Objects in general. In addition this method can also be used with strings. The nature of the method is one where it can be used as a means to test if a value is included in a collection. 
+This is a post on the \_.includes method in the popular javaScript utility library known as lodash. I assume that you have at least some background in javaScript and how to work with libraries such as lodash in a client side javaScript and nodejs environment.
 
-## 2 - Example of \_.includes With strings
+## 2 - Example of \_.includes With arrays
 
-Here I have an example of the \_.includes method that is used to find if a string contains a given substring.
-
-```js
-// Strings
-var str = 'foo;man;chew';
-console.log( _.includes(str,'man') ); // true
-console.log( _.includes(str,'bar') ); // false
-```
-
-## 3 - Example of \_.includes With arrays
-
-The includes method can also be used as a way to find if a value is in an array as well.
+The includes method can be used as a way to find if a value is in an array of course as it is a collection method.
 
 ```js
 // Arrays
@@ -40,7 +31,7 @@ console.log( _.includes(arr,'d') ); // false
 console.log( _.includes(arr,'c') ); // true
 ```
 
-## 4 - Example of \_.includes With objects
+## 3 - Example of \_.includes With objects
 
 When working with an object the method will return true if one of the object values is equal to the value given, but not with the key names.
 
@@ -50,6 +41,18 @@ var obj = {name:'jack'};
 console.log( _.includes(obj,'name') ); // false
 console.log( _.includes(obj,'jill') ); // false
 console.log( _.includes(obj,'jack') ); // true
+```
+
+
+## 4 - Example of \_.includes With strings
+
+Here I have an example of the \_.includes method that is used to find if a string contains a given substring.
+
+```js
+// Strings
+var str = 'foo;man;chew';
+console.log( _.includes(str,'man') ); // true
+console.log( _.includes(str,'bar') ); // false
 ```
 
 ## 5 - Giving a from index value
