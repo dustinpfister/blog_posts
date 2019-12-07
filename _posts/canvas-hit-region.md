@@ -1,12 +1,12 @@
 ---
-title: Hit region and html 5 canvas
+title: Hit region and html 5 canvas elements
 date: 2019-12-01 14:20:00
 tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2019-12-07 11:11:06
-version: 1.5
+updated: 2019-12-07 11:19:22
+version: 1.6
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -23,7 +23,7 @@ In short a canvas is just a bitmap drawing area that can be used to draw things 
 
 ### 1.1 - A Basic bounding box method
 
-One way to make it so you have a hit area in the canvas is to use a basic bounding box collision detection method. This kind of method should be a part of a framework that you are using, if you are just going vanilla js style though you coukld start out with just something like this maybe.
+One way to make it so you have a hit area in the canvas is to use a basic bounding box collision detection method. This kind of method should be a part of a framework that you are using, if you are just going vanilla js style though you could start out with just something like this maybe.
 
 ```js
 var bb = function (a, b) {
@@ -39,3 +39,5 @@ var box = {x:50,y:50,w:100,h:50};
 console.log( bb(box,{x: 75,y:75,w:1,h:1}) ); // true
 console.log( bb(box,{x: 5,y:5,w:1,h:1}) ); // false
 ```
+
+A method such as this can be used to find out if one box area overlaps another, and can then be used in conjunction with many other methods and objects to create, and mutate a state. That state then just needs to be rendered to the canvas.
