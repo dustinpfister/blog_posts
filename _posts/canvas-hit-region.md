@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2019-12-07 11:02:01
-version: 1.2
+updated: 2019-12-07 11:05:17
+version: 1.3
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -18,6 +18,8 @@ Still I though that I should write a post on this subject, and also on hit detec
 ## 1 - Basic bounding box hit region area
 
 I do not think that a hit region area should really be the responsibility of a canvas drawing api any way. Sure the subject will come up often, but hit detection should be a part of the class, model, or framework that you are using outside of canvas.
+
+In short a canvas is just a bitmap drawing area that can be used to draw things with javaScript and all kinds of external assets. So with that said a javaScript module or state object of some kind should be where you are storing information about objects drawn in the canvas, as well as logic that updates and works with that state.
 
 ```js
 var bb = function (a, b) {
