@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2019-12-03 14:47:57
-version: 1.6
+updated: 2019-12-08 17:53:51
+version: 1.7
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place, but will not create and return a new sorted array, which is one reason why you might want to use an alternative such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method. 
@@ -37,6 +37,8 @@ arr.sort();
 console.log(arr);
 // [ 'a', 'b', 'c', 'd']
 ```
+
+If array sort will work okay juts like this the that is all there is to it then. However if mutating an array in place is a problem, of if I need to add some custom functionality for sorting then I am going to need to work something else out so lets look at some more examples of array sort.
 
 ### 1.2 - Array sort and objects
 
