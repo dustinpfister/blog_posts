@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 575
-updated: 2019-12-09 10:12:52
-version: 1.8
+updated: 2019-12-09 11:59:18
+version: 1.9
 ---
 
 Time for another post on lodash this one is on the [lodash intersection](https://lodash.com/docs/4.17.15#intersection) method. The \_.intersection method will create an array of values that are in all the given arrays using the [lodash \_.eq](/2019/12/04/lodash_eq) method also known as same value zero for comparisons.
@@ -68,3 +68,7 @@ console.log( intersectTwo(arr1, arr2) );
 ```
 
 If I where to use just equality or identity for the comparisons then the NaN value will not be included.
+
+## 4 - Conclusion
+
+The lodash intersection method can be useful for finding common values in many arrays. However the lodash intersection method might not be the end all solution for this kind of task also.
