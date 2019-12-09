@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 575
-updated: 2019-12-09 10:10:17
-version: 1.7
+updated: 2019-12-09 10:12:52
+version: 1.8
 ---
 
 Time for another post on lodash this one is on the [lodash intersection](https://lodash.com/docs/4.17.15#intersection) method. The \_.intersection method will create an array of values that are in all the given arrays using the [lodash \_.eq](/2019/12/04/lodash_eq) method also known as same value zero for comparisons.
@@ -29,6 +29,8 @@ result = _.intersection(arr1, arr2, arr3);
 console.log(result); // [1]
 ```
 
+So arrays of primitives are nice, but any real project will often involve arrays of objects. There are two other methods in lodash called \_.intersectionBy and intersectionWith than can be used to work with more complex situation sin which collection of objects are involved.
+
 ## 2 - Objects and lodash intersection by
 
 when working with arrays of objects things can get a little more involved. However if I do just want to compare a uniform object property then the lodash \_.intersectionBy method can be used.
@@ -41,6 +43,7 @@ result = _.intersectionBy(arr1, arr2, 'id');
  
 console.log(result); // [ { id: 7 } ]
 ```
+
 
 ## 3 - Vanilla javaScript and intersection
 
