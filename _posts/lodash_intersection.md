@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 575
-updated: 2019-12-09 08:13:08
-version: 1.4
+updated: 2019-12-09 09:10:15
+version: 1.5
 ---
 
 Time for another post on lodash this one is on the [lodash intersection](https://lodash.com/docs/4.17.15#intersection) method. The \_.intersection method will create an array of values that are in all the given arrays using the [lodash \_.eq](/2019/12/04/lodash_eq) method also known as same value zero for comparisons.
@@ -28,3 +28,27 @@ result = _.intersection(arr1, arr2, arr3);
  
 console.log(result); // [1]
 ```
+
+## 2 - Vanilla javaScript and intersection
+
+Creating a true lodash intersection vanilla javaScript alternative is a little tricky. Keep in mind that the same value zero way of comparison is used rather than equality or identity. So a solution will have to involve the use of Object.is, or a polyfill of that just to make the comparisons.
+
+Still you might start out with something like this that will work fine for comparing just two arrays.
+
+```js
+let arr1 = [1, 4, 5, NaN],
+arr2 = [1, 2, 1, NaN];
+ 
+let intersectTwo = (a, b) => {
+    return a.filter((x) => {
+        return b.some((y) => {
+            return Object.is(x, y);
+        });
+    });
+};
+ 
+console.log( intersectTwo(arr1, arr2) );
+// [1,NaN]
+```
+
+If I where to use just equality or identity for the comparisons then the NaN value will not be included.
