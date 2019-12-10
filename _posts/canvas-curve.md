@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 13:55:30
-version: 1.10
+updated: 2019-12-10 13:59:30
+version: 1.11
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -143,7 +143,7 @@ This is not a post on the canvas arc method, but on canvas curves, that is drawi
 
 ## 3 - Canvas curve exponential style
 
-So there is an arc curve, and then there is an exponential curve.
+So there is an arc curve, and then there is an exponential curve among many others. This type of canvas curve might typically involve applying the use of Math.pow to the y or x axis. There is then also the question if the ratio between x and y remains at one to one, or if I might want to stretch out one or the other. Just like with my points arc method I would also like for there to be a way to set the number or points to be used to help make the curve smoother.
 
 ### 3.1 - The points exp method
 
