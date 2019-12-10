@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 09:13:21
-version: 1.1
+updated: 2019-12-10 09:15:58
+version: 1.2
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -19,9 +19,11 @@ When it comes to really getting into curves, and starting to have a deep underst
 
 So then in this post I will be going over all kinds of methods that have to do with creating an array of points. This array of points is then what is drawn to the canvas. This is necessary if I want to really get into the math behind canvas curve methods like the canvas arc method, and other such drawing api methods for drawing curves.
 
-So then in order to use these methods you will need a way to draw these points to a canvas. This draw points methd will be all that is used to draw to the canvas in these examples, otherwise everything is just a way to create an array of numbers that are points in a 2d grid system.
+So then in order to use these methods you will need a way to draw these points to a canvas. This draw points method will be all that is used to draw to the canvas in these examples, otherwise everything is just a way to create an array of numbers that are points in a 2d grid system.
 
 ### 1.1 - Have a draw points method to draw curves and lines in general from an array of points
+
+many canvas frameworks will have a method that will draw an array of points to a canvas. If you want to just use native javaScript by itself you might just use a basic method like this.
 
 ```js
 var drawPoints = function (ctx, points, close) {
@@ -37,3 +39,5 @@ var drawPoints = function (ctx, points, close) {
     ctx.stroke();
 };
 ```
+
+In these examples I have this method alone in a separate javaScript file.
