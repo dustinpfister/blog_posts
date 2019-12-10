@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 10:44:13
-version: 1.6
+updated: 2019-12-10 10:47:31
+version: 1.7
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -136,3 +136,5 @@ drawPoints(ctx, points, false);
     </body>
 </html>
 ```
+
+So then as you would expect this example draws a green circle at the center of the canvas. So in other words I just found a way to over complicated drawing a circle that could have just been done with the canvas arc method. However the situation is a little different from that as I created an array of points first, and yes it is just an array of points that draws a circle, for this simple example at least.
