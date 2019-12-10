@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 09:20:39
-version: 1.3
+updated: 2019-12-10 09:21:40
+version: 1.4
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -43,6 +43,8 @@ var drawPoints = function (ctx, points, close) {
 In these examples I have this method alone in a separate javaScript file.
 
 ### 1.2 - Angles lib
+
+I also also using a simple library that I put together to help with working with angles.
 
 ```js
 var angle = {
