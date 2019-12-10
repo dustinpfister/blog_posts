@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 10:50:54
-version: 1.8
+updated: 2019-12-10 11:43:22
+version: 1.9
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -140,3 +140,58 @@ drawPoints(ctx, points, false);
 So then as you would expect this example draws a green circle at the center of the canvas. So in other words I just found a way to over complicated drawing a circle that could have just been done with the canvas arc method. However the situation is a little different from that as I created an array of points first, and yes it is just an array of points that draws a circle, for this simple example at least.
 
 This is not a post on the canvas arc method, but on canvas curves, that is drawing curves in canvas, and all curves in canvas can be though of as a collection of 2d points, or 3d points actually if you want to pull threejs into the mix. In any case drawing arc like curves strikes me as a good starting point when it comes to drawing curves in canvas, but there are many other types of curves that can also exist as an array of points that just need to be drawn. SO lets look at some more canvas curve examples.
+
+## 3 - Canvas curve exponential style
+
+```js
+var pointsExp = function (sx, sy, base, powStart, powEnd, xMulti, yMulti) {
+    sx = sx === undefined ? 0 : sx;
+    sy = sy === undefined ? 0 : sy;
+    base = base === undefined ? 2 : base;
+    powStart = powStart === undefined ? 0 : powStart;
+    powEnd = powEnd === undefined ? 5 : powEnd;
+    xMulti = xMulti === undefined ? 10 : xMulti;
+    yMulti = yMulti === undefined ? -1 : yMulti;
+ 
+    var points = [],
+    i = 0,
+    len = powEnd - powStart,
+    x,
+    y;
+    while (i < len) {
+        x = sx + i * xMulti;
+        y = sy + Math.pow(base, powStart + i) * yMulti;
+        points.push(x, y);
+        i += 1;
+    }
+    return points;
+};
+```
+
+```html
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="draw-points.js"></script>
+        <script src="angles.js"></script>
+        <script src="points-exp.js"></script>
+        <script>
+ 
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+// Using pointsExp method to create an draw points
+var points = pointsExp(20, 220, 1.125, 0, 45, 5, -1.15);
+ctx.strokeStyle = 'green';
+drawPoints(ctx, points, false);
+ 
+        </script>
+    </body>
+</html>
+```
