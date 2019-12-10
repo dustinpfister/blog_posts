@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 09:33:29
-version: 1.5
+updated: 2019-12-10 10:44:13
+version: 1.6
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -106,6 +106,8 @@ var pointsArc = function (cx, cy, radius, start, end, counterClock, pointCount) 
 So now that we have that together lets make use of this method in an example in which I am also linking to my draw points method and angles.js library.
 
 ### 2.2 - The HTML
+
+Here I have the html of a canvas curve example than makes use of the points arc method and thus the angles lib as well as my draw points method. I link to the draw points function, and then the angles lib before I link to the points arc method as it depends on the angles lib.
 
 ```html
 <html>
