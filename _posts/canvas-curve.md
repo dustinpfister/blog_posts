@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 14:09:20
-version: 1.15
+updated: 2019-12-10 14:12:25
+version: 1.16
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves sych as the [bezier curve to](https://www.w3schools.com/tags/canvas_beziercurveto.asp) method. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -112,7 +112,7 @@ Here I have the html of a canvas curve example than makes use of the points arc 
 ```html
 <html>
     <head>
-        <title>canvas arc</title>
+        <title>canvas curve arc</title>
     </head>
     <body>
         <canvas id="the-canvas"></canvas>
