@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 14:06:23
-version: 1.14
+updated: 2019-12-10 14:09:20
+version: 1.15
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves sych as the [bezier curve to](https://www.w3schools.com/tags/canvas_beziercurveto.asp) method. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -223,3 +223,7 @@ drawPoints(ctx, points, false);
     </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+This post does not even scratch the surface on the subject of canvas curves. There are some many methods in the canvas drawing api to write about, and then there is of course getting into making curves they way I did in this post only at a deeper level. I would also like to get into using three.js when it comes to this topic also, as that is where the real fun begins with this.
