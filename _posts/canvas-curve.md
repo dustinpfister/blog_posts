@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 14:03:41
-version: 1.13
+updated: 2019-12-10 14:06:23
+version: 1.14
 ---
 
-So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
+So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves sych as the [bezier curve to](https://www.w3schools.com/tags/canvas_beziercurveto.asp) method. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
 
 When it comes to really getting into curves, and starting to have a deep understand and appreciation for drawing curves in canvas, I feel as though I need to do something that involves making methods that create point collections.
 
@@ -143,7 +143,7 @@ This is not a post on the canvas arc method, but on canvas curves, that is drawi
 
 ## 3 - Canvas curve exponential style
 
-So there is an arc curve, and then there is an exponential curve among many others. This type of canvas curve might typically involve applying the use of Math.pow to the y or x axis. There is then also the question if the ratio between x and y remains at one to one, or if I might want to stretch out one or the other. Just like with my points arc method I would also like for there to be a way to set the number or points to be used to help make the curve smoother.
+So there is an arc curve, and then there is an [exponential curve](https://mathbitsnotebook.com/Algebra1/FunctionGraphs/FNGTypeExponential.html) among many others. This type of canvas curve might typically involve applying the use of Math.pow to the y or x axis. There is then also the question if the ratio between x and y remains at one to one, or if I might want to stretch out one or the other. Just like with my points arc method I would also like for there to be a way to set the number or points to be used to help make the curve smoother.
 
 ### 3.1 - The points exp method
 
