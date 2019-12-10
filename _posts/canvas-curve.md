@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 14:01:00
-version: 1.12
+updated: 2019-12-10 14:03:41
+version: 1.13
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -181,6 +181,8 @@ var pointsExp = function (opt) {
 ```
 
 ### 3.2 - basic example of a canvas exponential curve
+
+So now I have a basic example of the points exp method. Here I am keeping the ratio between x and y at one, but scaling things up a bit.
 
 ```html
 <html>
