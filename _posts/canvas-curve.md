@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 11:43:22
-version: 1.9
+updated: 2019-12-10 13:55:30
+version: 1.10
 ---
 
 So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
@@ -143,35 +143,47 @@ This is not a post on the canvas arc method, but on canvas curves, that is drawi
 
 ## 3 - Canvas curve exponential style
 
+So there is an arc curve, and then there is an exponential curve.
+
+### 3.1 - The points exp method
+
 ```js
-var pointsExp = function (sx, sy, base, powStart, powEnd, xMulti, yMulti) {
-    sx = sx === undefined ? 0 : sx;
-    sy = sy === undefined ? 0 : sy;
-    base = base === undefined ? 2 : base;
-    powStart = powStart === undefined ? 0 : powStart;
-    powEnd = powEnd === undefined ? 5 : powEnd;
-    xMulti = xMulti === undefined ? 10 : xMulti;
-    yMulti = yMulti === undefined ? -1 : yMulti;
+var pointsExp = function (opt) {
+ 
+    opt = opt || {};
+ 
+    var sx = opt.sx === undefined ? 0 : opt.sx,
+    sy = opt.sy === undefined ? 0 : opt.sy,
+    base = opt.base === undefined ? 2 : opt.base,
+    expStart = opt.expStart === undefined ? 0 : opt.expStart,
+    expEnd = opt.expEnd === undefined ? 8 : opt.expEnd,
+    xMulti = opt.xMulti === undefined ? 30 : opt.xMulti,
+    yMulti = opt.yMulti === undefined ? 1 : opt.yMulti,
+    iStep = opt.iStep === undefined ? 1 : opt.iStep;
  
     var points = [],
     i = 0,
-    len = powEnd - powStart,
+    len = expEnd - expStart,
     x,
     y;
     while (i < len) {
         x = sx + i * xMulti;
-        y = sy + Math.pow(base, powStart + i) * yMulti;
+        y = sy + Math.pow(base, expStart + i) * yMulti;
         points.push(x, y);
-        i += 1;
+        i += iStep;
     }
+ 
     return points;
+ 
 };
 ```
+
+### 3.2 - basic example of a canvas exponential curve
 
 ```html
 <html>
     <head>
-        <title>canvas arc</title>
+        <title>canvas curve</title>
     </head>
     <body>
         <canvas id="the-canvas"></canvas>
@@ -187,8 +199,20 @@ canvas.width = 320;
 canvas.height = 240;
  
 // Using pointsExp method to create an draw points
-var points = pointsExp(20, 220, 1.125, 0, 45, 5, -1.15);
+//var points = pointsExp(20, 220, 2, 0, 9, 20, -1, 0.25);
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+ 
 ctx.strokeStyle = 'green';
+ctx.lineWidth = 3;
+var points = pointsExp({
+    sx: 10,
+    sy: canvas.height-10,
+    yMulti: -1 * 10,
+    xMulti: 1 * 10,
+    expStart: -2,
+    iStep: 0.25
+});
 drawPoints(ctx, points, false);
  
         </script>
