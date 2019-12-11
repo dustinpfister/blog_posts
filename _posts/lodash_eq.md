@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 576
-updated: 2019-12-10 19:04:01
-version: 1.4
+updated: 2019-12-10 19:05:11
+version: 1.5
 ---
 
 So there is the [lodash eq](https://lodash.com/docs/4.17.15#eq) method that is one way of fining out the same value zero result of two values. However what is same value zero, and is it all that hard to get the same result in native javaScript itself these days? Well in ECMA2015 spec javaScript the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) static method was introduced that does indeed do the same thing. So if this is the only thing that you care about in a project, maybe a simple polyfill will do just fine and you can ditch lodash. Otherwise the lodash \_.eq method can do more or less the same thing if you are still keeping lodash as part of your projects stack. 
@@ -27,7 +27,7 @@ console.log( _.eq(NaN , NaN) ); // true
 
 ## 2 - Object is and polyfill
 
-The native javaScript equivalent to the lodash eq method is the object is method. The method works in more or less the same way, call the Object is method and pass two values to compare as arguments.
+The native javaScript equivalent to the lodash eq method is the object is method. The method works in more or less the same way, call the Object is method and pass two values to compare as arguments. If you wan to use this method in place of lodash eq it might still be a good idea to use a polyfill for it as it is still a new feature, and browser support is not so great thus far.
 
 ```js
 
