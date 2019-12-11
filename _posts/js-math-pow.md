@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-11 14:14:01
-version: 1.12
+updated: 2019-12-11 14:16:06
+version: 1.13
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent. The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more.
@@ -135,7 +135,7 @@ var chunkIMGString = function (str, w) {
 
 ### 3.5 - Lets check this out
 
-So now to try things out with these methods.
+So now to try things out with these methods to see if everything works as expected. I will want to start out with a very low resolution and color depth such as 4 by 4 with a depth of 2.
 
 ```js
 var w = 4, h = 4,
