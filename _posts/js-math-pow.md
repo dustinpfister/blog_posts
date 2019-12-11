@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-11 13:51:59
-version: 1.9
+updated: 2019-12-11 14:00:02
+version: 1.10
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent. The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more.
@@ -90,6 +90,7 @@ var indexFromString2 = function (string, colorDepth) {
 
 ### 3.3 - Create and image string from an index
 
+I will need to work out a way to express image data as a string of color index values for each pixel. This can be done with the to string method of a number as long as I do not mind keeping the color depth below that of 36. For this set of examples I will only want to keep the color depth at 2, or not that much higher anyway because of the limits of javaScript numbers. 
 ```js
 // create a image String from an index value of a color depth and size
 var IMGStringFromIndex = function (index, colorDepth, size) {
@@ -110,6 +111,8 @@ var IMGStringFromIndex = function (index, colorDepth, size) {
     return String(baseStr + num).slice(size * -1).split('').reverse().join('');
 };
 ```
+
+This method will then create and return and image string for a given image index value, color depth, and pixel size. This will work just fine for what I want to do with these methods, things can get into very large numbers very fast after all.
 
 ### 3.4 - Chunk and image string into an array of arrays
 
