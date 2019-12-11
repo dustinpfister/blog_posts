@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-11 06:51:29
-version: 1.5
+updated: 2019-12-11 06:55:11
+version: 1.6
 ---
 
-The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent.
+The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent. The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more.
+
+There are many other Math methods of interesting in javaScript also that are often used in conjunction with Math pow, and I will be using those as well in this post. However the focal point here will be the Math pow method and a few other things of interest the revolve around the method as I see it.
 
 <!-- more -->
 
