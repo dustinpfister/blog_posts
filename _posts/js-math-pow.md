@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-10 21:37:02
-version: 1.3
+updated: 2019-12-10 21:38:19
+version: 1.4
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent.
@@ -43,6 +43,8 @@ console.log(getExp(n, 2)); // 4
 This is something that comes up now and then when working with powers in projects so I though I should mention this in my post on math.pow.
 
 ## 3 - limits of 2d images
+
+Now for an interesting example of the math pow method that has to do with the total possible number of image combinations in an image matrix with a fixed width, height and color depth.
 
 ```js
 var IMGStringFromIndex = function (index) {
