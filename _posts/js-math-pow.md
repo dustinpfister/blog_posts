@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-11 14:00:02
-version: 1.10
+updated: 2019-12-11 14:09:20
+version: 1.11
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent. The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more.
@@ -115,6 +115,8 @@ var IMGStringFromIndex = function (index, colorDepth, size) {
 This method will then create and return and image string for a given image index value, color depth, and pixel size. This will work just fine for what I want to do with these methods, things can get into very large numbers very fast after all.
 
 ### 3.4 - Chunk and image string into an array of arrays
+
+Here I have a method that can be used to quickly [chunk](/2017/09/13/lodash-chunk/) an image string into an array of arrays so that the image is more apparent. This could also be used in conjunction with other methods like [map](/2018/02/02/lodash_map/) and [flatten](/2018/08/12/lodash_flatten/) to create actual image data.
 
 ```js
 // chunk and img string into an array of arrays
