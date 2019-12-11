@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-11 14:09:20
-version: 1.11
+updated: 2019-12-11 14:14:01
+version: 1.12
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent. The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more.
@@ -135,6 +135,8 @@ var chunkIMGString = function (str, w) {
 
 ### 3.5 - Lets check this out
 
+So now to try things out with these methods.
+
 ```js
 var w = 4, h = 4,
 size = w * h,
@@ -158,3 +160,7 @@ console.log(pastSafe(w, h, colorDepth)); // false
 console.log(indexFromString(str, colorDepth)); // 19
 console.log(indexFromString2(str, colorDepth)); // 19
 ```
+
+This seem to work as expected, but this is just scratching the surface of what can be done with the math pow method. It is pretty cool that the total number of possible images in a matrix as low as 4 by 4 with a color depth of only two indexed colors all ready is a fairly large number of 65536. As I play around with the values I very quickly go beyond max safe integer.
+
+If I wanted to make a more comprehensive project centered around this I would want to use the math pow method of some kind of big integer library that uses strings to store numbers. There is also now the big init type in javaScript itsefl actualy, but as of this writing it is not well supported.
