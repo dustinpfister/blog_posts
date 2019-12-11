@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-11 11:43:03
-version: 1.7
+updated: 2019-12-11 13:44:56
+version: 1.8
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent. The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more.
@@ -50,10 +50,47 @@ Now for an interesting example of the math pow method that has to do with the to
 
 When I think of the most basic form of an image I think of an image that is just one by one in pixel resolution, with a color depth of only two indexed colors. When it comes to that kind of image there are only two possible images one with a pixel that is of the first indexed color, and other which is the other indexed color. As the color depth increases on its way to true color, and as the resolution approaches infinity, the total number of possible images approaches, but never truly reaches infinity. So there is always a limit to the number of possible images, it is just that things can quickly get into a situation in which we are taking about crazy large finite numbers.
 
+### 3.1 - Find the total number of possible images and MAX_SAFE_INTEGER
+
 ```js
-var IMGStringFromIndex = function (index) {
-    var size = 7 * 7,
-    maxIndex = Math.pow(2, size) - 1,
+// find total number of images
+var totalImages = function (w, h, colorDepth) {
+    return Math.pow(colorDepth, w * h);
+};
+// is the image size and depth beyond MAX_SAFE_INTEGER ?
+var pastSafe = function (w, h, colorDepth) {
+    return totalImages(w, h, colorDepth) >= Number.MAX_SAFE_INTEGER
+};
+```
+
+### 3.2 - index from an image string methods
+
+```js
+// Basic indexFromString using parseInt that will work for a colorDepth
+// up to 36
+var indexFromString = function (string, colorDepth) {
+    return parseInt(str.split('').reverse().join(''), colorDepth);
+};
+// complex indexFromString using Math.pow and parseInt
+var indexFromString2 = function (string, colorDepth) {
+    colorDepth = colorDepth || 2;
+    var index = 0;
+    string.split('').forEach(function (pix, i) {
+        index += Math.pow(colorDepth, i) * parseInt(pix, colorDepth);
+    });
+    return index;
+}
+```
+
+### 3.3 - Create and image string from an index
+
+```js
+// create a image String from an index value of a color depth and size
+var IMGStringFromIndex = function (index, colorDepth, size) {
+    index = index || 0;
+    size = size || 7 * 7;
+    colorDepth = colorDepth || 2;
+    var maxIndex = Math.pow(colorDepth, size) - 1,
     num,
     baseStr;
     if (index > maxIndex) {
@@ -62,24 +99,51 @@ var IMGStringFromIndex = function (index) {
     if (index < 0) {
         index = 0;
     }
-    num = index.toString(2);
+    num = index.toString(colorDepth);
     baseStr = new Array(size).fill('0').join('');
     return String(baseStr + num).slice(size * -1).split('').reverse().join('');
 };
+```
+
+### 3.4 - Chunk and image string into an array of arrays
+
+```js
+// chunk and img string into an array of arrays
+// with the given width
+var chunkIMGString = function (str, w) {
+    var i = 0,
+    strArr = str.split(''),
+    arr = [];
+    while (i < str.length) {
+        arr.push(strArr.slice(i, i+ w));
+        i += w;
+    }
+    return arr;
+};
+```
+
+### 3.5 - Lets check this out
+
+```js
+var w = 4, h = 4,
+size = w * h,
+colorDepth = 2,
+index = 38505,
  
-var indexFromIMGString = function (string) {
-    var index = 0;
-    string.split('').forEach(function (pix, i) {
-        index += pix == 1 ? Math.pow(2, i): 0;
-    });
-    return index;
-}
+str = IMGStringFromIndex(index, colorDepth, size),
+img = chunkIMGString(str, w);
  
-var str = IMGStringFromIndex( Math.pow(2, 7 * 7 ) - 1 );
 console.log(str);
-// 1111111111111111111111111111111111111111111111111
+// 1100100000000000
  
-var index = indexFromIMGString(str);
-console.log(index);
-// 562949953421311
+console.log(img);
+// [ [ '1', '0', '0', '1' ],
+//   [ '0', '1', '1', '0' ],
+//   [ '0', '1', '1', '0' ],
+//   [ '1', '0', '0', '1' ] ]
+ 
+console.log(totalImages(w, h, colorDepth)); // 65536
+console.log(pastSafe(w, h, colorDepth)); // false
+console.log(indexFromString(str, colorDepth)); // 19
+console.log(indexFromString2(str, colorDepth)); // 19
 ```
