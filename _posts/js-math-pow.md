@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-10 21:38:19
-version: 1.4
+updated: 2019-12-11 06:51:29
+version: 1.5
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent.
@@ -44,7 +44,7 @@ This is something that comes up now and then when working with powers in project
 
 ## 3 - limits of 2d images
 
-Now for an interesting example of the math pow method that has to do with the total possible number of image combinations in an image matrix with a fixed width, height and color depth.
+Now for an interesting example of the math pow method that has to do with the total possible number of image combinations in an image matrix with a fixed width, height and color depth. This is something of interest to me that I seem to keep coming back to now and then, because I find it so interesting. That is that there is a limit to what is possible in a 2d image, sure we are talking about very large numbers, even with very low resolution and color depth, but still it is not infinite.
 
 ```js
 var IMGStringFromIndex = function (index) {
