@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-11 13:44:56
-version: 1.8
+updated: 2019-12-11 13:51:59
+version: 1.9
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent. The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more.
@@ -50,7 +50,11 @@ Now for an interesting example of the math pow method that has to do with the to
 
 When I think of the most basic form of an image I think of an image that is just one by one in pixel resolution, with a color depth of only two indexed colors. When it comes to that kind of image there are only two possible images one with a pixel that is of the first indexed color, and other which is the other indexed color. As the color depth increases on its way to true color, and as the resolution approaches infinity, the total number of possible images approaches, but never truly reaches infinity. So there is always a limit to the number of possible images, it is just that things can quickly get into a situation in which we are taking about crazy large finite numbers.
 
+So in this section I will be going over some methods that have to do with creating image data by way of an index value that is a number between zero and the total number of possible images in a given image matrix. This is one of the most fun and interesting things I can think of that has to do with the math pow method.
+
 ### 3.1 - Find the total number of possible images and MAX_SAFE_INTEGER
+
+When it comes to the total possible number of images in a given image matrix such numbers can quickly surpass max safe integer even with very low resolutions and color depths. However it is not so hard to work out some simple methods that will return a true or false value if a number surpasses max safe integer and also the total possible number of images in the event that all is good.
 
 ```js
 // find total number of images
@@ -62,6 +66,8 @@ var pastSafe = function (w, h, colorDepth) {
     return totalImages(w, h, colorDepth) >= Number.MAX_SAFE_INTEGER
 };
 ```
+
+Using the math pow method I can just use the color depth as the base and the total number of pixels in the image as the exponent and the result will be the total number of images that is possible in the matrix. When it comes to getting into this sort of thing you will want to keep the resolutions and color depths very low as it is very easy to start getting into very large numbers.
 
 ### 3.2 - index from an image string methods
 
