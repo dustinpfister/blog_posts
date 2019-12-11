@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2019-12-10 21:33:43
-version: 1.2
+updated: 2019-12-10 21:37:02
+version: 1.3
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used i javaScript to create a number that is a power from a base and an exponent.
@@ -29,6 +29,8 @@ console.log(nums.join(','));
 
 ## 2 - Get the exp of a number is you know the base
 
+So lets say that I have this number. I know that the number is a power of a base, and I have the base, but I want to know the exponent. The Math.log method can be used to find that exponent, but dividing the log of that number by the log of the base.
+
 ```js
 var getExp = function (n, b) {
     return Math.log(n) / Math.log(2);
@@ -37,6 +39,8 @@ var getExp = function (n, b) {
 var n = Math.pow(2, 4);
 console.log(getExp(n, 2)); // 4
 ```
+
+This is something that comes up now and then when working with powers in projects so I though I should mention this in my post on math.pow.
 
 ## 3 - limits of 2d images
 
