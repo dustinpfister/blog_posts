@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:11:00
-version: 1.5
+updated: 2019-12-11 20:13:10
+version: 1.6
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -36,6 +36,8 @@ IMG.pastSafe = function (w, h, colorDepth) {
 ```
 
 ### 1.2 - Get an index number from an image string, and create a string from an index number
+
+So the images that I am going to work with can be stored as a string of chars. For this canvas example I am going to be keeping the color depth very low, so I can get away with each char in the string representing a color index value for each pixel.
 
 ```js
 IMG.indexFromString = function (string, colorDepth) {
