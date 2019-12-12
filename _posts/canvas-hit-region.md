@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2019-12-07 11:19:22
-version: 1.6
+updated: 2019-12-11 21:07:13
+version: 1.7
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -41,3 +41,78 @@ console.log( bb(box,{x: 5,y:5,w:1,h:1}) ); // false
 ```
 
 A method such as this can be used to find out if one box area overlaps another, and can then be used in conjunction with many other methods and objects to create, and mutate a state. That state then just needs to be rendered to the canvas.
+
+## 2 - Basic canvas hit region example
+
+Now that I have covered how to have a simple bound box collision detection method, I can now use that to make it so that when and area of the canvas is clicked that results in some kind of action.
+
+```html
+<html>
+    <head>
+        <title>canvas hit region</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var bb = function (a, b) {
+    return !(
+        ((a.y + a.h) < (b.y)) ||
+        (a.y > (b.y + b.h)) ||
+        ((a.x + a.w) < b.x) ||
+        (a.x > (b.x + b.w)));
+};
+ 
+var actions = [{
+        x: 50,
+        y: 50,
+        w: 100,
+        h: 50,
+        colorIndex: 0,
+        click: function () {
+            this.colorIndex += 1;
+            this.colorIndex %= 3;
+            console.log('action 1');
+        }
+    }
+];
+ 
+var actionHandler = function (e) {
+    var bx = e.target.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
+    var i = 0,
+    len = actions.length;
+    while (i < len) {
+        if (bb({
+                x: x,
+                y: y,
+                w: 1,
+                h: 1
+            }, actions[i])) {
+            actions[i].click.call(actions[i]);
+            break;
+        }
+        i += 1;
+    }
+    drawActions(actions, ctx);
+}
+ 
+var drawActions = function (actions, ctx) {
+    var pal = ['red', 'green', 'blue']
+    actions.forEach(function (act) {
+        ctx.fillStyle = pal[act.colorIndex] || 'white';
+        ctx.fillRect(act.x, act.y, act.w, act.h);
+    });
+};
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.addEventListener('click', actionHandler);
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+drawActions(actions, ctx);
+ 
+        </script>
+    </body>
+</html>
+```
