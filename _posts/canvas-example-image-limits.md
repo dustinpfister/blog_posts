@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:30:03
-version: 1.14
+updated: 2019-12-11 20:31:58
+version: 1.15
 ---
 
 So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
@@ -101,7 +101,7 @@ IMG.chunkToString = function (chunk, colorDepth) {
 
 ### 1.4 - Draw to a canvas
 
-Included in the collection of methods is a methods that can be used to draw an image in chunk format to a given canvas.
+Included in the collection of methods is a method that can be used to draw an image in chunk format to a given canvas. This method works by passing a reference to the canvas as the first argument, and then a chunk of the image as the second argument. I can also then use a custom pallet to set which color to draw for each index value.
 
 ```js
 // draw to a canvas
