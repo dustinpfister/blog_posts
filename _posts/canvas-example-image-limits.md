@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:14:17
-version: 1.7
+updated: 2019-12-11 20:15:48
+version: 1.8
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -98,6 +98,8 @@ IMG.chunkToString = function (chunk, colorDepth) {
 ```
 
 ### 1.4 - Draw to a canvas
+
+Included in the collection of methods is a methods that can be used to draw an image in chunk format to a given canvas.
 
 ```js
 // draw to a canvas
