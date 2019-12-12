@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:41:50
-version: 1.17
+updated: 2019-12-11 20:44:56
+version: 1.18
 ---
 
 So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
@@ -184,3 +184,7 @@ inputStr.addEventListener('keyup', function (e) {
     </body>
 </html>
 ```
+
+## 3 - Conclusion
+
+When I start up this project in my browser I can see the starting image that I have set. I can then use the mouse to click on the canvas and when doing so I change the indexed color value of the logical pixel of the matrix, in turn this also updates the index value in the text input element. I can also use the text input element to change the image also, and this can then also be used as a way to save the state of the image.
