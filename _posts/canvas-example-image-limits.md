@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:07:52
-version: 1.4
+updated: 2019-12-11 20:11:00
+version: 1.5
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -21,6 +21,8 @@ I put together a library just for this canvas example. It contains methods that 
 ### 1.1 - Beginning of the library, total images, and past safe integer methods
 
 So I started off the library with just an object literal, the reason why is because I think this kind of pattern will work okay for this module. The whole module is just going to be a collection of methods that just accept arguments and return a product without anything going on with a state.
+
+The first method is just a total images method that I pass the width, height, and color depth of an image matrix, and receive the total number of possible images for that matrix. For this project I am just using plain old javaScript numbers, so I do not want to go over the max safe integer when it comes to the total images value. So to make sure things are good with that I also have a pastSafe method.
 
 ```js
 var IMG = {};
