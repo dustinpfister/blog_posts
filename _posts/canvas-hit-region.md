@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2019-12-11 21:07:13
-version: 1.7
+updated: 2019-12-11 21:09:49
+version: 1.8
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -44,7 +44,7 @@ A method such as this can be used to find out if one box area overlaps another, 
 
 ## 2 - Basic canvas hit region example
 
-Now that I have covered how to have a simple bound box collision detection method, I can now use that to make it so that when and area of the canvas is clicked that results in some kind of action.
+Now that I have covered how to have a simple bound box collision detection method, I can now use that to make it so that when and area of the canvas is clicked that results in some kind of action. In this section I have an example that uses the bounding box method to know that and area is clicked and when such an area is click I cycle over some indexed color values for that area. In other words when the area is click it changes color, not the most interesting example, but it is a start when it comes to this sort of thing with canvas.
 
 ```html
 <html>
