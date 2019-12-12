@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 18:10:55
-version: 1.1
+updated: 2019-12-11 20:01:28
+version: 1.2
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -15,6 +15,8 @@ So now for yet another canvas example, this one is going to be pretty cool, or a
 
 
 ## 1 - The image lib of the canvas example
+
+I put together a library just for this canvas example. It contains methods that do things like converting an index number to a string that is formated depending on the color depth of the image matrix.
 
 ```js
 var IMG = {};
