@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:13:10
-version: 1.6
+updated: 2019-12-11 20:14:17
+version: 1.7
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -69,6 +69,8 @@ IMG.stringFromIndex = function (index, colorDepth, size) {
 ```
 
 ### 1.3 - Chunk a string and back
+
+I then also have some methods that can be used to convert a string to an array of arrays where each element in a nested array is a pixel color index value.
 
 ```js
 // chunk and img string into an array of arrays
