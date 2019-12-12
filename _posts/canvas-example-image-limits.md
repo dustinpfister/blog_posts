@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:27:26
-version: 1.13
+updated: 2019-12-11 20:30:03
+version: 1.14
 ---
 
 So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
@@ -72,7 +72,7 @@ IMG.stringFromIndex = function (index, colorDepth, size) {
 
 ### 1.3 - Chunk a string and back
 
-I then also have some methods that can be used to convert a string to an array of arrays where each element in a nested array is a pixel color index value.
+I then also have some methods that can be used to convert a string to an array of arrays where each element in a nested array is a pixel color index value. This is another format that I tend to work with often so I would like some convenience methods to convert to this from and back again.
 
 ```js
 // chunk and img string into an array of arrays
