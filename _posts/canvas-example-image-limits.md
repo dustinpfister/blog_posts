@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:31:58
-version: 1.15
+updated: 2019-12-11 20:39:12
+version: 1.16
 ---
 
 So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
@@ -105,10 +105,10 @@ Included in the collection of methods is a method that can be used to draw an im
 
 ```js
 // draw to a canvas
-IMG.draw = function (canvas, chunk, w, pal) {
+IMG.draw = function (canvas, chunk, pal) {
     pal = pal || ['white', 'black', 'red', 'green', 'blue'];
     var ctx = canvas.getContext('2d'),
-    size = canvas.width / w;
+    size = canvas.width / chunk[0].length;
     chunk.forEach(function (row, y) {
         row.forEach(function (px, x) {
             ctx.fillStyle = pal[px] || 'black';
@@ -126,7 +126,7 @@ Now that I have my image library it is time to use it in a canvas example.
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d'),
 inputStr = document.getElementById('img-str');
-
+ 
 canvas.width = 320;
 canvas.height = 320;
  
@@ -135,7 +135,7 @@ colorDepth = 2,
 str = IMG.stringFromIndex(38505, colorDepth, w * h),
 matrix = IMG.stringToChunk(str, w);
 inputStr.value = parseInt(str, colorDepth);
-IMG.draw(canvas, matrix, w);
+IMG.draw(canvas, matrix);
  
 // update by clicking canvas
 canvas.addEventListener('click', function (e) {
@@ -151,7 +151,7 @@ canvas.addEventListener('click', function (e) {
     matrix[y][x] = px;
     str = IMG.chunkToString(matrix, colorDepth);
     inputStr.value = parseInt(str, colorDepth);
-    IMG.draw(canvas, matrix, w);
+    IMG.draw(canvas, matrix);
 });
 // update from input element
 inputStr.addEventListener('keyup', function (e) {
@@ -166,7 +166,7 @@ inputStr.addEventListener('keyup', function (e) {
         }
         str = IMG.stringFromIndex(n, colorDepth, w * h);
         matrix = IMG.stringToChunk(str, w);
-        IMG.draw(canvas, matrix, w);
+        IMG.draw(canvas, matrix);
     }
 });
 ```
