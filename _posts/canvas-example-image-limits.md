@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:52:16
-version: 1.19
+updated: 2019-12-11 20:54:44
+version: 1.20
 ---
 
 So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
@@ -190,3 +190,5 @@ Now that I have my image library and my main javaScript file that makes use of t
 ## 3 - Conclusion
 
 When I start up this project in my browser I can see the starting image that I have set. I can then use the mouse to click on the canvas and when doing so I change the indexed color value of the logical pixel of the matrix, in turn this also updates the index value in the text input element. I can also use the text input element to change the image also, and this can then also be used as a way to save the state of the image.
+
+There is way more to develop and wrote about when it comes to this kind of canvas example. It would be nice to get inti using a library that will make used of big integers, as well as methods that will figure how long it will take to run there all possible image combinations. Still I think that this is a real cool canvas example even in its current crude form.
