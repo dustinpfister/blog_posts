@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:39:12
-version: 1.16
+updated: 2019-12-11 20:41:50
+version: 1.17
 ---
 
 So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
@@ -120,7 +120,7 @@ IMG.draw = function (canvas, chunk, pal) {
 
 ## 2 - The main.js file and html
 
-Now that I have my image library it is time to use it in a canvas example.
+Now that I have my image library it is time to use it in a canvas example. Here in my main javaScript file that I will also be linking to in my html, I am grabbing references to a canvas element as well as a text input element. These elements will be used to display the current image, as well as the current index value fo the image. They will also server as a way to change the state of the image.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
