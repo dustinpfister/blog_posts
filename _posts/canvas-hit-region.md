@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2019-12-11 21:09:49
-version: 1.8
+updated: 2019-12-12 09:27:10
+version: 1.9
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -116,3 +116,5 @@ drawActions(actions, ctx);
     </body>
 </html>
 ```
+
+I can not say that this is the best way to go about setting up some buttons in a canvas project, but you get the general idea. A hit detection method can be used to find out of an object was clicked or not, and then some kind of action can be preformed. In a real project I might go about pulling code like this into a module of sorts, and also make the objects a little more flashy.
