@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:15:48
-version: 1.8
+updated: 2019-12-11 20:16:51
+version: 1.9
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -117,6 +117,8 @@ IMG.draw = function (canvas, chunk, w, pal) {
 ```
 
 ## 2 - The main.js file and html
+
+Now that I have my image library it is time to use it in a canvas example.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
