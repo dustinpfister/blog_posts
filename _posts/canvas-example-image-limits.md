@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:05:15
-version: 1.3
+updated: 2019-12-11 20:07:52
+version: 1.4
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -19,6 +19,8 @@ So now for yet another canvas example, this one is going to be pretty cool, or a
 I put together a library just for this canvas example. It contains methods that do things like converting an index number to a string that is formated depending on the color depth of the image matrix.
 
 ### 1.1 - Beginning of the library, total images, and past safe integer methods
+
+So I started off the library with just an object literal, the reason why is because I think this kind of pattern will work okay for this module. The whole module is just going to be a collection of methods that just accept arguments and return a product without anything going on with a state.
 
 ```js
 var IMG = {};
