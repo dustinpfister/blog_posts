@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:01:28
-version: 1.2
+updated: 2019-12-11 20:05:15
+version: 1.3
 ---
 
 So now for yet another canvas example, this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images.
@@ -18,6 +18,8 @@ So now for yet another canvas example, this one is going to be pretty cool, or a
 
 I put together a library just for this canvas example. It contains methods that do things like converting an index number to a string that is formated depending on the color depth of the image matrix.
 
+### 1.1 - Beginning of the library, total images, and past safe integer methods
+
 ```js
 var IMG = {};
 
@@ -27,6 +29,11 @@ IMG.totalImages = function (w, h, colorDepth) {
 IMG.pastSafe = function (w, h, colorDepth) {
     return totalImages(w, h, colorDepth) >= Number.MAX_SAFE_INTEGER
 };
+```
+
+### 1.2 - Get an index number from an image string, and create a string from an index number
+
+```js
 IMG.indexFromString = function (string, colorDepth) {
     colorDepth = colorDepth || 2;
     var index = 0;
@@ -53,6 +60,11 @@ IMG.stringFromIndex = function (index, colorDepth, size) {
     baseStr = new Array(size).fill('0').join('');
     return String(baseStr + num).slice(size * -1).split('').reverse().join('');
 };
+```
+
+### 1.3 - Chunk a string and back
+
+```js
 // chunk and img string into an array of arrays
 // with the given width
 IMG.stringToChunk = function (str, w) {
@@ -75,6 +87,11 @@ IMG.chunkToString = function (chunk, colorDepth) {
     });
     return str.split('').reverse().join('');
 };
+```
+
+### 1.4 - Draw to a canvas
+
+```js
 // draw to a canvas
 IMG.draw = function (canvas, chunk, w, pal) {
     pal = pal || ['white', 'black', 'red', 'green', 'blue'];
