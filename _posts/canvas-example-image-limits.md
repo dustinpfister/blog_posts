@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2019-12-11 20:23:25
-version: 1.12
+updated: 2019-12-11 20:27:26
+version: 1.13
 ---
 
 So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
@@ -16,7 +16,9 @@ So now for yet another [canvas example](https://developer.mozilla.org/en-US/docs
 
 ## 1 - The image lib of the canvas example
 
-I put together a library just for this canvas example. It contains methods that do things like converting an index number to a string that is formated depending on the color depth of the image matrix.
+I put together a library just for this canvas example. It contains methods that do things like converting an index number to a string that is formated depending on the color depth of the image matrix. 
+
+Because I do not want to use a library for working with big numbers, and I also do not want to make use of the native big int type also the methods will work okay as long as I am dealing with low res and low depth images. I like to try to keep these canvas examples simple, but in a more serious version of this canvas example I would want to use big numbers that go beyond the limits of plain old javaScript numbers when it comes to concerns surrounding max safe int.
 
 ### 1.1 - Beginning of the library, total images, and past safe integer methods
 
