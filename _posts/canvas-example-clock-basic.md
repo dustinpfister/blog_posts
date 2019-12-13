@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:44:34
-version: 1.8
+updated: 2019-12-13 13:45:42
+version: 1.9
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -97,6 +97,8 @@ This is a post on making a basic canvas clock example, but lets look at least on
 In this section I am going to be going over a slightly more advanced version of my get clock method. It is still the same basic idea, pass a date object, and get a state object for that date object every time. However now I am adding just one more property that is a value that reflects the percentage of time that has passed for the current date based on the passed date object. In other words it will display zero percent if it is midnight, and will process to one hundred percent as it approaches midnight of the next day.
 
 ### 2.1 - updated get clock method
+
+Here Is the get clock method that gives the same propertyy as before, but now also gives a day percetn property that is a value between 0 and 1 depending on the time of day.
 
 ```js
 // get a clock state with the give date or new Date(0) by default
