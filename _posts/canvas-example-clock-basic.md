@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:49:48
-version: 1.11
+updated: 2019-12-13 13:50:34
+version: 1.12
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -159,3 +159,5 @@ var loop = function (canvas) {
 ```
 
 ## 3 - Conclusion
+
+So making clocks in canvas can be pretty fun, and there is some much room for originality.
