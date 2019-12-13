@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:33:40
-version: 1.5
+updated: 2019-12-13 13:35:13
+version: 1.6
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -69,6 +69,8 @@ var loop = function (canvas) {
 ```
 
 ### 1.4 - Get the canvas element, set size, and start the loop.
+
+So then I have the rest of the code that gets a reference to a canvas element that I have in the HTML of the example, sets the size, and then makes use of what I have worked out by just calling the loop method at a set time interval.
 
 ```js
 // create and append canvas element, and get 2d context
