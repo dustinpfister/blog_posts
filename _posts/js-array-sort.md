@@ -5,14 +5,12 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2019-12-08 17:53:51
-version: 1.7
+updated: 2019-12-13 09:50:16
+version: 1.8
 ---
 
-In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place, but will not create and return a new sorted array, which is one reason why you might want to use an alternative such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method. 
-
+In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place, but will not create and return a new sorted array, which is one reason why you might want to use an alternative such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method.
 <!-- more -->
-
 
 ## 1 - Array sort basic examples
 
@@ -65,4 +63,92 @@ arr.sort(function (a, b) {
  
 console.log(arr.map((e) => e.hp).join(':'));
 // 57:50:7:0:0
+```
+
+## 2 - Using Array sort to make a sort method like the lodash sortBy method
+
+### 2.1 - The sort method
+
+```js
+var sort = function (arr, sorter, reverseWeight) {
+    // return empty array if not array is given
+    if (!arr) {
+        return [];
+    }
+    // default sorter
+    sorter = sorter || function (el) {
+        if (typeof el === 'number' && el.toString() != 'NaN') {
+            return el;
+        }
+        if (typeof el === 'string') {
+            return parseInt(el, 16);
+        }
+        return 0;
+    };
+    reverseWeight = reverseWeight === undefined ? false : reverseWeight;
+    // clone the array by some means
+    var copy = JSON.parse(JSON.stringify(arr));
+    // using array sort off of the copy of the array
+    // so that I do not mutate the argument array
+    copy.sort(function (a, b) {
+        // use the sorter to get number values for two
+        // elements that are being compared
+        var c = sorter(a),
+        d = sorter(b);
+        // return -1, 1, or zero to move down the index
+        // move it up or do nothing
+        if (c > d) {
+            return reverseWeight ? 1 : -1;
+        }
+        if (c < d) {
+            return reverseWeight ? -1 : 1;
+        }
+        return 0;
+    });
+    return copy;
+};
+```
+
+### 2.2 - Sorting a simple array of numbers
+
+```js
+// numbers
+var nums = [3, 5, 6, 1, 7, 9, 3];
+var numsSorted = sort(nums);
+console.log(nums.join('-'));
+console.log(numsSorted.join('-'));
+// 3-5-6-1-7-9-3
+// 9-7-6-5-3-3-1
+```
+
+### 2.3 - Sorting objects
+
+```js
+var posts = [{
+        wordCount: 500,
+        time: 330,
+        comentCount: 7
+    }, {
+        wordCount: 1800,
+        time: 1000,
+        comentCount: 0
+    }, {
+        wordCount: 750,
+        time: 0,
+        comentCount: 3
+    }, ];
+var byWordCount = sort(posts, function (post) {
+        return post.wordCount;
+    });
+console.log(byWordCount);
+// [ { wordCount: 1800, time: 1000, comentCount: 0 },
+//   { wordCount: 750, time: 0, comentCount: 3 },
+//   { wordCount: 500, time: 330, comentCount: 7 } ]
+var byFresh = sort(posts, function (post) {
+        return post.time;
+    }, true);
+console.log(byFresh);
+// [ { wordCount: 750, time: 0, comentCount: 3 },
+//   { wordCount: 500, time: 330, comentCount: 7 },
+//   { wordCount: 1800, time: 1000, comentCount: 0 } ]
 ```
