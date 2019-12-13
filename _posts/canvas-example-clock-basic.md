@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:48:36
-version: 1.10
+updated: 2019-12-13 13:49:48
+version: 1.11
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -146,6 +146,8 @@ var drawClockDayCircle = function (canvas, ctx, clock) {
 
 ### 2.3 - updated loop
 
+So now I just need an updated loop that calls both draw methods, other than that the canvas example is the same as before.
+
 ```js
 // loop
 var loop = function (canvas) {
@@ -155,3 +157,5 @@ var loop = function (canvas) {
     drawClockDayCircle(canvas, ctx, clock);
 };
 ```
+
+## 3 - Conclusion
