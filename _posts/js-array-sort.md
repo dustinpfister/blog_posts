@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2019-12-13 09:50:16
-version: 1.8
+updated: 2019-12-13 09:58:41
+version: 1.9
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place, but will not create and return a new sorted array, which is one reason why you might want to use an alternative such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method.
@@ -66,6 +66,12 @@ console.log(arr.map((e) => e.hp).join(':'));
 ```
 
 ## 2 - Using Array sort to make a sort method like the lodash sortBy method
+
+In lodash there is the sortBy method that works a little differently from the native javaScropt array sort prototype method. When using that method I pass the array as an argument rather than using a prototype method, which is more in line with functional programing.In addition I then pass a function as the second argument when it comes to defining some custom logic for how to go about sorting the array just, just like with array sort, but I just return a number value from zero upwards rather than a number value that is a delta value for an array index value. Also the lodash sortBy returns a new array, and does not mutate the array in place.
+
+In many respects I like the lodash sortBy method more so than the native array sort prototype method. However if you do not want to add lodash to the stack of a project, it is not to hard to create that kind of functionality, if that is all you care about. 
+
+In this section I will be going over a vanilla js sort method that works like the lodash sortby method, it uses the array sort prototype method, but does so on a cloned copy of the array, and also allows for me to define my sort methods in a similar way my creating an abstraction of sorts for that.
 
 ### 2.1 - The sort method
 
