@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2019-12-13 10:03:45
-version: 1.11
+updated: 2019-12-13 10:05:43
+version: 1.12
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place, but will not create and return a new sorted array, which is one reason why you might want to use an alternative such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method.
@@ -119,7 +119,7 @@ var sort = function (arr, sorter, reverseWeight) {
 
 ### 2.2 - Sorting a simple array of numbers
 
-
+So the sort method works as expected when it comes to a simple array of numbers.
 
 ```js
 // numbers
@@ -132,6 +132,8 @@ console.log(numsSorted.join('-'));
 ```
 
 ### 2.3 - Sorting objects
+
+When using the sort method with an array of objects I can feed it functions that will return a number value from zero upwards, and that value is what will be used to change index value. I like this better then the way that array sort works by itself.
 
 ```js
 var posts = [{
