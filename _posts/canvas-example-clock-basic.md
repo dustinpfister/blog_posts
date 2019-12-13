@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:35:13
-version: 1.6
+updated: 2019-12-13 13:41:06
+version: 1.7
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -88,6 +88,9 @@ setInterval(function () {
 }, 1000);
 
 ```
+
+So then when I have this canvas example up and running it just displays a simple digital clock. Nothing to interesting, but it is just a start, and any more interesting clock is just going to be a more advanced examples of this. When it comes to my get clock method I will want that to always give me the same clock object for the same date that is passed each time. That object can have all kinds of things attached to it that can be used in the render process. Including things like display objects the position of which change depending on the time of day, the time of year, or even over all time if I want to get that nuts.
+This is a post on making a basic canvas clock example, but lets look at least one more example of this to get a better idea of what this can lead to and why it can be really fun to get into this sort of thing.
 
 ## 2 - Day Percent basic clock canvas example
 
