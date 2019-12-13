@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:45:42
-version: 1.9
+updated: 2019-12-13 13:48:36
+version: 1.10
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -113,6 +113,8 @@ var getClock = function (date) {
 ```
 
 ### 2.2 - Updated and additional draw methods
+
+Now I have not one but two draw methods one of which displays the clock text as before so there is not much to say there. However I also now have another draw methods that will render a circle around the text which will also reflect the amount of time that has elapsed sense midnight and how much time is left for the day.
 
 ```js
 // draw a clock to a canvas
