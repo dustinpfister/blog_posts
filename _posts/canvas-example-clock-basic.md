@@ -5,17 +5,21 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:23:57
-version: 1.2
+updated: 2019-12-13 13:29:35
+version: 1.3
 ---
 
-For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is func because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
+For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
 
 <!-- more -->
 
 ## 1 - Basic canvas clock example
 
+So lets start out with a very basic canvas clock example. This will involve a get clock method that will create a clock object based on the passed date given as the first argument. The object will contain properties that are then used in one or more draw methods that are used to render the current state of that clock object.
+
 ### 1.1 - A get clock method
+
+So here is the get clock methods that I would out for this canvas example, and this section of this post. The aim here is to work out the basic idea of what I should be doing when it comes to making a canvas clock. I want to keep the state of the clock separate from methods that are used to draw it, and also I would like to have a get clock method designed in a way in which the same state object is returned for the same arguments that are given. Also in the event that no arguments are given it will always return a state object that reflects the same point in time. In other words a pure function of sorts, even though it is a state object that is returned.
 
 ```js
 // pad a value
