@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2019-12-13 09:58:41
-version: 1.9
+updated: 2019-12-13 10:01:10
+version: 1.10
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place, but will not create and return a new sorted array, which is one reason why you might want to use an alternative such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method.
@@ -74,6 +74,8 @@ In many respects I like the lodash sortBy method more so than the native array s
 In this section I will be going over a vanilla js sort method that works like the lodash sortby method, it uses the array sort prototype method, but does so on a cloned copy of the array, and also allows for me to define my sort methods in a similar way my creating an abstraction of sorts for that.
 
 ### 2.1 - The sort method
+
+Here I have the sort method that I worked out for this section. I am using JSON methods as a crude yet effective way to clone most objects. This results in a copy of the array, I then call the array sort method off of that copy, and call the sorter method that is given in the body of a function that I use with the array prototype method.
 
 ```js
 var sort = function (arr, sorter, reverseWeight) {
