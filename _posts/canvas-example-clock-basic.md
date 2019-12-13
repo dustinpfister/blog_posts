@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:32:21
-version: 1.4
+updated: 2019-12-13 13:33:40
+version: 1.5
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -56,6 +56,8 @@ var drawClockText = function (canvas, ctx, clock) {
 ```
 
 ### 1.3 - The app loop
+
+Here I have the main app loop of the canvas example, I am just getting a clock object of the current time, clearing the canvas, and then calling my draw clock text method.
 
 ```js
 // loop
