@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2019-12-13 13:29:35
-version: 1.3
+updated: 2019-12-13 13:32:21
+version: 1.4
 ---
 
 For today I would like to write another post about a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -35,7 +35,11 @@ var getClock = function (date) {
 };
 ```
 
+So now that I have my get clock method I will n ow want to work out at least one method that will render the state of this clock object.
+
 ### 1.2 - Draw the clock text
+
+Here I have a draw method that will render the clock object that is returned with my get clock method. For now with this canvas example the draw method just displays the timeText property of the clock object. In additional examples I will add properties to my clock object when it comes to making a more advanced get clock method, but for now I want to keep things basic and just have a digital clock.
 
 ```js
 // draw a clock to a canvas
