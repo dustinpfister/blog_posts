@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2019-12-16 18:13:59
-version: 1.9
+updated: 2019-12-16 18:16:51
+version: 1.10
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a threejs example that is a javaScript powered basic clock.
@@ -116,6 +116,8 @@ var createFaceCubes = function (material) {
 ```
 
 ### 3.2 - Create the hand cubes
+
+I also have a methods the creates cubes for each hand of the clock. This method works a little differently as it returns an api of sorts. The group that is added to the scene is one of the properties of the api, and there there is also an update method of the api. The update method accepts a clock object created with my clock modules get method, and that is then what is used to update the children of the group of cubes that represent the hands of the clock.
 
 ```js
 // create hand cubes
