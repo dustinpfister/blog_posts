@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2019-12-16 18:12:46
-version: 1.8
+updated: 2019-12-16 18:13:59
+version: 1.9
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a threejs example that is a javaScript powered basic clock.
@@ -97,6 +97,8 @@ clock.get = function (date) {
 So now that I have my clock.js module I can not work out some methods that make used of threejs to create groups of cubes for a face of a clock as well has hands on the clock.
 
 ### 3.1 - Create the face cubes
+
+Here I have a method the creates and returns a THREEJS Group of cubes one for each hour of the day. I am using the clock create face points method to get the points of interest.
 
 ```js
 // create a THREE.Group of face marks for each hour
