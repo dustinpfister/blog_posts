@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2019-12-16 17:40:39
-version: 1.7
+updated: 2019-12-16 18:12:46
+version: 1.8
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a threejs example that is a javaScript powered basic clock.
@@ -96,7 +96,7 @@ clock.get = function (date) {
 
 So now that I have my clock.js module I can not work out some methods that make used of threejs to create groups of cubes for a face of a clock as well has hands on the clock.
 
-### 3.1 -
+### 3.1 - Create the face cubes
 
 ```js
 // create a THREE.Group of face marks for each hour
@@ -113,7 +113,7 @@ var createFaceCubes = function (material) {
 };
 ```
 
-### 3.2 - 
+### 3.2 - Create the hand cubes
 
 ```js
 // create hand cubes
@@ -137,7 +137,7 @@ createHandCubes = function (material) {
 };
 ```
 
-### 3.3 - 
+### 3.3 - The rest of the threejs example
 
 ```js
 // the demo
