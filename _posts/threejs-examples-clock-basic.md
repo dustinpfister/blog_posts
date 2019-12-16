@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2019-12-16 17:36:41
-version: 1.4
+updated: 2019-12-16 17:37:51
+version: 1.5
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a threejs example that is a javaScript powered basic clock.
@@ -51,8 +51,10 @@ clock.createFacePoints = function (cx, cy, cz, radius) {
 };
 ```
 
-### 2.2 - 
+### 2.2 - Create hand points
  
+I also have a method like that of my create face points method, only this one can be used to create and update the points for each cube that will be a hand of sorts on the surface of the clock.
+
 ```js
 // create hand points array using given clockObj, origin, and radius
 clock.createHandPoints = function (clockObj, cx, cy, cz, radius) {
