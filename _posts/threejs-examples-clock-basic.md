@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2019-12-16 14:14:37
-version: 1.1
+updated: 2019-12-16 14:20:40
+version: 1.2
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a threejs example that is a javaScript powered basic clock.
@@ -16,6 +16,9 @@ I feel as though I need to work on things that are fun now and then with javaScr
 ## 1 - This is a threejs example
 
 ## 2 - The clock.js module
+
+
+### 2.1 - 
 
 ```js
 var clock = {};
@@ -41,7 +44,11 @@ clock.createFacePoints = function (cx, cy, cz, radius) {
     }
     return faceMarks;
 };
+```
+
+### 2.2 - 
  
+```js
 // create hand points array using given clockObj, origin, and radius
 clock.createHandPoints = function (clockObj, cx, cy, cz, radius) {
     cx = cx || 0;
@@ -57,7 +64,11 @@ clock.createHandPoints = function (clockObj, cx, cy, cz, radius) {
         return [x,y,z];
     });
 };
- 
+```
+
+### 2.3 - 
+
+```js
 // get a clock object for the give date
 clock.get = function (date) {
     var c = {};
@@ -70,4 +81,88 @@ clock.get = function (date) {
     c.dayPer = (c.now - dayStart) / 86400000;
     return c;
 };
+```
+
+## 3 - The main.js file
+
+### 3.1 -
+
+```js
+// create a THREE.Group of face marks for each hour
+var createFaceCubes = function (material) {
+    var group = new THREE.Group();
+    clock.createFacePoints(0, 0, 0, 10).map(function (facePoints) {
+        var cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material);
+        cube.position.set(facePoints[0], facePoints[1], facePoints[2]);
+        cube.lookAt(0, 0, 0);
+        group.add(cube);
+        return cube;
+    });
+    return group;
+};
+```
+
+### 3.2 - 
+
+```js
+// create hand cubes
+createHandCubes = function (material) {
+    var group = new THREE.Group();
+    group.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material),
+        new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material),
+        new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material))
+    var update = function (clockObj) {
+        clockObj = clockObj || clock.get();
+        clock.createHandPoints(clockObj, 0, 0, 0, 10).forEach(function (point, i) {
+            var cube = group.children[i];
+            cube.position.set(point[0], point[1], point[2]);
+        });
+    };
+    update();
+    return {
+        group: group,
+        update: update
+    }
+};
+```
+
+### 3.3 - 
+
+```js
+// the demo
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+ 
+var materials = [
+    new THREE.MeshBasicMaterial({
+        color: 0x00ff00,
+        wireframe: true
+    }),
+    new THREE.MeshBasicMaterial({
+        color: 0xff0000,
+        wireframe: true
+    })];
+ 
+// position and rotate camera
+camera.position.set(11, 11, 11);
+camera.lookAt(0, 0, 0);
+renderer.setSize(320, 240);
+ 
+// create and add face cubes
+scene.add(createFaceCubes(materials[0]));
+ 
+// create hands
+var hands = createHandCubes(materials[1]);
+scene.add(hands.group);
+ 
+// loop
+var loop = function () {
+    hands.update(clock.get(new Date()));
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+};
+loop();
 ```
