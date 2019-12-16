@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2019-12-16 17:37:51
-version: 1.5
+updated: 2019-12-16 17:39:33
+version: 1.6
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a threejs example that is a javaScript powered basic clock.
@@ -73,7 +73,9 @@ clock.createHandPoints = function (clockObj, cx, cy, cz, radius) {
 };
 ```
 
-### 2.3 - 
+### 2.3 - The get clock object method
+
+Each clock.js file that I make for this kind of project has a method that can be used to create a clock object of sorts. This object has all kinds of properties that can then be passed to my other clock module methods.
 
 ```js
 // get a clock object for the give date
