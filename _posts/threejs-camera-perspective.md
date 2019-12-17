@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2019-12-17 09:50:24
-version: 1.6
+updated: 2019-12-17 09:50:41
+version: 1.7
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -23,7 +23,7 @@ This is not an introduction to three.js, or any additional skills that are requi
 
 The main method of interest in this blog post is the three.js [perspective camera constructor](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). This constructor also inherits from [Camera](https://threejs.org/docs/index.html#api/cameras/Camera) that contains properties and methods for all cameras in threejs. The Camera constructor also in turn inherits from [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) so a camera can be positioned and rotated in a scene in the same way as other objects that inherent from object32 such as a mesh.
 
-In this section I will be going over just the perspective camera class for the most part, but will also be tuching base slightly on those other classes I mentioned. It is still a good idea to have a strong foundational understanding of all of the constructors I have mentioned though.
+In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on those other classes I mentioned. It is still a good idea to have a strong foundational understanding of all of the constructors I have mentioned though.
 
 ```js
 
