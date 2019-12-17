@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2018-05-17 18:06:11
-version: 1.3
+updated: 2019-12-17 10:48:59
+version: 1.4
 ---
 
-In [three.js](https://threejs.org/) there are a few cameras to work with, typically in must cases I would use the perspective camera, however there is also the orthographic camera as well that can come in handy. In this post I will be writing about the orthographic camera, how it compares to the perspective camera, and why you might want to use it with certain projects.
+In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in must cases I would use the perspective camera, however there is also the orthographic camera as well that can come in handy. In this post I will be writing about the orthographic camera, how it compares to the perspective camera, and why you might want to use it with certain projects.
 
 <!-- more -->
 
