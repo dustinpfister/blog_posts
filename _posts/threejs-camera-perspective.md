@@ -5,15 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2019-12-17 09:14:34
-version: 1.2
+updated: 2019-12-17 09:16:34
+version: 1.3
 ---
 
-One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world.
+One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
 
 <!-- more -->
 
-In this post I will be covering some basic demos that have to do with a perspective camera, [viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum), the base [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), and some additional things that are inherited from the [Object3D Class](https://threejs.org/docs/index.html#api/core/Object3D)
+In this post I will be covering some basic demos that have to do with a perspective camera, [viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum), the base [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera). I will also be touching base on some additional things that are inherited from the [Object3D Class](https://threejs.org/docs/index.html#api/core/Object3D) that is used for all objects that might be part of a scene including, but not limited to a camera.
 
 ## What to know before hand
 
