@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2019-12-17 10:52:43
-version: 1.9
+updated: 2019-12-17 11:18:20
+version: 1.10
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, but it must be used with a render method in order to view anything in a scene.
@@ -33,6 +33,62 @@ The most commonly used camera might be the perspective camera, and if you are on
 
 Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/).
 
-## 5 - Conclusion
+## 5 - Basic move camrea example
+
+One of the basic things that a developer would like to know how to do when first getting started with threejs is to move a camera. The Camera base class inherits from the object3d class so it has a position and rotation property just like any other object in threejs. The position property is what can be used to change the position of the camera, however you also typically want to use this in conjunction with the rotation property or a method like look at to set the rotation to a desired point of interest also.
+
+```js
+var moveCamera = function (camera, per) {
+    var rad = Math.PI * 2 * per,
+    x = Math.cos(rad) * 3,
+    y = -3 + 6 * (1 - Math.abs(per - 0.5) / 0.5),
+    z = Math.sin(rad) * 3;
+    // position property can be used to set
+    // the position of a camera
+    camera.position.set(x, y, z);
+    // the rotation property or the lookAt method
+    // can be used to set rotation
+    camera.lookAt(0, 0, 0);
+};
+ 
+// CAMERA
+var width = 360,
+height = 180,
+fieldOfView = 40,
+aspectRatio = width / height,
+near = 0.1,
+far = 1000,
+camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+ 
+// SCENE
+var scene = new THREE.Scene();
+ 
+// RENDER
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.setSize(width, height);
+ 
+// MESH
+scene.add(new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            color: 0xff0000,
+            wireframe: true
+        })));
+ 
+// APP
+var frame = 0,
+frameMax = 100;
+var loop = function () {
+    requestAnimationFrame(loop);
+    moveCamera(camera, frame / frameMax);
+    renderer.render(scene, camera);
+    frame += 1;
+    frame %= frameMax;
+};
+loop();
+```
+
+## 6 - Conclusion
 
 Sorry that this post is a little thin, I might expand on it more though as I make more demos on three.js.
