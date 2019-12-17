@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2019-12-17 09:18:45
-version: 1.4
+updated: 2019-12-17 09:45:59
+version: 1.5
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -19,20 +19,42 @@ In this post I will be covering some basic demos that have to do with a perspect
 
 This is not an introduction to three.js, or any additional skills that are required first in order to start working with something like three.js such as javaScript, and web programing in general. I assume that you have working knowledge of javaScript, and have started working with some basic three.js examples. however if you feel that you could stand to gain a deeper understanding of perspective cameras in three.js this post might be of interest.
 
-## 2 - The perspective camera constructor
+## 2 - The perspective camera constructor and basic threejs perspective camera example
 
 The main method of interest in this blog post is the three.js [perspective camera constructor](](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). ). This constructor also inherits from [Camera](https://threejs.org/docs/index.html#api/cameras/Camera), and the Camera constructor also inherits from [Object3D](https://threejs.org/docs/index.html#api/core/Object3D).
 
 It is a good idea to have a strong foundational understanding of all of these constructors, but in this post I will be mainly focusing on the Perspective Camera Constructor.
 
 ```js
-var fieldOfView = 45,
+
+// Camera
+var fieldOfView = 40,
 aspectRatio = 16 / 9,
-near = 1,
+near = 0.1,
 far = 1000,
- 
-// I can now make an instance of Perspective Camera
 camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+ 
+// SCENE
+var scene = new THREE.Scene();
+ 
+// RENDER
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.setSize(320, 180);
+ 
+// MESH
+scene.add(new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            color: 0xff0000,
+            wireframe: true
+        })));
+ 
+// position things
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+// draw the scene
+renderer.render(scene, camera);
 ```
 
 ### 2.1 - Understanding Viewing frustum.
