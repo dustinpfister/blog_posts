@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2019-12-17 11:18:20
-version: 1.10
+updated: 2019-12-17 11:20:16
+version: 1.11
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, but it must be used with a render method in order to view anything in a scene.
@@ -23,17 +23,17 @@ The actual [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera
 
 All instances of Camera gain a whole bunch of common properties and methods from Object3D. This allows for me to easily work with the camera by using methods like lookAt.
 
-## 3 - Perspective Camera
+## 3.1 - Perspective Camera
 
 read full post on [perspective Camera](/2018/04/07/threejs-camera-perspective/)
 
 The most commonly used camera might be the perspective camera, and if you are only going to stick with one, it might be a good idea to make it this one. The perspective camera mimics the way that the human eye actually sees, and often that is what is desired.
 
-## 4 - Orthographic camera
+## 3.2 - Orthographic camera
 
 Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/).
 
-## 5 - Basic move camrea example
+## 4 - Basic move camera example
 
 One of the basic things that a developer would like to know how to do when first getting started with threejs is to move a camera. The Camera base class inherits from the object3d class so it has a position and rotation property just like any other object in threejs. The position property is what can be used to change the position of the camera, however you also typically want to use this in conjunction with the rotation property or a method like look at to set the rotation to a desired point of interest also.
 
@@ -89,6 +89,6 @@ var loop = function () {
 loop();
 ```
 
-## 6 - Conclusion
+## 5 - Conclusion
 
-Sorry that this post is a little thin, I might expand on it more though as I make more demos on three.js.
+There is much more to cover when it comes to cameras in threejs, however hopefully this post will help cover the basic of cameras at least.
