@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2019-12-17 11:20:16
-version: 1.11
+updated: 2019-12-17 11:25:11
+version: 1.12
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, but it must be used with a render method in order to view anything in a scene.
@@ -88,6 +88,10 @@ var loop = function () {
 };
 loop();
 ```
+
+In this example I worked out a basic move camera method that moves the camera around and up and down a point of interest when I keep at the origin. At the origin I have a cube that I am just leaving static fixed at the origin of the scene, I could move the cube in the same way as they both share the same set of properties inherited from the object3d class.
+
+If you have not done so all ready it might be a good idea to read up more on the Object3d class when it comes to these useful properties and methods as I use them all the time when working with things in a threejs scene.
 
 ## 5 - Conclusion
 
