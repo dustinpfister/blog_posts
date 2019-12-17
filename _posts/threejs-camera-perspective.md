@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2019-12-17 09:50:41
-version: 1.7
+updated: 2019-12-17 09:57:37
+version: 1.8
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -24,6 +24,10 @@ This is not an introduction to three.js, or any additional skills that are requi
 The main method of interest in this blog post is the three.js [perspective camera constructor](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). This constructor also inherits from [Camera](https://threejs.org/docs/index.html#api/cameras/Camera) that contains properties and methods for all cameras in threejs. The Camera constructor also in turn inherits from [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) so a camera can be positioned and rotated in a scene in the same way as other objects that inherent from object32 such as a mesh.
 
 In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on those other classes I mentioned. It is still a good idea to have a strong foundational understanding of all of the constructors I have mentioned though.
+
+### 2.1 - a very basic copy and past example of the constructor and a basic scene
+
+Here Is a very basic copy and past threejs example of the threejs perspective camera. I am just creating an instance of the perspective camera with the constructor. When doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances.
 
 ```js
 
@@ -57,23 +61,25 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2.1 - Understanding Viewing frustum.
+Once I have a camera instance I can pass that to the render method that I am using along with a scene to view the scene with that camera. I should make sure that the camera is positioned, and rotated in a way in which I am looking at something in the scene. One way is to use the position property, and look at methods of the camera instance.
+
+### 2.2 - Understanding Viewing frustum.
 
 [Viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum) cam be thought of as a pyramid of vision that exists in front of a camera. Any object that lays inside of the pyramid will be rendered. This pyramid can be defined by an [field of view](https://en.wikipedia.org/wiki/Field_of_view) in terms of an angle in y direction. As well as additional values that define the aspect ratio of this view, as well as values that define where the top of the pyramid begins, and ends (view distance).
 
-#### 2.2 - Field of view
+#### 2.3 - Field of view
 
 The first argument that is given to the three.js perspective camera constructor is the field of view. The value expected should be a Number representing an angle in degrees not radians.
 
-#### 2.3 - Aspect ratio
+#### 2.4 - Aspect ratio
 
 The aspect ratio is the second argument that is given to the three.js perspective camera constructor. This value is the width divided by the height of the desired ratio. Typically you might want to set this to something like 16 / 9, or 4 / 3. Whatever value you set will be used to determine the width and height of the near, and far rectangles of the pyramid of vision.
 
-#### 2.4 - Near distance
+#### 2.5 - Near distance
 
 This is the near bound of the frustum, any object that is from this distance, outward to the far distance will be rendered if it is inside the pyramid of vision.
 
-#### 2.5 - Far distance
+#### 2.6 - Far distance
 
 This is for course the far distance of the view pyramid. It is also the distance at which the aspect ratio of the field of view will be at it's largest, the bottom of the pyramid. If you are ever asking yourself, how far is to far, this value is of interest, as anything the exists beyond this distance will not be rendered.
 
