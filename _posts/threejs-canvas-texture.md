@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 13:27:50
-version: 1.18
+updated: 2019-12-18 15:27:23
+version: 1.19
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -159,7 +159,81 @@ renderer.render(scene, camera);
 
 Notice that I set the needs update property of the texture to true. As I mentioned earlier this does not need to be set true if I where to use the CanvasTexture constructor, if I am just doing something like this in which I am not redrawing the canvas this only needs to be set true once.
 
-## 3 - Animation
+## 3 - Custom draw method
+
+### 3.1 - A Canvas.js module
+
+```js
+var can3 = {};
+
+can3.draw = function (ctx, canvas) {
+    ctx.fillStyle = '#000000';
+    ctx.lineWidth = 1;
+    ctx.fillRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
+    ctx.strokeStyle = '#ff0000';
+    ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
+}
+ 
+// create and return a canvas texture
+can3.createCanvasTexture = function (draw) {
+    draw = draw || can3.draw;
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = 16;
+    canvas.height = 16;
+    draw(ctx, canvas);
+    var texture = new THREE.Texture(canvas);
+    texture.needsUpdate = true;
+    return texture;
+};
+ 
+// create a cube the makes use of a canvas texture
+can3.createCube = function (texture) {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            map: texture
+        }));
+};
+```
+
+### 3.2 - The rest of the example
+
+```js
+// Scene
+var scene = new THREE.Scene();
+ 
+// Camera
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+ 
+// create texture with default draw method
+var texture = can3.createCanvasTexture();
+var cube = can3.createCube(texture);
+scene.add(cube);
+ 
+// create texture with custom draw method
+texture = can3.createCanvasTexture(function (ctx, canvas) {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'black';
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2 + 0.5, canvas.height / 2 + 0.5, canvas.width / 2 - 2, 0, Math.PI * 2);
+        ctx.fill();
+    });
+cube = can3.createCube(texture);
+cube.position.set(0, 0, 2)
+scene.add(cube);
+ 
+// RENDER
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(320, 240);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 4 - Animation
 
 So because the source is a canvas you might be wondering if it is possible to redraw the canvas and update the texture, making an animated texture. The answer is yes, all you need to do is redraw the contents of the canvas, and set the needsUpdate property of the texture to true before calling the render method of your renderer.
 
