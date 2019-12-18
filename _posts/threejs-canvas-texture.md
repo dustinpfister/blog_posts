@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 12:27:46
-version: 1.8
+updated: 2019-12-18 12:32:55
+version: 1.9
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -23,6 +23,8 @@ I order to use a canvas as a texture we will of course need an instance of a can
 
 The width and height values should be a base 2 number such as 8, 16, 32 and so forth else you might get webGl errors in the console. Aside from that concern so far it seems like you can just create and draw to a simple plane old canvas element like normal using the 2d drawing context. The resulting image created with the drawing context and javaScript code can then be used as your texture from things like the map property of a material.
 
+So say you just want to start out with something very simple, just use the canvas 2d drawing context to create a texture that is just a square. In which case you might get together something like this:
+
 ```js
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
@@ -36,7 +38,7 @@ The width and height values should be a base 2 number such as 8, 16, 32 and so f
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
 ```
 
-Once you have a canvas it can be used to create a texture.
+So I created a canvas, set the size of it to something that is a base 2 number, and drawn something to it. Great now I have the easy part out of the way, I am now ready to use it to passed it as an argument to a threejs constructor that will return a texture that I can the use in a material that I can then use with a mesh.
 
 ## 2 - Creating a texture with canvas
 
