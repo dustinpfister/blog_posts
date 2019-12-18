@@ -5,15 +5,17 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 15:33:14
-version: 1.22
+updated: 2019-12-18 16:30:02
+version: 1.23
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
 
 When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. 
 
-The Image used to define a Texture can be loaded from an external source such as a \*png image, but it can also be defined with javaScript, by making something with canvas, and then using that as an Image source. This is useful to help make projects that do not depend an an extremal source asset aside from three.js, or to make dynamic animated textures beucase it is well canvas.
+The Image used to define a Texture can be loaded from an external source such as a \*png image, but it can also be defined with javaScript, by making something with canvas, and then using that as an Image source. This is useful to help make projects that do not depend an an extremal source asset aside from three.js, or to make dynamic animated textures because it is well canvas.
+
+To achieve just this there is the [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor however the plain old Texture constructor can be used also by just setting one little property value for the texture after it is created.  Both constructors can be used by just passing a reference to the canvas element that is to be used.
 
 <!-- more -->
 
