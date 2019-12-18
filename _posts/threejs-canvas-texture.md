@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 13:21:24
-version: 1.15
+updated: 2019-12-18 13:22:42
+version: 1.16
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -94,6 +94,8 @@ Once you have the canvas, texture, and material we can go on with everything els
 
 In this example I will just be rendering the box once and be done with it just so show that you can use a canvas to make a static texture, more on animation later.
 
+### 2.1 - A create canvas texture helper method
+
 ```js
 // create and return a canvas texture
 var createCanvasTexture = function () {
@@ -112,6 +114,8 @@ var createCanvasTexture = function () {
 };
 ```
 
+### 2.1 - create a cube helper
+
 ```js
 // create a cube the makes use of a canvas texture
 var createCube = function () {
@@ -122,6 +126,8 @@ var createCube = function () {
         }));
 };
 ```
+
+### 2.2 - The rest of the full threejs example that involves a canvas texture
 
 ```js
 // Scene
