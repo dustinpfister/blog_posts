@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 15:27:23
-version: 1.19
+updated: 2019-12-18 15:31:11
+version: 1.20
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -159,7 +159,9 @@ renderer.render(scene, camera);
 
 Notice that I set the needs update property of the texture to true. As I mentioned earlier this does not need to be set true if I where to use the CanvasTexture constructor, if I am just doing something like this in which I am not redrawing the canvas this only needs to be set true once.
 
-## 3 - Custom draw method
+## 3 - Create canvas helper with a custom draw method
+
+In this section I will be writing about an example that makes use of a slightly more advanced revision of the create canvas helper that I made for the first example for this post. This method accepts a custom draw method that can be used to draw something else for the texture that is created.
 
 ### 3.1 - A Canvas.js module
 
