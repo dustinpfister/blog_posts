@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2019-12-18 12:16:33
-version: 1.3
+updated: 2019-12-18 12:19:11
+version: 1.4
 ---
 
 Every now and then I like to play around with threejs a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a camera in a scene. So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties along with expressions as a way to move a camera around in a scene.
@@ -38,6 +38,8 @@ var moveCamera = function (camera, per) {
 
 ### 1.2 - Create a camera
 
+Now that I have a move camera method worked out I need to create a camera.
+
 ```js
 // CAMERA
 var width = 360,
@@ -50,6 +52,8 @@ camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
 ```
 
 ### 1.3 The rest of the example
+
+So then now I just need to work out the rest of the example when it comes to a scene, renderer, a mesh to look at, and a main app loop that makes use of the move camera method.
 
 ```js
 // SCENE
