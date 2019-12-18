@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 13:22:42
-version: 1.16
+updated: 2019-12-18 13:27:15
+version: 1.17
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -96,6 +96,8 @@ In this example I will just be rendering the box once and be done with it just s
 
 ### 2.1 - A create canvas texture helper method
 
+I started out with a helper method that just returns a texture that is ready to use with a material. In this helper I create a canvas element, get the drawing context, and draw to it. In then used to THREE.Texture constructor to create the texture by just passing the canvas element as the first argument when calling it. I then set the needs update flag to true, and return the texture.
+
 ```js
 // create and return a canvas texture
 var createCanvasTexture = function () {
@@ -116,6 +118,8 @@ var createCanvasTexture = function () {
 
 ### 2.1 - create a cube helper
 
+I then have another helper that makes use of the create canvas texture helper by calling it and using the resulting texture that is returned for the map property of the basic material that is used for a mesh. I then just use the box geometry constructor for the geometry of the mesh, and return the mesh.
+
 ```js
 // create a cube the makes use of a canvas texture
 var createCube = function () {
@@ -126,6 +130,8 @@ var createCube = function () {
         }));
 };
 ```
+
+So when putting together a scene I just need to call this method, and then I have a mesh that is all set to be added to a scene.
 
 ### 2.2 - The rest of the full threejs example that involves a canvas texture
 
