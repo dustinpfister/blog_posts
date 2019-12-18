@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2019-12-18 11:39:32
-version: 1.1
+updated: 2019-12-18 11:43:49
+version: 1.2
 ---
 
 Every now and then I like to play around with threejs a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a camera in a scene. So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties along with expressions as a way to move a camera around in a scene.
@@ -14,6 +14,8 @@ Every now and then I like to play around with threejs a little, it is a fun proj
 <!-- more -->
 
 ## 1 - Basic threejs camera movement example
+
+In this section I will be starting out with a basic threejs example that has to do with moving a camera. I pulled everything that has to do with moving the camera into a function to help keep things more fine grain with this kind of task, and for now it is a move camera method that is always looking at the origin of the scene.
 
 
 ### 1.1 - A move camera method
