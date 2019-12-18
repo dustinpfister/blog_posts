@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 12:41:12
-version: 1.12
+updated: 2019-12-18 13:00:42
+version: 1.13
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -19,11 +19,11 @@ The Image used to define a Texture can be loaded from an external source such as
 
 ## 1 - Getting started with threejs and canvas for textures
 
-In this section I will be going over the basics of using canvas to create a texture that will then be used with the basic material map property. It is impotent to note that the properties of materials will differ from one to another, the basic material does not do anything with light but other materials do. For example in the standard material I would want to use the emmisive property of the material to define a texture that will always emit light even if there is not light source.
+In this section I will be going over the basics of using canvas to create a texture that will then be used with the basic material map property. It is impotent to note that the properties of materials will differ from one to another, the basic material does not do anything with light but other materials do. For example in the standard material I would want to use the emissive property of the material to define a texture that will always emit light even if there is not light source.
 
 Anyway getting back to the main topic at hand here this example will be just a simple getting started example of using canvas to map just a basic color map to a basic material.
 
-### 1.1 - Start With just a quick simple Canvas Example
+### 1.1 - Start With just a quick canvas element and drawing to the 2d context
 
 I order to use a canvas as a texture we will of course need an instance of a canvas that can be created with document.createElement. The dom element does not have to be appended to the HTML, we just need to have one to give to the Texture constructor. 
 
@@ -46,7 +46,7 @@ So say you just want to start out with something very simple, just use the canva
 
 So I created a canvas, set the size of it to something that is a base 2 number, and drawn something to it. Great now I have the easy part out of the way, I am now ready to use it to passed it as an argument to a threejs constructor that will return a texture that I can the use in a material that I can then use with a mesh.
 
-### 1.2 - Creating a texture with canvas
+### 1.2 - Creating a texture with canvas using THREE.CanvasTexture or just THREE.Texture
 
 Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needsUpdate boolean of the texture is set to true by default. In any case you just pass the reference to the canvas \(not it's drawing context\) to the constructor that use use as the first argument.
 
@@ -65,7 +65,7 @@ In Any case you now have both a canvas, a drawing context for that canvas, and a
 
 ### 1.3 - Using the texture with a Material
 
-I will not get into this in depth, as this matter can quickly become a whole new post when it comes to using a texture with a Material. However a quick example involving the basic material is in order for sure to say the least.
+I will not get into this in depth, as this matter can quickly become a whole new post when it comes to using a texture with a Material. However a quick example involving the basic material is in order for sure to say the least when it comes to using a texture with a material. For this example I am just setting the texture that is created with a canvas element to the map property of a basic material.
 
 ```js
 var material = new THREE.MeshBasicMaterial({
