@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2018-04-17 10:36:42
-version: 1.4
+updated: 2019-12-18 12:22:19
+version: 1.5
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. 
@@ -15,7 +15,7 @@ The Image used to define a Texture can be loaded from an external source such as
 
 <!-- more -->
 
-## Start With just a quick simple Canvas Example
+## 1 - Start With just a quick simple Canvas Example
 
 I order to use a canvas as a texture we will of course need an instance of a canvas that can be created with document.createElement. The dom element does not have to be appended to the HTML, we just need to have one to give to the Texture constructor. The width and height values should be a base 2 number such as 8, 16, 32 and so forth else you might get webGl errors in the console. aside from that so far it seems like you can just create a simple plane old canvas element like normal using the 2d drawing context.
 
@@ -34,9 +34,9 @@ I order to use a canvas as a texture we will of course need an instance of a can
 
 Once you have a canvas it can be used to create a texture.
 
-## Creating a texture with canvas
+## 2 - Creating a texture with canvas
 
-Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needsUpdate boolean of the texture is set to true by default. In any case you just pass the reference to the canvas (not it's drawing context) to the constructor that use use as the first argument.
+Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needsUpdate boolean of the texture is set to true by default. In any case you just pass the reference to the canvas \(not it's drawing context\) to the constructor that use use as the first argument.
 
 So then this:
 ```js
@@ -51,7 +51,7 @@ texture.needsUpdate = true;
 
 In Any case you now have both a canvas, a drawing context for that canvas, and a texture made from that canvas that can now be used in a Material that can make use of that texture. Regardless of what constructor you use the needUpdate boolean is of interest as even if it is set to true by default, you will want to set it true again each time you want the texture updated, more on that later.
 
-## Using the texture with a Material
+## 3 - Using the texture with a Material
 
 I will not get into this in depth, as this matter can quickly become a whole new post when it comes to using a texture with a Material. However a quick example involving the basic material is in order for sure to say the least.
 
@@ -74,7 +74,7 @@ var material = new THREE.MeshLambertMaterial({
 
 There are other properties that make use of a texture, I will not get into detail with them all here as it is off topic, but it is something that you should be aware of if not before hand.
 
-## Full Demo
+## 4 - Full Demo
 
 Once you have the canvas, texture, and material we can go on with everything else as normal. In this demo I will set up a scene, add a camera and set it away from a the origin where I will be placing a simple Mesh with the simple box geometry that is often used for these kinds of examples.
 
@@ -131,7 +131,7 @@ In this example I will just be rendering the box once and be done with it just s
 
 Notice that I set the needs update property of the texture to true. As I mentioned earlier this does not need to be set true if I where to use the CanvasTexture constructor, if I am just doing something like this in which I am not redrawing the canvas this only needs to be set true once.
 
-## Animation
+## 5 - Animation
 
 So because the source is a canvas you might be wondering if it is possible to redraw the canvas and update the texture, making an animated texture. The answer is yes, all you need to do is redraw the contents of the canvas, and set the needsUpdate property of the texture to true before calling the render method of your renderer.
 
