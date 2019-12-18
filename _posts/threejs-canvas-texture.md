@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 13:00:42
-version: 1.13
+updated: 2019-12-18 13:02:07
+version: 1.14
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -84,7 +84,9 @@ var material = new THREE.MeshLambertMaterial({
 });
 ```
 
-There are other properties that make use of a texture, I will not get into detail with them all here as it is off topic, but it is something that you should be aware of if not before hand.
+There are other properties that make use of a texture, I will not get into detail with them all here as it is off topic, but it is something that you should be aware of if not before hand. 
+
+So now that we have the basics when it comes to making a material with a texture that is created using a canvas element we can now use the material with a mesh. So lets start looking at some full examples of this in action.
 
 ## 2 - Full Demo
 
