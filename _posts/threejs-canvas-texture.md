@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 13:02:07
-version: 1.14
+updated: 2019-12-18 13:21:24
+version: 1.15
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -95,52 +95,52 @@ Once you have the canvas, texture, and material we can go on with everything els
 In this example I will just be rendering the box once and be done with it just so show that you can use a canvas to make a static texture, more on animation later.
 
 ```js
-(function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
- 
-    // GEOMETRY
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
-    // CANVAS
+// create and return a canvas texture
+var createCanvasTexture = function () {
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
- 
-    canvas.width = 8;
-    canvas.height = 8;
- 
+    canvas.width = 16;
+    canvas.height = 16;
     ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = '#ff00ff';
-    ctx.strokeRect(0, 0, canvas.width, canvas.height);
- 
+    ctx.lineWidth = 1;
+    ctx.fillRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
+    ctx.strokeStyle = '#ff0000';
+    ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
     var texture = new THREE.Texture(canvas);
     texture.needsUpdate = true;
- 
-    // MATERIAL
-    var material = new THREE.MeshBasicMaterial({
-            map: texture
-        });
- 
-    // MESH
-    var mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
- 
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    renderer.render(scene, camera);
-}
-    ());
+    return texture;
+};
+```
+
+```js
+// create a cube the makes use of a canvas texture
+var createCube = function () {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            map: createCanvasTexture()
+        }));
+};
+```
+
+```js
+// Scene
+var scene = new THREE.Scene();
+
+// Camera
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+
+// add cube to scene that makes use
+// of the canvas texture
+scene.add(createCube());
+
+// RENDER
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(320, 240);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
 ```
 
 Notice that I set the needs update property of the texture to true. As I mentioned earlier this does not need to be set true if I where to use the CanvasTexture constructor, if I am just doing something like this in which I am not redrawing the canvas this only needs to be set true once.
