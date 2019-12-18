@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 12:35:00
-version: 1.10
+updated: 2019-12-18 12:38:19
+version: 1.11
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
@@ -18,6 +18,8 @@ The Image used to define a Texture can be loaded from an external source such as
 <!-- more -->
 
 ## 1 - Getting started with threejs and canvas for textures
+
+In this section I will be going over the basics of using canvas to create a texture that will then be used with the basic material map property. It is impotent to note that the properties of materials will differ from one to another, the basic material does not do anything with light but other materials do. For example in the standard material I would want to use the emmisive property of the material to define a texture that will always emit light even if there is not light source.
 
 ### 1.1 - Start With just a quick simple Canvas Example
 
