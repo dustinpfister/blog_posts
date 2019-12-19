@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 09:54:31
-version: 1.15
+updated: 2019-12-19 09:56:15
+version: 1.16
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -86,9 +86,11 @@ var low = new THREE.Mesh(
 low.position.y = -1;
 ```
 
-There are also various lights and helper objects also that all inherit from Object3d. So the Object3d class is a common class that can be used to move, and rotate any and all objects in a scene. The [Three.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor also inherits from Object3d that is a way of grouping these kinds of objects.
+There are also various lights and helper objects also that all inherit from Object3d. So the Object3d class is a common class that can be used to move, and rotate any and all objects in a scene. 
 
 ## 5 - Full demo of Object3D that uses the class as a way to group
+
+The [Three.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor also inherits from Object3d and is a way of grouping objects together into a collection. However the add method of Object3d is in all objects that inherit from Object3d, and as such grouping can be done with any such object, including just a stand alone instance of Object3d.
 
 I try to make it a habit to have at least one copy and past working demo of what it is that I am writing about in each blog post of mine. In this demo I am making use of an instance of Object3D to group some cubes together. I am also working with many other objects that inherit from Object3D, using the position, and rotation properties often.
 
