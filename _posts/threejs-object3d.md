@@ -5,11 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2018-04-24 19:04:02
-version: 1.6
+updated: 2019-12-19 09:20:10
+version: 1.7
 ---
 
-The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. This base class adds a whole bunch of common properties, and methods for any kind of object in the project. Once you know a thing or two about Object3D the same methods will work with any and all objects that inherent from Object3D, which is a lot.
+The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
+
+The Object3d class adds a whole bunch of common properties, and methods for any kind of object in a project that needs to have a position in the scene. Properties of the Object3d class can be used to set the position, and rotation of an object along with many other common things that are shared across all such objects in a scene. Once you know a thing or two about Object3D the same methods will work with any and all objects that inherent from Object3D, which is a lot so lets get started.
 
 <!-- more -->
 
