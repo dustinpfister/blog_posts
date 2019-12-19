@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 09:20:10
-version: 1.7
+updated: 2019-12-19 09:21:08
+version: 1.8
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -15,11 +15,11 @@ The Object3d class adds a whole bunch of common properties, and methods for any 
 
 <!-- more -->
 
-## What to know before hand
+## 1 - What to know before hand
 
 This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or javaScript in general. This post is on an advanced topic on [three.js](/categories/three-js/) and I expect that you have some basic working knowledge of where there is to know before hand. As with any post on three.js the version number matters a lot, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91).
 
-## Basic example of Object3d using the position property
+## 2 - Basic example of Object3d using the position property
 
 Typically I do not work with the class directly, I work with something that inherits properties and methods from Object3d. Still if for some reason I want to work with the class directly I can do so via the THREE.Object3d constructor.
 
@@ -38,7 +38,7 @@ Typically I do not work with the class directly, I work with something that inhe
 
 Here I made just a simple example where I am just playing with the position property, which is an instance of [Vector3](/2018/04/15/threejs-vector3/). This can be used to set the center point of the object in a Scene. In the case that the Object is a child of another object it would be the position relative to the parent Object.
 
-## Rotation of an Object
+## 3 - Rotation of an Object
 
 Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the [Euler Class](https://threejs.org/docs/index.html#api/math/Euler), Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles).
 
@@ -57,7 +57,7 @@ console.log(JSON.stringify(obj.rotation));
 
 I will not get into the Euler Class in detail here, but it is similar to [Vector3](/2018/04/15/threejs-vector3/) only when using the set method you want to give [radians](https://en.wikipedia.org/wiki/Radian) rather than, and x,y,z position.
 
-## Examples of use in other constructors
+## 4 - Examples of use in other constructors
 
 There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of.
 
@@ -81,7 +81,7 @@ var low = new THREE.Mesh(
 low.position.y = -1;
 ```
 
-## Full demo of Object3D
+## 5 - Full demo of Object3D
 
 I try to make it a habit to have at least one copy and past working demo of what it is that I am writing about in each blog post of mine. In this demo i am making use of an instance of Object3D to group some cubes together. I am also working with many other objects that inherit from Object3D, using the position, and rotation properties often.
 
@@ -155,6 +155,6 @@ I try to make it a habit to have at least one copy and past working demo of what
 
 It may be true that Object3D by itself is not intended to be used from grouping as there is a separate constructor for that, called simply enough [Group](https://threejs.org/docs/index.html#api/objects/Group). Still Object3D by itself seems to work okay be itself good enough for this simple demo on Object3D.
 
-## Conclusion
+## 6 - Conclusion
 
 From here you might choose to make some more demos that have to do with exercising the use of working with objects in three.js. If you enjoyed this post you might also like to check out my [many other posts](/categories/three-js/) on the subject.
