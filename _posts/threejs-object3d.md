@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 10:39:08
-version: 1.21
+updated: 2019-12-19 10:40:03
+version: 1.22
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -136,6 +136,8 @@ var createCubeStack = function (original) {
     return stack;
 };
 ```
+
+So now that I have a helper method worked out it would be nice to test it out with a scene, renderer, and main app loop, so lets take a look at that then.
 
 ### 5.2 - The rest of the Object3d example
 
