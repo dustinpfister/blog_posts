@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2019-12-19 14:55:05
-version: 1.8
+updated: 2019-12-19 14:56:44
+version: 1.9
 ---
 
 It is often desirable to set a material in a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -38,7 +38,7 @@ var createBasicWireCube = function () {
 
 ### 1.2 - a Create canvas texture helper
 
-Here I have a create canvas texture helper method.
+Here I have a create canvas texture helper method. This method creates a texture using a canvas element by creating the canvas element, drawing to the 2d drawing context, and then used the THREE.Texture constructor to created a texture by passing the canvas element to it as the first argument.
 
 ```js
 // create a canvas texture
