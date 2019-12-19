@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 10:40:03
-version: 1.22
+updated: 2019-12-19 10:42:17
+version: 1.23
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -141,7 +141,7 @@ So now that I have a helper method worked out it would be nice to test it out wi
 
 ### 5.2 - The rest of the Object3d example
 
-So then here I have the rest of the example that makes use of the create cube stack helper.
+So then here I have the rest of the example that makes use of the create cube stack helper. I create a scene, camera, and renderer just like with any threejs example. However I now use my create cube stack helper to create an cube stack object which contains a group property. That grop property is then what I add to the scene, and the set method of the cube stack object is what I use to update the stack in a main app loop.
 
 ```js
 // Scene
