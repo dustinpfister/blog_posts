@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2019-12-19 11:42:09
-version: 1.7
+updated: 2019-12-19 11:44:30
+version: 1.8
 ---
 
 In [three.js](https://threejs.org/) The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture and do not want to do anything special involving the reflection of light, and many other maps other than a color map. 
@@ -21,13 +21,13 @@ This is a post on the basic material used in three.js, one of several options wh
 
 ## 2 - Basic example of the basic material
 
-The Basic material is the default material used for a mesh so if I just directly add a Mesh to a scene without giving a material, the  mesh will used the basic material with a random color.
+The Basic material is the default material used for a mesh so if I just directly add a Mesh to a scene without giving a material, the  mesh will used the basic material with a random color for the color property of the basic material instance.
 
 ```js
 scene.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1)));
 ```
 
-Typically I will want to use the MeshBasicMaterial constructor to create an instance of basic material thought if I want to set at least one property of the material.
+Typically I will want to use the MeshBasicMaterial constructor to create an instance of basic material thought. This will be necessary if I want to set at least one property of the material that is not a default value for the property in question. When it comes to property options for the basic material if I just want to set a solid color for the whole material then the color option would be one way to go about doing that.
 
 ```js
 var redCube = new THREE.Mesh(
