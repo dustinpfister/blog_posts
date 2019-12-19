@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2019-12-19 11:47:08
-version: 1.9
+updated: 2019-12-19 11:47:54
+version: 1.10
 ---
 
 In [three.js](https://threejs.org/) The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture and do not want to do anything special involving the reflection of light, and many other maps other than a color map. 
@@ -49,7 +49,7 @@ If I do not want to use a solid color, but a texture then I can use the map prop
 
 ## 3 - Adding a color map texture to a basic material in three.js using canvas
 
-The Basic material is a good choice if you do not what to do much of anything involving light, but do still want to have some kind of color map texture. A texture can be added in from an external image using a loader, or it can be created with javaScript using the 2d canvas drawing context.
+The Basic material is a good choice if you do not what to do much of anything involving light, but do still want to have some kind of color map texture. A texture can be added in from an external image using a loader, or it can be created with javaScript using the 2d canvas drawing context of a canvas element.
 
 ```js
     // CANVAS
