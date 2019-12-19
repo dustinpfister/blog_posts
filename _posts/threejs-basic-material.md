@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2019-12-19 11:47:54
-version: 1.10
+updated: 2019-12-19 11:49:50
+version: 1.11
 ---
 
 In [three.js](https://threejs.org/) The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture and do not want to do anything special involving the reflection of light, and many other maps other than a color map. 
@@ -87,6 +87,6 @@ I have written a [post on using canvas as a texture]( /2018/04/17/threejs-canvas
 
 ## 4 - Conclusion
 
-The basic material is just as the name suggests, there are other materials to use in three.js if you want to do something more advanced. There is of course the [Lambert material](/2018/04/08/threejs-lambert-material/) that is a good choice if you want to do something involving light in a real time environment. There are of course many other [materials](/2018/04/30/threejs-materials/) to chose from when working with a [mesh](/2018/05/04/threejs-mesh/) as well. 
+The basic material is just as the name suggests, there are other materials to use in three.js if you want to do something more advanced but the basic material gets the job done when it comes to simple projects. There is of course the [Lambert material](/2018/04/08/threejs-lambert-material/) that is a good choice if you want to do something involving light in a real time environment. There are of course many other [materials](/2018/04/30/threejs-materials/) to chose from when working with a [mesh](/2018/05/04/threejs-mesh/) as well that might have better values to offteh when it comes to how things look compared to how much resources they eat up. 
 
 There are many other properties in the basic material that I have not covered here, but some of them seem like they might be worthy of a whole new post such as with the ambient occlusion map texture that can be used.
