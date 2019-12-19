@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 09:44:20
-version: 1.10
+updated: 2019-12-19 09:47:08
+version: 1.11
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -59,13 +59,14 @@ obj.rotation.set(0, 0, Math.PI * 1.75);
 console.log(JSON.stringify(obj.rotation));
 ```
 
-I will not get into the Euler Class in detail here, but it is similar to [Vector3](/2018/04/15/threejs-vector3/) only when using the set method you want to give [radians](https://en.wikipedia.org/wiki/Radian) rather than, and x,y,z position.
+I will not get into the Euler Class in detail here, but it is similar to [Vector3](/2018/04/15/threejs-vector3/) only when using the set method you want to give [radians](https://en.wikipedia.org/wiki/Radian) rather than, and x, y, z position in the scene.
 
 ## 4 - Examples of use in other constructors
 
 There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of.
 
 Camera's such as the perspective camera inherit from Object3D
+
 ```js
 // Camera
 var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
@@ -73,7 +74,7 @@ var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
 camera.position.set(3, 1, 3);
 ```
 
-So does something made with a mesh
+Anything that is contained in a mesh also inherits from the Object3d class.
 
 ```js
 var low = new THREE.Mesh(
@@ -84,6 +85,8 @@ var low = new THREE.Mesh(
 // changing position of a mesh
 low.position.y = -1;
 ```
+
+There are also various lights and helper objects also that all inherit from Object3d. So the Object3d class is a common class that can be used to move, and rotate any and all objects in a scene.
 
 ## 5 - Full demo of Object3D
 
