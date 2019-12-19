@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2019-12-19 11:44:30
-version: 1.8
+updated: 2019-12-19 11:47:08
+version: 1.9
 ---
 
 In [three.js](https://threejs.org/) The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture and do not want to do anything special involving the reflection of light, and many other maps other than a color map. 
@@ -42,6 +42,10 @@ var redCube = new THREE.Mesh(
 redCube.position.set(-2, 0, 0);
 scene.add(redCube);
 ```
+
+This results in a cube that is sold green all over. There is no sense of depth on the cube, and if I add a light nothing will change. That is okay though because if I want to do anything with light I would want to use another material such as the standard material.
+
+If I do not want to use a solid color, but a texture then I can use the map property to do so.With that said lets look at another example of the basic material that does just that.
 
 ## 3 - Adding a color map texture to a basic material in three.js using canvas
 
