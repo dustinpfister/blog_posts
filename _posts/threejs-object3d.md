@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 09:48:37
-version: 1.12
+updated: 2019-12-19 09:49:55
+version: 1.13
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -86,7 +86,7 @@ var low = new THREE.Mesh(
 low.position.y = -1;
 ```
 
-There are also various lights and helper objects also that all inherit from Object3d. So the Object3d class is a common class that can be used to move, and rotate any and all objects in a scene. The Three.Group constructor also inherits from Object3d that is a way of grouping these kinds of objects.
+There are also various lights and helper objects also that all inherit from Object3d. So the Object3d class is a common class that can be used to move, and rotate any and all objects in a scene. The [Three.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor also inherits from Object3d that is a way of grouping these kinds of objects.
 
 ## 5 - Full demo of Object3D
 
