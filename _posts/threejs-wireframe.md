@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2019-12-19 14:56:44
-version: 1.9
+updated: 2019-12-19 14:58:12
+version: 1.10
 ---
 
 It is often desirable to set a material in a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -18,7 +18,7 @@ So then this post will be on write frames in threejs, the basic use of the prope
 
 ## 1 - Basic wire frame example as well as canvas texture powered custom wire frame
 
-In this section I will be going over some helper methods that create cubes that make use of materials that are in wireframe mode, or create a wireframe like effect.
+In this section I will be going over some helper methods that create cubes that make use of materials that are in wireframe mode, or create a wireframe like effect using textures and various material properties.
 
 ### 1.1 - A create basic write cube helper
 
