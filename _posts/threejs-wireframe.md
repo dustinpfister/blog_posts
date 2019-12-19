@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2019-12-19 14:58:12
-version: 1.10
+updated: 2019-12-19 15:02:40
+version: 1.11
 ---
 
 It is often desirable to set a material in a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -108,3 +108,7 @@ renderer.render(scene, camera);
 ```
 
 This results in two cubes that both have a write frame like look.
+
+## 2 - Conclusion
+
+For the most part just setting the wire frame property of a material to true will work just fine, however if I want a more custom look then I am going to need to do something with textures. The wire frame look is great for when I am just trying to work out a geometry and do not care about the file look of an object just yet.
