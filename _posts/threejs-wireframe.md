@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2019-12-19 12:51:41
-version: 1.2
+updated: 2019-12-19 12:53:09
+version: 1.3
 ---
 
-It is often desirable to set a material in a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wirefarme mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material ushc as the map property in the basic material.
+It is often desirable to set a material in a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
+
+So then this post will be on write frames in threejs, the basic use of the property of most materials that just involves setting a boolean value to true, as well as more complex solutions that will take a bit more to get working.
 
 <!-- more -->
 
