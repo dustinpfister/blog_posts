@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 09:49:55
-version: 1.13
+updated: 2019-12-19 09:50:57
+version: 1.14
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -160,8 +160,8 @@ I try to make it a habit to have at least one copy and past working demo of what
     ());
 ```
 
-It may be true that Object3D by itself is not intended to be used from grouping as there is a separate constructor for that, called simply enough [Group](https://threejs.org/docs/index.html#api/objects/Group). Still Object3D by itself seems to work okay be itself good enough for this simple demo on Object3D.
+It may be true that Object3D by itself is not intended to be used from grouping as there is a separate constructor for that, called simply enough [Group](https://threejs.org/docs/index.html#api/objects/Group). Still Object3D by itself seems to work okay by itself good enough for this simple demo on Object3D.
 
 ## 6 - Conclusion
 
-From here you might choose to make some more demos that have to do with exercising the use of working with objects in three.js. If you enjoyed this post you might also like to check out my [many other posts](/categories/three-js/) on the subject.
+From here you might choose to make some more demos that have to do with exercising the use of working with objects in three.js. If you enjoyed this post you might also like to check out my [many other posts](/categories/three-js/) on the subject of threejs and javaScript.
