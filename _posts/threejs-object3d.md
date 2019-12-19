@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 10:31:03
-version: 1.19
+updated: 2019-12-19 10:32:36
+version: 1.20
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
@@ -19,7 +19,7 @@ The Object3d class adds a whole bunch of common properties, and methods for any 
 
 This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or javaScript in general. This post is on an advanced topic on [three.js](/categories/three-js/) and I expect that you have some basic working knowledge of what there is to know before hand. 
 
-As with any post on three.js the version number matters a lot, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91). Threejs is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number.
+As with any post on three.js the version number matters a lot, when I first started this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I updated the post I was using [r111 of threejs](https://github.com/mrdoob/three.js/tree/r111). Threejs is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number.
 
 ## 2 - Basic example of Object3d using the position property
 
