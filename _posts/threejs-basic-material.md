@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2018-05-06 07:33:24
-version: 1.4
+updated: 2019-12-19 10:46:55
+version: 1.5
 ---
 
-In [three.js](https://threejs.org/) The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture and do not want to do anything special involving reflection of light. So today I thought I would continue expanding my [collection of posts on three.js](/categories/three-js/) by writing a post on the basic material, and what it has to offer when making a three.js project.
+In [three.js](https://threejs.org/) The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture and do not want to do anything special involving the reflection of light, and many other maps other than a color map. 
+
+So today I thought I would continue expanding my [collection of posts on three.js](/categories/three-js/) by writing a post on the basic material, and what it has to offer when making a three.js project.
 
 <!-- more -->
 
