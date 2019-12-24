@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2019-12-24 09:53:35
-version: 1.10
+updated: 2019-12-24 09:56:54
+version: 1.11
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -46,6 +46,8 @@ scene.add(plane);
  
 renderer.render(scene, camera);
 ```
+
+This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments. I also need to give an array of materials rather than just one, and I also need to set the material index values as desired. So lets look at some more examples in whih I am getting into doing just that.
 
 ## 2 -Styling a plane as a checkered board
 
