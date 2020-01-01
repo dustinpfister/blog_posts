@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 586
-updated: 2019-12-31 14:31:29
-version: 1.2
+updated: 2020-01-01 18:43:34
+version: 1.3
 ---
 
 When making a nodejs project or any javaScript project for that matter there comes a time now and then to convert an object to a string representation of that object. In nodejs there is the [node inspect](https://nodejs.org/en/knowledge/getting-started/how-to-use-util-inspect/) method in the core nodejs util module, there are other ways of doing so such as using the JSON stringify method.
@@ -24,6 +24,19 @@ let obj = {
 };
 
 let str = util.inspect(obj);
+console.log(typeof str); // string
+console.log(str); // { x: 42, y: 30 }
+```
+
+## 2 - JSON stringify to convert an object to a string
+
+```js
+let obj = {
+    x: 42,
+    y: 30
+};
+ 
+let str = JSON.stringify(obj);
 console.log(typeof str); // string
 console.log(str); // { x: 42, y: 30 }
 ```
