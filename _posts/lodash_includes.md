@@ -5,19 +5,19 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2020-01-04 10:49:16
-version: 1.10
+updated: 2020-01-04 10:53:04
+version: 1.11
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method and why It might be useful in some situations.
 
-The lodash \_.includes method is one of the collection methods in lodash that will work with Arrays, and Objects in general, and even strings. The nature of the method is one where it can be used as a means to test if a value is included in a collection or not
+The lodash \_.includes method is one of the collection methods in lodash that will work with Arrays, and Objects in general, and even strings. The nature of the lodash includes method is that it can be used as a means to test if a value is included in a collection or not.
 
 <!-- more -->
 
 ## 1 - lodash includes basics
 
-This is a post on the \_.includes method in the popular javaScript utility library known as lodash. I assume that you have at least some background in javaScript and how to work with libraries such as lodash in a client side javaScript and nodejs environment.
+This is a post on the \_.includes method in the popular javaScript utility library known as lodash. I assume that you have at least some background in javaScript, and how to work with libraries such as lodash in a client side javaScript and nodejs environment. If not this is not a good starting location for getting started with the basics of javaScript in general let alone lodash.
 
 ## 2 - Example of \_.includes With arrays
 
