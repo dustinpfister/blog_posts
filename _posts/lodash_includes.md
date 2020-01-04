@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2019-12-04 09:06:08
-version: 1.9
+updated: 2020-01-04 10:49:16
+version: 1.10
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method and why It might be useful in some situations.
@@ -21,7 +21,7 @@ This is a post on the \_.includes method in the popular javaScript utility libra
 
 ## 2 - Example of \_.includes With arrays
 
-The includes method can be used as a way to find if a value is in an array of course as it is a collection method.
+The includes method can be used as a way to find if a value is in an array, as it is a collection method that can be used with any object in general including arrays.
 
 ```js
 // Arrays
