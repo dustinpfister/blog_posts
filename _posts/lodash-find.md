@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2020-01-04 10:36:15
-version: 1.42
+updated: 2020-01-04 10:40:55
+version: 1.43
 ---
 
 So the lodash find collection method can be used to find a single item in a collection or in other words an array or object in general. There is also the native Array.find method these days, but that is just an array prototype method, and as such it can not just be used to find an object key in general with nay object unless that object is an array or array like object.
@@ -19,9 +19,9 @@ This post will aim to be a fairly through post on the lodash find method, but al
 
 ## 1 - lodash find method and alternatives
 
-So the lodash \_.find method is a nice little method that works in a very similar fashion to the [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method in core javaScript. However the Array.find method is an array prototype method and not a collection with like with \_.find in lodash. So there is more that the \_.find brings to the table compared to the native array method alternative, and in this post I will be pointing out what these features are that set it apart from Array.find.
+So the lodash \_.find method is a nice little method that works in a very similar fashion to the [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method in core javaScript. However the Array.find method is an array prototype method and not a collection with like with \_.find in lodash, so there is more that the \_.find brings to the table compared to the native array method alternative. So in this post I will be pointing out what these features are that set it apart from Array.find.
 
-Still it is not to hard to just find something in an array with just plain old javaScript by itself, in many cases the native Array.find method will work just fine, and in some cases it is possible to get it working with array like objects as well. So in this post I will also be writing about some plain old vanilla js ways of finding an object or something to that effect with plain javaScript as well.
+Still it is not to hard to just find something in an array with just plain old javaScript by itself, in many cases the native Array.find method will work just fine, and in some cases it is possible to get it working with array like objects also with the use of the function call prototype method. So in this post I will also be writing about some plain old vanilla js ways of finding an object or something to that effect with plain javaScript by itself.
 
 ## 2 - \_.find vs Array.find
 
