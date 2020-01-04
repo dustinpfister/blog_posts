@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 587
-updated: 2020-01-03 11:51:14
-version: 1.6
+updated: 2020-01-04 10:20:21
+version: 1.7
 ---
 
 I have made a habit of writing a post on the subject of bogging in general rather than javaScript, and javaScript related topics at the start of a new year. So this will be a yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) post for the year of 2020. No buddy really seams to read these, but thats okay its more for my sake anyway because it is important for me to know where this site is going, and what the next move should be moving forward.
@@ -32,4 +32,4 @@ I have been neglecting my content on lodash which is something that I aim to sto
 
 ## 2 - Conclusion
 
-having a good blog plan is still something the I lake for this site, and for blonging, writing, and working on personal projects in general. It is something that I keep putting off, but I just know that I am suffering because of it. As the year goes on maybe I will get around to updating this post a few times, as the plan for this year evolves.
+having a good blog plan is still something the I lake for this site, and for bloging, writing, and working on personal projects in general. It is something that I keep putting off, but I just know that I am suffering because of it. As the year goes on maybe I will get around to updating this post a few times, as the plan for this year evolves.
