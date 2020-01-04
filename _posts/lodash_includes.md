@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2020-01-04 10:54:58
-version: 1.12
+updated: 2020-01-04 11:02:04
+version: 1.13
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method and why It might be useful in some situations.
@@ -57,7 +57,7 @@ console.log( _.includes(str,'bar') ); // false
 
 ## 5 - Giving a from index value
 
-An index value can be given as the third argument to the method.
+An index value can be given as the third argument to the method. This index value will be observed as a starting index value when it comes to checking the values from left to right.
 
 ```js
 console.log(_.includes(['a','b','c'],'b',1)); // true
