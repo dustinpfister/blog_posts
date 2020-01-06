@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 588
-updated: 2020-01-05 11:12:31
-version: 1.3
+updated: 2020-01-06 10:34:05
+version: 1.4
 ---
 
-The lodash orderby method is one of several options in lodash for sorting collections mainly arrays. It works more or less the same way as the lodash sortby method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection.
+The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays. It works more or less the same way as the lodash sortby method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection.
 
 <!-- more -->
 
