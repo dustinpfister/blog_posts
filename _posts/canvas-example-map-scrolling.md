@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-01-08 19:57:12
-version: 1.8
+updated: 2020-01-08 19:59:20
+version: 1.9
 ---
 
 Time now for another one of my [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time I think I will make a basic example of a scrolling map. This is something that will come into play for many projects that are some kind of game that involves a large world map of cells or tiles.
@@ -118,6 +118,8 @@ g.clampedOffsets = function (grid, canvas) {
 
 ### 1.4 - Get cell helpers
 
+I then have a number of helpers that can be used to get a cell in the grid, or a cell index value.
+
 ```
 // GET CELL
  
@@ -145,6 +147,8 @@ g.getCellFromCanvasPoint = function (grid, x, y) {
 ```
 
 ### 1.5 - Movement
+
+I made a get pointer movement deltas methods that will return a set of deltas that can be used to update offsets. This works by passing a grid object, along with a canvas, and an x and y pointer position.
 
 ```js 
 // MAP MOVEMENT
