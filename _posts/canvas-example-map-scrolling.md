@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-01-08 19:53:50
-version: 1.7
+updated: 2020-01-08 19:57:12
+version: 1.8
 ---
 
 Time now for another one of my [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time I think I will make a basic example of a scrolling map. This is something that will come into play for many projects that are some kind of game that involves a large world map of cells or tiles.
@@ -47,6 +47,8 @@ g.parseGridProps = function (grid) {
 
 ### 1.2 - Create grid object methods
 
+I then have methods that I use to create a grid object.
+
 ``` 
 // make and return a new grid object by just passing width and height values
 g.createGridObject = function (w, h) {
@@ -80,6 +82,8 @@ g.createClearCellGrid = function (grid) {
 ```
 
 ### 1.3 - Set bounds
+
+I made one methods that can be used to set bounds for a grid object. This works by returning a set of new offset values only that can then be used to update a grid objects offset values outside of the module without mutating the given grid object.
 
 ```js
 // BOUNDS
