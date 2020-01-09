@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-01-08 19:35:14
-version: 1.1
+updated: 2020-01-08 19:42:33
+version: 1.2
 ---
 
-Time now for another one of my canvas examples, this time I think I will make a basic example of a scrolling map.
+Time now for another one of my canvas examples, this time I think I will make a basic example of a scrolling map. This is something that will come into play for many projects that are some kind of game that involves a large world map of cells or tiles.
 
 <!-- more -->
 
