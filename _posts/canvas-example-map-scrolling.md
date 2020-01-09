@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-01-08 19:50:58
-version: 1.6
+updated: 2020-01-08 19:53:50
+version: 1.7
 ---
 
 Time now for another one of my [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time I think I will make a basic example of a scrolling map. This is something that will come into play for many projects that are some kind of game that involves a large world map of cells or tiles.
@@ -22,6 +22,8 @@ So lets start out with the map module, I tired to make this module a little more
 So it is used my calling a methods that will create a grid object, and then that grid object can be passed to many other methods in the module that will return various useful values.
 
 ### 1.1 - The start of the module and parse grid properties
+
+I start off the module with just an object literal, all the methods are public so this kind of pattern will work for now. I then start off with a methods that can be used to parse options for other methods that will be used to create a grid object.
 
 ```js
 var g = {};
