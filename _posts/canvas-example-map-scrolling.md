@@ -5,17 +5,18 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-01-08 19:43:11
-version: 1.3
+updated: 2020-01-08 19:46:20
+version: 1.4
 ---
 
 Time now for another one of my [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time I think I will make a basic example of a scrolling map. This is something that will come into play for many projects that are some kind of game that involves a large world map of cells or tiles.
 
 <!-- more -->
 
-
-
 ## 1 - The map module
+
+
+### 1.1 - The start of the module and parse grid properties
 
 ```js
 var g = {};
@@ -35,7 +36,11 @@ g.parseGridProps = function (grid) {
     a.cells = [];
     return a;
 };
- 
+```
+
+### 1.2 - Create grid object methods
+
+``` 
 // make and return a new grid object by just passing width and height values
 g.createGridObject = function (w, h) {
     var a = g.parseGridProps({
@@ -65,7 +70,11 @@ g.createClearCellGrid = function (grid) {
     }
     return a;
 };
- 
+```
+
+### 1.3 - Set bounds
+
+```js
 // BOUNDS
  
 // return a set of clamped offset values for the given grid
@@ -94,7 +103,11 @@ g.clampedOffsets = function (grid, canvas) {
         yOffset: y
     };
 };
- 
+```
+
+### 1.4 - Get cell helpers
+
+```
 // GET CELL
  
 // get a cell from the given cell position
@@ -118,7 +131,11 @@ g.getCellFromCanvasPoint = function (grid, x, y) {
     var pos = g.getCellPositionFromCanvasPoint(grid, x, y);
     return g.get(grid, pos.x, pos.y);
 };
- 
+```
+
+### 1.5 - Movement
+
+```js 
 // MAP MOVEMENT
  
 // get a set of deltas
