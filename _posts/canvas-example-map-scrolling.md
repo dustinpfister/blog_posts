@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-01-08 19:46:20
-version: 1.4
+updated: 2020-01-08 19:47:58
+version: 1.5
 ---
 
 Time now for another one of my [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time I think I will make a basic example of a scrolling map. This is something that will come into play for many projects that are some kind of game that involves a large world map of cells or tiles.
+
+This will be a basic getting started canvas example of a map, and moving around such a map. So it might not be the best solution for large maps, as I have not put a lot of time into this to improve performance.
 
 <!-- more -->
 
