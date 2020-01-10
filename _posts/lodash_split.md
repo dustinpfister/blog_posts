@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2020-01-10 09:23:57
-version: 1.12
+updated: 2020-01-10 09:27:39
+version: 1.13
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
@@ -68,3 +68,7 @@ let items = _.split(names, /_\d+/);
 console.log(_.initial(items));
 // [ 'foo', 'bar', 'foobar' ]
 ```
+
+## 4 - Conclusion
+
+That is all for now when it comes to lodash split, as well as some related topics such as the native string split method. If you are using lodash just for this method alone doing so is very silly, as such a task can be done with javaScript by itself just fine. The lodash split method is there more or less for the sake of consistency, because it is often desired to use the method in a chain alone with other lodash methods where there may not be a native counter part such as with lodash chunk.
