@@ -5,12 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2018-12-03 18:52:35
-version: 1.8
+updated: 2020-01-10 09:12:51
+version: 1.9
 ---
 
-So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) as well in the String prototype that can be used to do just this. Use of this method comes up a lot when researching javaScript code examples for various things, so if you are new to javaScript this is one of many methods that should be well understood.
+So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
 
+This is not a method in lodash that does a good job of supporting a case to use the full lodash library these days as the native array split method is well supported, and the lodash split method does not really bring anything more to the table compared to other lodash methods where that is the case at least.
+
+Use of a split method in lodash or vanilla javaScript comes up a lot when researching javaScript code examples for various things, so if you are new to javaScript this is one of many methods that should be well understood. 
 <!-- more -->
 
 ## 1 - Basic example of \_.split
