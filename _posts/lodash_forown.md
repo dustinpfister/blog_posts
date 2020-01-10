@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2020-01-10 15:12:09
-version: 1.13
+updated: 2020-01-10 15:12:37
+version: 1.14
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. Sometimes it would be nice to have a method that will only loop over key value pares that are actually part of the object rather than it's prototype that is inherited. 
@@ -58,7 +58,7 @@ _.forIn(u, function (val, key, obj) {
 });
 ```
 
-So that is the diference between the \_.forOwn, and \_.forIn methds in lodash. If you are just using plain javaScript though no problem there is the for in loop, and the has own property object prototype method that can be used.
+So that is the difference between the \_.forOwn, and \_.forIn methods in lodash. If you are just using plain javaScript though no problem there is the for in loop, and the has own property object prototype method that can be used.
 
 ## 3 - Using a for in loop
 
