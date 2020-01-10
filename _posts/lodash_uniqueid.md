@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2020-01-09 20:36:47
-version: 1.8
+updated: 2020-01-09 20:38:53
+version: 1.9
 ---
 
 Writing more content on [lodash](https://lodash.com/) this month for now, and have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. The method addresses something that comes up a lot now and then when developing projects, so it deserves a post. Also in these lodash posts I often take a moment to brush up on how hard it is to go about making a vanilla js solution, or if there are native methods that can be used, and as such this post will be no exception. So lets take a look at \_.uniqueId, and some other solutions for generating unique ids.
@@ -36,6 +36,8 @@ while (i--) {
 console.log(ids[0]); // id_2
 console.log(ids[9]); // id_11
 ```
+
+The value might be unique in a relative way, but it is not at all the best solution for many other use case examples. The method is just a lazy way to get a value that is unique each time it is called, and one way to do that is to have it so it just returns a count each time.
 
 ## 3 Vanilla js alternative to \_.uniqueId
 
