@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2020-01-10 09:12:51
-version: 1.9
+updated: 2020-01-10 09:18:07
+version: 1.10
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
@@ -18,16 +18,19 @@ Use of a split method in lodash or vanilla javaScript comes up a lot when resear
 
 ## 1 - Basic example of \_.split
 
-For a basic example of the \_.split method in lodash say you have a serialized string of css property and value pairs and you want an array of pairs rather than just a string. The \_.split method can be used to break the string into such an array by using the semicolon as a separator. Just pass the string as the first argument, along with an option limit.
+For a basic example of the \_.split method in lodash say you have a serialized string of css property and value pairs and you want an array of pairs rather than just a string. The \_.split method can be used to break the string into such an array by using the semicolon as a separator. Just pass the string as the first argument, and then the semicolon as the second argument. 
+The resulting array that will be returned is then an array of substrings of property and value pairs for css rules.
 
 ```js
 let css = 'color:red;font-size:12pt;font-family:arial;';
  
-let props = _.split(css,';',2);
+let props = _.split(css,';', 2);
  
 console.log(props);
 // [ 'color:red', 'font-size:12pt' ]
 ```
+
+Although the lodash spit method works just fine for this sort of thing it is not so hard to do the saem with just plain old vanilla javaScript. There is the string split prototype method, and then there is using other methods, and regular expressions as a way to break a string down and get what you want out of it. So lets look at some more examples using lodash, and plain old javaScript for spiting strings.
 
 ## 2 - Using regex
 
