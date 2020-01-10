@@ -5,13 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2020-01-10 15:18:35
-version: 1.6
+updated: 2020-01-10 15:20:17
+version: 1.7
 ---
 
 These days I have been doing more reading on [lodash](https://lodash.com/) and have found that I have not yet wrote a post on [\_.flow](https://lodash.com/docs/4.17.4#flow) which can be used as a way to make a new function that is actually a bunch of functions that work together. It is similar to chaining, but the end result is a function rather than a value.
 
-There are many ways to go about chaining methods together with just plain old javaScript by itself as well though so I will be writing about vanilla js examples as well, but mainly this post is about \_.flow.
+There are many ways to go about chaining methods together with just plain old javaScript by itself as well though, so I will be writing about vanilla js examples as well in this post. However the main theme of this post is centered around the use of the lodash flow method when it comes to using lodash as part of the stack of an project.
 
 <!-- more -->
 
