@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2020-01-10 15:20:17
-version: 1.7
+updated: 2020-01-10 15:22:54
+version: 1.8
 ---
 
 These days I have been doing more reading on [lodash](https://lodash.com/) and have found that I have not yet wrote a post on [\_.flow](https://lodash.com/docs/4.17.4#flow) which can be used as a way to make a new function that is actually a bunch of functions that work together. It is similar to chaining, but the end result is a function rather than a value.
@@ -17,7 +17,7 @@ There are many ways to go about chaining methods together with just plain old ja
 
 ## 1 - What to know
 
-This is a post on the lodash method \_.flow, it is not a post for developers that are new to lodash, let alone javaScript in general.
+This is a post on the lodash method \_.flow, it is not a post for developers that are new to lodash, let alone javaScript in general. If you are new to lodash and javaScript in general this is not a good starting point. You should also be somewhat familiar with writing functions, and how many of theme can be used together. There is more than one way to do what can be accomplished with the lodash flow method, I am not suggesting that it is an inherently better or worse option for using many method together to create one final value or product.
 
 ## 2 - \_.flow example involving a distance formula
 
