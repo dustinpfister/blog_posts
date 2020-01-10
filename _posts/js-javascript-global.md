@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2020-01-09 20:01:55
-version: 1.20
+updated: 2020-01-09 20:04:25
+version: 1.21
 ---
 
 In javaScript global variables are variables that can be accessed from anywhere within the javaScript application, and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScript this is typically the window object. 
@@ -52,7 +52,7 @@ The opposite of a global variable is often referred to as a local variable. Trad
 
 ## 2 - Creating a global by appending to window in client side javaScript
 
-It is possible to create globals in client side javaScript by just simply appending to the window object, or whatever the global object is in the environment that is being used in most cases.
+It is possible to create globals in client side javaScript by just simply appending to the window object. So then something like window.foo is the same as just using var to create foo at the top level.
 
 ```js
 <html>
@@ -74,7 +74,7 @@ document.getElementsByTagName('div')[0].innerText = bar;
 </html>
 ```
 
-The reason why this works is because in client side javaScript the window object is often the global object. At least in most cases it is. The situation changes when dealing with a web worker environment for example. It is also possible to define a global via the this keyword as well, but in some situations the this keyword may not always refer to the global object.
+The reason why this works is because in client side javaScript the window object is the global object. At least in most cases it is, the situation changes when dealing with a web worker environment for example. It is also possible to define a global via the this keyword as well, but in some situations the this keyword may not always refer to the global object.
 
 ## 3 - Elements with ids are globals in client side javaScript
 
