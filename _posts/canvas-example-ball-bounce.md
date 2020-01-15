@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-15 18:44:12
-version: 1.4
+updated: 2020-01-15 18:46:09
+version: 1.5
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -16,9 +16,11 @@ In this post I will be going over some code that I put together for a basic boun
 <!-- more -->
 
 
-## 1 - The ball module
+## 1 - The ball module for the canvas example
 
 So lets start out with the ball module for this canvas example.
+
+### 1.1 - The start of the module and the create ball object method
 
 ```js
 
@@ -34,7 +36,11 @@ b.createBallObject = function (opt) {
     ball.d = opt.d === undefined ? 0 : opt.d;
     return ball;
 };
- 
+```
+
+### 1.2 - a Create ball collection method
+
+```js
 b.createBallCollection = function (opt) {
     var noop = function (ball, i) {
         ball.x = ball.r + ball.r * 3 * i;
@@ -63,7 +69,11 @@ b.createBallCollection = function (opt) {
     }
     return balls;
 };
- 
+```
+
+### 1.3 - Move ball object method
+
+```js
 b.moveBallObject = function (ball, canvas) {
     canvas = canvas || {
         width: 320,
