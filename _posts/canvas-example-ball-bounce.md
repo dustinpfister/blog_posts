@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-14 20:07:34
-version: 1.2
+updated: 2020-01-15 09:56:06
+version: 1.3
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -17,6 +17,8 @@ In this post I will be going over some code that I put together for a basic boun
 
 
 ## 1 - The ball module
+
+So lets start out with the ball module for this canvas example.
 
 ```js
 
