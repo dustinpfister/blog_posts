@@ -5,13 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-15 09:56:06
-version: 1.3
+updated: 2020-01-15 18:44:12
+version: 1.4
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
 
-In this post I will be going over some code that I put together for a basic bouncing ball canvas example.
+In this post I will be going over some code that I put together for a basic bouncing ball canvas example. I will not be covering every little detail when it comes to this kind of example when it comes to advanced things pertaining to physics. However the canvas example will be about bouncing balls of of the edges of the canvas.
 
 <!-- more -->
 
