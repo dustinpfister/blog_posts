@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-16 10:45:28
-version: 1.11
+updated: 2020-01-16 10:46:22
+version: 1.12
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -153,6 +153,8 @@ var drawBallCollection = function (balls, ctx) {
 ```
 
 ## 3 - The rest of the canvas example
+
+Now for the rest of the canvas example that puts everything into action.
 
 ```js
 // create and append canvas element, and get 2d context
