@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-15 18:46:09
-version: 1.5
+updated: 2020-01-15 20:40:04
+version: 1.6
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -21,6 +21,8 @@ In this post I will be going over some code that I put together for a basic boun
 So lets start out with the ball module for this canvas example.
 
 ### 1.1 - The start of the module and the create ball object method
+
+The first method that I made for my ball module is a function that just creates and returns a ball object. This object contains the x and y position of the ball, as well as the radius, heading, and delta value of the ball.
 
 ```js
 
