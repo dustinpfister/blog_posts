@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-16 10:40:22
-version: 1.9
+updated: 2020-01-16 10:43:45
+version: 1.10
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -113,6 +113,8 @@ b.moveBallObject = function (ball, canvas) {
 Now for the draw method of this canvas example of bouncing balls.
 
 ### 2.1 - The draw ball object method
+
+So I will want a draw method where I pass a ball object, and then a 2d context to draw to. The within the body of that draw method I just draw the current state of the ball object that was passed. I will also like a line drawn from the center of the ball outwards a little ways in the direction of the current heading of the ball.
 
 ```js
 // draw a ball object
