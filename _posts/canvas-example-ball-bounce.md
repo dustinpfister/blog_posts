@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-16 10:46:22
-version: 1.12
+updated: 2020-01-16 11:53:19
+version: 1.13
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -18,7 +18,9 @@ In this post I will be going over some code that I put together for a basic boun
 
 ## 1 - The ball module for the canvas example
 
-So lets start out with the ball module for this canvas example.
+So lets start out with the ball module for this canvas example. This is just a simple collection of methods that will create and return a ball object of sorts, and then other methods that will work with such a method. 
+
+These days I am getting away from writing classes in favor of functional, or at least functional like modules. Now suggesting that doing so is a better or worse way of doing things, it is just that I think it is time for me to start doing certain things a litter different now and then.
 
 ### 1.1 - The start of the module and the create ball object method
 
@@ -141,7 +143,7 @@ var drawBallObject = function (ball, ctx) {
 
 ### 2.2 - The draw ball collection method
 
-Now that I have a draw ball method it is not so hard to make another draw method that will draw the whole collection. It just nedds to loop over all the balls in the collection and draw the current status of each ball to the canvas.
+Now that I have a draw ball method it is not so hard to make another draw method that will draw the whole collection. It just needs to loop over all the balls in the collection and draw the current status of each ball to the canvas.
 
 ```js
 // draw ball collection
