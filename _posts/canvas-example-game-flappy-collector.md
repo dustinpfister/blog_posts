@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-18 09:46:17
-version: 1.2
+updated: 2020-01-19 08:55:27
+version: 1.3
 ---
 
 I want to make more canvas examples, some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -17,6 +17,8 @@ The same basic idea is there though when it comes to having a display object at 
 
 
 ## 1 - The game module for this canvas example
+
+To start out with I made a game module that contains public and private methods.
 
 ```js
 var game = (function () {
