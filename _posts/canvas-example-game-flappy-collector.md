@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 09:54:08
-version: 1.5
+updated: 2020-01-21 09:56:12
+version: 1.6
 ---
 
-I want to make more canvas examples, some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
+I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
 
 The same basic idea is there though when it comes to having a display object at the far right side of the canvas and you click or tap the screen to have it jump up a little as it falls down constantly.
 
