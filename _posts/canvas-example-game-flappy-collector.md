@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:29:35
-version: 1.11
+updated: 2020-01-21 11:30:44
+version: 1.12
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -44,7 +44,7 @@ The subject of collision detection can quickly turn into a rabbit hole of sorts,
 
 ### 2.2 - The spawn berry helper
 
-So in this game the object is to just collect berries or not. It is a silly idea sure, but never the less that is the idea that I want a prototype for and that is it.
+So in this game the object is to just collect berries or not. It is a silly idea sure, but never the less that is the idea that I want a prototype for and that is it. So with that said I am going to need a helper method that will spawn a berry that will or will not be collected by a bird that is controlled by the player.
 
 ```js
     // spawn a new berry
