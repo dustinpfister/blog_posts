@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:36:10
-version: 1.15
+updated: 2020-01-21 11:37:18
+version: 1.16
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -129,6 +129,8 @@ Now that I have all my helper methods it is time to start working out my public 
 ```
 
 ### 2.6 - The main update method
+
+Now I have a main update method that is to be called in the main app loop or state machine.
 
 ```js
     // update a bird ( game object )
