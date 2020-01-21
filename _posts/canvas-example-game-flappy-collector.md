@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:30:44
-version: 1.12
+updated: 2020-01-21 11:32:48
+version: 1.13
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -67,7 +67,9 @@ So in this game the object is to just collect berries or not. It is a silly idea
     };
 ```
 
-### 2.3 - 
+### 2.3 - The update berries method
+
+Now that I have a method that will spawn berry objects I will also want a method that will update them.
 
 ```js
     // update berries
@@ -88,7 +90,9 @@ So in this game the object is to just collect berries or not. It is a silly idea
     };
 ```
 
-### 2.4 - 
+### 2.4 - Update bird pixels per second
+
+the rate at which the bird moves is set by a pixels per second value. Over time I have found that this is the best way to go about moving display objects in any kind of real time game.
 
 ```
     // update bird Pixels per second
