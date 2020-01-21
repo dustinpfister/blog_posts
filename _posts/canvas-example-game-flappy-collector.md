@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:34:42
-version: 1.14
+updated: 2020-01-21 11:36:10
+version: 1.15
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -104,7 +104,7 @@ the rate at which the bird moves is set by a pixels per second value. Over time 
 
 ### 2.5 - Starting the public API and the new bird method
 
-Now that I have all my helper methods it is time to start working out my public api that will be returned to the game global variable that can then be used elsewhere in the canvas example.
+Now that I have all my helper methods it is time to start working out my public API that will be returned to the game global variable that can then be used elsewhere in the canvas example. For this I just created an object literal to which I will append public methods.
 
 ```js
     // public api
@@ -128,7 +128,7 @@ Now that I have all my helper methods it is time to start working out my public 
     };
 ```
 
-### 2.6 - 
+### 2.6 - The main update method
 
 ```js
     // update a bird ( game object )
@@ -149,7 +149,7 @@ Now that I have all my helper methods it is time to start working out my public 
     };
 ```
 
-### 2.7 - 
+### 2.7 - The flap method
 
 ```js
  
