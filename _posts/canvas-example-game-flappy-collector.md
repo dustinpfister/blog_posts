@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:38:03
-version: 1.17
+updated: 2020-01-21 11:38:53
+version: 1.18
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -169,6 +169,8 @@ A simple flap method that will be called by an even handler outside of the game 
 ```
 
 ## 3 - Draw method module
+
+So I have a game module worked out, and now I need something that can be used to render the state object that the game module is used to create and update.
 
 ```js
 // DRAW
