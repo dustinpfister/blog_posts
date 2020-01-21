@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:41:40
-version: 1.20
+updated: 2020-01-21 11:43:00
+version: 1.21
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -256,4 +256,4 @@ loop();
 
 ## 5 - conclusion
 
-So this canvas example when up and running is just a green box that will fall to the bottom of the canvas and then just stay there at the bottom. That is unless if a player clicks or touches the canvas and as such causes the green box to flap upwards sort of speak.
+So this canvas example when up and running is just a green box that will fall to the bottom of the canvas and then just stay there at the bottom. That is unless if a player clicks or touches the canvas and as such causes the green box to flap upwards sort of speak. As crude and silly as the canvas example may be, it is all ready starting to feel like a bit of a game, but more is clearly needed in oder to make this something that most people would actually want to play.
