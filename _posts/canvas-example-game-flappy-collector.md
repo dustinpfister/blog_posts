@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:20:47
-version: 1.8
+updated: 2020-01-21 11:25:38
+version: 1.9
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -25,7 +25,7 @@ To start out with I made a game module that contains public and private methods 
 
 ### 2.1 - The beginning of the game module and a bounding box collision detection helper
 
-To start off my game.js file I just wrote an IIFE to which I will return a public API with the return keyword that will then be stored in a global variable called game.
+To start off my game.js file I just wrote an IIFE to which I will return a public API with the return keyword that will then be stored in a global variable called game. I then started writing some helper methods that will be used internally for this game module, and one thing that I know that I will need for this kind of game is a collision detection method.
 
 ```js
 var game = (function () {
@@ -39,6 +39,8 @@ var game = (function () {
             (a.x > (b.x + b.size)));
     };
 ```
+
+The subject of collision detection can quickly turn into a rabbit hole of sorts, but for this canvas example I am just going to use a method that I find myself copying and pasting from project to project and move on following the mantra of less code and more game. If you would still like to read into collision detection a bit more anyway I do have a post on the subject of canvas hit regions and collision detection.
 
 ### 2.2 - 
 
