@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:25:38
-version: 1.9
+updated: 2020-01-21 11:26:41
+version: 1.10
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -40,7 +40,7 @@ var game = (function () {
     };
 ```
 
-The subject of collision detection can quickly turn into a rabbit hole of sorts, but for this canvas example I am just going to use a method that I find myself copying and pasting from project to project and move on following the mantra of less code and more game. If you would still like to read into collision detection a bit more anyway I do have a post on the subject of canvas hit regions and collision detection.
+The subject of collision detection can quickly turn into a rabbit hole of sorts, but for this canvas example I am just going to use a method that I find myself copying and pasting from project to project and move on following the mantra of less code and more game. If you would still like to read into collision detection a bit more anyway I do have a post on the subject of [canvas hit regions and collision detection](/2019/12/01/canvas-hit-region/).
 
 ### 2.2 - 
 
