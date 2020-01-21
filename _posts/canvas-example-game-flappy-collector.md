@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 09:56:12
-version: 1.6
+updated: 2020-01-21 11:17:45
+version: 1.7
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -15,10 +15,15 @@ The same basic idea is there though when it comes to having a display object at 
 
 <!-- more -->
 
+## 1 - This is a canvas example post that is a game like flappy bird and what to know before hand
 
-## 1 - The game module for this canvas example
+This is a post on a canvas example of a game that is like flappy bird only I tried to find a slightly novel spin on the game. It is not a getting started post on canvas, or javaScript in general, so I assume that you have some background on those topics before hand.
+
+## 2 - The game module for this canvas example
 
 To start out with I made a game module that contains public and private methods that can be used to create a game state, and work with that state. This module follows the pattern of using a Immediately Invoked Function Expression to wrap up everything that is used internally and then return a public API that is used outside of the module.
+
+### 2.1 - 
 
 ```js
 var game = (function () {
@@ -31,7 +36,11 @@ var game = (function () {
             ((a.x + a.size) < b.x) ||
             (a.x > (b.x + b.size)));
     };
- 
+```
+
+### 2.2 - 
+
+```js
     // spawn a new berry
     var spawnBerry = function (bird, canvas) {
         var count = bird.berries.length,
@@ -50,7 +59,11 @@ var game = (function () {
             bird.berriesLastSpawn = now;
         }
     };
- 
+```
+
+### 2.3 - 
+
+```js
     // update berries
     var updateBerries = function (bird, secs, canvas) {
         var i = bird.berries.length,
@@ -67,13 +80,21 @@ var game = (function () {
             }
         }
     };
- 
+```
+
+### 2.4 - 
+
+```
     // update bird Pixels per second
     var updateBirdPPS = function (bird, secs) {
         bird.pps = 128 - 256 * bird.flap;
         bird.flap = bird.flap > 0 ? bird.flap - 0.9 * secs : 0;
     };
- 
+```
+
+### 2.5 - 
+
+```js
     // public api
     var api = {};
  
@@ -93,7 +114,11 @@ var game = (function () {
             points: 0
         };
     };
- 
+```
+
+### 2.6 - 
+
+```js
     // update a bird ( game object )
     api.update = function (bird, canvas) {
         var now = new Date(),
@@ -110,6 +135,11 @@ var game = (function () {
         updateBirdPPS(bird, secs);
         bird.lt = new Date();
     };
+```
+
+### 2.7 - 
+
+```js
  
     // flap a bird
     api.flap = function (bird) {
@@ -122,7 +152,7 @@ var game = (function () {
     ());
 ```
 
-## 2 - Draw method module
+## 3 - Draw method module
 
 ```js
 // DRAW
@@ -157,7 +187,7 @@ draw.berries = function (bird, ctx) {
 };
 ```
 
-## 3 - Lets test it out
+## 4 - Lets test it out
 
 ```js
 // create a canvas
