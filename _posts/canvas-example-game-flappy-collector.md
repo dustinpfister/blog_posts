@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-01-21 11:38:53
-version: 1.18
+updated: 2020-01-21 11:39:57
+version: 1.19
 ---
 
 I want to make more [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like flappy bird, only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
@@ -207,6 +207,22 @@ draw.berries = function (bird, ctx) {
 
 ## 4 - Lets test it out
 
+Now for the main index html file and main javaScript file that will tie everything together.
+
+```html
+<html>
+    <head>
+        <title>canvas example game flappy collector</title>
+    </head>
+    <body>
+        <div id="gamearea"></div>
+        <script src="game.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
 ```js
 // create a canvas
 var canvas = document.createElement('canvas'),
@@ -236,18 +252,4 @@ var loop = function () {
 };
  
 loop();
-```
-
-```html
-<html>
-    <head>
-        <title>canvas example game flappy collector</title>
-    </head>
-    <body>
-        <div id="gamearea"></div>
-        <script src="game.js"></script>
-        <script src="draw.js"></script>
-        <script src="main.js"></script>
-    </body>
-</html>
 ```
