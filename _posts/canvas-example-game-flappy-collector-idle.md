@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 10:54:29
-version: 1.10
+updated: 2020-01-22 11:00:20
+version: 1.11
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -127,6 +127,10 @@ Another new method is one that can be used to set the berry delay time based on 
     };
 ```
 
+### 2.6 - Update bird pps
+
+the update bird pps method is not all the different from before. The one is just a place holder of sorts for what might eventually be a variable that is used to adjust things when it comes to auto play. That is if I continue working on this canvas example rather than others.
+
 ```js
     // BIRD
  
@@ -135,7 +139,13 @@ Another new method is one that can be used to set the berry delay time based on 
         bird.pps = 128 - 256 * bird.flap;
         bird.flap = bird.flap > 0 ? bird.flap - secs * 1 : 0;
     };
- 
+```
+
+### 2.7 - The get should flap method
+
+A new feature that is added in this canvas example is an auto play mode. This method is used to just find out if the bird should flap or not when working out a very simple AI for doing just that. That is why a game example like this is great for getting started with AI there is just one action that needs to be preformed, and I just need to work out some basic logic that makes the choice of preforming that action.
+
+```js
     // AUTO PLAY MODE
  
     // return true if the bird should flap in order to get
@@ -147,7 +157,9 @@ Another new method is one that can be used to set the berry delay time based on 
         }
         return false;
     };
- 
+```
+
+```js
     // public api
     var api = {};
  
