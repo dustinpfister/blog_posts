@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 10:25:47
-version: 1.5
+updated: 2020-01-22 10:28:51
+version: 1.6
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -21,6 +21,10 @@ This is a post on a canvas game example, I assume that you have some background 
 
 ## 2 - The game module
 
+In this section I will be going over all the code that is contained in a main game.js file. This is the file that is used to create and work with a game state that is then rendered to the canvas with an additional separate module. Many of the methods here are not all that much different from what i worked out in my other post that is a simpler version of this. Other methods are hacked over a little, and some are new.
+
+### 2.1 - The start of the module and bounding box
+
 ```js
 var game = (function () {
  
@@ -32,7 +36,9 @@ var game = (function () {
             ((a.x + a.size) < b.x) ||
             (a.x > (b.x + b.size)));
     };
- 
+```
+
+```js
     // BERRIES
  
     // spawn a new berry
