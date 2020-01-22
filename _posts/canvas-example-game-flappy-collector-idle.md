@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 11:12:18
-version: 1.12
+updated: 2020-01-22 11:13:43
+version: 1.13
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -160,6 +160,8 @@ A new feature that is added in this canvas example is an auto play mode. This me
 ```
 
 ### 2.8 - The start of the public API and the new bird method.
+
+Now it is time to to get to the public API. Here I have the same set of methods as before, but there are now a buncj of changes to make use of the new features.
 
 ```js
     // public api
