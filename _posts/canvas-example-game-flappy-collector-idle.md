@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 11:00:20
-version: 1.11
+updated: 2020-01-22 11:12:18
+version: 1.12
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -159,6 +159,8 @@ A new feature that is added in this canvas example is an auto play mode. This me
     };
 ```
 
+### 2.8 - The start of the public API and the new bird method.
+
 ```js
     // public api
     var api = {};
@@ -189,7 +191,11 @@ A new feature that is added in this canvas example is an auto play mode. This me
             autoDelay: 5
         };
     };
- 
+```
+
+### 2.8 - The update method
+
+```js
     // update a bird ( game object )
     api.update = function (bird, canvas) {
         var now = new Date(),
@@ -225,7 +231,11 @@ A new feature that is added in this canvas example is an auto play mode. This me
  
         bird.lt = new Date();
     };
- 
+```
+
+### 2.8 - The flap method
+
+```js
     // flap a bird
     api.flap = function (bird) {
         //if (bird.autoPlay) {
@@ -299,7 +309,7 @@ draw.autoTimeProgressBar = function (bird, ctx, canvas) {
 };
 ```
 
-## 4 - 
+## 4 - The html and main.js file
 
 ```html
 <html>
