@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 10:21:33
-version: 1.4
+updated: 2020-01-22 10:25:47
+version: 1.5
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -17,7 +17,7 @@ In this canvas example I am just expanding from that canvas example by making it
 
 ## 1 - What to know before continuing 
 
-This is a post on a canvas game example, I assume that you have some background on canvas and javaScript in general.
+This is a post on a canvas game example, I assume that you have some background on canvas and javaScript in general. As such you are now at a point where you want to start creating more complex projects that at least start to feel like a finished product to some extent.
 
 ## 2 - The game module
 
