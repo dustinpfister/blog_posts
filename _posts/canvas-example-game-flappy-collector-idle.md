@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 10:39:23
-version: 1.8
+updated: 2020-01-22 10:51:43
+version: 1.9
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -68,7 +68,13 @@ The method that I use to spawn new berries is a little different from what I wor
             bird.berriesLastSpawn = now;
         }
     };
- 
+```
+
+### 2.3 - The update berries method
+
+Just a very simple change has been made with the update berries method where I am adding points based on the worth of the berry that was collected rather that a static number literal.
+
+```js
     // update berries
     var updateBerries = function (bird, secs, canvas) {
         var i = bird.berries.length,
