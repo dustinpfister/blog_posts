@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 09:58:39
-version: 1.2
+updated: 2020-01-22 10:01:44
+version: 1.3
 ---
 
-This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas.
+This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
+
+In this canvas example I am just expanding from that canvas example by making it so the game plays by itself. The player can still play manually if they want to, but after a period of inactivity the game will just play automatically. The direction I was going with this one was to make this canvas example into an idle game of sorts where the player can play manualy, but there is also some kind of automatic action also.
 
 <!-- more -->
 
