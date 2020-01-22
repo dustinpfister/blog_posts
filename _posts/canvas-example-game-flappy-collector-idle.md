@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 11:14:59
-version: 1.14
+updated: 2020-01-22 11:16:31
+version: 1.15
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -198,6 +198,8 @@ The new bird method does the same as before, just returns a new bird state objec
 ```
 
 ### 2.8 - The update method
+
+The main update method of the game module now checks to see if the berry level should be updated. In addiitinb to this there are also some additional changes that have to do with auto play.
 
 ```js
     // update a bird ( game object )
