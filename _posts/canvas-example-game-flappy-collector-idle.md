@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 11:18:21
-version: 1.17
+updated: 2020-01-22 11:18:53
+version: 1.18
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -320,6 +320,8 @@ draw.autoTimeProgressBar = function (bird, ctx, canvas) {
 ```
 
 ## 4 - The html and main.js file
+
+Now to tie everything together with html and a main.js file.
 
 ```html
 <html>
