@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-01-22 10:51:43
-version: 1.9
+updated: 2020-01-22 10:54:29
+version: 1.10
 ---
 
 This [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of flappy bird of course, but the basic idea is there.
@@ -92,7 +92,13 @@ Just a very simple change has been made with the update berries method where I a
             }
         }
     };
- 
+```
+
+### 2.4 - Set next level and level check methods
+
+In this canvas example I added two new methods that have to do with setting the current berry level.
+
+```js
     // set berry next level property
     var berryNextLevelSet = function (bird) {
         var e = Math.floor(Math.log(bird.berriesCollected) / Math.log(2));
@@ -106,14 +112,22 @@ Just a very simple change has been made with the update berries method where I a
         bird.berryLevel = e >= 6 ? e - 4 : 1;
         berryNextLevelSet(bird);
     };
- 
+```
+
+### 2.5 - Set the berry delay time
+
+Another new method is one that can be used to set the berry delay time based on the current berry level.
+
+```js
     // set the berries delay based on current berry level
     var setBerriesDelay = function (bird) {
         var l = bird.berryLevel - 1,
         p = (l > 16 ? 16 : l) / 16;
         bird.berriesDelay = 3 - 3.75 * p;
     };
- 
+```
+
+```js
     // BIRD
  
     // update bird Pixels per second
