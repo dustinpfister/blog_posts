@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-01-23 18:23:40
-version: 1.1
+updated: 2020-01-23 18:26:09
+version: 1.2
 ---
 
-In Core javaScript there is the Math max and Math min methods that can be used to find the highest and lowest numbers in a set of numbers.
+In Core javaScript there is the Math max and Math min methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the apply function prototype method.
 
 <!-- more -->
 
