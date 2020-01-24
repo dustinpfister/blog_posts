@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-01-24 09:05:57
-version: 1.3
+updated: 2020-01-24 12:36:59
+version: 1.4
 ---
 
 In core javaScript there is the Math max and Math min methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the apply function prototype method.
@@ -22,9 +22,11 @@ var min = Math.min(3, 0, -7);
 console.log(min); // -7
 ```
 
-Although this simple example works out okay for what it is, when it comes to any kind of real code example such code examples will often involve an array of values, and likely never a set of static number literals. If you are not familiar with the function apply prototype method yet as well as other such methods such as call and bind, now would be a good time to look into them.
+Although this simple example works out okay for what it is, when it comes to any kind of real code example such code examples will often involve an array of values, and likely never a set of static number literals. So lets look at some more examples of using these methods to get the lowest and highest numbers in a collection of numbers in javaScript.
 
 ## 2- Using the apply function prototype method
+
+If you are not familiar with the function apply prototype method yet as well as other such methods such as call and bind, now would be a good time to look into them. I will not be getting into these methods in depth here as I have written a post before hand in which I do so. However here is a simple example if using the apply function prototype method with Math min and max to get the lowest and highest numbers in an array of numbers.
 
 ```js
 
