@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-01-24 12:53:19
-version: 1.5
+updated: 2020-01-25 09:32:50
+version: 1.6
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the apply function prototype method.
@@ -34,4 +34,23 @@ var nums = [7, -4, 0, 8, 12, -2];
  
 console.log( Math.min.apply(null, nums) ); // -4
 console.log( Math.max.apply(null, nums) ); // 12
+```
+
+## 3 - Number normalization example of Math.min and Math.max
+
+One use case example of Math.min and Math.max might be to make a method that is used to normalize numbers relative to a range between the min and max number. This sort of thing is often used as a way to normalize points for example so they can then easy be scaled upwards.
+
+```js
+var normalizeNums = function (nums) {
+    var min = Math.min.apply(null, nums),
+    max = Math.max.apply(null, nums),
+    range = max - min;
+    return nums.map(function (n) {
+        return n / range;
+    });
+};
+ 
+var nums = [-37, 5, 42, 30, 43, 120, -40, 160];
+console.log( normalizeNums(nums) );
+// [ -0.185, 0.025, 0.21, 0.15, 0.215, 0.6, -0.2, 0.8 ]
 ```
