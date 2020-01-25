@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-01-25 09:32:50
-version: 1.6
+updated: 2020-01-25 10:59:13
+version: 1.7
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the apply function prototype method.
@@ -36,7 +36,74 @@ console.log( Math.min.apply(null, nums) ); // -4
 console.log( Math.max.apply(null, nums) ); // 12
 ```
 
-## 3 - Number normalization example of Math.min and Math.max
+
+## 3 - Range, as well as mean, median, sum
+
+So there are many things than can be done with a set of numbers of course. However with the Math min and max methods one of the most common typical use case examples is to get the range of a set of numbers. For convenience in this section I will also be going over some examples of sum, mean, and median in this section also.
+
+### 3.1 - Get the range of a set of numbers
+
+So making a get range method with Math min, and Math max would involve just using the methods along with function apply to get the min and max numbers of a set of numbers. Then I just need to have the function return the max number less the min number.
+
+```js
+// range
+var getRange = function(nums){
+    var min = Math.min.apply(null, nums),
+    max = Math.max.apply(null, nums);
+    return max - min;
+};
+```
+
+```js
+// median
+var getMedian = function (nums) {
+    var half = Math.floor(nums.length / 2);
+    nums.sort(function (a, b) {
+        return a - b;
+    });
+    return nums.length % 2 ? nums[half] : (nums[half - 1] + nums[half]) / 2;
+};
+ 
+// sum
+var getSum = function (nums) {
+    var i = nums.length,
+    sum = 0;
+    while (i--) {
+        sum += nums[i];
+    }
+    return sum;
+};
+ 
+// mean
+var getMean = function (nums) {
+    return getSum(nums) / nums.length;
+};
+ 
+// get everything
+var getEverything = function (nums) {
+    var e = {};
+    e.min = Math.min.apply(null, nums);
+    e.max = Math.max.apply(null, nums);
+    e.range = getRange(nums);
+    e.median = getMedian(nums);
+    e.sum = getSum(nums);
+    e.mean = getMean(nums);
+    return e;
+};
+ 
+var nums = [1, 2, 4, 7];
+ 
+var e = getEverything(nums);
+ 
+console.log(e.median); // 3
+console.log(e.min, e.max); // 1 7
+console.log(e.range); // 6
+console.log(e.sum); // 14
+console.log(e.mean); // 3.5
+```
+
+
+## 4 - Number normalization example of Math.min and Math.max
 
 One use case example of Math.min and Math.max might be to make a method that is used to normalize numbers relative to a range between the min and max number. This sort of thing is often used as a way to normalize points for example so they can then easy be scaled upwards.
 
