@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-01-25 11:00:39
-version: 1.8
+updated: 2020-01-25 11:08:58
+version: 1.9
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the apply function prototype method.
@@ -62,9 +62,7 @@ So the range of a set of numbers is often just one value of interest along with 
 // median
 var getMedian = function (nums) {
     var half = Math.floor(nums.length / 2);
-    nums.sort(function (a, b) {
-        return a - b;
-    });
+    nums.sort();
     return nums.length % 2 ? nums[half] : (nums[half - 1] + nums[half]) / 2;
 };
  
