@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 10:29:57
-version: 1.16
+updated: 2020-01-27 10:33:49
+version: 1.17
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -277,6 +277,8 @@ For now enemies just have a location, hit point value, and size, they do not mov
 
 ### 2.7 - Purge dead enemies
 
+I also worked out a simple method for purging out dead enemies from the enemies array.
+
 ```js
     var purgeEnemies = function (game) {
         var i = game.enemies.length;
@@ -290,6 +292,8 @@ For now enemies just have a location, hit point value, and size, they do not mov
 ```
 
 ### 2.8 - Set turret radians per second
+
+The turret moves one way or another by a radian per second value. This method will set that value depending on the location of the enemy in the enemies array with an index of zero, if there is one or more enemies.
 
 ```js
     // TURRET
