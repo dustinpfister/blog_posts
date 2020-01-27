@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:32:13
-version: 1.8
+updated: 2020-01-27 05:35:13
+version: 1.9
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -24,6 +24,8 @@ In addition to the properties of this Pointer Movement state object there will a
 There are also a few helper methods that are used internally in this module, along with the public methods that are returned and used outside of the module. The private methods are just used in this module as far as this canvas example is concerned, but if I where to continue working on this project chances are they would be pulled into a public module as well. In any case I still like to follow the IIFE pattern in module design when working out my own javaScript modules in native javaScript.
 
 ### 1.1 - The start of the module and the distance formula
+
+I start off the module with the beginning part of an IIFE, and then have a distance formula as one of the helpers. This helper method will be used later on in the method that I use to update the values of a Pointer Movement state.
 
 ```js
 var PM = (function () {
