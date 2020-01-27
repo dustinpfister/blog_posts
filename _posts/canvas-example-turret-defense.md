@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 10:33:49
-version: 1.17
+updated: 2020-01-27 11:43:53
+version: 1.18
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -318,6 +318,8 @@ The turret moves one way or another by a radian per second value. This method wi
 
 ### 2.9 - The public API and the create game object method
 
+Now for the public API that is just a collection of methods that make use of all these other internal methods to create and work with a game object for this canvas example. The first method creates a new game object with all the properties of interest that are used for the example.
+
 ```js
     // PUBLIC API
     // public api
@@ -345,6 +347,8 @@ The turret moves one way or another by a radian per second value. This method wi
 ```
 
 ### 2.10 - The update method
+
+The next public method is an update method, that will update the state of the game object.
 
 ```js
     // update turret method
