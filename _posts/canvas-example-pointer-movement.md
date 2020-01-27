@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 04:59:53
-version: 1.4
+updated: 2020-01-27 05:12:08
+version: 1.5
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -17,13 +17,20 @@ I will not be going over how to create a grid or map like state, I have wrote ma
 
 ## 1 - The pointer movement module
 
+
+### 1.1 - The start of the module and the distance formula
+
 ```js
 var PM = (function () {
  
     var distance = function (x1, y1, x2, y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     };
- 
+```
+
+### 1.2 - Get a canvas relative position
+
+```js 
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
@@ -36,7 +43,11 @@ var PM = (function () {
             bx: bx
         };
     };
- 
+```
+
+### 1.3 - The start of the public api, and the create new Pointer Movement state object
+
+```js
     var api = {};
  
     // new Pointer Movement State Object
@@ -56,7 +67,11 @@ var PM = (function () {
             }
         };
     };
- 
+```
+
+### 1.4 - Update a Pointer Movement state
+
+```js
     // update the pm based on startPoint, and currentPoint
     api.updatePM = function (pm) {
         pm.dist = 0;
@@ -73,13 +88,21 @@ var PM = (function () {
             pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
         }
     };
- 
+```
+
+### 1.5 - Step a point by the current state of the Pointer Movement state
+
+```js
     // step a point by the current values of the pm
     api.stepPointByPM = function (pm, pt) {
         pt.x += Math.cos(pm.angle) * pm.delta;
         pt.y += Math.sin(pm.angle) * pm.delta;
     };
- 
+```
+
+### 1.5 - Event methods, and the end of the module
+
+```js
     // when a pointer action starts
     api.onPointerStart = function (pm, e) {
         var pos = getCanvasRelative(e);
@@ -121,6 +144,8 @@ var PM = (function () {
 
 ## 2 - The draw module
 
+### 2.1 - The start of the module, and a draw background method
+
 ```js
 var draw = {};
  
@@ -128,6 +153,11 @@ draw.background = function (pm, ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
+```
+
+### 2.2 - Just draw some grid lines draw method
+
+```js
 draw.PTGridlines = function (pt, ctx, canvas) {
     var cellX = -1,
     cellY = -1,
@@ -152,7 +182,11 @@ draw.PTGridlines = function (pt, ctx, canvas) {
         cellY += 1;
     }
 };
- 
+```
+
+### 2.3 - Draw the navigation circle for the Pointer Movement state
+
+```js
 // draw a navigation circle when moving the map
 draw.navCircle = function (pm, ctx, canvas) {
     if (pm.down) {
@@ -185,14 +219,20 @@ draw.navCircle = function (pm, ctx, canvas) {
         ctx.stroke();
     }
 };
- 
+```
+
+### 2.4 - Draw debug info
+
+```js
 draw.debugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.fillText(pt.x + ', ' + pt.y, 10, 10);
 }
 ```
 
-## 3 - Main.js
+## 3 - The Main.js, and index.html files and getting the project up and running
+
+### 3.1 - main.js
 
 ```js
 var canvas = document.createElement('canvas'),
@@ -231,3 +271,22 @@ canvas.addEventListener('mouseup', function (e) {
 PM.onPointerEnd(pm, e);
 });
 ```
+
+### 3.2 - index.html
+
+```js
+<html>
+    <head>
+        <title>canvas example pointer movement</title>
+    </head>
+    <body>
+        <div id="gamearea"></div>
+        <script src="pm.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
+
