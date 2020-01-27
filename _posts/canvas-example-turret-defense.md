@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 10:10:29
-version: 1.11
+updated: 2020-01-27 10:13:19
+version: 1.12
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -161,6 +161,8 @@ If the number of new shots to fire is greater than or equal to one then new shot
         }
     };
 ```
+
+This is also the method where new shot object are created, a shot object has a starting point and current point, as well as other values such as the current heading of the shot, and the amount of damage it will cause when it hits and enemy. Shots move by a pixel per second rate, and there is also a life span value as well that is used alone with a hit property to know if the shot should be purged or not.
 
 ### 2.3 - Purge shots
 
