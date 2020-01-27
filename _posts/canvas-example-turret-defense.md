@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 09:18:47
-version: 1.5
+updated: 2020-01-27 09:20:19
+version: 1.6
 ---
 
 Todays post will be on yet another canvas example, this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -57,6 +57,8 @@ u.distance = function (x1, y1, x2, y2) {
 ```
 
 ### 1.4 - The angle distance method
+
+This is like the other distance formal only instead of getting the distance between two points, I am getting the distance between two angles.
 
 ```js
 // the angular distance between two angles
