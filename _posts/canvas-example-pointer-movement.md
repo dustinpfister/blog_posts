@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:41:45
-version: 1.12
+updated: 2020-01-27 05:45:52
+version: 1.13
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -105,6 +105,8 @@ I then need a method that I can used to update a Pointer Movement state that has
 
 ### 1.5 - Step a point by the current state of the Pointer Movement state
 
+This method is what I can use to update a point with a Pointer Movement State object.
+
 ```js
     // step a point by the current values of the pm
     api.stepPointByPM = function (pm, pt) {
@@ -114,6 +116,8 @@ I then need a method that I can used to update a Pointer Movement state that has
 ```
 
 ### 1.5 - Event methods, and the end of the module
+
+I then worked out some additional methods that can be used when attaching event handers in the main javaScript project that makes used of this module.
 
 ```js
     // when a pointer action starts
