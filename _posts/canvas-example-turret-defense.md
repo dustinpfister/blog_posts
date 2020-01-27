@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 11:43:53
-version: 1.18
+updated: 2020-01-27 12:31:40
+version: 1.19
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -372,4 +372,115 @@ The next public method is an update method, that will update the state of the ga
  
 }
     ());
+```
+
+## 3 - The draw module
+
+So I have everything worked out when it comes to creating, and updating a game state. However this is a canvas example of course, so now onto the draw methods.
+
+```js
+var draw = {};
+ 
+draw.background = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+// draw the turret
+draw.turret = function (turret, ctx, canvas) {
+    ctx.save();
+    ctx.translate(turret.cx, turret.cy);
+    ctx.rotate(turret.heading);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(-8, -8, 16, 16);
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(16, 0);
+    ctx.stroke();
+    ctx.restore();
+};
+ 
+draw.turretShots = function (turret, ctx, canvas) {
+    ctx.fillStyle = 'blue';
+    turret.shots.forEach(function (shot) {
+        ctx.beginPath();
+        ctx.arc(shot.x, shot.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+    });
+};
+ 
+draw.turretInfo = function (turret, ctx, canvas) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('heading: ' + turret.heading.toFixed(2), 5, 5);
+    ctx.fillText('shotTime: ' + turret.shotTime.toFixed(2), 5, 15);
+    ctx.fillText('active shots: ' + turret.shots.length, 5, 25);
+    ctx.fillText('active enemies: ' + turret.enemies.length, 5, 35);
+    ctx.fillText('turret RPS: ' + turret.rps, 5, 45);
+};
+ 
+draw.enemies = function (game, ctx, canvas) {
+    ctx.fillStyle = 'red';
+    game.enemies.forEach(function (enemy) {
+        ctx.beginPath();
+        ctx.arc(enemy.x, enemy.y, enemy.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+};
+```
+
+## 4 - Main.js and index.html
+
+Now it is just time to pull everything together with a main.js file, and an index.html file.
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+var game = td.createGameObject();
+ 
+// main app loop
+var loop = function () {
+    requestAnimationFrame(loop);
+    td.update(game);
+ 
+    draw.background(ctx, canvas);
+    draw.turret(game, ctx, canvas);
+    draw.enemies(game, ctx, canvas);
+    draw.turretInfo(game, ctx, canvas);
+    draw.turretShots(game, ctx, canvas);
+};
+loop();
+ 
+// focus and blur
+canvas.tabIndex = 0;
+canvas.addEventListener('focus', function () {
+    game.paused = false;
+});
+canvas.addEventListener('blur', function () {
+    game.paused = true;
+});
+canvas.focus();
+canvas.blur();
+```
+
+
+```html
+<html>
+    <head>
+        <title>canvas example turret defense</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="utils.js"></script>
+        <script src="game.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
