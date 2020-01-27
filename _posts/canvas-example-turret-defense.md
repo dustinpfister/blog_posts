@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 09:29:33
-version: 1.10
+updated: 2020-01-27 10:10:29
+version: 1.11
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -132,6 +132,10 @@ var td = (function () {
 
 ### 2.2 - The spawn shots method
 
+So I will want a method that will spawn shots into a shots array. The idea here is to have a method that is called from a main update method that is passed a game object and then a secs value that is the amount of time that has passed from the last frame tick. A shot time property of the game object is steeped with the secs value, and then the shot time is used with a shot delay property to know the number of shots to fire.
+
+If the number of new shots to fire is greater than or equal to one then new shots are spawned into the shots array up to a certain shots max value.
+
 ```js
     // spawn new shots
     var spawnShots = function (game, secs) {
@@ -156,7 +160,11 @@ var td = (function () {
             }
         }
     };
- 
+```
+
+### 2.3 - Purge shots
+
+```js
     // purge old shots
     var purgeShotCheck = function (game, i) {
         var now = new Date(),
