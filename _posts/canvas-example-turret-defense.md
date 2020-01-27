@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 09:22:02
-version: 1.7
+updated: 2020-01-27 09:23:59
+version: 1.8
 ---
 
-Todays post will be on yet another canvas example, this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
+Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
 
 <!-- more -->
 
