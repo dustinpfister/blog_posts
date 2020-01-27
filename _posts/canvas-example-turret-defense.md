@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 09:16:10
-version: 1.3
+updated: 2020-01-27 09:17:29
+version: 1.4
 ---
 
 Todays post will be on yet another canvas example, this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -19,6 +19,8 @@ Todays post will be on yet another canvas example, this time a turret defense st
 So to start off with lets take a look the the custom utility module that I made for this canvas example. Here I have many methods for working with angles mostly, but it is still a general utility module of sorts that will be used in the game module that I will be going over in the next section.
 
 ### 1.1 - The mathematical modulo method and the start of the module
+
+Here I have the mathematical module method. This is something that I covered in another post way back when it comes to something that is wrong with the built in javaScript module operator and how some might expect modulo to work.
 
 ```js
 var u = {
