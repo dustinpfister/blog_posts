@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 06:01:54
-version: 1.21
+updated: 2020-01-27 06:04:40
+version: 1.22
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -305,6 +305,8 @@ PM.onPointerEnd(pm, e);
 
 ### 3.2 - index.html
 
+I then have an html file that pulls all of this together.
+
 ```js
 <html>
     <head>
@@ -321,3 +323,4 @@ PM.onPointerEnd(pm, e);
 
 ## 4 - Conclusion
 
+When this canvas Example is up and running I have grid lines drawn to the canvas. When I click and hold on the canvas the navigation circle shows up, at which point as I move the mouse pointer the state changes and so to does the state of the point object. The gird lines move in a way that is consistent with what I would expect.
