@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2020-01-27 17:31:43
-version: 1.5
+updated: 2020-01-27 17:41:34
+version: 1.6
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. There is of course the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situation. 
@@ -96,3 +96,27 @@ powStr = str.match(/\d/g).map(function (n) {
 console.log(powStr);
 // 1;9;25;49;81
 ```
+
+### 3.3 - Object values, and Object keys
+
+So in an above section I covered the Object values static method that can create an array from an object with named key names, but what if I want an array of key names rather than values. This is where the Object keys static method can come into play.
+
+```js
+var obj = {
+    baz: '3',
+    foo: '1',
+    bar: '2'
+};
+ 
+console.log( Object.keys(obj) );
+// ['baz','foo','bar']
+ 
+console.log( Object.values(obj) );
+// ['3', '2', '1']
+```
+
+## 4 - Conclusion
+
+Well there is the low down on the array from static method, as well as a whole bunch of other options for creating an array from something else in javaScript other than an array. There is much more to cover when it comes to doing this sort of thing though, for example the array from method creates a shallow clone of an array, but what if I want a deep clone?
+
+In any case hopeful you found this post somewhat useful when it comes to creating arrays form other values in javaScript.
