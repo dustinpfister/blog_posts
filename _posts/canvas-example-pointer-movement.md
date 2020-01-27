@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:37:04
-version: 1.10
+updated: 2020-01-27 05:39:41
+version: 1.11
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -55,6 +55,8 @@ Here I have another helper method that I needed for this module used in my point
 ```
 
 ### 1.3 - The start of the public api, and the create new Pointer Movement state object
+
+Now for the public methods, for this module there is no main function so I just created an object literal for the public api. the first method that I made for this public api for the Pointer Movement module is a method that can be used to create a new Pointer Movement state.
 
 ```js
     var api = {};
