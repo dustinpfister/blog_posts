@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 09:20:19
-version: 1.6
+updated: 2020-01-27 09:22:02
+version: 1.7
 ---
 
 Todays post will be on yet another canvas example, this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -75,6 +75,8 @@ u.angleDistance = function (a, b, scale) {
 
 ### 1.5 - Get an angle to a point
 
+Here I have a method where I am using atan2 to get an angle from one point to another.
+
 ```js
 // get the angle from one point to another
 u.getAngleToPoint = function (pt1, pt2) {
@@ -83,6 +85,8 @@ u.getAngleToPoint = function (pt1, pt2) {
 ```
 
 ### 1.6 - Get shortest direction
+
+I will also want a method that will return -1, 1, or 0 depending on which way an object needs to rotate to face another object.
 
 ```js
 // get -1, 1, or 0 depending on the the state of two angles
