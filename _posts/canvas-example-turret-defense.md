@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 10:20:07
-version: 1.13
+updated: 2020-01-27 10:22:50
+version: 1.14
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -182,6 +182,7 @@ So now that I have a method that is used to spawn new shots, it makes sense to h
 
 ### 2.4 - Shot enemy check
 
+This method will check to see if A given shot has hit an enemy in the enemies array of the game object. In the event that a shot has hot an enemy the amount of damage that the shot can cause is subtracted from the enemies hit points value, and the hit property of the shot is set to true. After that the loop is broken for the shot, and nothing else is done, it is up to the purge methods for shots and enemies to remove things from arrays.
 ```js
     // check to see if a shot has hit an enemy
     var shotEnemyCheck = function (game, shot) {
