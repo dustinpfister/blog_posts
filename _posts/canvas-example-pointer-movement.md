@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:51:34
-version: 1.16
+updated: 2020-01-27 05:54:18
+version: 1.17
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -177,6 +177,8 @@ draw.background = function (pm, ctx, canvas) {
 ```
 
 ### 2.2 - Just draw some grid lines draw method
+
+I then want a draw method that just draws some grid lines on the canvas. In a real project I would have draw methods that render the current state of a map module. However getting into that would be a whole other post. For now I just need a draw method where I pass a point that is being mutated by my Point Movement state that is used to draw grid lines.
 
 ```js
 draw.PTGridlines = function (pt, ctx, canvas) {
