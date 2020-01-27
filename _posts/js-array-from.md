@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2020-01-27 17:23:43
-version: 1.3
+updated: 2020-01-27 17:28:07
+version: 1.4
 ---
 
-If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. There is of course the Array.from static method that will work okay with array like objects, however it will not always work out so great in other situation. 
+If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. There is of course the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situation. 
 So in this post I will be looking at the array from static method as well as a number of other options for creating an array from something other than an array in javaScript.
 
 <!-- more -->
@@ -65,7 +65,7 @@ console.log(arr); // [1,2,3]
 
 ## 3 - Other ways to create an array from somthing else
 
-In this section I will be looking at some additional options for creating an array from an object or string.
+In this section I will be looking at some additional options for creating an array from an object or string. there are tones of ways of doing so, so this is not at all in any way a complete list.
 
 ### 3.1 - String split
 
@@ -84,7 +84,7 @@ console.log(powStr);
 
 ### 3.2 - String match
 
-The string match method is yet another option.
+The string match method is yet another option for creating a new array from a string, assuming that you have some knowledge of how to work with regular expressions.
 
 ```js
 var str = '1-3-5-7-9';
