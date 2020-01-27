@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 10:25:33
-version: 1.15
+updated: 2020-01-27 10:29:57
+version: 1.16
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -237,6 +237,8 @@ So now for methods that update any shots in the game area. The update active sho
 
 ### 2.6 - Spawn enemies
 
+I will need a method for spawning enemies as on top of just shots. For this canvas example I am just spawning shots around the turret at random, and at a set distance. If I where to keep working on this example even more so I would do something different, but this canvas example is all ready getting a little involved, so I am just sticking with something simple for now.
+
 ```js
     // ENEMIES
  
@@ -270,6 +272,8 @@ So now for methods that update any shots in the game area. The update active sho
         }
     };
 ```
+
+For now enemies just have a location, hit point value, and size, they do not move or attack.
 
 ### 2.7 - Purge dead enemies
 
