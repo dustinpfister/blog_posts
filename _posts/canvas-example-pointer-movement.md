@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:58:48
-version: 1.20
+updated: 2020-01-27 06:01:54
+version: 1.21
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -262,6 +262,8 @@ draw.debugInfo = function (pm, pt, ctx, canvas) {
 Now to wrap everything together with a main.js file and some html.
 
 ### 3.1 - main.js
+
+Here I have the main.js file where I create and append a canvas element that will be used for this canvas example. I then create a new Pointer Movement state, and a point that will be used for what would be a map offset value. I then have a main app loop where I am calling my methods that are used to update the Pointer Movement state, and the point that is used for drawing grid lines. I then also have some event handers work out as well.
 
 ```js
 var canvas = document.createElement('canvas'),
