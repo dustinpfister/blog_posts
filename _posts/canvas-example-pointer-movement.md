@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:35:13
-version: 1.9
+updated: 2020-01-27 05:37:04
+version: 1.10
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -36,6 +36,8 @@ var PM = (function () {
 ```
 
 ### 1.2 - Get a canvas relative position
+
+Here I have another helper method that I needed for this module used in my pointer movement canvas example. I use it in my methods that are used in event handers to get the canvas relative position of a mouse click.
 
 ```js 
     // get canvas relative point
