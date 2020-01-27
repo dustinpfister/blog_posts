@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 09:17:29
-version: 1.4
+updated: 2020-01-27 09:18:47
+version: 1.5
 ---
 
 Todays post will be on yet another canvas example, this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -35,6 +35,8 @@ u.mod = function (x, m) {
 
 ### 1.2 - Normalize half
 
+This can be used to normalize and angle to half.
+
 ```js
 u.normalizeHalf = function (n, scale) {
     var c = scale || u.defaultAngleScale,
@@ -44,6 +46,8 @@ u.normalizeHalf = function (n, scale) {
 ```
 
 ### 1.3 - The distance formula
+
+I am going to want a method that can be used to find the distance between two points for the sake of collision detection.
 
 ```js
 // distance
