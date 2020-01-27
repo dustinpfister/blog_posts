@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2020-01-27 17:10:17
-version: 1.1
+updated: 2020-01-27 17:21:23
+version: 1.2
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. There is of course the Array.from static method that will work okay with array like objects, however it will not always work out so great in other situation. 
@@ -15,6 +15,8 @@ So in this post I will be looking at the array from static method as well as a n
 <!-- more -->
 
 ## 1 - Array from basic example
+
+The array from static method can be called off of the Array global, and then an array like object can be passed as the first argument. As long as the object is formated like an array it should work okay and what will be returned is an array with all the prototype methods of an array like array map. 
 
 ```js
 var arr = Array.from({
@@ -32,7 +34,11 @@ console.log( str );
 // 4;16;64
 ```
 
-## 2 - creating an array from and object of named key value pairs
+There are some draw backs with this though so lets look at some additional options for creating an array from something other than an array.
+
+## 2 - creating an array from and object of named key value pairs with Object value
+
+The Object value static method will return an array of values for the object that is passed to it. So it is another way of creating an array from an object. What is great about this is that it will create arrays just fine with objects that have named key values without a length property.
 
 ```js
 // object with named keys
