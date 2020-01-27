@@ -1,16 +1,15 @@
 ---
-title: A pointer movement canvas example
+title: Pointer map movement logic canvas example
 date: 2020-01-26 16:53:00
 tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-26 16:59:41
-version: 1.1
+updated: 2020-01-27 04:56:20
+version: 1.2
 ---
 
-In this canvas example I will be working out some logic that has to do with moving something in a canvas with the mouse pointer such as a map.
-
+In this canvas example I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
 <!-- more -->
 
 ## 1 - The pointer movement module
