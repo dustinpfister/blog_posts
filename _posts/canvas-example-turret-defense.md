@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-01-27 10:13:19
-version: 1.12
+updated: 2020-01-27 10:20:07
+version: 1.13
 ---
 
 Todays post will be on yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
@@ -166,6 +166,8 @@ This is also the method where new shot object are created, a shot object has a s
 
 ### 2.3 - Purge shots
 
+So now that I have a method that is used to spawn new shots, it makes sense to have a method that will purge theme. There are two reason why a shot would be purged, one would be because its lifespan value shots that is has been around for two long, and the other is the hit boolean that means that it hit something.
+
 ```js
     // purge old shots
     var purgeShotCheck = function (game, i) {
@@ -176,7 +178,11 @@ This is also the method where new shot object are created, a shot object has a s
             game.shots.splice(i, 1);
         }
     };
- 
+```
+
+### 2.4 - Shot enemy check
+
+```js
     // check to see if a shot has hit an enemy
     var shotEnemyCheck = function (game, shot) {
         var i = game.enemies.length;
@@ -192,7 +198,11 @@ This is also the method where new shot object are created, a shot object has a s
             }
         }
     };
- 
+```
+
+### 2.5 - Update shots
+
+```js
     // loop over all shots, move them, and make a purge check
     var updateActiveShots = function (game) {
         // update active shots
@@ -220,7 +230,11 @@ This is also the method where new shot object are created, a shot object has a s
             updateActiveShots(game);
         }
     };
- 
+```
+
+### 2.6 - Spawn enemies
+
+```js
     // ENEMIES
  
     // spawn new enemies
@@ -252,7 +266,11 @@ This is also the method where new shot object are created, a shot object has a s
             }
         }
     };
- 
+```
+
+### 2.7 - Purge dead enemies
+
+```js
     var purgeEnemies = function (game) {
         var i = game.enemies.length;
         while (i--) {
@@ -262,7 +280,11 @@ This is also the method where new shot object are created, a shot object has a s
             }
         }
     };
- 
+```
+
+### 2.8 - Set turret radians per second
+
+```js
     // TURRET
  
     // set turret Radians Per Second based on enemies array
@@ -281,7 +303,11 @@ This is also the method where new shot object are created, a shot object has a s
             game.rps = 3 * p * dir;
         };
     };
- 
+```
+
+### 2.9 - The public API and the create game object method
+
+```js
     // PUBLIC API
     // public api
     var api = {};
@@ -305,7 +331,11 @@ This is also the method where new shot object are created, a shot object has a s
             enemyTime: 0
         };
     };
- 
+```
+
+### 2.10 - The update method
+
+```js
     // update turret method
     api.update = function (game) {
         var now = new Date(),
