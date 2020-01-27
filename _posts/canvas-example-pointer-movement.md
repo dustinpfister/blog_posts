@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:57:06
-version: 1.19
+updated: 2020-01-27 05:58:48
+version: 1.20
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -258,6 +258,8 @@ draw.debugInfo = function (pm, pt, ctx, canvas) {
 ```
 
 ## 3 - The Main.js, and index.html files and getting the project up and running
+
+Now to wrap everything together with a main.js file and some html.
 
 ### 3.1 - main.js
 
