@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 05:50:41
-version: 1.15
+updated: 2020-01-27 05:51:34
+version: 1.16
 ---
 
 In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -165,7 +165,7 @@ So now that I have my Pointer Movement module worked out I will want to produce 
 
 ### 2.1 - The start of the module, and a draw background method
 
-This draw javaScript file is just an object literal with a bunch of draw methods attached that need to have a drawing context passed as the first argument.
+This draw javaScript file is just an object literal with a bunch of draw methods attached that need to have a drawing context passed as the first argument. The first draw method that I worked out is to just draw a plain black background when passed the drawing context and canvas.
 
 ```js
 var draw = {};
