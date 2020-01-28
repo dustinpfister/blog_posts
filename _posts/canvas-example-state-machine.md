@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 15:15:11
-version: 1.3
+updated: 2020-01-28 15:19:48
+version: 1.4
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -19,6 +19,8 @@ In this section I will be going over the source code of the state machine module
 
 
 ### 1.1 - The start of the module, and a parse container argument helper
+
+So I start out the module with the beginnings of an IIFE, and a parse container helper. When the main public function is called I can pass a container argument as the first argument. The argument can be an object which is assumed to be a container element, it can also be a string that is assumed to be an id to an element to use. All other possible values including undefined will result in the body element being used as the container element to attach to.
 
 ```js
 var Machine = (function () {
@@ -40,7 +42,7 @@ var Machine = (function () {
     };
 ```
 
-### 1.2 - canvas helpers
+### 1.2 - Create canvas helper
 
 ```js
     // CANVAS
@@ -56,7 +58,11 @@ var Machine = (function () {
         sm.ctx.fillStyle = 'black';
         sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
     };
- 
+```
+
+### 1.3 - Get canvas relative position
+
+```js
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
@@ -69,7 +75,11 @@ var Machine = (function () {
             bx: bx
         };
     };
- 
+```
+
+### 1.4 - Attach event handers to a canvas element
+
+```js
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
         sm.canvas.addEventListener(DOMType, function (e) {
@@ -105,7 +115,7 @@ var Machine = (function () {
     };
 ```
 
-### 1.2 - The public function that creates a state machine object
+### 1.5 - The public function that creates a state machine object
 
 ```js
     // create a new state machine
