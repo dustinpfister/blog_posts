@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 15:10:22
-version: 1.1
+updated: 2020-01-28 15:12:57
+version: 1.2
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -14,6 +14,9 @@ For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Can
 <!-- more -->
 
 ## 1 - The State Machine module for canvas examples
+
+In this section I will be going over the source code of the state machine module that I worked out for this post, and might use in future canvas examples and projects. The module makes use of the IFFE pattern and returns a public API as a single function that creates a state machine object. Once I have a state machine object I can then call the load method as a way to start defining state objects.
+
 
 ```js
 var Machine = (function () {
