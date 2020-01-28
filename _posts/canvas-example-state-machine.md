@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 16:15:18
-version: 1.8
+updated: 2020-01-28 16:19:09
+version: 1.9
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -195,6 +195,8 @@ So now it is time for the public function that is used to create the state machi
 
 ## 2 - Simple use case example
 
+So here is a simple use case example of the state machine module in action. This results in a very basic clicker type game example where some resources are given when the canvas is clicked, as well as just over time.
+
 ```js
 var sm = Machine('gamearea');
  
@@ -245,6 +247,8 @@ sm.start();
 ```
 
 ## 3 - Modes use case example
+
+I wanted to make another example that makes use of my modes feature that I put together. This is a way to have a state within a state sort of speak. When a mode is active additional logic that is to happen when the mode is active will happen on top of the logic that will always run for the state.
 
 ```js
 var sm = Machine('gamearea', 640, 480);
