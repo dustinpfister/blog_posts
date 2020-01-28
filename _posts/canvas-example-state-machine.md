@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 16:06:11
-version: 1.6
+updated: 2020-01-28 16:13:44
+version: 1.7
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -84,6 +84,10 @@ This helper method just returns a canvas relative position from an event object 
 ```
 
 ### 1.4 - Attach event handers to a canvas element
+
+This is the method that I worked out for attaching events to the canvas for event types like mouse down. The state manager instance should be passed as the first argument, and the canvas element should be created and append before this method is used.
+
+In the body of the hander that is attached for this given DOM event type the get canvas relative position helper that I wrote about earlier in this section is used to get a canvas relative position for the event. This position will be passed to the actual hander defined in the state object as the first argument for that kind of hander, along with the state machine instance and the original event object.
 
 ```js
     // attach a canvas event
