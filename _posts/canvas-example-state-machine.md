@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 15:22:45
-version: 1.5
+updated: 2020-01-28 16:06:11
+version: 1.6
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -65,6 +65,8 @@ Here I have a helper that is used to create and append the canvas element to the
 For starters it draws a plain black background to the canvas, and the width and height can also be set via the arguments that are passed along from the arguments of the main public function that I will be getting to later.
 
 ### 1.3 - Get canvas relative position
+
+This helper method just returns a canvas relative position from an event object that was gained from within an event hander. Without this I would end up with a window relative position which is the default for event handlers that have to do with mouse and touch events.
 
 ```js
     // get canvas relative point
