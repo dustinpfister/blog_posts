@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 16:13:44
-version: 1.7
+updated: 2020-01-28 16:15:18
+version: 1.8
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -126,6 +126,8 @@ In the body of the hander that is attached for this given DOM event type the get
 ```
 
 ### 1.5 - The public function that creates a state machine object
+
+So now it is time for the public function that is used to create the state machine instance when making a project with this state machine module.
 
 ```js
     // create a new state machine
