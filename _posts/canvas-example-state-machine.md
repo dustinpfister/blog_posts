@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 15:19:48
-version: 1.4
+updated: 2020-01-28 15:22:45
+version: 1.5
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -44,6 +44,8 @@ var Machine = (function () {
 
 ### 1.2 - Create canvas helper
 
+Here I have a helper that is used to create and append the canvas element to the given state object. This method assumes that a container element is attached to the state machine instance so that value should be parsed before this method is called.
+
 ```js
     // CANVAS
  
@@ -59,6 +61,8 @@ var Machine = (function () {
         sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
     };
 ```
+
+For starters it draws a plain black background to the canvas, and the width and height can also be set via the arguments that are passed along from the arguments of the main public function that I will be getting to later.
 
 ### 1.3 - Get canvas relative position
 
