@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 13:36:31
-version: 1.3
+updated: 2020-01-29 13:45:25
+version: 1.4
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -15,7 +15,11 @@ In any case this canvas example will be a little involved, but I will have the w
 
 <!-- more -->
 
-## 1 -
+## 1 - The html file of this canvas example and overview of what is to come
+
+So maybe for this example it will be best to start with the HTML file, and the order of the external javaScript files. I am using a small custom trailered utility library that has some functions that I use in other modules so of course that must be loaded first before anything else.
+
+In addition to the utility lib I am also using a Pointer Movement module that is not so different from the other one that I worked out in another post. This module just stores the state of some properties like an angle, and distance that is then used to update a map offset object. When I was first making this project I had that functionally baked into the map module but now have found that is better to pull it out of there.
 
 ```html
 <html>
@@ -32,6 +36,12 @@ In any case this canvas example will be a little involved, but I will have the w
     </body>
 </html>
 ```
+
+Speaking of the map module yes there is of course that which us used to create and store the state of a game map. There is a base object for each cell, and then an additional nested object for a building that is on the cell.
+
+I then also have a draw module that is used to draw the current state of the map, as well as the state of the pointer movement state when navigating the map. The draw module is also used for displaying debug info on a per state basis for each state as at the time this was a work and progress.
+
+Of course there is also a main.js file where the canvas element is created, and events are attached to the canvas. In addition this is where I have the state machine which I felt is needed for this canvas example to helper keep things better organized.
 
 ## 2 - utils
 
