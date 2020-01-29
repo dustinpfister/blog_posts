@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 15:56:22
-version: 1.12
+updated: 2020-01-29 16:01:27
+version: 1.13
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -707,3 +707,5 @@ attachEvent(canvas, 'mouseup', 'end');
 ```
 
 ## 7 - Conclusion
+
+When this canvas example is up an running I have a map centered with a starting building in the very center. Every time a certain amount of time passes I am given an amount of money because of the starting building that is generating income for me. I can then click on a land cell to get a build menu to which I can then use to create another building at that cell. In the event there there is a building at a cell I enter a separate build state that is reserved for doing things with that building. Finally when I am in the default display state, I can click hold and drag to enter a navigation state that uses the Pointer Movement state object to update the map offsets and pan the map.
