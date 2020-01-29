@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 16:01:27
-version: 1.13
+updated: 2020-01-29 16:13:32
+version: 1.14
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -525,6 +525,7 @@ var draw = (function () {
 
 ## 6 - main
 
+Now for the main javaScriot file, here I create the canvas, attach events for the canvas, and define the state machine and main app loop which is also started here. This is also where I have what is begging to be another module for buildings, but for now it is just an object.
 
 ```js
 // CANVAS
