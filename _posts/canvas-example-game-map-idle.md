@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 13:35:46
-version: 1.2
+updated: 2020-01-29 13:36:31
+version: 1.3
 ---
 
-Today I will be writing about yet another canvas example, this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
+Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
 
 In any case this canvas example will be a little involved, but I will have the whole state of the source coded here as it was at the time of this writing. I might work on it more, or use it as a starting point for another project if I feel that this will be a good project that is worth more time.
 
