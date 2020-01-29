@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 15:34:54
-version: 1.6
+updated: 2020-01-29 15:39:24
+version: 1.7
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -78,6 +78,12 @@ So in this section I will be going over the Pointer Movement module for this can
 In this canvas example the module is used to pan the map around by applying the state of a Pointer Movement state object to the map offset values. More on that later when I get to the map module and the main javaScript file.
 
 ### 3.1 - The beginning of the module and the newPm method
+
+So I start off the module with the beginnings of an IIFE as a way of containing everything in a closure.
+
+The first public method is a method that is used to create a new Pointer Movement state object. This object contains a down property that should be set true when the user does something like clicking down a mouse button. There are then properties for a start point and current point when a user pointer action is preformed.
+
+There is then an angle and delta value that are used as a way to step a point by way of Math cos and sin. More on that a little later when I get to the method that is used to do just that.
 
 ```js
 var PM = (function () {
