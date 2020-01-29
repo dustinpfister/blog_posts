@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 15:24:06
-version: 1.5
+updated: 2020-01-29 15:34:54
+version: 1.6
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -73,6 +73,12 @@ The general process here is that if a helper method is just used in one module I
 
 ## 3 - Pointer Movement module
 
+So in this section I will be going over the Pointer Movement module for this canvas example. This is a module that is used for creating what I call a Pointer Movement state object that contains the current state of an angle, and delta value that can be used step a point object. 
+
+In this canvas example the module is used to pan the map around by applying the state of a Pointer Movement state object to the map offset values. More on that later when I get to the map module and the main javaScript file.
+
+### 3.1 - The beginning of the module and the newPm method
+
 ```js
 var PM = (function () {
  
@@ -95,7 +101,11 @@ var PM = (function () {
             }
         };
     };
- 
+```
+
+### 3.2 - Update a PM state object
+
+```js
     // update the pm based on startPoint, and currentPoint
     api.updatePM = function (pm) {
         pm.dist = 0;
@@ -112,17 +122,23 @@ var PM = (function () {
             pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
         }
     };
- 
+```
+
+### 3.2 - Step a point by a PM state
+
+```js
     // step a point by the current values of the pm
     api.stepPointByPM = function (pm, pt, invert) {
- 
         invert = invert === undefined ? false : invert;
         invert = invert ? -1 : 1;
- 
         pt.x += Math.cos(pm.angle) * pm.delta * invert;
         pt.y += Math.sin(pm.angle) * pm.delta * invert;
     };
- 
+```
+
+### 3.3 - Event Handlers
+
+```js
     // when a pointer action starts
     api.onPointerStart = function (pm, pos, e) {
         pm.down = true;
