@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 15:39:24
-version: 1.7
+updated: 2020-01-29 15:41:01
+version: 1.8
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -110,6 +110,8 @@ var PM = (function () {
 ```
 
 ### 3.2 - Update a PM state object
+
+This is the main update method for a PM state object. This method should be used in a main app loop, or a tick method of sorts in the state in which a PM state object is being used.
 
 ```js
     // update the pm based on startPoint, and currentPoint
