@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 15:41:01
-version: 1.8
+updated: 2020-01-29 15:43:08
+version: 1.9
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -133,6 +133,8 @@ This is the main update method for a PM state object. This method should be used
 ```
 
 ### 3.2 - Step a point by a PM state
+
+Here I have the method that I use to step a point object with an x and y property by the current state of a PM state object. I just pass the PM state object as the first argument, and then the point I want to step, followed by an option invert boolean.
 
 ```js
     // step a point by the current values of the pm
