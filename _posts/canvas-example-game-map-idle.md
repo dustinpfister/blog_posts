@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 15:53:17
-version: 1.11
+updated: 2020-01-29 15:56:22
+version: 1.12
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -189,6 +189,10 @@ Then I have some event handers for helping with the process of updating a PM sta
 
 ## 4 - The map module of this canvas example
 
+This section will be one the map module that can be used to create a map or gird object that contains an array of cell objects for each cell in the grid.
+
+### 4.1 - The parse grid properties helper
+
 ```js
 var map = {};
  
@@ -212,7 +216,9 @@ map.parseGridProps = function (grid) {
     a.tickTime = 3000;
     return a;
 };
- 
+```
+
+```js
 // make and return a new grid object by just passing width and height values
 map.createGridObject = function (w, h) {
     var a = map.parseGridProps({
