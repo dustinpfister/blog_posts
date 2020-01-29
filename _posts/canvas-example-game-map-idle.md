@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-29 13:45:25
-version: 1.4
+updated: 2020-01-29 15:24:06
+version: 1.5
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -45,6 +45,8 @@ Of course there is also a main.js file where the canvas element is created, and 
 
 ## 2 - utils
 
+The utils module for this canvas example is just two methods. One is a distance formula that is used in my pointer movement module, and in the map module when it comes to setting a worth value for land tiles. The other method is something that I am using when it comes to event attachment that just converts a window relative value to a canvas relative position.
+
 ```js
 var u = {};
  
@@ -66,6 +68,8 @@ u.getCanvasRelative = function (e) {
     };
 };
 ```
+
+The general process here is that if a helper method is just used in one module I leave it in there. However if I find that I am suing that method in more than one module I may place it here, and then make this module a dependency of those modules.
 
 ## 3 - Pointer Movement module
 
