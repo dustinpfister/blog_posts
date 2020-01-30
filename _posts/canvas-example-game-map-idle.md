@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 08:52:38
-version: 1.19
+updated: 2020-01-30 08:59:08
+version: 1.20
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -339,7 +339,13 @@ map.clampedOffsets = function (grid, canvas) {
         y: y
     };
 };
- 
+```
+
+### 4.6 - Get a cell methods
+
+If I want to get a cell by index I can just use the index number with the array brackets syntax with the cell array property of a map object. However it would be nice to have some methods that can be used to abstract away some simple expressions that can be used to get a cell by a cell index position, or a canvas relative position from a mouse or touch event.
+
+```js
 // GET CELL
  
 // get a cell from the given cell position
@@ -363,7 +369,11 @@ map.getCellFromCanvasPoint = function (grid, x, y) {
     var pos = map.getCellPositionFromCanvasPoint(grid, x, y);
     return map.get(grid, pos.x, pos.y);
 };
- 
+```
+
+### 4.7 - update the map object
+
+```js
 // UPDATE GRID
  
 map.updateGrid = function (grid) {
