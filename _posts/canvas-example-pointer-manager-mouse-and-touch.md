@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2020-01-29 21:31:23
-version: 1.3
+updated: 2020-01-29 21:34:50
+version: 1.4
 ---
 
 This is a canvas example that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. Anyway say you want to make a canvas project that will work well with both mouse and touch events. So in other words you do not want to do anything with muti touch on touch devices, and you want all events for both mouse and touch events to be mapped to certain events that are the same. However in order to do so a bit of parsing, adjusting values, and other things need to be preformed before calling some uniform handers that are to be called for both mouse and touch events.
@@ -41,6 +41,8 @@ var PMMT = (function () {
 
 ### 1.2 - The out of canvas, and the get pointer helpers.
 
+I then have an out of canvas helper that will return true of the given canvas relative position is out of bounds for the canvas of the state object. I also have a helper that will return a pointer object from the current state of a state machine of it has one or false if it does not.
+
 ```js
     // out of canvas
     var outOfCanvas = function (sm, pos) {
@@ -58,6 +60,8 @@ var PMMT = (function () {
 ```
 
 ### 1.3 - The attach pointer event helper
+
+Here I have The attach pointer event helper method that will be called in the main public method to attach dome events for handlers that will call the current corresponding state pointer methods if they are there.
 
 ```js
     // attach pointer events
