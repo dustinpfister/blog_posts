@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-01-30 17:29:42
-version: 1.2
+updated: 2020-01-30 17:34:22
+version: 1.3
 ---
 
 This will be a quick post on getting the number of days between two javaScript dates. Like most things like this it is important to look at more than one solution, so I will be taking a look at two to say then least. In addition I will break off into some additional examples and related topics that have to do with working with dates in javaScript so things post is not to thin.
@@ -14,6 +14,8 @@ This will be a quick post on getting the number of days between two javaScript d
 <!-- more -->
 
 ## 1 - Getting the number of days between two dates, bu just subtracting and dividing
+
+A simple way to go about getting this done right away would involve just subtracting an older date from a newer date. After doing this I will end up with a number of milliseconds between the two dates. From there it is just a matter of dividing by one thousand to get seconds, and then sixty to get minutes, sixty again to get hours, and then twenty four to get days.
 
 ```js
 var getDayDiff1 = function (d1, d2) {
