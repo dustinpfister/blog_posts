@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 08:51:07
-version: 1.18
+updated: 2020-01-30 08:52:38
+version: 1.19
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -304,7 +304,13 @@ map.createBuilding = function (grid, x, y, index, buildOptions) {
             }, buildOptions[index]);
     }
 };
- 
+```
+
+### 4.5 - Clamp map offsets
+
+I am going to have to worry about map offsets going out of bounds, so i will want something that will wrap or clamp the map offsets.
+
+```
 // BOUNDS
  
 // return a set of clamped offset values for the given grid
