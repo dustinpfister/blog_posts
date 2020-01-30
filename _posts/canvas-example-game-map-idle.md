@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 09:50:36
-version: 1.23
+updated: 2020-01-30 09:55:16
+version: 1.24
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -457,7 +457,13 @@ I will need some kind of draw method that will draw the current state of the map
             ctx.strokeRect(x, y, cellSize, cellSize);
         });
     };
- 
+```
+
+## 5.3 - The start of the public api, draw background, and draw status info.
+
+I start off the public api with just returning an object literal that will hold all the public draw methods that will be used in main.js.
+
+```js
     return {
  
         // draw background
@@ -476,18 +482,11 @@ I will need some kind of draw method that will draw the current state of the map
             ctx.font = '15px courier';
             ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
         },
- 
-        // draw debug info
-        debugInfo: function (ctx, grid) {
-            ctx.fillStyle = 'rgba(0,0,0,0.25)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'white';
-            var pt = grid.mapMoveStartPoint;
-            ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 10);
-            ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 20);
-            ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 30);
-        },
- 
+```
+
+## 5.4 - Draw build menu
+
+```js
         buildMenu: function (ctx, canvas, buildMenu) {
             ctx.fillStyle = 'rgba(255,255,255,0.5)';
             ctx.fillRect(0, 0, 96, canvas.height);
@@ -496,9 +495,12 @@ I will need some kind of draw method that will draw the current state of the map
             ctx.fillStyle = 'rgba(255,0,0,0.5)';
             ctx.textAlign = 'center';
             ctx.fillText(buildMenu.buildOptions[0].name, 48, 32);
- 
         },
- 
+```
+
+## 5.5 - draw state debug info
+
+```js
         stateDebugInfo: function (ctx, stateName, grid, states) {
             var state = drawStateDebug[stateName];
             ctx.fillStyle = 'rgba(0,0,0,0.25)';
@@ -510,7 +512,11 @@ I will need some kind of draw method that will draw the current state of the map
                 state(ctx, grid, states);
             }
         },
- 
+```
+
+## 5.6 - draw the map
+
+```js
         map: function (grid, ctx, canvas, pxRatio) {
             var colors = ['yellow', 'green'],
             cellSize = grid.cellSize || 10,
@@ -531,7 +537,11 @@ I will need some kind of draw method that will draw the current state of the map
                 ctx.strokeRect(x, y, cellSize, cellSize);
             }
         },
- 
+```
+
+## 5.7 - draw the nav circle
+
+```js
         // draw a navigation circle when moving the map
         navCirclePM: function (pm, ctx, canvas) {
             var cx = pm.sp.x,
