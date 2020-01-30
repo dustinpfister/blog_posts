@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 09:58:05
-version: 1.25
+updated: 2020-01-30 10:00:43
+version: 1.26
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -485,6 +485,10 @@ I start off the public api with just returning an object literal that will hold 
 ```
 
 ## 5.4 - Draw build menu
+
+Buildings are something that are created in this canvas example to increase the amount of money that the player gets over time. There is a state that the player will enter when a cell is clicked that contains no building, from there a build menu will be displayed that can be used to create a building on this land cell without a building.
+
+So then I need a draw method that will render the current status of this build menu.
 
 ```js
         buildMenu: function (ctx, canvas, buildMenu) {
