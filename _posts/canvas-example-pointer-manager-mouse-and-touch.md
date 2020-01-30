@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2020-01-29 21:34:50
-version: 1.4
+updated: 2020-01-29 21:36:22
+version: 1.5
 ---
 
 This is a canvas example that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. Anyway say you want to make a canvas project that will work well with both mouse and touch events. So in other words you do not want to do anything with muti touch on touch devices, and you want all events for both mouse and touch events to be mapped to certain events that are the same. However in order to do so a bit of parsing, adjusting values, and other things need to be preformed before calling some uniform handers that are to be called for both mouse and touch events.
@@ -99,6 +99,8 @@ Here I have The attach pointer event helper method that will be called in the ma
 ```
 
 ### 1.4 - The public method
+
+Now for the public method, what this is called from outside the module all I have to do is pass my state object, and dom events will be attached to the canvas of the state object.
 
 ```js
     // single attachment method for a state manager
