@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2020-01-29 21:27:38
-version: 1.2
+updated: 2020-01-29 21:31:23
+version: 1.3
 ---
 
 This is a canvas example that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. Anyway say you want to make a canvas project that will work well with both mouse and touch events. So in other words you do not want to do anything with muti touch on touch devices, and you want all events for both mouse and touch events to be mapped to certain events that are the same. However in order to do so a bit of parsing, adjusting values, and other things need to be preformed before calling some uniform handers that are to be called for both mouse and touch events.
@@ -17,6 +17,10 @@ So thins will be a quick post on such a project that does what I just described 
 ## 1 - The pointer manager module for this canvas example
 
 So lets start out with the module that will create the pointer manager of sorts. This module is a few helper methods and a single public method returned from within an IIFE module pattern. The public function is just called and passes s state machine object that I will be getting to with a demo later in this post.
+
+### 1.1 - The start of the module and the get canvas relative helper.
+
+So at the top of the module I have a get canvas relative helper. This method will return a canvas relative position from an event object that is passed from within an event hander that receives such an event object from its call back.
 
 ```js
 var PMMT = (function () {
@@ -33,7 +37,11 @@ var PMMT = (function () {
             bx: bx
         };
     };
- 
+```
+
+### 1.2 - The out of canvas, and the get pointer helpers.
+
+```js
     // out of canvas
     var outOfCanvas = function (sm, pos) {
         return pos.x < 0 || pos.x >= sm.canvas.width || pos.y < 0 || pos.y >= sm.canvas.height;
@@ -47,7 +55,11 @@ var PMMT = (function () {
         }
         return false;
     };
- 
+```
+
+### 1.3 - The attach pointer event helper
+
+```js
     // attach pointer events
     var attachPointerEvent = function (sm, domType, smType) {
         // attach a hander of the given domType to the canvas
@@ -80,7 +92,11 @@ var PMMT = (function () {
             }
         });
     };
- 
+```
+
+### 1.4 - The public method
+
+```js
     // single attachment method for a state manager
     return function (sm) {
         // mouse events
