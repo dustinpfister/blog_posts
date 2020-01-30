@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 08:59:08
-version: 1.20
+updated: 2020-01-30 09:00:36
+version: 1.21
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -372,6 +372,8 @@ map.getCellFromCanvasPoint = function (grid, x, y) {
 ```
 
 ### 4.7 - update the map object
+
+So now I have the main update method of this map module that can be passes a map object, and then update the current money value with what is there in terms of buildings.
 
 ```js
 // UPDATE GRID
