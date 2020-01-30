@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2020-01-29 21:36:22
-version: 1.5
+updated: 2020-01-29 21:38:59
+version: 1.6
 ---
 
 This is a canvas example that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. Anyway say you want to make a canvas project that will work well with both mouse and touch events. So in other words you do not want to do anything with muti touch on touch devices, and you want all events for both mouse and touch events to be mapped to certain events that are the same. However in order to do so a bit of parsing, adjusting values, and other things need to be preformed before calling some uniform handers that are to be called for both mouse and touch events.
@@ -124,6 +124,10 @@ Now for the public method, what this is called from outside the module all I hav
 
 ## 2 - Lets see it in action with a demo
 
+So now for a quick demo to see if this works as it should when given a simple state object that will work with it. This is an example that just results in a circle drawn at the center of the canvas, and both mouse and touch events can be used to move it around. 
+
+So lets start out with the html I just have a div element and then script tags linking to my pointer manager first, and then the main.js file that will follow.
+
 ```html
 <html>
     <head>
@@ -136,6 +140,8 @@ Now for the public method, what this is called from outside the module all I hav
     </body>
 </html>
 ```
+
+Here is the main.js file.
 
 ```js
 var canvas = document.createElement('canvas'),
