@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 09:04:07
-version: 1.22
+updated: 2020-01-30 09:50:36
+version: 1.23
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -433,6 +433,8 @@ var draw = (function () {
 ```
 
 ## 5.2 - Draw cells
+
+I will need some kind of draw method that will draw the current state of the map. For this canvas example I am working with small maps, and focusing on just getting the core of the game together. So with that said something that just loops over all the cells and draws them all at once each time will work okay for now.
 
 ```js
     // draw cells
