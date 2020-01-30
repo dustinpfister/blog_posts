@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 08:49:06
-version: 1.17
+updated: 2020-01-30 08:51:07
+version: 1.18
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -279,7 +279,13 @@ map.setGridWorth = function (grid, x, y, b) {
         cell.worth = 1 + Math.pow(b, d);
     }
 };
- 
+```
+
+### 4.4 - Create a building
+
+I will want a method that can be called to create a building from a list of building options when it comes to the player creating a new building on a cell with an empty object for its building property.
+
+```js
 // BUILDINGS
  
 // create a building object at the given cell position
