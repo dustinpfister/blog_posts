@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 10:00:43
-version: 1.26
+updated: 2020-01-30 10:03:00
+version: 1.27
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -503,6 +503,8 @@ So then I need a draw method that will render the current status of this build m
 ```
 
 ## 5.5 - draw state debug info
+
+Here I have the public method that will render the debug info for the current state, that makes use of the draw state debug object at the top of this draw module. I want to have it so that the first line is always the current state, followed by any additional info to draw if a draw debug info method for the current state is there.
 
 ```js
         stateDebugInfo: function (ctx, stateName, grid, states) {
