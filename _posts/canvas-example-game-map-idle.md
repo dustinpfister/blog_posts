@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-01-30 09:00:36
-version: 1.21
+updated: 2020-01-30 09:04:07
+version: 1.22
 ---
 
 Today I will be writing about yet another [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this one will be an idle game that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other posts. It makes use of a state machine in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tired to working with canvas.
@@ -402,6 +402,10 @@ map.updateGrid = function (grid) {
 
 This is a canvas example, so here is the draw module for this canvas example. Here I have all of the draw methods that are used to update the drawing context of the canvas element that is created and append in  the main javaScript file that I will be getting to in another section.
 
+## 5.1 - draw state debug 
+
+So I made a draw method that will render different debug info depending on the current state of the state machine that I will be getting to when covering main.js in a section coming up.
+
 ```js
 var draw = (function () {
  
@@ -426,7 +430,11 @@ var draw = (function () {
             ctx.fillText('money per tick: ' + build.moneyPerTick, 10, 50);
         }
     };
- 
+```
+
+## 5.2 - Draw cells
+
+```js
     // draw cells
     var drawCells = function (grid, ctx, canvas, pxRatio, xOffset, yOffset, cellSize) {
         var colors = ['yellow', 'green'];
