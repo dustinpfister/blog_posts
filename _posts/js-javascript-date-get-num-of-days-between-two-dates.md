@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-01-30 17:34:22
-version: 1.3
+updated: 2020-01-30 17:44:23
+version: 1.4
 ---
 
 This will be a quick post on getting the number of days between two javaScript dates. Like most things like this it is important to look at more than one solution, so I will be taking a look at two to say then least. In addition I will break off into some additional examples and related topics that have to do with working with dates in javaScript so things post is not to thin.
@@ -29,7 +29,9 @@ var days = getDayDiff1(d1, d2);
 console.log(days); // 1092
 ```
 
-## 2 - An overly complex solution that involves looping
+## 2 - An overly complex solution that involves looping, and getting the number of days in a month
+
+In this section I will be going over a more complicated way of doing the same thing. This solution involves a trick that can be used to get the number of days in a month, by adding one to the month argument, and setting zero as the day of the month, resulting in getting the last day of the current month. From there the get date method can be used to get the number of days in a month. With this it is just a matter of doing so for all months of interest, tabulating the number of days for each month, and then just adding and subtracting days to adjust with what is going on with the day of the month of the two date objects.
 
 ```js
 var getDaysInMonth = function (y, m) {
