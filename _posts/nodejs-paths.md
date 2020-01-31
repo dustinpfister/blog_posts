@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 15:44:04
-version: 1.12
+updated: 2020-01-31 15:46:51
+version: 1.13
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -98,7 +98,7 @@ let isAbsolute = path.isAbsolute('/home/dustin');
 
 ## 6 - Finding out if a path is a sub dir of another path
 
-I recently ran into a situation in which I need to find out if a path is a sub dir of another path in order to exclude it if it is. Path.relative comes in handy with this.
+I recently ran into a situation in which I need to find out if a path is a sub dir of another path in order to exclude it if it is. The Path.relative method comes in handy with this.
 
 ```js
 let isSub = function (rootPath, testPath) {
@@ -109,3 +109,6 @@ let isSub = function (rootPath, testPath) {
 };
 ```
 
+## 7 - Conclusion
+
+The node path module is a built in module that I find myself using all the time when it comes to making nodejs modules, examples, and basic projects. It is not a silver bullet for all file system related tasks though, there is still the file system module when it comes to actually reading and writing files for example.
