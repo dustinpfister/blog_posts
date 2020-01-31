@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 15:12:48
-version: 1.11
+updated: 2020-01-31 15:44:04
+version: 1.12
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -67,11 +67,11 @@ console.log(dir);
 // './foo/man'
 ```
 
-I often end up in situations in which I have many different path parts and I want to piece them together into a single path in a way in which it will always come together in a single valid path. The join method serves me well with this.
 
-## 5 - Absolute Paths
 
-An absolute path is a full path all the way back to root. On a posix system an absolute path is something like this
+## 5 - Absolute Paths, relative paths, and the isAbsolute node path method
+
+An absolute path is a full path all the way back to root, or in other words a full path to a folder or file. This is in contrast to a relative path, that is just a path to a filename maybe, but not a full path to that resource. On a posix system an absolute path is something like this
 
 ```
 /home/dustin/documents
