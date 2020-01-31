@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 15:08:18
-version: 1.10
+updated: 2020-01-31 15:12:48
+version: 1.11
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -57,11 +57,14 @@ let fileName = path.basename('./foo/man/chew.js');
 
 ## 4 - Getting a dir from a full path with path.dirname
 
-Opposite of basename is path.dirname.
+Opposite of basename is path.dirname, as one would expect this will return the dirname of the given path.
 
 ```js
-let dir = path.basename('./foo/man/chew.js');
-// returns '/foo/man'
+let path = require('path');
+ 
+let dir = path.dirname('./foo/man/chew.js');
+console.log(dir);
+// './foo/man'
 ```
 
 I often end up in situations in which I have many different path parts and I want to piece them together into a single path in a way in which it will always come together in a single valid path. The join method serves me well with this.
