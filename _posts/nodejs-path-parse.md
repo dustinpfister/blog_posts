@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 601
-updated: 2020-01-31 18:04:09
-version: 1.3
+updated: 2020-01-31 18:06:22
+version: 1.4
 ---
 In the [node path](https://nodejs.org/api/path.html) core build in module of node js there is the [path parse](https://nodejs.org/api/path.html#path_path_parse_path) method. This is a method that can be used to parse a path string into an object with properties for each of the parts of a typical file system path.
 
@@ -45,3 +45,5 @@ console.log(path.parse(p1).root); // '/'
 console.log(path.parse(p2).root); // ''
 console.log(path.parse(p3).root); // 'C:\\'
 ```
+
+In the event that a relative path is given the root property will end up being an empty string. One of the reasons why it is generally a good idea to make sure you are always dealing with an absolute path.
