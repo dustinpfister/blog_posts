@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 16:14:34
-version: 1.16
+updated: 2020-01-31 16:21:37
+version: 1.17
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -124,6 +124,24 @@ let isSub = function (rootPath, testPath) {
 };
 ```
 
-## 3 - Conclusion
+## 3 - Why absoulte paths?
+
+Why should a developer consider using absolute paths most of the time? maybe this simple copy and past example will helper you understand first hand why the difference is important.
+
+```
+let path = require('path');
+ 
+let r = path.resolve('./foo.js'),
+a = path.resolve(__dirname, './foo.js');
+ 
+console.log(r);
+console.log(a);
+```
+
+The above example used the dir name global variable to get a path to the current module. In this case the file to which this node path example is saved. If I call this file from a command line interface where the current working path is the same as the path where the file is, then both paths will resolve to the same absolute path. However if I change the working path to something else, and then call it from there, the relative path will be to a foo.js file that would be at that current working path.
+
+Depending on what you want to do, you might want to load a file from the current working directory. However even then you should make it more explicit, by joining process.cwd with the relative path that you expect from that current working directory.
+
+## 4 - Conclusion
 
 The [node path module](https://nodejs.dev/the-nodejs-path-module) is a built in module that I find myself using all the time when it comes to making nodejs modules, examples, and basic projects. It is not a silver bullet for all file system related tasks though, there is still the file system module when it comes to actually reading and writing files for example.
