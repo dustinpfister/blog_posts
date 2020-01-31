@@ -5,10 +5,12 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 601
-updated: 2020-01-31 18:10:37
-version: 1.5
+updated: 2020-01-31 18:14:30
+version: 1.6
 ---
-In the [node path](https://nodejs.org/api/path.html) core build in module of node js there is the [path parse](https://nodejs.org/api/path.html#path_path_parse_path) method. This is a method that can be used to parse a path string into an object with properties for each of the parts of a typical file system path.
+In the [node path](https://nodejs.org/api/path.html) core build in module of node js there is the [path parse](https://nodejs.org/api/path.html#path_path_parse_path) method. This is a method that can be used to parse a path string into an object with properties for each of the parts of a typical file system path. Properties of a path like the dir to a file as well as the filename and file extension.
+
+There is also a user space npm package called [path-parse](https://www.npmjs.com/package/path-parse) that aims to be a so called [ponyfill](https://github.com/sindresorhus/ponyfill) of this native nodejs path module method. However I do not see much of a need for such a package as this is something that was introduced a long time ago and seems to work just fine.
 
 <!-- more -->
 
