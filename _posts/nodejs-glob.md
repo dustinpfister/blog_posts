@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2020-01-31 18:27:43
-version: 1.15
+updated: 2020-01-31 18:31:03
+version: 1.16
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_(programming) as a way to use a \* wildcard to represent any string of characters. I am pretty comfortable with this method of selecting files that fit a certain pattern this way, so it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -30,7 +30,7 @@ It is a way of making use of a wildcard character \* to represent zero or more c
 *.txt
 ```
 
-Will match any file with a .txt extension which will match helloworld.txt, and readme.txt, but not index.js in a given directory. This is something that I have been using for years when it comes to filtering files in file system managers, command line interface terminals an so forth. Globs might be less powerful then regEx patterns, but for most use case seniors simplified glob patterns are still good enough to get the job done.
+Will match any file with a .txt extension which will match helloworld.txt, and readme.txt, but not index.js in a given directory. This is something that I have been using for years when it comes to filtering files in file system managers, command line interface terminals an so forth. Globs might be less powerful then regEx patterns, but for most use case examples simplified glob patterns are still good enough to get the job done when it comes to pattern matching and paths.
 
 ## 2 - Basic usage of glob in nodejs
 
@@ -65,7 +65,7 @@ By default glob will search for files that fit the given pattern in the current 
 
 ## 3 - The ** wildcard
 
-The ** wildcard can be used to search for what is in the current working directory, and any additional subdirectories so that:
+The \*\* wildcard can be used to search for what is in the current working directory, and any additional subdirectories so that:
 
 ```js
 var forFiles = function(err,files){ console.log(files);};
@@ -76,7 +76,7 @@ will search for and compile a list a file names for each mark down file found in
 
 ## 4 - Changing the current working path
 
-If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd() in node.js.
+If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd\(\) in node.js.
 
 ```js
 var glob = require('glob'),
