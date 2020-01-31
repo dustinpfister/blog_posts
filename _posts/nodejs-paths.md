@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 15:03:33
-version: 1.9
+updated: 2020-01-31 15:08:18
+version: 1.10
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -33,7 +33,7 @@ In the above example I am using the posix property of the path module to make su
 
 ## 2 - Path resolve method
 
-So another node path method module method that I use a lot is the resolve method. This also works like path join but will resolve the path to an absolute path.
+So another node path method module method that I use a lot is the resolve method. This also works like path join but will resolve the path to an absolute path. In general I find that it is best to make everything that I am working with an absolute path to help make sure that I am always grabbing at an absolute resource location.
 
 ```js
 let path = require('path');
@@ -43,6 +43,8 @@ console.log(path.isAbsolute(p)); // true
 console.log(p);
 // (absolute path to ./new_foo_project)
 ```
+
+I could get more into relative and absolute path examples, but that would be getting off topic a little. If you are still new to node and working with paths, it is a good idea for now to just be aware of what the difference is between relative and absolute paths. The value of what is placed in before a relative path can change depending on certain factors, but an absolute path helps to make sure that nothing weird happens.
 
 ## 3 - Getting the base name of a path
 
