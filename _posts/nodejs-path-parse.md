@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 601
-updated: 2020-01-31 18:14:30
-version: 1.6
+updated: 2020-01-31 18:18:02
+version: 1.7
 ---
 In the [node path](https://nodejs.org/api/path.html) core build in module of node js there is the [path parse](https://nodejs.org/api/path.html#path_path_parse_path) method. This is a method that can be used to parse a path string into an object with properties for each of the parts of a typical file system path. Properties of a path like the dir to a file as well as the filename and file extension.
 
@@ -31,6 +31,8 @@ console.log(obj.base); // 'index.js'
 console.log(obj.name); // 'index'
 console.log(obj.ext);  // '.js'
 ```
+
+Things work out nice when an absolute path is given like this. However in some cases you might end up with blank properties for certain values. This is what should be expected of course if the path given is a relative path, rather than an absolute one when it comes to the root property. Also if a director is given, or a path with a filename that does not have an extention there should be nothing for the ext property naturally.
 
 ## 2 - The root property
 
