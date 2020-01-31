@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 601
-updated: 2020-01-31 17:57:53
-version: 1.2
+updated: 2020-01-31 18:04:09
+version: 1.3
 ---
 In the [node path](https://nodejs.org/api/path.html) core build in module of node js there is the [path parse](https://nodejs.org/api/path.html#path_path_parse_path) method. This is a method that can be used to parse a path string into an object with properties for each of the parts of a typical file system path.
 
@@ -33,3 +33,15 @@ console.log(obj.ext);  // '.js'
 ## 2 - The root property
 
 The root property should be the [root directory](https://en.wikipedia.org/wiki/Root_directory) of the path that was given to the path parse method. The root directory is the first or top level directory in a file system hierarchy. In posix systems this is typically the root path from which everything else branches off from, but can also be a relative root path or sorts that could be mounted to such a tree. In windows systems it is typically the current drive letter, such as C.
+
+```js
+let path = require('path');
+ 
+let p1 = '/home/dustin/js/nodejs-path-parse/index.js',
+p2 = './js/project1/main.js',
+p3 = 'C:\\Windows\\system32\\notepad.exe';
+ 
+console.log(path.parse(p1).root); // '/'
+console.log(path.parse(p2).root); // ''
+console.log(path.parse(p3).root); // 'C:\\'
+```
