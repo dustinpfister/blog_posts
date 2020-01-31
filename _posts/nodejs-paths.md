@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 15:46:51
-version: 1.13
+updated: 2020-01-31 15:48:52
+version: 1.14
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -111,4 +111,4 @@ let isSub = function (rootPath, testPath) {
 
 ## 7 - Conclusion
 
-The node path module is a built in module that I find myself using all the time when it comes to making nodejs modules, examples, and basic projects. It is not a silver bullet for all file system related tasks though, there is still the file system module when it comes to actually reading and writing files for example.
+The [node path module](https://nodejs.dev/the-nodejs-path-module) is a built in module that I find myself using all the time when it comes to making nodejs modules, examples, and basic projects. It is not a silver bullet for all file system related tasks though, there is still the file system module when it comes to actually reading and writing files for example.
