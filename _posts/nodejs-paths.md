@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2019-09-08 15:15:51
-version: 1.6
+updated: 2020-01-31 14:51:04
+version: 1.7
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice framework to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems, along with many other common path related tasks. So I could look for some kind of npm package, write my own code.However for starters there is no need to bother with an npm package of any kind, or write my own code, as the node.js built in [path module](https://nodejs.org/api/path.html) can help with a great deal of these kinds of tasks when working with a file system.
@@ -29,7 +29,7 @@ In the above example I am using the posix property of the path module to make su
 
 ## 2 - Path resolve method
 
-So another node path method module method that I use a lot is the resolve method. This also works like path join but will resolve the path to an abolsute path.
+So another node path method module method that I use a lot is the resolve method. This also works like path join but will resolve the path to an absolute path.
 
 ```js
 let path = require('path');
@@ -40,7 +40,7 @@ console.log(p);
 // (absolute path to ./new_foo_project)
 ```
 
-## Getting the base name of a path
+## 3 - Getting the base name of a path
 
 Another task that is quickly solved with the path module is getting the base name of a path. This is helpful for getting a filename from the end of a path.
 
@@ -49,7 +49,7 @@ let fileName = path.basename('./foo/man/chew.js');
 // returns 'chew.js'
 ```
 
-## Getting a dir from a full path with path.dirname
+## 4 - Getting a dir from a full path with path.dirname
 
 Opposite of basename is path.dirname.
 
@@ -60,7 +60,7 @@ let dir = path.basename('./foo/man/chew.js');
 
 I often end up in situations in which I have many different path parts and I want to piece them together into a single path in a way in which it will always come together in a single valid path. The join method serves me well with this.
 
-## Absolute Paths
+## 5 - Absolute Paths
 
 An absolute path is a full path all the way back to root. On a posix system an absolute path is something like this
 
@@ -87,7 +87,7 @@ let isAbsolute = path.isAbsolute('/home/dustin');
 // returns true
 ```
 
-## Finding out if a path is a sub dir of another path
+## 6 - Finding out if a path is a sub dir of another path
 
 I recently ran into a situation in which I need to find out if a path is a sub dir of another path in order to exclude it if it is. Path.relative comes in handy with this.
 
