@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2020-01-31 13:11:53
-version: 1.15
+updated: 2020-01-31 13:16:18
+version: 1.16
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. The lodash \_.includes method is one of the collection methods in lodash that will work with Arrays, and Objects in general, and even strings. The nature of the lodash includes method is that it can be used as a way to test if a value is included in a collection or not.
@@ -31,7 +31,7 @@ console.log( _.includes(arr,'c') ); // true
 
 ### 2.1 - Using the native Array.includes method in vanilla javaScript to do the same thing
 
-So in late specs of native javaScript there is now a native version of the lodash includes method. It would seem that this method does work more or less the same as lodash includes. Because it is a prototype method it is just a means of calling it off of an array instance and then passing the value that you want to check to see if it is included in the array.
+So in late specs of native javaScript there is now a native equivalent of sorts of the lodash includes method in the array prototype that is the [Array includes prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes). It would seem that this method does work more or less the same as lodash includes if you only care about arrays rather than objects in general. Because it is a prototype method it is just a means of calling it off of an array instance and then passing the value that you want to check to see if it is included in the array.
 
 ```js
 let arr = ['a','b','c'];
@@ -40,6 +40,8 @@ console.log( arr.includes(42) ); // false
 console.log( arr.includes('d') ); // false
 console.log( arr.includes('c') ); // true
 ```
+
+One issue of concern is that it is a late method, so it will not work in older clients without a polyfill. If you do care a great deal about supporting older clients it is not just a matter of using lodash though also. However getting into that would be off topic.
 
 ## 3 - Example of \_.includes With objects
 
