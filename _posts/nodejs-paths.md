@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 15:01:31
-version: 1.8
+updated: 2020-01-31 15:03:33
+version: 1.9
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -19,7 +19,7 @@ As such this post will serve as a general overview of the built in node path mod
 
 ## 1 - node path module and joining two paths together
 
-This is a task that I use the path module for all the time. I have a base path to a working folder or any kind of folder or interest where there are resources of some kind. I then also have a relative path from that working path and I want to create a path from the base path and the relative path. One way to go about doing so with the path module in nodejs is to use the path join method.
+This is a task that I use the path module for all the time. I have a base path to a working folder or any kind of folder of interest where there are resources of some kind. I then also have a relative path from that working path and I want to create a path from the base path and the relative path. One way to go about doing so with the path module in nodejs is to use the path join method.
 
 ```js
 let path = require('path');
@@ -29,7 +29,7 @@ console.log(p);
 // '/foo/bar'
 ```
 
-In the above example I am using the posix property of the path module to make sure that I end up getting a posix rather than win32 friendly path result. I could just call path.join but that would give a result that is different depending on the underlaying operating system that node is running on. In some situations I might want to do something that way actually but for this example I wanted to make a simple code example of the path join method that will return the same result on any kind of platform.
+In the above example I am using the posix property of the path module to make sure that I end up getting a posix rather than win32 friendly path result. I could just call path.join but that would give a result that is different depending on the underlaying operating system that node is running on. In some situations I might want to do something that way actually, but for this example I wanted to make a simple code example of the path join method that will return the same result on any kind of platform.
 
 ## 2 - Path resolve method
 
