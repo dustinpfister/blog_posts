@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-02-02 15:05:58
-version: 1.11
+updated: 2020-02-02 15:08:03
+version: 1.12
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -81,6 +81,8 @@ This helper method just returns a canvas relative position from an event object 
         };
     };
 ```
+
+I made it so that it should give a desired result regardless if it is a mouse or touch event. The method seems to work okay as far as I have tested it.
 
 ### 1.4 - Attach event handers to a canvas element
 
