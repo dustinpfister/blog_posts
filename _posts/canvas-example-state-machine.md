@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-02-02 15:04:26
-version: 1.10
+updated: 2020-02-02 15:05:58
+version: 1.11
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -96,6 +96,8 @@ In the body of the hander that is attached for this given DOM event type the get
             stateObj = sm.states[sm.currentState],
             handler,
             mode;
+            // prevent default
+            e.preventDefault();
             // call top level if there
             if (stateObj.userPointer) {
                 handler = stateObj.userPointer[smType];
