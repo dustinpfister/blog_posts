@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2020-02-02 11:29:20
-version: 1.2
+updated: 2020-02-02 13:16:20
+version: 1.3
 ---
 
 In lodash there is the from pairs array method that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element in that nested array. It is the inversion of the lodash to pairs method that does the opposite of this. Although that might sound like a mouthful if you take a moment to look at some quick code examples you will find that this is not something that is all that hard. In addition this is one of many lodash method where doing the same with plain old vanilla javaScript is pretty quick and easy. So lets look at some code examples for the lodash from pairs method as well as some plain old vanilla javaScript code examples that do the same thing.
@@ -29,6 +29,8 @@ console.log( _.fromPairs(arr) );
 Thats it, that is what the lodash from pairs method does. However there is also having a method that does the opposite of this that will create such an array of array from an object. Also it is not so hard to just do this with plain old javaScript in a number of ways, so lets look at some more related coded examples with and without the use of lodash.
 
 ## 2 - lodash \_.toPairs to do the opposite
+
+The lodash \_.toPairs method is the inverse of the lodash \.FromPairs method. If I pass an object to it, I am given an array of arrays where the keys and values are the first and second elements of each nested array for each key value pair in the given object.
 
 ```js
 let arr = [['x', 1],['y', 2], ['z', 3]];
