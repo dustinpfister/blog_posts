@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-01-28 16:19:09
-version: 1.9
+updated: 2020-02-02 15:04:26
+version: 1.10
 ---
 
 For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
@@ -69,12 +69,11 @@ For starters it draws a plain black background to the canvas, and the width and 
 This helper method just returns a canvas relative position from an event object that was gained from within an event hander. Without this I would end up with a window relative position which is the default for event handlers that have to do with mouse and touch events.
 
 ```js
-    // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
-        bx = canvas.getBoundingClientRect(),
-        x = e.clientX - bx.left,
-        y = e.clientY - bx.top;
+        bx = canvas.getBoundingClientRect();
+        var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
         return {
             x: x,
             y: y,
@@ -122,6 +121,9 @@ In the body of the hander that is attached for this given DOM event type the get
         attachCanvasEvent(sm, 'mousedown', 'start');
         attachCanvasEvent(sm, 'mousemove', 'move');
         attachCanvasEvent(sm, 'mouseup', 'end');
+        attachCanvasEvent(sm, 'touchstart', 'start');
+        attachCanvasEvent(sm, 'touchmove', 'move');
+        attachCanvasEvent(sm, 'touchend', 'end');
     };
 ```
 
