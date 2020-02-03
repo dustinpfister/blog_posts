@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-02-02 23:59:41
-version: 1.21
+updated: 2020-02-03 00:01:45
+version: 1.22
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -202,3 +202,7 @@ var loop = function () {
  
 loop();
 ```
+
+## 4 - Conclusion
+
+The basic idea of what I had in mind for this example is there, but there is much more to writing about event when it comes to just making this basic kind of canvas example.
