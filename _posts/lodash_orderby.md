@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 588
-updated: 2020-01-06 10:34:05
-version: 1.4
+updated: 2020-02-03 10:21:09
+version: 1.5
 ---
 
 The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays. It works more or less the same way as the lodash sortby method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection.
@@ -31,3 +31,38 @@ console.log(asc, desc);
 ```
 
 So then order by is just a more robust version of lodash sortby that allows for setting the ascending or descending order of the resulting sort of the collection.
+
+## 2 - Sorting with vanilla javaScript and the Array.sort prototype method
+
+The native javaScript Array.sort prototype method works okay when it comes to sorting an array. However it works a little differently when it comes to writing a sort method for it. In addition another drawback is that it will sort the array in place, rather than act on a copy of that array.
+
+```js
+let clone = (arr) => {
+    return arr.map((n) => {
+        return n
+    });
+};
+ 
+let mkNumSort = (dec) => {
+    dec = dec === undefined ? false : dec;
+    return (a, b) => {
+        if (a > b) {
+            return dec ? -1 : 1;
+        }
+        if (a < b) {
+            return dec ? 1 : -1;
+        }
+        return 0;
+    }
+};
+ 
+let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1],
+asc = clone(nums).sort(mkNumSort(false)),
+desc = clone(nums).sort(mkNumSort(true));
+ 
+console.log(asc, desc, nums);
+ 
+// [ -5, -1, 3, 5, 6, 7, 27, 42, 52, 158 ]
+// [ 158, 52, 42, 27, 7, 6, 5, 3, -1, -5 ]
+// [5, 42, -5, 7, 6, 3, 52, 27, 158, -1]
+```
