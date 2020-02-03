@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-02-02 23:53:46
-version: 1.17
+updated: 2020-02-02 23:56:14
+version: 1.18
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -79,7 +79,7 @@ b.createBallCollection = function (opt) {
 
 ### 1.3 - Move ball object method
 
-Now for the method that moves the ball, and also checks to see if the ball hits any sides of the canvas.
+Now for the method that moves the ball, and also checks to see if the ball hits any sides of the canvas. This works by passing a single ball object as the first arguments, and then a canvas as the second argument. The method will step the position of the ball based on the current heading and delta value for the ball. If the ball goes out of bounds for the canvas element adjustments are made.
 
 ```js
 b.moveBallObject = function (ball, canvas) {
