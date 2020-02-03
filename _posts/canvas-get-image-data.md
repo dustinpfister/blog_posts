@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-02-03 11:38:53
-version: 1.12
+updated: 2020-02-03 11:40:46
+version: 1.13
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current state of a canvas elements drawing context. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data into a canvas. In addition there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch using just javaScript code and some other data source to create image data. 
@@ -17,7 +17,7 @@ These methods give a way to have total pixel by pixel control over the creation 
 
 ## 1 - Get image data basic example
 
-So a basic example of using the get image data method might involve just a hard coded HTML canvas element and a link to an external javaScript file via a string tag that will contain some javaScript that will make used of the get image data method. SO with that said the starting HTML of such a canvas get image data example might look something like this:
+So a basic example of using the get image data method might involve just a hard coded HTML canvas element, and a link to an external javaScript file via a string tag. The javaScript content of that external javaScript file will contain some javaScript that will make used of the get image data method. So with that said the starting HTML of such a canvas get image data example might look something like this:
 
 ```html
 <html>
@@ -30,6 +30,8 @@ So a basic example of using the get image data method might involve just a hard 
     </body>
 </html>
 ```
+
+Now that we have that out of the way lets look at the basic.js file.
 
 In the basic.js javaScript file I just get the canvas and the 2d drawing context and use the 2d drawing context to draw a little something to the canvas. For now it does not matter what that something is a great deal it is just so that I have something in the canvas to get. I can then use the canvas get image data method to get the image data for a section of that canvas. I just need to call ctx.getImageData and pass the x and y position and width and height of the section of the canvas matrix that I want.
 
