@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-01-16 11:56:00
-version: 1.15
+updated: 2020-02-02 23:51:41
+version: 1.16
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
@@ -44,7 +44,7 @@ b.createBallObject = function (opt) {
 
 ### 1.2 - a Create ball collection method
 
-I the  have another method that I can use to create a collection of ball objects.
+I then have another method that I can use to create a collection of ball objects.
 
 ```js
 b.createBallCollection = function (opt) {
