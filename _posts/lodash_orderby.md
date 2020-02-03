@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 588
-updated: 2020-02-03 10:21:09
-version: 1.5
+updated: 2020-02-03 10:25:48
+version: 1.6
 ---
 
 The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays. It works more or less the same way as the lodash sortby method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection.
@@ -35,6 +35,10 @@ So then order by is just a more robust version of lodash sortby that allows for 
 ## 2 - Sorting with vanilla javaScript and the Array.sort prototype method
 
 The native javaScript Array.sort prototype method works okay when it comes to sorting an array. However it works a little differently when it comes to writing a sort method for it. In addition another drawback is that it will sort the array in place, rather than act on a copy of that array.
+
+So if I where to use array sort, and I do not want to mutate the original array, then I will want to do something to make a shallow or deep clone of the array first. If I have an array of primitives rather than objects then a way of making a shallow clone will work just fine. 
+
+Once I have my copy of the array I can then work out how I would want to go about sorting that copy of an array with a sort method that will be passed as the first argument to the Array.sort prototype method. This method will have two elements to compare given as arguments, and the body of the method should use those arguments to return a delta value for the current index value of the first argument.
 
 ```js
 let clone = (arr) => {
