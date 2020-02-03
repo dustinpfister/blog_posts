@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-02-03 11:46:55
-version: 1.15
+updated: 2020-02-03 11:48:36
+version: 1.16
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current state of a canvas elements drawing context. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data into a canvas. In addition there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch using just javaScript code and some other data source to create image data. 
@@ -56,7 +56,7 @@ What is returned is an instance of the ImageData constructor that can be used di
 
 ### 1.1 - The imageData.data array
 
-The ImageData instances data property is an instance of a [Unit8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) that is just a single dimensional or linear array. Because of this the image data fro each pixel is in the form of a repeating RGBA order where the first element is a byte value for the red channel of the first pixel, the second element is the green channel, then the blue channel and finally the alpha channel of the first pixel in the upper left corner.
+The ImageData instances data property is an instance of a [Unit8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) that is just a single dimensional or linear array. Because of this the image data from each pixel is in the form of a repeating RGBA order where the first element is a byte value for the red channel of the first pixel, the second element is the green channel, then the blue channel, and finally the alpha channel of the first pixel in the upper left corner.
 
 ## 2 - Put image data example
 
