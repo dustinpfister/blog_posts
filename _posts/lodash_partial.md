@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 342
-updated: 2020-02-03 05:54:46
-version: 1.10
+updated: 2020-02-03 05:59:43
+version: 1.11
 ---
 
 The lodash [\_.partial](https://lodash.com/docs/4.17.11#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create a simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. Simply put it is a way to create an abstraction, or an alternative interface for a complex method that accepts many arguments.
@@ -34,26 +34,6 @@ let foo = function (a, b) {
 let bar = _.partial(foo, 40);
  
 console.log( bar(2) ); // 42
-```
-
-### 2.1 - Vanilla js example
-
-It is not that hard at all to achieve a similar effect with just plain old javaScript though. I can just call the foo method inside a function literal that returns the result of a call to foo with the number literal passed as the first argument for example.
-
-```js
-var foo = function (a, b) {
- 
-    return a + b;
- 
-};
- 
-var bar = function (b) {
- 
-    return foo(40, b);
- 
-};
- 
-console.log(bar(2)); // 42
 ```
 
 ## 3 - A more complex example of \_.partial
@@ -103,3 +83,27 @@ _.forEach(points, function (guy) {
 console.log(points);
 // { guy1: { x: 42, y: 117 }, guy2: { x: -17, y: 100 } }
 ```
+
+## 5 - Vanilla js example
+
+It is not that hard at all to achieve a similar effect with just plain old javaScript though. I can just call the foo method inside a function literal that returns the result of a call to foo with the number literal passed as the first argument for example.
+
+```js
+var foo = function (a, b) {
+ 
+    return a + b;
+ 
+};
+ 
+var bar = function (b) {
+ 
+    return foo(40, b);
+ 
+};
+ 
+console.log(bar(2)); // 42
+```
+
+## 6 - Conclusion
+
+So the lodash partial method might not be the most compelling method in lodash to warrant the need to continue using lodash in new projects. I can not say I use this method in any of my projects, but I think I can understand why it might make sense to do something like this when it comes to working with a method that accepts a ton of arguments to help improve readability of code maybe. However I would likely just wrap the method in most cases.
