@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 535
-updated: 2020-02-03 05:32:05
-version: 1.6
+updated: 2020-02-03 05:45:00
+version: 1.7
 ---
 
 In lodash there is the words method that can be used to quickly preform [lexical analysis tokenization](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) of a string. In other words the [lodash words](https://lodash.com/docs/4.17.15#words) method is used to split a string into an array of words. In some cases this could be easily done with the split method, but it is not always so cut and dry. There are text samples that might contain certain characters that are to be cut out or included in the process for example. So that being said there is a need for some kind of Tokenizer method that is better suited for the task of creating an array of words from a text sample. 
@@ -51,3 +51,20 @@ console.log(  _.words(text, /\w+/g) );
 ```
 
 So then the solution is to make all the text lowercase before I pass it to lodash words, or use a custom pattern that will not split up words like that.
+
+## 4 - A vanilla javaScript replacement for lodash words
+
+So making an vanilla javaScript replacement for the lodash words method has not proven to be so hard. I just need to use a string prototype method like String.match to match all words in a string, or String.split to match all white space separators between words.
+
+```js
+let words = (str, pat, uc) => {
+    pat = pat || /\w+/g;
+    str = uc ? str : str.toLowerCase();
+    return str.match(pat);
+};
+ 
+console.log(words('JavaScript is fun!'));
+// [ 'javascript', 'is', 'fun' ]
+console.log(words('JavaScript is fun!', /\w+[!?.]|\w+/g, true));
+// [ 'JavaScript', 'is', 'fun!' ]
+```
