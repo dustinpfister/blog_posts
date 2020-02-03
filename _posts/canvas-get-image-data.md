@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-02-03 11:40:46
-version: 1.13
+updated: 2020-02-03 11:44:05
+version: 1.14
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current state of a canvas elements drawing context. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data into a canvas. In addition there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch using just javaScript code and some other data source to create image data. 
@@ -33,7 +33,7 @@ So a basic example of using the get image data method might involve just a hard 
 
 Now that we have that out of the way lets look at the basic.js file.
 
-In the basic.js javaScript file I just get the canvas and the 2d drawing context and use the 2d drawing context to draw a little something to the canvas. For now it does not matter what that something is a great deal it is just so that I have something in the canvas to get. I can then use the canvas get image data method to get the image data for a section of that canvas. I just need to call ctx.getImageData and pass the x and y position and width and height of the section of the canvas matrix that I want.
+In the basic.js javaScript file I just get a reference to the canvas element, and the 2d drawing context by way of the canvas get context method. Next I just use the 2d drawing context to draw a little something to the canvas so that I have something to get with the get image data method. I can then use the canvas get image data method to get the image data for a section of that canvas that contains what it is that I have drawn to it. I just need to call ctx.getImageData and pass the x and y position of the upper left corner of the desired section, and then the width and height of the section of the canvas matrix that I want as the last two arguments.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
