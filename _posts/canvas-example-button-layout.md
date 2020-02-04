@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-02-03 19:05:30
-version: 1.6
+updated: 2020-02-04 08:07:34
+version: 1.7
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things are not like with html outside of the canvas element where one can just add an input element.
@@ -20,6 +20,10 @@ Sure an input element and an event handler for it will work just fine in a pinch
 In order to have a functioning button rendered in the canvas element as a display object, I am going to need a way to detect if an area has been clicked or not. So I will need a utility library of sorts that has at least a bounding box hit detection method as one of its methods. I will also want to have a method that will process a mouse or touch event so that it returns a canvas relative rather than window relative position of a click or touch event.
 
 In addition to some basic methods for hit detection and working with event objects, I will also have a method in here that can be used to create a button layout object. This object will contain the current state of all buttons, and what is to happen when one of them is clicked.
+
+### 1.1 - The start of the lib, get canvas relative, and bounding box
+
+To work with buttons that are actually display objects in a canvas element rather than html elements positioned over a canvas, I am going to need to get canvas relative mouse and or touch positions as well as a means of collision or hit detection.
 
 ```js
 var u = {};
@@ -43,7 +47,11 @@ u.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         (x1 + w1) < x2 ||
         x1 > (x2 + w2));
 };
- 
+```
+
+### 1.2 - The make canvas button layout method
+
+```js
 u.mkButtonLayout = function (opt) {
     var blObj = {};
     opt = opt || {};
