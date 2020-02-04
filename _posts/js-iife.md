@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-02-04 08:56:48
-version: 1.3
+updated: 2020-02-04 10:49:59
+version: 1.4
 ---
 
 A JS IIFE or Immediately Invoked Function Expression is a way to make a javaScript function that self invokes. These kinds of functions in javaScript are often used in module design, as private methods and other values can be in the body of the function and a public set of methods and properties can be a product that is returned to a variable.
@@ -15,7 +15,7 @@ A JS IIFE or Immediately Invoked Function Expression is a way to make a javaScri
 
 ## 1 - JS IIFE basic example
 
-Lets start out with just a basic example of an IIFE in javaScript.
+Lets start out with just a basic example of an IIFE in javaScript. I do so by just writing a function expression like always, but I then wrap the expression in parenthesis or a group operator if you prefer. I then call the function expression as well within the group operator. So I define the function wile also calling it invoking any code that may be within the body of the IIFE.
 
 ```js
 var count = (function () {
