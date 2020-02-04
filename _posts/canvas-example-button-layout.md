@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-02-03 19:02:48
-version: 1.4
+updated: 2020-02-03 19:04:39
+version: 1.5
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things are not like with html outside of the canvas element where one can just add an input element.
@@ -75,6 +75,8 @@ u.mkButtonLayout = function (opt) {
 ```
 
 ## 2 -  The draw module
+
+For this canvas example I will of course have a draw module that will contain methods that can be used to draw to a canvas element. For this example I just have a draw background method and a method to draw the current state of a button layout object that I can create with mu utility library.
 
 ```js
 var draw = {};
