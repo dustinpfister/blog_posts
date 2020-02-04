@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-02-03 19:04:39
-version: 1.5
+updated: 2020-02-03 19:05:30
+version: 1.6
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things are not like with html outside of the canvas element where one can just add an input element.
@@ -102,6 +102,8 @@ draw.buttonLayout = function (ctx, blObj) {
 ```
 
 ## 3 - Now for a basic example of a canvas button in action
+
+Now to pull everything topographer with html and a main.js file that will work as a basic example of this in action.
 
 ```html
 <html>
