@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-02-04 08:07:34
-version: 1.7
+updated: 2020-02-04 08:12:36
+version: 1.8
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things are not like with html outside of the canvas element where one can just add an input element.
@@ -24,6 +24,8 @@ In addition to some basic methods for hit detection and working with event objec
 ### 1.1 - The start of the lib, get canvas relative, and bounding box
 
 To work with buttons that are actually display objects in a canvas element rather than html elements positioned over a canvas, I am going to need to get canvas relative mouse and or touch positions as well as a means of collision or hit detection.
+
+So at the start of my custom trailered utility library for this canvas button example I have a method that will return a canvas relative position fro a mouse or touch event. The canvas relative position can then be used in conjunction with another method that has to do with bounding box collision detection inside yet another method that will be used to find out if a button is clicked or not.
 
 ```js
 var u = {};
