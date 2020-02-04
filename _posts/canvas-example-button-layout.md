@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-02-04 08:14:18
-version: 1.9
+updated: 2020-02-04 08:24:25
+version: 1.10
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things are not like with html outside of the canvas element where one can just add an input element.
@@ -54,6 +54,10 @@ u.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 These two methods are usual suspects when it comes to making any kind of project centered custom tailer utility framework. However now that I have these to work with it is now time to get into a method that will be kind of the main show of this canvas example.
 
 ### 1.2 - The make canvas button layout method
+
+So here I have my make button layout method that can be used to make a button layout object of sorts. The object that this method helps create contains an array of button objects. Each button object has properties such as and x and y position as well as a width and height. The properties of the button object can be used in conjunction with the processes pointer event positions to find out if a button has been clicked or not.
+
+In the event that a button is clicked then an on action function that is also a property of a button object will be called. This on action method can contain custom logic that is to be fired when a button is clicked that has to do with the nature of the project in which this is used.
 
 ```js
 u.mkButtonLayout = function (opt) {
