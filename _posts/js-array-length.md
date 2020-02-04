@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2019-11-15 18:19:06
-version: 1.59
+updated: 2020-02-04 18:47:22
+version: 1.60
 ---
 
-One might think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it then what one might expect. Array length in js refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. 
+You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However it is more like just a potential for that, as all the elements could be empty elements.
 
 However in some cases array length is just an object property that does not even reflect the highest indexed object key of the array, because there is nothing there actually. So in a way it is just a way of declaring an element size of sorts, but many of those elements can be undefined, the default value for an object key that is not there.
 
@@ -128,7 +128,7 @@ Here we have an array with a length of 11, but in a way there is only 6 elements
 
 ### 1.5 - Array length and array count with Object.keys
 
-So the length of an array can be found by simply taking a look at the current value of the length property of an array, but the count must be obtained by some other means such as using the Object.keys static method wich can be used to get an array of public keys of any object including arrays.
+So the length of an array can be found by simply taking a look at the current value of the length property of an array, but the count must be obtained by some other means such as using the Object.keys static method which can be used to get an array of public keys of any object including arrays.
 
 ```js
 let a = [1,2,3];
