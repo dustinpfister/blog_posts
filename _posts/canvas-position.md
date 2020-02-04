@@ -1,12 +1,12 @@
 ---
-title: Canvas position
+title: Gen and set Canvas position, and canvas relative values
 date: 2019-03-14 17:35:00
 tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2019-11-13 13:43:39
-version: 1.22
+updated: 2020-02-03 19:11:02
+version: 1.23
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default for elements which is static positioning, to relative, absolute, or fixed positioning, and then using additional rules like top and left to position the actual canvas element that way. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general.
