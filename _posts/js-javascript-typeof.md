@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2019-11-04 15:08:07
-version: 1.14
+updated: 2020-02-04 08:49:18
+version: 1.15
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used. The typeof operator might not always give the desired results, in many cases. So there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with when it comes to types in javaScript.
@@ -49,7 +49,7 @@ console.log( typeof null ); // 'object'
 
 From  what I have [gather so far with the typeof null equals object](https://stackoverflow.com/questions/18808226/why-is-typeof-null-object) deal in javaScript it it would seem that this is a mistake that dates all the way to the beginning of javaScript. There is some talk as to the subject of if it will be fixed or not but so far it seems like that is not happening.
 
-## 4 - Instanceof for fining out what an object is an instance of
+## 4 - Instanceof for finding out what an object is an instance of
 
 In most cases the typeof operator works just fine if I want to find out if something is a number, or an object. However if I want to find out what kind of object I am dealing with then in most cases typeof does not help much unless it is a function. The instanceof operator accepts two operands one to the left that is what should be an object, and the other is a constructor function. If the variable or value that is being evaluated is an instance of the constructor then the expression will evaluate to true, else false.
 
