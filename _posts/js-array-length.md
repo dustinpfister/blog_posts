@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2020-02-04 18:57:04
-version: 1.61
+updated: 2020-02-04 18:59:02
+version: 1.62
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However it is more like just a potential for that, as all the elements could be empty elements.
@@ -98,7 +98,7 @@ while (i < count) {
 }
 ```
 
-As expected the length of the array goes from one upwards to 5 as I am logging the length after pushing in new elements to it. Fairly simple of course, but in some situations things can get a little confusing when it comes to adding elements to an array in other ways, as well as when removing them.
+As expected the length of the array goes from one upwards to five as I am logging the length after pushing in new elements to it. Fairly simple of course, but in some situations things can get a little confusing when it comes to adding elements to an array in other ways, as well as when removing them.
 
 ### 1.3 - Popping out old elements decreases length
 
