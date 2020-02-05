@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-02-04 20:28:05
-version: 1.10
+updated: 2020-02-04 20:29:15
+version: 1.11
 ---
 
 There is a lot that I like about idle games, so I thought I would make another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post that is a basic idle game. This canvas example makes use of a custom trailered utility library that has a method that creates a button layout, which is one way that I go about making menus in a canvas project. I [wrote a post in which I get into this button layout method](/2020/02/03/canvas-example-button-layout/) in detail, but will be covering it here also. The game module has an upgrade system that I worked out that is worth writing a thing or two about So I will be getting into that a little here also. In any case this post should server as a good starting point for making a basic idea game with canvas elements and javaScript.
@@ -132,7 +132,9 @@ So the upgrade data array is an array of hard coded values for each upgrate, but
     };
 ```
 
-### 2.3 - 
+### 2.3 - Set the cost of an upgarde state object
+
+So I worked out some methods that are used to set the current cost of an upgrade.
 
 ```js
     // get the breakdown for base, inc, and pow that sets current cost
@@ -152,7 +154,11 @@ So the upgrade data array is an array of hard coded values for each upgrate, but
         var bd = getUSCostBreakdown(us);
         us.cost.current = bd.base + bd.inc + bd.pow;
     };
- 
+```
+
+### 2.4 - 
+
+```js
     // apply the effect of an upgrade
     var applyUSEffectToState = function (us, state, ud) {
         ud.effect(state, us.level, us);
