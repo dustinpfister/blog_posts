@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2020-02-05 08:11:21
-version: 1.17
+updated: 2020-02-05 08:14:44
+version: 1.18
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. Or in other words having more than one canvas element in a container element with them all positioned on top of each other. This can be helpful when there is a lot going on in the canvas project, and it is not necessary to repaint everything on the same frame tick. The use of laying can help create a situation in which things that only need to be updated on each frame tick are updated, while static things are not.
@@ -131,6 +131,8 @@ Layers.prototype.draw = function (draw, index) {
  
 };
 ```
+
+Not much, and there are all ready things I might considerer changing, however the basic idea of canvas layering is there. I want to have a layers array of sorts, and each layer object should have references to the canvas element, and the drawing context of the canvas. This layer object could also be used to store other helpful properties such as layer names, and so forth. However for this section at least I want to keep things minimal.
 
 ### 2.2 - An example of the Canvas Layer Class
 
