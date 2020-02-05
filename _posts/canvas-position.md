@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2020-02-04 20:00:41
-version: 1.24
+updated: 2020-02-04 20:05:50
+version: 1.25
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default for elements which is static positioning, to relative, absolute, or fixed positioning, and then using additional rules like top and left to position the actual canvas element that way. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general.
@@ -125,6 +125,25 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
     </body>
 </html>
 ```
+
+### 3.1 - Making A Get canvas relative position helper method that will work with both mouse and touch events
+
+The above example will work fine if I just care about a mouse position, however things work a litter differently when it comes to touch events. So it might be a good idea to have some kind of helper method that can be passed an event object and then return a canvas relative position from a mouse or touch event. This kind of method would use the clientX and clientY properties of the event object of they are there, if not it will make use of the first touch object in the event of a touch event.
+
+```js
+var getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
+    return {
+        x: x,
+        y: y,
+        bx: bx
+    };
+};
+```
+
 
 ## 4 - Center the canvas position
 
