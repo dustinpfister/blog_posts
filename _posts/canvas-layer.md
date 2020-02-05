@@ -5,11 +5,13 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2019-11-09 12:46:51
-version: 1.11
+updated: 2020-02-05 07:40:46
+version: 1.12
 ---
 
-In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. This can be helpful when there is a lot going on in the project and it is not necessary to repaint everything on the same frame tick. There are many was to go about increasing the efficiency of a canvas project, but layering might be a good starting point. Take a moment to think about what is going on in your project, are there things that are being redrawn on each frame tick that do not need to be redrawn each time? If so then take a moment to look into layering.
+In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. Or in other words having more than one canvas element in a container element with them all positioned on top of each other. This can be helpful when there is a lot going on in the canvas project, and it is not necessary to repaint everything on the same frame tick. The use of laying can help create a situation in which things that only need to be updated on each frame tick are updated, while static things are not.
+
+There are many was to go about increasing the efficiency of a canvas project, but layering might be a good starting point. Take a moment to think about what is going on in your project, are there things that are being redrawn on each frame tick that do not need to be redrawn each time? If so then take a moment to look into layering as an option for helping to increase FPS.
 
 <!-- more -->
 
