@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2020-02-04 18:59:02
-version: 1.62
+updated: 2020-02-04 19:01:54
+version: 1.63
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However it is more like just a potential for that, as all the elements could be empty elements.
@@ -118,7 +118,7 @@ There are of course many other ways to remove elements from an array that will r
 
 ### 1.4 - Setting an array element to a high index value will set the length of the Array
 
-Take into account a basic example such as this for a moment.
+ANother way to end up setting array length is by using the bracket syntax to set a numbers index value higher than the current length. Take into account a basic example such as this for a moment.
 
 ```js
 let a = [1,2,3,4,5];
@@ -126,7 +126,7 @@ a[10] = 10;
 console.log(a.length); // 11
 ```
 
-Here we have an array with a length of 11, but in a way there is only 6 elements in the array. This is what I am talking about when it comes to the difference between array length and array count. The length of the array is just the highest defined index value of he array plus one, while the count of an array is the actual count of defined elements in the array.
+Here we have an array with a length of 11, but in a way there is only six elements in the array when it comes to a basic way of counting elements. This is what I am talking about when it comes to the difference between array length and array count. The length of the array is just the highest defined index value of he array plus one, while the count of an array is the actual count of defined elements in the array.
 
 ### 1.5 - Array length and array count with Object.keys
 
