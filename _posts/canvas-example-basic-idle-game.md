@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-02-04 20:16:22
-version: 1.6
+updated: 2020-02-04 20:18:12
+version: 1.7
 ---
 
 There is a lot that I like about idle games, so I thought I would make another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post that is a basic idle game. This canvas example makes use of a custom trailered utility library that has a method that creates a button layout, which is one way that I go about making menus in a canvas project. I [wrote a post in which I get into this button layout method](/2020/02/03/canvas-example-button-layout/) in detail, but will be covering it here also. The game module has an upgrade system that I worked out that is worth writing a thing or two about So I will be getting into that a little here also. In any case this post should server as a good starting point for making a basic idea game with canvas elements and javaScript.
@@ -279,7 +279,9 @@ draw.buttonLayout = function (ctx, blObj) {
 };
 ```
 
-## 4 - Main
+## 4 - The main.js file and html
+
+So now that I have my utility library, game module, and draw module it is time to tie everything together with a main.js file and a a single HTML file.
 
 ```js
 // create and append canvas element, and get 2d context
