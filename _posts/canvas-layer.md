@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2020-02-05 07:40:46
-version: 1.12
+updated: 2020-02-05 07:46:36
+version: 1.13
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. Or in other words having more than one canvas element in a container element with them all positioned on top of each other. This can be helpful when there is a lot going on in the canvas project, and it is not necessary to repaint everything on the same frame tick. The use of laying can help create a situation in which things that only need to be updated on each frame tick are updated, while static things are not.
@@ -17,7 +17,9 @@ There are many was to go about increasing the efficiency of a canvas project, bu
 
 ## 1 - canvas layer basic example
 
-So the basic idea of canvas layers is that you just have a collection of canvas elements. A canvas element that is created and added to a container element first will have a lower z index value then canvas elements added after. anything that should have a lower z index value such as a background can be drawn to a canvas that is behind another canvas the draws something that updates on every frame tick. In some situations this can help to improves frame rate, as it allows for a situation in which what is being updated is only that what changes.
+So the basic idea of canvas layers is that you just have a collection of canvas elements. A canvas element that is created and added to a container element first will have a lower z index value then canvas elements added after using the document.appenbdChild method unless something is done to change that. 
+
+Anything that should have a lower z index value, such as a background can be drawn to a canvas that is behind another canvas that draws something that updates on every frame tick in the foreground. In some situations this can help to improve frame rate a little, by taking what is updated only once at the start of a game and drawing it just once in a separate canvas.
 
 ```html
 <html>
