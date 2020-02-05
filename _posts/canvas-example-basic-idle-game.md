@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-02-04 20:19:12
-version: 1.8
+updated: 2020-02-04 20:25:56
+version: 1.9
 ---
 
 There is a lot that I like about idle games, so I thought I would make another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) post that is a basic idle game. This canvas example makes use of a custom trailered utility library that has a method that creates a button layout, which is one way that I go about making menus in a canvas project. I [wrote a post in which I get into this button layout method](/2020/02/03/canvas-example-button-layout/) in detail, but will be covering it here also. The game module has an upgrade system that I worked out that is worth writing a thing or two about So I will be getting into that a little here also. In any case this post should server as a good starting point for making a basic idea game with canvas elements and javaScript.
@@ -76,6 +76,10 @@ u.mkButtonLayout = function (opt) {
 
 Now to get into the actual game module of this basic idle game canvas example.
 
+### 2.1 - Te start of the game module and the upgrade data array
+
+The module follows an IIFE pattern and at the very top of the self executing function expression I have an upgrade data array. This array contains an object for each upgrade that I would like to have for the idle game. For now there is just an upgrade for the rate at which money is gathered manually, and for the rate at which it is gathered automatically. I do after all want to try to keep this canvas example basic.
+
 ```js
 var game = (function () {
  
@@ -108,7 +112,9 @@ var game = (function () {
             }
         }
     ];
- 
+```
+
+```js
     // make a new upgradeState object from an upgradeData object
     var makeUS = function (ud) {
         return {
