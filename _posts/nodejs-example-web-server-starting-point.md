@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 13:12:42
-version: 1.7
+updated: 2020-02-06 15:30:04
+version: 1.8
 ---
 
 I thought I would start a collection of posts that are node examples, that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
@@ -55,6 +55,8 @@ $ node server.js 8000
 The server is now up and running and listening on port 8000 because I gave an argument after calling it. If I now go to my web browser and navigate to localhost:8000 then I should see the message in the browser window.
 
 ## 2 - The start of a static file server
+
+Now that we have a basic example of a node web server out of the way lets get into a simple example of a static file server. This is a kind of web server where it just needs to respond to incoming requests with static content. Event though that might sound simple on the surface it ca get a little involved. There is much to write about when it comes to mime types, and streams. However I will try to not get to deep into this one here at least because there are many other basic web server examples I would like to get to.
 
 ```js
 let http = require('http'),
