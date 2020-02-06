@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-05 20:16:48
-version: 1.17
+updated: 2020-02-05 20:17:40
+version: 1.18
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -167,7 +167,7 @@ ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
 
 ## 5 - Measure text
 
-If I need to measure text metrics there is the [measure text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText) context method.
+If I need to measure text metrics there is the [measure text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText) context method. Calling the method and passing a text example will return an object that contains values such as width that is the pixel with of the text with the current text settings.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
