@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 11:56:07
-version: 1.5
+updated: 2020-02-06 11:58:50
+version: 1.6
 ---
 
 I thought I would start a collection of posts that are node examples, that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
@@ -44,3 +44,12 @@ server.listen(port, () => {
  
 });
 ```
+
+Once I have this code together I can save it as something like sever.js, and then call it in the command line with node like this:
+
+```
+$ node server.js 8000
+'web server is up on port: 8000
+```
+
+The server is now up and running and listening on port 8000 because I gave an argument after calling it. If I now go to my web browser and navigate to localhost:8000 then I should see the message in the browser window.
