@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 15:30:04
-version: 1.8
+updated: 2020-02-06 15:46:00
+version: 1.9
 ---
 
 I thought I would start a collection of posts that are node examples, that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
@@ -113,4 +113,47 @@ server.on('request', function (req, res) {
 server.listen(port, () => {
     console.log('web server is up on port: ' + port);
 });
+```
+
+## 3 - breaking things down by path
+
+```js
+let http = require('http'),
+path = require('path'),
+ 
+port = process.env.port || process.argv[2] || 8080;
+ 
+let server = http.createServer();
+ 
+server.on('request', function (req, res) {
+    let dir_pathmod = path.join(__dirname, 'paths', req.url, 'index.js');
+    // try to get the module for the current path if it is there
+    try {
+        let pathMod = require(dir_pathmod);
+        pathMod(req, res);
+    } catch (e) {
+        // send an error message if something goes wrong
+        res.writeHead(501, {
+            'Content-Type': 'text/plain'
+        });
+        res.write('501: ' + e.message);
+        res.end();
+    }
+});
+ 
+server.listen(port, () => {
+    console.log('web server is up on port: ' + port);
+});
+```
+
+### 3.1 - A Main paths folder index file
+
+```js
+module.exports = function (req, res) {
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    });
+    res.write('index path');
+    res.end();
+};
 ```
