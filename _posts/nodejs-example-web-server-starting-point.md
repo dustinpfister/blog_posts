@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 11:48:32
-version: 1.2
+updated: 2020-02-06 11:51:39
+version: 1.3
 ---
 
 I thought I would start a collection of posts that are node examples, that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
@@ -14,6 +14,10 @@ I thought I would start a collection of posts that are node examples, that is ex
 <!-- more -->
 
 ## 1 - A very basic Node Example of a web server starting point
+
+So lets start off this post with a very basic example of a server.js file. Here I am just pulling in a reference to the node built in http module with require. 
+
+I then also create a port variable that will store the port number to use when listening for incoming requests. The expression that I use checks for an environment variable first for a port number, then the arguments when the server was script was started from the command line, and then finally a hard coded port number.
 
 ```js
 let http = require('http'),
