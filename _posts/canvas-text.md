@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-05 21:01:14
-version: 1.21
+updated: 2020-02-06 08:51:11
+version: 1.22
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -245,6 +245,132 @@ lines.forEach(function(line,i){
 });
 ```
 
-## 7 - Conclusion
+## 7 - Canvas text example called text circles
+
+### 7.1 - The text circles module
+
+```js
+var tc = (function () {
+ 
+    // PRIVATE HELPER
+ 
+    // set the measure and radius of a text circle
+    var setMeasueAndRadius = function (tcObj) {
+        tcObj.ctx.save();
+        tcObj.ctx.font = tcObj.fontSize + 'px ' + tcObj.fontFamily;
+        tcObj.m = tcObj.ctx.measureText(tcObj.text);
+        console.log(tcObj.ctx.font, tcObj.m.width);
+        tcObj.r = Math.ceil(tcObj.m.width / 2) + tcObj.space;
+        tcObj.ctx.restore();
+    };
+ 
+    // PUBLIC API
+    return {
+ 
+        createTextCircleObject: function (opt) {
+            opt = opt || {};
+            var tcObj = {};
+            tcObj.ctx = opt.ctx || document.createElement('canvas').getContext('2d');
+            tcObj.text = opt.text || 'text circle';
+            tcObj.fontSize = opt.fontSize || 10;
+            tcObj.fontFamily = opt.fontFamily || 'arial';
+            tcObj.x = opt.x === undefined ? 0 : opt.x;
+            tcObj.y = opt.y === undefined ? 0 : opt.y;
+            tcObj.h = opt.h === undefined ? 0 : opt.h;
+            tcObj.space = opt.space || 0;
+            tcObj.textStyles = opt.textStyles || ['red', 'black'];
+            tcObj.circleStyles = opt.circleStyles || ['white', 'black'];
+            setMeasueAndRadius(tcObj);
+            return tcObj;
+        },
+ 
+        draw: function (ctx, tcObj) {
+            var styles = [];
+            ctx.save();
+            ctx.translate(tcObj.x, tcObj.y);
+            ctx.rotate(tcObj.h);
+            // draw circle
+            ctx.lineWidth = 3;
+            styles = tcObj.circleStyles || [];
+            ctx.fillStyle = styles[0] || 'red';
+            ctx.strokeStyle = styles[1] || 'black';
+            ctx.beginPath();
+            ctx.arc(0, 0, tcObj.r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            // draw text
+            ctx.lineWidth = 1;
+            ctx.font = tcObj.fontSize + 'px ' + tcObj.fontFamily;
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            styles = tcObj.textStyles || [];
+            ctx.fillStyle = styles[0] || 'red';
+            ctx.strokeStyle = styles[1] || 'black';
+            ctx.fillText(tcObj.text, 0, 0);
+            ctx.strokeText(tcObj.text, 0, 0);
+            ctx.restore();
+        }
+ 
+    };
+ 
+}
+    ());
+```
+
+
+### 7.2 - The modules in action
+
+```html
+<html>
+    <head>
+        <title>canvas text</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="text_circles.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+var textCircles = ['wow', 'so this is', 'a little cool'].map(function (text) {
+    var w = canvas.width,
+    h = canvas.height,
+    qw = w / 4,
+    qh = h / 4;
+    return tc.createTextCircleObject({
+        ctx: ctx,
+        x: qw - qw + Math.floor(w * Math.random()),
+        y: qh - qh + Math.floor(h * Math.random()),
+        h: Math.PI * 2 * Math.random(),
+        text: text,
+        fontSize: 10 + Math.floor(20 * Math.random()),
+        space: 10
+    })
+});
+textCircles.push(tc.createTextCircleObject({
+        ctx: ctx,
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        h: Math.PI / 180 * -45,
+        text: 'This is fun!',
+        circleStyles: ['rgba(255,255,255,0.5)', 'rgba(0,0,0,0.8)'],
+        fontSize: 30,
+        space: 10
+    }));
+ 
+ctx.fillStyle = 'blue';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+textCircles.forEach(function (tcObj) {
+    tc.draw(ctx, tcObj);
+});
+ 
+        </script>
+    </body>
+</html>
+```
+
+## 8 - Conclusion
 
 So hopefully this post has helped to shine some light on the whole canvas text situation. Drawing text in canvas is not so hard once you get the hang of it, but it was a little weird at first as things will not work out of the box the same was as what I am used to with plain old HTML. Because canvas is very much an html element another option with text is that I could just use some other type of element outside of the canvas element, but that would be cheating.
