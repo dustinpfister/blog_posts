@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-06 08:54:58
-version: 1.23
+updated: 2020-02-06 08:56:43
+version: 1.24
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -250,6 +250,8 @@ lines.forEach(function(line,i){
 Now that I have all the boring basic stuff out of the way it is time to have some fun and get creative working with canvas text. In this section I worked out a canvas text example that makes use of a module that can be used to create an kind of text circle object. This text circle object has its radius set by the width of the text that is given to it when it is made with a public method. I can then draw the object also with a draw method also given via the modules public api.
 
 ### 7.1 - The text circles module
+
+Here is the text circle module that I worked out for this canvas text example. I have one private method that is used to set the measure and radius properties of a text circle object based on the text given as well as other options such as font size and spacing.
 
 ```js
 var tc = (function () {
