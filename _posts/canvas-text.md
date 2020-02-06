@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-05 20:48:20
-version: 1.19
+updated: 2020-02-05 20:57:37
+version: 1.20
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
 
-There is a bit more to know about when it comes to setting the position of text, canvas text color, canvas text font, and so forth of canvas text. There are at least a few properties that a javaScript developer should be aware of when it comes to using canvas to render text. So lets look at some quick examples of working with text and HTML 5 canvas elements.
+There is a bit more to know about when it comes to setting the position of text, color, the font size and font family, and so forth of canvas text. There are at least a few properties, and methods that a javaScript developer should be aware of when it comes to using canvas to render text. So lets look at some quick examples of working with text and canvas elements.
 
 <!-- more -->
 
@@ -102,7 +102,7 @@ ctx.strokeText(mess, 0, 250);
 
 ## 3 - The text base line property
 
-When working with text in the 2d canvas drawing context the [canvas text base line](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textBaseline) property can be used to set the vertical alignment of text when setting the position of a fill text method call.
+When working with text in the 2d canvas drawing context the [canvas text base line](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textBaseline) property can be used to set the vertical alignment of text when setting the position of a fill text method call. I generally like to set the base line of text to the top property so that the very top of the text is where the y position is that I set when drawing text with the fill text method. However There are also a number of other options when it comes to setting the base line of text in canvas.
 
 ```js
 // get the canvas, context and set size
