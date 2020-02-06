@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 15:46:00
-version: 1.9
+updated: 2020-02-06 15:49:45
+version: 1.10
 ---
 
 I thought I would start a collection of posts that are node examples, that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
@@ -116,6 +116,8 @@ server.listen(port, () => {
 ```
 
 ## 3 - breaking things down by path
+
+So as a web server grows things are going to ge a little complicated. So it is nice to break things down a little into smaller units of code that are modules of sorts. One way to do so is to have a module for each path of the website. For example I might have an idea for a project that is more or less a single page application where a single module for the root path of the website serves up a client system. However that client system then works with a whole bunch of other modules that respond to post requests that are accessible via other paths.
 
 ```js
 let http = require('http'),
