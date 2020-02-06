@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-05 20:17:40
-version: 1.18
+updated: 2020-02-05 20:48:20
+version: 1.19
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -188,4 +188,59 @@ ctx.textAlign='left';
 m = ctx.measureText(mess);
 dx = m.width;
 ctx.fillText('hello world', canvas.width - dx, 10);
+```
+
+## 6 - Wrap canvas text
+
+So a common problem that seems to come up a lot with canvas text is being able to wrap text. There is not canvas built in wrap text method that I know of, but the measure text method of the d2 drawing context could be used to make one.
+
+A method could be used to directly draw the text to the canvas, or another method could be used to create an arry of lines. In other words a method that is given a drawing context and then some text, and then splits that text into an array of strings. The array of strings can then be drawn to the canvas by just looping over the array of strings, stepping the y distance for each line.
+
+```js
+var wrapText = function (ctx, text, sx, sy, w) {
+    var words = text.match(/\w+/g),
+    word,
+    lines = [],
+    currentLine = '',
+    len = words.length,
+    wordIndex = 0,
+    x = sx,
+    y = sy,
+    m;
+    while (wordIndex < len) {
+        word = words[wordIndex];
+        m = ctx.measureText(word + ' ');
+        x += m.width;
+        if (x + m.width < w) {
+            currentLine += word + ' ';
+            if (wordIndex === len - 1) {
+                lines.push(currentLine);
+            }
+        } else {
+            x = sx;
+            lines.push(currentLine);
+            currentLine = word + ' ';
+        }
+        wordIndex += 1;
+    }
+    return lines;
+};
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+var text = 'So then this is some text that is a little long so it might need to be wraped';
+ 
+ctx.font = '30px courier';
+var lines = wrapText(ctx, text,0,0,canvas.width);
+ 
+ctx.fillStyle = 'red';
+ctx.textBaseline = 'top';
+console.log(lines);
+lines.forEach(function(line,i){
+    console.log(line);
+    ctx.fillText(line, 0, 40 * i)
+});
 ```
