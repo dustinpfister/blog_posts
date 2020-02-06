@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 11:58:50
-version: 1.6
+updated: 2020-02-06 13:12:42
+version: 1.7
 ---
 
 I thought I would start a collection of posts that are node examples, that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
@@ -53,3 +53,62 @@ $ node server.js 8000
 ```
 
 The server is now up and running and listening on port 8000 because I gave an argument after calling it. If I now go to my web browser and navigate to localhost:8000 then I should see the message in the browser window.
+
+## 2 - The start of a static file server
+
+```js
+let http = require('http'),
+path = require('path'),
+fs = require('fs'),
+promisify = require('util').promisify,
+read = promisify(fs.createReadStream),
+stat = promisify(fs.stat),
+ 
+port = process.env.port || process.argv[2] || 8080,
+dir_publicHTML = path.resolve(__dirname, 'public');
+ 
+let server = http.createServer();
+ 
+server.on('request', function (req, res) {
+ 
+    let encoding = 'binary',
+    resource = path.join(dir_publicHTML, req.url),
+    resource_ext = path.extname(resource),
+    resource_content_type = 'text/html',
+    resource_content_length = 0;
+ 
+    // if no file extension append 'index.html'
+    resource = !resource_ext ? path.join(resource, 'index.html') : resource;
+    resource_ext = !resource_ext ? '.html' : resource_ext;
+ 
+    if (resource_ext === '.html') {
+        encoding = 'utf8';
+        resource_content_type = 'text/html';
+    }
+    if (resource_ext === '.ico') {
+        encoding = null;
+        resource_content_type = 'image/x-icon';
+    }
+ 
+    stat(resource).then((stat) => {
+        resource_content_length = stat.size;
+        res.writeHead(200, {
+            'Content-Type': resource_content_type,
+            'Content-Length': resource_content_length
+        });
+        fs.createReadStream(resource, encoding).pipe(res);
+    })
+    .catch((e) => {
+        res.writeHead(500, {
+            'Content-Type': 'text/plain'
+        });
+        res.write('501 server error: ' + e.message);
+        res.end();
+    })
+ 
+});
+ 
+server.listen(port, () => {
+    console.log('web server is up on port: ' + port);
+});
+```
