@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-06 08:58:34
-version: 1.26
+updated: 2020-02-06 10:13:00
+version: 1.27
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -324,7 +324,9 @@ var tc = (function () {
 
 ### 7.2 - The modules in action
 
-Now to see this in action with a main html file that links to my text circles module, and makes use of it to create some of these text circle objects.
+Now to see this in action with a main html file that links to my text circles module, and makes use of it to create some of these text circle objects. I link to my text circles module with a script tag, and then work out the rest of this example in an additional script tag in the html.
+
+I start out with the example by getting a reference to a canvas element, and drawing context just like I do with any other canvas example. In then however create an array of text circle objects by using map with an array of words and calling my create text circle method in the body of the function that I pass to array map.
 
 ```html
 <html>
