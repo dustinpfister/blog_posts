@@ -5,11 +5,13 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2020-02-06 10:27:03
-version: 1.26
+updated: 2020-02-06 10:28:55
+version: 1.27
 ---
 
-Looking back I have wrote a few posts on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics in general. From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return [promises](https://www.geeksforgeeks.org/promises-in-node-js/).
+Looking back I have wrote a few posts on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics when working in a node environment.
+
+From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return [promises](https://www.geeksforgeeks.org/promises-in-node-js/).
 
 It would also be nice to have one post where I go beyond just the basics of promises, and give some real solid examples that outline why they are great for handing a whole bunch of async tasks.
 
@@ -98,7 +100,7 @@ Still this example is here to serve as an example of using the promise construct
 
 Any way lets look at some more examples of promises in nodejs.
 
-### 1.3 - THe Util module and the promisify method
+### 1.3 - The Util module and the promisify method
 
 So then thee is the [promsify method of the node core util module](/2019/06/22/nodejs-util-promisify/). I use this method all the time as a node built in way to convert an old callback style method into a method that will return a promise.
 
