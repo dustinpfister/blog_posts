@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-05 20:57:37
-version: 1.20
+updated: 2020-02-05 21:01:14
+version: 1.21
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -244,3 +244,7 @@ lines.forEach(function(line,i){
     ctx.fillText(line, 0, 40 * i)
 });
 ```
+
+## 7 - Conclusion
+
+So hopefully this post has helped to shine some light on the whole canvas text situation. Drawing text in canvas is not so hard once you get the hang of it, but it was a little weird at first as things will not work out of the box the same was as what I am used to with plain old HTML. Because canvas is very much an html element another option with text is that I could just use some other type of element outside of the canvas element, but that would be cheating.
