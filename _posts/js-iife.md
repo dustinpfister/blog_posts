@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-02-05 19:09:29
-version: 1.7
+updated: 2020-02-05 19:25:49
+version: 1.8
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript function that self invokes. These kinds of functions in javaScript are often used in module design, as private methods and other values can be in the body of the function and a public set of methods and properties can be a product that is returned to a variable.
@@ -40,7 +40,58 @@ console.log( count('get') ); // -3
 
 In this example I have an inner function that is returned to the public count variable. I can then call that function from the outside of the IIFE however I can not directly work with the private c variable.
 
-## 2 - A function can be passed as the public API with static methods attached
+## 2 - making a public API as an object literal
+
+A function can be used as a public API but a plain old object can also be used as one also. Say I have a whole bunch of methods that I want to have as my public API for a game module. One way would be to attach them to a prototype object of a function, but what if they do not need to be part of a class of a constructor function? Also what if I do not want or need a constructor function at all, or a function of any kind as the public API? No problem just using a plain od object will work just fine.
+
+```js
+var game = (function () {
+ 
+    // private variables and methods
+    var state;
+    var makeNewState = function () {
+        return {
+            money: 0,
+            manual: 1,
+            auto: {
+                tickRate: 1000,
+                lt: new Date(),
+                perTick: 1
+            }
+        };
+    };
+    var loadState = function () {
+        var state = document.localStorage ? document.localStorage.state : false;
+        if (state) {
+            return state;
+        }
+        return makeNewState();
+    };
+ 
+    // public API as an Object literal
+    return {
+        init: function () {
+            state = loadState;
+        },
+        userAction: function () {
+            state.money += state.manual;
+        },
+        tick: function () {
+            var now = new Date(),
+            t = now - state.auto.lt,
+            ticks = t / state.auto.tickRate;
+            if (ticks >= 1) {
+                state.money += state.auto.perTick * ticks;
+                state.auto.lt = now;
+            }
+        }
+    };
+ 
+}
+    ());
+```
+
+## 3 - A function can be passed as the public API with static methods attached
 
 In javaScript functions are a kind of object, so just like any other object in javaScript additional methods and properties can be attached to them. If I attach methods to the prototype object they become part of a constructor functions prototype, however if I do not want to do that I can just add static methods as just properties of the function.
 
