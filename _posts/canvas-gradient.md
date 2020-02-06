@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-02-05 18:58:11
-version: 1.2
+updated: 2020-02-05 19:00:39
+version: 1.3
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in html 5 canvas with two constructors of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context.
@@ -16,6 +16,8 @@ A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradi
 ## 1 - Canvas Gradient basic example with the Create Linear Gradient method
 
 It might be best to start out with a linear gradient so in this section I will be doing just that. I start out making a canvas element, and getting a drawing context just like any other canvas example. Once I have a drawing context to work with I can call the create linear gradient method of the drawing context. When I do so I will want to pass a starting point and end point of the gradient.
+
+After calling the create linear gradient method I will end up getting a gradient object as a product that is returned bu calling the method. I can then call the add color stop method of that gradient object to set the colors for the gradient. Once that is done I can then use the gradient as a style for setting the fill and stroke colors.
 
 ```js
 // CANVAS
