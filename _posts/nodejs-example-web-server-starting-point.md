@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 11:53:50
-version: 1.4
+updated: 2020-02-06 11:56:07
+version: 1.5
 ---
 
 I thought I would start a collection of posts that are node examples, that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
@@ -19,7 +19,9 @@ So lets start off this post with a very basic example of a server.js file. Here 
 
 I then also create a port variable that will store the port number to use when listening for incoming requests. The expression that I use checks for an environment variable first for a port number, then the arguments when the server was script was started from the command line, and then finally a hard coded port number.
 
-Once I have my http module, and port number to work with I create an instance of an http server by calling the create server method of the http module, after doing so i now have a server instance to attach some handers to and when ready start. I then use the on method of the server instance to attach an event for requests, and pass a function that will fire for any request that the server receives.
+Once I have my http module, and port number to work with I create an instance of an http server by calling the create server method of the http module, after doing so i now have a server instance to attach some handers to and when ready start. I then use the on method of the server instance to attach an event for requests, and pass a function that will fire for any request that the server receives. For now that hander will just write a simple, content type header, and write a hello word message.
+
+Now it is a matter of starting this server when it is stared, to do this I call the listen method of the server instance, passing the port number as the first argument. After that I can also pass a function that will fire when the server starts listening so that I know it is up and ready when started in the command line.
 
 ```js
 let http = require('http'),
