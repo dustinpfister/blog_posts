@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 05:53:33
-version: 1.13
+updated: 2020-02-07 05:58:25
+version: 1.14
 ---
 
 The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
@@ -74,6 +74,8 @@ So now that I jave the javaScript for this basic canvas rotate example together 
     </body>
 </html>
 ```
+
+So that is the basic typical idea at least when it comes to using the rotate method. I have something I want to draw, I save the context, and then translate to the point I want to draw at, where I then rotate the canvas. I then have to account for the size of what it is that I want to draw, subtracting half the width and height from the position that I then draw at. Once done I then restore the context back to normal so that I can then draw other things with the previous canvas context state.
 
 ## 2 - Rotation point and render point example
 
