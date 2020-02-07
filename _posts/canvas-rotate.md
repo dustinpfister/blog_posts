@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 09:44:15
-version: 1.17
+updated: 2020-02-07 09:49:00
+version: 1.18
 ---
 
 The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
@@ -148,8 +148,9 @@ loop();
 
 This example results in a box that is rotating around the center point that I translated to, but the point that is at the center of the box ventures away from that point of translation. It can be fun to play around with these things a little, but for the most part I just need to keep things centered at the translate point.
 
-## 3 - 
+## 3 - Making a before hand rendered sprite sheet with the canvas rotate method
 
+using the canvas rotate method can eat up a lot of background resources in order to preform the rotation. If it is just one or two sprites in a project it is not a big deal, but if there are a lot of them the loss in frame rate can add up. One way to address this word be to use a pre rendered sprite sheet. This can be loaded as an external image file that was created separately, or it can be another canvas element, where all the possible rotations have been preformed once.
 
 ### 3.1 - The draw methods
 
