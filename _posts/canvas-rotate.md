@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 09:52:29
-version: 1.20
+updated: 2020-02-07 09:54:56
+version: 1.21
 ---
 
 The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
@@ -223,6 +223,8 @@ var makeBoxSheet = function (cellSize, cellCount) {
 ```
 
 ### 3.3 - Lets see it in action
+
+Now to test this all out to see if it works and sure enough it does. However in order to get a real idea as to how much this helps I will need to make a project that is far more complex with many instances of sprites that make use of this sprite sheet.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
