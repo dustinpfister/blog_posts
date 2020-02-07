@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 06:06:16
-version: 1.15
+updated: 2020-02-07 06:14:06
+version: 1.16
 ---
 
 The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
@@ -145,6 +145,8 @@ var loop = function () {
 
 loop();
 ```
+
+This example results in a box that is rotating around the center point that I translated to, but the point that is at the center of the box ventures away from that point of translation. It can be fun to play around with these things a little, but for the most part I just need to keep things centered at the translate point.
 
 ## 3 - Conclusion
 
