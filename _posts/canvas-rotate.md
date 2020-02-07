@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 06:14:06
-version: 1.16
+updated: 2020-02-07 09:44:15
+version: 1.17
 ---
 
 The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
@@ -148,7 +148,98 @@ loop();
 
 This example results in a box that is rotating around the center point that I translated to, but the point that is at the center of the box ventures away from that point of translation. It can be fun to play around with these things a little, but for the most part I just need to keep things centered at the translate point.
 
-## 3 - Conclusion
+## 3 - 
+
+
+### 3.1 - The draw methods
+
+```js
+// Draw methods
+var drawBackground = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+var drawBox = function (ctx, bx) {
+    ctx.lineWidth = bx.lineWidth || 3;
+    ctx.strokeStyle = bx.strokeColor || 'white';
+    ctx.fillStyle = bx.fillColor || 'green';
+    ctx.beginPath();
+    ctx.rect(bx.x - bx.w / 4, bx.y - bx.h / 4, bx.w / 2, bx.h / 2);
+    ctx.moveTo(bx.x, bx.y);
+    ctx.lineTo(bx.x + bx.w / 2.25, bx.y);
+    ctx.fill();
+    ctx.stroke();
+};
+ 
+var drawSheetCell = function (ctx, sheet, cellIndex, dx, dy) {
+    var cs = sheet.cellSize,
+    sx = sheet.cellSize * cellIndex,
+    sy = 0;
+    ctx.drawImage(sheet.canvas, sx, sy, cs, cs, dx, dy, cs, cs);
+};
+```
+
+### 3.2 - The make box sheet method
+
+```js
+// make a sprite sheet
+var makeBoxSheet = function (cellSize, cellCount) {
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    cellSize = cellSize || 32;
+    cellCount = cellCount || 16;
+    canvas.width = cellSize * cellCount;
+    canvas.height = cellSize;
+    ctx.fillStyle = 'grey';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    var i = 0,
+    len = cellCount;
+    while (i < len) {
+        ctx.save();
+        ctx.translate(cellSize / 2 + cellSize * i, cellSize / 2);
+        ctx.rotate(Math.PI * 2 * (i / len));
+        drawBox(ctx, {
+            x: 0,
+            y: 0,
+            w: cellSize,
+            h: cellSize
+        });
+        ctx.restore();
+        i += 1;
+    }
+    return {
+        cellSize: cellSize,
+        cellCount: cellCount,
+        canvas: canvas,
+        ctx: ctx
+    };
+};
+```
+
+### 3.3 - Lets see it in action
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.translate(0.5, 0.5);
+ 
+var sheet = makeBoxSheet(32, 64),
+cellIndex = 0,
+x = canvas.width / 2 - 16,
+y = canvas.height / 2 - 16;
+ 
+var loop = function () {
+    requestAnimationFrame(loop);
+    drawBackground(ctx, canvas);
+    drawSheetCell(ctx, sheet, cellIndex, x, y);
+    cellIndex += 1;
+    cellIndex %= sheet.cellCount;
+};
+loop();
+```
+
+## 4 - Conclusion
 
 The canvas rotate method works okay for on the fly rotations, but it might not always be a good idea to rely on it all the time for all projects. It can cost a fair amount of system resources to preform a rotation, and if you have a lot of display objects all at once on the canvas it can really slow things down on clients that do not have a great deal of CPU overhead to work with.
 
