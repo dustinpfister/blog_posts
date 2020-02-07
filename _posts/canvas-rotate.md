@@ -5,33 +5,21 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2019-11-10 13:31:55
-version: 1.11
+updated: 2020-02-07 05:53:33
+version: 1.13
 ---
 
-The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method and save and restore.
+The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
+
+Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method, save and restore, and many others.
 
 <!-- more -->
 
 ## 1 - A Basic canvas rotate example
 
-So lets start off with a basic example of the canvas rotate method. Here I am using a hard coded canvas tag in my HTML file, and am using a single script tag to like to an external javaScript file where I will have javaScript code of this basic canvas rotate example.
+So lets start off with a basic example of the canvas rotate method just to get the basics of this worked out.  Here I have the external basic.js file, in which I start out by getting a reference to the canvas element I have in my html file, and the 2d drawing context of that element just as with any other canvas project. 
 
-```html
-<html>
-    <head>
-        <title>canvas rotate</title>
-    </head>
-    <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
-        <script src="basic.js"></script>
-    </body>
-</html>
-```
-
-Here I have the external basic.js file, in which I start out by getting a reference to the canvas element and the 2d drawing content of that element just as with any other canvas project. 
-
-I then worked out a simple draw method that just strokes a rectangle to the canvas. When I call this method I pass a reference to the context, and an additional object that passes the dimensions of the box I want to draw. By default It will place the box centered around the top left corner of the canvas, and this is intentional when it comes to using the canvas translate method along with the canvas rotate method.
+I then worked out a simple draw method that just strokes a box to the canvas, so that I have something to draw when I rotate the canvas. When I call draw box method I pass a reference to the context, and an additional object that passes the dimensions of the box I want to draw. By default It will place the box centered around the top left corner of the canvas, and this is intentional when it comes to using the canvas translate method along with the canvas rotate method as that is where I want to draw actually.
 
 ```js
 // get canvas can 2d context
@@ -72,7 +60,20 @@ drawBox(ctx, {
 ctx.restore();
 ```
 
-I then paint a black background for the whole canvas followed by using the drawBox method by itself. After that I use the save method to store the state of the context, translate the canvas to the point that I want the center of the box to be, and then use the canvas rotate method to rotate the canvas.
+I then paint a black background for the whole canvas followed by using the drawBox method by itself so I have something to compare to. After that I use the save method to store the current state of the drawing context, so that I can make changes to the translation and rotating of the canvas and then restore back to normal. After I save the state of the context I then translate the canvas to the point that I want the center of the box to be, and then use the canvas rotate method to rotate the canvas by passing a radian value that I want to rotate by. Once That is done I can then restore the context, and that is it I have preformed a rotation with the canvas rotate method.
+So now that I jave the javaScript for this basic canvas rotate example together lets take a quick look at the html. Here I am using a hard coded canvas tag in my HTML file, and am using a single script tag to link to an external javaScript file where I will have javaScript code of this basic canvas rotate example outlined above.
+
+```html
+<html>
+    <head>
+        <title>canvas rotate</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="basic.js"></script>
+    </body>
+</html>
+```
 
 ## 2 - Rotation point and render point example
 
