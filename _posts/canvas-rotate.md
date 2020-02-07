@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 09:49:00
-version: 1.18
+updated: 2020-02-07 09:50:53
+version: 1.19
 ---
 
 The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
@@ -153,6 +153,8 @@ This example results in a box that is rotating around the center point that I tr
 using the canvas rotate method can eat up a lot of background resources in order to preform the rotation. If it is just one or two sprites in a project it is not a big deal, but if there are a lot of them the loss in frame rate can add up. One way to address this word be to use a pre rendered sprite sheet. This can be loaded as an external image file that was created separately, or it can be another canvas element, where all the possible rotations have been preformed once.
 
 ### 3.1 - The draw methods
+
+Here I have the draw methods worked out. I have a draw box method that will just draw a given box object that will be used in my make sprite sheet method later. Also once I have my sprite sheet I have a draw method that can be passed that sprite sheet object and render a given cell index from that sheet.
 
 ```js
 // Draw methods
