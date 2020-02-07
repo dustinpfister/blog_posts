@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 09:50:53
-version: 1.19
+updated: 2020-02-07 09:52:29
+version: 1.20
 ---
 
 The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
@@ -184,6 +184,8 @@ var drawSheetCell = function (ctx, sheet, cellIndex, dx, dy) {
 ```
 
 ### 3.2 - The make box sheet method
+
+The make box sheet method in this section is used by just calling it and giving a cell size, and cell count. The returned result then is an object that contains a canvas element that can then be used with the draw image 2d context method.
 
 ```js
 // make a sprite sheet
