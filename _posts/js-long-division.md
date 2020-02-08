@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 608
-updated: 2020-02-07 22:37:11
-version: 1.0
+updated: 2020-02-08 08:18:38
+version: 1.1
 ---
 
-Long division is one of those things that as an adult I might forget how to do, but of course it is not so hard to get back up to speed with again by just sting down and doing it again.
+Long division is one of those things that as an adult I might forget how to do, but of course it is not so hard to get back up to speed with again by just sting down and doing it again it is elementary school level math after all. However often coming up with a javaScript solution to replicate the process of long division is not so elementary.
 
 <!-- more -->
 
