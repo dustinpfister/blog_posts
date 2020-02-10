@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-02-10 14:52:27
-version: 1.33
+updated: 2020-02-10 14:53:53
+version: 1.34
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
@@ -113,7 +113,7 @@ console.log(sum); // 6
 
 Loops are often more flexible then Array methods, for one think I can use the break and continue keywords as ways of breaking out of a loop when a condition is met, or spiking over values and additional blocks of logic along with it. A such when it comes to getting into things that involve a lot of heavy lifting they may prove to be a more efficient solution. However when it comes to simple things like this it does not make much difference.
 
-## 4 - The Function call prototype method, and array for each.
+## 4 - Array like objects, the Function call prototype method, and array for each.
 
 So in javaScript Arrays are a kind of object that is formated in a way in which there are numbered key values with corresponding values. In addition to this there is a length property that reflects the number of these key value pairs, and there are a number of useful methods accessible via the Array prototype object. So an Array is not just an Object, it is an Object that is formated a certain way and is an instance of the Array constructor.
 
