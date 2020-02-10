@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-02-10 10:14:34
-version: 1.30
+updated: 2020-02-10 14:43:29
+version: 1.31
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
@@ -70,7 +70,7 @@ This is one of many other Array prototype methods that work in a very similar wa
 
 ### 2.3 - Array.map
 
-Another way to loop over elements in an array is to use Array.map. This method works more or less the same way as Array.forEach but with one significant difference. That difference is that whatever is returned will become that element in the array, or at least a copy of it that can then be reassigned to the variable that is.
+Another way to loop over elements in an array is to use Array.map. This method works more or less the same way as Array.forEach but with one significant difference. That difference is that whatever is returned in the method that is given as an argument this time will become that element in the array. Actually the new element will be in a new copy of the array that can then be reassigned to the array or not. So in a way the array map method is in line with functional programing in the sense that the array that that the prototype method is called off is not mutated in place.
 
 ```js
 var arr = [1, 2, 3],
