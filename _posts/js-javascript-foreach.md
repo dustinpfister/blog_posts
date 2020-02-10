@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-02-10 09:46:52
-version: 1.27
+updated: 2020-02-10 10:00:57
+version: 1.28
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
 
-Then there are other objects in javaScript that are structured like arrays, but are not arrays, and thus are often referred to as array like obejcts. In addition there aare just simply objects in general, that might have numbered index keys or named keys. So then there are Object static methods like the Object.keys method, that can be used to create an array of key values that can then be used as a way to loop over the contents of any objects public keys. Another option would be a for in loop that can be used as ways to help loop over the public contents of Objects in general in javaScript.
+Then there are other objects in javaScript that are structured like arrays, but are not arrays, and thus are often referred to as array like obejcts. In addition there are just simply objects in general, that might have numbered index keys or named keys. So then there are Object static methods like the Object.keys method, that can be used to create an array of key values that can then be used as a way to loop over the contents of any objects public keys. Another option would be a for in loop that can be used as ways to help loop over the public contents of Objects in general in javaScript.
 
 So then just when it comes to native javaScript alone there is a wealth of options when it comes to looping over the contents of an array, or object in general. However there is then getting into user space utility librarys and frameworks also. As of this writing lodash is still the most popular option in this regard, and the [\_.forEach method](/2017/11/20/lodash_foreach/) works more or less the same way as the native Array.prototype.forEach method, but it is what is called a collection method. In  other words it is a method that will work on objects in general, and also can be broken out of just like with loops combined with the use of the break keyword. 
 
@@ -21,9 +21,11 @@ There is a whole lot to cover when it comes to looping over the contents of an a
 
 ## 1 - javaScript forEach and what to know before hand
 
-The Array.forEach method in native javaScript is one of many ways to loop over the contents of a collection in javaScript. However the Array.forEach method is only generally useful for looping over the contents of an Array. it can also in some cases be used to loop over the contents of an array like object, but it might not always be the best solution when it comes to looping over named collections, or in other words plain old objects with named rather than indexed key names.
+The Array.forEach method in native javaScript is one of many ways to loop over the contents of a collection in javaScript. However Array.forEach is only generally useful for looping over the contents of an Array, unless some trickery with function call method is used with array like objects, or some processing is done before hand. However even it you can get it to work to loop over the contents of a collection it might not still always be the best solution when it comes to looping over named collections. 
 
-In any case there are other ways of looping over collections that involve the use of a library like lodash, as well as other native javaScript solutions such as while loops.
+Also simply put it might not always be the best choice for the job when it comes to looping over the contents of an array. There is not golden hammer as it where when it cones to looping over things. I tend to prefer the use of while loops, I have my reasons why that is, but I am not going to suggest that everyone should stop using array foreach and just use while loops and only while loops all the time everywhere and anywhere.
+
+In any case there are many options when it comes to looping over collections that involve the use of a library like lodash, as well as other native javaScript solutions such as while loops. Some might be more readable, but performance takes a hit, others might be more flexible, but again performance takes a hit. While loops might be fast, but can be even faster depending on how and where they are used. Also regardless of how well coded some javaScript might be with regards to performance the real bottom line in my view is what an over all project does and if it is of any value to people regardless if it is well coded or poorly coded.
 
 ### 1.2 - ECMA rev5 compliant methods
 
