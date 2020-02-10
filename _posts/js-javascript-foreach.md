@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-02-10 10:00:57
-version: 1.28
+updated: 2020-02-10 10:08:09
+version: 1.29
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
@@ -27,11 +27,13 @@ Also simply put it might not always be the best choice for the job when it comes
 
 In any case there are many options when it comes to looping over collections that involve the use of a library like lodash, as well as other native javaScript solutions such as while loops. Some might be more readable, but performance takes a hit, others might be more flexible, but again performance takes a hit. While loops might be fast, but can be even faster depending on how and where they are used. Also regardless of how well coded some javaScript might be with regards to performance the real bottom line in my view is what an over all project does and if it is of any value to people regardless if it is well coded or poorly coded.
 
-### 1.2 - ECMA rev5 compliant methods
+### 1.2 - ECMA rev5 compliant methods and Array forEach backward support
 
-As time goes by it is becoming less, and less of an issue to worry about code breaking on clients when delivering modern javaScript exclusively. Still depending on your websites analytics with browser versions, it might still be better to stick to the tired yet true way of doing things with client side javaScript.
+As time goes by it is becoming less, and less of an issue to worry about code breaking on clients when delivering modern javaScript exclusively when working out some kind of client system. Still depending on your websites analytics with browser versions, it might still be better to stick to a tired yet true way of doing things with client side javaScript.
 
-Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients. Also if you want to support very old browsers that do not support Array.forEach, then even this code example will break in which case and even older method of doing so will have to be used to loop over the contents of an array.
+Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients. The javaScript array foreach method is an ECMA rev5 spec javaScript feature, so using it without any polyfill of sorts is fairly safe these days. However if for some reason you do want to push backward support back even farther there are of course other options that are yet even older and safer. Again I do tend to like sticking to while loops, but not just for this reason.
+
+In any case taking a moment to understand browser support for an native or user space option for looping over the contents of a collection is an essential part of making smart informed decisions in these matters. The array for each method is a good choice in this regard, however a while loop would of course be and even better option.
 
 ## 2 - javaScript forEach and other basic examples of similar array prototype methods
 
