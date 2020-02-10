@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2019-11-27 18:07:38
-version: 1.25
+updated: 2020-02-10 09:37:57
+version: 1.26
 ---
 
-In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like Array.map, and Array.filter. There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
+In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
 
 Then there are other objects in javaScript that are structured like arrays, but are not arrays, and then objects in general, as such there might come a need to loop over the contents of those kinds of objects. So then there are Object static methods like Object.keys, and the for in loop that can be used as ways to help loop over the contents of Objects in general in javaScript.
 
