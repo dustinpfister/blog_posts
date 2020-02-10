@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-02-10 14:43:29
-version: 1.31
+updated: 2020-02-10 14:48:00
+version: 1.32
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
@@ -84,7 +84,7 @@ console.log(arr); // [2,4,8]
 
 ## 3 - While loops
 
-Another way to loop over all the contents of an array in javaScript would be to use a while loop, or any of the other loop options.
+Another way to loop over all the contents of an array in javaScript would be to use a while loop. While loops have many advantages compared to the array forEach method or any other such method like array map. For example different expressions can be used to step an index variable that is used to get an element in an array, so that I can just get every other element in an array rather than all of them. In addition keywords such as break and continue can be used to skip things completely. Another thing about loops is that I am not defining logic in a method so I can use the return keyword in the body of the logic in the while loop if it is in the body of a function. Yet another advantage is that while loops can often prove to be a little faster then array for each when it comes to benchmark testing.
 
 ```js
 var arr = [1, 2, 3],
