@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-02-10 14:53:53
-version: 1.34
+updated: 2020-02-11 10:38:39
+version: 1.35
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
 
-Then there are other objects in javaScript that are structured like arrays, but are not arrays, and thus are often referred to as array like obejcts. In addition there are just simply objects in general, that might have numbered index keys or named keys. So then there are Object static methods like the Object.keys method, that can be used to create an array of key values that can then be used as a way to loop over the contents of any objects public keys. Another option would be a for in loop that can be used as ways to help loop over the public contents of Objects in general in javaScript.
+Then there are other objects in javaScript that are structured like arrays, but are not arrays, and thus are often referred to as array like objects. In addition there are just simply objects in general, that might have numbered index keys or named keys. So then there are Object static methods like the Object.keys method, that can be used to create an array of key values that can then be used as a way to loop over the contents of any objects public keys. Another option would be a for in loop that can be used as ways to help loop over the public contents of Objects in general in javaScript.
 
-So then just when it comes to native javaScript alone there is a wealth of options when it comes to looping over the contents of an array, or object in general. However there is then getting into user space utility librarys and frameworks also. As of this writing lodash is still the most popular option in this regard, and the [\_.forEach method](/2017/11/20/lodash_foreach/) works more or less the same way as the native Array.prototype.forEach method, but it is what is called a collection method. In  other words it is a method that will work on objects in general, and also can be broken out of just like with loops combined with the use of the break keyword. 
+So then just when it comes to native javaScript alone there is a wealth of options when it comes to looping over the contents of an array, or object in general. However there is then getting into user space utility libraries and frameworks also. As of this writing lodash is still the most popular option in this regard, and the [\_.forEach method](/2017/11/20/lodash_foreach/) works more or less the same way as the native Array.prototype.forEach method, but it is what is called a collection method. In  other words it is a method that will work on objects in general, and also can be broken out of just like with loops combined with the use of the break keyword. 
 
 There is a whole lot to cover when it comes to looping over the contents of an array or object in general in javaScript. So in this post I will be sticking to topics surrounding the native forEach array prototype method, and will be branching off into other related topics when it comes to user space options and other options with just plain old native javaScript bu itself.
 
@@ -37,7 +37,7 @@ In any case taking a moment to understand browser support for an native or user 
 
 ## 2 - javaScript forEach and other basic examples of similar array prototype methods
 
-So there is the Array forEach method, but there are other array prototype methods like map, filter and reduce. In this section i will be going over some quick examples of these methods.
+So there is the Array forEach method, but there are other array prototype methods like map, filter and reduce. In this section I will be going over some quick examples of these array prototype method options.
 
 ### 2.1 - First off javaScripts forEach array prototype method
 
@@ -99,7 +99,7 @@ while (i < len) {
 console.log(sum); // 6
 ```
 
-More than one way to skin a cat when it comes to while loops, and loops in general.
+There is of course more than one way to skin a cat when it comes to while loops, and loops in general. What is great about loops is that I have control over the conditions for how to go about breaking the loop, how to go about stepping an index value, and also how to start looping in the first place. For example I can just start off the index variable at the end of an array, and loop backwards. Also because the number zero evaluates to false I can also have the index variable double as a way to break the loop.
 
 ```js
 var arr = [1, 2, 3],
