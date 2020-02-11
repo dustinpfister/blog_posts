@@ -5,11 +5,13 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2019-11-10 13:31:57
-version: 1.26
+updated: 2020-02-10 19:19:23
+version: 1.27
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
+
+The canvas translate is often used in conjunction with other methods such as canvas save, restore and rotate when drawing display objects. It can also be used as a way to just change the drawing origin in the canvas when I want to draw something in a different location of the canvas without going there a bunch of drawing context calls and changing literal values. So with that said lets take a moment to look at some examples of the canvas translate method.
 
 <!-- more -->
 
