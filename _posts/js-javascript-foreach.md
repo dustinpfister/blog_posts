@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-02-11 10:38:39
-version: 1.35
+updated: 2020-02-11 10:50:56
+version: 1.36
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), and [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them, and in some cases prove to do so a little faster.
@@ -82,9 +82,13 @@ console.log(sum); // 6
 console.log(arr); // [2,4,8]
 ```
 
-## 3 - While loops
+## 3 - While loops as a javaScript for each solution.
 
-Another way to loop over all the contents of an array in javaScript would be to use a while loop. While loops have many advantages compared to the array forEach method or any other such method like array map. For example different expressions can be used to step an index variable that is used to get an element in an array, so that I can just get every other element in an array rather than all of them. In addition keywords such as break and continue can be used to skip things completely. Another thing about loops is that I am not defining logic in a method so I can use the return keyword in the body of the logic in the while loop if it is in the body of a function. Yet another advantage is that while loops can often prove to be a little faster then array for each when it comes to benchmark testing.
+Another way to loop over all the contents of an array in javaScript would be to use a while loop. While loops have many advantages compared to the array forEach method or any other such method like array map. For example different expressions can be used to step an index variable that is used to get an element in an array. So then I can just loop over every other element in an array rather than all of them if I want. In addition keywords such as break and continue can be used to skip things completely which can come in handy how and then. Another thing about loops is that I am not defining logic in a method so I can use the return keyword in the body of the logic in the while loop if it is in the body of a function. Yet another advantage is that while loops can often prove to be a little faster then array for each when it comes to benchmark testing.
+
+### 3.1 - The basic while loop example
+
+So the a basic example of a while loop could just be using an index variable that is set at zero for starters. Then I check if the index variable is greater than the length of the array as the condition for the while loop. Inside the body of the while loop I will want to step the index variable or else I will end up with an infinite loop. I can then use the bracket syntax inside the body of the while loop to get the current element of the array by using the index value as the value to use with the bracket syntax of the array.
 
 ```js
 var arr = [1, 2, 3],
@@ -99,6 +103,8 @@ while (i < len) {
 console.log(sum); // 6
 ```
 
+### 3.2 - Looping backwards from the end of an array
+
 There is of course more than one way to skin a cat when it comes to while loops, and loops in general. What is great about loops is that I have control over the conditions for how to go about breaking the loop, how to go about stepping an index value, and also how to start looping in the first place. For example I can just start off the index variable at the end of an array, and loop backwards. Also because the number zero evaluates to false I can also have the index variable double as a way to break the loop.
 
 ```js
@@ -110,8 +116,6 @@ while (i--) {
 }
 console.log(sum); // 6
 ```
-
-Loops are often more flexible then Array methods, for one think I can use the break and continue keywords as ways of breaking out of a loop when a condition is met, or spiking over values and additional blocks of logic along with it. A such when it comes to getting into things that involve a lot of heavy lifting they may prove to be a more efficient solution. However when it comes to simple things like this it does not make much difference.
 
 ## 4 - Array like objects, the Function call prototype method, and array for each.
 
