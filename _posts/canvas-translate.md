@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-02-10 19:19:23
-version: 1.27
+updated: 2020-02-10 19:24:17
+version: 1.28
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
@@ -61,7 +61,7 @@ This example is an exercise of [separating the concerns of data and view](/2017/
 In this canvas example I am also making normalized points where each point of interest is centered around a relative origin. It is then up to the developer how to go about scaling up the set of 2d points. One way would be to apply an offset to each point, and another would be to use the canvas translate method.
 
 
-### 2.1 - The data object with noramlized points
+### 2.1 - The data object with normalized points
 
 So lets start out with the data object. Here I used a self executing function expression to wrap up everything that has to do with the data object into a closure. Inside this closure I created and returned a public api that contains the raw data, as well as normalized and scaled data. This normalized and scaled data is what I will be using when writing my view that will make use of the canvas translate method along with many other aspects of the canvas 2d drawing api.
 
@@ -266,3 +266,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## 4 - Conclusion
+
+So the canvas translate method is the built in way to change the drawing location of the canvas origin to something other than the upper left corner of the canvas. The canvas translate is one of many such methods that a javaScript developer should be familiar with when it comes to doing something useful and interesting with a canvas element.
