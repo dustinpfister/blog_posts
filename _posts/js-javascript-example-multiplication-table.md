@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-10 18:54:44
-version: 1.2
+updated: 2020-02-12 12:53:36
+version: 1.3
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -16,6 +16,8 @@ This javaScript example post will be on making a multiplication table module exa
 <!-- more -->
 
 ## 1 - The multiplication table module for the javaScript example
+
+The first step that came to mind is to make a module that will be used to create an array of cell objects. Each cell will have an x and y position as well as an index value, this information can then be used later for the purpose of formating. So then this module will have just one public method that is used to create an array of these cells, and then that array is what will then be passed to another method that is used to render it.
 
 ```js
 var mTable = (function () {
