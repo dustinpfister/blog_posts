@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-06 10:13:00
-version: 1.27
+updated: 2020-02-12 09:45:11
+version: 1.28
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -379,6 +379,118 @@ textCircles.forEach(function (tcObj) {
 </html>
 ```
 
-## 8 - Conclusion
+## 8 - Wave text canvas text example
+
+### 8.1 - The text wave module
+
+```js
+
+var textWave = (function () {
+    var makeCharsArray = function (obj) {
+        var deltaWidth = (obj.fontSize + obj.spacing),
+        halfWidth = obj.str.length * deltaWidth / 2;
+        return obj.str.split('').map(function (ch, i) {
+            return {
+                x: i * deltaWidth - halfWidth + obj.fontSize / 2,
+                y: obj.fontSize / 2 * -1,
+                ch: ch
+            };
+        });
+    };
+    var waveChars = function (obj) {
+        var per = obj.frame / obj.maxFrame;
+        obj.chars.map(function (c, i) {
+            var r = i / obj.chars.length * (Math.PI * 2) + Math.PI * 2 * per;
+            c.y = Math.cos(r) * obj.fontSize - obj.fontSize / 2;
+            return c;
+        });
+    };
+    return {
+        // create a wiggle text object
+        createObject: function (opt) {
+            opt = opt || {};
+            var obj = {
+                str: opt.str || 'wiggle',
+                spacing: opt.spacing === undefined ? 0 : opt.spacing,
+                fontSize: opt.fontSize || 10,
+                cx: opt.cx === undefined ? 0 : opt.cx,
+                cy: opt.cy === undefined ? 0 : opt.cy,
+                frame: 0,
+                maxFrame: 50,
+                fps: 60,
+                lt: new Date(),
+                chars: []
+            };
+            obj.chars = makeCharsArray(obj);
+            return obj
+        },
+        // update that object
+        updateObject: function (obj, now) {
+            // now date must be given
+            now = now || obj.lt;
+            var t = now - obj.lt,
+            sec = t / 1000,
+            deltaFrame = Math.floor(obj.fps * sec);
+            if (deltaFrame >= 1) {
+                obj.frame += deltaFrame;
+                obj.frame %= obj.maxFrame;
+                obj.lt = now;
+            }
+            waveChars(obj);
+        },
+        // draw that object
+        draw: function (ctx, obj) {
+            ctx.save();
+            ctx.translate(obj.cx, obj.cy);
+            ctx.fillStyle = '#00ffff';
+            ctx.font = obj.fontSize + 'px courier';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'center';
+            obj.chars.forEach(function (c) {
+                ctx.fillText(c.ch, c.x, c.y);
+            });
+            ctx.restore();
+        }
+    };
+}
+    ());
+```
+
+### 8.2 - Demo of text wave
+
+```html
+<html>
+    <head>
+        <title>canvas text</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="text_wave.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+var tw = textWave.createObject({
+        str: 'hello world',
+        fontSize: 20,
+        spacing: 5,
+        cx: canvas.width / 2,
+        cy: canvas.height / 2
+    });
+var loop = function () {
+    requestAnimationFrame(loop);
+    textWave.updateObject(tw, new Date());
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    textWave.draw(ctx, tw);
+};
+loop();
+        </script>
+    </body>
+</html>
+```
+
+## 9 - Conclusion
 
 So hopefully this post has helped to shine some light on the whole canvas text situation. Drawing text in canvas is not so hard once you get the hang of it, but it was a little weird at first as things will not work out of the box the same was as what I am used to with plain old HTML. Because canvas is very much an html element another option with text is that I could just use some other type of element outside of the canvas element, but that would be cheating.
