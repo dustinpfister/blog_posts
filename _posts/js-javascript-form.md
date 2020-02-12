@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 610
-updated: 2020-02-11 19:10:20
-version: 1.4
+updated: 2020-02-11 19:12:28
+version: 1.5
 ---
 
 So then it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements and forms on the client side, and then there is working out server for the back end system of a project or simple example. Depending on what it is that you want or need to do with a form and input elements a back end system may not be needed at all, however a typical use case of forms is to involve some kind of back end system. Still that might not always be the case, so in this post I will be going over some simple examples that just have to do with the basics of working with form elements and javaScript in a client side javaScript environment. In addition I might get around to one or two examples that make use of a nodejs back end system also though.
@@ -41,6 +41,8 @@ disp(input.value);
 ```
 
 ## 2 - Node sever script javaScript form example with query string and get requests
+
+In order to really get into what javaScript forms are for I need to have at least one or two examples in this post that involve some back end javaScript code. So with that said in this section I will be going over a very basic example of using a javaScript from to navigate to a search path with some query strings that are set with a form.
 
 ### 2.1 - The query-string.html file
 
