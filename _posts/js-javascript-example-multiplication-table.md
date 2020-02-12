@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-12 12:53:36
-version: 1.3
+updated: 2020-02-12 12:56:07
+version: 1.4
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -65,6 +65,8 @@ var mTable = (function () {
 ```
 
 ## 2 - Making another method that will create html from the table object
+
+So then once I have my module worked out that creates the array of cells that will contain the numbers for each value in the multiplication table, I then need a method that will be used to render that is html. Now this is something that will differ depending on the environment. For example in a nodejs environment I might want to create an html string, however in a client system I might want to use methods the document create element, and append child methods.
 
 ```js
 var htmlDiv = function (table, cellSize) {
