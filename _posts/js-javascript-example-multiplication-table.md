@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-12 12:58:47
-version: 1.5
+updated: 2020-02-12 13:02:36
+version: 1.6
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -63,6 +63,8 @@ var mTable = (function () {
 }
     ());
 ```
+
+In the body of the pubic method I have a forN option that is a method that will be called for each cell in the array. The default value for this will be a method that will set a n property for each cell that is the value of cell.x multiplied by cell.y.
 
 ## 2 - Making another method that will create html string from the table object
 
