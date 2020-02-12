@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-12 09:45:11
-version: 1.28
+updated: 2020-02-12 09:48:29
+version: 1.29
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -380,6 +380,8 @@ textCircles.forEach(function (tcObj) {
 ```
 
 ## 8 - Wave text canvas text example
+
+Now to get into yet another fun canvas example using canvas text. This example will involve making a module that will create and object that contains an array of objects for each character in a given string. The main object will also contain other properties that are used to update the state of that array of characters. This will allow for making methods that change the state of the properties of the objects in the array of chars so that cool things can be done with canvas text, such as having text wave.
 
 ### 8.1 - The text wave module
 
