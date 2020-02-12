@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-02-12 09:48:29
-version: 1.29
+updated: 2020-02-12 09:49:46
+version: 1.30
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method when it comes to the style of text when working with a 2d drawing context of a canvas element. 
@@ -385,6 +385,8 @@ Now to get into yet another fun canvas example using canvas text. This example w
 
 ### 8.1 - The text wave module
 
+Here I have the main text wave module that will return a public API that can be used to create a wave text object, as well as update, and draw the object.
+
 ```js
 
 var textWave = (function () {
@@ -459,6 +461,8 @@ var textWave = (function () {
 ```
 
 ### 8.2 - Demo of text wave
+
+Now for some html and additional javaScript that will make use of the module that I worked out.
 
 ```html
 <html>
