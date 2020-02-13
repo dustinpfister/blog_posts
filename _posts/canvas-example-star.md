@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-02-13 09:02:48
-version: 1.8
+updated: 2020-02-13 09:05:14
+version: 1.9
 ---
 
 Time for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) this time I think I will do a quick example of drawing a star. There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
@@ -15,11 +15,12 @@ Time for yet another [canvas example](https://developer.mozilla.org/en-US/docs/W
 
 ## 1 - The module to make a canvas star
 
-First off there is the module that I worked out that creates arrays of points that when drawn in order end up drawing stars. There is more than one method provided by this module to create these point arrays, and some interanl helper methods to parse options and get a point when given a radian, and radius from a given origin. 
+First off there is the module that I worked out that creates arrays of points that when drawn in order end up drawing stars. There is more than one method provided by this module to create these point arrays, and some internal helper methods to parse options and get a point when given a radian, and radius from a given origin. 
 
 One method that creates an array of points that makes up a star I called just simply create1. This method works by having not one but to radius from a center point. There is one set of points at one radius, and another set of points at another radius, and both sets of points are spaced out between each other half way. When the array of points is drawn the line will be drawn from a point at one radius to the next point at the other radius, thus forming a star like shape that way.
 
-One method creates a point array by given an outer and inner radius along with other options such as point count. The other method works by giving a pointCount radius and point skip value.
+The other method that I worked out is called just create2, this method creates an array of points by way of having a single set of points at a single given radius, the oder in which points are added to the array is just set by a point skip argument that defaults to 2.
+
 
 ```js
 var starMod = (function () {
