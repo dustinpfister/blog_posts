@@ -4,8 +4,8 @@ date: 2020-02-12 15:17:00
 tags: [canvas]
 layout: post
 id: 611
-updated: 2020-02-12 19:37:27
-version: 1.1
+updated: 2020-02-12 19:41:03
+version: 1.2
 ---
 
 Time for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) this time I think I will do a quick example of drawing a star. There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
@@ -13,6 +13,8 @@ Time for yet another [canvas example](https://developer.mozilla.org/en-US/docs/W
 <!-- more -->
 
 ## 1 - The module to make a canvas star
+
+First off there is the module that I worked out that creates arrays of points that when drawn in order end up drawing stars. There is more than one method provided by this module to create these point arrays. One method creates a point array by given an outer and inner radius along with other options such as point count. The other method works by giving a pointCount radius and point skip value.
 
 ```js
 var starMod = (function () {
