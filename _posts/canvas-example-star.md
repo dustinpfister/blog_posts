@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-02-13 09:05:14
-version: 1.9
+updated: 2020-02-13 09:06:58
+version: 1.10
 ---
 
 Time for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) this time I think I will do a quick example of drawing a star. There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
@@ -85,6 +85,8 @@ var starMod = (function () {
 }
     ());
 ```
+
+There are many many ideas that come to mind when it comes to further expanding a module like this. Such as having a method that returns not just an array of points, but an object where the array of points is just an argument, and then there are a bunch of methods that can eb used to update the state of those points. However for this section I will be keeping this simple for now.
 
 ## 2 - The draw methods
 
