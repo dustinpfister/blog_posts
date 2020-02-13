@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-02-12 19:57:15
-version: 1.5
+updated: 2020-02-12 20:01:54
+version: 1.6
 ---
 
 Time for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) this time I think I will do a quick example of drawing a star. There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
@@ -116,7 +116,7 @@ draw.points = function (ctx, points, cx, cy) {
 
 ## 3 - The main index file
 
-So then it is just a matter of using the methods to create point arrays, and then pass those point arrays to my draw points method.
+So then it is just a matter of using the methods to create point arrays, and then pass those point arrays to my draw points method. Apart from the usual with any canvas project such as creating a canvas element and getting a reference to it, as well as linking to my start module that I worked out above.
 
 ```html
 <html>
@@ -151,4 +151,4 @@ draw.points(ctx, star2, 240, canvas.height / 2);
 </html>
 ```
 
-this results in two stars created with the two separate methods drawn at two locations in the canvas. The important thing here is that I am keeping the state of the starts separate from that of the methods that are used to draw that state.
+This results in two stars created with the two separate methods drawn at two locations in the canvas. The important thing here is that I am keeping the state of the starts separate from that of the methods that are used to draw that state. I could expand on the canvas star module by adding additional methods that can be used to manipulate the star point arrays. Another option though would be to make an example that just creates new stars each time.
