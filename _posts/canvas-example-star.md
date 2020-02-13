@@ -5,15 +5,17 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-02-13 09:06:58
-version: 1.10
+updated: 2020-02-13 09:08:12
+version: 1.11
 ---
 
 Time for yet another [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) this time I think I will do a quick example of drawing a star. There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
 
 <!-- more -->
 
-## 1 - The module to make a canvas star
+## 1 - A basic canvas star example using a module and external draw methods.
+
+### 1.1 - The module to make a canvas star
 
 First off there is the module that I worked out that creates arrays of points that when drawn in order end up drawing stars. There is more than one method provided by this module to create these point arrays, and some internal helper methods to parse options and get a point when given a radian, and radius from a given origin. 
 
@@ -88,7 +90,7 @@ var starMod = (function () {
 
 There are many many ideas that come to mind when it comes to further expanding a module like this. Such as having a method that returns not just an array of points, but an object where the array of points is just an argument, and then there are a bunch of methods that can eb used to update the state of those points. However for this section I will be keeping this simple for now.
 
-## 2 - The draw methods
+### 1.2 - The draw methods
 
 I then have some draw methods that I worked out. One is to just draw a plain black background, and another is to draw an array of points.
 
@@ -121,7 +123,7 @@ draw.points = function (ctx, points, cx, cy) {
 };
 ```
 
-## 3 - The main index file
+### 1.3 - The main index file
 
 So then it is just a matter of using the methods to create point arrays, and then pass those point arrays to my draw points method. Apart from the usual with any canvas project such as creating a canvas element and getting a reference to it, as well as linking to my start module that I worked out above.
 
