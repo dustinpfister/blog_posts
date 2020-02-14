@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-14 12:11:56
-version: 1.9
+updated: 2020-02-14 12:26:27
+version: 1.10
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -100,6 +100,8 @@ So the render method that I made will create the following html as a string when
 ```
 
 ## 2 - A nodejs multiplication table javaScript example
+
+Now for another basic multiplication table javaScript example only now I will be getting into a nodejs style example with this. When it comes to working in a nodejs environment there is working out the logic to create a table, and then there is doing something to render that table. One way would be to log it out to the standard output of the console, however another option would be to create a file of one type or another.
 
 ### 2.1 - The nodejs module
 
