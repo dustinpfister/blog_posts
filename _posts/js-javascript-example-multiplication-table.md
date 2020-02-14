@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-14 12:28:05
-version: 1.11
+updated: 2020-02-14 12:29:59
+version: 1.12
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -146,6 +146,8 @@ module.exports = function (w, h, forN, wOffset, hOffset) {
 ```
 
 ### 2.2 - Making a render method to the console.
+
+Now to use the module to create a table, and to render the table somehow. In this example I am just logging to the standard output of the console by way of the console log method.
 
 ```js
 var mTable = require('./mtable.js');
