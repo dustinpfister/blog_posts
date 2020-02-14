@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 608
-updated: 2020-02-08 08:47:25
-version: 1.7
+updated: 2020-02-14 10:25:29
+version: 1.8
 ---
 
 [Long division](https://en.wikipedia.org/wiki/Long_division) is one of those things that as an adult I might forget how to do, but of course it is not so hard to get back up to speed with again by just sting down and doing it again it is elementary school level math after all. However often coming up with a javaScript solution to replicate the process of long division is not so elementary. Solutions for doing so can often work okay, but might not work out as well as I might like.
@@ -45,7 +45,7 @@ It seems to work okay but there is one little problem, it is still just straight
 
 ## 2 - Taking a look at the divRem method in javascript-biginteger by silentmatt
 
-There is [javascript-biginteger](https://github.com/silentmatt/javascript-biginteger) by Matthew Crumley aka [silentmatt on github](https://github.com/silentmatt).
+There is [javascript-biginteger](https://github.com/silentmatt/javascript-biginteger) by Matthew Crumley aka [silentmatt on github](https://github.com/silentmatt). The below code example is the division methods from that project, it will not work by itself as a copy and past solution like the above example as it needs a lot of the methods that are part of the larger dependency that creates a big integer class. 
 
 ```js
 BigInteger.prototype.divRem = function (n) {
