@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-12 13:02:36
-version: 1.6
+updated: 2020-02-14 11:47:30
+version: 1.7
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -15,7 +15,11 @@ This javaScript example post will be on making a multiplication table module exa
 
 <!-- more -->
 
-## 1 - The multiplication table module for the javaScript example
+## 1 - A starring multiplication table javaScript example
+
+In this section I will be staring out with a basic multiplication table javaScript example. This kind of solution should work out okay in both a browser and node environment.
+
+### 1.1 - The multiplication table module for the javaScript example
 
 The first step that came to mind is to make a module that will be used to create an array of cell objects. Each cell will have an x and y position as well as an index value, this information can then be used later for the purpose of formating. So then this module will have just one public method that is used to create an array of these cells, and then that array is what will then be passed to another method that is used to render it.
 
@@ -66,7 +70,7 @@ var mTable = (function () {
 
 In the body of the pubic method I have a forN option that is a method that will be called for each cell in the array. The default value for this will be a method that will set a n property for each cell that is the value of cell.x multiplied by cell.y.
 
-## 2 - Making another method that will create html string from the table object
+### 1.2 - Making another method that will create html string from the table object
 
 So then once I have my module worked out that creates the array of cells that will contain the numbers for each value in the multiplication table, I then need a method that will be used to render that is html. Now this is something that will differ depending on the environment. For example in a nodejs environment I might want to create an html string, however in a client system I might want to use methods the document create element, and append child methods.
 
