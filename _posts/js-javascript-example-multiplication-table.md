@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-14 12:29:59
-version: 1.12
+updated: 2020-02-14 12:32:53
+version: 1.13
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -176,3 +176,7 @@ var t = mTable(20,100);
  
 renderTable(t);
 ```
+
+## 3 - Conclusion
+
+So working out a multiplication table is a nice simple javaScript example. In addition right off the bat there is all kinds of different ways to go about doing such a simple task, and all kinds of ways of going about rendering the data that is created by such a javaScript example.
