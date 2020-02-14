@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-14 11:47:30
-version: 1.7
+updated: 2020-02-14 12:09:53
+version: 1.8
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -91,7 +91,7 @@ var table = mTable(5, 5);
 console.log(htmlDiv(table, 32));
 ```
 
-## 2.1 - The resulting html
+### 1.3 - The resulting html
 
 So the render method that I made will create the following html as a string when making a five by five table.
 
