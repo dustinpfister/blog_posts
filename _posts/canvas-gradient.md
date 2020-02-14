@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-02-05 19:03:36
-version: 1.4
+updated: 2020-02-13 20:45:26
+version: 1.5
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in html 5 canvas with two constructors of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context using [gradient color](https://en.wikipedia.org/wiki/Color_gradient).
@@ -47,6 +47,37 @@ gradient.addColorStop(0.4, 'yellow');
 gradient.addColorStop(0.6, 'blue');
 gradient.addColorStop(0.8, 'cyan');
 gradient.addColorStop(1, 'lime');
+ 
+// use the gradient as a style
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+```
+
+## 2 - radian canvas gradient
+
+
+```js
+// CANVAS
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d'),
+container = document.getElementById('gamearea') || document.body;
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ctx.translate(0.5, 0.5);
+ 
+var x1 = 120,
+y1 = 120,
+r1 = 25,
+x2 = 80,
+y2 = 80,
+r2 = 100;
+gradient = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);
+ 
+// Add color stops
+gradient.addColorStop(0, 'red');
+gradient.addColorStop(0.5, 'green');
+gradient.addColorStop(1, 'blue');
  
 // use the gradient as a style
 ctx.fillStyle = gradient;
