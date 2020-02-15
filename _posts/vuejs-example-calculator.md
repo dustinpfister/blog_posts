@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 613
-updated: 2020-02-15 15:34:06
-version: 1.4
+updated: 2020-02-15 15:55:43
+version: 1.5
 ---
 
 I have not wrote a post on vuejs for a while, so I thought I would start a series of posts that are vue examples. So how about a vue calculator of sorts for starters. This will be a nice quick simple example that makes use of vue el, templates, methods and a few built in directives as well as the use of eval in javaScript to evaluate expressions.
@@ -19,13 +19,13 @@ In this section I will be starting out with a simple vue calculator example. It 
 
 ### 1.1 - The calculator.js file
 
-So I made a javaScript file called calculator.js and created a new vue instance in it where I am binding to a container element in my html with an id of app via the vue el directive. I then have a simple static template where I have two div elements for displaying the current expression as well as the current value of that expression.
+So I made a javaScript file called calculator.js and created a new vue instance. In the options object of the new vue instance I am binding to a container element in my html with an id of app via the vue el directive. I then have a simple static template where I have an text input element for the current expression that I want to evaluate. I also have a div element in the template that is used to display the current value of the the expression, as well as a number of additional button input elements that can be used to create an expression by way of clicking on the buttons.
 
 ```js
 new Vue({
     el: '#app',
     template: '<div>' +
-    '<div v-text=\"expression\" v-bind:style=\"style_expression\"></div>' +
+    '<input v-model=\"expression\" v-on:keyup=\"eval\" v-bind:style=\"style_expression\"></br>' +
     '<div v-text=\"num\" v-bind:style=\"style_num\"></div>' +
     '<form v-on:click=\"click\">' +
     '<input type=\"button\" value=\"1\">' +
@@ -42,6 +42,7 @@ new Vue({
     '<input type=\"button\" value=\"-\"><br>' +
     '<input type=\"button\" value=\"*\">' +
     '<input type=\"button\" value=\"/\">' +
+    '<input type=\"button\" value=\".\">' +
     '<input type=\"button\" value=\"CR\">' +
     '</form>' +
     '</div>',
@@ -52,6 +53,15 @@ new Vue({
         expression: ''
     },
     methods: {
+        // evaluate the expression
+        eval: function () {
+            try {
+                this.$data.num = eval(this.$data.expression);
+            } catch (e) {
+                this.$data.num = e.message;
+            }
+        },
+        // a button was clicked
         click: function (e) {
             var str = e.target.value;
             var n = parseInt(e.target.value);
@@ -60,7 +70,7 @@ new Vue({
                 this.$data.expression += n;
             } else {
                 // add operator to expression
-                if ('+-*/'.split('').some(function (ch) {
+                if ('+-*/.'.split('').some(function (ch) {
                         return ch === str;
                     })) {
                     this.$data.expression += str;
@@ -70,12 +80,7 @@ new Vue({
                     this.$data.expression = '';
                 }
             }
-            // eval expression
-            try {
-                this.$data.num = eval(this.$data.expression);
-            } catch (e) {
-                this.$data.num = e.message;
-            }
+            this.eval();
         }
     }
 })
