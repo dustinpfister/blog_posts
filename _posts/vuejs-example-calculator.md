@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 613
-updated: 2020-02-15 11:00:19
-version: 1.2
+updated: 2020-02-15 15:30:57
+version: 1.3
 ---
 
 I have not wrote a post on vuejs for a while, so I thought I would start a series of posts that are vue examples. So how about a vue calculator of sorts for starters. This will be a nice quick simple example that makes use of vue el, templates, methods and a few built in directives as well as the use of eval in javaScript to evaluate expressions.
@@ -18,6 +18,8 @@ I have not wrote a post on vuejs for a while, so I thought I would start a serie
 In this section I will be starting out with a simple vue calculator example. It will involve a static template rather than a render method, and a single click method that is attached to a main from element via the v-on directive. There will be two main variables of interest in the data object, one that stores the current number value of an expression, and the other that that stores that expression. javaScript eval will be used as a way to evaluate the expression and update the number value.
 
 ### 1.1 - The calculator.js file
+
+So I made a javaScript file called calculator.js and created a new vue instance.
 
 ```js
 new Vue({
