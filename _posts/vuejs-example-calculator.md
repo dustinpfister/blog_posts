@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 613
-updated: 2020-02-15 15:57:52
-version: 1.6
+updated: 2020-02-15 16:01:54
+version: 1.7
 ---
 
 I have not wrote a post on vuejs for a while, so I thought I would start a series of posts that are vue examples. So how about a vue calculator of sorts for starters. This will be a nice quick simple example that makes use of vue el, templates, methods and a few built in directives as well as the use of eval in javaScript to evaluate expressions.
@@ -21,7 +21,7 @@ In this section I will be starting out with a simple vue calculator example. It 
 
 So I made a javaScript file called calculator.js and created a new vue instance. In the options object of the new vue instance I am binding to a container element in my html with an id of app via the vue el directive. I then have a simple static template where I have an text input element for the current expression that I want to evaluate. I also have a div element in the template that is used to display the current value of the the expression, as well as a number of additional button input elements that can be used to create an expression by way of clicking on the buttons.
 
-I then have two methods one is used to evaluate the current expression using eval which is then used to update the value of the num property of the data object. I am using the keyup event in the text input element as a way to directly call the method and update the number when using the text element as a way to create an expression.
+I then have two methods one is used to evaluate the current expression using eval which is then used to update the value of the num property of the data object. I am using the keyup event in the text input element as a way to directly call the method and update the number when using the text element as a way to create an expression. The click method is used for the buttons that I have made that can also be used to create an expression that way.
 
 ```js
 new Vue({
@@ -90,6 +90,8 @@ new Vue({
 
 ### 1.2 - The html file
 
+Now for some html that links to vuejs and of course my calculator.js file that I have above.
+
 ```js
 <html>
   <head>
@@ -102,3 +104,5 @@ new Vue({
   </body>
 </html>
 ```
+
+When this vue calculator example is up and running it works okay. I am able to create an expression by editing the text of the text input element for the expression, or use the buttons. There is all ready a great deal I would change when it comes to using a render method rather than a static template, and adding additional features, but the basic idea of a general vue calculator is there.
