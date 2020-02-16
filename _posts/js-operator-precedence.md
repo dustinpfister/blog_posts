@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-02-16 09:26:19
-version: 1.55
+updated: 2020-02-16 09:53:26
+version: 1.56
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -20,7 +20,7 @@ In this post I will be going over many examples of order of operations in JavaSc
 
 ## 1 - Order of operations basics in javaScript
 
-In this section I will be starting out with some basics when it comes to order of operations with javaScript. There is just starting out by fiddling with some basic expressions composed of operators and literal values. A good starting pont might be expressions involving just additional, multiplication and grouping.
+In this section I will be starting out with some basics when it comes to order of operations with javaScript. There is just starting out by fiddling with some basic expressions composed of operators and literal values. A good starting point might be expressions involving just additional, multiplication and grouping.
 
 ### 1.1 - Basic expressions involving just addition , multiplication, and grouping
 
@@ -130,7 +130,7 @@ console.log(e); // 3
 console.log(f); // 15
 ```
 
-### 3.6 - Conditional - Precedence 4
+### 3.6 - Conditional ( Precedence 4 )
 
 I often seen Conditional operators used in expressions. When using them any expression that comes first will typically be preformed first because just about all other operators typically used to write expressions have higher precedence.
 
@@ -141,7 +141,7 @@ console.log(  a * 2 > 5 ? 1 : 0 ); // 1
 console.log(  a * (2 > 5) ? 1 : 0 ); // 0
 ```
 
-### 3.7 - Assignment - Precedence 3
+### 3.7 - Assignment ( Precedence 3 )
 
 When it comes to the order of operations in javaScript the assignment operator is fairly low on the list. So low in fact that for most expressions it will be preformed last. The only operators that are even lower are the yield and Comma operators which I can not say I use much when it comes to expressions.
 
