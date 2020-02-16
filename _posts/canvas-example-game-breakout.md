@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-16 18:57:38
-version: 1.4
+updated: 2020-02-16 18:58:17
+version: 1.5
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -335,6 +335,8 @@ draw.info = function (ctx, state) {
 ```
 
 ## 4 - main.js and index.html
+
+Now to tie everything together with a main.js file and and html file.
 
 ```js
 var canvas = document.createElement('canvas'),
