@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 613
-updated: 2020-02-15 16:01:54
-version: 1.7
+updated: 2020-02-16 18:52:49
+version: 1.8
 ---
 
 I have not wrote a post on vuejs for a while, so I thought I would start a series of posts that are vue examples. So how about a vue calculator of sorts for starters. This will be a nice quick simple example that makes use of vue el, templates, methods and a few built in directives as well as the use of eval in javaScript to evaluate expressions.
@@ -106,3 +106,7 @@ Now for some html that links to vuejs and of course my calculator.js file that I
 ```
 
 When this vue calculator example is up and running it works okay. I am able to create an expression by editing the text of the text input element for the expression, or use the buttons. There is all ready a great deal I would change when it comes to using a render method rather than a static template, and adding additional features, but the basic idea of a general vue calculator is there.
+
+## 2 - Conclsuion
+
+Of course there are many other types of calculators other than what it is that I covered in this post. There are many other ways to design these with vuejs by using render methods, in place of templates, and making use of other ways to work with user input such as a canvas tag combines with mouse and touch events. There are of course all kids of calculators, such as scientific ones, and ones that are justg used to compute how much money a loan payment will be. Hopefully this will help to give you some ideas as to how to get going with this though.
