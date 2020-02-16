@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-02-16 08:12:51
-version: 1.50
+updated: 2020-02-16 08:25:47
+version: 1.51
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
 
-For example multiplication is always preformed before addition, and a lengthy expression that is contained within a grouping operator is preformed before any additional operations that are to be preformed outside of it. Many operators are preformed from left to right when it comes to associativity, but this is not always the case with many others. So then in javaScript operator precedence, and associativity is something that a developer should have a sat least some grasp on as it will come up when authoring or studying expressions in a project. 
+For example multiplication is always preformed before addition, and a lengthy expression that is contained within a grouping operator is preformed before any additional operations that are to be preformed outside of it. Many operators are preformed from left to right when it comes to associativity, but this is not always the case with many others. So then in javaScript operator precedence, and associativity is something that a developer should have a sat least some grasp on as it will come up when authoring or studying expressions in a project. So there is the question of what operators are preformed first \([operator precedence aka order of operations](https://en.wikipedia.org/wiki/Order_of_operations)\), and then also the direction in which they are preformed as well \( [associativity](https://en.wikipedia.org/wiki/Operator_associativity) \).
 
 In this post I will be going over many examples of order of operations in JavaScript that should help with gaining at least a basic understanding of that topic, as well as associativity, and maybe some other little things here that I will likely branch off into when it comes to writing some actual real functioning examples of order of operations and javaScript code.
 
@@ -19,6 +19,8 @@ In this post I will be going over many examples of order of operations in JavaSc
 <!-- more -->
 
 ## 1 - Order of operations basics in javaScript
+
+### 1.1 - Basic expressions involving just addition , multiplication, and grouping
 
 So lets start out with some very simple examples of order of operations in javaScript, then cover some more complex real examples later in this post. That being said if an expression contains addition first and then multiplication from left to right, then the multiplication operation will be preformed first and then the addition. The reason why is because multiplication and division have a higher precedence value then that of addition and subtraction. If for some reason I want the addition to happen first then I  will want to use parentheses or group operators to achieve just that. Changing the placement of the operators in the expression from left to right will not make a difference, because it will not change the situation with operator precedence the multiplication operation will still be preformed first. 
 
@@ -32,7 +34,7 @@ console.log( (10 + 5) * 2 ); // 30
 
 The reason why is because parentheses have the highest precedence value of all when it comes to the order of how operations are preformed with javaScript expressions. So this will help to bump up the precedence value of the addition operation above that of the multiplication. Because multiplication has a higher precedence value than addition I will always want to use the group operator to preform a sum first if that is what needs to happen.
 
-So there is the question of what operators are preformed first \([operator precedence aka order of operations](https://en.wikipedia.org/wiki/Order_of_operations)\), and then also the direction in which they are preformed as well \( [associativity](https://en.wikipedia.org/wiki/Operator_associativity) \). To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is to be used an expression. Using a group operator where it is not needed might not change the outcome, and it might help to make the code more readable for developers that do not understand order of operations as well as they maybe should. However it still might be best to just understand order of operations so that unneeded use of group operators does not end up happening.
+To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is to be used an expression. Using a group operator where it is not needed might not change the outcome, and it might help to make the code more readable for developers that do not understand order of operations as well as they maybe should. However it still might be best to just understand order of operations so that unneeded use of group operators does not end up happening.
 
 ## 2 - Associativity of operators
 
