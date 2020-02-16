@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-16 18:48:43
-version: 1.2
+updated: 2020-02-16 18:56:19
+version: 1.3
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -14,6 +14,8 @@ This will be a post on a [canvas example](https://developer.mozilla.org/en-US/do
 <!-- more -->
 
 ## 1 - The custom utils lib
+
+I worked out a basic custom utils library for this canvas example. This library has methods that I will be using in the game module, but also likely elsewhere if this project where to continue growing. For now it is just methods that have to do with bounding box collision detection, distance, and normalizing angles.
 
 ```js
 var util = {};
