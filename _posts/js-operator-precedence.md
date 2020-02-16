@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-02-16 08:05:45
-version: 1.48
+updated: 2020-02-16 08:08:52
+version: 1.49
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -30,9 +30,9 @@ console.log( 5 * 2 + 10 ); // 20
 console.log( (10 + 5) * 2 ); // 30
 ```
 
-The reason why is because parentheses have the highest precedence value of all when it comes to the order of how operations are preformed with javaScript expressions. So this will help to bump up the precedence value of the addition operation above that of the multiplication.
+The reason why is because parentheses have the highest precedence value of all when it comes to the order of how operations are preformed with javaScript expressions. So this will help to bump up the precedence value of the addition operation above that of the multiplication. Because multiplication has a higher precedence value than addition I will always want to use the group operator to preform a sum first if that is what needs to happen.
 
-So there is the question of what operators are preformed first ([operator precedence aka order of operations](https://en.wikipedia.org/wiki/Order_of_operations)), and then also the direction in which they are preformed as well ( [associativity](https://en.wikipedia.org/wiki/Operator_associativity) ). To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is to be used an expression.
+So there is the question of what operators are preformed first \([operator precedence aka order of operations](https://en.wikipedia.org/wiki/Order_of_operations)\), and then also the direction in which they are preformed as well \( [associativity](https://en.wikipedia.org/wiki/Operator_associativity) \). To know if grouping with parentheses is really needed or not it is just a matter of know what comes first and to know that you just need to review what the precedence values are for each operator that is to be used an expression.
 
 ## 2 - Associativity of operators
 
