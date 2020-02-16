@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-02-16 09:21:10
-version: 1.54
+updated: 2020-02-16 09:26:19
+version: 1.55
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -73,7 +73,7 @@ try {
 
 There are twenty levels of operator precedence in javaScript, and operators with a higher precedence value will be preformed first over those with a lower precedence value. In addition the associativity is different depending on the operator as well, however most of the operators typically used when writing expressions have left to right associativity. In this section I will be going over some of the operators in order of the precedence value.
 
-### 3.1 - Grouping - Precedence 20 ( highest, prefromed first)
+### 3.1 - Grouping - (Precedence 20 highest, preformed first)
 
 Parentheses in javaScript are used to make function calls, however they also have another purpose when it comes to grouping an expression. In other words a pare of parentheses by itself is considered a so called [grouping operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Grouping), and when it comes to authoring any kind of expression in javaScript this grouping operator has the highest operator precedence of all the available operators in javaScript.
 
@@ -88,7 +88,7 @@ Here in the first expression the logical not operator is preformed first because
 
 By grouping the 0 and one together the addition operation is now preformed first because the grouping precedence value of 20 superseding the value of the logical not operator again at 16. So now when the logical not operator is preformed this results in not 1 which results in a false boolean value that will convert to 0 when converted to a number, resulting in zero being multiplied by 4 which is 0. So no matter what else is going on anything inside the parentheses or grouping if you prefer will be preformed first.
 
-### 3.2 - Function calls Precedence ( 19 )
+### 3.2 - Function calls Precedence ( Precedence 19 )
 
 Grouping hands down does have the highest precedence in javaScript, but right behind it is also function calls. So any additional expression within a function call will be preformed first in most situations unless it is superseded by grouping somehow.
 
@@ -102,15 +102,15 @@ console.log(3 + 7 - 3 * 5); // - 5
 console.log(3 + (7 - 3) * 5); // 23
 ```
 
-### 3.3 - New operator without arguments ( 18 )
+### 3.3 - New operator without arguments ( Precedence  18 )
 
 It is possible to use the new operator without arguments when this is the case it results in the new operator having a precedence value of 18.
 
-### 3.4 - Postfix Increment and postfix decrement ( 17 )
+### 3.4 - Postfix Increment and postfix decrement ( Precedence 17 )
 
 There are the increment and decrement operators that are two plus signs, or negative signs. This operator can be placed before of after a variable that is to be incremented or decremented. If one of them is used after a variable then it is postfix and has a precedence value of 17.
 
-### 3.5 - Logical Or - Precedence 5
+### 3.5 - Logical Or ( Precedence 5 )
 
 So logical or operators have left to right associativity. In addition of anything that comes along evaluates to true that will be the value of the expression any any additional parts will not effect the result. This effect is desirable in many situations as such it is often used as a way to feature test, and create poly fills.
 
