@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-02-16 08:39:26
-version: 1.53
+updated: 2020-02-16 09:21:10
+version: 1.54
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -54,6 +54,20 @@ console.log(a,b); // 3 -3
 ```
 
 Here subtraction is an example of left to right associativity, you start with 5 and then subtract 2 in the first example, things flow from left to right.
+
+### 2.2 - right to left
+
+Although many operators have left to right associativity, many have the inverse of this also. One example is the logical not operator. This operator converts and inverts the boolean value of the value that is given to it at the right of it. If a value is given to the left that will result in an error.
+
+```js
+var bool = !0;
+console.log(bool); // true
+try {
+    eval('0!');
+} catch (e) {
+    console.log(e.message); // Unexpected token !
+}
+```
 
 ## 3 - The javaScript precedence values
 
