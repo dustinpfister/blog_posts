@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 613
-updated: 2020-02-16 18:52:49
-version: 1.8
+updated: 2020-02-18 18:26:15
+version: 1.9
 ---
 
-I have not wrote a post on vuejs for a while, so I thought I would start a series of posts that are vue examples. So how about a vue calculator of sorts for starters. This will be a nice quick simple example that makes use of vue el, templates, methods and a few built in directives as well as the use of eval in javaScript to evaluate expressions.
+I have not wrote a post on vuejs for a while, so I thought I would start a series of posts that are vue examples. So how about a [vue calculator](https://vuejsexamples.com/tag/calculator/) of sorts for starters. This will be a nice quick simple example that makes use of vue el, templates, methods and a few built in directives as well as the use of eval in javaScript to evaluate expressions.
 
 <!-- more -->
 
