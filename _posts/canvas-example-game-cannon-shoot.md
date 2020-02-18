@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 09:36:59
-version: 1.2
+updated: 2020-02-18 09:44:25
+version: 1.3
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -16,24 +16,11 @@ The will be a post on a cannon shoot [canvas example](https://developer.mozilla.
 
 ## 1 - The Utils module of this canvas example
 
-To start off with in this section I will be going over the custom utility library that I worked out for this canvas example.
+To start off with in this section I will be going over the custom utility library that I worked out for this canvas example. This module contains a custom tailor set of copy and past usual suspects for these kinds of projects. Considering the nature of the project, I am going to want methods like the distance formula and some methods that have to do with angles. I also want some additional methods that I will be using in the game module, but also potential outside of it as well if I where to continue working on this example.
+
+### 1.1 - The start of the module, and the get canvas relative method.
 
 ```js
-// UTILS
-var utils = {};
- 
-// create an return a new once method
-utils.once = (function () {
-    var fired = false;
-    return function (mess) {
-        if (!fired) {
-            console.log(mess);
-        }
-        fired = true;
-    };
-}
-    ());
- 
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -45,7 +32,11 @@ utils.getCanvasRelative = function (e) {
         bx: bx
     };
 };
- 
+```
+
+### 1.2 - 
+
+```js
 utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(
         (y1 + h1) < (y2) ||
@@ -53,11 +44,19 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         (x1 + w1) < x2 ||
         x1 > (x2 + w2));
 };
- 
+```
+
+### 1.3 - Distance
+
+```js
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
- 
+```
+
+### 1.4 - Mathematical modulo and angle methods
+
+```js
 // Math mod and angle methods from
 // https://github.com/infusion/Angles.js/blob/master/angles.js
 utils.mod = function mod(x, m) {
