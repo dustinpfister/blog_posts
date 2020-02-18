@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 09:44:25
-version: 1.3
+updated: 2020-02-18 09:54:32
+version: 1.4
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -20,7 +20,14 @@ To start off with in this section I will be going over the custom utility librar
 
 ### 1.1 - The start of the module, and the get canvas relative method.
 
+I went with just an object literal pattern rather than an IIFE for the utils module. This will more or less work out okay with this module as all of the methods here are public.
+
+The first method I added to my utils module is a method that is a usual copy and past suspect that has to do with getting a canvas relative position when a canvas is clicked or touched. This is of course something that I am going to want to do one way or another when to comes to any kind of canvas project that works with input from a user in  the from of mouse or touch events.
+
 ```js
+// UTILS
+var utils = {};
+ 
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
