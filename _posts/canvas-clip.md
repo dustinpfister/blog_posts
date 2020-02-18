@@ -1,12 +1,12 @@
 ---
-title: The canvas clip method
+title: The canvas clip method masks and layering
 date: 2019-10-08 19:44:00
 tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2020-02-17 19:33:14
-version: 1.11
+updated: 2020-02-17 19:36:32
+version: 1.12
 ---
 
 The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas element. This is an area of the canvas that will be drawn to where everything outside of the clip area will not actually be drawn to the canvas. So in other words it is a way to go about making a mask of sorts when drawing the the canvas element. 
