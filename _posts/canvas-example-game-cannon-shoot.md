@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 10:05:17
-version: 1.6
+updated: 2020-02-18 10:15:42
+version: 1.7
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -66,6 +66,8 @@ utils.distance = function (x1, y1, x2, y2) {
 ```
 
 ### 1.4 - Mathematical modulo and angle methods
+
+I also have a few methods that have to do with [mathematical modulo](/2017/09/02/js-whats-wrong-with-modulo/) and working with angles. The modulo method is just another way of getting a remainder that compared to what is used in the core javaScript syntax. The other methods here have to do with normalizing angles and angular distance that are from [angles.js](https://github.com/infusion/Angles.js/blob/master/angles.js).
 
 ```js
 // Math mod and angle methods from
