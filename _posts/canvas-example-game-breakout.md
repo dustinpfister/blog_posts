@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-17 19:55:31
-version: 1.8
+updated: 2020-02-17 20:02:30
+version: 1.9
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -87,7 +87,7 @@ var breakout = (function () {
     };
 ```
 
-### 2.2
+### 2.2 - Move the paddle helper
 
 ```js
     // move the paddle
@@ -114,7 +114,11 @@ var breakout = (function () {
             paddle.x = 0;
         }
     };
- 
+```
+
+### 2.3 - Ball block hit check, ball paddle hit check, and ball boundaries hit check
+
+```js
     // check if a ball hit a block, and purge it if it did
     var ballBlockHitCheck = function (ball, state) {
         var blocks = state.blocks,
@@ -160,7 +164,11 @@ var breakout = (function () {
             ball.heading = Math.PI * 1.5 + a;
         }
     };
- 
+```
+
+### 2.4 - reset balls array
+
+```js
     // reset a ball
     var resetBall = function (ballIndex, state) {
         var ball = state.balls[ballIndex],
@@ -179,7 +187,11 @@ var breakout = (function () {
             resetBall(i, state);
         }
     };
- 
+```
+
+### 2.5 - Add one or more balls to a state
+
+```
     // make a ball object
     var addBalls = function (state, count) {
         count = count || 1;
@@ -199,7 +211,11 @@ var breakout = (function () {
         }
         return ball;
     };
- 
+```
+
+### 2.6 - move balls
+
+```js
     // move balls
     var moveBalls = function (state, secs) {
         var i = 0,
@@ -226,7 +242,11 @@ var breakout = (function () {
             i += 1;
         }
     };
- 
+```
+
+### 2.7 - set game state and balls
+
+```
     // set game state and balls
     var setGame = function (state) {
         var canvas = state.canvas;
@@ -249,7 +269,11 @@ var breakout = (function () {
             pps: 128
         };
     };
- 
+```
+
+### 2.8 - The public api and the end of the module
+
+```
     var api = {};
  
     // create a new game state
