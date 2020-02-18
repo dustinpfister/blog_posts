@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 09:58:36
-version: 1.5
+updated: 2020-02-18 10:05:17
+version: 1.6
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -55,7 +55,9 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 };
 ```
 
-### 1.3 - Distance
+### 1.3 - The Distance formal
+
+I added the distance formula as part of the module. This is what I will be using to just find the distance between two points. This can be used with a little additional code to set the initial power of the cannon and therefor the shot by comparing the distance from a certain point to a certain max length.
 
 ```js
 utils.distance = function (x1, y1, x2, y2) {
