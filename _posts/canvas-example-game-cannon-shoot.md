@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 11:54:16
-version: 1.12
+updated: 2020-02-18 14:31:53
+version: 1.13
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -97,6 +97,8 @@ utils.angleMinDistance = function (a, b) {
 
 Now that I got the utility module out of the way it is not time to go over the game module for this cannon shoot canvas game example. This module is what I will be using in my main JavaScript file to create a game state, update it, as well as attaching some event handers to mutate state that way.
 
+In addition to methods and a state object it is also worth mentioning that there is more than one mode for this game module. That is that I made a state machine of sorts as part of this module where there three modes, and there are update methods and or event handlers for each o them. There is the aim mode where the player can set the heading and power level of the cannon. Then there is the fired mode where the shot is currently in motion, and finally there is the over mode that the game state will be in when the shot hits the ground.
+
 ### 2.1 - The start of the module and create new state method
 
 So I start off the module with an IIFE, and at the top of the function expression there is my create new state method. This methods creates and returns a new game state that can then be passed to other public methods of this module that are used to mutate and update that state, by way of user input and update methods.
@@ -141,6 +143,10 @@ var game = (function () {
 
 ### 2.2 - Set cannon and set shot method.
 
+These methods are used to set the values of the cannon object, and shot object of a game state object created with the create new state method. The set cannon method just sets the given heading in radians and power level between 0 and 1. However it also sets the current sx and sy position based on the current heading that was just set. This position and other values are then what is used to set the starting position, heading, and power of the shot object when fired.
+
+I then have a set shot method that will set the heading and pixels per second based n the start heading and power of the shot. The start heading as you might expect is set
+
 ```js
     var setCannon = function (state, heading, power) {
         var cannon = state.cannon;
@@ -158,6 +164,8 @@ var game = (function () {
 ```
 
 ### 2.3 - Fire shot method
+
+This is the helper method that will be called to set up a shot, and switch to fired mode.
 
 ```js
     // fire the shot
