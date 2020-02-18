@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 18:43:59
-version: 1.12
+updated: 2020-02-18 18:45:38
+version: 1.13
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -284,6 +284,8 @@ This set game method will not create a new state object, but will set up a new g
 ```
 
 ### 2.8 - The public api and the end of the module
+
+Now that I have all the private methods out of the way it is now time to look at the public methods that can be used to work with this module from the outside in my main.js file.
 
 ```
     var api = {};
