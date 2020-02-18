@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2020-02-18 17:29:15
-version: 1.1
+updated: 2020-02-18 18:12:30
+version: 1.2
 ---
 
-This will be a quick post on a basic vue list example
+This will be a quick post on a basic vue list example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object.
 
 <!-- more -->
 
