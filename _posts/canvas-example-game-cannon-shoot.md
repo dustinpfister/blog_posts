@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 10:30:14
-version: 1.10
+updated: 2020-02-18 10:35:56
+version: 1.11
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -93,7 +93,10 @@ utils.angleMinDistance = function (a, b) {
 };
 ```
 
-## 2 - Game
+## 2 - The Game module for this cannon shoot canvas example
+
+
+### 2.1 - The start of the module and create new state method
 
 ```js
 // GAME
@@ -131,7 +134,11 @@ var game = (function () {
         setCannon(state, -1, 1);
         return state;
     };
- 
+```
+
+### 2.2 - Set cannon and set shot method.
+
+```js
     var setCannon = function (state, heading, power) {
         var cannon = state.cannon;
         cannon.heading = heading;
@@ -145,7 +152,11 @@ var game = (function () {
         shot.heading = shot.startHeading + shot.angleDistanceToGround * (1 - shot.power);
         shot.pps = 128 + Math.floor(256 * shot.power);
     };
- 
+```
+
+### 2.3 - Fire shot method
+
+```js
     // fire the shot
     var fireShot = function (state) {
         var sh = state.shot,
@@ -163,7 +174,11 @@ var game = (function () {
         state.lastTick = new Date();
         state.mode = 'fired';
     };
- 
+```
+
+### 2.4 -  Events attachment and user action methods for each mode that uses one
+
+```js
     // Events
     var eventTypeMaps = {
         mousedown: 'start',
@@ -222,7 +237,11 @@ var game = (function () {
             state.mode = 'aim';
         }
     };
- 
+```
+
+### 2.5 - The main update method, mode update methods, and the public API.
+
+```js
     var update = function (state) {
         var now = new Date();
         state.time = now - state.lastTick;
