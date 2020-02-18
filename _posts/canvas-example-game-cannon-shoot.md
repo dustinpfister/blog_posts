@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 14:40:00
-version: 1.16
+updated: 2020-02-18 14:43:17
+version: 1.17
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -293,7 +293,9 @@ So I have my user action method that can be used to attach event handers for mou
     ());
 ```
 
-## 3 - Draw
+## 3 - The Draw Module
+
+Now that I have a utility library and a module that has my game logic I now want another module that has methods that can be used to draw to the canvas with the current state of a state object created and mutated by the game module. I find that it is important to separate this from the game logic as a way to separate concerns and reduce the complexity of the game module.
 
 ```js
 var draw = (function () {
@@ -419,6 +421,8 @@ var draw = (function () {
 ```
 
 ## 4 - Main
+
+And now for the main.js file that is used to tie everything together.
 
 ```js
 // MAIN
