@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 10:16:15
-version: 1.8
+updated: 2020-02-18 10:22:42
+version: 1.9
 ---
 
-The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
+The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
 
 <!-- more -->
 
