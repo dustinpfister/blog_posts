@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2020-02-17 19:30:47
-version: 1.10
+updated: 2020-02-17 19:33:14
+version: 1.11
 ---
 
 The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas element. This is an area of the canvas that will be drawn to where everything outside of the clip area will not actually be drawn to the canvas. So in other words it is a way to go about making a mask of sorts when drawing the the canvas element. 
@@ -127,3 +127,5 @@ ctx.clip();
 // clear rect
 ctx.clearRect(0,0, canvas.width,canvas.height);
 ```
+
+I could then draw a linear gradient over the transparent area for a flashlight like effect. However there is still the questing of drawing other objects in the scene. One way would be to have another canvas element below this element that has other display objects that can be seen in the clip area.
