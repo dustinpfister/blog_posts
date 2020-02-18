@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 18:40:00
-version: 1.10
+updated: 2020-02-18 18:41:06
+version: 1.11
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -171,6 +171,8 @@ So then I am also going to need methods to check if a block was hit, and if so s
 ```
 
 ### 2.4 - reset balls array
+
+Here I have a methods that are used to set one or more balls back to there starting positions.
 
 ```js
     // reset a ball
