@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 09:54:32
-version: 1.4
+updated: 2020-02-18 09:58:36
+version: 1.5
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -41,7 +41,9 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
-### 1.2 - 
+### 1.2 - Bounding box collision detection
+
+This project is going to involve at least maybe one or two areas in the canvas that will act as a fire button of sorts. I could just use the distance formula if it is a circle like area, but I desired to make bounding box part of the utility library so I will use that for the fire button at least if not elsewhere.
 
 ```js
 utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
