@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-17 20:02:30
-version: 1.9
+updated: 2020-02-18 18:40:00
+version: 1.10
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -89,6 +89,8 @@ var breakout = (function () {
 
 ### 2.2 - Move the paddle helper
 
+This is a method that will move the paddle by the current state values, and a secs value that is passed from the method that call this where such a value has been figured before hand. Left and right values in the state object are set by and external event handler from this method.
+
 ```js
     // move the paddle
     var movePaddle = function (state, secs) {
@@ -117,6 +119,8 @@ var breakout = (function () {
 ```
 
 ### 2.3 - Ball block hit check, ball paddle hit check, and ball boundaries hit check
+
+So then I am also going to need methods to check if a block was hit, and if so splice it out from the blocks array. I am also going to need similar methods for when a ball in the balls array hits the paddle, or a wall.
 
 ```js
     // check if a ball hit a block, and purge it if it did
