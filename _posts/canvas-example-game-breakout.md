@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 18:41:06
-version: 1.11
+updated: 2020-02-18 18:43:59
+version: 1.12
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -197,6 +197,8 @@ Here I have a methods that are used to set one or more balls back to there start
 
 ### 2.5 - Add one or more balls to a state
 
+This method will add a count of balls to the balls array.
+
 ```
     // make a ball object
     var addBalls = function (state, count) {
@@ -220,6 +222,8 @@ Here I have a methods that are used to set one or more balls back to there start
 ```
 
 ### 2.6 - move balls
+
+Move all the balls in the balls array of the state object.
 
 ```js
     // move balls
@@ -251,6 +255,8 @@ Here I have a methods that are used to set one or more balls back to there start
 ```
 
 ### 2.7 - set game state and balls
+
+This set game method will not create a new state object, but will set up a new game. It will create a new blocks array, set all balls to there starting position, and will also rest the paddle to the center also.
 
 ```
     // set game state and balls
