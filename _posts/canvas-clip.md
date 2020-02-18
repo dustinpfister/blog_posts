@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2020-02-17 19:11:52
-version: 1.9
+updated: 2020-02-17 19:30:47
+version: 1.10
 ---
 
 The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas element. This is an area of the canvas that will be drawn to where everything outside of the clip area will not actually be drawn to the canvas. So in other words it is a way to go about making a mask of sorts when drawing the the canvas element. 
@@ -103,3 +103,27 @@ drawToClear();
 ```
 
 It might be a complicated way to go about having an inverted clipping region, but it seems to work okay.
+
+## 3 - Canvas clip, fill rect, and clear rect
+
+Keeping in mind what it is that the canvas clip method does it is possible to use it in conjunction with the create rect method on top of the fill rect method. That is I can use the fill rect method to fill the canvas with a solid color, then define a path and clip it. After filling the canvas and setting a clip area, I can the use the clear rect method to set the clipped area back to transparent. The result is then a filled canvas with a transparent area inside the clip area.
+
+```js
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// fill rect
+ctx.fillStyle = 'black;'
+ctx.fillRect(0,0, canvas.width, canvas.height);
+ 
+// set a clip area
+ctx.beginPath();
+ctx.moveTo(canvas.width / 2, canvas.height / 2);
+ctx.lineTo(50,50);
+ctx.lineTo(canvas.width - 50, 50);
+ctx.clip();
+ 
+// clear rect
+ctx.clearRect(0,0, canvas.width,canvas.height);
+```
