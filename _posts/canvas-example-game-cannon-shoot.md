@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 14:37:17
-version: 1.15
+updated: 2020-02-18 14:40:00
+version: 1.16
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -253,6 +253,8 @@ So here I have my user action method that when called will return an event hande
 ```
 
 ### 2.5 - The main update method, mode update methods, and the public API.
+
+So I have my user action method that can be used to attach event handers for mouse and touch events that are used to mutate the state object by way of user interaction. Now I need a similar kind of structure to do the same by way of a repeating update loop.
 
 ```js
     var update = function (state) {
