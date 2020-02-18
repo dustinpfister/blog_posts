@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2020-02-18 18:18:55
-version: 1.3
+updated: 2020-02-18 18:22:56
+version: 1.4
 ---
 
 This will be a quick post on a basic vue list example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object.
@@ -69,3 +69,5 @@ new Vue({
   </body>
 </html>
 ```
+
+There is then the methods object where I have a push new method that is called by the button that creates new items in the items array of the data object that is also used to create the list in the template. There is also a delete item method that will be called by a delete item button for each list item when clicked, it will of course delete the item.
