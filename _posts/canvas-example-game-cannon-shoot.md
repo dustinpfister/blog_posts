@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 14:36:02
-version: 1.14
+updated: 2020-02-18 14:37:17
+version: 1.15
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -189,7 +189,7 @@ This is the helper method that will be called to set up a shot, and switch to fi
 
 ### 2.4 -  Events attachment and user action methods for each mode that uses one
 
-So here I have my user action method that when called will return an event hander that can then be passed to add event listener in the main.js file. When calling the user action method a state object can be passed as the first argument that will be used inside the body of the event handler thanks to closure.
+So here I have my user action method that when called will return an event hander that can then be passed to add event listener in the main.js file. When calling the user action method a state object can be passed as the first argument that will be used inside the body of the event handler thanks to [closure](/2019/02/22/js-javascript-closure/).
 
 ```js
     // Events
