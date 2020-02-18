@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2020-02-18 18:12:30
-version: 1.2
+updated: 2020-02-18 18:18:55
+version: 1.3
 ---
 
 This will be a quick post on a basic vue list example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object.
@@ -16,7 +16,9 @@ This will be a quick post on a basic vue list example. When working with unorder
 
 ## 1 - A Basic vue list example
 
-So here is the basic copy and past vue list example that I put together for this post. The only fix you might have to do is the link to vuejs as needed.
+So here is the basic copy and past vue list example that I put together for this post. The only fix you might have to do is the link to vuejs as needed. The basic process is to start out with a vue instance by calling the main vue constructor with the new keyword, and then pass an options object. In that options object I am using the vue el directive to mount to a div element in my html, I have a template, data object, and methods object also.
+
+In the template I have a div as a root element because I must have one for a vue template, I then have an text input element and a a button type input element that when clicked will add a new list item with a message value given in the text input element. I then have a ul element and I am using the vue for directive to create li elements for each element in the items array.
 
 ```html
 <html>
