@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 10:22:42
-version: 1.9
+updated: 2020-02-18 10:30:14
+version: 1.10
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -300,11 +300,20 @@ var draw = (function () {
             var ctx = state.ctx,
             canvas = state.canvas,
             cannon = state.cannon;
+            // crude cannon line
             ctx.strokeStyle = 'lime';
             ctx.beginPath();
             ctx.moveTo(0, canvas.height);
             ctx.lineTo(cannon.sx, cannon.sy);
             ctx.stroke();
+            // fire button
+            ctx.fillStyle = 'red';
+            ctx.fillRect(canvas.width - 64, canvas.height - 64, 64, 64);
+            ctx.fillStyle = 'black';
+            ctx.font = '20px arial';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            ctx.fillText('FIRE!', canvas.width - 32, canvas.height - 32);
         },
         fired: function (state) {
             drawShot(state);
@@ -351,6 +360,7 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
             ctx.fillText('mode: ' + state.mode, 10, 10);
             ctx.fillText('map offset:  ' + Math.floor(state.offset.x) + ',' +
                 Math.floor(state.offset.y), 10, 20);
@@ -366,7 +376,6 @@ var draw = (function () {
                 yAjust = state.offset.y > 0 ? state.offset.y / canvas.height : 0;
                 ctx.fillRect(0, canvas.height - 5 - (canvas.height / 2) * yAjust, canvas.width, 150);
             }
- 
         }
  
     }
