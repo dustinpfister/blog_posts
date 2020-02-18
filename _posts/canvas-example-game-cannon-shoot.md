@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-02-18 10:35:56
-version: 1.11
+updated: 2020-02-18 11:54:16
+version: 1.12
 ---
 
 The will be a post on a cannon shoot [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
@@ -95,8 +95,11 @@ utils.angleMinDistance = function (a, b) {
 
 ## 2 - The Game module for this cannon shoot canvas example
 
+Now that I got the utility module out of the way it is not time to go over the game module for this cannon shoot canvas game example. This module is what I will be using in my main JavaScript file to create a game state, update it, as well as attaching some event handers to mutate state that way.
 
 ### 2.1 - The start of the module and create new state method
+
+So I start off the module with an IIFE, and at the top of the function expression there is my create new state method. This methods creates and returns a new game state that can then be passed to other public methods of this module that are used to mutate and update that state, by way of user input and update methods.
 
 ```js
 // GAME
