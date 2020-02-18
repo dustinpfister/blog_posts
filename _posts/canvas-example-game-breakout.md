@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-16 19:05:27
-version: 1.7
+updated: 2020-02-17 19:55:31
+version: 1.8
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -47,7 +47,11 @@ util.angleNormalize = function (a, scale) {
 
 ## 2 - The game modules
 
-Here in this section I have the main game module. This module has many methods that are used for creating a block array, balls array, paddle object, and game state object in general. There are also many methods both private and public for working with this state object.
+Here in this section I have the main game module of this breakout canvas example. This module has many methods that are used for creating a block array, balls array, paddle object, and game state object in general. There are also many methods both private and public for working with this state object.
+
+## 2.1 - The start of the module and the create blocks helper
+
+The whole of the game module is wrapped in an IIFE or immediately invoked function expression that returns a public API to a single global variable called game. The first private method that I have inside the body of this IIFE is a function that creaks the array of blocks.
 
 ```js
 var breakout = (function () {
@@ -81,7 +85,11 @@ var breakout = (function () {
         }
         return blocks;
     };
- 
+```
+
+### 2.2
+
+```js
     // move the paddle
     var movePaddle = function (state, secs) {
         var paddle = state.paddle,
