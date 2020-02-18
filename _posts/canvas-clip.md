@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2020-02-17 19:06:19
-version: 1.8
+updated: 2020-02-17 19:11:52
+version: 1.9
 ---
 
 The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas element. This is an area of the canvas that will be drawn to where everything outside of the clip area will not actually be drawn to the canvas. So in other words it is a way to go about making a mask of sorts when drawing the the canvas element. 
@@ -46,7 +46,7 @@ So this is just a fancy way of drawing a filled circle with the canvas arc metho
 
 ## 2 - Inverting the clip area
 
-You would think it would be easy to just invert the clipping area, but it would seem that inverting a clipping area is not is easy as just setting a boolean value. There are of course ways of getting a desired effect when it comes to layering, in other words working with more than one canvas element. There is also a 2d context property called [Global Composite Operation](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation) that can be used to set compositing operations other than the default source-over mode when it comes to setting what areas of the canvas to draw to.
+You would think it would be easy to just invert the clipping area, but it would seem that inverting a clipping area is not as easy as just setting a boolean value. There are of course ways of getting a desired effect when it comes to layering, in other words working with more than one canvas element. There is also a 2d context property called [Global Composite Operation](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation) that can be used to set composing operations other than the default source-over mode when it comes to setting what areas of the canvas to draw to.
 
 In any case in this section I will be going over ways to go about having an inverted clipping area in canvas.
 
@@ -101,3 +101,5 @@ drawMask();
 drawToMask();
 drawToClear();
 ```
+
+It might be a complicated way to go about having an inverted clipping region, but it seems to work okay.
