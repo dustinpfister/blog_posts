@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2019-11-14 18:21:03
-version: 1.14
+updated: 2020-02-19 07:20:24
+version: 1.15
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with animations using canvas. Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -122,7 +122,7 @@ loop();
 
 This canvas example might prove to be a better approach to animation in the sense that I am taking into account the fact that on some browsers and systems javaScript is going to run a litter faster than with others. However this is also still a situation in which I am always just adding to an x value and then adjusting with if statements. This is more or less what needs to be done in one way or another when it comes to making a game for example. However for an animation such as this there is another way of interest that involves thinking in terms of a collection of frames.
 
-### 1.3 - Frame and maxFrame values
+### 1.3 - Frame index value, max frame index value, and deterministic animation style
 
 In this example I am moving the ball in relation to a current frame index value relative to a set number of max frames for the animation. This is an approach that I take when working out any kind of canvas powered animation that is going to be a fixed set of frames, rather than something that is subject to user input, or any kind of variation or randomization factor.
 
