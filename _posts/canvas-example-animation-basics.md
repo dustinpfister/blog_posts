@@ -5,11 +5,13 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-02-19 10:10:49
-version: 1.25
+updated: 2020-02-19 10:13:34
+version: 1.26
 ---
 
-So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations). Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
+So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basic example that have to do with [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations). 
+
+Making animations with canvas can be a fun, and rewarding experience and is definitely an example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There is of course the idea of visualizing a problem, and animation can be a good tool to help do just that. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here today.
 
 <!-- more -->
 
