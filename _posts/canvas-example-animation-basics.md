@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-02-19 08:58:40
-version: 1.17
+updated: 2020-02-19 09:02:06
+version: 1.18
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations). Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -186,6 +186,8 @@ There are ways of exporting these frames, and then from that point forward it is
 So now that I have covered the basic elements of animation and canvas, in this section I will be going over a basic example of a for frame centered style canvas animation module. What I mean by this is having a module where I pass and options object that contains a method that will be called on a per frame basis for all possible frame index values between zero and a max frame value. What is then returned is a function that when passed a frame index value will return an object that is the state of the animation for that frame index value relative to the max frame value that can also be set via a second argument.
 
 ### 2.1 - A basic For Frame module
+
+So this is a basic example more or less of what I have in mind for this for frame style of canvas animation. When I call it it will return an inner function that I can then use to change the state of the animation that I define using a for frame method that I pass as an option to it.
 
 ```js
 var FF = function (opt) {
