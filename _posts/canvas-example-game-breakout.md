@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 20:17:22
-version: 1.14
+updated: 2020-02-18 20:41:39
+version: 1.15
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -199,7 +199,7 @@ With the reset ball method I wanted to make it so an array of balls would be spa
 
 ### 2.5 - Add one or more balls to a state
 
-This method will add a count of balls to the balls array.
+This method will add a count of balls to the balls array. Although it sets some starting values for x and y for the balls it is not a replacement for my reset ball method. I could just have a single ball object that would help to simplify things here, however one of the advanced features of a breakout style game is having two or more balls at once and I wanted to lay the foundation for that with this.
 
 ```
     // make a ball object
