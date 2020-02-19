@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-02-19 17:01:14
-version: 1.3
+updated: 2020-02-19 17:03:40
+version: 1.4
 ---
 
 Fractals are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -18,6 +18,8 @@ Fractals are fun, the math can get a little challenging too. Also I am always lo
 The basic idea of a fractal is that I have something that will appear the same, or at least similar, as I continue to zoom in or out. So a good starting exercise would be to just have and array of squares, and as I continue to zoom in the square of a certain index value in the array will get bigger, at some point though that square will end up being small again. In other words it is just a repeating loop of squares getting larger, until they get to a certain size, at which point they become the new small square, and of course this is happening in an offset way.
 
 ### 1.1 - The For Frame animation helper
+
+So I have worked out a function that helps me quickly get up and running with animations.
 
 ```js
 var FF = function (opt) {
@@ -49,6 +51,8 @@ var FF = function (opt) {
 
 ### 2 - The draw module
 
+Here I have the draw module for this canvas animation example of a basic fractal.
+
 ```js
 // DRAW
 var draw = {};
@@ -77,6 +81,8 @@ draw.back = function (ctx, canvas) {
 ```
 
 ### 3 - The for frame method for the fractal animation loop
+
+Now for the actual animation logic, and everything else that will result in this animation.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
