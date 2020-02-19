@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 18:45:38
-version: 1.13
+updated: 2020-02-18 20:17:22
+version: 1.14
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -172,7 +172,9 @@ So then I am also going to need methods to check if a block was hit, and if so s
 
 ### 2.4 - reset balls array
 
-Here I have a methods that are used to set one or more balls back to there starting positions.
+Here I have a methods that are used to set one or more balls back to there starting positions. 
+
+With the reset ball method I wanted to make it so an array of balls would be spaced out evenly over the paddles starting location at the center of the canvas. So I worked out an xAjust expression of sorts that will change depending if there is just one ball or more than one.
 
 ```js
     // reset a ball
