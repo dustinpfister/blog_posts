@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-02-19 09:03:06
-version: 1.19
+updated: 2020-02-19 09:43:26
+version: 1.20
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations). Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -187,7 +187,9 @@ So now that I have covered the basic elements of animation and canvas, in this s
 
 ### 2.1 - A basic For Frame module
 
-So this is a basic example more or less of what I have in mind for this for frame style of canvas animation. When I call it it will return an inner function that I can then use to change the state of the animation that I define using a for frame method that I pass as an option to it.
+So this is a basic example more or less of what I have in mind for this for frame style of canvas animation. When I call this FF function it it will return an inner function that I can then use to change the state of the animation that I define using a for frame method that I pass as an option to it.
+
+Inside the FF function I have a helper method that will set a percent done value as a number in the range of zero to one that reflects the stage of completion of the animation as it progresses from frame zero to the last frame. This method also sets what I have come to call a bias value that is a number that goes from zero to on half and then back down to zero depending on the stage of completion of the animation. These are two general properties that come to mind that I will want to work with when it comes to working out some logic for an animation via a for frame method.
 
 ```js
 var FF = function (opt) {
