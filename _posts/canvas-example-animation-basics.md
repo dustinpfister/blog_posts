@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-02-19 09:56:07
-version: 1.23
+updated: 2020-02-19 10:06:54
+version: 1.24
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations). Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -283,3 +283,7 @@ draw.bx(ctx, bx);
 
 
 So then I pass my options object with the for frame method to the FF function when calling it and then I get another function that when called with a frame index value will give me the state of the box animation at that frame index value. So far I am just setting it to frame index 25 of 50 which should result in the box being at the half way bottom  and center area of the canvas.
+
+## 3 - Conclusion
+
+So hopefully this post has helped get you started or broadened your horizons when it comes to canvas animation with client side javaScript. There if of course way more to write about when it comes to animation and canvas, but I just wanted to have a post that serves as a general starting point for this topic.
