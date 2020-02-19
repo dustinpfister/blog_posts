@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-02-19 07:28:49
-version: 1.16
+updated: 2020-02-19 08:58:40
+version: 1.17
 ---
 
 So this is another post on [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and for this post it will be about some basics with [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations). Making animations with canvas can be a fun, and rewarding experience and is definitely and example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here.
@@ -177,6 +177,96 @@ loop();
 
 This kind of canvas animation seems to be a good way to go about making any kind of animation that is to just be a certain collection of fixed frames that is defined by javaScript code. It is a great way to go about getting into what might be expressed as a kind of deterministic style of animation where each frame is rendered by a current state that is mutated purely by a changed in frame value relative to a max frame value.
 
-Although this might not be the best example of it, this style of canvas animation can also be thought of maybe as a kind of functional style of animation. This is of course if implemented differently where the animation is a pure function where the only arguments that are given to the function is a frame index, and max frame index value. If so the same set of arguments should return the same state every time to be in line with the rules of functional programin
+Although this might not be the best example of it, this style of canvas animation can also be thought of maybe as a kind of functional style of animation. This is of course if implemented differently where the animation is a pure function where the only arguments that are given to the function is a frame index, and max frame index value. If so the same set of arguments should return the same state every time to be in line with the rules of functional programing.
 
 There are ways of exporting these frames, and then from that point forward it is just a matter of setting a frame rate at which the animation is to be played back at.
+
+## 2 - Basic For Frame centered style canvas animation
+
+So now that I have covered the basic elements of animation and canvas, in this section I will be going over a basic example of a for frame centered style canvas animation module. What I mean by this is having a module where I pass and options object that contains a method that will be called on a per frame basis for all possible frame index values between zero and a max frame value. What is then returned is a function that when passed a frame index value will return an object that is the state of the animation for that frame index value relative to the max frame value that can also be set via a second argument.
+
+### 2.1 - A basic For Frame module
+
+```js
+var FF = function (opt) {
+    var api = {};
+    opt = opt || {};
+    api.ani = {};
+    api.forFrame = opt.forFrame || function () {};
+ 
+    // set the main percent and bias values for api
+    var setMainPerAndBias = function (api) {
+        api.per = api.frameIndex / api.maxFrame;
+        api.bias = 1 - Math.abs(0.5 - api.per) / 0.5;
+    };
+ 
+    // private forFrame method
+    var forFrame = function (frameIndex, maxFrame) {
+        // set api frame index and max frame
+        api.frameIndex = frameIndex;
+        api.maxFrame = maxFrame;
+        // set main percent done and bias value
+        setMainPerAndBias(api);
+        // call api forFrame with current api state
+        api.forFrame.call(api, api, frameIndex, maxFrame);
+        // return just the ani object
+        return api.ani;
+    };
+ 
+    // public method used to set by frameIndex
+    // over max Frames
+    return function (frame, maxFrame) {
+        // defaults if undefined for frame index and max frame
+        frame = frame === undefined ? 0 : frame;
+        maxFrame = maxFrame === undefined ? 50 : maxFrame;
+        // wrap frame index
+        frame = frame > maxFrame ? frame % maxFrame : frame;
+        frame = frame < 0 ? maxFrame - Math.abs(frame) % maxFrame : frame;
+        // call forFrame with parsed frame and maxFrame
+        forFrame(frame, maxFrame);
+        // return just the animation object
+        return api.ani;
+    };
+};
+```
+
+### 2.2 - Simple moving box example of the Basic for forFame module
+
+```js
+// DRAW
+var draw = {};
+draw.bx = function (ctx, bx) {
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'white';
+    ctx.beginPath();
+    ctx.rect(bx.x, bx.y, bx.w, bx.h);
+    ctx.fill();
+    ctx.stroke();
+};
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.translate(0.5, 0.5);
+ 
+var opt = {
+    forFrame: function (api, f, mf) {
+        var bx = api.ani.bx = {
+            w: 32,
+            h: 32
+        };
+        bx.x = (canvas.width - 32) * api.per;
+        bx.y = canvas.height / 2 - 16 + canvas.height / 4 * api.bias;
+    }
+};
+ 
+// create an animation method
+var ani = FF(opt);
+ 
+var bx = ani(25, 50).bx;
+draw.back(ctx, canvas)
+draw.bx(ctx, bx);
+```
