@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 20:41:39
-version: 1.15
+updated: 2020-02-18 20:42:51
+version: 1.16
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -225,7 +225,7 @@ This method will add a count of balls to the balls array. Although it sets some 
 
 ### 2.6 - move balls
 
-Move all the balls in the balls array of the state object.
+This method will of course move all the balls in the balls array of the state object. However it is also here where I am preforming all kinds of checks to see if the ball hit anything also.
 
 ```js
     // move balls
