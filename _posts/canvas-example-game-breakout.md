@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 20:45:01
-version: 1.17
+updated: 2020-02-18 20:47:53
+version: 1.18
 ---
 
 This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
@@ -386,7 +386,7 @@ draw.info = function (ctx, state) {
 
 Now to tie everything together with a main.js file and and html file. I get a reference to a single canvas element in the html, and a reference to the drawing context as with any other canvas project.
 
-once I have my canvas element to work with I then pass it as the one argument for my create new state public method for the game module.
+Once I have my canvas element to work with I then pass it as the one argument for my create new state public method for the game module. I set up a two event handler for the window objects keydown and keyup events where I set the left and right values of the state input object that will be the only way to move the paddle for now.
 
 ```js
 var canvas = document.createElement('canvas'),
