@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-02-24 07:20:13
-version: 1.3
+updated: 2020-02-24 07:22:26
+version: 1.4
 ---
 
-When it comes to canvas keyboard events might sometimes need to be used with mouse and touch events. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
+When it comes to [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
 
 <!-- more -->
 
