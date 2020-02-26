@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-02-25 20:42:39
-version: 1.8
+updated: 2020-02-26 07:03:27
+version: 1.9
 ---
 
 When it comes to [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -61,7 +61,7 @@ draw(ctx, canvas, state);
 </html>
 ```
 
-## 2 -  Multi key
+## 2 -  Multi key canvas keyboard input
 
 ```js
 var canvas = document.getElementById('the-canvas'),
