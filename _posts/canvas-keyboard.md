@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-02-26 07:03:27
-version: 1.9
+updated: 2020-02-26 07:07:27
+version: 1.10
 ---
 
 When it comes to [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -62,6 +62,8 @@ draw(ctx, canvas, state);
 ```
 
 ## 2 -  Multi key canvas keyboard input
+
+To get going with multi key input with client side javaScript I just need to have an array of boolean variables for each key. I can then have an event handler that will set the boolean value for a key to true if it is a key down event, and false if it is a key up event.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
