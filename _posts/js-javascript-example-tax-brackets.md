@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 618
-updated: 2020-02-27 18:06:20
-version: 1.2
+updated: 2020-02-27 18:10:21
+version: 1.3
 ---
 
 So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can eb use to work out a progressive tax system.
@@ -98,6 +98,8 @@ var tax = (function () {
 ```
 
 ## 2 - Now for a demo the makes use of the module
+
+So now that I have my tax module worked out it is time to use it in in a HTML file. I want to just have a simple project that just has an input text element that I can use to input a taxable amount of money, and then a total tax is displayed as well as a breakdown for each tax bracket.
 
 ```html
 <html>
