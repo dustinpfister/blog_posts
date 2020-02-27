@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 618
-updated: 2020-02-27 18:04:45
-version: 1.1
+updated: 2020-02-27 18:06:20
+version: 1.2
 ---
 
 So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can eb use to work out a progressive tax system.
@@ -14,6 +14,8 @@ So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Lea
 <!-- more -->
 
 ## 1 - The tax module for the javaScript example
+
+First off I want to work out a javaScript module that I can use to create a tax object of sorts. This tax object will have an array of bracket objects, and some top level properties for total tax and tax percent.
 
 ```js
 var tax = (function () {
