@@ -1,12 +1,12 @@
 ---
-title: javaScript example
+title: javaScript example multiplication table
 date: 2020-02-10 18:46:00
 tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-14 12:32:53
-version: 1.13
+updated: 2020-02-27 18:02:18
+version: 1.14
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
