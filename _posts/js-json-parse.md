@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-02-28 12:03:48
-version: 1.4
+updated: 2020-02-28 12:05:52
+version: 1.5
 ---
 
 This will be a quick post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method which is a native javaScript built in way to parse a JSON string into a workable object at least on all modern platforms anyway. The use of the method is fairly straight forward just call the method off of the json object and pass a json string to parse into an object, the returned object is then the workable object from that json string. There are still a few additional things a javaScript developer should be ware of such as browser support, what happens when an invalid string is passed, and some additional related methods and features.
@@ -45,7 +45,9 @@ try {
 console.log(obj.x, obj.y); // 0 0
 ```
 
-### 1.3 - The reviver method argument
+### 1.3 - The json parse reviver method argument
+
+A reviver method can be given as a second argument to the json parse method after giving the string to parse. this method will have a key and value argument, and the returned value will become the new value in the resulting object returned by json parse. 
 
 ```js
 var str = '[1,2,3,4,\"a\"]',
