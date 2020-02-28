@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-02-19 17:03:40
-version: 1.4
+updated: 2020-02-28 10:02:52
+version: 1.5
 ---
 
-Fractals are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
+[Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
 
 <!-- more -->
 
