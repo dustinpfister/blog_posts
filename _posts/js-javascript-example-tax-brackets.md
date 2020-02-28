@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 618
-updated: 2020-02-28 08:50:01
-version: 1.4
+updated: 2020-02-28 08:52:07
+version: 1.5
 ---
 
 So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can eb use to work out a progressive tax system.
@@ -101,6 +101,8 @@ var tax = (function () {
 }
     ());
 ```
+
+So for the hard coded data I went with the [2019 tax table](https://www.propublica.org/article/what-are-2019s-tax-brackets) data.
 
 ## 2 - Now for a demo the makes use of the module
 
