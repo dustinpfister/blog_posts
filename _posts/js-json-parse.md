@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-02-28 12:01:34
-version: 1.3
+updated: 2020-02-28 12:03:48
+version: 1.4
 ---
 
 This will be a quick post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method which is a native javaScript built in way to parse a JSON string into a workable object at least on all modern platforms anyway. The use of the method is fairly straight forward just call the method off of the json object and pass a json string to parse into an object, the returned object is then the workable object from that json string. There are still a few additional things a javaScript developer should be ware of such as browser support, what happens when an invalid string is passed, and some additional related methods and features.
@@ -28,6 +28,8 @@ console.log(obj.x, obj.y); // 42 15
 ```
 
 ### 1.2 - Errors and try catch
+
+In certain projects where the json parse is being used to parse from a source that possible give invalid json it is possible for an error to happen. So it is often generally a good idea o use the json parse method in a try catch statement, and then have a way to handle such errors.
 
 ```js
 var str = "{f7--!", // not valid json
