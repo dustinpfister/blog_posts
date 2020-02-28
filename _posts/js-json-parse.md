@@ -5,10 +5,59 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-02-28 10:40:41
-version: 1.1
+updated: 2020-02-28 11:58:28
+version: 1.2
 ---
 
 This will be a quick post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method which is a native javaScript built in way to parse a JSON string into a workable object at least on all modern platforms anyway. The use of the method is fairly straight forward just call the method off of the json object and pass a json string to parse into an object, the returned object is then the workable object from that json string. There are still a few additional things a javaScript developer should be ware of such as browser support, what happens when an invalid string is passed, and some additional related methods and features.
 
 <!-- more -->
+
+## 1 - json parse basics
+
+For starters in this section I will be going over the basics of the json pare method. This will include just using the method on a simple string of json, error handling, and the reviver method argument.
+
+### 1.1 - basic json parse example
+
+```js
+var str = "{\"x\":42,\"y\": 15}";
+var obj = JSON.parse(str);
+console.log(obj.x, obj.y); // 42 15
+```
+
+### 1.2 - Errors and try catch
+
+```js
+var str = "{f7--!", // not valid json
+obj;
+try {
+    obj = JSON.parse(str);
+} catch (e) {
+    obj = {
+        x: 0,
+        y: 0
+    };
+}
+console.log(obj.x, obj.y); // 0 0
+```
+
+### 1.3 - The reviver method argument
+
+```js
+var str = '[1,2,3,4,\"a\"]',
+obj;
+var revive = function (key, val) {
+    if (typeof val === 'number') {
+        return Math.pow(2, val);
+    }
+    return val;
+};
+try {
+    obj = JSON.parse(str, revive);
+} catch (e) {
+    obj = [];
+}
+ 
+console.log(obj);
+// [ 2, 4, 8, 16, 'a' ]
+```
