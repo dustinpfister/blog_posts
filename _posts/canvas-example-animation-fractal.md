@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-02-28 10:02:52
-version: 1.5
+updated: 2020-03-02 11:14:40
+version: 1.6
 ---
 
 [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -19,7 +19,7 @@ The basic idea of a fractal is that I have something that will appear the same, 
 
 ### 1.1 - The For Frame animation helper
 
-So I have worked out a function that helps me quickly get up and running with animations.
+So I have worked out a function that helps me quickly get up and running with frame by frame style animations. I went over this and much more in my post on canvas animation in general.
 
 ```js
 var FF = function (opt) {
