@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2020-03-03 12:57:19
-version: 1.3
+updated: 2020-03-03 13:03:15
+version: 1.4
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero methods as a way to make comparisons. This method is a kind of convenience method in place of using lodash remove with the lodash eq methods. It is not to hard to do the same thing that the lodash pull method does with vanilla javaScript, but not as easily as you might think. In any case I will be going over the lodash pull methods alone with lodash remove lodash eq and vanilla javaScript methods that do the same thing.
@@ -29,6 +29,8 @@ console.log( _.join(arr,':') );
 ```
 
 ### 1.2 - Using lodash remove, and lodash eq to do the same thing and more.
+
+The lodash remove method is another way to go about removing methods from an array with lodash, only that will give a greater deal of flexibility as I can define the logic that will be used. I could use the 
 
 ```js
 let arr = [-1, 5, 7, -1, -1, 8, 7];
@@ -96,3 +98,7 @@ console.log(pull([-0, 0], 0).join(':'));
 console.log(pull([NaN, 5, NaN], NaN).join(':'));
 // 5
 ```
+
+## 2 - lodash pull and lodash without
+
+The lodash pull method is similar to that of the lodash without method only it will mutate the array in place, so the pull method is not a functional programing style method compared to the lodash without method. So if you want to remove elements in a way so that a new array is returned without mutating the give array you will want to use lodash without, or whatever vanilla javaScript alternatives do achieve a similar effect.
