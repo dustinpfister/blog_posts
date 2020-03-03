@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2020-03-03 13:16:21
-version: 1.8
+updated: 2020-03-03 13:18:22
+version: 1.9
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero methods as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods. It is not to hard to do the same thing that the lodash pull method does with vanilla javaScript, but not as easily as you might think. In any case I will be going over the lodash pull methods alone with lodash remove lodash eq and vanilla javaScript methods that do the same thing.
@@ -56,7 +56,7 @@ console.log(_.join(arr1, ':'));
 // '1:2:3'
 ```
 
-### 1.3 - using vanilla javaScript to do lodash pull style pulling Compleate with an Object.is pony fill
+### 1.3 - A vanilla js pull to do lodash pull style pulling complete with an Object.is pony fill
 
 Many might think that all lodash pull does is remove elements from an array with the same value as one or more given values. Yes on the surface that might seem like a very simple thing to do with plain old vanilla javaScriopt by itself. However there is more to it then just pulling values that are equal to a value. In javaScript there is the equality operator, and then there is also the identity operator. In additional to this there is also the isNaN method and the fact that it does not always given an intended result.
 
