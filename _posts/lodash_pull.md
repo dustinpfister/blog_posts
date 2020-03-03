@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2020-03-03 13:24:30
-version: 1.11
+updated: 2020-03-03 13:25:31
+version: 1.12
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero methods as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods. It is not to hard to do the same thing that the lodash pull method does with vanilla javaScript, but not as easily as you might think. In any case I will be going over the lodash pull methods alone with lodash remove lodash eq and vanilla javaScript methods that do the same thing.
@@ -107,7 +107,7 @@ console.log(pull([NaN, 5, NaN], NaN).join(':'));
 
 Here I just copied over an Object is method and turned it into a pony fill called eq that will work the same way as the lodash eq method. Now that I have that I can use it on my vanilla js pull method. I am using the array filter method but could easily use array splice or slice to make it even more robust.
 
-There are many other ways a vanilla js pull method could be written. If you do not care about supporting g older browsers at all you could just use the Object is method, and make a far more concise solution at the cost of code breaking on older platforms.
+There are many other ways a vanilla js pull method could be written. If you do not care about supporting older browsers at all you could just use the Object is method, and make a far more concise solution at the cost of code breaking on older platforms.
 
 ## 2 - lodash pull and lodash without
 
