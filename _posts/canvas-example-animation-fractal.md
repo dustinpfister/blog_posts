@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-04 06:21:35
-version: 1.11
+updated: 2020-03-04 06:26:12
+version: 1.12
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -27,7 +27,7 @@ So with that said this section will be a canvas fractal animation of just some b
 
 So I have worked out a function that helps me quickly get up and running with frame by frame style animations. I went over this and much more in my [post on canvas animation basics](/2019/10/10/canvas-example-animation-basics/) in general.
 
-This function accepts an options object when I call it that will contain a function that will be called on a frame by frame basis. Each time the for frame function that is passed as an option is called there will be an api of sorts that I can use when working out the logic of a for frame method.
+This function accepts an options object when I call it that will contain a function that will be called on a frame by frame basis. Each time the for frame function that is passed as an option is called there will be an api of sorts that I can use when working out the logic of a for frame method. In this api I have properties such as the current percentage value between a current frame value, and a max frame value. these properties are useful when it comes to working out the values that constitute an animation.
 
 ```js
 var FF = function (opt) {
