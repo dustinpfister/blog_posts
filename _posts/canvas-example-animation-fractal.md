@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-04 06:36:07
-version: 1.16
+updated: 2020-03-04 06:39:14
+version: 1.17
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -146,6 +146,8 @@ draw.back = function (ctx, canvas) {
 ### 1.4 - Up and running
 
 When I have this example running in the browser it is what I would expect just a bunch of squares getting bigger from a single starting point. However many of the basic features of fractal animations are there, it is just a little boring and basic. I can play around with the expressions that are used to set the size and position of the boxes to make it a little more interesting, but that is all there is to this example at least.
+
+To make thing more interesting though I could mess around with the expressions and introduce some images. There are all kinds of fun projects that could be accomplished with just a little more work. However maybe another thing that could be done is to start over with another for frame method all together, or a whole new approach to this from the ground up.
 
 ## 2 - Conclusion
 
