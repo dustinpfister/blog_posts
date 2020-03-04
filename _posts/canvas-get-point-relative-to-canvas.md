@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-03-04 10:09:16
-version: 1.3
+updated: 2020-03-04 10:13:34
+version: 1.4
 ---
 
 When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object.
@@ -35,6 +35,8 @@ var getCanvasRelative = function (e) {
 Such a method might work out okay for mouse events, but what about supporting touch also?
 
 ## 2 - support touch and mouse events
+
+So now that we have the basic idea covered there is the idea of a more robust copy and past solution that will work with touch events on top of just mouse events.
 
 ```html
 <html>
