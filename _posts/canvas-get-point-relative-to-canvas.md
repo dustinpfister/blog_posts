@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-03-04 09:45:16
-version: 1.1
+updated: 2020-03-04 10:08:51
+version: 1.2
 ---
 
 When starting any kind of canvas project I want to get a canvas point that is relative to the canvas element rather than the window object.
@@ -15,6 +15,10 @@ When starting any kind of canvas project I want to get a canvas point that is re
 <!-- more -->
 
 ## 1 - The canvas point basics
+
+The basic idea with getting the canvas relative point is to use the get bounding client rect method of the canvas element of interest, and then use that to adjust any values in an event object that are window relative. one way to do so is to use the target property of an event object that was fired from an event hander that is attached to the canvas element. At which point the get bounding client rect method can be called off the reference to the canvas element, and then that can be used to adjust the client x and y values of an event object.
+
+So you might end up working out something like this.
 
 ```js
 var getCanvasRelative = function (e) {
@@ -27,6 +31,8 @@ var getCanvasRelative = function (e) {
     };
 };
 ```
+
+Such a method might work out okay for mouse events, but what about supporting touch also?
 
 ## 2 - support touch and mouse events
 
