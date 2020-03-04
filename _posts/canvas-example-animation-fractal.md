@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-04 06:28:25
-version: 1.13
+updated: 2020-03-04 06:31:05
+version: 1.14
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -59,7 +59,7 @@ var FF = function (opt) {
 
 ### 1.2 - The for frame method for the fractal animation loop
 
-Now for the actual animation logic, and everything else that will result in this animation.
+Now for the actual animation logic, and everything else that will result in this canvas fractal animation. Here I create the canvas element and get the drawing context, work out the options object for my for frame method, and make a basic app loop method in which I use the for frame method instance to update the animation state, as well as draw that state.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
