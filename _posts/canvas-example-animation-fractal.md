@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-04 06:26:12
-version: 1.12
+updated: 2020-03-04 06:28:25
+version: 1.13
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -57,38 +57,7 @@ var FF = function (opt) {
 };
 ```
 
-### 2 - The draw module
-
-Here I have the draw module for this canvas animation example of a basic fractal.
-
-```js
-// DRAW
-var draw = {};
-draw.bx = function (ctx, bx) {
-    ctx.strokeStyle = 'white';
-    ctx.globalAlpha = 0.05 + bx.per * 0.95;
-    ctx.lineWidth = 6;
-    ctx.beginPath();
-    ctx.rect(bx.x, bx.y, bx.w, bx.h);
-    ctx.stroke();
-};
-draw.bxArr = function (ctx, ani) {
-    var i = 0,
-    len = ani.bxArr.length;
-    ctx.save();
-    while (i < len) {
-        draw.bx(ctx, ani.bxArr[i]);
-        i += 1;
-    }
-    ctx.restore();
-};
-draw.back = function (ctx, canvas) {
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-};
-```
-
-### 3 - The for frame method for the fractal animation loop
+### 1.2 - The for frame method for the fractal animation loop
 
 Now for the actual animation logic, and everything else that will result in this animation.
 
@@ -142,3 +111,38 @@ var loop = function () {
 };
 loop();
 ```
+
+### 1.3 - The draw module
+
+Here I have the draw module for this canvas animation example of a basic fractal.
+
+```js
+// DRAW
+var draw = {};
+draw.bx = function (ctx, bx) {
+    ctx.strokeStyle = 'white';
+    ctx.globalAlpha = 0.05 + bx.per * 0.95;
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.rect(bx.x, bx.y, bx.w, bx.h);
+    ctx.stroke();
+};
+draw.bxArr = function (ctx, ani) {
+    var i = 0,
+    len = ani.bxArr.length;
+    ctx.save();
+    while (i < len) {
+        draw.bx(ctx, ani.bxArr[i]);
+        i += 1;
+    }
+    ctx.restore();
+};
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+```
+
+## 2 - Conclusion
+
+There is much more to write about when it comes to fractals, and ways to define the logic of fractals and how to go about drawing them. If I get some more time, maybe I will get around to continuing to expand on this post.
