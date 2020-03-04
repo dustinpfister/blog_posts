@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-04 06:31:05
-version: 1.14
+updated: 2020-03-04 06:32:51
+version: 1.15
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -114,7 +114,7 @@ loop();
 
 ### 1.3 - The draw module
 
-Here I have the draw module for this canvas animation example of a basic fractal.
+Here I have the draw module for this canvas animation example of a basic box array fractal. I have a bx method that will just draw a single box, and then a bx array method that will draw the whole array. In addition there is a method that I use to just draw the background of the canvas.
 
 ```js
 // DRAW
