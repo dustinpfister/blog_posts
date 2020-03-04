@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-04 06:04:51
-version: 1.7
+updated: 2020-03-04 06:14:51
+version: 1.8
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -15,9 +15,11 @@ The basic idea of a fractal as I see it is that I am dealing with some kind of i
 
 <!-- more -->
 
-## 1 - A Basic fractal canvas animation example
+## 1 - A Basic looping square array fractal canvas animation example
 
-The basic idea of a fractal is that I have something that will appear the same, or at least similar, as I continue to zoom in or out. So a good starting exercise would be to just have and array of squares, and as I continue to zoom in the square of a certain index value in the array will get bigger, at some point though that square will end up being small again. In other words it is just a repeating loop of squares getting larger, until they get to a certain size, at which point they become the new small square, and of course this is happening in an offset way.
+So maybe a good starting exercise for fractals would be to just have and array of squares, and as I continue to zoom in the square of a certain index value in the array will get bigger, at some point though that square will end up being small again at the starring point. In other words it is just a repeating loop of squares getting larger, until they get to a certain size, at which point they become the new small square, and this is happening in an offset way.
+
+Maybe another way to explain this is that I have and array of box objects with x, y, width, and height properties. All I am doing is setting say the first box in the array with an index of zero to a width and height of zero, and then setting the position to a certain starting point. As I move up in the index values of the array of box objects the size of the boxes gets bigger. When the largest box gets to a certain size it will become the new point with a width and height of zero at the starting position. thus the result is a simple loop of boxes getting bigger from a starting location looping over and over again.
 
 ### 1.1 - The For Frame animation helper
 
