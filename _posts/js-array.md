@@ -5,15 +5,21 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2019-04-08 09:59:42
-version: 1.40
+updated: 2020-03-05 08:29:50
+version: 1.41
 ---
 
-In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. There is a great deal to know about when it comes to arrays in javaScript as well as with objects in general. There are many methods that can be used with arrays that are in the array prototype, as well as with objects in general. Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. So this post will serve as a general overview of Arrays in javaScript.
+In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. 
+
+There are many methods that can be used with arrays that are in the array prototype. These methods help with editing, filtering, and mapping arrays. Many of these methods have been part of the javaScript spec for a long time and are thus very safe to use when it comes to concerns of engine support. Others are a little newer so there should be a degree of concern at least maybe depending on the situation with browser support.
+
+Often a javaScript developer will come across objects that are considered array like objects but are not an actual instance of Array, but Array methods can be used with them by using Function.call. 
+
+This post will then serve as a general overview of Arrays in javaScript In which I will touch base on a lot of things concerting arrays but might not get into depth with every little thing. I will like to other posts where doing so may be a good idea.
 
 <!-- more -->
 
-## 1 - What to know
+## 1 - JavaScript arrays and what to know before hand
 
 This is a post on [javaScript arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), as such it is important to have at least some background with javaScript. If you are completely new to javaScript it might be a good idea to start with my [getting started with javaScript post](/2018/11/27/js-getting-started/). However if you have at least some background with javaScript, but want to learn more about arrays in general, then this might prove to be a good read.
 
