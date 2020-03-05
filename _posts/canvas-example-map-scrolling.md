@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-01-09 10:31:23
-version: 1.11
+updated: 2020-03-05 09:52:18
+version: 1.12
 ---
 
 Time now for another one of my [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time I think I will make a basic example of a scrolling map. This is something that will come into play for many projects that are some kind of game that involves a large world map of cells or tiles.
@@ -23,7 +23,7 @@ So it is used my calling a methods that will create a grid object, and then that
 
 ### 1.1 - The start of the module and parse grid properties
 
-I start off the module with just an object literal, all the methods are public so this kind of pattern will work for now. I then start off with a methods that can be used to parse options for other methods that will be used to create a grid object.
+I start off the module with just an object literal, all the methods are public so this kind of pattern will work for now. I then start off with a method that can be used to parse options for other methods that will be used to create a grid object.
 
 ```js
 var g = {};
@@ -44,6 +44,8 @@ g.parseGridProps = function (grid) {
     return a;
 };
 ```
+
+This method might be berry off as a private helper method inside an IIFE module pattern. However I hate getting caught up in these issues, at this time I just want to get the general idea of this module togetaher and move on.
 
 ### 1.2 - Create grid object methods
 
