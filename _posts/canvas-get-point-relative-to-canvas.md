@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-03-04 10:13:34
-version: 1.4
+updated: 2020-03-06 08:38:11
+version: 1.5
 ---
 
 When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object.
@@ -36,7 +36,7 @@ Such a method might work out okay for mouse events, but what about supporting to
 
 ## 2 - support touch and mouse events
 
-So now that we have the basic idea covered there is the idea of a more robust copy and past solution that will work with touch events on top of just mouse events.
+So now that we have the basic idea covered there is the idea of a more robust solution that will work with touch events on top of just mouse events. The event objects of touch events of course are a little different then that of mouse events because of the possibility of multi touch. There is a changed touched array in the event object that contains an array of one or more objects for each finger on the touch surface. If I do not care about multi touch, and just want to make a single method that will work with both mouse and touch events then I will just want to get the first object in that array.
 
 ```html
 <html>
