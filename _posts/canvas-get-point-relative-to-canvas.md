@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-03-06 08:59:22
-version: 1.6
+updated: 2020-03-06 09:02:14
+version: 1.7
 ---
 
 When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object.
@@ -89,3 +89,5 @@ canvas.addEventListener('touchmove', pointerHandler);
     </body>
 </html>
 ```
+
+I do not work on many projects that make use of multi touch. The reason why is because javaScript projects are typically going to be in a web based environment, so I need to thin in terms of traditional desktop system support. If I do want multi touch then it might be best to have two or more methods maybe that are part of my user interface logic.
