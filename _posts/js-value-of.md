@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-03-07 10:13:53
-version: 1.8
+updated: 2020-03-07 10:34:24
+version: 1.9
 ---
 
 The js [value of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) method is a way to define what the primitive value of an object is. There is a value of object prototype methods that will always be used by default when making an object part of an expression that involves operators like addition. However it is possible to add a value of method for the prototype object of a Class, or just make it an own property of an object instance which will supersede the default value of method in the object prototype.
@@ -74,4 +74,44 @@ h.valueOf = function () {
 a = h + 90;
  
 console.log(a); // 180
+```
+
+## 3 - Land tile game javaScript value of example
+
+So now lets get into doing some things that might prove to be a little fun when it comes to the js value of method of objects and javaScript expressions. Say I want to make some kind of game that will involve an array of land assets. This array of land asset objects will contains objects that are of a class where there is a tax property, upkeep property, and a rent property. What I want to do is have it so I can just loop over this array of objects and add up the total amount of money that the player will gain or loose per tick.
+
+```js
+// Land Class
+var Land = function (opt) {
+    opt = opt || {};
+    this.tax = opt.tax === undefined ? 0 : opt.tax;
+    this.upkeep = opt.upkeep === undefined ? 0 : opt.upkeep;
+    this.rent = opt.rent === undefined ? 0 : opt.rent;
+};
+Land.prototype.valueOf = function () {
+    return this.rent - this.tax - this.upkeep;
+};
+ 
+// an assets array of Land Class
+// instances
+var assets = [
+    new Land({
+        tax: 300,
+        upkeep: 100,
+        rent: 450
+    }), // 50 a tick
+    new Land({
+        tax: 400,
+        upkeep: 150,
+        rent: 700
+    }) // 150 a tick
+];
+ 
+// add up money per tick
+var m = assets.reduce(function (acc, land) {
+        // I can just add here
+        // thanks to value of
+        return acc + land;
+    });
+console.log(m); // 200
 ```
