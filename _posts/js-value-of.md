@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-03-07 10:34:24
-version: 1.9
+updated: 2020-03-07 10:36:24
+version: 1.10
 ---
 
 The js [value of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) method is a way to define what the primitive value of an object is. There is a value of object prototype methods that will always be used by default when making an object part of an expression that involves operators like addition. However it is possible to add a value of method for the prototype object of a Class, or just make it an own property of an object instance which will supersede the default value of method in the object prototype.
@@ -115,3 +115,5 @@ var m = assets.reduce(function (acc, land) {
     });
 console.log(m); // 200
 ```
+
+Not a full game by itself of course, but you get the basic idea. There would be additional logic that would be used to set what the tax and upkeep values are along with rent. Much more logic would need to be written to make some kind of interface. However this is all ready starting to be kind of fun. Lets look at some other use case examples of the js value of method.
