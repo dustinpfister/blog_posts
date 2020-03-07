@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-03-07 07:47:26
-version: 1.4
+updated: 2020-03-07 10:09:07
+version: 1.5
 ---
 
 The js [value of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) method is a way to define what the primitive value of an object is. There is a value of object prototype methods that will always be used by default when making an object part of an expression that involves operators like addition. However it is possible to add a value of method for the prototype object of a Class, or just make it an own property of an object instance which will supersede the default value of method in the object prototype.
@@ -33,4 +33,43 @@ console.log(n); // 21
 
 ## 2 - The value of method and the prototype chain.
 
-If there is a value of method as an own property of an object that will supersede anything that might be in the prototype object
+If there is a value of method as an own property of an object that will supersede anything that might be in the prototype object chain. 
+
+For example say I have a class that creates an object that has an x property, y property and an a property that is the angle from zero, zero to the point of the this object. I want a value of method that will return the angle when the object is used in expressions, but when doing so there is radians and degrees. There is more than one way to make it so I can return one or another, such as having a value for the prototype object that can be overwritten in the own properties of the object. However for the sake of this post and section another way is to have a value of method as an own property of the instance.
+
+```js
+var Heading = function (x, y) {
+    this.x = 0;
+    this.y = 0;
+    this.update(x, y);
+};
+ 
+Heading.prototype.update = function (x, y) {
+    this.x = x === undefined ? this.x : x;
+    this.y = y === undefined ? this.y : y;
+    this.a = Math.atan2(this.y, this.x);
+ 
+};
+ 
+Heading.prototype.valueOf = function () {
+    this.update();
+    return this.a;
+ 
+};
+ 
+// Heading.prototype.valueOf supersedes
+// Object.prototype.valueOf
+var h = new Heading(0, 10),
+a = (h + 1.57).toFixed(2);
+ 
+console.log(a); // 3.14
+ 
+// An own property of h will supersede all
+// prototype methods
+h.valueOf = function () {
+    return Heading.prototype.valueOf.call(this) / (Math.PI * 2) * 360;
+};
+a = h + 90;
+ 
+console.log(a); // 180
+```
