@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-03-07 10:10:38
-version: 1.7
+updated: 2020-03-07 10:13:53
+version: 1.8
 ---
 
 The js [value of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) method is a way to define what the primitive value of an object is. There is a value of object prototype methods that will always be used by default when making an object part of an expression that involves operators like addition. However it is possible to add a value of method for the prototype object of a Class, or just make it an own property of an object instance which will supersede the default value of method in the object prototype.
@@ -30,6 +30,8 @@ var obj = {
 var n = obj + 5;
 console.log(n); // 21
 ```
+
+So that is about it when it comes to the value of method when working with objects and expressions. What a value of method should return of course depends on the nature of the object, and the constructor if any that created it.
 
 ## 2 - The value of method and the prototype chain.
 
