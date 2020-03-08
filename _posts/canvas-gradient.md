@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-03-07 16:17:39
-version: 1.8
+updated: 2020-03-08 15:23:02
+version: 1.9
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in html 5 canvas with two 2d drawing context methods of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context using [gradient color](https://en.wikipedia.org/wiki/Color_gradient).
@@ -83,4 +83,59 @@ gradient.addColorStop(1, 'blue');
 // use the gradient as a style
 ctx.fillStyle = gradient;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
+```
+
+## 3 - Using the image data constructor and a distance formula
+
+I wrote a post on using the get image data 2d drawing context method, in there I also touched base on the image data constructor and the put image data method. These canvas methods are the standard way to go about working out some logic for drawing something on a pixel per pixel basis. For the most part the built in methods for working out gradients will work just fine, but if I want more control I just have to work out something that will be used to generate image data.
+
+```js
+
+// CANVAS
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d'),
+container = document.getElementById('gamearea') || document.body;
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ctx.translate(0.5, 0.5);
+
+var distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+var makeGradiantData = function (w, h, fx, fy, maxDist) {
+    var data = [],
+    y = 0,
+    x,
+    i = 0;
+    w = w || 128;
+    h = h || 64;
+    fx = fx || 0;
+    fy = fy || 0;
+    maxDist = maxDist || 200;
+    while (y < w) {
+        x = 0;
+        while (x < h) {
+            // expressions for r,g,b, and alpha
+            var d = distance(x, y, fx, fy);
+            var dPer = d / maxDist >= 1 ? 1 : d / maxDist;
+            var c = 255-Math.floor(dPer * 200 + 55);
+            data[i] = c;
+            data[i + 1] = 0;
+            data[i + 2] = 0;
+            data[i + 3] = 255;
+            i += 4;
+            x += 1;
+        }
+        y += 1;
+    }
+    return new ImageData(new Uint8ClampedArray(data), w, h)
+};
+ 
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+var imgData = makeGradiantData(250, 250, 0,0, 200);
+ctx.putImageData(imgData, 0, 0);
 ```
