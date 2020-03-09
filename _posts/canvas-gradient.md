@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-03-09 09:26:56
-version: 1.11
+updated: 2020-03-09 13:54:12
+version: 1.12
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in html 5 canvas with two 2d drawing context methods of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context using [gradient color](https://en.wikipedia.org/wiki/Color_gradient).
@@ -142,3 +142,5 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 var imgData = makeGradiantData(250, 250, 0,0, 200);
 ctx.putImageData(imgData, 0, 0);
 ```
+
+This example results in a kind of color gradient that is similar to that of the radian color gradient. The dereference of course thorough is that I can tweak the logic that defines the gradation f color any way I see fit.
