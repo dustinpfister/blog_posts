@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-03-08 15:23:02
-version: 1.9
+updated: 2020-03-09 09:23:36
+version: 1.10
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in html 5 canvas with two 2d drawing context methods of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context using [gradient color](https://en.wikipedia.org/wiki/Color_gradient).
@@ -89,8 +89,9 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 I wrote a post on using the get image data 2d drawing context method, in there I also touched base on the image data constructor and the put image data method. These canvas methods are the standard way to go about working out some logic for drawing something on a pixel per pixel basis. For the most part the built in methods for working out gradients will work just fine, but if I want more control I just have to work out something that will be used to generate image data.
 
-```js
+The image data constructor can be used to create an instance of image data that can then be passed to the put image data 2d drawing context method. The unit 8 clamped array constructor most be used to create the array that is to be passed to the image data constructor as the first argument followed by the width and height of the image. I can however juts use a plain old array first and then pass it to the unit 8 clamped array constructor. In  any cause I want to produce a valid instance of image data by way of some javaScript code rather than using the get image data constructor.
 
+```js
 // CANVAS
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
