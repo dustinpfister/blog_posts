@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-03-10 10:48:22
-version: 1.31
+updated: 2020-03-10 10:54:29
+version: 1.32
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -18,6 +18,10 @@ I see lots of code on the web that has to do with drawing canvas lines by way of
 ## 1 - Canvas line basics
 
 This is a post on drawing lines with html 5 canvas for drawing graphics with javaScript. I assume that you have at least some background with html, css and javaScript to begin with. If not this is not the place to get started with any of those subjects. This post is also not necessary a starting point for [getting started with canvas](/2017/05/17/canvas-getting-started/) as well, but I will keep some of the first examples simple copy and past canvas line examples.
+
+In this section I will be starting out with the very basics of drawing lines with canvas and javaScript. The basic process is to start a path with the begin path method, then use the move to method to move to a point in the canvas matrix. After that call the line to method one or more times to define all the points in the line from the start point. Once the path is done the close path method can be called to close the path, or not to leave it open. At this time  the stroke and fill methods can be used to actually draw the line with the current style values of the drawing context.
+
+If you are still a little confused maybe it is best to learn by doing. Take a look at some of these examples, copy and past them in, and play around with things.
 
 ### 1.1 - Canvas line hello world example
 
