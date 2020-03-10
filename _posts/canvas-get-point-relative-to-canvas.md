@@ -5,12 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-03-06 09:02:14
-version: 1.7
+updated: 2020-03-10 08:02:18
+version: 1.8
 ---
 
-When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object.
+When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object. To do this I just need to attach a touch or mouse event to the canvas element, and then use the get bounding client rect method of the canvas element to get the offsets for the position of the canvas. Once I do that I can use the get bounding client rect method to adjust the client xn and y values to get the desired position.
 
+There is a bot more to it then just that when it comes to how to go about making methods that will work with just mouse events, just touch events, or both in most situations. So in this post I will be taking a look at a few examples of how to go about getting a canvas relative mouse or touch position with client side javaScript and canvas elements.
 
 <!-- more -->
 
