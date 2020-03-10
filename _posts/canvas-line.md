@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-03-10 12:30:57
-version: 1.35
+updated: 2020-03-10 12:33:47
+version: 1.36
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -209,6 +209,8 @@ It is fun to start to explore all the different possibilities when it comes to w
 ## 3 - canvas lines an animation
 
 So now that we have the basics of drawing lines worked out, and we also touched based on the importance of separating the state of a line from the rendering of a line, lets start doing some fun stuff with animation. I will not be getting into the depth of animation and canvas here, but I will touch base on frame by frame style animation and using request animation frame to make a canvas app loop.
+
+This canvas line animation will just be of a bunch of points from one side of the canvas to another by a standard x delta based on a set number of frames, and random y values. In other words just a basic hello words style canvas line animation example.
 
 ### 3.1 - A canvas draw module with out draw points method
 
