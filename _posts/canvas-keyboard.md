@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-03-10 07:20:22
-version: 1.14
+updated: 2020-03-10 07:25:43
+version: 1.15
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -22,11 +22,11 @@ There is also using keyboard events in conjunction with rather than a replacemen
 
 ## 1 - The basics of Canvas keyboard events
 
+The basic idea of canvas and keyboard events is that one or more event listeners should be attached to the window object using something like the add event listener method of the window object. When doing so I use the key down or key up event types, and attach a handler method where I define some logic as to what to do when such an event occurs. In this section I will be going over a few basic examples that should work out okay as starting points for canvas and keyboard events.
 
+### 1.1 - canvas keyboard example with key up and key down events 
 
-### 1.1 - key up and key down events
-
-The basic idea of canvas and keyboard events is that one or more event listeners should be attached to the window object using something like the add event listener method of the window object. When doing so I use the key down or key up event types, and attach a handler method where I define some logic as to what to do when such an event occurs.
+So here I have a basic copy and past example where the html and javaScript are all wrapped up together. The result of this is a canvas example where the keydown property of a very basic state object is displayed in the center of the canvas. When any key is pressed the value of the keydown state property is set true and the canvas is redrawn. When any key is released the value of the keydown state object property is set back to false, and the canvas is redrawn yet again.
 
 ```html
 <html>
