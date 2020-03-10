@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-03-10 07:42:48
-version: 1.18
+updated: 2020-03-10 07:44:49
+version: 1.19
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -162,3 +162,7 @@ window.addEventListener('keydown', keyHandler);
 window.addEventListener('keyup', keyHandler);
 draw(ctx, canvas, state);
 ```
+
+## 3 - Conclusion
+
+Although pointer events are what I should always start out with some projects just work better with keyboard input, or some kind of game pad input.
