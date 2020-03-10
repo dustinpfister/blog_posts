@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-03-10 19:09:38
-version: 1.2
+updated: 2020-03-10 19:10:43
+version: 1.3
 ---
 
 In [canvas drag](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) and drop actions are part of many projects when working out a user interface.
@@ -19,6 +19,8 @@ In [canvas drag](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) and 
 So in this section I will be going over just a basic canvas drag example. This will just be a canvas example where at the center of the canvas will be a circle, and the circle can just be clicked and dragged around the canvas.
 
 ### 1.1 - The get canvas relative method and distance formula
+
+In this example I will be using mouse and touch events so I will want to use a method I worked out that helps with getting the canvas relative position of a mouse or touch events from and event object.
 
 ```js
 // get canvas relative and distance methods
