@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-03-10 07:25:43
-version: 1.15
+updated: 2020-03-10 07:29:57
+version: 1.16
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -66,6 +66,10 @@ draw(ctx, canvas, state);
     </body>
 </html>
 ```
+
+Very basic and crude, and there is a lot more that needs to be done until I have something that can be called an actual project of some kind. However the basic idea of having something happen when a key is pressed, and something else when it is released is there. This can also be thought of as an event driven kind of example, where user interaction is the only driving force for change of the application state, however getting into the more would be off topic.
+
+Now that we have the basic idea of keydown and keyup events out of the way lest take a look at some of the properties of interest in the event object of a keyboard event.
 
 ### 1.2 - The keyCode and key properties of a keyboard event object
 
