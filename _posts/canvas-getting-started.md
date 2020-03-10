@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2020-03-10 09:47:06
-version: 1.14
+updated: 2020-03-10 09:52:17
+version: 1.15
 ---
 
 I thought it would be nice to write a few blog posts on [html 5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics) in a client side javaScript environment. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to canvas basics and beyond. 
@@ -48,11 +48,9 @@ In this example I am creating the canvas element, and then appending it to the b
 
 ## 2 - Actual size vs scaled size
 
-There is the actual width and height of a 2d matrix, and then there is the size of each x, and y position in the matrix. I try to avoid calling theme pixels because in most cases that it not the case when getting into the deep of it when it comes to actual hardware pixels, screen resolution, scaling, and so forth.
+There is the actual width and height of a 2d matrix, and then there is the scaled width and height of the canvas I try to avoid calling theme pixels because in most cases that it not the case when getting into the deep of it when it comes to actual hardware pixels, screen resolution, scaling, and so forth. Often you  might hear the term logical pixels used as a way to describe the difference between the two.
 
-You may regard this as a trivial matter, and to some extent it is, but sometimes it can get a bit confusing. In any case there is setting the actual matrix size of the canvas, and setting the scaled size of the canvas.
-
-If you want to set the scaled size one way to do it is by way of the style api.
+You may regard this as a trivial matter, and to some extent it is, but sometimes it can get a bit confusing. In any case there is setting the actual matrix size of the canvas, and setting the scaled size of the canvas. If you want to set the scaled size with javaScript one way to do it is by way of the style api.
 ```js
  
 // set matrix size
@@ -65,7 +63,7 @@ canvas.style.height = 480 + 'px';
  
 ```
 
-You may choose to set the scaled size by some other means such as defining a CSS class. Whatever the case may be there is both the actual size, and the scaled size.
+You may choose to set the scaled size by some other means such as defining a CSS class. In some cases you might not want the scaled size to be static, but set by way of some javaScript code that will fire once and then again each time the window resizes, or when an area of the canvas is clicked. However for now those topics are a little more advanced.
 
 ## 3 - Having a single draw method
 
