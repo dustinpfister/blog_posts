@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-03-10 07:29:57
-version: 1.16
+updated: 2020-03-10 07:33:47
+version: 1.17
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -73,7 +73,44 @@ Now that we have the basic idea of keydown and keyup events out of the way lest 
 
 ### 1.2 - The keyCode and key properties of a keyboard event object
 
-In the body of the event handler as with just about any other event hander the first argument given is an event object. This event object has many properties that are the same as with any other event object in client side javaScript, however there are some properties that are unique to keyboard events.
+In the body of the event handler as with just about any other event hander the first argument given is an event object. This event object has many properties that are the same as with any other event object in client side javaScript, however there are some properties that are unique to keyboard events. The main properties of interest with keyboard events might be the key and keyCode properties.
+
+Here I have some javaScript that is not all that also just displayed the current values of a state object in a canvas element. However now I am not just displaying if the key is down or up, but also the current key that was pressed.
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle = 'red';
+var draw = function(ctx, canvas, state){
+   ctx.fillStyle = 'black';
+   ctx.fillRect(0,0,canvas.width, canvas.height);
+   ctx.fillStyle = 'white';
+   ctx.textBaseline = 'middle';
+   ctx.textAlign = 'center';
+   ctx.font = '20px courier';
+   ctx.fillText(state.key + '(' +state.code + ')', canvas.width/ 2, canvas.height/2);
+};
+var state = {
+    keydown: false,
+    code: -1,
+    key: ''
+};
+var keyDown = function(e){
+   state.keydown = true;
+   state.code = e.keyCode;
+   state.key = e.key;
+   draw(ctx, canvas, state);
+};
+var keyUp = function(e){
+   state.keydown = false;
+   state.code = -1;
+   state.key = '';
+   draw(ctx, canvas, state);
+};
+window.addEventListener('keydown', keyDown);
+window.addEventListener('keyup', keyUp);
+draw(ctx, canvas, state);
+```
 
 ## 2 -  Multi key canvas keyboard input
 
