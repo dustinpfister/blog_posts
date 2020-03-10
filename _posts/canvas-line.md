@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-03-10 12:38:18
-version: 1.39
+updated: 2020-03-10 12:40:54
+version: 1.40
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -243,6 +243,8 @@ draw.points = function (ctx, points, close) {
 ### 3.2 - The basic.js file that contains out canvas line animation
 
 Now for the javaScript code that will make up my frame by frame canvas line animation. Here I get a reference to the canvas element just like before, and draw the state of an array of points also as before. However I now have a state object, and a method to set up and update that state.
+
+The state object contains a current frame index value as well as a set number of frames. This is used to set the number of points in the line, but also used as a way to know the current state of the animation as it progresses forward frame by frame. There is also a last frame date value, and a frames per second value to know that amount of time that has passes sense the last update, and the number of frames to skip for each second that has passed. Then of course there is also a points array that will store the points that make up the line that is to be drawn.
 
 ```js
 var canvas = document.getElementById('the-canvas'), ctx;
