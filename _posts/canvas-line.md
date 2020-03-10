@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-03-10 10:59:29
-version: 1.34
+updated: 2020-03-10 12:30:57
+version: 1.35
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -206,6 +206,91 @@ drawPoints(ctx, createExpCurvePoints(1.4, 12, 30))
 
 It is fun to start to explore all the different possibilities when it comes to writing these kinds of methods. In any case the basic idea is the same create a collection of x and y values that will be passed to a draw function.
 
-## 3 - Conclusion
+## 3 - canvas lines an animation
+
+So now that we have the basics of drawing lines worked out, and we also touched based on the importance of separating the state of a line from the rendering of a line, lets start doing some fun stuff with animation. I will not be getting into the depth of animation and canvas here, but I will touch base on frame by frame style animation and using request animation frame to make a canvas app loop.
+
+### 3.1 - A canvas draw module with out draw points method
+
+```js
+var draw = {};
+
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+draw.points = function (ctx, points, close) {
+    var i = 2,
+    len = points.length;
+    ctx.beginPath();
+    ctx.moveTo(points[0], points[1]);
+    while (i < len) {
+        ctx.lineTo(points[i], points[i + 1]);
+        i += 2;
+    }
+    if (close) {
+        ctx.closePath();
+    }
+    ctx.stroke();
+};
+```
+
+### 3.2 - The basic.js file that contains out canvas line animation
+
+```js
+var canvas = document.getElementById('the-canvas'), ctx;
+canvas.width = 320;
+canvas.height = 240;
+ctx = canvas.getContext('2d');
+ 
+var state = {
+    frame: 0,
+    maxFrame: 100,
+    lastFrame: new Date(),
+    FPS: 30,
+    points: []
+};
+ 
+var initPoints = function (state, canvas) {
+    var i = 0,
+    len = state.maxFrame,
+    x,
+    y,
+    points = state.points = [];
+    while (i < len) {
+        x = canvas.width / (state.maxFrame - 1) * i;
+        y = canvas.height / 2 - 50 + 100 * Math.random();
+        points.push(x, y);
+        i += 1;
+    }
+ 
+};
+ 
+var update = function (state) {
+    var now = new Date(),
+    t = now - state.lastFrame,
+    frames = Math.floor(t / 1000 * state.FPS);
+    if (frames >= 1) {
+        state.frame += frames;
+        state.frame %= state.maxFrame;
+        state.lastFrame = now;
+    }
+};
+ 
+initPoints(state, canvas);
+var loop = function () {
+    requestAnimationFrame(loop);
+    update(state);
+    draw.back(ctx, canvas);
+    ctx.strokeStyle = 'red';
+    var i = Math.floor(state.maxFrame * (state.frame / state.maxFrame)) + 1;
+    draw.points(ctx, state.points.slice(0, i * 2), false);
+ 
+};
+loop();
+```
+
+## 4 - Conclusion
 
 Of course I have not covered everything when it comes to drawing lines with canvas. I could go on and on about everything that comes to mind about methods that are used to create arrays of points and then draw lines between them. I would never cover everything with that, the power of imagination has not bounds with that.
