@@ -5,11 +5,13 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2019-11-14 18:58:17
-version: 1.29
+updated: 2020-03-10 10:00:44
+version: 1.30
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
+
+I see lots of code on the web that has to do with drawing canvas lines by way of working out the logic for the line, and drawing at the same time. Maybe this is not always such a bad thing, but for the most part I seem to like working out an array of points, and then just have a generic draw points method. There is always more than one way of doing the same thing, but in nay case lets get into drawing lines with canvas and client side javaScript.
 
 <!-- more -->
 
