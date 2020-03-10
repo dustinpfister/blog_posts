@@ -5,11 +5,12 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2019-11-11 09:01:23
-version: 1.12
+updated: 2020-03-10 09:40:32
+version: 1.13
 ---
 
-I thought it would be nice to write a few blog posts on [html 5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics) in a client side javaScript environment. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to canvas basics and beyond. As such maybe it is best to start with a post that is a kind of getting started post on the subject.
+I thought it would be nice to write a few blog posts on [html 5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics) in a client side javaScript environment. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to canvas basics and beyond. 
+As such maybe it is best to start with a post that is a kind of getting started post on the subject of canvas elements and client side javaScript. So lets get this one out of the way so we can get to more interesting topics.
 
 <!-- more -->
 
