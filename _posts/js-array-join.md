@@ -5,11 +5,11 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-03-09 21:06:26
-version: 1.3
+updated: 2020-03-09 21:09:18
+version: 1.4
 ---
 
-The array join prototype method can be used to join all elements of an array into a string with a string that is to be used between each element.
+The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string with a string that is to be used between each element.
 
 <!-- more -->
 
