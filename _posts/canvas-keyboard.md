@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-03-10 07:10:48
-version: 1.11
+updated: 2020-03-10 07:12:39
+version: 1.12
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
 
-Keyboard events in client side javaScript involve attaching event handlers to the window object, because these kinds of events have to do with key presses in general, and not just touch events that have to do with juts a canvas element. There are two main events of interest the keydown and keyup events, the names of which should speak for themselves. I often use the key down event to set a boolean value to true, and then the key up to set it back to false, then use those boolean values to change things in an update loop, or make this event driven.
+Keyboard events in client side javaScript involve attaching event handlers to the window object, because these kinds of events have to do with key presses in general, and not just touch events that have to do with just a canvas element. 
+
+There are two main events of interest the keydown and keyup events, the names of which should speak for themselves. I often use the key down event to set a boolean value to true, and then the key up to set it back to false, then use those boolean values to change things in an update loop. Another approach would be to make something that is more event driven with or without an update loop.
 
 There is also using keyboard events in conjunction with rather than a replacement for touch events, and working out a general system for capturing use input. So lets look at some examples of canvas keyboard events, and input in general with canvas and javaScript.
 
