@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-03-10 10:55:34
-version: 1.33
+updated: 2020-03-10 10:59:29
+version: 1.34
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -25,7 +25,7 @@ If you are still a little confused maybe it is best to learn by doing. Take a lo
 
 ### 1.1 - Canvas line hello world example
 
-To make a canvas line I first need to gain a reference to a canvas element, and get a reference to the 2d drawing context after doing so that will be used to call the various methods that are used to draw lines with canvas. 
+To make a canvas line I first need to gain a reference to a canvas element, and get a reference to the 2d drawing context after doing so I can now call the various methods that are used to draw lines with canvas. There is generating an injecting a canvas element, but for this example I will be getting a reference to a hard coded canvas element with the get method by id method. 
 
 So one way to get started with canvas lines would be to set the stroke style and begin a line by calling the begin path method. Once I have called begin path I can then use the move to method to move to a certain point in the canvas matrix. Then once I am at a good starting point I can use the line to method to create a line from the move to point to the line to point. Once done I can call the stroke method to draw the line.
 
