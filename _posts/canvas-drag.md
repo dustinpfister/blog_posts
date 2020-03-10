@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-03-10 19:13:09
-version: 1.4
+updated: 2020-03-10 19:14:50
+version: 1.5
 ---
 
 In [canvas drag](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) and drop actions are part of many projects when working out a user interface.
@@ -39,6 +39,8 @@ var distance = function (x1, y1, x2, y2) {
 ```
 
 ### 1.2 - Event handers
+
+So now that I have my get canvas relative method and my distance method I can now put together my event handers. these methods will be called and passed a state object when doing so that will then be accessed by the internal event hander that is returned when using add event listener. More on that later.
 
 ```js
 // Event handlers
