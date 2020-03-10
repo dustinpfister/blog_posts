@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-02-26 07:07:27
-version: 1.10
+updated: 2020-03-10 07:10:48
+version: 1.11
 ---
 
-When it comes to [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
+When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
 
 Keyboard events in client side javaScript involve attaching event handlers to the window object, because these kinds of events have to do with key presses in general, and not just touch events that have to do with juts a canvas element. There are two main events of interest the keydown and keyup events, the names of which should speak for themselves. I often use the key down event to set a boolean value to true, and then the key up to set it back to false, then use those boolean values to change things in an update loop, or make this event driven.
 
