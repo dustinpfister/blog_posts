@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-03-10 10:00:44
-version: 1.30
+updated: 2020-03-10 10:48:22
+version: 1.31
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -19,7 +19,7 @@ I see lots of code on the web that has to do with drawing canvas lines by way of
 
 This is a post on drawing lines with html 5 canvas for drawing graphics with javaScript. I assume that you have at least some background with html, css and javaScript to begin with. If not this is not the place to get started with any of those subjects. This post is also not necessary a starting point for [getting started with canvas](/2017/05/17/canvas-getting-started/) as well, but I will keep some of the first examples simple copy and past canvas line examples.
 
-## 2 - Canvas line hello world example
+### 1.1 - Canvas line hello world example
 
 To make a canvas line I first need to gain a reference to a canvas element, and get a reference to the 2d drawing context after doing so that will be used to call the various methods that are used to draw lines with canvas. 
 
@@ -49,7 +49,7 @@ ctx.stroke();
 
 So there we have a good getting started with canvas lines example. However of course there is much more to it than then when it comes to getting into many aspects of geometry, and writing all kinds of methods for drawing shapes and deterministic style animations. Also there are still a few other things to cover when it just comes to the basics so lets look at some more examples.
 
-## 3 - The moveTo method
+### 1.2 - The moveTo method
 
 The moveTo method can be used to create a new sub path at the given point in the 2d drawing context. It can be thought of as a way to pick up a pen and place it down at a given location on a piece of paper, rather than dragging a pen across a piece of paper as in the case of the lineTo method.
 
@@ -70,7 +70,7 @@ ctx.lineTo(20,20);
 ctx.stroke();
 ```
 
-## 4 - canvas line width
+### 1.3 - canvas line width
 
 There is the lineWidth property that can be used to set the width of a line in terms of the pixel thickness. I tend to think in terms of odd numbers when setting the thickness of a line so that there is a one pixel width line surrounded by and even thickness on each side.
 
@@ -101,7 +101,7 @@ canvas.style.width = '320px';
 canvas.style.height = '320px';
 ```
 
-## 5 - Stroke and fill canvas lines
+### 1.4 - Stroke and fill canvas lines
 
 The stroke method can be used in conjunction with the fill method to both stroke and fill a shape that was drawn with the moveTo and lineTo methods. This should often be used in conjunction with the close path method to ensure that the shape is always close to the starting point of the line.
 
@@ -126,11 +126,11 @@ ctx.stroke();
 
 The order in which the fill and stroke methods is called does matter, but it can effect the z order in which these actions take place. In other words if you want a stroke to happen on top of a fill then be sure to call the stroke method after the fill method is called like in the above example.
 
-## 6 - Complex Paths with canvas lines
+## 2 - Complex Paths with canvas lines
 
 When it comes to drawing any kind of complex path it gets to the point where I would want to work out a way to create and draw a collection of points. When things start to get intense there are many canvas libraries that help to abstract things away, but in this section I will be covering some basics of this without the use of a library.
 
-### 6.1 - Making a drawPoints function
+### 2.1 - Making a drawPoints function
 
 The first thing I would do is work out a function that will draw a standard collection of points. This standard collection of points could be a collection of objects each with an x, and y property if you prefer. However in this section I will be working with a simple linear array of number primitives which is a more efficient solution of course.
 
@@ -156,7 +156,7 @@ There might be a need for more than one draw points function, or to hack over so
 
 So now that I have a draw points function the real fun can begin when it comes to writing all kinds of methods that can be used to create an array of points that will be passed to this method.
 
-### 6.2 - Create Polygon Points for a canvas line
+### 2.2 - Create Polygon Points for a canvas line
 
 Now that I have a draw points function worked out I can start creating all kinds of functions that create a collection of points that can then be given to the draw points function. A simple one that comes to mind is one that can be used to draw polygons for example.
 
@@ -178,7 +178,7 @@ drawPoints(ctx,createPolygonPoints(15,15,5,4),true);
 
 So for this I just call the method, pass a center x and center y value, and then a radius and number of sides. I then have my points that form a polygon, just pass it to the draw points method with a context. As I increase the number of sides I will of course approach a circle, but this is not really a replacement for the [canvas arc](/2019/03/05/canvas-arc/) method,
 
-### 6.3 - An exponential curve example
+### 2.3 - An exponential curve example
 
 For another example of a method that can be used as a way to create an array of points used to create a canvas line here is an exponential curve example.
 
@@ -202,6 +202,6 @@ drawPoints(ctx, createExpCurvePoints(1.4, 12, 30))
 
 It is fun to start to explore all the different possibilities when it comes to writing these kinds of methods. In any case the basic idea is the same create a collection of x and y values that will be passed to a draw function.
 
-## 7 - Conclusion
+## 3 - Conclusion
 
 Of course I have not covered everything when it comes to drawing lines with canvas. I could go on and on about everything that comes to mind about methods that are used to create arrays of points and then draw lines between them. I would never cover everything with that, the power of imagination has not bounds with that.
