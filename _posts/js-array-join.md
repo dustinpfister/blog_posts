@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-03-09 21:13:53
-version: 1.6
+updated: 2020-03-09 21:21:02
+version: 1.7
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string with a string that is to be used between each element.
@@ -28,7 +28,21 @@ console.log(str); '3/9/2020'
 
 That is about it, however maybe some more examples are called for with this one.
 
-## 2 - String split and js array join
+## 2 - js array join and empty string as a separator
+
+An empty string can be given as the argument to the array join method.
+
+```js
+var arr = [1,2,3,3],
+ 
+a = parseInt(arr.join('')),
+ 
+b = a + 1;
+ 
+console.log(b); // 1234
+```
+
+## 3 - String split and js array join
 
 The string split method is another method that comes to mind when dealing with the array join method as it is an inversion of the method. Where the js array join method will create a string from an array the string split method will split a string into an array of elements.
 
