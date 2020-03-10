@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-03-10 07:15:17
-version: 1.13
+updated: 2020-03-10 07:20:22
+version: 1.14
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -22,9 +22,11 @@ There is also using keyboard events in conjunction with rather than a replacemen
 
 ## 1 - The basics of Canvas keyboard events
 
-The basic idea of canvas and keyboard events is that one or more event listeners should be attached to the window object using something like the add event listener method of the window object. When doing so I use the key down or key up event types, and attach a handler method where I define some logic as to what to do when such an event occurs.
 
-In the body of the event handler as with just about any other event hander the first argument given is an event object. This event object has many properties that are the same as with any other event object in client side javaScript, however there are some properties that are unique to keyboard events.
+
+### 1.1 - key up and key down events
+
+The basic idea of canvas and keyboard events is that one or more event listeners should be attached to the window object using something like the add event listener method of the window object. When doing so I use the key down or key up event types, and attach a handler method where I define some logic as to what to do when such an event occurs.
 
 ```html
 <html>
@@ -64,6 +66,10 @@ draw(ctx, canvas, state);
     </body>
 </html>
 ```
+
+### 1.2 - The keyCode and key properties of a keyboard event object
+
+In the body of the event handler as with just about any other event hander the first argument given is an event object. This event object has many properties that are the same as with any other event object in client side javaScript, however there are some properties that are unique to keyboard events.
 
 ## 2 -  Multi key canvas keyboard input
 
