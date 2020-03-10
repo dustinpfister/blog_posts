@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-03-10 12:40:54
-version: 1.40
+updated: 2020-03-10 12:43:11
+version: 1.41
 ---
 
 When learning how to work with the [javaScript canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) 2d drawing context for the first time the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects. In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
@@ -246,6 +246,8 @@ Now for the javaScript code that will make up my frame by frame canvas line anim
 
 The state object contains a current frame index value as well as a set number of frames. This is used to set the number of points in the line, but also used as a way to know the current state of the animation as it progresses forward frame by frame. There is also a last frame date value, and a frames per second value to know that amount of time that has passes sense the last update, and the number of frames to skip for each second that has passed. Then of course there is also a points array that will store the points that make up the line that is to be drawn.
 
+I then have an initialize points method that will generate the points array.
+
 ```js
 var canvas = document.getElementById('the-canvas'), ctx;
 canvas.width = 320;
@@ -298,6 +300,8 @@ var loop = function () {
 };
 loop();
 ```
+
+The update method of this canvas line animation example will just update the frame index value and last frame values of the state object based on the current time. I then use that as a way to set the current index value to create a new array of points with the array slice method that is then passed to my draw points method.
 
 ## 4 - Conclusion
 
