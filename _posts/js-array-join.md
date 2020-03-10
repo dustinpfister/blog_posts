@@ -5,11 +5,13 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-03-09 21:09:18
-version: 1.4
+updated: 2020-03-09 21:12:01
+version: 1.5
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string with a string that is to be used between each element.
+
+One of the great things about the js array join method is that it has been part of javaScript for a real long time. So no need to bother with polyfills with this one, it will even work in browsers as old as IE 5.5.
 
 <!-- more -->
 
