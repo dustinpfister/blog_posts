@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-03-11 09:01:02
-version: 1.8
+updated: 2020-03-11 09:02:42
+version: 1.9
 ---
 
 In [canvas drag](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) and drop actions are part of many projects when working out a user interface.
@@ -71,7 +71,7 @@ var pointerUp = function (state) {
 
 ### 1.3 - The draw method
 
-I will just need a single draw method that will be used to paint a sold background to the canvas followed by the circle.
+I will just need a single draw method that will be used to paint a sold background to the canvas followed by the circle. This method will be called each time the circle moves as well as one time initially and then end of the code.
 
 ```js
 // draw
