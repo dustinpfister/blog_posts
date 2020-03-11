@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-03-11 08:57:50
-version: 1.7
+updated: 2020-03-11 09:01:02
+version: 1.8
 ---
 
 In [canvas drag](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) and drop actions are part of many projects when working out a user interface.
@@ -87,7 +87,9 @@ var draw = function (ctx, canvas, state) {
 
 ### 1.4 - set up the canvas, state object, and attach events
 
-Now to get a reference to the canvas element, create the state object, and attach the event handlers.
+Now to get a reference to the canvas element, create the state object, and attach the event handlers. I get a reference to the canvas element, and also get a reference to the 2d drawing context as well as set the width and height.
+
+I create the state object with just a single object literal, and then pass it for each call of my pointer handler methods when attaching events to the canvas. I then also call my draw method for the first time, but all additional calls will be made my events rather than an event loop.
 
 ```js
 // set up canvas
