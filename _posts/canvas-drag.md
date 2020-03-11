@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-03-10 19:16:22
-version: 1.6
+updated: 2020-03-11 08:57:50
+version: 1.7
 ---
 
 In [canvas drag](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) and drop actions are part of many projects when working out a user interface.
@@ -117,3 +117,5 @@ canvas.addEventListener('touchend', pointerUp(state));
 // starting draw
 draw(ctx, canvas, state);
 ```
+
+Once this is all up and running the result is what I would expect. A single circle at the center of the center of the canvas, and I can then click and drag the circle to any location on the canvas. There is still a bit more to click in drag with canvas though such as snapping things into place.
