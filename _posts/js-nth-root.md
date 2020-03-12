@@ -5,10 +5,10 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2020-03-12 09:18:29
-version: 1.2
+updated: 2020-03-12 09:20:15
+version: 1.3
 ---
 
-Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects are a way to get the square root of a number, but what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? One solution is to use the Math.pow method, and divide 1 by the degree number when working out the exponent for the number that is used as the base for Math.pow.
+Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects are a way to get the square root of a number, but what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? One solution is to use the [Math.pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method, and divide 1 by the degree number when working out the exponent for the number that is used as the base for Math.pow.
 
 <!-- more -->
