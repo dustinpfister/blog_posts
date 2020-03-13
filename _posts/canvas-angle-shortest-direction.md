@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-03-13 07:00:46
-version: 1.4
+updated: 2020-03-13 08:46:22
+version: 1.5
 ---
 
 When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle I which to get to, and I want to start stepping the current angle by a delta value that will get the current angle to the target angle.
@@ -19,7 +19,7 @@ This section is on a canvas example that will make use of a get direction method
 
 ## 1.1 - The get direction method
 
-Here is the get direction method that I worked out with much code borrowed from angles.js.
+Here is the get direction method that I worked out with much code borrowed from angles.js. It uses methods form angle.js such as the mathematical module method, half normalize method, and the shortest direction method. I just hacked over things a little so that I have just one method that will return 0, 1, or -1 depending on the values of the radians that i give as the arguments to it.
 
 ```js
 var getDir = (function () {
