@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-03-13 08:56:38
-version: 1.6
+updated: 2020-03-13 09:38:23
+version: 1.7
 ---
 
 When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle I which to get to, and I want to start stepping the current angle by a delta value that will get the current angle to the target angle.
@@ -142,3 +142,46 @@ The result of all of this up and running is that the current angle steps to the 
 There is more than one way to go about resolving that problem, such as having a dynamic, rather than static angle delta, and have logic where the delta will end uo being zero if the difference in angular distance between the current and target angle is at or below a certain low point. 
 
 Another solution that comes to mind is to not think in terms of radians, but degrees, or any set number of divisions or slots around the circumference of a circle. Such a solution would involve the use of mathematic modulo to find the closest number of degrees, slots, index values, or whatever you prefer to call them from one point to the other. In other words a solution in which I am not thinking in terms of angles, but something like index values in an array.
+
+## 2 -Thinking in terms of index values, rather than radians, and a more robust find dir method
+
+So because of the problem that I ran into with the current position trashing back and forth there are two general ideas that come to mind to resolve that. One is to have a dynamic angle delta value, and the other is to think in terms of diving the circumference of a circle into a set number of degrees, slots, or index values like that of an array, and step by one index value at a time. In this section I will be going over some quick javaScript that is the latter rather than the former.
+
+```js
+var findDir = (function () {
+    var mod = function (x, m) {
+        return (x % m + m) % m;
+    };
+    return function (indexMax, indexCurrent, indexTarget) {
+        var z = indexCurrent - indexTarget,
+        h = indexMax / 2;
+        if (indexCurrent === indexTarget) {
+            return 0;
+        }
+        if (mod(z + h, indexMax) - h < 0) {
+            return 1;
+        } else {
+            return -1;
+        }
+    };
+}
+    ());
+ 
+// works with arrays
+var arr = [0, 1, 2, 3, 4],
+len = arr.length;
+console.log(findDir(len, 1, 4)); // -1
+console.log(findDir(len, 4, 0)); // 1
+console.log(findDir(len, 2, 2)); // 0
+ 
+// works with an object of index/degree/number values
+var state = {
+    iMax: 32,
+    iCurrent: 16,
+    iTarget: 3
+};
+console.log(findDir(state.iMax, state.iCurrent, state.iTarget)); // -1
+ 
+// index/degree/number values that can be converted to radians
+console.log( Math.PI * 2 / state.iMax * state.iCurrent ); // 3.14159...
+```
