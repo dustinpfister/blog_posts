@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-03-13 06:56:03
-version: 1.2
+updated: 2020-03-13 06:58:19
+version: 1.3
 ---
 
 When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle I which to get to, and I want to start stepping the current angle by a delta value that will get the current angle to the target angle.
@@ -15,6 +15,7 @@ When working out canvas projects there might be a need to find the direction in 
 
 ## 1 - Get angle direction method canvas example
 
+This section is on a canvas example that will make use of a get direction method that will be used to step the current angle or a state object to a target angle.
 
 ## 1.1 - The get direction method
 
