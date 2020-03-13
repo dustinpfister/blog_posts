@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-03-13 08:46:22
-version: 1.5
+updated: 2020-03-13 08:56:38
+version: 1.6
 ---
 
 When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle I which to get to, and I want to start stepping the current angle by a delta value that will get the current angle to the target angle.
@@ -136,3 +136,9 @@ loop();
     </body>
 </html>
 ```
+
+The result of all of this up and running is that the current angle steps to the target angle as I want. However there is one little problem, when it gets to the target angle it keeps stepping back and forth each frame tick after that. This is because I never really have a situation in which the current angle equals the target angle, so it is always stepping one way or the other by a static angle delta.
+
+There is more than one way to go about resolving that problem, such as having a dynamic, rather than static angle delta, and have logic where the delta will end uo being zero if the difference in angular distance between the current and target angle is at or below a certain low point. 
+
+Another solution that comes to mind is to not think in terms of radians, but degrees, or any set number of divisions or slots around the circumference of a circle. Such a solution would involve the use of mathematic modulo to find the closest number of degrees, slots, index values, or whatever you prefer to call them from one point to the other. In other words a solution in which I am not thinking in terms of angles, but something like index values in an array.
