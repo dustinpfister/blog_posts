@@ -5,15 +5,18 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-03-13 06:45:17
-version: 1.1
+updated: 2020-03-13 06:56:03
+version: 1.2
 ---
 
-When working out canvas projects mainly games and such with some projects there might be a need to fine the shortest angle between two angles.
+When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle I which to get to, and I want to start stepping the current angle by a delta value that will get the current angle to the target angle.
 
 <!-- more -->
 
-## 1 - Get angle direction method
+## 1 - Get angle direction method canvas example
+
+
+## 1.1 - The get direction method
 
 ```js
 var getDir = (function () {
@@ -43,6 +46,8 @@ var getDir = (function () {
     ());
 ```
 
+## 1.2 - A draw module
+
 ```js
 var draw = {};
  
@@ -71,6 +76,8 @@ draw.debug = function (ctx, state) {
     ctx.fillText(state.current, 20, 20);
 };
 ```
+
+## 1.1 - Main.js and index.html files
 
 ```js
 var canvas = document.getElementById('mycanvas'),
