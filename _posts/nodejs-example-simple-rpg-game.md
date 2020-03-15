@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 18:20:26
-version: 1.8
+updated: 2020-03-15 18:23:35
+version: 1.9
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -277,6 +277,8 @@ exports.update = (state, tempX, tempY) => {
 ```
 
 ## 6 - The input handler method
+
+I will need a way to process input from that standard input which will be the way that this game will be played. In the main game.js file there will be some code that will fire each time a key is pressed in the command line. Here I have my input.js file that returns one method that will be used in the event hander that will fire for key presses in the main game.js file that I will be getting to shortly.
 
 ```js
 let playerMod = require('./player.js'),
