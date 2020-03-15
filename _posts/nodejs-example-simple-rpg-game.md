@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 18:23:35
-version: 1.9
+updated: 2020-03-15 18:26:02
+version: 1.10
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -316,6 +316,8 @@ module.exports = (state, input, opt) => {
 ```
 
 ## 7 - The draw module
+
+Here I have the draw module that will be used to draw the current state of the state object to the command line using ANSI escape codes. There are two public methods, one of which will be called once during certain events to start all over, and then another that will be called to update that state rather than drawing the whole screen all over again. I have come to find that I need to do something like this so that there is not this screen flashing effect going on for each move.
 
 ```js
 let enemyMod = require('./enemies.js');
