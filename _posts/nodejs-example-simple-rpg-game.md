@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 18:26:32
-version: 1.11
+updated: 2020-03-15 19:05:05
+version: 1.12
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -46,6 +46,14 @@ exports.dirToPos = (obj, dir) => {
     };
 };
  
+// get a direction number (0 - 3) from one object to another
+exports.getDirFromObjToObj = (obj1, obj2) => {
+    let r = Math.atan2(obj1.y - obj2.y, obj1.x - obj2.x) + Math.PI,
+    per = r / (Math.PI * 2),
+    dir = Math.floor(4 * per) % 4;
+    return dir;
+};
+ 
 // use the given 'map' object with a w and h prop
 // to create an object with x and y props set to values
 // that are in bounds for an 'obj' that might be out of bounds
@@ -56,6 +64,37 @@ exports.setBounds = (state, obj) => {
     point.x = obj.x < 1 ? 1 : point.x;
     point.y = obj.y < 1 ? 1 : point.y;
     return point;
+};
+ 
+// is the given location over the player?
+let isOverPlayer = exports.isOverPlayer = (state, x, y) => {
+    return x === state.player.x && y === state.player.y;
+};
+ 
+// check if there is something at the given location
+// if so return it
+let get = exports.get = (state, x, y, mode) => {
+    mode = mode || 'any';
+    // if player is at location return that
+    if (isOverPlayer(state, x, y) && (mode === 'any' || mode === 'player')) {
+        return state.player;
+    }
+    // check enemies array
+    if (mode === 'any' || mode === 'enemies') {
+        let i = state.enemies.length;
+        while (i--) {
+            let e = state.enemies[i];
+            if (e.x === x && e.y === y) {
+                return e;
+            }
+        }
+    }
+    return false;
+};
+ 
+// is the given location over nothing?
+exports.isOverNothing = (state, x, y) => {
+    return !get(state, x, y);
 };
 ```
 
@@ -130,40 +169,6 @@ const ENEMIES_MAX = 6,
 ENEMIES_SPAWN_MIN = 5,
 ENEMIES_ATTACK_RANGE = 1;
  
-let isOverPlayer = (state, x, y) => {
-    return x === state.player.x && y === state.player.y;
-};
- 
-let isOverNothing = (state, x, y) => {
-    return !isOverPlayer(state, x, y) && !getEnemy(state, x, y);
-};
- 
-// get the direction to the player with the given state object
-// and enemy object or index in state object
-let getDirToPlayer = exports.getDirToPlayer = (state, eIndex) => {
-    let e = typeof eIndex === 'object' ? eIndex : state.enemies[eIndex],
-    player = state.player,
-    r = Math.atan2(e.y - player.y, e.x - player.x) + Math.PI,
-    per = r / (Math.PI * 2),
-    dir = Math.floor(4 * per) % 4;
-    return dir;
-};
- 
-// check if an enemy is at the given pos
-// return false if nothing is there
-// or a reference to the enemy object if there
-// is one
-let getEnemy = exports.getEnemy = (state, x, y) => {
-    let i = state.enemies.length;
-    while (i--) {
-        let e = state.enemies[i];
-        if (e.x === x && e.y === y) {
-            return e;
-        }
-    }
-    return false;
-};
- 
 // purge any dead enemies
 exports.purgeDead = (state) => {
     let i = state.enemies.length;
@@ -180,9 +185,8 @@ exports.spawnEnemy = (state, x, y) => {
     x = x === undefined ? 1 : x;
     y = y === undefined ? Math.floor(state.h / 2) : y;
     if (state.lastSpawn >= ENEMIES_SPAWN_MIN) {
-        //let playerOver = x === state.player.x && y === state.player.y;
-        if (state.enemies.length < ENEMIES_MAX && !isOverPlayer(state, x, y)) {
-            let e = getEnemy(state, x, y);
+        if (state.enemies.length < ENEMIES_MAX && !u.isOverPlayer(state, x, y)) {
+            let e = u.get(state, x, y, 'enemies');
             if (!e) {
                 state.enemies.push({
                     x: x,
@@ -201,7 +205,8 @@ exports.spawnEnemy = (state, x, y) => {
 };
  
 let toPlayerPos = (state, e) => {
-    return u.dirToPos(e, getDirToPlayer(state, e));
+    let dir = u.getDirFromObjToObj(e, state.player);
+    return u.dirToPos(e, dir);
 };
  
 let toRandomPos = (state, e) => {
@@ -215,7 +220,7 @@ exports.updateEnemies = (state) => {
         player = state.player,
         d = u.distance(e.x, e.y, player.x, player.y),
         pos = d <= e.sight ? toPlayerPos(state, e) : toRandomPos(state, e);
-        if (isOverNothing(state, pos.x, pos.y)) {
+        if (u.isOverNothing(state, pos.x, pos.y)) {
             e.oldX = e.x;
             e.oldY = e.y;
             e.x = pos.x;
@@ -242,7 +247,7 @@ enemies = require('./enemies.js');
  
 let moveOrAttack = (state, tempX, tempY) => {
     // move or attack enemy
-    let e = enemies.getEnemy(state, tempX, tempY),
+    let e = u.get(state, tempX, tempY, 'enemies'),
     player = state.player;
     if (!e) {
         player.oldX = player.x;
@@ -320,87 +325,7 @@ module.exports = (state, input, opt) => {
 Here I have the draw module that will be used to draw the current state of the state object to the command line using ANSI escape codes. There are two public methods, one of which will be called once during certain events to start all over, and then another that will be called to update that state rather than drawing the whole screen all over again. I have come to find that I need to do something like this so that there is not this screen flashing effect going on for each move.
 
 ```js
-let enemyMod = require('./enemies.js');
- 
-let setCur = (x, y, out) => {
-    x = x || 0;
-    y = y || 0;
-    out.write('\u001b[' + y + ';' + x + 'H');
-}
 
-let clearScreen = (out) => {
-    out.write('\u001b[2J');
-}
-let colorsSet = (out) => {
-    out.write('\u001b[47m');
-    out.write('\u001b[30m');
-};
-let colorsDefault = (out) => {
-    out.write('\u001b[39m\u001b[49m');
-};
-
-let drawPlayerStats = function (state, out) {
-    let p = state.player,
-    text = 'hp: ' + p.hp + '/' + p.hpMax +
-        ', exp: ' + p.exp;
-    setCur(1, state.h + 1, out);
-    out.write(new Array(state.w).fill(' ').join(''));
-    setCur(1, state.h + 1, out);
-    out.write(text);
-};
- 
-let drawDotMap = function (state, out) {
-    let dotLine = new Array(state.w).fill('.').join('') + '\n',
-    i = state.h;
-    while (i--) {
-        out.write(dotLine);
-    }
-};
-
-let drawPlayer = function (state, out) {
-    let pos = state.player;
-    setCur(pos.oldX, pos.oldY, out);
-    let e2 = enemyMod.getEnemy(state, pos.oldX, pos.oldY);
-    out.write(e2 ? 'E' : '.');
-    setCur(pos.x, pos.y, out);
-    out.write('@');
-};
- 
-let drawEnemies = function (state, out) {
-    let enemies = state.enemies,
-    i = enemies.length;
-    while (i--) {
-        let e = enemies[i];
-        setCur(e.oldX, e.oldY, out);
-        let e2 = enemyMod.getEnemy(state, e.oldX, e.oldY);
-        out.write(e2 ? 'E' : '.');
-        setCur(e.x, e.y, out);
-        out.write('E');
-    }
-};
- 
-let updateScreen = exports.updateScreen = (state, out) => {
-    out = out || process.stdout;
-    colorsSet(out);
-    // draw enemies and player
-    drawEnemies(state, out);
-    drawPlayer(state, out);
-    drawPlayerStats(state, out);
-    // set default colors and set cursor to the bottom
-    colorsDefault(out);
-    setCur(0, state.h + 2, out);
-};
- 
-exports.newScreen = (state, out) => {
-    out = out || process.stdout;
-    // draw a dot map for the whole render area
-    clearScreen(out);
-    setCur(1, 1, out);
-    colorsSet(out);
-    drawDotMap(state, out);
-    // first update
-    updateScreen(state, out);
-};
 ```
 
 ## 8 - The main game.js file at root
