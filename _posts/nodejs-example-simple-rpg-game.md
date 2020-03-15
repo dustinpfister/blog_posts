@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 19:05:05
-version: 1.12
+updated: 2020-03-15 19:45:23
+version: 1.13
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -330,9 +330,13 @@ Here I have the draw module that will be used to draw the current state of the s
 
 ## 8 - The main game.js file at root
 
-Now for the main game.js file that is called to get things started.
+Now for the main game.js file that is called to get things started. Here I am suing my state module to load a game state file of there is one at the current working folder when the game starts. If not a new state and file is created.
+
+The standard input is set to raw mode and I attach an event hander for the data event of the standard input via the process global. In the event hander for the data event I am using the input hander method in input.js that will handing the standard input, as well as fire some additional methods that i define here for when the player dies, and when a turn is over.
 
 ```js
+#!/usr/bin/env node
+ 
 let draw = require('./lib/draw.js'),
 stateMod = require('./lib/state.js'),
 inputHandler = require('./lib/input.js');
@@ -361,4 +365,5 @@ stateMod.loadState()
     });
     draw.newScreen(state);
 });
+
 ```
