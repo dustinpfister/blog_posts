@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 18:16:34
-version: 1.7
+updated: 2020-03-15 18:20:26
+version: 1.8
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -233,6 +233,8 @@ exports.updateEnemies = (state) => {
 ```
 
 ## 5 - The player module
+
+So because I have an enemies module it would make sense that I also have a player module as well.
 
 ```js
 let u = require('./utils.js'),
