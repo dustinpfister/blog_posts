@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 17:29:01
-version: 1.5
+updated: 2020-03-15 17:31:12
+version: 1.6
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -64,6 +64,8 @@ If I take the time to continue to develop this nodejs example into a more comple
 ## 3 - The state object of the simple rpg canvas example
 
 I am going to want to have some kind of state object for the game. This object will of course hold the current state of a player object along with other data for enemies, and the nature of the game board.
+
+I will want methods that can be used to both load and save a state object as well as create a new one. The load state method should just return a new state object in the event of an error, or the loaded state object if all goes well.
 
 ```js
 let path = require('path'),
