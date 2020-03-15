@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 13:27:20
-version: 1.2
+updated: 2020-03-15 13:31:21
+version: 1.3
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -15,7 +15,11 @@ No name for this as of yet, I am horrible with names anyway, for not I will just
 
 <!-- more -->
 
-## 1 - The core idea of this simple RPG nodejs example
+## 1 - What to know about this simple RPG nodejs example before continuing
+
+I am writing about the state of this nodejs example of a rpg game that I have worked out in a day or so. To understand what I am writing about I assume that you have some background with javaScript and node.js, if not you might have a hard time understanding some of this stuff.
+
+If you are just interesting in playing the game you could clone it down from the repo on my git hub account and just call the main game.js file with nodejs in the command line.
 
 ## 2 - The utility library
 
