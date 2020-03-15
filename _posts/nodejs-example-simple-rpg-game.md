@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 13:31:21
-version: 1.3
+updated: 2020-03-15 17:27:40
+version: 1.4
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -22,6 +22,10 @@ I am writing about the state of this nodejs example of a rpg game that I have wo
 If you are just interesting in playing the game you could clone it down from the repo on my git hub account and just call the main game.js file with nodejs in the command line.
 
 ## 2 - The utility library
+
+I will want to have a custom trailered utility library with a bunch of methods that I will be using in at least one if not more other modules. Something like lodash only with methods that I will be using just for this project alone.
+
+So with this like of file I will want a distance formula, as well just a few other methods that have to do with updating the position of objects for the player and enemies in the game. For now just one that will return an updated position for an object based on a given direction, and another that will apply boundaries.
 
 ```js
 // distance between two points
@@ -54,6 +58,8 @@ exports.setBounds = (state, obj) => {
     return point;
 };
 ```
+
+If I take the time to continue to develop this nodejs example into a more complex game, this library will of course expand. Generally any kind of methods that will be used in more than one other library should be parked here.
 
 ## 3 - The state object module
 
