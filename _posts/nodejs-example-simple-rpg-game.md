@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-15 17:31:12
-version: 1.6
+updated: 2020-03-15 18:16:34
+version: 1.7
 ---
 
 I have been wanting to get around to making a simple terminal based RPG style game with nodejs. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -120,6 +120,8 @@ exports.saveState = (state, root, fileName) => {
 ```
 
 ## 4 - The enemies module
+
+So in this game there will be enemy objects in the game board area. So I will want a module that can be used to spawn enemies into an array fro a spawn location in the game board. In addition there will need to be all kinds of other methods that can be used to create a primitive yet function AI.
 
 ```js
 let u = require('./utils.js');
