@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 629
-updated: 2020-03-17 13:02:03
-version: 1.4
+updated: 2020-03-17 13:05:11
+version: 1.5
 ---
 
 I can not say that I often find myself needing to write a lexer. I will often just use a user space module that was all ready written before hand by someone else that is a lexer, or contains a lexer such as with marked.js. However there might come a time now and then when I will want to [write my own lexer](https://blog.mgechev.com/2017/09/16/developing-simple-interpreter-transpiler-compiler-tutorial/), one such reason would be to develop my own language. One thing that comes to mind about that is to write a complier or interpreter for the language, but before I even get to that I will want a lexer.
@@ -84,7 +84,11 @@ module.exports = (orbScript) => {
 };
 ```
 
-### 1.2 - 
+### 1.2 - Testing out the lexer
+
+Now to test out my lexer with a simple test script of sorts. I will and just a single javaScript file that requires in the lexer module, and then uses it do create an array of token objects for a given code example of my orbScript language.
+
+So something like this:
 
 ```js
 let orbScriptLexer = require('./lexers/orbscript-dsl.js');
@@ -93,6 +97,8 @@ let tokens = orbScriptLexer('base attack 30');
  
 console.log(JSON.stringify(tokens));
 ```
+
+The result of which spits out this json to the console.
 
 ```
 [
@@ -128,3 +134,5 @@ console.log(JSON.stringify(tokens));
   ]
 ]
 ```
+
+So it would seem that my simple little lexer works as expected thus far at least. My language is not much of a language at this point.
