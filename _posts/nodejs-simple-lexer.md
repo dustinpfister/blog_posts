@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 629
-updated: 2020-03-17 11:32:58
-version: 1.2
+updated: 2020-03-17 12:55:04
+version: 1.3
 ---
 
 I can not say that I often find myself needing to write a lexer. I will often just use a user space module that was all ready written before hand by someone else that is a lexer, or contains a lexer such as with marked.js. However there might come a time now and then when I will want to [write my own lexer](https://blog.mgechev.com/2017/09/16/developing-simple-interpreter-transpiler-compiler-tutorial/), one such reason would be to develop my own language. One thing that comes to mind about that is to write a complier or interpreter for the language, but before I even get to that I will want a lexer.
@@ -15,6 +15,10 @@ I can not say that I often find myself needing to write a lexer. I will often ju
 
 
 ## 1 - The nodejs lexer of my orbScript language
+
+I will want an array of objects that can be used to identify tokens in a code example string. This array of objects will contain a regular expression property that will be used to find out if a given lexum is a known keyword, operator, value or other value of the language.
+
+I will also want a helper function that breaks down a line of code into token objects, and a main lexer method that is what will be exported by the module.
 
 ```js
 const langTokens = [{
