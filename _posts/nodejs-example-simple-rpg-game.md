@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-16 20:51:53
-version: 1.20
+updated: 2020-03-16 20:53:52
+version: 1.21
 ---
 
 I have been wanting to get around to making a simple terminal based [RPG style game](https://en.wikipedia.org/wiki/Role-playing_video_game) with nodejs, and write about it as one of several [nodejs example](https://nodejs.org/api/synopsis.html) posts. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -72,6 +72,8 @@ exports.getDirFromObjToObj = (obj1, obj2) => {
 
 ### 2.4 - Set bounds for a display object
 
+There is a utility method for setting the boundaries for a display object.
+
 ```js
 // use the given 'map' object with a w and h prop
 // to create an object with x and y props set to values
@@ -87,6 +89,8 @@ exports.setBounds = (state, obj) => {
 ```
 
 ### 2.5 - isOverPlayer, get, and isOverNothing
+
+I then also have methods for getting any display object that might be at a location or nothing if the location is empty.
 
 ```js
 // is the given location over the player?
