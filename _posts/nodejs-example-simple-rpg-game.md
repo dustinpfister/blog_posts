@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-16 20:50:54
-version: 1.19
+updated: 2020-03-16 20:51:53
+version: 1.20
 ---
 
 I have been wanting to get around to making a simple terminal based [RPG style game](https://en.wikipedia.org/wiki/Role-playing_video_game) with nodejs, and write about it as one of several [nodejs example](https://nodejs.org/api/synopsis.html) posts. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -57,6 +57,8 @@ exports.dirToPos = (obj, dir) => {
 ```
 
 ### 2.3 - Get a direction number (0-3) from a display object to another display object
+
+I will want a method that can be used to find out what direction number a display object should move in oder to get to another display object. 
 
 ```js
 // get a direction number (0 - 3) from one object to another
