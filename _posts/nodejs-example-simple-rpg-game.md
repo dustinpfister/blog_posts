@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-16 20:48:27
-version: 1.18
+updated: 2020-03-16 20:50:54
+version: 1.19
 ---
 
 I have been wanting to get around to making a simple terminal based [RPG style game](https://en.wikipedia.org/wiki/Role-playing_video_game) with nodejs, and write about it as one of several [nodejs example](https://nodejs.org/api/synopsis.html) posts. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -38,6 +38,8 @@ exports.distance = (x1, y1, x2, y2) => {
 ```
 
 ### 2.2 - get a new position for a display object with a given direction number (0-3)
+
+I also ended up working out a method that will return a new position for a display object given a direction number in the range of zero to three.
 
 ```js
 // return an x and y position that is the
