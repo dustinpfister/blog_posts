@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-03-17 18:20:24
-version: 1.29
+updated: 2020-03-17 19:15:08
+version: 1.30
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation to the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the new translated point, rather that the usual top left corner of the canvas.
@@ -269,6 +269,105 @@ var loop = function () {
 loop();
 ```
 
-## 4 - Conclusion
+## 4 - Points collections and canvas translate
+
+### 4.1 - The draw module
+
+```js
+var draw = {};
+ 
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+draw.points = function (ctx, points, close, stroke, fill, lw) {
+    close = close === undefined ? true : close;
+    stroke = stroke === undefined ? 'black' : stroke;
+    fill = fill === undefined ? false : fill;
+    ctx.lineWidth = lw === undefined ? 3 : lw;
+    ctx.beginPath();
+    ctx.moveTo(points[0], points[1]);
+    var i = 2,
+    len = points.length;
+    while (i < len) {
+        ctx.lineTo(points[i], points[i + 1]);
+        i += 2;
+    }
+    if (close) {
+        ctx.closePath();
+    }
+    if (fill) {
+        ctx.fillStyle = fill;
+        ctx.fill();
+    }
+    if (stroke) {
+        ctx.strokeStyle = stroke;
+        ctx.stroke();
+    }
+};
+ 
+draw.dispObjects = function (ctx, dispObjects) {
+    var i = 0,
+    disp,
+    len = dispObjects.length;
+    while (i < len) {
+        disp = dispObjects[i];
+        ctx.save();
+        ctx.translate(disp.x, disp.y);
+        ctx.rotate(disp.r);
+        draw.points(ctx, disp.points, disp.close, disp.stroke, disp.fill, disp.lw);
+        ctx.restore();
+        i += 1;
+    }
+};
+```
+
+### 4.2 - Main.js and index.html
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.translate(0.5, 0.5);
+canvas.width = 320;
+canvas.height = 240;
+ 
+var dispObjects = [{
+        x: 64,
+        y: 64,
+        r: Math.PI / 180 * 10,
+        points: [-32, -32, 32, -32, 32, 32],
+        fill: false,
+        stroke: 'white',
+        close: true
+    }, {
+        x: 50,
+        y: 50,
+        r: Math.PI / 180 * 90,
+        points: [-32, -32, 32, -32, 32, 32],
+        fill: false,
+        stroke: 'white',
+        close: true
+    }
+];
+ 
+draw.back(ctx, canvas);
+draw.dispObjects(ctx, dispObjects);
+```
+
+```html
+<html>
+    <head>
+        <title>canvas translate</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 So the canvas translate method is the built in way to change the drawing location of the canvas origin to something other than the upper left corner of the canvas. The canvas translate is one of many such methods that a javaScript developer should be familiar with when it comes to doing something useful and interesting with a canvas element.
