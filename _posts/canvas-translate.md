@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-03-17 19:18:37
-version: 1.31
+updated: 2020-03-17 19:19:43
+version: 1.32
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation to the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the new translated point, rather that the usual top left corner of the canvas.
@@ -275,6 +275,8 @@ Say for example that I want to have a display object format where a display obje
 
 ### 4.1 - The draw module
 
+So then I will need a draw module for this canvas translate example.
+
 ```js
 var draw = {};
  
@@ -326,6 +328,8 @@ draw.dispObjects = function (ctx, dispObjects) {
 ```
 
 ### 4.2 - Main.js and index.html
+
+Now that I have my draw module I can now make use of it with a few of these kinds of display objects.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
