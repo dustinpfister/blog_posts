@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-16 20:47:06
-version: 1.17
+updated: 2020-03-16 20:48:27
+version: 1.18
 ---
 
 I have been wanting to get around to making a simple terminal based [RPG style game](https://en.wikipedia.org/wiki/Role-playing_video_game) with nodejs, and write about it as one of several [nodejs example](https://nodejs.org/api/synopsis.html) posts. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -27,6 +27,8 @@ I will want to have a custom trailered utility library with a bunch of methods t
 
 
 ### 2.1 - The distance formula
+
+So I know that I will want a distance formula for this project. So I start off my utility module by making sure I am exporting that one for starters.
 
 ```js
 // distance between two points
