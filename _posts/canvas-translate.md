@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-03-17 19:15:08
-version: 1.30
+updated: 2020-03-17 19:18:37
+version: 1.31
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation to the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the new translated point, rather that the usual top left corner of the canvas.
@@ -270,6 +270,8 @@ loop();
 ```
 
 ## 4 - Points collections and canvas translate
+
+Say for example that I want to have a display object format where a display object instance has an array of point values relative to zero, zero. In addition format also has an x and y property that is the center location of the display object. I can use the canvas translate method to translate to the x and y point of a display object, and then just draw the points in the points array. I can also use the save and restore methods as a way to draw two or more of these kinds of display objects.
 
 ### 4.1 - The draw module
 
