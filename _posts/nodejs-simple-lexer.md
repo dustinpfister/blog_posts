@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 629
-updated: 2020-03-17 13:22:03
-version: 1.6
+updated: 2020-03-17 13:32:39
+version: 1.7
 ---
 
 I can not say that I often find myself needing to write a lexer. I will often just use a user space module that was all ready written before hand by someone else that is a lexer, or contains a lexer such as with marked.js. However there might come a time now and then when I will want to [write my own lexer](https://blog.mgechev.com/2017/09/16/developing-simple-interpreter-transpiler-compiler-tutorial/), one such reason would be to develop my own language. One thing that comes to mind about that is to write a complier or interpreter for the language, but before I even get to that I will want a lexer.
@@ -16,6 +16,18 @@ I can not say that I often find myself needing to write a lexer. I will often ju
 ## 1 - An orbScript language basic lexer module and test
 
 For a simple example of a nodes lexer I first need a language that I want to make a lexer for. For this section at least I will be making up my own simple domain specific language for a game prorotype that involves orbs that are used in the game as a way to fight monsters. In other words some kind of tower define game in which orbs are socketed into them.
+
+I will not be getting into detail about the game really, if it even every exists. For the sake of this post all that matters is that I have some kind of language that I want to make a lexer for. So with that said and example of my orb script language might look like this.
+
+```
+base attack 30;
+base speed 10;
+cap speed 15;
+```
+
+The language consists thus far of collections of lines of code that are terminated with a simi colon. Each line starts out with a keyword followed by a property and then a value. The simi color can be used as a way to break the code down into lines, although it might be better to use line breaks. In any case there is a way to know if a certain statement is over or not. In addition white space can be used as a way to split one of these lines or statements into tokens, or a collection of what might be called a lexem.
+
+once I have an array of tokens I can just map over them creating an array of objects that contains properties such as the line number, col number, the type of token and so forth. This array of tokens can then be used as a way to parse this orb script of mine into another language such as javaScript, or will sever as an argument for an engine or function that will apply or execute this custom language code.
 
 ### 1.1 - The nodejs lexer of my orbScript language
 
