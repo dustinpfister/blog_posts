@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2020-03-16 20:14:33
-version: 1.2
+updated: 2020-03-16 20:27:30
+version: 1.3
 ---
 
 When working out a string value it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string. If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them.
@@ -14,6 +14,12 @@ When working out a string value it might be necessary to add some [js line break
 <!-- more -->
 
 ## 1 - Js line breaks and escape notation
+
+The first and for most way to go about injecting line breaks into strings would be to use javaScript escape notation. This kind of notation involves using a backslash followed by one or more additional characters to help inject any kind of character into a string including line breaks.
+
+When it comes to windows style line breaks you will want  to start off with a carriage return follow by a new line. For posix style js line breaks forget the carriage return ans just inject a new line.
+
+So the carriage return and new line escape notation can be used
 
 ```js
 var eol = {
@@ -26,6 +32,8 @@ str = 'So this is one line. ' + eol[os] + 'And this is a new one. ' + eol[os];
  
 console.log(str);
 ```
+
+Or the utf-16 code unit escape notation will work also.
 
 ```js
 var eol = {
