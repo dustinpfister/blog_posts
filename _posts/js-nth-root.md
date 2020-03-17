@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2020-03-12 09:26:49
-version: 1.6
+updated: 2020-03-16 20:35:59
+version: 1.7
 ---
 
-Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects are a way to get the square root of a number, but what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? 
+Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubes root of a number, or any other degree beyond of that of just the number 2.
 
 <!-- more -->
 
