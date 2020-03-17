@@ -5,11 +5,13 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 629
-updated: 2020-03-17 13:36:22
-version: 1.8
+updated: 2020-03-17 13:44:42
+version: 1.9
 ---
 
-I can not say that I often find myself needing to write a lexer. I will often just use a user space module that was all ready written before hand by someone else that is a lexer, or contains a lexer such as with marked.js. However there might come a time now and then when I will want to [write my own lexer](https://blog.mgechev.com/2017/09/16/developing-simple-interpreter-transpiler-compiler-tutorial/), one such reason would be to develop my own language. One thing that comes to mind about that is to write a complier or interpreter for the language, but before I even get to that I will want a lexer.
+I can not say that I often find myself needing to write a lexer. I will often just use a user space module that was all ready written before hand by someone else that is a lexer, or contains a lexer such as with marked.js. However there might come a time now and then when I will want to [write my own lexer](https://blog.mgechev.com/2017/09/16/developing-simple-interpreter-transpiler-compiler-tutorial/), one such reason would be to develop my own language. One thing that comes to mind about custom lexers is that I might want to write a one for my own complier, interpreter, or method that applies some kind of custom  domain specific language.
+
+A lexer is an important part of [lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis). Say I want to work out some code that makes sense of English language, the first part of such a process would be to break the text into an array of objects where each object is for a word, or other aspect of the language such as a period. this array of objects can be thought of as an array of tokens, and each token object would contain useful data about each token such as the index value at which is appears in the text, the word itself, if it is a noun or verb, and so forth.
 
 <!-- more -->
 
