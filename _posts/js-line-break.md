@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2020-03-16 20:29:49
-version: 1.4
+updated: 2020-03-16 20:32:15
+version: 1.5
 ---
 
 When working out a string value it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string. If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them.
@@ -46,6 +46,7 @@ var eol = {
 
 in node there is the End Of Line property of the os module. This property will hold a carriage return plus new line value for windows systems, and just a new line value for posix. In other words the value of the End Of line property will change depending on the underlaying operating system used.
 
+If you want consistent values regardless of the operating system you might want to stick to escape notation.
 ```js
 const os = require('os');
  
@@ -66,6 +67,8 @@ process.stdout.write(str);
 ```
 
 ## 3 - The decode URI Component method
+
+Another options that comes to mind is the [decode url component](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent) method.
 
 ```js
 const eol = {
