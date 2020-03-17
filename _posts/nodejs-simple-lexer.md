@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 629
-updated: 2020-03-17 13:32:39
-version: 1.7
+updated: 2020-03-17 13:36:22
+version: 1.8
 ---
 
 I can not say that I often find myself needing to write a lexer. I will often just use a user space module that was all ready written before hand by someone else that is a lexer, or contains a lexer such as with marked.js. However there might come a time now and then when I will want to [write my own lexer](https://blog.mgechev.com/2017/09/16/developing-simple-interpreter-transpiler-compiler-tutorial/), one such reason would be to develop my own language. One thing that comes to mind about that is to write a complier or interpreter for the language, but before I even get to that I will want a lexer.
@@ -149,4 +149,4 @@ The result of which spits out this json to the console.
 ]
 ```
 
-So it would seem that my simple little lexer works as expected thus far at least. My language is not much of a language at this point.
+So it would seem that my simple little lexer works as expected thus far at least. My language is not much of a language at this point, but the basic idea of a nodejs lexer is there. Taking this to the next level would involve further developing the language to begin with, as well as this lexer. In addition I would want to write some kind of function or other moduel that will take this array of tokens and do something useful with it. Such as apply the orb script to some kind of orb object.
