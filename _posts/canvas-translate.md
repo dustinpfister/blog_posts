@@ -1,17 +1,19 @@
 ---
-title: The canvas translate method
+title: The canvas translate method and normalizing points.
 date: 2019-10-09 19:43:00
 tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-02-10 19:24:17
-version: 1.28
+updated: 2020-03-17 18:20:24
+version: 1.29
 ---
 
-The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation the the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the translated point, rather that the usual top left corner of the canvas.
+The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation to the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the new translated point, rather that the usual top left corner of the canvas.
 
-The canvas translate is often used in conjunction with other methods such as canvas save, restore and rotate when drawing display objects. It can also be used as a way to just change the drawing origin in the canvas when I want to draw something in a different location of the canvas without going there a bunch of drawing context calls and changing literal values. So with that said lets take a moment to look at some examples of the canvas translate method.
+The canvas translate method is often used in conjunction with other methods such as canvas save, restore, and rotate when drawing rotated display objects on the fly rather than from a sprite sheet of images that where rotated before hand. 
+
+The canvas translate method can also be used as a way to just change the drawing origin in the canvas when I want to draw something in a different location of the canvas. This can be useful as it allows me to avoid having to do something else to help with the process of normalizing points. So with that said lets take a moment to look at some examples of the canvas translate method.
 
 <!-- more -->
 
