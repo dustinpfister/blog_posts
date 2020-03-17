@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-16 11:49:31
-version: 1.16
+updated: 2020-03-16 20:47:06
+version: 1.17
 ---
 
 I have been wanting to get around to making a simple terminal based [RPG style game](https://en.wikipedia.org/wiki/Role-playing_video_game) with nodejs, and write about it as one of several [nodejs example](https://nodejs.org/api/synopsis.html) posts. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -23,16 +23,21 @@ If you are just interesting in playing the game you could clone it down from the
 
 ## 2 - The utility library
 
-I will want to have a custom trailered utility library with a bunch of methods that I will be using in at least one if not more other modules. Something like lodash only with methods that I will be using just for this project alone.
+I will want to have a custom trailered utility library with a bunch of methods that I will be using in at least one if not more other modules. Something like lodash only with methods that I will be using just for this project alone. So with this kind of project I will want things like a distance formula, as well as just about any other kind of method that will help with typical tasks.
 
-So with this like of file I will want a distance formula, as well just a few other methods that have to do with updating the position of objects for the player and enemies in the game. For now just one that will return an updated position for an object based on a given direction, and another that will apply boundaries.
+
+### 2.1 - The distance formula
 
 ```js
 // distance between two points
 exports.distance = (x1, y1, x2, y2) => {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
- 
+```
+
+### 2.2 - get a new position for a display object with a given direction number (0-3)
+
+```js
 // return an x and y position that is the
 // next step from the position in 'obj' based
 // off the given 'dir' in 0 to 3 form
@@ -45,7 +50,11 @@ exports.dirToPos = (obj, dir) => {
         y: obj.y + dy
     };
 };
- 
+```
+
+### 2.3 - Get a direction number (0-3) from a display object to another display object
+
+```js
 // get a direction number (0 - 3) from one object to another
 exports.getDirFromObjToObj = (obj1, obj2) => {
     let r = Math.atan2(obj1.y - obj2.y, obj1.x - obj2.x) + Math.PI,
@@ -53,7 +62,11 @@ exports.getDirFromObjToObj = (obj1, obj2) => {
     dir = Math.floor(4 * per) % 4;
     return dir;
 };
- 
+```
+
+### 2.4 - Set bounds for a display object
+
+```js
 // use the given 'map' object with a w and h prop
 // to create an object with x and y props set to values
 // that are in bounds for an 'obj' that might be out of bounds
@@ -65,7 +78,11 @@ exports.setBounds = (state, obj) => {
     point.y = obj.y < 1 ? 1 : point.y;
     return point;
 };
- 
+```
+
+### 2.5 - isOverPlayer, get, and isOverNothing
+
+```js
 // is the given location over the player?
 let isOverPlayer = exports.isOverPlayer = (state, x, y) => {
     return x === state.player.x && y === state.player.y;
