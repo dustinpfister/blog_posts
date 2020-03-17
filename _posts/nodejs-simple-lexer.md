@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 629
-updated: 2020-03-17 13:05:11
-version: 1.5
+updated: 2020-03-17 13:22:03
+version: 1.6
 ---
 
 I can not say that I often find myself needing to write a lexer. I will often just use a user space module that was all ready written before hand by someone else that is a lexer, or contains a lexer such as with marked.js. However there might come a time now and then when I will want to [write my own lexer](https://blog.mgechev.com/2017/09/16/developing-simple-interpreter-transpiler-compiler-tutorial/), one such reason would be to develop my own language. One thing that comes to mind about that is to write a complier or interpreter for the language, but before I even get to that I will want a lexer.
@@ -14,6 +14,8 @@ I can not say that I often find myself needing to write a lexer. I will often ju
 <!-- more -->
 
 ## 1 - An orbScript language basic lexer module and test
+
+For a simple example of a nodes lexer I first need a language that I want to make a lexer for. For this section at least I will be making up my own simple domain specific language for a game prorotype that involves orbs that are used in the game as a way to fight monsters. In other words some kind of tower define game in which orbs are socketed into them.
 
 ### 1.1 - The nodejs lexer of my orbScript language
 
