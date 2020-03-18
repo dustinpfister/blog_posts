@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 17:44:13
-version: 1.5
+updated: 2020-03-18 17:51:51
+version: 1.6
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -234,6 +234,8 @@ var draw = (function () {
 ```
 
 ## 4 - Main.js
+
+So now I have a utility module, a particles module that I can use to create and update a state, and a draw module to draw the current status of a state object. With that said it is now time to make use of it all with an index html file, and a main.js file that will tie all this together, and provide a basic app loop.
 
 ```js
 // MAIN
