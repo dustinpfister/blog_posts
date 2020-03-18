@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 18:35:39
-version: 1.14
+updated: 2020-03-18 19:29:25
+version: 1.15
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -245,21 +245,29 @@ I will want a draw module that I can use in a main javaScript file to draw the c
 
 ```js
 var draw = (function () {
+    var gradient;
     return {
+        setGradient: function (state) {
+            var canvas = state.canvas;
+            gradient = state.ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#9f0000');
+            gradient.addColorStop(1, '#00009f');
+        },
         // draw background
         background: function (state) {
             var ctx = state.ctx,
             canvas = state.canvas;
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = gradient || 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
         pool: function (state) {
             var i = state.pool.length;
+            ctx.strokeStyle = 'white';
             while (i--) {
                 var part = state.pool[i];
                 if (part.bits != '00') {
                     var color = part.bits === '01' ? 'blue' : 'red';
-                    color = part.bits === '11' ? 'purple' : color;
+                    color = part.bits === '11' ? '#bf00bf' : color;
                     ctx.globalAlpha = 0.8;
                     if (part.bits === '11') {
                         ctx.globalAlpha = 1 - part.per;
@@ -268,6 +276,7 @@ var draw = (function () {
                     ctx.fillStyle = color;
                     ctx.arc(part.x, part.y, part.radius, 0, Math.PI * 2);
                     ctx.fill();
+                    ctx.stroke();
                 }
             }
             ctx.globalAlpha = 1;
@@ -299,7 +308,7 @@ var state = paricles.create({
         canvas: canvas,
         ctx: ctx
     });
- 
+draw.setGradient(state);
 var loop = function () {
     requestAnimationFrame(loop);
     draw.background(state);
