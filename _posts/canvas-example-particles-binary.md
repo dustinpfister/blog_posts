@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 17:58:57
-version: 1.8
+updated: 2020-03-18 18:02:07
+version: 1.9
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -59,6 +59,8 @@ var paricles = (function () {
     };
 ```
 
+### 1.2 - The Particle Class
+
 ```js
     // Particle Class
     var Particle = function () {
@@ -88,7 +90,11 @@ var paricles = (function () {
         this.x = -1;
         this.y = -1;
     };
- 
+```
+
+### 1.3 - The create particle pool helper
+
+```js
     // create a particle pool
     var createPool = function () {
         var len = DEFAULT_POOL_SIZE,
@@ -99,7 +105,11 @@ var paricles = (function () {
         }
         return pool;
     };
- 
+```
+
+### 1.4 - Check if a particle has hit another particle in the pool.
+
+```js
     // check if a particle has hit another
     var partHitCheck = function (state, part) {
         var i = state.pool.length,
@@ -122,7 +132,11 @@ var paricles = (function () {
             }
         }
     };
- 
+```
+
+### 1.5 - A spawn method to activate particles in the pool
+
+```js
     // spawn or activate particles
     var spawn = function (state, t) {
         state.lastSpawn += t;
@@ -139,7 +153,11 @@ var paricles = (function () {
             }
         }
     };
- 
+```
+
+### 1.6 - Update the pool
+
+```
     // update a particle pool
     var updatePool = function (state, t) {
         var secs = t / 1000,
@@ -165,7 +183,11 @@ var paricles = (function () {
             }
         }
     };
-    
+```
+
+### 1.7 - The Public API
+
+```js
     // public API
     return {
         // create a state
