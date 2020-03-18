@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 18:09:23
-version: 1.11
+updated: 2020-03-18 18:26:23
+version: 1.12
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -65,6 +65,8 @@ I have decided to work of a Class for each particle object in the pool object of
 
 Each Particle object has an x and y property that is the current location of the particle in the canvas matrix. There is a heading value that is of course the direction that the particle is heading in radians, as well as a pixels per second value that is the number of pixels that the particle will move in the span of a second.
 
+The life, radius, and per values are used for when a particle enters a state in which it exists as a combination of both types of particles. When this is the case its position will be set to an average between the two points that have resulted in it entering this state, and it will begin to loose life, as the life value decrees the radius will increases, resulting in an explosion like effect.
+
 ```js
     // Particle Class
     var Particle = function () {
@@ -95,6 +97,8 @@ Each Particle object has an x and y property that is the current location of the
         this.y = -1;
     };
 ```
+
+So there are four states that a particle can be in a '00' or inactive state, a '10' and '01' state there are the two different particle types, and then a '11' or explosion state.
 
 ### 1.3 - The create particle pool helper
 
