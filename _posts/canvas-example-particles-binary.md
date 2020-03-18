@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 17:41:15
-version: 1.4
+updated: 2020-03-18 17:44:13
+version: 1.5
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -194,6 +194,8 @@ var paricles = (function () {
 ```
 
 ## 3 - Draw module
+
+I will want a draw module that I can use in a main javaScript file to draw the current state of  state object created with my particles module. The draw module that I worked out here has just two methods both of which act on a stat object that contains references to a canvas element and its drawing context. One method just draws the background, and the other draws the current state of the particle pool property of the state object.
 
 ```js
 var draw = (function () {
