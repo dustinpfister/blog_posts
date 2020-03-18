@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 18:03:08
-version: 1.10
+updated: 2020-03-18 18:09:23
+version: 1.11
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -60,6 +60,10 @@ var paricles = (function () {
 ```
 
 ### 1.2 - The Particle Class
+
+I have decided to work of a Class for each particle object in the pool object of the state object. There are just two prototype methods for this class that are used to activate an inactive particle, and another to set it back to that state.
+
+Each Particle object has an x and y property that is the current location of the particle in the canvas matrix. There is a heading value that is of course the direction that the particle is heading in radians, as well as a pixels per second value that is the number of pixels that the particle will move in the span of a second.
 
 ```js
     // Particle Class
