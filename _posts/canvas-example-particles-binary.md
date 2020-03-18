@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 18:26:23
-version: 1.12
+updated: 2020-03-18 18:30:11
+version: 1.13
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -102,6 +102,8 @@ So there are four states that a particle can be in a '00' or inactive state, a '
 
 ### 1.3 - The create particle pool helper
 
+There is a simple function that is just used to create the particle pool when making the state object in the public API later on in the module.
+
 ```js
     // create a particle pool
     var createPool = function () {
@@ -116,6 +118,8 @@ So there are four states that a particle can be in a '00' or inactive state, a '
 ```
 
 ### 1.4 - Check if a particle has hit another particle in the pool.
+
+This method is used to loop over all particles in the particle pool to see if a given particle has hit another one or not.
 
 ```js
     // check if a particle has hit another
@@ -144,6 +148,8 @@ So there are four states that a particle can be in a '00' or inactive state, a '
 
 ### 1.5 - A spawn method to activate particles in the pool
 
+Spawn an inactive particle into an active state.
+
 ```js
     // spawn or activate particles
     var spawn = function (state, t) {
@@ -164,6 +170,8 @@ So there are four states that a particle can be in a '00' or inactive state, a '
 ```
 
 ### 1.6 - Update the pool
+
+Update the pool of particles.
 
 ```
     // update a particle pool
@@ -194,6 +202,8 @@ So there are four states that a particle can be in a '00' or inactive state, a '
 ```
 
 ### 1.7 - The Public API
+
+Here now is the pubic API that consists of my create, and update methods.
 
 ```js
     // public API
