@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 17:54:00
-version: 1.7
+updated: 2020-03-18 17:58:57
+version: 1.8
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -38,6 +38,10 @@ u.mod = function mod(x, m) {
 
 I will then want a particles library that I can use to create a state object, and update a state object for this binary particles canvas example. In fact that is the two public methods that this module provides, just a create an update method. However there is of course everything else going on inside of it so lets take a look.
 
+### 1.1 - The start of the module and a random heading helper
+
+At the top of the module I start off with the beginnings of an IIFE that will return a public API of two methods at the end of the module. After the start of the IIFE I have a few properties for the pool size, and other defaults for particles that I use in the body of code to come. In addition I also have a single helper method that will return a random radian value between a min and max degree given as arguments. This method will come into play just a litter latter when I get into the Particle class.
+
 ```js
 var paricles = (function () {
  
@@ -53,7 +57,9 @@ var paricles = (function () {
         var degree = min + Math.random() * (max - min);
         return Math.PI / 180 * degree;
     };
- 
+```
+
+```js
     // Particle Class
     var Particle = function () {
         this.x = -1;
