@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 17:51:51
-version: 1.6
+updated: 2020-03-18 17:54:00
+version: 1.7
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -36,7 +36,7 @@ u.mod = function mod(x, m) {
 
 ## 1 - The particles module for this canvas example
 
-I will then want a particles library that I can use to create a state object, and update a static object for this binary particles canvas example.
+I will then want a particles library that I can use to create a state object, and update a state object for this binary particles canvas example. In fact that is the two public methods that this module provides, just a create an update method. However there is of course everything else going on inside of it so lets take a look.
 
 ```js
 var paricles = (function () {
