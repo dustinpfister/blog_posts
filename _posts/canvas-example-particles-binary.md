@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 17:30:43
-version: 1.2
+updated: 2020-03-18 17:32:12
+version: 1.3
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -16,6 +16,8 @@ So the binary liquid bomb thing in die hard inspired me to make a canvas example
 <!-- more -->
 
 ## 1 - The utils module
+
+So to start off I will want a utility library for this canvas example. For this example I will just want a distance formula, and a modulo function.
 
 ```js
 // UTILS
