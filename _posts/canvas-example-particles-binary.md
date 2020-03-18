@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 18:30:11
-version: 1.13
+updated: 2020-03-18 18:35:39
+version: 1.14
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -325,3 +325,7 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+This canvas example when up and running results in a bunch of particles moving around all over the canvas, when one hits another of a different type it explodes. I have to admint that looking at it is very satisfying.
