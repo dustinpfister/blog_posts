@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2020-03-19 16:11:50
-version: 1.19
+updated: 2020-03-19 16:17:42
+version: 1.20
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) channel transparency can be achieved in a number of ways. There is the global alpha property of the 2d drawing context, and then there is also using the RGBA notation to set a web color for fill or stroke styles. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear rect method and having a background behind the canvas element when it comes to getting into layering. So lets look at some examples that have to do with canvas alpha transparency in html 5 canvas and javaScript.
@@ -282,7 +282,7 @@ The draw circles method uses the global alpha property to set the global alpha v
 
 ### 3.3 - The main.js, and html files
 
-time now to tie everything together with a main.js file and a little HTML.
+time now to tie everything together with a main.js file and a little HTML. In my main.js file I create a circles.js state object with my create public method. I then also call the set gradient method of my draw module passing the state object to set up the gradient background for the state object. I then have a simple app loop in which I am drawing the background, the circles, and then updating the state object.
 
 ```js
 var state = circles.create({
@@ -298,6 +298,8 @@ var loop = function () {
 loop();
 ```
 
+The html then looks like this:
+
 ```html
 <html>
     <head>
@@ -311,6 +313,8 @@ loop();
     </body>
 </html>
 ```
+
+When this canvas example is up and running it is pretty cool to look at. A whole bunch of circles moving all over the place in all kinds of interesting ways. Of course the transparency of the circles changes depending on the circles location relative to the center of the canvas. I could put more time into it, making a more interesting form of my for tick methods, but I all ready spend way to much time on this one.
 
 ## 4 - Conclusion
 
