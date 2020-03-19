@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2020-03-19 14:24:49
-version: 1.15
+updated: 2020-03-19 14:27:54
+version: 1.16
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) channel transparency can be achieved in a number of ways. There is the global alpha property of the 2d drawing context, and then there is also using the RGBA notation to set a web color for fill or stroke styles. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear rect method and having a background behind the canvas element when it comes to getting into layering. So lets look at some examples that have to do with canvas alpha transparency in html 5 canvas and javaScript.
@@ -84,6 +84,8 @@ Now it is time to have some fun with global alpha and make a real canvas example
 ### 3.1 - The circles.js module
 
 Here I have the circles.js file that I use to create a state object, as well as update that state object with the two public methods that it returns to the global variable that it appends to. If of course contains a whole bunch more additional internal methods that all aid with the process of creating and updating a state object which contains an array of circle objects.
+
+Another cool feature of this canvas alpha examples circles.js file is the forTicks array. Each circle has a for tick index number that corresponds with one of these methods that will update the heading of the circle based on the logic of the current method in that array. I could do way more than just change the headings of circles in one of these methods, but for now I just did that to make the movement a little more interesting.
 
 ```js
 var circles = (function () {
