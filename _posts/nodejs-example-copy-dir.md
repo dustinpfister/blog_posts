@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 631
-updated: 2020-03-19 11:41:42
-version: 1.3
+updated: 2020-03-19 11:44:55
+version: 1.4
 ---
 
 This node example post of mine will be on some javaScript code I put together for copying a directory. This might not be the best solution for all projects, but I am using some code to this effect in a project I am working on. There are many other options out there on the web, many of which are packed with features that I will not use, I do not want, or I think should be pulled into another library. However in some respects they might also be a bit more robust compared to what I have worked out here.
@@ -218,3 +218,7 @@ if (source && target) {
     log('must give a source and target folder', 'info');
 }
 ```
+
+## 4 - Conclusion
+
+So far this way of making a copy dir library seems to work okay at least, however there are some things that come to mind that are of concern. Mainly using streams rather than readFile, and writeFile in the copy.js file, and seeing about better error handing. There are thoughts that come to mind such as what will happen if I copy a folder that contains recursive symbolic links, I have not battle tested this after all. Still when it comes to the project that I am working on this seems to work okay for what I want it to do at least.
