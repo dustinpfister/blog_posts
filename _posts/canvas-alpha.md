@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2019-11-10 19:11:26
-version: 1.11
+updated: 2020-03-19 14:06:04
+version: 1.12
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) channel transparency can be achieved in a number of ways. There is the global alpha property of the 2d drawing context, and then there is also using the RGBA notation to set a web color for fill or stroke styles. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear rect method and having a background behind the canvas element when it comes to getting into layering. So lets look at some examples that have to do with canvas alpha transparency in html 5 canvas and javaScript.
@@ -77,7 +77,231 @@ ctx.fill();
 
 This will of course only work with paths that are drawn with javaScript code, when it comes to drawing images from an external file, Image Data, or another canvas element I am still going to want to use the global alpha property to set a global transparency value.
 
-## 3 - Conclusion
+## 3 - transparent circles canvas alpha example
+
+
+### 3.1 - The circles.js module
+
+```js
+var circles = (function () {
+ 
+    var mod = function mod(x, m) {
+        return (x % m + m) % m;
+    };
+    var distance = function (x1, y1, x2, y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    };
+ 
+    var forTicks = [
+        // noop (just move with current stats)
+        function () {},
+        // move 45 degrees per second
+        function (state, circle, secs) {
+            circle.heading += Math.PI / 180 * 45 * secs;
+        },
+        // weird thing with sin
+        function (state, circle, secs) {
+            circle.ticks += secs;
+            circle.ticks = mod(circle.ticks, 100);
+            var r = Math.PI * 2 * (circle.ticks / 100);
+            circle.heading = Math.sin(r) * (Math.PI * 2);
+        },
+        // go down
+        function (state, circle, secs) {
+            circle.heading = Math.PI / 2;
+        },
+        // go up
+        function (state, circle, secs) {
+            circle.heading = Math.PI * 1.5;
+        },
+        // go right
+        function (state, circle, secs) {
+            circle.heading = 0;
+        },
+        // go left
+        function (state, circle, secs) {
+            circle.heading = Math.PI;
+        }
+    ];
+ 
+    var randomForTickIndex = function () {
+        return Math.floor(forTicks.length * Math.random())
+    };
+ 
+    var genCircles = function (state) {
+        state.circles = [];
+        var i = 30,
+        colors = ['red', 'lime', 'blue', 'white'],
+        color;
+        while (i--) {
+            color = colors[Math.floor(Math.random() * colors.length)];
+            state.circles.push({
+                x: state.canvas.width / 2,
+                y: state.canvas.height / 2,
+                radius: 16 + 32 * Math.random(),
+                color: color,
+                alpha: 0.5,
+                pps: 64 + 128 * Math.random(),
+                heading: Math.PI * 2 * Math.random(),
+                ticks: 0,
+                forTickIndex: randomForTickIndex(),
+                forTickLife: 3
+            });
+        }
+    };
+ 
+    var wrapCircle = function (state, circle) {
+        var canvas = state.canvas;
+        if (circle.x < circle.radius * -1) {
+            circle.x = mod(circle.x, canvas.width + circle.radius) + circle.radius;
+        }
+        if (circle.x > canvas.width + circle.radius) {
+            circle.x = mod(circle.x, canvas.width + circle.radius) - circle.radius;
+        }
+        if (circle.y < circle.radius * -1) {
+            circle.y = mod(circle.y, canvas.height + circle.radius) + circle.radius;
+        }
+        if (circle.y > canvas.height + circle.radius) {
+            circle.y = mod(circle.y, canvas.height + circle.radius) - circle.radius;
+        }
+    };
+ 
+    // set alpha of a circle based on distance
+    var setCircleAlpha = function (state, circle) {
+        var d = distance(circle.x, circle.y, state.canvas.width / 2, state.canvas.height / 2);
+        circle.alpha = 1 - d / (state.canvas.width / 2);
+        circle.alpha = circle.alpha < 0 ? 0 : circle.alpha;
+    };
+ 
+    // public API
+    return {
+        create: function (opt) {
+            opt = opt || {};
+            var state = {
+                canvas: opt.canvas,
+                ctx: opt.canvas.getContext('2d'),
+                lastTime: new Date(),
+                circles: []
+            };
+            genCircles(state);
+            return state;
+        },
+        update: function (state) {
+            var now = new Date(),
+            t = now - state.lastTime,
+            secs = t / 1000,
+            i = state.circles.length,
+            circle;
+            while (i--) {
+                circle = state.circles[i];
+ 
+                // forTick
+                forTicks[circle.forTickIndex](state, circle, secs);
+                circle.heading = mod(circle.heading, Math.PI * 2);
+ 
+                // step and wrap position
+                circle.x += Math.cos(circle.heading) * circle.pps * secs;
+                circle.y += Math.sin(circle.heading) * circle.pps * secs;
+                wrapCircle(state, circle);
+                setCircleAlpha(state, circle);
+ 
+                circle.forTickLife -= secs;
+                if (circle.forTickLife <= 0) {
+                    circle.forTickLife = 3;
+                    circle.forTickIndex = randomForTickIndex()
+                }
+            }
+            state.lastTime = now;
+        }
+    }
+ 
+}
+    ());
+```
+
+### 3.2 - The draw module for transparent circles
+
+```js
+var draw = (function () {
+ 
+    var gradient;
+    var api = {};
+ 
+    // set a gradient for the background
+    api.setGradient = function (state) {
+        var canvas = state.canvas;
+        gradient = state.ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#ff0000');
+        gradient.addColorStop(0.33, '#00ff00');
+        gradient.addColorStop(0.66, '#0000ff');
+        gradient.addColorStop(1, '#ffffff');
+    };
+ 
+    // draw background
+    api.back = function (state) {
+        var ctx = state.ctx,
+        canvas = state.canvas;
+        ctx.fillStyle = gradient || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+ 
+    // draw the circles
+    api.circles = function (state) {
+        var ctx = state.ctx,
+        canvas = state.canvas,
+        i = state.circles.length,
+        circle;
+        ctx.stokeStyle = 'black';
+        ctx.lineWidth = 3;
+        while (i--) {
+            circle = state.circles[i];
+            ctx.globalAlpha = circle.alpha;
+            ctx.fillStyle = circle.color;
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+    };
+ 
+    return api;
+ 
+}
+    ());
+```
+
+### 3.3 -
+
+```js
+var state = circles.create({
+        canvas: document.getElementById('the-canvas')
+    });
+draw.setGradient(state);
+var loop = function () {
+    requestAnimationFrame(loop);
+    draw.back(state);
+    draw.circles(state);
+    circles.update(state);
+};
+loop();
+```
+
+```html
+<html>
+    <head>
+        <title>canvas alpha</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="circles.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So there are some basics when it comes to working with canvas alpha transparency, there is much more to write about on this topic when it comes to other aspects of canvas relating to alpha channel transparency as well as transparency in general. For example there are the various values that can be assigned to the Global Composite Operation property that I have touched base on in my post on [canvas clip](/2019/10/08/canvas-clip/).
 
