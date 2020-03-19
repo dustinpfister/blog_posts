@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 631
-updated: 2020-03-19 11:52:43
-version: 1.7
+updated: 2020-03-19 11:55:22
+version: 1.8
 ---
 
 This node example post of mine will be on some javaScript code I put together for copying a directory. This might not be the best solution for all projects, but I am using some code to this effect in a project I am working on. There are many other options out there on the web, many of which are packed with features that I will not use, I do not want, or I think should be pulled into another library. However in some respects they might also be a bit more robust compared to what I have worked out here.
@@ -133,7 +133,7 @@ module.exports = (p) => {
 
 ## 2 - Copy dir
 
-Now to get into the actually copy directory library now that I have covered the other files that it depends on.
+Now to get into the actually copy directory library now that I have covered the other files that it depends on. This library exports just one method called copyDir that takes a source path to a folder that is to be copied, and then a target path that the contents are to be copies too.
 
 ```js
 let fs = require('fs'),
