@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2020-03-19 14:09:52
-version: 1.13
+updated: 2020-03-19 14:23:11
+version: 1.14
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) channel transparency can be achieved in a number of ways. There is the global alpha property of the 2d drawing context, and then there is also using the RGBA notation to set a web color for fill or stroke styles. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear rect method and having a background behind the canvas element when it comes to getting into layering. So lets look at some examples that have to do with canvas alpha transparency in html 5 canvas and javaScript.
@@ -79,7 +79,7 @@ This will of course only work with paths that are drawn with javaScript code, wh
 
 ## 3 - transparent circles canvas alpha example
 
-Now it is time to have some fun with global alpha and make a real canvas example that does something interesting. I went a little overboard with this one.
+Now it is time to have some fun with global alpha and make a real canvas example that does something interesting. I went a little overboard with this one, but it was worth it the canvas example looks pretty cool. It has a feature where each circle has an alpha property which is set by the distance from the center of the canvas. So as the collection of circles moves around the canvas the transparency will become opaque as they move closer to the center and  more transparent as they move away from it..
 
 ### 3.1 - The circles.js module
 
