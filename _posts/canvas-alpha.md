@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2020-03-19 14:06:04
-version: 1.12
+updated: 2020-03-19 14:09:52
+version: 1.13
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) channel transparency can be achieved in a number of ways. There is the global alpha property of the 2d drawing context, and then there is also using the RGBA notation to set a web color for fill or stroke styles. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear rect method and having a background behind the canvas element when it comes to getting into layering. So lets look at some examples that have to do with canvas alpha transparency in html 5 canvas and javaScript.
@@ -79,8 +79,11 @@ This will of course only work with paths that are drawn with javaScript code, wh
 
 ## 3 - transparent circles canvas alpha example
 
+Now it is time to have some fun with global alpha and make a real canvas example that does something interesting. I went a little overboard with this one.
 
 ### 3.1 - The circles.js module
+
+Here I have the circles.js file that I use to create a state object, as well as update that state object with the two public methods that it returns to the global variable that it appends to.
 
 ```js
 var circles = (function () {
@@ -221,6 +224,8 @@ var circles = (function () {
 
 ### 3.2 - The draw module for transparent circles
 
+I will need a way to draw the state of one of my circles.js files state objects.
+
 ```js
 var draw = (function () {
  
@@ -271,7 +276,9 @@ var draw = (function () {
     ());
 ```
 
-### 3.3 -
+### 3.3 - The main.js, and html files
+
+time now to tie everything together with a main.js file and a little HTML.
 
 ```js
 var state = circles.create({
