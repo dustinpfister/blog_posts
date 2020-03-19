@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 631
-updated: 2020-03-19 11:18:40
-version: 1.1
+updated: 2020-03-19 11:40:42
+version: 1.2
 ---
 
 This node example post of mine will be on some javaScript code I put together for copying a directory. This might not be the best solution for all projects, but I am using some code to this effect in a project I am working on. There are many other options out there on the web, many of which are packed with features that I will not use, I do not want, or I think should be pulled into another library. However in some respects they might also be a bit more robust compared to what I have worked out here.
@@ -14,6 +14,8 @@ This node example post of mine will be on some javaScript code I put together fo
 <!-- more -->
 
 ## 1 - Log, copy, and mkdirp
+
+before I get into the lib that is used to copy a directory I first want to go over the other files I have worked out for this node example. One of which is a way to define what logging is in place of using console.log, another is a lib that is used to copy just one file, and another is a rendition of mkdirp. All of these files will be used in the copy directory library that I will be going over in the next section.
 
 ```js
 let colors = {
@@ -116,6 +118,8 @@ module.exports = (p) => {
 ```
 
 ## 2 - Copy dir
+
+Now to get into the actually copy directory library now that I have covered the other files that it depends on.
 
 ```js
 let fs = require('fs'),
