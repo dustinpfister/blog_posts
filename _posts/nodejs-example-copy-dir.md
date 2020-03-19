@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 631
-updated: 2020-03-19 11:44:55
-version: 1.4
+updated: 2020-03-19 11:50:33
+version: 1.5
 ---
 
 This node example post of mine will be on some javaScript code I put together for copying a directory. This might not be the best solution for all projects, but I am using some code to this effect in a project I am working on. There are many other options out there on the web, many of which are packed with features that I will not use, I do not want, or I think should be pulled into another library. However in some respects they might also be a bit more robust compared to what I have worked out here.
@@ -16,6 +16,10 @@ This node example post of mine will be on some javaScript code I put together fo
 ## 1 - Log, copy, and mkdirp
 
 before I get into the lib that is used to copy a directory I first want to go over the other files I have worked out for this node example. One of which is a way to define what logging is in place of using console.log, another is a lib that is used to copy just one file, and another is a rendition of mkdirp. All of these files will be used in the copy directory library that I will be going over in the next section.
+
+### 1.1 - The log.js module
+
+For this project I worked out a module that I am using for project wide logging. This allows for me to have better control over what is logged to the console. For example I can just comment out the code inside of the inner function, and that will make it so there is no logging at all for all modules. Another thing I can do is redefine what logging is, by using console.log rather than process.stdout.write, or logg to a file instead.
 
 ```js
 let colors = {
@@ -44,6 +48,10 @@ module.exports = (opt) => {
 };
 ```
 
+I know this is a little off topic, but it was something else I was doing for this project, as this is something I find myself coming back to now and then.
+
+### 1.2 - The copy module
+
 ```js
 let fs = require('fs'),
 path = require('path'),
@@ -71,6 +79,8 @@ let copy = function (source, target) {
  
 exports.copy = copy;
 ```
+
+### 1.3 - mkdirp
 
 ```js
 let fs = require('fs'),
