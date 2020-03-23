@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-02-02 15:08:03
-version: 1.12
+updated: 2020-03-23 09:29:34
+version: 1.13
 ---
 
-For todays [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
+For todays [canvas example](/2020/03/23/canvas-example/) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
 
 <!-- more -->
 
