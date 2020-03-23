@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 11:37:03
-version: 1.14
+updated: 2020-03-23 11:41:55
+version: 1.15
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -73,3 +73,7 @@ This is [one project example](/2019/12/11/)canvas-example-image-limits/) I find 
 ## 15 - Map scrolling
 
 In this [canvas example](/2020/01/08/canvas-example-map-scrolling/) I worked out a basic example of getting scrolling working with a large grid.
+
+## 16 - binary particles
+
+The idea just came into my head one day to make some kind of fun and interesting [canvas example that involves two types of circles](/2020/03/18/canvas-example-particles-binary/). When two of two different types combine into one, then it results in an explosion. The result is a somewhat interesting visual effect.
