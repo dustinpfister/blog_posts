@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 11:41:55
-version: 1.15
+updated: 2020-03-23 11:49:09
+version: 1.16
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -77,3 +77,31 @@ In this [canvas example](/2020/01/08/canvas-example-map-scrolling/) I worked out
 ## 16 - binary particles
 
 The idea just came into my head one day to make some kind of fun and interesting [canvas example that involves two types of circles](/2020/03/18/canvas-example-particles-binary/). When two of two different types combine into one, then it results in an explosion. The result is a somewhat interesting visual effect.
+
+## 17 - Pointer manager
+
+[Canvas Example](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
+
+## 18 - Pointer movement
+
+[Canvas Example](/2020/01/26/canvas-example-pointer-movement/)
+
+## 19 - pop the lock game clone
+
+[Canvas Example](/2019/11/26/canvas-example-pop-the-lock/)
+
+## 20 - space shooter
+
+[Canvas Example](/2019/08/21/canvas-example-space-shooter/)
+
+## 21 - Stars
+
+[Canvas Example](/2020/02/12/canvas-example-star/)
+
+## 22 - State machines
+
+[Canvas Example](/2020/01/28/canvas-example-state-machine/)
+
+## 23 - Turret defense
+
+[Canvas Example](/2020/01/10/canvas-example-turret-defense)
