@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-02-18 20:47:53
-version: 1.18
+updated: 2020-03-23 09:29:27
+version: 1.19
 ---
 
-This will be a post on a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
+This will be a post on a [canvas example](/2020/03/23/canvas-example/) that is a very basic breakout clone. Even a basic example of this game might prove to be a little involves for new developers especially if you are starting from the ground up, and not using a framework. I will try to keep things as striped down as possible for this post, but it will still be a little involved with several javaScript files, and many methods of interest covering many topics that come up when making a game like this.
 
 <!-- more -->
 
