@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 10:07:10
-version: 1.11
+updated: 2020-03-23 11:09:45
+version: 1.12
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -53,3 +53,7 @@ This is a canvas example that aims to be a [novel spin on flappy bird](/2020/01/
 ## 10 - Flappy collector idle a flappy bird clone
 
 This is just a [flappy bid clone](/2020/01/16/canvas-example-flappy-collector/) of sorts.
+
+## 11 - Map idle game prototype example
+
+There is yet another [example of an idle type game](/2020/01/13/canvas-example-game-map-idle/) that involves a gird that has assets at each location that generate money.
