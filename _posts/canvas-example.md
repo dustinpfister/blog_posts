@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 11:54:34
-version: 1.17
+updated: 2020-03-23 11:56:51
+version: 1.18
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -88,15 +88,15 @@ Here is a [Canvas Example](/2020/01/26/canvas-example-pointer-movement/) that is
 
 ## 19 - pop the lock game clone
 
-[Canvas Example](/2019/11/26/canvas-example-pop-the-lock/)
+A [Canvas Example](/2019/11/26/canvas-example-pop-the-lock/) that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example.
 
 ## 20 - space shooter
 
-[Canvas Example](/2019/08/21/canvas-example-space-shooter/)
+A [Canvas Example](/2019/08/21/canvas-example-space-shooter/) of a space shooter type game.
 
 ## 21 - Stars
 
-[Canvas Example](/2020/02/12/canvas-example-star/)
+I use to have a thing about drawing stars in all kinds of different ways so of course I have a [Canvas Example](/2020/02/12/canvas-example-star/) on that.
 
 ## 22 - State machines
 
