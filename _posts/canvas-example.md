@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 09:26:48
-version: 1.8
+updated: 2020-03-23 09:34:22
+version: 1.9
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -37,3 +37,7 @@ One thing that comes up often with canvas projects is how to go about adding but
 ## 6 - A basic clock canvas example
 
 Making [a clock with canvas](/2019/12/13/canvas-example-clock-basic/) can be fun. I find them simple to make, and there is so much that can be done that is centered around time.
+
+## 7 - Making a breakout clone
+
+I thought it would be a good idea to start yet another [breakout clone](/2020/02/13/). This is one of many ideas of a kind of project that has been all ready done to death, but there still may be a great deal of potential for adding a unique spin to it.
