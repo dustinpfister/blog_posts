@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 11:29:58
-version: 1.13
+updated: 2020-03-23 11:37:03
+version: 1.14
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -65,3 +65,11 @@ A [gird defense style game](/2019/11/27/canvas-example-grid-defence/) prototype.
 ## 13 - Canvas Grid module
 
 A [grid module for canvas projects](/2019/11/07/canvas-example-grid/).
+
+## 14 - The limits of 2d images
+
+This is [one project example](/2019/12/11/)canvas-example-image-limits/) I find myself coming back to now and then. It has to do with the limits of 2d images given a a set width, height, and color depth.
+
+## 15 - Map scrolling
+
+In this [canvas example](/2020/01/08/canvas-example-map-scrolling/) I worked out a basic example of getting scrolling working with a large grid.
