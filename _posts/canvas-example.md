@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 09:02:54
-version: 1.3
+updated: 2020-03-23 09:07:46
+version: 1.4
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -21,3 +21,7 @@ In my [animations basics canvas example](/2019/10/10/canvas-example-animation-ba
 ## 2 - Animation and fractals
 
 I have some interest in fractals, and thus far I have this [one post that I have worked out where I am making a basic fractal](/2020/02/19/canvas-example-animation-fractal/) and displaying a fractal like animation with canvas elements.
+
+## 3 - A simple ball bound canvas example
+
+In this [example I have just a simple bounding ball](/2020/01/14/canvas-example-ball-bounce/), a typical example that just about any javaScript developer will end up getting to at some point or another. getting to working on this kind of example is a good way to become familiar with certain things that are common with many javaScript projects such as collision detection, and how to go about setting or change the angles or directions of things when they hit a surface.
