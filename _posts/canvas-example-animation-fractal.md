@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-04 06:39:14
-version: 1.17
+updated: 2020-03-23 09:10:40
+version: 1.18
 ---
 
-I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, but also just simply as a fun and interesting way to apply what I all ready know.
+I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, and just make more [canvas examples](/2020/03/23/canvas-example/) to play around with, but also just simply as a fun and interesting way to apply what I all ready know.
 
 The basic idea of a fractal as I see it is that I am dealing with some kind of image pattern that repeats as I continue to zoom in. That might be a pretty crude definition that does not do the subject justice, but more often then not it would appear that is what a fractal is. So a very simple canvas fractal example could just be an animation of some squares getting bigger from a single starting point, and then looping back to that point once they get big enough.
 
