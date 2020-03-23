@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-03-23 09:29:34
-version: 1.12
+updated: 2020-03-23 12:16:14
+version: 1.13
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of drawing a star. There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
@@ -14,6 +14,8 @@ Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I t
 <!-- more -->
 
 ## 1 - A basic canvas star example using a module and external draw methods.
+
+So here is a canvas example that will draw stars to a canvas element. In makes use of a module that is used to create an array of points, and then another module that is used to draw those points to the canvas.
 
 ### 1.1 - The module to make a canvas star
 
