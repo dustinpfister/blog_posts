@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 11:58:55
-version: 1.19
+updated: 2020-03-23 12:16:15
+version: 1.20
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -48,11 +48,11 @@ There are many games that have came and went ever the years that can be describe
 
 ## 9 - Flappy collector idle
 
-This is a canvas example that aims to be a [novel spin on flappy bird](/2020/01/21/canvas-example-flappy-collector-idle/). Although it might be best to come up with a truly original idea for a canvas project, some times it is more realistic to take something that has been done before and try to find something new to do with it.
+This is a canvas example that aims to be a [novel spin on flappy bird](/2020/01/21/canvas-example-game-flappy-collector-idle/). Although it might be best to come up with a truly original idea for a canvas project, some times it is more realistic to take something that has been done before and try to find something new to do with it.
 
 ## 10 - Flappy collector idle a flappy bird clone
 
-This is just a [flappy bid clone](/2020/01/16/canvas-example-flappy-collector/) of sorts.
+This is just a [flappy bid clone](/2020/01/16/canvas-example-game-flappy-collector/) of sorts.
 
 ## 11 - Map idle game prototype example
 
@@ -60,7 +60,7 @@ There is yet another [example of an idle type game](/2020/01/13/canvas-example-g
 
 ## 12 - Gird defense
 
-A [gird defense style game](/2019/11/27/canvas-example-grid-defence/) prototype. 
+A [gird defense style game](/2019/11/27/canvas-example-grid-defense/) prototype. 
 
 ## 13 - Canvas Grid module
 
@@ -68,7 +68,7 @@ A [grid module for canvas projects](/2019/11/07/canvas-example-grid/).
 
 ## 14 - The limits of 2d images
 
-This is [one project example](/2019/12/11/)canvas-example-image-limits/) I find myself coming back to now and then. It has to do with the limits of 2d images given a a set width, height, and color depth.
+This is [one project example](/2019/12/11/canvas-example-image-limits/) I find myself coming back to now and then. It has to do with the limits of 2d images given a a set width, height, and color depth.
 
 ## 15 - Map scrolling
 
