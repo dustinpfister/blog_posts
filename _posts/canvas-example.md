@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 11:56:51
-version: 1.18
+updated: 2020-03-23 11:58:55
+version: 1.19
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -100,8 +100,8 @@ I use to have a thing about drawing stars in all kinds of different ways so of c
 
 ## 22 - State machines
 
-[Canvas Example](/2020/01/28/canvas-example-state-machine/)
+State machines are an important component for many javaScript projects so of course I have a [Canvas Example](/2020/01/28/canvas-example-state-machine/) on state machine in general.
 
 ## 23 - Turret defense
 
-[Canvas Example](/2020/01/10/canvas-example-turret-defense)
+Turret defense games are sometimes nice so I have a [Canvas Example](/2020/01/10/canvas-example-turret-defense) on that in general.
