@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-03-18 19:31:34
-version: 1.16
+updated: 2020-03-23 10:00:54
+version: 1.17
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
 
-So the binary liquid bomb thing in die hard inspired me to make a [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that consists a bunch of particles moving around the canvas. Each particle is of one type or another, they can overlap if they are the same type, but if two of two different types combine they will result in another particle type that will result in an explosion.
+So the binary liquid bomb thing in die hard inspired me to make a [canvas example](/2020/03/23/canvas-example/) that consists a bunch of particles moving around the canvas. Each particle is of one type or another, they can overlap if they are the same type, but if two of two different types combine they will result in another particle type that will result in an explosion.
 
 <!-- more -->
 
