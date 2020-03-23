@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 10:00:55
-version: 1.10
+updated: 2020-03-23 10:07:10
+version: 1.11
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -45,3 +45,11 @@ I thought it would be a good idea to start yet another [breakout clone](/2020/02
 ## 8 - A cannon shoot game canvas example
 
 There are many games that have came and went ever the years that can be described as a kind of [cannon shoot](/2020/02/17/canvas-example-game-cannon-shoot/) type game.
+
+## 9 - Flappy collector idle
+
+This is a canvas example that aims to be a [novel spin on flappy bird](/2020/01/21/canvas-example-flappy-collector-idle/). Although it might be best to come up with a truly original idea for a canvas project, some times it is more realistic to take something that has been done before and try to find something new to do with it.
+
+## 10 - Flappy collector idle a flappy bird clone
+
+This is just a [flappy bid clone](/2020/01/16/canvas-example-flappy-collector/) of sorts.
