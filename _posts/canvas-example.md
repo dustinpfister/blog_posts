@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-03-23 11:49:09
-version: 1.16
+updated: 2020-03-23 11:54:34
+version: 1.17
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -80,11 +80,11 @@ The idea just came into my head one day to make some kind of fun and interesting
 
 ## 17 - Pointer manager
 
-[Canvas Example](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
+I think that it is generally a good idea to make a canvas project to work with pointers in general rather than making a project to desktop or mobile centric. So I made a quick [Canvas Example](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/) that is a way to manage pointer input from both mouse and touch events. 
 
 ## 18 - Pointer movement
 
-[Canvas Example](/2020/01/26/canvas-example-pointer-movement/)
+Here is a [Canvas Example](/2020/01/26/canvas-example-pointer-movement/) that is a User interface design for moving a map, or anything for that matter by way of touch or click events by way of a pointer start point and distance to a current point.
 
 ## 19 - pop the lock game clone
 
