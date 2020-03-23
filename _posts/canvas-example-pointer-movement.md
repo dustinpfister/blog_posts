@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-01-27 06:04:40
-version: 1.22
+updated: 2020-03-23 09:29:32
+version: 1.23
 ---
 
-In this [canvas example](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
+In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
 
 I will not be going over how to create a grid or map like state, I have wrote many posts on those subjects earlier. Instead I will just be writing about a module that I put together that just has to do with maintaining the state of an object that would be used to update a map position.
 
