@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-03-10 07:50:34
-version: 1.13
+updated: 2020-03-23 09:29:31
+version: 1.14
 ---
 
-Time now for another one of my [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), this time I think I will make a basic example of a scrolling map of tiles or cells if you prefer. This is something that will come into play for many projects that are some kind of game that involves a world map of cells. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
+Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells if you prefer. This is something that will come into play for many projects that are some kind of game that involves a world map of cells. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
 
 This will be a not so basic, basic getting started canvas example of a canvas map, and moving around such a map. So it might not be the best solution for large maps, as I have not put a lot of time into this to improve performance. It is not to hard to at least be aware of a concern of sorts though as the size of a map grows. The larger the map, the more cells there are, and as such the more there is to loop over when it comes to updating state and rendering.
 
