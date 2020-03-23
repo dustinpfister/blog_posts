@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 632
-updated: 2020-03-23 08:15:32
-version: 1.2
+updated: 2020-03-23 08:28:05
+version: 1.3
 ---
 
 I have a lot of ideas for game related projects, many of which will never see the light of day. However a great deal of them share certain things in common. One of which is a world map that exists as some kind of gird.
@@ -16,6 +16,10 @@ I have a lot of ideas for game related projects, many of which will never see th
 ## 1 - The gen_map.js module node example
 
 So I will want a nodejs module that will be used to build the game world in terms of the state in the form of objects, rather than files. It might be best to separate logic that generates a state from logic that writes the state to a file system in some form, because depending on the project I might want to store the state in all kinds of different ways, or I might not want to even store the state of the game world at all.
+
+### 1.1 - The gen map module
+
+So I broke the module down into two methods one of which is to create a map section, and another that is for generating the whole world map.
 
 ```js
 let genMapSection = exports.genMapSection = (opt) => {
@@ -84,6 +88,8 @@ let genWorldMap = exports.genWorldMap = (opt) => {
 
 ### 1.2 - Static map
 
+Here is a static map use case example. By static map I mean that each map section has a fixed or static width and height.
+
 ```js
 let genMap = require('./lib/gen_map.js');
  
@@ -117,6 +123,8 @@ console.log(JSON.stringify(world));
 ```
 
 ### 1.3 - variable map
+
+Here is a variable map example where the section with and height of each map is set by way of a method rather than static values.
 
 ```js
 let genMap = require('./lib/gen_map.js');
