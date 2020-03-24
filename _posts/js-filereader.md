@@ -5,10 +5,47 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2020-03-24 16:37:14
-version: 1.0
+updated: 2020-03-24 16:39:07
+version: 1.1
 ---
 
 Typically when dealing with files in javaScript it is dealing with a file that is stored on a server. However with some projects I might want to read a file on a users local file system. Of course I can not just do so for what should be obvious security reasons, however there is a way of doing so that involves allowing the user to select a file that they do not mind giving access to.
 
 <!-- more -->
+
+## 1 - basic js file reader example
+
+```html
+<input type = "file" id = "input_files">
+<div id = "out"></div>
+<script>
+ 
+var loadJSON = function (text) {
+    try {
+        var obj = JSON.parse(text);
+        obj.message = 'loaded file';
+        return obj;
+    } catch (e) {
+        return {
+            x: 0,
+            y: 0,
+            message: e.message
+        };
+    }
+};
+ 
+var el_files = document.getElementById('input_files');
+el_out = document.getElementById('out'),
+el_files.addEventListener('change', function (e) {
+    var files = this.files;
+    console.log(files);
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        var obj = loadJSON(e.target.result);
+        //console.log(obj);
+        out.innerText = 'state: ' + obj.x + ',' + obj.y + ' : ' + obj.message
+    };
+    reader.readAsText(files[0]);
+});
+</script>
+```
