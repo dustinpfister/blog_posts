@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 635
-updated: 2020-03-25 16:10:10
-version: 1.5
+updated: 2020-03-25 16:12:38
+version: 1.6
 ---
 
 I have come to like the [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian), and my [raspberry pi 3B+](https://en.wikipedia.org/wiki/Raspberry_Pi). When it comes to looking for a new computer less is more for me these days as I have found that everything that I really want and need to do with a computer does not require a whole lot of overhead. In addition I would like to start writing at least a little more content on Linux, so todays post will be on getting started with Raspbian Linux lite.
@@ -76,3 +76,7 @@ Raspbian lite comes with apt-get, but I like to use aptitude as a terminal based
 ```
 $ sudo apt-get install aptitude
 ```
+
+## 6 - Conclusion
+
+So this post was meant to be just a getting start post of sorts with Raspbian lite OS and a raspberry pi. There is much more to do from this point forward, but most of it is just getting into things that I might not always do depending on the setup I want to do.
