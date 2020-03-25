@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 635
-updated: 2020-03-25 16:40:07
-version: 1.9
+updated: 2020-03-25 17:03:06
+version: 1.10
 ---
 
 I have come to like the [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian), and my [raspberry pi 3B+](https://en.wikipedia.org/wiki/Raspberry_Pi). When it comes to looking for a new computer less is more for me these days as I have found that everything that I really want and need to do with a computer does not require a whole lot of overhead. In addition I would like to start writing at least a little more content on Linux, so todays post will be on getting started with Raspbian Linux lite.
@@ -112,6 +112,14 @@ As I am using aptitude there will come a time now and then where I will want to 
 
 ```
 $ sudo aptitude keep-all
+```
+
+### 6.2 - Exact-name search pattern
+
+When I am in the command line based front end of aptitude I often use do a search by pressing the forward slash \/ key. However some times I would like to search for just a package like git rather than any and all packages that contain the text pattern git. With that said the good news is that there is a way to [use patterns for better searching in aptitude](https://www.debian.org/doc/manuals/aptitude/ch02s04s05.en.html).
+
+```
+?exact-name(git)
 ```
 
 ## 7 - Conclusion
