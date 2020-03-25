@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 635
-updated: 2020-03-25 16:12:38
-version: 1.6
+updated: 2020-03-25 16:24:15
+version: 1.7
 ---
 
 I have come to like the [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian), and my [raspberry pi 3B+](https://en.wikipedia.org/wiki/Raspberry_Pi). When it comes to looking for a new computer less is more for me these days as I have found that everything that I really want and need to do with a computer does not require a whole lot of overhead. In addition I would like to start writing at least a little more content on Linux, so todays post will be on getting started with Raspbian Linux lite.
@@ -69,7 +69,27 @@ I come across all kinds of people that restart something like to router or somet
 $ shutdown -r now
 ```
 
-## 5 - Install aptitude
+## 5 - Change password for pi user account and create a new sudoer account
+
+One of the first things I will want to change for any setup that I might use for a while is to change the password for the default pi account to something other than the default that everyone on the Internet knows.
+
+```
+$ passwd
+```
+
+While I am at it I might want to create one or more additional accounts that also have the same level of permissions as the pi account when it comes to being a sudoer.
+
+```
+$ sudo adduser dustin sudo
+```
+
+If I make a mistake I can delete an account like so.
+
+```
+$ sudo userdel -r dustin
+```
+
+## 6 - Install aptitude
 
 Raspbian lite comes with apt-get, but I like to use aptitude as a terminal based package manager. It allows for me to explore packages with a terminal interface, but if you like just using apt-get then there is no need for this.
 
@@ -77,6 +97,6 @@ Raspbian lite comes with apt-get, but I like to use aptitude as a terminal based
 $ sudo apt-get install aptitude
 ```
 
-## 6 - Conclusion
+## 7 - Conclusion
 
 So this post was meant to be just a getting start post of sorts with Raspbian lite OS and a raspberry pi. There is much more to do from this point forward, but most of it is just getting into things that I might not always do depending on the setup I want to do.
