@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2020-03-25 11:58:37
-version: 1.4
+updated: 2020-03-25 12:02:07
+version: 1.5
 ---
 
 Typically when dealing with files in javaScript it is dealing with a file that is stored on a server. However with some projects I might want to [read a file on a users local file system](https://www.html5rocks.com/en/tutorials/file/dndfiles/). Of course I can not just do so for what should be obvious security reasons, however there is a way of doing so that involves allowing the user to select a file that they do not mind giving access to.
@@ -17,7 +17,7 @@ It will involve the use of the [FileReader constructor](https://developer.mozill
 
 ## 1 - basic js file reader example
 
-So for now in this section I will be making a very basic use case example of the FileReader constructor that will just load a json file, and display the values in a div element.
+So for now in this section I will be making a very basic use case example of the FileReader constructor that will just load a json file, and display the values in a div element. To do so in my html I will want an input tag with the typ attribute set to file, as well as a div element that will be used to display data once it is loaded. I will want to add a on change event to the files input tag in which I will be using the FileReader constructor.
 
 ```html
 <input type = "file" id = "input_files">
