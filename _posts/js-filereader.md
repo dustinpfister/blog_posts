@@ -5,11 +5,13 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2020-03-25 11:55:58
-version: 1.3
+updated: 2020-03-25 11:58:37
+version: 1.4
 ---
 
 Typically when dealing with files in javaScript it is dealing with a file that is stored on a server. However with some projects I might want to [read a file on a users local file system](https://www.html5rocks.com/en/tutorials/file/dndfiles/). Of course I can not just do so for what should be obvious security reasons, however there is a way of doing so that involves allowing the user to select a file that they do not mind giving access to.
+
+It will involve the use of the [FileReader constructor](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) in conjunction with [file objects](https://developer.mozilla.org/en-US/docs/Web/API/File) and a [file list input tag](https://developer.mozilla.org/en-US/docs/Web/API/FileList).
 
 <!-- more -->
 
