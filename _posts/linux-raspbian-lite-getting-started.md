@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 635
-updated: 2020-03-25 15:56:29
-version: 1.3
+updated: 2020-03-25 16:07:11
+version: 1.4
 ---
 
 I have come to like the [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian), and my [raspberry pi 3B+](https://en.wikipedia.org/wiki/Raspberry_Pi). When it comes to looking for a new computer less is more for me these days as I have found that everything that I really want and need to do with a computer does not require a whole lot of overhead. In addition I would like to start writing at least a little more content on Linux, so todays post will be on getting started with Raspbian Linux lite.
@@ -49,4 +49,22 @@ login: pi
 password: raspberry
 ```
 
-once I log in I should end up at a bash prompt, and I can start to get going with further configurations, and start to install software.
+once I log in I should end up at a bash prompt, and I can start to get going with further configurations, and start to install software. From now on I will be going over some things that are typical for me, but will not be getting into install a desktop, or anything to that effect.
+
+## 3 - Set keyboard layout to US
+
+If you live in the UK and type in UK English chances are you can skip this section. However I live in the US and would like to type using my US English layout keyboard so one of the first things I do is this.
+
+```
+$ sudo dpkg-reconfigure keyboard-configuration
+```
+
+After doing so there will be terminal based menus that I just need to go threw to set up my keyboard to work the way that it should. In order for these things to tack effect I will need to restart though.
+
+## 4 - Preforming a graceful restart from the command line
+
+I come across all kinds of people that restart something like to router or something to that effect by just unplugging the thing, and then plug it back in. I am of the mind set that doing that should only be a last resort if you can not find a way to do so gracefully. One of the first commands to become familiar with should be the shutdown command. By default calling the shutdown command and passing now as the first option will shut down the pi, but the r option can be used to preform a restart like so.
+
+```
+$ shutdown -r now
+```
