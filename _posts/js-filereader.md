@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2020-03-25 13:15:45
-version: 1.8
+updated: 2020-03-25 13:19:13
+version: 1.9
 ---
 
 Typically when dealing with files in javaScript it is dealing with a file that is stored on a server. However with some projects I might want to [read a file on a users local file system](https://www.html5rocks.com/en/tutorials/file/dndfiles/). Of course I can not just do so for what should be obvious security reasons, however there is a way of doing so that involves allowing the user to select a file that they do not mind giving access to.
@@ -20,6 +20,8 @@ It will involve the use of the [FileReader constructor](https://developer.mozill
 So for now in this section I will be making a very basic use case example of the FileReader constructor that will just load a json file, and display the values in a div element. The JSON file will just be some very basic object that just contains a few number primitives. In a read project this might be some kind of game state file that will be far more complex, or exist as some kind of binary format outside that of JSON. However for just a basic example this should work just file.
 
 ### 1.1 - The json
+
+So I will want a json file stored anywhere on the local client system. For this example the contents of the json file will look something like this.
 
 ```js
 {
@@ -68,3 +70,5 @@ el_files.addEventListener('change', function (e) {
 });
 </script>
 ```
+
+When I have this example opened up in my browser I am able to open the json file and have the values displayed in the browser window as expected. Although this might not be anything that interesting the basic idea is there. I am able to open a file store in the local file system and then use that file in a very basic example of the file reader constructor. In a real example this json file could contain all kinds of state information that would be some kind of save state, and users could easily hack the values to cheat in the game of they wanted to.
