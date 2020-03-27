@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-03-27 15:47:11
-version: 1.2
+updated: 2020-03-27 15:51:54
+version: 1.3
 ---
 
 When working with a canvas there are ways to quickly paint a gradient to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves braking the canvas down into a grid, and then having a bunch of objects that are used to set color channel values for each grid cell resulting in a cool color gradient effect.
@@ -185,6 +185,127 @@ var gradient = (function () {
 
 }
     ());
+```
+
+### 2.1 - The init rand plugin
+
+```js
+gradient.load({
+ 
+    initMethods: {
+        randomPos: function (obj, grad) {
+            obj.x = grad.gridWidth * Math.random();
+            obj.y = grad.gridHeight * Math.random();
+        },
+        randomColor: function (obj, grad, i) {
+            var r = Math.random(),
+            g = Math.random(),
+            b = Math.random(),
+            a = Math.random();
+            obj.power = [r, g, b, a];
+        },
+        randomHeading: function (obj, grad, i) {
+            var r = Math.PI * 2 * Math.random();
+            obj.heading = r;
+        },
+        randomSpeed: function (obj, grad, i) {
+            obj.cps = grad.MIN_CPS + (Math.random() * (grad.MAX_CPS - grad.MIN_CPS));
+        },
+        randomRadius: function (obj, grad, i) {
+            obj.radius = grad.MIN_RADIUS + (Math.random() * (grad.MAX_RADIUS - grad.MIN_RADIUS));
+        },
+        // random
+        random: function (obj, grad, i) {
+            grad.initMethods.randomPos(obj, grad, i);
+            grad.initMethods.randomColor(obj, grad, i);
+            grad.initMethods.randomHeading(obj, grad, i);
+            grad.initMethods.randomSpeed(obj, grad, i);
+            grad.initMethods.randomRadius(obj, grad, i);
+        }
+    }
+ 
+});
+```
+
+### 2.2 - The init RGB plugin
+
+```js
+gradient.load({
+ 
+    initMethods: {
+        updatersStager: function (obj, grad, i) {
+            obj.objUpdaterIndex = u.mod(i, grad.objUpdaters.length);
+        },
+        rgb: function (obj, grad, i) {
+            // cycle r,g,b color power
+            var rand = Math.random() * 0.75 + 0.25,
+            r = rand,
+            g = 0,
+            b = 0;
+            if (u.mod(i, 2) === 0) {
+                r = 0;
+                g = 0;
+                b = rand;
+            }
+            if (u.mod(i, 3) === 0) {
+                r = 0;
+                g = rand;
+                b = 0;
+            }
+            obj.power = [r, g, b, 1];
+        }
+    }
+ 
+});
+```
+
+### 2.3 - radius_change, heading_change, and fixed_pos object update methods.
+
+```js
+gradient.load({
+    objUpdaters: [
+        // radius changes, slow speed
+        function (grid, obj, secs) {
+            //obj.power = [1, 0, 0];
+            if (obj.radius === 3 || obj.radius === 10) {
+                var roll = Math.floor(Math.random() * 50) + 1;
+                if (roll === 1) {
+                    obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
+                }
+            }
+            obj.radius += 1 * secs * obj.radiusDir;
+            obj.radius = obj.radius < 3 ? 3 : obj.radius;
+            obj.radius = obj.radius > 10 ? 10 : obj.radius;
+            obj.cps = 3;
+        }
+    ]
+});
+```
+
+```js
+gradient.load({
+    objUpdaters: [
+        // heading changes, fast speed
+        function (grid, obj, secs) {
+            //obj.power = [0, 0, 1];
+            obj.heading += Math.PI / 180 * 5 * secs;
+            obj.heading = u.mod(obj.heading, Math.PI * 2);
+            obj.cps = 15;
+        }
+    ]
+});
+```
+
+```js
+gradient.load({
+    objUpdaters: [
+        // fixed position
+        function (grid, obj, secs) {
+            //obj.power = [0, 1, 0];
+            obj.cps = 0;
+        }
+    ]
+});
 ```
 
 ## 3 - Draw
