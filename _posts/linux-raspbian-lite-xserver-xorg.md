@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2020-03-28 13:06:23
-version: 1.4
+updated: 2020-03-28 18:17:28
+version: 1.5
 ---
 
 When setting up a [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian) lite install I might just want to set up a server, or do somthing from the command line only. However often I might want at least some kind of desktop environment. So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
@@ -20,7 +20,7 @@ the first step is to start with a clean Raspbian lite image to run on the raspbe
 
 ## 2 - install xserver-xorg
 
-The first package I would start with is xserver-xorg
+The first package I would start with is xserver-xorg, This will just install the xserver itself, and not a whole bunch of other stuff that I might not use which would be the case if I where to install the xorg package.
 
 ```
 $ sudo apt-get install xserver-xorg
