@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2020-03-28 18:17:28
-version: 1.5
+updated: 2020-03-29 12:16:38
+version: 1.6
 ---
 
 When setting up a [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian) lite install I might just want to set up a server, or do somthing from the command line only. However often I might want at least some kind of desktop environment. So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
@@ -28,21 +28,26 @@ $ sudo apt-get install xserver-xorg
 
 ## 3 - install xinit
 
+I will want to install the xinit package so that I can start the xserver. This package will give me commands like startx, and xinit.
+
 ```
 $ sudo apt-get install xinit
 ```
 
-## 4 - install blackbox, and xterm
+## 4 - install x11-xserver-utils
+
+```
+$ sudo apt-get install x11-xserver-utils
+```
+
+
+## 5 - install blackbox, and xterm
+
+Now to install a desktop environment, in this post I will be going over blackbox, but if you want to use a different desktop the setup, and additional packages to install might be different.
 
 ```
 $ sudo apt-get install blackbox
 $ sudo apt-get install xterm
-```
-
-## 5 - install x11-xserver-utils
-
-```
-$ sudo apt-get install x11-xserver-utils
 ```
 
 ## 6 - blackbox setup
