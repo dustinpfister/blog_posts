@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2020-03-29 12:16:38
-version: 1.6
+updated: 2020-03-30 11:21:57
+version: 1.7
 ---
 
 When setting up a [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian) lite install I might just want to set up a server, or do somthing from the command line only. However often I might want at least some kind of desktop environment. So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
@@ -41,7 +41,7 @@ $ sudo apt-get install x11-xserver-utils
 ```
 
 
-## 5 - install blackbox, and xterm
+## 6 - install blackbox, and xterm
 
 Now to install a desktop environment, in this post I will be going over blackbox, but if you want to use a different desktop the setup, and additional packages to install might be different.
 
@@ -50,12 +50,13 @@ $ sudo apt-get install blackbox
 $ sudo apt-get install xterm
 ```
 
-## 6 - blackbox setup
+## 6.1 - blackbox setup
 
-## 7 - Other starting apps I might go with at this point
 
-### 7.1 - leafpad as a basic text editor
+## 6.2 - lightDM
 
-### 7.2 - thunar as a file manager
+If I want to rRaspbian to boot right into a display manager, and then from there start blackbox. Or If I want to install more than one desktop environment, I will want to install a display manager. One solution for this world be [lightDm](https://wiki.debian.org/LightDM). There are other options when it comes to display managers, and there is of course just using startx and xinit to start and desktop from the command line once I am logged in. So this like many things when starting with a Raspbian lite install is totally optional.
 
-### 7.3 - Chromium as a web browser
+```
+$ sudo apt-get install lightdm
+```
