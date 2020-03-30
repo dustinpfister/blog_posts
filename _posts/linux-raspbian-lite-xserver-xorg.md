@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2020-03-30 11:21:57
-version: 1.7
+updated: 2020-03-30 19:25:56
+version: 1.8
 ---
 
 When setting up a [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian) lite install I might just want to set up a server, or do somthing from the command line only. However often I might want at least some kind of desktop environment. So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
@@ -50,7 +50,13 @@ $ sudo apt-get install blackbox
 $ sudo apt-get install xterm
 ```
 
-## 6.1 - blackbox setup
+## 6.1 - blackbox first start
+
+Once blackbox is installed I can then start it by just calling startx.
+
+```
+$ startx
+```
 
 
 ## 6.2 - lightDM
