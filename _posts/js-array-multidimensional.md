@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2020-04-01 08:15:05
-version: 1.2
+updated: 2020-04-01 08:17:52
+version: 1.3
 ---
 
 In JavaScript Multidimensional arrays can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get a proper index value.
@@ -15,8 +15,11 @@ Multidimensional arrays will come up often when it comes to any kind of project 
 
 <!-- more -->
 
-
 ## 1 - Using Arrays of arrays
+
+The most common way of making a multidimensional array in javaScript might be to just have arrays of arrays. That is having a single array, and then have each element in that array be an array. That alone would be a 2d array of arrays at which point making each element in each nested array an array would add yet another dimension, and so on.
+
+In this section I will be going over just some simple examples of making 2d arrays of arrays this way.
 
 ### 1.1 - Using literal array bracket syntax to create a static array of arrays
 
