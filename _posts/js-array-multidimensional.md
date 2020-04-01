@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2020-04-01 08:26:16
-version: 1.5
+updated: 2020-04-01 08:28:19
+version: 1.6
 ---
 
 In JavaScript Multidimensional arrays can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get a proper index value.
@@ -91,7 +91,11 @@ console.log(cell); // 'e'
 
 ## 2 - Using just one linear array
 
+Although arrays of arrays work okay, I often just use a single array, and then work out a formula that is used to figure the proper index value for this single array.
+
 ### 2.1 - A static example of using a single array and formula to get the proper index value
+
+One again lets start out with a simple static hard coded form of this kind of multinational array in javaScript.
 
 ```js
 var grid = {
