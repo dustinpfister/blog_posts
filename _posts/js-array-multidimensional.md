@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2020-04-01 08:17:52
-version: 1.3
+updated: 2020-04-01 08:24:30
+version: 1.4
 ---
 
 In JavaScript Multidimensional arrays can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get a proper index value.
@@ -23,6 +23,12 @@ In this section I will be going over just some simple examples of making 2d arra
 
 ### 1.1 - Using literal array bracket syntax to create a static array of arrays
 
+So for this example I just have a grid of single digit hex values that is four by four. I start out with just a simple array, and then have four arrays within that array. In each nested array I then have my hex values where the lowest hex value is the first index of the first nested array, things then progress from that index value forward to the end of the nested array, and then continue in the next.
+
+I can then access the primitive value in each nested array, by using the bracket syntax just like a single array, only when doing so I get a nested array rather than a primitive value, so Then need to give the index value of the element that I want in the nested array to get an element with one of my hex values.
+
+If you are still confused maybe it would be best to look at a code example of this.
+
 ```js
 // a 2d array of arrays can be created
 // in a literal way like this
@@ -38,6 +44,8 @@ var cell = grid[3][2];
  
 console.log(cell); // 'e'
 ```
+
+This is a static form of a 2d array of arrays, however often I will want to have a way to generate such an array, so for this I will want to use some loops, and maybe do so in the body of a function.
 
 ### 1.2 - Using a function that will generate an array of arrays
 
