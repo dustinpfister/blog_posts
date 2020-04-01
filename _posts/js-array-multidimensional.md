@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2020-04-01 08:28:19
-version: 1.6
+updated: 2020-04-01 08:42:43
+version: 1.7
 ---
 
 In JavaScript Multidimensional arrays can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get a proper index value.
@@ -111,6 +111,8 @@ console.log(grid.get(2, 3)); // 'e'
 ```
 
 ### 2.2 - Making a function that will return an API with a single array and get method
+
+Now to do the same thing, only once again make a function that will return my multidimensional array. Only this time it will return the array along with at least a width property. In addition I might also want a height property, and a method that I can use to get a location by way of passing an x and y value.
 
 ```js
 var createGrid = function (w, h, forCell) {
