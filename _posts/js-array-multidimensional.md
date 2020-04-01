@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2020-04-01 08:24:30
-version: 1.4
+updated: 2020-04-01 08:26:16
+version: 1.5
 ---
 
 In JavaScript Multidimensional arrays can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get a proper index value.
@@ -48,6 +48,8 @@ console.log(cell); // 'e'
 This is a static form of a 2d array of arrays, however often I will want to have a way to generate such an array, so for this I will want to use some loops, and maybe do so in the body of a function.
 
 ### 1.2 - Using a function that will generate an array of arrays
+
+I almost all projects I will want a way to go about creating a multidimensional array by way of some javaScript code that will generate the state of the array rather than the state being some kind of fixed hard coded value.
 
 ```js
 // A function of some kind like this can be used
