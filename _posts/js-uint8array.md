@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-04-02 13:29:10
-version: 1.2
+updated: 2020-04-02 13:30:19
+version: 1.3
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. these kinds of constructors create index collections similar to that of a regular javaScript array, only much different. For starters the length of the collections is static, and the values that the collections can hold is restricted.
@@ -31,7 +31,7 @@ console.log(arr[0], arr[1], arr[2]); // 128 255 199
 
 ## 2 - Clamped and not Clamped
 
-There is a Uint8ClampedArray constructor the only difference between this and the plain Uint8Array constructor seems to be that values are clamped rather then warped when they go out of range.
+There is a [Uint8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) constructor the only difference between this and the plain Uint8Array constructor seems to be that values are clamped rather then warped when they go out of range.
 
 ```js
 var clamped = new Uint8ClampedArray(3),
