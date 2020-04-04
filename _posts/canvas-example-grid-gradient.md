@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 13:06:46
-version: 1.10
+updated: 2020-04-04 13:08:50
+version: 1.11
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
@@ -415,3 +415,7 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+This canvas example was a lot of fun, and I like the way it looks. The project code still use some additional polish though, so I do not want to wrote to much more about it at this time. Hopefully I will get some time to work more on this canvas example, as well as the many others that I have worked out thus far.
