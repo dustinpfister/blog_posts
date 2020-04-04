@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 08:49:45
-version: 1.7
+updated: 2020-04-04 08:54:08
+version: 1.8
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
@@ -238,6 +238,8 @@ gradient.load({
 ```
 
 ### 2.2 - The init RGB plugin
+
+Here I have another plug-in with some init methods for the objects. It sets the color channel values for each object in a way in which there is an even number of objects with with red, or green, or blue channel values set to one while the others are set to zero. This way as the objects move around all other colors are possible depending on the position, size, and distance from each other as they move around. I think this kind of plug-in results in a cool effect, but I want to experiment with others, so I pulled it into a plug-in.
 
 ```js
 gradient.load({
