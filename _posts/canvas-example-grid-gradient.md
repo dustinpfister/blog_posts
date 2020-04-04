@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 08:41:49
-version: 1.5
+updated: 2020-04-04 08:43:59
+version: 1.6
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
@@ -35,6 +35,8 @@ u.mod = function mod(x, m) {
 ```
 
 ## 2 - The gradient.js module, and plugins
+
+The design of the gradient module that I made has two public methods one of Which is a Grid class, and the other is a load method that is used to load plug-ins that are used to define styles of behaviors for the objects.
 
 ```js
 // GRID
