@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-03-27 15:51:54
-version: 1.3
+updated: 2020-04-04 08:38:14
+version: 1.4
 ---
 
-When working with a canvas there are ways to quickly paint a gradient to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves braking the canvas down into a grid, and then having a bunch of objects that are used to set color channel values for each grid cell resulting in a cool color gradient effect.
+When working with a canvas element there are ways to quickly paint a gradient to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
+
+I went a little overboard with this example, making a plug in system and a few plug ins that have to do with the behavior of these objects and how the grid gradient changes.
 
 <!-- more -->
 
