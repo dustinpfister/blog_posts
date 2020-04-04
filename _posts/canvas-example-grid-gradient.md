@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 08:43:59
-version: 1.6
+updated: 2020-04-04 08:49:45
+version: 1.7
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
@@ -194,6 +194,10 @@ var gradient = (function () {
 ```
 
 ### 2.1 - The init rand plugin
+
+The plug ins are objects that contain collections of methods that are used to figure initial properties of objects, as well collections of methods that are used to update methods. The init rand plugin that I made is a way for me to abstract away much of the starting logic for the objects that I had built in early in development of this.
+
+This plug-in just has init methods that set random values for object properties including position, heading, and color. I can use just one or two of them or all of them when using the Grid constructor later on.
 
 ```js
 gradient.load({
