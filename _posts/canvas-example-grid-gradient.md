@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 08:57:35
-version: 1.9
+updated: 2020-04-04 13:06:46
+version: 1.10
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
@@ -361,12 +361,16 @@ draw.cells = function (ctx, grid) {
 
 ## 4 - Main
 
+So now it is time to take this all for a test drive, with a main.js file, and a little html. In my html I have a hard code canvas element, and a bunch of script tags linking to my utils.js, gradient.js, plugins, draw.js and the main.js file that is to come in this section.
+
+I my main,js file I get a reference to my hard coded canvas element, set the siz eof the canvas element, and then use the Grid constructor of my gradient module. I can then use the update method of the Grid instnace to update things in a main app loop,  along with my draw methods to render the current state of that grid.
+
 ```js
 var canvas = document.getElementById('thecanvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 640;
-canvas.height = 480
-    ctx.translate(0.5, 0.5);
+canvas.height = 480;
+ctx.translate(0.5, 0.5);
  
 var w = 24,
 h = 16;
