@@ -5,18 +5,20 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 08:38:14
-version: 1.4
+updated: 2020-04-04 08:41:49
+version: 1.5
 ---
 
-When working with a canvas element there are ways to quickly paint a gradient to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
+When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
 
 I went a little overboard with this example, making a plug in system and a few plug ins that have to do with the behavior of these objects and how the grid gradient changes.
 
 <!-- more -->
 
 
-## 1 - utils
+## 1 - Starting off with a utils module for the grid gradient canvas example.
+
+With many of these canvas examples of mind I have a utils.js file that contains some functions that I will be using in one or more modules. For this example it is just a distance formula and a mathematical modulo method.
 
 ```js
 // UTILS
