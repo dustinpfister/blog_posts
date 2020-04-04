@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 13:08:50
-version: 1.11
+updated: 2020-04-04 15:38:50
+version: 1.12
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
@@ -39,26 +39,33 @@ u.mod = function mod(x, m) {
 The design of the gradient module that I made has two public methods one of Which is a Grid class, and the other is a load method that is used to load plug-ins that are used to define styles of behaviors for the objects.
 
 ```js
-// GRID
- 
 var gradient = (function () {
  
     // object update methods
-    var objUpdaters = [];
+    var objUpdaters = {
+        objDefaults: function (grid, obj, secs) {
+            obj.cps = 1;
+            obj.heading += Math.PI / 180 * 5 * secs;
+            obj.heading %= Math.PI * 2;
+        }
+    };
  
+    // init methods
     var initMethods = {
         objDefaults: function (obj, grad, i) {
             obj.x = 0;
             obj.y = 0;
+            obj.i = i;
             obj.radius = 5;
             obj.power = [1, 1, 1, 1];
             obj.cps = 0;
             obj.heading = 1;
-            obj.objUpdaterIndex = 0;
             obj.radiusDir = 1;
+            obj.updaterList = grad.updaters;
         }
     };
  
+    // The Grid constructor
     var Grid = function (opt) {
         opt = opt || {};
         var grad = this;
@@ -73,8 +80,15 @@ var gradient = (function () {
         grad.cells = [];
         grad.resetCells();
         grad.lt = new Date();
+ 
+        // init methods
+        grad.init = opt.init || ['objDefaults'];
         grad.initMethods = initMethods;
+ 
+        // updaters
+        grad.updaters = opt.updaters === undefined ? ['objDefaults'] : opt.updaters;
         grad.objUpdaters = objUpdaters;
+ 
         // setup objects
         grad.objs = [];
         var i = opt.objCount || 5,
@@ -85,13 +99,14 @@ var gradient = (function () {
         // create objects With init method(s)
         while (i--) {
             var obj = {};
+            // ensure calling defaults at least once
             initMethods.objDefaults(obj, grad, i);
-            if (opt.initMethod) {
-                if (typeof opt.initMethod === 'string') {
-                    initMethods[opt.initMethod](obj, grad, i);
+            if (opt.init) {
+                if (typeof opt.init === 'string') {
+                    initMethods[opt.init](obj, grad, i);
                 }
-                if (typeof opt.initMethod === 'object') {
-                    opt.initMethod.forEach(function (initMethodKey) {
+                if (typeof opt.init === 'object') {
+                    opt.init.forEach(function (initMethodKey) {
                         initMethods[initMethodKey](obj, grad, i);
                     });
                 }
@@ -142,6 +157,13 @@ var gradient = (function () {
         }
     };
  
+    var applyUpdaterList = function (grid, obj, secs) {
+        obj.updaterList.forEach(function (updaterKey) {
+            objUpdaters[updaterKey](grid, obj, secs);
+        });
+    };
+ 
+    // Main Grid update method
     Grid.prototype.update = function () {
         var grid = this,
         now = new Date(),
@@ -151,15 +173,14 @@ var gradient = (function () {
         grid.resetCells();
         // increase color channel values for objects
         grid.objs.forEach(function (obj) {
-            // call updater
-            var updater = objUpdaters[obj.objUpdaterIndex];
-            if (updater) {
-                updater(grid, obj, secs);
-            }
+            // apply updater list for the object
+            applyUpdaterList(grid, obj, secs);
+            // move object
             obj.x += Math.cos(obj.heading) * obj.cps * secs;
             obj.y += Math.sin(obj.heading) * obj.cps * secs;
             obj.x = u.mod(obj.x, grid.gridWidth);
             obj.y = u.mod(obj.y, grid.gridHeight);
+            // update cells
             grid.cells.forEach(function (cell) {
                 upCellColor(grid, cell, obj, obj.x - grid.gridWidth, obj.y);
                 upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y);
@@ -185,10 +206,12 @@ var gradient = (function () {
                 initMethods[key] = plug.initMethods[key];
             }
             // load any update methods
-            objUpdaters = objUpdaters.concat(plug.objUpdaters || []);
+            for (var key in plug.objUpdaters) {
+                objUpdaters[key] = plug.objUpdaters[key];
+            }
         }
     };
-
+ 
 }
     ());
 ```
@@ -245,9 +268,6 @@ Here I have another plug-in with some init methods for the objects. It sets the 
 gradient.load({
  
     initMethods: {
-        updatersStager: function (obj, grad, i) {
-            obj.objUpdaterIndex = u.mod(i, grad.objUpdaters.length);
-        },
         rgb: function (obj, grad, i) {
             // cycle r,g,b color power
             var rand = Math.random() * 0.75 + 0.25,
@@ -277,10 +297,9 @@ I worked out some plug-ins that provide update methods that change the behavior 
 
 ```js
 gradient.load({
-    objUpdaters: [
+    objUpdaters: {
         // radius changes, slow speed
-        function (grid, obj, secs) {
-            //obj.power = [1, 0, 0];
+        radiusGrow: function (grid, obj, secs) {
             if (obj.radius === 3 || obj.radius === 10) {
                 var roll = Math.floor(Math.random() * 50) + 1;
                 if (roll === 1) {
@@ -292,33 +311,25 @@ gradient.load({
             obj.radius = obj.radius > 10 ? 10 : obj.radius;
             obj.cps = 3;
         }
-    ]
+    }
 });
-```
-
-```js
 gradient.load({
-    objUpdaters: [
+    objUpdaters: {
         // heading changes, fast speed
-        function (grid, obj, secs) {
-            //obj.power = [0, 0, 1];
+        headingChange: function (grid, obj, secs) {
             obj.heading += Math.PI / 180 * 5 * secs;
             obj.heading = u.mod(obj.heading, Math.PI * 2);
             obj.cps = 15;
         }
-    ]
+    }
 });
-```
-
-```js
 gradient.load({
-    objUpdaters: [
+    objUpdaters: {
         // fixed position
-        function (grid, obj, secs) {
-            //obj.power = [0, 1, 0];
+        fixedPos: function (grid, obj, secs) {
             obj.cps = 0;
         }
-    ]
+    }
 });
 ```
 
@@ -329,14 +340,16 @@ So now that I have my gradient.js file, and some plug-ins for it, I will want a 
 ```js
 var draw = {};
  
+// draw background
 draw.back = function (ctx, canvas) {
-    // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
  
 // draw Cells
-draw.cells = function (ctx, grid) {
+draw.cells = function (ctx, grid, xOffset, yOffset) {
+    xOffset = xOffset === undefined ? 0 : xOffset;
+    yOffset = yOffset === undefined ? 0 : yOffset;
     var ci = 0,
     cell,
     c,
@@ -349,8 +362,8 @@ draw.cells = function (ctx, grid) {
         ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + c[3] + ')';
         ctx.beginPath();
         ctx.rect(
-            cell.x * grid.cellWidth,
-            cell.y * grid.cellHeight,
+            cell.x * grid.cellWidth + xOffset,
+            cell.y * grid.cellHeight + yOffset,
             grid.cellWidth, grid.cellHeight);
         ctx.stroke();
         ctx.fill();
@@ -379,18 +392,26 @@ var grad = new gradient.Grid({
         cellHeight: canvas.height / h,
         gridWidth: w,
         gridHeight: h,
-        initMethod: ['random', 'rgb', 'updatersStager'],
+        init: ['rgb', 'random'],
+        updaters: ['radiusGrow'],
         MIN_RADIUS: 3,
         MAX_RADIUS: 7,
         MAX_CPS: 5,
-        objCount: 15
+        objCount: 10
     });
  
+var lt = new Date(),
+target_fps = 12;
 var loop = function () {
+    var now = new Date(),
+    t = now - lt;
     requestAnimationFrame(loop);
-    grad.update();
-    draw.back(ctx, canvas);
-    draw.cells(ctx, grad);
+    if (t > 1000 / target_fps) {
+        grad.update();
+        draw.back(ctx, canvas);
+        draw.cells(ctx, grad);
+        lt = now;
+    }
 };
  
 loop();
@@ -403,15 +424,15 @@ loop();
     </head>
     <body>
         <canvas id="thecanvas" style="position:absolute;left:0px;top:0px;width:100%;height:100%;"></canvas>
-        <script src="utils.js"></script>
-        <script src="gradient.js"></script>
+        <script src="libs/utils.js"></script>
+        <script src="libs/gradient.js"></script>
         <script src="plugins/init_rand.js"></script>
         <script src="plugins/init_rgb.js"></script>
-        <script src="plugins/radius_change.js"></script>
-        <script src="plugins/heading_change.js"></script>
-        <script src="plugins/fixed_pos.js"></script>
-        <script src="draw.js"></script>
-        <script src="main.js"></script>
+        <script src="plugins/updater_radius_change.js"></script>
+        <script src="plugins/updater_heading_change.js"></script>
+        <script src="plugins/updater_fixed_pos.js"></script>
+        <script src="libs/draw.js"></script>
+        <script src="libs/main.js"></script>
     </body>
 </html>
 ```
