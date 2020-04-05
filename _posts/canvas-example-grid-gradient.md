@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-05 11:32:22
-version: 1.16
+updated: 2020-04-05 11:40:40
+version: 1.17
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting in a cool color gradient effect.
@@ -219,6 +219,9 @@ var gradient = (function () {
 }
     ());
 ```
+
+The main update method of the Gird class will reset all color channel values of all the cells of the grid to \[0,0,0,0\], it then goes threw all the objects to change all the values in that array to other values between zero and one. The color values of the cells are then used in my draw.js file to fill each cell a certian color using [rgba functional notation](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
+
 
 ### 2.1 - The init rand plugin
 
