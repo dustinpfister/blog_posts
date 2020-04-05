@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-05 11:27:42
-version: 1.15
+updated: 2020-04-05 11:32:22
+version: 1.16
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting in a cool color gradient effect.
@@ -39,6 +39,8 @@ If I continue working on this it is only a matter of time until this might end u
 ## 2 - The gradient.js module, and plugins
 
 Now that I have the base utility module of this canvas example out of the way, it is now time to get into the gradient module that is what makes this project actually somewhat interesting. The design of the gradient module that I made has two public methods one of Which is a Grid class, and the other is a load method that is used to load plug-ins that are used to define styles of behaviors for the objects. So in my main index file I load the utils module first, then this module, then some plug-ins that make use of this modules load methods, then a draw module, and then make use of the Grid constructor in a main javaScript file along with a main app loop method.
+
+When working out a plug-in, the plug-in will contain two collections of one ore more methods. These methods are objUpdaters, and initMethods. The initMethods are used to set the initial values of objects when it comes to starting positions, headings, color channel values, and so forth. The objUpsters as the name suggests are used to define what is to happen for an object when it comes to updating those properties.
 
 ```js
 var gradient = (function () {
