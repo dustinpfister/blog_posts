@@ -5,13 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-04-04 15:38:50
-version: 1.12
+updated: 2020-04-05 11:21:30
+version: 1.13
 ---
 
-When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting cool color gradient effect.
+When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting. It involves having a bunch of objects that are used to set color channel values for each grid cell that is a model object that is then drawn to the canvas resulting in a cool color gradient effect.
 
-I went a little overboard with this example, making a plug in system and a few plug ins that have to do with the behavior of these objects and how the grid gradient changes.
+I went a little overboard with this example, making a plug in system and a few plug ins that have to do with the setting and updating the behavior of these objects and how the grid gradient changes. Like many advanced canvas example projects I started breaking things down between code that is used to create and update an object that is independent of canvas, and then additional code that is used to draw that model to the canvas. So this should be a decent canvas example thus far all ready, and chances are I will come back to it again at least a few times more.
 
 <!-- more -->
 
