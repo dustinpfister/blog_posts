@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 643
-updated: 2020-04-08 16:49:48
-version: 1.2
+updated: 2020-04-08 17:12:08
+version: 1.3
 ---
 
 A [Statistical population](https://en.wikipedia.org/wiki/Statistical_population) is not always what the name might suggest. A Statistical population could be census data, however it could also be just about any collection of standard data in general actually. Much of what is done in statistics involves at least some kind of collection of data, in some kind of standard from. Things are then drawn from that population of data than can then be used to make sense of it.
@@ -34,3 +34,50 @@ console.log(mean); // 4.5
 ```
 
 here I have a very basic example of what might be considered a population that is just an array of numbers ranging from 1 to 6. I then just use a simple get mean method to get an average of the total population. However a thought has just occurred, what if I had a really large population of say one hundred thousand or more numbers between 1 and 6? There would be getting the mean of the whole population, but there would also be getting the mean of a smaller sub population or sample of the large collection. If so would a small sub population be helpful when trying to estimate the average of the whole population?
+
+## 1.2 - Generate a random population, and look at subpopulations
+
+If I make a method that can be used to generate a very large population of numbers between 1 and 6 that might lead to some interesting things when it comes to taking sub populations from that collection. I would assume that at some point the mean of a smaller sub population could be used estimate the mean of the total population with a fair degree of accuracy.
+
+```js
+// generate a 'random' population
+let genRandomPopulation = (popSize) => {
+    popSize = popSize === undefined ? 100 : popSize;
+    let pop = [],
+    i = popSize;
+    while (i--) {
+        pop.push(Math.floor(Math.random() * 6) + 1);
+    }
+    return pop;
+};
+ 
+// get the mean of the given population or sample
+let getMean = (pop) => {
+    return pop.reduce(function (acc, n) {
+        return acc + n;
+    }) / pop.length;
+};
+ 
+let getSample = (pop, si, sampSize) => {
+    let len = pop.length;
+    sampSize = sampSize === undefined ? len : sampSize;
+    si = si === undefined ? len - sampSize : si;
+    let ei = si + sampSize;
+    return pop.slice(si, ei);
+}
+ 
+let pop = genRandomPopulation(100000);
+ 
+console.log(getMean( getSample(pop, 0, 10000) ));
+console.log(getMean( getSample(pop, 250, 10000) ));
+console.log(getMean( getSample(pop, 3500, 10000) ));
+console.log(getMean(pop));
+ 
+/*
+Example output
+3.5104
+3.5109
+3.5012
+3.49523
+*/
+```
