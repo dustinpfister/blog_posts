@@ -5,10 +5,10 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 642
-updated: 2020-04-07 19:34:22
-version: 1.0
+updated: 2020-04-10 12:44:31
+version: 1.1
 ---
 
-In node js there is the path module and the resolve method of that module than can be used to resolve a relative path to an absolute path.
+In nodejs there is the path module and the [resolve method](https://nodejs.org/api/path.html#path_path_resolve_paths) of that module than can be used to resolve a relative path to an absolute path.
 
 <!-- more -->
