@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-12 08:46:45
-version: 1.2
+updated: 2020-04-12 08:48:29
+version: 1.3
 ---
 
-TIme for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts.
+TIme for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the classic game kaboom that was ported to systems like the Atari 2600.
 
 
 <!-- more -->
