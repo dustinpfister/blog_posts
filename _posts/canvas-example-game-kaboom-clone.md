@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-12 14:56:04
-version: 1.4
+updated: 2020-04-12 19:22:35
+version: 1.5
 ---
 
-Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600.
+Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs.
 
 
 <!-- more -->
