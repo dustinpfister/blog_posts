@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-12 08:48:29
-version: 1.3
+updated: 2020-04-12 14:56:04
+version: 1.4
 ---
 
-TIme for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the classic game kaboom that was ported to systems like the Atari 2600.
+Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600.
 
 
 <!-- more -->
@@ -75,14 +75,15 @@ var kaboom = (function () {
  
     var LEVELS = {};
     var i = 1,
+    totalLevels = 10,
     per;
-    while (i <= 7) {
-        per = (i - 1) / 6;
+    while (i <= totalLevels) {
+        per = (i - 1) / (totalLevels - 1);
         LEVELS[i] = {
-            bombPPS: 64 + 300 * per,
+            bombPPS: 64 + 236 * per,
             bombCount: 10 + 90 * per,
             bomber: {
-                pps: 32 + 900 * per,
+                pps: 32 + 850 * per,
                 changeRate: 0.5 - 0.3 * per,
                 dropRate: 1 / (Math.floor(5 * per) + 1)
             }
@@ -125,11 +126,36 @@ var kaboom = (function () {
         player.dir = 0;
         var d = utils.distance(player.x, PLAYER.y, x, PLAYER.y);
         dir = d < hw ? d / hw : 1;
-        if (x < player.x) {
-            player.dir = dir * -1;
+        // mouse
+        if (inputPos.down) {
+            if (x < player.x) {
+                player.dir = dir * -1;
+            }
+            if (x > player.x) {
+                player.dir = dir;
+            }
         }
-        if (x > player.x) {
-            player.dir = dir;
+        // keyboard
+        if (player.inputKeys.a) {
+            player.dir = -1;
+        }
+        if (player.inputKeys.d) {
+            player.dir = 1;
+        }
+        // AI Control
+        if (player.inputAI) {
+            var bomb = state.bombs[0];
+ 
+            if (bomb) {
+                var d = utils.distance(player.x + 16, PLAYER.y, bomb.x, PLAYER.y);
+                dir = d < hw ? d / hw : 1;
+                if (bomb.x < player.x + 16) {
+                    player.dir = dir * -1;
+                }
+                if (bomb.x > player.x + 16) {
+                    player.dir = dir;
+                }
+            }
         }
         player.x += Math.floor(player.pps * secs * player.dir);
         clampBoundaries(player, PLAYER);
@@ -213,8 +239,8 @@ var kaboom = (function () {
             lt: new Date(),
             //pause: false,
             gameOver: false,
-            pauseTime: 1,
-            pauseMessage: 'paused',
+            pauseTime: 3,
+            pauseMessage: '',
             score: 0,
             level: level,
             bomber: {
@@ -233,14 +259,21 @@ var kaboom = (function () {
                 x: 320,
                 inputPos: {
                     x: 320,
-                    y: 0
+                    y: 0,
+                    down: false
                 },
+                inputKeys: {
+                    a: false,
+                    b: false
+                },
+                inputAI: false,
                 hp: 3,
                 dir: -1,
-                pps: 1024
+                pps: 900
             }
         };
         setLevel(state, level);
+        state.pauseMessage = 'level: ' + state.level;
         return state;
     };
  
@@ -255,6 +288,10 @@ var kaboom = (function () {
         state.bomber.dropRate = levelObj.bomber.dropRate;
         state.bombPPS = levelObj.bombPPS;
         state.bombCount = levelObj.bombCount;
+        state.pauseTime = 1;
+        state.bomber.dropTime = 0;
+        state.bomber.changeTime = 0;
+        state.pauseMessage = 'level: ' + state.level;
     };
  
     var api = {
@@ -338,4 +375,146 @@ var kaboom = (function () {
 
 ## 3 - draw
 
+```js
+var draw = {};
+ 
+// draw background
+draw.back = function (ctx, canvas) {
+    // draw background
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(0, kaboom.BOMBER.y, canvas.width, canvas.height - kaboom.BOMBER.y);
+};
+ 
+// draw bomber
+draw.bomber = function (ctx, state) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(state.bomber.x, kaboom.BOMBER.y - 64, kaboom.BOMBER.w, 64);
+};
+// draw bombs
+draw.bombs = function (ctx, state) {
+    var i = state.bombs.length,
+    bomb;
+    ctx.fillStyle = 'red';
+    while (i--) {
+        bomb = state.bombs[i];
+        ctx.fillRect(bomb.x, bomb.y, 32, 32);
+    }
+};
+ 
+// draw player
+draw.player = function (ctx, state) {
+    ctx.fillStyle = 'lime';
+    ctx.fillRect(state.player.x, kaboom.PLAYER.y, kaboom.PLAYER.w, kaboom.PLAYER.h);
+};
+ 
+// draw score
+draw.score = function (ctx, state) {
+    ctx.fillStyle = 'white';
+    ctx.font = '10px arial';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    ctx.fillText(state.score, 320, 20);
+};
+ 
+draw.ui = function (ctx, state) {
+    var button = kaboom.BUTTON_PAUSE;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(button.x, button.y, button.w, button.h);
+    if (state.gameOver) {
+        button = kaboom.BUTTON_NEW_GAME;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(button.x, button.y, button.w, button.h);
+    }
+};
+ 
+// draw pause overlay
+draw.pauseOverlay = function (ctx, canvas, state) {
+    if (state.pauseTime > 0 || state.pauseTime === -1) {
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'white';
+        ctx.font = '20px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'center';
+        ctx.fillText(state.pauseMessage, canvas.width / 2, 200);
+    }
+};
+ 
+// draw debug info
+draw.debug = function (ctx, state) {
+    ctx.fillStyle = 'white';
+    ctx.font = '10px arial';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillText('level: ' + state.level, 10, 10);
+    ctx.fillText('bombCount: ' + state.bombCount, 10, 20);
+    ctx.fillText('bomber: { x: ' + state.bomber.x +
+        ', dir: ' + state.bomber.dir +
+        ', pps: ' + state.bomber.pps + ' }', 10, 30);
+    ctx.fillText('player: { x: ' + state.player.x +
+        ', hp: ' + state.player.hp +
+        ', dir: ' + state.player.dir +
+        ', inputAI: ' + state.player.inputAI +
+        ', pps: ' + state.player.pps + ' }', 10, 40);
+};
+```
+
 ## 4 - main
+
+
+```js
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+document.getElementById('gamearea').appendChild(canvas);
+canvas.width = 640;
+canvas.height = 480;
+ 
+var state = kaboom.createState(1);
+ 
+canvas.addEventListener('mousedown', function (e) {
+    state.player.inputPos.down = true;
+    kaboom.pointerStart(state, e);
+});
+canvas.addEventListener('mousemove', function (e) {
+    e.preventDefault();
+    var pos = utils.getCanvasRelative(e),
+    player = state.player;
+    player.inputPos.x = pos.x;
+    player.inputPos.y = pos.y;
+});
+canvas.addEventListener('mouseup', function (e) {
+    state.player.inputPos.down = false;
+});
+ 
+window.addEventListener('keydown', function (e) {
+    var key = e.key.toLowerCase(),
+    player = state.player;
+    player.inputKeys[key] = true;
+    if (key === 'i') {
+        player.inputAI = !player.inputAI;
+    }
+});
+ 
+window.addEventListener('keyup', function (e) {
+    var key = e.key.toLowerCase(),
+    player = state.player;
+    player.inputKeys[key] = false;
+});
+ 
+var loop = function () {
+    requestAnimationFrame(loop);
+    kaboom.update(state);
+    draw.back(ctx, canvas);
+    draw.bomber(ctx, state);
+    draw.bombs(ctx, state);
+    draw.player(ctx, state);
+    draw.score(ctx, state);
+    draw.ui(ctx, state);
+    draw.pauseOverlay(ctx, canvas, state);
+    draw.debug(ctx, state);
+};
+ 
+loop();
+```
