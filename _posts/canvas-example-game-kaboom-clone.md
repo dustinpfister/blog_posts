@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 10:14:30
-version: 1.17
+updated: 2020-04-13 10:15:21
+version: 1.18
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -261,7 +261,9 @@ There will be a need for some methods that are used to spawn bomb objects, as we
     };
 ```
 
-### 2.6 - 
+### 2.6 - Level check and game over check helpers
+
+Some methods for checking if the level is over, and if the player has lost.
 
 ```js
     var levelOverCheck = function (state) {
