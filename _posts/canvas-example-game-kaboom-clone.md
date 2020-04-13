@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 09:36:37
-version: 1.9
+updated: 2020-04-13 09:44:33
+version: 1.10
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -55,7 +55,7 @@ Any kind of method that I might use across two or more modules should be parked 
 
 ## 2 - The kaboom module
 
-Now that I have the utils module that I want it is time to get into the kaboom module. This module will be used to store the state of all kinds of values that have to do with the game logic.
+Now that I have the utils module that I want it is time to get into the kaboom module. This module will be used to store the state of all kinds of values that have to do with the game logic. It is packed with all kinds of private helper methods and objects, but only provides a few public methods and properties that are used by additional modules outside of it when it comes to my draw module, and the main.js file that I will be getting to later in this post.
 
 ```js
 var kaboom = (function () {
