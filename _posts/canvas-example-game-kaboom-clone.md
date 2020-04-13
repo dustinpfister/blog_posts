@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 10:15:21
-version: 1.18
+updated: 2020-04-13 10:16:17
+version: 1.19
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -279,7 +279,9 @@ Some methods for checking if the level is over, and if the player has lost.
     };
 ```
 
-### 2.7 - 
+### 2.7 - Create state, and set level
+
+Here I have the methods that are used to create a new state object, as well as set the state object to a given level.
 
 ```js
     // create a new state
