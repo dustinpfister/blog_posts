@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 12:40:23
-version: 1.5
+updated: 2020-04-13 12:41:06
+version: 1.6
 ---
 
 This week I wanted to aim for making at least one new [canvas examples](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -493,6 +493,8 @@ var solarMod = (function () {
 ```
 
 ## 4 - The draw module
+
+Now for the draw module that is used to draw the current state of the solar and current world object.
 
 ```js
 var draw = {};
