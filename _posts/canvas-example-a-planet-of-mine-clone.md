@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-06 20:35:07
-version: 1.1
+updated: 2020-04-13 10:19:37
+version: 1.2
 ---
 
 This week I wanted to aim for making at least one new [canvas examples](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -14,7 +14,9 @@ This week I wanted to aim for making at least one new [canvas examples](/2020/03
 <!-- more -->
 
 
-## 1 - The state machine
+## 1 - The state machine for this clone of a planet of mine
+
+For this canvas example I went with using a basic state machine design that I worked out in a previous post. I added a few changes though so this will not just be a copy and past type thing from that project.
 
 ```js
 var Machine = (function () {
