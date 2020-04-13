@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 10:23:02
-version: 1.3
+updated: 2020-04-13 10:27:08
+version: 1.4
 ---
 
 This week I wanted to aim for making at least one new [canvas examples](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -423,4 +423,296 @@ var worldMod = (function () {
  
 }
     ());
+```
+
+## 3 - The solar module
+
+```js
+var solarMod = (function () {
+ 
+    return {
+ 
+        create: function () {
+ 
+            var solar = {
+                lt: new Date(),
+                tickRate: 10000,
+                ticks: 0,
+                t: 0,
+                tPer: 0,
+                currentWorldIndex: 0,
+                currentWorld: {},
+                exp: 0,
+                resources: {
+                    solid: 0,
+                    liquid: 0,
+                    wood: 0,
+                    raspberries: 500
+                }
+            };
+ 
+            solar.worlds = [];
+            solar.worlds.push(worldMod.create(solar));
+            solar.currentWorld = solar.worlds[solar.currentWorldIndex];
+            return solar;
+        },
+ 
+        update: function (solar) {
+ 
+            var now = new Date(),
+            t = now - solar.lt;
+            solar.t = t;
+            solar.tPer = t / solar.tickRate;
+            solar.tPer = solar.tPer > 1 ? 1 : solar.tPer;
+ 
+            // make sure current world, is also currentWorld Index
+            solar.currentWorld = solar.worlds[solar.currentWorldIndex];
+ 
+            // for each world
+            solar.worlds.forEach(function (world) {
+                world.onTickProgress(solar, solar.ticks, solar.tPer);
+                if (solar.tPer === 1) {
+                    world.onTickEnd(solar, solar.ticks);
+                }
+            });
+ 
+            // if tPer === 1
+            if (solar.tPer === 1) {
+                solar.ticks += 1;
+                solar.lt = now;
+            }
+ 
+        }
+ 
+    }
+ 
+}
+    ())
+```
+
+## 4 - The draw module
+
+```js
+var draw = {};
+ 
+draw.back = function (sm) {
+    var canvas = sm.canvas,
+    ctx = sm.ctx;
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+draw.tickProgress = function (sm) {
+    var canvas = sm.canvas,
+    ctx = sm.ctx,
+    solar = sm.solar,
+    world = solar.currentWorld;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width * solar.tPer, 10);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(0, 10, canvas.width * world.rotationPer, 10);
+ 
+};
+ 
+draw.world = function (sm) {
+    var canvas = sm.canvas,
+    ctx = sm.ctx,
+    solar = sm.solar,
+    i = 0,
+    world = solar.currentWorld,
+    land;
+    // draw freeWokers area
+    var pos = world.freeWorkers.pos;
+    ctx.fillStyle = 'grey';
+    ctx.fillRect(pos.x, pos.y, pos.w, pos.h);
+    // draw land
+    while (i < world.lands.length) {
+        land = world.lands[i];
+        ctx.fillStyle = 'green';
+        ctx.fillRect(land.pos.x, land.pos.y, land.pos.w, land.pos.h);
+        i += 1;
+    }
+    world.lands.forEach(function (land) {
+        land.workers.forEach(function (worker) {
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(worker.pos.x, worker.pos.y, worker.pos.w, worker.pos.h);
+        });
+    });
+    // draw free workers
+    world.freeWorkers.workers.forEach(function (worker) {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(worker.pos.x, worker.pos.y, worker.pos.w, worker.pos.h);
+    });
+};
+ 
+draw.solar = function (sm) {};
+ 
+// debug info for solar object properties
+draw.debugSolar = function (sm) {
+    var canvas = sm.canvas,
+    ctx = sm.ctx,
+    solar = sm.solar,
+    world = sm.currentWorld;
+ 
+    var text = '';
+    Object.keys(solar.resources).forEach(function (resourceName) {
+        text += resourceName + ':' + solar.resources[resourceName] + '; ';
+    });
+ 
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.fillText(text, 5, 15);
+    ctx.fillText('exp: ' + solar.exp, 5, 30);
+};
+ 
+// debug info for land
+draw.debugLand = function (sm) {
+    var canvas = sm.canvas,
+    ctx = sm.ctx,
+    solar = sm.solar,
+    world = solar.currentWorld;
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    world.lands.forEach(function (land) {
+        var pos = land.pos;
+        ctx.fillText('workers: ' + land.workers.length + '/' + land.maxWorkers, pos.x, pos.y);
+        ctx.fillText('solids: ' + land.solidCount, pos.x, pos.y + 10);
+        ctx.fillText('liquids: ' + land.liquidCount, pos.x, pos.y + 20);
+    });
+};
+```
+
+## 5 - The game.js state file and index.html
+
+```js
+var sm = Machine('gamearea');
+ 
+sm.load({
+    name: 'game',
+    bootState: true,
+    init: function (sm) {
+ 
+        sm.solar = solarMod.create();
+ 
+    },
+    tick: function (sm) {
+ 
+        var ctx = sm.ctx;
+ 
+        solarMod.update(sm.solar);
+ 
+        // draw background, world, and more
+        draw.back(sm);
+        draw.world(sm);
+        draw.tickProgress(sm);
+        draw.debugLand(sm);
+        draw.debugSolar(sm);
+ 
+    },
+    userPointer: {
+        start: function (pt, sm, e) {
+ 
+            var world = sm.solar.currentWorld;
+ 
+            // free worker area
+            var fw = world.freeWorkers;
+            if (pt.overlap(fw.pos.x, fw.pos.y, fw.pos.w, fw.pos.h)) {
+                var len = fw.workers.length;
+                if (len > 0) {
+                    // select free worker?
+                    var i = len;
+                    while (i--) {
+                        var worker = fw.workers[i],
+                        pos = worker.pos;
+                        if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                            world.moveWorker = worker;
+                            break;
+                        }
+                    }
+                } else {
+                    // create new worker?
+                    //console.log('new worker?');
+                    world.createWorker();
+                }
+            }
+ 
+            // land worker?
+            var li = world.lands.length;
+            lands: while (li--) {
+                var land = world.lands[li],
+                wi = land.workers.length;
+                while (wi--) {
+                    var worker = land.workers[wi],
+                    pos = worker.pos;
+                    if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                        world.moveWorker = worker;
+                        break lands;
+                    }
+                }
+            }
+ 
+        },
+        move: function (pt, sm, e) {
+            var world = sm.solar.currentWorld;
+ 
+            if (world.moveWorker) {
+                world.moveWorker.pos.x = pt.pos.x - 16;
+                world.moveWorker.pos.y = pt.pos.y - 16;
+            }
+ 
+        },
+        end: function (pt, sm, e) {
+            var world = sm.solar.currentWorld;
+ 
+            if (world.moveWorker) {
+ 
+                world.moveWoker(world.moveWorker, world.moveWorker.parent);
+ 
+                // over land with moveWorker?
+                var i = world.lands.length;
+                while (i--) {
+                    var land = world.lands[i],
+                    pos = land.pos;
+                    if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                        if (land.workers.length + 1 > land.maxWorkers) {
+                            break;
+                        }
+                        world.moveWoker(world.moveWorker, land);
+                        break;
+                    }
+                }
+ 
+                // over freeWorkers
+                var pos = world.freeWorkers.pos;
+                if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                    if (!(world.freeWorkers.length + 1 > world.freeWorkers.maxWorkers)) {
+                        world.moveWoker(world.moveWorker, world.freeWorkers);
+                    }
+                }
+ 
+            }
+ 
+            world.moveWorker = null;
+ 
+        }
+    }
+});
+ 
+sm.start();
+```
+
+```html
+<html>
+    <head>
+        <title>canvas example a planet of mine clone</title>
+    </head>
+    <body style="margin:0px;">
+        <div id="gamearea"></div>
+        <script src="lib/state-machine.js"></script>
+        <script src="lib/world.js"></script>
+        <script src="lib/solar.js"></script>
+        <script src="lib/draw.js"></script>
+        <script src="states/game.js"></script>
+    </body>
+</html>
 ```
