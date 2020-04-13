@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 09:21:13
-version: 1.6
+updated: 2020-04-13 09:26:50
+version: 1.7
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -15,7 +15,11 @@ The nice thing about cloning some of these other games is that doing so if often
 
 <!-- more -->
 
-## 1 - utils
+## 1 - The utils library for this kaboom clone canvas example
+
+I often start off many of my canvas example posts with a custom utility module that is used for this canvas example alone. Some times I might have reusable methods that are for this project alone as it grows, but often it is just a collection of usual suspects. 
+
+When it comes to this kaboom clone I know that I am going to want bounding box collision detection, the distance formula, and my usual method that helps me get a canvas relative pointer position. So the module is just composed of those methods for now.
 
 ```js
 var utils = {}
@@ -46,6 +50,8 @@ utils.getCanvasRelative = function (e) {
     };
 };
 ```
+
+Any kind of method that I might use across two or more modules should be parked here.
 
 ## 2 - The kaboom module
 
