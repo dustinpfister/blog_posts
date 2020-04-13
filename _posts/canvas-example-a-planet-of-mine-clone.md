@@ -5,13 +5,16 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 12:46:19
-version: 1.8
+updated: 2020-04-13 12:48:44
+version: 1.9
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
 
 The game is a pretty cool concept you have a starting world and two starting workers that can be used to build structures on land tiles of the world. There are many resources that can be gathered, one of which is used to power a rocket ship that can be used to go to another world in a solar system.
+
+
+I liked the game so much that I though I would start to work on a clone of the game that is not all that different from it. I was not able to clone every aspect of the game, but I did get to a very basic working first prototype of the concept thus far. If I get around to it I might come back to this one at some point in the future as i keep making canvas examples like these in a effort to try to find something that I would not mind working on for a while longer.
 
 <!-- more -->
 
