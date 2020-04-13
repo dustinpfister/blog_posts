@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 09:26:50
-version: 1.7
+updated: 2020-04-13 09:32:19
+version: 1.8
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -54,6 +54,8 @@ utils.getCanvasRelative = function (e) {
 Any kind of method that I might use across two or more modules should be parked here.
 
 ## 2 - The kaboom module
+
+Now that I have the utils module that I want it is time to get into the kaboom module. This module will be used to store the state of all kinds of values that have to do with the game logic.
 
 ```js
 var kaboom = (function () {
@@ -380,7 +382,9 @@ var kaboom = (function () {
     ());
 ```
 
-## 3 - draw
+## 3 - The draw module for the kaboom clone canvas example
+
+The kaboom.js file is just for the state of the game, but not drawing the current state of the game. I have been working with javaScript and canvas long enough to know that it is important to separate the state of a game away from logic that is used to render the state of it by one way or another. So that is where the draw.js module for this canvas example comes into play.
 
 ```js
 var draw = {};
@@ -468,8 +472,9 @@ draw.debug = function (ctx, state) {
 };
 ```
 
-## 4 - main
+## 4 - The main.js file and index.html
 
+I have a utils.js, kaboom.js, and draw.js file out of the way so now it is time to pull all this together with a main.js file and some html.
 
 ```js
 var canvas = document.createElement('canvas'),
@@ -524,4 +529,19 @@ var loop = function () {
 };
  
 loop();
+```
+
+```html
+<html>
+    <head>
+        <title>canvas example kaboom</title>
+    </head>
+    <body style="margin:0px;">
+        <div id="gamearea"></div>
+        <script src="utils.js"></script>
+        <script src="kaboom.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
