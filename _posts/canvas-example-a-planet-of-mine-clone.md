@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 13:16:22
-version: 1.14
+updated: 2020-04-13 13:17:15
+version: 1.15
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -214,6 +214,8 @@ There will need to be a module that will contain all the logic that is needed to
 A land Object might have one of several items built on it. the choice of items have to do with extracting resources from the land tile, or producing some kine of renewable resource.
 
 ### 2.1 - The start of the world module and the item database
+
+At the top of the module I have a crude item database in the form of an array literal.
 
 ```js
 var worldMod = (function () {
