@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 13:20:02
-version: 1.18
+updated: 2020-04-13 13:21:59
+version: 1.19
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -763,3 +763,5 @@ sm.start();
 ## 6 - Conclusion
 
 Although at the time of this writing I was able to get the basic idea of the game working there is still much more work that would need to be done in oder to make this more of a true clone of the game. This is also taking the time to do what comes to mind when it comes to making the game more distinct so that it is not just a rip off of the original.
+
+So far I am not happy with how this canvas example came out, it would need a lot more work, and maybe even a top to bottom overhaul in order to get it back on track. I might get around to doing that at some point in the future, but there are so many other ideas for projects, and so many other great ideas that I would like to clone as a starting point.
