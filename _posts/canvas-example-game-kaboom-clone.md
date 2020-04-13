@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 10:04:04
-version: 1.14
+updated: 2020-04-13 10:06:02
+version: 1.15
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -113,7 +113,9 @@ Here I have some javaScript code that will generate an Object of Objects for eac
     }
 ```
 
-### 2.3 - 
+### 2.3 - Clamp an Object
+
+This is a little helper method that I have made that helps to clamp and object such as the bomber object to the limits of the range of movement. In this kind of game the bomber object and the player object are fixed to a single axis so i only need to clamp them to that axis.
 
 ```js
     // clamp boundaries for the given objState and objConstant
