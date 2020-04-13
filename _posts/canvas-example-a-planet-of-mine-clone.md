@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 13:05:52
-version: 1.11
+updated: 2020-04-13 13:06:52
+version: 1.12
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -331,7 +331,9 @@ var worldMod = (function () {
     };
 ```
 
-### 2.5 - 
+### 2.5 - The create world land helper
+
+This helper method is what is called to create the lands array of the world object.
 
 ```js
     var createWorldLand = function (world) {
