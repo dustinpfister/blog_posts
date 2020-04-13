@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 09:44:33
-version: 1.10
+updated: 2020-04-13 09:49:06
+version: 1.11
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -57,6 +57,8 @@ Any kind of method that I might use across two or more modules should be parked 
 
 Now that I have the utils module that I want it is time to get into the kaboom module. This module will be used to store the state of all kinds of values that have to do with the game logic. It is packed with all kinds of private helper methods and objects, but only provides a few public methods and properties that are used by additional modules outside of it when it comes to my draw module, and the main.js file that I will be getting to later in this post.
 
+### 2.1 - The beginning of the kaboom.js module and some objects for the BOMBER and PLAYER
+
 ```js
 var kaboom = (function () {
  
@@ -81,7 +83,11 @@ var kaboom = (function () {
         w: 128,
         h: 32
     };
- 
+```
+
+### 2.2 - The LEVELS Object
+
+```js
     var LEVELS = {};
     var i = 1,
     totalLevels = 10,
@@ -99,7 +105,11 @@ var kaboom = (function () {
         };
         i += 1;
     }
- 
+```
+
+### 2.3 - 
+
+```js
     // clamp boundaries for the given objState and objConstant
     // (state.bomber, BOMBER and state.player, PLAYER)
     var clampBoundaries = function (objState, objConst) {
@@ -110,7 +120,11 @@ var kaboom = (function () {
             objState.x = 0;
         }
     };
- 
+```
+
+### 2.4 - 
+
+```js
     // move the bomber
     var moveBomber = function (state, secs) {
         var bomber = state.bomber;
@@ -154,7 +168,6 @@ var kaboom = (function () {
         // AI Control
         if (player.inputAI) {
             var bomb = state.bombs[0];
- 
             if (bomb) {
                 var d = utils.distance(player.x + 16, PLAYER.y, bomb.x, PLAYER.y);
                 dir = d < hw ? d / hw : 1;
@@ -178,7 +191,11 @@ var kaboom = (function () {
             bomb.y = 480;
         }
     };
- 
+```
+
+### 2.5 - 
+
+```js
     // drop bombs helper
     var dropBombs = function (state, secs) {
         var bomber = state.bomber;
@@ -228,7 +245,11 @@ var kaboom = (function () {
             }
         }
     };
- 
+```
+
+### 2.6 - 
+
+```js
     var levelOverCheck = function (state) {
         if (state.bombCount === 0 && state.bombs.length === 0) {
             setLevel(state, state.level += 1);
@@ -240,7 +261,11 @@ var kaboom = (function () {
             state.gameOver = true;
         }
     };
- 
+```
+
+### 2.7 - 
+
+```js
     // create a new state
     var createState = function (level) {
         level = level || 1;
@@ -302,7 +327,11 @@ var kaboom = (function () {
         state.bomber.changeTime = 0;
         state.pauseMessage = 'level: ' + state.level;
     };
- 
+```
+
+### 2.8 - The public API and the end of the module
+
+```
     var api = {
  
         LEVELS: LEVELS,
