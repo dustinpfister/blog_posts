@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 13:17:15
-version: 1.15
+updated: 2020-04-13 13:18:00
+version: 1.16
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -257,6 +257,8 @@ var worldMod = (function () {
 ```
 
 ### 2.2 - Create land and worker objects
+
+So I have helpers that are used to create a single worker object, and a single land object.
 
 ```js
     // create a worker object
