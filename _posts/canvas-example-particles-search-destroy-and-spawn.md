@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-13 15:56:00
-version: 1.1
+updated: 2020-04-13 16:06:22
+version: 1.2
 ---
 
 For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display object one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -16,6 +16,8 @@ So this canvas example will just be an exercise of many aspects of canvas projec
 <!-- more -->
 
 ## 1 - The utils module
+
+For this canvas example I will want a utils module that will contain some methods that I might not want to have in my draw or particles modules. This utility module contains a distance formula, along with a method for clamping values.
 
 ```js
 // UTILS
@@ -54,6 +56,8 @@ u.perToRadian = function (per) {
 ```
 
 ## 2 - the particles module
+
+I then have a particles module that will be used to create a simple state object that contains a pool of particle objects. Each particle object in the state objects particle pool is an instance of the Particle class that I have contained in the module. So there is a Particle Class, helper methods for creating and updating a collection of Particle class instances, and a few public methods that are used outside of the module.
 
 ```js
 var paricles = (function () {
@@ -191,6 +195,8 @@ var paricles = (function () {
 
 ## 3 - The draw module
 
+I then have a draw module for drawing the current state of a particles state object to the canvas.
+
 ```js
 var draw = (function () {
  
@@ -273,6 +279,8 @@ var draw = (function () {
 
 ## 4 - Main.js and index.html
 
+Now for a main.js file and some html to pull this all together.
+
 ```js
 // MAIN
 var canvas = document.createElement('canvas'),
@@ -313,3 +321,7 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+I wanted to make at least one canvas example that is something like this. That is some kind of project where there is one or more display objects that attack other display objects, and then more display objects just keep spawning back into the canvas.
