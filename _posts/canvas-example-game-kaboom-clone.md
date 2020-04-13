@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 09:49:06
-version: 1.11
+updated: 2020-04-13 09:55:21
+version: 1.12
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -330,6 +330,10 @@ var kaboom = (function () {
 ```
 
 ### 2.8 - The public API and the end of the module
+
+The Public API is just an Object literal that will be used to return a collection of methods and references to certain other things of interest in this module that I think should be public.
+
+There is of course the create state method that I will wan to make public so that I can create a state of the kaboom module from a main.js file. That state object can then be passed to other public methods that act on such a state object. Mainly the pointer start method, and the update method.
 
 ```
     var api = {
