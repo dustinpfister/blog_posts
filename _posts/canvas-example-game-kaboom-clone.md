@@ -5,12 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-12 19:22:35
-version: 1.5
+updated: 2020-04-13 09:21:13
+version: 1.6
 ---
 
-Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs.
+Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
 
+The nice thing about cloning some of these other games is that doing so if often fairly simple in a modern javaScript environment. In addition even with very simple games such as this there is much room for originality, nit just when it comes t skinning the game, but the logic also. For example there is working out how many levels there should be until the player hits the max level, how many points a bomb is worth, and many other little details such as the rate aw which bombs are dropped. So it can be fun, and interesting to clone a game like this, and play around with all the little details.
 
 <!-- more -->
 
