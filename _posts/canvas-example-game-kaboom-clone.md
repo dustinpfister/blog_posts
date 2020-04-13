@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 09:32:19
-version: 1.8
+updated: 2020-04-13 09:36:37
+version: 1.9
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -545,3 +545,7 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion and future ideas
+
+So this canvas example was a lot of fun to work on, and so far I have to say that this canvas example might be one of the best candidates so far when it comes to working on it more to turn it into something that might be considered and actual project of some kind. There are of course many other such [canvas examples](/2020/03/23/canvas-example/) that are also competing for my attention so this one might still end up being left stuck where it is.
