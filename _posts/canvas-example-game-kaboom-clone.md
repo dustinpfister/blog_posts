@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 10:06:02
-version: 1.15
+updated: 2020-04-13 10:12:06
+version: 1.16
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -130,7 +130,9 @@ This is a little helper method that I have made that helps to clamp and object s
     };
 ```
 
-### 2.4 - 
+### 2.4 - Movement methods
+
+When it comes to display objects or sprites if you prefer for kaboom there us the bomber, the player, and then the bombs. Each of these display objects have there own movement helpers because of the differences in how they move, and how they are controlled.
 
 ```js
     // move the bomber
@@ -200,6 +202,8 @@ This is a little helper method that I have made that helps to clamp and object s
         }
     };
 ```
+
+When it comes to my move player helper method I worked out an AI control feature. The AI is a very crude yet effective way of going about simulating machine assisted input for this game, and for the nature of the game doing so is not so hard to work out.
 
 ### 2.5 - 
 
