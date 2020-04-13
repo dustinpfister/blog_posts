@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-13 12:51:50
-version: 1.10
+updated: 2020-04-13 13:05:52
+version: 1.11
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is purely just for the sake of having some fun. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -211,6 +211,8 @@ var Machine = (function () {
 
 There will need to be a module that will contain all the logic that is needed to create, and update a state object for all the properties that have to do with a world.
 
+### 2.1 - The start of the world module and the item database
+
 ```js
 var worldMod = (function () {
  
@@ -248,7 +250,11 @@ var worldMod = (function () {
             maxWorkers: 1
         }
     ];
- 
+```
+
+### 2.2 - 
+
+```js
     // create a worker object
     var createWorkerObject = function (parent) {
         return {
@@ -283,7 +289,11 @@ var worldMod = (function () {
             liquidCount: opt.liquidCount || 0
         };
     };
- 
+```
+
+### 2.3 - 
+
+```js
     // set the item index for the given land
     var setLandItem = function (land, itemIndex) {
         var item = itemDataBase[itemIndex];
@@ -302,7 +312,11 @@ var worldMod = (function () {
             fw.workers.push(worker);
         }
     };
- 
+```
+
+### 2.4 - 
+
+```js
     var positionWorkers = function (area) {
         var dx = 0,
         dy = 1;
@@ -315,7 +329,11 @@ var worldMod = (function () {
             worker.pos.y = area.pos.y + (i * 32 * dy);
         });
     };
- 
+```
+
+### 2.5 - 
+
+```js
     var createWorldLand = function (world) {
         var len = world.landCount || 8,
         lands = [],
@@ -333,7 +351,6 @@ var worldMod = (function () {
                 }));
             i += 1;
         }
- 
         // start with a ship on land 0 with two workers
         setLandItem(lands[0], 0);
         setLandItem(lands[1], 2);
@@ -341,10 +358,15 @@ var worldMod = (function () {
         createWorker(world);
         createWorker(world);
         createWorker(world);
- 
         return lands;
     };
- 
+```
+
+### 2.6 - The public API of the World module
+
+So for the public API of the world module thus far I just have a create method.
+
+```
     return {
         create: function (solar) {
             var world = {
