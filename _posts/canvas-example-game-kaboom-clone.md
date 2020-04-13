@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-04-13 10:01:14
-version: 1.13
+updated: 2020-04-13 10:04:04
+version: 1.14
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_(video_game)) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs actually with a player controlled bucket that moves from one side to another.
@@ -90,6 +90,8 @@ var kaboom = (function () {
 ```
 
 ### 2.2 - The LEVELS Object
+
+Here I have some javaScript code that will generate an Object of Objects for each level in the game. This is one area where I find myself tweaking values all the time. Each level Object contains properties such as the Pixels per second speed of the bomber and the bombs that are dropped by the bomber.
 
 ```js
     var LEVELS = {};
