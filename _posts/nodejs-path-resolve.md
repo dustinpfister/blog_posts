@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 642
-updated: 2020-04-14 16:07:51
-version: 1.6
+updated: 2020-04-14 16:12:21
+version: 1.7
 ---
 
 In nodejs there is the path module and the [resolve method](https://nodejs.org/api/path.html#path_path_resolve_paths) of that module than can be used to resolve a relative path to an absolute path. A relative path can be a string representation of the current working directory, or to some other relative path to a resource. It is generally a god idea to think more so in terms of absolute paths to things rather than relative ones to help eliminate confusion.
@@ -46,3 +46,7 @@ console.log(path.dirname(__filename));
 The process cwd method should always refer to the current working directory, and the value of \_\_dirname should always refer to the location of the module. In addition there is the \_\_filename value that is the full file name of the current module, that can be passed to a method like the path dirname method to get the location of the current module.
 
 In many nodejs projects it is important to have a string grasp as to the difference between the current working directory, and the directory where the javaScript of the application is located. If for example I am making a nodejs command line tool that will be used to loop over the contents of a directory I will want to do so in the current working directory, and not the directory where the module is located. In addition If I want to load an additional module in the script that does so i will want to do so relative to the location of the module and not the current working directory.
+
+## 3 - Conclusion
+
+So the path resolve method is the standard go to method for making sure that a string value of a path resolves to an absolute path. There is much more to writ about when it comes to things that have to do with paths and nodejs though. For example there is looping backward one folder at a time from the current working directory looking for something to find out of the current working directory is a git folder or not. That of course is a matter for another post though.
