@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 639
-updated: 2020-04-14 10:32:41
-version: 1.3
+updated: 2020-04-14 10:40:07
+version: 1.4
 ---
 
 In [lodash there is the \_.xor](https://lodash.com/docs/4.17.15#xor) method that can create a new array that is the symmetric difference of the given arrays. In other words it will be an array of elements that show up in the arrays that are unique to each array, but not elements that are shared across all the arrays, or in other words elements that are intersections.
@@ -29,6 +29,10 @@ console.log(xor);
 ## 2 - Looking under the hood with this one in the lodash source code
 
 With a lot of lodash methods it is not always so hard to make a vanilla javaScript alternative, however with the lodash xor method it might not be so easy. Even if it is easy to make a stand alone method there might still be a lot to take into account when it comes to certain situations.
+
+As a lodash end user I often just call methods like \_.xor, get the result that I want, and then move on. However some times I take a look at the lodash source code to gain a deeper understanding and apprehension of what is going on with the lodash source code. Even if you do not use lodash, or maybe just a method or two now and then at all, the lodash source code is still worth checking out when it comes to reading code.
+
+I was able to get a similar result by copying and pasting in much of the lodash internals like this.
 
 ```js
 // arrayIncludes
@@ -190,3 +194,7 @@ let a = baseXor([[0, 1], [1, 2]]);
 console.log(a);
 // [0,2]
 ```
+
+This is still not all of the code that might be used in some cases as I did not copy over all the internal methods that are used in the various other internal methods that the lodash baseXor method uses. I did not take the time to make my own stand alone vanilla javaScript xor method for this post, but the basic idea that I started with is there in the baseXor method that I started out with in my attempt with two nested while loops. 
+
+I might get around to updating this post with a stand alone vanilla javaScript method that is just the core of what is going on here, but for now this is one where I might just use lodash and move on when and if i am in a situation in  which I need an xor method like this.
