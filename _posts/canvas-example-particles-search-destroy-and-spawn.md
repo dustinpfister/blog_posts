@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-14 09:35:59
-version: 1.3
+updated: 2020-04-14 09:46:50
+version: 1.4
 ---
 
 For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display object one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -101,7 +101,9 @@ var paricles = (function () {
     };
 ```
 
-### 2.2 - 
+### 2.2 - The create Pool helper
+
+Here I have a helper method that is called in the public create method to create the pool of particles for the first time.
 
 ```js
     // create a pool of particles
@@ -122,7 +124,9 @@ var paricles = (function () {
     };
 ```
 
-### 2.3 - 
+### 2.3 - Move all Particles in a pool, and Attack for hunters.
+
+I pulled the logic for moving all Particles in a pool into a method, and also did the same when it comes to attacking other Particles in rage for hunters.
 
 ```js
     // move all parts
@@ -159,7 +163,9 @@ var paricles = (function () {
     };
 ```
 
-### 2.4 - 
+### 2.4 - Purge dead Particles, and span new ones
+
+I will also ant methods for purging out dead Particles that have a hit point value of zero, and spawn in new ones.
 
 ```js
     // purge dead particles
@@ -186,7 +192,9 @@ var paricles = (function () {
     };
 ```
 
-### 2.5 - 
+### 2.5 - The public API
+
+The public API of the Particles module consists of tow methods one to create a state object, and another to update it.
 
 ```js
     // public API
