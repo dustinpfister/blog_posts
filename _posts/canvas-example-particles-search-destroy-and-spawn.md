@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-14 09:46:50
-version: 1.4
+updated: 2020-04-14 17:17:48
+version: 1.5
 ---
 
 For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display object one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -61,7 +61,7 @@ I then have a particles module that will be used to create a simple state object
 
 ### 2.1 - The start of the particles module, and the Particle Class
 
-The module follows the IIFE module pattern and returns a public API to a global called particles. At the top of the module I have one variable that is used as a way to hard code a set count of particles for the pool of particles. After that I have the Particle constructor followed by a few prototype methods.
+The module follows the [IIFE module pattern](/2020/02/04/js-iife/) and returns a public API to a global called particles. At the top of the module I have one variable that is used as a way to hard code a set count of particles for the pool of particles. After that I have the Particle constructor followed by a few prototype methods.
 
 With many of these canvas examples I might choose to take a more functional approach to the creation of these kinds of objects. However for this example I just wanted to move forward quickly and get this done in about an hour or so. With that said I just went with a constructor and moved on, it is not like it would be that hard to change things over to a more functional form anyway.
 
