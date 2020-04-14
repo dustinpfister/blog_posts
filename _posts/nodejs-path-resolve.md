@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 642
-updated: 2020-04-14 15:49:43
-version: 1.4
+updated: 2020-04-14 15:57:26
+version: 1.5
 ---
 
 In nodejs there is the path module and the [resolve method](https://nodejs.org/api/path.html#path_path_resolve_paths) of that module than can be used to resolve a relative path to an absolute path. A relative path can be a string representation of the current working directory, or to some other relative path to a resource. It is generally a god idea to think more so in terms of absolute paths to things rather than relative ones to help eliminate confusion.
@@ -42,3 +42,5 @@ console.log(  path.resolve('.') );
 console.log(  cwd );
 console.log(  thisMod );
 ```
+
+The process cwd method should always refer to the current working directory, and the \_\_dirname global should always refer to the 
