@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 639
-updated: 2020-04-14 10:40:07
-version: 1.4
+updated: 2020-04-14 10:44:50
+version: 1.5
 ---
 
 In [lodash there is the \_.xor](https://lodash.com/docs/4.17.15#xor) method that can create a new array that is the symmetric difference of the given arrays. In other words it will be an array of elements that show up in the arrays that are unique to each array, but not elements that are shared across all the arrays, or in other words elements that are intersections.
@@ -25,6 +25,8 @@ let xor = _.xor([0,1],[1,2]);
 console.log(xor);
 // [0,2]
 ```
+
+I can not say that i get into situations in which I need to use a method like this thus far, but if I need to this is a kind of method where i might just use the lodash xor method and move on in a project. There are many methods in lodash where it is a bot of a grey area as to the question if I should even bother with lodash as there is a native method that can be used. It is also true that there are many methods in lodash where it is really not all that hard to do what the method does with plain od vanilla javaScript. However I am not so sure that this is one of thous methods in lodash,
 
 ## 2 - Looking under the hood with this one in the lodash source code
 
