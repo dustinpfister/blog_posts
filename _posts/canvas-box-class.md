@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.16
-updated: 2020-04-15 09:06:24
+version: 1.17
+updated: 2020-04-15 10:18:41
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -103,6 +103,94 @@ So far so good, but when it comes to making a real canvas rect class I will of c
 
 There are all kinds of additional features that come to mind, also even when it comes to the single feature so far I might want to handle that a different way, so lets look at a more advanced example of this class now, with better movement, and some additional features.
 
-## 6 - Where to go from here.
+## 2 - A functional approach to a javaScript Box object
+
+AlthougnI do still find myself making and using javaScript classes I have found that I often do like taking a more functional programing approach to things like this also. Getting into functional programing in depth here would be off topic, however this section will make use of some of the aspects of a functional programing style. Mainly not mutating a given object in place, but returning a new one my making a shallow clone of a box instead of doing that.
+
+### 2.1 - A box.js file example of a functional javaScript Box module
+
+```js
+var Box = (function () {
+ 
+    var clone = function (bx) {
+        return JSON.parse(JSON.stringify(bx));
+    };
+ 
+    var api = {};
+ 
+    api.create = function (opt) {
+        opt = opt || {};
+        return {
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            w: opt.w === undefined ? 32 : opt.w,
+            h: opt.h === undefined ? 32 : opt.h
+        };
+    };
+ 
+    api.moveByHeading = function (bx, heading, delta) {
+        heading = heading === undefined ? 0 : heading;
+        delta = delta === undefined ? 1 : delta;
+        var nbx = clone(bx);
+        nbx.x = nbx.x + nbx.w / 2 + Math.cos(heading) * delta;
+        nbx.y = nbx.y + nbx.h / 2 + Math.sin(heading) * delta;
+        return nbx;
+    };
+ 
+    return api;
+ 
+}
+    ());
+```
+
+### 2.2 - The draw.js module
+
+```js
+var draw = {};
+ 
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+// draw a box
+draw.box = function (ctx, bx, fill, stroke) {
+    ctx.fillStyle = fill || '#ffffff';
+    ctx.strokeStyle = stroke || '#000000';
+    ctx.beginPath();
+    ctx.rect(bx.x, bx.y, bx.w, bx.h);
+    ctx.fill();
+    ctx.stroke();
+};
+```
+
+### 2.3 - A simple example of a functional approach to a javaScript Box
+
+```html
+<html>
+    <head>
+        <title>canvas box functional style</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="640" height="480"></canvas>
+        <script src="box.js"></script>
+        <script src="draw.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d'),
+bx = Box.create({
+        x: 100,
+        y: 80
+    }),
+bx2 = Box.moveByHeading(bx, Math.PI / 180 * 45, 100);
+draw.back(ctx, canvas);
+draw.box(ctx, bx);
+draw.box(ctx, bx2);
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Where to go from here.
 
 It's all about the project that I have in mind. Thats what will determine what kind of additional properties and methods I will be adding to the class. With some projects I will need to add sprites, or write methods that will allow for more advanced movement. Whatever the project may be, coming back to the simple old box class is often a good starting point.
