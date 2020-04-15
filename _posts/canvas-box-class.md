@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.19
-updated: 2020-04-15 10:24:12
+version: 1.20
+updated: 2020-04-15 10:25:53
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -172,6 +172,7 @@ draw.box = function (ctx, bx, fill, stroke) {
 
 ### 2.3 - A simple example of a functional approach to a javaScript Box
 
+So now it is time to test this out and as such it works as I expect. I can use the create method to create a new box object. Once I have a box object I can pass it as an argument to my move by heading method and when doing so that method will return a new box rather than mutating the box in place.
 
 ```html
 <html>
