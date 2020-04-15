@@ -5,15 +5,15 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2020-04-15 08:53:08
-version: 1.24
+updated: 2020-04-15 08:55:51
+version: 1.25
 ---
 
 When it comes to canvas and images most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded before hand. However that is just it, the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. As I now need to think about how to go about loading images, before continuing into another state of the project where it is safe to go ahead and use those external assets that must be loaded first.
 
 So I find working with external assets a little bit of a hassle, unless I use a framework to make quick work of loading image assets I end up spending a lot of time working on making a loader, and other aspects of a canvas framework of sorts rather than working on what makes my project truly original. So with that said there are other ways of creating and working with images in canvas as well, some of which do not need an external resource loaded first.
 
-Still sometimes I just want or need to work with extremal sprite sheets, and other image assets, so in this post I will be going over the use of the draw image method and other canvas image related topics.
+Still sometimes I just want or need to work with extremal sprite sheets, and other image assets, so in this post I will be going over the use of the draw image method,  on top of other canvas image related topics that have to do with drawing with javaScript code rather than a static external image asset.
 
 <!-- more -->
 
