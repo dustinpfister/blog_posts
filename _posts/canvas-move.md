@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2020-04-15 12:49:42
-version: 1.15
+updated: 2020-04-15 12:53:05
+version: 1.16
 ---
 
 With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with. However years later I am now aware of many different ways to go about moving a display object in a canvas project. Some of which to strike me as a better choice when going about handing movement of objects in a canvas project compared to just stepping by some kind of fixed deltas for x and y on each frame tick when I was first starting  out with canvas.
@@ -22,7 +22,9 @@ So In this post I will be touching base on each of these kinds of ways to pull o
 
 ## 1 - A very basic Canvas Movement example
 
-In this section I will be starting off with a very basic canvas movement example. If you have at least some experience with canvas chances are you might all ready be moving display object around this way.
+In this section I will be starting off with a very basic canvas movement example. If you have at least some experience with canvas chances are you might all ready be moving display object around this way. The reason why I say that is because in this section I will be starting out with the way to move a display object in canvas by just stepping by a fixed delta that is often just a number literal for each frame tick.
+
+So for the most part this section is here for the sake of just writing about the very basic starting point when it comes to canvas movement. If you are all ready familiar with this way of doing so you might want to skip over this section.
 
 ### 1.2 - The HTML file
 
