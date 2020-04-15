@@ -5,13 +5,15 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-02-03 11:55:25
-version: 1.19
+updated: 2020-04-15 13:09:22
+version: 1.20
 ---
 
-So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current state of a canvas elements drawing context. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data into a canvas. In addition there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor that can be used to create an instance of image data from scratch using just javaScript code and some other data source to create image data. 
+So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current state of a canvas elements drawing context. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data back into a canvas. 
 
-These methods give a way to have total pixel by pixel control over the creation and editing of images in canvas which is something that might be desired now and then. Doing so might be expensive in terms of system resources, but if it has to happen these methods are there to help with this sort of thing so lets look at some examples of the get image data method in canvas and some related stuff while we are at it.
+In addition to the canvas 2d context methods for getting and putting image data there is also the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) constructor. this Constructor function can be used to create an instance of image data from scratch using just javaScript code and some other data source to create image data. This image data that is then generated purely from javaScript code can the be used with the put image data context method as an alternative from getting data from a source first.
+
+These methods give a way to have total pixel by pixel control over the creation and editing of images in canvas which is something that might be desired now and then with certain projects where doing so might be called for. Doing so might be expensive in terms of system resources, but if it has to happen these methods are there to help with this sort of thing. So with that said lets look at some examples of the get image data method in canvas and some related stuff to working with image data in general with canvas and javaScript while we are at it.
 
 <!-- more -->
 
