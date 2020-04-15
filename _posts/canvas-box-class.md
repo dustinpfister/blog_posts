@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.17
-updated: 2020-04-15 10:18:41
+version: 1.18
+updated: 2020-04-15 10:21:37
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -108,6 +108,10 @@ There are all kinds of additional features that come to mind, also even when it 
 AlthougnI do still find myself making and using javaScript classes I have found that I often do like taking a more functional programing approach to things like this also. Getting into functional programing in depth here would be off topic, however this section will make use of some of the aspects of a functional programing style. Mainly not mutating a given object in place, but returning a new one my making a shallow clone of a box instead of doing that.
 
 ### 2.1 - A box.js file example of a functional javaScript Box module
+
+So my box.js file for this section is just a basic IIFE that contains a private clone method that I use to make a shallow clone of a box object. For this I am using the JSON trick to do so, it is a crude yet effective way to clone an object that should work on most modern platforms that will work okay for this kind of object.
+
+The module returns a public API to a Box global variable, these are of course the public methods that will be used outside of the module to create, and move aa box Object.
 
 ```js
 var Box = (function () {
