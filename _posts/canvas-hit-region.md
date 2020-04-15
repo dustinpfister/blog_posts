@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 12:18:09
-version: 1.12
+updated: 2020-04-15 12:21:46
+version: 1.13
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -169,6 +169,8 @@ var Box = (function () {
 }
     ());
 ```
+
+So this is not really an end point in development for several reasons. When it comes to making a game a functional approach might not always be a such a great idea because of the performance loss from cloning objects with certain methods that will not mutate in place. Also when it comes to a real project I am likely going to need this to do a bit more than just creating box objects, bounding box collision detection, and moving a box by a heading and delta. Still for just the sake of canvas hit areas this alone will do the trick.
 
 ### 3.2 - The draw.js file
 
