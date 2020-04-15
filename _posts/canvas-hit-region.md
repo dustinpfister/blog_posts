@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 12:27:02
-version: 1.16
+updated: 2020-04-15 12:34:06
+version: 1.17
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -197,7 +197,9 @@ draw.box = function (ctx, bx, fill, stroke) {
 
 ### 3.3 - An example of the javaScript module in action with hit detection
 
-Time to test this out now with a some html, and a little more javaScript.
+Time to test this out now with a some html, and a little more javaScript. In my html I have a hard coded canvas element that I get a reference to in some additional javaScript code after loading my box.js, and draw,js files outline above in this section.
+
+Once I have my reference to the canvas element, and the 2d drawing context, I create two box objects, and use the bounding box method of my box module to find out if they overlap or not. If so I set the color of one of them to red as a result if they do overlap.
 
 ```html
 <html>
@@ -230,6 +232,8 @@ draw.box(ctx, bx2);
     </body>
 </html>
 ```
+
+Not a big deal here in this example, however in a real project I would use bounding box to find out if a user has clicked a box area that is a button, or an enemy display object if it where some kind of game project.
 
 ## 4 - Conclusion
 
