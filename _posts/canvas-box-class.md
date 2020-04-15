@@ -4,8 +4,8 @@ tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.18
-updated: 2020-04-15 10:21:37
+version: 1.19
+updated: 2020-04-15 10:24:12
 ---
 
 The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
@@ -149,6 +149,8 @@ var Box = (function () {
 
 ### 2.2 - The draw.js module
 
+I will then have a separate draw.js file as yet another way of breaking things down and making the whole project more organized. For now it might not make that much of a difference will this section at least, but as a project grows doing these kinds of things become more important to keep this net and easy to follow I think.
+
 ```js
 var draw = {};
  
@@ -169,6 +171,7 @@ draw.box = function (ctx, bx, fill, stroke) {
 ```
 
 ### 2.3 - A simple example of a functional approach to a javaScript Box
+
 
 ```html
 <html>
