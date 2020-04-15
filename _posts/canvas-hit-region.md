@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 12:24:03
-version: 1.15
+updated: 2020-04-15 12:27:02
+version: 1.16
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -230,3 +230,7 @@ draw.box(ctx, bx2);
     </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+So for the most part I try to just stick to bounding box collision detection if I can. With some projects I might just have to use something more advanced, but often doing so often will eat up more resources. Bounding box collision detection is very simple and to the point with this, and it will not eat up as much over head as a more pixel perfect solution would.
