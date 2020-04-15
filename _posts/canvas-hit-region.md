@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 12:16:45
-version: 1.11
+updated: 2020-04-15 12:18:09
+version: 1.12
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -127,7 +127,7 @@ In additional I will be pulling logic that has to do with the box module into it
 
 ### 3.1 - The box.js file
 
-Here I have the box.js file that I made for this section. It is based on what I worked out for my post on making a javaScript box class in general that I started a few years back, and come back to now and then when it comes to editing.
+Here I have the box.js file that I made for this section. It is based on what I worked out for my post on making a javaScript box class in general that I started a few years back, and come back to now and then when it comes to editing. it is more or less the same as what i copied from there, but with the introduction of a bounding box method.
 
 ```js
 var Box = (function () {
