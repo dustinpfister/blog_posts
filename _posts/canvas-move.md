@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2020-04-15 12:53:05
-version: 1.16
+updated: 2020-04-15 12:56:51
+version: 1.17
 ---
 
 With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with. However years later I am now aware of many different ways to go about moving a display object in a canvas project. Some of which to strike me as a better choice when going about handing movement of objects in a canvas project compared to just stepping by some kind of fixed deltas for x and y on each frame tick when I was first starting  out with canvas.
@@ -188,3 +188,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## 4 - Conclusion
+
+Of course this is not everything when it comes to how to go about doing movement of canvas objects. However in my experience there are only so many ways when it comes to the basic core logic of how to go about updating the state of display objects. No mater what it is always some kind  of event driven project, a real time project, or some kind of animation that is created centered around a frame index value over a total count of frames.
