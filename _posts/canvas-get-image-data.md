@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-04-15 13:14:27
-version: 1.21
+updated: 2020-04-15 13:19:01
+version: 1.22
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current state of a canvas elements drawing context. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data back into a canvas. 
@@ -103,3 +103,5 @@ I can then use the put image data method to place this instance down onto the ca
 ## 4 - Conclusion
 
 So the get image data method is a built in way to get image data from a canvas element. In addition the image data object standard is a nice way to go about creating image data from scratch also. In any case the put image data method can also be used to draw image data back down onto a canvas element.
+
+There are many applications that come to mind when it comes to using these methods such as filters, creating images from data, and clever ways to go about hiding data within images when it comes to [Steganography](https://en.wikipedia.org/wiki/Steganography) just to name a few ideas when it comes to where to go from here with this.
