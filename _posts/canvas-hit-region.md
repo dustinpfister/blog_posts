@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 12:23:24
-version: 1.14
+updated: 2020-04-15 12:24:03
+version: 1.15
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -197,7 +197,7 @@ draw.box = function (ctx, bx, fill, stroke) {
 
 ### 3.3 - An example of the javaScript module in action with hit detection
 
-Time to test this out now.
+Time to test this out now with a some html, and a little more javaScript.
 
 ```html
 <html>
