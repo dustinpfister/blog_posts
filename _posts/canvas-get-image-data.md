@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-04-15 13:09:22
-version: 1.20
+updated: 2020-04-15 13:14:27
+version: 1.21
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current state of a canvas elements drawing context. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data back into a canvas. 
@@ -98,7 +98,7 @@ var img = new ImageData( data,1,1)
 ctx.putImageData( img, 1,1);
 ```
 
-I can then use the put image data method to place this instance down onto the canvas.
+I can then use the put image data method to place this instance down onto the canvas. So then this constructor along with the put image data method can be used to create a canvas powered [pset qBasic](https://chortle.ccsu.edu/QBasic/chapter05/bc05_3.html) style type method for example. I can also use it as a way to create a sprite sheet by way of some external JSON data rather than external image files, and so forth.
 
 ## 4 - Conclusion
 
