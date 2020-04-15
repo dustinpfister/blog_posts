@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2019-12-12 09:27:10
-version: 1.9
+updated: 2020-04-15 11:03:07
+version: 1.10
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -118,3 +118,111 @@ drawActions(actions, ctx);
 ```
 
 I can not say that this is the best way to go about setting up some buttons in a canvas project, but you get the general idea. A hit detection method can be used to find out of an object was clicked or not, and then some kind of action can be preformed. In a real project I might go about pulling code like this into a module of sorts, and also make the objects a little more flashy.
+
+## 3 - A simple functional javaScript canvas box module
+
+So maybe it will be best to make some kind of javaScript Box module that returns a Class, or a functional style module of some kind.
+
+### 3.1 - The box.js file
+
+Here I have the box.js file that I made for this section. It is based on what I worked out for my post on making a javaScript box class in general that I started a few years back, and come back to now and then when it comes to editing.
+
+```js
+var Box = (function () {
+ 
+    var clone = function (bx) {
+        return JSON.parse(JSON.stringify(bx));
+    };
+ 
+    var api = {};
+ 
+    api.create = function (opt) {
+        opt = opt || {};
+        return {
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            w: opt.w === undefined ? 32 : opt.w,
+            h: opt.h === undefined ? 32 : opt.h
+        };
+    };
+ 
+    api.boundingBox = function (bx1, bx2) {
+        return !((bx1.y + bx1.h) < bx2.y ||
+            bx1.y > (bx2.y + bx2.h) ||
+            (bx1.x + bx1.w) < bx2.x ||
+            bx1.x > (bx2.x + bx2.w));
+    };
+ 
+    api.moveByHeading = function (bx, heading, delta) {
+        heading = heading === undefined ? 0 : heading;
+        delta = delta === undefined ? 1 : delta;
+        var nbx = clone(bx);
+        nbx.x = nbx.x + Math.cos(heading) * delta;
+        nbx.y = nbx.y + Math.sin(heading) * delta;
+        return nbx;
+    };
+ 
+    return api;
+ 
+}
+    ());
+```
+
+### 3.2 - The draw.js file
+
+So then I will want a draw.js file that can be used to draw a box object to a canvas element.
+
+```js
+var draw = {};
+ 
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+// draw a box
+draw.box = function (ctx, bx, fill, stroke) {
+    ctx.fillStyle = fill || '#ffffff';
+    ctx.strokeStyle = stroke || '#000000';
+    ctx.beginPath();
+    ctx.rect(bx.x, bx.y, bx.w, bx.h);
+    ctx.fill();
+    ctx.stroke();
+};
+```
+
+### 3.3 - An example of the javaScript module in action with hit detection
+
+Time to test this out now.
+
+```html
+<html>
+    <head>
+        <title>canvas hit region</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="box.js"></script>
+        <script src="draw.js"></script>
+        <script>
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+var bx = Box.create({x: 100, y: 80}),
+bx2 = Box.create({y:80});
+ 
+bx2 = Box.moveByHeading(bx2, 0, 75);
+ 
+draw.back(ctx, canvas);
+var fill = 'white';
+if(Box.boundingBox(bx, bx2)){
+ fill = 'red';
+}
+draw.box(ctx, bx, fill);
+draw.box(ctx, bx2);
+ 
+        </script>
+    </body>
+</html>
+```
