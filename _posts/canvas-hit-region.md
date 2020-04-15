@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 12:21:46
-version: 1.13
+updated: 2020-04-15 12:23:24
+version: 1.14
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -174,7 +174,7 @@ So this is not really an end point in development for several reasons. When it c
 
 ### 3.2 - The draw.js file
 
-So then I will want a draw.js file that can be used to draw a box object to a canvas element.
+So then I will want a draw.js file that can be used to draw a box object to a canvas element. In addition I will place any additional draw methods hear that I will want to use from a project in general. For now I am just pulling the process of drawing a plain background into its own methods, but if this where to grow into something more this module would have a lot more going on.
 
 ```js
 var draw = {};
