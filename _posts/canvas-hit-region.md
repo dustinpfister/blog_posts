@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 11:03:07
-version: 1.10
+updated: 2020-04-15 12:16:45
+version: 1.11
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -121,7 +121,9 @@ I can not say that this is the best way to go about setting up some buttons in a
 
 ## 3 - A simple functional javaScript canvas box module
 
-So maybe it will be best to make some kind of javaScript Box module that returns a Class, or a functional style module of some kind.
+So maybe it will be best to make some kind of javaScript Box module that returns a Class, or a functional style module of some kind. In this section I will be going over a more functional approach to this kind of module design. So there will be a box.js module that can be used to create a Box object, and then a bounding box method as part of it that I can use to find if two box objects overlap each other or not.
+
+In additional I will be pulling logic that has to do with the box module into its own box.js file, and additional javaScript code that has to do with drawing a box module into a draw.js file. I will the be using those two assets in a main index.html file along with some additional code that will make use of these external javaScript files. This helps to keeping things better organized by separating logic that creates and works with state, from logic that draws state, and logic that sores a current state object.
 
 ### 3.1 - The box.js file
 
