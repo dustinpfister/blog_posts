@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-03-10 07:44:49
-version: 1.19
+updated: 2020-04-16 11:23:02
+version: 1.20
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -163,6 +163,153 @@ window.addEventListener('keyup', keyHandler);
 draw(ctx, canvas, state);
 ```
 
-## 3 - Conclusion
+## 3 - Starting a comprehensive keyboard, mouse and touch control module
+
+In many projects I might want to use some kind of javaScript module or framework that abstracts away all of this stuff when it comes to keyboard events, as well as mouse and touch events. Many popular game and front end frameworks do just that of course. However the appeal of using vanilla javaScript is to have control, over well, control. So with that said in this section I will be going over a module that is the beginnings of a module that handles input in general from keys, and pointer events and presets it as a standard object containing a key code array, and a single pointer position object.
+
+### 3.1 - Control.js
+
+```js
+var controlMod = (function () {
+ 
+    var getCanvasRelative = function (e) {
+        var canvas = e.target,
+        bx = canvas.getBoundingClientRect();
+        return {
+            x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+            y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+            bx: bx
+        };
+    };
+ 
+    var createInputState = function (canvas, win) {
+        var input = {
+            canvas: canvas,
+            win: win,
+            pointerDown: false,
+            keys: {},
+            pos: {
+                x: null,
+                y: null
+            },
+            keys: []
+        };
+        return input;
+    };
+ 
+    // handers
+    var handlers = {
+        pointerStart: function (pos, input, e) {
+            input.pointerDown = true;
+            input.pos.x = pos.x;
+            input.pos.y = pos.y;
+        },
+        pointerMove: function (pos, input, e) {
+            // update pos only if pointer is down
+            if (input.pointerDown) {
+                input.pos.x = pos.x;
+                input.pos.y = pos.y;
+            }
+        },
+        pointerEnd: function (pos, input, e) {
+            input.pointerDown = false;
+            input.pos.x = null;
+            input.pos.y = null;
+        }
+    };
+ 
+    // set an event handler for the given input state, DOMType, and type in handlers
+    var setPointerHandler = function (input, DOMType, type) {
+        console.log(input.canvas);
+        input.canvas.addEventListener(DOMType, function (e) {
+            var pos = getCanvasRelative(e);
+            e.preventDefault();
+            handlers[type](pos, input, e);
+        });
+    };
+ 
+    var setKeyHandler = function (input, DOMType) {
+        input.win.addEventListener(DOMType, function (e) {
+            input.keys[e.keyCode] = e.type === 'keydown';
+        });
+    };
+ 
+    return function (canvas, win) {
+        var input = createInputState(canvas, win || window);
+        // mouse
+        setPointerHandler(input, 'mousedown', 'pointerStart');
+        setPointerHandler(input, 'mousemove', 'pointerMove');
+        setPointerHandler(input, 'mouseup', 'pointerEnd');
+ 
+        // touch
+        setPointerHandler(input, 'touchstart', 'pointerStart');
+        setPointerHandler(input, 'touchmove', 'pointerMove');
+        setPointerHandler(input, 'touchend', 'pointerEnd');
+ 
+        // keyboard
+        setKeyHandler(input, 'keydown');
+        setKeyHandler(input, 'keyup');
+        return input;
+    };
+ 
+}
+    ());
+```
+
+### 3.2 - trying this out with draw.js, main.js and some html
+
+```js
+// Draw
+var draw = {};
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+draw.debugInput = function (ctx, input) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 10);
+    ctx.fillText('input.pos: ' + input.pos.x + ',' + input.pos.y, 10, 20);
+    ctx.fillText('input.keys[87] (w): ' + input.keys[87], 10, 40);
+    ctx.fillText('input.keys[65] (a): ' + input.keys[65], 10, 50);
+    ctx.fillText('input.keys[83] (s): ' + input.keys[83], 10, 60);
+    ctx.fillText('input.keys[68] (d): ' + input.keys[68], 10, 70);
+};
+```
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+var input = controlMod(canvas);
+ 
+var loop = function () {
+ 
+    requestAnimationFrame(loop);
+ 
+    draw.back(ctx, canvas);
+    draw.debugInput(ctx, input);
+ 
+};
+ 
+loop();
+```
+
+```html
+<html>
+    <head>
+        <title>canvas keyboard</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="./lib/control.js"></script>
+        <script src="./lib/draw.js"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 Although pointer events are what I should always start out with some projects just work better with keyboard input, or some kind of game pad input.
