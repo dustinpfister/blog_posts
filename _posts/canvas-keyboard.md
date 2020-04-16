@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-04-16 11:23:02
-version: 1.20
+updated: 2020-04-16 11:26:13
+version: 1.21
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -169,6 +169,8 @@ In many projects I might want to use some kind of javaScript module or framework
 
 ### 3.1 - Control.js
 
+For this kind of project I started out with a main control.js file that creates a single global variable and returns a single public function to it from within an IIFE.
+
 ```js
 var controlMod = (function () {
  
@@ -257,6 +259,8 @@ var controlMod = (function () {
 ```
 
 ### 3.2 - trying this out with draw.js, main.js and some html
+
+Now it is time to try out my control.js module to see if things work as expected.
 
 ```js
 // Draw
