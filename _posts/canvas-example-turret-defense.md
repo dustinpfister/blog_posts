@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-03-23 09:29:35
-version: 1.20
+updated: 2020-04-16 17:54:01
+version: 1.21
 ---
 
-Todays post will be on yet another [canvas examples](/2020/03/23/canvas-example/), this time a turret defense style game demo type thing that might be fun. This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
+Todays post will be on yet another [canvas examples](/2020/03/23/canvas-example/), this time a [gun turret](https://en.wikipedia.org/wiki/Gun_turret) defense style game that will be just a turret at the center of the canvas that shoots at enemies coming in from all directions.
+
+This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
 
 <!-- more -->
 
