@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-04-16 11:32:32
-version: 1.22
+updated: 2020-04-16 11:36:09
+version: 1.23
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -169,7 +169,9 @@ In many projects I might want to use some kind of javaScript module or framework
 
 ### 3.1 - Control.js
 
-For this kind of project I started out with a main control.js file that creates a single global variable and returns a single public function to it [from within an IIFE](/2020/02/04/js-iife/). Inside the body of the IIFE I have some private methods including a [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) that I worked out in another post that I made after starting this post.
+For this kind of project I started out with a main control.js file that creates a single global variable and returns a single public function to it [from within an IIFE](/2020/02/04/js-iife/). Inside the body of the IIFE I have some private methods including a [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) that I worked out in another post that I made after starting this post. This method just helps with getting a point that is relative to the upper left corner of the canvas rather than the window of the browser.
+
+I then Have additional helpers that are used to create an input state object, as well as attach event handers to the canvas that is given when calling the main public method that is returned.
 
 ```js
 var controlMod = (function () {
@@ -257,6 +259,8 @@ var controlMod = (function () {
 }
     ());
 ```
+
+When using this module as expected the result is an object that can be used in the body of an update method to know the current status of things when it comes to keys, and a general pointer object that can be updated by mouse or touch events.
 
 ### 3.2 - trying this out with draw.js, main.js and some html
 
