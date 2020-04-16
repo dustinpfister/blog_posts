@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-15 21:57:17
-version: 1.7
+updated: 2020-04-15 22:09:00
+version: 1.8
 ---
 
 For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display object one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -311,7 +311,24 @@ var draw = (function () {
 
 ## 4 - Main.js and index.html
 
-Now for a main.js file and some html to pull this all together.
+Now for a main.js file and some html to pull this all together. In my html file I have a gamearea div, and I link to my utils module, the particles module, the draw module, and some additional javaScript in a main,js file.
+
+```html
+<html>
+    <head>
+        <title>canvas example particles search destroy and spawn</title>
+    </head>
+    <body style="margin:0px;">
+        <div id="gamearea"></div>
+        <script src="utils.js"></script>
+        <script src="particles.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+
 
 ```js
 // MAIN
@@ -339,20 +356,6 @@ var loop = function () {
 loop();
 ```
 
-```html
-<html>
-    <head>
-        <title>canvas example particles search destroy and spawn</title>
-    </head>
-    <body style="margin:0px;">
-        <div id="gamearea"></div>
-        <script src="utils.js"></script>
-        <script src="particles.js"></script>
-        <script src="draw.js"></script>
-        <script src="main.js"></script>
-    </body>
-</html>
-```
 
 ## 5 - Conclusion
 
