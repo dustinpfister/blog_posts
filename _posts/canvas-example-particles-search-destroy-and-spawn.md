@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-15 21:55:56
-version: 1.6
+updated: 2020-04-15 21:57:17
+version: 1.7
 ---
 
 For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display object one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -227,7 +227,7 @@ The public API of the Particles module consists of tow methods one to create a s
 
 ## 3 - The draw module
 
-I then have a draw module for drawing the current state of a particles state object to the canvas. when it comes to drawing a particle I broke the several parts of drawing a particle into several draw methods for drawing the base of the particle from other methods that draw other parts of a particle. 
+I then have a draw module for drawing the current state of a particles state object to the canvas. when it comes to drawing a particle I broke the several parts of drawing a particle into several draw methods for drawing the base of the particle from other methods that draw other parts of a particle. Many of these are internal methods that are used by the public method that is returned by the module that is used to draw the full pool of the state object that I give it. 
 
 ```js
 var draw = (function () {
