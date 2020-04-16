@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-04-15 21:50:14
-version: 1.2
+updated: 2020-04-15 22:16:30
+version: 1.3
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. I as happy with how my [grid gradient canvas example](/2020/03/26/canvas-example-grid-gradient/) came out as it is was a canvas example that I put a little more time and effort into than usual. The main reason why I liked working on it so much was the plug-in system. However that was just an eye candy type thing, it would be nice to start another canvas example that is something els like that only it is something maybe a little more interesting.
@@ -17,7 +17,7 @@ So this canvas example will be similar to the grid gradient example, but this ti
 
 ## 1 The world.js file
 
-The world.js file is the main module that will create all the cells for the gird that will make up the world.
+The world.js file is the main module that will create all the cells for the gird that will make up the world. It also contains some internal objects that can be expanded with optional plug-ins via a public load method. So I aim to try to keep the world.js file as slim as possible, pulling much of what I think might need to happen for this project out of the world.js module and into external plug-ins.
 
 ```js
 var world = (function () {
