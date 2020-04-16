@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2020-04-16 07:16:50
-version: 1.20
+updated: 2020-04-16 07:23:54
+version: 1.21
 ---
 
 In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. Canvas layers often might refer to having more than one canvas element in a container element, with them all positioned on top of each other in a certain z index order. 
@@ -19,7 +19,7 @@ There are many was to go about increasing the efficiency of a canvas project, bu
 
 ## 1 - canvas layer basic example
 
-So the basic idea of canvas layers is that you just have a collection of canvas elements. A canvas element that is created and added to a container element first will have a lower z index value then canvas elements added after using the document.appenbdChild method unless something is done to change that. 
+So the basic idea of canvas layers is that you just have a collection of canvas elements in a container element. A canvas element that is created and added to a container element first will have a lower z index value then canvas elements added after using the document.appendChild method unless something is done to change that. There are other methods that can be used to append elements to a parent element differently which would be one way to have control over z order. However there are other ways such as using the CSS zIndex property, or just treating each canvas in the HTML collection as a z level and drawing to it accordingly. However for starters in this section I will just be going over a basic example of canvas layering.
 
 Anything that should have a lower z index value, such as a background can be drawn to a canvas that is behind another canvas that draws something that updates on every frame tick in the foreground. In some situations this can help to improve frame rate a little, by taking what is updated only once at the start of a game and drawing it just once in a separate canvas.
 
