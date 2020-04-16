@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-04-16 11:26:13
-version: 1.21
+updated: 2020-04-16 11:32:32
+version: 1.22
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -169,7 +169,7 @@ In many projects I might want to use some kind of javaScript module or framework
 
 ### 3.1 - Control.js
 
-For this kind of project I started out with a main control.js file that creates a single global variable and returns a single public function to it from within an IIFE.
+For this kind of project I started out with a main control.js file that creates a single global variable and returns a single public function to it [from within an IIFE](/2020/02/04/js-iife/). Inside the body of the IIFE I have some private methods including a [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) that I worked out in another post that I made after starting this post.
 
 ```js
 var controlMod = (function () {
