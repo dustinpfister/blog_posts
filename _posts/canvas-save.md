@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2020-04-16 07:54:31
-version: 1.16
+updated: 2020-04-16 07:57:50
+version: 1.17
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the [canvas restore method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore). 
@@ -49,7 +49,9 @@ console.log(ctx.fillStyle); // '#ff0000'
 </html>
 ```
 
-Using the canvas save method when this is the only change is kind of over kill, still you get the basic idea. The save method can be used to save the state of the drawing context. Maybe it is not called for when it just comes to a fill color change, but if many changes are made from a preferred state it can be useful to quickly restore back to that preferred state once I am done drawing.
+Using the canvas save method when this is the only change is kind of over kill, still you get the basic idea of what the canvas save and restore methods are used for. The save method can be used to save the state of the drawing context, and then the restore can set it back. 
+
+Maybe it is not called for when it just comes to a fill color change, but if many changes are made from a preferred standard state it can be useful to quickly restore back to that preferred state once I am done drawing with a different state consisting of many changes beyond that of just the fill color. With that said lets look at some additional examples of the canvas save method in action.
 
 ## 2 - Canvas save rotate example
 
