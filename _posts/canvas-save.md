@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2020-04-16 07:49:58
-version: 1.15
+updated: 2020-04-16 07:54:31
+version: 1.16
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the [canvas restore method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore). 
@@ -19,7 +19,7 @@ So in this post I will be going over some quick examples of the canvas save meth
 
 ## 1 - Basic canvas save method example
 
-For starters with the canvas save method, in this example I am just using it to save the drawing context and then just changing the fill color of the context. I then call the restore method and then the old fill color is restored.
+For starters with the canvas save method, in this example I am just using it to save the drawing context and then just change the fill color of the drawing context. I set the drawing fill style of the daring context to red and draw a square first, then call the canvas save method to save that context state. I then change the fill style of the saved context to blue, and draw another square. I then call the restore method and then the old fill color is restored at which point I draw another square that sure enough is red the original color that is was set to before calling save.
 
 ```html
 <html>
