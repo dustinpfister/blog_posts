@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-15 22:09:00
-version: 1.8
+updated: 2020-04-15 22:11:27
+version: 1.9
 ---
 
 For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display object one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -328,7 +328,7 @@ Now for a main.js file and some html to pull this all together. In my html file 
 </html>
 ```
 
-
+In the main.js file I create and inject the canvas element into the game area div, and get a reference to the drawing context also.
 
 ```js
 // MAIN
@@ -355,6 +355,8 @@ var loop = function () {
  
 loop();
 ```
+
+I use the create method of my particles module to create a state object that I can then pass to by draw module methods and the update method of the particles module in the body of the main app loop.
 
 
 ## 5 - Conclusion
