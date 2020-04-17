@@ -5,13 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-03-10 08:05:54
-version: 1.9
+updated: 2020-04-17 09:28:24
+version: 1.10
 ---
 
-When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object. To do this I just need to attach a touch or mouse event to the canvas element, and then use the get bounding client rect method of the canvas element to get the offsets for the position of the canvas. Once I do that I can use the get bounding client rect method to adjust the client xn and y values to get the desired position.
+When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object. To do this I just need to attach a touch or mouse event to the canvas element, and then use the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method of the canvas element to get the offsets for the position of the canvas relative to the window. Once I do that I can use the object returned by the get bounding client rect method to adjust the client x and y values of the event object in the mouse or touch event handler to get the desired canvas element relative position.
 
-There is a bot more to it then just that when it comes to how to go about making methods that will work with just mouse events, just touch events, or both in most situations. So in this post I will be taking a look at a few examples of how to go about getting a canvas relative mouse or touch position with client side javaScript and canvas elements.
+So a get canvas relative position method of sorts has become a usual suspect of sorts along with things like the distance formula, and bounding box collision detection when working out a new canvas project without using some kind fo framework that might abstract away this functionality along with all kinds of other things.
+
+There is a bit more to how to go about getting a canvas relative position when it comes to how to go about making methods that will work with just mouse events, just touch events, or both in most situations. Also there is working out a more comprehensive input controller, or input handler of sorts that will work well with mouse, multi touch, and keyboard events.However for now in this post I will be taking a look at a few examples of how to go about getting a canvas relative mouse or touch position with client side javaScript and canvas elements.
 
 <!-- more -->
 
