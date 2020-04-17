@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2020-04-17 08:19:34
-version: 1.17
+updated: 2020-04-17 08:26:03
+version: 1.18
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great when  it comes to quickly getting up and running with basic charts. 
@@ -26,7 +26,7 @@ It is not to hard to just work out a chart with just the canvas 2d drawing conte
 
 ## 2 - Basic example of charts.js use
 
-So to get started with chartjs first I need to grab the version of chartjs that I want to use. In this post I was using [chartjs 2.7.1](https://github.com/chartjs/Chart.js/tree/v2.7.1/dist). Once I have a copy of chartjs to link to with a script tag I can then write some code for a basic line chart.
+So to get started with chartjs first I need to grab the version of chartjs that I want to use for thus post. In this example I was using [chartjs 2.7.1](https://github.com/chartjs/Chart.js/tree/v2.7.1/dist). Once I have a copy of chartjs to link to with a script tag I can then write some code for a basic line chart.
 
 ```html
 <html>
@@ -63,7 +63,7 @@ chart = new Chart(ctx, {
 
 ## 3 - updating a chart
 
-Updating a chart is as simple as just changing the dataset values and calling the chart.update method in the instance of Chart that is returned when calling the constructor.
+Updating a chart is as simple as just changing the dataset values and calling the chart.update method in the instance of chart that is returned when calling the constructor.
 
 ```js
 setInterval(function(){
@@ -135,7 +135,9 @@ setInterval(function(){
 
 ## 4 - Vanilla js Draw line chart alternative
 
-Although using chartjs is a great solution for quickly getting a line chart as well as several other types of charts in a project, it is not to hard to work out a vanilla javaScript solution. Of course it will be a bit time consuming compared to just adding chartjs to a project and moving on. However I have found that it is really not to hard to get a basic working solution up and running, and I also have the option to make the solution more streamlined, with features that I want, and no additional bulk that will slow down site performance.
+Although using chartjs is a great solution for quickly getting a line chart as well as several other types of charts in a project, I often prefer to work out my own solutions for things like this. I might want to make a simple solution that will not eat up less overhead, or do something new when it comes to how to go about presenting data. Another reason that comes to mind is to just simple have control when it comes to things like licensing terms, bugs, coding style and so forth.
+
+Of course it will be a bit time consuming compared to just adding chartjs to a project and moving on. However I have found that it is really not to hard to get a basic working solution up and running, and I also have the option to make the solution more streamlined, with features that I want, and no additional bulk that will slow down site performance.
 
 ## 4.1 - The draw Line chart method
 
