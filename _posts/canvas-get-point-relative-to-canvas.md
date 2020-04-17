@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-04-17 09:41:27
-version: 1.12
+updated: 2020-04-17 09:54:43
+version: 1.13
 ---
 
 When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object. To do this I just need to attach a touch or mouse event to the canvas element, and then use the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method of the canvas element to get the offsets for the position of the canvas relative to the window. Once I do that I can use the object returned by the get bounding client rect method to adjust the client x and y values of the event object in the mouse or touch event handler to get the desired canvas element relative position.
@@ -103,6 +103,6 @@ I do not work on many projects that make use of multi touch. The reason why is b
 
 So the process of getting a canvas relative position with a pointer event is a little complicated, but that is the way it should be after all. When it comes to front end javaScript we are not always dealing with canvas elements, the default value should therefore be window relative.
 
-If you do not want to bother with these kinds of things then maybe you should think about working inside of a framework, or slowly start making your own framework by working this, along with all kinds of other things like this into it.
+If you do not want to bother with these kinds of things then maybe you should think about working inside of a framework, or slowly start making your own framework by working this, along with all kinds of other things that have to do with input and much more into it. I have come to fine that when I do that I end up spending more time making a framework rather than an actual project though.
 
 There is much more to write about when it comes to pointer events, and input in general as part of the process of making a canvas application. I could go on about keyboard events, simulating input, and working everything together into some kind of all powerful input control module of some kind. Maybe I will get around to editing this post if I get to that, but yet again,  maybe that is a matter for another post.
