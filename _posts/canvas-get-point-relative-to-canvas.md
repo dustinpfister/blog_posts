@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-04-17 09:28:24
-version: 1.10
+updated: 2020-04-17 09:34:47
+version: 1.11
 ---
 
 When starting any kind of canvas project I want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object. To do this I just need to attach a touch or mouse event to the canvas element, and then use the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method of the canvas element to get the offsets for the position of the canvas relative to the window. Once I do that I can use the object returned by the get bounding client rect method to adjust the client x and y values of the event object in the mouse or touch event handler to get the desired canvas element relative position.
@@ -19,11 +19,11 @@ There is a bit more to how to go about getting a canvas relative position when i
 
 ## 1 - The canvas point basics
 
-So once again the basic idea with getting the canvas relative point is to use the get bounding client rect method of the canvas element of interest, and then use that to adjust any values in an event object that are window relative. 
+So once again the basic idea with getting the canvas relative point is to use the get bounding client rect method of the canvas element of interest, and then use that to adjust any values in an event object that are window relative.
 
 One way to do this is to use the target property of an event object that was fired from an event hander that is attached to the canvas element to get a reference to the canvas element that was clicked. At which point the get bounding client rect method can be called off the reference to the canvas element, and then that can be used to adjust the client x and y values of an event object to work with in the body of the handler.
 
-So you might end end with some javaScript code that looks something like this.
+So you might end end with some javaScript code that looks something like this if mouse events are only of concern for starters.
 
 ```js
 var getCanvasRelative = function (e) {
@@ -37,7 +37,9 @@ var getCanvasRelative = function (e) {
 };
 ```
 
-Such a method might work out okay for mouse events, but what about supporting touch you might ask. When it comes to touch events there is not just one set of x and y values but one or more sets of values in an array. So getting something like this to work for touch, and mouse events will be a little more complex.
+Such a method might work out okay for mouse events only, but what about supporting touch events? When it comes to touch events there is not just one set of x and y values but one or more sets of values in an array of touch objects. So getting something like this to work for touch, and mouse events will be a little more complex. 
+
+Also it is important I think to keep in mind that nature of web based applications and how they differ from mobile phone applications. In that kind of programing environment it is safe to just go ahead and do all kinds of things with multi touch, however in a web application environment I have to take into account that a significant volume of traffic is going to be using the application with a traditional desktop system that might not have a touch screen.
 
 ## 2 - Support touch and mouse events
 
