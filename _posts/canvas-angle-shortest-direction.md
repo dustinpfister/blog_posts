@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-04-17 10:45:41
-version: 1.8
+updated: 2020-04-17 10:47:24
+version: 1.9
 ---
 
 When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle I which to get to, and I want to start stepping the current angle by a delta value that will get the current angle to the target angle. 
 
-There are many projects out on the open interment that help with this one such project is [angle.js](https://github.com/infusion/Angles.js/), this project has a whole bunch of methods that help with well yes angles.
+There are many projects out on the open interment that help with this one such project is [angle.js](https://github.com/infusion/Angles.js/), this project has a whole bunch of methods that help with well yes angles. In that project there are methods that help with this and mostly other topics that have to do with angles. However in this post I will be going over some quick copy and past solutions for finding the quickest direction to a target angle from a starting angle.
 
 <!-- more -->
 
