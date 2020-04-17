@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2020-04-17 08:28:41
-version: 1.19
+updated: 2020-04-17 08:31:44
+version: 1.20
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great when  it comes to quickly getting up and running with basic charts. 
@@ -212,4 +212,4 @@ The project works as expected, but there is a bit more that comes to mind. I mig
 
 ## 5 - Conclusion
 
-Chart.js is pretty cool for doing anything with charts. I just wanted to put together a quick post on this one, I will likely write more about it in the future.
+Chart.js is pretty cool for doing anything with charts, and getting such tasks out of the way real fast and moving on, at least when it comes to some usual options when it comes to charts. There is also doing way more when it comes to working out my own solutions for charts, graphs, and creative ways to go about presenting data. One idea that comes to mind is to make mu own solution that is not just my own code, but pulling the use of three.js into the mix to make all kinds of cool 3d type graphs and charts. I just wanted to put together a quick post on this one, I will likely write more about it in the future.
