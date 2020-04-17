@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-03-23 09:29:31
-version: 1.14
+updated: 2020-04-17 13:29:10
+version: 1.15
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells if you prefer. This is something that will come into play for many projects that are some kind of game that involves a world map of cells. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -45,7 +45,7 @@ g.parseGridProps = function (grid) {
 };
 ```
 
-This method might be berry off as a private helper method inside an IIFE module pattern. However I hate getting caught up in these issues, at this time I just want to get the general idea of this module togetaher and move on.
+This method might be berry off as a private helper method inside an IIFE module pattern. However I hate getting caught up in these issues, at this time I just want to get the general idea of this module together and move on.
 
 ### 1.2 - Create grid object methods
 
