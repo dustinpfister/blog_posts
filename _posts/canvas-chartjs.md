@@ -4,8 +4,8 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2020-04-17 08:12:43
-version: 1.16
+updated: 2020-04-17 08:19:34
+version: 1.17
 ---
 
 These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great when  it comes to quickly getting up and running with basic charts. 
@@ -18,7 +18,11 @@ Still it is not to hard to work out a simple native javaScript solution as well,
 
 ## 1 - Canvas Chart basics
 
-So there is more that one way to make charts with canvas of course. In this post I am using a project called chart js that is pretty flashy, but it is also not to hard to just work out a chart with just the canvas 2d drawing context by itself. So a canvas chart could be created by adding chartjs to a project, or it could be just created with methods like line to, move to, and stroke when just working with the plain old canvas 2d drawing context.
+So there is more than one way to make charts with canvas of course as there is doing just about everything that comes to mind when it comes to working out my own solutions for presenting data. However if I just want a simple line or pie graph there are solutions out on the open interment that can be used to get that out of the way in a flash.
+
+In this post I am using a project called chart js that is pretty flashy, but gets the job done never the less. So a canvas chart could be created by adding charts to a project, or it could be just created with methods like line to, move to, and stroke when just working with the plain old canvas 2d drawing context to write my own native javaScript solution for this.
+
+It is not to hard to just work out a chart with just the canvas 2d drawing context by itself. However even so it is still something that can prove to be a little time consuming, and pull attention from the aspects of the project that really matter. In any case I will be going over some char.js examples here, as well as my own copy and past native solution that I worked out for this post on canvas and charts.
 
 ## 2 - Basic example of charts.js use
 
