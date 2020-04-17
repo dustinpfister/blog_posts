@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-03-23 09:26:47
-version: 1.13
+updated: 2020-04-17 10:57:01
+version: 1.14
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
@@ -98,7 +98,7 @@ In this section I am going to be going over a slightly more advanced version of 
 
 ### 2.1 - updated get clock method
 
-Here Is the get clock method that gives the same propertyy as before, but now also gives a day percetn property that is a value between 0 and 1 depending on the time of day.
+Here Is the get clock method that gives the same property as before, but now also gives a day percent property that is a value between 0 and 1 depending on the time of day.
 
 ```js
 // get a clock state with the give date or new Date(0) by default
@@ -160,4 +160,4 @@ var loop = function (canvas) {
 
 ## 3 - Conclusion
 
-So making clocks in canvas can be pretty fun, and there is some much room for originality.
+So making clocks in canvas can be pretty fun, and there is much room for originality with this. In addition I would say that making simple clock canvas examples like this is a good starting point for just giving ones self a project to work on when it comes to javaScript in canvas. Other ideas for canvas examples such as games can end up becoming very complicated and time consuming, unless they are kept simple.
