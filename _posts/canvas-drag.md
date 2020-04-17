@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-03-11 09:07:55
-version: 1.11
+updated: 2020-04-17 10:11:19
+version: 1.12
 ---
 
 In [canvas drag](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) and drop actions are part of many projects when working out a user interface. There are ways of dragging whole elements, but in this post I will be writing about dragging a display object in the canvas.
 
-The process of making a canvas drag of sorts one way involves getting a canvas relative point in a pointer start event and then use that to find out if a display object was clicked or not. If so set a boolean to true that is then used in the logic of a pointer move event that will be used to set the position of the display object to the canvas relative point. Finally there will be a pointer end event that just sets the boolean back to false.
+The process of making a canvas drag of sorts might involve getting started by getting a canvas relative point in a pointer start event such as mouse down or touch start. Then use that to find out if a display object was clicked or not. If so set a boolean to true that is then used in the logic of a pointer move event that will be used to set the position of the display object to the canvas relative point. Finally there will be a pointer end event that just sets the boolean back to false leaving the dragged display object at its new location.
 
 <!-- more -->
 
