@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-03-23 09:10:40
-version: 1.18
+updated: 2020-04-17 10:53:32
+version: 1.19
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, and just make more [canvas examples](/2020/03/23/canvas-example/) to play around with, but also just simply as a fun and interesting way to apply what I all ready know.
@@ -151,4 +151,4 @@ To make thing more interesting though I could mess around with the expressions a
 
 ## 2 - Conclusion
 
-There is much more to write about when it comes to fractals, and ways to define the logic of fractals and how to go about drawing them. If I get some more time, maybe I will get around to continuing to expand on this post.
+There is much more to write about when it comes to fractals, and ways to define the logic of fractals and how to go about drawing them. If I get some more time, maybe I will get around to continuing to expand on this post, as well as maybe start a few additional post on this topic. fractals are and aspect of using javaScript and canvas that interest me, but I do not have as much experience working with them as I would like to have. There are many other things to writing about when it comes to these canvas examples, javaScript, and programing in general.
