@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-04-18 11:10:04
-version: 1.22
+updated: 2020-04-18 11:13:40
+version: 1.23
 ---
 
 This [canvas examples](/2020/03/23/canvas-example/) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic idea of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird) of course, but the basic idea is there and that is all I wanted as a starting point at least.
@@ -368,3 +368,7 @@ var loop = function () {
  
 loop();
 ```
+
+## 5 - Conclusion
+
+I am generally happy with how this project has come together thus far, and I have to say that this project is one of several canvas examples that I might put more time into. With that said of course there is much more that needs to happen when it comes to making this into an actual project rather that just a simple canvas example for the sake of this post. Still then general idea that I had is up and working I just need to get around to adding some more features, skin it, and see about promoting it some how.
