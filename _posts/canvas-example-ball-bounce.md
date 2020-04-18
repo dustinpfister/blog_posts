@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-04-18 09:29:18
-version: 1.27
+updated: 2020-04-18 09:34:09
+version: 1.28
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
@@ -42,6 +42,8 @@ b.createBallObject = function (opt) {
     return ball;
 };
 ```
+
+The delta value will be used in conjunction with the heading value to create a vector of sorts later on in this project. if you do not know what a vector is, it is just simply a direction and a magnitude. Or in other worlds an angle and a distance of length. Vectors are used in conjunction with points to create delta values of changes in the position of the points.
 
 ### 1.2 - a Create ball collection method
 
