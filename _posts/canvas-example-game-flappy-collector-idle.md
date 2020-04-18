@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2020-03-23 09:29:28
-version: 1.20
+updated: 2020-04-18 11:09:08
+version: 1.21
 ---
 
-This [canvas examples](/2020/03/23/canvas-example/) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic ide of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird) of course, but the basic idea is there.
+This [canvas examples](/2020/03/23/canvas-example/) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic idea of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird) of course, but the basic idea is there and that is all I wanted as a starting point at least.
 
 In this canvas example I am just expanding from that canvas example by making it so the game plays by itself. The player can still play manually if they want to, but after a period of inactivity the game will just play automatically. The direction I was going with this one was to make this canvas example into an idle game of sorts where the player can play manually, but there is also some kind of automatic action also.
 
