@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-04-18 09:25:51
-version: 1.26
+updated: 2020-04-18 09:29:18
+version: 1.27
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
@@ -19,9 +19,9 @@ So I would not stop here when it comes to looking for additional resources on th
 
 ## 1 - The ball module for the canvas example
 
-So lets start out with the ball module for this canvas example. This is just a simple collection of methods that will create and return a ball object of sorts, and then other methods that will work with such a method. 
+So lets start out with the ball module for this canvas example. This is just a simple collection of methods that will create and return a ball object of sorts, and then other methods that will work with such an object. 
 
-These days I am getting away from writing classes in favor of functional, or at least functional like modules. Now suggesting that doing so is a better or worse way of doing things, it is just that I think it is time for me to start doing certain things a litter different now and then.
+These days I am getting away from writing classes in favor of functional, or at least functional like modules. I am not suggesting that doing so is a better or worse way of doing things, it is just that I think it is time for me to start doing certain things a litter different now and then. In addition doing so gos beyond doing so just for the sake of novelty, as I find functional style programing cleaner, and easier to follow.
 
 ### 1.1 - The start of the module and the create ball object method
 
