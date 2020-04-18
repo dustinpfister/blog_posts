@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-03-23 09:10:40
-version: 1.23
+updated: 2020-04-18 09:20:52
+version: 1.24
 ---
 
-The subject of bouncing a ball around a canvas is a typical canvas example for most beginners. However even it you have been at it with canvas and javaScript for a while, this is one topic I find myself coming back to now and then.
+The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
 
 In this post I will be going over some code that I put together for a basic bouncing ball [canvas example](/2020/03/23/canvas-example/). I will not be covering every little detail when it comes to this kind of example when it comes to advanced things pertaining to physics. However the canvas example will be about [bouncing balls of of the edges of walls of the canvas](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Bounce_off_the_walls).
 
