@@ -5,13 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-03-23 09:29:28
-version: 1.23
+updated: 2020-04-18 12:45:33
+version: 1.24
 ---
 
-I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
+I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title.
 
-The same basic idea is there though when it comes to having a display object at the far right side of the canvas and you click or tap the screen to have it jump up a little as it falls down constantly.
+The same basic idea is there though when it comes to having a display object at the far left side of the canvas and you click or tap the screen to have it jump up a little as it falls down constantly. The nice thing about these kinds of projects is that it is very easy to get to that point where I have a clone of the idea, the hard part then is where I go from there with it to make it more original so it is  not just a cheep rip off.
 
 <!-- more -->
 
