@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-04-18 11:03:44
-version: 1.21
+updated: 2020-04-18 11:05:48
+version: 1.22
 ---
 
 This will be a post on a [canvas example](/2020/03/23/canvas-example/) that is a very basic [breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)) clone. Even a basic example of this game might prove to be a little involved for new developers especially if you are starting from the ground up, and not using a framework as a lot of topics can still come up with the nature of this kind of game. 
 
 I will try to keep things as striped down as possible for this canvas example, but it will still be a little involved with several javaScript files. I will not be getting into many subjects of interest that come up when making a game like this into detail, but I will still be touching base on them. For example there is bounding box collision detection, how to go about changing the angle of a ball when it hits a surface such as a wall or block, and many other such topics that deserve a post alone.
+
+Cloning games like this is a good idea I think, and not just for the sake of practice. When it comes to cloning a game like breakout there is not just cloning the mechanics of the game, but also adding my own features and tweaks that help to make the project distinct from all the other breakout clones on the open Internet. Cloning the game is often just a starting point for a project like this.
 
 <!-- more -->
 
