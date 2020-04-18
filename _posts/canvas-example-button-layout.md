@@ -5,13 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-03-23 09:26:47
-version: 1.13
+updated: 2020-04-18 10:51:11
+version: 1.14
 ---
 
-When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things are not like with html outside of the canvas element where one can just add an input element.
+When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
 
-Sure an input element and an event handler for it will work just fine in a pinch, but what if I want display objects rendered in the canvas to be what the button is? So in this [canvas example](/2020/03/23/canvas-example/) post, I will be going over a basic button layout solution for a canvas project.
+Sure an input element and an event handler for it will work just fine in a pinch, but what if I want display objects rendered in the canvas to be what the button is for buttons? Doing so is more or less the same thing as creating display objects in general, it is just that we are creating a special kind of display object that is a user interface button. So in this [canvas example](/2020/03/23/canvas-example/) post, I will be going over a basic button layout solution for a canvas project.
 
 <!-- more -->
 
