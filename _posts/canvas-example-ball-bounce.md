@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-04-18 09:46:15
-version: 1.31
+updated: 2020-04-18 09:48:07
+version: 1.32
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
@@ -212,4 +212,4 @@ loop();
 
 ## 4 - Conclusion
 
-The basic idea of what I had in mind for this example is there, but there is much more to writing about event when it comes to just making this basic kind of canvas example.
+The basic idea of what I had in mind for this example is there, but there is much more to write about even when it comes to just making this basic kind of canvas example. I would like to develop or find a better routine for bounding that will work with walls, and also other display objects.
