@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-04-18 09:34:09
-version: 1.28
+updated: 2020-04-18 09:42:23
+version: 1.29
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
@@ -79,6 +79,8 @@ b.createBallCollection = function (opt) {
     return balls;
 };
 ```
+
+When  calling the method I can pass a for ball method that will be called for each ball object. Within the body of that function I can define logic that will be used to set the initial conditions of each ball object.
 
 ### 1.3 - Move ball object method
 
