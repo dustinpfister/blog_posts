@@ -5,11 +5,12 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2020-03-23 09:29:30
-version: 1.21
+updated: 2020-04-18 13:06:13
+version: 1.22
 ---
 
-So now for yet another [canvas example](/2020/03/23/canvas-example/), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite.
+So now for yet another [canvas example](/2020/03/23/canvas-example/), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images when it comes to a set resolution and color depth. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that kind of a matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite never the less.
+So with that said this is one of several ideas that keep coming back to be, and i revisit them. So I though I would make it part of my canvas example collection of projects.
 
 <!-- more -->
 
