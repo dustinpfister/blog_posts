@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-04-18 10:42:38
-version: 1.17
+updated: 2020-04-18 10:47:37
+version: 1.18
 ---
 
 There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game), .as there is the artistic side of game development, and then there is the business side. When it comes to the artistic side maybe game development is about some kind of expression, but then there is the business side, and with that said game devl0pemt is more about making money. With that said when it comes to the business side of game development I have found that a game does not really need to be some kind of emotional expression, some grand idea, in fact it does not even need to be fun. With the business die of game development a game just needs to be addictive, people need to just start playing it and get hooked. So I thought I would make another [canvas example](/2020/03/23/canvas-example/) post that is a basic idle game.
@@ -390,3 +390,7 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+Well I set out to make a basic Idle game and this is more or less what it is. The only question  now is where to go from here when it comes to making this a more interesting project even if it is left very basic and unbranded.
