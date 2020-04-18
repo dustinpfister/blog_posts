@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-04-18 10:53:42
-version: 1.15
+updated: 2020-04-18 10:56:49
+version: 1.16
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
@@ -172,3 +172,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## 4 - Conclusion
+
+So the basic idea that I had in mind for this project is working, but there is much more to do when it comes to this. There is of course having more than one instance of a button layout object that will change depending on an application state. In addition there is maybe adding more features that have to do with the movement of button objects in and out of the canvas as menus change. I might get around to expanding this post and project when it comes to all of that, but yet again maybe that is all a matter for another post.
