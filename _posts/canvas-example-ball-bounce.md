@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-04-18 09:42:23
-version: 1.29
+updated: 2020-04-18 09:44:30
+version: 1.30
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
@@ -84,7 +84,7 @@ When  calling the method I can pass a for ball method that will be called for ea
 
 ### 1.3 - Move ball object method
 
-Now for the method that moves the ball, and also checks to see if the ball hits any sides of the canvas. This works by passing a single ball object as the first arguments, and then a canvas as the second argument. The method will step the position of the ball based on the current heading and delta value for the ball. If the ball goes out of bounds for the canvas element adjustments are made.
+Now for the method that moves the ball, and also checks to see if the ball hits any sides of the canvas. This works by passing a single ball object as the first argument, and then a canvas as the second argument. The method will step the position of the ball based on the current heading and delta value for the ball. If the ball goes out of bounds for the canvas element adjustments are made to the x, y and heading values.
 
 ```js
 b.moveBallObject = function (ball, canvas) {
@@ -114,6 +114,8 @@ b.moveBallObject = function (ball, canvas) {
     }
 };
 ```
+
+So then this is thus far the method where I am moving a ball object, and also the method where the bouncing is happening.
 
 ## 2 - The draw methods
 
