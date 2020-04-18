@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-04-18 09:51:45
-version: 1.33
+updated: 2020-04-18 09:52:01
+version: 1.34
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
@@ -212,7 +212,7 @@ loop();
 
 The result when this is up and running is balls bouncing off the walls as expected. So the basic idea that I had in mind for this canvas example is working. However there is much more that comes to mind when it comes to cleaning this project up a bit, and also adding some additional functionality.
 
-However there are things that I am getting right. When it comes to a project like this I am of course going to want to have objects that have an x and y property along with an angle that is the current heading and yet another that is the current distance to move from that point. So what needs to change has more to do with the logic that has to do with updaing those values rather than the set of values themselves.
+However there are things that I am getting right. When it comes to a project like this I am of course going to want to have objects that have an x and y property along with an angle that is the current heading and yet another that is the current distance to move from that point. So what needs to change has more to do with the logic that has to do with updating those values rather than the set of values themselves.
 
 ## 4 - Conclusion
 
