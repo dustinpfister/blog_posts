@@ -5,13 +5,15 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2020-04-18 12:48:26
-version: 1.15
+updated: 2020-04-18 12:52:09
+version: 1.16
 ---
 
 Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
 
 This will not be a tower defense game, or any such game that will involve path detection, as it will be the kind of simple defense game that involves units just moving from one side of the screen to another. Even with this style of game I will be keeping things as simple as possible to make it so this post does not go on forever.
+
+There is of course diving into the more complex ideas that I have for canvas examples, but many of them are the kind of projects that might end up taking months or even years to develop. This idea is not one of those at all, and these kinds of projects are not necessary inferior to the more involved ideas for projects. The first step is to get the basic idea working, and then it is more about what I need to do to set it apart from all the other games that are like it.
 
 <!-- more -->
 
