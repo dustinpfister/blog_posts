@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-19 11:54:13
-version: 1.21
+updated: 2020-04-19 11:56:15
+version: 1.22
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
@@ -257,7 +257,7 @@ var worldMod = (function () {
 
 ### 2.2 - Create land and worker objects
 
-So I have helpers that are used to create a single worker object, and a single land object.
+So I have helpers that are used to create a single worker object, and a single land object. The worker object thus far is just values that have to do with the size of the display object that repentants the worker. Beyond that it is more about where the worker is rather than its values, at least so far when it comes to this canvas example.
 
 ```js
     // create a worker object
