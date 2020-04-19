@@ -5,14 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-19 11:50:00
-version: 1.20
+updated: 2020-04-19 11:54:13
+version: 1.21
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
 
-The game is a pretty cool concept you have a starting world and two starting workers that can be used to build structures on land tiles of the world. There are many resources that can be gathered, one of which is used to power a rocket ship that can be used to go to another world in a solar system.
-
+The game is a pretty cool concept you have a starting world and two starting workers that can be used to build structures on land tiles of the world. There are many resources that can be gathered, one of which is used to power a rocket ship that can be used to go to another world in a solar system. There is even more to it than that, but that is the basic idea of the game.
 
 I liked the game so much that I though I would start to work on a clone of the game that is not all that different from it. I was not able to clone every aspect of the game, but I did get to a very basic working first prototype of the concept thus far. If I get around to it I might come back to this one at some point in the future as i keep making canvas examples like these in a effort to try to find something that I would not mind working on for a while longer.
 
@@ -215,7 +214,7 @@ A land Object might have one of several items built on it. the choice of items h
 
 ### 2.1 - The start of the world module and the item database
 
-At the top of the module I have a crude item database in the form of an array literal.
+At the top of the module I have a crude item database in the form of an array literal. I am not completely sure how this might evolve as I continue to work on this example now and then, so for now each item just has a description, a max workers property, and some additional values that outline what the item does.
 
 ```js
 var worldMod = (function () {
