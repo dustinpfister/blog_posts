@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-04-19 19:44:58
-version: 1.4
+updated: 2020-04-19 19:46:23
+version: 1.5
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. I as happy with how my [grid gradient canvas example](/2020/03/26/canvas-example-grid-gradient/) came out as it is was a canvas example that I put a little more time and effort into than usual. The main reason why I liked working on it so much was the plug-in system. However that was just an eye candy type thing, it would be nice to start another canvas example that is something els like that only it is something maybe a little more interesting.
@@ -16,6 +16,8 @@ So this canvas example will be similar to the grid gradient example, but this ti
 <!-- more -->
 
 ## 1 - utils.js
+
+I have a utils module for this canvas example as is the case for most of this canvas examples. So far for this one I just have the distance formula.
 
 ```js
 // UTILS
