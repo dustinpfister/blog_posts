@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-03-23 09:29:32
-version: 1.23
+updated: 2020-04-19 07:21:40
+version: 1.24
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -324,3 +324,5 @@ I then have an html file that pulls all of this together.
 ## 4 - Conclusion
 
 When this canvas Example is up and running I have grid lines drawn to the canvas. When I click and hold on the canvas the navigation circle shows up, at which point as I move the mouse pointer the state changes and so to does the state of the point object. The gird lines move in a way that is consistent with what I would expect.
+
+So this is just a basic way of going about moving around a map that is consistent with how many games work where you click and drag from a center point and then the vector that is created as a result of movement from that point is used to create delta values that update x and y.
