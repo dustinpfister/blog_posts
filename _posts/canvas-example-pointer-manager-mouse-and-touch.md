@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2020-03-23 09:29:32
-version: 1.9
+updated: 2020-04-19 07:11:22
+version: 1.10
 ---
 
-This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. Anyway say you want to make a canvas project that will work well with both mouse and touch events. So in other words you do not want to do anything with muti touch on touch devices, and you want all events for both mouse and touch events to be mapped to certain events that are the same. However in order to do so a bit of parsing, adjusting values, and other things need to be preformed before calling some uniform handers that are to be called for both mouse and touch events.
+This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad. However what I work out here might be part of what might considered a full comprehensive input controller.
+
+Anyway say you want to make a canvas project that will work well with both mouse and touch events. So in other words you do not want to do anything with muti touch on touch devices, and you want all events for both mouse and touch events to be mapped to certain events that are the same. However in order to do so a bit of parsing, adjusting values, and other things need to be preformed before calling some uniform handers that are to be called for both mouse and touch events.
 So thins will be a quick post on such a project that does what I just described so lets take a look.
 
 <!-- more -->
