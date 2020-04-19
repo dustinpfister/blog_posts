@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-04-19 19:49:49
-version: 1.6
+updated: 2020-04-19 19:51:47
+version: 1.7
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. I as happy with how my [grid gradient canvas example](/2020/03/26/canvas-example-grid-gradient/) came out as it is was a canvas example that I put a little more time and effort into than usual. The main reason why I liked working on it so much was the plug-in system. However that was just an eye candy type thing, it would be nice to start another canvas example that is something els like that only it is something maybe a little more interesting.
@@ -164,48 +164,9 @@ var world = (function () {
     ());
 ```
 
-## 3 - The draw module
+## 3 - First land_base plug-in
 
-Now for the draw module that contains the methods for drawing the state of the world.
-
-```js
-var draw = (function () {
- 
-    return {
-        // draw background
-        back: function (ctx, canvas) {
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        },
- 
-        worldCells: function (ctx, state) {
-            var i = state.cells.length,
-            x,
-            y,
-            r,
-            g,
-            b,
-            per,
-            cell;
-            while (i--) {
-                cell = state.cells[i];
-                per = 1 - (cell.land.fert / 10);
-                r = Math.floor(100 + 100 * per);
-                g = Math.floor(75 + 75 * per);
-                b = Math.floor(25 + 25 * per);
-                ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ',1)';
-                x = cell.x * world.CELL_VALUES.size + world.CELL_VALUES.sx;
-                y = cell.y * world.CELL_VALUES.size + world.CELL_VALUES.sy;
-                ctx.fillRect(x, y, world.CELL_VALUES.size, world.CELL_VALUES.size);
-            }
-        }
- 
-    }
-}
-    ());
-```
-
-## 4 - First land_base plug-in
+I have world out one plug-in thus far for this world simulator that just works out some basic values for a land object that will be appended for each cell in the world grid.
 
 ```js
 world.load({
@@ -270,6 +231,47 @@ world.load({
         after: function (state) {}
     }
 });
+```
+
+## 4 - The draw module
+
+Now for the draw module that contains the methods for drawing the state of the world.
+
+```js
+var draw = (function () {
+ 
+    return {
+        // draw background
+        back: function (ctx, canvas) {
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        },
+ 
+        worldCells: function (ctx, state) {
+            var i = state.cells.length,
+            x,
+            y,
+            r,
+            g,
+            b,
+            per,
+            cell;
+            while (i--) {
+                cell = state.cells[i];
+                per = 1 - (cell.land.fert / 10);
+                r = Math.floor(100 + 100 * per);
+                g = Math.floor(75 + 75 * per);
+                b = Math.floor(25 + 25 * per);
+                ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ',1)';
+                x = cell.x * world.CELL_VALUES.size + world.CELL_VALUES.sx;
+                y = cell.y * world.CELL_VALUES.size + world.CELL_VALUES.sy;
+                ctx.fillRect(x, y, world.CELL_VALUES.size, world.CELL_VALUES.size);
+            }
+        }
+ 
+    }
+}
+    ());
 ```
 
 ## 5 - index.html and Main.js
