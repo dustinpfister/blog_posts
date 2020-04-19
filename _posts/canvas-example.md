@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-04-19 09:37:02
-version: 1.24
+updated: 2020-04-19 09:51:31
+version: 1.25
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -60,6 +60,8 @@ This is just a flappy bid clone of sorts.
 
 ## 12 - [A kaboom clone](/2020/04/10/canvas-example-game-kaboom-clone/)
 
+I have found myself making clones of certain classics from the Atari 2600, this is one such canvas example that is a clone of the game kaboom.
+
 ## 13 - [Map idle game prototype example](/2020/01/13/canvas-example-game-map-idle/)
 
 There is yet another example of an idle type game that involves a gird that has assets at each location that generate money.
@@ -69,6 +71,8 @@ There is yet another example of an idle type game that involves a gird that has 
 A gird defense style game prototype. 
 
 ## 15 - [Grid gradient](/2020/03/26/canvas-example-grid-gradient/)
+
+A canvas example of a grid where each cell changes color depending on the status of an array of objects the properties of which can be changed by way of plug-ins for the main state module that is used.
 
 ## 16 - [Grid world simulator core](/2020/04/15/canvas-example-grid-worldsim-core/)
 
