@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-19 11:59:59
-version: 1.11
+updated: 2020-04-19 12:00:51
+version: 1.12
 ---
 
 For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display objects one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -359,6 +359,7 @@ loop();
 I use the create method of my particles module to create a state object that I can then pass to by draw module methods and the update method of the particles module in the body of the main app loop.
 
 When this is all up and running I have a bunch of particles moving around the screen and a single hunter type particle destroying the other types. In addition new particles keep spawning also as exspected.
+
 ## 5 - Conclusion
 
 I wanted to make at least one canvas example that is something like this. That is some kind of project where there is one or more display objects that attack other display objects, and then more display objects just keep spawning back into the canvas.
