@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-03-23 12:16:14
-version: 1.13
+updated: 2020-04-19 08:36:12
+version: 1.14
 ---
 
-Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of drawing a star. There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
+Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
 
 <!-- more -->
 
