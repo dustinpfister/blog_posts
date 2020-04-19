@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-04-15 22:13:37
-version: 1.10
+updated: 2020-04-19 11:59:59
+version: 1.11
 ---
 
-For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display object one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
+For todays quick [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas. There will be just two types of display objects one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
 
-So this canvas example will just be an exercise of many aspects of canvas projects.
+So this canvas example will just be an exercise of many aspects of canvas projects that has to do with just spawning, and purging display objects from a pool. In addition it is a basic exercise of primitive AI also when it comes to how the hunters, and also how non hunters behave.
 
 <!-- more -->
 
