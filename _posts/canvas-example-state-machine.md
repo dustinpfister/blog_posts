@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-03-23 09:29:34
-version: 1.13
+updated: 2020-04-19 07:32:40
+version: 1.14
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a state machine that helps to keep code broken down into many independent states. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important.
+
+Say you want to make a project that is fairly complex and there are many states that the project needs to preform before it can even be used. For example content needs to be downloaded, and then some objects need to be initialized before the project can be started and the user can interact with it. In addition even when it is up and running there are many menus that the user can navigate between before starting a main application state.
 
 <!-- more -->
 
