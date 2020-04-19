@@ -1,17 +1,19 @@
 ---
-title: 23 Canvas examples and counting, animations, games, modules, and more.
+title: 28 Canvas examples and counting, animations, games, modules, and more.
 date: 2020-03-23 08:48:00
 categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-04-19 09:53:08
-version: 1.26
+updated: 2020-04-19 09:56:22
+version: 1.27
 ---
 
-I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
+I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts, and link back to this index in each post. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
 
 <!-- more -->
+
+I have set up a [git repository at my git-hub account for these canvas examples](https://github.com/dustinpfister/canvas-examples) where all of the examples can be cloned down from if you want to quickly clone down the source cone of them.
 
 ## 01 - [A planet of mine clone](/2020/04/03/canvas-example-a-planet-of-mine-clone/)
 
