@@ -4,12 +4,19 @@ app = express();
 
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || process.argv[2] || 8080);
-
 app.set('days_back', 365 * 2);
 
 let dir_cli = path.resolve('../../cli'),
 dir_posts = path.resolve('../../../_posts'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
+
+// total days sense first post
+let getTotalDays = (fpDate) => {
+    let now = new Date();
+    fpDate = fpDate === undefined ? new Date(2017, 1, 2) : fpDate;
+    let t = now - fpDate;
+    return t / 1000 / 60 / 60 / 24;
+};
 
 // tabulate
 let tab = () => {
@@ -104,8 +111,13 @@ app.get('/', [
 
             });
             tableHTML += '</table>';
-            html += '<p>Word Count Site Total ' + wcTotal + '</p>';
-            html += '<p>' + JSON.stringify(colorTab()) + '</p>';
+            html += '<p>';
+            html += '<span>Word Count Site Total ' + wcTotal + '</span><br>';
+            let days = getTotalDays();
+            html += '<span>Total days ' + days.toFixed(2) + '</span><br>';
+            html += '<span>AVG WC per day ' + Number(wcTotal / days).toFixed(2) + '</span><br>';
+            html += '<span>' + JSON.stringify(colorTab()) + '</span><br>';
+            html += '</p>';
             html += colorBar(colorTab);
             res.send(html + tableHTML + '</body>');
         }
