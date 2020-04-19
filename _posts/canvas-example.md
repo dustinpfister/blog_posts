@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-04-19 09:36:06
-version: 1.23
+updated: 2020-04-19 09:37:02
+version: 1.24
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -32,7 +32,7 @@ In this example I have just a simple bounding ball, a typical example that just 
 
 ## 05 - [A Basic idle game](/2020/02/01/canvas-example-basic-idle-game/)
 
-In this post I made a very basic idle game prototype. 
+In this post I made a very basic idle game prototype. Nothing major with it, just many of the core features of such a game in a very bland unbranded generic form.
 
 ## 06 - [A button layout module](/2020/02/03/canvas-example-button-layout/)
 
