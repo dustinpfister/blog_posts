@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-04-19 07:50:37
-version: 1.18
+updated: 2020-04-19 07:56:37
+version: 1.19
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -35,6 +35,8 @@ u.mod = function mod(x, m) {
     return (x % m + m) % m;
 };
 ```
+
+The distance formula as the name suggests is for just finding the distance between two points. The modulo method is just another way to go about getting the remainder of two numbers that works a little differentially from that of the built in javaScript modulo method. I wrote a [post on this mathematical modulo method](/2017/09/02/js-whats-wrong-with-modulo/) as it seems to be called a while back if you want to read up more on it, and why you might want to use if with certain projects.
 
 ## 1 - The particles module for this canvas example
 
