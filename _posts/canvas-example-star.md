@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-04-19 08:36:12
-version: 1.14
+updated: 2020-04-19 08:41:13
+version: 1.15
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas html element, many solutions that I see involve making a draw method that will draw a star. However I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points.
@@ -94,7 +94,7 @@ There are many many ideas that come to mind when it comes to further expanding a
 
 ### 1.2 - The draw methods
 
-I then have some draw methods that I worked out. One is to just draw a plain black background, and another is to draw an array of points.
+I then have some draw methods that I worked out that I made as part of an additional module following just th simple object literal pattern. One is to just draw a plain black background, and another is to draw an array of points.
 
 ```js
 var draw = {};
@@ -124,6 +124,8 @@ draw.points = function (ctx, points, cx, cy) {
     ctx.restore();
 };
 ```
+
+The draw points method will be used to draw my array of points that compose a star, however it could of course be used to draw any such array of points in general.
 
 ### 1.3 - The main index file
 
@@ -166,4 +168,4 @@ This results in two stars created with the two separate methods drawn at two loc
 
 ## 4 - Conclusion
 
-So this canvas example worked out pretty well, it was a nice little exercise at making stars for a canvas project. There is more than one methods for making them both of which have to do with Math.cos and Math.sin that are used to find out points around a given orgin point.
+So this canvas example worked out pretty well, it was a nice little exercise at making stars for a canvas project. There is more than one methods for making them both of which have to do with Math.cos and Math.sin that are used to find out points around a given origin point.
