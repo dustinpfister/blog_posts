@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-04-19 09:51:31
-version: 1.25
+updated: 2020-04-19 09:53:08
+version: 1.26
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -76,6 +76,8 @@ A canvas example of a grid where each cell changes color depending on the status
 
 ## 16 - [Grid world simulator core](/2020/04/15/canvas-example-grid-worldsim-core/)
 
+A start with what might become a world simulator type canvas example thing like that of Sim Earth.
+
 ## 17 - [Canvas Grid module](/2019/11/07/canvas-example-grid/)
 
 A grid module for canvas projects.
@@ -93,6 +95,8 @@ In this canvas example I worked out a basic example of getting scrolling working
 The idea just came into my head one day to make some kind of fun and interesting canvas example that involves two types of circles. When two of two different types combine into one, then it results in an explosion. The result is a somewhat interesting visual effect.
 
 ## 21 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
+
+Search and destroy particles.
 
 ## 22 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
 
