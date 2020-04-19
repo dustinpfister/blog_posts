@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-04-19 07:56:37
-version: 1.19
+updated: 2020-04-19 08:01:47
+version: 1.20
 ---
 
 I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -120,6 +120,8 @@ There is a simple function that is just used to create the particle pool when ma
         return pool;
     };
 ```
+
+There are two general ideas that come to mind when making a pool of objects like this. One is to create a fixed set of objects of a certain size, and then just have a way to set them active and inactive. The other way is to have a pool that can just be an empty array, or maxed out at a certain max size, and then have some way to spawn and purge objects to and from the pool. For this canvas example at least I have decided to go with the former rather than the latter.
 
 ### 1.4 - Check if a particle has hit another particle in the pool.
 
