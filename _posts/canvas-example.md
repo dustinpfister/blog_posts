@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-04-19 09:00:53
-version: 1.22
+updated: 2020-04-19 09:36:06
+version: 1.23
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these posts. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -15,7 +15,7 @@ I have got into the habit of making a bunch of [canvas examples](https://develop
 
 ## 01 - [A planet of mine clone](/2020/04/03/canvas-example-a-planet-of-mine-clone/)
 
-I made a clone of the game called a planet of mine, or I have started one at least.
+I made a clone of the game called a planet of mine, or I have started one at least. This canvas example is of a game where I have a world object, and then worker objects that can be set to land tiles in the world object. I enjoyed playing the game that it is based off of and want to at least start a clone of it that I can start to play around with a little.
 
 
 ## 02 - [Animation basics canvas example](/2019/10/10/canvas-example-animation-basics/)
