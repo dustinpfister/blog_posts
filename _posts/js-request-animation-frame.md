@@ -5,17 +5,17 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2018-03-13 19:38:51
-version: 1.2
+updated: 2020-04-20 09:50:59
+version: 1.3
 ---
 
-When making any kind of application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely even driven there will typically be a need to have a way to run the same method over and over again, this is where things the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) come into play.
+When making any kind of application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to do so and one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method when dealing with client side javaScript.
 
 <!-- more -->
 
 ## Why requestAnimationFrame.
 
-requestAnimationFrame is one of several ways I know of to get a method to fire over and over again, the other options being setInterval, and setTimeout. requestAnimationFrame differs from the other options in that it is generally the best way to go about making an app loop in a front end environment. It allows for smoother animation when using canvas elements, or anything that involves changes to the dom.
+The request animation frame is one of several ways I know of to get a method to fire over and over again at a certain rate, the other options being setInterval, and setTimeout. The request animation frame method differs from the other options in that it is generally the best way to go about making an app loop in a front end environment. However in some environments and situations it is not available, or the other ways of doing so might still be more appropriate. There is also having a project that is event driven where the view only updates when an event such as a mouse click happens.
 
 ## Why not requestAnimationFrame?
 
