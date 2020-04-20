@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2020-04-20 17:53:06
-version: 1.18
+updated: 2020-04-20 18:09:50
+version: 1.19
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the [canvas restore method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore). 
@@ -116,6 +116,44 @@ So the use of the canvas save method combined with restore helps when it comes t
 
 This way of doing rotations works okay with some projects but it does eat up some processing overhead compared to alternatives that involve the use of a sprite sheet. Still computers are fairly fast these days, and as long as heavy use of it is avoided it gets the job done.
 
-## 3 - Conclusion
+## 3 - Center a square over a point in the canvas and the canvas save method
+
+Another use case example with the canvas save method would be to draw something relative to a point in the canvas other then the upper left corner of the canvas. In other words to make it so that the point 0,0 actually ends up being another point of interest in the canvas then draw something relative to 0,0, but have it drawn at that point of interest other that what is the default.
+
+To put it another way say I want a draw method that will draw a box centered over a point in the canvas. One way to do so would be to pass adjusted x and y values to the fillrect context method, or whatever other methods I might use to draw the box. However another way would be to use canvas save to save the context, translate to the point of interest, and then use half the width of the box multiplied by negative one and do the same for height.
+
+```html
+<html>
+    <head>
+        <title>canvas save rotate example</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas =document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+var drawBackground = function(ctx, canvas){
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+};
+ 
+var drawBoxOverPoint = function(ctx, x,y, w, h){
+  ctx.save();
+  ctx.fillStyle = 'red';
+  ctx.translate(x, y);
+  ctx.fillRect(w / 2 * -1,h / 2 * -1, w, h);
+  ctx.restore();
+};
+ 
+drawBackground(ctx, canvas);
+drawBoxOverPoint(ctx, 16, 16, 32, 32);
+ 
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So then the canvas save method just saves the state of the 2d drawing context. Once the context is saved changes can be made to the various properties of the 2d canvas drawing context. When the older state of the context is to be restored the restore method can then be used to put everything back to the way it was when the save method was called. The canvas save method is then a great way to go back to a default drawing state that does not involve having to go threw each property and set things back for each property that was changed.
