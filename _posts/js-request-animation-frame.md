@@ -5,23 +5,23 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-04-20 09:50:59
-version: 1.3
+updated: 2020-04-20 09:51:37
+version: 1.4
 ---
 
 When making any kind of application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to do so and one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method when dealing with client side javaScript.
 
 <!-- more -->
 
-## Why requestAnimationFrame.
+## 1 - Why requestAnimationFrame.
 
 The request animation frame is one of several ways I know of to get a method to fire over and over again at a certain rate, the other options being setInterval, and setTimeout. The request animation frame method differs from the other options in that it is generally the best way to go about making an app loop in a front end environment. However in some environments and situations it is not available, or the other ways of doing so might still be more appropriate. There is also having a project that is event driven where the view only updates when an event such as a mouse click happens.
 
-## Why not requestAnimationFrame?
+## 2 - Why not requestAnimationFrame?
 
 Browser support is pretty good with requestAnimatinFrame, but the other options have been around much longer. If you really care about pushing backward compatibility back far that can easily be fixed with a polly fill. In addition requestAnimationFrame can not be used in a web worker environment, as such the other options mentioned are all that can be used in that kind of environment. Also requestAnimationFrame is very much a front end thing only, so if you make full stack applications with node.js you are limited to the other options.
 
-## basic demo of requestAnimationFrame
+## 3 - basic demo of requestAnimationFrame
 
 For a basic demo of requestAnimationFrame I put together something that involves the updating of a model, and rendering of that model.
 
