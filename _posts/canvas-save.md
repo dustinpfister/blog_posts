@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2020-04-16 07:57:50
-version: 1.17
+updated: 2020-04-20 17:53:06
+version: 1.18
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the [canvas restore method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore). 
 
-Because the canvas save method can be used to save a current state of a drawing context, it can come in handy when using other 2d context methods like [canvas translate](/2019/10/09/canvas-translate/), and [canvas rotate](/2019//11/05/canvas-rotate/) which are two that come to mind right off the bat when it comes to using the canvas save method. For example the canvas save method can be used to save the current state of the drawing context, and then changes can be made to the fill style, translations, and rotations. Something can then be drawn with these new mutated 2d drawing context state, and then put back the way it was with the canvas restore method once I am done drawing to it.
+Because the canvas save method can be used to save a current state of a drawing context, it can come in handy when using other 2d context methods like [canvas translate](/2019/10/09/canvas-translate/), and [canvas rotate](/2019//11/05/canvas-rotate/) which are two that come to mind right off the bat when it comes to using the canvas save method. For example the canvas save method can be used to save the current state of the drawing context, and then changes can be made to the fill style, translations, and rotations. Something can then be drawn with this new mutated 2d drawing context state, and then put back the way it was with the canvas restore method once I am done drawing to it.
 
 So in this post I will be going over some quick examples of the canvas save method, and may other related context methods to point out some reasons why the method is so useful.
 
@@ -111,6 +111,8 @@ loop();
     </body>
 </html>
 ```
+
+So the use of the canvas save method combined with restore helps when it comes to making these kinds of changes to the drawing context.
 
 This way of doing rotations works okay with some projects but it does eat up some processing overhead compared to alternatives that involve the use of a sprite sheet. Still computers are fairly fast these days, and as long as heavy use of it is avoided it gets the job done.
 
