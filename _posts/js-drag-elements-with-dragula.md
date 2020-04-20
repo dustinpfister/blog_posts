@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2020-04-20 07:11:30
-version: 1.2
+updated: 2020-04-20 08:32:24
+version: 1.3
 ---
 
 There is a [popular javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another. It is a quick and simple way to get this sort of this working, and does not require any additional dependencies such as jquery and lodash.
@@ -15,7 +15,7 @@ There are of course many other ways to go about doing this when it comes to work
 
 <!-- more -->
 
-## install Dragula
+## 1 - install Dragula
 
 Dragual can be installed via npm or bower, or I guess ou could just grab what is in the dist folder of the project on github. For my example I made a test folder and installed it with npm.
 
@@ -25,7 +25,7 @@ $ npm install dragula
 
 Once I have it in a test folder I just need to link to in in an html file, as this is very mush a front end kind of project.
 
-## Basic usage example
+## 2 - Basic usage example
 
 For my Basic use example of dragula I created a basic.html file in my test folder, and linked to the path in which dragula is. For me it is in the dist folder of the dragula node module folder, but the path my differ depending on how you are going about structuring things.
 
@@ -78,6 +78,6 @@ I aslo found that I want to link to the dragula.css file as well, it seems to wo
 
 So thats it at a minimum I just need to give it an array of elements that are containers of elements that can be dragged from one location to another.
 
-## Conclusion
+## 3 - Conclusion
 
 There are a lot of options for dragula, I could make some more advanced examples but for now I will just keep this post pretty basic. For the mean time there is the [README](https://github.com/bevacqua/dragula/blob/master/readme.markdown) for the project.
