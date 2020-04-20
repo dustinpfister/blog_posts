@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-04-18 10:47:37
-version: 1.18
+updated: 2020-04-20 17:41:52
+version: 1.19
 ---
 
-There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game), .as there is the artistic side of game development, and then there is the business side. When it comes to the artistic side maybe game development is about some kind of expression, but then there is the business side, and with that said game devl0pemt is more about making money. With that said when it comes to the business side of game development I have found that a game does not really need to be some kind of emotional expression, some grand idea, in fact it does not even need to be fun. With the business die of game development a game just needs to be addictive, people need to just start playing it and get hooked. So I thought I would make another [canvas example](/2020/03/23/canvas-example/) post that is a basic idle game.
+There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game) as there is the artistic side of game development, and then there is the business side. When it comes to the artistic side maybe game development is about some kind of expression, but then there is the business side, and with that said game development is more about making money. 
+
+When it comes to the business side of game development I have found that a game does not really need to be some kind of emotional expression, or some grand original idea, in fact it does not even need to be fun. With the business side of game development a game just needs to be addictive, people need to just start playing it and get hooked. So I thought I would make another [canvas example](/2020/03/23/canvas-example/) post that is a basic idle game. Nothing fancy, just a bland, unbranded idle game starting point.
 
 This canvas example makes use of a custom trailered utility library that has a method that creates a button layout, which is one way that I go about making menus in a canvas project. I [wrote a post in which I get into this button layout method](/2020/02/03/canvas-example-button-layout/) in detail, but will be covering it here also. 
 
