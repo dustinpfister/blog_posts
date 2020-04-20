@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2020-04-20 18:09:50
-version: 1.19
+updated: 2020-04-20 18:12:55
+version: 1.20
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the [canvas restore method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore). 
@@ -112,9 +112,7 @@ loop();
 </html>
 ```
 
-So the use of the canvas save method combined with restore helps when it comes to making these kinds of changes to the drawing context.
-
-This way of doing rotations works okay with some projects but it does eat up some processing overhead compared to alternatives that involve the use of a sprite sheet. Still computers are fairly fast these days, and as long as heavy use of it is avoided it gets the job done.
+So the use of the canvas save method combined with restore helps when it comes to making these kinds of changes to the drawing context. This way of doing rotations works okay with some projects but it does eat up some processing overhead compared to alternatives that involve the use of a sprite sheet. Still computers are fairly fast these days, and as long as heavy use of it is avoided it gets the job done.
 
 ## 3 - Center a square over a point in the canvas and the canvas save method
 
@@ -153,6 +151,8 @@ drawBoxOverPoint(ctx, 16, 16, 32, 32);
     </body>
 </html>
 ```
+
+So the canvas save method can be used whenever I want to do anything that involves the process of changing the position of the origin in the canvas.
 
 ## 4 - Conclusion
 
