@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-04-21 10:04:05
-version: 1.8
+updated: 2020-04-21 10:09:08
+version: 1.9
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math object method will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
@@ -17,7 +17,7 @@ Its possible that you have all ready come across the method when it comes to tak
 
 ## 1 - The natural logarithm
 
-So in javaScript the Math.log method with return an exponent that when used with the Mathematical constant E  as a base in a Math.pow method call should result in that number, or at least something near it. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm). Another
+So in javaScript the Math.log method with return an exponent that when used with the Mathematical constant E  as a base in a Math.pow method call should result in that number, or at least something near it because of floating-point rounding. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm). Another
 
 ```js
 
@@ -35,7 +35,7 @@ console.log(b); // 999.9999999999994
 
 ```
 
-So if I ever get into a situation in which I know a number, and a base, and want to know the exponent that will result in the number when the exponent is used with the base using Math.pow then a solution will likely involve the use of Math.log. The only problem is that the Math.log method only excepts one argument that is the number, and there is no way to set a base other than the Math.E constant.
+So if I ever get into a situation in which I know a number, and a base, and want to know the exponent that will result in the number when the exponent is used with the base using Math.pow then a solution will likely involve the use of Math.log. The only problem is that the Math.log method only excepts one argument that is the number, and there is no way to set a base other than the Math.E constant at least with the Math.log method anyway. There are of course other options in the Math object, and there are also ways of doing simple operations and expressions to get whatever kind of value that you need.
 
 ## 2 - Getting the exponent of a number when the base is known
 
