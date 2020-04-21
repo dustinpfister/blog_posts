@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-04-21 12:41:02
-version: 1.15
+updated: 2020-04-21 12:46:12
+version: 1.16
 ---
 
 With front end javaScript it is important to know how to create references to HTML elements. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document. So creating a reference to an HTML element is needed in order to get something from and element, change something about it, or add something to it.
@@ -132,3 +132,5 @@ console.log(foos[1].innerText); // two
 ## 5 - Conclusion
 
 There are many other ways to go about getting references to elements in client side javaScript. In some cases you might all ready have a reference to work with in some object that you might not even be aware of actually. For example in the body of an event handler there is the target and currentTarget properties of events objects that are references to the element where an event was dispatched, and the current element in the event of event bubbling. So if you are working something out in an event hander and want a reference to an element of interest for the event, changes are you all ready have a reference just take a closer look at the event object.
+
+There are also references to other elements in the element objects themselves such as the parentNode and children properties of element objects, however maybe that is all a matter for another post.
