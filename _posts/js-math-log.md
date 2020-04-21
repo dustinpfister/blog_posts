@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-04-21 09:39:12
-version: 1.7
+updated: 2020-04-21 10:04:05
+version: 1.8
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math object method will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
@@ -17,10 +17,22 @@ Its possible that you have all ready come across the method when it comes to tak
 
 ## 1 - The natural logarithm
 
-So in javaScript the Math.log method with return an exponent that when used with the Mathematical constant E in a Math.pow operation will result in that number. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm).
+So in javaScript the Math.log method with return an exponent that when used with the Mathematical constant E  as a base in a Math.pow method call should result in that number, or at least something near it. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm). Another
 
 ```js
-console.log(Math.pow(Math.E,Math.log(1000))); // 999.99...
+
+// the value of number (a)
+var a = 1000,
+// The math log of (a) returns the power (p) 
+// that will result in (a) when used with Math.pow where
+// Math.E is the base
+p = Math.log(a), 
+b = Math.pow( Math.E, p);
+
+console.log(a); // 1000
+console.log(p); // 6.907755278982137
+console.log(b); // 999.9999999999994
+
 ```
 
 So if I ever get into a situation in which I know a number, and a base, and want to know the exponent that will result in the number when the exponent is used with the base using Math.pow then a solution will likely involve the use of Math.log. The only problem is that the Math.log method only excepts one argument that is the number, and there is no way to set a base other than the Math.E constant.
