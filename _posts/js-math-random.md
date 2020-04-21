@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2020-04-21 18:43:11
-version: 1.22
+updated: 2020-04-21 18:48:41
+version: 1.23
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something random. With that said there is maybe a bit more that just calling the method then when it comes to rounding, getting a range, and the nature of the distribution when using the method largely by itself. So lets take a look at a few examples of the Math random method in javaScript from simple to not so simple.
@@ -68,7 +68,9 @@ console.log( Math.floor(Math.random() * 6) ); // 0 - 5 (range of 6)
 
 ## 4 - The Math random method and Distribution
 
-Now for a word or two on distribution when using the Math round method. Now the math random method will give pseudo random numbers, however it will distribute in a way that is kind of not so random. That is that the numbers will be kind of evenly distributed when using it, unless you do something more to change that.
+Now for a word or two on distribution when using the Math round method. Now the math random method will give pseudo random numbers, however it will distribute in a way that is kind of not so random. That is that the numbers will be kind of evenly distributed when using it, unless you do something more to change that. So in this section I will be going over concerns over distribution and the use of the math random method in the javaScript Math object.
+
+### 4.1 - Random Distribution scatter plot example
 
 A good way to understand what is going on with this would be to create something that looks like a [scatter plot](https://en.wikipedia.org/wiki/Scatter_plot) of sorts. If I use the Math random method to generate a bunch of random points by just multiplying width by a Math random call for x, and height by a Math.random call then the points will be random, but in a very evenly distributed kind of way.
 
@@ -141,4 +143,4 @@ drawPoints(points2, ctx, 'green', 150);
 </html>
 ```
 
-The result is random points, but they are distributed in very different ways.
+The result is random points, but they are distributed in very different ways. By using Math log in conjunction with math random to work out the points that results in a very different distribution of values for the points, many more of the points are concentrated to the lower sides of the area so they are not so evenly distributed.
