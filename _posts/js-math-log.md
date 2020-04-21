@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-04-21 10:45:03
-version: 1.14
+updated: 2020-04-21 10:47:18
+version: 1.15
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math object method will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
@@ -97,6 +97,8 @@ console.log(table);
 //   { e: 8, b: 2, p: 256, log_p: 5.545177444479562, log_p_b: 8 },
 //   { e: 9, b: 2, p: 512, log_p: 6.238324625039508, log_p_b: 9 } ]
 ```
+
+So this helps to get a good idea of a use for the Math.log method. In a situation in which you know the base \(b\), and the power \(p\) but do not know the exponent \(e\) then the Math.log method can be used to find the exponent \(e\).
 
 ## 4 - Conclusion
 
