@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-04-21 10:20:48
-version: 1.13
+updated: 2020-04-21 10:45:03
+version: 1.14
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math object method will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
@@ -55,7 +55,50 @@ console.log(Math.pow(10,exp)); // 999.99...
 
 So then when it comes to getting a number that is result of a base raised to the exponent of that base there is Math.pow, but when it comes to doing the inverse of this, there is Math.log.
 
-## 3 - Conclusion
+## 3 - Values table example and getting a better idea of what the deal is with Math.log, and Math.pow
+
+So maybe the best way to get a better understanding of Math.log and how it relates to Math.pow would involve just getting into making some examples of its use. It would be best to experiment with your own examples and learn by doing, however I guess I can write about some examples of my own that should help as a starting point of sorts to learn more about Math.log and why it can be useful when working out certain expressions.
+
+So for this section I will be writing about a simple javaScript example that creates a table that is an array of objects where each object contains values for each exponent value from a given base, starting exponent and ending exponent. The properties for each object will be the current exponent value, the base, the power of the base to the exponent, the result of Math.log\(power\), and the result of Math.log\(power\) / Math.log\(base\) which should equal the current exponent value or be near it.
+
+```js
+var createValuesTable = function (base, eStart, eEnd) {
+ 
+    base = base === undefined ? 2 : base;
+    eStart = eStart === undefined ? 1 : eStart;
+    eEnd = eEnd === undefined ? 10 : eEnd;
+ 
+    var e = eStart,
+    table = [],
+    p;
+    while (e < eEnd) {
+        p = Math.pow(base, e);
+        table.push({
+            e: e,
+            b: base,
+            p: p,
+            log_p: Math.log(p),
+            log_p_b: Math.log(p) / Math.log(base)
+        })
+        e += 1;
+    }
+    return table;
+};
+ 
+var table = createValuesTable(2, 1, 10);
+console.log(table);
+// [ { e: 1, b: 2, p: 2, log_p: 0.6931471805599453, log_p_b: 1 },
+//   { e: 2, b: 2, p: 4, log_p: 1.3862943611198906, log_p_b: 2 },
+//   { e: 3, b: 2, p: 8, log_p: 2.0794415416798357, log_p_b: 3 },
+//   { e: 4, b: 2, p: 16, log_p: 2.772588722239781, log_p_b: 4 },
+//   { e: 5, b: 2, p: 32, log_p: 3.4657359027997265, log_p_b: 5 },
+//   { e: 6, b: 2, p: 64, log_p: 4.1588830833596715, log_p_b: 6 },
+//   { e: 7, b: 2, p: 128, log_p: 4.852030263919617, log_p_b: 7 },
+//   { e: 8, b: 2, p: 256, log_p: 5.545177444479562, log_p_b: 8 },
+//   { e: 9, b: 2, p: 512, log_p: 6.238324625039508, log_p_b: 9 } ]
+```
+
+## 4 - Conclusion
 
 So the Math.log method in the javaScript Math object is the first go to method that I will be using when I am in a situation where I want to find out the exponent of a number from a given base when I know the base and the result. The Math log method can be used to find an exponent in most situations as i ahve found thus far.
 
