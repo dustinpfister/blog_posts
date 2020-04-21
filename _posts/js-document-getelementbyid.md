@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2019-01-21 12:32:08
-version: 1.11
+updated: 2020-04-21 12:28:31
+version: 1.12
 ---
 
-With front end javaScript it is important to know how to create references to html elements. That is much of front end javaScript development has to do with interacting with the document object model, so creating a reference to an html element is needed in order to get something from and element, change something about it, or add something to it. So in other words there is a need to get an element by its id, such as with [document.getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById). In addition it is possible to get a reference to an element by other means, so in this post I will be covering some methods and examples of how to go about grabbing references to html elements in client side javaScript.
+With front end javaScript it is important to know how to create references to HTML elements. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document. So creating a reference to an HTML element is needed in order to get something from and element, change something about it, or add something to it.
+
+One way to go about getting a reference to an element is by way of an elements id attribute. The typical way to go about getting a reference to an element by way of an id attribute would be to use the [document.getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) method of the document object. In addition it is possible to get a reference to an element by other means, so in this post I will be covering some methods and examples of how to go about grabbing references to HTML elements in client side javaScript.
 
 <!-- more -->
 
