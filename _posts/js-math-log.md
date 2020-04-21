@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-04-21 10:16:56
-version: 1.11
+updated: 2020-04-21 10:18:26
+version: 1.12
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math object method will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
@@ -59,4 +59,4 @@ So then when it comes to getting a number that is result of a base raised to the
 
 So the Math.log method in the javaScript Math object is the first go to method that I will be using when I am in a situation where I want to find out the exponent of a number from a given base when I know the base and the result. The Math log method can be used to find an exponent in most situations as i ahve found thus far.
 
-There are of course other options though such as the [Math.log10](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log10), and [Math.log2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log2) methods;
+There are of course other options though such as the [Math.log10](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log10), and [Math.log2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log2) methods.
