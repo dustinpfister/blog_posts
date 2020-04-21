@@ -5,10 +5,119 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2020-04-21 18:21:51
-version: 1.16
+updated: 2020-04-21 18:25:47
+version: 1.17
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something random.
 
 <!-- more -->
+
+## 1 - Basic
+
+```js
+var n = Math.random();
+console.log(n); // random number between 0 and 1
+```
+
+## 2 - Range
+
+```js
+
+var randomRange = function (low, high) {
+    low = low === undefined ? 0 : low;
+    high = high === undefined ? 1 : high;
+    var range = high - low;
+    return low + range * Math.random();
+};
+
+var n = randomRange(-5, 5);
+console.log(n); // between -5 and 5
+```
+
+## 3 - Rounding
+
+```js
+console.log( Math.round(0.01) ); // 0
+console.log( Math.ceil(0.01) ); // 1
+console.log( Math.floor(0.01) ); // 0
+ 
+console.log( Math.round(0.5) ); // 1
+console.log( Math.ceil(0.5) ); // 1
+console.log( Math.floor(0.5) ); // 0
+ 
+console.log( Math.round(0.99) ); // 1
+console.log( Math.ceil(0.99) ); // 1
+console.log( Math.floor(0.99) ); // 0
+ 
+console.log('******');
+console.log( Math.round(Math.random() * 6) ); // 0 - 6 (range of 7!)
+console.log( Math.ceil(Math.random() * 6) ); // 1 - 6 (range of 6)
+console.log( Math.floor(Math.random() * 6) ); // 0 - 5 (range of 6)
+```
+
+## 4 - Distribution
+
+```js
+var dist = (function () {
+    var api = function (count, w, h, method) {
+        count = count === undefined ? 100 : count;
+        w = w === undefined ? 320 : w;
+        h = h === undefined ? 240 : h;
+        method = method || api.methodOne;
+        var points = [],
+        i = count;
+        while (i--) {
+            points.push(method(i, w, h));
+        }
+        return points;
+    };
+    api.methodOne = function (i, w, h) {
+        return {
+            x: Math.floor(Math.random() * w),
+            y: Math.floor(Math.random() * h)
+        };
+    };
+    api.methodTwo = function (i, w, h) {
+        return {
+            x: Math.pow(2, Math.log(w) / Math.log(2) * Math.random()),
+            y: Math.pow(2, Math.log(h) / Math.log(2) * Math.random())
+        };
+    };
+    return api;
+}
+    ());
+```
+
+```html
+<html>
+    <head>
+        <title>Math random</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="dist.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d'),
+points1 = dist(1000, 150, 200, dist.methodOne);
+points2 = dist(1000, 150, 200, dist.methodTwo);
+ 
+var drawPoints = function (points, ctx, fill, sx, sy) {
+    ctx.fillStyle = fill || 'green';
+    sx = sx === undefined ? 0 : sx;
+    sy = sy === undefined ? 0 : sy;
+    points.forEach(function (pt) {
+        ctx.beginPath();
+        ctx.arc(sx + pt.x, sy + pt.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+    });
+};
+ 
+drawPoints(points1, ctx, 'red');
+drawPoints(points2, ctx, 'green', 150);
+ 
+        </script>
+    </body>
+</html>
+```
