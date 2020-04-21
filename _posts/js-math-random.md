@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2020-04-21 18:41:48
-version: 1.21
+updated: 2020-04-21 18:43:11
+version: 1.22
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something random. With that said there is maybe a bit more that just calling the method then when it comes to rounding, getting a range, and the nature of the distribution when using the method largely by itself. So lets take a look at a few examples of the Math random method in javaScript from simple to not so simple.
@@ -72,6 +72,9 @@ Now for a word or two on distribution when using the Math round method. Now the 
 
 A good way to understand what is going on with this would be to create something that looks like a [scatter plot](https://en.wikipedia.org/wiki/Scatter_plot) of sorts. If I use the Math random method to generate a bunch of random points by just multiplying width by a Math random call for x, and height by a Math.random call then the points will be random, but in a very evenly distributed kind of way.
 
+
+So say I have a dist.js file like this.
+
 ```js
 var dist = (function () {
     var api = function (count, w, h, method) {
@@ -102,6 +105,8 @@ var dist = (function () {
 }
     ());
 ```
+
+And I make use of it in an html file like this.
 
 ```html
 <html>
@@ -135,3 +140,5 @@ drawPoints(points2, ctx, 'green', 150);
     </body>
 </html>
 ```
+
+The result is random points, but they are distributed in very different ways.
