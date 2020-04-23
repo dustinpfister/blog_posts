@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:58:01
-version: 1.21
+updated: 2020-04-23 12:01:17
+version: 1.22
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device). This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -213,7 +213,7 @@ The main function is used to create an input state object. When called the input
 
 ## 2 - Simple demo
 
-So now for a simple demo to test out if this mouse works as expected.
+So now for a simple demo to test out if this control module works as expected. In this section I will just be going over a very basic example that just draws the current status of the input object to the canvas on each tick. In addition I will be testing out the event handers for event driven input rather that pulling the object also by just logging to the javaScript console.
 
 ### 2.1 - The html of the demo
 
