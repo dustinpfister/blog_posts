@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2020-04-23 15:53:39
-version: 1.4
+updated: 2020-04-23 15:56:04
+version: 1.5
 ---
 
 These days there is not a native [array fill prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and unless you care a great deal about backward compatibility the native array fill method works just fine. Unless you do want to use a pony fill method of area fill because you want to make sure what you are making will work on a wider range of platforms then you might want to use something else. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index. So lets look at some examples of filling an array with data.
@@ -53,7 +53,9 @@ b[7] = 0;
 console.log(b.join('')); // '01111110'
 ```
 
-## 3 - Using juts a while loop and the Array literal syntax
+## 3 - Using just a while loop and the Array literal syntax
+
+If you want to push backward compatibility as far back as you can possible go, the you might want to work out some kind of solution that just involves a while loop and just the plain old array bracket syntax.
 
 ```js
 var newFilled = function (len, val) {
@@ -69,6 +71,8 @@ var byt = newFilled(8, 0);
 byt[0] = 1;
 console.log(byt.join('')); // '10000000'
 ```
+
+If this does not work in the target environment of interest then it is way to old, even for me.
 
 ## 4 - String Split
 
