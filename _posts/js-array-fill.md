@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2020-04-23 15:56:04
-version: 1.5
+updated: 2020-04-23 15:57:15
+version: 1.6
 ---
 
 These days there is not a native [array fill prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and unless you care a great deal about backward compatibility the native array fill method works just fine. Unless you do want to use a pony fill method of area fill because you want to make sure what you are making will work on a wider range of platforms then you might want to use something else. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index. So lets look at some examples of filling an array with data.
@@ -75,6 +75,8 @@ console.log(byt.join('')); // '10000000'
 If this does not work in the target environment of interest then it is way to old, even for me.
 
 ## 4 - String Split
+
+Do not forget about all the prototype methods in a String that there are to play with such as String.split. That kind of method can come in handy when it comes to creating a new Array filled with something from a string.
 
 ```js
 var arr = '00000000'.split('');
