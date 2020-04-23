@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:02:13
-version: 1.5
+updated: 2020-04-23 11:10:24
+version: 1.6
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -17,9 +17,16 @@ Most frameworks such as phaser will have an input controller, or input hander of
 
 <!-- more -->
 
-## 1 - The controller module
+## 1 - The controller module With mouse, touch, and keyboard support
 
 So first off lets go over the control.js module that I worked out for this. The control.js module will create just one global variable that contains two public methods, one for creating an input object, and then another that is just a convenience methods for attaching events.
+
+
+### 1.1 - The start of the module, isMouse, and getCanvasRelativeArray
+
+In the module everything is wrapped up into an [IIFE or Immediately Invoked Function Expression](/2020/02/04/js-iife/) where the public API is what will be returned by the function expression and thus be the value of the global variable.
+
+At the top of the expression I have my isMouse helper method that will just return true if the given event object is a mouse event, after that there is a more complex method that will return an array of point objects from an event object where each object contains canvas relative rather than window relative x and y values.
 
 ```js
 var controlMod = (function () {
