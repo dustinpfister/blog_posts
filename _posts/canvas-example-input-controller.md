@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:31:59
-version: 1.14
+updated: 2020-04-23 11:36:04
+version: 1.15
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -70,6 +70,8 @@ var controlMod = (function () {
         return arr;
     };
 ```
+
+I went with using the targetTouches property of the events object of a touch event rather than the other options. The reason why is because I have found that the targetTouches touch list array contains the touch objects that I want for making this abstraction. In other examples I might want to use changedTouches or the touches properties in place of this, but not here.
 
 ### 1.2 - Fill helper and create input state object
 
