@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:42:20
-version: 1.18
+updated: 2020-04-23 11:50:40
+version: 1.19
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device). This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -75,7 +75,9 @@ I went with using the [targetTouches](https://developer.mozilla.org/en-US/docs/W
 
 ### 1.2 - Fill helper and create input state object
 
-I then have a fill array helper, and a helper that will be used to create the input object.
+I then have a fill array helper, and a helper that will be used to create the input object that the main public method will return.
+
+The fill method is just a pony fill for Array.fill, the only reason why it is here is because i would like to push IE support as far back as IE9 although I have not tested this to work on that.
 
 ```js
     // fill an array
@@ -106,6 +108,8 @@ I then have a fill array helper, and a helper that will be used to create the in
         return input;
     };
 ```
+
+The input state object contains references to the canvas, and the window object that was given when it is called. This method is not called directly, but inside the body of the public API method that is returned later on in this module.
 
 ### 1.3 - call user handlers helper, and the handlers object
 
