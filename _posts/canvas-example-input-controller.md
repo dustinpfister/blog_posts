@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:14:28
-version: 1.8
+updated: 2020-04-23 11:16:00
+version: 1.9
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -147,7 +147,9 @@ I have a helper that is used to call all user defined event handers in the input
     };
 ```
 
-### 1.4 - 
+### 1.4 - Set handers
+
+Here are the methods that actually attach the handers to the dom elements they are used in the public api method.
 
 ```js
     // set an event handler for the given input state, DOMType, and type in handlers
@@ -169,7 +171,9 @@ I have a helper that is used to call all user defined event handers in the input
     };
 ```
 
-### 1.5 - 
+### 1.5 - The Public API
+
+Now for the public API that consists of a single function with one static method attached.
 
 ```js
     var api = function (canvas, win) {
