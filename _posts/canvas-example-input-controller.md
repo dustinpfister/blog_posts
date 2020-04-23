@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:16:00
-version: 1.9
+updated: 2020-04-23 11:21:38
+version: 1.10
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -201,4 +201,81 @@ Now for the public API that consists of a single function with one static method
  
 }
     ());
+```
+
+## 2 - Simple demo
+
+### 2.1 - The html of the demo
+
+```html
+<html>
+    <head>
+        <title>canvas keyboard</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="./lib/control.js"></script>
+        <script src="./lib/draw.js"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>
+```
+
+### 2.2 - The draw.js file
+
+
+
+```js
+// Draw
+var draw = {};
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+draw.debugInput = function (ctx, input) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 10);
+ 
+    // draw pos points
+    var posPoints = input.pos.map(function (pos) {
+            return pos.x + ',' + pos.y;
+        }).join(' | ');
+    ctx.fillText('input.pos: ' + posPoints, 10, 20);
+ 
+    ctx.fillText('input.keys[87] (w): ' + input.keys[87], 10, 40);
+    ctx.fillText('input.keys[65] (a): ' + input.keys[65], 10, 50);
+    ctx.fillText('input.keys[83] (s): ' + input.keys[83], 10, 60);
+    ctx.fillText('input.keys[68] (d): ' + input.keys[68], 10, 70);
+};
+```
+
+### 2.3 - The main.js file
+
+```js
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+var input = controlMod(canvas);
+ 
+// can add events
+controlMod.add(input, 'pointerStart', function (pos, input, e) {
+    console.log('pointer event staretd: ');
+    console.log(pos);
+});
+ 
+controlMod.add(input, 'keydown', function (keys, input, e) {
+    console.log('key down:');
+    console.log('keys[65]: ' + keys[65]);
+});
+ 
+// can pull in a loop
+var loop = function () {
+    requestAnimationFrame(loop);
+    draw.back(ctx, canvas);
+    draw.debugInput(ctx, input);
+};
+ 
+loop();
 ```
