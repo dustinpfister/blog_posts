@@ -5,11 +5,11 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 42
-updated: 2020-04-22 22:03:17
-version: 1.5
+updated: 2020-04-22 22:09:25
+version: 1.6
 ---
 
-In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) or [Not A Number](https://en.wikipedia.org/wiki/NaN) is a oddly enough a special number value that happens as a result of a math operation with a String, or a variety of other situations such as division of zero over zero. This value has some unique things going on with it such as the fact that its data type is a Number, yet it is called Not A Number. However maybe one of the most concerning things about it is that by itself it does not equal anything including itself, so special methods must be used to make comparisons.
+In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) or [Not A Number](https://en.wikipedia.org/wiki/NaN) is a oddly enough a special number value that happens as a result of a math operation with a String that can not be converted to a number, or a variety of other situations such as division of zero over zero. This value has some unique things going on with it such as the fact that its data type is a Number, yet it is called Not A Number. However maybe one of the most concerning things about it is that by itself it does not equal anything including itself, so special methods must be used to make comparisons.
 
 <!-- more -->
 
