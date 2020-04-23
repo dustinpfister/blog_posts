@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:53:59
-version: 1.20
+updated: 2020-04-23 11:58:01
+version: 1.21
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device). This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -179,7 +179,9 @@ Here are the methods that actually attach the handers to the dom elements they a
 
 ### 1.5 - The Public API
 
-Now for the public API that consists of a single function with one static method attached.
+Now for the public API that consists of a single function with one static method attached. 
+
+The main function is used to create an input state object. When called the input object is created with the private create input state method that I went over earlier, and as such the given canvas and window object are pases to that method here. The input state object that is created is then what is returned, but not before handers are attached to it. I do so by calling the other private methods that I went over for each event that I want handers attached for, in this module I want mouse, touch, and keyboard support.
 
 ```js
     var api = function (canvas, win) {
