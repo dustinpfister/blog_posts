@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 10:48:46
-version: 1.4
+updated: 2020-04-23 11:02:13
+version: 1.5
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -83,10 +83,18 @@ var controlMod = (function () {
             userHanders: {
                 pointerStart: [],
                 pointerMove: [],
-                pointerEnd: []
+                pointerEnd: [],
+                keydown: [],
+                keyup: []
             }
         };
         return input;
+    };
+ 
+    var callUserHanders = function (input, type, a, e) {
+        input.userHanders[type].forEach(function (userHandler) {
+            userHandler.call(input, a, input, e);
+        });
     };
  
     // handers
@@ -94,18 +102,14 @@ var controlMod = (function () {
         pointerStart: function (pos, input, e) {
             input.pointerDown = true;
             input.pos = pos;
-            input.userHanders.pointerStart.forEach(function (userHandler) {
-                userHandler.call(input, pos, input, e);
-            });
+            callUserHanders(input, 'pointerStart', pos, e);
         },
         pointerMove: function (pos, input, e) {
             // update pos only if pointer is down
             if (input.pointerDown) {
                 input.pos = pos;
             }
-            input.userHanders.pointerMove.forEach(function (userHandler) {
-                userHandler.call(input, pos, input, e);
-            });
+            callUserHanders(input, 'pointerMove', pos, e);
         },
         pointerEnd: function (pos, input, e) {
             if (isMouse(e)) {
@@ -119,9 +123,7 @@ var controlMod = (function () {
                     input.pos = pos;
                 }
             }
-            input.userHanders.pointerEnd.forEach(function (userHandler) {
-                userHandler.call(input, pos, input, e);
-            });
+            callUserHanders(input, 'pointerEnd', pos, e);
         }
     };
  
@@ -139,6 +141,7 @@ var controlMod = (function () {
     var setKeyHandler = function (input, DOMType) {
         input.win.addEventListener(DOMType, function (e) {
             input.keys[e.keyCode] = e.type === 'keydown';
+            callUserHanders(input, DOMType, input.keys, e);
         });
     };
  
@@ -148,12 +151,10 @@ var controlMod = (function () {
         setPointerHandler(input, 'mousedown', 'pointerStart');
         setPointerHandler(input, 'mousemove', 'pointerMove');
         setPointerHandler(input, 'mouseup', 'pointerEnd');
- 
         // touch
         setPointerHandler(input, 'touchstart', 'pointerStart');
         setPointerHandler(input, 'touchmove', 'pointerMove');
         setPointerHandler(input, 'touchend', 'pointerEnd');
- 
         // keyboard
         setKeyHandler(input, 'keydown');
         setKeyHandler(input, 'keyup');
