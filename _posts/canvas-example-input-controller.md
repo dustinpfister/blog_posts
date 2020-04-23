@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 10:47:18
-version: 1.3
+updated: 2020-04-23 10:48:46
+version: 1.4
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -19,7 +19,7 @@ Most frameworks such as phaser will have an input controller, or input hander of
 
 ## 1 - The controller module
 
-So first off lets go over the control.js module that I worked out for this.
+So first off lets go over the control.js module that I worked out for this. The control.js module will create just one global variable that contains two public methods, one for creating an input object, and then another that is just a convenience methods for attaching events.
 
 ```js
 var controlMod = (function () {
