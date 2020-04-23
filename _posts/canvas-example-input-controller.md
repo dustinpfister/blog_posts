@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:29:56
-version: 1.13
+updated: 2020-04-23 11:31:59
+version: 1.14
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -291,3 +291,5 @@ When this module is up and running so far things seem to work as i would expect.
 ## 3 - Conclusion
 
 Depending on the nature of the project I would want to hack over this a little, add things to it, or remove code or change code that will not be used Depending on the nature of the project.
+
+Working out these things takes time and doing so often leads to me spending more time making things like this rather than making an actual project. However the whole point of doing something like this is to have something that is custom cut to the project, if I want to save time maybe it would be best to not bother with something like this at all and just use a framework.
