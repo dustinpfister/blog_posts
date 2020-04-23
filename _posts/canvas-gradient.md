@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-04-16 18:26:06
-version: 1.15
+updated: 2020-04-23 12:13:30
+version: 1.16
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in html 5 canvas with two 2d drawing context methods of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context using [gradient color](https://en.wikipedia.org/wiki/Color_gradient).
@@ -149,4 +149,6 @@ This example results in a kind of color gradient that is similar to that of the 
 
 I have [started a whole series of canvas example posts](/2020/03/23/canvas-example/) where I am writing about a canvas example that is something that is starting to resemble an actual project of some kind rather than  juts a few simple examples in a post like this. One such [post is on a grid gradient](/2020/03/26/canvas-example-grid-gradient/) type thing that came out pretty good that involves a plug-in system and I like they way it came out. So far it is one of several projects in my canvas example series that I come back to now and then.
 
-Plain old canvas gradients are okay for just quickly painting a gradient, but it takes away from the run of diving deeper into the math that is involved behind them.
+## 5 - Conclusion
+
+Plain old canvas gradients are okay for just quickly painting a gradient, but it takes away from the run of diving deeper into the math that is involved behind them. This is something that I have been toying with for years when it comes to just experimenting and letting my mind flow. There are many ways to go about creating custom gradient like effects where some kind of interesting and novel logic is used to set the color values for a whole bunch of pixels.
