@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:10:24
-version: 1.6
+updated: 2020-04-23 11:11:54
+version: 1.7
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -69,7 +69,11 @@ var controlMod = (function () {
         }
         return arr;
     };
- 
+```
+
+### 1.2 - Fill helper and create input state object
+
+```js
     // fill an array
     var fill = function (count, val) {
         return Array.apply(0, {
@@ -97,7 +101,11 @@ var controlMod = (function () {
         };
         return input;
     };
- 
+```
+
+### 1.3 - 
+
+```
     var callUserHanders = function (input, type, a, e) {
         input.userHanders[type].forEach(function (userHandler) {
             userHandler.call(input, a, input, e);
@@ -133,7 +141,11 @@ var controlMod = (function () {
             callUserHanders(input, 'pointerEnd', pos, e);
         }
     };
- 
+```
+
+### 1.4 - 
+
+```js
     // set an event handler for the given input state, DOMType, and type in handlers
     var setPointerHandler = function (input, DOMType, type) {
         console.log(input.canvas);
@@ -151,7 +163,11 @@ var controlMod = (function () {
             callUserHanders(input, DOMType, input.keys, e);
         });
     };
- 
+```
+
+### 1.5 - 
+
+```js
     var api = function (canvas, win) {
         var input = createInputState(canvas, win || window);
         // mouse
