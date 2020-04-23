@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:28:37
-version: 1.12
+updated: 2020-04-23 11:29:56
+version: 1.13
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -287,3 +287,7 @@ loop();
 ```
 
 When this module is up and running so far things seem to work as i would expect. When I click the canvas I have just a single pos object in the input.pos array, when I touch the surface of my touch screen I get an array of pos objects. The events, and everything with keyboard keys seems to work as I would want it to also.
+
+## 3 - Conclusion
+
+Depending on the nature of the project I would want to hack over this a little, add things to it, or remove code or change code that will not be used Depending on the nature of the project.
