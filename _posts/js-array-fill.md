@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2020-04-23 15:52:11
-version: 1.3
+updated: 2020-04-23 15:53:39
+version: 1.4
 ---
 
 These days there is not a native [array fill prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and unless you care a great deal about backward compatibility the native array fill method works just fine. Unless you do want to use a pony fill method of area fill because you want to make sure what you are making will work on a wider range of platforms then you might want to use something else. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index. So lets look at some examples of filling an array with data.
@@ -28,6 +28,8 @@ If you do not care about supporting older browser that do not support this metho
 So with that said lets look at some more examples of filling an array in javaScript.
 
 ## 2 - Using Function.Apply, and Array.map
+
+If you are not familiar with the call, apply, and bind prototype methods of a Function in javaScript then you should take a moment to look into those methods when you get a chance.
 
 ```js
 // fill an array
