@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 11:21:38
-version: 1.10
+updated: 2020-04-23 11:26:13
+version: 1.11
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to.
@@ -205,7 +205,11 @@ Now for the public API that consists of a single function with one static method
 
 ## 2 - Simple demo
 
+So now for a simple demo to test out if this mouse works as expected.
+
 ### 2.1 - The html of the demo
+
+In th html file of the demo I link to the control.js file of course, and then a draw.js, and main.js file that I will be getting to in this section.
 
 ```html
 <html>
@@ -223,7 +227,7 @@ Now for the public API that consists of a single function with one static method
 
 ### 2.2 - The draw.js file
 
-
+Here I have a draw.js file for this demo of the control module. For now I just need method to draw a background to a canvas, and to draw current debug info for the state of an input object.
 
 ```js
 // Draw
@@ -252,6 +256,8 @@ draw.debugInput = function (ctx, input) {
 ```
 
 ### 2.3 - The main.js file
+
+Now for the main.js file where I get references to the canvas element that I have in the html, create an input state for that canvas, attach some events, and draw the status in a loop.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
