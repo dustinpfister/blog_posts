@@ -5,11 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-04-27 17:50:41
-version: 1.3
+updated: 2020-04-27 17:58:00
+version: 1.4
 ---
 
 As of late I was working on one of my canvas examples and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on this one. That way I can keep coming back to this whenever I end up in this situation.
+
+I said that this can end up being a bot of a rabbit hole, because there are many ways of going about making an experience point system, and also how it should be applied to objects in a game. For example an experience point system can just be applied to a variable that holds experience points for an object that repentants stats of a player object. However experience points could also be the number of kills that a unit has scored, or the amount of money that something costs. 
+
+Also there is how experience points are gained, is that something that will go up along with level? If so will it at the same rate? How about the amount of time that a player spends paying a game, should that be used, or should it be something that is earned by way of skill or reflexes?
+
+In any case in this post I thing I will be sticking with just the basics of making an experience point system with javaScript. When doing so I think most systems should have at least two methods one that can be used to find out how much experience points are needed to get to a given level, and another that can be used to set level based on a given about of experience points.
 
 <!-- more -->
 
