@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-04-27 17:58:00
-version: 1.4
+updated: 2020-04-27 18:00:45
+version: 1.5
 ---
 
 As of late I was working on one of my canvas examples and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on this one. That way I can keep coming back to this whenever I end up in this situation.
@@ -20,6 +20,8 @@ In any case in this post I thing I will be sticking with just the basics of maki
 <!-- more -->
 
 ## 1 - The xp System
+
+So For this post I will be making a module that returns two public methods to a global variable called XP.
 
 ```js
 var XP = (function () {
@@ -70,6 +72,8 @@ var XP = (function () {
 
 ## 2 - Simple demo
 
+Now to test out my module.
+
 ```html
 <html>
     <head>
@@ -94,6 +98,8 @@ document.getElementById('out').innerHTML = html;
     </body>
 </html>
 ```
+
+So then this results in the following output.
 
 ```
 level: 1; xp: 0; toNext: 100
