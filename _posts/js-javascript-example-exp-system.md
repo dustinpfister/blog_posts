@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-04-27 17:48:22
-version: 1.1
+updated: 2020-04-27 17:49:53
+version: 1.2
 ---
 
-As of late I was working on one of my canvas examples and I wanted a simple exp point system for it.
+As of late I was working on one of my canvas examples and I wanted a simple exp point system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on this one. That way I can keep coming back to this whenever I end up in this situation.
 
 <!-- more -->
 
