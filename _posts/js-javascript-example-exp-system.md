@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-04-27 20:48:10
-version: 1.6
+updated: 2020-04-27 20:52:40
+version: 1.7
 ---
 
 As of late I was working on one of my canvas examples and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on this one. That way I can keep coming back to this whenever I end up in this situation.
@@ -69,6 +69,8 @@ var XP = (function () {
 }
     ());
 ```
+
+For the most part I would think that I would want at least those two methods at a minimum. That is in a situation where the experience points are know, but I want to know the level and other values of interest I can use my parseByXP method to get and object that contains level along with everything else I think I would want. In a situation in which the Level is know, but I want to know the experience points and so forth I can use my parseByLevel method to get the object.
 
 ## 2 - Simple demo
 
