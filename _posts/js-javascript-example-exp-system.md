@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-04-27 20:55:29
-version: 1.8
+updated: 2020-04-27 20:57:54
+version: 1.9
 ---
 
 As of late I was working on one of my canvas examples and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on this one. That way I can keep coming back to this whenever I end up in this situation.
@@ -139,4 +139,6 @@ level: 29; xp: 40600; toNext: 2900
 
 Seems to work okay, at least for now anyway.
 
+## 3 - Conclusion
 
+So for now I have my simple copy and past experience point system. There is of course using this in some projects, doing some additional testing to make sure there are not any serious issues with it. Still less is more with something like this I think, I do not want to spend a great deal of time working out an experience point system, unless I am confident I can make one that will really set a project of mine apart from everything else.
