@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-04-27 20:57:54
-version: 1.9
+updated: 2020-04-27 20:59:58
+version: 1.10
 ---
 
 As of late I was working on one of my canvas examples and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on this one. That way I can keep coming back to this whenever I end up in this situation.
@@ -19,7 +19,7 @@ In any case in this post I thing I will be sticking with just the basics of maki
 
 <!-- more -->
 
-## 1 - The xp System
+## 1 - The XP System module
 
 So For this post I will be making a module that returns two public methods to a global variable called XP. Both of the public methods return a standard object that contains the level rounded down, the level in raw fraction form, the current amount of xp and xp counts for the next level, and to the next level. The only difference between the two methods is setting the values of this object by level, and setting the values by xp.
 
