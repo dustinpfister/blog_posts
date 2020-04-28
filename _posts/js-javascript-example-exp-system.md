@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-04-27 20:52:40
-version: 1.7
+updated: 2020-04-27 20:55:29
+version: 1.8
 ---
 
 As of late I was working on one of my canvas examples and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on this one. That way I can keep coming back to this whenever I end up in this situation.
@@ -72,10 +72,12 @@ var XP = (function () {
 
 For the most part I would think that I would want at least those two methods at a minimum. That is in a situation where the experience points are know, but I want to know the level and other values of interest I can use my parseByXP method to get and object that contains level along with everything else I think I would want. In a situation in which the Level is know, but I want to know the experience points and so forth I can use my parseByLevel method to get the object.
 
-## 2 - Simple demo
+## 2 - Simple demo that generates a list of values
 
-Now to test out my module.
+Now to test out my experience point system module with one or more quick demos. For starters how about just a simple example that just spits out values for each level from 1 up to a level cap of say 30.
 
+
+In that case I would want something like this.
 ```html
 <html>
     <head>
@@ -101,7 +103,7 @@ document.getElementById('out').innerHTML = html;
 </html>
 ```
 
-So then this results in the following output.
+Which results in the following output in the browser window.
 
 ```
 level: 1; xp: 0; toNext: 100
@@ -134,3 +136,7 @@ level: 27; xp: 35100; toNext: 2700
 level: 28; xp: 37800; toNext: 2800
 level: 29; xp: 40600; toNext: 2900
 ```
+
+Seems to work okay, at least for now anyway.
+
+
