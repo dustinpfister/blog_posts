@@ -5,13 +5,60 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-04-27 21:22:11
-version: 1.2
+updated: 2020-04-27 21:29:44
+version: 1.3
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach.
 
 <!-- more -->
+
+## 1 - The utils library for canvas example beach
+
+So with many of these canvas examples I end up making a utility library where I park methods that I think I will be using in more that one module at one point or another. Or another reason why I might place something there is to just reduce the complexity of another module. In any case it is a collection of methods that are relevant to the modules for this canvas example that include the modules for state, rendering, and any plug-ins I might make at some point if I end up making a plug-in system.
+
+```js
+var utils = {};
+ 
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+ 
+utils.XP = (function () {
+    // set level with given xp
+    var set = function (xp) {
+        //return Math.sqrt(xp);
+        return (1 + Math.sqrt(1 + 8 * xp / 50)) / 2;
+    };
+    // get exp to the given level with given current_level and xp
+    var XPto = function (level) {
+        //return Math.pow(level, 2);
+        return ((Math.pow(level, 2) - level) * 50) / 2;
+    };
+    var parseByXP = function (xp, cap) {
+        var l = set(xp);
+        l = l > cap ? cap : l;
+        var level = Math.floor(l),
+        forNext = XPto(level + 1);
+        return {
+            level: level,
+            levelFrac: l,
+            xp: xp,
+            forNext: l === cap ? Infinity : forNext,
+            toNext: l === cap ? Infinity : forNext - xp
+        };
+    };
+    return {
+        parseByLevel: function (l, cap) {
+            return parseByXP(XPto(l, cap));
+        },
+        parseByXP: parseByXP
+    };
+}
+    ());
+```
+
+For now the module consists of the distance formula, and a an experience point system that consists of two methods. The distance formula if a usual suspect for a lot of these canvas examples, but the experience point system is thus far something that I am juts using in this project, at least at the point of this writing anyway.
 
 ## Conclusion
 
