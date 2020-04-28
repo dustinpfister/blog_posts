@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-04-02 13:30:19
-version: 1.3
+updated: 2020-04-28 15:12:13
+version: 1.4
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. these kinds of constructors create index collections similar to that of a regular javaScript array, only much different. For starters the length of the collections is static, and the values that the collections can hold is restricted.
@@ -43,3 +43,7 @@ notClamped[0] = 258;
 console.log(clamped[0]); // 255
 console.log(notClamped[0]); // 2
 ```
+
+## 3 - Conclusion
+
+So unit8 arrays are a way of having an array of number values that range between 0 and 255 making it an appropriate options when it comes to anything that has to do with raw binary data.
