@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-04-19 19:52:50
-version: 1.8
+updated: 2020-04-28 19:41:19
+version: 1.9
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. I as happy with how my [grid gradient canvas example](/2020/03/26/canvas-example-grid-gradient/) came out as it is was a canvas example that I put a little more time and effort into than usual. The main reason why I liked working on it so much was the plug-in system. However that was just an eye candy type thing, it would be nice to start another canvas example that is something els like that only it is something maybe a little more interesting.
@@ -315,3 +315,9 @@ loop();
     </body>
 </html>
 ```
+
+## 6 - Conclusion
+
+There is a lot more work to do with this one of course if I choose to put some more time into this one. It looks like I do have the basic idea that I had in mind working at least, but now there is further refining the core of this a bit more as well as writing some additional plug-ins. Still the aim of this post was just to get together the core of what a world simulator type project would be and thus far I guess that is what this is for me at least.
+
+This is on of my canvas example projects that I would like to put more time into, but there are many others that come to mind that might be good candidates.
