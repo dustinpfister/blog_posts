@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 648
-updated: 2020-04-27 21:10:37
-version: 1.2
+updated: 2020-04-27 21:13:26
+version: 1.3
 ---
 
 [Frequency tables](https://en.wikipedia.org/wiki/Frequency_distribution) are a way of groping various outcomes in a sample or population in statistics. That is when running threw a population, or a sample of a population of data there are going to be instances in that sample that meet a cretin criteria, and thus can be grouped in that criteria. Say for example you have a collection of grades for each student in a class, there is groping them by a letter grade, or by a number range. In any case the result is a table where all the students fall into each group, and there is a count for each group, such a table can oftetn be called a frequency table.
@@ -51,3 +51,5 @@ console.log(table);
 //   { grade: 'b', count: 1 },
 //   { grade: 'd', count: 1 } ] 
 ```
+
+The frequency table can the be used to figure all kinds of useful values about the outcome of this hypothetical test. For example I can run over the frequency table and create a new value for each group that is the count over the total number of students to get percentage value for each group.
