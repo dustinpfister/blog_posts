@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2020-05-01 15:57:11
-version: 1.3
+updated: 2020-05-01 16:01:13
+version: 1.4
 ---
 
 So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. You want to invoke a method in the collections prototype, or any method in general for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path for all elements in a collection. However in modern javaScript there are also plenty of tools to grab at to begin with that a javaScript developer should be ware of that can also be used for this kind of task. So lets take an look at some code examples of calling a method for all elements in a collection.
@@ -42,6 +42,8 @@ console.log(r);
 
 ### 1.1 - Doing the same thing with vanilla javaScript using Array.prototype.map
 
+However it is not so hard to do what invoke map does with plain old vanilla javaScript my itself also. For example I can do the same as above with just the native map array prototype method.
+
 ```js
 let r = arr.map(function (nums) {
         return nums.sort(sorter);
@@ -52,6 +54,8 @@ console.log(r);
 ```
 
 ## 2 - Okay but lodash invoke map is a collection method so it works out of the box with objects in general too
+
+So it is true that invokeMap is one of the many so called collection methods in lodash. That is it is a method that will not just work with arrays or objects in general but both. So if I have a similar situation as before, but now it is an object with named rather than numbers key values then I can still juts use invokeMap. The only difference now is that because it is a plain old javaScriot object it does not have sort in the prototype object, however I can pass the method as the second argument rather than a string that is a path to the method.
 
 ```js
 let obj = {
