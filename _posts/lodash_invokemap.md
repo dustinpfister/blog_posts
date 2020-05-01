@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2020-05-01 16:01:13
-version: 1.4
+updated: 2020-05-01 16:07:09
+version: 1.5
 ---
 
 So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. You want to invoke a method in the collections prototype, or any method in general for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path for all elements in a collection. However in modern javaScript there are also plenty of tools to grab at to begin with that a javaScript developer should be ware of that can also be used for this kind of task. So lets take an look at some code examples of calling a method for all elements in a collection.
@@ -82,6 +82,7 @@ console.log(r);
 
 ## 2.1 - However it is not that much harder to do so with vanilla javaScript, just need to use Object.values
 
+However it is not always so hard to still do the same with just pain old vanilla javaScript.
 ```js
 let r = Object.values(obj).map(function (nums) {
         return nums.sort(sorter);
@@ -89,3 +90,9 @@ let r = Object.values(obj).map(function (nums) {
 console.log(r);
 // [ [ 0, 3, 3, 7, 12, 56 ], [ 4, 5, 6 ], [ 1, 5, 5, 5 ] ]
 ```
+
+## 3 - Conclusion
+
+I am not the kind of developer that things that lodash is just filled with methods like invokeMap. There are many talking points as to why it is that lodash is more than just a collection of methods that I may or may not use in a project. Even if you do not use lodash it is still a good idea to look at the lodash source code as there is a lot to be learned as to how it is designed. Also there is much more to write about when it comes to why it might be a good idea to use some kind of user space module that is a collection of independent methods in its own global variable rather than monkey patching methods that should be there into native objects.
+
+Still when it comes to invokeMap alone I can not say this is the most compelling method to support a case to use lodash.
