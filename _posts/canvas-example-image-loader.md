@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-04-30 17:34:27
-version: 1.1
+updated: 2020-05-01 12:28:39
+version: 1.2
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them.
@@ -56,7 +56,37 @@ var imgLoad = (function () {
     ());
 ```
 
-### 1.1 - Basic example
+## 2 - draw.js
+
+```js
+var draw = (function () {
+    return {
+        // draw background
+        back: function (ctx, canvas) {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        },
+        // crude starting draw cell index method
+        cellIndex: function (ctx, sheet, cellIndex, x, y, opt) {
+            opt = opt || {};
+            opt.cellWidthPX = opt.cellWidth || 32;
+            opt.cellHeightPX = opt.cellHeight || 32;
+            opt.drawWidth = opt.drawWidth || 32;
+            opt.drawHeight = opt.drawHeight || 32;
+            var sx = sheet.width / opt.cellWidthPX * cellIndex,
+            sy = 0,
+            sw = opt.cellWidthPX,
+            sh = opt.cellHeightPX;
+            ctx.drawImage(sheet,
+                sheet.width / opt.cellWidthPX * cellIndex, 0,
+                opt.cellWidthPX, opt.cellHeightPX,
+                x, y,
+                opt.drawWidth, opt.drawHeight);
+        }
+    }
+}
+    ());
+```
 
 ```html
 <html>
@@ -73,6 +103,7 @@ var imgLoad = (function () {
 ```
 
 ```js
+// MAIN
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
@@ -85,9 +116,7 @@ var img = imgLoad({
         baseURL: './img/',
         fileCount: 2,
         onFileLoad: function (per, i, img, e) {
-            console.log(per, i);
-            console.log(img);
-            console.log(e);
+            // update something like a loading bar here
         },
         onError: function (e, i, img) {
             console.log('Error loading image');
@@ -96,10 +125,8 @@ var img = imgLoad({
         },
         onDone: function (imgArr) {
             console.log('files loaded');
-            console.log(imgArr);
             draw.back(ctx, canvas);
-            ctx.drawImage(imgArr[0], 0, 0);
-            ctx.drawImage(imgArr[1], 100, 0);
+            draw.cellIndex(ctx, imgArr[1], 0, 10, 10);
         }
     });
 ```
