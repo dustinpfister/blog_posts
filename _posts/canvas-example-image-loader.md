@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-01 12:42:04
-version: 1.3
+updated: 2020-05-02 20:07:45
+version: 1.4
 ---
 
-Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics
+Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images.
 
 <!-- more -->
 
