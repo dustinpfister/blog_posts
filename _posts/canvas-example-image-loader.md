@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-02 20:07:45
-version: 1.4
+updated: 2020-05-02 20:08:59
+version: 1.5
 ---
 
-Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images.
+Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
 
 <!-- more -->
 
