@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-03 11:37:21
-version: 1.6
+updated: 2020-05-04 18:10:49
+version: 1.7
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
@@ -58,7 +58,11 @@ var imgLoad = (function () {
     ());
 ```
 
-## 2 - draw.js
+## 2 - A Simple use case example of the image loader module
+
+So now that I have a simple image file loader module in this section I will be going over a simple example of using it.
+
+## 2.1 - draw.js
 
 ```js
 var draw = (function () {
@@ -90,19 +94,7 @@ var draw = (function () {
     ());
 ```
 
-```html
-<html>
-    <head>
-        <title>canvas example image loader</title>
-    </head>
-    <body>
-        <div id="gamearea"></div>
-        <script src="./lib/img_load.js"></script>
-        <script src="./lib/draw.js"></script>
-        <script src="main.js"></script>
-    </body>
-</html>
-```
+### 2.2 - The main.js and index.html
 
 ```js
 // MAIN
@@ -131,4 +123,18 @@ var img = imgLoad({
             draw.cellIndex(ctx, imgArr[1], 0, 10, 10);
         }
     });
+```
+
+```html
+<html>
+    <head>
+        <title>canvas example image loader</title>
+    </head>
+    <body>
+        <div id="gamearea"></div>
+        <script src="./lib/img_load.js"></script>
+        <script src="./lib/draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
