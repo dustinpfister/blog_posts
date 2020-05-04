@@ -5,17 +5,19 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-04 18:17:29
-version: 1.9
+updated: 2020-05-04 18:22:08
+version: 1.10
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
+
+There is much more beyond just loading the images when it comes to things like how to go about figuring out where all the frame index value are if the image is a sprite sheet. However as I see it a lot of that might have to do with the project, there are many ways to go about solving that problem and as such it is required to pick one and more froward. However in any case there is of course still just loading one or more images first so lets get to it.
 
 <!-- more -->
 
 ## 1 - The image loader module
 
-The first thing I would work out is a main image loader module. There is much more beyond just loading the images when it comes to things like how to go about figuring out where all the frame index value are if the image is a sprite sheet. However as I see it a lot of that might have to do with the project, there are many ways to go about solving that problem and as such it is required to pick one and more froward. However in any case there is of course still just loading one or more images first.
+The first thing I would work out is a main image loader module that I would make in a way that is reusable for more than one project. So this module will just be used to load images and just about everything else that comes to mind should be handled elsewhere.
 
 ```js
 var imgLoad = (function () {
