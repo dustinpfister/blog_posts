@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-04 18:10:49
-version: 1.7
+updated: 2020-05-04 18:14:12
+version: 1.8
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
@@ -64,6 +64,8 @@ So now that I have a simple image file loader module in this section I will be g
 
 ## 2.1 - draw.js
 
+So for this example I have a draw.js module that is used to just draw a background to a canvas element, and one additional method that I can use to draw cells from a sprite sheet.
+
 ```js
 var draw = (function () {
     return {
@@ -94,7 +96,11 @@ var draw = (function () {
     ());
 ```
 
+ However in order to use my draw cell index method I will first need to load some images so lets get to the main.js file.
+
 ### 2.2 - The main.js and index.html
+
+Here I have a main.js file where I create a canvas element, and use my image loader module to load some image assets.
 
 ```js
 // MAIN
@@ -125,6 +131,8 @@ var img = imgLoad({
     });
 ```
 
+So now I just need some html to tie this all together.
+
 ```html
 <html>
     <head>
@@ -138,3 +146,8 @@ var img = imgLoad({
     </body>
 </html>
 ```
+
+So far things seem to work as expected when this example is up and running.
+
+
+## 3 - Conclusion
