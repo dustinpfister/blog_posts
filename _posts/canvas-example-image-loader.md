@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-04 18:22:08
-version: 1.10
+updated: 2020-05-04 18:28:59
+version: 1.11
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
@@ -18,6 +18,8 @@ There is much more beyond just loading the images when it comes to things like h
 ## 1 - The image loader module
 
 The first thing I would work out is a main image loader module that I would make in a way that is reusable for more than one project. So this module will just be used to load images and just about everything else that comes to mind should be handled elsewhere.
+
+I will want a main method that I call and pass an object where I attach methods that will be called each time an images loads, and of course when all the images are loaded also. The method that is called each time a file is loaded could be used as a way to create a loading bar for a canvas example, or anything else that I might want to do each time an image is loaded. The on done method will be used to start a canvas example when all the assets are loaded, so I would change a state machine value, or start a project completely in the body of that method.
 
 ```js
 var imgLoad = (function () {
@@ -59,6 +61,8 @@ var imgLoad = (function () {
 }
     ());
 ```
+
+There are other values that I pass to the options object when calling this which are important, mainly the base URL property and the file count property. The file could property is used to set how many images there are in a path, and the base url is used to set what that path is. I am following a system where each asset has a number from zero up to the the total number of assets minus one. I see a lot of projects that follow this kind of system, if you want to do something else you will have to develop this kind of module differently to allow for human readable names..
 
 ## 2 - A Simple use case example of the image loader module
 
