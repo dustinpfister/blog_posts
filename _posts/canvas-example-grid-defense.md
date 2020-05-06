@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2020-04-18 12:52:09
-version: 1.16
+updated: 2020-05-06 12:19:00
+version: 1.17
 ---
 
-Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
+Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting with canvas and javaScript. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
 
 This will not be a tower defense game, or any such game that will involve path detection, as it will be the kind of simple defense game that involves units just moving from one side of the screen to another. Even with this style of game I will be keeping things as simple as possible to make it so this post does not go on forever.
 
@@ -80,7 +80,7 @@ Grid.prototype.setCells = function (forCell) {
 
 I went for two get cell methods one that accepts cell index values, and the other that accepts canvas relative pixel values. So for this project that is all there is for the base grid class. This style of defense game is not going to be tower defense, enemies are just going to move from one side to the other so there is no need for path detection of anything to that effect.
 
-## 2 - grid unit module
+## 2 - Grid unit module
 
 So now for a more advanced class that extends the grid class, and an enemy class. The Unit Grid class extends the base Grid class that I went over in the previous section, and on top of that adds some additional methods that have to do with spawning and updating enemies.
 
