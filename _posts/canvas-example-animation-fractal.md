@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-04-17 10:53:32
-version: 1.19
+updated: 2020-05-06 09:32:40
+version: 1.20
 ---
 
-I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too. Also I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, and just make more [canvas examples](/2020/03/23/canvas-example/) to play around with, but also just simply as a fun and interesting way to apply what I all ready know.
+I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too so it is also an example of the kind of thing to get into these days when it comes to me trying to find novel and inserting things to do with javaScript. I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, and just make more [canvas examples](/2020/03/23/canvas-example/) to play around with. However fractals are also just simply a fun and interesting way to apply what I all ready know with javaScript in an artful way for what that is worth to me.
 
-The basic idea of a fractal as I see it is that I am dealing with some kind of image pattern that repeats as I continue to zoom in. That might be a pretty crude definition that does not do the subject justice, but more often then not it would appear that is what a fractal is. So a very simple canvas fractal example could just be an animation of some squares getting bigger from a single starting point, and then looping back to that point once they get big enough.
+The basic idea of a fractal as I see it is that I am dealing with some kind of image pattern that repeats as I continue to zoom in. That might be a pretty crude definition that does not do the subject justice, but more often then not it would appear that is what a fractal is. So a very simple canvas fractal example could just be an animation of some squares getting bigger from a single starting point, and then looping back to that point once they get big enough. So that would maybe be a good starting point actually, but I would not stop there with this sort of thing.
 
 <!-- more -->
 
