@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-06 15:00:19
-version: 1.3
+updated: 2020-05-06 15:01:44
+version: 1.4
 ---
 
 I have made a basic clock canvas example before however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. This will be a clock that involves a pool of objects that move around the canvas, as the day progresses the count of particle objects that are active will increase to to a certain point at which it will come back down again. This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects.
@@ -142,6 +142,8 @@ var clockMod = (function () {
 
 ## 3 - Draw.js
 
+In the draw.js file I have a bunch of methods that I use to draw the state of a clock object to a canvas element.
+
 ```js
 var draw = {};
  
@@ -211,6 +213,8 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
 ```
 
 ## 4 - Main.js and index.html
+
+So ow that I have a utility library as well as my clock and draw files I can now use all of this in a main.js file and get everything working with just a little html.
 
 ```js
 // create and append canvas element, and get 2d context
