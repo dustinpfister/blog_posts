@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-04-17 13:29:10
-version: 1.15
+updated: 2020-05-06 11:55:54
+version: 1.16
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells if you prefer. This is something that will come into play for many projects that are some kind of game that involves a world map of cells. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -281,3 +281,7 @@ canvas.addEventListener('mousemove', function (e) {
     }
 });
 ```
+
+## 4 - Conclusion
+
+So hopefully this canvas example helps with some of the basics of making a large map however there is much more work to be done when it comes to making a project that involves a much larger map. There will come a time when working on a project with a large map that something will have to be done to break things down with respect to how to go about rendering the map to the canvas as well as how to go about updating the contents of the map.
