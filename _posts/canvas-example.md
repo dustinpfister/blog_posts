@@ -1,12 +1,12 @@
 ---
-title: 28 Canvas examples and counting, animations, games, modules, and more.
+title: 30 Canvas examples and counting, animations, games, modules, and more.
 date: 2020-03-23 08:48:00
 categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-05-04 19:40:53
-version: 1.30
+updated: 2020-05-06 09:16:27
+version: 1.31
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index in each post. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
