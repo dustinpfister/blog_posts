@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-05-06 09:55:08
-version: 1.21
+updated: 2020-05-06 09:58:32
+version: 1.22
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too so it is also an example of the kind of thing to get into these days when it comes to me trying to find novel and inserting things to do with javaScript. I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, and just make more [canvas examples](/2020/03/23/canvas-example/) to play around with. However fractals are also just simply a fun and interesting way to apply what I all ready know with javaScript in an artful way for what that is worth to me.
@@ -19,7 +19,7 @@ The basic idea of a fractal as I see it is that I am dealing with some kind of i
 
 So maybe a good starting exercise for fractals would be to just have and array of squares, and as I continue to zoom in the square of a certain index value in the array will get bigger, at some point though that square will end up being small again at the starring point. In other words it is just a repeating loop of squares getting larger, until they get to a certain size, at which point they become the new small square, and this is happening in an offset way where each square in the collection is at a certain point in this transition.
 
-Maybe another way to explain this is that I have and array of box objects with x, y, width, and height properties. All I am doing is setting say the first box in the array with an index of zero to a width and height of zero, and then setting the position to a certain starting point. As I move up in the index values of the array of box objects the size of the boxes gets bigger. When the largest box gets to a certain size it will become the new point with a width and height of zero at the starting position. thus the result is a simple loop of boxes getting bigger from a starting location looping over and over again.
+Maybe another way to explain this is that I have and array of box objects with x, y, width, and height properties. All I am doing is setting say the first box in the array with an index of zero to a width and height of zero, and then setting the position to a certain starting point at say the center of the canvas. As I move up in the index values of the array of box objects the size of the boxes gets bigger in terms of the width and height, and the position of the upper left corner moves to the upper left corner of the canvas. When updating the values of this collection  at some point the largest box gets to a certain max size at which point it will become the new box with a width and height of zero at the starting position. Thus the result is a simple loop of boxes getting bigger from a starting location looping over and over again.
 
 So with that said this section will be a canvas fractal animation of just some boxes getting bigger from a starting point over and over again.
 
