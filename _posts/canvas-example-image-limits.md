@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2020-05-06 12:22:54
-version: 1.23
+updated: 2020-05-06 12:30:42
+version: 1.24
 ---
 
 So now for yet another [canvas example](/2020/03/23/canvas-example/), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images when it comes to a set resolution and color depth. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that kind of a matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite never the less.
@@ -41,7 +41,7 @@ IMG.pastSafe = function (w, h, colorDepth) {
 
 ### 1.2 - Get an index number from an image string, and create a string from an index number
 
-So the images that I am going to work with can be stored as a string of chars. For this canvas example I am going to be keeping the color depth very low, so I can get away with each char in the string representing a color index value for each pixel.
+So the images that I am going to work with can be stored as a string of chars where each char is a color depth value. For this canvas example I am going to be keeping the color depth very low, so I can get away with each char in the string representing a color index value for each pixel. This kind of system should just about always work because I can not see the color depth getting really high as the number of possible combinations of images gets crazy high enough with just two index colors.
 
 ```js
 IMG.indexFromString = function (string, colorDepth) {
