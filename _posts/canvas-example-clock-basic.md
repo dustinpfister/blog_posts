@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-05-06 11:27:20
-version: 1.21
+updated: 2020-05-06 11:31:46
+version: 1.22
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. Sure a starting point would be just a simple digital or analog clock but why stop there as there are so many things that a developer could do when it comes to working with date objects and using them to update the state of an object that can then be rendered using canvas. Still in this post I will be going over just a simple basic clock concept using canvas and javaScript.
@@ -120,9 +120,13 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
 };
 ```
 
+So now I have my clock module that I can use to create a clock object, and my draw.js module that can be used to render a clock face based of the current state of that clock object. That just leaves a little more javaScriopt to make use of these two modules, and a little html to tie this all together so lets get to that now.
+
 ## 3 - The main.js and index.html files
 
-So then I have the rest of the code that gets a reference to a canvas element that I have in the HTML of the example, sets the size, and then makes use of what I have worked out by just calling the loop method at a set time interval. I then have the main app loop of the canvas example. I this main loop method I am just getting a clock object with the create method of my clock module with the current time, clearing the canvas, and then calling my draw methods in the draw module.
+So then I have the rest of the code that gets a reference to a canvas element that I have in the HTML of the example, sets the size, and then makes use of what I have worked out by just calling the loop method over and over again useing the request animation frame method. 
+
+I then have the main app loop of the canvas example,in this main loop method I am just getting a clock object with the create method of my clock module with the current time. Once I do that I then using my draw module methods to clear the canvas, and then call the additional draw methods in the draw module to render the clock face in the way I want to.
 
 
 ```js
