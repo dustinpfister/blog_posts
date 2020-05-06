@@ -5,13 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-04-18 10:56:49
-version: 1.16
+updated: 2020-05-06 12:00:50
+version: 1.17
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that is just a bunch of buttons that preform all kinds of actions when clicked. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
 
 Sure an input element and an event handler for it will work just fine in a pinch, but what if I want display objects rendered in the canvas to be what the button is for buttons? Doing so is more or less the same thing as creating display objects in general, it is just that we are creating a special kind of display object that is a user interface button. So in this [canvas example](/2020/03/23/canvas-example/) post, I will be going over a basic button layout solution for a canvas project.
+
+This button layout will working okay when it comes to certain projects, however in others I might want to do additional things to make it so that the buttons move in and out of the canvas. There is a fine line between a user interface button and a display object that is used to represent an enemy or play object in a game for example. In some projects I guess the only difference might be how a button is skinned compared to other display objects and what happens when you click or touch one.
 
 <!-- more -->
 
