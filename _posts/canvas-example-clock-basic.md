@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-04-17 10:57:01
-version: 1.14
+updated: 2020-05-06 10:03:08
+version: 1.15
 ---
 
-For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it.
+For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. Sure a starting point would be just a simple digital or analog clock but why stop there as there are so many things that a developer could do when it comes to working with date objects and using them to update the state of an object that can then be rendered using canvas. Still in this post I will be going over just a simple basic clock concept using canvas and javaScript.
 
 <!-- more -->
 
