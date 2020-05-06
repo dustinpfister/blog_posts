@@ -5,21 +5,56 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-05-06 10:03:08
-version: 1.15
+updated: 2020-05-06 11:05:24
+version: 1.16
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. Sure a starting point would be just a simple digital or analog clock but why stop there as there are so many things that a developer could do when it comes to working with date objects and using them to update the state of an object that can then be rendered using canvas. Still in this post I will be going over just a simple basic clock concept using canvas and javaScript.
 
 <!-- more -->
 
-## 1 - Basic canvas clock example
+## 1 - Te clock.js file for a basic canvas clock example
 
-So lets start out with a very basic canvas clock example. This will involve a get clock method that will create a clock object based on the passed date given as the first argument. The object will contain properties that are then used in one or more draw methods that are used to render the current state of that clock object.
+So lets start out with a very basic canvas clock example that will just be a digital clock along with some other little features. This will involve a module that has at least one public method that will create a clock object based on the passed date given as the first argument. The clock object will contain properties that are then used in one or more draw methods that are used to render the current state of that clock object to a canvas element.
+
+```
+var clockMod = (function () {
+    // pad a value
+    var pad = function (a) {
+        return String('00' + a).slice(-2);
+    };
+
+    var getTimeText = function (clock) {
+        return pad(clock.now.getHours()) + ' : ' +
+        pad(clock.now.getMinutes()) + ' : ' +
+        pad(clock.now.getSeconds());
+    };
+
+    var getDayStart = function (clock) {
+        return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
+    };
+
+    // return a public method that creates a clock object
+    return {
+        create: function (date) {
+            var clock = {};
+            clock.now = date || new Date(0);
+            clock.timeText = getTimeText(clock);
+            var dayStart = getDayStart(clock);
+            clock.dayPer = (clock.now - dayStart) / 86400000;
+            clock.secPer = clock.now.getMilliseconds() / 1000;
+            return clock;
+        }
+    }
+
+}
+    ());
+```
+
+So then this module returns an object that has thus far just one method that I will be using to create a clock object in my main.js file. The aim here is to work out the basic idea of what I should be doing when it comes to making a canvas clock in terms of what I need it terms of a state object rather than rendering. I want to keep the state of the clock separate from methods that are used to draw it, and also I would like to have a create clock method designed in a way in which the same state object is returned for the same arguments that are given. Also in the event that no arguments are given it will always return a state object that reflects the same point in time. In other words a pure function of sorts, even though it is a state object that is returned.
 
 ### 1.1 - A get clock method
 
-So here is the get clock methods that I would out for this canvas example, and this section of this post. The aim here is to work out the basic idea of what I should be doing when it comes to making a canvas clock. I want to keep the state of the clock separate from methods that are used to draw it, and also I would like to have a get clock method designed in a way in which the same state object is returned for the same arguments that are given. Also in the event that no arguments are given it will always return a state object that reflects the same point in time. In other words a pure function of sorts, even though it is a state object that is returned.
 
 ```js
 // pad a value
