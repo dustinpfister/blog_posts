@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-05-06 11:15:09
-version: 1.17
+updated: 2020-05-06 11:16:50
+version: 1.18
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. Sure a starting point would be just a simple digital or analog clock but why stop there as there are so many things that a developer could do when it comes to working with date objects and using them to update the state of an object that can then be rendered using canvas. Still in this post I will be going over just a simple basic clock concept using canvas and javaScript.
@@ -119,7 +119,6 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
 
 ## 3 - The main.js and index.html files
 
-
 So then I have the rest of the code that gets a reference to a canvas element that I have in the HTML of the example, sets the size, and then makes use of what I have worked out by just calling the loop method at a set time interval. I then have the main app loop of the canvas example. I this main loop method I am just getting a clock object with the create method of my clock module with the current time, clearing the canvas, and then calling my draw methods in the draw module.
 
 
@@ -163,8 +162,7 @@ loop();
 ```
 
 
-So then when I have this canvas example up and running it just displays a simple digital clock. Nothing to interesting, but it is just a start, and any more interesting clock is just going to be a more advanced examples of this. When it comes to my get clock method I will want that to always give me the same clock object for the same date that is passed each time. That object can have all kinds of things attached to it that can be used in the render process. Including things like display objects the position of which change depending on the time of day, the time of year, or even over all time if I want to get that nuts.
-This is a post on making a basic canvas clock example, but lets look at least one more example of this to get a better idea of what this can lead to and why it can be really fun to get into this sort of thing.
+So then when I have this canvas example up and running it just displays a simple digital clock text below a percentage of the amount of time that has passed for the day thus far. 
 
 ## 4 - Conclusion
 
