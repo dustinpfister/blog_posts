@@ -5,17 +5,19 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-05-06 11:16:50
-version: 1.18
+updated: 2020-05-06 11:20:39
+version: 1.19
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. Sure a starting point would be just a simple digital or analog clock but why stop there as there are so many things that a developer could do when it comes to working with date objects and using them to update the state of an object that can then be rendered using canvas. Still in this post I will be going over just a simple basic clock concept using canvas and javaScript.
 
 <!-- more -->
 
-## 1 - Te clock.js file for a basic canvas clock example
+## 1 - The clock.js file for a basic canvas clock example
 
 So lets start out with a very basic canvas clock example that will just be a digital clock along with some other little features. This will involve a module that has at least one public method that will create a clock object based on the passed date given as the first argument. The clock object will contain properties that are then used in one or more draw methods that are used to render the current state of that clock object to a canvas element.
+
+I will want to have a clock that does display the current time in a certain format so the clock object will have a timeText property that is just simply that. The clock object will also have a day percent property also though that I will be using as another way of expressing the current time. This is one thing that comes to mind as to why getting into clocks with javaScrit and canvas can be fun and interesting, instead of having just a simple digital or analog clock why not have a ring that expresses the percent of the day that is over.
 
 ```
 var clockMod = (function () {
