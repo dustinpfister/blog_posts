@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-05-06 11:20:39
-version: 1.19
+updated: 2020-05-06 11:23:23
+version: 1.20
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a basic clock. Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. Sure a starting point would be just a simple digital or analog clock but why stop there as there are so many things that a developer could do when it comes to working with date objects and using them to update the state of an object that can then be rendered using canvas. Still in this post I will be going over just a simple basic clock concept using canvas and javaScript.
@@ -55,12 +55,11 @@ var clockMod = (function () {
 
 So then this module returns an object that has thus far just one method that I will be using to create a clock object in my main.js file. The aim here is to work out the basic idea of what I should be doing when it comes to making a canvas clock in terms of what I need it terms of a state object rather than rendering. I want to keep the state of the clock separate from methods that are used to draw it, and also I would like to have a create clock method designed in a way in which the same state object is returned for the same arguments that are given. Also in the event that no arguments are given it will always return a state object that reflects the same point in time. In other words a pure function of sorts, even though it is a state object that is returned.
 
-
 So now that I have my get clock method I will n ow want to work out at least one method that will render the state of this clock object.
 
 ## 2 - Draw the clock status object
 
-Here I have a draw method that will render the clock object that is returned with my get clock method. For now with this canvas example the draw method just displays the timeText property of the clock object. In additional examples I will add properties to my clock object when it comes to making a more advanced get clock method, but for now I want to keep things basic and just have a digital clock.
+Here I have a draw method that will render the clock object that is returned with my create method of the clock module that I would out. This basic clock canvas example will display the time text property of the clock object in the center of a clock face of sorts. However I will be displaying that in a finer size text below some larger text that is the percent of the day that has passed. 
 
 ```js
 var draw = {};
