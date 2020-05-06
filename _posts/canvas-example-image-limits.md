@@ -5,12 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2020-04-18 13:06:13
-version: 1.22
+updated: 2020-05-06 12:22:54
+version: 1.23
 ---
 
 So now for yet another [canvas example](/2020/03/23/canvas-example/), this one is going to be pretty cool, or at least I think so. It has to do with the limits of 2d images when it comes to a set resolution and color depth. When working with an image of any fixed width, height, and color depth there is a finite number of possible combinations for that kind of a matrix. Sure as you increase the resolution and color depth the total number of possibilities does start to become a very large finite number but it is still finite never the less.
-So with that said this is one of several ideas that keep coming back to be, and i revisit them. So I though I would make it part of my canvas example collection of projects.
+
+So with that said this is one of several ideas that keep coming back to be, and I revisit them now and then. So I though I would make it part of my canvas example collection of projects and write a post about this one because I think it is pretty cool. For now I think I might just stick with regular javaScript numbers when it comes to the image index values, but sooner or later I think this is the kind of project that calls for the use of high precession math.
 
 <!-- more -->
 
