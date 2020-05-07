@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-07 09:52:57
-version: 1.5
+updated: 2020-05-07 09:54:26
+version: 1.6
 ---
 
 I have made a basic clock canvas example before however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. This will be a clock that involves a pool of objects that move around the canvas, as the day progresses the count of particle objects that are active will increase to to a certain point at which it will come back down again. This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects.
@@ -33,7 +33,7 @@ u.pad = function (a) {
 
 ## 2 - Clock.js
 
-The clock.js file creates a module that is used to create the main state object for this canvas example. I then use this state object with another module in my draw.js file that will draw the state of this object to the canvas.
+The clock.js file creates a module that is used to create the main state object for this canvas example. I then use this state object with another module in my draw.js file that will draw the state of this object to the canvas. In my basic clock example I just had a create method that would be used over an over again to create an up to date clock object, however in this example I have both a create method and an update method.
 
 ```js
 var clockMod = (function () {
