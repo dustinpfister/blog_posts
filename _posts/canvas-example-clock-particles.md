@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-08 19:32:23
-version: 1.9
+updated: 2020-05-08 19:39:52
+version: 1.10
 ---
 
 I have made a basic clock canvas example before however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. This will be a clock that involves a pool of objects that move around the canvas, as the day progresses the count of particle objects that are active will increase to to a certain point at which it will come back down again. This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects.
@@ -35,6 +35,10 @@ u.pad = function (a) {
 
 The clock.js file creates a module that is used to create the main state object for this canvas example. I then use this state object with another module in my draw.js file that will draw the state of this object to the canvas. In my basic clock example I just had a create method that would be used over an over again to create an up to date clock object, however in this example I have both a create method and an update method. The reason why is that I do not want to recreate the pool of particles over and over again each time.
 
+### 2.1 - The start of the module, getTimeText and getDayStart
+
+At the top of the module I have a helper method that I use to create a text format of the current time. After that I have another helper method that returns a date the represents the starting time of the current day, this is used to find a percent value for the progression of the current day later on.
+
 ```js
 var clockMod = (function () {
  
@@ -47,7 +51,11 @@ var clockMod = (function () {
     var getDayStart = function (clock) {
         return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
     };
- 
+```
+
+### 2.2 - Set particle
+
+```js
     var setPart = function (clock, part) {
         var weekPer = (clock.now.getDay()+1) / 7,
         baseSpeed = 16 + 32 * weekPer,
@@ -55,7 +63,11 @@ var clockMod = (function () {
         part.pps = baseSpeed + deltaSpeed;
         part.heading = Math.PI * 2 * Math.random();
     };
- 
+```
+
+### 2.3 - Create the pool
+
+```js
     var createPool = function (clock, count) {
         var i = 0,
         pool = [],
@@ -75,7 +87,11 @@ var clockMod = (function () {
         }
         return pool;
     };
- 
+```
+
+### 2.4 - set particles active
+
+```js
     var setActivePoolParts = function (clock) {
         var len = clock.pool.length,
         i = len,
@@ -89,7 +105,11 @@ var clockMod = (function () {
             }
         }
     };
- 
+```
+
+### 2.5 - update the pool
+
+```js
     var updatePool = function (clock, secs) {
         var i = clock.pool.length,
         part;
@@ -106,14 +126,22 @@ var clockMod = (function () {
             }
         }
     };
- 
+```
+
+### 2.6 - Set props to now
+
+```js
     var setClockPropsToNow = function (clock) {
         clock.timeText = getTimeText(clock);
         var dayStart = getDayStart(clock);
         clock.dayPer = (clock.now - dayStart) / 86400000;
         clock.secPer = clock.now.getMilliseconds() / 1000;
     };
- 
+```
+
+### 2.7 - The public API
+
+```js
     // return a public method that creates a clock object
     return {
         create: function (now) {
