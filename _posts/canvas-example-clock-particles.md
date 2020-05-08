@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-08 19:41:18
-version: 1.11
+updated: 2020-05-08 19:47:35
+version: 1.12
 ---
 
 I have made a basic clock canvas example before however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. This will be a clock that involves a pool of objects that move around the canvas, as the day progresses the count of particle objects that are active will increase to to a certain point at which it will come back down again. This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects.
@@ -69,6 +69,8 @@ I then have another helper that I use to set the speed and heading of a given pa
 
 ### 2.3 - Create the pool
 
+Here I have the method that is used to create the particle pool for the first time.
+
 ```js
     var createPool = function (clock, count) {
         var i = 0,
@@ -93,6 +95,8 @@ I then have another helper that I use to set the speed and heading of a given pa
 
 ### 2.4 - set particles active
 
+I set particle to active based on the current day percent value of the clock object.
+
 ```js
     var setActivePoolParts = function (clock) {
         var len = clock.pool.length,
@@ -110,6 +114,8 @@ I then have another helper that I use to set the speed and heading of a given pa
 ```
 
 ### 2.5 - update the pool
+
+Update the pool moving each particle that is currently set to active.
 
 ```js
     var updatePool = function (clock, secs) {
@@ -132,6 +138,8 @@ I then have another helper that I use to set the speed and heading of a given pa
 
 ### 2.6 - Set props to now
 
+Set the day percent value and sec percent value of the clock object to there current values.
+
 ```js
     var setClockPropsToNow = function (clock) {
         clock.timeText = getTimeText(clock);
@@ -142,6 +150,8 @@ I then have another helper that I use to set the speed and heading of a given pa
 ```
 
 ### 2.7 - The public API
+
+The public API of the clock module.
 
 ```js
     // return a public method that creates a clock object
