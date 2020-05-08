@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-04 18:34:18
-version: 1.12
+updated: 2020-05-08 14:56:26
+version: 1.13
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics, however there will come a time sooner or later where I will want to skin the project with some images. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
@@ -66,7 +66,11 @@ There are other values that I pass to the options object when calling this which
 
 ## 2 - A Simple use case example of the image loader module
 
-So now that I have a simple image file loader module in this section I will be going over a simple example of using it. In this example I will not be doing anything advanced, just using it to load an image and then have some draw method that I can use to draw an cell index from it.
+So now that I have a simple image file loader module in this section I will be going over a simple example of using it. In this example I will not be doing anything advanced, just using it to load an image and then have some draw method that I can use to draw a cell index from it as the image resource is a sprite sheet.
+
+When it comes to working with sprite sheets I have to figure out certain standards and stick to them when it comes to how sprite sheets or organized. When it comes to skinning a display object with some artwork it is often not just a matter of having a single static image, or a single animation loop. However maybe with some projects I do need to just do that and that will be it. 
+
+So for now in this example at least a sprite sheet is just an image that is composed of sections that are 32 by 32 pixels and the number of cell index values is just the width of the image divided by the width of a cell.
 
 ## 2.1 - draw.js
 
@@ -101,8 +105,6 @@ var draw = (function () {
 }
     ());
 ```
-
- However in order to use my draw cell index method I will first need to load some images so lets get to the main.js file.
 
 ### 2.2 - The main.js and index.html
 
