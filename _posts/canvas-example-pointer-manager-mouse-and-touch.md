@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2020-05-08 12:41:53
-version: 1.15
+updated: 2020-05-08 12:50:45
+version: 1.16
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -19,7 +19,7 @@ Anyway say you want to make a canvas project that will work well with both mouse
 
 ## 1 - The pointer manager module for this canvas example
 
-So lets start out with the module that will create the pointer manager of sorts. This module is a few helper methods and a single public method returned from within an IIFE module pattern. The public function is just called and passes s state machine object that I will be getting to with a demo later in this post.
+So lets start out with the module that will create the pointer manager of sorts. This module is a few helper methods and a single public method returned from within an IIFE module pattern. The public function is just called and passes a state machine object that I will be getting to with a demo later in this post.
 
 ### 1.1 - The start of the module and the get canvas relative helper.
 
@@ -207,3 +207,7 @@ loop();
 ```
 
 When this demo is up and running it works as expected. I can use the mouse to click and hold on the canvas and then drag the circle around the canvas, once I release the mouse button the circle returns to the center of the canvas. The same can be done with touch events, and in any case if I leave the canvas it triggers an end event also. This results in a uniform behavior regardless if I am using a mouse, or touch screen as a pointer device.
+
+## 3 - Conclusion
+
+So this is all just part of what might one day become a full canvas framework if I ever get to it. I am not sure if I can recommend taking the time to work out your own canvas framework rather than just using something that is out there. Sure there are advantages for doing so, and that is of course why I am taking the time to work out these examples. However I am paying a price for doing so as i find myself spending ore time making projects like this, and less time making actually games, animations, and productivity applications.
