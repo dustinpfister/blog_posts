@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-04-19 11:56:15
-version: 1.22
+updated: 2020-05-08 13:18:34
+version: 1.23
 ---
 
-This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a bit is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US).
+This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a little is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US) for android.
 
 The game is a pretty cool concept you have a starting world and two starting workers that can be used to build structures on land tiles of the world. There are many resources that can be gathered, one of which is used to power a rocket ship that can be used to go to another world in a solar system. There is even more to it than that, but that is the basic idea of the game.
 
@@ -298,7 +298,7 @@ So I have helpers that are used to create a single worker object, and a single l
 
 ### 2.3 - Set land item and create worker helpers
 
-methods for setting land tile index, and creating a new worker that is to be pushed to the free workers array.
+These are methods for setting land tile index, and creating a new worker that is to be pushed to the free workers array.
 
 ```js
     // set the item index for the given land
