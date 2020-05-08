@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2020-05-08 12:57:08
-version: 1.17
+updated: 2020-05-08 12:59:37
+version: 1.18
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -42,7 +42,7 @@ var PMMT = (function () {
     };
 ```
 
-I have a post in which I get into this topic in general. For the sake of this project a solution like this works okay because I do not want or need to support multi-touch. If i did want to support multi-touch then I would still use a solution not all that different from this one only it would return an array of pointer objects.
+I have a [post in which I get into the topic of getting a canvas relative point in general](/2020/03/04/canvas-get-point-relative-to-canvas/). For the sake of this project a solution like this works okay because I do not want or need to support multi-touch. If i did want to support multi-touch then I would still use a solution not all that different from this one only it would return an array of pointer objects.
 
 ### 1.2 - The out of canvas, and the get pointer helpers.
 
