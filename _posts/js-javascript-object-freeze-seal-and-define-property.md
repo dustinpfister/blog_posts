@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2020-05-08 18:38:46
-version: 1.3
+updated: 2020-05-08 18:42:14
+version: 1.4
 ---
 
 In the Core javaScript Object class there is the freeze Object static method that can be used to freeze an object at which point none of the value of the object can be changed. There is however also the seal static method that is also of interest that is a little different. The seal method does not freeze and object, however it does make it so no additional properties can be added to the object. There is set another static method that is relevant to this topic and that is the define property static method of the Object class. These three static methods allow for the creation of objects that have a strict set of conditions regarding the properties of an object.
@@ -67,7 +67,7 @@ console.log(obj.a); // undefined
 
 ## 4 - The object define property method
 
-There is then the define property method of the object class. This method can be used to set a writable flag for a property when defining it.
+There is then the define property method of the object class. This method can be used to set a writable flag for a property when defining it. So then this method is yet another tool in the toolbox when it comes to defining the nature of an object.
 
 ```js
 const obj = {};
@@ -83,3 +83,5 @@ obj.a = 7;
 console.log(obj.n); // 42
 console.log(obj.a);
 ```
+
+In addition to setting the writable flag of an object it can also be use to change if the object can show up in loops and other methods meant to be used to explore if an object has properties.
