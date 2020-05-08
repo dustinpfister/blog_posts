@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-08 18:59:53
-version: 1.7
+updated: 2020-05-08 19:31:24
+version: 1.8
 ---
 
 I have made a basic clock canvas example before however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. This will be a clock that involves a pool of objects that move around the canvas, as the day progresses the count of particle objects that are active will increase to to a certain point at which it will come back down again. This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects.
@@ -48,12 +48,15 @@ var clockMod = (function () {
         return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
     };
  
-    var setPart = function (part) {
-        part.pps = 16 + 16 * Math.random();
+    var setPart = function (clock, part) {
+        var weekPer = (clock.now.getDay()+1) / 7,
+        baseSpeed = 16 + 32 * weekPer,
+        deltaSpeed = 96 * weekPer * Math.random();
+        part.pps = baseSpeed + deltaSpeed;
         part.heading = Math.PI * 2 * Math.random();
     };
  
-    var createPool = function (count) {
+    var createPool = function (clock, count) {
         var i = 0,
         pool = [],
         part;
@@ -66,7 +69,7 @@ var clockMod = (function () {
                 heading: 0,
                 active: false
             };
-            setPart(part);
+            setPart(clock, part);
             pool.push(part);
             i += 1;
         }
@@ -87,7 +90,7 @@ var clockMod = (function () {
         }
     };
  
-    var movePool = function (clock, secs) {
+    var updatePool = function (clock, secs) {
         var i = clock.pool.length,
         part;
         while (i--) {
@@ -98,6 +101,7 @@ var clockMod = (function () {
                 if (u.distance(part.x, part.y, 0, 0) >= clock.faceRadius) {
                     part.x = 0;
                     part.y = 0;
+                    setPart(clock, part);
                 }
             }
         }
@@ -116,7 +120,7 @@ var clockMod = (function () {
             var clock = {};
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
-            clock.pool = createPool(240);
+            clock.pool = createPool(clock, 240);
             clock.poolLastTick = now;
             clock.poolTotalActive = 0;
             clock.faceRadius = 100;
@@ -124,20 +128,21 @@ var clockMod = (function () {
         },
  
         update: function (clock, now) {
-            clock.now = now || new Date(0);
+            //clock.now = new Date(2020, 4, 9, now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
+            clock.now =now || new Date(0);
             setClockPropsToNow(clock);
- 
             var t = clock.now - clock.poolLastTick,
             secs = t / 1000;
             setActivePoolParts(clock);
-            movePool(clock, secs);
+            updatePool(clock, secs);
             clock.poolLastTick = clock.now;
             return clock;
         }
     }
- 
+
 }
     ());
+
 ```
 
 ## 3 - Draw.js
