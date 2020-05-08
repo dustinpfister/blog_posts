@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-05-08 13:23:38
-version: 1.14
+updated: 2020-05-08 13:26:11
+version: 1.15
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -363,3 +363,5 @@ When this is all up and running I have a bunch of particles moving around the sc
 ## 5 - Conclusion
 
 I wanted to make at least one canvas example that is something like this. That is some kind of project where there is one or more display objects that attack other display objects, and then more display objects just keep spawning back into the canvas. the idea here is to just have something that is the beginnings of a project that is just an interesting simulation of sorts. I might come back to this one at some point to make things a little more advanced but there are a lot of other canvas examples that I would like to dump more time into also.
+
+In any case maybe this canvas example can serve as a good example of a basic mechanic that poops up in a whole lot of canvas projects in the open Internet. How many games are there that involve display objects moving around and getting attacked by other display objects when they come in range?
