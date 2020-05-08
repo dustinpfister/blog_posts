@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-08 19:39:52
-version: 1.10
+updated: 2020-05-08 19:41:18
+version: 1.11
 ---
 
 I have made a basic clock canvas example before however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. This will be a clock that involves a pool of objects that move around the canvas, as the day progresses the count of particle objects that are active will increase to to a certain point at which it will come back down again. This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects.
@@ -54,6 +54,8 @@ var clockMod = (function () {
 ```
 
 ### 2.2 - Set particle
+
+I then have another helper that I use to set the speed and heading of a given particle. This is called when creation the pool for the first time, and also each time a particle reaches the outer edge of the time ring that I have made for the clock face.
 
 ```js
     var setPart = function (clock, part) {
