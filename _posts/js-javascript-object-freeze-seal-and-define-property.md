@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2020-05-08 18:42:14
-version: 1.4
+updated: 2020-05-08 18:46:07
+version: 1.5
 ---
 
 In the Core javaScript Object class there is the freeze Object static method that can be used to freeze an object at which point none of the value of the object can be changed. There is however also the seal static method that is also of interest that is a little different. The seal method does not freeze and object, however it does make it so no additional properties can be added to the object. There is set another static method that is relevant to this topic and that is the define property static method of the Object class. These three static methods allow for the creation of objects that have a strict set of conditions regarding the properties of an object.
@@ -85,3 +85,7 @@ console.log(obj.a);
 ```
 
 In addition to setting the writable flag of an object it can also be use to change if the object can show up in loops and other methods meant to be used to explore if an object has properties.
+
+## 5 - Conclusion
+
+So the object freeze method can be used to freeze the state of an object, but you still might want to deep freeze the object if it has nested properties. However if you really need to use the object freeze method then maybe you should really take a deeper look at what is going on in your code. One line of reasoning is that yes there is the const keyword, and there are also these additional object methods that can be used in conjunction with the const keyword. However still you can declare an object with just plain old var also, and as long as you treat it as a constant in your code then the same result is accomplished yes?
