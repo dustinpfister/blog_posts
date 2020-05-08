@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-08 14:33:34
-version: 1.6
+updated: 2020-05-08 14:36:53
+version: 1.7
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach.
@@ -606,7 +606,11 @@ var draw = (function () {
 
 ## 4 - Main.js and index.html
 
-Time to pull all of this together with a main.js file and a little html for now.
+Time to pull all of this together with a main.js file and a little html for now. 
+
+I have not got  around to making a map system for this just yet, so for now I am just using a hard coded map as a javaScript string. I pass this string to the create method as an areaData property of the argument object for the crate method of the game module.
+
+Once I have my game state object I just pass it to the update method of the game module in the body of a main app loop.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -662,6 +666,8 @@ var loop = function () {
 };
 loop();
 ```
+
+I then have some HTML that pulls this all together with a single hard coded canvas element.
 
 ```html
 <html>
