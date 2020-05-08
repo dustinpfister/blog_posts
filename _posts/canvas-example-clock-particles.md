@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-07 09:54:26
-version: 1.6
+updated: 2020-05-08 18:59:53
+version: 1.7
 ---
 
 I have made a basic clock canvas example before however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. This will be a clock that involves a pool of objects that move around the canvas, as the day progresses the count of particle objects that are active will increase to to a certain point at which it will come back down again. This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects.
@@ -257,3 +257,7 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+I am happy how this project has come out, it is more or less what I had in mind when it comes to having a more advanced javaScript clock canvas example. However this is of course not even the tip of the iceberg when it comes to making interesting clock projects using javaScript and canvas.
