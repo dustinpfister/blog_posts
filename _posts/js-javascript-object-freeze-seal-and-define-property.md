@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2020-05-08 18:47:10
-version: 1.6
+updated: 2020-05-08 18:48:36
+version: 1.7
 ---
 
-In the Core javaScript Object class there is the freeze Object static method that can be used to freeze an object at which point none of the value of the object can be changed. There is however also the seal static method that is also of interest that is a little different. The seal method does not freeze and object, however it does make it so no additional properties can be added to the object. There is set another static method that is relevant to this topic and that is the define property static method of the Object class. These three static methods allow for the creation of objects that have a strict set of conditions regarding the properties of an object.
+In the Core javaScript Object class there is the [object freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) static method that can be used to freeze an object at which point none of the value of the object can be changed. There is however also [the seal static method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) that is also of interest that is a little different. The seal method does not freeze and object, however it does make it so no additional properties can be added to the object. There is set another static method that is relevant to this topic and that is the [define property](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) static method of the Object class. These three static methods allow for the creation of objects that have a strict set of conditions regarding the properties of an object.
 
 <!-- more -->
 
