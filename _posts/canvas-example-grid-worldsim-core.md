@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-05-05 08:19:53
-version: 1.10
+updated: 2020-05-09 07:38:16
+version: 1.11
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. 
@@ -19,7 +19,7 @@ So this canvas example will be similar to the grid gradient example, but this ti
 
 ## 1 - utils.js
 
-I have a utils module for this canvas example as is the case for most of this canvas examples. So far for this one I just have the distance formula.
+I have a utils module for this canvas example as is the case for most of these canvas examples. So far for this one I just have the distance formula that I will be using in the world module, as well as maybe some plug-ins in other files so it needs to be parked here.
 
 ```js
 // UTILS
@@ -29,6 +29,8 @@ u.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 ```
+
+As the complexity of the world module and set of plug-ins grows so will this utility module. Basically anything that is used in two or more files should be parked here as a default. Eventually there might be an array of modules like this one, but for the core of this project just one general, generic utility library might work just fine.
 
 ## 2 The world.js file
 
