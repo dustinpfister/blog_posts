@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-05-09 09:28:56
-version: 1.29
+updated: 2020-05-09 09:33:13
+version: 1.30
 ---
 
 I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. When cloning something it is important to make at least some kind of effort to make it distinct after all. I shall call it flappy collector, until I come up with some better working title for such a canvas example as I am not so great with names.
@@ -94,7 +94,9 @@ Now that I have a method that will spawn berry objects I will also want a method
 
 ### 2.4 - Update bird pixels per second
 
-the rate at which the bird moves is set by a pixels per second value. Over time I have found that this is the best way to go about moving display objects in any kind of real time game.
+The rate at which the bird moves is set by a pixels per second value same as the berries, or any display object that will be moving around for that matter. Over time I have found that this is the best way to go about moving display objects in any kind of real time game.
+
+So with that said I also have a helper for updating the bird also, the expression for doing so is a little different of course though. The bird is the object that the player controls after all, and the flap property is a value that is true then the player taps of clicks the screen.
 
 ```
     // update bird Pixels per second
