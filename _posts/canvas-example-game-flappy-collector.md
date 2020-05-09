@@ -5,15 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-05-06 12:15:51
-version: 1.25
+updated: 2020-05-09 09:19:34
+version: 1.26
 ---
 
-I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. I shall call it flappy collector, until I come up with some better working title for such a canvas example as I am not so good with names.
+I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. When cloning something it is important to make at least some kind of effort to make it distinct after all. I shall call it flappy collector, until I come up with some better working title for such a canvas example as I am not so great with names.
 
-The same basic idea is there though when it comes to having a display object at the far left side of the canvas and you click or tap the screen to have it jump up a little as it falls down constantly. So it is yet another kind of game like flappy bird, space invaders, or kaboom where you have the player sprite object fixed to one axis or another. Nothing wring with that as there are plenty of grate games that have that kind of general game mechanic at play.
+The same basic idea is there though when it comes to having a display object at the far left side of the canvas and you click or tap the screen to have it jump up a little as it falls down constantly. So it is yet another kind of game like flappy bird, space invaders, or kaboom where you have the player sprite object fixed to one axis or another. Nothing wrong with that as there are plenty of grate games that have that kind of general game mechanic at play.
 
-The nice thing about these kinds of projects is that it is very easy to get to that point where I have a clone of the idea, the hard part then is where I go from there with it to make it more original so it is  not just a cheep rip off.
+The nice thing about these kinds of projects is that it is very easy to get to that point where I have a clone of the general idea at least. However there is then the hard part of course and I would say that is where I go from there with it to make it more original so it is  not just a cheep rip off. So with that said this post will be on my current standing flappy bird clone that is part of my canvas example collection.
 
 <!-- more -->
 
