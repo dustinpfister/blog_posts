@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-05-09 09:19:34
-version: 1.26
+updated: 2020-05-09 09:22:33
+version: 1.27
 ---
 
 I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. When cloning something it is important to make at least some kind of effort to make it distinct after all. I shall call it flappy collector, until I come up with some better working title for such a canvas example as I am not so great with names.
@@ -23,7 +23,7 @@ This is a post on a canvas example of a game that is like flappy bird only I tri
 
 ## 2 - The game module for this canvas example
 
-To start out with I made a game module that contains public and private methods that can be used to create a game state, and work with that state. This module follows the pattern of using a Immediately Invoked Function Expression to wrap up everything that is used internally and then return a public API that is used outside of the module.
+To start out with I made a game module that contains public and private methods that can be used to create a game state, and work with that state also. This module follows the pattern of using an [Immediately Invoked Function Expression](/2020/02/04/js-iife/) to wrap up everything that is used internally and then return a public API that is used outside of the module.
 
 ### 2.1 - The beginning of the game module and a bounding box collision detection helper
 
