@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-05-09 09:22:33
-version: 1.27
+updated: 2020-05-09 09:28:23
+version: 1.28
 ---
 
 I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. When cloning something it is important to make at least some kind of effort to make it distinct after all. I shall call it flappy collector, until I come up with some better working title for such a canvas example as I am not so great with names.
@@ -71,7 +71,7 @@ So in this game the object is to just collect berries or not. It is a silly idea
 
 ### 2.3 - The update berries method
 
-Now that I have a method that will spawn berry objects I will also want a method that will update them.
+Now that I have a method that will spawn berry objects I will also want a method that will update them. this method will loop over all the berries in the main state object and reduce the x axis value of each of theme by there current pixels per second value multiplied by the passed seconds value sense the last update. In addition to that this method also checks for collision detection, and splices out old berries.
 
 ```js
     // update berries
