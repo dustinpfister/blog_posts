@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2020-05-08 13:03:45
-version: 1.14
+updated: 2020-05-11 20:45:12
+version: 1.15
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I find myself making clones of this game now and then, in part because it is so easy to make a game like this. It is the kind of game where I can make a working clone within just about an hour or so when I am working at my best, because it is so basic. It is also a great example of what really matters when making a game which is just to make something that is fun, or addictive in a distinct unique way.
@@ -76,7 +76,7 @@ I often do start out with this kind of module pattern when it comes to simple ca
 
 ## 2 - The draw method
 
-So now that I have the state object worked out it is time to work out a draw method for it. In this example I am not doing anything fancy with layering, sprites, and so forth. Just a single draw method that renders the current state of the game that will be called on each frame tick.
+So now that I have the state object worked out it is time to work out a draw method for it. In this example I am not doing anything fancy with layering, sprites, and so forth. Just a single draw method that renders the current state of the game that will be called on each frame tick. For now I went with something that just draws everything in just one method.
 
 ```js
 // DRAW
