@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-05-13 15:28:31
-version: 1.19
+updated: 2020-05-13 15:31:05
+version: 1.20
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -19,7 +19,7 @@ Many frameworks such as phaser will have a state machine as part of the function
 
 ## 1 - The State Machine module for canvas examples
 
-In this section I will be going over the source code of the state machine module that I worked out for this post, and might use in future canvas examples and projects. The module makes use of the IFFE pattern and returns a public API as a single function that creates a state machine object. Once I have a state machine object I can then call the load method as a way to start defining state objects.
+In this section I will be going over the source code of the state machine module that I worked out for this post, and might use in future canvas examples and projects as is, or in a custom mutated form. The module makes use of the IFFE pattern and returns a public API as a single function that creates a state machine object. Once I have a state machine object I can then call the load method as a way to start defining state objects.
 
 
 ### 1.1 - The start of the module, and a parse container argument helper
