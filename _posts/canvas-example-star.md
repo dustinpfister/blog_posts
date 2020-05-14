@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-05-14 15:54:10
-version: 1.18
+updated: 2020-05-14 15:59:11
+version: 1.19
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas HTML element, many solutions that I see involve making a draw method that will draw a star directly to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a start is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points.
@@ -170,6 +170,8 @@ This results in two stars created with the two separate methods drawn at two loc
 
 So now that I have my start module and my draw points method I now want to make another example that will be a basic canvas animation of sorts. This example will involve using the create1 start method to create an array of points on each loop of a loop method. Each time i create a new array of points I will be tweaking the options that are use to create it resulting in an animation.
 
+The values that I want to tweak are the number of points and the inner radius, each time the loop is called I will be increasing or decreasing the inner radius. In addition when the radius reaches a lower bound I will be stepping the point count.
+
 ```html
 <html>
     <head>
@@ -183,25 +185,46 @@ So now that I have my start module and my draw points method I now want to make 
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
  
-var star1 = starMod.create1({
-    radius: 60,
-    radiusInner: 30
-});
-var star2 = starMod.create2({
-    pointCount: 7,
-    radius: 60,
-    pointSkip: 3
-});
-
-ctx.lineWidth = 3;
-draw.background(ctx, canvas);
-ctx.strokeStyle = 'white';
-draw.points(ctx, star1, 80, canvas.height / 2);
-draw.points(ctx, star2, 240, canvas.height / 2);
+var pointCount = 5,
+inner = 20,
+deltaInner = 1;
+var loop = function () {
+ 
+    requestAnimationFrame(loop);
+ 
+    var star = starMod.create1({
+            pointCount: pointCount,
+            radius: 40,
+            radiusInner: inner
+        });
+ 
+    // step inner and point count
+    inner += deltaInner;
+    deltaInner = inner >= 80 ? -1 : deltaInner;
+    deltaInner = inner <= 20 ? 1 : deltaInner;
+    if (inner === 20) {
+        pointCount += 1;
+        pointCount = pointCount >= 20 ? 5 : pointCount;
+    }
+ 
+    // draw
+    ctx.lineWidth = 7;
+    draw.background(ctx, canvas);
+    ctx.strokeStyle = 'white';
+    ctx.fillStyle = 'green';
+    draw.points(ctx, star, canvas.width / 2, canvas.height / 2);
+    ctx.fill();
+ 
+};
+ 
+loop();
+ 
         </script>
     </body>
 </html>
 ```
+
+This results in the animation I more or less hand in mind, but I am having a low of idea of other projects that might use this star module that might make for a more interesting example.
 
 ## 3 - Conclusion
 
