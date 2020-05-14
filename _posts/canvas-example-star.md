@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-05-14 15:49:51
-version: 1.17
+updated: 2020-05-14 15:54:10
+version: 1.18
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas HTML element, many solutions that I see involve making a draw method that will draw a star directly to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a start is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points.
@@ -166,7 +166,9 @@ draw.points(ctx, star2, 240, canvas.height / 2);
 
 This results in two stars created with the two separate methods drawn at two locations in the canvas. The important thing here is that I am keeping the state of the starts separate from that of the methods that are used to draw that state. I could expand on the canvas star module by adding additional methods that can be used to manipulate the star point arrays. Another option though would be to make an example that just creates new stars each time.
 
-## 2 - Now for an example that involves creating a star canvas animation
+## 2 - Now for an example that involves creating an animation with this star module
+
+So now that I have my start module and my draw points method I now want to make another example that will be a basic canvas animation of sorts. This example will involve using the create1 start method to create an array of points on each loop of a loop method. Each time i create a new array of points I will be tweaking the options that are use to create it resulting in an animation.
 
 ```html
 <html>
