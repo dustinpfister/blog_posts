@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2020-05-08 13:15:30
-version: 1.16
+updated: 2020-05-14 15:49:51
+version: 1.17
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas HTML element, many solutions that I see involve making a draw method that will draw a star directly to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a start is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points.
@@ -138,8 +138,8 @@ So then it is just a matter of using the methods to create point arrays, and the
     </head>
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
-        <script src="draw.js"></script>
-        <script src="star.js"></script>
+        <script src="./lib/draw.js"></script>
+        <script src="./lib/star.js"></script>
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
@@ -166,6 +166,41 @@ draw.points(ctx, star2, 240, canvas.height / 2);
 
 This results in two stars created with the two separate methods drawn at two locations in the canvas. The important thing here is that I am keeping the state of the starts separate from that of the methods that are used to draw that state. I could expand on the canvas star module by adding additional methods that can be used to manipulate the star point arrays. Another option though would be to make an example that just creates new stars each time.
 
-## 4 - Conclusion
+## 2 - Now for an example that involves creating a star canvas animation
+
+```html
+<html>
+    <head>
+        <title>canvas star</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="./lib/draw.js"></script>
+        <script src="./lib/star.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+var star1 = starMod.create1({
+    radius: 60,
+    radiusInner: 30
+});
+var star2 = starMod.create2({
+    pointCount: 7,
+    radius: 60,
+    pointSkip: 3
+});
+
+ctx.lineWidth = 3;
+draw.background(ctx, canvas);
+ctx.strokeStyle = 'white';
+draw.points(ctx, star1, 80, canvas.height / 2);
+draw.points(ctx, star2, 240, canvas.height / 2);
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
 
 So this canvas example worked out pretty well, it was a nice little exercise at making stars for a canvas project. There is more than one methods for making them both of which have to do with Math.cos and Math.sin that are used to find out points around a given origin point.
