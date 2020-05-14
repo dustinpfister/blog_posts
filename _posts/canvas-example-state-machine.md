@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-05-14 15:27:09
-version: 1.21
+updated: 2020-05-14 15:28:00
+version: 1.22
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -24,7 +24,7 @@ In this section I will be going over the source code of the state machine module
 
 ### 1.1 - The start of the module, and a parse container argument helper
 
-So I start out the module with the begging part of an IIFE that will close at the end of the module. At the very top of the IIFE I have a parse container helper method. When the main public function is called I can pass a container argument as the first argument. The argument can be an object which is assumed to be a container element, it can also be a string that is assumed to be an id to an element to use. All other possible values including undefined will result in the body element being used as the container element to attach to.
+So I start out the module with the begging part of an [IIFE](/2020/02/04/js-iife/) that will close at the end of the module. At the very top of the IIFE I have a parse container helper method. When the main public function is called I can pass a container argument as the first argument. The argument can be an object which is assumed to be a container element, it can also be a string that is assumed to be an id to an element to use. All other possible values including undefined will result in the body element being used as the container element to attach to.
 
 ```js
 var Machine = (function () {
