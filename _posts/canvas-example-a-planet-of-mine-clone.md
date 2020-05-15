@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-05-08 13:18:34
-version: 1.23
+updated: 2020-05-15 08:22:20
+version: 1.24
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a little is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US) for android.
@@ -625,6 +625,8 @@ draw.debugLand = function (sm) {
 ```
 
 ## 5 - The game.js state file and index.html
+
+So now for the state object for the main game state, and some HTML to pull this all together into a working canvas example.
 
 ```js
 var sm = Machine('gamearea');
