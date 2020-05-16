@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-05-15 08:22:20
-version: 1.24
+updated: 2020-05-16 11:34:03
+version: 1.25
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a little is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US) for android.
@@ -323,7 +323,7 @@ These are methods for setting land tile index, and creating a new worker that is
 
 ### 2.4 - Position Workers
 
-Position the workers of the given area.
+Position the workers of the given area so that they are stacked relative to the locaion of the area.
 
 ```js
     var positionWorkers = function (area) {
