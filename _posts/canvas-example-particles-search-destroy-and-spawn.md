@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-05-08 13:26:11
-version: 1.15
+updated: 2020-05-17 15:39:11
+version: 1.16
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from a pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects.
@@ -103,7 +103,9 @@ var paricles = (function () {
 
 ### 2.2 - The create Pool helper
 
-Here I have a helper method that is called in the public create method to create the pool of particles for the first time.
+Here I have a helper method that is called in the public create method that I will be getting to later when going over the public API. The method is used to just simply create the pool of particles for the first time. 
+
+In the particles constructor the default type is none which for now is the type set for all particles accept for one that will be my hunter type.
 
 ```js
     // create a pool of particles
