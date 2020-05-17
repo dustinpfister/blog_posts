@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2020-05-17 15:48:18
-version: 1.17
+updated: 2020-05-17 15:52:04
+version: 1.18
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from the pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects or in other words a spawn method of sorts.
@@ -17,7 +17,7 @@ So this canvas example will just be an exercise of many aspects of canvas projec
 
 ## 1 - The utils module
 
-For this canvas example I will want a utils module that will contain some methods that I might not want to have in my draw or particles modules. This utility module contains a distance formula, along with a method for clamping values.
+For this canvas example I will want a utils module that will contain some methods that I might not want to have in my parti8cles module as well as maybe other modules for this canvas example. This utility module contains a distance formula, along with a method for clamping values and other helpful methods.
 
 ```js
 // UTILS
@@ -26,13 +26,6 @@ var u = {};
 u.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
- 
-// Math mod and angle methods from
-// https://github.com/infusion/Angles.js/blob/master/angles.js
-u.mod = function mod(x, m) {
-    return (x % m + m) % m;
-};
- 
 // clamp the given object to the given world
 u.clamp = function (obj, world) {
     if (obj.x < 0) {
@@ -54,6 +47,8 @@ u.perToRadian = function (per) {
     return Math.PI * 2 * per;
 };
 ```
+
+Just about all of my canvas examples have this kind of module that serves as a kind of project centered utility library of sorts.
 
 ## 2 - the particles module
 
