@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2020-05-08 14:01:11
-version: 1.21
+updated: 2020-05-18 19:50:12
+version: 1.22
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the [canvas restore method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore). 
@@ -154,7 +154,10 @@ drawBoxOverPoint(ctx, 16, 16, 32, 32);
 </html>
 ```
 
-So the canvas save method can be used whenever I want to do anything that involves the process of changing the position of the origin in the canvas.
+So the canvas save method can be used whenever I want to do anything that involves the process of changing the position of the origin in the canvas. 
+
+This can be useful in many situations however it is not a replacement foe making use that things are the way they should be with a model. For example if I have a modal where there is a collection of display objects with widths, heights, and positions I just just go with that data rather than changing things with rendering.
+
 
 ## 4 - Conclusion
 
