@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-19 16:56:05
-version: 1.17
+updated: 2020-05-19 16:58:57
+version: 1.18
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -23,7 +23,7 @@ So in this section I will be going over just a basic canvas drag example. This w
 
 ### 1.1 - The get canvas relative method and distance formula
 
-So at the start of my basic.js file I have my get canvas relative method that is used to get a canvas relative position from an event object. This variant of the method seems to work okay for both mouse and touch events just fine for this project at least sense I am not interested in supporting multi touch.
+So at the start of my basic.js file I have my get canvas relative method that is used to get a canvas relative position from an event object. This variant of the method seems to work okay for both mouse and touch events just fine for this project at least sense I am not interested in supporting multi touch. I will not be getting into this method in detail here as I have wrote a post on this subject before hand.
 
 ```js
 // get canvas relative and distance methods
@@ -40,6 +40,8 @@ var distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 ```
+
+In addition  to the get canvas relative method I also have the distance formula that will work fine as a collision detection method for this example at least sense it is a circle that I am dealing with. Now that we have that out of the way we can continue to the event handlers.
 
 ### 1.2 - Event handers
 
