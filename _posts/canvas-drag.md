@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-19 16:47:07
-version: 1.15
+updated: 2020-05-19 16:53:43
+version: 1.16
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -19,7 +19,7 @@ There is more to it then just start though, there are other talking points when 
 
 ## 1 - Basic canvas drag example
 
-So in this section I will be going over just a basic canvas drag example. This will just be a canvas example where at the center of the canvas will be a circle, and the circle can just be clicked and dragged around the canvas.
+So in this section I will be going over just a basic canvas drag example. This will just be a canvas example where at the center of the canvas there will be a circle, and the circle can just be clicked and dragged around the canvas, thats it nothing special. The example will involve the use of a method that I worked out for another canvas post of mine that has to do with getting a canvas relative point from and event object, and also the distance formula that will be used for collision detection.
 
 ### 1.1 - The get canvas relative method and distance formula
 
