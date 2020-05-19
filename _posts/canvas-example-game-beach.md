@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-19 16:35:14
-version: 1.9
+updated: 2020-05-19 16:36:41
+version: 1.10
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach.
@@ -453,6 +453,8 @@ var game = (function () {
 }
     ());
 ```
+
+I do not want to write to much more about this module at this time, the reason why is that I might continue working on this example a bit more and as such the state of the module might change a lot, or break down into many modules actually.
 
 ## 3 - Draw.js
 
