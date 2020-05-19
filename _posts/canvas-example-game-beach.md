@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-19 16:31:19
-version: 1.8
+updated: 2020-05-19 16:35:14
+version: 1.9
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach.
@@ -64,7 +64,7 @@ For now the module consists of the distance formula, and a an experience point s
 
 ## 2 - The game module
 
-Here is the main game module that will return two public methods that are use to create a game state, as well as update that game state for this canvas example.
+Here is the main game module that will return two public methods that are use to create a game state, as well as update that game state for this canvas example. The state object that the modules creates contains a grid as well as pools of display objects for player turrets, enemy ships, and shots. The main update method of this module accepts an instance of this state object and updates the state based on the amount of time that has elapsed sense the last update.
 
 ```js
 var game = (function () {
