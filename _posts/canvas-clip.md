@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2020-05-19 11:52:20
-version: 1.17
+updated: 2020-05-19 11:54:01
+version: 1.18
 ---
 
 The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas element. This clipping area is a way to set an area in the canvas where everything that is draw from that point forward will only render to areas inside the define clipping area. As a result this will result in a mask or template like effect, and can be used with other canvas context methods, and laying to achieve all kinds of effects with canvas elements and javaScript code.
@@ -47,6 +47,8 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 ```
 
 So this is just a fancy way of drawing a filled circle with the canvas arc method, only the canvas clip and fill rect methods are used. Still this demonstrates the basic idea, a path is used to define a clipping area and then the canvas clip method is used to set that area. Once the area is set then anything that is drawn will only be rendered in the clipped area.
+
+Still there is much more to go over when it comes to the use of this method. For example what if I want to invert the mask and have it so that just the area outside of the canvas is what is drawn to.
 
 ## 2 - Inverting the clip area
 
