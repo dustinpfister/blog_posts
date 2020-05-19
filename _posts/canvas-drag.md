@@ -5,15 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-08 14:41:08
-version: 1.14
+updated: 2020-05-19 16:47:07
+version: 1.15
 ---
 
-In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that.
+In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
 
-The process of making a canvas drag of sorts might involve getting started by getting a canvas relative point in a pointer start event such as mouse down or touch start event. Then use that to find out if a display object was clicked or not. If so set a boolean to true that is then used in the logic of a pointer move event that will be used to set the position of the display object to the canvas relative point. Finally there will be a pointer end event that just sets the boolean back to false leaving the dragged display object at its new location.
+The process of making a canvas drag of sorts might involve first getting a canvas relative point in a pointer event such as mouse down or a touch start event when it comes to touch events. Then the nest step might be to use that to find out if a display object was clicked or not with some kind of collision detection method such as bounding box. If an object has been clicked then I could set a boolean value for that display object to true that would then used in the logic of a pointer move event. In the body of the pointer move event I would then set the position of the display object to the canvas relative point that is obtained within the event object of the move event. Finally there will be a pointer end event that just sets the boolean back to false leaving the dragged display object at its new location.
 
-There is more to it then just start though, there are other talking points when it comes to snapping things to a grid or not, and creating user defined events for certain things that are a result of drag and drop. However the basics of getting started with canvas drag and drop is not so hard, and if things get to intense there is always just going with a framework such as [phaser that has all this worked out well and much more](/2017/10/24/phaser-inputhandler-draggable/).
+There is more to it then just start though, there are other talking points when it comes to snapping things to a grid or not, and creating user defined events for certain things that are a result of drag and drop. However the basics of getting started with canvas drag and drop is not so hard, and if things get to intense there is always just going with a framework such as [phaser that has all this worked out well and much more](/2017/10/24/phaser-inputhandler-draggable/). However in this post I am going to be witting about doing this sort of things and related topics with just plain old vanilla javaScript and canvas elements.
 
 <!-- more -->
 
