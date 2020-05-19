@@ -5,15 +5,15 @@ tags: [canvas]
 layout: post
 id: 542
 categories: canvas
-updated: 2020-05-08 14:27:51
-version: 1.15
+updated: 2020-05-19 11:45:50
+version: 1.16
 ---
 
-The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas element. This is a way to set an area in the canvas where everything that is draw from that point forward will only render to areas inside the define clipping area. As a result this will result in a mask or template like effect, and can be used with other canvas context methods, and laying to achieve all kinds of effects with canvas.
+The [canvas clip method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clip) can be used to set a clipping area for a canvas element. This clipping area is a way to set an area in the canvas where everything that is draw from that point forward will only render to areas inside the define clipping area. As a result this will result in a mask or template like effect, and can be used with other canvas context methods, and laying to achieve all kinds of effects with canvas elements and javaScript code.
 
-So the canvas clip method can be used as a replacement of, or in addition to other options such as canvas layering to achieve various effects where clipping might be called for. There are other methods that can be used in conjunction with the canvas clip method to do things that can be done with laying but with just one canvas. However if all else fails there is always just having a collection of canvas elements, something that should be done in most cases anyway. Still this is a post on the canvas clip method not laying, so I will be sticking to that here.
+So the canvas clip method can be used as a replacement of, or in addition to other options such as canvas layering to achieve various effects where clipping might be called for. There are other methods that can be used in conjunction with the canvas clip method to do things that can be done with laying but with just one canvas via the use of the canvas clip method. However if all else fails there is always just having a collection of canvas elements, something that should be done in most cases anyway when it comes to working on a serious long term canvas project. Still this is a post on the canvas clip method not laying, so I will be sticking to that here for the most part.
 
-The canvas clip method is used in a similar way to that of the fill and stroke methods when it comes to working with paths. That is a path can be used as a way to define the clip area, and then the canvas clip method is what can be used to set that clip area in the same way that a path would be filled and stroked. This method can also be used with the [canvas save and restore methods](/2019/08/14/canvas-save/), and layering of canvas elements as an over all way of creating all kinds of interesting effects with canvas elements.
+The canvas clip method is used in a similar way to that of the fill and stroke methods when it comes to working with paths. That is a path can be used as a way to define the clip area, and then the canvas clip method is what can be used to set that clip area in the same way that a path would be filled and stroked. This method can also be used with the [canvas save and restore methods](/2019/08/14/canvas-save/), and layering of canvas elements as an over all way of creating all kinds of interesting effects with canvas elements. So with that said lets take a look at some examples of clipping and canvas.
 
 <!-- more -->
 
