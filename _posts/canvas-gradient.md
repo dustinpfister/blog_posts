@@ -5,12 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-05-19 12:02:59
-version: 1.18
+updated: 2020-05-19 12:08:01
+version: 1.19
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in HTML 5 canvas with two drawing context methods of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). 
-Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context using [gradient color](https://en.wikipedia.org/wiki/Color_gradient). A gradient style is a nice change from just simple solid colors when it comes to drawing with the context method, but it might not be the end all solution for this sort of thing.
+
+Once a Gradient object is created it is possible to add color stops to it, once done it can be used as a fill or stroke style in a 2d drawing context using [gradient color](https://en.wikipedia.org/wiki/Color_gradient) rather than just simple static colors. A gradient style is a nice change from just simple solid colors when it comes to drawing with the context methods, but it might not be the end all solution for this sort of thing. There are ways of working out custom logic for making gradient like effects which can be a fun project as well as a good example for creating a model and a way to go about drawing that model using canvas. So lets look at some examples of creating gradients using canvas and javaScript code.
 
 <!-- more -->
 
