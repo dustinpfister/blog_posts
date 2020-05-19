@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-05-19 12:08:01
-version: 1.19
+updated: 2020-05-19 12:15:44
+version: 1.20
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in HTML 5 canvas with two drawing context methods of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). 
@@ -17,9 +17,11 @@ Once a Gradient object is created it is possible to add color stops to it, once 
 
 ## 1 - Canvas Gradient basic example with the Create Linear Gradient method
 
-It might be best to start out with a linear gradient so in this section I will be doing just that. I start out making a canvas element, and getting a drawing context just like any other canvas example. Once I have a drawing context to work with I can call the create linear gradient method of the drawing context. When I do so I will want to pass a starting point and end point of the gradient.
+It might be best to start out with a linear gradient so in this section I will be doing just that. I start out making a canvas element, and getting a drawing context just like any other canvas example. Once I have a drawing context to work with I can call the create linear gradient method of the drawing context. When I do so I will want to pass a starting point and end point of the linear gradient.
 
-After calling the create linear gradient method I will end up getting a gradient object as a product that is returned bu calling the method. I can then call the add color stop method of that gradient object to set the colors for the gradient. Once that is done I can then use the gradient as a style for setting the fill and stroke colors.
+After calling the create linear gradient method I will end up getting a gradient object as a product that is returned by calling the method to which I will want to store in a variable. I can then call the add color stop method of that gradient object to set the colors for the gradient by passing the percentage of the linear gradient at which the given color will stop from the beginning or another color stop as the first argument followed by the desired color as the second argument. Once that is done I can then use the gradient as a style for setting the fill and stroke colors.
+
+If you are still confused maybe the best way of understanding what is going on with this would be to just copy and past some code and play around with it. The bellow javaScript example is more or less what I have in mind here when it comes to a simple linear gradient color example.
 
 ```js
 // CANVAS
@@ -54,6 +56,8 @@ gradient.addColorStop(1, 'lime');
 ctx.fillStyle = gradient;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 ```
+
+Simple linear gradients are fine but what about gradients that change in all directions from a fixed point? Well when it comes to working with what there is with the 2d drawing context alone there is another type of built in gradient to work with so lets take a look at that for a moment next.
 
 ## 2 - Radial canvas gradient
 
