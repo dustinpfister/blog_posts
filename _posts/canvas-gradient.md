@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 606
-updated: 2020-05-08 14:30:09
-version: 1.17
+updated: 2020-05-19 12:02:59
+version: 1.18
 ---
 
 A [Canvas Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) can be created in HTML 5 canvas with two drawing context methods of interest which are [create Linear Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient), and [create Radial Gradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient). 
@@ -146,9 +146,13 @@ ctx.putImageData(imgData, 0, 0);
 
 This example results in a kind of color gradient that is similar to that of the radian color gradient. The dereference of course thorough is that I can tweak the logic that defines the gradation f color any way I see fit.
 
-## 4 - Check out my major canvas example of a grid gradient type thing that looks cool
+## 4 - Check out my canvas example of a grid gradient where I am using custom logic to create a gradient effect
 
-I have [started a whole series of canvas example posts](/2020/03/23/canvas-example/) where I am writing about a canvas example that is something that is starting to resemble an actual project of some kind rather than  juts a few simple examples in a post like this. One such [post is on a grid gradient](/2020/03/26/canvas-example-grid-gradient/) type thing that came out pretty good that involves a plug-in system and I like they way it came out. So far it is one of several projects in my canvas example series that I come back to now and then.
+I have [started a whole series of canvas example posts](/2020/03/23/canvas-example/) where I am writing about full canvas examples of sorts rather than simple copy and past code examples. One such [post is on a grid gradient](/2020/03/26/canvas-example-grid-gradient/) type thing that came out pretty good that involves a plug-in system and I like they way it came out. 
+
+In the example I am creating a state object that is completely separate from additional javaScript code that renders the current state of that state object to the canvas. The modules that creates and updates the state object contains all the code that is used to create and update color channel values for a bunch of cells in a grid. I am just using a simple distance formula, but there are all finds of ways that I could go about working out custom logic to make gradient like effects.
+
+So far it is one of several projects in my canvas example series that I come back to now and then.
 
 ## 5 - Conclusion
 
