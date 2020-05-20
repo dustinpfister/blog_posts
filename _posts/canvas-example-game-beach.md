@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-20 13:06:12
-version: 1.11
+updated: 2020-05-20 13:10:59
+version: 1.12
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid type game with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach. I was not thinking in terms of much more beyond that, but there are several games that I have played in the past that come to mind that where kind of fun that where like that in one way or another.
@@ -17,7 +17,9 @@ The current state of this canvas example is not what I had in mind just yet as o
 
 ## 1 - The utils library for canvas example beach
 
-So with many of these canvas examples I end up making a utility library where I park methods that I think I will be using in more that one module at one point or another. Or another reason why I might place something there is to just reduce the complexity of another module. In any case it is a collection of methods that are relevant to the modules for this canvas example that include the modules for state, rendering, and any plug-ins I might make at some point if I end up making a plug-in system.
+So with many of these canvas examples I end up making a utility library where I park methods that I think I will be using in more that one module at one point or another. Or another reason why I might place something there is to just reduce the complexity of another module such as the main game state module as those have a tenancy to get rather complicated. many methods and objects here might eventually get pulled into their own files at some point, but a general utility library seems like a good starting point to park these kinds of things. 
+
+In any case this utils.js file is a collection of methods that are relevant to the modules for this canvas example that include the modules for state, rendering, and any plug-ins I might make at some point if I end up making a plug-in system.
 
 ```js
 var utils = {};
