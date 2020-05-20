@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-05-20 09:55:18
-version: 1.24
+updated: 2020-05-20 09:58:16
+version: 1.25
 ---
 
 There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game) as there is the artistic side of game development, and then there is the business side of things. When it comes to the artistic side maybe game development is about some kind of expression, but then there is the business side, and with that said game development is more about making money. When it comes to that side of game development a game does not have to be some kind of ground breaking statement, or emotional expression, it just needs to make money.
@@ -21,7 +21,7 @@ The game module has an upgrade system that I worked out that is worth writing a 
 
 ## 1 - The utils lib for the basic idle game canvas example
 
-So in this section I will be gong over the utility library that I worked out for this canvas example of a basic idle game. The games user interface will just consist of just a static button layout in the canvas. This button layout will be composed of buttons that preform a manual gather action, as well as upgrades. So I will need some methods for collision detection and working with mouse and or touch events in addition to a methods that can be used to create this button layout.
+So in this section I will be gong over the utility library that I worked out for this canvas example of a basic idle game. Considering the nature of the game the user interface of the game will just consist of a static button layout in the canvas element. This button layout will be composed of buttons that preform a manual gather action, as well as upgrades and will be a box like area in the canvas. So  with that said I will need some methods for collision detection, and working with mouse and or touch events in addition to a method that can be used to create this button layout to be used as the games interface.
 
 ```js
 var u = {};
@@ -76,7 +76,7 @@ u.mkButtonLayout = function (opt) {
 };
 ```
 
-Not that I have a utility module I can get to the game state module, and then the code that draws a state object created with that module to the canvas.
+Now that I have a utility module I can get to the game state module, and then the code that draws a state object created with that module to the canvas.
 
 ## 2 - The game module
 
