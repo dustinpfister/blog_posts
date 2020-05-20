@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-20 13:10:59
-version: 1.12
+updated: 2020-05-20 13:15:43
+version: 1.13
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid type game with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach. I was not thinking in terms of much more beyond that, but there are several games that I have played in the past that come to mind that where kind of fun that where like that in one way or another.
@@ -62,7 +62,9 @@ utils.XP = (function () {
     ());
 ```
 
-For now the module consists of the distance formula, and a an experience point system that consists of two methods. The distance formula if a usual suspect for a lot of these canvas examples, but the experience point system is thus far something that I am juts using in this project, at least at the point of this writing anyway.
+For now the module consists of the distance formula, and a an experience point system that consists of two methods. The distance formula is a usual suspect for a lot of these canvas examples, but the experience point system is thus far something that I am just using in this project, at least at the point of this writing anyway.
+
+The XP system of a game alone can often become a complex project on its own, however for now I just wanted a very simple basic system for this kind of thing. As I see it an XP system should have at least two methods one that can be used to create a state object for sorts by passing a level, and level cap to get a state object, and the other by passing an XP point value. The state object then contains properties like current level, the level in fraction form, the xp value, and values for the next level and to the next level.
 
 ## 2 - The game module
 
