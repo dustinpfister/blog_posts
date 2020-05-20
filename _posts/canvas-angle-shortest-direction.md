@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-05-09 09:12:13
-version: 1.13
+updated: 2020-05-20 09:31:19
+version: 1.14
 ---
 
 When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle that I wish to get to. With that said I often find myself in a situation in which I want to start stepping the current angle by a delta value that will get the current angle to the target angle. 
@@ -53,7 +53,7 @@ var getDir = (function () {
 
 ## 1.2 - A draw module
 
-For this example I have a draw.js file that is used to draw the background, debug info, and circles that reflect the state of my current and target angles.
+For this example I have a draw.js file that is used to draw the background, debug info, and circles that reflect the state of my current and target angles. For this module I am just going with the plain old object literal module pattern as everything that I am using thus far can be public. There is the circle point method that is intended to be used as a way to draw a circle along the circumference of a circle, as well as the plain old draw circle method that uses this method internally when drawing the current state of a given state object for this example.
 
 ```js
 var draw = {};
