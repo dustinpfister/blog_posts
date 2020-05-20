@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-19 20:36:42
-version: 1.14
+updated: 2020-05-19 20:40:34
+version: 1.15
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics it would seem with most of the projects that I find myself making. However there will come a time sooner or later where I will want to skin the project with some images, and also maybe even some animations from sprite sheets. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
@@ -74,7 +74,7 @@ So for now in this example at least a sprite sheet is just an image that is comp
 
 ## 2.1 - draw.js
 
-So for this example I have a draw.js module that is used to just draw a background to a canvas element, and one additional method that I can use to draw cells from a sprite sheet.
+So for this example I have a draw.js module that is used to just draw a background to a canvas element, and one additional method that I can use to draw cells from a sprite sheet. For this simple example these will work just fine, but in a real project The methods will differ a lot depending on how I go about formating sprite sheets. For now I am thinking in terms of just a single animation that is a collection of frames from one side of the image to the other.
 
 ```js
 var draw = (function () {
