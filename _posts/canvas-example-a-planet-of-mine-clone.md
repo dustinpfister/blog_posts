@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-05-17 08:15:42
-version: 1.26
+updated: 2020-05-20 09:51:47
+version: 1.27
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a little is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US) for android.
@@ -465,7 +465,7 @@ So for the public API of the world module thus far I just have a create method.
 
 ## 3 - The solar module
 
-Although I did not get around to developing this part of the game here is the current standing solar module.
+Although I did not get around to developing this part of the game, here is the current standing solar module. If I get around to it this module will eventually turn into everything tht has to do with a collection of world objects.
 
 ```js
 var solarMod = (function () {
