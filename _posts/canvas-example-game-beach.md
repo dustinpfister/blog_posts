@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-20 13:15:43
-version: 1.13
+updated: 2020-05-20 13:21:40
+version: 1.14
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid type game with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach. I was not thinking in terms of much more beyond that, but there are several games that I have played in the past that come to mind that where kind of fun that where like that in one way or another.
@@ -462,7 +462,7 @@ I do not want to write to much more about this module at this time, the reason w
 
 ## 3 - Draw.js
 
-Now for the draw module that will help with rendering the current status of a game state object.
+Now for the draw module that will help with rendering the current status of a game state object for this canvas example. The module contains usual suspects for many of my canvas example projects including methods that render a background, and debug info. As of this writing I am still just working out the core of what this project is, and as such I am not doing anything with sprite sheets. Instead I just have methods for drawing certain display objects by way of 2d drawing context calls for various canvas drawing methods.
 
 ```js
 var draw = (function () {
