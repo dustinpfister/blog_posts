@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-05-08 19:50:20
-version: 1.17
+updated: 2020-05-19 21:06:32
+version: 1.18
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells if you prefer. This is something that will come into play for many projects that are some kind of game that involves a world map of cells. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -120,7 +120,7 @@ g.clampedOffsets = function (grid, canvas) {
 
 ### 1.4 - Get cell helpers
 
-I then have a number of helpers that can be used to get a cell in the grid, or a cell index value.
+I then have a number of helpers that can be used to get a cell in the grid, or some other relevant value such as a grid position value from a canvas pixel position.
 
 ```
 // GET CELL
