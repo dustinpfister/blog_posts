@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2020-05-11 20:45:12
-version: 1.15
+updated: 2020-05-20 09:38:33
+version: 1.16
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I find myself making clones of this game now and then, in part because it is so easy to make a game like this. It is the kind of game where I can make a working clone within just about an hour or so when I am working at my best, because it is so basic. It is also a great example of what really matters when making a game which is just to make something that is fun, or addictive in a distinct unique way.
@@ -166,4 +166,4 @@ So now to make use of everything I work out here. I just create a canvas and get
 
 ## 4 - Conclusion
 
-This was a quick, and fun little project that i put together in a flash, but is all ready starting to feel like a game. However there is still a great deal of room for improvement with it also. I like to try to keep the projects in these canvas examples posts fairly simple and basic though so that I do not have to write an extremely lengthly amount of written content outlining the example.
+This was a quick, and fun little project that I put together in a flash, but is all ready starting to feel like a game. However there is still a great deal of room for improvement with it also, and I have yet to find a way to turn this kind of project into some more distinct from what I am cloning so that it is not just a knock off. I like to try to keep the projects in these canvas examples posts fairly simple and basic though so that I do not have to write an extremely lengthly amount of written content outlining the example.
