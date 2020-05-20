@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-20 13:21:40
-version: 1.14
+updated: 2020-05-20 13:26:13
+version: 1.15
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid type game with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach. I was not thinking in terms of much more beyond that, but there are several games that I have played in the past that come to mind that where kind of fun that where like that in one way or another.
@@ -689,6 +689,8 @@ I then have some HTML that pulls this all together with a single hard coded canv
     </body>
 </html>
 ```
+
+For niw the example is working as expected. Turrets show up on the tiles where turrets can be built, and boats spawn and move around. The turrets fire at the boats, and when the loose all hit points they are purged out from a display object pool. There is still much more I would want to get done with this example when it comes to turning it into something that is truly interesting. I think that this project might end up being one of my examples that I will be getting back to now and then when I get some time. It goes without saying that it still needs a lot of work, still the vague general idea that I had in mind is there up and running for what that is worth.
 
 ## 5 - Conclusion
 
