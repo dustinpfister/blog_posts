@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-05-20 09:07:45
-version: 1.12
+updated: 2020-05-20 09:10:23
+version: 1.13
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. That kind of habit is something that I would like to break with at least a few of these canvas examples.
 
-I as happy with how my [grid gradient canvas example](/2020/03/26/canvas-example-grid-gradient/) came out as it is was a canvas example that I put a little more time and effort into than usual. The main reason why I liked working on it so much was the plug-in system. However that was just an eye candy type thing, it would be nice to start another canvas example that is something els like that only it is something maybe a little more interesting.
+I was happy with how my [grid gradient canvas example](/2020/03/26/canvas-example-grid-gradient/) came out as it is was a canvas example that I put a little more time and effort into than usual compared to most of these thus far. The main reason why I liked working on it so much was the plug-in system, this turned out to be something new and interesting for me. However that canvas example was just an eye candy type thing, it would be nice to start another canvas example that is something a bit more than just a nice visual effect of sorts.
 
 So this canvas example will be similar to the grid gradient example, but this time I will be aiming for the start of a world simulator type project. Such a project is not the kind of project that I am going to complete in just a day or two, and even then I don't think I could write everything about it in a single post.  So this canvas example will be a start or core of such a project as it will be a long time until I get something that is really something like sim earth for example.
 
