@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 522
-updated: 2020-05-18 19:50:12
-version: 1.22
+updated: 2020-05-20 10:01:40
+version: 1.23
 ---
 
 The [canvas save](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save) 2d draw context method can be used to save the state of a 2d canvas drawing context. Once a context has been saved it can later be restored with the [canvas restore method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore). 
 
-Because the canvas save method can be used to save a current state of a drawing context, it can come in handy when using other 2d context methods like [canvas translate](/2019/10/09/canvas-translate/), and [canvas rotate](/2019//11/05/canvas-rotate/) which are two that come to mind right off the bat when it comes to using the canvas save method. The reason why is because these are methods that mutate the state of a drawing context by way or delta values that are passed as arguments, rather than methods that are used to set to given arguments, so the canvas save and restore methods are useful when using them. 
+Because the canvas save method can be used to save a current state of a drawing context, it can come in handy when using other 2d context methods like [canvas translate](/2019/10/09/canvas-translate/), and [canvas rotate](/2019//11/05/canvas-rotate/) which are two that come to mind right off the bat when it comes to using the canvas save method. The reason why is because these are methods that mutate the state of a drawing context by way of delta values that are passed as arguments. These kinds of methods differ from methods that are used to set properties to given arguments or just simply setting properties. So the canvas save and restore methods are useful when using methods that mutate the drawing context in this way. 
 
 For example the canvas save method can be used to save the current state of the drawing context, and then changes can be made to the fill style, translations, and rotations. Something can then be drawn with this new mutated 2d drawing context state, and then put back the way it was with the canvas restore method once I am done drawing to it.
 
