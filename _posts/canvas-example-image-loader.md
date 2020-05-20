@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-19 20:40:34
-version: 1.15
+updated: 2020-05-19 20:42:49
+version: 1.16
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics it would seem with most of the projects that I find myself making. However there will come a time sooner or later where I will want to skin the project with some images, and also maybe even some animations from sprite sheets. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
@@ -108,7 +108,7 @@ var draw = (function () {
 
 ### 2.2 - The main.js and index.html
 
-Here I have a main.js file where I create a canvas element, and use my image loader module to load some image assets.
+Here I have a main.js file where I create a canvas element, and use my image loader module to load some image assets from a base url image folder. The images follow a pattern where each image is a number from 0 forward, and is a png image.
 
 ```js
 // MAIN
