@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-05-19 16:36:41
-version: 1.10
+updated: 2020-05-20 13:06:12
+version: 1.11
 ---
 
-For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach.
+For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid type game with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach. I was not thinking in terms of much more beyond that, but there are several games that I have played in the past that come to mind that where kind of fun that where like that in one way or another.
 
 The current state of this canvas example is not what I had in mind just yet as of the time of this writing, but it is turning into something interesting that is showing some potential. It is not the kind of project that involves user interaction, but a kind of game where the computer is playing against itself sort of speak.
 
