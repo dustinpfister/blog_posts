@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-21 11:55:55
-version: 1.24
+updated: 2020-05-21 11:57:07
+version: 1.25
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -363,6 +363,8 @@ draw.boxes = function (ctx, game) {
 ```
 
 ### 2.4 - main.js and index.html
+
+Now I still have a main.js file it is just that this file is keep very small as much of the logic is pulled off into separate files outside of this main.js file.
 
 ```js
 // set up canvas
