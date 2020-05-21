@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-21 14:37:27
-version: 1.16
+updated: 2020-05-21 14:37:54
+version: 1.17
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -17,7 +17,7 @@ This is just one silly little idea that came to mind when it comes to be thing a
 
 <!-- more -->
 
-## 1 - Utils.js
+## 1 - The Utils.js for this particles clock example
 
 First off there are a few methods that I will be using in the clock.js file that creates the state object as well as the draw,js file also. So I will be wanting an general utility library to pack methods like this.
 
