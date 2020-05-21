@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-21 11:49:29
-version: 1.22
+updated: 2020-05-21 11:53:52
+version: 1.23
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -135,7 +135,7 @@ So this example might still not be anything too interesting, however it will sta
 
 ### 2.1 - The Utils.js file
 
-In the basic canvas drag example I just had to methods for getting a canvas relative position and the distance formula at the top of my single main.js file. For this example I pulled those methods into an external utils.js file that will serve as a general utility libaray for this example.
+In the basic canvas drag example I just had to methods for getting a canvas relative position and the distance formula at the top of my single main.js file. For this example I pulled those methods into an external utils.js file that will serve as a general utility library for this example.
 
 ```js
 var utils = {};
@@ -155,7 +155,9 @@ utils.distance = function (x1, y1, x2, y2) {
 };
 ```
 
-### 2.2 - game.js
+### 2.2 - The game.js file to create a game model object
+
+I then have a game.js file that I use to create an object that is a model of this canvas drag and drop example. In other worlds it is an object that holds he current state of display objects and other values of interest, but does not contain code that is used to render the state of that object to the canvas.
 
 ```js
 var gameMod = (function () {
