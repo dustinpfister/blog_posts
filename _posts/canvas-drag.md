@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-21 11:53:52
-version: 1.23
+updated: 2020-05-21 11:55:55
+version: 1.24
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -320,7 +320,9 @@ var gameMod = (function () {
     ());
 ```
 
-### 2.3 - draw.js
+### 2.3 - The draw.js file to render the game state to the canvas
+
+I now have also pulled code that has to do with rendering a state object to a canvas element into its own file also. Here in my draw.js file I have methods for drawing the background as well as the current state of the display object pools that I create with my game.js file.
 
 ```js
 var draw = {};
