@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-21 10:31:14
-version: 1.20
+updated: 2020-05-21 11:47:27
+version: 1.21
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -129,7 +129,9 @@ Once this is all up and running the result is what I would expect. A single circ
 
 ## 2 - canvas drag and drop example
 
-Now for a canvas drag and drop example where dropping a display object is a certain area does something.
+Now for a canvas drag and drop example where dropping a display object is a certain area does something. For the sake of this example dropping a circle into an area will just change the color, but depending on the project dropping a display object can do all sorts of things. However for now it will result in just a change of color when it comes to how this example is rendered in canvas.
+
+So this example might still not be anything too interesting, however it will start to become a bit of a major project compared to the previous examples. So this time the code will be broken down into several modules to helper keep things a little more neat and tidy.
 
 ### 2.1 - Utils.js
 
