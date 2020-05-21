@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-21 11:57:07
-version: 1.25
+updated: 2020-05-21 12:31:46
+version: 1.26
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -405,6 +405,8 @@ loop();
     </body>
 </html>
 ```
+
+When this example is working as expected I have a bunch of green circles that I can drag and drop into a box area. When doing so the circle in the box becomes blue, and when I pull the blue circle back out it become green again. Nothing to interesting, but in a more complex project that could eventually become some kind of game where you take display objects and socket them with other display objects to make them active an attack other display objects.
 
 ## 3 - Conclusion
 
