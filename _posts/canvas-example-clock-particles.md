@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-21 14:49:51
-version: 1.22
+updated: 2020-05-21 14:52:10
+version: 1.23
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -191,7 +191,7 @@ The public API of the clock module.
 
 ## 3 - Draw.js
 
-In the draw.js file I have a bunch of methods that I use to draw the state of a clock object to a canvas element.
+In the draw.js file I have a bunch of methods that I use to draw the state of a clock object to a canvas element. I break alot of things down into separate methods to help keep things a little more fine grain. For example I have a draw method to just draw the text part of the clock face.
 
 ```js
 var draw = {};
