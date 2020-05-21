@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 653
-updated: 2020-05-19 20:44:08
-version: 1.17
+updated: 2020-05-21 12:38:49
+version: 1.18
 ---
 
 Most of my [canvas examples](/2020/03/23/canvas-example/) thus far do not involve using external images, but I might want to break that habit with some of them. For the most part just using simple fill rect 2d context calls will work just fine when it comes to working out mechanics it would seem with most of the projects that I find myself making. However there will come a time sooner or later where I will want to skin the project with some images, and also maybe even some animations from sprite sheets. Popular canvas frameworks should have a way to go about loading images, but in this post I will be writing about a vanilla javaScript solution that I worked out for loading images.
@@ -155,7 +155,7 @@ So now I just need some html to tie this all together.
 </html>
 ```
 
-So far things seem to work as expected when this example is up and running I have my images displayed in the canvas as expected.
+So far things seem to work as expected when this example is up and running I have my images displayed in the canvas as expected. I have not yet taken the time to battle test this kind of solution for loading images, but so far it seems to work okay. There is just working out some kind of standard for just loading the images, the issue of how to go about breaking an image down into sections depending on whether or not it is a sprite sheet, or just a background or something to that effect can differ from one project to another. However once i get a good image loader solution worked out then i should be able to carry that code with be from one project to the next.
 
 
 ## 3 - Conclusion
