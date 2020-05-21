@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-21 14:52:10
-version: 1.23
+updated: 2020-05-21 14:53:23
+version: 1.24
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -155,7 +155,7 @@ Set the day percent value and sec percent value of the clock object to there cur
 
 ### 2.7 - The public API
 
-The public API of the clock module.
+The public API of the clock module consists of just two methods, one to create a clock object and the other to update one.
 
 ```js
     // return a public method that creates a clock object
