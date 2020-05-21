@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 624
-updated: 2020-05-19 16:58:57
-version: 1.18
+updated: 2020-05-21 10:30:00
+version: 1.19
 ---
 
 In canvas [drag and drop](https://konvajs.org/docs/drag_and_drop/Drag_and_Drop.html) actions are part of many projects when working out a user interface for a project. There are ways of dragging whole elements when it comes to client side javaScript in general, but in this post I will be writing about dragging a display object in the canvas which is a little different from that as it just deals with canvas elements alone.
@@ -127,6 +127,273 @@ draw(ctx, canvas, state);
 
 Once this is all up and running the result is what I would expect. A single circle at the center of the center of the canvas, and I can then click and drag the circle to any location on the canvas. There is still a bit more to click in drag with canvas though such as snapping things into place.
 
-## 2 - Conclusion
+## 2 - canvas drag and drop example
+
+### 2.1 - Utils.js
+
+```js
+var utils = {};
+// get canvas relative and distance methods
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    return {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+};
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+```
+
+### 2.2 - game.js
+
+```js
+var gameMod = (function () {
+ 
+    var snapToGrid = function (cir) {
+        cir.x = Math.floor(cir.x / 32) * 32 + 16;
+        cir.y = Math.floor(cir.y / 32) * 32 + 16;
+    };
+ 
+    // create a pool of circles
+    var createCircles = function () {
+        var circles = [],
+        i = 10,
+        x,
+        y;
+        while (i--) {
+            x = i % 3;
+            y = Math.floor(i / 3);
+            circles.push({
+                i: i,
+                type: 'cir',
+                x: 16 + x * 32,
+                y: 16 + y * 32,
+                homeX: 16 + x * 32,
+                homeY: 16 + y * 32,
+                radius: 16,
+                socketed: false
+            });
+        }
+        return circles;
+    };
+ 
+    var createBoxPool = function () {
+        return [{
+                i: 0,
+                type: 'bx',
+                x: 32 * 6,
+                y: 32 * 3,
+                w: 32,
+                h: 32,
+                socket: null
+            }
+        ];
+    };
+ 
+    // create state main method
+    var api = function () {
+        return {
+            circles: createCircles(),
+            boxes: createBoxPool()
+        };
+    };
+ 
+    // get something that might be at the given
+    // game area position
+    api.get = function (game, x, y, type, skip) {
+        type = type === undefined ? 'any' : type;
+        // is there a circle there?
+        if (type === 'any' || type === 'cir') {
+            var i = game.circles.length,
+            cir;
+            while (i--) {
+                cir = game.circles[i];
+                if (skip) {
+                    if (cir === skip) {
+                        continue;
+                    }
+ 
+                }
+                if (utils.distance(cir.x, cir.y, x, y) <= cir.radius) {
+                    return cir;
+                }
+            }
+        }
+        // box?
+        if (type === 'any' || type === 'bx') {
+            var i = game.boxes.length,
+            bx;
+            while (i--) {
+                bx = game.boxes[i];
+                if (utils.distance(bx.x + 16, bx.y + 16, x, y) <= 16) {
+                    return bx;
+                }
+            }
+        }
+        // nothing there
+        return false;
+    };
+ 
+    // attach events for the game object and canvas
+    api.attach = function (game, canvas) {
+        var grab = false;
+        // Event handlers
+        var pointerDown = function (game) {
+            return function (e) {
+                var pos = utils.getCanvasRelative(e),
+                obj = gameMod.get(game, pos.x, pos.y);
+                if (obj) {
+                    grab = obj.type === 'cir' ? obj : false;
+                    if (grab) {
+                        grab.homeX = grab.x;
+                        grab.homeY = grab.y;
+                    }
+                }
+            };
+        };
+        var pointerMove = function (game) {
+            return function (e) {
+                var pos = utils.getCanvasRelative(e);
+                if (grab) {
+                    grab.x = pos.x;
+                    grab.y = pos.y;
+                }
+            };
+        };
+        var pointerUp = function (game) {
+            return function (e) {
+                if (grab) {
+                    snapToGrid(grab);
+                }
+                var bx = api.get(game, grab.x, grab.y, 'bx');
+                if (bx) {
+                    // socket the cir to the bx
+                    if (bx.socket == null) {
+                        grab.socketed = bx;
+                        bx.socket = grab;
+                    } else {
+                        // send home if cir is socked all ready
+                        grab.x = grab.homeX;
+                        grab.y = grab.homeY;
+                    }
+                } else {
+                    // release from socket
+                    if (grab.socketed) {
+                        grab.socketed.socket = null;
+                        grab.socketed = false;
+                    }
+                    // send home if other cir
+                    var cir = api.get(game, grab.x, grab.y, 'cir', grab);
+                    if (cir) {
+                        grab.x = grab.homeX;
+                        grab.y = grab.homeY;
+                    }
+                }
+                grab = false;
+            };
+        };
+        // attach for mouse and touch
+        canvas.addEventListener('mousedown', pointerDown(game));
+        canvas.addEventListener('mousemove', pointerMove(game));
+        canvas.addEventListener('mouseup', pointerUp(game));
+        canvas.addEventListener('touchstart', pointerDown(game));
+        canvas.addEventListener('touchmove', pointerMove(game));
+        canvas.addEventListener('touchend', pointerUp(game));
+    }
+ 
+    return api;
+ 
+}
+    ());
+```
+
+### 2.3 - draw.js
+
+```js
+var draw = {};
+ 
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+draw.circles = function (ctx, game) {
+    var i = game.circles.length,
+    cir;
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
+    while (i--) {
+        cir = game.circles[i];
+        ctx.fillStyle = cir.socketed ? 'blue' : 'green';
+        ctx.beginPath();
+        ctx.arc(cir.x, cir.y, cir.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+    }
+};
+ 
+draw.boxes = function (ctx, game) {
+    var i = game.boxes.length,
+    bx;
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'white';
+    while (i--) {
+        bx = game.boxes[i];
+        ctx.beginPath();
+        ctx.rect(bx.x, bx.y, bx.w, bx.h);
+        ctx.fill();
+        ctx.stroke();
+    }
+};
+```
+
+### 2.4 - main.js and index.html
+
+```js
+// set up canvas
+var canvas = document.getElementById('mycanvas'),
+ctx = canvas.getContext('2d');
+document.body.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ctx.translate(0.5, 0.5);
+ 
+var game = gameMod();
+ 
+gameMod.attach(game, canvas);
+ 
+draw.back(ctx, canvas);
+draw.circles(ctx, game);
+ 
+var loop = function () {
+    requestAnimationFrame(loop);
+    draw.back(ctx, canvas);
+    draw.boxes(ctx, game);
+    draw.circles(ctx, game);
+};
+loop();
+```
+
+```html
+<html>
+    <head>
+        <title>canvas drag and drop</title>
+    </head>
+    <body>
+        <canvas id="mycanvas" width="320" height="240"></canvas>
+        <script src="utils.js"></script>
+        <script src="game.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
 
 There is much more to this subject then what I have covered thus far when it comes to dragging and dropping with canvas elements. If I get around to it hopefully I will expand this more with additional examples that can sever as additional exercises with drawing display objects and canvas in general.
