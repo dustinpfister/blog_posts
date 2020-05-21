@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-21 14:45:37
-version: 1.20
+updated: 2020-05-21 14:48:18
+version: 1.21
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -263,7 +263,7 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
 
 ## 4 - Main.js and index.html
 
-So ow that I have a utility library as well as my clock and draw files I can now use all of this in a main.js file and get everything working with just a little html.
+So ow that I have a utility library as well as my clock and draw files I can now use all of this in a main.js file and get everything working with just a little html. In the main.js file I create and inject a canvas element, and get a reference to the drawing context of the canvas element, as well as set some values for it. I use the create method of the clock modules to create a new clock object, and use the update method of the clock module in the body of an update loop. In the update loop I use my draw module to draw the various parts of the clock face with the current state of the clock object created and updated with the clock module.
 
 ```js
 // create and append canvas element, and get 2d context
