@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-21 14:37:54
-version: 1.17
+updated: 2020-05-21 14:40:42
+version: 1.18
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -309,4 +309,4 @@ loop();
 
 ## 5 - Conclusion
 
-I am happy how this project has come out, it is more or less what I had in mind when it comes to having a more advanced javaScript clock canvas example. However this is of course not even the tip of the iceberg when it comes to making interesting clock projects using javaScript and canvas.
+I am happy how this project has come out, it is more or less what I had in mind when it comes to having a more advanced javaScript clock canvas example. However this is of course not even the tip of the iceberg when it comes to making interesting clock projects using javaScript and canvas. A clock does not always have to follow the usual format that is typically of most clocks, it can take any form that might make sense, or present an interesting spin on things.
