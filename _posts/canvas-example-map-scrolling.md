@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-05-22 20:32:09
-version: 1.19
+updated: 2020-05-22 20:34:15
+version: 1.20
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells if you prefer. This is something that will come into play for many projects that are some kind of game that involves a world map of cells. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -208,7 +208,7 @@ var drawMap = function (grid, ctx, canvas) {
 
 ## 3 - The main.js file
 
-Now for the main javaScript file that makes use of the map module, and my draw method that will render to the canvas.
+Now for the main javaScript file that makes use of the map module, and my draw method that will render the map object to the canvas.
 
 ```js
 // CANVAS
