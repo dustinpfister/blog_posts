@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 659
-updated: 2020-05-23 18:53:24
-version: 1.5
+updated: 2020-05-23 18:56:31
+version: 1.6
 ---
 
 The [home directory](https://en.wikipedia.org/wiki/Home_directory) or user folder in an operating system is a folder for the current user. This folder is then a good place to park any kind of user specific settings or data when making a nodejs application. So then there should be some kind of standard way of getting a path to this folder in a way that will work across different operating systems. With that said there is in the nodejs built in [os module](https://nodejs.org/docs/latest/api/os.html), to which there is a method called [homedir](https://nodejs.org/docs/latest/api/os.html#os_os_homedir).
@@ -30,6 +30,8 @@ console.log(dir_home);
 So the os module homedir method can be used in conjunction with other modules and methods for things like checking to see if there is a config file for the current user in the home path, and if not create it.
 
 ## 2 - basic count file example
+
+Now for a not so basic example of how this can be used for something useful. Here I have an example that will create a count.json file in the home path of the current user if it is not there, otherwise it will use what is there. Each time the script is called one is added to a count property and then the json is saved to the file.
 
 ```js
 let os = require('os'),
@@ -72,3 +74,5 @@ getUserCount()
     return putUserCount(obj);
 });
 ```
+
+In a read example something not all to different from that can be used to test for and then write or update a config file of some kind for an actually project of some kind.
