@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 659
-updated: 2020-05-20 18:26:07
-version: 1.2
+updated: 2020-05-23 18:30:36
+version: 1.3
 ---
 
 The [home directory](https://en.wikipedia.org/wiki/Home_directory) or user folder in an operating system is a folder for the current user. This folder is then a good place to park any kind of user specific settings or data when making a nodejs application. So then there should be some kind of standard way of getting a path to this folder in a way that will work across different operating systems. With that said there is in the nodejs built in [os module](https://nodejs.org/docs/latest/api/os.html), to which there is a method called [homedir](https://nodejs.org/docs/latest/api/os.html#os_os_homedir).
@@ -14,6 +14,8 @@ The [home directory](https://en.wikipedia.org/wiki/Home_directory) or user folde
 <!-- more -->
 
 ## 1 - Basic nodejs os home dir example
+
+A basic example of the node os module homedir method would be to just require in the os module, and then call the homedir method of that module. The string value that is returned is then the home or user folder path for the current user that ran the script.
 
 ```js
 let os = require('os'),
