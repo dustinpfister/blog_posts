@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 658
-updated: 2020-05-24 09:53:23
-version: 1.1
+updated: 2020-05-24 09:55:02
+version: 1.2
 ---
 
-In the nodejs file system module there is a method for creating [symbolic links](https://en.wikipedia.org/wiki/Symbolic_link) to files and folders. This method is the fs symlink method and in some cases it can be used without issue, however there are some things to be aware of when it comes to permissions when using it.
+In the nodejs file system module there is a method for creating [symbolic links](https://en.wikipedia.org/wiki/Symbolic_link) to files and folders. A symbolic link is just simply a reference to a folder or file rather than a folder of file itself. This method is the fs symlink method and in some cases it can be used without issue, however there are some things to be aware of when it comes to permissions when using it.
 
 <!-- more -->
 
