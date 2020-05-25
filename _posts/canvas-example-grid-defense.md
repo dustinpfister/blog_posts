@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2020-05-25 15:49:28
-version: 1.21
+updated: 2020-05-25 15:52:28
+version: 1.22
 ---
 
 Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting with canvas and javaScript. In goes without saying that canvas can be used in the creation and maintenance of more practical projects, but that is not what this example will be for sure. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
@@ -224,7 +224,7 @@ draw.disp = function (state, ctx) {
 
 ## 4 - Main
 
-Now that I have my grid class, and drawing methods together I can now tie everything together with a main app loop, and other code that sets things up for the first time.
+Now that I have my grid class, and drawing methods together I can now tie everything together with a main app loop, and other code that sets things up for the first time. For now I do not have a main game state module for this example, in time if I put some more time into this project that might change at some point in the future. So in the main.js file here I just have an object literal that is functioning as the start of a game state object of sorts.
 
 ```js
 // SETUP CANVAS
