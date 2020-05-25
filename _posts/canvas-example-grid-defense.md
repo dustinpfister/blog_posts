@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2020-05-25 15:56:35
-version: 1.23
+updated: 2020-05-25 15:57:42
+version: 1.24
 ---
 
 Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting with canvas and javaScript. In goes without saying that canvas can be used in the creation and maintenance of more practical projects, but that is not what this example will be for sure. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
@@ -271,6 +271,23 @@ Here in the main.js file I create a canvas element with the create element metho
     loop();
 }
     ());
+```
+
+Now to tie everything that I wend over with just a little html.
+
+```html
+<html>
+    <head>
+        <title>canvas example grid defense</title>
+    </head>
+    <body>
+        <div id="gamearea"></div>
+        <script src="grid.js"></script>
+        <script src="grid_unit.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
 
 When this canvas example is up, running and working as expected the result is a very basic defense game of sorts. Display objects move from one side of the canvas to the other, and when I click on one it gets destroyed. So far it is not all that much fun or interesting, but oddly enough there are many such games like this that are fun and interesting that just have a little more going on then just this.
