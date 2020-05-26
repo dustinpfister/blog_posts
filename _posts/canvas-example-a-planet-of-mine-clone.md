@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-05-20 09:51:47
-version: 1.27
+updated: 2020-05-26 13:59:32
+version: 1.28
 ---
 
-This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a little is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US) for android.
+This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I have this idea in my head that if I make enough of these I will end up with one or two that I will end up moving forward with into some kind of long term, interesting project that will be worth further investment of time. In the process of doing so I will likely end up with a whole bunch of canvas examples that will never progress beyond a simple prototype state of sorts.
+
+I do not spend that much time playing games these days, but I do have a few installed on my phone and one that I have been playing around with a little is called [a planet of mine](https://play.google.com/store/apps/details?id=com.tuesdayquest.myplanet&hl=en_US) for android.
 
 The game is a pretty cool concept you have a starting world and two starting workers that can be used to build structures on land tiles of the world. There are many resources that can be gathered, one of which is used to power a rocket ship that can be used to go to another world in a solar system. There is even more to it than that, but that is the basic idea of the game.
 
