@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-05-26 14:25:10
-version: 1.24
+updated: 2020-05-26 14:28:07
+version: 1.25
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -176,7 +176,7 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py) {
 
 ## 2 - The draw map method
 
-The draw.js file for this canvas example consists of just a single draw method that I used to draw the current state of the map.
+The draw.js file for this canvas example consists of just a single draw method that I used to draw the current state of the map cells from a grid object to the given canvas. Nothing fancy for now for this canvas example at least, I just need to draw the cells of the grid and that is it.
 
 ```js
 var drawMap = function (grid, ctx, canvas) {
@@ -205,6 +205,8 @@ var drawMap = function (grid, ctx, canvas) {
     }
 };
 ```
+
+In a more complex solution for this sort of thing I would break things down into sections to help improve performance when it comes to larger maps. However as long as I keep the map size small actually then this kind of solution should work okay.
 
 ## 3 - The main.js file, and index.html
 
