@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2020-05-26 13:44:11
-version: 1.19
+updated: 2020-05-26 13:48:30
+version: 1.20
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. 
@@ -166,7 +166,7 @@ So now to make use of everything I work out here. I just create a canvas and get
     ());
 ```
 
-Now that I have covered everything that composes the main.js file I just need a little HTML to get this up and running.
+Now that I have covered everything that composes the main.js file I just need a little HTML to get this up and running. In my html I just have a div element that I am using for a container element to which the canvas element gets injected in when my main.js file runs, and then of course I have a script tag that links to my main.js file.
 
 ```html
 <html>
@@ -180,7 +180,7 @@ Now that I have covered everything that composes the main.js file I just need a 
 </html>
 ```
 
-When this game is up and running it works as I would expect as the circle along the other edge moves alone one way or another. If I tab the canvas when the circle is in the range the score will go up otherwise the score will go down.
+When this game is up and running it works as I would expect as the circle along the other edge moves alone one way or another. If I tab the canvas when the circle is in the range the score will go up otherwise the score will go down. At the time of this writing I am not sure what to do differently, so I just have the basic core idea of the game working for now. There is working out additional logic when it comes to how to go about tripping up the player rather than just having random locations, along with many other such ideas. However for now this is just about it I think.
 
 ## 5 - Conclusion
 
