@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-05-22 20:40:04
-version: 1.21
+updated: 2020-05-26 14:14:43
+version: 1.22
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -206,7 +206,7 @@ var drawMap = function (grid, ctx, canvas) {
 };
 ```
 
-## 3 - The main.js file
+## 3 - The main.js file, and index.html
 
 Now for the main javaScript file that makes use of the map module, and my draw method that will render the map object to the canvas.
 
@@ -280,6 +280,22 @@ canvas.addEventListener('mousemove', function (e) {
         gridDelta.y = deltas.y;
     }
 });
+```
+
+Then I just need to pull everything together with just a little html. I will want at least a container area for the canvas element to be injected into, and then script tag links to all the fies that I have work out for this project.
+
+```html
+<html>
+    <head>
+        <title>canvas example map scrolling</title>
+    </head>
+    <body>
+        <div id="gamearea"></div>
+        <script src="map.js"></script>
+        <script src="draw_map.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
 
 ## 4 - Conclusion
