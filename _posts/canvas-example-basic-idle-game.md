@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-05-26 14:09:38
-version: 1.26
+updated: 2020-05-26 14:10:36
+version: 1.27
 ---
 
 There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game) as there is the artistic side of game development, and then there is the business side of things. When it comes to the artistic side maybe game development is about some kind of expression, but then there is the business side, and with that said game development is more about making money. When it comes to that side of game development a game does not have to be some kind of ground breaking statement, or emotional expression, it just needs to make money.
@@ -186,7 +186,7 @@ I have some methods for setting the level of an upgrade state object. There is s
     };
 ```
 
-Not happy with how this is, so in any future updates that may or may not happen with this project I am sure I will re work this one at that point.
+Not happy with how this is, so in any future updates that may or may not happen with this project I am sure I will re work this one at that point. I might even go so far as to pull all of this logic into its one javaScript module also, as there is a great deal to manage when it comes to an upgrades system actually.
 
 ### 2.5 - Create a new state object helper
 
