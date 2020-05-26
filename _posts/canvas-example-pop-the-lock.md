@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2020-05-26 13:51:44
-version: 1.21
+updated: 2020-05-26 13:53:49
+version: 1.22
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. 
@@ -134,6 +134,8 @@ var drawPTL = function (ptl, ctx, canvas) {
     ctx.fillText('inrange ' + ptl.inRange, 10, 20);
 };
 ```
+
+If I put more time into this project this will end up getting broken down into many methods and will be pulled into a fle of its one which is often the case with many of these canvas examples.
 
 ## 3 - The canvas, main app loop, and the html
 
