@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-05-26 14:14:43
-version: 1.22
+updated: 2020-05-26 14:19:50
+version: 1.23
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -208,7 +208,9 @@ var drawMap = function (grid, ctx, canvas) {
 
 ## 3 - The main.js file, and index.html
 
-Now for the main javaScript file that makes use of the map module, and my draw method that will render the map object to the canvas.
+Now for the main javaScript file that makes use of the map module, and my draw method that will render the map object to the canvas. In this mainjs file I create the canvas element, and inject it into a container element that I have in my html.
+
+I create a grid object with the create grid object method of my grid module that I covered earlier, and set the offset values for that object. I then update the offset values in the main app loop of this main.js file by delta values for x and y.
 
 ```js
 // CANVAS
