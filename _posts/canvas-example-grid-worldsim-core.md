@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-05-22 20:56:30
-version: 1.15
+updated: 2020-05-26 18:59:20
+version: 1.16
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. That kind of habit is something that I would like to break with at least a few of these canvas examples.
@@ -172,7 +172,7 @@ var world = (function () {
 
 ## 3 - First land_base plug-in
 
-I have world out one plug-in thus far for this world simulator that just works out some basic values for a land object that will be appended for each cell in the world grid.
+I have worked out one plug-in thus far for this world simulator that just works out some basic values for a land object that will be appended for each cell in the world grid. This plug-in just creates some land objects for each cell and attaches a fert property that stands for fertility. Very crude, and in time I migt make a more advanced plug-in for this and much more when it comes to everything about land, but for now this plug-in is just to test out the core features of my world.js module.
 
 ```js
 world.load({
