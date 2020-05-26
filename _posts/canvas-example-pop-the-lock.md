@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2020-05-26 13:48:30
-version: 1.20
+updated: 2020-05-26 13:51:44
+version: 1.21
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. 
@@ -138,6 +138,8 @@ var drawPTL = function (ptl, ctx, canvas) {
 ## 3 - The canvas, main app loop, and the html
 
 So now to make use of everything I work out here. I just create a canvas and get the drawing context to it, and then append to a gamearea div that I have in my html. I set the width and height, and attach a single event that I worked out in my state object. I then set the first random section, and define and start the main game loop.
+
+In the main app loop I am canning the tick method of my pop the lock state object, and I am also using the draw method I have worked out to draw the current state of the state object in the canvas element. I am also of course using request animation frame as always to create the app loop for the canvas example as with just about any other.
 
 ```js
 // SETUP CANVAS
