@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-05-26 18:54:06
-version: 1.16
+updated: 2020-05-26 18:56:01
+version: 1.17
 ---
 
 When working out canvas projects there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle that I wish to get to from the current angle. With that said I often find myself in a situation in which I want to start stepping the current angle by a delta value that will get the current angle to the target angle. 
@@ -125,7 +125,7 @@ var loop = function () {
 loop();
 ```
 
-And now for the HTML file
+And now for the HTML file where I am linking to everything.
 
 ```js
 <html>
