@@ -5,15 +5,15 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2020-05-26 13:39:52
-version: 1.18
+updated: 2020-05-26 13:44:11
+version: 1.19
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. 
 
 I find myself making clones of this game now and then, in part because it is so easy to make a game like this. It is the kind of game where I can make a working clone within just about an hour or so when I am working at my best. Many of the game prototypes that I have made so far are the kind of projects where it takes a long time to get something together that is just starting to look like a game, but things do not always have to be that way when it comes to this sort of thing, a game can be simple. It is also a great example of what really matters when making a game which is just to make something that is fun, or addictive in a distinct unique way.
 
-So todays [canvas example](/2020/03/23/canvas-example/) will be a game that is a clone of this to some extent, but a little different. I want to play around with the various values that come to mind when making a game like this, and maybe make it work a little differently altogether so it is not just a full rip off of the original.
+So todays [canvas example](/2020/03/23/canvas-example/) will be a game that is a clone of this pop the lock game to some extent, but a little different. I want to play around with the various values that come to mind when making a game like this, and maybe make it work a little differently altogether so it is not just a full rip off of the original.
 
 <!-- more -->
 
@@ -179,6 +179,8 @@ Now that I have covered everything that composes the main.js file I just need a 
     </body>
 </html>
 ```
+
+When this game is up and running it works as I would expect as the circle along the other edge moves alone one way or another. If I tab the canvas when the circle is in the range the score will go up otherwise the score will go down.
 
 ## 5 - Conclusion
 
