@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-05-26 14:19:50
-version: 1.23
+updated: 2020-05-26 14:25:10
+version: 1.24
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -299,6 +299,8 @@ Then I just need to pull everything together with just a little html. I will wan
     </body>
 </html>
 ```
+
+So when I have this canvas example up and running in my web browser I have a grid that I can scroll around with by clicking and dragging. The basic idea is very much there, but this is still not really a done deal when it comes to just this sort of thing alone when it comes to making a project that would make use of something like this. There is the means by which I scroll around for one thing where I might want to add additional ways to go about moving the may around. There is also making a better system that might work well with larger maps that would work by6 breaking things down into map sections and so forth. Never the less the basic idea that I had in mind for the sake of this canvas example post is there for what it is worth.
 
 ## 4 - Conclusion
 
