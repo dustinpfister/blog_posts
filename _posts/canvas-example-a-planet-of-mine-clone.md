@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 641
-updated: 2020-05-26 14:02:07
-version: 1.29
+updated: 2020-05-26 14:04:36
+version: 1.30
 ---
 
 This week I wanted to aim for making at least one new [canvas example](/2020/03/23/canvas-example/) post even if it is just another clone of something, or even just an attempt at a clone of something. I have this idea in my head that if I make enough of these I will end up with one or two that I will end up moving forward with into some kind of long term, interesting project that will be worth further investment of time. In the process of doing so I will likely end up with a whole bunch of canvas examples that will never progress beyond a simple prototype state of sorts.
@@ -207,6 +207,8 @@ var Machine = (function () {
 }
     ());
 ```
+
+Now that I have my state machine I can get to work with a main game state object for this project. I will want a module that is used for a world object, and then another that will be for the solar system that will be a collection of world objects and thus will be a top level object.
 
 ## 2 - The world module
 
