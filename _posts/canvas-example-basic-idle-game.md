@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-05-20 09:58:16
-version: 1.25
+updated: 2020-05-26 14:09:38
+version: 1.26
 ---
 
 There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game) as there is the artistic side of game development, and then there is the business side of things. When it comes to the artistic side maybe game development is about some kind of expression, but then there is the business side, and with that said game development is more about making money. When it comes to that side of game development a game does not have to be some kind of ground breaking statement, or emotional expression, it just needs to make money.
@@ -120,7 +120,7 @@ var game = (function () {
     ];
 ```
 
-### 2.2 - A Make upgrate state object
+### 2.2 - A Make upgrade state object
 
 So the upgrade data array is an array of hard coded values for each upgrate, but it is not a current state object of sorts. I am going to need another object that is the current state of an upgrade, such as the current level, and values that have to do with the current cost of the next upgrade.
 
@@ -164,7 +164,7 @@ So I worked out some methods that are used to set the current cost of an upgrade
 
 ### 2.4 - Set the current upgrade level
 
-I have some methods for setting the level of an upgrade state.
+I have some methods for setting the level of an upgrade state object. There is setting the effect of an upgrade state object, setting the upgrade level, and applying for all.
 
 ```js
     // apply the effect of an upgrade
@@ -185,6 +185,8 @@ I have some methods for setting the level of an upgrade state.
         });
     };
 ```
+
+Not happy with how this is, so in any future updates that may or may not happen with this project I am sure I will re work this one at that point.
 
 ### 2.5 - Create a new state object helper
 
