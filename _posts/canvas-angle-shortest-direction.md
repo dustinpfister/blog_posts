@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-05-27 12:09:59
-version: 1.18
+updated: 2020-05-27 12:12:52
+version: 1.19
 ---
 
 When working out [canvas projects](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle that I wish to get to from the current angle. With that said I often find myself in a situation in which I want to start stepping the current angle by a delta value that will get the current angle to the target angle. 
@@ -17,7 +17,7 @@ There are many projects out on the open Internet that help with this, one such p
 
 ## 1 - Get angle direction method canvas example
 
-This section is on a canvas example that will make use of a get direction method that will be used to step the current angle or a state object to a target angle.
+This section is on a canvas example that will make use of a get direction method that will be used to get a shortest direction from a current angle to a target angle. That direction will then be used to step the current angle or a state object to a target angle. The focus will just be more so on the method of getting the direction rather than how to use it for the sake of this example at least.
 
 ## 1.1 - The get direction method
 
