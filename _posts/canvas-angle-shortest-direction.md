@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-05-27 12:12:52
-version: 1.19
+updated: 2020-05-27 12:15:47
+version: 1.20
 ---
 
 When working out [canvas projects](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle that I wish to get to from the current angle. With that said I often find myself in a situation in which I want to start stepping the current angle by a delta value that will get the current angle to the target angle. 
@@ -193,3 +193,5 @@ console.log( Math.PI * 2 / state.iMax * state.iCurrent ); // 3.14159...
 ## 3 - Conclusion
 
 So finding direction is one of those kinds of rabbit hole situations where I can end up wasting a whole day working out a solution for something that should just be part of some kind of framework or abstraction. With that said there is just using angles.js, however I often find myself making my own custom utility library based off of methods from that. There are many methods in angles.js that I might not use in a project so it makes sense to create a new custom fix utility library for just the project that I am working on.
+
+There are many use case examples that come to mine when it comes to using this get direction method or something like it. In the future if I get some time I should get around to expanding this post some more with some additional examples when it comes to this one.
