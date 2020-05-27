@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-05-26 18:59:20
-version: 1.16
+updated: 2020-05-27 11:09:08
+version: 1.17
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. That kind of habit is something that I would like to break with at least a few of these canvas examples.
@@ -241,7 +241,7 @@ world.load({
 
 ## 4 - The draw module
 
-Now for the draw module that contains the methods for drawing the state of the world object. For now this draw module just contains a method for drawing the background, and a method for drawing all the cells in the world object.
+Now for the draw module that contains the methods for drawing the state of the world object. For now this draw module just contains a method for drawing the background, and a method for drawing all the cells in the world object. For the sake of this post I just want to focus on the core of what the module is, so just solid color squares for the cells is fine.
 
 ```js
 var draw = (function () {
