@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 626
-updated: 2020-05-27 12:15:47
-version: 1.20
+updated: 2020-05-27 12:19:28
+version: 1.21
 ---
 
 When working out [canvas projects](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) there might be a need to find the direction in which to go when given two angles. That is there is a current angle, and a target angle that I wish to get to from the current angle. With that said I often find myself in a situation in which I want to start stepping the current angle by a delta value that will get the current angle to the target angle. 
@@ -189,6 +189,8 @@ console.log(findDir(state.iMax, state.iCurrent, state.iTarget)); // -1
 // index/degree/number values that can be converted to radians
 console.log( Math.PI * 2 / state.iMax * state.iCurrent ); // 3.14159...
 ```
+
+So this kind of approach seems to work well as a way to resolve the issue of a display object trashing back and forth because of a static delta rate for the change of angle. However I would not say it is the only rode to Rome when it comes to this, there is of course the question of using a variable delta rate for changes in heading which may prove to be a betrer solution over all in some projects.
 
 ## 3 - Conclusion
 
