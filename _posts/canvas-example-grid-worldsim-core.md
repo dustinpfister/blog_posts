@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-05-27 12:01:59
-version: 1.18
+updated: 2020-05-27 12:05:38
+version: 1.19
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. That kind of habit is something that I would like to break with at least a few of these canvas examples.
@@ -282,7 +282,9 @@ var draw = (function () {
 
 ## 5 - The Main.js and index.html files
 
-Now to pull everything together with some HTML and a little more javaScript to test this all out and see if it works as expected thus far. In this main.js file I am creating a canvas element and injecting it into a container element in the actual hard coded HTML. I use the create method of my world.js module to create an instance of of a world state object. Once I have my world state object I can use my word update method in the body of my main app loop method that is using request animation frame to loop the method.
+Now to pull everything together with some HTML and a little more javaScript to test this all out and see if it works as expected thus far. In this main.js file I am creating a canvas element and injecting it into a container element in the actual hard coded HTML. I use the create method of my world.js module to create an instance of of a world state object. Once I have my world state object I can use my word update method in the body of my main app loop method that is using request animation frame to loop the method. In this main app loop I am also using my draw module methods to render the current state of the world object to the canvas.
+
+In some canvas examples I might put more time and effor into the main.js file, and other aspects of this part of canvas project development. However for the sake of this post this kind of simple, minimal app loop design will work well enough to just test out that my world.js file is working as I want it to. In fact O could even just take a headless approach when it comes to just working out a model, but this is a canvas example post.
 
 ```js
 var canvas = document.createElement('canvas'),
