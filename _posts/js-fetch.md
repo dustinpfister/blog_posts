@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-05-30 19:44:53
-version: 1.3
+updated: 2020-05-30 19:49:03
+version: 1.4
 ---
 
 [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) is a new way of making http requests in browser, like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), but makes use of promises, and provides an updated [response api](https://developer.mozilla.org/en-US/docs/Web/API/Response) for better handling common tasks like parsing json to a workable object.
@@ -17,19 +17,14 @@ It is like a browser built in [axios](/2018/01/10/nodejs-axios/), but because it
 
 ## 1 - Simple get request example of fetch
 
-making a simple get request with fetch is simple enough, fetch just needs to be given one argument wich is the url of the resource that you want to fetch.
+If all I want to do with fetch is to preform a get request then making such a simple get request is real simple. In that case fetch just needs to be given one argument which is the URL of the resource that you want to fetch. This is a whole world more simple compared to using XMLHttpRequest.
 
 ```js
-let url = 'https://openlibrary.org/api/books?bibkeys=ISBN:9780743487733;format=json';
- 
-fetch(url).then(response => {
- 
-   return response.json();
- 
+fetch('https://openlibrary.org/api/books?bibkeys=ISBN:9780743487733;format=json')
+.then(response => {
+    return response.json();
 }).then(json => {
- 
     console.log(json);
- 
 });
 ```
 
