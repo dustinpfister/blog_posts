@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-05-31 14:55:11
-version: 1.3
+updated: 2020-05-31 14:57:46
+version: 1.4
 ---
 
 When first starting out with javaScript it is only natural to go threw a faze where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place as well as not doing so. There are many methods of interest when it comes to working with arrays in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
@@ -46,6 +46,8 @@ console.log(arr); // [2,3,4]
 ```
 
 ## 3 - The array splice method for popping out one or more elements anywhere, and to inject new ones also
+
+So there is the js array pop method that will pop out an return the last element in an array, and the js array shift method that will pop out the first. However what if you want to pop out a certain index value between the two end points of an array? For this there is the splice method which is not to be confused with the slice method that works a little differently and will not mutate the array in place.
 
 ```js
 var arr = [1,2,3,4];
