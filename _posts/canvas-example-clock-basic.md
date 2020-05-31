@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-05-31 16:40:34
-version: 1.25
+updated: 2020-05-31 16:57:01
+version: 1.26
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -27,17 +27,17 @@ var clockMod = (function () {
     var pad = function (a) {
         return String('00' + a).slice(-2);
     };
-
+ 
     var getTimeText = function (clock) {
         return pad(clock.now.getHours()) + ' : ' +
         pad(clock.now.getMinutes()) + ' : ' +
         pad(clock.now.getSeconds());
     };
-
+ 
     var getDayStart = function (clock) {
         return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
     };
-
+ 
     // return a public method that creates a clock object
     return {
         create: function (date) {
@@ -47,10 +47,13 @@ var clockMod = (function () {
             var dayStart = getDayStart(clock);
             clock.dayPer = (clock.now - dayStart) / 86400000;
             clock.secPer = clock.now.getMilliseconds() / 1000;
+            clock.minPer = clock.now.getSeconds() / 60;
+            clock.hourPer = clock.now.getMinutes() / 60;
+            clock.AMPMPer = clock.now.getHours() % 12 / 12;
             return clock;
         }
     }
-
+ 
 }
     ());
 ```
@@ -68,7 +71,7 @@ In addition to displaying the time in just plain text in the canvas I think it w
 ```js
 var draw = {};
  
-draw.clear = function (canvas,ctx) {
+draw.clear = function (canvas, ctx) {
  
     ctx.clearRect(0, 0, canvas.width, canvas.height);
  
@@ -93,17 +96,18 @@ draw.clockText = function (canvas, ctx, clock) {
 };
  
 draw.hands = function (canvas, ctx, clock) {
- 
-    var r = Math.PI * 2 * clock.secPer,
-    radius = (canvas.height - 50) / 2,
-    cx = canvas.width / 2,
-    cy = canvas.height / 2;
-    ctx.strokeStyle = 'green';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(cx + Math.cos(r) * radius, cy + Math.sin(r) * radius);
-    ctx.stroke();
+    ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+    'secPer,minPer,hourPer,AMPMPer'.split(',').forEach(function (perName, i) {
+        var r = Math.PI * 2 * clock[perName] - Math.PI / 2,
+        radius = (canvas.height - 50 - 100 * (i / 4)) / 2,
+        cx = canvas.width / 2,
+        cy = canvas.height / 2;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(r) * radius, cy + Math.sin(r) * radius);
+        ctx.stroke();
+    });
  
 };
  
