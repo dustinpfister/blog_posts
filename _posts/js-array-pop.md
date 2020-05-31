@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-05-31 15:08:39
-version: 1.5
+updated: 2020-05-31 15:43:07
+version: 1.6
 ---
 
 When first starting out with javaScript it is only natural to go threw a faze where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place as well as not doing so. There are many methods of interest when it comes to working with arrays in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
@@ -64,4 +64,85 @@ console.log( arr ); // [2,3]
 arr.splice(1,0, 2.1, 2.2);
  
 console.log(arr); // [2, 2.1, 2.2, 2.3, 3]
+```
+
+## 4 - Example one using particles
+
+Now for a  more advanced example that involves popping out elements from an array using a means of doing so. For this example I will be using the splice method over pop because it allows for me to pop out just elements that meat a certain condition.
+
+```js
+var createState = function () {
+    return {
+        parts: [],
+        lt: new Date(),
+        spawn: {
+            max: 5,
+            secs: 0,
+            rate: 1
+        }
+    };
+};
+ 
+var spawn = function (state, secs) {
+    var spawn = state.spawn;
+    spawn.secs += secs;
+    if (spawn.secs >= spawn.rate) {
+        if (state.parts.length < spawn.max) {
+            state.parts.push({
+                x: 0,
+                y: 0,
+                pps: 32,
+                heading: Math.PI * 2 * Math.random(),
+                life: 5 + Math.floor(Math.random() * 6)
+            })
+        }
+        spawn.secs %= spawn.rate;
+    }
+};
+ 
+// purge method using the splice method
+var purge = function (state) {
+    var i = state.parts.length,
+    part;
+    while (i--) {
+        part = state.parts[i];
+        if (part.life <= 0) {
+            state.parts.splice(i, 1);
+        }
+    }
+};
+ 
+var update = function (state) {
+    var i,
+    part,
+    now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
+ 
+    spawn(state, secs);
+    purge(state);
+ 
+    i = state.parts.length;
+    while (i--) {
+        part = state.parts[i];
+        // move
+        part.x += Math.cos(part.heading) * part.pps * secs;
+        part.y += Math.sin(part.heading) * part.pps * secs;
+        // loose life
+        part.life -= secs;
+    }
+    state.lt = now;
+};
+ 
+var render = function (state) {
+    console.log(state.parts.length);
+};
+ 
+var state = createState();
+setInterval(function () {
+ 
+    update(state);
+    render(state);
+ 
+}, 250);
 ```
