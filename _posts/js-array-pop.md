@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-05-31 14:57:46
-version: 1.4
+updated: 2020-05-31 15:08:39
+version: 1.5
 ---
 
 When first starting out with javaScript it is only natural to go threw a faze where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place as well as not doing so. There are many methods of interest when it comes to working with arrays in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
@@ -48,6 +48,10 @@ console.log(arr); // [2,3,4]
 ## 3 - The array splice method for popping out one or more elements anywhere, and to inject new ones also
 
 So there is the js array pop method that will pop out an return the last element in an array, and the js array shift method that will pop out the first. However what if you want to pop out a certain index value between the two end points of an array? For this there is the splice method which is not to be confused with the slice method that works a little differently and will not mutate the array in place.
+
+The js array spice method can be used to remove one or more elements for any index location in a given array by passing the desired index value as the first argument when calling the js array splice method. So just like the js array pop method the same result can be achieved with splice by passing one less from the length of the array for the index value to pop out and return the last element in the array. In addition the same effect of the shift method can be done by using the value 0 for the index value argument. 
+
+However in addition to being able to preform the same results as pop and shift the splice method can be used for any index value in the array, and on top of that more than one element can be removed. On top of all of that one additional feature of the splice method is that new elements can be injecting into the array also. So it goes without saying that the splice method is all around far more robust when it comes to mutating an array by way of purging as well as going about injecting new elements into an array.
 
 ```js
 var arr = [1,2,3,4];
