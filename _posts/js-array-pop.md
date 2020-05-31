@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-05-31 15:47:26
-version: 1.7
+updated: 2020-05-31 15:50:08
+version: 1.8
 ---
 
 When first starting out with javaScript it is only natural to go threw a faze where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place as well as not doing so. There are many methods of interest when it comes to working with arrays in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
@@ -70,6 +70,10 @@ console.log(arr); // [2, 2.1, 2.2, 2.3, 3]
 
 Now for a  more advanced example that involves popping out elements from an array using a means of doing so. For this example I will be using the splice method over pop because it allows for me to pop out just elements that meat a certain condition. In this example I have an array of particle objects that move in a certain heading and have life lost over time, when a particle has a life value of zero or lower the particle needs to be purge out from the pool of particles to make room for new ones that will be spawned in. So this is a good example of using a method like splice that does something a little more advanced.
 
+### 4.1 - the create state and spawn methods
+
+Fpor this example I will want a method that I can use to create a state object, and another methods that serves as my rotten for spawning in particles.
+
 ```js
 var createState = function () {
     return {
@@ -99,7 +103,11 @@ var spawn = function (state, secs) {
         spawn.secs %= spawn.rate;
     }
 };
- 
+```
+
+### 4.2 - The purge method that uses the splice method to pop put elements
+
+```js
 // purge method using the splice method
 var purge = function (state) {
     var i = state.parts.length,
@@ -111,7 +119,13 @@ var purge = function (state) {
         }
     }
 };
- 
+```
+
+### 4.3 - the update and main loop methods
+
+So I will now awant a main update method that uses my spawn and purge methods along with a render method and a main app loop.
+
+```js
 var update = function (state) {
     var i,
     part,
