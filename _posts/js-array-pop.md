@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-05-31 14:10:52
-version: 1.2
+updated: 2020-05-31 14:55:11
+version: 1.3
 ---
 
 When first starting out with javaScript it is only natural to go threw a faze where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place as well as not doing so. There are many methods of interest when it comes to working with arrays in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
@@ -15,7 +15,7 @@ The js array pop prototype method will remove and return the last element in an 
 
 <!-- more -->
 
-## 1 - A js Array pop method basic example
+## 1 - A js Array pop method for popping out the last element in an array
 
 The basic idea of the js array pop prototype method is to call the pop method off of an instance of an array, the result is for the last element in the array to be removed and returned.
 
@@ -31,3 +31,31 @@ console.log(arr); // [1,2,3]
 This might work okay for the most part as a way to do this sort of thing with arrays, but it is by no means the only way to go about doing so. There is also the shift method that will do more or less the same thing only removing the first or zero index element of the array. In addition there is the splice method that is far more robust then both the pop and shift methods as it can be used as a way to do this sort of things with any element in the array.
 
 There is also yet another topic of interest when it comes to using the js array pop method and that is should you even mutate an array like this in the first place? Many situations that call for this sort of thing involving working with a pool of some kind of resource such as an array of display objects in a game for example. One way is to inject and purge display objects into the pool as needed, but another way is to have a fixed set of objects that are activated and inactivated as needed. SSo then there are other methods and ways of doing things that come to mind such as just using the bracket syntax to reference elements, and use methods like slice over splice. So lets look at a whole bunch more javaScript examples of other ways of doing this sort of things and more with arrays in javaScript.
+
+## 2 - The js array shift method for popping out the first element in an array
+
+The js array shift method works more or less in the same way as the js array pop method, but with one very important difference which is that it is the first element that is removed and returned rather than the last.
+
+```js
+var arr = [1,2,3,4];
+ 
+var n = arr.shift();
+ 
+console.log(n); // 1
+console.log(arr); // [2,3,4]
+```
+
+## 3 - The array splice method for popping out one or more elements anywhere, and to inject new ones also
+
+```js
+var arr = [1,2,3,4];
+ 
+console.log( arr.splice(arr.length-1, 1)[0] ); // 4
+console.log( arr.splice(0, 1)[0] ); // 1
+console.log( arr ); // [2,3]
+ 
+// splice can also be used to inject new elements
+arr.splice(1,0, 2.1, 2.2);
+ 
+console.log(arr); // [2, 2.1, 2.2, 2.3, 3]
+```
