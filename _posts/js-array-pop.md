@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-05-31 15:56:32
-version: 1.9
+updated: 2020-05-31 16:01:36
+version: 1.10
 ---
 
 When first starting out with javaScript it is only natural to go threw a faze where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place as well as not doing so. There are many methods of interest when it comes to working with arrays in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
@@ -164,3 +164,7 @@ setInterval(function () {
 ```
 
 So this is a nice quick example of a method like js array splice doing its thing. However it might not be the best option for making this kind of project. When working out something like this I often might use a fixed pool and just make it so that particles enter an inactive state when a condition is reached rather than purging them out and spawning in a new one.
+
+## 5 - Conclusion
+
+So the js array pop method can be used to purge out and return the last element in an array, but there are other options for doing so. Also it might not always be the best idea to keep purging out elements in the first place depending on the nature of the project. There are of course many other tools in the toolbox then it comes to doing the same things without mutating an array in place, and some times it might be better to keep reusing the same resources over and over again rather than purging them out and creating them again over and over again.
