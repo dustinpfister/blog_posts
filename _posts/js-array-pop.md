@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-05-31 15:50:08
-version: 1.8
+updated: 2020-05-31 15:56:32
+version: 1.9
 ---
 
 When first starting out with javaScript it is only natural to go threw a faze where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place as well as not doing so. There are many methods of interest when it comes to working with arrays in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
@@ -107,6 +107,8 @@ var spawn = function (state, secs) {
 
 ### 4.2 - The purge method that uses the splice method to pop put elements
 
+So here I have the purge method that will purge out objects in the parts array of the state object that have a life value of zero or below.
+
 ```js
 // purge method using the splice method
 var purge = function (state) {
@@ -123,7 +125,7 @@ var purge = function (state) {
 
 ### 4.3 - the update and main loop methods
 
-So I will now awant a main update method that uses my spawn and purge methods along with a render method and a main app loop.
+So I will now want a main update method that uses my spawn and purge methods along with a render method and a main app loop.
 
 ```js
 var update = function (state) {
@@ -160,3 +162,5 @@ setInterval(function () {
  
 }, 250);
 ```
+
+So this is a nice quick example of a method like js array splice doing its thing. However it might not be the best option for making this kind of project. When working out something like this I often might use a fixed pool and just make it so that particles enter an inactive state when a condition is reached rather than purging them out and spawning in a new one.
