@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2020-06-01 12:45:51
-version: 1.11
+updated: 2020-06-01 12:47:00
+version: 1.12
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays. So in other words it is a way to go about finding unique values that are in two or more given arrays.
@@ -27,7 +27,7 @@ console.log( _.difference(data1, data2) ); // [ 'bar', 'baz' ]
 console.log( _.difference(data2, data1) ); // ['man', 'chew']
 ```
 
-So it goes without saying that the order of the arrays is important. Also it is not to hard to get a similar effect with just plain old javaScript by itself so this makes the lodash difference another one of those kinds of methods. Also when it comes to working on projects I can not say that I end up in a situation in which I need to do this sort of thing often. So if those things come to mind as well feel free to read on.
+So it goes without saying that the order of the arrays is important. Also it is not to hard to get a similar effect with just plain old javaScript by itself so this makes the lodash difference another one of those kinds of methods. Also when it comes to working on projects I can not say that I end up in a situation in which I need to do this sort of thing often. So if those things in mind lets look at some additional code example when it comes to finding the difference between two or more arrays in javaScript.
 
 ## 2 - lodash difference with
 
