@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2020-06-01 11:39:33
-version: 1.3
+updated: 2020-06-01 11:45:22
+version: 1.4
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is Array.map. This array prototype method can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -17,7 +17,7 @@ In [lodash](https://lodash.com/) there is also the [\_.map](https://lodash.com/d
 
 ## 1 - Simple example of Array.map
 
-The [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method will create a new array with what is returned by a given method for each element.
+The [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method will create a new array with what is returned by a given method that will be called for each element in the array. The first argument in the method that is passed is the current value of an element in the array, and the return keyword is usedd to return what will become the new value for the element in the array.
 
 ```js
 // a simple array
@@ -34,6 +34,10 @@ arr = arr.map(function(el){
 console.log(arr);
 // [10,20,30,40,50]
 ```
+
+The Array map method will not mutate the array in place like many other native methods in the built in javaScript Array prototype. So in this example I am assigning the result of array map to the variable the stores the array as a way to mutate the source array. In some cases this behavior of not mutating a source array is in fact the kind of behavior I would want, in fact it is an aspect of what is often referred to functional programing, but that is a matter for another post.
+
+Now that we have a basic example of the native array map meth9d out of the way lets take a look at what can be done with the lodash equivalent of array map.
 
 ## 2 - Simple \_.map example in lodash
 
