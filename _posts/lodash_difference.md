@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2020-06-01 12:52:28
-version: 1.13
+updated: 2020-06-01 12:54:46
+version: 1.14
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays. So in other words it is a way to go about finding unique values that are in two or more given arrays.
@@ -31,7 +31,7 @@ So it goes without saying that the order of the arrays is important. Also it is 
 
 ## 2 - lodash difference with
 
-There is also the [lodash difference with](https://lodash.com/docs/4.17.11#differenceWith) method as well on top  of the regular lodash difference method.
+There is also the [lodash difference with](https://lodash.com/docs/4.17.11#differenceWith) method as well on top  of the regular lodash difference method. The difference is that I can use another method to aide in making the comparisons.
 
 ```js
 let data = [
