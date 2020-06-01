@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 661
-updated: 2020-06-01 16:15:48
-version: 1.0
+updated: 2020-06-01 16:19:11
+version: 1.1
 ---
 
-The lodash sorted uniq method can be used to remove all redundant copies of an element from an array.
+The [lodash sorted uniq](https://lodash.com/docs/4.17.15#sortedUniq) method can be used to remove all redundant copies of an element from an array.
 
 <!-- more -->
 
