@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2019-03-29 18:35:14
-version: 1.8
+updated: 2020-06-01 12:31:43
+version: 1.9
 ---
 
-In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays when using ht method.
+In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays. So in other words it is a way to go about finding unique values that are in two or more given arrays.
 
 <!-- more -->
 
