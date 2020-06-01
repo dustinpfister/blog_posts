@@ -5,15 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2018-02-05 15:53:39
-version: 1.1
+updated: 2020-06-01 11:35:39
+version: 1.2
 ---
 
-If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is Array.map. In [lodash](https://lodash.com/) there is also the [\_.map](https://lodash.com/docs/4.17.4#map) method what works just like that only it is a little more advanced. In this post I will be covering Array.map, and how it compares with what is in lodash.
+If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is Array.map. This array prototype method can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
+
+In [lodash](https://lodash.com/) there is also the [\_.map](https://lodash.com/docs/4.17.4#map) method what works just like the native array map method when it comes to arrays, only it is a little more advanced when it comes to working with objects in general with javaScript. You see the load map method is one of the so called collection methods in lodash. What this means is that the method works well out of the box with both arrays and plain old objects by themselves. In this post I will be covering Array.map, and how it compares with what is in lodash.
 
 <!-- more -->
 
-## Simple example of Array.map
+## 1 - Simple example of Array.map
 
 The [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method will create a new array with what is returned by a given method for each element.
 
@@ -33,7 +35,7 @@ console.log(arr);
 // [10,20,30,40,50]
 ```
 
-## Simple \_.map example in lodash
+## 2 - Simple \_.map example in lodash
 
 So of course the same thing can be done with \_.map in lodash.
 
@@ -63,7 +65,7 @@ console.log(_.map(obj, function(item){
 // ['bar',42]
 ```
 
-## Recursive example of \_.map
+## 3 - Recursive example of \_.map
 
 For a more advanced example of \_.map in action, say I have a complex object that has nested objects inside of it, and I want to toggle a boolean value for each object, and flatten everything out into an array. I can call \_.map recursively on objects, and arrays. Other lodash methods like \_.isArray, and \_.flatten can also be used in the process.
 
