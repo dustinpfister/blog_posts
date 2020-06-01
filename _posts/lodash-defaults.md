@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2020-06-01 11:57:02
-version: 1.8
+updated: 2020-06-01 12:01:14
+version: 1.9
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, bit in any case there might be a need to set some default values for these options for the method, function, constructor or what have you. 
@@ -25,6 +25,8 @@ This is a post on the \_.defaults method in lodash that can be used to set defau
 So one use case example is when making a constructor function, and I want to have an options object that can be passed to the method. This options object contains properties that are to be set as the initial state of an instance of the constructor when used with the new keyword. The \_.defaults method can be used along with \_.merge to make quick work of this.
 
 ### 2.1 - A constructor example using \_.defaults
+
+So say you have a constructor method that creates a simple Box Class object. You want to make it so that there are default values for the width, height, and x an y properties of the Box Class instance. The lodash defaults method can be used to do just this with an options object that is used for the constructor. Just pass the options object as the first argument to the defaults method, and then as the second argument an object of default values for each property.
 
 ```js
 let Box = function (opt) {
