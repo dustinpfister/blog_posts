@@ -5,17 +5,17 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 541
-updated: 2019-10-04 12:05:25
-version: 1.4
+updated: 2020-06-01 15:33:08
+version: 1.5
 ---
 
-When it comes to Unicode blocks there are the first few blocks that have to do with Latin characters. These kinds of characters come up now and then for cretin words that come from languages like Spanish. If for some reason I might be interested in just simply converting these kinds of strings into a string that contains just the first few ASCCI range characters I can used the [lodash debuff method](https://lodash.com/docs/4.17.15#deburr). This method in lodash just simply takes away any additional accent over a letter and just converts into a plain English style form of the word.
+When it comes to Unicode blocks there are the first few blocks that have to do with Latin characters. These kinds of characters come up now and then for cretin words that come from languages like Spanish. If for some reason I might be interested in just simply converting these kinds of strings into a string that contains just the first few ASCCI range characters I can used the [lodash deburr method](https://lodash.com/docs/4.17.15#deburr). This method in lodash just simply takes away any additional accent over a letter and just converts into a plain English style form of the word.
 
 <!-- more -->
 
 ## 1 - Latin 1 Supplement, Latin Extended A, and Unicode blocks in general
 
-The lodash debuff method has to do with converting certain characters in the [Unicode Blocks](https://en.wikipedia.org/wiki/Unicode_block) called [Latin 1 Supplement](https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)#Character_table) and [Latin A Extended Unicode](https://en.wikipedia.org/wiki/Latin_Extended-A) into basic Latin characters that are found within plain old [ASCII](https://en.wikipedia.org/wiki/ASCII) or the [Basic Latin Unicode code block](https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)).
+The lodash deburr method has to do with converting certain characters in the [Unicode Blocks](https://en.wikipedia.org/wiki/Unicode_block) called [Latin 1 Supplement](https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)#Character_table) and [Latin A Extended Unicode](https://en.wikipedia.org/wiki/Latin_Extended-A) into basic Latin characters that are found within plain old [ASCII](https://en.wikipedia.org/wiki/ASCII) or the [Basic Latin Unicode code block](https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)).
 
 
 So A Basic example of the lodash deburr method might look like this then
