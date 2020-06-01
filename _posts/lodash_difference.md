@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2020-06-01 12:40:28
-version: 1.10
+updated: 2020-06-01 12:45:51
+version: 1.11
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays. So in other words it is a way to go about finding unique values that are in two or more given arrays.
@@ -27,11 +27,11 @@ console.log( _.difference(data1, data2) ); // [ 'bar', 'baz' ]
 console.log( _.difference(data2, data1) ); // ['man', 'chew']
 ```
 
-So it goes without saying that the order of the arrays is important. In addition there is also more to write about when it comes to working with arrays of arrays, as they may need to be fattened before hand. Also it is not to hard to get a similar effect with just plain old javaScript by itself as well. So if those things come to mind as well feel free to read on.
+So it goes without saying that the order of the arrays is important. Also it is not to hard to get a similar effect with just plain old javaScript by itself so this makes the lodash difference another one of those kinds of methods. Also when it comes to working on projects I can not say that I end up in a situation in which I need to do this sort of thing often. So if those things come to mind as well feel free to read on.
 
 ## 2 - lodash difference with
 
-There is also the [lodash difference](https://lodash.com/docs/4.17.11#differenceWith) with method as well.
+There is also the [lodash difference with](https://lodash.com/docs/4.17.11#differenceWith) method as well on top  of the regular lodash difference method.
 
 ```js
 let data = [
@@ -47,8 +47,7 @@ kill = [
  
 let result = _.differenceWith(data, kill, _.isEqual);
  
-console.log(result);
-// [ [ 1, 2, 3, 4 ], [ 9, 10, 11, 12 ] ] ```
+console.log(result); //[ [ 1, 2, 3, 4 ], [ 9, 10, 11, 12 ] ]
 ```
 
 ## 3 - lodash difference alternatives
