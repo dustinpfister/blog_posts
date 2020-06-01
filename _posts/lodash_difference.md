@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2020-06-01 12:31:43
-version: 1.9
+updated: 2020-06-01 12:40:28
+version: 1.10
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays. So in other words it is a way to go about finding unique values that are in two or more given arrays.
@@ -15,17 +15,19 @@ In this post I will be writing about some [lodash difference method](https://lod
 
 ## 1 - lodash difference
 
-The lodash distance method can be used to find the difference between two arrays. just give an array as the first argument, and another as the second and what will be returned is a new array of values that are not in second array.
+The lodash distance method can be used to find the difference between two arrays. Just give an array as the first argument, and another as the second, and what will be returned is a new array of values that are not in second array when comparing element by element.
 
 ```js
-let data = ['foo', 'bar', 'baz']
- 
-let noGood = _.difference(['foo', 'man', 'chew'], data);
- 
-console.log(noGood); // ['man', 'chew']
+let _ = require('lodash');
+
+let data1 = ['foo', 'bar', 'baz'],
+data2 = ['foo', 'man', 'chew'];
+
+console.log( _.difference(data1, data2) ); // [ 'bar', 'baz' ]
+console.log( _.difference(data2, data1) ); // ['man', 'chew']
 ```
 
-The order of the arrays is important, and there is also more to write about when it comes to working with arrays of arrays. Also it is not to hard to get a similar effect with just plain old javaScript by itself as well. So if thouse things come to mind as well feel free to read on.
+So it goes without saying that the order of the arrays is important. In addition there is also more to write about when it comes to working with arrays of arrays, as they may need to be fattened before hand. Also it is not to hard to get a similar effect with just plain old javaScript by itself as well. So if those things come to mind as well feel free to read on.
 
 ## 2 - lodash difference with
 
