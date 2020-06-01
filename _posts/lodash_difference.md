@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2020-06-01 12:47:00
-version: 1.12
+updated: 2020-06-01 12:52:28
+version: 1.13
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays. So in other words it is a way to go about finding unique values that are in two or more given arrays.
@@ -76,3 +76,7 @@ let result_diff = _.difference(data,kill);
  
 console.log(result_diff); // [2,6,9]
 ```
+
+## 4 - Conclsuion
+
+So the lodash difference method is another one of those kinds of methods that make me thing that lodash is not really necessary. Do not get me wrong the library does have its redeeming qualities when it comes to the idea of having a stand alone method for doing things rather than poly filling native methods. There are many taking points about why using lodash, or something like lodash in a project is a good idea. I just can nit say that the lodash difference method is one of the most compelling methods in the collection of methods. There is really just a hand full here and there that I actually find myself using, and even then I could just use a custom tailored utility library that is in tune with the project itself.
