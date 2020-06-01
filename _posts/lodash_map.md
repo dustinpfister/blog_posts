@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2020-06-01 11:47:48
-version: 1.5
+updated: 2020-06-01 11:51:24
+version: 1.6
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is Array.map. This array prototype method can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -68,6 +68,8 @@ console.log(_.map(obj, function(item){
 }));
 // ['bar',42]
 ```
+
+It is possible to do the same with native javaScript still, just often not with the array map prototype method alone. At least some trickery with other methods in native javaScript need to be used such as Function.call, or the Object.keys methods in combination with the bracket syntax. If you are an experience javaScipt developer these things might not be to big of a deal, but with the lodash map method you can just go ahead and map any kind of object more or less.
 
 ## 3 - Recursive example of \_.map
 
