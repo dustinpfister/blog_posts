@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2020-06-01 11:45:22
-version: 1.4
+updated: 2020-06-01 11:47:48
+version: 1.5
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is Array.map. This array prototype method can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -41,7 +41,7 @@ Now that we have a basic example of the native array map meth9d out of the way l
 
 ## 2 - Simple \_.map example in lodash
 
-So of course the same thing can be done with \_.map in lodash.
+So of course the same thing can be done with the \_.map method in lodash, and in more or less the same way. The only real difference compared to the native array map example is that I have to pass the array as the first argument as the lodash meth9od is not a prototype method but a stand alone method.
 
 ```js
 var arr = [1,2,3,4,5];
