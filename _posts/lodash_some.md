@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2019-04-05 13:02:59
-version: 1.7
+updated: 2020-06-02 08:55:32
+version: 1.8
 ---
 
-The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. In this post I will be going over some simple examples of both, as well as some ways of doing so with just plain old vanilla js as well.
+The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. 
+
+In this post I will be going over some simple examples of both the lodash some and every methods. Also there are as some ways of doing the same thing so with just plain old vanilla js also that are worth covering. There are native javaScript equivalents for both the some and every methods although these are array prototype methods rather than collection methods. Still it is not to hard to just go with using those and count these lodash methods as just yet another example of a kind of methods that brings the relevancy of lodash into question.
 
 <!-- more -->
 
