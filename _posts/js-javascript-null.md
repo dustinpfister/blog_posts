@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 399
-updated: 2019-03-12 14:14:57
-version: 1.6
+updated: 2020-06-02 16:23:01
+version: 1.7
 ---
 
-So [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time in javaScript. It would seem that null is more or less the same as undefined, but this is not the case. In this post I will be writing around some of the things to know about the javaScript null value.
+So [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time in javaScript. One the surface it might seem that null is more or less the same as undefined, but this is not the case. In this post I will be writing around some of the things to know about the javaScript null value.
 
 <!-- more -->
 
