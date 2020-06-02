@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2019-04-05 12:47:41
-version: 1.10
+updated: 2020-06-02 08:39:11
+version: 1.11
 ---
 
-The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with another pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. So in this post I will be writing bout some quick examples on this subject that comes up a lot when working out a javaScript project.
+The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value of another text pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
+
+In any case both methods are fairly useful for search and replace operations with text in javaScript. There is not just being knowledgeable with the features of the methods, but also regular expressions, and advanced options when using a method for each instance of a pattern. So in this post I will be writing bout some quick examples on this subject of search and replace of text that comes up a lot when working out a javaScript project.
 
 <!-- more -->
 
@@ -23,7 +25,7 @@ let str = _.replace('Hello Mr Early Cuyler','Early Cuyler','Dan Halen');
 console.log(str); // 'Hello Mr Dan Halen'
 ```
 
-The text pattren to look for can be a string or a regular expression. More on that in the next session.
+The text pattern to look for can be a string or a regular expression. More on that in the next session.
 
 
 ## 2 - Using regex to replace all instances of a text pattern
