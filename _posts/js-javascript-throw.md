@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-06-02 17:01:54
-version: 1.7
+updated: 2020-06-02 17:02:37
+version: 1.8
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user-defined exception or error if you prefer. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order. In some cases I might use it as a way to intentionally throw a wrench into a machine sort of speak to stop execution of a program at a certain point as a means of debugging, but as of late I prefer to use alternatives to that to catch a state of affairs sort of speak.
@@ -45,7 +45,7 @@ throw {
 
 ## 3 - javaScript throw and try catch blocks
 
-When an Error is thrown any catch statement present will of course be executed which can be used to handal the Error
+When an Error is thrown any catch statement present will of course be executed which can be used to handle the Error
 
 ```js
 var process = function (str) {
@@ -64,3 +64,4 @@ try {
     console.log(e.message); // 'must give bar'
 }
 ```
+
