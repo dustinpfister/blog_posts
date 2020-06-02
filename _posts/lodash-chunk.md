@@ -5,11 +5,11 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2019-10-02 11:08:12
-version: 1.11
+updated: 2020-06-02 17:08:49
+version: 1.12
 ---
 
-So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays.
+So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays, or in other words a multidimensional array as it may often be called.
 
 So how often do I get into a situation in which I need to break down a linear array into an array of arrays? Maybe not to often but often enough that it would be nice to have a method that is part of a toolkit of sorts that makes quick work of it. In this case the lodash chunk method in is just that. There is also the question of flattening an array of arrays into a single array, for that there is the [lodash flatten](/2018/08/12/lodash_flatten/) method.
 
@@ -94,6 +94,8 @@ console.log(html);
 
 ## 4 - Conclusion
 
-So yes this method will sure come in handy when working on a project, I can see why people like lodash. Be sure to check out my other [posts on lodash](/categories/lodash/), I also have my main post on [lodash](/2019/02/15/lodash/) in general as well.
+So yes this method will sure come in handy when working on a project, I can see why people like lodash. It is true that may of the methods in lodash are just abstractions of native methods. However the lodash chunk method is one method that I often find myself grabbing for that is not part of core javaScript itself. 
+
+Be sure to check out my other [posts on lodash](/categories/lodash/), I also have my main post on [lodash](/2019/02/15/lodash/) in general as well.
 
 Happy coding.
