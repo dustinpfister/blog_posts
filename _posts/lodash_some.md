@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2020-06-02 09:00:07
-version: 1.9
+updated: 2020-06-02 10:37:47
+version: 1.10
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. 
@@ -102,3 +102,7 @@ console.log(some(obj, function (n) {
         return n <0
     })); // true
 ```
+
+## 3 - Conclusion
+
+The lodash some method as well as the native equivalent, or any other non lodash user space solution for what is often refer to as some, is just a way to check if all elements in an array meet a given condition. Preforming such a task really just involves just looping over all elements of an array, or collection, and preform a test for each element. If just one test results in a true result, then the process can be stopped and a true value for the some operation can be observed.
