@@ -5,15 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 662
-updated: 2020-06-02 13:51:43
-version: 1.1
+updated: 2020-06-02 16:13:30
+version: 1.2
 ---
 
-In client side javaScript there is the [onunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event) that can be used o attach an event handler that will fire when a user leaves a page.
+In client side javaScript there is the [onunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event) that can be used o attach an event handler that will fire when a user leaves a page. This can be used to save something to local storage such as updating a time stamp value or something to that effect.
 
 <!-- more -->
 
-## 1 - basic on unload example
+## 1 - basic on unload example using local storage
+
+This basic example of the on unload event makes use of local storage to store a time stamp when the user leaves the page. When the user returns to the page the about of time sense the last visit is displayed.
 
 ```html
 <html>
