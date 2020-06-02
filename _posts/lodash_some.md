@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2020-06-02 10:37:47
-version: 1.10
+updated: 2020-06-02 10:51:06
+version: 1.11
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. 
@@ -101,6 +101,51 @@ console.log(some(obj, function (n) {
 console.log(some(obj, function (n) {
         return n <0
     })); // true
+```
+
+## 2.3 - Native Array.some and an Arrays
+
+```js
+let arr = ['foo', 42, null, 'baz'];
+ 
+let test = (el) => {
+    return el === null;
+};
+ 
+console.log(arr.some(test)); // true
+```
+
+### 2.4 - Native Array.some and Objects in general
+
+```js
+let test = (el) => {
+    return el === null;
+};
+ 
+let some = (obj) => {
+    return Object.values(obj).some(test)
+};
+ 
+let arr = [1, null, 2],
+arr2 = [3, 4, 5],
+obj = {
+    a: 'foo',
+    b: 'bar',
+    c: null,
+    d: 42
+},
+obj2 = {
+    a: 3,
+    b: 3
+}
+ 
+// works with objects
+console.log(some(obj)); // true
+console.log(some(obj2)); // false
+ 
+// and arrays to just like with lodash
+console.log(some(arr)); // true
+console.log(some(arr2)); // false
 ```
 
 ## 3 - Conclusion
