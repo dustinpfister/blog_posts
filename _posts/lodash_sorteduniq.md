@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 661
-updated: 2020-06-01 16:19:11
-version: 1.1
+updated: 2020-06-02 09:53:22
+version: 1.2
 ---
 
-The [lodash sorted uniq](https://lodash.com/docs/4.17.15#sortedUniq) method can be used to remove all redundant copies of an element from an array.
+The [lodash sorted uniq](https://lodash.com/docs/4.17.15#sortedUniq) method can be used to remove all redundant copies of an element from an array. This is one of many methods in lodash that seem a little redundant, or present some kind of functionality that can easily be done with just native javaScript by itself. In any case this will be a quick post and removing copy elements from an array using the lodash sortedUniq method and vanilla javaScript alternatives to this method.
 
 <!-- more -->
 
