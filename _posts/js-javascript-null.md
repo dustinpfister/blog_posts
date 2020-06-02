@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 399
-updated: 2020-06-02 16:37:15
-version: 1.10
+updated: 2020-06-02 16:39:08
+version: 1.11
 ---
 
 So [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time in javaScript. One the surface it might seem that null is more or less the same as undefined, but this is not the case. There are some subtle differences and null is not meant to be a replacement for undefined or vice versa. A null value can be thought of as a lack of identification value for what should be an object. In this post I will be writing around some of the things to know about the javaScript null value.
@@ -15,7 +15,7 @@ So [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 ## 1 - javaScript null and undefined
 
-The null value is one of javaScripts primitive values, that represents the absence of any object value. There is some confusion surrounding null and a similar primitive value known as undefined.
+The null value is one of javaScripts primitive values, that represents the absence of any object value. There is some confusion surrounding null and a similar primitive value known as undefined. They are similar but there are reasons why a null value is part of javaScript. In some cases using null as a default value might be a better option compared to something lie the number zero.
 
 ### 1.1 - null must be assigned.
 
