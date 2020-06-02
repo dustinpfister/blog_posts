@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 399
-updated: 2020-06-02 16:27:58
-version: 1.8
+updated: 2020-06-02 16:34:27
+version: 1.9
 ---
 
 So [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time in javaScript. One the surface it might seem that null is more or less the same as undefined, but this is not the case. There are some subtle differences and null is not meant to be a replacement for undefined or vice versa. In this post I will be writing around some of the things to know about the javaScript null value.
@@ -81,3 +81,12 @@ console.log(func(null,5)); // -1
 ```
 
 Without a check for nul then what will result is an error when trying to access a property of null.
+
+## 3 - Adding one to null vs doing the same with undefined
+
+One note worthy difference between null and and undefined is what happens when you add a number to null compared to doing the same with an undefined value. When adding a number to an undefined value the result is NaN, where doing the same with a null value will result in the number that was added to null. For this reason alone it might be better to use null as a define value fo sorts compared to undefined.
+
+```js
+console.log( null + 1 ); // 1
+console.log( undefined + 1 ); // NaN
+```
