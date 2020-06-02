@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2020-06-02 10:51:06
-version: 1.11
+updated: 2020-06-02 10:54:35
+version: 1.12
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. 
@@ -116,6 +116,10 @@ console.log(arr.some(test)); // true
 ```
 
 ### 2.4 - Native Array.some and Objects in general
+
+So the native Array.some method works okay on all clients concerned and you want to just go ahead and use that as a way to preform these kinds of tests. There is just one little problem and that is that it is an array prototype method rather than a collection method like in lodash. So when you want to use it with objects in general, you can not just go ahead and do so with just the native array some method.
+
+So there is then a need to make a stand alone some method that is part of you r own framework for you pro9ject just like in lodash once again. If you do not just want to use lodash and move on with it then it is not to hard to just make a native equivalent with just the native array some method and then the object.values static Object method.
 
 ```js
 let test = (el) => {
