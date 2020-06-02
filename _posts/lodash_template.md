@@ -5,21 +5,21 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2020-06-02 09:39:10
-version: 1.10
+updated: 2020-06-02 09:43:23
+version: 1.11
 ---
 
 The [lodash \_.template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way. 
 
 Another application that come to mind is making a project that can be described as a static site generator. One of the aspects of a static site generator is that plain text, or markdown source files need to be converted into HTML and injected into an HTML page.
 
-This is where methods like the \_.template method in lodash can be useful, so lets take a look at some lodash template examples.
+This is where methods like the \_.template method in lodash can be useful, so lets take a look at some lodash template method examples.
 
 <!-- more -->
 
 ## 1 - lodash template basic example
 
-So a basic lodash template involves passing a string that will be the template as the first argument to the \_.template method. This string can contain one or more delimiters that are used to inject data from an object when using the method that is retruned when calling the \_.template method.
+So a basic lodash template involves passing a string that will be the template as the first argument to the \_.template method. This string can contain one or more delimiters that are used to inject data from an object when using the method that is returned when calling the \_.template method.
 
 ```js
 let comp = _.template('(<%= x %>,<%= y %>)'),
@@ -86,3 +86,7 @@ html = comp({
  
 console.log(html);
 ```
+
+## 5 - Conclusion
+
+So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use marked.js, and in most projects that require a template system I tend to prefer the use of EJS.
