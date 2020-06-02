@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2020-06-02 08:46:38
-version: 1.12
+updated: 2020-06-02 08:49:34
+version: 1.13
 ---
 
 The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value of another text pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
@@ -25,7 +25,7 @@ let str = _.replace('Hello Mr Early Cuyler','Early Cuyler','Dan Halen');
 console.log(str); // 'Hello Mr Dan Halen'
 ```
 
-SO when it comes to simple examples like this then the lodash replace method is fairly easy and straight forward to use. However in some cases you might not be able to just use a fixes, static text string as the pattern to look for. For example you might want to replace the text pattern \-\- with \<hr\> but you do not want to replace \<\-\- with \<\<hr\>. So to not end up doing that you would want to use a regular expression to make sure that only the desired instances of something are changed. So lets look at some more examples that have to do with regular expressions, and the use of methods as a way to help with processing instances of a pattern.
+So when it comes to simple examples like this then the lodash replace method is fairly easy and straight forward to use. However what if I want to replace all instances of a pattern? Also in some cases I might not be able to just use a fixed, static, text string as the pattern to look for, or for what is to be used as a replacement. For example you might want to replace the text pattern \-\- with \<hr\> but you do not want to replace \<\-\- with \<\<hr\>. So to not end up doing that you would want to use a regular expression to make sure that only the desired instances of something are changed. So lets look at some more examples that have to do with regular expressions, and the use of methods as a way to help with processing instances of a pattern.
 
 
 ## 2 - Using regex to replace all instances of a text pattern
