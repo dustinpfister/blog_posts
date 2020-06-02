@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2020-04-29 19:28:59
-version: 1.8
+updated: 2020-06-02 16:57:09
+version: 1.9
 ---
 
 These days there is not a native [array fill prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and unless you care a great deal about backward compatibility the native array fill method works just fine. Unless you do want to use a pony fill method of area fill because you want to make sure what you are making will work on a wider range of platforms then you might want to use something else. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index. So lets look at some examples of filling an array with data.
@@ -108,4 +108,4 @@ console.log(arr.join('')); // 'abcabca'
 
 ## 6 - Conclusion
 
-The native array fill prototype method can be used to quickly fill an array with a single value for each element. However there are other options that might be a better for depending on the situation.
+The native array fill prototype method can be used to quickly fill an array with a single value for each element. However there are other options that might be a better for this sort of task depending on the situation. Or maybe the array fill method is just want needs to be used for starters so that it ca then be used with another method like Array.map. However when it just simple comes to just filling an array with a certain static value then the array fill method does the trick just fine.
