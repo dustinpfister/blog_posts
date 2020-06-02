@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-06-02 16:46:44
-version: 1.14
+updated: 2020-06-02 16:50:14
+version: 1.15
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and debug. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage compared to one large monolithic lock of code that all to often ends up getting messy. 
@@ -17,7 +17,10 @@ There is more than one pattern to be familiar with, and many little tips and tri
 
 ## 1 - JavaScript Module basics
 
-There are many ways to go about designing something in javaScript that can be thought of as a kind of module. In this post I will mainly be writing modules with core javaScript by itself that can often work out okay in any javaScript environment. There are specifics to be aware of when it comes to a node.js environment though. There are also many standards that come to mind such as AMD. It goes without saying that this is an advanced topic when it comes to javaScript development. There are many different design patterns, and standards for modules so this can get a littler overwhelming.
+There are specifics to be aware of when it comes to a node.js environment though. There are also many standards that come to mind such as AMD. It goes without saying that this is an advanced topic when it comes to javaScript development. There are many different design patterns, and standards for modules so this can get a littler overwhelming.
+
+Although there are many ways to go about designing something in javaScript that can be thought of as a kind of module. In this post I will mainly be writing modules with core javaScript by itself that can often work out okay in any javaScript environment. Well at least for the most part in client side javaScript anyway, in a node environment you really just need to design it in a way where use are exporting what you want to be public. 
+
 
 ## 1.1 - JavaScript Module by Object literal
 
