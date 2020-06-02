@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2020-06-02 08:55:32
-version: 1.8
+updated: 2020-06-02 09:00:07
+version: 1.9
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. 
@@ -41,7 +41,7 @@ In this section I will be covering some quick vanilla ja examples of how to do w
 
 ### 2.1 - Just use a loop
 
-So it is not ti hard to just use a while loop for example to loop over the contents of an array and check to see if one element in the array meets a certain condition of course.
+So it is not to hard to just use a while loop for example to loop over the contents of an array and check to see if one element in the array meets a certain condition of course.
 
 ```js
 let arr = ['foo', 42, null, 'baz'];
@@ -57,6 +57,8 @@ while (i--) {
  
 console.log(some); // true
 ```
+
+This kind of code could be pulled into a function so it can be used over and over again. Such methods should be part of a custom trailered utility library. However there is also the question of native support when it comes to a some method, and in late javaScript specs there is such a method. So depending on what the state of affairs is when it comes to client support, you might not even need to deal with having a stand alone some method. In any case lets look at some more examples of using a some method in just plain of vanilla javaScript.
 
 
 ### 2.2 - Writing a some method
