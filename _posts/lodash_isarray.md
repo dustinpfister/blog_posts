@@ -5,11 +5,13 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 46
-updated: 2019-07-23 11:45:49
-version: 1.7
+updated: 2020-06-03 10:53:17
+version: 1.8
 ---
 
-Detecting if an Object is an Array is a trivial matter, or at least it is if you do not care a whole lot about backward compatibility. If you do want to march backward compatibility back to say IE 8 (latest ie for win xp), or even further to IE 6 (latest for win 9.x) then you can not depend on Array.isArray, or [_.isArray](https://lodash.com/docs/4.17.4#isArray) in [loash](https://lodash.com/) ether for that matter because in late versions lodash just references Array.isArray.
+Detecting if an Object is an Array is a trivial matter, or at least it is if you do not care a whole lot about backward compatibility. If you do want to march backward compatibility back to say IE 8 (latest IE for win xp), or even further to IE 6 (latest for win 9.x) then you can not depend on Array.isArray, or [_.isArray](https://lodash.com/docs/4.17.4#isArray) in [loash](https://lodash.com/) ether for that matter actually. The reason why is because in late versions lodash just references Array.isArray, where is older versions do provide a user space javaScript solution for this.
+
+So the lodash isArray method is maybe one talking point about the relevancy of still using lodash, but even then only when it comes to pushing legacy support way back to older clients that not many people are using at this point. Even if you want to go way back with support, even if it is more or less just for the nostalgia aspect of doing so, then it is not just a question of using lodash. There is the question of what version to use, and also weather or not it might be better to have a certain custom trailered lodash utility library of sorts that you can call your own.
 
 <!-- more -->
 
