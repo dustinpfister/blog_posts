@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2019-11-04 12:34:36
-version: 1.4
+updated: 2020-06-04 12:16:47
+version: 1.5
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently then its native js counterpart, this appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method.
+
+When it comes to the lodash forEach method and the native javaScript array prototype counterpart it seems that a lot of developers have this negative or positive attitude with the use of such methods. It is a pattern that I have observed in blog posts such as this and from discussions over and over again. My attitude with the use of lodash forEach or naive forEach is that the use of it is fine when it comes to quick code examples now and then. However it certainly goes without saying that it is not the only tool in the toolbox when it comes to looping over the contents of an array, or object in general for that matter. It is important to be ware of the other options in lodash, and in javaScript in general, and realize that sometimes it is best to go with some other option.
 
 <!-- more -->
 
