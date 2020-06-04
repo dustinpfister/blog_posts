@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2019-07-02 21:40:01
-version: 1.6
+updated: 2020-06-04 12:08:45
+version: 1.7
 ---
 
 The process of combining objects in lodash can be a little tricky, there are the own properties of an object, it's prototype object, as well as even hidden properties in some cases. Also there is the idea of extending lodash with custom methods that are not a part of lodash as well. The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17.4#mixin) can be used to extend lodash, or another object with a source object of methods. It is one of many methods in lodash that can be used to combine objects, in some cases it might be useful so lets take a look at \_.mixin.
@@ -19,8 +19,7 @@ This is a post on the lodash \_.mixin method and what it can be used for. The \_
 
 ## 2 - Using \_.mixin to extend lodash
 
-One of the features of \_.mixin is that it can be used to extend lodash if just a source object is given.
-
+One of the features of \_.mixin is that it can be used to extend lodash if just a source object is given. This may more may not be a good idea depend on how you look at it. By adding my own custom methods to lodash I am turning lodash into something other than lodash. So it might not be the best move when it comes to readability of code. Many developers may see the underscore and assume that the custom method might be part of the official lodash utility library when it is not. For this reason when I make my own utility libraries I attach everything g to a global variable named something other than underscore Never the less the mixen method can be used to extend lodash.
 ```js
 _.mixin({
  
