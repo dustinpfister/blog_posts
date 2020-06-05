@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2020-06-05 13:03:25
-version: 1.8
+updated: 2020-06-05 13:05:04
+version: 1.9
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. SO the use of the PI constant will come up a lot with expressions that have to do with circles, and angles. Also many of the other Math methods in javaScript accept [radians](https://en.wikipedia.org/wiki/Radian) rather than degrees when it comes to using an angle as an argument, so it makes sense to have at least a little experience working with some basic expressions using Math PI just for the sake of getting used to the deal with PI and Radians as a unit of measurement for angles if you have not done so before hand.
@@ -71,11 +71,11 @@ console.log(pt);
 
 ## 4 - Using Math.PI in a circle bar animation
 
-So now for the first of a few examples using Math.PI in some kind of simple canvas project or something to that effect. These kinds of examples can some times be a little fun, but also helpful when it comes to helping to understand what Math.PI is a useful constant when working out javaScript projects in general.
+So now for an example using Math.PI in some kind of simple canvas project or something to that effect. These kinds of examples can some times be a little fun, but also helpful when it comes to helping to understand what Math.PI is a useful constant when working out javaScript projects in general.
 
 In this example I made a simple canvas animation example of a circle bar. That is that it is a circle type of plain progress bar that I often see in all kinds of games and practical projects. This one involves the use of a state object, a method that updates this state object, a method to draw to the canvas, and a main app loop of sorts.
 
-I use Math PI to get the value of Math PI \* 2 to which I then use to preform a modulo operation in the update method to make sure that the radian value for the state object is always between 0 and Math Pi \* 2.
+I use Math PI to get the value of Math PI \* 2 to which I then use to preform a modulo operation in the update method to make sure that the radian value for the state object is always between 0 and Math PI \* 2. In other worlds to make sure that a radian value is between the min and max values for a radian.
 
 ```html
 <html>
