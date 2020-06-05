@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2020-06-05 07:40:21
-version: 1.6
+updated: 2020-06-05 07:52:32
+version: 1.7
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. SO the use of the PI constant will come up a lot with expressions that have to do with circles, and angles. Also many of the other Math methods in javaScript accept [radians](https://en.wikipedia.org/wiki/Radian) rather than degrees when it comes to using an angle as an argument, so it makes sense to have at least a little experience working with some basic expressions using Math PI just for the sake of getting used to the deal with PI and Radians as a unit of measurement for angles if you have not done so before hand.
@@ -43,4 +43,27 @@ var degreeToRadian = function (deg) {
  
 console.log( radianToDegree(1.5707963267948966) ); 90
 console.log( degreeToRadian(90) ); 1.5707963267948966
+```
+
+## 3 - Getting a point along the circumference of a circle
+
+One use case example of using radians and therefore having a method that uses Math Pi to convert degrees to radians would be to have a method that can be used to get a point along the circumference of a circle. The method here makes use of the Math.cos, and Math.sin methods booth of which take a radian as the first argument. So if I want to use degrees then I will want to have a method that converts for degrees to radians. So then the method that I covered earlier would come into play with this example then.
+
+```js
+var degreeToRadian = function (deg) {
+    return Math.PI / 180 * deg;
+};
+ 
+var getCirclePoint = function (cx, cy, radius, radian) {
+    return {
+        x: cx + Math.cos(radian) * radius,
+        y: cy + Math.sin(radian) * radius
+    }
+};
+ 
+var radian = degreeToRadian(45);
+var pt = getCirclePoint(0,0, 10, radian);
+ 
+console.log(pt);
+// { x: 7.0710678118654755, y: 7.071067811865475 }
 ```
