@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2020-06-05 07:52:32
-version: 1.7
+updated: 2020-06-05 13:03:25
+version: 1.8
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. SO the use of the PI constant will come up a lot with expressions that have to do with circles, and angles. Also many of the other Math methods in javaScript accept [radians](https://en.wikipedia.org/wiki/Radian) rather than degrees when it comes to using an angle as an argument, so it makes sense to have at least a little experience working with some basic expressions using Math PI just for the sake of getting used to the deal with PI and Radians as a unit of measurement for angles if you have not done so before hand.
@@ -66,4 +66,71 @@ var pt = getCirclePoint(0,0, 10, radian);
  
 console.log(pt);
 // { x: 7.0710678118654755, y: 7.071067811865475 }
+```
+
+
+## 4 - Using Math.PI in a circle bar animation
+
+So now for the first of a few examples using Math.PI in some kind of simple canvas project or something to that effect. These kinds of examples can some times be a little fun, but also helpful when it comes to helping to understand what Math.PI is a useful constant when working out javaScript projects in general.
+
+In this example I made a simple canvas animation example of a circle bar. That is that it is a circle type of plain progress bar that I often see in all kinds of games and practical projects. This one involves the use of a state object, a method that updates this state object, a method to draw to the canvas, and a main app loop of sorts.
+
+I use Math PI to get the value of Math PI \* 2 to which I then use to preform a modulo operation in the update method to make sure that the radian value for the state object is always between 0 and Math Pi \* 2.
+
+```html
+<html>
+    <head>
+        <title>Math PI cir animation</title>
+    </head>
+    <body>
+        <canvas id="out" width="320" height="240"><canvas>
+        <script>
+ 
+// Math PI * 2 is the total number of radians
+// in a circle
+var pi2 = Math.PI * 2;
+ 
+var update = function (state, secs) {
+    state.radian += state.radiansPerSecond * secs;
+    // use Math.PI * 2 to always get the remainder
+    // for state.radians
+    state.radian %= pi2;
+};
+ 
+var draw = function (state, ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'lime';
+    ctx.lineWidth = 7;
+    ctx.beginPath();
+    ctx.arc(state.cx, state.cy, state.radius, 0, state.radian);
+    ctx.stroke();
+};
+ 
+var canvas = document.getElementById('out'),
+ctx = canvas.getContext('2d'),
+lt = new Date();
+ 
+var state = {
+    cx: canvas.width / 2,
+    cy: canvas.height / 2,
+    radius: 50,
+    radian: 0,
+    radiansPerSecond: Math.PI / 180 * 45, // 45 degrees per second
+};
+ 
+var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
+    requestAnimationFrame(loop);
+    update(state, secs);
+    draw(state, ctx, canvas);
+    lt = now;
+};
+loop();
+ 
+        </script>
+    </body>
+</html>
 ```
