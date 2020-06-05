@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2020-06-05 13:05:04
-version: 1.9
+updated: 2020-06-05 13:11:38
+version: 1.10
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. SO the use of the PI constant will come up a lot with expressions that have to do with circles, and angles. Also many of the other Math methods in javaScript accept [radians](https://en.wikipedia.org/wiki/Radian) rather than degrees when it comes to using an angle as an argument, so it makes sense to have at least a little experience working with some basic expressions using Math PI just for the sake of getting used to the deal with PI and Radians as a unit of measurement for angles if you have not done so before hand.
@@ -134,3 +134,9 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+So that Math PI constant is there in the Math object for any and all situations in which I would want to use it compared to just using a number literal. However there are situations in which I might want to use a literal, maybe not in number from, but in string form when it comes to making or using some kind of user space project or additional feature that allows for high precision Math.
+
+There is much more to write about, and develop when it comes to use case examples involving the use of Math PI, in time I might get around to updating and expanding this post as more examples come to mind. 
