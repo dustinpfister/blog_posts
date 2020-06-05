@@ -5,13 +5,15 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2019-11-28 13:38:09
-version: 1.4
+updated: 2020-06-05 13:18:32
+version: 1.5
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval). It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for.
 
 The setInterval method will fire a given method after a given millisecond value has elapsed, after which point it will fire again after the given millisecond value has elapsed again, and so on. It is therefor a popular, and well known way of implementing an application loop. It can also be thought of as a starting point that can branch off into other topics such as state management, and the nature of how threading, and event loops in a javaScript environment.
+
+There are alternatives to be aware of when it comes to setInterval such as [setTimeout](/2018/12/06/js-settimeout/) that works the same way more or less, but will just fire the given method once after a delay, rather than over and over again. However the method can be called from within the body of the method that is begin called that can result in a similar effect to the use of setInterval. In addition to setTimeout there is also requestAnimationFrame which is yet another option to work with when it comes to client side javaScript that might prove to be a better choice when it comes to canvas projects.
 
 <!-- more -->
 
