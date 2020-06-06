@@ -5,13 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2020-06-06 07:26:02
-version: 1.9
+updated: 2020-06-06 18:31:09
+version: 1.10
 ---
 
 [Lodash Object methods](https://lodash.com/docs/4.17.11#assign) start with [assign](/2018/09/21/lodash_assign/), and end with valuesIn but that is of course only the lodash methods that work with just about any object in javaScript. There are also the lodash array methods, and in JavaScript an [array is just a certain kind of object](/2017/05/12/js-arrays-are-objects/). There are also collection methods that designed to work with plain old objects by themselves, array like objects, and objects that are javaScipt arrays, that is objects with numbered key names and a length property. So there is not just the Object methods in lodash that can be used with Objects, it is more about what kind of object are you dealing with.
 
-In this post I hope to give a general overview of lodash object methods, and also of objects in general in javaScript.
+In this post I hope to give a general overview of lodash object methods, and also of objects in general in using lodash and native javaScript by iteself.
 
 <!-- more -->
 
