@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 18:54:35
-version: 1.29
+updated: 2020-06-06 18:58:34
+version: 1.30
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -122,6 +122,8 @@ draw.hands = function (canvas, ctx, clock) {
 ```
 
 ### 2.2 - Draw the day progress circle
+
+There is the day percent property of the clock stat object then. Wheh it comes to this property of the clock stat object I could use this as a way to create and update all kinds of things in the state object, that can the be used to render a scene when it comes to working out these methods. However this is a basic canvas clock example, so for this example I have a draw method that renders a progress circle for the current day.
 
 ```js
 // draw day circle
