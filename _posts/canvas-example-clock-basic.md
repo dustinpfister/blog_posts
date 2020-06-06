@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 18:58:34
-version: 1.30
+updated: 2020-06-06 19:01:11
+version: 1.31
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -103,6 +103,7 @@ draw.clockText = function (canvas, ctx, clock) {
 
 ### 2.3 - Draw the clock hands
 
+For this basic clock example I decided to make it both a digital clock, and an analog clock. So on top of the draw clock text method there is also a draw hands method. For this method I use a trick that involves having a string or property names for each of the percent values in the clock object, and using the string split method to split that into an array.
 ```js
 draw.hands = function (canvas, ctx, clock) {
     ctx.strokeStyle = 'rgba(0,0,0,0.5)';
