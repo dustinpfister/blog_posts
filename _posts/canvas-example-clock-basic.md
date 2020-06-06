@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 18:44:47
-version: 1.28
+updated: 2020-06-06 18:54:35
+version: 1.29
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -99,7 +99,11 @@ draw.clockText = function (canvas, ctx, clock) {
     ctx.fillText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
     ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
 };
- 
+```
+
+### 2.3 - Draw the clock hands
+
+```js
 draw.hands = function (canvas, ctx, clock) {
     ctx.strokeStyle = 'rgba(0,0,0,0.5)';
     'secPer,minPer,hourPer,AMPMPer'.split(',').forEach(function (perName, i) {
@@ -115,7 +119,11 @@ draw.hands = function (canvas, ctx, clock) {
     });
  
 };
- 
+```
+
+### 2.2 - Draw the day progress circle
+
+```js
 // draw day circle
 draw.clockDayCircle = function (canvas, ctx, clock) {
     var r = Math.PI * 2 * clock.dayPer;
