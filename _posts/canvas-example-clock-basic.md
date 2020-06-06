@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 19:31:04
-version: 1.35
+updated: 2020-06-06 19:58:01
+version: 1.36
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -204,4 +204,6 @@ So then when I have this canvas example up and running it just displays a simple
 
 ## 4 - Conclusion
 
-So making clocks in canvas can be pretty fun, and there is much room for originality with this. In addition I would say that making simple clock canvas examples like this is a good starting point for just giving ones self a project to work on when it comes to javaScript in canvas. Other ideas for canvas examples such as games can end up becoming very complicated and time consuming, unless they are kept simple.
+So making clocks in canvas can be pretty fun, and there is much room for originality with this. 
+
+In addition I would say that making simple clock canvas examples like this is a good starting point for just giving ones self a project to work on when it comes to javaScript and canvas elements. Other ideas for canvas examples such as games can end up becoming very complicated and time consuming, unless they are kept simple. Making clocks on the other hand more often then not just seems to be the kind of project that just flows nicely.
