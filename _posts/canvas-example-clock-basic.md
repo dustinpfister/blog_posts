@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 18:40:04
-version: 1.27
+updated: 2020-06-06 18:44:47
+version: 1.28
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -67,15 +67,21 @@ Now that I have my javaScript module that will be used to create a clock state o
 
 In addition to displaying the time in just plain text in the canvas I think it would be nice to express the time in other ways beyond just that this is a canvas example of course. With that said I think having a circle that will have an arc in it that will grow to the full size of the circle as the day progress would be a nice additional touch. So I can then work out another draw module that uses that percent value to find out what the current radian value will be for that. In addition there is also jumping back to by clock state module to add additional data that can then be rendered that is updated based on the current time. So with that said lets take a look at the code here.
 
+### 2.1 - The start of the draw module, and the clear method
+
+So for this draw.js module I am just using a object literal and attaching a bunch of static draw methods to that object that accept a canvas and drawing context reference along with a reference to a clock state object for most of them. The first method that I have is just a clear method that will clear the canvas. It is just a wrapper for the clearRect method more or less. In many other canvas examples I might have a draw background method in place of this, but for this example I wanted to go with a transparent background and just clear the canvas.
+
 ```js
 var draw = {};
  
 draw.clear = function (canvas, ctx) {
- 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
- 
 };
- 
+```
+
+### 2.2 - Draw the clock text
+
+```js
 // draw a clock to a canvas
 draw.clockText = function (canvas, ctx, clock) {
     ctx.lineWidth = 1;
