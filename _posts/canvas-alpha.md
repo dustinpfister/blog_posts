@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 545
 categories: canvas
-updated: 2020-05-28 18:59:07
-version: 1.21
+updated: 2020-06-06 18:31:01
+version: 1.22
 ---
 
 In [canvas alpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha) channel transparency can be achieved by way of the global alpha property, but also in a number of other ways. There is the global alpha property of the 2d drawing context, and then there is also using the RGBA notation to set a web color for fill or stroke styles. There are a number of other topics to canvas and alpha transparency also, such as using a png image with an alpha channel, and using the clear rect method and having a background behind the canvas element when it comes to getting into layering. So lets look at some examples that have to do with canvas alpha transparency in html 5 canvas and javaScript.
@@ -53,9 +53,9 @@ ctx.fill();
 
 When done set the value back to one, or use save and restore to set opacity back to what it was before hand.
 
-## 2 - Using a css color value
+## 2 - Using a css color data type value
 
-A css color value can also be used to set an alpha-channel transparency value using the RGBA functional notation for example. This way it is just a matter of setting the desired color value when setting the fill or stroke style when making graphics with the 2d context drawing methods, then just draw what I want to have a canvas alpha transparency with that style.
+A [css color data type](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) value can also be used to set an alpha-channel transparency value using the RGBA functional notation for example. This way it is just a matter of me setting the desired color value when setting the fill or stroke style when making graphics with the 2d context drawing methods, then just draw what I want to have a canvas alpha transparency with that style.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -75,7 +75,7 @@ ctx.arc(180,140, 40, 0, Math.PI * 2);
 ctx.fill();
 ```
 
-This will of course only work with paths that are drawn with javaScript code, when it comes to drawing images from an external file, Image Data, or another canvas element I am still going to want to use the global alpha property to set a global transparency value.
+This will of course only work with paths that are drawn with 2d canvas drawing context method calls. So when it comes to drawing images from an external file, Image Data, or another canvas element as a way of rendering to the canvas I am still going to want to use an alternative means of alpha channel transparency. The global alpha property could again be one way to set a global transparency value. However there is also the source images themselves of course and if they have any transparency values.
 
 ## 3 - transparent circles canvas alpha example
 
