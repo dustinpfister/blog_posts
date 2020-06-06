@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 19:26:53
-version: 1.34
+updated: 2020-06-06 19:31:04
+version: 1.35
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -86,6 +86,8 @@ draw.clear = function (canvas, ctx) {
 I will want to have a method to draw the digital part of this basic canvas clock example. For that I have my draw clock text method. In the body of this method I am just using the fill text 2d drawing context method to draw the text of the timeTex property as well as the day percentage value also.
 
 At the top of the clock text method I am using a bunch of canvas properties to set the format of the text. There is the fill style property that is what will be used to set the fill color of the text, and then the stroke style property also that will be used to set the clock of the lines that will be around the text also. The reason for this is that I will be using the fill text method first, and then the stroke text method afterworlds so that there is an outline around the text that is of a different color.
+
+The font property is used to set the font size, and the font that will be used for the text for this example I went with arial. The base line property is used to set the base line to which the text will be positioned from, I often set this to top. And the text align property I set to center because I want the text centered to the point that I use.
 
 ```js
 // draw a clock to a canvas
