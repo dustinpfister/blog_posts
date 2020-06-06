@@ -5,12 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-05-31 16:57:01
-version: 1.26
+updated: 2020-06-06 18:40:04
+version: 1.27
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
-
 Sure a starting point would be just a simple digital or analog clock but why stop there as there are so many things that a developer could do when it comes to working with date objects and using them to update the state of an object that can then be rendered using canvas. Still in this post I will be going over just a simple basic clock concept using canvas and javaScript that will involve a state object and then methods that are used to render that state object to a canvas element. However this basic idea can be expanded to do all kinds of interesting and creative things when it comes to making clocks.
 
 <!-- more -->
@@ -62,11 +61,11 @@ So then this module returns an object that has thus far just one method that I w
 
 So now that I have my get clock method I will n ow want to work out at least one method that will render the state of this clock object.
 
-## 2 - Draw the clock status object
+## 2 - Draw the clock status object with a draw.js module
 
-Here I have a draw module that will render a clock using data from the clock object that is returned with my create method of the clock module that I would out. This basic clock canvas example will display the time text property of the clock object in the center of a clock face of sorts. However I will be displaying that in a finer size text below some larger text that is the percent of the day that has passed.
+Now that I have my javaScript module that will be used to create a clock state object I will now want a draw module that will render something using data from the clock state object that is returned with my create method of the clock module. This basic clock canvas example will display the time text property of the clock object in the center of the canvas element. The current time will be displayed in a finer size text below some larger text that is the percent of the day that has passed on top of that also. In addition I worked out some other draw methods to render things like hands, and other ways of displaying the current time.
 
-In addition to displaying the time in just plain text in the canvas I think it would be nice to express the time in other ways beyond just that this is a canvas example of course. With that said I think having a circle that will have an arc in it that will grow to the full size of the circle as the day progress would be a nice additional touch. So I can then work out another draw module that uses that percent value to find out what the current radian value will be for that.
+In addition to displaying the time in just plain text in the canvas I think it would be nice to express the time in other ways beyond just that this is a canvas example of course. With that said I think having a circle that will have an arc in it that will grow to the full size of the circle as the day progress would be a nice additional touch. So I can then work out another draw module that uses that percent value to find out what the current radian value will be for that. In addition there is also jumping back to by clock state module to add additional data that can then be rendered that is updated based on the current time. So with that said lets take a look at the code here.
 
 ```js
 var draw = {};
