@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-06-07 15:57:14
-version: 1.11
+updated: 2020-06-07 16:00:53
+version: 1.12
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the Array.slice prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of Array.splice but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. This nature of the array slice then makes it consistent with the concept of pure functions, and functional programing in some cases when working with an array of primitives. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
@@ -37,11 +37,20 @@ What is nice about this is that you can see that the source array is not mangled
 
 ## 2 - Getting the last element of an array with array slice
 
-Negative index values can be given to Array.slice this results in the corresponding index value from the end of the length of an array. So then array slice can be used as a quick way of getting the lat element of an array.
+Negative index values can be given to Array.slice this results in the corresponding index value from the end of the length of an array. So then array slice can be used as a quick way of getting the last element of an array by taking advatage of this fact.
 
 ```js
 let a1 = [1,2,3,4],
 last = a1.slice(-1)[0];
+ 
+console.log(last); // 4
+```
+
+So I guess it is slightly more concise then the less one from length trick that I usually use, but that is a major nano pic issue.
+
+```js
+let a1 = [1,2,3,4],
+last = al[al.length - 1];
  
 console.log(last); // 4
 ```
