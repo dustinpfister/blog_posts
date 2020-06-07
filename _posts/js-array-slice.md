@@ -5,11 +5,11 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-06-07 16:03:18
-version: 1.13
+updated: 2020-06-07 16:07:55
+version: 1.14
 ---
 
-In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the Array.slice prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of Array.splice but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. This nature of the array slice then makes it consistent with the concept of pure functions, and functional programing in some cases when working with an array of primitives. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
+In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of Array.splice but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. This nature of the array slice then makes it consistent with the concept of pure functions, and functional programing in some cases when working with an array of primitives. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
 
 <!-- more -->
 
@@ -92,4 +92,4 @@ console.log(p[0].x); // 0
 
 ## 4 - Conclusion
 
-So the array slice prototype method is a way to get a section of an array, without mutating the source array. This is not to be confused with the array spice method that can be use to do the same, only it will mutate the array in place.
+So the array slice prototype method is a way to get a section of an array, without mutating the source array. [This is not to be confused with the array spice](https://www.freecodecamp.org/news/lets-clear-up-the-confusion-around-the-slice-splice-split-methods-in-javascript-8ba3266c29ae/) method that can be use to do the same, only it will mutate the array in place.
