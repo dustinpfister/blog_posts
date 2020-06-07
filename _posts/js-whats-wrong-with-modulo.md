@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-06-07 11:12:07
-version: 1.8
+updated: 2020-06-07 11:15:16
+version: 1.9
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers.
@@ -18,7 +18,7 @@ Most of the time the javaScript modulo operator does work as expected just fine,
 
 ## 1 - javaScript modulo and some examples of it in action
 
-In short the modulo operation is used to find the remainder of a division operation, and for the most part that is how the modulo operation works in javaScript. However there is more than one convention, and sometimes javaScripts modulo operator will not work as expected.
+In short the modulo operation is used to find the remainder of a division operation, and for the most part that is how the modulo operation works in javaScript. However there is more than one convention, and sometimes javaScripts modulo operator will not work as expected. In this section I will be going over a few quick basic examples of the modulo operator when working with positive numbers. As long as both numbers in an operation are positive then the built in javaScript modulo operator will work as I, and I am sure many others would expect. If you are more interested in reading about what happens with negative numbers then maybe you would prefer to skip this section.
 
 ### 1.1 - A simple module example showing order of operations of javaScript modulo
 
