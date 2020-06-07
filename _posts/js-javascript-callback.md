@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2020-06-07 10:59:33
-version: 1.14
+updated: 2020-06-07 11:04:17
+version: 1.15
 ---
 
 In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. On top of that it can also seems link it is used as an umbrella term for any function that is passed as an argument to another function that is used at some point or place inside the body of that outer function that is called. So there might be some overlap here with other terms that might come up such as [higher order functions, and closures](/2019/02/22/js-javaScript-closure/).
@@ -113,3 +113,5 @@ There are ways of resolving this that involve the use of promises. In late versi
 ## 3 - Concision
 
 So in javaScript callbacks are one way to go about providing some code that is to run when a tack that is going to take a while completes. It is not the only option though and in many cases these days it might be a better idea to go with promises. There is the issue of having many nested calls in one callback after another that really can become a hell of sorts compared to the structure of what happens when using promises as an alternative.
+
+However I do still find myself using closures all the time with many of my projects when it comes to defining a callback as just simply a function that is passed as an argument. Sure that is something that comes up all the time, and will continue to do so. Every time I use the Array.map prototype method or any similar method I pass a function as an argument to the map method that contains logic that is called for each element in an array that is used to create a new corresponding value for that array element. I work out option objects for arguments that take one or more properties that are functions that are used inside the body of the function that makes use of that said options object. So callbacks are hear to stay of course depending on how you go about what it is that you are labeling them I suppose.
