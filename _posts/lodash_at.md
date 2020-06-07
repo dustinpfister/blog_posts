@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 555
-updated: 2019-11-04 13:39:07
-version: 1.6
+updated: 2020-06-07 19:05:36
+version: 1.7
 ---
 
-The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create an array of values from an object with a given array of paths to values from the object that are to be included in the array.
+The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create an array of values from an object with a given array of paths to values from the object that are to be included in the array. When using the lodash at method the oder of the index values for the elements in the resulting array correspond with the order of the paths given in the array that is passed when calling the lodash at method. So in other words this can resolve issues where the order of key names in a plain old object are not always in a desired order.
 
 <!-- more -->
 
@@ -17,7 +17,7 @@ The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create
 
 For a basic example of the lodash at method I put together a quick example that has to do with a color object. In this color object I have property key value pairs for each color channel, and and alpha value. I want an array where the first index value is the red channel, followed by green, blue, and finally the alpha channel value. The lodash \_.at method can be used to create that array, and in the oder that I want the index values.
 
-I just call the lodash \_.at method, pass the color object as the first argument, and then an array of paths to each property that I want in the new array. The order in which the ppaths are given will be the order in which the values will be indexed in the array that will be returned by \_.at.
+I just call the lodash \_.at method, pass the color object as the first argument, and then an array of paths to each property that I want in the new array. The order in which the paths are given will be the order in which the values will be indexed in the array that will be returned by \_.at.
 
 ```js
 let color = {
