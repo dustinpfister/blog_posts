@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 20:03:02
-version: 1.37
+updated: 2020-06-06 20:07:57
+version: 1.38
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -207,3 +207,5 @@ So then when I have this canvas example up and running it just displays a simple
 So making clocks in canvas can be pretty fun, and there is much room for originality with this. There are of course all kinds of ideas that come to mind when it comes to using a date object as a way to drive the progress of some kind of state object. Just having some simple properties as part of the state object is one thing, but how about some proprieties that are use to set the position of a background, and on top of that the background changes depending on the time of day or year. Also there is making clocks that have to do with very ling progression of time, such as a clock that has to do with average human lifespan or the about of time that it takes for the solar system to revolve around galactic central point.
 
 In addition I would say that making simple clock canvas examples like this is a good starting point for just giving ones self a project to work on when it comes to javaScript and canvas elements. Other ideas for canvas examples such as games can end up becoming very complicated and time consuming, unless they are kept simple. Making clocks on the other hand more often then not just seems to be the kind of project that just flows nicely.
+
+I have made another [canvas clock particles example](/2020/05/06/canvas-example-clock-particles/) that is a slightly more advanced version of this one that has a bunch or objects that move around and the count and speed of them change over the course of the day and week. In time I am sure I will make even more clock examples like this one, some of which might prove to be a little more interesting.
