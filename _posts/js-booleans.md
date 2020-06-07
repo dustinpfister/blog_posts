@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-06-07 07:13:45
-version: 1.23
+updated: 2020-06-07 07:16:39
+version: 1.24
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method and can happen as a result of an expression as well. A boolean is a value that only has two possible values true, or false, and as such numbers can often be used as a replacement for boolean values, although doing so will eat up ore memory. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -90,7 +90,7 @@ var b = typeof new Boolean(false); // 'object'
 var c = typeof new Boolean(false).valueOf(); // 'boolean'
 ```
 
-Making booleans this way is not such a great idea. It makes doing so far more complicated than it needs to be, and can lean to unexspected results if you are not aware of the fact that an object evaluates to true.
+Making booleans this way is not such a great idea. It makes doing so far more complicated than it needs to be, and can lean to unexpected results if you are not aware of the fact that an object evaluates to true.
 
 ```js
 var foo = new Boolean(false),
@@ -110,3 +110,7 @@ var a = Boolean(null); // false
 ```
 
 I do not use this as well, because the !! operator works just fine to get such a task done. Still the Boolean Object is something to be aware of as it is often used in examples.
+
+## 5 - Conclsuion
+
+So hopefully this post helped you with some of the basics of boolean values in javaScript. There is much more to learn when it comes to the use of Boolean values though, much of which is only gained by experience. Just keep working on projects, learning by doing is by far the best way to learn.
