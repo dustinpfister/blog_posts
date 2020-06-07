@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-06-07 11:15:16
-version: 1.9
+updated: 2020-06-07 11:18:10
+version: 1.10
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers.
@@ -77,9 +77,9 @@ console.log(spin.index); // -3
 
 This is not the way I would expect modulo to work for me most of the time when given a negative number. The spinner example reflects what I expect from a modulo operation most of the time where -8 would whip back around and land on 2. It's not wrong in the sense that 5 - 3 = 2, but with certain values it gives numbers like negative zero so I end up with 5 - -0 = 5 where I want the value to be 0.
 
-## 3 - Using another a javaScript modulo method.
+## 3 - Using another javascript modulo method that is not the native module operator.
 
-Sometimes it seems like the best thing to do is to just use a different method compared to what is used in core javaScript alone, as such the problem of the javaScript module operator not working as expected can be solved.
+Sometimes it seems like the best thing to do is to just use a different method compared to what is used in core javaScript alone, as such the problem of the javaScript module operator not working as expected can be solved. Just work out a method that provides the same result as what one would want when dealing with negative numbers.
 
 ```js
 var spin = {
