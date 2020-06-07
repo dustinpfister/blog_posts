@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-06-07 06:54:47
-version: 1.19
+updated: 2020-06-07 06:59:44
+version: 1.20
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method and can happen as a result of an expression as well. A boolean is a value that only has two possible values true, or false, and as such numbers can often be used as a replacement for boolean values, although doing so will eat up ore memory. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -42,7 +42,9 @@ So literals are one way to end up with a boolean value, that is by just simply s
 
 ## 3 - Booleans from expressions
 
-Boolean values can also be the result of an expression. For example say I have a x variable that holds a number value and I want another boolean that will be true when the x variable is in a certain range.
+Boolean values can also be the result of an expression, that is a collection of numbers, strings, variables that contains such values combined with one or more operators. I will not be getting into operators and expressions in general here, that is a matter for another post. However I will be going over a few examples of expressions that evaluate to a boolean value in this section. 
+
+For example say I have a x variable that holds a number value and I want another boolean that will be true when the x variable is in a certain range, otherwise the value will be false.
 
 ```js
 var x = 5;
