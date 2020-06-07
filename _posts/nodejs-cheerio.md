@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 100
-updated: 2020-06-07 15:44:26
-version: 1.6
+updated: 2020-06-07 15:46:52
+version: 1.7
 ---
 
 I have been making some personal projects that have to do with working with html in a nodejs environment. Often I am in a situation in which I end up generating html from markdown using something liked [marked](/2017/11/19/nodejs-marked/), or looping over actual html files, in ether case I have raw html that I want to work with in javaScript.
@@ -44,7 +44,7 @@ $ node basic
 cheerio!
 ```
 
-Okay great so you get the basic idea then of what cheerio is all about. You have some html formatted text, and you want to interact with it in a way similar to that of what you might be used to when it comes to monkeying around in a web browser. One option would be to just work out a vanilla javaScript solution using regular expressions. If that kind of thing works out just fine then great, but cheerio does that and brings some usful methods to the table also on top of that.
+Okay great so you get the basic idea then of what cheerio is all about. You have some html formatted text, and you want to interact with it in a way similar to that of what you might be used to when it comes to monkeying around in a web browser. One option would be to just work out a vanilla javaScript solution using regular expressions. If that kind of thing works out just fine then great, but cheerio does that and brings some useful methods to the table also on top of that.
 
 ## 2 - Selectors
 
