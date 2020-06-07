@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-06-07 06:59:44
-version: 1.20
+updated: 2020-06-07 07:09:52
+version: 1.21
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method and can happen as a result of an expression as well. A boolean is a value that only has two possible values true, or false, and as such numbers can often be used as a replacement for boolean values, although doing so will eat up ore memory. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
@@ -54,14 +54,16 @@ console.log(inRange); // true
 
 ### 3.1 - Using !0 and !1
 
-many projects that aim to make the source code as compact as possible take advantage of all kinds of tricks to reduce file size. Sometimes I see the use of the expression !0 to replace the boolean literal true.
+Many projects that aim to make the source code as compact as possible take advantage of all kinds of tricks to reduce file size. There is using a library that does a decent job of reducing the file size by removing all whitespace, and preforming replace operations for all variable names to smaller variable names that are just one character. However there is then going beyond that and trying to find yet even more ways to crunch things down even more. 
+
+Sometimes I see the use of the expression !0 to replace the boolean literal true, and !1 to replace false as one way t go about crunching down file size even more.
 
 ```js
 var g = !0; // true
 var b = !1; // false
 ```
 
-This works because the number 0 evaluates to false, and the ! operator both converts to boolean and negates the value as well. For projects where I really do want to crunch down file size it might be called for, but it reduces readability for some developers as well.
+This works because the number 0 evaluates to false, and the ! operator both converts to boolean and negates the value as well. For projects where I really do want to crunch down file size it might be called for, but it reduces readability for some developers also. You would think that doing this would not make a big difference, and in many cases you might very well be right about that. However if the volume of source code is large enough, little tricks like this could add up a bit.
 
 ### 3.2 - Using !!
 
