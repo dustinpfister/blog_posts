@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 100
-updated: 2020-06-07 12:58:15
-version: 1.2
+updated: 2020-06-07 13:06:00
+version: 1.3
 ---
 
 I have been making some personal projects that have to do with working with html in a nodejs environment. Often I am in a situation in which I end up generating html from markdown using something liked [marked](/2017/11/19/nodejs-marked/), or looping over actual html files, in ether case I have raw html that I want to work with in javaScript.
@@ -74,7 +74,7 @@ console.log(  $('.red').hasClass('little') ); // false
 
 ## 4 - each method
 
-A method that I actualy use often is for course the each method that loops over all elements in a collection.
+A method that I actually use often is for course the each method that loops over all elements in a collection.
 
 ```js
 $('p').each(function(index, el){
