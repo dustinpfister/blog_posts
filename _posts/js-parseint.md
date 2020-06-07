@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-06-07 11:37:07
-version: 1.10
+updated: 2020-06-07 11:42:00
+version: 1.11
 ---
 
 In javaScript [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/). The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754). 
@@ -46,7 +46,7 @@ console.log( parseInt('12e45') ); // 12
 
 ## 3 - The deal with max safe integer
 
-There is also the nature of the max safe integer, when adding anything to that and going beyond the max safe int that too can result in unexspected results as well.
+There is also the nature of the max safe integer, when adding anything to that and going beyond the max safe int that too can result in unexpected results as well.
 
 ```js
 let n = Number.MAX_SAFE_INTEGER;
@@ -56,7 +56,7 @@ console.log(parseInt(n + 100)); // 9007199254741092
 
 ## 4 - parseInt and Number
 
-The [Number function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) can be used to convert a string to a number as well. However it will not parse to an integer, at least not my itself.
+The [Number function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) can be used to convert a string to a number also. It is a way to explicitly declare the the value that is given to the number function is th be parsed as a number. However it will not parse to an integer, at least not my itself, so it would have to be used in conjunction with an additional method such as the Math.round method.
 
 ```js
 let str = '42.1234';
