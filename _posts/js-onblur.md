@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-06-06 20:27:19
-version: 1.35
+updated: 2020-06-06 20:29:19
+version: 1.36
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. When working out a user interface you might want some code to run when an element that can be focused on gains this focus, but you might also want some code to run when that element looses this focus, and that is where the on blur event comes into play.
@@ -17,7 +17,7 @@ So then a blur event fires when an element losses this focus, once it has been a
 
 ## 1 - On blur and what to know before continuing to read
 
-This is a post on the on blur event in client side javaScript, one of many events to which an event handler can be attached for an element. An on blur event can be attached to an element using the onblur property of an element, or a method like addEventListener to attach event handers that will fire when the bur event happens. 
+This is a post on the on blur event in client side javaScript, one of many events to which an event handler can be attached for an element. An on blur event can be attached to an element using the on blur property of an element, or a method like addEventListener to attach event handers that will fire when the bur event happens. 
 
 I will not be going over [event listeners](/2019/01/16/js-event-listeners/) in general in this post as I have wrote a post on that subject in the past. So then this post will be focusing on mainly the on blur event and related topics such as the tab index property. I assume that you have at least some background with javaScript and HTML as this is required in order to get anything of value from this post.
 
