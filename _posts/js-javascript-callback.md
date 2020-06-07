@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2020-06-07 07:37:38
-version: 1.13
+updated: 2020-06-07 10:59:33
+version: 1.14
 ---
 
-In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. They are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
+In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. On top of that it can also seems link it is used as an umbrella term for any function that is passed as an argument to another function that is used at some point or place inside the body of that outer function that is called. So there might be some overlap here with other terms that might come up such as [higher order functions, and closures](/2019/02/22/js-javaScript-closure/).
+
+JavaScript callbacks are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
 
 <!-- more -->
 
