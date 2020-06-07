@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-06-07 11:18:10
-version: 1.10
+updated: 2020-06-07 11:22:38
+version: 1.11
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers.
@@ -101,3 +101,5 @@ var spin = {
 spin.fix();
 console.log(spin.index); // 0
 ```
+
+Now that I am using a custom cut modulo method that does work as expected I now of course get the results that I want. I first fount this little gem of a method called Mathematical modulo in the source code of [angles.js](https://github.com/infusion/Angles.js/blob/master/angles.js), which is a great little library by the way with all kinds of helpful methods that have to do with working with, you guessed it, angles. It sure is work checking out if you get a chance.
