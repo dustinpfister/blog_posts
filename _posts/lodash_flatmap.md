@@ -5,11 +5,15 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 540
-updated: 2019-10-07 22:10:07
-version: 1.9
+updated: 2020-06-07 19:01:40
+version: 1.10
 ---
 
-So there is the native javaScript array map method, and then there is the lodash map collection method. The map method is often used in conjunction with many other methods to produce an array of collection in a certain format, including methods like then flatten method. With lodash there are a few methods that are a single method that combines the functionality of two methods such as the [lodash flatmap](https://lodash.com/docs/4.17.15#flatMap) method which I will be going over in this post.
+So there is the native javaScript array map method, and then there is the lodash map collection method. The map method is often used in conjunction with many other methods to produce an array or collection object in general in a certain end format. For example I might map over an array of source objects to create primitive values that I would then pass threw another method such as reduce to reduce the array of primitives into a single value. 
+
+However there are many methods that I might use other than reduce including methods like the flatten method. With lodash there are a few methods that are a single method that combines the functionality of two methods such as the [lodash flatmap](https://lodash.com/docs/4.17.15#flatMap) method which I will be going over in this post.
+
+So the lodash flatmap method in lodash is one of many methods that I do not use often, and alo it is not such a big deal to just use map, and then flatten. never the less this will be the subject of this post.
 
 <!-- more -->
 
