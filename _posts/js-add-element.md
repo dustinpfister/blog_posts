@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2019-08-19 11:56:06
-version: 1.8
+updated: 2020-06-07 12:29:59
+version: 1.9
 ---
 
-Adding elements in javaScript generally refers to creating and appending html elements to an html document, in core javaScript in general it may refer to creating and appending elements for an Array as well. I have written a [post on innerHTML](/2019/01/13/js-innerhtml/) not to long ago which is one typical way of doing so, however in this post I will be covering the subject in general. There are of course alternatives to innerHTML that involve the use of a collection of methods, such as [createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement), and appendChild. Also there is some things to cover when it comes to html node lists as well, and how they are like arrays.
+Adding elements in javaScript generally refers to creating and appending html elements to an html document, in core javaScript in general it may refer to creating and appending elements for an Array as well. In [jQuery there is the add method](https://api.jquery.com/add/) that can be used as a way to add elements. It is true that jQuery is still a widely used front end javaScript framework, but today for the most part just working in the browser itself is safe more or less.
+
+I have written a [post on innerHTML](/2019/01/13/js-innerhtml/) not to long ago which is one typical way of doing so, however in this post I will be covering the subject in general. There are of course alternatives to innerHTML that involve the use of a collection of methods, such as [createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement), and appendChild. Also there is some things to cover when it comes to html node lists as well, and how they are like arrays.
 
 <!-- more -->
 
