@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2019-09-06 16:03:46
-version: 1.3
+updated: 2020-06-07 16:36:57
+version: 1.4
 ---
 
-The [\_.debounce](https://lodash.com/docs/4.17.4#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain about of time. In addition it can be canceled, or flushed at once when called.
+The [\_.debounce](https://lodash.com/docs/4.17.4#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain about of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind.
 
 <!-- more -->
 
