@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-06-07 16:00:53
-version: 1.12
+updated: 2020-06-07 16:03:18
+version: 1.13
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the Array.slice prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of Array.splice but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. This nature of the array slice then makes it consistent with the concept of pure functions, and functional programing in some cases when working with an array of primitives. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
@@ -69,7 +69,7 @@ console.log(a1); // [1,7,3,4]
 console.log(a2); // [1,2,3,4]
 ```
 
-This works because I am working with an array of primitives, objects however are copied by reference.
+This works because I am working with an array of primitives, objects however are copied by reference. So in these situations using just array slice might not be enough. Some how you will need to preform a shallow or even deep clone of the array first in order to really return something that is separate from the source that can not end up being mangled elsewhere in a body of code. However getting into stuff like that is beyond the scope of this post.
 
 ```js
 var points = [
