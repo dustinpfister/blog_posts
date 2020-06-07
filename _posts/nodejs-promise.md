@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 565
-updated: 2020-02-06 10:28:55
-version: 1.27
+updated: 2020-06-07 13:05:19
+version: 1.28
 ---
 
-Looking back I have wrote a few posts on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics when working in a node environment.
+Looking back I have wrote a few posts on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise() in [nodejs](https://nodejs.org/en/), and a few when it comes to using them in javaScript in general. However I have not yet wrote a main post on [node promise](https://medium.com/dev-bits/writing-neat-asynchronous-node-js-code-with-promises-32ed3a4fd098) topics when working in a node environment only. So in this post I will be keeping the focus on just working with promises in a nodejs project.
 
 From just starting out with the Promise constructor, and the using the promisify utility method to convert old callback style methods to methods that return [promises](https://www.geeksforgeeks.org/promises-in-node-js/).
 
@@ -363,7 +363,7 @@ writeMapsFolder({
 
 When I run this I get what I would expect a collection of map files in a maps folder where each cell has a worth value, and there is also a total worth value for the map. I look at the index for the maps and sure enough each path to the maps is sorted by the worth value of each map where the first map in the index is the most valuable one.
 
-So the example works out great just as expected. If I where to continue working on this maybe the map index would turn into a world map of sorts, and I would add a whole world of more code to turn it into some kind of game, but that would be a metter for another post.
+So the example works out great just as expected. If I where to continue working on this maybe the map index would turn into a world map of sorts, and I would add a whole world of more code to turn it into some kind of game, but that would be a matter for another post.
 
 ## 3 - Conclusion
 
