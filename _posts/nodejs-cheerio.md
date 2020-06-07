@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 100
-updated: 2020-06-07 15:37:37
-version: 1.4
+updated: 2020-06-07 15:40:07
+version: 1.5
 ---
 
 I have been making some personal projects that have to do with working with html in a nodejs environment. Often I am in a situation in which I end up generating html from markdown using something liked [marked](/2017/11/19/nodejs-marked/), or looping over actual html files, in ether case I have raw html that I want to work with in javaScript.
@@ -46,7 +46,7 @@ cheerio!
 
 ## 2 - Selectors
 
-Selectors work in very much the same way as in jQuery. The ushual selection by tag, class, and id work in very much the same fashion.
+Selectors work in very much the same way as in jQuery. The usual selection by tag, class, and id work in very much the same fashion.
 
 ```js
 var cheerio = require('cheerio'),
@@ -88,3 +88,7 @@ $('p').each(function(index, el){
 ```
 
 The method that I pass to each will give me each index, and a reference to the corresponding element in a collection.
+
+## 5 - Conclusion
+
+So cheerio is one of my standard go to npm packages for doing this sort of thing in a nodejs environment. So far I have not found myself needing a way to run client side javaScript sever side, so as long as that is not the case cheerio by itself works fine. If I do need to run client side code there are other options like jsdom, and maybe some other options I have not look into at this point.
