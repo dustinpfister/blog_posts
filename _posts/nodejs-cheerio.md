@@ -5,7 +5,7 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 100
-updated: 2020-06-07 15:35:49
+updated: 2020-06-07 15:37:37
 version: 1.4
 ---
 
@@ -22,10 +22,13 @@ I have written a post recently on another node.js solution for this sort of thin
 So I just need to do the usual npm install with the package name cheerio in a test folder as a way of getting started with a simple example of cheerio.
 
 ```js
+$ mkdir test_cheerio
+$ cd test_cheerio
+$ npm init
 $ npm install cheerio
 ```
 
-And my basic basic.js file looks like this:
+Once i have my basic test folder set up I can work out basic.js file the just severs as a basic starting point for using this package:
 
 ```js
 var cheerio = require('cheerio'),
