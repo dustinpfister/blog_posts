@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 529
-updated: 2019-09-07 19:10:07
-version: 1.4
+updated: 2020-06-07 16:45:13
+version: 1.5
 ---
 
-In lodash there is the \_.isEmpty method than can be used to find if a collection object is empty or not. This is not to be confused with other possible values that might be considered empty such as null, a false boolean value or so forth. There are also a number of ways to go about doing the same when it comes to working with just plain old native javaScript in addition to using the lodash is empty method. 
+In lodash there is the [\_.isEmpty](https://lodash.com/docs/4.17.15#isEmpty) method than can be used to find if a collection object is empty or not. This is not to be confused with other possible values that might be considered empty such as null, a false boolean value and so forth. There are also a number of ways to go about doing the same when it comes to working with just plain old native javaScript in addition to using the lodash is empty method. 
+
+So this makes the lodash is empty method yet another one of those kinds of methods that make me scratch my head wondering if lodash is something that a developer should be bothering with at all even. I have to admit whenever I do use lodash in a project it is to use just one or two methods that are in there, it often makes more sense to install methods one at a time rather than bothering with the whole utility library, but never the less lets take a look at this one and maybe some vanilla javaScript alternatives to it also while we are at it.
 
 <!-- more -->
 
