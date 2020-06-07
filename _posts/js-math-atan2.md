@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2020-06-06 20:43:48
-version: 1.18
+updated: 2020-06-06 20:54:46
+version: 1.19
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I want to find the angle from one point to another in a Cartesian coordinate grid. 
@@ -17,7 +17,7 @@ So Math.atan2 is something that will come into play a lot when working out some 
 
 ## 1 - Math atan2 in javaScript
 
-The Math.atan2 method in javaScript is strange in the sense that the y argument is what is passed to the method first, followed by x after breaking a common convention where x is often what is passed first. Aside from that when passed an y and x value the method will return an angle to that point relative to the origin or a point of 0 for both y an x. So then it is just a matter of offsetting things to get the desired angle between any two points in a 2d grid system. This of course is the most common use example of Math atan2 in javaScript, at least speaking from my experience with it so far.
+The Math.atan2 method in javaScript is strange in the sense that the y argument is what is passed to the method first, followed by x after breaking a common convention where x is often what is passed first when using any method that accepts x and y axis values. Anyway aside from that when passed a y and x value the method will return an angle to that point relative to the origin or a point of 0 for both y an x. So then it is just a matter of offsetting or normalizing things to get the desired angle between any two points in a 2d grid system. This of course is the most common use example of Math atan2 in javaScript, at least speaking from my experience with it so far.
 
 There are a few things that a developer should be aware of in addition to the nature of the arguments passed in relation to an origin. There is also the nature of the value that is returned which is a value between PI and negative PI which is different from the results that other methods might return but this to is not to hard to convert. So lets look at some examples of the math atan2 method to help address some of these concerns.
 
@@ -187,3 +187,8 @@ loop();
 ```
 
 This is a nice visual way of confirming that the math atan2 method in javaScript works as expected when one knows how to adjust for it. I have worked out many projects in which I use atan2 in games to find the direction in which I want and enemy to fire for example when working out an AI script. If I get around to it many I will expand this post in the future to help outline some additional interesting use case examples of atan2.
+
+## 3 - Conclusion
+
+The Math atan2 method is just one tool in the toolbox when it comes to working out logic that has to do with angles. It is by no means the only method that comes to mind, and many additional methods are not built into javaScript itself. I do not see that as a problem tough as I can not say that it is required to have every method that I can thing of when t comes to working with angels built into javaScipt itself, at least some of this stuff should be added into the mix via librarys.
+
