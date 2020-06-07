@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-06-05 06:53:41
-version: 1.10
+updated: 2020-06-07 15:57:14
+version: 1.11
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the Array.slice prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of Array.splice but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. This nature of the array slice then makes it consistent with the concept of pure functions, and functional programing in some cases when working with an array of primitives. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
@@ -16,7 +16,7 @@ In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the Arr
 
 ## 1 - JavaScript Array Slice basic example
 
-For starters lets look at a very basic example of Array.Slice. So when working with an instance javaScript Array the Array.slice prototype method can be used by calling the method off the Array instance, and passing a starting and ending index.
+For starters lets look at a very basic example of Array.Slice.With that said when working with an instance of a javaScript Array the Array.slice prototype method can be used by calling the method off the Array instance, and passing a starting and ending index. The returned result will be a new array that is a collection of elements from that starting index up to one less from the ending index. So the ending index in other words will not be included in the returned new array that is a slice of the source array.
 
 ```js
 let a1 = [1,2,3,4],
@@ -31,7 +31,9 @@ console.log(a2); // [2,3]
 console.log(a1) // [1,2,3,4]
 ```
 
-The index values are zero relative, and the elements that will end up in the new array will be from the starting index, and up to but not including the ending index.
+The index values are zero relative as is the case with javaScript arrays.
+
+What is nice about this is that you can see that the source array is not mangled, this is not the case with the array splice method that will mutate the array in place. Many built in array prototype methods are like that which is one talking point as to why a lot of developers still like to use lodash over some of this built in methods.
 
 ## 2 - Getting the last element of an array with array slice
 
