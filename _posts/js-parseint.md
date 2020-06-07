@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-06-07 11:42:00
-version: 1.11
+updated: 2020-06-07 11:52:25
+version: 1.12
 ---
 
 In javaScript [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/). The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754). 
@@ -74,4 +74,18 @@ let str2 = '42abc';
 console.log( Number(str2) ); // NaN
 // parseInt will not
 console.log( parseInt(str2) ); // 42
+```
+
+## 5 - Multiply by a string of the number 1 and round to parse to an integer
+
+ANother trick that comes to mind is multiply a value by a string of the number one, and then using something like Math.floor, or any other such method to round the result of that. The reason why this works is because of the typeless nature of javaScript. This sort of thing would not work with addition because that is used for both addition and string concatenation. So whe  it comes to using addition that would help to convert numbers to strings, and I see similar tricks to this being used as a way to parse numbers to strings. However when it comes to an operator such as multiplication that is something that is only a math operation, so the result is a number rather than a string.
+
+```js
+var parseToInt = function (a) {
+    return Math.floor(a * '1');
+};
+ 
+var n = parseToInt('7');
+console.log(typeof n); // number
+console.log(n); // 7
 ```
