@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2020-06-07 16:14:07
-version: 1.4
+updated: 2020-06-07 16:20:14
+version: 1.5
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. There are a number of other ways of creating custom events when it comes to using a framework like phaser and threejs. There are also ways of doing this in a nodejs environment when it comes to the events module. However in this post I will be sticking to the custom way of how to go about making custom events in just plain old vanilla client side javaScript in the browser.
@@ -57,3 +57,7 @@ document.body.dispatchEvent(myEvent)
 ```
 
 This might not be the best example of why creating my own events is a good idea, but you get the basic idea of the process. Just call the Custom event constructor with the new keyword just like any other constructor function in javaScript. When doing so pass the name of the custom event as the first argument, followed by and object. This object should have at least a detail property that contains data about the nature of the event.
+
+## 2 - Conclusion
+
+So now and then it become necessary to create my own events for things when it comes to working out a module for something. For example say I am making a game module and I want to provide a way to have an event that will fire each time and enemy is killed, or when the game is over. In the code that composes my state machine I can then attach event handlers for these to define some code that will run each time that at enemy is killed, or when a game is over that should not be parked in the main game module.
