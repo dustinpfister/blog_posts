@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2020-06-07 12:29:59
-version: 1.9
+updated: 2020-06-07 12:33:44
+version: 1.10
 ---
 
 Adding elements in javaScript generally refers to creating and appending html elements to an html document, in core javaScript in general it may refer to creating and appending elements for an Array as well. In [jQuery there is the add method](https://api.jquery.com/add/) that can be used as a way to add elements. It is true that jQuery is still a widely used front end javaScript framework, but today for the most part just working in the browser itself is safe more or less.
@@ -54,3 +54,7 @@ document.body.appendChild(el);
     </body>
 </html>
 ```
+
+## 3 - Conclusion
+
+So the two general ways to go about adding elements in front end javaScript is the inner html method, and then the createElements method that is often regarded as the more professional way of going about adding elements. There is also other properties and ways of doing things in front end javaScript that can be thought of as a way of adding nodes in general such as the innerText property. That is not a way of adding elements to some HTML, but it is a way of adding text nodes, and doing so in a way in which any inner content is removed while doing so.
