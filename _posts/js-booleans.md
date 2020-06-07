@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-06-06 20:59:13
-version: 1.16
+updated: 2020-06-06 21:03:11
+version: 1.17
 ---
 
-In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is [booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, the Boolean object. In addition booleans can happen as a result of an expression as well. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
+In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method and can happen as a result of an expression as well. A boolean is a value that only has two possible values true, or false, and as such numbers can often be used as a replacement for boolean values, although doing so will eat up ore memory. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans with javaScript.
 
 <!-- more -->
 
