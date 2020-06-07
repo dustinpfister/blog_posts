@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-06-07 11:52:25
-version: 1.12
+updated: 2020-06-07 11:57:00
+version: 1.13
 ---
 
 In javaScript [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/). The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754). 
@@ -89,3 +89,7 @@ var n = parseToInt('7');
 console.log(typeof n); // number
 console.log(n); // 7
 ```
+
+## 6 - Conclusion
+
+So the javaScript parseInt method is one of several methods that can be used to parse a value to a number, there are also many other little ticks that can be used to parse a value to a number also. There is the question of not just parsing to a number, but parsing to an integer rather than a float. The parseInt method can be just that method to do so, but I still find myself using the built in Math object rounding methods combined with other methods to insure a number rather than a string.
