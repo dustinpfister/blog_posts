@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2019-08-21 13:38:42
-version: 1.6
+updated: 2020-06-08 06:05:52
+version: 1.7
 ---
 
 There are a number of ways to store data client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other options for client side persistence of data. The Web Storage API is easy to use as everything can just simply be stored as key value pairs of the localSorage global on clients that support the Web Storage API. However depending on the nature of the project it might not always be the best choice. Cookie files will always give better backward compatibility when it comes to older browsers, and the indexed db option is a better choice when it comes to storage large amounts of data. Still the Web Storage API is a good option for quickly getting the job done, and most modern browsers support the standard well.
@@ -46,3 +46,7 @@ get();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+So there are a number of other options when it comes to finding a way to store some data for a user in a web application. Of course there is having a database sever side for example as a way of saving data for a user. However with many of the applications that I have made thus far I do not care to get into that sort of thing f it is the kind of project where I can avoid doing so.
