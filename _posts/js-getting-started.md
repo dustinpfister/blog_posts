@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2019-07-29 14:04:57
-version: 1.13
+updated: 2020-06-09 16:23:49
+version: 1.14
 ---
 
-I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a getting started post on javaScript until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
+I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and text editor installed, and in some cases you just need a browser to get started.
 
 <!-- more -->
 
