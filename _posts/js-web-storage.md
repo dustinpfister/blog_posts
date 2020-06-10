@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2020-06-10 12:43:46
-version: 1.9
+updated: 2020-06-10 12:48:11
+version: 1.10
 ---
 
 There are a number of ways to store data client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment. 
@@ -19,7 +19,7 @@ Still the Web Storage API is a good option for quickly getting the job done, and
 
 ## 1 - web storage basic example
 
-Working with the Web Storage API is as easy as working with an plain old javaScript object. The localStoarge global can then be used just like that of any javaScript Object, whatever you want to save on the client just define it as a property of the localStorage global. However there are also setItem and getItem methods also that can be used to do get and set properties of the localStoarge global as well. Once a property is set then that value will be there again every page load, serving the purpose of client side persistence of data.
+Working with the Web Storage API is as easy as working with a plain old javaScript object more or less which makes it one of he reasons why I tend to like using it. The localStoarge global can then be used just like that of any other javaScript Object, whatever you want to save on the client just define it as a property of the localStorage global. However there are also setItem and getItem methods that can be used to do get and set properties of the localStoarge global which should be used to do so. Once a property is set then that value will be there again every page load, serving the purpose of client side persistence of data.
 
 So then here I have a basic example of the Web Storage API that just stores a single message that can be set in an test input element. I set some [event handlers](/2019/01/16/js-event-listeners/) that will fire each time a keyboard key is released, or the value changes. Each time one of the events fire a set method will set the current value of the text input element to a mess property of the localStorage global. Each time the page loads a get method will fire that will set the value of the text element to the mess property of the localStorage global.
 
