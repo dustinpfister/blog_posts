@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2020-06-08 06:05:52
-version: 1.7
+updated: 2020-06-10 12:40:02
+version: 1.8
 ---
 
-There are a number of ways to store data client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other options for client side persistence of data. The Web Storage API is easy to use as everything can just simply be stored as key value pairs of the localSorage global on clients that support the Web Storage API. However depending on the nature of the project it might not always be the best choice. Cookie files will always give better backward compatibility when it comes to older browsers, and the indexed db option is a better choice when it comes to storage large amounts of data. Still the Web Storage API is a good option for quickly getting the job done, and most modern browsers support the standard well.
+There are a number of ways to store data client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment. 
+
+The Web Storage API is easy to use as everything can just simply be stored as key value pairs of the localSorage global on clients that support the Web Storage API. However depending on the nature of the project it might not always be the best choice. Cookie files will always give better backward compatibility when it comes to older browsers, and the indexed db option is a better choice when it comes to storage large amounts of data. Still the Web Storage API is a good option for quickly getting the job done, and most modern browsers support the standard well.
 
 <!-- more -->
 
