@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-06-11 11:12:51
-version: 1.2
+updated: 2020-06-11 11:30:12
+version: 1.3
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -42,3 +42,25 @@ console.log(arr3.length); // 1
 ```
 
 So it all has to do with starting a new Array with just a set length property but no starting values really, compared to giving some starting values and letting the number of starting values be what sets the length of the new array. With that said there are a number of other ways to create a new array with some starting values that are not all that much more involved. In addition that are even more options when it comes to methods that create and return new arrays, so lets look at some more quick examples were we are making new arrays with starting values in javaScript.
+
+## 2 - JS Array from method, and Array like Objects
+
+So another Static Array method of interest here now it the Array from method. Just like the Array of method it can be used to create a new Array, but it does so by way of creating an array from a source object. When it comes to source Objects many such Objects might be Array like Objects. That is that they are just Plain old objects, or Objects that where crated with a constructor other then that of the Array constructor. As such they do not have Array prototype methods because they are not an instance of the Array constructor. So the Array from method is one way to create a new array by way of passing one of these objects as the first argument.
+
+```js
+let obj = {
+    0: 10,
+    length: 1
+};
+ 
+// just a plain old object
+console.log(obj.constructor.name); // 'Object'
+console.log(obj.map); // undefined
+ 
+// Array.from can be used to turn it into an array
+let arr = Array.from(obj);
+console.log(obj.constructor.name); // 'Array'
+console.log(arr.map); // [Function: map]
+console.log(arr.length); // 1
+console.log(arr[0]); // 10
+```
