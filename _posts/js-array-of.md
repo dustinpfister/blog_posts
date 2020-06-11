@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-06-11 11:30:12
-version: 1.3
+updated: 2020-06-11 11:38:59
+version: 1.4
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -63,4 +63,19 @@ console.log(obj.constructor.name); // 'Array'
 console.log(arr.map); // [Function: map]
 console.log(arr.length); // 1
 console.log(arr[0]); // 10
+```
+
+## 3 - JS Array map, and Array methods that return a new Array, rather than mutating one
+
+Ask yourself this when creating a new array \"What is the goal here?\". Often the goal with all of this is to just simple create a new array, rather than mutating an array that all ready exists. In that situation using a method like Array of, or the bracket syntax will do just that. However there are many methods in the Array prototype that will return a new Array rather than  mutating an array in place. One such method is the Array map method.
+
+```js
+let nums = [1, 2, 3],
+pows = nums.map((n) => {
+        return Math.pow(2, n);
+    });
+ 
+console.log(pows); // [2,4,8];
+// does not mutate the source array
+console.log(nums); // [1,2,3]
 ```
