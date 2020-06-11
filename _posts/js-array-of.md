@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-06-11 11:38:59
-version: 1.4
+updated: 2020-06-11 11:41:10
+version: 1.5
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -79,3 +79,7 @@ console.log(pows); // [2,4,8];
 // does not mutate the source array
 console.log(nums); // [1,2,3]
 ```
+
+## 4 - Conclusion
+
+So in ntaive javaScript there is now a wide range of ways of how to go about creating a new Array one of which is the new Array of method. This Array of method is one way of creating a new Array with some starting values. However it is just one way of going about doing so, and there are many other such options both new and old to do so also.
