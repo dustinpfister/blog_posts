@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 664
-updated: 2020-06-08 06:05:52
-version: 1.6
+updated: 2020-06-13 18:02:24
+version: 1.7
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In other words a virtual from of one of those things that you get in many board games that functions as an alternative to dice that has a spinner or arrow type thing attached to the center of a disk with a bunch of sections on it. So this canvas example will involve a module that can be used to create a state object for this sort of thing, and like aways a draw module that is used to draw the state of one of these to a canvas element.
@@ -16,6 +16,70 @@ This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In
 ## 1 - The spinner.js file for this canvas example
 
 So in this section I will be going over all the features of my spinner.js file that can be used to create an instance of a spinner object. The module contains a public API that is used to create an instance of one of these objects, and then a bunch of methods that are used to set up a new spin, and update the state of that spinner object on each frame tick.
+
+```js
+var spinner = (function () {
+
+    var PI2 = Math.PI * 2;
+
+    var createSectionObject = function (opt) {
+        return {
+            background: opt.background || 'green',
+            value: opt.value === undefined ? null : opt.value
+        };
+    };
+
+    // get current section value or object
+    var get = function (spin) {
+        var len = spin.sectionIndices.length,
+        index = spin.sectionIndices[Math.floor(spin.radian / PI2 * len)];
+        return spin.sections[index];
+    };
+
+    return {
+
+        // create a spinner state object
+        create: function (opt) {
+            opt = opt || {};
+            var spin = {
+                cx: opt.cx === undefined ? 0 : opt.cx,
+                cy: opt.cy === undefined ? 0 : opt.cy,
+                RPS: {
+                    current: 0,
+                    start: [3, 8],
+                    lossPerSecond: 2
+                },
+                radian: 0,
+                sections: opt.sections || [1, 2, 3],
+                sectionIndices: opt.sectionIndices || [0, 1, 0, 1, 2],
+                currentSection: null
+            };
+            return spin;
+        },
+
+        // start spinning a spinner state object
+        startSpin: function (spin) {
+            var RPS = spin.RPS;
+            RPS.current = RPS.start[0] + Math.random() * (RPS.start[1] - RPS.start[0]);
+        },
+
+        // update a spinner object
+        update: function (spin, secs) {
+            var RPS = spin.RPS;
+            // just step by RPS times secs
+            spin.radian += RPS.current * secs;
+            spin.radian %= PI2;
+            RPS.current -= RPS.lossPerSecond * secs;
+            RPS.current = RPS.current < 0 ? 0 : RPS.current;
+            spin.currentSection = get(spin);
+        }
+
+    }
+
+}
+    ());
+
+```
 
 ## 2 - The draw.js module
 
