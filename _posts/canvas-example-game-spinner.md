@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 664
-updated: 2020-06-14 19:04:22
-version: 1.8
+updated: 2020-06-15 08:03:21
+version: 1.9
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In other words a virtual from of one of those things that you get in many board games that functions as an alternative to dice that has a spinner or arrow type thing attached to the center of a disk with a bunch of sections on it. So this canvas example will involve a module that can be used to create a state object for this sort of thing, and like aways a draw module that is used to draw the state of one of these to a canvas element.
@@ -210,4 +210,4 @@ And the html for the example.
 
 ## 4 - Conclusion
 
-So this example is more or less what I had in mind but I did not take the time to create any kind of actual game around it.
+So this example is more or less what I had in mind but I did not take the time to create any kind of actual game around it. It is still a nice quick canvas example project though when it comes to making this sort of thing. There is more that I could do with this when it comes to use case examples, and adding additional features to it, however I also have many other canvas examples that I thing deserve a higher degree of attention when it comes to further work to be done on these canvas examples of mind, as the basic idea is very much there with this one.
