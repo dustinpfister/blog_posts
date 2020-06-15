@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 664
-updated: 2020-06-15 08:03:21
-version: 1.9
+updated: 2020-06-15 08:10:06
+version: 1.10
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In other words a virtual from of one of those things that you get in many board games that functions as an alternative to dice that has a spinner or arrow type thing attached to the center of a disk with a bunch of sections on it. So this canvas example will involve a module that can be used to create a state object for this sort of thing, and like aways a draw module that is used to draw the state of one of these to a canvas element.
@@ -207,6 +207,10 @@ And the html for the example.
     </body>
 </html>
 ```
+
+So then the result of this is a spinner at the center of the canvas element when it click the canvas the spinner starts moving and will start to slow down also. Eventually it will land on a section the value of which is displayed via the use of my draw info method in the draw module.
+
+In a real project I would change the index values for the sections, as well as what the sections are. In some cases I could have an array of objects rather than numbers for the sections that would contain style into for the sections when it comes to further skinning the spinner.
 
 ## 4 - Conclusion
 
