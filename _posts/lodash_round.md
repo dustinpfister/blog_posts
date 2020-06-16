@@ -5,17 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2019-11-05 14:52:22
-version: 1.10
+updated: 2020-06-16 12:51:37
+version: 1.11
 ---
 
-So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of Math.round in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
+So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
 
 <!-- more -->
 
 ## 1 - what to know before hand
 
-This is a post on the lodash method /_.round that can be used to round numbers in the same way as that of Math.round in native javaScript, but can also be used to round to a given precision as well. In this post I also expand into, and touch base on other relevant topics as well with respect to padding, and formating of numbers. This is not a getting started post on lodash, or javaScript in general and I assume you have at least a little background in these subjects.
+This is a post on the lodash method \_.round that can be used to round numbers in the same way as that of Math.round in native javaScript, but can also be used to round to a given precision as well. In this post I also expand into, and touch base on other relevant topics as well with respect to padding, and formating of numbers. This is not a getting started post on lodash, or javaScript in general and I assume you have at least a little background in these subjects.
 
 ## 2 - Some basic examples of _.round, and Math.round.
 
