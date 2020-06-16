@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-06-16 12:51:23
-version: 1.2
+updated: 2020-06-16 13:22:01
+version: 1.3
 ---
 
 In javaScript there is the Math object and some of the many methods in this Object have to do with rounding numbers. One such option is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method, however there are a few other options such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), and [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor). For the most part these methods will work just fine, however there are some situations in which they might fall short. One situation that comes to mind has to do with precession.
@@ -23,4 +23,40 @@ var n = 1.005;
 console.log( Math.round(n) ); // 1
 console.log( Math.ceil(n) ); // 2
 console.log( Math.floor(n) ); // 1
+```
+
+## 2 - Number tofixed method as one option for precession
+
+```js
+var n = 2.375158,
+str = n.toFixed(n, 2);
+ 
+// works as expected for this example
+console.log(str); // 2.38
+ 
+// but not always
+console.log( (1.005).toFixed(2) ); // 1.00 (expedited 1.01)
+ 
+// also returns a string
+console.log(typeof str); // 'string'
+```
+
+## 3 - Find or make a user space solution
+
+```js
+// (credits to Lam Wei Li)
+// https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484
+ 
+var round = function (number, precision) {
+    var shift = function (number, exponent) {
+        var numArray = ("" + number).split("e");
+        return  + (numArray[0] + "e" + (numArray[1] ? (+numArray[1] + exponent) : exponent));
+    };
+    precision = precision === undefined ? 0 : precision;
+    return shift(Math.round(shift(number, +precision)), -precision);
+};
+ 
+console.log( Math.round(1.005) ); // 1
+console.log( (1.005).toFixed(2)); // 1.00
+console.log( round(1.005, 2) ); // 1.01
 ```
