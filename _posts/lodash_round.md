@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2020-06-16 12:51:37
-version: 1.11
+updated: 2020-06-16 13:51:41
+version: 1.12
 ---
 
 So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
@@ -87,6 +87,29 @@ console.log(formatMoney(7)); // $0007.00
 console.log(formatMoney(.1)); // $0000.10
 console.log(formatMoney(99000)); // $9999.00
 console.log(formatMoney(-12)); // $0000.00
+```
+
+## 5 - Vanilla javaScript solutions
+
+So when it comes to using lodash just for this method alone that makes using the full lodash library kind of silly. It might be possible to just install the lodash round method alone as one way of going about addressing that. However it should not be to hard to work out or find some kind of user space solution for this sort of thing. Well after doing some digging I as able to find [this rounding solution](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484) that seems to work okay, however I have not gone trew every possible number example to see if there is some kind of weir problem with it.
+
+
+```js
+// (credits to Lam Wei Li)
+// https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484
+ 
+var round = function (number, precision) {
+    var shift = function (number, exponent) {
+        var numArray = ("" + number).split("e");
+        return  + (numArray[0] + "e" + (numArray[1] ? (+numArray[1] + exponent) : exponent));
+    };
+    precision = precision === undefined ? 0 : precision;
+    return shift(Math.round(shift(number, +precision)), -precision);
+};
+ 
+console.log( Math.round(1.005) ); // 1
+console.log( (1.005).toFixed(2)); // 1.00
+console.log( round(1.005, 2) ); // 1.01
 ```
 
 ## 4 - Conclusion
