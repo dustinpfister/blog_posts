@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-06-16 13:30:41
-version: 1.4
+updated: 2020-06-16 13:42:37
+version: 1.5
 ---
 
 In javaScript there is the Math object and some of the many methods in this Object have to do with rounding numbers. One such option is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method, however there are a few other options such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), and [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor). For the most part these methods will work just fine, however there are some situations in which they might fall short. One situation that comes to mind has to do with precession.
@@ -31,6 +31,8 @@ So one might think that these methods will work just fine for rounding. I can ju
 
 ## 2 - Number tofixed method as one option for precession
 
+So another javaScript built in method that I find myself using to round numbers is the [Number toFixed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) method. This method can be used to round, and it can also be used to format a number as a string to a fixed number of decimal places. Maybe using this is still not such a bad idea when it comes to presenting values that do not have to be super accurate, but it is not such a good idea to use it when it comes to working out logic for expressions and not just because it returns a string.
+
 ```js
 var n = 2.375158,
 str = n.toFixed(n, 2);
@@ -45,7 +47,11 @@ console.log( (1.005).toFixed(2) ); // 1.00 (expedited 1.01)
 console.log(typeof str); // 'string'
 ```
 
+So for the fact that it returns a string, and also because it does not round right all the time, this causes me to look for yet another solution for rounding. When all else fails look for a user space solution I guess.
+
 ## 3 - Find or make a user space solution
+
+Via some searching on stack overflow I was able to find many user space solutions for rounding numbers in javaScript. Some of them work okay, but often cause similar problems when testing them out with certain values. However I was  able to find out one user space solution that seems to work okay that I only slightly modified here.
 
 ```js
 // (credits to Lam Wei Li)
