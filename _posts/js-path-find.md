@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2020-06-16 14:57:30
-version: 1.13
+updated: 2020-06-16 14:59:58
+version: 1.14
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a grid. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of piratical application also. There are many game frameworks that might have this built in, there are also well know javaScript dependencies such as [pathfinding.js](https://github.com/qiao/PathFinding.js/) that [can be used](https://qiao.github.io/PathFinding.js/visual/) to make quick work of this aspect of javaScript Game development.
@@ -294,3 +294,7 @@ let g = Grid.fromMatrix([
 helpers.setStartEnd(g, 0, 0, 2, 0);
 helpers.print(g);
 ```
+
+## 2 - Conclusion
+
+So that is it for now at least when it comes to path finding and javaScript in general. There is much more to write about when it comes to this topic though of course. I should in time work out a few canvas examples that make use of path finding, when doing so I am sure I will touch base on this post again and expand this content more.
