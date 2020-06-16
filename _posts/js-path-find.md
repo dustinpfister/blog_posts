@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2020-06-16 14:53:57
-version: 1.12
+updated: 2020-06-16 14:57:30
+version: 1.13
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a grid. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of piratical application also. There are many game frameworks that might have this built in, there are also well know javaScript dependencies such as [pathfinding.js](https://github.com/qiao/PathFinding.js/) that [can be used](https://qiao.github.io/PathFinding.js/visual/) to make quick work of this aspect of javaScript Game development.
@@ -17,7 +17,9 @@ Still there might be a need to work out a custom solution for path finding, so i
 
 ## 1 - Vanilla js path find solution example for nodejs
 
-In this section I will be writing about my own js path fining solution that I put together after studying the source code of the PathFinding.js repo. I have not battle tested this, but the basic idea seems to work okay. The solution makes use of a grid that is created by another dependency that I am also going to go over in this section. Creating a Grid module is a whole other can of worms, but is also closely rated to path finding so the two need to work out okay with each other.
+In this section I will be writing about my own js path fining solution that I put together after studying the source code of the PathFinding.js repository at github. I have not battle tested this, but the basic idea seems to work okay so far for what it is worth. 
+
+The solution makes use of a grid that is created by another dependency that I am also going to go over in this section that has to do with creating and working with a Grid. Creating a Grid module is a whole other can of worms when it comes to javaScript projects that require this sort of module, but is also closely related to path finding so the two things need to work out okay with each other. So lets start out with the grid module and then get into the path finding solution for this section.
 
 ### 1.1 - Grid module
 
