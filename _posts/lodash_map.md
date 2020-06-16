@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2020-06-01 11:51:50
-version: 1.7
+updated: 2020-06-16 15:32:57
+version: 1.8
 ---
 
-If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is Array.map. This array prototype method can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
+If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is [Array.map](/2020/06/16/js-array-map/). This array prototype method can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
 
 In [lodash](https://lodash.com/) there is also the [\_.map](https://lodash.com/docs/4.17.4#map) method what works just like the native array map method when it comes to arrays, only it is a little more advanced when it comes to working with objects in general with javaScript. You see the load map method is one of the so called collection methods in lodash. What this means is that the method works well out of the box with both arrays and plain old objects by themselves. In this post I will be covering Array.map, and how it compares with what is in lodash.
 
