@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-06-16 13:22:01
-version: 1.3
+updated: 2020-06-16 13:30:41
+version: 1.4
 ---
 
 In javaScript there is the Math object and some of the many methods in this Object have to do with rounding numbers. One such option is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method, however there are a few other options such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), and [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor). For the most part these methods will work just fine, however there are some situations in which they might fall short. One situation that comes to mind has to do with precession.
@@ -17,6 +17,8 @@ In the utility library lodash there is a [\_.round](/2018/08/03/lodash_round) me
 
 ## 1 - Math round, Math ceil, and Math floor
 
+So the native methods for rounding are simple enough to use, if you have been working with javaScript for a fair amount of time chances are you are using them all ready. So with that said there is not much to write about them, just choose one that is the best fit, pass in the number you want to round, and the desired result id returned.
+
 ```js
 var n = 1.005;
  
@@ -24,6 +26,8 @@ console.log( Math.round(n) ); // 1
 console.log( Math.ceil(n) ); // 2
 console.log( Math.floor(n) ); // 1
 ```
+
+So one might think that these methods will work just fine for rounding. I can just use one of these methods to round numbers when and where needed and that is it. Well for the most part maybe, but there are some situations where these built in methods are not working as expected, which will result in me looking for other options. There are other javaScript built in options, but often they are not working as expected all the time also, which causes me to look for or make a user space solution for this actually. So lets look at some more examples of rounding numbers in javaScript to get a better idea as to what the state of affairs is with this one.
 
 ## 2 - Number tofixed method as one option for precession
 
