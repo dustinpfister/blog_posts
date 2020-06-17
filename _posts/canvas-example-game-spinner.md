@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 664
-updated: 2020-06-17 16:19:57
-version: 1.16
+updated: 2020-06-17 16:26:38
+version: 1.17
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In other words a virtual from of one of those things that you get in many board games that functions as an alternative to dice that has a spinner or arrow type thing attached to the center of a disk with a bunch of sections on it. So this canvas example will involve a module that can be used to create a state object for this sort of thing, and like aways a draw module that is used to draw the state of one of these to a canvas element.
@@ -84,7 +84,7 @@ In any case I am sure if I where to start using this in a real project I would b
 
 ## 2 - The draw.js module
 
-This is a canvas example so like always I will want a module that is packet with methods that I can call to render the state of a spinner state object to a canvas element. Here I went with an object literal module pattern that I usual go with when it comes to these kinds of modules. I also have it so I pass the drawing context, canvas, and any other objects that I need to draw in the given methods rather than grabbing at globals for these things.
+This is a canvas example so like always I will want a module that is packed with methods that I can call to render the state of a state object to a canvas element in this case a spinner state object. Here I went with an IIFE module pattern yet again even though I am making everything public, I often go with IIFES anyway when it comes to these kinds of modules and modules in general because sometimes I add private helpers later on. However hear I do have one such private helper method thus far so it still makes sense to go with an IIFE rather than the object literal pattern. I also have it so I pass the drawing context, canvas, and any other objects that I need to draw in the given methods rather than grabbing at globals for these things.
 
 ```js
 var draw = (function () {
@@ -154,6 +154,8 @@ var draw = (function () {
 }
     ());
 ```
+
+So I have broken the process of drawing a spinner into a few steps. First I would want to draw the sections of the spinner object, then the current state of the arrow, and finally the debug info of the spinner state object. So now that I have a state module and a way to draw a state object created with that state module, lets look at just a little more code that puts all of this into action.
 
 ## 3 - The main.js and index.html files
 
