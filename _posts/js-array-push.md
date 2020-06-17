@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2020-06-17 17:08:29
-version: 1.6
+updated: 2020-06-17 17:17:25
+version: 1.7
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push elements to the end of an array. There are many other ways of going about adding elements to an array also though, so I thought I would write a quick post on this when it comes to the basics of adding elements to an array in javaScript.
@@ -56,4 +56,15 @@ while (arr.push({}) < 10) {
 arr.pop();
  
 console.log(arr);
+```
+
+## 2 - The unshift method
+
+So you might think that because there is a method that can be used to add elements to the end of an array, there should be a method that can be used to push elements to the beginning of the array also. Well you would be right about that because that is what the [array unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) method is for. It works more or less the same way as array push, but the order of the arguments is inverted. In other words the last argument that you give will be added to the beginning of the array, and then each argument back to the first one will be added behind that one, and so forth.
+
+```js
+var arr = [16, 32];
+arr.unshift(1, 2, 3, 4, 8)
+ 
+console.log(arr.join('-')); // '1-2-4-8-16-32-64'
 ```
