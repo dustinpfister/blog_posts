@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 664
-updated: 2020-06-17 16:03:39
-version: 1.13
+updated: 2020-06-17 16:12:36
+version: 1.14
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In other words a virtual from of one of those things that you get in many board games that functions as an alternative to dice that has a spinner or arrow type thing attached to the center of a disk with a bunch of sections on it. So this canvas example will involve a module that can be used to create a state object for this sort of thing, and like aways a draw module that is used to draw the state of one of these to a canvas element.
@@ -17,19 +17,12 @@ This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In
 
 So in this section I will be going over all the features of my spinner.js file that can be used to create an instance of a spinner state object. This state object can then be rendered to a canvas element using a draw.js module for this spinner state object that I will be getting to in a later section in this post.
 
-The module contains a public API that is used to create an instance of one of these objects, and then a bunch of methods that are used to set up a new spin, and update the state of that spinner object on each frame tick.
+I start off the module with an IIFE that will contain just a few internals that as of this writing is just a get section helper method, and a value that holds the value of PI time two. If I where to continue working on this one I would expand this with more helpers and such, but for now I think I would like to keep this canvas example simple and to the point.
 
 ```js
 var spinner = (function () {
  
     var PI2 = Math.PI * 2;
- 
-    var createSectionObject = function (opt) {
-        return {
-            background: opt.background || 'green',
-            value: opt.value === undefined ? null : opt.value
-        };
-    };
  
     // get current section value or object
     var get = function (spin) {
@@ -37,7 +30,11 @@ var spinner = (function () {
         index = spin.sectionIndices[Math.floor(spin.radian / PI2 * len)];
         return spin.sections[index];
     };
- 
+```
+
+The module contains a public API that is used to create an instance of one of these spinner state objects, and then a bunch of methods that are used to set up a new spin, and update the state of that spinner object on each frame tick.
+
+```js
     return {
  
         // create a spinner state object
