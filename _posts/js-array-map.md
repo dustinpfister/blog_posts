@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-06-17 10:14:25
-version: 1.4
+updated: 2020-06-17 10:23:30
+version: 1.5
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -75,3 +75,37 @@ console.log(nums); // [1,2,3]
 ```
 
 So it is not like the array map method is the only way to go about doing something like this. In fact in many situations I might prefer to go with a while loop because of the greater degree of flexibility that can be achieved. In addition I am not much of a performance nut, but from what I gathered while loops do tend to preform a little faster also for what that is worth. What I try to avoid is getting fixed on just one way to go about doing something, and thinking that this one way of doing it is the only true way of doing it. I see that all the time and I do not care to add to it. It is not to say that these ways of creating a new array based off of values from another array do not have there drawbacks compared to array map still so lets look at some more examples.
+
+## 3 - forEach and chaining compated to array map.
+
+So although the array foreach method can be used to do the same thing as array map by just creating a new array with the array bracket syntax and pushing in new values. There is one draw back that comes to mind right away when it comes to chaining. The problem can be resolved by bringing an [IIFE](/2020/02/04/js-iife/) into the mix, but I have to admit that it is making the code a little more complex compared to just using array map.
+
+```js
+var nums = [1, 2, 3];
+ 
+// in order to chain you have to do something like ths
+var sum = (function () {
+    var pows = [];
+    nums.forEach(function (n) {
+        pows.push(Math.pow(2, n));
+    });
+    return pows;
+}
+    ()).reduce(function (acc, n) {
+    return acc + n;
+});
+ 
+console.log(sum); // 14
+ 
+// although that will work it is a little
+// more complex than just using array map
+var sum = nums.map(function (n) {
+        return Math.pow(2, n)
+    }).reduce(function (acc, n) {
+        return acc + n;
+    });
+ 
+console.log(sum); // 14
+```
+
+It might make sense to do something like this with a while loop though if I need to create a new array of values from a source array, but not all values in the array maybe. However the use of array forEach is not really such a great choice, because on one hand I can just use array map that is a little more appropriate here, and on the other hand I can use a while loop for better flexibility. However array forEach is is not really setting itself apart from the other two options, so often I use one of those over forEach.
