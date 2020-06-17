@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2020-06-17 17:05:39
-version: 1.5
+updated: 2020-06-17 17:08:29
+version: 1.6
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push elements to the end of an array. There are many other ways of going about adding elements to an array also though, so I thought I would write a quick post on this when it comes to the basics of adding elements to an array in javaScript.
@@ -43,6 +43,8 @@ console.log(b.join('-')); // '1-2-3-4-5-6'
 Of course when it comes to concatenating arrays there is the array concat method that might be a more appropriate choice, but I thought I would just point out why the function apply prototype method is useful. If you are not familiar with [apply, as well as call and bind then you should take a moment to read up on that](/2017/09/21/js-call-apply-and-bind/).
 
 ### 1.3 - Returns the length of the array
+
+I did mention this, but I would say that it is worth na sub section in this post, that is the fact that the array push method will return the new length of the array. So this might come in handy when using the length property that is returned as a way o know if it is time to break out of a loop or not.
 
 ```js
 var arr = [],
