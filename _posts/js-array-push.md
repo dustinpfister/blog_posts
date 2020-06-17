@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2020-06-17 17:17:25
-version: 1.7
+updated: 2020-06-17 17:25:39
+version: 1.8
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push elements to the end of an array. There are many other ways of going about adding elements to an array also though, so I thought I would write a quick post on this when it comes to the basics of adding elements to an array in javaScript.
@@ -68,3 +68,18 @@ arr.unshift(1, 2, 3, 4, 8)
  
 console.log(arr.join('-')); // '1-2-4-8-16-32-64'
 ```
+
+## 3 - Other ways to add array elements
+
+So there are other ways to go about adding array elements such as just using the array bracket syntax, or doing something with the array concat method as a way to create a new array and then save that to a variable for example.
+
+```js
+var array = [4,5,6];
+ 
+array[array.length] = 7;
+array = [3].concat(array);
+ 
+console.log(array.join('-')); // 3-4-5-6-7
+```
+
+There are other ways to go about adding elements in place that come to mind such as using the array splice method. That is one way to go about both adding in new elements as well as removing them from any index value in place. There is then also using the array slice method as a way to take a section from a source array without mutataing it, the that slice of a source array can be added into another array with concat or splice.
