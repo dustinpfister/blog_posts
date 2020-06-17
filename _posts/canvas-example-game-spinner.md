@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 664
-updated: 2020-06-15 08:10:06
-version: 1.10
+updated: 2020-06-17 10:48:55
+version: 1.11
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In other words a virtual from of one of those things that you get in many board games that functions as an alternative to dice that has a spinner or arrow type thing attached to the center of a disk with a bunch of sections on it. So this canvas example will involve a module that can be used to create a state object for this sort of thing, and like aways a draw module that is used to draw the state of one of these to a canvas element.
@@ -79,6 +79,8 @@ var spinner = (function () {
 }
     ());
 ```
+
+The basic idea I had in mind with this module is that I wanted something that can be used to create more than one instnace of this spinner state object, and to have a way to customize it.
 
 ## 2 - The draw.js module
 
