@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 664
-updated: 2020-06-17 16:12:36
-version: 1.14
+updated: 2020-06-17 16:14:39
+version: 1.15
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be of a game spinner. In other words a virtual from of one of those things that you get in many board games that functions as an alternative to dice that has a spinner or arrow type thing attached to the center of a disk with a bunch of sections on it. So this canvas example will involve a module that can be used to create a state object for this sort of thing, and like aways a draw module that is used to draw the state of one of these to a canvas element.
@@ -32,8 +32,7 @@ var spinner = (function () {
     };
 ```
 
-The module contains a public API that is used to create an instance of one of these spinner state objects, and then a bunch of methods that are used to set up a new spin, and update the state of that spinner object on each frame tick.
-
+The module contains a public API that is used to create an instance of one of these spinner state objects, and then a bunch of methods that are used to set up a new spin, and update the state of that spinner object on each frame tick. So the general idea here is to use the create method to create a spinner state object once, and then use the start spin method in the body of an event hander that will start the spin. Then the update method will be called in an app loop update method to update the state of the spinner on a frame by frame basis.
 ```js
     return {
  
