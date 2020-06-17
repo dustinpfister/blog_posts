@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2020-06-17 16:55:39
-version: 1.3
+updated: 2020-06-17 16:59:30
+version: 1.4
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push elements to the end of an array. There are many other ways of going about adding elements to an array also though, so I thought I would write a quick post on this when it comes to the basics of adding elements to an array in javaScript.
@@ -25,6 +25,8 @@ console.log(arr.join('-')); // '16-32-64'
 ```
 
 ### 1.2 - Push many at once
+
+So if I would like to push more than one element at a time I can do so by just passing more than one argument. In other words the first argument will be added to the end of the array, and then the second will be added after the first argument and so forth. So then the array push method could then be used in conjunction with the Function apply prototype method as a crude yet effective are to concatenate arrays also.
 
 ```js
 var arr = [16, 32];
