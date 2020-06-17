@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-06-17 10:23:30
-version: 1.5
+updated: 2020-06-17 10:29:42
+version: 1.6
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -109,3 +109,7 @@ console.log(sum); // 14
 ```
 
 It might make sense to do something like this with a while loop though if I need to create a new array of values from a source array, but not all values in the array maybe. However the use of array forEach is not really such a great choice, because on one hand I can just use array map that is a little more appropriate here, and on the other hand I can use a while loop for better flexibility. However array forEach is is not really setting itself apart from the other two options, so often I use one of those over forEach.
+
+## 4 - Conclusion
+
+So the array map method is one of several methods in the array prototype that have to do with creating an array from a source array. The array map method is a good choice if you want to created a new array from all elements in the array, but there are of course other options that a javaScript developer should be aware of, namely filter, and reduce, but also many other such as sort.
