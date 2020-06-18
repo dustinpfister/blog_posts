@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2020-06-18 15:39:05
-version: 1.9
+updated: 2020-06-18 15:43:40
+version: 1.10
 ---
 
 In javaScript there is more than one way to [define a function](/2019/12/26/js-function/), depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is nit a good choice when writing a constructor function.
@@ -120,3 +120,7 @@ let d = new MyCon(50);
  
 console.log(d.func(15)); // 65
 ```
+
+## 4 - Conclusion
+
+When it comes to function declarations the main thing that comes to mind about them is that I can declare a function anywhere in the body of a javaScript file, and then use that function anywhere in the file right away. For this reason many developers use them in place of function expressions, but I do not fine myself using them that much. I often prefer to use function expressions, but for the most part that is just a coding style thing, I still see the subtle pros and cons of each and would not say that one way should always be used over another.
