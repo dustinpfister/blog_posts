@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 669
-updated: 2020-06-18 17:46:30
-version: 1.4
+updated: 2020-06-18 17:48:22
+version: 1.5
 ---
 
 So in javaScript there are many different [kinds of functions](/2019/12/16/js-function/), and also how functions can be used. There is the nature of [constructor functions](/2019/02/27/js-javascript-constructor/) and how they are used as a way to create functions that are called off of an instance of that constructor. In contrast to that of a constructor function there is what many might call a [pure function](https://en.wikipedia.org/wiki/Pure_function). In pure functions one of the features is that a pure function will always return the same result for the same arguments, this is not always the case when calling the prototype method of a constructor instance.
@@ -48,6 +48,8 @@ console.log(distance(0, 0, 100, 100)); // 141.4213562373095
 ```
 
 ## 2 - A box Class and a pure function alternative way of doing the same thing
+
+In this section I will be going over a simple Box constructor function that has a single distance prototype method, and a pure function style alternative that does the same thing without the use of a constructor.
 
 ```js
 var Box = function (opt) {
