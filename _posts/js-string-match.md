@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-06-18 09:57:33
-version: 1.18
+updated: 2020-06-18 10:03:29
+version: 1.19
 ---
 
-The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://en.wikipedia.org/wiki/Regular_expression) to find detailed information about the first pattern match in a string. In addition an flag can be used when creating an regular expression to get an array of matches for a given text pattern in the form of a regular expression.
+The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find detailed information about the first pattern match in a string. In addition an flag can be used when creating an regular expression to get an array of matches for a given text pattern in the form of a regular expression.
 
 So this js string match method is a great method that comes in handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. There is another option that might be a better choice when it comes to [preforming a replacement task](/2019/04/08/js-string-replace/), but this post will focus more so on just matching. So then this post will be a quick outline on the String.match method in javaScript, with at least a few examples that should help with gaining greater knowledge of the use of this method.
 
@@ -17,9 +17,9 @@ So this js string match method is a great method that comes in handy, but it mig
 
 ## 1 - String Match Basics
 
-To know how to use the String.Match method to a fair amount of proficiency it is required to have at least some understanding of how to go about working with regular expressions. I will not be getting into regular expressions in depth in this post as I have [written a post on regex in general](/2019/03/20/js-regex/).
+To know how to use the String.Match method to a fair amount of proficiency it is required to have at least some understanding of how to go about working with regular expressions. I will not be getting into regular expressions in depth in this post as I have [written a post on regex in general](/2019/03/20/js-regex/) before hand. This post will focus more so on using regular expressions to match rather than  replace text.
 
-To get started with string.match the first thing is to work out the pattern that will match what you are looking for in the string. Once that is together you just need to pass that regular expression to the string.match method as the first argument when calling it off of a string.
+To get started with string.match the first thing is to work out the pattern that will match what you are looking for in the string. Once that is together you just need to pass that regular expression to the string.match method as the first argument when calling it off of an instance of a string.
 
 ```js
 let patt = /dat_\d+.json/ig,
@@ -28,6 +28,8 @@ m = str.match(patt);
 console.log(m);
 // [ 'dat_2017.json', 'dat_2018.json' ]
 ```
+
+In this example I used the i and g regular expression flags. The i flag is used to set the pattern as case insensitive, and the g flag makes it so that a global search is what is preformed rather than just getting the first instance of a pattern.
 
 ## 2 - String.match returns an Array or null
 
