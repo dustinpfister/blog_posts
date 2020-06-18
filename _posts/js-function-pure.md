@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 669
-updated: 2020-06-18 17:48:22
-version: 1.5
+updated: 2020-06-18 17:54:37
+version: 1.6
 ---
 
 So in javaScript there are many different [kinds of functions](/2019/12/16/js-function/), and also how functions can be used. There is the nature of [constructor functions](/2019/02/27/js-javascript-constructor/) and how they are used as a way to create functions that are called off of an instance of that constructor. In contrast to that of a constructor function there is what many might call a [pure function](https://en.wikipedia.org/wiki/Pure_function). In pure functions one of the features is that a pure function will always return the same result for the same arguments, this is not always the case when calling the prototype method of a constructor instance.
@@ -50,6 +50,10 @@ console.log(distance(0, 0, 100, 100)); // 141.4213562373095
 ## 2 - A box Class and a pure function alternative way of doing the same thing
 
 In this section I will be going over a simple Box constructor function that has a single distance prototype method, and a pure function style alternative that does the same thing without the use of a constructor.
+
+### 2.1 - The Box Class
+
+So lets say I have a Box Class that looks like this.
 
 ```js
 var Box = function (opt) {
@@ -98,6 +102,10 @@ console.log(bx1.distance(bx2)); // 136
 console.log( Box.prototype.distance.call(bx1, bx2) ); // 136
 ```
 
+### 2.2 - Some pure functions that can also be used to do the same
+
+So in place of using a constructor function to create a Box Class instance why not just have a pure function that will always return the same box object for the same arguments, and in addition it returns just a plain old object? I can then use the plain old object that has box properties with a stand alone distance formula that is also very much pure function like.
+
 ```js
 var createBox = function (opt) {
     opt = opt || {};
@@ -120,3 +128,5 @@ var bx = createBox({
  
 console.log( distance(0, 0, bx.x, bx.y) ); // 111.80339887498948
 ```
+
+As of late I find myself ditching the use of constructors in favor of writing modules like this.
