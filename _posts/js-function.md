@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-06-18 16:12:10
-version: 1.12
+updated: 2020-06-18 16:21:33
+version: 1.13
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -57,7 +57,7 @@ These days there is a lot of talk about pure functions and how they differ from 
 
 ## 3 - Pure functions
 
-Pure functions are functions that only work with what is given via a set of arguments, and not anything that that is a global variable of object class instance. They also do not mutate and object that is given in place but return a new object.
+[Pure functions](/2020/06/18/js-function-pure/) are functions that only work with what is given via a set of arguments, and not anything that that is a global variable of object class instance. They also do not mutate and object that is given in place but return a new object.
 
 ```js
 var pure = function (a, b) {
