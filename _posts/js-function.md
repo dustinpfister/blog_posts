@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-06-18 16:08:24
-version: 1.10
+updated: 2020-06-18 16:09:09
+version: 1.11
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -53,7 +53,7 @@ var bx = new Box({w:10, h:5});
 console.log( bx.getArea() ); // 50
 ```
 
-These days there is a lot of talk about pure functions and how they differ from constructor functions. JavaScript is not a language that is purely functional because of the built in prototype nature of functions and objects. However functional style programing can still be done with it, it is just that that style of programming is not enforced, you can break free from it if you want to by making functions like that of a constructor, or a function that uses a variable in the global scope, and so forthn that violate the rules of functional programming.
+These days there is a lot of talk about pure functions and how they differ from constructor functions. JavaScript is not a language that is purely functional because of the built in prototype nature of functions and objects. However functional style programing can still be done with it, it is just that that style of programming is not enforced, you can break free from it if you want to by making functions like that of a constructor, or a function that uses a variable in the global scope, and so forth that violate the rules of functional programming.
 
 ## 3 - Pure functions
 
