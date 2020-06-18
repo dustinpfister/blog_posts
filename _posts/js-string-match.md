@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-06-18 09:56:54
-version: 1.17
+updated: 2020-06-18 09:57:33
+version: 1.18
 ---
 
-The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](/2019/03/20/js-regex/) to find detailed information about the first pattern match in a string. In addition an flag can be used when creating an regular expression to get an array of matches for a given text pattern in the form of a regular expression.
+The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://en.wikipedia.org/wiki/Regular_expression) to find detailed information about the first pattern match in a string. In addition an flag can be used when creating an regular expression to get an array of matches for a given text pattern in the form of a regular expression.
 
 So this js string match method is a great method that comes in handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. There is another option that might be a better choice when it comes to [preforming a replacement task](/2019/04/08/js-string-replace/), but this post will focus more so on just matching. So then this post will be a quick outline on the String.match method in javaScript, with at least a few examples that should help with gaining greater knowledge of the use of this method.
 
