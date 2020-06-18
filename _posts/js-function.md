@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-06-18 16:09:09
-version: 1.11
+updated: 2020-06-18 16:12:10
+version: 1.12
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -29,7 +29,7 @@ Here I defined a function via a function expression and I assigned that function
 
 ## 2 - Constructor function
 
-So another thing about functions is using them to create what is often called a constructor function, or just simply a constructor for short. Of you have been using javaScript for at least a little while thus far chances are you have used one or two all ready. One example of a built in constructor function would be the Date constructor. This Date constructor is called with the new keyword to create an instance of a date object. Once there is a date object there is a whole bunch of methods that can be called off of that data object such as the get full year method that will return the full year of that date object instance.
+So another thing about functions is using them to create what is often called a [constructor function](/2019/02/27/js-javascript-constructor/), or just simply a constructor for short. Of you have been using javaScript for at least a little while thus far chances are you have used one or two all ready. One example of a built in constructor function would be the Date constructor. This Date constructor is called with the new keyword to create an instance of a date object. Once there is a date object there is a whole bunch of methods that can be called off of that data object such as the get full year method that will return the full year of that date object instance.
 
 As a javaScript developer you can use built in constructor functions such as Date, but you can also create your own by just simply using the this keyword in the body of a function that will be used as a constructor. This user defined constructor function should be a function expression, or declarations, but not an arrow function because of how the this keyword is handled in arrow functions. Once you have a constructor function prototype methods can then be added to the prototype object of the constructor function.
 
