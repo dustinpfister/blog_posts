@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 669
-updated: 2020-06-18 17:39:56
-version: 1.3
+updated: 2020-06-18 17:46:30
+version: 1.4
 ---
 
 So in javaScript there are many different [kinds of functions](/2019/12/16/js-function/), and also how functions can be used. There is the nature of [constructor functions](/2019/02/27/js-javascript-constructor/) and how they are used as a way to create functions that are called off of an instance of that constructor. In contrast to that of a constructor function there is what many might call a [pure function](https://en.wikipedia.org/wiki/Pure_function). In pure functions one of the features is that a pure function will always return the same result for the same arguments, this is not always the case when calling the prototype method of a constructor instance.
@@ -16,6 +16,10 @@ With the instances of constructor functions there are prototype methods like tha
 <!-- more -->
 
 ## 1 - Basic examples of a pure and not so pure function
+
+So a pure function is a function where the return value is always the same for the same given arguments, and also there are no side effects when calling the pure function. So When calling the function no global variables or state object is mutated. Only a new return value is returned and then it is a question as to what is done with that return value.
+
+So say I have two distance formula methods one of which makes use of some global variables, and one that just works with what is passed via arguments.
 
 ```js
 // some globals
