@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-06-18 10:03:29
-version: 1.19
+updated: 2020-06-18 15:30:16
+version: 1.20
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find detailed information about the first pattern match in a string. In addition an flag can be used when creating an regular expression to get an array of matches for a given text pattern in the form of a regular expression.
@@ -29,7 +29,7 @@ console.log(m);
 // [ 'dat_2017.json', 'dat_2018.json' ]
 ```
 
-In this example I used the i and g regular expression flags. The i flag is used to set the pattern as case insensitive, and the g flag makes it so that a global search is what is preformed rather than just getting the first instance of a pattern.
+In this example I used the i and g regular expression flags. The i flag is used to set the pattern as case insensitive, and the g flag makes it so that a global search is what is preformed rather than just getting the first instance of a pattern. I also used the digit [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes) as a way to define a regular expression that will not just match a fixed text pattern, but a pattern that will contain a part that is subject to variation in the from of a number, in this case a year after a starting fixed text pattern.
 
 ## 2 - String.match returns an Array or null
 
