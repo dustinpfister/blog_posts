@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2019-11-05 14:41:15
-version: 1.8
+updated: 2020-06-19 15:12:44
+version: 1.9
 ---
 
-If I am every in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. The \_.keyBy method works a lot like [\_.groupBy](/2018/08/02/lodash_groupby/) only it will only create one object for each key. In this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well.
+If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. 
+
+The \_.keyBy method works a lot like [\_.groupBy](/2018/08/02/lodash_groupby/) only it will only create one object for each key. In this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well when it comes to doing something like this with just native javaScript by itself.
 
 
 <!-- more -->
