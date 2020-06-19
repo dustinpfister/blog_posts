@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2019-09-06 13:57:09
-version: 1.9
+updated: 2020-06-19 14:21:29
+version: 1.10
 ---
 
-When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from. A select tag or select element consists of a select tag and then a few nested option tags for each option in the selection tag. There are a few things to be aware of when it comes to using this kind of html element in a project when it comes to making it actually do something with javaScript. There are events such as the on change event, and additional html attributes that come into play also, so lets look at some select element examples.
+When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from. There might be other ways of doing so that involve a canvas element, and some additional javaScript code to make some kind of more artful solution for selecting something from a range of options. However the select tag is a nice quick solution for doing something to that effect with other html elements outside of canvas.
+
+A select tag or select element consists of a select tag and then a few nested option tags for each option in the selection tag. There are a few things to be aware of when it comes to using this kind of html element in a project when it comes to making it actually do something with javaScript. There are events such as the on change event, and additional html attributes that come into play also, so lets look at some select element examples.
 
 <!-- more -->
 
