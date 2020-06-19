@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 669
-updated: 2020-06-18 17:58:01
-version: 1.7
+updated: 2020-06-19 14:21:27
+version: 1.8
 ---
 
 So in javaScript there are many different [kinds of functions](/2019/12/16/js-function/), and also how functions can be used. There is the nature of [constructor functions](/2019/02/27/js-javascript-constructor/) and how they are used as a way to create functions that are called off of an instance of that constructor. In contrast to that of a constructor function there is what many might call a [pure function](https://en.wikipedia.org/wiki/Pure_function). In pure functions one of the features is that a pure function will always return the same result for the same arguments, this is not always the case when calling the prototype method of a constructor instance.
@@ -133,4 +133,4 @@ As of late I find myself ditching the use of constructors in favor of writing mo
 
 ## 3 - Conclusion
 
-So pure functions are generally a better way of going about doing things I would say over all. I do not think that I would care to always try to make everything in a project fully functional by trying to make everything a pure function though. To at least some extent it might not always be possible to make all functions a pure function in a project anyway, but still I think they help to keep things a little more sane.s
+So pure functions are generally a better way of going about doing things I would say over all. I do not think that I would care to always try to make everything in a project fully functional by trying to make everything a pure function though. To at least some extent it might not always be possible to make all functions a pure function in a project anyway, but still I think they help to keep things a little more sane.
