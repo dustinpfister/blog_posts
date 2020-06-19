@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2020-06-19 15:12:44
-version: 1.9
+updated: 2020-06-19 15:18:08
+version: 1.10
 ---
 
 If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. 
@@ -68,7 +68,7 @@ console.log(keyed.a1.price); // 10
 
 ### 3.1 - basic example with vanilla js
 
-It is not to hard to make a vanilla js alternative to this.
+It is not to hard to make a vanilla js alternative to the lodash keyby method though. Just using forEach or a loop of some kind to loop over the contents of the array, and use the value of each object to create key names to a new Object created with the object literal syntax for example. 
 
 ```js
 let counts = {
@@ -83,6 +83,8 @@ units.forEach((unit) => {
  
 console.log(keyed.a1.price); // 9
 ```
+
+So the lodash keyby method is not one of the most compelling methods in lodash to warrant the need to continue using it. I can not say that I find myself doing this sort of thing often and when I need to it is not so hard to just go ahead and do so with just a few javaScript built in features.
 
 ## 4 - Conclusion
 
