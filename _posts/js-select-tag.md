@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-06-19 14:21:29
-version: 1.10
+updated: 2020-06-19 14:56:53
+version: 1.11
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from. There might be other ways of doing so that involve a canvas element, and some additional javaScript code to make some kind of more artful solution for selecting something from a range of options. However the select tag is a nice quick solution for doing something to that effect with other html elements outside of canvas.
@@ -101,3 +101,7 @@ sel_control.addEventListener('change', function(e){
     </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+So select tags in combination with option tags are the standard html way of creating an interface where a user can select from two or more options. it is often used with additional events such as the on change event to define what happens when the state of the select tag changes.
