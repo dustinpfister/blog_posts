@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2020-06-20 10:02:51
-version: 1.13
+updated: 2020-06-20 10:44:17
+version: 1.14
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise. So the array can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -17,7 +17,10 @@ So it goes without saying that the promise all method is fairly useful whenever 
 
 ## 1 - Promise all nodejs example
 
-Here I have a simple example of Promise all in nodejs 8.x In this version of nodejs the util.promisify method was introduced that can be used to make methods that just make use of a callback, return a promise. I can then use this as a way to make file system methods return promises, which I can then use in an array. This array can then be passed as the first argument for promise all.
+Here I have a simple example of Promise all in nodejs 8.x, in this version of nodejs the util.promisify method was introduced that can be used to make methods that just make use of a callback, return a promise. I can then use this as a way to make file system methods return promises, which I can then use in an array. This array can then be passed as the first argument for promise all.
+
+So in the example here I am using the util promisify method to make sure that the fs stat method will return a promise when used, and doing the same for the fs read file method. In addition I am doing so in an array, so I have an array of two promise objects and of course I am passing this to the Promise all method as the first argument. Wit that said the promise all method then returns a promise as it should, and just like with any other promise I can call then and catch methods off of it. In the event that and error happens, and I end up with a rejected promise I end up logging an error message, if all goes to plan then it will resolve and the code in the then function call with run. In the body of that then function call I will have access to both a stats object, and the content of the read file call as the array of resoved values will be passed as an argument there.
+That is a bit of a mouth full, but maybe it is best to just play around with a code example to get a better idea of that the deal is when this.
 
 ```js
 let util = require('util'),
@@ -35,7 +38,8 @@ Promise.all([
 });
 ```
 
-Once all the promises are resolved a resolved promise is returned and then what is given via the then method is called, and in the event of an error what is given via catch is called just like any other promise.
+If you are using a later version of node, and you do not need to work about pushing backward compatibility back to node 8.x then the code example could be a litter different as some of the later versions of node have files system methods that will return promises anyway. However in any case this simple example of promise all should help give you a basic idea of what the deal is with the promise all method and why it can come in handy now and then.
+
 
 ## 2 - Promise all client side example
 
