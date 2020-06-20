@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2020-06-19 15:23:50
-version: 1.12
+updated: 2020-06-20 10:02:51
+version: 1.13
 ---
 
-When a whole bunch of tasks need to be accomplished before moving on with things, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise. 
+When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise. So the array can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
 
-So it goes without saying that the promise all method is fairly useful whenever I am in a situation in which I need to do a whole bunch of async tasks and then continue with more to do once all of that has completed. The promise all method should be there when it comes to native Promise support, but can also be added when working with older platforms via something like bluebird. So then lets take a look at a few examples of the promise all method in action.
+So it goes without saying that the promise all method is fairly useful whenever I am in a situation in which I need to do a whole bunch of async tasks, and then continue with more to do once all of that has completed. The promise all method should be there when it comes to native Promise support, but can also be added when working with older platforms via something like [bluebird](/2017/12/02/nodejs-bluebird/). So then lets take a look at a few examples of the promise all method in action.
 
 <!-- more -->
 
