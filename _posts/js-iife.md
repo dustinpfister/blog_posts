@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-06-21 10:28:12
-version: 1.10
+updated: 2020-06-21 10:30:29
+version: 1.11
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript function that self invokes right away. When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these IIFE deals. In late specs of javaScript there is now block level variable scope, but I still find myself often using and IIFE with, or in place of, block level scope.
@@ -140,3 +140,7 @@ bx2 = BX({
  
 console.log(BX.distance(bx1, bx2).toFixed(2)); // 45.25
 ```
+
+## 4 - Conclusion
+
+So a js IIFE is often my first go to when it comes to generic module design in front end javaScript. I might not always use one when it comes to making a nodejs module though as I do not see the need, unless I am making the kind of javaScript module that is expected to work in node and the browser in the same state in which case chances are I would use an IIFE.
