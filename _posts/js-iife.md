@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-06-21 10:25:19
-version: 1.9
+updated: 2020-06-21 10:28:12
+version: 1.10
 ---
 
-A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript function that self invokes right away. When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these IIFE deals. 
+A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript function that self invokes right away. When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these IIFE deals. In late specs of javaScript there is now block level variable scope, but I still find myself often using and IIFE with, or in place of, block level scope.
 
 The return keyword can then be used as a way to go about returning something that can be stored in a variable, this something that is returned can be a plain old object with properties, or a function, or a function with properties that serves as a kind of public API. 
 
@@ -44,7 +44,7 @@ console.log( count('get') ); // -3
 
 In this example I have an inner function that is returned to the public count variable. I can then call that function from the outside of the IIFE however I can not directly work with the private c variable.
 
-## 2 - making a public API as an object literal
+## 2 - Making a public API as an object literal
 
 A function can be used as a public API but a plain old object can also be used as one also. Say I have a whole bunch of methods that I want to have as my public API for a game module. One way would be to attach them to a prototype object of a function, but what if they do not need to be part of a class of a constructor function? Also what if I do not want or need a constructor function at all, or a function of any kind as the public API? No problem just using a plain od object will work just fine.
 
