@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 618
-updated: 2020-02-28 08:52:07
-version: 1.5
+updated: 2020-06-21 10:42:15
+version: 1.6
 ---
 
-So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can eb use to work out a progressive tax system.
+So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can be use to get the basic idea of a progressive tax system up and running. 
+
+the aim here is to not make something that would be used to seriously work out ones taxes. The aim is to work out a simple bracket system that might coincide with a real life system or not. In any case do not use what I work out here to do your taxes, but if you want to find a starting point when it comes to gaining an understanding as to how a progressive tax system works maybe this is a good starting point, but I would look for additional resources of course.
 
 <!-- more -->
 
