@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2020-06-21 09:31:42
-version: 1.11
+updated: 2020-06-21 09:36:41
+version: 1.12
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing some javaScript code. The try catch statement is not just a one stop solution for all Error handling tasks when it comes to working with Errors in javaScript, but is certainly one aspect of doing so along with error objects in certain callbacks, and when working with catch function calls with promises just to mention a few basic things about error handling. So then with that said in this post I will be outlining some things to know about when working with the try catch statement, as well as any additional things that might come to mind.
@@ -37,11 +37,11 @@ Although I am just logging the message to the console, in a real project I would
 
 ## 2 - The Deal with finally
 
-The finally statement is a little weird as on the surface it seems unnecessary. It is a block where they code that is defined in it will always execute regardless if an Error fires or not. As such why not just define some javaScript after a try catch block, sense that will always run as well? Well there are some things that come to mind where the finally statement might actually need to be used possible in this section I will be covering this topic in detail.
+The finally statement is a little weird as on the surface it seems unnecessary. It is a block where the code that is defined in it will always execute regardless if an Error fires or not. As such why not just define some javaScript after a try catch block, sense that will always run as well? Well maybe there are some things that come up where the finally statement might actually need to be used possibly, so in this section I will be covering this topic in detail.
 
 ### 2.1 - A try statement can be followed with just a finally statement and without a catch.
 
-A try catch statement must be followed by a catch or finally statement or else it will result in an Error.
+A try catch statement must be followed by a catch or finally statement or else it will result in an Error. So it is possible to define a try statement without a catch but just a finally and that will work as one might expect.
 
 ```js
 try {
@@ -57,6 +57,8 @@ try {
 // 'finally'
 // 'My custom Error'
 ```
+
+I can not say I ever get into situations in which I need to define a javaScript try statement this way, but it is one of those weird things about javaScript that can be done and it works without issue.
 
 ### 2.2 - Using return with a try catch
 
