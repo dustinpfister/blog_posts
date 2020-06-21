@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2020-06-21 09:22:00
-version: 1.10
+updated: 2020-06-21 09:31:42
+version: 1.11
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing some javaScript code. The try catch statement is not just a one stop solution for all Error handling tasks when it comes to working with Errors in javaScript, but is certainly one aspect of doing so along with error objects in certain callbacks, and when working with catch function calls with promises just to mention a few basic things about error handling. So then with that said in this post I will be outlining some things to know about when working with the try catch statement, as well as any additional things that might come to mind.
@@ -15,7 +15,7 @@ The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 ## 1 - javaScript try basic example
 
-For a basic example of a try catch block I have a sting that represents an invalid JSON string. When I attempt to try to parse the JSON string into a workable object this results in an Error.
+For a basic example of a try catch block I have a sting that represents an invalid JSON string. In a real example this json might be pulled from a file that might end up being malformed for one reason or another, but foe the sake of this simple example it is just a string literal. So then because the JSON is in fact invalid, when I attempt to try to parse the JSON string in the try block of the try catch statement into a workable object, this results in an Error as expected. Inside the body of the catch block I have it so I just log the resulting error message that is a property of the error object.
 
 ```js
 var str = '{\"n\":\"27\"',
@@ -32,6 +32,8 @@ console.log(obj.n); // 42
 ```
 
 Instead of the script failing completely a try catch statement can be used to define what to do in the event of an error such as this. The flow of the script will then continue instead of coming to a griding halt.
+
+Although I am just logging the message to the console, in a real project I would of course want to do something more than just that. Say I am working on a project where I need to load a json file or some other kind of file that serves as a config file of sorts. I would want to not just log and error message to the console, I might want to do something more such as look at another file system location for a backup file of sorts or revert to using some hard coded settings on top of finding some way to alert the user to what is going on.
 
 ## 2 - The Deal with finally
 
