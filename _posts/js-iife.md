@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-02-05 19:25:49
-version: 1.8
+updated: 2020-06-21 10:25:19
+version: 1.9
 ---
 
-A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript function that self invokes. These kinds of functions in javaScript are often used in module design, as private methods and other values can be in the body of the function and a public set of methods and properties can be a product that is returned to a variable.
+A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript function that self invokes right away. When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these IIFE deals. 
+
+The return keyword can then be used as a way to go about returning something that can be stored in a variable, this something that is returned can be a plain old object with properties, or a function, or a function with properties that serves as a kind of public API. 
+
+These kinds of functions in javaScript are often used in module design, as private methods and other values can be in the body of the function and a public set of methods and properties can be a product that is returned to a variable.
 
 <!-- more -->
 
