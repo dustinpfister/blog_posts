@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2020-06-21 09:36:41
-version: 1.12
+updated: 2020-06-21 09:40:52
+version: 1.13
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing some javaScript code. The try catch statement is not just a one stop solution for all Error handling tasks when it comes to working with Errors in javaScript, but is certainly one aspect of doing so along with error objects in certain callbacks, and when working with catch function calls with promises just to mention a few basic things about error handling. So then with that said in this post I will be outlining some things to know about when working with the try catch statement, as well as any additional things that might come to mind.
@@ -111,3 +111,7 @@ console.log(checkValue(-5)); // 0
 console.log(checkValue(NaN)); // 0
 console.log(checkValue('foo')); // 0
 ```
+
+## 4 - Conclusion
+
+So the basics of try catch statements are not so hard to get up to speed with. The typical use case situation is that you do something that might case an error in the try block, and then use the catch block to do what needs to happen in the event of an error. There is just the question if there is any weird situations about try catch that might come up now and then, and as I become aware of more things about that I will of course expand this post as needed.
