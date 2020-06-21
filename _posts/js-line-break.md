@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2020-03-16 20:32:15
-version: 1.5
+updated: 2020-06-21 15:44:23
+version: 1.6
 ---
 
-When working out a string value it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string. If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them.
+When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end or at any point where needed in the string. If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others. 
+
+There is more then one text pattern for line breaks depending on the operating system you want the content to work with. However for the most part you can get away with just using one or the other, many well designed applications are familiar with the different patterns ans will detect what the situation is. In any case this will be a quick post on line breaks and javaScript strings in both a nodejs and client environment.
 
 <!-- more -->
 
@@ -41,6 +43,8 @@ var eol = {
     posix: '\u000a'
 }
 ```
+
+So these kinds of solutions will work well in general, but in a  nodejs environment there are some properties that are typically used. So lets look at just one more example at least when it comes to this sort of thing.
 
 ## 2 - The os module EOL property in nodejs
 
