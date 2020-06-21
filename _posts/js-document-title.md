@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-06-21 10:34:44
-version: 1.8
+updated: 2020-06-21 10:37:10
+version: 1.9
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, not just from a search engine perspective, but also for the sake of informing visitors about what a page is about, or what is currently going on with a page. That is because the title tag can be this fixed static thing, but it can also be mutated with some javaScript code also. 
@@ -19,7 +19,7 @@ In this post I will be taking a moment to play around a little with the [documen
 
 ## 1 - document.title property a basic example
 
-The document.title property of the document object in client side javaScript can be used to get or set the title text of the title element in an HTML document. Just set the desired string value to the document title property and that should do it just fine.
+The document.title property of the document object in client side javaScript can be used to get or set the title text of the title element in an HTML document. Just set the desired string value to the document title property and that should do it just fine by way of the title property of the document object.
 
 ```html
 <html>
@@ -38,7 +38,7 @@ The document.title property of the document object in client side javaScript can
 </html>
 ```
 
-That's all there is to it when it comes to just getting or setting the string value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a titles value. 
+That's all there is to it when it comes to just getting or setting the string value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a titles value such as what happens when a tag goes inactive. 
 
 ## 2 - document title update time when a tab is inactive
 
