@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2020-06-23 10:33:55
-version: 1.27
+updated: 2020-06-23 10:39:40
+version: 1.28
 ---
 
-The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event handler is for attaching events to an input element that will fire when the value of an input element changes. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
+The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for attaching events to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
 
 So then there are many other events that come to mind also that are important to the process of user Interface design such as [onblur](/2019/01/08/js-onblur/) and [onfocus](/2019/01/05/js-onfocus/). In addition events like onkeyup can be used to track changes to the value of an input tag as they happen on a per key stroke basis. Still the onchange event might be the most important as it is the event that will fire when a value actually changes in the input tag rather then it being in the process of changing. In this post I will be going over some quick examples of the onchange event in client side javaScript, and I will also be touching base on a whole bunch of related topics.
 
@@ -86,7 +86,7 @@ The one thing that comes to mind about this is that it would result in greater b
 
 ## 3 - Setting onchange for many elements
 
-For a more advanced example of the onchange event, it made a quick little app that can be used to estimate the amount of money that a blog can make if the revenue per mille, and page views counts are known. In this example I am attaching the same event handler for more than one input element.
+For a more advanced example of the onchange event, I made a quick little app that can be used to estimate the amount of money that a blog can make if the revenue per mille, and page views counts are known. In this example I am attaching the same event handler for more than one input element.
 
 So I just have a simple html file that has some input elements for rpm and page views, and then I am linking o an external javaScript file that makes use of the onchange event to update the output via the inner text of a div element each time the value of the rpm or page views input elements changes.
 
