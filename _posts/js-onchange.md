@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2020-06-23 10:31:42
-version: 1.26
+updated: 2020-06-23 10:33:55
+version: 1.27
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event handler is for attaching events to an input element that will fire when the value of an input element changes. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
@@ -58,7 +58,7 @@ There are other ways of going about attaching events, although I would go with a
 
 ## 2 - The onchange attribute and addEventListener
 
-For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, bu generally most developers might prefer the use of addEventListener as it allows for the attachment of more than one hander for an element.
+For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, but generally most developers might prefer the use of addEventListener as it allows for the attachment of more than one hander for an element.
 
 ```js
 var el = document.querySelector('input.pow'),
@@ -81,6 +81,8 @@ el.onchange = func1;
 el.addEventListener('change', func1);
 el.addEventListener('change', func2);
 ```
+
+The one thing that comes to mind about this is that it would result in greater backward support for old browsers. However these days we are talking very out dated platforms that most people are just not using any more, at least that is the case when I look at my stats when it comes to that.
 
 ## 3 - Setting onchange for many elements
 
