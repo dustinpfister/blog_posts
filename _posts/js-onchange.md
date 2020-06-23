@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2020-06-23 10:43:25
-version: 1.29
+updated: 2020-06-23 11:42:57
+version: 1.30
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for attaching events to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
@@ -15,7 +15,7 @@ So then there are many other events that come to mind also that are important to
 
 <!-- more -->
 
-## 1 - onchange event example
+## 1 - onchange event basic example
 
 For a simple example of the onchange event hander here is an example that uses the [document.querySelector](/2020/06/23/js-document-queryselector/) method to get references to an input tag, as well as a paragraph tag. When the text of the text input element changes the event fires, and the value of the input element can be used to update the output that is set in the paragraph element.
 
@@ -230,8 +230,32 @@ var aTaner = function (opt) {
     state.figureAngle();
     state.draw.call(state, ctx, canvas);
 };
+```
 
-};
+```html
+<html>
+    <head>
+        <title>on change</title>
+        <style>
+.wrap_taner{
+  background:grey;
+  margin-bottom:50px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="taners"></div>
+        <script src="ataner.js"></script>
+        <script>
+aTaner({
+  appendTo: document.getElementById('taners'),
+});
+aTaner({
+  appendTo: document.getElementById('taners'),
+});
+        </script>
+    </body>
+</html>
 ```
 
 So this project was just a simple little project that I made to just show what can be made when using the on change event along with many other events and other native methods available in client side javaScript to make an interesting project. When I click on an input take a canvas element shows up that displays the position of a point that is the x and w values that can be set with the input elements. I can also click on the canvas to change the position of the point to the point on that canvas and update the value of the input tags in the process.
