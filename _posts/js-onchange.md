@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2020-06-23 10:21:27
-version: 1.23
+updated: 2020-06-23 10:24:42
+version: 1.24
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event handler is for attaching events to an input element that will fire when the value of an input element changes. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
@@ -17,7 +17,7 @@ So then there are many other events that come to mind also that are important to
 
 ## 1 - onchange event example
 
-For a simple example of the onchange event hander here is an example that uses the document.querySelector method to get references to an input tag, and a paragraph tag. When the text of the text input element changes the event fires, and the value of the input element can be used to update the output that is set in the paragraph element.
+For a simple example of the onchange event hander here is an example that uses the [document.querySelector](/2020/06/23/js-document-queryselector/) method to get references to an input tag, as well as a paragraph tag. When the text of the text input element changes the event fires, and the value of the input element can be used to update the output that is set in the paragraph element.
 
 ```html
 <html>
