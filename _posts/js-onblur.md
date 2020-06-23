@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-06-06 20:29:19
-version: 1.36
+updated: 2020-06-23 11:42:43
+version: 1.37
 ---
 
-The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. When working out a user interface you might want some code to run when an element that can be focused on gains this focus, but you might also want some code to run when that element looses this focus, and that is where the on blur event comes into play.
+The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
+
+A focus event fires when the user focuses on an element like a text input element by clicking on it or cycling to it with the tab key on a keyboard. When working out a user interface you might want some code to run when an element that can be focused on gains this focus, but you might also want some code to run when that element looses this focus, and that is where the on blur event comes into play.
 
 So then a blur event fires when an element losses this focus, once it has been acquired in the first place. An on blur event will only fire for elements that can gain a focus, such as input elements. However it is possible to set other elements that can not be focus by default with the [tab index](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/tabIndex) property. In this post I will be going over some examples that make use of the on blur event with plain old vanilla client side javaScript, rather than a certain front end frame work.
 
