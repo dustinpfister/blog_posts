@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2020-06-23 10:28:42
-version: 1.25
+updated: 2020-06-23 10:31:42
+version: 1.26
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event handler is for attaching events to an input element that will fire when the value of an input element changes. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
@@ -52,7 +52,9 @@ For a simple example of the onchange event hander here is an example that uses t
 
 When adding an event listener for the onchange event with the addEventListener element object method the first argument is the event that I want to attach for, in this case it is onchange. The second argument is a call back method that will fire each time this event occurs for the input element. The first argument that is suppled to this callback method is an [event object](https://developer.mozilla.org/en-US/docs/Web/API/Event) that can be used to gain the value of the element from which the event fired via the target property of the event object which is a reference to the input element where this onchange event happened. 
 
-With that said in this event object I am using the target property of the event object as a way to gain a reference to the input element completely. In this example it is not a big deal to just use the inputPow global, however in a more complex project that involves a lot of elements it is often better to use the target property inside the body of a callback method as a way to gain access to the element from which an event like onchange as fired.
+With that said in this event object I am using the target property of the event object as a way to gain a reference to the input element completely. In this example it is not a big deal to just use the inputPow global, however in a more complex project that involves a lot of elements it is often better to use the target property inside the body of a callback method as a way to gain access to the element from which an event like onchange as fired in a situation in which there might be many such elements.
+
+There are other ways of going about attaching events, although I would go with add event listener for the most part. In addition when making a real interface the onchnage event is just one such event that comes to mind. So lets look at some more examples that make use of other ways of attaching, as well as additional events.
 
 ## 2 - The onchange attribute and addEventListener
 
