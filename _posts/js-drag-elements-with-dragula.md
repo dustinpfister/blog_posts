@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2020-04-20 08:32:24
-version: 1.3
+updated: 2020-06-23 12:14:51
+version: 1.4
 ---
 
 There is a [popular javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another. It is a quick and simple way to get this sort of this working, and does not require any additional dependencies such as jquery and lodash.
@@ -81,3 +81,5 @@ So thats it at a minimum I just need to give it an array of elements that are co
 ## 3 - Conclusion
 
 There are a lot of options for dragula, I could make some more advanced examples but for now I will just keep this post pretty basic. For the mean time there is the [README](https://github.com/bevacqua/dragula/blob/master/readme.markdown) for the project.
+
+It would seem that there are also some native options for dragging elements in a front end javaScript environment also these days. In addition there is also working with a canvas element, and having display objects that are clicked and dragged within a canavs element also that is another option that comes to mind when it comes to this sort of thing.
