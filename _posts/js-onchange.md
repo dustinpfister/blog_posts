@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2019-08-21 20:55:36
-version: 1.21
+updated: 2020-06-23 10:09:53
+version: 1.22
 ---
 
-The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event handler is for attaching call backs that will fire when the content of an input element changes. This is one of many events that a client side javaScript developer should be aware of when making any kind of client system that involves the use of html input tags. There are many other events that come to mind also that are important to the process of User Interface design such as onblur and onfocus. In addition events like onkeyup can be used to track changes to the value of an input tag as they happen on a per key basis. Still the onchange event might be the most important as it is the event that will fire when a value actually changes in the input tag. In this post I will be going over some quick examples of the onchange event in client side javaScript.
+The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) event handler is for attaching events to an input element that will fire when the value of an input element changes. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
+
+So then there are many other events that come to mind also that are important to the process of user Interface design such as [onblur](/2019/01/08/js-onblur/) and [onfocus](/2019/01/05/js-onfocus/). In addition events like onkeyup can be used to track changes to the value of an input tag as they happen on a per key stroke basis. Still the onchange event might be the most important as it is the event that will fire when a value actually changes in the input tag rather then it being in the process of changing. In this post I will be going over some quick examples of the onchange event in client side javaScript, and I will also be touching base on a whole bunch of related topics.
 
 <!-- more -->
 
