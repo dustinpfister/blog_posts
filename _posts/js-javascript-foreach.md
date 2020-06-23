@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-23 11:53:48
-version: 1.44
+updated: 2020-06-23 12:03:52
+version: 1.45
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
@@ -100,6 +100,22 @@ arr = arr.filter((el) => {
  
 console.log(arr);
 // [ 7, 13, 20 ]
+```
+
+### 2.5 - Array some
+
+There are also methods like array some, and array every that can be used to create and return a boolean value for an array depending on the condition returned in the method given. Say you want to test if just one element in an array meets a given condition for that there is the array some method. In addition there is the array every method that will return true if all elements in the array meet a given condition.
+
+```js
+var a = [1, 2, '3', 4],
+b = [1, 2, 3, 4];
+ 
+var test = function (el) {
+    return typeof el === 'string';
+};
+ 
+console.log(a.some(test)); // true
+console.log(b.some(test)); // false
 ```
 
 ## 3 - While loops as a javaScript for each solution.
