@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-23 11:48:12
-version: 1.42
+updated: 2020-06-23 11:50:10
+version: 1.43
 ---
 
-In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example. 
+In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
 
-Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will as the same sugest filter out any elements that are not wanted in the array given a certain condition. There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them. Loops often prove to do so a little faster, and they are also far more flexible when it it comes to an initial index value, how stepping of an index value will happen, and also continuing and breaking of the loop.
+There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of them. Loops often prove to do so a little faster, and they are also far more flexible when it it comes to an initial index value, how stepping of an index value will happen, and also continuing and breaking of the loop.
 
 Then there are other objects in javaScript that are structured like arrays, but are not arrays, and thus are often referred to as array like objects. In addition there are just simply objects in general, that might have numbered index keys or named keys. So to help loop over these kinds of objects there are Object static methods like the Object.keys method, that can be used to create an array of key values that can then be used as a way to loop over the contents of any objects public keys. Another option would be a for in loop that can be used as ways to help loop over the public contents of Objects in general in javaScript.
 
