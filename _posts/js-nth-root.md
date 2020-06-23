@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2020-03-16 20:37:53
-version: 1.8
+updated: 2020-06-22 20:05:03
+version: 1.9
 ---
 
-Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubes root of a number, or any other degree beyond of that of just the number 2.
+Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2. Well in this post I will be going over a quick example of how to go about doing just that with javaScript, and
 
 <!-- more -->
 
@@ -20,12 +20,19 @@ One solution is to use the [Math.pow](https://developer.mozilla.org/en-US/docs/W
 This works by just passing the root number as the base for Math.pow, and then diving 1 by the degree number to get the exponent argument for Math.pow like so.
 
 ```js
-var root = 25,
-degree = 3;
+var nthRoot = function (n, degree) {
+    return Math.pow(n, 1 / degree);
+};
  
-var x = Math.pow(root, 1 / degree); // 5
+console.log(Math.sqrt(25)); // 5
+console.log(nthRoot(25, 2)); // 5
  
-console.log(Math.sqrt(num)); // 5
+var n = nthRoot(25, 3);
+console.log(n); // 2.924017738212866
+console.log(n * n * n); // 24.999999999999996
+n = nthRoot(25, 4);
+console.log(n); // 2.23606797749979
+console.log(n * n * n * n); // 25.000000000000007
 ```
 
 ## 2 - Conclusion
