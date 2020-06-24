@@ -5,11 +5,11 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-04-20 09:51:37
-version: 1.4
+updated: 2020-06-24 10:55:04
+version: 1.5
 ---
 
-When making any kind of application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to do so and one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method when dealing with client side javaScript.
+When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only usedfor other enviorments outside of the main event loop of a front end project, such as webworker, or doing something with noejs.
 
 <!-- more -->
 
