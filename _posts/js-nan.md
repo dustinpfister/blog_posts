@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-06-25 09:32:09
-version: 1.8
+updated: 2020-06-25 09:35:52
+version: 1.9
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an odd number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN. This value has some unique things going on with it aside from the fact that its data type is a Number, yet it is called Not A Number. For one thing it does not equal anything including itself, which means that a special method must be used to test of a value is NaN or not.
@@ -29,9 +29,9 @@ console.log(NaN); // NaN
 
 So now that we have some basic ways of knowing how to end up with NaN figured out lets look into the ways to go about knowing if we have a NaN value, and so forth.
 
-## 2 - isNaN
+## 2 - The native javaScript isNaN method
 
-So to some extent isNaN works as expected, but it also returns true for values that are not NaN, such as undefined.
+So to some extent the native javaScript isNaN method works as expected, but it also returns true for values that are not NaN, such as undefined.
 
 ```js
 isNaN(12); // false
@@ -39,9 +39,9 @@ isNaN(NaN); // true
 isNaN(undefined); // true
 ```
 
-this behavior is not wrong in a way values like undefined, and null are Not Numbers, but it still may not really be the behavior that is expected.
+This behavior may not be wrong necessarily because in a way values like undefined, and null are Not Numbers also of course. Still it may not really be the behavior that is expected when using a method called isNaN as often the expectation might be that the method should only return true when a value is NaN and only NaN. So with that said lets look at some more options when it comes to finding out if a Value is NaN.
 
-## 3 - Number.isNaN
+## 3 - The Number.isNaN method
 
 So the Number.isNaN method works as expected if what is expected is for the method to return true only if the given value is NaN and only NaN.
 
