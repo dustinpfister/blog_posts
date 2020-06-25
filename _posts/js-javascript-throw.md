@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-06-02 17:02:37
-version: 1.8
+updated: 2020-06-25 11:10:43
+version: 1.9
 ---
 
-The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user-defined exception or error if you prefer. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order. In some cases I might use it as a way to intentionally throw a wrench into a machine sort of speak to stop execution of a program at a certain point as a means of debugging, but as of late I prefer to use alternatives to that to catch a state of affairs sort of speak.
+The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user-defined exception or error if you prefer. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with try catch statements and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
+
+In some cases I might use it as a way to intentionally throw a wrench into a machine sort of speak to stop execution of a program at a certain point as a means of debugging, but as of late I prefer to use alternatives to that to catch a state of affairs as to what is happening at a certain point in time. So for the most part the throw statement is just used in the process of making custom errors.
 
 So lets take a look at some example of the javaScript throw keyword in action.
 
