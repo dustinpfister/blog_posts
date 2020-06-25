@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-06-25 11:21:48
-version: 1.11
+updated: 2020-06-25 11:24:17
+version: 1.12
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user-defined exception or error if you prefer. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with try catch statements and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -71,3 +71,6 @@ try {
 }
 ```
 
+## 4 - Conclusion
+
+So the javaScript throw statement is what is used in javaScript to throw a custom user define error. However it is just one thing that comes to mind when it comes to creating and working with user defined errors. There is not just creating error objects after all, but also how to go about handling them. The javaScript try and catch blocks can be used as a way to define some code that will run in the event that a user define error happens.
