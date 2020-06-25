@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-06-25 11:15:31
-version: 1.10
+updated: 2020-06-25 11:21:48
+version: 1.11
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user-defined exception or error if you prefer. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with try catch statements and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -37,7 +37,7 @@ The value can be a string, number, boolean, or an object that should be given ce
 
 ## 2 - javaScript throw defined with an object
 
-So a string can be used to describe the user defined Error, but it might be best to use an Object or The Error constructor to create an object with message and name properties that help to better identify what is wrong when the Error is thrown.
+So a string can be used to describe the user defined Error, but it might be best to use an Object or The [Error constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/Error) to create an object with message and name properties that help to better identify what is wrong when the Error is thrown. This standatd object of sorts can be called you guessed it an [error object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) that contains properties like message that is used to set the string message of the error, but also properties like name, line number, and so forth
 
 ```js
 throw {
@@ -46,6 +46,8 @@ throw {
 }
 // ObjectDefinedError: this error is defined with an object
 ```
+
+So now that we know how to create errors with the javaScript throw statement, maybe now is the time to cover a thing or two about some basic error handling.
 
 ## 3 - javaScript throw and try catch blocks
 
