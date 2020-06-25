@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2020-06-25 16:04:52
-version: 1.23
+updated: 2020-06-25 16:06:24
+version: 1.24
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A [string](https://en.wikipedia.org/wiki/String_(computer_science)) is a collection of characters that compose a text pattern, and as such can serve a number of purposes beyond just simply displaying human readable text.
 
-There is a great deal to write about when it comes to javaScript Strings, but in this post I will be covering some of the must know String prototype methods, as well as some general quirks to look out for when working with a String in javaScript.
+There is a great deal to write about when it comes to javaScript Strings, but in this post I will be going over the basics of strings, and covering some of the must know String prototype methods. While in the process of going over the basics and some string methods I might manage to cover some general quirks to look out for when working with a String in javaScript.
 
 <!-- more -->
 
