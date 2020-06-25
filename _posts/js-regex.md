@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2019-07-04 07:16:42
-version: 1.18
+updated: 2020-06-25 15:58:07
+version: 1.19
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations. This is true of sure then making some kind of parser, or something to that effect. So in this post I will be covering some basic examples of [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) in javaScript that can be used to text search and replace tasks.
@@ -40,14 +40,15 @@ I generally prefer to go with the literal syntax, but a javaScript developer sho
 
 ### 1.2 - Using a regular expression
 
-There is knowing how to create a pattern, and then there is knowing how to use one. For the most part there are two String prototype methods to be aware of then it comes to this [String.match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match), and [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace). I will be getting into these methods in detail later but for now here is a quick example of the replace method.
+There is knowing how to create a pattern, and then there is knowing how to use one. For the most part there are two String prototype methods to be aware of then it comes to this [String.match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match), and [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace). 
 
 ```js
 let data = 'regexp is **good** for pattern matching tasks',
 change = data.replace(/\*\*good\*\*/, 'great');
 console.log(change); // 'regexp is great for pattern matching tasks'
-
 ```
+
+I will not be getting into these methods in detail here as I have wrote posts on both the match, and replace methods. However I will be going over a few typical regular expression patterns and examples that I find myself using from time to time in the remainder of this post.
 
 ## 2 - Match the beginning of a string
 
