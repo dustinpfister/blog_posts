@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-04-28 15:12:13
-version: 1.4
+updated: 2020-06-25 09:51:43
+version: 1.5
 ---
 
-In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. these kinds of constructors create index collections similar to that of a regular javaScript array, only much different. For starters the length of the collections is static, and the values that the collections can hold is restricted.
+In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only much different. For starters the length of the collections is static, and the values that the collections can hold is restricted to number values.
 
-So these typed arrays are not a replacement for regular javScript arrays, but they are helpful when working out something that is an underlaying binary data buffer of sorts. The reason why is because of the fixed size, and the fact that values are restricted to numbers only, and on top of that additional rules for the n8invgers depending on the kind of typed array.
+So these typed arrays are not a replacement for regular javScript arrays, but they are helpful when working out something that is an underlaying binary data value of some kind for one thing. The reason why is because of the fixed size, and the fact that values are restricted to numbers only, and on top of that additional rules for the integers depending on the kind of typed array. For example there is both clamped and un-clamped versions for many of these typed arrays that has to do with value the exceeded the number range, that is clamping values so that a value higher then 255 end up being 255 or allowing for the value to wrap around and work out to what is left when dividing.
+
+In this post I will be looking mainly at the Unit8Array constructor, but much of what is written here can be applied to other type array constructors.
 
 <!-- more -->
 
