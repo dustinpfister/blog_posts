@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-06-25 09:23:15
-version: 1.7
+updated: 2020-06-25 09:32:09
+version: 1.8
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an odd number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN. This value has some unique things going on with it aside from the fact that its data type is a Number, yet it is called Not A Number. For one thing it does not equal anything including itself, which means that a special method must be used to test of a value is NaN or not.
@@ -17,7 +17,9 @@ The value will come up now and then often as a result of an expression when some
 
 ## 1 - javaScript NaN has a strange nature to it
 
-What is strange about NaN is that it does not equal anything, not even itself. Because of this it makes testing for NaN a little strange. There is a well supported native method called isNaN, but also Number.isNaN both of which work differently.
+What is strange about NaN is that it does not equal anything, not even itself. Because of this it makes testing for NaN a little move involved then just using the equality or identity operators. There is a well supported native method called isNaN, but also Number.isNaN both of which work differently, more on that later.
+
+First off there are a number of ways to end up with the value of NaN to begin with. For example dividing the value of zero by zero will result in NaN, as well as multiplying a number by a string. There is aalso just the plain old javaScript NaN literal that will directly result in the value of NaN.
 
 ```js
 console.log(0/0); // NaN
@@ -25,6 +27,7 @@ console.log(1 * 'foo'); // NaN
 console.log(NaN); // NaN
 ```
 
+So now that we have some basic ways of knowing how to end up with NaN figured out lets look into the ways to go about knowing if we have a NaN value, and so forth.
 
 ## 2 - isNaN
 
