@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2020-06-25 16:34:02
-version: 1.3
+updated: 2020-06-25 16:48:10
+version: 1.4
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -65,3 +65,64 @@ render(state);
 ```
 
 When this example is up and running in the browser I end up with the current values of the state object being displayed. moving the mouse around will result in the position being updated, and clicking the mouse button will change the value of the down boolean value.
+
+## 2 - Get element relative position
+
+```html
+<html>
+    <head>
+        <title>javascript mouse get element relative</title>
+    </head>
+    <body>
+        <canvas id="out" width="320" height="240" style="position:absolute;left:50px;top:50px;"><canvas>
+        <script>
+// Gte El relative
+var getElRelative = function (e) {
+    var el = e.target,
+    bx = el.getBoundingClientRect();
+    return {
+        x: e.clientX - bx.left,
+        y: e.clientY - bx.top,
+        bx: bx
+    };
+};
+var setPos = function (state, e) {
+    var pos = getElRelative(e);
+    state.x = pos.x;
+    state.y = pos.y;
+};
+var render = function (ctx, canvas, state) {
+    var text = 'pos: (' + state.x + ',' + state.y + ' ); down: ' + state.down + ';';
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.fillText(text, 32, 32);
+};
+// state object
+var state = {
+    down: false,
+    x: null,
+    y: null
+};
+// attach events to canvas
+var canvas = document.getElementById('out'),
+ctx = canvas.getContext('2d');
+canvas.addEventListener('mousedown', function (e) {
+    state.down = true;
+    setPos(state, e);
+    render(ctx, canvas, state);
+});
+canvas.addEventListener('mousemove', function (e) {
+    setPos(state, e);
+    render(ctx, canvas, state);
+});
+canvas.addEventListener('mouseup', function (e) {
+    state.down = false;
+    setPos(state, e);
+    render(ctx, canvas, state);
+});
+render(ctx, canvas, state);
+        </script>
+    </body>
+</html>
+```
