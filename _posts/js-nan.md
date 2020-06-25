@@ -1,20 +1,21 @@
 ---
 title: JavaScript NaN (Not a Number) and the isNaN methods.
 date: 2017-09-23 16:46:00
-tags: [js,blog,corejs,lodash]
+tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-04-22 22:09:25
-version: 1.6
+updated: 2020-06-25 09:23:15
+version: 1.7
 ---
 
-In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) or [Not A Number](https://en.wikipedia.org/wiki/NaN) is a oddly enough a special number value that happens as a result of a math operation with a String that can not be converted to a number, or a variety of other situations such as division of zero over zero. This value has some unique things going on with it such as the fact that its data type is a Number, yet it is called Not A Number. However maybe one of the most concerning things about it is that by itself it does not equal anything including itself, so special methods must be used to make comparisons.
+In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an odd number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN. This value has some unique things going on with it aside from the fact that its data type is a Number, yet it is called Not A Number. For one thing it does not equal anything including itself, which means that a special method must be used to test of a value is NaN or not.
+
+The value will come up now and then often as a result of an expression when something in that expression ends up being undefined or something to that effect. So there is a need to know how to account for the possibility of JavaScript NaN being a possible value, and how to deal with it when working out some code.
 
 <!-- more -->
 
 ## 1 - javaScript NaN has a strange nature to it
-
 
 What is strange about NaN is that it does not equal anything, not even itself. Because of this it makes testing for NaN a little strange. There is a well supported native method called isNaN, but also Number.isNaN both of which work differently.
 
