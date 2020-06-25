@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-06-21 09:52:18
-version: 1.9
+updated: 2020-06-25 11:36:29
+version: 1.10
 ---
 
-This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). Like most things like this it is important to look at more than one solution, so I will be taking a look at two to say then least. In addition I will break off into some additional examples and related topics that have to do with working with dates in javaScript so things post is not to thin.
+This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). 
+
+Like most things like this it is important to look at more than one solution, so I will be taking a look at two solutions for this sort of thing. One example is very simple, and another is a little more complex. Some times it is called for to use a more complex example for things, but so far it would seem that the simple solution for this does in fact work okay. 
 
 <!-- more -->
 
@@ -28,6 +30,8 @@ d2 = new Date(2017, 1, 2);
 var days = getDayDiff1(d1, d2);
 console.log(days); // 1092
 ```
+
+In my testing with this so far it would seem that this does not result in any weird outcomes that are way off when compared to a more complex solution that I will be getting to next. So when it comes down to it, it would seem that something like this works okay for getting a number of days between tow date objects in javaScript.
 
 ## 2 - An overly complex solution that involves looping, and getting the number of days in a month
 
