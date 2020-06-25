@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-06-19 14:58:34
-version: 1.12
+updated: 2020-06-25 11:29:59
+version: 1.13
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. There might be other ways of doing so that involve a canvas element, and some additional javaScript code to make some kind of more artful solution for selecting something from a range of options. However the select tag is a nice quick solution for doing something to that effect with other html elements outside of canvas.
@@ -101,6 +101,8 @@ sel_control.addEventListener('change', function(e){
     </body>
 </html>
 ```
+
+So then the disable attribute will come into pay when working out some kind of user interface that is a little involved. Where there are whole menus that will end up being disabled depending on other settings, or the state of the application.
 
 ## 4 - Conclusion
 
