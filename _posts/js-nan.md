@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-06-25 09:35:52
-version: 1.9
+updated: 2020-06-25 09:40:52
+version: 1.10
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an odd number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN. This value has some unique things going on with it aside from the fact that its data type is a Number, yet it is called Not A Number. For one thing it does not equal anything including itself, which means that a special method must be used to test of a value is NaN or not.
@@ -19,7 +19,7 @@ The value will come up now and then often as a result of an expression when some
 
 What is strange about NaN is that it does not equal anything, not even itself. Because of this it makes testing for NaN a little move involved then just using the equality or identity operators. There is a well supported native method called isNaN, but also Number.isNaN both of which work differently, more on that later.
 
-First off there are a number of ways to end up with the value of NaN to begin with. For example dividing the value of zero by zero will result in NaN, as well as multiplying a number by a string. There is aalso just the plain old javaScript NaN literal that will directly result in the value of NaN.
+First off there are a number of ways to end up with the value of NaN to begin with. For example dividing the value of zero by zero will result in NaN, as well as multiplying a number by a string. There is also just the plain old javaScript NaN literal that will directly result in the value of NaN.
 
 ```js
 console.log(0/0); // NaN
@@ -31,7 +31,7 @@ So now that we have some basic ways of knowing how to end up with NaN figured ou
 
 ## 2 - The native javaScript isNaN method
 
-So to some extent the native javaScript isNaN method works as expected, but it also returns true for values that are not NaN, such as undefined.
+So to some extent the [native javaScript isNaN method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN) works as expected, but it also returns true for values that are not NaN, such as undefined.
 
 ```js
 isNaN(12); // false
@@ -43,7 +43,7 @@ This behavior may not be wrong necessarily because in a way values like undefine
 
 ## 3 - The Number.isNaN method
 
-So the Number.isNaN method works as expected if what is expected is for the method to return true only if the given value is NaN and only NaN.
+So the [Number.isNaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) method works as expected if what is expected is for the method to return true only if the given value is NaN and only NaN.
 
 ```js
 Number.isNaN(12); // false
@@ -52,7 +52,7 @@ Number.isNaN(undefined); // false
 Number.isNaN(null); // false
 ```
 
-The only problem with Number.isNaN is that it does not work on any version of IE, there is no support at all. So this is why it makes sense to use the isNaN methods given in a utility library like [lodash](/tags/lodash/).
+The only problem with Number.isNaN is that it does not work on any version of IE, there is no support at all. So then this might be a reason why you might want to use some kind of user space option for testing for NaN if you care about supporting those older platforms for some reason. With that said lets look at making a user space option as that is nit so hard to do   when it comes to working out a quick user space solution.
 
 ## 4 - Writing an isNaN method
 
