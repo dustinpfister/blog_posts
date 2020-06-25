@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-06-25 16:17:59
-version: 1.8
+updated: 2020-06-25 16:21:13
+version: 1.9
 ---
 
 The javaScript not operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might be before hand.
@@ -45,4 +45,14 @@ console.log(supportsCanvas());
 // false if nodejs (or not support in browser), true if browser that supports 2d canvas
 ```
 
-The reason why this works is becuase calling the js not operator once will convert a value to a boolean, but it will also invert the value of that boolean value. So calling the js not operator once more will then invert it back to its true logical value.
+The reason why this works is because calling the js not operator once will convert a value to a boolean, but it will also invert the value of that boolean value. So calling the js not operator once more will then invert it back to its true logical value.
+
+## 3 - Using js not to make a boolean value bay way of !0 or !1
+
+The number zero will work out to a false boolean value, so using the js not operator will result in a true boolean value. The opposite of this will work out to false by using the js not operator with the number one for example.
+
+```js
+let bool = !0;
+console.log(typeof bool); // boolean
+console.log(bool); // true
+```
