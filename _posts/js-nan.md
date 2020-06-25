@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-06-25 09:40:52
-version: 1.10
+updated: 2020-06-25 09:44:21
+version: 1.11
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an odd number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN. This value has some unique things going on with it aside from the fact that its data type is a Number, yet it is called Not A Number. For one thing it does not equal anything including itself, which means that a special method must be used to test of a value is NaN or not.
@@ -93,3 +93,7 @@ Number.isNaN = Number.isNaN || function(n){
 
 };
 ```
+
+## 6 - Conclusion
+
+So the javaScript NaN value is often the result of faulty operations such as multiplying a number by a string that can not effectively be converted to a number value. The vakue can often end up being the result of certain function calls and so forth especially when taking values from user input, so parsing of value should be handled well, or testing for NaN should be preformed.
