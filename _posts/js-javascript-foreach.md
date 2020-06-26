@@ -5,13 +5,14 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-23 12:03:52
-version: 1.45
+updated: 2020-06-26 10:06:49
+version: 1.46
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
 
 There are also plain old loops like while loops, and for loops that can also be used as a way to loop over all the contents of an array or just some of the elements. Loops often prove to do so a little faster, and they are also far more flexible when it it comes to an initial index value, how stepping of an index value will happen, and also continuing and breaking of the loop. For these reasons I often find myself using loops over the array forEach method, and often over many other prototype methods for that matter, but I would not necessary say that loops are the end all solution for looping over the contents of an array.
+
 Then there are other objects in javaScript that are structured like arrays, but are not arrays, and thus are often referred to as array like objects. In addition there are just simply objects in general, that might have numbered index keys or named keys. So to help loop over these kinds of objects there are Object static methods like the Object.keys method, that can be used to create an array of key values that can then be used as a way to loop over the contents of any objects public keys. Another option would be a for in loop that can be used as ways to help loop over the public contents of Objects in general in javaScript.
 
 So with all that said just when it comes to native javaScript alone there is a wealth of options when it comes to looping over the contents of an array, or object in general. However there is then getting into user space utility libraries and frameworks also on top of what is to work with in core javaScript alone. As of this writing lodash is still the most popular general utility library of sorts, and the [\_.forEach method](/2017/11/20/lodash_foreach/) works more or less the same way as the native Array.prototype.forEach method. However the lodash foreach has some additional  features, and is a little more robust of a solution for looping over not just arrays, but objects in general in javaScript. The lodash foreach method is what is called a collection method. In  other words it is a method that will work on objects in general, and also can be broken out of just like with loops combined with the use of the return keyword in the body of the method that is given to it. 
@@ -34,9 +35,9 @@ In any case there are many options when it comes to looping over collections tha
 
 As time goes by it is becoming less, and less of an issue to worry about code breaking on clients when delivering modern javaScript exclusively when working out some kind of client system. Still depending on your websites analytics with browser versions, it might still be better to stick to a tired yet true way of doing things with client side javaScript.
 
-Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients. The javaScript array foreach method is an ECMA rev5 spec javaScript feature, so using it without any polyfill of sorts is fairly safe these days. However if for some reason you do want to push backward support back even farther there are of course other options that are yet even older and safer. Again I do tend to like sticking to while loops, but not just for this reason.
+Sticking to an older javaScript spec will help to assure that what it is that you are making will work on a larger range of clients. The javaScript array foreach method is an ECMA rev5 spec javaScript feature, so using it without any polyfill of sorts is fairly safe these days. However if for some reason you do want to push backward support back even farther there are of course other options that are yet even older and safer. Again I do tend to like sticking to while loops, but not just for this reason, more on why that is later.
 
-In any case taking a moment to understand browser support for an native or user space option for looping over the contents of a collection is an essential part of making smart informed decisions in these matters. The array for each method is a good choice in this regard, however a while loop would of course be and even better option.
+In any case taking a moment to understand browser support for a native, or user space option for looping over the contents of a collection is an essential part of making smart informed decisions with the use of javascript array foreach and in general. The array for each method is a good choice in this regard, however a while loop would of course be an even better option becuase support for that of course goe back even farther.
 
 ## 2 - javaScript forEach and other basic examples of similar array prototype methods
 
