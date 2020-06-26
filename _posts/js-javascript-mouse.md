@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2020-06-26 11:19:36
-version: 1.5
+updated: 2020-06-26 11:22:10
+version: 1.6
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -130,3 +130,5 @@ render(ctx, canvas, state);
     </body>
 </html>
 ```
+
+This time I went with attaching the events to a canvas element that is the nested element of interest. I could leave the events attached to the window object, but that would result in the events continuing to fire even when I do something with the mouse outside of the canvas element.
