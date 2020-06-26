@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-06-26 14:23:40
-version: 1.7
+updated: 2020-06-26 14:29:44
+version: 1.8
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -83,3 +83,7 @@ for (var i = 1; i <= 100; i++) {
 ```
 
 So now I have a little fizzer pure function of sorts that will always return the right string value for a set of given arguments. So now I am not reading code, but I have to add some code to not do so over and over again. For now it does not make a big difference, but if this project where to grow larger over time it might add up.
+
+## 4 - Conclusion
+
+There is even more to writ about when it comes to all the little issues that will come up that result in technical problems, as well as readability concerns. There is always more than one solution to a problem, and some work may work out a little better than others. The situation might change and code might break, or it might end up eating up too much resources and needs to be scaled. The list of concerns goes on, and on, but it seems to me there are two general ways of thinking when it comes to working out any kind of solution for a problem. One way is to just quickly throw something together that works and moving on, and the other is trying to make a more solid software product that might take way longer to produce.
