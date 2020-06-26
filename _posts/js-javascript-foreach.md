@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-26 10:38:52
-version: 1.51
+updated: 2020-06-26 10:55:11
+version: 1.52
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
@@ -180,6 +180,43 @@ console.log(b); // [3,4,5,6,7]
 ```
 
 There is of course also the array slice method that can also be used to get a new array that is a range of another array. However I would need to know both the starting and ending index values. With a while loop I can make coming across some kind of value a way to stop looping.
+
+### 3.4 - nested loops and the return keyword
+
+There is also of course using the return keyword in the body of a function that will be used to return something, and the fact that when using the array forEach method I am working inside the body of a function. So when doing something that involves nesting loops, or even just using one loop I can not just use the return keyword in the body of a methid that is passed to array for each.
+
+However with while loops I can place that return keyword anywhere in a single while loop, or even one or more nested while loops, and the return keyword will break out of the whole situation with looping and given me what it is that I wanted returned.
+
+```js
+let findInGrid = (grid, condition) => {
+    var y = 0;
+    while (y < grid.h) {
+        var x = 0;
+        while (x < grid.w) {
+            var i = y * grid.h + x;
+            if (condition(grid.cells[i], i, grid)) {
+                return grid.cells[i];
+            }
+            x += 1;
+        }
+        y += 1;
+    }
+};
+ 
+let grid = {
+    w: 4,
+    h: 3,
+    cells: [0, 0, 0, 0, 0, null, 0, 0, 0, 0, 0, 0]
+};
+ 
+var a = findInGrid(grid, (n) => {
+        return n != 0;
+    });
+ 
+console.log(a); // null
+```
+
+In addition to the return keyword there is also the break keyword that can be used even when working out a loop that is top level code outside of a function that can be used as yet another way to accomplish a similar result that can not be done with array forEach.
 
 ## 4 - Array like objects, the Function call prototype method, and array for each.
 
