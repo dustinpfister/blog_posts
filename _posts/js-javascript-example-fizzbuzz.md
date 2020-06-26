@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-06-26 14:14:55
-version: 1.3
+updated: 2020-06-26 14:17:53
+version: 1.4
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out something that just works, copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -82,4 +82,4 @@ for (var i = 1; i <= 100; i++) {
 }
 ```
 
-So now I have a little fizzer pure function of sorts that will always return the right string value for a set of given arguments.
+So now I have a little fizzer pure function of sorts that will always return the right string value for a set of given arguments. So now I am not reading code, but I have to add some code to not do so over and over again. For now it does not make a big difference, but if this project where to grow larger over time it might add up.
