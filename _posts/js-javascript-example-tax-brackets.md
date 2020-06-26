@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 618
-updated: 2020-06-26 12:42:01
-version: 1.7
+updated: 2020-06-26 12:43:03
+version: 1.8
 ---
 
 So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can be use to get the basic idea of a progressive tax system up and running. 
@@ -157,4 +157,4 @@ input_income.addEventListener('keyup', function () {
 
 ## 3 - Conclusion
 
-This was just an idea that I had for expanding a collection of posts on javaScript examples. I do not recommend using this as a way to figure out your taxes for real, it was just an idea to gain better sense of how a system like this works. I might get around to expanding this further if i get some time to do so, but I have many other posts and projects begging for my attention so I would not count on it.
+This was just an idea that I had for expanding a collection of posts on javaScript examples. I do not recommend using this as a way to figure out your taxes for real, it was just an idea to gain better sense of how a system like this works. I might get around to expanding this further if i get some time to do so, but I have many other posts and projects begging for my attention so I would not count on it. However that might change if enough people express interest in this post and the javaScript code, if so let me know of anything that comes to mind in the comments.
