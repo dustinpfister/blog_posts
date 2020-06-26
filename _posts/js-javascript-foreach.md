@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-26 11:04:40
-version: 1.53
+updated: 2020-06-26 11:14:45
+version: 1.54
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
@@ -294,6 +294,25 @@ Object.values(obj).forEach((n) => {
     sum += n;
 });
 console.log(sum); // 6
+```
+
+### 5.2 - Object.keys
+
+So on top of the Object values method there is also the Object.keys static method also. This method works the same way as Object values only it returns an array of key names rather than the values of the keys. In any case this can be used to quickly create an array from a plain old object and then of course array prototype methods can be used with that resulting array, and not just array forEach.
+
+```js
+let obj = {
+    foo: 1,
+    man: 2,
+    chew: 3
+};
+ 
+let str = Object.keys(obj).map((key) => {
+        return key + obj[key];
+    }).join('-');
+ 
+console.log(str); // 'foo1-man2-chew3'
+ 
 ```
 
 ## 6 - Conclusion
