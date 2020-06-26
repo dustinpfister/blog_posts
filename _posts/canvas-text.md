@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-06-26 14:43:57
-version: 1.33
+updated: 2020-06-26 14:48:46
+version: 1.34
 ---
 
-So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method. When it comes to the style of text it is sometimes nice to use the two methods together where I fill first and then stroke over with another color to helper make sure that the text will always show up depending on what is going on behind it when rendering.
+So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method. There a bunch more methods and properties to the drawing context also that are of interest when working with canvas text, but those two methods are of course good starting points to say the least.
 
-There is a bit more to know about when it comes to setting the position of text, color, the font size and font family, and so forth of canvas text. There are at least a few properties, and methods that a javaScript developer should be aware of when it comes to using canvas to render text. So lets look at some quick examples of working with text and canvas elements.
+When it comes to the style of text it is sometimes nice to use the two fillText and strokeText methods together where I fill first and then stroke over with another color. This will help make sure that the text will always show up depending on what is going on behind it when rendering. There might be other ways of helping with that, but it is of course one thing that comes to mind when rendering text to a canvas element also.
+
+There is a bit more to know about when it comes to setting the position of text, color, the font size and font family, and so forth of canvas text. There are at least a few properties, and methods that a javaScript developer should be aware of when it comes to using canvas to render text. So lets look at some quick simple examples of working with text and canvas elements for starters. The maybe move on to a few more advanced examples that really get into using canvas text in a project.
 
 <!-- more -->
 
