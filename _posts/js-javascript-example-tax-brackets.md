@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 618
-updated: 2020-06-26 12:43:03
-version: 1.8
+updated: 2020-06-26 12:56:45
+version: 1.9
 ---
 
 So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can be use to get the basic idea of a progressive tax system up and running. 
@@ -109,6 +109,8 @@ So for the hard coded data I went with the [2019 tax table](https://www.propubli
 ## 2 - Now for a demo the makes use of the module
 
 So now that I have my tax module worked out it is time to use it in in a HTML file. I want to just have a simple project that just has an input text element that I can use to input a taxable amount of money, and then a total tax is displayed as well as a breakdown for each tax bracket.
+
+So then I have a single update method that is called once, and then each time a key up event happens with the input element that is used to enter an amount of money that is subject to tax after deductions. This update method uses the public metjod of the tax module to get the main tax object that is used in rendering.
 
 ```html
 <html>
