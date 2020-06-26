@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-06-26 14:22:06
-version: 1.6
+updated: 2020-06-26 14:23:40
+version: 1.7
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -15,7 +15,7 @@ In this post I will be going over not one, but many JavaScript examples of a sol
 
 <!-- more -->
 
-## 1 - Many console.logs ans if statements
+## 1 - javaScript fizzbuz example that is many console.logs and if statements
 
 One solution is to start out with having a for loop that goes threw all values for i from 1 up to and including 100. the use conditional statements for Fizz, Buzz, FizzBuzz, and just logging out the value of i.
 
