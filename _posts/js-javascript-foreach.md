@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-26 10:09:05
-version: 1.47
+updated: 2020-06-26 10:10:29
+version: 1.48
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
@@ -41,7 +41,7 @@ In any case taking a moment to understand browser support for a native, or user 
 
 ## 2 - javaScript forEach and other basic examples of similar array prototype methods
 
-So there is the Array forEach method, but there are other array prototype methods like map, filter and reduce. The javaScript array forEach prototype method is very generic, some of these other options might be better choices when it comes to the nature of what it is that you need to do when looping over the full contents of an array. In this section I will be going over some quick examples of these array prototype method options.
+So there is the Array forEach method, but there are other array prototype methods like map, filter and reduce. The javaScript array forEach prototype method is very generic, some of these other options might be better choices when it comes to the nature of what it is that you need to do when looping over the full contents of an array. In this section I will be starting out with a basic array forEach example, but from there progress into these other array prototype methods of interest.
 
 ### 2.1 - First off javaScripts forEach array prototype method
 
