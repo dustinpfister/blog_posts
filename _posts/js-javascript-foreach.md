@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-26 10:20:16
-version: 1.50
+updated: 2020-06-26 10:38:52
+version: 1.51
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
@@ -121,7 +121,7 @@ console.log(a.some(test)); // true
 console.log(b.some(test)); // false
 ```
 
-## 3 - While loops as a javaScript for each solution.
+## 3 - While loops as a javaScript for each or for some solution.
 
 Another way to loop over all the contents of an array in javaScript would be to use a while loop. While loops have many advantages compared to the array forEach method or any other such method like array map. For example different expressions can be used to step an index variable that is used to get an element in an array. So then I can just loop over every other element in an array rather than all of them if I want. In addition keywords such as break and continue can be used to skip things completely which can come in handy how and then. Another thing about loops is that I am not defining logic in a method so I can use the return keyword in the body of the logic in the while loop if it is in the body of a function. Yet another advantage is that while loops can often prove to be a little faster then array for each when it comes to benchmark testing.
 
@@ -157,6 +157,29 @@ while (i--) {
 }
 console.log(sum); // 6
 ```
+
+### 3.3 - Start and end index values
+
+Another major advantage of using loops like while loops over array forEach is that I can set the starting condition, and ending condition in terms of the array index value. I can if I want start looping at an index value greater than zero, and end before I get to the end of the array for example.
+
+```js
+let a = [0, 1, 2, null, 3, 4, 5, 6, 7, null, 8, 9],
+b = [];
+ 
+let i = a.findIndex((n) => {
+        return n === null;
+    }),
+n = a[i + 1];
+while (n != null) {
+    b.push(n);
+    i += 1;
+    n = a[i + 1];
+}
+ 
+console.log(b); // [3,4,5,6,7]
+```
+
+There is of course also the array slice method that can also be used to get a new array that is a range of another array. However I would need to know both the starting and ending index values. With a while loop I can make coming across some kind of value a way to stop looping.
 
 ## 4 - Array like objects, the Function call prototype method, and array for each.
 
