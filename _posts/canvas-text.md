@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 509
-updated: 2020-03-10 12:47:42
-version: 1.32
+updated: 2020-06-26 14:43:57
+version: 1.33
 ---
 
 So in html [canvas text](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text) can be rendered with methods like the [fill text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) 2d drawing context method. There is also the [stroke text](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText) method as well that can be used as a replacement of or in addition to the fill text method. When it comes to the style of text it is sometimes nice to use the two methods together where I fill first and then stroke over with another color to helper make sure that the text will always show up depending on what is going on behind it when rendering.
@@ -59,7 +59,7 @@ ctx.font = '20px courier';
 ctx.fillText('hello world', 0, 20);
 ```
 
-## 3 - Canvas text color with fillStyle strokeStyle.
+## 3 - Setting Canvas text color with fillStyle and strokeStyle.
 
 The canvas text color can be set a number of ways. There is the fill style and stroke style properties that can be used to set the text color depending on what methods are being used to draw the text. There is also the values that are used for these properties and other canvas drawing context methods that have an impact on canvas text color such as the [global alpha](/2019/10/11/canvas-alpha/) property.
 
@@ -497,7 +497,7 @@ loop();
 </html>
 ```
 
-The resut of this when it is up and running is the text hello world moving up and down in a wave like pattern.
+The result of this when it is up and running is the text hello world moving up and down in a wave like pattern. Which is a cool little effect that is just scratching the surface with what can be done with canvas, text, and a little javaScript code.
 
 ## 9 - Conclusion
 
