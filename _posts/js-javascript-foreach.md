@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-06-26 10:10:29
-version: 1.48
+updated: 2020-06-26 10:16:14
+version: 1.49
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that do the same thing, but might be a better choice depending on what you want to do with an Array. Some such methods are Array prototype methods like [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), that can be used to create a new array based off of each element value in an array that it is called off for example.Another array prototype method that comes to mind would be [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. 
@@ -45,7 +45,7 @@ So there is the Array forEach method, but there are other array prototype method
 
 ### 2.1 - First off javaScripts forEach array prototype method
 
-So a basic example of Array.forEach might just involve using it to loop over the contents if an array of numbers and add up the numbers in the array to a sum variable. So such an example might look something like this then.
+So a basic example of Array.forEach might just involve using it to loop over the contents of an array of numbers, and add up the numbers in the array to a variable that will serve as a sum of those numbers. So such an example might look something like this then.
 
 ```js
 var arr = [1, 2, 3],
@@ -56,9 +56,11 @@ arr.forEach(function(n){
 console.log(sum); // 6
 ```
 
-Although this might work just fine with such a trivial task, there are many other ways to go about doing a simple sum of numbers in an array. The reduce method might prove to be a more appropriate way of going about doing so actually for example. There are of course more options to work with in the array prototype other than just the array for each method after all.
+Although this might work just fine with such a trivial task, there are many other ways to go about doing a simple sum of numbers in an array. The array reduce method might prove to be a more appropriate way of going about adding up a sum actually for example. There are of course more options to work with in the array prototype other than just the array for each method after all.
 
-Also In real projects what might need to happen for each element in an array might end up being far more complex than just adding up each number in the array. There might come a time where I might not want to start at index 0 each time, or I might want to do something with each array index and so forth. Once again these are reasons while I tend to prefer while loops, however I do fine myself using these convenience methods now and then. So lets look as some more basic examples that are written differently, but do more or less the same thing for now before moving on to so more advanced examples.
+Also In real projects what might need to happen for each element in an array might end up being far more complex than just adding up each number in the array. There might come a time where I might not want to start at index 0 each time, or I might want to do something with each array index and so forth. Once again these are reasons while I tend to prefer while loops, however I do fine myself using these convenience methods now and then. 
+
+So lets look as some more basic examples that make use of other array prototype methods that work in a similar way to that of the array for each prototype method. After this section we can start to look at loops, and custom user space options for specific tasks when it comes to making custom for each style methods.
 
 ### 2.2 - Array.reduce
 
