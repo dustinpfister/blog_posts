@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-06-26 14:00:19
-version: 1.1
+updated: 2020-06-26 14:04:38
+version: 1.2
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out something that just works, copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -36,6 +36,8 @@ for (var i = 1; i <= 100; i++) {
     }
 }
 ```
+
+This solution works as expected, but all ready looks pretty sloppy. Also what about further expanding the code to included additional messages to print for certain multiples or collections of multiples. That would result in yet even loner expressions for each possibility. So then there should be a cleaner way of doing the same thing  right? Well lets look at some more examples that do the same thing.
 
 ## 2 - Using an output variable
 
