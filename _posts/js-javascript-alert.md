@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2020-06-27 12:20:49
-version: 1.28
+updated: 2020-06-27 12:21:52
+version: 1.29
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often comes up in many code examples found on the open Internet as a way to log or display something. 
@@ -186,7 +186,7 @@ Maybe one of the best alternatives to using javaScript alert for the purpose of 
 
 ### 5.1 - Simple custom log function using console.log
 
-So here I have a basic custom log method using console.log in place of the javaScript alert method. This way I can do whatever I want with the message that is passed, such as displaying the public properties of an object in a custom way. For example I can test if the given value is an object, and if it is an object log each public key in a standard clean way property by property using Object.keys and Array.forEach or any other similar means. If the value is anyting other than an object then the value can just be logged out as always.
+So here I have a basic custom log method using console.log in place of the javaScript alert method. This way I can do whatever I want with the message that is passed, such as displaying the public properties of an object in a custom way. For example I can test if the given value is an object, and if it is an object log each public key in a standard clean way property by property using Object.keys and Array.forEach or any other similar means. If the value is anything other than an object then the value can just be logged out as always.
 
 ```js
 let log = (mess) => {
