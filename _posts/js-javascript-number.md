@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-06-27 12:36:47
-version: 1.19
+updated: 2020-06-27 12:38:27
+version: 1.20
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -81,7 +81,7 @@ console.log(arr);
 
 ## 4 - javaScript Numbers and max safe integer.
 
-With with the javaScript Number Object there is a built in constant called Number.MAX_SAFE_INTEGER. This number is the highest value that a developer can work with until they run into a weird problem when making certain comparisons. For example consider the following:
+With with the javaScript Number Object there is a built in constant called [Number.MAX_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). This number is the highest value that a developer can work with until they run into a weird problem when making certain comparisons. For example consider the following:
 
 ```js
 console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
