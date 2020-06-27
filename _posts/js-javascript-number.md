@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2019-07-09 15:44:54
-version: 1.18
+updated: 2020-06-27 12:36:47
+version: 1.19
 ---
 
-In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, still there are a lot of little quirks to look out for so lets get at it.
+In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
+
+Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, or at least that is the case traditionally. There is also a new [BigInt constructor](/2019/09/06/js-bigint/) also, but that is a matter for another post.
+
+In this post I will be going over some of the basics when it comes to just plain old javaScript numbers.
 
 <!-- more -->
 
