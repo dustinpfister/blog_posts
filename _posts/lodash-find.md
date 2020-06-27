@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2020-06-27 13:05:56
-version: 1.46
+updated: 2020-06-27 13:07:45
+version: 1.47
 ---
 
 So the [lodash find](https://lodash.com/docs/4.17.5#find) collection method can be used to find a single item in a collection or in other words an array or object in general when using the [lodash utility library](https://lodash.com/) with a javaScript project. There is also the native Array.find method these days, but that is just an array prototype method, and as such it can not just be used to find an object key in general with any object unless that object is an array or array like object.
@@ -220,7 +220,7 @@ console.log( _.find(data, {action:'dance'}) );  // {action:'dance'}
 
 ## 6 - FromIndex example
 
-This lodash method can accept a third argument that is the index where to start looking in the collection.
+The lodash find method can accept a third argument that is the index where to start looking in the collection if the collection is an array rather than a object with named keys.
 
 ```js
 var collection = [1,2,3,4,5,'a','b','c'],
