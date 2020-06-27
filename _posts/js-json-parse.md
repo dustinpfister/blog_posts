@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-06-21 10:45:27
-version: 1.6
+updated: 2020-06-27 12:47:34
+version: 1.7
 ---
 
 This will be a quick post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method which is a native javaScript built in way to parse a JSON string into a workable object at least on all modern platforms anyway. The use of the method is fairly straight forward just call the method off of the JSON object and pass a JSON string to parse into an object, the returned object is then the workable object from that json string. 
@@ -49,7 +49,7 @@ console.log(obj.x, obj.y); // 0 0
 
 ### 1.3 - The json parse reviver method argument
 
-A reviver method can be given as a second argument to the json parse method after giving the string to parse. this method will have a key and value argument, and the returned value will become the new value in the resulting object returned by json parse. 
+A reviver method can be given as a second argument to the json parse method after giving the string to parse. This method will have a key and value argument, and the returned value will become the new value in the resulting object returned by json parse. 
 
 ```js
 var str = '[1,2,3,4,\"a\"]',
@@ -69,3 +69,7 @@ try {
 console.log(obj);
 // [ 2, 4, 8, 16, 'a' ]
 ```
+
+## 2 - Conclusion
+
+So that is it for now when it comes to the JSON parse method. There is way more to write about when it comes to the use of the JSON parse method when it comes to some real code examples maybe. There is also of course the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method that is also worth mentioning when it comes to converting a workable object to a JSNON string for example.
