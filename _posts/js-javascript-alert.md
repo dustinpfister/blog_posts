@@ -5,11 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2020-06-27 12:07:44
-version: 1.27
+updated: 2020-06-27 12:20:49
+version: 1.28
 ---
 
-When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
+When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often comes up in many code examples found on the open Internet as a way to log or display something. 
+
+javaScript alert works okay for when it comes to all kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. 
+
+In addition even when it comes to making a finished product the use of the javaScript alert method is not always the best way to go about alerting the user to something in a client side javaScript environment. There ar a number of other ways to do so such as changing the value of the title text of a page, and creating, injecting, and then removing a new element into the page and so forth.
+
+In this post I will be giving a quick overview of the window.alert method in client side javaScript as well as a few other alternatives for logging things out, or displaying something other then the javaScript alter method. As the alert method is not always the best choice for debugging.
 
 <!-- more -->
 
