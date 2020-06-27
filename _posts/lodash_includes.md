@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2020-06-27 13:15:36
-version: 1.18
+updated: 2020-06-27 13:26:25
+version: 1.19
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -48,6 +48,24 @@ console.log( arr.includes('c') ); // true
 ```
 
 One issue of concern is that it is a late method, so it will not work in older clients without a polyfill. If you do care a great deal about supporting older clients it is not just a matter of using lodash though also. However getting into that would be off topic.
+
+### 2.2 - The native Array some method
+
+There is also the native array some method in the native javaScript array prototype that can also be used to see if an array contains a value or not. The includes method is really just a convenience method of sorts when compared to the array some method. The reason why is because the array some method will give a grater degree of control over what the condition is that is used to find out if a value equals another given value or not.
+
+```js
+let tester = (val) => {
+    return function (el) {
+        return el === val;
+    };
+};
+ 
+let arr = ['a', 'b', 'c'];
+ 
+console.log(arr.some( tester(42) )); // false
+console.log(arr.some( tester('d') )); // false
+console.log(arr.some( tester('c') )); // true
+```
 
 ## 3 - Example of \_.includes With objects
 
