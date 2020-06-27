@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2020-06-27 11:32:28
-version: 1.25
+updated: 2020-06-27 11:36:09
+version: 1.26
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -157,7 +157,7 @@ Maybe one of the best alternatives to using javaScript alert for the purpose of 
 
 ### 3.1 - Simple custom log function using console.log
 
-So here I have a basic custom log method using console.log in place of the javaScript alert method. This way I can do whatever I want with the message that is passed, such as displaying the public properties of an object in a custom way. For example I can test if the given value is an object, and if it is an object log each public key in a standard clean way property by property using Object.keys and Array.forEach or any other similar means.
+So here I have a basic custom log method using console.log in place of the javaScript alert method. This way I can do whatever I want with the message that is passed, such as displaying the public properties of an object in a custom way. For example I can test if the given value is an object, and if it is an object log each public key in a standard clean way property by property using Object.keys and Array.forEach or any other similar means. If the value is anyting other than an object then the value can just be logged out as always.
 
 ```js
 let log = (mess) => {
@@ -194,6 +194,8 @@ log({x: 40, y: 2});
 ```
 
 The best thing about his though is that as a project grows I am passing all stuff that is to be logged to a custom method rather than just console.log. This way I can change what logging is in one place very easily. For example say I do not want anything logged to the console for a moment, to do so i just need to comment out one line rather then every instance of console.log throughout my code.
+
+In real projects I often might use something like this, but it often will become something packed with additional features, many of which might be custom to the nature of the project. There is making it so the module name is part of what gets logged, along with additional information that might help with debugging. There are other features that come to mind such has having an argument that will serve as a way to only log if a given condition is true, and so forth.
 
 ## 4 - Conclusion
 
