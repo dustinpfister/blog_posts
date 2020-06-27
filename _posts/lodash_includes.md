@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2020-06-27 13:26:25
-version: 1.19
+updated: 2020-06-27 13:30:18
+version: 1.20
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -66,6 +66,8 @@ console.log(arr.some( tester(42) )); // false
 console.log(arr.some( tester('d') )); // false
 console.log(arr.some( tester('c') )); // true
 ```
+
+When just comparing a given value to all values in an array that is one thing. However in other cases I might need to do some more complex expression for each element in an array, and when it comes to that the array some method gives me that greater flexibility when it comes to having control over what is used to find if an array includes something.
 
 ## 3 - Example of \_.includes With objects
 
