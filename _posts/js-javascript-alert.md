@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2020-06-27 11:36:09
-version: 1.26
+updated: 2020-06-27 12:07:44
+version: 1.27
 ---
 
 When starting with javaScript alert is something that often comes up in many examples found on the Internet as a way to log something. It works okay for that when it comes to thous kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. In this post I will be giving a quick overview of the [window.alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method in client side javaScript as well as a few other alternatives for logging things to know it they are working as expected or not
@@ -151,11 +151,34 @@ n = prompt('Give a number', 0);
 
 The prompt method might still come in handy now and then, but for the most part I would prefer to go with input elements, or some other means of gathering user input that will not delay the event loop.
 
-## 3 - Writing a custom log function in place of using javaScript alert
+## 4 - Writing a custom once method in place of using javaScript alert
+
+In some situations I might only want something to be logged to be logged, altered, or displayed just once. one way to do so is to use a method that will create and return a method that will only log to the console once, and then that is it.
+
+```js
+let createOnce = () => {
+    var count = 0;
+    return function (mess) {
+        if (count === 0) {
+            console.log(mess);
+            count += 1;
+        }
+    };
+};
+ 
+var once = createOnce();
+ 
+var i = 10;
+while (i--) {
+    once(i); // 9
+}
+```
+
+## 5 - Writing a custom log function in place of using javaScript alert
 
 Maybe one of the best alternatives to using javaScript alert for the purpose of logging something for the purpose of debugging might be to have some kind of custom log method. This is something that I see going on in a log or projects and when I think about it for a second it makes a whole lot of sense. I can define the custom log method in an external javaScript file and then link to it in any page or module, and redefine what the logic of the custom log method is not and then when necessary.
 
-### 3.1 - Simple custom log function using console.log
+### 5.1 - Simple custom log function using console.log
 
 So here I have a basic custom log method using console.log in place of the javaScript alert method. This way I can do whatever I want with the message that is passed, such as displaying the public properties of an object in a custom way. For example I can test if the given value is an object, and if it is an object log each public key in a standard clean way property by property using Object.keys and Array.forEach or any other similar means. If the value is anyting other than an object then the value can just be logged out as always.
 
@@ -197,6 +220,6 @@ The best thing about his though is that as a project grows I am passing all stuf
 
 In real projects I often might use something like this, but it often will become something packed with additional features, many of which might be custom to the nature of the project. There is making it so the module name is part of what gets logged, along with additional information that might help with debugging. There are other features that come to mind such has having an argument that will serve as a way to only log if a given condition is true, and so forth.
 
-## 4 - Conclusion
+## 6 - Conclusion
 
 So a javaScript alert in client side javaScript might be okay for some hello world examples, and also maybe the use of it is called for with some actual projects as well. However there are still often better alternatives when it comes to letting the user know that something is up. Also when it comes to debugging there are a wide range of better options that are far more useful, even beyond that of just console.lof by itself.
