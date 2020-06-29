@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2020-06-21 15:44:23
-version: 1.6
+updated: 2020-06-29 19:41:16
+version: 1.7
 ---
 
-When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end or at any point where needed in the string. If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others. 
+When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end or a string, or at any point where needed in the string for that matter. If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others.
 
 There is more then one text pattern for line breaks depending on the operating system you want the content to work with. However for the most part you can get away with just using one or the other, many well designed applications are familiar with the different patterns ans will detect what the situation is. In any case this will be a quick post on line breaks and javaScript strings in both a nodejs and client environment.
 
