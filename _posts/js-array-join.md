@@ -5,11 +5,11 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-06-21 10:52:12
-version: 1.8
+updated: 2020-06-28 20:38:45
+version: 1.9
 ---
 
-The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string with a string that is to be used between each element.
+The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array.
 
 One of the great things about the js array join method is that it has been part of javaScript for a real long time. So no need to bother with polyfills with this one, it will even work in browsers as old as IE 5.5. Even so there is a [join method in lodash anyway](/2018/08/11/lodash_join/), but when it comes to that it would seem that is just there for the sake of consistency and is not one of the most compelling methods in lodash to warrant a need to continue using it when it comes to the so called safety net aspect of using lodash.
 
