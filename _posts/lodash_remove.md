@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2020-06-30 11:14:52
-version: 1.22
+updated: 2020-06-30 11:32:56
+version: 1.23
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem. The way I would resolve the problem is often by looping threw the array backwards, and using an array prototype method like Array.splice to purge elements. 
@@ -19,7 +19,7 @@ The lodash remove method helps to make quick work of removing elements from an a
 
 ## 1 - lodash remove basic example
 
-The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/). It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element that you want out of there. This method that is pased as the second argument will be given each element as an argument, and this of course can be used to define an expression that will evaluate to true or false. The return keyword can then be used in the body of that method, and if a true value is returned then the element in question will be removed from the array in place.
+The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/). It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element that you want out of there. This method that is passed as the second argument will be given each element as an argument, and this of course can be used to define an expression that will evaluate to true or false. The return keyword can then be used in the body of that method, and if a true value is returned then the element in question will be removed from the array in place.
 
 ```js
 var arr = ['foo', 27, 'man', 42, 'chew'];
@@ -36,7 +36,30 @@ console.log(arr); // ['foo','man',chew];
 
 So the method that you pass will return true of false, if what is returned is true the element will be removed.
 
-## 2 - Array of enemy objects
+## 2 - lodash filter method for removing elements without mutating the source array
+
+So one little problem with the lodash remove method is that it will mutate the array in place. In some situations I might not want to mutate the given source array, so another lodash method that comes to mind when it comes to removing elements from an array is the [lodash filter](/2018/06/18/lodash_filter/) method. This method works more or less the same way as the lodash remove method only with a few differences. One as I mentioned is that it will return a new array, rather than mutating the source array, and the other is that a true boolean value is what is returned to find out what elements are to remain rather than be removed.
+
+```js
+let _ = require('lodash');
+
+let arr = ['foo', 27, 'man', 42, 'chew'];
+ 
+let arr2 = _.filter(arr, (el) => {
+ 
+    // filter all numbers, by returning true
+    // for everything that is not a number
+    return typeof el != 'number';
+ 
+});
+ 
+console.log(arr); // ['foo', 27, 'man', 42, 'chew'];
+console.log(arr2); // ['foo','man',chew];
+```
+
+If I want to still mutate the source array I can just reassign the new array to the same variable as a way to obtain the same result as the lodash remove method. So then becuase I can use the lodash filter method to remove both without and with replacing the source array that makes the lodash remove method a little redundant. This might be one of the reasons why you will nit see a remove method in the native javaScript array prototype, I do not see a need for it really. However of course when it comes to some kind of user space utility library there is not harm in making it part of that even if it is just for the heck of it.
+
+## 3 - Array of enemy objects
 
 When it comes to making a game that involves an array of enemies that the player interacts with, often there will be some kind of process that involves purging enemies from an array. The _.remove method can be used to make quick work of that.
 
@@ -66,11 +89,11 @@ console.log(enemy);
 //  { id: 'en_3', hp: 50, maxHP: 50 } ]
 ```
 
-## 3 - Vanilla js
+## 4 - Vanilla js
 
 In this section I will be going over vanilla js solutions for removing elements from an array. There are many array prototype methods that are of interest when it comes to removing one or more elements from an array, as well as ways of making my own custom remove methods for projects if needed. So in this section we will be kicking lodash to the curb and working with what there is to work with in modren, and even not so modern native jjavaScript specs.
 
-### 3.1 - Using Array.splice to remove a element
+### 4.1 - Using Array.splice to remove a element
 
 So one way to remove an element from an Array with native core javaScript is to use the Array.splice prototype method. This is often confused with Array.slice that does the same thing only it returns a new array rather than mangling an existing one. Array.splice might be one of the best options if you are someone that worries a great deal about backward compatibility with older browsers. Unlike other native options like Array.filter, Array.splice is a pre ES5 Array prototype method that will work in browsers as old as IE 5.5.
 
@@ -82,7 +105,7 @@ console.log(arr); // [ 1, 2, 4 ]
 
 The problem with Array.splice by itself at least is that I must know the index of the element that I want to remove. It is not to hard to write a method like the lodash remove method with native javaScript that makes use of Array.splice though. There are a few things to be ware of when doing so though when removing more than one element.
 
-### 3.2 - Array.splice in while loops
+### 4.2 - Array.splice in while loops
 
 When removing more than one element with Array.splice in a loop such as a while loop a problem may come up that has to do with the fact that the length of the array changing when one or more elements are removed.
 
@@ -115,7 +138,7 @@ while (i--) {
 console.log(arr); // [3,5]
 ```
  
-### 3.3 - Remove method using Array.splice
+### 4.3 - Remove method using Array.splice
  
 So making a remove method with Array.splice is not to hard. If you are not familiar with how to write your own higher order functions then it is not a bad idea to make one or two now and then, even if they are kind of basic. A higher order function is just a fancy term that is used to refer to a function that accepts another function as an argument and or returns another function when called. This example is then an exercise of writing something that is the latter of the two, sense I will be returning an Array..
  
@@ -139,6 +162,6 @@ console.log(remove(nums, function (n) {
 
 There are of course many different ways that a function such as this could be written. I like Array.splice because of the great browser support, but if you are not such a nut with that sort of thing another option might involve the use of Array.filter for example.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 So lodash is packed full of helpful little methods like the lodash remove method. It is true that many of the methods in lodash are redundant, but that is not always the case. Sometimes a lodash method does bring a little more to the table compared to a native counterpart. If you enjoyed reading this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general.
