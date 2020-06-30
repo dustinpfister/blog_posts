@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 286
-updated: 2020-06-30 12:28:17
-version: 1.8
+updated: 2020-06-30 12:32:42
+version: 1.9
 ---
 
 So it is time for yet another [lodash](https://lodash.com/) post, this time on the lodash [\_.get](https://lodash.com/docs/4.17.10#get) that allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. This method of getting at properties of objects might prove to be a little more helpful compared to just getting properties the way one would in native javaScript in some cases, but still I can nit say this is one of the most compelling methods to support the use of lodash these days. In any case I will be writing about the lodash get method as well as other ways of getting at properties of object in general in this post.
@@ -76,7 +76,7 @@ In most cases I can do just fine with one of these just fine, but if for some re
 
 ### 2.3 - Making an alternative to \_.get in plain old javaScirpt
 
-I quickly put together this in a flash, For the most part it seems to work in the same manner, but it is not battle tested.
+So now there is the question of making ones own lodash get method that works more or less the same way. Most of the time making a stand alone method for a lodash method is not so hard, and the lodash get method is not really an exception to this. I quickly put together this in a flash, for the most part it seems to work in the same manner, but it is not battle tested.
 
 ```js
 var getByPath = function(obj, path, def) {
