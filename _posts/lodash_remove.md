@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2020-06-30 11:32:56
-version: 1.23
+updated: 2020-06-30 11:38:04
+version: 1.24
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem. The way I would resolve the problem is often by looping threw the array backwards, and using an array prototype method like Array.splice to purge elements. 
@@ -57,11 +57,11 @@ console.log(arr); // ['foo', 27, 'man', 42, 'chew'];
 console.log(arr2); // ['foo','man',chew];
 ```
 
-If I want to still mutate the source array I can just reassign the new array to the same variable as a way to obtain the same result as the lodash remove method. So then becuase I can use the lodash filter method to remove both without and with replacing the source array that makes the lodash remove method a little redundant. This might be one of the reasons why you will nit see a remove method in the native javaScript array prototype, I do not see a need for it really. However of course when it comes to some kind of user space utility library there is not harm in making it part of that even if it is just for the heck of it.
+If I want to still mutate the source array I can just reassign the new array to the same variable as a way to obtain the same result as the lodash remove method. So then because I can use the lodash filter method to remove both without and with replacing the source array that makes the lodash remove method a little redundant. This might be one of the reasons why you will nit see a remove method in the native javaScript array prototype, I do not see a need for it really. However of course when it comes to some kind of user space utility library there is not harm in making it part of that even if it is just for the heck of it.
 
 ## 3 - Array of enemy objects
 
-When it comes to making a game that involves an array of enemies that the player interacts with, often there will be some kind of process that involves purging enemies from an array. The _.remove method can be used to make quick work of that.
+When it comes to making a game that involves an array of enemies that the player interacts with, often there will be some kind of process that involves purging enemies from an array. The\ _.remove method can be used to make quick work of that, mutating the array in place, and also making the code easy to read.
 
 ```js
 var enemy = [{
@@ -88,6 +88,8 @@ console.log(enemy);
 // [ { id: 'en_1', hp: 12, maxHP: 50 },
 //  { id: 'en_3', hp: 50, maxHP: 50 } ]
 ```
+
+Still often when I make pet projects that are a game of sorts I do not often use lodash as part of the stack, if anything at all actually. I will often just go with some kind of vanilla javaScript solution, and even make my own remove methods for game modules because depending on the nature of the game there are often other things that need to happen to the state of the game object when something is removed.
 
 ## 4 - Vanilla js
 
