@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2020-06-30 11:38:04
-version: 1.24
+updated: 2020-06-30 11:47:07
+version: 1.25
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem. The way I would resolve the problem is often by looping threw the array backwards, and using an array prototype method like Array.splice to purge elements. 
@@ -139,8 +139,22 @@ while (i--) {
 }
 console.log(arr); // [3,5]
 ```
+
+### 4.3 - Array filter
+
+So there is a native array filter method in the core javaScript array prototype. So when it comes to just using javaScript by itself there is a filter method there all ready to work with. It works basically the same way as the lodash filter method only it is called off of in instance of an array. Just as the lodash filter method it will not mutate the array in place also.
+
+```js
+let arr = [1, 2, 'foo', 3, 'bar', 4];
  
-### 4.3 - Remove method using Array.splice
+arr = arr.filter((el) => {
+        return typeof el == 'number';
+    });
+ 
+console.log(arr);
+```
+
+### 4.4 - Remove method using Array.splice
  
 So making a remove method with Array.splice is not to hard. If you are not familiar with how to write your own higher order functions then it is not a bad idea to make one or two now and then, even if they are kind of basic. A higher order function is just a fancy term that is used to refer to a function that accepts another function as an argument and or returns another function when called. This example is then an exercise of writing something that is the latter of the two, sense I will be returning an Array..
  
