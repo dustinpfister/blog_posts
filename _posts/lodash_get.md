@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 286
-updated: 2020-06-30 12:32:42
-version: 1.9
+updated: 2020-06-30 12:40:55
+version: 1.10
 ---
 
 So it is time for yet another [lodash](https://lodash.com/) post, this time on the lodash [\_.get](https://lodash.com/docs/4.17.10#get) that allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. This method of getting at properties of objects might prove to be a little more helpful compared to just getting properties the way one would in native javaScript in some cases, but still I can nit say this is one of the most compelling methods to support the use of lodash these days. In any case I will be writing about the lodash get method as well as other ways of getting at properties of object in general in this post.
+
+In many frameworks a get method might do all kinds of things that involve getting something. For example in an http client module a get method might be a shorthand method for preforming a get request, in express the get method there is used for both getting an application setting as well as defining what need to happen for incoming get requests. However lodash is a general purpose core javaScript utility library that will work well in both a front end as well as back end environment, so the lodash get method has to do with just simply getting object property values.
 
 With the lodash get method I can also pass an optional default value to the method in case the path to the value is undefined. So this might help to make the method a little more pointless, but there are still native ways of doing the same thing that I often find myself doing in place of the use of lodash get. It might also be a good idea to explore some other options for quickly getting values from an object in javaScript as well, so I will be writing about some vanilla js alternatives to \_.get while I am at it.
 
