@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 306
-updated: 2018-10-17 13:32:33
-version: 1.8
+updated: 2020-06-30 12:53:58
+version: 1.9
 ---
 
-For todays [lodash](https://lodash.com/) post I have come around to taking a moment to write a quick post about [\_.reverse](https://lodash.com/docs/4.17.10#reverse). Lodash is a great project, but many of the methods are pretty much just reverences to native methods, and \_.reverse is an example of one of these. Also the native array method on which \_.reverse is based has excellent backward compatibility, as the method will work on browsers as old as IE 5.5. So then \_.reverse is not one of those lodash methods that help support a case that lodash acts as a safety net of sorts when it comes to the question of supporting older browsers. Never the less in this post I will be writing about \_.reverse and the native [Array.reverse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) methods as a means to reverse the order of an array in javaScript, and also cover some related topics as well.
+For todays [lodash](https://lodash.com/) post I have come around to taking a moment to write a quick post about [\_.reverse](https://lodash.com/docs/4.17.10#reverse). Lodash is a great project, but many of the methods are pretty much just reverences to native methods, and \_.reverse is an example of one of these. Also the native array method on which \_.reverse is based has excellent backward compatibility, as the method will work on browsers as old as IE 5.5. 
+
+So then \_.reverse is not one of those lodash methods that help support a case that lodash acts as a safety net of sorts when it comes to the question of supporting older browsers. At least it is worth saying that the lodash reverse method is not the best example of safely net types methods in lodash. Never the less in this post I will be writing about \_.reverse and the native [Array.reverse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) methods as a means to reverse the order of an array in javaScript, and also cover some any and all related topics that might pop up in the process of doing so.
 
 <!-- more -->
 
