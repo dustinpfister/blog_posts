@@ -5,19 +5,21 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2020-06-30 11:05:24
-version: 1.20
+updated: 2020-06-30 11:10:03
+version: 1.21
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem. The way I would resolve the problem is often by looping threw the array backwards, and using an array prototype method like Array.splice to purge elements. 
-When it comes to just using native javaScript alone of course there are ways of just going ahead and removing elements from an array. However this is a post on lodash where it is assumed that lodash is part of the stack of a project so with that said there is also the [_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/). The lodaah remove metjod helps to make quick work of removing elements from an array if lodash is there to work with, and I sapose it would make sense to use it if it is indeed there. Still lots of developers are transitioning away from lodash, so I will also be looking at some vanilla js alternatives to the lodash remove method in addition to just what lodash has to work with by itself.
+When it comes to just using native javaScript alone of course there are ways of just going ahead and removing elements from an array. However this is a post on lodash where it is assumed that lodash is part of the stack of a project so with that said there is also the [\_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/). 
+
+The lodash remove method helps to make quick work of removing elements from an array if lodash is there to work with, and I suppose it would make sense to use it if it is indeed there. It works by passing a metjod that is used to define the conditions that are to be used to remove one or more elements from an array, and on top of that will mutate the array in place. There are however other methods of interest, both in lodash and native javaScript though such as the filter method that might be a better option as it will do the same only not mutate the array in place. Still lots of developers are transitioning away from lodash, so I will also be looking at some vanilla js alternatives to the lodash remove method in addition to just what lodash has to work with by itself.
 
 <!-- more -->
 
 
 ## 1 - lodash remove basic example
 
-The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/). It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element.
+The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/). It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element that you want out of there.
 
 ```js
 var arr = ['foo', 27, 'man', 42, 'chew'];
