@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2020-06-30 11:10:03
-version: 1.21
+updated: 2020-06-30 11:14:52
+version: 1.22
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem. The way I would resolve the problem is often by looping threw the array backwards, and using an array prototype method like Array.splice to purge elements. 
@@ -19,7 +19,7 @@ The lodash remove method helps to make quick work of removing elements from an a
 
 ## 1 - lodash remove basic example
 
-The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/). It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element that you want out of there.
+The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/). It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element that you want out of there. This method that is pased as the second argument will be given each element as an argument, and this of course can be used to define an expression that will evaluate to true or false. The return keyword can then be used in the body of that method, and if a true value is returned then the element in question will be removed from the array in place.
 
 ```js
 var arr = ['foo', 27, 'man', 42, 'chew'];
@@ -68,7 +68,7 @@ console.log(enemy);
 
 ## 3 - Vanilla js
 
-In this section I will be going over vanilla js solutions for removing elements from an array.
+In this section I will be going over vanilla js solutions for removing elements from an array. There are many array prototype methods that are of interest when it comes to removing one or more elements from an array, as well as ways of making my own custom remove methods for projects if needed. So in this section we will be kicking lodash to the curb and working with what there is to work with in modren, and even not so modern native jjavaScript specs.
 
 ### 3.1 - Using Array.splice to remove a element
 
