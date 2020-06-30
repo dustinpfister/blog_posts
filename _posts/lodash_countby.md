@@ -5,17 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2020-06-30 18:34:52
-version: 1.7
+updated: 2020-06-30 18:39:17
+version: 1.8
 ---
 
-Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a metjod that is called for each element in a collection, and each value is the count for that value that is returned. I do this just because lodash is still very popular, and it makes sense to play around with it now and then, and maybe compare what there is to work with to what is available in plain old core javaScript by itself. 
+Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a metjod that is called for each element in a collection, and each value is the count for that value that is returned. In other words the \_.countBy method returns a new object with keys, and values generated from a given method. I do this just because lodash is still very popular, and it makes sense to play around with it now and then, and maybe compare what there is to work with to what is available in plain old core javaScript by itself. 
 
 When I do so sometimes it looks like native methods are just being wrapped by lodash, other times a lodash method does seem to bring something new to the table. In other cases there is no native javaScript counterpart, so then it is just a question if the method is something that I will ever use in a project, and how much time it saves me from writing my own solution. I am not sure if the lodash count by method is one such method that I would find myself using often, or at all, but this is the lodash method for today so lets look at a few examples.
 
 <!-- more -->
-
-The \_.countBy method returns a new object with keys, and values generated from a given method.
 
 ## 1 - Basic count by Example
 
@@ -50,14 +48,14 @@ So it seems that this can be a useful method to be aware of to quickly find out 
 
 ## 2 - Quickly get a count of word length for each word in an array
 
-The '\_.property' iteratee shorthand can be used to get an object of keys where each key is a word length, and each value is how many times a word of that length appears in the collection.
+One of the advantages of using may of these lodash methods is that shorthands like the '\_.property' iteratee shorthand can be used to get an object of keys where each key is a word length, and each value is how many times a word of that length appears in the collection.
 
 ```js
 console.log(_.countBy(['foo', 'man', 'chew','happy','bar'], 'length'));
  // {3: 3, 4: 1, 5: 1}
 ```
 
-The following will give the same result
+The following will give the same result when it comes to giving a method rather than using the property shorthand.
 ```js
 console.log(_.countBy(['foo', 'man', 'chew','happy','bar'], function(str){
     return str.length;
