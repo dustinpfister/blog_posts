@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2019-07-22 20:08:52
-version: 1.30
+updated: 2020-07-01 13:48:22
+version: 1.31
 ---
 
-The [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) in javaScript is an event that will fire when the user sets the focus on an element. The focus event often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. There other ways in which a focus event can fire by way of javaScript code by using an element reference object method like the [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method. So there are ways that a focus event can fire by way of user action, and there are also ways to which a focus event can be simulated also.
+The javaScript [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) is an event that will fire when the user sets the focus on an element. The focus event often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. In addition there is also the [on blur](/2019/01/08/js-onblur/) event that will happen when an element loses this focus after it has gained such a focus. The javaScript focus event along with blur, onkeydown, and on chnage are often used all togetaher when working out some kind of user interface that makes use of one ore more input tags.
+
+There other ways in which a focus event can fire by way of javaScript code by using an element reference object method like the [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method. So there are ways that a focus event can fire by way of user action, and there are also ways to which a focus event can be simulated by way of javaScript code.
 
 In this post I will be covering some quick examples when it comes to working with focus javaScript events, how to attach handers for such events, and how to simulate them, and also how to make elements that can not be focused by default focusable.
 
