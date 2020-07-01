@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-07-01 13:10:58
-version: 1.9
+updated: 2020-07-01 13:21:39
+version: 1.10
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other environments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
@@ -124,4 +124,6 @@ When I open the index.html file in my browser I get a looping animation as expec
 
 ## 4 - Conclusion
 
-So request animation frame is the method of choice that I always go with when working out a canvas example of any kind. I have found that it is generally a better choice than any other options such as set time out or set interval methods.
+So request animation frame is the method of choice that I always go with when working out a canvas example of any kind, or to do anything that can be a kind of HTML animation in general actually when it comes to CSS effects. I have found that it is generally a better choice than any other options such as set time out or set interval methods, as the request animation frame is designed for this sort of thing in mind rather than just simply updating a model that does not need to be rendered right alway.
+
+In this post I did not get into canvas animation in depth, but I do have a few posts on canvas including [canvas animation](/2019/10/10/canvas-example-animation-basics/) that might be worth checking out if you are new to canvas, requestAnimationFrame and javaScript in general.
