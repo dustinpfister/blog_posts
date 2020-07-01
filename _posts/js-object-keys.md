@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 08:27:35
-version: 1.25
+updated: 2020-07-01 08:30:19
+version: 1.26
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -94,7 +94,7 @@ For the most part the Object keys method is well supported these days. In additi
 
 ## 4 - Using Object.getOwnPropertyNames to get non enumerable own property object keys as well
 
-In some situations I might have some properties in an Object own properties that are not enumerable. In a way these kinds of properties are still enumerable, it just means that it can not be done with a for in loop or Object.keys. The Object.getOwnProperyNames method can still be used to include these kinds of object keys.
+In some situations I might have some properties in an Object own properties that are not enumerable. In a way these kinds of properties are still enumerable, it just means that it can not be done with a for in loop or Object.keys. The Object.getOwnProperyNames method can still be used to include these kinds of object keys in an array.
 
 ```js
 var point = {
@@ -114,4 +114,4 @@ console.log(Object.getOwnPropertyNames(point)); // ["x", "y", "color"]
 
 ## 5 - Conclusion
 
-So that is it for my post on Object keys in javaScript. There are keys that are enumerable so a list of key names can be easily obtained by using Object.keys or a for loop, and then Object.getOwnPropertyNames to get all Object own property names.
+So that is it for my post on Object keys in javaScript. There are keys that are enumerable so a list of key names can be easily obtained by using Object.keys or a for loop, and then Object.getOwnPropertyNames to get all Object own property names. getting the public and or private key names of an object is just often one part of a certain something that needs to happen though. So being aware of other object static methods, and prototype methods helps when it comes to working out all kidns of soultions for various coding problems on an as needed basis.
