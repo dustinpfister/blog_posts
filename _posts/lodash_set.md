@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2020-07-01 11:01:03
-version: 1.8
+updated: 2020-07-01 11:11:54
+version: 1.9
 ---
 
 A few months ago I wrote a post on the lodash [\_.get](/2018/09/24/lodash_get/) method that is used for getting a property of an object by way of a path string, and setting a default value for the property in the event that the object property is undefined. So then it would make sense to write a post on [lodash](https://lodash.com/) and the lodash [\_.set](https://lodash.com/docs/4.17.10#set) method as well sense I did one on lodash get. 
@@ -21,7 +21,7 @@ Many of these tasks that the lodash \_.set and other related methods accomplish 
 
 ## 1 - Basic \_.set example
 
-The basic idea of \_.set is that a value can be set by just passing the object, and then a path in string format, followed by the value to set the property to.
+The basic idea of \_.set is that a value can be set by just passing the object, and then a path in string format, followed by the value to set the property to. In the event that the property is not there then a path to it will be cerated, so it is a pretty robust litle way to make sure that object properties are always there in an object of interest.
 
 ```js
 let enemy = {
@@ -56,8 +56,6 @@ console.log( _.get(enemy, path) ); // true
 It's not like setting a property of an object is all that hard without lodash, but this method allows for setting the value with a string format path which can be helpful in some situations. Another added benefit is that it can also be used to create paths in the event that they are not there as well.
 
 ```js
-let _ = require('lodash');
- 
 let foo = {};
  
 let path = 'bar.foobar.answer.to.life';
