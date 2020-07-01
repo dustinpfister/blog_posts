@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 08:44:08
-version: 1.28
+updated: 2020-07-01 08:45:06
+version: 1.29
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -127,7 +127,7 @@ if (!Object.keys) {
 }
 ```
 
-I have come to find that I prefer to use a user space option over polyfilling. One such example of this might be the lodash keys method. However when using the lodash keys method it is not just a question of using lodash and being done with it. Late versions of lodash might just reference the native object keys method actually, so it is still a good idea to keep an eye and how far back browser support goes with the version of lodash that you are suing if you choose to go that way with it.
+I have come to find that I prefer to use a user space option over polyfilling. One such example of this might be the [lodash keys](/2019/05/14/lodash_keys/) method. However when using the lodash keys method it is not just a question of using lodash and being done with it. Late versions of lodash might just reference the native object keys method actually, so it is still a good idea to keep an eye and how far back browser support goes with the version of lodash that you are suing if you choose to go that way with it.
 
 ## 3 - Using a for in loop
 
