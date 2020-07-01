@@ -5,11 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2019-11-05 15:08:49
-version: 1.7
+updated: 2020-07-01 11:01:03
+version: 1.8
 ---
 
-A few months ago I wrote a post on the [\_.get](/2018/09/24/lodash_get/) method so for todays post on [lodash](https://lodash.com/) I might as well write one on [\_.set](https://lodash.com/docs/4.17.10#set) as well. The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a property rather than getting it when using path strings to do so. Another lodash method that comes to mind that might be considered a part of this set of method is the [lodash \_.has](/2019/05/15/lodash_has/) method that can be used to not get, or set, but simply check it an object has a certain path or not.
+A few months ago I wrote a post on the lodash [\_.get](/2018/09/24/lodash_get/) method that is used for getting a property of an object by way of a path string, and setting a default value for the property in the event that the object property is undefined. So then it would make sense to write a post on [lodash](https://lodash.com/) and the lodash [\_.set](https://lodash.com/docs/4.17.10#set) method as well sense I did one on lodash get. 
+
+The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a property rather than getting it when using path strings to do so. Another lodash method that comes to mind that might be considered a part of this set of method is the [lodash \_.has](/2019/05/15/lodash_has/) method that can be used to not get, or set, but simply check it an object has a certain path or not. 
+
+However it might not be so hard to just do what these methods do with just plain vanilla javaScript by itself, so lets look a few quick examples of lodash set and other lodash methods, as well as any related topics that might come up as we do so.
 
 <!-- more -->
 
