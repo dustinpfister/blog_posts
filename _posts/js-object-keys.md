@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 07:58:56
-version: 1.22
+updated: 2020-07-01 08:03:48
+version: 1.23
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -36,6 +36,10 @@ javaScript supports prototype based inheritance, a subject I will not be getting
 
 The Object.keys method can be used to get the objects enumerable own key names. In other words key names that will show up in a loop like that of a for in loop, and have not been created in a way that allows for them to be hidden from such a loop. The Object.keys method is a Static method of the Main javaScript Object Class Object rather than a prototype method. So in other words to use the Object keys method I just call the Object.keys static method and pass the object that I want an array of key names for. After calling the method the returned result will end up being an array of public keys for the given object.
 
+### 2.1 - A Basic Object keys method example
+
+So say I have an object that contains some public keys and corresponding values such as a x and y key along with number values for example. If just simply want an array of these key names i can pass the Object to the Object keys method as the first and only argument, and then assign the array that is returned to a variable. The variable will then contain my array of key names for this object of mine.
+
 ```js
 var obj = {
     x: 0,
@@ -51,6 +55,8 @@ var keys = Object.keys(obj);
  
 console.log(keys); // ["x", "y", "attack", "hp"]
 ```
+
+So you get the basic idea, but lets look at a few more use cases examples just to help to get a better understanding of how useful this method is in all kinds of situations that will creep up now and then.
 
 ## 3 - Using a for in loop
 
