@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-06-30 18:12:15
-version: 1.6
+updated: 2020-07-01 12:02:33
+version: 1.7
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other enviorments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
@@ -106,6 +106,21 @@ For a basic demo of requestAnimationFrame I put together something that involves
 ```
 
 RequestAnimation frame takes only one argument that is the method to call when it is time to update the animation. Often it is used in a recursive fashion like this, and because it only takes one argument something else must be done in order to set a frame rate.
+
+So now it is just a matter of saving the javaScript code in a basic.js file, and then create an index.html file like this.
+
+```html
+<html>
+    <head>
+        <title>request animation frame</title>
+    </head>
+    <body>
+        <script src="basic.js"></script>
+    </body>
+</html>
+```
+
+When I open the index.html file in my browser I get a looping animation as expected.
 
 ## 4 - Conclusion
 
