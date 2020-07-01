@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 08:34:31
-version: 1.27
+updated: 2020-07-01 08:44:08
+version: 1.28
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -76,6 +76,58 @@ console.log(arr);
 ```
 
 So it goes without saying that is is useful to be aware of the Object keys method as well as methods like the array map method and the string split method when it comes to working out solutions for weird things like this that might come up now and then when working with javaScript code. I will nit be getting into array map, string split, and regular expressions that are ysed in this example of the Object keys method here. However those topics sure are worth reading up on if you have not done so before hand.
+
+### 2.3 - using a polyfill for object keys
+
+The object keys static method has decent browser support these days. However still in some situations the method might need to be pollyfilled, as a way to make sure that the method is there to work with in the event that a user visits a site with a browser that is out of date will not run into an issue with code braking as a result of the object keys method not being there.
+
+Here is an Object keys polyfill that i just copied and pasted from the Mozilla page for object keys just so save you the trip there.
+
+```js
+// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+if (!Object.keys) {
+  Object.keys = (function() {
+    'use strict';
+    var hasOwnProperty = Object.prototype.hasOwnProperty,
+        hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+        dontEnums = [
+          'toString',
+          'toLocaleString',
+          'valueOf',
+          'hasOwnProperty',
+          'isPrototypeOf',
+          'propertyIsEnumerable',
+          'constructor'
+        ],
+        dontEnumsLength = dontEnums.length;
+ 
+    return function(obj) {
+      if (typeof obj !== 'function' && (typeof obj !== 'object' || obj === null)) {
+        throw new TypeError('Object.keys called on non-object');
+      }
+ 
+      var result = [], prop, i;
+ 
+      for (prop in obj) {
+        if (hasOwnProperty.call(obj, prop)) {
+          result.push(prop);
+        }
+      }
+ 
+      if (hasDontEnumBug) {
+        for (i = 0; i < dontEnumsLength; i++) {
+          if (hasOwnProperty.call(obj, dontEnums[i])) {
+            result.push(dontEnums[i]);
+          }
+        }
+      }
+      return result;
+    };
+  }());
+}
+```
+
+I have come to find that I prefer to use a user space option over polyfilling. One such example of this might be the lodash keys method. However when using the lodash keys method it is not just a question of using lodash and being done with it. Late versions of lodash might just reference the native object keys method actually, so it is still a good idea to keep an eye and how far back browser support goes with the version of lodash that you are suing if you choose to go that way with it.
 
 ## 3 - Using a for in loop
 
