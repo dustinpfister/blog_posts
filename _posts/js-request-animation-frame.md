@@ -5,11 +5,11 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-07-01 12:12:08
-version: 1.8
+updated: 2020-07-01 13:10:58
+version: 1.9
 ---
 
-When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other enviorments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
+When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other environments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
 
 <!-- more -->
 
@@ -124,4 +124,4 @@ When I open the index.html file in my browser I get a looping animation as expec
 
 ## 4 - Conclusion
 
-So request animation frame is the method of choice that I always go with when working out a canvas example of any kind. I have found that it is generaly a better choice than any other options such as set time out or set inteval methods.
+So request animation frame is the method of choice that I always go with when working out a canvas example of any kind. I have found that it is generally a better choice than any other options such as set time out or set interval methods.
