@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 674
-updated: 2020-07-01 10:46:22
-version: 1.3
+updated: 2020-07-01 10:48:17
+version: 1.4
 ---
 
 I often start out each new month with a new post on lodash because it would seem that there is still much interest in this utility library despite its age. For this post I will be working out a few quick examples of the [lodash reject](https://lodash.com/docs/4.17.15#reject) method that is just simple an inversion of the [lodash filter](/2018/05/18/lodash_filter/) method. This method in lodash is not really one of the redeeming methods in lodash that make the library worth while as there is of course the native array filter method that can be used to quickly create a reject method in plain old javaScript by itself.
@@ -31,6 +31,8 @@ console.log(nums); // [1,2,3,4]
 ```
 
 ## 2 - lodash reject is just an inversion of lodash filter
+
+the lodash reject method is just an inversion of the lodash filter method. So with that said the reject method in lodash is a little redundant as it would not be to hard to just negate the result of the expression that is returned with the method that is used to filter elements.
 
 ```js
 let a = [1,2,'b',3];
