@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 07:42:51
-version: 1.20
+updated: 2020-07-01 07:53:57
+version: 1.21
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -16,7 +16,13 @@ In this post I will be writing about the basics of javaScript object keys, and a
 
 ## 1 - What to know about Object keys in javaScript
 
-In javaScript there are plain old Objects that can be created with the Object literal syntax, and then there are many other Objects that inherit from the plain old Object class such as Arrays, Functions, Dates, and so forth. These Objects contain property names, or keys, that corresponds with values that can be Numbers, Strings, other primitives, or additional nested Objects of one type or another. 
+If you are new to javaScript you might want to read over this section. You might still want read over this anyway if you still think you might not know everything there is to know that is going on with objects in javaScript. However if you are a more advanced jaavScript user you might want to skip over this section.
+
+In javaScript there are plain old Objects that can be created with the Object literal syntax, and then there are many other Objects that inherit from the plain old Object prototype such as Arrays, Functions, Dates, and so forth. In other words there is what is often referred to as an own property of an object, that is keys that are unique to a single given object, and then there are inherited key names that are not part of the single object but its prototype.
+
+These Objects contain property names, or keys, that corresponds with values that can be Numbers, Strings, other primitives, or additional nested Objects of one type or another. So you have key names, and then you have values that correspond to these keys that can be both public, as well as privet or hidden. There are keys and values that are unique to a single object, and then there are keys and values that are not.
+
+Often there might be a need to get an array of key names, or key values of an object. When doing so often it is desired to only get an array of keys and or values that are the own properties of an object. In addition in most situations I would only need to get public own key names or values. However in some situations I might want to also have everything that there is going on with the object.
 
 ### 1.1 - Enumerable, and non-Enumerable Object key names
 
