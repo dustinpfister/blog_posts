@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 08:30:19
-version: 1.26
+updated: 2020-07-01 08:34:31
+version: 1.27
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -74,6 +74,8 @@ let arr = points.map((obj) => {
 console.log(arr);
 // [ [ '47', '32' ], [ '13', '7' ], [ '0', '50' ] ]
 ```
+
+So it goes without saying that is is useful to be aware of the Object keys method as well as methods like the array map method and the string split method when it comes to working out solutions for weird things like this that might come up now and then when working with javaScript code. I will nit be getting into array map, string split, and regular expressions that are ysed in this example of the Object keys method here. However those topics sure are worth reading up on if you have not done so before hand.
 
 ## 3 - Using a for in loop
 
