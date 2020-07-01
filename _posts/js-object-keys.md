@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 08:45:06
-version: 1.29
+updated: 2020-07-01 09:02:03
+version: 1.30
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -58,7 +58,30 @@ console.log(keys); // ["x", "y", "attack", "hp"]
 
 So you get the basic idea, but lets look at a few more use cases examples just to help to get a better understanding of how useful this method is in all kinds of situations that will creep up now and then.
 
-### 2.2 - Creating an array of arrays from and array of objects
+### 2.2 - Using array prototype methods with objects that have named keys
+
+So then because the Object keys methods returns an array, then any array prototype method such as array forEach can be used with any plain old javaScript in general. So for example say I have an object with named keys, I can pass that object to the object keys method and then call the array foreach method off of the resulting array that is returned. Inside the body of the function that I pass to the foreach method as an argument I can access the key names for each public key, as well as the index value for each key name in the array. When it comes to getting the value for each key in the object I can use the key name with the bracket syntax with the original object.
+
+```js
+let obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+ 
+Object.keys(obj).forEach((key, i, arr) => {
+    console.log(key, i, obj[key], arr[i]);
+});
+/*
+a 0 1 a
+b 1 2 b
+c 2 3 c
+*/
+```
+
+The array foreach method might not be the best example of this, however you get the general idea. Other array prototype methods can of course also be used with the resulting array such as array map, and array filter just to name a few. So lets look at some more advanced use case examples of the Object keys method in action to get a better feel of this method.
+
+### 2.3 - Creating an array of arrays from and array of objects
 
 Say you have an array of weird objects where values that you want are encoded into the key names. What you want to do is create an array of arrays where each nested array contains a value that is encoded in the key names of the objects that are in the array of objects. One way to go about doing that would be to use the Object keys method in conjunction with array map, and the string split method maybe.
 
@@ -168,4 +191,4 @@ console.log(Object.getOwnPropertyNames(point)); // ["x", "y", "color"]
 
 ## 5 - Conclusion
 
-So that is it for my post on Object keys in javaScript. There are keys that are enumerable so a list of key names can be easily obtained by using Object.keys or a for loop, and then Object.getOwnPropertyNames to get all Object own property names. getting the public and or private key names of an object is just often one part of a certain something that needs to happen though. So being aware of other object static methods, and prototype methods helps when it comes to working out all kidns of soultions for various coding problems on an as needed basis.
+So that is it for my post on Object keys in javaScript. There are keys that are enumerable so a list of key names can be easily obtained by using Object.keys or a for loop, and then Object.getOwnPropertyNames to get all Object own property names. getting the public and or private key names of an object is just often one part of a certain something that needs to happen though. So being aware of other object static methods, and prototype methods helps when it comes to working out all kinds of solutions for various coding problems on an as needed basis.
