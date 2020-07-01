@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-07-01 08:23:02
-version: 1.24
+updated: 2020-07-01 08:27:35
+version: 1.25
 ---
 
 In javaScript Object keys in javaScript are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys in javaScript, such as how to get an array of public key names from a given object, how to create and get hidden key names, and also the work with inherited keys also when it comes to the nature of the prototype property of objects. 
@@ -77,7 +77,7 @@ console.log(arr);
 
 ## 3 - Using a for in loop
 
-A for loop can also be used to get the objects own key names also. This is a more tired yet true way of getting the key names of an object in javaScript. The Object keys method was introduced in ecma 5 sec javaScript, so an alternative method such as this might only need to be used if for some reason you need to support a real old platform.
+A for in loop can also be used to get the objects own key names, and for a time was the only way to do so when it comes to older javaScript specs. So with that said a for in loop is a more tired yet true way of getting the key names of an object in javaScript. The Object keys method was introduced in ecma 5 sec javaScript, so an alternative method such as this might only need to be used if for some reason you need to support a real old platform.
 
 ```js
 var keys = [],
@@ -89,6 +89,8 @@ for(k in obj){
  
 }
 ```
+
+For the most part the Object keys method is well supported these days. In addition there are of course ways of polyfilling the method, or using some kind of user space module to have a stand alone method for object keys that will work on older platforms. When I look at by browser stats for my website here i can nit say there is much need to worry about it, but the use of for in loops is one way to go about dealing with this concern if it does become a problem.
 
 ## 4 - Using Object.getOwnPropertyNames to get non enumerable own property object keys as well
 
