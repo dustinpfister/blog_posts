@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-07-02 14:34:11
-version: 1.9
+updated: 2020-07-02 14:35:51
+version: 1.10
 ---
 
 I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
@@ -226,6 +226,8 @@ var loop = function () {
 loop();
 ```
 
+So then I have my html that makes use of this main.js file, and of cousre I am also loading in all the other modules that the main.js makes use of.
+
 ```html
 <html>
     <head>
@@ -240,6 +242,8 @@ loop();
     </body>
 </html>
 ```
+
+The result as I would expect is a bunch of blades of grass popping up from the ground up over and over again.
 
 ## 5 - Conclusion
 
