@@ -5,15 +5,17 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-07-02 13:40:44
-version: 1.1
+updated: 2020-07-02 13:45:23
+version: 1.2
 ---
 
 I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
 
 <!-- more -->
 
-## 1 - blade.js
+## 1 - The blade.js file for this canvas example
+
+So for starters I made a blade.js module that I will be using to create just one blade of grass that will be rendered to a canvas element. This blade object will contains an array of points that go from the bottom of a given canvas, along with other properties that are used for rendering. So for one thing there is a base position object that is a point on the bottom of the canvas element. From this position upwards a bunch of line segments will be drawn, but not all at once.
 
 ```js
 var Blade = (function () {
