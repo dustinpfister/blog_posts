@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-07-02 09:58:10
-version: 1.6
+updated: 2020-07-02 10:00:47
+version: 1.7
 ---
 
 The client side javaScript [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method is a new way of making http requests in browser, like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest). The js fetch method makes use of promises, and provides an updated [response api](https://developer.mozilla.org/en-US/docs/Web/API/Response) for better handling common tasks like parsing json to a workable object. So in many respects it is a little more user friendly compared to the tired yet true XMLHttpRequest method that would need to be used with much additional javaScript code around it to end up with similar functionality.
@@ -33,6 +33,8 @@ Here I am using the [open library book api](https://openlibrary.org/dev/docs/api
 ## 2 - Using a fetch pollyFill
 
 If you are concerned about support for older browsers, then a polyfill for fetch will have to be used, or just do things the old fashion way with XMLHttpRequst as any polyfill will likely use just that. A popular polyfill for fetch can be found on github here at [github](https://github.com/github/fetch).
+
+Another optiin would be to just not use feath at all and chose or make an http cleint, which is what I would often do rather than using fetch when it comes to working on an actual project where I will need to script http requests.
 
 ## 3 - Conclusion
 
