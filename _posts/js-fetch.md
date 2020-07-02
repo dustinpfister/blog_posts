@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-07-02 10:00:47
-version: 1.7
+updated: 2020-07-02 10:04:40
+version: 1.8
 ---
 
 The client side javaScript [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method is a new way of making http requests in browser, like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest). The js fetch method makes use of promises, and provides an updated [response api](https://developer.mozilla.org/en-US/docs/Web/API/Response) for better handling common tasks like parsing json to a workable object. So in many respects it is a little more user friendly compared to the tired yet true XMLHttpRequest method that would need to be used with much additional javaScript code around it to end up with similar functionality.
@@ -34,8 +34,10 @@ Here I am using the [open library book api](https://openlibrary.org/dev/docs/api
 
 If you are concerned about support for older browsers, then a polyfill for fetch will have to be used, or just do things the old fashion way with XMLHttpRequst as any polyfill will likely use just that. A popular polyfill for fetch can be found on github here at [github](https://github.com/github/fetch).
 
-Another optiin would be to just not use feath at all and chose or make an http cleint, which is what I would often do rather than using fetch when it comes to working on an actual project where I will need to script http requests.
+Another option would be to just not use fetch at all and chose or make an http client, which is what I would often do rather than using fetch when it comes to working on an actual project where I will need to script http requests.
 
 ## 3 - Conclusion
 
-So fetch is a new standard for preforming http requests that can be used in modern browsers, and maybe it is a little easier to use compared to the traditional XMLHttpRequest method. Still when it comes to worrying about browser support I still know that I will get my code to work on a wider range of clients by using the tried yet true XMlHttprequest over fetch. In addition I would not say that fetch is a replacement for various user space http clients that wrap XMlhttprequest rather then that of fetch. If a client is designed right there is a potential to get a best of both world situation between browser support and supporting later features like promises.
+So fetch is a new standard for preforming http requests that can be used in modern browsers, and maybe it is a little easier to use compared to the traditional XMLHttpRequest method. Still when it comes to worrying about browser support I still know that I will get my code to work on a wider range of clients by using the tried yet true XMlHttprequest over fetch. For this reason I often choose to go with XMLHttprequest over fetch when making my own http client, something that I find myself doing now and then when it comes to vanilla JavaScript projects. If you would like my take on [XMLHttpRequest I of course wrote a post on that one for what it is worth](/2018/03/28/js-xmlhttprequest/).
+
+In addition I would not say that fetch is a replacement for various user space http clients that wrap XMlhttprequest rather then that of fetch. If a client is designed right there is a potential to get a best of both world situation between browser support and supporting later features like promises.
