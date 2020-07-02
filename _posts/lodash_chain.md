@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 3328
-updated: 2020-07-02 15:54:11
-version: 1.14
+updated: 2020-07-02 16:54:08
+version: 1.15
 ---
 
 So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes what another method acts on. In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
@@ -19,7 +19,7 @@ Although this is a lodash post I will be covering chaining with, and without lod
 
 ## 1 - What to know
 
-Chaining methods is useful for taking a whole bunch of different steps and combine them into a single line of code. There is both explicit, and implicit chaining of functions in lodash. In addition there is also the nature of how native javaScript methods chain as well which is similar to implicit chaining as well, but does not behave the same way as implicit chaining in lodash. In any case I will be covering how chaining works in general as I often do that with my posts on lodash.
+Chaining methods is useful for taking a whole bunch of different steps and combine them into a single line of code that returns a single final result. In lodash there is both explicit, and implicit chaining of functions rather than just what you might be ware of when it comes to native javaScript by itself. With that said in addition there is also the nature of how native javaScript methods chain as well which is similar to implicit chaining, but does not behave the same way as implicit chaining in lodash actually. In any case I will be covering how chaining works in general as I often do that with my posts on lodash.
 
 ## 2 - Explicit Chaining with \_.chain
 
@@ -85,4 +85,4 @@ console.log(arr);
 
 ## 5 - Conclusion
 
-So chaining with lodash, is a little more compacted compared with what most of us might be used to with native javaScript where we are always just dealing with unwrapped objects.
+So chaining with lodash, is a little more complicated compared with what most of us might be used to with native javaScript where we are always just dealing with unwrapped objects only.
