@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-07-02 13:45:23
-version: 1.2
+updated: 2020-07-02 13:49:17
+version: 1.3
 ---
 
 I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
@@ -79,7 +79,9 @@ var Blade = (function () {
     ());
 ```
 
-## 2 - grass.js
+## 2 - The grass.js blade collection module
+
+So now that I have a blade module I will also want a grass module that will create an object that will store and array of balde objects.
 
 ```js
 var Grass = (function () {
@@ -130,7 +132,9 @@ var Grass = (function () {
     ());
 ```
 
-## 3 - draw.js
+## 3 - The draw.js module
+
+So then I have my blades and grass modules that will be used to create a state object. That now just means that I need another module that will be used to render this module to a canvas element.
 
 ```js
 var draw = (function () {
@@ -180,6 +184,8 @@ var draw = (function () {
 ```
 
 ## 4 - main.js and index.html
+
+I have my javaScript modules that will be used to create a modal as well as render that modal to a canvas element. the only thing that I have to do now is just have a little more javaScript code that will make use of all of this, and of course at least a little HTML to warp this all up.
 
 ```js
 var canvas = document.createElement('canvas'),
