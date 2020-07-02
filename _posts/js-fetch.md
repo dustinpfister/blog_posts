@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-06-25 09:55:02
-version: 1.5
+updated: 2020-07-02 09:58:10
+version: 1.6
 ---
 
 The client side javaScript [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method is a new way of making http requests in browser, like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest). The js fetch method makes use of promises, and provides an updated [response api](https://developer.mozilla.org/en-US/docs/Web/API/Response) for better handling common tasks like parsing json to a workable object. So in many respects it is a little more user friendly compared to the tired yet true XMLHttpRequest method that would need to be used with much additional javaScript code around it to end up with similar functionality.
@@ -32,4 +32,8 @@ Here I am using the [open library book api](https://openlibrary.org/dev/docs/api
 
 ## 2 - Using a fetch pollyFill
 
-If you are concerned about support for older browsers, then a polyfill for fetch will have to be used, or just do things the old fashion way with XMLHttpRequst as any polyfill will likely use just that. A popular polyfill for fetch can be found on github here at [https://github.com/github/fetch](https://github.com/github/fetch).
+If you are concerned about support for older browsers, then a polyfill for fetch will have to be used, or just do things the old fashion way with XMLHttpRequst as any polyfill will likely use just that. A popular polyfill for fetch can be found on github here at [github](https://github.com/github/fetch).
+
+## 3 - Conclusion
+
+So fetch is a new standard for preforming http requests that can be used in modern browsers, and maybe it is a little easier to use compared to the traditional XMLHttpRequest method. Still when it comes to worrying about browser support I still know that I will get my code to work on a wider range of clients by using the tried yet true XMlHttprequest over fetch. In addition I would not say that fetch is a replacement for various user space http clients that wrap XMlhttprequest rather then that of fetch. If a client is designed right there is a potential to get a best of both world situation between browser support and supporting later features like promises.
