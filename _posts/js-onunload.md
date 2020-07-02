@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 662
-updated: 2020-06-25 10:21:07
-version: 1.5
+updated: 2020-07-02 10:14:04
+version: 1.6
 ---
 
 In client side javaScript there is the [onunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event) that can be used o attach an event handler that will fire when a user leaves a page. This can be used to save something to local storage such as updating a time stamp value or something to that effect that should happen when the user navigates away from a page or the site completely. 
@@ -47,3 +47,7 @@ window.addEventListener('unload', function (e) {
 ```
 
 So there you have it a basic working example of the on unload event in javaScript. This should work without issue in most cases.
+
+## 2 - Conclusion
+
+So that is it for now when it comes to the javaScript on unload method. I might get around to writing some additional examples for this one in time, but there basic idea is there at least for starters.
