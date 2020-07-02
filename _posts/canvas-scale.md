@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 397
-updated: 2019-11-13 08:46:50
-version: 1.31
+updated: 2020-07-02 10:39:43
+version: 1.32
 ---
 
 There is the [canvas scale](https://devlog.disco.zone/2016/07/22/canvas-scaling/) in the sense of how much the canvas element is scaled relative to its actual native size. There is also the [scale context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale) as well when it comes to scaling objects within the canvas. 
@@ -21,7 +21,7 @@ Canvas scale can refer to a number of things. In this post I will be trying to a
 
 ## 2 - Scale a canvas with in line or external CSS
 
-Lets start with the basics here whe it comes to scaling and canvas. When it comes to creating a canvas to begin with there is the actual native pixel size of the canvas, and then there is a scaled size that can be set via CSS values.
+Lets start with the basics here when it comes to scaling and canvas. When it comes to creating a canvas to begin with there is the actual native pixel size of the canvas, and then there is a scaled size that can be set via CSS values.
 The native width can be set by hard coded attributes or with a reference to the canvas element with javaScript. The css scale of that native image can be set with the css width and height style rules. The css can be in-line css with the style attribute, in a style tag, or linked to in an external css file.
 
 ```html
