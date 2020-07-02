@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-07-02 08:37:39
-version: 1.6
+updated: 2020-07-02 08:52:37
+version: 1.7
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different. 
@@ -47,6 +47,17 @@ console.log(clamped[0]); // 255
 console.log(notClamped[0]); // 2
 ```
 
-## 3 - Conclusion
+## 3 - The unit8 from method
+
+Most clients will support the typed array from method that works in a similar way tot hat of the [Array from](/2020/01/27/js-array-from/) method. That is it is a static method of the Unit8Array constructor or any type array constructor that can be used to create a new typed array from a regular array like object.
+
+```js
+let arr = ['foo','255','128', 64, null, false, NaN],
+unit8 = Uint8Array.from(arr);
+ 
+console.log(unit8); // [0,255,128,64,0,0,0]
+```
+
+## 4 - Conclusion
 
 So unit8 arrays are a way of having an array of number values that range between 0 and 255 making it an appropriate options when it comes to anything that has to do with raw binary data.
