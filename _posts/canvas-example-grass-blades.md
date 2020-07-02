@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-07-02 13:49:17
-version: 1.3
+updated: 2020-07-02 13:53:15
+version: 1.4
 ---
 
 I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
@@ -230,3 +230,7 @@ loop();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+So this was a quick fun little canvas example that is what I had in mind more or less. I do like making these kinds of projects that involve just rendering something to the canvas over and over again like this. I guess there is much more I could do with this kind of project when it comes to making it a little more interactive, as well as have maybe a few more things going on to make it more interesting. I have a whole lot of other canvas examples, blog posts, and other ideas for projects though so I am not sure I will get around to putting much more time into this one or not.
