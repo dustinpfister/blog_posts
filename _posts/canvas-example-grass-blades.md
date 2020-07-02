@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-07-02 13:56:00
-version: 1.5
+updated: 2020-07-02 14:22:36
+version: 1.6
 ---
 
 I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
@@ -80,6 +80,8 @@ var Blade = (function () {
 }
     ());
 ```
+
+So for now the blades module just has a single public method that creates a new blade object. This module is not going to be used by itself, although I guess it could when it comes to just testing out the module by itself when working out new features for just a blade. However for this canvas example the blade module here is going to be used in yet another module that will be used to create a collection of these called the grass module, so lets take a look at that next.
 
 ## 2 - The grass.js blade collection module
 
