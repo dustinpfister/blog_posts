@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 3328
-updated: 2020-07-02 15:44:35
-version: 1.12
+updated: 2020-07-02 15:52:53
+version: 1.13
 ---
 
-So when working out a javaScript project it may often be a good idea to chain functions together so that what is returned by one method becomes what another method acts on. In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
+So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes what another method acts on. In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
 
 However in [lodash](https://lodash.com/) there is the [\_.chain](https://lodash.com/docs/4.17.15#chain) method that can be used to create what are called explicit method chain sequences. In addition there is also as the main \_() function that when called can be used to create implicit method chain sequences that work in a similar fashion to what you may all ready be familiar with when it comes to chaining vanilla js native methods. 
 
