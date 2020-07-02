@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2020-07-02 17:35:29
-version: 1.20
+updated: 2020-07-02 17:45:28
+version: 1.21
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. If I attempt to access an object property value that is not there the result is undefined. When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. In addition if I call a function that was defined with a function expression rather thn a declaration before it has been assigned to the variable that I am calling the function off of, that can result in me calling undefined which will result in an error.
@@ -61,7 +61,8 @@ console.log(sum(2,6)); // 8
 
 ## 2 - Calling javaScript undefined
 
-When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. One reason why thins might happen could be a result of the difference between javaScript declarations and javaScript expressions. If a function is a javaScript expression then it can only be called after it is defined. If it is not defined yet this can result in calling the undefined value which of course results in a kind of error.
+When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. One reason why thins might happen could be a result of the difference between javaScript declarations and javaScript expressions. If a function is a javaScript expression then it can only be called after it is defined, and assigned to a variable. If it is not defined yet this can result in calling the undefined value which of course results in a kind of error.
+So then there are two general ways to avoid this, if you are going to use expressions just make sure that they are set to the variable that you are calling them off first before calling them. The other way to avoid this is to not use function expressions, but function declarations in place of expressions.
 
 ```js
 // function declaration
@@ -84,7 +85,7 @@ var func2 = function () {
 console.log(func2()); // 'bar'
 ```
 
-There are a number of other reasons why calling undefined might happen. If for whatever the reason there is not a function in what is being called that will result in this kind of error.
+There are a number of other reasons why calling undefined might happen. If for whatever the reason there is not a function in what is being called that will result in this kind of error. This can often be the result if you are using a new native javaScript feature that is not yet well supported in the browser that you are testing on. This is one of the reasons why it is a good idea to check the browser support for any and all native methods you might be using. Certain native methods have better legacy support than others.
 
 ## 3 - javaScript undefined will result in a true value when used with isNaN
 
