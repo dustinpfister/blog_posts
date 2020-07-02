@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 3328
-updated: 2020-07-02 15:52:53
-version: 1.13
+updated: 2020-07-02 15:54:11
+version: 1.14
 ---
 
 So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes what another method acts on. In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
@@ -62,7 +62,7 @@ let arr = _([1, 2, 3, 4])
 console.log(arr); // 24
 ```
 
-### 4.1 - Chaining with Native array methods
+## 4 - Chaining with Native array methods
 
 When working with an native array methods as long as what is returned is also an array then I can continuing calling additional array methods on the array. If I am not using lodash then I am limited to what there is to work with in the Array prototype, as well as the prototypes of other built in classes depending on what is returned. 
 
@@ -83,6 +83,6 @@ let arr = [1, 2, 3, 4]
 console.log(arr);
 ```
 
-5 - Conclusion
+## 5 - Conclusion
 
 So chaining with lodash, is a little more compacted compared with what most of us might be used to with native javaScript where we are always just dealing with unwrapped objects.
