@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2020-06-25 16:14:02
-version: 1.9
+updated: 2020-07-02 17:26:55
+version: 1.10
 ---
 
 In javaScript and many other programing languages there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. The eval function is a way to interpret javaScript from within javaScript itself. 
@@ -27,7 +27,7 @@ console.log(eval(str));
 // 4
 ```
 
-So that is the basic idea of eval, but there is of course much more to write about it.
+So that is the basic idea of eval, it is just a ay to go about evaluating some javaScript code in a string format. There are other ways of doing just that such as with the Function constructor. However if I am ever in a situation in which i thing I might need to use eval or the function constructor I take a moment to try to find another way of doing so. It is generally agreed that the use of these options for running javaScript code can bring up both security and performance concerns that can often be avoided.
 
 ## 2 - js eval can create variables in the scope in which it is used
 
