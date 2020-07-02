@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-07-02 14:25:02
-version: 1.7
+updated: 2020-07-02 14:28:20
+version: 1.8
 ---
 
 I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
@@ -139,6 +139,8 @@ var Grass = (function () {
 ## 3 - The draw.js module
 
 So then I have my blades and grass modules that will be used to create a state object. That now just means that I need another module that will be used to render this module to a canvas element.
+
+In my draw module I have a single internal helper method that is used to render a single blade object created with the blade module. This helper is made public in the public api of the draw module, so it is also public. In addition to this it is also called in the draw grass public draw method as that is just drawing a collection of blade objects.
 
 ```js
 var draw = (function () {
