@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-07-02 10:24:37
-version: 1.2
+updated: 2020-07-02 10:29:03
+version: 1.3
 ---
 
-In late spects of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method that can be used to get a collection of elements rather than just one. For the most part using this method is safe as of this writing, unless for some reason you want to have support for older browsers that are not used that often any more. There are other options that I find myself still using just for the hell of it, but the querySelector method works well at getting at an element that I want in an array of different ways other then that of just an id property value.
+In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) that can be used to get a collection of elements rather than just one. 
+
+For the most part using this method is safe as of this writing, unless for some reason you want to have support for older browsers that are not used that often any more. There are other options that I find myself still using just for the hell of it, but the querySelector method works well at getting at an element that I want in an array of different ways other then that of just an id property value which is often what I do using the tire yet true [document.getElementById](/2018/12/27/js-document-getelementbyid/) method.
 
 <!-- more -->
 
