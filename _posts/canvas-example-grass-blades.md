@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-07-02 14:28:20
-version: 1.8
+updated: 2020-07-02 14:34:11
+version: 1.9
 ---
 
 I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
@@ -189,9 +189,13 @@ var draw = (function () {
     ());
 ```
 
-## 4 - main.js and index.html
+## 4 - The main.js and index.html
 
 I have my javaScript modules that will be used to create a modal as well as render that modal to a canvas element. the only thing that I have to do now is just have a little more javaScript code that will make use of all of this, and of course at least a little HTML to warp this all up.
+
+Here in my main.js file I create the actual canvas element that will be used in this canvas example, as well as get the drawing context for it just like with any other canvas example of mine. In then attach the canvas element to a container element that I have hard coded in my html. I set th width and height of the canvas element, and also translate it so that it looks better.
+
+I use my grass module here in main.js to create a new grass object. The grass object will then be updated, and rendered in the main app loop of the canvas example here that is powered by the [request animation frame](/2018/03/13/js-request-animation-frame/) method.
 
 ```js
 var canvas = document.createElement('canvas'),
