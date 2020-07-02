@@ -5,13 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-07-02 10:04:40
-version: 1.8
+updated: 2020-07-02 10:10:00
+version: 1.9
 ---
 
-The client side javaScript [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method is a new way of making http requests in browser, like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest). The js fetch method makes use of promises, and provides an updated [response api](https://developer.mozilla.org/en-US/docs/Web/API/Response) for better handling common tasks like parsing json to a workable object. So in many respects it is a little more user friendly compared to the tired yet true XMLHttpRequest method that would need to be used with much additional javaScript code around it to end up with similar functionality.
+In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a new way of making http requests in browser. It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. 
+
+So then the js fetch method makes use of promises, and provides an updated [response api](https://developer.mozilla.org/en-US/docs/Web/API/Response) for better handling common tasks like parsing json to a workable object which is a nice feature. So in many respects it is a little more user friendly compared to the tired yet true XMLHttpRequest method that would need to be used with much additional javaScript code around it to end up with similar functionality. It might still be a smarter play to go with a user space option that makes use of XMLhttpRequest to provide the same functionality still tough, at least that is what I would do more often then not.
 
 It is like a browser built in [axios](/2018/01/10/nodejs-axios/), but because it is a new feature it might be to soon to regard it as a replacement for axios or XMLHttpRequest, unless a [polyfill](https://github.com/github/fetch) is used.
+
+Still the fetch method is there to worth with in modren browsers, so I though it deserves a quick post so lets do this.
 
 <!-- more -->
 
