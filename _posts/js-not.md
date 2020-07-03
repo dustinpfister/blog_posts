@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-06-25 16:21:13
-version: 1.9
+updated: 2020-07-03 06:54:20
+version: 1.10
 ---
 
-The javaScript not operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might be before hand.
+The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might be before hand.
 
-The operator can come in handy when writing many expressions that might come up when working with conditional statements, and also with feature testing. In some code examples I see it being used to trim down the size of a boolean literal expression, and I am sure that there are many other use examples for the [js not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators) operator.
+The operator can come in handy when writing many expressions that might come up when working with conditional statements, and also with feature testing. In some code examples I see it being used to trim down the size of a boolean literal expression, and I am sure that there are many other use examples for the [js not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator.
 
 <!-- more -->
 
