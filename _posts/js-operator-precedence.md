@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-07-03 08:35:09
-version: 1.60
+updated: 2020-07-03 08:41:04
+version: 1.61
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -104,6 +104,10 @@ console.log(3 + (7 - 3) * 5); // 23
 ### 3.3 - New operator without arguments ( Precedence  19 )
 
 It is possible to use the new operator without arguments when this is the case it results in the new operator having a precedence value of 18.
+
+### 3.4 - Logical Not, bitwize not, and more ( Precedence  17 ).
+
+Here we have the logical not operator that is one such operator that i find myself using the most often in this group. So when working out an expression any values that have there truth values inverted will be preformed before addition or subtraction. However although addition both in terms of numbers and strings will be preformed afterworlds, this group contains both Unary Plus, and Negation as well as Prefix Increment and Decrement.
 
 ### 3.4 - Postfix Increment and postfix decrement ( Precedence 18 )
 
