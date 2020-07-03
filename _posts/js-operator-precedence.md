@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-06-25 10:14:49
-version: 1.58
+updated: 2020-07-03 08:27:01
+version: 1.59
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -41,7 +41,7 @@ To know if grouping with parentheses is really needed or not it is just a matter
 
 ## 2 - Associativity of operators
 
-So Associativity is the direction in which operations are preformed such as left to right, or right to left. Operators like addition, subtraction and so forth have left to right associativity. However other operators such as the assignment, and logical not operator have right to left Associativity.
+So Associativity is the direction in which operations are preformed such as left to right, or right to left. Operators like addition, subtraction and so forth have left to right associativity. However other operators such as the assignment, and [logical not](/2019/10/04/js-not/) operator have right to left Associativity.
 
 So subtraction is a good example of an operator where associativity matters because taking 2 from 5 is not the something as taking 5 from 2.
 
