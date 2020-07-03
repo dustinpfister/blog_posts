@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-07-03 06:59:06
-version: 1.11
+updated: 2020-07-03 08:27:00
+version: 1.12
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -15,9 +15,9 @@ So then in many situations the javaScript not operator can come in handy when wr
 
 <!-- more -->
 
-## 1 - js not basic example
+## 1 - js not logical not basic example
 
-The js not operator is an exclamation point when it comes to the syntax of javaScript. The operator has right to left associativity so any value that is left of the operator will be what is converted to a boolean. The operator both converts to boolean and inverts the value, so A good starting example might be to just give the number zero as the value for starters.
+The js not operator is an exclamation point when it comes to the syntax of the javaScript operator. The operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so any value that is right of the operator will be what is converted to a boolean. In addition logical not as well as bitwise not for that matter has a precedence value of 17, this means that the operation will be preformed before addition, subtraction and any other operators that are below that value. The operator both converts to boolean and inverts the value, so A good starting example might be to just give the number zero as the value for starters.
 
 ```js
 let bool = !0;
