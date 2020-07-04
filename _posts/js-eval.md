@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2020-07-04 07:55:05
-version: 1.11
+updated: 2020-07-04 07:58:21
+version: 1.12
 ---
 
-In javaScript and many other programing languages there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. The eval function is a way to interpret javaScript from within javaScript itself. 
+In javaScript and many other programing languages there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. The eval function is a way to interpret javaScript from within javaScript itself.
+
+There are other ways of evaluating javaScript code that involve other aspects of native javaScript such as the function constructor, as well as user space modules like jsdom. There is also ways or making parsers that will act as a way to make my own domain specific language rather than using eval to run javaScript code in string format. However that is a matter for a whole other post on something other than js eval.
 
 The eval function should not be used if it can be avoided, the use of the eval function can slow things down, and can also open up some security concerns. I can not say that I use eval often, and even when I am in a situation in which I seems like I need to use it I do what I can to look for other options. Still this is a post on js eval, so then this will be a post on some of the ins and outs of the js [eval function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) for what it is worth.
 
