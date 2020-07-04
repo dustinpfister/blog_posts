@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 446
-updated: 2020-07-01 08:47:23
-version: 1.11
+updated: 2020-07-04 08:18:33
+version: 1.12
 ---
 
 The [lodash keys](https://lodash.com/docs/4.17.11#keys) method in lodash can be used to get an array of public key names of an object. There is also the native [Object.keys method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) as well that has been introduced in recent years. In addition a [for in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop is another option for getting object keys that has great backward compatibility with older environments, so this makes the lodash \_.keys method one of many methods in lodash that make me scratch my head wondering if I should bother or not.
@@ -80,4 +80,6 @@ There is also a [\_.forIn](/2018/09/30/lodash_forin/) lodash method that can als
 
 ## 3 - Conclusion
 
-There is also the [\_.values](/2019/05/13/lodash_values/) method that is similar to the \_.keys method only it gives an array of object values rather than the key names. These two methods are often used to quickly get an array of object values or Object key values that can then be used with an array prototype method when working with native ajavaScript methods in the Array prototype and getting them to work with objects that are not arrays.
+There is also the lodash [\_.values](/2019/05/13/lodash_values/) method that is similar to the \_.keys method only it gives an array of object values rather than the key names. These two methods are often used to quickly get an array of object values or Object key values that can then be used with an array prototype method when working with native ajavaScript methods in the Array prototype and getting them to work with objects that are not arrays.
+
+Speaking of native javaScript there are now of course native methods in jaavScriot that do the same thing as the lodash methods. The only questing is how far back do you want to go with browser support. Looking at the stats for my website when it comes to browser vender's and versions and comparing that to the specs that these methods where introduces I can not say there is much of a concern these days. Also even it I want to support older browser it is often not just a question of just using lodash and being done with it, the version of lodash is something to consider also when it comes to this.
