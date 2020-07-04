@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 673
-updated: 2020-07-04 07:34:55
-version: 1.8
+updated: 2020-07-04 07:37:16
+version: 1.9
 ---
 
 The [module object in nodejs](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_module_exports) is what I often use when creating modules in nodejs. The module exports property of the module object is what I use to return a main function that will be called when using the module elsewhere. In addition the main function that I exports with the module export propriety can have additional properties attached to it which in many respects makes it a better option to the exports global that can also be used to set public methods and properties for a module that I might be making for a nodejs project.
@@ -37,6 +37,8 @@ This is the basic idea that I follow when it comes to making a javaScript module
 ### 1.1 - Using a function and static methods attached to that function
 
 So now for a slightly more advanced version of a nodejs module. This time something with a single private methods, and attaching at least one static methods to the main public method.
+
+Say I want to start a simple point module that can be used to create a point object. In this module I have a single private helper methods that is used to parse arguments that does not need to be public. In adddiot9n to the main public methods that is used to create point methods I have at least one additional static methods that can return a result when given one or more point objects. For starters maybe just a distance formula that will return the distance between two give points.
 
 ```js
 // private helper method
