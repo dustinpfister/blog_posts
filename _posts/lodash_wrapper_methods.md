@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 554
-updated: 2019-11-10 18:31:33
-version: 1.6
+updated: 2020-07-04 08:23:58
+version: 1.7
 ---
 
 A [wrapper method](https://stackoverflow.com/questions/326596/how-do-i-wrap-a-function-in-javascript) generally might refer to a simple kind of method that just gives and alternative interface for using a method that is all ready in place. In other words a wrapper method does not really have any functionality of its own, it just accepts input and then uses that input for another method that actually does something. In [lodash](https://lodash.com/) there are a few wrapper methods, that are methods that just make use of native vanilla javaScript methods. It would be different if these methods feature tested for a native method and use that if available, and then used another javaScript solution if that native method is not there. However in late versions of lodash a few methods are just straight up referencing native javaScript methods.
@@ -59,4 +59,4 @@ What is going on here is a bunch of native array and string methods are just bei
 
 ## 3 - Conclusion
 
-In lodash a few methods are just references to native javaScript methods, however of course it goes without saying that this is not always the case. In some cases depending on the version of lodash some lodash methods are also pollyfills of sorts that will only reference the native method if there is one, else it will use some custom code. There are also a number of methods where there is no native equivalent at all.
+In lodash a few methods are just references to native javaScript methods, however of course it goes without saying that this is not always the case. In some cases depending on the version of lodash some lodash methods are also pollyfills of sorts that will only reference the native method if there is one, else it will use some custom code. There are also a number of methods where there is no native equivalent at all also, so of course many of thouse methods are still worth while. However there are few of them that I can say that I actually use in projects so often I am just installing just one method rather than n the full library.
