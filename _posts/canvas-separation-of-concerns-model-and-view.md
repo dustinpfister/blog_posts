@@ -4,13 +4,15 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-08-29 10:23:00
 id: 33
-updated: 2019-11-15 07:49:55
-version: 1.10
+updated: 2020-07-04 07:45:34
+version: 1.11
 ---
 
-In my first [getting started post](/2017/05/17/canvas-getting-started/) on HTML 5 canvas I made a simple example on how to quickly throw together a canvas project in a way in which I usually do so with simple projects. So if a project is something stupid simple things like [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) does not strike me as something that is that important. However if I do start to put together something that is a little advanced, it does become more important to separate what is often called state, or a model from what is often called a view. Doing so is a good way of avoiding writing the dreaded spaghetti code as a project advances.
+In my first [getting started post](/2017/05/17/canvas-getting-started/) on HTML 5 canvas I made a simple example on how to quickly throw together a canvas project in a way in which I usually do so when first starting out with a canvas project. However the way I wne t about things there is not always what I would do if things start to get a little complex. As a project grows in size it becomes more important to separate code that has to do with creating and updating a module from code that renders that module to the canvas.
 
-So to help keep things more organized, javaScript code that has to do with the state of something is keep septate from code that renders that state. That is there is a canvas model that holds the current state, and then a canvas view that renders that state. There is then also something that changes the state that can be thought of as a controller resulting in what is often called [MVC or Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller).
+So in other words if a project is something stupid simple things like [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) does not strike me as something that is that important. However if I do start to put together something that is a little advanced, it does become more important to separate what is often called state, or a model from what is often called a view. Doing so is a good way of avoiding writing the dreaded spaghetti code as a project advances.
+
+So to help keep things more organized, javaScript code that has to do with the state of something is keep septate from code that renders that state. That is there is a canvas model that holds the current state, and then a canvas view that renders that state. There is then also something that changes the state that can be thought of as a controller resulting in what is often called [MVC or Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). So in this post I will be going over some quick javaScript and canvas code examples that can be thought of as a way of keeping things broken down like this.
 
 <!-- more -->
 
