@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 673
-updated: 2020-07-04 07:21:01
-version: 1.7
+updated: 2020-07-04 07:34:55
+version: 1.8
 ---
 
 The [module object in nodejs](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_module_exports) is what I often use when creating modules in nodejs. The module exports property of the module object is what I use to return a main function that will be called when using the module elsewhere. In addition the main function that I exports with the module export propriety can have additional properties attached to it which in many respects makes it a better option to the exports global that can also be used to set public methods and properties for a module that I might be making for a nodejs project.
@@ -33,6 +33,42 @@ console.log( add(1, 1) );
 ```
 
 This is the basic idea that I follow when it comes to making a javaScript module nodejs style. There are other ways of doing it, and many more talking points when it comes to module design in nodejs though. For example if I want more than just a main method for the module that I am making I can create a main function and then just start appending additional static method to that function just like I would with any other object in javaScript. When I export the main public method the same way it will have a main public method as well as a bunch of additional methods attached to it.
+
+### 1.1 - Using a function and static methods attached to that function
+
+So now for a slightly more advanced version of a nodejs module. This time something with a single private methods, and attaching at least one static methods to the main public method.
+
+```js
+// private helper method
+let parseAxis = (a) => {
+    return a === undefined || typeof a != 'number' || String(a) === 'NaN' ? 0 : a;
+};
+ 
+// a Main public method
+let Point = (x, y) => {
+    return {
+        x: parseAxis(x),
+        y: parseAxis(y)
+    };
+};
+ 
+// an additional static public method
+Point.distance = (pt1, pt2) => {
+    return Math.sqrt(Math.pow(pt1.x - pt2.x, 2) + Math.pow(pt1.y - pt2.y, 2));
+};
+ 
+module.exports = Point;
+```
+
+```js
+let point = require('./point.js');
+ 
+let a = point(45, 15),
+b = point(0, 0),
+d = Math.floor(point.distance(a, b));
+ 
+console.log(d); // 47
+```
 
 ## 2 - Get a Modules filename
 
