@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 673
-updated: 2020-06-30 18:51:30
-version: 1.5
+updated: 2020-07-04 07:17:26
+version: 1.6
 ---
 
 The [module object in nodejs](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_module_exports) is what I often use when creating modules in nodejs. The module exports property of the module object is what I use to return a main function that will be called when using the module elsewhere. In addition the main function that I exports with the module export propriety can have additional properties attached to it which in many respects makes it a better option to the exports global that can also be used to set public methods and properties for a module that I might be making for a nodejs project.
@@ -15,7 +15,7 @@ The [module object in nodejs](https://nodejs.org/docs/latest-v8.x/api/modules.ht
 
 ## 1 - basic module exports example
 
-A good basic example of the module exports method might be to just have a simple add function that I set to the module exports property. 
+A good basic example of the module exports method might be to just have a simple add function that I set to the module exports property. Just create a method and asign it to the moduel exports property and save the file as something like add.js in a working folder.
 
 ```js
 let api = (a, b) => {
@@ -24,13 +24,15 @@ let api = (a, b) => {
 module.exports = api;
 ```
 
-When I go to use it in another javaScript file i can bring it in with the require keyword and then use it.
+When I go to use this method in another javaScript file I can bring it in with require when it comes to doing so with a high degree of support for older versions of node.
 
 ```js
 let add = require('./add.js');
  
 console.log( add(1, 1) ); 
 ```
+
+This is the basic idea that I follow when it comes to making a javaScript module nodejs style. There are other ways of doing it, and many more talking points when it comes to module design in nodejs though. For example if I want more than just a main method for the module that I am making I can create a main function and then just start appending additional static method to that function just like I would with any other object in javaScript. When I export the main public method the same way it will have a main public method as well as a bunch of additional methods attached to it.
 
 ## 2 - Get a Modules filename
 
