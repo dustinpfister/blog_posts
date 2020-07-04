@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 554
-updated: 2020-07-04 08:23:58
-version: 1.7
+updated: 2020-07-04 08:29:35
+version: 1.8
 ---
 
 A [wrapper method](https://stackoverflow.com/questions/326596/how-do-i-wrap-a-function-in-javascript) generally might refer to a simple kind of method that just gives and alternative interface for using a method that is all ready in place. In other words a wrapper method does not really have any functionality of its own, it just accepts input and then uses that input for another method that actually does something. In [lodash](https://lodash.com/) there are a few wrapper methods, that are methods that just make use of native vanilla javaScript methods. It would be different if these methods feature tested for a native method and use that if available, and then used another javaScript solution if that native method is not there. However in late versions of lodash a few methods are just straight up referencing native javaScript methods.
@@ -31,7 +31,7 @@ Other subject that might come up is browser support of native javaScript methods
 
 ## 2 - What is going on with lodash and wrapping of native javaScript methods
 
-When I looked over a [late version of lodash \(4.17.15\)](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) I have come across the use of and internal baseEach method that looks like this.
+When I looked over a [late version of lodash \(4.17.15\)](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) as of this writing at least, I have come across the use of and internal baseEach method. This base for each method looks like this.
 
 ```js
 // Add `Array` methods to `lodash.prototype`.
@@ -55,7 +55,7 @@ baseEach(
 });
 ```
 
-What is going on here is a bunch of native array and string methods are just being flat out right referenced from the lodash prototype. in other worlds lodash is not providing any actually functionality with some of these methods it is just wrapping native ones.
+What is going on here is a bunch of native array and string methods are just being flat out right referenced from the lodash prototype. In other worlds lodash is not providing any actually functionality with some of these methods it is just wrapping native ones. In the process of doing so it is providing a different interface for using them, but if you are using lodash for the so called safely net argument I would say that this more or less puts that to rest. So if you want to have a safety net of sorts it is not just a question of using lodash, it is also a question of what version to use as this will break on certin old browsers.
 
 ## 3 - Conclusion
 
