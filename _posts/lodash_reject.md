@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 674
-updated: 2020-07-01 10:51:17
-version: 1.5
+updated: 2020-07-04 08:08:47
+version: 1.6
 ---
 
 I often start out each new month with a new post on lodash because it would seem that there is still much interest in this utility library despite its age. For this post I will be working out a few quick examples of the [lodash reject](https://lodash.com/docs/4.17.15#reject) method that is just simple an inversion of the [lodash filter](/2018/05/18/lodash_filter/) method. This method in lodash is not really one of the redeeming methods in lodash that make the library worth while as there is of course the native array filter method that can be used to quickly create a reject method in plain old javaScript by itself.
@@ -64,3 +64,7 @@ let reject = (arr, test) => {
 console.log(reject(a, test)); // [1,2,3]
 console.log(a.filter(test)); // ['b']
 ```
+
+## 4 - Conclusion
+
+I would say that the lodash reject method is yet another methods in lodash that does not help with the argument as to why it is that developers should bother with lodash when writing new code. Do not get my wrong there are of course reasons why using lodash, or better yet my own custom utility library. It is just that I can not say that the lodash reject methods is the most compelling reason why one should bother. It seems to me that there are only a few select methods that I would actually use, and in real projects I will find myself just installing that small collection of methods. When it comes to rejecting, or filtering in mist cases I would just use the native methods for that these days.
