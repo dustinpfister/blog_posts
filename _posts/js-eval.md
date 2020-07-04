@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2020-07-02 17:26:55
-version: 1.10
+updated: 2020-07-04 07:55:05
+version: 1.11
 ---
 
 In javaScript and many other programing languages there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. The eval function is a way to interpret javaScript from within javaScript itself. 
@@ -39,6 +39,8 @@ When the js eval function is used with a string of javaScript that contains the 
 eval('var n = 42;');
 console.log(n);
 ```
+
+This is one weird thing about the use of eval that a developer should be ware of when using it. Also again about using eval, if you can every thing of any way to go about not using it do that instead, and not just for this reason.
 
 ## 3 - Conclusion
 
