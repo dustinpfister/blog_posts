@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-07-05 13:24:54
-version: 1.10
+updated: 2020-07-05 13:27:45
+version: 1.11
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array.
@@ -30,7 +30,7 @@ That is about it, however maybe some more examples are called for with this one.
 
 ## 2 - js array join and empty string as a separator
 
-An empty string can be given as the argument to the array join method.
+An empty string can be given as the argument to the array join method. Doing so is what I would want to do if I do not want anything at all to be between each element with the resulting string that is returned my array join.
 
 ```js
 var arr = [1,2,3,3],
