@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-06-28 20:38:45
-version: 1.9
+updated: 2020-07-05 13:24:54
+version: 1.10
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array.
@@ -55,3 +55,7 @@ var a = parseInt(String(n).split('').map(function (n) {
  
 console.log(a); // 2481632
 ```
+
+## 4 - Conclusion
+
+So the js aray join method is one of many array prototype methods that I find myself using all the time when and where using it is called for. If I have an array of elements and I want to join them all together into a string then the array join method is there to do just that right away and allow me to continue on with my code.
