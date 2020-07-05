@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2020-07-05 11:56:22
-version: 1.28
+updated: 2020-07-05 11:59:15
+version: 1.29
 ---
 
 The [document location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location) in client side javaScript that contains the URL of the current page, along with other useful properties about the current location of a web page.
@@ -17,7 +17,7 @@ So the location property of the document object will come in handy when making a
 
 <!-- more -->
 
-## 1 - document location basic example
+## 1 - document location and a basic example of the href property to read the current location
 
 For a basic example of document location here I have a basic html structurer and a single script tag. Inside the script tag I am using the document location href property to display the current href of the document with the help of the innerText property of an element that I am getting via document.getElementById.
 
@@ -38,7 +38,7 @@ el.innerText = document.location.href;
 
 So this basic example just displays the current href of the page in the browser window, but one of the most useful aspects of the document location property is that it can be used to preform a client side redirect as well as other tasks as well. There are a few more methods and properties of a location object in client side javaScript so lets look at some more examples of the document location property.
 
-## 2 - redirect example with document location
+## 2 - A simple document location redirect example
 
 The href property of a location object can also be set to a url, and when doing so will result in a redirect to that url. Although the location object of the document location property is read only a DOMString can be set to the href property of this read only object, and when a new url is assigned to it that will result in a client side redirect to the url that is set to the href property of the location object.
 
@@ -66,7 +66,7 @@ It would seem that in some browser environments document location and window loc
 
 ## 4 - The protocol property of document location
 
-Another useful property of the location object at the document location property is the protocol property. This can be used as a way to find out if the page is being hosted via a protocol like that of file:// rather than http:// or https://. In some situations this can be useful if I am developing some kind of project that makes use of a resource that just does not play nice when someone chooses to open it up in the browser rather than hosting it with a web server.
+Another useful property of the location object at the document location property is the protocol property. This can be used as a way to find out if the page is being hosted via a protocol like that of file:\/\/ rather than http:\/\/ or https:\/\/. In some situations this can be useful if I am developing some kind of project that makes use of a resource that just does not play nice when someone chooses to open it up in the browser rather than hosting it with a web server.
 
 ```js
 if (location.protocol == 'file:') {
@@ -78,7 +78,7 @@ if (location.protocol == 'file:') {
 
 Much of the remaining values of a location object will depend on the protocol along with other factors. For example if I am looking at an html document via the file: protocol then the location object will not have a host name or port, because the url is just a path to a static resource located on my computer.
 
-## 5 -Reload a page with javaScript via document.location
+## 5 - Reload a page with javaScript via document.location
 
 So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object. This could be done in an event handler like in the following example, or by whatever means that would be appropriate when doing so.
 
@@ -102,7 +102,7 @@ console.log('yes');
 </html>
 ```
 
-## 6 - document location host and hostname
+## 6 - The document location host and hostname properties
 
 In a location object there is a host and hostname properties that can get the domain name if there is one to get depending on the protocol. For example if I create an html document and just open it up in the browser then the protocol is file: and then the values for host and hostname are empty strings. However if I host that file locally with an http server then the protocol will be http: and the host and hostname properties will not return an empty string.
 
@@ -122,7 +122,7 @@ if(location.protocol === 'file:'){
 
 So the values of many of these properties of course depending on the state of the url string. If the protocol is the file: protocol the of course I am not going to get a domain name, or port, because the url is just a path to a local asset.
 
-## 7 - the path name of a document location
+## 7 - The path name of a document location
 
 The path name of the location object in document will refer to the path name after the protocol host name and port, and before any additional parts of the url afterwards such as query strings and hash tags to any items in the page
 
