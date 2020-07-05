@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 403
-updated: 2019-11-15 20:25:01
-version: 1.21
+updated: 2020-07-05 13:10:28
+version: 1.22
 ---
 
-In this post I will be writing about a few simple canvas game examples. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, but this post should help with many of the basics and more.
+In this post I will be writing about a very simple canvas game example and I might get around to expanding this post with additional simple examples at some point. There is of course a lot to cover when it comes to getting started with canvas games and javaScript, in addition there are many different ways to go about keeping things well structured as one moves forward with developing a game project. So I thought it would be a good ide to have a post where I go over some very simple starting points when it comes to canvas game development.
 
 There are many other examples of how to go about making a canvas game with javaScript on the web. For example there is a [nice tutorial on how to go about making a breakout clone on Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript) that is worth checking out as well. However In this post I will be going over a few simple examples of my own that I thrown together and touch base on many topics that come up when getting into other kinds of projects. 
 
