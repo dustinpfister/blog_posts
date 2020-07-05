@@ -5,15 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-06-21 10:30:29
-version: 1.11
+updated: 2020-07-05 12:37:41
+version: 1.12
 ---
 
-A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript function that self invokes right away. When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these IIFE deals. In late specs of javaScript there is now block level variable scope, but I still find myself often using and IIFE with, or in place of, block level scope.
+A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers t the fact that it is defined and then invoked, it is also some times called a self executed function expression, or something else along those lines, but the official name is indeed Immediately Invoked Function Expression.
 
-The return keyword can then be used as a way to go about returning something that can be stored in a variable, this something that is returned can be a plain old object with properties, or a function, or a function with properties that serves as a kind of public API. 
+When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these kinds of functions. In late specs of javaScript there is now block level variable scope, but I still find myself often using and IIFE with, or in place of, block level scope.
 
-These kinds of functions in javaScript are often used in module design, as private methods and other values can be in the body of the function and a public set of methods and properties can be a product that is returned to a variable.
+The return keyword can then be used as a way to go about returning something that can be stored in a variable, this something that is returned can be a plain old object with properties, or a function, or a function with properties that serves as a kind of public API. The IIFE can also just be used as a way to not go about polluting the global name space, as everything that is defined within the body of an IIFE with var, let, or const will be local to the function rather than the top level.
+
+These kinds of functions in javaScript are often used in module design, as private methods and other values can be in the body of the function, and a public set of methods and properties can be a product that is returned by the IIFE and stored in a single global variable, or attached to a single global object. So it goes without saying that a javaScript IIFE is something that any javaScript developer should become familiar with by paying around with a few code examples that make use of one.
 
 <!-- more -->
 
