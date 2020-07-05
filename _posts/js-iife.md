@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-07-05 13:02:08
-version: 1.14
+updated: 2020-07-05 13:21:33
+version: 1.15
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers t the fact that it is defined and then invoked, it is also some times called a self executed function expression, or something else along those lines, but the official name is indeed Immediately Invoked Function Expression.
@@ -148,6 +148,8 @@ console.log(BX.distance(bx1, bx2).toFixed(2)); // 45.25
 ## 4 - Using a javaScript IIFE to just make everything private, and not pollute the global name space
 
 So some times it might be desired to not pollute the global name space. One way to go about doing just that would be to contain all the code that composes your project in a javaScript IIFE. Maybe it would make sense to keep everything separated in certain files and define globals that are used in other files when it comes to developing a project. However when it comes to making a finished package for development, everything can be crunched down, and wrapped up in a single IIFE as a way to make sure that nothing else on the page ends up getting written over.
+
+For example say I am making a canvas example, and I will have code that will be used to create and store a state, code that will draw that state to the canvas, and additional code that has to do with a main app loop as well as event attachment and so forth. I could just start pollution the global name space with a whole bunch of modules all of which define and return stuff to a new global. However when it comes to making a finished package I can copy and past everything into a javaScript IIFE as a way to make sure that everything will not overwrite or interactive with other stuff on the page that might use the same global variable name.
 
 ```html
 <html>
