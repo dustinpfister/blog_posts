@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2020-07-05 12:15:06
-version: 1.21
+updated: 2020-07-05 12:17:00
+version: 1.22
 ---
 
-There are many ways to go about defining a function in javaScript one such was is by writing [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function), which are also sometimes called function literals. A function expression is a way to define a function as an expression rather than a statement, or declaration which is another traditional way of defining a function. There are even more ways to go about defining a function on top of just expressions and declarations such as arrow functions, and using the function constructor to create functions my way of passing a string to a constructor function.
+There are many ways to go about defining a function in javaScript one such was is by writing [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function), which are also sometimes called function literals. A function expression is a way to define a function as an expression rather than a statement, or declaration which is another traditional way of defining a function. There are even more ways to go about defining a function on top of just expressions and declarations such as [arrow functions](/2019/02/17/js-arrow-functions/), and using the function constructor to create functions my way of passing a string to a constructor function.
 
 Function Expressions have some advantages over [function statements or declarations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but they are also not necessary a full replacement for function statements. There are also may other ways to create a function in javaScript such as array functions and the Function constructor.  However in this post I will be going mainly over some of the ins and outs of function expressions in javaScript, and why they can come in handy now and then.
 
