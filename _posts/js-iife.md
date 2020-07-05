@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-07-05 12:49:02
-version: 1.13
+updated: 2020-07-05 13:02:08
+version: 1.14
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers t the fact that it is defined and then invoked, it is also some times called a self executed function expression, or something else along those lines, but the official name is indeed Immediately Invoked Function Expression.
@@ -145,6 +145,44 @@ bx2 = BX({
 console.log(BX.distance(bx1, bx2).toFixed(2)); // 45.25
 ```
 
-## 4 - Conclusion
+## 4 - Using a javaScript IIFE to just make everything private, and not pollute the global name space
+
+So some times it might be desired to not pollute the global name space. One way to go about doing just that would be to contain all the code that composes your project in a javaScript IIFE. Maybe it would make sense to keep everything separated in certain files and define globals that are used in other files when it comes to developing a project. However when it comes to making a finished package for development, everything can be crunched down, and wrapped up in a single IIFE as a way to make sure that nothing else on the page ends up getting written over.
+
+```html
+<html>
+    <head>
+        <title>js iife</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// make everything private with a js iife
+(function () {
+    var canvas = document.getElementById('the-canvas'),
+    ctx = canvas.getContext('2d');
+    var cir = {
+        x: 32,
+        y: 16,
+        r: 10,
+        color: 'red'
+    };
+    var draw = function () {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = cir.color;
+        ctx.beginPath();
+        ctx.arc(cir.x, cir.y, cir.r, 0, Math.PI * 2);
+        ctx.fill();
+    };
+    draw();
+}
+    ());
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 So a js IIFE is often my first go to when it comes to generic module design in front end javaScript. I might not always use one when it comes to making a nodejs module though as I do not see the need, unless I am making the kind of javaScript module that is expected to work in node and the browser in the same state in which case chances are I would use an IIFE.
