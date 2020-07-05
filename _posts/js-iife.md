@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-07-05 12:37:41
-version: 1.12
+updated: 2020-07-05 12:49:02
+version: 1.13
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers t the fact that it is defined and then invoked, it is also some times called a self executed function expression, or something else along those lines, but the official name is indeed Immediately Invoked Function Expression.
@@ -21,7 +21,9 @@ These kinds of functions in javaScript are often used in module design, as priva
 
 ## 1 - JS IIFE basic example with an inner function returned as the public API
 
-Lets start out with just a basic example of an IIFE in javaScript. I do so by just writing a function expression like always, but I then wrap the expression in parenthesis or a group operator if you prefer. I then call the function expression as well within the group operator. So I define the function while also calling it invoking any code that may be within the body of the IIFE.
+Lets start out with just a basic example of an IIFE in javaScript. I do so by just writing a function expression like always, but I then wrap the expression in parenthesis or a group operator if you prefer. I then call the function expression as well within the group operator, or outside of it if for some reason you find that might be better. So this results in a function where I define the function while also calling it invoking any code that may be within the body of the IIFE right away.
+
+So for a simple example say I have a global variable called count, and I attach an IIFE to it. Inside the body of the IIFE I am returning another function that will be used as a way to work with an internal c variable. The public function that is returned can be called from the outside to get and set the local c variable,  but I can not directly work with it from the outside of the IIFE.
 
 ```js
 var count = (function () {
@@ -44,7 +46,7 @@ count('count');
 console.log( count('get') ); // -3
 ```
 
-In this example I have an inner function that is returned to the public count variable. I can then call that function from the outside of the IIFE however I can not directly work with the private c variable.
+In this example I have an inner function that is returned to the public count variable. I can then call that function from the outside of the IIFE however I can not directly work with the private c variable. I can however work with the local c variable indirectly by way of the public method that is returned.
 
 ## 2 - Making a public API as an object literal
 
