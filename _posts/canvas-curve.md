@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 577
 categories: canvas
-updated: 2019-12-10 14:12:25
-version: 1.16
+updated: 2020-07-06 12:16:07
+version: 1.17
 ---
 
-So in canvas curves are a topic that one will just get into at one point or another. There are 2d drawing api methods such as the canvas arc method and well as some others that can be used to draw more complex curves sych as the [bezier curve to](https://www.w3schools.com/tags/canvas_beziercurveto.asp) method. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
+So in canvas curves are a topic that one will just get into at one point or another, it just seems to be something that comes naturally when staring to play around with canavs elements and javaScript. There are 2d drawing API methods such as the canvas arc method and well as some others that can be used to draw more complex curves such as the [bezier curve to](https://www.w3schools.com/tags/canvas_beziercurveto.asp) method. However these methods do not help when it comes to pulling the state of something away from the process of rendering such a state. 
 
 When it comes to really getting into curves, and starting to have a deep understand and appreciation for drawing curves in canvas, I feel as though I need to do something that involves making methods that create point collections.
 
