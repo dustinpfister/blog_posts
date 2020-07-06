@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2020-07-06 11:51:51
-version: 1.6
+updated: 2020-07-06 11:53:15
+version: 1.7
 ---
 
 There is a [popular javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
@@ -23,7 +23,7 @@ Dragual can be installed via npm or bower, or I guess one could just grab what i
 $ npm install dragula
 ```
 
-Once I have it in a test folder I just need to link to in in an html file, as this is very mush a front end kind of project.
+Once I have it in a test folder I just need to link to in in an html file, as this is very mush a front end kind of project. Once that is done I am ready to use it to work out some simple examples of dragula for what it is worth.
 
 ## 2 - Basic usage example
 
