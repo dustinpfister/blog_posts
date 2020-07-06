@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-07-06 13:56:13
-version: 1.4
+updated: 2020-07-06 14:25:41
+version: 1.5
 ---
 
 In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string. There is also just using the bracket syntax as a way to get a single char, the same way that old would get an element in an array, or a public named object key value in any javaScript object for that matter. There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only it will give a number value for the char rather than a string of the char.
@@ -44,6 +44,20 @@ console.log(obj['b']); // 2
 ```
 
 In addition the bracket syntax will not just work with strings, but it also works when getting a single element of an array, or the value of a named key when giving that named key as the value when using the bracket syntax. So just using the bracket syntax is a more robust option that the charAt method, but there are other options to that can be used to get a single char in a string.
+
+## 4 - using substr to get a range of chars
+
+The [string substr](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr) method is also there in the string prototype object for getting not just one char, but a whole range of chars. That is if you know both the starting index, and number of chars that you want to get from the string.
+
+```js
+var str = 'This might be the best site on javaScript',
+m = str.match(/best site/);
+ 
+if (m) {
+    console.log(str.substr(m.index, str.length - m.index));
+    // best site on javaScript
+}
+```
 
 ## 3 - Conclusion
 
