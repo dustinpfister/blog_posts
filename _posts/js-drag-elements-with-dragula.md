@@ -5,13 +5,13 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2020-06-30 18:09:09
-version: 1.5
+updated: 2020-07-06 11:51:51
+version: 1.6
 ---
 
-There is a [popular javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another. It is a quick and simple way to get this sort of this working, and does not require any additional dependencies such as jquery and lodash.
+There is a [popular javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
 
-There are of course many other ways to go about doing this when it comes to working out a custom vanilla javaScript solution. In modern client side javaScript there are even some native browser options now, and there is also doing drag, drop, and snap in a canvas element. So this post will be on using Dragula, but also click and drag in general with javaScript.
+There are of course many other ways to go about doing this when it comes to working out a custom vanilla javaScript solution for dragging and dropping things around. In modern client side javaScript there are even some native browser options now, and there is also doing drag, drop, and snap in a canvas element with display objects rather than HTML elements. So this post will be on using Dragula, but also click and drag in general with javaScript in the front end.
 
 <!-- more -->
 
