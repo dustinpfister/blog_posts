@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-07-06 15:28:02
-version: 1.9
+updated: 2020-07-06 15:31:59
+version: 1.10
 ---
 
 In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string. There is also just using the bracket syntax as a way to get a single char, the same way that old would get an element in an array, or a public named object key value in any javaScript object for that matter. There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only it will give a number value for the char rather than a string of the char.
@@ -51,11 +51,15 @@ So the charat method alone with the bracket syntax are ways of getting a single 
 
 ### 3.1 - The string index of method
 
+So one way of getting an index value to begin with would be using the string index of method. If you know the single char, or the value of the string that you want to find inside of the string this method will work fine for getting the first index value from left to right.
+
 ```js
 var str = 'so Then this is a only a tEst of String Things';
  
 console.log( str.indexOf('T')); // 3
 ```
+
+This method will only get the first index value though, and it will not support the use of regular expressions rather than just a string value. SO with that said lets look at some additional examples of getting the index value before hand.
 
 ### 3.2 - The string match method for getting index values
 
