@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-06 12:27:43
-version: 1.32
+updated: 2020-07-06 12:32:51
+version: 1.33
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index in each post. The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. This post then serves as an over all effort to make this collection of content more organized.
@@ -50,7 +50,9 @@ One thing that comes up often with canvas projects is how to go about adding but
 
 Making a clock with canvas can be fun. I find them simple to make, and there is so much that can be done that is centered around time.
 
-### 2.8 - Clock and particles
+### 2.8 - [Clock and particles](/2020/05/06/canvas-example-clock-particles/)
+
+Yet another clock example this time it involves a collection of particle objects.
 
 ### 2.9 - [game beach concept](/2020/04/24/canvas-example-game-beach/)
 
@@ -80,9 +82,13 @@ I have found myself making clones of certain classics from the Atari 2600, this 
 
 There is yet another example of an idle type game that involves a gird that has assets at each location that generate money.
 
-### 2.16 - game spinner
+### 2.16 - [game spinner](/2020/06/07/canvas-example-game-spinner/)
 
-### 2.17 - Grass blades
+So I wanted to have at least one canvas example that is a game spinner that is similar to that of something that you find with many board games.
+
+### 2.17 - [Grass blades](/2020/07/02/canvas-example-grass-blades/)
+
+just some grass blade type things.
 
 ### 2.18 - [Gird defense](/2019/11/27/canvas-example-grid-defense/)
 
@@ -104,7 +110,7 @@ A grid module for canvas projects.
 
 This is one project example I find myself coming back to now and then. It has to do with the limits of 2d images given a a set width, height, and color depth.
 
-### 2.23 - image loader
+### 2.23 - [image loader](/2020/04/30/canvas-example-image-loader/)
 
 ### 2.24 - [input controller](/2020/04/17/canvas-example-input-controller/)
 
