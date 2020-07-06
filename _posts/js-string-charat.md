@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-07-06 14:43:29
-version: 1.6
+updated: 2020-07-06 14:49:01
+version: 1.7
 ---
 
 In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string. There is also just using the bracket syntax as a way to get a single char, the same way that old would get an element in an array, or a public named object key value in any javaScript object for that matter. There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only it will give a number value for the char rather than a string of the char.
@@ -47,6 +47,8 @@ In addition the bracket syntax will not just work with strings, but it also work
 
 ## 3 - Using string Match to get the index value of a char
 
+So the charat method alone with the bracket syntax are ways of getting a single char if you know the index value. However what if you do not know the index value to begin with? Then you would need some way to get one or more index values in a string first in order to know the index value to give. On top of that while you are at it should there be a way to jus get the values to while we are at it?
+
 So one way to get an index value of the first instance of a pattern including a one char pattern would be to use the [string match](/2019/04/06/js-string-match/) method. If the string match method is given a non global pattern then it will return an object that will contain an index property that is the index of the first instance of the given patter from left to right. However it will give an array of primitive values rather than objects with index values in the event it is given a pattern with the global flag set to true.
 
 ```js
@@ -65,6 +67,8 @@ console.log( getIndex(str, /[A-Z]/) ); 3
 // but not with global patterns
 console.log( getIndex(str, /[A-Z]/g) ); -1
 ```
+
+So the string match method works okay at getting a single index value, but not more than one. It will work okay if you just care about getting and array of values where each value in the array is the char that you are looking for though.
 
 ## 4 - using substr to get a range of chars
 
