@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-07-06 11:36:37
-version: 1.14
+updated: 2020-07-06 11:47:03
+version: 1.15
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array. This is of course just one of many such methods that a javaScript developer should be aware of when it comes to what there is to work with in the array prototype, without having to look for or write some kind of user space option.
@@ -58,6 +58,20 @@ var a = parseInt(String(n).split('').map(function (n) {
 console.log(a); // 2481632
 ```
 
-## 4 - Conclusion
+## 4 - Using array map before hand when working with an array of objects
 
-So the js aray join method is one of many array prototype methods that I find myself using all the time when and where using it is called for. If I have an array of elements and I want to join them all together into a string then the array join method is there to do just that right away and allow me to continue on with my code.
+For some arrays something might have to happen before joining all the elements together. For example say you have an array of objects and you want to join together all the values of a single property of each nested object together. In this kind of situation the array map method can be used as a way to create an array of primitive values before hand, and then that is what can be joined together.
+
+```js
+let arr = [ {a: 42}, {a: 30}, {a: 50} ];
+ 
+let str = arr.map((obj) => {
+    return obj.a;
+}).join('-');
+ 
+console.log(str); // '42-30-50'
+```
+
+## 3 - Conclusion
+
+So the js array join method is one of many array prototype methods that I find myself using all the time when and where using it is called for. If I have an array of elements and I want to join them all together into a string then the array join method is there to do just that right away and allow me to continue on with my code.
