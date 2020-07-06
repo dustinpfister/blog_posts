@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2020-07-06 11:53:15
-version: 1.7
+updated: 2020-07-06 11:58:54
+version: 1.8
 ---
 
 There is a [popular javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
@@ -27,9 +27,9 @@ Once I have it in a test folder I just need to link to in in an html file, as th
 
 ## 2 - Basic usage example
 
-For my Basic use example of dragula I created a basic.html file in my test folder, and linked to the path in which dragula is. For me it is in the dist folder of the dragula node module folder, but the path my differ depending on how you are going about structuring things.
+For my Basic use example of dragula I created a basic.html file in my test folder, and linked to the path in which dragula.js is in this case th node modules folder where it was installed when brining it into my test folder with npm. In a real project of course I would park this asset elsewhere, but for this silly demo it will work okay.
 
-I aslo found that I want to link to the dragula.css file as well, it seems to work without it but with weird rendering behavior, so just use the given css.
+I also found that I want to link to the dragula.css file as well, it seems to work without it but with weird rendering behavior, so just use the given css for starters at least.
 
 ```html
 <!doctype html>
@@ -76,10 +76,12 @@ I aslo found that I want to link to the dragula.css file as well, it seems to wo
 </html>
 ```
 
+To set up some areas to drag to and from I just need two container divs, and then pass references to each of them when calling the main dragula method that is returned from the dragula module.
+
 So thats it at a minimum I just need to give it an array of elements that are containers of elements that can be dragged from one location to another.
 
 ## 3 - Conclusion
 
 There are a lot of options for dragula, I could make some more advanced examples but for now I will just keep this post pretty basic. For the mean time there is the [README](https://github.com/bevacqua/dragula/blob/master/readme.markdown) for the project.
 
-It would seem that there are also some native options for dragging elements in a front end javaScript environment also these days. In addition there is also working with a canvas element, and having display objects that are clicked and dragged within a canavs element also that is another option that comes to mind when it comes to this sort of thing.
+It would seem that there are also some native options for dragging elements in a front end javaScript environment also these days. In addition there is also working with a canvas element, and having display objects that are clicked and dragged within a canvas element also that is another option that comes to mind when it comes to this sort of thing.
