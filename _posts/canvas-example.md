@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-07 19:02:06
-version: 1.34
+updated: 2020-07-07 19:04:01
+version: 1.35
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -21,7 +21,7 @@ I have set up a [git repository at my git-hub account for these canvas examples]
 
 ## 2 - The Canvas Examples
 
-Now for the list of examples with links to each, and a brief description.
+Now for the list of examples with links to each, and a brief description while I am at it. The list is just in alphabetical order going by the name for now.
 
 ### 2.1 - [A planet of mine clone](/2020/04/03/canvas-example-a-planet-of-mine-clone/)
 
