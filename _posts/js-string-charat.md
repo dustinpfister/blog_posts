@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-07-07 08:05:18
-version: 1.11
+updated: 2020-07-07 08:09:54
+version: 1.12
 ---
 
 In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string. There is also just using the bracket syntax as a way to get a single char, the same way that old would get an element in an array, or a public named object key value in any javaScript object for that matter. There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only it will give a number value for the char rather than a string of the char.
@@ -145,6 +145,10 @@ var range = str.split('').splice(5, 5).join('');
  
 console.log(range); // 'might'
 ```
+
+There are other ways of using array prototype methods such as using the function call method. That way of doing it involves just directly using array methods on a string that often work because strings are array like objects.
+
+In any case the point here is that you are not limited to what can be done with the string prototype methods. Strings can be easily converted to arrays with split, and convert back with join. In some cases yu can just directly use the method of another prototype object using the function call method.
 
 ## 6 - Conclusion
 
