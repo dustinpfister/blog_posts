@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 242
-updated: 2020-07-07 18:43:41
-version: 1.6
+updated: 2020-07-07 18:51:58
+version: 1.7
 ---
 
 For todays post on [lodash](https://lodash.com/) I thought I should write a post on the [\_.reduce](https://lodash.com/docs/4.17.10#reduce) collection method, and also of course the corresponding [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method in core javaScript itself. 
@@ -39,7 +39,7 @@ console.log(sum); // 4
 
 This works fine because the first element in the collection is a number, so then the starting value of acc is a number, and then all additional values are numbers as well, so I do not have to do anything fancy with type detection, or recursive processing with this example. In other words the function is only called three times, and on the first call the value of acc is the value of the first element in the array, so I can just add.
 
-### 2.2 Using Array.reduce
+### 2.2 - Using Array.reduce
 
 So if I am only working with arrays then there is not much need for \_.reduce, because in most cases the Array prototype equivalent of this will work just fine.
 
@@ -61,7 +61,7 @@ So Arrays in javaScript are Objects that are an instance of Array. So it should 
 
 ## 3.1 - Using \_.reduce it does not even have to have a length property.
 
-In most cases an array like object will have a length propety just like with an Object created with the Array constructor, but with \_.reduce in lodash it does not even have to have that.
+In most cases an array like object will have a length property just like with an Object created with the Array constructor, but with \_.reduce in lodash it does not even have to have that.
 
 ```js
 let sum = _.reduce({0:1,1:1,2:1,3:1}, function (sum, cur) {
@@ -88,3 +88,9 @@ let sum = Array.prototype.reduce.call({0: 1,1: 1,2: 1,3: 1,length: 4},(sum, cur)
  
 console.log(sum); // 4
 ```
+
+## 4 - conclusion
+
+So the reduce method is a great way to go about reducing a collection into a single value of some kind. I do find it a little awkward to work with some times when it comes to the accumulator argument, but once I get the hand of it the reduce method is one such method that always comes to mind in situations where it is called for.
+
+The reduce method is of course just one tool in the toolbox though, as there are many other such options that might be a better choice when working with arrays r collections of some kind in general. There is of course the [filter](/2018/05/18/lodash_filter/), and [map methods](/2018/02/02/lodash_map/) also of course that come to mind often.
