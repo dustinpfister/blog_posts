@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 242
-updated: 2020-07-07 18:39:44
-version: 1.5
+updated: 2020-07-07 18:43:41
+version: 1.6
 ---
 
 For todays post on [lodash](https://lodash.com/) I thought I should write a post on the [\_.reduce](https://lodash.com/docs/4.17.10#reduce) collection method, and also of course the corresponding [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method in core javaScript itself. 
@@ -17,7 +17,7 @@ The Array.reduce method works just fine, however if you are using lodash in a pr
 
 ## 1 - Before continuing
 
-This is a post on the \_.reduce method in lodash a javaScript framework that has many useful methods for working with objects, and arrays. Much of the functionality in lodash is now more often then not baked into javaScript itself these days, but not always, and some times the native solutions do not work the same, and with less features. In any case this is not a getting started post on javaScript in general, and I assume that you have at least some background with javaScript.
+This is a post on the \_.reduce method in lodash a fairly popular javaScript framework that has many useful methods for working with objects, arrays, and more. Much of the functionality in lodash is now more often then not included in native javaScript itself these days, but not always with all lodash methods. In addition some times the native solutions do not work the same, and with less features compared to the lodash counterparts. In any case this is not a getting started post using lodash or on javaScript in general, and I assume that you have at least some background with javaScript and working with external libraries such as lodash when needed.
 
 ## 2 - Some basic examples of reduce that just reduces an array of numbers into a sum
 
