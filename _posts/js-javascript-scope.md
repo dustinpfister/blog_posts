@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2019-08-08 17:37:08
-version: 1.14
+updated: 2020-07-07 16:32:26
+version: 1.15
 ---
 
-The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined. If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
+The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined, and also where it can be accessed elsewhere in code if at all. 
+
+If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. There is for example variables that are defined at the top level of code that are often called global variables. these kinds of variables can be accessed anywhere else within a body of code, this compares to variables that are declared inside the body of a function with var, let or const, or inside blocks of code when it comes to just let and const that can only be accessed in the scope of that function or block. these kinds of variables are often called local variables.
+
+Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now.
 <!-- more -->
 
 ## 1 - javaScript scope with var
