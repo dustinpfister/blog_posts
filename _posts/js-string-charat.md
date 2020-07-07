@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-07-06 15:31:59
-version: 1.10
+updated: 2020-07-07 08:05:18
+version: 1.11
 ---
 
 In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string. There is also just using the bracket syntax as a way to get a single char, the same way that old would get an element in an array, or a public named object key value in any javaScript object for that matter. There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only it will give a number value for the char rather than a string of the char.
@@ -120,7 +120,7 @@ console.log(formated(str, /[A-Z]/g));
 // T3,E26,S33,T40
 ```
 
-## 4 - using substr to get a range of chars
+## 4 - Using string.substr to get a range of chars
 
 The [string substr](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr) method is also there in the string prototype object for getting not just one char, but a whole range of chars. That is if you know both the starting index, and number of chars that you want to get from the string.
 
@@ -134,6 +134,18 @@ if (m) {
 }
 ```
 
-## 3 - Conclusion
+## 5 - Using String.split, Array.splice, and Array.join
+
+There is using the string methods to get a range of chars from a string rather than just a single char with charAT, but then there is using the array method splice also. One way that the array method splice can be used is by first converting the string into an array with the split string prototype method. Once I have an array of chars rather than a string I can then use the array splice method to return a new array from that array that is just a given set of chars from a given starting index value and a number of chars. I can then use the array join method to join the new array back into a string.
+
+```js
+var str = 'This might be the best site on javaScript';
+// using split, splice, and join
+var range = str.split('').splice(5, 5).join('');
+ 
+console.log(range); // 'might'
+```
+
+## 6 - Conclusion
 
 So the charAt method is a string method that just simply gets a single char in a string to which it is called off of. There are other methods that can be used to get not just one char, but a range of chars in a string that are more versatile though. In addition there is just using the bracket syntax to do so that can be used with strings to get a char, but it can also be used to get a single value with objects in general with javaScript. I can not say that I use the charAt string prototype method that much, as i seem to prefer to use the other options that I have outlined in this post.
