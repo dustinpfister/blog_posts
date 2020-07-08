@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 677
-updated: 2020-07-08 13:24:13
-version: 1.4
+updated: 2020-07-08 13:28:26
+version: 1.5
 ---
 
 The [git diff](https://git-scm.com/docs/git-diff) command is useful for finding changes between two commits when using git for source control. there are many options for formatting the output also, so for one example say I am just interesting in getting a list of files that have changed from a given starting and ending commit it, such a task can be completed by using the git diff command with the name only option.
@@ -54,3 +54,7 @@ _posts/js-javascript-scope.md
 _posts/js-nth-root.md
 _posts/js-string-charat.md
 ```
+
+## 2 - Conclusion
+
+So the git diff command is one of many sub commands of git that will come up when working things out with a git repository. I can use it to just know what has changed in terms of content between the last commit, and the current state of files. Or I can go way back, and get a long list of files that have been altered from one point back in time up to another. I can then of course use the git diff command along with many others such as git log, and additional scripting to accomplish all kinds of tasks such as finding out increases in word count over time if it is a repository that contains markdown files of blog posts for example.
