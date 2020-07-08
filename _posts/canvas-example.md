@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-08 09:40:39
-version: 1.36
+updated: 2020-07-08 09:45:19
+version: 1.37
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -54,7 +54,7 @@ Making a clock with canvas can be fun, and I also find making them easy and ther
 
 ### 2.8 - [Clock and particles](/2020/05/06/canvas-example-clock-particles/)
 
-Yet another clock example this time it involves a collection of particle objects.
+Yet another clock example this time it involves a collection of particle objects that move outward from the center of the clock face. Thus clock is just a slightly more advanced version of the basic clock example that I started out with.
 
 ### 2.9 - [game beach concept](/2020/04/24/canvas-example-game-beach/)
 
