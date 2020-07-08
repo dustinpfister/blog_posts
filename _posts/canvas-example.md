@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-08 09:45:19
-version: 1.37
+updated: 2020-07-08 09:47:29
+version: 1.38
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -58,7 +58,7 @@ Yet another clock example this time it involves a collection of particle objects
 
 ### 2.9 - [game beach concept](/2020/04/24/canvas-example-game-beach/)
 
-This is a concept for a game that involves turrets and ships to which the turrets attack.
+This is a concept for a game that involves turrets and ships to which the turrets attack. I wanted to make something where the whole game of sorts if you can call it is actually fully automated. So this canvas example does not involve any user input, but rather involves javaScript code that automated the actions that the user would otherwise preform.
 
 ### 2.10 - [Making a breakout game clone](/2020/02/13/canvas-example-game-breakout/)
 
