@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 677
-updated: 2020-07-08 13:28:26
-version: 1.5
+updated: 2020-07-08 13:34:05
+version: 1.6
 ---
 
 The [git diff](https://git-scm.com/docs/git-diff) command is useful for finding changes between two commits when using git for source control. there are many options for formatting the output also, so for one example say I am just interesting in getting a list of files that have changed from a given starting and ending commit it, such a task can be completed by using the git diff command with the name only option.
@@ -54,6 +54,8 @@ _posts/js-javascript-scope.md
 _posts/js-nth-root.md
 _posts/js-string-charat.md
 ```
+
+Okay great now I have my list of files that have changed between one point in time, and another. I could then use this list of files, and commit ids to do cretin things with some additional scripting. Such as tabulating the total word count for each file in my \_posts folder at the oldest commit by creating a json file for each post in the folder for starters. Then just update the json files for the posts in this list rather than the full collection of some six hundred posts and growing resulting in much faster way of creating a word count increase history. 
 
 ## 2 - Conclusion
 
