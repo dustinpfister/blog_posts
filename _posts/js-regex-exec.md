@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 678
-updated: 2020-07-08 12:48:34
-version: 1.5
+updated: 2020-07-08 12:53:06
+version: 1.6
 ---
 
 The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string.
@@ -68,3 +68,7 @@ console.log(formated(str, /[A-Z]/));
 console.log(formated(str, /[A-Z]/g));
 // T3,E26,S33,T40
 ```
+
+## 5 - Conclusion
+
+So the exec method of a RegExp instance is what there is to work with when it comes to getting all instances of a pattern in a string when it comes to using native javaScript by itself. There is of course the string methods such as [match](/2019/04/06/js-string-match/), and [replace](/2019/04/08/js-string-replace/). However those are string methods that will not effect the state of an RegExp instance, and also they do not give me the results that I want when it comes to global matching.
