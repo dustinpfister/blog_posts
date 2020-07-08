@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 677
-updated: 2020-07-07 18:30:48
-version: 1.3
+updated: 2020-07-08 13:24:13
+version: 1.4
 ---
 
 The [git diff](https://git-scm.com/docs/git-diff) command is useful for finding changes between two commits when using git for source control. there are many options for formatting the output also, so for one example say I am just interesting in getting a list of files that have changed from a given starting and ending commit it, such a task can be completed by using the git diff command with the name only option.
@@ -18,7 +18,7 @@ I am also a javaScript developer so this post will also be on a few quick exampl
 
 ## 1 - Git log and git diff --name-only for getting a list of files that changed
 
-So one task that comes to mind is that I would like to have a way to just get a list of files that have changed from one commit to the next. I could use the git diff command with the --name-only command, but first I will want two commit ids before hand. So I can also use the git log command to get a list of commit ids for say the last twenty commits of a repository.
+So one task that comes to mind is that I would like to have a way to just get a list of files that have changed from one commit to the next. I could use the git diff command with the --name-only command, but first I will want two commit ids before hand. So I can also use the [git log](/2019/05/29/git-log/) command to get a list of commit ids for say the last twenty commits of a repository. While I am at it I can also use the format option of the git log command to format the output so that it will just spit out commit id values.
 
 ```
 $ git log -n 20 --format="%H"
@@ -43,6 +43,8 @@ fc891d25b2a11afb415857ad7ec113b150857173
 92da29de41be142e636ecadef6e82ae47b159840
 48b3efa92ee8711da5c825e4a3301a39d8b26467
 ```
+
+Now that I have a list of commit ids going back some twenty commits I can use these to find out what files have chnaged from the oldest commit up to the latest one.
 
 ```
 git diff 48b3efa92ee8711da5c825e4a3301a39d8b26467 d400b26b1262cc472422daacada58cc223e14f56 --name-only
