@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-07 19:04:01
-version: 1.35
+updated: 2020-07-08 09:40:39
+version: 1.36
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -50,7 +50,7 @@ One thing that comes up often with canvas projects is how to go about adding but
 
 ### 2.7 - [A basic clock canvas example](/2019/12/13/canvas-example-clock-basic/)
 
-Making a clock with canvas can be fun. I find them simple to make, and there is so much that can be done that is centered around time.
+Making a clock with canvas can be fun, and I also find making them easy and therapeutic actually. There is of cousre going in all kinds of novel and interesting directions with clocks, but there is also just starting out with the basics. So with this canvas example I worked out just a basic form of how to go about making a simple clock object model, and draw module for just a simple digital and analog combination clock.
 
 ### 2.8 - [Clock and particles](/2020/05/06/canvas-example-clock-particles/)
 
