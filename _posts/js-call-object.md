@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 370
-updated: 2019-08-12 14:49:38
-version: 1.6
+updated: 2020-07-08 09:49:35
+version: 1.7
 ---
 
-The Call object in javaScript is used as a way to store local variables this contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers as way to have a separate collection of variables that are only local to a functions call object. This is not to be confused with the [call method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call) of a function that can be used to set the value of the this keyword for a function. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion. So in this post I will be writing about the call object, and function scope local variables in javaScript.
+The Call object in javaScript is used as a way to store local variables this contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers as way to have a separate collection of variables that are only local to a functions call object. 
+
+This is not to be confused with the [call function prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call) of a function that can be used to set the value of the this keyword for a function. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion. So in this post I will be writing about the call object, and function scope local variables in javaScript.
 
 <!-- more -->
 
