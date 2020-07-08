@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 677
-updated: 2020-07-08 13:34:05
-version: 1.6
+updated: 2020-07-08 14:41:56
+version: 1.7
 ---
 
 The [git diff](https://git-scm.com/docs/git-diff) command is useful for finding changes between two commits when using git for source control. there are many options for formatting the output also, so for one example say I am just interesting in getting a list of files that have changed from a given starting and ending commit it, such a task can be completed by using the git diff command with the name only option.
@@ -57,6 +57,95 @@ _posts/js-string-charat.md
 
 Okay great now I have my list of files that have changed between one point in time, and another. I could then use this list of files, and commit ids to do cretin things with some additional scripting. Such as tabulating the total word count for each file in my \_posts folder at the oldest commit by creating a json file for each post in the folder for starters. Then just update the json files for the posts in this list rather than the full collection of some six hundred posts and growing resulting in much faster way of creating a word count increase history. 
 
-## 2 - Conclusion
+## 2 - A nodejs powered project that makes use of git log, and git diff to get a list of files that changed
+
+So now I though I would work out a little javaScript code that is a small collection of nodejs module that make use of git log, and git diff via the spawn child process module method on nodejs. This will just be twwo modules and an additional script that makes use of these modules. The first module will use git log to get a list of commit ids, and then the second module will use git diff to get a list of file names from that collection of commit ids, as well as a staring and ending index value.
+
+### 2.1 - A git-commit-list module that uses git log
+
+```js
+let spawn = require('child_process').spawn;
+module.exports = (opt) => {
+    opt = opt || {};
+    opt.count = opt.count === undefined ? 3 : opt.count;
+    let spawn_options = {
+        cwd: opt.cwd || process.cwd(),
+    },
+    git = spawn('git', ['log', '-n ' + opt.count, '--format=%H'], spawn_options);
+    buf = Buffer.alloc(0);
+    return new Promise((resolve, reject) => {
+        git.stdout.on('data', (data) => {
+            buf = Buffer.concat([buf, data])
+        });
+        git.stderr.on('data', (data) => {
+            reject(data.toString());
+        });
+        git.on('close', (code) => {
+            let commits = buf.toString().split('\n');
+            commits.pop();
+            resolve(commits);
+        });
+    });
+};
+```
+
+### 2.2 - A git-commit-list-diff module that uses git diff
+
+```js
+let spawn = require('child_process').spawn;
+module.exports = (opt) => {
+    opt = opt || {};
+ 
+    if (opt.commits === undefined) {
+        return Promise.reject('must give commit list');
+    }
+    let len = opt.commits.length;
+    opt.firstIndex = opt.firstIndex === undefined ? len - 1 : opt.firstIndex;
+    opt.lastIndex = opt.lastIndex === undefined ? 0 : opt.lastIndex;
+ 
+    let spawn_options = {
+        cwd: opt.cwd || process.cwd(),
+    },
+    git = spawn('git', ['diff', opt.commits[opt.firstIndex], opt.commits[opt.lastIndex], '--name-only'], spawn_options);
+    buf = Buffer.alloc(0);
+    return new Promise((resolve, reject) => {
+        git.stdout.on('data', (data) => {
+            buf = Buffer.concat([buf, data])
+        });
+        git.stderr.on('data', (data) => {
+            reject(data.toString());
+        });
+        git.on('close', (code) => {
+            let out = buf.toString();
+            resolve(out);
+        });
+    });
+};
+```
+
+### 2.3 - An index.js file that makes use of these modules
+
+```js
+let list = require('./lib/git-commit-list.js'),
+diff = require('./lib/git-commit-list-diff'),
+path = require('path');
+ 
+list({
+    cwd: __dirname,
+    count: 5
+}).then((commits) => {
+    return diff({
+        firstIndex: 1,
+        lastIndex: 0,
+        commits: commits
+    });
+}).then((out) => {
+    console.log(out);
+}).catch((e) => {
+    console.log(e);
+});
+```
+
+## 3 - Conclusion
 
 So the git diff command is one of many sub commands of git that will come up when working things out with a git repository. I can use it to just know what has changed in terms of content between the last commit, and the current state of files. Or I can go way back, and get a long list of files that have been altered from one point back in time up to another. I can then of course use the git diff command along with many others such as git log, and additional scripting to accomplish all kinds of tasks such as finding out increases in word count over time if it is a repository that contains markdown files of blog posts for example.
