@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 677
-updated: 2020-07-08 14:41:56
-version: 1.7
+updated: 2020-07-08 14:45:22
+version: 1.8
 ---
 
 The [git diff](https://git-scm.com/docs/git-diff) command is useful for finding changes between two commits when using git for source control. there are many options for formatting the output also, so for one example say I am just interesting in getting a list of files that have changed from a given starting and ending commit it, such a task can be completed by using the git diff command with the name only option.
@@ -63,6 +63,8 @@ So now I though I would work out a little javaScript code that is a small collec
 
 ### 2.1 - A git-commit-list module that uses git log
 
+So first I want a module that I can just use to get an array of commit ids for a given current working directly that should be a git folder.
+
 ```js
 let spawn = require('child_process').spawn;
 module.exports = (opt) => {
@@ -90,6 +92,8 @@ module.exports = (opt) => {
 ```
 
 ### 2.2 - A git-commit-list-diff module that uses git diff
+
+Now that I have a way to get an array of commit ids, I can then have a module that will take that array of commit ids as an argument. This module will use the git diff command with ids from a commit id lost created with the other module to get a list of files that have changed between a starting and ending index value of ids in the commit id list.
 
 ```js
 let spawn = require('child_process').spawn;
@@ -124,6 +128,8 @@ module.exports = (opt) => {
 ```
 
 ### 2.3 - An index.js file that makes use of these modules
+
+So now I just need a main index.js file that will make use of this.
 
 ```js
 let list = require('./lib/git-commit-list.js'),
