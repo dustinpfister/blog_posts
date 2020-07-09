@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-07-09 08:11:45
-version: 1.13
+updated: 2020-07-09 08:17:54
+version: 1.14
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object.
@@ -42,11 +42,11 @@ w.document.body.appendChild(div);
 </html>
 ```
 
-Once a reference to the iFrame is obtained it is possible to access the window object of that iFrame via the [contentWindow property of the iFrame element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow). This works in much the same way as the window object of the page itself as such I can add content to the iFrame in the same manner as i would with the main window object.
+Once a reference to the iFrame is obtained it is possible to access the window object of that iFrame via the [contentWindow property of the iFrame element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow). This works in much the same way as the window object of the page itself as such I can add content to the iFrame in the same manner as I would with the main window object. So there is getting at the window object of an iframe that is all ready there in the html, but then there is creating and injecting them also, so with that said lets look at the next section.
 
 ### 1.2 - Creating and injecting an iframe with javaScript
 
-Another way to work with an iframe is to create and inject the iframe with javaScript. This will involve the use of document.createElement, and the appendChild methods. Again once a reference is gained to the element the contentWindow property can be used to place content into it.
+Another way to work with an iframe is to create and inject the iframe with javaScript and the main window object of the main html page. This will involve the use of document.createElement, and the appendChild methods of a container element that I wish to append the new iframe to. Again once a reference is gained to the new iframe element the contentWindow property can be used to place content into the iframe element.
 
 With this kind of approach you might have some html like this.
 
