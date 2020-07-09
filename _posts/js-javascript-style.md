@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-07-09 08:32:27
-version: 1.11
+updated: 2020-07-09 08:36:15
+version: 1.12
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) api is one way to go about changing css values with javaScript rather than static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) only. This is not to be confused with javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -17,9 +17,9 @@ There are other ways of changing CSS values with javaScript such as changing the
 
 ## 1 - JavaScript style overview
 
-The style api is an property of an html element reference that serves as a way to intact with the inline css style of that element via JavaScript rather than the html style attribute of the element or an exteral CSS file. This differs from any additional style rules that may apply to the element via class names, ids and other selectors in the css of a project.
+The style api is a property of an html element reference that serves as a way to intact with the inline css style of that element via JavaScript code. This is a more dynamic way of controlling CSS rather than the use of the hard coded html style attribute of the element, or an external CSS file loaded into the page via a link element. This differs from any additional style rules that may apply to the element via class names, ids and other selectors in the css of a project.
 
-In case you did not know style values set via the javaScript style api supersedes all other style rules that may be in effect via css that is defined via a style element, inline style attribute of an element, or an external css file. So in some cases where it is call for the style api can be used to overwrite anything that may be in effect via the hard coded html and CSS of a page.
+In case you did not know style values set via the javaScript style api supersedes all other style rules that may be in effect via css that is defined by way of a style element, inline style attribute of an element, or an external css file. So in some cases where it is call for the style api can be used to overwrite anything that may be in effect via the hard coded html and CSS of a page.
 
 ## 2 - Get inline javaScript style
 
