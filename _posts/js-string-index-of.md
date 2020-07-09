@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-09 12:45:33
-version: 1.7
+updated: 2020-07-09 17:59:35
+version: 1.8
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3.
@@ -51,7 +51,7 @@ So in some situations where we are dealing with a fixed string rather than some 
 
 ## 3 - Getting an array of index values by making a method with index of, split, map, and filter
 
-So if I really want to I can get an array of index values with the index of method it is just that I can not do so with the index method by itself. I can of course get something working when pulling the string split method into the mix as a way to convert to an array, and then I can use map and filter on top of that using the index of method to find out if one word in a string of words contains a substring ot not. If so I can use the index value that is returned alone with an additional word index.
+So if I really want to I can get an array of index values with the index of method it is just that I can not do so with the index method by itself. I can of course make a method that would work with a string of words by pulling the string split method into the mix as a way to convert a string to an array. Once I have an array I can then use the map and filter array prototype methods. I can then use the index of method with each element in the resulting array that is a string to find out if one word in a string of words contains a substring or not. If so I can use the index value that is returned along with an additional value that I tabulate with the word length and the length of the separator that is a space. The result is a method that will return an array of index values for each sub string.
 
 ```js
 let getIndexValues = (str, substr, sep) => {
@@ -75,3 +75,5 @@ let getIndexValues = (str, substr, sep) => {
 let str = 'This is all foobar and foo as well as bar';
 console.log(getIndexValues(str, 'foo')); // [ 12, 23 ]
 ```
+
+It is crude yet effective, but a better way still as I have mentioned earlier is to use the exec method of a regular expression. A method like this will still not work with patterns rather than static strings, although I guess I could easily make some chances to this and use the string match method rather than index of.
