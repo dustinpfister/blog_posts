@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-09 17:59:35
-version: 1.8
+updated: 2020-07-09 18:03:58
+version: 1.9
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3.
@@ -77,3 +77,7 @@ console.log(getIndexValues(str, 'foo')); // [ 12, 23 ]
 ```
 
 It is crude yet effective, but a better way still as I have mentioned earlier is to use the exec method of a regular expression. A method like this will still not work with patterns rather than static strings, although I guess I could easily make some chances to this and use the string match method rather than index of.
+
+## 4 - Conclusion
+
+So the index of string method is a crude tired yet true way of getting the first index value of a sub string in a string that the method is called off of. There are other ways of doing the same thing such as with the string match method, but the index of method has been around for a long time, and will still work when just working with fixed string values as patterns to search for where I only care about the first match from left to right if any.
