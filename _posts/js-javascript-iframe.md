@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-07-09 08:07:58
-version: 1.12
+updated: 2020-07-09 08:11:45
+version: 1.13
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object.
@@ -17,11 +17,11 @@ The subject of iframes can become a little complicated there is much to write ab
 
 ## 1 - javaScript iFrame basics
 
-To get started with iframes there are two general ways of doing so one would be to add one to the actual hard coded html by editing an html file or template, and the other way would be to create and inject one into a document. In this section I will be coving how to go about doing just this involving a single html file.
+To get started with iframes there are two general ways of doing so, one would be to add one to the actual hard coded html by editing an html file or template, and the other way would be to create and inject one into a document with something like the document create element method. In this section I will be covering how to go about doing just this involving a single html file. I assume that you have at least some background with javaScript, and html before hand.
 
 ### 1.1 - Working with an iFrame that is hard coded into the html
 
-When working with an iframe that is hard coded into the html the process is to just gain a reference to it by using something like document.querySelector, document.getElementById, or any other means that will result to the hard coded iFrame element in the html of the page.
+When working with an iframe that is hard coded into the html the process is to just gain a reference to it by using something like document.querySelector, document.getElementById, or any other means that will result in the creation of a reference to the hard coded iFrame element in the html of the page.
 
 ```html
 <html>
@@ -42,7 +42,7 @@ w.document.body.appendChild(div);
 </html>
 ```
 
-Once a reference to the iFrame is obtained it is possible to access the window object of that iFrame via the contentWindow property of the iFrame element. This works in much the same way as the window object of the page itself as such I can add content to the iFrame in the same manner as i would with the main window object.
+Once a reference to the iFrame is obtained it is possible to access the window object of that iFrame via the [contentWindow property of the iFrame element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow). This works in much the same way as the window object of the page itself as such I can add content to the iFrame in the same manner as i would with the main window object.
 
 ### 1.2 - Creating and injecting an iframe with javaScript
 
