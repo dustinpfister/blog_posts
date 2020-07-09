@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-09 12:24:22
-version: 1.6
+updated: 2020-07-09 12:45:33
+version: 1.7
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3.
@@ -48,3 +48,30 @@ console.log(b);
 ```
 
 So in some situations where we are dealing with a fixed string rather than some kind of pattern that might be subject to a degree of variation the index of method still of course works with what it was intended for. However there are still other options that might prove to be a better course of action in general anyway.
+
+## 3 - Getting an array of index values by making a method with index of, split, map, and filter
+
+So if I really want to I can get an array of index values with the index of method it is just that I can not do so with the index method by itself. I can of course get something working when pulling the string split method into the mix as a way to convert to an array, and then I can use map and filter on top of that using the index of method to find out if one word in a string of words contains a substring ot not. If so I can use the index value that is returned alone with an additional word index.
+
+```js
+let getIndexValues = (str, substr, sep) => {
+    let index = 0;
+    sep = sep === undefined ? ' ' : sep;
+    return str.split(sep).map((word, wordIndex) => {
+        let i = word.indexOf(substr),
+        b;
+        if (i >= 0) {
+            b = index + i;
+        } else {
+            b = -1;
+        }
+        index += word.length + sep.length;
+        return b;
+    }).filter((i) => {
+        return i != -1;
+    });
+};
+ 
+let str = 'This is all foobar and foo as well as bar';
+console.log(getIndexValues(str, 'foo')); // [ 12, 23 ]
+```
