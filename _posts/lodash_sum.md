@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2020-07-09 18:32:18
-version: 1.18
+updated: 2020-07-09 18:33:19
+version: 1.19
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks allowing me to move forward with s project faster. Also in some cases making a sum is not so trivial, thankfully in [lodash](https://lodash.com/) there are some methods that can be used to help make the process of producing a sum speed along a little faster. In this post I will be writing about [\_.sum](https://lodash.com/docs/4.17.11#sum), [\_.sumBy](https://lodash.com/docs/4.17.11#sumBy), [\_.reduce](https://lodash.com/docs/4.17.11#reduce), and vanilla js alternatives when creating a sum.
@@ -23,7 +23,7 @@ In this post I was using lodash 4.17.10
 
 ## 2 - Using lodash to add up a sum
 
-So there are a number of methods in lodash that can be used to add up a sum, such as \_.sum which can be used to quickly add up the numbers of an array. In addition summation can also easily be done with methods like \_.reduce, and \_.forEach. However in this post I will be focuising on methods like \_.sum, and \_.sumBy.
+So there are a number of methods in lodash that can be used to add up a sum, such as \_.sum which can be used to quickly add up the numbers of an array. In addition summation can also easily be done with methods like \_.reduce, and \_.forEach. However in this post I will be focusing on methods like \_.sum, and \_.sumBy.
 
 ### 2.1 - Using \_.sum to just add an array of numbers
 
@@ -42,7 +42,7 @@ Although I most real world examples I can not say that I often deal with an arra
 
 ### 2.2 - Using \_.sumBy for an array of objects
 
-Say I have a not just an array of numbers, but an array of objects, and I need to make a sum by preforming an operation for each object. For example say I have an array of objects where each object is a report for sales and expenses for a certain business day. I want to add up how much profit has been made for each day, so I will need to subtract expenses from sales and then add that result up for each day. This can easlit be done with \_.sumBy.
+Say I have a not just an array of numbers, but an array of objects, and I need to make a sum by preforming an operation for each object. For example say I have an array of objects where each object is a report for sales and expenses for a certain business day. I want to add up how much profit has been made for each day, so I will need to subtract expenses from sales and then add that result up for each day. This can be done with \_.sumBy lodash method in a very quick and easy manor.
 
 ```js
 let reports = [{
