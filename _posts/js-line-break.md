@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2020-07-09 08:45:46
-version: 1.9
+updated: 2020-07-09 08:48:10
+version: 1.10
 ---
 
 When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen there is using the write method of the process stdout property.
@@ -19,7 +19,7 @@ There is more then one text pattern for line breaks depending on the operating s
 
 ## 1 - Js line breaks and escape notation
 
-The first and for most way to go about injecting line breaks into strings would be to use javaScript escape notation. This kind of notation involves using a backslash followed by one or more additional characters to help inject any kind of character into a string including line breaks.
+The first and for most way to go about injecting line breaks into strings would be to use javaScript escape notation. There are other ways of doing so that might be a better choice when it comes to a nodejs environment, but even then you might still want to use escape notation over that in some situations. This kind of notation involves using a backslash followed by one or more additional characters to help inject any kind of character into a string including line breaks.
 
 When it comes to windows style line breaks you will want  to start off with a carriage return follow by a new line. For posix style js line breaks forget the carriage return ans just inject a new line.
 
