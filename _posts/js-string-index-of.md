@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-09 10:30:35
-version: 1.3
+updated: 2020-07-09 10:32:41
+version: 1.4
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3.
@@ -29,3 +29,5 @@ i = str.indexOf('foo');
  
 console.log(i); // 12
 ```
+
+So it works as expected of course, but you might have noticed that there is more than one instance of the sub string in the source string that the method was called off of.
