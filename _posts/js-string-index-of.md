@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-09 10:27:25
-version: 1.2
+updated: 2020-07-09 10:30:35
+version: 1.3
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3.
@@ -15,7 +15,7 @@ The string index of method will give an index value of a character in a string f
 
 So then this string index of method in the string prototype object will work just fine when it comes to using strings rather than regular expressions, and if I am just interested in the first instance of a substring in another string from left to right. However in some situations I might want to get all index values of a fixed string, or even a pattern of sorts. When it comes to this the index of method falls short. To get all index values it would be better to use the [exec method](/2020/07/08/js-regex-exec/) of the [regular expression](/2019/03/20/js-regex/) class rather than string index of method.
 
-So lets look at a few simple examples of the string index method here, and also maybe touch based on some related topics without getting into to much detail.
+In addition to the index of property method there are other string prototype methods of interest such as string match, and string replace. When it comes to getting the index value of strings that fit a non fixed static pattern the match method might be a better choice. In addition the replace method is a better choice if you want to replace all instances of a sub string. Still this is a post mainly on the index of method so lets look at a few simple examples of the string index method here, and also maybe touch based on some related topics without getting into to much detail as i would on my posts on those methods.
 
 <!-- more -->
 
