@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-09 10:15:55
-version: 1.1
+updated: 2020-07-09 10:27:25
+version: 1.2
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3.
@@ -18,3 +18,14 @@ So then this string index of method in the string prototype object will work jus
 So lets look at a few simple examples of the string index method here, and also maybe touch based on some related topics without getting into to much detail.
 
 <!-- more -->
+
+## 1 - String index of basic example
+
+So then the basic idea of the string index of method here is that if you have a string with at least one instance of a sub string in it then index of can be used to get the character index value of that sub string. Just call the index of method off of the instance of the string, and pass the sub string as the first argument. If the substring is there then it will return and index value.
+
+```js
+let str = 'This is all foobar and foo as well as bar',
+i = str.indexOf('foo');
+ 
+console.log(i); // 12
+```
