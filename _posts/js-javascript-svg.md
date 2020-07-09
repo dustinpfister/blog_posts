@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2019-08-16 15:07:31
-version: 1.12
+updated: 2020-07-09 08:23:53
+version: 1.13
 ---
 
-In javaScript svg graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. When it comes to making graphics with javaScript there are a number of options these days, including the 2d canvas drawing api which is often the preferred raster graphics option. However [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is a [vector based graphics](https://en.wikipedia.org/wiki/Vector_graphics) solution rather than the [raster based graphics](https://en.wikipedia.org/wiki/Raster_graphics) used in canvas. So Scalable Vector Graphics is still a viable option for creating on the fly graphics with javaScript.
+In javaScript svg or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. When it comes to making graphics with javaScript there are a number of options these days, including the 2d canvas drawing api which is often the preferred raster graphics option. However svg is a [vector based graphics](https://en.wikipedia.org/wiki/Vector_graphics) solution rather than the [raster based graphics](https://en.wikipedia.org/wiki/Raster_graphics) used in canvas. So Scalable Vector Graphics is still a viable option for creating on the fly graphics with javaScript.
 
 <!-- more -->
 
@@ -156,3 +156,7 @@ loop();
     </body>
 </html>
 ```
+
+## 3 - Conclusion
+
+So Scalable Vector Graphics is yet another way to create graphics with javaScript code on top of using canvas elements, and also maybe DHTML via the style api. I often find myself using canvas over svg for the most part, but it makes sense to play around with svg at least a little once in a while just for the sake of trying something new.
