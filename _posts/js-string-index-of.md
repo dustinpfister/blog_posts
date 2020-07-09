@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-09 10:32:41
-version: 1.4
+updated: 2020-07-09 12:13:05
+version: 1.5
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3.
@@ -30,4 +30,4 @@ i = str.indexOf('foo');
 console.log(i); // 12
 ```
 
-So it works as expected of course, but you might have noticed that there is more than one instance of the sub string in the source string that the method was called off of.
+So it works as expected of course, but you might have noticed that there is more than one instance of the sub string in the source string that the method was called off of. The index of method can not be used to get an array of index values for a sub string if there is more than one instance. The method also always goes from left to right rather than the opposite of that. In addition it just gets an index value, and does not help with injecting or replacing something. There is also the fact that it will only work with a stri8ng value when it comes to giving something to look for. With that said it does have its short comings, but if that is all you want it will of course work, and also you do not have to worry at all about code breaking because this method has been around for ages.
