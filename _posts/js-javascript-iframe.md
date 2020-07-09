@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-07-09 08:05:35
-version: 1.11
+updated: 2020-07-09 08:07:58
+version: 1.12
 ---
 
 Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object.
 
-The subject of iframes can become a little complicated there is much to write about with them when it comes to more advanced topics involving hidden iframes, and security concerns when with things like click jacking. So in this post I will be sticking to just the basics for now.
+The subject of iframes can become a little complicated there is much to write about with them when it comes to more advanced topics involving hidden iframes, and security concerns when with things like [click jacking](https://en.wikipedia.org/wiki/Clickjacking) that ca be preformed with iframes. So in this post I will be sticking to just the basics for now as many of these other topics are matters for another post.
 
 <!-- more -->
 
