@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2020-07-10 19:24:06
-version: 1.7
+updated: 2020-07-10 19:26:30
+version: 1.8
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to what a closure is there are many ways to go about defining what a closure is. Some definitions are very simple yet technically still correct, while other definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them and why they are useful. 
@@ -67,3 +67,7 @@ do {
         (i));
 } while (i < len - 1);
 ```
+
+## 4 - Conclusion
+
+So closures are functions that return a function, and when doing so that inner function has access to the outer functions local variable scope.
