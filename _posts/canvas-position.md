@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2020-07-10 08:36:52
-version: 1.27
+updated: 2020-07-10 08:44:53
+version: 1.28
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default value for elements which is static positioning, to relative, absolute, or fixed positioning for starters. Once the position property of the canvas is set to something other than static then additional rules like top and left can be used to position the actual canvas element in the container element of the canvas. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general if that is what is meant by canvas position.
@@ -19,9 +19,11 @@ So then in this post I will be covering some topics when it comes to canvas posi
 
 <!-- more -->
 
-## 1 - Canvas position using css rules
+## 1 - Canvas position using css rules and thee style attribute
 
-So positioning a canvas element with css rules is more of a css topic rather than one that has to do with just canvas elements alone. The position css property is not a property that is exclusive to canvas elements alone, but other html elements like divs, and images. Still it is something that does have to do with the topic of canvas position, and it might prove to be a good starting point. So with that said one way to set canvas position with css is with inline css rules like so.
+So positioning a canvas element with css rules is more of a css topic rather than one that has to do with just canvas elements alone. So then the position css property is not a property that is exclusive to canvas elements alone, but other html elements like divs, images, and just about any other html element that will be displayed in the page for that matter.
+
+Still it is something that does have to do with the topic of canvas position, and it might prove to be a good starting point for this kind of topic. So with that said one way to set canvas position with css is with inline css rules by way of the style attribute of the hard coded canvas element.
 
 ```html
 <html>
@@ -42,9 +44,9 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 </html>
 ```
 
-This above example of course makes use of of relative positioning, but in some situations you might want to use absolute or fixed positioning. I will not be getting into the differences in depth, but those three values for positioning are still the most common and tropical values for the position property. I would say that at least those three should be solid in the mind of a jaavScript developer, when it comes to css positioning.
+This above example of course makes use of of relative positioning, but in some situations you might want to use absolute or fixed positioning. I will not be getting into the differences in depth, but those three values for positioning are still the most common and typical values for the position property. I would say that at least those three should be solid in the mind of a jaavScript developer, when it comes to css positioning.
 
-So for a brief overview static positioning is the default position property for elements where the div can not be moved with rules like top and left. Relative positioning is about the same as static but the element can be moved with rules like top and left. Absolute positioning is about the same as relative positioning but it breaks the element free from the normal flow of rendering and not positioning happens relative to the parent element, rather than that flow.
+So for a brief overview static positioning is the default position property for elements where the div can not be moved with rules like top and left. Relative positioning is about the same as static but the element can be moved from what would otherwise be the normal default static position with rules like top and left. Absolute positioning breaks the element free from the normal flow of rendering and now positioning happens relative to the parent element that contains the element, and just like with relative positioning properties like top and left can be used. Fixed positioning is also like absolute positioning, but the element can become fixed to the browser window rather than the content of the page, and will remain so even when the user scrolls threw the content of the page.
 
 ## 2 - Canvas position on resize
 
