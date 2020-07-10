@@ -5,11 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 556
-updated: 2020-02-07 09:54:56
-version: 1.21
+updated: 2020-07-10 19:32:47
+version: 1.22
 ---
 
-The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand. 
+The [canvas rotate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/rotate) method can be useful for doing quick on the fly rotations, but doing so will cost some overhead compared to having sprite sheets where the rotations have been worked out before hand.
+
+The canvas rotate method is often used in conjunction with other canvas methods such as the translate method, as well as save and restore. There is also of course the context methods that are used to render to the canvas once a rotation has been preformed.
 
 Still if I just want to quickly rotate something in canvas there is the rotate method in the 2d drawing context, so lets look at some examples of this as well as related topics such as the canvas translate method, save and restore, and many others.
 
