@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2020-07-10 08:48:47
-version: 1.29
+updated: 2020-07-10 09:39:28
+version: 1.30
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default value for elements which is static positioning, to relative, absolute, or fixed positioning for starters. Once the position property of the canvas is set to something other than static then additional rules like top and left can be used to position the actual canvas element in the container element of the canvas. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general if that is what is meant by canvas position.
@@ -52,7 +52,11 @@ The style attribute is of course not the only way to go about setting position v
 
 ## 2 - Canvas position on resize
 
-Another canvas position topic might be to position the canvas when the window is resized. This can be done with the resize window event and a simple callback function that positions the canvas with the style api. The [style api](/2019/02/12/js-javascript-style/) is one way to go about setting css rules with javaScript, so it is a way that the canvas can be resized, and positioned by way of some kind of event or condition with javaScript rather than static css rules.
+Another canvas position topic might be to position the canvas when the window is resized by the user changing the size of the browser window. This can be done with the on [resize window event](https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event) and a simple [callback function](/2019/03/25/js-javascript-callback/) that contains some javaScript code that positions the canvas with the [style API](/2019/02/12/js-javascript-style/). 
+
+The style API is one way to go about setting css rules with javaScript, so it is a way that the canvas can be resized, and positioned by way of some kind of event or condition with javaScript rather than static css rules. This can be event driven like with the window resize event that will be used in this section, or by way of any other means of doing so such as with an app loop that looks for a given condition to change size, position, or any other css value that can be changed with the style API.
+
+So for this example I have a positionCanvas method that will be called once for starters when the example starts for the first time. However in addition to this the method will also be called each time the window resizes by attaching the positionCanvas method as an event handler callback for the resize event. This resize event is attached to the window object by way of calling the add event listener method off of the window object, passing resize as the first argument, and then the reference to my positionCanvas method.
 
 ```html
 <html>
