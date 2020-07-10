@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2020-07-10 09:53:18
-version: 1.32
+updated: 2020-07-10 09:57:16
+version: 1.33
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default value for elements which is static positioning, to relative, absolute, or fixed positioning for starters. Once the position property of the canvas is set to something other than static then additional rules like top and left can be used to position the actual canvas element in the container element of the canvas. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general if that is what is meant by canvas position.
@@ -135,7 +135,7 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 </html>
 ```
 
-So this is a crude yet effect example of canvas position that has to do with getting pointer device position object values that are relative to a canvas position in the window of a web page. There are many ways of making a more complex, and capable [input control system](/2020/04/17/canvas-example-input-controller/) of sorts that might make use of this, along with many other concepts. However the basic idea is there, and will not change much when it comes to this little aspect of client side javaScript development.
+I do not care to get to deep into this topic here, as I have wrote another posts on this topic where I did that. However maybe it is still called for to go over some addtional examples of this before moving on.
 
 ### 3.1 - Making A Get canvas relative position helper method that will work with both mouse and touch events
 
@@ -155,6 +155,7 @@ var getCanvasRelative = function (e) {
 };
 ```
 
+So this is a crude yet effect example of canvas position that has to do with getting pointer device position object values that are relative to a canvas position in the window of a web page. There are many ways of making a more complex, and capable [input control system](/2020/04/17/canvas-example-input-controller/) of sorts that might make use of this, along with many other concepts. However the basic idea is there, and will not change much when it comes to this little aspect of client side javaScript development.
 
 ## 4 - Center the canvas position
 
