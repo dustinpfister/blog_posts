@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 401
-updated: 2020-07-10 09:39:28
-version: 1.30
+updated: 2020-07-10 09:47:29
+version: 1.31
 ---
 
 So then [canvas position](https://stackoverflow.com/questions/17265803/how-to-position-canvas-using-relative-absolute-positioning) might refer to positioning a canvas element using css style rules with the [position property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) mainly. That means setting the position property to something other than the default value for elements which is static positioning, to relative, absolute, or fixed positioning for starters. Once the position property of the canvas is set to something other than static then additional rules like top and left can be used to position the actual canvas element in the container element of the canvas. So then this would not really be a post on canvas alone, but the positioning of HTML elements in general if that is what is meant by canvas position.
@@ -96,7 +96,7 @@ This is not just an example of canvas position but of canvas scale also. When it
 
 ## 3 - Canvas mouse position
 
-So another thing about canvas position is how to go about getting the mouse pointer position when clicking on a canvas element. There is a need to get the canvas element relative position of the point that was clicked, or touched, rather than the browser window relative position. So this is another canvas position related topic that will come up now and then when working out a canvas project.
+So another thing about canvas position is how to go about getting the mouse pointer position when clicking on a canvas element. There is a need to get the canvas element relative position of the point that was clicked, or touched, rather than the browser window relative position. So this is another canvas position related topic that will come up now and then when working out a canvas project. I have wrote a whole other [post on this topic of canvas relative mouse position](/2020/03/04/canvas-get-point-relative-to-canvas/), that post might be a better read when it comes to getting into this topic in detail. However I will be touching base on the basic of this one here.
 
 The canvas element relative position of a mouse click, touch start, or similar event can be achieved with the use of the [getBoundingCLientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method. This is a useful method that can be used to get values that can be used to adjust the window relative x and y position that is gained from the e.clientX, and e.clientY properties of a mouse event object to a canvas relative position.
 
