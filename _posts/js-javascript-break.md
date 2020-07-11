@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2019-08-19 16:42:43
-version: 1.18
+updated: 2020-07-11 07:03:43
+version: 1.19
 ---
 
-The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword as well that can be used to skip a body of code and continue a loop as yet another way to break out of a loop in javaScript. The break keyword also comes into play when doing something with a switch statement. In this post I will be focusing on the break statement and some basic use case examples as to why it might come in handy now and then.
+The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a while or for loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. 
+
+There are other ways to break a loop as well, such as using the return keyword within the body of a function for example, and there is also the continue keyword that is worth mentioning also as that keyword can be used to skip a body of code and continue a loop without breaking out of it, but just spiking over any additional code that would run otherwise. The break keyword also comes into play when doing something with a switch statement, as the use of the keyword should be used after each case block in the body of a switch. 
+
+So then in this post I will be focusing on the break statement, and some basic use case examples as to why it might come in handy now and then.
 
 <!-- more -->
 
