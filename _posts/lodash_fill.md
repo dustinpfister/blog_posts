@@ -5,19 +5,20 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2020-07-11 07:27:21
-version: 1.15
+updated: 2020-07-11 07:30:11
+version: 1.16
 ---
 
-So [lodash](https://lodash.com/) is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment, at least that seems to come up a lot a other blog posts, from discussions, and podcasts when writing or talking about lodash. 
+There are methods that do really come in handy when using [lodash](https://lodash.com/), and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days. That is unless maybe you care a lot about browser support when it comes to using the native [Array.fill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) method in the array prototype object. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
 
-There are methods that come in handy, and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days, unless of course you care about browser support. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
+So lodash is one of those JavaScript projects that is a bit of a mystery when it comes to the question of it's value compared to just working within a plain old vanilla js environment, at least that seems to come up a lot a other blog posts, from discussions, and podcasts when writing or talking about lodash. 
+
 
 <!-- more -->
 
 ## 1 - what to know
 
-This is a post on the lodash array method \_.fill, the corresponding es2015+ [Array.fill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and vanilla js polly fill solutions for this task when making a project that involves the use of javaScript in which lodash may or may not be part of the stack. This is not a getting started post on lodash, and javaScript in general and I assume that you have some background on these topics. Also when I last updated this post I was using lodash 14.17.10.
+This is a post on the lodash array method \_.fill, the corresponding es2015+ Array.fill, and vanilla js polly fill solutions for this task when making a project that involves the use of javaScript in which lodash may or may not be part of the stack. This is not a getting started post on lodash, and javaScript in general and I assume that you have some background on these topics. Also when I last updated this post I was using lodash 14.17.10.
 
 ## 2 - Basic fill example using \_.fill, and Array.fill
 
