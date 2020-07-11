@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 45
-updated: 2020-07-11 09:58:42
-version: 1.17
+updated: 2020-07-11 10:13:20
+version: 1.18
 ---
 
 There are methods that do really come in handy when using [lodash](https://lodash.com/), and really do provide something that is not just there in Array.prototype, however [\_.fill](https://lodash.com/docs/4.17.10#fill) is not one of those these days. That is unless maybe you care a lot about browser support when it comes to using the native [Array.fill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) method in the array prototype object. In this post I will be writing about the lodash \_.fill method, as well as some vanilla js alternatives to help with a situation in which you just want to fill an array with a given static value.
@@ -82,7 +82,7 @@ So there are two additional arguments that can be given to fill to set the start
 
 ## 3.1 - with \_.fill
 
-With \_.fill it is the same as before only I pass two more arguments that are the start, and end array index values.
+With \_.fill it is the same as before only I pass two more arguments that are the start, and end array index values. This results in a fill of the array from to index value rather than just the whole thing.
 
 ```js
 var b = _.fill(new Array(8),0); // [0,0,0,0,0,0,0,0]
@@ -108,7 +108,7 @@ With this sort of thing another thing that comes to mind is the ability to quick
 
 ### 4.1 - with \_.join, and \_.split
 
-So now I can combine the use of \_.fill, \_.join, and _.split to convert this byte array of mine to a string, and then back to an array.
+So now I can combine the use of \_.fill, \_.join, and \_.split to convert this byte array of mine to a string, and then back to an array.
 
 ```js
 // to string with \_.join
@@ -121,7 +121,7 @@ console.log(_.split(b,''));
 
 ### 4.2 with Array.join, and String.split
 
-The same can be done with native methods as well, assuming they are there to work with in the environment.
+The same can be done with native methods as well, assuming they are there to work with in the environment, in most modnern versions of web browsers and nodejs they are.
 
 ```js
 var b = new Array(8).fill(0).join('');
