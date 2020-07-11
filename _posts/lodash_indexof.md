@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 492
-updated: 2019-06-26 16:05:57
-version: 1.14
+updated: 2020-07-11 10:31:47
+version: 1.15
 ---
 
-The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) array prototype method of course, and that is fairly well supported these days. There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
+The [lodash indexof](https://lodash.com/docs/4.17.11#indexOf) method is one of many methods in lodash that are no longer really a great selling point for the use of lodash in projects these days. There is the [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) array prototype method of course, and that is fairly well supported these days. The [native string index of method](/2020/07/09/js-stirng-index-of/) works more or less the same way as lodash index of method with strings, and as such this is not one of the most compelling methods in lodash that help to win over pople who say it is a dead library.
+
+There are other methods of interest in lodash of course such as the \_.findIndex method as well, and there is also the ides of getting more than just one index when the situation calls for it as well. Still I thought I would take a moment to wrote a post around the lodash indexOf method and a whole much of related topics when it comes to just plain old vanilla javaScript as well.
 
 <!-- more -->
 
@@ -19,9 +21,9 @@ The lodash indexOf method can be used as a way to get the first index that match
 
 ### 1.1 - Browser support for Array.indexOf
 
-So one of the main reasons why you might bother with a methid like \_.indexOf over Array.indexOf might have to do with browser support yes? Well the thing about that is that it is not just a qusion of how far back support goes with a native method it is also a qusion of how far back does suppport go with the varsion of lodash you are using as well.
+So one of the main reasons why you might bother with a method like \_.indexOf over Array.indexOf might have to do with browser support yes? Well the thing about that is that it is not just a question of how far back support goes with a native method it is also a question of how far back does support go with the version of lodash you are using as well.
 
-From what I have gathered the Array.indexOf method works with versions 9+ of Internet explorer, and late versions of lodash only support ie as far back as version 10 of ie. So then it is important to know what version of lodash you are using, and what needs to happen to push support backward farther if need be.
+From what I have gathered the Array.indexOf method works with versions 9+ of Internet explorer, and late versions of lodash only support ie as far back as version 10 of IE. So then it is important to know what version of lodash you are using, and what needs to happen to push support backward farther if need be.
 
 ## 2 - A basic lodash indexof example
 
