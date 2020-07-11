@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2020-07-11 07:09:41
-version: 1.20
+updated: 2020-07-11 07:13:38
+version: 1.21
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. 
@@ -195,4 +195,4 @@ here I have an example that will break out of the loop in the event that anythin
 
 ## 6 - Conclusion
 
-So the javaScript break keyword can be used to break out of a loop when doing so is called for. However in many cases the break statement is not required when writing many fine grain functions that make use of the [return keyword](/2019/03/01/js-javascript-return/).
+So the javaScript break keyword can be used to break out of a loop when doing so is called for. However in many cases the break statement is not required when writing many fine grain functions that make use of the [return keyword](/2019/03/01/js-javascript-return/). The use of return to break out of a loop is what I find myself using more often then break, as i like to break code down into many small, functional, reusable code snippets. Still they break keyword is there for what it is called for, along with continue, labels, and everything else that comes to mind when working with loops.
