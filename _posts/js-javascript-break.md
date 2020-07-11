@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2020-07-11 07:16:40
-version: 1.22
+updated: 2020-07-11 07:21:37
+version: 1.23
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops. 
@@ -100,7 +100,7 @@ Some developers do not recommend the use of break and labels as it is similar to
 
 ### 3.1 - The same example without javaScript break and labels
 
-The same example that makes use of javaScript break and labels could be written in a more functional and fine grain form. This would involve working with a copy of the object so as not to mangle the original object that is passed to the fine guy method, and breaking the process down into several methods that each do just one little thing.
+The same example that makes use of javaScript break and labels could be written in a more functional and fine grain form without the use of labels or the break keyword at all. This would involve working with a copy of the object so as not to mangle the original object that is passed to the fine guy method, and breaking the process down into several methods that each do just one little thing. In other words doing things in a way that is more in line with the values of functional programming.
 
 ```js
 
@@ -142,6 +142,8 @@ console.log(findGuy({
     }));
 // { type: 'guy', x: 1, y: 1 }
 ```
+
+So there is using break, and then there is finding way to not go about using break.
 
 ## 4 - Use return in a function over javaScript break when possible
 
