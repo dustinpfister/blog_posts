@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 410
-updated: 2019-04-04 11:55:12
-version: 1.11
+updated: 2020-07-11 10:21:54
+version: 1.12
 ---
 
-In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls an iteratee function with all the arguments that are given to it returns the result. It might prove useful in some situations so lets take a quick look.
+In this post I will be taking a look at the [lodash \_.over](https://lodash.com/docs/4.17.11#over) method. This method can be used to create a function that calls one or more [iteratee functions](https://en.wikipedia.org/wiki/Iteratee#:~:text=In%20functional%20programming%2C%20an%20iteratee,in%20a%20purely%20functional%20fashion.) with all the arguments that are given to it via the function that is created with the lodash over method. The result that is returned is an array of values for each iteratee function that was passed when creating the method that was made with lodash over. 
+
+So in other words if you have two or more methods that all accept the same arguments in the same order the lodash over method can be used to create a single method that will create an array of values where each value is the result of each of these methods. So then it might prove useful in some situations so lets take a quick look at a few examples of this lodash over method.
 
 <!-- more -->
 
