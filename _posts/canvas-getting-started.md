@@ -5,11 +5,11 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2020-07-12 09:27:53
-version: 1.18
+updated: 2020-07-12 09:58:57
+version: 1.19
 ---
 
-I thought it would be nice to write a few blog posts on the [html 5 canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics), animations, user interfaces, and games in a client side javaScript environment with a little code. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to the basics of canvas, javaScript, and beyond.
+I thought it would be nice to write a few blog posts on the [html 5 canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics), animations, user interfaces, and games in a client side javaScript environment with a little code. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to the basics of [canvas elements](https://en.wikipedia.org/wiki/Canvas_element), javaScript, and beyond.
 
 As such maybe it is best to start with a post that is a kind of getting started post on the subject of canvas elements and with that to some extent at least client side javaScript. That is because in order to do anything interesting with canvas, at least some basic working knowledge of javaScript is also required. So lets get this getting started post out of the way so we can get to more interesting topics, and actual full [canvas examples](/2020/03/23/canvas-example/) that really help to show off what canvas is really all about.
 
@@ -19,7 +19,7 @@ As such maybe it is best to start with a post that is a kind of getting started 
 
 When it comes to the basics of canvas there is not much to it to get stared assuming that you have at least some knowledge of html and javaScript to begin with. If not this post might not be the best starting point for getting started with javaScript and the other aspects of client side javaScript.
 
-The basic process is to get a reference to a canvas element in html, or create and typically inject one into the html. Once you have a reference to the canvas element you can then use the get context method of the canvas element reference to get an instance of the 2d drawing context. This drawing context or api then has all kind of methods and properties that can be used to draw to the canvas drawing context with javaScript code.
+The basic process is to get a reference to a canvas element in html, or create and typically inject one into the html unless you want to do something headless but that is topic for a latter post. Anyway once you have a reference to the canvas element you can then use the get context method of the canvas element reference to get an instance of the [2d drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). This drawing context or api then has all kind of methods and properties that can be used to draw to the canvas drawing context with javaScript code.
 
 Whenever I start a new canvas project with plain old vanilla js, I often start with something like this.
 ```js
