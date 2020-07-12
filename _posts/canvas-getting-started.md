@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2020-07-12 10:25:40
-version: 1.22
+updated: 2020-07-12 10:29:32
+version: 1.23
 ---
 
 I thought it would be nice to write a few blog posts on the [html 5 canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics), animations, user interfaces, and games in a client side javaScript environment with a little code. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to the basics of [canvas elements](https://en.wikipedia.org/wiki/Canvas_element), javaScript, and beyond.
@@ -140,6 +140,7 @@ For now I am just using [ctx.strokeStyle](https://developer.mozilla.org/en-US/do
 
 The begin path method is how to go about starting out with drawing lines with canvas, there are many other options other than the canvas arc method such as move to and line to. I will not be getting into drawing lines in detail here as I have wrote another [post on canvas lines](/2019/03/03/canvas-line/) in which I do this topic a greater deal of justice. Still for a getting started post on canvas I should at least start to touch base on this one at least so lets get to it.
 
+In real projects I go as far as having full draw modules that are collections of draw methods that draw everything that has to do with the canvas project. There is also having yet another module that has to do with creating a state object that can then be used with a draw method as a way to pull view and model apart from each other.
 
 ## 4 - Throwing in the loop method.
 
