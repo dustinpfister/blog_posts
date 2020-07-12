@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2020-07-12 10:38:22
-version: 1.25
+updated: 2020-07-12 10:40:16
+version: 1.26
 ---
 
 I thought it would be nice to write a few blog posts on the [html 5 canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics), animations, user interfaces, and games in a client side javaScript environment with a little code. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to the basics of [canvas elements](https://en.wikipedia.org/wiki/Canvas_element), javaScript, and beyond.
@@ -249,6 +249,6 @@ The purpose of this post was to just get up and going with the basics on startin
 
 I have not even mentioned layering, event attachment, how to go about exporting animations that you make, and a wide range of other topics on canvas. Still I hope that this post may get you interested in canvas at least, as it can become very fun to play with.
 
-Maybe the best way to learn more about canvas, javaScript, and just about anything for that matter would be to learn by doing. That is to just start creating any playing around with some source code that makes use of canvas elements as a way to go about drawing things to the screen of a browser window. As I mentioned about I have many canvas examples that might be worth checking out, so with that said there is the [main post on my collection of canvas examples](/2020/03/23/canvas-example/) that might serve as good starting points for all kinds of canvas projects. Making a canvas clock might be a good example to start with, it is very easy to make, but there is a great deal for originalty when it comes to bracning off from a basic example of a canvas clock.
+Maybe the best way to learn more about canvas, javaScript, and just about anything for that matter would be to learn by doing. That is to just start creating any playing around with some source code that makes use of canvas elements as a way to go about drawing things to the screen of a browser window. As I mentioned about I have many canvas examples that might be worth checking out, so with that said there is the [main post on my collection of canvas examples](/2020/03/23/canvas-example/) that might serve as good starting points for all kinds of canvas projects. Making a canvas clock might be a good example to start with, it is very easy to make, but there is a great deal for originality when it comes to branching off from a basic example of a canvas clock. However I would not stop there of course, I have made many canvas examples, and projects over the years and I think I am just starting to get into a good place with it.
 
 Be sure to check out my [other posts on canvas](/categories/canvas/).
