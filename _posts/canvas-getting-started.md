@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2020-07-12 10:10:04
-version: 1.20
+updated: 2020-07-12 10:19:18
+version: 1.21
 ---
 
 I thought it would be nice to write a few blog posts on the [html 5 canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics), animations, user interfaces, and games in a client side javaScript environment with a little code. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to the basics of [canvas elements](https://en.wikipedia.org/wiki/Canvas_element), javaScript, and beyond.
@@ -58,6 +58,7 @@ So far I am not doing much of anything when it comes to having what is often cal
 There is the actual width and height of a 2d matrix, and then there is the scaled width and height of the canvas I try to avoid calling theme pixels because in most cases that it not the case when getting into the deep of it when it comes to actual hardware pixels, screen resolution, scaling, and so forth. Often you  might hear the term logical pixels used as a way to describe the difference between the two.
 
 You may regard this as a trivial matter, and to some extent it is, but sometimes it can get a bit confusing. In any case there is setting the actual matrix size of the canvas, and setting the scaled size of the canvas. If you want to set the scaled size with javaScript one way to do it is by way of the style api.
+
 ```js
  
 // set matrix size
@@ -74,7 +75,9 @@ You may choose to set the scaled size by some other means such as defining a CSS
 
 ## 3 - Having a single draw method
 
-After having the blank black canvas, and size in order it's now time to actual draw something on it, for this example I will just be drawing a white circle in the center of the canvas.
+After having the basic blank black canvas worked out, and the issue of native and scaled canvas size in order, it's now time to do some actual drawing on the canvas. For this example I will just be drawing a white circle in the center of the canvas element using the [canvas arc](/2019/03/05/canvas-arc/) method along with the begin path and stroke methods.
+
+The begin path method is how to go about starting out with drawing lines with canvas, there are many other options other than the canvas arc method such as move to and line to. I will not be getting into drawing lines in detail here as I have wrote another post on canvas lines in which I do this topic a greater deal of justice. Still for a getting started post on canvas I should at least start to touch base on this one at least so lets get to it.
 
 ```js
 (function() {
