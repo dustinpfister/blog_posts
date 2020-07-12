@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2020-07-12 10:19:18
-version: 1.21
+updated: 2020-07-12 10:25:40
+version: 1.22
 ---
 
 I thought it would be nice to write a few blog posts on the [html 5 canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics), animations, user interfaces, and games in a client side javaScript environment with a little code. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to the basics of [canvas elements](https://en.wikipedia.org/wiki/Canvas_element), javaScript, and beyond.
@@ -73,11 +73,11 @@ canvas.style.height = 480 + 'px';
 
 You may choose to set the scaled size by some other means such as defining a CSS class. In some cases you might not want the scaled size to be static, but set by way of some javaScript code that will fire once and then again each time the window resizes, or when an area of the canvas is clicked. However for now those topics are a little more advanced.
 
-## 3 - Having a single draw method
+## 3 - Having a one or more draw methods
 
 After having the basic blank black canvas worked out, and the issue of native and scaled canvas size in order, it's now time to do some actual drawing on the canvas. For this example I will just be drawing a white circle in the center of the canvas element using the [canvas arc](/2019/03/05/canvas-arc/) method along with the begin path and stroke methods.
 
-The begin path method is how to go about starting out with drawing lines with canvas, there are many other options other than the canvas arc method such as move to and line to. I will not be getting into drawing lines in detail here as I have wrote another post on canvas lines in which I do this topic a greater deal of justice. Still for a getting started post on canvas I should at least start to touch base on this one at least so lets get to it.
+This time I will start pulling some code into functions as a way to keep this a little better organized. There is yet even more that can be done when it comes to not just puling code into functions, but also into modules, and in other files. However for now I will just be making some functions, and pulling code that has to do with setting things up into a setup function, code that has to do with drawing the the circle into a draw function, and also have a CLS or clear screen helper function also.
 
 ```js
 (function() {
@@ -134,11 +134,12 @@ The begin path method is how to go about starting out with drawing lines with ca
   ());
 ```
 
-So now I have pulled things into functions, You do not have to do this of course, but it does help to keep things compartmentalized, and as a project grows I might be calling certain methods more than once that allows for be to reduce the volume of code that is being repeated. 
+So now I have pulled things into functions, you do not have to do this of course, but it does help to keep things compartmentalized, and as a project grows I might be calling certain methods more than once that allows for be to reduce the volume of code that is being repeated. 
 
 For now I am just using [ctx.strokeStyle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle), [ctx.beginPath()](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/beginPath), [ctx.arc](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc), and [ctx.stroke](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/stroke) to draw a circle on the canvas. There are of course ways to go about drawing images from external files, or another canvas, and many other topics, but for now I just want to keep things simple. This is a getting started post on canvas after all.
 
-Getting started with canvas is often just a means of knowing how to use the various methods, and properties on the [2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). It can take a little while, but assuming you have a basic working knowledge of javaScript to begin with, it should not take to long.
+The begin path method is how to go about starting out with drawing lines with canvas, there are many other options other than the canvas arc method such as move to and line to. I will not be getting into drawing lines in detail here as I have wrote another [post on canvas lines](/2019/03/03/canvas-line/) in which I do this topic a greater deal of justice. Still for a getting started post on canvas I should at least start to touch base on this one at least so lets get to it.
+
 
 ## 4 - Throwing in the loop method.
 
