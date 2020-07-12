@@ -5,14 +5,14 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 395
-updated: 2020-07-12 10:52:39
-version: 1.42
+updated: 2020-07-12 10:54:59
+version: 1.43
 ---
 
 When learning how to work with the [javaScript canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) and the [2d drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) for the [first time](/2017/05/17/canvas-getting-started/) the subject of drawing lines is one thing that should be well understood before moving on to more complex canvas related subjects and working making some [canvas examples](/2020/03/23/canvas-example/) and actual projects that people might want to use.
 
 
-In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters.
+In this post I will be quickly covering many of the basics about drawing lines with canvas and javaScript, including the [lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo) and [moveTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo) methods of course for starters. There are many other methods of interest in the 2d context when it comes to drawing lines though such as the [canvas arc](/2019/03/05/canvas-arc/) method for example. However maybe getting into that in detail at least is a matter for another canvas post.
 
 I see lots of code on the web that has to do with drawing canvas lines by way of working out the logic for the line, and drawing at the same time. Maybe this is not always such a bad thing, but for the most part I seem to like working out an array of points, and then just have a generic draw points method. There is always more than one way of doing the same thing, but in nay case lets get into drawing lines with canvas and client side javaScript.
 
