@@ -5,13 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 575
-updated: 2019-12-09 12:00:19
-version: 1.10
+updated: 2020-07-12 11:21:14
+version: 1.11
 ---
 
 Time for another post on lodash this one is on the [lodash intersection](https://lodash.com/docs/4.17.15#intersection) method. The \_.intersection method will create an array of values that are in all the given arrays using the [lodash \_.eq](/2019/12/04/lodash_eq) method also known as same value zero for comparisons.
 
-This is yet another kind of task that is not so hard to do with just plain old javaScript by itself these days using array prototype methods such as array some, and array filter. However regardless if you use lodash or not this will be a post on creating arrays of intersecting values in javaScript in general.
+This is yet another kind of task that is not so hard to do with just plain old javaScript by itself these days using array prototype methods such as array some, and array filter. There is also a native method called [Object is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) that can be used to get the same value result rather than just using equality and identity operators. However regardless if you use lodash or not this will be a post on creating arrays of intersecting values in javaScript in general so lets get to it.
 
 <!-- more -->
 
