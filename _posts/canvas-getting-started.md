@@ -5,8 +5,8 @@ tags: [js,canvas]
 layout: post
 categories: canvas
 id: 20
-updated: 2020-07-12 09:58:57
-version: 1.19
+updated: 2020-07-12 10:10:04
+version: 1.20
 ---
 
 I thought it would be nice to write a few blog posts on the [html 5 canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) that can be used to create [raiser graphics](https://en.wikipedia.org/wiki/Raster_graphics), animations, user interfaces, and games in a client side javaScript environment with a little code. Mainly just some posts on doing some fun things with the 2d drawing context, but also some topics on game development, animations, and anything else that might come up when it comes to the basics of [canvas elements](https://en.wikipedia.org/wiki/Canvas_element), javaScript, and beyond.
@@ -19,9 +19,10 @@ As such maybe it is best to start with a post that is a kind of getting started 
 
 When it comes to the basics of canvas there is not much to it to get stared assuming that you have at least some knowledge of html and javaScript to begin with. If not this post might not be the best starting point for getting started with javaScript and the other aspects of client side javaScript.
 
-The basic process is to get a reference to a canvas element in html, or create and typically inject one into the html unless you want to do something headless but that is topic for a latter post. Anyway once you have a reference to the canvas element you can then use the get context method of the canvas element reference to get an instance of the [2d drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). This drawing context or api then has all kind of methods and properties that can be used to draw to the canvas drawing context with javaScript code.
+The basic process is to get a reference to a canvas element in html, or create and typically inject one into the html unless you want to do something headless but that is topic for a latter post. Anyway once you have a reference to the canvas element you can then use the get context method of the canvas element reference to get an instance of the [2d drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). This drawing context or api then has all kinds of methods and properties that can be used to draw to the canvas element with javaScript code.
 
 Whenever I start a new canvas project with plain old vanilla js, I often start with something like this.
+
 ```js
 (function () {
  
@@ -44,10 +45,13 @@ Whenever I start a new canvas project with plain old vanilla js, I often start w
     ());
 ```
 
-This results in just a simple black screen that has a actual native matrix width of 320, and a height of 240 pixels. A typical starting point for any vanilla js canvas project of mine. By native size I mean the actual with and height of the canvas in terms of the dimensions of the 2d matrix, not any kind of scaled width and height that can be set with css.
+This results in just a simple black screen that has a actual native matrix width of 320, and a height of 240 pixels. A typical starting point for any vanilla js canvas project of mine when it comes to just getting the bsics of what the project are off the ground at least. When I mean native size what I really mean is the actual with and height of the canvas in terms of the dimensions of the 2d matrix, not any kind of scaled width and height that can be set with css via the [style api](/2019/02/12/js-javascript-style/) or any other means to set css rules for a canvas element.
 
 In this example I am creating the canvas element, and then appending it to the body of an html document all with javaScript. Another option would be getting a reference to a canvas element that may exist before hand with one of several methods of doing so with canvas elements and elements in general such as the document get element by id method.
 
+So far I am just using the fill style property to set the fill style of the canvas to black, and then using the fill rect method to fill the canvas with the color black. From here on out it is just a matter of getting used to all the other context properties and methods that there are to work with when it comes to rendering at least. 
+
+So far I am not doing much of anything when it comes to having what is often called a model that contains display objects, and other data that may be rendered to the canvas by various means. In addition I am not doing anything with event attachment, or a main app update loop power by [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) for that matter. However you have to start somewhere, and just having a blank black canvas is one such starting point.
 
 ## 2 - Actual size vs scaled size
 
