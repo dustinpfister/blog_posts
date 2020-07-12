@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 575
-updated: 2020-07-12 11:21:14
-version: 1.11
+updated: 2020-07-12 11:25:18
+version: 1.12
 ---
 
 Time for another post on lodash this one is on the [lodash intersection](https://lodash.com/docs/4.17.15#intersection) method. The \_.intersection method will create an array of values that are in all the given arrays using the [lodash \_.eq](/2019/12/04/lodash_eq) method also known as same value zero for comparisons.
@@ -47,9 +47,9 @@ console.log(result); // [ { id: 7 } ]
 
 ## 3 - Vanilla javaScript and intersection
 
-Creating a true lodash intersection vanilla javaScript alternative is a little tricky. Keep in mind that the same value zero way of comparison is used rather than equality or identity. So a solution will have to involve the use of Object.is, or a polyfill of that just to make the comparisons.
+Creating a true lodash intersection vanilla javaScript alternative is a little tricky actually. As of this writing there is no native intersection method, however there are a few native methods that can be used together to get the same result. Keep in mind that the same value zero way of comparison is used rather than equality or identity by using the Object.is static method. So a solution will have to involve the use of Object.is, or a polyfill of that just to make the comparisons.
 
-Still you might start out with something like this that will work fine for comparing just two arrays.
+Still you might start out with something like this that will work fine for comparing just two arrays at least for all the testes that I have do with this thus far.
 
 ```js
 let arr1 = [1, 4, 5, NaN],
@@ -67,7 +67,7 @@ console.log( intersectTwo(arr1, arr2) );
 // [1,NaN]
 ```
 
-If I where to use just equality or identity for the comparisons then the NaN value will not be included.
+If I where to use just equality or identity for the comparisons then the NaN value will not be included. This is of course one of the reasons why we have yet another way to go about making comparisons on top of that of the two general operators that come to mind when comparing two values.
 
 ## 4 - Conclusion
 
