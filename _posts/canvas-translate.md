@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-07-13 11:35:31
-version: 1.34
+updated: 2020-07-13 11:42:50
+version: 1.35
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a [translation transformation](https://en.wikipedia.org/wiki/Translation_(geometry)) to the current canvas matrix as a whole. This is done by applying an shifting the origin of the canvas matrix, rather than applying a vector in terms of direction and magnitude.
@@ -23,7 +23,7 @@ So with that said lets take a moment to look at some examples of the canvas tran
 
 ## 1 - Canvas translate basic example
 
-For a very basic example of the canvas translate method I just put together this simple little example where I am just translating the canvas so that a rectangle at 0,0 is actually rendered at 16,16. In the HTML I just have a canvas element, and then a script tag that links to an external javaScript file where I have the basic canvas translate example.
+For a very basic example of the canvas translate method I just put together this simple little example where I am just translating the canvas so that a rectangle at 0,0 is actually rendered at 16,16. In the HTML I just have a canvas element, and then a script tag that links to an external javaScript file where I have the basic canvas translate example. I often do things this way rather than having everything in a script tag, even when it comes to basic examples now and then becuase basic examples often quickly become not so basic.
 
 ```html
 <html>
@@ -37,7 +37,7 @@ For a very basic example of the canvas translate method I just put together this
 </html>
 ```
 
-In the javaScript of the example I just grab a reference to the canvas element, and then a reference to the 2d drawing context. Once I have a reference to the 2d drawing context I can use the canvas translate method to translate the canvas matrix by a given delta x and delta y value.
+In the basic.js file of this canvas translate example I just grab a reference to the canvas element, and then a reference to the 2d drawing context as i would for any other canvas example. Once I have a reference to the 2d drawing context I can the use the canvas translate method to translate the canvas matrix by a given delta x and delta y value. In this example I am shifting the origin of the canvas from the default 0,0 position to 16,16 by calling the translate method off if the reference to the drawing context and passing the arguments for those deltas for x and y.
 
 ```js
 // get the canvas, context and set size
@@ -57,6 +57,8 @@ ctx.globalAlpha = 0.5;
 // now drawing a rect at 0,0 is actually at 16,16
 ctx.fillRect(0,0,32,32);
 ```
+
+So now when I use any drawing method such ad fill rect the drawing will now happen relative to the point 16,16 rather than that of 0,0. I have then moved the location of the origin by using the translate method. To set it back I would then have to call the translate method again and pass -16,-16, or use the save and restore methods. SO the the is the basics of the translate method in action, so with that out of the way lets looks at some more interesting examples of using the translate method.
 
 ## 2 - A normalized chart data canvas translate example
 
