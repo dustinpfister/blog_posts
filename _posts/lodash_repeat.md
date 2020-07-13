@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2019-06-28 21:12:54
-version: 1.12
+updated: 2020-07-13 13:23:28
+version: 1.13
 ---
 
-This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method. The lodash repeat method is just a quick way of repeating a string a few times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. Still it is not to hard to just do this vanilla javaScript style so lets look at more than one solution for this.
+This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method which is a string method that is just a quick way of creating a new string that is a product of repeating another given string a number of given times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. 
+
+Still it is not to hard to just do the same thing vanilla javaScript style so lets look at more than one solution for repeating a string a number of times whe it comes to just using native javaScript by itself also.
 
 <!-- more -->
 
