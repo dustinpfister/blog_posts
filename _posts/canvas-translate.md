@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-07-13 12:16:03
-version: 1.37
+updated: 2020-07-13 12:19:58
+version: 1.38
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a [translation transformation](https://en.wikipedia.org/wiki/Translation_(geometry)) to the current canvas matrix as a whole. This is done by applying an shifting the origin of the canvas matrix, rather than applying a vector in terms of direction and magnitude.
@@ -410,4 +410,6 @@ while (i < count) {
 
 ## 6 - Conclusion
 
-So the canvas translate method is the built in way to change the drawing location of the canvas origin to something other than the upper left corner of the canvas. The canvas translate is one of many such methods that a javaScript developer should be familiar with when it comes to doing something useful and interesting with a canvas element.
+So the canvas translate method is the built in way to change the drawing location of the canvas origin to something other than the upper left corner of the canvas. The canvas translate is one of many such methods that a javaScript developer should be familiar with when it comes to doing something useful and interesting with a canvas element. The method is often used in conjunction with other drawing context methods such as save, restore, rotate, and many other context methods when it comes to what is actually being drawn to the canvas element.
+
+There is also not just translating the canvas itself, but whatever is being used as a module that stores the state of objects that are to be drawn to the canvas. It is often not to hard to make your own translation methods when it comes to translating the model rather than the canvas element.
