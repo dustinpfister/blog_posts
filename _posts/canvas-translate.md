@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-07-13 12:08:29
-version: 1.36
+updated: 2020-07-13 12:16:03
+version: 1.37
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a [translation transformation](https://en.wikipedia.org/wiki/Translation_(geometry)) to the current canvas matrix as a whole. This is done by applying an shifting the origin of the canvas matrix, rather than applying a vector in terms of direction and magnitude.
@@ -381,6 +381,8 @@ draw.dispObjects(ctx, dispObjects);
 ```
 
 ## 5 - Translating by direction and distance
+
+So there is just passing x and y deltas to the translate method, but what if you want to translate by an angle, and a direction? Well we are still talking about two delta values actually, but how would you go about getting these delta values if you do not know how> Well one way would be to use the Math.cos, and Math.sin methods in two simple expressions where I am just multiplying the results of using those math functions with a distance value.
 
 ```js
 var transByDirDist = function (ctx, dir, dist, scale) {
