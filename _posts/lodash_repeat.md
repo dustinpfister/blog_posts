@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2020-07-13 13:23:28
-version: 1.13
+updated: 2020-07-13 13:29:33
+version: 1.14
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method which is a string method that is just a quick way of creating a new string that is a product of repeating another given string a number of given times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. 
@@ -17,7 +17,9 @@ Still it is not to hard to just do the same thing vanilla javaScript style so le
 
 ## 1 - lodash repeat basic example
 
-So say I want to create a string that is a single string repeated a few times. For example I want to have a string that is a one with a whole bunch of zeros after it. I can use the lodash repeat method as a way to do just that. Just call the lodash repeat method and pass the string 0 as the first argument followed by the number of zeros I want after the string.
+So say I want to create a string that is a single string repeated a few times. For example I want to have a string that is a one with a whole bunch of zeros after it. I could do something like just having two strings one of which is a string of the number one and the other is a bunch of zeros, and just add them togeather. However what if the number of number one might chnage to something else, or the number of zeros wil chnage? In that case I will want some kind of method where I can pass a string, and a number of times I want that string repeated, and then add my first value to the result of that method.
+
+With that said if the full lodash utility library is available there is the lodash repeat method to work with then it comes to this sort of thing. I can  then use the lodash repeat method as a way to do just that and just get a string that is a fixed number of zeros. Just call the lodash repeat method and pass the string 0 as the first argument followed by the number of zeros I want after the string.
 
 ```js
 let _ = require('lodash');
