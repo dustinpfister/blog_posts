@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-07-13 11:42:50
-version: 1.35
+updated: 2020-07-13 12:08:29
+version: 1.36
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a [translation transformation](https://en.wikipedia.org/wiki/Translation_(geometry)) to the current canvas matrix as a whole. This is done by applying an shifting the origin of the canvas matrix, rather than applying a vector in terms of direction and magnitude.
@@ -380,6 +380,32 @@ draw.dispObjects(ctx, dispObjects);
 </html>
 ```
 
-## 5 - Conclusion
+## 5 - Translating by direction and distance
+
+```js
+var transByDirDist = function (ctx, dir, dist, scale) {
+    scale = scale === undefined ? 360 : scale;
+    var rad = dir / scale * (Math.PI * 2);
+    ctx.translate(Math.cos(rad) * dist, Math.sin(rad) * dist);
+};
+ 
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+ 
+var i = 0, a, d = 150, count = 10;
+while (i < count) {
+    ctx.save();
+    a = 90 / count * i;
+    transByDirDist(ctx, a, d);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(-8, -8, 16, 16);
+    ctx.restore();
+    i += 1;
+}
+```
+
+## 6 - Conclusion
 
 So the canvas translate method is the built in way to change the drawing location of the canvas origin to something other than the upper left corner of the canvas. The canvas translate is one of many such methods that a javaScript developer should be familiar with when it comes to doing something useful and interesting with a canvas element.
