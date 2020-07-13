@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-07-13 12:19:58
-version: 1.38
+updated: 2020-07-13 12:27:07
+version: 1.39
 ---
 
 The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a [translation transformation](https://en.wikipedia.org/wiki/Translation_(geometry)) to the current canvas matrix as a whole. This is done by applying an shifting the origin of the canvas matrix, rather than applying a vector in terms of direction and magnitude.
@@ -407,6 +407,8 @@ while (i < count) {
     i += 1;
 }
 ```
+
+This example results in having an array of squares drawn at a distance of 150 pixels from the upper left origin of the canvas from an angle of zero to an angle of ninety degrees in a clockwise direction. After the drawing of all the squares is done the canvas matrix is restored back to the default origin at 0,0 thanks to the save and restore context methods.
 
 ## 6 - Conclusion
 
