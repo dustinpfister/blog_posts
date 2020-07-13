@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2020-07-01 13:48:22
-version: 1.31
+updated: 2020-07-13 12:39:16
+version: 1.32
 ---
 
-The javaScript [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) is an event that will fire when the user sets the focus on an element. The focus event often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. In addition there is also the [on blur](/2019/01/08/js-onblur/) event that will happen when an element loses this focus after it has gained such a focus. The javaScript focus event along with blur, onkeydown, and on chnage are often used all togetaher when working out some kind of user interface that makes use of one ore more input tags.
+The javaScript [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) is an event that will fire when the user sets the focus on an element. The focus event often happens when a user clicks on an element for example, but it can also happen by other means as well such as using the tab button to cycle threw elements that can be focused in desktop environments. In addition there is also the [on blur](/2019/01/08/js-onblur/) event that will happen when an element loses this focus after it has gained such a focus. The javaScript focus event along with blur, onkeydown, and on change are often used all together when working out some kind of user interface that makes use of one ore more input tags.
 
 There other ways in which a focus event can fire by way of javaScript code by using an element reference object method like the [HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method. So there are ways that a focus event can fire by way of user action, and there are also ways to which a focus event can be simulated by way of javaScript code.
 
