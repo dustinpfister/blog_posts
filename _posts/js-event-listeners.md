@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2020-07-13 12:32:58
-version: 1.27
+updated: 2020-07-13 12:39:15
+version: 1.28
 ---
 
-In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens such as the user clicking an element, resizing a window, or leaving a page for another. There are all kinds of addition events that have to do with user input when working with input elements such as on focus, on blur, on change, and events that have to to with keyboard events, and pointer devices such as a mouse and touch screens.
+In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens such as the user clicking an element, resizing a window, or leaving a page for another. There are all kinds of addition events that have to do with user input when working with input elements such as [on focus](/2019/01/05/js-onfocus/), [on blur](/2019/01/08/js-onblur/), [on change](/2019/01/04/js-onchange/), and events that have to to with keyboard events, and pointer devices such as a mouse and touch screens.
 
-Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
+Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state and renders that state to a view. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript. 
+
+There will be a few examples where when it comes to just using that event to attach handler functions, but I will not be getting into detail about every little event, as well as real full blown examples that make use of event handers and many other aspects of a full application. For that it might be better to look at some of my [canvas examples](/2020/03/23/canvas-example/), many of which use event handlers when it is some kind of project the  works with user input or anything that requires the use of event attachment.
 
 <!-- more -->
 
