@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2020-07-13 12:39:15
-version: 1.28
+updated: 2020-07-13 13:17:05
+version: 1.29
 ---
 
 In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens such as the user clicking an element, resizing a window, or leaving a page for another. There are all kinds of addition events that have to do with user input when working with input elements such as [on focus](/2019/01/05/js-onfocus/), [on blur](/2019/01/08/js-onblur/), [on change](/2019/01/04/js-onchange/), and events that have to to with keyboard events, and pointer devices such as a mouse and touch screens.
@@ -19,7 +19,9 @@ There will be a few examples where when it comes to just using that event to att
 
 ## 1 - Event listener basics
 
-There is more than one way to attach event listeners in client side javaScript. For the most part it is a good idea to just stick to the addEventListener method as a way to attach events. The reason why is because more than one handler can be attach for a single event type. However there are also some alternative ways to do so as well that involve defining a method for certain properties of the window object..
+There is more than one way to attach event listeners to html elements and the winodw object in client side javaScript. For the most part it is a good idea to just stick to the addEventListener method as a way to attach events. The reason why is because more than one handler can be attach for a single event type when using that method. 
+
+However there are also some alternative ways to do so as well that involve defining a method for certain properties of the window object, or a single given element reference. There is also the fact that the add event listener method only goes back so far then it comes to browser support, but if you only care about modern every green browsers that is not much of an issue these days. unless for some reason you are getting a lot of traffic from a country where there are a lot of people still using very old versions of Internet explorer for some reason in which case I guess that is an issue.
 
 ### 1.1 - Attaching Event listeners using addEventListener
 
