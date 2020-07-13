@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2019-09-02 09:36:36
-version: 1.26
+updated: 2020-07-13 12:32:58
+version: 1.27
 ---
 
-In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens. An event that fires or dispatches an handler can be something like a mouse button being clicked, or an element loosing focus. Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
+In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens such as the user clicking an element, resizing a window, or leaving a page for another. There are all kinds of addition events that have to do with user input when working with input elements such as on focus, on blur, on change, and events that have to to with keyboard events, and pointer devices such as a mouse and touch screens.
+
+Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript.
 
 <!-- more -->
 
