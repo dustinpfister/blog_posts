@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 id: 543
 categories: canvas
-updated: 2020-03-17 19:19:43
-version: 1.32
+updated: 2020-07-13 11:30:20
+version: 1.33
 ---
 
-The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a translation transformation to the current canvas matrix. This is so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the new translated point, rather that the usual top left corner of the canvas.
+The [canvas translate](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate) method can be used to add a [translation transformation](https://en.wikipedia.org/wiki/Translation_(geometry)) to the current canvas matrix as a whole. This is done by applying an shifting the origin of the canvas matrix, rather than applying a vector in terms of direction and magnitude.
 
-The canvas translate method is often used in conjunction with other methods such as canvas save, restore, and rotate when drawing rotated display objects on the fly rather than from a sprite sheet of images that where rotated before hand. 
+This canvas translate method can then make it so that when something is drawn to a certain point within the canvas using the canvas drawing methods it is actually drawn relative to the new translated point, rather that the usual top left corner of the canvas.
+
+The canvas translate method is often used in conjunction with other methods such as canvas [save, restore](/2019/08/14/canvas-save/), and [rotate](/2019/11/05/canvas-rotate/) when drawing rotated display objects on the fly rather than from a sprite sheet of images that where rotated before hand. I generally use the save and restore methods when using the translate method in any capacity actually because the method applies deltas to the current state of the canvas matrix rather than setting a fixed value.
 
 The canvas translate method can also be used as a way to just change the drawing origin in the canvas when I want to draw something in a different location of the canvas. This can be useful as it allows me to avoid having to do something else to help with the process of normalizing points. So with that said lets take a moment to look at some examples of the canvas translate method.
 
