@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2020-07-14 11:06:15
-version: 1.3
+updated: 2020-07-14 11:16:49
+version: 1.4
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including arrays. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values. This is then one way to go about adding two or more arrays together. There are then also ways of going about doing the same thing, such as converting and array to a string and then back again using something like the string split method. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
@@ -38,7 +38,7 @@ console.log(b);
 // [ 1, 2, 3, 4, 5, '6', null, false, {}, 7, 8, 9, 10, 11, 12 ]
 ```
 
-## 3 - Uisng array like objects and array concat
+## 3 - Using array like objects and array concat
 
 So with many array prototype methods it is possible to use the Function call prototype method to get an array method to work with array like objects. However when using the array concat method on an array like object with function call I end up getting a result that might not end up being expected. So when working with array like objects, it might be better to use the array from static method to convert an array like object to an array, and then use concat off of the resulting array.
 
@@ -59,7 +59,11 @@ console.log(b);
 // [ 1, 2, 3, 4, 5, 6, 7 ]
 ```
 
-## 4 - 
+## 4 - The addition operator, strings, and the string split method
+
+So one might think that the addition operator can just be used to add to arrays together. The funny thing about it is that in some cases you actually can if we are talking about an array of primitive values at least maybe. When adding two arrays together by default the value of methods will return a string value of the array. So by adding a comma between the two arrays you might end up with a formatted string that can then be split back into an array.
+
+In other words something like this:
 
 ```js
 var a = [1, 2, 3],
@@ -73,3 +77,5 @@ var d = String(a + ',' + b).split(',');
 console.log(d, d.constructor.name);
 // [ '1', '2', '3', '4', '5', '6' ] 'Array'
 ```
+
+I can not recommend that doing this is a good practice, but in some cases it seems to work okay, so I guess it is worth writing about at least. It is also worth mentioning the nature of valueOf and ToString methods of objects, and why they come in handy in some situations. When working with the addition of objects a toString method defines logic that will be used to create a string primitive value of the object, and the valueOf method can be used to define what a number primitive value is for the object. However maybe getting into the depth of that is a matter for other blog posts.
