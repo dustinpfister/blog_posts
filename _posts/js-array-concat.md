@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2020-07-14 11:16:49
-version: 1.4
+updated: 2020-07-14 12:37:45
+version: 1.5
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including arrays. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values. This is then one way to go about adding two or more arrays together. There are then also ways of going about doing the same thing, such as converting and array to a string and then back again using something like the string split method. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
@@ -79,3 +79,25 @@ console.log(d, d.constructor.name);
 ```
 
 I can not recommend that doing this is a good practice, but in some cases it seems to work okay, so I guess it is worth writing about at least. It is also worth mentioning the nature of valueOf and ToString methods of objects, and why they come in handy in some situations. When working with the addition of objects a toString method defines logic that will be used to create a string primitive value of the object, and the valueOf method can be used to define what a number primitive value is for the object. However maybe getting into the depth of that is a matter for other blog posts.
+
+## 5 - using array.push and Function.apply to concatenate arrays
+
+Another way to concatenate arrays would be to use the array push method with the apply function prototype method. the thing about the push method is that it can be used to add one or more elements to an array, but only by way of one element at a time, or more than one but by way of two or more arguments when calling array push. So the apply function method can be called off of the push method, and the array that you to concatenate to can be passed as the first argument followed by the other array that you want at the end of the one given the first argument to apply.
+
+```js
+var a = [1, 2, 3],
+b = [4, 5, 6],
+c = [];
+ 
+[].push.apply(c, a);
+[].push.apply(c, b);
+ 
+console.log(a);
+// [ 1, 2, 3 ]
+console.log(b);
+// [ 4, 5, 6 ]
+console.log(c);
+//[ 1, 2, 3, 4, 5, 6 ] 
+```
+
+Apply, call and bind are worth writing more about, but I will not be getting into detail with those methods here. I have [wrote a post on these methods before hand anyway](/2017/09/21/js-call-apply-and-bind/) a long time ago, so there is just reading over that post if you want my take on these methods. Yes they come in handy a lot when working with javaScript code, so you should take a moment to read up on them more if you have not done so all ready.
