@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-03-23 08:57:59
-version: 1.27
+updated: 2020-07-14 10:44:11
+version: 1.28
 ---
 
-So this is another post on [canvas examples](/2020/03/23/canvas-example/), and for this post it will be about some basic example that have to do with [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations). 
+So this is another post on [canvas examples](/2020/03/23/canvas-example/) using just canvas elements and vanilla javaScript by itself. For this canvas example post I will be writing about a basic example of [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations) as I often end up doing so. There ar many ways of how to go about making animations, but I tend to like making them a certain way that involves the use of methods that are often very pure function like. What I mean by that is making a method where I pass a frame index value, and a total number of frames, and for every set of arguments I always be the same state to which I then render using the 2d canvas drawing context.
 
 Making animations with canvas can be a fun, and rewarding experience and is definitely an example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There is of course the idea of visualizing a problem, and animation can be a good tool to help do just that. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here today.
 
