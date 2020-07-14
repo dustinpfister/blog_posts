@@ -5,10 +5,54 @@ tags: [js]
 layout: post
 categories: js
 id: 682
-updated: 2020-07-14 15:01:20
-version: 1.0
+updated: 2020-07-14 15:07:20
+version: 1.1
 ---
 
-I javaScript there is a standard way for creating a method for an object that will return the string value for an object.
+In javaScript there is a standard way for creating a method for an object that will return the string value for an object. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the value of method that is a way to set what the number primitive value for an object should be.
 
 <!-- more -->
+
+## 1 - Basic to string method example
+
+```js
+var obj = {
+    x: 40,
+    y: 5
+};
+ 
+console.log( String(obj) );
+// [object Object]
+ 
+var pt = {
+    x: 40,
+    y: 5,
+    toString: function () {
+        return '(' + this.x + ', ' + this.y + ')';
+    }
+};
+ 
+console.log( String(pt) );
+// (40, 5)
+```
+
+## 2 - to string and value of
+
+```js
+var obj = {
+    exp: 4,
+    base: 2,
+    valueOf: function () {
+        return Math.pow(this.base, this.exp);
+    },
+    toString: function () {
+        return '*' + this.valueOf() + '*';
+    }
+};
+ 
+var n = obj + 5,
+str = String(obj) + 5;
+ 
+console.log(n, typeof n); // 21 'number'
+console.log(str, typeof str); // *16*5 string
+```
