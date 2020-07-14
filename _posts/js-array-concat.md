@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2020-07-13 14:27:07
-version: 1.1
+updated: 2020-07-14 11:01:41
+version: 1.2
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including arrays. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values. This is then one way to go about adding two or more arrays together. There are then also ways of going about doing the same thing, such as converting and array to a string and then back again using something like the string split method. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
@@ -26,7 +26,9 @@ console.log(a, b, c);
 // [ 1, 2, 3 ] [ 4, 5, 6 ] [ 1, 2, 3, 4, 5, 6 ]
 ```
 
-## 2 - 
+## 2 - Can pass arrays, and just values as arguments
+
+SO the array concat method can be used to concatenate two or more arrays, but values can also be added via arguments also. So then this concat method also works as an alternative to the array push method then also.
 
 ```js
 var a = [1, 2, 3],
