@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2020-07-14 11:01:41
-version: 1.2
+updated: 2020-07-14 11:06:15
+version: 1.3
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including arrays. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values. This is then one way to go about adding two or more arrays together. There are then also ways of going about doing the same thing, such as converting and array to a string and then back again using something like the string split method. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
@@ -38,7 +38,9 @@ console.log(b);
 // [ 1, 2, 3, 4, 5, '6', null, false, {}, 7, 8, 9, 10, 11, 12 ]
 ```
 
-## 3 - 
+## 3 - Uisng array like objects and array concat
+
+So with many array prototype methods it is possible to use the Function call prototype method to get an array method to work with array like objects. However when using the array concat method on an array like object with function call I end up getting a result that might not end up being expected. So when working with array like objects, it might be better to use the array from static method to convert an array like object to an array, and then use concat off of the resulting array.
 
 ```js
 var obj = {
