@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 18
-updated: 2019-09-06 15:17:47
-version: 1.5
+updated: 2020-07-14 13:16:29
+version: 1.6
 ---
 
-In core javaScript Arrays are technically not Arrays, but Objects. The thing about Arrays that are made with the core js Array constructor, or literal syntax, is that they are a special kind of object in which the objects constructor name is Array. This also means there there are a bunch of array prototype methods that can be used with that instance of Array also. However there are also array like objects in addition to Arrays. What this means is that if any object contains a length property that has a value that is a number from 0 to the max safe integer, then it is "Array like" and can be used with methods that act on arrays. If you are confused then in this post I will try to help reduce some of this confusion, and of course it will be best for you to just work out some examples of your own when it comes to learning by doing.
+In core javaScript Arrays are technically not Arrays, but Objects, that is that an array is a kind, or class of an object. The thing about Arrays that are made with the core js Array constructor, or literal syntax, is that they are a special kind of object in which the objects constructor name is Array. This also means there there are a bunch of array prototype methods that can be used with that instance of Array also. However there are also array like objects in addition to Arrays. What this means is that if any object contains a length property that has a value that is a number from 0 to the max safe integer, then it is "Array like" and can be used with methods that act on arrays. If you are confused then in this post I will try to help reduce some of this confusion, and of course it will be best for you to just work out some examples of your own when it comes to learning by doing.
 
 <!-- more -->
 
