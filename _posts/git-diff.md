@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 677
-updated: 2020-07-08 14:45:22
-version: 1.8
+updated: 2020-07-14 14:04:49
+version: 1.9
 ---
 
 The [git diff](https://git-scm.com/docs/git-diff) command is useful for finding changes between two commits when using git for source control. there are many options for formatting the output also, so for one example say I am just interesting in getting a list of files that have changed from a given starting and ending commit it, such a task can be completed by using the git diff command with the name only option.
@@ -44,7 +44,7 @@ fc891d25b2a11afb415857ad7ec113b150857173
 48b3efa92ee8711da5c825e4a3301a39d8b26467
 ```
 
-Now that I have a list of commit ids going back some twenty commits I can use these to find out what files have chnaged from the oldest commit up to the latest one.
+Now that I have a list of commit ids going back some twenty commits I can use these to find out what files have changed from the oldest commit up to the latest one.
 
 ```
 git diff 48b3efa92ee8711da5c825e4a3301a39d8b26467 d400b26b1262cc472422daacada58cc223e14f56 --name-only
@@ -59,7 +59,7 @@ Okay great now I have my list of files that have changed between one point in ti
 
 ## 2 - A nodejs powered project that makes use of git log, and git diff to get a list of files that changed
 
-So now I though I would work out a little javaScript code that is a small collection of nodejs module that make use of git log, and git diff via the spawn child process module method on nodejs. This will just be twwo modules and an additional script that makes use of these modules. The first module will use git log to get a list of commit ids, and then the second module will use git diff to get a list of file names from that collection of commit ids, as well as a staring and ending index value.
+So now I though I would work out a little javaScript code that is a small collection of nodejs module that make use of git log, and git diff via the spawn child process module method on nodejs. This will just be two modules and an additional script that makes use of these modules. The first module will use git log to get a list of commit ids, and then the second module will use git diff to get a list of file names from that collection of commit ids, as well as a staring and ending index value.
 
 ### 2.1 - A git-commit-list module that uses git log
 
