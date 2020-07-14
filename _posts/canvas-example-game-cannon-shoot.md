@@ -5,11 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 614
-updated: 2020-03-23 09:29:27
-version: 1.18
+updated: 2020-07-14 10:50:26
+version: 1.19
 ---
 
-The will be a post on a cannon shoot [canvas example](/2020/03/23/canvas-example/) type game. There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
+This will be a post on a cannon shoot type game that will be yet another one of my [canvas example](/2020/03/23/canvas-example/) posts. The idea here is to just keep making one canvas example after another until I manage to make one or tow that might prove to be worth a higher investment of time if people show an interest in one. So this kind of game is just one of many different types of games that come to mind, and I figured that I should make at least one cannon shoot type game for this series of posts.
+
+There are many games like this on the open Internet such as [kitten cannon](https://www.youtube.com/watch?v=BtXSxeVDYD4) where the basic mechanics are than the player sets an angle and initial power value and then that is used to determine how far the object will go in a game map.
 
 <!-- more -->
 
