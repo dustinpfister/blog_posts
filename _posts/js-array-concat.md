@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2020-07-14 13:03:43
-version: 1.8
+updated: 2020-07-14 13:11:50
+version: 1.9
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including arrays. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values. This is then one way to go about adding two or more arrays together. There are then also ways of going about doing the same thing, such as converting and array to a string and then back again using something like the string split method. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
@@ -25,6 +25,8 @@ c = a.concat(b);
 console.log(a, b, c);
 // [ 1, 2, 3 ] [ 4, 5, 6 ] [ 1, 2, 3, 4, 5, 6 ]
 ```
+
+So then that is the basic idea of the array concat method, it is there for just going ahead and adding one array to another. When it comes to simple arrays or primitive values like this it will work just fine as expected. It is only when coping arrays of nested objects that maybe a developing might run into some problems though when it comes to copying references to objects, but maybe that is a [matter for another post](/2017/11/13/js-copying-vs-referencing-objects-in-javascript/). In any case lets look at least a few more examples of adding two or more arrays together into one.
 
 ## 2 - Can pass arrays, and just values also as arguments
 
