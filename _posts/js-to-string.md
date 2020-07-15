@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 682
-updated: 2020-07-15 12:17:56
-version: 1.7
+updated: 2020-07-15 12:25:39
+version: 1.8
 ---
 
 In javaScript there is a standard way for creating a method for an object that will return the string value for an object. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the value of method that is a way to set what the number primitive value for an object should be.
@@ -18,6 +18,10 @@ So then the toString method along with the value of methods of an object are sta
 ## 1 - A basic to string method example
 
 A to string method can be added to any object as an actual property of the object itself, also know as an own property of an object, or by way of the prototype chain. When using something like the main Sting method to convert an object to a string, the to string method will be used to create a primitive string value of the object.
+
+So say I have an object that contains properties for an x, and y axis values. In other words it is a simple point object that contains the contains of a single point in a grid. If I pass this Object to the main Sting function it will convert the object to a string, but because I did not define a toString method for it as an own property, and I created the object with the plain old object literal syntax, the string value is created with the default to string method of the main object prototype. The main to string method in the object prototype will not give the results that I would prefer, as I would like to have a string representation of that point when I do something like passing the object to the main String method.
+
+So to solve this, I just need to have a toString method for the point object. In this to String method I just make sure that the value that is returned is a string, and that the string is formated the way that I would want it to be in that kind of situation.
 
 ```js
 var obj = {
