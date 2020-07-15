@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 682
-updated: 2020-07-15 11:48:12
-version: 1.2
+updated: 2020-07-15 11:56:48
+version: 1.3
 ---
 
 In javaScript there is a standard way for creating a method for an object that will return the string value for an object. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the value of method that is a way to set what the number primitive value for an object should be.
@@ -39,6 +39,8 @@ console.log( String(pt) );
 ```
 
 ## 2 - to string and value of
+
+On top of the to string method there is also the value of method that works the same way as the to string method, but is there to return a number value of the object rather than a string.
 
 ```js
 var obj = {
