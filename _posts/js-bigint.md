@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 531
-updated: 2019-09-06 18:40:56
-version: 1.7
+updated: 2020-07-16 09:58:09
+version: 1.8
 ---
 
-So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the max safe integer. In the past a library would have to be used that involves representing a number with a string if a project requires working with large numbers and preserving number precision. However in modern browsers and node 10.4.x + there is now the BigInt Object that now provides that kind of functionality in native javaScript by itself. As of this writing the [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) object is still not well supported so you might still want to use a library for that reason, but in time such libraries will no longer needed for this because of this native support.
+So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). Beyond that when it comes to adding a low number such as one to a number up to and beyond max safe integer you might end up with the same number. So then it goes without saying that after that range, certain operations can not be preformed without a loss of precision, thus the name max safe integer.
+
+To get around this limitation with javaScript numbers in the past, a library would have to be used that involves representing a number with a string, and then have custom user space method for preforming operations with these classes of objects was a way to work with big numbers in a project requires working with large numbers beyond max safe integer and preserving high precision when preforming operations. These modules still work just fine, and often might still prove to be a better choice over a native solution, but as of late yes there is a native solution for this now.
+
+So with that said n modern browsers, and node 10.4.x + there is now the BigInt Object that now provides high precision math functionality in native javaScript by itself without the introduction of an external module. As of this writing the [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) object is still not well supported so you might still want to use a library for that reason, but in time such libraries will no longer be needed for this because of this native support. So lets look at a few quick examples of the native bigInt object and what is has to provided in platforms that support it.
 
 <!-- more -->
 
