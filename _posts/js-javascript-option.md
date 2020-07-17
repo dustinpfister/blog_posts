@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2019-11-06 17:49:17
-version: 1.10
+updated: 2020-07-17 12:55:03
+version: 1.11
 ---
 
-So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. There is the document.createElement method which is what is often used, but there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
+So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. 
+
+So there is the document.createElement method which is what is often used when it comes to making Option elements, or any kind of element for that matter, but there are also dedicated constructors for creating many elements in client side javaScriopt also and Options Elements are no exception. With that said on top of the create element method there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
 
 <!-- more -->
 
