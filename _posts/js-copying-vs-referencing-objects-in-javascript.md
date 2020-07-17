@@ -5,11 +5,11 @@ tags: [js,blog,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2019-11-21 09:37:07
-version: 1.11
+updated: 2020-07-17 13:14:42
+version: 1.12
 ---
 
-I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/). However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. 
+I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on \_.cloneDeep](/2017/11/13/lodash_clonedeep/) which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not. That subject is the deal with referencing vs copying objects in javaScript. You see objects in javaScript are not the same thing as primitive values like numbers and strings, they are always copied by value. However when it comes to copying objects, often you are not making a copy of the object, you are just creating another reference to the same object. So then this is where cloning of objects comes into play, as well as shallow and deep cloning.
 
 So in this post I will be covering a bunch of ways to go about making a copy of an object with native javaScript by itself. In addition I will try to do my best to get the core of the situation with objects in general down when it comes to copying and referencing them.
 
