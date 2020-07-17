@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2020-07-17 12:02:58
-version: 1.29
+updated: 2020-07-17 12:09:27
+version: 1.30
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference. 
@@ -25,7 +25,9 @@ So for starters lets just look at some simple examples of what innerHTML can do.
 
 ### 1.1 - innerHTML hello world example
 
-Here I have a very simple example of inneHTML. The basic process is to just get a reference to an element that I want to inject html for by whatever means and then set the value of the innerHTML property of the element with an html string. In this example I am using the document.getElementBYId method to get a reference to a div element that I have assigned an id of the value out to. I then just set the value of the innerHTML property of that element to a sting with header elements in it.
+Here I have a very simple example of inneHTML that will just display the message hello world in an header element. The basic process is to just get a reference to an element that I want to inject html for by whatever means possible, and then set the value of the innerHTML property of the element with an html string. 
+
+In this example I am using the document.getElementById method to get a reference to a div element that I have assigned an id value to in the hard coded html. I then just set the value of the innerHTML property of that element to a sting with header elements in it.
 
 ```html
 <html>
@@ -132,7 +134,7 @@ eval(out.innerHTML);
 </html>
 ```
 
-I cant say eval is something that I use often, and a lot of developers frown on its use. Chance are if you are using eval there is a better way to do whatever it is that you are trying to accomplish.
+I cant say eval is something that I use often, and a lot of developers frown on its use. Chances are if you are using eval there is a better way to do whatever it is that you are trying to accomplish.
 
 ## 3 - Using innerText, textContent, and innerHTML
 
