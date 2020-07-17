@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2020-07-17 12:23:50
-version: 1.15
+updated: 2020-07-17 12:29:45
+version: 1.16
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project that has to do with a collection of objects that are often called particles.
@@ -169,4 +169,6 @@ This allows me to define some values for the particles that are going to be disp
 
 So particles js is a fun little project to play around with, but there is not much to it really just a way to have a bunch of particles floating around. However it is not to hard to just go about writing my own module when it comes to doing this sort of thing, and often I find myself doing just that. It seems like making modules that are ways of just creating arrays of objects that move around my one way or another is just one of those artful things to do with code that just comes up naturally.
 
-With that being said I have made several [canvas example](/2020/03/23/canvas-example/) that have to do with what I have also come to call particles. One example has to do with a kind of [binary particle](/2020/03/18/canvas-example-particles-binary/) thing where there are two kinds of particles and when they come together they end up causing an explosion. Another [canvas particles example has to do with one type of particle that attacks and destroys other particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/) in the area.
+With that being said I have made several [canvas example](/2020/03/23/canvas-example/) that have to do with what I have also come to call particles. One example has to do with a kind of [binary particle](/2020/03/18/canvas-example-particles-binary/) thing where there are two kinds of particles and when they come together they end up causing an explosion. Another [canvas particles example has to do with one type of particle that attacks and destroys other particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/) in the area. In time I am sure that I will make even more canvas examples like this, so I will see about expanding this post farther as I make even more of them.
+
+I am not sure that this sort if thing should always be done by just using someone else's code, there is getting started by looking at what al other peoples code examples of course. However in the log run making your own particles.js module might be called for, and also it is something that should maybe me made on a per project basis, or have some kind of plug in system. They reason why I say that is because it is not just a question of using a particles.js module, but what it is that you can add to a module such as this to make something interesting.
