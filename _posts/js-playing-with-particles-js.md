@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2019-09-19 08:55:37
-version: 1.12
+updated: 2020-07-17 12:13:00
+version: 1.13
 ---
 
 These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project.
@@ -167,4 +167,4 @@ This allows me to define some values for the particles that are going to be disp
 
 ## 4 - Conclusion
 
-So particles js is a fun little project to play around with, but there is not much to it really just a way to have a bunch of particles floating around. If I get around to it I might expand this post one day when it comes to writing my own particles js project, but for now there is some more more to write about when it comes to javaScript, and all it has to offer.
+So particles js is a fun little project to play around with, but there is not much to it really just a way to have a bunch of particles floating around. However it is not to hard to just go about writing my own module when it comes to doing this sort of thing, and often I find myself doing just that. It seems like making modules that are ways of just creating arrays of objects that move around my one way or another is just one of those artful things to do with code that just comes up naturally.
