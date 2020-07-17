@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2019-10-31 19:55:26
-version: 1.26
+updated: 2020-07-17 12:36:27
+version: 1.27
 ---
 
-The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) tag in an html document. The body tag is where all additional elements will be placed that have to do with the documents layout and structure. In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element. The property is one of many ways to go about getting a reference to an element in client side javaScript, but I often use this property if it is the body element alone that I am interested in.
+The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
+
+The body element is where all additional elements will be placed that have to do with the documents layout and structure, of course you should all ready know that if you are getting into javaScript now, if not maybe you should take a step back and review html a little more before continuing. 
+
+In this post I will be covering some topics when it comes to the document.body property that can be used to quickly reference this html element. The property is one of many ways to go about getting a reference to an element in client side javaScript, but I often use this property if it is the body element alone that I am interested in. So lets get a few quick examples out of the way with this one so we can continue on to something more interesting.
 
 <!-- more -->
 
