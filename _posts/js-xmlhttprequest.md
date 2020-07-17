@@ -1,12 +1,12 @@
 ---
-title: Good old xmlHttpRequest for scripting http requests
+title: client side xmlHttpRequest for scripting http requests in a tired yet true way
 date: 2018-03-28 16:16:00
 tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2019-11-15 18:10:39
-version: 1.5
+updated: 2020-07-17 13:04:12
+version: 1.6
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/). Call be old fashion by I still find myself using [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
