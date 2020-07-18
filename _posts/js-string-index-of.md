@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-18 10:18:54
-version: 1.11
+updated: 2020-07-18 10:25:13
+version: 1.12
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3. So there is not really a need to depend on some kind of polyfill method, or a user space alternative like [lodash index of method](/2019/06/26/lodash_indexof) that might very well just reference this native method anyway.
@@ -80,7 +80,9 @@ It is crude yet effective, but a better way still as I have mentioned earlier is
 
 ## 4 - Using string replace as a way to get all index values
 
-While updating my content on my post for the string replace method I realized that the method can be used to create an array of index values. I will not be getting into detail about the string replace method here of course if you want to read up ore on it in detail you can check out the post on the string replace method. However I will just quickly touch base on the method of interest here as it relates to the content of this post more so.
+While updating my content on my [post for the string replace method](/2019/04/08/js-string-replace/) I realized that the method can be used to create an array of index values. I will not be getting into detail about the string replace method here of course if you want to read up ore on it in detail you can check out the post on the string replace method. However I will just quickly touch base on the method of interest here as it relates to the content of this post more so.
+
+This works by using the string replace method to not actually replace anything, but to just push the results of the values of arguments in the body of a function that you can pass as one of the arguments to th string replace method. The value of the match, and the character index offset are both passed as argument values when using string replace with a function rather than a fixed string value. These argument values along with any other values that I might come up with each time the function  is called for a match can be included in an object and pushed into an array. This array rather then a revised string value is then what can be returned in the body of a function where I am using it with a string source.
 
 ```js
 let getIndexValues = (source, pattern) => {
