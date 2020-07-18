@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 10:52:28
-version: 1.20
+updated: 2020-07-18 10:55:13
+version: 1.21
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -61,7 +61,7 @@ So then writing functions like this can come in handy, I have a length expressio
 
 ## 2 - return and function types.
 
-There is more than one way to define a function that returns something in javaScript. There are function expressions, function declarations, and arrow functions.
+There is more than one way to define a function that returns something in javaScript. There are function expressions, function declarations, and arrow functions. Often the return keyword must be used in the body of a function, however in some cases the new arrow functions have what are called implicit returns.
 
 ```js
 // ES5- Style function expression that returns a 
@@ -87,6 +87,8 @@ console.log(baz(5,2)); // 7
 ```
 
 The return keyword must be used with function expressions, and function declarations. However with arrow functions it depends on how they are authored. If brackets are not used with an arrow function then a return is implicate and the return keyword is not needed. However if brackets are used with an arrow function then the return keyword must be used just like with expressions, and declarations.
+
+So then in some cases the use of return in the body of a function is optional, but I tent to use it away just to help make things clear when it comes to readability of code.
 
 ## 3 - The javaScript return keyword and closures
 
