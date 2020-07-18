@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 12:06:20
-version: 1.27
+updated: 2020-07-18 12:07:29
+version: 1.28
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This [returned value](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values) can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -303,7 +303,7 @@ console.log(pows);
 
 ## 6 - Using the new keyword and not using the new keyword when making constructor functions
 
-The new keyword comes into play when making constructor functions that can also be used to create and return new types of objects without the use of the return keyword. However when making these kids of functions it is still possible to check if the function is being used with the new keyword or not, and if not use the return keyword to return an instance of the constructor anyway, or just a plain old object form of the find object that the constructor creates.
+The new keyword comes into play when making [constructor functions](/2019/02/27/js-javascript-constructor/) that can also be used to create and return new types of objects without the use of the return keyword. However when making these kids of functions it is still possible to check if the function is being used with the new keyword or not, and if not use the return keyword to return an instance of the constructor anyway, or just a plain old object form of the find object that the constructor creates.
 
 ```js
 var Point = function (x, y) {
