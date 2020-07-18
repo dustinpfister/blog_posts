@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2020-07-18 16:37:06
-version: 1.15
+updated: 2020-07-18 16:42:42
+version: 1.16
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place rather than creating and returning a new sorted array. This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method. 
@@ -25,7 +25,7 @@ So if you all ready know the basics of the array sort method, then you might wan
 
 ### 1.1 - Arrays of primitives and array sort without a function
 
-If you are just working with a simple array of numbers just calling the array sort method of the array instance will sort the array of numbers by value from lowest to highest.
+If you are just working with a simple array of numbers just calling the array sort method of the array instance will sort the array of numbers by value from lowest to highest. So in other words the built in sorting method will work just fine in that case. So just call the array sort method off of the array of numbers and you are done.
 
 ```js
 var arr = [7,4,2,5,8,6,3,1];
@@ -34,7 +34,7 @@ console.log(arr);
 // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 ```
 
-An Array of strings will be sorted by alphabetic order.
+When it comes to an Array of strings that will be sorted by way of alphabetic order when it comes to built in sorting.
 
 ```js
 var arr = ['c','b','a','d'];
@@ -43,7 +43,7 @@ console.log(arr);
 // [ 'a', 'b', 'c', 'd']
 ```
 
-If array sort will work okay juts like this the that is all there is to it then. However if mutating an array in place is a problem, of if I need to add some custom functionality for sorting then I am going to need to work something else out so lets look at some more examples of array sort.
+If array sort will work okay just like this then that is all there is to it then. However if mutating an array in place is a problem, of if I need to add some custom functionality for sorting, then I am going to need to work something else out so lets look at some more examples of array sort that make use of a custom sorting method.
 
 ### 1.2 - Array sort and objects
 
