@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2020-07-18 13:29:28
-version: 1.16
+updated: 2020-07-18 13:34:35
+version: 1.17
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of usful expressions that are often used in creating pure functions that make up a useful module.
@@ -163,4 +163,8 @@ console.log(indexFromString2(str, colorDepth)); // 19
 
 This seem to work as expected, but this is just scratching the surface of what can be done with the math pow method. It is pretty cool that the total number of possible images in a matrix as low as 4 by 4 with a color depth of only two indexed colors all ready is a fairly large number of 65536. As I play around with the values I very quickly go beyond max safe integer.
 
-If I wanted to make a more comprehensive project centered around this I would want to use the math pow method of some kind of big integer library that uses strings to store numbers. There is also now the big init type in javaScript itsefl actualy, but as of this writing it is not well supported.
+If I wanted to make a more comprehensive project centered around this I would want to use the math pow method of some kind of big integer library that uses strings to store numbers. There is also now the big init type in javaScript itself actually, but as of this writing it is not well supported.
+
+## 4 - Conclusion
+
+So that Math.pow method has many uses including finding out the limits of 2d images which is pretty cool. What else is there that can be done with the Math.pow method? Well I fairly sure that I have not even starched the surface. As I find even more examples to write about, I will gte around to expanding this post even more.
