@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 10:55:13
-version: 1.21
+updated: 2020-07-18 10:58:31
+version: 1.22
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -241,3 +241,7 @@ setInterval(function () {
     ani();
 }, 100);
 ```
+
+## 4 - conclusion
+
+So the javaScript return keyword is there as a way to return a value inside the body of a function. There are then many things that can be done with that returned value, making functions a great way to go about containing, and reusing code in a project.
