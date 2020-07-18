@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2019-12-01 18:40:44
-version: 1.15
+updated: 2020-07-18 10:35:16
+version: 1.16
 ---
 
-The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longe required, and is also an important part of creating closures.
+The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
+
+The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longer required, and is also an important part of creating closures.
 
 In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding the javaScript return keyword as well.
 
