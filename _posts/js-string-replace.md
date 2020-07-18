@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2019-11-28 10:32:53
-version: 1.10
+updated: 2020-07-18 07:59:24
+version: 1.11
 ---
 
-The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) String prototype method in javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. In order to really get into using replace it is important to get up to speed with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), a subject that I hate, but never the less when it does come to search and replace, and matching tasks with text regular expressions are a very powerful tool for doing so.
+The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
+
+In order to really get into using replace it is important to get up to speed with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), a subject that I hate, but never the less when it does come to search and replace, and matching tasks with text regular expressions are a very powerful tool for doing so.
 
 
 <!-- more -->
