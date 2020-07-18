@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2020-07-18 16:42:42
-version: 1.16
+updated: 2020-07-18 16:46:42
+version: 1.17
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place rather than creating and returning a new sorted array. This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method. 
@@ -171,3 +171,9 @@ console.log(byFresh);
 //   { wordCount: 500, time: 330, comentCount: 7 },
 //   { wordCount: 1800, time: 1000, comentCount: 0 } ]
 ```
+
+## 3 - Conclusion
+
+So the array sort prototype method will work okay when one knows how to get around its shortcomings. The main draw back is that it will mutate the array in place, but aside from that it will work okay just fine. there are ways of getting around the mutation in place thing anyway. For example often I might want to do something with array map before sorting, and that will of course return a new array.
+
+The main appeal of the array sort method is of course the fact that it is there to work with in javaScript by itself without having to introduce an additional external library which of course would be the case with the lodash \_.sortBy method.
