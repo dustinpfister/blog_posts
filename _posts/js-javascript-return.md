@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 11:45:01
-version: 1.25
+updated: 2020-07-18 12:02:36
+version: 1.26
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -301,7 +301,36 @@ console.log(pows);
 // 32-16-8-4-2
 ```
 
-## 6 - conclusion
+## 6 - Using the new keyword and not using the new keyword when making constructor functions
+
+The new keyword comes into play when making constructor functions that can also be used to create and return new types of objects without the use of the return keyword. However when making these kids of functions it is still possible to check if the function is being used with the new keyword or not, and if not use the return keyword to return an instance of the constructor anyway, or just a plain old object form of the find object that the constructor creates.
+
+```js
+var Point = function (x, y) {
+    this.x = x;
+    this.y = y;
+    if (this.constructor.name != 'Point') {
+        return {
+            x: x,
+            y: y
+        };
+    }
+};
+ 
+Point.prototype.toString = function () {
+    return '(' + this.x + ',' + this.y + ')';
+};
+ 
+var pt = new Point(5, 5),
+obj = Point(5, 5);
+ 
+console.log(pt.x, pt.y, String(pt), pt.constructor.name);
+// 5,5 Point
+console.log(obj.x, obj.y, String(obj), obj.constructor.name);
+// [object Object] Object
+```
+
+## 7 - conclusion
 
 So the javaScript return keyword is there as a way to return a value inside the body of a function. There are then many things that can be done with that returned value, making functions a great way to go about containing, and reusing code in a project.
 
