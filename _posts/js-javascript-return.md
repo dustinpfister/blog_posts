@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 11:11:59
-version: 1.23
+updated: 2020-07-18 11:24:10
+version: 1.24
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -262,6 +262,26 @@ setInterval(function () {
 }, 100);
 ```
 
-## 4 - conclusion
+## 4 - Stop code from continuing by using return
+
+Once a value is returned then any additional code after the return keyword will not run. So then in the body of a function you do not need an else after an if statement if you are using return in the body of the if block. If the condition is true then the value in the if will be what is returned, and no additional code will run, and no additional return keywords in the function will be reached.
+
+```js
+var foo = function (a,b) {
+    if (a === b) {
+        return a;
+    }
+    return a + b;
+};
+ 
+console.log(foo(5,5)); // 5
+console.log(foo(5,6)); // 11
+```
+
+In functions where a while or for loop are being used the return keyword can also be used as an alternative to the break keyword. There would be no need to use break unless it is nested looping with the use of labels and you just want to break a cerin loop in a nest of loops. However if returned is used at any level in a nest of loops that will stop the looping at all levels, the value will be returned and that will stop everything.
+
+## 5 - conclusion
 
 So the javaScript return keyword is there as a way to return a value inside the body of a function. There are then many things that can be done with that returned value, making functions a great way to go about containing, and reusing code in a project.
+
+In addition to this the returned keyword is needed when it comes to returning a public API in the from of an object with public methods, a public function, or a public function with additional static methods attached to it. This public API will then have access to everything inside the local variable scope of the module.
