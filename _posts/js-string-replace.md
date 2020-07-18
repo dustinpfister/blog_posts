@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 08:20:05
-version: 1.13
+updated: 2020-07-18 08:29:18
+version: 1.14
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -38,7 +38,9 @@ So now that we have the basic example out of the way lets get into some more asp
 
 ## 2 - Using a function to create replacement strings
 
-In place of a static string as the replacement, a function can be used to generate replacement strings that will differ depending on the nature of the instance of the pattern match. For example if the pattern contains numbers or dates they can be extracted and used to generate the result in the resulting string.
+In place of a static string as the replacement, a function can be used to generate replacement strings that will differ depending on the nature of the instance of the pattern match. For example if the pattern contains numbers or dates they can be extracted and used to generate the result in the string that will be used to replace the instance of the pattern in the source string that the replace method is called off of.
+
+So then say that you have a string that contains instances of a few numbers. You can use a regular expression to match each number, and for each match a function that is given as the second argument will be called. In the body of that function the string value of the match will be available via the first argument of the function. This of course can then be used to create a new value to replace the old one by say, using it in the Math.pow method to create a power based off of each number in the string.
 
 ```js
 let str = 'Some numbers for you are 2, 6, and 10 also.',
@@ -49,7 +51,7 @@ console.log(result);
 // 'Some numbers for you are 4, 64, and 1024 also.'
 ```
 
-So that is a neat tick for string replacement related tasks that I am sure can come in handy now and then. Just this simple example of it is one thing, but say I want to replace all uppercase instances of tag names in an HTML string with lower case ones, this can be used as a way to do so real easy.
+So that is a neat tick for string replacement related tasks that I am sure can come in handy now and then. Just this simple example of it is one thing, but say I want to replace all uppercase instances of tag names in an HTML string with lower case ones, this can be used as a way to do so real quick and easy like. There are all kinds of additional examples of this that come to mind that might help to gain a better understand of why string replace is so useful, but for now at least you should get the basic idea of using functions to generate replacement strings for matches of a pattern in another string.
 
 ## 3 - Replacing something that is between two patterns
 
