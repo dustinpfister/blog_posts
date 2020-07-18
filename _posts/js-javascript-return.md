@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 10:48:54
-version: 1.19
+updated: 2020-07-18 10:52:28
+version: 1.20
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -56,6 +56,8 @@ console.log( figMoney() ); // '$0.00'
 console.log( figMoney(77, 5, 2) ); // '$100.10'
 console.log( figMoney(7, 5, 1.4,6.5,0.12) ); // '$1.53'
 ```
+
+So then writing functions like this can come in handy, I have a length expression and I do not want to repeat it every time I used it in a body of code. So I pull that expression into a function, and just pass arguments to it each time I call it elsewhere in code. The value that I want is then returned by way of the javaScript return statement.
 
 ## 2 - return and function types.
 
