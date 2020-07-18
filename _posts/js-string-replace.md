@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 08:38:39
-version: 1.15
+updated: 2020-07-18 09:00:44
+version: 1.16
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -77,9 +77,9 @@ The pattern will of course need to be tweaked a little now and then, but the bas
 
 ### 3.1 - Replacing what is between two patterns with something involving what is between them
 
-So I could replace what is between the two patterns with just an empty string or other static text. However I could also make something new with the content that is between then also of course. This just needs to involve using a function in place of a string as the value for what to replace. The function will then be used as a way to generate content.
+So I could replace what is between the two patterns with just an empty string or other static text with just fixed string value, or I could do something involving the use of a function like i covered earlier. However I could also make something new with the content that is between them also of course. This just needs to involve using a function in place of a string as the value for what to replace, and on top of that I can use the string replace method again, along with anything else to create the new string value. The function will then be used as a way to generate the new content between the two opening and closing text patterns.
 
-So I could use the string replace method as a way to start replacing instances of a table in some markdown, but then I can use the string replace method again in the body of the function that I give the string replace method.
+So say I have all these tables that have data between a *\-\-\-* and another *\-\-\-* text pattern, and I want to replace them with *\<pre\>* and *\<\/pre\>*. I can use a similar pattern as I have covered just before in this section, only now I am targeting these markdown patterns for tables, and I just want the data to be in preformatted text elements when it comes to converting to html rather than tables as a markdown parser would by default.
 
 ```js
 let str = 'foo bar foo bar \n' +
