@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 10:58:31
-version: 1.22
+updated: 2020-07-18 11:11:59
+version: 1.23
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -58,6 +58,26 @@ console.log( figMoney(7, 5, 1.4,6.5,0.12) ); // '$1.53'
 ```
 
 So then writing functions like this can come in handy, I have a length expression and I do not want to repeat it every time I used it in a body of code. So I pull that expression into a function, and just pass arguments to it each time I call it elsewhere in code. The value that I want is then returned by way of the javaScript return statement.
+
+### 1.2 - Be careful when it comes to line breaks in code.
+
+Make sure that nothing weird is going on with line beraks in the source code when it comes to using the return keyword. If the expression is on the next line after the return keyword the javaScript engine might disregard the expression completely on the next line, and the result will be that the default undefined value will be returned. This has to do with the fact that semicolons are optional in javaScript code.
+
+```js
+var foo = function (a, b, c) {
+    return
+    (a + b) * c;
+};
+ 
+console.log(foo(1, 2, 3)); // undefined
+ 
+var baz = function (a, b, c) {
+    return (a + b)
+     * c;
+};
+ 
+console.log(baz(1, 2, 3)); // 9
+```
 
 ## 2 - return and function types.
 
