@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 08:29:18
-version: 1.14
+updated: 2020-07-18 08:38:39
+version: 1.15
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -55,9 +55,9 @@ So that is a neat tick for string replacement related tasks that I am sure can c
 
 ## 3 - Replacing something that is between two patterns
 
-A command task that a development might run into now and then is how to go about replacing something that is between two patterns of one kind or another. Say you have some markdown that has tables in it, but you want the tables removed. Such a task can be done with the string replace method and the right pattern.
+A common task that a development might run into now and then is how to go about replacing something that is between two patterns of one kind or another. Say you have some markdown that has tables in it, but you want the tables removed from some source text. Such a task can be done with the string replace method, the right pattern, and passing an empty string as the value to replace each pattern instance.
 
-I have come to find that something like the following works for me when I want to remove the beginning table of my mark down source files.
+I have come to find that something like the following works for me when I want to remove the beginning table of my mark down source files. Something that I find myself doing each time I write scripts that have t do with tabulating things with the content of my site here, including this post that5 you are reading right now. So now we are getting into something that migh prove to be a little practical when it comes to using the string replace method in actual projects.
 
 ```js
 let str = 'This is some text that also ' +
@@ -73,7 +73,7 @@ console.log(result);
 // 'This is some text that also has some tables in it, but I do not want theme there for some reason.'
 ```
 
-The pattern will of course need to be tweaked a little down and then, but the basic idea is there. 
+The pattern will of course need to be tweaked a little now and then, but the basic idea is there. 
 
 ### 3.1 - Replacing what is between two patterns with something involving what is between them
 
