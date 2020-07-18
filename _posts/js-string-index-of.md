@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-18 10:25:13
-version: 1.12
+updated: 2020-07-18 10:26:03
+version: 1.13
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3. So there is not really a need to depend on some kind of polyfill method, or a user space alternative like [lodash index of method](/2019/06/26/lodash_indexof) that might very well just reference this native method anyway.
@@ -104,6 +104,8 @@ var ex = getIndexValues('foo bar 42 40 bar chew', /bar/g);
 console.log(ex);
 // [ { match: 'bar', offset: 4, index: 0 }, { match: 'bar', offset: 14, index: 1 } ]
 ```
+
+So then something like this can also be used as a crude yet effective more advanced replacement for just using the string index of method.
 
 ## 5 - Conclusion
 
