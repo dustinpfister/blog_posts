@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 10:35:16
-version: 1.16
+updated: 2020-07-18 10:40:29
+version: 1.17
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
 
-The product that is returned can just be a simple primitive, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longer required, and is also an important part of creating closures.
+The product that is returned can just be a simple primitive value such as a number or string, but things get more interesting when it is an object, or a function. The return statement can also be used as an alternative to the break keyword in the body of a function if looping is no longer required, and as stated is also an important part of creating closures. So the return keyword is something that a javaScript developer should get a solid grasp on, and maybe the best way to do so is to not just read a post such as this, but also just start playing around with ones own code examples when it co es to the whole learn by doing thing.
 
-In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding the javaScript return keyword as well.
+In this post I will be exploring some examples that have to do with the return statement in javaScript and touch base on some related topics surrounding the javaScript return keyword as well. I will not be getting into things like closure in detail here of course, but it is called for to touch base on a lot of these things at least here, so lets get to it.
 
 <!-- more -->
 
