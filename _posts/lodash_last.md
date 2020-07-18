@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2019-07-01 13:51:54
-version: 1.10
+updated: 2020-07-18 18:55:32
+version: 1.11
 ---
 
-The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. This method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. The act of getting the last element in an array is a fairly simple task as well though, so the lodash last method is not a great example of why javaScript developers should bother with lodash. Still in this post I will be taking a look at the \_.last method in lodash as well as a whole bunch of other options when it comes to getting the last element in an array as with lodash, as well as plain old vanilla javaScript by itself as well.
+The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing  about the lodash last method is that this method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. However this might not be the best example of this talking point as to why devlopers should use lodash, or some other functional programing utility library.
+
+The act of getting the last element in an array is a fairly simple task as well though, so the lodash last method is not a great example of why javaScript developers should bother with lodash. Still in this post I will be taking a look at the \_.last method in lodash as well as other options when it comes to getting the last element in an array with just plain old vanilla javaScript by itself as well.
 
 <!-- more -->
 
