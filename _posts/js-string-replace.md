@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 08:15:10
-version: 1.12
+updated: 2020-07-18 08:20:05
+version: 1.13
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -32,7 +32,9 @@ console.log(result);
 // 'It is a good day to do good things for good people'
 ```
 
-In this example I used a pattern that has the global flag set, that is what the little g at the end of the pattern is. If I did not use that only the first instance of the pattern would have been replaced.
+In this example I used the regular expression literal syntax rather than the constructor function with the new keyword to create a pattern that has the global flag set to true. The global flag is the little g at the end of the literal syntax created with forward slashes. If I did not use the global search lag only the first instance of the pattern would have been replaced.
+
+So now that we have the basic example out of the way lets get into some more aspects of the replace method that are not so basic.
 
 ## 2 - Using a function to create replacement strings
 
