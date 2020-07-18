@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 10:40:29
-version: 1.17
+updated: 2020-07-18 10:43:07
+version: 1.18
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -17,9 +17,9 @@ In this post I will be exploring some examples that have to do with the return s
 
 <!-- more -->
 
-## 1 - return statement
+## 1 - A return statement basic example style
 
-For a very simple example of the return statement here I have a function declaration that just simply adds two numbers (or concatenates a string) and returns the product of that operation.
+For a very simple example of the return statement here I have a function declaration that just simply adds two numbers \(or concatenates a string\) and returns the product of that operation. The value that is returned can then be used in any capacity such as being stored in a variable, have additional methods called off of it depending on the prototype of the value, used in an expression, conditional statement, or in this case just simple be logged out to the console.
 
 ```js
 // ES5- function deceleration that returns a product
