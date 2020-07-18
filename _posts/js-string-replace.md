@@ -5,22 +5,24 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 07:59:24
-version: 1.11
+updated: 2020-07-18 08:15:10
+version: 1.12
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
 
-In order to really get into using replace it is important to get up to speed with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), a subject that I hate, but never the less when it does come to search and replace, and matching tasks with text regular expressions are a very powerful tool for doing so.
+In order to really get into using replace it is important to get up to speed with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), a subject that can prove to be a little frustrating for many, but never the less when it does come to text search and replace tasks, and just matching tasks, regular expressions are a very powerful tool for doing so. With that said if you are not up to speed with regular expressions you might want to read up on them a little more before continuing.
 
 
 <!-- more -->
 
 ## 1 - String Replace method basics
 
-In order to use the the String.replace string prototype method it is important to have a fairly solid grasp on regular expressions. I will be covering some examples of them here in this post of course, but I will not be getting into regular expressions in detail here, as I have a [post where I have done so when it comes to regex](/2019/03/20/js-regex/).
+In order to use the the String.replace string prototype method it is important to have a fairly solid grasp on regular expressions. I will be covering some examples of them here in this post of course, but I will not be getting into regular expressions in detail here, as I have a [post where I have done so when it comes to regex](/2019/03/20/js-regex/). Be sure to check out that post, or one or more additional resources in regular expressions before getting into methods that make use of them such as string replace.
 
-The basic idea of String.replace is to come up with a regular expression that will match the one or more patterns that I want to replace with something else, and use that pattern as the first argument for String.replace. The second argument then is the string to replace all matches for the pattern in the string to which the prototype method is being called off of.
+The basic idea of String.replace is to come up with a regular expression that will match one or more instances of a pattern that I want to replace with something else, and use that regular expression as the first argument for String.replace. The second argument then is the string to replace all matches for the pattern in the string to which the prototype method is being called off of. On top of static strings, a function can be used when it comes to generating variable strings, but more on that later.
+
+For now lets just start out with a very simple example of this, and then progress forward from there. Say I have a string with two or more instances of the static text pattern *bad* and I want to replace each of them with another fixed pattern that is *good*. I can call the replace method off of the string, and then pass a regular expression that will match *bad* with the global flag set to true as the first argument. I can then pass the fixed string *good* as the second argument, and a new string with all instances of the pattern *bad* replaced with *good* will be the result.
 
 ```js
 let str = 'It is a bad day to do bad things for bad people',
