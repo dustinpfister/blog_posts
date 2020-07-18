@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 09:48:21
-version: 1.18
+updated: 2020-07-18 10:02:49
+version: 1.19
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -119,7 +119,35 @@ console.log(result);
 // foo bar foo bar'
 ```
 
-## 4 - Conclusion
+## 4 - Using string replace as a way to get index values
+
+So then the string replace method could be used as a way to go about getting an array of index values for each match of a patter actually. By passing a function rather than a fixed value for what to replace, and just push the index values to an array in the body of that method. I can then also push the value of the match, and both the index value of the character position in the source string, as well as the pattern index by just stepping a variable. I can pull all of this into a nice need little method like this.
+
+
+```js
+let getIndexValues = (source, pattern) => {
+    let matches = [],
+    i = 0;
+    source.replace(pattern, (match, offset) => {
+        matches.push({
+            match: match,
+            offset: offset,
+            index: i
+        });
+        i += 1;
+    });
+    return matches;
+};
+ 
+var ex = getIndexValues('foo bar 42 40 bar chew', /bar/g);
+ 
+console.log(ex);
+// [ { match: 'bar', offset: 4, index: 0 }, { match: 'bar', offset: 14, index: 1 } ]
+```
+
+There is the issue of having the word replace in the body of a method that does not actually replace anything, as nothing is returned in the method, and any value that is return dis just disregard. So it might not be the best option in terms of code readability. Still I have come to find that this is a nice concise solution at least when it comes to getting an array of offset values for a pattern.
+
+## 5 - Conclusion
 
 So the string replace method is what I would use right off the bat then it comes to replacing one pattern of something with another using regular expressions and javaScript code. The string replace method is of course not the only method of interest in the string prototype object when it comes to working with regular expressions ans text. There is also the [string match](/2019/04/06/js-string-match/) method that is somewhat useful when it comes to just checking for matches and where they are in terms of index values in a source string. 
 
