@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 10:43:07
-version: 1.18
+updated: 2020-07-18 10:48:54
+version: 1.19
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This returned value can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -31,6 +31,8 @@ console.log(foo(5,2)); // 7
 ```
 
 So the return statement is necessary when it comes to authoring any kind of function that will ultimately return a number, string or any kind of product in the form of an Object or another inner function. In this example it is just a simple single operation expression, but it could be a lengthly expression that I do not care to repeat each time I need to use it in a lengthy body of code.
+
+So now that we have the basic idea of the javaScript return statement out of the way, lets look at a few far more interesting, and possibly useful examples of why the return keyword is a very important part of understanding how to use javaScript effectively when writing code.
 
 ### 1.1 - Another example of return with a lengthy expression
 
