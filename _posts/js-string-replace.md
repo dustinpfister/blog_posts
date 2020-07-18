@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 09:14:04
-version: 1.17
+updated: 2020-07-18 09:48:21
+version: 1.18
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -52,6 +52,22 @@ console.log(result);
 ```
 
 So that is a neat tick for string replacement related tasks that I am sure can come in handy now and then. Just this simple example of it is one thing, but say I want to replace all uppercase instances of tag names in an HTML string with lower case ones, this can be used as a way to do so real quick and easy like. There are all kinds of additional examples of this that come to mind that might help to gain a better understand of why string replace is so useful, but for now at least you should get the basic idea of using functions to generate replacement strings for matches of a pattern in another string.
+### 2.1 - The offset value of a function can also be used in the process of creating replacement strings
+
+So there are up to three arguments that can be used in the body of a function that is given to the string replace method in place of what would otherwise be just a static string value. The first argument as we know now is the value of the match, the second value is the index value of the match in the source string, and third value is the original value of the source string, in other words just the value of the strung that we are calling the method off of.
+
+So if I have a string with a pattern, and I want to inject the index value sof each into the string, then I can do so just like this.
+
+```js
+let replacer = (match, offset, str) => {
+    return offset;
+};
+let str = 'This string injectOffset where an offset value will be injected injectOffset each time';
+console.log( str.replace(/injectOffset/g, replacer) );
+// This string 12 where an offset value will be injected 64 each time
+```
+
+In some cases this value might be useful in the process of generating replacements where the index values of each pattern match are of interest. However there might be additional uses for this also as we get into the thick of the string replace method.
 
 ## 3 - Replacing something that is between two patterns
 
