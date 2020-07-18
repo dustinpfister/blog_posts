@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 10:02:49
-version: 1.19
+updated: 2020-07-18 10:05:28
+version: 1.20
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -149,6 +149,6 @@ There is the issue of having the word replace in the body of a method that does 
 
 ## 5 - Conclusion
 
-So the string replace method is what I would use right off the bat then it comes to replacing one pattern of something with another using regular expressions and javaScript code. The string replace method is of course not the only method of interest in the string prototype object when it comes to working with regular expressions ans text. There is also the [string match](/2019/04/06/js-string-match/) method that is somewhat useful when it comes to just checking for matches and where they are in terms of index values in a source string. 
+So the string replace method is what I would use right off the bat then it comes to replacing one pattern of something with another using regular expressions and javaScript code. The string replace method is of course not the only method of interest in the string prototype object when it comes to working with regular expressions ans text. There is also the [string match](/2019/04/06/js-string-match/) method that is useful when it comes to just checking for matches and where they are in terms of index values in a source string without replacing anything. Although the same can be done with replace as I have covered here by just pushing the values given by a method passed to the replace method, and just disregarding any value that is returned by string replace.
 
 However the string match method might not be the best tool for the job when it comes to just matching as there are even more methods of interest not in just the string prototype object, but the [regular expression prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) object actually. I am taking about the exec method of the regular expression prototype, I have found that is of better value when it comes to getting an array of index value for all instances of a pattern. I have wrote [posts on the exec method](/2020/07/08/js-regex-exec/), as well as the [string index of](/2020/07/09/js-string-index-of/) method when it comes to how to go about getting all the index values of a pattern without replacing that might be worth checking out if you want to read more about regular expressions and strings.
