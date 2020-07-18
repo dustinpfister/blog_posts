@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2020-07-18 18:58:01
-version: 1.12
+updated: 2020-07-18 19:01:12
+version: 1.13
 ---
 
 The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing  about the lodash last method is that this method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. However this might not be the best example of this talking point as to why devlopers should use lodash, or some other functional programing utility library.
@@ -104,3 +104,7 @@ last = arr.slice(arr.length-1,arr.length);
 console.log(last[0]); // 4
 console.log(arr); // [1,2,3,4]
 ```
+
+## 4 - Conclusion
+
+Well there you have it, the lodash last method is to just get the last element in the array. So there is really not much more to say about it beyond additional ways of doing so with and without lodash. I do not use lodash that much these days, and when I do it is often to just use one or two methods like that of merge, or chunk. I can nit say that the lodash last method is a great talking point as to why we should keep using lodash, but I suppose it does still have its redeeming qualities.
