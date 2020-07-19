@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 09:40:20
-version: 1.15
+updated: 2020-07-19 09:59:55
+version: 1.16
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -136,6 +136,33 @@ console.log( normalizeNums(nums) );
 // [ -0.185, 0.025, 0.21, 0.15, 0.215, 0.6, -0.2, 0.8 ]
 ```
 
-## 5 - Conclusion
+## 5 - Working with an array of Objects
+
+So now that we have figures out how to go about normalizing a set of numbers, lets see about working with an array of objects Say I have an array of points in the form of an array of objects where each object has an x and y property. I want to get the lowest and highest values for each axis in the set of points. For this one again the array map method can come in handy for getting all values of interest with that.
+
+```js
+// get an array of numbers from a set of objects
+var getAxisValues = function (points, axis) {
+    axis = axis === undefined ? 'x' : axis;
+    return points.map(function (obj) {
+        return obj[axis];
+    });
+};
+ 
+// get low or high
+var getLorHofAxis = function (points, axis, minMax) {
+    axis = axis === undefined ? 'x' : axis;
+    minMax = minMax === undefined ? 'min' : minMax;
+    return Math[minMax].apply(null, getAxisValues(points, axis));
+};
+ 
+var points = [{x: 20, y: 35},{x: -15, y: 83},{x: 7, y: 0}],
+xLow = getLorHofAxis(points),
+yHi = getLorHofAxis(points, 'y', 'max');
+console.log(xLow); // -15
+console.log(yHi); // 83
+```
+
+## 6 - Conclusion
 
 So the Math.min and Math.max methods re nice little methods for getting the lowest and highest value of two or more numbers. They have to be given via arguments when calling it, but apply can be sued as a way to just go ahead and use an array of numbers. There are all kinds of other values that come to mind that can then be obtained when you have both the lowest and highest numbers such as a range, or a mean.
