@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 15:26:56
-version: 1.21
+updated: 2020-07-19 15:30:02
+version: 1.22
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -176,7 +176,7 @@ This canvas example will have a point.js module that will contain methods for ge
 
 ### 6.1 - The points.js module
 
-So here is the points.js module that will be used to create the array of points.
+So here is the points.js module that will be used to create the array of points. There are also a number of other public api methods for this module including a methods that is used to move an array of points, and also a methods that can be used to create a point object composed of the lowest x and y values that of course make use of Math.min, and Math.max.
 
 ```js
 var points = (function () {
