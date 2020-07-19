@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 09:59:55
-version: 1.16
+updated: 2020-07-19 12:26:54
+version: 1.17
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -163,6 +163,232 @@ console.log(xLow); // -15
 console.log(yHi); // 83
 ```
 
-## 6 - Conclusion
+## 6 - Canvas exmaple using Math.max, and Math.min
+
+### 6.1 - points.js
+
+```js
+var points = (function () {
+ 
+    var api = {};
+ 
+    // generate some points
+    api.gen = function (count, width, height) {
+        count = count === undefined ? 10 : count;
+        width = width === undefined ? 160 : width;
+        height = height === undefined ? 120 : height;
+        var points = [];
+        var i = 0;
+        while (i < count) {
+            points.push({
+                x: Math.floor(Math.random() * width),
+                y: Math.floor(Math.random() * height),
+                heading: Math.random() * (Math.PI * 2),
+                pps: 16 + Math.round(64 * Math.random())
+            })
+            i += 1;
+        }
+        return points;
+    };
+ 
+    // get an array of numbers from a set of objects
+    var getAxisValues = function (points, axis) {
+        axis = axis === undefined ? 'x' : axis;
+        return points.map(function (obj) {
+            return obj[axis];
+        });
+    };
+ 
+    api.getLorH = function (points, minMax) {
+        minMax = minMax === undefined ? 'min' : minMax;
+        return {
+            x: Math[minMax].apply(null, getAxisValues(points, 'x')),
+            y: Math[minMax].apply(null, getAxisValues(points, 'y'))
+        }
+    };
+ 
+    // get ranges for each axis
+    api.getAxisRanges = function (points) {
+        var xValues = getAxisValues(points, 'x'),
+        yValues = getAxisValues(points, 'y'),
+        xLow = Math.min.apply(null, xValues),
+        yLow = Math.min.apply(null, yValues);
+        return {
+            x: (Math.max.apply(null, xValues) - Math.abs(xLow)),
+            y: (Math.max.apply(null, yValues) - Math.abs(yLow))
+        }
+    };
+ 
+    // normalize points
+    var normalize = function (points, canvas) {
+        var range = api.getAxisRanges(points);
+        //l = api.getLorH(points, 'min');
+        canvas = canvas || {
+            width: range.x,
+            height: range.y
+        };
+        return points.map(function (pt) {
+            return {
+                //x: (pt.x - l.x) / range.x,
+                //y: (pt.y - l.y) / range.y
+                x: pt.x / canvas.width,
+                y: pt.y / canvas.height
+            }
+        });
+    };
+ 
+    // move and scale points
+    api.move = function (points, x, y, w, h, canvas) {
+        return normalize(points, canvas).map(function (pt) {
+            return {
+                x: x + pt.x * w,
+                y: y + pt.y * h
+            };
+        });
+    };
+ 
+    api.wrap = function (points, canvas) {
+        return points.map(function (pt) {
+            var x = pt.x,
+            y = pt.y;
+            x = x < 0 ? canvas.width + x : x;
+            y = y < 0 ? canvas.height + y : y;
+            x = x >= 320 ? x % 320 : x;
+            y = y >= 240 ? y % 240 : y;
+            return {
+                x: x,
+                y: y,
+                heading: pt.heading,
+                pps: pt.pps
+            }
+        });
+    };
+ 
+    return api;
+ 
+}
+    ());
+```
+
+### 6.2 - draw.js
+
+```js
+var draw = {};
+ 
+draw.background = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+draw.box = function (ctx, x, y, w, h, fill) {
+    ctx.fillStyle = fill || 'black';
+    ctx.fillRect(x, y, w, h);
+};
+ 
+draw.lowAndHigh = function (ctx, p) {
+    ctx.strokeStyle = 'white';
+    var l = points.getLorH(p, 'min'),
+    h = points.getLorH(p, 'max');
+    ctx.beginPath();
+    ctx.arc(l.x, l.y, 3, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(h.x, h.y, 9, 0, Math.PI * 2);
+    ctx.stroke();
+}
+ 
+draw.points = function (ctx, p, fill, radius) {
+    radius = radius || 6;
+    ctx.fillStyle = fill || 'red';
+    ctx.strokeStyle = 'black';
+    var i = p.length,
+    pt;
+    while (i--) {
+        pt = p[i];
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+    }
+};
+```
+
+### 6.3 - Main.js and index.html
+
+```js
+// get canvas can 2d context
+var container = document.getElementById('canvas-min-max'),
+canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ 
+var state = {
+    points: points.gen(20, canvas.width, canvas.height),
+    canvas: canvas,
+    lt: new Date(),
+    FPS: 16,
+    moved: {
+        x: 32,
+        y: 32,
+        w: 64,
+        h: 64,
+        points: []
+    }
+};
+ 
+var update = function (state, secs) {
+    var i = 0,
+    len = state.points.length,
+    pt;
+    while (i < len) {
+        pt = state.points[i];
+        pt.x += Math.cos(pt.heading) * pt.pps * secs;
+        pt.y += Math.sin(pt.heading) * pt.pps * secs;
+        i += 1;
+    }
+    state.points = points.wrap(state.points, state.canvas);
+    var m = state.moved;
+    m.points = points.move(state.points, m.x, m.y, m.w, m.h, state.canvas);
+};
+ 
+var loop = function () {
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
+    requestAnimationFrame(loop);
+    if (t >= 1000 / state.FPS) {
+        update(state, secs);
+        var m = state.moved;
+        draw.background(ctx, canvas);
+        draw.points(ctx, state.points, ' green ', 6);
+        draw.lowAndHigh(ctx, state.points);
+        draw.box(ctx, m.x, m.y, m.w, m.h, ' rgba(0, 0, 255, 0.4)')
+        draw.points(ctx, m.points, ' blue ', 3);
+        draw.lowAndHigh(ctx, m.points);
+        state.lt = now;
+    }
+ 
+};
+ 
+loop();
+```
+```html
+<html>
+    <head>
+        <title>js min max canvas app</title>
+    </head>
+    <body>
+        <div id="canvas-min-max"></div>
+        <script src="points.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+
+## 7 - Conclusion
 
 So the Math.min and Math.max methods re nice little methods for getting the lowest and highest value of two or more numbers. They have to be given via arguments when calling it, but apply can be sued as a way to just go ahead and use an array of numbers. There are all kinds of other values that come to mind that can then be obtained when you have both the lowest and highest numbers such as a range, or a mean.
