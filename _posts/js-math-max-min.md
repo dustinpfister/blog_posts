@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 08:55:52
-version: 1.12
+updated: 2020-07-19 09:06:46
+version: 1.13
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -45,16 +45,20 @@ So there are many things than can be done with a set of numbers of course. Howev
 
 ### 3.1 - Get the range of a set of numbers
 
-So making a get range method with Math min, and Math max would involve just using the methods along with function apply to get the min and max numbers of a set of numbers. Then I just need to have the function return the max number less the min number.
+So making a get range method with Math min, and Math max would involve just using the methods along with function apply to get the min and max numbers of a set of numbers. Then I just need to have the function return the max number less the min number. The returned result of the method would then be the range.
 
 ```js
 // range
-var getRange = function(nums){
+var getRange = function (nums) {
     var min = Math.min.apply(null, nums),
     max = Math.max.apply(null, nums);
     return max - min;
 };
+var arr = [-5, 10, 8, 3, 0];
+console.log(getRange(arr)); // 15
 ```
+
+Getting the range of a set of numbers if often just one step in getting some other value. For example say that I want an array of numbers between the range of 320, based off of values of an array of numbers that are of a lower or higher range. I can use the range to loop over the source array of numbers and divide each value by the range of the source array, then multiply by 320 to get those values.
 
 ## 3.2 - Median, sum, and mean
 
