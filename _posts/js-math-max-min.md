@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-01-26 07:39:01
-version: 1.10
+updated: 2020-07-19 08:51:22
+version: 1.11
 ---
 
-In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the apply function prototype method.
+In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
 
-The Math min and max methods can help save me from having to loop over the contents of an array to do so. The task of doing this does come up now and then when working out solutions for certain things that require the lowest and highest numbers in a collection of numbers. So lets take a look at some some examples, and a few additional use case examples of Math min and max.
+The Math min and max methods can help save me from having to loop over the contents of an array to find the lowest or highest number in a array of numbers. The task of doing this does come up now and then when working out solutions for certain things that require the lowest and highest numbers in a collection of numbers. So lets take a look at some some examples, and a few additional use case examples of Math min and max.
 
 <!-- more -->
 
