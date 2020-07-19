@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 09:06:46
-version: 1.13
+updated: 2020-07-19 09:36:58
+version: 1.14
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -62,7 +62,7 @@ Getting the range of a set of numbers if often just one step in getting some oth
 
 ## 3.2 - Median, sum, and mean
 
-So the range of a set of numbers is often just one value of interest along with a bunc of other typical values such as mean, median, and sum.
+So the range of a set of numbers is often just one value of interest along with a bunch of other typical values such as mean, median, and sum. There is having just one of these methods in a stand alone state of sorts, and then there is making what might be the beginnings of a utility library of sorts. For now lets just start out with some stand alone methods for all of these. I can then have a single method that will return an object that will give me everything there is that I would want with an array of numbers ore or less when it comes to just these few things at least.
 
 ```js
 // median
@@ -109,6 +109,10 @@ console.log(e.range); // 6
 console.log(e.sum); // 14
 console.log(e.mean); // 3.5
 ```
+
+There is more than one way to go about making a sum method, in this example I used a while loop to just loop over and add up the numbers. Other solutions might involve the use of the array reduce method, however getting into that might be off topic here. The thing about this is that I have a method that will give me all the basics when it comes to things of interest with a set of numbers, but not everything. 
+
+One additional thing is to have a normalized set of numbers for the array of numbers, so lets look at an example of that. In addition it might be nice to get into some actual examples that make use of all of this to do something interesting, so lets start getting into the good stuff with this.
 
 
 ## 4 - Number normalization example of Math.min and Math.max
