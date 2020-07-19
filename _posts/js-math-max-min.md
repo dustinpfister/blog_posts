@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 15:30:02
-version: 1.22
+updated: 2020-07-19 15:32:10
+version: 1.23
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -283,7 +283,7 @@ var points = (function () {
 
 ### 6.2 - The draw.js module for drawing to a canvas element
 
-So as with any of my canvas examples I made a draw.js module that will contain the draw methods that will be used to serve as a view for the model in this case an arraty of points created with the points module.
+So as with any of my canvas examples I made a draw.js module that will contain the draw methods that will be used to serve as a view for the model in this case an array of points created with the points module. With that said there is a draw method that will draw the current state of an array of points to a drawing context, but also many others that draw the background as well as the high and low points of a points array.
 
 ```js
 var draw = {};
