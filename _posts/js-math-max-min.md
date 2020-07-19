@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 08:51:22
-version: 1.11
+updated: 2020-07-19 08:55:52
+version: 1.12
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -109,7 +109,9 @@ console.log(e.mean); // 3.5
 
 ## 4 - Number normalization example of Math.min and Math.max
 
-One use case example of Math.min and Math.max might be to make a method that is used to normalize numbers relative to a range between the min and max number. This sort of thing is often used as a way to normalize points for example so they can then easy be scaled upwards.
+One use case example of Math.min and Math.max might be to make a method that is used to normalize numbers relative to a range between the min and max number. This sort of thing is often used as a way to normalize points for example so they can then easy be scaled up by just multiplying the normalized value by a scale.
+
+This can be done by using the Math.min method to get the lowest number, then Math.Max to get the highest, and with that the range of course. Once I have the range I can then use the array map method to map over the array of numbers and create and return a new array where each value is divided over the range.
 
 ```js
 var normalizeNums = function (nums) {
