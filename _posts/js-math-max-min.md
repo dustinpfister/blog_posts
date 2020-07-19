@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 15:24:24
-version: 1.20
+updated: 2020-07-19 15:26:56
+version: 1.21
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -406,6 +406,8 @@ Now for just a little html to tie everything together with this.
     </body>
 </html>
 ```
+
+So when this canvas example is up and running it will result in a bunch of points moving around the canvas that will wrap back ground when the go out of bounds. On top of that I am also drawing points to the canvas that are the lowest x and y positions as well as the highest.
 
 
 ## 7 - Conclusion
