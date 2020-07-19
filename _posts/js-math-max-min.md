@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 09:36:58
-version: 1.14
+updated: 2020-07-19 09:40:20
+version: 1.15
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -135,3 +135,7 @@ var nums = [-37, 5, 42, 30, 43, 120, -40, 160];
 console.log( normalizeNums(nums) );
 // [ -0.185, 0.025, 0.21, 0.15, 0.215, 0.6, -0.2, 0.8 ]
 ```
+
+## 5 - Conclusion
+
+So the Math.min and Math.max methods re nice little methods for getting the lowest and highest value of two or more numbers. They have to be given via arguments when calling it, but apply can be sued as a way to just go ahead and use an array of numbers. There are all kinds of other values that come to mind that can then be obtained when you have both the lowest and highest numbers such as a range, or a mean.
