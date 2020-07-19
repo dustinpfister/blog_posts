@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 15:32:10
-version: 1.23
+updated: 2020-07-19 15:37:22
+version: 1.24
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -330,6 +330,9 @@ draw.points = function (ctx, p, fill, radius) {
 
 Now I just need a main.js file that will create and inject a canvas element into the html, and make use of the points.js module and draw.js file above.
 
+Here in the main.js file I have a state object that contains an array of points created with the generate method of the points.js module. The update method will move the points by way of there current heading and pixels per second values. The seconds value must be passed to it with the state object.
+
+There is also a main app loop method where I am calling the update method, as well as all the draw methods that I want to use to redner the current state of the state object.
 
 ```js
 // get canvas can 2d context
