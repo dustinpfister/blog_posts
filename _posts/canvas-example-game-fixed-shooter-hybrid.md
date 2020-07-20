@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2020-07-20 08:57:03
-version: 1.3
+updated: 2020-07-20 09:01:39
+version: 1.4
 ---
 
 This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_(video_game)). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
@@ -58,7 +58,9 @@ utils.getCanvasRelative = function (e) {
 
 As I continuing working on this example, which I might at some point in the future, this library will grow with additional methods like this. So in other words this is a kind of application specific lodash of sorts where I am just adding methods that I am actually going to use in one or more other modules.
 
-## 2 - The game.js file
+## 2 - The game.js file to create and update a state object
+
+So in this section I will be going over the game.js file for this canvas example of a fixed hybrid type game. This module can be used to create and return a state object that is used outside of the module that contains properties that have to do with the areas for enemies and the player, as well as the player object and pools of display objects for shots and enemies.
 
 ```js
 var game = (function () {
@@ -277,6 +279,8 @@ var game = (function () {
 
 ## 3 - The draw.js module
 
+So then of course I have my draw module that will render to a canvas element.
+
 ```js
 var draw = (function () {
  
@@ -356,6 +360,8 @@ var draw = (function () {
 ```
 
 ## 4 - Main.js, and index.html
+
+Now for the current state of the main.js file for this canvas example. Here I am creating and injecting the canvas element as well as the state object created with he create method of the game module.
 
 ```js
 var container = document.getElementById('canvas-app'),
