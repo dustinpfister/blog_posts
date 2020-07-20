@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2020-07-20 09:03:44
-version: 1.5
+updated: 2020-07-20 09:07:46
+version: 1.6
 ---
 
 This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_(video_game)). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
@@ -501,3 +501,5 @@ canvas.addEventListener('touchend', pointEnd);
 ## 5 - Conclusion
 
 So this canvas example is showing some potential when it comes to making a project that might actually be a little fun and interesting. That is not saying much though because I have a lot of other canvas examples like this one that i would also like to put a little more time into also.
+
+I all ready have some plans for additional versions of this canvas example, I might expand when it comes to making a general unit class for the project. It would be nice for there to be different types of units when it comes to enemies, for the speed and hit point values for the enemies to go up and so forth. I never get around to graphics with many of these projects and that is something that I would also like to change at some point, if not with this project one of theme. However there is always so many ides for projects and so little time.
