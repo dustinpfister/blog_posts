@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2020-07-20 09:14:37
-version: 1.8
+updated: 2020-07-20 10:14:02
+version: 1.9
 ---
 
 This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_(video_game)). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
@@ -63,6 +63,8 @@ As I continuing working on this example, which I might at some point in the futu
 So in this section I will be going over the game.js file for this canvas example of a fixed hybrid type game. This module can be used to create and return a state object that is used outside of the module that contains properties that have to do with the areas for enemies and the player, as well as the player object and pools of display objects for shots and enemies.
 
 Theer are methods for creating display object pools for both an array of enemies, as well as an array of shots that the player auto fires upward. I followed a standard where there is an active flag for each object, and that is used as a way to spawn and destroy from the game board. I sometimes go with this kind of approach with that rather than pushing and purging display objects from a pool.
+
+For now I went with an auto fire feature for this game that I might keep in place as I continue to developed this one more when and if I get around to it. I could make it so that there are ways to fire by pressing a button or preforming some kind of action when it comes to working out how I go about handing input here. However chances are this is the kind of game where I would want to just keep firing over and over again anyway.
 
 ```js
 var game = (function () {
