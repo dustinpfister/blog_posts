@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2020-07-20 10:19:16
-version: 1.10
+updated: 2020-07-20 10:21:43
+version: 1.11
 ---
 
 This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_(video_game)). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
@@ -287,7 +287,7 @@ I do not want to get into to much detail about the module here as I might get ar
 
 ## 3 - The draw.js module
 
-So then of course I have my draw module that will render to a canvas element.
+So then of course I have my draw module that will render to a canvas element. There are methods for just drawing a plain background as well as many methods for drawing certain aspects of the game state object. This way I can control the order in which certin things are drawn when drawing to the canvas element.
 
 ```js
 var draw = (function () {
