@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2020-07-20 10:14:02
-version: 1.9
+updated: 2020-07-20 10:19:16
+version: 1.10
 ---
 
 This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_(video_game)). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
@@ -280,6 +280,8 @@ var game = (function () {
 }
     ());
 ```
+
+The get inactive helper method was designed in a way so that it will work with any pool object in general. I did start a unit module when starting this example, but I did not get far with it this time. When it get around to it much of the code here would be pulled from the game.js file into this unit module of sorts, but as of this writing I did not get around to that.
 
 I do not want to get into to much detail about the module here as I might get around to chaining a lot of things, and then I would just have to write everything all over again about it when I do so with this one. In any case moving forward this will be the main module for creating an updating a main game state object, it all ready contains properties like how many enemies the player killed and so forth, so in the future it might contain values like level, and current weapon type when and if I get into a more interesting version of this project.
 
