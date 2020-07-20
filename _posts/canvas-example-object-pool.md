@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-07-20 18:53:04
-version: 1.4
+updated: 2020-07-20 18:54:25
+version: 1.5
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on object pools. An object pool is what I have come to call a collection of display object when making a canvas project that calls for them. So these objects will often contain properties like x and y for the current position as well as width, and height as one might expected. Depending on the nature of the canvas project they will often have additional properties like heading, pixels per second, max hit points, damage, and so forth. However than main point of this canvas example is just to show one way of how to go about creating a collection of these kinds of objects.
@@ -120,4 +120,92 @@ var Pool = (function () {
  
 }
     ());
+```
+
+## 2 - The draw.js module
+
+```js
+var draw = {};
+ 
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+draw.pool = function (ctx, state) {
+    var i = state.pool.length,
+    bx;
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    while (i--) {
+        bx = state.pool[i];
+        if (bx.active) {
+            ctx.save();
+            ctx.fillStyle = bx.fill;
+            ctx.globalAlpha = bx.alpha;
+            ctx.translate(bx.x, bx.y);
+            ctx.rotate(bx.heading);
+            ctx.beginPath();
+            ctx.rect(bx.w / 2 * -1, bx.h / 2 * -1, bx.w, bx.h);
+            ctx.fill();
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
+};
+ 
+draw.info = function (ctx, state) {
+    ctx.font = '10px couriter';
+    ctx.fillStyle = 'white';
+    ctx.fillText('v' + state.ver, 5, 15);
+};
+```
+
+## 3 - Main.js
+
+```js
+
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+container.appendChild(canvas);
+ 
+// create a state with pool
+var state = Pool.create();
+ 
+// LOOP
+var lt = new Date();
+var loop = function () {
+ 
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
+ 
+    requestAnimationFrame(loop);
+    draw.back(ctx, canvas);
+    draw.pool(ctx, state);
+    draw.info(ctx, state);
+    Pool.update(state, secs);
+ 
+    lt = now;
+ 
+};
+loop();
+```
+
+```html
+<html>
+    <head>
+        <title>canvas example object pool</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script src="pool.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
