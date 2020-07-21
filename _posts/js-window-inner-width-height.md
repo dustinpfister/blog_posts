@@ -5,16 +5,18 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2020-07-21 16:42:46
-version: 1.0
+updated: 2020-07-21 16:47:14
+version: 1.1
 ---
 
 For todays post I tough I would take a break from working on some intense stuff to just writing about a not so intense subject that is the [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object.
-These properties are used to get the inner width and height of the browser window.
+These properties are used to get the inner width and height of the browser window. This information can then be used as a way to center and position elements using javaScript code, and the style API.
 
 <!-- more -->
 
 ## 1 - Basic
+
+The basic idea here is that the window.innerWidth, and window.innerHeight properties will always give the inner width and height of the browser window. So I can attach an on resize event to the window object, and then update the info about the current status of this each time the window resizes.
 
 ```html
 <html>
@@ -36,6 +38,8 @@ window.addEventListener('resize', function(e){
     </body>
 </html>
 ```
+
+So that is the basic idea of inner width and height, but now the question is what it is that one would do with that information. There are also a number of other properties that a client side javaScript developer should be aware of that also come in handy when working with properties like this. So lets look at least a few examples of using the window inner width and height properties.
 
 ## 2 - Center
 
