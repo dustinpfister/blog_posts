@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2020-07-21 16:49:51
-version: 1.2
+updated: 2020-07-21 16:53:27
+version: 1.3
 ---
 
 For todays post I tough I would take a break from working on some intense stuff to just writing about a not so intense subject that is the [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object.
@@ -74,6 +74,8 @@ window.addEventListener('resize', function(e){
 ## 3 - toggle full
 
 In this section I will be writing about a quick little toggle full screen example. It is not really full screen mind you, but it is making it so the element ends up being the whole size of the window, and then back again.
+
+This is like the center element example I just went over before, but now I am adding a toggle full method that will toggle a boolean value. If the boolean value is true then the inner width and height will be used to set the width and height of an element. If the boolean is false then the width and height of the element will be set to some hard coded values that are a kind of standard size for the element. I then have an event handler attached to the element so that when the element is clieck then the element will be toggled to full screen and back.
 
 ```html
 <html>
