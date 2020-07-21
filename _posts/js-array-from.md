@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2020-07-21 12:51:12
-version: 1.7
+updated: 2020-07-21 13:18:03
+version: 1.8
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. There is of course the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. There are of course other options here and there without having to write some sort of method by hand. For example in the string prototype there is the split prototype method that more often then not works great for creating an array from a string.
@@ -17,7 +17,7 @@ So in this post I will be looking at the array from static method as well as a n
 
 ## 1 - Array from basic example
 
-The array from static method can be called off of the Array global, and then an array like object can be passed as the first argument. As long as the object is formated like an array it should work okay and what will be returned is an array with all the prototype methods of an array like array map. 
+The array from static method can be called off of the Array global, and then an array like object can be passed as the first argument. As long as the object is formated like an array it should work okay, and what will be returned is an array with all the prototype methods of an array like the array map method. 
 
 ```js
 var arr = Array.from({
@@ -36,6 +36,25 @@ console.log( str );
 ```
 
 There are some draw backs with this though so lets look at some additional options for creating an array from something other than an array.
+
+### 1.1 - Additional arguments for Array.from
+
+There are two additional arguments that can be passed to the array from method. One of which is a map method that will be called for each element in the new array, and the other is to set the value of the this keyword in the map method.
+
+```js
+var obj = {
+    0: 2,
+    1: 4,
+    2: 6,
+    length: 3
+};
+var mapper = function (el, key) {
+    return key + '_' + el + '_' + this.x;
+};
+var arr = Array.from(obj, mapper, {x: 42});
+console.log(arr);
+// [ '0_2_42', '1_4_42', '2_6_42' ]
+```
 
 ## 2 - creating an array from and object of named key value pairs with Object value
 
