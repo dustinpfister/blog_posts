@@ -1,12 +1,12 @@
 ---
-title: the js to string method in objects, and setting what the string value should be for an object
+title: The js to string method in objects, and setting what the string value should be for an object
 date: 2020-07-14 14:59:00
 tags: [js]
 layout: post
 categories: js
 id: 682
-updated: 2020-07-15 12:25:39
-version: 1.8
+updated: 2020-07-21 17:36:19
+version: 1.9
 ---
 
 In javaScript there is a standard way for creating a method for an object that will return the string value for an object. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the value of method that is a way to set what the number primitive value for an object should be.
