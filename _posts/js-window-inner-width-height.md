@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2020-07-21 16:57:15
-version: 1.4
+updated: 2020-07-21 17:01:04
+version: 1.5
 ---
 
 For todays post I tough I would take a break from working on some intense stuff to just writing about a not so intense subject that is the [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object.
@@ -43,7 +43,7 @@ So that is the basic idea of inner width and height, but now the question is wha
 
 ## 2 - Center and element width window inner width and height
 
-So one thing that can be done with this info is to use it to center a fixed position element.
+So one thing that can be done with this info is to use it to center a fixed position element. The left and top css values of an element can be changes with javaScript code via the style API. However first I need to know the values to set for the position of the element. The inner width and height properties can be used to find the center of the browser window by just dividing the values by two. Then on top of that I need to subtract half of the width and height of the element that I want to center. To get the width and height of an element there is the scroll width and scroll height properties of an element reference object that will do nicely.
 
 ```html
 <html>
