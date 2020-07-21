@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-07-20 19:03:55
-version: 1.8
+updated: 2020-07-21 09:15:21
+version: 1.9
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on object pools. An object pool is what I have come to call a collection of display object when making a canvas project that calls for them. So these objects will often contain properties like x and y for the current position as well as width, and height as one might expected. Depending on the nature of the canvas project they will often have additional properties like heading, pixels per second, max hit points, damage, and so forth. However than main point of this canvas example is just to show one way of how to go about creating a collection of these kinds of objects.
@@ -20,7 +20,7 @@ There is creating a collection pool as just an empty array, and then have code t
 
 ## 1 - The pool.jd file
 
-So the main event of this post is then the pool.js file that I have work out here. In this module I have juts two methods that I have made public, one to create a pool, and the other to update the pool.
+So the main event of this post is then the pool.js file that I have work out here. In this module I have just two public methods, one to create a pool, and the other to update the pool. In more complex projects I might need some additional methods when it comes to working with two or more pools of objects, and how they interact with each other, or I might be able to just work that out via arguments.
 
 ```js
 var Pool = (function () {
