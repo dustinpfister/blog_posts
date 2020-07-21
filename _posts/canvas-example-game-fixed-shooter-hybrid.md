@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2020-07-20 10:21:43
-version: 1.11
+updated: 2020-07-21 10:05:23
+version: 1.12
 ---
 
 This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_(video_game)). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
@@ -287,7 +287,7 @@ I do not want to get into to much detail about the module here as I might get ar
 
 ## 3 - The draw.js module
 
-So then of course I have my draw module that will render to a canvas element. There are methods for just drawing a plain background as well as many methods for drawing certain aspects of the game state object. This way I can control the order in which certin things are drawn when drawing to the canvas element.
+So then of course I have my draw module that will render to a canvas element. There are methods for just drawing a plain background as well as many methods for drawing certain aspects of the game state object. This way I can control the order in which cretin things are drawn when drawing to the canvas element.
 
 ```js
 var draw = (function () {
@@ -491,6 +491,8 @@ canvas.addEventListener('touchmove', pointMove);
 canvas.addEventListener('touchend', pointEnd);
 ```
 
+So now I have just a little html that will make use of all of these modules and stand alone code in several files when I use it in development form.
+
 ```html
 <html>
     <head>
@@ -505,6 +507,10 @@ canvas.addEventListener('touchend', pointEnd);
     </body>
 </html>
 ```
+
+So when this canvas example is up and running I have the basic idea of the shooter type games like I wanted. I can more the player object around and shot objects move from the player object up to the top of the board. When a shot hits an enemy object it is killed, and I have a kiil count that show how many enemy objects I killed so far.
+
+So it is not much of anything to exciting from an end users perspective, but I just wanted the basic idea of the game working so far, and that is what this is. The question now is what more to I add from here when it comes to making the game a little more fun, and unique. There is a lot that comes to mind with this, and at some point in the future maybe I will get around to expaning this more.
 
 ## 5 - Conclusion
 
