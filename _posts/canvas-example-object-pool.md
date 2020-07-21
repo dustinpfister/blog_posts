@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-07-21 09:47:34
-version: 1.12
+updated: 2020-07-21 09:52:59
+version: 1.13
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on object pools. An object pool is what I have come to call a collection of display object when making a canvas project that calls for them. So these objects will often contain properties like x and y for the current position as well as width, and height as one might expected. Depending on the nature of the canvas project they will often have additional properties like heading, pixels per second, max hit points, damage, and so forth. However than main point of this canvas example is just to show one way of how to go about creating a collection of these kinds of objects.
@@ -229,3 +229,9 @@ loop();
     </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+This post was yet another exercise of creating something that I find myself creating over and over again each time I make another canvas example. Just about any game or animation type thing will involve creating at least one if not more pools of display objects that are used for rendering enemy object sprites, power ups, or anything else to that effect.
+
+I wanted to go in a different direction with this example, but I did not quite get around to it. I might get around to putting a little more time into this one when I get some more time though. I would like to make it so that there is more than one pool and they interact with each other.
