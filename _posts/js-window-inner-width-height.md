@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2020-07-21 16:53:27
-version: 1.3
+updated: 2020-07-21 16:57:15
+version: 1.4
 ---
 
 For todays post I tough I would take a break from working on some intense stuff to just writing about a not so intense subject that is the [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object.
@@ -120,3 +120,8 @@ state.div.addEventListener('click', function(e){
     </body>
 </html>
 ```
+
+
+## 4 - Conclusion
+
+So I like to make posts on simple examples like this now and then, it is a nice break from working on something that takes house or even days to get working. Regardless I have come to find that sometimes simple things like this are not always so simple. I also can not say that using window.innerWidth and height are the best ways to go about centering elements, and toggling to full screen or not. I find myself preferring html only solutions for things like this if I can find them actually.
