@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2020-07-21 16:47:14
-version: 1.1
+updated: 2020-07-21 16:49:51
+version: 1.2
 ---
 
 For todays post I tough I would take a break from working on some intense stuff to just writing about a not so intense subject that is the [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object.
@@ -41,7 +41,9 @@ window.addEventListener('resize', function(e){
 
 So that is the basic idea of inner width and height, but now the question is what it is that one would do with that information. There are also a number of other properties that a client side javaScript developer should be aware of that also come in handy when working with properties like this. So lets look at least a few examples of using the window inner width and height properties.
 
-## 2 - Center
+## 2 - Center and element width window inner width and height
+
+So one thing that can be done with this info is to use it to center a fixed position element.
 
 ```html
 <html>
@@ -70,6 +72,8 @@ window.addEventListener('resize', function(e){
 ```
 
 ## 3 - toggle full
+
+In this section I will be writing about a quick little toggle full screen example. It is not really full screen mind you, but it is making it so the element ends up being the whole size of the window, and then back again.
 
 ```html
 <html>
