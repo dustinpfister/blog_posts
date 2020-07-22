@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-22 15:55:21
-version: 1.3
+updated: 2020-07-22 15:58:30
+version: 1.4
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -22,6 +22,8 @@ So I have wrote a [getting with canvas post](/2017/05/17/canvas-getting-started/
 Once you have a reference to a canvas element, you can then use the getContext method of the canvas element to get a reference to the 2d drawing context of the canvas element. With this context API it is then possible to now draw to the canvas with a whole much of drawing methods, and properties.
 
 ### 1.1 - A simple copy and past black screen canvas example
+
+So in this section I will be going over a very simple canvas example that you can copy and past into the javaScript console right now. Just press ctrl+shift+j if you are using chrome, then copy and past the below canvas example into the javaScript console and press return. The result should be a blank canvas element in the upper left corner of the browser window.
 
 ```js
 (function () {
