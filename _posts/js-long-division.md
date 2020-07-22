@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 608
-updated: 2020-07-22 15:23:05
-version: 1.12
+updated: 2020-07-22 15:26:43
+version: 1.13
 ---
 
-[Long division](https://en.wikipedia.org/wiki/Long_division) is one of those things that as an adult I might forget how to do, but of course it is not so hard to get back up to speed with again by just sting down and doing it again it is elementary school level math after all. However often coming up with a javaScript solution to replicate the process of long division is not so elementary. Solutions for doing so can often work okay, but might not work out as well as I might like.
+So then [Long division](https://en.wikipedia.org/wiki/Long_division) is one of those things that as an adult I might end up forgetting how to do, as it is something that I can not say I do on a regular basis. However of course it is not so hard to get back up to speed with again by just finding a decent source on how to do it, and reeducate myself on how to do it. Long division is elementary school level math after all, so it should not be to hard to get back up to speed with again. However often coming up with a javaScript solution to replicate the process of long division is not so elementary. Solutions for doing so can often work okay, but might not work out as well as I might like.
 
 The main reason why I might take the time to look into solutions for long division is because I am working on some kind of project where I am running into problems with respect to the limits of javaScript numbers. Thankfully [there is now native BigInt support](/2019/09/06/js-bigint/) in core javaScript by itself, and there is also the Big-Integer user space library that can be used as a poly fill for that. So in most cases I would want to just make use of that and move on with my project in that case. However when it comes to becoming a better programmer just copying and pasting code without taking the time to look into it deeper does not help with that does it.
 
