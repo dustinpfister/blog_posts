@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2020-02-04 19:01:54
-version: 1.63
+updated: 2020-07-22 07:22:30
+version: 1.64
 ---
 
-You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative when it comes to the number index values of arrays. However it is more like just a potential for that, as all the elements could be empty elements.
+You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
 
-So then because in some cases array length is just an object property that does not even reflect the highest indexed object key of the array, because there is nothing there actually. Then in a way it is just a way of declaring an element size of sorts, but many of those elements can be undefined, the default value for an object key that is not there.
+So then because in some cases array length is just an object property that does not even reflect the highest indexed object key of the array, because there is nothing there actually in some situations. Then in a way it is just a way of declaring an element size of sorts, but many of those elements can be undefined, the default value for an object key that is not there.
 
 The length differs from the size of an array which may refer to the amount of data that an array might take up in memory. There is also what if often called the count of an array that refers to the number of actual declared elements in the array, and that array count might differ in many respects depending on how you go about counting elements in the first place.
 
