@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-22 16:44:40
-version: 1.9
+updated: 2020-07-22 16:46:57
+version: 1.10
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -130,3 +130,5 @@ In this example I now have a state object and a few methods that will update tha
 </body>
 </html>
 ```
+
+The example also has a main app loop method that makes use of the request animation frame method as a way to make such an app loop. In this app loop I am updating the model, and then drawing the model to the canvas element.
