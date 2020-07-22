@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-22 16:51:34
-version: 1.12
+updated: 2020-07-22 16:56:02
+version: 1.13
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -134,3 +134,5 @@ In this example I now have a state object and a few methods that will update tha
 In the have a draw method that will be used to draw the current state of this state object to the canvas. In real projects this draw method will often become a draw module of sorts with many draw methods for drawing all kinds of aspects of a far more advanced module that is more than just a circle moving around in a circle.
 
 The example also has a main app loop method that makes use of the request animation frame method as a way to make such an app loop. In this app loop I am updating the model, and then drawing the model to the canvas element.
+
+So We have went over many of the basic here then when it comes to working with canvas elements. There is creating and injecting a canvas. There is creating a state object of some kind, and then having methods that are used to update that state. There is having a method to draw that state to the canvas element, and then there is having a main app loop. I still did not cover everything when it comes to the basic of canvas just yet though. There is of course adding events to have a way to make it so that canvas responds to user input of course, and there is a whole world of drawing methods other that fill rect, and the various methods I used to draw the circle. However maybe that is good for a getting started with canvas section in this post at least.
