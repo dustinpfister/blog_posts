@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2020-07-22 07:06:49
-version: 1.16
+updated: 2020-07-22 07:10:49
+version: 1.17
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. The typeof operator might not always give the desired results, in many some cases. So there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with when it comes to all the various kinds of values, classes, and so forth in javaScript.
@@ -15,7 +15,7 @@ The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 
 ## 1 - javaScript typeof lowdown
 
-The typeof operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so to use it I just need to type the typeof operator followed by what it is that I want to find the type of. For the most part the typeof operator is fairly straight forward to use but it has a few quirks, so lets get into it by starting off with a basic example of javaScript typeof.
+The typeof operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so to use it I just need to type the typeof operator followed by what it is that I want to find the type of. the result of the expression of the typeof operator with the value I want the type of to the right of typeof will then evaluate to a string, and the string more often then not will be the type of the value. For the most part the typeof operator is fairly straight forward to use but it has a few quirks, so lets get into it by starting off with a basic example of javaScript typeof.
 
 ```js
 let ty = typeof 42;
