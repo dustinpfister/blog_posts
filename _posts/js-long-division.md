@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 608
-updated: 2020-02-14 10:33:46
-version: 1.11
+updated: 2020-07-22 15:23:05
+version: 1.12
 ---
 
 [Long division](https://en.wikipedia.org/wiki/Long_division) is one of those things that as an adult I might forget how to do, but of course it is not so hard to get back up to speed with again by just sting down and doing it again it is elementary school level math after all. However often coming up with a javaScript solution to replicate the process of long division is not so elementary. Solutions for doing so can often work okay, but might not work out as well as I might like.
@@ -124,4 +124,4 @@ This is of course just a small section of the dependency where the division is g
 
 ## 3 - Conclusion
 
-So there is a simple copy and past solution for something and then there is a far more complex solution for something. Some times a solution is for more complex then it needs to be. However some times a far more complex solution is what is called for. This is a subject that I find myself coming back to now and then, because part of me would like to make my pwn solution for doing this, just for the hell of it. However there is only so many hours in the day, and there are so many other things that I would like to focus on.
+So there is a simple copy and past solution for something and then there is a far more complex solution for something. Some times a solution is for more complex then it needs to be. However some times a far more complex solution is what is called for. This is a subject that I find myself coming back to now and then, because part of me would like to make my own solution for doing this, just for the hell of it. However there is only so many hours in the day, and there are so many other things that I would like to focus on.
