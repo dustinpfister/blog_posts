@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2020-07-22 07:10:49
-version: 1.17
+updated: 2020-07-22 07:14:30
+version: 1.18
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. The typeof operator might not always give the desired results, in many some cases. So there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with when it comes to all the various kinds of values, classes, and so forth in javaScript.
@@ -22,7 +22,7 @@ let ty = typeof 42;
 console.log(ty); // 'number'
 ```
 
-Here the javaScript typeof operator works as expected, I give it a number and it returns the string 'number'. So far the type of operator works the way it should without issue. However things get a little weird when I pass it the null value for example so lets continue.
+Here the javaScript typeof operator works as expected, I give it a number and it returns the string 'number'. So far the type of operator works the way it should without issue. However there are certain values like NaN that stands for Not a Number yet its type if number. Things also get a little weird when I pass it the null value for example so lets continue looking at some more examples here.
 
 ## 2 - no need to call typeof as it is an operator and not a function
 
