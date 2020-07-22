@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 610
-updated: 2020-07-22 15:13:22
-version: 1.10
+updated: 2020-07-22 15:17:27
+version: 1.11
 ---
 
 So then it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements and forms on the client side, and then there is working out server for the back end system of a project or simple example. 
@@ -123,3 +123,7 @@ server.listen(port, () => {
 ```
 
 So then when this example is up and ruining it is serving up the single html file at the root path, and the search path which at this time is just displaying the query in the browser window. Nothing major at this point but the basic idea is all ready there and working it is now just a matter of what I do with that query in the back end system.
+
+## 3 - Conclusion
+
+of course it goes without saying that I have not even scratched the surface of what can be done with javaScript forms, and a little sever side javaScript. When it comes to making a real project there is a whole world more that needs to be covered when it comes to things like sever side sanitation and horizontal scaling just to name a few things that come to mind. Still when it comes to simple projects that are just going to be used off line then just some basic work with input elements and a little javaScript is enough to get things working at least. In this post I just wanted to cover the basics of javaScript forms, and that is about it.
