@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-22 16:04:26
-version: 1.5
+updated: 2020-07-22 16:36:01
+version: 1.6
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -54,3 +54,75 @@ So in this section I will be going over a very simple canvas example that you ca
 ```
 
 So there you have a very basic canvas example that just involves creating an injecting a canvas element into a web page. I just created an canvas element, appending it to the body element, set the width and height, set fixed positioning for it via the style API. I then usd the fill style property, and the fill rect method to draw a black rectangle from the upper left corner of the canvas to its with and height to just make a blank black canvas.
+
+### 1.2 - A Still kindof Simple html copy and pase example of a canvas animation
+
+So now for something just a little more involved then the blank canvas example. Here I have a canvas example that does a little more then just create and inject a blank black canvas element, it is a simple animation of a circle moving around in a circle like pattern. I know it is not the most interesting of canvas examples, but this is the getting started section of my main canvas post so I just need to get this one out of the way here. Also in the process of going over it I will also be touching base on a whole much of little topics that have to do with canvas so maybe reading this is not a waste of time after all.
+
+```html
+<html>
+    <head>
+        <title>Canvas animation example</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script>
+(function () {
+    // create and inject a canvas
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    // append to container
+    container = document.getElementById('canvas-app');
+    container.appendChild(canvas);
+    canvas.width = 320;
+    canvas.height = 240;
+    var state = {
+        lastTick: new Date(),
+        FPS: 1000 / 40,
+        cx: canvas.width / 2,
+        cy: canvas.height / 2,
+        x: 0,
+        y: 0,
+        r1: 100,
+        r2: 16,
+        frameIndex: 0,
+        maxFrames: 50
+    };
+    var set = function (state) {
+        var per = state.frameIndex / state.maxFrames,
+        radian = Math.PI * 2 * per;
+        state.x = state.cx + Math.cos(radian) * state.r1;
+        state.y = state.cy + Math.sin(radian) * state.r1;
+    };
+    var update = function (state) {
+        var now = new Date(),
+        t = now - state.lastTick;
+        if (t >= state.FPS) {
+            state.frameIndex += 1;
+            state.frameIndex %= state.maxFrames;
+            set(state);
+            state.lastTick = now;
+        }
+    };
+    var draw = function (ctx, canvas, state) {
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(state.x, state.y, state.r2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+    };
+    var loop = function () {
+        requestAnimationFrame(loop)
+        update(state)
+        draw(ctx, canvas, state);
+    };
+    loop();
+}
+    ());
+        </script>
+</body>
+</html>
+```
