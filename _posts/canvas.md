@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-22 16:39:11
-version: 1.7
+updated: 2020-07-22 16:41:27
+version: 1.8
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -59,7 +59,7 @@ So there you have a very basic canvas example that just involves creating an inj
 
 So now for something just a little more involved then the blank canvas example. Here I have a canvas example that does a little more then just create and inject a blank black canvas element, it is a simple animation of a circle moving around in a circle like pattern. I know it is not the most interesting of canvas examples, but this is the getting started section of my main canvas post so I just need to get this one out of the way here. Also in the process of going over it I will also be touching base on a whole much of little topics that have to do with canvas so maybe reading this is not a waste of time after all.
 
-Just as before I am creating and injecting a canvas element, but this time I am doing so in a container element rather than that of body. So this is not the kind of example that you can just copy and past into the javaScript console like in the previous example. Now we need to create and open an html file for this one, and this is often how I would go about staring many of my serious canvas examples.
+Just as before I am creating and injecting a canvas element, but this time I am doing so in a container element rather than that of body. So this is not the kind of example that you can just copy and past into the javaScript console like in the previous example. Now we need to create and open an html file for this one, and this is often how I would go about staring many of my serious canvas examples. The container element is a div, that has some inline style that is consistent with what I would do when it comes to making a page embed for one of my canvas example posts. I have some dimension to the div, and I make it so it will center in the page.
 
 ```html
 <html>
