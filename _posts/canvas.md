@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-22 16:48:31
-version: 1.11
+updated: 2020-07-22 16:51:34
+version: 1.12
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -61,7 +61,7 @@ So now for something just a little more involved then the blank canvas example. 
 
 Just as before I am creating and injecting a canvas element, but this time I am doing so in a container element rather than that of body. So this is not the kind of example that you can just copy and past into the javaScript console like in the previous example. Now we need to create and open an html file for this one, and this is often how I would go about staring many of my serious canvas examples. The container element is a div, that has some inline style that is consistent with what I would do when it comes to making a page embed for one of my canvas example posts. I have some dimension to the div, and I make it so it will center in the page.
 
-In this example I now have a state object and a few methods that will update that state object. This is a crude yet effective way of getting into something that is also an important topic of canvas apps, and javaScript apps in general actually. Having some way to separate a module from a view. That is having some kind of object that is intendant of code that is used to render that object to the canvas element. This might not be the best example of this, but I will be getting into this a bit more in this post. In additional I have a septate post in which I write about this topic in greater detail all ready so moving on.
+In this example I now have a state object and a few methods that will update that state object. This is a crude yet effective way of getting into something that is also an important topic of canvas apps, and javaScript apps in general actually. Having some way to separate a module from a view. That is having some kind of object that is intendant of code that is used to render that object to the canvas element. This might not be the best example of this, but I will be getting into this a bit more in this post. In additional [I have a septate post in which I write about this topic of model and view](/2017/08/29/canvas-separation-of-concerns-model-and-view/) in greater detail all ready so moving on.
 
 ```html
 <html>
