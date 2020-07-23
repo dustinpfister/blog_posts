@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-23 11:34:51
-version: 1.41
+updated: 2020-07-23 11:38:08
+version: 1.42
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -19,9 +19,9 @@ The canvas examples I have made range form simple animations, to more complex ga
 
 I have set up a [git repository at my git-hub account for these canvas examples](https://github.com/dustinpfister/canvas-examples) where all of the examples can be cloned down from if you want to quickly clone down the source cone of them to play around with and use locally. Most if not all of them should work okay by just opening up the index.html file of an example via the file:\/\/ protocol when it comes to just using them that way. If you actually want to help improve the source code of some of them I might be will to except helpful changes that improve quality. However this is mostly still my project, and I assume that may of you might wish to spend time working on your own set of canvas examples that might progress into actually games, animations and utility projects.
 
-## 2 - The Canvas Examples
+## 2 - The Canvas Examples list
 
-Now for the list of examples with links to each, and a brief description while I am at it. The list is just in alphabetical order going by the name for now.
+Now for the list of examples with links to each, and a brief description while I am at it. The list is just in alphabetical order going by the name of each canvas example for now. I am not sure if I will get around to breaking these down into smaller categorizes yet, but I might at some point in the future because many of them are just animation type things while others are games that work with user input.
 
 ### 2.1 - [A planet of mine clone](/2020/04/03/canvas-example-a-planet-of-mine-clone/)
 
