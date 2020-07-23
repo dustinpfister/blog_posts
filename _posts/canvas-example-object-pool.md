@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-07-23 14:10:28
-version: 1.17
+updated: 2020-07-23 14:13:05
+version: 1.18
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on [object pools](https://en.wikipedia.org/wiki/Object_pool_pattern). An object pool is what I have come to call a collection of display objects when making a canvas project that calls for them. This object pool is called such because it is a fixed collection of objects that are to be used over and over again, rather that created and destroyed as needed.
@@ -137,6 +137,8 @@ var Pool = (function () {
 }
     ());
 ```
+
+So now that I have my Pool module I will now want some additional javaScript code for drawing the state of a pool to a canvas element, and some additional javaScript that makes use of this module and the daring module. SO lets look at the rendering code that will actually draw to the canvas now.
 
 ## 2 - The draw.js module
 
