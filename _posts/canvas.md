@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-23 09:57:18
-version: 1.22
+updated: 2020-07-23 10:00:14
+version: 1.23
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. So it goes without saying that this [canvas element is worth doing a great deal of research](https://en.wikipedia.org/wiki/Canvas_element) on beyond this post if you have not done all ready. If you have a solid grasp on the element all ready then you might want to do more research now and then how other developers work with the element by looking at there own collection of [canvas examples](/2020/03/23/canvas-example/) to gain a better sense of how to work on all kinds of different projects that make use of canvas elements. 
@@ -156,7 +156,7 @@ There is more to it when it comes to getting a canvas relative position in gener
 ```js
 <html>
     <head>
-        <title>Canvas animation example</title>
+        <title>Canvas input</title>
     </head>
     <body>
         <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
@@ -194,6 +194,7 @@ There is more to it when it comes to getting a canvas relative position in gener
     };
     canvas.addEventListener('mousedown', function(e){
         var pos = getCanvasRelative(e);
+        e.preventDefault();
         state.x = pos.x;
         state.y = pos.y;
         draw(ctx, canvas, state);
