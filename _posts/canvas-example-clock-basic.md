@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-06-06 20:07:57
-version: 1.38
+updated: 2020-07-23 10:09:22
+version: 1.39
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -22,7 +22,7 @@ So lets start out with a very basic canvas clock example that will just be a dig
 
 I will want to have a clock that does display the current time in a certain format so the clock object will have a timeText property that is just simply that. The clock object will also have a day percent property also though that I will be using as another way of expressing the current time. This is one thing that comes to mind as to why getting into clocks with javaScrit and canvas can be fun and interesting, instead of having just a simple digital or analog clock why not have a ring that expresses the percent of the day that is over.
 
-```
+```js
 var clockMod = (function () {
     // pad a value
     var pad = function (a) {
