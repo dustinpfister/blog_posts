@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2020-07-23 12:28:11
-version: 1.2
+updated: 2020-07-23 12:31:26
+version: 1.3
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -38,3 +38,5 @@ document.getElementById('out').addEventListener('mousedown', function(e){
     </body>
 </html>
 ```
+
+When clicking and dragging the mouse over the text you will notice that you can not highlight the text, that is because I called the prevetDefault method of the event object. This methods will stop any kind of default browser behavior for the event such as text highlighting. this can come in handy when making some kind of game that involve user input for example. when someone clicks and drags over a canvas element I do not want any default browser behavior to happen when they do so.
