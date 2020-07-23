@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-08 09:47:29
-version: 1.38
+updated: 2020-07-23 11:22:45
+version: 1.39
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -121,6 +121,10 @@ An input controller concept for canvas projects.
 ### 2.25 - [Map scrolling](/2020/01/08/canvas-example-map-scrolling/)
 
 In this canvas example I worked out a basic example of getting scrolling working with a large grid.
+
+### 2.26 - [object pool](/2020/07/20/canvas-example-object-pool/)
+
+This project is an exercise of having an object pool. That is just simply a set collection of objects that are used over and over again, rather than pushing and splicing out as needed.
 
 ### 2.26 - [binary particles](/2020/03/18/canvas-example-particles-binary/)
 
