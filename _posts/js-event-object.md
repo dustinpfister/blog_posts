@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2020-07-23 13:06:38
-version: 1.4
+updated: 2020-07-23 13:10:47
+version: 1.5
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -44,6 +44,8 @@ When clicking and dragging the mouse over the text you will notice that you can 
 ## 2 - The target property in depth
 
 It might be called for to take a closer look at the target property to really get a better understanding of what the target property is all about. Say you have a whole bunch of nested elements in a container element. For example a grid of div elements position in a grid like pattern in a container element by way of absolute positioning and the style API. Say I want to have an event hander that will fire when an div element in the gird is clicked, I could attach event handers to each of the div elements, or I could just attach one event hander to the main container element because of something know as event bubbling.
+
+Here I have a little example that is that gird of divs that I have mentioned with a single event hander attached to the container div. the event hander will change the background color of a div that is the element that is reference by the target property. So when I click one of the nested divs the event bubbles up o the container element, the event hander fires there, and the target property refers to the element where the event happen not the current element where the hander is attached. For that there is another property of interest called the currentTarget property that in the case would refer to the container element rather than one of the divs in the grid.
 
 ```html
 <html>
