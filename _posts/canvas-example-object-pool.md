@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-07-23 14:05:29
-version: 1.16
+updated: 2020-07-23 14:10:28
+version: 1.17
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on [object pools](https://en.wikipedia.org/wiki/Object_pool_pattern). An object pool is what I have come to call a collection of display objects when making a canvas project that calls for them. This object pool is called such because it is a fixed collection of objects that are to be used over and over again, rather that created and destroyed as needed.
@@ -28,7 +28,7 @@ So the main event of this post is then the pool.js file that I have work out her
 
 So at the top of the module I have my create pool method, that will be made public. For now I am not doing anything that involved with arguments, it just creates a pool of objects in a property of a state object that it returns. I have some additional properties outside of the pool attached to the state object that have to do with spawn rate, and how much time has passed sense the last spawn. So any additional properties outside of the pool that have to do with the pool would also be attached to this main state object for it.
 
-I then also have a spawn method that will not really spawn new objects into the pool, but just activate ones that are not being used from the pool.
+I then also have a spawn method that will not really spawn new objects into the pool of course, but just activates ones that are not being used from the pool. In the event that there is no inactive object available the method will just not activate a new object as it just can not be done because of the fixed nature of the pool. A similar effect could be achieved with the alliterative to an object pool, by setting some kind of limit for spawning. In a project where I must have an additional object added eventually, I could have some kind of backlog count maybe, but that might be a matter for another post.
 
 ```js
 var Pool = (function () {
