@@ -5,13 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-06-12 10:35:08
-version: 1.27
+updated: 2020-07-23 14:34:08
+version: 1.28
 ---
 
-Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well such as drawing apps and the like. 
+Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well such as drawing apps and so forth.
 
-When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid that is to be rendered to the canvas. I would say that it is very much a good idea to keep these things independent from each other by having one module that serves as a way to create and store the state of the grid, and another that is used to draw all of part of this grid to the canvas. The state of the grid can be a state object that has a property that contains cell objects for each cell, tile, gird location, or whatever you call it for each such instance in the grid. Another approach is to just have a width and height for the count of cells, and a cell size value and think of all cell locations in an abstract sense. That is that there are only cell objects for certain locations sort of speak. Either way I would want a way to create some kind of state object, or module for this grid, and a way to render the grid to the canvas as two independent modules.
+When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid that is to be rendered to the canvas. I would say that it is very much a good idea to keep these things independent from each other by having one module that serves as a way to create a grid object, and another that is used to draw all of cells of this grid to a canvas element. So we will want at least three javaScriopt files, or modules if we have everything together as a single package. One module for creating a grid, another module for drawing the grid, and some additional code that will make use of these two other modules.
+
+The state of the grid can be a state object that has a property that contains cell objects for each cell, tile, gird location, or whatever you call it for each such instance in the grid. Another approach is to just have a width and height for the count of cells, and a cell size value and think of all cell locations in an abstract sense. That is that there are only cell objects for certain locations sort of speak. Either way I would want a way to create some kind of state object, or module for this grid, and a way to render the grid to the canvas as two independent modules.
 
 In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
 
