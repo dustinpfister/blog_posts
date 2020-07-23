@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2020-07-23 14:50:25
-version: 1.22
+updated: 2020-07-23 14:53:58
+version: 1.23
 ---
 
 Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_%28video_game%29) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs rather than avoid them actually with a player controlled bucket that moves from one side to another. If one od the bombs is missed then all the bombs on the screen blow up, and you loose a bucket. You keep playing until you loose all you buckets and like many of these classic games the object is all about just getting a hight score.
@@ -525,7 +525,7 @@ draw.debug = function (ctx, state) {
 
 ## 4 - The main.js file and index.html
 
-I have a utils.js, kaboom.js, and draw.js file out of the way so now it is time to pull all this together with a main.js file and some html.
+I have a utils.js, kaboom.js, and draw.js file out of the way so now it is time to pull all this together with a main.js file and some html. In this main.js file I will be creating and injecting the canvas element into the html pages that I will be using. Here in the main.js file I will also be attaching event handlers for the game that will be used to control the player buckets.
 
 ```js
 var canvas = document.createElement('canvas'),
