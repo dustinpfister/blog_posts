@@ -5,11 +5,13 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2020-03-23 09:29:33
-version: 1.31
+updated: 2020-07-23 14:24:02
+version: 1.32
 ---
 
-So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a basic space shooter game. This is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
+So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a basic space shooter game for starters. That is just a simple little game that involves a player ship that moves around and shoots at other player ships. Nothing to interesting maybe, but hey you have to start somewhere.
+
+So then this is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. I did not get around to polishing every little thing about it, but if this post gets enough traction maybe aI will get around to working on this one a little more. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
 
 <!-- more -->
 
