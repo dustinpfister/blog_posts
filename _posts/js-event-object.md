@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2020-07-23 13:10:47
-version: 1.5
+updated: 2020-07-23 15:20:39
+version: 1.6
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -84,3 +84,7 @@ container.addEventListener('mousedown',divClick);
     </body>
 </html>
 ```
+
+## 3 - Conclusion
+
+So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
