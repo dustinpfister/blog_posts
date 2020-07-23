@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-23 09:49:52
-version: 1.21
+updated: 2020-07-23 09:57:18
+version: 1.22
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. So it goes without saying that this [canvas element is worth doing a great deal of research](https://en.wikipedia.org/wiki/Canvas_element) on beyond this post if you have not done all ready. If you have a solid grasp on the element all ready then you might want to do more research now and then how other developers work with the element by looking at there own collection of [canvas examples](/2020/03/23/canvas-example/) to gain a better sense of how to work on all kinds of different projects that make use of canvas elements. 
@@ -206,8 +206,10 @@ There is more to it when it comes to getting a canvas relative position in gener
 </html>
 ```
 
+So mouse events are easy to get up and running with right away, but there is more to pointer events in general when it comes to working out a user interfaces. I have wrote a [canvas example post that has to do with creating an object that serves as a way to pan around a map](/2020/01/26/canvas-example-pointer-movement/) of sorts that might be worth checking out when it comes to gaining a better understand of mouse events, touch events, and input in general. However I think that might be about it for now when it comes to touching base on this topic here when it comes to the basics of user input at least.
+
 ## 3 - Conclusion
 
-So that is just about it for now at least when it comes to writing about canvas in general. There is much more to write about when it comes to canvas of course, but that is all broken down into many other [posts on the canvas element here on my site](https://dustinpfister.github.io/tags/canvas/). I have been puuting a lot of time into this collection of content, so you can rest asure that I will come back to editing this post as my collection of content grows and there is more that comes to mind that I feel is worth mentioning here.
+So that is just about it for now at least when it comes to writing about canvas in general. There is much more to write about when it comes to canvas of course, but that is all broken down into many other [posts on the canvas element here on my site](https://dustinpfister.github.io/tags/canvas/). I have been putting a lot of time into this collection of content, so you can rest asure that I will come back to editing this post as my collection of content grows and there is more that comes to mind that I feel is worth mentioning here.
 
 From here on out if you are new to canvas, or have been fiddling with it for years and are just at a loss for what to do next the best thing to do is to just start working on your own projects. I have wrote a main post on my collection of [canvas examples](/2020/03/23/canvas-example/) that I have been doing an okay job of keeping up to date as I expand my collection of canvas examples. Maybe that would be a good starting point when it comes to gaining some inspiration for project ideas if you do not have many.
