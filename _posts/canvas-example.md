@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-23 11:38:08
-version: 1.42
+updated: 2020-07-23 11:39:56
+version: 1.43
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -22,6 +22,8 @@ I have set up a [git repository at my git-hub account for these canvas examples]
 ## 2 - The Canvas Examples list
 
 Now for the list of examples with links to each, and a brief description while I am at it. The list is just in alphabetical order going by the name of each canvas example for now. I am not sure if I will get around to breaking these down into smaller categorizes yet, but I might at some point in the future because many of them are just animation type things while others are games that work with user input.
+
+As of this writing I am working on making embedded version of each of the canvas example in each page. SOme of them will have them, and others will not. I am sinking a lot of time into this both when it comes to making additional examples and improving the quality of the older ones.
 
 ### 2.1 - [A planet of mine clone](/2020/04/03/canvas-example-a-planet-of-mine-clone/)
 
