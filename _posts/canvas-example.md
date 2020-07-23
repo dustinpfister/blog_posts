@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-23 11:39:56
-version: 1.43
+updated: 2020-07-23 11:43:06
+version: 1.44
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -68,7 +68,7 @@ I thought it would be a good idea to start yet another breakout clone. This is o
 
 ### 2.11 - [A cannon shoot game canvas example](/2020/02/17/canvas-example-game-cannon-shoot/)
 
-There are many games that have came and went ever the years that can be described as a kind of cannon shoot type game.
+There are many games that have came and went ever the years that can be described as a kind of cannon shoot type game. That is some kind of game where you have a way of shooting a display object off from a given starting position, angle, and power, and then see how far t goes from there. This is my first, and as of this writing last effort and making that kind of game from the ground up.
 
 ### 2.12 - [Fixed shooter hybrid](/2020/07/10)
 
