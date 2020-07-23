@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-22 16:56:02
-version: 1.13
+updated: 2020-07-23 09:22:39
+version: 1.14
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -55,7 +55,7 @@ So in this section I will be going over a very simple canvas example that you ca
 
 So there you have a very basic canvas example that just involves creating an injecting a canvas element into a web page. I just created an canvas element, appending it to the body element, set the width and height, set fixed positioning for it via the style API. I then usd the fill style property, and the fill rect method to draw a black rectangle from the upper left corner of the canvas to its with and height to just make a blank black canvas.
 
-### 1.2 - A Still kindof Simple html copy and pase example of a canvas animation
+### 1.2 - A Still somewhat Simple HTML copy and paste example of a canvas animation
 
 So now for something just a little more involved then the blank canvas example. Here I have a canvas example that does a little more then just create and inject a blank black canvas element, it is a simple animation of a circle moving around in a circle like pattern. I know it is not the most interesting of canvas examples, but this is the getting started section of my main canvas post so I just need to get this one out of the way here. Also in the process of going over it I will also be touching base on a whole much of little topics that have to do with canvas so maybe reading this is not a waste of time after all.
 
@@ -136,3 +136,62 @@ In the have a draw method that will be used to draw the current state of this st
 The example also has a main app loop method that makes use of the request animation frame method as a way to make such an app loop. In this app loop I am updating the model, and then drawing the model to the canvas element.
 
 So We have went over many of the basic here then when it comes to working with canvas elements. There is creating and injecting a canvas. There is creating a state object of some kind, and then having methods that are used to update that state. There is having a method to draw that state to the canvas element, and then there is having a main app loop. I still did not cover everything when it comes to the basic of canvas just yet though. There is of course adding events to have a way to make it so that canvas responds to user input of course, and there is a whole world of drawing methods other that fill rect, and the various methods I used to draw the circle. However maybe that is good for a getting started with canvas section in this post at least.
+
+## 2 - User input and canvas
+
+One thing that makes canvas so cool is that it is not just something that can be drawn to with javaScript code. A canvas element just like any other element can have all kinds of event handers attached to it. This allows for user input to be taken into account when working out a canvas project when it comes to pointer device input from a mouse or touch screen, keyboard events, and any other kinds of event that can be attached to a canvas element.
+
+### 2.1 - A simple post event example
+
+```js
+<html>
+    <head>
+        <title>Canvas animation example</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script>
+(function () {
+    // create and inject a canvas
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    // append to container
+    container = document.getElementById('canvas-app');
+    container.appendChild(canvas);
+    canvas.width = 320;
+    canvas.height = 240;
+    var getCanvasRelative = function (e) {
+        var canvas = e.target,
+        bx = canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top,
+            bx: bx
+        };
+    };
+    var state = {
+        x: canvas.width / 2,
+        y: canvas.height / 2
+    };
+    var draw = function (ctx, canvas, state) {
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.fillStyle = 'red';
+        ctx.translate(state.x, state.y);
+        ctx.fillRect(-16, -16, 32, 32);
+        ctx.restore();
+    };
+    canvas.addEventListener('mousedown', function(e){
+        var pos = getCanvasRelative(e);
+        state.x = pos.x;
+        state.y = pos.y;
+        draw(ctx, canvas, state);
+    });
+    draw(ctx, canvas, state);
+}
+    ());
+        </script>
+</body>
+</html>
+```
