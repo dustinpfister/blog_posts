@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-23 09:22:39
-version: 1.14
+updated: 2020-07-23 09:26:32
+version: 1.15
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -141,7 +141,11 @@ So We have went over many of the basic here then when it comes to working with c
 
 One thing that makes canvas so cool is that it is not just something that can be drawn to with javaScript code. A canvas element just like any other element can have all kinds of event handers attached to it. This allows for user input to be taken into account when working out a canvas project when it comes to pointer device input from a mouse or touch screen, keyboard events, and any other kinds of event that can be attached to a canvas element.
 
-### 2.1 - A simple post event example
+I will not be getting into user input and canvas in detail here, as I have wrote a lot of other posts where that was the main focal point of the content. However I think that it is called for to at least go over a basic copy and past example of user input and canvas here, and maybe a bot more then that if I get around to it.
+
+### 2.1 - A simple mouse event example
+
+A good starting point with user input and canvas might be to get int mouse events if working in a desktop operating system environment, and more often then not I assume that is the case.
 
 ```js
 <html>
