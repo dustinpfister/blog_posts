@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2020-07-23 10:09:23
-version: 1.13
+updated: 2020-07-23 14:50:24
+version: 1.14
 ---
 
-This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_\(video_game\)). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
+This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_%28video_game%29). The game is like a fixed shooter type game like that of space invaders or kaboom. However the player is able to move by two axis of movement rather than just one, but only in an area at the bottom of the screen, so the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
 
 <!-- more -->
 
