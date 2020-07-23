@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2020-07-23 15:20:39
-version: 1.6
+updated: 2020-07-23 15:33:30
+version: 1.7
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -85,6 +85,59 @@ container.addEventListener('mousedown',divClick);
 </html>
 ```
 
-## 3 - Conclusion
+## 3 - Netsed elements and the current target property
+
+So there is the target property and then there is the current target property. The target property will be the element where the event happened, and the current target property will be the element where the current event hander is firing. A good way to know the difference would be to play around with something that has to do with a nested collection of elements.
+
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+div{
+  position:relative;
+  background-color:black;
+  outline:1px solid #ffffff;
+  cursor:hand
+}
+#one{
+  width:280px;
+  height:200px;
+}
+#two{
+  width:120px;
+  height:100px;
+}
+#three{
+  width:60px;
+  height:50px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="one">
+            <div id="two">
+                <div id="three">
+                </div>
+            </div>
+        </div>
+        <script>
+var divClick = function(e){
+  var div = e.currentTarget,
+  c = div.style.backgroundColor;
+  div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
+};
+var get = function(id){
+    return document.getElementById(id);
+};
+get('one').addEventListener('mousedown',divClick);
+get('two').addEventListener('mousedown',divClick);
+get('three').addEventListener('mousedown',divClick);
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
