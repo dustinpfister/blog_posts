@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-23 11:43:06
-version: 1.44
+updated: 2020-07-23 11:44:10
+version: 1.45
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -72,7 +72,7 @@ There are many games that have came and went ever the years that can be describe
 
 ### 2.12 - [Fixed shooter hybrid](/2020/07/10)
 
-This is like a fixed axis shooter game only the player is fixed to an area rather than a single axis.
+This is like a fixed axis shooter game only the player is fixed to an area rather than a single axis. One such game that might be similar to this is the classic game centipede.
 
 ### 2.13 - [Flappy collector idle](/2020/01/21/canvas-example-game-flappy-collector-idle/)
 
