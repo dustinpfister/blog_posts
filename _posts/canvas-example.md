@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-23 11:44:10
-version: 1.45
+updated: 2020-07-23 11:47:57
+version: 1.46
 ---
 
 I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -80,7 +80,7 @@ This is a canvas example that aims to be a novel spin on flappy bird. Although i
 
 ### 2.14 - [Flappy collector idle a flappy bird clone](/2020/01/16/canvas-example-game-flappy-collector/)
 
-This is just a flappy bid clone of sorts.
+This is just a flappy bid clone of sorts, I just wanted to take a moment to make my own rendition on this one, and then maybe one or two more based off of it. Many games now are just clever, unique remakes of things that have all ready been done before hand anyway. The idea I have in mind is to start cloning something that has been done before, but then try to find a way to make it my own somehow. However first i do have to start with a clone that is not all that different from the original.
 
 ### 2.15 - [A kaboom clone](/2020/04/10/canvas-example-game-kaboom-clone/)
 
