@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2020-07-23 15:33:30
-version: 1.7
+updated: 2020-07-23 15:38:40
+version: 1.8
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -88,6 +88,8 @@ container.addEventListener('mousedown',divClick);
 ## 3 - Netsed elements and the current target property
 
 So there is the target property and then there is the current target property. The target property will be the element where the event happened, and the current target property will be the element where the current event hander is firing. A good way to know the difference would be to play around with something that has to do with a nested collection of elements.
+
+Say I have a collection of divs where each div is nested inside of each other and I have an mouse down event hander attached to each of them. If I click the inner most element the target and current target properties will refer to the same div, but then the events will bubble up to the top level. As the other handers fire the current target property will refer to the current div element, but the target property will still just refer to the div that was clicked.
 
 ```html
 <html>
