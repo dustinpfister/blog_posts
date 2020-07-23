@@ -5,13 +5,19 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-02-27 18:02:18
-version: 1.14
+updated: 2020-07-23 13:51:41
+version: 1.15
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
 
-This javaScript example post will be on making a multiplication table module example.
+One major reason why is [because many posts on the topic of javaScript examples](https://www.freecodecamp.org/news/javascript-example/) do not always give such a great overview of what can be done with the language. So I thought I would start out with something very simple like just making a multiplication table, and then may move onto some more interesting examples like an [experience point system javaScript example](/2020/04/27/js-javascript-example-exp-system/) or something to that effect.
+
+This javaScript example post will be on making a multiplication table module example with just core javaScript code. I will then be going over some additional client side javaScript code that can then be used as a way to render this multiplication table. So this might not prove to be the most interesting javaScript example post, but I have to start somewhere with these, and in time I might get around to making a few that will prove to be more interesting.
+
+However I think that the bulk of these javaScript examples should be about a module that will work great in a client side environment, but also in a nodejs environment also actually without changing to much in the code. The emphasis should be on going headless as one might put it. That is making javaScript code that just creates and object, but does not render that object as that is something that will change from one environment to another.
+
+Well lets get to it then so that we can move on to something else that might prove to be more interesting.
 
 <!-- more -->
 
