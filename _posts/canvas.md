@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-23 09:43:43
-version: 1.18
+updated: 2020-07-23 09:45:21
+version: 1.19
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -206,6 +206,6 @@ There is more to it when it comes to getting a canvas relative position in gener
 
 ## 3 - Conclusion
 
-So that is just about it for now at least when it comes to writing about canvas in general. There is much more to write about when it comes to canvas of course, but that is all broken down into many other posts on the canvas element here on my site. I have been puuting a lot of time into this collection of content, so you can rest asure that I will come back to editing this post as my collection of content grows and there is more that comes to mind that I feel is worth mentioning here.
+So that is just about it for now at least when it comes to writing about canvas in general. There is much more to write about when it comes to canvas of course, but that is all broken down into many other [posts on the canvas element here on my site](https://dustinpfister.github.io/tags/canvas/). I have been puuting a lot of time into this collection of content, so you can rest asure that I will come back to editing this post as my collection of content grows and there is more that comes to mind that I feel is worth mentioning here.
 
-From here on out if you are new to canvas, or have been fiddling with it for years and are just at a loss for what to do next the best thing to do is to just start working on your own projects. I have wrote a main post on my collection of canvas examples that I have been doing an okay job of keeping up to date as I expand my collection of canvas examples. Maybe that would be a good starting point when it comes to gaining some inspiration for project ideas if you do not have many.
+From here on out if you are new to canvas, or have been fiddling with it for years and are just at a loss for what to do next the best thing to do is to just start working on your own projects. I have wrote a main post on my collection of [canvas examples](/2020/03/23/canvas-example/) that I have been doing an okay job of keeping up to date as I expand my collection of canvas examples. Maybe that would be a good starting point when it comes to gaining some inspiration for project ideas if you do not have many.
