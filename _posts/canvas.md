@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 685
-updated: 2020-07-23 09:32:41
-version: 1.16
+updated: 2020-07-23 09:38:14
+version: 1.17
 ---
 
 In client side javaScript there is the [canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that is one of the coolest, if not the coolest elements to with with. The reason why is because it can be used to create graphics and animations using javaScript code. There is a whole bunch of methods for drawing to a canvas element when it comes to drawing lines and shapes, as well as rendering an image to the canvas, and even working with raw image data.
@@ -148,6 +148,8 @@ I will not be getting into user input and canvas in detail here, as I have wrote
 A good starting point with user input and canvas might be to get into mouse events if working in a desktop operating system environment, and more often then not I assume that is the case.
 
 The basic idea here is to just attach an event hander to the canvas element using the addEventLsitener method, passing a mouse event type such as mouse down as the first argument, and then a function that will fire each time that event happens as the second argument. In the body of this function and event object will be passed, and this event object will contain useful properties like clientX, and clientY with mouse events that contain the position where the mouse down event happed. However the values will be window rather than canvas relative, so a method like getBoundingClientRect must be used off a reference to the canvas element, and that can be used as a way to adjust the window relative values to get a canvas relative value.
+
+There is more to it when it comes to getting a canvas relative position in general that will work with both mouse and touch events in general. When it comes to that though I have wrote a [post on getting a canvas relative pointer position](/2020/03/04/canvas-get-point-relative-to-canvas/) where I get into this topic in detail.
 
 ```js
 <html>
