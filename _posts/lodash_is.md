@@ -5,13 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 507
-updated: 2020-07-23 13:33:07
-version: 1.9
+updated: 2020-07-23 13:38:44
+version: 1.10
 ---
 
-[Lodash is](https://lodash.com/docs/4.17.14) a javaScript utility library based off another similar library known as underscore. There are [many posts that have been written on what lodash is on the open web](https://medium.com/front-end-weekly/introduction-to-lodash-71dbee093b49), and new posts continue to be written on the topic of course, so I thought I would take a moment to write my take on what lodash is. 
+[Lodash is](https://lodash.com/docs/4.17.14) a javaScript utility library based off another similar library known as underscore. There are [many posts that have been written on what lodash is on the open web](https://medium.com/front-end-weekly/introduction-to-lodash-71dbee093b49), and new posts continue to be written on the topic of course, present company included obviously. So with that said I thought I would take a moment to write my take on what lodash is. I guess there is what I can say about lodash when it comes to what it can be used for, what there is to work with in native javaScript by itself that is similar, why a developed should bother with lodash, as well as maybe why it should no loner be used actually.
 
-There are actually a number of ways one could go about defining what lodash is aside from just a javaScript utility library. In this post I will be writing about some definitions when it comes to describing what lodash is, as there is more than one way to describe what lodash is to begin with before even getting started with lodash, functional programing, and so forth.
+There are actually a number of ways one could go about defining what lodash is aside from just a javaScript utility library. In this post I will be writing about some definitions when it comes to describing what lodash is, as there is more than one way to describe what lodash is to begin with before even getting started with lodash. I would say that lodash is often an example of a general utility library, but others might say it is a functional programing library, and so forth. So lets get to what lodash is all about then.
 
 <!-- more -->
 
