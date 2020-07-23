@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2020-07-23 12:31:26
-version: 1.3
+updated: 2020-07-23 13:06:38
+version: 1.4
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -40,3 +40,45 @@ document.getElementById('out').addEventListener('mousedown', function(e){
 ```
 
 When clicking and dragging the mouse over the text you will notice that you can not highlight the text, that is because I called the prevetDefault method of the event object. This methods will stop any kind of default browser behavior for the event such as text highlighting. this can come in handy when making some kind of game that involve user input for example. when someone clicks and drags over a canvas element I do not want any default browser behavior to happen when they do so.
+
+## 2 - The target property in depth
+
+It might be called for to take a closer look at the target property to really get a better understanding of what the target property is all about. Say you have a whole bunch of nested elements in a container element. For example a grid of div elements position in a grid like pattern in a container element by way of absolute positioning and the style API. Say I want to have an event hander that will fire when an div element in the gird is clicked, I could attach event handers to each of the div elements, or I could just attach one event hander to the main container element because of something know as event bubbling.
+
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+    </head>
+    <body>
+        <div id="out" style="position:relative;width:280px;height:200px;background-color:grey;padding:20px;cursor:hand;"></div>
+        <script>
+var divClick = function(e){
+  var div = e.target,
+  c = div.style.backgroundColor;
+  div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
+};
+var container = document.getElementById('out'),
+div,
+i = 0,x,y, 
+len = 8 * 8,
+w = container.scrollWidth / 8,
+h = container.scrollHeight / 8;
+while(i < len){
+   x = i % 8 * w;
+   y = Math.floor(i / 8) * h;
+   div = document.createElement('div');
+   div.style.position = 'absolute';
+   div.style.left = x + 'px';
+   div.style.top = y + 'px';
+   div.style.width = w + 'px';
+   div.style.height = h + 'px';
+   div.style.backgroundColor = 'grey';
+   container.appendChild(div);
+   i += 1;
+}
+container.addEventListener('mousedown',divClick);
+        </script>
+    </body>
+</html>
+```
