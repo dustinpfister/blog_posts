@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2020-07-24 06:27:40
-version: 1.11
+updated: 2020-07-24 06:30:23
+version: 1.12
 ---
 
 The [lodash every](https://lodash.com/docs/4.17.15#every) collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number, if all elements in an array are objects of a certain constructor, and so forth. 
@@ -176,7 +176,7 @@ So the nice thing about this is that it works just like the lodash every method 
 
 ### 3.3 - Using a for in loop
 
-A for in loop could be used to make an every method that will work on a wide range of clients.
+A for in loop could be used to make an every method that will work on a wide range of clients. Not that doing so matter a whole lot these days unless for some reason you are getting a whole lot of traffic from people that are using very old browsers for some reason.
 
 ```js
 var every = function (obj, forEach) {
