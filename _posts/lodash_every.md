@@ -5,11 +5,15 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2019-08-01 18:42:06
-version: 1.10
+updated: 2020-07-24 06:27:40
+version: 1.11
 ---
 
-The lodash every collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number. In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object meet a given condition.
+The [lodash every](https://lodash.com/docs/4.17.15#every) collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number, if all elements in an array are objects of a certain constructor, and so forth. 
+
+In native javaScript there is the [array every prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method, and it would seem that this native method has decent browser support. It is an array method rather than a collection method as is the case with lodash every, but will work just as well when it comes to arrays.
+
+In this post I will be quickly going over the lodash every method as well as the native Array.every method and other native javaScript ways of testing if all values in an object will satisfy a given condition.
 
 
 <!-- more -->
@@ -85,7 +89,7 @@ console.log(_.every(items, hasCost)); // false
 
 So now that we know the basic deal about that lodash every method, maybe we should now look at some plain old vanilla javaScript alternatives to using the lodash every method. After all there is now a native Array.every method that can be used to replace it, and this can be chalked up as yet another reason as to not bother with lodash anymore right? Well yes and no, lets look at the reasons why, and also some additional ways of going about checking all keys in an object for some kind of condition.
 
-### 3.1 - The Array.every method will work okay with Ararys and array like objects with Function.call
+### 3.1 - The Array.every method will work okay with Arrays and array like objects with Function.call
 
 So the native Array.every method will work just fine in most cases, assuming that all the clients that you want to support have it for starters. Also assuming that you will always want to use the Array.every method with well Arrays, in the event that you are dealing with a collection that is an object you will not be able to use it and get expected results. That is unless it is an Array like object that is formated like an Array with a length property and numbered key names, in which case it will work okay with Function.call.
 
