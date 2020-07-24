@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2020-07-24 06:30:23
-version: 1.12
+updated: 2020-07-24 06:32:57
+version: 1.13
 ---
 
 The [lodash every](https://lodash.com/docs/4.17.15#every) collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number, if all elements in an array are objects of a certain constructor, and so forth. 
@@ -188,3 +188,7 @@ var every = function (obj, forEach) {
     return true;
 };
 ```
+
+## 4 - Conclusion
+
+The lodash every method is a collection method that can be used to check if all the elements of an array, or all the ublic key values of an object in general meet a given condition. There is also the native array every method that will do the same only with just arrays, and array like object when used with the function call prototype method.
