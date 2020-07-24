@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2020-07-24 10:00:49
-version: 1.17
+updated: 2020-07-24 10:05:00
+version: 1.18
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names. So as the name suggests it is a pay to go about picking properties from another object, and create a new object with this list of properties from a source object.
@@ -255,3 +255,9 @@ let obj = {
 let point = pick(obj, ['x', 'y']);
 console.log(point);
 ```
+
+## 5 - Conclusion
+
+So the lodash pick method is one of many little convenient methods for creating a new array from a source object. However just like many of the other methods in lodash it is not always so hard to just get the job done with javaScript by itself and move on without adding the additional bloat that adding lodash to a project will do. 
+
+Still when it comes to being flexible I am sure many of us end up working on projects where lodash is in fact still part of the stack, so it pays to know a thing or two about what there is to work with in lodash, but also what there is to work with in javaScript itself in the event that lodash is going to be removed from a project.
