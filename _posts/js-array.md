@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-03-05 08:29:50
-version: 1.41
+updated: 2020-07-24 10:16:18
+version: 1.42
 ---
 
-In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) Arrays are a special kind of object in which elements exist in an ordered collection where each element has a certain index value. 
+In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. 
 
 There are many methods that can be used with arrays that are in the array prototype. These methods help with editing, filtering, and mapping arrays. Many of these methods have been part of the javaScript spec for a long time and are thus very safe to use when it comes to concerns of engine support. Others are a little newer so there should be a degree of concern at least maybe depending on the situation with browser support.
 
