@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2020-07-24 09:12:43
-version: 1.14
+updated: 2020-07-24 09:51:47
+version: 1.15
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names. So as the name suggests it is a pay to go about picking properties from another object, and create a new object with this list of properties from a source object.
@@ -196,4 +196,52 @@ No big deal thought I would just need to make a new one.
 let custom = new Day(custom);
  
 console.log( custom.constructor.name ); // Day
+```
+
+## 4 - Vanilla javaScript and picking
+
+So now it is time to get into picking from an object without using lodash. There are many talking points for using lodash still, but more often than not it seems that there is a lot of talk over the fact that lodash is unnecessary weight. I am not the kind of person that really has a solid opinion on that. Lodash does certainly have its redeeming qualities, but it is ture that if you are really familiar with what there is to work with in javaScript by itself these days it is not to hard to do a lot of thing that does does with just plain vanilla javaScript.
+
+### 4.1 - Just create a new object
+
+```js
+let obj = {
+    x: 42,
+    y: 30,
+    heading: 1.57,
+    pps: 32
+};
+ 
+let point = {
+    x: obj.x,
+    y: obj.y
+};
+ 
+console.log(Object.keys(point));
+```
+
+### 4.2 - Making a pick method with Object.keys, array filter, array some, forEach, and the a new Object
+
+```js
+let pick = function (sourceObj, pickedKeys) {
+    let newObj = {};
+    Object.keys(sourceObj).filter((sourceKey) => {
+        return pickedKeys.some((key) => {
+            return sourceKey === key;
+        });
+    }).forEach(function (key) {
+        newObj[key] = sourceObj[key];
+    });
+    return newObj;
+};
+ 
+let obj = {
+    x: 42,
+    y: 30,
+    heading: 1.57,
+    pps: 32
+};
+ 
+let point = pick(obj, ['x', 'y']);
+console.log(point);
 ```
