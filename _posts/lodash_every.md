@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2020-07-24 06:32:57
-version: 1.13
+updated: 2020-07-24 06:56:52
+version: 1.14
 ---
 
 The [lodash every](https://lodash.com/docs/4.17.15#every) collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number, if all elements in an array are objects of a certain constructor, and so forth. 
@@ -89,9 +89,48 @@ console.log(_.every(items, hasCost)); // false
 
 So now that we know the basic deal about that lodash every method, maybe we should now look at some plain old vanilla javaScript alternatives to using the lodash every method. After all there is now a native Array.every method that can be used to replace it, and this can be chalked up as yet another reason as to not bother with lodash anymore right? Well yes and no, lets look at the reasons why, and also some additional ways of going about checking all keys in an object for some kind of condition.
 
-### 3.1 - The Array.every method will work okay with Arrays and array like objects with Function.call
+### 3.1 - Of course array every will work with arrays
+
+So there is the native array every method that will of course work just fine with arrays.
+
+```js
+let arr1 = [1, 2, 3, 4],
+arr2 = [1, 2, 'c', 4],
+tester = (el) => {
+    return typeof el === 'number';
+};
+// using the tester method with every
+console.log(arr1.every(tester)); // true
+console.log(arr2.every(tester)); // false
+```
+
+There is however the question of array like objects, named key objects, and other ways of doing something like this that will work in really old browsers. So with that said lets look at some more examples of how to do what the lodash every method does with just native javaScript by itself.
+
+### 3.2 - The Array.every method will work okay with array like objects with Function.call
 
 So the native Array.every method will work just fine in most cases, assuming that all the clients that you want to support have it for starters. Also assuming that you will always want to use the Array.every method with well Arrays, in the event that you are dealing with a collection that is an object you will not be able to use it and get expected results. That is unless it is an Array like object that is formated like an Array with a length property and numbered key names, in which case it will work okay with Function.call.
+
+```js
+let arrLike = {
+    0 : 7,
+    1 : 8,
+    2 : 'nope',
+    length: 3
+},
+tester = (el) => {
+    return typeof el === 'number';
+};
+ 
+console.log([].every.call(arrLike, tester)); // false
+arrLike[2] = 9;
+console.log([].every.call(arrLike, tester)); // true
+```
+
+This is typically of course of many of the native Array methods, they will work okay in most situations. However because they are very much array methods rather than collection methods they will not work in some situations involving plain old objects that are being used as a kind of named array.
+
+### 3.3 - I can get array every to work okay with named keys in plain old objects by pulling Object.values into the mix
+
+So the every method works just find with arrays, it can also be used with array like objects by making use of the function call prototype method. However what about collection objects that have no length property, and even if it did it would not help because the object has named rather than numbered public keys? The lodash every method will just work with them out of the gate, sure. However it is not all that hard to get array every to work with just plain old objects like this to by just using the Object.values static Object method to create an array of values from an object like this, then the array every method can be used with that as we are now dealing with an array.
 
 ```js
 let items = {
@@ -113,25 +152,9 @@ let hasCost = (item) => {
 console.log([].every.call(items, hasCost)); // true
 items.fooberry = null;
 console.log([].every.call(items, hasCost)); // true
- 
-let arrLike = {
-    0 : 7,
-    1 : 8,
-    2 : 'nope',
-    length: 3
-},
-tester = (el) => {
-    return typeof el === 'number';
-};
- 
-console.log([].every.call(arrLike, tester)); // false
-arrLike[2] = 9;
-console.log([].every.call(arrLike, tester)); // true
 ```
 
-This is typically of course of many of the native Array methods, they will work okay in most situations. However because they are very much array methods rather than collection methods they will not work in some situations involving plain old objects that are being used as a kind of named array.
-
-### 3.2 - Making my own every method with Object.values
+### 3.4 - Making my own every method with Object.values
 
 So then there is the idea of making my own vanilla js version of the lodash every method. Doing so is not to hard and there are a wide range of ways that I can think of to go about doing it involving loops and other native methods. I will not be going through the process of finding every which way to do this of course, but for this example I will be using the Object.values static Object method.
 
@@ -174,7 +197,7 @@ console.log( every(obj2, tester) ); // false
 
 So the nice thing about this is that it works just like the lodash every method in the sense that it works okay with arrays, and objects in general. Even if they are not formated like and array, and are thus array like objects. Most browsers support the Object.values method okay, but this example might still break on some older clients, so lets see about another example.
 
-### 3.3 - Using a for in loop
+### 3.5 - Using a for in loop
 
 A for in loop could be used to make an every method that will work on a wide range of clients. Not that doing so matter a whole lot these days unless for some reason you are getting a whole lot of traffic from people that are using very old browsers for some reason.
 
