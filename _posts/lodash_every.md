@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 513
-updated: 2020-07-24 06:56:52
-version: 1.14
+updated: 2020-07-24 07:00:32
+version: 1.15
 ---
 
 The [lodash every](https://lodash.com/docs/4.17.15#every) collection method can be used to test if each key value in a collection meets a condition that is defined in the body of a function that is passed as one of the arguments. So it can for example be used to test if all elements in an array are a number, if all elements in an array are objects of a certain constructor, and so forth. 
@@ -108,7 +108,9 @@ There is however the question of array like objects, named key objects, and othe
 
 ### 3.2 - The Array.every method will work okay with array like objects with Function.call
 
-So the native Array.every method will work just fine in most cases, assuming that all the clients that you want to support have it for starters. Also assuming that you will always want to use the Array.every method with well Arrays, in the event that you are dealing with a collection that is an object you will not be able to use it and get expected results. That is unless it is an Array like object that is formated like an Array with a length property and numbered key names, in which case it will work okay with Function.call.
+So the native Array.every method will work just fine in most cases, assuming that all the clients that you want to support have it for starters. Also assuming that you will always want to use the Array.every method with well Arrays, in the event that you are dealing with a collection that is an object you will not be able to use it and get expected results. At least not with the array every method by itself anyway.
+
+Sometimes you might be dealing with an Array like object that is formated like an Array, in other words it is an object with a length property, and numbered key names. When it comes to these kinds of objects the array every method will work okay with the use of the Function.call prototype method.
 
 ```js
 let arrLike = {
