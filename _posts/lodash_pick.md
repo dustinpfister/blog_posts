@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2020-07-24 09:51:47
-version: 1.15
+updated: 2020-07-24 09:55:53
+version: 1.16
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names. So as the name suggests it is a pay to go about picking properties from another object, and create a new object with this list of properties from a source object.
@@ -202,7 +202,11 @@ console.log( custom.constructor.name ); // Day
 
 So now it is time to get into picking from an object without using lodash. There are many talking points for using lodash still, but more often than not it seems that there is a lot of talk over the fact that lodash is unnecessary weight. I am not the kind of person that really has a solid opinion on that. Lodash does certainly have its redeeming qualities, but it is ture that if you are really familiar with what there is to work with in javaScript by itself these days it is not to hard to do a lot of thing that does does with just plain vanilla javaScript.
 
+So with that said in this section I will be going over some javaScript code examples where I am doing the same thigns that the lodash pick method does without the use of the lodash pick method, or lodash at all.
+
 ### 4.1 - Just create a new object
+
+I often just create a new object, and then reference in the properties that I want from a source object.
 
 ```js
 let obj = {
@@ -219,6 +223,8 @@ let point = {
  
 console.log(Object.keys(point));
 ```
+
+The thing to keep in mind here is that I am creating a new object, and in this example I am copying over primitive values. If I am copying over nested objects I can still run into problems with copying by reference, but the same is true with the lodash pick method by itself without using a deep clone method of one kind or another.
 
 ### 4.2 - Making a pick method with Object.keys, array filter, array some, forEach, and the a new Object
 
