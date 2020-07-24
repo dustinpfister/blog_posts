@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 233
-updated: 2020-07-24 10:05:00
-version: 1.18
+updated: 2020-07-24 10:10:19
+version: 1.19
 ---
 
 When working with objects it is sometimes nice to quickly be able to make a custom object that is composed of properties from another object, just a few of them, not the whole thing. For this in [lodash](https://lodash.com/) there is the [\_.pick](https://lodash.com/docs/4.17.10#pick) method that can be used to create a new object that is a shallow copy of a given object, but with only properties that are in a given list of property names. So as the name suggests it is a pay to go about picking properties from another object, and create a new object with this list of properties from a source object.
@@ -221,14 +221,14 @@ let point = {
     y: obj.y
 };
  
-console.log(Object.keys(point));
+console.log(Object.keys(point)); // ['x', 'y']
 ```
 
 The thing to keep in mind here is that I am creating a new object, and in this example I am copying over primitive values. If I am copying over nested objects I can still run into problems with copying by reference, but the same is true with the lodash pick method by itself without using a deep clone method of one kind or another.
 
 ### 4.2 - Making a pick method with Object.keys, array filter, array some, forEach, and the a new Object
 
-So if i really want a lodash pick like method I can make one by making use of what there is to work with in native javaScript. The Object.keys static method in javaScript can be used to create an array of public key names from a source object, I can then use the array filter method off of that array of key names. 
+So if i really want a lodash pick like method I can make one by making use of what there is to work with in native javaScript. The [Object.keys](/2018/12/05/js-object-keys/) static method in javaScript can be used to create an array of public key names from a source object, I can then use the array filter method off of that array of key names. 
 
 I can then have another array of picked key names that I want from the source object that is given as an argument. This array of picked names can be used in the body of my array filter function with the array some method called off of the array of picked keys, and in the function that I pass to array some I can make a comparison to see if this is one of the picked keys or not. The resulting array can then be used as a way to create the new object that contains the picked keys from the source object.
 
