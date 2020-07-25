@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 09:32:47
-version: 1.47
+updated: 2020-07-25 09:36:44
+version: 1.48
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. 
@@ -75,7 +75,7 @@ console.log(arr[3]); // 8
 
 ### 3.2 - Use Array.push to add an element to the end of an Array
 
-The Array.push method can be used to add one or more additional elements to the end of an Array. This is often used in place of using the length property of an array as a means of finding out what the current index value is for a new element that will be appended to the end of an array.
+The [Array.push](/2020/06/17/js-array-push/) method can be used to add one or more additional elements to the end of an Array. This is often used in place of using the length property of an array as a means of finding out what the current index value is for a new element that will be appended to the end of an array.
 
 ```js
 var a = [1, 2, 3];
