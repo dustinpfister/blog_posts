@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 09:36:44
-version: 1.48
+updated: 2020-07-25 09:43:31
+version: 1.49
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. 
@@ -358,7 +358,7 @@ console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
 
 ## 10 - Array length and count
 
-Another subject of arrays is what is often referred to as the [length of an array](/2018/12/14/js-array-length/). In many situations the length of the array might be the number of declared elements in the array, but this is not always the case. There is a difference between length, count, and data size of an array in javaScript.
+Another subject of arrays is what is often referred to as the [length of an array](/2018/12/14/js-array-length/).The length of an array is just a property of an array object that contains a number that is the current max element size of an array, but with that said yes the length can change. The length of an array is often confused with other values of an array, such as the number of actual public numbed keys, or elements that there are in the array. So it is worth looking into playing around with a few quick code examples to have a better understating of what the deal is with array length, and that this is not always reflective as to how many elements are in the array, depending on how you go about counting elements.
 
 ## 11 - Conclusion
 
