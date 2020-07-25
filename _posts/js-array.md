@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 09:26:12
-version: 1.46
+updated: 2020-07-25 09:32:47
+version: 1.47
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. 
@@ -44,7 +44,7 @@ console.log(arr); // 1,2,3,4
 
 ### 2.2 - The array literal syntax
 
-Anther way to create an array is to use the array literal syntax. This involves the use of square brackets.
+Anther way to create an array is to use the array literal syntax. This involves the use of square brackets, and placing starting elements in between commas. In addition an empty array with a zero starting length can be created by just not giving any starting elements and just having and opening and closing set of square brackets. Square brackets are also used as a way of getting a single element in an array also by using them off the end of an array and having an index value between the opening and closing square brackets.
 
 ```js
 var arr = [1,2,3,4];
