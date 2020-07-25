@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 09:51:24
-version: 1.51
+updated: 2020-07-25 10:07:44
+version: 1.52
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -36,10 +36,17 @@ One way to create an array is to use the Array constructor with the new keyword 
 I do not recommend the use of the Array constructor, and generally prefer using the literal syntax in place of this. However it does show up in many code examples on the open web so it is something that a javaScript developer should be aware of at least.
 
 ```js
-var arr = new Array()
-arr.push(1,2,3,4);
+// use the new keyword an call the constructor
+let a = new Array();
+a.push(1,2,3,4);
+ 
+console.log(a); // [ 1, 2, 3, 4 ]
 
-console.log(arr); // 1,2,3,4
+// An argument can be given to set a starting length
+let b = new Array(10);
+ 
+console.log(b.length); // 10
+console.log(b); // [ <10 empty items> ]
 ```
 
 ### 2.2 - The array literal syntax
@@ -50,6 +57,16 @@ Anther way to create an array is to use the array literal syntax. This involves 
 var arr = [1,2,3,4];
  
 console.log(arr[1]); // 2
+```
+
+### 2.3 - Creating an array by calling a method that will retrun one like String.split
+
+```js
+var a = '1.2.3.4.5'.split('.'),
+b = 'Strings can be split into arrays'.split(' ');
+ 
+console.log(a[1]); // 2
+console.log(b[3]); // 'split'
 ```
 
 ## 3 - Pushing, shifting, and adding elements to an array
