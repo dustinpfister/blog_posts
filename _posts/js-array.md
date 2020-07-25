@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 10:07:44
-version: 1.52
+updated: 2020-07-25 10:11:41
+version: 1.53
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -60,6 +60,8 @@ console.log(arr[1]); // 2
 ```
 
 ### 2.3 - Creating an array by calling a method that will retrun one like String.split
+
+Another way of creating an array, or end up with one rather, would be to call a method that would return one as a product. In some cases I would like to not create and array from scratch by rather create one from some kind of data source such as a string. In the string prototype object there is the string split method that can be used to split a string into a bunch of substrings where each substring is and element in a resulting array.
 
 ```js
 var a = '1.2.3.4.5'.split('.'),
