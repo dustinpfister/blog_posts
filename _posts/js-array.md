@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 09:21:28
-version: 1.45
+updated: 2020-07-25 09:26:12
+version: 1.46
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. 
@@ -31,7 +31,9 @@ So then in this section I will just be going over some ways to go about creating
 
 ### 2.1 - The array constructor
 
-One way to create an array is to use the Array constructor. I do not recommend the use of, however it does show up in many code examples on the web so it is something that a javaScript developer should be aware of at least.
+One way to create an array is to use the Array constructor with the new keyword to create a new empty array of a set length. This is used more or less the same way as any other constructor function where you type the new operator followed by calling the constructor function to create an instance of that constructor which in this case would be an array. I will not be getting into constructor functions in detail here as that is a matter of another post.
+
+I do not recommend the use of the Array constructor, and generally prefer using the literal syntax in place of this. However it does show up in many code examples on the open web so it is something that a javaScript developer should be aware of at least.
 
 ```js
 var arr = new Array()
