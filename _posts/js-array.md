@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 09:20:39
-version: 1.44
+updated: 2020-07-25 09:21:28
+version: 1.45
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. 
@@ -21,7 +21,7 @@ This post will then serve as a general overview of Arrays in javaScript in which
 
 ## 1 - JavaScript arrays and what to know before hand
 
-This is a post on [javaScript arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), as such it is important to have at least some starting background with javaScript as this is not a getting started post on javaScript in general. If you are completely new to javaScript it might be a good idea to start with my [getting started with javaScript post](/2018/11/27/js-getting-started/), or some other alternative. However if you have at least some background with javaScript, but want to learn more about arrays in general, then this might prove to be a good read.
+This is a post on javaScript arrays, as such it is important to have at least some starting background with javaScript as this is not a getting started post on javaScript in general. If you are completely new to javaScript it might be a good idea to start with my [getting started with javaScript post](/2018/11/27/js-getting-started/), or some other alternative. However if you have at least some background with javaScript, but want to learn more about arrays in general, then this might prove to be a good read.
 
 ## 2 - Creating arrays
 
