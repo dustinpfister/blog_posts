@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 09:16:46
-version: 1.43
+updated: 2020-07-25 09:20:39
+version: 1.44
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. 
@@ -25,7 +25,9 @@ This is a post on [javaScript arrays](https://developer.mozilla.org/en-US/docs/W
 
 ## 2 - Creating arrays
 
-There is both an array constructor method, and an array literal syntax in javaScript that can be used to create a regular javaScript array. There are also many methods that might return an array as well.
+So in order to get into the ins and outs of arrays first you need to know hoe to go about creating them, or ending up with one in the first place. There is both an array constructor method, and an array literal syntax in javaScript that can be used to create a regular javaScript array from scratch. There are also many methods that might return an array as well from something else when it comes to things like the Array.from static method, and the String.split prototype method for example.
+
+So then in this section I will just be going over some ways to go about creating an array in the first place, which seems like good starting point for a post such as this.
 
 ### 2.1 - The array constructor
 
