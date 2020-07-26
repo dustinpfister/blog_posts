@@ -5,13 +5,13 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-03-07 10:54:36
-version: 1.11
+updated: 2020-07-26 10:41:22
+version: 1.12
 ---
 
-The js [value of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) method is a way to define what the primitive value of an object is. There is a value of object prototype methods that will always be used by default when making an object part of an expression that involves operators like addition. However it is possible to add a value of method for the prototype object of a Class, or just make it an own property of an object instance which will supersede the default value of method in the object prototype.
+The js [valueOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) Object prototype method is a way to define what the number primitive value of an object is. So because the valueOf method is part of the main Object prototype object there is a default valueOf method that will be used for all objects when there is a need for javaScript to convert an object to a number value. However it is often required, or at least a good idea, to define a custom valueOf method for an Object or Class of Objects.
 
-Typically I would want a value of method to return a number or string value, however it should return whatever is appreciate when using an an object in an expression that will be used to compute a product.
+When  making my own valueOf method then method should return a number value rather than a string value. A string value would be more appropriate when it comes to making a custom toString method for an Object or class of Objects when making a prototype object.
 
 <!-- more -->
 
