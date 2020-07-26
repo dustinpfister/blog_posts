@@ -5,13 +5,13 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-07-26 10:41:22
-version: 1.12
+updated: 2020-07-26 10:46:46
+version: 1.13
 ---
 
 The js [valueOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) Object prototype method is a way to define what the number primitive value of an object is. So because the valueOf method is part of the main Object prototype object there is a default valueOf method that will be used for all objects when there is a need for javaScript to convert an object to a number value. However it is often required, or at least a good idea, to define a custom valueOf method for an Object or Class of Objects.
 
-When  making my own valueOf method then method should return a number value rather than a string value. A string value would be more appropriate when it comes to making a custom toString method for an Object or class of Objects when making a prototype object.
+When making my own valueOf method then method should return a number value rather than a string value. A string value would be more appropriate when it comes to making a custom toString method for an Object or class of Objects when making a prototype object. With that said yes the toString method is the String equivalent of the valueOf method that should return a number value. The two methods can, and should be used as the standard way of returning string and number values of an object. In this post the focus will be more so on the vlaueOf method, and how this can come into play and be useful when making certain modules and frameworks.
 
 <!-- more -->
 
