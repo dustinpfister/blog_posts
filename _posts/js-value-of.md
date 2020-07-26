@@ -5,13 +5,15 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-07-26 10:50:49
-version: 1.14
+updated: 2020-07-26 11:01:35
+version: 1.15
 ---
 
 The js [valueOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) Object prototype method is a way to define what the number primitive value of an object is. So because the valueOf method is part of the main Object prototype object there is a default valueOf method that will be used for all objects when there is a need for javaScript to convert an object to a number value. However it is often required, or at least a good idea, to define a custom valueOf method for an Object or Class of Objects.
 
-When making my own valueOf method then method should return a number value rather than a string value. A string value would be more appropriate when it comes to making a custom toString method for an Object or class of Objects when making a prototype object. With that said yes the toString method is the String equivalent of the valueOf method that should return a number value. The two methods can, and should be used as the standard way of returning string and number values of an object. In this post the focus will be more so on the vlaueOf method, and how this can come into play and be useful when making certain modules and frameworks.
+When making my own valueOf method then method should return a number value rather than a string value. A string value would be more appropriate when it comes to making a custom toString method for an Object or class of Objects when making a prototype object. With that said yes the toString method is the String equivalent of the valueOf method that should return a number value. The two methods can, and should be used as the standard way of returning string and number values of an object. 
+
+In this post the focus will be more so on the vlaueOf method, and how this can come into play and be useful when making certain modules and frameworks.
 
 <!-- more -->
 
@@ -138,3 +140,5 @@ console.log(n + 1); // 15700000001
 ## 5 - Conclusion
 
 So the valueOf method can be used to define what a number value of an object should be. It can be called directly off of an object, however it is often not needed. More often then not it is a way to define number values with object properties that should be used in math expressions that will evaluate to a number rather than a string.
+
+The [valueOf method might come up when it comes to getting into the details of functional programing](https://blog.klipse.tech/javascript/2016/09/21/valueOf-js.html) the reason why is because when making what you might think is a pure function might not be when it comes to arrays containing objects that can have there valueOf methods mutated. However getting into pure functions might be a matter for another post.
