@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2020-07-26 10:46:46
-version: 1.13
+updated: 2020-07-26 10:50:49
+version: 1.14
 ---
 
 The js [valueOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) Object prototype method is a way to define what the number primitive value of an object is. So because the valueOf method is part of the main Object prototype object there is a default valueOf method that will be used for all objects when there is a need for javaScript to convert an object to a number value. However it is often required, or at least a good idea, to define a custom valueOf method for an Object or Class of Objects.
@@ -134,3 +134,7 @@ Note.prototype.valueOf = function () {
 var n = new Note(1.57, 10);
 console.log(n + 1); // 15700000001
 ```
+
+## 5 - Conclusion
+
+So the valueOf method can be used to define what a number value of an object should be. It can be called directly off of an object, however it is often not needed. More often then not it is a way to define number values with object properties that should be used in math expressions that will evaluate to a number rather than a string.
