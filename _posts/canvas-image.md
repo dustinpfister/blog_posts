@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2020-07-27 18:46:42
-version: 1.29
+updated: 2020-07-27 18:54:35
+version: 1.30
 ---
 
 When it comes to [canvas and images](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images) most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded before hand. However that is just it, the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. As I now need to think about how to go about loading images, before continuing into another state of the project where it is safe to go ahead and use those external assets that must be loaded first.
@@ -191,6 +191,38 @@ loop();
 ## 6 - Create an image loader to use with a canvas project
 
 It might be best to go with a canvas framework that is well supported, and loaded with all kinds of features including an asset loader. However if you really want to do everything from the ground up, just for the sake of having control or whatever th case my be, then you are just going to have to make your own image loader if you want to work with extremal image files in a canvas project.
+
+I have created a number of canvas examples, and have wrote a blog post for each of them. One such post is on an [canvas image loader](/2020/04/30/canvas-example-image-loader/) that I made for one of these canvas example posts of mine. I will not be getting into it in detail here, if you want to read more about it check out the post on this. 
+
+However I will say that it works by just making it so that all the images I want to use follow a pattern when it comes to the file names. Each file goes from 0 to the total number of images with an image extension of png. If I wanted to make some more fancy I guess I could, but I think a lot of loaders in real projects follow a system that is not so different from that.
+
+```js
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d'),
+container = document.getElementById('gamearea') || document.body;
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ctx.translate(0.5, 0.5);
+ 
+var img = imgLoad({
+        baseURL: './img/',
+        fileCount: 2,
+        onFileLoad: function (per, i, img, e) {
+            // update something like a loading bar here
+        },
+        onError: function (e, i, img) {
+            console.log('Error loading image');
+            console.log(img);
+            draw.back(ctx, canvas);
+        },
+        onDone: function (imgArr) {
+            console.log('files loaded');
+            draw.back(ctx, canvas);
+            draw.cellIndex(ctx, imgArr[1], 0, 10, 10);
+        }
+    });
+```
 
 ## 7 - Conclusion
 
