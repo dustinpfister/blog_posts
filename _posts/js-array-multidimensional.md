@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2020-04-01 11:14:46
-version: 1.8
+updated: 2020-07-27 08:20:29
+version: 1.9
 ---
 
-In JavaScript Multidimensional arrays can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get a proper index value.
+In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
 
-Multidimensional arrays will come up often when it comes to any kind of project that will involve a 2d grid, a 3d plain, tables, or anything else where doing so might be called for. So having a solid understanding of the different ways to go about having arrays with two or more dimensions is called for when it comes to a wide range of applications where the use of them will come into play. So lets look at some typical examples, as well as some other examples that might be not so typical with multidimensional arrays in javaScript.
+Multidimensional arrays will come up often when it comes to any kind of project that will involve a 2d grid, a 3d plane, tables, or anything else where doing so might be called for when doing something interesting with many dimensions. So having a solid understanding of the different ways to go about having arrays with two or more dimensions is called for when it comes to a wide range of applications where the use of them will come into play. So lets look at some typical examples, as well as some other examples that might be not so typical with multidimensional arrays in javaScript.
 
 <!-- more -->
 
