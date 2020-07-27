@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 59
-updated: 2019-09-19 11:20:53
-version: 1.19
+updated: 2020-07-27 09:58:20
+version: 1.20
 ---
 
-How often do I need to use a while loop, or Array.forEach in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well when it comes to making my own lodash times style method with plain old javaScript by itself.
+How often do I need to use a while loop, or something like [Array.forEach](/2019/02/06/js-javascript-foreach/) in a project? All the time of course. I could write a post about what way of looping is the fastest, or what way is the most concise. This is yet another one of my lodash posts, so I will be writing about [\_.times](https://lodash.com/docs/4.17.4#times) in [lodash](https://lodash.com/) naturally, but I will also touch base on some vanilla js alternatives as well when it comes to making my own lodash times style method with plain old javaScript by itself.
 
 <!-- more -->
 
