@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2020-07-27 11:51:27
-version: 1.12
+updated: 2020-07-27 11:56:38
+version: 1.13
 ---
 
 A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be a filter in vuejs that is registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. [Filters](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and anything else that might require the use of them. In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript.
@@ -99,7 +99,7 @@ new Vue({
 
 ## 3 - Global Filters
 
-It is also possible to define filters at a global level as well by using the Vue.filter global api method rather than the filters Vue Constructor option. This will result in a filter that can be used across multipliable instances of Vue.
+So there is making filters that are for just a single instance of view, but what of you are doing something that involves more than one instance of vuejs in a page? With that said it is also possible to define filters at a global level as well by using the Vue.filter global api method rather than the filters Vue Constructor option. This will result in a filter that can be used across multipliable instances of Vue in a page or project as a whole.
 
 ```html
 <html>
