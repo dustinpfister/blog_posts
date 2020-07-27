@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 398
-updated: 2020-04-15 08:59:30
-version: 1.27
+updated: 2020-07-27 18:38:27
+version: 1.28
 ---
 
 When it comes to [canvas and images](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images) most of the time that means knowing a thing or two about how to use the [drawImage 2d context method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) that can be used to render all or part of an image that has been loaded before hand. However that is just it, the image needs to be loaded first, this alone can complicate matters when it comes to making a vanilla javaScript canvas project. As I now need to think about how to go about loading images, before continuing into another state of the project where it is safe to go ahead and use those external assets that must be loaded first.
@@ -19,7 +19,7 @@ Still sometimes I just want or need to work with extremal sprite sheets, and oth
 
 ## 1 - Canvas image must know basics
 
-This is a post on the HTML canvas element, and using images with a such canvas elements. This is not a getting started post with canvas, let alone javaScript in general. If you are new to javaScript and canvas you might want to start out elsewhere.
+This is a post on the HTML canvas element, and using images with a such elements with a little javaScript code. So at least a little working knowledge of javaScript is required before hand. This is not a [getting started post with canvas](/2017/05/17/canvas-getting-started/), let alone a post on [starting out with javaScript in general](/2018/11/27/js-getting-started/). If you are new to javaScript and canvas you might want to start out elsewhere before getti ng into hopw to work with images in a canvas project.
 
 In canvas there is the drawImage method that is used to draw an image onto a canvas. With the drawImage method an external image, a Data URL, or another canvas element, and other options, can be used as a source as passed as the first argument to this method. Additional arguments can then be used to define a source position and size, as well as a destination position and size when it comes to drawing to the canvas with this source image.
 
