@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2020-07-28 06:46:12
-version: 1.71
+updated: 2020-07-28 07:06:15
+version: 1.72
 ---
 
 When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw [arcs and circles](https://mathbitsnotebook.com/Geometry/Circles/CRArcLengthRadian.html). Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
@@ -576,7 +576,62 @@ So for this animation example that I started working out I am just using canvas 
 
 I often do just use the canvas arc method as a way to just track the movement of points by just keeping the radius of the circle very small. I find doing so quick and easy compared to drawing two lines, and also like it over using the stroke rect method.
 
-## 9 - Conclusion
+## 9 - The distance formula and canvas arc
+
+```html
+<html>
+    <head>
+        <title>canvas arc and distance</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// the distance formula
+var distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+// draw
+var draw = function (ctx, state) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = state.colors[state.colorIndex];
+    ctx.beginPath();
+    ctx.arc(state.cx, state.cy, state.radius, 0, Math.PI * 2);
+    ctx.fill();
+};
+// create an event hander for mouse down
+var createOnClick = function (state, ctx) {
+    return function (e) {
+       // get canvas relative point
+        var bx = e.target.getBoundingClientRect(),
+        x = e.clientX - bx.left,
+        y = e.clientY - bx.top;
+        // if distance to point is less than or equal to radius
+        if (distance(x, y, state.cx, state.cy) <= state.radius) {
+            state.colorIndex += 1;
+            state.colorIndex %= state.colors.length;
+        }
+        draw(ctx, state);
+    };
+};
+// create canvas and state object, attach event and draw for first time
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+var state = {
+    cx: canvas.width / 2,
+    cy: canvas.height / 2,
+    radius: canvas.height / 3,
+    colors: ['red', 'green'],
+    colorIndex: 0
+};
+canvas.addEventListener('mousedown', createOnClick(state, ctx));
+draw(ctx, state);
+        </script>
+    </body>
+</html>
+```
+
+## 10 - Conclusion
 
 The canvas arc method is just one of many methods in the canvas 2d drawing context of course, however it is one that seems to come up often. Canvas is a lot of fun of course, and it can also be very helpful as well when it comes to working out basic graphics with javaScript code. 
 
