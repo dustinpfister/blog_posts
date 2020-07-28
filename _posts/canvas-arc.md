@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2020-07-28 07:16:45
-version: 1.74
+updated: 2020-07-28 07:20:09
+version: 1.75
 ---
 
 When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw [arcs and circles](https://mathbitsnotebook.com/Geometry/Circles/CRArcLengthRadian.html). Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
@@ -643,4 +643,4 @@ The canvas arc method is just one of many methods in the canvas 2d drawing conte
 
 There is also much more that can be done with canvas once you have a decent grasp on how to work with it when it comes to native javaScript by itself of course, but also when it comes to working with certain popular libraries in addition to plain old javaScript by itself. For example in [threejs a canvas element](/2018/04/17/threejs-canvas-texture/) can be used as a way to create a texture that can be used to skill faces on solid geometry objects.
 
-I hope that you have gained something of value from reading this post on the canvas arc method, there is much more to write about when it comes to just canvas let alone javaScript in general so it looks like I have my work cut out for me.
+I hope that you have gained something of value from reading this post on the canvas arc method, there is much more to write about when it comes to just canvas alone on top of everything that comes up with javaScript in general so it looks like I have my work cut out for me when it comes to writing additional canvas content. For more reading on canvas here you might want to check out [my main post on canvas](/2020/07/22/canvas/), as well as by [index post on all of my canvas example posts](/2020/03/23/canvas-example/).
