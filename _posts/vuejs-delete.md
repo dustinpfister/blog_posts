@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 441
-updated: 2020-07-28 16:50:53
-version: 1.10
+updated: 2020-07-28 16:51:32
+version: 1.11
 ---
 
 If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary. However there is the built in [Vue delete](https://vuejs.org/v2/api/#Vue-delete) method as well that can also be used to delete an object property and update the view in one shot. So then with that said this will be a quick post on the use of vuejs delete in a client side javaScript environment using vue.js as a framework.
@@ -72,7 +72,7 @@ So that is the basic idea at least of the vue dlete method, I pass the property 
 
 So how about a full copy and past example of the vuejs delete method as well as a whole buch of other vuejs features. Here I have a very simple list example where I am using the vue delete method to delete names on a list when the name is given in a text input element and a delete button is pressed.
 
-So this example makes use of [vue el](/2019/05/06/vuejs-el/) to attach to a hard coded html element by an id attribute, I am also making use of the [vue template option](/2019/05/07/vuejs-template/) to define additional html code that will be appended to the hard coded html element that I am attaching to. In this template I am using the [vue for](/2019/05/21/vuejs-for/) directive to repeat an element for each item in a collection, in this case an array of names. I am also using another important directive that a vuejs developer should be aware of called vue model that is what I need to use when working with text input elements and the data object. There are many otheer vuejs features being used such as the methods option, and vue on directive.
+So this example makes use of [vue el](/2019/05/06/vuejs-el/) to attach to a hard coded html element by an id attribute, I am also making use of the [vue template option](/2019/05/07/vuejs-template/) to define additional html code that will be appended to the hard coded html element that I am attaching to. In this template I am using the [vue for](/2019/05/21/vuejs-for/) directive to repeat an element for each item in a collection, in this case an array of names. I am also using another important directive that a vuejs developer should be aware of called vue model that is what I need to use when working with text input elements and the data object. There are many otheer vuejs features being used such as the methods option, and [vue on](/2019/11/14/vuejs-on/) directive.
 
 ```html
 <html>
