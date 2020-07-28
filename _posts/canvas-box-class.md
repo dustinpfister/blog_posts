@@ -1,18 +1,18 @@
 ---
-title: Canvas Rect or Box class design, movement and other relevant logic
+title: A Canvas Rect or Box class design, movement and other relevant topics
 tags: [js, canvas]
 id: 28
 categories: canvas
 date: 2017-07-24 12:35:47
-version: 1.20
-updated: 2020-04-15 10:25:53
+version: 1.21
+updated: 2020-07-28 08:09:26
 ---
 
-The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a constructor function that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then  in addition a few methods that act on those properties in the prototype object of that constructor.
+The concept of a simple 2d Box class is something that I keep coming back to when it comes to playing around with html 5 canvas, and making all kinds of fun and interesting projects with it. In any canvas project I typically do want to make at least a few [classes that are closely related to canvas](https://dev.to/washingtonsteven/playing-with-canvas-and-es6-classes). That is something involving a [constructor function](/2019/02/27/js-javascript-constructor/) that creates an instance of an object that has at least the basic properties of a 2d box or rectangle. Then in addition to just the main constructor function, have at least a few methods that act on those properties in the prototype object of that constructor function.
 
 For example if I am making a game I will want some kind of enemy class, but I would also want some kind of base class that the class inherits from as well that is shared by all classes that are a display object of sorts in such a game. So a box class would make a good starting base class for all kinds of display objects in a game beyond that of just enemies. The player ship, power ups, and shots coming from player and enemy ships would all inherit from this box class.
 
-Also because a lot of applications have to do with manipulation of simple 2d areas on a screen, as such having a solid understanding of this aspect of 2d geometry is important. Taking the time to make a box class strikes me as something that is a good example of an exercise of sorts that can often progress into an interesting project of some kind. It has helped me gain a better understand of 2d geometry, and also the nature of a class.
+Also because a lot of applications have to do with manipulation of simple 2d areas on a screen, having a solid understanding of how to go about making, or using some kin dof box or sprite class if you prefer can become important. Taking the time to make a box class strikes me as something that is a good example of an exercise that can often progress into an interesting project of some kind when it comes to expanding from there in all kinds of different ways when it comes to everything that might end up being developer around such a class or module. It has helped me gain a better understand of 2d geometry, and also the nature of a class.
 
 <!-- more -->
 
