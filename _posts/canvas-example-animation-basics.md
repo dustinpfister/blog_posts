@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-07-14 10:44:11
-version: 1.28
+updated: 2020-07-28 09:34:08
+version: 1.29
 ---
 
 So this is another post on [canvas examples](/2020/03/23/canvas-example/) using just canvas elements and vanilla javaScript by itself. For this canvas example post I will be writing about a basic example of [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations) as I often end up doing so. There ar many ways of how to go about making animations, but I tend to like making them a certain way that involves the use of methods that are often very pure function like. What I mean by that is making a method where I pass a frame index value, and a total number of frames, and for every set of arguments I always be the same state to which I then render using the 2d canvas drawing context.
@@ -276,11 +276,29 @@ var opt = {
 };
  
 // create an animation method
-var ani = FF(opt);
+var ani = FF(opt),
+frame = 0,
+maxFrame = 50,
+FPS = 24,
+lt = new Date();
  
-var bx = ani(25, 50).bx;
-draw.back(ctx, canvas)
-draw.bx(ctx, bx);
+var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000,
+    bx;
+ 
+    requestAnimationFrame(loop);
+ 
+    bx = ani(Math.floor(frame), maxFrame).bx;
+    draw.back(ctx, canvas)
+    draw.bx(ctx, bx);
+    frame += FPS * secs;
+    frame %= maxFrame;
+    lt = now;
+ 
+};
+loop();
 ```
 
 
