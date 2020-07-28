@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-04-21 10:47:18
-version: 1.15
+updated: 2020-07-28 10:41:09
+version: 1.16
 ---
 
-In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math object method will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
+In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math.log method of the main javaScript Math object will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
 
-Its possible that you have all ready come across the method when it comes to taking advantage of the many copy and paste jaavScript solutions that exist on stack overflow and random sites such as this. However for whatever the reason maybe you wish to know more about it, and other examples of its use so lets take a deeper look at Math.log today.
+It is possible that you have all ready come across the method when it comes to taking advantage of the many copy and paste javaScript solutions that exist on stack overflow and random sites such as this that make use of it. However for whatever the reason maybe you wish to know more about it, and other examples of its use so lets take a deeper look at Math.log today.
 
 <!-- more -->
 
