@@ -1,12 +1,12 @@
 ---
-title: Canvas arc method for drawing arcs and circles with HTML and javaScript
+title: The Canvas arc method for drawing arcs and circles with HTML and javaScript
 date: 2019-03-05 18:37:00
 tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2020-07-28 07:23:49
-version: 1.76
+updated: 2020-07-28 07:24:06
+version: 1.77
 ---
 
 When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw [arcs and circles](https://mathbitsnotebook.com/Geometry/Circles/CRArcLengthRadian.html). Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
