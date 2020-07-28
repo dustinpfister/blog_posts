@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-07-28 10:41:09
-version: 1.16
+updated: 2020-07-28 10:41:45
+version: 1.17
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math.log method of the main javaScript Math object will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
@@ -102,6 +102,6 @@ So this helps to get a good idea of a use for the Math.log method. In a situatio
 
 ## 4 - Conclusion
 
-So the Math.log method in the javaScript Math object is the first go to method that I will be using when I am in a situation where I want to find out the exponent of a number from a given base when I know the base and the result. The Math log method can be used to find an exponent in most situations as i ahve found thus far.
+So the Math.log method in the javaScript Math object is the first go to method that I will be using when I am in a situation where I want to find out the exponent of a number from a given base when I know the base and the result. The Math log method can be used to find an exponent in most situations as I have found thus far.
 
 There are of course other options though such as the [Math.log10](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log10), and [Math.log2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log2) methods. Of course it should go without saying that a javaScript developer should be aware of the [Math.log](/2019/12/10/js-math-pow/) method also when it comes to situations in which that method needs to be used when working out an expression.
