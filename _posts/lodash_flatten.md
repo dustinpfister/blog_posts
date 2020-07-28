@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 257
-updated: 2020-07-28 10:46:58
-version: 1.10
+updated: 2020-07-28 10:50:51
+version: 1.11
 ---
 
 So some of the methods in [lodash](https://lodash.com/) can come in handy, and really do help to save time with certain projects where I might make lodash part of the stack. Todays post on lodash is one of those lodash mathods that I might actaully use now and then which is the [\_.flatten](https://lodash.com/docs/4.17.10#flatten) method. 
@@ -17,11 +17,13 @@ The \_.flatten, and also \_.flattenDeep methods are one of many methods that hel
 
 ## 1 - what to know
 
-This is a post on the \_.flatten method in lodash, than can be used to flatten nested arrays down into a single array. The flatten method is one of the many [array methods](/2019/02/14/lodash_array/) in lodash. I will not be getting into lodash, arrays, and javaScript in general in depth, and assume that you have at least some background with javaScript and using lodash in a project.
+This is a post on the \_.flatten method in lodash, than can be used to flatten nested arrays down into a single array. The flatten method is one of the many [array methods](/2019/02/14/lodash_array/) in lodash many of which are just wrappers of native methods, but thus is one method where that is not the case. 
+
+I will not be getting into lodash, arrays, and javaScript in general in depth, and assume that you have at least some background with javaScript and using lodash in a project.
 
 ## 2 - Basic example of \_.flatten, and \_.chunk
 
-So for a basic example of \_.flatten and the corresponding \_.chunk method I will start off with an array of arrays where each array is a number between 1 and 9, and is broken into three arrays of three numbers each. The \_.flatten method can be used to flatten such an array of arrays into a single linear array, and then the \_.chunk method can be used to break it back down again into the array of arrays.
+So for a basic example of \_.flatten and the corresponding \_.chunk method I will start off with an array of arrays where each array is a number between 1 and 9, and is broken into three arrays of three numbers each. The \_.flatten method can be used to flatten such an array of arrays into a single linear array, and then the \_.chunk method can be used to break it back down again into the array of arrays. So the chunk and flatten methods are two lodash methods that are often used together in a project to quickly change between an array of arrays form, and just a single array.
 
 ### 2.1 - flattening an array of arrays into a linear array with \_.flatten
 
