@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-07-28 09:46:04
-version: 1.30
+updated: 2020-07-28 10:26:47
+version: 1.31
 ---
 
 So this is another post on [canvas examples](/2020/03/23/canvas-example/) using just canvas elements and vanilla javaScript by itself. For this canvas example post I will be writing about a basic example of [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations) as I often end up doing so. There ar many ways of how to go about making animations, but I tend to like making them a certain way that involves the use of methods that are often very pure function like. What I mean by that is making a method where I pass a frame index value, and a total number of frames, and for every set of arguments I always be the same state to which I then render using the 2d canvas drawing context.
@@ -14,6 +14,9 @@ So this is another post on [canvas examples](/2020/03/23/canvas-example/) using 
 Making animations with canvas can be a fun, and rewarding experience and is definitely an example of the fun side of javaScript. In addition in some situations animations can also be helpful as well as a way to express data, or show how something works. There is of course the idea of visualizing a problem, and animation can be a good tool to help do just that. There are many canvas frameworks out there, but for now I will be sticking to just plain old native client side javaScript by itself here today.
 
 <!-- more -->
+
+<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<script>var FF=function(opt){var api={};opt=opt||{};api.ani={ver:opt.ver||'0.0.0'};api.forFrame=opt.forFrame||function(){};var setMainPerAndBias=function(api){api.per=api.frameIndex/api.maxFrame;api.bias=1-Math.abs(0.5-api.per)/0.5;};var forFrame=function(frameIndex,maxFrame){api.frameIndex=frameIndex;api.maxFrame=maxFrame;setMainPerAndBias(api);api.forFrame.call(api,api,frameIndex,maxFrame);return api.ani;};return function(frame,maxFrame){frame=frame===undefined?0:frame;maxFrame=maxFrame===undefined?50:maxFrame;frame=frame>maxFrame?frame%maxFrame:frame;frame=frame<0?maxFrame-Math.abs(frame)%maxFrame:frame;api.ani.frame=frame;api.ani.maxFrame=maxFrame;forFrame(frame,maxFrame);return api;};};var draw={};draw.bx=function(ctx,bx){ctx.fillStyle='red';ctx.strokeStyle='white';ctx.beginPath();ctx.rect(bx.x,bx.y,bx.w,bx.h);ctx.fill();ctx.stroke();};draw.info=function(ctx,ani){ctx.fillStyle='white';ctx.textBaseline='top';ctx.font='10px courier';ctx.fillText(ani.frame+'/'+ani.maxFrame,10,10);ctx.fillText('v'+ani.ver,10,20);};draw.back=function(ctx,canvas){ctx.fillStyle='black';ctx.fillRect(0,0,canvas.width,canvas.height);};var container=document.getElementById('canvas-app'),canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');ctx.translate(0.5,0.5);canvas.width=320;canvas.height=240;container.appendChild(canvas);var opt={ver:'0.0.0',forFrame:function(api,f,mf){var bx=api.ani.bx={w:32,h:32};bx.x=(canvas.width-32)*api.per;bx.y=canvas.height/2-16+canvas.height/4*api.bias;}};var forFrame=FF(opt),api,frame=0,maxFrame=50,FPS=24,lt=new Date();var loop=function(){var now=new Date(),t=now-lt,secs=t/1000,bx;requestAnimationFrame(loop);api=forFrame(Math.floor(frame),maxFrame);draw.back(ctx,canvas);draw.bx(ctx,api.ani.bx);draw.info(ctx,api.ani);frame+=FPS*secs;frame%=maxFrame;lt=now;};loop();</script>
 
 ## 1 - A basic Canvas example of animation
 
@@ -195,9 +198,12 @@ Inside the FF function I have a helper method that will set a percent done value
 
 ```js
 var FF = function (opt) {
+ 
     var api = {};
     opt = opt || {};
-    api.ani = {};
+    api.ani = {
+        ver: opt.ver || '0.0.0'
+    };
     api.forFrame = opt.forFrame || function () {};
  
     // set the main percent and bias values for api
@@ -228,10 +234,12 @@ var FF = function (opt) {
         // wrap frame index
         frame = frame > maxFrame ? frame % maxFrame : frame;
         frame = frame < 0 ? maxFrame - Math.abs(frame) % maxFrame : frame;
+        api.ani.frame = frame;
+        api.ani.maxFrame = maxFrame;
         // call forFrame with parsed frame and maxFrame
         forFrame(frame, maxFrame);
         // return just the animation object
-        return api.ani;
+        return api;
     };
 };
 ```
@@ -253,16 +261,26 @@ draw.bx = function (ctx, bx) {
     ctx.fill();
     ctx.stroke();
 };
+draw.info = function (ctx, ani) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px courier';
+    ctx.fillText(ani.frame + '/' + ani.maxFrame, 10, 10);
+    ctx.fillText('v' + ani.ver, 10, 20);
+};
 draw.back = function (ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
+```
  
+```js
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 ctx.translate(0.5, 0.5);
  
 var opt = {
+    ver: '0.0.0',
     forFrame: function (api, f, mf) {
         var bx = api.ani.bx = {
             w: 32,
@@ -274,7 +292,8 @@ var opt = {
 };
  
 // create an animation method
-var ani = FF(opt),
+var forFrame = FF(opt),
+api,
 frame = 0,
 maxFrame = 50,
 FPS = 24,
@@ -288,13 +307,13 @@ var loop = function () {
  
     requestAnimationFrame(loop);
  
-    bx = ani(Math.floor(frame), maxFrame).bx;
+    api = forFrame(Math.floor(frame), maxFrame);
     draw.back(ctx, canvas)
-    draw.bx(ctx, bx);
+    draw.bx(ctx, api.ani.bx);
+    draw.info(ctx, api.ani);
     frame += FPS * secs;
     frame %= maxFrame;
     lt = now;
- 
 };
 loop();
 ```
