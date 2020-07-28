@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2020-07-28 09:34:08
-version: 1.29
+updated: 2020-07-28 09:46:04
+version: 1.30
 ---
 
 So this is another post on [canvas examples](/2020/03/23/canvas-example/) using just canvas elements and vanilla javaScript by itself. For this canvas example post I will be writing about a basic example of [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations) as I often end up doing so. There ar many ways of how to go about making animations, but I tend to like making them a certain way that involves the use of methods that are often very pure function like. What I mean by that is making a method where I pass a frame index value, and a total number of frames, and for every set of arguments I always be the same state to which I then render using the 2d canvas drawing context.
@@ -238,11 +238,9 @@ var FF = function (opt) {
 
 ### 2.2 - Simple moving box example of the Basic for forFame module
 
-Now for a Basic example of my for frame method in action. This will be just a basic test that has to do with a simple box object that moves from one side of the canvas to the other.
+Now for a Basic example of my for frame method in action. This will be just a basic test that has to do with a simple box object that moves from one side of the canvas to the other. So I worked out just a very basic draw module that will render a background, and another that will just draw a box object. After that I get a reference to a canvas element and a 2d drawing context just like any other canvas example.
 
-So I worked out just a very basic draw module that will render a background, and another that will just draw a box object. After that I get a reference to a canvas element and a 2d drawing context just like any other canvas example.
-
-After I have my draw module worked out and my canvas element to work with I create an instance of that inner function that is returned by the FF function. However first I need to worm out an options object that contains my for frame method that defines the nature of the animation. Inside the body of that for frame method I create an object that will be the box, and append it to my ani object of the api. I then use the api.per, and api.bias values to work out expressions that will change the moment of the canvas animation of a box moving.
+After I have my draw module worked out and my canvas element to work with I create an instance of that inner function that is returned by the FF function. However first I need to work out an options object that contains my for frame method that defines the nature of the animation. Inside the body of that for frame method I create an object that will be the box, and append it to my ani object of the api. I then use the api.per, and api.bias values to work out expressions that will change the moment of the canvas animation of a box moving.
 
 ```js
 // DRAW
@@ -301,10 +299,11 @@ var loop = function () {
 loop();
 ```
 
+So then once I have my options object together with the for frame method that I want to use for the animation then I just need to pass that to the FF main method that will return my animation method that can be used to set the animation to any frame that is a given index value relative to a max frame index value. I can then use that main method of the animation in a loop that will step a frame index value and loop back over to zero again when the max frame index value is reached. In the main app loop I just draw the current state of the animation, and step the frame index value.
 
-So then I pass my options object with the for frame method to the FF function when calling it and then I get another function that when called with a frame index value will give me the state of the box animation at that frame index value. So far I am just setting it to frame index 25 of 50 which should result in the box being at the half way bottom  and center area of the canvas.
+So then this results in a looping animation where everything is updated by way of a frame index value relative to a ma set of frames. It is just a simple box moving down to the bottom of the canvas, and then back up again, but the basic idea here is that I can directly set the animation to any frame index also. I could design this whole thing differently where instead of looping over all frames I can just quickly jump to any frame in the animation. A user interface could be made to jump to any frame, increase the number of frames, loop backward and so forth.
 
-Just passing some number literals for the frame index value and max frame value is one thing. However when it comes to making an actual project of some kind with this I would want to have a main app loop that makes use of request animation frame, have it event driven, or use it with a framework of some kind to export an animation to a video container format of one kind or another.
+This might be just a simple moving box animation, but this is a post on the basics of animation. In a read project the state of the animation object would contain not just one box, but a collection of box objects, points, and so forth and a way more complex  for frame method, or even a collection of such methods. In any case this is the kind of thing I like to do when it comes to working out any kind of looping canvas animation rather than something that would respond to user input.
 
 ## 3 - Conclusion
 
