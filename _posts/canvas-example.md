@@ -5,11 +5,11 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-23 11:47:57
-version: 1.46
+updated: 2020-07-28 09:01:03
+version: 1.47
 ---
 
-I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
+I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so oif course I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
 
 The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. I am going all over the board when it comes to this naturally because lets fact it canvas is a great example of fun and exciting javaScript rather than boring yet practical javaScript. SO of course I have to make a lot of them, and maybe it I get to it pour a little more time and effort into some of them. So lets get to the list of canvas examples here then.
 
