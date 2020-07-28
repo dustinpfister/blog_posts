@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2020-07-28 07:11:35
-version: 1.73
+updated: 2020-07-28 07:16:45
+version: 1.74
 ---
 
 When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw [arcs and circles](https://mathbitsnotebook.com/Geometry/Circles/CRArcLengthRadian.html). Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
@@ -578,7 +578,11 @@ I often do just use the canvas arc method as a way to just track the movement of
 
 ## 9 - The distance formula and canvas arc
 
-I iften end up using a distance formula in many of my projects that can be used to just simple find the distance between two points.
+I often end up using a distance formula in many of my projects that can be used to just simple find the distance between two points. This distance formula can be used as a way to find out if a user has clicked an area within a circle or not, or as a way to find out if two circles that are moving have hit each other or not. So in this section I will be going over some examples that have to do with the use of the distance formula to find distances, and the canvas arc method as a way to draw circle areas.
+
+### 9.1 - A Basic example of distance and canvas arc
+
+Here we have a basic example of what I am talking about when it comes to the distance formula and the canvas arc method. I have a distance formula, a draw method that will draw a circle using data in a state object, and a method that will create and return an event hander that will mutate the state object each time the circle is clicked by using the distance formula to find out if the area that was clicked is in the circle or not.
 
 ```html
 <html>
