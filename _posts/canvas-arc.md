@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2020-07-28 07:06:15
-version: 1.72
+updated: 2020-07-28 07:11:35
+version: 1.73
 ---
 
 When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw [arcs and circles](https://mathbitsnotebook.com/Geometry/Circles/CRArcLengthRadian.html). Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
@@ -577,6 +577,8 @@ So for this animation example that I started working out I am just using canvas 
 I often do just use the canvas arc method as a way to just track the movement of points by just keeping the radius of the circle very small. I find doing so quick and easy compared to drawing two lines, and also like it over using the stroke rect method.
 
 ## 9 - The distance formula and canvas arc
+
+I iften end up using a distance formula in many of my projects that can be used to just simple find the distance between two points.
 
 ```html
 <html>
