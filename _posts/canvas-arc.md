@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2020-07-27 19:04:47
-version: 1.70
+updated: 2020-07-28 06:46:12
+version: 1.71
 ---
 
-When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw arcs and circles. Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
+When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw [arcs and circles](https://mathbitsnotebook.com/Geometry/Circles/CRArcLengthRadian.html). Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
 
 Drawing arcs and circles in canvas is important not just for the sake of drawing graphics, but to also get an idea where a certain range is from a given point outward to a certain radius that can be helpful sometimes with debugging things. There is also knowing how to go about positioning things in an arc like pattern though, and braking away from the convenience of the canvas arc method, to get into more complex alternatives that center around creating an array of points that are placed in an arc like pattern around a given center point. In other words there is not just using the built in canvas arc method to draw arcs, but to create an array of points and then just draw that.
 
