@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-07-29 17:21:14
-version: 1.4
+updated: 2020-07-29 17:24:16
+version: 1.5
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map.
@@ -202,6 +202,8 @@ var mapMod = (function () {
 
 ## 4 - The draw.js file
 
+So now that I have mt modules for creating state objects, I will now want a module with methods that are used to draw aspects of these state objects to a canvas element.
+
 ```js
 var draw = (function () {
     return {
@@ -254,7 +256,9 @@ var draw = (function () {
     ());
 ```
 
-## 5 - Main.js
+## 5 - Now for a Main.js file along with a main app loop
+
+So now I need some additional code to pull everything together here.
 
 ```js
 // MAIN
