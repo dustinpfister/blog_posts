@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 687
-updated: 2020-07-29 18:03:21
-version: 1.1
+updated: 2020-07-29 18:09:22
+version: 1.2
 ---
 
 It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this vuejs example the idea of a simple image editor application that will create a json version of the image that I draw with it came to mind. So maybe something like that is in order when it comes to expanding on what can be done with vuejs.
@@ -15,7 +15,7 @@ It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/gui
 
 ## 1 - Edit.js
 
-First off here is the vuejs instance that will serve as the editor.
+First off here is the vuejs instance that will serve as the editor that will be used to store the state of the image and can also be used to change the image state.
 
 ```js
 new Vue({
@@ -130,3 +130,7 @@ new Vue({
   </body>
 </html>
 ```
+
+## 2 - Conclusion
+
+I did not get around to finishing everything that i wanted to do with this vuejs example as of this writing. I am not happy with the way things pan out, and will get around to writing the example over again at some point when I get more time to work on this one. I have been getting around to editing some of this vuejs content of mine, and if I keep up with it I should come back to this one again at some point in the future.
