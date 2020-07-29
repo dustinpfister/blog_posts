@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-07-29 10:57:47
-version: 1.23
+updated: 2020-07-29 10:59:11
+version: 1.24
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -99,7 +99,7 @@ An HTMLCollection is not an Array, but it is an Array like object, so Array meth
 
 ## 3 - document.getElementsByTagName
 
-There is also a way to get a html collection of all elements of a given tag name with document.getElementsByTagName.
+There is also a way to get a html collection of all elements of a given tag name such as div rather than any elements that have a class name or just one element by id. This method would be the document.getElementsByTagName method.
 
 ```js
 var divs = document.getElementsByTagName('div');
