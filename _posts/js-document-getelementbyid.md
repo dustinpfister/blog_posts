@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-07-29 10:46:09
-version: 1.20
+updated: 2020-07-29 10:49:05
+version: 1.21
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -40,7 +40,7 @@ The use of the method is simple enough, just call the method off of the document
 </html>
 ```
 
-Works fine assuming that the desired element has an id, and you know what it is. No worries there is of course a great deal of other ways to go about grabbing an element as well, more on that later.
+Works fine assuming that the desired element has an id, and you know what it is. No worries there is of course a great deal of other ways to go about grabbing an element when you do not have one. Also when you do have one there are lots of ways to go about getting references to other child and parent elements. In this example you might have noticed that I am using the children HTML collection of the reference to the div as a way to access another reference that is a child of the one that I obtained by way of the document.getElelementById method.
 
 ### 1.1 - Wrapping document.getElementById
 
