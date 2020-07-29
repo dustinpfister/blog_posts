@@ -1,12 +1,12 @@
 ---
-title: 36 Canvas examples and counting, animations, games, modules, and more.
+title: 37 Canvas examples and counting, animations, games, modules, and more.
 date: 2020-03-23 08:48:00
 categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-28 10:34:19
-version: 1.48
+updated: 2020-07-29 16:11:47
+version: 1.49
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so oif course I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -70,103 +70,107 @@ I thought it would be a good idea to start yet another breakout clone. This is o
 
 There are many games that have came and went ever the years that can be described as a kind of cannon shoot type game. That is some kind of game where you have a way of shooting a display object off from a given starting position, angle, and power, and then see how far t goes from there. This is my first, and as of this writing last effort and making that kind of game from the ground up.
 
-### 2.12 - [Fixed shooter hybrid](/2020/07/10)
+### 2.12 - [cross hairs!](/2020/07/29/canvas-example-game-crosshairs/)
+
+A game about a cross hairs object that you can move around and do damage to things.
+
+### 2.13 - [Fixed shooter hybrid](/2020/07/10)
 
 This is like a fixed axis shooter game only the player is fixed to an area rather than a single axis. One such game that might be similar to this is the classic game centipede.
 
-### 2.13 - [Flappy collector idle](/2020/01/21/canvas-example-game-flappy-collector-idle/)
+### 2.14 - [Flappy collector idle](/2020/01/21/canvas-example-game-flappy-collector-idle/)
 
 This is a canvas example that aims to be a novel spin on flappy bird. Although it might be best to come up with a truly original idea for a canvas project, some times it is more realistic to take something that has been done before and try to find something new to do with it.
 
-### 2.14 - [Flappy collector idle a flappy bird clone](/2020/01/16/canvas-example-game-flappy-collector/)
+### 2.15 - [Flappy collector idle a flappy bird clone](/2020/01/16/canvas-example-game-flappy-collector/)
 
 This is just a flappy bid clone of sorts, I just wanted to take a moment to make my own rendition on this one, and then maybe one or two more based off of it. Many games now are just clever, unique remakes of things that have all ready been done before hand anyway. The idea I have in mind is to start cloning something that has been done before, but then try to find a way to make it my own somehow. However first i do have to start with a clone that is not all that different from the original.
 
-### 2.15 - [A kaboom clone](/2020/04/10/canvas-example-game-kaboom-clone/)
+### 2.16 - [A kaboom clone](/2020/04/10/canvas-example-game-kaboom-clone/)
 
 I have found myself making clones of certain classics from the Atari 2600, this is one such canvas example that is a clone of the game kaboom.
 
-### 2.16 - [Map idle game prototype example](/2020/01/13/canvas-example-game-map-idle/)
+### 2.17 - [Map idle game prototype example](/2020/01/13/canvas-example-game-map-idle/)
 
 There is yet another example of an idle type game that involves a gird that has assets at each location that generate money.
 
-### 2.17 - [game spinner](/2020/06/07/canvas-example-game-spinner/)
+### 2.18 - [game spinner](/2020/06/07/canvas-example-game-spinner/)
 
 So I wanted to have at least one canvas example that is a game spinner that is similar to that of something that you find with many board games.
 
-### 2.18 - [Grass blades](/2020/07/02/canvas-example-grass-blades/)
+### 2.19 - [Grass blades](/2020/07/02/canvas-example-grass-blades/)
 
 just some grass blade type things.
 
-### 2.19 - [Gird defense](/2019/11/27/canvas-example-grid-defense/)
+### 2.20 - [Gird defense](/2019/11/27/canvas-example-grid-defense/)
 
 A gird defense style game prototype. 
 
-### 2.20 - [Grid gradient](/2020/03/26/canvas-example-grid-gradient/)
+### 2.21 - [Grid gradient](/2020/03/26/canvas-example-grid-gradient/)
 
 A canvas example of a grid where each cell changes color depending on the status of an array of objects the properties of which can be changed by way of plug-ins for the main state module that is used.
 
-### 2.21 - [Grid world simulator core](/2020/04/15/canvas-example-grid-worldsim-core/)
+### 2.22 - [Grid world simulator core](/2020/04/15/canvas-example-grid-worldsim-core/)
 
 A start with what might become a world simulator type canvas example thing like that of Sim Earth.
 
-### 2.22 - [Canvas Grid module](/2019/11/07/canvas-example-grid/)
+### 2.23 - [Canvas Grid module](/2019/11/07/canvas-example-grid/)
 
 A grid module for canvas projects.
 
-### 2.23 - [The limits of 2d images](/2019/12/11/canvas-example-image-limits/)
+### 2.24 - [The limits of 2d images](/2019/12/11/canvas-example-image-limits/)
 
 This is one project example I find myself coming back to now and then. It has to do with the limits of 2d images given a a set width, height, and color depth.
 
-### 2.24 - [image loader](/2020/04/30/canvas-example-image-loader/)
+### 2.25 - [image loader](/2020/04/30/canvas-example-image-loader/)
 
 Here I have a simple image loader example for a canvas project that I worked out for my own reference for when it comes to getting around to skinning some of these with some external images.
 
-### 2.25 - [input controller](/2020/04/17/canvas-example-input-controller/)
+### 2.26 - [input controller](/2020/04/17/canvas-example-input-controller/)
 
 An input controller concept for canvas projects.
 
-### 2.26 - [Map scrolling](/2020/01/08/canvas-example-map-scrolling/)
+### 2.27 - [Map scrolling](/2020/01/08/canvas-example-map-scrolling/)
 
 In this canvas example I worked out a basic example of getting scrolling working with a large grid.
 
-### 2.27 - [object pool](/2020/07/20/canvas-example-object-pool/)
+### 2.28 - [object pool](/2020/07/20/canvas-example-object-pool/)
 
 This project is an exercise of having an object pool. That is just simply a set collection of objects that are used over and over again, rather than pushing and splicing out as needed.
 
-### 2.28 - [binary particles](/2020/03/18/canvas-example-particles-binary/)
+### 2.29 - [binary particles](/2020/03/18/canvas-example-particles-binary/)
 
 The idea just came into my head one day to make some kind of fun and interesting canvas example that involves two types of circles. When two of two different types combine into one, then it results in an explosion. The result is a somewhat interesting visual effect.
 
-### 2.29 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
+### 2.30 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
 
 Search and destroy particles.
 
-### 2.30 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
+### 2.31 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
 
 I think that it is generally a good idea to make a canvas project to work with pointers in general rather than making a project to desktop or mobile centric. So I made a quick Canvas Example that is a way to manage pointer input from both mouse and touch events. 
 
-### 2.31 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
+### 2.32 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
 
 Here is a Canvas Example that is a User interface design for moving a map, or anything for that matter by way of touch or click events by way of a pointer start point and distance to a current point.
 
-### 2.32 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
+### 2.33 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
 
 A Canvas Example that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example.
 
-### 2.33 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
+### 2.34 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
 
 A Canvas Example of a space shooter type game.
 
-### 2.34 - [Stars](/2020/02/12/canvas-example-star/)
+### 2.35 - [Stars](/2020/02/12/canvas-example-star/)
 
 I use to have a thing about drawing stars in all kinds of different ways so of course I have a Canvas Example on that.
 
-### 2.35 - [State machines](/2020/01/28/canvas-example-state-machine/)
+### 2.36 - [State machines](/2020/01/28/canvas-example-state-machine/)
 
 State machines are an important component for many javaScript projects so of course I have a Canvas Example on state machine in general.
 
-### 2.36 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
+### 2.37 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
 
 Turret defense games are sometimes nice so I have a Canvas Example on that in general.
 
