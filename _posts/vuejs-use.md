@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 443
-updated: 2019-05-13 13:03:02
-version: 1.9
+updated: 2020-07-29 11:29:46
+version: 1.10
 ---
 
 So the [vue use](https://vuejs.org/v2/api/#Vue-use) global api method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. It seems like vue.js is following a more minimal approach with its design, pulling many features out of the framework itself, and leaving it up to the developer how to go about adding that feature.
@@ -15,7 +15,7 @@ So the [vue use](https://vuejs.org/v2/api/#Vue-use) global api method in vue.js 
 
 ## 1 - Vue use basic plugin example
 
-In order to ise the vue use method there first needs to be a plugin to use with the method. This is typically something that will be stored in an external javaScript file and declare a global variable. That global variable should be an Object, and this object should at a minimum have an install property. The install property should be a function, and this function will receive Vue and an optional options object as arguments. Inside the body of this install function the plugin will append any instance methods, directives, and so forth that ads functionality to vuejs.
+In order to use the vue use method there first needs to be a plugin to use with the method. This is typically something that will be stored in an external javaScript file and declare a global variable. That global variable should be an Object, and this object should at a minimum have an install property. The install property should be a function, and this function will receive Vue and an optional options object as arguments. Inside the body of this install function the plugin will append any instance methods, directives, and so forth that ads functionality to vuejs.
 
 Here I have a very basic example of a vuejs plugin that can be used with the vue use global method. This plugin just adds a single vue instance method that just returns a string when called.
 
@@ -113,7 +113,7 @@ var httpGet = (function (){
     ());
 ```
 
-This results in a simpe javaScript module that if I want to I can use with just plain old vanillajavaScript by itself to make get requests. However it also of course has an install method that adds an $httpGetVue class prototype instance method to Vuw when used with the vue use global api method of Vue.
+This results in a simple javaScript module that if I want to I can use with just plain old vanillajavaScript by itself to make get requests. However it also of course has an install method that adds an $httpGetVue class prototype instance method to Vue when used with the vue use global api method of Vue.
 
 So then I can use it to add a method to Vue that can be used to make simple get requests.
 
