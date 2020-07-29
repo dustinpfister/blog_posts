@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 688
-updated: 2020-07-28 20:52:06
-version: 1.1
+updated: 2020-07-28 21:00:55
+version: 1.2
 ---
 
-This will be a quick post on the vuejs model directive that might need to be used now and then when doing something with input elements in a template.
+This will be a quick post on the [vuejs model](https://vuejs.org/v2/api/#v-model) directive that might need to be used now and then when doing something with input elements in a template. The model directive may not need to always be used when working out an interface in a template but I have found that I need to use it with input, select, and textarea tags.
 
 <!-- more -->
 
