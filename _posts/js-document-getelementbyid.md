@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-07-29 10:49:05
-version: 1.21
+updated: 2020-07-29 10:52:56
+version: 1.22
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -44,7 +44,7 @@ Works fine assuming that the desired element has an id, and you know what it is.
 
 ### 1.1 - Wrapping document.getElementById
 
-When making a complex project in which document.getElementById is going to be called many times there might be a desire to wrap the method like this.
+When making a complex project in which document.getElementById is going to be called many times there might be a desire to wrap the method in another method that will just serve as a more concise way of doing the same thing. There is not much wrong with just repating the lengthly method over and over again really, it is just the many would say that it looks bad.
 
 ```js
 var get = function(id){
@@ -62,7 +62,7 @@ get('baz').addEventListener('click', function(){
 get('foo').innerHTML = 'bar';
 ```
 
-If document.getElementById is only used once or twice there is no need, but at some point it might be a good move to do something like this.
+If document.getElementById is only used once or twice there is no need, but at some point it might be a good move to do something like this. The other option is to find other ways of going about getting and working with html collections rather than just a single element. The document.getElementById method is just one tool in the toolbox after all, so maybe a better option would be to drop the use of the method all together, and get at your html code by some other means.
 
 ## 2 - getElementsByClassName
 
