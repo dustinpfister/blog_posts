@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-07-29 10:41:52
-version: 1.19
+updated: 2020-07-29 10:46:09
+version: 1.20
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -19,7 +19,9 @@ One nice thing about the get by id method in javaScript is that it has great bac
 
 ## 1 - Get by id by using document.getElementById to get a reference to an element
 
-One of the most common ways of getting a reference to an html element with javaScript is to use document.getElementById. This is seen in tones of code examples, and is still often a favorite way of going about accessing an element in front end javaScript.
+One of the most common ways of getting a reference to an html element with javaScript is to use the document.getElementById method. This is seen in tones of code examples, and is still often a favorite way of going about accessing an element in front end javaScript. I still often find myself using it still, even though there are many other more versatile options to work with in native client side javaScript by itself without the addition of a framework.
+
+The use of the method is simple enough, just call the method off of the document object, and pass a string that is the id of the element that you want as the first and only argument. If all goes well the value that is returned should be a reference to the desired element with the set id attribute if such an element is there in the HTML.
 
 ```html
 <html>
