@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-07-29 10:52:56
-version: 1.22
+updated: 2020-07-29 10:57:47
+version: 1.23
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -66,7 +66,7 @@ If document.getElementById is only used once or twice there is no need, but at s
 
 ## 2 - getElementsByClassName
 
-So one of the many alternatives to getElementById is getElementsByClassName. This is a method that as the name suggests can get elements by a class name that they have assigned to them, rather than an id. This will return an HTMLcollection of each element that has the given class name.
+So one of the many alternatives to getElementById is the document.getElementsByClassName method that will get a collection of elements by way of class name rather than id. So then as the name suggests this method will return an HTMLcollection rather than  just a single element reference where each of the elements in the collection has the given class name when calling the method.
 
 ```html
 <html>
@@ -95,7 +95,7 @@ So one of the many alternatives to getElementById is getElementsByClassName. Thi
 </html>
 ```
 
-An HTMLCollection is not an Array, but it is an Array like object, so Array methods can be used via Function.call. You might still see this used in code examples now and then, but as of late there is querySelectorAll, more on that one later.
+An HTMLCollection is not an Array, but it is an Array like object, so Array methods can be used via Function.call. You might still see this used in code examples now and then, but as of late there is querySelectorAll that might prove to be a better option as that can be used to get by class also as well as many other ways, more on that one later.
 
 ## 3 - document.getElementsByTagName
 
