@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-04-21 12:46:12
-version: 1.16
+updated: 2020-07-29 10:36:22
+version: 1.17
 ---
 
-With front end javaScript it is important to know how to create references to HTML elements. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document. So creating a reference to an HTML element is needed in order to get something from and element, change something about it, or add something to it.
+With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
 
 One way to go about getting a reference to an element is by way of an elements [id attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id). The typical way to go about getting a reference to an element by way of an id attribute would be to use the [document.getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) method of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document). 
 
