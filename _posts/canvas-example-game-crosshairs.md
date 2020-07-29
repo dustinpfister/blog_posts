@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-07-29 16:05:43
-version: 1.2
+updated: 2020-07-29 16:18:29
+version: 1.3
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map.
@@ -18,6 +18,8 @@ For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick
 
 
 ## 1 - The utility module
+
+For like with many of these canvas examples this one has a utility library. In this one I am just using the distance formula, and a method that will help me to get a canvas relative position when it comes to working with evet handers for pointer events.
 
 ```js
 // UTILS
@@ -38,6 +40,8 @@ utils.getCanvasRelative = function (e) {
 
 
 ## 2 - The cross.js file
+
+So now for the module that will be used to create and update a state object for a cross hairs object. The idea of this module is to have a an object that contains an object that is a cross hairs object of sorts that can be within an inner radius, or an outer radius. If the cross hairs object is in the outer radius then that will effect some offset properties of this state object that can then be used to as offset values for a map. The ma module is another matter that i will be getting to later, but for now in this section I will just be going over the cross hairs module.
 
 ```js
 var crossMod = (function () {
