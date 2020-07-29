@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-07-29 10:36:22
-version: 1.17
+updated: 2020-07-29 10:39:18
+version: 1.18
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
 
-One way to go about getting a reference to an element is by way of an elements [id attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id). The typical way to go about getting a reference to an element by way of an id attribute would be to use the [document.getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) method of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document). 
+One way to go about getting a reference to an element is by way of an elements [id attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id). The typical way to go about getting a reference to an element by way of an id attribute would be to use the [document.getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) method of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document). There are other ways of getting a reference to an element by id, and of course many other ways to get references to elements by other aspects of an element, but this is one of the more tired yet true ways to do so that have been around for a great while now.
 
 One nice thing about the get by id method in javaScript is that it has great backward compatibility as it will work in really old browsers as old as IE 5.5 even. However in addition it is possible to get a reference to an element by other means when it comes to what is available in modern browsers. So in this post I will be covering some methods and examples of how to go about grabbing references to HTML elements in client side javaScript by way of an id, and other ways.
 
