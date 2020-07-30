@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-07-30 08:10:05
-version: 1.18
+updated: 2020-07-30 08:15:59
+version: 1.19
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -47,6 +47,8 @@ A method such as this can be used to find out if one box area overlaps another, 
 Now that I have covered how to have a simple bounding box collision detection method, I can now use that to make it so that when an area of the canvas is clicked that results in some kind of action. In this section I have an example that uses the bounding box method to know that an area is clicked and when such an area is click I cycle over some indexed color values for that area. In other words when the area is click it changes color, not the most interesting example, but it is a start when it comes to this sort of thing with canvas.
 
 So at the top of my script I have my bounding box method that I covered in the first section, then I have my get canvas relative position method. I will not be getting into this method in detail here as I have wrote a post before hand on this topic, but this method just helps me get a canvas rather than window relative position when inside the body of an event hander for a mouse event, if you want to read more about this you can read the post on [getting a canvas relative pointer position](/2020/03/04/canvas-get-point-relative-to-canvas/).
+
+I then have a method that can be used to create an event hander for the object that I will be using to define the area in the canvas. This method excepts the area object as the first and only argument, and then returns an event hander that is intended to be used when attaching such an event hander to a canvas element using the add event listener method. The event hander that is returned will use the get canvas relative method to get a position relative to the canvas, and then attach width and height values that are 1 by 1 to the object and use that as an argument, along with the area object when calling the bounding box method. In the event that the bounding box method returns true, then a click method of the area object will be called.
 
 ```html
 <html>
