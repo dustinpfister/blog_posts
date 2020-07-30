@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-07-30 09:23:23
-version: 1.21
+updated: 2020-07-30 09:26:48
+version: 1.22
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -148,10 +148,21 @@ var Box = (function () {
     api.create = function (opt) {
         opt = opt || {};
         return {
+            ver: '0.1.0',
             x: opt.x === undefined ? 0 : opt.x,
             y: opt.y === undefined ? 0 : opt.y,
             w: opt.w === undefined ? 32 : opt.w,
-            h: opt.h === undefined ? 32 : opt.h
+            h: opt.h === undefined ? 32 : opt.h,
+            color: 'white',
+            damage: 0,
+            DPS: opt.DPS || 5,
+            hitCheck: opt.hitCheck || function (bx, secs) {
+                this.color = 'white';
+                if (api.boundingBox(bx, this)) {
+                    this.color = 'red';
+                    this.damage += bx.DPS * secs;
+                }
+            }
         };
     };
  
@@ -185,12 +196,10 @@ So then I will want a draw.js file that can be used to draw a box object to a ca
 
 ```js
 var draw = {};
- 
 draw.back = function (ctx, canvas) {
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
- 
 // draw a box
 draw.box = function (ctx, bx, fill, stroke) {
     ctx.fillStyle = fill || '#ffffff';
@@ -200,6 +209,27 @@ draw.box = function (ctx, bx, fill, stroke) {
     ctx.fill();
     ctx.stroke();
 };
+// raw pool of box objects
+draw.pool = function (ctx, pool) {
+    var i = pool.length,
+    bx;
+    while (i--) {
+        bx = pool[i];
+        draw.box(ctx, bx, bx.color, 'black');
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'center';
+        ctx.font = '10px courier';
+        ctx.fillText(Math.floor(bx.damage), bx.x + bx.w / 2, bx.y + bx.h / 2 - 5)
+    }
+};
+draw.info = function (ctx, canvas, player, pool) {
+    ctx.fillStyle = 'lime';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px courier';
+    ctx.fillText('v' + player.ver, 10, canvas.height - 10);
+};
 ```
 
 ### 3.3 - An example of the javaScript module in action with hit detection
@@ -208,34 +238,77 @@ Time to test this out now with a some html, and a little more javaScript. In my 
 
 Once I have my reference to the canvas element, and the 2d drawing context, I create two box objects, and use the bounding box method of my box module to find out if they overlap or not. If so I set the color of one of them to red as a result if they do overlap.
 
+```js
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ 
+var player = Box.create({
+        x: 150,
+        y: 50
+    }),
+pool = [Box.create({
+        x: canvas.width / 1.5 - 50,
+        y: 120,
+        w: 100
+    }),
+    Box.create({
+        x: 5,
+        y: 20,
+        w: 75,
+        h: 75
+    }),
+    Box.create({
+        x: 80,
+        y: 20,
+        w: 75,
+        h: 50
+    })];
+ 
+var poolHitCheck = function (p, bx, secs) {
+    var i = p.length;
+    while (i--) {
+        p[i].hitCheck(bx, secs);
+    }
+};
+ 
+var lt = new Date(),
+heading = 45;
+var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
+    requestAnimationFrame(loop);
+ 
+    player = Box.moveByHeading(player, Math.PI / 180 * heading, 32 * secs);
+    poolHitCheck(pool, player, secs);
+    heading += 25 * secs;
+    heading %= 360;
+ 
+    draw.back(ctx, canvas);
+    //draw.box(ctx, pool[0], pool[0].color);
+    draw.pool(ctx, pool);
+    draw.box(ctx, player, player.color);
+    draw.info(ctx, canvas, player, pool);
+    lt = now;
+};
+ 
+loop();
+```
+
 ```html
 <html>
     <head>
         <title>canvas hit region</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
         <script src="box.js"></script>
         <script src="draw.js"></script>
-        <script>
- 
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
- 
-var bx = Box.create({x: 100, y: 80}),
-bx2 = Box.create({y:80});
- 
-bx2 = Box.moveByHeading(bx2, 0, 75);
- 
-draw.back(ctx, canvas);
-var fill = 'white';
-if(Box.boundingBox(bx, bx2)){
- fill = 'red';
-}
-draw.box(ctx, bx, fill);
-draw.box(ctx, bx2);
- 
-        </script>
+        <script src="main.js"></script>
     </body>
 </html>
 ```
