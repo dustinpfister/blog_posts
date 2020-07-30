@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-07-30 15:30:33
-version: 1.28
+updated: 2020-07-30 15:33:36
+version: 1.29
 ---
 
-There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in [canvas](/2020/07/22/canvas/) that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
+There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in [canvas](/2020/07/22/canvas/) that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least. However there are other ways of doing this when it comes to just working gout my own methods, and [finding things on line that have to do with bounding box collision detection](https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection) and other ways of doing such a task.
 
 Still I though that I should write a post on this subject, and also on hit detection in general in canvas projects. So this post will not be on the hit region api that much, but it will be on bounding box collision detection in a vanilla javaScript canvas project. A subject that will come up often in many such projects.
 
