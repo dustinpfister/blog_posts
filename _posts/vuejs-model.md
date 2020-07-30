@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 688
-updated: 2020-07-29 11:29:45
-version: 1.5
+updated: 2020-07-30 15:43:59
+version: 1.6
 ---
 
-This will be a quick post on the [vuejs model](https://vuejs.org/v2/api/#v-model) directive that might need to be used now and then when doing something with input elements in a template. The model directive may not need to always be used when working out an interface in a template but I have found that I need to use it with input, select, and textarea tags. The vue model directive will make it so that you have [two way bindings](https://vuejs.org/v2/guide/forms.html) between input tags, and a value in the data object of a vue instance. So that when something changes in the data object, that change will effect the value of an input tag, and that if the user changes the value in the input tag that will change the value in the data object.
+This will be a quick post on the [vuejs model](https://vuejs.org/v2/api/#v-model) directive that might need to be used now and then when doing something with input elements in a template. The model directive may not need to always be used when working out an interface in a template but I have found that I need to use it with input, select, and text area tags. The vue model directive will make it so that you have [two way bindings](https://vuejs.org/v2/guide/forms.html) between input tags, and a value in the data object of a vue instance. So that when something changes in the data object, that change will effect the value of an input tag, and that if the user changes the value in the input tag that will change the value in the data object.
 
 <!-- more -->
 
@@ -51,3 +51,7 @@ new Vue({
   </body>
 </html>
 ```
+
+## 2 - Conclusion
+
+So the Vue module directive is what needs to be used to make a two way binding between the value property of various HTML elements that are used to get user input, and the data object of a vue.js instance. I use it all the time in any template that requires the use of it.
