@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-07-30 08:19:40
-version: 1.20
+updated: 2020-07-30 09:23:23
+version: 1.21
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -14,6 +14,9 @@ There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/
 Still I though that I should write a post on this subject, and also on hit detection in general in canvas projects. So this post will not be on the hit region api that much, but it will be on bounding box collision detection in a vanilla javaScript canvas project. A subject that will come up often in many such projects.
 
 <!-- more -->
+
+<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<script>var Box=(function(){var clone=function(bx){return JSON.parse(JSON.stringify(bx));};var api={};api.create=function(opt){opt=opt||{};return{ver:'0.1.0',x:opt.x===undefined?0:opt.x,y:opt.y===undefined?0:opt.y,w:opt.w===undefined?32:opt.w,h:opt.h===undefined?32:opt.h,color:'white',damage:0,DPS:opt.DPS||5,hitCheck:opt.hitCheck||function(bx,secs){this.color='white';if(api.boundingBox(bx,this)){this.color='red';this.damage+=bx.DPS*secs;}}};};api.boundingBox=function(bx1,bx2){return!((bx1.y+bx1.h)<bx2.y||bx1.y>(bx2.y+bx2.h)||(bx1.x+bx1.w)<bx2.x||bx1.x>(bx2.x+bx2.w));};api.moveByHeading=function(bx,heading,delta){heading=heading===undefined?0:heading;delta=delta===undefined?1:delta;var nbx=clone(bx);nbx.x=nbx.x+Math.cos(heading)*delta;nbx.y=nbx.y+Math.sin(heading)*delta;return nbx;};return api;}());var draw={};draw.back=function(ctx,canvas){ctx.fillStyle='#000000';ctx.fillRect(0,0,canvas.width,canvas.height);};draw.box=function(ctx,bx,fill,stroke){ctx.fillStyle=fill||'#ffffff';ctx.strokeStyle=stroke||'#000000';ctx.beginPath();ctx.rect(bx.x,bx.y,bx.w,bx.h);ctx.fill();ctx.stroke();};draw.pool=function(ctx,pool){var i=pool.length,bx;while(i--){bx=pool[i];draw.box(ctx,bx,bx.color,'black');ctx.fillStyle='black';ctx.textBaseline='top';ctx.textAlign='center';ctx.font='10px courier';ctx.fillText(Math.floor(bx.damage),bx.x+bx.w/2,bx.y+bx.h/2-5)}};draw.info=function(ctx,canvas,player,pool){ctx.fillStyle='lime';ctx.textBaseline='top';ctx.textAlign='left';ctx.font='10px courier';ctx.fillText('v'+player.ver,10,canvas.height-10);};var container=document.getElementById('canvas-app'),canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');container.appendChild(canvas);canvas.width=320;canvas.height=240;var player=Box.create({x:150,y:50}),pool=[Box.create({x:canvas.width/1.5-50,y:120,w:100}),Box.create({x:5,y:20,w:75,h:75}),Box.create({x:80,y:20,w:75,h:50})];var poolHitCheck=function(p,bx,secs){var i=p.length;while(i--){p[i].hitCheck(bx,secs);}};var lt=new Date(),heading=45;var loop=function(){var now=new Date(),t=now-lt,secs=t/1000;requestAnimationFrame(loop);player=Box.moveByHeading(player,Math.PI/180*heading,32*secs);poolHitCheck(pool,player,secs);heading+=25*secs;heading%=360;draw.back(ctx,canvas);draw.pool(ctx,pool);draw.box(ctx,player,player.color);draw.info(ctx,canvas,player,pool);lt=now;};loop();</script>
 
 ## 1 - Basic bounding box hit region area
 
