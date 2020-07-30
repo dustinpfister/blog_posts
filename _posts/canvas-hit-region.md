@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-07-30 09:36:00
-version: 1.25
+updated: 2020-07-30 09:43:49
+version: 1.26
 ---
 
-There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
+There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in [canvas](/2020/07/22/canvas/) that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
 
 Still I though that I should write a post on this subject, and also on hit detection in general in canvas projects. So this post will not be on the hit region api that much, but it will be on bounding box collision detection in a vanilla javaScript canvas project. A subject that will come up often in many such projects.
 
@@ -299,6 +299,10 @@ var loop = function () {
 loop();
 ```
 
+So then the player object moves around the canvas in a circle by making use of the move by heading method, and when it moves over a box in the pool that hit check method for that box will fire each time until the player object is not over it anymore. When the hit check method is called a secs value that is the amount of time that is passes sense the last update is available in the body of the hit check method. This secs value is used to add an amount of damage to the pool object based on that secs value and the Damage Per Second value of the player object.
+
+Now all I need is a little html to tie this all together.
+
 ```html
 <html>
     <head>
@@ -313,7 +317,8 @@ loop();
 </html>
 ```
 
-Not a big deal here in this example, however in a real project I would use bounding box to find out if a user has clicked a box area that is a button, or an enemy display object if it where some kind of game project.
+
+So this turned out to be a fun little project that just shows off the use of the bounding box method as a way to find out if a display object is getting hit or not. If I get some more time at some point I might add all kinds of additional features to this one to make it a little more interesting. However I have a lot of other projects that I want to get to, so do not hold your breath on that one. In the mean time you might want to check out my [canvas examples](/2020/03/23/canvas-example/) that are examples of full canvas projects rather that just simple little demos like this.
 
 ## 4 - Conclusion
 
