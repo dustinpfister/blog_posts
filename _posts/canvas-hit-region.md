@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-04-15 12:34:06
-version: 1.17
+updated: 2020-07-30 08:10:05
+version: 1.18
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -28,23 +28,25 @@ One way to make it so you have a hit area in the canvas is to use a basic boundi
 ```js
 var bb = function (a, b) {
     return !(
-        ((a.y + a.h) < (b.y)) ||
-        (a.y > (b.y + b.h)) ||
-        ((a.x + a.w) < b.x) ||
-        (a.x > (b.x + b.w)));
+        (a.y + a.h) < b.y ||
+        a.y > (b.y + b.h) ||
+        (a.x + a.w) < b.x ||
+        a.x > (b.x + b.w))
 };
  
 var box = {x:50,y:50,w:100,h:50};
- 
 console.log( bb(box,{x: 75,y:75,w:1,h:1}) ); // true
 console.log( bb(box,{x: 5,y:5,w:1,h:1}) ); // false
+
 ```
 
 A method such as this can be used to find out if one box area overlaps another, and can then be used in conjunction with many other methods and objects to create, and mutate a state. That state then just needs to be rendered to the canvas.
 
 ## 2 - Basic canvas hit region example
 
-Now that I have covered how to have a simple bound box collision detection method, I can now use that to make it so that when and area of the canvas is clicked that results in some kind of action. In this section I have an example that uses the bounding box method to know that and area is clicked and when such an area is click I cycle over some indexed color values for that area. In other words when the area is click it changes color, not the most interesting example, but it is a start when it comes to this sort of thing with canvas.
+Now that I have covered how to have a simple bounding box collision detection method, I can now use that to make it so that when an area of the canvas is clicked that results in some kind of action. In this section I have an example that uses the bounding box method to know that an area is clicked and when such an area is click I cycle over some indexed color values for that area. In other words when the area is click it changes color, not the most interesting example, but it is a start when it comes to this sort of thing with canvas.
+
+So at the top of my script I have my bounding box method that I covered in the first section, then I have my get canvas relative position method. I will not be getting into this method in detail here as I have wrote a post before hand on this topic, but this method just helps me get a canvas rather than window relative position when inside the body of an event hander for a mouse event, if you want to read more about this you can read the post on [getting a canvas relative pointer position](/2020/03/04/canvas-get-point-relative-to-canvas/).
 
 ```html
 <html>
@@ -56,62 +58,60 @@ Now that I have covered how to have a simple bound box collision detection metho
         <script>
 var bb = function (a, b) {
     return !(
-        ((a.y + a.h) < (b.y)) ||
-        (a.y > (b.y + b.h)) ||
-        ((a.x + a.w) < b.x) ||
-        (a.x > (b.x + b.w)));
+        (a.y + a.h) < b.y ||
+        a.y > (b.y + b.h) ||
+        (a.x + a.w) < b.x ||
+        a.x > (b.x + b.w))
 };
- 
-var actions = [{
-        x: 50,
-        y: 50,
-        w: 100,
-        h: 50,
-        colorIndex: 0,
-        click: function () {
-            this.colorIndex += 1;
-            this.colorIndex %= 3;
-            console.log('action 1');
-        }
-    }
-];
- 
-var actionHandler = function (e) {
-    var bx = e.target.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
-    var i = 0,
-    len = actions.length;
-    while (i < len) {
-        if (bb({
-                x: x,
-                y: y,
-                w: 1,
-                h: 1
-            }, actions[i])) {
-            actions[i].click.call(actions[i]);
-            break;
-        }
-        i += 1;
-    }
-    drawActions(actions, ctx);
-}
- 
-var drawActions = function (actions, ctx) {
-    var pal = ['red', 'green', 'blue']
-    actions.forEach(function (act) {
-        ctx.fillStyle = pal[act.colorIndex] || 'white';
-        ctx.fillRect(act.x, act.y, act.w, act.h);
-    });
+var getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - bx.left,
+        y: e.clientY - bx.top,
+        bx: bx
+    };
 };
- 
+var createClickHandler = function (obj) {
+    return function (e) {
+        var pos = getCanvasRelative(e);
+        pos.w = 1;
+        pos.h = 1;
+        if (bb(pos, obj)) {
+            obj.click();
+        }
+    };
+};
+var draw = function (ctx, obj) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = obj.colors[obj.colorIndex];
+    ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+    ctx.fillStyle = 'black';
+    ctx.font = '40px courier';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    ctx.fillText(obj.clicks, obj.x + obj.w / 2, obj.y + obj.h / 2 - 20);
+};
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-canvas.addEventListener('click', actionHandler);
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-drawActions(actions, ctx);
- 
+var obj = {
+    x: canvas.width / 2 - 100,
+    y: canvas.height / 2 - 50,
+    w: 200,
+    h: 100,
+    clicks: 0,
+    colors: ['red', 'white', 'blue'],
+    colorIndex: 0,
+    click: function () {
+        this.colorIndex += 1;
+        this.colorIndex %= 3;
+        this.clicks += 1;
+        draw(ctx, obj);
+    }
+};
+canvas.addEventListener('click', createClickHandler(obj));
+draw(ctx, obj);
         </script>
     </body>
 </html>
