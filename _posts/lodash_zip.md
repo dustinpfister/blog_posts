@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 141
-updated: 2020-07-30 15:51:25
-version: 1.12
+updated: 2020-07-30 15:59:21
+version: 1.13
 ---
 
 The [lodash](https://lodash.com/) [\_.zip method](https://lodash.com/docs/4.17.4#zip) can be used to zip some separate arrays into one array of arrays. It is one of several helpful methods in lodash for working with [multi-dimensional arrays](/2020/03/21/js-array-multidimensional/), as \_.zip can be used as a way to create them. Another such method that is helpful with these sorts of arrays is the [\_.chunk](/2017/09/13/lodash-chunk/) method that can be used to make a multi deferential array from a single array, while \_.zip can make them from two, or more arrays. In addition there is also the [lodash flatten](/2018/08/12/lodash_flatten/) method that can flatten and array of arrays into a single array that should also be worth checking out if you are now aware of it just yet.
@@ -19,9 +19,9 @@ This is a post on the \_.zip method in lodash one of the many [array methods in 
 
 ### 1.1 - Multidimensional arrays as arrays of arrays in javaScript
 
-In javaScript there are going to be times where I will want to structure data in a multidimensional kind of way. You might be wondering what this might have to do with the lodash zip method, well we will be getting to that shortly, but this is a related topic that you should be up to speed with before hand.
+In javaScript there are going to be times where I will want to structure data in a multidimensional kind of way. There is just having a single array and then using a formula that will get and set arrays values based on a series of arguments for x, y, and z. However a good starring point for structuring data in a multidimensional kind of way might be to start wit arrays of arrays. You might be wondering what this might have to do with the lodash zip method, well we will be getting to that shortly, but this is a related topic that you should be up to speed with before hand.
 
-So then in javaScript one way to have a multidimensional array is as an array of arrays like this:
+So then in javaScript one way to have a multidimensional array is as an array of arrays. In other words you have an array and then each element in that array is an array, and with in each element of each array you have a final value, or yet even another array if you want to add an addition dimension. Elements can then also be get and set by using the square bracket notation just like with an array with one dimension, but two or more times one for each dimension of the array of arrays.
 
 ```js
 // an array of arrays
@@ -37,6 +37,7 @@ el = matrix[y][x];
 console.log( el ); // 5
 ```
 
+So now that we have this out of the way, we can now look into some ways to go about creating this kind of array, from two or more other arrays with lodash methods. Including you guessed it the lodash zip method.
 
 ### 1.2 - Multidimensional arrays as just a single linear array
 
