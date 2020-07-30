@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-07-30 08:15:59
-version: 1.19
+updated: 2020-07-30 08:19:40
+version: 1.20
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -49,6 +49,8 @@ Now that I have covered how to have a simple bounding box collision detection me
 So at the top of my script I have my bounding box method that I covered in the first section, then I have my get canvas relative position method. I will not be getting into this method in detail here as I have wrote a post before hand on this topic, but this method just helps me get a canvas rather than window relative position when inside the body of an event hander for a mouse event, if you want to read more about this you can read the post on [getting a canvas relative pointer position](/2020/03/04/canvas-get-point-relative-to-canvas/).
 
 I then have a method that can be used to create an event hander for the object that I will be using to define the area in the canvas. This method excepts the area object as the first and only argument, and then returns an event hander that is intended to be used when attaching such an event hander to a canvas element using the add event listener method. The event hander that is returned will use the get canvas relative method to get a position relative to the canvas, and then attach width and height values that are 1 by 1 to the object and use that as an argument, along with the area object when calling the bounding box method. In the event that the bounding box method returns true, then a click method of the area object will be called.
+
+I then of course have a draw method that will take a 2d drawing context, and this area object and render everything to the canvas. For this example I have just one main draw method as I am trying to keep things simple for now, but in a real project I would break this method down, and start to form something that is a separate draw module rather than just a single method pack together with everything else.
 
 ```html
 <html>
@@ -119,7 +121,7 @@ draw(ctx, obj);
 </html>
 ```
 
-I can not say that this is the best way to go about setting up some buttons in a canvas project, but you get the general idea. A hit detection method can be used to find out of an object was clicked or not, and then some kind of action can be preformed. In a real project I might go about pulling code like this into a module of sorts, and also make the objects a little more flashy.
+I can not say that this is the best way to go about setting up some buttons in a canvas project, but you get the general idea. A hit detection method can be used to find out of an object was clicked or not, and then some kind of action can be preformed. In a real project I might go about pulling code like this into a module of sorts, and also make the objects a little more flashy by doing all kinds of things other than just changing color, and stepping a click variable.
 
 ## 3 - A simple functional javaScript canvas box module
 
