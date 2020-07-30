@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 573
-updated: 2020-07-30 09:26:48
-version: 1.22
+updated: 2020-07-30 09:30:47
+version: 1.23
 ---
 
 There is the possibly of a new [hit region](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Hit_regions_and_accessibility) api in canvas that can be used as a way to define additional interactivity for objects that are drawn in a canvas. As of this writing there is very poor browser support for this, in fact it does not seem to work at all in any browser that I use at least.
@@ -128,13 +128,13 @@ I can not say that this is the best way to go about setting up some buttons in a
 
 ## 3 - A simple functional javaScript canvas box module
 
-So maybe it will be best to make some kind of javaScript Box module that returns a Class, or a functional style module of some kind. In this section I will be going over a more functional approach to this kind of module design. So there will be a box.js module that can be used to create a Box object, and then a bounding box method as part of it that I can use to find if two box objects overlap each other or not.
+So maybe it will be best to make some kind of javaScript Box module that returns a Class, or a functional style module of some kind that can be used with these box objects, and have it make use of the bounding box method. In this section I will be going over a more functional approach to this kind of module design because I have come to like that better these days. So there will be a box.js module that can be used to create a Box object, and then a bounding box method as part of it that I can use to find if two box objects overlap each other or not.
 
-In additional I will be pulling logic that has to do with the box module into its own box.js file, and additional javaScript code that has to do with drawing a box module into a draw.js file. I will the be using those two assets in a main index.html file along with some additional code that will make use of these external javaScript files. This helps to keeping things better organized by separating logic that creates and works with state, from logic that draws state, and logic that sores a current state object.
+In additional I will be pulling logic that has to do with the box module into its own box.js file, and additional javaScript code that has to do with drawing a box module into a draw.js file. I will be using those two assets in a main javascript file that will be included together with everything else in an index.html that will wrap all of this together. This helps to keeping things better organized by separating logic that creates and works with state, from logic that draws state, and logic that sores a current state object.
 
 ### 3.1 - The box.js file
 
-Here I have the box.js file that I made for this section. It is based on what I worked out for my post on making a javaScript box class in general that I started a few years back, and come back to now and then when it comes to editing. it is more or less the same as what i copied from there, but with the introduction of a bounding box method.
+Here I have the box.js file that I made for this section. It is based on what I worked out for my post on [making a javaScript box class](/2017/07/24/canvas-box-class/) in general that I started a few years back, and come back to now and then when it comes to editing. it is more or less the same as what i copied from there, but with the introduction of a bounding box method.
 
 ```js
 var Box = (function () {
