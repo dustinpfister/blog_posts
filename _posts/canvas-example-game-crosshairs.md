@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-07-31 08:56:09
-version: 1.12
+updated: 2020-07-31 09:05:18
+version: 1.13
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -269,7 +269,9 @@ var draw = (function () {
 
 ## 5 - Now for a Main.js file along with a main app loop
 
-So now I need some additional code to pull everything together here.
+So now I need some additional code to pull everything together here in a main.js file that will be used after everything else is in place to work with. Here I create and inject a canvas element into a hard coded container element that I have in my html. I create instances of a map and cross state objects, and attach a whole bunch of event handers for mouse and touch events using the create event method of the cross module.
+
+I then have an attack method that I will likely work into the map module, or some kind of future module that has to do with a weapons or something to that effect. I do not want to get into to much detail with that because at some point in the future I will just have to re write what I have to say about it when it comes to putting a little more time into this canvas example, because I think this one needs and deserve more work.
 
 ```js
 // MAIN
@@ -333,6 +335,8 @@ var loop = function () {
  
 loop();
 ```
+
+I then of course have my main app loop where I am using the requestAnimationFrame method, inside the loop method. In this loop method I am updating the state of the cross object and drawing the state of the cross and map objects.
 
 ## 6 - Conclusion
 
