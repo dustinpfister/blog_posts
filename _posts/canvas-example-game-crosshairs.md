@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-07-31 06:26:04
-version: 1.8
+updated: 2020-07-31 08:43:20
+version: 1.9
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -23,7 +23,7 @@ I made [another canvas example that is like this one that I called just simply p
 
 ## 1 - The utility module
 
-For like with many of these canvas examples this one has a utility library. In this one I am just using the distance formula, and a method that will help me to get a canvas relative position when it comes to working with evet handers for pointer events.
+For like with many of these canvas examples this one has a utility library. In this one I am just using the distance formula, and a method that will help me to get a canvas relative position when it comes to working with event handers for pointer events. There always seems a need for this kind of utility library that can be described as a kind of application specific custom tailors lodash of sorts. That is a collection of utility methods that I am actually going to use in one or more of the module that compose the project.
 
 ```js
 // UTILS
@@ -42,6 +42,7 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
+So now that I have the basic utility library out of the way lets move on to the actual modules that make this project diferent from all the others.
 
 ## 2 - The cross.js file
 
