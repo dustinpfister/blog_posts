@@ -5,17 +5,17 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2020-07-31 06:03:24
-version: 1.19
+updated: 2020-07-31 06:04:59
+version: 1.20
 ---
 
-With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with by just moving by a fixed delta each frame tick. However years later I am now aware of many different ways to go about moving a display object in a canvas project, some of which strike me as a better choice when going about handing movement of objects in a canvas project. I now mostly see about moving objects by way of an amount of time that has passed sense the last tick by having a pixels per second value as a prototype value or as an own property for each display object in an object pool.
+With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with by just moving by a fixed delta each frame tick. However years later I am now aware of many different ways to go about moving a display object in a [canvas project](/2020/07/22/canvas/), some of which strike me as a better choice when going about handing movement of objects in a canvas project. I now mostly see about moving objects by way of an amount of time that has passed sense the last tick by having a pixels per second value as a prototype value or as an own property for each display object in an object pool.
 
 The thing to keep in mind is that computers and browsers will differ a lot when it comes to how fast things will move when things are not tied to the system timer. Many old games where often tired to processor clock speed, and as computers got faster the games would speed up also along with them. So it would make sense to have it so that objects move in relationship to the flow of the system time rather than processor speed, and the many other factors at play when it comes to how fast a computer and a browser can get things done.
 
 In addition there are other ways of moving objects that center around a current index or frame value relative to a set number of max frames. This kind of way of moving display objects in canvas can be though of as a very functional way of going about moving objects. Methods can be authored where I pass a frame index, and max frame value, and what is returned is an animation state that will always be the same for the same values that are passed to the method. In other words an animation method that is in line with the rules of what is often called a pure function. This might be the kind of canvas movement I would follow if I am working out some kind of fixed frame by frame animation rather that moving a display object that might be skinned with such an animation.
 
-So In this post I will be touching base on each of these kinds of ways to pull off canvas movement with javaScript and html 5 canvas elements.
+So In this post I will be touching base on each of these kinds of ways to pull off canvas movement with javaScript and HTML 5 canvas elements.
 
 <!-- more -->
 
