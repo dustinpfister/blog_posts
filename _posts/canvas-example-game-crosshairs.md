@@ -5,11 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-07-29 17:45:19
-version: 1.6
+updated: 2020-07-31 06:25:04
+version: 1.7
 ---
 
-For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map.
+For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
+
+The idea beyond just how to go about moving around and attacking, and doing so with just touch events is the main thing I had in mind with this one. So at the time that I started this not much thought went into the other aspects of this that can help turn it into more of an actually game. I think that it might be fun to have a game where you just go around and shoot at stuff below you and just rack up a whole lot of damage on what there is below you. Maybe put some things in the fire back also so that it is a kind of game where it is possible to, you know loose. In any case at the tie of this writing at least the main focus was just making a module that just creates, and updates an object that is used to move around a map.
+
+I made [another canvas example that is like this one that I called just simply pointer movement](/2020/01/26/canvas-example-pointer-movement/). That one was programed a little differently from this one as that was just simply a means to move around a map by clicking and dragging away from the point that was clicked. Here I have a set of circles fixed at the center of the canvas, or any other location that I choose to fix these circle areas to.There is an outer circle area that is used to move around based on the distance from the end of the inner circle rather than the center point. In addition the inner circle area will not result in any movement, but is used as an array where you can shoot at things, but not move.
 
 <!-- more -->
 
