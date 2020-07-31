@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-07-31 09:05:18
-version: 1.13
+updated: 2020-07-31 09:09:47
+version: 1.14
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -337,6 +337,27 @@ loop();
 ```
 
 I then of course have my main app loop where I am using the requestAnimationFrame method, inside the loop method. In this loop method I am updating the state of the cross object and drawing the state of the cross and map objects.
+
+
+I then have just a little HTML and inline css for the container for the canvas element, or elements at some point in the future if I get into layering with this one.
+
+```html
+<html>
+    <head>
+        <title>canvas example game crosshairs</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/cross.js"></script>
+        <script src="./lib/map.js"></script>
+        <script src="./lib/draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+So that is it when this canvas example is up and running I am able to move around and when I click on the map I cause damage to the areas that I click. Nothing to interesting at the point of this writing at least, but I think that this one has some decent potential when it comes to putting a little more time into it. I do have many other canvas examples in a state like this also that need more attention, but I am sure I will come back around to this one at some point.
 
 ## 6 - Conclusion
 
