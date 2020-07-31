@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-07-31 08:54:10
-version: 1.11
+updated: 2020-07-31 08:56:09
+version: 1.12
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -151,6 +151,8 @@ var crossMod = (function () {
 }
     ());
 ```
+
+I then have my public API of this module that contains methods for both creating and updating a cross state object. In addition I have a methd that can be used as a way to create event handers for a cross object that can be used for both mouse and touch events. this is where by utility method that has to do with getting a canvas relative position comes into play.
 
 ## 3 - The map.js file
 
