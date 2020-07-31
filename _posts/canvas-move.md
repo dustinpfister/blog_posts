@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 559
-updated: 2020-04-15 12:56:51
-version: 1.17
+updated: 2020-07-31 05:57:20
+version: 1.18
 ---
 
-With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with. However years later I am now aware of many different ways to go about moving a display object in a canvas project. Some of which to strike me as a better choice when going about handing movement of objects in a canvas project compared to just stepping by some kind of fixed deltas for x and y on each frame tick when I was first starting  out with canvas.
+With [canvas moving display objects](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball) is one of the first things I started to get up to speed with by just moving by a fixed delta each frame tick. However years later I am now aware of many different ways to go about moving a display object in a canvas project, some of which strike me as a better choice when going about handing movement of objects in a canvas project. I now mostly see about moving objects by way of an amount of time that has passed sense the last tick by having a pixles per second value as a prototype value or as an own property for each display object in an object pool.
 
 In my earliest projects I would just step the position of an object by delta values on each frame tick, and maybe that is still not such a bad way of doing so with some simple projects that are maybe event driven. However now I know that it is better to go by a pixels per second value and multiply that by the amount of time that has elapsed sense the last update of a state when it comes to projects that need to move things in real time. 
 
