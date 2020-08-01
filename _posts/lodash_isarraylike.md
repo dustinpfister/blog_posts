@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 690
-updated: 2020-08-01 17:29:57
-version: 1.2
+updated: 2020-08-01 17:37:16
+version: 1.3
 ---
 
 In javaScript it is possible to have objects that look a lot like arrays, but they are not arrays. That is an object with numbers rather than named key names, and a length property that is the highest index value of this set of number key names. Such objects are often regarded as array like objects, and although they are not arrays, than can often still be treated as array when it comes to just getting around the few subtle issues that might creep up with them.
@@ -70,3 +70,5 @@ console.log(isArrayLike(null)); // false
 console.log(isArrayLike({})); // false
 console.log(isArrayLike(obj)); // true
 ```
+
+SO there might be a number of other ways to test out if a value is array like or not that might work in most situations. Still it would seem that this is one of several methods in lodash where a native solution would still be a little time consuming to work out and test.
