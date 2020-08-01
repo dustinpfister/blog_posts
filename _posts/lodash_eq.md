@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 576
-updated: 2020-08-01 16:19:11
-version: 1.7
+updated: 2020-08-01 16:23:48
+version: 1.8
 ---
 
 So there is the [lodash eq](https://lodash.com/docs/4.17.15#eq) method that is one way of finding out the [same value zero result](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero) of two values. However what is same value zero, and is it all that hard to get the same result in native javaScript itself these days? 
@@ -47,3 +47,7 @@ console.log( 0 == -0 ); // true
 console.log( 0 === -0 ); // true
 console.log( Object.is(0 , -0) ); // false
 ```
+
+## 4 - Conclusion
+
+So that is about it for now when it comes to the lodash eq method as a way to go about getting the same value zero value of two values with lodash, and javaScript by itself. Simply but the lodash eq method is just yet another way to go about finding out if two values are equal to each other or not that might yield different results in certain situations.
