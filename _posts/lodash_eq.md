@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 576
-updated: 2020-08-01 16:23:48
-version: 1.8
+updated: 2020-08-01 16:29:32
+version: 1.9
 ---
 
 So there is the [lodash eq](https://lodash.com/docs/4.17.15#eq) method that is one way of finding out the [same value zero result](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero) of two values. However what is same value zero, and is it all that hard to get the same result in native javaScript itself these days? 
@@ -19,7 +19,7 @@ Regardless of what you attitude is with lodash these days I will make this post 
 
 ## 1 - lodash eq basic example
 
-So when comparing two values there is the equality operator and then the identity operator. These to operators do the same thing which is comparing two values to see if they are equal. However then do so in very different ways, and will not always return true and false for the same set of values.
+So when comparing two values there is the equality operator and then the identity operator. I will not be getting into detail about two two different operators when it comes to finding out if two value are equal or not here, as I have wrote a [blog post on the equality and identity operators](/2019/02/06/js-javascript-equals/) before hand. However I will say that these to operators do the same thing which is comparing two values to see if they are equal, but they do so in very different ways. In addition because they preform equality in very different ways they will not always return true and false for the same set of values in some certain situations.
 
 So the lodash eq method is yet another way of comparing two values to see if they are equal, but it also follows a different way of determining equality. For example the lodash eq method will return true even when comparing two values that are NaN, something that will result in a false value for equality and identity.
 
