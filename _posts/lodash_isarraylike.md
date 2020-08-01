@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 690
-updated: 2020-08-01 17:39:34
-version: 1.4
+updated: 2020-08-01 17:54:52
+version: 1.5
 ---
 
 In javaScript it is possible to have objects that look a lot like arrays, but they are not arrays. That is an object with numbers rather than named key names, and a length property that is the highest index value of this set of number key names. Such objects are often regarded as array like objects, and although they are not arrays, than can often still be treated as array when it comes to just getting around the few subtle issues that might creep up with them.
@@ -32,7 +32,34 @@ let obj = {
 console.log( _.isArrayLike(obj) ); // true
 ```
 
-## 2 - Vanilla javaScript isArrayLike method
+## 2 - is array like
+
+So it is worth noting that an actually array will also return true for the lodash is array like method. So the lodash is array like method is nt a good choice if you want to test if an object is array like and not an array. However it is not to hard to do just a little more additional testing to get around that.
+
+```js
+let _ = require('lodash');
+
+let obj = {
+    length: 0
+},
+arr = [];
+ 
+console.log(_.isArray(obj)); // false
+console.log(_.isArray(arr)); // true
+ 
+console.log(_.isArrayLike(obj)); // true
+console.log(_.isArrayLike(arr)); // true
+
+//
+let isArrayLikeAndNotArray = (obj) => {
+    return _.isArrayLike(arr) && !_.isArray(obj);
+};
+ 
+console.log(  isArrayLikeAndNotArray(obj) ); // true
+console.log(  isArrayLikeAndNotArray(arr) ); // false
+```
+
+## 3 - Vanilla javaScript isArrayLike method
 
 So the process of making a vanilla javaScript is array like method can prove to be a little involved. The one I put together here makes use of the typeof operator, along with the use of the identity operator to test if a length property is a number of not. I am also making use of the [Number.isInteger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger) method to test of the number value of a length property is an integer or not.
 
