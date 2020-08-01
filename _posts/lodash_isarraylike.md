@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 690
-updated: 2020-08-01 17:17:07
-version: 1.1
+updated: 2020-08-01 17:29:57
+version: 1.2
 ---
 
 In javaScript it is possible to have objects that look a lot like arrays, but they are not arrays. That is an object with numbers rather than named key names, and a length property that is the highest index value of this set of number key names. Such objects are often regarded as array like objects, and although they are not arrays, than can often still be treated as array when it comes to just getting around the few subtle issues that might creep up with them.
@@ -32,20 +32,18 @@ console.log( _.isArrayLike(obj) ); // true
 
 ## 2 - Vanilla javaScript isArrayLike method
 
+So the process of making a vanilla javaScript is array like method can prove to be a little involved. The one I put together here makes use of the typeof operator, along with the use of the identity operator to test if a length property is a number of not. I am also making use of the [Number.isInteger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger) method to test of the number value of a length property is an integer or not.
+
 ```js
-Number.isInteger = Number.isInteger || function(value) {
-  return typeof value === 'number' && 
-    isFinite(value) && 
+Number.isInteger = Number.isInteger || function (value) {
+    return typeof value === 'number' &&
+    isFinite(value) &&
     Math.floor(value) === value;
 };
  
 let isArrayLike = function (a) {
     // is it an object
     if (typeof a != 'object' || a === null) {
-        return false;
-    }
-    // does it have a length property
-    if (a.length === undefined) {
         return false;
     }
     // is length a number? is it an Integer?
@@ -61,9 +59,9 @@ let isArrayLike = function (a) {
 };
  
 let obj = {
-    0: 1,
-    1: 2,
-    2: 3,
+    //0: 1,
+    //1: 2,
+    //2: 3,
     length: 3
 };
  
