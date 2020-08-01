@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 576
-updated: 2020-08-01 16:29:32
-version: 1.9
+updated: 2020-08-01 16:36:06
+version: 1.10
 ---
 
 So there is the [lodash eq](https://lodash.com/docs/4.17.15#eq) method that is one way of finding out the [same value zero result](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero) of two values. However what is same value zero, and is it all that hard to get the same result in native javaScript itself these days? 
@@ -28,6 +28,8 @@ console.log( NaN == NaN ); // false
 console.log( NaN === NaN ); // false
 console.log( _.eq(NaN , NaN) ); // true
 ```
+
+Finding out if a value is NaN or not has been a bit of a rabbit hole in javaScript for a while, and to some extern I guess it still is. It is a value that does not equal any other value even itself, meaning that an expression that compares to values together with equality or identity alone will evaluate to false if any of the two values are NaN even if they are both NaN. Even the methods that are used to find out if a Value is NaN or not have issues, but that is a matter for another post. In any case the point here is that the lodash eq method will return true if both values or NaN, it will also work with other situations like this that would otherwise result in a false value.
 
 ## 2 - Object is and polyfill
 
