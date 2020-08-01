@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 690
-updated: 2020-08-01 17:37:16
-version: 1.3
+updated: 2020-08-01 17:39:34
+version: 1.4
 ---
 
 In javaScript it is possible to have objects that look a lot like arrays, but they are not arrays. That is an object with numbers rather than named key names, and a length property that is the highest index value of this set of number key names. Such objects are often regarded as array like objects, and although they are not arrays, than can often still be treated as array when it comes to just getting around the few subtle issues that might creep up with them.
@@ -18,6 +18,8 @@ So With all of that said in this post on [lodash](https://lodash.com/) I will be
 # 1 - Basic example of lodash \_.isarraylike
 
 So the lodash \_.isarraylike method works by checking if what is given is an object that is not a function, and that the object has a length property. It also checks if that length property is a number that is an integer, and that it has a value that is higher than zero and the same or lower than that of MAX_SAFE_INTEGER.
+
+So say I have just a plain old Object created with the Object literal syntax and then have just a few number properties and a length property, the length property is a number, and is also not a fraction. If I pass this kind of object to the lodash is array like method it should return a true value.
 
 ```js
 let obj = {
