@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 588
-updated: 2020-08-02 12:53:17
-version: 1.8
+updated: 2020-08-02 12:55:12
+version: 1.9
 ---
 
 The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays, but also objects in general because it is a collection method rather that just an array method. It works more or less the same way as the [lodash sortby](/2018/07/06/lodash_sortby/) method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection object. 
@@ -74,3 +74,5 @@ console.log(asc, desc, nums);
 ```
 
 ## 3 - Conclusion
+
+So the lodash order by method is another option on top of the lodash \_.sortBy method whe it comes to sorting object collections in general both with arrays, and objects in general. In native javaScript there is the array sort method that can also be used when it comes to not using lodash as part of a project any more.
