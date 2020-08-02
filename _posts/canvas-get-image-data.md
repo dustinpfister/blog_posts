@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-08-02 09:34:46
-version: 1.23
+updated: 2020-08-02 09:51:03
+version: 1.24
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current and area in the state of a canvas matrix in the from of an [ImageData]([ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData)) class instance that has an unit8Clamped array in a [data property](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/data) that is the raw data for each color channel of each pixel in an area of interest. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data back into a canvas. 
@@ -86,16 +86,26 @@ So now that I have covered the basics of how to get image data from a drawing co
 
 I might want to just create an instance of ImageData by itself without having to use the get image data method to do so first. In this case I just need to use the ImageData constructor and pass a Unit8ClampedArray as the first argument followed by a width and height value.
 
-```js
+```html
+<canvas id="the-canvas"></canvas>
+<script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
+ctx.translate(0.5,0.5);
+
+canvas.width = 8;
+canvas.height = 8;
+canvas.style.imageRendering = 'pixelated';
+canvas.style.width = '160px';
+canvas.style.height = '160px';
 
 ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, 32, 32);
+ctx.fillRect(0, 0, 8, 8);
 // single yellow pixel
 var data = new Uint8ClampedArray([ 255,255,0,255]);
 var img = new ImageData( data,1,1)
 ctx.putImageData( img, 1,1);
+</script>
 ```
 
 I can then use the put image data method to place this instance down onto the canvas. So then this constructor along with the put image data method can be used to create a canvas powered [pset qBasic](https://chortle.ccsu.edu/QBasic/chapter05/bc05_3.html) style type method for example. I can also use it as a way to create a sprite sheet by way of some external JSON data rather than external image files, and so forth.
