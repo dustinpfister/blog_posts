@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2020-04-16 17:54:01
-version: 1.21
+updated: 2020-08-02 13:49:20
+version: 1.22
 ---
 
 Todays post will be on yet another [canvas examples](/2020/03/23/canvas-example/), this time a [gun turret](https://en.wikipedia.org/wiki/Gun_turret) defense style game that will be just a turret at the center of the canvas that shoots at enemies coming in from all directions.
@@ -486,3 +486,9 @@ canvas.blur();
     </body>
 </html>
 ```
+
+## 5 - Conclusion
+
+So although I have the basic idea of this canvas example of a turret invasion defense type game working okay, there is much more work I would need to do to get this one to start to feel like an actual game. I am not happy with how this one turned out at least at the time of this writing at least. I think I might need to get around to doing a full redo of the source code from the bottom up actually. After making a lot more canvas examples there are certain things that I think I need to just not do when working out a game module.
+
+In any case working on this was not a total loss, much of what I have together here will still work just find, I just need a little more time to clean up what I did here. The bad news with this one though is that there are many other canvas examples that I have made that I think desire more attention, so I may or may not get back around to this one at some point in the future.
