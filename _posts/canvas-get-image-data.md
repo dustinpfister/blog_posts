@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 486
-updated: 2020-08-02 09:51:03
-version: 1.24
+updated: 2020-08-02 09:58:40
+version: 1.25
 ---
 
 So when it comes to working with canvas there is the [get image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) method that can be used to get image data from the current and area in the state of a canvas matrix in the from of an [ImageData]([ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData)) class instance that has an unit8Clamped array in a [data property](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/data) that is the raw data for each color channel of each pixel in an area of interest. In addition there is also the [put image data](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) method also that is the inversion of that method that can be used to put that data back into a canvas. 
@@ -19,7 +19,7 @@ These getImageData, putImagedata, methods along with the ImageData constructor g
 
 ## 1 - Get image data basic example
 
-So a basic example of using the get image data method might involve just a hard coded HTML canvas element, and a link to an external javaScript file via a string tag. The javaScript content of that external javaScript file will contain some javaScript that will make used of the get image data method. So with that said the starting HTML of such a canvas get image data example might look something like this:
+So a basic example of using the get image data method might involve just a hard coded HTML canvas element, and a link to an external javaScript file via a script tag. The javaScript content of that external javaScript file will contain some javaScript that will make use of the get image data method, along with a little additional code for getting a reference to the canvas element and the 2d drawing context as with any other canvas example. So with that said the starting HTML of such a canvas get image data example might look something like this:
 
 ```html
 <html>
@@ -35,7 +35,7 @@ So a basic example of using the get image data method might involve just a hard 
 
 Now that we have that out of the way lets look at the basic.js file.
 
-In the basic.js javaScript file I just get a reference to the canvas element, and the 2d drawing context by way of the canvas get context method. Next I just use the 2d drawing context to draw a little something to the canvas so that I have something to get with the get image data method. I can then use the canvas get image data method to get the image data for a section of that canvas that contains what it is that I have drawn to it. I just need to call ctx.getImageData and pass the x and y position of the upper left corner of the desired section, and then the width and height of the section of the canvas matrix that I want as the last two arguments.
+In the basic.js javaScript file I just get a reference to the canvas element, and the 2d drawing context by way of the canvas get context method. Next I just use the 2d drawing context to draw a little something to the canvas so that I have something to get with the get image data method. I can then use the canvas get image data method to get the image data for a section of that canvas that contains what it is that I have drawn to it. I just need to call the ctx.getImageData method and pass the x and y position of the upper left corner of the desired section, and then the width and height of the section of the canvas matrix that I want as the last two arguments.
 
 ```js
 var canvas = document.getElementById('the-canvas'),
@@ -54,7 +54,7 @@ while (i < imgData.data.length) {
 }
 ```
 
-What is returned is an instance of the ImageData constructor that can be used directly to create image data. An instance of this constructor has three public properties a data property that contains the actual image data, along with a width and height property of the section that was grabbed from the canvas. That is about it though when it comes to getting data at least, there are no public methods for the class actually. However there is of course making some depending on what it is that I want or need to do with that data naturally.
+What is returned is an instance of the ImageData constructor that will contain all the pixel data in the data property of the ImageData instance. So speaking of the data property an instance of this constructor has three public properties a data property that contains the actual image data as mentioned, along with a width property, and height property of the section that was grabbed from the canvas. That is about it though when it comes to getting data at least, there are no public methods for the class actually. However there is of course making some depending on what it is that I want or need to do with that data naturally.
 
 ### 1.1 - The imageData.data array
 
