@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 588
-updated: 2020-02-03 10:25:48
-version: 1.6
+updated: 2020-08-02 12:50:14
+version: 1.7
 ---
 
-The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays. It works more or less the same way as the lodash sortby method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection.
+The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays, but also objects in general becuase it is a collection method rather that just an array method. It works more or less the same way as the lodash sortby method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection object. 
+
+However I often just make use of what there is to work with in just native javaScript by itself when it comes to sorting arrays and object keys in general. So this will be a quick post on using the lodash order by method, as well as some vanilla javaScript alternatives.
 
 <!-- more -->
 
