@@ -5,11 +5,11 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 496
-updated: 2020-04-16 07:26:05
-version: 1.22
+updated: 2020-08-02 13:27:28
+version: 1.23
 ---
 
-In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used. Canvas layers often might refer to having more than one canvas element in a container element, with them all positioned on top of each other in a certain z index order. 
+In html 5 canvas there might come a time in which [canvas layers](https://stackoverflow.com/questions/3008635/html5-canvas-element-multiple-layers) should be used as a way to make it so I do not have to render everything all over again over and over again. Canvas layers often might refer to having more than one canvas element in a container element, with them all positioned on top of each other in a certain z index order. In that type of situation I can render only things that are changing, and leave any other static layers alone.
 
 Canvas Layering can be helpful when there is a lot going on in the canvas project, and it is not necessary to repaint everything on the same frame tick. So then the use of laying can help create a situation in which things that only need to be updated on each frame tick are updated. In addition static things that only need to be rendered once, by way of an event, or at a lower rate can be rendered at there lower or higher rates.
 
@@ -192,4 +192,4 @@ loop();
 
 ## 3 - Conclusion
 
-That is it for canvas layering now, if I get some spare time, or work on a vanilla js canvas project I will likely update this post with some more examples. In any case thanks for reading, and have fun with canvas.
+That is it for canvas layering now, if I get some spare time, or work on a vanilla js canvas project that will make use of layering I will likely update this post with some more examples. In any case thanks for reading, and have fun with canvas.
