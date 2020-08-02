@@ -5,13 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 588
-updated: 2020-08-02 12:50:14
-version: 1.7
+updated: 2020-08-02 12:53:17
+version: 1.8
 ---
 
-The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays, but also objects in general becuase it is a collection method rather that just an array method. It works more or less the same way as the lodash sortby method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection object. 
+The [lodash orderby](https://lodash.com/docs/4.17.15#orderBy) method is one of several options in lodash for sorting collections mainly arrays, but also objects in general because it is a collection method rather that just an array method. It works more or less the same way as the [lodash sortby](/2018/07/06/lodash_sortby/) method, but it allows for setting the sort orders \( ascending or descending \) of each method that is used to sort the collection object. 
 
-However I often just make use of what there is to work with in just native javaScript by itself when it comes to sorting arrays and object keys in general. So this will be a quick post on using the lodash order by method, as well as some vanilla javaScript alternatives.
+However I often just make use of what there is to work with in just native javaScript by itself when it comes to sorting arrays and object keys in general. With that said there is also using just the plain old [sort array prototype method](/2019/12/02/js-array-sort/) when it comes to working  with arrays. So this will be a quick post on using the lodash order by method, as well as some vanilla javaScript alternatives.
 
 <!-- more -->
 
@@ -72,3 +72,5 @@ console.log(asc, desc, nums);
 // [ 158, 52, 42, 27, 7, 6, 5, 3, -1, -5 ]
 // [5, 42, -5, 7, 6, 3, 52, 27, 158, -1]
 ```
+
+## 3 - Conclusion
