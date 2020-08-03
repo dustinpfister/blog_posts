@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-03 15:22:31
-version: 1.15
+updated: 2020-08-03 15:28:42
+version: 1.16
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -217,7 +217,10 @@ var mapMod = (function () {
     ());
 ```
 
-## 4 - pool.js
+## 4 - A pool.js module for creating an object pool to be used for shots amd any other future display object pools
+
+I made a another post in which I touched base on [object pools](/2020/07/20/canvas-example-object-pool/). I decided to include such a module in this project that for starters will be used to create shot objects that will move from the side of the canvas to the target area where an attack was made on the map. In future versions of the canvas example display object pools could be used for all kinds of additional things where a display object would be called for such as explosions, enemies, and power ups.
+
 
 ```js
 var poolMod = (function () {
@@ -287,7 +290,9 @@ var poolMod = (function () {
     ());
 ```
 
-## 5 - game.js
+## 5 - The game.js filr for creating a main game state object
+
+So I ending up working out a main game module that will serve as a way to create and set up a main game state module for this canvas example.
 
 ```js
 var gameMod = (function () {
