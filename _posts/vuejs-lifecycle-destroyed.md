@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 691
-updated: 2020-08-03 14:13:44
-version: 1.3
+updated: 2020-08-03 14:19:17
+version: 1.4
 ---
 
 I have been neglecting my content on vuejs, so to help get me in gear for changing that I thought I would write a quick post on the [vue destroyed](https://vuejs.org/v2/api/#destroyed) life cycle hook as a way to continue expanding on vuejs. There are several other life cycle hooks that are worth mentioning also such as the [create](/2019/05/24/vuejs-lifecycle-create/), [mounted](/2019/05/25/vuejs-lifecycle-mounted/), and [updated](/2019/11/11/vuejs-lifecycle-updated/) hooks, so it makes sense that I should write one where I am focusing on the destroyed hook on top of those to continue with writing on life cycle hooks.
@@ -55,3 +55,9 @@ new Vue({
   </body>
 </html>
 ```
+
+So this might not be the most compelling example of the vuejs destroyed life cycle hook in action, but the aim here was a basic example of the use of a hook after all and basic examples to tend to be not so compelling.
+
+## 2 - Conclusion
+
+So that is it for not on the vuejs destroyed life cycle hook. I am trying to gear myself into spending a little more time on expanding my content on vuejs, as well as updating, editing, and expand my content on vuejs including this post also. With that said it is only a matter of time until I get around to this post, so hopefully I will expand this more then with a few additional examples of the destroyed life cycle hook as well as link to some additional posts on full examples that make use of this hook.
