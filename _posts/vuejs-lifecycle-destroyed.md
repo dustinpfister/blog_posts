@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 691
-updated: 2020-08-03 14:19:17
-version: 1.4
+updated: 2020-08-03 14:24:00
+version: 1.5
 ---
 
 I have been neglecting my content on vuejs, so to help get me in gear for changing that I thought I would write a quick post on the [vue destroyed](https://vuejs.org/v2/api/#destroyed) life cycle hook as a way to continue expanding on vuejs. There are several other life cycle hooks that are worth mentioning also such as the [create](/2019/05/24/vuejs-lifecycle-create/), [mounted](/2019/05/25/vuejs-lifecycle-mounted/), and [updated](/2019/11/11/vuejs-lifecycle-updated/) hooks, so it makes sense that I should write one where I am focusing on the destroyed hook on top of those to continue with writing on life cycle hooks.
@@ -56,7 +56,9 @@ new Vue({
 </html>
 ```
 
-So this might not be the most compelling example of the vuejs destroyed life cycle hook in action, but the aim here was a basic example of the use of a hook after all and basic examples to tend to be not so compelling.
+So this might not be the most compelling example of the vuejs destroyed life cycle hook in action, but the aim here was a basic example of the use of a hook after all and basic examples to tend to be not so compelling. 
+
+However a real example might not be that much more advanced then this. Say I have a game where there is a main vuejs instance that will spawn additional vuejs instances that are used to generate game money. One option for each of these child instances is for the asset to be sold, so then the destroyed instance would be a greate place to add the amount of money that the child instance is worth to a value in the data object of the main instance.
 
 ## 2 - Conclusion
 
