@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-08-04 06:57:35
-version: 1.24
+updated: 2020-08-04 08:53:34
+version: 1.25
 ---
 
-When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
+When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be a nice addition for some projects. There are certain types of games that just translate better as a so called desktop application, with these kinds of projects I still make sure that I can be used on a mobile phone, bit of course I am going to want to add keyboard support for it.
 
 Keyboard events in client side javaScript involve attaching event handlers to the window object, because these kinds of events have to do with key presses in general, and not just touch events that have to do with just a canvas element. 
 
