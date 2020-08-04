@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 592
-updated: 2020-04-18 09:52:01
-version: 1.34
+updated: 2020-08-04 09:11:30
+version: 1.35
 ---
 
 The subject of bouncing a ball around a canvas is a typical canvas example for most beginners with javaScript and canvas. However even it you have been at it a while like I have with canvas, bouncing a ball around is one topic I find myself coming back to now and then. It seems to be the kind of thing that is trivial, yet not so trivial. There is just bouncing a ball off of a wall, and then there is bouncing a ball off of other balls and surfaces. The code can start out easy, but then end up getting  complicated fast, and if it is not done right, can result in all kinds of bugs.
@@ -63,7 +63,7 @@ b.createBallCollection = function (opt) {
     opt.h = opt.h === undefined ? 5 : opt.h;
     opt.count = opt.count === undefined ? 4 : opt.count;
     opt.forBall = opt.forBall === undefined ? noop : opt.forBall;
- 
+
     i = 0;
     balls = [];
     while (i < opt.count) {
@@ -76,7 +76,10 @@ b.createBallCollection = function (opt) {
         balls.push(ball);
         i += 1;
     }
-    return balls;
+    return {
+        ver: '0.0.0',
+        balls: balls
+    };
 };
 ```
 
@@ -127,7 +130,7 @@ So I will want a draw method where I pass a ball object, and then a 2d context t
 
 ```js
 // draw a ball object
-var drawBallObject = function (ball, ctx) {
+var drawBallObject = function (ctx, ball) {
     var x,
     y;
     // draw ball
@@ -154,10 +157,14 @@ Now that I have a draw ball method it is not so hard to make another draw method
 
 ```js
 // draw ball collection
-var drawBallCollection = function (balls, ctx) {
-    balls.forEach(function (ball) {
-        drawBallObject(ball, ctx);
+var drawBallCollection = function (ctx, canvas, ballCollection) {
+    ballCollection.balls.forEach(function (ball) {
+        drawBallObject(ctx, ball);
     });
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px courier';
+    ctx.fillText('v' + ballCollection.ver, 10, canvas.height - 15);
 };
 ```
 
@@ -169,7 +176,7 @@ Now for the rest of the canvas example that puts everything into action in main.
 // create and append canvas element, and get 2d context
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
+container = document.getElementById('canvas-app') || document.body;
 container.appendChild(canvas);
 // set width and height
 canvas.width = 320;
@@ -178,7 +185,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
  
 // create ball collection
-var balls = b.createBallCollection({
+var ballCollection = b.createBallCollection({
         count: 4,
         r: 20,
         d: 1,
@@ -198,16 +205,31 @@ var loop = function () {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     // draw balls
-    drawBallCollection(balls, ctx);
+    drawBallCollection(ctx, canvas, ballCollection);
     // move all
     i = 0;
-    while (i < balls.length) {
-        b.moveBallObject(balls[i], canvas);
+    while (i < ballCollection.balls.length) {
+        b.moveBallObject(ballCollection.balls[i], canvas);
         i += 1;
     }
 };
  
 loop();
+```
+
+Now for just a little html to pull this all together.
+
+```html
+<html>
+    <head>
+        <title>canvas example ball bounce</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script src="balls.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
 
 The result when this is up and running is balls bouncing off the walls as expected. So the basic idea that I had in mind for this canvas example is working. However there is much more that comes to mind when it comes to cleaning this project up a bit, and also adding some additional functionality.
