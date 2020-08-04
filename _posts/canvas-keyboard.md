@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 617
 categories: canvas
-updated: 2020-04-16 11:36:09
-version: 1.23
+updated: 2020-08-04 06:57:35
+version: 1.24
 ---
 
 When working out a javaScript project [canvas keyboard events](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard) might sometimes need to be used with mouse and touch events when working out a user interface. Of course these days touch and mouse events should always be used first and foremost when working out an interface, however keyboard support would still be nice for some projects.
@@ -320,4 +320,4 @@ loop();
 
 ## 4 - Conclusion
 
-Although pointer events are what I should always start out with some projects just work better with keyboard input, or some kind of game pad input.
+Although pointer events are what I should always start out with some projects just work better with keyboard input, or some kind of game pad input. Keyboard events can of course be used in conjunction with mouse events, touch events, and javaScript code that automates input to create a comprehensive, over all way to control the manipulation of state. If interested in reading more about input that is closly realted to canvas projects you might want to check out my [canvas example post in which I make a general input controller](/2020/04/17/canvas-example-input-controller/).
