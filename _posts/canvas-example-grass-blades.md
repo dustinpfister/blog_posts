@@ -5,11 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-08-05 15:33:44
-version: 1.12
+updated: 2020-08-05 15:36:51
+version: 1.13
 ---
 
-I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, so for today I made a grass blades thing. That is that I just wanted to make another artful canvas example that is not really a game or anything like that. This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
+I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, life is short and I have to do something that I really want to do with my life now and then just like everyone else. So for today I made a grass blades thing with canvas and a little bot of javaScript code. I can not say that this is my dream project mind you, but I think it might be worth it for me to expand my collection of this kind of content when it comes to fun, and artful examples of javaScript in action rather than the boring stuff.
+
+This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
 
 With what is going on in the outside would as of late I have come to find that I like to work on canvas projects as a way to gain an escape of sorts from what is going on. JavaScript and canvas have always been there for me as a way to get away from my troubles that may prove to be a more constructive alternative to that which is often typical. So that is the kind of canvas example this is, just letting go of what is bothering me and letting my mind flow. The result is another canvas animation type thing that I can have running on the screen that is nice to look at for a while, and I can just thing about all the other things I can do to make it more interesting.
 
