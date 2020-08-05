@@ -5,13 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2020-08-05 14:06:22
-version: 1.29
+updated: 2020-08-05 14:08:42
+version: 1.30
 ---
 
 There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game) as there is the artistic side of game development, and then there is the business side of things. When it comes to the artistic side maybe game development is about some kind of expression, making some kind of statement, or just simply having fun. However with the artistic side of game development aside there is also the business side of the endeavor, and when it comes to the business side all that really matters is if a game can make you money or not. Sp then when it comes to the business side of game development a game does not have to be some kind of ground breaking statement, emotional expression, or anything profound, it just needs to make money.
 
-When it comes to the business side of game development I have found that a game does not only not need to be some kind of emotional expression, or some grand original idea, no not at all in fact it does not even need to be fun or interesting actually. With the business side of game development a game just needs to be addictive, people need to just start playing it and get hooked. So I thought I would make another [canvas example](/2020/03/23/canvas-example/) post that is a basic idle game. Nothing fancy with this one, just a bland, unbranded idle game starting point that is noting to write home about.
+When it comes to the business side of game development I have found that a game does not only not need to be some kind of emotional expression, or some grand original idea that no one has really tough of before, no not at all in fact it does not even need to be fun or interesting actually oddly enough. With the business side of game development a game just needs to be addictive, people need to just start playing it and get hooked. So I thought I would make another [canvas example](/2020/03/23/canvas-example/) post that is a basic idle game. Nothing fancy with this one, just a bland, unbranded idle game starting point that is noting to write home about, but might still prove to be slightly addictive.
 
 This canvas example makes use of a custom trailered utility library that has a method that creates a button layout, which is one way that I go about making menus in a canvas project. I [wrote a post in which I get into this button layout method](/2020/02/03/canvas-example-button-layout/) in detail, but will be covering it here also just not in detail. 
 
