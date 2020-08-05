@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 580
-updated: 2020-07-23 10:09:22
-version: 1.39
+updated: 2020-08-05 14:31:22
+version: 1.40
 ---
 
 For today I would like to write another post about a [canvas example](/2020/03/23/canvas-example/), because canvas is fun and life is short. Todays post on canvas examples will be an example of a [basic clock using canvas and javaScript](http://www.dhtmlgoodies.com/tutorials/canvas-clock/). Making clocks is fun because doing so is easy, but there is also lots of room when it comes to doing things that are original with it when it comes to getting creative with canvas and javaScript. 
@@ -15,6 +15,9 @@ Sure a starting point would be just a simple digital or analog clock but why sto
 If you want to get a copy of the source code of this basic clock example it can be found in the [canvas-examples repository](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-clock-basic) at my gthub account. Along with the source code for all my other canvas example for this series of posts.
 
 <!-- more -->
+
+<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<script>var clockMod=(function(){var pad=function(a){return String('00'+a).slice(-2);};var getTimeText=function(clock){return pad(clock.now.getHours())+' : '+pad(clock.now.getMinutes())+' : '+pad(clock.now.getSeconds());};var getDayStart=function(clock){return new Date(clock.now.getFullYear(),clock.now.getMonth(),clock.now.getDate(),0,0,0,0)};return{create:function(date){var clock={ver:'0.0.0'};clock.now=date||new Date(0);clock.timeText=getTimeText(clock);var dayStart=getDayStart(clock);clock.dayPer=(clock.now-dayStart)/86400000;clock.secPer=clock.now.getMilliseconds()/1000;clock.minPer=clock.now.getSeconds()/60;clock.hourPer=clock.now.getMinutes()/60;clock.AMPMPer=clock.now.getHours()%12/12;return clock;}}}());var draw={};draw.clear=function(canvas,ctx){ctx.clearRect(0,0,canvas.width,canvas.height);};draw.clockText=function(canvas,ctx,clock){ctx.lineWidth=1;ctx.fillStyle='white';ctx.strokeStyle='black';ctx.font='40px arial';ctx.textBaseline='middle';ctx.textAlign='center';var text=Math.floor(clock.dayPer*100)+'%';ctx.fillText(text,canvas.width/2,canvas.height/2-20);ctx.strokeText(text,canvas.width/2,canvas.height/2-20);ctx.font='20px arial';ctx.fillText(clock.timeText,canvas.width/2,canvas.height/2+20);ctx.strokeText(clock.timeText,canvas.width/2,canvas.height/2+20);};draw.hands=function(canvas,ctx,clock){ctx.strokeStyle='rgba(0,0,0,0.5)';'secPer,minPer,hourPer,AMPMPer'.split(',').forEach(function(perName,i){var r=Math.PI*2*clock[perName]-Math.PI/2,radius=(canvas.height-50-100*(i/4))/2,cx=canvas.width/2,cy=canvas.height/2;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(r)*radius,cy+Math.sin(r)*radius);ctx.stroke();});};draw.info=function(ctx,canvas,clock){ctx.fillStyle='grey';ctx.textBaseline='top';ctx.font='10px courier';ctx.textAlign='left';ctx.fillText('v'+clock.ver,10,10);};draw.clockDayCircle=function(canvas,ctx,clock){var r=Math.PI*2*clock.dayPer;ctx.lineWidth=7;ctx.strokeStyle='grey';ctx.beginPath();ctx.arc(canvas.width/2,canvas.height/2,(canvas.height-50)/2,0,Math.PI*2);ctx.stroke();ctx.strokeStyle='red';ctx.beginPath();ctx.arc(canvas.width/2,canvas.height/2,(canvas.height-50)/2,0,r);ctx.stroke();};var canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),container=document.getElementById('canvas-app')||document.body;container.appendChild(canvas);canvas.width=320;canvas.height=240;var loop=function(){requestAnimationFrame(loop);var clock=clockMod.create(new Date());draw.clear(canvas,ctx);draw.hands(canvas,ctx,clock);draw.clockDayCircle(canvas,ctx,clock);draw.clockText(canvas,ctx,clock);draw.info(ctx,canvas,clock);};loop();</script>
 
 ## 1 - The clock.js file for a basic canvas clock example
 
