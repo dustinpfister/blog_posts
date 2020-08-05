@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 651
-updated: 2020-08-05 15:05:30
-version: 1.16
+updated: 2020-08-05 15:11:14
+version: 1.17
 ---
 
-For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid type game with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach. I was not thinking in terms of much more beyond that, but there are several games that I have played in the past that come to mind that where kind of fun that where like that in one way or another.
+For this weeks [canvas example](/2020/03/23/canvas-example/) I started working on an idea that I had for a simple strategy type game. The basic idea of what I had in mind is just a simple 2d grid type game with three index values for ground types that are water, beach, and land. The player can build structures on land, but not on beach or water cells. In the water enemy boats can spawn and attempt to attack and invade the beach. 
 
-The current state of this canvas example is not what I had in mind just yet as of the time of this writing, but it is turning into something interesting that is showing some potential. It is not the kind of project that involves user interaction, but a kind of game where the computer is playing against itself sort of speak.
+I was not thinking in terms of much more beyond that, but there are several games that I have played in the past that come to mind that where kind of fun that where like that in one way or another. So I wanted to take a moment to throw together a basic prototype of some kind of game where the player is defending a beach.
+
+The current state of this canvas example is not what I had in mind just yet as of the time of this writing, but it is turning into something interesting that is showing some potential. It is not the kind of project that involves user interaction at least for the moment, so for now it is a kind of game where the computer is playing against itself sort of speak. That feature of having the computer automate the process of playing is something that I often find myself putting in anyway.
 
 <!-- more -->
 
