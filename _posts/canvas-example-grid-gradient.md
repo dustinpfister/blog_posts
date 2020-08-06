@@ -5,15 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 636
-updated: 2020-08-06 09:53:11
-version: 1.22
+updated: 2020-08-06 09:55:01
+version: 1.23
 ---
 
 When working with a canvas element there are ways to quickly paint a [gradient](https://en.wikipedia.org/wiki/Gradient) to the canvas but todays [canvas example](/2020/03/23/canvas-example/) is about making something a little more fun and interesting that is similar to that a little. It involves having grid and a pool of objects that are used to set color channel values for each grid cell. So all of this constitutes a model object that is then drawn to the canvas resulting in a cool color gradient type effect that might be kind of cool. 
 
 If you are more interested in reading about the 2d drawing context method for drawing gradients I made a post on the [plain old canvas gradients](/2020/02/05/canvas-gradient/) if you want to read about that. What I am writing about here is more of a full canvas project example where I am working out my own custom logic for gradient like effects using javaScript code and canvas elements.
 
-I went a little overboard with this example, making a plug in system and a few plug ins that have to do with the setting and updating of the behavior of these objects in the object pool that have to do with how the grid gradient changes. there are two types of pulg-ins one type will define initial conditions of objects, and the others define how objects will change.
+I went a little overboard with this example, making a plugin system and a few plugins that have to do with the setting and updating of the behavior of these objects in the object pool that have to do with how the grid gradient changes. there are two types of pulgins one type will define initial conditions of objects, and the others define how objects will change. I have all ready made a number of plugins for this canvas project, and keep experimenting how plugins can be used to take this in all kinds of different directions.
 
 Like many advanced canvas example projects I started breaking things down between code that is used to create and update a main state object, and code that makes that renders that state object to the canvas element. In addition I then have additional code that is used to tie everything together when it comes to a model and view. 
 
