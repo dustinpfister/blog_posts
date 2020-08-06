@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 675
-updated: 2020-08-05 15:36:51
-version: 1.13
+updated: 2020-08-06 09:11:28
+version: 1.14
 ---
 
-I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, life is short and I have to do something that I really want to do with my life now and then just like everyone else. So for today I made a grass blades thing with canvas and a little bot of javaScript code. I can not say that this is my dream project mind you, but I think it might be worth it for me to expand my collection of this kind of content when it comes to fun, and artful examples of javaScript in action rather than the boring stuff.
+I just have to make another [canvas example](/2020/03/23/canvas-example/) post now and then, life is short and I have to do something that I really want to do with my life now and then just like everyone else. So for today I made a grass blades thing with canvas and a little bit of javaScript code. I can not say that this is my dream project mind you, but I think it might be worth it for me to expand my collection of this kind of content when it comes to fun, and artful examples of javaScript and canvas in action rather than just the boring yet practical stuff.
 
-This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element.
+This canvas example makes use of a blade javaScript module that is used to create a single blade of grass, and then there is another grass module that serves as a way to create a collection of blade objects. These two modules are just yet another pattern that seems to come up with most canvas projects, having some kind of standard for a display object of some kind, and another for a collection of these kinds of display objects. 
+
+I then as always with these canvas examples have a draw.js module that is used to render the state of one of these grass objects to a canvas element. This draw module is where I am actually drawing to a canvas element, but it is nt where I am creating an injecting it. This way I am separating things between the javaScript code that creates a main state object, and code that renders that aspects of that state object to the canvas, and then code that creates a state, uses the draw module, and ties everything together.
 
 With what is going on in the outside would as of late I have come to find that I like to work on canvas projects as a way to gain an escape of sorts from what is going on. JavaScript and canvas have always been there for me as a way to get away from my troubles that may prove to be a more constructive alternative to that which is often typical. So that is the kind of canvas example this is, just letting go of what is bothering me and letting my mind flow. The result is another canvas animation type thing that I can have running on the screen that is nice to look at for a while, and I can just thing about all the other things I can do to make it more interesting.
 
