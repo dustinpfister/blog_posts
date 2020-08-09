@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-09 10:37:12
-version: 1.4
+updated: 2020-08-09 11:14:27
+version: 1.5
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. I am writing about this because I came across a situation in another canvas example where I wanted to have a method that would take a percent value between 0 and 1 and return another percent value that is consistent with something that is more of a curve rather than a straight line.
@@ -16,7 +16,9 @@ I have been busy with things lately so this weeks [canvas example](/2020/03/23/c
 <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
 <script> var utils={};utils.logPer=function(per,a,b){a=a===undefined?2:a;b=b===undefined?a:b;per=per<0?0:per;per=per>1?1:per;return Math.log((1+a-2)+per)/Math.log(b);};utils.createLogPerPoints=function(a,b,sx,sy,w,h,len){var points=[],i=0,x,y,per;while(i<len){per=i/len;x=sx+w/(len-1)*i;y=sy+h-utils.logPer(per,a,b)*h;points.push({x:x,y:y});i+=1;} return points;};var draw={};draw.back=function(ctx,canvas){ctx.fillStyle='black';ctx.fillRect(0,0,canvas.width,canvas.height);};draw.box=function(ctx,box){ctx.fillStyle='grey';ctx.fillRect(box.x,box.y,box.w,box.h);ctx.strokeStyle='red';};draw.points=function(ctx,points){ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);var i=1;while(i<points.length){ctx.lineTo(points[i].x,points[i].y);i+=1;} ctx.stroke();};draw.info=function(ctx,state){ctx.fillStyle='white';ctx.textBaseline='top';ctx.fillText('v'+state.ver,10,10);ctx.fillText('a: '+state.a.toFixed(2),10,20);};var canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),container=document.getElementById('canvas-app')||document.body;container.appendChild(canvas);canvas.width=320;canvas.height=240;ctx.translate(0.5,0.5);var state={ver:'0.0.0',a:2,b:10,maxHigh:5,bias:0,per:0,i:0,box:{x:60,y:20,w:200,h:200}};var loop=function(){var points=utils.createLogPerPoints(state.a,state.b,state.box.x,state.box.y,state.box.w,state.box.h,100);requestAnimationFrame(loop);draw.back(ctx,canvas);draw.box(ctx,state.box);draw.points(ctx,points);draw.info(ctx,state);state.i+=1;state.i%=1000;state.per=state.i/1000;state.bias=1-Math.abs(0.5-state.per)/0.5;state.a=2+3*state.bias;state.b=state.a;};loop(); </script>
 
-## 1 - 
+## 1 - The utility methods
+
+First things first lets start out with the method that I am using to create a percent value from a percent value of that makes any sense. With that said I have an object literal with two methods one of which is used to create a percent value from another percent value, and some additional arguments that are used with the Math log method. The other method I can use to create an array of points with two values that are used with the logPer method and additional arguemnts that are used to set an area where the array of ponts will be, and a len property that will set the number of points.
 
 ```
 var utils = {};
@@ -47,7 +49,10 @@ utils.createLogPerPoints = function (a, b, sx, sy, w, h, len) {
 };
 ```
 
-## 2 - 
+So the idea here is to use the createLogPoints method as a way to create an array of points that can then be drawn to a canvas element with a draw points method.
+
+
+## 2 - The draw module
 
 ```js
 var draw = {};
@@ -78,7 +83,7 @@ draw.info = function (ctx, state) {
 };
 ```
 
-## 3 - main
+## 3 - Lets try this out now
 
 ```js
 var canvas = document.createElement('canvas'),
@@ -124,4 +129,16 @@ var loop = function () {
 };
  
 loop();
+```
+
+```html
+<html>
+    <head>
+        <title>canvas example percent math log</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
