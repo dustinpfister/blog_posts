@@ -1,12 +1,12 @@
 ---
-title: 37 Canvas examples and counting, animations, games, modules, and more.
+title: 38 Canvas examples and counting, animations, games, modules, and more.
 date: 2020-03-23 08:48:00
 categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-08-09 09:37:57
-version: 1.50
+updated: 2020-08-09 09:38:37
+version: 1.51
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so oif course I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -150,31 +150,31 @@ Search and destroy particles.
 
 A simple canvas example that shows graphically what a method I work out does with a percent value.
 
-### 2.31 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
+### 2.32 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
 
 I think that it is generally a good idea to make a canvas project to work with pointers in general rather than making a project to desktop or mobile centric. So I made a quick Canvas Example that is a way to manage pointer input from both mouse and touch events. 
 
-### 2.32 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
+### 2.33 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
 
 Here is a Canvas Example that is a User interface design for moving a map, or anything for that matter by way of touch or click events by way of a pointer start point and distance to a current point.
 
-### 2.33 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
+### 2.34 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
 
 A Canvas Example that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example.
 
-### 2.34 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
+### 2.35 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
 
 A Canvas Example of a space shooter type game.
 
-### 2.35 - [Stars](/2020/02/12/canvas-example-star/)
+### 2.36 - [Stars](/2020/02/12/canvas-example-star/)
 
 I use to have a thing about drawing stars in all kinds of different ways so of course I have a Canvas Example on that.
 
-### 2.36 - [State machines](/2020/01/28/canvas-example-state-machine/)
+### 2.37 - [State machines](/2020/01/28/canvas-example-state-machine/)
 
 State machines are an important component for many javaScript projects so of course I have a Canvas Example on state machine in general.
 
-### 2.37 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
+### 2.38 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
 
 Turret defense games are sometimes nice so I have a Canvas Example on that in general.
 
