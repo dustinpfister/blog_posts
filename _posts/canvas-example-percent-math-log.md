@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-09 09:47:19
-version: 1.3
+updated: 2020-08-09 10:37:12
+version: 1.4
 ---
 
-I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear.
+I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. I am writing about this because I came across a situation in another canvas example where I wanted to have a method that would take a percent value between 0 and 1 and return another percent value that is consistent with something that is more of a curve rather than a straight line.
 
 <!-- more -->
 
