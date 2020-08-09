@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-07-29 16:11:47
-version: 1.49
+updated: 2020-08-09 09:37:57
+version: 1.50
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so oif course I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -145,6 +145,10 @@ The idea just came into my head one day to make some kind of fun and interesting
 ### 2.30 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
 
 Search and destroy particles.
+
+### 2.31 - [percent values and Math log](/2020/08/08/canvas-example-percent-math-log/)
+
+A simple canvas example that shows graphically what a method I work out does with a percent value.
 
 ### 2.31 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
 
