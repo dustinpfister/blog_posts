@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-09 11:14:27
-version: 1.5
+updated: 2020-08-09 11:16:08
+version: 1.6
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. I am writing about this because I came across a situation in another canvas example where I wanted to have a method that would take a percent value between 0 and 1 and return another percent value that is consistent with something that is more of a curve rather than a straight line.
@@ -53,6 +53,8 @@ So the idea here is to use the createLogPoints method as a way to create an arra
 
 
 ## 2 - The draw module
+
+I then have an additional object with draw methods that can be used to draw a simple background, a points array, and info about a state object for this canvas example.
 
 ```js
 var draw = {};
