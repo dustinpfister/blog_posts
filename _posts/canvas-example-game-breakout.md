@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-08-10 09:40:53
-version: 1.24
+updated: 2020-08-10 09:46:07
+version: 1.25
 ---
 
 This will be a post on a [canvas example](/2020/03/23/canvas-example/) that is a very basic [breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)) clone. Even a basic example of this game might prove to be a little involved for new developers especially if you are starting from the ground up, and not using a framework as a lot of topics can still come up with the nature of this kind of game. Still breakout is often a good starting point when it comes to exercising a range of skills that are needed to make games in general using canvas and javaScript. In this example I will be using a fair amount of code that touches base on a wide range of topics when it comes to game development in general with javaScript and canvas elements.
@@ -304,7 +304,34 @@ This set game method will not create a new state object, but will set up a new g
     };
 ```
 
-### 2.8 - The public api and the end of the module
+### 2.8 - Pointer handers
+
+```js
+    var pointerHandlers = {
+        start: function (state, e) {
+            state.input.pointerDown = true;
+        },
+        move: function (state, e) {
+            // just need to update state.input.pos in main hander
+            // put we can expand here later of needed
+        },
+        end: function (state, e) {
+            state.input.pointerDown = false;
+            state.input.left = false;
+            state.input.right = false;
+        }
+    };
+ 
+    var createPointerHandler = function (state, type) {
+        return function (e) {
+            var pos = state.input.pos = util.getCanvasRelative(e);
+            e.preventDefault();
+            pointerHandlers[type](state, e, pos);
+        };
+    };
+```
+
+### 2.9 - The public api and the end of the module
 
 Now that I have all the private methods out of the way it is now time to look at the public methods that can be used to work with this module from the outside in my main.js file.
 
@@ -313,13 +340,19 @@ Now that I have all the private methods out of the way it is now time to look at
  
     // create a new game state
     api.createNewState = function (canvas) {
+ 
         canvas = canvas || {
             width: 320,
             height: 240
         };
+ 
+        // create the state object
         var state = {
+            ver: '0.1.0',
             score: 0,
             input: {
+                pointerDown: false,
+                pos: {},
                 left: false,
                 right: false
             },
@@ -328,23 +361,71 @@ Now that I have all the private methods out of the way it is now time to look at
             blocks: [],
             paddle: {}
         };
+ 
+        // set game for first time
         setGame(state);
+ 
+        // attach pointer handlers
+        canvas.addEventListener('mousedown', createPointerHandler(state, 'start'));
+        canvas.addEventListener('mousemove', createPointerHandler(state, 'move'));
+        canvas.addEventListener('mouseup', createPointerHandler(state, 'end'));
+        canvas.addEventListener('touchstart', createPointerHandler(state, 'start'));
+        canvas.addEventListener('touchmove', createPointerHandler(state, 'move'));
+        canvas.addEventListener('touchend', createPointerHandler(state, 'end'));
+ 
+        // keyboard handlers
+        window.addEventListener('keydown', function (e) {
+            var key = e.key.toLowerCase();
+            if (key === 'a') {
+                state.input.left = true;
+            }
+            if (key === 'd') {
+                state.input.right = true;
+            }
+        });
+        window.addEventListener('keyup', function (e) {
+            var key = e.key.toLowerCase();
+            if (key === 'a') {
+                state.input.left = false;
+            }
+            if (key === 'd') {
+                state.input.right = false;
+            }
+        });
+ 
         return state;
+    };
+ 
+    // Pointer movement helper
+    var pointerMove = function (state) {
+        var pos = state.input.pos;
+        if (state.input.pointerDown) {
+            state.input.left = false;
+            state.input.right = false;
+            if (pos.x < state.paddle.x + state.paddle.w / 3) {
+                state.input.left = true;
+                state.input.right = false;
+            }
+            if (pos.x > state.paddle.x + state.paddle.w - state.paddle.w / 3) {
+                state.input.left = false;
+                state.input.right = true;
+            }
+        }
     };
  
     // update the given state object with the given amount of time
     // passed sense last update in seconds
     api.update = function (state, secs) {
- 
         movePaddle(state, secs);
         moveBalls(state, secs);
- 
+        pointerMove(state);
     };
  
     return api;
  
 }
     ());
+ 
 ```
 
 ## 3 - The draw module
@@ -393,12 +474,14 @@ draw.balls = function (ctx, state) {
     });
 };
  
-draw.info = function (ctx, state) {
+draw.info = function (ctx, canvas, state) {
     ctx.fillStyle = 'white';
-    ctx.font = '15px arial';
+    ctx.font = '10px arial';
     ctx.textBaseline = 'top';
-    ctx.fillText(state.score, 10, 10);
+    ctx.fillText('v' + state.ver, 5, canvas.height - 15);
+    ctx.fillText(state.score, 5, 5);
 };
+ 
 ```
 
 ## 4 - main.js and index.html
@@ -408,50 +491,42 @@ Now to tie everything together with a main.js file and and html file. I get a re
 Once I have my canvas element to work with I then pass it as the one argument for my create new state public method for the game module. I set up a two event handler for the window objects keydown and keyup events where I set the left and right values of the state input object that will be the only way to move the paddle for now.
 
 ```js
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
+(function () {
  
-var state = breakout.createNewState(canvas);
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    container = document.getElementById('canvas-app') || document.body;
+    container.appendChild(canvas);
+    canvas.width = 320;
+    canvas.height = 240;
+    ctx.translate(0.5, 0.5);
  
-window.addEventListener('keydown', function (e) {
-    var key = e.key.toLowerCase();
-    if (key === 'a') {
-        state.input.left = true;
-    }
-    if (key === 'd') {
-        state.input.right = true;
-    }
-});
+    var state = breakout.createNewState(canvas);
  
-window.addEventListener('keyup', function (e) {
-    var key = e.key.toLowerCase();
-    if (key === 'a') {
-        state.input.left = false;
-    }
-    if (key === 'd') {
-        state.input.right = false;
-    }
-});
+    var lt = new Date(),
+    FPS_target = 30;
+    var loop = function () {
+        var now = new Date(),
+        t = now - lt,
+        secs = t / 1000;
+        requestAnimationFrame(loop);
+        if (t >= 1000 / FPS_target) {
+            breakout.update(state, secs);
+            draw.background(ctx, canvas);
+            draw.blocks(ctx, state);
+            draw.paddle(ctx, state);
+            draw.balls(ctx, state);
+            draw.info(ctx, canvas, state);
+            lt = now;
+        }
+    };
+    loop();
  
-var lt = new Date();
-var loop = function () {
-    var now = new Date();
-    requestAnimationFrame(loop);
-    breakout.update(state, (now - lt) / 1000);
-    lt = now;
-    draw.background(ctx, canvas);
-    draw.blocks(ctx, state);
-    draw.paddle(ctx, state);
-    draw.balls(ctx, state);
-    draw.info(ctx, state);
-};
-loop();
+}
+    ());
 ```
+
+Now for just a little html to pull eventing together by providing a hard coded container element, and script tags that link to all the modules that I have coved above.
 
 ```html
 <html>
@@ -459,7 +534,7 @@ loop();
         <title>canvas breakout</title>
     </head>
     <body>
-        <div id="gamearea"></div>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
         <script src="utils.js"></script>
         <script src="game.js"></script>
         <script src="draw.js"></script>
