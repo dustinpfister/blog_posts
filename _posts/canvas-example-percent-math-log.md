@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-09 12:44:32
-version: 1.10
+updated: 2020-08-09 20:16:51
+version: 1.11
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. I am writing about this because I came across a situation in another canvas example where I wanted to have a method that would take a percent value between 0 and 1 and return another percent value that is consistent with something that is more of a curve rather than a straight line.
@@ -18,7 +18,7 @@ I have been busy with things lately so this weeks [canvas example](/2020/03/23/c
 
 ## 1 - The utility methods
 
-First things first lets start out with the method that I am using to create a percent value from a percent value of that makes any sense. With that said I have an object literal with two methods one of which is used to create a percent value from another percent value, and some additional arguments that are used with the Math log method. The other method I can use to create an array of points with two values that are used with the logPer method and additional arguemnts that are used to set an area where the array of ponts will be, and a len property that will set the number of points.
+First things first lets start out with the method that I am using to create a percent value from a percent value of that makes any sense. With that said I have an object literal with two methods one of which is used to create a percent value from another percent value, and some additional arguments that are used with the Math log method. The other method I can use to create an array of points with two values that are used with the logPer method and additional arguments that are used to set an area where the array of points will be, and a len property that will set the number of points.
 
 ```js
 var utils = {};
@@ -119,7 +119,9 @@ draw.info = function (ctx, state) {
 };
 ```
 
-## 3 -
+## 3 - Demo state module
+
+So now for a module that will create a state object for this.
 
 ```js
 var demo = {};
