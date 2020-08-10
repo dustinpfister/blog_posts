@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2020-08-10 15:30:08
-version: 1.3
+updated: 2020-08-10 15:32:57
+version: 1.4
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end u working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example]((https://www.tutorialrepublic.com/javascript-examples.php)) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -39,6 +39,8 @@ utils.linPerToBiasPer = function (linPer) {
 ```
 
 ## 2 - A Game module that makes use of the methods
+
+So now that I have my utility module I now want to work out a quick module that will make use of it.
 
 ```js
 var gameMod = (function () {
@@ -162,6 +164,8 @@ var gameMod = (function () {
 
 ## 3 - Draw to a canvas element
 
+One way to go about drawing the state of things in a client side environment would be to use canvas, so I worked out a few quick draw methods to be used with canvas.
+
 ```js
 var draw = {};
  
@@ -200,6 +204,8 @@ draw.info = function (ctx, game) {
 
 ## 4 - Main javaScript and HTML
 
+Now for just a little more client side javaScript to make use of what it is that I have worked out with the game, and draw modules.
+
 ```js
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
@@ -226,6 +232,8 @@ var loop = function () {
  
 loop();
 ```
+
+And just a little html to tie it all up together.
 
 ```html
 <html>
