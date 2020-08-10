@@ -5,13 +5,17 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-08-09 21:27:38
-version: 1.52
+updated: 2020-08-10 10:20:24
+version: 1.53
 ---
 
-I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so oif course I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
+I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
 
-The canvas examples I have made range form simple animations, to more complex game and simulation prototypes. I am going all over the board when it comes to this naturally because lets fact it canvas is a great example of fun and exciting javaScript rather than boring yet practical javaScript. SO of course I have to make a lot of them, and maybe it I get to it pour a little more time and effort into some of them. So lets get to the list of canvas examples here then.
+So then it seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
+
+The canvas examples I have made range form simple animations, to more complex game and simulation prototypes in various stages of completion. Many of them are prototypes for games that I have not continued developing into a finished product. However I have gotten into the habit of making sure that there are embedded packages for each canvas example in the post where I write about it that might help to sever as a way to get me to put a little more time and effort into the examples that may need more work.
+
+I am going all over the board when it comes to playing around with canvas elements naturally because lets face it canvas is a great example of fun and exciting javaScript rather than boring yet practical javaScript. So of course I have to make a lot of them, and maybe if I get to it pour a little more time and effort into some of them. So lets get to the list of canvas examples here then as they currently stand.
 
 <!-- more -->
 
