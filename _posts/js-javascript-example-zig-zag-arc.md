@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2020-08-10 14:03:37
-version: 1.2
+updated: 2020-08-10 15:30:08
+version: 1.3
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end u working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example]((https://www.tutorialrepublic.com/javascript-examples.php)) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -17,6 +17,8 @@ When making a javaScript project that is some kind of game or something to that 
 
 
 ## 1 - The utility module
+
+So here I made a utilities module with a few methods that take a percentage value as a first argument and returns another percentage as a product. What I had in mind was a function that I can use to turn a percentage value that would otherwise go up in a linear kind of way, and get a percentage value that goes up by way of a curve instead. So I am going to want to just work out a few methods that make use of something like Math.cos, and or Math.log.
 
 ```js
 var utils = {};
