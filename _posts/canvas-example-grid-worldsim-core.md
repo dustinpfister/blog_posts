@@ -1,12 +1,12 @@
 ---
-title: Search destroy and spawn canvas example
+title: World simulator canvas example
 date: 2020-04-15 17:18:00
 tags: [canvas]
 layout: post
 categories: canvas
 id: 646
-updated: 2020-05-27 12:06:59
-version: 1.20
+updated: 2020-08-10 11:03:17
+version: 1.21
 ---
 
 I want to start making at least a few more [canvas examples](/2020/03/23/canvas-example/) that are the kind of example that I will be coming back to a few times. In other words the kind of canvas example that might prove to be a bit more that just a center piece to write about in a blog post before moving on to the next thing. That kind of habit is something that I would like to break with at least a few of these canvas examples.
