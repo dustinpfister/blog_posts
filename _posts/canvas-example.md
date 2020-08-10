@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-08-09 09:38:37
-version: 1.51
+updated: 2020-08-09 21:27:38
+version: 1.52
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so oif course I have got into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial), and writing posts on these canvas examples here on my github pages site. It then seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
@@ -74,7 +74,7 @@ There are many games that have came and went ever the years that can be describe
 
 A game about a cross hairs object that you can move around and do damage to things.
 
-### 2.13 - [Fixed shooter hybrid](/2020/07/10)
+### 2.13 - [Fixed shooter hybrid](/2020/07/10/canvas-example-game-fixed-shooter-hybrid/)
 
 This is like a fixed axis shooter game only the player is fixed to an area rather than a single axis. One such game that might be similar to this is the classic game centipede.
 
