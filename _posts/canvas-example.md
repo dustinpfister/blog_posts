@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-08-10 10:20:24
-version: 1.53
+updated: 2020-08-10 11:03:18
+version: 1.54
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -86,7 +86,7 @@ This is like a fixed axis shooter game only the player is fixed to an area rathe
 
 This is a canvas example that aims to be a novel spin on flappy bird. Although it might be best to come up with a truly original idea for a canvas project, some times it is more realistic to take something that has been done before and try to find something new to do with it.
 
-### 2.15 - [Flappy collector idle a flappy bird clone](/2020/01/16/canvas-example-game-flappy-collector/)
+### 2.15 - [Flappy collector a flappy bird clone](/2020/01/16/canvas-example-game-flappy-collector/)
 
 This is just a flappy bid clone of sorts, I just wanted to take a moment to make my own rendition on this one, and then maybe one or two more based off of it. Many games now are just clever, unique remakes of things that have all ready been done before hand anyway. The idea I have in mind is to start cloning something that has been done before, but then try to find a way to make it my own somehow. However first i do have to start with a clone that is not all that different from the original.
 
