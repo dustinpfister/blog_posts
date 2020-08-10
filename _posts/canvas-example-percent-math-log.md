@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-09 20:16:51
-version: 1.11
+updated: 2020-08-09 20:18:34
+version: 1.12
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. I am writing about this because I came across a situation in another canvas example where I wanted to have a method that would take a percent value between 0 and 1 and return another percent value that is consistent with something that is more of a curve rather than a straight line.
@@ -121,7 +121,7 @@ draw.info = function (ctx, state) {
 
 ## 3 - Demo state module
 
-So now for a module that will create a state object for this.
+So now for a module that will create a state object for this utility method. Here I have a few methods to help with creating a main state object that will have a whole punch of properties that will be used to create a functioning canvas example that will show why working out something likes this is helpful.
 
 ```js
 var demo = {};
