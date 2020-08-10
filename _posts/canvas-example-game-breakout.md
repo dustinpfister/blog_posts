@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 612
-updated: 2020-08-10 09:33:34
-version: 1.23
+updated: 2020-08-10 09:40:53
+version: 1.24
 ---
 
 This will be a post on a [canvas example](/2020/03/23/canvas-example/) that is a very basic [breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)) clone. Even a basic example of this game might prove to be a little involved for new developers especially if you are starting from the ground up, and not using a framework as a lot of topics can still come up with the nature of this kind of game. Still breakout is often a good starting point when it comes to exercising a range of skills that are needed to make games in general using canvas and javaScript. In this example I will be using a fair amount of code that touches base on a wide range of topics when it comes to game development in general with javaScript and canvas elements.
@@ -49,7 +49,19 @@ util.distance = function (x1, y1, x2, y2) {
 // normalize angle method
 util.angleNormalize = function (a, scale) {
     return util.mod(a, scale || util.TAU);
-}
+};
+ 
+util.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
+    return {
+        x: x,
+        y: y,
+        bx: bx
+    };
+};
 ```
 
 ## 2 - The game modules
@@ -265,7 +277,7 @@ This method will of course move all the balls in the balls array of the state ob
 
 ### 2.7 - set game state and balls
 
-This set game method will not create a new state object, but will set up a new game. It will create a new blocks array, set all balls to there starting position, and will also rest the paddle to the center also.
+This set game method will not create a new state object, but will set up a new game for the state object. It will create a new blocks array, set all balls to there starting position, and will also rest the paddle to the center also. The main create state method of the brakout module should only be called once when starting up the applaction for the first time, moe on that later.
 
 ```
     // set game state and balls
