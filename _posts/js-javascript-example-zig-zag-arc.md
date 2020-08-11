@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2020-08-11 09:05:50
-version: 1.8
+updated: 2020-08-11 09:08:53
+version: 1.9
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end u working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -251,6 +251,8 @@ And just a little html to tie it all up together.
     </body>
 </html>
 ```
+
+When this javaScript example is up and running in the browser I have display objects become active, and follow one of the two update methods that are used to update position as expected. In this example I am using the methods as a way to help directly set position, but in other projects thay could be used to set other values such as a pixels per second speed rate or something to that effect.
 
 ## 5 - Conclusion
 
