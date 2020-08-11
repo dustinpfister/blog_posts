@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2020-08-11 09:02:41
-version: 1.7
+updated: 2020-08-11 09:05:50
+version: 1.8
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end u working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -40,7 +40,9 @@ utils.linPerToBiasPer = function (linPer) {
 
 ## 2 - A Game module that makes use of the methods
 
-So now that I have my utility module I now want to work out a quick module that will make use of the methods in it. I am thinking that I have a module that will create a basic [object pool](/2020/07/20/canvas-example-object-pool/), and then update the positions of the display obejctys in the pool using these methods that i have worked out in my utility module there.
+So now that I have my utility module I now want to work out a quick module that will make use of the methods in it. I am thinking that I have a module that will create a basic [object pool](/2020/07/20/canvas-example-object-pool/), and then update the positions of the display objects in the pool using these methods that i have worked out in my utility module there.
+
+So then this game module if you can call it that will contain just two public methods one to create a game state object and the other to update such an object. Inside the private area of the module I have an array of methods that are used to update the position of an active display object in the object pool that make used of the two methods that return percent values.
 
 ```js
 var gameMod = (function () {
