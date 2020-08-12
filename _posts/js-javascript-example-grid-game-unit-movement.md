@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2020-08-12 09:58:58
-version: 1.7
+updated: 2020-08-12 10:00:36
+version: 1.8
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone javaScript example. Thus far it is just a simple example of having a grid, and having a unit move around i the grid when a player clicks on a given cell location. It may seem as a very simple, trivial example, and for a veteran javaScript developer I suppose it is. However there are still many topics that are covered when it comes to just getting to this simple starting point, and also even when it comes to being an experienced javaScript developer there is the topic of how to go about structuring a complex projects that might at one point in the future consist of thousands of lines of code.
@@ -261,7 +261,9 @@ var draw = (function () {
     ());
 ```
 
-## 5 - main
+## 5 - The main.js file and the start of a State machine
+
+So now it is time to get to my main.js file for this javaScript example.
 
 ```js
 (function () {
