@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2020-08-12 09:51:23
-version: 1.5
+updated: 2020-08-12 09:56:47
+version: 1.6
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone javaScript example. Thus far it is just a simple example of having a grid, and having a unit move around i the grid when a player clicks on a given cell location. It may seem as a very simple, trivial example, and for a veteran javaScript developer I suppose it is. However there are still many topics that are covered when it comes to just getting to this simple starting point, and also even when it comes to being an experienced javaScript developer there is the topic of how to go about structuring a complex projects that might at one point in the future consist of thousands of lines of code.
@@ -107,7 +107,11 @@ var mapMod = (function () {
     ());
 ```
 
-## 3 - game
+## 3 - The game module
+
+In this javaScript example the main module will be the state machine object that I will be getting to later in this post. However the game module is still a major component that will contain everything that has to do with the state of the game, rather than the application as a whole.
+
+Here in the game module I have a create method that will be used to create a new game state that will contain at least one instance of a map object for starters, and helper methods that can be used to create the player object. So the game module is the main state object for the state of the actual game in terms of the state of the map, and any display objects that might be in the map, or out of it actually. For now it is just the player object that I am concern with, and in time as I develop this project much of the code here will be pulled into another module that has to do with object pools, and units in general.
 
 ```js
 var gameMod = (function () {
