@@ -5,14 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2020-08-12 10:16:25
-version: 1.11
+updated: 2020-08-12 10:19:25
+version: 1.12
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone javaScript example. Thus far it is just a simple example of having a grid, and having a unit move around i the grid when a player clicks on a given cell location. 
 
-I have made many projects in the past that involve the use of a [grid in one form or another such as my grid defense canvas example](/2019/11/27/canvas-example-grid-defense/), I also have another canvas example when it comes to [creating and drawing grids in general]() with canvas. However in this one I have an idea that I have not done yet, and would like to move forward with it.
-
+I have made many projects in the past that involve the use of a [grid in one form or another such as my grid defense canvas example](/2019/11/27/canvas-example-grid-defense/), I also have another canvas example when it comes to [creating and drawing grids in general](/2019/11/07/canvas-example-grid/) with canvas. However in this one I have an idea that I have not done yet with grids, and would like to move forward with it. Also in this post I am touching base on a lot of other topics when it comes to starting a foundation to which I will build on top of when it comes to making a real projects rather thn  just yet another simple javaScript code example. 
 
 It may seem as a very simple, trivial example, and for a veteran javaScript developer I suppose it is. However there are still many topics that are covered when it comes to just getting to this simple starting point, and also even when it comes to being an experienced javaScript developer there is the topic of how to go about structuring a complex projects that might at one point in the future consist of thousands of lines of code.
 
