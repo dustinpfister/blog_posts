@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2020-08-12 09:12:14
-version: 1.2
+updated: 2020-08-12 09:36:13
+version: 1.3
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone javaScript example. Thus far it is just a simple example of having a grid, and having a unit move around i the grid when a player clicks on a given cell location. It may seem as a very simple, trivial example, and for a veteran javaScript developer I suppose it is. However there are still many topics that are covered when it comes to just getting to this simple starting point, and also even when it comes to being an experienced javaScript developer there is the topic of how to go about structuring a complex projects that might at one point in the future consist of thousands of lines of code.
@@ -23,30 +23,12 @@ The basic idea that I have together thus far with it could be taken in a whole r
 ```js
 // UTILS
 var utils = {};
-// bounding box
-utils.bb = function (a, b) {
-    return !(
-        (a.y + a.h) < b.y ||
-        a.y > (b.y + b.h) ||
-        (a.x + a.w) < b.x ||
-        a.x > (b.x + b.w));
-};
-// clamp
-utils.clamp = function (obj, box) {
-    var xMax = box.x + box.w - obj.w,
-    yMax = box.y + box.h - obj.h;
-    obj.x = obj.x > xMax ? xMax : obj.x;
-    obj.y = obj.y > yMax ? yMax : obj.y;
-    obj.x = obj.x < box.x ? box.x : obj.x;
-    obj.y = obj.y < box.y ? box.y : obj.y;
-};
- 
+// angle from one point to another
 utils.angleToPoint = function (x1, y1, x2, y2, scale) {
     scale = scale === undefined ? Math.PI * 2 : scale;
     var aTan = Math.atan2(y1 - y2, x1 - x2);
     return (aTan + Math.PI) / (Math.PI * 2) * scale;
 };
- 
 // get a point relative to a canvas element rather than window
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
@@ -63,9 +45,7 @@ utils.getCanvasRelative = function (e) {
 
 ```js
 var mapMod = (function () {
- 
-    var api = {};
- 
+    // create Cells helper
     var createCells = function (map) {
         var cells = [];
         var len = map.w * map.h,
@@ -81,23 +61,9 @@ var mapMod = (function () {
         }
         return cells;
     };
- 
-    // return a cell at the given position, or false for out of bounds values
-    api.get = function (map, x, y) {
-        if (x < 0 || y < 0 || x >= map.w || y >= map.h) {
-            return false;
-        }
-        return map.cells[y * map.w + x];
-    };
- 
-    // get a cell in the current map by way of 
-    // a canvas relative x and y pixel pos
-    api.getCellByPointer = function (map, x, y) {
-        var cx = Math.floor((x - map.margin.x) / map.cellSize),
-        cy = Math.floor((y - map.margin.y) / map.cellSize);
-        return api.get(map, cx, cy)
-    };
- 
+    // PUBLIC API
+    var api = {};
+    // create a new map object
     api.create = function (opt) {
         opt = opt || {};
         var map = {
@@ -105,16 +71,30 @@ var mapMod = (function () {
             h: opt.h || 7,
             cellSize: 32,
             margin: {
-                x: 5,
-                y: 5
+                x: opt.marginX == undefined ? 5 : opt.marginX,
+                y: opt.marginY == undefined ? 5 : opt.marginY
             },
             cells: []
         };
         map.cells = createCells(map);
         return map;
     };
+    // return a cell at the given position, or false for out of bounds values
+    api.get = function (map, x, y) {
+        if (x < 0 || y < 0 || x >= map.w || y >= map.h) {
+            return false;
+        }
+        return map.cells[y * map.w + x];
+    };
+    // get a cell in the current map by way of
+    // a canvas relative x and y pixel pos
+    api.getCellByPointer = function (map, x, y) {
+        var cx = Math.floor((x - map.margin.x) / map.cellSize),
+        cy = Math.floor((y - map.margin.y) / map.cellSize);
+        return api.get(map, cx, cy)
+    };
+    // return the public API
     return api;
- 
 }
     ());
 ```
@@ -123,7 +103,7 @@ var mapMod = (function () {
 
 ```js
 var gameMod = (function () {
- 
+    // create a base unit
     var createBaseUnit = function () {
         return {
             HP: 100,
@@ -134,14 +114,14 @@ var gameMod = (function () {
             active: false
         }
     };
- 
+    // create a player unit
     var createPlayerUnit = function () {
         var player = createBaseUnit();
         player.active = true;
         player.sheetIndex = 0; // player sheet
         return player;
     };
- 
+    // place a unit at the given location
     var placeUnit = function (game, unit, x, y) {
         var map = game.maps[game.mapIndex];
         var newCell = mapMod.get(map, x, y);
@@ -155,17 +135,14 @@ var gameMod = (function () {
             map.cells[unit.currentCell.i].unit = unit; // map ref to unit
         }
     };
- 
     // start game helper
     var setupGame = function (game) {
         game.mapIndex = 0;
         var map = game.maps[game.mapIndex];
- 
         placeUnit(game, game.player, 0, 0);
     };
- 
+    // PUBLIC API
     var api = {};
- 
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};
@@ -176,17 +153,20 @@ var gameMod = (function () {
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit()
         };
-        game.maps.push(mapMod.create());
+        game.maps.push(mapMod.create({
+                marginX: 32,
+                marginY: 32,
+                w: 8,
+                h: 6
+            }));
         setupGame(game);
         return game;
     };
- 
+    // update a game object
     api.update = function (game, secs) {
- 
         var cell,
         radian,
         target;
- 
         // move player
         if (target = game.targetCell) {
             cell = game.player.currentCell;
@@ -199,9 +179,8 @@ var gameMod = (function () {
             }
         }
     };
- 
+    // return the public API
     return api;
- 
 }
     ());
 ```
@@ -210,9 +189,7 @@ var gameMod = (function () {
 
 ```js
 var draw = (function () {
- 
     var unitColors = ['blue', 'red'];
- 
     return {
         // draw background
         back: function (sm) {
@@ -221,7 +198,6 @@ var draw = (function () {
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
- 
         // draw a map
         map: function (sm) {
             var canvas = sm.canvas,
@@ -254,7 +230,6 @@ var draw = (function () {
                 i += 1;
             }
         },
- 
         info: function (sm) {
             var ctx = sm.ctx,
             canvas = sm.canvas;
@@ -262,15 +237,11 @@ var draw = (function () {
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
             var pos = sm.input.pos;
-            ctx.fillText('pointerDown: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 10, 10);
-            var cell = sm.game.targetCell;
-            var target = cell ? cell.x + ',' + cell.y : false;
- 
-            //ctx.fillText('target: ' + target, 10, 20);
- 
+            ctx.fillText('down: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 5, 5);
+            var p = sm.game.player;
+            ctx.fillText('player pos: ' + p.currentCell.x + ',' + p.currentCell.y, 5, 15);
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }
- 
     }
 }
     ());
@@ -290,7 +261,7 @@ var draw = (function () {
     ctx.translate(0.5, 0.5);
  
     var sm = {
-        ver: '0.1.0',
+        ver: '0.0.1',
         game: gameMod.create(),
         canvas: canvas,
         ctx: ctx,
@@ -307,13 +278,10 @@ var draw = (function () {
         start: function (sm, e) {
             var pos = sm.input.pos;
             sm.input.pointerDown = true;
- 
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
- 
             if (cell) {
                 sm.game.targetCell = cell;
             }
- 
         },
         move: function (sm, e) {},
         end: function (sm, e) {
@@ -334,9 +302,7 @@ var draw = (function () {
  
     var loop = function () {
         requestAnimationFrame(loop);
- 
         gameMod.update(sm.game);
- 
         draw.back(sm);
         draw.map(sm);
         draw.info(sm);
