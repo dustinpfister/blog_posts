@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2020-08-12 10:05:51
-version: 1.9
+updated: 2020-08-12 10:09:50
+version: 1.10
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone javaScript example. Thus far it is just a simple example of having a grid, and having a unit move around i the grid when a player clicks on a given cell location. It may seem as a very simple, trivial example, and for a veteran javaScript developer I suppose it is. However there are still many topics that are covered when it comes to just getting to this simple starting point, and also even when it comes to being an experienced javaScript developer there is the topic of how to go about structuring a complex projects that might at one point in the future consist of thousands of lines of code.
@@ -349,3 +349,5 @@ So now it is time to get to my main.js file for this javaScript example.
 ## 6 - Conclusion
 
 So for now I have a decent starting point for a game, but there are all ready thins that I might choose to do differently when it comes to this basic starting point. Like many javaScript projects that make use of canvas I have a main update loop that is calling requestAnimationFrame over and over again. I decided to keep that, but the thought did occur that I might want to make this project completely event driven rather than having an update loop fire all the time. Also when it comes to keeping it there are many little subtle improvements that are needed that I have not got to yet, but have done in other projects.
+
+Still for now I just wanted to get this the point where I am just moving a player object around in a grid, and that is it. I had it set in my mind as to what the first step is, and I completed that. There are going to be additional steps that involve making various invisible improvements that do not really change the behavior, or looks an feel of the project but that was not what I wanted to get done for the moment.
