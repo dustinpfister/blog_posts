@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2020-08-12 09:49:38
-version: 1.4
+updated: 2020-08-12 09:51:23
+version: 1.5
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone javaScript example. Thus far it is just a simple example of having a grid, and having a unit move around i the grid when a player clicks on a given cell location. It may seem as a very simple, trivial example, and for a veteran javaScript developer I suppose it is. However there are still many topics that are covered when it comes to just getting to this simple starting point, and also even when it comes to being an experienced javaScript developer there is the topic of how to go about structuring a complex projects that might at one point in the future consist of thousands of lines of code.
@@ -47,7 +47,9 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
-## 2 - map
+## 2 - The map module that will be used to create the grid.
+
+In oder to get this example working I will need a grid in which to place the player object that will move on each grid location click. I could just have everything together in one module, but I am thinking ahead with this one and have decided to pull this part of the example into its own module.
 
 ```js
 var mapMod = (function () {
