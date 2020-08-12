@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2020-08-12 09:56:47
-version: 1.6
+updated: 2020-08-12 09:58:58
+version: 1.7
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone javaScript example. Thus far it is just a simple example of having a grid, and having a unit move around i the grid when a player clicks on a given cell location. It may seem as a very simple, trivial example, and for a veteran javaScript developer I suppose it is. However there are still many topics that are covered when it comes to just getting to this simple starting point, and also even when it comes to being an experienced javaScript developer there is the topic of how to go about structuring a complex projects that might at one point in the future consist of thousands of lines of code.
@@ -197,7 +197,9 @@ var gameMod = (function () {
     ());
 ```
 
-## 4 - draw
+## 4 - The draw module
+
+So now that I have all the modules that can be used to create a main game object state, I am going to want to have a way to create a view for this state object. So I will then need module that can be used to draw to a canvas element which will be this draw.js file.
 
 ```js
 var draw = (function () {
