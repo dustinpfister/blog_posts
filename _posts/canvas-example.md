@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-08-10 11:03:18
-version: 1.54
+updated: 2020-08-12 10:16:24
+version: 1.55
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -96,7 +96,7 @@ I have found myself making clones of certain classics from the Atari 2600, this 
 
 ### 2.17 - [Map idle game prototype example](/2020/01/13/canvas-example-game-map-idle/)
 
-There is yet another example of an idle type game that involves a gird that has assets at each location that generate money.
+There is yet another example of an idle type game that involves a grid that has assets at each location that generate money.
 
 ### 2.18 - [game spinner](/2020/06/07/canvas-example-game-spinner/)
 
@@ -106,9 +106,9 @@ So I wanted to have at least one canvas example that is a game spinner that is s
 
 just some grass blade type things.
 
-### 2.20 - [Gird defense](/2019/11/27/canvas-example-grid-defense/)
+### 2.20 - [grid defense](/2019/11/27/canvas-example-grid-defense/)
 
-A gird defense style game prototype. 
+A grid defense style game prototype. 
 
 ### 2.21 - [Grid gradient](/2020/03/26/canvas-example-grid-gradient/)
 
