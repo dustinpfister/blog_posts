@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-08-13 09:51:19
-version: 1.21
+updated: 2020-08-13 10:08:17
+version: 1.22
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math.log method of the main javaScript Math object will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument. 
@@ -101,7 +101,32 @@ console.log(table);
 
 So this helps to get a good idea of a use for the Math.log method. In a situation in which you know the base \(b\), and the power \(p\) but do not know the exponent \(e\) then the Math.log method can be used to find the exponent \(e\).
 
-## 4 - Conclusion
+## 4 - Percent values
+
+```js
+var genPerValues = function (n, d, base) {
+    var per = n / d;
+    base = base || 2;
+    return {
+        per: per,
+        perLog: Math.log(1 + per * (base - 1)) / Math.log(base)
+    }
+};
+ 
+var a = genPerValues(25, 50, 2);
+console.log(a.per);
+console.log(a.perLog);
+// 0.5
+// 0.5849625007211562
+ 
+var a = genPerValues(25, 50, 16);
+console.log(a.per);
+console.log(a.perLog);
+// 0.5
+// 0.7718657103125849
+```
+
+## 5 - Conclusion
 
 So the Math.log method in the javaScript Math object is the first go to method that I will be using when I am in a situation where I want to find out the exponent of a number from a given base when I know the base and the result. The Math log method can be used to find an exponent in most situations as I have found thus far, but there are also many other uses that come to mind fro the Math log method also that I have not covered in this post.
 
