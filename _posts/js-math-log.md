@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-08-13 09:48:17
-version: 1.20
+updated: 2020-08-13 09:51:19
+version: 1.21
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math.log method of the main javaScript Math object will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument. 
@@ -28,12 +28,13 @@ var a = 1000,
 // Math.E is the base
 p = Math.log(a), 
 b = Math.pow( Math.E, p);
-
+ 
 console.log(a); // 1000
 console.log(p); // 6.907755278982137
 console.log(b); // 999.9999999999994
-
 ```
+
+So just calling the method and passing some numbers to it to get a result is one thing, but in order to get a real hold on why this method is useful it is required to get into at least a few actually use case examples. So for the rest of this post I will be touching base on at least a few of these, and then link to some additional posts in which I am writing about actually projects that make use of the Math.log method.
 
 ## 2 - Getting the exponent of a number when the base is known
 
