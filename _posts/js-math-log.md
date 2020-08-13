@@ -5,19 +5,19 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-08-13 09:36:59
-version: 1.19
+updated: 2020-08-13 09:48:17
+version: 1.20
 ---
 
-In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math.log method of the main javaScript Math object will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument.
+In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math.log method of the main javaScript Math object will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument. 
 
-It is possible that you have all ready come across the method when it comes to taking advantage of the many copy and paste javaScript solutions that exist on stack overflow and random sites such as this that make use of it. However for whatever the reason maybe you wish to know more about it, and other examples of its use so lets take a deeper look at Math.log today.
+It is possible that you have all ready come across the method when it comes to taking advantage of the many copy and paste javaScript solutions that exist on stack overflow and random sites such as this that make use of it. However for whatever the reason maybe you wish to know more about it, and at least a few examples of its use so lets take a deeper look at Math.log today.
 
 <!-- more -->
 
 ## 1 - The natural logarithm
 
-So in javaScript the Math.log method with return an exponent that when used with the Mathematical constant E  as a base in a Math.pow method call should result in that number, or at least something near it because of floating-point rounding. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm). Another
+So in javaScript the Math.log method with return an exponent that when used with the Mathematical constant E  as a base in a Math.pow method call should result in that number, or at least something near it because of floating-point rounding. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm).
 
 ```js
 
@@ -35,11 +35,11 @@ console.log(b); // 999.9999999999994
 
 ```
 
-So if I ever get into a situation in which I know a number, and a base, and want to know the exponent that will result in the number when the exponent is used with the base using Math.pow then a solution will likely involve the use of Math.log. The only problem is that the Math.log method only excepts one argument that is the number, and there is no way to set a base other than the Math.E constant at least with the Math.log method anyway. There are of course other options in the Math object, and there are also ways of doing simple operations and expressions to get whatever kind of value that you need.
-
 ## 2 - Getting the exponent of a number when the base is known
 
-So one of the most comment use case examples of Math.log is to use it to get the exponent of a number when the base is known. By default Math.log will return the exponent of the given number relative to the base of the mathematical constant known as e. However it is not to hard to change that base to something else, to do that I just need to divide the result of Math.log(num) over Math.log(base).
+So if I ever get into a situation in which I know a number, and a base, and want to know the exponent that will result in the number when the exponent is used with the base using Math.pow then a solution will likely involve the use of Math.log. The only problem is that the Math.log method only excepts one argument that is the number, and there is no way to set a base other than the Math.E constant at least with the Math.log method anyway. There are of course other options in the Math object, and there are also ways of doing simple operations and expressions to get whatever kind of value that you need.
+
+However it is possible to work out a simple expression that can be used to get an exponent of a number when it is just the base that is known with just Math.log, and this is one of the most important actual use case examples that seems to come up often so lets touch base on this one then. By default Math.log will return the exponent of the given number relative to the base of the mathematical constant known as e. However it is not to hard to change that base to something else, to do that I just need to divide the result of Math.log(num) over Math.log(base).
 
 ```js
 var getExp = function(num, base){
