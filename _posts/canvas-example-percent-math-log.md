@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-13 09:16:40
-version: 1.13
+updated: 2020-08-13 09:25:13
+version: 1.14
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typical some kind of index value, numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between zero and one, and in most cases this value ends up being in a linear, or straight line kind of way. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion.
 
-I am writing about this because I came across a situation in another canvas example where I wanted to have a method that would take a percent value between 0 and 1 and return another percent value that is consistent with something that is more of a curve rather than a straight line.
+I am writing about this because I came across a situation in another canvas example where I wanted to have a method that would take a percent value between 0 and 1 and return another percent value that is consistent with something that is more of a curve rather than a straight line. This kind of method can be useful when it comes to positioning objects in a way where they are being aligned on a curve rather than what would otherwise be a strait line. However it can also be useful when it comes to applying it to other values that have to do with things like the rate of change of position. For example say I want a value that has to do with the rate at which a pixels per second rate changes change in a way so that an object accelerates at a rate that is not fixed or static. In addition this is also a topic that can come up when it comes to creating an experience point system. So it makes sense to work out some examples now and then when it comes to this sort of thing.
+
+So with all that said this will be a quick canvas example where I am using the Math.log method to create a percent value from another percent value that goes up in a logarithmic kind of way. I will then be using the method to change the rate at which a display object moves, and have another display object to compare to this will help to show why working out a method like this can come into play often with various canvas projects.
 
 <!-- more -->
 
