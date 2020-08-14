@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-08-14 17:27:27
-version: 1.28
+updated: 2020-08-14 17:31:54
+version: 1.29
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -88,7 +88,7 @@ Now for the public methods, for this module there is no main function so I just 
 
 ### 1.4 - Update a Pointer Movement state
 
-I then need a method that I can used to update a Pointer Movement state that has a mutated current point.
+I then need a method that I can used to update a Pointer Movement state that has a mutated current point. This method is used as a way to update the properties of the Pointer Movement state object, but not to mutate an object that the PM state object will be used to mutate, that is the responsibility of another method.
 
 ```js
     // update the pm based on startPoint, and currentPoint
@@ -111,7 +111,7 @@ I then need a method that I can used to update a Pointer Movement state that has
 
 ### 1.5 - Step a point by the current state of the Pointer Movement state
 
-This method is what I can use to update a point with a Pointer Movement State object.
+This method is what I can use to update a point with a Pointer Movement State object. I just pass the Point Movement object as the first argument, and then the point I want to mutate with the method. A third argument can then be used to pass an amount of time that has passed in seconds.
 
 ```js
     // step a point by the current values of the pm
