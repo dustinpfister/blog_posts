@@ -5,15 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-08-14 17:16:01
-version: 1.25
+updated: 2020-08-14 17:19:55
+version: 1.26
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
 
-I will not be going over how to create a grid or map like state, I have wrote many posts on those subjects before this one. Instead I will just be writing about a module that I put together that just has to do with maintaining the state of an object that would be used to update a map position.
-
-So this canvas exmaple will be fairly simple, and striped down, but that is the idea as I am just working out one little thing in this example rather than making a full blown canvas project.
+I will not be going over how to create a grid or map like state, I have wrote many posts on those subjects before this one. Instead I will just be writing about a module that I put together that just has to do with maintaining the state of an object that would be used to update a map position. So this canvas example will be fairly simple, and striped down, but that is the idea as I am just working out one little thing in this example rather than making a full blown canvas project.
 
 <!-- more -->
 
@@ -42,22 +40,22 @@ var PM = (function () {
 
 ### 1.2 - Get a canvas relative position
 
-Here I have another helper method that I needed for this module used in my pointer movement canvas example. I use it in my methods that are used in event handers to get the canvas relative position of a mouse click.
+Here I have another helper method that I needed for this module used in my pointer movement canvas example. I use it in my methods that are used in event handers to get the canvas relative position of a mouse click, or a touch event.
 
 ```js 
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
-        bx = canvas.getBoundingClientRect(),
-        x = e.clientX - bx.left,
-        y = e.clientY - bx.top;
+        bx = canvas.getBoundingClientRect();
         return {
-            x: x,
-            y: y,
+            x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+            y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
             bx: bx
         };
     };
 ```
+
+This kind of method will work okay for this canvas example at least because I am not interested in doing anything with multitouch in this example. If you would like to read up more on this subject I have a [post in which I get into the issue of getting a canvas relative pointer position](/2020/03/04/canvas-get-point-relative-to-canvas/) in detail.
 
 ### 1.3 - The start of the public api, and the create new Pointer Movement state object
 
