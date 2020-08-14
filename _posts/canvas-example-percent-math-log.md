@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-13 09:26:56
-version: 1.15
+updated: 2020-08-14 17:41:09
+version: 1.16
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typical some kind of index value, numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between zero and one, and in most cases this value ends up being in a linear, or straight line kind of way. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion.
@@ -207,7 +207,7 @@ demo.moveBox = function (box, state, secs) {
 
 ## 4 - Lets try this out now
 
-Now that I have my utility methods and some methods that can be used to draw to the canvas it is tim to use a little additional javaScript code to test out if all this works as expected.
+Now that I have my utility methods and some methods that can be used to draw to the canvas it is time to use a little additional javaScript code to test out if all this works as expected. Here I will be creating the canvas element, as well as injecting it into the hard coded HTML. I will be using the crate method of my demo module to create a state of the demo that I worked out for this canvas example, and I will of course have a main app loop that makes use of requestAnimatinFrame to create a render loop.
 
 ```js
 var canvas = document.createElement('canvas'),
@@ -242,6 +242,8 @@ var loop = function () {
 loop();
 ```
 
+So now that I have all the javaScript that I want want I just need a little HTML. In this HTML file I just have a single container div, and then I link to my main.js file that contains all the javaScript for this.
+
 ```html
 <html>
     <head>
@@ -253,6 +255,8 @@ loop();
     </body>
 </html>
 ```
+
+So when this is all up and running I get what it is that I expected working. In boxes move in to very different ways as the pixel per second values change.
 
 ## 4 - Conclusion
 
