@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-08-14 17:19:55
-version: 1.26
+updated: 2020-08-14 17:24:32
+version: 1.27
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -65,12 +65,15 @@ Now for the public methods, for this module there is no main function so I just 
     var api = {};
  
     // new Pointer Movement State Object
-    api.newPM = function () {
+    api.newPM = function (opt) {
+        opt = opt || {};
         return {
+            ver: '0.0.0',
             down: false,
             angle: 0,
             dist: 0,
-            delta: 0,
+            PPS: 0,
+            maxPPS: opt.maxPPS === undefined ? 128 : opt.maxPPS,
             sp: { // start point
                 x: -1,
                 y: -1
@@ -91,7 +94,7 @@ I then need a method that I can used to update a Pointer Movement state that has
     // update the pm based on startPoint, and currentPoint
     api.updatePM = function (pm) {
         pm.dist = 0;
-        pm.delta = 0;
+        pm.PPS = 0;
         pm.angle = 0;
         if (pm.cp.x >= 0 && pm.cp.y >= 0) {
             pm.dist = distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
@@ -100,7 +103,7 @@ I then need a method that I can used to update a Pointer Movement state that has
             var per = pm.dist / 64;
             per = per > 1 ? 1 : per;
             per = per < 0 ? 0 : per;
-            pm.delta = per * 3;
+            pm.PPS = per * pm.maxPPS;
             pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
         }
     };
@@ -112,9 +115,10 @@ This method is what I can use to update a point with a Pointer Movement State ob
 
 ```js
     // step a point by the current values of the pm
-    api.stepPointByPM = function (pm, pt) {
-        pt.x += Math.cos(pm.angle) * pm.delta;
-        pt.y += Math.sin(pm.angle) * pm.delta;
+    api.stepPointByPM = function (pm, pt, secs) {
+        secs = secs === undefined ? 1 : secs;
+        pt.x += Math.cos(pm.angle) * pm.PPS * secs;
+        pt.y += Math.sin(pm.angle) * pm.PPS * secs;
     };
 ```
 
@@ -189,7 +193,7 @@ draw.PTGridlines = function (pt, ctx, canvas) {
     cellY = -1,
     x,
     y;
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = 'gray';
     ctx.lineWidth = 1;
     while (cellX < 11) {
         x = cellX * 32 - pt.x % 32;
@@ -238,8 +242,8 @@ draw.navCircle = function (pm, ctx, canvas) {
         ctx.moveTo(cx, cy);
         ctx.lineTo(x, y);
         ctx.stroke();
-        // draw delta circle
-        per = pm.delta / 3;
+        // draw PPS circle
+        per = pm.PPS / pm.maxPPS;
         x = Math.cos(a) * min * per + cx;
         y = Math.sin(a) * min * per + cy;
         ctx.beginPath();
@@ -247,6 +251,7 @@ draw.navCircle = function (pm, ctx, canvas) {
         ctx.stroke();
     }
 };
+
 ```
 
 ### 2.4 - Draw debug info
@@ -256,8 +261,17 @@ Another method that I use to just see the current state of some values of intere
 ```js
 draw.debugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillStyle = 'white';
-    ctx.fillText(pt.x + ', ' + pt.y, 10, 10);
-}
+    ctx.fillText('pos: ' + Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
+    ctx.fillText('PPS: ' + pm.PPS.toFixed(2) + '/' + pm.maxPPS, 10, 20);
+};
+ 
+draw.ver = function (ctx, pm) {
+    ctx.fillStyle = 'white';
+    ctx.font = '10px courier';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + pm.ver, 5, canvas.height - 15);
+};
 ```
 
 ## 3 - The Main.js, and index.html files and getting the project up and running
@@ -271,38 +285,58 @@ Here I have the main.js file where I create and append a canvas element that wil
 ```js
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
+container = document.getElementById('canvas-app') || document.body;
 container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
  
-var pm = PM.newPM();
+var pm = PM.newPM({
+        maxPPS: 256
+    });
+ 
 // a point
 var pt = {
     x: 0,
     y: 0
 };
  
+var lt = new Date();
 var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
     requestAnimationFrame(loop);
     PM.updatePM(pm);
-    PM.stepPointByPM(pm, pt);
+ 
+    PM.stepPointByPM(pm, pt, secs);
+ 
     draw.background(pm, ctx, canvas);
+    draw.PTGridlines(pt, ctx, canvas);
     draw.navCircle(pm, ctx, canvas);
     draw.debugInfo(pm, pt, ctx, canvas);
-    draw.PTGridlines(pt, ctx, canvas);
+    draw.ver(ctx, pm);
+    lt = now;
 };
 loop();
  
 canvas.addEventListener('mousedown', function (e) {
-PM.onPointerStart(pm, e);
+    PM.onPointerStart(pm, e);
 });
 canvas.addEventListener('mousemove', function (e) {
-PM.onPointerMove(pm, e);
+    PM.onPointerMove(pm, e);
 });
 canvas.addEventListener('mouseup', function (e) {
-PM.onPointerEnd(pm, e);
+    PM.onPointerEnd(pm, e);
+});
+canvas.addEventListener('touchstart', function (e) {
+    PM.onPointerStart(pm, e);
+});
+canvas.addEventListener('touchmove', function (e) {
+    PM.onPointerMove(pm, e);
+});
+canvas.addEventListener('touchend', function (e) {
+    PM.onPointerEnd(pm, e);
 });
 ```
 
@@ -316,7 +350,7 @@ I then have an html file that pulls all of this together.
         <title>canvas example pointer movement</title>
     </head>
     <body>
-        <div id="gamearea"></div>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
         <script src="pm.js"></script>
         <script src="draw.js"></script>
         <script src="main.js"></script>
