@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2020-08-14 17:24:32
-version: 1.27
+updated: 2020-08-14 17:27:27
+version: 1.28
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -276,7 +276,7 @@ draw.ver = function (ctx, pm) {
 
 ## 3 - The Main.js, and index.html files and getting the project up and running
 
-Now to wrap everything together with a main.js file and some html.
+Now to wrap everything together with a main.js file and some html. In this example I am using the Pointer Movement module to create an object that I will be using with the other public methods of the Pointer Movement module. For now it is just an example that will use the PM object to move a point that is then used to draw grid lines in a way that shows that there is movement. In a real project that make use of this I would be working with a real map module of some kind, but that would pull attention away from what I am just focusing on in this post here.
 
 ### 3.1 - main.js
 
