@@ -5,17 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-06-02 13:17:10
-version: 1.12
+updated: 2020-08-16 17:37:10
+version: 1.13
 ---
 
-As of late I was working on one of my [canvas examples](/2020/03/23/canvas-example/) and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming ng a bit of a rabbit hole for me, so I thought I would start a blog post on a [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) of this one. That way I can keep coming back to this whenever I end up in this situation.
+As of late I was working on one of my [canvas examples](/2020/03/23/canvas-example/) and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming a bit of a rabbit hole for me, so I thought I would start a blog post on a [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) for this one so I always have something to look back on.
 
-I said that this can end up being a bot of a rabbit hole, because there are many ways of going about making an experience point system, and also how it should be applied to objects in a game. For example an experience point system can just be applied to a variable that holds experience points for an object that repentants stats of a player object. However experience points could also be the number of kills that a unit has scored, or the amount of money that something costs. 
+I said that this can end up being a bit of a rabbit hole, because there are many ways of going about making an experience point system, and also how it should be applied to objects in a game. For example an experience point system can just be applied to a variable that holds experience points for an object that repentants stats of a player object. However experience points could also be the number of kills that a unit has scored, or the amount of money that something costs, and so forth depending on the game where it is used. 
 
-Also there is how experience points are gained, is that something that will go up along with level? If so will it at the same rate? How about the amount of time that a player spends paying a game, should that be used, or should it be something that is earned by way of skill or reflexes?
+Also there is how experience points are gained in the first place, and how many points are gained for doing whar. How about the amount of time that a player spends paying a game, should that be used as a way to gain XP, or should it be something that is earned by way of skill or reflexes?
 
-In any case in this post I thing I will be sticking with just the basics of making an experience point system with javaScript. When doing so I think most systems should have at least two methods one that can be used to find out how much experience points are needed to get to a given level, and another that can be used to set level based on a given about of experience points.
+In any case in this post I thing I will be sticking with just the basics of making an experience point system with javaScript, and will not be getting to much into how a system like this would be applied in a project that would make use of it. When doing so I think most systems should have at least two methods one that can be used to find out how much experience points are needed to get to a given level by passing a level, and another that can be used to set level based on a given about of experience points. Both methods should return the same standard object that contains all kinds of useful properties such as how many more experience points to the next level, and a percentage value from the starting about of XP to the amount of XP for the next level.
 
 <!-- more -->
 
@@ -43,17 +43,21 @@ var XP = (function () {
         xp = xp === undefined ? DEFAULTS.xp : xp;
         cap = cap === undefined ? DEFAULTS.cap : cap;
         deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
- 
         var l = set(xp, deltaNext);
         l = l > cap ? cap : l;
         var level = Math.floor(l),
         forNext = getXPtoLevel(level + 1, deltaNext);
+        forNext = l === cap ? Infinity : forNext;
+        var toNext = l === cap ? Infinity : forNext - xp;
+        var forLast = getXPtoLevel(level, deltaNext);
         return {
             level: level,
             levelFrac: l,
             xp: xp,
-            forNext: l === cap ? Infinity : forNext,
-            toNext: l === cap ? Infinity : forNext - xp
+            per: (xp - forLast) / (forNext - forLast),
+            forNext: forNext,
+            toNext: toNext,
+            forLast: forLast
         };
     };
     return {
