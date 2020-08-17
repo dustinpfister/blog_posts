@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-08-17 06:59:18
-version: 1.15
+updated: 2020-08-17 07:07:39
+version: 1.16
 ---
 
 As of late I was working on one of my [canvas examples](/2020/03/23/canvas-example/) and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming a bit of a rabbit hole for me, so I thought I would start a blog post on a [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) for this one so I always have something to look back on.
@@ -149,4 +149,8 @@ Seems to work okay, at least for now anyway. However I am sure that this is one 
 
 ## 3 - Conclusion
 
-So for now I have my simple copy and past experience point system. There is of course using this in some projects, doing some additional testing to make sure there are not any serious issues with it. Still less is more with something like this I think, I do not want to spend a great deal of time working out an experience point system, unless I am confident I can make one that will really set a project of mine apart from everything else.
+So for now I have my simple copy and past experience point system. There is of course using this in some projects, doing some additional testing to make sure there are not any serious issues with it, and maybe add some features to it that are needed when the come up. Still less is more with something like this I think, I do not want to spend a great deal of time working out an experience point system, unless I am confident I can make one that will really set a project of mine apart from everything else, maybe that is the experience point system, maybe it is something else.
+
+For now I have a few canvas examples that make use of this system, or some other system that is based off of this at least. I first started using this system in my [beach canvas game prototype example](/2020/04/24/canvas-example-game-beach/) where it is used to level up turrets that fire at ships.
+
+ However Another [canvas example is my cross hairs game](/2020/07/29/canvas-example-game-crosshairs/) where I am using an experience point system for the main player object that is used to level up weapons that are used in the game. I am also using the same system in that game for the map cells, and the map object to begin with.
