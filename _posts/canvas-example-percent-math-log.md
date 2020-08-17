@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-14 17:41:09
-version: 1.16
+updated: 2020-08-17 07:15:30
+version: 1.17
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typical some kind of index value, numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between zero and one, and in most cases this value ends up being in a linear, or straight line kind of way. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion.
@@ -63,7 +63,7 @@ So the idea here is to use the createLogPoints method as a way to create an arra
 
 ## 2 - The draw module
 
-I then have an additional object with draw methods that can be used to draw a simple background, a points array, and info about a state object for this canvas example.
+I then have an additional object with draw methods that can be used to draw a simple background, a points array, and info about a state object for this canvas example. I also added a draw method to draw a simple box in the canvas that will be used as a way to show how methods like these work to help set pixels per second rates of display objects. However I will be getting into that more in the demo module that will make use of the utility module and this draw modules.
 
 ```js
 var draw = {};
@@ -125,7 +125,7 @@ draw.info = function (ctx, state) {
 
 ## 3 - Demo state module
 
-So now for a module that will create a state object for this utility method. Here I have a few methods to help with creating a main state object that will have a whole punch of properties that will be used to create a functioning canvas example that will show why working out something likes this is helpful.
+So now for a module that will create a state object for this canvas example that makes use of my utility methods that create percentage values. Here I have a few methods to help with creating a main state object that will have a whole bunch of properties that will be used to create a functioning canvas example that will show why working out something likes this is helpful.
 
 ```js
 var demo = {};
