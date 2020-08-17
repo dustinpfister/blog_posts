@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-17 07:47:09
-version: 1.19
+updated: 2020-08-17 07:57:06
+version: 1.20
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -52,7 +52,68 @@ utils.logPer = function (per, high) {
 
 So now that I have the basic utility library out of the way lets move on to the actual modules that make this project different from all the others.
 
-## 2 - The cross.js file
+## 2 - The experience point system
+
+So for this canvas example I want to have an experience point system. I did not work out anything that original for this project at least not of this writing, in fact i just copied over what I [workout out in another post that has to do with, you guessed it, experience point systems](/2020/04/27/js-javascript-example-exp-system/).
+
+The module provided two public methods, one that can be used to create a level object by giving and experience point value, and another that does the inversion of that by giving a level value.
+
+```js
+var XP = (function () {
+    var DEFAULTS = {
+        level: 1,
+        xp: 0,
+        cap: 30,
+        deltaNext: 50
+    };
+    // set level with given xp
+    var set = function (xp, deltaNext) {
+        return (1 + Math.sqrt(1 + 8 * xp / deltaNext)) / 2;
+    };
+    // get exp to the given level with given current_level and xp
+    var getXPtoLevel = function (level, deltaNext) {
+        return ((Math.pow(level, 2) - level) * deltaNext) / 2;
+    };
+    var parseByXP = function (xp, cap, deltaNext) {
+        xp = xp === undefined ? DEFAULTS.xp : xp;
+        cap = cap === undefined ? DEFAULTS.cap : cap;
+        deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
+        var l = set(xp, deltaNext);
+        l = l > cap ? cap : l;
+        var level = Math.floor(l),
+        forNext = getXPtoLevel(level + 1, deltaNext);
+        forNext = l === cap ? Infinity : forNext;
+        var toNext = l === cap ? Infinity : forNext - xp;
+        var forLast = getXPtoLevel(level, deltaNext);
+        return {
+            level: level,
+            levelFrac: l,
+            xp: xp,
+            per: (xp - forLast) / (forNext - forLast),
+            forNext: forNext,
+            toNext: toNext,
+            forLast: forLast
+        };
+    };
+    return {
+        parseByLevel: function (l, cap, deltaNext) {
+            l = l === undefined ? DEFAULTS.level : l;
+            deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
+            var xp = getXPtoLevel(l, deltaNext);
+            console.log(xp);
+            return parseByXP(xp, cap, deltaNext);
+        },
+        parseByXP: parseByXP
+    };
+}
+    ());
+```
+
+I might get around to changing things around with this kind of system at a later point as I keep working on this example. However for now it is working okay as a place holder of sorts until I get around to investing more time into developing not just this system, but maybe a few additional systems.
+
+In any case this experience point system is used in both the main game.js module, as well as the map.js module, and it goes without saying that this system will problem be used in a few more modules here and there as i keep working on additional minor releases of this project.
+
+## 3 - The cross.js file
 
 So now for the module that will be used to create and update a state object for a cross hairs state object. This main cross hairs state object contains a bunch of additional objects and properties that contain many points of interest in the canvas matrix. One point of interest is the center point of the cross hairs area, another is the actual cross hairs cursor position, and yet another is an offset point that can be used as a way to navigate a map. 
 
@@ -178,7 +239,7 @@ var crossMod = (function () {
 
 I then have my public API of this module that contains methods for both creating and updating a cross state object. In addition I have a method that can be used as a way to create event handers for a cross object that can be used for both mouse and touch events. this is where by utility method that has to do with getting a canvas relative position comes into play.
 
-## 3 - The map.js file
+## 4 - The map.js file
 
 So now that I have my cross hairs module I am also going to want to have a map file that will be used to create a map of cells. I can then move around the map with the state of a cross object created with the cross hairs module. I went with having the offset values in the cross object rather than the map object, so I will be using a public method in this map module to get at cells by passing a cross object along with the map and canvas relative position values.
 
@@ -522,7 +583,7 @@ var mapMod = (function () {
     ());
 ```
 
-## 4 - A pool.js module for creating an object pool to be used for shots amd any other future display object pools
+## 5 - A pool.js module for creating an object pool to be used for shots amd any other future display object pools
 
 I made a another post in which I touched base on [object pools](/2020/07/20/canvas-example-object-pool/). I decided to include such a module in this project that for starters will be used to create shot objects that will move from the side of the canvas to the target area where an attack was made on the map. In future versions of the canvas example display object pools could be used for all kinds of additional things where a display object would be called for such as explosions, enemies, and power ups.
 
@@ -599,7 +660,7 @@ var poolMod = (function () {
 
 As of this writing I am using the pool module to create a pool of display objects for shots that the player can fire by clicking in the inner circle area of the cross object. So I need a way to have a pool of objects that can be reused for the display objects that will represent these shots, and this is for starters what the pool.js module is for.
 
-## 5 - The game.js file for creating a main game state object
+## 6 - The game.js file for creating a main game state object
 
 So I ending up working out a main game module that will serve as a way to create and set up a main game state module for this canvas example. This module will create a main game state object that will contain an instance of the cross module object, along with a map object, and at least a single object pool for shot objects. This module will also attach a whole bunch of event handers for the canvas element.
 
@@ -988,7 +1049,7 @@ var gameMod = (function () {
     ());
 ```
 
-## 4 - The draw.js file
+## 7 - The draw.js file
 
 So now that I have mt modules for creating state objects, I will now want a module with methods that are used to draw aspects of these state objects to a canvas element.
 
@@ -1317,7 +1378,7 @@ var draw = (function () {
     ());
 ```
 
-## 5 - Now for a Main.js file along with a main app loop
+## 8 - Now for a Main.js file along with a main app loop
 
 So now I need some additional code to pull everything together here in a main.js file that will be used after everything else is in place to work with. Here I create and inject a canvas element into a hard coded container element that I have in my html. I create instances of a map and cross state objects, and attach a whole bunch of event handers for mouse and touch events using the create event method of the cross module.
 
@@ -1568,6 +1629,6 @@ I then have just a little HTML and inline css for the container for the canvas e
 
 So that is it when this canvas example is up and running I am able to move around and when I click on the map I cause damage to the areas that I click. Nothing to interesting at the point of this writing at least, but I think that this one has some decent potential when it comes to putting a little more time into it. I do have many other canvas examples in a state like this also that need more attention, but I am sure I will come back around to this one at some point.
 
-## 6 - Conclusion
+## 9 - Conclusion
 
 So now I have the basic idea of what I had in mind together at least, now it is just a question of what more I can do to it to make it more interesting. There is making it so that each time the player clicks or touches an area in the inner circle that casues a shot to fire from one side of the canvas or another to the point where such an event happened. So there is adding much more when it comes to weapons and what it is that we are shooting at. In addition there is doing something so that there are units in the map the shoot back at the player also.
