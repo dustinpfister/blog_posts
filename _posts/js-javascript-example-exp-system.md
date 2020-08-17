@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-08-16 17:37:10
-version: 1.13
+updated: 2020-08-17 06:51:19
+version: 1.14
 ---
 
 As of late I was working on one of my [canvas examples](/2020/03/23/canvas-example/) and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming a bit of a rabbit hole for me, so I thought I would start a blog post on a [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) for this one so I always have something to look back on.
@@ -21,7 +21,9 @@ In any case in this post I thing I will be sticking with just the basics of maki
 
 ## 1 - The XP System module
 
-So For this post I will be making a module that returns two public methods to a global variable called XP. Both of the public methods return a standard object that contains the level rounded down, the level in raw fraction form, the current amount of xp and xp counts for the next level, and to the next level. The only difference between the two methods is setting the values of this object by level, and setting the values by xp.
+So for this post I will be making a module that returns two public methods and appends to a global variable called XP. Both of the public methods return a standard object that contains the level rounded down, the level in raw fraction form, the current amount of xp, the amount of xp for the next level, the amount of xp left to the next level, and xp amount for the last level up, and a percentage value for the current level. 
+
+The only difference between the two methods is setting the values of this object by level, and setting the values by xp. So if I am in a situation where XP is known, but level is not I can use my parseByXP method to get a level object by way of XP. However if for whatever the reason I want to know what an amount of XP is for a given level I can use my parseByLevel method to get a levelObj and look at the xp property of that object.
 
 ```js
 var XP = (function () {
@@ -74,7 +76,9 @@ var XP = (function () {
     ());
 ```
 
-For the most part I would think that I would want at least those two methods at a minimum. That is in a situation where the experience points are know, but I want to know the level and other values of interest I can use my parseByXP method to get and object that contains level along with everything else I think I would want. In a situation in which the Level is know, but I want to know the experience points and so forth I can use my parseByLevel method to get the object.
+For the most part I would think that I would want at least those two methods at a minimum in most projects. That is having a method that I can use in a situation where the experience points are known, but I want to know the level and other values of interest. I can use my parseByXP method to get and object that contains level along with everything else I think I would want when it comes to having an experience point system. In a situation in which the level is known, but I want to know the experience points and so forth I can use my parseByLevel method to get the level object that way. 
+
+In certain projects maybe I would want a few more methods on top of this, however for this post I just wanted to work out a simple starting point that I can copy and past into vanilla javaScript projects.
 
 ## 2 - Simple demo that generates a list of values
 
