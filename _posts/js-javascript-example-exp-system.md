@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-08-17 06:51:19
-version: 1.14
+updated: 2020-08-17 06:59:18
+version: 1.15
 ---
 
 As of late I was working on one of my [canvas examples](/2020/03/23/canvas-example/) and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming a bit of a rabbit hole for me, so I thought I would start a blog post on a [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) for this one so I always have something to look back on.
@@ -145,7 +145,7 @@ level: 28; xp: 37800; toNext: 2800
 level: 29; xp: 40600; toNext: 2900
 ```
 
-Seems to work okay, at least for now anyway.
+Seems to work okay, at least for now anyway. However I am sure that this is one such project that i will come back to now and then. The main thing that comes to mind thus far are the expressions that I am using to produce a level from xp and to do the inversion of that. I would like to have greater control over how the numbers will go up such as having the xp point requirements go up at a slow rate for the first few levels, and then start to go into a more exponential type curve.
 
 ## 3 - Conclusion
 
