@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-17 15:44:23
-version: 1.24
+updated: 2020-08-17 15:49:44
+version: 1.25
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
@@ -15,7 +15,7 @@ At the time that I started this not much thought went into the other aspects of 
 
 However another thought was to make this just some kind of idle game where there are no such enemies that fight back, I am just blowing stuff up, and it keeps growing back. I all ready have some code worked out that automates the process of playing that I have enabled by default that will kick in after a moment of inactivity, but at any time the player can just take over and start playing. This is a kind of feature that I find myself enjoying when it comes to where I am at when it comes to playing video games, I can not say that I am that interested in playing them any more, but I sure have not lost interest in making them. The act of making the game has become the game sort of speak. So I seem to like games that involve things like away production, and games that to one extent or another play themselves.
 
-I made [another canvas example that is like this one that I called just simply pointer movement](/2020/01/26/canvas-example-pointer-movement/). That one was programed a little differently from this one as that was just simply a means to move around a map by clicking and dragging away from the point that was clicked. Here I have a set of circles fixed at the center of the canvas, or any other location that I choose to fix these circle areas to.There is an outer circle area that is used to move around based on the distance from the end of the inner circle rather than the center point. In addition the inner circle area will not result in any movement, but is used as an array where you can shoot at things, but not move. So I guess this kind of interface can be programed a whole bunch of different ways, but it is still more or less the same basic thing.
+So in this post I will be wring about all of the source code for the game thus far, so this will likely be a pretty lengthy post as it is over 1500 lines of code thus far. There are all ready a few modules, and I keep expanding them, and wriiang more modules as I keep adding features.
 
 <!-- more -->
 
@@ -1779,4 +1779,6 @@ So that is it when this canvas example is up and running I am able to move aroun
 
 ## 11 - Conclusion
 
-So now I have the basic idea of what I had in mind together at least, now it is just a question of what more I can do to it to make it more interesting. There is making it so that each time the player clicks or touches an area in the inner circle that casues a shot to fire from one side of the canvas or another to the point where such an event happened. So there is adding much more when it comes to weapons and what it is that we are shooting at. In addition there is doing something so that there are units in the map the shoot back at the player also.
+So now I have the basic idea of what I had in mind together at least, now it is just a question of what more I can do to it to make it more interesting. There is making it so that each time the player clicks or touches an area in the inner circle that causes a shot to fire from one side of the canvas or another to the point where such an event happened. So there is adding much more when it comes to weapons and what it is that we are shooting at. In addition there is doing something so that there are units in the map the shoot back at the player also.
+
+I made [another canvas example that is like this one when it comes to moving around a map that I called just simply pointer movement](/2020/01/26/canvas-example-pointer-movement/). That one was programed a little differently from this one as that was just simply a means to move around a map by clicking and dragging away from the point that was clicked. Here I have a set of circles fixed at the center of the canvas, or any other location that I choose to fix these circle areas to. There is an outer circle area that is used to move around based on the distance from the end of the inner circle rather than the center point. In addition the inner circle area will not result in any movement, but is used as an area where I can shoot at things, but not move.
