@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-03 17:03:15
-version: 1.18
+updated: 2020-08-17 07:47:09
+version: 1.19
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -17,8 +17,8 @@ I made [another canvas example that is like this one that I called just simply p
 
 <!-- more -->
 
-<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-<script>var utils={};utils.distance=function(x1,y1,x2,y2){return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));};utils.getCanvasRelative=function(e){var canvas=e.target,bx=canvas.getBoundingClientRect();return{x:(e.changedTouches?e.changedTouches[0].clientX:e.clientX)-bx.left,y:(e.changedTouches?e.changedTouches[0].clientY:e.clientY)-bx.top,bx:bx};};var crossMod=(function(){var isInInner=function(cross){var ch=cross.crosshairs,center=cross.center;return utils.distance(ch.x,ch.y,center.x,center.y)<cross.radiusInner;};var isInOuter=function(cross){var ch=cross.crosshairs,center=cross.center;return utils.distance(ch.x,ch.y,center.x,center.y)>=cross.radiusInner;};var isOutOfBounds=function(cross){var ch=cross.crosshairs,center=cross.center;return utils.distance(ch.x,ch.y,center.x,center.y)>=cross.radiusOuter;};var moveOffset=function(cross,secs){var ch=cross.crosshairs,center=cross.center,d1=utils.distance(ch.x,ch.y,center.x,center.y),diff=cross.radiusOuter-cross.radiusInner,d2=d1-cross.radiusInner,per=d2/diff;if(d1>cross.radiusInner){cross.offset.x+=Math.cos(ch.heading)*cross.offset.pps*per*secs;cross.offset.y+=Math.sin(ch.heading)*cross.offset.pps*per*secs;}};return{isInInner:isInInner,isInOuter:isInOuter,create:function(opt){opt=opt||{};return{userDown:false,pps:opt.pps||128,radiusInner:opt.radiusInner||(240/4),radiusOuter:opt.radiusOuter||(240/2.125),center:{x:opt.cx||(320/2),y:opt.cy||(240/2)},crosshairs:{x:320/2,y:240/2,heading:0,radius:16},offset:{x:opt.offsetX||0,y:opt.offsetY||0,pps:256}};},update:function(cross,secs){secs=secs||0;var ch=cross.crosshairs,center=cross.center;ch.heading=Math.atan2(center.y-ch.y,center.x-ch.x);if(isInOuter(cross)){if(!cross.userDown){ch.x+=Math.cos(ch.heading)*cross.pps*secs;ch.y+=Math.sin(ch.heading)*cross.pps*secs;}moveOffset(cross,secs);}if(isOutOfBounds(cross)){ch.x=center.x+Math.cos(ch.heading+Math.PI)*cross.radiusOuter;ch.y=center.y+Math.sin(ch.heading+Math.PI)*cross.radiusOuter;}},createEvent:function(cross,eventType){return function(e){e.preventDefault();var pos=utils.getCanvasRelative(e);if(eventType==='start'){cross.userDown=true;cross.crosshairs.x=pos.x;cross.crosshairs.y=pos.y;}if(eventType==='end'){cross.userDown=false;}if(eventType==='move'&&cross.userDown){cross.crosshairs.x=pos.x;cross.crosshairs.y=pos.y;}};}}}());var mapMod=(function(){var get=function(map,x,y){return map.cells[y*map.cellWidth+x];};return{create:function(){var map={cellSize:32,cellWidth:32,cellHeight:16,cells:[],percentKilled:0};var i=0,x,y,len=map.cellWidth*map.cellHeight;while(i<len){map.cells.push({i:i,x:i%map.cellWidth,y:Math.floor(i/map.cellWidth),HP:100,maxHP:100});i+=1;}return map;},clampOffset:function(map,offset){offset.x=offset.x>0?0:offset.x;offset.y=offset.y>0?0:offset.y;offset.x=offset.x<map.cellWidth*map.cellSize* -1?map.cellWidth*map.cellSize* -1:offset.x;offset.y=offset.y<map.cellHeight*map.cellSize* -1?map.cellHeight*map.cellSize* -1:offset.y;},getWithCanvasPointAndOffset:function(map,canvasX,canvasY,offsetX,offsetY){var x=canvasX-160+Math.abs(offsetX),y=canvasY-120+Math.abs(offsetY);return get(map,Math.floor(x/map.cellSize),Math.floor(y/map.cellSize));}}}());var poolMod=(function(){return{create:function(opt){opt=opt||{};opt.count=opt.count||10;var i=0,pool=[];while(i<opt.count){pool.push({active:false,x:0,y:0,radius:8,heading:0,pps:32,lifespan:opt.lifespan||3,spawn:opt.spawn||function(obj,state){obj.active=true;},purge:opt.purge||function(obj,state){},update:opt.update||function(obj,state,secs){obj.x+=obj.pps*secs;obj.lifespan-=secs;}});i+=1;}return pool;},spawn:function(pool,game){var i=pool.length,obj;while(i--){obj=pool[i];if(!obj.active){obj.active=true;obj.spawn.call(obj,obj,game);break;}}},update:function(pool,state,secs){var i=pool.length,obj;while(i--){obj=pool[i];if(obj.active){obj.update(obj,state,secs);obj.lifespan=obj.lifespan<0?0:obj.lifespan;if(obj.lifespan===0){obj.active=false;obj.purge.call(obj,obj,state);}}}}}}());var gameMod=(function(){var shotOptions={count:20,spawn:function(shot,game){var offset=game.cross.offset,ch=game.cross.crosshairs,d;shot.x=game.canvas.width;shot.y=game.canvas.height;shot.heading=Math.atan2(ch.y-shot.y,ch.x-shot.x);d=utils.distance(shot.x,shot.y,ch.x,ch.y);shot.pps=256;shot.lifespan=d/shot.pps;shot.offset=offset;},purge:function(shot,game){var cell=mapMod.getWithCanvasPointAndOffset(game.map,shot.x,shot.y,shot.offset.x,shot.offset.y);if(cell){cell.HP-=5;cell.HP=cell.HP<0?0:cell.HP;game.map.percentKilled=0;game.map.cells.forEach(function(cell){game.map.percentKilled+=cell.HP/cell.maxHP;});game.map.percentKilled/=game.map.cells.length;}},update:function(shot,game,secs){shot.x+=Math.cos(shot.heading)*shot.pps*secs;shot.y+=Math.sin(shot.heading)*shot.pps*secs;shot.lifespan-=secs;}};return{create:function(opt){opt=opt||{};var game={ver:'0.2.0',canvas:canvas,map:mapMod.create(),cross:{},shots:poolMod.create(shotOptions),shotRate:0.125,shotSecs:0,userDown:false};game.cross=crossMod.create({offsetX:game.map.cellWidth*game.map.cellSize/2* -1,offsetY:game.map.cellHeight*game.map.cellSize/2* -1,});game.canvas.addEventListener('mousedown',crossMod.createEvent(game.cross,'start'));game.canvas.addEventListener('mouseup',crossMod.createEvent(game.cross,'end'));game.canvas.addEventListener('mousemove',crossMod.createEvent(game.cross,'move'));game.canvas.addEventListener('touchstart',crossMod.createEvent(game.cross,'start'));game.canvas.addEventListener('touchend',crossMod.createEvent(game.cross,'end'));game.canvas.addEventListener('touchmove',crossMod.createEvent(game.cross,'move'));game.canvas.addEventListener('mousedown',function(e){e.preventDefault();game.userDown=true;});game.canvas.addEventListener('mouseup',function(e){e.preventDefault();game.userDown=false;});game.canvas.addEventListener('touchstart',function(e){e.preventDefault();game.userDown=true;});game.canvas.addEventListener('touchend',function(e){e.preventDefault();game.userDown=false;});return game;},update:function(game,secs){crossMod.update(game.cross,secs);mapMod.clampOffset(game.map,game.cross.offset);poolMod.update(game.shots,game,secs);game.shotSecs+=secs;game.shotSecs=game.shotSecs>=game.shotRate?game.shotRate:game.shotSecs;if(game.shotSecs>=game.shotRate&&game.userDown&&crossMod.isInInner(game.cross)){poolMod.spawn(game.shots,game);game.shotSecs=0;}}}}());var draw=(function(){var drawCrossCircles=function(ctx,cross){ctx.strokeStyle='white';ctx.lineWidth=3;ctx.beginPath();ctx.arc(cross.center.x,cross.center.y,cross.radiusInner,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.arc(cross.center.x,cross.center.y,cross.radiusOuter,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.arc(cross.crosshairs.x,cross.crosshairs.y,cross.crosshairs.radius,0,Math.PI*2);ctx.stroke();};return{back:function(ctx,canvas){ctx.fillStyle='black';ctx.fillRect(0,0,canvas.width,canvas.height);},cross:function(ctx,cross){var ch=cross.crosshairs;drawCrossCircles(ctx,cross);ctx.strokeStyle='rgba(200,0,0,0.5)';ctx.beginPath();ctx.moveTo(ch.x,ch.y-ch.radius*1.5);ctx.lineTo(ch.x,ch.y+ch.radius*1.5);ctx.stroke();ctx.beginPath();ctx.moveTo(ch.x-ch.radius*1.5,ch.y);ctx.lineTo(ch.x+ch.radius*1.5,ch.y);ctx.stroke();},map:function(ctx,map,cross){ctx.strokeStyle='grey';ctx.lineWidth=3;map.cells.forEach(function(cell){var x=cell.x*map.cellSize+cross.offset.x+(320/2),y=cell.y*map.cellSize+cross.offset.y+(240/2),per=cell.HP/cell.maxHP;ctx.beginPath();ctx.rect(x,y,map.cellSize,map.cellSize);ctx.stroke();ctx.fillStyle='rgba(0,200,0,'+per.toFixed(2)+')';ctx.fill();ctx.closePath();});},shots:function(ctx,game){var shots=game.shots,i=shots.length,shot;while(i--){shot=shots[i];ctx.fillStyle='white';ctx.strokeStyle='black';if(shot.active){ctx.beginPath();ctx.arc(shot.x,shot.y,shot.radius,0,Math.PI*2);ctx.fill();ctx.stroke();}}},info:function(ctx,game){ctx.fillStyle='rgba(0,0,0,0.4)';ctx.fillRect(0,0,game.canvas.width,game.canvas.height);ctx.fillStyle='yellow';ctx.textBaseline='top';ctx.font='10px courier';ctx.fillText('v'+game.ver,10,10);ctx.fillText('pos: '+game.cross.offset.x.toFixed(2)+','+game.cross.offset.y.toFixed(2),10,20);ctx.fillText('percent kiled: '+game.map.percentKilled,10,30);ctx.fillText('shotSecs: '+game.shotSecs,10,40);}}}());var canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),container=document.getElementById('canvas-app')||document.body;container.appendChild(canvas);canvas.width=320;canvas.height=240;ctx.translate(0.5,0.5);var game=gameMod.create({canvas:canvas});var lt=new Date();var loop=function(){var now=new Date(),t=now-lt,secs=t/1000;requestAnimationFrame(loop);gameMod.update(game,secs);draw.back(ctx,canvas);draw.map(ctx,game.map,game.cross);draw.cross(ctx,game.cross);draw.shots(ctx,game);draw.info(ctx,game);lt=now;};loop();</script>
+<div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<script>var utils={};utils.distance=function(x1,y1,x2,y2){return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));};utils.getCanvasRelative=function(e){var canvas=e.target,bx=canvas.getBoundingClientRect();return{x:(e.changedTouches?e.changedTouches[0].clientX:e.clientX)-bx.left,y:(e.changedTouches?e.changedTouches[0].clientY:e.clientY)-bx.top,bx:bx};};utils.logPer=function(per,high){high=high===undefined?2:high;per=per<0?0:per;per=per>1?1:per;return Math.log((1+high-2)+per)/Math.log(high);};var XP=(function(){var DEFAULTS={level:1,xp:0,cap:30,deltaNext:50};var set=function(xp,deltaNext){return(1+Math.sqrt(1+8*xp/deltaNext))/2;};var getXPtoLevel=function(level,deltaNext){return((Math.pow(level,2)-level)*deltaNext)/2;};var parseByXP=function(xp,cap,deltaNext){xp=xp===undefined?DEFAULTS.xp:xp;cap=cap===undefined?DEFAULTS.cap:cap;deltaNext=deltaNext===undefined?DEFAULTS.deltaNext:deltaNext;var l=set(xp,deltaNext);l=l>cap?cap:l;var level=Math.floor(l),forNext=getXPtoLevel(level+1,deltaNext);forNext=l===cap?Infinity:forNext;var toNext=l===cap?Infinity:forNext-xp;var forLast=getXPtoLevel(level,deltaNext);return{level:level,levelFrac:l,xp:xp,per:(xp-forLast)/(forNext-forLast),forNext:forNext,toNext:toNext,forLast:forLast};};return{parseByLevel:function(l,cap,deltaNext){l=l===undefined?DEFAULTS.level:l;deltaNext=deltaNext===undefined?DEFAULTS.deltaNext:deltaNext;var xp=getXPtoLevel(l,deltaNext);console.log(xp);return parseByXP(xp,cap,deltaNext);},parseByXP:parseByXP};} ());var crossMod=(function(){var isInInner=function(cross){var ch=cross.crosshairs,center=cross.center;return utils.distance(ch.x,ch.y,center.x,center.y)<cross.radiusInner;};var isInOuter=function(cross){var ch=cross.crosshairs,center=cross.center;return utils.distance(ch.x,ch.y,center.x,center.y)>=cross.radiusInner;};var isOutOfBounds=function(cross){var ch=cross.crosshairs,center=cross.center;return utils.distance(ch.x,ch.y,center.x,center.y)>=cross.radiusOuter;};var moveOffset=function(cross,secs){var ch=cross.crosshairs,center=cross.center,per={min:0.1,max:1,current:0.1},d=utils.distance(ch.x,ch.y,center.x,center.y)-cross.radiusInner;per.current=per.min+(per.max-per.min)*(d/cross.radiusDiff);cross.offset.x+=Math.cos(ch.heading)*cross.offset.pps*per.current*secs;cross.offset.y+=Math.sin(ch.heading)*cross.offset.pps*per.current*secs;};return{isInInner:isInInner,isInOuter:isInOuter,create:function(opt){opt=opt||{};var cross={userDown:false,moveBackEnabled:false,pps:opt.pps||128,radiusInner:opt.radiusInner||(240/4),radiusOuter:opt.radiusOuter||(240/2.125),radiusDiff:0,center:{x:opt.cx||(320/2),y:opt.cy||(240/2)},crosshairs:{x:320/2,y:240/2,heading:0,radius:16},offset:{x:opt.offsetX||0,y:opt.offsetY||0,pps:256}};cross.radiusDiff=cross.radiusOuter-cross.radiusInner;return cross;},update:function(cross,secs){secs=secs||0;var ch=cross.crosshairs,center=cross.center;ch.heading=Math.atan2(center.y-ch.y,center.x-ch.x);if(isOutOfBounds(cross)){ch.x=center.x;ch.y=center.y;cross.userDown=false;} if(isInOuter(cross)){if(!cross.userDown&&cross.moveBackEnabled){ch.x+=Math.cos(ch.heading)*cross.pps*secs;ch.y+=Math.sin(ch.heading)*cross.pps*secs;} moveOffset(cross,secs);}},userAction:function(cross,eventType,e){var pos=utils.getCanvasRelative(e),ch=cross.crosshairs;if(eventType==='start'){cross.userDown=true;ch.x=pos.x;ch.y=pos.y;} if(eventType==='end'){cross.userDown=false;} if(eventType==='move'){if(cross.userDown){ch.x=pos.x;ch.y=pos.y;}}}}} ());var mapMod=(function(){var cellTypes=[{i:0,type:'grass',HP:{min:5,max:10,base:1.05},autoHeal:{rate:0.5,amount:1}},{i:1,type:'tree',HP:{min:20,max:30,base:1.08},autoHeal:{rate:1,amount:5}},{i:2,type:'rock',HP:{min:35,max:50,base:1.15},autoHeal:{rate:3,amount:50}},];var setCellType=function(cell,typeIndex,opt){var level=cell.levelObj.level,min,max;opt=opt||{};cell.type=cellTypes[typeIndex];cell.typeIndex=typeIndex;cell.active=opt.active===undefined?true:opt.active;min=Math.pow(level,cell.type.HP.base)*cell.type.HP.min;max=Math.pow(level,cell.type.HP.base)*cell.type.HP.max;cell.maxHP=min+Math.round((max-min)*Math.random());cell.HP=opt.HP===undefined?cell.maxHP:opt.HP;cell.autoHeal.rate=cell.type.autoHeal.rate;cell.autoHeal.amount=cell.type.autoHeal.amount;};var getHighestDamageCell=function(map){return Math.max.apply(null,map.cells.map(function(cell){return cell.damage;}));};var get=function(map,x,y){if(x<0||y<0){return undefined;} if(x>=map.cellWidth||y>=map.cellHeight){return undefined;} return map.cells[y*map.cellWidth+x];};var autoHeal=function(cell,secs){cell.autoHeal.secs+=secs;if(cell.autoHeal.secs>=cell.autoHeal.rate){cell.autoHeal.secs%=cell.autoHeal.rate;cell.HP+=cell.autoHeal.amount;cell.HP=cell.HP>cell.maxHP?cell.maxHP:cell.HP;}};var getBorderCells=function(map,cell){var i=8,borderCell,cells=[],r,x,y;if(!cell){return[];} while(i--){r=Math.PI*2/8*i;x=Math.round(cell.x+Math.cos(r));y=Math.round(cell.y+Math.sin(r));borderCell=get(map,x,y);if(borderCell){cells.push(borderCell);}} return cells;};var getBorderCellsActiveCount=function(map,cell,active){active===undefined?true:active;var borderCells=getBorderCells(map,cell);return borderCells.reduce(function(acc,cell){acc=typeof acc==='object'?Number(acc.active===active):acc;return acc+=Number(cell.active==active);});};var getAllCellActiveState=function(map,active,condition){active=active===undefined?true:active;condition=condition===undefined?function(cell){return true;}:condition;return map.cells.filter(function(cell){if(cell.active===active&&condition(map,cell)){return true;} return false;});};var condition_gen_cell=function(map,cell){var borderCells=getBorderCells(map,cell);return getBorderCellsActiveCount(map,cell,true)>=1;};var getGenCells=function(map){return getAllCellActiveState(map,false,condition_gen_cell);};var popRandomCell=function(cells){var i=Math.floor(Math.random()*cells.length);return cells.splice(i,1)[0];};var gen=function(map,secs){var cells,cell,i;map.gen.secs+=secs;if(map.gen.secs>=map.gen.rate){map.gen.secs%=map.gen.rate;cells=getGenCells(map);i=map.gen.count;if(cells.length-i<0){i=cells.length;} if(i>0){while(i--){cell=popRandomCell(cells);setCellType(cell,Math.round(cell.damagePer*(cellTypes.length-1)));}}else{cells=getAllCellActiveState(map,true);if(cells.length===0){cell=map.cells[map.gen.startCells[Math.floor(Math.random()*map.gen.startCells.length)]];setCellType(cell,0);}}}};return{getAllCellActiveState:getAllCellActiveState,create:function(){var map={cellSize:32,cellWidth:8,cellHeight:8,cells:[],cellLevel:{cap:5,deltaNext:200},percentRemain:1,gen:{rate:1,secs:0,count:2,startCells:[27,28,35,36,0,63,56,7]},highDamageCell:0};var i=0,cell,x,y,len=map.cellWidth*map.cellHeight;while(i<len){cell={i:i,x:i%map.cellWidth,y:Math.floor(i/map.cellWidth),HP:50,maxHP:100,active:true,typeIndex:0,typeName:cellTypes[0].name,type:cellTypes[0],autoHeal:{rate:1,amount:5,secs:0},damage:0,damagePer:0,levelObj:XP.parseByXP(0,map.cellLevel.cap,map.cellLevel.deltaNext)};setCellType(cell,0);map.cells.push(cell);i+=1;} return map;},clampOffset:function(map,offset){offset.x=offset.x>0?0:offset.x;offset.y=offset.y>0?0:offset.y;offset.x=offset.x<map.cellWidth*map.cellSize* -1?map.cellWidth*map.cellSize* -1:offset.x;offset.y=offset.y<map.cellHeight*map.cellSize* -1?map.cellHeight*map.cellSize* -1:offset.y;},getAllFromPointAndRadius:function(map,x,y,r){var i=map.cells.length,d,cell,cells=[],dists=[];while(i--){cell=map.cells[i];d=utils.distance(cell.x,cell.y,x,y);if(d<=r){cells.push(cell);dists.push(d);}} return{cells:cells,dists:dists};},getWithCanvasPointAndOffset:function(map,canvasX,canvasY,offsetX,offsetY){var x=canvasX-160+Math.abs(offsetX),y=canvasY-120+Math.abs(offsetY);return get(map,Math.floor(x/map.cellSize),Math.floor(y/map.cellSize));},update:function(map,secs){var i,cell;map.highDamageCell=getHighestDamageCell(map);map.percentRemain=0;i=map.cells.length;while(i--){cell=map.cells[i];if(cell.HP<=0){cell.active=false;} if(cell.active){autoHeal(cell,secs);map.percentRemain+=cell.HP/cell.maxHP;} if(cell.damage!=0){cell.damagePer=cell.damage/map.highDamageCell;} cell.levelObj=XP.parseByXP(cell.damage,map.cellLevel.cap,map.cellLevel.deltaNext);} map.percentRemain/=map.cells.length;gen(map,secs);}}} ());var poolMod=(function(){return{create:function(opt){opt=opt||{};opt.count=opt.count||10;var i=0,pool=[];while(i<opt.count){pool.push({active:false,x:0,y:0,radius:8,heading:0,pps:32,lifespan:opt.lifespan||3,data:{},spawn:opt.spawn||function(obj,state){obj.active=true;},purge:opt.purge||function(obj,state){},update:opt.update||function(obj,state,secs){obj.x+=obj.pps*secs;obj.lifespan-=secs;}});i+=1;} return pool;},spawn:function(pool,game,opt){var i=pool.length,obj;while(i--){obj=pool[i];if(!obj.active){obj.active=true;obj.spawn.call(obj,obj,game,opt);break;}}},update:function(pool,state,secs){var i=pool.length,obj;while(i--){obj=pool[i];if(obj.active){obj.update(obj,state,secs);obj.lifespan=obj.lifespan<0?0:obj.lifespan;if(obj.lifespan===0){obj.active=false;obj.purge.call(obj,obj,state);}}}}}} ());var gameMod=(function(){var hardSet={maxSecs:0.25,deltaNext:10000,levelCap:100};var Weapons=[{name:'Blaster',pps:256,shotRate:0.125,blastRadius:1,maxDPS:10,accuracy:0.75,hitRadius:64,gunCount:1,level:{maxDPS_base:10,maxDPS_perLevel:5}},{name:'Assault Blaster',pps:512,shotRate:0.125,blastRadius:2,maxDPS:5,accuracy:0.5,hitRadius:64,gunCount:4,level:{maxDPS_base:5,maxDPS_perLevel:6}},{name:'Cannon',pps:256,shotRate:0.5,blastRadius:3,maxDPS:20,accuracy:0.25,hitRadius:32,gunCount:2,level:{maxDPS_base:15,maxDPS_perLevel:10}},{name:'Atom',pps:256,shotRate:1,blastRadius:10,maxDPS:75,accuracy:0.9,hitRadius:64,gunCount:1,level:{maxDPS_base:75,maxDPS_perLevel:50}}];var setWeaponsToLevel=function(game){var level=game.levelObj.level;Weapons.forEach(function(weapon){var lv=weapon.level;weapon.maxDPS=lv.maxDPS_base+lv.maxDPS_perLevel*level;weapon.accuracy=0.95-0.9*(1-level/hardSet.levelCap);});};var shotOptions={count:20,spawn:function(shot,game,radian){var offset=game.cross.offset,w=Weapons[game.weaponIndex],ch=game.cross.crosshairs,r=Math.random()*(Math.PI*2),d=w.hitRadius*(1-w.accuracy)*Math.random(),x=ch.x+Math.cos(r)*d,y=ch.y+Math.sin(r)*d,d;shot.x=x+Math.cos(radian)*game.canvas.width;shot.y=y+Math.sin(radian)*game.canvas.width;shot.heading=Math.atan2(y-shot.y,x-shot.x);d=utils.distance(shot.x,shot.y,x,y);shot.pps=w.pps;shot.lifespan=d/shot.pps;shot.offset=offset;},purge:function(shot,game){poolMod.spawn(game.explosions,game,shot);},update:function(shot,game,secs){shot.x+=Math.cos(shot.heading)*shot.pps*secs;shot.y+=Math.sin(shot.heading)*shot.pps*secs;shot.lifespan-=secs;}};var explosionOptions={count:20,spawn:function(ex,game,shot){var w=Weapons[game.weaponIndex];ex.x=shot.x;ex.y=shot.y;ex.data.offset={x:shot.offset.x,y:shot.offset.y};ex.data.radiusEnd=game.map.cellSize*w.blastRadius;ex.data.explosionTime=0.6;ex.data.maxDPS=w.maxDPS;;ex.lifespan=ex.data.explosionTime;ex.per=0;},purge:function(ex,game){},update:function(ex,game,secs){ex.per=(ex.data.explosionTime-ex.lifespan)/ex.data.explosionTime;ex.radius=ex.data.radiusEnd*ex.per;var cell=mapMod.getWithCanvasPointAndOffset(game.map,ex.x,ex.y,ex.data.offset.x,ex.data.offset.y),blastRadius=Math.ceil((ex.radius+0.01)/game.map.cellSize);if(cell){var targets=mapMod.getAllFromPointAndRadius(game.map,cell.x,cell.y,blastRadius);targets.cells.forEach(function(cell,i){var damage=ex.data.maxDPS*(1-(targets.dists[i]/blastRadius))*secs;if(cell.active){game.totalDamage+=damage;cell.HP-=damage;cell.HP=cell.HP<0?0:cell.HP;} cell.damage+=damage;});} ex.lifespan-=secs;}};var shoot=function(game){var w=Weapons[game.weaponIndex];if(game.shotSecs>=game.shotRate){var i=0,radian;while(i<w.gunCount){radian=Math.PI*2/4*i+Math.PI/4;poolMod.spawn(game.shots,game,radian);i+=1;} game.shotSecs=0;}};var autoPlay={setRandomTarget:function(game){var ch=game.cross.crosshairs,os=game.cross.offset,ap=game.autoPlay,map=game.map,activeCells=mapMod.getAllCellActiveState(map,true),x=Math.floor(map.cellWidth*Math.random()),y=Math.floor(map.cellHeight*Math.random());if(activeCells.length>=1){var cell=activeCells[Math.floor(activeCells.length*Math.random())];x=cell.x;y=cell.y;} ap.target.x=(map.cellSize/2+(map.cellSize*x))* -1;ap.target.y=(map.cellSize/2+(map.cellSize*y))* -1;},setByPercentRemain:function(game){var map=game.map,ap=game.autoPlay;game.weaponIndex=0;if(ap.behavior==='cannon'){game.weaponIndex=2;ap.maxShootTime=3;} if(ap.behavior==='total-kill'){game.weaponIndex=Weapons.length-1;ap.stopAtPercentRemain=0;} if(ap.behavior==='weapon-switch'){game.weaponIndex=Math.floor((Weapons.length)*utils.logPer(map.percentRemain,2));} game.weaponIndex=game.weaponIndex>=Weapons.length?Weapons.length-1:game.weaponIndex;if(map.percentRemain<ap.stopAtPercentRemain){ap.mode='move';}},modes:{move:function(game,secs){var ch=game.cross.crosshairs,os=game.cross.offset,ap=game.autoPlay,map=game.map,a=Math.atan2(os.y-ap.target.y,os.x-ap.target.x),cross=game.cross,d=utils.distance(os.x,os.y,ap.target.x,ap.target.y),delta=game.cross.radiusOuter-1;maxDelta=cross.radiusInner+cross.radiusDiff-1,minDelta=cross.radiusInner+5,slowDownDist=map.cellSize*4,minDist=map.cellSize/2,per=0;if(d<slowDownDist){per=1-d/slowDownDist;} ap.target.d=d;delta=maxDelta-(maxDelta-minDelta)*per;if(d<minDist){os.x=ap.target.x;os.y=ap.target.y;ap.shootTime=ap.maxShootTime;autoPlay.setRandomTarget(game);ap.mode='shoot';}else{ch.x=game.cross.center.x+Math.cos(a)*delta;ch.y=game.cross.center.y+Math.sin(a)*delta;}},shoot:function(game,secs){var ch=game.cross.crosshairs,os=game.cross.offset,ap=game.autoPlay,map=game.map;ch.x=game.cross.center.x;ch.y=game.cross.center.y;shoot(game);ap.shootTime-=secs;if(ap.shootTime<=0){ap.mode='move';autoPlay.setRandomTarget(game);}}},update:function(game,secs){if(game.autoPlay.enabled){var ch=game.cross.crosshairs,os=game.cross.offset,ap=game.autoPlay,map=game.map;game.autoPlay.delay-=secs;if(game.userDown){game.autoPlay.delay=game.autoPlay.maxDelay;} game.autoPlay.delay=game.autoPlay.delay<0?0:game.autoPlay.delay;if(game.autoPlay.delay===0){game.cross.moveBackEnabled=false;autoPlay.setByPercentRemain(game);autoPlay.modes[ap.mode](game,secs);}}}};return{Weapons:Weapons,create:function(opt){opt=opt||{};var game={levelObj:{},canvas:opt.canvas,map:mapMod.create(),cross:{},shots:poolMod.create(shotOptions),explosions:poolMod.create(explosionOptions),shotRate:1,shotSecs:0,weaponIndex:3,totalDamage:0,userDown:false,autoPlay:{enabled:true,behavior:'cannon',stopAtPercentRemain:0,delay:5,maxDelay:5,mode:'move',shootTime:5,maxShootTime:5,target:{x:-16,y:-16,d:0}}};game.levelObj=XP.parseByXP(game.totalDamage,hardSet.levelCap,hardSet.deltaNext);autoPlay.setRandomTarget(game);game.cross=crossMod.create({offsetX:game.map.cellWidth*game.map.cellSize/2* -1,offsetY:game.map.cellHeight*game.map.cellSize/2* -1,});return game;},update:function(game,secs){secs=secs>hardSet.maxSecs?hardSet.maxSecs:secs;game.shotRate=Weapons[game.weaponIndex].shotRate;crossMod.update(game.cross,secs);mapMod.clampOffset(game.map,game.cross.offset);mapMod.update(game.map,secs);poolMod.update(game.shots,game,secs);poolMod.update(game.explosions,game,secs);game.shotSecs+=secs;game.shotSecs=game.shotSecs>=game.shotRate?game.shotRate:game.shotSecs;if(crossMod.isInInner(game.cross)&&game.cross.userDown){shoot(game);} autoPlay.update(game,secs);game.levelObj=XP.parseByXP(game.totalDamage,hardSet.levelCap,hardSet.deltaNext);setWeaponsToLevel(game);}}} ());var genSheets=(function(){var createSheet=function(cellSize,cw,ch){var sheet={},canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');canvas.width=cellSize*cw;canvas.height=cellSize*ch;ctx.translate(0.5,0.5);sheet.canvas=canvas;sheet.ctx=ctx;sheet.cellWidth=cw;sheet.cellHeight=ch;sheet.cellSize=cellSize;return sheet;};var drawBasicBox=function(sheet,fill,stroke){var canvas=sheet.canvas,ctx=sheet.ctx;ctx.fillStyle=fill||'#008800';ctx.fillRect(-1,-1,canvas.width+1,canvas.height+1);ctx.strokeStyle=stroke||'lime';var i=0,s;while(i<sheet.cellWidth){ctx.save();ctx.translate(16+32*i,16);s=28-14*(i/sheet.cellWidth);ctx.beginPath();ctx.rect(-14,-14,s,s);ctx.stroke();ctx.restore();i+=1;}};var sheets=[];['#005500','#000088','#880000'].forEach(function(fill){var sheet=createSheet(32,10,1),canvas=sheet.canvas,ctx=sheet.ctx;drawBasicBox(sheet,fill,'#000000');sheets.push(sheet);});return{sheets:sheets};} ());var draw=(function(){var hpColors=['red','orange','lime'];var getHpColor=function(per){return hpColors[Math.floor((hpColors.length-0.01)*per)];};var drawBar=function(ctx,game,per,rStart,rLength,fill){var cross=game.cross,center=cross.center;ctx.lineWidth=3;ctx.strokeStyle='gray';ctx.beginPath();ctx.arc(center.x,center.y,cross.radiusInner+5,rStart,rStart+rLength);ctx.stroke();ctx.strokeStyle=fill||'lime';ctx.beginPath();ctx.arc(center.x,center.y,cross.radiusInner+5,rStart,rStart+rLength*per);ctx.stroke();};var drawCrossCircles=function(ctx,cross){ctx.strokeStyle='rgba(255,255,255,0.4)';ctx.fillStyle='rgba(255,0,0,0.4)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cross.center.x,cross.center.y,cross.radiusInner,0,Math.PI*2);ctx.stroke();ctx.fill();ctx.fillStyle='rgba(0,0,0,0.2)';ctx.beginPath();ctx.arc(cross.center.x,cross.center.y,cross.radiusOuter,0,Math.PI*2);ctx.stroke();ctx.fill();ctx.beginPath();ctx.arc(cross.crosshairs.x,cross.crosshairs.y,cross.crosshairs.radius,0,Math.PI*2);ctx.stroke();};var drawCrossHairs=function(ctx,cross){var ch=cross.crosshairs;ctx.strokeStyle='rgba(200,0,0,0.5)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(ch.x,ch.y-ch.radius*1.5);ctx.lineTo(ch.x,ch.y+ch.radius*1.5);ctx.stroke();ctx.beginPath();ctx.moveTo(ch.x-ch.radius*1.5,ch.y);ctx.lineTo(ch.x+ch.radius*1.5,ch.y);ctx.stroke();};var drawPercentRemainBar=function(ctx,game){var cross=game.cross,center=cross.center,map=game.map;drawBar(ctx,game,map.percentRemain,Math.PI,Math.PI/2,getHpColor(map.percentRemain));};var drawAutoPlayDelayBar=function(ctx,game){var ap=game.autoPlay;drawBar(ctx,game,ap.delay/ap.maxDelay,0,Math.PI/4,'cyan');};var drawWeaponInfo=function(ctx,game){var center=game.cross.center;var w=gameMod.Weapons[game.weaponIndex];ctx.fillStyle='#ff6060';ctx.font='10px courier';ctx.textAlign='center';ctx.fillText('Weapon: '+w.name,center.x,center.y+75);ctx.fillText('maxDPS: '+w.maxDPS,center.x,center.y+85);};var drawCellHealthBar=function(ctx,map,cell,cross){var x=cell.x*map.cellSize+cross.offset.x+(320/2),y=cell.y*map.cellSize+cross.offset.y+(240/2);ctx.fillStyle=getHpColor(cell.HP/cell.maxHP);ctx.globalAlpha=0.5;ctx.fillRect(x,y,map.cellSize*(cell.HP/cell.maxHP),5);ctx.globalAlpha=1;};var setupDebug=function(ctx,game){ctx.fillStyle='rgba(0,0,0,0.4)';ctx.textBaseline='top';ctx.textAlign='left';ctx.fillRect(0,0,game.canvas.width,game.canvas.height);ctx.fillStyle='yellow';ctx.textBaseline='top';ctx.font='10px courier';};var cellLevel=function(ctx,cell,x,y){if(cell.active){ctx.fillStyle='rgba(255,255,255,0.5)';ctx.font='7px courier';ctx.fillText('L'+Math.floor(cell.levelObj.level),x+3,y+3);}};var debugModes={none:function(sm){},general:function(sm){var ctx=sm.ctx,canvas=sm.canvas,game=sm.game;setupDebug(ctx,sm.game);ctx.fillText('pos: '+game.cross.offset.x.toFixed(2)+','+game.cross.offset.y.toFixed(2),10,10);ctx.fillText('percent remain: '+Number(game.map.percentRemain*100).toFixed(2),10,20);ctx.fillText('weapon: '+gameMod.Weapons[game.weaponIndex].name,10,30);ctx.fillText('damage: '+Math.floor(game.totalDamage),10,40);ctx.fillText('high damage cell: '+Math.floor(game.map.highDamageCell),10,50);},weapon:function(sm){var ctx=sm.ctx;setupDebug(ctx,sm.game);var w=gameMod.Weapons[sm.game.weaponIndex];ctx.fillText('Current weapon: ',10,10);ctx.fillText('name: '+w.name,10,20);ctx.fillText('maxDPS: '+w.maxDPS,10,30);ctx.fillText('accuracy: '+w.accuracy.toFixed(2),10,40);},level:function(sm){var ctx=sm.ctx,lv=sm.game.levelObj;setupDebug(ctx,sm.game);ctx.fillText('Current level: '+lv.level,10,10);ctx.fillText('xp: '+lv.xp,10,20);ctx.fillText('forNext level: '+lv.forNext,10,30);ctx.fillText('toNext level: '+lv.toNext,10,40);ctx.fillText('per: '+lv.per.toFixed(2),10,50);ctx.fillText('forLast: '+lv.forLast,10,60);},map:function(sm){var ctx=sm.ctx,map=sm.game.map;setupDebug(ctx,sm.game);ctx.fillText('map.percentRemain: '+map.percentRemain,10,10);}};var cellTypeColors=['green','blue','red'],sheets=genSheets.sheets;return{back:function(ctx,canvas){ctx.fillStyle='black';ctx.fillRect(0,0,canvas.width,canvas.height);},cross:function(ctx,game){drawCrossCircles(ctx,game.cross);drawPercentRemainBar(ctx,game);drawAutoPlayDelayBar(ctx,game);drawBar(ctx,game,game.shotSecs/game.shotRate,Math.PI*0.33,Math.PI*0.33,'red');drawBar(ctx,game,game.levelObj.per,Math.PI*1.69,Math.PI*0.3,'blue');drawWeaponInfo(ctx,game);var cross=game.cross,map=game.map,ch=game.cross.crosshairs,cell=mapMod.getWithCanvasPointAndOffset(game.map,ch.x,ch.y,cross.offset.x,cross.offset.y),x=cross.center.x+cross.radiusOuter-45,y=cross.center.y;ctx.fillStyle='white';ctx.textBaseline='top';ctx.textAlign='left';ctx.font='8px arial';ctx.fillText('level: '+game.levelObj.level,x,y-40);ctx.fillText('xp: '+Math.floor(game.levelObj.xp),x,y-30);ctx.fillText('next: '+Math.floor(game.levelObj.toNext),x,y-20);if(cell){ctx.fillText('pos: '+cell.i+' ('+cell.x+','+cell.y+')',x,y);ctx.fillText('lv:'+cell.levelObj.level,x,y+10);ctx.fillText('hp:'+Math.floor(cell.HP)+'/'+Math.floor(cell.maxHP),x,y+20);ctx.fillText('dam: '+Math.floor(cell.damage)+' ('+Math.round(cell.damagePer*100)+'%)',x,y+30);ctx.strokeStyle='rgba(255,255,255,0.4)';ctx.lineWidth=3;ctx.strokeRect(cell.x*map.cellSize+cross.offset.x+(320/2),cell.y*map.cellSize+cross.offset.y+(240/2),map.cellSize,map.cellSize);} drawCrossHairs(ctx,game.cross);},map:function(ctx,map,cross){ctx.strokeStyle='grey';ctx.lineWidth=3;map.cells.forEach(function(cell){var x=cell.x*map.cellSize+cross.offset.x+(320/2),y=cell.y*map.cellSize+cross.offset.y+(240/2),per=cell.HP/cell.maxHP;if(cell.active){ctx.drawImage(sheets[cell.typeIndex].canvas,32*Math.floor(9-cell.HP/cell.maxHP*9),0,32,32,x,y,map.cellSize,map.cellSize);if(per<1){drawCellHealthBar(ctx,map,cell,cross);}}else{ctx.lineWidth=1;var c=50+Math.round(200*cell.damagePer);ctx.strokeStyle='rgba(0,128,128, 0.4)';ctx.fillStyle='rgba(0,'+c+','+c+', 0.7)';ctx.beginPath();ctx.rect(x,y,map.cellSize,map.cellSize);ctx.fill();ctx.stroke();} cellLevel(ctx,cell,x,y);});},shots:function(ctx,game){var shots=game.shots,i=shots.length,shot;while(i--){shot=shots[i];ctx.fillStyle='white';ctx.strokeStyle='black';if(shot.active){ctx.beginPath();ctx.arc(shot.x,shot.y,shot.radius,0,Math.PI*2);ctx.fill();ctx.stroke();}}},explosions:function(ctx,game){var exps=game.explosions,i=exps.length,alpha=0.5,ex;while(i--){ex=exps[i];alpha=1-ex.per;ctx.fillStyle='rgba(255,255,0,'+alpha+')';ctx.strokeStyle='rgba(0,0,0,'+alpha+')';if(ex.active){ctx.beginPath();ctx.arc(ex.x,ex.y,ex.radius,0,Math.PI*2);ctx.fill();ctx.stroke();}}},buttons:function(ctx,buttons){Object.keys(buttons).forEach(function(key){var b=buttons[key];ctx.fillStyle='red';if(b.type==='toggle'&&b.bool){ctx.fillStyle='lime';} ctx.strokeStyle='gray';ctx.lineWidth=1;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.textBaseline='middle';ctx.textAlign='center';ctx.fillStyle='white';ctx.font=(b.fontSize||10)+'px arial';if(b.type==='options'){var str=b.options[b.currentOption||0];ctx.fillText(str,b.x,b.y);} if(b.type==='basic'){ctx.fillText(b.label,b.x,b.y);} if(b.type==='toggle'){ctx.fillText(b.label,b.x,b.y);}});},debug:function(sm){debugModes[sm.debugMode](sm,sm.ctx,sm.canvas);},ver:function(ctx,sm){ctx.fillStyle='#dfdfdf';ctx.textAlign='left';ctx.fillText('v'+sm.ver,10,sm.canvas.height-15);}}} ());var buttonMod=(function(){var setupType=function(button,opt){if(button.type==='options'){button.options=opt.options||[];button.currentOption=0;button.label=button.options[0];} if(button.type==='toggle'){button.bool=opt.bool||false;button.onActive=opt.onActive||function(){};button.onInactive=opt.onInactive||function(){};}};var beforeOnClick={basic:function(button,api){},options:function(button,api){button.currentOption+=1;button.currentOption=button.currentOption>=button.options.length?0:button.currentOption;},toggle:function(button,api){button.bool=!button.bool;}};var afterOnClick={basic:function(button,api){},options:function(button,api){},toggle:function(button,api){if(button.bool){button.onActive(button,api);}else{button.onInactive(button,api);}}};return{create:function(opt){opt=opt||{};var button={x:opt.x===undefined?0:opt.x,y:opt.y===undefined?0:opt.y,r:opt.r===undefined?16:opt.r,label:opt.label||'',type:opt.type||'basic',onClick:opt.onClick||function(){}};setupType(button,opt);return button;},pointerCheckCollection:function(collection,point,api){var keys=Object.keys(collection),i=keys.length,button,d;while(i--){button=collection[keys[i]];d=utils.distance(point.x,point.y,button.x,button.y);if(d<button.r){beforeOnClick[button.type](button,api);button.onClick(button,api);afterOnClick[button.type](button,api)}}}};} ());(function(){var canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),container=document.getElementById('canvas-app')||document.body;container.appendChild(canvas);canvas.width=320;canvas.height=240;ctx.translate(0.5,0.5);var states={options:{buttons:{toGame:buttonMod.create({label:'game',x:25,y:200,r:10,onClick:function(button,sm){sm.currentState='game';}}),debugMode:buttonMod.create({x:100,y:120,r:16,type:'options',options:['none','general','weapon','level','map'],onClick:function(button,sm){sm.debugMode=button.options[button.currentOption];}})},update:function(sm,secs){var state=states[sm.currentState];draw.back(ctx,canvas);draw.buttons(ctx,state.buttons);draw.debug(sm);},pointerStart:function(sm,e){var state=states[sm.currentState],buttons=state.buttons,pos=utils.getCanvasRelative(e);buttonMod.pointerCheckCollection(state.buttons,pos,sm);},pointerMove:function(){},pointerEnd:function(){}},game:{buttons:{options:buttonMod.create({label:'options',fontSize:10,x:25,y:200,r:10,onClick:function(button,sm){sm.currentState='options';}}),changeWeapon:buttonMod.create({label:'Next Weapon',fontSize:8,x:280,y:210,r:16,onClick:function(button,sm){sm.game.weaponIndex+=1;sm.game.weaponIndex%=gameMod.Weapons.length;}}),autoPlay:buttonMod.create({label:'Auto Play',type:'toggle',fontSize:8,x:25,y:175,r:10,bool:true,onClick:function(button,sm){var ap=sm.game.autoPlay;ap.delay=ap.maxDelay;},onActive:function(button,sm){sm.game.autoPlay.enabled=button.bool;},onInactive:function(button,sm){sm.game.autoPlay.enabled=button.bool;}})},update:function(sm,secs){var state=states[sm.currentState];gameMod.update(sm.game,secs);draw.back(ctx,canvas);draw.map(ctx,sm.game.map,sm.game.cross);draw.explosions(ctx,sm.game);draw.cross(ctx,sm.game);draw.shots(ctx,sm.game);draw.buttons(ctx,state.buttons);draw.ver(ctx,sm);draw.debug(sm);},pointerStart:function(sm,e){var state=states[sm.currentState],buttons=state.buttons,pos=utils.getCanvasRelative(e);sm.game.cross.moveBackEnabled=true;crossMod.userAction(sm.game.cross,'start',e);sm.game.userDown=true;buttonMod.pointerCheckCollection(state.buttons,pos,sm);},pointerEnd:function(em,e){crossMod.userAction(sm.game.cross,'end',e);sm.game.userDown=false;},pointerMove:function(sm,e){crossMod.userAction(sm.game.cross,'move',e);}}};var sm={ver:'0.13.0',canvas:canvas,debugMode:'none',currentState:'game',ctx:ctx,game:gameMod.create({canvas:canvas}),input:{pointerDown:false,pos:{x:0,y:0}}};var pointerHanders={start:function(sm,e){var pos=sm.input.pos;sm.input.pointerDown=true;states[sm.currentState].pointerStart(sm,e);},move:function(sm,e){states[sm.currentState].pointerMove(sm,e);},end:function(sm,e){sm.input.pointerDown=false;states[sm.currentState].pointerEnd(sm,e);}};var createPointerHandler=function(sm,type){return function(e){sm.input.pos=utils.getCanvasRelative(e);e.preventDefault();pointerHanders[type](sm,e);};};canvas.addEventListener('mousedown',createPointerHandler(sm,'start'));canvas.addEventListener('mousemove',createPointerHandler(sm,'move'));canvas.addEventListener('mouseup',createPointerHandler(sm,'end'));canvas.addEventListener('touchstart',createPointerHandler(sm,'start'));canvas.addEventListener('touchmove',createPointerHandler(sm,'move'));canvas.addEventListener('touchend',createPointerHandler(sm,'end'));var lt=new Date(),FPS_target=30;var loop=function(){var now=new Date(),t=now-lt,secs=t/1000;requestAnimationFrame(loop);if(t>=1000/FPS_target){states[sm.currentState].update(sm,secs);lt=now;}};loop();} ());</script>
 
 ## 1 - The utility module
 
@@ -27,9 +27,11 @@ For like with many of these canvas examples this one has a utility library. In t
 ```js
 // UTILS
 var utils = {};
+// get distance between two points
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
+// get a canvas relative point
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -39,9 +41,16 @@ utils.getCanvasRelative = function (e) {
         bx: bx
     };
 };
+// return a percent value from another percent value
+utils.logPer = function (per, high) {
+    high = high === undefined ? 2 : high;
+    per = per < 0 ? 0 : per;
+    per = per > 1 ? 1 : per;
+    return Math.log((1 + high - 2) + per) / Math.log(high);
+};
 ```
 
-So now that I have the basic utility library out of the way lets move on to the actual modules that make this project diferent from all the others.
+So now that I have the basic utility library out of the way lets move on to the actual modules that make this project different from all the others.
 
 ## 2 - The cross.js file
 
@@ -75,14 +84,15 @@ var crossMod = (function () {
     var moveOffset = function (cross, secs) {
         var ch = cross.crosshairs,
         center = cross.center,
-        d1 = utils.distance(ch.x, ch.y, center.x, center.y),
-        diff = cross.radiusOuter - cross.radiusInner,
-        d2 = d1 - cross.radiusInner,
-        per = d2 / diff;
-        if (d1 > cross.radiusInner) {
-            cross.offset.x += Math.cos(ch.heading) * cross.offset.pps * per * secs;
-            cross.offset.y += Math.sin(ch.heading) * cross.offset.pps * per * secs;
-        }
+        per = {
+            min: 0.1,
+            max: 1,
+            current: 0.1
+        },
+        d = utils.distance(ch.x, ch.y, center.x, center.y) - cross.radiusInner;
+        per.current = per.min + (per.max - per.min) * (d / cross.radiusDiff);
+        cross.offset.x += Math.cos(ch.heading) * cross.offset.pps * per.current * secs;
+        cross.offset.y += Math.sin(ch.heading) * cross.offset.pps * per.current * secs;
     };
  
     return {
@@ -90,11 +100,13 @@ var crossMod = (function () {
         isInOuter: isInOuter,
         create: function (opt) {
             opt = opt || {};
-            return {
+            var cross = {
                 userDown: false,
+                moveBackEnabled: false,
                 pps: opt.pps || 128,
                 radiusInner: opt.radiusInner || (240 / 4),
                 radiusOuter: opt.radiusOuter || (240 / 2.125),
+                radiusDiff: 0,
                 center: {
                     x: opt.cx || (320 / 2),
                     y: opt.cy || (240 / 2)
@@ -111,6 +123,8 @@ var crossMod = (function () {
                     pps: 256
                 }
             };
+            cross.radiusDiff = cross.radiusOuter - cross.radiusInner;
+            return cross;
         },
  
         update: function (cross, secs) {
@@ -118,39 +132,43 @@ var crossMod = (function () {
             var ch = cross.crosshairs,
             center = cross.center;
             ch.heading = Math.atan2(center.y - ch.y, center.x - ch.x);
+ 
+            // set bounds
+            if (isOutOfBounds(cross)) {
+                ch.x = center.x;
+                ch.y = center.y;
+                cross.userDown = false;
+            }
+ 
             if (isInOuter(cross)) {
                 // move back to innerRdaius if in outer area and userDown is false
-                if (!cross.userDown) {
+                if (!cross.userDown && cross.moveBackEnabled) {
                     ch.x += Math.cos(ch.heading) * cross.pps * secs;
                     ch.y += Math.sin(ch.heading) * cross.pps * secs;
                 }
                 // apply changes to offset
                 moveOffset(cross, secs);
             }
-            // set bounds
-            if (isOutOfBounds(cross)) {
-                ch.x = center.x + Math.cos(ch.heading + Math.PI) * cross.radiusOuter;
-                ch.y = center.y + Math.sin(ch.heading + Math.PI) * cross.radiusOuter;
-            }
         },
  
-        createEvent: function (cross, eventType) {
-            return function (e) {
-                e.preventDefault();
-                var pos = utils.getCanvasRelative(e);
-                if (eventType === 'start') {
-                    cross.userDown = true;
-                    cross.crosshairs.x = pos.x;
-                    cross.crosshairs.y = pos.y;
+        userAction: function (cross, eventType, e) {
+            var pos = utils.getCanvasRelative(e),
+            ch = cross.crosshairs;
+            //e.preventDefault();
+            if (eventType === 'start') {
+                cross.userDown = true;
+                ch.x = pos.x;
+                ch.y = pos.y;
+            }
+            if (eventType === 'end') {
+                cross.userDown = false;
+            }
+            if (eventType === 'move') {
+                if (cross.userDown) {
+                    ch.x = pos.x;
+                    ch.y = pos.y;
                 }
-                if (eventType === 'end') {
-                    cross.userDown = false;
-                }
-                if (eventType === 'move' && cross.userDown) {
-                    cross.crosshairs.x = pos.x;
-                    cross.crosshairs.y = pos.y;
-                }
-            };
+            }
         }
  
     }
@@ -167,34 +185,260 @@ So now that I have my cross hairs module I am also going to want to have a map f
 ```js
 var mapMod = (function () {
  
+    var cellTypes = [{
+            i: 0,
+            type: 'grass',
+            HP: {
+                min: 5,
+                max: 10,
+                base: 1.05
+            },
+            autoHeal: {
+                rate: 0.5,
+                amount: 1
+            }
+        }, {
+            i: 1,
+            type: 'tree',
+            HP: {
+                min: 20,
+                max: 30,
+                base: 1.08
+            },
+            autoHeal: {
+                rate: 1,
+                amount: 5
+            }
+        }, {
+            i: 2,
+            type: 'rock',
+            HP: {
+                min: 35,
+                max: 50,
+                base: 1.15
+            },
+            autoHeal: {
+                rate: 3,
+                amount: 50
+            }
+        },
+ 
+    ];
+ 
+    // set a cell as a given type index
+    var setCellType = function (cell, typeIndex, opt) {
+ 
+        var level = cell.levelObj.level,
+        min,
+        max;
+ 
+        opt = opt || {};
+ 
+        // set type and type index by way o given type index
+        cell.type = cellTypes[typeIndex];
+        cell.typeIndex = typeIndex;
+ 
+        // active flag should typically be set to true
+        cell.active = opt.active === undefined ? true : opt.active;
+ 
+        // HP
+        //cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
+        min = Math.pow(level, cell.type.HP.base) * cell.type.HP.min;
+        max = Math.pow(level, cell.type.HP.base) * cell.type.HP.max;
+        cell.maxHP = min + Math.round((max - min) * Math.random());
+        cell.HP = opt.HP === undefined ? cell.maxHP : opt.HP;
+ 
+        // autoHeal
+        cell.autoHeal.rate = cell.type.autoHeal.rate;
+        cell.autoHeal.amount = cell.type.autoHeal.amount;
+    };
+ 
+    var getHighestDamageCell = function (map) {
+        return Math.max.apply(null, map.cells.map(function (cell) {
+                return cell.damage;
+            }));
+    };
+ 
+    // get cell method
     var get = function (map, x, y) {
+        if (x < 0 || y < 0) {
+            return undefined;
+        }
+        if (x >= map.cellWidth || y >= map.cellHeight) {
+            return undefined;
+        }
         return map.cells[y * map.cellWidth + x];
     };
  
+    // auto heal a cell
+    var autoHeal = function (cell, secs) {
+        cell.autoHeal.secs += secs;
+        if (cell.autoHeal.secs >= cell.autoHeal.rate) {
+            cell.autoHeal.secs %= cell.autoHeal.rate;
+            cell.HP += cell.autoHeal.amount;
+            cell.HP = cell.HP > cell.maxHP ? cell.maxHP : cell.HP;
+        }
+    };
+ 
+    // get border cells helper
+    var getBorderCells = function (map, cell) {
+        var i = 8,
+        borderCell,
+        cells = [],
+        r,
+        x,
+        y;
+        if (!cell) {
+            return [];
+        }
+        while (i--) {
+            r = Math.PI * 2 / 8 * i;
+            x = Math.round(cell.x + Math.cos(r));
+            y = Math.round(cell.y + Math.sin(r));
+            borderCell = get(map, x, y);
+            if (borderCell) {
+                cells.push(borderCell);
+            }
+ 
+        }
+        return cells;
+    };
+ 
+    // get the count of active border cells for the given cell and active status
+    var getBorderCellsActiveCount = function (map, cell, active) {
+        active === undefined ? true : active;
+        var borderCells = getBorderCells(map, cell);
+        return borderCells.reduce(function (acc, cell) {
+            acc = typeof acc === 'object' ? Number(acc.active === active) : acc;
+            return acc += Number(cell.active == active);
+        });
+    };
+ 
+    // get all cells with an active state of true or false, and also filter farther with an
+    // optional condition
+    var getAllCellActiveState = function (map, active, condition) {
+        active = active === undefined ? true : active;
+        condition = condition === undefined ? function (cell) {
+            return true;
+        }
+         : condition;
+        return map.cells.filter(function (cell) {
+            if (cell.active === active && condition(map, cell)) {
+                return true;
+            }
+            return false;
+        });
+    };
+ 
+    // condition for gen cells
+    var condition_gen_cell = function (map, cell) {
+        var borderCells = getBorderCells(map, cell);
+        return getBorderCellsActiveCount(map, cell, true) >= 1;
+    };
+ 
+    // get all potential gen cells
+    var getGenCells = function (map) {
+        return getAllCellActiveState(map, false, condition_gen_cell);
+    };
+ 
+    var popRandomCell = function (cells) {
+        var i = Math.floor(Math.random() * cells.length);
+        return cells.splice(i, 1)[0];
+    };
+ 
+    // generate new cells by way of given secs amount
+    var gen = function (map, secs) {
+        var cells,
+        cell,
+        i;
+        map.gen.secs += secs;
+        if (map.gen.secs >= map.gen.rate) {
+            map.gen.secs %= map.gen.rate;
+            cells = getGenCells(map);
+            i = map.gen.count;
+            if (cells.length - i < 0) {
+                i = cells.length;
+            }
+            if (i > 0) {
+                // activate 1 to map.gen.count cells
+                while (i--) {
+                    cell = popRandomCell(cells);
+                    setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)));
+                }
+            } else {
+                // if no active cells
+                cells = getAllCellActiveState(map, true);
+                if (cells.length === 0) {
+                    cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
+                    setCellType(cell, 0);
+                }
+            }
+        }
+    };
+ 
+    // PUBLIC API
     return {
  
+        getAllCellActiveState: getAllCellActiveState,
+ 
         create: function () {
+ 
+            // create map object
             var map = {
                 cellSize: 32,
-                cellWidth: 32,
-                cellHeight: 16,
+                cellWidth: 8,
+                cellHeight: 8,
                 cells: [],
-                percentKilled: 0
+                cellLevel: {
+                    cap: 5,
+                    deltaNext: 200
+                },
+                percentRemain: 1,
+                gen: { // global cell generate values
+                    rate: 1,
+                    secs: 0,
+                    count: 2,
+                    // start cells for 32 x 16
+                    // startCells: [0, 31, 480, 511] // corner cells
+                    // startCells: [239, 240, 271, 272]// center cells
+                    // startCells: [239, 240, 271, 272]
+                    // 8 * 8 start cells
+                    startCells: [27, 28, 35, 36, 0, 63, 56, 7]
+                },
+                highDamageCell: 0
             };
+ 
+            // setup cells for first time
             var i = 0,
+            cell,
             x,
             y,
             len = map.cellWidth * map.cellHeight;
             while (i < len) {
-                map.cells.push({
+                cell = {
                     i: i,
                     x: i % map.cellWidth,
                     y: Math.floor(i / map.cellWidth),
-                    HP: 100,
-                    maxHP: 100
-                });
+                    HP: 50,
+                    maxHP: 100,
+                    active: true,
+                    typeIndex: 0,
+                    typeName: cellTypes[0].name,
+                    type: cellTypes[0],
+                    autoHeal: {
+                        rate: 1,
+                        amount: 5,
+                        secs: 0
+                    },
+                    damage: 0,
+                    damagePer: 0, // damage relative to highest damaged cell
+                    levelObj: XP.parseByXP(0, map.cellLevel.cap, map.cellLevel.deltaNext)
+                };
+                setCellType(cell, 0);
+                map.cells.push(cell);
                 i += 1;
             }
+ 
             return map;
         },
  
@@ -205,12 +449,73 @@ var mapMod = (function () {
             offset.y = offset.y < map.cellHeight * map.cellSize * -1 ? map.cellHeight * map.cellSize * -1 : offset.y;
         },
  
+        // get all cells from a given cell position, and radius from that position
+        getAllFromPointAndRadius: function (map, x, y, r) {
+            //??? just do it the stupid way for now
+            var i = map.cells.length,
+            d,
+            cell,
+            cells = [],
+            dists = [];
+            while (i--) {
+                cell = map.cells[i];
+                d = utils.distance(cell.x, cell.y, x, y);
+                if (d <= r) {
+                    cells.push(cell);
+                    dists.push(d);
+                }
+            }
+            return {
+                cells: cells,
+                dists: dists
+            };
+        },
+ 
         getWithCanvasPointAndOffset: function (map, canvasX, canvasY, offsetX, offsetY) {
             var x = canvasX - 160 + Math.abs(offsetX),
             y = canvasY - 120 + Math.abs(offsetY);
             return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
-        }
+        },
  
+        update: function (map, secs) {
+ 
+            var i,
+            cell;
+ 
+            map.highDamageCell = getHighestDamageCell(map);
+            map.percentRemain = 0;
+ 
+            // update cells
+            i = map.cells.length;
+            while (i--) {
+                cell = map.cells[i];
+ 
+                // if HP is bellow or equal to zero set cell inactive
+                if (cell.HP <= 0) {
+                    cell.active = false;
+                }
+ 
+                // if cell is active
+                if (cell.active) {
+                    // apply auto heal
+                    autoHeal(cell, secs);
+                    // update percentRemain
+                    map.percentRemain += cell.HP / cell.maxHP;
+                }
+ 
+                // figure damage percent
+                if (cell.damage != 0) {
+                    cell.damagePer = cell.damage / map.highDamageCell;
+                }
+                // update level
+                cell.levelObj = XP.parseByXP(cell.damage, map.cellLevel.cap, map.cellLevel.deltaNext);
+ 
+            }
+            // figure percentRemain by diving tabulated total by total cells
+            map.percentRemain /= map.cells.length;
+ 
+            gen(map, secs);
+        }
     }
  
 }
@@ -242,6 +547,7 @@ var poolMod = (function () {
                     heading: 0,
                     pps: 32,
                     lifespan: opt.lifespan || 3,
+                    data: {},
                     spawn: opt.spawn || function (obj, state) {
                         obj.active = true;
                     },
@@ -256,14 +562,14 @@ var poolMod = (function () {
             return pool;
         },
  
-        spawn: function (pool, game) {
+        spawn: function (pool, game, opt) {
             var i = pool.length,
             obj;
             while (i--) {
                 obj = pool[i];
                 if (!obj.active) {
                     obj.active = true;
-                    obj.spawn.call(obj, obj, game);
+                    obj.spawn.call(obj, obj, game, opt);
                     break;
                 }
             }
@@ -300,34 +606,103 @@ So I ending up working out a main game module that will serve as a way to create
 ```js
 var gameMod = (function () {
  
+    // hard coded settings
+    var hardSet = {
+        maxSecs: 0.25, // max seconds for sec value used in updates
+        deltaNext: 10000, // deltaNext and levelCap
+        levelCap: 100
+    };
+ 
+    var Weapons = [{
+            name: 'Blaster',
+            pps: 256,
+            shotRate: 0.125,
+            blastRadius: 1,
+            maxDPS: 10,
+            accuracy: 0.75,
+            hitRadius: 64,
+            gunCount: 1,
+            level: {
+                maxDPS_base: 10,
+                maxDPS_perLevel: 5
+            }
+        }, {
+            name: 'Assault Blaster',
+            pps: 512,
+            shotRate: 0.125,
+            blastRadius: 2,
+            maxDPS: 5,
+            accuracy: 0.5,
+            hitRadius: 64,
+            gunCount: 4,
+            level: {
+                maxDPS_base: 5,
+                maxDPS_perLevel: 6
+            }
+        }, {
+            name: 'Cannon',
+            pps: 256,
+            shotRate: 0.5,
+            blastRadius: 3,
+            maxDPS: 20,
+            accuracy: 0.25,
+            hitRadius: 32,
+            gunCount: 2,
+            level: {
+                maxDPS_base: 15,
+                maxDPS_perLevel: 10
+            }
+        }, {
+            name: 'Atom',
+            pps: 256,
+            shotRate: 1,
+            blastRadius: 10,
+            maxDPS: 75,
+            accuracy: 0.9,
+            hitRadius: 64,
+            gunCount: 1,
+            level: {
+                maxDPS_base: 75,
+                maxDPS_perLevel: 50
+            }
+        }
+    ];
+ 
+    var setWeaponsToLevel = function (game) {
+        var level = game.levelObj.level;
+        Weapons.forEach(function (weapon) {
+            var lv = weapon.level;
+            weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
+            weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
+        });
+    };
+ 
+    // SHOT Object Options
     var shotOptions = {
         count: 20,
         // when a shot becomes active
-        spawn: function (shot, game) {
+        spawn: function (shot, game, radian) {
             var offset = game.cross.offset,
+            w = Weapons[game.weaponIndex],
             ch = game.cross.crosshairs,
+            r = Math.random() * (Math.PI * 2),
+            d = w.hitRadius * (1 - w.accuracy) * Math.random(),
+            x = ch.x + Math.cos(r) * d,
+            y = ch.y + Math.sin(r) * d,
             d;
-            shot.x = game.canvas.width;
-            shot.y = game.canvas.height;
-            shot.heading = Math.atan2(ch.y - shot.y, ch.x - shot.x);
-            d = utils.distance(shot.x, shot.y, ch.x, ch.y);
-            shot.pps = 256;
+            //shot.x = game.canvas.width;
+            //shot.y = game.canvas.height;
+            shot.x = x + Math.cos(radian) * game.canvas.width;
+            shot.y = y + Math.sin(radian) * game.canvas.width;
+            shot.heading = Math.atan2(y - shot.y, x - shot.x);
+            d = utils.distance(shot.x, shot.y, x, y);
+            shot.pps = w.pps;
             shot.lifespan = d / shot.pps;
             shot.offset = offset;
         },
         // when a shot becomes inactive
         purge: function (shot, game) {
-            var cell = mapMod.getWithCanvasPointAndOffset(game.map, shot.x, shot.y, shot.offset.x, shot.offset.y);
-            if (cell) {
-                cell.HP -= 5;
-                cell.HP = cell.HP < 0 ? 0 : cell.HP;
-                // percent killed
-                game.map.percentKilled = 0;
-                game.map.cells.forEach(function (cell) {
-                    game.map.percentKilled += cell.HP / cell.maxHP;
-                });
-                game.map.percentKilled /= game.map.cells.length;
-            }
+            poolMod.spawn(game.explosions, game, shot);
         },
         // update method for a shot
         update: function (shot, game, secs) {
@@ -337,65 +712,274 @@ var gameMod = (function () {
         }
     };
  
-    return {
- 
-        create: function (opt) {
-            opt = opt || {};
-            var game = {
-                ver: '0.2.0',
-                canvas: canvas,
-                map: mapMod.create(),
-                cross: {},
-                shots: poolMod.create(shotOptions),
-                shotRate: 0.125,
-                shotSecs: 0,
-                userDown: false
+    // Explosion Options
+    var explosionOptions = {
+        count: 20,
+        spawn: function (ex, game, shot) {
+            var w = Weapons[game.weaponIndex];
+            ex.x = shot.x;
+            ex.y = shot.y;
+            ex.data.offset = {
+                x: shot.offset.x,
+                y: shot.offset.y
             };
- 
-            game.cross = crossMod.create({
-                    offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
-                    offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,
+            ex.data.radiusEnd = game.map.cellSize * w.blastRadius;
+            ex.data.explosionTime = 0.6;
+            ex.data.maxDPS = w.maxDPS; ;
+            ex.lifespan = ex.data.explosionTime;
+            ex.per = 0;
+        },
+        purge: function (ex, game) {},
+        update: function (ex, game, secs) {
+            ex.per = (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
+            ex.radius = ex.data.radiusEnd * ex.per;
+            var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, ex.data.offset.x, ex.data.offset.y),
+            blastRadius = Math.ceil((ex.radius + 0.01) / game.map.cellSize);
+            if (cell) {
+                var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
+                targets.cells.forEach(function (cell, i) {
+                    // apply damage
+                    var damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
+                    if (cell.active) {
+                        game.totalDamage += damage;
+                        cell.HP -= damage;
+                        cell.HP = cell.HP < 0 ? 0 : cell.HP;
+                    }
+                    cell.damage += damage;
                 });
+            }
+            ex.lifespan -= secs;
+        }
+    };
  
-            game.canvas.addEventListener('mousedown', crossMod.createEvent(game.cross, 'start'));
-            game.canvas.addEventListener('mouseup', crossMod.createEvent(game.cross, 'end'));
-            game.canvas.addEventListener('mousemove', crossMod.createEvent(game.cross, 'move'));
+    var shoot = function (game) {
+        var w = Weapons[game.weaponIndex];
+        if (game.shotSecs >= game.shotRate) {
+            var i = 0,
+            radian;
+            while (i < w.gunCount) {
+                radian = Math.PI * 2 / 4 * i + Math.PI / 4;
+                poolMod.spawn(game.shots, game, radian);
+                i += 1;
+            }
+            game.shotSecs = 0;
+        }
+    };
  
-            game.canvas.addEventListener('touchstart', crossMod.createEvent(game.cross, 'start'));
-            game.canvas.addEventListener('touchend', crossMod.createEvent(game.cross, 'end'));
-            game.canvas.addEventListener('touchmove', crossMod.createEvent(game.cross, 'move'));
+    // AUTOPLAY
+    var autoPlay = {
+        setRandomTarget: function (game) {
+            var ch = game.cross.crosshairs,
+            os = game.cross.offset,
+            ap = game.autoPlay,
+            map = game.map,
+            activeCells = mapMod.getAllCellActiveState(map, true),
+            x = Math.floor(map.cellWidth * Math.random()),
+            y = Math.floor(map.cellHeight * Math.random());
+            if (activeCells.length >= 1) {
+                var cell = activeCells[Math.floor(activeCells.length * Math.random())];
+                x = cell.x;
+                y = cell.y;
+            }
+            ap.target.x = (map.cellSize / 2 + (map.cellSize * x)) * -1;
+            ap.target.y = (map.cellSize / 2 + (map.cellSize * y)) * -1;
+        },
  
-            game.canvas.addEventListener('mousedown', function (e) {
-                e.preventDefault();
-                game.userDown = true;
-            });
-            game.canvas.addEventListener('mouseup', function (e) {
-                e.preventDefault();
-                game.userDown = false;
-            });
-            game.canvas.addEventListener('touchstart', function (e) {
-                e.preventDefault();
-                game.userDown = true;
-            });
-            game.canvas.addEventListener('touchend', function (e) {
-                e.preventDefault();
-                game.userDown = false;
-            });
+        setByPercentRemain: function (game) {
+            var map = game.map,
+            ap = game.autoPlay;
  
-            return game;
+            // hard coded default for weapon index
+            game.weaponIndex = 0;
+ 
+            // set AI values based on ap.behavior value
+            if (ap.behavior === 'cannon') {
+                game.weaponIndex = 2;
+                ap.maxShootTime = 3;
+            }
+            if (ap.behavior === 'total-kill') {
+                game.weaponIndex = Weapons.length - 1;
+                ap.stopAtPercentRemain = 0;
+            }
+            if (ap.behavior === 'weapon-switch') {
+                game.weaponIndex = Math.floor((Weapons.length) * utils.logPer(map.percentRemain, 2));
+            }
+            game.weaponIndex = game.weaponIndex >= Weapons.length ? Weapons.length - 1 : game.weaponIndex;
+            // stay on move mode if
+            if (map.percentRemain < ap.stopAtPercentRemain) {
+                ap.mode = 'move';
+            }
+        },
+ 
+        modes: {
+ 
+            // AI Move mode
+            move: function (game, secs) {
+ 
+                var ch = game.cross.crosshairs,
+                os = game.cross.offset,
+                ap = game.autoPlay,
+                map = game.map,
+                a = Math.atan2(os.y - ap.target.y, os.x - ap.target.x),
+                cross = game.cross,
+                d = utils.distance(os.x, os.y, ap.target.x, ap.target.y),
+                delta = game.cross.radiusOuter - 1;
+                maxDelta = cross.radiusInner + cross.radiusDiff - 1,
+                minDelta = cross.radiusInner + 5,
+                slowDownDist = map.cellSize * 4,
+                // !!! know bug where AI movement does not work as desired might
+                // is temp fixed by setting a minDist, might still cause problems
+                // with very low frame rates
+                minDist = map.cellSize / 2,
+                per = 0;
+ 
+                if (d < slowDownDist) {
+                    per = 1 - d / slowDownDist;
+                }
+ 
+                ap.target.d = d;
+ 
+                delta = maxDelta - (maxDelta - minDelta) * per;
+ 
+                if (d < minDist) {
+                    // set right to target
+                    os.x = ap.target.x;
+                    os.y = ap.target.y;
+                    // done
+                    ap.shootTime = ap.maxShootTime;
+                    autoPlay.setRandomTarget(game);
+                    ap.mode = 'shoot';
+                } else {
+                    // !!! know bug where AI movement does not work as desired might
+                    // be fixed here by way of a tempX and Y maybe
+                    ch.x = game.cross.center.x + Math.cos(a) * delta;
+                    ch.y = game.cross.center.y + Math.sin(a) * delta;
+                }
+ 
+            },
+ 
+            shoot: function (game, secs) {
+ 
+                var ch = game.cross.crosshairs,
+                os = game.cross.offset,
+                ap = game.autoPlay,
+                map = game.map;
+ 
+                ch.x = game.cross.center.x;
+                ch.y = game.cross.center.y;
+                shoot(game);
+                ap.shootTime -= secs;
+                if (ap.shootTime <= 0) {
+                    ap.mode = 'move';
+                    autoPlay.setRandomTarget(game);
+                }
+ 
+            }
  
         },
  
         update: function (game, secs) {
+ 
+            // if autoplay
+            if (game.autoPlay.enabled) {
+                var ch = game.cross.crosshairs,
+                os = game.cross.offset,
+                ap = game.autoPlay,
+                map = game.map;
+                game.autoPlay.delay -= secs;
+                if (game.userDown) {
+                    game.autoPlay.delay = game.autoPlay.maxDelay;
+                }
+                game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
+                if (game.autoPlay.delay === 0) {
+                    // disable cross move back
+                    game.cross.moveBackEnabled = false;
+                    // set by percent remain?
+                    autoPlay.setByPercentRemain(game);
+                    // apply current mode
+                    autoPlay.modes[ap.mode](game, secs);
+                }
+            }
+        }
+    };
+ 
+    return {
+        Weapons: Weapons,
+        create: function (opt) {
+            opt = opt || {};
+            var game = {
+                levelObj: {},
+                canvas: opt.canvas,
+                map: mapMod.create(),
+                cross: {},
+                shots: poolMod.create(shotOptions),
+                explosions: poolMod.create(explosionOptions),
+                shotRate: 1,
+                shotSecs: 0,
+                weaponIndex: 3,
+                totalDamage: 0,
+                userDown: false,
+                autoPlay: {
+                    enabled: true,
+                    behavior: 'cannon',
+                    stopAtPercentRemain: 0,
+                    delay: 5,
+                    maxDelay: 5,
+                    mode: 'move',
+                    shootTime: 5,
+                    maxShootTime: 5,
+                    target: {
+                        x: -16,
+                        y: -16,
+                        d: 0
+                    }
+                }
+            };
+            // set game level object for first time
+            game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+            // first autoPlay target
+            autoPlay.setRandomTarget(game);
+            // create cross object
+            game.cross = crossMod.create({
+                    offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
+                    offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,
+                });
+            return game;
+        },
+ 
+        update: function (game, secs) {
+ 
+            // do not let secs go over hard coded max secs value
+            secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
+ 
+            game.shotRate = Weapons[game.weaponIndex].shotRate;
+ 
+            // cross object
             crossMod.update(game.cross, secs);
+ 
+            // map
             mapMod.clampOffset(game.map, game.cross.offset);
+            mapMod.update(game.map, secs);
+ 
+            // update pools
             poolMod.update(game.shots, game, secs);
+            poolMod.update(game.explosions, game, secs);
+ 
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
-            if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross)) {
-                poolMod.spawn(game.shots, game);
-                game.shotSecs = 0;
+ 
+            // shoot
+            if (crossMod.isInInner(game.cross) && game.cross.userDown) {
+                shoot(game);
             }
+ 
+            // AutoPlay
+            autoPlay.update(game, secs);
+ 
+            // update level object
+            game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+            setWeaponsToLevel(game);
+ 
         }
  
     }
@@ -410,19 +994,166 @@ So now that I have mt modules for creating state objects, I will now want a modu
 
 ```js
 var draw = (function () {
-    var drawCrossCircles = function (ctx, cross) {
-        ctx.strokeStyle = 'white';
+ 
+    var hpColors = ['red', 'orange', 'lime'];
+ 
+    var getHpColor = function (per) {
+        return hpColors[Math.floor((hpColors.length - 0.01) * per)];
+    };
+ 
+    var drawBar = function (ctx, game, per, rStart, rLength, fill) {
+        var cross = game.cross,
+        center = cross.center;
         ctx.lineWidth = 3;
+        ctx.strokeStyle = 'gray';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, rStart, rStart + rLength);
+        ctx.stroke();
+        ctx.strokeStyle = fill || 'lime';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, rStart, rStart + rLength * per);
+        ctx.stroke();
+    };
+ 
+    // draw the inner and outer cross circles
+    var drawCrossCircles = function (ctx, cross) {
+        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+        ctx.fillStyle = 'rgba(255,0,0,0.4)';
+        ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(cross.center.x, cross.center.y, cross.radiusInner, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.fill();
+        ctx.fillStyle = 'rgba(0,0,0,0.2)';
         ctx.beginPath();
         ctx.arc(cross.center.x, cross.center.y, cross.radiusOuter, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.fill();
         ctx.beginPath();
         ctx.arc(cross.crosshairs.x, cross.crosshairs.y, cross.crosshairs.radius, 0, Math.PI * 2);
         ctx.stroke();
     };
+ 
+    var drawCrossHairs = function (ctx, cross) {
+        var ch = cross.crosshairs;
+        ctx.strokeStyle = 'rgba(200,0,0,0.5)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(ch.x, ch.y - ch.radius * 1.5);
+        ctx.lineTo(ch.x, ch.y + ch.radius * 1.5);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(ch.x - ch.radius * 1.5, ch.y);
+        ctx.lineTo(ch.x + ch.radius * 1.5, ch.y);
+        ctx.stroke();
+    };
+ 
+    var drawPercentRemainBar = function (ctx, game) {
+        var cross = game.cross,
+        center = cross.center,
+        map = game.map;
+        drawBar(ctx, game, map.percentRemain, Math.PI, Math.PI / 2, getHpColor(map.percentRemain));
+    };
+ 
+    var drawAutoPlayDelayBar = function (ctx, game) {
+        var ap = game.autoPlay;
+        drawBar(ctx, game, ap.delay / ap.maxDelay, 0, Math.PI / 4, 'cyan');
+    };
+ 
+    // draw the current weapon info
+    var drawWeaponInfo = function (ctx, game) {
+        var center = game.cross.center;
+        var w = gameMod.Weapons[game.weaponIndex];
+        ctx.fillStyle = '#ff6060';
+        ctx.font = '10px courier';
+        ctx.textAlign = 'center';
+        ctx.fillText('Weapon: ' + w.name, center.x, center.y + 75);
+        ctx.fillText('maxDPS: ' + w.maxDPS, center.x, center.y + 85);
+ 
+    };
+ 
+    // draw a health bar for a cell
+    var drawCellHealthBar = function (ctx, map, cell, cross) {
+        var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
+        y = cell.y * map.cellSize + cross.offset.y + (240 / 2);
+        //ctx.fillStyle = 'rgba(0,255,0,0.4)';
+        ctx.fillStyle = getHpColor(cell.HP / cell.maxHP);
+        ctx.globalAlpha = 0.5;
+        ctx.fillRect(x, y, map.cellSize * (cell.HP / cell.maxHP), 5);
+        ctx.globalAlpha = 1;
+    };
+ 
+    var setupDebug = function (ctx, game) {
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
+        ctx.fillStyle = 'yellow';
+        ctx.textBaseline = 'top';
+        ctx.font = '10px courier';
+    };
+ 
+    var cellLevel = function (ctx, cell, x, y) {
+        if (cell.active) {
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            ctx.font = '7px courier';
+            ctx.fillText('L' + Math.floor(cell.levelObj.level), x + 3, y + 3);
+        }
+    };
+    /*
+    var cellDebug = function (ctx, cell, x, y) {
+    ctx.fillStyle = '#00ff00';
+    ctx.font = '8px courier';
+    ctx.fillText('L' + Math.floor(cell.levelObj.level), x, y);
+    ctx.fillText(Math.floor(cell.damagePer * 100) + '%', x, y + 8);
+    ctx.fillText(Math.floor(cell.damage), x, y + 16);
+    ctx.fillText(Math.floor(cell.maxHP), x, y + 24);
+    };
+     */
+    var debugModes = {
+        none: function (sm) {},
+        general: function (sm) {
+            var ctx = sm.ctx,
+            canvas = sm.canvas,
+            game = sm.game;
+            setupDebug(ctx, sm.game);
+            ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 10);
+            ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 20);
+            ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 30);
+            ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 40);
+            ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 50);
+        },
+        weapon: function (sm) {
+            var ctx = sm.ctx;
+            setupDebug(ctx, sm.game);
+            var w = gameMod.Weapons[sm.game.weaponIndex];
+            ctx.fillText('Current weapon: ', 10, 10);
+            ctx.fillText('name: ' + w.name, 10, 20);
+            ctx.fillText('maxDPS: ' + w.maxDPS, 10, 30);
+            ctx.fillText('accuracy: ' + w.accuracy.toFixed(2), 10, 40);
+        },
+        level: function (sm) {
+            var ctx = sm.ctx,
+            lv = sm.game.levelObj;
+            setupDebug(ctx, sm.game);
+            ctx.fillText('Current level: ' + lv.level, 10, 10);
+            ctx.fillText('xp: ' + lv.xp, 10, 20);
+            ctx.fillText('forNext level: ' + lv.forNext, 10, 30);
+            ctx.fillText('toNext level: ' + lv.toNext, 10, 40);
+            ctx.fillText('per: ' + lv.per.toFixed(2), 10, 50);
+            ctx.fillText('forLast: ' + lv.forLast, 10, 60);
+        },
+        map: function (sm) {
+            var ctx = sm.ctx,
+            map = sm.game.map;
+            setupDebug(ctx, sm.game);
+            ctx.fillText('map.percentRemain: ' + map.percentRemain, 10, 10);
+        }
+    };
+ 
+    var cellTypeColors = ['green', 'blue', 'red'],
+    sheets = genSheets.sheets;
+ 
     return {
         // draw background
         back: function (ctx, canvas) {
@@ -430,18 +1161,55 @@ var draw = (function () {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
         // draw cross hairs
-        cross: function (ctx, cross) {
-            var ch = cross.crosshairs;
-            drawCrossCircles(ctx, cross);
-            ctx.strokeStyle = 'rgba(200,0,0,0.5)';
-            ctx.beginPath();
-            ctx.moveTo(ch.x, ch.y - ch.radius * 1.5);
-            ctx.lineTo(ch.x, ch.y + ch.radius * 1.5);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(ch.x - ch.radius * 1.5, ch.y);
-            ctx.lineTo(ch.x + ch.radius * 1.5, ch.y);
-            ctx.stroke();
+        cross: function (ctx, game) {
+ 
+            // draw basic circles
+            drawCrossCircles(ctx, game.cross);
+ 
+            // bars
+            drawPercentRemainBar(ctx, game); // percentRemain
+            drawAutoPlayDelayBar(ctx, game); // autoPlay delay
+            drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.33, 'red'); // shotRate
+            drawBar(ctx, game, game.levelObj.per, Math.PI * 1.69, Math.PI * 0.3, 'blue'); // next level
+ 
+            // weapon info
+            drawWeaponInfo(ctx, game);
+ 
+            // draw cell and level info
+            var cross = game.cross,
+            map = game.map,
+            ch = game.cross.crosshairs,
+            cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y),
+            x = cross.center.x + cross.radiusOuter - 45,
+            y = cross.center.y;
+ 
+            // text atyle for info
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.font = '8px arial';
+ 
+            // level info
+            ctx.fillText('level: ' + game.levelObj.level, x, y - 40);
+            ctx.fillText('xp: ' + Math.floor(game.levelObj.xp), x, y - 30);
+            ctx.fillText('next: ' + Math.floor(game.levelObj.toNext), x, y - 20);
+ 
+            // cell info
+            if (cell) {
+                ctx.fillText('pos: ' + cell.i + ' (' + cell.x + ',' + cell.y + ')', x, y);
+                ctx.fillText('lv:' + cell.levelObj.level, x, y + 10);
+                ctx.fillText('hp:' + Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);
+                ctx.fillText('dam: ' + Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
+ 
+                // draw target cell
+                ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(cell.x * map.cellSize + cross.offset.x + (320 / 2), cell.y * map.cellSize + cross.offset.y + (240 / 2), map.cellSize, map.cellSize);
+            }
+ 
+            // draw the cross hairs
+            drawCrossHairs(ctx, game.cross);
+ 
         },
         // draw map
         map: function (ctx, map, cross) {
@@ -451,12 +1219,25 @@ var draw = (function () {
                 var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
                 y = cell.y * map.cellSize + cross.offset.y + (240 / 2),
                 per = cell.HP / cell.maxHP;
-                ctx.beginPath();
-                ctx.rect(x, y, map.cellSize, map.cellSize);
-                ctx.stroke();
-                ctx.fillStyle = 'rgba(0,200,0,' + per.toFixed(2) + ')';
-                ctx.fill();
-                ctx.closePath();
+                if (cell.active) {
+                    // for active cell
+                    ctx.drawImage(sheets[cell.typeIndex].canvas, 32 * Math.floor(9 - cell.HP / cell.maxHP * 9), 0, 32, 32, x, y, map.cellSize, map.cellSize);
+                    if (per < 1) {
+                        drawCellHealthBar(ctx, map, cell, cross);
+                    }
+                } else {
+                    // for inactive cell
+                    ctx.lineWidth = 1;
+                    var c = 50 + Math.round(200 * cell.damagePer);
+                    ctx.strokeStyle = 'rgba(0,128,128, 0.4)';
+                    ctx.fillStyle = 'rgba(0,' + c + ',' + c + ', 0.7)';
+                    ctx.beginPath();
+                    ctx.rect(x, y, map.cellSize, map.cellSize);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+                cellLevel(ctx, cell, x, y);
+                //cellDebug(ctx, cell, x, y);
             });
         },
         shots: function (ctx, game) {
@@ -475,17 +1256,61 @@ var draw = (function () {
                 }
             }
         },
-        // draw info
-        info: function (ctx, game) {
-            ctx.fillStyle = 'rgba(0,0,0,0.4)';
-            ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
-            ctx.fillStyle = 'yellow';
-            ctx.textBaseline = 'top';
-            ctx.font = '10px courier';
-            ctx.fillText('v' + game.ver, 10, 10);
-            ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
-            ctx.fillText('percent kiled: ' + game.map.percentKilled, 10, 30);
-            ctx.fillText('shotSecs: ' + game.shotSecs, 10, 40);
+        explosions: function (ctx, game) {
+            var exps = game.explosions,
+            i = exps.length,
+            alpha = 0.5,
+            ex;
+            while (i--) {
+                ex = exps[i];
+                alpha = 1 - ex.per;
+                ctx.fillStyle = 'rgba(255,255,0,' + alpha + ')';
+                ctx.strokeStyle = 'rgba(0,0,0,' + alpha + ')';
+ 
+                if (ex.active) {
+                    ctx.beginPath();
+                    ctx.arc(ex.x, ex.y, ex.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        },
+        buttons: function (ctx, buttons) {
+            Object.keys(buttons).forEach(function (key) {
+                var b = buttons[key];
+                ctx.fillStyle = 'red';
+                if (b.type === 'toggle' && b.bool) {
+                    ctx.fillStyle = 'lime';
+                }
+                ctx.strokeStyle = 'gray';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'white';
+                ctx.font = (b.fontSize || 10) + 'px arial';
+                if (b.type === 'options') {
+                    var str = b.options[b.currentOption || 0];
+                    ctx.fillText(str, b.x, b.y);
+                }
+                if (b.type === 'basic') {
+                    ctx.fillText(b.label, b.x, b.y);
+                }
+                if (b.type === 'toggle') {
+                    ctx.fillText(b.label, b.x, b.y);
+                }
+            });
+        },
+        debug: function (sm) {
+            debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
+        },
+        ver: function (ctx, sm) {
+            ctx.fillStyle = '#dfdfdf';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + sm.ver, 10, sm.canvas.height - 15);
         }
     }
 }
@@ -499,36 +1324,220 @@ So now I need some additional code to pull everything together here in a main.js
 I then have an attack method that I will likely work into the map module, or some kind of future module that has to do with a weapons or something to that effect. I do not want to get into to much detail with that because at some point in the future I will just have to re write what I have to say about it when it comes to putting a little more time into this canvas example, because I think this one needs and deserve more work.
 
 ```js
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
+// MAIN file including state machine
+(function () {
  
-var game = gameMod.create({
-        canvas: canvas
-    });
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    container = document.getElementById('canvas-app') || document.body;
+    container.appendChild(canvas);
+    canvas.width = 320;
+    canvas.height = 240;
+    ctx.translate(0.5, 0.5);
  
-var lt = new Date();
-var loop = function () {
-    var now = new Date(),
-    t = now - lt,
-    secs = t / 1000;
-    requestAnimationFrame(loop);
+    var states = {
  
-    gameMod.update(game, secs);
+        options: {
  
-    draw.back(ctx, canvas);
-    draw.map(ctx, game.map, game.cross);
-    draw.cross(ctx, game.cross);
-    draw.shots(ctx, game);
-    draw.info(ctx, game);
-    lt = now;
-};
+            // button objects for the state
+            buttons: {
+                toGame: buttonMod.create({
+                    label: 'game',
+                    x: 25,
+                    y: 200,
+                    r: 10,
+                    onClick: function (button, sm) {
+                        // set state to game
+                        sm.currentState = 'game';
+                    }
+                }),
+                debugMode: buttonMod.create({
+                    x: 100,
+                    y: 120,
+                    r: 16,
+                    type: 'options',
+                    options: ['none', 'general', 'weapon', 'level', 'map'],
+                    onClick: function (button, sm) {
+                        sm.debugMode = button.options[button.currentOption];
+                    }
+                })
+            },
  
-loop();
+            // for each update tick
+            update: function (sm, secs) {
+                var state = states[sm.currentState];
+                draw.back(ctx, canvas);
+                draw.buttons(ctx, state.buttons);
+                draw.debug(sm);
+            },
+ 
+            // events
+            pointerStart: function (sm, e) {
+                var state = states[sm.currentState],
+                buttons = state.buttons,
+                pos = utils.getCanvasRelative(e);
+                // check buttons for options state
+                buttonMod.pointerCheckCollection(state.buttons, pos, sm);
+ 
+            },
+            pointerMove: function () {},
+            pointerEnd: function () {}
+        },
+ 
+        game: {
+ 
+            buttons: {
+                options: buttonMod.create({
+                    label: 'options',
+                    fontSize: 10,
+                    x: 25,
+                    y: 200,
+                    r: 10,
+                    onClick: function (button, sm) {
+                        sm.currentState = 'options';
+                    }
+                }),
+                changeWeapon: buttonMod.create({
+                    label: 'Next Weapon',
+                    fontSize: 8,
+                    x: 280,
+                    y: 210,
+                    r: 16,
+                    onClick: function (button, sm) {
+                        sm.game.weaponIndex += 1;
+                        sm.game.weaponIndex %= gameMod.Weapons.length;
+                    }
+                }),
+                autoPlay: buttonMod.create({
+                    label: 'Auto Play',
+                    type: 'toggle',
+                    fontSize: 8,
+                    x: 25,
+                    y: 175,
+                    r: 10,
+                    bool: true,
+                    onClick: function (button, sm) {
+                        var ap = sm.game.autoPlay;
+                        ap.delay = ap.maxDelay;
+                    },
+                    onActive: function (button, sm) {
+                        sm.game.autoPlay.enabled = button.bool;
+                    },
+                    onInactive: function (button, sm) {
+                        sm.game.autoPlay.enabled = button.bool;
+                    }
+                })
+            },
+ 
+            update: function (sm, secs) {
+                var state = states[sm.currentState];
+                // update game state
+                gameMod.update(sm.game, secs);
+ 
+                // draw
+                draw.back(ctx, canvas);
+                draw.map(ctx, sm.game.map, sm.game.cross);
+                draw.explosions(ctx, sm.game);
+                draw.cross(ctx, sm.game);
+                draw.shots(ctx, sm.game);
+                //draw.damageBar(ctx, sm.game);
+                draw.buttons(ctx, state.buttons);
+                draw.ver(ctx, sm);
+                draw.debug(sm);
+            },
+            pointerStart: function (sm, e) {
+ 
+                var state = states[sm.currentState],
+                buttons = state.buttons,
+                pos = utils.getCanvasRelative(e);
+                // enable cross move back feature
+                sm.game.cross.moveBackEnabled = true;
+                crossMod.userAction(sm.game.cross, 'start', e);
+                sm.game.userDown = true;
+ 
+                // check buttons for game state
+                buttonMod.pointerCheckCollection(state.buttons, pos, sm);
+ 
+            },
+            pointerEnd: function (em, e) {
+                crossMod.userAction(sm.game.cross, 'end', e);
+                sm.game.userDown = false;
+            },
+            pointerMove: function (sm, e) {
+                crossMod.userAction(sm.game.cross, 'move', e);
+            }
+        }
+ 
+    };
+ 
+    var sm = {
+        ver: '0.13.0',
+        canvas: canvas,
+        debugMode: 'none',
+        currentState: 'game',
+        ctx: ctx,
+        game: gameMod.create({
+            canvas: canvas
+        }),
+        input: {
+            pointerDown: false,
+            pos: {
+                x: 0,
+                y: 0
+            }
+        }
+    };
+ 
+    var pointerHanders = {
+        start: function (sm, e) {
+            var pos = sm.input.pos;
+            sm.input.pointerDown = true;
+            //console.log('start');
+            states[sm.currentState].pointerStart(sm, e);
+        },
+        move: function (sm, e) {
+            //console.log('move');
+            states[sm.currentState].pointerMove(sm, e);
+        },
+        end: function (sm, e) {
+            sm.input.pointerDown = false;
+            //console.log('end');
+            states[sm.currentState].pointerEnd(sm, e);
+        }
+    };
+ 
+    var createPointerHandler = function (sm, type) {
+        return function (e) {
+            sm.input.pos = utils.getCanvasRelative(e);
+            e.preventDefault();
+            pointerHanders[type](sm, e);
+        };
+    };
+ 
+    // attach for mouse and touch
+    canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
+    canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
+    canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
+    canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
+    canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
+    canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+ 
+    var lt = new Date(),
+    FPS_target = 30;
+    var loop = function () {
+        var now = new Date(),
+        t = now - lt,
+        secs = t / 1000;
+        requestAnimationFrame(loop);
+        if (t >= 1000 / FPS_target) {
+            states[sm.currentState].update(sm, secs);
+            lt = now;
+        }
+    };
+    loop();
+ 
+}
+    ());
 ```
 
 I then of course have my main app loop where I am using the requestAnimationFrame method, inside the loop method. In this loop method I am updating the state of the cross object and drawing the state of the cross and map objects.
@@ -544,11 +1553,14 @@ I then have just a little HTML and inline css for the container for the canvas e
     <body>
         <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
         <script src="./lib/utils.js"></script>
+        <script src="./lib/exp_system.js"></script>
         <script src="./lib/cross.js"></script>
         <script src="./lib/map.js"></script>
         <script src="./lib/pool.js"></script>
         <script src="./lib/game.js"></script>
+        <script src="./lib/gen_sheets.js"></script>
         <script src="./lib/draw.js"></script>
+        <script src="./lib/buttons.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
