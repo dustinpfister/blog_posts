@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2020-08-17 07:15:30
-version: 1.17
+updated: 2020-08-17 07:16:35
+version: 1.18
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typical some kind of index value, numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between zero and one, and in most cases this value ends up being in a linear, or straight line kind of way. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion.
@@ -204,6 +204,8 @@ demo.moveBox = function (box, state, secs) {
     box.y += Math.sin(box.heading) * box.pps * secs;
 };
 ```
+
+So now that I have my utility methods, a draw module, and a module that can be used to create a state object, I now just need a little more javaScript code to make use of all of this.
 
 ## 4 - Lets try this out now
 
