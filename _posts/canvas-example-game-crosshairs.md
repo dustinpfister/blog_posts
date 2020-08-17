@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-17 07:57:06
-version: 1.20
+updated: 2020-08-17 08:04:27
+version: 1.21
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -1049,7 +1049,67 @@ var gameMod = (function () {
     ());
 ```
 
-## 7 - The draw.js file
+## 7 - generate sprite sheets
+
+I wanted to at east start some kind of system that will be used to create sprite sheets. For now I just work out this genSheets module that creates sheets just for map cells. I am not happy with it thus far, and will get around to making a lot of changes here at a point in the future so I do not want to write to much about it.
+
+```js
+var genSheets = (function () {
+ 
+    var createSheet = function (cellSize, cw, ch) {
+        var sheet = {},
+        canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = cellSize * cw;
+        canvas.height = cellSize * ch;
+        ctx.translate(0.5, 0.5);
+        sheet.canvas = canvas;
+        sheet.ctx = ctx;
+        sheet.cellWidth = cw;
+        sheet.cellHeight = ch;
+        sheet.cellSize = cellSize;
+        return sheet;
+    };
+ 
+    var drawBasicBox = function (sheet, fill, stroke) {
+        var canvas = sheet.canvas,
+        ctx = sheet.ctx;
+        ctx.fillStyle = fill || '#008800';
+        ctx.fillRect(-1, -1, canvas.width + 1, canvas.height + 1);
+        ctx.strokeStyle = stroke || 'lime';
+        var i = 0,
+        s;
+        while (i < sheet.cellWidth) {
+            ctx.save();
+            ctx.translate(16 + 32 * i, 16);
+            s = 28 - 14 * (i / sheet.cellWidth);
+            ctx.beginPath();
+            ctx.rect(-14, -14, s, s);
+            ctx.stroke();
+            ctx.restore();
+            i += 1;
+        }
+    };
+ 
+    var sheets = [];
+ 
+    ['#005500', '#000088', '#880000'].forEach(function (fill) {
+        var sheet = createSheet(32, 10, 1),
+        canvas = sheet.canvas,
+        ctx = sheet.ctx;
+        drawBasicBox(sheet, fill, '#000000');
+        sheets.push(sheet);
+    });
+ 
+    return {
+        sheets: sheets
+    };
+ 
+}
+    ());
+```
+
+## 8 - The draw.js file
 
 So now that I have mt modules for creating state objects, I will now want a module with methods that are used to draw aspects of these state objects to a canvas element.
 
@@ -1378,7 +1438,9 @@ var draw = (function () {
     ());
 ```
 
-## 8 - Now for a Main.js file along with a main app loop
+## 9 - Buttons
+
+## 10 - Now for a Main.js file along with a main app loop
 
 So now I need some additional code to pull everything together here in a main.js file that will be used after everything else is in place to work with. Here I create and inject a canvas element into a hard coded container element that I have in my html. I create instances of a map and cross state objects, and attach a whole bunch of event handers for mouse and touch events using the create event method of the cross module.
 
@@ -1629,6 +1691,6 @@ I then have just a little HTML and inline css for the container for the canvas e
 
 So that is it when this canvas example is up and running I am able to move around and when I click on the map I cause damage to the areas that I click. Nothing to interesting at the point of this writing at least, but I think that this one has some decent potential when it comes to putting a little more time into it. I do have many other canvas examples in a state like this also that need more attention, but I am sure I will come back around to this one at some point.
 
-## 9 - Conclusion
+## 11 - Conclusion
 
 So now I have the basic idea of what I had in mind together at least, now it is just a question of what more I can do to it to make it more interesting. There is making it so that each time the player clicks or touches an area in the inner circle that casues a shot to fire from one side of the canvas or another to the point where such an event happened. So there is adding much more when it comes to weapons and what it is that we are shooting at. In addition there is doing something so that there are units in the map the shoot back at the player also.
