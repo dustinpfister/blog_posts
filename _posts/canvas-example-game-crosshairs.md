@@ -5,11 +5,11 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-17 15:55:31
-version: 1.26
+updated: 2020-08-17 15:59:30
+version: 1.27
 ---
 
-For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
+For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs or [Reticle](https://en.wikipedia.org/wiki/Reticle) if you prefer around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
 
 At the time that I started this not much thought went into the other aspects of this that can help turn the game into something that is a little fun, interesting, or just simply addictive. I think that it might be fun to have a game where you just go around and shoot at stuff below me, and just rack up a whole lot of damage on what there is below in a top down perspective. So far that is more or less what this is, but it could still use a little something more that I have not yet hammered down thus far I think. Maybe put some things in the map that fire back for one thing, so that it is a kind of game where it is possible to, you know, loose. 
 
