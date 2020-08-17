@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-17 08:04:27
-version: 1.21
+updated: 2020-08-17 08:06:23
+version: 1.22
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -1439,6 +1439,88 @@ var draw = (function () {
 ```
 
 ## 9 - Buttons
+
+I have a module that helps me with creating button objects that I place in the canvas to preform certain actions.
+
+```js
+var buttonMod = (function () {
+ 
+    // setup a button object depending on type
+    var setupType = function (button, opt) {
+        // setup for 'options' type
+        if (button.type === 'options') {
+            button.options = opt.options || [];
+            button.currentOption = 0;
+            button.label = button.options[0];
+        }
+        // setup a 'toggle' type
+        if (button.type === 'toggle') {
+            button.bool = opt.bool || false;
+            button.onActive = opt.onActive || function () {};
+            button.onInactive = opt.onInactive || function () {};
+        }
+    };
+ 
+    var beforeOnClick = {
+        basic: function (button, api) {},
+        options: function (button, api) {
+            button.currentOption += 1;
+            button.currentOption = button.currentOption >= button.options.length ? 0 : button.currentOption;
+        },
+        toggle: function (button, api) {
+            button.bool = !button.bool;
+        }
+    };
+ 
+    var afterOnClick = {
+        basic: function (button, api) {},
+        options: function (button, api) {},
+        toggle: function (button, api) {
+            if (button.bool) {
+                button.onActive(button, api);
+            } else {
+                button.onInactive(button, api);
+            }
+        }
+    };
+ 
+    return {
+ 
+        // create a single button
+        create: function (opt) {
+            opt = opt || {};
+            var button = {
+                x: opt.x === undefined ? 0 : opt.x,
+                y: opt.y === undefined ? 0 : opt.y,
+                r: opt.r === undefined ? 16 : opt.r,
+                label: opt.label || '',
+                type: opt.type || 'basic',
+                onClick: opt.onClick || function () {}
+            };
+            setupType(button, opt);
+            return button;
+        },
+ 
+        // check the given button collection
+        pointerCheckCollection: function (collection, point, api) {
+            var keys = Object.keys(collection),
+            i = keys.length,
+            button,
+            d;
+            while (i--) {
+                button = collection[keys[i]];
+                d = utils.distance(point.x, point.y, button.x, button.y);
+                if (d < button.r) {
+                    beforeOnClick[button.type](button, api);
+                    button.onClick(button, api);
+                    afterOnClick[button.type](button, api)
+                }
+            }
+        }
+    };
+}
+    ());
+```
 
 ## 10 - Now for a Main.js file along with a main app loop
 
