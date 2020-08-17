@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-17 08:06:23
-version: 1.22
+updated: 2020-08-17 10:41:47
+version: 1.23
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game. So far this is a game where I just use the mouse or touch events to move a cross hairs object around the canvas. The general idea here is that the cross hairs object is used to move around but also to fire. So the cross hairs object can be moved from an inner area in the center of the canvas to an outer area outside of this inner area, when that happens the cross hairs object is used to move around a map. The player can also just tap around in the inner area to do damage to cells in the map for now when it just comes to having something to do with this.
@@ -1440,7 +1440,9 @@ var draw = (function () {
 
 ## 9 - Buttons
 
-I have a module that helps me with creating button objects that I place in the canvas to preform certain actions.
+I have a module that helps me with creating button objects that I place in the canvas to preform certain actions. This way I can pull a lot of code that has to do with checking if a pointer position is over a button display object, or common button tasks like looping an index value for an option and so forth away from the main state machine and into its own module.
+
+As of this writing I have just three button types, but in future releases I intend to add additional types that have to do with contorting settings of things like an upgrades menu and so forth.
 
 ```js
 var buttonMod = (function () {
