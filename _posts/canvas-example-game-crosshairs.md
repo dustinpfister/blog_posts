@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-18 09:32:26
-version: 1.29
+updated: 2020-08-18 09:37:27
+version: 1.30
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs or [Reticle](https://en.wikipedia.org/wiki/Reticle) if you prefer around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
@@ -64,7 +64,7 @@ So now that I have the basic utility library out of the way lets move on to the 
 
 ## 2 - The experience point system
 
-So for this canvas example I want to have an experience point system. I did not work out anything that original for this project at least not of this writing, in fact i just copied over what I [workout out in another post that has to do with, you guessed it, experience point systems](/2020/04/27/js-javascript-example-exp-system/).
+So for this canvas example I want to have an experience point system. I did not work out anything that original for this project at least not of this writing, in fact I just copied over what I [workout out in another post that has to do with, you guessed it, experience point systems](/2020/04/27/js-javascript-example-exp-system/).
 
 The module provided two public methods, one that can be used to create a level object by giving and experience point value, and another that does the inversion of that by giving a level value.
 
@@ -119,9 +119,9 @@ var XP = (function () {
     ());
 ```
 
-I might get around to changing things around with this kind of system at a later point as I keep working on this example. However for now it is working okay as a place holder of sorts until I get around to investing more time into developing not just this system, but maybe a few additional systems.
+I might get around to changing things around with this kind of system at a later point as I keep working on this example, so I do not want to write about this to much here if I am just going to need to rewrite everything extensively later. However for now it is working okay as a place holder of sorts until I get around to investing more time into developing this experience point system, and many of the other components.
 
-In any case this experience point system is used in both the main game.js module, as well as the map.js module, and it goes without saying that this system will problem be used in a few more modules here and there as i keep working on additional minor releases of this project.
+In any case this experience point system is used in both the main game.js module, as well as the map.js module, and it goes without saying that this system will probably be used in a few more modules here and there as I keep working on additional minor releases of this project.
 
 ## 3 - The cross.js file
 
