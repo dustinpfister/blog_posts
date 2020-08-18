@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-17 15:59:30
-version: 1.27
+updated: 2020-08-18 09:09:18
+version: 1.28
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs or [Reticle](https://en.wikipedia.org/wiki/Reticle) if you prefer around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
@@ -26,7 +26,9 @@ So if you are just interested in playing I will inject a package here that refle
 
 ## 1 - The utility module
 
-For like with many of these canvas examples this one has a utility library. In this one I am just using the distance formula, and a method that will help me to get a canvas relative position when it comes to working with event handers for pointer events. There always seems a need for this kind of utility library that can be described as a kind of application specific custom tailors lodash of sorts. That is a collection of utility methods that I am actually going to use in one or more of the module that compose the project.
+For the canvas example just like with many of my other examples this one has a custom utility library. I end up using this kind of library as a dumping ground for methods that are being used, or might end up being used in two or more modules in the over all project. There always seems to be a need for this kind of utility library that can be described as a kind of application specific, custom tailored lodash of sorts. In other words it is a collection of utility methods that I am actually going to use in one or more of the modules that compose the over all project.
+
+One such method that I have here is a distance formula method that will just give me the distance between two points. This is a usual suspect that I have in many of these utility modules, and is often used in a number of expressions where and when needed. I am using the method in my cross module that I will be getting to later in this post that has to do with the major part of the user interface.
 
 ```js
 // UTILS
@@ -54,7 +56,7 @@ utils.logPer = function (per, high) {
 };
 ```
 
-So now that I have the basic utility library out of the way lets move on to the actual modules that make this project different from all the others.
+So now that I have the basic utility library out of the way lets move on to the modules that built on top of this to make a game modules that is used to create and update the main state of the game.
 
 ## 2 - The experience point system
 
