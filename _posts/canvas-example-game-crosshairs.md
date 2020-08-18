@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-18 09:53:28
-version: 1.31
+updated: 2020-08-18 09:57:09
+version: 1.32
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs or [Reticle](https://en.wikipedia.org/wiki/Reticle) if you prefer around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
@@ -252,6 +252,8 @@ var crossMod = (function () {
 I then have my public API of this module that contains methods for both creating and updating a cross state object. In addition I have my userAction method that is used as a way to control the mutation of the cross hairs position. As you can see this is where my get canvas relative method is coming into play for now. When I first started working on this project I did not have the main state machine that I have now, and I have not yet transitioned everything over to just working out things like that there yet.
 
 ## 4 - The map.js file
+
+<!-- edit bookmark -->
 
 So now that I have my cross hairs module I am also going to want to have a map file that will be used to create a map of cells. I can then move around the map with the state of a cross object created with the cross hairs module. I went with having the offset values in the cross object rather than the map object, so I will be using a public method in this map module to get at cells by passing a cross object along with the map and canvas relative position values.
 
