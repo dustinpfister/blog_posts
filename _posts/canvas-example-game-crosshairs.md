@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-18 09:09:18
-version: 1.28
+updated: 2020-08-18 09:32:26
+version: 1.29
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs or [Reticle](https://en.wikipedia.org/wiki/Reticle) if you prefer around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
@@ -29,6 +29,8 @@ So if you are just interested in playing I will inject a package here that refle
 For the canvas example just like with many of my other examples this one has a custom utility library. I end up using this kind of library as a dumping ground for methods that are being used, or might end up being used in two or more modules in the over all project. There always seems to be a need for this kind of utility library that can be described as a kind of application specific, custom tailored lodash of sorts. In other words it is a collection of utility methods that I am actually going to use in one or more of the modules that compose the over all project.
 
 One such method that I have here is a distance formula method that will just give me the distance between two points. This is a usual suspect that I have in many of these utility modules, and is often used in a number of expressions where and when needed. I am using the method in my cross module that I will be getting to later in this post that has to do with the major part of the user interface.
+
+Another method that I often end up parking here is the get canvas relative method that helps with getting a point that is relative to the canvas element rather than window. In this canvas example I am not doing anything with multi touch, so I went with a method that will just use the first touch object in the changed touches array of a touch event. I will not be getting into detail about this method here as I have [wrote a post on this topic of getting a canvas relative point in detail before hand](/2020/03/04/canvas-get-point-relative-to-canvas/).
 
 ```js
 // UTILS
@@ -55,6 +57,8 @@ utils.logPer = function (per, high) {
     return Math.log((1 + high - 2) + per) / Math.log(high);
 };
 ```
+
+The logPer method is something that I worked out when it comes to havening a way to turn a linear percentage value into a percentage value that does not go up in a linear kind of way. As of this writing I am just using this method in my game module when it comes to the AI selecting a weapon. In time I might use this method, or something like it when it comes to maybe the experience point system which is something that I am sure I will be getting around to improve at some point if I do keep working on this project.
 
 So now that I have the basic utility library out of the way lets move on to the modules that built on top of this to make a game modules that is used to create and update the main state of the game.
 
