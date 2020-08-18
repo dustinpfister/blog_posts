@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-18 09:37:27
-version: 1.30
+updated: 2020-08-18 09:53:28
+version: 1.31
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs or [Reticle](https://en.wikipedia.org/wiki/Reticle) if you prefer around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
@@ -125,11 +125,13 @@ In any case this experience point system is used in both the main game.js module
 
 ## 3 - The cross.js file
 
-So now for the module that will be used to create and update a state object for a cross hairs state object. This main cross hairs state object contains a bunch of additional objects and properties that contain many points of interest in the canvas matrix. One point of interest is the center point of the cross hairs area, another is the actual cross hairs cursor position, and yet another is an offset point that can be used as a way to navigate a map. 
+In this section I will be going over the module that will be used to create and update a state object for a cross hairs state object that is used as a major component for the user interface aside from the buttons module, and state machine that I will be getting to later in this post. This main cross hairs state object contains a bunch of additional objects and properties that help with many points of interest in the canvas matrix. One such point of interest is the center point of the cross hairs area, which is now and will likely continue to be the center of the canvas element. Another is the actual cross hairs cursor position in the canvas, and yet another is an offset point that can be used as a way to navigate a map. The state of these points of interest are stored in the object that this module creates, and the module is also used as a way to update the state of this object.
 
-The idea of this module is when the cross hairs point object is within an inner radius that cross hairs object is just used as a way to set the position of where a weapon is going to fire. While the difference between the inner and outer radius is then used as a zone to define angle and rate of movement when it comes to moving around that map. So when the cross hairs object is in the zone between inner and outer radius value that will effect another offset point in the main cross state object. This offset value can then be used as a map offset value when it comes to navigating the map. When it comes to the map module that is another matter that I will be getting to later, but for now in this section I will just be going over the cross hairs module.
+The idea of this module is when the cross hairs point object is within an inner radius, the  cross hairs object is just used as a way to set the position of where a weapon is going to fire at what might be around that area. While the outer radius is used as a zone to define angle and rate of movement in terms of pixels per second when it comes to updating that offset value that I mentioned that can then in turn be used as a way to update the position of a map when it comes to how this is used outside of this module. 
 
-SO with that said the module contains a number of private helper methods. There are helper methods that will return true or false if the cross hairs object is in the fire area, or in the movement area. There is also a helper method that has to do with moving the offset object based on the current values of the cross hairs object and a given value that is the number of seconds sense the last frame tick update.
+So when the cross hairs object is in the zone between inner and outer radius value that will effect the offset point in the cross state object. When the cross hairs object is within the inner radius then the offset value is not effected, and a isInner public method can be used as a way to find out if this is the case or not, and in that case the state of the object can be used differently in the case of this project it is being used as a means to determine where to shoot, however that is a matter that I will be getting to in detail later in the post when I get to the game module.
+
+So with that said the module contains a number of private helper methods, some of which I have made public. There are helper methods that will return true or false if the cross hairs object is in the fire area, or in the movement area. There is also a helper method that has to do with moving the offset object based on the current values of the cross hairs object and a given value that is the number of seconds sense the last frame tick update.
 
 ```js
 var crossMod = (function () {
@@ -247,7 +249,7 @@ var crossMod = (function () {
     ());
 ```
 
-I then have my public API of this module that contains methods for both creating and updating a cross state object. In addition I have a method that can be used as a way to create event handers for a cross object that can be used for both mouse and touch events. this is where by utility method that has to do with getting a canvas relative position comes into play.
+I then have my public API of this module that contains methods for both creating and updating a cross state object. In addition I have my userAction method that is used as a way to control the mutation of the cross hairs position. As you can see this is where my get canvas relative method is coming into play for now. When I first started working on this project I did not have the main state machine that I have now, and I have not yet transitioned everything over to just working out things like that there yet.
 
 ## 4 - The map.js file
 
