@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-08-20 16:21:36
-version: 1.19
+updated: 2020-08-20 16:25:22
+version: 1.20
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that consists of just a bunch of buttons. These buttons can end up preforming all kinds of actions when clicked, and it sometimes might be nessecry to create a fairly complex module for them. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
@@ -34,6 +34,10 @@ So at the start of my custom trailered utility library for this canvas button ex
 
 ```js
 var u = {};
+ 
+u.mod = function (x, m) {
+    return (x % m + m) % m;
+};
  
 u.getCanvasRelative = function (e) {
     var canvas = e.target,
@@ -122,51 +126,79 @@ draw.buttonLayout = function (ctx, blObj) {
         ctx.fillText(b.label || '', b.x + b.w / 2, b.y + b.h / 2);
     }
 };
+ 
+draw.circle = function (ctx, canvas, state) {
+    var r = state.i / state.iMax * (Math.PI * 2);
+    ctx.fillStyle = 'green';
+    ctx.beginPath();
+    ctx.arc(state.cx, state.cy, state.radius, r - 1.57, r + 1.57);
+    ctx.fill();
+    ctx.stroke();
+};
+ 
+draw.info = function (ctx, canvas, state) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('i= ' + state.i + '/' + state.iMax, 10, 10);
+};
+ 
+draw.ver = function (ctx, canvas, state) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + state.ver, 5, canvas.height - 15);
+};
+ 
 ```
 
-For now I just have a draw button layout method that just loops over the contents of the button layout object and uses the fill rect method. In a more advanced canvas example that makes use of this or something not all to different from it I would may use draw image calls with a sprite sheet that was loaded before hand.
-
-## 3 - Now for a basic example of a canvas button layout in action
-
-Now to pull everything together with html and a main.js file that will work as a basic example of this canvas button layout example in action. To keep things very basic I will just be creating an example that creates a button that is used to step a variable by one on each click.
-
-```html
-<html>
-    <head>
-        <title>canvas example button layout</title>
-    </head>
-    <body>
-        <div id="gamearea"></div>
-        <script src="utils.js"></script>
-        <script src="draw.js"></script>
-        <script src="main.js"></script>
-    </body>
-</html>
-```
+## 3 - The main.js file
 
 ```js
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
+container = document.getElementById('canvas-app') || document.body;
 container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
  
-var count = 0;
+var state = {
+    ver: '0.0.0',
+    i: 0,
+    iMax: 16,
+    cx: canvas.width / 2,
+    cy: canvas.height / 2,
+    radius: 32
+};
+ 
+var wrapIndex = function (state) {
+    state.i = u.mod(state.i, state.iMax);
+};
  
 // create button layout
 var blObj = u.mkButtonLayout({
         attachTo: canvas,
         buttons: [{
-                x: 16,
-                y: 100,
-                w: 64,
+                x: canvas.width / 2 - 48,
+                y: 180,
+                w: 32,
                 h: 32,
-                label: 'Step 0',
+                label: 'i+',
                 onAction: function (pos, opt, button, e) {
-                    count += 1;
-                    console.log(button);
-                    button.label = 'Step ' + count;
+                    state.i += 1;
+                    wrapIndex(state);
+                }
+            }, {
+                x: canvas.height / 2 + 48,
+                y: 180,
+                w: 32,
+                h: 32,
+                label: 'i-',
+                onAction: function (pos, opt, button, e) {
+                    state.i -= 1;
+                    wrapIndex(state);
                 }
             }
         ]
@@ -176,8 +208,12 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.background(ctx, canvas);
     draw.buttonLayout(ctx, blObj);
+    draw.circle(ctx, canvas, state);
+    draw.info(ctx, canvas, state);
+    draw.ver(ctx, canvas, state);
 };
 loop();
+ 
 ```
 
 ## 4 - Conclusion
