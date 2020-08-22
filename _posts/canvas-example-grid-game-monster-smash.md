@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 695
-updated: 2020-08-22 09:29:38
-version: 1.5
+updated: 2020-08-22 09:33:48
+version: 1.6
 ---
 
 I will be making at least a few more [canvas examples](/2020/03/23/canvas-example/) this summer, some of which I might continue developing if some people show interest in them. Last week I started working on a project that I am currently just calling Monster Smash. The general idea is not clear, aside from just some very vague concepts. I would like to have at least one canvas example that is just a nice little RPG style game where you move a player object around and battle enemies and level up. Nothing to ground breaking or exciting, just a nice little RPG like that of dragon warrior maybe.
@@ -399,6 +399,8 @@ var draw = (function () {
 ```
 
 ## 5 - Main.js, the start of a state machine, and index.html
+
+I have code that serves as a general application wide utility library, a map system, a game module, and a way to render to a canvas element. Now I just need a little additional code that will make use of all of this, and also provide any additional functionality.
 
 ```js
 (function () {
