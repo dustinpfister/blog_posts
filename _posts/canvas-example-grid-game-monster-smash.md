@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 695
-updated: 2020-08-22 07:06:37
-version: 1.3
+updated: 2020-08-22 09:25:44
+version: 1.4
 ---
 
 I will be making at least a few more [canvas examples](/2020/03/23/canvas-example/) this summer, some of which I might continue developing if some people show interest in them. Last week I started working on a project that I am currently just calling Monster Smash. The general idea is not clear, aside from just some very vague concepts. I would like to have at least one canvas example that is just a nice little RPG style game where you move a player object around and battle enemies and level up. Nothing to ground breaking or exciting, just a nice little RPG like that of dragon warrior maybe.
@@ -111,6 +111,8 @@ var mapMod = (function () {
 ```
 
 ## 3 - The game module
+
+I will want to have a module that will act as a way to create a main state object for a game instance. In many of my canvas examples this kind of object is also the main object that will constitute a model for the whole of the state of the application, however in other projects, including this one, there is yet another object to which the game object is a part of.
 
 ```js
 var gameMod = (function () {
