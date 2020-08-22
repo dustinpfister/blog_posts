@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 695
-updated: 2020-08-22 09:25:44
-version: 1.4
+updated: 2020-08-22 09:29:38
+version: 1.5
 ---
 
 I will be making at least a few more [canvas examples](/2020/03/23/canvas-example/) this summer, some of which I might continue developing if some people show interest in them. Last week I started working on a project that I am currently just calling Monster Smash. The general idea is not clear, aside from just some very vague concepts. I would like to have at least one canvas example that is just a nice little RPG style game where you move a player object around and battle enemies and level up. Nothing to ground breaking or exciting, just a nice little RPG like that of dragon warrior maybe.
@@ -328,7 +328,9 @@ var gameMod = (function () {
     ());
 ```
 
-## 4 - draw
+## 4 - The draw module for rendering to canvas
+
+So yes this is a canvas example, and as such I am going to want at least a little javaScript code that will be used to render to a canvas element. In very simple projects I might have this code dumped together with everything else, but for projects that are starting to get a little complex, or will get there at some point in the future it becomes important to pull this code out of a main.js file and into it's own module for the sake of readability of code.
 
 ```js
 var draw = (function () {
@@ -396,7 +398,7 @@ var draw = (function () {
     ());
 ```
 
-## 5 - Main and index
+## 5 - Main.js, the start of a state machine, and index.html
 
 ```js
 (function () {
