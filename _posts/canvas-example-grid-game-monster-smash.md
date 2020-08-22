@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 695
-updated: 2020-08-22 07:04:36
-version: 1.2
+updated: 2020-08-22 07:06:37
+version: 1.3
 ---
 
 I will be making at least a few more [canvas examples](/2020/03/23/canvas-example/) this summer, some of which I might continue developing if some people show interest in them. Last week I started working on a project that I am currently just calling Monster Smash. The general idea is not clear, aside from just some very vague concepts. I would like to have at least one canvas example that is just a nice little RPG style game where you move a player object around and battle enemies and level up. Nothing to ground breaking or exciting, just a nice little RPG like that of dragon warrior maybe.
@@ -18,7 +18,7 @@ I will be making at least a few more [canvas examples](/2020/03/23/canvas-exampl
 
 ## 1 - The utility library
 
-To start things off I have a basic utility library for this canvas example. Here I have a distance formula, a methd to get an angle to a point, and a method to help with getting a point relative to a canvas element rather than the window object.
+To start things off I have a basic utility library for this canvas example. Here I have a distance formula, a method to get an angle to a point, and a method to help with getting a point relative to a canvas element rather than the window object.
 
 ```js
 // UTILS
@@ -46,6 +46,8 @@ utils.getCanvasRelative = function (e) {
 ```
 
 ## 2 - The map module
+
+So then I have a module that will be used for creating a map object.
 
 ```js
 var mapMod = (function () {
