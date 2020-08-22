@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-08-20 16:26:20
-version: 1.21
+updated: 2020-08-22 09:42:30
+version: 1.22
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that consists of just a bunch of buttons. These buttons can end up preforming all kinds of actions when clicked, and it sometimes might be nessecry to create a fairly complex module for them. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
@@ -156,7 +156,7 @@ draw.ver = function (ctx, canvas, state) {
 
 ## 3 - The main.js file
 
-So now for just a quick example where I am testing out this method that will create a button layout.
+So now for just a quick example where I am testing out this utility library method that will create a simple button layout. Here in the main.js file of this example I create and inject the actually canvas element into a container element as I do in just about every other canvas example that I have made thus far for this site. I then have references to the canvas element, as well as the drawing context to which I pass to my draw module when it comes to rendering in a main app loop.
 
 ```js
 var canvas = document.createElement('canvas'),
