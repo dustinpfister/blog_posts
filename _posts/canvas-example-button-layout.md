@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-08-22 09:42:30
-version: 1.22
+updated: 2020-08-23 10:28:17
+version: 1.23
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that consists of just a bunch of buttons. These buttons can end up preforming all kinds of actions when clicked, and it sometimes might be nessecry to create a fairly complex module for them. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
@@ -30,7 +30,9 @@ In addition to some basic methods for hit detection and working with event objec
 
 To work with buttons that are actually display objects in a canvas element rather than html elements positioned over a canvas, I am going to need to get canvas relative mouse and or touch positions as well as a means of collision or hit detection.
 
-So at the start of my custom trailered utility library for this canvas button example I have a method that will return a canvas relative position fro a mouse or touch event. The canvas relative position can then be used in conjunction with another method that has to do with bounding box collision detection inside yet another method that will be used to find out if a button is clicked or not.
+So at the start of my custom trailered utility library for this canvas button layout example I have a mathematical modulo method. I will not be getting into the details about this method here as i have touched base on it all ready in a later post of mine. However I will say that it is just another way of preforming a modulo operation on top of what is built into javaScript itself.
+
+ I also have a method that will return a canvas relative position from a mouse or touch event. The canvas relative position can then be used in conjunction with another method that has to do with bounding box collision detection inside yet another method in this utility library that will be used to find out if a button is clicked or not.
 
 ```js
 var u = {};
@@ -60,7 +62,7 @@ u.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 };
 ```
 
-These two methods are usual suspects when it comes to making any kind of project centered custom tailer utility framework. However now that I have these to work with it is now time to get into a method that will be kind of the main show of this canvas example.
+So now that I have covered a few usual suspects for many of the custom utility library for my canvas examples, it is now time to move on to the next, and last method in this library. this final method in the library is what is used to create a button layout for a project.
 
 ### 1.2 - The make canvas button layout method
 
@@ -99,7 +101,7 @@ u.mkButtonLayout = function (opt) {
 };
 ```
 
-So now that I have this worked out I should have a way to draw the current state of a button layout object, and get together a basic demo of this to help confirm that it is working.
+For now I made it just part of the general utility library, but if I keep working on this project it will likely be pulled into its own module. Anyway now that I have this make button method worked out I should have a way to draw the current state of a button layout object, and get together a basic demo of this to help confirm that it is working. So lets look at a draw module that I made for this canvas example, and move on to a little demo code that will make used of all of this.
 
 ## 2 -  The draw module
 
