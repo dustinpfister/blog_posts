@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-08-18 09:57:09
-version: 1.32
+updated: 2020-08-25 16:21:07
+version: 1.33
 ---
 
 For this weeks [canvas example](/2020/03/23/canvas-example/) post I made a quick little cross hairs type game idea that just popped into my head one day. This is a game where I just use the mouse or touch events to move a cross hairs or [Reticle](https://en.wikipedia.org/wiki/Reticle) if you prefer around the canvas, and depending on where the cross hairs is located will result in panning movement around a map, or firing of the current weapon at some map cells. That is the basic idea at least, but I have added much more to it then just that at this point when it comes to choosing this example as something to continue working on at least a little each day, or at least fairly often.
@@ -253,9 +253,7 @@ I then have my public API of this module that contains methods for both creating
 
 ## 4 - The map.js file
 
-<!-- edit bookmark -->
-
-So now that I have my cross hairs module I am also going to want to have a map file that will be used to create a map of cells. I can then move around the map with the state of a cross object created with the cross hairs module. I went with having the offset values in the cross object rather than the map object, so I will be using a public method in this map module to get at cells by passing a cross object along with the map and canvas relative position values.
+So now that I have my cross hairs module I am also going to want to have a map file that will be used to create a map of cell objects. I can then move around the map with the state of a cross object created with the cross hairs modules create method when working out the game module. I went with having the offset values in the cross object rather than the map object, so I will be using a public method in this map module to get at cells by passing a cross object along with the map and canvas relative position values.
 
 ```js
 var mapMod = (function () {
@@ -598,6 +596,8 @@ var mapMod = (function () {
 ```
 
 ## 5 - A pool.js module for creating an object pool to be used for shots amd any other future display object pools
+
+<!-- edit bookmark -->
 
 I made a another post in which I touched base on [object pools](/2020/07/20/canvas-example-object-pool/). I decided to include such a module in this project that for starters will be used to create shot objects that will move from the side of the canvas to the target area where an attack was made on the map. In future versions of the canvas example display object pools could be used for all kinds of additional things where a display object would be called for such as explosions, enemies, and power ups.
 
