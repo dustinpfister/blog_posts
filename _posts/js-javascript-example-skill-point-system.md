@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2020-08-26 14:42:36
-version: 1.8
+updated: 2020-08-26 14:45:40
+version: 1.9
 ---
 
 I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game.
@@ -136,6 +136,8 @@ var XP = (function () {
 ## 3 - A canvas demo that makes use of this skill point system
 
 So now that I have my skill point system I will want to work out just a little more javaScript code to just serve as a way to confirm that this system will work as expected before starting to use it in one of my canvas examples.
+
+For now this demo is just a crude yet effective way to visualize what the effect of my apply skill points method is for a range of levels, and what happens when skill points are added, and not added by just playing around with the have coded values in the state object. If I get some more time to work on this I might have a better display for all of this, but it seems like things are working as I would expect thus far.
 
 ```js
 var draw = {};
