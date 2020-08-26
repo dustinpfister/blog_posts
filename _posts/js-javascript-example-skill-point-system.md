@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2020-08-26 14:33:52
-version: 1.6
+updated: 2020-08-26 14:36:35
+version: 1.7
 ---
 
 I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game.
@@ -229,3 +229,5 @@ draw.ver(ctx, canvas, state);
 ## 4 - Conclusion
 
 This skill point system seems to work okay thus far, but I would like to polish things a little more before using it in an actual project. Still I think I have the basic idea that I had in mind working the way that I would like it to, so there is not much more to get done with this beyond maybe working out some different expressions when it comes to setting values.
+
+I have a few projects in the works all ready in which I would like to use a system like this, so in the not to distant future I will likely start using some kind of rendition of this in some projects that I have in the works now. I also am pretty sure that I will likely be suing this in some future projects that I have not even started yet also. So when I get around to it I will likely update this post and link to other posts in which I am using this.
