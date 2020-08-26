@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2020-08-26 14:25:58
-version: 1.3
+updated: 2020-08-26 14:30:00
+version: 1.4
 ---
 
 I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game.
@@ -35,6 +35,8 @@ utils.logPer = function (per, a, b) {
 I will be suing this method when it comes to working out my expressions for the effect that skill points and a level object have a a stat value.
 
 ## 2 - The xp.js module
+
+So here I have the source code for my experience point system that has a few changes and a single public method added that thus results in my skill point system thus far. This module has the same methods that i would expect form any experience point system that helps with creating what I have come to call a level object. That is it has a method where if I know then level, but want to know an experience point value I can use a parse by level public method, and there is then another method where I can get a level by passing a know experience point value. There is now however one additional method that I have adde when it comes to this javaScript example, and that is my apply skill points method.
 
 ```js
 var XP = (function () {
