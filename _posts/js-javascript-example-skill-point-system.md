@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2020-08-26 14:22:28
-version: 1.2
+updated: 2020-08-26 14:25:58
+version: 1.3
 ---
 
 I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game.
@@ -19,6 +19,8 @@ So in this post I will be writing about another kind of experience point system,
 
 ## 1 - The utils module
 
+I have a single utility method that my skill point system uses. This log percent method that I have made in a previous project is a method that I work out that will return a percent value from zero to one based on a given percent value that has the same range. The idea with this method is to just have a way to convert a percent value that normally goes up in a linear way to instead go up in a not so linear way.
+
 ```js
 var utils = {};
 utils.logPer = function (per, a, b) {
@@ -29,6 +31,8 @@ utils.logPer = function (per, a, b) {
     return Math.log((1 + a - 2) + per) / Math.log(b);
 };
 ```
+
+I will be suing this method when it comes to working out my expressions for the effect that skill points and a level object have a a stat value.
 
 ## 2 - The xp.js module
 
