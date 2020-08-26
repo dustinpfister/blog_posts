@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2020-08-26 14:36:35
-version: 1.7
+updated: 2020-08-26 14:42:36
+version: 1.8
 ---
 
 I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game.
@@ -36,7 +36,9 @@ I will be suing this method when it comes to working out my expressions for the 
 
 ## 2 - The xp.js module
 
-So here I have the source code for my experience point system that has a few changes and a single public method added that thus results in my skill point system thus far. This module has the same methods that i would expect form any experience point system that helps with creating what I have come to call a level object. That is it has a method where if I know then level, but want to know an experience point value I can use a parse by level public method, and there is then another method where I can get a level by passing a know experience point value. There is now however one additional method that I have adde when it comes to this javaScript example, and that is my apply skill points method.
+So here I have the source code for my experience point system that has a few changes and a single public method added that thus results in my skill point system thus far. This module has the same methods that i would expect form any experience point system that helps with creating what I have come to call a level object. That is it has a method where if I know then level, but want to know an experience point value I can use a parse by level public method, and there is then another method where I can get a level by passing a know experience point value. There is now however one additional method that I have added when it comes to this javaScript example, and that is my apply skill points method.
+
+The apply skill points method takes a level object as the first argument, followed by a skill point value that is the number of skill points that the player wishes to place in a given skill, or upgrade if you prefer. The third and final argument is an options object that can be used to set a base value for a state, alone with maximum values that are effected by level, and skill point value. The product that is returned is then an object with a value of method that will return a value that is to be used as a stat value for something that is effect by all of this.
 
 ```js
 var XP = (function () {
