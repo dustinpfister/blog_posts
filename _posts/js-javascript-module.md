@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 14:15:14
-version: 1.24
+updated: 2020-08-27 14:20:36
+version: 1.25
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -112,7 +112,7 @@ I do not think making modules where I have a state object inside the body of the
 
 ## 3 - javaScript module with function API
 
-A function can also be what is returned as well. This allows for creating a custom API that works with an argument that is given. In javaScript a function is also a kind of object so it is possible to make a module where there is a function that can be called via the global variable, as well as a bunch of static methods attached to the object.
+A function can also be what is returned as well in place of just a plain old javaScript object. This allows for creating a custom API that works with an argument that is given when calling this main javaScript module. 
 
 ```js
 var mod = (function () {
@@ -137,6 +137,8 @@ var pt = mod({
 pt.move(3, 12);
 pt.print();
 ```
+
+In javaScript a function is also a kind of object so it is possible to make a module where there is a function that can be called via the global variable, as well as a bunch of static methods attached to the function just like that of using a plain javaScript object. So if done right, nothing is lost by going in this direction in place of just an object literal as the global API.
 
 ## 4 - Conclusion
 
