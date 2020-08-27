@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 14:03:48
-version: 1.22
+updated: 2020-08-27 14:05:12
+version: 1.23
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -78,7 +78,7 @@ console.log(point); // undefined
 
 There are also ways of creating an API that can be accessed from outside the module as well by assigning such an API to at least one global variable. A global can be declared from outside the function expression, or the global object can be passed as an argument to the IIFE which is another option that I see in the wild a lot. In other cases the expression can just be used to accomplish some things without polluting the global name space at all when it comes to simple projects in which everything needs to be packed into one of these. However maybe getting into all of that is a matter for another post, or at least another section in this one.
 
-In any case the main thing to keep in mind here is that the two general ways that I go about making javaScript modules in a tired yet true way boil down to two general ways of going about making a module. One way is to just have everything in a javaScript object literal, and the other is to use a function to wrap everything up inside a closure, and only make thing public that need to be public if anything at all.
+In any case the main thing to keep in mind here is that the two general ways that I go about making javaScript modules in a tired yet true way boil down to two general ways of going about making a module. One way is to just have everything in a javaScript object literal, and the other is to use a function to wrap everything up inside a closure, and only make thing public that need to be public if anything at all. So now that we have that out of the way lets look at some more examples where I take a look at some additional things that come up when making javaScript modules.
 
 ### 2 -javaScript Module with Object API;
 
