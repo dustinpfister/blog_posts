@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 13:41:48
-version: 1.18
+updated: 2020-08-27 13:44:40
+version: 1.19
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -47,7 +47,9 @@ mod.move(45, 7);
 console.log(mod.x,mod.y); // 45 17
 ```
 
-This way everything is packed into a single global variable, and can be accessed from outside the the module via that single global variable. This approach works okay in some cases assuming that it is okay that everything can be accessed from outside the module, or in other words that everything is public.
+This way everything is packed into a single global variable, and can be accessed from outside the the module via that single global variable. This approach works okay in some cases assuming that it is okay that everything can be accessed from outside the module, or in other words that everything is public. 
+
+There are some additional issues with the specific example that I have given here when it comes to management of state. However maybe that is something that I should get into at a later point in this post. The main thing to keep in mind here is that this is one way to go about making something that can be though of as a module of sorts, however of course it does not stop here lets look at some more basic javaScript modules patterns then.
 
 ## 1.2 - JavaScript Module by Closure
 
