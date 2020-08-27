@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 13:46:21
-version: 1.20
+updated: 2020-08-27 13:52:05
+version: 1.21
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -132,3 +132,7 @@ var pt = mod({
 pt.move(3, 12);
 pt.print();
 ```
+
+## 4 - Conclusion
+
+So this post just scratched the surface when it comes to writing javaScript modules in a client side javaScript environment that will work in a wide range of clients in a tired yet true way. I have my way that I like to write modules when it comes to things like canvas examples where I am writing the code from the ground up, and I want the project to work via the file protocol. However do not thing of this as the end all post on javaScript module design, there are many other ways to go about writing them of course that I did not get to here, and the way I would writing them can change dramatically depending on the environment, how far back I want to go with browser support, and what kind of libraries or frameworks I might be using.
