@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 14:05:12
-version: 1.23
+updated: 2020-08-27 14:15:14
+version: 1.24
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -80,9 +80,11 @@ There are also ways of creating an API that can be accessed from outside the mod
 
 In any case the main thing to keep in mind here is that the two general ways that I go about making javaScript modules in a tired yet true way boil down to two general ways of going about making a module. One way is to just have everything in a javaScript object literal, and the other is to use a function to wrap everything up inside a closure, and only make thing public that need to be public if anything at all. So now that we have that out of the way lets look at some more examples where I take a look at some additional things that come up when making javaScript modules.
 
-### 2 -javaScript Module with Object API;
+### 2 - IIFE javaScript Module with Object API;
 
-A public API can be returned in the form of an object literal. This object literal can be the actual thing that is returned to a global variable, or it can be a variable that contains such an object that was declared elsewhere in the body of the function expression.
+A public API can be returned in the form of an object literal when using an IIFE and a single global variable to create a module. This object literal can be the actual thing that is returned to a global variable, or it can be a variable that contains such an object that was declared elsewhere in the body of the function expression, a pattern that I tend to prefer these days.
+
+So for a basic example of this say I have a global variable called mod, and I am using an IIFE to create a module. In the body of the IIFE I am using the return keyword to return an object literal that will function as the public API for the module in the form of a collection of methods attached as properties for the module. These public methods have access to everything that is inside the IIFE and for this example I have a point state object that can be mutated with the public methods.
 
 ```js
 var mod = (function () {
@@ -105,6 +107,8 @@ var mod = (function () {
 mod.move(-5, 3);
 mod.print(); // '(0,20)'
 ```
+
+I do not think making modules where I have a state object inside the body of the IIFE is a good idea, and often prefer to make modules where a public method is used to create such a state object, and have this state object be one of the arguments that is passed when using one of the public methods. However that is another matter, the general idea that I had in mind for this section is there. Many of the vanilla javaScript modules that I make are still not always to dissimilar to this general idea of having an IIFE and then a public API of some kind or another returned to a single global variable.
 
 ## 3 - javaScript module with function API
 
