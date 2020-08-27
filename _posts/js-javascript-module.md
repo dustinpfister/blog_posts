@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 14:20:36
-version: 1.25
+updated: 2020-08-27 14:43:24
+version: 1.26
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -140,6 +140,59 @@ pt.print();
 
 In javaScript a function is also a kind of object so it is possible to make a module where there is a function that can be called via the global variable, as well as a bunch of static methods attached to the function just like that of using a plain javaScript object. So if done right, nothing is lost by going in this direction in place of just an object literal as the global API.
 
-## 4 - Conclusion
+## 4 - Pull out state, and try to make things more functional programing like
+
+So I have covered a lot of the basics when it comes to javaScript module design, so lets start to scratch the surface on some things that are maybe just a little not so basic. In many of my examples in this post so far I was working with a state object that is part of the module itself. I do not think that this is always such a bad idea for some code here and there maybe with code that is of an actual main state object in a project for example. However I have fond that kind of module design is something that should be minimized, if not avoided completely.
+
+lets take yet another look at making a very simple point module, this time I am not doing anything that has to do with having the a state object in the module itself, but something that is to be passed as an argument to every public method. This way I am taking the state object out of the module, and making it so that the state object is something that is create and stored in some code section that is outside of the module.
+
+In addition to pulling the state object out of the module, I am now also using a move method that is more in line with the rules of what is often called a pure function. I will not be getting into functional programing in detail here as that is a subject for a whole other post of course. However I have found that going in the direction of functional programing helps to keep things better organized, and easier to follow and debug.
+
+```js
+var pointMod = (function () {
+ 
+    var pointDefaults = {
+        x: 0,
+        y: 0
+    };
+ 
+    var create = function (x, y) {
+        return {
+            x: x === undefined ? pointDefaults.x : x,
+            y: y === undefined ? pointDefaults.y : y
+        };
+    };
+ 
+    // plain object api
+    return {
+        // make create public
+        create: create,
+        // move a point
+        move: function (point, dx, dy) {
+            var newPoint = create(point.x, point.y);
+            newPoint.x += dx;
+            newPoint.y += dy;
+            return newPoint;
+        },
+        // print a point
+        print: function (point) {
+            console.log('(' + point.x + ',' + point.y + ')')
+        }
+    };
+}
+    ());
+ 
+// use example
+var a = pointMod.create();
+ 
+var b = pointMod.move(a, 10, 35);
+ 
+pointMod.print(a);
+pointMod.print(b);
+// (0,0)
+// (10, 35)
+```
+
+## 5 - Conclusion
 
 So this post just scratched the surface when it comes to writing javaScript modules in a client side javaScript environment that will work in a wide range of clients in a tired yet true way. I have my way that I like to write modules when it comes to things like canvas examples where I am writing the code from the ground up, and I want the project to work via the file protocol. However do not thing of this as the end all post on javaScript module design, there are many other ways to go about writing them of course that I did not get to here, and the way I would writing them can change dramatically depending on the environment, how far back I want to go with browser support, and what kind of libraries or frameworks I might be using.
