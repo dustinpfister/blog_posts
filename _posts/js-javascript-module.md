@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 13:44:40
-version: 1.19
+updated: 2020-08-27 13:46:21
+version: 1.20
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -53,7 +53,7 @@ There are some additional issues with the specific example that I have given her
 
 ## 1.2 - JavaScript Module by Closure
 
-An IIFE (immediately invoked function expression) or self executing function expression can be used as a way to encapsulate variables into a function level local variable scope. From within this local function level scope, variables can be declared that will not end up becoming global variables. So there should not be any fear of polluting the global name space, or running into problems with name space collisions.
+An [IIFE (immediately invoked function expression) or self executing function](/2020/02/04/js-iife/) expression can be used as a way to encapsulate variables into a function level local variable scope. From within this local function level scope, variables can be declared that will not end up becoming global variables. So there should not be any fear of polluting the global name space, or running into problems with name space collisions.
 
 ```js
 // declaring point global variable
