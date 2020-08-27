@@ -5,17 +5,19 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-24 09:54:57
-version: 1.16
+updated: 2020-08-27 13:31:36
+version: 1.17
 ---
 
-When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep your project broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
+When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
 
-There is not just using modules of course when it comes to keeping code broken down, and easy to follow. For example modules can be made in a way in which the module will work by itself without the need for any additional code that the modules depends on. However often I make modules where there is at least one central utility module of sorts, and sometimes a module will require additional modules in order to work. 
+There are a lot of talking points when it comes to modules and javaScript, and often the subject can get a little confusing especially for beginners with javaScript and modules. For example modules can be made in a way in which the module will work by itself without the need for any additional code that the modules depends on. However often I make modules where there is at least one central utility module of sorts, and then a few additional modules that will work on top of the main utility method and will thus break without the use of that main module.
 
-In addition there is also making modules where a module is used as a way to play with a state that is held in the module as a local variable to the module. There is also having modules where a public method is used to create a new state object, and that is what I am working with in a main javaScript file.
+In addition there is also making modules where a module is used as a way to play with a state that is held in the module itself as a local variable to the module which I would not recommend doing. With that said there is also having modules where a public method is used to create a new independent state object that I use outside of the module that created it, and pass the created object as one of the arguments for many of the public methods of the module.
 
-So there are many little tips and tricks when it comes to module design, also there is more than one pattern to be familiar with when it comes to how to go about creating them. So in this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript, and maybe tocuhing base on some related topics of interest in the process.
+There are a wide range of patterns and standard for module design when it comes to client side javaScript as well as nodejs. There is a standard for [modules in client side javaScript that now involves the use of import and export keywords](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) for example. One down side though is that this kind of standard is modern so it will not work on older browsers, another draw back is that it will not work over the file protocol and I like to make projects that will work off line via the protocol. However even when it comes to writing modules the tired yet true way there is a lot of ground to cover when it comes to the various standards and patterns.
+
+So there are many little tips and tricks when it comes to module design in javaScript, also there is more than one pattern to be familiar with, and there are many things to be aware of when starting out with javaScript modules. So in this post I will be covering some basic [module examples](http://exploringjs.com/es6/ch_modules.html) when it comes to module design with javaScript, and maybe touching base on some related topics of interest in the process.
 
 <!-- more -->
 
