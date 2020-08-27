@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 13:31:36
-version: 1.17
+updated: 2020-08-27 13:41:48
+version: 1.18
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -23,14 +23,15 @@ So there are many little tips and tricks when it comes to module design in javaS
 
 ## 1 - JavaScript Module basics
 
-There are specifics to be aware of when it comes to a node.js environment though. There are also many standards that come to mind such as AMD. It goes without saying that this is an advanced topic when it comes to javaScript development. There are many different design patterns, and standards for modules so this can get a littler overwhelming.
+There are specifics to be aware of when it comes to a node.js environment and JavaScript module design however that might be a matter for another post, so in this section I will be sticking to some basics that work okay in client side javaScript. There are also many standards that come to mind such as AMD, but many of these require a library to get up and running with, so I will be sticking to simple patterns that work in native client side javaScript by itself. 
 
-Although there are many ways to go about designing something in javaScript that can be thought of as a kind of module. In this post I will mainly be writing modules with core javaScript by itself that can often work out okay in any javaScript environment. Well at least for the most part in client side javaScript anyway, in a node environment you really just need to design it in a way where use are exporting what you want to be public. 
+It goes without saying that this is an advanced topic when it comes to javaScript development, there are many different design patterns, and standards for modules so this can get a littler overwhelming. With that said this section and post in general is not meant for people that are new to javaScript, I assume that you have at least some background when it comes to the very basics of html and javaScript in general.
 
+## 1.1 - JavaScript Module by way of an Object literal
 
-## 1.1 - JavaScript Module by Object literal
+One way to design a module would be to place all the properties and methods that are relevant with something in an object literal. In other words just a plain old javaScript object created with the literal syntax, and just start appending methods and properties to it.
 
-One way to design a module would be to place all the properties and methods that are relevant with something in an object literal. 
+For starters with this kind of approach to modules design you might start out with an object that has an x and y property, and then have a single method that does something to those properties such as move it by a set of given delta values for example.
 
 ```js
 var mod = {
@@ -46,7 +47,7 @@ mod.move(45, 7);
 console.log(mod.x,mod.y); // 45 17
 ```
 
-This way everything is packed into a single global variable, and can be accessed from outside the the module via that single global variable. This approach works okay in some cases assuming that it is okay that everything can be accessed from outside the module.
+This way everything is packed into a single global variable, and can be accessed from outside the the module via that single global variable. This approach works okay in some cases assuming that it is okay that everything can be accessed from outside the module, or in other words that everything is public.
 
 ## 1.2 - JavaScript Module by Closure
 
