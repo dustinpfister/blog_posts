@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 12:35:07
-version: 1.13
+updated: 2020-08-28 12:43:59
+version: 1.14
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -227,3 +227,7 @@ console.log(a);
 ```
 
 This kind of module pattern is often what I end up with when I keep working on a module for a while and keep anding things on. Sooner or later I want to write at least a few private internal helper methods that I do not need or what to be part of the public API. making use of an IIFE or some other module patter is just what ends up needed to happen often sooner or later. Still I would say that an object literal is a good starting point, and as things move forward it is not always to hard to transition into something else as log as I keep things structured in a certain way.
+
+## 5 - Conclusion
+
+So that is it for now when it comes to the object literal module pattern. The pattern is a great starting point when it comes to starting out with a module, but I do not have to work so much about having to start all over if I want to transition into another pattern. There is of course a whole lot more to write about when it comes to modules and javaScript of course. This post was meant to just be a starting point of sorts when it comes to making them in a client side javaScript environment. In a nodejs environment a whole other  pattern needs to be observed when it comes to making modules in that environment, and also there are many other pattens and more modern ways of making modules in a client side environment.
