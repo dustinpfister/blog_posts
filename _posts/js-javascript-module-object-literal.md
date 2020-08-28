@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 09:48:21
-version: 1.2
+updated: 2020-08-28 09:51:26
+version: 1.3
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -17,7 +17,7 @@ However if you are new to javaScript module design, you have to start somewhere,
 
 ## 1 - The basics of a javaScript Object literal module pattern
 
-When I was first starting out with javaScript many years ago I am sure that I was writing simple javaScript code examples that might look something like this.
+When I was first starting out with javaScript many years ago I am sure that I was writing simple javaScript code examples that would just be a bunch of global variables, and methods where I am mutating those global variables. This kind of approach to things is something that I tend to avoid doing, but for now lets just assume that we are starting out with some code like that.
 
 ```js
 var x = 0,
