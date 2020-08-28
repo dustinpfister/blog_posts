@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2020-06-02 16:57:09
-version: 1.9
+updated: 2020-08-28 08:06:03
+version: 1.10
 ---
 
 These days there is not a native [array fill prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and unless you care a great deal about backward compatibility the native array fill method works just fine. Unless you do want to use a pony fill method of area fill because you want to make sure what you are making will work on a wider range of platforms then you might want to use something else. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index. So lets look at some examples of filling an array with data.
@@ -53,6 +53,26 @@ b[7] = 0;
 console.log(b.join('')); // '01111110'
 ```
 
+
+### 2.1 - Fill with chars
+
+With this example I am filling an array with the same string pattern over and over again.
+
+```js
+var newFilledWithChars = function (count, str) {
+    return Array.apply(null, {
+        length: count
+    }).map(function (e, i) {
+        ci = i % str.length;
+        return str[ci];
+    });
+};
+ 
+var arr = newFilledWithChars(10, 'abc');
+ 
+console.log(arr.join('')); // 'abcabcabca'
+```
+
 ## 3 - Using just a while loop and the Array literal syntax
 
 If you want to push backward compatibility as far back as you can possible go, the you might want to work out some kind of solution that just involves a while loop and just the plain old array bracket syntax.
@@ -87,24 +107,37 @@ arr[7] = 1;
 console.log(arr.join('')); // '00000101'
 ```
 
-## 5 - Fill with chars
+## 5 - fill with an object
 
-Then there is filling an array with the same string pattern over and over again.
+When it comes to filling an array with an object you might run into problems that have to do with references to the same object rather than creating an array of objects. You see if you just pass an object to a method like array fill then you will end up with an array filled up with references to that same single object. In most cases when doing something like that chances are you would want an array of objects with the same starting values, not a bunch of references to the same object.
+So to help with this one way or another it would be a good idea to find a way to go about cloning an object. In this example I am using the clone object trick that involves using the JSON parse method to parse a JSON string that was just created with the JSON strigify method. This might not be the best way to go about cloning an object in a situations, and getting into the details as to why and with cloning with objects in general is a matter for a whole other post. However for the sake of tha matter at hand here and now all I need is a way to create an independent new object from an object.
+
+Now that I have a clone method I can then use the clone method in the body of a method that I am using with array map to map new objects with the same starting values for each element in an array. The result is an array of independent objects with the same starting values as the object that I filled with.
 
 ```js
-var newFilledWithChars = function (count, str) {
+var clone = function (obj) {
+    return JSON.parse(JSON.stringify(obj));
+};
+ 
+var fillWithClonedObject = function (obj) {
     return Array.apply(null, {
-        length: count
-    }).map(function (e, i) {
-        ci = i % str.length;
-        return str[ci];
+        length: 3
+    }).map(function () {
+        return clone(obj);
     });
 };
  
-var arr = newFilledWithChars(10, 'abc');
+var arr = fillWithClonedObject({
+        x: 4,
+        y: 7
+    });
  
-console.log(arr.join('')); // 'abcabca'
+arr[1].x = 0;
+console.log(arr);
+// [ { x: 4, y: 7 }, { x: 0, y: 7 }, { x: 4, y: 7 } ]
 ```
+
+
 
 ## 6 - Conclusion
 
