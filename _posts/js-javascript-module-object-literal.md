@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 09:51:26
-version: 1.3
+updated: 2020-08-28 09:55:23
+version: 1.4
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -35,7 +35,7 @@ console.log(x,y);
 // 5 10
 ```
 
-Another way to go about doing this would be to take the x and y globals an make them properties of a single object literal, and on top of that make the move method a property of that object also.
+Although this might not be much so far, there is a few things that I would all ready do differently here these days. However the first thing that comes to mind would be to pull this code into some kind of module pattern. One way to go about making this code a little ore modular would be to turn this code that is just littered around in the global name space into just a single global object in the forum of an object literal.
 
 ```js
 var point = {
