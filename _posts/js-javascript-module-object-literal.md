@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 10:04:46
-version: 1.6
+updated: 2020-08-28 11:33:05
+version: 1.7
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -56,8 +56,9 @@ console.log(point.x, point.y);
 
 So now I have the same code, working more or less the same way, but in an object literal module form. 
 
-## 2 - Making a module more functional
+## 2 - Making a module more in line with functional programing using the object literal module pattern
 
+I will not be getting into function programing an pure functions in detail here as that would be off topic. However I would say that taking code in a more functional direction is generally a good idea. It will result in code that is easier to follow and debug. In addition I have found that I do not like the idea of having a state object located in a module itself, but as an object that is outside of the module, and just use the module to create new state objects rather than directly mutating them.
 
 ```js
 var pointMod = {
