@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 11:33:05
-version: 1.7
+updated: 2020-08-28 11:36:59
+version: 1.8
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -59,6 +59,8 @@ So now I have the same code, working more or less the same way, but in an object
 ## 2 - Making a module more in line with functional programing using the object literal module pattern
 
 I will not be getting into function programing an pure functions in detail here as that would be off topic. However I would say that taking code in a more functional direction is generally a good idea. It will result in code that is easier to follow and debug. In addition I have found that I do not like the idea of having a state object located in a module itself, but as an object that is outside of the module, and just use the module to create new state objects rather than directly mutating them.
+
+The basic point module that I made in the last section could be changed up just a little to create something that does more or less the same thing, but in a way in which it is more functional. The first thing to do is to pull the x and y variables that store the current state of something out of the module, and instead just have a method that will create a state object with those properties. I would then make the point object an argument that is passed to my move method rather than mutating these values that are part of the module itself. The next thing to do is to make the move method a pure function by making it so that it will return a new point object rather than directly mutating the source object that I pass to it as an argument.
 
 ```js
 var pointMod = {
