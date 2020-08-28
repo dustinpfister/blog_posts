@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 12:12:27
-version: 1.11
+updated: 2020-08-28 12:17:20
+version: 1.12
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -166,3 +166,5 @@ var origin = pointMod();
 // and my methods still work fine
 console.log(pointMod.move(origin,5,10)); // { x: 5, y: 10 }
 ```
+
+Another reason why I would want to break the pattern is to have some helper methods or additional objects or values of one kind or another private from the public API. One of the drawbacks of using the object literal pattern is that everything has to be public, and in some cases this is not always such a great thing. One way to help make a few things private would be the have a Immediately Invoked Function Expression or IIFE and then have the public API returned inside the body of this IIFE.
