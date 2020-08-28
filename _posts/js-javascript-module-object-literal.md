@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 12:17:20
-version: 1.12
+updated: 2020-08-28 12:35:07
+version: 1.13
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -168,3 +168,62 @@ console.log(pointMod.move(origin,5,10)); // { x: 5, y: 10 }
 ```
 
 Another reason why I would want to break the pattern is to have some helper methods or additional objects or values of one kind or another private from the public API. One of the drawbacks of using the object literal pattern is that everything has to be public, and in some cases this is not always such a great thing. One way to help make a few things private would be the have a Immediately Invoked Function Expression or IIFE and then have the public API returned inside the body of this IIFE.
+
+```js
+var pointMod = (function () {
+    // private hard coded defaults
+    var hard = {
+        xDefault: 0,
+        yDefault: 0,
+        angleScale: 360
+    };
+    // starting out with an function expression which is also a kind of object in javaScript
+    var API = function (x, y) {
+        return {
+            x: x === undefined ? hard.xDefault : x,
+            y: y === undefined ? hard.yDefault : y
+        };
+    };
+    // move a point
+    API.move = function (point, dx, dy) {
+        // create a new Point
+        var newPoint = API(point.x, point.y);
+        // mutate the new point, and not the source point
+        newPoint.x += dx;
+        newPoint.y += dy;
+        // return the newPoint without mutating the given source point
+        return newPoint;
+    };
+    // private helper for new move method
+    var angleToRadian = function (angle, scale) {
+        return Math.PI * 2 * (angle / scale);
+    };
+    // new move method
+    API.moveByAngleAndDist = function (point, angle, dist, scale) {
+        scale = scale == undefined ? hard.angleScale : scale;
+        dist = dist === undefined ? 1 : dist;
+        angle = angle === undefined ? 0 : angle;
+        // create a new Point
+        var newPoint = API(point.x, point.y),
+        radian = angleToRadian(angle, scale);
+        newPoint.x += Math.cos(radian) * dist;
+        newPoint.y += Math.sin(radian) * dist;
+        return newPoint;
+    };
+    // distance
+    API.distance = function (pointA, pointB) {
+        return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
+    };
+    // return the public API
+    return API;
+}
+    ());
+ 
+var a = pointMod(10, 10);
+a = pointMod.moveByAngleAndDist(a, 90, 10);
+ 
+console.log(a);
+// { x: 10, y: 20 }
+```
+
+This kind of module pattern is often what I end up with when I keep working on a module for a while and keep anding things on. Sooner or later I want to write at least a few private internal helper methods that I do not need or what to be part of the public API. making use of an IIFE or some other module patter is just what ends up needed to happen often sooner or later. Still I would say that an object literal is a good starting point, and as things move forward it is not always to hard to transition into something else as log as I keep things structured in a certain way.
