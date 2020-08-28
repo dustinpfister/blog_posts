@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 09:56:49
-version: 1.5
+updated: 2020-08-28 10:04:46
+version: 1.6
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -47,11 +47,43 @@ var pointMod = {
     }
 };
  
-point.move(5, 7);
-point.move(0, 3);
+pointMod.move(5, 7);
+pointMod.move(0, 3);
  
 console.log(point.x, point.y);
 // 5 10
 ```
 
 So now I have the same code, working more or less the same way, but in an object literal module form. 
+
+## 2 - Making a module more functional
+
+
+```js
+var pointMod = {
+    // no state object in the module, but a method to create
+    create: function (x, y) {
+        return {
+            x: x,
+            y: y
+        };
+    },
+    move: function (point, dx, dy) {
+        // create a new Point
+        var newPoint = this.create(point.x, point.y);
+        // mutate the new point, and not the source point
+        newPoint.x += dx;
+        newPoint.y += dy;
+        // return the newPoint without mutating the given source point
+        return newPoint;
+    }
+};
+ 
+var a = pointMod.create(0, 0);
+var b = pointMod.move(a, 5, 7);
+b = pointMod.move(b, 0, 3);
+ 
+console.log(a.x, a.y);
+console.log(b.x, b.y);
+// 5 10
+```
