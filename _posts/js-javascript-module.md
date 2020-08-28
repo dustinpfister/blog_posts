@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-27 14:43:24
-version: 1.26
+updated: 2020-08-28 09:48:22
+version: 1.27
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -29,7 +29,7 @@ It goes without saying that this is an advanced topic when it comes to javaScrip
 
 ## 1.1 - JavaScript Module by way of an Object literal
 
-One way to design a module would be to place all the properties and methods that are relevant with something in an object literal. In other words just a plain old javaScript object created with the literal syntax, and just start appending methods and properties to it.
+One way to design a module would be to place all the properties and methods that are relevant with something in an object literal. I have [wrote a post in which I get into the object literal module pattern](/2020/08/27/js-javascript-module-object-literal/) in detail, but I will be quickly touching base on this topic here of course as I think this might be one of the best starting points for module design before moving on to studying other options. In other words just a plain old javaScript object created with the literal syntax, and just start appending methods and properties to it.
 
 For starters with this kind of approach to modules design you might start out with an object that has an x and y property, and then have a single method that does something to those properties such as move it by a set of given delta values for example.
 
