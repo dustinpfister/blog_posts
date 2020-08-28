@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 11:39:15
-version: 1.9
+updated: 2020-08-28 11:59:08
+version: 1.10
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -92,3 +92,42 @@ console.log(b.x, b.y);
 ```
 
 So then this would be a better example of how I would make a javaScript module with the object literal pattern these days. I do not always follow a functional way of programing though, but generally I try to keep things going in that direction. As a project grows in size it just becomes more and more important to do so.
+
+## 3 - Appending methods to an object literal rather than just doing everything when creating it in the first place
+
+One more thing abut the object literal pattern is that sooner or later I find myself pulling methods out of the object literal that is used to create the object in the first place, and instead append methods to the object after it is created. So far there are not many reasons to do this, but as the module continues to grow, and if it does transition into another pattern I have found that doing this becomes more important.
+
+```js
+// starting out with an object literal, and some hard coded defaults
+var pointMod = {
+    xDefault: 0,
+    yDefault: 0
+};
+// no state object in the module, but a method to create
+pointMod.create = function (x, y) {
+    return {
+        x: x === undefined ? pointMod.xDefault : x,
+        y: y === undefined ? pointMod.yDefault : y
+    };
+};
+// move a point
+pointMod.move = function (point, dx, dy) {
+    // create a new Point
+    var newPoint = this.create(point.x, point.y);
+    // mutate the new point, and not the source point
+    newPoint.x += dx;
+    newPoint.y += dy;
+    // return the newPoint without mutating the given source point
+    return newPoint;
+};
+// distance
+pointMod.distance = function (pointA, pointB) {
+    return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
+};
+ 
+var origin = pointMod.create(),
+a = pointMod.move(origin, 10, 5),
+b = pointMod.move(origin, 25, 17),
+d = pointMod.distance(a, b);
+console.log(d.toFixed(2)); // '19.21'
+```
