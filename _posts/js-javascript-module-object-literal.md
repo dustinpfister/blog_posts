@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-27 15:02:23
-version: 1.1
+updated: 2020-08-28 09:48:21
+version: 1.2
 ---
 
-So there are many patterns and standards when it comes to javaScript modules these days. Just when it comes to making them there tired yet true way in a es5 spec javaScript kind of way things can quickly spiral sown in to a major rabbit hold when it comes to the various patterns, and standards. However if you are new to javaScript module design, you have to start somewhere, and maybe a good starting point would be to just start playing around with object literals as a javaScript module pattern.
+So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
+
+However if you are new to javaScript module design, you have to start somewhere, and maybe a good starting point would be to just start playing around with [object literals](https://www.dyn-web.com/tutorials/object-literal/) as a [javaScript module pattern](https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s02.html) in client side javaScript. This might not be the best way to go about making modules in javaScript, but it sure is a good first step in the right direction if you are not sure where to start.
 
 <!-- more -->
 
