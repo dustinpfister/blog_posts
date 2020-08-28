@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 11:59:08
-version: 1.10
+updated: 2020-08-28 12:12:27
+version: 1.11
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -130,4 +130,39 @@ a = pointMod.move(origin, 10, 5),
 b = pointMod.move(origin, 25, 17),
 d = pointMod.distance(a, b);
 console.log(d.toFixed(2)); // '19.21'
+```
+
+## 4 - breaking the object literal pattern
+
+As a module continues to grow I might want to break the object literal pattern at some point. One reason why might be because I just want to have a main function that I call off of the main global of the module. If so it is not to hard to transition into that if I follow the object literal pattern a certain way where I am appending to the object. In that case I just need to make the object literal a function in place of just a plain old object, and preserve the properties of the old object pattern.
+
+```js
+// starting out with an function expression which is also a kind of object in javaScript
+var pointMod = function (x, y) {
+    return {
+        x: x === undefined ? pointMod.xDefault : x,
+        y: y === undefined ? pointMod.yDefault : y
+    };
+};
+// so we can append static methods to it
+pointMod.xDefault = 0;
+pointMod.yDefault = 0;
+// move a point
+pointMod.move = function (point, dx, dy) {
+    // create a new Point
+    var newPoint = pointMod(point.x, point.y);
+    // mutate the new point, and not the source point
+    newPoint.x += dx;
+    newPoint.y += dy;
+    // return the newPoint without mutating the given source point
+    return newPoint;
+};
+// distance
+pointMod.distance = function (pointA, pointB) {
+    return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
+};
+// so we can not create points like this
+var origin = pointMod();
+// and my methods still work fine
+console.log(pointMod.move(origin,5,10)); // { x: 5, y: 10 }
 ```
