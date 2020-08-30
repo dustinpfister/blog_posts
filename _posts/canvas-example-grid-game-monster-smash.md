@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 695
-updated: 2020-08-29 20:42:03
-version: 1.8
+updated: 2020-08-30 08:23:22
+version: 1.9
 ---
 
 I will be making at least a few more [canvas examples](/2020/03/23/canvas-example/) this summer, some of which I might continue developing if some people show interest in them. Last week I started working on a project that I am currently just calling Monster Smash. The general idea is not clear, aside from just some very vague concepts. I would like to have at least one canvas example that is just a nice little RPG style game where you move a player object around and battle enemies and level up. Nothing to ground breaking or exciting, just a nice little RPG like that of dragon warrior maybe.
@@ -47,7 +47,7 @@ utils.getCanvasRelative = function (e) {
 
 ## 2 - The map module
 
-So then I have a module that will be used for creating a map object for this canvas example.
+So then I have a module that will be used for creating a map object for this canvas example. The idea that I had in mind for this project is to have an array of map objects, bit I figure that everything that has to d with creating an mutating a collection of maps should be independent of a module that is used to do so with just one map object. So for now as of this writing the map module for this example is fairly simple and striped down, with just a hand full of usual methods for such a module.
 
 ```js
 var mapMod = (function () {
