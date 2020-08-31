@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2020-08-31 17:04:06
-version: 1.2
+updated: 2020-08-31 17:09:08
+version: 1.3
 ---
 
 Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. Say you have an array of objects, and each object is a planet in some kind of game that has to do with taking over planets. Anyway there would be a lot of code that would need to be written to make a fun little planet attack game, but one feature that I would want is to have a method where I can give a position, and get a list of planets where the first planet in the list is the one that is the closest to that position.
@@ -153,3 +153,21 @@ canvas.addEventListener('click', function (e) {
 // call update for the first time
 update(planets, canvas.width / 2, canvas.height / 2);
 ```
+
+```html
+<html>
+    <head>
+        <title>javaScript example sort planets</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script src="planets.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
+
+So I was able to quickly throw together a little example of array.sort that might prove to be a little fun and interesting. In this example I worked out something where a list of target planets is based on distance to a given position, however this is something that can be expansed on of course. Say each planet has various levels of resources I might want a list then that is based on distance and value in terms of resources. There are many other ideas that come to might such as filtering out planets that are under control by the player, rather than neutral or enemy planets.
