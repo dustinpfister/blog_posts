@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2020-08-31 17:17:44
-version: 1.6
+updated: 2020-08-31 17:20:26
+version: 1.7
 ---
 
 Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. Say you have an array of objects, and each object is a planet in some kind of game that has to do with taking over planets. Anyway there would be a lot of code that would need to be written to make a fun little planet attack game, but one feature that I would want is to have a method where I can give a position, and get a list of planets where the first planet in the list is the one that is the closest to that position.
@@ -123,7 +123,7 @@ draw.targets = function (ctx, targets) {
 
 ### 2.2 - main.js and index.html
 
-now for some additional javaScript code that will create and inject a canvas elekent, as well as make use of my planets module, and attach an event handler.
+now for some additional javaScript code that will create and inject a canvas element, as well as make use of my planets module, and attach an event handler that will update the list of targets based on a location where the canvas is clicked.
 
 ```js
 var container = document.getElementById('canvas-app'),
