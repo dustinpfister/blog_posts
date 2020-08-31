@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2020-08-31 17:09:08
-version: 1.3
+updated: 2020-08-31 17:10:58
+version: 1.4
 ---
 
 Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. Say you have an array of objects, and each object is a planet in some kind of game that has to do with taking over planets. Anyway there would be a lot of code that would need to be written to make a fun little planet attack game, but one feature that I would want is to have a method where I can give a position, and get a list of planets where the first planet in the list is the one that is the closest to that position.
@@ -16,6 +16,8 @@ Sorting an array of objects is something that will come up often in javaScript s
 
 
 ## 1 - The planets Module
+
+So this javaScript example will start off with, and also center around just a javaScript module that is used to create an array of planet objects. There are just two public methods for now, one that will create an return an array of palnets, and another that can be used to get a list of target objects for each planet.
 
 ```js
 var planetMod = (function () {
