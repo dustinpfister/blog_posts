@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2020-08-31 17:14:08
-version: 1.5
+updated: 2020-08-31 17:17:44
+version: 1.6
 ---
 
 Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. Say you have an array of objects, and each object is a planet in some kind of game that has to do with taking over planets. Anyway there would be a lot of code that would need to be written to make a fun little planet attack game, but one feature that I would want is to have a method where I can give a position, and get a list of planets where the first planet in the list is the one that is the closest to that position.
@@ -94,6 +94,8 @@ var planetMod = (function () {
 Now that I have a javaScript module that can be used to create and sort a list of planet objects, and that it seems to work okay. It would be nice to put together a quick little canvas project that makes use of this planets module.
 ### 2.1 - draw.js
 
+here I have a draw module that has a few methods to help with drawing to a canvas element.
+
 ```js
 var draw = {};
 draw.back = function (ctx, canvas) {
@@ -121,6 +123,8 @@ draw.targets = function (ctx, targets) {
 
 ### 2.2 - main.js and index.html
 
+now for some additional javaScript code that will create and inject a canvas elekent, as well as make use of my planets module, and attach an event handler.
+
 ```js
 var container = document.getElementById('canvas-app'),
 canvas = document.createElement('canvas'),
@@ -128,7 +132,7 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 container.appendChild(canvas);
-// create plantes collection
+// create planets collection
 var planets = planetMod.createPlanets({
         canvas: canvas
     });
@@ -138,7 +142,7 @@ var update = function (planets, x, y) {
     draw.back(ctx, canvas);
     draw.targets(ctx, targets);
 };
-// get a canvas realtive point
+// get a canvas relative point
 var getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -156,6 +160,8 @@ canvas.addEventListener('click', function (e) {
 // call update for the first time
 update(planets, canvas.width / 2, canvas.height / 2);
 ```
+
+Some html that will pull this all together.
 
 ```html
 <html>
