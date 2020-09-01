@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 11:00:17
-version: 1.10
+updated: 2020-09-01 11:04:01
+version: 1.11
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -23,7 +23,7 @@ The subject of what is often refereed to as true threading is a complex topic th
 
 ## 1 - Basic example of setInterval
 
-At a minimum setInterval must be given at least two arguments. The first argument is the function to call, and the second is the minimum amount of time that should pass in milliseconds before the function is called.
+At a minimum setInterval must be given at least two arguments. The first argument is the function to call, and the second is the minimum amount of time that should pass in milliseconds before the function is called. Once the function is called the function will be called again after the given about of time passes again, and then again, over an over again indefinitely unless clearInterval is used to stop it.
 
 ```js
 setInterval(function(){
@@ -33,7 +33,7 @@ setInterval(function(){
 },1000);
 ```
 
-The above example will fire the function that logs the string tick to the console ruffly once every second. I say ruffly because it is not always guaranteed that it will fire every one second right on the nose. The reason why is because of the nature of event loops, and javaScripts single threaded like nature. How ever when it comes to something very simple like this, the function should fire on time more or less.
+The above example will fire the function that logs the string tick to the console ruffly once every second. I say ruffly because it is not always guaranteed that it will fire every one second right on the nose. The reason why is because of the nature of event loops, and javaScripts single threaded like nature, there are things that can hold things up. How ever when it comes to something very simple like this, and only this, the function should fire on time more or less. So now that we have a very basic example covered lets look at some more examples of setInteral in action.
 
 ## 2 - Basic state machine example
 
