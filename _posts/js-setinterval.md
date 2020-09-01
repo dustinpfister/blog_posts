@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 11:04:01
-version: 1.11
+updated: 2020-09-01 11:09:32
+version: 1.12
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -37,9 +37,9 @@ The above example will fire the function that logs the string tick to the consol
 
 ## 2 - Basic state machine example
 
-One of the many use case examples of setInterval is as a means to setup some kind of state machine. Many projects will involve ruining the same code over, and over again and often that code can become somewhat complicated. Also it might chnage depending on the state of the application. If you have a strategy game, it does not make sense to have game code running when you are navigating around a map system, or a main game options menu.
+One of the many use case examples of setInterval is as a means to get some kind of state machine up and running. Many projects will involve ruining the same code over, and over again and often that code can become somewhat complicated. Also it might change depending on the state of the application, there is code that may need to be updated each tick in a menu, and then code that will be updated only when a main game part of an application is running. So with that said if you have a strategy game, it does not make sense to have game code running when you are navigating around a map system for levels, or a main game options menu.
 
-So then breaking code down into many separate states will help to make the project more manageable, and in many cases doing so is just necessary. The basic idea would be to have not just one, but several update methods, and a property that is used to know which method to call at the current moment.
+So then breaking code down into many separate states will help to make the project more manageable, and in many cases doing so is just necessary because you do not want all code in the project to be updated all the time, just what needs to be updated based on a current application state. The basic idea would be to have not just one, but several update methods, and a property that is used to know which method to call at the current moment. In addition to this there will need to be a main app loop, this is where something like setInterval might come into play, at least when it comes to just updating a model in a headless way at least.
 
 ```js
 var currentState = 'start',
@@ -95,7 +95,7 @@ var loop = function() {
 setInterval(loop, 1000);
 ```
 
-A more advanced example might include some kind of State object constructor with all kinds of methods that can be used for any given state, but you should get the basic idea.
+A more advanced example might include some kind of state object constructor with all kinds of methods that can be used for any given state, but you should get the basic idea. Often I do not use setInetravl in projects such as this in favor of another option that may be a better choice when it comes to not just updating a module, but also rendering in addition to that.
 
 ## 3 setInterval vs requestAnimationFrame
 
