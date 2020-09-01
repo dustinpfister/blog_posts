@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 09:09:27
-version: 1.7
+updated: 2020-09-01 09:15:58
+version: 1.8
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -15,7 +15,9 @@ The setInterval method will fire a given method after a given millisecond value 
 
 So then there are alternatives to setInterval to be aware of such as [setTimeout](/2018/12/06/js-settimeout/), and [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. The setTimeout method works the same way more or less as setInterval, but will just fire the given method once after a delay. However the setTimout method can be called from within the body of the method that is begin called that can result in a similar effect to the use of setInterval. In addition to setTimeout the requestAnimationFrame is yet another options to be aware when it comes to client side javaScript that might prove to be a better choice when it comes to making canvas projects.
 
-There is also the topic of threading that often comes up when talking about setInterval, and similar methods when working with what is called a single event loop. I see lots of javaScript developers saying that javaScript is a single threaded language, I shy away from saying that because it strikes me as a bit of a half truth actually. In a modern web browser there are ways of sining up more that one event loop, which does result in more than one independent thread, but on a per process basis. So in a way it is true that javaScript is a single threaded language compared to what may be possible with other languages, but it is important to know what you mean by that. 
+There is also the topic of threading that often comes up when talking about setInterval, and similar methods when working with what is called an event loop, and ways to have more than one event loop. I see lots of javaScript developers saying that javaScript is a single threaded language, I shy away from saying that because it strikes me as a bit of a half truth actually. In a modern web browser there are ways of sining up more that one event loop, which does result in more than one independent thread, but on a per process basis. So in a way it is true that javaScript is a single threaded language compared to what may be possible with other languages, but it is important to know what you mean by that. 
+
+The subject of what is often refereed to as true threading is a complex topic that is something that is outside the scope of this post, it is not something that can be done with setInterval by itself at least, and possible not with javaScript at all depending on how you go about labeling what true threading is. So in this post I will just be sticking to some basic examples of setInterval, and will not be getting into what can be done with things like webWorker in a client side javaScript environment, and the child process module in nodejs.
 
 <!-- more -->
 
