@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 11:31:36
-version: 1.14
+updated: 2020-09-01 11:34:16
+version: 1.15
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -50,6 +50,8 @@ setTimeout(function () {
 ```
 
 ## 3 - Using date objects
+
+There is using setInterval to get a function to call over and over again, and then there is creating a state object that will be updated each time that function is called. So in this example I will be going over a very basic game module, and a state object that contains an instance of that module, and using date objects as a way to update the state of a variable by way of the number of seconds that has passed sense the last update.
 
 ```js
 var gameMod = {
