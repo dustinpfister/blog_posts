@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 10:58:15
-version: 1.9
+updated: 2020-09-01 11:00:17
+version: 1.10
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -100,5 +100,7 @@ A more advanced example might include some kind of State object constructor with
 ## 3 setInterval vs requestAnimationFrame
 
 In my examples to far I am not doing anything that involves updating a canvas, or DOM element in a client side environment. If that was the case I would opt to use requestAnimationFrame as it is a far better alternative to setInterval or setTimeout. 
+
+## 4 - Conclusion
 
 That is all for this post at least, but I would not stop there when it comes to reading more about setInterval, as well as the other options for creating an app loop. There is looking into what there is to watch on [youtube when it comes to setInterval](https://www.youtube.com/watch?v=CqDqHiamRHA&t=265s), but maybe the best option is to just start learning by doing. Come up with some of your own projects that make used of an app loop, and get to work making some of your own examples of setInterval.
