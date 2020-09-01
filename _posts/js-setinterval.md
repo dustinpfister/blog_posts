@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 11:34:16
-version: 1.15
+updated: 2020-09-01 12:12:06
+version: 1.16
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -37,7 +37,7 @@ The above example will fire the function that logs the string tick to the consol
 
 ## 2 - The clearInterval for stopping setInterval
 
-One a loop is started with setInterval it is possible to stop it by using the [clearInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) method.
+One a loop is started with setInterval it is possible to stop it by using the [clearInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) method. When calling setInterval an intervalID will be returned, this intervalID can then be passed to the ClearInterval methods as a way to stop the loop.
 
 ```js
 var t = setInterval(function () {
