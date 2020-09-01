@@ -5,15 +5,15 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-06-05 13:23:27
-version: 1.6
+updated: 2020-09-01 09:09:27
+version: 1.7
 ---
 
-Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval). It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for.
+Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
 
-The setInterval method will fire a given method after a given millisecond value has elapsed, after which point it will fire again after the given millisecond value has elapsed again, and so on. It is therefor a popular, and well known way of implementing an application loop. It can also be thought of as a starting point that can branch off into other topics such as state management, and the nature of how threading, and event loops in a javaScript environment.
+The setInterval method will fire a given method after a given millisecond value has elapsed, after which point it will fire again after the given millisecond value has elapsed again, and so on. It is therefor a popular, and well known way of implementing an application loop. It can also be thought of as a starting point that can branch off into other topics such as state management, and the nature of how threading, and event loops in a javaScript environment. However maybe it would be best to look into other options on top of setInterval before getting into any of that.
 
-There are alternatives to be aware of when it comes to setInterval such as [setTimeout](/2018/12/06/js-settimeout/) that works the same way more or less, but will just fire the given method once after a delay, rather than over and over again. However the method can be called from within the body of the method that is begin called that can result in a similar effect to the use of setInterval. In addition to setTimeout there is also requestAnimationFrame which is yet another option to work with when it comes to client side javaScript that might prove to be a better choice when it comes to canvas projects.
+So then there are alternatives to setInterval to be aware of such as [setTimeout](/2018/12/06/js-settimeout/), and [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. The setTimeout method works the same way more or less as setInterval, but will just fire the given method once after a delay. However the setTimout method can be called from within the body of the method that is begin called that can result in a similar effect to the use of setInterval. In addition to setTimeout the requestAnimationFrame is yet another options to be aware when it comes to client side javaScript that might prove to be a better choice when it comes to making canvas projects.
 
 There is also the topic of threading that often comes up when talking about setInterval, and similar methods when working with what is called a single event loop. I see lots of javaScript developers saying that javaScript is a single threaded language, I shy away from saying that because it strikes me as a bit of a half truth actually. In a modern web browser there are ways of sining up more that one event loop, which does result in more than one independent thread, but on a per process basis. So in a way it is true that javaScript is a single threaded language compared to what may be possible with other languages, but it is important to know what you mean by that. 
 
