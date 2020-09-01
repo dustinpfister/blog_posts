@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 11:09:32
-version: 1.12
+updated: 2020-09-01 11:18:23
+version: 1.13
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -34,6 +34,20 @@ setInterval(function(){
 ```
 
 The above example will fire the function that logs the string tick to the console ruffly once every second. I say ruffly because it is not always guaranteed that it will fire every one second right on the nose. The reason why is because of the nature of event loops, and javaScripts single threaded like nature, there are things that can hold things up. How ever when it comes to something very simple like this, and only this, the function should fire on time more or less. So now that we have a very basic example covered lets look at some more examples of setInteral in action.
+
+## 3 - The clearInterval for stopping setInterval
+
+One a loop is started with setInterval it is possible to stop it by using the [clearInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) method.
+
+```js
+var t = setInterval(function () {
+        console.log('tick');
+    }, 250);
+ 
+setTimeout(function () {
+    clearInterval(t);
+}, 3000);
+```
 
 ## 2 - Basic state machine example
 
