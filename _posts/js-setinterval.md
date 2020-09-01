@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 11:18:23
-version: 1.13
+updated: 2020-09-01 11:31:36
+version: 1.14
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -35,7 +35,7 @@ setInterval(function(){
 
 The above example will fire the function that logs the string tick to the console ruffly once every second. I say ruffly because it is not always guaranteed that it will fire every one second right on the nose. The reason why is because of the nature of event loops, and javaScripts single threaded like nature, there are things that can hold things up. How ever when it comes to something very simple like this, and only this, the function should fire on time more or less. So now that we have a very basic example covered lets look at some more examples of setInteral in action.
 
-## 3 - The clearInterval for stopping setInterval
+## 2 - The clearInterval for stopping setInterval
 
 One a loop is started with setInterval it is possible to stop it by using the [clearInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) method.
 
@@ -49,7 +49,40 @@ setTimeout(function () {
 }, 3000);
 ```
 
-## 2 - Basic state machine example
+## 3 - Using date objects
+
+```js
+var gameMod = {
+    create: function () {
+        return {
+            maxSecs: 1,
+            moneyPerSecond: 10,
+            money: 0
+        }
+    },
+    update: function (model, secs) {
+        secs = secs > model.maxSecs ? model.maxSecs : secs;
+        model.money += model.moneyPerSecond * secs;
+    }
+};
+ 
+var state = {
+    game: gameMod.create(),
+    lt: new Date()
+};
+ 
+var loop = function () {
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
+    gameMod.update(state.game, secs);
+    console.log(state.game.money);
+};
+ 
+setInterval(loop, 250);
+```
+
+## 4 - Basic state machine example
 
 One of the many use case examples of setInterval is as a means to get some kind of state machine up and running. Many projects will involve ruining the same code over, and over again and often that code can become somewhat complicated. Also it might change depending on the state of the application, there is code that may need to be updated each tick in a menu, and then code that will be updated only when a main game part of an application is running. So with that said if you have a strategy game, it does not make sense to have game code running when you are navigating around a map system for levels, or a main game options menu.
 
@@ -111,10 +144,10 @@ setInterval(loop, 1000);
 
 A more advanced example might include some kind of state object constructor with all kinds of methods that can be used for any given state, but you should get the basic idea. Often I do not use setInetravl in projects such as this in favor of another option that may be a better choice when it comes to not just updating a module, but also rendering in addition to that.
 
-## 3 setInterval vs requestAnimationFrame
+## 5 setInterval vs requestAnimationFrame
 
 In my examples to far I am not doing anything that involves updating a canvas, or DOM element in a client side environment. If that was the case I would opt to use requestAnimationFrame as it is a far better alternative to setInterval or setTimeout. 
 
-## 4 - Conclusion
+## 6 - Conclusion
 
 That is all for this post at least, but I would not stop there when it comes to reading more about setInterval, as well as the other options for creating an app loop. There is looking into what there is to watch on [youtube when it comes to setInterval](https://www.youtube.com/watch?v=CqDqHiamRHA&t=265s), but maybe the best option is to just start learning by doing. Come up with some of your own projects that make used of an app loop, and get to work making some of your own examples of setInterval.
