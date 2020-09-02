@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2020-06-06 20:54:46
-version: 1.19
+updated: 2020-09-02 11:46:59
+version: 1.20
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I want to find the angle from one point to another in a Cartesian coordinate grid. 
 
-So Math.atan2 is something that will come into play a lot when working out some logic for a wide range of different types of games where I am working out some kind of script where I want to find out an angle to an enemy so I know which way to rotate to, or visa versa when it comes to developing some kind of AI Script. This is just one of many possible applications for the atan2 method in javaSript so lets get started looking at some basic examples of Math atan2 in action.
+So One example of the use of the Math.atan2 is something that will come into play a lot when working out some logic for a wide range of different types of games where I am working out some kind of script where I want to find out an angle to an enemy so I know which way to rotate to, or visa versa when it comes to developing some kind of AI Script. However simply put if you have two points in a grid, and you want to know the angle from one point to the other, then the Math.atan2 method is what I would want to use to do so. So it goes without saying there are many possible applications for the atan2 method in javaSript so lets get started looking at some basic examples of Math atan2 in action, and maybe get to some additional not so basic examples while we are at it.
 
 <!-- more -->
 
