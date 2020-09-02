@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 699
-updated: 2020-09-02 15:09:57
-version: 1.1
+updated: 2020-09-02 15:20:12
+version: 1.2
 ---
 
-Time for another one of my usual [lodash](https://lodash.com/) posts this time I will touch base on the [lodash union](https://lodash.com/docs/4.17.15#union) method. Just like many lodash methods there are ways of doing the same thing that the lodash union method does with vanilla javaScriot, so I will be taking a look at [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) also.
+Time for another one of my usual [lodash](https://lodash.com/) posts this time I will touch base on the [lodash union](https://lodash.com/docs/4.17.15#union) method. Just like many lodash methods there are ways of doing the same thing that the lodash union method does with vanilla javaScriot, so I will be taking a look at [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in native javaScript also.
+
+The lodash union method is a way to create an array of unique values from one or more arrays of values. So say you have a whole bunch of arrays, but you justs want a single array of values that are not repeated then the lodash unique method can be done to do so. There are ways of doing the same with native javaScript by itself also, which is one reason why I will also be touching based on sets also when it comes to not using lodash.
 
 <!-- more -->
 
