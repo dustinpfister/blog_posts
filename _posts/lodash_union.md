@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 699
-updated: 2020-09-02 15:22:44
-version: 1.3
+updated: 2020-09-02 15:23:56
+version: 1.4
 ---
 
 Time for another one of my usual [lodash](https://lodash.com/) posts this time I will touch base on the [lodash union](https://lodash.com/docs/4.17.15#union) method. Just like many lodash methods there are ways of doing the same thing that the lodash union method does with vanilla javaScriot, so I will be taking a look at [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in native javaScript also.
@@ -30,6 +30,9 @@ console.log( _.sortBy(arr) );
 
 
 ## 2 - Vanilla javaScript set example
+
+There is more than one way to get the same result as lodash union with native javaScript but one way is to use sets.
+
 
 ```js
 let s = new Set(),
