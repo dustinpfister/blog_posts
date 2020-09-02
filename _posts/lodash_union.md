@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 699
-updated: 2020-09-02 15:20:12
-version: 1.2
+updated: 2020-09-02 15:22:44
+version: 1.3
 ---
 
 Time for another one of my usual [lodash](https://lodash.com/) posts this time I will touch base on the [lodash union](https://lodash.com/docs/4.17.15#union) method. Just like many lodash methods there are ways of doing the same thing that the lodash union method does with vanilla javaScriot, so I will be taking a look at [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in native javaScript also.
@@ -16,6 +16,8 @@ The lodash union method is a way to create an array of unique values from one or
 <!-- more -->
 
 ## 1 - basic lodash union example
+
+So a basic example of the lodash union method would be to just call the method and pass one or more arrays as arguments. The result that is returned is an array of values where only unique values are in the resulting array. In other words it is a way to omit values that repeat.
 
 ```js
 let _ = require('lodash');
