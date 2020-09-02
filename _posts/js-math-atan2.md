@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2020-09-02 11:46:59
-version: 1.20
+updated: 2020-09-02 12:11:38
+version: 1.21
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I want to find the angle from one point to another in a Cartesian coordinate grid. 
@@ -65,18 +65,25 @@ Keep in mind that the y value needs to be given first. In addition the method al
 
 ### 2.1 - Making a custom find angle method that uses Math atan2
 
-The math atan2 method could be used as part of an expression that can then be pulled into a method. That method can then be part of a framework, or just simply a single stand alone method.
+The math atan2 method could be used as part of an expression that can then be pulled into a method. That method can then be part of a framework, or just simply a single stand alone method that can be used to get the angel between two points. So in this example I am going to go with a single stand alone method that will help get the angles that I want between two points. 
+Here I have a find angle method that will take up to five arguments, the first two arguments is the point that I want an angle from that point to anther, and the next two points are the x and y values for the other point. If for some reason I want the angle from the other point I can just flip argument the arguments. So say I have a point at 50 50 and another at 75 50, by passing the point at 50 50 first I end up getting an angle of 0, however if I pass the point at 75 50 first that will of course given 180.
+
+In addition to the arguments that are used to get the angle I also added a scale argument that will default to 360. In some cases I might want to change that to some other value such as Math.PI \* 2, or any other value that reflects the scale of the circumference of a circle.
 
 ```js
+var p1 = { x: 50,y: 50 }, p2 = { x: 75, y: 50 };
 // a findAngle method that takes four arguments and returns and angle in degrees
-var findAngle = function (x1, y1, x2, y2) {
-    return ( Math.atan2(y1 - y2, x1 - x2) + Math.PI )  / Math.PI * 180;
+var findAngle = function (x1, y1, x2, y2, scale) {
+    scale = scale === undefined ? 360 : scale;
+    var radian = Math.atan2(y1 - y2, x1 - x2) + Math.PI;
+    return (radian / (Math.PI * 2) * scale ) % scale;
 };
-var a = findAngle(p1.x, p1.y, p2.x, p2.y);
-console.log(a); // 63.43
+var a = findAngle(p1.x, p1.y, p2.x, p2.y),
+b = findAngle(p2.x, p2.y, p1.x, p1.y);
+console.log(a, b); // 0 180
 ```
 
-The nature of the expression can be tweaked depending on the project. The example I worked out here returns a value in depress, but in other projects I might want radians, or some other kind of value.
+The nature of the expression can be tweaked depending on the project. When making a framework around this method I might want to make cretin changes such as making it so the method only takes three arguments which would be the case if I just directly pass the point objects rather than breaking things down for each axis. However for the most part I would say this is a pretty decent method that I would just copy and past into projects, as the basic idea would likely not change much with this when it comes to making a method like this.
 
 ## 2 - atan2 canvas example
 
