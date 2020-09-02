@@ -5,9 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2020-08-31 17:20:26
-version: 1.7
+updated: 2020-09-02 11:33:53
+version: 1.8
 ---
+
+I have wrote a post on the [array sort](/2019/12/02/js-array-sort/) method before hand, and then general idea here is to have at least a few javaScript example posts that help to show why the array sort method is useful. very basic examples are helpful, but they do not help to get people to really understand the connection between the array sort method, and something that is at least starting to look like some kind of project that is fun, interesting or useful.
 
 Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. Say you have an array of objects, and each object is a planet in some kind of game that has to do with taking over planets. Anyway there would be a lot of code that would need to be written to make a fun little planet attack game, but one feature that I would want is to have a method where I can give a position, and get a list of planets where the first planet in the list is the one that is the closest to that position.
 
