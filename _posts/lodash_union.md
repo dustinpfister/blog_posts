@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 699
-updated: 2020-09-02 15:23:56
-version: 1.4
+updated: 2020-09-02 15:26:47
+version: 1.5
 ---
 
 Time for another one of my usual [lodash](https://lodash.com/) posts this time I will touch base on the [lodash union](https://lodash.com/docs/4.17.15#union) method. Just like many lodash methods there are ways of doing the same thing that the lodash union method does with vanilla javaScriot, so I will be taking a look at [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in native javaScript also.
@@ -46,3 +46,6 @@ arr = [];
 console.log(s);
 // Set { 1, 2, 3, 6, 4, 5 }
 ```
+
+
+So that is it for now when it comes to the lodash union method, and vanilla javaScript alternatives to the lodash union method. I can not say that this is something that I end up using in actual projects just yet, but it does not hurt to play around with some of these methods now ans then, and also take a moment to look into how are it is to do the same thing with vanilla javaScritp by itself.
