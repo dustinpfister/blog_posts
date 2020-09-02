@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2020-09-02 13:01:28
-version: 1.23
+updated: 2020-09-02 14:17:55
+version: 1.24
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I want to find the angle from one point to another in a Cartesian coordinate grid. 
@@ -195,9 +195,11 @@ loop();
 
 This is a nice visual way of confirming that the math atan2 method in javaScript works as expected when one knows how to adjust for it. I have worked out many projects in which I use atan2 in games to find the direction in which I want and enemy to fire for example when working out an AI script. If I get around to it many I will expand this post in the future to help outline some additional interesting use case examples of atan2.
 
-## 3 - making a utility module with a math.atan2 powered find angle method, as well as many other helpful methods
+## 3 - Making a utility module with a math.atan2 powered find angle method, as well as many other helpful methods
 
 So having a find angle method that makes use of the Math.atan2 method to find the angle between two points is one thing. However when it comes to having a utility module that will truly be helpful in a project I would want a few more methods on top of that. Just getting an angle between two points is often just one value of interest after all, there is also the shortest angular distance from a current heading value, to that angle that will result in a unit facing that other point, and the direction to move that is that shortest angular distance. There is also plain old distance between two points, and a hold bunch of other values that I am sure will come up and I start to make a project.
+
+So here I have a more comprehensive utility library that has a getAngleTo method that makes use of Math.atan2, but also has methods that get other relevant metrics that come up in many game projects. So it contains many other the other usual suspects such as a distance formula, as well as an getAngleDistnace formula that will return the shortest angular distance from one angle to another. I also have a getShorestAngleDirection method also to find out not just the shortest angular distance, but also if movement should happen in a clock wise or counter clock wise direction to get to a target angle.
 
 ```js
 var utils = {};
