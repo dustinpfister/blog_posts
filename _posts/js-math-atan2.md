@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 404
-updated: 2020-09-02 14:19:59
-version: 1.25
+updated: 2020-09-02 14:23:22
+version: 1.26
 ---
 
 The native [Math.atan2 method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) is a [2 argument arctangent method](https://en.wikipedia.org/wiki/Atan2) in the javaScript [Math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math). The method comes in handy when I want to find the angle from one point to another in a Cartesian coordinate grid. 
@@ -296,6 +296,8 @@ console.log(metrics);
 }
 */
 ```
+
+So Math.atan2 is more or less useful for getting an angle between two points, however it is not a golden hammer for everything that has to do with angles. In my experience thus far a small collection of methods such as this will help me with most situations that I have run into thus far when it comes to working out various problems that have to do with getting an unknown angle.
 
 Much of the code here is borrowed from [angles.js](https://github.com/infusion/Angles.js/), this is a library that is sure worth checking out it as has many useful methods like these.
 
