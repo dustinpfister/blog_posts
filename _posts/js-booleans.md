@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-09-03 11:01:25
-version: 1.27
+updated: 2020-09-03 11:03:51
+version: 1.28
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method such as isArray and can happen as a result of an evaluation of an expression as well. 
@@ -17,7 +17,9 @@ A boolean is a value that only has two possible values true, or false, and as su
 
 ## 1 - js booleans and what to know before hand
 
-This is not a getting started post on javaScript, in this post I am writing just about booleans and how they are used with programming tasks with javaScript. If you are new to javaScript you might want to start with my [getting started post on javaScript](/2018/11/27/js-getting-started/).
+This is not a getting started post on javaScript, in this post I am writing just about booleans and how they are used with programming tasks with javaScript. If you are new to javaScript you might want to start with my [getting started post on javaScript](/2018/11/27/js-getting-started/). 
+
+Also if you are not so new to javaScript but are still not sure that you are ware of every little tip and tick surrounding boolean values in javaScript this post might still be of value to you.
 
 ## 2 - A Boolean literal
 
