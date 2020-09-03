@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-09-03 11:03:51
-version: 1.28
+updated: 2020-09-03 11:08:55
+version: 1.29
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method such as isArray and can happen as a result of an evaluation of an expression as well. 
@@ -23,7 +23,9 @@ Also if you are not so new to javaScript but are still not sure that you are war
 
 ## 2 - A Boolean literal
 
-For the most part if I want to set a boolean value I just set it using a literal. When it comes to creating a boolean value by way of a literal then true and false boolean literals can be used do do just this. For this example I have a boolean called firstRun that is set to true, I then also have a loop that will fire once every second by way of using [setTimeout](/2018/12/06/js-settimeout/) to delay the next call of the method. The first time that the loop fires, a 'first run' message will log to the console, and the firstRun boolean will set back to false. Because I am using the firstRun boolean in an if statement, the 'first run' message will only fire once.
+For the most part if I want to set a boolean value I just set it using a boolean literal. When it comes to creating a boolean value by way of a literal then the true and false boolean literal keywords can be used do do just this. 
+
+For this example I have a boolean called firstRun that is set to true for starters, I then also have a loop that will fire once every second by way of using [setTimeout](/2018/12/06/js-settimeout/) to delay the next call of the method. The first time that the loop fires, a 'first run' message will log to the console, and the firstRun boolean will set back to false. Because I am using the firstRun boolean in an if statement, the 'first run' message will only fire once.
 
 ```js
 var firstRun = true;
@@ -41,6 +43,8 @@ var loop = function () {
 }
 loop();
 ```
+
+This might not be the best way to go about doing something like this as a better approach would be to have a completely separate method for doing anything that needs to happened during the first run of something. However that is a matter for another post, the goal here was to just demonstrate
 
 So literals are one way to end up with a boolean value, that is by just simply setting it to a variable with one of these true or false keywords. There are however several other ways to end up with a boolean value, for example they are often the result of expressions, and function calls. Also it might help to just look over a few more examples of booleans anyway so lets continue with this.
 
