@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 13:30:56
-version: 1.4
+updated: 2020-09-03 13:32:42
+version: 1.5
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -53,6 +53,8 @@ console.log(b.join());
 ```
 
 ## 2 - Nested Objects
+
+Now that I have covered how to make a shallow copy of an array in javaScript lets get into some examples that involve not just copying an array, but the nested objects of the array also.
 
 ### 2.1 The problem with using slice or any shallow clone method
 
