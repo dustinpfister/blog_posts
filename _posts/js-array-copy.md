@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 13:32:42
-version: 1.5
+updated: 2020-09-03 16:29:04
+version: 1.6
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -38,7 +38,28 @@ console.log(b.join());
 
 So then a salutation to this would be finding a way to preform what is often called a shallow clone, or a deep clone in the event of an array of arrays, or any amount of nested objects that would also need to be copied. For starters lets look at at some ways to create a shallow clone that will work fine when it comes to a simple array of primitive values such as in this above example.
 
-### 1.2 - Using the array slice method
+### 1.2 - Just create a new array and add the elements from the source array
+
+Just get it done any way possible and move on right? Sure thing with that said one way to go about copying an array is to just create a new array, and just loop over the contents of the source array and add each of the source array elements into the new array.
+
+```js
+var a = [1, 2, 3, 4],
+// just make a new array
+b = new Array();
+// and add all the elements from the source array
+a.forEach(function (n, i) {
+    b[i] = n;
+});
+a[0] = 'a';
+console.log(a.join());
+// 'a,2,3,4'
+console.log(b.join());
+// '1,2,3,4'
+```
+
+This crude yet effective way of copying an array will work just fine with arrays with primitive values. However mayeb it would still be a good idea to look into some additional options for marking a shallow copy of an array.
+
+### 1.3 - Using the array slice method
 
 One way to create a shallow clone or copy of an array would be to use the array slice method which will return a new array, with elements between a starting and ending index. If I give the value of zero for the first argument to array slice, and the length of the array as the second argument that should return a new array with all the values from the original source array.
 
