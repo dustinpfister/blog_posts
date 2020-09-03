@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 16:42:35
-version: 1.9
+updated: 2020-09-03 16:46:55
+version: 1.10
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -204,4 +204,4 @@ console.log(b[1]);
 
 ## 3 - Conclusion
 
-So this was just a quick post on how to go about copying an array in javaScript. However because arrays are a kind of object some of these methods can be used to copy, or clone objects in general.
+So this was just a quick post on how to go about copying an array in javaScript. However because arrays are a kind of object some of these methods can be used to copy, or clone objects in general. I have wrote posts a while back on the [lodash clone](/2017/10/02/lodash_clone) and [lodash clone deep](/2017/11/13/lodash_clonedeep/) methods, as well as cloning in general that might be worth checkout otu when it comes to reading more about cloning arrays and objects in general for that matter.
