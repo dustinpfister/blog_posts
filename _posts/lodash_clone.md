@@ -5,11 +5,17 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2020-09-03 16:55:38
-version: 1.14
+updated: 2020-09-03 17:02:25
+version: 1.15
 ---
 
-When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding object such as the prototype chain and circular references. In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but there is poor browser support. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. So there are many options in lodash when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method might be a good starting point at least. It is a useful method that is useful in [lodash](https://lodash.com/) to help allow for better browser support with cloning.
+When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding objects when making copies of them such as the prototype chain and circular references. 
+
+In native javaScript there is the [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method, but browest support for Object.assign only goes back so far, and it is only helpful for making shallow clones of objects. Also Object.assign will not work out so great in some cases when it comes to deep cloning of objects. 
+
+So there are many options in [lodash](https://lodash.com/) when it comes to copying objects as such the lodash [\_.clone](https://lodash.com/docs/4.17.4#clone) method which might be a good starting point at least when it comes to getting started with researching what the options are when it comes to using lodash as part of a project. The draw back with the lodash clone method is that it can only be used to make shallow clones, but sometimes just a shallow clone will work just fine, and it is nice to have a quick method at the ready to make a shallow clone and move on to more important things with a project.
+
+So in this post I will be taking a quick look at the lodash clone method, as well as some other options for making shallow clones using lodash.
 
 <!-- more -->
 
