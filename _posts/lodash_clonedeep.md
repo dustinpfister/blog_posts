@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 88
-updated: 2019-11-03 11:26:33
-version: 1.3
+updated: 2020-09-03 16:50:51
+version: 1.4
 ---
 
 The issue with deep cloning objects in javaScript comes up now and then. Maybe one day I will write a full post on the matter, and all the ways to go about doing it. However this is a post on [lodash](https://lodash.com/), and as such I will just be writing about the [\_.cloneDeep](https://lodash.com/docs/4.17.4#cloneDeep) method. I have wrote a post on the lodash clone method before which is okay for shallow copy clones of objects, but if I want to copy nested objects as well the [lodash clone](/2017/10/02/lodash_clone/) deep method should be used, or some other means to make a so called deep copy clone of an object.
@@ -130,4 +130,4 @@ Sure there are plenty of other ways to shallow and deep clone objects in javaScr
 var copy = JSON.parse(JSON.stringify(obj));
 ```
 
-Also when it comes to the new ES2015+ standards there is plenty more to cover with this, but this is just one of my lodash posts, so that is another ball of wax.
+Also when it comes to the new ES2015+ standards there is plenty more to cover with this, but this is just one of my lodash posts, so that is another ball of wax. When it comes to [cloning arrays with javaScript by itself](/2020/09/03/js-array-copy/) I wrote a post on just that if you want to read more about cloning arrays, and objects in general with just native javaScript by itself.
