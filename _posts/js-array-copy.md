@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 17:12:42
-version: 1.11
+updated: 2020-09-03 17:17:57
+version: 1.12
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -78,9 +78,18 @@ console.log(b.join());
 In some cases I see people recommending the Array.from method as a way to make a copy of an array. This will work okay as yet another option for just making shallow copies of an array. That is it will work with an array of numbers, strings, booleans and so forth, but not objects including other arrays.
 
 ```js
-
+// Array.from will work fine if making a shallow clone
+var a = [1,2,3,4],
+b = Array.from(a);
+ 
+a[0] = 'a';
+console.log(a);
+// [ 'a', 2, 3, 4 ]
+console.log(b);
+// [ 1, 2, 3, 4 ]
+ 
 // Array.from is only good for making a shallow copy
-var a = [{x:40},{x:50},{x:60}],
+a = [{x:40},{x:50},{x:60}];
 b = Array.from(a);
 a[0].x = 0;
 console.log(a);
