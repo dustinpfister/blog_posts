@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 699
-updated: 2020-09-02 15:26:47
-version: 1.5
+updated: 2020-09-03 08:32:25
+version: 1.6
 ---
 
 Time for another one of my usual [lodash](https://lodash.com/) posts this time I will touch base on the [lodash union](https://lodash.com/docs/4.17.15#union) method. Just like many lodash methods there are ways of doing the same thing that the lodash union method does with vanilla javaScriot, so I will be taking a look at [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in native javaScript also.
@@ -31,7 +31,7 @@ console.log( _.sortBy(arr) );
 
 ## 2 - Vanilla javaScript set example
 
-There is more than one way to get the same result as lodash union with native javaScript but one way is to use sets.
+There is more than one way to get the same result as lodash union with native javaScript by itself, one way to do so is to use sets. A Set is a native constructor that allows for the creation of a set of unique values of any type. The trick though is that the add prototype method of the Set constructor will only take one value at a time as an array is a type that can be a value. So I would just need to find a way to add each element of each array if I am dealing with a bunch of arrays, and I want each element of these arrays to be treated as a potential unique value rather than the arrays themselves.
 
 
 ```js
@@ -47,5 +47,6 @@ console.log(s);
 // Set { 1, 2, 3, 6, 4, 5 }
 ```
 
+## 3 - Conclusion
 
 So that is it for now when it comes to the lodash union method, and vanilla javaScript alternatives to the lodash union method. I can not say that this is something that I end up using in actual projects just yet, but it does not hurt to play around with some of these methods now ans then, and also take a moment to look into how are it is to do the same thing with vanilla javaScritp by itself.
