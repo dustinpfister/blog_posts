@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 17:17:57
-version: 1.12
+updated: 2020-09-03 17:25:20
+version: 1.13
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -91,6 +91,56 @@ console.log(b);
 // Array.from is only good for making a shallow copy
 a = [{x:40},{x:50},{x:60}];
 b = Array.from(a);
+a[0].x = 0;
+console.log(a);
+// [ { x: 0 }, { x: 50 }, { x: 60 } ]
+console.log(b);
+// [ { x: 0 }, { x: 50 }, { x: 60 } ]
+```
+
+### 1.5 - Object.assign
+
+The Object.assign method will come up a lot in discussions, it to is anther optiosn for makig a shallow clone of an array.
+
+```js
+// Object.assign  will work fine if making a shallow clone
+let a = [1,2,3,4],
+b = Object.assign([], a);
+ 
+a[0] = 'a';
+console.log(a);
+// [ 'a', 2, 3, 4 ]
+console.log(b);
+// [ 1, 2, 3, 4 ]
+ 
+// However Object.assign will not work well for making a deep clone
+a = [{x:40},{x:50},{x:60}];
+b = Object.assign([], a);
+a[0].x = 0;
+console.log(a);
+// [ { x: 0 }, { x: 50 }, { x: 60 } ]
+console.log(b);
+// [ { x: 0 }, { x: 50 }, { x: 60 } ]
+```
+
+### 1.6 - The Spread syntax
+
+A new javaScript feature in late javaScript specs is the spread operator syntax. This is yet another way to make a shallow copy of an array.
+
+```js
+// Spread syntax (...)  will work fine if making a shallow clone
+let a = [1,2,3,4],
+b = [...a];
+
+a[0] = 'a';
+console.log(a);
+// [ 'a', 2, 3, 4 ]
+console.log(b);
+// [ 1, 2, 3, 4 ]
+ 
+// However the Spread syntax (...)  will not work well for making a deep clone
+a = [{x:40},{x:50},{x:60}];
+b = [...a];
 a[0].x = 0;
 console.log(a);
 // [ { x: 0 }, { x: 50 }, { x: 60 } ]
