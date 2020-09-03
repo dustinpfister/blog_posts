@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 16:46:55
-version: 1.10
+updated: 2020-09-03 17:12:42
+version: 1.11
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -15,7 +15,7 @@ So to copy an array one of several tricks for doing so will need to be used to d
 
 <!-- more -->
 
-## 1 - js array copy basics
+## 1 - js array copy basics and shallow copying of arrays
 
 In this section I will be touching base on the problem that many new javaScript developers might run into when trying to copy an array for the first time. In addition I will be going over a few solutions that will work okay as long as we are talking about an array of primitive values like numbers, and strings. Things can get a little involved when it comes to copying an array of nested objects, so that I will be getting to in a later section.
 
@@ -71,6 +71,22 @@ console.log(a.join());
 // 'a,2,3,4'
 console.log(b.join());
 // '1,2,3,4'
+```
+
+### 1.4 - Array.from
+
+In some cases I see people recommending the Array.from method as a way to make a copy of an array. This will work okay as yet another option for just making shallow copies of an array. That is it will work with an array of numbers, strings, booleans and so forth, but not objects including other arrays.
+
+```js
+
+// Array.from is only good for making a shallow copy
+var a = [{x:40},{x:50},{x:60}],
+b = Array.from(a);
+a[0].x = 0;
+console.log(a);
+// [ { x: 0 }, { x: 50 }, { x: 60 } ]
+console.log(b);
+// [ { x: 0 }, { x: 50 }, { x: 60 } ]
 ```
 
 ## 2 - Nested Objects
