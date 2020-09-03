@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-09-03 11:11:17
-version: 1.30
+updated: 2020-09-03 12:49:40
+version: 1.31
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method such as isArray and can happen as a result of an evaluation of an expression as well. 
@@ -119,6 +119,6 @@ var a = Boolean(null); // false
 
 I do not use this as well, because the !! operator works just fine to get such a task done. Still the Boolean Object is something to be aware of as it is often used in examples.
 
-## 5 - Conclsuion
+## 5 - Conclusion
 
 So hopefully this post helped you with some of the basics of boolean values in javaScript. There is much more to learn when it comes to the use of Boolean values though, the bulk of which is only gained by experience I would say. Just keep working on projects, learning by doing is by far the best way to learn.
