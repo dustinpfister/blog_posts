@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 16:39:04
-version: 1.8
+updated: 2020-09-03 16:42:35
+version: 1.9
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -139,7 +139,11 @@ console.log(a[3].i); // 4
 console.log(b[3].i); // 16
 ```
 
+The result is not just a new array, but new objects for each element also, not just references.
+
 ### 2.3 - Using JSON to Deep clone
+
+Another crude yet effective deep clone trick is to use JSON.stringify to convert a whole object such as an array as well as all nested objects into a JSON string. Then I can just use the JSON.parse method to parse that string back into a workable object. In most cases this will work when dealing with plain old objects like this, and it will even work as a deep clone method for many levels of nested objects also.
 
 ```js
 var a = [{
