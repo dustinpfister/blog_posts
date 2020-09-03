@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2020-09-03 11:08:55
-version: 1.29
+updated: 2020-09-03 11:11:17
+version: 1.30
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method such as isArray and can happen as a result of an evaluation of an expression as well. 
@@ -44,7 +44,7 @@ var loop = function () {
 loop();
 ```
 
-This might not be the best way to go about doing something like this as a better approach would be to have a completely separate method for doing anything that needs to happened during the first run of something. However that is a matter for another post, the goal here was to just demonstrate
+This might not be the best way to go about doing something like this as a better approach would be to have a completely separate method for doing anything that needs to happened during the first run of something. However that is a matter for another post, the goal here was to just demonstrate a use case for a boolean.
 
 So literals are one way to end up with a boolean value, that is by just simply setting it to a variable with one of these true or false keywords. There are however several other ways to end up with a boolean value, for example they are often the result of expressions, and function calls. Also it might help to just look over a few more examples of booleans anyway so lets continue with this.
 
