@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 17:25:20
-version: 1.13
+updated: 2020-09-03 17:28:34
+version: 1.14
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -61,7 +61,7 @@ This crude yet effective way of copying an array will work just fine with arrays
 
 ### 1.3 - Using the array slice method
 
-One way to create a shallow clone or copy of an array would be to use the array slice method which will return a new array, with elements between a starting and ending index. If I give the value of zero for the first argument to array slice, and the length of the array as the second argument that should return a new array with all the values from the original source array.
+One way to create a [shallow clone or copy of an array would be to use the array slice method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) which will return a new array, with elements between a starting and ending index. If I give the value of zero for the first argument to array slice, and the length of the array as the second argument that should return a new array with all the values from the original source array.
 
 ```js
 var a = [1, 2, 3, 4],
