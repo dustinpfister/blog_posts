@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 16:34:37
-version: 1.7
+updated: 2020-09-03 16:39:04
+version: 1.8
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -108,6 +108,8 @@ console.log(b[0]); // 42
 This is where it becomes necessary to do something that can be called deep cloning of an object or array. In these situations I often do not just want to copy the array itself, but also make copies of any and all nested objects in the array that are part of the arrays contents.
 
 ### 2.2 - Using map to create a new array, and objects
+
+If I am dealing with an array of objects, and each array is just a shallow object that does not have any additional nested objects in each element, then it would not be to hard to just use something like the array map method. I could call the map method off of the source array, and then return a new object in the body of the method that I pass to array map. Like the array slice method the array mao will return a new array rather than mutating an array in place. On top of that I can returned whole new objects when it comes to defining the produce that is return for each element in the source array.
 
 ```js
 var a = [{
