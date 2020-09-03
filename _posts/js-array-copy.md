@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 13:18:24
-version: 1.1
+updated: 2020-09-03 13:21:17
+version: 1.2
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -16,6 +16,8 @@ So to copy an array one of several tricks for doing so will need to be used to d
 <!-- more -->
 
 ## 1 - js array copy basics
+
+In this section I will be touching base on the problem that many new javaScript developers might run into when trying to copy an array for the first time. In addition I will be going over a few solutions that will work okay as long as we are talking about an array of primitive values like numbers, and strings. Things can get a little involved when it comes to copying an array of nested objects, so that I will be getting to in a later section.
 
 ### 1.1 - The Problem with using assignment
 
