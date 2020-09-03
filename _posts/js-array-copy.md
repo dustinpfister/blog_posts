@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2020-09-03 13:21:17
-version: 1.2
+updated: 2020-09-03 13:28:29
+version: 1.3
 ---
 
 So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -21,11 +21,13 @@ In this section I will be touching base on the problem that many new javaScript 
 
 ### 1.1 - The Problem with using assignment
 
+When trying to copy an array for the first time many new developers might just try to assign an array value from one variable to another. The expectation might be that arrays can be copied in the same way as one might have grown accustomed to when it comes to primitive values like numbers and strings. However when trying to copy an array like this all that is happening is that the developer is creating a new reference to the same array, and not copying, or cloning if you prefer, a new array.
+
 ```js
 // and array of numbers
 var a = [1, 2, 3, 4],
 // just assigning a to b will just create a new
-// refernce to the same array
+// reference to the same array
 b = a;
  
 // so then a change to a will effect b
@@ -33,6 +35,8 @@ a[0] = 'a';
 console.log(b.join());
 // a,2,3,4
 ```
+
+So then a salutation to this would be finding a way to preform what is often called a shallow clone, or a deep clone in the event of an array of arrays, or any amount of nested objects that would also need to be copied. For starters lets look at at some ways to create a shallow clone that will work fine when it comes to a simple array of primitive values such as in this above example.
 
 ### 1.2 - Using the array slice method
 
