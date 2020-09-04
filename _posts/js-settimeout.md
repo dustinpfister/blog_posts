@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2020-09-04 10:10:57
-version: 1.19
+updated: 2020-09-04 10:17:23
+version: 1.20
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method. 
@@ -19,11 +19,11 @@ It might not be the best option in all situations, often it might be better to u
 
 ## 2 - Some setTimeout basic examples
 
-I enjoy the process of learning by doing. In this section I will be covering some basic use case examples of setTimeout. The basic idea is not that hard, just call the method, and pass the method that is to be called after a set amount of time as the first argument, followed by the amount of time in milliseconds. The function is then called once the set amount of time passes, and that is basically all there is to it. Of course there is more to it than just that in many different use case examples, but I will be getting getting to all that later in this post.
+I enjoy the process of learning by doing rather than by other means, and I think that learning by doing might be the best options for getting a knowledge of something solid. In this section I will be covering some basic use case examples of setTimeout. The basic idea is not that hard, just call the method, and pass the method that is to be called after a set amount of time as the first argument, followed by the amount of time in milliseconds. The function is then called once the set amount of time passes, and that is basically all there is to it. Of course there is more to it than just that in many different use case examples, but I will be getting getting to some of that later in this post.
 
-### 2.1 - Delay the call of a function
+### 2.1 - Delay the call of a function with setTimeout
 
-So to just simple delay the call of a function I just need to pass the function and the amount of time like this.
+So to just simple delay the call of a function I just need to pass the function and the amount of time when calling setTimeout like this.
 
 ```js
 var func = function(){
@@ -34,7 +34,7 @@ var func = function(){
 setTimeout(func,3000);
 ```
 
-It is not a sure thing that the function will call in exactly three seconds though. If there is something else going on that will hold things up it can take longer. The reason why is the javaScript is generally regarded as signal threaded environment, unless you take advantage of a clever way to get around that somehow, but that is all a mater for another post.
+It is not a sure thing that the function will call in exactly three seconds though. If there is something else going on that will hold things up it can take longer. The reason why is that javaScript is generally regarded as signal threaded programing environment, unless you take advantage of a clever way to get around that somehow. The use of setTimeout still works in the same single event loop just like all the other code that might be going on in that single event loop. The use of setTimeout alone will not create a new Event loop for you, there are ways of doing that though, just not with setTimeout alone.
 
 ### 2.2 - A basic loop
 
