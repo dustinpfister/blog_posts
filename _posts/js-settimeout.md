@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2020-09-04 11:45:14
-version: 1.25
+updated: 2020-09-04 11:53:46
+version: 1.26
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method. 
@@ -124,7 +124,7 @@ When I run this the money value steps at a fairly fast rate as expected, but onc
 
 ## 3 - Change over time example of setTimeout
 
-In a post like this I think that it is impotent to write about making a simple project that shows updating a state object over time rather than just stepping things by a fixed delta value.
+In a post like this I think that it is impotent to write about making a simple project that shows updating a state object over time rather than just stepping things by a fixed delta value. In oe of the basic examples of setTimeout in this post where I was just going over a basic app loop example of setTimeout I was stepping a value by a fixed delta amount each time the function that is passed to setTimeout fires. This is not always such a great idea because as a project grows in size the amount of time it takes to run a long block of code by change a little from one client system to another. There are other factors of concern that might be going on with the project, or on the page that the code might be running that can change the rate at which things update. So a better solution is to not update things by way of a fixed delta value, but a value that is multiplied by the amount of time that has passed sense the last update. In this section I will be going over a simple javaScript example that will show what I mean by this.
 
 ```html
 <html>
