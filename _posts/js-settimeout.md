@@ -5,11 +5,15 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2020-06-07 07:30:23
-version: 1.18
+updated: 2020-09-04 10:10:57
+version: 1.19
 ---
 
-When writing a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop. There are a number of ways to go about doing this, but for this post I will be mainly writing about [settimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout). This method can be used to delay the calling of a function, or setting up a situation in which a function keeps getting called over and over again at a certain rate. It might not be the best option in all situations, often it might be better to use [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) these days. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for.
+When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method. 
+
+The setTimeout method can be used to delay the calling of a function, that is I can call the setTimeout method, pass a function as the first argument, an amount of time in milliseconds as the second argument, and the result is that the function that I passed as the first argument will fire when an amount of time greater than or equal to the amount of time I passed has elapsed. The setTimeout method is one option for setting up a situation in which a function keeps getting called over and over again at a certain rate by placing setTimeout in the function that will be called by setTimeout. 
+
+It might not be the best option in all situations, often it might be better to use [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) these days in front end javaScript. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for in certain situations in which requestAnimationFrame is not an option.
 
 <!-- more -->
 
