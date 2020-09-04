@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2020-09-04 10:17:23
-version: 1.20
+updated: 2020-09-04 10:24:29
+version: 1.21
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method. 
@@ -38,7 +38,7 @@ It is not a sure thing that the function will call in exactly three seconds thou
 
 ### 2.2 - A basic loop
 
-To put together a basic loop all I need to do is call the setTimeout in the body of the method that I pass to setTimeout resulting in a kind of [recursion](https://en.wikipedia.org/wiki/Recursion). In many projects it is necessary to define this kind of function to have a situation in which some kind of state is updated on each frame tick.
+To put together a basic loop all I need to do is call the setTimeout method in the body of the method that I pass to setTimeout resulting in a kind of [recursion](https://en.wikipedia.org/wiki/Recursion). In many projects it is necessary to define this kind of function to have a situation in which some kind of state is updated on each frame tick.
 
 ```js
 var x = 0;
@@ -56,7 +56,7 @@ var loop = function () {
 loop();
 ```
 
-So setTimeout may not be the best solution for this kind of situation though compares to alternatives such as requestAnimationFrame. However there are a few situations in which I would want to use setTimeout still, more on that later.
+So in this example I am just stepping an x variable by a static delta value each time the loop function is called by setTimeout which should be roughly every 30 milliseconds. This might be a good starting point when it comes to getting the basic idea of what a main app loop is for a project, but when it comes to making a real project this kind of approach might not be the best way to go about doing so. The amount of time that passes might nto always be 30 milliseconds here, that is the main reason why I say that, on top of other reasons why. However I just wanted to cover a basic example of an app loop here in this section, I will be getting to some more advanced examples of setTimeout later.
 
 ### 2.3 - clearTimeout
 
