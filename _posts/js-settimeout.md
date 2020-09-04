@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2020-09-04 11:10:48
-version: 1.24
+updated: 2020-09-04 11:45:14
+version: 1.25
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method. 
@@ -122,6 +122,59 @@ loop();
 
 When I run this the money value steps at a fairly fast rate as expected, but once I switch tabs it slows down to a rate of about one frame tick per second in  chrome 70.x. Although the rate at which setTimeout runs is slowed down, it does still run, unlike with requestAnimationFrame. Still because of this nature I will want to design my code accordingly. As such in this example I should step money at a perSecondRate and find out the about of time that elapses each second.
 
-## 3 - Conclusion
+## 3 - Change over time example of setTimeout
+
+In a post like this I think that it is impotent to write about making a simple project that shows updating a state object over time rather than just stepping things by a fixed delta value.
+
+```html
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+<div id="out"></div>
+<script>
+// create a state object
+var state = {
+    container: document.getElementById('out'),
+    secs: 0,
+    secsMax: 0.5,
+    money: 0,
+    moneyPerSecond: 0.25,
+    lt: new Date()
+};
+// update the state
+var update = function(state, secs){
+    state.secs = secs;
+    if(state.secs <= state.secsMax){
+        state.money += state.moneyPerSecond * state.secs;
+    }
+};
+// render the state
+var logToTitle = function (mess) {
+    document.title = mess;
+};
+var render = function(state){
+    var str_money = '$' + state.money.toFixed(2);
+    state.container.innerHTML = str_money + ' : ' + state.secs;
+    logToTitle(str_money);
+};
+// The App loop using setTimeout
+var loop = function (t) {
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
+    setTimeout(loop, 33);
+    update(state, secs);
+    render(state);
+    state.lt = now;
+};
+loop();
+</script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So the javaScript settimeout method is one way to delay the calling of a method, and can be used in the body of that method as a way to call it over and over again. So in other words it is a way to create a sort of main app loop, or thread. Using settimeout is by no means the only tool in the toolbox when it comes to setting up this kind of loop. There are several other options such as setinterval, and requestAnimationFrame, but the topic goes beyond that. When using any of these methods in a single event loop that is not the same thing as using them in a collection of event loops when it comes to things like webworker, or the cluster module in nodejs. However all of that is a matter for another post.
