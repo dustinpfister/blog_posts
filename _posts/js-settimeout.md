@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2020-09-04 10:24:29
-version: 1.21
+updated: 2020-09-04 10:26:04
+version: 1.22
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method. 
@@ -60,7 +60,7 @@ So in this example I am just stepping an x variable by a static delta value each
 
 ### 2.3 - clearTimeout
 
-If I want to stop setTimeout from continuing there is clearTiemout as well. To use it I just need to pass the timeoutID returned by setTimeout to clearTimeout.
+If I want to stop setTimeout from continuing there is the clearTiemout method that can be used to do so. To use it I just need to pass the timeoutID returned when calling setTimeout to clearTimeout as the first argument.
 
 ```js
 var x = 0, t;
