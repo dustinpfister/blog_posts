@@ -5,15 +5,15 @@ tags: [js,node.js,JSON,blog,hexo]
 layout: post
 categories: hexo
 id: 22
-updated: 2017-09-30 18:37:20
-version: 1.4
+updated: 2020-09-07 12:38:20
+version: 1.5
 ---
 
-I have [written a post](/2017/02/13/hexo-readfile/) on [hexo.io](https://hexo.io/) that outlines how to go about making a hexo tag that gets data from an async file read. Sometimes I might want to write a tag that gets data that is to be used to generate content in a page by way of an async http request.
+I have [written a post](/2017/02/13/hexo-readfile/) on [hexo.io](https://hexo.io/) that outlines how to go about making a hexo tag that gets data from an async file read. Sometimes I might want to write a tag that gets data that is to be used to generate content in a page by way of an async http request. In this post I will be outline how I found a way to go about doing just that. However lately I have found that this is somthing that I should try to avoid doig actually. In think that hexo should just be used to build from a source folder, and maybe not have much to do with genearting that source.
 
 <!-- more -->
 
-## Is it a good Idea
+## 1 - Is it a good Idea
 
 I am on the fence with this. As of late I like the idea of having separate scripts that can be used to update the actual text of my markdown files, rather than writing a hexo tag. Still I have not yet found, or developed a decent software solution for maintaining a large collection of markdown files. For now it would seem that this approach works okay.
 
@@ -117,10 +117,6 @@ hexo.extend.tag.register('mytags_fixer', function (args) {
 
 So I am just registering a [hexo tag](/2017/02/04/hexo-tags/), the only difference is that it is going to have to be an async tag because of the latency with making the request.
 
-## The result of the tag use
+## 2 - conclusion
 
-{% mytags_fixer %}
-
-## conclusion
-
-Be sure to check out my other posts on [hexo](/categories/hexo/)
+That is it for now be sure to check out my other posts on [hexo](/categories/hexo/)
