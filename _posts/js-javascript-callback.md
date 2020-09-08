@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2020-06-07 11:04:17
-version: 1.15
+updated: 2020-09-08 14:22:44
+version: 1.16
 ---
 
-In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute later on. On top of that it can also seems link it is used as an umbrella term for any function that is passed as an argument to another function that is used at some point or place inside the body of that outer function that is called. So there might be some overlap here with other terms that might come up such as [higher order functions, and closures](/2019/02/22/js-javaScript-closure/).
+In [javaScript callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are often used as a way to define some logic that is to execute at some point later on rather than right at the moment. On top of that it also seems like it is used as an umbrella term for any function that is passed as an argument to another function that is used at some point or place inside the body of that outer function that is called. So there might be some overlap here with other terms that might come up such as [higher order functions, and closures](/2019/02/22/js-javaScript-closure/).
 
-JavaScript callbacks are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth chances are you will be encountering at least one or tow callbacks now and then so it is important to know a thing or two about them.
+JavaScript callbacks are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth I often encounter callbacks now and then so it is important to know a thing or two about them. In addition it is important to be aware of the drawbacks that callbacks often present, and why other options such as promises might prove to be a better option. So i this post I will be taking a quick looks at some callback examples.
 
 <!-- more -->
 
