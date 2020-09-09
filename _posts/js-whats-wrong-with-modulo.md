@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-09-09 15:09:28
-version: 1.16
+updated: 2020-09-09 15:14:17
+version: 1.17
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division operation between two numbers.
@@ -45,7 +45,7 @@ So then the javaScript modulo will work okay when it comes to example such as th
 
 ## 2 - The Negative Number problem with javaScript modulo
 
-Say you have a spinner in a game that is used to find the number of spaces a player moves, like in many board games. In can be spin forwards, but also backwards, and should always reflect a certain number within a range, say 1 to 6.
+Say you have a spinner in a game that is used to find the number of spaces a player moves, like in many board games. A spinner can be spin forwards, but also backwards, and should always reflect a certain number within a range, such as say 1 to 6. In these kinds of situations I would have a pointer value that would be a value that represents the current section on the spinner. If I add to that pointer value then there should be no problem when it comes to using the javaScript modulo operator to get the remainder and use that as a way to loop back around again with the pointer value. However A problem might come up when it comes to using javaScript modulo to do the same when it comes to subtracting from that pointer value and ending up with a negative value for the pointer value that is then used with javaScript modulo.
 
 As such say you put together something like this:
 
