@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-09-09 15:07:16
-version: 1.15
+updated: 2020-09-09 15:09:28
+version: 1.16
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division operation between two numbers.
@@ -41,8 +41,7 @@ x = i % width; // what remains when diving by width
 console.log(x + ',' + y); // 3,1
 ```
 
-However when starting to work with negative numbers, this is where a result that is not expected might occur.
-
+So then the javaScript modulo will work okay when it comes to example such as this where positive numbers are always what will be used. However the operator might not get the values that one might want when it comes to something that might involve numbers that will go in a negative range.
 
 ## 2 - The Negative Number problem with javaScript modulo
 
