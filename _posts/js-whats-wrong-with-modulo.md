@@ -5,13 +5,13 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-06-07 11:22:38
-version: 1.11
+updated: 2020-09-09 14:58:01
+version: 1.12
 ---
 
-When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division between two numbers.
+When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division operation between two numbers.
 
-Most of the time the javaScript modulo operator does work as expected just fine, however it follow a certain convention that might not be the same as some people might expect coming from other programing environments. This might not always be such a bad this, but it can be when it produces different results for the same operation with the same values when it comes to negative numbers. This raises the question what is wrong with the javaScript Modulo operator? Well nothing actually, yet something, in any case maybe this post will help.
+Most of the time the javaScript modulo operator will work as expected just fine, however it follow a certain convention that might not be the same as some people might expect coming from other programing environments. This might not always be such a bad thing, but it can be when it produces different results for the same operation with the same values when compared to other ways of preforming a modulo operation. With javaScript modulo it is possible that you might run into problems when it comes to using the operator with negative numbers, and this might prompted a need for some other way to go about getting the remainder of two numbers. This raises the question what is wrong with the javaScript Modulo operator? Well nothing actually, yet something, in any case maybe this post might help to clear up some of the confusion.
 
 
 <!-- more -->
