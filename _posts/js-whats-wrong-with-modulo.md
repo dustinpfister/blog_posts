@@ -5,20 +5,19 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-09-09 14:58:01
-version: 1.12
+updated: 2020-09-09 15:01:11
+version: 1.13
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division operation between two numbers.
 
 Most of the time the javaScript modulo operator will work as expected just fine, however it follow a certain convention that might not be the same as some people might expect coming from other programing environments. This might not always be such a bad thing, but it can be when it produces different results for the same operation with the same values when compared to other ways of preforming a modulo operation. With javaScript modulo it is possible that you might run into problems when it comes to using the operator with negative numbers, and this might prompted a need for some other way to go about getting the remainder of two numbers. This raises the question what is wrong with the javaScript Modulo operator? Well nothing actually, yet something, in any case maybe this post might help to clear up some of the confusion.
 
-
 <!-- more -->
 
 ## 1 - javaScript modulo and some examples of it in action
 
-In short the modulo operation is used to find the remainder of a division operation, and for the most part that is how the modulo operation works in javaScript. However there is more than one convention, and sometimes javaScripts modulo operator will not work as expected. In this section I will be going over a few quick basic examples of the modulo operator when working with positive numbers. As long as both numbers in an operation are positive then the built in javaScript modulo operator will work as I, and I am sure many others would expect. If you are more interested in reading about what happens with negative numbers then maybe you would prefer to skip this section.
+In short the modulo operation is used to find the remainder of a division operation, and for the most part the modulo operator will do just that and thus work as expected. However there is more than one convention, and sometimes javaScripts modulo operator will not work the way that one might want it to. In this section I will be going over a few quick basic examples of the modulo operator when working with positive numbers. As long as both numbers in an operation are positive then the built in javaScript modulo operator will work as I, and I am sure many others, would expect modulo to work. If you are more interested in reading about what happens with negative numbers then maybe you would prefer to skip this section, as this section is geared more for the basics of what modulo is all about for beginners mainly.
 
 ### 1.1 - A simple module example showing order of operations of javaScript modulo
 
