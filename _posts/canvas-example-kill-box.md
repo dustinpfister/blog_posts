@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 701
-updated: 2020-09-09 16:14:52
-version: 1.2
+updated: 2020-09-09 16:16:51
+version: 1.3
 ---
 
 While wasting some time scrolling threw you tube I can across a [video on how to make a kill box](https://www.youtube.com/watch?v=K8fsjNjbz8Y) in a game called [RimWorld](https://store.steampowered.com/app/294100/RimWorld/). I have found the video, other videos like it, and the game itself interesting even though I have nit played it myself just yet. This has inspired me to start a canvas [canvas example](/2020/03/23/canvas-example/) of my own where I will be playing aorunf with many of the things that where talked about in the video, because I think making just a simple striped down game based around this might prove to be a little fun.
@@ -14,6 +14,8 @@ While wasting some time scrolling threw you tube I can across a [video on how to
 <!-- more -->
 
 ## 1 - The utils framework for this kill box canvas example
+
+So for this canvas example I have a general utility framework that just has two methods for now, one to get a canvas relative position in a canvas element when working with pointer events. The other method that I have in the utility library is a bounding box collision detection method.
 
 ```js
 // UTILS
