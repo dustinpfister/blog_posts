@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2020-09-09 15:04:34
-version: 1.14
+updated: 2020-09-09 15:07:16
+version: 1.15
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division operation between two numbers.
@@ -30,7 +30,7 @@ console.log( (5 + 12) % 7 ); // 3
 
 ### 1.2 - A grid example
 
-One typically use case might be something like this, say you have a grid that is ten by ten sections. You want to write a method where if given a certain index value from 0-99, you can get the x, and y grid position. In such a case javaScripts modulo works just fine by itself as expected no problem.
+One typical use case of the modulo operator might be something like getting the x and y values of a grid location when you know an index value as well as the width of the grid.  So say you have a grid that is ten by ten sections, and you want to write a method where if given a certain index value from 0-99, you can get the x, and y grid position. In such a case javaScripts modulo works just fine for this kind of example as it is yet another use case where one is just dealing with positive numbers.
 
 ```js
 var width = 10,
