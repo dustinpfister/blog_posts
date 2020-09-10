@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 704
-updated: 2020-09-10 13:48:18
-version: 1.1
+updated: 2020-09-10 14:21:25
+version: 1.2
 ---
 
 One of the little things that I like to have control over after setting up a clean raspberry PI OS image is to turn off, or at least have control over screen blanking. That is after a few minutes of leaving the raspberry pi alone the screen will go blank rather than continuing to display whats going on. There are many use case examples of using a raspbery pi to run some kind of applaction where I would like the output to continue to be displayed on a monater without me having to move the mouse or touch the keybaord. 
@@ -94,3 +94,19 @@ DPMS (Energy Star):
 ```
 
 So yes not DPMS is disabled, and the timeout for the screen saver is now zero.
+
+## 2 - So then there is trying xscreensaver
+
+In Raspberry Pi OS the package [xscreensaver](https://en.wikipedia.org/wiki/XScreenSaver) is not installed by default. This package alone is the most basic striped down package for screen savers. This package alone can be installed, and by doing so I will then have a graphic front end for changing screen saver settings in the preferences menu. Also chnages that I make in the front end will remain afer I log out or reboot.
+
+So For starrtets I just need to install the package
+
+```
+$ sudo apt-get install xscreensaver
+```
+
+Doing so will eat up about 8MB of space, and I might need to reboot to get the menu to appear in prefernces. However once I can get to it I can use that to just disable the screen saver, and keep it disabled once and for all.
+
+## 3 - Conclsuion
+
+So having control over this is just one of those many little things that I like to tweak and have control over whe it comes to setting up a clean Raspberry PI OS install.
