@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 701
-updated: 2020-09-09 16:16:51
-version: 1.3
+updated: 2020-09-10 16:54:00
+version: 1.4
 ---
 
 While wasting some time scrolling threw you tube I can across a [video on how to make a kill box](https://www.youtube.com/watch?v=K8fsjNjbz8Y) in a game called [RimWorld](https://store.steampowered.com/app/294100/RimWorld/). I have found the video, other videos like it, and the game itself interesting even though I have nit played it myself just yet. This has inspired me to start a canvas [canvas example](/2020/03/23/canvas-example/) of my own where I will be playing aorunf with many of the things that where talked about in the video, because I think making just a simple striped down game based around this might prove to be a little fun.
@@ -40,7 +40,9 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
-## 2 - pool
+## 2 - The object pool module
+
+I know that I will want to have an object pool module for this canvas example. If you do not know what and object pool is then I have made another canvas example in which I get into this topic in detail. However simple put an object pool is just a way to create and update a fixed pool of objects that are often used for sprites and other display objects that are used in a game. 
 
 ```js
 var poolMod = (function () {
