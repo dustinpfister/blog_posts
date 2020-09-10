@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-09-10 10:29:21
-version: 1.22
+updated: 2020-09-10 10:33:44
+version: 1.23
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -78,7 +78,7 @@ console.log( parseInt(str, 16) ); // NaN
 
 ## 2 - parseInt converts to String first
 
-The parseInt method might not always return expected results in some situations. For example the parseInt method converts to a string first and if it is a number the goes off into notation, then the letter e char will not be recognized as a number and will parse an int based on what comes before it.
+The parseInt method might not always return expected results in some situations. One such situation is how parseInt will work when given a string of a javaScript number that makes use of notation with the letter e in it. For example the parseInt method converts to a string first and if it is a number then goes off into notation, then the letter e char will not be recognized as a number and will parse an int based on what comes before it.
 
 ```js
 // parseInt may not always work as expected
@@ -88,11 +88,13 @@ console.log(parseInt( Math.pow(10,21) ) ); // 1
 let str = String(Math.pow(10,21));
  
 // and it does not consider the letter e to 
-// be a number
+// be a number with a base 10 radix
 console.log(str); // 1e+21
 console.log(parseInt(str)); // 1
 console.log( parseInt('12e45') ); // 12
 ```
+
+So then this is one of the little things about parseInt that a javaScript developer should be ware of when making use of it when working with numbers that will go off into notation.
 
 ## 3 - The deal with max safe integer
 
