@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-09-10 09:39:43
-version: 1.16
+updated: 2020-09-10 09:50:36
+version: 1.17
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -22,7 +22,7 @@ So for starters lets just take a look at some basic examples of using parseInt.
 
 ### 1.2 - A basic example of parseInt
 
-A very basic example of parseInt might involve just passing a string of a number as the first argument. The returned result will be a number rather than a string.
+A very basic example of parseInt might involve just passing a string of a number as the first argument. The returned result will be a number rather than a string. When called parseInt will attempt to parse what is passed to it as a number that will be an integer value. So if for example I pass the string value of 42 the result will be a number with the value of 42 rather than a string of that number.
 
 ```js
 console.log( parseInt('42') ); // 42
@@ -35,8 +35,17 @@ console.log( parseInt('42.1234') ); // 42
 console.log( parseInt('42.9876') ); // 42
 ```
 
+### 1.3 - using a radix
 
-The parseInt method in native core javaScript works by just passing a string of a number as the first argument, and an option [radix](https://en.wiktionary.org/wiki/radix) as the second argument. When called parseInt will attempt to parse what is passed to it as a number that will be an integer value. So if for example I pass the string value of 42 the result will be a number with the value of 42 rather than a string of that number.
+The parseInt method in native core javaScript works by just passing a string of a number as the first argument, and an option [radix](https://en.wiktionary.org/wiki/radix) as the second argument. 
+
+```js
+var str = '101';
+console.log( parseInt(str, 2) ); // 5
+console.log( parseInt(str, 8) ); // 65
+console.log( parseInt(str)); // 101
+console.log( parseInt(str, 16) ); // 257
+```
 
 
 ## 2 - parseInt converts to String first
