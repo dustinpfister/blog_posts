@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2020-09-10 12:27:57
-version: 1.5
+updated: 2020-09-10 12:41:54
+version: 1.6
 ---
 
 So today I am taking a look at the Linux ps command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the linux ps command, and a use case example with nodejs.
@@ -31,6 +31,34 @@ So there is getting a long list of everything that is running on the computer, b
 
 ```
 $ ps -U pi
+```
+
+## 1.3 - Just proceses of a given name
+
+Sometimes I will want to select process by a given set command name, for that there is the upper case C option of linux ps.
+
+```
+$ ps -C chromium-browse
+19422 ?        00:01:33 chromium-browse
+19444 ?        00:00:00 chromium-browse
+19446 ?        00:00:00 chromium-browse
+19468 ?        00:00:46 chromium-browse
+19472 ?        00:00:06 chromium-browse
+19632 ?        00:00:13 chromium-browse
+20058 ?        00:00:17 chromium-browse
+20253 ?        00:00:15 chromium-browse
+20431 ?        00:00:10 chromium-browse
+```
+
+### 1.4 - Custom output
+
+Whe it comes to controlling what will be displayed for each process that will should up there is the lowercase o option as well as several other optiions that mean the same thing. To have full control over the output of ps you will want to read up on the STANDARD FORMAT SPECIFIERS of the linux ps command, and again it would be best to look at the man pages when it comes to this becuase there are a lot of them.
+
+```
+ps -U avahi -o "pid uname comm"
+  PID USER     COMMAND
+  375 avahi    avahi-daemon
+  406 avahi    avahi-daemon
 ```
 
 ## 2 - Example 1 of Linux ps and making a custom array of command names and process ids with nodejs
