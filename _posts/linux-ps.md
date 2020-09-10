@@ -5,17 +5,17 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2020-09-10 12:41:54
-version: 1.6
+updated: 2020-09-10 13:25:29
+version: 1.7
 ---
 
-So today I am taking a look at the Linux ps command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the linux ps command, and a use case example with nodejs.
+So today I am taking a look at the Linux ps command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
 
 <!-- more -->
 
 ## 1 - Some basic examples of the linux ps command
 
-In this section I will be going over some typicall use case examples of the linux ps command. There are allot of options and ways of formatting the output, and if you really want to dive deep into it all the best source on that might be the ps command manual page as always. However here I thought I would write about the top typical options and formatting tricks that I find myself using.
+In this section I will be going over some typical use case examples of the Linux ps command. There are allot of options and ways of formatting the output, and if you really want to dive deep into it all the best source on that might be the [ps command manual page](https://www.man7.org/linux/man-pages/man1/ps.1.html) as always. However here I thought I would write about the top typical options and formatting tricks that I find myself using.
 
 ## 1.1 - See all process runiing on the system
 
@@ -27,7 +27,7 @@ $ ps -e
 
 ## 1.2 - Seee just process for a given user
 
-So there is getting a long list of everything that is running on the computer, but often I might just want to see what is running for just a given username. So if I just want what is running for a username such as pi I just need to use the uppercase U option of linux ps and pass the username. The result should be a list of processes that are runiing just for that username.
+So there is getting a long list of everything that is running on the computer, but often I might just want to see what is running for just a given username. So if I just want what is running for a username such as pi I just need to use the uppercase U option of linux ps and pass the username. The result should be a list of processes that are ruining just for that username.
 
 ```
 $ ps -U pi
@@ -52,7 +52,7 @@ $ ps -C chromium-browse
 
 ### 1.4 - Custom output
 
-Whe it comes to controlling what will be displayed for each process that will should up there is the lowercase o option as well as several other optiions that mean the same thing. To have full control over the output of ps you will want to read up on the STANDARD FORMAT SPECIFIERS of the linux ps command, and again it would be best to look at the man pages when it comes to this becuase there are a lot of them.
+Whe it comes to controlling what will be displayed for each process that will should up there is the lowercase o option as well as several other options that mean the same thing. To have full control over the output of ps you will want to read up on the STANDARD FORMAT SPECIFIERS of the Linux ps command, and again it would be best to look at the man pages when it comes to this because there are a lot of them.
 
 ```
 ps -U avahi -o "pid uname comm"
