@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 701
-updated: 2020-09-10 16:55:11
-version: 1.5
+updated: 2020-09-10 16:58:34
+version: 1.6
 ---
 
 While wasting some time scrolling threw you tube I can across a [video on how to make a kill box](https://www.youtube.com/watch?v=K8fsjNjbz8Y) in a game called [RimWorld](https://store.steampowered.com/app/294100/RimWorld/). I have found the video, other videos like it, and the game itself interesting even though I have nit played it myself just yet. This has inspired me to start a canvas [canvas example](/2020/03/23/canvas-example/) of my own where I will be playing aorunf with many of the things that where talked about in the video, because I think making just a simple striped down game based around this might prove to be a little fun.
@@ -120,7 +120,9 @@ var poolMod = (function () {
     ());
 ```
 
-## 3 - map
+## 3 - The map module
+
+For this kill box example I am also going to want a map module that will be used to create a map of cell objects.
 
 ```js
 var mapMod = (function () {
@@ -181,7 +183,9 @@ var mapMod = (function () {
     ());
 ```
 
-## 4 - game
+## 4 - The game module
+
+Many of these canvas examples of mine will contain a game module that is the module that is used to create and update a main game object.
 
 ```js
 var gameMod = (function () {
@@ -273,7 +277,9 @@ var gameMod = (function () {
     ());
 ```
 
-## 5 - draw
+## 5 - the draw module
+
+I also take the time to make a stand alone draw module for my canvas examples. This is a way to pull code that has o do with drawing to the canvas element away from code that is used to create an update a main state object of the game.
 
 ```js
 var draw = (function () {
