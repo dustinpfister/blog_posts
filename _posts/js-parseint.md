@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-09-10 10:33:44
-version: 1.23
+updated: 2020-09-10 10:37:29
+version: 1.24
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -98,13 +98,15 @@ So then this is one of the little things about parseInt that a javaScript develo
 
 ## 3 - The deal with max safe integer
 
-There is also the nature of the max safe integer, when adding anything to that and going beyond the max safe int that too can result in unexpected results as well.
+There is also the nature of the max safe integer, when adding anything to that and going beyond the max safe int that too can result in unexpected results as well with parseInt.
 
 ```js
 let n = Number.MAX_SAFE_INTEGER;
 console.log(n); // 9007199254740991
 console.log(parseInt(n + 100)); // 9007199254741092
 ```
+
+If you need to work with very large numbers, and retain precision not only should you forget about using parseInt, you should forget about using javaScript numbers all together. There are libraries, and also some native stuff in the works to allow for a whole other way of preforming high precision math. However getting into that in detail would be off topic here.
 
 ## 4 - parseInt and Number
 
