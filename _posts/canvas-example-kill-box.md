@@ -5,13 +5,17 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 701
-updated: 2020-09-10 17:03:00
-version: 1.8
+updated: 2020-09-10 17:07:05
+version: 1.9
 ---
 
 While wasting some time scrolling threw you tube I can across a [video on how to make a kill box](https://www.youtube.com/watch?v=K8fsjNjbz8Y) in a game called [RimWorld](https://store.steampowered.com/app/294100/RimWorld/). I have found the video, other videos like it, and the game itself interesting even though I have nit played it myself just yet. This has inspired me to start a canvas [canvas example](/2020/03/23/canvas-example/) of my own where I will be playing around with many of the things that where talked about in the video, because I think making just a simple striped down game based around this might prove to be a little fun.
 
 <!-- more -->
+
+## - This canvas example is in alpha state for now
+
+As of this writing my kill box example needs a lot more work until I have something that is really worth writing about. So for now this post is just a brief overview of what I have thus far on this one. If I get some time I will get around to fixing this one up a bit, as I do not even have the basic idea I hand in mind done. So it might be best to check out some of my other canvas examples and not wast your time reading about something that is not done yet.
 
 ## 1 - The utils framework for this kill box canvas example
 
