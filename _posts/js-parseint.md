@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-09-10 10:03:33
-version: 1.19
+updated: 2020-09-10 10:25:29
+version: 1.20
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -51,6 +51,8 @@ console.log( parseInt(str, 16) ); // 257
 
 ### 1.4 - Wrong radix can result in NaN
 
+When it comes to strings that contain letters that are to be used with a certain radix, NaN can result if the proper radix is not given.
+
 ```js
 var str = 'a3';
 console.log( parseInt(str) ); // NaN
@@ -58,6 +60,8 @@ console.log( parseInt(str, 16) ); // 163
 ```
 
 ### 1.5 - a starting char that is not used for number values can result in NaN
+
+Be mindful of any characters  that are not used at all for number values of any radix. If a char that is not part of a number is at then end of a string then the parseInt method will just ignore it, and work with any valid chars from the start of the string up to that index in the string. However if a string begins with a char that is not used even with the property radix for the rest of the values that will result in NaN. The parseInt method will not preform any kind of pattern matching for you, you will need to do that before hand.
 
 ```js
 // if a non number char is at the end of a string it will just
