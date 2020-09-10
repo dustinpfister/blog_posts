@@ -1,12 +1,12 @@
 ---
-title: 39 Canvas examples and counting, animations, games, modules, and more.
+title: 40 Canvas examples and counting, animations, games, modules, and more.
 date: 2020-03-23 08:48:00
 categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-08-17 15:25:14
-version: 1.57
+updated: 2020-09-10 17:12:01
+version: 1.58
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -144,51 +144,55 @@ Here I have a simple image loader example for a canvas project that I worked out
 
 An input controller concept for canvas projects.
 
-### 3.28 - [Map scrolling](/2020/01/08/canvas-example-map-scrolling/)
+### 3.28 - [kill box](/2020/09/04/canvas-example-kill-box/)
+
+This is a canvas exmaple idea that is not done yet, but I started a post on what I have thus far.
+
+### 3.29 - [Map scrolling](/2020/01/08/canvas-example-map-scrolling/)
 
 In this canvas example I worked out a basic example of getting scrolling working with a large grid.
 
-### 3.29 - [object pool](/2020/07/20/canvas-example-object-pool/)
+### 3.30 - [object pool](/2020/07/20/canvas-example-object-pool/)
 
 This project is an exercise of having an object pool. That is just simply a set collection of objects that are used over and over again, rather than pushing and splicing out as needed.
 
-### 3.30 - [binary particles](/2020/03/18/canvas-example-particles-binary/)
+### 3.31 - [binary particles](/2020/03/18/canvas-example-particles-binary/)
 
 The idea just came into my head one day to make some kind of fun and interesting canvas example that involves two types of circles. When two of two different types combine into one, then it results in an explosion. The result is a somewhat interesting visual effect.
 
-### 3.31 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
+### 3.32 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
 
 Search and destroy particles.
 
-### 3.32 - [percent values and Math log](/2020/08/08/canvas-example-percent-math-log/)
+### 3.33 - [percent values and Math log](/2020/08/08/canvas-example-percent-math-log/)
 
 A simple canvas example that shows graphically what a method I work out does with a percent value.
 
-### 3.33 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
+### 3.34 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
 
 I think that it is generally a good idea to make a canvas project to work with pointers in general rather than making a project to desktop or mobile centric. So I made a quick Canvas Example that is a way to manage pointer input from both mouse and touch events. 
 
-### 3.34 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
+### 3.35 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
 
 Here is a Canvas Example that is a User interface design for moving a map, or anything for that matter by way of touch or click events by way of a pointer start point and distance to a current point.
 
-### 3.35 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
+### 3.36 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
 
 A Canvas Example that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example.
 
-### 3.36 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
+### 3.37 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
 
 A Canvas Example of a space shooter type game.
 
-### 3.37 - [Stars](/2020/02/12/canvas-example-star/)
+### 3.38 - [Stars](/2020/02/12/canvas-example-star/)
 
 I use to have a thing about drawing stars in all kinds of different ways so of course I have a Canvas Example on that.
 
-### 3.38 - [State machines](/2020/01/28/canvas-example-state-machine/)
+### 3.39 - [State machines](/2020/01/28/canvas-example-state-machine/)
 
 State machines are an important component for many javaScript projects so of course I have a Canvas Example on state machine in general.
 
-### 3.39 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
+### 3.4-0 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
 
 Turret defense games are sometimes nice so I have a Canvas Example on that in general.
 
