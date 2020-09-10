@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-09-10 09:50:36
-version: 1.17
+updated: 2020-09-10 10:00:13
+version: 1.18
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -47,6 +47,28 @@ console.log( parseInt(str)); // 101
 console.log( parseInt(str, 16) ); // 257
 ```
 
+### 1.4 - Wrong radix can result in NaN
+
+```js
+var str = 'a3';
+console.log( parseInt(str) ); // NaN
+console.log( parseInt(str, 16) ); // 163
+```
+
+### 1.5 - a starting char that is not used for number values can result in NaN
+
+```js
+// if a non number char is at the end of a string it will just
+// be ignored
+var str = '10!';
+console.log( parseInt(str) ); // 10
+console.log( parseInt(str, 16) ); // 16
+// if a non number is at the start of a string though it will result in NaN
+var str = '!10';
+console.log( parseInt(str) ); // NaN
+console.log( parseInt(str, 16) ); // NaN
+
+```
 
 ## 2 - parseInt converts to String first
 
