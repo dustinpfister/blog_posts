@@ -5,21 +5,23 @@ tags: [linux]
 layout: post
 categories: linux
 id: 704
-updated: 2020-09-10 14:21:25
-version: 1.2
+updated: 2020-09-10 14:29:56
+version: 1.3
 ---
 
-One of the little things that I like to have control over after setting up a clean raspberry PI OS image is to turn off, or at least have control over screen blanking. That is after a few minutes of leaving the raspberry pi alone the screen will go blank rather than continuing to display whats going on. There are many use case examples of using a raspbery pi to run some kind of applaction where I would like the output to continue to be displayed on a monater without me having to move the mouse or touch the keybaord. 
+One of the little things that I like to have control over after setting up a clean raspberry PI OS image is to turn off, or at least have control over screen blanking. That is after a few minutes of leaving the raspberry pi alone the screen will go blank rather than continuing to display whats going on. There are many use case examples of using a Raspberry pi to run some kind of application where I would like the output to continue to be displayed on a monitor without me having to move the mouse or touch the keyboard. 
 
-The rason why the screen blanking happens is becuase screen saver settings cause the screen to go blank afetr a few minutes by default, but there is not software installed to easly control these settings by default. So in this post I will be going over some options for having control over this including th use of the [linux xset](https://linux.die.net/man/1/xset) command.
+The reason why the screen blanking happens is because screen saver settings cause the screen to go blank after a few minutes by default, but there is not software installed to easily control these settings by default. So in this post I will be going over some options for having control over this including th use of the [linux xset](https://linux.die.net/man/1/xset) command.
 
 <!-- more -->
 
 ## 1 - Uisng xset to just turn off screen blanking right now
 
-So if I want to just turn off the screen blanking right now, and not nessecrly make the chnages permanate each time I rebut the py then I can just use the xset command. In fact all settings that I change with just xset will be set back to default when I log out, or rebut the pi. However what is nice about this is that I can just turn it off for not without installing any additional frojnt ends, or digging thre any kind fo configuration files as the xset command should be there to work with to begibn with in a clan Raspberry PI OS install.
+So if I want to just turn off the screen blanking right now, and not necessarily make the changes permanent each time I reboot the pi then I can just use the xset command. In fact all settings that I change with just xset will be set back to default when I log out, or rebut the pi. However what is nice about this is that I can just turn it off for not without installing any additional front ends, or digging though any kind of configuration files as the xset command should be there to work with to begin with in a clan Raspberry PI OS install.
 
-### 1.1 - Uisng xset q to qurry what the current status is with screensave settings
+### 1.1 - Using xset q to query what the current status is with screen saver settings
+
+So the xset command can be used to query what the current state of affairs is with X11 screen saver settings by just calling the xset command followed by the q option.
 
 ```
 $ xset q
@@ -54,7 +56,7 @@ DPMS (Energy Star):
 
 ### 1.2 The xset -dpms and s options
 
-So the two xset options of interste in the man page here are -dpms that will disable DPMS, and the s option that can be used to set values for the screen saver. There are several values that can be used for the s option, but one of them is simply off that will work just fine if I just want to turn the screen blanking off.
+So the two xset options of interest in the man page here are -dpms that will disable DPMS, and the s option that can be used to set values for the screen saver. There are several values that can be used for the s option, but one of them is simply off that will work just fine if I just want to turn the screen blanking off.
 
 ```
 $ xset -dpms
@@ -97,16 +99,16 @@ So yes not DPMS is disabled, and the timeout for the screen saver is now zero.
 
 ## 2 - So then there is trying xscreensaver
 
-In Raspberry Pi OS the package [xscreensaver](https://en.wikipedia.org/wiki/XScreenSaver) is not installed by default. This package alone is the most basic striped down package for screen savers. This package alone can be installed, and by doing so I will then have a graphic front end for changing screen saver settings in the preferences menu. Also chnages that I make in the front end will remain afer I log out or reboot.
+In Raspberry Pi OS the package [xscreensaver](https://en.wikipedia.org/wiki/XScreenSaver) is not installed by default. This package alone is the most basic striped down package for screen savers. This package alone can be installed, and by doing so I will then have a graphic front end for changing screen saver settings in the preferences menu. Also changes that I make in the front end will remain after I log out or reboot.
 
-So For starrtets I just need to install the package
+So for starters I just need to install the package
 
 ```
 $ sudo apt-get install xscreensaver
 ```
 
-Doing so will eat up about 8MB of space, and I might need to reboot to get the menu to appear in prefernces. However once I can get to it I can use that to just disable the screen saver, and keep it disabled once and for all.
+Doing so will eat up about 8MB of space, and I might need to reboot to get the menu to appear in preferences. However once I can get to it I can use that to just disable the screen saver, and keep it disabled once and for all.
 
-## 3 - Conclsuion
+## 3 - Conclusion
 
-So having control over this is just one of those many little things that I like to tweak and have control over whe it comes to setting up a clean Raspberry PI OS install.
+So having control over this is just one of those many little things that I like to tweak and have control over when it comes to setting up a clean Raspberry PI OS install.
