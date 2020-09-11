@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2020-09-11 11:38:04
-version: 1.15
+updated: 2020-09-11 11:41:04
+version: 1.16
 ---
 
 Adding elements in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document with javaScript code.
@@ -97,7 +97,7 @@ document.body.appendChild(p);
 
 ### 2.2 - pre element example
 
-It might be fun to play around with some javaScript examples that have to do with preformatted text elements. If you are not familiar with them this kind of element is what is used in html for preformatted text that contains line breaks. WIth many other elements line breaks will be ignored when it comes to formating, but with preformatted elements they will not be ignored. So this might be a good way to become familiar with hiw to go about creating preformatted text with javaScript code by creating and adding pre elements to an html document.
+It might be fun to play around with some javaScript examples that have to do with preformatted text elements. If you are not familiar with them this kind of element is what is used in html for preformatted text that contains line breaks. WIth many other elements line breaks will be ignored when it comes to formating, but with preformatted elements they will not be ignored. So this might be a good way to become familiar with how to go about creating preformatted text with javaScript code by creating and adding pre elements to an html document.
 
 There is more than one kind of line break depending on the operating system, but for the most part it is best to just go with the windows style one that contains a carriage return and then a line feed after. the reason why I say that it that that kind of line break will work o  windows but will also work okay on just about every other operating system just fine also.
 
@@ -144,6 +144,8 @@ document.body.appendChild(pre);
     </body>
 </html>
 ```
+
+An example such as this could be expanded with additional methods to make a simple grid system, but this alone should help with the general idea of why it is that pre elements are useful in some situations.
 
 ## 3 - Conclusion
 
