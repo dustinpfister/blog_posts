@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2020-09-11 11:42:16
-version: 1.17
+updated: 2020-09-11 11:42:57
+version: 1.18
 ---
 
 [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document with javaScript code.
 
-In [jQuery there is the add method](https://api.jquery.com/add/) that can be used as a way to add elements. It is true that jQuery is still a widely used front end javaScript framework, but it is a library that is starting to die out a little. There are many other front end frameworks that make adding elements, and many DOM mutation related tasks a little easier but today for the most part just working in the browser itself is nt so hard and can still work just fine for small projects.
+In [jQuery there is the add method](https://api.jquery.com/add/) that can be used as a way to add elements. It is true that jQuery is still a widely used front end javaScript framework, but it is a library that is starting to die out a little. There are many other front end frameworks that make adding elements, and many DOM mutation related tasks a little easier but today for the most part just working in the browser itself is not so hard and can still work just fine for small projects.
 
 I have written a [post on innerHTML](/2019/01/13/js-innerhtml/) not to long ago which is one typical way of adding elements once a reference to a container element is obtained. However in this post I will be covering the subject in general, and not just the use of innerHTML which might not always be the best choice. There are of course alternatives to innerHTML that involve the use of a collection of methods, such as [createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement), and appendChild. 
 
