@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2020-09-11 11:02:58
-version: 1.13
+updated: 2020-09-11 11:36:03
+version: 1.14
 ---
 
 Adding elements in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document with javaScript code.
@@ -53,13 +53,91 @@ The alternative to using innerhtml as a way to create elements is to use the doc
 ```html
 <html>
     <head>
-        <title>JavaScript create element</title>
+        <title>javascript create element</title>
     </head>
     <body>
         <script>
-var el = document.createElement('p');
-el.appendChild(document.createTextNode('hello world'));
+// create an element
+var el = document.createElement('textarea');
+// can add values to properties
+el.value = 'Hello World';
+// then I can append it to the document
 document.body.appendChild(el);
+        </script>
+    </body>
+</html>
+```
+
+## 2 - The createTextNode method and creating paragraph elements, and any element that might require a text node
+
+Some elements such as a p, span, and pre might require a text node value added to after creating it in order for the element to actually show some text. So in this section I think that it is called for to cover a few quick examples that have to do with adding text nodes to newly created elements with the create element method.
+
+### 2.1 - The createTextNode method and a paragraph element
+
+So for starters there are paragraph elements, and when creating them it is often called for to define what the value of the text node is for that element. One way to do so it to use the createTextNode method to create a text node with the desired text, and then append that to the newly created paragraph element.
+
+```html
+<html>
+    <head>
+        <title>javaScript create element</title>
+    </head>
+    <body>
+        <div id="container">
+        </div>
+        <script>
+var con = document.getElementById('container'),
+p = document.createElement('p'),
+text = document.createTextNode('hello world');
+p.appendChild(text);
+document.body.appendChild(p);
+        </script>
+    </body>
+</html>
+```
+
+### 2.2 - pre element example
+
+It might be fun to play around with some javaScript examples that have to do with preformatted text elements. If you are not familiar with them this kind of element is what is used in html for preformatted text that contains line breaks. There is more than one kind of line break depending on the operating system, but for the most part it is best to just go with the windows style one that contains a carriage return and then a line feed after. the reason why I say that it that that kind of line break will work o  windows but will also work okay on just about every other operating system just fine also.
+
+```js
+<html>
+    <head>
+        <title>javaScript create element</title>
+    </head>
+    <body>
+        <div id="container">
+        </div>
+        <script>
+// create a string with line breaks
+var createLinesString = function (w, h, ch, EOL) {
+    var i = 0,
+    w = w || 16,
+    h = h || 9,
+    EOL = EOL || '\r\n',
+    len = w * h,
+    x,
+    y,
+    str = '';
+    while (i < len) {
+        x = i % w;
+        y = Math.floor(i / w);
+        str += ch || '.';
+        if (x === w - 1) {
+            str += EOL;
+        }
+        i += 1;
+    }
+    return str;
+};
+ 
+var con = document.getElementById('container'),
+pre = document.createElement('pre'),
+str = createLinesString(16, 9, 'o'),
+text = document.createTextNode(str);
+ 
+pre.appendChild(text);
+document.body.appendChild(pre);
+ 
         </script>
     </body>
 </html>
