@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2020-09-11 10:50:40
-version: 1.11
+updated: 2020-09-11 10:54:56
+version: 1.12
 ---
 
 Adding elements in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document with javaScript code.
@@ -19,9 +19,9 @@ Also there is some things to cover when it comes to html node lists as well, and
 
 <!-- more -->
 
-## 1 - Add Elements
+## 1 - The very basics of Adding Elements in client side javaScript
 
-To add an element in javaScript I first need to gain a reference to a hard coded element in the html to begin with. There are a number of ways to go about doing this such as with document.getElementById which shows up in a lot of javaScript examples, to properties such as document.body. Once I have a reference to an element I can then use a property like innerHTML or a collection of methods to create an add elements.
+To add an element in javaScript I first need to gain a reference to a hard coded element in the html to begin with. There are a number of ways to go about doing this such as with document.getElementById which shows up in a lot of javaScript examples, to properties such as document.body. Once I have a reference to a container element I can then use a property like innerHTML or a collection of methods to create an add elements.
 
 ```html
 <html>
@@ -38,7 +38,9 @@ el.innerHTML += '<p>hello world<\/p>'
 </html>
 ```
 
-In this post I am not going to be going into detail about innerHTML as I have written a post on that all ready. However innerHTML is of course one option for making quick work of this when it comes to simple projects. When it comes to more advanced projects though there are some situations in which the alliterative way of doing this should be used.
+In this post I am not going to be going into detail about innerHTML as I have written a post on that all ready. However innerHTML is of course one option for making quick work of this when it comes to simple projects. When it comes to more advanced projects though there are some situations in which an alliterative way of doing this should be used.
+
+So now that we have a very basic idea of what this is all about otu of the way I can now move on to other ways of adding elements to an html document.
 
 ## 2 - createElement methods for adding elements
 
