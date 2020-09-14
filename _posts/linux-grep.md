@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-09-14 18:46:55
-version: 1.2
+updated: 2020-09-14 18:49:52
+version: 1.3
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory. I have been starting to write a few posts on various commands that often are part of Linux, or can be easily added to Linux, and grep is certainly one such command that I should write a quick post on because I am sure it will come in handy now and then with what I often work on when it comes to lengthly collections of text files.
@@ -18,6 +18,8 @@ In a Linux environment there is the [Linux grep](https://man7.org/linux/man-page
 In this section I will be starting out with just a few simple basic examples of grep. There is just looking for text in a single file, and other basics that one should be aware of before looking into the many other features of grep, and what can be done with it when it comes to using it with other Linux features and commands.
 
 ### 1.1 - A simple use case example of grep
+
+SO for starters how about just a simple example that involves looking at just one file. In one of my repositories on github I have a collection of markdown files for each of my blog posts here on this site. Say I am at the root path of that repository and I want to fine the id of just one file. I can use grep and pass a string pattern to look for as the first argument followed by a relative path to the file I want to look at.
 
 ```
 $ grep "id:" ./_posts/linux-grep.md
