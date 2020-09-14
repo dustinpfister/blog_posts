@@ -5,7 +5,7 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-09-14 18:26:34
+updated: 2020-09-14 18:43:10
 version: 1.1
 ---
 
@@ -13,16 +13,42 @@ In a linux enviorment there is the [Linux grep](https://man7.org/linux/man-pages
 
 <!-- more -->
 
-## 1 - Basic grep command on a single file
+## 1 - Basic grep commands
+
+In this section I will be starting out with just a few simple examples of grep.
+
+### 1.1 - A simple use case example of grep
 
 ```
 $ grep "id:" ./_posts/linux-grep.md
 id: 705
 ```
 
-## 2 - more that once file
+### 1.2 - Know the version
+
+First off there is know what version of grep I am using. To do so I just call grep and pass a capatal V to get the version of grep that I ma using on the system.
+
+```
+$ grep -V
+grep (GNU grep) 3.3
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+ 
+Written by Mike Haertel and others; see
+<https://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>.
+```
+
+## 2 - more that one file
+
+There are several ways to go about greping over more than one file. There is just greping over files at one level in a folder, and then there is also using grep in a recursive way looking at all the files in all the folders starting as a given root path. So in this section I will be going over some examples of looking at collections of files using linux grep.
 
 ### 2.2 - Uisng glob pattens with the file path
+
+One way to look at more than one file is to use [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) for the file path. In other words I do not need to give an absolute or relative path to a single file, but a glob pattren for a collection of files.
+
+Say I have a number of files in a path that start with the pattern _linux-_ and say I want to find the id of each file. I can type grep followed by the text pattren for an id in a file that starts with the desired pattern, followed by the glob pattern.
 
 ```
 $ grep "id:" ./_posts/linux-*
@@ -40,6 +66,8 @@ $ grep "id:" ./_posts/linux-*
 ```
 
 ### 2.1 - recustive flag
+
+Another options for looking at more than one file is to use the recursive flag.
 
 ```
 $ grep -r "var" ./
