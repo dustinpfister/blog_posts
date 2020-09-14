@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-09-14 18:49:52
-version: 1.3
+updated: 2020-09-14 18:52:37
+version: 1.4
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory. I have been starting to write a few posts on various commands that often are part of Linux, or can be easily added to Linux, and grep is certainly one such command that I should write a quick post on because I am sure it will come in handy now and then with what I often work on when it comes to lengthly collections of text files.
@@ -74,3 +74,7 @@ Another options for looking at more than one file is to use the recursive flag.
 ```
 $ grep -r "var" ./
 ```
+
+## 3 - Conclusion
+
+So it goes without saying that the Linux grep command is one command that will come in handy now and then when it comes to looking for certain text patterns in a large collection of files. Say I find that I keep making the same spelling mistake over and over again and then catch wind of it. I can use grep to find all the files where that mistake has happened, and then use it as an aid for making the necessary changes.
