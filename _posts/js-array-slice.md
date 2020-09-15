@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-09-15 16:03:14
-version: 1.16
+updated: 2020-09-15 16:14:04
+version: 1.17
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of [Array.splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. 
@@ -18,7 +18,7 @@ This nature of the array slice method that involves not mutating an array in pla
 
 ## 1 - JavaScript Array Slice basic example
 
-For starters lets look at a very basic example of Array.Slice.With that said when working with an instance of a javaScript Array the Array.slice prototype method can be used by calling the method off the Array instance, and passing a starting and ending index. The returned result will be a new array that is a collection of elements from that starting index up to one less from the ending index. So the ending index in other words will not be included in the returned new array that is a slice of the source array.
+For starters lets look at a very basic example of the Array.Slice method just for the sake of covering the very basics. With that said when working with an instance of a javaScript Array the Array.slice prototype method can be used by calling the method off the Array instance, and passing a starting and ending index. The returned result will be a new array that is a collection of elements from that starting index up to one less from the ending index. So the ending index in other words will not be included in the returned new array that is a slice of the source array.
 
 ```js
 let a1 = [1,2,3,4],
