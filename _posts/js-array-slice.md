@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-09-16 13:59:40
-version: 1.20
+updated: 2020-09-16 15:09:16
+version: 1.21
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of [Array.splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. 
@@ -57,9 +57,9 @@ last = al[al.length - 1];
 console.log(last); // 4
 ```
 
-## 3 - javaScript Array slice can be used to clone an array of primitives
+## 3 - javaScript Array slice can be used to clone (or copy if you prefer) an array but it is a shallow clone
 
-So because Array.slice returns a new Array rather than mutating one it can, in some cases, be used as a way to clone an array assuming it is an array of primitive values.
+So because Array.slice returns a new Array rather than mutating one, it can in some cases be used as a way to clone an array assuming it is an array of primitive values. What I mean by that is that the use of Array.slice as a way to copy and array by itself will result in a shallow clone of the source array. So if the source array contains one or more objects as elemenst then those elements in the resulting array will be the same references to the same objects in memory. For this reason it is nesseecry to look into options for deep cloning an object then.
 
 ```js
 let a1 = [1,2,3,4],
@@ -71,7 +71,7 @@ console.log(a1); // [1,7,3,4]
 console.log(a2); // [1,2,3,4]
 ```
 
-This works because I am working with an array of primitives, objects however are copied by reference. So in these situations using just array slice might not be enough. Some how you will need to preform a shallow or even deep clone of the array first in order to really return something that is separate from the source that can not end up being mangled elsewhere in a body of code. However getting into stuff like that is beyond the scope of this post.
+This works because I am working with an array of primitives, objects however are copied by reference. So in these situations using just array slice might not be enough. When I am in these situations somehow I will need to preform what is often called a deep clone of the array. By doing so I would then return something that is separate from the source array that can not end up being mangled elsewhere in a body of code. However getting into stuff like that is beyond the scope of this post, if you want to read more about this then you might want to check out my post on [copying arrays in javaScript](/2020/09/03/js-array-copy/), and maybe also my posts on [lodash clone](/2017/10/02/lodash_clone/), and [lodash deep clone](/2017/11/03/lodash_clonedeep/).
 
 ```js
 var points = [
