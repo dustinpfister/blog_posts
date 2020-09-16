@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-09-16 15:09:16
-version: 1.21
+updated: 2020-09-16 15:19:18
+version: 1.22
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of [Array.splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. 
@@ -39,7 +39,7 @@ What is nice about this is that you can see that the source array is not mangled
 
 ## 2 - Getting the last element of an array with array slice
 
-Negative index values can be given to Array.slice this results in the corresponding index value from the end of the length of an array. So then array slice can be used as a quick way of getting the last element of an array by taking advantage of this fact.
+Negative index values can be given to Array.slice this results in the corresponding index value from the end of the length of an array. So then array slice can be used as a quick way of getting the last element of an array by taking advantage of this fact by passing negative 1 as the starting index.
 
 ```js
 let a1 = [1,2,3,4],
@@ -48,7 +48,7 @@ last = a1.slice(-1)[0];
 console.log(last); // 4
 ```
 
-So I guess it is slightly more concise then the less one from length trick that I usually use, but that is a major nano pic issue.
+So I guess it is slightly more concise then doing the same thing by subtracting one from the length of the array that I would usually use over doing that at least.
 
 ```js
 let a1 = [1,2,3,4],
@@ -57,9 +57,11 @@ last = al[al.length - 1];
 console.log(last); // 4
 ```
 
+However there are yet event more ways of getting the last element in an array, but some of them will mutate the source array. Still if I just want to get the last element of an array, maybe it would be best to just use something like this and move on. This is not the kind of rabbit hole that I care to get stuck on, and I can always make these kinds of simple changes later on when maintaining a project of it comes to that.
+
 ## 3 - javaScript Array slice can be used to clone (or copy if you prefer) an array but it is a shallow clone
 
-So because Array.slice returns a new Array rather than mutating one, it can in some cases be used as a way to clone an array assuming it is an array of primitive values. What I mean by that is that the use of Array.slice as a way to copy and array by itself will result in a shallow clone of the source array. So if the source array contains one or more objects as elemenst then those elements in the resulting array will be the same references to the same objects in memory. For this reason it is nesseecry to look into options for deep cloning an object then.
+So because Array.slice returns a new Array rather than mutating one, it can in some cases be used as a way to clone an array assuming it is an array of primitive values. What I mean by that is that the use of Array.slice as a way to copy and array by itself will result in a shallow clone of the source array. So if the source array contains one or more objects as elements then those elements in the resulting array will be the same references to the same objects in memory. For this reason it is necessary to look into options for deep cloning an object then.
 
 ```js
 let a1 = [1,2,3,4],
