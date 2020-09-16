@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2020-09-16 13:41:54
-version: 1.18
+updated: 2020-09-16 13:57:37
+version: 1.19
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of [Array.splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. 
@@ -33,7 +33,7 @@ console.log(a2); // [2,3]
 console.log(a1) // [1,2,3,4]
 ```
 
-The index values are zero relative as is the case with javaScript arrays.
+The index values are zero relative as is the case with all javaScript arrays as usual.
 
 What is nice about this is that you can see that the source array is not mangled, this is not the case with the array splice method that will mutate the array in place. Many built in array prototype methods are like that which is one talking point as to why a lot of developers still like to use lodash over some of this built in methods.
 
