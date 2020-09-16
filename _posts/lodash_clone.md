@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 51
-updated: 2020-09-03 17:02:25
-version: 1.15
+updated: 2020-09-16 14:58:03
+version: 1.16
 ---
 
 When dealing with objects in javaScript often I just need to create them, and reference them, but some times I may want to copy one. The process of cloning an object can some times be a bit complicated, there are shallow clones, deep clones, and many other concerns surrounding objects when making copies of them such as the prototype chain and circular references. 
@@ -52,7 +52,7 @@ In some cases this might be what is desired actually, if I am working with DOM e
 
 However in some cases this might present a problem, I want to copy an object. Doing so is not always so easy, because objects can contain references to other objects as property values that would also have to be cloned for example. However one way to go about doing so is with the lodash \_.clone method when it comes to making what is often called a shallow clone with simple objects that do not have nested objects, or its okay if those are left as references when making the new object.
 
-## 2 - Cloning objects is copying an object my value.
+## 2 - Cloning objects is copying an object by value rather than reference.
 
 If I want to work with a copy of an object, rather than simply making a reference to it, I will want to use some kind of cloning method. The lodash \_.clone method is one such method that will work okay when it comes to making shallow clones of simple object such as the one in this example.
 
