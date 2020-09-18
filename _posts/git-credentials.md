@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 707
-updated: 2020-09-18 16:39:24
-version: 1.2
+updated: 2020-09-18 16:45:02
+version: 1.3
 ---
 
 It is possible to store [git credentials](https://git-scm.com/docs/gitcredentials), or in other words a user name and password for git in a number of ways.
@@ -27,8 +27,19 @@ Username: demoman
 Password: eeeeeeeeefeeeeeeeeefeeeeeeeeefeeeeeeeeef
 ```
 
+## 1.2 - The .gitconfig file
 
-### 1.1 - The .git-credentials
+The global gitconfig hidden file should have at least some records for user to begin with, if not some additional calls of the git gonfig command car in order for the user.name, and user.email parts of the .gitconfig file. In any case when setting the credential part of the file there should be at least the helper field that tells git to use a simple store.
+
+```
+[user]
+    name = dustinpfister
+    email = dustin.pfister@gmail.com
+[credential]
+    helper = store
+```
+
+### 1.3 - The .git-credentials
 The git-credentials file should look like this
 
 ```
