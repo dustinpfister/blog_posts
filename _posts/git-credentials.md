@@ -5,11 +5,11 @@ tags: [git]
 layout: post
 categories: git
 id: 707
-updated: 2020-09-18 17:05:53
-version: 1.6
+updated: 2020-09-18 17:07:22
+version: 1.7
 ---
 
-It is possible to store [git credentials](https://git-scm.com/docs/gitcredentials), or in other words a user name and password for git in a number of ways.
+It is possible to store [git credentials](https://git-scm.com/docs/gitcredentials), or in other words a user name and password for git in a number of ways. There are many helper programs that can be installed that helper with storing the username and password in an encrypted from, but also a simple git built in way to just store the login info as a plain text file.
 
 <!-- more -->
 
