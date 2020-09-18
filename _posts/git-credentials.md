@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 707
-updated: 2020-09-18 16:45:02
-version: 1.3
+updated: 2020-09-18 16:50:49
+version: 1.4
 ---
 
 It is possible to store [git credentials](https://git-scm.com/docs/gitcredentials), or in other words a user name and password for git in a number of ways.
@@ -40,11 +40,14 @@ The global gitconfig hidden file should have at least some records for user to b
 ```
 
 ### 1.3 - The .git-credentials
-The git-credentials file should look like this
+
+After setting store as the helper in the main global gitconfig file and doing something that will require giving a user name and password at least once there should now be a global git-credentials file. This file will contain a URL to use when authenticating via https.
 
 ```
 https://demoman:eeeeeeeeefeeeeeeeeefeeeeeeeeefeeeeeeeeef@github.com
 ```
+
+The documentation recommends not to edit this file directly with an editor but instead let git set it up for me by entering the username and password when prompted. However in some cases I have found that I do have to edit it directly, when doing so it is important to make sure that the file will be edited just the same way that git would do so. Follow the above format, and make sure that you use a line feed to terminate each line.
 
 ## 2 - Conclusion
 
