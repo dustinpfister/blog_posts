@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2020-09-18 13:15:14
-version: 1.12
+updated: 2020-09-18 13:44:23
+version: 1.13
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These kinds of functions still operate in the main event loop, so they still can not be used as a way to achieve true threading with javaScript, at least not by themselves.
@@ -20,6 +20,8 @@ So then js async is not a replacement for Webworker in client side javaScript, o
 In this section I will be going over just a few very basic examples that involve the use of promsies and the async keyword as a way to create functions.
 
 ### 1.1 - Basic example involving the use of promsies
+
+So here I have a basic example that involves the use of promises and setTimeout.
 
 ```js
 let foo = (delay) => {
