@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 707
-updated: 2020-09-18 16:50:49
-version: 1.4
+updated: 2020-09-18 16:59:03
+version: 1.5
 ---
 
 It is possible to store [git credentials](https://git-scm.com/docs/gitcredentials), or in other words a user name and password for git in a number of ways.
@@ -17,15 +17,21 @@ It is possible to store [git credentials](https://git-scm.com/docs/gitcredential
 
 ### 1.1 - using git config to set up a store
 
+In the command line call git config and then make sure to use the global flag as I do not case to store credentials at a repository level. Afer git config and the global flag type credential.helper followed by a space and then store. Make sure not to spell anything wrong if I do so the values will be stored anyway in there wrong from and got will ignore them. In other words git will not throw any kind of error in that case.
+
 ```
 $ git config --global credential.helper store
 ```
+
+Anyway if all goes well the global gitconfig file for the current user on the system will be updated to use the store method for storing credentials. What this means is that next time I push something to a remote, or do anything that will require me to provide a login and password I will be prompted for them one last time.
 
 ```
 $ git push
 Username: demoman
 Password: eeeeeeeeefeeeeeeeeefeeeeeeeeefeeeeeeeeef
 ```
+
+After I enter the username and password for one last time then a .git-credentials file will be created with the given login info. The file will be stored in the home folder of the current user as a hidden file same as gitconfig, or it could be in another location in some other situations.
 
 ## 1.2 - The .gitconfig file
 
