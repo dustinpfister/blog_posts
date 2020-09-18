@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 707
-updated: 2020-09-18 16:59:03
-version: 1.5
+updated: 2020-09-18 17:05:53
+version: 1.6
 ---
 
 It is possible to store [git credentials](https://git-scm.com/docs/gitcredentials), or in other words a user name and password for git in a number of ways.
@@ -15,9 +15,11 @@ It is possible to store [git credentials](https://git-scm.com/docs/gitcredential
 
 ## 1 - Setting global credentials with a simple store
 
+This might be the easiest way to go about storing credentials with git. It does have its drawbacks as the password will be stored on the computer as plain text. However when it comes to using github at least I would go about using a Personal Access Token or PAT for short that can be used in place of the password for my github account. This way I can set just the level of permissions that are needed for the token, and if it is even compromised the attacker will only be able to do that given level of damage.
+
 ### 1.1 - using git config to set up a store
 
-In the command line call git config and then make sure to use the global flag as I do not case to store credentials at a repository level. Afer git config and the global flag type credential.helper followed by a space and then store. Make sure not to spell anything wrong if I do so the values will be stored anyway in there wrong from and got will ignore them. In other words git will not throw any kind of error in that case.
+In the command line call git config and then make sure to use the global flag as I do not case to store credentials at a repository level. After git config and the global flag type credential.helper followed by a space and then store. Make sure not to spell anything wrong if I do so the values will be stored anyway in there wrong from and got will ignore them. In other words git will not throw any kind of error in that case.
 
 ```
 $ git config --global credential.helper store
@@ -57,6 +59,6 @@ The documentation recommends not to edit this file directly with an editor but i
 
 ## 2 - Conclusion
 
-There are a number of other ways to store credentials other then juts a simple plain text store. I understand the security draw backs of having a password stored on my computer, but there are still steps I can take that will help. For one thing I can use a Personal Authentication Token in place of my password for the password on github, and I can restrict the permissions of that token. In addition if someone can get into my computer and find out what the token is I think that means I have bigger security concerns to deal with.
+There are a number of other ways to store credentials other then juts a simple plain text store. I understand the security draw backs of having a password stored on my computer, but there are still steps I can take that will help. For one thing I can use a Personal Access Token in place of my password for the password on github, and I can restrict the permissions of that token. In addition if someone can get into my computer and find out what the token is I think that means I have bigger security concerns to deal with.
 
 If I do look into other options for storing login credentials with git I will of course get around to updating this post. There are a number of options for setting what the helper is that will store the password, and some of them change depending on the operating system used.
