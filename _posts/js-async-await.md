@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2020-09-18 09:54:39
-version: 1.11
+updated: 2020-09-18 13:15:14
+version: 1.12
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These kinds of functions still operate in the main event loop, so they still can not be used as a way to achieve true threading with javaScript, at least not by themselves.
@@ -15,28 +15,56 @@ So then js async is not a replacement for Webworker in client side javaScript, o
 
 <!-- more -->
 
-## 1 - js async basic example
+## 1 - js async basics
 
-The async keyword can be used in combination with the function keyword to declare an async function. Inside the body of the async function the await keyword can be used as a way to pause the execution of the rest of the logic in the function until a function that was called with await is completed.
+In this section I will be going over just a few very basic examples that involve the use of promsies and the async keyword as a way to create functions.
 
-A basic example of an async function in javaScript might then look like this:
+### 1.1 - Basic example involving the use of promsies
 
 ```js
-
 let foo = (delay) => {
     return new Promise((resolve) => {
         setTimeout(function () {
             resolve();
         }, delay);
-    })
+    });
 };
  
-let func = async function() {
+let bar = function () {
+    console.log('start');
+    return foo(3000).then(() => {
+        console.log('end');
+    });
+};
+ 
+bar();
+```
+
+### 1.2 - The same example with js async
+
+The async keyword can be used in combination with a function such as an arrow function to declare an async function. Inside the body of the async function the await keyword can be used as a way to pause the execution of the rest of the logic in the function until a function that was called with await is completed. The function that is called with awaite should be a function that will return a promsie or another function created with the async keyword.
+
+A basic example of an async function in javaScript might then look like this then:
+
+```js
+let foo = async (delay) => {
+    let st = new Date(),
+    now = st,
+    t = 0;
+    while(t < delay){
+        now = new Date();
+        t = now - st;
+    }
+    return 1;
+};
+ 
+let bar = async ()=> {
     console.log('start');
     await foo(3000);
     console.log('end');
 };
-func();
+ 
+bar();
 ```
 
 The foo function returns a promise that resolves after a delay. When used inside the body of the func async function that execution of code is paused, and thus the string end is not logged to the console until the delay has completed. So this can be thought of as a cleaner style compared to just using promises.
