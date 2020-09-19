@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 706
-updated: 2020-09-19 06:40:21
-version: 1.5
+updated: 2020-09-19 06:42:34
+version: 1.6
 ---
 
 I have some repositories that keep growing in size, so far this has not presented a problem for me, but I can not help but thing that at some point in the future it will sooner or later. So for now I thought I would take a moment tot just fool around with a test git folder, and do a little [research on how to know how big a git repository is](https://stackoverflow.com/questions/8185276/find-size-of-git-repository) to begin with at least. 
@@ -61,7 +61,7 @@ $ git count-objects
 3 objects, 0 kilobytes
 ```
 
-However there are some options.
+However there are some options that can result in a more detailed output of what is going on so far in this test repository. By passing the v option I get a more verbose output. On top of that there is also the uppercase H option that will give the output in a more Human readable form.
 
 ```
 $ git count-objects -vH
