@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 706
-updated: 2020-09-18 09:44:09
-version: 1.3
+updated: 2020-09-19 06:36:18
+version: 1.4
 ---
 
 I have some repositories that keep growing in size, so far this has not presented a problem for me, but I can not help but thing that at some point in the future it will sooner or later. So for now I thought I would take a moment tot just fool around with a test git folder, and do a little [research on how to know how big a git repository is](https://stackoverflow.com/questions/8185276/find-size-of-git-repository) to begin with at least. 
@@ -17,6 +17,8 @@ In late versions of git there is the [git count-objects](https://git-scm.com/doc
 <!-- more -->
 
 ## 1 - Creating a test repo and using git count-objects
+
+I often find that it might be best to start over with a test repository rather than a clone of a repository that I might end up accidentally pushing changes to.  So in this section I will be creating a whole new repository with git, and then use the git count-objects command to track the size of the repository.
 
 ### 1.1 - create the test repo
 
