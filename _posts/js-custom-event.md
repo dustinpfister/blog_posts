@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2020-06-07 16:26:17
-version: 1.8
+updated: 2020-09-19 14:19:15
+version: 1.9
 ---
 
-In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. There are a number of other ways of creating custom events when it comes to using a framework like phaser and threejs. There are also ways of doing this in a nodejs environment when it comes to the events module which is for the most part what that part of nodejs is for. However in this post I will be sticking to the custom way of how to go about making custom events in just plain old vanilla client side javaScript in the browser.
+In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. There are a number of other ways of creating custom events when it comes to using a framework like phaser and threejs. There are also ways of doing this in a nodejs environment when it comes to the [events module](https://nodejs.org/api/events.html) which would be the node built in way of how to go about making user define events in a sever side javaScript environment. 
+
+However in this post I will be sticking to the custom way of how to go about making custom events in just plain old vanilla client side javaScript in the browser.
 
 <!-- more -->
 
