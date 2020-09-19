@@ -1,12 +1,12 @@
 ---
 title: Git size of repository
-date: 2020-09-17 16:035:00
+date: 2020-09-17 16:35:00
 tags: [git]
 layout: post
 categories: git
 id: 706
-updated: 2020-09-19 06:42:34
-version: 1.6
+updated: 2020-09-19 14:04:52
+version: 1.7
 ---
 
 I have some repositories that keep growing in size, so far this has not presented a problem for me, but I can not help but thing that at some point in the future it will sooner or later. So for now I thought I would take a moment tot just fool around with a test git folder, and do a little [research on how to know how big a git repository is](https://stackoverflow.com/questions/8185276/find-size-of-git-repository) to begin with at least. 
