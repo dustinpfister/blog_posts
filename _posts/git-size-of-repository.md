@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 706
-updated: 2020-09-19 06:36:18
-version: 1.4
+updated: 2020-09-19 06:40:21
+version: 1.5
 ---
 
 I have some repositories that keep growing in size, so far this has not presented a problem for me, but I can not help but thing that at some point in the future it will sooner or later. So for now I thought I would take a moment tot just fool around with a test git folder, and do a little [research on how to know how big a git repository is](https://stackoverflow.com/questions/8185276/find-size-of-git-repository) to begin with at least. 
@@ -22,6 +22,8 @@ I often find that it might be best to start over with a test repository rather t
 
 ### 1.1 - create the test repo
 
+First off I create a new repository with the git init command in a new folder.
+
 ```
 $ mkdir git_test
 $ cd git_test
@@ -29,6 +31,8 @@ $ git init
 ```
 
 ### 1.2 - Add something to it and create a first commit
+
+I will then want to add something to it such as a dummy README file.
 
 ```
 $ nano README.md
@@ -40,6 +44,8 @@ $ nano README.md
 This is only a test
 ```
 
+And a first commit.
+
 ```
 $ git add *
 $ git commit -m "first commit"
@@ -48,13 +54,16 @@ $ git commit -m "first commit"
 
 ### 1.3 - Use the git count-objects command
 
+So now I just need to call the git count-objects command in the git folder to get a count of all the objects, and a size value. If I call it without any arguments I get a size in kilobytes.
+
 ```
 $ git count-objects
 3 objects, 0 kilobytes
 ```
 
-```
+However there are some options.
 
+```
 $ git count-objects -vH
 git count-objects -vH
 count: 3
