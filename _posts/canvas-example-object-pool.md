@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-09-20 16:29:00
-version: 1.23
+updated: 2020-09-20 16:35:40
+version: 1.24
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on a [object pool](https://en.wikipedia.org/wiki/Object_pool_pattern) module and a little additional code that will make use of such a module. An object pool is what I have come to call a collection of display objects that are a fixed set of such objects rather than something where they are being added and removed on the fly. So in other words an object pool is a fixed collection of objects that are to be used over and over again, rather than a collection of objects that created and destroyed as needed.
@@ -132,7 +132,7 @@ So now that I have my Pool module I will now want some additional javaScript cod
 
 ## 2 - The draw.js module
 
-So this is very much a canvas example, so there is of course the draw.js module for this example. This time around I wanted to make things simple, so there is mainly just one method to draw a background, and another to just darw the state of the pool.
+So this is very much a canvas example, so there is of course the draw.js module for drawing to a canvas element. This time around I wanted to make things simple, so there is mainly just one method to draw a background, and another to just draw the state of an object pool. After that there is just one additional method for drawing a version number from a main state object which is something that I aim to start doing for all of these canvas examples.
 
 ```js
 var draw = {};
@@ -180,9 +180,9 @@ draw.ver = function (ctx, state) {
 
 ## 3 - Main.js
 
-So now just for a main.js file to make use of the pool.js and draw.js modules. Here I create and inject a canvas element into a container element. I then also pass the canvas element to the create method of my Pool.js module when creating a pool for the canvas area, while I am at it I also set a count for the size of the pool.
+So now I just need a main.js file to make use of the pool, and draw modules that I went over above. Here I create and inject a canvas element into a main container element. I then also make a reference to the canvas element in my main state object that I will be creating here in this file. The state object will also contain two object pools, one for just simple box objects, and another for shot objects that the boxes will be firing out all over the place.
 
-In here I also have my main app loop where I am updating the stat of the pool, by calling the update method of the Pool module and pass the state object I want to update along with a value that is the number of seconds that has passed sense the last update. I am also of course using mu draw methods to render the current state of the pool.
+In here I also have my main app loop where I am updating the stat of the pool, by calling the update method of the Pool module and pass the state object I want to update along with a value that is the number of seconds that has passed sense the last update. I am also of course using my draw methods to render the current state of the pool.
 
 ```js
 var container = document.getElementById('canvas-app'),
