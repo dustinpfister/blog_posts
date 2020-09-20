@@ -5,17 +5,17 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-09-20 16:10:50
-version: 1.20
+updated: 2020-09-20 16:17:05
+version: 1.21
 ---
 
-This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on [object pools](https://en.wikipedia.org/wiki/Object_pool_pattern). An object pool is what I have come to call a collection of display objects when making a canvas project that calls for them. This object pool is called such because it is a fixed collection of objects that are to be used over and over again, rather that created and destroyed as needed.
+This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on a [object pool](https://en.wikipedia.org/wiki/Object_pool_pattern) module and a little additional code that will make use of such a module. An object pool is what I have come to call a collection of display objects that are a fixed set of such objects rather than something where they are being added and removed on the fly. So in other words an object pool is a fixed collection of objects that are to be used over and over again, rather than a collection of objects that created and destroyed as needed.
 
-So these objects will often contain properties like x and y for the current position as well as width, and height as one might expected. Depending on the nature of the canvas project they will often have additional properties like heading, pixels per second, max hit points, damage, and so forth. However than main point of this canvas example is just to show one way of how to go about creating a collection of these kinds of objects.
+So these objects will often contain properties like x and y for the current position as well as width, and height as one might expected with just about any display object in a simple 2d canvas project. Depending on the nature of the canvas project they will often have additional properties like heading, pixels per second, max hit points, damage, and so forth. However the main point of this canvas example is just to show one way of how to go about creating a collection of these kinds of objects.
 
-There is creating a collection of objects as just an empty array, and then have code that pushes new display objects into the collection, and then purge them out when some kind of condition happens that will result in that happening. However there is also creating an array of display objects once, and when doing so making the fixed pool of a certain set length. I can then have an active property of a display object that is used to set if the display object is currently being used or not. 
+There is creating a collection of objects as just an empty array, and then have code that pushes new display objects into the collection, and then purge them out when some kind of condition happens that will result in that happening. However there is also creating an array of display objects once, and when doing so making the fixed pool of a certain set length. I can then have an active property of a display object that is used to set if the display object is currently being used or not.
 
-So then an object pool is a way of creati8ng a collection of objects where I am setting fixed amounts of display objects rather than just pushing them in and out out as needed. That way I know for sure I will never end up with some kind of run away situation in which objects keep getting added. More objects means more overhead to have everything running, and although many computers are fast, I still think it terms of less is more when having display objects in a project. So then in this post I will be going over an example that involves a fixed pool.
+So then an object pool is a way of creating a collection of objects where I am setting fixed amounts of display objects rather than just pushing them in and out out as needed. That way I know for sure I will never end up with some kind of run away situation in which objects keep getting added. More objects means more overhead to have everything running, and although many computers are fast, I still think it terms of less is more when having display objects in a project. So then in this post I will be going over an example that involves a fixed object pool. This will involve a module that can be used to create a pool object, and a bunch of additional pubic methods to work with that pool, and also some additional code that is used to demo that module.
 
 <!-- more -->
 
