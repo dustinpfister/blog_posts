@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-09-20 16:22:17
-version: 1.22
+updated: 2020-09-20 16:29:00
+version: 1.23
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on a [object pool](https://en.wikipedia.org/wiki/Object_pool_pattern) module and a little additional code that will make use of such a module. An object pool is what I have come to call a collection of display objects that are a fixed set of such objects rather than something where they are being added and removed on the fly. So in other words an object pool is a fixed collection of objects that are to be used over and over again, rather than a collection of objects that created and destroyed as needed.
@@ -26,9 +26,7 @@ So then an object pool is a way of creating a collection of objects where I am s
 
 So the main event of this post is then the pool.js file that I have work out here for this canvas example. In this module I have a few public methods, but there are two main methods or interest. There is the create method to create a new pool object, and then an update method to update the pool. The create method will take an argument object and here I can define properties for the object pool such as the count of objects, and methods that will be called for an object spawn, update, and purge for example. The update method is then what will be called to update the state of an pool object by way of passing the pool object alone with a seconds value.
 
-So at the top of the module I have my create pool method, that will be made public. For now I am not doing anything that involved with arguments, it just creates a pool of objects in a property of a state object that it returns. I have some additional properties outside of the pool attached to the state object that have to do with spawn rate, and how much time has passed sense the last spawn. So any additional properties outside of the pool that have to do with the pool would also be attached to this main state object for it.
-
-I then also have a spawn method that will not really spawn new objects into the pool of course, but just activates ones that are not being used from the pool. In the event that there is no inactive object available the method will just not activate a new object as it just can not be done because of the fixed nature of the pool. A similar effect could be achieved with the alliterative to an object pool, by setting some kind of limit for spawning. In a project where I must have an additional object added eventually, I could have some kind of backlog count maybe, but that might be a matter for another post.
+Another public method of interest here I is the main public spawn method that will not really spawn new objects into the pool of course, but just activates ones that are not being used from the pool each time the main pool module spawn method is called. In the event that there is no inactive object available the method will just not activate a new object as it just can not be done because of the fixed nature of the pool. A similar effect could be achieved with the alliterative to an object pool, by setting some kind of limit for spawning. In a project where I must have an additional object added eventually, I could have some kind of backlog count maybe, but that might be a matter for another post.
 
 ```js
 var poolMod = (function () {
@@ -127,6 +125,8 @@ var poolMod = (function () {
 }
     ());
 ```
+
+I then have just a few additional public methods for now that might end up being expanded with additional stuff that feel should be there in this object pool module. One such method is my move by pps method that just wraps up some code that I find myself typing over and over again so it should be pulled into some kind of module if not this one. I do not want to go to nuts with methods when it comes to this module, at least not for this canvas example at least. My reasoning is that this will likely be a module that I will be copying into other projects, and then mutate the code a little with application specific changes.
 
 So now that I have my Pool module I will now want some additional javaScript code for drawing the state of a pool to a canvas element, and some additional javaScript that makes use of this module and the daring module. SO lets look at the rendering code that will actually draw to the canvas now.
 
