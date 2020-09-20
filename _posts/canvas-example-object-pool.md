@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-09-20 16:17:05
-version: 1.21
+updated: 2020-09-20 16:22:17
+version: 1.22
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on a [object pool](https://en.wikipedia.org/wiki/Object_pool_pattern) module and a little additional code that will make use of such a module. An object pool is what I have come to call a collection of display objects that are a fixed set of such objects rather than something where they are being added and removed on the fly. So in other words an object pool is a fixed collection of objects that are to be used over and over again, rather than a collection of objects that created and destroyed as needed.
@@ -24,7 +24,7 @@ So then an object pool is a way of creating a collection of objects where I am s
 
 ## 1 - The pool.js file
 
-So the main event of this post is then the pool.js file that I have work out here. In this module I have just two public methods, one to create a pool, and the other to update the pool. In more complex projects I might need some additional methods when it comes to working with two or more pools of objects, and how they interact with each other, or I might be able to just work that out via arguments.
+So the main event of this post is then the pool.js file that I have work out here for this canvas example. In this module I have a few public methods, but there are two main methods or interest. There is the create method to create a new pool object, and then an update method to update the pool. The create method will take an argument object and here I can define properties for the object pool such as the count of objects, and methods that will be called for an object spawn, update, and purge for example. The update method is then what will be called to update the state of an pool object by way of passing the pool object alone with a seconds value.
 
 So at the top of the module I have my create pool method, that will be made public. For now I am not doing anything that involved with arguments, it just creates a pool of objects in a property of a state object that it returns. I have some additional properties outside of the pool attached to the state object that have to do with spawn rate, and how much time has passed sense the last spawn. So any additional properties outside of the pool that have to do with the pool would also be attached to this main state object for it.
 
