@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2020-09-21 15:24:01
-version: 1.8
+updated: 2020-09-21 15:27:48
+version: 1.9
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -78,6 +78,8 @@ This subject could quickly branch off into not just one post, but many on just a
 ## 2 - style api example
 
 One thing that I started paying around with in the early days was the style API. This is one way to go about changing CSS values with javaScript code. To start using it one just needs to get a reference to an html element by one means or another an dhtne there are a whole bunch of properties off of a style object of the element reference. Each of these can be used as a way to set what the css style is for that element.
+
+So for example one can have a div element and then another dic element that is a child of that container element. Some javaScript code can be used to get references to those elements and also use the style api to set the css values of the child element so that it is centered in the container element. The style api can also be used to change the width and height of the child element along with nay other css values.
 
 ```html
 <html>
