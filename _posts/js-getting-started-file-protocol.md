@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2020-09-21 14:43:30
-version: 1.5
+updated: 2020-09-21 14:54:37
+version: 1.6
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -41,6 +41,37 @@ p.innerText = 'hello world';
 ```
 
 So the whole idea here with getting started with javaScript by way of the file protocol is to write something like this in a text editor and then save it as an html file. Then open a web browser and pres ctrl+o and navigate to the location of the html file stored on your local computer and open it up in the browser.
+
+### 1.2 - Starting out with some events
+
+Now that we have a hello world out of the way lets move on to something else such as event attachment. There is a number of ways to attach a wide range of various types of events to elements in html. However for this getting started post I thought I would stick to just a basic example that has to do with just the click event and the add event listener method.
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div>
+            <p>count: <span id="disp_count"></span></p>
+            <input id="button_step" type="button" value="step">
+        </div>
+        <script>
+var count = 0,
+disp_count = document.getElementById('disp_count');
+var render = function(){
+    disp_count.innerText = count;
+};
+var step = function(){
+    count += 1;
+    render();
+};
+document.getElementById('button_step').addEventListener('click', step);
+render();
+        </script>
+    </body>
+</html>
+```
 
 ## 2 - Conclusion
 
