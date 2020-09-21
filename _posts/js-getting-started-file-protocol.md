@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2020-09-21 14:57:39
-version: 1.7
+updated: 2020-09-21 15:24:01
+version: 1.8
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -75,6 +75,45 @@ render();
 
 This subject could quickly branch off into not just one post, but many on just all there is to be aware of when it comes to event attachment in client side javaScript. I do not want to get into detail with that here in this section or this post. The idea here is that if you want to learn client side javaScript you have to start somewhere. Creating html files and working out just some very basic javaScript examples and opening them up in w web browser is a starting point.
 
-## 2 - Conclusion
+## 2 - style api example
+
+One thing that I started paying around with in the early days was the style API. This is one way to go about changing CSS values with javaScript code. To start using it one just needs to get a reference to an html element by one means or another an dhtne there are a whole bunch of properties off of a style object of the element reference. Each of these can be used as a way to set what the css style is for that element.
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div id="container" style="position:relative;width:320px;height:240px;background:black;">
+           <div id="child" style="position:absolute;width:32px;height:32px;background:gray;"></div>
+        </div>
+        <script>
+var render = function(child, state){
+    child.style.left = state.x + 'px';
+    child.style.top = state.y + 'px';
+    child.style.width = state.w + 'px';
+   child.style.height = state.h + 'px';
+};
+var center = function(state, container){
+   state.x = container.scrollWidth / 2 - state.w / 2;
+   state.y = container.scrollHeight / 2 - state.h / 2;
+};
+var state = {
+   x: 25,
+   y: 5,
+   w: 128,
+   h: 64
+};
+var container = document.getElementById('container');
+var child = document.getElementById('child');
+center(state, container);
+render(child, state);
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
 
 So getting started with javaScript by way of creating assets that one can just open up in a web browser is a great starting point for starting to learn javaScript. Also in many cases it is a way to just keep moving forward with learning as long as one does not run into any problems doing so, and what it is that they are working on will still work just fine via https also, and in most situations it will.
