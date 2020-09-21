@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2020-09-21 13:42:25
-version: 1.16
+updated: 2020-09-21 15:39:38
+version: 1.17
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console.
@@ -96,6 +96,31 @@ Now to create something useful. Say you have a website that is getting ten thous
 > 13310
 ```
 
-## 3 - Conclusion
+## 3 - Using the file protocol and a text editor to get started with javaScript
+
+Another option for getting started with javaScript is to use a text editor as a way to create html files that make use of embedded or external javaScript files. I have [wrote a post on getting started with javaScript and the file protocol](/2020/09/21/js-getting-started-file-protocol/) in which I get into some good starting examples when it comes to this kind of approach to starting to learn front end javaScript but I thought I would at least touch base on a basic example here also.
+
+A good starting point would be to open a text editor and start out with something like this:
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <p></p>
+        <script>
+var p = document.getElementsByTagName('p')[0];
+p.innerText = 'hello world';
+        </script>
+    </body>
+</html>
+```
+
+Then save the file as something like index.html in a folder on your computer somewhere. Then in your web browser press ctrl+o and navigate to the index.html file and open it up. In the address bar your should see file:\/\/ rather than the usual https:\/\/ and then a URI to the location of the html file.
+
+So this way of starting to learn javaScript involves making changes to plain static html and javaScript files and then just reloading your web browser to observe the changes. This kind of way of learning javaScript will work okay for most situations except for some things that you might eventually run into in which it will not work, at which point it is time to progress to learning how to set up a simple web sever to host what you are working on over https, even if it is just locally.
+
+## 4 - Conclusion
 
 Getting started with javaScript is not so hard, it just takes time and patience. There is a great deal more to write about when it comes to making an actual project of some kind, but for the sake of keeping this post simple I just covered a few pointers for now. This is a post that I will come back to at some point to revise, and expand. If you are new to javaScript and have anything I think I should add please let me know in the comments.
