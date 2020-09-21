@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2020-09-21 14:35:06
-version: 1.3
+updated: 2020-09-21 14:41:01
+version: 1.4
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -23,6 +23,8 @@ So for starters I thought it would be go to start out with a few very basic star
 
 ### 1.1 - Very basic hello world
 
+Well lets get this one out of the way so we can move on to the more interesting stuff. There are a number of ways to go about creating a hello world html file with a script tag and some javaScript code. One way would be to have a single hard coded display element like a paragraph element, and then get a reference to that element in the script tag. Once a reference to the element is obtained the innerText property of the element reference to the paragraph element is one way to set the text of that element to something like hello world with javaScript code.
+
 ```html
 <html>
     <head>
@@ -37,3 +39,5 @@ p.innerText = 'hello world';
     </body>
 </html>
 ```
+
+So the whole idea here with getting started with javaScript by way of the file protocol is to write something like this in a text editor and then save it as an html file. Then open a web browser and pres ctrl+o and navigate to the location of the html file stored on your local computer and open it up in the browser.
