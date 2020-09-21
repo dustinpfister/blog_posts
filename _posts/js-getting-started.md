@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2020-09-21 13:23:56
-version: 1.15
+updated: 2020-09-21 13:42:25
+version: 1.16
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console.
@@ -44,11 +44,20 @@ Lets start out with some simple [expressions](https://developer.mozilla.org/en-U
 
 ### 2.2 - Operator precedence, and grouping
 
-One thing I think javaScript developers should get straight right away is [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence). That is the order in which operations are preformed. Each operator in javaScript as a certain precedence over others, for example multiplication and devision is preformed before addition and subtraction.
+One thing I think javaScript developers should get straight right away is [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simple order of operations. That is the order in which different operations are preformed when working out a lengthly expression that will produce some kind of product. Each operator in javaScript has a certain precedence over others, for example multiplication and devision is preformed before addition and subtraction. 
 
+There are a lot of operators and over twenty different levels of operator precedence in javaScript, along with associativity. That is the direction in which operators are preformed. Generally the associativity of most operators is from left to right, but there are some where the opposite flow is what is in effect. I will not be getting into all of this in depth here as I have done so elsewhere, and this is just one of many rabbit holes that come up when it comes to learning to code. However in this getting started post on javaScript it would not hurt to play around with a few simple examples that have to do with just addition, subtracting, multiplication, and grouping.
+
+ 
 ```js
-> 5 + 10 * 3 - 1
+> 5 + 10 * 3 - 1;
 < 34
+> (5 + 10) * 3 - 1;
+< 44
+> 5 + 10 * (3 - 1);
+< 25
+> (5 + 10) * (3 - 1);
+< 30
 ```
 
 Expressions in javaScript are evaluated from left to right, however operators of higher precedence are preformed first. Because multiplication has a higher precedence then addition and subtraction 10 * 3 is preformed first, and then the normal flow from left to right happens.
