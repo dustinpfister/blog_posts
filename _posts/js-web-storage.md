@@ -5,15 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2020-06-10 12:48:11
-version: 1.10
+updated: 2020-09-22 08:41:02
+version: 1.11
 ---
 
-There are a number of ways to store data client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment. 
+There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
 
-The Web Storage API is easy to use as everything can just simply be stored as key value pairs of the localSorage global on clients that support the Web Storage API. However depending on the nature of the project it might not always be the best choice. Cookie files will always give better backward compatibility when it comes to older browsers, and the indexed db option is a better choice when it comes to storage of large amounts of data on the clients computer. There is also the idea of using the [File reader constructor](/2020/03/24/js-filereader/) to have it so the user can save and load files anywhere on there computers file system, which might be a great choice for handing the saving and loading of state, or other assets that way.
+The Web Storage API is easy to use as everything can just simply be stored as key value pairs of the localSorage global variable on clients that support the Web Storage API. However depending on the nature of the project it might not always be the best choice when storing large amounts of data. The indexed db option is a better choice when it comes to storage of large amounts of data on the clients computer, and cookie files will always give better backward compatibility when it comes to supporting older browsers but with a limited size.
 
-Still the Web Storage API is a good option for quickly getting the job done, and most modern browsers support the standard well.
+There is also the idea of using the [File reader constructor](/2020/03/24/js-filereader/) to have it so the user can save and load files anywhere on their computers local file system. So in some projects the file reader constructor might be be the best choice for handing the saving and loading of state, or other assets in general actually.
+
+Still the Web Storage API is a good option for quickly getting the job done, and most modern browsers support the standard well, any one had to start somewhere when it comes to researching what the options are.
 
 <!-- more -->
 
