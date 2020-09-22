@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2020-09-22 15:27:07
-version: 1.14
+updated: 2020-09-22 15:30:56
+version: 1.15
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -68,8 +68,11 @@ if(storeText != ''){
 
 ## 2 - Save state system from my cross hairs canvas example
 
+So now that I have covered a basic example of using the web storage API I thought I would write a section on the code that I worked out for the save state system that I am using in one of my canvas examples.
+
 ### 2.1 - striped down game.hs module with save state code
 
+Here is a striped down version of the game module for cross hairs that just contains the code that is used to process a save state string. On top of that there is just a method to create a game object.
 
 ```js
 var gameMod = (function () {
@@ -192,6 +195,8 @@ var gameMod = (function () {
 ```
 
 ### 2.2 - basic save state tool that can edit damage
+
+Now to create a simple tool that I can use to edit the save state of a game. So far this tool just edits the damage of a save state that should be there to begin with, but in time I might put more work into this one if I keep working on the cross hairs example.
 
 ```html
  <html>
