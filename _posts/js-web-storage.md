@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2020-09-22 08:41:02
-version: 1.11
+updated: 2020-09-22 09:20:23
+version: 1.12
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -21,38 +21,38 @@ Still the Web Storage API is a good option for quickly getting the job done, and
 
 ## 1 - web storage basic example
 
-Working with the Web Storage API is as easy as working with a plain old javaScript object more or less which makes it one of he reasons why I tend to like using it. The localStoarge global can then be used just like that of any other javaScript Object, whatever you want to save on the client just define it as a property of the localStorage global. However there are also setItem and getItem methods that can be used to do get and set properties of the localStoarge global which should be used to do so. Once a property is set then that value will be there again every page load, serving the purpose of client side persistence of data.
+Working with the Web Storage API is as easy as working with a plain old javaScript object more or less which makes it one of he reasons why I tend to like using it. The localStoarge global can then be used just like that of any other javaScript Object, whatever you want to save on the client just define it as a property of the localStorage global. However there are also setItem and getItem methods that can be used to do get and set properties of the localStoarge global which should be used to do so. Once a property is set then that value will be there again every page load, site wide, serving the purpose of client side persistence of data on top of other options such as cookie files.
 
-So then here I have a basic example of the Web Storage API that just stores a single message that can be set in an test input element. I set some [event handlers](/2019/01/16/js-event-listeners/) that will fire each time a keyboard key is released, or the value changes. Each time one of the events fire a set method will set the current value of the text input element to a mess property of the localStorage global. Each time the page loads a get method will fire that will set the value of the text element to the mess property of the localStorage global.
+So then here I have a basic example of the Web Storage API that just stores a single message that can be set from the value property of a text type input element. 
+
+I have an [event handler](/2019/01/16/js-event-listeners/) that will fire each time a keyboard key is released, or the value changes. So Each time a key is release, or for any reason the value property of the text input element changes I call the set method of my web storage module to set the value for a key that I have set as mess. Then each time the page loads the value of the text element is set to the value in local storage that is obtained by way of the get method of my web storage module.
 
 ```html
-<html>
-    <head>
-        <title>web storage</title>
-    </head>
-    <body>
-        <input id="the-text" type="text" placeholder="foo">
-        <script>
-var text = document.getElementById('the-text');
+var ws = {};
 // get an item with local storage
-var get = function(){
-  var mess = localStorage.getItem('mess');
+ws.get = function(key){
+  var mess = localStorage.getItem(key);
   if(mess){
-      text.value = mess;
+      return mess;
+  }else{
+      return '';
   }
 };
 // set an item with local storage
-var set = function(e){
-    localStorage.setItem('mess', e.target.value);
+ws.set = function(key, value){
+    localStorage.setItem(key, value);
 };
-text.addEventListener('change', set);
-text.addEventListener('keyup', set);
-get();
-        </script>
-    </body>
-</html>
+
+// DEMO
+var text = document.getElementById('the-text'),
+setMessHandler = function(e){
+   ws.set('mess', e.target.value);
+};
+text.addEventListener('change', setMessHandler);
+text.addEventListener('keyup', setMessHandler);
+text.value = ws.get('mess');
 ```
 
-## 5 - Conclusion
+## 2 - Conclusion
 
 So there are a number of other options when it comes to finding a way to store some data for a user in a web application. Of course there is having a database sever side for example as a way of saving data for a user. However with many of the applications that I have made thus far I do not care to get into that sort of thing f it is the kind of project where I can avoid doing so.
