@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2020-09-22 09:20:23
-version: 1.12
+updated: 2020-09-22 09:23:58
+version: 1.13
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -28,6 +28,13 @@ So then here I have a basic example of the Web Storage API that just stores a si
 I have an [event handler](/2019/01/16/js-event-listeners/) that will fire each time a keyboard key is released, or the value changes. So Each time a key is release, or for any reason the value property of the text input element changes I call the set method of my web storage module to set the value for a key that I have set as mess. Then each time the page loads the value of the text element is set to the value in local storage that is obtained by way of the get method of my web storage module.
 
 ```html
+<html>
+    <head>
+        <title>web storage</title>
+    </head>
+    <body>
+        <input id="the-text" type="text" placeholder="foo">
+        <script>
 var ws = {};
 // get an item with local storage
 ws.get = function(key){
@@ -50,7 +57,13 @@ setMessHandler = function(e){
 };
 text.addEventListener('change', setMessHandler);
 text.addEventListener('keyup', setMessHandler);
-text.value = ws.get('mess');
+var storeText = ws.get('mess');
+if(storeText != ''){
+   text.value = storeText;
+}
+        </script>
+    </body>
+</html>
 ```
 
 ## 2 - Conclusion
