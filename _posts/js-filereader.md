@@ -5,13 +5,15 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2020-09-23 14:30:04
-version: 1.11
+updated: 2020-09-23 14:37:58
+version: 1.12
 ---
 
-Typically when dealing with files in javaScript it is dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting HTTP. There are other ways of getting or saving files remotely, and also ways of storing data locally such as with the [web storage API](/2019/08/20/js-web-storage/). However with some projects I might want to [read a file on a users local file system](https://www.html5rocks.com/en/tutorials/file/dndfiles/). Of course I can not just do so for what should be obvious security reasons, however there is a way of doing so that involves allowing the user to select a file that they do not mind giving access to.
+Typically when dealing with files in javaScript it is dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. 
 
-It will involve the use of the [FileReader constructor](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) in conjunction with [file objects](https://developer.mozilla.org/en-US/docs/Web/API/File) and a [file list input tag](https://developer.mozilla.org/en-US/docs/Web/API/FileList).
+There are However other ways of getting or saving files remotely, and also ways of storing data locally such as with the [web storage API](/2019/08/20/js-web-storage/). However with some projects I might want to [read a file on a users local file system](https://www.html5rocks.com/en/tutorials/file/dndfiles/). Of course I can not just do so for what should be obvious security reasons, however there is a way of doing so that involves allowing the user to select a file that they do not mind giving access to. That is allowing the user to navigate to a location on there local file system, and allow for a file to be saved to loaded there at a given file URI.
+
+Creating and loading files on the users local file system will involve the use of the [FileReader constructor](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) in conjunction with [file objects](https://developer.mozilla.org/en-US/docs/Web/API/File) and a [file list input tag](https://developer.mozilla.org/en-US/docs/Web/API/FileList). In this post I will be going over a few basic examples of how to use this as a means of local storage of state.
 
 <!-- more -->
 
