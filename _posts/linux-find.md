@@ -5,11 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 710
-updated: 2020-09-23 15:30:19
-version: 1.1
+updated: 2020-09-24 09:06:36
+version: 1.2
 ---
 
-The [linux find](https://en.wikipedia.org/wiki/Find_(Unix)#From_the_current_working_directory) command can be used to find a file from a starting mount point that can be the current working directory, or any other path that one has permission to access.
+The [linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting mount point. The starting mount point can be the current working directory, or any other path that one has permission to access. The command will loop over all folders recursivly untill it is done searhing for files and will output the paths to fines that it finds in the standard output.
+
+Where the linux grep command is used to look for patterns in content, the linux find command is used to look for patterns in file names. So the command can be used by itself if I just want to find one or more files that fit a given pattern, or with grep via piping to find files and on top of that look farther into the content of each file.
+
+So in this post I will be looking at a few examples of how to get going with the Linux find command.
 
 <!-- more -->
 
