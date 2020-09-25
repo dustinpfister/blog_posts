@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:40:39
-version: 1.13
+updated: 2020-09-25 13:42:52
+version: 1.14
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -87,6 +87,8 @@ console.log(arr.length); // 1
 ```
 
 ### 2.4 - Just use more than one argument, and then pop if you just one want element
+
+The issue if a combination of using a number as the first argument, but also only passing one argument. So when  passing two or more arguments for starting values there is no problem. If for some reason you only want one starting value in the array that is a number you could still use this to do that by just popping out the extra element.
 
 ```js
 let arr = new Array(10,0);
