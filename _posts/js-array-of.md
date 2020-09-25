@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:42:52
-version: 1.14
+updated: 2020-09-25 13:56:19
+version: 1.15
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -97,7 +97,28 @@ console.log( arr[0] ); // 10
 console.log( arr.length ); // 1
 ```
 
-## 3 - JS Array from method, and Array like Objects
+### 2.5 - Just start with an empty array
+
+yet another options is to just give no arguments at all to start with and just push in the first element after creating an empty array.
+
+```js
+let arr = new Array();
+arr.push(10);
+console.log( arr[0] ); // 10
+console.log( arr.length ); // 1
+```
+
+## 3 - Just use the bracket syntax
+
+I still thing that the best way to go about creating new arrays is to just use the bracket syntax. If I want an array with a single starting element that is a number then I can just place that number in between an object and closing set of square brackets and move on to far more important things then this.
+
+```js
+let arr = [10];
+console.log(arr[0]); // 10
+console.log(arr.length); // 1
+```
+
+## 4 - JS Array from method, and Array like Objects
 
 So another Static Array method of interest here now it the Array from method. Just like the Array of method it can be used to create a new Array, but it does so by way of creating an array from a source object. When it comes to source Objects many such Objects might be Array like Objects. That is that they are just Plain old objects, or Objects that where crated with a constructor other then that of the Array constructor. As such they do not have Array prototype methods because they are not an instance of the Array constructor. So the Array from method is one way to create a new array by way of passing one of these objects as the first argument.
 
@@ -119,7 +140,7 @@ console.log(arr.length); // 1
 console.log(arr[0]); // 10
 ```
 
-## 4 - JS Array map, and Array methods that return a new Array, rather than mutating one
+## 5 - JS Array map, and Array methods that return a new Array, rather than mutating one
 
 Ask yourself this when creating a new array \"What is the goal here?\". Often the goal with all of this is to just simple create a new array, rather than mutating an array that all ready exists. In that situation using a method like Array of, or the bracket syntax will do just that. However there are many methods in the Array prototype that will return a new Array rather than  mutating an array in place. One such method is the Array map method.
 
@@ -134,6 +155,6 @@ console.log(pows); // [2,4,8];
 console.log(nums); // [1,2,3]
 ```
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So in native javaScript there is now a wide range of ways of how to go about creating a new Array one of which is the new Array of method. This Array of method is one way of creating a new Array with some starting values. However it is just one way of going about doing so, and there are many other such options both new and old to do so also.
