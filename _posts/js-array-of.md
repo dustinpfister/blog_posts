@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:32:09
-version: 1.10
+updated: 2020-09-25 13:35:48
+version: 1.11
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -65,7 +65,16 @@ console.log( arr[0] ); // [ 10 ]
 console.log( arr.length ); // 1
 ```
 
-### 2.2 - Using the Array map method
+### 2.2 - Using a string of the number
+
+```js
+let arr = new Array('10');
+console.log( arr[0] ); // '10'
+console.log( arr.length ); // 1
+console.log( typeof arr[0]); 'string'
+```
+
+### 2.3 - Using the Array map method
 
 ```js
 let arr = (new Array([10])).map((n) => n[0]);
@@ -73,7 +82,7 @@ console.log(arr[0]); // 10
 console.log(arr.length); // 1
 ```
 
-### 2.3 - Just use more than one argument, and then pop if you just one want element
+### 2.4 - Just use more than one argument, and then pop if you just one want element
 
 ```js
 let arr = new Array(10,0);
