@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:37:32
-version: 1.12
+updated: 2020-09-25 13:40:39
+version: 1.13
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -77,6 +77,8 @@ console.log( typeof arr[0]); 'string'
 ```
 
 ### 2.3 - Using the Array map method
+
+There is using some kind of method to help address the problem of the number value being in a nested array when using an array to set the value of the first argument. One such method that coes to mind is the array mao method, but theer are a number of other options that would work.
 
 ```js
 let arr = (new Array([10])).map((n) => n[0]);
