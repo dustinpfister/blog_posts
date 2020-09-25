@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:28:33
-version: 1.9
+updated: 2020-09-25 13:32:09
+version: 1.10
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -51,7 +51,13 @@ So it all has to do with starting a new Array with just a set length property bu
 
 ## 2 - A Closer look at the Array constructor
 
+The tired yet true Array constructor can still be used to create a new array and have just one element that is a number. The only thing to be aware of is what happens wheh it is given just one argument that is a number. If you just know about that and find ways to ajust for it then there is no need to bother with the array of method really.
+
+There are also other ways of creating an array that are tired yet true that do not have this problem going on, but for now lets take a another look at the Array constructor.
+
 ### 2.1 - Use an array as the first argument
+
+So if the first argument is number that will be used to set the length of the new array, so one way to get around this is to just make it so the first argument is not a number.
 
 ```js
 let arr = new Array([10]);
