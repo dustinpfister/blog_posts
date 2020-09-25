@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-06-11 11:41:10
-version: 1.5
+updated: 2020-09-25 09:42:44
+version: 1.6
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
 
-It would seem that this method was introduced as a way to provide something that is messing when using the Array constructor directly. That is calling the main Array constructor method with the new keyword as a way to create a new instance of an array rather than using the bracket syntax. When doing so there is just one argument that is passed to the Array constructor if any that is used to set the starting length of the Array, not the value of the first element. This can cause some confusion with new developers that are and familiar with this. So the Array of method is now that are yet another way to create a new array by passing some arguments for the starting element values for the array.
+It would seem that this method was introduced as a way to provide something that is missing when using the [Array constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array) directly with one argument. That is calling the main Array constructor method with the [new keyword](/2019/02/08/js-javascript-new/) as a way to create a new instance of an array, rather than using the bracket syntax to do so. When using the Array constructor with new there is using just one optional argument that is a number rather than some other value when doing so this sets a starting length of the array, but not the first value of the array. 
+
+However often new javaScript developers find the use of the Array constructor with one argument a little confusing and assume that a starting value for the first element can be passed to the constructor as the first argument. So then this can cause some confusion with new developers that are not familiar with the fact that a starting value for the first elemnt can not be set that way. So the Array of method is now a way to create a new array by passing some arguments for the starting element values for the array rather than just a starting length, and works as expected when passing just one argument that is a number.
 
 I can not say that I use the Array of method often, as I prefer to use some of the older tired yet true ways of doing the same thing that is just a little more involved. But never the less this post will be on the JS array of meto9d and other ways of creating a new array with a set number of starting values.
 
