@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 09:42:44
-version: 1.6
+updated: 2020-09-25 13:11:24
+version: 1.7
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -19,28 +19,30 @@ I can not say that I use the Array of method often, as I prefer to use some of t
 
 <!-- more -->
 
-## 1 - JS Array of method, the Array constructor, and the Array Bracket syntax
+## 1 - The JS Array Constructor, the deal with the first argument, and the Array.of method
 
-Before the Array of method there where two general ways of going about creating a new Array. One way was to use the Array constructor with the new keyword to create a new Array, just like with any other Constructor in javaScript such as that of the Date constructor for example. When using the Array constructor the first argument that is given is the starting length of the Array, not the value of the first element of the Array. So with that said there was the Array bracket context that can be used as another way to create a new Array, and in addition it can also be used to set some starting values for this new Array.
+Before the Array of method there where two general ways of going about creating a new Array. One way is to use the array bracket syntax and the other is to use the Array constructor function. The Array constructor function works okay, but there is just one little issue with the first argument. In this section I will be going over what that little issue is and how the array of method can be used as one way to address that issue when it comes to additional ways to create a new array.
 
-Today though there are a few other options that can be used to create a new Array, one of which is the Array of method. This is a static method of the js built in Array object that does not need to be used with the new keyword. Just call the of method of the Array object and pass values for the new array by way of function call arguments.
+### 1.1 - The array constructor and the first argument
 
-So with that said this quick example should help make the situation clear as to what the deal is with the js array of method, compared to the other typical options that are to be found in most javaScript examples that are found in the wild.
+When using the Array constructor with the new keyword as a way to create a new array there is a problem when passing one argument that is a number. many developers might thing that by doing so they will end up getting a new array with the first element being the number value that is given as the first, and only argument. However this is n ot the case, instead what happens is one ends up with a new empty array with a length property set to the number that is given as that one and only argument.
 
 ```js
-let arr = Array.of(10),
-arr2 = new Array(10),
-arr3 = [10];
+let arr = new Array(10);
+console.log( arr[0] ); // undefined
+console.log( arr.length ); // undefined
+```
+
+there are ways of using the Array constructor to get the desired result, more on that later. However there is still the question of creating a new array by way of one or more arguments that are numbers and having those numbers always be starting elements rather than a length value if it is just one argument. This is where the array of method might be of use.
+
+
+### 1.2 - The array of method
+
+```js
+let arr = Array.of(10);
  
-// first element
-console.log(arr[0]); // 10
-console.log(arr2[0]); // undefined
-console.log(arr3[0]); // 10
- 
-// lengths
-console.log(arr.length); // 1
-console.log(arr2.length); // 10
-console.log(arr3.length); // 1
+console.log( arr[0] ); // 10
+console.log( arr.length ); // 1
 ```
 
 So it all has to do with starting a new Array with just a set length property but no starting values really, compared to giving some starting values and letting the number of starting values be what sets the length of the new array. With that said there are a number of other ways to create a new array with some starting values that are not all that much more involved. In addition that are even more options when it comes to methods that create and return new arrays, so lets look at some more quick examples were we are making new arrays with starting values in javaScript.
