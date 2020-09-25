@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:35:48
-version: 1.11
+updated: 2020-09-25 13:37:32
+version: 1.12
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -66,6 +66,8 @@ console.log( arr.length ); // 1
 ```
 
 ### 2.2 - Using a string of the number
+
+The effect where the first argument is used to set the starting length of the new array is only going to happen if it is a number, but not a string of that number. So if I just pass a string as the first argument rather than a number then that string will be used to set the value of the first argument.
 
 ```js
 let arr = new Array('10');
