@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:11:24
-version: 1.7
+updated: 2020-09-25 13:12:54
+version: 1.8
 ---
 
 So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
@@ -37,6 +37,8 @@ there are ways of using the Array constructor to get the desired result, more on
 
 
 ### 1.2 - The array of method
+
+So if the array of static method is called and a single argument is given that is a number, then the retured result will be a new array with that number value being the value of the first argument.
 
 ```js
 let arr = Array.of(10);
