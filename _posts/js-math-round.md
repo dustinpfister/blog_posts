@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-09-26 14:04:13
-version: 1.13
+updated: 2020-09-26 14:38:31
+version: 1.14
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -128,6 +128,66 @@ console.log( round(1.005, 2) ); // 1.01
 ```
 
 Looks like I found my copy and past user space solution for rounding rather than bothering with lodash for just that one method. This gives me the functionally that I like in the Number.toFIxed method but without the weird issue that results in wrong rounding.
+
+### 4.1 - Making a custom method for handing all things that come to mind with rounding
+
+So then there is using the custom method that I found for rounding with a precision value, but also working in some more stuff that I would like to have working for me each time I round a number.
+
+```js
+var round = (function () {
+    // treat negative numbers a different way
+    var roundNeg = function (n) {
+        var int = Math.floor(n),
+        diff = Math.abs(n - int);
+        // special expression for diff === 0.5
+        if (diff === 0.5) {
+            return n >= 0 ? Math.round(n) : Math.round(n) - 1;
+        }
+        // just use Math.round otherwise
+        return Math.round(n);
+    };
+    // the shift method
+    var shift = function (number, exponent) {
+        var numArray = ("" + number).split("e");
+        return  + (numArray[0] + "e" + (numArray[1] ? (+numArray[1] + exponent) : exponent));
+    };
+    // precision rounding
+    var roundPre = function (number, precision, roundMethod) {
+        return shift(roundMethod(shift(number, +precision)), -precision);
+    };
+    // how to format a number
+    var format1 = function (n) {
+        return String(n);
+    };
+    // public method
+    return function (n, precision, roundMethod, format) {
+        precision = precision === undefined ? 0 : precision;
+        roundMethod = roundMethod === undefined ? roundNeg : roundMethod;
+        format = format === undefined ? format1 : format;
+        var n = roundPre(n, precision, roundMethod);
+        return {
+            n: n,
+            str: format(n),
+            valueOf: function () {
+                return this.n;
+            },
+            toString: function () {
+                return this.str;
+            }
+        };
+    };
+ 
+}
+    ());
+ 
+console.log(round(-1.5) + 0); // -2
+console.log(round(-1.5, 0, Math.round) + 0); // -1
+ 
+console.log(round(-2.465, 2) + 0); // -2.47
+console.log(round(-2.465, 2, Math.round) + 0); // -2.46
+ 
+console.log(round(-0.25, 0) + 0); // 0
+```
 
 ## 5 - Conclusion
 
