@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-09-14 18:58:07
-version: 1.5
+updated: 2020-09-26 17:27:22
+version: 1.6
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory. I have been starting to write a few posts on various commands that often are part of Linux, or can be easily added to Linux, and grep is certainly one such command that I should write a quick post on because I am sure it will come in handy now and then with what I often work on when it comes to lengthly collections of text files.
@@ -77,7 +77,7 @@ $ grep -r "var" ./
 
 ## 3 - piping from standard input
 
-The linux grep command can be used with the standard input rather than a file.
+The linux grep command can be used with the standard input rather than a file. Here I am using the linux echo command to just create some standard input to which I am then pipping into greps standrad input I am then looking for the pattern Linux and I am also using the o options that will only print matches for the pattern.
 
 ```
 $ echo "I really like the Linux" | grep "Linux" -o
