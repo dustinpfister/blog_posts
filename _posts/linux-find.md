@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 710
-updated: 2020-09-26 16:59:52
-version: 1.4
+updated: 2020-09-26 17:12:57
+version: 1.5
 ---
 
 The [linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting mount point. The starting mount point can be the current working directory, or any other path that one has permission to access. The command will loop over all folders recursivly untill it is done searhing for files and will output the paths to fines that it finds in the standard output.
@@ -45,4 +45,18 @@ $ find ./canvas-examples -maxdepth 3 -name README.md
 ./canvas-examples/forpost/canvas-example-clock-basic/README.md
 ./canvas-examples/forpost/canvas-example-game-kaboom-clone/README.md
 ./canvas-examples/forpost/canvas-example-a-planet-of-mine-clone/README.md
+```
+
+## 3 - Search for folder names rather than files
+
+To search for file names rather than file names just use the type option with the name option. The value to use for the type option will be d for directories. The type option can be used to restrict for other types such as regular files with a f, and symbolic lines by passing an l for the type option. For a full list, as well as many other options you would want to check the man page, but those three values for the type option are the ones that I find myself using most offten.
+
+```
+$ find . -type d -name pkg
+./test_vjs/for_post/js-javascript-example-grid-game-unit-movement/pkg
+./canvas-examples/forpost/canvas-example-hyper-casual-to-the-black/pkg
+./canvas-examples/forpost/canvas-example-game-crosshairs/pkg
+./canvas-examples/forpost/canvas-example-object-pool/pkg
+./canvas-examples/forpost/canvas-example-kill-box/pkg
+./canvas-examples/forpost/canvas-example-game-monster-smash/pkg
 ```
