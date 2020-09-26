@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-09-26 13:20:11
-version: 1.8
+updated: 2020-09-26 13:25:47
+version: 1.9
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -53,7 +53,7 @@ So when it comes to just simply formatting a string representation of a number f
 
 ## 3 - Find or make a user space solution
 
-Via some searching on stack overflow I was able to find many user space solutions for rounding numbers in javaScript. Some of them work okay, but often cause similar problems when testing them out with certain values. However I was  able to find out [one user space solution](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484) that seems to work okay that I only slightly modified here.
+Via some searching on stack overflow I was able to find many user space solutions for rounding numbers in javaScript. Some of them work okay, but often cause similar problems when testing them out with certain values. However I was able to find out [one user space solution](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484) that seems to work okay that I only slightly modified here.
 
 ```js
 // (credits to Lam Wei Li)
@@ -72,3 +72,5 @@ console.log( Math.round(1.005) ); // 1
 console.log( (1.005).toFixed(2)); // 1.00
 console.log( round(1.005, 2) ); // 1.01
 ```
+
+Looks like I found my copy and past user space solution for rounding rather than bothering with lodash for just that one method. This gives me the functionally that I like in the Number.toFIxed method but without the weird issue that results in wrong rounding.
