@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-09-26 13:27:51
-version: 1.10
+updated: 2020-09-26 13:42:06
+version: 1.11
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -51,7 +51,23 @@ console.log(typeof str); // 'string'
 
 So when it comes to just simply formatting a string representation of a number for the sake of display in a view maybe this will works okay in most situations. Still for the fact that it returns a string, and also because it does not round right all the time, this causes me to look for yet another solution for rounding. When all else fails look for a user space solution I guess, and if I can find something there is also doing my own thing.
 
-## 3 - Find or make a user space solution
+## 3 - Negative numbers, Math.round, and positive infinity
+
+When it comes to numbers that a greater than zero, numbers that have a fraction of one half on the nose are rounded up. This does not just apply with numbers above zero though. In general all numbers will round up to positive infinity rather than negative infinity.  There is no distinction made for negative numbers with Math.round, but do not just take my worth for it play around with a few simple examples feeding some number literals to confirm it to yourself first hand.
+
+```js
+console.log( Math.round(1.4) ); // 1
+console.log( Math.round(1.5) ); // 2
+console.log( Math.round(1.6) ); // 2
+ 
+console.log( Math.round(-1.4) ); // -1
+console.log( Math.round(-1.5) ); // -1
+console.log( Math.round(-1.6) ); // -2
+```
+
+If for some reason this is a problem I guess this might be another thing that can come up that might require a need for a user space solution for rounding numbers.
+
+## 4 - Find or make a user space solution
 
 Via some searching on stack overflow I was able to find many user space solutions for rounding numbers in javaScript. Some of them work okay, but often cause similar problems when testing them out with certain values. However I was able to find out [one user space solution](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484) that seems to work okay that I only slightly modified here.
 
@@ -75,6 +91,6 @@ console.log( round(1.005, 2) ); // 1.01
 
 Looks like I found my copy and past user space solution for rounding rather than bothering with lodash for just that one method. This gives me the functionally that I like in the Number.toFIxed method but without the weird issue that results in wrong rounding.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 So there are a few built in options for rounding in the Math object, and also certain prototype methods in other built in Objects and classes that help with rounding. However sometimes it makes sense to go with a user space solution for rounding, and formatting a number in general for presentation.
