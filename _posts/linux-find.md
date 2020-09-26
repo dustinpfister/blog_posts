@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 710
-updated: 2020-09-24 09:06:36
-version: 1.2
+updated: 2020-09-26 16:50:03
+version: 1.3
 ---
 
 The [linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting mount point. The starting mount point can be the current working directory, or any other path that one has permission to access. The command will loop over all folders recursivly untill it is done searhing for files and will output the paths to fines that it finds in the standard output.
@@ -18,6 +18,10 @@ So in this post I will be looking at a few examples of how to get going with the
 <!-- more -->
 
 ## 1 - Find a file by name from the current users home path
+
+So to find one or more files with a set file name I just need to type find followed by a [Tilde](https://en.wikipedia.org/wiki/Tilde#Computing) symbol which is used to refer to the current users home folder. I can then use the name otpion followed by the name of the file that I want to look for in all paths from the home folder as a start point.
+
+So in mu home folder I have a copy of my canvas examples reposatory, in there I have a few diferent rendetions of a pool.js file, and the linux find command was able to get absolute paths to all of them.
 
 ```
 $ find ~ -name 'pool.js'
