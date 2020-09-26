@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-09-26 13:58:22
-version: 1.12
+updated: 2020-09-26 14:04:13
+version: 1.13
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -67,9 +67,17 @@ console.log( Math.round(-1.6) ); // -2
 
 If for some reason this is a problem I guess this might be another thing that can come up that might require a need for a user space solution for rounding numbers.
 
+### 3.1 - Negative zero
+
+If a number between and in cluing -0.5 and zero is given this can result in negative zero.
+
+```js
+console.log( Math.round(-0.5) ); // -0
+```
+
 ### 3.1 - fix
 
-It is not so hard to work out a fix for this if it is a problem.
+It is not so hard to work out a fix for numbers flowing to positive infinity rather than negative infinity  if it is a problem. Addressing the negative zero thing can also be addressed in the process of doing so.
 
 ````js
 var round = function (n) {
