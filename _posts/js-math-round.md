@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2020-09-26 13:42:06
-version: 1.11
+updated: 2020-09-26 13:58:22
+version: 1.12
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -66,6 +66,36 @@ console.log( Math.round(-1.6) ); // -2
 ```
 
 If for some reason this is a problem I guess this might be another thing that can come up that might require a need for a user space solution for rounding numbers.
+
+### 3.1 - fix
+
+It is not so hard to work out a fix for this if it is a problem.
+
+````js
+var round = function (n) {
+    var int = Math.floor(n),
+    diff = Math.abs(n - int);
+    // special expression for diff === 0.5
+    if (diff === 0.5) {
+        return n >= 0 ? Math.round(n) : Math.round(n) - 1;
+    }
+    // addressing -0
+    if (n > -0.5) {
+        return 0;
+    }
+    // just use Math.round otherwise
+    return Math.round(n);
+};
+ 
+console.log( Math.round(0.5) ); // 1
+console.log( round(0.5) ); // 1
+ 
+console.log( Math.round(-0.5) ); // -0
+console.log( round(-0.5) ); // -1
+ 
+console.log( Math.round(-0.25) ); // -0
+console.log( round(-0.25) ); // 0
+```
 
 ## 4 - Find or make a user space solution
 
