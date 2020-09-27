@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 712
-updated: 2020-09-27 08:38:32
-version: 1.3
+updated: 2020-09-27 08:38:52
+version: 1.4
 ---
 
-So you have some standard output from one command, and you want to use that standard output to create values for arguments to another command rather than pipe it to the standard input of that command. In other words the standard input of many commands might exspect content or some other kind of data stream from the standard input, not arguments. Take for example the Linux cat command, file names can be given via arguments, but not by way of the standard input, with cat the standard input is used as an alternative to opening files and works in a similar way to that of echo when used that way. 
+So you have some standard output from one command, and you want to use that standard output to create values for arguments to another command rather than pipe it to the standard input of that command. In other words the standard input of many commands might expect content or some other kind of data stream from the standard input, not arguments. Take for example the Linux cat command, file names can be given via arguments, but not by way of the standard input, with cat the standard input is used as an alternative to opening files and works in a similar way to that of echo when used that way. 
 
 Still there must be a way to go about piping the output of one command as data that is to be used for one or more arguments in another command, rather than data to be sent to the standard input of this other command. One command that can be used to do so is the [Linux xargs](https://en.wikipedia.org/wiki/Xargs) command that should be there to work with on most Linux systems. In this post I will be covering all the basic examples that come to mind when using this kind of command such as using data from a command for just one argument, as well as more than one.
 
