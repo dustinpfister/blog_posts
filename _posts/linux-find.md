@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 710
-updated: 2020-09-26 18:08:24
-version: 1.6
+updated: 2020-09-26 20:12:43
+version: 1.7
 ---
 
 The [linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting mount point. The starting mount point can be the current working directory, or any other path that one has permission to access. The command will loop over all folders recursivly untill it is done searhing for files and will output the paths to fines that it finds in the standard output.
@@ -61,7 +61,7 @@ $ find . -type d -name pkg
 ./canvas-examples/forpost/canvas-example-game-monster-smash/pkg
 ```
 
-## 4 - Using the exec option to call a command and feed URLS to the command via argumnets
+## 4 - Using the exec option to call a command and feed URIs to the command via argumnets
 
 So the exec option is what I would want to use when it comes to feeding the URIs that are found to some other command. Most commands exspect content from the standard input rather the one or more URIs, so this option is very imporatnt when it comes to passing URIS of files that are found to some other kind of command to prefrom some kind of acttion with that file.
 
@@ -73,3 +73,14 @@ $ find . -maxdepth 2 -type f -name '*.js' -exec cat {} ';'
 
 I am then using the exec option to use cat to read the contents of all files and spit the content out into the standard output. That content can then be piped to something else but all ready you get the idea as to why the exec option is useful. The URIS can be used with something like chown to change who owns all the javaScript files found, or it coyld be used with something like rm as a way to delete them for example.
 
+## 5 - Using xargs and pipping to feed URIs to another command
+
+You might be wondering if it is possible to still use pipping as a way to use the standard output of find as the arguments for another command rather than this other commands standard input. Well there is and one such command that can be used to do so would be [xargs](/2020/09/26/linux-xargs/)
+
+```
+$ find . -type f -name '*.js' | xargs -l bash -c 'cat $0'
+```
+
+## 6 - conclusion
+
+So theer are many more things to cover when it comes to the linuc find command. I did not cover everything that can be done with just the find command alone, let alone what can be done when it comes to working with additional commands via pipping and the exec option. I think that I have covered many of the typical things that come to mind at least.
