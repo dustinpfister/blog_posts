@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 712
-updated: 2020-09-27 08:38:52
-version: 1.4
+updated: 2020-09-27 08:44:51
+version: 1.5
 ---
 
 So you have some standard output from one command, and you want to use that standard output to create values for arguments to another command rather than pipe it to the standard input of that command. In other words the standard input of many commands might expect content or some other kind of data stream from the standard input, not arguments. Take for example the Linux cat command, file names can be given via arguments, but not by way of the standard input, with cat the standard input is used as an alternative to opening files and works in a similar way to that of echo when used that way. 
@@ -28,10 +28,14 @@ So that might work okay in some situations where I want the output of one comman
 
 ## 2 - Have a string for the standard input when writing the command
 
+There is an option for the xargs command that will allow for setting a string value in the command that will be used as a place to inject the input from the other command that I am piping from.
+
 ```
 $ echo B | xargs -I stdin echo A stdin C
 A B C
 ```
+
+However there is another option for doing this that I have found is more versatile that will allow for more than one argument to be used.
 
 ## 3 - two or more arguments
 
