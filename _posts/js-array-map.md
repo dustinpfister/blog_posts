@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-01 15:25:12
-version: 1.8
+updated: 2020-10-01 15:26:29
+version: 1.9
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -55,7 +55,7 @@ console.log(pows); // [2,4,8]
 console.log(nums); // [1,2,3]
 ```
 
-A while loop could also be used of course, or just about any other kind of loop for that matter sure.
+A while loop could also be used of course, or just about any other kind of loop for that matter to reproduce a similar effect to what can be obtained by using array map.
 
 ```js
 var nums = [1, 2, 3];
