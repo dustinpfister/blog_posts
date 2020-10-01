@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 708
 categories: canvas
-updated: 2020-10-01 05:37:19
-version: 1.5
+updated: 2020-10-01 05:39:55
+version: 1.6
 ---
 
 Time to take a new turn with my [canvas examples](/2020/03/23/canvas-example/) series of posts and focus on making quick hyper casual style games. So this post will be on an simple idea for a project that I am just going to call _into the black_. The basic idea is to just have a display object that is moving threw space and the game is just about seeing how far one can get until they get board and move on to something else.
@@ -36,7 +36,9 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 };
 ```
 
-## 2 - object pools for power ups and anothing else that might come up.
+## 2 - object pools for power ups and anything else that might come up.
+
+I made another [canvas example a while back in which I worked out a simple object pool](/2020/07/20/canvas-example-object-pool/) library. Here I just copied and pasted that module in as a part of what I will be using for this project.
 
 ```js
 var poolMod = (function () {
