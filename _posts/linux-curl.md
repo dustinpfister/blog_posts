@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 711
-updated: 2020-10-01 07:04:54
-version: 1.5
+updated: 2020-10-01 07:21:52
+version: 1.6
 ---
 
 the [Linux curl](https://www.mit.edu/afs.new/sipb/user/ssen/src/curl-7.11.1/docs/curl.html) command is a way to download a file from a given URL, but it is also a bit more than just that. It can also be used to make various kinds of http requests from the command line such a POST requests, and can also be used as an FTP client. So the curl command is a helpful little command to be aware of when it comes to getting data from a public URL, or anything to that effect outside of a web browser.
@@ -24,10 +24,15 @@ So say I just want to pull the index file of my website I can just call curl and
 $ curl https://dustinpfister.github.io/index.html
 ```
 
-Which will result in the HTML being loaded to the standard out of the console. To save the file I can use the output option of curl to do so.
+Which will result in the HTML being loaded to the standard out of the console. To save the file I can use the output option of curl to do so. This option works by using \-\-output or just \-o followed by the filename that I would like to save the file as.
+```
+$ curl https://dustinpfister.github.io/index.html -o index.html
+```
+Another option is the output option but with an uppercase \-O this should just save file file as the filename in the URL
+
 
 ```
-$ curl https://dustinpfister.github.io/index.html --output index.html
+$ curl https://dustinpfister.github.io/index.html -O
 ```
 
 ## 2 - keep output of curl silent
