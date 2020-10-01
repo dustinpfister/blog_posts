@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 711
-updated: 2020-10-01 07:28:05
-version: 1.7
+updated: 2020-10-01 07:50:20
+version: 1.8
 ---
 
 the [Linux curl](https://www.mit.edu/afs.new/sipb/user/ssen/src/curl-7.11.1/docs/curl.html) command is a way to download a file from a given URL, but it is also a bit more than just that. It can also be used to make various kinds of http requests from the command line such a POST requests, and can also be used as an FTP client. So the curl command is a helpful little command to be aware of when it comes to getting data from a public URL, or anything to that effect outside of a web browser.
@@ -54,3 +54,5 @@ $ curl -I https://dustinpfister.github.io/index.html
 ## 4 - conclusion
 
 So the Linux curl command is there to work with when it comes to doing many tasks that have to do with getting data from the open web, or pushing data up to it. The data of a file at a URL can be pulled down and save to a file, or piped to another command when it comes to the basic use of Linux curl. However the Linux curl command can also be used to simulate POST requests, and function as an FRP client.
+
+The Linux curl command does has some limitations though and it is not necessary a replacement for other commands such as wget, and git. One draw back is that I do not know of a way to go about downloading more than one file by having curl look at tags in an html file for example. In addition I still need to use git as a way to work with source control as git is not one f the protocols used when it comes to pushing an pulling data. Still if I just want to pull a single file, or simulate an http request from the command line the Linux curl command seems to work just fine.
