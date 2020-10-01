@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 713
-updated: 2020-10-01 13:45:30
-version: 1.8
+updated: 2020-10-01 14:01:59
+version: 1.9
 ---
 
 The [lodash constant](https://lodash.com/docs/4.17.15#constant) method is a method that will create a function that will return a given static constant value each time it is called. On the surface [lodash constant might seem pointless](https://stackoverflow.com/questions/49755476/why-would-one-need-to-use-lodash-fp-constant), but there are some situations in which I might actually want a method like this. Say for example I have a function that expects a function as one of its arguments, I can not just pass a static value to it, so instead I would need to pass a function that will return that static value.
@@ -74,6 +74,48 @@ var n = (function () {
 console.log(n); // 42
 ```
 
-## 5 - Conclusion
+## 4 - Creating a noop function
+
+So one thing that comes to mind with this is to have a way to quickly cerate a noop function, or a no operation function. I guess I could use something like the lodash constant method and pass undefined for the value, or use the lodash noop method. However why should I bother with any of those when I can just use arrow functions, or expressions, and reduce the need for lodash?
+
+```js
+let ticker = (opt) => {
+    let noop = () => undefined;
+    opt = opt || {};
+    opt.i = opt.i === undefined ? 0 : opt.i;
+    opt.iMax = opt.iMax === undefined ? opt.i + 10 : opt.iMax;
+    opt.onTick = opt.onTick || noop;
+    opt.onEven = opt.onEven || noop;
+    opt.onEnd = opt.onENd || noop;
+    let over = false;
+    return () => {
+        if (opt.i < opt.iMax) {
+            opt.onTick(opt);
+            if (opt.i % 2 == 0 && opt.i != 0) {
+                opt.onEven(opt);
+            }
+            opt.i += 1;
+        } else {
+            if (!over) {
+                opt.onEnd(opt);
+                over = true;
+            }
+        }
+    };
+};
+ 
+let t = ticker({
+        onEven: function (opt) {
+            console.log(opt.i);
+        }
+    });
+ 
+let i = 10;
+while (i--) {
+    t();
+}
+```
+
+## 6 - Conclusion
 
 So the lodash constant method is not one of those must have methods in lodash, and I think that will just become even more the case as time goes on. When it comes to methods that I might actually use in a project there are only a hand full that come to mind actually that I think I would bother with and this is not one of them.
