@@ -5,11 +5,13 @@ tags: [canvas]
 layout: post
 id: 708
 categories: canvas
-updated: 2020-10-01 05:46:24
-version: 1.8
+updated: 2020-10-01 05:52:26
+version: 1.9
 ---
 
-Time to take a new turn with my [canvas examples](/2020/03/23/canvas-example/) series of posts and focus on making quick hyper casual style games. So this post will be on an simple idea for a project that I am just going to call _into the black_. The basic idea is to just have a display object that is moving threw space and the game is just about seeing how far one can get until they get board and move on to something else.
+Time to take a new project with my [canvas examples](/2020/03/23/canvas-example/) series of posts and focus on making quick hyper casual style games. So this post will be on an simple idea for a project that I am just going to call _into the black_. The basic idea is to just have a display object that is moving threw space and the game is just about seeing how far one can get until they get board and move on to something else.
+
+It seems like it is a good idea to do something to find out how long it will take for a player to play threw one of my idle games. I say this because when I play one of my own games, or write some code to automate that process it seems that I sometimes end up playing threw the game way to fast. I would want to have games designed in a way in which people would keep coming back rather than just play threw the game and then  stop playing. So an idea for this project came to mind where I just divide a distance by a distance per second rate to get the amount of time it will take to go that distance. I can then do things to increase the speed and wherefore reduce the amount of time it will take to move that distance.
 
 <!-- more -->
 
