@@ -1,12 +1,12 @@
 ---
 title: Chaining functions in javaScript with lodash or not
 date: 2018-11-11 08:41:00
-tags: [js,lodash]
+tags: [lodash]
 layout: post
 categories: lodash
-id: 3328
-updated: 2020-07-02 16:54:08
-version: 1.15
+id: 328
+updated: 2020-10-01 13:06:06
+version: 1.16
 ---
 
 So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes what another method acts on. In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
