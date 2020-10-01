@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2020-10-01 12:36:58
-version: 1.20
+updated: 2020-10-01 12:38:31
+version: 1.21
 ---
 
 So today I will be putting together another quick post on [lodash](https://lodash.com/) as well as vanilla js alternatives to using lodash when it comes to the process of quickly padding strings. What I mean by padding is making it so a string is always a certain fixed length of characters, so in the event that a string is lower than that fixed length a number of chars of a given value are used to pad the remaining number of characters.
@@ -160,7 +160,7 @@ String.prototype.padStart = String.prototype.padStart || function (len, filler) 
 
 This is why devs like lodash, you just need to know how far backward compatibility goes with the version of lodash that you are using, and if what it supports works fine for you, then you can just get going with development, and be done with this. Here I am using the pollyfill for map that can be found on the [Mozilla page of Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#Polyfill), and you might also want to check out my post on the lodash 
 
-### 3.4 - The String.prorotype.slice with additional string trick
+### 3.4 - The String.prototype.slice with additional string trick
 
 A nice concise solution that will work okay on most platforms might involve just the use of the String slice prototype method called off of a string that is the concatenation of a string of chars that consists of the padding char that is also the max length of a resulting string. Just give the slice method a negative index value that is also the max number of chars in the resulting string. In the event that the value is just one char, then it will take two of the padding chars along with that one char when slicing from the right of the concatenated string.
 
