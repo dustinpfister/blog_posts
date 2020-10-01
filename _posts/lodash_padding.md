@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 247
-updated: 2019-11-01 10:37:26
-version: 1.16
+updated: 2020-10-01 11:11:54
+version: 1.17
 ---
 
 So today I will be putting together another quick post on [lodash](https://lodash.com/) and corresponding vanilla js alternatives when it comes to the process of quickly padding strings. With lodash there is [\_.pad](https://lodash.com/docs/4.17.10#pad), [\_.padStart](https://lodash.com/docs/4.17.10#padStart), and [\_.padEnd](https://lodash.com/docs/4.17.10#padEnd) that can be used to make quick work of this with lodash, if lodash is part of the stack, but I will be looking at some other options as well when it comes to native javaScript. In late javaScript specs there are padding methods baked into core javaScript now, and if you want better backward support there are some concise tricks for this of course. So lets get to it.
@@ -56,7 +56,7 @@ console.log( format(0) ); // $0000.00
 
 ## 3 - Vanilla js alternatives to the lodash padding methods
 
-So if you are not the kind of person who likes lodash, or you like to always start with javaScript itself first as I sapose one should, it is true that there are some native staring padding methods in late specs of javaScript these days. So this makes the lodash methods \_.padStart, and \_.padEnd yet another example of one of those lodash methods that may only be needed as a kind of safety net when it comes to older browsers. If you only care about supporting late browsers using the native methods should work just fine, and it is not two hard to just throw in a pollyfill if need be.
+So if you are not the kind of person who likes lodash, or you like to always start with javaScript itself first as I suppose one should, it is true that there are some native staring padding methods in late specs of javaScript these days. So this makes the lodash methods \_.padStart, and \_.padEnd yet another example of one of those lodash methods that may only be needed as a kind of safety net when it comes to older browsers. If you only care about supporting late browsers using the native methods should work just fine, and it is not two hard to just throw in a pollyfill if need be.
 
 ### 3.1 - String.padStart, and String.padEnd.
 
@@ -73,7 +73,7 @@ these seem to work just the same as the lodash equivalents.
 
 ### 3.2 - making or finding a stand alone method
 
-When I look at my site stats it would appear that there is not much concern with my browser stats at least. However if I am in a situation in which I am getting a fair amount of traffic from people that are using older browsers this is a method where a polly fill may be needed. I often start out my making or finding a stand alone method that can be used with [call](/2017/09/21/js-call-apply-and-bind/). By making it the kind of method that can be used with call on a String that helps to make it so it is ready to be monkey patched into the string prototype if need be.
+When I look at my site stats it would appear that there is not much concern with my browser stats at least. However if I am in a situation in which I am getting a fair amount of traffic from people that are using older browsers this is a method where a poly fill may be needed. I often start out my making or finding a stand alone method that can be used with [call](/2017/09/21/js-call-apply-and-bind/). By making it the kind of method that can be used with call on a String that helps to make it so it is ready to be monkey patched into the string prototype if need be.
 
 ```js
 let an = 1503345;
