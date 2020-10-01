@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-01 15:46:44
-version: 1.12
+updated: 2020-10-01 15:48:34
+version: 1.13
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -162,6 +162,8 @@ console.log(copy);
 console.log(source);
 // [ { x: 1, y: 2 }, { x: 12, y: 50 }, { x: 7, y: 27 } ]
 ```
+
+I will not be getting into detail about copying arrays here as that would be a bit off topic, but I have wrote a [post on copying arrays](/2020/09/03/js-array-copy/) that you might want to check out to read more about how to go about making clones of arrays.
 
 ## 6 - Conclusion
 
