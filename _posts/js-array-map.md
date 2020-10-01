@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-01 15:43:09
-version: 1.11
+updated: 2020-10-01 15:46:44
+version: 1.12
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -137,7 +137,7 @@ console.log(sum); // 14
 
 ## 5 - Using array map to copy an array of objects
 
-Another taking point about the array map method is that it can often be used as a way to co about copying an array of objects.
+Another taking point about the array map method is that it can often be used as a way to co about copying an array of objects. That is that the array map can be used as a way to create shallow, and event deep clones, or copies if you prefer of arrays. This is because as I have mentioned the array map method will return a new array rather than mutating the array that the method is called off of in place. So right off the bat the array map method will always be a good way to go about making shallow clones of arrays at least. However depending on what I do in the method that I use with array map, I can also create whole new objects when dealing with arrays of objects also so then array map can also be used as a way to create deep clones of objects also.
 
 ```js
 // a source array of objects
