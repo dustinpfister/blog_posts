@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 708
 categories: canvas
-updated: 2020-10-01 05:39:55
-version: 1.6
+updated: 2020-10-01 05:41:59
+version: 1.7
 ---
 
 Time to take a new turn with my [canvas examples](/2020/03/23/canvas-example/) series of posts and focus on making quick hyper casual style games. So this post will be on an simple idea for a project that I am just going to call _into the black_. The basic idea is to just have a display object that is moving threw space and the game is just about seeing how far one can get until they get board and move on to something else.
@@ -464,6 +464,8 @@ var draw = (function () {
 
 ## 5 - The main.js file
 
+Now I just want to make use of everything I put together in a main.js file.
+
 ```js
 // create canvas
 var canvas = document.createElement('canvas'),
@@ -550,3 +552,7 @@ canvas.addEventListener('mousedown', onPointerStart);
 canvas.addEventListener('mousemove', onPointerMove);
 canvas.addEventListener('mouseup', onPointerStop);
 ```
+
+## 6 - conclusion
+
+I was able to get the basic idea in mind that i had working with this one fairly quickly, but there would still be a great deal more work to do in order to get this to start to feel like an actaul game of some kind.
