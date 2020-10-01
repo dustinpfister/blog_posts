@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 708
 categories: canvas
-updated: 2020-09-29 07:51:22
-version: 1.1
+updated: 2020-10-01 05:22:03
+version: 1.2
 ---
 
 Time to take a new turn with my [canvas examples](/2020/03/23/canvas-example/) series of posts and focus on making quick hyper casual style games. So this post will be on an simple idea for a project that I am just going to call _into the black_. The basic idea is to just have a display object that is moving threw space and the game is just about seeing how far one can get until they get board and move on to something else.
@@ -143,6 +143,8 @@ var gameMod = (function () {
 ```
 
 ## 2 - The draw.js file
+
+Now that I have the game module worked out I will now want a draw module where I place all my code that will draw the state of a game object to a canvas element.
 
 ```js
 var draw = (function () {
