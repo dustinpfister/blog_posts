@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-01 15:26:29
-version: 1.9
+updated: 2020-10-01 15:32:00
+version: 1.10
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -76,7 +76,7 @@ console.log(nums); // [1,2,3]
 
 So it is not like the array map method is the only way to go about doing something like this. In fact in many situations I might prefer to go with a while loop because of the greater degree of flexibility that can be achieved. In addition I am not much of a performance nut, but from what I gathered while loops do tend to preform a little faster also for what that is worth. What I try to avoid is getting fixed on just one way to go about doing something, and thinking that this one way of doing it is the only true way of doing it. I see that all the time and I do not care to add to it. It is not to say that these ways of creating a new array based off of values from another array do not have there drawbacks compared to array map still so lets look at some more examples.
 
-## 3 - forEach and chaining compated to array map.
+## 3 - forEach and chaining compared to array map.
 
 So although the array foreach method can be used to do the same thing as array map by just creating a new array with the array bracket syntax and pushing in new values. There is one draw back that comes to mind right away when it comes to chaining. The problem can be resolved by bringing an [IIFE](/2020/02/04/js-iife/) into the mix, but I have to admit that it is making the code a little more complex compared to just using array map.
 
