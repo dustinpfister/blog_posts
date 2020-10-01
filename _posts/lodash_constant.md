@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 713
-updated: 2020-10-01 13:42:49
-version: 1.7
+updated: 2020-10-01 13:45:30
+version: 1.8
 ---
 
 The [lodash constant](https://lodash.com/docs/4.17.15#constant) method is a method that will create a function that will return a given static constant value each time it is called. On the surface [lodash constant might seem pointless](https://stackoverflow.com/questions/49755476/why-would-one-need-to-use-lodash-fp-constant), but there are some situations in which I might actually want a method like this. Say for example I have a function that expects a function as one of its arguments, I can not just pass a static value to it, so instead I would need to pass a function that will return that static value.
@@ -42,6 +42,8 @@ n2 = high(_.constant(5), function () {
  
 console.log(n, n2); // 0 10
 ```
+
+There are maybe a number of other situations in which there might be a need to use lodash constant, or make use of native javaScript features to create similar methods. 
 
 ## 3 - vjs alternative with arrow functions
 
