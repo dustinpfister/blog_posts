@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 708
 categories: canvas
-updated: 2020-10-01 05:41:59
-version: 1.7
+updated: 2020-10-01 05:46:24
+version: 1.8
 ---
 
 Time to take a new turn with my [canvas examples](/2020/03/23/canvas-example/) series of posts and focus on making quick hyper casual style games. So this post will be on an simple idea for a project that I am just going to call _into the black_. The basic idea is to just have a display object that is moving threw space and the game is just about seeing how far one can get until they get board and move on to something else.
@@ -555,4 +555,4 @@ canvas.addEventListener('mouseup', onPointerStop);
 
 ## 6 - conclusion
 
-I was able to get the basic idea in mind that i had working with this one fairly quickly, but there would still be a great deal more work to do in order to get this to start to feel like an actaul game of some kind.
+I was able to get the basic idea in mind that i had working with this one fairly quickly, but there would still be a great deal more work to do in order to get this to start to feel like an actual game of some kind. I just wanted a project centered around estimating the amount of tie it would take for an object to move a given distance, and to make that distance a very large number. I did not have much in mind beyond that other than to just have a project where I am working out some code that has to do with topic that seems to come to mind whenever i start working on idle game prototypes.
