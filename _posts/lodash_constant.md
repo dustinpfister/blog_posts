@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 713
-updated: 2020-10-01 13:18:38
-version: 1.3
+updated: 2020-10-01 13:28:28
+version: 1.4
 ---
 
 The [lodash constant](https://lodash.com/docs/4.17.15#constant) method is a method that will create a function that will return a given static constant value each time it is called. On the surface [lodash constant might seem pointless](https://stackoverflow.com/questions/49755476/why-would-one-need-to-use-lodash-fp-constant), but there are some situations in which I might actually want a method like this. Say for example I have a function that expects a function as one of its arguments, I can not just pass a static value to it, so instead I would need to pass a function that will return that static value.
@@ -22,4 +22,23 @@ So the basic idea here is that I call the lodash constant method and a new funct
 ```
 let returnTrue = _.constant(true);
 console.log( returnTrue() ); // true
+```
+
+## 2 - Functions that take functions as arguments
+
+In javaScript I often run into functions that accept functions as there arguments. These kinds of functions are one such thing that comes to mind in which a method like the lodash constant method might come into play.
+
+```js
+let high = (a, b) => {
+    a = a || _.constant(0);
+    b = b || _.constant(0);
+    return a() + b();
+};
+ 
+let n = high(),
+n2 = high(_.constant(5), function () {
+        return 5;
+    });
+ 
+console.log(n, n2); // 0 10
 ```
