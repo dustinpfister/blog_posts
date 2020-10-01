@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 713
-updated: 2020-10-01 13:17:12
-version: 1.2
+updated: 2020-10-01 13:18:38
+version: 1.3
 ---
 
-The [lodash constant](https://lodash.com/docs/4.17.15#constant) method is a method that will create a function that will return a given static constant value each time it is called. on the surface this might seem pointless, but there are some situations in which I might actually want a method like this. Say for example I have a function that expects a function as one of its arguments, I can not just pass a static value to it, so instead I would need to pass a function that will return that static value.
+The [lodash constant](https://lodash.com/docs/4.17.15#constant) method is a method that will create a function that will return a given static constant value each time it is called. On the surface [lodash constant might seem pointless](https://stackoverflow.com/questions/49755476/why-would-one-need-to-use-lodash-fp-constant), but there are some situations in which I might actually want a method like this. Say for example I have a function that expects a function as one of its arguments, I can not just pass a static value to it, so instead I would need to pass a function that will return that static value.
 
 There are a number of built in methods that will return a static value each time it is called to begin with in lodash, but the lodash constant method is the built in way to create my one such methods. It is also true that it is not so hard to just do the same things without the use of lodash, so I will be looking at some plain old vanilla javaScirpt alternatives to using the lodash constant method also here.
 
