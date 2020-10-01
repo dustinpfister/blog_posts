@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 713
-updated: 2020-10-01 13:38:50
-version: 1.6
+updated: 2020-10-01 13:42:49
+version: 1.7
 ---
 
 The [lodash constant](https://lodash.com/docs/4.17.15#constant) method is a method that will create a function that will return a given static constant value each time it is called. On the surface [lodash constant might seem pointless](https://stackoverflow.com/questions/49755476/why-would-one-need-to-use-lodash-fp-constant), but there are some situations in which I might actually want a method like this. Say for example I have a function that expects a function as one of its arguments, I can not just pass a static value to it, so instead I would need to pass a function that will return that static value.
@@ -53,9 +53,9 @@ let returnTrue = () => true;
 console.log(returnTrue());
 ```
 
-## 4 - vjs alterative to lodash constant with function expressions
+## 4 - vjs alternative to lodash constant with function expressions
 
-It is not such a big deal to just do the same with old ES5 spec javaScript too when it comes to using function expressions.
+It is not such a big deal to just do the same with old ES5 spec javaScript too when it comes to using function expressions. I can also make function expressions self executing if need be, but then what would be the point of that then right.
 
 ```js
 // is it really hard to make them with function
@@ -71,3 +71,7 @@ var n = (function () {
     ());
 console.log(n); // 42
 ```
+
+## 5 - Conclusion
+
+So the lodash constant method is not one of those must have methods in lodash, and I think that will just become even more the case as time goes on. When it comes to methods that I might actually use in a project there are only a hand full that come to mind actually that I think I would bother with and this is not one of them.
