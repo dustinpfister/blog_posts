@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-01 15:32:00
-version: 1.10
+updated: 2020-10-01 15:43:09
+version: 1.11
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -135,6 +135,34 @@ var sum = Object.values(obj).filter(function (el) {
 console.log(sum); // 14
 ```
 
-## 4 - Conclusion
+## 5 - Using array map to copy an array of objects
+
+Another taking point about the array map method is that it can often be used as a way to co about copying an array of objects.
+
+```js
+// a source array of objects
+var source = [{x:1, y: 2},{x:12, y: 50},{x:7, y: 27}];
+// creating a new copy of source array of objects
+var copy = source.map(function (pt) {
+        return {
+            x: pt.x,
+            y: pt.y
+        };
+    });
+// mutating copy
+copy = copy.map(function (pt) {
+        return {
+            x: pt.x - 5,
+            y: pt.y - 5
+        };
+    });
+// only copy of array effected
+console.log(copy);
+// [ { x: -4, y: -3 }, { x: 7, y: 45 }, { x: 2, y: 22 } ]
+console.log(source);
+// [ { x: 1, y: 2 }, { x: 12, y: 50 }, { x: 7, y: 27 } ]
+```
+
+## 6 - Conclusion
 
 So the array map method is one of several methods in the array prototype that have to do with creating an array from a source array. The array map method is a good choice if you want to created a new array from all elements in the array, but there are of course other options that a javaScript developer should be aware of, namely filter, and reduce, but also many other such as sort.
