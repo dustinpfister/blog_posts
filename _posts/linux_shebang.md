@@ -5,8 +5,8 @@ tags: [linux,js,node.js]
 layout: post
 categories: linux
 id: 6
-updated: 2020-10-02 14:48:54
-version: 1.5
+updated: 2020-10-02 14:52:29
+version: 1.6
 ---
 
 The definition of the word [shebang](https://en.wikipedia.org/wiki/Shebang_&#40;Unix&#41;) is "a matter, operation, or set of circumstances." so then the set of circumstances in the case of using Linux is what scripting language is being used when running a script file. In other words it is important for a program loader to know what interpreter should be used to run a script in question, in the case of server side JavaScript it is typically [node.js](https://nodejs.org/en/).
@@ -33,7 +33,9 @@ Then it is not at all important as I am directly calling node each time I want t
 
 ## 2 - Check your jsMin, or jsFormat tools.
 
-If you use formating or minification tools it can sometimes mess up the shebang, so if you are using one make sure that it leaves it alone.
+If you use formating or minification tools it can sometimes mess up the shebang, so if you are using one make sure that it leaves it alone. there are often ways to configure a tool that formates javaScript to ignore the first few lines if so that should be done when using it. If not then I am just going to have to do whatever is necessary to make sure that the shebang does not get messed up.
+
+In major projects I often might take a moment to write a script that will act as a custom build tool for the project. If I am taking the time to make such a tool the shebang should be placed at the very top of the file, followed by legal text, followed then by the compressed javaScript code when making builds of the project.
 
 ## 3 - This is an important step in making a CLI tool with node.js
 
