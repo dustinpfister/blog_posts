@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-02 09:50:09
-version: 1.18
+updated: 2020-10-02 09:56:40
+version: 1.19
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -39,7 +39,7 @@ console.log(nums); // [1,2,3]
 
 If you are new to javaScript you might all ready be doing this sort of thing with other tools in the toolbox sort of speak. When it comes to the very basic example that I have covered so far it is not to hard to do the same thing with the array foreach method, or some kind of loop such as a while loop. The use of array foreach comes up all the time in from discussions and the like, and often more experienced javaScript developers shun the use of the array forEach method. I try to nt be so judgmental about the use of it, and I often fine myself using it on occasion still, but I am of course aware of the other options to use such as but certainly not limited to array map.
 
-So the same thing that can be done with the array map method can be done with the array foreach method, and createing a new array, by dong something like this.
+So the same thing that can be done with the array map method can be done with the array foreach method, and creating a new array, by dong something like this.
 
 ```js
 var nums = [1, 2, 3];
@@ -112,7 +112,7 @@ It might make sense to do something like this with a while loop though if I need
 
 ## 4 - Using array map with a plain old object with the help of the Object values static method
 
-So one draw back of the array map prototype method might be that is it an array prototype method so it can not be used out of the box with objects in general. This might be one of the talking points as to why the lodash map method has a little something more goign on for itself compared to its native counterpart. However it is not to hard to overcome this issue by way of taking advantage of some more native methods to work with when it comes to just plain old javaScript by itself. If it is an array like object that you are working with than just using the function call prototype method will help to get map to work with it. When it comes to Objects in general there is the Object values and Object keys static method that can be used to create an array of values or key names from an Object.
+So one draw back of the array map prototype method might be that is it an array prototype method so it can not be used out of the box with objects in general. This might be one of the talking points as to why the lodash map method has a little something more going on for itself compared to its native counterpart. However it is not to hard to overcome this issue by way of taking advantage of some more native methods to work with when it comes to just plain old javaScript by itself. If it is an array like object that you are working with than just using the function call prototype method will help to get map to work with it. When it comes to Objects in general there is the Object values and Object keys static method that can be used to create an array of values or key names from an Object.
 
 ```js
 var obj = {
@@ -196,7 +196,7 @@ console.log(b);
 
 ### 6.3 -  Dropping string split and using function call, array map, and array join
 
-Another prototype method that is worth mentioning in this section is the Function call method, by using that it is possible to drop the use of the string split method. The reason why that is is that they way that a string is structured it is all ready an arary to begin with in a way in the sense that it can be worked with by way of numbered key values and a length property. The only problem really is that a String is of the String prototype rather than that of the Array prototype. So the function call method can be used to set the value of this for map to that of a string and then array map will work directly with a string rather than an array becuase a string is an example of an array like object.
+Another prototype method that is worth mentioning in this section is the Function call method, by using that it is possible to drop the use of the string split method. The reason why that is is that they way that a string is structured it is all ready an array to begin with in a way in the sense that it can be worked with by way of numbered key values and a length property. The only problem really is that a String is of the String prototype rather than that of the Array prototype. So the function call method can be used to set the value of this for map to that of a string and then array map will work directly with a string rather than an array because a string is an example of an array like object.
 
 ```js
 var a = 'abcd';
