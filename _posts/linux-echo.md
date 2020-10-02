@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2020-10-02 15:03:57
-version: 1.8
+updated: 2020-10-02 15:15:15
+version: 1.9
 ---
 
 So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/wiki/Echo_%28command%29) command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input I am putting together that will accept such input from something else when it comes to a read use case scenario.
@@ -17,7 +17,7 @@ So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/
 
 So before getting into some javaScript it might be best to just start out playing around with some commands in the terminal with Linux echo by itself. I would say that the echo command is one of those basic commands in Linux that everyone that uses Linux, or a posix environment in general should be aware of. The command comes up a lot, so it pays to be familiar with many of the options ans and basic use case examples.
 
-## 1 - basic Linux Echo
+### 1.1 - basic Linux Echo
 
 So if I type echo in the command line and then give a string the echo command will just echo that to the standard output of the console.
 
@@ -27,6 +27,19 @@ hello world
 ```
 
 That is it that is the basic idea of what echo is for.
+
+### 1.2 - Sometimes I might need to escape things
+
+In some situations I might need to use the escape option so that things will render the way that they should in the console, or in any destination in which the result will ultimately end up. For example say I want to put some new lines in a string with the backslash n syntax.
+
+```
+$ echo -e 'foo\nbar\n'
+foo
+bar
+ 
+```
+
+So this is the only option I often find myself using now and then so I thought I would have a brief section here on this.
 
 ## 2 - The Linux Echo command and other ways to log to the standard output with nodejs
 
