@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 710
-updated: 2020-09-26 20:12:43
-version: 1.7
+updated: 2020-10-02 15:06:01
+version: 1.8
 ---
 
-The [linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting mount point. The starting mount point can be the current working directory, or any other path that one has permission to access. The command will loop over all folders recursivly untill it is done searhing for files and will output the paths to fines that it finds in the standard output.
+The [Linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting mount point. The starting mount point can be the current working directory, or any other path that one has permission to access. The command will loop over all folders recursively until it is done searching for files and will output the paths to fines that it finds in the standard output.
 
-Where the linux grep command is used to look for patterns in content, the linux find command is used to look for patterns in file names. So the command can be used by itself if I just want to find one or more files that fit a given pattern, or with grep via piping to find files and on top of that look farther into the content of each file.
+Where the Linux grep command is used to look for patterns in content, the Linux find command is used to look for patterns in file names. So the command can be used by itself if I just want to find one or more files that fit a given pattern, or with grep via piping to find files and on top of that look farther into the content of each file.
 
 So in this post I will be looking at a few examples of how to get going with the Linux find command.
 
@@ -21,7 +21,7 @@ So in this post I will be looking at a few examples of how to get going with the
 
 So to find one or more files with a set file name I just need to type find followed by a [Tilde](https://en.wikipedia.org/wiki/Tilde#Computing) symbol which is used to refer to the current users home folder. I can then use the name otpion followed by the name of the file that I want to look for in all paths from the home folder as a start point.
 
-So in mu home folder I have a copy of my canvas examples reposatory, in there I have a few diferent rendetions of a pool.js file, and the linux find command was able to get absolute paths to all of them.
+So in mu home folder I have a copy of my canvas examples repository, in there I have a few different renditions of a pool.js file, and the linux find command was able to get absolute paths to all of them.
 
 ```
 $ find ~ -name 'pool.js'
@@ -35,7 +35,7 @@ $ find ~ -name 'pool.js'
 
 ## 2 - Control Depth
 
-One feature that I know I would want when it comes to a command such as linux find is to control the depth at whcih to look for a file recursivly. That is that I might want find to only look in the starting path for a file, or maybe I will want for find to look in nested folders, but only go so many more levels, not all the way. For this there is the max depth option, just add that as one of the options when calling Linux find and pass a number from zero up to the max number of levels to go recursivly to look for files.
+One feature that I know I would want when it comes to a command such as Linux find is to control the depth at which to look for a file recursively. That is that I might want find to only look in the starting path for a file, or maybe I will want for find to look in nested folders, but only go so many more levels, not all the way. For this there is the max depth option, just add that as one of the options when calling Linux find and pass a number from zero up to the max number of levels to go recursively to look for files.
 
 ```
 $ find ./canvas-examples -maxdepth 1 -name README.md
@@ -49,7 +49,7 @@ $ find ./canvas-examples -maxdepth 3 -name README.md
 
 ## 3 - Search for folder names rather than files
 
-To search for file names rather than file names just use the type option with the name option. The value to use for the type option will be d for directories. The type option can be used to restrict for other types such as regular files with a f, and symbolic lines by passing an l for the type option. For a full list, as well as many other options you would want to check the man page, but those three values for the type option are the ones that I find myself using most offten.
+To search for file names rather than file names just use the type option with the name option. The value to use for the type option will be d for directories. The type option can be used to restrict for other types such as regular files with a f, and symbolic lines by passing an l for the type option. For a full list, as well as many other options you would want to check the man page, but those three values for the type option are the ones that I find myself using most often.
 
 ```
 $ find . -type d -name pkg
@@ -61,11 +61,11 @@ $ find . -type d -name pkg
 ./canvas-examples/forpost/canvas-example-game-monster-smash/pkg
 ```
 
-## 4 - Using the exec option to call a command and feed URIs to the command via argumnets
+## 4 - Using the exec option to call a command and feed URIs to the command via arguments
 
-So the exec option is what I would want to use when it comes to feeding the URIs that are found to some other command. Most commands exspect content from the standard input rather the one or more URIs, so this option is very imporatnt when it comes to passing URIS of files that are found to some other kind of command to prefrom some kind of acttion with that file.
+So the exec option is what I would want to use when it comes to feeding the URIs that are found to some other command. Most commands expect content from the standard input rather the one or more URIs, so this option is very important when it comes to passing URIS of files that are found to some other kind of command to preform some kind of action with that file.
 
-Here I am looking for javaScript files from the current working path to a max depth of to folders from that starting point. I am only interested in files and not folder names thus I am using the type option with the f value for regular files. I am then using the name option to look for files that end with the .js file extension. So then find is fidning all javaScript files from the current working durectory to a set max depth.
+Here I am looking for javaScript files from the current working path to a max depth of to folders from that starting point. I am only interested in files and not folder names thus I am using the type option with the f value for regular files. I am then using the name option to look for files that end with the .js file extension. So then find is finding all javaScript files from the current working directory to a set max depth.
 
 ```
 $ find . -maxdepth 2 -type f -name '*.js' -exec cat {} ';'
@@ -83,4 +83,4 @@ $ find . -type f -name '*.js' | xargs -l bash -c 'cat $0'
 
 ## 6 - conclusion
 
-So theer are many more things to cover when it comes to the linuc find command. I did not cover everything that can be done with just the find command alone, let alone what can be done when it comes to working with additional commands via pipping and the exec option. I think that I have covered many of the typical things that come to mind at least.
+So there are many more things to cover when it comes to the Linux find command. I did not cover everything that can be done with just the find command alone, let alone what can be done when it comes to working with additional commands via pipping and the exec option. I think that I have covered many of the typical things that come to mind at least.
