@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-02 09:23:25
-version: 1.14
+updated: 2020-10-02 09:30:38
+version: 1.15
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -164,7 +164,9 @@ console.log(source);
 ```
 
 I will not be getting into detail about copying arrays here as that would be a bit off topic, but I have wrote a [post on copying arrays](/2020/09/03/js-array-copy/) that you might want to check out to read more about how to go about making clones of arrays.
-## 6 - converting a string to an array and back agian with array map and other options
+## 6 - converting a string to an array and back again with array map and other options
+
+In this section I will be going over some quick examples of breaking a string down into an array of characters, and then joining the array back into a string with some kind of separator between each character in the source string. Here I will be going over some examples that both do and do not use array map as a way to go over what there is to work with not just will array map, but with built in prototypes in general. That is that the array map method is an example of a method that is part of the array prototype object, and there are other methods to work with in that prototype object other then that of the array map method such as the array join method. In addition there are prototype objects with other built in classes of javaScript including the String and Function prototypes.
 
 ### 6.1 - using String.split and Array.join
 
