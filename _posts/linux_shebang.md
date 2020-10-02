@@ -5,19 +5,19 @@ tags: [linux,js,node.js]
 layout: post
 categories: linux
 id: 6
-updated: 2017-11-13 15:24:38
-version: 1.2
+updated: 2020-10-02 14:43:44
+version: 1.3
 ---
 
-{% mytags_postwords js,javaScript,shebang,linux,node.js %}
+The definition of the word [shebang](https://en.wikipedia.org/wiki/Shebang_&#40;Unix&#41;) is "a matter, operation, or set of circumstances." so then the set of circumstances in the case of using Linux is what scripting language is being used when running a script file. In other words it is important for a program loader to know what interpreter should be used to run a script in question, in the case of server side JavaScript it is typically [node.js](https://nodejs.org/en/).
 
-So real quick and simple, yes here it is:
+I tend to like to use javaScript for anything and everything that has to do with scripting, operating system automation, writing my own commands and so forth so for me I would use something like this:
 
 ```
 #!/usr/bin/env node
 ```
 
-What is it? It's the [node.js](https://nodejs.org/en/) [shebang](https://en.wikipedia.org/wiki/Shebang_&#40;Unix&#41;). What's a shebang? Well the definition I found for the word "shebang " is "a matter, operation, or set of circumstances." The set of circumstances in this case is what scripting language is being used. It is then important for a program loader to know what interpreter should be used to run a script in question, in the case of server side JavaScript it is typically node.
+At the very top of my javaScript files that will be used as starting points for any type of command. The shebang text will of course differ a little from one environment to another but it will always look at least something like that.
 
 <!-- more -->
 
