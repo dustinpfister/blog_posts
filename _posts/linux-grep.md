@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-10-02 14:11:23
-version: 1.10
+updated: 2020-10-02 15:08:32
+version: 1.11
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory. I have been starting to write a few posts on various commands that often are part of Linux, or can be easily added to Linux, and grep is certainly one such command that I should write a quick post on because I am sure it will come in handy now and then with what I often work on when it comes to lengthly collections of text files.
@@ -48,7 +48,7 @@ There are several ways to go about greping over more than one file. There is jus
 
 ### 2.2 - Uisng glob pattens with the file path
 
-One way to look at more than one file is to use [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) for the file path. In other words I do not need to give an absolute or relative path to a single file, but a glob pattren for a collection of files.
+One way to look at more than one file is to use [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) for the file path. In other words I do not need to give an absolute or relative path to a single file, but a glob pattern for a collection of files.
 
 Say I have a number of files in a path that start with the pattern _linux-_ and say I want to find the id of each file. I can type grep followed by the text pattern for an id in a file that starts with the desired pattern, followed by the glob pattern.
 
@@ -77,7 +77,7 @@ $ grep -r "var" ./
 
 ## 3 - piping from standard input
 
-The linux grep command can be used with the standard input rather than a file. Here I am using the linux echo command to just create some standard input to which I am then pipping into greps standrad input I am then looking for the pattern Linux and I am also using the o options that will only print matches for the pattern.
+The Linux grep command can be used with the standard input rather than a file. Here I am using the Linux echo command to just create some standard input to which I am then pipping into greps standard input I am then looking for the pattern Linux and I am also using the o options that will only print matches for the pattern.
 
 ```
 $ echo "I really like the Linux" | grep "Linux" -o
@@ -86,7 +86,7 @@ Linux
 
 ## 4 - Regular expressions and linux grep
 
-Grep can be used with [regular expressions](http://www.robelle.com/smugbook/regexpr.html) as a way to match something that can not be expressed as a static fixed pattern. So in this section I will be going over some examples of grep that invole the use of these regular expressions to match not just a fixed text pattern but a pattern that can change a little now and then from one instance to another.
+Grep can be used with [regular expressions](http://www.robelle.com/smugbook/regexpr.html) as a way to match something that can not be expressed as a static fixed pattern. So in this section I will be going over some examples of grep that involve the use of these regular expressions to match not just a fixed text pattern but a pattern that can change a little now and then from one instance to another.
 
 ### 4.1 - Matching something that is at the beggining of a line and contains a set of numbers
 
