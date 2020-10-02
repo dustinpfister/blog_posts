@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-09-26 17:27:22
-version: 1.6
+updated: 2020-10-02 13:05:57
+version: 1.7
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory. I have been starting to write a few posts on various commands that often are part of Linux, or can be easily added to Linux, and grep is certainly one such command that I should write a quick post on because I am sure it will come in handy now and then with what I often work on when it comes to lengthly collections of text files.
@@ -84,6 +84,22 @@ $ echo "I really like the Linux" | grep "Linux" -o
 Linux
 ```
 
-## 4 - Conclusion
+## 4 - Regular expressions and linux grep
+
+Grep can be used with regular expressions as a way to match something that can not be expressed as a static fixed pattern. So in this section I will be going over some examples of grep that invole the use of these regular expressions to match not just a fixed text pattern but a pattern that can change a little now and then from one instance to another.
+
+### 4.1 - Matching something that is at the beggining of a line and contains a set of numbers
+
+So I have this colection of markdown files, and each of these files has a line that is an id number of a single blog post such as this one that you are reading now. Say I want to produce a list of post file names followed by what the id is of that file. I can use grep followed by a regular expression to do just this by making tha pattern start with a \^ that will only match the start of a line followed by \'id: \' that each id starts with at the top of the file followed by \[0-9\]\* that will match any number that follows.
+
+So with that said with the posts folder as the current working path I can do something liek this:
+```
+$ grep '^id: [0-9]*' *.md > ~/post_id.txt
+```
+
+To produce a list of markdown files with the id numbers for each.
+
+
+## 5 - Conclusion
 
 So it goes without saying that the Linux grep command is one command that will come in handy now and then when it comes to looking for certain text patterns in a large collection of files. Say I find that I keep making the same spelling mistake over and over again and then catch wind of it. I can use grep to find all the files where that mistake has happened, and then use it as an aid for making the necessary changes.
