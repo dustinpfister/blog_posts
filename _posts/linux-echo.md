@@ -5,15 +5,19 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2020-10-02 14:58:22
-version: 1.6
+updated: 2020-10-02 15:02:39
+version: 1.7
 ---
 
 So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/wiki/Echo_%28command%29) command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input I am putting together that will accept such input from something else when it comes to a read use case scenario.
 
 <!-- more -->
 
-## 1 - The Linux Echo command and other ways to log to the standard output with nodejs
+## 1 - Some basics of the Linux echo command by itself
+
+So before getting into some javaScript it might be best to just start out playing around with some commands in the terminal with Linux echo by itself. I would say that the echo command is one of those basic commands in Linux that everyone that uses Linux, or a posix environment in general should be aware of. The command comes up a lot, so it pays to be familiar with many of the options ans and basic use case examples.
+
+## 2 - The Linux Echo command and other ways to log to the standard output with nodejs
 
 So to just use the Linux echo command by itself in the bash shell I type echo and then the string value that is to be piped to the standard output. There are a few options but for the most part that is all there is to the echo command in Linux.
 
@@ -44,7 +48,7 @@ process.stdout.write('Hello World, process stdout style.' + os.EOL);
 console.log('Hello world, console log style');
 ```
 
-## 2 - Using Linux Echo to pipe in some data to the standard input of a nodejs script
+## 3 - Using Linux Echo to pipe in some data to the standard input of a nodejs script
 
 One of the typical use case examples when making a CLI tool, or Shell Script with nodejs is to use echo to pipe some kind of test input to the standard input of a script. In my nodejs script I can just use the stdin property of the process global to attach an event handler that will do something on a per chunk bases with that input.
 
@@ -66,7 +70,7 @@ process.stdin.on('data', (data) => {
 
 With many of my real projects so far what is actually being piped in might be the full body of text of a blog post that is actually being piped in via another script. Also the script that I am piping into does something more than just convert that text to hex, but this is the basic idea never the less.
 
-## 3 - The deal with a backslash
+## 4 - The deal with a backslash
 
 One of the options of the Linux echo command is the -e option that can be used to enable the processing of backslashes as a way to inject certain characters.
 
