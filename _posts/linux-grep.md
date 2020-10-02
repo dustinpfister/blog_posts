@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-10-02 13:25:34
-version: 1.8
+updated: 2020-10-02 13:48:14
+version: 1.9
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory. I have been starting to write a few posts on various commands that often are part of Linux, or can be easily added to Linux, and grep is certainly one such command that I should write a quick post on because I am sure it will come in handy now and then with what I often work on when it comes to lengthly collections of text files.
@@ -93,6 +93,7 @@ Grep can be used with [regular expressions](http://www.robelle.com/smugbook/rege
 So I have this colection of markdown files, and each of these files has a line that is an id number of a single blog post such as this one that you are reading now. Say I want to produce a list of post file names followed by what the id is of that file. I can use grep followed by a regular expression to do just this by making tha pattern start with a \^ that will only match the start of a line followed by \'id: \' that each id starts with at the top of the file followed by \[0-9\]\* that will match any number that follows.
 
 So with that said with the posts folder as the current working path I can do something liek this:
+
 ```
 $ grep '^id: [0-9]*' *.md > ~/post_id.txt
 ```
