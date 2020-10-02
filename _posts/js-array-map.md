@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-02 09:46:18
-version: 1.17
+updated: 2020-10-02 09:50:09
+version: 1.18
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -196,7 +196,7 @@ console.log(b);
 
 ### 6.3 -  Dropping string split and using function call, array map, and array join
 
-Another prototype method that is worth mentioning in this section is the Function call method, but using that it is possible to drop the use of the string split method.
+Another prototype method that is worth mentioning in this section is the Function call method, by using that it is possible to drop the use of the string split method. The reason why that is is that they way that a string is structured it is all ready an arary to begin with in a way in the sense that it can be worked with by way of numbered key values and a length property. The only problem really is that a String is of the String prototype rather than that of the Array prototype. So the function call method can be used to set the value of this for map to that of a string and then array map will work directly with a string rather than an array becuase a string is an example of an array like object.
 
 ```js
 var a = 'abcd';
