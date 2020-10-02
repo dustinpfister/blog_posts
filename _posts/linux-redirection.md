@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-10-02 14:18:53
-version: 1.6
+updated: 2020-10-02 14:34:31
+version: 1.7
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? When it comes to piping I guess I could pipe the output alone to a text editor, but there is another option called [Linux redirection](https://en.wikipedia.org/wiki/Redirection_%28computing%29). So in this post I will be writing a thing or two about redirection in Linux and how it can be used with, or as a replacement to a Linux pipeline of two or more commands.
@@ -41,6 +41,14 @@ Here is a real example that involves using [Linux grep](/2020/09/14/linux-grep/)
 
 ```
 $ grep '^id: [0-9]*' *.md > ~/post_id.txt
+```
+
+## 3 - redirect standard input from a file
+
+I can also redirect the standard input just like I am doing with the standard output. The only thing I need to do is just use a less than symbol rather than a greater than symbol. So say I have a file with a list of id numbers I can use linux redirection to use the data in that file as the standard input of a command like cat, and then from there I can pipe the results of that to soemthing else.
+
+```
+$ cat < ~/post_id.txt | grep 'id: [0-9]*'
 ```
 
 ## 3 - Conclusion
