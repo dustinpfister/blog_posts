@@ -5,8 +5,8 @@ tags: [linux,js,node.js]
 layout: post
 categories: linux
 id: 6
-updated: 2020-10-02 14:44:31
-version: 1.4
+updated: 2020-10-02 14:48:54
+version: 1.5
 ---
 
 The definition of the word [shebang](https://en.wikipedia.org/wiki/Shebang_&#40;Unix&#41;) is "a matter, operation, or set of circumstances." so then the set of circumstances in the case of using Linux is what scripting language is being used when running a script file. In other words it is important for a program loader to know what interpreter should be used to run a script in question, in the case of server side JavaScript it is typically [node.js](https://nodejs.org/en/).
@@ -23,13 +23,13 @@ At the very top of my javaScript files that will be used as starting points for 
 
 ## 1 - Do you need to use the shebang?
 
-It depends on the situation if you are calling your node script like this:
+I would say that it depends on the situation, if for example each time I am starting a script by calling node first and then a path to the script like this:
 
 ```
 # node myscript.js
 ```
 
-Then it is not at all important as you are directly calling node. It becomes important to use it when developing a stand alone Command Line Interface tool using node.
+Then it is not at all important as I am directly calling node each time I want to run the script. However I would say that it becomes important to use a Linux shebang when developing a stand alone Command Line Interface tool using node as the environment. When the stand alone command is called Linux or any other program that calls the script is going to need to know what program to use in order to run the script. So using the Linux shebang at the top of the main file is one thing that must be done when it comes to making a nodes project a stand alone command.
 
 ## 2 - Check your jsMin, or jsFormat tools.
 
