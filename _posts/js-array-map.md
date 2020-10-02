@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-02 09:42:39
-version: 1.16
+updated: 2020-10-02 09:46:18
+version: 1.17
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -170,7 +170,7 @@ In this section I will be going over some quick examples of breaking a string do
 
 ### 6.1 - using String.split and Array.join
 
-When it comes to breaking down a string into an array of characters the first and for most method that might come to mind is the string split prototype method.
+When it comes to breaking down a string into an array of characters the first and for most method that might come to mind is the string split prototype method. By calling string split method the result is an array, at which point I can then use array prototype methods off of the resulting array such as the array join method that can be used to join the elements of an array back into a string.
 
 ```js
 var a = 'abcd';
@@ -178,6 +178,8 @@ var b = a.split('').join('-');
 console.log(b);
 // 'a-b-c-d'
 ```
+
+Split and join are great basic tools, but they do have there limitations such as that I can not preform some kind of custom logic for each element in the resulting array.
 
 ### 6.2 - Using string split, array map, and array join.
 
