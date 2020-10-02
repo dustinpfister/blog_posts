@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2020-10-01 15:48:34
-version: 1.13
+updated: 2020-10-02 09:23:25
+version: 1.14
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of an array, and create some sort of product for each element in that array. There are methods like the Array foreach method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -164,7 +164,39 @@ console.log(source);
 ```
 
 I will not be getting into detail about copying arrays here as that would be a bit off topic, but I have wrote a [post on copying arrays](/2020/09/03/js-array-copy/) that you might want to check out to read more about how to go about making clones of arrays.
+## 6 - converting a string to an array and back agian with array map and other options
 
-## 6 - Conclusion
+### 6.1 - using String.split and Array.join
+
+```js
+var a = 'abcd';
+var b = a.split('').join('-');
+console.log(b);
+// 'a-b-c-d'
+```
+
+### 6.2 - Using string split, array map, and array join.
+
+```js
+var a = 'abcd';
+var b = a.split('').map(function (ch) {
+        return parseInt(ch, 16);
+    }).join('-');
+console.log(b);
+// '10-11-12-13'
+```
+
+### 6.3 -  Dropping string split and using function call, array map, and array join
+
+```js
+var a = 'abcd';
+var b = Array.prototype.map.call(a, function (ch) {
+        return parseInt(ch, 16);
+    }).join('-');;
+console.log(b);
+// '10-11-12-13'
+```
+
+## 7 - Conclusion
 
 So the array map method is one of several methods in the array prototype that have to do with creating an array from a source array. The array map method is a good choice if you want to created a new array from all elements in the array, but there are of course other options that a javaScript developer should be aware of, namely filter, and reduce, but also many other such as sort.
