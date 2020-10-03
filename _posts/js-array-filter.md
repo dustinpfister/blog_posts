@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:22:18
-version: 1.7
+updated: 2020-10-03 13:25:21
+version: 1.8
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -21,7 +21,7 @@ So in this section I will be going over just the very basics of the js array fil
 
 ### 1.1 - basic array filter example
 
-here we have just a very basic example of the js array filter method.
+Here I have just a very basic example of the js array filter method. I create an array and then call the filter method off of that array, and then pass a function as the first argument for the array filter method that will be called for each element in the array. In the body of the function that I pass to the array filter method I return a true or false value. If the value is true then the current element will be included in the new array, if the value is false it will not be included.
 
 ```js
 var a = [1, 'a', 2, 'b', 3, 'c'],
