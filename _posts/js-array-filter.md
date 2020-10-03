@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:42:27
-version: 1.13
+updated: 2020-10-03 13:58:27
+version: 1.14
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -163,6 +163,38 @@ console.log(score);
 ```
 
 Although this kind of approach might work okay, when it comes to a serious game project these days I have found that i prefer to use an object pool. What I mean by an object pool is that I have a fixed collection of objects that are reused over an over again rather than pushing and purging objects into a collection as needed. For more on object pools you might wan to check out [my canvas example post on object pools](/2020/07/20/canvas-example-object-pool/) to get a better idea of what I mean by them.
+
+### 3.3 - HTMLCollections and using array filter with function call
+
+In javaScript often I find myself working with what are called array like objects. What these kinds of objects are is that they are objects that have keys that are numbered rather than named just like arrays, and they have a length property that should be the total number of named keys just like arrays. So it is a kind of object that is like an array, but it is not an instance of the built in array prototype so it is not an array. So with these kinds of objects I can not just use the array filter method with them because the array filter method is part of the array prototype and not that of any other prototype.
+
+However if it is an array like object often I can still get the array filter method to work with it by making use of a function prototype method know as call.
+
+```html
+<html>
+    <head>
+        <title>JS Array filter</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="foo1">one</div>
+            <div id="foo2">2</div>
+            <div id="foo3">3</div>
+            <div id="foo4">four</div>
+        </div>
+        <script>
+var container = document.getElementById('container'),
+divs = container.children;
+Array.prototype.filter.call(divs, function (el, i) {
+    return String(parseInt(el.innerText)) != 'NaN';
+}).forEach(function (el) {
+    var n = parseInt(el.innerText);
+    el.innerText = n + ' : ' + Math.pow(n, 2);
+});
+        </script>
+    </body>
+</html>
+```
 
 ## 4 - Conclusion
 
