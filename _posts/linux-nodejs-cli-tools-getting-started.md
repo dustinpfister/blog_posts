@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2020-10-03 09:09:36
-version: 1.5
+updated: 2020-10-03 09:14:47
+version: 1.6
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -19,7 +19,7 @@ So in this post I will be going over just the basics of making a simple node CLI
 
 ## 1 - Getting started
 
-I assume that node.js is installed, and that you have basic working knowledge of javaScript and know a thing or two about how to work withing a Command Line Interface such as bash in Linux, and most posix systems, and cmd.exe or powerShell in windows.
+I assume that node.js is installed, and that you have basic working knowledge of javaScript and know a thing or two about how to work with a Command Line Interface such as bash in Linux, and most posix systems, and cmd.exe or powerShell in windows. I often use Linux and assume that what I make will still work okay in an Apple Darwin/OSX environment. In any case what I am going over in this post should work okay in any Operating system environment, it is only when using the [child process module](/2018/02/04/nodejs-child-process/) that you might want to be careful about what commands you are using and how you are using them.
 
 To make a CLI tool with node.js I would start by making a new folder in a pace where I get projects done such as the home folder, or my documents folder what have you. At which point I would make it the current working directory, and set up a new node project by calling npm init to make my package.json file.
 
