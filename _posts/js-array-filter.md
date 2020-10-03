@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:15:49
-version: 1.5
+updated: 2020-10-03 13:19:04
+version: 1.6
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -148,6 +148,8 @@ console.log(ships);
 console.log(score);
 // 2
 ```
+
+Although this kind of approach might work okay, when it comes to a serious game project these days I have found that i prefer to use an object pool. What I mean by an object pool is that I have a fixed collection of objects that are reused over an over again rather than pushing and purging objects into a collection as needed. For more on object pools you might wan to check out [my canvas example post on object pools](/2020/07/20/canvas-example-object-pool/) to get a better idea of what I mean by them.
 
 ## 4 - Conclusion
 
