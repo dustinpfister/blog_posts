@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:31:13
-version: 1.9
+updated: 2020-10-03 13:35:37
+version: 1.10
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -83,7 +83,7 @@ console.log(b);
 
 ## 3 - js array filter examples
 
-In this section I will just be going over a whole buch of use case examples of the array filter method.
+In this section I will just be going over a whole bunch of use case examples of the array filter method. Many of these examples might not have any typical real would use case value, however some of them might. It would be best to just start working on your own projects and start finding your own unique use case examples of the array filter method. However if you would like to see a few examples that might help to inspire you to get working on your own code maybe this section will help.
 
 ### 3.1 - remove invalid values
 
