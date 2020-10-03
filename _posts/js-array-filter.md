@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:19:04
-version: 1.6
+updated: 2020-10-03 13:22:18
+version: 1.7
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -17,7 +17,7 @@ The js array filter method is just one of many methods that a javaScript develop
 
 ## 1 - js array filter basics
 
-So in this section I will be going over just the very basics of the js array filter method.
+So in this section I will be going over just the very basics of the js array filter method. The array filter method is an array prototype method so in order to use it you must have an array to begin with, or use the call function prototype method to attempt to get it to work on something that is not an array. In any case in this section I will be going over a few quick examples of the basic features of the array filter prototype method.
 
 ### 1.1 - basic array filter example
 
