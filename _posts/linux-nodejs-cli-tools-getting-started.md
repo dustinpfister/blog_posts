@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2020-10-03 11:43:30
-version: 1.7
+updated: 2020-10-03 11:51:05
+version: 1.8
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -61,12 +61,16 @@ I have wrote a [post on the node.js shebang](/2017/03/26/linux_shebang/) a few m
 
 ## 4 - The index.js file
 
-So yes I will want a JavaScript file called index.js in the root name space of the project for starters I might do something like this:
+So yes I will want a JavaScript file called index.js in the root name space of the project for starters I might do something like just log the message hello world to the standard output of the console.
 
 ```js
 #!/usr/bin/env node
 console.log('hello CLI!');
 ```
+
+This is just a getting started post after all, in a real project I would want to have at least a few dependencies to work with that have to do with things like option parsing and so forth. However I do not want to get to deep into those kinds of things here, and the kind of packages I would add would change from one project to another depending on what the tool does.
+
+So now that I have my starting npm package folder, a binary name set in the package.json file, and a starting file to run for the command, the  next thing to do is to make it a global command.
 
 ## 5 - Making the script global
 
@@ -76,7 +80,7 @@ So while still in the working directory of the project I just need to use npm to
 npm install -g
 ```
 
-Now I can cd to any path in my CLI and call cli-tool to get 'hello-CLI!' logged to the console, pretty sweet hua? Of course in order to start doing some things more interesting it is going to take more than just that, but this is the depth of this post.
+Now I can cd to any path in my CLI and call cli-tool to get 'hello-CLI!' logged to the console. Of course in order to start doing some things more interesting it is going to take more than just that, but this is the depth of just getting started with making a node Command Line Interface tool. In rest of this post I might just start touching base on a few more things that come to mind when it comes to making this kind of project with javaScript.
 
 ## 6 - Option parsing in node.js
 
