@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2020-10-03 09:14:47
-version: 1.6
+updated: 2020-10-03 11:43:30
+version: 1.7
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -21,7 +21,7 @@ So in this post I will be going over just the basics of making a simple node CLI
 
 I assume that node.js is installed, and that you have basic working knowledge of javaScript and know a thing or two about how to work with a Command Line Interface such as bash in Linux, and most posix systems, and cmd.exe or powerShell in windows. I often use Linux and assume that what I make will still work okay in an Apple Darwin/OSX environment. In any case what I am going over in this post should work okay in any Operating system environment, it is only when using the [child process module](/2018/02/04/nodejs-child-process/) that you might want to be careful about what commands you are using and how you are using them.
 
-To make a CLI tool with node.js I would start by making a new folder in a pace where I get projects done such as the home folder, or my documents folder what have you. At which point I would make it the current working directory, and set up a new node project by calling npm init to make my package.json file.
+To make a CLI tool with node.js I would start by making a new folder in a place where I get projects done such as the home folder, or my documents folder, or what have you. At which point I would make it the current working directory, and set up a new node project by calling npm init to make my package.json file for the new project.
 
 ```
 $ mkdir cli-tool
@@ -29,7 +29,9 @@ $ cd cli-tool
 $ npm init
 ```
 
-## 2 - Adding the bin entry to package.json
+The next steps will involve setting a bin name for the command line tool, and start a main index.js file for it, so lets get to doing that.
+
+## 2 - Adding the bin entry to package.json for the command name
 
 One of the most important steps to making a script global is setting the name that is to be called from the command line, and the script to be called when doing so. This is done by adding a bin entry to package.json file of my project.
 
@@ -46,7 +48,7 @@ This means that I will be calling my tool like this
 $ cli-tool
 ```
 
-and a file called index.js is what will be called when doing so.
+and a file called index.js is what will be called when doing so. I do what I can to make sure that I am not using a name that is all ready in use with the operating system that I am using by taking the time to be familiar with what is all ready there. It also stands to reason that it would be a good idea to make sure that I am not using a name that is used by another popular project in general when it comes to the possibly that other people might use my command line tool.
 
 
 ## 3 - The node.js shebang
