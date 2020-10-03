@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:09:46
-version: 1.3
+updated: 2020-10-03 13:13:09
+version: 1.4
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -70,7 +70,11 @@ console.log(b);
 
 ## 3 - js array filter examples
 
+In this section I will just be going over a whole buch of use case examples of the array filter method.
+
 ### 3.1 - remove invalid values
+
+So of course the array filter method can be used to create a new array that does not have any elements that would be considered invalid.
 
 ```js
 var removeInvalid = function (objects) {
@@ -102,6 +106,8 @@ console.log(objects);
 ```
 
 ### 3.2 - remove dead enemies in a game
+
+Say you are making a game and you want to work out a method that will be used to remove any dead enemies from an array. The array filter method could be used to create a new array of enemies that only contains enemies that are still alive.
 
 ```js
 // remove dead function
