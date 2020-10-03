@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2020-10-03 11:51:05
-version: 1.8
+updated: 2020-10-03 11:51:46
+version: 1.9
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -100,4 +100,4 @@ I have wrote a [post on an npm package called node-dir](/2017/11/05/nodejs-node-
 
 ## 9 - Conclusion
 
-maybe I will make some more examples that do something a bit more interesting. For now I guess I will just reference some posts that I have written before that are relevant to this sort of thing. Of course I have many [posts on node.js](/categories/node-js/) that are worth checking out.
+Maybe I will make some more examples that do something a bit more interesting. For now I guess I will just reference some posts that I have written before that are relevant to this sort of thing. Of course I have many [posts on node.js](/categories/node-js/) that are worth checking out.
