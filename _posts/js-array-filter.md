@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:25:21
-version: 1.8
+updated: 2020-10-03 13:31:13
+version: 1.9
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -30,6 +30,19 @@ b = a.filter(function (el) {
     });
 console.log(a);
 console.log(b);
+```
+
+### 1.2 - The index values of the elements
+
+The index value for each element in the array can be obtained via a second argument in the function that is passed to the js array filter method as the first argument.
+
+```js
+var a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var b = a.filter(function (el, i) {
+        return i % 2 === 0;
+    });
+console.log(b);
+// [ 1, 3, 5, 7, 9 ]
 ```
 
 ## 2 - filter keys of an Object
