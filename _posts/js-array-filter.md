@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:38:05
-version: 1.11
+updated: 2020-10-03 13:39:46
+version: 1.12
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -120,7 +120,7 @@ console.log(objects);
 
 ### 3.2 - remove dead enemies in a game
 
-Say you are making a game and you want to work out a method that will be used to remove any dead enemies from an array. The array filter method could be used to create a new array of enemies that only contains enemies that are still alive.
+Say you are making a game and you want to work out a method that will be used to remove any dead enemies from an array. The array filter method could be used to create a new array of enemies that only contains enemies that are still alive. While I am filtering out enemies that are dead I could also fire a method that is to be called each time an enemy dies in the game. Inside this on dead function I can do things like tabulate a score value.
 
 ```js
 // remove dead function
