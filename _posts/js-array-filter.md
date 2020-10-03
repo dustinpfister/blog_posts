@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:05:42
-version: 1.2
+updated: 2020-10-03 13:09:46
+version: 1.3
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -17,7 +17,11 @@ The js array filter method is just one of many methods that a javaScript develop
 
 ## 1 - js array filter basics
 
+So in this section I will be going over just the very basics of the js array filter method.
+
 ### 1.1 - basic array filter example
+
+here we have just a very basic example of the js array filter method.
 
 ```js
 var a = [1, 'a', 2, 'b', 3, 'c'],
@@ -29,6 +33,8 @@ console.log(b);
 ```
 
 ## 2 - filter keys of an Object
+
+The js array filter method can be used with other methods in native javaScript such as the Object keys static method to filter objects keys in a plain old object. In other words say you have an object with named key values rather than numbered key values and you want to create a new object with named key values. You can not use array filter by itself because it is an array prototype methods and the objects that we are talking about here are not array like objects so it is not possible to do something with the function call prototype method. However the Object keys static method can be used to create an array of key names, and then the array filter method can be called off of that.
 
 ```js
 var filterObjectKeys = function (obj, func, thisValue) {
