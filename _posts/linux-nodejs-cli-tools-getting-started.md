@@ -5,13 +5,11 @@ tags: [linux,js,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2017-11-13 15:21:07
-version: 1.2
+updated: 2020-10-03 08:56:30
+version: 1.3
 ---
 
-{% mytags_postwords js,javaScript,shebang,linux,node.js,CLI %}
-
-So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. So I thought I would put a post together to help remind me of the few steps to make in order to make a global CLI tool in javaScript with node.js.
+So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to make a global CLI tool in javaScript with node.js.
 
 <!-- more -->
 
