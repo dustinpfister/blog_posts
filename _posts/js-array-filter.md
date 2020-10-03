@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:35:37
-version: 1.10
+updated: 2020-10-03 13:38:05
+version: 1.11
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -87,7 +87,7 @@ In this section I will just be going over a whole bunch of use case examples of 
 
 ### 3.1 - remove invalid values
 
-So of course the array filter method can be used to create a new array that does not have any elements that would be considered invalid.
+So of course the array filter method can be used to create a new array that does not have any elements that would be considered invalid. With that said the array filter method can be used as a way to preform sanitation on an array that can potential contain values that should not be there. I just have to work out whatever logic needs to be preformed in order to return false right away for certain types that should not be there, and then preform additional checks on objects once I know I am indeed working with an object.
 
 ```js
 var removeInvalid = function (objects) {
