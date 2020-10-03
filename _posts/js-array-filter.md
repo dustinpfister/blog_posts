@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 715
-updated: 2020-10-03 13:13:09
-version: 1.4
+updated: 2020-10-03 13:15:49
+version: 1.5
 ---
 
 So in native javaScript there are a number of prototype methods that can be used off of any instance of an array. One such method is the js [array filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method than can be used to create a new array from an array with a whole bunch of elements filtered out. The logic that is used to filter out elements can be defined in the body of a function that is passed to the array filter method.
@@ -148,3 +148,7 @@ console.log(ships);
 console.log(score);
 // 2
 ```
+
+## 4 - Conclusion
+
+So the array filter method is just one of the many tools in the toolbox in native javaScript when it comes to working with arrays. I find myself using it most of the time when I want to filter out elements from an array, but it is not a replacement for other options like array map, and array reduce.
