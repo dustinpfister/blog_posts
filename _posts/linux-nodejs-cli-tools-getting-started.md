@@ -5,11 +5,13 @@ tags: [linux,js,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2020-10-03 08:56:30
-version: 1.3
+updated: 2020-10-03 09:06:03
+version: 1.4
 ---
 
-So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to make a global CLI tool in javaScript with node.js.
+So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
+
+The basic process is that I just need to have a nodejs shebang at the top of a javaScript file that will be the main file that will run. In addition to this I just need to have a bin key in my package.json file that will serve as a way to name what the command will be and to point to the file that will run when that command is called. So in this post I will be going over just the basics of that, but might not get into depth beyond that when it comes to things like option parsing.
 
 <!-- more -->
 
