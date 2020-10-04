@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 702
-updated: 2020-09-09 16:18:55
-version: 1.3
+updated: 2020-10-04 08:40:38
+version: 1.4
 ---
 
 This month I have set up a new image on an sd card for my raspberry PI 3B+ and aim to start to transition into seeing if I can use a raspberry PI to get work done over my old windows 10 computer that is causes me a great deal a grief. So the new image I am working with is a clean Raspberry PI OS desktop image without the recommended software, so far I think going with this kind of image is best when it comes to just getting going with raspberry PI OS, but one thing that I see that I would like to adjust is the swap file size. I was able to find a [decent post on swap file size in rasbian](https://www.bitpi.co/2015/02/11/how-to-change-raspberry-pis-swapfile-size-on-rasbian/) that still seems to work okay for me if I just want to increase the size a little. However I thought I would write my own post on this on anyway just for the sake of having my own content on this, and to add anything more that might come up when it comes to swap files and Raspberry PI OS.
@@ -58,3 +58,6 @@ CONF_SWAPSIZE=1024
 ## 2 - Conclusion
 
 So that is it for now when it comes to Raspberry PI os and swap file size. There is not much else that comes to mind with this one for now, but this is one little thing that I would often like to tweak when it comes to setting up a clean new image for this OS.
+
+
+There is more to write about when it comes to spawn files, and also swap partitions also with Raspberry PI OS and Linux in general actually. If I hook something up to the raspberry PI that has faster drive index speeds compared to the SD Card it would be nice to set up a spawn file, or swap partition on that volume to help increase speed with spawn. However it is also worth mentioning that if I really need more spawn space that is also an indication that I am maybe using to much memory. Better options compare to doing things with spawn would be to have a newer raspberry PI with more RAM, or to see about what I can do to use less RAM.
