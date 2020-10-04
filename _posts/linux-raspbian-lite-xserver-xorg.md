@@ -5,11 +5,11 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2020-03-30 19:25:56
-version: 1.8
+updated: 2020-10-04 08:32:38
+version: 1.9
 ---
 
-When setting up a [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian) lite install I might just want to set up a server, or do somthing from the command line only. However often I might want at least some kind of desktop environment. So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
+When setting up a [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian) lite install I might just want to set up a server, or do something from the command line only. However often I might want at least some kind of desktop environment. So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
 
 <!-- more -->
 
@@ -66,3 +66,7 @@ If I want to rRaspbian to boot right into a display manager, and then from there
 ```
 $ sudo apt-get install lightdm
 ```
+
+## 7 - Conclusion
+
+So starting with a lite distribution of Raspbian is often good starting point for certain use cases of a raspberry PI. If I want to set up a raspberry PI to just act as a sever of something on a network then it makes sense to just have a command line interface to work with, just install the application that I want it to run, and not bother installing a desktop environment at all. However in some situations I might want to install xorg, and a custom desktop environment.
