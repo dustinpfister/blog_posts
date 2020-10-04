@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-10-04 09:18:49
-version: 1.23
+updated: 2020-10-04 09:21:50
+version: 1.24
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -24,6 +24,8 @@ To know how to use the String.Match method to a fair amount of proficiency it is
 So in this section I will be going over just a few basic examples of the string match method. This should helper to get started with string match to know what it can do, and also what it can not do at least by itself. You might all ready be familiar with the String.index method, and with that said the String match method can be used to do the same thing, but it is a little more advanced. So lets get started with some basic examples of the string match method.
 
 ### 1.1 - just getting the first match using a string rather than a regular expression
+
+So the string match method can be used in more or less the same way as the string index method in the sense that a string ca be given as a pattern to look for. However the result that will be returned in the event that a match is found will end up being an object rather than a number value for the index of the match.
 
 ```js
 let str = 'foo bar baz bar 42 zoo bar';
