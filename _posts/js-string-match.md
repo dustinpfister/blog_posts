@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-10-04 08:48:23
-version: 1.21
+updated: 2020-10-04 08:56:50
+version: 1.22
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -61,7 +61,7 @@ console.log(getFooIndex(str2)); // -1
 
 So the possibility of null being returned by the String.match method is something to look out for when using it.
 
-## 3 - Single pattern match and many
+## 3 - Single pattern match and more than one match with the String match method.
 
 When using the String.match method there might be some additional properties attached to the Array that might be returned when it is called depending on the flags set for the regular expression pattern. If the Group flag of the pattern is not set then additional properties for the index in the string in which the pattern was found will be set to the array as well.
 
@@ -168,7 +168,7 @@ console.log(str.indexOf('foo')); // 18
 console.log('bar'.indexOf('foo')); // -1
 ```
 
-### 5.2 - Using exec to do a String Match
+### 5.2 - Using The RegExp exec method to do a String Match
 
 If you are trying to use string.match to create an array of objects for each instance of a pattern that contains additional information like the index in which each pattern is found, then you might want to consider RegExp.exec to do so. It might be possible to work out some kind of solution using string.match to do that, but you might find this method works great for doing so.
 
@@ -185,3 +185,9 @@ console.log(patt.exec(str)); // ['dat_2017.json...'
 ```
 
 Each time an array is returned, it has the additional properties that are only received when the group flag is not used as with String.match. So this method can be used to build an array of objects that have detailed information about each instance of the pattern. Working out a solution to do so with String.macth will have to involve string manipulation.
+
+## 6 - Conclusion
+
+So the string match method is a good choice for looking for instances of a pattern in a string, however it is nit the only option. When it comes to making a real serious object that involves creating an array of indexes and lengths for patterns in a volume of text it might be best to go with the RegExp exec method for this sort of thing. Although it is still possible to create what I want using string match as long as I know how to get around some of its limitations.
+
+There is getting into working out more regular expressions, or at least learning how existing regular expressions truly work rather than  just coping and pasting them from stack overflow, and blog posts such as this one. It might be best to just start a project where regular expressions are whats needed to get things working, and writing a few of them to learn by doing rather than just reading content like this.
