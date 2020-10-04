@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-06-18 15:30:16
-version: 1.20
+updated: 2020-10-04 08:48:23
+version: 1.21
 ---
 
-The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find detailed information about the first pattern match in a string. In addition an flag can be used when creating an regular expression to get an array of matches for a given text pattern in the form of a regular expression.
+The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
+
+If you are still new to javaScript you might be using methods like String.indexOf to find the index of a fixed text pattern in a string. This kind of method might work okay with fixed static patterns, where I am only interested in the first match from right to left, of if there is an instance of the pattern at all. However methods like that do have there limitations and in some cases it might be best to just get into regular expressions and methods like the string match method.
 
 So this js string match method is a great method that comes in handy, but it might not always be the best option when it comes to pattern matching tasks with javaScript and regular expressions. There is another option that might be a better choice when it comes to [preforming a replacement task](/2019/04/08/js-string-replace/), but this post will focus more so on just matching. So then this post will be a quick outline on the String.match method in javaScript, with at least a few examples that should help with gaining greater knowledge of the use of this method.
 
