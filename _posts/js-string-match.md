@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-10-04 09:21:50
-version: 1.24
+updated: 2020-10-04 09:26:31
+version: 1.25
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -43,6 +43,8 @@ console.log( match[0] ); // 'bar'
 
 ### 1.2 - Using the global flag with a regular expression and the first drawback of string match
 
+A regular expression can be given as a pattern to look for rather than a string. When giving a pattern it is possible to set a global flag that will result in the string match method looking for all instances of the pattern rather than just the first.
+
 ```js
 let str = 'foo bar baz bar 42 zoo bar';
 // doing s global Match
@@ -50,6 +52,8 @@ let match = str.match(/bar/g);
 console.log(match); // ['bar', 'bar', 'bar']
 console.log(match.index); // undefined
 ```
+
+However there is a problem the result is an array of matches for the pattern that contain the text of the pattern match, but not the index values in the source string. This is one of the reasons why one might want to take a look at what there is to work with in the Regular expression prototype, namely the RegExp.exec method. More on that later on in this post when I get to alternatives to the string match method. For now lets look at just some more basic examples of string match.
 
 ### 1.3 - yet another basic example
 
