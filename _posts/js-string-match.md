@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-10-04 09:29:33
-version: 1.26
+updated: 2020-10-04 09:35:28
+version: 1.27
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -31,17 +31,27 @@ So the string match method can be used in more or less the same way as the strin
 let str = 'foo bar baz bar 42 zoo bar';
  
 // String.indexOf
-console.log( str.indexOf('bar') );
-// 4
+console.log( str.indexOf('bar') ); // 4
  
 // String.match
 var match = str.match('bar');
 console.log( match.index ); // 4
 console.log( match[0] ); // 'bar'
-//[ 'bar', index: 4, input: 'foo bar baz bar 42 zoo bar' ]
 ```
 
 The object that is returned will have an index property this is what will contain the index value of the match in the string like that of the index value. The object can also be used like an Array and the first and only element of the array will contain the text of the first any one match when used this way.
+
+### 1.2 - No Match with String Match
+
+When using the String index of method a value of -1 will be returned when no match for a pattern is obtained. The string match method will return null in the event that there is no instance of the given pattern in the source string.
+
+```js
+let str = 'foo bar baz bar 42 zoo bar';
+// String.indexOf
+console.log( str.indexOf('nope') ); // -1
+// String.match
+console.log(str.match('nope')); // null
+```
 
 ### 1.2 - Using the global flag with a regular expression and the first drawback of string match
 
