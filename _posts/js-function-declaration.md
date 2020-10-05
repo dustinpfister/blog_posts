@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2020-10-05 09:27:44
-version: 1.15
+updated: 2020-10-05 09:33:00
+version: 1.16
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -34,6 +34,10 @@ However there is more to a function declaration in javaScript than just the lexi
 Sure there are some wried ways of defining them that involve passing a string to the Function constructor or making use of eval, but for the sake of this post  I do not want to get to far off topic from function declarations.
 
 ## 2 - Function declarations compared to Function Expressions
+
+So the two main ways to create a function in javaScript in order ECMA-262 R5 spec javaScript was to use a function declaration or a function expression. There are still a number of other ways to create functions such as using eval, or the function constructor, but for the most part it is just those two kinds of functions that where of concern. In later specs of javaScript there are now even more options when it comes to creating functions, but in this section I will be focusing on just function declarations and expressions and the reasons why those two stand apart from each other.
+
+### 2.1 - First off a word on function expressions
 
 Aside from function declarations the other most common way to go about defining functions before the introduction of arrow functions was the so called [function expression](/2019/01/27/js-function-expression/) or function literal as it is also often referred to as. The function expression has a slightly different syntax that involves typing the function keyword followed by opening and closing parentheses and then the brackets. A function expression is the result of this expression that is typically stored in a variable, and then it is that variable that is called to execute the function.
 
