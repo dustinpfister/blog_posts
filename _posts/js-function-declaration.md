@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2020-10-05 09:18:48
-version: 1.13
+updated: 2020-10-05 09:25:19
+version: 1.14
 ---
 
 In javaScript there is more than one way to [define a function](/2019/12/26/js-function/), depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -35,9 +35,9 @@ Sure there are some wried ways of defining them that involve passing a string to
 
 ## 2 - Function declarations compared to Function Expressions
 
-Aside from function declarations the other most common way to go about defining functions before the introduction of arrow functions was the so called [function expression](/2019/01/27/js-function-expression/) or function literal as it is also often referred to as. The function expression has a slightly different syntax that involves typing the function keyword followed by opening and closing parentheses and then the brackets. it is the result of this expression that is typically stored in a variable, and then it is that variable that is called to execute the function.
+Aside from function declarations the other most common way to go about defining functions before the introduction of arrow functions was the so called [function expression](/2019/01/27/js-function-expression/) or function literal as it is also often referred to as. The function expression has a slightly different syntax that involves typing the function keyword followed by opening and closing parentheses and then the brackets. A function expression is the result of this expression that is typically stored in a variable, and then it is that variable that is called to execute the function.
 
-The same basic function declaration above cound then be written like this as an expression then
+The same basic function declaration above could then be written like this as an expression then
 
 ```js
 
@@ -47,6 +47,8 @@ let foo = function() {
  
 console.log( foo() ); // 'bar'
 ``` 
+
+A function expression does not have to be stored in a variable though, they can be used with the group operator and then called outside of that group operator so that they can be used in an anonymous way. In there words they can be used in a self executing from that is often referred to as an [Immediately Invoked Function Expression](/2020/02/04/js-iife/). For the most part function expressions strike me as being a little more flexible compared to declarations, but they are still not a replacement for them for one significant reason that I will be getting to in the next section.
 
 ### 2.1 - Function Declarations can be called anywhere while expressions can not
 
