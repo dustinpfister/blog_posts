@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2020-10-05 09:33:00
-version: 1.16
+updated: 2020-10-05 09:37:24
+version: 1.17
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -79,6 +79,8 @@ let bar = function () {
 };
 console.log(bar()); // 'foo'
 ```
+
+So function declarations might come off as being a little less versatile compared to expressions, but this feature about them is one reason why I might choose to use them from time to time. When useing expressions I need to take care that I am defining expressions towards the top of the module and make sure that any call s for that function are below them.
 
 ## 3 - Function declarations compared to Arrow Functions
 
