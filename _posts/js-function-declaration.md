@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2020-10-05 09:15:32
-version: 1.12
+updated: 2020-10-05 09:18:48
+version: 1.13
 ---
 
 In javaScript there is more than one way to [define a function](/2019/12/26/js-function/), depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -17,7 +17,7 @@ So it is important to understand the differences between the different ways of h
 
 ## 1 - Function Declaration basics in javaScript
 
-To create a function declaration start out by typing the function keyword followed by a name for the function, then opening and closing parentheses that might contain one or more optional parameters for the function followed by opening and closing brackets. This way of defining a function differs slightly from a function expression, and arrow functions, as well as other ways of defining a function such as using the Function constructor.
+To create a function declaration start out by typing the function keyword followed by a name for the function, then opening and closing parentheses that might contain one or more optional parameters for the function followed by opening and closing brackets. This way of defining a function differs slightly from a function expression, and arrow functions, as well as other ways of defining a function such as using the Function constructor. There is of course the slight differences in syntax when it comes to just looking at code, but there are also differences in terms of how they behave at run time. More on that later, but for now lets just look at a basic example of a function declaration when it comes to syntax.
 
 So a function declaration might look something like this:
 
