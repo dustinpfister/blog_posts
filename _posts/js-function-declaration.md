@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2020-10-05 09:12:08
-version: 1.11
+updated: 2020-10-05 09:15:32
+version: 1.12
 ---
 
 In javaScript there is more than one way to [define a function](/2019/12/26/js-function/), depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
 
-So it is important to understand the differences between the different ways of how to go about writing functions in javaScript so you know which to use in a given situation. In this post I will be writing about [function declarations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but for comparison I will also be touching base on [function expressions](/2019/01/27/js-function-expression/) and [arrow functions](/2019/02/17/js-arrow-functions/) as well so you have something to compare to here without having to read up on them more elsewhere.
+So it is important to understand the differences between the different ways of how to go about writing functions in javaScript so you know which to use in a given situation. In this post I will be writing about [function declarations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function), but for comparison I will also be touching base on [function expressions](/2019/01/27/js-function-expression/) and [arrow functions](/2019/02/17/js-arrow-functions/) as well so you have something to compare to here without having to read up on them more elsewhere. However if you do want to read up more on functions in general I have a main post on just javaScript [functions in general](/2019/12/26/js-function/) when it comes to the basics of functions and what can be done with them in javaScript.
 
 <!-- more -->
 
