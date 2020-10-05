@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 716
-updated: 2020-10-05 10:21:22
-version: 1.5
+updated: 2020-10-05 10:23:48
+version: 1.6
 ---
 
 When making a vuejs project there might end up being situations in which I might want to make an object observable, or reactive. When it comes to making a vue data object such an object is often observable to begin with at least when it comes to the top level of the object. In some situations I might have to do something to make sure that nested objects in the data object become observable when I add them to the data object. However what if I want to make a plain old object outside of a vuejs instance completely observable? Well one way is the use the [vue observable](https://vuejs.org/v2/api/#Vue-observable) Global API method.
+
+So this will be a quick post on using the vue observable global API method, and in the process of doing so I guess I will end up touching base the the subject of [reactivity using vuejs](https://vuejs.org/v2/guide/reactivity.html) also.
 
 <!-- more -->
 
