@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 717
-updated: 2020-10-06 16:38:19
-version: 1.2
+updated: 2020-10-06 16:41:11
+version: 1.3
 ---
 
-In vuejs there is the [vue compile](https://vuejs.org/v2/api/#Vue-compile) global api method that can be used to compile a template string into an object that will contain a render function of that template in string form. The render function of the object that is returned by the Vue comple method can then be used as the render option of a vuejs instance.
+In vuejs there is the [vue compile](https://vuejs.org/v2/api/#Vue-compile) global api method that can be used to compile a template string into an object that will contain a render function of that template in string form. The render function of the object that is returned by the Vue compile method can then be used as the render option of a vuejs instance.
 
-If you are not familiar with [render functions](/2019/05/12/vuejs-render/) just yet it might be a good idea to read up on them, same goes for [vue templates](/2019/05/07/vuejs-template/) also.
+If you are not familiar with [render functions](/2019/05/12/vuejs-render/) just yet it might be a good idea to read up on them, same goes for [vue templates](/2019/05/07/vuejs-template/) also. 
 
 <!-- more -->
 
@@ -39,3 +39,7 @@ If you are not familiar with [render functions](/2019/05/12/vuejs-render/) just 
   </body>
 </html>
 ```
+
+## 2 - Conclusion
+
+Once a developer has a good grasp of render functions, templates and the compile global method they then have a good grasp on how to go about creating a view to be used with a vuejs project.
