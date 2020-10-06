@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 717
-updated: 2020-10-06 17:17:56
-version: 1.7
+updated: 2020-10-06 17:20:14
+version: 1.8
 ---
 
 In vuejs there is the [vue compile](https://vuejs.org/v2/api/#Vue-compile) global api method that can be used to compile a template string into an object that will contain a render function of that template in string form. The render function of the object that is returned by the Vue compile method can then be used as the render option of a vuejs instance.
@@ -74,6 +74,8 @@ var Mod = (function () {
 
 ### 2.2 - Now to make use of it thanks to vue compile
 
+So then my external javaScript module could be used with vuejs like this.
+
 ```html
 <html>
   <head>
@@ -99,6 +101,8 @@ var Mod = (function () {
   </body>
 </html>
 ```
+
+So this might be yet another basic example of what compile can be used for but I get the baic idea at least. If I have a template string in an external module and I want to create a render function from that string one way to do so would be to use the vue compile method.
 
 ## 3 - Conclusion
 
