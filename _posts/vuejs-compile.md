@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 717
-updated: 2020-10-06 16:46:38
-version: 1.4
+updated: 2020-10-06 16:47:16
+version: 1.5
 ---
 
 In vuejs there is the [vue compile](https://vuejs.org/v2/api/#Vue-compile) global api method that can be used to compile a template string into an object that will contain a render function of that template in string form. The render function of the object that is returned by the Vue compile method can then be used as the render option of a vuejs instance.
@@ -17,7 +17,7 @@ If you are not familiar with [render functions](/2019/05/12/vuejs-render/) just 
 
 ## 1 - Vue compile basic example
 
-A basic example of the vue compile method might be to just call the vue compile method and bass a simple template string that makes use of a value that will be in a data object when used with a vue instance. The result of calling the vue complile method will be an object that will contain a render function as one of its arguments. The render function of the object can then be referenced to in a vuejs instance.
+A basic example of the vue compile method might be to just call the vue compile method and bass a simple template string that makes use of a value that will be in a data object when used with a vue instance. The result of calling the vue compile method will be an object that will contain a render function as one of its arguments. The render function of the object can then be referenced to in a vuejs instance.
 
 ```html
 <html>
