@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 717
-updated: 2020-10-06 17:11:46
-version: 1.6
+updated: 2020-10-06 17:17:56
+version: 1.7
 ---
 
 In vuejs there is the [vue compile](https://vuejs.org/v2/api/#Vue-compile) global api method that can be used to compile a template string into an object that will contain a render function of that template in string form. The render function of the object that is returned by the Vue compile method can then be used as the render option of a vuejs instance.
@@ -50,6 +50,27 @@ In this section I will be going over the beginnings of a very simple javaScript 
 
 ### 2.1 - The javaScript module
 
+So here I have the code for a simple javaScript module that will create a very basic state object that just contains a count property, and an update method that will just add one to that state object. When it comes to using vuejs I can use the create object of this module to create a vue data object for the vuejs instance, and I can call the update method in the body of an update method in the vuejs instance methods option. In addition I also have a template string for this module that can be used with the vuejs compile method to create a render method for the vuejs instance.
+
+```js
+var Mod = (function () {
+    var api = {};
+    // create a state object
+    api.create = function () {
+        return {
+            count: 0
+        }
+    };
+    // update a state object
+    api.update = function (state) {
+        state.count += 1;
+    };
+    // a vuejs template
+    api.template = '<div><input type="button" value="step" v-on:click="update"><span> {{count}} </span></div>';
+    return api;
+}
+    ());
+```
 
 ### 2.2 - Now to make use of it thanks to vue compile
 
