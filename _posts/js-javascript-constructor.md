@@ -5,13 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 10:14:41
-version: 1.17
+updated: 2020-10-07 10:17:21
+version: 1.18
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions and the use of the new keyword.
 
-The topic of a constructor function comes up often, as it should as it is a major part of development when it comes javaScript development, and object oriented programing in general. There are built in examples of constructors that chances are you have at least some experience with, as well as ways to create your own. There is the traditional way of creating a javaScript constructor function, and then the more modern es2015+ spec javaScript way of making them as well with the class keyword. In this post I will be covering the basics, as well as some other aspects of constructors that a javaScript developer should be aware of.
+The topic of a constructor function comes up often, as it should, the reason why is that a constructor function is a major part of development when it comes to javaScript, and object oriented programing in general actually. 
+
+There are built in examples of constructors that chances are you have at least some experience with. 
+
+There is the traditional way of creating a javaScript constructor function, and then the more modern es2015+ spec javaScript way of making them as well with the class keyword. In this post I will be covering the basics, as well as some other aspects of constructors that a javaScript developer should be aware of when working with, and creating these types of functions in javaScript.
 
 <!-- more -->
 
