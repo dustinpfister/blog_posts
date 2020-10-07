@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 13:17:52
-version: 1.28
+updated: 2020-10-07 13:22:11
+version: 1.29
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -79,6 +79,8 @@ let foo = new Foo('foo', 'bar');
 console.log(foo.foobar()); // 'foo-bar'
 console.log(foo.hasOwnProperty('foobar')); // false
 ```
+
+Creating constructor functions this way might call for a whole new post on the subject. However it would seem that this is just a more modern way of doing the same thing with plain old function expressions and declarations. I generally prefer to keep things more in line with older specs of javaScript when writing the code for a project, but this is something that I should still at least mention here for now.
 
 ## 2 - An alternative to constructors, pure functions, or at least going in that direction.
 
