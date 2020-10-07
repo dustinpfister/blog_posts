@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 11:17:43
-version: 1.25
+updated: 2020-10-07 11:24:42
+version: 1.26
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -80,11 +80,11 @@ console.log(foo.foobar()); // 'foo-bar'
 console.log(foo.hasOwnProperty('foobar')); // false
 ```
 
-## 2 - An alternative to constructors
+## 2 - An alternative to constructors, pure functions, or at least going in that direction.
 
-A constructor or class is not always the best option. It does have some good points when it comes to anything where there might be more than one instance of something. However it might not be the best choice when it is just a single object, and there are other ways of handling things of course. 
+A constructor or class is not always the best option when it comes to working out how to structure an application or module from the ground up. It does have some good points when it comes to anything where there might be more than one instance of something. However it still might not be the best choice when it is just a single object, and there are other ways of handling a collection of objects with shared properties 
 
-Constructors can be thought of as a situation in which there is one or more instances of an object that can be though of as a state, and then there are a number of methods that can be used to mutate that state. An alternative to this is to have a collection of pure functions that accept this state as an one of its arguments.
+Constructors can be thought of as a situation in which there is one or more instances of an object that can be though of as a state, and then there are a number of methods that can be used to mutate that state. An alternative to this is to have a collection of pure functions or at least pure like functions that accept this state as one of its arguments.
 
 ```js
 var state = {
@@ -102,6 +102,8 @@ console.log( utils.distance(state,9,15) ); // 2
 console.log( utils.distance(state,7,20) ); // 5
 console.log( utils.distance(state,14,30) ); // 16.55...
 ```
+
+The subject of a pure function is something that I should not get into detail here, but as far as constructors are concerned the process of doing to revolves around not using them. The alternative to not using a constructor is then just creating plain old javaScript objects with a plain old function that will return one that has the properties that the object should have. Then having a collection of functions that are stand along functions where the object that is created must be passed as an argument.
 
 ## 5 - Conclusion
 
