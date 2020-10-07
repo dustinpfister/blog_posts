@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 716
-updated: 2020-10-07 17:25:18
-version: 1.7
+updated: 2020-10-07 17:29:26
+version: 1.8
 ---
 
 When making a vuejs project there might end up being situations in which I might want to make an object observable, or reactive. When it comes to making a vue data object such an object is often observable to begin with at least when it comes to the top level of the object. In some situations I might have to do something to make sure that nested objects in the data object become observable when I add them to the data object. However what if I want to make a plain old object outside of a vuejs instance completely observable? Well one way is the use the [vue observable](https://vuejs.org/v2/api/#Vue-observable) Global API method.
@@ -61,6 +61,7 @@ var vm = new Vue({
 
 ## 2 - Getters and setters under the hood.
 
+The trick about reactive objects in vuejs is that javaScript getters and setters are used in order to make objects observational. It might be a good idea to take a moment to play around with them a little on there own to get a better sense of how they work.
 
 ```js
 
