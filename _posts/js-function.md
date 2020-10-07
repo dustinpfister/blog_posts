@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-06-18 16:21:33
-version: 1.13
+updated: 2020-10-07 17:45:56
+version: 1.14
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -15,7 +15,7 @@ In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 ## 1 - js function basic example that returns something
 
-There are many ways to go about defining a function in javaScript such as [function expressions](/2019/01/27/js-function-expression/), [function declarations](/2019/04/11/js-function-declaration/), and [arrow functions](/2019/02/17/js-arrow-functions/). There is getting into the depth of the differences between these kinds of functions in javaScript, but for now lets start out with a very stupid simple example of a function in javaScript.
+There are many ways to go about defining a function in javaScript such as [function expressions](/2019/01/27/js-function-expression/), [function declarations](/2019/04/11/js-function-declaration/), and yet even more options. There is getting into the depth of the differences between these kinds of functions in javaScript, but for now lets start out with a very stupid simple example of a function in javaScript.
 
 ```js
 var func = function () {
@@ -65,4 +65,22 @@ var pure = function (a, b) {
 };
  
 console.log(pure(1, 1));
+```
+
+## 4 - Arrow functions
+
+In late specs of javaScript there are now [arrow functions](/2019/02/17/js-arrow-functions/), these kinds of functions are nice and concise. There is one draw back to using arrow functions though and that has to do with how the this keyword is handled, because of that they can not be used as a drop in replacement for other kids of options that work better with function prototype methods like call and apply.
+
+```js
+let foo = _ => 'bar';
+ 
+let bar = ()=> 'foobar';
+ 
+let pow = n => 'pow: '+ Math.pow(2,n);
+
+let est = (s,c) => {
+    return s / c * 6.5 
+};
+console.log(foo()); // 'bar'
+console.log(foo(4)); // 'pow: 16'
 ```
