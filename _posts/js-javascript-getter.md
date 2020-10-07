@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2020-10-07 16:21:14
-version: 1.2
+updated: 2020-10-07 16:22:12
+version: 1.3
 ---
 
 In vuejs it is possible to create reactive objects, by default this is the case with the data object of a vuejs instance. However it might be a good idea to dive deep down into how this works, and the key behind it is the Object.definePropery method and the use of javaScript getters and setters.
 
 In ECMA-262 R5 spec javaScript forward getters and setters where introduced as a way to have control over how properties are actually rendered to a result each time the property is accessed, or set by way of some kind of assignment. One why of thinking about it is that they can be thought of as event handlers of sorts where each time a property of a object is accessed the getter function is called, and the value that is returned by the getter is what will be used for the value of that property. In addition setters can be used as a way to define some additional logic that will fire each time the value of a property is set with an assignment operator.
 
-Son in this post I will be writing a bot about javaScript getters, but I suppose I will also have to touch base on setters and other related topics like the Object.definePropery method.
+Son in this post I will be writing a bot about javaScript getters, but I suppose I will also have to touch base on setters and other related topics like the [Object.definePropery](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) method.
 
 <!-- more -->
 
