@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 10:27:48
-version: 1.20
+updated: 2020-10-07 10:33:05
+version: 1.21
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -21,7 +21,7 @@ There is the traditional way of creating a javaScript constructor function, and 
 
 A [constructor](https://en.wikipedia.org/wiki/Constructor_(object-oriented_programming) is not something that is exclusive to javaScript, but is a major part of object oriented programming in general. The basic idea of a constructor is that it is a function that is called that creates an Object. In javaScript every time an object is created it is an instance of a constructor, and as such there are a number of prototype methods that can be used with that Object. For example an Array in javaScript is a kind of Object that is an instance of the Array constructor, and as such it has access to a number of prototype methods such as Array.slice.
 
-## 2 - Built in constructors
+## 1.1 - Built in constructors
 
 There are a number of built in constructors in javaScript. One example Would be the Date Object in core javaScript. When called and used with the new keyword the Date Constructor can be used to create an instance of a Date object.
 
@@ -36,7 +36,7 @@ console.log(then.getTime()); // 1234567890321
 Once an instance of a Constructor is created there are a number of methods in the prototype object of that constructor that can then be used to interact with that instance of the constructor.
 
 
-## 3 - Making a javaScript constructor (before es2015)
+## 1.2 - Making a javaScript constructor (before es2015)
 
 The built in constructors come in handy often, but some times it is necessary to create my own constructors. The traditional way of making a javaScript constructor is to create what is often called a constructor function, followed by a prototype object.
 
@@ -54,7 +54,7 @@ var foo = new Foo('foo','bar');
 console.log(foo.foobar()); // 'foo-bar'
 ```
 
-## 3.1 - Making a constructor es2015+ style
+## 1.3 - Making a constructor es2015+ style
 
 To make a constructor in modern es2015+ spec javaScript there is of course the class keyword.
 
@@ -75,7 +75,7 @@ console.log(foo.foobar()); // 'foo-bar'
 console.log(foo.hasOwnProperty('foobar')); // false
 ```
 
-## 4 - An alternative to constructors
+## 2 - An alternative to constructors
 
 A constructor or class is not always the best option. It does have some good points when it comes to anything where there might be more than one instance of something. However it might not be the best choice when it is just a single object, and there are other ways of handling things of course. 
 
