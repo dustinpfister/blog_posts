@@ -5,13 +5,12 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 10:17:21
-version: 1.18
+updated: 2020-10-07 10:22:37
+version: 1.19
 ---
 
-In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions and the use of the new keyword.
+In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
 
-The topic of a constructor function comes up often, as it should, the reason why is that a constructor function is a major part of development when it comes to javaScript, and object oriented programing in general actually. 
 
 There are built in examples of constructors that chances are you have at least some experience with. 
 
@@ -102,4 +101,4 @@ console.log( utils.distance(state,14,30) ); // 16.55...
 
 ## 5 - Conclusion
 
-In javaScript constructors are something that will come up often. Event if you do  nit make your own constructors changes are you will be suing them often. Every time I create a Date instance for example I am working with an object that is the product of a javaScript constructor method.
+The topic of a constructor function comes up often, as it should, the reason why is that a constructor function is a major part of development when it comes to javaScript, and object oriented programing in general actually. Even if you do not make your own constructors chances are you will be using them often. Every time I create a Date instance for example I am working with an object that is the product of a javaScript constructor method. A Date object is not just an object but a class of an object that has a whole bunch of prototype methods to work off of such as the Date.getFullYear method.
