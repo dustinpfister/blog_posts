@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2020-10-07 16:27:47
-version: 1.5
+updated: 2020-10-07 16:34:49
+version: 1.6
 ---
 
 In vuejs it is possible to create reactive objects, by default this is the case with the data object of a vuejs instance. However it might be a good idea to dive deep down into how this works, and the key behind it is the Object.definePropery method and the use of javaScript getters and setters.
@@ -56,3 +56,43 @@ console.log(obj.foo);
 // 'foobar'
 
 ```
+
+## 2 - creating a reactive object With getters and setters
+
+So by using javaScript getters in combination with javaScript setters it is possible to create reactive objects. These are objects where a method will fire each time a property chances by way of any kind of assignment each time. This method that will fire each time the property is set can be used to do things like render a view for the object or something to that effect.
+
+```js
+
+var createReactive = function (obj, onSet) {
+    obj = obj || {};
+    onSet = onSet || function () {};
+    var newObj = {};
+    Object.defineProperty(newObj, 'locals', {
+        enumerable: false,
+        value: {}
+    });
+    Object.keys(obj).forEach(function (key) {
+        Object.defineProperty(newObj, key, {
+            enumerable: true,
+            get: function () {
+                return this.locals[key];
+            },
+            set: function (newValue) {
+                this.locals[key] = newValue;
+                onSet(newObj);
+            }
+        });
+        newObj[key] = obj[key];
+    });
+    return newObj;
+};
+var render = function (obj) {
+    console.log(obj);
+};
+var a = createReactive({
+        n: 42
+    }, render);
+console.log(a.n);
+```
+
+So this kind of trick is often used in many frameworks as a way to keep developers from having to update a model, and then do the same for a view thus having to update to things each time. Such a thing can often get messy, and confusing, so things like reactive objects can help to make it so I just have to update the model object, and by doing so that will trigger updating the view each time.
