@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 14:17:43
-version: 1.34
+updated: 2020-10-07 14:18:37
+version: 1.35
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -189,4 +189,4 @@ console.log( b instanceof Point); // true
 
 ## 5 - Conclusion
 
-The topic of a constructor function comes up often, as it should, the reason why is that a constructor function is a major part of development when it comes to javaScript, and object oriented programing in general actually. Even if you do not make your own constructors chances are you will be using them often. Every time I create a Date instance for example I am working with an object that is the product of a javaScript constructor method. A Date object is not just an object but a class of an object that has a whole bunch of prototype methods to work off of such as the Date.getFullYear method.
+The topic of a [constructor function](https://css-tricks.com/understanding-javascript-constructors/) comes up often, as it should, the reason why is that a constructor function is a major part of development when it comes to javaScript, and object oriented programing in general actually. Even if you do not make your own constructors chances are you will be using them often. Every time I create a Date instance for example I am working with an object that is the product of a javaScript constructor method. A Date object is not just an object but a class of an object that has a whole bunch of prototype methods to work off of such as the Date.getFullYear method.
