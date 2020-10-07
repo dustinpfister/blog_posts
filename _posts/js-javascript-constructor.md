@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 13:50:05
-version: 1.32
+updated: 2020-10-07 13:58:25
+version: 1.33
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -164,6 +164,8 @@ pt2 = Point(15, 10);
 console.log( pt1.distance(pt2) ); // 5
 console.log( Point.distance(pt1, pt2) ); // 5
 ```
+
+I am not suggesting that writing functions like this is a good idea, in fact I would say that it is not really a good idea actually. Generally I would say its a good idea to pick one or the other. Also these days I find myself going more in the direction of making just simple functions that create and return plain old objects, and then have a collection of static methods where I pass one or more of the objects as arguments, dropping the use of constructors all together. In any case if you can not make up your mind when it comes to making constructors, or just plain functions that work with objects of a certain format, then there is a third option which would be making functions like this.
 
 ## 4 - Conclusion
 
