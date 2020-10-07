@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 10:38:45
-version: 1.22
+updated: 2020-10-07 10:40:20
+version: 1.23
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -29,7 +29,7 @@ In this section I will be going over just a few basic examples of constructor fu
 
 ## 1.1 - Built in constructors
 
-There are a number of built in constructors in javaScript. One example Would be the Date Object in core javaScript. When called and used with the new keyword the Date Constructor can be used to create an instance of a Date object.
+There are a number of built in constructors in javaScript such as the String Constructor, the Array Constructor and the Date constructor. One example would be the Date Object in core javaScript. When called and used with the new keyword the Date Constructor can be used to create an instance of a Date object.
 
 ```js
 var now = new Date();
