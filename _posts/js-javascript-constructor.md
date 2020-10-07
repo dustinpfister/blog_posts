@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 13:22:11
-version: 1.29
+updated: 2020-10-07 13:42:10
+version: 1.30
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -107,6 +107,58 @@ console.log( utils.distance(state,14,30) ); // 16.55...
 
 The subject of a pure function is something that I should not get into detail here, but as far as constructors are concerned the process of doing to revolves around not using them. The alternative to not using a constructor is then just creating plain old javaScript objects with a plain old function that will return one that has the properties that the object should have. Then having a collection of functions that are stand along functions where the object that is created must be passed as an argument. A true pure function is a bit more than just that, but that would be one step in that kind of direction.
 
-## 5 - Conclusion
+## 3 - Dual use functions
+
+So there is calling a function with the new keyword, and then there is just calling a function without using the new keyword. There is a slight difference between the two when it comes to what the value of the this keyword means inside the body of the function when calling the function. When a function is called with the new keyword the value of the this keyword will refer o the new instance of the constructor function, when the function is called without the new keyword the value of the this keyword will be treated differently. This fact can be used to create what I have come to call dual use functions.
+
+I am not sure of there is a better term for them or not, but until I find out if there is a proper name I guess I will keep just calling them dual use functions. In this section I will just be going over a few basic example of these kinds of functions and also touch base on two very different ways of doing the same thing.
+
+### 3.1 - very basic example of what I mean by dual use
+
+```js
+var Foo = function (x, y) {
+    console.log(this.constructor.name);
+};
+Foo();
+// 'object'
+new Foo();
+// 'Foo'
+```
+
+### 3.2 - A more advanced example of dual use in action
+
+```js
+var Point = function (x, y) {
+    // Point function is being used as a constructor
+    // with the new keyword
+    if (this.constructor.name === 'Point') {
+        this.x = x;
+        this.y = y;
+    } else {
+        // else The Point function is just being called
+        return {
+            x: x,
+            y: y
+        }
+    }
+};
+ 
+Point.distance = function (pointA, pointB) {
+    return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
+};
+ 
+Point.prototype.distance = function (pointB) {
+    return Point.distance(this, pointB);
+};
+ 
+// Use examples
+var pt1 = new Point(10, 10),
+pt2 = Point(15, 10);
+ 
+console.log( pt1.distance(pt2) ); // 5
+console.log( Point.distance(pt1, pt2) ); // 5
+```
+
+## 4 - Conclusion
 
 The topic of a constructor function comes up often, as it should, the reason why is that a constructor function is a major part of development when it comes to javaScript, and object oriented programing in general actually. Even if you do not make your own constructors chances are you will be using them often. Every time I create a Date instance for example I am working with an object that is the product of a javaScript constructor method. A Date object is not just an object but a class of an object that has a whole bunch of prototype methods to work off of such as the Date.getFullYear method.
