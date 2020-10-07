@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2020-10-07 16:24:04
-version: 1.4
+updated: 2020-10-07 16:27:47
+version: 1.5
 ---
 
 In vuejs it is possible to create reactive objects, by default this is the case with the data object of a vuejs instance. However it might be a good idea to dive deep down into how this works, and the key behind it is the Object.definePropery method and the use of javaScript getters and setters.
@@ -38,6 +38,8 @@ console.log(obj.foo);
 ```
 
 ### 1.2 - The define property method
+
+The other way to go about creating a javaScript getter is to make use of the define property Object static method. The way one goes about using this method is by calling it, and then passing an object to which a property is to be defined. The next argument is a property key for the given object followed by another object that can be used to set a number of properties for the property that is to be defined. One of the possible things to define for the property is of course a getter.
 
 ```js
 var obj = {
