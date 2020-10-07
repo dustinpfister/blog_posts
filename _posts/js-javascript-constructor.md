@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 11:24:42
-version: 1.26
+updated: 2020-10-07 11:25:22
+version: 1.27
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -103,7 +103,7 @@ console.log( utils.distance(state,7,20) ); // 5
 console.log( utils.distance(state,14,30) ); // 16.55...
 ```
 
-The subject of a pure function is something that I should not get into detail here, but as far as constructors are concerned the process of doing to revolves around not using them. The alternative to not using a constructor is then just creating plain old javaScript objects with a plain old function that will return one that has the properties that the object should have. Then having a collection of functions that are stand along functions where the object that is created must be passed as an argument.
+The subject of a pure function is something that I should not get into detail here, but as far as constructors are concerned the process of doing to revolves around not using them. The alternative to not using a constructor is then just creating plain old javaScript objects with a plain old function that will return one that has the properties that the object should have. Then having a collection of functions that are stand along functions where the object that is created must be passed as an argument. A true pure function is a bit more than just that, but that would be one step in that kind of direction.
 
 ## 5 - Conclusion
 
