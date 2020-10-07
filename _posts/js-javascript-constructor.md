@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 13:58:25
-version: 1.33
+updated: 2020-10-07 14:17:43
+version: 1.34
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -167,6 +167,26 @@ console.log( Point.distance(pt1, pt2) ); // 5
 
 I am not suggesting that writing functions like this is a good idea, in fact I would say that it is not really a good idea actually. Generally I would say its a good idea to pick one or the other. Also these days I find myself going more in the direction of making just simple functions that create and return plain old objects, and then have a collection of static methods where I pass one or more of the objects as arguments, dropping the use of constructors all together. In any case if you can not make up your mind when it comes to making constructors, or just plain functions that work with objects of a certain format, then there is a third option which would be making functions like this.
 
-## 4 - Conclusion
+## 4 - Safe Constructors
+
+New javaScript developers might not understand the deal with constructors so great just yet, so they often might just call a constructor without the new keyword and as a result in causing errors. I have touched base on the subject of dual use functions where they are flexible with this whole thing. However there is yet another option, making a constructor return an instance of the constructor in the event that it is not used as a constructor. In other words writing a  constructor so that it will call new for the user in the event that they do not use it. By doing this it will help to ensure that the end result will indeed be an instance of the constructor.
+
+```js
+var Point = function (x, y) {
+    if (!(this instanceof Point)) {
+        return new Point(x, y);
+    }
+    this.x = x;
+    this.y = y;
+};
+ 
+var a = new Point(10, 10),
+b = Point(10, 10);
+ 
+console.log( a instanceof Point); // true
+console.log( b instanceof Point); // true
+```
+
+## 5 - Conclusion
 
 The topic of a constructor function comes up often, as it should, the reason why is that a constructor function is a major part of development when it comes to javaScript, and object oriented programing in general actually. Even if you do not make your own constructors chances are you will be using them often. Every time I create a Date instance for example I am working with an object that is the product of a javaScript constructor method. A Date object is not just an object but a class of an object that has a whole bunch of prototype methods to work off of such as the Date.getFullYear method.
