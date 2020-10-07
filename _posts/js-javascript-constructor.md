@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 11:25:22
-version: 1.27
+updated: 2020-10-07 13:17:52
+version: 1.28
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -61,7 +61,7 @@ console.log(foo.foobar()); // 'foo-bar'
 
 ## 1.3 - Making a constructor es2015+ style
 
-To make a constructor in modern es2015+ spec javaScript there is of course the class keyword.
+To make a constructor in modern es2015+ spec javaScript there is of course the [class keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) that can be used to create class declarations and expressions.
 
 ```js
 class Foo {
