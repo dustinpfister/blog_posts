@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2020-10-07 16:49:13
-version: 1.7
+updated: 2020-10-07 16:51:03
+version: 1.8
 ---
 
 In vuejs it is possible to create reactive objects, by default this is the case with the data object of a vuejs instance. However it might be a good idea to dive deep down into how this works, and the key behind it is the Object.definePropery method and the use of javaScript getters and setters.
@@ -99,4 +99,4 @@ So this kind of trick is often used in many frameworks as a way to keep develope
 
 ## 3 - Conclusion
 
-So javaScript getters and setters can come into play in some situations in which they might be called for. However that is just it when they are called for, getters and setters should not be over used at every twist and turn. I have to admit that it tends to make code more complex, and if the use of them is not really justified then the use of getters and setters is juts making something more complicated then it needs to be.
+So [javaScript getters and setters](https://www.jackfranklin.co.uk/blog/es5-getters-setters/) can come into play in some situations in which they might be called for. However that is just it when they are called for, getters and setters should not be over used at every twist and turn. I have to admit that it tends to make code more complex, and if the use of them is not really justified then the use of getters and setters is juts making something more complicated then it needs to be.
