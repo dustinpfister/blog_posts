@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 10:40:20
-version: 1.23
+updated: 2020-10-07 11:10:43
+version: 1.24
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -29,7 +29,7 @@ In this section I will be going over just a few basic examples of constructor fu
 
 ## 1.1 - Built in constructors
 
-There are a number of built in constructors in javaScript such as the String Constructor, the Array Constructor and the Date constructor. One example would be the Date Object in core javaScript. When called and used with the new keyword the Date Constructor can be used to create an instance of a Date object.
+There are a number of built in constructors in javaScript such as the String Constructor, the Array Constructor and the Date constructor. One example would be the Date Constructor in core javaScript that can be used to create a date object. When The Date Constructor is called, and used with the new keyword, the result that is returned is instance of the Date constructor. A such there are a number of useful methods to work with off of the date object that can be used to get and set values in the date object such as the getTime method.
 
 ```js
 var now = new Date();
@@ -39,8 +39,7 @@ var then = new now.constructor(2009,1,13,18,31,30,321);
 console.log(then.getTime()); // 1234567890321
 ```
 
-Once an instance of a Constructor is created there are a number of methods in the prototype object of that constructor that can then be used to interact with that instance of the constructor.
-
+So that is the basic idea when it comes to a constructor function, you call it and what is returned is an object that is an instance of the constructor. There are a number of other built in constructors in core javaScript as well as client and sever side javaScript, however there is also making user defined constructor also.
 
 ## 1.2 - Making a javaScript constructor (before es2015)
 
