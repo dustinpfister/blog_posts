@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2020-10-07 13:47:45
-version: 1.31
+updated: 2020-10-07 13:50:05
+version: 1.32
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -115,7 +115,7 @@ I am not sure of there is a better term for them or not, but until I find out if
 
 ### 3.1 - very basic example of what I mean by dual use
 
-So it mainly has to do with the name of the constructor property of the value of this inside the body of the function when it is called with and without the use of the new keyword. When the constructor is called with the new keyword the value of the name property of the constructor object of the this keyword should equal the name of the constructor function. Inside the body of the function I can use this as a way to test of the function is being used as a constrctyor or not.
+So it mainly has to do with the name of the constructor property of the value of this inside the body of the function when it is called with and without the use of the new keyword. When the constructor is called with the new keyword the value of the name property of the constructor object of the this keyword should equal the name of the constructor function. Inside the body of the function I can use this as a way to test of the function is being used as a constructor or not.
 
 ```js
 var Foo = function (x, y) {
@@ -130,6 +130,8 @@ new Foo();
 So by looking at this value I can then make functions that will work as a constructor, but can also be used as just a plain old function that creates and returns just a plain old javaScript object that only has the Object methods in its prototype object. So in other words this allows for the creating of so called dual use functions that can be used to create instances of a class, or can be used to create just plain old objects that can be used with static methods.
 
 ### 3.2 - A more advanced example of dual use in action
+
+To gain a better sense of what I Mean by dual use here is a more advanced example of such a function with a Static method attached to the function object itself, as well as the same function in the prototype that uses the same static method, but allows for this to work in a way where the function is being used as a constructor rather than just a plain old function.
 
 ```js
 var Point = function (x, y) {
