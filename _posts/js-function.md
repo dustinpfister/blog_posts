@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 10:10:48
-version: 1.19
+updated: 2020-10-08 10:19:08
+version: 1.20
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -42,7 +42,7 @@ var func = function (a, b) {
 console.log(func(1, 2)); // 3
 ```
 
-Functions do not always have to be used to return something though, often a function is just used as a way to keep things encapsulated from everything else. However getting back to the topic at hand here at least it is import to know that arguments can of course be added to functions by simply just having a few argument names for them. There is a lot more to write about when it comes to arguments.
+Functions do not always have to be used to return something though, often a function is just used as a way to keep things encapsulated from everything else. However getting back to the topic at hand here, it is import to know that arguments can of course be added to functions by simply just having a few argument names for them. There is a lot more to write about when it comes to arguments such as the arguments object, and also the nature of the this keyword, as well as the variable scope chain as well as the prototype chain, but for now this is just the basic section.
 
 ## 2 - Constructor function
 
