@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-07 17:47:20
-version: 1.16
+updated: 2020-10-08 09:57:53
+version: 1.17
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -87,4 +87,4 @@ console.log(foo(4)); // 'pow: 16'
 
 ## 5 - Conclusion
 
-I have not even begone to scratch the surface when it comes to what can be done with javaScript functions in this post.
+I have not even begone to scratch the surface when it comes to what can be done with javaScript functions in this post. The next step forward is to just get into creating projects with functions, and all the other little elements of the javaScript language.
