@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 11:51:38
-version: 1.29
+updated: 2020-10-08 11:52:56
+version: 1.30
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -171,7 +171,7 @@ Functions can be used to create a product with some independent and Dependant va
 
 ### 6.1 - Basic function loop with setTiemout
 
-One basic way to go about making an application loop with a javaScript function would be to use the setTiemout method inside the body of a function and call the function itself with it in a delayed way.
+One basic way to go about making an application loop with a javaScript function would be to use the [setTiemout method](/2018/12/06/js-settimeout/) inside the body of a function and call the function itself with it in a delayed way.
 
 ```js
 var c = 0;
