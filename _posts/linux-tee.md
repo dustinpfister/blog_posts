@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 719
-updated: 2020-10-08 16:38:54
-version: 1.7
+updated: 2020-10-08 16:55:16
+version: 1.8
 ---
 
 The [Linux tee](https://linuxize.com/post/linux-tee-command/) command can be used to redirect the standard output of one command to [one or more files and or commands](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands). In this post I will be going over several examples of the Linux tee command combined with both pupping and redirection of standard out pout two many files at once in one command line.
@@ -30,6 +30,12 @@ By default the tee command will overwrite a file each time rather than appending
 
 ```
 $ df -h / | tee -a disk_log.txt
+```
+
+However it might be best to just learn more about how redirection works in Linux. The nice thing about redirection is that it will work with all commands even if they do not support an option of appending to a file rather than overwriting.
+
+```
+$ df -h / | tee >(cat >> disk_log.txt) >(grep root >> disk_log_clean.txt)
 ```
 
 ## 2 - Two or more files with Linux tee
