@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 719
-updated: 2020-10-08 16:27:10
-version: 1.4
+updated: 2020-10-08 16:31:33
+version: 1.5
 ---
 
 The [Linux tee](https://linuxize.com/post/linux-tee-command/) command can be used to redirect the standard output of one command to [one or more files and or commands](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands). In this post I will be going over several examples of the Linux tee command combined with both pupping and redirection of standard out pout two many files at once in one command line.
@@ -36,7 +36,9 @@ However if I want to run the outout from df threw some commands first for each f
 
 ## 3 - Two or more files with redirection threw commands first
 
-The Linux tee command can be used in combination with piping and redirection to create two or more files from the standard output of one command. In addition I can not just redirect to files but also run the results threw some additional commands like grep
+The Linux tee command can be used in combination with piping and redirection to create two or more files from the standard output of one command. In addition I can not just redirect to files but also run the results threw some additional commands like grep.
+
+So say I want to take the output of the free command and use grep to take just the line on memory and write that to one file, and then take the same standard output and again use grep to write a file with just the output from the swap line to another file, and finally just write the full standard output to one last file. This can be done with a cobination of piping, and redirection. 
 
 ```
 $ free -m | tee >(grep Mem > mem.txt) >(grep Swap > swap.txt) > free.txt
