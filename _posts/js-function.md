@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 11:23:39
-version: 1.26
+updated: 2020-10-08 11:24:53
+version: 1.27
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -124,7 +124,7 @@ console.log(foo(4)); // 'pow: 16'
 
 ## 5 - The this keyword
 
-The this keyword is something that deserves a whole post on its own, and I have got around to written on eon that a long time ago. However now that I got around to writing a post on javaScript functions in general I think that such a post should at least touch base on the nature of the this keyword.
+The [this keyword](/2017/04/14/js-this-keyword/) is something that deserves a whole post on its own, and I have got around to written on eon that a long time ago. However now that I got around to writing a post on javaScript functions in general I think that such a post should at least touch base on the nature of the this keyword.
 
 I have all ready covered constructor functions and how the this keyword applies there, but I should also at least mention that the this keyword can come into play outside of that of constructor functions. For example the Call function prototype method can be used to change what the value of the this keyword is, thus it is a way to break methods out of there prototypes and get them to work on any object to which it might in fact work with or without problems.
 
