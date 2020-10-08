@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 10:19:08
-version: 1.20
+updated: 2020-10-08 10:56:28
+version: 1.21
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -31,9 +31,9 @@ console.log( func() );
 
 Here I defined a function via a function expression and I assigned that function to a variable called func. I can then call that function and the string hello world is returned. This is the basic idea of what is accomplished with many functions, you call it and some kind of product is returned. This might be a silly pointless example, but we will be progressing on to some real examples later on in this post that also return a product when called with the return keyword, but also by another way of interest in javaScript.
 
-### 1.2 - Function Arguments
+### 1.2 - Function Arguments AKA independent variables
 
-A function can be passed one or more arguments, these argument values are then local to the body of the function when it comes to scope, and they are typically used in the process of creating and returning a value of some kind.
+A function can be passed one or more arguments, or in other worlds independent variables, these argument values are then local to the body of the function when it comes to scope, and they are typically used in the process of creating and returning a value of some kind. However they differ from any additional variables that may be defined inside or outside of the body of the function.
 
 ```js
 var func = function (a, b) {
@@ -43,6 +43,26 @@ console.log(func(1, 2)); // 3
 ```
 
 Functions do not always have to be used to return something though, often a function is just used as a way to keep things encapsulated from everything else. However getting back to the topic at hand here, it is import to know that arguments can of course be added to functions by simply just having a few argument names for them. There is a lot more to write about when it comes to arguments such as the arguments object, and also the nature of the this keyword, as well as the variable scope chain as well as the prototype chain, but for now this is just the basic section.
+
+### 1.3 - local variables AKA Dependant variables
+
+The use of the var keyword, or any of the more modern alternatives inside the body of a function will result in the variable having a scope that is local to the body of the function. So the value can only be accessed inside that function and now outside of it. In old specs of javaScript there was only function level variable scope, however in newer specs the scope of variables can be block level by using let or const to declare them rather than the tired yet true var.
+
+```js
+var func = function (x, y) {
+    var a = x + y,
+    b = Math.pow(x, y),
+    c = Math.sqrt(a * b);
+    return Math.round(c);
+};
+var d = func(2, 5);
+console.log(d); // 15
+try {
+    console.log(x);
+} catch (e) {
+    console.log(e.message); // 'x is not defined'
+}
+```
 
 ## 2 - Constructor function
 
