@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 11:18:10
-version: 1.23
+updated: 2020-10-08 11:19:59
+version: 1.24
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -142,6 +142,8 @@ pt.distance = function (x, y) {
 };
 console.log( pt.distance(10, 5).toFixed(2) ); // 11.18
 ```
+
+So when I just call the method of the object the this keyword will refer to the object to which the method is a property of. However this can easily be change by making use of some methods that are part of the prototype of any javaScript function, well at least expressions and declarations anyway.
 
 ### 5.2 - The call function prototype method
 
