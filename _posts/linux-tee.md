@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 719
-updated: 2020-10-08 16:33:30
-version: 1.6
+updated: 2020-10-08 16:38:54
+version: 1.7
 ---
 
 The [Linux tee](https://linuxize.com/post/linux-tee-command/) command can be used to redirect the standard output of one command to [one or more files and or commands](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands). In this post I will be going over several examples of the Linux tee command combined with both pupping and redirection of standard out pout two many files at once in one command line.
@@ -24,9 +24,17 @@ $ df -h / | tee disk.txt
 
 This will result in the standard output of df saved in the disk.txt file, and on top of that the output will continue on to the console as usual. So it results in a tee of sorts, there the standard output of df is going from df to the file disk.txt, and along to the output of the console on top of that.
 
+## 2 - Append to a file rather that writing over it
+
+By default the tee command will overwrite a file each time rather than appending data to a file each time it is called. So if for some reason I want to append data to a file rather that write over it each time there is an append option  for the tee command itself, but there is also of course redirection appending of standard output also.
+
+```
+$ df -h / | tee -a disk_log.txt
+```
+
 ## 2 - Two or more files with Linux tee
 
-If I want to write to more than one file then I just need to give more file names.
+If I want to write two more than one file then I just need to give more file names.
 
 ```
 $ df -h / | tee disk1.txt disk2.txt disk3.txt
