@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 10:56:28
-version: 1.21
+updated: 2020-10-08 11:16:54
+version: 1.22
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -122,6 +122,43 @@ console.log(foo()); // 'bar'
 console.log(foo(4)); // 'pow: 16'
 ```
 
-## 5 - Conclusion
+## 5 - The this keyword
+
+The this keyword is something that deserves a whole post on its own, and I have got around to written on eon that a long time ago. However now that I got around to writing a post on javaScript functions in general I think that such a post should at least touch base on the nature of the this keyword.
+
+I have all ready covered constructor functions and how the this keyword applies there, but I should also at least mention that the this keyword can come into play outside of that of constructor functions. For example the Call function prototype method can be used to change what the value of the this keyword is, thus it is a way to break methods out of there prototypes and get them to work on any object to which it might in fact work with or without problems.
+
+### 5.1 - Having a method of an object
+
+```js
+var pt = {
+    x: 0,
+    y: 0
+};
+pt.distance = function (x, y) {
+    return Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2));
+};
+console.log( pt.distance(10, 5).toFixed(2) ); // 11.18
+```
+
+### 5.2 - The call function prototype method
+
+```js
+var pt = {
+    x: 0,
+    y: 0
+};
+pt.distance = function (x, y) {
+    return Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2));
+};
+var pt2 = {
+    x: -10,
+    y: -10
+}
+console.log(pt.distance(0, 0).toFixed(2)); // 0.00
+console.log(pt.distance.call(pt2, 0, 0).toFixed(2)); // 14.14
+```
+
+## 6 - Conclusion
 
 I have not even begone to scratch the surface when it comes to what can be done with javaScript functions in this post. The next step forward is to just get into creating projects with functions, and all the other little elements of the javaScript language.
