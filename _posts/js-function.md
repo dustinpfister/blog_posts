@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 11:56:07
-version: 1.31
+updated: 2020-10-08 12:00:44
+version: 1.32
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
@@ -185,6 +185,10 @@ var loop = function () {
 };
 loop();
 ```
+
+So then this is the basic idea of what an app loop is with javaScript functions. of course this topic can branch off into a wide range of other topics surrounding this kind of use of javaScript functions. There are many other options when it comes to making this kind of function. There is the setInterval method, and in client side javaScript there is the requestAnimationFrame method that might be a better choice when it comes to canvas projects. 
+
+There is also the fact than making a loop this way is still resulting in having code run in a single event loop, so use of this alone is not an example of what might often be referred to as _true-threading_ However getting into that would be way off topic when it comes to just this general overview of what can be done with javaScript functions.
 
 ## 7 - Conclusion
 
