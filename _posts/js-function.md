@@ -5,17 +5,21 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 09:57:53
-version: 1.17
+updated: 2020-10-08 10:05:54
+version: 1.18
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript, and in general that might take longer to get solid.
 
 <!-- more -->
 
-## 1 - js function basic example that returns something
+## 1 - Basic javaScript function examples
 
-There are many ways to go about defining a function in javaScript such as [function expressions](/2019/01/27/js-function-expression/), [function declarations](/2019/04/11/js-function-declaration/), and yet even more options. There is getting into the depth of the differences between these kinds of functions in javaScript, but for now lets start out with a very stupid simple example of a function in javaScript.
+There are many ways to go about defining a function in javaScript such as [function expressions](/2019/01/27/js-function-expression/), [function declarations](/2019/04/11/js-function-declaration/), and yet even more options. There is getting into the depth of the differences between these kinds of functions in javaScript, but for now lets start out with a few very simple examples of a functions in javaScript.
+
+### 1.1 - js function basic example that returns something
+
+When writing a function the use of the return keyword is required if you want the function to return some kind of product. There is a few exceptions to this though when it comes to working with variables down the scope chain, and constructor functions, more on that later.
 
 ```js
 var func = function () {
@@ -25,7 +29,16 @@ var func = function () {
 console.log( func() );
 ```
 
-Here I defined a function via a function expression and I assigned that function to a variable called func. I can then call that function and the string hello world is returned. This is the basic idea of what is accomplished with many functions, you call it and some kind of product is returned. This might be a silly pointless example, but we will be progressing on to some real examples later on in this post that also return a product when called.
+Here I defined a function via a function expression and I assigned that function to a variable called func. I can then call that function and the string hello world is returned. This is the basic idea of what is accomplished with many functions, you call it and some kind of product is returned. This might be a silly pointless example, but we will be progressing on to some real examples later on in this post that also return a product when called with the return keyword, but also by another way of interest in javaScript.
+
+### 1.2 - Function Arguments
+
+```js
+var func = function (a, b) {
+    return a + b;
+};
+console.log(func(1, 2)); // 3
+```
 
 ## 2 - Constructor function
 
