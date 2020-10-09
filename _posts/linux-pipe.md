@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 720
-updated: 2020-10-09 16:26:11
-version: 1.5
+updated: 2020-10-09 16:30:56
+version: 1.6
 ---
 
 A [Linux pipe](http://www.linfo.org/pipe.html) is a form of redirection of output of one command to the input of one or more additional commands. This allows for breaking something down into a bunch of steps where one program ddoes just one thing and then the output of that command is then passed on to another command that accepts that result as input to which it then uses to preform yet another result.
@@ -34,6 +34,8 @@ $ ps -e | grep kworker | grep events
 ```
 
 ## 2 - Using cat to pipe a list of file names to xargs and then cat again
+
+There is piping the output of one command to the standard input of another command, but what if I want to pipe the output of a command not to the standard input of another, but to use that output as arguments for another command. This subject deserves a post of its own, and I did just that when writing my post on a [Linux command know as xargs](/2020/09/26/linux-xargs/). I will not be getting into the use of this command in detail then as I have done that in that post, but I should at least mention a basic example of it here in my post on piping in general.
 
 So say I have a text file called file\_list.txt that is a list of file names like this that are also in the same working directory
 
