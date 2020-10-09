@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 720
-updated: 2020-10-09 15:37:57
-version: 1.3
+updated: 2020-10-09 16:22:41
+version: 1.4
 ---
 
 A [Linux pipe](http://www.linfo.org/pipe.html) is a form of redirection of output of one command to the input of one or more additional commands. This allows for breaking something down into a bunch of steps where one programe dows just one thing and then the output of that command is then passed on to another command that accepts that result as input to which it then uses to preform yet another result.
@@ -16,7 +16,24 @@ There is also [linux redirection](/2020/10/02/linux-redirection/) that is simula
 
 <!-- more -->
 
-## 1 - Using cat to pipe a list of file names to xargs and then cat again
+## 1 - Basic Linux pipe example using ps and grep
+
+With a Linux pipe I can pipe the output of one command to anothet, and then from the output of that to yet another command. For example I can use the ps command to get a list of all processes ruiing at the moment, and then I can pipe that list to grep where I can filter everything but instances of kworker. I can then pipe the output yet again, say I just want kworker events listed, for this I can pipe once more to grep yet again to the that list.
+
+```
+$ ps -e | grep kworker | grep events
+ 5311 ?        00:00:00 kworker/u8:0-events_unbound
+ 5398 ?        00:00:00 kworker/1:1-events
+ 5407 ?        00:00:00 kworker/3:2-events
+ 5596 ?        00:00:00 kworker/2:0-events
+ 5635 ?        00:00:00 kworker/0:1-events
+ 5651 ?        00:00:00 kworker/2:2-events
+ 5654 ?        00:00:00 kworker/1:0-events
+ 5663 ?        00:00:00 kworker/2:1-events
+ 5696 ?        00:00:00 kworker/0:0-events
+```
+
+## 2 - Using cat to pipe a list of file names to xargs and then cat again
 
 So say I have a text file called file\_list.txt that is a list of file names like this that are also in the same working directory
 
