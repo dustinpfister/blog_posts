@@ -5,20 +5,20 @@ tags: [linux]
 layout: post
 categories: linux
 id: 720
-updated: 2020-10-09 16:22:41
-version: 1.4
+updated: 2020-10-09 16:26:11
+version: 1.5
 ---
 
-A [Linux pipe](http://www.linfo.org/pipe.html) is a form of redirection of output of one command to the input of one or more additional commands. This allows for breaking something down into a bunch of steps where one programe dows just one thing and then the output of that command is then passed on to another command that accepts that result as input to which it then uses to preform yet another result.
+A [Linux pipe](http://www.linfo.org/pipe.html) is a form of redirection of output of one command to the input of one or more additional commands. This allows for breaking something down into a bunch of steps where one program ddoes just one thing and then the output of that command is then passed on to another command that accepts that result as input to which it then uses to preform yet another result.
 
-There is also [linux redirection](/2020/10/02/linux-redirection/) that is simular to a linux pipe, but works a little diferently. With Linux pipes two commands can run in parallel with each other, and data is trasnferd in a per buffer basis. With Linux redirection one command must compleate, before the next can start.
+There is also [Linux redirection](/2020/10/02/linux-redirection/) that is similar to a Linux pipe, but works a little differently. With Linux pipes two commands can run in parallel with each other, and data is transferred in a per buffer basis. With Linux redirection one command must complete, before the next can start.
 
 
 <!-- more -->
 
 ## 1 - Basic Linux pipe example using ps and grep
 
-With a Linux pipe I can pipe the output of one command to anothet, and then from the output of that to yet another command. For example I can use the ps command to get a list of all processes ruiing at the moment, and then I can pipe that list to grep where I can filter everything but instances of kworker. I can then pipe the output yet again, say I just want kworker events listed, for this I can pipe once more to grep yet again to the that list.
+With a Linux pipe I can pipe the output of one command to another, and then from the output of that to yet another command. For example I can use the ps command to get a list of all processes running at the moment, and then I can pipe that list to grep where I can filter everything but instances of kworker. I can then pipe the output yet again, say I just want kworker events listed, for this I can pipe once more to grep yet again to the that list.
 
 ```
 $ ps -e | grep kworker | grep events
@@ -54,13 +54,13 @@ bar
  
 ```
 
-I can then use the cat command to read the file_list.txt file and then pipe that text to the linux xargs command, with that the file names are then used as arguments for the cat command again. As a result the text of file1.txt and file2.txt are concatanted into a single stream in the order in which the files are in the file\_list.txt file. 
+I can then use the cat command to read the file_list.txt file and then pipe that text to the Linux xargs command, with that the file names are then used as arguments for the cat command again. As a result the text of file1.txt and file2.txt are concatenated into a single stream in the order in which the files are in the file\_list.txt file. 
 
 ```
 $ cat file_list.txt | xargs cat | tee >(cat >build.txt)
 foobar
 ```
 
-The result of the xargs cat command can then be piped yet again to the Linux tee command where I can then use redirection to write the ending result to a single output file as well as continue things on to the standard output as ushual.
+The result of the xargs cat command can then be piped yet again to the Linux tee command where I can then use redirection to write the ending result to a single output file as well as continue things on to the standard output as usual.
 
-So the result off all of this is the text of file1.txt and file2.txt combinded togeather as one and spit out to the console as well as the build.txt file. This might just be a silly string value, but in a real example not so diferent from this could be a build of many source code files into a single package file. I could pipe things threw some additional commands that might compact the source code into a minified rather than devlopment form.
+So the result off all of this is the text of file1.txt and file2.txt combined together as one and spit out to the console as well as the build.txt file. This might just be a silly string value, but in a real example not so different from this could be a build of many source code files into a single package file. I could pipe things threw some additional commands that might compact the source code into a minified rather than development form.
