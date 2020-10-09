@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 720
-updated: 2020-10-09 16:30:56
-version: 1.6
+updated: 2020-10-09 16:34:12
+version: 1.7
 ---
 
 A [Linux pipe](http://www.linfo.org/pipe.html) is a form of redirection of output of one command to the input of one or more additional commands. This allows for breaking something down into a bunch of steps where one program ddoes just one thing and then the output of that command is then passed on to another command that accepts that result as input to which it then uses to preform yet another result.
@@ -66,3 +66,7 @@ foobar
 The result of the xargs cat command can then be piped yet again to the Linux tee command where I can then use redirection to write the ending result to a single output file as well as continue things on to the standard output as usual.
 
 So the result off all of this is the text of file1.txt and file2.txt combined together as one and spit out to the console as well as the build.txt file. This might just be a silly string value, but in a real example not so different from this could be a build of many source code files into a single package file. I could pipe things threw some additional commands that might compact the source code into a minified rather than development form.
+
+## 3 - Conclusion
+
+So Linux piping is one of several things about the command line that come into play when learning to become more professional when it comes to using Linux. There is not just working with Linux command alone when it comes to all of this of course, Linux commands can be combined with a little light programming now and then in an environment such as JavaScript, or a more appropriate form when it comes to this sort of thing.
