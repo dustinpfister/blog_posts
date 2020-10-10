@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2020-10-10 16:39:36
-version: 1.12
+updated: 2020-10-10 16:43:29
+version: 1.13
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -70,7 +70,9 @@ The thing to keep in mind here with promises is that ultimately a promise object
 
 ## 2 - Using Promise reject or resolve in place of the Promise constructor
 
-Say for some reason I just simply want to start off with a resolve promise object, or for whatever extenuating circumstance I want a resolve promise object right now for a task that will not take much time. I could use the Promise constructor to create a promise and then just call resolve inside the body of the function that I pass the resolve constructor. However there is no need to do that as there is the Promise.resolve method that can be use for this purpose.
+Say for some reason I just simply want to start off with a resolve promise object, or for whatever extenuating circumstance I want a resolve promise object right now for a task that will not take much time. I could use the Promise constructor to create a promise and then just call resolve inside the body of the function that I pass the resolve constructor. This might work, but it is not really a professional way to go about doing it. There are a number of methods in the Promise prototype object, and a javaScript developer should be aware of them and what they are used for.
+
+So there is no need to do create a simple Promise with the Promise constructor that just resolves right away as there is the Promise.resolve method that can be use for this purpose.
 
 ```js
 // if you find yourself doing this
@@ -96,6 +98,8 @@ Promise.resolve({
     console.log(obj.mess);
 });
 ```
+
+In addition to the Promise resolve method there is also the Promise reject method that will cause the next catch rather than then call to fire in a Promise chain.
 
 ## 3 - nodejs check file example of promise reject use in a promise chain
 
