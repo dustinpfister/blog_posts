@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2020-10-10 16:46:43
-version: 1.14
+updated: 2020-10-10 16:50:51
+version: 1.15
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -143,6 +143,8 @@ stat(thePath)
     console.log(e.message);
 });
 ```
+
+This might just be a silly example that will just log the error to the console in the event that the script is called on a directory rather than a file. However in a real example the script might do something more when it comes to that kind of situation. In any case this shows how the Promise reject, and resolve methods can prove to be useful in some situations. An any point in a then call I can use the Promise reject method to skip ahead to the next catch rather than then call.
 
 ## 4 - Conclusion
 
