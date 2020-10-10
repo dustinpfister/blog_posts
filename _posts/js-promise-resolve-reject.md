@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2020-10-10 16:34:24
-version: 1.11
+updated: 2020-10-10 16:39:36
+version: 1.12
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -66,7 +66,9 @@ delayTest()
 });
 ```
 
-## 2 - Using Promise or reject resolve in place of the Promise constructor
+The thing to keep in mind here with promises is that ultimately a promise object will resolve or reject. There is having something like this where there is a bunch of code that will ultimately resolve or reject when using the promise constructor. However what if you are doing something that expects a resolved or rejected promise object as a response? There should be a way to just create and return a resolved or rejected promise object right? Well yes there should be and there is, this is where the Promise resolve and reject methods come into play.
+
+## 2 - Using Promise reject or resolve in place of the Promise constructor
 
 Say for some reason I just simply want to start off with a resolve promise object, or for whatever extenuating circumstance I want a resolve promise object right now for a task that will not take much time. I could use the Promise constructor to create a promise and then just call resolve inside the body of the function that I pass the resolve constructor. However there is no need to do that as there is the Promise.resolve method that can be use for this purpose.
 
