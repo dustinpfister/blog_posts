@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2020-10-10 09:56:28
-version: 1.9
+updated: 2020-10-10 16:33:12
+version: 1.10
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -19,9 +19,9 @@ So todays post will just be on the Promise.resolve, and promise.reject methods.
 
 ## 1 - First a Basic Promise example that will resolve or reject
 
-So if you are new to using promises or just want to review how they are use in this section I will be going over a basic example that uses the promise constructor. The basic idea of a promise is that it will return an object that represents a task that will resolve of reject over a period of time. 
+So if you are new to using promises or just want to review how they are use in this section I will be going over a basic example that uses the promise constructor. The basic idea of a promise is that it will return an object that represents a task that will resolve or reject over a period of time. The result might not come right away, and also the process of getting a result might fail. So a promise object might resolve to a requested value, and as such things can continue, or it might not at which point some additional action might need to be preformed such as trying again.
 
-So then a promise is an alternative to using callbacks, and the use of promises often results in a promise chain rather than the so called call back hell that happens when callbacks are used in a nested way.
+So then a promise is an alternative to using [callback functions](/2019/03/25/js-javascript-callback/). Once nice thing about promises over callbacks is that the use of promises often results in a promise chain rather than the so called call back hell that happens when callbacks are used in a nested way. This is often regarded as a nicer way to structuring things that is easier to read and debug.
 
 ```js
 let defaultTest = () => {
