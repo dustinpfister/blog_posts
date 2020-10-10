@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2020-10-10 16:50:51
-version: 1.15
+updated: 2020-10-10 16:52:59
+version: 1.16
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -151,3 +151,5 @@ This might just be a silly example that will just log the error to the console i
 The promise resolve and reject methods are there when I want to just simple have an object returned that is a resolved or rejected promise. I find myself using them some times as a way to just go about returning such an object to gain a desired result in a chain or promises. 
 
 There are many additional methods in the native Promise prototype that are worth checking out if one is nit familiar with them just yet. One of which is the [Promise.all](/2019/06/24/js-promise-all/) method that strokes me as one of the most important promise prototype methods that a javaScript developer should be aware of when it comes to Promises.
+
+That is it for now, but I often get around to editing my content now and then. If you have any ideas about something that should be added be sure to speak up in the comments section with it.
