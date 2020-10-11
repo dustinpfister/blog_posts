@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2020-10-11 09:56:47
-version: 1.19
+updated: 2020-10-11 10:01:44
+version: 1.20
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -169,6 +169,10 @@ mixed().then((arr) => {
     console.log(arr);
 });
 ```
+
+In this example I am passing an array that is a concatenation of a hard coded array of values, and an array of promise objects for files that contain additional string values. In the event that all the fires are there, and there is no problem reading them, then an array of the hard values along with the loaded values will be returned. If there is an array of any kind then the hard values will be returned only.
+
+this example could be written differently where the hard coded values are added later, but you get the idea. The array can be of mixed values, and in some cases this might be helpful. Say you need to do something where you start off with some hard coded values, and what is loaded will effect those values. The hard coded values can be just packed up along with everything else and passed down along the promise chain.
 
 ## 5 - Conclusion
 
