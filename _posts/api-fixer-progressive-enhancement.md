@@ -5,11 +5,9 @@ tags: [js,JSON,automation]
 layout: post
 categories: api
 id: 21
-updated: 2020-10-11 13:43:15
-version: 1.6
+updated: 2020-10-11 13:45:25
+version: 1.7
 ---
-
-{% mytags_postwords fixer.io,api&#32;fixer,jsonp,hexo,progressive,enhancement %}
 
 A few months back I [wrote a post on the fixer api](/2017/02/09/api-fixer/), and how it is a great free solution for grabbing up to date currency exchange rates. When I wrote the post I was still somewhat new to using hexo, and how to properly handle things when it comes to progressive enhancement of my simple static website.
 
@@ -160,4 +158,4 @@ Another idea would be to [write a tag](/2017/02/04/hexo-tags/) that will generat
 
 ## 9 - conclusion
 
-Be sure to check out my other posts on [hexo](/categories/hexo/), and [api's](/categories/api/).
+Be sure to check out my other posts on [hexo](/categories/hexo/), and [apis](/categories/api/).
