@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2020-10-11 09:26:43
-version: 1.16
+updated: 2020-10-11 09:52:57
+version: 1.17
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
 
-So it goes without saying that the promise all method is fairly useful whenever I am in a situation in which I need to do a whole bunch of async tasks, and then continue with more to do once all of that has completed. The promise all method should be there when it comes to native Promise support, but can also be added when working with older platforms via something like [bluebird](/2017/12/02/nodejs-bluebird/). So then lets take a look at a few examples of the promise all method in action.
+So it goes without saying that the promise all method is fairly useful whenever I am in a situation in which I need to do a whole bunch of async tasks, and then continue with more to do once all of that has completed. The promise all method should be there when it comes to native Promise support, but can also be added when working with older platforms via something like [bluebird](/2017/12/02/nodejs-bluebird/). 
+
+So then lets take a look at a few examples of the promise all method in action.
 
 <!-- more -->
 
@@ -138,6 +140,34 @@ readdir(dir)
 
 In this example I am also using the util.promisify method as a way to make all the file system module methods that I am using return a promise rather than having to deal with call back hell.
 
-## 4 - Conclusion
+## 4 - The array passed to Promise all can be a mix of Promises and static values
+
+```js
+let util = require('util'),
+path = require('path'),
+fs = require('fs');
+// returns a promise
+let read = util.promisify(fs.readFile);
+ 
+// mixed array of promises and other values
+let mixed = () => {
+    let hard = [42, 'bar'];
+    return Promise.all([read('file1.txt'), read('file2.txt')].concat(hard))
+    .then((result) => {
+        return result.map((el) => {
+            return el instanceof Buffer ? el.toString() : el;
+        });
+    })
+    .catch((e) => {
+        return hard;
+    });
+};
+ 
+mixed().then((arr) => {
+    console.log(arr);
+});
+```
+
+## 5 - Conclusion
 
 So the promise all method can be used as a way to create a promise with an array of promises and other mixed values that will resolve when all of the promises in the array resolve, or contain values that are not a promise. In other words if I am every in a situation in whichI need to do create not just one promise but a whole bunch of them, then the promise all method is what I want to use to get things done.
