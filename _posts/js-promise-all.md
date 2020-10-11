@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2020-10-11 09:52:57
-version: 1.17
+updated: 2020-10-11 09:55:30
+version: 1.18
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -141,6 +141,8 @@ readdir(dir)
 In this example I am also using the util.promisify method as a way to make all the file system module methods that I am using return a promise rather than having to deal with call back hell.
 
 ## 4 - The array passed to Promise all can be a mix of Promises and static values
+
+I have mentioned this before, but it is worth repeating and having a section on this. The array that you pass to the Promise all method does not have to be an array of promise instances only. It can be a mix of promises and plain old objects, strings, numbers, of any valid javaScript value for an array element. In the event that an element is not a promise that element with just be reorganized as might resolved all ready.
 
 ```js
 let util = require('util'),
