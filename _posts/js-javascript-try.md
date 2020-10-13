@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2020-10-13 13:08:24
-version: 1.18
+updated: 2020-10-13 13:22:55
+version: 1.19
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations, in the event that an error does happen some additional javaScript in a catch block will be called and an error object will be present in this block to help with the process of handling the error.
@@ -123,6 +123,8 @@ console.log(checkValue(-5)); // 0
 console.log(checkValue(NaN)); // 0
 console.log(checkValue('foo')); // 0
 ```
+
+In addition to being able to make use of Properties in an Error object there is also of course throwing custom user defined Errors. This allows be to define what the message is, so of course I can then use that message as a way to create custom ways of going about defining what to do for these custom Errors.
 
 ## 4 - Conclusion
 
