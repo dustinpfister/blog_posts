@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2020-10-13 12:49:52
-version: 1.16
+updated: 2020-10-13 12:57:05
+version: 1.17
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations, in the event that an error does happen some additional javaScript in a catch block will be called and an error object will be present in this block to help with the process of handling the error.
@@ -19,7 +19,9 @@ So then with that said in this post I will be outlining some things to know abou
 
 ## 1 - javaScript try basic example
 
-For a basic example of a try catch block I have a sting that represents an invalid JSON string. In a real example this json might be pulled from a file that might end up being malformed for one reason or another, but foe the sake of this simple example it is just a string literal. So then because the JSON is in fact invalid, when I attempt to try to parse the JSON string in the try block of the try catch statement into a workable object, this results in an Error as expected. Inside the body of the catch block I have it so I just log the resulting error message that is a property of the error object.
+For a basic example of a try catch block I have a sting that represents an invalid JSON string that should do nicely for a basic example. In a real example this JSON might be pulled from a file that might end up being malformed for one reason or another, but for the sake of this simple example it is just a string literal. 
+
+So then because the JSON is in fact invalid, when I attempt to try to parse the JSON string in the try block of the try catch statement into a workable object, this results in an Error as expected. Inside the body of the catch block I have it so I just log the resulting error message that is a property of the error object.
 
 ```js
 var str = '{\"n\":\"27\"',
@@ -35,9 +37,11 @@ try {
 console.log(obj.n); // 42
 ```
 
-Instead of the script failing completely a try catch statement can be used to define what to do in the event of an error such as this. The flow of the script will then continue instead of coming to a griding halt.
+Instead of the script failing completely a try catch statement can be used to define what to do in the event of an error such as this. In many situations there is more than one kind of Error that can happen, and code can be placed in the catch block for all possible errors that can happen. The flow of the script will then continue instead of coming to a griding halt, and any and all action can be taken to address all Errors that can happen.
 
-Although I am just logging the message to the console, in a real project I would of course want to do something more than just that. Say I am working on a project where I need to load a json file or some other kind of file that serves as a config file of sorts. I would want to not just log and error message to the console, I might want to do something more such as look at another file system location for a backup file of sorts or revert to using some hard coded settings on top of finding some way to alert the user to what is going on.
+When it comes to something real say I am working on a project where I need to load a JSON file, or some other kind of file that serves as a config file of sorts for the application. I would want to not just log and error message to the console in the event that invalid JSON is loaded, or if the file is not there. In such a situation I might want to do something more such as look at another file system location for a backup file of sorts, or revert to using some hard coded settings, and write a new file with those settings.
+
+So with that said now that we have the basic idea of try catch out of the way lets look at some more examples.
 
 ## 2 - The Deal with finally
 
