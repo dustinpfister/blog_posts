@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 722
-updated: 2020-10-13 14:36:00
-version: 1.4
+updated: 2020-10-13 15:11:15
+version: 1.5
 ---
 
 The [Linux wc](https://en.wikipedia.org/wiki/Wc_%28Unix%29) command is one of many commands that I have become aware of when looking thru the [\/user\/bin](http://www.linfo.org/usr_bin.html) path for things to check out, and maybe write a thing or two about. This wc command can be used to get a word count of a text file where a word is a non-zero length string of charicters between whitespace.
@@ -49,16 +49,14 @@ This will give the word count only becuase of the w option, but it will also giv
 
 ## 4 - Get word count of a bunch of files
 
+So if you are not familiour with piping in Linux ut would be a good idea to look into it. With piping I can use a command like the find command to get a list of file names. I can then pipe this list of file names to a command like xargs that will use the file names from the standard input as arguments for another command. I could use xargs with Linux wc directly, but why not pipe the file names to cat to create one large text file from my large collection of text files, and then pipe that to Linux wc?
+
 ```
 $ pwd
 /home/dustin/Documents/github_dustinpfister/blog_posts/_posts
-$ find *.md | xargs wc -c
-   1983 angular-$timeout.md
-   1601 angular-bootstrap.md
-...
-   6572 vuejs-use.md
-   5245 vuejs-watch.md
-5303495 total
+$ find *.md | xargs cat | wc -w
+820041
 ```
 
+Okay great now I have my grand word count total, or do I? These are markdown files after all, and as such there is much markdown code in the from of code examples and so forth that I might not wanted counted. So I might need to pipe things threw one or two more commands that will convert my markdown to plain text first to get another count that might be what I am actually looking for.
 
