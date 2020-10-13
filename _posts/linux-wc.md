@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 722
-updated: 2020-10-13 14:23:52
-version: 1.1
+updated: 2020-10-13 14:29:26
+version: 1.2
 ---
 
 The [Linux wc](https://en.wikipedia.org/wiki/Wc_%28Unix%29) command is one of many commands that I have become aware of when looking thru the [\/user\/bin](http://www.linfo.org/usr_bin.html) path for things to check out, and maybe write a thing or two about. This wc command can be used to get a word count of a text file where a word is a non-zero length string of charicters between whitespace.
@@ -15,10 +15,14 @@ The [Linux wc](https://en.wikipedia.org/wiki/Wc_%28Unix%29) command is one of ma
 
 ## 1 - Linux wc Basic Example
 
+For a basic example of the Linux wc command a good way to get started with a command like this is to use the Linux echo command to feed it some example text via the standard input via a pipe. Sp here I create some text with Linux echo and then pipe that to the Linux wc command.
+
 ```
 $ echo 'Linux wc can count words' | wc
       1       5      25
 ```
+
+The result if a few numbers the center of which as you can see is the word could. However what if you want to feed wc a file, or a whole bunch of files in a folder? Also what if I just want the word count, and not those other numbers for line breaks and byte size? With that said maybe just a few more examples on this command is called for then.
 
 ## 2 - Just get word count
 
