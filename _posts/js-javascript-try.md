@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2020-06-21 09:40:52
-version: 1.13
+updated: 2020-10-13 08:52:19
+version: 1.14
 ---
 
-The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing some javaScript code. The try catch statement is not just a one stop solution for all Error handling tasks when it comes to working with Errors in javaScript, but is certainly one aspect of doing so along with error objects in certain callbacks, and when working with catch function calls with promises just to mention a few basic things about error handling. So then with that said in this post I will be outlining some things to know about when working with the try catch statement, as well as any additional things that might come to mind.
+The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming error handling when developing some javaScript code. 
+
+The try catch statement is not a one stop solution for all Error handling tasks when it comes to working with Errors in javaScript, but is certainly one aspect of doing so along with other options. Other things to be aware of are error objects in certain callback functions that need to be handled differently typical with if statements, or conversion ro promises. Speaking of promises another thing about error handling is when working with catch function calls with promise chains which is yet another kinds of Error handling. Still the javaScript try catch statement is a good starting point when it comes to this topic. 
+
+So then with that said in this post I will be outlining some things to know about when working with the try catch statement, as well as any additional things that might come to mind.
 
 <!-- more -->
 
