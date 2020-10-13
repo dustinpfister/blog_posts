@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 722
-updated: 2020-10-13 14:32:11
-version: 1.3
+updated: 2020-10-13 14:36:00
+version: 1.4
 ---
 
 The [Linux wc](https://en.wikipedia.org/wiki/Wc_%28Unix%29) command is one of many commands that I have become aware of when looking thru the [\/user\/bin](http://www.linfo.org/usr_bin.html) path for things to check out, and maybe write a thing or two about. This wc command can be used to get a word count of a text file where a word is a non-zero length string of charicters between whitespace.
@@ -37,11 +37,15 @@ For some text coming from the standard input this will work just file, but when 
 
 ## 3 - Get word count of a file
 
+To get the word count of a file I just need to pass the file that I want the count for to wc.
+
 ```
 $ echo 'hello world this is some text' > ~/hw.txt
 $ wc -w ~/hw.txt
 6 /home/dustin/hw.txt
 ```
+
+This will give the word count only becuase of the w option, but it will also give the path to the file also. In addition what if I have a whole bunch of files in a folder? I can enter each file name one after another, but what if there is well over one hundred file names? There should be a way to just generate that and inject it right?
 
 ## 4 - Get word count of a bunch of files
 
