@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 711
-updated: 2020-10-01 07:50:20
-version: 1.8
+updated: 2020-10-14 15:10:29
+version: 1.9
 ---
 
 the [Linux curl](https://www.mit.edu/afs.new/sipb/user/ssen/src/curl-7.11.1/docs/curl.html) command is a way to download a file from a given URL, but it is also a bit more than just that. It can also be used to make various kinds of http requests from the command line such a POST requests, and can also be used as an FTP client. So the curl command is a helpful little command to be aware of when it comes to getting data from a public URL, or anything to that effect outside of a web browser.
@@ -45,7 +45,7 @@ $ curl https://dustinpfister.github.io/index.html -s
 
 ## 3 - make a HEAD request
 
-It is possible to do just a HEAD request rather than a full get request just like in a browser when it comes to scripting http with javaScript and XMLHttpRequest. To do a head request for a file I just need to use the \-I optiin and then pass the URL to the file where I want to make a HEAD request.
+It is possible to do just a HEAD request rather than a full get request just like in a browser when it comes to scripting http with javaScript and XMLHttpRequest. To do a head request for a file I just need to use the \-I option and then pass the URL to the file where I want to make a HEAD request.
 
 ```
 $ curl -I https://dustinpfister.github.io/index.html
