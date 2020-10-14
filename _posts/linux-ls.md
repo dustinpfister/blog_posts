@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2020-10-14 14:03:17
-version: 1.3
+updated: 2020-10-14 14:09:40
+version: 1.4
 ---
 
-The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls comand will come into play.
+The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls comand will come into play.
 
 There is much more to the Linux ls command beyond just listing what folders and files are in a given path location. There is listing hidden folders and files, and not doing so, there is listing file access permisions for a file, and there is not doing so. So there is not just typing the Linux ls command in and that is that, there are a few options that one should know about wheh it comes to Linux ls.
 
@@ -19,7 +19,7 @@ Also there is of course the limits of the linux ls command, it is not like Linux
 
 ## 1 - Get started with Linux ls
 
-So for this example I will not just be covering a basic example of the Linux ls command, but a whole bunch of other basic commands that come up all the time when using bash. Here I am starting out by using the mkdir command to create a new folder called foo in the home path of the current user. I then use the cd command to make the current working path this folder that I just made. In this foo folder I am using the echo command and redirection to create a new file with the text _hello world_ with a file name called _hello.txt_.
+So for this example I will not just be covering a basic example of the Linux ls command, but a whole bunch of other basic commands that come up all the time when using bash. Here I am starting out by using the mkdir command to create a new folder called foo in the home path of the current user. I then use the cd command to make the current working path this folder that I just made. In this foo folder I am using the [echo command](/2019/08/15/linux-echo/) and something called [redirection](/2020/10/02/linux-redirection/) to create a new file with the text _hello world_ with a file name called _hello.txt_.
 
 I can not use the Linux ls command to list the contents of this folder by just calling the command without any additional argumnets if I just want to confirm that I have a single file in this foo folder called hello.txt, and sure enough I do. I can not use a command such as cat to print out the contents of this file that I just made and sure enough it is what I have cerated using the Linux echo command.
 
@@ -79,3 +79,7 @@ drwxr-xr-x 20 dustin dustin 4096 Oct 14 13:55 ..
 -rw-r--r--  1 dustin dustin   12 Oct 14 13:10 hello.txt
 -rw-r--r--  1 dustin dustin   14 Oct 14 13:44 .hide.txt
 ```
+
+## 4 - Conclusion
+
+So the Linux ls command is one of those commands that a Linus user should know about just to gain that basic degree of unerstanding when it comes to navagating around the command line. There is still a few things to be aware of even when it comes to just a basic command such as this. Hopfully this post has covered at least the basics of the Linux ls command, but also a bit more than just that also.
