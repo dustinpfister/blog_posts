@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 720
-updated: 2020-10-12 16:56:28
-version: 1.8
+updated: 2020-10-14 15:12:04
+version: 1.9
 ---
 
-A [Linux pipe](http://www.linfo.org/pipe.html) is a form of redirection of output of one command to the input of one or more additional commands. This allows for breaking something down into a bunch of steps where one program ddoes just one thing and then the output of that command is then passed on to another command that accepts that result as input to which it then uses to preform yet another result.
+A [Linux pipe](http://www.linfo.org/pipe.html) is a form of redirection of output of one command to the input of one or more additional commands. This allows for breaking something down into a bunch of steps where one program does just one thing and then the output of that command is then passed on to another command that accepts that result as input to which it then uses to preform yet another result.
 
 There is also [Linux redirection](/2020/10/02/linux-redirection/) that is similar to a Linux pipe, but works a little differently. With Linux pipes two commands can run in parallel with each other, and data is transferred in a per buffer basis. With Linux redirection one command must complete, before the next can start.
 
