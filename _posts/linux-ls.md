@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2020-10-14 13:55:44
-version: 1.2
+updated: 2020-10-14 14:03:17
+version: 1.3
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls comand will come into play.
@@ -65,4 +65,17 @@ Another option for listing hidden files and folders in a path would be to get in
 ```
 $ ls .[^.]*
 .hide.txt
+```
+
+## 3 - Long listing format
+
+The long listing format option can be used to get more detailed information about the contents of a folder. This detailed information can be used to get a better idea of what is going on with file access permisions, and other useful data about each file.
+
+```
+$ ls -la
+total 16
+drwxr-xr-x  2 dustin dustin 4096 Oct 14 13:59 .
+drwxr-xr-x 20 dustin dustin 4096 Oct 14 13:55 ..
+-rw-r--r--  1 dustin dustin   12 Oct 14 13:10 hello.txt
+-rw-r--r--  1 dustin dustin   14 Oct 14 13:44 .hide.txt
 ```
