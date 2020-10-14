@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2020-10-14 13:23:22
-version: 1.1
+updated: 2020-10-14 13:55:44
+version: 1.2
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls comand will come into play.
@@ -36,3 +36,33 @@ hello world
 So now we have the basic idea of the Linux ls command worked out. I have a folder with just a single file in it called hello.txt and when I use the Linux ls command I get that file listed in the standard output. However what about hidden files? Also is it not true that there is this thing called file access permisions? What about creating a list of files and then piping that to another command? Well with that all saidn maybe it is called for to look at least a few more examples of Linux ls.
 
 ## 2 - Show Hidden files
+
+So it is possible to have hiddne files and folders inn a path, these folder and files names begin with a period. So if I use my echo and redirection trick to create anorther file but with a starting period in the file name such a file will be hidden. So if I just use the Linux ls command without any options of any kind the file will not show up.
+
+```
+$ echo "I hide things" > .hide.txt
+$ ls
+hello.txt
+```
+
+The hidden file that I just made will not show up. That is to be exspeced sense it is indeed a hidden file after all. STill there should be ways of listing everything that is in a folder. So lets look at some options for listing hidden files and folders.
+
+### 2.1 - The list all option
+
+So there is the list all option for the ls command that will list all contents for a folder, even folders such as dot and buibble dot that just mean the curremt folder, and up one folder.
+
+```
+$ ls -a
+.  ..  hello.txt  .hide.txt
+```
+
+So this is a good option to be aware of, and I generaly always use it with the ls command to make sure that I am seeing everything there is in a folder. However what if I just want to list hidden files? Well regular expressions come to mind so lets look at least one more example on listing hidden files and folders with the Linux ls command.
+
+### 2.2 - Use regular expressions
+
+Another option for listing hidden files and folders in a path would be to get into using regular expressions. Learning a thing or two about regular expressions is not just a good idea for uisng the Linux ls command too, as all kinds of commands in Linux such as find and grep just to name a few also can make use of regularexpressions.
+
+```
+$ ls .[^.]*
+.hide.txt
+```
