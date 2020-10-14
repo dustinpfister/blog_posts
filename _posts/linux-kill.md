@@ -5,15 +5,19 @@ tags: [linux]
 layout: post
 categories: linux
 id: 721
-updated: 2020-10-14 15:10:30
-version: 1.3
+updated: 2020-10-14 15:25:06
+version: 1.4
 ---
 
 The [Linux kill](https://www.linux.com/training-tutorials/how-kill-process-command-line/) command can be used to kill a process by way of a process id. In addition there are other commands such as killall that can be used to kill all processes by a command name rather than a process id. In any case in order to kill a command I first need to find out what processes are currently running on the computer so there are a few other commands that should at least be touched on briefly such as the Linux ps command that can be used to get a list of processes.
 
 <!-- more -->
 
-## 1 - find and kill a process by name using kill and ps
+## 1 - First w word or two on Linux ps
+
+Before I can use the Linux kill command I first need to know what is running in the first place. I have wrote a post On the Linux ps command which is the first command that comes to mind when it comes to taking a look at what is running on the system. It would be best to read over the man page on Linux ps, or at least some half way decent post on the Linux ps command, but maybe it is called for to at least go over some basics of this command here.
+
+## 2 - find and kill a process by name using kill and ps
 
 Say I know the name of the command that I want to kill. For example I know that I have one process that I started using nodejs, and I want to stop it without having to restart. The Linux ps command can be used with the C option to set a command name to look for when selecting processes that are running on the system.
 
@@ -26,7 +30,7 @@ $ ps -C node
 kill 9736
 ```
 
-## 2 - kill all by name
+## 3 - kill all by name
 
 The kill all command can be used to quickly kill a processes by command name rather than process id. I do need to know the name of the command first though so I will still want to use Linux ps or some other command to know what collection of processes by name I want to kill.
 
