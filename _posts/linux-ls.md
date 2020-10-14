@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2020-10-14 13:04:09
-version: 1.0
+updated: 2020-10-14 13:23:22
+version: 1.1
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls comand will come into play.
@@ -16,3 +16,23 @@ There is much more to the Linux ls command beyond just listing what folders and 
 Also there is of course the limits of the linux ls command, it is not like Linux ls is the only option when it comes to getting lists of files in one or more paths. Theer are other commands such as the Linux find method, and also uisng Linux ls with other commands such as cat and grep to do a better job of finding what one might be looking for in a file system. SO lets get stared with the basics, and not so basics when it comes to using the Linux ls command.
 
 <!-- more -->
+
+## 1 - Get started with Linux ls
+
+So for this example I will not just be covering a basic example of the Linux ls command, but a whole bunch of other basic commands that come up all the time when using bash. Here I am starting out by using the mkdir command to create a new folder called foo in the home path of the current user. I then use the cd command to make the current working path this folder that I just made. In this foo folder I am using the echo command and redirection to create a new file with the text _hello world_ with a file name called _hello.txt_.
+
+I can not use the Linux ls command to list the contents of this folder by just calling the command without any additional argumnets if I just want to confirm that I have a single file in this foo folder called hello.txt, and sure enough I do. I can not use a command such as cat to print out the contents of this file that I just made and sure enough it is what I have cerated using the Linux echo command.
+
+```
+$ mkdir ~/foo
+$ cd ~/foo
+$ echo "hello world" > hello.txt
+$ ls
+hello.txt
+$ cat hello.txt
+hello world
+```
+
+So now we have the basic idea of the Linux ls command worked out. I have a folder with just a single file in it called hello.txt and when I use the Linux ls command I get that file listed in the standard output. However what about hidden files? Also is it not true that there is this thing called file access permisions? What about creating a list of files and then piping that to another command? Well with that all saidn maybe it is called for to look at least a few more examples of Linux ls.
+
+## 2 - Show Hidden files
