@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2020-10-14 14:09:40
-version: 1.4
+updated: 2020-10-14 14:33:19
+version: 1.5
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls comand will come into play.
@@ -80,6 +80,28 @@ drwxr-xr-x 20 dustin dustin 4096 Oct 14 13:55 ..
 -rw-r--r--  1 dustin dustin   14 Oct 14 13:44 .hide.txt
 ```
 
-## 4 - Conclusion
+## 4 - Uisng ls with additional commands
+
+So one of the cool things about learning all these little Linux commands is that they can all be used togetaher by way of piping and redirection. The Linux ls command is a great way to go about getting a list of files, but then there is piping that list of files to another command.
+
+If I use piping to pipe the output of ls to a command like cat then it will just be the list of files as ushual. This is becuase I am piping a list of files to the standard output of cat, rather tha feeding the files as arguments to cat. If I pipe this list of files to a command like xargs then use cat with [xargs](/2020/09/26/linux-xargs/) this will result in the content of all the files being concataned togetaher. This can then be piped once more to yet even another command and so on such as the [wc command](/2020/10/13/linux-wc/) that will give a word count of the text thus far.
+
+```
+$ echo 'one' > file1.txt
+$ echo 'two' > file2.txt
+$ echo 'three' > file3.txt
+$ ls file* | cat 
+file1.txt
+file2.txt
+file3.txt
+$ ls file* | xargs cat
+one
+two
+three
+$ ls file* | xargs cat | wc -w
+3
+```
+
+## 5 - Conclusion
 
 So the Linux ls command is one of those commands that a Linus user should know about just to gain that basic degree of unerstanding when it comes to navagating around the command line. There is still a few things to be aware of even when it comes to just a basic command such as this. Hopfully this post has covered at least the basics of the Linux ls command, but also a bit more than just that also.
