@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-15 07:20:49
-version: 1.15
+updated: 2020-10-15 07:24:12
+version: 1.16
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be mutated with some javaScript code also to display something that will change. 
@@ -93,6 +93,8 @@ loop();
   </body>
 </html>
 ```
+
+There are some tweaks and additional changes that I might make to something like this, but the basic idea is there. 
 
 ## 4 - Be mindful of making changes to the title with javaScript when it comes to search engines
 
