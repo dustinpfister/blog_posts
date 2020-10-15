@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-15 06:37:53
-version: 1.10
+updated: 2020-10-15 06:43:27
+version: 1.11
 ---
 
-When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, not just from a search engine perspective, but also for the sake of informing visitors about what a page is about, or what is currently going on with a page. That is because the title tag can be this fixed static thing, but it can also be mutated with some javaScript code also. 
+When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be mutated with some javaScript code also to display something that will change. 
 
-The title tag is often what will be displayed in a link to the page in a search engine result page, so it is important to think in terms of the actually written content of the title tag. it also goes without saying that the title tag is a great resource to inform a user to something that is going on when it is a game from a complex front end system of some kind.
+The title tag is often what will be displayed in a link to the page in a search engine result page, so it is important to think in terms of the actually written content of the title tag. It also goes without saying that the title tag is a great resource to inform a user to something that is going on when it is not just a static page we are talking about, but a single page application of some kind. If it is a messaging app of some kind the title tag can be used to inform a user that they have a new message even when the tag is inactive. If it is a game that has money as a resource that value can be displayed in the title tag for example also.
 
 In this post I will be taking a moment to play around a little with the [document.title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) property in client side javaScript. This property can be used to both get and set the title text of an html document. There is also a little more to cover when it comes to going beyond the basics with this as well when it comes to using the title tag of a page to inform a user about something as well with javaScript so lets get to it.
 
