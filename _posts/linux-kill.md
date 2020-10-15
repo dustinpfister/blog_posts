@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 721
-updated: 2020-10-15 06:19:38
-version: 1.6
+updated: 2020-10-15 06:29:30
+version: 1.7
 ---
 
 The [Linux kill](https://www.linux.com/training-tutorials/how-kill-process-command-line/) command can be used to kill a process by sending a process kill signal to a process way of a process id. There are a few different kill signals but the default signal of the kill command will work okay for most situations so just a process id is needed with the kill command often.
@@ -15,9 +15,23 @@ In addition there are other commands such as killall that can be used to kill al
 
 <!-- more -->
 
-## 1 - First w word or two on Linux ps
+## 1 - First a word or two on Linux ps
 
 Before I can use the Linux kill command I first need to know what is running in the first place. I have [wrote a post on the Linux ps command](/2019/08/16/linux-ps/) which is the first command that comes to mind when it comes to taking a look at what is running on the system. It would be best to read over the man page on Linux ps, or at least some half way decent post on the Linux ps command, but maybe it is called for to at least go over some basics of this command here.
+
+To get a list of all processes running at the moment call ps with the -e options
+
+```
+$ ps -e
+```
+
+It is also possible to select by process command name if you know the name of the command that you want to stop. For example if I want to list all instances of node running on my computer I can call ps with the -C option and then pass node as the command name after that option.
+
+```
+$ ps -C node
+```
+
+There are many more options to write about when it comes to the ps command, but this is a post on killing a process. If you want to read more on Linux ps there is the post I wrote on that, but the best source would of course be the man page when it comes to every little detail.
 
 ## 2 - find and kill a process by name using kill and ps
 
