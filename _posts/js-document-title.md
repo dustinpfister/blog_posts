@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-15 07:24:12
-version: 1.16
+updated: 2020-10-15 07:25:47
+version: 1.17
 ---
 
-When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be mutated with some javaScript code also to display something that will change. 
+When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be [mutated with some javaScript code](https://stackoverflow.com/questions/413439/how-to-dynamically-change-a-web-pages-title) also to display something that will change. 
 
 The title tag is often what will be displayed in a link to the page in a search engine result page, so it is important to think in terms of the actually written content of the title tag. It also goes without saying that the title tag is a great resource to inform a user to something that is going on when it is not just a static page we are talking about, but a single page application of some kind. If it is a messaging app of some kind the title tag can be used to inform a user that they have a new message even when the tag is inactive. If it is a game that has money as a resource that value can be displayed in the title tag for example also.
 
