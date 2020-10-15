@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 721
-updated: 2020-10-14 15:26:09
-version: 1.5
+updated: 2020-10-15 06:19:38
+version: 1.6
 ---
 
-The [Linux kill](https://www.linux.com/training-tutorials/how-kill-process-command-line/) command can be used to kill a process by way of a process id. In addition there are other commands such as killall that can be used to kill all processes by a command name rather than a process id. In any case in order to kill a command I first need to find out what processes are currently running on the computer so there are a few other commands that should at least be touched on briefly such as the Linux ps command that can be used to get a list of processes.
+The [Linux kill](https://www.linux.com/training-tutorials/how-kill-process-command-line/) command can be used to kill a process by sending a process kill signal to a process way of a process id. There are a few different kill signals but the default signal of the kill command will work okay for most situations so just a process id is needed with the kill command often.
+
+In addition there are other commands such as killall that can be used to kill all processes by a command name rather than a process id. In any case in order to kill a command I first need to find out what processes are currently running on the computer so there are a few other commands that should at least be touched on briefly such as the Linux ps command that can be used to get a list of processes.
 
 <!-- more -->
 
