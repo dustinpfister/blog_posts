@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-06-21 10:37:10
-version: 1.9
+updated: 2020-10-15 06:37:53
+version: 1.10
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, not just from a search engine perspective, but also for the sake of informing visitors about what a page is about, or what is currently going on with a page. That is because the title tag can be this fixed static thing, but it can also be mutated with some javaScript code also. 
@@ -42,7 +42,7 @@ That's all there is to it when it comes to just getting or setting the string va
 
 ## 2 - document title update time when a tab is inactive
 
-When using setTimeout as a way to go about updating the text that is displayed in a title tag, the time at which frames will run can change depending on the browser. For example if I set 33 milliseconds as the desired target time at which the next call to my loop will run, I often get a time around that much if the tag is active and I am not doing much of anything in the function call. However if I change tabs the time between calls will increase to 1000 milliseconds regardless of what value I set.
+When using [setTimeout](/2018/12/06/js-settimeout/) as a way to go about updating the text that is displayed in a title tag, the time at which frames will run can change depending on the browser. For example if I set 33 milliseconds as the desired target time at which the next call to my loop will run, I often get a time around that much if the tag is active and I am not doing much of anything in the function call. However if I change tabs the time between calls will increase to 1000 milliseconds regardless of what value I set.
 
 For example something like this:
 
@@ -65,3 +65,7 @@ loop();
 ```
 
 Will update the title text to the amount of time between function calls, as expected it will give me around 33ms if the window is active, but will increase to a second if the window is inactive.
+
+## 3 - Conclusion
+
+So the document title property is there for getting and setting the value of the title tag of an html document when it comes to client side javaScript. If you are wondering how to go about making some javaScript code that will display some kind of status info via a page title this is how. Also the title tag is a good way of know what will be going on with your javaScript code when a page becomes inactive.
