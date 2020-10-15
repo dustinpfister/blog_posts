@@ -5,11 +5,11 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2020-09-10 13:25:29
-version: 1.7
+updated: 2020-10-15 06:31:14
+version: 1.8
 ---
 
-So today I am taking a look at the Linux ps command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
+So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
 
 <!-- more -->
 
@@ -17,7 +17,7 @@ So today I am taking a look at the Linux ps command. This command can be used to
 
 In this section I will be going over some typical use case examples of the Linux ps command. There are allot of options and ways of formatting the output, and if you really want to dive deep into it all the best source on that might be the [ps command manual page](https://www.man7.org/linux/man-pages/man1/ps.1.html) as always. However here I thought I would write about the top typical options and formatting tricks that I find myself using.
 
-## 1.1 - See all process runiing on the system
+## 1.1 - See all process ruining on the system
 
 So if I just want a list of all processes running at the present moment I will call the ps command with the -e option. If I just give the -e option and nothing else then all processes will be selected and the default formating will be used.
 
@@ -25,15 +25,15 @@ So if I just want a list of all processes running at the present moment I will c
 $ ps -e
 ```
 
-## 1.2 - Seee just process for a given user
+## 1.2 - See just process for a given user
 
-So there is getting a long list of everything that is running on the computer, but often I might just want to see what is running for just a given username. So if I just want what is running for a username such as pi I just need to use the uppercase U option of linux ps and pass the username. The result should be a list of processes that are ruining just for that username.
+So there is getting a long list of everything that is running on the computer, but often I might just want to see what is running for just a given username. So if I just want what is running for a username such as pi I just need to use the uppercase U option of Linux ps and pass the username. The result should be a list of processes that are ruining just for that username.
 
 ```
 $ ps -U pi
 ```
 
-## 1.3 - Just proceses of a given name
+## 1.3 - Just processes of a given name
 
 Sometimes I will want to select process by a given set command name, for that there is the upper case C option of linux ps.
 
