@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-15 06:45:52
-version: 1.12
+updated: 2020-10-15 07:09:49
+version: 1.13
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be mutated with some javaScript code also to display something that will change. 
@@ -19,7 +19,7 @@ In this post I will be taking a moment to play around a little with the [documen
 
 ## 1 - document.title property a basic example
 
-The document.title property of the document object in client side javaScript can be used to get or set the title text of the title element in an HTML document. Just set the desired string value to the document title property and that should do it just fine by way of the title property of the document object.
+The document.title property of the document object in client side javaScript can be used to get or set the title text of the title element in an HTML document. Just set the desired string value to the document title property, and that should do it just fine.
 
 ```html
 <html>
@@ -27,18 +27,14 @@ The document.title property of the document object in client side javaScript can
     <title>foo</title>
   </head>
   <body>
-    <textarea id="out"></textarea>
     <script>
-      var out =document.getElementById('out');
-      out.value += document.title + '\n'; // foo
       document.title = 'bar';
-      out.value += document.title + '\n'; // bar
     </script>
   </body>
 </html>
 ```
 
-That's all there is to it when it comes to just getting or setting the string value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a titles value such as what happens when a tag goes inactive. 
+That's all there is to it when it comes to just setting the value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a title tag value such as what happens when a tag goes inactive.
 
 ## 2 - document title update time when a tab is inactive
 
@@ -66,6 +62,38 @@ loop();
 
 Will update the title text to the amount of time between function calls, as expected it will give me around 33ms if the window is active, but will increase to a second if the window is inactive.
 
-## 3 - Conclusion
+## 3 - Scroll text example
+
+So one thing that comes to mind when it comes to editing the title tag text is to have scrolling text. This is a feature that I find happening now and then in pages. Wiping something like that up just takes a little work with a basic app loop, and the use of the substring String prototype method. It might be a good idea to go with date objects as a way to change the letter index value thought rather than just stepping the index value each time the app loop is called.
+
+
+```
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script>
+var lt = new Date(),
+mess = 'Hello World ',
+i = 0;
+var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    sec = t / 1000;
+    setTimeout(loop, 100);
+    document.title = mess.substr(Math.floor(i), 4);
+    i += sec;
+    i %= mess.length - 1;
+    lt = now;
+};
+ 
+loop();
+    </script>
+  </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So the document title property is there for getting and setting the value of the title tag of an html document when it comes to client side javaScript. If you are wondering how to go about making some javaScript code that will display some kind of status info via a page title this is how. Also the title tag is a good way of know what will be going on with your javaScript code when a page becomes inactive.
