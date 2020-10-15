@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-15 07:09:49
-version: 1.13
+updated: 2020-10-15 07:12:52
+version: 1.14
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be mutated with some javaScript code also to display something that will change. 
@@ -34,7 +34,7 @@ The document.title property of the document object in client side javaScript can
 </html>
 ```
 
-That's all there is to it when it comes to just setting the value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a title tag value such as what happens when a tag goes inactive.
+That's all there is to it when it comes to just setting the value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a title tag value such as what happens when a tag goes inactive. Maybe a few more examples beyond that are also in order just to touch base on some related topics to the title property and how to go about doing things with it.
 
 ## 2 - document title update time when a tab is inactive
 
