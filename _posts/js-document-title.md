@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-16 10:09:26
-version: 1.18
+updated: 2020-10-16 10:17:41
+version: 1.19
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be [mutated with some javaScript code](https://stackoverflow.com/questions/413439/how-to-dynamically-change-a-web-pages-title) also to display something that will change. 
@@ -98,7 +98,7 @@ There are some tweaks and additional changes that I might make to something like
 
 ## 4 - The visibility Change event
 
-It might also be worth mentioning that the visibility change event.
+It might also be worth mentioning that the visibility change event can be used as a way to check if a user has switched tabs or not. This can then be used as a way to change what the text of a title tag depending if a user is actually looking at the page or not. This visibility change event can be attached my way of the add event listener method off of the document object.
 
 ```html
 <html>
@@ -118,6 +118,8 @@ document.addEventListener("visibilitychange", function() {
   </body>
 </html>
 ```
+
+This might be just a basic example, but in a real project a static text title can be set when the user has the page active in the browser, and a title that reflects the current status of an application can be set as the title when the page is not active.
 
 ## 5 - Conclusion
 
