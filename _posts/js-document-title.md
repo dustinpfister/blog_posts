@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-15 07:25:47
-version: 1.17
+updated: 2020-10-16 10:09:26
+version: 1.18
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be [mutated with some javaScript code](https://stackoverflow.com/questions/413439/how-to-dynamically-change-a-web-pages-title) also to display something that will change. 
@@ -96,10 +96,34 @@ loop();
 
 There are some tweaks and additional changes that I might make to something like this, but the basic idea is there. 
 
-## 4 - Be mindful of making changes to the title with javaScript when it comes to search engines
+## 4 - The visibility Change event
 
-Google and other search engines have been able to [run javaScript and take the mutated Dom into consideration](https://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157) for some time now. So changes that are made to the title tag with javaScript could possible end up negatively impacting organic traffic performance. So mutating the title tag with javaScript might not always be a good idea for certain projects, such as blog pages that one one want to serve as landing pages to a website.
+It might also be worth mentioning that the visibility change event.
+
+```html
+<html>
+  <head>
+    <title>active</title>
+  </head>
+  <body>
+    <script>
+document.addEventListener("visibilitychange", function() {
+  if (document.visibilityState === 'visible') {
+    document.title = 'Active'
+  } else {
+    document.title = 'Not Active'
+  }
+});
+    </script>
+  </body>
+</html>
+```
 
 ## 5 - Conclusion
 
 So the document title property is there for getting and setting the value of the title tag of an html document when it comes to client side javaScript. If you are wondering how to go about making some javaScript code that will display some kind of status info via a page title this is how. Also the title tag is a good way of know what will be going on with your javaScript code when a page becomes inactive.
+
+
+### 5.1 - Be mindful of making changes to the title with javaScript when it comes to search engines
+
+Google and other search engines have been able to [run javaScript and take the mutated Dom into consideration](https://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157) for some time now. So changes that are made to the title tag with javaScript could possible end up negatively impacting organic traffic performance. So mutating the title tag with javaScript might not always be a good idea for certain projects, such as blog pages that one one want to serve as landing pages to a website.
