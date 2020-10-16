@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2020-10-16 10:45:22
-version: 1.21
+updated: 2020-10-16 10:49:02
+version: 1.22
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -21,7 +21,7 @@ So in this post I will be going  over some examples of the use of call, as well 
 
 ## 1 - Where to get started with JavaScript Call, Apply, and Bind.
 
-Maybe a good place to start is to know that in javaScript you often have a situation in which you are working with one or more objects, and you also have methods that act on those objects. For example there are Arrays and then there are methods like join that act on those arrays.
+Maybe a good place to start is to know that in javaScript you often have a situation in which you are working with one or more objects, and you also have methods that act on those objects call prototype methods. What methods are available depending on the Class of the Object. For example there are Arrays, and in javaScript an Array is a Class of object. So when it comes to an Object that is an instance of an Array there are Array prototype methods such as the array join method that will join all elements of an array into a string.
 
 ```js
 var arr = ['foo','man','chew','is','always','in','style'],
@@ -29,7 +29,7 @@ mess = arr.join(' ');
 console.log(mess); // foo man chew is always in style
 ```
 
-No confusion there, but with the power of call I can invoke the Array.join method on a plain old object.
+No confusion there, but with the power of call I can invoke the Array.join method on a plain old object that is not an array.
 
 ```js
 var arr = {0:'foo',1:'man',2:'chew',3:'is',4:'always',5:'in',6:'style',length:7},
