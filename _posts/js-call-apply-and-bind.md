@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2020-10-16 10:49:02
-version: 1.22
+updated: 2020-10-16 11:09:00
+version: 1.23
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -42,6 +42,33 @@ The main point here is that yes there are methods that are associated with a cer
 ## 2 - Using Function.call
 
 So call is a property of the Function prototype, which means it is a method that works with any function, including methods that are part of the prototype of any kind of Object like Date, and Array. Call works by using the call method on any function that I want to use with a certain object in which it might work by passing that object as the first argument. This Object will become the value of the this keyword when it comes to the body of the code that defines the method I am using. Any additional arguments are just the arguments that normally get passed to the method that I am using with call like normal.
+
+### 2.1 - basic call example
+
+To help get a basic idea of what is going on when it comes to using call it might be a good idea to work out a simple example that just involves a single method of a plain old object that makes use of the this keyword to refer to the object that it is a part off.
+
+Here I have a javaScript call example that just has a simple add method in a plain javaScript method created with the object literal syntax. In this add method I am using the this keyword to refer to the object that it is a part of, and I am adding the values of the a and b properties of the object. When I just call this method the returned result is going to be the sum of the a and b properties of this object that the add method is a part of. However because the add method is a function, and thus has all the prototype methods of a function, I can use the call function prototype method off of the add function to set a different object for the add method to use.
+
+```
+// an Object
+var pt = {
+    a: 2,
+    b: 3,
+    // a simple add method of this object
+    // that uses the this keyword to refer to
+    // properties of the object
+    add: function () {
+        return this.a + this.b;
+    }
+};
+// just calling the add method
+console.log(pt.add()); // 5
+// using Call to use the add method with another object
+console.log(pt.add.call({
+        a: 1,
+        b: 1
+    })); // 2
+```
 
 ## 3 - Using Apply
 
