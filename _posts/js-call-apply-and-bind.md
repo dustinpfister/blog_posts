@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2020-10-16 10:33:05
-version: 1.20
+updated: 2020-10-16 10:45:22
+version: 1.21
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -56,7 +56,7 @@ console.log( [].concat.call({length:3},'foo','man','chew') );
 
 ## 4 - Using Function.bind
 
-Bind will return a new method that can be used with the given object. It Works just like call, and apply, but will give you a new function that can be assigned to a variable, and called all over the place.
+Bind will return a new method that can be used with the given value for the this keyword in the method that it is called off of. So then the bind function prototype method works just like call, and apply, but will give you a new function that can be assigned to a variable. Once this stored function is created with bind the function can then be called all over the place so it can be used as a way to capture the value of the this keyword.
 
 ```js
 // basic object
