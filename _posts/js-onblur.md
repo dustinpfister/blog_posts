@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-10-17 07:45:18
-version: 1.42
+updated: 2020-10-17 07:48:02
+version: 1.43
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
@@ -149,7 +149,7 @@ It just displays if the canvas has the users focus or not, but of course I could
 
 ## 4 - Simulating blur and focus events
 
-It is possible to simulate a blur event, or in other words to trigger a blur event without the user causing a blur event to happen the element themselves by way of some javaScript code. Each element has a blur method that when called will simulate the blur event for the element triggering any blur events that are attached to it. There is also a focus method for events that will set the focus for an element. So the focus method can be used as a way to set the focus to a single element, and then the blur method of that element can be used as a way to loose it.
+It is possible to simulate a blur event, or in other words to trigger a blur event without the user causing a blur event to happen the element themselves by way of some javaScript code. Each element has a [blur method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/blur) that when called will simulate the blur event for the element triggering any blur events that are attached to it. There is also a [focus method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus) for events that will set the focus for an element. So the focus method can be used as a way to set the focus to a single element, and then the blur method of that element can be used as a way to loose it.
 
 ```html
 <html>
