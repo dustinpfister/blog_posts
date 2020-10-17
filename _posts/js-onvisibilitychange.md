@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2020-10-17 15:48:09
-version: 1.1
+updated: 2020-10-17 16:04:54
+version: 1.2
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. This event can be used with other properties of the document object to define logic that is to be applied each time a page becomes hidden or visible.
@@ -14,3 +14,28 @@ The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Docu
 On top of the on visibility change event there is also the [visibility state property](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) of the document object that can be used as a way to probe for the status of the page content. Another document property that comes to mind is document title which is a way to set what there title text of a tab is.
 
 <!-- more -->
+
+## 1 - Basic example of the on visibility change event
+
+For starers maybe a good basic example for this kind of event is to just play around with something that is just a single handler that will update the title of the page each time the event fires. Here I have an update title method that will update the text of the title element once when the script loaded for the first time, then each time the on visibility change event fires.
+
+In the body of my update title method I am using the document.title property to set the value of the title text to the current value of the visibility state property of the document object. When this method is called for the first time when the script loads the value should be _visible_ if the page is the current tab in the browser and the window is active. In any case each time this status changes the method will fire again, and the text of the title tag will update to this status.
+
+```html
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+var updateTitle = function(e){
+    document.title = document.visibilityState;
+};
+document.addEventListener("visibilitychange", updateTitle);
+updateTitle();
+        </script>
+    </body>
+</html>
+```
+
+When I have this html as a file and open it up in my browser the text of the title tag will read _visible_ when the page is active and visible. In addition each time I switch to another tab and the page content is thus  not visible then the value of the title text will change to _hidden_
