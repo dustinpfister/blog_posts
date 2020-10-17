@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2020-10-17 16:53:35
-version: 1.5
+updated: 2020-10-17 16:59:40
+version: 1.6
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. This event can be used with other properties of the document object to define logic that is to be applied each time a page becomes hidden or visible.
@@ -87,6 +87,8 @@ setInterval(update, 100);
     </body>
 </html>
 ```
+
+So the visibility state property can just be probed in the body of a loop such as this as a way to just know what the current status is at any given moment. So in some situations I might not have to bother with attacking an event handler for the on visibility change event if I have a loop like this being called over and over again. However it might still be best to make use of the event anyway as a way to set a separate mode, and have that be the way to change how data is displayed differently
 
 ## 3 - Conclusion
 
