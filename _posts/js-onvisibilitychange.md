@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2020-10-17 16:10:17
-version: 1.3
+updated: 2020-10-17 16:43:11
+version: 1.4
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. This event can be used with other properties of the document object to define logic that is to be applied each time a page becomes hidden or visible.
@@ -41,3 +41,36 @@ updateTitle();
 ```
 
 When I have this html as a file and open it up in my browser the text of the title tag will read _visible_ when the page is active and visible. In addition each time I switch to another tab and the page content is thus  not visible then the value of the title text will change to _hidden_
+
+## 2 - visibility state property
+
+The visibility state property of the document object is what can be used in the on visibility change event to find out what the visibility state is. This property can have one of three values 'visible', 'hidden', and 'prerender' although the prerender value is deprecated.
+
+Although this property is often used in conjunction with the on visibility change event, it does not have to be. In the event that I just want to probe this state in an update loop, or any other event, I can do that instead.
+
+```html
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <p id="disp"></p>
+        <script>
+var money = 0;
+var update = function(e){
+    if(document.visibilityState === 'visible'){
+        document.title = 'Basic money game';
+        document.getElementById('disp').innerText = money + '$';
+    }else{
+        document.title = money + '$';
+    }
+};
+setInterval(update, 100);
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
+
+The on visibility state change event is what can be used to set up one or more handers that will fire each time the user switches to another tab and back again. There is also the visibility state property that can be used to probe for what the current state is for visibility inside and outside of the hander for one of these kinds of events.
