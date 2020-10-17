@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2020-10-17 16:59:40
-version: 1.6
+updated: 2020-10-17 17:04:58
+version: 1.7
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. This event can be used with other properties of the document object to define logic that is to be applied each time a page becomes hidden or visible.
@@ -88,7 +88,9 @@ setInterval(update, 100);
 </html>
 ```
 
-So the visibility state property can just be probed in the body of a loop such as this as a way to just know what the current status is at any given moment. So in some situations I might not have to bother with attacking an event handler for the on visibility change event if I have a loop like this being called over and over again. However it might still be best to make use of the event anyway as a way to set a separate mode, and have that be the way to change how data is displayed differently
+So the visibility state property can just be probed in the body of a loop such as this as a way to just know what the current status is at any given moment. So in some situations I might not have to bother with attacking an event handler for the on visibility change event if I have a loop like this being called over and over again. However it might still be best to make use of the event anyway as a way to set a separate mode, and have that be the way to change how data is displayed differently.
+
+One thing that I have noticed when having this run in the browser is that the rate at which the text will update will change when I switch to another tab. When I am viewing the tab the rate at which the text of the money value updates will do so more or less at the rate that I have set with the time value I have passed to setInterval. When I switch to another tab the rate at which the text will update will do so at a slower rate of about one second. Because I am updating the value of the money property by way of the system time this does not cause a problem, but in projects where this is not the case the rate at which an update method will be called will slow down.
 
 ## 3 - Conclusion
 
