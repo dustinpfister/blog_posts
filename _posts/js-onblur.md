@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-06-23 11:42:43
-version: 1.37
+updated: 2020-10-17 06:39:35
+version: 1.38
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
@@ -17,13 +17,13 @@ So then a blur event fires when an element losses this focus, once it has been a
 
 <!-- more -->
 
-## 1 - On blur and what to know before continuing to read
+## 1 - On blur basics and what to know before continuing to read
 
-This is a post on the on blur event in client side javaScript, one of many events to which an event handler can be attached for an element. An on blur event can be attached to an element using the on blur property of an element, or a method like addEventListener to attach event handers that will fire when the bur event happens. 
+This is a post on the on blur event in client side javaScript, one of many events to which an event handler can be attached for an element. An on blur event can be attached to an element using the on blur property of an element, or a method like addEventListener to attach event handers that will fire when the blur event happens. 
 
 I will not be going over [event listeners](/2019/01/16/js-event-listeners/) in general in this post as I have wrote a post on that subject in the past. So then this post will be focusing on mainly the on blur event and related topics such as the tab index property. I assume that you have at least some background with javaScript and HTML as this is required in order to get anything of value from this post.
 
-## 2 - On blur basic example
+### 1.1 - On blur basic example
 
 The use of an on blur event might be used in conjunction with an on focus event, as well as a whole range of other events to create a user interface for a form, single input element, or anything else for the matter to which focus events apply. 
 
@@ -55,7 +55,7 @@ So in the script tag I am just getting a reference to a single input element, an
 
 When I open this up in the browser the on focus event fires for the input element when I click on it. When I click outside of the input element the on blur event will fire changing the value of the text in the input element  The on blur event does not bubble though so if I where to attach an on blur event to a div container it will not bubble down to an input element. The focus out event however will bubble down, which it would seem is the only note worth difference between on blur, and focus out.
 
-## 3 - On blur, on focus out and bubbling
+## 2 - On blur, on focus out and bubbling
 
 The on blur event works fine, and so does the on focus out method. On the surface it would seem that they both work the same way, firing when an element looses focus. However there is just one little difference between on blur and on focus out, and that difference has to do with [event bubbling](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture). The focus out event when attached to a container element will fire when a child element inside of it has lost focus and nothing is done to cancel the bubbling.
 
@@ -94,7 +94,7 @@ container.addEventListener('focusin', function (e) {
 
 If I where to use on blur and on focus in place of these events when attaching to the container element this example will not work. So the on blur event is something that must be used on a per element bases.
 
-## 4 - Canvas elements and the tab index property
+## 3 - Canvas elements and the tab index property
 
 By default canvas elements and a whole bunch of other elements can not be focused by default. There is however the [tab index](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) html element attribute. Once a tab index attribute is set for an element then it can be focused just like an input element or any other kind of element that can be focused by default. So the on focus event will fire when the canvas element gains focus, and the on blur event will fire when it looses focus as well.
 
@@ -147,6 +147,6 @@ loop();
 
 It just displays if the canvas has the users focus or not, but of course I could have it do something else when the project has focus. Generally you want to avoid using the tab index property with canvas elements, unless you take the time to make the element keyboard friendly. There are of course accessibility concerns when it comes to cycling throw things on a page with the tab key on desktop systems. The on blur event does not need to be used with everything something else could be worked out when it comes to canvas elements with other events.
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So the the on blur event is useful for defining some logic that will fire when a user moves the focus of an element away from an element. It is often used in conjunction with the on focus event that will fore when the focus of an element is gained. If I get some more time sooner or later I might get around to writing some better examples that involve a great deal more going on when it comes to using the on blur event in a project. For now I hope you enjoyed this post and got at least something of value out of reading it.
