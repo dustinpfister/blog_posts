@@ -56,12 +56,13 @@ app.get('/', [
             req.data = [];
             console.log('klawing posts:');
             klawAll({
-                forPost: (item, nextPost) => {
+                forPost: (item, nextPost, i) => {
                     req.data.push({
                         wc: item.wc,
                         fn: item.fn,
                         header: item.header
                     });
+                    console.log(i , item.header.title);
                     nextPost();
                 },
                 onDone: () => {
@@ -112,10 +113,12 @@ app.get('/', [
             });
             tableHTML += '</table>';
             html += '<p>';
-            html += '<span>Word Count Site Total ' + wcTotal + '</span><br>';
+            html += '<span>Word Count Site Total: ' + wcTotal + '</span><br>';
             let days = getTotalDays();
-            html += '<span>Total days ' + days.toFixed(2) + '</span><br>';
-            html += '<span>AVG WC per day ' + Number(wcTotal / days).toFixed(2) + '</span><br>';
+            html += '<span>Total days: ' + days.toFixed(2) + '</span><br>';
+            html += '<span>Total posts: ' + req.data.length + '</span><br>';
+            html += '<span>AVG WC per day: ' + Number(wcTotal / days).toFixed(2) + '</span><br>';
+            html += '<span>AVG post WC: ' + Number(wcTotal / req.data.length).toFixed(2) + '</span><br>';
             html += '<span>' + JSON.stringify(colorTab()) + '</span><br>';
             html += '</p>';
             html += colorBar(colorTab);

@@ -52,7 +52,7 @@ let klawAll = (opt) => {
                             next();
                         }
 
-                    })
+                    }, ct);
 
                 })
 
