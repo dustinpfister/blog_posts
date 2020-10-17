@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-10-17 07:42:11
-version: 1.41
+updated: 2020-10-17 07:45:18
+version: 1.42
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
@@ -173,6 +173,8 @@ setTimeout(function(){
     </body>
 </html>
 ```
+
+There is also the [onblur property of an element that of course should not be confused with the blue method](https://stackoverflow.com/questions/5212651/blur-vs-onblur). The onblur method can be redefined with some custom javaScript to define a single event handler for the blur event, but the blur method is a way to trigger not just the onblur method but any additional event handers that where attached by way of the use of the add event listener method.
 
 ## 5 - Conclusion
 
