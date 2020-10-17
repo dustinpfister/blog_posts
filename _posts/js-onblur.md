@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-10-17 07:05:01
-version: 1.40
+updated: 2020-10-17 07:42:11
+version: 1.41
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
@@ -147,7 +147,34 @@ loop();
 
 It just displays if the canvas has the users focus or not, but of course I could have it do something else when the project has focus. Generally you want to avoid using the tab index property with canvas elements, unless you take the time to make the element keyboard friendly. There are of course accessibility concerns when it comes to cycling throw things on a page with the tab key on desktop systems. The on blur event does not need to be used with everything something else could be worked out when it comes to canvas elements with other events.
 
-## 4 - Conclusion
+## 4 - Simulating blur and focus events
+
+It is possible to simulate a blur event, or in other words to trigger a blur event without the user causing a blur event to happen the element themselves by way of some javaScript code. Each element has a blur method that when called will simulate the blur event for the element triggering any blur events that are attached to it. There is also a focus method for events that will set the focus for an element. So the focus method can be used as a way to set the focus to a single element, and then the blur method of that element can be used as a way to loose it.
+
+```html
+<html>
+    <head>
+        <title>blur method example</title>
+    </head>
+    <body>
+        <input type="text"></input>
+        <input type="text"></input>
+        <input type="text"></input>
+        <script>
+var input = document.getElementsByTagName('input');
+var i = 2;
+// set focus to input 2
+input[i].focus();
+setTimeout(function(){
+    // blur it
+    input[i].blur();
+}, 3000);
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 One thing to briefly mention is that the browser support for the on blur event only goes back so far. I know that there are not a lot of people using IE 8 these days, but [some resources on line list that the answer to on blur](https://www.w3schools.com/jsref/event_onblur.asp) IE support is _yes_ which is a bit misleading. Yes there is IE support when it comes to the on blur event, but only for a certain version range. This of course does not just apply to the on blur event, any native feature in javaScript that is used may break on older platforms that do not support it.
 
