@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-10-17 07:03:30
-version: 1.39
+updated: 2020-10-17 07:05:01
+version: 1.40
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
@@ -149,6 +149,6 @@ It just displays if the canvas has the users focus or not, but of course I could
 
 ## 4 - Conclusion
 
-One thing to briefly mention is that the browser support for the on blur event only goes back so far. I know that there are not a lot of people using IE 8 these days, but some resources on line list that the answer to IE support is _yes_ which is a bit misleading. Yes there is IE support when it comes to the on blur event, but only for a certin version range. This of course does not just apply to the on blur event, any native feature in javaScript that is used may break on older platforms that do not support it.
+One thing to briefly mention is that the browser support for the on blur event only goes back so far. I know that there are not a lot of people using IE 8 these days, but [some resources on line list that the answer to on blur](https://www.w3schools.com/jsref/event_onblur.asp) IE support is _yes_ which is a bit misleading. Yes there is IE support when it comes to the on blur event, but only for a certain version range. This of course does not just apply to the on blur event, any native feature in javaScript that is used may break on older platforms that do not support it.
 
 So the the on blur event is useful for defining some logic that will fire when a user moves the focus of an element away from an element. It is often used in conjunction with the on focus event that will fore when the focus of an element is gained. If I get some more time sooner or later I might get around to writing some better examples that involve a great deal more going on when it comes to using the on blur event in a project. For now I hope you enjoyed this post and got at least something of value out of reading it.
