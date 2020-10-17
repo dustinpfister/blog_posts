@@ -42,7 +42,8 @@ module.exports = (opt) => {
                     if (!cat) {
                         cat = {
                             catName: catName,
-                            posts: []
+                            posts: [],
+                            wc: 0
                         };
                         cats.push(cat);
                     }
@@ -58,8 +59,8 @@ module.exports = (opt) => {
                         title: item.header.title,
                         fresh: fresh,
                         wc: item.wc
-
-                    })
+                    });
+                    cat.wc += item.wc;
 
                     nextPost();
                 },

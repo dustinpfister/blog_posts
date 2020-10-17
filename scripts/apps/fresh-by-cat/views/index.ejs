@@ -10,7 +10,11 @@
      <% report.cats.forEach(function(cat, i){ %>
         <h2><%= ( i + 1 ) + ') '+ cat.catName %></h2>
         <p class="<%- getFreshClassName(cat.fresh) %>">freshPer: <%= cat.fresh.toFixed(2); %></p>
-        <p>post count: <%= cat.posts.length; %></p>
+        <p>
+            <span>post count: <%= cat.posts.length; %>; </span><span>
+            <span>total wc: <%= cat.wc %>; </span>
+            <span>avg wc per post: <span class="<%- getWcClassName(cat.wc / cat.posts.length) %>"><%= Number(cat.wc / cat.posts.length).toFixed(2); %></span>; </span>
+        </p>
         <table>
         <tr><th>file name</th><th>fresh</th><th>word count</th></tr>
         <% cat.posts.forEach(function(post){ %>
