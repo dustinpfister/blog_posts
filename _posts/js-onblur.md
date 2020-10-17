@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2020-10-17 06:39:35
-version: 1.38
+updated: 2020-10-17 06:56:24
+version: 1.39
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
@@ -57,7 +57,7 @@ When I open this up in the browser the on focus event fires for the input elemen
 
 ## 2 - On blur, on focus out and bubbling
 
-The on blur event works fine, and so does the on focus out method. On the surface it would seem that they both work the same way, firing when an element looses focus. However there is just one little difference between on blur and on focus out, and that difference has to do with [event bubbling](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture). The focus out event when attached to a container element will fire when a child element inside of it has lost focus and nothing is done to cancel the bubbling.
+The on blur event works fine, and so does [the on focus out](https://developer.mozilla.org/en-US/docs/Web/API/Element/focusout_event) event. On the surface it would seem that they both work the same way, these events happen when an element looses focus. However there is just one little difference between on blur and on focus out, and that difference has to do with [event bubbling](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture). The focus out event when attached to a container element will fire when a child element inside of it has lost focus and nothing is done to cancel the bubbling.
 
 Say you have a container element that has two or more elements in it that can gain and loose focus. The on blur event can be used to attach event handers for when the elements lose focus, but a handler must be attached for each element. However a single focus out event can be attached to the container of the elements of interest.
 
