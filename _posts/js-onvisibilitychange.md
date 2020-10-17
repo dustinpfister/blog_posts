@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2020-10-17 16:43:11
-version: 1.4
+updated: 2020-10-17 16:53:35
+version: 1.5
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. This event can be used with other properties of the document object to define logic that is to be applied each time a page becomes hidden or visible.
@@ -48,22 +48,39 @@ The visibility state property of the document object is what can be used in the 
 
 Although this property is often used in conjunction with the on visibility change event, it does not have to be. In the event that I just want to probe this state in an update loop, or any other event, I can do that instead.
 
+So say that I have a basic game loop that will just update the value of a money properly of a state object by a money per second rate. This update loop method is called over and over again by setInterval event 100 ms, and each time the method fires I am using the visibility state property of the document object to check if the content of the page is visible or not. In the event that the content is visible then I set the value of the title tag to the name of the game, and display the current money value in the content of the page. In the event that the content is hidden though I am displaying what the current money value is in the title tag text of the tab.
+
 ```html
 <html>
     <head>
-        <title></title>
+        <title>Basic Money Game</title>
     </head>
     <body>
         <p id="disp"></p>
         <script>
-var money = 0;
+ 
+var state = {
+    money : 0,
+    moneyPerSecond : 1,
+    lt : new Date()
+};
+ 
+var moneyStr = function(state){
+   return state.money.toFixed(2) + '$'
+};
+ 
 var update = function(e){
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
     if(document.visibilityState === 'visible'){
-        document.title = 'Basic money game';
-        document.getElementById('disp').innerText = money + '$';
+        document.title = 'Basic Money Game';
+        document.getElementById('disp').innerText = moneyStr(state);
     }else{
-        document.title = money + '$';
+        document.title = moneyStr(state);
     }
+    state.money += state.moneyPerSecond * secs;
+    state.lt = now;
 };
 setInterval(update, 100);
         </script>
