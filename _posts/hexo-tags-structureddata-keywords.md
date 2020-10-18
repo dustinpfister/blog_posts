@@ -5,12 +5,9 @@ tags: [hexo,js,node.js,SEO,structured-data]
 layout: post
 categories: hexo
 id: 8
-updated: 2017-09-30 18:37:20
-version: 2.2
+updated: 2020-10-18 16:59:58
+version: 2.3
 ---
-
-{% mytags_postwords !js_core,!hexo_core,SEO,hexo&#32;tags,keywords %}
-
 
 ## Important update
 
