@@ -5,11 +5,9 @@ tags: [js,hexo,blog]
 layout: post
 categories: hexo
 id: 0
-updated: 2017-09-30 18:37:21
-version: 1.2
+updated: 2020-10-18 16:59:59
+version: 1.3
 ---
-
-{% mytags_postwords js,javaScript,hexo,tags,first,post,github&#34;pages %}
 
 This is my first post for my github pages site blog. Now that I got that out of the way I thought I would start out by writing about [hexo.io](https://hexo.io). Hexo is a [node.js](https://nodejs.org) powered static site generator that can take markdown files and generate a collection of html files with a given theme. It is a very useful tool that can automate a great deal of work that would otherwise be hand coded.
 
@@ -32,8 +30,6 @@ When I generate my site the above is parsed into the following HTML.
 ```
 
 So say I want to embed one of my favortie [cyriak](https://www.youtube.com/channel/UC9Ntx-EF3LzKY1nQ5rTUP2g) videos into a blog post. Doing so is as simple as finding the id of the video I want to post, and then use that id as the single argument given to the tag.
-
-{% youtube duVq7cXWcYw %}
 
 # Writing my own tag.
 
@@ -110,8 +106,6 @@ So then if I put this in my markdown:
 
 I get a Simpson's quote:
 
-{% mytags_say %}
-
 I can later on expand this so that I can set a certain style of quote that is maybe a little more meninful by giving it a argument so that:
 
 ```
@@ -120,7 +114,6 @@ I can later on expand this so that I can set a certain style of quote that is ma
 
 gives me an Allen Watts quote:
 
-{% mytags_say watts %}
 
 # Async Tags
 
@@ -173,8 +166,6 @@ hexo.extend.tag.register('mytags_pickten', function (args) {
 ```
 
 That Will give what I want in this case if all goes well.
-
-{% mytags_pickten %}
 
 # Progressive Enhancement
 
