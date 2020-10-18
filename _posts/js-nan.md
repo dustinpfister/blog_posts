@@ -5,11 +5,13 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-06-25 09:44:21
-version: 1.11
+updated: 2020-10-18 09:34:05
+version: 1.12
 ---
 
-In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an odd number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN. This value has some unique things going on with it aside from the fact that its data type is a Number, yet it is called Not A Number. For one thing it does not equal anything including itself, which means that a special method must be used to test of a value is NaN or not.
+In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
+
+This value has some unique things going on with it aside from the fact that the data type is a Number, yet it is called Not A Number. For one thing it does not equal anything, including itself, which means that special methods must be used to test if a value is NaN or not. On top of that there are problems with the native and user space methods that are used to test for NaN that a javaScript developer needs to look out for. Many of them will return what many will observe as a false positive for certain values other than NaN, further complicating the process of testing for NaN.
 
 The value will come up now and then often as a result of an expression when something in that expression ends up being undefined or something to that effect. So there is a need to know how to account for the possibility of JavaScript NaN being a possible value, and how to deal with it when working out some code.
 
