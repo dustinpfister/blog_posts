@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-10-18 09:39:54
-version: 1.13
+updated: 2020-10-18 11:35:28
+version: 1.14
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
@@ -17,11 +17,13 @@ The value will come up now and then often as a result of an expression when some
 
 <!-- more -->
 
-## 1 - javaScript NaN has a strange nature to it
+## 1 - JavaScript NaN basics
 
-What is strange about NaN is that it does not equal anything, not even itself. Because of this it makes testing for NaN a little move involved then just using the equality or identity operators. There is a well supported native method called isNaN, but also Number.isNaN both of which work differently, more on that later.
+In this section I will just be going over some basics with the NaN number value in native core javaScript.
 
-First off there are a number of ways to end up with the value of NaN to begin with. For example dividing the value of zero by zero will result in NaN, as well as multiplying a number by a string. There is also just the plain old javaScript NaN literal that will directly result in the value of NaN.
+### 1.1 - javaScript NaN has a strange nature to it
+
+First off there are a number of ways to end up with the value of NaN to begin with. For example dividing the value of zero by zero will result in NaN. Another way to end up with NaN would be to multiply a string that can not effectively be converted to a number value. There is also just the plain old javaScript NaN literal that will directly result in the value of NaN.
 
 ```js
 console.log(0/0); // NaN
@@ -30,6 +32,16 @@ console.log(NaN); // NaN
 ```
 
 So now that we have some basic ways of knowing how to end up with NaN figured out lets look into the ways to go about knowing if we have a NaN value, and so forth.
+
+### 1.2 - The NaN value does not equal itself
+
+What is strange about NaN is that it does not equal anything, not even itself. Because of this it makes testing for NaN a little move involved then just using the equality or identity operators to do so. There is a well supported native method called isNaN, but also Number.isNaN both of which work differently, more on that later.
+
+```
+console.log(NaN === NaN); // false
+```
+
+So now we have the basics of NaN out of the way. The NaN value is something that can end up happening as a result of an expression where proper filtering and type checking is not preformed. In addition if we have a NaN value ot is not always so easy to test for it, so speshal methods are needed to find out if a value is NaN or not.
 
 ## 2 - The native javaScript isNaN method
 
