@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-10-18 12:23:14
-version: 1.18
+updated: 2020-10-18 12:29:06
+version: 1.19
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
@@ -152,7 +152,7 @@ var _isNaN = function(n) {
 }
 ```
 
-Nice slick one liner.
+So of course this is a Nice slick one liner. On top of that this kind of method makes use of the Nature of NaN not equaling itself. However the check for the number type still needs to be preformed because the string value of 'NaN' will still return true.
 
 ## 5 - Monkey patching Number.isNaN
 
