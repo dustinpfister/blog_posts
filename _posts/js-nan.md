@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-10-18 11:36:28
-version: 1.15
+updated: 2020-10-18 11:59:34
+version: 1.16
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
@@ -21,7 +21,7 @@ The value will come up now and then often as a result of an expression when some
 
 In this section I will just be going over some basics with the NaN number value in native core javaScript. So then this section will just focus on how it is possible to end up with a NaN value to begin with, and also certain aspects of the value itself that is a bit odd.
 
-### 1.1 - javaScript NaN has a strange nature to it
+### 1.1 - Some ways to end up with a JavaScript NaN value
 
 First off there are a number of ways to end up with the value of NaN to begin with. For example dividing the value of zero by zero will result in NaN. Another way to end up with NaN would be to multiply a string that can not effectively be converted to a number value. There is also just the plain old javaScript NaN literal that will directly result in the value of NaN.
 
@@ -33,6 +33,40 @@ console.log(NaN); // NaN
 
 So now that we have some basic ways of knowing how to end up with NaN figured out lets look into the ways to go about knowing if we have a NaN value, and so forth.
 
+### 1.3 - Not a Number is actually a Number
+
+The NaN value is an acronym for _Not-a-Number_, but yet using the typeof operator with a NaN value will result in the type of _number_ . The reason for this has to do mainly with javaScripts typeless nature when it comes to what values a variable can contain. In javaScript a variable can be a number value, but at any moment that same variable can end up storing a string value for example.
+
+So when it comes to evaluating expressions, it is possible for a variable that should hold a number will in fact end up storing a string value. This is not always a problem if the string value can effectively be converted to a valid number value, unless for some reason it can not be, in which case the NaN value is a result. So this Not a Number value typically means that somewhere a string value failed to property convert to a Number value, and thus the value is Not a Number, but the type of NaN is still a Number. It is a bit confusing but the term Not a Number means the value from which the Number was converted from, rather than the type of the NaN value.
+
+```
+let n = NaN;
+ 
+// The Not a Number value is in fact actually a Number
+console.log(typeof n); // 'number'
+ 
+// So because NaN is a Number, Number prototype methods
+// such as Number.toFixed can be used with a NaN value
+console.log(n.toFixed(2)); // NaN
+ 
+// This Fact can also be used as a way to help
+// test for NaN
+let isValueNaN = (a) => {
+    if (typeof a != 'number') {
+        return false;
+    }
+    if (String(a) === 'NaN') {
+        return true;
+    }
+    return false;
+};
+ 
+console.log( isValueNaN(n) ); // true
+console.log( isValueNaN('NaN') ); // false
+console.log( isValueNaN(undefined) ); // false
+console.log( isValueNaN(null) ); // false
+```
+
 ### 1.2 - The NaN value does not equal itself
 
 What is strange about NaN is that it does not equal anything, not even itself. Because of this it makes testing for NaN a little move involved then just using the equality or identity operators to do so. There is a well supported native method called isNaN, but also Number.isNaN both of which work differently, more on that later.
@@ -41,7 +75,7 @@ What is strange about NaN is that it does not equal anything, not even itself. B
 console.log(NaN === NaN); // false
 ```
 
-So now we have the basics of NaN out of the way. The NaN value is something that can end up happening as a result of an expression where proper filtering and type checking is not preformed. In addition if we have a NaN value ot is not always so easy to test for it, so speshal methods are needed to find out if a value is NaN or not.
+So now we have the basics of NaN out of the way. The NaN value is something that can end up happening as a result of an expression where proper filtering and type checking is not preformed. In addition if we have a NaN value ot is not always so easy to test for it, so special methods are needed to find out if a value is NaN or not.
 
 ## 2 - The native javaScript isNaN method
 
