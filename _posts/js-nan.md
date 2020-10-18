@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-10-18 12:10:57
-version: 1.17
+updated: 2020-10-18 12:23:14
+version: 1.18
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
@@ -106,7 +106,25 @@ The only problem with Number.isNaN is that it does not work on any version of IE
 
 ## 4 - Writing an isNaN method
 
-When going vanilla js style with a project such a method might need to be part of your micro frame work. making a method to do this is not so hard, one way is to just return false if any type other than a Number is given, then convert to a String and test against the String 'NaN' in the off chance that the string 'NaN' is given then it will return false because it is a String. Whatever something like this.
+When going vanilla js style with a project, a method that tests for NaN might need to be part of your micro frame work. Making a method to do this is not so hard, one way is to just return false if any type other than a Number is given, then convert to a String and test against the String 'NaN'. In the off chance that the string 'NaN' is given then it will return false because the type is is a String, and thus will not get to the part where we are converting the string value to a string. So in this section I will be going over some user space examples of testing for NaN, that mainly take this kind of approach.
+
+### 4.1 - The example from the basic section
+
+In the basic section I covered this user space examle right here.
+
+```
+let isValueNaN = (a) => {
+    if (typeof a != 'number') {
+        return false;
+    }
+    if (String(a) === 'NaN') {
+        return true;
+    }
+    return false;
+};
+```
+
+### 4.2 - Crunching it down a little
 
 ```js
 var _isNaN = function(val) {
@@ -123,6 +141,10 @@ var _isNaN = function(val) {
 ```
 
 This seems to behave like that of Number.isNaN, but will work on old browsers. It seems to work okay, but maybe you might prefer to use the method that exists in lodash that makes use of the fact that NaN is the only primitive value that does not equal itself.
+
+### 4.3 - slick one line example
+
+Taking a moment to look at the source code of the popular javaScript framework know as lodash, I found a isNan method that looks like this:
 
 ```js
 var _isNaN = function(n) {
