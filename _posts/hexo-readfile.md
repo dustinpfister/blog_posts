@@ -5,11 +5,9 @@ tags: [js,hexo]
 layout: post
 categories: hexo
 id: 2
-updated: 2017-09-30 18:37:19
-version: 1.1
+updated: 2020-10-18 16:59:54
+version: 1.2
 ---
-
-{% mytags_postwords js,javaScript,hexo,read,files,node.js %}
 
 So now and then I might want to read a file in my hexo working tree that contains data that is needed when generating pages. For example I may have a file in my root name space that contains API access keys that are hidden from git with a .gitignore file. I might be using some API that requires an access key to get data that I used in the build process, so I will want to read that file, and fail gracefully if for some reason it's not there.
 
@@ -77,8 +75,6 @@ Here for example I will use it to inject the package.json file from my hexo proj
 ```
 {% mytags_readfile package.json %}
 ```
-
-{% mytags_readfile package.json %}
 
 # Geting an access key, or token from my apikeys.json file.
 
@@ -181,10 +177,6 @@ hexo.extend.tag.register('mytags_github', function (args) {
     async : true
 });
 ```
-
-Here it is in action............
-
-{% mytags_github %}
 
 ## conclusion
 
