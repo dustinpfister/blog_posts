@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-10-18 11:35:28
-version: 1.14
+updated: 2020-10-18 11:36:28
+version: 1.15
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
@@ -19,7 +19,7 @@ The value will come up now and then often as a result of an expression when some
 
 ## 1 - JavaScript NaN basics
 
-In this section I will just be going over some basics with the NaN number value in native core javaScript.
+In this section I will just be going over some basics with the NaN number value in native core javaScript. So then this section will just focus on how it is possible to end up with a NaN value to begin with, and also certain aspects of the value itself that is a bit odd.
 
 ### 1.1 - javaScript NaN has a strange nature to it
 
