@@ -5,11 +5,11 @@ tags: [js,node.js,JSON,blog,hexo]
 layout: post
 categories: hexo
 id: 22
-updated: 2020-09-07 12:38:20
-version: 1.5
+updated: 2020-10-18 16:59:58
+version: 1.6
 ---
 
-I have [written a post](/2017/02/13/hexo-readfile/) on [hexo.io](https://hexo.io/) that outlines how to go about making a hexo tag that gets data from an async file read. Sometimes I might want to write a tag that gets data that is to be used to generate content in a page by way of an async http request. In this post I will be outline how I found a way to go about doing just that. However lately I have found that this is somthing that I should try to avoid doig actually. In think that hexo should just be used to build from a source folder, and maybe not have much to do with genearting that source.
+I have [written a post](/2017/02/13/hexo-readfile/) on [hexo.io](https://hexo.io/) that outlines how to go about making a hexo tag that gets data from an async file read. Sometimes I might want to write a tag that gets data that is to be used to generate content in a page by way of an async http request. In this post I will be outline how I found a way to go about doing just that. However lately I have found that this is something that I should try to avoid doing actually. In think that hexo should just be used to build from a source folder, and maybe not have much to do with generating that source.
 
 <!-- more -->
 
