@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-10-18 11:59:34
-version: 1.16
+updated: 2020-10-18 12:10:57
+version: 1.17
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
@@ -66,6 +66,8 @@ console.log( isValueNaN('NaN') ); // false
 console.log( isValueNaN(undefined) ); // false
 console.log( isValueNaN(null) ); // false
 ```
+
+So because the NaN is a number methods that are part of the Number prototype can still be used with a NaN value such as the Number.isFixed method. In addition to this the fact that NaN is a number can be used to ones advantage when it comes to making a user space is NaN number. The type of the value can be checked first, and if the type if not _number_ return false right away. After we have found that the value is not a string we can not convert the value to a String, and test if the result of that is equal to the string _NaN_ if so return true. If all else fails assume that the type is number and that the value of the number is not NaN so return false.
 
 ### 1.2 - The NaN value does not equal itself
 
