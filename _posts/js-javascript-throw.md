@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-18 17:34:54
-version: 1.14
+updated: 2020-10-19 08:34:42
+version: 1.15
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -51,7 +51,7 @@ So now that we know how to create errors with the javaScript throw statement, ma
 
 ## 3 - javaScript throw and try catch blocks
 
-When an Error is thrown any catch statement present will of course be executed which can be used to handle the Error
+When an Error is thrown in a try block then any catch block present with that try statement will of course be executed which can be used to handle the Error.
 
 ```js
 var process = function (str) {
