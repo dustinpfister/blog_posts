@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 725
-updated: 2020-10-20 17:19:49
-version: 1.3
+updated: 2020-10-20 17:24:01
+version: 1.4
 ---
 
 The [Linux Aspell](http://aspell.net/) command is a common spell check command that can be used to preform a spell check on some text. The text can be given to Aspell by way of a file name, or it can be piped in to the standard input of Aspell. The result is a list of stars for each word that is in the used word database for Aspell, or an ampersand for each word that is not in the dictionary followed by some spelling suggestions.
@@ -38,3 +38,5 @@ $ echo 'my conscience is clear' | aspell -a
 *
 *
 ```
+
+So if I wanted to I could run this output threw some additional commands or better yet custom scripts to create some format that could be used to quickly add a spell check feature to a text editor program or something to that effect. However if I do not want to go there the trouble of that I  can use this interactive mode when it comes to using Aspell on a file. So lets look at a few more examples of Aspell in action when it comes to using it with a file rather than some text create with echo.
