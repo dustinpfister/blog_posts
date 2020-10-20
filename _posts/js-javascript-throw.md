@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-19 08:34:42
-version: 1.15
+updated: 2020-10-20 08:45:43
+version: 1.16
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -17,9 +17,9 @@ So lets take a look at some example of the javaScript throw keyword in action.
 
 <!-- more -->
 
-## 1 - javaScript throw basics
+### 1.1 - javaScript throw basics
 
-To use a throw statement is a basic way just type the throw keyword followed by a value that reflects what the error is about. For example I could have an add numbers method that will throw and error if I pass it a value other than a Number.
+To use a throw statement in a basic way where just a string is passed as a value for an error message just type the throw keyword followed by the string value that reflects what the error is about. For example I could have an add numbers method that will throw and error if I pass it a value other than a Number. In the body of the method I just use the typeof operator in an expression that will be used in an if statement. If the type of either value given to the add numbers method is not number then the JavaScript throw statement is used to throw an error where I am just passing a string that describes the error.
 
 ```js
 var addNumbers = function (a, b) {
@@ -35,7 +35,7 @@ addNumbers('foo', []); // Error must give numbers
 
 The value can be a string, number, boolean, or an object that should be given certain standard key value pairs more on that later. For now you should get the basic idea at least, the throw statement will cause an error to happen, and then an additional value can be passed as a way to shed some light on what that error is.
 
-## 2 - javaScript throw defined with an object
+### 1.2 - javaScript throw defined with an object
 
 So a string can be used to describe the user defined Error, but it might be best to use an Object or The [Error constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/Error) to create an object with message and name properties that help to better identify what is wrong when the Error is thrown. This standard object of sorts can be called you guessed it an [error object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) that contains properties like message that is used to set the string message of the error, but also properties like name, line number, and so forth
 
