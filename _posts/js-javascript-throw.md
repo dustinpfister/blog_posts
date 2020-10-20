@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-20 11:41:48
-version: 1.19
+updated: 2020-10-20 11:46:04
+version: 1.20
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -55,19 +55,20 @@ throw {
 
 So now that we know how to create errors with the javaScript throw statement, maybe now is the time to cover a thing or two about some basic error handling.
 
-## 3 - javaScript throw and try catch blocks
+## 2 - javaScript throw and try catch blocks
 
-When an Error is thrown in a try block then any catch block present with that try statement will of course be executed which can be used to handle the Error.
+When an Error is thrown in a [try block then any catch block](/2019//03/02/js-javascript-try/) present with that try statement will of course be executed which can be used to handle the Error.
 
 ```js
 var process = function (str) {
     if (str === 'bar') {
         console.log('foobar');
+    } else {
+        throw {
+            message: 'must give bar',
+            name: 'NoBarError'
+        };
     }
-    throw {
-        message: 'must give bar',
-        name: 'NoBarError'
-    };
 };
  
 try {
@@ -75,8 +76,9 @@ try {
 } catch (e) {
     console.log(e.message); // 'must give bar'
 }
+ 
 ```
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 So the javaScript throw statement is what is used in javaScript to throw a custom user define error. However it is just one thing that comes to mind when it comes to creating and working with user defined errors. There is not just creating error objects after all, but also how to go about handling them. The javaScript try and catch blocks can be used as a way to define some code that will run in the event that a user define error happens.
