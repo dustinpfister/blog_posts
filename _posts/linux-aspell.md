@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 725
-updated: 2020-10-20 17:30:48
-version: 1.5
+updated: 2020-10-20 17:35:03
+version: 1.6
 ---
 
 The [Linux Aspell](http://aspell.net/) command is a common spell check command that can be used to preform a spell check on some text. The text can be given to Aspell by way of a file name, or it can be piped in to the standard input of Aspell. The result is a list of stars for each word that is in the used word database for Aspell, or an ampersand for each word that is not in the dictionary followed by some spelling suggestions.
@@ -51,3 +51,7 @@ $ aspell -c foo.txt
 ```
 
 After doing so I will end up getting an interactive terminal based menu that can be used to spell check the file.
+
+## 3 - Conclusion
+
+The Linux Aspell command is often there in the user software folder of most Linux systems that can be used as a quick effective spell check program in a terminal environment. The program can be used after writing something with text editor such as nano or vi or many other such editors in Linux that often lack this feature. Many editors will make use of Aspell actually, as they just provided a graphical front end to make use of it. 
