@@ -5,17 +5,19 @@ tags: [linux]
 layout: post
 categories: linux
 id: 725
-updated: 2020-10-20 17:16:27
-version: 1.2
+updated: 2020-10-20 17:19:49
+version: 1.3
 ---
 
-The Linux Aspell command is a common spell check command that can be used to preform a spell check on some text. The text can be given to Aspell by way of a file name, or it can be piped in to the standard input of Aspell. The result is a list of stars for each word that is in the used word database for Aspell, or an ampersand for each word that is not in the dictionary followed by some spelling suggestions.
+The [Linux Aspell](http://aspell.net/) command is a common spell check command that can be used to preform a spell check on some text. The text can be given to Aspell by way of a file name, or it can be piped in to the standard input of Aspell. The result is a list of stars for each word that is in the used word database for Aspell, or an ampersand for each word that is not in the dictionary followed by some spelling suggestions.
+
+So this will be a quick [post on how to go about using Aspell in a Linux environment](https://www.howtoforge.com/linux-aspell-command/) where the command is available to preform a spelling check on some text.
 
 <!-- more -->
 
 ## 1 - basic linux aspell example with echo and piping
 
-The -a option in Aspell will allow for text content to be piped in from another command rather than using a file. So for a starting example here I am using the Linux echo command to just create some text with intentional spelling mistakes. I am then piping the text into the Aspell command by using the -a option. The result is then a bunch of lines, noe for each word in the text. Each line of output will begin with a asterisk if there is no spelling mistake for a word, and a ampersand if there is a misspelling, followed by some suggestions.
+The -a option in Aspell will allow for text content to be piped in from another command rather than using a file. So for a starting example here I am using the Linux echo command to just create some text with intentional spelling mistakes. I am then piping the text into the Aspell command by using the -a option. The result is then a bunch of lines, one for each word in the text. Each line of output will begin with a asterisk if there is no spelling mistake for a word, and a ampersand if there is a misspelling, followed by some suggestions.
 
 ```
 $ echo 'my consense is cler' | aspell -a
