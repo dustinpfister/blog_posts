@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-20 12:09:05
-version: 1.22
+updated: 2020-10-20 12:10:26
+version: 1.23
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -79,15 +79,15 @@ try {
  
 ```
 
-## 3 - The Error constructor
+## 3 - Using throw with an Error constructor
 
 In the basic section of this post I went over an example where I am passing an object as the value to use for the throw statement. This is generally a good idea because it allows for me to attach additional useful information with it comes to handing an error when it happens.
 
-In core javaScript there is a generic Error constructor that can be used as a standard way to create an Error object. This object can be used as a way to know what the core properties of an error object are, but there can potential be more than just the message and name values.
+In core javaScript there is a generic Error constructor that can be used as a standard way to create an [Error object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error). This object can be used as a way to know what the core properties of an error object are, but there can potential be more than just the message and name values.
 
 ### 3.1 - The basic Generic Error object constructor
 
-So when  it comes to the general Error constructor the constructor can be called with or without the new keyword actually. Many code examples will involve the use of the new keyword when using it, but the same result is achieved with or without the use of it. When calling it the first argument given should be the message for the Error.
+So when  it comes to the [generic Error constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/Error) the constructor can be called with or without the new keyword actually. Many code examples will involve the use of the new keyword when using it, but the same result is achieved with or without the use of it. When calling it the first argument given should be the message for the Error.
 
 ```js
 try {
