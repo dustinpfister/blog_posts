@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-20 12:10:26
-version: 1.23
+updated: 2020-10-20 12:24:35
+version: 1.24
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -101,6 +101,36 @@ try {
 ```
 
 This might be a good starting place when it comes to using an Error constructor, however the name of the Error object that is just simply _Error_ is not always so helper when it comes to classifying the different types of errors that can happen in a program.
+
+### 3.2 - RangeError constructor
+
+There is a built in RangeError constructor which can be used to define a typically type of error thats has to do with a given value being outside of an expected range.
+
+```
+var checkNum = function (n) {
+    if (typeof n != 'number') {
+        throw TypeError('must give a number');
+    }
+    if (String(n) === 'NaN') {
+        throw Error('value is a number, but is NaN');
+    }
+    if (n < 0 || n >= 10) {
+        throw RangeError('must give a number between 0 and 9');
+    }
+    return n;
+};
+ 
+try {
+    checkNum(25);
+} catch (e) {
+    console.log(e.name);
+    console.log(e.message);
+}
+/*
+RangeError
+must give a number between 0 and 9
+*/
+```
 
 ## 4 - Conclusion
 
