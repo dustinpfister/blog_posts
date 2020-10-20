@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-20 08:47:49
-version: 1.17
+updated: 2020-10-20 11:35:53
+version: 1.18
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -19,7 +19,7 @@ So lets take a look at some example of the javaScript throw keyword in action.
 
 ## 1 - javaScript throw basics
 
-In this section I will be going over just the basics of the javaScript throw statement.
+In this section I will be going over just the basics of the javaScript throw statement for throwing user defined Errors.
 
 ### 1.1 - javaScript throw basics
 
@@ -36,6 +36,8 @@ var addNumbers = function (a, b) {
 console.log( addNumbers(15,5) ); // 20
 addNumbers('foo', []); // Error must give numbers
 ```
+
+In the event that an error happens by passing any value that is not a number for one or more of the arguments, the throw statement will be reached, the user defined error will happen, and this will stop the execution of the rest of the code in the function. So the throw statement will have a similar effect to that of the return keyword in the body of a function where it will cause any additional code afterward to not run.
 
 The value can be a string, number, boolean, or an object that should be given certain standard key value pairs, more on that later. For now you should get the basic idea at least, the throw statement will cause an error to happen, and then an additional value can be passed as a way to shed some light on what that error is.
 
