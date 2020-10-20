@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-20 12:04:45
-version: 1.21
+updated: 2020-10-20 12:09:05
+version: 1.22
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -87,6 +87,8 @@ In core javaScript there is a generic Error constructor that can be used as a st
 
 ### 3.1 - The basic Generic Error object constructor
 
+So when  it comes to the general Error constructor the constructor can be called with or without the new keyword actually. Many code examples will involve the use of the new keyword when using it, but the same result is achieved with or without the use of it. When calling it the first argument given should be the message for the Error.
+
 ```js
 try {
     throw Error('this is a custom error object');
@@ -97,6 +99,8 @@ try {
 // name: Error
 // message:  this is a custom error object
 ```
+
+This might be a good starting place when it comes to using an Error constructor, however the name of the Error object that is just simply _Error_ is not always so helper when it comes to classifying the different types of errors that can happen in a program.
 
 ## 4 - Conclusion
 
