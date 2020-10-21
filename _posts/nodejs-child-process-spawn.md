@@ -5,15 +5,15 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 514
-updated: 2020-10-21 17:12:40
-version: 1.20
+updated: 2020-10-21 17:15:12
+version: 1.21
 ---
 
 I find myself using the [node spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) child process module method often when it comes to calling external commands in a nodejs project. However still have not mastered all the little aspects of this method as well as the child process module in general. So one way to go about getting more proficient on the subject would be to write a whole bunch of little demos on the node span method and write a post on them.
 
 The spawn method can be used as a way to call external commands that there might be to work with in the host operating system. The availability of these commands will change of course depending one the host operating system, and what might be installed to work with.
 
-Te spawn method is one of two methods that come to mind in the built in nodejs module that have to do with calling external commands. the other method of interest in the child process module would be the exec method. This method works in more or less the same way as spawn, only the whole command options and all can be given via a single argument as a string.
+Te spawn method is one of two methods that come to mind in the built in nodejs module that have to do with calling external commands. The other method of interest in the child process module would be the [exec method](/2020/10/21/nodejs-child-process-exec/). This method works in more or less the same way as spawn, only the whole command options and all can be given via a single argument as a string.
 
 <!-- more -->
 
