@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-10-21 13:41:40
-version: 1.19
+updated: 2020-10-21 13:43:43
+version: 1.20
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -130,4 +130,6 @@ So then the disable attribute will come into pay when working out some kind of u
 
 ## 4 - Conclusion
 
-So select tags in combination with option tags are the standard html way of creating an interface where a user can select from two or more options. it is often used with additional events such as the on change event to define what happens when the state of the select tag changes.
+So select tags in combination with option tags are the standard html way of creating an interface where a user can select from two or more options. It is often used with additional events such as the on change event to define what happens when the state of the select tag changes.
+
+In this post I did not cover every little thing about select tags though, there is much more to cover when it comes to making a select tag that is to sever as a way to interact with a back end system.
