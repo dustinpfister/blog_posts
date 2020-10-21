@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-10-21 12:54:58
-version: 1.16
+updated: 2020-10-21 13:07:24
+version: 1.17
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -23,25 +23,34 @@ So the basic idea with select tags is to have a single select element, and then 
 
 So when I set an on change event listener to the selection element the value of the selection element will change each time the user selects one of the options in the select element drop down menu. In addition I can define what I want to happen in the body of that event listener when it comes to what needs to happen each time the user changes something with the select tag menu.
 
-### 1.1 - Just display the value
+### 1.1 - Just display the current select value
+
+So for starters here is a fairly simple copy and past select tag example. I have a span element the text of which will be set to whatever the value of the select tag is. In then have three option elements for the select tag each of which have some inner text that will be the value for the select tag if the option is the one selected. I then have a simple set disp method that when called will just set the inner text of the disp element to the value of the select element. I then make my set disp method the handler for the on change event for the select element, and also call it once for starters right away to make sure that it is set to the current value of the select element right away before any other option is selected.
 
 ```html
 <html>
     <head>
-        <title>javaScript create element</title>
+        <title>javaScript select tag</title>
     </head>
     <body>
+        <span>Option: </span><span id="disp"></span><br><br>
         <select id="selections">
             <option>One</option>
             <option>Two</option>
             <option>Three</option>
         </select>
         <script>
-var select = document.getElementById('selections');
-select.addEventListener('change', function (e) {
-  var sel = e.target;
-  console.log(sel.value);
-});
+// get references to select tag, and disp span
+var select = document.getElementById('selections'),
+disp = document.getElementById('disp');
+// setDisp method
+var setDisp = function (e) {
+  disp.innerText = select.value;
+};
+// call setDisp on every change event for the select tag
+select.addEventListener('change', setDisp);
+// call setDisp once for starters
+setDisp();
         </script>
     </body>
 </html>
