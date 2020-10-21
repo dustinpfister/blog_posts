@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-10-21 13:11:40
-version: 1.18
+updated: 2020-10-21 13:41:40
+version: 1.19
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -56,9 +56,13 @@ setDisp();
 </html>
 ```
 
-### 1.2 - The value property and select tags
+### 1.2 - The value and selected attributes of option tags
 
-So by default the value of the select tag will be the inner text of the current option element that is selected. However the value property can be used to set that to something else, and then the inner text can be used for a display name, and the value can be used as some kind of id for the selection option.
+So by default the value of the select tag will be the inner text of the current option element that is selected. However the value can be set to something else by way of the value attribute of the option element. So then the value of an option can be used to set some other value from the inner text of the option. So then the inner text can be used for a display name, and the value can be used as some kind of id for the selection option.
+
+On top of the value attribute of the option elements there is also the selected attribute that is worth mentioning also. This attribute can be used as a way to set a default option in the collection of options other than the first child element.
+
+So once again here is the same example as before, just with some additional changes by way of adding value attributes, and having an option other than the first one serve as a starting option for the select tag.
 
 ```html
 <html>
@@ -66,17 +70,20 @@ So by default the value of the select tag will be the inner text of the current 
         <title>javaScript select tag</title>
     </head>
     <body>
+        <span>Option: </span><span id="disp"></span><br><br>
         <select id="selections">
             <option value="1">One</option>
             <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="3" selected>Three</option>
         </select>
         <script>
-var select = document.getElementById('selections');
-select.addEventListener('change', function (e) {
-  var sel = e.target;
-  console.log(sel.value);
-});
+var select = document.getElementById('selections'),
+disp = document.getElementById('disp');
+var setDisp = function (e) {
+  disp.innerText = select.value;
+};
+select.addEventListener('change', setDisp);
+setDisp();
         </script>
     </body>
 </html>
