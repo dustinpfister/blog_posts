@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 726
-updated: 2020-10-21 16:45:44
-version: 1.5
+updated: 2020-10-21 16:47:40
+version: 1.6
 ---
 
 The [nodejs exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method of the nodejs built in child process module is one way to go about running an external command from a nodejs script written in javaScript. The other method os interest in the child process module would be the spawn method. Both the exec method and the spawn method work in a similar way with one significant difference and that is how the methods are called. With the exec method the command can be called with a single string, where the spawn method just the command is given as the first argument, and then any additional options much be given as elements in an array as the second argument.
@@ -42,6 +42,8 @@ When it comes to events I generally want to attach at least three handlers in mo
 ## 2 - Set the current working path for the command
 
 There is a wide range of options that can be set for the instance of the exec call by way of an object that can be passed as the second argument for the method. One option that I thing is worth mentioning right away is the cwd option that can be used as a way to set what the current working directory for the command will be.
+
+So I can take the example before where I am just calling git, and add an options object for the command. The path module can be used as a way to parse a path this is given or not as an argument wheh calling the script.
 
 ```
 let exec = require('child_process').exec,
