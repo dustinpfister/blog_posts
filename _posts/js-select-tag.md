@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-10-21 13:07:24
-version: 1.17
+updated: 2020-10-21 13:11:40
+version: 1.18
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -56,9 +56,9 @@ setDisp();
 </html>
 ```
 
-## 2 - The value property and select tags
+### 1.2 - The value property and select tags
 
-So by default the value of the select tag will be the inner text of the current option element that is selected. However the value property can be used to set that to something else, and then the inner text can eb used for a display name, and the value can be used as some kind of id for the selection option.
+So by default the value of the select tag will be the inner text of the current option element that is selected. However the value property can be used to set that to something else, and then the inner text can be used for a display name, and the value can be used as some kind of id for the selection option.
 
 ```html
 <html>
@@ -82,7 +82,9 @@ select.addEventListener('change', function (e) {
 </html>
 ```
 
-## 3 - The disabled attribute and select tags
+This is helpful because in many situations I might want to actually value of the select element to be some kind of simplified key value for an object. However this key value might not be a good description of what the option is in plain English, so it is good to have two sets of info per option tag.
+
+## 2 - The disabled attribute and select tags
 
 The disabled property of an select element can be used to disable a selection element, or any option in a selection tag if it is not currently applicable. For example say you are making some kind of simple game demo that contains a display object that can be controlled by an AI script, or user input. A select tag can be used to switch between the two, and depending on the current value of the first select tag another select tag can be enabled or disabled.
 
