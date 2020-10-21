@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 726
-updated: 2020-10-21 17:06:29
-version: 1.7
+updated: 2020-10-21 17:12:40
+version: 1.8
 ---
 
-The [nodejs exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method of the nodejs built in child process module is one way to go about running an external command from a nodejs script written in javaScript. The other method os interest in the child process module would be the spawn method. Both the exec method and the spawn method work in a similar way with one significant difference and that is how the methods are called. With the exec method the command can be called with a single string, where the spawn method just the command is given as the first argument, and then any additional options much be given as elements in an array as the second argument.
+The [nodejs exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method of the nodejs built in child process module is one way to go about running an external command from a nodejs script written in javaScript. The other method of interest in the child process module would be the [spawn method](/2019/08/02/nodejs-child-process-spawn/). Both the exec method and the spawn method work in a similar way with one significant difference and that is how the methods are called. With the exec method the command can be called with a single string, where the spawn method just the command is given as the first argument, and then any additional options much be given as elements in an array as the second argument.
 
 <!-- more -->
 
