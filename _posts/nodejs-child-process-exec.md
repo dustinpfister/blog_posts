@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 726
-updated: 2020-10-21 16:41:17
-version: 1.4
+updated: 2020-10-21 16:45:44
+version: 1.5
 ---
 
 The [nodejs exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method of the nodejs built in child process module is one way to go about running an external command from a nodejs script written in javaScript. The other method os interest in the child process module would be the spawn method. Both the exec method and the spawn method work in a similar way with one significant difference and that is how the methods are called. With the exec method the command can be called with a single string, where the spawn method just the command is given as the first argument, and then any additional options much be given as elements in an array as the second argument.
@@ -60,6 +60,18 @@ script.on('exit', function (code) {
     console.log('program ended with code: ' + code);
 });
 ```
+
+So if I where to copy this code to a local folder and save it as something like option_cwd.js I could then test it out on a git folder, as well as a folder that is not a git folder.
+
+```
+$ mkdir foo
+$ cd foo
+$ git init
+$ node ../option_cwd.js
+$ node ../option_cwd.js ..
+```
+
+The script will yield different results depending if the folder that is set to the current working folder is a got folder or not.
 
 ## 3 - Conclusion
 
