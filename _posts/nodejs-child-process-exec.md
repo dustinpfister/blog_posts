@@ -5,11 +5,36 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 726
-updated: 2020-10-21 16:17:37
-version: 1.0
+updated: 2020-10-21 16:28:25
+version: 1.1
 ---
 
 The exec method of the nodejs built in child process module is one way to go about running an external command from a nodejs script written in javaScript. The other method os interest in the child process module would be the spawn method. Both the exec method and the spawn method work in a similar way with one significant difference and that is how the methods are called. With the exec method the command can be called with a single string, where the spawn method just the command is given as the first argument, and then any additional options much be given as elements in an array as the second argument.
 
-
 <!-- more -->
+
+## 1 - basic example of child process exec
+
+So to start off a post like this it would be a good idea to start off with a simple hello world style example of the exec method. The first step would be to get a reference to the method by requiring in the child process module, and getting a reference of the exec method of that module. 
+
+Next I can now use the exec method to call and external command that might be there to work with in the operating system. For this example I am calling git, and preforming a status which would end in two very different ways depending if it is called in a git folder or not. So I just call exec, and then I give the command that I would call in the command line to do a git status check in the form of a string. An object is then returned by the exec method to which I can then use to attach some events.
+
+
+```
+let exec = require('child_process').exec,
+script = exec('git status');
+// what to do for data coming from the standard out
+script.stdout.on('data', function(data){
+    console.log(data.toString());
+});
+// what to do with data coming from the standard error
+script.stderr.on('data', function(data){
+    console.log(data.toString());
+});
+// what to do when the command is done
+script.on('exit', function(code){
+    console.log('program ended with code: ' + code);
+});
+```
+
+When it comes to events I generally want to attach at least three handlers in most cases, one for the standard out, another for the standard error, and one last hander for the exit event of the command. So when I call this script a git status will be called, and the handers for the standard out, and error will be used to log out the results of that command to the console. When the command is over one way or another I will get the program has ended message when all is done.
