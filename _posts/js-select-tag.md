@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-10-21 11:38:40
-version: 1.14
+updated: 2020-10-21 12:44:45
+version: 1.15
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
 
-There might be other ways of doing so that involve a canvas element, and some additional javaScript code to make some kind of more artful solution for selecting something from a range of options. However the select tag is a nice quick solution for doing something to that effect with other html elements outside of canvas.
+There might be other ways of doing so that involve a canvas element, and some additional javaScript code to make some kind of more artful solution for selecting something from a range of options. However the select tag is a nice quick solution for doing something to that effect with other html elements outside of that of the canvas element, and the 2d drawing context. Making something from the ground up for this will often prove to be a bit more flashy, and allow for a greater deal of control when it comes to selecting things, but it will also prove to be far more time consuming also.
 
-A select tag or select element consists of a select tag and then a few nested option tags for each option in the selection tag. There are a few things to be aware of when it comes to using this kind of html element in a project when it comes to making it actually do something with javaScript. There are events such as the on change event, and additional html attributes that come into play also, so lets look at some select element examples.
+A select tag or select element consists of a select tag and then a few nested option tags for each option in the selection tag. There are a few things to be aware of when it comes to using this kind of html element in a project when it comes to making it actually do something with javaScript. There are events such as the on change event, and additional html attributes that come into play also. So lets look at some select element examples, and also touch base one other related topics when it comes to events, and other elements and attributes that will come into play when working with such an element.
 
 <!-- more -->
 
