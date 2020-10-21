@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 726
-updated: 2020-10-21 16:47:40
-version: 1.6
+updated: 2020-10-21 17:06:29
+version: 1.7
 ---
 
 The [nodejs exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method of the nodejs built in child process module is one way to go about running an external command from a nodejs script written in javaScript. The other method os interest in the child process module would be the spawn method. Both the exec method and the spawn method work in a similar way with one significant difference and that is how the methods are called. With the exec method the command can be called with a single string, where the spawn method just the command is given as the first argument, and then any additional options much be given as elements in an array as the second argument.
@@ -75,6 +75,29 @@ $ node ../option_cwd.js ..
 
 The script will yield different results depending if the folder that is set to the current working folder is a got folder or not.
 
-## 3 - Conclusion
+## 3 - max Buffer option
+
+Another option that might be worth pointing out is the option that can be used to set the size for the buffer that will be used for standard out and standard error.
+
+```js
+let exec = require('child_process').exec,
+opt = {
+    maxBuffer: 41 * 20
+},
+script = exec('git log -n 20 --format=\"%H\"', opt),
+out = '';
+script.stdout.on('data', function (data) {
+    out += data;
+});
+script.stderr.on('data', function (data) {
+    console.log(data);
+});
+script.on('exit', function (code) {
+    console.log(out);
+    console.log('program ended with code: ' + code);
+});
+```
+
+## 4 - Conclusion
 
 So the exec method is grate for calling additional commands from inside a nodejs script written in javaScript. The method can be used to call any command in the host operating system, including nodejs itself. So because this method can be used to call additional instances of node it is one way to have more than one event loop running at once on the same system, although the use of this method might not be the best way to go about doing so. There are additional modules to look into when it comes to this such as the [cluster module](https://nodejs.org/api/cluster.html).
