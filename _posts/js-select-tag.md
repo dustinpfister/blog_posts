@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-10-21 12:44:45
-version: 1.15
+updated: 2020-10-21 12:54:58
+version: 1.16
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -19,7 +19,11 @@ A select tag or select element consists of a select tag and then a few nested op
 
 ## 1 - Select tag basic example
 
-Here I have a basic example of a select tag for starters. So the basic idea here is to have a single select element, and then a nested option element for each option in the selection element. By default the inner text of the option element will be the value property of the select element. So when I set an on change event listener to the selection element the value of the selection element will change each time the user selects one of the options in the select element drop down menu.
+So the basic idea with select tags is to have a single select element, and then a nested option element for each option in the selection element. By default the inner text of the option element will be the value property of the select element, however it is advisable to have a separate display value, and actual value. 
+
+So when I set an on change event listener to the selection element the value of the selection element will change each time the user selects one of the options in the select element drop down menu. In addition I can define what I want to happen in the body of that event listener when it comes to what needs to happen each time the user changes something with the select tag menu.
+
+### 1.1 - Just display the value
 
 ```html
 <html>
