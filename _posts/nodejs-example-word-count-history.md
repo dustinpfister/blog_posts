@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:20:00
-version: 1.8
+updated: 2020-10-22 16:23:11
+version: 1.9
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -18,6 +18,10 @@ The full idea that I had for this example is to have a script that will create a
 ## 1 - The git lib of the nodejs example
 
 I have a single module for this nodejs example thus far that has a whole bunch of methods to help me work with a git folder. I have a method that will just check if a given folder is a git folder, and return a resolve or rejected promise depending on that. I have another method that will create a list of commits from the current commit back a number of commits, and other such methods. So in this section I will be going over this module, and how it helps with this word count history nodejs example.
+
+### 1.1 - the start of the module, and the folder check method
+
+So at the top of the module I am referencing in the exec child process modules method. If you are not familiar with this method as well as other alternatives such as spawn I recommend reading up on them. The methods can be used to call extremal commands on the operating system such as, but certainly not limited to git.
 
 ```js
 let exec = require('child_process').exec;
@@ -36,7 +40,9 @@ exports.folderCheck = (dir) => {
         });
     });
 };
- 
+```
+
+```js
 // Get a list of commit objects for the past few commits in a git folder
 // each object should have at least a commit id hash, and a date for the commit
 // git log -n 20 --format="%H&%ad;"
