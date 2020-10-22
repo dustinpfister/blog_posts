@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:00:55
-version: 1.4
+updated: 2020-10-22 16:02:10
+version: 1.5
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -90,6 +90,8 @@ exports.toCommit = (hash, dir) => {
 };
 ```
 ## 2 - The index.js file for the nodejs example
+
+So now that I have my git module worked out I can now use it in the main index.js file for this nodejs example.
 
 ```
 #!/usr/bin/env node
