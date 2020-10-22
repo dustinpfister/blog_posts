@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:26:58
-version: 1.10
+updated: 2020-10-22 16:29:54
+version: 1.11
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -44,7 +44,9 @@ exports.folderCheck = (dir) => {
 
 ### 1.2 - The get commit list method
 
-Here I have a method that will create a list of commit objects, where each commit property of a commit object is the hash id of a given commit. In addition a commit object will have at least a few more properties maybe, but for now the only one I am pretty sure I am going to want to have is date.
+Here I have a method that will create a list of commit objects, where each commit property of a commit object is the hash id of a given commit. In addition a commit object will have at least a few more properties maybe, but for now the only one I am pretty sure I am going to want to have is date. 
+
+This method makes use of the git log command that would be what is used to create a list of commits manually in the command line.
 
 ```js
 // Get a list of commit objects for the past few commits in a git folder
@@ -84,6 +86,8 @@ exports.commitList = (dir, backCount) => {
 ```
 
 ### 1.3 - the to Commit method
+
+The to commit method that I worked out for this module can be used to set the commit of a git folder by giving the hash id for the commit, or something like master. This method makes use of the git checkout command that would be used to set the current commit of a git folder manually.
 
 ```js
 // switch to the given commit or master (latest) by default
