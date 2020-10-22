@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2020-10-22 12:01:55
-version: 1.23
+updated: 2020-10-22 12:03:47
+version: 1.24
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -72,7 +72,8 @@ data.forEach(function (str,i) {
 
 ## 3 - Match the end of a string
 
-The dollar sign symbol can be used to test for a pattern that is to be expected at the end of a string.
+The dollar sign symbol can be used to test for a pattern that is to be expected at the end of a string rather than that of the beginning. So often I might use this to look for something that is used to end a line such as a line break or a semicolon.
+
 ```js
 let str = 'foo,bar,baz',
  
