@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2020-10-22 12:20:28
-version: 1.27
+updated: 2020-10-22 12:36:57
+version: 1.28
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -84,6 +84,18 @@ let str = 'foo,bar,baz',
 m = str.match(/baz$/);
  
 console.log(m.index); // 8
+```
+
+### 2.3 - Match a word boundary
+
+Yet another assertion that can prove to be useful now and then is the word boundary assertion. This assertion is created with a backslash followed by a lower case b. What is nice about this assertion is that it can be used to match only the beginning or ends of words in a string, or anything that is separated by whitespace.
+
+```js
+let text = 'thats excellent that we have some example text';
+// pattern with a \b world bounder assertion
+let patt = /\be\S+/ig;
+console.log( text.replace(patt, 'match') );
+// 'thats match that we have some match text'
 ```
 
 ## 3 - Use case examples of regular expressions in javaScript
