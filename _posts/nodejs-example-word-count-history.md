@@ -1,12 +1,12 @@
 ---
-title: The node exec child process method
+title: Word Count History nodejs example
 date: 2020-10-22 15:46:00
 tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:39:19
-version: 1.14
+updated: 2020-10-22 16:44:52
+version: 1.15
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
