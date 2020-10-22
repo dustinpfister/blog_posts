@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 15:57:36
-version: 1.3
+updated: 2020-10-22 16:00:55
+version: 1.4
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -16,6 +16,8 @@ The full idea that I had for this example is to have a script that will create a
 <!-- more -->
 
 ## 1 - The git lib of the nodejs example
+
+I have a single module for this nodejs example thus far that has a whole bunch of methods to help me work with a git folder. I have a method that will just check if a given folder is a git folder, and return a resolve or rejected promise depending on that. I have another method that will create a list of commits from the current commit back a number of commits, and other such methods. So in this section I will be going over this module, and how it helps with this word count history nodejs example.
 
 ```js
 let exec = require('child_process').exec;
