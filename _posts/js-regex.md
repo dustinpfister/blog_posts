@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2020-10-22 12:51:44
-version: 1.30
+updated: 2020-10-22 12:55:37
+version: 1.31
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -54,7 +54,7 @@ I will not be getting into these methods in detail here as I have wrote posts on
 
 ## 2 - regular expression flags
 
-When it comes to creating a regular expression it is possible to st one or more flags for the pattern. These flags can be used as a way to indicate things like if all instances of a pattern should be match or not.
+When it comes to creating a regular expression it is possible to st one or more [flags for the pattern](https://javascript.info/regexp-introduction). These flags can be used as a way to indicate things like if all instances of a pattern should be match or not.
 
 ### 2.1 - the global search flag
 
@@ -72,11 +72,11 @@ console.log(b);
 // 'this is some bar text that contains more than one bar'
 ```
 
-## 2 - Assertions in regular expressions
+## 3 - Assertions in regular expressions
 
 With [regular expressions Assertions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Assertions) are one element of a regular expression that have to do with setting boundaries. Such as creating a pattern that will only look at the very beginning of a string for a pattern rather than the whole of the text.
 
-### 2.1 - Match the beginning of a string
+### 3.1 - Match the beginning of a string
 
 To match the begging of a string I just need to use the ^ symbol followed be the pattern I want to match for. There are many instances where I need to check for some kind of pattern that should start are each line, such is the case with the output of a command such as the [Linux Aspell](/2020/10/20/linux-aspell/) command for example. So this feature of a regular expression will come into play often when it comes to filtering threw some output of a command or something such as that.
 
@@ -94,7 +94,7 @@ data.forEach(function (str,i) {
 
 ```
 
-### 2.2 - Match the end of a string
+### 3.2 - Match the end of a string
 
 The dollar sign symbol can be used to test for a pattern that is to be expected at the end of a string rather than that of the beginning. So often I might use this to look for something that is used to end a line such as a line break or a semicolon.
 
@@ -106,7 +106,7 @@ m = str.match(/baz$/);
 console.log(m.index); // 8
 ```
 
-### 2.3 - Match a word boundary
+### 3.3 - Match a word boundary
 
 Yet another assertion that can prove to be useful now and then is the word boundary assertion. This assertion is created with a backslash followed by a lower case b. What is nice about this assertion is that it can be used to match only the beginning or ends of words in a string, or anything that is separated by whitespace.
 
@@ -118,13 +118,13 @@ console.log( text.replace(patt, 'match') );
 // 'thats match that we have some match text'
 ```
 
-## 3 - Use case examples of regular expressions in javaScript
+## 4 - Use case examples of regular expressions in javaScript
 
 Learn by example, and lean by doing, that might be the best way to go about getting regular expressions in javaScript solid once and for all. In other words it is best to just start creating and maintaining some projects that make use of regular expressions. Just reading about them alone is just not enough speaking from my experience at least. Although it would be best to come up with your own ideas for projects that ake use of regular expressions, in this section I might touch base on at least a few starting points that come to mind.
 
 Also in this section I might just park a bunch of examples that are common solutions for common problems that can be solved with regular expressions. Such as a pattern that can eb used to match the content between to instances of a kind of pattern for example.
 
-### 3.1 - Matching html tags, and negated character sets
+### 4.1 - Matching html tags, and negated character sets
 
 A task that comes up often for me is to find a way to match html tags in a string and replace them with something else, or remove them completely. For this I have found that a a negated character set is a good way to go about matching anything and everything that might be in the tag except the ending pointy bracket.
 
@@ -138,7 +138,7 @@ console.log(html_nolinks);
 // <p>This is some html with a link in it</p>
 ```
 
-### 3.2 - Match all between two instances of a string
+### 4.2 - Match all between two instances of a string
 
 When it comes to the mark down of my blog posts there is from data at the top of each file that is between two instances of three dashes. If I want to match that I have worked out this pattern.
 
@@ -148,7 +148,7 @@ console.log(text.match(/---[\s|\S]*?---/g)[0]);
 // --- title: foo ---
 ```
 
-## 4 -Conclusion
+## 5 -Conclusion
 
 Of course this post does not do regular expressions justice, as there is way more to write about when it comes to them. I will update this post from time to time of course as I keep running into more note worthy things to write about when it comes to them, but it might be best to just keep paying around with them in order to get a sound grasp on regex. There are also other tools at your disposal when it comes to these kinds of tasks, and sometimes it is necessary to make use of those as well rather than depending completely on regex.
 
