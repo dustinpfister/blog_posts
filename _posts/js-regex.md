@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2020-10-22 12:36:57
-version: 1.28
+updated: 2020-10-22 12:50:06
+version: 1.29
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -51,6 +51,24 @@ console.log(change); // 'regexp is great for pattern matching tasks'
 ```
 
 I will not be getting into these methods in detail here as I have wrote posts on both the [match](/2019/04/06/js-regex/), and [replace](/2019/04/08/js-string-replace/) methods. However I will be going over a few typical regular expression patterns and examples that I find myself using from time to time in the remainder of this post.
+
+## 2 - regular expression flags
+
+### 2.1 - the global search flag
+
+The global search flag is more often then not the way to go about searching for all instances of a pattern rather than just the first in the string. For example just searching for the pattern foo in a string with two foo patterns will result in just the first foo from the left of the string forward. However the use of the global flag will result in both instances of the foo pattern being matched.
+
+```
+let text = 'this is some foo text that contains more than one foo';
+ 
+let a = text.replace(/foo/, 'bar');
+let b = text.replace(/foo/g, 'bar');
+ 
+console.log(a);
+// 'this is some bar text that contains more than one foo'
+console.log(b);
+// 'this is some bar text that contains more than one bar'
+```
 
 ## 2 - Assertions in regular expressions
 
