@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:02:10
-version: 1.5
+updated: 2020-10-22 16:06:42
+version: 1.6
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -159,3 +159,9 @@ git.folderCheck()
     console.log(e);
 });
 ```
+
+## 3 - Conclusion
+
+I have not yet finished this canvas example so there is more work that I need to put into this one before I can really conclude how things went for this example. So far it is working as expected though, I have found that it might be best to try to break a project like this down into many small fine grain minor release rather than trying to get the whole thing done within a few hours or so.
+
+This is the first time I have made a nodejs project like this in which I am using the child process module to call git a whole bunch of times to change what the current commit is of a got folder. For now it is not doing much, but the basic core idea of what I wanted is working at least for what it is worth.
