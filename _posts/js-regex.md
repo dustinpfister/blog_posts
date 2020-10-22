@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2020-10-22 11:57:59
-version: 1.22
+updated: 2020-10-22 12:01:55
+version: 1.23
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -54,7 +54,7 @@ I will not be getting into these methods in detail here as I have wrote posts on
 
 ## 2 - Match the beginning of a string
 
-To match the begging of a string.I just need to use the ^ symbol followed be the pattern I want to match for.
+To match the begging of a string I just need to use the ^ symbol followed be the pattern I want to match for. There are many instances where I need to check for some kind of pattern that should start are each line, such is the case with the output of a command such as the [Linux Aspell](/2020/10/20/linux-aspell/) command for example. So this feature of a regular expression will come into play often when it comes to filtering threw some output of a command or something such as that.
 
 ```js
 let data = ['foobar', 'baz', 'foo'];
