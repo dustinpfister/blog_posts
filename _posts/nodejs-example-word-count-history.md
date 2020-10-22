@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:12:04
-version: 1.7
+updated: 2020-10-22 16:20:00
+version: 1.8
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -91,9 +91,11 @@ exports.toCommit = (hash, dir) => {
 ```
 ## 2 - The index.js file for the nodejs example
 
-So now that I have my git module worked out I can now use it in the main index.js file for this nodejs example.
+So now that I have my git module worked out I can now use it in the main index.js file for this nodejs example. Here I am using the folder check method of the git module to check if I am event working in a git folder to begin with, after, that I make sure that the current commit is the latest commit on the master branch. I then use the git commit list method to get an array of objects for each commit going back a set number of commits to the latest commit on master.
 
-I ran into a snag when it comes to working with the commit list and a promise chain. There is the [promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method in native javaScript, but the problem I was running into had to do with the asynchronous nature of the method. I need a way to go about running threw an array of promises in sequence, and there is no native method that I know of to do that. I was considering making bluebird part of the stack for this project, along with maybe a few more packages becuase bluebird has a method called [Promise.each](http://bluebirdjs.com/docs/api/promise.each.html) that seems to be what I have in mind. In any case I work out a crude yet effect way to just get this done.
+Once I have my Commit Object list I can the use the commit hash id of each object to go back to the point that is a set number of commits back, check something out, and then move up to the latest commit. For now I am just reading the contents of the folder at each point, but the idea is to create a word count history for each markdown file in the folder.
+
+I ran into a snag when it comes to working with the commit list and a promise chain. There is the [promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method in native javaScript, but the problem I was running into had to do with the asynchronous nature of the method. I need a way to go about running threw an array of promises in sequence, and there is no native method that I know of to do that. I was considering making bluebird part of the stack for this project, along with maybe a few more packages because bluebird has a method called [Promise.each](http://bluebirdjs.com/docs/api/promise.each.html) that seems to be what I have in mind. In any case I work out a crude yet effect way to just get this done.
 
 ```
 #!/usr/bin/env node
