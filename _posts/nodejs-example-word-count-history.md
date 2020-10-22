@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:29:54
-version: 1.11
+updated: 2020-10-22 16:33:59
+version: 1.12
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -41,6 +41,8 @@ exports.folderCheck = (dir) => {
     });
 };
 ```
+
+In any case this method makes use of the git status command to just find out if the given folder is a git folder or not, and that is it.
 
 ### 1.2 - The get commit list method
 
