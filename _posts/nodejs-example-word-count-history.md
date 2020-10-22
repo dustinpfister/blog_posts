@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:33:59
-version: 1.12
+updated: 2020-10-22 16:36:06
+version: 1.13
 ---
 
 This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
@@ -48,7 +48,7 @@ In any case this method makes use of the git status command to just find out if 
 
 Here I have a method that will create a list of commit objects, where each commit property of a commit object is the hash id of a given commit. In addition a commit object will have at least a few more properties maybe, but for now the only one I am pretty sure I am going to want to have is date. 
 
-This method makes use of the git log command that would be what is used to create a list of commits manually in the command line.
+This method makes use of the git log command that would be what is used to create a list of commits manually in the command line. I am also making use of the format option of that command to get a clean output that is just the commit hash ids and dates.
 
 ```js
 // Get a list of commit objects for the past few commits in a git folder
@@ -64,10 +64,6 @@ exports.commitList = (dir, backCount) => {
         });
         list.on('exit', function () {
             let commits = out.split(';');
-            // remove any elements that are new lines
-            //commits = commits.filter((str) => {
-            //        return str != '\n';
-            //    });
             commits = commits.map((str) => {
                     let arr = str.split('&');
                     return {
