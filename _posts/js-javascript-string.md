@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2020-06-25 16:06:24
-version: 1.24
+updated: 2020-10-23 12:18:15
+version: 1.25
 ---
 
-A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when making a project with javaScript. A [string](https://en.wikipedia.org/wiki/String_(computer_science)) is a collection of characters that compose a text pattern, and as such can serve a number of purposes beyond just simply displaying human readable text.
+A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when working in a javaScript programming environment. A [string](https://en.wikipedia.org/wiki/String_%28computer_science%29) is a collection of characters that compose text, and as such can serve a number of purposes beyond just simply displaying human readable text.
 
-There is a great deal to write about when it comes to javaScript Strings, but in this post I will be going over the basics of strings, and covering some of the must know String prototype methods. While in the process of going over the basics and some string methods I might manage to cover some general quirks to look out for when working with a String in javaScript.
+Strings are a type of primitive value rather than an object, however there is a wrapper object to work with when it comes to a string which can give the allusion that a string is a kind of object. The wrapper object of a String is loaded with all kinds of useful methods to help worth with a string value. In addition the String wrapper object is array like, so often many array prototype methods can be used with a string by way of something like the Function call prototype method.
+
+There is a great deal to write about when it comes to javaScript Strings, but in this post I will be going over just some of the basics of strings including some of the must know String prototype methods. In the process of doing so I might manage to cover some general quirks to look out for when working with a String in javaScript, and I might also branch off into some closely related topics where doing so might be called for.
 
 <!-- more -->
 
@@ -104,7 +106,7 @@ console.log(JSON.stringify(obj));
 
 ### 1.6 - Getting a string from an input tag in client side javaScript
 
-So then there are input text tags in client side javaScript. In order to do this full justice I will need to get into the various event handers that can be attached to an input element, as well as the event objects that are passed to the callbacks that fire when and event happens. Getting into this in depth will be a bit of subject for the tone of this post, so I will just be going over a simple little example here.
+So then there are input text tags in client side javaScript. In order to do this full justice I will need to get into the various event handlers that can be attached to an input element, as well as the event objects that are passed to the callbacks that fire when and event happens. Getting into this in depth will be a bit of subject for the tone of this post, so I will just be going over a simple little example here.
 
 The target property of an event object is a reference to the element in which the event has occurred. Once that value has been obtained there is the value property of an input element. The value property is of course the current value of the input tag, and in the case of input tags the value is a javaScript string.
 
@@ -134,7 +136,7 @@ input.addEventListener('keyup', function(e){
 </html>
 ```
 
-In many projects this is often the typical way of going about getting a string that is the result of user input. It is genraly a better idea to use input tags rather that using prompt.
+In many projects this is often the typical way of going about getting a string that is the result of user input. It is generally a better idea to use input tags rather that using prompt.
 
 ## 2 - String length
 
@@ -176,7 +178,7 @@ Setting a char might prove to be a bit more complicated and may involve concaten
 
 ## 4 - Converting an array to a string and back
 
-There is the process of converting an array to a string and doing the inverse of that as well. Typically this is doe with the Arry.join method. With Array.join just call the prototype method off of the array instance and pass a string that will be the string that will be placed between each element in the array, this can be an empty string if nothing is desired to be between elements
+There is the process of converting an array to a string and doing the inverse of that as well. Typically this is doe with the Array.join method. With Array.join just call the prototype method off of the array instance and pass a string that will be the string that will be placed between each element in the array, this can be an empty string if nothing is desired to be between elements
 
 ```js
 let arr =[1,2,3,4],
