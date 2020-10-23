@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 728
-updated: 2020-10-23 07:57:50
-version: 1.6
+updated: 2020-10-23 08:04:48
+version: 1.7
 ---
 
 The [git checkout](https://git-scm.com/docs/git-checkout) command in [git](https://git-scm.com/) can be used to switch to another branch, but also to an older commit on the same branch and back again.
@@ -39,6 +39,8 @@ $ git commit -m "first commit"
 
 ### 1.2 - Create a second commit
 
+So now that I have by first commit I will want at least one more commit so that I have something to switch to with the git checkout command. So I just repeat the process of creating another file, and once again create another commit.
+
 ```
 $ echo 'this is another test' > file2.txt
 $ git add *
@@ -47,19 +49,25 @@ $ git commit -m "file2"
 
 ### 1.3 - use the git log command to log to the console
 
+So now that I have at least two commits in my foo test folder I can not move back one commit using the git checkout command. The git log command can be used to get a list of hash ids for each commit. It would be best to read up more on each little detail about the git log command, but that would be off topic.
+
 ```
 $ git log --format="%H,%s"
 4e7fed1631804288ad873b8cefa9515947bf13df,file2.txt
 7142ad43522d02e4fbc50ce41b9ec91b4560ef65,first commit
 ```
 
-### 1.4 - git checkout
+### 1.4 - git checkout switch to first commit and back again
+
+So now that I have hash ids I can use them as a way to go to a certain commit in the git folder. I just need to call git checkout and then paste in the hash id of the commit I want to go to. So if I us the hash id of the first commit, and then do a ls command I will just have file1.txt which was the case with the first commit.
 
 ```
 $ git checkout 7142ad43522d02e4fbc50ce41b9ec91b4560ef65
 $ ls
 file1.txt
 ```
+
+I can then pass the name of the current branch to go back to the latest commit for the current branch.
 
 ```
 $ git checkout master
