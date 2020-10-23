@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2020-10-23 12:18:15
-version: 1.25
+updated: 2020-10-23 12:54:18
+version: 1.26
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when working in a javaScript programming environment. A [string](https://en.wikipedia.org/wiki/String_%28computer_science%29) is a collection of characters that compose text, and as such can serve a number of purposes beyond just simply displaying human readable text.
@@ -231,3 +231,9 @@ var r = str.replace(/<p>(.*?)<\/p>/g,'');
  
 console.log(r); // <div></div><div><span>bar</span></div>
 ```
+
+## 8 - Conclusion
+
+So there are string prototype methods of the wrapper object, and other methods in other prototypes than can be used to produce strings fro other objects. The wrapper object of a string is array like so it is often easy to use array methods with strings.
+
+I would say that there is an whole lot more to write about when it comes to working with strings in javaScript, but for now I think I covered a lot of basic things to know, and look our for when it comes to strings in javaScript.
