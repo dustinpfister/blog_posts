@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 728
-updated: 2020-10-23 08:04:48
-version: 1.7
+updated: 2020-10-23 08:07:35
+version: 1.8
 ---
 
 The [git checkout](https://git-scm.com/docs/git-checkout) command in [git](https://git-scm.com/) can be used to switch to another branch, but also to an older commit on the same branch and back again.
@@ -74,3 +74,7 @@ $ git checkout master
 $ ls
 file1.txt file2.txt
 ```
+
+## 2 - Conclusion
+
+So the git checkout command is like the cd command of git folders, it can be used to change what the current commit is for the git folder. The git log command is then similar to the ls command in posix systems in that the git log command can show me commit ids to go to from where I am currently.
