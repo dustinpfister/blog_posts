@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 728
-updated: 2020-10-23 07:33:16
-version: 1.3
+updated: 2020-10-23 07:47:48
+version: 1.4
 ---
 
 The [git checkout](https://git-scm.com/docs/git-checkout) command in [git](https://git-scm.com/) can be used to switch to another branch, but also to an older commit on the same branch and back again.
@@ -36,4 +36,20 @@ $ git add *
 $ git commit -m "file2"
 ```
 
+```
+$ git log --format="%H,%s"
+4e7fed1631804288ad873b8cefa9515947bf13df,file2.txt
+7142ad43522d02e4fbc50ce41b9ec91b4560ef65,first commit
+```
 
+```
+$ git checkout 7142ad43522d02e4fbc50ce41b9ec91b4560ef65
+$ ls
+file1.txt
+```
+
+```
+$ git checkout master
+$ ls
+file1.txt file2.txt
+```
