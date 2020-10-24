@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-10-24 12:57:15
-version: 1.57
+updated: 2020-10-24 14:37:41
+version: 1.58
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -19,7 +19,7 @@ So with all that said just when it comes to native javaScript alone there is a w
 
 So there are native methods, utility library methods that are in popular frameworks like lodash, and then there is the idea of making my own, application specific custom solutions for a project. That is using any or all of these solutions to make some kind of method or module that loops over the contents of a given array, or collection of any kind, but provides an API to be provided in the body of a function that is called for each element in the collection. So then this way I create my own custom forEach method of sorts that has everything that I want to work with in the body of the function that is called for each item via a function argument, or the this keyword. Such For each methods can be designed to work just the way I want them to, without any unnecessary bloat.
 
-That was a mouth full, so it goes without saying that there is a whole lot to cover when it comes to looping over the contents of an array or object in general in javaScript. So this post will be a bit lengthy, and I will be sticking mainly to topics surrounding the native forEach array prototype method. It will not just be on the array foreach method alone of course, but all kinds of ways to do javaScript foreach like tasks with everything that is available to work with more or less. So I will be branching off into other related topics to array foreach when it comes to user space options and other options with just plain old native javaScript by itself.
+That was a mouth full, so it goes without saying that there is a whole lot to cover when it comes to this topic. So this post will be a bit lengthy, and I will be sticking mainly to topics surrounding the native forEach array prototype method. It will not just be on the array foreach method alone of course, but all kinds of ways to do javaScript foreach like tasks with everything that is available to work with more or less. So I will be branching off into other related topics to array foreach when it comes to user space options and other options with just plain old native javaScript by itself.
 
 <!-- more -->
 
@@ -58,6 +58,19 @@ Although this might work just fine with such a trivial task, there are many othe
 Also In real projects what might need to happen for each element in an array might end up being far more complex than just adding up each number in the array. There might come a time where I might not want to start at index 0 each time, or I might want to do something with each array index and so forth. Once again these are reasons while I tend to prefer while loops, however I do fine myself using these convenience methods now and then. 
 
 So lets look as some more basic examples that make use of other array prototype methods that work in a similar way to that of the array for each prototype method. After this section we can start to look at loops, and custom user space options for specific tasks when it comes to making custom for each style methods.
+
+### 1.3 - Using the index values via the second argument
+
+The second argument of the function that is called for each element will be the index value of the current element.
+
+```js
+let a = [2, 5, 10],
+b = [];
+a.forEach((n, i) => {
+    b.push( Math.pow(n, i) );
+});
+console.log(b); // [1, 5, 100]
+```
 
 ## 2 - Other similar array prototype methods to javaScript forEach
 
