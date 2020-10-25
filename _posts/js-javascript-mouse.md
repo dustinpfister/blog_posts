@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2020-10-25 09:03:06
-version: 1.9
+updated: 2020-10-25 09:19:46
+version: 1.10
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -135,7 +135,37 @@ render(ctx, canvas, state);
 
 This time I went with attaching the events to a canvas element that is the nested element of interest. I could leave the events attached to the window object, but that would result in the events continuing to fire even when I do something with the mouse outside of the canvas element.
 
-## 3 - Conclusion
+## 3 - The onclick mouse and touch event
+
+The on click event can be thought of as a mouse event in the sense that they name is click rather than touch. However the on [click event is actually an event that will fire for both mouse and touch events](https://stackoverflow.com/questions/37273142/would-onclick-event-work-on-touch-on-touch-screen-devices/37273344). This might not always be a problem if this is of course the behavior that you want when making an interface, however if I am making an interface where I want separate logic to fire for mouse events from that of touch events then it is a problem.
+
+```html
+<html>
+    <head>
+        <title>javascript mouse onclick example</title>
+    </head>
+    <body>
+        <div id="out" style="width:240px;height:240px;background:gray;"><div>
+        <script>
+var out = document.getElementById('out');
+var state = {
+    on: false
+};
+var render = function (state) {
+    out.innerText = 'on: ' + state.on;
+    out.style.background = state.on ? 'green': 'red';
+};
+out.addEventListener('click', function(e){
+    state.on = !state.on;
+    render(state);
+});
+render(state);
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So hopefully this post has helped you gain some basic insight into how to get going with a mouse when making a user interface with javaScript. However there is much more to learn and be aware of when it comes to using mouse events, as well as other events such as touch events, and keyboard events. This post does not outline a fully comprehensive input controller module or project or sorts after all as the focus here is just on things that have to do with working with the mouse.
 
