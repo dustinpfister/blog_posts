@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2020-10-25 11:05:53
-version: 1.14
+updated: 2020-10-25 11:11:31
+version: 1.15
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -169,7 +169,7 @@ Another factor of concern when it comes to using this event is that it will fire
 
 ## 4 - Mouse buttons
 
-The [buttons property of the mouse event](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button) object that is passed via events such as the mouse down event will give a number value that can be used as a way to know the button that was clicked on a mouse.
+The [buttons property of the mouse event](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button) object that is passed via events such as the mouse down event will give a number value that can be used as a way to know the button that was clicked on a mouse. 
 
 ```html
 <html>
@@ -191,6 +191,9 @@ out.addEventListener('mousedown', function(e){
     </body>
 </html>
 ```
+
+The return value of the button property should be a number with a value from 0 to 4 for up to five buttons on a mouse that where pressed. A value of 0 should mean the main button of the mouse, in other words the typical left click button. A value of 2 on the other had will be a right click actually as a value of 1 will refer to a center click, or scroll wheel click if you prefer. The values of 3 and 4 will refer to the back and forward buttons that are present on many mouses.
+
 
 ## 5 - Conclusion
 
