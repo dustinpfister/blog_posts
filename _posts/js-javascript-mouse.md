@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2020-10-25 09:20:39
-version: 1.11
+updated: 2020-10-25 09:25:48
+version: 1.12
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -164,6 +164,8 @@ render(state);
     </body>
 </html>
 ```
+
+Another factor of concern when it comes to using this event is that it will fire after mouse down and mouse up events, as well as touch start and touch end events for that matter. So if I want to have some code that will fore the very moment that something is touched, or when a mouse button is pressed, but yet not released, I can not separate that by using on click. So I generally do not use it, and when I do it is because I do not need to preform something different for pointer down and up events.
 
 ## 4 - Conclusion
 
