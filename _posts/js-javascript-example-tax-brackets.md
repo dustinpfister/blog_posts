@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 618
-updated: 2020-06-26 12:56:45
-version: 1.9
+updated: 2020-10-25 11:16:26
+version: 1.10
 ---
 
 So for todays [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) post I thought I would throw together a quick module that can be use to get the basic idea of a progressive tax system up and running. 
@@ -17,7 +17,9 @@ the aim here is to not make something that would be used to seriously work out o
 
 ## 1 - The tax module for the javaScript example
 
-First off I want to work out a javaScript module that I can use to create a tax object of sorts. This tax object will have an array of bracket objects, and some top level properties for total tax and tax percent. In the module there will be helper methods to make the various objects for the main tax object, a bracket object and so forth. I will want to put in some hard coded tax bracket data that will act as a default, however will also accept it as an argument. I will then also have a method to figure tax for each bracket, and a main public method that can be used to return a tax object with a given amount of income.
+First off I want to work out a javaScript module that I can use to create a tax object of sorts. This tax object will have an array of bracket objects, and some top level properties for total tax and tax percent. In the module there will be helper methods to make the various objects for the main tax object, a bracket object and so forth. 
+
+I will want to put in some hard coded tax bracket data that will act as a default, however will also accept it as an argument. I will then also have a method to figure tax for each bracket, and a main public method that can be used to return a tax object with a given amount of income. For this set of hard coded data I was able to find a decent [post on United States income tax for 2019](https://www.propublica.org/article/what-are-2019s-tax-brackets), This would just need to be updated now and then, or pulled into a more appropriate form such as a JSON file.
 
 ```js
 var tax = (function () {
