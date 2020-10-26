@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-10-26 17:11:48
-version: 1.13
+updated: 2020-10-26 17:12:52
+version: 1.14
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -126,6 +126,8 @@ fizz.createFizzBuzzArray = function (len) {
 ```
 
 ### 4.2 - The index.html file
+
+I then have an index.html file that will make use of my fizz.js module to create html from the array of results that is created using the fizz.js module.
 
 ```html
 <html>
