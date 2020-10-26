@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-10-26 16:43:01
-version: 1.9
+updated: 2020-10-26 16:47:33
+version: 1.10
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -17,9 +17,9 @@ Tom brings up a lot of important points that I try to keep in mind when writing 
 
 <!-- more -->
 
-## 1 - javaScript fizzbuz example that is many console.logs and if statements
+## 1 - javaScript fizzbuz example that is many console.logs, and if statements
 
-One solution is to start out with having a for loop that goes threw all values for i from 1 up to and including 100. the use conditional statements for Fizz, Buzz, FizzBuzz, and just logging out the value of i.
+One solution is to start out with having a for loop that goes threw all values for i from 1 up to, and including 100. For each value of i I then use conditional statements to log Fizz, Buzz, FizzBuzz, and just logging out the value of i. In each if statement I am using expressions to test if a value of i is a multiple of 3 or not, and also if it is a multiple of 5 or not. I am not using return or anything to that effect to break out if one statement happens or anything to that effect.
 
 ```js
 for (var i = 1; i <= 100; i++) {
