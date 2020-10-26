@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-10-26 17:10:16
-version: 1.12
+updated: 2020-10-26 17:11:48
+version: 1.13
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -90,9 +90,11 @@ So now I have a little fizzer pure function of sorts that will always return the
 
 In this section I will be going over a client size javaScript example of a simple fizz buzz program. In this example of fizz buzz I am once again mutating the code a little. It is more or less the same example as the code that I worlds out in my helper example. However now I have two methods, one is the fizzer helper, and the other is a method that will create an array of objects for each result. Both of the methods are pulled into a simple module that follows the object literal pattern for client side javaScript module design.
 
-So the point here is that the code once again has to change a little so that thimgs will work in a client side javaScript environment.
+So the point here is that the code once again has to change a little so that things will work in a client side javaScript environment.
 
 ### 4.1 - fizz.js file
+
+I puled all the code that has to do with getting a collection of results into a module that I called fizz.js. The point here is to separate the code that has to do with creating a module from code that will render that module.
 
 ```js
 // fizzer
