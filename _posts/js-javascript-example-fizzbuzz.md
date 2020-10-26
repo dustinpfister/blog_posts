@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-10-26 17:12:52
-version: 1.14
+updated: 2020-10-26 17:16:27
+version: 1.15
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -127,7 +127,7 @@ fizz.createFizzBuzzArray = function (len) {
 
 ### 4.2 - The index.html file
 
-I then have an index.html file that will make use of my fizz.js module to create html from the array of results that is created using the fizz.js module.
+I then have an index.html file that will make use of my fizz.js module to create html from the array of results that is created using the fizz.js module. For this client side javaScript example of fizz buzz I am just using the create fizz buzz array method of my fizz.js module to create a list of objects, and then I am using the Array.map and Array.join methods to create a bunch of paragraph elements as an HTML string. I can then append this html string to a container element in the html file by way of getting a reference to the container element and then setting this html string as the value of the innerHTML property of the container element reference.
 
 ```html
 <html>
