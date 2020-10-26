@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 729
-updated: 2020-10-26 14:56:12
-version: 1.8
+updated: 2020-10-26 15:53:43
+version: 1.9
 ---
 
 The standard input can be used as a source of data when making a nodejs script, doing so just requires the use of the [child process module](/2018/02/04/nodejs-child-process/). There is the [standard input property of a child process instance](https://nodejs.org/api/child_process.html#child_process_subprocess_stdin) when using something like exec, or spawn in that module that is one way to go about reading standard input. However there is also the [readline module](/2018/08/06/nodejs-readline/) in nodejs that can also be used as a way to get input via the command line that might be a [better choice for some projects](https://stackoverflow.com/questions/20086849/how-to-read-from-stdin-line-by-line-in-node). In any case in this post I will be going over a few quick examples of using the standard input property of a child process instance.
@@ -65,6 +65,43 @@ $ node basic
 yeah this is: foobar
 ```
 
-## 2 - Conclusion
+## 2 - Linux wc command example, using process.stdin and subprocess.stdin
+
+```js
+let exec = require('child_process').exec;
+// using wc
+let wc = exec('wc -w');
+wc.stdout.on('data', (data) => {
+    process.stdout.write(data);
+});
+// Standard input of this script
+let lt = new Date(), // lt (last time)
+timeout = 250;
+process.stdin.on('readable', () => {
+    let chunk;
+    lt = new Date(); // update lt if data is coming in
+    while ((chunk = process.stdin.read()) !== null) {
+        // writing to the standard input of wc
+        wc.stdin.write(chunk);
+    }
+});
+process.stdin.on('end', ()=>{
+    wc.stdin.end();
+});
+// timeout check of lt
+setInterval(function(){
+    let t = new Date() - lt;
+    if(t >= timeout){
+        process.exit();
+    }
+}, 100);
+```
+
+```
+$ echo 'this is foo bar' | node wc
+4
+```
+
+## 3 - Conclusion
 
 So that is the basic idea of how to go about working with the standard input of a command in nodejs. Methods like exec can be used to spawn a child process on the operating system, and then the write method of the child processes standard input stream can be used to start writing data to the command.
