@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 144
-updated: 2020-10-26 16:23:43
-version: 1.4
+updated: 2020-10-26 16:26:20
+version: 1.5
 ---
 
 So for February I was plaining to [expand my catalog](/categories/node-js/) on [node.js](https://nodejs.org/en/) related content by getting into writing a bunch of demos on [core node.js modules](https://nodejs.org/dist/latest-v8.x/docs/api/), rather than what I have been doing for the most part before hand which is writing about npm packages. Looking over what I have so far, I never got around to writing about the [child_process module](https://nodejs.org/dist/latest-v8.x/docs/api/child_process.html) yet, so I thought I would give that one a go.
@@ -86,3 +86,7 @@ GitCheck(dir)
     console.log(data);
 });
 ```
+
+## 3 - Conclusion
+
+So the child process module built into nodejs itself is the standard goto module for calling an external resource. That external resource can be another nodejs script when using the fork method of the module. It can also be a script by calling nodejs itself and then pass the script as an argument when using spawn, or exec. Also speaking of spawn, and exec those methods can be used to call any command on the host operating system.
