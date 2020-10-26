@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 729
-updated: 2020-10-26 14:29:05
-version: 1.3
+updated: 2020-10-26 14:36:36
+version: 1.4
 ---
 
 The standard input can be used as a source of data when making a nodejs script, doing so just requires the use of the [child process module](/2018/02/04/nodejs-child-process/). There is the [standard input property of a child process instance](https://nodejs.org/api/child_process.html#child_process_subprocess_stdin) when using something like exec, or spawn in that module that is one way to go about reading standard input. However there is also the [readline module](/2018/08/06/nodejs-readline/) in nodejs that can also be used as a way to get input via the command line that might be a [better choice for some projects](https://stackoverflow.com/questions/20086849/how-to-read-from-stdin-line-by-line-in-node). In any case in this post I will be going over a few quick examples of using the standard input property of a child process instance.
@@ -14,7 +14,13 @@ The standard input can be used as a source of data when making a nodejs script, 
 
 <!-- more -->
 
-## 1 - basic example of child process standard in, as well as process standard in and out
+## 1 - Basic example of child process standard in, as well as process standard in and out
+
+So for a basic example of using the standard input of a child process instance I thought I would make two quick javaScript files. One file will serve as a command that I will be using with the child process module, and the other will be the file that uses the child process module to supply input to the other.
+
+On top of the standard input stream of the child process instance there is also the standard input stream of the process global. The difference between the two is that the standard input of a child process instance is a writable stream, so when it comes to using exec, or spawn, that stream is there to write two the standard input of the command that is being used. When it comes to making a script that will accept standard input that is where the standard input stream in the process global will come into play as that is a readable stream.
+
+If you are still a little confused between the two then maybe it is called for to start out with a basic hello words style project that makes use of these two streams.
 
 ### 1.1 - process standard in and out
 
