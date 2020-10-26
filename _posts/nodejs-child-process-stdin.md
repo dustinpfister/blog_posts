@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 729
-updated: 2020-10-26 16:12:21
-version: 1.11
+updated: 2020-10-26 16:17:52
+version: 1.12
 ---
 
 The standard input can be used as a source of data when making a nodejs script, doing so just requires the use of the [child process module](/2018/02/04/nodejs-child-process/). There is the [standard input property of a child process instance](https://nodejs.org/api/child_process.html#child_process_subprocess_stdin) when using something like exec, or spawn in that module that is one way to go about reading standard input. However there is also the [readline module](/2018/08/06/nodejs-readline/) in nodejs that can also be used as a way to get input via the command line that might be a [better choice for some projects](https://stackoverflow.com/questions/20086849/how-to-read-from-stdin-line-by-line-in-node). In any case in this post I will be going over a few quick examples of using the standard input property of a child process instance.
@@ -75,6 +75,8 @@ I worked out two versions of this wc script, one which uses the readable event o
 
 ### 2.1 - using the readable event
 
+When using the readable event I just need to write the chunks of data as they come in to the standard input of the child process of the Linux wc command.
+
 ```js
 let exec = require('child_process').exec;
 // using wc
@@ -105,12 +107,18 @@ setInterval(function(){
 }, 100);
 ```
 
+I also need a time out loop for when the command is called without giving any standard input, if I do not do this the script will hang.
+
 ```
 $ echo 'this is foo bar' | node wc
 4
 ```
 
+Although this seems to work okay there ia another way where I can just pipe the standard input of the script directly to the standard input of the child process. Doing so just involves using the pipe method of the process standard input. Using the readable event might only make sense if I need to do something to the standard input before passing it along to Linux wc which is not the case here after all.
+
 ## 2.2 - Using the pipe method
+
+Here is the same example that makes use of the pipe method.
 
 ```js
 let exec = require('child_process').exec;
