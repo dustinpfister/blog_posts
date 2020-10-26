@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 729
-updated: 2020-10-26 14:40:22
-version: 1.5
+updated: 2020-10-26 14:45:44
+version: 1.6
 ---
 
 The standard input can be used as a source of data when making a nodejs script, doing so just requires the use of the [child process module](/2018/02/04/nodejs-child-process/). There is the [standard input property of a child process instance](https://nodejs.org/api/child_process.html#child_process_subprocess_stdin) when using something like exec, or spawn in that module that is one way to go about reading standard input. However there is also the [readline module](/2018/08/06/nodejs-readline/) in nodejs that can also be used as a way to get input via the command line that might be a [better choice for some projects](https://stackoverflow.com/questions/20086849/how-to-read-from-stdin-line-by-line-in-node). In any case in this post I will be going over a few quick examples of using the standard input property of a child process instance.
@@ -24,7 +24,7 @@ If you are still a little confused between the two then maybe it is called for t
 
 ### 1.1 - process standard in and out script coder.js
 
-So here I have a file that I have called coder.js for this example. In coder.js I am using the process.stdin stream to define what should happen to data that is given to coder.js by way of the standard input. In the body of the event handler for the readable event for process.stdin I am using the read method of the stdin stream to read chunks of data. For each chunk of data I am just logging to the standard output a simple string followed by the chunk of data.
+So here I have a file that I have called coder.js for this example. In coder.js I am using the [process.stdin](/2019/07/09/nodejs-process-stdin/) stream to define what should happen to data that is given to coder.js by way of the standard input. In the body of the event handler for the readable event for process.stdin I am using the read method of the stdin stream to read chunks of data. For each chunk of data I am just logging to the standard output a simple string followed by the chunk of data.
 ```js
 process.stdin.on('readable', () => {
     let chunk;
@@ -33,6 +33,8 @@ process.stdin.on('readable', () => {
     }
 });
 ```
+
+This might not do anything that interesting, but this script is to just serve as the command that will be used for the next file that will make use of exec to run it. In a real example this script would do something of actual value, or it would be an operating system command that can be suppled data by way of the standard input. I am just supplying this script so that we have an operating system independent script that can be used in any system that will run nodejs. In addition I am also touching base on how to create a script that accepts standard input, rather than supplying standard input to a command.
 
 ### 1.2 - basic child process standard in example
 
