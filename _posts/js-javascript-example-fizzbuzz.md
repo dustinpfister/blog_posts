@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-10-26 17:16:27
-version: 1.15
+updated: 2020-10-26 17:22:10
+version: 1.16
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
@@ -148,6 +148,10 @@ document.getElementById('results').innerHTML = html;
     </body>
 </html>
 ```
+
+This might not be the best way to go about making a client side javaScript example of this, as there are many other ways I could go about creating html elements. I could also make some kind of interface so a user could set the max number of index values for the array. There are many other ways to go about displaying data in a client side javaScript environment also, including textarea and canvas elements just to name a few.
+
+The code is also still not portable across environments here also. It might be a step in the right direction at least, but the fiz module as it exists in this example will only work okay in this client side javaScript environment. The code will have to mutate yet again in order to get things working in a nodejs environment.
 
 ## 5 - Conclusion
 
