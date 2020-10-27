@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 16:34:15
-version: 1.9
+updated: 2020-10-27 16:37:50
+version: 1.10
 ---
 
 For this [nodejs example](https://nodejs.org/api/synopsis.html) I will be using the child process module to launch a new instance of chrome that will be [started in app mode](https://superuser.com/a/1421401). This will result in a chrome window being opened, but it will not have a navigation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
@@ -113,6 +113,10 @@ app.listen(port, function () {
 ```
 
 ## 3 - The public folder
+
+There is a public folder that is intended to be used for any and all static assets that are to be used as part of the client system for this example. For now as of this writing at least there is just a http client, and a script that will cause the sever to stop when the onload event happens. In the event that I fork this the number of assets in this folder will of course likely expand beyond this.
+
+In the main index.js file I am using the express static method to make the js folder in this public folder work as the js path for the client system. Any front end javaScript that should be part of the client system for an project that is made from this point should be placed there.
 
 ### 3.1 - /public/js/axios/0.21.0/axios.min.js
 
