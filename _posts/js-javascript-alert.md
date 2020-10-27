@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2020-06-27 12:21:52
-version: 1.29
+updated: 2020-10-27 17:02:01
+version: 1.30
 ---
 
-When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often comes up in many code examples found on the open Internet as a way to log or display something. 
+When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often comes up on the open Internet as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
 
-javaScript alert works okay for when it comes to all kinds of simple projects where a developer is just starting to learn javaScript for the first time, but there are other options for logging as well with client side javaScript such as console.log, which also works just find in a node.js environment. 
+There are many other options for what the javaScript alert method is typically use for that might prove to be more practical. There is the console.log method for course that will often prove to be a better choice for debugging, but even that might prove to fall short in some situations. I often find myself making use of dom manipulation methods, to create some kind of view for the current state of things. There is also making use of some kind of once method that will just fore the first time something happens that is another tool in the tool bug for debugging, and displaying the first instance of some kind of state that is causing problems.
 
 In addition even when it comes to making a finished product the use of the javaScript alert method is not always the best way to go about alerting the user to something in a client side javaScript environment. There ar a number of other ways to do so such as changing the value of the title text of a page, and creating, injecting, and then removing a new element into the page and so forth.
 
