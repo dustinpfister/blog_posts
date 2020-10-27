@@ -5,17 +5,17 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 16:23:35
-version: 1.4
+updated: 2020-10-27 16:25:17
+version: 1.5
 ---
 
-For this nodejs example I will be using the child process module to lanuch a new instance of chrome that wull be placed in app mode. This will result in a chrome window being opened, but it will not have a navagation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
+For this nodejs example I will be using the child process module to launch a new instance of chrome that will be placed in app mode. This will result in a chrome window being opened, but it will not have a navigation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
 
 <!-- more -->
 
 ## 1 - setup of this nodejs chrome app mode example
 
-There are two general ways of getting started with this node example. One would be to just clone it down, install the pakages that it uses, and then just run the index.js file with node. This would be the best way to go about just getting up and runing with this, and start hacking over the code to make it into an actauly project of some kind. The other way would be to create a new node project from scratch, and copy and past the files in making edits as you go.
+There are two general ways of getting started with this node example. One would be to just clone it down, install the packages that it uses, and then just run the index.js file with node. This would be the best way to go about just getting up and ruining with this, and start hacking over the code to make it into an actually project of some kind. The other way would be to create a new node project from scratch, and copy and past the files in making edits as you go.
 
 ### 1.1 - Just clone it down and run it
 
@@ -30,7 +30,7 @@ $ nohup node index 8080 &
 
 ### 1.2 - reproduce from scratch
 
-The other altertaive is to start a new nodejs project from the ground up, and just start to copy things over. This just might only be a good idea if you do not yet know how to go about making a new node project from the beggining.
+The other alternative is to start a new nodejs project from the ground up, and just start to copy things over. This just might only be a good idea if you do not yet know how to go about making a new node project from the beginning.
 
 ```
 $ mkdir node-example-chrome-app-mode
