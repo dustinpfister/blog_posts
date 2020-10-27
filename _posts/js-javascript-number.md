@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-06-27 12:40:01
-version: 1.21
+updated: 2020-10-27 17:42:32
+version: 1.22
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project, so doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -212,3 +212,7 @@ console.log(typeof (7 / '13')); // number
 console.log(typeof (5 + 10) ); // number
 console.log(typeof ('7' + '13')); // string
 ```
+
+## 9 - Conclusion
+
+In javaScript numbers as a central part of most programing tasks, along with other primitive values such as Strings. What is nice about javaScript and numbers is that I only have to worry about one data type for numbers. In many other languages not only is there strict typing, but I also have to work with more than one type of number.
