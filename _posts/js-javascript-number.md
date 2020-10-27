@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-27 17:59:58
-version: 1.26
+updated: 2020-10-27 18:09:05
+version: 1.27
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -37,6 +37,8 @@ console.log(typeof Infinity); // 'number'
 console.log(typeof -Infinity); // 'number'
 ```
 
+### 1.2 - Storing a number in a variable
+
 Number literals by themselves do not do much good, so often they need to be stored in a variable. There once was a time when there was just var when it comes to storing values in javaScript, but now there is let and const as well. I will not be getting into the differences between them here that is off topic, if you are not sure which to use then start off with var. So then type var followed by the assignment operator, and then the number value you want to store.
 
 Or better yet just look at some code examples, and learn by doing.
@@ -45,23 +47,43 @@ Or better yet just look at some code examples, and learn by doing.
 // setting a number to a variable
 let x = 40;
 console.log(x); // 40
- 
+```
+
+
+### 1.3 - expressions can result in a number
+
+Expressions in javaScript are a way to use a log string of values and operators that will ultimately be evaluated to some kind of value. one such value that an expression will typically evaluate to is of course a number.
+
+```js
 // a number can be a result of an expression as well
+let x = 40;
 let y = x + 2;
 console.log(y); // 42
- 
+```
+
+### 1.4 - Returned by a function call
+
+```
 // numbers can be what is returned by a
 // static function such as Math.pow
 let z = Math.pow(2, 4);
 console.log(z); // 16
- 
+```
+
+### 1.5 - Number wrapper prototype methods
+
+```js
 // there are a number of Number prototype
 // methods that can be used
 let m = 32.49273,
 f = m.toFixed(2);
 console.log(typeof f); // 'string'
 console.log(f); // '32.49'
- 
+```
+
+### 1.6 - Numbers can be passed as arguments
+
+```js
 // numbers can be passed as arguments,
 // and can be created and used inside the body of a function
 let d = function (x1, y1, z1, x2, y2, z2) {
