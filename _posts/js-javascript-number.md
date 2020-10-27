@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-27 18:09:05
-version: 1.27
+updated: 2020-10-27 18:16:26
+version: 1.28
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -62,6 +62,8 @@ console.log(y); // 42
 ```
 
 ### 1.4 - Returned by a function call
+
+A number can be a value that is returned by a function call. When creating a function there is using the return keyword in the body of the function, and making it so that it will return a number value. There are also a number of built in static functions such as the Math.pow method.
 
 ```
 // numbers can be what is returned by a
