@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2020-10-27 17:05:39
-version: 1.32
+updated: 2020-10-27 17:09:41
+version: 1.33
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -228,4 +228,6 @@ In real projects I often might use something like this, but it often will become
 
 ## 6 - Conclusion
 
-So a javaScript alert in client side javaScript might be okay for some hello world examples, and also maybe the use of it is called for with some actual projects as well. However there are still often better alternatives when it comes to letting the user know that something is up. Also when it comes to debugging there are a wide range of better options that are far more useful, even beyond that of just console.lof by itself.
+So a javaScript alert in client side javaScript might be okay for some hello world examples, and also maybe the use of it is called for with some actual projects as well. However there are still often better alternatives when it comes to letting the user know that something is up. There is of course creating some kind of message system using elements that are injected in and then purged out as needed. In many simple projects I often see developers use text area elements as a way to just keep logging text that can then be scrolled back. It all really depends on the project, and what the window alter method is being use for in the first place, as it is often used for debugging and not just altering the user to something.
+
+Also when it comes to debugging there are a wide range of better options that are far more useful, even beyond that of just console.lof by itself.
