@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 16:17:22
-version: 1.3
+updated: 2020-10-27 16:23:35
+version: 1.4
 ---
 
 For this nodejs example I will be using the child process module to lanuch a new instance of chrome that wull be placed in app mode. This will result in a chrome window being opened, but it will not have a navagation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
@@ -118,3 +118,34 @@ For the simple yet function client system of this nodejs example I am using [axi
 
 ### 3.2 - /public/js/kill-process.js
 
+```js
+// kill process when window is closed
+window.addEventListener('unload', function(){
+   axios.post('/', {
+    action: 'kill'
+  });
+});
+```
+
+## 4 - The views folder
+
+As I have mentioned I am using ejs for sever side rendering, so there is a views folder. Here for this example I just have a single index.ejs file that will render the view for this nodejs example.
+
+```
+<html>
+<head>
+  <title>Chrome App</title>
+</head>
+<body>
+  <h1>Basic Chrome App with nodejs and express</h1>
+  <script src="/js/axios/0.21.0/axios.min.js"></script>
+  <script src="/js/kill-process.js"></script>
+</body>
+</html>
+```
+
+## 5 - Conclusion
+
+So this is just a basic example of a nodejs project that make use of chrome in app mode. There might be a little more work to do with this project in order to make it a little cleaner, and stable, but the basic idea that I had in might is working okay for me at least.
+
+All I wanted is to find out if I can use chrome as a way to start making projects that look and work just like traditional desktop software, and it would seem that there are indeed some options that can be used to do just that.
