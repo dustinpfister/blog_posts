@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 16:37:50
-version: 1.10
+updated: 2020-10-27 16:39:16
+version: 1.11
 ---
 
 For this [nodejs example](https://nodejs.org/api/synopsis.html) I will be using the child process module to launch a new instance of chrome that will be [started in app mode](https://superuser.com/a/1421401). This will result in a chrome window being opened, but it will not have a navigation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
@@ -123,6 +123,8 @@ In the main index.js file I am using the express static method to make the js fo
 For the simple yet function client system of this nodejs example I am using [axios](/2018/01/10/nodejs-axios/) for the http client. I will not be getting into axios in detail here, but if you want the source code for axios it can be found in the [axios repo on github](https://github.com/axios/axios/tree/v0.21.0/dist) just like many other usful projects.
 
 ### 3.2 - /public/js/kill-process.js
+
+Here I have the script that is made part of the main index of the client system. It has just once function and that is to send a post request that will cause the sever to exit when the window onload event fires.
 
 ```js
 // kill process when window is closed
