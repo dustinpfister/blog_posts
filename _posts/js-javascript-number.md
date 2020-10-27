@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-27 17:51:39
-version: 1.25
+updated: 2020-10-27 17:59:58
+version: 1.26
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -19,16 +19,29 @@ In this post I will be going over some of the basics when it comes to just plain
 
 ## 1 - The basics of javaScript numbers
 
-In javaScript a number can be just a literal, there are a number of was of creating a number literal actually but the most common is the decimal format. In order words just type the number in base 10 common base 10 format, if you want a fraction use a decimal point where needed.
+In this section I will be going over some of ther very basics of numbers in javaScript. There is creating a number literal that is an actaul literal value in javaScript code. However in real projects number valiues are often obtained by way of some external data, or input of some kind. So there is also storing number values in variables, so they can be worked with elsewhere later. There is also ending up with a number by way of some kind of expression that is also often the case. So there is much to cover even whe it comes to the very basic of numbers in javaScript, so lets get this out of the way so we can move on to the good stuff.
+
+### 1.1 - Number literals
+
+In javaScript a number can be just a literal, there are a number of ways of creating a number literal actually but the most common is the decimal format. In order words just type the number in base 10 common base 10 format, if you want a fraction use a decimal point where needed.
+
+```js
+// just logging a number literal
+console.log(42); // 42
+
+// NaN is also a number literal
+console.log(typeof NaN); // 'number'
+
+// there are some others
+console.log(typeof Infinity); // 'number'
+console.log(typeof -Infinity); // 'number'
+```
 
 Number literals by themselves do not do much good, so often they need to be stored in a variable. There once was a time when there was just var when it comes to storing values in javaScript, but now there is let and const as well. I will not be getting into the differences between them here that is off topic, if you are not sure which to use then start off with var. So then type var followed by the assignment operator, and then the number value you want to store.
 
 Or better yet just look at some code examples, and learn by doing.
 
 ```js
-// just logging a number literal
-console.log(42); // 42
- 
 // setting a number to a variable
 let x = 40;
 console.log(x); // 40
