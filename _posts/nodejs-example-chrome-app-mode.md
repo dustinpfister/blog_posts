@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 15:59:23
-version: 1.2
+updated: 2020-10-27 16:17:22
+version: 1.3
 ---
 
 For this nodejs example I will be using the child process module to lanuch a new instance of chrome that wull be placed in app mode. This will result in a chrome window being opened, but it will not have a navagation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
@@ -15,7 +15,11 @@ For this nodejs example I will be using the child process module to lanuch a new
 
 ## 1 - setup of this nodejs chrome app mode example
 
+There are two general ways of getting started with this node example. One would be to just clone it down, install the pakages that it uses, and then just run the index.js file with node. This would be the best way to go about just getting up and runing with this, and start hacking over the code to make it into an actauly project of some kind. The other way would be to create a new node project from scratch, and copy and past the files in making edits as you go.
+
 ### 1.1 - Just clone it down and run it
+
+To get this up and running right away with this, just clone down the repo, and do an npm install to get the node modules for the example installed. Once that is all set and down then the main index.html file is what will need to be started in order to get the example up and running.
 
 ```
 $ git clone --depth 1 https://github.com/dustinpfister/nodejs-example-chrome-app-mode/tree/0.0.0
@@ -25,6 +29,8 @@ $ nohup node index 8080 &
 ```
 
 ### 1.2 - reproduce from scratch
+
+The other altertaive is to start a new nodejs project from the ground up, and just start to copy things over. This just might only be a good idea if you do not yet know how to go about making a new node project from the beggining.
 
 ```
 $ mkdir node-example-chrome-app-mode
@@ -38,7 +44,11 @@ $ cd public
 $ mkdir js
 ```
 
+In any case this example is just a starting point for this kind of nodejs project. When things are up and running you will just get a browser window pop up. Once you close the browser window the nodejs process will be closed also. The only thing about this that is of interest really is that the browser window will be started in app mode.
+
 ## 2 - The main index.js file
+
+In this section I will be going over the main index.js file in detail. The main thing of interest here is that I am using express to set up a basic server that will respond to get and post requests. Once the sever is up and running the script will also use the child process module in nodejs to start chromium in app mode making the url to the root path of the server the single page that will open in the browser window.
 
 ```js
 #!/usr/bin/env node
@@ -99,3 +109,12 @@ app.listen(port, function () {
     })
 });
 ```
+
+## 3 - The public folder
+
+### 3.1 - /public/js/axios/0.21.0/axios.min.js
+
+For the simple yet function client system of this nodejs example I am using [axios](/2018/01/10/nodejs-axios/) for the http client. I will not be getting into axios in detail here, but if you want the source code for axios it can be found in the [axios repo on github](https://github.com/axios/axios/tree/v0.21.0/dist) just like many other usful projects.
+
+### 3.2 - /public/js/kill-process.js
+
