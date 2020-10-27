@@ -1,12 +1,12 @@
 ---
-title: javaScript numbers the basics and more.
+title: The basics of JavaScript numbers
 date: 2019-01-24 15:47:00
 tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-27 17:50:57
-version: 1.24
+updated: 2020-10-27 17:51:39
+version: 1.25
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
