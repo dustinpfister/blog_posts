@@ -5,13 +5,13 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 16:32:59
-version: 1.8
+updated: 2020-10-27 16:34:15
+version: 1.9
 ---
 
 For this [nodejs example](https://nodejs.org/api/synopsis.html) I will be using the child process module to launch a new instance of chrome that will be [started in app mode](https://superuser.com/a/1421401). This will result in a chrome window being opened, but it will not have a navigation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
 
-This example will be kept fairly simple and sever as a possible starting point for other projects that might actually do something. This example when up and running will just result in a browser window starting in app mode, and once that browser window is close the window onload event will fire sending a post request back to the server that started it causes the process to exit. Nothing much, but I just wanted to get together a basic starting point for this kind of nodejs application, and with that said I guess that is what this is.
+This example will be kept fairly simple and sever as a possible starting point for other projects that might actually do something. This example when up and running will just result in a browser window starting in app mode, and once that browser window is close the [window onload event](/2020/06/02/js-onunload/) will fire sending a post request back to the server that started it causes the process to exit. Nothing much, but I just wanted to get together a basic starting point for this kind of nodejs application, and with that said I guess that is what this is.
 
 <!-- more -->
 
