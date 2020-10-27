@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 16:42:02
-version: 1.12
+updated: 2020-10-27 16:44:02
+version: 1.13
 ---
 
 For this [nodejs example](https://nodejs.org/api/synopsis.html) I will be using the child process module to launch a new instance of chrome that will be [started in app mode](https://superuser.com/a/1421401). This will result in a chrome window being opened, but it will not have a navigation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
@@ -52,7 +52,7 @@ In any case this example is just a starting point for this kind of nodejs projec
 
 In this section I will be going over the main index.js file in detail. The main thing of interest here is that I am using express to set up a basic server that will respond to get and post requests. Once the sever is up and running the script will also use the child process module in nodejs to start chromium in app mode making the url to the root path of the server the single page that will open in the browser window.
 
-So at the very top off the file I am using the nodejs shebang to make this index file executable. I often just run the script by calling node and then passing the name of this script, however this allows for me to just run the script directly in a Linux system. Simply put the shebang is to just simply let bash know what binary it needs to use in order to run this script which is of course nodejs.
+So at the very top off the file I am using the [nodejs shebang](https://dustinpfister.github.io/2017/03/26/linux_shebang/) to make this index file executable. I often just run the script by calling node and then passing the name of this script, however this allows for me to just run the script directly in a Linux system. Simply put the shebang is to just simply let bash know what binary it needs to use in order to run this script which is of course nodejs.
 
 
 ```js
