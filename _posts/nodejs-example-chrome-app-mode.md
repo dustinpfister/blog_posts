@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 730
-updated: 2020-10-27 16:25:17
-version: 1.5
+updated: 2020-10-27 16:28:09
+version: 1.6
 ---
 
-For this nodejs example I will be using the child process module to launch a new instance of chrome that will be placed in app mode. This will result in a chrome window being opened, but it will not have a navigation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
+For this [nodejs example](https://nodejs.org/api/synopsis.html) I will be using the child process module to launch a new instance of chrome that will be [started in app mode](https://superuser.com/a/1421401). This will result in a chrome window being opened, but it will not have a navigation bar, or any of the other features of a web browser. It will just be a window with a single page opened up in it.
 
 <!-- more -->
 
