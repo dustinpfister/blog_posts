@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 731
-updated: 2020-10-28 17:30:48
-version: 1.12
+updated: 2020-10-28 17:31:42
+version: 1.13
 ---
 
 The the usr bin folder on most Linux systems there should be a [linux base32](https://man7.org/linux/man-pages/man1/base32.1.html) and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
@@ -98,9 +98,11 @@ $ echo 'this is some text I want to encode' | base64 | wc -c
 49
 ```
 
+So it would go without saying that base32 and base64 encoding does not help to make files smaller, at least the way that I am using them here anyway.
+
 ## 5 - Conclusion, and creating a bunch of files
 
-It would have been nice to work out some examples that have to do with creating a collection of base64 files from a source folder and then back again but I ran into a problem. I was able to figure out this much when it comes to using the Linu find command to get a list of files and then use the exec option of find to create base 64 files.
+It would have been nice to work out some examples that have to do with creating a collection of base64 files from a source folder and then back again but I ran into a problem. I was able to figure out this much when it comes to using the Linux find command to get a list of files and then use the exec option of find to create base 64 files.
 
 ```
 $ find -type f -name '*.md' -exec bash -c 'base64 {} > {}.b64' ';'
