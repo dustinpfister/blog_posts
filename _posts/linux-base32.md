@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 731
-updated: 2020-10-28 16:48:35
-version: 1.6
+updated: 2020-10-28 16:50:19
+version: 1.7
 ---
 
 The the usr bin folder on most Linux systems there should be a base32 and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
@@ -33,23 +33,23 @@ this is some text I want to encode
 
 ## 2 - basic example to encode and decode files with base32
 
-I can just give a file, and file as the first arguemnt, and base32 coded will be the result in the standard output
+I can just give a file, and file as the first argument, and base32 coded will be the result in the standard output
 
 ```
 $ base32 foo.txt
 ```
 
-I can do the same if I come accross a file that is base32 encoded
+I can do the same if I come across a file that is base32 encoded
 
 ```
 $ base32 -d foo.txt.b32
 ```
 
-The result can then be piped to some command that can work with the result, or I can use dedirection as a way to create a file.
+The result can then be piped to some command that can work with the result, or I can use redirection as a way to create a file.
 
 ## 3 - redirection and base32
 
-Redirection is a way to go about crteaing a file from standard output, so for example I can use the echo command and redirect the standard output of that to a file such as test.txt.
+Redirection is a way to go about creating a file from standard output, so for example I can use the echo command and redirect the standard output of that to a file such as test.txt.
 
 ```
 $ echo 'this is just a test' > test.txt
@@ -65,7 +65,7 @@ $ cat test.txt.b32
 ORUGS4ZANFZSA2TVON2CAYJAORSXG5AK
 ```
 
-I can then remove the old unencoded file and just have the base32 encoded file remain. 
+I can then remove the old file that is not encoded and just have the base32 encoded file remain. 
 
 ```
 $ rm test.txt
