@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 731
-updated: 2020-10-28 17:01:55
-version: 1.10
+updated: 2020-10-28 17:28:06
+version: 1.11
 ---
 
 The the usr bin folder on most Linux systems there should be a [linux base32](https://man7.org/linux/man-pages/man1/base32.1.html) and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
@@ -26,7 +26,7 @@ $ echo 'this is some text I want to encode' | base32
 ORUGS4ZANFZSA43PNVSSA5DFPB2CASJAO5QW45BAORXSAZLOMNXWIZIK
 ```
 
-if I want to decode then I just need to give the -d option.
+If I want to decode then I just need to give the -d option, and be sure that what I am piping in is base32 code. The result that will be spit out then is the original text.
 
 ```
 $ echo 'ORUGS4ZANFZSA43PNVSSA5DFPB2CASJAO5QW45BAORXSAZLOMNXWIZIK' | base32 -d
@@ -35,19 +35,19 @@ this is some text I want to encode
 
 ## 2 - basic example to encode and decode files with base32
 
-I can just give a file, and file as the first argument, and base32 coded will be the result in the standard output
+I can just give a file, any file as the first argument, and base32 code will be the result in the standard output when I use base32 without the -d option. So this will work more or less the same way as with piping, only I am giving a file name as an option.
 
 ```
 $ base32 foo.txt
 ```
 
-I can do the same if I come across a file that is base32 encoded
+I can do the same if I come across a file that is base32 encoded, I just need to give the -d option once again to decode rather than encode.
 
 ```
 $ base32 -d foo.txt.b32
 ```
 
-The result can then be piped to some command that can work with the result, or I can use redirection as a way to create a file.
+The result can then be piped to some command that can work with the result, or I can use redirection as a way to create a file. However that is just about it when it comes to using the bas32 command, as well as the base64 command. I can pipe something in, or give a file, and I just need to make use I am using the -d option if I am decoding rather than encoding. That is just about it, anything more is just learning how to work with other commands, piping, redirection, and so forth to do more than just this.
 
 ## 3 - redirection and base32
 
