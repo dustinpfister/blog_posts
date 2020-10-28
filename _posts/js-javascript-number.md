@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-28 13:17:45
-version: 1.32
+updated: 2020-10-28 13:21:13
+version: 1.33
 ---
 
 In [javaScript Numbers](https://www.javascripttutorial.net/javascript-number/) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -159,7 +159,7 @@ One more thing about the Number.toString prototype method, there is an option to
 console.log( (42).toString(2) ); // '101010'
 ``` 
 
-## 6 - converting Strings to Numbers
+## 6 - Converting Strings to Numbers
 
 So now that I have covered converting Numbers to strings there is the process of doing the opposite as well. The same can be done with some operators when working out an expression, and there are a few options when it comes to methods as well. So in this section I will be looking at some examples of converting something that is not a number to a number in javaScript.
 
@@ -218,8 +218,11 @@ console.log(typeof parseFloat(str)); // number
 console.log(typeof Number(str)); // number
 ```
 
+## 7 - Numbers from objects, and the valueOf method
 
-## 7 - javaScript number literals
+So I have covered creating a String from a Number value, and creating a Number value from a string, but what about Objects. Well then it comes to this there is the valueOf method of an object. This method can be a so called own property of an object, or it can be part of the prototype object of a class of objects.
+
+## 8 - javaScript number literals
 
 There are a number of ways to create a javaScript number by way of a Number Literal rather than the result of an expression or any other means. The most common way would be in plain old decimal form, however there are base16, and base8 options as well. There are also exponents, and other options that can be considered a kind of literal as well.
 
@@ -244,7 +247,7 @@ console.log(NaN);
 console.log(Infinity);
 ```
 
-## 8 - Numbers as the result of an expression
+## 9 - Numbers as the result of an expression
 
 When creating an expression of one or more operations a Number can often be the result of that expression. In some cases however it can some times evaluate to something else such as a string depending on the data type of the value. For example if an operator such as the multiplication operator is used with a Number and a string the string will be converted to a number, and the result will be a number. However if addition is used with two strings then the result will be string concatenation, and not addition. 
 
@@ -256,6 +259,6 @@ console.log(typeof (5 + 10) ); // number
 console.log(typeof ('7' + '13')); // string
 ```
 
-## 9 - Conclusion
+## 10 - Conclusion
 
 In javaScript numbers as a central part of most programing tasks, along with other primitive values such as Strings. What is nice about javaScript and numbers is that I only have to worry about one data type for numbers. In many other languages not only is there strict typing, but I also have to work with more than one type of number.
