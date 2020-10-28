@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-28 09:47:49
-version: 1.29
+updated: 2020-10-28 09:53:35
+version: 1.30
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -86,6 +86,8 @@ console.log(f); // '32.49'
 ```
 
 ### 1.6 - Numbers can be passed as arguments
+
+Numbers are one of many values that can be passed to functions as arguments. So often functions are made that will expect a number as an argument, or at least will only return a desired result if a number is passed. Inside the body of a function if I declare a variable and assigned a number to it, or any value for that matter, it will become local to that function even if I use var as the way to do so. If I use let and const it can event be local to a block of code inside the function, but variable scope is maybe a bit off topic here.
 
 ```js
 // numbers can be passed as arguments,
