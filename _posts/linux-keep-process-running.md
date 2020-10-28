@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 703
-updated: 2020-09-10 13:23:55
-version: 1.6
+updated: 2020-10-28 14:16:35
+version: 1.7
 ---
 
-These days I have been doing some work on my Raspberry PI 3B+ with a Raspberry PI OS image, and have come across some situations in which I would like to continue having a command run even when I close the terminal window in which I started it. To do so I just need to use [NOHUP](https://en.wikipedia.org/wiki/Nohup) at the end of the command line to do just that, but maybe there are a [few more things to write about](https://opensource.com/article/18/9/linux-commands-process-management) on top of that when it comes to starting and killing processes in a Linux operating system environment.
+These days I have been doing some work on my Raspberry PI 3B+ with a Raspberry PI OS image, and have come across some situations in which I would like to continue having a command run even when I close the terminal window in which I started it. To do so I just need to use the [NOHUP](https://en.wikipedia.org/wiki/Nohup) command at the start of the command line to do just that. However maybe there are just a [few more things to write about](https://opensource.com/article/18/9/linux-commands-process-management) on top of that when it comes to starting and killing processes in a Linux operating system environment.
+
+When starting a command as an independent process there is not just using the nohup command and then that is it. There is also the question of what to do with any output that might be produced while the process is running? So often There might be a need to redirect that output of the process to a file, or pipe it to another command maybe. Also once a process is started there is also how to go about keeping and eye on it, and if need be stop it. So it looks like I will be touching base on at least a few other related topics in the process of covering how to go about keeping a command running in the background in Linux.
 
 <!-- more -->
 
