@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 731
-updated: 2020-10-28 14:58:04
-version: 1.1
+updated: 2020-10-28 16:09:00
+version: 1.2
 ---
 
 The the usr bin folder on most Linux systems there should be a base32 and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
@@ -36,3 +36,13 @@ $ echo 'this is some text I want to encode' | base32 | wc -c
 $ echo 'this is some text I want to encode' | base64 | wc -c
 49
 ```
+
+## 3 - Conclusion, and creating a bunch of files
+
+It would have been nice to work out some examples that have to do with creating a collection of base64 files from a source folder and then back again but I ran into a problem. I was able to figure out this much when it comes to using the Linu find command to get a list of files and then use the exec option of find to create base 64 files.
+
+```
+$ find -type f -name '*.md' -exec bash -c 'base64 {} > {}.b64' ';'
+```
+
+This will result in a bunch of files with the b64 externtion appedned on the end and the conetnt of each being base64 encoded. However the problem then is how do I go about creating a collection of files where each file is then just the original extension. I got as far as becoming aware of cerrtin other commands such as cut, but gave up after a while.
