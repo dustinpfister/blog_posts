@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 731
-updated: 2020-10-28 16:55:41
-version: 1.8
+updated: 2020-10-28 16:56:35
+version: 1.9
 ---
 
-The the usr bin folder on most Linux systems there should be a base32 and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
+The the usr bin folder on most Linux systems there should be a [linux base32](https://man7.org/linux/man-pages/man1/base32.1.html) and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
 
 So in todays Linux post I will be checking out the base32 command as well as the base64 command for doing this sort of thing on the command line in a Linux operating system environment. I will of course also be touching base on a few other things when it comes to using these commands to create a collection of files such as piping, redirection, and other commands that can come into play with this. 
 
