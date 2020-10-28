@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-27 18:16:26
-version: 1.28
+updated: 2020-10-28 09:47:49
+version: 1.29
 ---
 
 In [javaScript Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -73,6 +73,8 @@ console.log(z); // 16
 ```
 
 ### 1.5 - Number wrapper prototype methods
+
+There are a number of methods that are [Number wrapper Prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) methods. In JavaScript a Number is a kind of primitive value rather than an Object, however there is a wrapper object that is available around the primitive number value. This wrapper object has a prototype object, and via that object there are all kinds of methods than can be called off of the number. One such method is the toFixed method that will return a string value of the number to a fixed number of decimal places.
 
 ```js
 // there are a number of Number prototype
