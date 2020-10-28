@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 731
-updated: 2020-10-28 16:50:19
-version: 1.7
+updated: 2020-10-28 16:55:41
+version: 1.8
 ---
 
 The the usr bin folder on most Linux systems there should be a base32 and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
@@ -105,3 +105,5 @@ $ find -type f -name '*.md' -exec bash -c 'base64 {} > {}.b64' ';'
 ```
 
 This will result in a bunch of files with the b64 extension appended on the end and the content of each being base64 encoded. However the problem then is how do I go about creating a collection of files where each file is then just the original extension. I got as far as becoming aware of certain other commands such as cut, but gave up after a while.
+
+So I have not yet discovered a way to go about quickly creating a bunch of files with base64 and then convert them back again with the original files names. At least I have not found a way to do so with bash commands alone anyway, there is a [nodejs project that I made a while ago](/2019/10/29/nodejs-cli-hexer/) where I as able to get something together that did just that.
