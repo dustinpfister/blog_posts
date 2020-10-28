@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 731
-updated: 2020-10-28 16:22:02
-version: 1.4
+updated: 2020-10-28 16:37:37
+version: 1.5
 ---
 
 The the usr bin folder on most Linux systems there should be a base32 and base64 commands that can be used to do quick, simple base32 and 64 encodings and decodings in the command line. The commands can be fed some input via the standard input when it cokes to piping in what I want to encode to base32, the result is then a base32 encoding of what I piped in when it is not used with any options. Speaking of options what if I have some base32 or 64 code and I want to decoded it back, for this there is the -d option that will decode base32 or 64 into its original form.
@@ -31,7 +31,35 @@ $ echo 'ORUGS4ZANFZSA43PNVSSA5DFPB2CASJAO5QW45BAORXSAZLOMNXWIZIK' | base32 -d
 this is some text I want to encode
 ```
 
-## 2 - Uisng the wc command to get the size in bytes of output
+## 2 - redirection and base32
+
+```
+$ echo 'this is just a test' > test.txt
+$ cat test.txt
+this is just a test
+```
+
+```
+$ base32 test.txt > test.txt.b32
+$ cat test.txt.b32
+ORUGS4ZANFZSA2TVON2CAYJAORSXG5AK
+```
+
+```
+$ rm test.txt
+$ ls test*
+test.txt.b32
+```
+
+```
+$ base32 -d test.txt.b32 > test.txt
+$ test*
+test.txt  test.txt.b32
+$ cat test.txt
+this is just a test
+```
+
+## 3 - Uisng the wc command to get the size in bytes of output
 
 Another useful command that comes up often actually is the Linux wc command. The Linux wc command is used to get a word count of text, but it can also be used to count lines, and in this case the size of text in bytes.
 
