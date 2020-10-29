@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-10-29 12:15:29
-version: 1.14
+updated: 2020-10-29 12:42:07
+version: 1.15
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -78,7 +78,49 @@ console.log(obj);
 
 the use of this method might come in handy if the JSON code has a bunch of values that need to be used to create new instances of a class or something to that effect.
 
-## 2 - Conclusion
+## 2 - Basic nodejs example
+
+So now that I have the basics out of the way it is now time to work out a simple text program that makes use of the JSON.parse method. There is working otu a client side javaScript example, however in this section I will be going over a quick, basic nodejs example.
+
+```js
+let fs = require('fs'),
+promisify = require('util').promisify,
+os = require('os'),
+path = require('path'),
+read = promisify(fs.readFile),
+write = promisify(fs.writeFile),
+ 
+fileName = '.node-json-example.json',
+filePath = path.join(os.homedir(), fileName);
+ 
+read(filePath)
+.then((data) => {
+    let obj = JSON.parse(data);
+    return Promise.resolve(obj);
+})
+.catch((e) => {
+    if (e.code === 'ENOENT') {
+        return Promise.resolve({
+            count: 0
+        });
+    }
+    return Promise.reject(e);
+})
+.then((obj) => {
+    obj.count += 1;
+    console.log('count: ' + obj.count);
+    return write(filePath, JSON.stringify(obj));
+})
+.then(() => {
+    console.log('updated json file at: ' + filePath);
+})
+.catch((e) => {
+    console.warn(e);
+    console.log(e.code);
+});
+```
+
+## 3 - Conclusion
 
 So that is it for now when it comes to the JSON parse method. There is way more to write about when it comes to the use of the JSON parse method when it comes to some real code examples maybe. There is also of course the JSON.stringify method that is also worth mentioning when it comes to converting a workable object to a JSNON string for example.
 
