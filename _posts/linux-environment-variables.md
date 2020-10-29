@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 14:24:50
-version: 1.2
+updated: 2020-10-29 15:26:18
+version: 1.3
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [enviornement variabules](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programes work in Linux. For example there is a $HOME enviornement variabule that is the home path for the current user, many programes will use this value to know where to place a hidden config file for user settings then. There are many other such enviorment variabules, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -43,4 +43,49 @@ $ echo $HOME
 /home/dustin
 $ echo "The Home path is: ${HOME} and all is well"
 The Home path is: /home/dustin and all is well
+```
+
+## 3 - Now for some bash script examples
+
+
+### 3.1 - My md_b64_encode.sh file
+
+```bash
+#!/bin/bash
+for i in $( ls *.md ); do
+    file=$i
+    fileBaseName=$( echo -n "$file"  | cut -d '.' -f 1 )
+    fileEXT=$( echo -n $file | cut -d '.' -f 2 )
+    cat $file | base64 > "${fileBaseName}.${fileEXT}.b64"
+done
+echo 'done'
+```
+
+```
+$ chmod +x md_b64_encode.sh
+```
+
+```
+$ ./md_b64_encode.sh
+```
+
+### 3.2 - My md_b64_decode.sh file
+
+```bash
+#!/bin/bash
+for i in $( ls *.b64 ); do
+    file=$i
+    fileBaseName=$( echo -n "$file"  | cut -d '.' -f 1 )
+    fileEXT=$( echo -n $file | cut -d '.' -f 2 )
+    cat "${file}" | base64 -d > "${fileBaseName}.${fileEXT}"
+done
+echo 'done'
+```
+
+```
+$ chmod +x md_b64_decode.sh
+```
+
+```
+$ ./md_b64_decode.sh
 ```
