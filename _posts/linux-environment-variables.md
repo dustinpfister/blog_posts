@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 17:14:26
-version: 1.20
+updated: 2020-10-29 17:16:10
+version: 1.21
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -87,11 +87,11 @@ $ printenv SERVER_PORT
 
 In order to create environment variables that will be persistent there is of course and etc folder file that must be edited. There is the \/etc\/environment file where one would store system wide variables, but often the \/etc\/profile file would be a good starting point when it comes to making Persistent variables.
 
-## 4 - Now for some bash script examples that make use of Shell variables
+## 5 - Now for some bash script examples that make use of Shell variables
 
 So now that I have the basics of environment variables out of the way, maybe I should do something not so basic with them. I have wrote a post on the base32 command, and there is also the base64 command. I wanted to find a way to go about using these commands to encode and decode a collection of mark down files. It looks like in order to do so I will end to make use of environment variables, as well as writing a simple bash shell script file. So this might prove to be a great simple example of how to go about using environment variables.
 
-### 4.1 - My md\_b64\_encode.sh file
+### 5.1 - My md\_b64\_encode.sh file
 
 So first I have my file that will use the base64 command to encode any markdown files that are found into base64 files. In this file I start off with a shebang that will inform bash that I will be using bash as the command to run this script when I make the script executable with chmod after I save the file.
 
@@ -135,7 +135,7 @@ file1.md file1.md.b64 file2.md file2.md.b64
 Where each b64 file will be a base64 encoding of the original files. So now what if I delete the original files, and just have b64 files? In that case I would want a script that would decode them back right?
 
 
-### 4.2 - My md\_b64\_decode.sh file
+### 5.2 - My md\_b64\_decode.sh file
 
 So then there is making a decode script that is just a little different. I just need to make a few simple changes to the script such as adding the -d option to the base64 command so it will decode rather than encode. I also need to make use that the ls command is looking for b64 files rather than markdown files, and I want to drop the b64 extension when redirecting the output.
 
@@ -150,7 +150,7 @@ done
 echo 'done'
 ```
 
-## 5 - A Nodejs script that makes use of $PORT if there
+## 6 - A Nodejs script that makes use of $PORT if there
 
 Do you like javaScript? I know I do, and in nodejs there is the process global and in that object there is the process.env property. The process.env property is then an Object where each key is the name of an, you guess it, environment variable and then the key value is the value of that variable. So say I want to make a script that is a basic sever script, and I want the script to make use of a $PORT variable if it is there. 
 
@@ -200,7 +200,7 @@ server up on port: 3000
 
 I could add event more features to this where it will look for a config file in home and etc but you get the idea. These are the kinds of values that are often stored in environment variables. In a real project I would want to have a way to set a static value for a post for a sever to listen on. I would want to have a way to have it so the sever will start when the system starts, and I would also want to have a way so that it will always start listening on the same port. One way to save these kinds of settings is to have some kind of config file, the other way is to have an environment variable.
 
-## 6 - Conclusion
+## 7 - Conclusion
 
 So environment variables are useful for telling programs how to work, it is a way to go about setting or changing some basic application settings aside from that of arguments. The thing about arguments is that they are only for the single call of a command, while environment variables will be for all calls of a command that will make use of them. In addition an environment variable will work with any command that will use a given environment variable when arguments are just for a single command.
 
