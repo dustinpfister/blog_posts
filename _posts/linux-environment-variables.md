@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 16:58:46
-version: 1.15
+updated: 2020-10-29 17:00:25
+version: 1.16
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -84,7 +84,7 @@ $ printenv SERVER_PORT
 ```
 
 
-## 4 - Now for some bash script examples
+## 4 - Now for some bash script examples that make use of Shell variables
 
 So now that I have the basics of environment variables out of the way, maybe I should do something not so basic with them. I have wrote a post on the base32 command, and there is also the base64 command. I wanted to find a way to go about using these commands to encode and decode a collection of mark down files. It looks like in order to do so I will end to make use of environment variables, as well as writing a simple bash shell script file. So this might prove to be a great simple example of how to go about using environment variables.
 
@@ -92,7 +92,7 @@ So now that I have the basics of environment variables out of the way, maybe I s
 
 So first I have my file that will use the base64 command to encode any markdown files that are found into base64 files. In this file I start off with a shebang that will inform bash that I will be using bash as the command to run this script when I make the script executable with chmod after I save the file.
 
-After the shebang I start out a for loop where I am using the ls command to get all the mark down files in the current working path. Then for each item in the list I am create a variable for the full file name of the mark down file, as well as the base name, and extension. I am then using the file variable for the argument for cat to open the content of the markdown file, to which I am then piping to the base64 command. Finally I am using Linux redirection to redirect the output of base64 to a new file that will be the file base name, followed by a period, followed by the extension, followed by another period, followed by b64
+After the shebang I start out a for loop where I am using the ls command to get all the mark down files in the current working path. Then for each item in the list I am create a shell variable for the full file name of the mark down file, as well as the base name, and extension. I am then using the file variable for the argument for cat to open the content of the markdown file, to which I am then piping to the base64 command. Finally I am using Linux redirection to redirect the output of base64 to a new file that will be the file base name, followed by a period, followed by the extension, followed by another period, followed by b64
 
 ```bash
 #!/bin/bash
