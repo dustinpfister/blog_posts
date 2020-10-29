@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-10-29 13:14:27
-version: 1.33
+updated: 2020-10-29 13:19:34
+version: 1.34
 ---
 
 In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys such as how to get an array of public key names from a given object, how to create and get hidden key names. In addition there is also how to work with inherited keys when it comes to the nature of the prototype object of a class of objects. Still when it comes to taking one thing at a time, there is just knwoing how to get a list of pubic key names for an object itself, and not any additional keys that are hidden, or inherited. With that said one way to go about getting just that basic public key list would be the [Object.keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) method.
@@ -155,17 +155,24 @@ I have come to find that I prefer to use a user space option over polyfilling. O
 
 ## 3 - Using a for in loop as an alternative to the Object.keys static method
 
-A for in loop can also be used to get the objects own key names, and for a time was the only way to do so when it comes to older javaScript specs. So with that said a for in loop is a more tired yet true way of getting the key names of an object in javaScript. The Object keys method was introduced in ecma 5 sec javaScript, so an alternative method such as this might only need to be used if for some reason you need to support a real old platform.
+A [for in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) can also be used to get the objects own key names, and for a time was the only way to do so when it comes to older javaScript specs. So with that said a for in loop is a more tired yet true way of getting the key names of an object in javaScript. The Object keys method was introduced in ecma 5 sec javaScript, so an alternative method such as this might only need to be used if for some reason you need to support a real old platform.
 
 ```js
-var keys = [],
-k;
- 
-for(k in obj){
- 
-    keys.push(k);
- 
-}
+var ObjectKeys = function (obj) {
+    var keys = [],
+    k;
+    for (k in obj) {
+        keys.push(k);
+    }
+    return keys;
+};
+var obj = {
+    a: 1,
+    b: 3
+};
+var keys = ObjectKeys(obj);
+console.log(keys);
+// [ 'a', 'b' ]
 ```
 
 For the most part the Object keys method is well supported these days. In addition there are of course ways of polyfilling the method, or using some kind of user space module to have a stand alone method for object keys that will work on older platforms. When I look at by browser stats for my website here i can nit say there is much need to worry about it, but the use of for in loops is one way to go about dealing with this concern if it does become a problem.
