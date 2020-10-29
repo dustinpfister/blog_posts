@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 17:10:11
-version: 1.19
+updated: 2020-10-29 17:14:26
+version: 1.20
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -198,7 +198,7 @@ $ node sever
 server up on port: 3000
 ```
 
-I could add event more features to this where it will look for a config file in home and etc but you get the idea. These are the kinds of values that are often stored in environment variables.
+I could add event more features to this where it will look for a config file in home and etc but you get the idea. These are the kinds of values that are often stored in environment variables. In a real project I would want to have a way to set a static value for a post for a sever to listen on. I would want to have a way to have it so the sever will start when the system starts, and I would also want to have a way so that it will always start listening on the same port. One way to save these kinds of settings is to have some kind of config file, the other way is to have an environment variable.
 
 ## 6 - Conclusion
 
