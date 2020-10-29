@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-10-29 12:08:02
-version: 1.13
+updated: 2020-10-29 12:15:29
+version: 1.14
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -21,17 +21,19 @@ There are still a few additional things a javaScript developer should be ware of
 
 ## 1 - json parse basics
 
-For starters in this section I will be going over the basics of the JSON.parse method. This will include just using the method on a simple string of JSON, error handling, and the reviver method argument.
+For starters in this section I will be going over the basics of the JSON.parse method. This will include just using the method on a simple string of JSON, error handling. In addition there is also the reviver method argument that is a way to go about setting a function that can be used to set values for the final object that is returned. This can sometimes lead to more complex examples of the JSON.parse method, but I will still be going over a quick simple example of it here.
 
 ### 1.1 - basic json parse example
 
-The JSON parse method can be used to parse a json string into a workable object by just passing the json string as the first argument. The workable object will then be returned by the method, assuming that nothing goes wrong, which can then be stored in a variable.
+The JSON parse method can be used to parse a JSON string into a workable object by just passing the JSON string as the first argument. The workable object will then be returned by the method, assuming that nothing goes wrong, which can then be stored in a variable.
 
 ```js
 var str = "{\"x\":42,\"y\": 15}";
 var obj = JSON.parse(str);
 console.log(obj.x, obj.y); // 42 15
 ```
+
+Here I am using a STring literal that just happens to be valid JSON, but in a real example this JSON string would be obtained by reading a file, or receiving a HTTP request body that that is a JSON string. The JSON parse method is just simply a way to convert this kind of string to an object.
 
 ### 1.2 - Errors and try catch
 
