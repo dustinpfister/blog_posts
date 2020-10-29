@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 15:53:23
-version: 1.6
+updated: 2020-10-29 15:58:05
+version: 1.7
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -78,9 +78,24 @@ Once I make it executable I can call it in bash like this.
 $ ./md_b64_encode.sh
 ```
 
+So when I call this script the following files:
+
+```
+file1.md file2.md
+```
+
+will become:
+
+```
+file1.md file1.md.b64 file2.md file2.md.b64
+```
+
+Where each b64 file will be a base64 encoding of the original files. So now what if I delete the original files, and just have b64 files? In that case I would want a script that would decode them back right?
+
+
 ### 3.2 - My md\_b64\_decode.sh file
 
-So then there is making a decode script that is just a little different.
+So then there is making a decode script that is just a little different. I just need to make a few simple changes to the script such as adding the -d option to the base64 command so it will decode rather than encode. I also need to make use that the ls command is looking for b64 files rather than markdown files, and I want to drop the b64 extension when redirecting the output.
 
 ```bash
 #!/bin/bash
