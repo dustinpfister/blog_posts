@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 17:04:52
-version: 1.18
+updated: 2020-10-29 17:10:11
+version: 1.19
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -83,9 +83,9 @@ $ printenv SERVER_PORT
 8000
 ```
 
-## 4 - Persistent variables via the /etc/environment file
+## 4 - Persistent variables via the /etc/environment and /etc/profile files
 
-In order to create environment variables that will be persistent there is of course and etc folder file that must be edited.
+In order to create environment variables that will be persistent there is of course and etc folder file that must be edited. There is the \/etc\/environment file where one would store system wide variables, but often the \/etc\/profile file would be a good starting point when it comes to making Persistent variables.
 
 ## 4 - Now for some bash script examples that make use of Shell variables
 
