@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 16:51:03
-version: 1.12
+updated: 2020-10-29 16:53:28
+version: 1.13
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -70,6 +70,8 @@ $ echo $fLINUX_POSTS
 ```
 
 ### 3.3 - Exporting a Shell variable to become an Environment variable
+
+In order to make a shell variable a environment variable it must be exported with the [Linux export](http://linuxcommand.org/lc3_man_pages/exporth.html) command. The printenv command can be used as a way to confirm if it is a environment variable or not.
 
 ```
 $ SERVER_PORT=8000
