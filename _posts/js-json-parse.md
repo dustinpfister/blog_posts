@@ -5,17 +5,17 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-10-29 09:57:59
-version: 1.11
+updated: 2020-10-29 10:01:46
+version: 1.12
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
 
 If you are new to javaScript a [JSON string is a data interchange format](https://en.wikipedia.org/wiki/JSON) that is often the default solution for such a thing in a javaScript environment. However the standard is not used with javaScript alone, the format is often used in many other programing languages because of its close relationship to the web. There are of course other options when it comes to data interchange, or data serialization, but getting into that would be off topic.
 
-The use of the method is fairly straight forward just call the method off of the JSON object and pass a JSON string to parse into an object, the returned object is then the workable object from that json string. 
+The use of the method is fairly straight forward just call the method off of the JSON object and pass a JSON string to parse into an object, the returned object is then the workable object from that json string. The JSON.strigify method works in a similar way, only the first argument passed should be the object that I want to convert into a JSON string.
 
-There are still a few additional things a javaScript developer should be ware of such as browser support, what happens when an invalid string is passed, and some additional related methods and features. So in this post I will be touching base on some additional things to work with when using JSON parse such as the [try catch](/2019/03/02/js-javascript-try/) statement.
+There are still a few additional things a javaScript developer should be ware of such as browser support, what happens when an invalid string is passed, and some additional related methods and features. So in this post I will be touching base on some additional things to work with when using JSON parse such as the [try catch](/2019/03/02/js-javascript-try/) statement. So in this post I will be going over they very basics, but also any additional things to look out for when working with JSON.parse, and JSON in general.
 
 <!-- more -->
 
