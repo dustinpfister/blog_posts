@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-10-29 13:09:55
-version: 1.31
+updated: 2020-10-29 13:12:35
+version: 1.32
 ---
 
 In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys such as how to get an array of public key names from a given object, how to create and get hidden key names. In addition there is also how to work with inherited keys when it comes to the nature of the prototype object of a class of objects. Still when it comes to taking one thing at a time, there is just knwoing how to get a list of pubic key names for an object itself, and not any additional keys that are hidden, or inherited. With that said one way to go about getting just that basic public key list would be the [Object.keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) method.
@@ -153,7 +153,7 @@ if (!Object.keys) {
 
 I have come to find that I prefer to use a user space option over polyfilling. One such example of this might be the [lodash keys](/2019/05/14/lodash_keys/) method. However when using the lodash keys method it is not just a question of using lodash and being done with it. Late versions of lodash might just reference the native object keys method actually, so it is still a good idea to keep an eye and how far back browser support goes with the version of lodash that you are suing if you choose to go that way with it.
 
-## 3 - Using a for in loop
+## 3 - Using a for in loop as an alternative to the Object.keys static method
 
 A for in loop can also be used to get the objects own key names, and for a time was the only way to do so when it comes to older javaScript specs. So with that said a for in loop is a more tired yet true way of getting the key names of an object in javaScript. The Object keys method was introduced in ecma 5 sec javaScript, so an alternative method such as this might only need to be used if for some reason you need to support a real old platform.
 
