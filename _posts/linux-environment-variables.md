@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 17:16:10
-version: 1.21
+updated: 2020-10-29 17:18:00
+version: 1.22
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -25,7 +25,7 @@ First things first, how does one know what the current state of environment vari
 $ printenv
 ```
 
-This will spit out all of the current environment variables that there are. Take a moment to look over them and you should see a few of interest such as HOME, PATH, USER, PWD, and SHELL just to name a few. These variables store values that are important as they help to give programs a way to know things like the current user, and where to store files for this user.
+This will spit out all of the current environment variables that there are. Take a moment to look over them and you should see a few of interest such as HOME, PATH, USER, PWD, and SHELL just to name a few. These variables store values that are important as they help to give programs a way to know things like the current user, and where to store files for this user. Many commands, and programs will make use of environment variables so it makes sense to know how to find out the state of them, and one way to do so is with printenv.
 
 ## 2 - Printing the value of a Variable
 
