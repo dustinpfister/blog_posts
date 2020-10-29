@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 16:57:14
-version: 1.14
+updated: 2020-10-29 16:58:46
+version: 1.15
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -149,7 +149,7 @@ echo 'done'
 
 ## 5 - A Nodejs script that makes use of $PORT if there
 
-Do you like javaScript? I know I do, and in nodejs there is the proces global and in that object there is the provess.env property. The process.env propery is then an Object where each key is the name of an, you guess it, envioronment variable and then the key value is the value of that variable. So say I want to make a script that is a basic sever script, and I want the script to make use of a $PORT variable if it is there. 
+Do you like javaScript? I know I do, and in nodejs there is the process global and in that object there is the process.env property. The process.env property is then an Object where each key is the name of an, you guess it, environment variable and then the key value is the value of that variable. So say I want to make a script that is a basic sever script, and I want the script to make use of a $PORT variable if it is there. 
 
 ```js
 #!/bin/node
