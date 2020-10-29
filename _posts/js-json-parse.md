@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-10-29 12:42:07
-version: 1.15
+updated: 2020-10-29 12:47:23
+version: 1.16
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -82,6 +82,9 @@ the use of this method might come in handy if the JSON code has a bunch of value
 
 So now that I have the basics out of the way it is now time to work out a simple text program that makes use of the JSON.parse method. There is working otu a client side javaScript example, however in this section I will be going over a quick, basic nodejs example.
 
+This nodejs example will check for a JSON file in the current users home dir, if the file is there or there is not any other kind of error that happens reading the file for some reason, then the JSON.parse method will be used to parse the json string into an object. 
+
+So this nodejs example makes use of the read file, and write file methods of the file system module. I am also using the home dir method of the os module to get the path to the home folder in an operating system independent kind of way, and I am using the join method of the path module as a way to handling the joining and parsing of path names. The promsify method of the utils method is a way to make sure that I am working with file system methods that will return a promise, in late versions of node this will happen all ready so it is just a backward support thing.
 ```js
 let fs = require('fs'),
 promisify = require('util').promisify,
