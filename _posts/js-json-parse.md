@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2020-10-29 12:49:55
-version: 1.17
+updated: 2020-10-29 12:52:43
+version: 1.18
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -122,6 +122,8 @@ read(filePath)
     console.log(e.code);
 });
 ```
+
+So then here I have a basic example of the JSON parse method where I am reading a JSON file, parsing the JSON file into an object, and updating the state of that object. Once I have an updated state of the object I am then using the JSON.stringify method to create a string from that object, and then write this new state back to the file.
 
 ## 3 - Conclusion
 
