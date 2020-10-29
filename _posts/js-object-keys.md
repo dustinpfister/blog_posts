@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-10-29 13:19:34
-version: 1.34
+updated: 2020-10-29 13:27:01
+version: 1.35
 ---
 
 In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys such as how to get an array of public key names from a given object, how to create and get hidden key names. In addition there is also how to work with inherited keys when it comes to the nature of the prototype object of a class of objects. Still when it comes to taking one thing at a time, there is just knwoing how to get a list of pubic key names for an object itself, and not any additional keys that are hidden, or inherited. With that said one way to go about getting just that basic public key list would be the [Object.keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) method.
@@ -197,6 +197,31 @@ console.log(Object.keys(point)); // ["x","y"]
 console.log(Object.getOwnPropertyNames(point)); // ["x", "y", "color"]
 ```
 
-## 5 - Conclusion
+## 5 - The Object values static method
+
+The Object.keys method is good for getting an array public of key names for and Object, but what about an array of values? For this there is the [Object.values](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values) method that will work more or less the same way, only an array of values will be returned rather than an array of key names.
+
+```js
+var obj = {
+    x: 0,
+    y: 35,
+    attack: 12,
+    hp : {
+      current: 47,
+      max: 50
+    }
+};
+// so Object.keys for public keys
+var keys = Object.keys(obj);
+console.log(keys);
+ // ["x", "y", "attack", "hp"]
+ 
+// and Object.values for values of public keys
+var values = Object.values(obj);
+console.log(values);
+// [ 0, 35, 12, { current: 47, max: 50 } ]
+```
+
+## 6 - Conclusion
 
 So that is it for my post on Object keys in javaScript, however there are many [other resources to look into on the subject of Object keys](https://dmitripavlutin.com/access-object-keys-values-entries/) in javaScript. There are keys that are enumerable so a list of key names can be easily obtained by using Object.keys or a for loop, and then Object.getOwnPropertyNames to get all Object own property names. getting the public and or private key names of an object is just often one part of a certain something that needs to happen though. So being aware of other object static methods, and prototype methods helps when it comes to working out all kinds of solutions for various coding problems on an as needed basis.
