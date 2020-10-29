@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 16:15:05
-version: 1.10
+updated: 2020-10-29 16:45:22
+version: 1.11
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -131,7 +131,57 @@ done
 echo 'done'
 ```
 
-## 5 - Conclusion
+## 5 - A Nodejs script that makes use of $PORT if there
+
+Do you like javaScript? I know I do, and in nodejs there is the proces global and in that object there is the provess.env property. The process.env propery is then an Object where each key is the name of an, you guess it, envioronment variable and then the key value is the value of that variable. So say I want to make a script that is a basic sever script, and I want the script to make use of a $PORT variable if it is there. 
+
+```js
+#!/bin/node
+let http = require('http'),
+fs = require('fs'),
+path = require('path'),
+ 
+// use the $PORT Environment Variable if it is there
+// $ PORT=8080;export PORT
+port = process.env.PORT || process.argv[3] || 8888;
+ 
+let server = http.createServer((req, res) => {
+    res.write('foo');
+    res.end();
+});
+ 
+// start server
+server.listen(port, function () {
+    console.log('server up on port: ' + port);
+});
+```
+
+So when I just run the script, and give no argument the hard coded value for port is used.
+
+```
+$ node sever
+server up on port: 8888
+```
+
+If I give an argument for the port that will be used.
+
+```
+$ node sever 8000
+server up on port: 8000
+```
+
+However if there is an $PORT variable that will be used.
+
+```
+$ PORT=3000
+$ export PORT
+$ node sever
+server up on port: 3000
+```
+
+I could add event more features to this where it will look for a config file in home and etc but you get the idea. These are the kinds of values that are often stored in environment variables.
+
+## 6 - Conclusion
 
 So environment variables are useful for telling programs how to work, it is a way to go about setting or changing some basic application settings aside from that of arguments. The thing about arguments is that they are only for the single call of a command, while environment variables will be for all calls of a command that will make use of them. In addition an environment variable will work with any command that will use a given environment variable when arguments are just for a single command.
 
