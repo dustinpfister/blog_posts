@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 16:11:19
-version: 1.9
+updated: 2020-10-29 16:15:05
+version: 1.10
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -47,6 +47,7 @@ The Home path is: /home/dustin and all is well
 
 ## 3 - Setting an Environment variable
 
+So now that I have covered how to go about Listing, and printing environment variables, now it might be a good idea to go over how to go about setting a value to one. First off I think that it should go without saying that you should not overwrite any important variables in the shell. So just use the printenv command to make sure that any name that is set for a variable name is not taken just yet. In addition if you really want to change an environment variable value, just make sure that you know what it is used for.
 
 ### 3.1 - Setting just a simple static string value
 
