@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 16:04:12
-version: 1.8
+updated: 2020-10-29 16:11:19
+version: 1.9
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -47,12 +47,24 @@ The Home path is: /home/dustin and all is well
 
 ## 3 - Setting an Environment variable
 
+
+### 3.1 - Setting just a simple static string value
+
 One way to set an environment variable is to just type the variable name that I want, followed by an equals sign, followed by what I want for a value. If the value that I want is a static string, then I can just place the content of that between to quotation marks.
 
 ```
 $ foo="bar"
 $ echo "foo${foo}"
 foobar
+```
+
+### 3.2 - Setting the result of a command to a variable
+
+What if I want to set the result of a command to an environment variable? In this case I just need to use the dollar sigh symbol followed by and opening and closing parentheses. Inside these parentheses I will place the command that will create the value that I want for the environment variable. For example say I have a whole bunch of mark down files start start with Linux, and I want to store all the file names in a variable, I can do this to create such a variable.
+
+```
+$ LINUX_POSTS=$( ls linux* )
+$ echo $fLINUX_POSTS
 ```
 
 ## 4 - Now for some bash script examples
