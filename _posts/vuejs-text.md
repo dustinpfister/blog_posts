@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 733
-updated: 2020-10-30 13:52:41
-version: 1.5
+updated: 2020-10-30 13:58:59
+version: 1.6
 ---
 
 The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. 
@@ -67,7 +67,30 @@ On top of the v-text directive there is also the mustache syntax in vuejs, this 
 </html>
 ```
 
-## 3 - Conclusion
+## 3 - innerText, $ref, and the mounted life cycle hook
+
+```html
+<html>
+  <head>
+    <title>vue bind example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    template: '<p ref=\"p\"></p>',
+    mounted: function(){
+        this.$refs.p.innerText = 'foo';
+    }
+  });
+  </script>
+  </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So that is it for now when it comes to the v-text directive as well as other alternatives when it comes to updating text content of elements in vuejs. I have been neglecting my content of vuejs for much to long, and in the coming days I intend to try to focus on this subject a little more when it comes to writing new vuejs content, as well as editing some of the older stuff I have wrote thus far.
 
