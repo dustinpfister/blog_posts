@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-10-30 09:43:28
-version: 1.14
+updated: 2020-10-30 09:43:57
+version: 1.15
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other environments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
@@ -57,7 +57,7 @@ loop();
 
 So I have an HTML document, and a div element with fixed positioning set, along with some additional fixed style with in-line style. In a script tag I have some variables that will store things like the last time the loop updated, a reference to the div element I want to move, and the current position, and pixel per second rate of movement.
 
-I then have the loop method, whcih is the method that I will be useing with request animation frame, as such there will be a time stamp given via the first argument of the loop method. This time stamp value will just be a number value in milliseconds of the current time. So it is just a way to help keep me from having to create a new date object in each call of the loop function. I can then use this time stamp value with my last time value to get the number of seconds that have passed sense the last update. This seconds value can the be used as a way to update the state of a value by time rather then the rate at which the function calls.
+I then have the loop method, which is the method that I will be using with request animation frame, as such there will be a time stamp given via the first argument of the loop method. This time stamp value will just be a number value in milliseconds of the current time. So it is just a way to help keep me from having to create a new date object in each call of the loop function. I can then use this time stamp value with my last time value to get the number of seconds that have passed sense the last update. This seconds value can the be used as a way to update the state of a value by time rather then the rate at which the function calls.
 
 ### 1.2 - Why requestAnimationFrame.
 
