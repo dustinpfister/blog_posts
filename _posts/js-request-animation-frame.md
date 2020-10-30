@@ -5,23 +5,30 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-07-01 13:21:39
-version: 1.10
+updated: 2020-10-30 09:12:05
+version: 1.11
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other environments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
 
 <!-- more -->
 
-## 1 - Why requestAnimationFrame.
 
-The request animation frame is one of several ways I know of to get a method to fire over and over again at a certain rate, the other options being setInterval, and setTimeout. The request animation frame method differs from the other options in that it is generally the best way to go about making an app loop in a front end environment. However in some environments and situations it is not available, or the other ways of doing so might still be more appropriate. There is also having a project that is event driven where the view only updates when an event such as a mouse click happens.
+## 1 - Request Animation Frame basics
 
-## 2 - Why not requestAnimationFrame?
+The request animation frame is one of several ways I know of to get a method to fire over and over again at a certain rate. The other options beyond that of requestAnimationFrame being setInterval, and setTimeout. When it comes to client side javaScript, more often then not I would use requestAnimationFrame, but the other options still have there place such as when working with webWorker.
+
+Never the less in this section I will be going over some details when it comes to requestAnimationFrame.
+
+### 1.1 - Why requestAnimationFrame.
+
+The request animation frame method differs from the other options in that it is generally the best way to go about making an app loop in a front end environment. However in some environments and situations it is not available, or the other ways of doing so might still be more appropriate. There is also having a project that is event driven where the view only updates when an event such as a mouse click happens.
+
+### 1.2 - Why not requestAnimationFrame?
 
 Browser support is pretty good with requestAnimatinFrame, but the other options have been around much longer. If you really care about pushing backward compatibility back far that can easily be fixed with a polly fill. In addition requestAnimationFrame can not be used in a web worker environment, as such the other options mentioned are all that can be used in that kind of environment. Also requestAnimationFrame is very much a front end thing only, so if you make full stack applications with node.js you are limited to the other options.
 
-## 3 - basic demo of requestAnimationFrame
+## 2 - Example of requestAnimationFrame
 
 For a basic demo of requestAnimationFrame I put together something that involves the updating of a model, and rendering of that model to a canvas element. The module if you can call it that is just an object literal with an x, y and r properties that are used for the values of a circle. An update method is used to update the position of this module in an app loop that will be made using request animation frame.
 
@@ -122,7 +129,7 @@ So now it is just a matter of saving the javaScript code in a basic.js file, and
 
 When I open the index.html file in my browser I get a looping animation as expected.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 So request animation frame is the method of choice that I always go with when working out a canvas example of any kind, or to do anything that can be a kind of HTML animation in general actually when it comes to CSS effects. I have found that it is generally a better choice than any other options such as set time out or set interval methods, as the request animation frame is designed for this sort of thing in mind rather than just simply updating a model that does not need to be rendered right alway.
 
