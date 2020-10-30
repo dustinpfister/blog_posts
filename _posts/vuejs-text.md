@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 733
-updated: 2020-10-30 13:58:59
-version: 1.6
+updated: 2020-10-30 14:03:09
+version: 1.7
 ---
 
 The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. 
@@ -68,6 +68,8 @@ On top of the v-text directive there is also the mustache syntax in vuejs, this 
 ```
 
 ## 3 - innerText, $ref, and the mounted life cycle hook
+
+Yet another way to update the text content of an element, would be to use the native client side javaScript innerText property of an element object reference. There is just one problem, how does one get a reference to an element in a template in vuejs? Well one way would be to use the [ref attribute](https://vuejs.org/v2/api/#ref) to tag an element in the template. Once that is one then a reference to the element can be obtained by the [$refs instance property](https://vuejs.org/v2/api/#vm-refs) of a vue instance inside the body of a mounted life cycle hook for example.
 
 ```html
 <html>
