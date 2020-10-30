@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-10-30 09:12:05
-version: 1.11
+updated: 2020-10-30 09:31:51
+version: 1.12
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other environments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
@@ -20,11 +20,42 @@ The request animation frame is one of several ways I know of to get a method to 
 
 Never the less in this section I will be going over some details when it comes to requestAnimationFrame.
 
-### 1.1 - Why requestAnimationFrame.
+### 1.1 - Basic requestAnimationFrame example
+
+```html
+<html>
+    <head>
+        <title>request animation frame</title>
+    </head>
+    <body>
+        <div id="thediv" style="position:fixed;width:32px;height:32px;background:red;top:0px;"></div>
+        <script>
+var lt = new Date(),
+div = document.getElementById('thediv'),
+x = 0, pps = 128;
+// loop function
+var loop = function(now){
+    var t = secs = (now - lt) / 1000;
+    if(secs > 0){
+        x += pps * secs;
+        x %= window.innerWidth;
+    }
+    div.style.left =  Math.floor(x) + 'px';
+    // calling loop function with requestAnimationFrame
+    requestAnimationFrame(loop);
+    lt = now;
+};
+loop();
+        </script>
+    </body>
+</html>
+```
+
+### 1.2 - Why requestAnimationFrame.
 
 The request animation frame method differs from the other options in that it is generally the best way to go about making an app loop in a front end environment. However in some environments and situations it is not available, or the other ways of doing so might still be more appropriate. There is also having a project that is event driven where the view only updates when an event such as a mouse click happens.
 
-### 1.2 - Why not requestAnimationFrame?
+### 1.3 - Why not requestAnimationFrame?
 
 Browser support is pretty good with requestAnimatinFrame, but the other options have been around much longer. If you really care about pushing backward compatibility back far that can easily be fixed with a polly fill. In addition requestAnimationFrame can not be used in a web worker environment, as such the other options mentioned are all that can be used in that kind of environment. Also requestAnimationFrame is very much a front end thing only, so if you make full stack applications with node.js you are limited to the other options.
 
