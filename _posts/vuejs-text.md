@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 733
-updated: 2020-10-30 14:03:09
-version: 1.7
+updated: 2020-10-30 14:07:11
+version: 1.8
 ---
 
 The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. 
@@ -91,6 +91,8 @@ Yet another way to update the text content of an element, would be to use the na
   </body>
 </html>
 ```
+
+So then the ref attribute and $refs instance property is a great way to go about doing whatever I want or need to do with an element with plain old javaScript features. There is not just the innerText property of an element object reference after all when it comes to that. Still I think that something like this should only happed when I need to, and even then I must ask myself what it is that I am doing wrong actually. When it comes to just setting the text of an element in vuejs there is the v-text directive, and the mustache syntax that should be used. If I keep using native things then eventual i gets to the point where it kind of defeats the purpose of using vuejs.
 
 ## 4 - Conclusion
 
