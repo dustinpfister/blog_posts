@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-11-01 14:32:56
-version: 1.18
+updated: 2020-11-01 15:06:50
+version: 1.19
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -23,9 +23,9 @@ So there is a bit to cover when it comes to a uint8 array, and typed arrays in g
 
 ## 1 - The Uint8Array basics
 
-For starters there is juts knowing how to create a Uinit8Array with the constructor, and static methods that can be used to do so. It is also worth mentioning some additional basics with these kinds of arrays. So in this section I will just be starting out with a few quick basic examples of this kind of array constructor in javaScript.
+For starters there is juts knowing [how to create and use a Uinit8Array](https://stackoverflow.com/questions/38718202/how-to-use-uint8array-uint16array-uin32array) with the constructor, and static methods that can be used to do so. It is also worth mentioning some additional basics with these kinds of arrays. So in this section I will just be starting out with a few quick basic examples of this kind of array constructor in javaScript.
 
-The general basic idea to keep in mind with these arrays is that they are restricted to just one type that is Numbers, and the range for the numbers is restricted to the value raneg of one byte.
+The general basic idea to keep in mind with these arrays is that they are restricted to just one type that is Numbers, and the range for the numbers is restricted to the value range of one byte.
 
 ### 1.1 - Playing with the Uint8Array constructor for the first time
 
