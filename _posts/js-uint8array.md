@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-11-01 14:27:32
-version: 1.16
+updated: 2020-11-01 14:29:19
+version: 1.17
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -23,7 +23,7 @@ So there is a bit to cover when it comes to a uint8 array, and typed arrays in g
 
 ## 1 - The Uint8Array basics
 
-For starters there is juts knowing how to create a Uinit8Array with the constructor, and static methods that can be used to do so. It is also worth mentioning some additional basics with these kinds of arrays.
+For starters there is juts knowing how to create a Uinit8Array with the constructor, and static methods that can be used to do so. It is also worth mentioning some additional basics with these kinds of arrays. So in this section I will just be starting out with a few quick basic examples of this kind of array constructor in javaScript.
 
 ### 1.1 - Playing with the Uint8Array constructor for the first time
 
