@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2020-07-02 09:06:40
-version: 1.31
+updated: 2020-11-01 15:29:09
+version: 1.32
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for attaching events to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
 
-So then there are many other events that come to mind also that are important to the process of user Interface design such as [onblur](/2019/01/08/js-onblur/) and [onfocus](/2019/01/05/js-onfocus/). In addition events like onkeyup can be used to track changes to the value of an input tag as they happen on a per key stroke basis. Still the onchange event might be the most important as it is the event that will fire when a value actually changes in the input tag rather then it being in the process of changing. In this post I will be going over some quick examples of the onchange event in client side javaScript, and I will also be touching base on a whole bunch of related topics. This post will start out with [real basic onchnage event stuff for beginners](https://stackoverflow.com/questions/5024056/how-to-pass-parameters-on-onchange-of-html-select), but then progress into some more interesting examples at the bottom of the post.
+So then there are many other events that come to mind also that are important to the process of user Interface design such as [onblur](/2019/01/08/js-onblur/) and [onfocus](/2019/01/05/js-onfocus/), just to name a few. In addition events like onkeyup can be used to track changes to the value of an input tag as they happen on a per key stroke basis. Still the onchange event might prove to be an important event un the process of making a user interface as it is the event that will fire when a value actually changes in the input tag, rather then it being in the process of changing. 
+
+So then in this post I will be going over some quick examples of the onchange event in client side javaScript, and I will also be touching base on a whole bunch of related topics. This post will start out with a [real basic onchnage event example for beginners](https://stackoverflow.com/questions/5024056/how-to-pass-parameters-on-onchange-of-html-select), but then progress into some more interesting examples at the bottom of this post.
 
 <!-- more -->
 
