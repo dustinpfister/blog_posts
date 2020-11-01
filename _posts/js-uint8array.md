@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-11-01 12:12:50
-version: 1.11
+updated: 2020-11-01 14:03:52
+version: 1.12
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -37,7 +37,9 @@ console.log(arr[0], arr[1], arr[2]); // 128 255 199
 
 ## 2 - Clamped and not Clamped
 
-There is a [Uint8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) constructor the only difference between this and the plain Uint8Array constructor seems to be that values are clamped rather then warped when they go out of range.
+There is a [Uint8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) constructor on top of the plain Unit8Array constructor. The only difference between the Uint8ClampedArray and the plain Uint8Array constructor is that values are clamped rather then warped when they go out of range.
+
+For example is I set an element value to 258 with a regular Unit8Array the resulting value will end up being 2. The reason why is that the values for a Unit8Array are wrapped rather than clamped, and the numbers are zero relative. So then the numbers go 255, 0, 1, 2 when we are wrapping rather than clamping. With a Clamped array the resulting value will just be clamped at 255 the highest value for a Unit8Array.
 
 ```js
 var clamped = new Uint8ClampedArray(3),
@@ -49,6 +51,8 @@ notClamped[0] = 258;
 console.log(clamped[0]); // 255
 console.log(notClamped[0]); // 2
 ```
+
+So in some situations it would be better to go with clamped rather than wrapped arrays, but there is also juts making sure that things do not go out of range to begin with.
 
 ## 3 - The unit8 from method
 
