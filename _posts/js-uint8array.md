@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-11-01 14:22:01
-version: 1.14
+updated: 2020-11-01 14:26:24
+version: 1.15
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -70,6 +70,8 @@ console.log(uint8); // [0,255,128,64,0,0,0]
 ```
 
 ## 2 - The Uint8Array map method
+
+Just like with regular arrays there are a number of array prototype methods to work with off of an instance of a Uint8Array. There might not be a direct equivalent for each method mind you, but many of them are there. Once such method is the map method that works more or less the same way, only it will return a new Uint8Array rather than just a plain old array. Aside from that it can be used more or less the same way.
 
 ```js
 let byts = Uint8Array.of(128, 32, 220, 8);
