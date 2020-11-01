@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2020-11-01 15:06:50
-version: 1.19
+updated: 2020-11-01 15:12:48
+version: 1.20
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -88,3 +88,5 @@ console.log(invert);
 ## 3 - Conclusion
 
 So Uint8Arrays are a way of having an array of number values that range between 0 and 255 making it an appropriate options when it comes to anything that has to do with raw binary data. So any project that will need to work with data in a raw binary from a type array might be a good choice as it will enforce rules for the elements that are appropriate for this kind of application. There might be some cross browser concerns when it comes to front end development though on cretin platforms, but if you are suing a late version of node then there should be little to no problem just working with theme there of course.
+
+I have made an effort to try to keep my javaScript content fresh, and as such I am aiming to keep this post and all other javaScript posts fresh within a year. So it will only be a matter of time until I get around to editing this post again when I get around to it. In the mean time I have [found a post on typed arrays](https://www.html5rocks.com/en/tutorials/webgl/typed_arrays/) that does a decent job of outlining one decent use case examples with typed arrays. There are a number of things that one might run into where a knowledge of how to go about working with this kind of array is required, such as WebGl, and the canvas imagData class, just to name a few things that come to mind.
