@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-11-02 12:13:03
-version: 1.14
+updated: 2020-11-02 12:13:56
+version: 1.15
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
 
-Like most things like this it is important to look at more than one solution, so I will be taking a look at two solutions for this sort of thing. One example is very simple, and another is a little more complex. Some times it is called for to use a more complex example for things, but so far it would seem that the simple solution for this does in fact work okay. The reason why is because as far as I can tell both solutions will yield the same result when tested with a few examples.
+Like most things like this it is important to look at [more than one solution](https://stackoverflow.com/questions/2627473/how-to-calculate-the-number-of-days-between-two-dates), so I will be taking a look at two solutions for this sort of thing. One example is very simple, and another is a little more complex. Some times it is called for to use a more complex example for things, but so far it would seem that the simple solution for this does in fact work okay. The reason why is because as far as I can tell both solutions will yield the same result when tested with a few examples.
 
 <!-- more -->
 
