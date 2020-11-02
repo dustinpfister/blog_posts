@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-11-02 11:59:51
-version: 1.12
+updated: 2020-11-02 12:06:28
+version: 1.13
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -31,7 +31,9 @@ var days = getDayDiff1(d1, d2);
 console.log(days); // 1092
 ```
 
-In my testing with this so far it would seem that this does not result in any weird outcomes that are way off when compared to a more complex solution that I will be getting to next. So when it comes down to it, it would seem that something like this works okay for getting a number of days between tow date objects in javaScript.
+In my testing with this so far it would seem that this does not result in any weird outcomes that are way off when compared to a more complex solution that I will be getting to next. So when it comes down to it, it would seem that something like this works okay for getting a number of days between two date objects in javaScript.
+
+In this example I am refraining from rounding the result when using the getDayDiff1 method. This is something that I think should be left alone when making a method for creating a number of days between to date objects. In the event that there is a slight discrepancy in time, how that would be handled will depend on the code of the application that uses something like this. In general it might be a good idea to use Math.round, rather than Ceil or floor.
 
 ## 2 - An overly complex solution that involves looping, and getting the number of days in a month
 
