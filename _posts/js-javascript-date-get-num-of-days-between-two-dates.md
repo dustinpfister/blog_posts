@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-11-02 12:13:56
-version: 1.15
+updated: 2020-11-02 12:40:59
+version: 1.16
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -35,7 +35,7 @@ In my testing with this so far it would seem that this does not result in any we
 
 In this example I am refraining from rounding the result when using the getDayDiff1 method. This is something that I think should be left alone when making a method for creating a number of days between to date objects. In the event that there is a slight discrepancy in time, how that would be handled will depend on the code of the application that uses something like this. In general it might be a good idea to use Math.round, rather than Ceil or floor.
 
-## 2 - An overly complex solution that involves looping, and getting the number of days in a month
+## 2 - An overly complex solution that involves looping, getting the number of days in a month, and does not work so great.
 
 In this section I will be going over a more complicated way of doing the same thing when it comes to getting a number of days between two date objects. This solution involves a trick that can be used to get the number of days in a month, by adding one to the month argument, and setting zero as the day of the month, resulting in getting the last day of the current month. From there the get date method can be used to get the number of days in a month. With this it is just a matter of doing so for all months of interest, tabulating the number of days for each month, and then just adding and subtracting days to adjust with what is going on with the day of the month of the two date objects.
 
@@ -68,7 +68,9 @@ var days = getDayDiff2(d1, d2);
 console.log(days); // 1092
 ```
 
-This solution seems to work okay also, but it is a little overly complicated. In any case it does make use of a few tricks that might prove to be of value elsewhere. Namely the trick that is used to get the number of days in a give month.
+This solution seems to work okay for the give example here, but will result in an infinity loop when given other examples. So this solution does not work so great at least in the shape that it is in now. Even if it was to work okay it is still a little overly complicated compared to the first solution. 
+
+However it does make use of a few tricks that might prove to be of value elsewhere. Namely the trick that is used to get the number of days in a give month. Also if a solution like this where working as expected it might help address some additional issues when it comes to making this kind of solution to the problem at hand. Still lets just go with the simpler solution for now, but maybe throw a few more use case examples at it.
 
 ## 3 - Conclusion
 
