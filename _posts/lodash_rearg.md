@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 734
-updated: 2020-11-02 15:24:37
-version: 1.5
+updated: 2020-11-02 15:30:29
+version: 1.6
 ---
 
 I have got into the habit of starting each month with one new [lodash](https://lodash.com/) post while the library is still on my radar. I can not say that I find myself actually using lodash that much and more, when I do it is often just one or two methods that I bother with in the framework.
@@ -46,3 +46,22 @@ console.log( atan2(x,y) );  // 0.41822432957922906
 ```
 
 So maybe there are a few instances here in there when I am in a situation in which I would want to change the order of arguments of a function. However is it really all that hrd to just create an abstraction like this without lodash? Of course not. With that said I think I will spend the rest of the post writing about a few quick examples of doing this sort of thing without the need of lodash.
+
+## 3 - Vjs example of a atan2 wrapper of Math.atan2 without lodash
+
+So yeah why not just have a function that will call the function and return the result, with the arguments rearrange the way that I want it?
+
+```js
+let atan2 = (x, y) => {
+    return Math.atan2(y, x);
+}
+ 
+let x = 45,
+y = 20;
+ 
+console.log(Math.atan2(y, x)); // 0.41822432957922906
+console.log(atan2(x, y)); // 0.41822432957922906
+
+```
+
+Is that really such a big deal? Also I think that I can say that it makes things a little more readable also on top of that. Take a moment to compare this vanilla javaScript example to the lodash one. Which would you say is easier to follow?
