@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-11-02 13:36:41
-version: 1.18
+updated: 2020-11-02 13:40:49
+version: 1.19
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -109,7 +109,7 @@ console.log( Math.ceil(getDayDiff1(d1, d2)) ); // 2
 console.log( getDayDiff3(d1, d2) ); // 2
 ```
 
-So when two dates are compared where they are both the same year, and month, but the first one is on the second of the month, and the other is on the forth, then that is a difference of two days. However that is only true if I do not take into account the time of day.
+So when two dates are compared where they are both the same year, and month, but the first one is on the second of the month, and the other is on the forth, then that is a difference of two days. However that is only true if I do not take into account the time of day. The actually count of days in terms of the actual amount of time that has passed from one date to another can differ slightly when it comes to the time of day, and it might be best to just create new date objects for the dates if it is just the dates that I care about. Rounding can cause problems fro one set of dates to another with this, so it is something to be aware of for sure to say the least.
 
 ## 4 - Conclusion
 
