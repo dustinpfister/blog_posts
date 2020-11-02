@@ -5,13 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 734
-updated: 2020-11-02 15:06:51
-version: 1.2
+updated: 2020-11-02 15:10:01
+version: 1.3
 ---
 
 I have got into the habit of starting each month with one new [lodash](https://lodash.com/) post while the library is still on my radar. I can not say that I find myself actually using lodash that much and more, when I do it is often just one or two methods that I bother with in the framework.
 
-Todays lodash post is on the \_.rearg method that can be used to create a new function with a function only rearranging the arguments for the function.
+Todays lodash post is on the [\_.rearg method](https://lodash.com/docs/4.17.15#rearg) that can be used to create a new function with a function only rearranging the arguments for the function. I can not say that this is the most compelling function in lodash to support a case to install the full libray these days. This kind of situation does not happen often for me, and it is really not that hard to create my own abstraction for this with just plain old vanilla javaScript itself when  I need to do something like this in a project. So with that said this post will not just be on the lodash \_.rearg method but also some vanilla javaScript alternatives that do more or less the same thing.
 
 <!-- more -->
 
