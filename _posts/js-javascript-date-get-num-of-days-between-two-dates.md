@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-11-02 12:40:59
-version: 1.16
+updated: 2020-11-02 13:32:22
+version: 1.17
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -72,7 +72,44 @@ This solution seems to work okay for the give example here, but will result in a
 
 However it does make use of a few tricks that might prove to be of value elsewhere. Namely the trick that is used to get the number of days in a give month. Also if a solution like this where working as expected it might help address some additional issues when it comes to making this kind of solution to the problem at hand. Still lets just go with the simpler solution for now, but maybe throw a few more use case examples at it.
 
-## 3 - Conclusion
+## 3 - Setting tie of dates to midnight
+
+One thing that comes to mind when doing this is if I should set the tie of the date objects to a standard time, and then just take into account what day is was. In some situations this might be all that I care about when making working things out with this. That is that I am just interested in the difference in days between two dates in terms of the year, month, and day. It would nit be to hard to adjust the dates, just have a method that will return a new date object that has the same values when it comes to what I care about preserved but with all values that have to do with time of day set to zero.
+
+```js
+var setTimeMidnight = function (d) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+};
+ 
+var getDayDiff3 = function (d1, d2) {
+    // create new dates that do not make use of time
+    d1 = setTimeMidnight(d1);
+    d2 = setTimeMidnight(d2);
+    return ((d2 - d1) / 1000 / 60 / 60 / 24);
+};
+ 
+var getDayDiff1 = function (d1, d2) {
+    return ((d2 - d1) / 1000 / 60 / 60 / 24);
+};
+ 
+var d1 = new Date(2020, 0, 2, 20, 10),
+d2 = new Date(2020, 0, 4, 1, 15);
+ 
+// use of the getDayDiff1 method will give a fraction
+console.log( getDayDiff1(d1, d2).toFixed(2) ); // '1.21'
+ 
+// I can then get different results depending on how I round
+console.log( Math.floor(getDayDiff1(d1, d2)) ); // 1
+console.log( Math.round(getDayDiff1(d1, d2)) ); // 1
+console.log( Math.ceil(getDayDiff1(d1, d2)) ); // 2
+ 
+// with getDayDiff 3 I am setting time of dates to midnight
+// in other words just cutting the time off, and setting to a
+// uniform time for each date.
+console.log( getDayDiff3(d1, d2) ); // 2
+```
+
+## 4 - Conclusion
 
 Although both solutions result in the same desired value, the solution that involves looping is of course way less efficient that goes without saying. Of course I would prefer to use solutions that do not involve looping at all if doing so if possible generally. 
 
