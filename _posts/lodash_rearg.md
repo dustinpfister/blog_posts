@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 734
-updated: 2020-11-02 15:01:32
-version: 1.1
+updated: 2020-11-02 15:06:51
+version: 1.2
 ---
 
 I have got into the habit of starting each month with one new [lodash](https://lodash.com/) post while the library is still on my radar. I can not say that I find myself actually using lodash that much and more, when I do it is often just one or two methods that I bother with in the framework.
@@ -16,6 +16,10 @@ Todays lodash post is on the \_.rearg method that can be used to create a new fu
 <!-- more -->
 
 ## 1 - basic lodash \_.rearg example
+
+So the basic idea of this method is that I take a function that has a few arguments, and then I pass that function as the first argument to the lodash \_.rearg method. After that the second argument that is passed is an array of index values for the arguments that can eb used to change the order of the arguments for a resulting function that will be returned.
+
+So in other words if i have a function called func that takes three arguments, and I pass that as the first argument, and the array [0,1,2] the resulting function that is returned will call the function func in the same order, I can then change the index values of the array to change the order in which they are called.
 
 ```js
 let func = (a, b, c) => {
