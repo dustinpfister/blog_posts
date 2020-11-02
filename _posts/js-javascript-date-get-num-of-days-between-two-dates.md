@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-11-02 13:32:22
-version: 1.17
+updated: 2020-11-02 13:36:41
+version: 1.18
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -108,6 +108,8 @@ console.log( Math.ceil(getDayDiff1(d1, d2)) ); // 2
 // uniform time for each date.
 console.log( getDayDiff3(d1, d2) ); // 2
 ```
+
+So when two dates are compared where they are both the same year, and month, but the first one is on the second of the month, and the other is on the forth, then that is a difference of two days. However that is only true if I do not take into account the time of day.
 
 ## 4 - Conclusion
 
