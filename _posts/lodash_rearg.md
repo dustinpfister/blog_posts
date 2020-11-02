@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 734
-updated: 2020-11-02 15:34:03
-version: 1.7
+updated: 2020-11-02 15:38:57
+version: 1.8
 ---
 
 I have got into the habit of starting each month with one new [lodash](https://lodash.com/) post while the library is still on my radar. I can not say that I find myself actually using lodash that much and more, when I do it is often just one or two methods that I bother with in the framework.
@@ -65,3 +65,9 @@ console.log(atan2(x, y)); // 0.41822432957922906
 ```
 
 Is that really such a big deal? Also I think that I can say that it makes things a little more readable also on top of that. Take a moment to compare this vanilla javaScript example to the lodash one. Which would you say is easier to follow? I mean if you are someone who is not on top of what all these little lodash functions do, and you come across this function that takes a function as an argument along with an array of numbers, you would have to take a moment to look into reading a post like this to know what the method does. However if you come across a vanilla javaScript example that does the same thing, more often then not, you would be able to just read the code, know what it does, and move on with your life.
+
+## 4 - Conclusion
+
+So that is about of for this lodash method at least. I guess I could expand this post a bit more on this topic, and maybe I will at some point in the future when it comes to editing this content now and then. I could maybe make another example that is just a vanilla javaScript clone of the method maybe.
+
+I think I will continue the patten of writing just one new lodash post a month for at least the rest of the year. The utility library does still have its redeeming qualities do not get me wrong. There is much to write about when it comes to functional programing, and there are a few methods that are useful, but are not baked into core javaScript itself. I just can not say that this is a method that is blowing my kilt up.
