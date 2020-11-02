@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 734
-updated: 2020-11-02 15:00:32
-version: 1.0
+updated: 2020-11-02 15:01:32
+version: 1.1
 ---
 
 I have got into the habit of starting each month with one new [lodash](https://lodash.com/) post while the library is still on my radar. I can not say that I find myself actually using lodash that much and more, when I do it is often just one or two methods that I bother with in the framework.
@@ -14,3 +14,15 @@ I have got into the habit of starting each month with one new [lodash](https://l
 Todays lodash post is on the \_.rearg method that can be used to create a new function with a function only rearranging the arguments for the function.
 
 <!-- more -->
+
+## 1 - basic lodash \_.rearg example
+
+```js
+let func = (a, b, c) => {
+    return [a, b, c];
+};
+ 
+let re = _.rearg(func, [2, 0, 1]);
+ 
+console.log(re(1, 2, 3));
+```
