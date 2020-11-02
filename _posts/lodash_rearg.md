@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 734
-updated: 2020-11-02 15:38:57
-version: 1.8
+updated: 2020-11-02 15:57:25
+version: 1.9
 ---
 
 I have got into the habit of starting each month with one new [lodash](https://lodash.com/) post while the library is still on my radar. I can not say that I find myself actually using lodash that much and more, when I do it is often just one or two methods that I bother with in the framework.
@@ -66,8 +66,38 @@ console.log(atan2(x, y)); // 0.41822432957922906
 
 Is that really such a big deal? Also I think that I can say that it makes things a little more readable also on top of that. Take a moment to compare this vanilla javaScript example to the lodash one. Which would you say is easier to follow? I mean if you are someone who is not on top of what all these little lodash functions do, and you come across this function that takes a function as an argument along with an array of numbers, you would have to take a moment to look into reading a post like this to know what the method does. However if you come across a vanilla javaScript example that does the same thing, more often then not, you would be able to just read the code, know what it does, and move on with your life.
 
-## 4 - Conclusion
+## 4 - making a vanila javaScript clone of the lodash rearg method
 
-So that is about of for this lodash method at least. I guess I could expand this post a bit more on this topic, and maybe I will at some point in the future when it comes to editing this content now and then. I could maybe make another example that is just a vanilla javaScript clone of the method maybe.
+So it would not be to hard to make a clone of this kind of lodash method. When I took a moment to do so I just bade use of several basic features of javaScript that are worth mentioning for anyone that might not be familiar with them just yet. There is of course the arguments object fo a function, along with the function length property that can be used to get the number of arguments, or parameters rather that are expected by a function. I can then use this along with the index values array to create an array of arguments in the desired order, and then just call the given function with the Function apply prototype method, and pass the resulting array.
+
+```js
+// vjs rearg
+let rearg = (func, indices) => {
+    return function () {
+        let i = 0,
+        len = func.length,
+        args = [];
+        while (i < len) {
+            args[i] = arguments[indices[i]];
+            i += 1;
+        }
+        return func.apply(this, args);
+    };
+};
+ 
+let func = (a, b, c) => {
+    return [a, b, c];
+};
+ 
+let a = _.rearg(func, [2, 0, 1]),
+b = rearg(func, [2, 0, 1]);
+ 
+console.log(a(1, 2, 3)); // [3,1,2]
+console.log(b(1, 2, 3)); // [3,1,2]
+```
+
+## 5 - Conclusion
+
+So that is about of for this lodash method at least. I guess I could expand this post a bit more on this topic, and maybe I will at some point in the future when it comes to editing this content now and then. I could maybe see about fining some more examples where making an alternative abstraction for a method is justified.
 
 I think I will continue the patten of writing just one new lodash post a month for at least the rest of the year. The utility library does still have its redeeming qualities do not get me wrong. There is much to write about when it comes to functional programing, and there are a few methods that are useful, but are not baked into core javaScript itself. I just can not say that this is a method that is blowing my kilt up.
