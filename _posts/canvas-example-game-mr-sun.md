@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 735
-updated: 2020-11-03 16:35:47
-version: 1.5
+updated: 2020-11-03 16:37:04
+version: 1.6
 ---
 
 I want a [canvas example](/2020/03/23/canvas-example/) that will be a simple god game, or a kind of game where things move forward on there own, and there is just a little interaction from the player now and then. I have come to like to play, and make these kinds of games these days. Playing a game can end up eating up a lot of time, so I like games that just move along on there own, and I can just step in and make a few changes now and then. Games like sim city, and roller coaster tycoon come to mind when it comes to this.
@@ -176,6 +176,8 @@ var draw = (function () {
 ```
 
 ## 4 - Main.js
+
+Now that I have mu utility library, a game module, and a draw module it is time to make use of it all in my main javaScript file.
 
 ```js
 var canvas = document.createElement('canvas'),
