@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-11-03 10:39:24
-version: 1.11
+updated: 2020-11-03 10:48:19
+version: 1.12
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -51,13 +51,46 @@ If all goes well in the body of the next then call I will have access to a [resp
 
 So maybe this is not the most compelling example of the js fetch method, but you should get the basic idea at least. It is a more modern, and easier way to go about making http get requests compared to XMLHttpRequest, and in modern browsers it is there to work with without any additional javaScript code being made part of the projects dependences.
 
-## 2 - Using a fetch pollyFill
+## 2 - Making a Post request with fetch
+
+```html
+<html>
+    <head>
+        <title>js fetch</title>
+    </head>
+    <body>
+        <textarea id = "out" cols="100" rows="15"></textarea>
+        <script>
+let out = document.getElementById('out');
+fetch('localhost:8080/data', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+     action: 'search',
+     query: 'foo'
+  })
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Using a fetch pollyFill
 
 If you are concerned about support for older browsers, then a polyfill for fetch will have to be used, or just do things the old fashion way with XMLHttpRequst as any polyfill will likely use just that. A popular polyfill for fetch can be found on github here at [github](https://github.com/github/fetch).
 
 Another option would be to just not use fetch at all and chose or make an http client, which is what I would often do rather than using fetch when it comes to working on an actual project where I will need to script http requests.
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So fetch is a new standard for preforming http requests that can be used in modern browsers, and maybe it is a little easier to use compared to the traditional XMLHttpRequest method. Still when it comes to worrying about browser support I still know that I will get my code to work on a wider range of clients by using the tried yet true XMlHttprequest over fetch. For this reason I often choose to go with XMLHttprequest over fetch when making my own http client, something that I find myself doing now and then when it comes to vanilla JavaScript projects. If you would like my take on [XMLHttpRequest I of course wrote a post on that one for what it is worth](/2018/03/28/js-xmlhttprequest/).
 
