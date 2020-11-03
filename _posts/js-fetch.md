@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-11-03 10:48:19
-version: 1.12
+updated: 2020-11-03 10:53:00
+version: 1.13
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -52,6 +52,9 @@ If all goes well in the body of the next then call I will have access to a [resp
 So maybe this is not the most compelling example of the js fetch method, but you should get the basic idea at least. It is a more modern, and easier way to go about making http get requests compared to XMLHttpRequest, and in modern browsers it is there to work with without any additional javaScript code being made part of the projects dependences.
 
 ## 2 - Making a Post request with fetch
+
+The ftech method just like XMLHttpRequest can of course be used to preform other types of requests other than GEt requests. There are a few of them to mentioning, but in general there are GET requests, and POST requests. A Get requests for the most part is to just get a resource at a given URL, while a POST requests is to upstream a body of content to a back end system.
+In any case to preform a POST request I can do more or less the same thing as with a GET request, only I need to provide an options object with at least a few properties. In this options object I am going to want to set the method of the requests to POST, and I am also going to want to given a body that is to be uploaded to the server. Often wheh it comes to these kind of requests it is called for to provide at least a few headers also, such as Content-Type.
 
 ```html
 <html>
