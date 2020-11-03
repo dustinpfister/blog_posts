@@ -5,17 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-07-02 10:10:00
-version: 1.9
+updated: 2020-11-03 10:11:29
+version: 1.10
 ---
 
-In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a new way of making http requests in browser. It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. 
+In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
 
 So then the js fetch method makes use of promises, and provides an updated [response api](https://developer.mozilla.org/en-US/docs/Web/API/Response) for better handling common tasks like parsing json to a workable object which is a nice feature. So in many respects it is a little more user friendly compared to the tired yet true XMLHttpRequest method that would need to be used with much additional javaScript code around it to end up with similar functionality. It might still be a smarter play to go with a user space option that makes use of XMLhttpRequest to provide the same functionality still tough, at least that is what I would do more often then not.
 
-It is like a browser built in [axios](/2018/01/10/nodejs-axios/), but because it is a new feature it might be to soon to regard it as a replacement for axios or XMLHttpRequest, unless a [polyfill](https://github.com/github/fetch) is used.
+So the fetch native client side javaScript method is like a browser built in modern http client. However because fetch is still a new feature relative to XMLhttprequest at least, it might be to soon to regard it as a replacement for a user space http client. However the fetch method can be added to older platforms by making use of a [polyfill](https://github.com/github/fetch) for the fetch method. Still in my projects in generally prefer to use a user space http client, or the tired yet true XMLHttprequest method.
 
-Still the fetch method is there to worth with in modren browsers, so I though it deserves a quick post so lets do this.
+In any case the fetch method is still without question a feature in modern browsers that is worth a moment of my time to write at least one post on the subject. I have done so all ready with [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/), and [axios](/2018/01/10/nodejs-axios/) after all.
 
 <!-- more -->
 
