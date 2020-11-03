@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 735
-updated: 2020-11-03 16:48:40
-version: 1.10
+updated: 2020-11-03 16:50:25
+version: 1.11
 ---
 
 I want a [canvas example](/2020/03/23/canvas-example/) that will be a simple [god game](https://en.wikipedia.org/wiki/God_game), or a kind of game where things move forward on there own, and there is just a little interaction from the player now and then. I have come to like to play, and make these kinds of games these days. Playing a game can end up eating up a lot of time, so I like games that just move along on there own, and I can just step in and make a few changes now and then. Games like sim city, and roller coaster tycoon come to mind when it comes to this.
@@ -122,6 +122,8 @@ var gameMod = (function(){
  
 }());
 ```
+
+The main idea here is to keep the code that has to do with creating and mutating a game state object away from everything else.
 
 ## 3 - The draw module for Mr Sun
 
