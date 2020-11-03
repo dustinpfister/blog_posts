@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 735
-updated: 2020-11-03 16:32:08
-version: 1.3
+updated: 2020-11-03 16:34:38
+version: 1.4
 ---
 
 I want a [canvas example](/2020/03/23/canvas-example/) that will be a simple god game, or a kind of game where things move forward on there own, and there is just a little interaction from the player now and then. I have come to like to play, and make these kinds of games these days. Playing a game can end up eating up a lot of time, so I like games that just move along on there own, and I can just step in and make a few changes now and then. Games like sim city, and roller coaster tycoon come to mind when it comes to this.
@@ -42,6 +42,8 @@ utils.distance = function (x1, y1, x2, y2) {
 For this canvas example I have my get canvas relative method that I want to help with getting a canvas relative position when it comes to working with pointer events. In addition I also have the distance formula, which is yet another usual suspect when it comes to these kinds of custom cut utility modules that I make for these examples.
 
 ## 2 - The game module for Mr Sun
+
+So now for the game modules that will be used to create and update a game state module. For this canvas example there is the sun object, and then a collection of sections objects that are the main display objects of interest here. The public API of this main game module has a method for creating a new game object, updating the sections of the game object, and moving the sun object.
 
 ```js
 var gameMod = (function(){
