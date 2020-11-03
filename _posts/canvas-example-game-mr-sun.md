@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 735
-updated: 2020-11-03 16:27:34
-version: 1.2
+updated: 2020-11-03 16:32:08
+version: 1.3
 ---
 
 I want a [canvas example](/2020/03/23/canvas-example/) that will be a simple god game, or a kind of game where things move forward on there own, and there is just a little interaction from the player now and then. I have come to like to play, and make these kinds of games these days. Playing a game can end up eating up a lot of time, so I like games that just move along on there own, and I can just step in and make a few changes now and then. Games like sim city, and roller coaster tycoon come to mind when it comes to this.
@@ -18,6 +18,8 @@ There is a lot that comes to mind when it comes to moving forward with this kind
 <!-- more -->
 
 ## 1 - The utils module for Mr Sun
+
+To start off this canvas example I will want to start a general utility module for it. As a canvas example grows I want a module where I can place methods that I might end up using in more than one location when it comes to having a bunch of modules that will make up the whole of the code.
 
 ```js
 var utils = {};
@@ -36,6 +38,8 @@ utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 ```
+
+For this canvas example I have my get canvas relative method that I want to help with getting a canvas relative position when it comes to working with pointer events. In addition I also have the distance formula, which is yet another usual suspect when it comes to these kinds of custom cut utility modules that I make for these examples.
 
 ## 2 - The game module for Mr Sun
 
