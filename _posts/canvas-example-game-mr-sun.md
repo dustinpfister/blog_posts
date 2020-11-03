@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 735
-updated: 2020-11-03 16:46:18
-version: 1.8
+updated: 2020-11-03 16:47:43
+version: 1.9
 ---
 
 I want a [canvas example](/2020/03/23/canvas-example/) that will be a simple god game, or a kind of game where things move forward on there own, and there is just a little interaction from the player now and then. I have come to like to play, and make these kinds of games these days. Playing a game can end up eating up a lot of time, so I like games that just move along on there own, and I can just step in and make a few changes now and then. Games like sim city, and roller coaster tycoon come to mind when it comes to this.
@@ -125,7 +125,7 @@ var gameMod = (function(){
 
 ## 3 - The draw module for Mr Sun
 
-This is very much a canvas example so of course I have a draw.js module for it like always.
+This is very much a canvas example so of course I have a draw.js module for it like always. I take a moment to break things down into a while much of draw methods, one for each little aspect of the view for this. I have a draw method just for the background, one to draw the sun, and another to draw the sections of the sun thus far.
 
 ```js
 var draw = (function () {
