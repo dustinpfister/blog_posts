@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 735
-updated: 2020-11-03 16:37:04
-version: 1.6
+updated: 2020-11-03 16:43:49
+version: 1.7
 ---
 
 I want a [canvas example](/2020/03/23/canvas-example/) that will be a simple god game, or a kind of game where things move forward on there own, and there is just a little interaction from the player now and then. I have come to like to play, and make these kinds of games these days. Playing a game can end up eating up a lot of time, so I like games that just move along on there own, and I can just step in and make a few changes now and then. Games like sim city, and roller coaster tycoon come to mind when it comes to this.
@@ -282,3 +282,9 @@ var loop = function () {
 };
 loop();
 ```
+
+## 5 - Conclusion
+
+When I have this canvas example up and running I have the very basic idea of what I had in mind working at least. So far so good, but now the next step is where to go from here. There are many ideas that I have in mind when it comes to moving forward with this example when it comes to turning it into an actual game of one kind or another. I am thinkg that I will want to have some code that serve as a more complex world generator, that will set different types for the various sections in the world. That is having a section that is a land type, ocean, swamp, mountain, ect. There would also be a process where life will spring up if conditions are right for it. Of course it goes without saying that moving the sun around will chnage the situation for that. 
+
+So then the idea here is to have a world that can be left alone, or at any moment I can come along and move the sun around destroying everything, or make it so that one side is way to hot, and the other side is ice cold.
