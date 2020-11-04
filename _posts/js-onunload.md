@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 662
-updated: 2020-11-04 12:32:30
-version: 1.9
+updated: 2020-11-04 12:33:26
+version: 1.10
 ---
 
 In client side javaScript there is the [onunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event) that can be used o attach an event handler that will fire when a user leaves a page. This can be used to save something to local storage such as updating a time stamp value or something to that effect that should happen when the user navigates away from a page or the site completely. 
@@ -17,7 +17,7 @@ The onunload event should be attached to the window object rather than an elemen
 
 ## 1 - basic on unload example using local storage
 
-This basic example of the onunload event makes use of local storage to store a time stamp when the user leaves the page. When the user returns to the page the about of time sense the last visit is displayed. I will not be getting into the use of the local storage api in detail here as I have wrote a post on this subject, this just strikes me as one thing that comes to mind when it comes to a practical use case example of the onunload event.
+This basic example of the onunload event makes use of local storage to store a time stamp when the user leaves the page. When the user returns to the page the about of time sense the last visit is displayed. I will not be getting into the use of the [local storage api in detail](/2019/08/20/js-web-storage/) here as I have wrote a post on this subject, this just strikes me as one thing that comes to mind when it comes to a practical use case example of the onunload event.
 
 To do this I just use the get item method of the local storage to get the last time stamp if there is one. I then also get the current time, and use that to get the am9unt of time that has elapsed sense the last visit. In the event that there is not a time stamp from the last visit a value of zero is used for the amount of time. I then use get document by id to get an element by way of an id tag and then set the inner text of that element to the time value.
 
