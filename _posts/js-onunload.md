@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 662
-updated: 2020-11-04 13:09:11
-version: 1.11
+updated: 2020-11-04 13:10:30
+version: 1.12
 ---
 
 In client side javaScript there is the [onunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event) that can be used o attach an event handler that will fire when a user leaves a page. This can be used to save something to local storage such as updating a time stamp value or something to that effect that should happen when the user navigates away from a page or the site completely. 
@@ -50,9 +50,9 @@ So there you have it a basic working example of the on unload event in javaScrip
 
 ## 2 - The beforeunload event and alerting
 
-When trying to alert the user by way of the onunload event often the message will be blocked in most modern browsers. When I think about if for a moment that might be the way it should be. In all fairness I can see how calling alert in a onunload event can be something that would end um being abused. However this can complicate matters when it does come to fair use of this feature.
+When trying to alert the user by way of the onunload event often the message will be [blocked in most modern browsers](https://stackoverflow.com/questions/7794301/window-onunload-is-not-working-properly-in-chrome-browser-can-any-one-help-me). When I think about if for a moment that might be the way it should be. In all fairness I can see how calling alert in a onunload event can be something that would end um being abused. However this can complicate matters when it does come to fair use of this feature.
 
-As of this writing using a late version of chrome (86.x) The following example seems to work when I click the div element that is used to attach a beforeunload event inside the body of an event handler for the on click method.
+As of this writing using a late version of chrome (86.x) The following example seems to work when I click the div element that is used to attach a [beforeunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event) inside the body of an event handler for the on click method.
 
 ```html
 <html>
