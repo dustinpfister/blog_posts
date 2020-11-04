@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 662
-updated: 2020-11-04 13:10:30
-version: 1.12
+updated: 2020-11-04 13:15:59
+version: 1.13
 ---
 
 In client side javaScript there is the [onunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event) that can be used o attach an event handler that will fire when a user leaves a page. This can be used to save something to local storage such as updating a time stamp value or something to that effect that should happen when the user navigates away from a page or the site completely. 
@@ -46,7 +46,7 @@ window.addEventListener('unload', function (e) {
 </html>
 ```
 
-So there you have it a basic working example of the on unload event in javaScript. This should work without issue in most cases.
+So there you have it a basic working example of the on unload event in javaScript. This should work without issue in most cases, and I cant think of any reason why it would not. However in some situations I can see how certain things that would be done in an event hander such as this might be blocked by a web browser. Making a call like this is something that would not result in annoying a user after all, and in fact in a real project it is something that they would want to happen actually. Just going ahead and saving changes to a state of something is one thing, but what about not doing that automatically and alerting a user to the fact that work has not been saved? That strikes me as fair use, but it is also something that can end up being abused also, so lets look at one more example of this sort of thing.
 
 ## 2 - The beforeunload event and alerting
 
