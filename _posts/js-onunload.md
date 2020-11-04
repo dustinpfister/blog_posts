@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 662
-updated: 2020-11-04 12:33:26
-version: 1.10
+updated: 2020-11-04 13:09:11
+version: 1.11
 ---
 
 In client side javaScript there is the [onunload event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event) that can be used o attach an event handler that will fire when a user leaves a page. This can be used to save something to local storage such as updating a time stamp value or something to that effect that should happen when the user navigates away from a page or the site completely. 
@@ -48,7 +48,41 @@ window.addEventListener('unload', function (e) {
 
 So there you have it a basic working example of the on unload event in javaScript. This should work without issue in most cases.
 
-## 2 - Conclusion
+## 2 - The beforeunload event and alerting
+
+When trying to alert the user by way of the onunload event often the message will be blocked in most modern browsers. When I think about if for a moment that might be the way it should be. In all fairness I can see how calling alert in a onunload event can be something that would end um being abused. However this can complicate matters when it does come to fair use of this feature.
+
+As of this writing using a late version of chrome (86.x) The following example seems to work when I click the div element that is used to attach a beforeunload event inside the body of an event handler for the on click method.
+
+```html
+<html>
+    <head>
+        <title>ononload example</title>
+    </head>
+    <body>
+        <div id="out" style="width:320px;height:240px;background:black;"><div>
+        <script>
+ 
+var firstClick = true;
+document.getElementById('out').addEventListener('click', function(){
+    if(firstClick){
+        window.addEventListener('beforeunload', function (e) {
+            var str = 'Sorry to see you go';
+            (e || window.event).returnValue = str;
+            return str;
+        });
+    }
+    firstClick = false;
+});
+ 
+        </script>
+    </body>
+</html>
+```
+
+In time it is possible that even this might break, but it makes sense. If the user does something on the page such as clicking on an element that might do something to create a state of sorts, but not necessarily save that state, then there should be a way t alert the user that by leaving the page they might loose that work. With that said this seems to work to do that.
+
+## 3 - Conclusion
 
 So that is it for now when it comes to the javaScript on unload method. I might get around to writing some additional examples for this one in time, but there basic idea is there at least for starters. 
 
