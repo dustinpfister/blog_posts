@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-05 20:30:32
-version: 1.5
+updated: 2020-11-05 20:35:46
+version: 1.6
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plugins to it, and making any changes that are needed to the source in the process if any.
@@ -117,6 +117,8 @@ gameMod.load((function(){
 ```
 
 ## 4 - utils.js
+
+I wanted to add a few methods to the utils.js module for mr sun that I worked out in another canvas example, mainly the utils.logPer method. I have not yet worked out an experience point system that I am truly happy with, but that is not to say that I do not have systems work out for that. There is my post an an experience point system module, and also the canvas example that has to do with creating a logarithmic percentage value from a linear one.
 
 ```js
 var utils = {};
