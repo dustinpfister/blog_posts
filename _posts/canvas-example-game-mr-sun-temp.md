@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-06 16:55:32
-version: 1.15
+updated: 2020-11-06 16:59:26
+version: 1.16
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plug-ins to it, and making any changes that are needed to the source in the process if any.
@@ -79,3 +79,5 @@ Some additional have been made to the main.js of the Mr Sun source code in this 
 ## 9 - Conclusion
 
 So far I am Liking how this project is going, but there is indeed much more work that needs to be done until I have something that I can call a done deal. I think I will continue working on just this fork alone when it comes to working out additional changes that need to happen with the temp plug-in, and at least one or two additional plug-ins that are closely related to it. The focus here is on a single core plug-in that has to do with temperature, and as I move forward with additional forks.
+
+Speaking of additional forks, I have started one additional fork off of this example that I am calling [Mr Sun Geo](/2020/110/06/canvas-example-game-mr-sun-geo/). This example just strikes me as the next logic step from here, not that I have some of the core basics of the game worked out. So then Mr Sun Geo is just a few additional improvements to the source code of the core of the application, and yet even more plug-ins that add additional features to the game. features that have to do with Geology, the water cycle, and the Atmosphere of the game world.
