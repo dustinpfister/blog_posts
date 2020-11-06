@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-06 16:51:54
-version: 1.14
+updated: 2020-11-06 16:55:32
+version: 1.15
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plug-ins to it, and making any changes that are needed to the source in the process if any.
@@ -23,638 +23,59 @@ This canvas example is a fork of my starting Mr Sun canvas example. The source c
 
 I wanted to create at least two plug-ins as a way to test out how the system works thus far, and maybe add some features as needed. This far as of 0.2.0 of this example I have just added a way to set a call priory for plug-ins which is just a way to make sure that a plug-in that depends on smoother plug in is called in the proper order.
 
-## 2 - The temp.js plug-in
+## 2 - The sun.js plug-in
+
+
+
+```js
+```
+
+## 3 - The temp.js plug-in
 
 One of the core reasons of this fork of Mr Sun is to work out the plug-in that will be used to set a temperature value for the sun object itself, as well as all the sections around the sun. The current distance between the Sun object, and a section is of course the core feature of the game that will impact this, as well as many other things in the game. However there is more to it then just working out a single expression and moving on with this, there are a few things that come to mind when it comes to how temperature will be set for the sections actually, and this plug-in alone will probably eat up a fair amount of time to get just right.
 
 ```js
-gameMod.load({
-    name: 'temp',
-    callPriority: '1.0',
-    create: function(game, opt){
-        game.maxTemp = 500;
-        var td = game.sun.tempData = {
-            i: 0,
-            len: 100,
-            base: 10,
-            max: 500,
-            years: 0,
-            iAtYears: 100,
-            temp: {}
-        };
-        td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
-        game.sun.temp = td.temp.valueOf();
-        game.sections = game.sections.map(function(section){
-            section.temp = 0;
-            section.groundTemp = 0;
-            return section;
-        });
-    },
-    onDeltaYear: function(game, deltaYears){
-        // sun will gain temp over time
-        var td = game.sun.tempData;
-        td.years += deltaYears;
-        //td.i += deltaYears;
-        td.i = Math.floor(td.years / td.iAtYears);
-        td.i = td.i >= td.len ? td.len - 1 : td.i;
-        td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
-        game.sun.temp = td.temp.valueOf();
- 
-        // update temp of sections
-        var i = game.sections.length,
-        section;
-        while(i--){
-            section = game.sections[i];
-            if(Math.floor(section.per * 100) >= 50){
-                section.groundTemp += game.sun.temp / 10 * section.per;
-            }else{
-                section.groundTemp -= section.groundTemp / 100;
-            }
-            section.groundTemp = section.groundTemp < 0.25 ? 0: section.groundTemp;
-            section.groundTemp = section.groundTemp > game.maxTemp / 2 ? game.maxTemp / 2: section.groundTemp;
-            section.temp = section.groundTemp + game.sun.temp / 2 * section.per;
-        }
-    }
-});
 ```
 
-## 3 - The fusion.js plug-in
+## 4 - The fusion.js plug-in
 
 Another idea I have for a plug-in was a fusion plug-in that is a way for minerals to be produce in the game. I am thinking that minerals will just be one aspect of what will need to happen in this little game world of mine, and like the temp plug-in, it is another core aspect of the game mechanics that other future plug-ins will depend on. In time I aim to create additional plug-ins that will have to do with geology, the atmosphere, basic life, and civilization all of which have to do with elements, and molecules composed of elements. So in this game it makes sense to have a plug-in that serves as a way to create these resources.
 
 The plug-in design started out with making fusion something that happens in the world sections, rather than the sun. In this game I am not making an effort to make some kind of realistic simulation of course, this is very much just a game, and the goal is to just simply have fun. So this mechanic of having fusion just be something that happens in the world sections does strike me as one way to go about handling this aspect of the game mechanics. However the idea of making fusion something that happens in the sun object would make more sense when it comes to a real world understanding of fusion.
 
 ```js
-gameMod.load((function(){
-    var getMinDelta = function(section, rate, temp, deltaYears){
-        return rate * Math.floor(section.temp / temp) * deltaYears;
-    };
-    return {
-        name: 'fusion',
-        callPriority: '1.1',
-        create: function(game, opt){
-            game.sections = game.sections.map(function(section){
-                section.minerals = {
-                    copper: 0, 
-                    silver: 0 
-                };
-                return section;
-            });
-        },
-        onDeltaYear: function(game, deltaYears){
-            var i = game.sections.length,
-            section;
-            while(i--){
-                section = game.sections[i];
-                if(section.temp > 100){
-                    section.minerals.copper += getMinDelta(section, 5, 100, deltaYears);
-                }
-                if(section.temp > 250){
-                    section.minerals.silver += getMinDelta(section, 1, 250, deltaYears);
-                }
-            }
-        }
-    };
-}()));
 ```
 
-## 4 - utils.js
+## 5 - utils.js
 
 I wanted to add a few methods to the utils.js module for mr sun that I worked out in another canvas example, mainly the utils.logPer method. I have not yet worked out an experience point system that I am truly happy with, but that is not to say that I do not have systems work out for that. There is my post an an experience point system module, and also the canvas example that has to do with creating a logarithmic percentage value from a linear one.
 
 ```js
-var utils = {};
- 
-utils.getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    return {
-        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
-        bx: bx
-    };
-};
- 
-utils.distance = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-};
- 
-utils.logPer = function (per, a, b) {
-    a = a === undefined ? 2 : a;
-    b = b === undefined ? a : b;
-    per = per < 0 ? 0 : per;
-    per = per > 1 ? 1 : per;
-    return Math.log((1 + a - 2) + per) / Math.log(b);
-};
- 
-utils.createLogPerObject = function(i, len, base, max, a, b){
-    a = a === undefined ? 2: a;
-    b = b === undefined ? a: b;
-    base = base === undefined ? 0: base;
-    max = max === undefined ? 1: max;
-    var per = i / len,
-    logPer = utils.logPer(per, a, b);
-    return {
-        i: i,
-        len: len,
-        per: per,
-        logPer: logPer,
-        n: base + logPer * ( max - base ),
-        valueOf: function(){
-            return this.n;
-        }
-    };
-};
- 
-utils.createLogPerCollection = function(opt){
-    opt = opt || {};
-    opt.len = opt.len === undefined ? 100 : opt.len;
-    opt.base = opt.base === undefined ? 0 : opt.base;
-    opt.max = opt.max === undefined ? 50 : opt.max;
-    opt.a = opt.a === undefined ? 2 : opt.a;
-    opt.b = opt.b === undefined ? opt.a : opt.b;
-    var i = 0, obj, collection = {
-       len: opt.len,
-       base: opt.base,
-       max: opt.max,
-       a: opt.a,
-       b: opt.b
-    };
-    collection.data = [];
-    while(i < opt.len){
-        obj = utils.createLogPerObject(i, opt.len, opt.base, opt.max, opt.a, opt.b);
-        collection.data.push(obj);
-        i += 1;
-    }
-    return collection;
-};
 ```
 
-## 5 - The game.js module
+## 6 - The game.js module
 
 In this fork of the Mr Sun source code I made just a few basic changes to the main game module. I think that it would be best to only make changes as they are needed rather than spending time adding features that I might not really want or need for this project.
 
 Another method that I ended up working out this time is a simple get section by position helper. This method is used to get a section by way of an x and y position relative to the canvas element. In time I might want to add additional methods such as this, but for now this one alone was truly needed. I added some new states to the state machine in the main.js file that make use of it when it comes to switching to other states that are views for the sun and a single given section object.
 
 ```js
-var gameMod = (function(){
-    // the plug-in object
-    var plugs = {};
-    var getCallPrioritySorted = function(){
-        var keys = Object.keys(plugs);
-        return keys.sort(function(a, b){
-            var plugObjA = plugs[a],
-            plugObjB = plugs[b];
-            if(plugObjA.callPriority > plugObjB.callPriority){
-                return -1;
-            }
-            if(plugObjA.callPriority < plugObjB.callPriority){
-                return 1;
-            }
-            return 0;
-        });
-    };
-    // use plugins for the given method
-    var usePlugs = function(game, methodName, args){
-        methodName = methodName || 'create';
-        args = args || [game]
-        var keys = getCallPrioritySorted();
-        keys.forEach(function(plugKey){
-            var plugObj = plugs[plugKey],
-            method = plugObj[methodName];
-            if(method){
-                method.apply(plugObj, args);
-            }
-        });
-    };
-    // public API
-    var api = {};
-    // create a new game state object
-    api.create = function(opt){
-        opt = opt || {};
-        opt.canvas = opt.canvas || {width: 320, height: 240 };
-        // create base game object
-        var game = {};
-        game.centerX = opt.centerX || opt.canvas.width / 2;
-        game.centerY = opt.centerY || opt.canvas.height / 2;
-        game.sectionRadius = opt.sectionRadius || 16;
-        game.worldRadius = opt.worldRadius || 100;
-        game.secs = 0;
-        game.year = 0;
-        game.yearRate = opt.yearRate || 1;
-        // create sun object
-        game.sun = {
-            radius: 16,
-            x: game.centerX,
-            y: game.centerY,
-            sunGrid: {}
-        };
-        // create sections
-        var i = 0,
-        sections = [],
-        total = opt.sectionCount || 20,
-        radian,	
-        cx = game.centerX,
-        cy = game.centerY;
-        while(i < total){
-            radian = Math.PI * 2 / total * i;
-            sections.push({
-                i: i,
-                x: Math.cos(radian) * game.worldRadius + cx,
-                y: Math.sin(radian) * game.worldRadius + cy,
-                radius: game.sectionRadius,
-                per: 1
-            });
-            i += 1;
-        }
-        game.sections = sections;
-        // use 'create' method of all plug-ins
-        usePlugs(game, 'create', [game, opt]);
-        gameMod.updateSections(game);
-        return game;
-    };
-    // update sections
-    api.updateSections = function(game){
-        var sun = game.sun;
-        game.sections.forEach(function(section){
-            var ajust = section.radius + sun.radius;
-            var d = utils.distance(section.x, section.y, sun.x, sun.y) - ajust;
-            var per = d / (game.worldRadius * 2 - ajust * 2);
-            per = per > 1 ? 1: per;
-            per = per < 0 ? 0: per;
-            per = 1 - per;
-            section.per = per;
-        });
-    };
-    // get a section by canvas position
-    api.getSectionByPos = function(game, x, y){
-        var section,
-        i = game.sections.length;
-        while(i--){
-            section = game.sections[i];
-            if(utils.distance(section.x, section.y, x, y) <= section.radius){
-                return section;
-            }
-        }
-        return false;
-    };
-    // move sun
-    var boundToCircle = function(obj, cx, cy, radius){
-        if(utils.distance(obj.x, obj.y, cx, cy) > radius){
-            var a = Math.atan2(obj.y - cy, obj.x - cx);
-            obj.x = cx + Math.cos(a) * radius;
-            obj.y = cy + Math.sin(a) * radius;
-        }
-    };
-    api.moveSun = function(game, pos){
-        var ajust = game.sun.radius + game.sectionRadius;
-        game.sun.x = pos.x;
-        game.sun.y = pos.y;
-        boundToCircle(game.sun, game.centerX, game.centerY, game.worldRadius - ajust);
-        api.updateSections(sm.game);
-    };
-    // update method
-    api.update = function(game, secs){
-        game.secs += secs;
-        var deltaYears = Math.floor(game.secs / game.yearRate);
-        if(deltaYears >= 1){
-            game.year	 += deltaYears;
-            game.secs %= game.yearRate;
-            usePlugs(game, 'onDeltaYear', [game, deltaYears]);
-        }
-    };
-    // load a plug-in
-    api.load = function(plugObj){
-        var len = Object.keys(plugs).length;
-        // use given key name, or else use number of public keys in plugs
-        plugObj.name = plugObj.name || len;
-        // callPriority defaults to len
-        plugObj.callPriority = plugObj.callPriority || len;
-        // just reference the object for now
-        plugs[plugObj.name] = plugObj;
-    };
-    // return the Public API
-    return api;
-}());
 ```
 
-## 6 - The draw.js module
+## 7 - The draw.js module
 
 The draw module is back with some of the usual suspects when it comes to one of my canvas example projects, such as a draw background method. One note worth additional that was added in this fork is sunData draw method in which I am drawing a graph that illustrates the current and future status of the sun.
 
 ```js
-var draw = (function () {
-    // public API
-    var api = {};
-    // draw background
-    api.back = function (sm) {
-        sm.ctx.fillStyle = '#202020';
-        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
-    };
-    api.sectionData = function(sm, section){
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
-        ctx.font = '15px arial';
-        ctx.fillText('section ' + section.i, 10, 10);
-        ctx.font = '10px arial';
-        ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 30);
-        ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 40);
-        Object.keys(section.minerals).forEach(function(min, i){
-            ctx.fillText(min + ': ' + section.minerals[min].toFixed(2), 10, 50 + i * 10);
-        });
-    };
-    api.sunData = function(sm, sun){
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
-        ctx.font = '15px arial';
-        ctx.fillText('Sun Status: ', 10, 10);
-        ctx.font = '10px arial';
-        ctx.fillText('years: ' + sun.tempData.years, 10, 30);
-        ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 40);
-        ctx.fillText('tempLevel: ' + sun.tempData.i + '/' + Number(sun.tempData.len - 1), 10, 50);
-        // draw graph
-        var h = 100,
-        w = 100,
-        sy = 150,
-        sx = 200;
-        ctx.fillStyle = '#5f5f5f';
-        ctx.fillRect(sx, sy - h, w, h);
-        ctx.beginPath();
-        sun.sunGrid.data.forEach(function(tempObj){
-            ctx.strokeStyle = 'white';
-            ctx.fillStyle = 'black';
-            var temp = tempObj.valueOf(),
-            y = sy - h * (temp / sun.sunGrid.max),
-            x = sx + w * tempObj.per;
-            if(tempObj.i === 0){
-                ctx.moveTo(x, y);
-            }else{
-                ctx.lineTo(x, y);
-            }
-            if(tempObj.i === sun.tempData.i){
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.arc( x, y, 2, 0, Math.PI * 2);
-                ctx.stroke();
-                ctx.fill();
-                ctx.beginPath();
-            }
-        });
-        ctx.stroke();
-    };
-    // draw sections
-    api.sections = function (sm) {
-        var ctx = sm.ctx;
-        sm.game.sections.forEach(function (section) {
-            var b = 50 + Math.round(section.per * 128);
-            ctx.fillStyle = 'rgb(0,0,' + b + ')';
-            ctx.beginPath();
-            ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = 'white';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.font = '8px arial';
-            //ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
-            //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
-            //var min = section.minerals;
-            //ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
-            ctx.fillText(section.temp.toFixed(2), section.x, section.y+5);
-        });
-    };
-    // draw sun
-    api.sun = function (sm) {
-        var sun = sm.game.sun,
-        ctx = sm.ctx;
-        ctx.fillStyle = 'yellow';
-        ctx.beginPath();
-        ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = 'black';
-        ctx.font = '10px arial';
-        ctx.fillText(Math.round(sun.temp), sun.x, sun.y);
-    };
-    // display
-    api.disp = function (sm) {
-        var ctx = sm.ctx;
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
-        ctx.font = '10px courier';
-        ctx.fillText('year: ' + sm.game.year, 3, 3);
-    };
-    // draw version number
-    api.ver = function (sm) {
-        var ctx = sm.ctx;
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
-        ctx.font = '10px courier';
-        ctx.fillText('v' + sm.ver, 10, sm.canvas.height - 15);
-    };
-    // return the Public API
-    return api;
-}
-    ());
 ```
 
-## 7 - main.js
+## 8 - main.js
 
 Some additional have been made to the main.js of the Mr Sun source code in this fork also. For the most part it was just the addition of two new state objects for the current state machine, but no radical changes have been made to it beyond that. In future forks of this I thnk I am going to need to do something similar to what I have done with the game module, but for now I am taking a more monolithic approach here, like I did in crosshairs.
 
 ```js
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
- 
-var changeState = function(sm, stateKey, opt){
-    opt = opt || {};
-    var newState = sm.states[stateKey];
-    if(newState.start){
-        newState.start(sm, opt);
-    }
-    sm.currentState = stateKey;
-};
- 
-var states = {
-    game: {
-        init: function(sm){
-            // setup sun object
-            sm.game = gameMod.create({
-                canvas: sm.canvas,
-                sectionCount: 19,
-                worldRadius: 100,
-                yearRate: 0.5
-            });
-        },
-        // for each update tick
-        update: function (sm, secs) {
-            gameMod.update(sm.game, secs);
-            draw.back(sm);
-            draw.sections(sm);
-            draw.sun(sm);
-            draw.disp(sm);
-            draw.ver(sm);
-        },
-        // events
-        pointerStart: function (sm, pos, e) {},
-        pointerMove: function (sm, pos, e) {
-            var sun = sm.game.sun;
-            if(sm.input.pointerDown){
-                gameMod.moveSun(sm.game, pos);
-            }
-        },
-        pointerEnd: function (sm, pos) {
-             if(sm.input.d < 3){
-                 // if section click
-                 var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
-                 if(section){
-                     changeState(sm, 'observe_section', {
-                         section: section
-                     });
-                 }
-                 // if sun click
-                 if(utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius){
-                     changeState(sm, 'observe_sun', {});
-                 }
-             }
-        }
-    },
-    observe_section: {
-        data: {
-            section:{}
-        },
-        start: function(sm, opt){
-            sm.states['observe_section'].data.section = opt.section;
-        },
-        update: function(sm, secs){
-            gameMod.update(sm.game, secs);
-            draw.back(sm);
-            draw.sectionData(sm, sm.states['observe_section'].data.section);
-        },
-        pointerEnd: function (sm) {
-             changeState(sm, 'game', {});
-        }
-    },
-    observe_sun: {
-        data: {
-            //sunGrid: []
-        },
-        start: function(sm, opt){
-            
-        },
-        update: function(sm, secs){
-            var state = sm.states['observe_sun'],
-            td = sm.game.sun.tempData;
-            gameMod.update(sm.game, secs);
-            sm.game.sun.sunGrid = utils.createLogPerCollection({
-               len: td.len,
-               base: td.base,
-               max: td.max
-            });
-            draw.back(sm);
-            draw.sunData(sm, sm.game.sun);
-        },
-        pointerEnd: function (sm) {
-             changeState(sm, 'game', {});
-        }
-    }
-};
- 
-var sm = {
-    ver: '0.2.0',
-    canvas: canvas,
-    currentState: 'game',
-    ctx: ctx,
-    game: {},
-    states: states,
-    input: {
-        pointerDown: false,
-        d:0,
-        startPos:{
-             x: 0,
-             y: 0
-        },
-        pos: {
-            x: 0,
-            y: 0
-        }
-    }
-};
- 
-// Pointer Events
-var pointerHanders = {
-    start: function (sm, pos, e) {
-        var pos = sm.input.pos;
-        sm.input.pointerDown = true;
-        sm.input.startPos = {
-            x: pos.x,
-            y: pos.y
-        };
-        sm.input.d = 0;
-        var method = states[sm.currentState].pointerStart;
-        if(method){
-            method(sm, pos, e);
-        }
-    },
-    move: function (sm, pos, e) {
-        var method = states[sm.currentState].pointerMove,
-        startPos = sm.input.startPos;
-        sm.input.d = utils.distance(startPos.x, startPos.y, pos.x, pos.y);
-        if(method){
-            method(sm, pos, e);
-        }
-    },
-    end: function (sm, pos, e) {
-        sm.input.pointerDown = false;
-        var method = states[sm.currentState].pointerEnd;
-        if(method){
-            method(sm, pos, e);
-        }
-    }
-};
-var createPointerHandler = function (sm, type) {
-    return function (e) {
-        var pos = utils.getCanvasRelative(e);
-        sm.input.pos = pos;
-        e.preventDefault();
-        pointerHanders[type](sm, pos, e);
-    };
-};
- 
-// attach for mouse and touch
-canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
-canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
-canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
-canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
-canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
-canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
- 
-// init current state
-states[sm.currentState].init(sm);
- 
-// loop
-var lt = new Date(),
-FPS_target = 30;
-var loop = function () {
-    var now = new Date(),
-    t = now - lt,
-    secs = t / 1000;
-    requestAnimationFrame(loop);
-    if (t >= 1000 / FPS_target) {
-        states[sm.currentState].update(sm, secs);
-        lt = now;
-    }
-};
-loop();
 ```
 
-## 8 - Conclusion
+## 9 - Conclusion
 
 So far I am Liking how this project is going, but there is indeed much more work that needs to be done until I have something that I can call a done deal. I think I will continue working on just this fork alone when it comes to working out additional changes that need to happen with the temp plug-in, and at least one or two additional plug-ins that are closely related to it. The focus here is on a single core plug-in that has to do with temperature, and as I move forward with additional forks.
