@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 735
-updated: 2020-11-06 16:42:14
-version: 1.16
+updated: 2020-11-06 16:49:09
+version: 1.17
 ---
 
 I want a [canvas example](/2020/03/23/canvas-example/) that will be a simple [god game](https://en.wikipedia.org/wiki/God_game), or a kind of game where things move forward on there own, and there is just a little interaction from the player now and then. I have come to like to play, and make these kinds of games these days. Playing a game can end up eating up a lot of time, so I like games that just move along on there own, and I can just step in and make a few changes now and then. Games like sim city, and roller coaster tycoon come to mind when it comes to this.
@@ -296,4 +296,4 @@ So then the idea here is to have a world that can be left alone, or at any momen
 
 When it comes to forks, and additional plug-ins so far I have a [Mr Sun Temp canvas example](/2020/11/04/canvas-example-game-mr-sun-temp/). In this canvas example I forked the source code that I have here, and made a few minor improvements to it. In addition I made a few more plu-ins that are a step in a direction to start to make something that can be thought of as an actual done deal of some kind. This focus on this example is to creating a nice base collection of plug-ins that have to do with setting temperature for the sun as well as thw world sections. In addition I also made some more plug-ins that have to do with fusion, and therefor the creating of minerals, and another plug-in that has to do with some more advanced features of the sun object.
 
-In addition I also have started a [Mr Sun Geo example](/2020/110/06/canvas-example-game-mr-sun-geo/) where I am forking the source code of Mr Sun Temp to take yet even another step forward with this.
+In addition I also have started a [Mr Sun Geo example](/2020/110/06/canvas-example-game-mr-sun-geo/) where I am forking the source code of Mr Sun Temp to take yet even another step forward with this. In this fork I created yet even more plug-ins that have to do with additional features of the Mr Sun game World that have to do with the GeoSphere of the World. That is things like Geology, a Hydrosphere, and Atmosphere. Which all Strokes me as the next step in this kind of project.
