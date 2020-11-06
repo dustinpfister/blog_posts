@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-05 20:28:53
-version: 1.4
+updated: 2020-11-05 20:30:32
+version: 1.5
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plugins to it, and making any changes that are needed to the source in the process if any.
@@ -79,6 +79,8 @@ gameMod.load({
 ```
 
 ## 3 - The fusion.js plugin
+
+Another idea I have for a plug-in was a fusion plug-in that is a way for minerals to be produce in the game.
 
 ```js
 gameMod.load((function(){
