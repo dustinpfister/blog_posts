@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-06 10:45:06
-version: 1.9
+updated: 2020-11-06 10:59:17
+version: 1.10
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plugins to it, and making any changes that are needed to the source in the process if any.
@@ -78,7 +78,7 @@ gameMod.load({
 });
 ```
 
-## 3 - The fusion.js plugin
+## 3 - The fusion.js plug-in
 
 Another idea I have for a plug-in was a fusion plug-in that is a way for minerals to be produce in the game. I am thinking that minerals will just be one aspect of what will need to happen in this little game world of mine, and like the temp plug-in, it is another core aspect of the game mechanics that other future plug-ins will depend on. In time I aim to create additional plug-ins that will have to do with geology, the atmosphere, basic life, and civilization all of which have to do with elements, and molecules composed of elements. So in this game it makes sense to have a plug-in that serves as a way to create these resources.
 
@@ -190,7 +190,11 @@ utils.createLogPerCollection = function(opt){
 };
 ```
 
-## 5 - game.js
+## 5 - The game.js module
+
+In this fork of the Mr Sun source code I made just a few basic changes to the main game module. I think that it would be best to only make changes as they are needed rather than spending time adding features that I might not really want or need for this project.
+
+Another method that I ended up working out this time is a simple get section by position helper. This method is used to get a section by way of an x and y position relative to the canvas element. In time I might want to add additional methods such as this, but for now this one alone was truly needed. I added some new states to the state machine in the main.js file that make use of it when it comes to switching to other states that are views for the sun and a single given section object.
 
 ```js
 var gameMod = (function(){
