@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-06 17:04:23
-version: 1.17
+updated: 2020-11-06 17:06:28
+version: 1.18
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plug-ins to it, and making any changes that are needed to the source in the process if any.
@@ -25,7 +25,7 @@ I wanted to create at least two plug-ins as a way to test out how the system wor
 
 ## 2 - The sun.js plug-in
 
-The sun plug-in has to do with adding, and updating some additional advanced properties for the sun object.
+The sun plug-in has to do with adding, and updating some additional advanced properties for the sun object. mainly thus far it has to do with spawning the sun object from a dead state to an alive state, and also back again once it reaches the end of its life cycle.
 
 
 ```js
