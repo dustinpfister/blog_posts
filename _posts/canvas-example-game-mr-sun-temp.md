@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-06 11:03:47
-version: 1.11
+updated: 2020-11-06 11:07:14
+version: 1.12
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plugins to it, and making any changes that are needed to the source in the process if any.
@@ -461,6 +461,8 @@ var draw = (function () {
 ```
 
 ## 7 - main.js
+
+Some additional have been made to the main.js of the Mr Sun source code in this fork also. For the most part it was just the addition of two new state objects for the current state machine, but no radical changes have been made to it beyond that. In future forks of this I thnk I am going to need to do something similar to what I have done with the game module, but for now I am taking a more monolithic approach here, like I did in crosshairs.
 
 ```js
 var canvas = document.createElement('canvas'),
