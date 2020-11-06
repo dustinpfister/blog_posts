@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-06 10:37:53
-version: 1.8
+updated: 2020-11-06 10:45:06
+version: 1.9
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plugins to it, and making any changes that are needed to the source in the process if any.
@@ -80,7 +80,9 @@ gameMod.load({
 
 ## 3 - The fusion.js plugin
 
-Another idea I have for a plug-in was a fusion plug-in that is a way for minerals to be produce in the game. The plug-in design started out with making fusion something that happens in the sections, rather than the sun. In this game I am not making an effort to make some kind of realistic simulation of course, this is very much just a game, so this does strike me as one way to go about handling this aspect of the game mechanics. However the idea of making fusion something that happens in the sun object would make more sense.
+Another idea I have for a plug-in was a fusion plug-in that is a way for minerals to be produce in the game. I am thinking that minerals will just be one aspect of what will need to happen in this little game world of mine, and like the temp plug-in, it is another core aspect of the game mechanics that other future plug-ins will depend on. In time I aim to create additional plug-ins that will have to do with geology, the atmosphere, basic life, and civilization all of which have to do with elements, and molecules composed of elements. So in this game it makes sense to have a plug-in that serves as a way to create these resources.
+
+The plug-in design started out with making fusion something that happens in the world sections, rather than the sun. In this game I am not making an effort to make some kind of realistic simulation of course, this is very much just a game, and the goal is to just simply have fun. So this mechanic of having fusion just be something that happens in the world sections does strike me as one way to go about handling this aspect of the game mechanics. However the idea of making fusion something that happens in the sun object would make more sense when it comes to a real world understanding of fusion.
 
 ```js
 gameMod.load((function(){
