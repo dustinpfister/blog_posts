@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-05 20:19:22
-version: 1.3
+updated: 2020-11-05 20:28:53
+version: 1.4
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plugins to it, and making any changes that are needed to the source in the process if any.
@@ -23,7 +23,9 @@ This canvas example is a fork of my starting Mr Sun canvas example. The source c
 
 I wanted to create at least two plug-ins as a way to test out how the system works thus far, and maybe add some features as needed. This far as of 0.2.0 of this example I have just added a way to set a call priory for plug-ins which is just a way to make sure that a plug-in that depends on smoother plug in is called in the proper order.
 
-## 2 - The temp.js plugin
+## 2 - The temp.js plug-in
+
+One of the core reasons of this fork of Mr Sun is to work out the plug-in that will be used to set a temperature value for the sun object itself, as well as all the sections around the sun. The current distance between the Sun object, and a section is of course the core feature of the game that will impact this, as well as many other things in the game. However there is more to it then just working out a single expression and moving on with this, there are a few things that come to mind when it comes to how temperature will be set for the sections actually, and this plug-in alone will probably eat up a fair amount of time to get just right.
 
 ```js
 gameMod.load({
