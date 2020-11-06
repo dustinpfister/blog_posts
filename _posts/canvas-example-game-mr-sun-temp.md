@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 736
-updated: 2020-11-05 20:13:02
-version: 1.2
+updated: 2020-11-05 20:19:22
+version: 1.3
 ---
 
 I am going to try something new when it comes to todays [canvas example](/2020/03/23/canvas-example/) post, I am not going to just start a whole new example from the ground up. Often I do borrow a little code here and there from other examples, and projects when and where doing so is called for. However today I am going to just copy the whole source code of my Mr sun example at version 0.1.0 and start from there by just adding a few plugins to it, and making any changes that are needed to the source in the process if any.
@@ -16,6 +16,12 @@ So this way I am not starting over from the beginning, but if I need to I can ma
 Anyway this canvas example will then be a continuation of sorts on my Mr Sun game that I think might have some potential if I put a bit more time into it. In the game the player controls the position of a Sun object that effects the other word section objects that are centered around the sun object. In this post I am using the same core source code more or less, but I am adding two plug-ins to it that have to do with setting an updating a temp property for each section. In addition I am also starting another plug-in that has to do with fusion in the game, which I think would be another cool feature.
 
 <!-- more -->
+
+## 1 - What to know before hand
+
+This canvas example is a fork of my starting Mr Sun canvas example. The source code is not to different from that example at least when it comes to the core of the application itself. I have made a few changes here that I might add to the core example at a later point, but for now this post, and example is more about the plug-ins.
+
+I wanted to create at least two plug-ins as a way to test out how the system works thus far, and maybe add some features as needed. This far as of 0.2.0 of this example I have just added a way to set a call priory for plug-ins which is just a way to make sure that a plug-in that depends on smoother plug in is called in the proper order.
 
 ## 2 - The temp.js plugin
 
