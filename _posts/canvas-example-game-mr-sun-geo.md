@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-07 16:21:17
-version: 1.5
+updated: 2020-11-07 16:22:32
+version: 1.6
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
@@ -25,6 +25,95 @@ So then Mr Sun Geo is just the next step forward when it comes to working out ga
 The very first version of Mr Sun Geo is just the addition of one plug-in on top of what I worked out in Mr Sun Temp 0.5.0. Geo stands for Geology, and as such this plug-in adds properties such as magmatism, and elevation to the game world section objects. 
 
 The plug-in alone proved to be a little time consuming just to get some of the basics worked out with how the position of the sun object effects the increase of elevation. Values that are added in by way of the temp.js plug-in are used to set magmatimsm, and magmatism is used to find the rate at which elevation will go up for each game year. There is also an erosion property that is part of this module, the additional plug-ins that have to do with the hydrosphere, and the atmosphere will have will have an impact on that value.
+
+```js
+// geo.js plug-in
+gameMod.load((function () {
+        // tabulate the mass of an object
+        var tabulateObjectMass = function (obj) {
+            var i = 0,
+            len = Object.keys(obj.minerals).length,
+            minKey,
+            min,
+            mass = 0;
+            while (i < len) {
+                minKey = Object.keys(obj.minerals)[i];
+                min = obj.minerals[minKey];
+                mass += min;
+                i += 1;
+            }
+            return mass;
+        };
+        // set total mass by tabulating all sections
+        var setTotalMass = function (game) {
+            var gd = game.geoData,
+            i = 0,
+            len = game.sections.length,
+            mass,
+            section;
+            gd.totalMass = 0;
+            while (i < len) {
+                section = game.sections[i];
+                section.totalMass = tabulateObjectMass(section);
+                gd.totalMass += section.totalMass;
+                i += 1;
+            }
+        };
+        // set massPer prop for all sections
+        var updateSectionValues = function (game, deltaYears) {
+            var gd = game.geoData,
+            i = 0,
+            len = game.sections.length,
+            mass,
+            section;
+            while (i < len) {
+                section = game.sections[i];
+                section.massPer = 0;
+                if (section.totalMass > 0) {
+                    // set mass percentage
+                    section.massPer = section.totalMass / gd.totalMass;
+                    // set magmatism
+                    section.magmatism = section.massPer * (section.groundTemp / game.tempData.globalMaxGroundTemp);
+                    // elevation
+                    section.elevation = section.elevation + section.magmatism * deltaYears * gd.maxElevationPerYear;
+                    section.elevation = section.elevation - section.erosion * deltaYears * gd.maxErosionPerYear;
+                    section.elevation = section.elevation > gd.maxElevation ? gd.maxElevation: section.elevation;
+                    section.elevation = section.elevation < 0 ? 0: section.elevation;
+                }
+                i += 1;
+            }
+        };
+        return {
+            name: 'geo',
+            callPriority: '2',
+            create: function (game, opt) {
+                game.geoData = {
+                    totalMass: 0,
+                    maxElevation: 1000,
+                    maxElevationPerYear: 10,
+                    maxErosionPerYear: 1,
+                    seaLevel: 0
+                };
+                var gd = game.geoData;
+ 
+                game.sections.forEach(function(section){
+                    section.totalMass = 0;
+                    section.massPer = 0;
+                    section.magmatism = 0;
+                    section.erosion = 0.5;
+                    section.elevation = 0;
+                });
+ 
+            },
+            onDeltaYear: function (game, deltaYears) {
+                setTotalMass(game);
+                updateSectionValues(game, deltaYears);
+            }
+        };
+ 
+    }
+        ()));
+```
 
 ## 2 - Conclusion
 
