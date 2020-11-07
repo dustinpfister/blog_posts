@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-07 11:33:33
-version: 1.3
+updated: 2020-11-07 11:45:21
+version: 1.4
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
@@ -23,3 +23,10 @@ So then Mr Sun Geo is just the next step forward when it comes to working out ga
 ## 1 - The geo.js plug-in
 
 The very first version of Mr Sun Geo is just the addition of one plug-in on top of what I worked out in Mr Sun Temp 0.5.0. In this section I will be going over the source code of this plug-in that has to do with the geology of the Mr Sun World.
+
+
+## 2 - Conclusion
+
+So far I am happy with how this project is coming along, but there is still much more work ended until this will start to look like an actual game. I am going to want to add additional plug-ins that will have to do with life and civilization at some point, however maybe there are a few more that naaed to be worked out before I get to that point.
+
+I am going to want to add some additional plug-ins that have to do with graphics, and
