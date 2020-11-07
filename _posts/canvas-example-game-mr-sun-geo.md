@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-07 11:45:21
-version: 1.4
+updated: 2020-11-07 16:21:17
+version: 1.5
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
@@ -22,8 +22,9 @@ So then Mr Sun Geo is just the next step forward when it comes to working out ga
 
 ## 1 - The geo.js plug-in
 
-The very first version of Mr Sun Geo is just the addition of one plug-in on top of what I worked out in Mr Sun Temp 0.5.0. In this section I will be going over the source code of this plug-in that has to do with the geology of the Mr Sun World.
+The very first version of Mr Sun Geo is just the addition of one plug-in on top of what I worked out in Mr Sun Temp 0.5.0. Geo stands for Geology, and as such this plug-in adds properties such as magmatism, and elevation to the game world section objects. 
 
+The plug-in alone proved to be a little time consuming just to get some of the basics worked out with how the position of the sun object effects the increase of elevation. Values that are added in by way of the temp.js plug-in are used to set magmatimsm, and magmatism is used to find the rate at which elevation will go up for each game year. There is also an erosion property that is part of this module, the additional plug-ins that have to do with the hydrosphere, and the atmosphere will have will have an impact on that value.
 
 ## 2 - Conclusion
 
