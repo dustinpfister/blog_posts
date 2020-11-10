@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 11:51:13
-version: 1.5
+updated: 2020-11-10 11:58:52
+version: 1.6
 ---
 
 I have started toying around with [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php) a little in place of just using nodejs as a way to automate work. I would normally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
@@ -23,7 +23,13 @@ The bash script makes use of a few Linux commands and a single npm package that 
 $ sudo npm install uglify-js -g
 ```
 
-The build.sh script looks like this.
+The build.sh script starts out with a shebang for bash rather than nodejs. The shebang is there in case I want to make the script executable so I can just directly call the script. In the event that the script is written in javaScript then I would want the shebang to point to node, however this is a plain old Linux bash script so in this case it should point to bash.
+
+I am then using cat to read the contents of the top.txt file that contains the top part of the final html file. This is then stored in a top shell variable. The next step is to get the javaScript code that will go between the top and bottom parts.
+
+To get the javaScript code I am using cat once again, but this file to just read a files.txt file that is just a list of paths for each javaScript file that I want to be part of the build. I am then piping that to xargs that in turn is feeding that list of file names to uglifyjs. The end result is the whole of the javaScript packed down using uglifyjs rather than a list of paths to files. This result is then stored as yet another shell variable.
+
+I then just need to do the make for one final main.js file that will be at the bottom of the javaScript code and then echo out the result of all of this.
 
 ```
 #!/bin/bash
