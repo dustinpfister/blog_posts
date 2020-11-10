@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-10 12:20:03
-version: 1.61
+updated: 2020-11-10 12:22:21
+version: 1.62
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -110,7 +110,11 @@ This is the first of several canvas example all based off of the source code tha
 
 ### 3.19 - [Mr Sun Geo](/2020/11/06/canvas-example-game-mr-sun-geo/)
 
+I started this example by forking off from the source code of Mr Sun temp, and just added a few more plug-ins that add additional features that have to do with a game world.
+
 ### 3.20 - [Mr Sun temp](/2020/11/04/canvas-example-game-mr-temp/)
+
+This is a fork of the Mr Sun canvas example, it is more or less the same source code, but with some additional plug-ins that have to do with temperature.
 
 ### 3.21 - [game spinner](/2020/06/07/canvas-example-game-spinner/)
 
