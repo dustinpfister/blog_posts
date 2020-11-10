@@ -1,12 +1,12 @@
 ---
-title: 41 Canvas examples and counting, animations, games, modules, and more.
+title: 44 Canvas examples and counting, animations, games, modules, and more.
 date: 2020-03-23 08:48:00
 categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-10 12:22:21
-version: 1.62
+updated: 2020-11-10 12:35:49
+version: 1.63
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -25,9 +25,15 @@ I have set up a [git repository at my git-hub account for these canvas examples]
 
 ## 2 - [My top pick thus far - Crosshairs](/2020/07/29/canvas-example-game-crosshairs/)
 
-Although I now have way over 30 canvas examples, and I am still making more, only a handful of them thus far are examples of my best foot forward when it comes to javaScript and canvas. This is not to say that many others are not worth checking out, it is just that many of them are lacking the additional amount of polish that helps to make a canvas project stand out. So I thought I would take a moment to just write about my top pick from this list, and as time goes by I might update this section to reflect the current state of afairs when it comes to mu collection of canvas examples.
+Although I now have way over 40 canvas examples, and I am still making more, only a handful of them thus far are examples of my best foot forward when it comes to javaScript and canvas. This is not to say that many others are not worth checking out, it is just that many of them are lacking the additional amount of polish that helps to make a canvas project stand out. So I thought I would take a moment to just write about my top pick from this list, and as time goes by I might update this section to reflect the current state of affairs when it comes to half way decent work.
 
-So With that said my top pick for my canvas examples thus far is [cross hairs!](/2020/07/29/canvas-example-game-crosshairs/) just because it is so far the only canvas example that I have been sticking with for a while when it comes to continuing working on it a little more each day. I can not say that this is my dream project, but I would say that it is the current place holder for that, at least as of this writing. Eventually I will get cross hairs in good shape, and it will be time to move on to another one from the list below. However for now I think there is still a lot more work to do with that one, so it might be a while yet.
+### 2.1 - Mr Sun
+
+### 2.2 - Cross hairs
+
+I put a fair amount of time into [cross hairs!](/2020/07/29/canvas-example-game-crosshairs/) thus far. I can not say that this is my dream project, but it is starting to look like a finished product at least. There is still a fair amount of work left to do though when it comes to even features that most might see as basic.
+
+Eventually I will get cross hairs in good shape, and it will be time to move on to another one from the list below. However for now I think there is still a lot more work to do with that one, so it might be a while yet.
 
 ## 3 - The full Canvas Examples list
 
