@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 11:28:28
-version: 1.1
+updated: 2020-11-10 11:35:35
+version: 1.2
 ---
 
 I have started toying around with bash a little in place of just using nodejs as a way to automate work. In my recent canvas example projects I worked out a basic bash script that has to do with automating the process of creating a package from javaScript source code files.
@@ -14,6 +14,13 @@ I have started toying around with bash a little in place of just using nodejs as
 <!-- more -->
 
 ## 1 - The bash script
+
+The bash script makes use of a few Linux commands and a single npm package that I installed globally called [uglifyjs](https://www.npmjs.com/package/uglify-js). So this script should only be used in a Linux system that has cat, xargs, and echo which should be more or less all of them as they are common commands. Along with the Linux commands nodejs, and npm installed, and uglifyjs should be installed, if not it should be installed globally.
+
+```
+$ sudo npm install uglify-js -g
+```
+
 
 ```
 #!/bin/bash
