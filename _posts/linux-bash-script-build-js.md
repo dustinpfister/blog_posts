@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 12:02:37
-version: 1.7
+updated: 2020-11-10 12:06:48
+version: 1.8
 ---
 
 I have started toying around with [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php) a little in place of just using nodejs as a way to automate work. I would normally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
@@ -62,7 +62,7 @@ Here is the top.txt file the contains the top part of the desired final html fil
 
 ### 2.2 - files.txt
 
-Here I have my list of paths to javaScript files.
+Here I have my list of paths to javaScript files, and yes in most cases the order is important. In my canvas example the utils.js file is a kind of general utility library that is used in the other files. So it makes sense that it should be at the very top of the build, or else I could end up with a problem where the other files end up calling undefined.
 
 ```
 ../lib/utils.js
@@ -75,6 +75,8 @@ Here I have my list of paths to javaScript files.
 ../plugin/hydro.js
 ../plugin/atmo.js
 ```
+
+As I continue to work on the example, and add additional plug-ins to the source code I will of course need to update this list. The list is also something that I find myself moving from one project to another, I should make this script at the root of my canvas example folder, but I will still need this file, and also maybe the top and bottom files to be part of each example.
 
 ### 2.3 - bottom.txt
 
