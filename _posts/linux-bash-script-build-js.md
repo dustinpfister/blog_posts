@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 11:35:35
-version: 1.2
+updated: 2020-11-10 11:39:02
+version: 1.3
 ---
 
-I have started toying around with bash a little in place of just using nodejs as a way to automate work. In my recent canvas example projects I worked out a basic bash script that has to do with automating the process of creating a package from javaScript source code files.
+I have started toying around with bash a little in place of just using nodejs as a way to automate work. I would notmally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
+
+In my recent canvas example projects I worked out a basic bash script that has to do with automating the process of creating a package from javaScript source code files.
 
 <!-- more -->
 
