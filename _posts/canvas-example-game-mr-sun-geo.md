@@ -5,13 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-10 12:25:08
-version: 1.11
+updated: 2020-11-10 12:27:43
+version: 1.12
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
 
-In the previous fork Mr Sun Temp I made just a few minor improvements to the source code itself, and the real additions where in the form of a few plug-ins. The main focus there was the temp.js plug-in for this project that just contained the logic that sets temperature for the sun object, and all the world section objects. In this fork I am focusing on Creating additional plug-ins that will have to do with the Geology, Hydrosphere, and Atmosphere of the Game World in what I am just calling Mr Sun. All of these plug-ins depend on the previous plug-ins worked out in Mr Sun Temp, when it comes to temp.js and also fusion.js.
+In the previous fork Mr Sun Temp I made just a few minor improvements to the source code itself, and the real additions where in the form of a few plug-ins. The main focus there was the temp.js plug-in for this project that just contained the logic that sets temperature for the sun object, and all the world section objects. In this fork I am focusing on creating additional plug-ins that will have to do with the [Geology](https://en.wikipedia.org/wiki/Geology), the [Hydrosphere](https://en.wikipedia.org/wiki/Hydrosphere), and [Atmosphere](https://en.wikipedia.org/wiki/Atmosphere) of the Game World in what I am just calling Mr Sun. All of these plug-ins depend on the previous plug-ins worked out in Mr Sun Temp, when it comes to temp.js and also fusion.js.
 
 So then Mr Sun Geo is just the next step forward when it comes to working out game logic that will create a cool little simulated world.
 
