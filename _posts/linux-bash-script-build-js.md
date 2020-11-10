@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 11:58:52
-version: 1.6
+updated: 2020-11-10 12:02:37
+version: 1.7
 ---
 
 I have started toying around with [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php) a little in place of just using nodejs as a way to automate work. I would normally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
@@ -44,7 +44,11 @@ echo "${top}${js}${main}${bottom}"
 
 ## 2 - The top.txt, files.txt, and bottom.txt files
 
+This will just then be a brief overview of the contents of the other files.
+
 ### 2.1 - top.txt
+
+Here is the top.txt file the contains the top part of the desired final html file.
 
 ```
 <html>
@@ -57,6 +61,8 @@ echo "${top}${js}${main}${bottom}"
 ```
 
 ### 2.2 - files.txt
+
+Here I have my list of paths to javaScript files.
 
 ```
 ../lib/utils.js
@@ -72,6 +78,8 @@ echo "${top}${js}${main}${bottom}"
 
 ### 2.3 - bottom.txt
 
+I then have the bottom part of the html file.
+
 ```
 </script>
 </body>
@@ -80,7 +88,9 @@ echo "${top}${js}${main}${bottom}"
 
 ## 3 - Using the build.sh script
 
-The shebang at the top of the file will allow for me to just directly call the build.sh file if I make it executable. However the alternative is to call it with bash directly, with that said I have been doing this:
+The shebang at the top of the file will allow for me to just directly call the build.sh file if I make it executable. However the alternative is to call it with bash directly, in any case I can just have the output spit out to the console, or use [Linux redirection](/2020/10/02/linux-redirection/) to create a file.
+
+with that said I have been doing this:
 
 ```
 $ bash build.sh > ../pkg/pkg_0_3_0.html
