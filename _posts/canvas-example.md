@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-10 12:41:07
-version: 1.65
+updated: 2020-11-10 16:27:46
+version: 1.66
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -23,15 +23,15 @@ I am going all over the board when it comes to playing around with canvas elemen
 
 I have set up a [git repository at my git-hub account for these canvas examples](https://github.com/dustinpfister/canvas-examples) where all of the examples can be cloned down from if you want to quickly clone down the source cone of them to play around with and use locally. Most if not all of them should work okay by just opening up the index.html file of an example via the file:\/\/ protocol when it comes to just using them that way. If you actually want to help improve the source code of some of them I might be will to except helpful changes that improve quality. However this is mostly still my project, and I assume that may of you might wish to spend time working on your own set of canvas examples that might progress into actually games, animations and utility projects.
 
-## 2 - [My top pick thus far - Crosshairs](/2020/07/29/canvas-example-game-crosshairs/)
+## 2 - My top picks thus far
 
 Although I now have way over 40 canvas examples, and I am still making more, only a handful of them thus far are examples of my best foot forward when it comes to javaScript and canvas. This is not to say that many others are not worth checking out, it is just that many of them are lacking the additional amount of polish that helps to make a canvas project stand out. So I thought I would take a moment to just write about my top pick from this list, and as time goes by I might update this section to reflect the current state of affairs when it comes to half way decent work.
 
-### 2.1 - Mr Sun
+### 2.1 - [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/)
 
 I have made not one, but several canvas examples based off of the source code that I started with my [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/) example. This is another canvas example that I would like to pure a fair amount of time into, to create something that is n it just fun, but also fun. This main canvas example of Mr Sun is just the core source code, along with just a single test plug-in, there are the other canvas examples though where I am starting to really take off with plug-ins for it though.
 
-### 2.2 - Cross hairs
+### 2.2 - [Cross hairs](/2020/07/29/canvas-example-game-crosshairs/)
 
 I put a fair amount of time into [cross hairs!](/2020/07/29/canvas-example-game-crosshairs/) thus far. I can not say that this is my dream project, but it is starting to look like a finished product at least. There is still a fair amount of work left to do though when it comes to even features that most might see as basic.
 
