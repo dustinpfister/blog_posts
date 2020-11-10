@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 11:44:44
-version: 1.4
+updated: 2020-11-10 11:51:13
+version: 1.5
 ---
 
-I have started toying around with [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php) a little in place of just using nodejs as a way to automate work. I would notmally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
+I have started toying around with [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php) a little in place of just using nodejs as a way to automate work. I would normally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
 
 In my recent canvas example projects I worked out a basic bash script that has to do with automating the process of creating a package from javaScript source code files. The source code files are in development form, but I want them to all be combined together, and minified between some starting and ending html code to create a single final html file for the state of the canvas example. The bash script I worked out make use of shell level variables, and various Linux commands such as cat along with a single javaScript min script to create the final result that I want.
 
@@ -23,6 +23,7 @@ The bash script makes use of a few Linux commands and a single npm package that 
 $ sudo npm install uglify-js -g
 ```
 
+The build.sh script looks like this.
 
 ```
 #!/bin/bash
@@ -70,3 +71,17 @@ echo "${top}${js}${main}${bottom}"
 </body>
 </html>
 ```
+
+## 3 - Using the build.sh script
+
+The shebang at the top of the file will allow for me to just directly call the build.sh file if I make it executable. However the alternative is to call it with bash directly, with that said I have been doing this:
+
+```
+$ bash build.sh > ../pkg/pkg_0_3_0.html
+```
+
+When all goes well the result is the final package with all my javaScript code packed up all nice into this single html file. As such the canvas example is now in this state where I can just transfer, and open this single file which is nice.
+
+## 4 - Conclusion
+
+I have been enjoying using this script as a way t automate this aspect of development on top od doing what I was doing before which was taking the time to manually put the build together. I have not ben working on that many projects so far where doing so was that time consuming, but with some projects it was starting to add up a little.
