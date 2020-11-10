@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-10 12:35:49
-version: 1.63
+updated: 2020-11-10 12:38:03
+version: 1.64
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -28,6 +28,8 @@ I have set up a [git repository at my git-hub account for these canvas examples]
 Although I now have way over 40 canvas examples, and I am still making more, only a handful of them thus far are examples of my best foot forward when it comes to javaScript and canvas. This is not to say that many others are not worth checking out, it is just that many of them are lacking the additional amount of polish that helps to make a canvas project stand out. So I thought I would take a moment to just write about my top pick from this list, and as time goes by I might update this section to reflect the current state of affairs when it comes to half way decent work.
 
 ### 2.1 - Mr Sun
+
+I have made not one, but several canvas examples based off of the source code that I started with my [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/) example. This is another canvas example that I would like to pure a fair amount of time into, to create something that is n it just fun, but also fun.
 
 ### 2.2 - Cross hairs
 
