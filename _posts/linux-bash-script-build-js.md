@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 12:06:48
-version: 1.8
+updated: 2020-11-10 12:11:09
+version: 1.9
 ---
 
 I have started toying around with [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php) a little in place of just using nodejs as a way to automate work. I would normally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
@@ -80,7 +80,7 @@ As I continue to work on the example, and add additional plug-ins to the source 
 
 ### 2.3 - bottom.txt
 
-I then have the bottom part of the html file.
+I then have the bottom part of the html file. For now this is just the closing script take, along with the other typically closing tags in an html document. Still I like having control over defining what the bottom of the resulting file should be. Along with the top.txt, and files.txt, this should be part of each project that I use this with.
 
 ```
 </script>
@@ -103,3 +103,4 @@ When all goes well the result is the final package with all my javaScript code p
 ## 4 - Conclusion
 
 I have been enjoying using this script as a way t automate this aspect of development on top od doing what I was doing before which was taking the time to manually put the build together. I have not ben working on that many projects so far where doing so was that time consuming, but with some projects it was starting to add up a little.
+There are still great things about making a similar script like this in javaScript rather than bash which would help to make this part of a project more portable. Still I Like working in a Linux environment way better than windows, sso maybe doing this like this will help better motivate be to go more in that direction.
