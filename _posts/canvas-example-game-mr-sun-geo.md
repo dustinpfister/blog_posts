@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-10 11:07:01
-version: 1.8
+updated: 2020-11-10 11:10:36
+version: 1.9
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
@@ -196,7 +196,9 @@ gameMod.load((function () {
         ()));
 ```
 
-## 3 - The atmo.js plug-in
+## 3 - The atmo.js plug-in for a starting plug-in that has to do with the atmosphere.
+
+There is now a geo.js plug-in that has to do with increases in elevation, and a hydo.js that has to do with water, bit that brings up the question of evaporation and rain. Should that all be part of hydro.js, or should it be part of another plug-in that has to do with the atmosphere? In any case I am going to want a plug-in that has to do with the creating and updatng of state that has to do with the atmosphere of the game world.
 
 ```js
 // atmo.js plug-in
