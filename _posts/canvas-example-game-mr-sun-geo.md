@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-10 11:02:34
-version: 1.7
+updated: 2020-11-10 11:07:01
+version: 1.8
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
@@ -117,6 +117,8 @@ gameMod.load((function () {
 
 ## 2 - The hydo.js plug-in
 
+Another addition in terms of plug-ins here is the introduction of a plug in that will handle aspects of the hydosphere of the game world. For now as of 0.3.0 at least this hydo.js plug-in will just define the total amount of game water to work with, and how it will transfer from one section to another. For the most part this is just an exercise of a plug-in working on top of another plug-in which in this case is geo.js.
+
 ```js
 // hydro.js plug-in
 gameMod.load((function () {
@@ -136,7 +138,6 @@ gameMod.load((function () {
              var len = game.sections.length;
              var n1 = game.sections[utils.mod(section.i - 1, len)];
              var n2 = game.sections[utils.mod(section.i + 1, len)];
- 
              if(section.elevation.total + section.water.amount > (n1.elevation.total + n1.water.amount) && section.water.amount >= 1){
                  section.water.amount -= 1;
                  n1.water.amount += 1;
@@ -145,7 +146,6 @@ gameMod.load((function () {
                  section.water.amount -= 1;
                  n2.water.amount += 1;
              }
- 
         };
         var updateSectionValues = function (game, deltaYears) {
             var hd = game.hydroData,
@@ -159,7 +159,6 @@ gameMod.load((function () {
                 // set evaporation
                 section.water.evaporation = section.temp / 100;
                 section.water.evaporation = section.water.evaporation > 1 ? 1 : section.water.evaporation;
- 
                 // water per
                 section.water.per = section.water.amount / hd.water.total;
  
