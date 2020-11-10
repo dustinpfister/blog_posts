@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-10 12:27:43
-version: 1.12
+updated: 2020-11-10 12:30:06
+version: 1.13
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
@@ -313,4 +313,4 @@ gameMod.load((function () {
 
 So far I am happy with how this project is coming along, but there is still much more work ended until this will start to look like an actual game. I am going to want to add additional plug-ins that will have to do with life and civilization at some point, however maybe there are a few more that needed to be worked out before I get to that point.
 
-I am going to want to add some additional plug-ins that have to do with graphics, and
+I am going to want to add some additional plug-ins that have to do with graphics, and I might also want to return the working out what the very core of the game should be. There is much that I think still need to be worked out when it comes to game.js, and how to handle states. I think that I am going to want some additional features for plug-ins for this beyond just a simple create and update method.
