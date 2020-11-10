@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-10 12:38:03
-version: 1.64
+updated: 2020-11-10 12:41:07
+version: 1.65
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -29,7 +29,7 @@ Although I now have way over 40 canvas examples, and I am still making more, onl
 
 ### 2.1 - Mr Sun
 
-I have made not one, but several canvas examples based off of the source code that I started with my [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/) example. This is another canvas example that I would like to pure a fair amount of time into, to create something that is n it just fun, but also fun.
+I have made not one, but several canvas examples based off of the source code that I started with my [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/) example. This is another canvas example that I would like to pure a fair amount of time into, to create something that is n it just fun, but also fun. This main canvas example of Mr Sun is just the core source code, along with just a single test plug-in, there are the other canvas examples though where I am starting to really take off with plug-ins for it though.
 
 ### 2.2 - Cross hairs
 
