@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 737
-updated: 2020-11-10 11:29:28
-version: 1.10
+updated: 2020-11-10 12:25:08
+version: 1.11
 ---
 
 Today I started yet another [canvas example](/2020/03/23/canvas-example/) based off the Mr Sun source code that I started recently. This time I started out with the source code, and plug-ins that I worked out for my Mr Sun Temp example. So when Mr Sun Geo as I have come to call it thus far is yet even more on top of that example. 
@@ -114,6 +114,8 @@ gameMod.load((function () {
     }
         ()));
 ```
+
+There is much more that comes to mind when it comes to what should be part of this module, however for now one of the basic features that I had in mind is indeed working. In time the code here will likely change a lot, but in any case I am going to want some code that will effect elevation of the game world sections.
 
 ## 2 - The hydo.js plug-in
 
