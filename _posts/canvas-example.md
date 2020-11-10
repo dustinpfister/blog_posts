@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-10 12:16:13
-version: 1.60
+updated: 2020-11-10 12:20:03
+version: 1.61
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -105,6 +105,8 @@ I have found myself making clones of certain classics from the Atari 2600, this 
 There is yet another example of an idle type game that involves a grid that has assets at each location that generate money.
 
 ### 3.18 - [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/)
+
+This is the first of several canvas example all based off of the source code that I worked out here. The basic idea here is to have a game where the player has control over the position of a sun that can be moved around inside of an area surrounded by game world sections.
 
 ### 3.19 - [Mr Sun Geo](/2020/11/06/canvas-example-game-mr-sun-geo/)
 
