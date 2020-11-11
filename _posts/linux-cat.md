@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 739
-updated: 2020-11-11 17:18:41
-version: 1.1
+updated: 2020-11-11 17:20:58
+version: 1.2
 ---
 
 The [Linux cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29) command is a way to concatanate two or more files into a single body that is then outputed to the standard output. In the event that no files are given then the standard input is what is used in place of a file. The cat command is also often used as a command for just opemning up a file and displaying the content of that file in the standard outout. The cat command like all other Linux commands can then also be used in conjunction with a whole host of other commands via pipeing. A single file can also be created from a whole bunch of other files also, by making use of redirection or piping to a programe that will act as a way to save the result to a file.
@@ -32,6 +32,8 @@ this is a file, and this is another file
 ```
 
 ## 2 - Of course redirection can be used to create a new file that is a concatanation of others
+
+In the basic example I breefly covered redirection as a way to create files, by redirecting the output of the echo comamnd to a file. The same feature can also be used with cat as a way to create a new file that is a concatanation of two or more files.
 
 ```
 $ echo -n "foo" > file1.txt
