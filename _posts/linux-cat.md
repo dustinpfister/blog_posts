@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 739
-updated: 2020-11-11 17:20:58
-version: 1.2
+updated: 2020-11-11 17:42:03
+version: 1.3
 ---
 
 The [Linux cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29) command is a way to concatanate two or more files into a single body that is then outputed to the standard output. In the event that no files are given then the standard input is what is used in place of a file. The cat command is also often used as a command for just opemning up a file and displaying the content of that file in the standard outout. The cat command like all other Linux commands can then also be used in conjunction with a whole host of other commands via pipeing. A single file can also be created from a whole bunch of other files also, by making use of redirection or piping to a programe that will act as a way to save the result to a file.
@@ -40,5 +40,15 @@ $ echo -n "foo" > file1.txt
 $ echo "bar" > file2.txt
 $ cat file1.txt file2.txt > file3.txt
 $ cat file3.txt
+foobar
+```
+
+## 3 - A dash can be used as a way to set where the standard input should go along with files
+
+So the cat command works by passing one or more file names as arguments, and the files will be concatanaded in the order in which they are recived. However the cat command can also be used with the standard output. If not file names are given then the cat comamnd will read from the standard input, but the standard input can also be used in combination of file name arguments also. When using a mix of argumnets and standard input a dash can be placed in the arguments as a way to set where it is that the standard input should go when concatanating.
+
+```
+$ echo -n "foo" > file1.txt
+$ echo "bar" | cat file1.txt -
 foobar
 ```
