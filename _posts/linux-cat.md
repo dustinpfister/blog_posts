@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 739
-updated: 2020-11-11 17:42:03
-version: 1.3
+updated: 2020-11-11 17:50:15
+version: 1.4
 ---
 
 The [Linux cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29) command is a way to concatanate two or more files into a single body that is then outputed to the standard output. In the event that no files are given then the standard input is what is used in place of a file. The cat command is also often used as a command for just opemning up a file and displaying the content of that file in the standard outout. The cat command like all other Linux commands can then also be used in conjunction with a whole host of other commands via pipeing. A single file can also be created from a whole bunch of other files also, by making use of redirection or piping to a programe that will act as a way to save the result to a file.
@@ -52,3 +52,16 @@ $ echo -n "foo" > file1.txt
 $ echo "bar" | cat file1.txt -
 foobar
 ```
+
+## 4 - Use the xargs command can be used as a way to pipe file names to cat
+
+Another usful command that I often bring up in these posts is xargs. This is a command that can be used to take the standard output of one command, and use that as the arguments of another command. So say I want to have a file that is a list of file names, and I want to use that file as a way to store files that are to be used with cat. The xargs can be used as a way to do just that by using cat to create the file list, and then pipe that to xargs first which can the be used with cat. The result is then the list of file names being used as arguments for the Linux cat command.
+
+```
+$ echo -n "foo" > file1.txt
+$ echo "bar" > file2.txt
+$ echo -e "file1.txt\nfile2.txt\n" > file-list.txt
+$ cat file-list.txt | xargs cat
+foobar
+```
+
