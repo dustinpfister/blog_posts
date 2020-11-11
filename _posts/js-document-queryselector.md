@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-11-11 09:56:48
-version: 1.12
+updated: 2020-11-11 10:06:30
+version: 1.13
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -103,6 +103,31 @@ The tired yet true way of getting a reference to a single element by way of an i
 
 Of course I can also get a single element by way of id using query selector, but as long as this is here there is the added advantage of it still working on older clients. I can not say that it is an issue that concerns me that much these days when I look at the browser stats of this website at least. However I still find myself using this method over all others just for the hell of it anyway.
 
-## 3 - Conclusion
+## 3 - The tired yet true get elements by tag name
+
+Another option for getting at element references is the [get elements by tag name](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName) method. This method is like query selector all in the sense that it will return a collection of element references rather than a single element. However it will only get collections by tag name as the same suggests, so it is limited in that regard. However one note worthy difference is that it will return an [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection) rather than a NodeList.
+
+```html
+
+<html>
+  <head>
+    <title>Get By Tag Name</title>
+  </head>
+  <body>
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <script>
+ 
+    var html = document.getElementsByTagName('div');
+    console.log(html.constructor.name); // 'HTMLCollection'
+    console.log( html[0].innerText ); // 'one'
+ 
+    </script>
+  </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So the document query selector method is one way to go about getting a single element in an HTML document. In addition there is also the query selector all method that can be used to get a collection of elements. One down side is that these methods have not been around as long as other options that there are to work with in client side javaScript, but if your sides browser stats show that it is safe to just go ahead and use them, maybe code will not break for that many visitors.
