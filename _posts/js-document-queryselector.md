@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-11-11 09:45:41
-version: 1.9
+updated: 2020-11-11 09:48:39
+version: 1.10
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -46,7 +46,9 @@ el.style.background = 'black';
 
 ### 1.2 - Query Selector all will return an HTMLCollection
 
-The query selector all method will not return a single element reference, but an [NodeList collection](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) of element references.
+The query selector all method will not return a single element reference, but an [NodeList collection](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) of element or node references. A NodeList is like an array, but it will not have the same prototype methods.
+
+There are two kinds of NodeLists one type is call and alive NodeList where changes to the dom will automatically update the content of the NodeList. However the kind of NodeList that query selector all returns is a static NodeList.
 
 ```html
 <html>
