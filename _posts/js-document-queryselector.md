@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-11-11 09:48:39
-version: 1.10
+updated: 2020-11-11 09:54:04
+version: 1.11
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -23,7 +23,7 @@ If you are familiar with jQuery then you will like document querySelector as a w
 
 ### 1.1 - Query selector will return a single element reference
 
-The query selector method will return an element reference just like a method such as document.getElementById.
+The query selector method will return an element reference just like a method such as document.getElementById. This differers from other methods that might return a collection of element references. So if I want to get a reference to an element such as by an id, or any unique value, then the query selector method works just fine. However if I want to get an element reference by way of something such as tag or class name that may present a problem as there will often be more than one element in the dom that will meet that kind of query criteria.
 
 
 ```html
