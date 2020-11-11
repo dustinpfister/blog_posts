@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-11-11 10:06:30
-version: 1.13
+updated: 2020-11-11 10:10:05
+version: 1.14
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -130,4 +130,6 @@ Another option for getting at element references is the [get elements by tag nam
 
 ## 4 - Conclusion
 
-So the document query selector method is one way to go about getting a single element in an HTML document. In addition there is also the query selector all method that can be used to get a collection of elements. One down side is that these methods have not been around as long as other options that there are to work with in client side javaScript, but if your sides browser stats show that it is safe to just go ahead and use them, maybe code will not break for that many visitors.
+So the document query selector method is one way to go about getting a single element in an HTML document. In addition there is also the query selector all method that can be used to get a collection of elements. One down side is that these methods have not been around as long as other options that there are to work with in client side javaScript, but if your sites browser stats show that it is safe to just go ahead and use them, maybe code will not break for that many visitors.
+
+Another thing to remember is what it is that is returned by these methods. There might be this expectation that the methods that return collections will return an array of elements references and therefor there are array prototype methods like map that can be used with them. This is not the case with HTMLCollections and NodeLists there is a whole separate collection of prototype methods to work with when it comes to these kinds of collections.
