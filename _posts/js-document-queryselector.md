@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-11-11 09:24:57
-version: 1.8
+updated: 2020-11-11 09:45:41
+version: 1.9
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -46,7 +46,7 @@ el.style.background = 'black';
 
 ### 1.2 - Query Selector all will return an HTMLCollection
 
-The query selector all method will not return a single element reference, but an HTML collection of element references.
+The query selector all method will not return a single element reference, but an [NodeList collection](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) of element references.
 
 ```html
 <html>
@@ -59,9 +59,15 @@ The query selector all method will not return a single element reference, but an
         <span class="foo">three</span>
         <p id="out"></p>
         <script>
-var foos = document.querySelectorAll('.foo');
+var foos = document.querySelectorAll('.foo'),
+out = document.querySelector('#out')
  
-console.log(foos[1].innerText); // two
+// query selector all returns a NodeList
+// while query selector returns an element
+console.log( foos.constructor.name ); // 'NodeList'
+console.log( out.constructor.name ); // 'HTMLParagraphElement'
+
+out.innerText =  foos[1].innerText; // two
  
         
         </script>
