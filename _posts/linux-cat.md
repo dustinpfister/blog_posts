@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 739
-updated: 2020-11-11 17:50:15
-version: 1.4
+updated: 2020-11-11 17:51:53
+version: 1.5
 ---
 
-The [Linux cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29) command is a way to concatanate two or more files into a single body that is then outputed to the standard output. In the event that no files are given then the standard input is what is used in place of a file. The cat command is also often used as a command for just opemning up a file and displaying the content of that file in the standard outout. The cat command like all other Linux commands can then also be used in conjunction with a whole host of other commands via pipeing. A single file can also be created from a whole bunch of other files also, by making use of redirection or piping to a programe that will act as a way to save the result to a file.
+The [Linux cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29) command is a way to concatenate two or more files into a single body that is then spit out to the standard output. In the event that no files are given then the standard input is what is used in place of a file. The cat command is also often used as a command for just opening up a file and displaying the content of that file in the standard output. The cat command like all other Linux commands can then also be used in conjunction with a whole host of other commands via piping. A single file can also be created from a whole bunch of other files also, by making use of redirection or piping to a program that will act as a way to save the result to a file.
 
-Like many otherLiunux command such as echo this is one of several basic commands that come up when it comes to getting a better understanding of how to work in a Linux amd bash enviorment. So it make sense to create a quick post on this command with a few examples of why it is thta this command is so usful in manly little cases.
+Like many otherLiunux command such as echo this is one of several basic commands that come up when it comes to getting a better understanding of how to work in a Linux and bash environment. So it make sense to create a quick post on this command with a few examples of why it is that this command is so useful in manly little cases.
 
 <!-- more -->
 
