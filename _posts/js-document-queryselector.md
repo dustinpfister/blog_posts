@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-11-11 08:00:06
-version: 1.5
+updated: 2020-11-11 08:03:57
+version: 1.6
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -19,7 +19,7 @@ I thing that it is not a good idea to get caught up in this nit puck issues thou
 
 ## 1 - Document.querySelector, and Document.querySelectorAll
 
-If you are familiar with jQuery then you will like document querySelector as a way to gain references to an element. This allows for a wide range of possibilities for gaining accesses to dom elements, by Id, class, tag name, and more. In addition there is also the document querySelectorAll method that works more or less the same, but as you would expect returns a collection of elements rather that just a single element.
+If you are familiar with jQuery then you will like document querySelector as a way to gain references to an element. This allows for a wide range of possibilities for gaining accesses to dom elements. An element reference can be obtained by Id, class, and tag name. In addition there is also the document querySelectorAll method that works more or less the same, but as you would expect returns a collection of elements rather that just a single element.
 
 ```html
 <html>
@@ -42,7 +42,7 @@ console.log(foos[1].innerText); // two
 </html>
 ```
 
-If you do nit care at all about backward compatibility with other browsers that do not support these methods that one can just go ahead and use these methods as a way to get references to elements. Still there are other options when it comes to getting references to elements. I do still find myself using document.getElementById, and not always just because it has better backward compatibility. When I do just want to get an element by way of an id attribute it still woks just fine, and it makes the code more clear.
+If you do not care at all about backward compatibility with other browsers that do not support these methods that one can just go ahead and use these methods as a way to get references to elements. Still there are other options when it comes to getting references to elements. I do still find myself using document.getElementById, and not always just because it has better backward compatibility. When I do just want to get an element by way of an id attribute it still woks just fine, and it makes the code more clear.
 
 ## 2 - The tired yet true get element by id method
 
