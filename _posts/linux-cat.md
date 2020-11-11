@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 739
-updated: 2020-11-11 17:52:54
-version: 1.6
+updated: 2020-11-11 17:54:54
+version: 1.7
 ---
 
 The [Linux cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29) command is a way to concatenate two or more files into a single body that is then spit out to the standard output. In the event that no files are given then the standard input is what is used in place of a file. The cat command is also often used as a command for just opening up a file and displaying the content of that file in the standard output. The cat command like all other Linux commands can then also be used in conjunction with a whole host of other commands via piping. A single file can also be created from a whole bunch of other files also, by making use of redirection or piping to a program that will act as a way to save the result to a file.
@@ -65,3 +65,6 @@ $ cat file-list.txt | xargs cat
 foobar
 ```
 
+## 5 - Conclusion
+
+So the Linux cat command is one of thous basic commands that One might come across when it comes to getting into at least some of the basic commands in Linux. Like echo it does not do much, but it is a necessary basic tool that is often used never the less.
