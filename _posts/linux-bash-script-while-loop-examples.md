@@ -5,17 +5,19 @@ tags: [linux]
 layout: post
 categories: linux
 id: 740
-updated: 2020-11-12 12:35:21
-version: 1.3
+updated: 2020-11-12 13:04:16
+version: 1.4
 ---
 
 I think I will write at least a few posts on the Linux bash command shell. This is a very complex topic in Linux comparted to much of my other Linux content thus far on commands such as echo where there is only so much to write about. Anyway when it comes to using bash there is not just learning how to manualy enter a command or two, there is also learning how to write bash scripts, making them exacutabule, and having them be part of a startup script, or a process of some kind. There is much to write about when it comes to this topic, but in this post I am just going to focus on while loops in Linux Bash.
 
 <!-- more -->
 
-## 1 - Basic While loop Linux Bash example
+## 1 - Basic While loop Linux Bash examples and arithmetic binary operators
 
 Maybe it would be best to read up on certin more basic concepts with bash scripts first such as Conditional Expressions. However if not I will be touching base on that with this basic while loop bash script example. A while loop starts with the keyword while, but then it must be followed by an expression that is contained in an opening and closing set of squar brackets. Inside the square brackets is where I will want to have my expresion that will evalute to 0 or 1, or false and true if you prefer.
+
+### 1.1 - Basic less than or equal to example
 
 In any case lets start out with this very basic shell script example of a while loop.
 
@@ -43,18 +45,60 @@ c=4
 c=5
 ```
 
+### 1.2 - Basic equal to example
+
+Another option when it comes to the arithmetic binary operators is the -eq option that is what I would want to use to create an equal to expression. Again I will want to have two values, one before the -eq, and one after just like all the other options to work with then it comes to using arithmetic for the expression to use with a while loop.
+
+```
+#!/bin/bash
+a=0
+c=1
+while [ $a -eq 0 ]
+do
+  echo "c=${c} a=${a}"
+  if [ $c -gt 4 ]
+  then
+    a=$((1))
+  fi
+  c=$(( $c + 1 ))
+done
+echo "done"
+echo "c=${c} a=${a}"
+```
+
+Seems to work okay when I test it out.
+
+```
+$ bash basic-loop-eq.sh
+c=1 a=0
+c=2 a=0
+c=3 a=0
+c=4 a=0
+c=5 a=0
+done
+c=6 a=1
+```
+
 ## 2 - Infinite While loop example
 
 It is possible to create an infinite loop example by just giving an empty expression. Conditions can be added in the body of the while loop, or else the only way to stop it would be to use CTRL+C or kill the process by some other means.
 
+there are all kinds of simple scripts that come to mind that might be a good way to learn more about how to create bash scripts. However for now how about a bash script that will just keep loging the current time to the standard output.
+
 ```
 #!/bin/bash
+disp=foo
 while :
 do
-  echo "infinite loops [ hit CTRL+C to stop]"
+  disp=$(date)
+  echo "${disp} [ hit CTRL+C to stop]"
 done
 ```
 
 ## 3 -Conclusion
 
 I really Like Linux a lot, it is such a breath of fresh air comparied to what I have been dealing with with Windows 10 these days. Just using it as a desktop opearting system solution seems to be working okay for me when it comes to everything that I would consider critical when it comes to work and play.
+
+I am interesting in taking some time to learn a whole lot more when it comes to working in a Linux operating system. When it comes to automating work I would say that javaScript is still my prefered enviorment to do so. However when it comes to working with just Linux itself, and not caring about making scripts that will work greate acrros diferent opertaing systems bash seems like the best choice when it comes to working closly with Linux.
+
+While loops are of course just one part of making bash scripts, it time I am sure that I will have more content to link to on this topic as a toy around with bash more.
