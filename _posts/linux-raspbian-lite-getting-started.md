@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 635
-updated: 2020-11-12 11:20:00
-version: 1.12
+updated: 2020-11-12 11:27:13
+version: 1.13
 ---
 
 I have come to like the [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian), and my [raspberry pi 3B+](https://en.wikipedia.org/wiki/Raspberry_Pi). When it comes to looking for a new computer less is more for me these days as I have found that everything that I really want and need to do with a computer does not require a whole lot of overhead. In addition I would like to start writing at least a little more content on Linux, so todays post will be on getting started with Raspbian Linux lite.
@@ -126,4 +126,7 @@ When I am in the command line based front end of aptitude I often use do a searc
 
 ## 7 - Conclusion
 
-So this post was meant to be just a getting start post of sorts with Raspbian lite OS and a raspberry pi. There is much more to do from this point forward, but most of it is just getting into things that I might not always do depending on the setup I want to do.
+So this post was meant to be just a getting start post of sorts with Raspbian lite OS and a raspberry pi. There is much more to do from this point forward such as installing xorg, and a desktop environment for example. In the Linux world there is a whole lot of options, some of them are very light weight, but require a little work when it comes to setting them up such as with the blackbox environment.
+When setting up a lite environment thought I might not bother setting up a desktop environment at all though, often the reason why I might bother with a lite image is because I want a pi to just function with one little task, such as running some kind of program that automates a build process, and then uploaded the result. In that kind of situation there might just be one or two little command line tolls that I need it to run, and thats it. So in such a situation a desktop environment is not really needed, I just need the pi to run a single little process daemon and thats it.
+
+In any case there must be a starting point when it comes to getting up off the ground with Raspbian os light, and this is all that I wanted to cover in this post at least.
