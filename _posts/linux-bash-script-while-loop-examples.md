@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 740
-updated: 2020-11-12 11:56:26
-version: 1.1
+updated: 2020-11-12 12:20:13
+version: 1.2
 ---
 
 I think I will write at least a few posts on the Linux bash command shell. This is a very complex topic in Linux comparted to much of my other Linux content thus far on commands such as echo where there is only so much to write about. Anyway when it comes to using bash there is not just learning how to manualy enter a command or two, there is also learning how to write bash scripts, making them exacutabule, and having them be part of a startup script, or a process of some kind. There is much to write about when it comes to this topic, but in this post I am just going to focus on while loops in Linux Bash.
@@ -14,6 +14,10 @@ I think I will write at least a few posts on the Linux bash command shell. This 
 <!-- more -->
 
 ## 1 - Basic While loop Linux Bash example
+
+Maybe it would be best to read up on certin more basic concepts with bash scripts first such as Conditional Expressions. However if not I will be touching base on that with this basic while loop bash script example. A while loop starts with the keyword while, but then it must be followed by an expression that is contained in an opening and closing set of squar brackets. Inside the square brackets is where I will want to have my expresion that will evalute to 0 or 1, or false and true if you prefer.
+
+In any case lets start out with this very basic shell script example of a while loop.
 
 ```bash
 #!/bin/bash
@@ -23,6 +27,20 @@ do
   echo "c=${c}"
   c=$(( $c + 1 ))
 done
+```
+
+Inside the square brackets I am using the -le option whuch stands for less than or equal to. In the bash man page a full list of these can be found under Conditional Expressions. So I am using a shell variable called c with a literal of 5, and as log as c is less than or equal to file the while loop will continue to run.
+
+So if I save the above example as something like basic-loop.sh, and then run it with bash I will get echo called to the console six times.
+
+```
+$ bash basic_loop.sh
+c=0
+c=1
+c=2
+c=3
+c=4
+c=5
 ```
 
 ## 2 -Conclusion
