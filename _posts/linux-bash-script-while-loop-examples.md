@@ -5,25 +5,25 @@ tags: [linux]
 layout: post
 categories: linux
 id: 740
-updated: 2020-11-12 13:08:27
-version: 1.5
+updated: 2020-11-12 14:37:26
+version: 1.6
 ---
 
-I think I will write at least a few posts on the [Linux bash](https://linux.die.net/man/1/bash) command shell. This is a very complex topic in Linux comparted to much of my other Linux content thus far on commands such as echo where there is only so much to write about. 
+I think I will write at least a few posts on the [Linux bash](https://linux.die.net/man/1/bash) command shell. This is a very complex topic in Linux compared to much of my other Linux content thus far on commands such as echo where there is only so much to write about. 
 
-Anyway when it comes to using bash there is not just learning how to manualy enter a command or two, there is also learning how to write bash scripts, making them exacutabule, and having them be part of a startup script, or a process of some kind. There is much to write about when it comes to this topic, but in this post I am just going to focus on [while loops](https://www.cyberciti.biz/faq/bash-while-loop/) in Linux Bash.
+Anyway when it comes to using bash there is not just learning how to manually enter a command or two, there is also learning how to write bash scripts, making them executable, and having them be part of a startup script, or a process of some kind. There is much to write about when it comes to this topic, but in this post I am just going to focus on [while loops](https://www.cyberciti.biz/faq/bash-while-loop/) in Linux Bash.
 
-While loops strike me as one thing that comes to mind when it comes to learning a new langauge. On top of that in order to learn a thing or two about while loops with bash I am also going to need to pick up a thing or two about other aspects of bash scripts such as how to create an expression, and how to create shell variables. So while writing a thing or tow about while loops a few other topics should also come up in the process of doing so.
+While loops strike me as one thing that comes to mind when it comes to learning a new language. On top of that in order to learn a thing or two about while loops with bash I am also going to need to pick up a thing or two about other aspects of bash scripts such as how to create an expression, and how to create shell variables. So while writing a thing or tow about while loops a few other topics should also come up in the process of doing so.
 
 <!-- more -->
 
 ## 1 - Basic While loop Linux Bash examples and arithmetic binary operators
 
-Maybe it would be best to read up on certin more basic concepts with bash scripts first such as Conditional Expressions. However if not I will be touching base on that with this basic while loop bash script example. A while loop starts with the keyword while, but then it must be followed by an expression that is contained in an opening and closing set of squar brackets. Inside the square brackets is where I will want to have my expresion that will evalute to 0 or 1, or false and true if you prefer.
+Maybe it would be best to read up on certain more basic concepts with bash scripts first such as Conditional Expressions. However if not I will be touching base on that with this basic while loop bash script example. A while loop starts with the keyword while, but then it must be followed by an expression that is contained in an opening and closing set of square brackets. Inside the square brackets is where I will want to have my expression that will evaluate to 0 or 1, or false and true if you prefer.
 
 ### 1.1 - Basic less than or equal to example
 
-In any case lets start out with this very basic shell script example of a while loop.
+In any case lets start out with this very basic shell script example of a while loop that makes use of one of the arithmetic binary operators to work with.
 
 ```bash
 #!/bin/bash
@@ -35,7 +35,7 @@ do
 done
 ```
 
-Inside the square brackets I am using the -le option whuch stands for less than or equal to. In the bash man page a full list of these can be found under Conditional Expressions. So I am using a shell variable called c with a literal of 5, and as log as c is less than or equal to file the while loop will continue to run.
+Inside the square brackets I am using the -le option which stands for less than or equal to. In the bash man page a full list of these can be found under Conditional Expressions. So I am using a shell variable called c with a literal of 5, and as log as c is less than or equal to file the while loop will continue to run.
 
 So if I save the above example as something like basic-loop.sh, and then run it with bash I will get echo called to the console six times.
 
@@ -87,7 +87,7 @@ c=6 a=1
 
 It is possible to create an infinite loop example by just giving an empty expression. Conditions can be added in the body of the while loop, or else the only way to stop it would be to use CTRL+C or kill the process by some other means.
 
-there are all kinds of simple scripts that come to mind that might be a good way to learn more about how to create bash scripts. However for now how about a bash script that will just keep loging the current time to the standard output.
+there are all kinds of simple scripts that come to mind that might be a good way to learn more about how to create bash scripts. However for now how about a bash script that will just keep longing the current time to the standard output.
 
 ```
 #!/bin/bash
@@ -101,8 +101,8 @@ done
 
 ## 3 -Conclusion
 
-I really Like Linux a lot, it is such a breath of fresh air comparied to what I have been dealing with with Windows 10 these days. Just using it as a desktop opearting system solution seems to be working okay for me when it comes to everything that I would consider critical when it comes to work and play.
+I really Like Linux a lot, it is such a breath of fresh air compared to what I have been dealing with with Windows 10 these days. Just using it as a desktop operating system solution seems to be working okay for me when it comes to everything that I would consider critical when it comes to work and play.
 
-I am interesting in taking some time to learn a whole lot more when it comes to working in a Linux operating system. When it comes to automating work I would say that javaScript is still my prefered enviorment to do so. However when it comes to working with just Linux itself, and not caring about making scripts that will work greate acrros diferent opertaing systems bash seems like the best choice when it comes to working closly with Linux.
+I am interesting in taking some time to learn a whole lot more when it comes to working in a Linux operating system. When it comes to automating work I would say that javaScript is still my preferred environment to do so. However when it comes to working with just Linux itself, and not caring about making scripts that will work great across different operating systems bash seems like the best choice when it comes to working closely with Linux.
 
 While loops are of course just one part of making bash scripts, it time I am sure that I will have more content to link to on this topic as a toy around with bash more.
