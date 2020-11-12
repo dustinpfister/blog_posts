@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2020-11-12 10:02:52
-version: 1.11
+updated: 2020-11-12 10:04:44
+version: 1.12
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are many ways to go about getting started with javaScript, some of which require the installation of software that might not all ready be installed on the computer however, but this often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two a bout javaScript.
@@ -39,7 +39,7 @@ So in the above example I entered five plus five which of course returns ten as 
 
 ### 1.2 - Variables
 
-Now lets pull some variables into the mix that can be used to store a value. One way to go about doing so woul be to use the var keyword. Using var might still be the best way to do so when it comes to working out some basic expressions in the javaScript console at least, I say that because using a modern alternative will require me to reload the page. There are modern alternatives such as let, and const, but getting inot that here would be going off in a tangent for now at least.
+Now lets pull some variables into the mix that can be used to store a value. One way to go about doing so woul be to use the var keyword. Using var might still be the best way to do so when it comes to working out some basic expressions in the javaScript console at least, I say that because using a modern alternative will require me to reload the page. There are modern alternatives such as let, and const, but getting into that here would be going off in a tangent for now at least.
 
 ```
 > var n = 40;
