@@ -5,12 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 740
-updated: 2020-11-12 14:37:26
-version: 1.6
+updated: 2020-11-12 14:42:54
+version: 1.7
 ---
 
-I think I will write at least a few posts on the [Linux bash](https://linux.die.net/man/1/bash) command shell. This is a very complex topic in Linux compared to much of my other Linux content thus far on commands such as echo where there is only so much to write about. 
-
+I think I will write at least a few posts on the [Linux bash](https://linux.die.net/man/1/bash) command shell. This is a very complex topic in Linux compared to much of my other Linux content thus far on commands such as echo where there is only so much to write about.
 Anyway when it comes to using bash there is not just learning how to manually enter a command or two, there is also learning how to write bash scripts, making them executable, and having them be part of a startup script, or a process of some kind. There is much to write about when it comes to this topic, but in this post I am just going to focus on [while loops](https://www.cyberciti.biz/faq/bash-while-loop/) in Linux Bash.
 
 While loops strike me as one thing that comes to mind when it comes to learning a new language. On top of that in order to learn a thing or two about while loops with bash I am also going to need to pick up a thing or two about other aspects of bash scripts such as how to create an expression, and how to create shell variables. So while writing a thing or tow about while loops a few other topics should also come up in the process of doing so.
@@ -23,7 +22,7 @@ Maybe it would be best to read up on certain more basic concepts with bash scrip
 
 ### 1.1 - Basic less than or equal to example
 
-In any case lets start out with this very basic shell script example of a while loop that makes use of one of the arithmetic binary operators to work with.
+In any case lets start out with this very basic shell script example of a while loop that makes use of one of the arithmetic binary operators to work with. There are operators for equal to, not equal to, less than, less than or equal to, greater than, and greater than or equal to. For starters maybe it would be best to just start out with one of these operators such as the less than or equal to operator.
 
 ```bash
 #!/bin/bash
