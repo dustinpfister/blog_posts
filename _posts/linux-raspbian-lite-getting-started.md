@@ -5,11 +5,13 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 635
-updated: 2020-03-26 09:10:53
-version: 1.11
+updated: 2020-11-12 11:20:00
+version: 1.12
 ---
 
 I have come to like the [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian), and my [raspberry pi 3B+](https://en.wikipedia.org/wiki/Raspberry_Pi). When it comes to looking for a new computer less is more for me these days as I have found that everything that I really want and need to do with a computer does not require a whole lot of overhead. In addition I would like to start writing at least a little more content on Linux, so todays post will be on getting started with Raspbian Linux lite.
+
+There are three general images to choose from when it comes to downloading a Raspbain os image from the raspberry Pi website. There is the desktop with recommended software, desktop, and lite. In often will go with the desktop version as that has all the base software that I want and need, without this additional bloat for doing work that is outside of my little slice when it comes to programing. However in some situations it would make sense to do with a lite image for starters, the light version will be a very basic striped down Linux that does not even have a desktop environment installed. It is not so hard to set one up though, and when doing so I can choose to use a desktop different from the one that is used in the desktop image.
 
 <!-- more -->
 
