@@ -5,11 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 740
-updated: 2020-11-12 13:04:16
-version: 1.4
+updated: 2020-11-12 13:08:27
+version: 1.5
 ---
 
-I think I will write at least a few posts on the Linux bash command shell. This is a very complex topic in Linux comparted to much of my other Linux content thus far on commands such as echo where there is only so much to write about. Anyway when it comes to using bash there is not just learning how to manualy enter a command or two, there is also learning how to write bash scripts, making them exacutabule, and having them be part of a startup script, or a process of some kind. There is much to write about when it comes to this topic, but in this post I am just going to focus on while loops in Linux Bash.
+I think I will write at least a few posts on the [Linux bash](https://linux.die.net/man/1/bash) command shell. This is a very complex topic in Linux comparted to much of my other Linux content thus far on commands such as echo where there is only so much to write about. 
+
+Anyway when it comes to using bash there is not just learning how to manualy enter a command or two, there is also learning how to write bash scripts, making them exacutabule, and having them be part of a startup script, or a process of some kind. There is much to write about when it comes to this topic, but in this post I am just going to focus on [while loops](https://www.cyberciti.biz/faq/bash-while-loop/) in Linux Bash.
+
+While loops strike me as one thing that comes to mind when it comes to learning a new langauge. On top of that in order to learn a thing or two about while loops with bash I am also going to need to pick up a thing or two about other aspects of bash scripts such as how to create an expression, and how to create shell variables. So while writing a thing or tow about while loops a few other topics should also come up in the process of doing so.
 
 <!-- more -->
 
