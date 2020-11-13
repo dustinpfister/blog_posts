@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2020-11-13 12:37:27
-version: 1.8
+updated: 2020-11-13 12:41:02
+version: 1.9
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file acess permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to chnage that state.
@@ -152,3 +152,8 @@ $ chmod 744 basic.sh
 $ ls -l basic.sh
 -rwxr--r-- 1 pi pi 30 Nov 13 11:11 basic.sh
 ```
+
+## 4 - Conclusion
+
+The chmod command is one of many little commands that come up when it comes to learning how to become more profeshiant when it comes to using Linux. Often the default permisions that are set when creating and endit a file work just fine, but often I might have to ajust them. For example say I have more than one user for a system, and I want to have the same permissions for all files in the home folder. The Linuc chmod command along with ls -l are the basic tools that I need to knwo about in order to make those ajustments.
+
