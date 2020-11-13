@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2020-11-13 09:49:51
-version: 1.24
+updated: 2020-11-13 09:52:36
+version: 1.25
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. 
@@ -104,6 +104,10 @@ console.log(isNaN(undefined)); // true
 ## 4 - The undefined literal or keyword
 
 There is also the undefined keyword or the undefined literal as it might sometimes be called. This is often used as a way to test for undefined by way of an expression using the identity operator. I can not say that there are many instances in which I set a variable or property to undefined as there are other ways to do what is often the case with that. Also I do not see the point of passing undefined as an argument as that is the default value for an argument after all. Still for the most part I find myself using a undefined literal now and then so in this section I will be going over some code examples of this.
+
+### 4.1 - A Basic example of the undefined literal
+
+Whenever I use the undefined literal it is just abut always for the sake of testing for an undefined value. This is done by using the undefined literal as one of the operands of the identity operator, the other operand being the value to test.
 
 ```js
 
