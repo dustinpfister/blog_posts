@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2020-11-13 09:52:36
-version: 1.25
+updated: 2020-11-13 10:03:32
+version: 1.26
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. 
@@ -120,6 +120,25 @@ console.log( b === undefined ); // false
 console.log( c === undefined ); // false
 ```
 
+### 4.2 - Argument object and testing for undefined
+
+As mentioned in the basic section of this post, the default value for a function argument is undefined if none is given. In addition the default value for an object property is also undefined. The value of undefined will also evaluate to false when converted to a boolean value. So then all of this works as it should when it comes to setting default values for function arguments, and properties of argument objects when making a function.
+
+```js
+var create = function (opt) {
+    var state = {};
+    opt = opt || {};
+    state.width = opt.width || 320;
+    state.height = opt.height === undefined ? 240 : opt.height;
+    return state;
+};
+// can not set width to zero when using ||
+var s1 = create({
+        width: 0,
+        height: 0
+    });
+console.log(s1.width, s1.height); // 320 0
+```
 
 ## 5 - Using typeof in an expression that tests for undefined can result in a false negative
 
