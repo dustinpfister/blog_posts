@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2020-11-13 12:26:26
-version: 1.6
+updated: 2020-11-13 12:29:45
+version: 1.7
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file acess permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to chnage that state.
@@ -105,7 +105,7 @@ This makes it so the script can be run for the current user, but it calso makes 
 
 ### 1.4 - Make the script NOT exacutabule any more with chmod -x
 
-To set things back to the way they where I just need to use the chmod -x command.
+So now say thart I have an exacutabule script, and I want to make it so it can [no longer be exacuted](https://superuser.com/questions/541143/how-to-set-a-file-as-not-executable). To set things back to the way they where I just need to use the chmod -x command.
 
 ```
 $ ls -l basic.sh
