@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-11-13 18:28:52
-version: 1.70
+updated: 2020-11-13 18:32:28
+version: 1.71
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -348,4 +348,6 @@ console.log(payment(3.75, 10, 25000).toFixed(2));
 
 ## 5 - Conclusion
 
-So order of operations in javaScript is not so hard to understand when one takes the time to just sit down, study, and work out a few examples. It might take a while, but eventually I have started to get more proficient at writing expressions with javaScipt using grouping operators only when they are needed as I understand the order of operations as well as associativity of operators. Reading a post or two on the subject such as this one might help, but what will really help is to just get busy working on your own exercises.
+So order of operations in javaScript is not so hard to understand when one takes the time to just sit down, study, and work out a few examples. It might take a while, but eventually I have started to get more proficient at writing expressions with javaScipt using grouping operators only when they are needed as I understand the order of operations as well as associativity of operators. 
+
+Reading a post or two on the subject such as this one might help, but what will really help is to just get busy working on your own exercises and projects. There are many instance where I need to work out a lengthly expression, and when doing so it is yet another opportunity to exercise order of operations with javaScript.
