@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2020-11-13 12:15:24
-version: 1.5
+updated: 2020-11-13 12:26:26
+version: 1.6
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file acess permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to chnage that state.
@@ -15,7 +15,32 @@ The chmod command also comes into play when it comes to making a bash script, or
 
 <!-- more -->
 
-## 1 - Making a script exacutabule, or not, with +x and -x
+## 1 - Uisng the Linux ls -l command to check status of permissions before using chmod
+
+Before uisng the Linux chmod command to change file access permisions it is first nessecry to check the current status of file acces permissions. One simple command for doing to is the Linux ls command with the -l option to print a long from of all and any files found.
+
+
+Uisng the ls -l option for the current working path
+
+```
+$ ls -l .
+total 8
+-rwxr-xr-x 1 pi pi 43 Nov 13 11:14 basic.js
+-rwxr-xr-x 1 pi pi 30 Nov 13 11:11 basic.sh
+```
+
+Uisng linux ls -l for a single file
+
+```
+$ ls -l basic.sh
+-rwxr-xr-x 1 pi pi 30 Nov 13 11:11 basic.sh
+```
+
+The thing to look at hear is what is going on with the collection of r, w, and x chars at the begining of each line of the output. The char r stands for read, w is for write, x is for exacute, and - means no permission. There are three sets of these values from, and from right to left the sets of three chars are for the owner of the file, the owner group, and everyone else.
+
+Now that we know how to check file access permissions we can not use chmod to chnage these values.
+
+## 2 - Making a script exacutabule, or not, with +x and -x
 
 One thing that I often find myself doing is using chmod to make a script that I wrote exacutabule. Often a script is very much exacutabule before hand, it is just that I need to call the binary that is used to run it first, and then pass the script I want to run as an argument to that binary. So what I really mean here is to make it so the script can just be run directly by making use of the propper shebang at the top of the script.
 
