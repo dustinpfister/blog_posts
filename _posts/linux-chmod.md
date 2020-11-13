@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2020-11-13 12:41:02
-version: 1.9
+updated: 2020-11-13 12:44:31
+version: 1.10
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file acess permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to chnage that state.
@@ -17,7 +17,7 @@ The chmod command also comes into play when it comes to making a bash script, or
 
 ## 1 - Uisng the Linux ls -l command to check status of permissions before using chmod
 
-Before uisng the Linux chmod command to change file access permisions it is first nessecry to check the current status of file acces permissions. One simple command for doing to is the Linux ls command with the -l option to print a long from of all and any files found.
+Before uisng the Linux chmod command to change file access permisions it is first nessecry to check the current status of file acces permissions. One simple command for doing to is the [Linux ls command with the -l option](/2020/10/14/linux-ls/) to print a long from of all and any files found.
 
 
 Uisng the ls -l option for the current working path
