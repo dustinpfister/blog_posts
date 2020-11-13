@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2020-11-13 09:36:07
-version: 1.22
+updated: 2020-11-13 09:39:00
+version: 1.23
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. 
@@ -23,7 +23,7 @@ So chances are if you have been fiddling with javaScript for at least a little w
 
 ## 1 - javaScript undefined defined
 
-In javaScript undefined is a primitive value, and a global property that represents that value. In this section I will cover some examples that demonstrate some typical situations in which a javaScript developer will run into the undefined primitive.
+In javaScript undefined is a primitive value, and a global property that represents that value. In this section I will cover some examples that demonstrate some typical situations in which a javaScript developer will run into the undefined primitive. This might be a good staring point before moving on to other topics surrounding the undefined value.
 
 ### 1.1 - when a variable is declared, but not assigned anything.
 
