@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-11-13 18:02:56
-version: 1.65
+updated: 2020-11-13 18:12:52
+version: 1.66
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -135,6 +135,14 @@ The arithmetic operations of multiplication, division and remainder have a Prece
 Addition and subtraction have a Precedence of 14 so these operations will be preformed after Multiplication, Division, and Remainder
 
 ### 3.9 - Bitwise Shift operators ( Precedence 13 )
+
+Bitwise Shift operators are a way to shift the binary values of of numbers to the right or left. When using these they have an even lower Precedence to that of addition, subtraction, division and so forth. So be sure to use the grouping operator as needed when working out expressions with them.
+
+```js
+console.log( 6 << 2 ); // 24
+console.log( 3 + 3 << 2 ); // 24
+console.log( 3 + (3 << 2) ); // 15
+```
 
 ### 3.10 - Less Than, less than or equal, ect ( Precedence 12 )
 
