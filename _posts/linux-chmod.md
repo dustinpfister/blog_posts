@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2020-11-13 11:41:42
-version: 1.2
+updated: 2020-11-13 11:49:43
+version: 1.3
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file acess permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to chnage that state.
@@ -16,6 +16,17 @@ The chmod command also comes into play when it comes to making a bash script, or
 <!-- more -->
 
 ## 1 - Making a script exacutabule, or not, with +x and -x
+
+One thing that I often find myself doing is using chmod to make a script that I wrote exacutabule. Often a script is very much exacutabule before hand, it is just that I need to call the binary that is used to run it first, and then pass the script I want to run as an argument to that binary. So what I really mean here is to make it so the script can just be run directly by making use of the propper shebang at the top of the script.
+
+A sheband is a line at the very top of a script that serves one simple purpose to inform bash where the binary is to use to run the script. With a nodejs script, a shebang would look something like this:
+
+```js
+#!/usr/bin/node
+console.log('hello world');
+```
+
+Which should be the path for the nodejs binary that is needed to run a script that is written in javaScript. However this shebang is only really needed when it comes to making it so the script can be run dirrectly. I can always just call node in the command line to run the script, but if I want to run the script by itself I need a way to let bash know where the binary is for this script file. So in this section I will be going over the use of the chmod command to make it so a script is exacutabule.
 
 ### 1.1 - start with a script
 
