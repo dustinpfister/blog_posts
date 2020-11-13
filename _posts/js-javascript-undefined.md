@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2020-11-13 09:39:00
-version: 1.23
+updated: 2020-11-13 09:49:51
+version: 1.24
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. 
@@ -103,7 +103,7 @@ console.log(isNaN(undefined)); // true
 
 ## 4 - The undefined literal or keyword
 
-There is also the undefined keyword or literal as it might sometimes be called. This is often used as a way to test for undefined.I can not say that there are many instances in which I set a variable or property to undefined, or pass undefined as an argument, but it can also be used that way as well. Still for the most part I find myself using it in expressions to test for the undefined.
+There is also the undefined keyword or the undefined literal as it might sometimes be called. This is often used as a way to test for undefined by way of an expression using the identity operator. I can not say that there are many instances in which I set a variable or property to undefined as there are other ways to do what is often the case with that. Also I do not see the point of passing undefined as an argument as that is the default value for an argument after all. Still for the most part I find myself using a undefined literal now and then so in this section I will be going over some code examples of this.
 
 ```js
 
@@ -147,12 +147,7 @@ console.log(r); // -1
 
 In this above example the value of r can be zero which is the default and will remain so if the variable myVar is both declared and defined. It will have a value of one if the variable is declared but undefined, and a value of negative one if it is undeclared.
 
-## 6 - Undefined is a primitive value in javaScript
-
-In javaScript the undefined value is an example of a primitive value. A primitive value if a value that is not an object of any kind like objects, arrays, and functions. Some primitive values have objects that wrap around them, this is the case with Strings and Numbers for example. A String might have prototype methods, and as such it might seem like it is another kind of Object, but it is very much a primitive value. In any case the undefined value in javaScript is one of two primitive values in which this is not the case anyway the other being the null value.
-
-
-## 7 - The javaScript undefined value is one of several values that converts to a false boolean value
+## 6 - The javaScript undefined value is one of several values that converts to a false boolean value
 
 The boolean value of undefined is false, alone with a bunch of other values in javaScript. One way to confirm this is to use the not operator twice. The reason why the not operator show be used twice is because the operator converts a value to boolean, but it also negates its value. So the operator can then be used again to convert it back to is true boolean value.
 
@@ -167,7 +162,7 @@ console.log(!!false); // false
 
 Because the javaScript undefined value is evaluates to false it can be used as a way to feature test if a property is present in an object.
 
-### 7.1 - Comparing undefined to null
+### 6.1 - Comparing undefined to null
 
 So null is another interesting value in javaScript. Just like undefined the null value is also a primitive value. Also they are two primitive values in javaScript that do not have objects wrapped around them such as the case with Strings and Numbers. 
 
@@ -179,6 +174,10 @@ console.log(undefined === null); // false
 ```
 
 However when the identity operator is used to make a comparison a false value is the result. This is because when the identity value is used type conversion does not occur. The null and undefined values are two different types, so the result is false.
+
+## 7 - Undefined is a primitive value in javaScript
+
+In javaScript the undefined value is an example of a primitive value. A primitive value if a value that is not an object of any kind like objects, arrays, and functions. Some primitive values have objects that wrap around them, this is the case with Strings and Numbers for example. A String might have prototype methods, and as such it might seem like it is another kind of Object, but it is very much a primitive value. In any case the undefined value in javaScript is one of two primitive values in which this is not the case anyway the other being the null value.
 
 ## 8 - Conclusion
 
