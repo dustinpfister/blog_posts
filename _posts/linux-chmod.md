@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2020-11-13 12:29:45
-version: 1.7
+updated: 2020-11-13 12:37:27
+version: 1.8
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file acess permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to chnage that state.
@@ -40,7 +40,31 @@ The thing to look at hear is what is going on with the collection of r, w, and x
 
 Now that we know how to check file access permissions we can not use chmod to chnage these values.
 
-## 2 - Making a script exacutabule, or not, with +x and -x
+## 2 - Chmod and Octal modes
+
+The best way to go about using chmod is to call the command followed by a set of three octal digits. So each digit has a range between 0 and 7 where 0 means no permission of any kind, and 7 means full permission.
+
+```
+     U   G   W
+    rwx rwx rwx     chmod 777 filename      
+    rwx rwx r-x     chmod 775 filename
+    rwx r-x r-x     chmod 755 filename
+    rwx r-- r--     chmod 744 filename
+    rw- rw- r--     chmod 664 filename
+    rw- r-- r--     chmod 644 filename
+    rw- --- ---     chmod 600 filename
+
+    U = User 
+    G = Group 
+    W = World
+
+    r = Readable
+    w = writable
+    x = executable 
+    - = no permission
+```
+
+## 3 - Making a script exacutabule, or not, with +x and -x
 
 One thing that I often find myself doing is using chmod to make a script that I wrote exacutabule. Often a script is very much exacutabule before hand, it is just that I need to call the binary that is used to run it first, and then pass the script I want to run as an argument to that binary. So what I really mean here is to make it so the script can just be run directly by making use of the propper shebang at the top of the script.
 
@@ -53,7 +77,7 @@ console.log('hello world');
 
 Which should be the path for the nodejs binary that is needed to run a script that is written in javaScript. However this shebang is only really needed when it comes to making it so the script can be run dirrectly. I can always just call node in the command line to run the script, but if I want to run the script by itself I need a way to let bash know where the binary is for this script file. So in this section I will be going over the use of the chmod command to make it so a script is exacutabule.
 
-### 1.1 - start with a script
+### 3.1 - start with a script
 
 First off I need a script to check permissions for, and set to the propper permisiions. Also the script should have the propper shebang at the top of the file. For this example I will be sticking to bash, and make a simple bash script that just uses echo to print hello world to the standard output.
 
@@ -62,7 +86,7 @@ First off I need a script to check permissions for, and set to the propper permi
 echo "hello world"
 ```
 
-### 1.2 - calling the script with the binary
+### 3.2 - calling the script with the binary
 
 So now that I have a basic bash script there is the question of how to go about calling it. With that said becuase it is a bash script I can just call the bash command dirrectly and then pass the bash script as an argument to the bash command.
 
@@ -82,7 +106,7 @@ bash: ./basic.sh: Permission denied
 
 The current user does not have permission to run the script. Assuming that the current user has the authority to chnage the status of the file acess permissions of the script, all that needs to happen is to just chnage the permisions of the script so that it can be exacuted for the current user. This is where the chmod command comes into play, there are a few ways to do about setting the permisions for exacuting a script, not just for the current user, but everyone.
 
-### 1.3 - Checking status of script, and making it exacutabule with chmod +x
+### 3.3 - Checking status of script, and making it exacutabule with chmod +x
 
 So to check the status of basic.sh I just need to use the ls -l command to check the permsiions of the file.
 
@@ -103,7 +127,7 @@ hello world
 
 This makes it so the script can be run for the current user, but it calso makes it exacutabule for all users in the current group, and everyone for that matter. So then there is the question of how to go about setting the staus of this back, and there is also the custion of how to have more fine grain control over this. So with that said lets look at just a few more chmod examples.
 
-### 1.4 - Make the script NOT exacutabule any more with chmod -x
+### 3.4 - Make the script NOT exacutabule any more with chmod -x
 
 So now say thart I have an exacutabule script, and I want to make it so it can [no longer be exacuted](https://superuser.com/questions/541143/how-to-set-a-file-as-not-executable). To set things back to the way they where I just need to use the chmod -x command.
 
@@ -119,7 +143,7 @@ bash: ./basic.sh: Permission denied
 
 Simple enouigh, we are now back to where we were. However what if I just want to make it so the current use can srun the script, but not any other user, except for root or course. Well octal modes do help to give better control over this, and all other values for that matter.
 
-### 1.5 - Using ocal modes to set just the values that are wanted
+### 3.5 - Using ocal modes to set just the values that are wanted
 
 Although the +x, and -x options for Linux chmod are convenient, they are no substatue for the fine grain control over file access permisions that is gained by using octal modes. An octal mode is just simply a set of three octal digits for each group to which file access permissions apply, the owner, the owners group, and everyone. An ocal digit of 7 will mean to read, write, and exacute. So if I want the owner of the file to have all permissions, then I will want to start off the set of digits with 7. After that I will want to set lower values for all other groups, such as 4 which would be read only.
 
