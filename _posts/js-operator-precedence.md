@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2020-11-13 18:12:52
-version: 1.66
+updated: 2020-11-13 18:14:50
+version: 1.67
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -144,7 +144,7 @@ console.log( 3 + 3 << 2 ); // 24
 console.log( 3 + (3 << 2) ); // 15
 ```
 
-### 3.10 - Less Than, less than or equal, ect ( Precedence 12 )
+### 3.10 - Less Than, less than or equal, greater than, ect ( Precedence 12 )
 
 ### 3.11 - Equality, Inequality, as well as Strict Equality ( Precedence 11 )
 
