@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2020-10-14 15:06:39
-version: 1.6
+updated: 2020-11-13 12:44:31
+version: 1.7
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls command will come into play.
@@ -79,6 +79,8 @@ drwxr-xr-x 20 dustin dustin 4096 Oct 14 13:55 ..
 -rw-r--r--  1 dustin dustin   12 Oct 14 13:10 hello.txt
 -rw-r--r--  1 dustin dustin   14 Oct 14 13:44 .hide.txt
 ```
+
+When it comes to making chnages to file access permsions then the [command to use would be chmod](/2020/11/13/linux-chmod/). Use of ls -l, chmod, and sometimes sudo or su are needed to have control over file access permissions.
 
 ## 4 - Uisng ls with additional commands
 
