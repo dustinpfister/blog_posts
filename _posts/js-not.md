@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-11-14 13:17:14
-version: 1.18
+updated: 2020-11-14 13:44:02
+version: 1.19
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -121,6 +121,21 @@ console.log(typeof bool); // boolean
 console.log(bool); // true
 ```
 
-## 4 - Conclusion
+## 4 - Bitwise not (~)
+
+There is another kind of Not operator in javaScript called the bitwise not operator. This kind of operator has to do with inverting the bits of a number value, rather than the truth value of a boolean.
+
+```js
+var n = 255,
+a = (n).toString(2),
+b = (~n >>> 0).toString(2),
+c = (~n).toString(2);
+ 
+console.log(a); // '11111111'
+console.log(b); // 11111111111111111111111100000000
+console.log(c); // -100000000
+```
+
+## 5 - Conclusion
 
 I often use the javaScript not operator whenever and wherever needed as a way to negate the truth value of something. In addition it is also a helper tool for quickly converting something into a boolean value by using twice. There are also other ways of negating value when it comes to numbers such as just multiplying by negative one or using the subtraction and addition operators but with only one value rather than two.
