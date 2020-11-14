@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-11-14 12:39:43
-version: 1.14
+updated: 2020-11-14 12:44:17
+version: 1.15
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -32,6 +32,29 @@ var mess = function (happy) {
 console.log(mess()); // 'I am NOT Happy'
 console.log(mess(false)); // 'I am NOT Happy'
 console.log(mess(true)); // 'I am Happy'
+```
+
+### 1.2 - The Double JS Not (!!)
+
+If I just want to convert a value to a boolean type there are other options to that of the JS Not operator. There is of course the Boolean constructor that will just convert a value to what the Boolean value of that value is. The trouble with js not is that it will both convert and invert, which is okay considering that is the expected behavior of it. However if I want to convert and preserve the original truth value with js not, doing so can be easily done by just using the operator twice.
+
+```js
+// The Boolean Constructor can be used
+// to create A Boolean value from a value such
+// as the number 0
+console.log(Boolean(0)); // false
+ 
+// The JS Not (!) operator can also be used to
+// convert a number to a Boolean but it will also
+// negate the truth value
+let b = !0;
+console.log(typeof b); // boolean
+console.log(b); // true
+ 
+// Double JS Not (!!) can fix this
+let c = !!0;
+console.log(typeof b); // boolean
+console.log(b); // false
 ```
 
 ## 2 - feature testing with the js double not !! operator
