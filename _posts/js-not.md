@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-07-04 07:52:22
-version: 1.13
+updated: 2020-11-14 12:39:43
+version: 1.14
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -15,18 +15,24 @@ So then in many situations the javaScript not operator can come in handy when wr
 
 <!-- more -->
 
-## 1 - js not logical not basic example
+## 1 - JS Not (!) logical not basics
 
-The js not operator is an exclamation point when it comes to the syntax of the javaScript operator. The operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so any value that is right of the operator will be what is converted to a boolean. In addition logical not as well as bitwise not for that matter has a precedence value of 17, this means that the operation will be preformed before addition, subtraction and any other operators that are below that value. The operator both converts to boolean and inverts the value, so A good starting example might be to just give the number zero as the value for starters.
+The js not operator is an exclamation point when it comes to the syntax of the javaScript operator. The operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so any value that is right of the operator will be what is converted to a boolean. In addition logical not as well as bitwise not for that matter has a precedence value of 17, this means that the operation will be preformed before addition, subtraction and any other operators that are below that value. 
+### 1.1 - Basic JS Not Example
+
+The operator both converts to boolean and inverts the value that is to the right of the JS Not operator. So for example say I just want a simple function that will return one of two messages depending on the truth value of a single given argument. Where I want to have a message if the value is Not true rather than true, the JS Not operator combined with an if statement and the return keyword can be used to do so.
 
 ```js
-let bool = !0;
- 
-console.log(typeof bool); // boolean
-console.log(bool); // true
+var mess = function (happy) {
+    if (!happy) {
+        return 'I am Not Happy'
+    }
+    return 'I am Happy';
+};
+console.log(mess()); // 'I am NOT Happy'
+console.log(mess(false)); // 'I am NOT Happy'
+console.log(mess(true)); // 'I am Happy'
 ```
-
-In javaScript zero will evaluate as false so then not zero will end up being true. The most important thing about this is that the operator will produce a boolean value and that the value will be inverted. With that being said lets look at some more examples some of which might prove to be a little more piratical.
 
 ## 2 - feature testing with the js double not !! operator
 
