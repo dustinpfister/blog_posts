@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-11-14 12:49:18
-version: 1.16
+updated: 2020-11-14 12:59:22
+version: 1.17
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -55,6 +55,39 @@ console.log(b); // true
 let c = !!0;
 console.log(typeof b); // boolean
 console.log(b); // false
+```
+
+### 1.3 - Conversion to Boolean
+
+The JS Not can be used as a way to convert a value to a boolean value. The only thing to remember is that it will do more than just convert, it will convert and invert. So be sure to use two, or one depending on the situation in order to get the desired truth value for the value.
+
+```js
+// the Boolean Constructor
+console.log( Boolean(0) ); // false
+console.log( Boolean(1) ); // true
+console.log( Boolean('') ); // false
+console.log( Boolean('foo') ); // true
+console.log( Boolean(null) ); // false
+console.log( Boolean(undefined) ); // false
+console.log( Boolean(NaN) ); // false
+ 
+// Double Not (!!) should give the same result
+console.log( !!0); // false
+console.log( !!1 ); // true
+console.log( !!'' ); // false
+console.log( !!'foo' ); // true
+console.log( !!null ); // false
+console.log( !!undefined ); // false
+console.log( !!NaN ); // false
+ 
+// Single Not (!) will invert
+console.log( !0); // true
+console.log( !1 ); // false
+console.log( !'' ); // true
+console.log( !'foo' ); // false
+console.log( !null ); // true
+console.log( !undefined ); // true
+console.log( !NaN ); // true
 ```
 
 ## 2 - feature testing with the js double not !! operator
