@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-11-14 13:47:21
-version: 1.20
+updated: 2020-11-14 13:53:33
+version: 1.21
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -135,6 +135,8 @@ console.log(a); // '11111111'
 console.log(b); // 11111111111111111111111100000000
 console.log(c); // -100000000
 ```
+
+there is a lot more to cover when it comes to bitwise operators, there is not just the bitwise not, but other operators such as the [Bitwise Unsigned Right Shift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators) operator that is used in the above example. 
 
 ## 5 - Conclusion
 
