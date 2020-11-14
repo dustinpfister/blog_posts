@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-11-14 12:59:22
-version: 1.17
+updated: 2020-11-14 13:17:14
+version: 1.18
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -56,6 +56,8 @@ let c = !!0;
 console.log(typeof b); // boolean
 console.log(b); // false
 ```
+
+The practice of using the JS Not operator twice is often referred to as [Double Not or Not Not](https://love2dev.com/blog/javascript-not-operator/).
 
 ### 1.3 - Conversion to Boolean
 
