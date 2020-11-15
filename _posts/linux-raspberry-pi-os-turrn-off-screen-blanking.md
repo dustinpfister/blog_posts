@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 704
-updated: 2020-09-10 14:29:56
-version: 1.3
+updated: 2020-11-15 14:56:10
+version: 1.4
 ---
 
-One of the little things that I like to have control over after setting up a clean raspberry PI OS image is to turn off, or at least have control over screen blanking. That is after a few minutes of leaving the raspberry pi alone the screen will go blank rather than continuing to display whats going on. There are many use case examples of using a Raspberry pi to run some kind of application where I would like the output to continue to be displayed on a monitor without me having to move the mouse or touch the keyboard. 
+One of the little things that I like to have control over after setting up a clean raspberry PI OS image is to [turn off, or at least have control over screen blanking](https://www.raspberrypi.org/forums/viewtopic.php?t=211855). When first starting out with a clean image of raspberry PI os, after a few minutes of leaving the raspberry pi alone the screen will go blank rather than continuing to display whats going on. 
+
+There are many use case examples of using a Raspberry pi to run some kind of application where I would like the output to continue to be displayed on a monitor without me having to move the mouse or touch the keyboard every so often. For example having the raspberry pi display a web app in keiosk mode where I want the interface, and any info that it might be displaying to continue to be well displayed.
 
 The reason why the screen blanking happens is because screen saver settings cause the screen to go blank after a few minutes by default, but there is not software installed to easily control these settings by default. So in this post I will be going over some options for having control over this including th use of the [linux xset](https://linux.die.net/man/1/xset) command.
 
