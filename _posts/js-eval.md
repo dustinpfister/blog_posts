@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2020-07-04 07:58:21
-version: 1.12
+updated: 2020-11-15 14:33:05
+version: 1.13
 ---
 
-In javaScript and many other programing languages there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. The eval function is a way to interpret javaScript from within javaScript itself.
+In javaScript there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. It is generally something to be avoided for various reasons, and it it really must be used should be used with care. In projects where the string value is passed from user input there is the risk of introducing security problems if the input is not sanitized. In general if you can find a way to do what you want to do with eval by some othre means do that instead.
 
 There are other ways of evaluating javaScript code that involve other aspects of native javaScript such as the function constructor, as well as user space modules like jsdom. There is also ways or making parsers that will act as a way to make my own domain specific language rather than using eval to run javaScript code in string format. However that is a matter for a whole other post on something other than js eval.
 
