@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-11-16 15:01:15
-version: 1.8
+updated: 2020-11-16 15:04:00
+version: 1.9
 ---
 
-When writing a [bash script in Linux](https://linux.die.net/man/1/bash) there might come a time where I might want to pass one or more [argumnets for some parameteres for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access argumnets for a call of a script, and there is also knowing how to find out how many argumnets where given. There is also doing something for all argumnets that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or whereever the script is called.
+When writing a [bash script in Linux](https://linux.die.net/man/1/bash) there might come a time where I might want to pass one or more [arguments for some parameters for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access arguments for a call of a script, and there is also knowing how to find out how many arguments where given. There is also doing something for all arguments that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or wherever the script is called.
 
 <!-- more -->
 
