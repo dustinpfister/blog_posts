@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2020-11-16 11:14:02
-version: 1.31
+updated: 2020-11-16 11:18:06
+version: 1.32
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect also.
@@ -19,7 +19,7 @@ So the location property of the document object will come in handy when making a
 
 ## 1 - document location and a basic example of the href property to read the current location
 
-For a basic example of document location here I have a basic html structurer and a single script tag. Inside the script tag I am using the document location href property to display the current href of the document with the help of the innerText property of an element that I am getting via document.getElementById.
+For a basic example of document location here I have a basic html structure, and a single script tag. Inside the script tag I am using the document location href property to display the current href of the document with the help of the innerText property of an element that I am getting a reference to by way of document.getElementById.
 
 ```html
 <html>
@@ -36,7 +36,9 @@ el.innerText = document.location.href;
 </html>
 ```
 
-So this basic example just displays the current href of the page in the browser window, but one of the most useful aspects of the document location property is that it can be used to preform a client side redirect as well as other tasks as well. There are a few more methods and properties of a location object in client side javaScript so lets look at some more examples of the document location property.
+So this basic example just displays the current href of the page in the browser window. Nothing to interesting of course but this is a basic example after all that just illustrates on features of this little corner of client side javaScript. 
+
+However maybe one of the most useful aspects of the document location property is that it can be used to preform a client side redirect to a new page. There are a few more methods and properties of a location object in client side javaScript so lets look at some more examples of the document location property.
 
 ## 2 - A simple document location redirect example
 
