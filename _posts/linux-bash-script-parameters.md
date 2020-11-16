@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-11-16 14:44:30
-version: 1.7
+updated: 2020-11-16 15:01:15
+version: 1.8
 ---
 
 When writing a [bash script in Linux](https://linux.die.net/man/1/bash) there might come a time where I might want to pass one or more [argumnets for some parameteres for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access argumnets for a call of a script, and there is also knowing how to find out how many argumnets where given. There is also doing something for all argumnets that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or whereever the script is called.
@@ -34,7 +34,7 @@ $ ./basic.sh "World"
 Hello World
 ```
 
-So then there is a basic hello world example of a paramater in bash. However there are at least a few more things to cover beyond this when it comes to fiding out how many arguments are passed. There are a few other related topics that might come up when it comes to this also, so lets look at a few more examples of paramaters in bash scripts then.
+So then there is a basic hello world example of a positioned rather than flaged paramater in bash. However there are at least a few more things to cover beyond this when it comes to fiding out how many arguments are passed, how to loop over all arguments, and how to work with flags. There are a few other related topics that might come up in the process of working with paramaters so lets look at a few more examples of these kinds of bash scripts.
 
 ## 2 - Get a count of the number of arguments given
 
