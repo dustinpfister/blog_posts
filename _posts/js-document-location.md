@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2020-11-16 11:18:06
-version: 1.32
+updated: 2020-11-16 11:23:20
+version: 1.33
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect also.
@@ -36,13 +36,13 @@ el.innerText = document.location.href;
 </html>
 ```
 
-So this basic example just displays the current href of the page in the browser window. Nothing to interesting of course but this is a basic example after all that just illustrates on features of this little corner of client side javaScript. 
+So this basic example just displays the current href of the page in the browser window. Nothing to interesting of course but this is a basic example after all that just illustrates on features of this little corner of client side javaScript.
 
 However maybe one of the most useful aspects of the document location property is that it can be used to preform a client side redirect to a new page. There are a few more methods and properties of a location object in client side javaScript so lets look at some more examples of the document location property.
 
 ## 2 - A simple document location redirect example
 
-The href property of a location object can also be set to a url, and when doing so will result in a redirect to that url. Although the location object of the document location property is read only a DOMString can be set to the href property of this read only object, and when a new url is assigned to it that will result in a client side redirect to the url that is set to the href property of the location object.
+The href property of a location object can also be set to a url, and when doing so will result in a redirect to that url. Although the location object of the document location property is read only a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) can be set to the href property of this read only object, and when a new url is assigned to it that will result in a client side redirect to the url that is set to the href property of the location object.
 
 ```html
 <html>
