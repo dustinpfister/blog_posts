@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-11-16 14:21:59
-version: 1.3
+updated: 2020-11-16 14:24:29
+version: 1.4
 ---
 
 When writing a bash script in Linux there might come a time where I might want to pass one or more argumnets for some parameteres for a script. There is knowing how to access argumnets for a call of a script, and there is also knowing how to find out how many argumnets where given. There is also doing something for all argumnets that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or whereever the script is called.
@@ -37,6 +37,8 @@ Hello World
 So then there is a basic hello world example of a paramater in bash. However there are at least a few more things to cover beyond this when it comes to fiding out how many arguments are passed. There are a few other related topics that might come up when it comes to this also, so lets look at a few more examples of paramaters in bash scripts then.
 
 ## 2 - Get a count of the number of arguments given
+
+What if I want to get a count of how many arguments there are when a script is called? For this there is the $# variable which will given the number of argumnets given. This will not count the comamnd or script itself, so if no argumnets are given beyond just calling the script then the value will be zero.
 
 ```
 #!/bin/bash
