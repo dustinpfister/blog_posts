@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-11-16 14:42:29
-version: 1.6
+updated: 2020-11-16 14:44:30
+version: 1.7
 ---
 
 When writing a [bash script in Linux](https://linux.die.net/man/1/bash) there might come a time where I might want to pass one or more [argumnets for some parameteres for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access argumnets for a call of a script, and there is also knowing how to find out how many argumnets where given. There is also doing something for all argumnets that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or whereever the script is called.
@@ -51,7 +51,7 @@ $ ./count.sh a b c d e f
 num of arguments: 6
 ```
 
-## 3 - Sum example using variable indirection ${!varname}
+## 3 - Sum example using variable indirection ${!varname} to loop over arguments
 
 When I took a moment to look over the man page on bash, there is a section on _Parameter Expansion_. In this section it explanes something this is called [variable indirection](https://stackoverflow.com/questions/8515411/what-is-indirect-expansion-what-does-var-mean) by making use of an exlamation point inside the body of a pair of currly brackets with the dolar sign symbpol.
 
@@ -80,7 +80,7 @@ $ ./sum.sh 10 5 7
 22
 ```
 
-## 4 - Another sum example making use of $@
+## 4 - Another sum example making use of $@ to loop over arguments
 
 Another way to make a script that will loop over all argumnets of a script will be to use $@. This will give an array of the argumnets that can then be used with a for in loop.
 
@@ -99,3 +99,5 @@ $ chmod 755 sum_at.sh
 $ ./sum_at.sh 5 10
 15
 ```
+
+So then on top of using variable indirection This would prove to be another way to [loop over the argumnets](https://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-a-bash-script) that are given when calling a bash script.
