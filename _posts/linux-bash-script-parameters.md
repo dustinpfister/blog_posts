@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-11-16 15:05:03
-version: 1.10
+updated: 2020-11-16 15:07:22
+version: 1.11
 ---
 
 When writing a [bash script in Linux](https://linux.die.net/man/1/bash) there might come a time where I might want to pass one or more [arguments for some parameters for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access arguments for a call of a script, and there is also knowing how to find out how many arguments where given. There is also doing something for all arguments that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or wherever the script is called.
@@ -38,7 +38,7 @@ So then there is a basic hello world example of a positioned rather than flagged
 
 ## 2 - Get a count of the number of arguments given
 
-What if I want to get a count of how many arguments there are when a script is called? For this there is the $# variable which will given the number of argumnets given. This will not count the comamnd or script itself, so if no argumnets are given beyond just calling the script then the value will be zero.
+What if I want to get a count of how many arguments there are when a script is called? For this there is the $# variable which will given the number of arguments given. This will not count the command or script itself, so if no arguments are given beyond just calling the script then the value will be zero.
 
 ```
 #!/bin/bash
@@ -53,11 +53,11 @@ num of arguments: 6
 
 ## 3 - Sum example using variable indirection ${!varname} to loop over arguments
 
-When I took a moment to look over the man page on bash, there is a section on _Parameter Expansion_. In this section it explanes something this is called [variable indirection](https://stackoverflow.com/questions/8515411/what-is-indirect-expansion-what-does-var-mean) by making use of an exlamation point inside the body of a pair of currly brackets with the dolar sign symbpol.
+When I took a moment to look over the man page on bash, there is a section on _Parameter Expansion_. In this section it explains something this is called [variable indirection](https://stackoverflow.com/questions/8515411/what-is-indirect-expansion-what-does-var-mean) by making use of an exclamation point inside the body of a pair of curly brackets with the dollar sign symbol.
 
-In other words this is a way to make the value of a variable be part of the variable name. In other sections in this post I have outlines that the varibles of interest that hold values for argumnets are $0, $1, $2, and so forth. However how do I go about making the value of a varible that is stepped by a rate of one be part of a variable name? The anwser to this problem in bash is variable indirection.
+In other words this is a way to make the value of a variable be part of the variable name. In other sections in this post I have outlines that the variables of interest that hold values for arguments are $0, $1, $2, and so forth. However how do I go about making the value of a variable that is stepped by a rate of one be part of a variable name? The answer to this problem in bash is variable indirection.
 
-Here I have a sum.sh file that makes use of ${#} to get a count of how many arguments there are. I also have a $i variable that starts at 1 and is steped up by one inside the body of a while loop that will keep going while the value of it is below the number of arguments obtained via ${#}. I am then using the value of $i to resolve to a varible name by making user of ${!i}, the value of which I am storing in $n. I can then tabulate a sum of all the argumnets given by way of adding $sum and $n to $sum which starts at 0.
+Here I have a sum.sh file that makes use of ${#} to get a count of how many arguments there are. I also have a $i variable that starts at 1 and is stepped up by one inside the body of a while loop that will keep going while the value of it is below the number of arguments obtained via ${#}. I am then using the value of $i to resolve to a variable name by making user of ${!i}, the value of which I am storing in $n. I can then tabulate a sum of all the arguments given by way of adding $sum and $n to $sum which starts at 0.
 
 ```
 #!/bin/bash
@@ -72,7 +72,7 @@ done
 echo "$sum"
 ```
 
-When I test this out it works as exspected, I always get the sum of all the number arguments given.
+When I test this out it works as expected, I always get the sum of all the number arguments given.
 
 ```
 chmod 755 sum.sh
@@ -82,7 +82,7 @@ $ ./sum.sh 10 5 7
 
 ## 4 - Another sum example making use of $@ to loop over arguments
 
-Another way to make a script that will loop over all argumnets of a script will be to use $@. This will give an array of the argumnets that can then be used with a for in loop.
+Another way to make a script that will loop over all arguments of a script will be to use $@. This will give an array of the arguments that can then be used with a for in loop.
 
 ```
 #!/bin/bash
@@ -100,4 +100,4 @@ $ ./sum_at.sh 5 10
 15
 ```
 
-So then on top of using variable indirection This would prove to be another way to [loop over the argumnets](https://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-a-bash-script) that are given when calling a bash script.
+So then on top of using variable indirection This would prove to be another way to [loop over the arguments](https://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-a-bash-script) that are given when calling a bash script.
