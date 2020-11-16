@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-11-16 14:24:29
-version: 1.4
+updated: 2020-11-16 14:31:01
+version: 1.5
 ---
 
-When writing a bash script in Linux there might come a time where I might want to pass one or more argumnets for some parameteres for a script. There is knowing how to access argumnets for a call of a script, and there is also knowing how to find out how many argumnets where given. There is also doing something for all argumnets that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or whereever the script is called.
+When writing a [bash script in Linux](https://linux.die.net/man/1/bash) there might come a time where I might want to pass one or more [argumnets for some parameteres for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access argumnets for a call of a script, and there is also knowing how to find out how many argumnets where given. There is also doing something for all argumnets that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or whereever the script is called.
 
 <!-- more -->
 
@@ -53,7 +53,7 @@ num of arguments: 6
 
 ## 3 - Sum example using variable indirection ${!varname}
 
-When I took a moment to look over the man page on bash, there is a section on _Parameter Expansion_. In this section it explanes something this is called variable indirection by making use of an exlamation point inside the body of a pair of currly brackets with the dolar sign symbpol.
+When I took a moment to look over the man page on bash, there is a section on _Parameter Expansion_. In this section it explanes something this is called [variable indirection](https://stackoverflow.com/questions/8515411/what-is-indirect-expansion-what-does-var-mean) by making use of an exlamation point inside the body of a pair of currly brackets with the dolar sign symbpol.
 
 In other words this is a way to make the value of a variable be part of the variable name. In other sections in this post I have outlines that the varibles of interest that hold values for argumnets are $0, $1, $2, and so forth. However how do I go about making the value of a varible that is stepped by a rate of one be part of a variable name? The anwser to this problem in bash is variable indirection.
 
