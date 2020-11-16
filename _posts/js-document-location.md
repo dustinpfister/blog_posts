@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2020-11-16 11:07:15
-version: 1.30
+updated: 2020-11-16 11:14:02
+version: 1.31
 ---
 
-The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the document object in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect also.
+The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect also.
 
 So then in addition to being a way to know the current URL, it can also be used to preform a redirect to a new location by setting the value of the document location property to a string that is the new URL to go to. That is because although the object itself is read only a new URL can be set to the property that will cause the browser to load that new given URL that it has been set to.
 
