@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2020-11-16 11:23:20
-version: 1.33
+updated: 2020-11-16 11:27:54
+version: 1.34
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect also.
@@ -136,5 +136,4 @@ console.log(document.location.pathname); // "/2017/09/14/lodash-find/"
 ## 7 - Conclusion
 
 So the document location property is very useful when it comes to client side redirects as well as knowing the current protocol and more about the current location of the page. Document location in most modern browsers seems to be the same thing as window location, but that should not always be assumed especially when it comes to older browsers, namely Internet explorer.
-
-Many other subjects branch off from document location when it comes to things like query strings, ports, protocols and everything else that can often compose a url string. Hopefully you learned one or two new things reading this, but thank you for stopping by in any case.
+Many other subjects branch off from document location when it comes to things like query strings, ports, protocols and everything else that can often compose a url string. There is also much more to cover when it comes to redirecting traffic also, this might be the typically way to do so when it comes to client side javaScript, however it is not a replacement for sever side solutions for dong so. Hopefully you learned one or two new things reading this, but thank you for stopping by in any case.
