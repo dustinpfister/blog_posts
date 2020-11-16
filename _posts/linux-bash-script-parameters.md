@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-11-16 14:31:01
-version: 1.5
+updated: 2020-11-16 14:42:29
+version: 1.6
 ---
 
 When writing a [bash script in Linux](https://linux.die.net/man/1/bash) there might come a time where I might want to pass one or more [argumnets for some parameteres for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access argumnets for a call of a script, and there is also knowing how to find out how many argumnets where given. There is also doing something for all argumnets that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or whereever the script is called.
@@ -78,4 +78,24 @@ When I test this out it works as exspected, I always get the sum of all the numb
 chmod 755 sum.sh
 $ ./sum.sh 10 5 7
 22
+```
+
+## 4 - Another sum example making use of $@
+
+Another way to make a script that will loop over all argumnets of a script will be to use $@. This will give an array of the argumnets that can then be used with a for in loop.
+
+```
+#!/bin/bash
+sum=0
+for foo in "$@"
+do
+  sum=$(( $sum + foo))
+done
+echo "$sum"
+```
+
+```
+$ chmod 755 sum_at.sh
+$ ./sum_at.sh 5 10
+15
 ```
