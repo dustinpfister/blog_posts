@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 743
-updated: 2020-11-17 12:38:47
-version: 1.9
+updated: 2020-11-17 12:40:51
+version: 1.10
 ---
 
 The [Linux gcc](https://linux.die.net/man/1/gcc) command is a C language complier that is right there to work with if one wants to get into C programing in a Linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
@@ -129,8 +129,8 @@ $ cat test.txt
 This is just a test.
 ```
 
-These very simple hello world style C programes where fun. For someone that has been working with C for years, or decades even now these are of course trivial. However for me this is pretty cool coming from an experence where I have only been playing around with javaScript thus far.
+These very simple hello world style C programs where fun. For someone that has been working with C for years, or decades even now these are of course trivial. However for me this is pretty cool coming from an experience where I have only been playing around with javaScript thus far.
 
 ## 4 - Conclusion
 
-So this was fun to take a moment to play around with gcc for a little while. I was wondering to myself how hard could it be to just cereate a few very basic hello world style examples with the C langaue and build them with gcc? As I exspected it was not so hard. The next step from here is to maybe start a collection of a few posts on creating a few simple programes written in C and compiled with gcc. I might get around to doing that at some point, if so I am sure I will end up editing, and expanding this post as needed.
+So this was fun to take a moment to play around with gcc for a little while. I was wondering to myself how hard could it be to just cerate a few very basic hello world style examples with the C language and build them with gcc? As I expected it was not so hard. The next step from here is to maybe start a collection of a few posts on creating a few simple programs written in C and compiled with gcc. I might get around to doing that at some point, if so I am sure I will end up editing, and expanding this post as needed.
