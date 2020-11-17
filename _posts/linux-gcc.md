@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 743
-updated: 2020-11-17 12:12:05
-version: 1.6
+updated: 2020-11-17 12:15:38
+version: 1.7
 ---
 
 The [Linux gcc](https://linux.die.net/man/1/gcc) command is a C language compliler that is right there to work with if one wants to get into C programing in a linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
@@ -98,6 +98,8 @@ $ ./print_init
 $ 42
 $
 ```
+
+So now I have worked out how to just print a string to the console, and now a number. The process is not so hard of course I can just stick to using just this one simple libray that can eb used to just print things out to the standard output. There are a few more basic things that come to midn though that I should get to with this post, so lets look at some of the other methods in this basic c library.
 
 ## 3 - Conclusion
 
