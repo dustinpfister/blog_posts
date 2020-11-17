@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 743
-updated: 2020-11-17 12:15:38
-version: 1.7
+updated: 2020-11-17 12:29:55
+version: 1.8
 ---
 
 The [Linux gcc](https://linux.die.net/man/1/gcc) command is a C language compliler that is right there to work with if one wants to get into C programing in a linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
@@ -101,6 +101,36 @@ $
 
 So now I have worked out how to just print a string to the console, and now a number. The process is not so hard of course I can just stick to using just this one simple libray that can eb used to just print things out to the standard output. There are a few more basic things that come to midn though that I should get to with this post, so lets look at some of the other methods in this basic c library.
 
-## 3 - Conclusion
+## 3 - Fopen example
+
+In the stdio there are also some basic functions for opening, writing to, and closing files. There is the fopen function, followed by fputs, and fclose to work with. These methods can be used to create a very basic hello world example that creates a file rather than spiting something out to the comamnd line.
+
+```c
+#include <stdio.h>
+int main ()
+{
+  FILE * pFile;
+  pFile = fopen ("test.txt","w");
+  if (pFile!=NULL)
+  {
+    fputs ("This is just a test.",pFile);
+    fclose (pFile);
+  }
+  return 0;
+}
+```
+
+Once agian I just need to use gcc to create a little binary, and then it does just what I thought it would.
+
+```bash
+$ gcc -Wall fopen.c -o fopen
+$ ./fopen
+$ cat test.txt
+This is just a test.
+```
+
+These very simple hello world style C programes where fun. For someone that has been working with C for years, or decades even now these are of course trivial. However for me this is pretty cool coming from an experence where I have only been playing around with javaScript thus far.
+
+## 4 - Conclusion
 
 So this was fun to take a moment to play around with gcc for a little while. I was wondering to myself how hard could it be to just cereate a few very basic hello world style examples with the C langaue and build them with gcc? As I exspected it was not so hard. The next step from here is to maybe start a collection of a few posts on creating a few simple programes written in C and compiled with gcc. I might get around to doing that at some point, if so I am sure I will end up editing, and expanding this post as needed.
