@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 743
-updated: 2020-11-17 11:32:39
-version: 1.3
+updated: 2020-11-17 11:55:53
+version: 1.4
 ---
 
 The Linux gcc command is a C language compliler that is right there to work with if one wants to get into C programing in a linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
@@ -60,7 +60,13 @@ Well that was fun actually, it may just be a hello world progarme but it was fun
 
 ## 2 - Printing an init value, and an improved build.sh
 
+I should take at least one or two more steps beyond just a simple hello world example with this, just printing hello world to the console alone is not a good stoping point for me at least. I may or may not get into writing a collection of posts on C programing, but without even going that far there is the question of what the next step is from hello world. For me it seems like that next step is how to go about printing a number rather than a string to the console.
+
+In javaScript doing so is just as simple as printing a string more or less, javaScript is a typeless langauge after all. However that is not the case with c of course I can not just pass an int for a paramter of a function where a string is what is exspected. 
+
 ### 2.1 - The print_int.c file
+
+With C I am dealing with string typing, and with that said I can not just pass a number for an argument where a string is exspected. Still doing so is not at all that much harder, in fact I can use the same printf method to do so by passing the init as a second argument and then using a pattern in the string that I pass as the first.
 
 ```c
 #include <stdio.h>
