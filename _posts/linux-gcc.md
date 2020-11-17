@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 743
-updated: 2020-11-17 11:55:53
-version: 1.4
+updated: 2020-11-17 12:00:50
+version: 1.5
 ---
 
 The Linux gcc command is a C language compliler that is right there to work with if one wants to get into C programing in a linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
@@ -79,6 +79,8 @@ int main() {
 
 ### 2.2 - Improved build.sh
 
+For this example I made an improved build.sh script that will work not just with this source file, but any file that I want to build with gcc
+
 ```bash
 #!/bin/bash
 buildName=$( echo $1 | cut -d . -f 1 )
@@ -87,6 +89,8 @@ gcc -Wall "$1" -o "$buildName"
 
 ### 2.3 - Looking good
 
+So this example seems to work as it should for me also.
+
 ```
 $ chmod 755 build.sh
 $ ./build.sh print_init.c
@@ -94,3 +98,7 @@ $ ./print_init
 $ 42
 $
 ```
+
+## 3 - Conclusion
+
+So this was fun to take a moment to play around with gcc for a little while. I was wondering to myself how hard could it be to just cereate a few very basic hello world style examples with the C langaue and build them with gcc? As I exspected it was not so hard. The next step from here is to maybe start a collection of a few posts on creating a few simple programes written in C and compiled with gcc. I might get around to doing that at some point, if so I am sure I will end up editing, and expanding this post as needed.
