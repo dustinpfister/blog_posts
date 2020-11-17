@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 743
-updated: 2020-11-17 12:00:50
-version: 1.5
+updated: 2020-11-17 12:12:05
+version: 1.6
 ---
 
-The Linux gcc command is a C language compliler that is right there to work with if one wants to get into C programing in a linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
+The [Linux gcc](https://linux.die.net/man/1/gcc) command is a C language compliler that is right there to work with if one wants to get into C programing in a linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
 
 I am very much a javaScript developer, and as such I have been shying away from C for a long time. There is much about the langauge that strikes me as being very intense and time consuming. In javaScipt I like having things going on like garbage collection, and dynamic typing. Sure javaScript is like riding a bike with training weels, but it is still very much a bike that will take me places. I have this mindset that what matters most in programing are things that are independant of language. Regardless if a programe is written in javaScript, C, or even something like qBasic what does the programe do? Why would I or anyone else want to use it? The anwsers to those questions are what matter first and for most to me.
 
@@ -25,7 +25,7 @@ When it comes to learning any lanague one has to start somewhere, and this type 
 
 ### 1.1 - The hello.c file
 
-Here is the source code that I cam up with by just searching for a simple C langaue hello world program. It makes use of just one library called stdio.h wich provides the printf function along with many other useful basic tools when it comes to working with standard output.
+Here is the source code that I cam up with by just searching for a simple C langaue hello world program. It makes use of just one library called [stdio.h](https://www.cplusplus.com/reference/cstdio/) wich provides the [printf function](https://www.cplusplus.com/reference/cstdio/printf/) along with many other useful basic tools when it comes to working with standard output.
 
 ```c
 #include <stdio.h>
@@ -79,7 +79,7 @@ int main() {
 
 ### 2.2 - Improved build.sh
 
-For this example I made an improved build.sh script that will work not just with this source file, but any file that I want to build with gcc
+For this example I made an improved build.sh script that will work not just with this source file, but any file that I want to build with gcc. With this script I am just making it so I can give one argument to the script that is the name of the C source file that I want to build. I am then also using the Linux cut command to just cut the file extenstion off the end of the file name to produce a name for the output file to create with Linux gcc.
 
 ```bash
 #!/bin/bash
