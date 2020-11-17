@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 743
-updated: 2020-11-17 09:50:50
-version: 1.1
+updated: 2020-11-17 10:02:22
+version: 1.2
 ---
 
 The Linux gcc command is a C language compliler that is right there to work with if one wants to get into C programing in a linux system. I took a moment to start playing around with it, and just have some fun with a few quick, basic, C language hello world programs.
@@ -19,7 +19,13 @@ However getting back to the topic at hand. I want to start experamenting with at
 
 ## 1 - Linux gcc and C Hello World
 
+In this section I will be going over a very basic Hello world C lanague source code file called hello.c. This source code file is just a very simple typically hello world programe that will just print Hello World to the standard output of the console. I then also worked out a simple bash script that will use gcc to build the hello.c file into a binary called just simply hello. I can then run the binary in the bash shell and get the exspeted result.
+
+When it comes to learning any lanague one has to start somewhere, and this type of programe is just that.
+
 ### 1.1 - The hello.c file
+
+Here is the source code that I cam up with by just searching for a simple C langaue hello world program. It makes use of just one library called stdio.h wich provides the printf function along with many other useful basic tools when it comes to working with standard output.
 
 ```c
 #include <stdio.h>
@@ -31,12 +37,16 @@ int main() {
 
 ### 1.2 - The build.sh script
 
+I then made a simple bash script that wjen called should build the hello.c file into a binary called just hello. In linux systems binarys often seem to have no file name extension like that.
+
 ```bash
 #!/bin/bash
 gcc -Wall hello.c -o hello
 ```
 
 ### 1.3 - Building my first C Programe with gcc
+
+So when I run my build.sh script gcc compiles by hello.c into a hello binary. When I call my hello binary i end up getting the exspected result in my console.
 
 ```
 $ chmod 755 build.sh
@@ -45,3 +55,5 @@ $ chmod 755 build.sh
 Hello World
 $ 
 ```
+
+Well that was fun actually, it may just be a hello world progarme but it was fun to build a very simple yet functioing C binary. I should take a moment to look into making at least a few more C examples though, maybe sticking to what there is to work with in the stdio.h lib. Maybe even touch base on a few other features of gcc in the process, if I get to it.
