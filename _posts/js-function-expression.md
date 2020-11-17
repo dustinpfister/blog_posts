@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2020-11-17 12:52:58
-version: 1.23
+updated: 2020-11-17 12:55:52
+version: 1.24
 ---
 
 There are many ways to go about defining a function in javaScript one such was is by writing [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function), which are also sometimes called function literals. A function expression is a way to define a function as an expression rather than a statement, or declaration which is another traditional way of defining a function. 
@@ -90,7 +90,7 @@ console.log(foo()); // bar
 
 ## 4 - Using a function expression as an object
 
-So functions are a kind of object in javaScript, so they can be used just like plain old objects.
+So functions are a kind of object in javaScript, so they can be used just like plain old objects on top of functions. So it is possible to create a function as an expression, and then attach additional static functions to the object that is returned. This is often used as a way to define what the public API of a module should be by making it so that the module returns a main function of some kind, but then also has all kinds of static methods and properties attached to what is returned bu the module also.
 
 ```js
 var foo = function () {
