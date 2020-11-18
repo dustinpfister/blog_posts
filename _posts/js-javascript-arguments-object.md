@@ -5,17 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 09:47:04
-version: 1.20
+updated: 2020-11-18 09:50:32
+version: 1.21
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
 
 The javaScript arguments object is an array like object that is formated like and Array, but is not actually an instance of an Array. What I mean by that is that it is an object with numbered public key names, and a length property just like that of an array. However because it is not actually an array it does not have array prototype methods at the ready like Array.map, Array.filter, and so forth.
 
-The javaScript arguments can be used to find out things like the number of arguments that was given to the function when it was called, along with the values of each argument as one might expect. Because it can be used as a way to know how many arguments where passed when the function was called the javaScript arguments object can be used to make functions that behave differently depending on the number of arguments given to the function when it is called. So if you ever come across a function that behaves differently depending on the number of arguments given to it when it is used, then the arguments object is one way to go about making such a function.
+This object of arguments can be used to find out things like the number of arguments that was given to the function when it was called, along with the values of each argument as one might expect. Because it can be used as a way to know how many arguments where passed when the function was called the javaScript arguments object can be used to make functions that behave differently depending on the number of arguments given to the function when it is called. So if you ever come across a function that behaves differently depending on the number of arguments given to it when it is used, then the arguments object is one way to go about making such a function.
 
-So then this post will be just on a few quick examples that make use of the javaScript arguments object to help instatarte why this objects is useful in many situations when writing functions.
+So then this post will be on a few quick examples that make use of the arguments object to help show why this object is useful in many situations when writing functions. In the process I might also manage to touch base on some related topics such as the Function.length property that might also come into play when doing something with this special object in javaScript functions.
 
 <!-- more -->
 
