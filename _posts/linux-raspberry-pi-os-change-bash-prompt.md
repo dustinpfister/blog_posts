@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 744
-updated: 2020-11-18 13:18:08
-version: 1.2
+updated: 2020-11-18 13:32:48
+version: 1.3
 ---
 
 One of the many little things that I like to change when working with a clean image of Raspberry PI OS is the bash prompt format. The file of interest is the .bashrc file that should be found in the root folder of the home folder of the current user to which I would like to change the bash prompt for. There are several options when it comes to how to go about coming up with a format when it comes to having the current user, full path of the current working path, and so forth. That is of course one of the reasons why I would like to change it actually.
@@ -17,7 +17,15 @@ In any case this post will be a quick overview of how to go about [changing what
 
 <!-- more -->
 
+## 1 - Change the PS1 variable to work out what you want.
+
+```
+
+```
+
 ## 2 - Edit default ~/.bashrc file in Raspberry PI OS
+
+In the default .bashrc file found as /home/pi/.bashrc where pi is the user of interest, or ~/.bashrc if you prefer. In any case there should be a hidden ./bashrc file for the current user, and in this file there are a few lines of interest that should look something liek this:
 
 ```
 if [ "$color_prompt" = yes ]; then
@@ -26,6 +34,16 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 ```
+
+This is of cousre where the $PS1 varibel is being set each time I start a new interactive bash session in a termianl such as lxterminal. This is then where I would want to make changes to make any prompt format that I worked out stick each time I start a new terminal window, and reboot.
+
+By Default if I do to to a path like ~/Documents/github\_dustinpfister/blog\_posts/\_posts then I end up getting a command prompt that looks like this:
+
+```
+pi@raspberrypi:~/Documents/github_dustinpfister/blog_posts/_posts $ 
+```
+
+This gets a little annoying for me, and as such I would liek to change it to something else. There are afew options that come to mind, but I might not want to just go with them just yet. In this section I wil be going over a few chnages that I experamented with. I guess I will also be going over a few quick basics whe it comes to editing bash scripts such as this.
 
 ### 2.1 - Just change the prompt so it will give a baseName rather than the full path name
 
@@ -44,3 +62,5 @@ Ahh much better.
 ```
 pi@raspberrypi:_posts $ 
 ```
+
+However I might like to go with a yet even cleaner look actually. Do I really need the hostname there every time? I would have to say no. Often I only just have the one pi user account for a setup also, and even if I make some new users for a system I do know how to use the whoami command. So maybe it would be nice to go with a yet even cleaner look than this.
