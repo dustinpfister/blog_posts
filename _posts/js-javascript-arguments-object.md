@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 11:18:34
-version: 1.29
+updated: 2020-11-18 11:21:58
+version: 1.30
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -279,6 +279,8 @@ console.log(func1(Math.PI / 2));
 If I where to comment out the lines of code that have to do with the conditional that checks the arguments object length, then the second use example will result in a point value of zero for both x and y. However because of the check that does not happen, and I am given something more useful. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given, and it can also be used as an alternative way to get the values of argument apart from the named parameter names when it comes to accessing the key values of this object.
 
 ## 7 - Complex Get Grid Cell example
+
+Now for a more complex version of the get function that I covered in an above example. In the simple get method that method would juts get by a cell index, or a cell position. However what If I am starting to make a far more complex grid module, and now I also want to get a collection of cell objects by a property of a cell object such as type. In that case I just need a slightly more complex version of the same get method, one that will not just check the number of arguments, but also check the type of value that was given. So it can still just return by index of a number is given when used that way, but will also return a collection of cells by type when given a string as the first argument.
 
 ```js
 let gridMod = (function () {
