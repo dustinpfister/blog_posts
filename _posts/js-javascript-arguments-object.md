@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 10:17:56
-version: 1.24
+updated: 2020-11-18 10:32:24
+version: 1.25
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -39,6 +39,47 @@ console.log(func1(42)); // 42
 ```
 
 It might be very basic, but you get the basic idea. The length property of the arguments object will give the number of arguments. There is a bit more to the arguments object though when it comes to the basics, so maybe just a few more basic examples of the arguments object is in order for this section before moving on.
+
+### 1.2 - The numbered keys of the arguments object contains the values of the arguments
+
+The keys of the arguments are numbered from zero forward just like an array, and the values for each key are the given values for the arguments.
+
+```js
+let sum = function (a, b) {
+    let sum = 0,
+    i = 0,
+    len = arguments.length;
+    if (len >= 1) {
+        while (i < len) {
+            sum += arguments[i];
+            i += 1;
+        }
+    }
+    return sum;
+};
+ 
+console.log(sum()); // 0
+console.log(sum(5)); // 5
+console.log(sum(5, 10, 7)); // 22
+```
+
+### 1.3 - The function length property will given the expected number of arguments
+
+The function length property will give the expected number of arguments for a function.
+
+```js
+let func = function (x1, y1, x2, y2) {
+    return {
+        nums: Array.from(arguments),
+        paramCount: func.length,
+        argumentCount: arguments.length,
+        per: arguments.length / func.length
+    };
+};
+let r = func(5, 6);
+console.log(r);
+// { nums: [ 5, 6 ], paramCount: 4, argumentCount: 2, per: 0.5 }
+```
 
 ## 2 - Why it is the javaScript arguments object rather than arguments array
 
