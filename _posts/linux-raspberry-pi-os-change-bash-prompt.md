@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 744
-updated: 2020-11-18 14:43:20
-version: 1.4
+updated: 2020-11-18 14:52:39
+version: 1.5
 ---
 
 One of the many little things that I like to change when working with a clean image of Raspberry PI OS is the bash prompt format. The file of interest is the .bashrc file that should be found in the root folder of the home folder of the current user to which I would like to change the bash prompt for. There are several options when it comes to how to go about coming up with a format when it comes to having the current user, full path of the current working path, and so forth. That is of course one of the reasons why I would like to change it actually.
@@ -87,3 +87,21 @@ pi@raspberrypi:_posts $
 ```
 
 However I might like to go with a yet even cleaner look actually. Do I really need the hostname there every time? I would have to say no. Often I only just have the one pi user account for a setup also, and even if I make some new users for a system I do know how to use the whoami command. So maybe it would be nice to go with a yet even cleaner look than this.
+
+### 2.2 - Commneting things out and going for something real streamlined
+
+If I do not want to mess up the default to much and try something else, I can always just comment out the PS1 line, and then make it whatever I want. Such as my minimal $ only prompt.
+
+```
+if [ "$color_prompt" = yes ]; then
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
+    PS1='\[\033[01;34m\]\$\[\033[00m\] '
+else
+    # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='\$ '
+fi
+```
+
+## 3 - Conclusion
+
+So for the most part I am just interested in tweaking what the prompt is for a non root user. There is getting into how to have a sepearte prompt for root, a sudo user, and just a plain old user. If it is a user that has a home folder then there is the .bashrc file for each user that can be edited for each user. There is a .bashrc in the /root folder that would be one way to set what the prompt is for root. There are some additional files in the etc folder that are of interest when it comes to this, but most of that may be a topic for another post.
