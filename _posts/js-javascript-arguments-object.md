@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 10:43:10
-version: 1.27
+updated: 2020-11-18 10:48:12
+version: 1.28
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -111,9 +111,9 @@ let func = function () {
 console.log( func(1,2,3,4,5)); // 15
 ```
 
-## 3 - The length property of the javaScript arguments object
+## 3 - Simple get function example
 
-The length property can be used to know the number of arguments that where passed to the function when it was called. This can then be used as a way to have more than one expression that is used for something depending on the number of arguments that are given. For example say I want a method that will just get an element in an array by index if it is given one argument, but will use a more complex expression when given two arguments. 
+The length property can be used to know the number of arguments that where passed to the function when it was called. This can then be used as a way to have more than one expression that is used for something depending on the number of arguments that are given. For example say I want a method that will just get an element in an array by index if it is given one argument, but will use a more complex expression when given two arguments.
 
 ```js
 let mod = {
@@ -144,6 +144,8 @@ let mod = {
 console.log(mod.get(1)); // 2
 console.log(mod.get(2,1)); // 6
 ```
+
+There are many other ways that a get function could be written, and in a way in which it can get elements of a grid in more than one way. Later in this post I might get around to a more complex example of this. However the basic use cause example of the arguments object is there never the less. If I give just one argument then it will just get a grid element by index, if I give two then it will get by an x and y position.
 
 ## 4 - Make urls array example of argument object use
 
