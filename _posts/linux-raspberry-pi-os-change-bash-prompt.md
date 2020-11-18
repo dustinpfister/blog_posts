@@ -5,25 +5,25 @@ tags: [linux]
 layout: post
 categories: linux
 id: 744
-updated: 2020-11-18 15:23:31
-version: 1.6
+updated: 2020-11-18 15:33:41
+version: 1.7
 ---
 
 One of the many little things that I like to change when working with a clean image of Raspberry PI OS is the bash prompt format. The file of interest is the .bashrc file that should be found in the root folder of the home folder of the current user to which I would like to change the bash prompt for. There are several options when it comes to how to go about coming up with a format when it comes to having the current user, full path of the current working path, and so forth. That is of course one of the reasons why I would like to change it actually.
 
-By default when I start a new lxterminal session I get a bash prompt that will contain the current full path of the current working directoy. Maybe this is called for when it comes to people that are new to Linux and bash, but I have been at this for a while, and long story short I know about the pwd command. So there is at least one little chnage that I would like to make this is to just have the current base name of the current working directoty in the prompt.
+By default when I start a new lxterminal session I get a bash prompt that will contain the current full path of the current working directory. Maybe this is called for when it comes to people that are new to Linux and bash, but I have been at this for a while, and long story short I know about the pwd command. So there is at least one little change that I would like to make this is to just have the current base name of the current working directory in the prompt.
 
-In any case this post will be a quick overview of how to go about [changing what the prompt is for a bash shell](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html) session my chaning the value of the PS1 variable, and also how to make that change stick by ediitng the ~/.bashrc file. In this post I am using Raspberry PI OS, but the process should be simular in just about all Linux systems that use bash.
+In any case this post will be a quick overview of how to go about [changing what the prompt is for a bash shell](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html) session my changing the value of the PS1 variable, and also how to make that change stick by editing the ~/.bashrc file. In this post I am using Raspberry PI OS, but the process should be similar in just about all Linux systems that use bash.
 
 <!-- more -->
 
 ## 1 - Change the $PS1 variable to work out a new bash prompt
 
-First things first I need to know how to change the command prompt without making the changed fixed. To do this I just need to edit the value of the $PS1 variable. I also need to knwo what the current value of this varibel is. In this section I will be going over the very basics of how to chnage the bash prompt format without getting into how to make the changes stay when opening a new terminal window or rebooting.
+First things first I need to know how to change the command prompt without making the changed fixed. To do this I just need to edit the value of the $PS1 variable. I also need to know what the current value of this variable is. In this section I will be going over the very basics of how to change the bash prompt format without getting into how to make the changes stay when opening a new terminal window or rebooting.
 
 ### 1.1 - Use echo to find out what the current value of $PS1 is
 
-The Linux echo command is the basic tool that is used to log something to the standard output of a terminal. For the sake of this post I just need to know how to use it to get the current value of the $PS1 variabel, do for that I just call echo followed by $PS1.
+The Linux echo command is the basic tool that is used to log something to the standard output of a terminal. For the sake of this post I just need to know how to use it to get the current value of the $PS1 variable, do for that I just call echo followed by $PS1.
 
 ```
 pi@raspberrypi:~/Documents $ echo $PS1
@@ -41,22 +41,22 @@ pi@raspberrypi:~/Documents $ PS1="(☞ ͡° ͜ʖ ͡°)☞< check it ☞) \$ "
 (☞ ͡° ͜ʖ ͡°)☞<check it) $ 
 ```
 
-The good thing about this is that any change made this way will not last. All I have to do to go back to the way things are is to just close the terminal window, and start up a new one. The chnages will only be made fixed if I take a moment to edit a condif file or two. More on that later, but for now lets take a look at some more practical command prompts.
+The good thing about this is that any change made this way will not last. All I have to do to go back to the way things are is to just close the terminal window, and start up a new one. The changes will only be made fixed if I take a moment to edit a config file or two. More on that later, but for now lets take a look at some more practical command prompts.
 
 ## 1.3 - Supper minimal $ only
 
-At a minamum a prompt should have at least the $ symbol as long as this is the bash prompt for a non root user such as pi. The \\S backslash-escaped special character should do just that for the .bashrc file in the home folder for the default pi username. In addition it should also print the \# symbol for root but I do not think I have to worky about that here in the .bashrc file for a non root user.
+At a minimum a prompt should have at least the $ symbol as long as this is the bash prompt for a non root user such as pi. The \\S backslash-escaped special character should do just that for the .bashrc file in the home folder for the default pi user name. In addition it should also print the \# symbol for root but I do not think I have to worry about that here in the .bashrc file for a non root user.
 
 ```
 pi@raspberrypi:Documents $ PS1="\$ "
 $ 
 ```
 
-I do like this kind of prompt, but often I think that I should have at leat a little info right there in the prompt, so lest look at least one more example.
+I do like this kind of prompt, but often I think that I should have at least a little info right there in the prompt, so lest look at least one more example.
 
 ### 1.4 - This looks good
 
-This kind of prompt looks good for me, it just gives the current user, and just the basename of the current working path.
+This kind of prompt looks good for me, it just gives the current user, and just the base name of the current working path.
 
 ```
 pi@raspberrypi:~/Documents $ PS1="\u@\W>:\$ "
@@ -65,7 +65,7 @@ pi@Documents>:$
 
 ## 2 - The full List of backslash-escaped special character
 
-There are a whole bunch of backslash-escaped special characters that can be used in the string for the $PS1 varible. I will just place the list of options as I know it here.
+There are a whole bunch of backslash-escaped special characters that can be used in the string for the $PS1 variable. I will just place the list of options as I know it here.
 
 ```
 * \a : an ASCII bell character (07)
@@ -101,7 +101,7 @@ There are a whole bunch of backslash-escaped special characters that can be used
 
 ## 3 - Edit default ~/.bashrc file in Raspberry PI OS
 
-In the default .bashrc file found as /home/pi/.bashrc where pi is the user of interest, or ~/.bashrc if you prefer. In any case there should be a hidden ./bashrc file for the current user, and in this file there are a few lines of interest that should look something liek this:
+In the default .bashrc file found as /home/pi/.bashrc where pi is the user of interest, or ~/.bashrc if you prefer. In any case there should be a hidden ./bashrc file for the current user, and in this file there are a few lines of interest that should look something like this:
 
 ```
 if [ "$color_prompt" = yes ]; then
@@ -111,7 +111,7 @@ else
 fi
 ```
 
-This is of cousre where the $PS1 varibel is being set each time I start a new interactive bash session in a termianl such as lxterminal. This is then where I would want to make changes to make any prompt format that I worked out stick each time I start a new terminal window, and reboot.
+This is of course where the $PS1 variable is being set each time I start a new interactive bash session in a terminal such as lxterminal. This is then where I would want to make changes to make any prompt format that I worked out stick each time I start a new terminal window, and reboot.
 
 By Default if I do to to a path like ~/Documents/github\_dustinpfister/blog\_posts/\_posts then I end up getting a command prompt that looks like this:
 
@@ -119,11 +119,11 @@ By Default if I do to to a path like ~/Documents/github\_dustinpfister/blog\_pos
 pi@raspberrypi:~/Documents/github_dustinpfister/blog_posts/_posts $ 
 ```
 
-This gets a little annoying for me, and as such I would liek to change it to something else. There are afew options that come to mind, but I might not want to just go with them just yet. In this section I wil be going over a few chnages that I experamented with. I guess I will also be going over a few quick basics whe it comes to editing bash scripts such as this.
+This gets a little annoying for me, and as such I would like to change it to something else. There are a few options that come to mind, but I might not want to just go with them just yet. In this section I will be going over a few changes that I experimented with. I guess I will also be going over a few quick basics when it comes to editing bash scripts such as this.
 
 ### 3.1 - Just change the prompt so it will give a baseName rather than the full path name
 
-I really just want to change that one little thing that bothers me which is the full current working path showing up in each command line prompt. This is a very simple fix as I just need to chnage the lower case \\w to an upper case \\W.
+I really just want to change that one little thing that bothers me which is the full current working path showing up in each command line prompt. This is a very simple fix as I just need to change the lower case \\w to an upper case \\W.
 
 ```
 if [ "$color_prompt" = yes ]; then
@@ -157,4 +157,4 @@ fi
 
 ## 4 - Conclusion
 
-So for the most part I am just interested in tweaking what the prompt is for a non root user. There is getting into how to have a sepearte prompt for root, a sudo user, and just a plain old user. If it is a user that has a home folder then there is the .bashrc file for each user that can be edited for each user. There is a .bashrc in the /root folder that would be one way to set what the prompt is for root. There are some additional files in the etc folder that are of interest when it comes to this, but most of that may be a topic for another post.
+So for the most part I am just interested in tweaking what the prompt is for a non root user. There is getting into how to have a separate prompt for root, a sudo user, and just a plain old user. If it is a user that has a home folder then there is the .bashrc file for each user that can be edited for each user. There is a .bashrc in the /root folder that would be one way to set what the prompt is for root. There are some additional files in the etc folder that are of interest when it comes to this, but most of that may be a topic for another post.
