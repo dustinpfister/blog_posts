@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 10:32:24
-version: 1.25
+updated: 2020-11-18 10:41:34
+version: 1.26
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -42,7 +42,9 @@ It might be very basic, but you get the basic idea. The length property of the a
 
 ### 1.2 - The numbered keys of the arguments object contains the values of the arguments
 
-The keys of the arguments are numbered from zero forward just like an array, and the values for each key are the given values for the arguments.
+The keys of the arguments are numbered from zero forward just like an array, and the values for each key are the given values for the arguments. The zero index key value pair will be the value for the first argument from the left, and so on from there.
+
+Here is a simple sum function that will add up all the values given to it by way of any and all arguments given to it. The length property of the arguments object is used as a way to find out of one or more arguments where given to the function for starters. In the event that there are one or more arguments then the values are added to a sum value, in the end the sum value is always returned no mater what.
 
 ```js
 let sum = function (a, b) {
@@ -63,9 +65,13 @@ console.log(sum(5)); // 5
 console.log(sum(5, 10, 7)); // 22
 ```
 
-### 1.3 - The function length property will given the expected number of arguments
+There is more to do with a function such as this such as type checking an so forth, but the basic idea is there. The length property of the arguments object can be used in conjunction with the values of the public keys to do something such as this. However what if I need to know not just the number of arguments that where given, but the set number of parameters that the function has?
 
-The function length property will give the expected number of arguments for a function.
+### 1.3 - The function length property will give the parameter count of a funciton ( the expected number of arguments )
+
+What is the deference between an argument and a parameter? SOme might think that they are just two words the mean the same thing. However there is really a difference between the two. Parameters are often what is refer to as the fixed number of expected values when a function is called, and arguments are the set of values that where actually given.
+
+The function length property will give the expected number of parameters for a function. This value that is a property of the Function prototype can be used in conjunction with the arguments object to know what is expected, and what was actually given.
 
 ```js
 let func = function (x1, y1, x2, y2) {
