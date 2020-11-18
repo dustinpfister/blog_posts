@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2020-07-09 18:23:06
-version: 1.13
+updated: 2020-11-18 11:24:06
+version: 1.14
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining [functions in JavaScript](/2019/12/26/js-function/) compared to the older function [declarations](/2019/04/11/js-function-declaration/) and [expressions](/2019/01/27/js-function-expression/). 
@@ -36,7 +36,6 @@ console.log(foo(4)); // 'pow: 16'
 ```
 
 If I am writing pure functions rather than any function that will be part of a prototype object that arrow functions will work just fine. However the value of the this keyword differs inside the body of an arrow function, so lets look at some more examples so we know when to use arrow functions and when to make use of one of the other options such as a function declaration.
-
 
 ## 2 - Comparison to traditional functions
 
@@ -91,6 +90,10 @@ console.log( func2()(40)); // 45
 console.log( func2.call({x:2})(2)); // 7
 ```
 
-## 4 - Concluson
+## 4 - now arguments object in an arrow function
+
+Another draw back of using arrow function is that there will be no arguments object in the body of the function to work with.
+
+## 5 - Conclusion
 
 So arrow functions are a nice addition but they are not always a drop in replacement for all functions that might exist in some legacy code. However when it comes to writing new code in a very functional way then just using arrow functions alone might work out okay. Still it might be a good idea to at least be aware of the older function declaration and expression options and why it is that the use of them is not necessarily out dated.
