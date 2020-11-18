@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 10:13:47
-version: 1.23
+updated: 2020-11-18 10:17:56
+version: 1.24
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -21,7 +21,11 @@ So then this post will be on a few quick examples that make use of the arguments
 
 ## 1 - javaScript arguments object basic example
 
-For a basic example of the javaScript arguments object here is a function that uses the arguments object as a way to return a different result depending on the number of arguments that is given when the function is called. In the event that two arguments are given then the returned result is the sum of those two arguments, however if just one argument is given then the returned result is just that number rather than adding it to undefined.
+In this section I will be starting out with some very basic examples of the argumnets object in javaScript.
+
+### 1.1 - The arguments.length property is the number of arguments given
+
+One basic feature of the arguments object is the length property, for an example of this feature here is a function that uses the arguments object as a way to return a different result depending on the number of arguments that is given when the function is called. In the event that two arguments are given then the returned result is the sum of those two arguments, however if just one argument is given then the returned result is just that number rather than adding it to undefined.
 
 ```js
 let func1 = function (a, b) {
