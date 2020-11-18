@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 09:50:32
-version: 1.21
+updated: 2020-11-18 10:05:40
+version: 1.22
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -21,36 +21,7 @@ So then this post will be on a few quick examples that make use of the arguments
 
 ## 1 - javaScript arguments object basic example
 
-For a basic example of the javaScript arguments object here is a function that uses the arguments object as a way to return a different result depending on the number of arguments that is given when the function is called. If just one argument is given then the Cosine and Sin values are given for the first argument in the form of a point object of sorts. However if a second argument is given this is treated as a distance from and origin, and the additional arguments are used to offset the point object.
-
-```js
-let func1 = function (angle, distance, offsetX, offsetY) {
-    angle = angle === undefined ? 0 : angle;
-    distance = distance === undefined ? 0 : distance;
-    offsetX = offsetX === undefined ? 0 : offsetX;
-    offsetY = offsetY === undefined ? 0 : offsetY;
-    let point = {
-        x: Math.cos(angle),
-        y: Math.sin(angle)
-    };
- 
-    // if two or more arguments are given
-    if (arguments.length >= 2) {
-        point.x = point.x * distance + offsetX;
-        point.y = point.y * distance + offsetY;
-    }
- 
-    return point;
-};
- 
-console.log(func1(Math.PI / 2, 10, 5, 5));
-// { x: 5.000000000000001, y: 15 }
- 
-console.log(func1(Math.PI / 2));
-// { x: 6.123233995736766e-17, y: 1 }
-```
-
-If I where to comment out the lines of code that have to do with the conditional that checks the arguments object length, then the second use example will result in a point value of zero for both x and y. However because of the check that does not happen, and I am given something more useful. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given, and it can also be used as an alternative way to get the values of argument apart from the named parameter names when it comes to accessing the key values of this object.
+For a basic example of the javaScript arguments object here is a function that uses the arguments object as a way to return a different result depending on the number of arguments that is given when the function is called. 
 
 ## 2 - Why it is the javaScript arguments object rather than arguments array
 
@@ -208,6 +179,40 @@ console.log(w1);
 // 188
 ```
 
-## 6 - Conclusion
+## 6 - javaScript arguments object basic example
+
+If just one argument is given then that angle is used to find the values for x and y and then that is all. However if a second argument is given this is treated as a distance from the origin, and the additional arguments are used to offset the point object with additional optional offset values.
+
+```js
+let func1 = function (angle, distance, offsetX, offsetY) {
+    angle = angle === undefined ? 0 : angle;
+    distance = distance === undefined ? 0 : distance;
+    offsetX = offsetX === undefined ? 0 : offsetX;
+    offsetY = offsetY === undefined ? 0 : offsetY;
+    let point = {
+        x: Math.cos(angle),
+        y: Math.sin(angle)
+    };
+ 
+    // if two or more arguments are given
+    if (arguments.length >= 2) {
+        point.x = point.x * distance + offsetX;
+        point.y = point.y * distance + offsetY;
+    }
+ 
+    return point;
+};
+ 
+console.log(func1(Math.PI / 2, 10, 5, 5));
+// { x: 5.000000000000001, y: 15 }
+ 
+console.log(func1(Math.PI / 2));
+// { x: 6.123233995736766e-17, y: 1 }
+```
+
+If I where to comment out the lines of code that have to do with the conditional that checks the arguments object length, then the second use example will result in a point value of zero for both x and y. However because of the check that does not happen, and I am given something more useful. So the arguments object is there to help write functions that will work differently depending on the number of arguments that is given, and it can also be used as an alternative way to get the values of argument apart from the named parameter names when it comes to accessing the key values of this object.
+
+
+## 7 - Conclusion
 
 Hope this post helps to put some confusion to rest when it comes to the nature of the arguments object in javaScript. The arguments object does come in handy now and then whenever a situation arises where it is needed to find the number of arguments that where used when a function was called. Although the arguments object is not an instance of an array it is still an array like object and can be used with array prototype methods by using the function prototype methods call, apply and bind.
