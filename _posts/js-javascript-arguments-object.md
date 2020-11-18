@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2020-11-18 10:05:40
-version: 1.22
+updated: 2020-11-18 10:13:47
+version: 1.23
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -21,7 +21,20 @@ So then this post will be on a few quick examples that make use of the arguments
 
 ## 1 - javaScript arguments object basic example
 
-For a basic example of the javaScript arguments object here is a function that uses the arguments object as a way to return a different result depending on the number of arguments that is given when the function is called. 
+For a basic example of the javaScript arguments object here is a function that uses the arguments object as a way to return a different result depending on the number of arguments that is given when the function is called. In the event that two arguments are given then the returned result is the sum of those two arguments, however if just one argument is given then the returned result is just that number rather than adding it to undefined.
+
+```js
+let func1 = function (a, b) {
+    if (arguments.length == 2) {
+        return a + b;
+    }
+    return a;
+};
+console.log(func1(40,2)); // 42
+console.log(func1(42)); // 42
+```
+
+It might be very basic, but you get the basic idea. The length property of the arguments object will give the number of arguments. There is a bit more to the arguments object though when it comes to the basics, so maybe just a few more basic examples of the arguments object is in order for this section before moving on.
 
 ## 2 - Why it is the javaScript arguments object rather than arguments array
 
@@ -179,7 +192,7 @@ console.log(w1);
 // 188
 ```
 
-## 6 - javaScript arguments object basic example
+## 6 - Example making use of an angle, and other optional arguments to set x and y poison of a point
 
 If just one argument is given then that angle is used to find the values for x and y and then that is all. However if a second argument is given this is treated as a distance from the origin, and the additional arguments are used to offset the point object with additional optional offset values.
 
