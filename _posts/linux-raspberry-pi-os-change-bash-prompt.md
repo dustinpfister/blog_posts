@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 744
-updated: 2020-11-18 13:32:48
-version: 1.3
+updated: 2020-11-18 14:43:20
+version: 1.4
 ---
 
 One of the many little things that I like to change when working with a clean image of Raspberry PI OS is the bash prompt format. The file of interest is the .bashrc file that should be found in the root folder of the home folder of the current user to which I would like to change the bash prompt for. There are several options when it comes to how to go about coming up with a format when it comes to having the current user, full path of the current working path, and so forth. That is of course one of the reasons why I would like to change it actually.
@@ -17,10 +17,33 @@ In any case this post will be a quick overview of how to go about [changing what
 
 <!-- more -->
 
-## 1 - Change the PS1 variable to work out what you want.
+## 1 - Change the $PS1 variable to work out a new bash prompt
+
+### 1.1 - Use echo to find out what the current value of $PS1 is
 
 ```
+pi@raspberrypi:~/Documents $ echo $PS1
+${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\]
+```
 
+### 1.2 - Change it to whatever
+
+I can add any kind of text that I want to make a weird, and fun prompt if I want actually. If I want my prompt to me some kind of text art type thing I can.
+
+```
+pi@raspberrypi:~ $ $ PS1="(☞ ͡° ͜ʖ ͡°)☞< check it ☞) \$ "
+(☞ ͡° ͜ʖ ͡°)☞<check it) $ 
+```
+
+The good thing about this is that any change made this way will not last. All I have to do to go back to the way things are is to just close the terminal window, and start up a new one. The chnages will only be made fixed if I take a moment to edit a condif file or two. More on that later, but for now lets take a look at some more practical command prompts.
+
+## 1.3 - Supper minimal $ only
+
+At a minamum a prompt should have at least the $ symbol as long as this is the bash prompt for a non root user such as pi.
+
+```
+pi@raspberrypi:Documents $ PS1="\$ "
+$ 
 ```
 
 ## 2 - Edit default ~/.bashrc file in Raspberry PI OS
