@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2020-11-18 11:24:06
-version: 1.14
+updated: 2020-11-18 11:51:36
+version: 1.15
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining [functions in JavaScript](/2019/12/26/js-function/) compared to the older function [declarations](/2019/04/11/js-function-declaration/) and [expressions](/2019/01/27/js-function-expression/). 
@@ -92,7 +92,27 @@ console.log( func2.call({x:2})(2)); // 7
 
 ## 4 - now arguments object in an arrow function
 
-Another draw back of using arrow function is that there will be no arguments object in the body of the function to work with.
+Another draw back of using arrow function is that the arguments object in the body of the function will not work as exspected. The length property will give a value of zero when the actual number of argumnets given is more than that. This is yet another reason why I often go with function expressions, or declarations over arrow functions.
+
+```js
+// using an arrow function, and the arguments.length prop
+let func1 = (a, b) => {
+    if(arguments.length === 2){
+        return a + b;
+    }
+    return a;
+};
+// same function only using a function expression in place of an arrow function
+let func2 = function(a, b) {
+    if(arguments.length === 2){
+        return a + b;
+    }
+    return a;
+};
+// arrow function will have wrong values for arguments.length
+console.log( func1(1, 1) ); // 1
+console.log( func2(1, 1) ); // 2
+```
 
 ## 5 - Conclusion
 
