@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2020-11-19 14:55:35
-version: 1.17
+updated: 2020-11-19 15:02:17
+version: 1.18
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining [functions in JavaScript](/2019/12/26/js-function/) compared to the older function [declarations](/2019/04/11/js-function-declaration/) and [expressions](/2019/01/27/js-function-expression/). 
@@ -67,7 +67,9 @@ The main difference between the two other options has to do with how the this ke
 
 ## 3 - The this statement and arrow functions
 
-So with arrow functions the this keyword is not treated the same way. When Working with nested functions or closures the self variable is often used as a way to store that value of the this keyword that can then be accessed from within another function within the function. In addition a Function prototype method like Function.call can be used to set the value of the this keyword as well. However with arrow functions this is not the case.
+So with arrow functions the this keyword is not treated the same way as it is in other types of functions. When working with nested functions or closures the self variable is often used as a way to store the value of the this keyword that can then be accessed from within another nested function. In addition a Function prototype method like Function.call can be used to set the value of the this keyword as well when calling a function. 
+
+However with arrow functions the this keyword will not give expected results.
 
 ```js
 var func1 = function () {
@@ -91,6 +93,8 @@ var func2 = () => {
 console.log( func2()(40)); // 45
 console.log( func2.call({x:2})(2)); // 7
 ```
+
+With arrow functions any value that is given for this via Function.call will just be ignored, and it will be as if the function was just called normally. There are some how say that this should not be used, as well as everything that this leads to. With that said if I where to stick to just working with values that are given via arguments then this should not be a problem. However there are problems with the arguments object also when it comes to arrow functions.
 
 ## 4 - The arguments object in an arrow function
 
