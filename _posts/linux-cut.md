@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 14:18:57
-version: 1.10
+updated: 2020-11-19 14:23:17
+version: 1.11
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by field and delimiter, that is using a delimiter like a line break or a space as a way to split a string into fields, and then using a field index to get the sub string value that I want.
@@ -89,7 +89,14 @@ $ basename "/home/pi/foo.bar/.fonts/filename.txt.b64" | cut -d . -f 1
 filename
 ```
 
-It would make sense for there to be a base name command because this is something that I find myself running into often.
+It would make sense for there to be a base name command because this is something that I find myself running into often. In fact if I know the full extension of the file I can give that as an option to the basename command, in which case I do not even need to boter with cut.
+
+```
+$ basename -s .txt.b64 "/home/pi/foo.bar/.fonts/filename.txt.b64"
+filename
+```
+
+It might take time to learn all these little commands, but once I know a lot of them it helps to make quick work of trivial tasks such as this.
 
 ## 3 - Conclusion
 
