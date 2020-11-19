@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 13:06:45
-version: 1.4
+updated: 2020-11-19 13:10:41
+version: 1.5
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by feild and delimiter, that is using a delimiter like a line break or a space as a way to split a string into feilds, and then using a feild index to get the sub string value that I want.
@@ -48,7 +48,7 @@ cut
 
 ## 2 - Change the output delimiter
 
-In some cases I might want to change the output delimiter. To do so I just need to use the --output-delimiter option.
+In some cases I might want to change the output delimiter. To do so I just need to use the --output-delimiter option. If I want for there to be no delimiter at all between feilds in the output then I just need to give an empty string as the output delimiter. So when it comes to one of my simple examples from above I can use the -d option to set a delimiter for the source, and the -f option to select the feilds that I want, and then the --output-delimiter option to change the output delimiter to something other than a comma.
 
 ```
 $ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 8,2,6 --output-delimiter=''
