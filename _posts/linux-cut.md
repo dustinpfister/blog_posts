@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 12:38:46
-version: 1.2
+updated: 2020-11-19 12:58:11
+version: 1.3
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by feild and delimiter, that is using a delimiter like a line break or a space as a way to split a string into feilds, and then using a feild index to get the sub string value that I want.
@@ -30,12 +30,16 @@ $ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 3
 
 ### 1.2 - More than one index can be given
 
+When using the feild option it is possible to give more than one index value. Just pass the index values from left to right sepeaterd by commas, the result will be the feilds in the order of the given feild index values.
+
 ```
 $ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 8,2,6
 2b,6f,8h
 ```
 
 ### 1.3 - Be sure to use quotes when needed
+
+quotes may have to be used when delaing with white space as a delimiter
 
 ```
 $ echo "this is some text to cut for example" | cut -d " " -f 6
