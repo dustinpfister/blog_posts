@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 12:58:11
-version: 1.3
+updated: 2020-11-19 13:06:45
+version: 1.4
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by feild and delimiter, that is using a delimiter like a line break or a space as a way to split a string into feilds, and then using a feild index to get the sub string value that I want.
@@ -45,3 +45,16 @@ quotes may have to be used when delaing with white space as a delimiter
 $ echo "this is some text to cut for example" | cut -d " " -f 6
 cut
 ```
+
+## 2 - Change the output delimiter
+
+In some cases I might want to change the output delimiter. To do so I just need to use the --output-delimiter option.
+
+```
+$ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 8,2,6 --output-delimiter=''
+2b6f8h
+```
+
+## 3 - Conclusion
+
+The Linux cut command seems to come up now and then when writng bash scripts. I often want to cut the extension off of a file name to get the base of the filename to which I then create a new file with the same base name but a new extension. The cut command also will come into play when I want to do anything else that might be needed when working with string values in a Linux and bash enviorment.
