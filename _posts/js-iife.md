@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 07:36:55
-version: 1.16
+updated: 2020-11-19 07:40:14
+version: 1.17
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
 
-When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these kinds of functions. In late specs of javaScript there is now block level variable scope, but I still find myself often using and IIFE with, or in place of, block level scope.
+When it comes to older specs of javaScript an IIFE is a way to go about using the function level only variable scope of those specs to have a whole bunch of private, or local variables wrapped up inside the body of one of these kinds of functions. In late specs of javaScript there is now block level variable scope, but I still find myself often using and IIFE with, or in place of, block level scope. I am also mainly the kind of developer that still try to push things back as far as I can when it comes to supporting older platforms, so the use of IIFEs and closure in general is one thing to to to help go more in that direction.
 
 The return keyword can then be used as a way to go about returning something that can be stored in a variable, this something that is returned can be a plain old object with properties, or a function, or a function with properties that serves as a kind of public API. The IIFE can also just be used as a way to not go about polluting the global name space, as everything that is defined within the body of an IIFE with var, let, or const will be local to the function rather than the top level.
 
