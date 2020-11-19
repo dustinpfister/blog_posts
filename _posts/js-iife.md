@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 09:49:39
-version: 1.23
+updated: 2020-11-19 09:51:53
+version: 1.24
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -26,6 +26,8 @@ These kinds of functions in javaScript are often used in module design, as priva
 In this section I will be going over some very simple basic examples of a IIFE, later in this post I will then be covering some more detailed examples that make use of a lot of other features in javaScript on top of just IIFE. Still just when it comes to very simple examples I will end up touching on a lot of other topics that have to do with javaScript. I will try my best to not go off in detail with them though, and link to other content here and there as needed.
 
 ### 1.1 - Variables defined in the body of an IIFE with var, let, or const will be local to the IIFE
+
+The first and for most thing to write about here is that any variable that is defined in the body of an IIFE with the var keyword, or the more modern alternatives, will be local to the scope of that IIFE. This is nt just true of an IIFE, but functions in general.
 
 ```js
 // global variable n
