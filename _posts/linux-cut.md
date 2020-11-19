@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 13:17:51
-version: 1.6
+updated: 2020-11-19 13:31:47
+version: 1.7
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by feild and delimiter, that is using a delimiter like a line break or a space as a way to split a string into feilds, and then using a feild index to get the sub string value that I want.
@@ -54,6 +54,17 @@ In some cases I might want to change the output delimiter. To do so I just need 
 $ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 8,2,6 --output-delimiter=''
 2b6f8h
 ```
+
+## 3 - Get the basename of a file
+
+One thing that I have been using the Linuc cut command for thus far is to get the base name of a file name. 
+
+```
+$ echo 'filename.txt.b64' | cut -d . -f 1
+filename
+```
+
+This works if I just have the file name first of course, becuase if it is a path that has dots in any of the folders before hand that will throw a wrentch in the works.
 
 ## 3 - Conclusion
 
