@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 09:51:53
-version: 1.24
+updated: 2020-11-19 09:54:48
+version: 1.25
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -41,6 +41,8 @@ console.log(n); // undefined
 ```
 
 ### 1.2 - Global variables can still be accessed because they are lower on the scope chain.
+
+It is still possible to access a variable that is lower down in the scope chain, including of course global variables. Again this is true of all functions in javaScript. Local variables are just in the scope of the function, but anything that is lower down in scope can still be accessed inside the function also.
 
 ```js
 // global variable
