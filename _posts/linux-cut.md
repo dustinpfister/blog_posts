@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 14:01:12
-version: 1.8
+updated: 2020-11-19 14:07:17
+version: 1.9
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by feild and delimiter, that is using a delimiter like a line break or a space as a way to split a string into feilds, and then using a feild index to get the sub string value that I want.
@@ -55,7 +55,7 @@ $ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 8,2,6 --output-delimiter=''
 2b6f8h
 ```
 
-## 3 - Get the basename of a file
+## 3 - Get the basename of a file with cut by itself, and with the basename command
 
 One thing that I have been using the Linuc cut command for thus far is to get the base name of a file name. 
 
@@ -80,7 +80,14 @@ $ bash filename_last.sh
 filename
 ```
 
-I have not tested this with every little possible thing when it comes to path names, but so far it seems to work. If I fine a better one liner for this maybe I will update this section on this one.
+I have not tested this with every little possible thing when it comes to path names, but so far it seems to work. However I would say that this is more or less making something very simple far more complex than it needs to be if the Linux basename command is there to work with in the system.
+
+```
+$ basename "/home/pi/foo.bar/.fonts/filename.txt.b64" | cut -d . -f 1
+filename
+```
+
+It woukld make sense for there to be a basename command becuase this is seomthing that I find myself running into often.
 
 ## 3 - Conclusion
 
