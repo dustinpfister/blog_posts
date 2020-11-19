@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 14:23:17
-version: 1.11
+updated: 2020-11-19 14:25:11
+version: 1.12
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by field and delimiter, that is using a delimiter like a line break or a space as a way to split a string into fields, and then using a field index to get the sub string value that I want.
@@ -39,7 +39,7 @@ $ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 8,2,6
 
 ### 1.3 - Be sure to use quotes when needed
 
-quotes may have to be used when dealing with white space as a delimiter
+Quotes may have to be used when dealing with white space as a delimiter. For example if I have a sentence and I want the delimiter to be a space, then I will want to have a space between to double quotes.
 
 ```
 $ echo "this is some text to cut for example" | cut -d " " -f 6
