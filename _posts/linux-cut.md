@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 13:31:47
-version: 1.7
+updated: 2020-11-19 14:01:12
+version: 1.8
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by feild and delimiter, that is using a delimiter like a line break or a space as a way to split a string into feilds, and then using a feild index to get the sub string value that I want.
@@ -64,7 +64,23 @@ $ echo 'filename.txt.b64' | cut -d . -f 1
 filename
 ```
 
-This works if I just have the file name first of course, becuase if it is a path that has dots in any of the folders before hand that will throw a wrentch in the works.
+This works if I just have the file name first of course, becuase if it is a path that has dots in any of the folders before hand that will throw a wrentch in the works. To help with that it, and using the Linuc cut command to do so, might require creating a bash script like this:
+
+```
+#!/bin/bash
+filepath="/home/pi/foo.bar/.fonts/filename.txt.b64"
+fcount=$( echo -n $filepath | grep -o "\/" | wc -w )
+filename=$( echo -n $filepath | cut -d '/' -f $(( $fcount + 1)) )
+basename=$( echo -n $filename | cut -d '.' -f 1 )
+echo $basename
+```
+
+```
+$ bash filename_last.sh
+filename
+```
+
+I have not tested this with every little possible thing when it comes to path names, but so far it seems to work. If I fine a better one liner for this maybe I will update this section on this one.
 
 ## 3 - Conclusion
 
