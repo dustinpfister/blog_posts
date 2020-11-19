@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 14:27:02
-version: 1.13
+updated: 2020-11-19 14:30:16
+version: 1.14
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by field and delimiter, that is using a delimiter like a line break or a space as a way to split a string into fields, and then using a field index to get the sub string value that I want.
 
-There are a few other options with The Linux cut command, but I will just be sticking to a few basic examples that actually come into play when writing bash scripts. So in this post I will not be going over every little detail about the Linux cut command, when it comes to that there is always the [man page on Linux cut](https://man7.org/linux/man-pages/man1/cut.1.html), as well as many other blog posts on Linux cut that go over all the features and options. Here in this post I will just be going over the options that I am using thus far, and give some actually use case examples for the Linux Cut command.
+There are a few other options with The Linux cut command, but I will just be sticking to a few basic examples that actually come into play when writing bash scripts. So in this post I will not be going over every little detail about the Linux cut command, when it comes to that there is always the [man page on Linux cut](https://man7.org/linux/man-pages/man1/cut.1.html), as well as many other blog posts on Linux cut that go over all the features and options. Here in this post I will just be going over the options that I am using thus far, and give some actually use case examples for the Linux Cut command. I will also be touching base one many other Linux commands and features such as echo, piping, basic bash files, and the basename command to just name a few things.
 
 <!-- more -->
 
@@ -91,7 +91,7 @@ $ basename "/home/pi/foo.bar/.fonts/filename.txt.b64" | cut -d . -f 1
 filename
 ```
 
-It would make sense for there to be a base name command because this is something that I find myself running into often. In fact if I know the full extension of the file I can give that as an option to the basename command, in which case I do not even need to boter with cut.
+It would make sense for there to be a base name command because this is something that I find myself running into often. In fact if I know the full extension of the file I can give that as an option to the basename command, in which case I do not even need to bother with cut.
 
 ```
 $ basename -s .txt.b64 "/home/pi/foo.bar/.fonts/filename.txt.b64"
