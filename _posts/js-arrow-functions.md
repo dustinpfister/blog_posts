@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2020-11-18 11:51:36
-version: 1.15
+updated: 2020-11-19 14:51:53
+version: 1.16
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining [functions in JavaScript](/2019/12/26/js-function/) compared to the older function [declarations](/2019/04/11/js-function-declaration/) and [expressions](/2019/01/27/js-function-expression/). 
 
-These kinds of functions preform more or less the same way as traditional function expressions and function declarations. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do that in some cases it might work okay, but other times the code might break mainly because of the differences with how the [this keyword](/2017/04/14/js-this-keyword/) is treated with javaScript arrow functions compared to other alternatives. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions, and how they compare to the other options available when writing functions in javaScript.
+These kinds of functions preform more or less the same way as traditional function expressions and function declarations when it comes to many typical use cases of functions in javaScript. However there are a few quirks with them, so they are not always a drop in replacement for all functions in all situations. If you do just start replacing other types of functions with array functions without thinking in some cases it might work okay, but other times the code might break mainly because of the differences with how the [this keyword](/2017/04/14/js-this-keyword/) in arrow functions. 
+
+With arrow functions the this keyword is treated in a different way compared to other alternatives, and as such it will not work as expected when using Function prototype methods such as Function.call. There are some other little issues that might creep up also when using arrow functions such as with the arguments object. So there is more to arrow functions than just a more concise way to write a function in javaScript so lets take a second look at arrow functions, and how they compare to the other options available when writing functions in javaScript.
 
 <!-- more -->
 
