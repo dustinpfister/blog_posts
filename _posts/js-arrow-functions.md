@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 385
-updated: 2020-11-19 14:51:53
-version: 1.16
+updated: 2020-11-19 14:55:35
+version: 1.17
 ---
 
 In [ecma2015](https://en.wikipedia.org/wiki/ECMAScript) spec javaScript [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) where introduced as a more concise way of defining [functions in JavaScript](/2019/12/26/js-function/) compared to the older function [declarations](/2019/04/11/js-function-declaration/) and [expressions](/2019/01/27/js-function-expression/). 
@@ -92,9 +92,9 @@ console.log( func2()(40)); // 45
 console.log( func2.call({x:2})(2)); // 7
 ```
 
-## 4 - now arguments object in an arrow function
+## 4 - The arguments object in an arrow function
 
-Another draw back of using arrow function is that the arguments object in the body of the function will not work as exspected. The length property will give a value of zero when the actual number of argumnets given is more than that. This is yet another reason why I often go with function expressions, or declarations over arrow functions.
+Another draw back of using arrow function is that the arguments object in the body of the function will not work as expected. The length property will give a value of zero when the actual number of arguments given is more than that. This is yet another reason why I often go with function expressions, or declarations over arrow functions.
 
 ```js
 // using an arrow function, and the arguments.length prop
@@ -118,4 +118,6 @@ console.log( func2(1, 1) ); // 2
 
 ## 5 - Conclusion
 
-So arrow functions are a nice addition but they are not always a drop in replacement for all functions that might exist in some legacy code. However when it comes to writing new code in a very functional way then just using arrow functions alone might work out okay. Still it might be a good idea to at least be aware of the older function declaration and expression options and why it is that the use of them is not necessarily out dated.
+So arrow functions are a nice addition but they are not always a drop in replacement for all functions that might exist in some legacy code. However when it comes to writing new code in a very functional way then just using arrow functions alone might work out okay. 
+
+Still it might be a good idea to at least be aware of the older function declaration and expression options and why it is that the use of them is not necessarily out dated. If you want to just choose one type of function all the time, then arrow functions might lead to problems when it comes to taking an approach where one needs to do things with Function prototype methods, and the arguments object, so maybe function expressions are a decent first choice still if you are not always sure which to use.
