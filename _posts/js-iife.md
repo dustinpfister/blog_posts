@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 10:00:03
-version: 1.27
+updated: 2020-11-19 10:02:30
+version: 1.28
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -29,7 +29,7 @@ Many of these basic examples are a quick review of the features of not just an I
 
 ### 1.1 - Variables defined in the body of an IIFE with var, let, or const will be local to the IIFE
 
-The first and for most thing to write about here is that any variable that is defined in the body of an IIFE with the var keyword, or the more modern alternatives, will be local to the scope of that IIFE. This is nt just true of an IIFE, but functions in general.
+The first and for most thing to write about here is that any variable that is defined in the body of an IIFE with the var keyword, or the more modern alternatives, will be local to the scope of that IIFE. This is not just true of an IIFE, but functions in general.
 
 ```js
 // global variable n
@@ -257,4 +257,4 @@ For example say I am making a canvas example, and I will have code that will be 
 
 ## 6 - Conclusion
 
-So a js IIFE is often my first go to when it comes to generic module design in front end javaScript. I might not always use one when it comes to making a nodejs module though as I do not see the need, unless I am making the kind of javaScript module that is expected to work in node and the browser in the same state in which case chances are I would use an IIFE.
+So a js IIFE is often my first go to when it comes to generic module design in front end javaScript. I might not always use one when it comes to making a nodejs module though as I do not see the need, unless I am making the kind of javaScript module that is expected to work in node and the browser in the same state in which case chances are I would use an IIFE. Module design is a lengthy topic in javaScript, an IIFE is one way to go about making something that can be though of as one, but it is not the end of the line at all to say the least.
