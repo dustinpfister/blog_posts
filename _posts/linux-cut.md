@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 13:10:41
-version: 1.5
+updated: 2020-11-19 13:17:51
+version: 1.6
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by feild and delimiter, that is using a delimiter like a line break or a space as a way to split a string into feilds, and then using a feild index to get the sub string value that I want.
 
-There are a few other options with The Linux cut command, but I will just be sticking to a few basic examples that actaully come into play when writing bash scripts.
+There are a few other options with The Linux cut command, but I will just be sticking to a few basic examples that actaully come into play when writing bash scripts. So in this post I will not be going over every little detail about the Linux cut command, when it comes to that there is always the [man page on Linux cut](https://man7.org/linux/man-pages/man1/cut.1.html), as well as many other blog posts on Linux cut that go over all the features and options. Here in this post I will just be going over the options that I am using thus far, and give some actualy use case examples for the Linux Cut command.
 
 <!-- more -->
 
