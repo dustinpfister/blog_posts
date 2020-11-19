@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 10:14:30
-version: 1.29
+updated: 2020-11-19 10:24:23
+version: 1.30
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -109,6 +109,28 @@ console.log( n.join(',') ); // '1,2,4,8,16,32,64,128,256,512'
 
 Objects in javaScript do not begin and end with plain old objects created with the Object literal notation, Arrays, and Functions are also types of Objects. When using An IIFE to make a kind of module a function can be returned as a way to provide some kind of public function that makes use of everything and anything that is wrapped up in the IIFE. Static methods can be attached to a Function just like a plain old Object, and prototype methods can also be attached if the function that I am making is a constructor.
 
+### 1.5 - methods of the prototype of the value that is returned can be called off of it
+
+Whatever is returned by the IIFE will have a prototype object with it often. For example if what is returned by the IIFE is a Array then there will be Array prototype methods like map, and reduce to work with off of the result. Methods such as this can be called off of the end of the IIFE, inside the body of the IIFE when returning the result, or at a later point off of a variable if the result is stored to one.
+
+```js
+var sum = (function () {
+    var result = [],
+    len = 10,
+    i = 0;
+    while (i < len) {
+        result.push(i);
+        i += 1;
+    }
+    return result;
+}
+    ()).map(function (i) {
+    return Math.pow(2, i);
+}).reduce(function (acc, n) {
+    return acc + n;
+});
+console.log(sum); // 1023
+```
 
 ## 2 - JS IIFE example with an inner function returned as the public API
 
