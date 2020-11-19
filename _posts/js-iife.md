@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 10:24:23
-version: 1.30
+updated: 2020-11-19 10:31:30
+version: 1.31
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -130,6 +130,28 @@ var sum = (function () {
     return acc + n;
 });
 console.log(sum); // 1023
+```
+
+### 1.6 - As an operand in an expression
+
+The returned value could be used as an operand in an expression. I am not saying that doing so is something that comes up often, or that it is a good idea. However this is one thing that I think can helper to show why it is that an IIFE can some times be helpful, or at least flexible. A bunch of javaScript code can be packed into one, that will evaluate to a value that can then be returned. That value is often returned to a variable, but it can also just be a value that is used in a lengthy expression.
+
+```js
+var n = (1 + (function () {
+    var result = [],
+    len = 10,
+    i = 0;
+    while (i < len) {
+        result.push(Math.pow(2, i));
+        i += 1;
+    }
+    return result.reduce(function (acc, n) {
+        return acc + n;
+    });
+}
+    ())) * 4;
+console.log(n); // '4096'
+
 ```
 
 ## 2 - JS IIFE example with an inner function returned as the public API
