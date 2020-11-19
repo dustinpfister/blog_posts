@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 08:52:16
-version: 1.21
+updated: 2020-11-19 09:27:07
+version: 1.22
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -21,7 +21,11 @@ These kinds of functions in javaScript are often used in module design, as priva
 
 <!-- more -->
 
-## 1 - JS IIFE basic example with an inner function returned as the public API
+## 1 - JS IIFE Basics
+
+In this section I will be going over some very simple basic examples of a IIFE. later in this post I will then be covering some more detailed examples that make use of a lot of other features in javaScript.
+
+## 2 - JS IIFE example with an inner function returned as the public API
 
 Lets start out with just a basic example of an IIFE in javaScript. I do so by just writing a function expression like always, but I then wrap the expression in parenthesis or a group operator if you prefer. I then call the function expression as well within the group operator, or outside of it if for some reason you find that might be better. So this results in a function where I define the function while also calling it invoking any code that may be within the body of the IIFE right away.
 
@@ -50,7 +54,7 @@ console.log( count('get') ); // -3
 
 In this example I have an inner function that is returned to the public count variable. I can then call that function from the outside of the IIFE however I can not directly work with the private c variable. I can however work with the local c variable indirectly by way of the public method that is returned.
 
-## 2 - Making a public API as an object literal
+## 3 - Making a public API as an object literal
 
 A function can be used as a public API but a plain old object can also be used as one also. Say I have a whole bunch of methods that I want to have as my public API for a game module. One way would be to attach them to a prototype object of a function, but what if they do not need to be part of a class of a constructor function? Also what if I do not want or need a constructor function at all, or a function of any kind as the public API? No problem just using a plain od object will work just fine.
 
@@ -101,7 +105,7 @@ var game = (function () {
     ());
 ```
 
-## 3 - A function can be passed as the public API with static methods attached
+## 4 - A function can be passed as the public API with static methods attached
 
 In javaScript functions are a kind of object, so just like any other object in javaScript additional methods and properties can be attached to them. If I attach methods to the prototype object they become part of a constructor functions prototype, however if I do not want to do that I can just add static methods as just properties of the function.
 
@@ -147,7 +151,7 @@ bx2 = BX({
 console.log(BX.distance(bx1, bx2).toFixed(2)); // 45.25
 ```
 
-## 4 - Using a javaScript IIFE to just make everything private, and not pollute the global name space
+## 5 - Using a javaScript IIFE to just make everything private, and not pollute the global name space
 
 So some times it might be desired to not pollute the global name space. One way to go about doing just that would be to contain all the code that composes your project in a javaScript IIFE. Maybe it would make sense to keep everything separated in certain files and define globals that are used in other files when it comes to developing a project. However when it comes to making a finished package for development, everything can be crunched down, and wrapped up in a single IIFE as a way to make sure that nothing else on the page ends up getting written over.
 
@@ -187,6 +191,6 @@ For example say I am making a canvas example, and I will have code that will be 
 </html>
 ```
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So a js IIFE is often my first go to when it comes to generic module design in front end javaScript. I might not always use one when it comes to making a nodejs module though as I do not see the need, unless I am making the kind of javaScript module that is expected to work in node and the browser in the same state in which case chances are I would use an IIFE.
