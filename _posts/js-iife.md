@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 09:54:48
-version: 1.25
+updated: 2020-11-19 09:58:04
+version: 1.26
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -55,7 +55,9 @@ var global = 40;
     ());
 ```
 
-### 1.3 - Arguments
+### 1.3 - Arguments and copying by value and reference
+
+Arguments can be passed when calling it just like any other function, the only real difference is that it is being called right away, and only once. When it comes to arguments and functions one thing to point out is that the values can be copied by value if the value is a primitive values such as a number or string, but objects are a different story.
 
 ```js
 // Argument is a primitive
