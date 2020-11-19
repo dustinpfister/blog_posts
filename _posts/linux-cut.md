@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 14:25:11
-version: 1.12
+updated: 2020-11-19 14:27:02
+version: 1.13
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by field and delimiter, that is using a delimiter like a line break or a space as a way to split a string into fields, and then using a field index to get the sub string value that I want.
@@ -18,6 +18,8 @@ There are a few other options with The Linux cut command, but I will just be sti
 ## 1 - Cutting by delimiter and field
 
 I am going to start off with Linux cut examples that have to do with using the delimiter option \( -d \) to set a char that is to be used to break a string down into fields. Once a delimiter is given the the field option \( -f \) can be used to set what the field index is that I want.
+
+The cut command can be given a file as a way to supply content that is to be cut, but if no file is given then content can be piped into it via the standard input. All the examples in this section are doing just that by making use of the echo command to create an example string.
 
 ### 1.1 - Basic example of using delimiter and field options with Linux Cut
 
