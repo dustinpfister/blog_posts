@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 745
-updated: 2020-11-19 14:30:16
-version: 1.14
+updated: 2020-11-19 14:36:50
+version: 1.15
 ---
 
 The [Linux cut](https://linuxize.com/post/linux-cut-command/) command is the standard tool for cutting a string into one or more sub strings. The first and for most way of using cut as I see it at least is by field and delimiter, that is using a delimiter like a line break or a space as a way to split a string into fields, and then using a field index to get the sub string value that I want.
@@ -59,14 +59,16 @@ $ echo "[1a,2b,3c,4d,5e,6f,7g,8h,9i]" | cut -d , -f 8,2,6 --output-delimiter=''
 
 ## 3 - Get the basename of a file with cut by itself, and with the basename command
 
-One thing that I have been using the Linux cut command for thus far is to get the base name of a file name. 
+One thing that I have been using the Linux cut command for thus far is to get the base name of a file name. This might work okay, but there are other options and commands to work with often. I will be getting to the basename command later in this section, but for now lets start out just with cut. The Linux cut command will work okay when it comes to getting the basename from a path or filename, but there are some situations in which I can lead to making a solution that is more complex than it needs to be for this.
+
+Still when it comes to something like this:
 
 ```
 $ echo 'filename.txt.b64' | cut -d . -f 1
 filename
 ```
 
-This works if I just have the file name first of course, because if it is a path that has dots in any of the folders before hand that will throw a wrench in the works. To help with that it, and using the Linux cut command to do so, might require creating a bash script like this:
+The Linux cut command works just fine if I have the file name first of course. If however I have a long path name that has dots in any of the folders before hand, that will throw a wrench in the works and give me a wring result. To help with that it, and using the Linux cut command without looking into the basename command, I might have to create a bash script like this:
 
 ```
 #!/bin/bash
