@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2020-11-19 10:02:30
-version: 1.28
+updated: 2020-11-19 10:14:30
+version: 1.29
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -88,6 +88,27 @@ var global = {
 }
     (global));
 ```
+
+### 1.4 - Something can be returned by the IIFE
+
+Just like any other function in javaScript something can be returned by the IIFE. This can just be a primitive value such as a number, but it can also be an object. 
+```js
+var n = (function () {
+    var result = [],
+    len = 10,
+    i = 0;
+    while (i < len) {
+        result.push(Math.pow(2, i));
+        i += 1;
+    }
+    return result;
+}
+    ());
+console.log( n.join(',') ); // '1,2,4,8,16,32,64,128,256,512'
+```
+
+Objects in javaScript do not begin and end with plain old objects created with the Object literal notation, Arrays, and Functions are also types of Objects. When using An IIFE to make a kind of module a function can be returned as a way to provide some kind of public function that makes use of everything and anything that is wrapped up in the IIFE. Static methods can be attached to a Function just like a plain old Object, and prototype methods can also be attached if the function that I am making is a constructor.
+
 
 ## 2 - JS IIFE example with an inner function returned as the public API
 
