@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 15:49:26
-version: 1.2
+updated: 2020-11-20 15:55:05
+version: 1.3
 ---
 
 When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more argumnets, and then just call that function over and over again rather than repating the whole block of code.
@@ -52,6 +52,8 @@ So now we have the basic idea of a function in bash. However maybe there is a fe
 
 ## 2 - Argumnets in bash functions
 
+So now about argumnets with bash functions. Each bash function has its own set of positioned argumnets just like that of the main script file. When I do to call the function I just need to pass the values that I want for $1 $2 and so forth.
+
 ```
 #!/bin/bash
  
@@ -83,7 +85,11 @@ $ ./func_argu.sh 5 7
 12
 ```
 
-## 3 - Return something
+## 3 - Return something from a function
+
+There is a return keyword in bash, but it does not wokr the same way as in other languages such as javaScript. There seems to be no standard way to defined a return value for a function, but there are a few tricks that give a simular result.
+
+The best way to go about defining a return value might be to just echo out the return value as ways just use $\(\) as a way to call it.
 
 ```
 #!/bin/bash
