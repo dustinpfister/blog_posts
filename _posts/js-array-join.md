@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-11-20 08:43:03
-version: 1.19
+updated: 2020-11-20 08:45:17
+version: 1.20
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array. This is of course just one of many such methods that a javaScript developer should be aware of when it comes to what there is to work with in the array prototype object. It is a good idea to become familiar with these methods as it will save time that would otherwise be spent having to look for or write some kind of user space option for joining elements of an array together into a string.
@@ -76,7 +76,7 @@ console.log(str); // '42-30-50'
 
 ## 5 - The toString method of Objects
 
-The toString method of an Object is a standard way to define what the string value of an Object should be. The array join method is a method where we are joining all the elements of an array into a string. With that said if we are dealing with an array of string values then the array join method can just be called, but what if we are dealing with an array of objects?
+The toString method of an Object is a standard way to define what the string value of an Object should be. The array join method is a method where we are joining all the elements of an array into a string. With that said if we are dealing with an array of string values then the array join method can just be called, but what if we are dealing with an array of objects? There is more than one way to go about creating string values from objects, some filtering, and mapping can be done to do so sure. However I think that I should have a section on the toString method of objects in this post also.
 
 ### 5.1 - A Basic Object.toString example
 
