@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-11-20 08:14:58
-version: 1.17
+updated: 2020-11-20 08:22:22
+version: 1.18
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array. This is of course just one of many such methods that a javaScript developer should be aware of when it comes to what there is to work with in the array prototype object. It is a good idea to become familiar with these methods as it will save time that would otherwise be spent having to look for or write some kind of user space option for joining elements of an array together into a string.
@@ -21,6 +21,8 @@ So this will just be a quick post on the js array join method as well as some qu
 
 The basic idea of array join is to just call it off an instance of a javaScript array, and a string that consists of all the values of the array joined together will be what is returned. When doing so I just pass a string that I want to have between each element in the resulting string produced form the array with js array join.
 
+So say I have an array of three numbers where the first number is the value of a month, the second number is the value of a day, and the final number in the array is a year. I want to furnish this set of numbers into a string with a forward slash between each number. I could user a method like Array.forEach to loop over each elements and use string concatenation with an outside variable to produce such a string, however why bother with all that when I can just use Array.join?
+
 ```js
 var arr = [3,9,2020],
 str = arr.join('/');
@@ -28,7 +30,7 @@ str = arr.join('/');
 console.log(str); '3/9/2020'
 ```
 
-There is more than just the array join method to work with after all and not just with respect to the other array prototype methods. When using join often other methods will be used before hand, so maybe some more examples are called for with this one.
+This example is an array of primitive values each of which are a number. When dealing with an array of values each of which are a string or number then using join can be as simple as just calling it off the array like this. However when dealing with objects there might need to be a little more done before getting to the point at which the Array.join method is used. So although we have the basic idea of Array.join covered, maybe we should look at some more examples of this.
 
 ## 2 - js array join and empty string as a separator
 
