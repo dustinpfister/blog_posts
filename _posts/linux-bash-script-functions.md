@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 15:42:04
-version: 1.1
+updated: 2020-11-20 15:49:26
+version: 1.2
 ---
 
 When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more argumnets, and then just call that function over and over again rather than repating the whole block of code.
@@ -16,6 +16,10 @@ So in this post I will be going over some of the basics of functions when writin
 <!-- more -->
 
 ## 1 - basic bash function
+
+Lets start with the very basics of bash functions. I can define one by typing a name for a function, followed by and opending and closing set of parentheses after which I will be placing what I want the function to be inside a set of curly brackets.
+
+Once I have my function worked out I can call it any number of times that I want in the body of a script.
 
 ```
 #!/bin/bash
@@ -36,11 +40,15 @@ hw
 echo ""
 ```
 
+So once I have my bash script togeather in an editor I can save it as something like func_basic.sh. I can then call it with bash or amke the script exacutabule with chmod and run it dirrectly becuase of the bash shebang at the top of the file.
+
 ```
 $ chmod 755 func_basic.sh
 $ ./func_basic.sh
  hello bash functions -  hello bash functions -  hello bash functions - 
 ```
+
+So now we have the basic idea of a function in bash. However maybe there is a few more things to cover when it comes to functions in bash scripts. There is the question of argumnets, how to return something, and other function related topics. So maybe at least a few more examples are called for before moving on to some other bash script related topics.
 
 ## 2 - Argumnets in bash functions
 
