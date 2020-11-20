@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 15:57:50
-version: 1.4
+updated: 2020-11-20 16:15:48
+version: 1.5
 ---
 
 When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more argumnets, and then just call that function over and over again rather than repating the whole block of code.
@@ -118,6 +118,8 @@ $
 
 ## 4 - Math functions example
 
+Now for a more complex example of bash functions that has to do with making a few math functions with bash.
+
 ```
 #!/bin/bash
  
@@ -162,7 +164,11 @@ $ ./example_math.sh
 
 ## 5 - Using node to do math in bash
 
+In bash I can use any Linux command that I want to produce some kind of result including node. When it comes to working in a more powerful programing enviornment than bash I like javaScript. In core javaScript there is the Math object that has a whole bunch of usful Math functions. So if I really want to I can make a quck javaScript file that I can then call from bash where I can bass the math function that I want to use followed by some argumnets for it.
+
 ### 5.1 - The math.js file to use with node
+
+First off I will want a javaScript file that will serve as a way to use the Math object, and maybe a few custom methods from the command line.
 
 ```js
 #!/usr/bin/node
@@ -207,10 +213,14 @@ if(prop){
 
 ## 5.2 - using Math.js by itself with node
 
+So I can test out the javaScript file with node on the command line just to make sure everytyhing works as I want it to.
+
 ```
 :$ node math.js PI
 3.141592653589793
 ```
+
+Just like bash scripts I can make the script exacutabule becuase I placed the nodejs shebang at the top of the file.
 
 ```
 $ chmod 755 math.js
@@ -218,12 +228,18 @@ $ ./math.js atan2 50 0
 1.5707963267948966
 ```
 
+Looks like my eval method works for what it is worth also.
+
 ```
 $ ./math.js eval "Math.floor(Math.atan2(0,50)/(Math.PI*2)*360)"
 90
 ```
 
-## 5.3 - Making a bash script
+Okay cool, now it is just a matter of making some functions in bash that will make use of this little javaScript file.
+
+## 5.3 - Making a bash script that will use math.js
+
+So now that I have my math.js script I can now do whatever I want to do in bash with these javaScript math methods.
 
 ```
 #!/bin/bash
@@ -254,4 +270,8 @@ $ ./example_math_js.sh
 90
 ```
 
+The math object is just one thing, when it comes to javaScript programiong in nodejs there is a ide rrange of things that I can do with it of course. I can make http requests, read and write files, start up a sever, and work with a whole world of npm packages. There are of course other programing enviorments, and also evey Linux command to play with. Linux commands can be used from within nodejs via the child process module, and of course there is using them with bash outside of nodejs.
+
 ## 6 - Conclusion
+
+So functions in bash are yet another feature in bach that one should become familiout with to learn how to read and write bash scripts. They ming be a bit lacking compared to what I am useful in other langaues, but the basic features that I would exspect in an enviorenment such as bash are there.
