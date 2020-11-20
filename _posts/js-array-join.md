@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-11-20 08:46:45
-version: 1.21
+updated: 2020-11-20 09:04:25
+version: 1.22
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array. This is of course just one of many such methods that a javaScript developer should be aware of when it comes to what there is to work with in the array prototype object. It is a good idea to become familiar with these methods as it will save time that would otherwise be spent having to look for or write some kind of user space option for joining elements of an array together into a string.
@@ -97,6 +97,46 @@ console.log( 'date: ' + obj ); // 'date: 3/9/2020'
 ```
 
 So this is the basic idea of the toString method, and now that we have that covered there is the idea of having an array of objects that have a proper toString method for each of them, and calling the array join method off of that.
+
+### 5.2 - Now lets have an array of objects with toString methods and call array join off of it
+
+So now that we have the basic idea of the toString method covered lets try out a quick example of how array join works with on an array of objects that have a custom toString method set for each object.
+
+```js
+// lets start with a method that will create an object
+// with a toString method that will return a desired
+// string representation of the object.
+var createDateObj = function (month, day, year) {
+    return {
+        day: day,
+        month: month,
+        year: year,
+        toString: function () {
+            return this.month + '/' + this.day + '/' + this.year;
+        }
+    };
+};
+// now I can create an array of objects with these toString methods
+var numbers = [[3, 9, 2020], [2, 1, 2017], [2, 20, 2020]];
+var dateObjects = numbers.map(function (set) {
+    return createDateObj.apply(null, set);
+});
+console.log(dateObjects);
+/*
+[
+    { day: 9, month: 3, year: 2020, toString: [Function: toString] },
+    { day: 1, month: 2, year: 2017, toString: [Function: toString] },
+    { day: 20, month: 2, year: 2020, toString: [Function: toString] }
+]
+*/
+// once I have the array of objects with toString methods I can just call Array.join
+// to get a string with the string value for each object, and the given separator
+// string between each string of the object
+var str = dateObjects.join(' - ');
+console.log(str); // 3/9/2020 - 2/1/2017 - 2/20/2020
+```
+
+So there doing something to furnish an array of string or number values by making use of a method like Array map, but then there is just having a desired toString method for any and all objects in the array. If that is the case then there is no need to bother with calling map to create string values, I can just call Array.join and be done with it.
 
 ## 6 - Conclusion
 
