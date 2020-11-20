@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 15:55:05
-version: 1.3
+updated: 2020-11-20 15:57:50
+version: 1.4
 ---
 
 When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more argumnets, and then just call that function over and over again rather than repating the whole block of code.
@@ -103,14 +103,15 @@ math_pow(){
 }
  
 a=$(math_pow 2 4)
-echo $a
+let "b = $a - 100"
+echo $b
 echo $n
 ```
 
 ```
 $ chmod 755 func_return.sh
 $ ./func_return.sh
-16
+-84
 
 $
 ```
