@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 623
-updated: 2020-11-20 08:22:22
-version: 1.18
+updated: 2020-11-20 08:43:03
+version: 1.19
 ---
 
 The [js array join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) prototype method can be used to join all elements of an array into a string. When doing so a string can be given as the first argument that is used as a separator between each element in the array. This is of course just one of many such methods that a javaScript developer should be aware of when it comes to what there is to work with in the array prototype object. It is a good idea to become familiar with these methods as it will save time that would otherwise be spent having to look for or write some kind of user space option for joining elements of an array together into a string.
@@ -74,6 +74,28 @@ let str = arr.map((obj) => {
 console.log(str); // '42-30-50'
 ```
 
-## 3 - Conclusion
+## 5 - The toString method of Objects
+
+The toString method of an Object is a standard way to define what the string value of an Object should be. The array join method is a method where we are joining all the elements of an array into a string. With that said if we are dealing with an array of string values then the array join method can just be called, but what if we are dealing with an array of objects?
+
+### 5.1 - A Basic Object.toString example
+
+Say I have a simple object that holds properties for date, month, and year. A toString method can be added to the object to define what the string value for this object should be. The string value can be obtained by just directly calling the toString method of the object, but it will also be used in expressions where string concatenation is called for.
+
+```js
+var obj = {
+    day: 9,
+    month: 3,
+    year: 2020,
+    toString: function () {
+        return this.month + '/' + this.day + '/' + this.year;
+    }
+};
+ 
+console.log( obj.toString() ); // '3/9/2020'
+console.log( 'date: ' + obj ); // 'date: 3/9/2020'
+```
+
+## 6 - Conclusion
 
 So the js array join method is one of many array prototype methods that I find myself using all the time when and where using it is called for. If I have an array of elements and I want to join them all together into a string then the array join method is there to do just that right away and allow me to continue on with my code.
