@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 19:29:08
-version: 1.6
+updated: 2020-11-20 19:31:25
+version: 1.7
 ---
 
 When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more arguments, and then just call that function over and over again rather than repeating the whole block of code.
 
-So in this post I will be going over some of the basics of functions when writing bash scripts.
+So in this post I will be going over some of the basics of [functions when writing bash scripts](https://linuxize.com/post/bash-functions/).
 
 <!-- more -->
 
@@ -274,4 +274,4 @@ The math object is just one thing, when it comes to javaScript programing in nod
 
 ## 6 - Conclusion
 
-So functions in bash are yet another feature in bach that one should become familiar with to learn how to read and write bash scripts. They ming be a bit lacking compared to what I am useful in other languages, but the basic features that I would expect in an environment such as bash are there.
+So functions in bash are yet another feature in bash that one should become familiar with to learn how to read and write bash scripts. They ming be a bit lacking compared to what I am useful in other languages, but the basic features that I would expect in an environment such as bash are there.
