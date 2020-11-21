@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 19:31:25
-version: 1.7
+updated: 2020-11-20 19:36:33
+version: 1.8
 ---
 
 When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more arguments, and then just call that function over and over again rather than repeating the whole block of code.
@@ -50,7 +50,7 @@ $ ./func_basic.sh
 
 So now we have the basic idea of a function in bash. However maybe there is a few more things to cover when it comes to functions in bash scripts. There is the question of arguments, how to return something, and other function related topics. So maybe at least a few more examples are called for before moving on to some other bash script related topics.
 
-## 2 - Argumnets in bash functions
+## 2 - Arguments in bash functions
 
 So now about arguments with bash functions. Each bash function has its own set of positioned arguments just like that of the main script file. When I do to call the function I just need to pass the values that I want for $1 $2 and so forth.
 
@@ -118,7 +118,7 @@ $
 
 ## 4 - Math functions example
 
-Now for a more complex example of bash functions that has to do with making a few math functions with bash.
+Now for a more complex example of bash functions that has to do with making a few math functions with bash. It might be better to make use of a command that will tap into another language such as node, or awk, when it comes to doing some actually programing. However it is possible to do some basics with bash itself at least.
 
 ```
 #!/bin/bash
@@ -161,6 +161,8 @@ $ chmod 755 example_math.sh
 $ ./example_math.sh
 10
 ```
+
+In this example I used awk for some of the math methods, but if you do not know awk no problem there is a whole would of Linux commands to play with. Awk is a fairly good one to tap into, and that deserves one ore more posts when it comes to getting into that one. However another great language is javaScript so lets look as a node example next.
 
 ## 5 - Using node to do math in bash
 
