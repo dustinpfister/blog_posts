@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 19:36:33
-version: 1.8
+updated: 2020-11-20 19:38:11
+version: 1.9
 ---
 
 When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more arguments, and then just call that function over and over again rather than repeating the whole block of code.
@@ -212,6 +212,8 @@ if(prop){
 
 }
 ```
+
+So now I have a little javaScirpt that I can use with node.
 
 ## 5.2 - using Math.js by itself with node
 
