@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 747
-updated: 2020-11-23 14:38:24
-version: 1.2
+updated: 2020-11-23 14:58:44
+version: 1.3
 ---
 
 The [Linux df](http://linuxcommand.org/lc3_man_pages/df1.html) command is what I generaly use to find out how much space is avialbule in a file system in the bash command line. By default with no argumnets it will give the amount of space availabule on all mounted file systems. It can also be given a mount point, or a path of a file, however it will still only give data for the file system as a whole. So then this rasis some questions when it comes to knwoing how much space something takes up also when it comes to files and folders as the Linux df command alone is not enough.
@@ -34,3 +34,31 @@ tmpfs              94700       8     94692   1% /run/user/1000
 
 The size should be 1K-blocks by default, but there are of course options to chnage that. There are some additional options and tricks with other commands, but for the most part this is all the Linux df command is good for.
 
+## 2 - Linux du command for geting sizes of files and folders
+
+
+### 2.1 - Getting actual Size of a file
+
+```
+$ cd ~
+$ mkdir foo
+$ cd foo
+$ echo -n "12345" > bar.txt
+$ du --apparent-size --block=1 bar.txt
+5
+```
+
+### 2.1 - Getting the size that a file takes up in the file system
+
+```
+$ du --block=1 bar.txt
+4096    bar.txt
+```
+
+### 2.2 - Get the size of a folder
+
+```
+$ du --apparent-size --block=1M ./Downloads
+182	./Downloads/foo
+1340	./Downloads
+```
