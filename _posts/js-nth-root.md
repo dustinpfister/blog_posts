@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2020-11-23 18:34:00
-version: 1.15
+updated: 2020-11-23 18:35:27
+version: 1.16
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -41,7 +41,7 @@ So there we have it a basic nth root method that seems to work they way it shoul
 
 ## 2 - Practical example of nth root dealing with interest
 
-I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples. There is however at least a few practical examples of nth root however, one such example might have to do with compounding interest. For example what if I want to know an interest rate that I need to see in order to double an inverstment of one hundred dollars over say seven years? I can pass 2 for the value of n, and 7 for the degree and get a value of around 1.104, or in another way 10.4%. I can then confirm this by using that value with the Math.pow method to see if it results in double the money, and when I do it indeed does given me just that.
+I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples. There is however at least a [few practical examples of nth root however](https://www.quora.com/What-is-the-practical-usefulness-of-learning-the-Nth-root-of-a-number), one such example might have to do with compounding interest. For example what if I want to know an interest rate that I need to see in order to double an investment of one hundred dollars over say seven years? I can pass 2 for the value of n, and 7 for the degree and get a value of around 1.104, or in another way 10.4%. I can then confirm this by using that value with the Math.pow method to see if it results in double the money, and when I do it indeed does given me just that.
 
 ```js
 var nthRoot = function (n, degree) {
