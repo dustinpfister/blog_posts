@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2020-11-23 18:35:27
-version: 1.16
+updated: 2020-11-23 18:41:50
+version: 1.17
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -67,3 +67,5 @@ console.log(getMoney(100, 2, 7)); // 12800
 ## 3 - Conclusion
 
 I can not say that I end up using this often in projects, but it is something that I think about now and then. If I find out some other ways to go about using nth root in projects that are helpful, or at least interesting I will be sure to update this post.
+
+There is just having the basic idea at the ready though, which is one reason why I wrote this post. I like to have methods like this at the ready. In time I hope to find, and or make interesting code examples that make use of nth root and other Math methods. I am sure that there is some fun and interesting things that can be done with it when it comes to something artful.
