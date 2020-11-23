@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 529
-updated: 2020-11-23 12:23:40
-version: 1.8
+updated: 2020-11-23 12:29:38
+version: 1.9
 ---
 
 In lodash there is the [\_.isEmpty](https://lodash.com/docs/4.17.15#isEmpty) method than can be used to find if a collection object is empty or not. This is not to be confused with other possible values that might be considered empty such as null, a false boolean value and so forth. There are also a number of ways to go about doing the same when it comes to working with just plain old native javaScript in addition to using the lodash is empty method. 
@@ -94,4 +94,8 @@ console.log( isEmpty(null) ); // true
 console.log( isEmpty(undefined) ); // true
 ```
 
-Seems to work more os less just as well.
+Seems to work more or less just as well compared to the lodash isEmoty method.
+
+## 4 - Conclusion
+
+the ldoash is empty method is an example of a collection method in lodash, which in other words means that it will work with both objects and arrays in general. I can not say that the lodash is empty method is the best example of this in lodash, but understanding the differences between Arrays and other Objects is important in any case. The real difference is juts that when dealing with arrays it is just more or less an object just like any other only it is a collection of numbered rather than names key names for elements, a length property, and it is an instance of the Array constructor. Other than that an Array is just another Object just like any other, and as such certain methods such as this will work with Objects in general.
