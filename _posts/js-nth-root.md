@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2020-07-07 08:13:28
-version: 1.11
+updated: 2020-11-23 18:27:06
+version: 1.12
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -37,6 +37,31 @@ console.log(n); // 2.23606797749979
 console.log(n * n * n * n); // 25.000000000000007
 ```
 
-## 2 - Conclusion
+## 2 - Practical example of nth root dealing with interest
+
+I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples. There is however at least a few practical examples of nth root however, one such example might have to do with compounding interest. For example what if I want to know an interest rate that I need to see in order to double an inverstment of one hundred dollars over say seven years? I can pass 2 for the value of n, and 7 for the degree and get a value of around 1.104, or in another way 10.4%.
+
+```js
+var nthRoot = function (n, degree) {
+    return Math.pow(n, 1 / degree);
+};
+ 
+var getRate = function (times, years) {
+    return nthRoot(times, years);
+};
+ 
+var getMoney = function (startAmount, rate, years) {
+    return startAmount * Math.pow(rate, years);
+};
+ 
+var doubleRate = getRate(2, 7);
+console.log(doubleRate); // 1.1040895136738123
+ 
+console.log(getMoney(100, 1, 7)); // 100
+console.log(getMoney(100, doubleRate, 7)); // 199.99999999999986
+console.log(getMoney(100, 2, 7)); // 12800
+```
+
+## 3 - Conclusion
 
 I can not say that I end up using this often in projects, but it is something that I think about now and then. If I find out some other ways to go about doing that as well as some actual use case example i will be sure to update this post.
