@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 529
-updated: 2020-11-23 12:03:05
-version: 1.6
+updated: 2020-11-23 12:19:28
+version: 1.7
 ---
 
 In lodash there is the [\_.isEmpty](https://lodash.com/docs/4.17.15#isEmpty) method than can be used to find if a collection object is empty or not. This is not to be confused with other possible values that might be considered empty such as null, a false boolean value and so forth. There are also a number of ways to go about doing the same when it comes to working with just plain old native javaScript in addition to using the lodash is empty method. 
@@ -35,7 +35,7 @@ This is the intended use of the is empty method in lodash
 
 ## 2 - Lodash is empty and types
 
-The lodash is empty method is for finding out if a collection does not have any items and that is it. It is not for finding out if a value fits other meanings of the word empty. For example when passing boolean values to the is empty method a boolean value will always return true even if the value is false.
+The lodash is empty method is for finding out if a collection does not have any items and that is it. It is not for finding out if a value fits other meanings of what the word empty might mean to some. For example when passing boolean values to the is empty method a boolean value will always return true even if the value is false.
 
 ```js
 // Booleans
@@ -56,4 +56,38 @@ console.log( _.isEmpty('foo') ); // false
 // Other
 console.log( _.isEmpty(null) ); // true
 console.log( _.isEmpty(undefined) ); // true
+```
+
+## 3 - Vanilla javaScript isEmpty method
+
+It is not so hard to make a vanilla javaScript isEmpty method when one is familiar with the basics of what to look for when it comes to finding out if an object is empty or not. Maybe the idea is a little subjective when it comes to hidden properties of objects and if they count or not, as well as maybe something that is going on in the prototype chain. However I would say that an object is empty when there are no public keys in the Object. So one way to find out if an object is empty or not is to use a method like Object.kets to get an array of public key names, and if the length of that array is greater than or equal to one, then the object is not empty.
+
+```js
+let isEmpty = (obj) => {
+    if (typeof obj === 'object' && obj != null) {
+        return Object.keys(obj).length >= 1 ? false : true;
+    }
+    return true;
+};
+ 
+// Is empty can be used with Object Collections
+console.log(isEmpty({})); // true
+console.log(isEmpty({x: 42})); // false
+ 
+// and Array Object Collections
+console.log(isEmpty([])); // true
+console.log(isEmpty([12, 42, 87])); // false
+ 
+// Booleans
+console.log( isEmpty(true) ); // true
+console.log( isEmpty(false) ); // true
+console.log( isEmpty(123) ); // true
+console.log( isEmpty(0) ); // true
+console.log( isEmpty(-123) ); // true
+console.log( isEmpty(NaN) ); // true
+console.log( isEmpty(Infinity) ); // true
+console.log( isEmpty('') ); // true
+console.log( isEmpty('foo') ); // false
+console.log( isEmpty(null) ); // true
+console.log( isEmpty(undefined) ); // true
 ```
