@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 747
-updated: 2020-11-23 15:13:06
-version: 1.4
+updated: 2020-11-23 15:16:08
+version: 1.5
 ---
 
 The [Linux df](http://linuxcommand.org/lc3_man_pages/df1.html) command is what I generaly use to find out how much space is avialbule in a file system in the bash command line. By default with no argumnets it will give the amount of space availabule on all mounted file systems. It can also be given a mount point, or a path of a file, however it will still only give data for the file system as a whole. So then this rasis some questions when it comes to knwoing how much space something takes up also when it comes to files and folders as the Linux df command alone is not enough.
 
-So this will be a qyuck post not just on the Linux df command, but also some related topics when it comes to knwoing not just how much space is avaiable on a file system, but also to knwo how much space certian files and folders take up from a bash command line enviorment.
+So this will be a quick post not just on the Linux df command, but also some related topics when it comes to knowing not just how much space is avaiable on a file system, but also to know [how much space certian files and folders take up](https://www.howtogeek.com/450366/how-to-get-the-size-of-a-file-or-directory-in-linux/) from a bash command line enviorment.
 
 <!-- more -->
 
