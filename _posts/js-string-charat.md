@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-11-24 08:44:38
-version: 1.14
+updated: 2020-11-24 08:48:14
+version: 1.15
 ---
 
 In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string, there is also just using the bracket syntax as a way to get a single char also though. I can not say that I use the charAt method often as the same effect can be achieved using the bracket syntax, the same way that one would get an element in an array, or any public named key value in any javaScript object for that matter not just the wrapper object of a string primative. So the bracket syntax strikes be as a better way to go about getting a single char in a string, as it is more versatile.
@@ -29,7 +29,7 @@ console.log(str[2], str.charAt(2)); 'c' 'c'
 console.log(str[10], str.charAt(10)); undefined ''
 ```
 
-## 2 - Using the bracket syntax works with strings, but also arrays and objects in general
+## 2 - Using the bracket syntax works with a string wrapper, but also arrays and objects in general.
 
 I generally seem to prefer to just use the bracket syntax when getting at just a single char in a given string. The issue of it returning undefined may not be much of a draw back if I am doing something to prevent that from happening in the first place, which is what I should be doing anyway.
 
@@ -51,7 +51,7 @@ In addition the bracket syntax will not just work with strings, but it also work
 
 ## 3 - Using string Match to get the index value of a char
 
-So the charat method alone with the bracket syntax are ways of getting a single char if you know the index value. However what if you do not know the index value to begin with? Then you would need some way to get one or more index values in a string first in order to know the index value to give. On top of that while you are at it should there be a way to jus get the values to while we are at it?
+So the charAt method alone with the bracket syntax are ways of getting a single char if you know the index value. However what if you do not know the index value to begin with? Then you would need some way to get one or more index values in a string first in order to know the index value to give. On top of that while you are at it should there be a way to just get the values to while we are at it?
 
 ### 3.1 - The string index of method
 
