@@ -5,13 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 448
-updated: 2020-06-21 11:02:18
-version: 1.5
+updated: 2020-11-24 08:56:52
+version: 1.6
 ---
 
-This will be a quick post on the [lodash has](https://lodash.com/docs/4.17.11#has) method, a simple object method that can be used to check if an object has a certain path in it or not. That is you pass a string that contains property names separated with dots to a certain value that is in the object or it is not. In the event that it is there then the lodash has returns true otherwise it will return false.
+This will be a quick post on the [lodash has](https://lodash.com/docs/4.17.11#has) method, a simple object method that can be used to check if an object has a certain path in it or not. That is you pass a string that contains property names separated with dots to a certain value that is in the object. In the event that it is there then the lodash has returns true otherwise it will return false. So it is just a way to go about testing for a property of an object by way of a string value rather than an actual javaScript property syntax.
 
-This is one of many methods in lodash that accept a string form of a object path to a value. Another such method of note in lodash would be the [\_.get](/2018/09/24/lodash_get/), and [\_.set](/2018/12/04/lodash_set/) methods. This is not one of the most compelling methods in lodash, in fact when it comes down to it there are only really a handful that I find myself still  using in projects.
+This is one of many methods in lodash that accept a string form of a object path to a value. Another such method of note in lodash would be the [\_.get](/2018/09/24/lodash_get/), and [\_.set](/2018/12/04/lodash_set/) methods. This is not one of the most compelling methods in lodash, in fact when it comes down to it there are only really a handful that I find myself still  using in projects. Still when it comes to gaining a comprehensive understanding of everything available within lodash it makes sense to not just write about the popular, or often used methods. Also maybe there are some situations in which it is nice to test for a object property by way of a string.
 
 <!-- more -->
 
