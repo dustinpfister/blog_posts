@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 748
-updated: 2020-11-24 11:46:29
-version: 1.3
+updated: 2020-11-24 11:50:09
+version: 1.4
 ---
 
 There is a massive world of editors to use in Linux, many of which need to be used in a desktop enviorment. However there are also a lot of editors that are used in a bash command shell. There is of course vim which is one well know such editor, however if you are new to editing text in a bash shell it might be best to start with nano. Also I still like nano over others when it comes to a command line interface style text editor, so it is something that is not just for beginners.
@@ -18,7 +18,6 @@ There is just the very basuics of how to get started with nano, that is just ope
 ## 1 - Just start nano, and create a file
 
 One way to use nano is to just go to a working path such as the home folder, and then just start nano in the command line
-
 
 ```
 $ cd ~
@@ -59,3 +58,7 @@ $ ls /bin | nano -
 ## 4 - Soft Wrapping of Text
 
 So what abount using soft wrapping of text? Well when in the editor press the ESC key, that is press and release the key first. Then we are going to want to press the dollar sign key so in other words shift+4 at least on my US layout keyboard anyway. The process can then be repeated to set things back to the default way of things where each line is not wrapped.
+
+## 5 - Conclusion
+
+So if i am working with a very striped down disto of Linux in which not even xorg is installed I would use a text editor like nano to edit files. The Linux nano command is often there to work with in many distros and is often a binary that is found in the main bin folder. Any Linux system should have a basic text editor to work with in the system, if not nano something like vim. There are only so many other options to work with if there is no editor at all to making any chnages to files that need to happen.
