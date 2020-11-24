@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-11-24 08:38:55
-version: 1.13
+updated: 2020-11-24 08:44:38
+version: 1.14
 ---
 
-In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string. There is also just using the bracket syntax as a way to get a single char. I can not say that I use the method often as the same effect can be achieved using the bracket syntax, the same way that one would get an element in an array, or any public named key value in any javaScript object for that matter. So the bracket syntax strokes be as a better way to go about getting a single char in a string, as it is more versatile.
+In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string, there is also just using the bracket syntax as a way to get a single char also though. I can not say that I use the charAt method often as the same effect can be achieved using the bracket syntax, the same way that one would get an element in an array, or any public named key value in any javaScript object for that matter not just the wrapper object of a string primative. So the bracket syntax strikes be as a better way to go about getting a single char in a string, as it is more versatile.
 
-There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only it will give a number value for the char rather than a string of the char.
+There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only with one important difference. The charCodeAt method will give a number value that is a UTF-16 code unit for the char rather than a string of the single char.
+
+In this post I will be covering ways to go about getting a single char from a string, but also hopefully break ground into other ways of going about getting at what one might be after when it comes to getting something in a string, number, or any object.
 
 <!-- more -->
 
