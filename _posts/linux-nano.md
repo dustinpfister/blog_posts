@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 748
-updated: 2020-11-24 11:50:09
-version: 1.4
+updated: 2020-11-24 11:53:00
+version: 1.5
 ---
 
 There is a massive world of editors to use in Linux, many of which need to be used in a desktop enviorment. However there are also a lot of editors that are used in a bash command shell. There is of course vim which is one well know such editor, however if you are new to editing text in a bash shell it might be best to start with nano. Also I still like nano over others when it comes to a command line interface style text editor, so it is something that is not just for beginners.
@@ -62,3 +62,5 @@ So what abount using soft wrapping of text? Well when in the editor press the ES
 ## 5 - Conclusion
 
 So if i am working with a very striped down disto of Linux in which not even xorg is installed I would use a text editor like nano to edit files. The Linux nano command is often there to work with in many distros and is often a binary that is found in the main bin folder. Any Linux system should have a basic text editor to work with in the system, if not nano something like vim. There are only so many other options to work with if there is no editor at all to making any chnages to files that need to happen.
+
+Nano is a nice little editor that seems to work okay when it comes to making quick little changes to config files and so forth. However when it comes to getting real work done with editing text or doing some programing I would still prefer to use something that would be used in a desktop enviorment. Mousepad is a nice basic editor that I would prefer to use in most cases where I just need very basic features.
