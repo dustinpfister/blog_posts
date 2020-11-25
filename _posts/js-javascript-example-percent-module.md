@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-25 15:10:31
-version: 1.5
+updated: 2020-11-25 15:16:50
+version: 1.6
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a percent value, or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -20,11 +20,11 @@ These kinds of methods come into play when  it comes to writing logic that has t
 
 ## 1 - The per.js module as it stands thus far
 
-First off there is the percent module as it currently stands at this point I started off the module with three percent methods. One is just a basic base percent method that will just give the numerator over the denominator, and in addition there is just some basic code to clamp values when they go out of range.
+First off there is the percent module as it currently stands at this point I started off the module with a bunch of percent methods that each work in a slightly different way. One is just a basic base percent method that will just give the numerator over the denominator, and in addition there is just some basic code to clamp values when they go out of range.
 
-Another percent method I have come to call just bias, this will give a number that will start off at zero, but once a given numerator is one half that of the value of the denominator one will be returned. Once the numerator value goes over one half that of the denominator the returned value will start to go back to zero again.
+Another percent method I have come to call just bias, this will give a number that will start off at zero, but once a given numerator is one half that of the value of the denominator one will be returned. Once the numerator value goes over one half that of the denominator the returned value will start to go back to zero again. This method and the percent method are the two basic ideas that come to mind when it comes to making these kinds of methods. However for this module I wanted to create a number of new ones that will give all kinds of different results based off of Math.log, and the trig methods.
 
-I also have another percent method that will give a log style percent value.
+There is a basic log methods that will give results that are consistent with a logarithmic curve, and then a few more methods that use other expressions that work with Math.log. I also have a number of trigonometry methods that use Math.cos and Math.son.
 
 ```js
 var Percent = (function () {
@@ -110,6 +110,8 @@ var Percent = (function () {
 }
     ());
 ```
+
+So This module looks good for what it is worth, however in order to really know if it gives be what I want or not I will need to work out some quick examples that make use of it. There are a number of things that I could do with these methods, but maybe the best thing to do for starters is to make a canvas example that will draw graphs with these methods to get a great visual idea of what I am working with before moving on to using this in a real project of some kind.
 
 ## 2 - canvas example
 
