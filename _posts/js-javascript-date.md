@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2020-07-08 09:58:23
-version: 1.14
+updated: 2020-11-25 10:07:07
+version: 1.15
 ---
 
 The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) constructor can be used to create Date objects that represent a single moment or time stamp at a point in the past, the current time, or the future. The Date object is an example of a [constructor function](/2019/02/27/js-javascript-constructor/) meaning that it is a function that can be used to create a class of an object that has prototype object methods that can be called off of an instance of the Class object. When it comes to date objects as one would expect there are a whole bunch of methods that have to do with getting the number of seconds, minutes, and hours many many other such values from such a class object.
@@ -84,3 +84,7 @@ So there are native javaScript Date prototype methods for getting the current da
 ```js
 console.log( new Date(2019,7,0).getDate()); // 31
 ```
+
+## 5 - Conclusion
+
+JavaScript Date objects are a bit of a large topic actually and in this post I have not covered every little detail about them. There are many methods to look at in the Date prototype object that are useful for getting all kinds of information of a certain date object instance. However there is also every little thing that might come up when it comes to working with date objects in javaScript also. So in time I might write more posts on those little issues as they come up from time to time, write a new post on it, and see about editing this post to cover that and link to it as needed.
