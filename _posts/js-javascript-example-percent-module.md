@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-25 11:44:29
-version: 1.3
+updated: 2020-11-25 11:46:26
+version: 1.4
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a percent value, or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -146,3 +146,6 @@ So there are many use case examples for a module such as this, but maybe it woul
 </html>
 ```
 
+## 3 - Conclusion
+
+So there is a lot more to create and write about when it comes to these kinds of methods, and also how they can be used as a way to create other modules. In time I might expand this post when  I come up with more percent methods as well as ways to go about using them. For now I just wanted to start something n at least and start a post on this topic.
