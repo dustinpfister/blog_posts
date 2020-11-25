@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-25 16:07:14
-version: 1.8
+updated: 2020-11-25 16:11:04
+version: 1.9
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a percent value, or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -112,6 +112,8 @@ var Percent = (function () {
 }
     ());
 ```
+
+There are even more ways that I cold make these kinds of methods of course but I think all the basic ones I would want are there. The log3 method that i made might be the best function yet to aim me in making an experience point system, but I might want to add many more methods when it comes to that use case example. Other uses might eb to make animations and so forth and when it comes to that there is also plenty of room for creativity, and originality.
 
 So This module looks good for what it is worth, however in order to really know if it gives be what I want or not I will need to work out some quick examples that make use of it. There are a number of things that I could do with these methods, but maybe the best thing to do for starters is to make a canvas example that will draw graphs with these methods to get a great visual idea of what I am working with before moving on to using this in a real project of some kind.
 
