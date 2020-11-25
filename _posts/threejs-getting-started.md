@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2020-11-25 10:40:58
-version: 1.14
+updated: 2020-11-25 10:44:59
+version: 1.15
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with.
@@ -35,15 +35,16 @@ It seems like new revisions come out as often as once a month, and when they do 
 
 It is worth mentioning that it is a good idea to at least know a thing or two about other topics that do not pertain to javaScript, or even computer programing in general, but classical mathematics. Subjects come to mind like [geometry](https://en.wikipedia.org/wiki/Geometry), [trigonometry](https://en.wikipedia.org/wiki/Trigonometry), and many others. Getting into those subjects goes beyond the scope of this simple getting started post, and are not the kind of things that one can become solid with overnight. However don't let that overwhelm you, as three.js is very easy to work with, and getting into three.js can lead to a desire to become more knowledgeable about those topics, and many more.
 
-## Setup
-
-So three.js is very much a front end resource, so installing will not likely involve npm, unless you want to do something involving [webpack](https://webpack.js.org/) in which I guess it would involve npm. For me I did not use any package manager, and I wanted to set up a situation in which I have multiple versions of three.js in a name space, so I just grab versions of three.js manually from the [github repo](https://github.com/mrdoob/three.js), and pasted them in all low tech like.
-
-## You might also want to install blender
+### 1.4 - You might also want to install blender
 
 Although it is not required for getting started at least, at some point you might want to install a 3d modeling program of some kind such as [blender](https://www.blender.org/). As you get into the depth of three.js there will come a time where you will want to create assets externally, and then import theme into three.js. There are official plug-ins for doing so, and the best supported and easiest to use one I have found is the one for blender.
 
-## A basic overview of how to make a three.js project
+
+## 2 - Setup
+
+So three.js is very much a front end resource, so installing will not likely involve npm, unless you want to do something involving [webpack](https://webpack.js.org/) in which I guess it would involve npm. For me I did not use any package manager, and I wanted to set up a situation in which I have multiple versions of three.js in a name space, so I just grab versions of three.js manually from the [github repo](https://github.com/mrdoob/three.js), and pasted them in all low tech like.
+
+## 3 - A basic overview of how to make a three.js project
 
 Three.js will contain a whole lot of constructors that each have a certain importance. There is no way that I can even touch base on all of them, let alone do them justice without having this starting to resemble a dissertation rather than a blog post.
 
@@ -56,7 +57,7 @@ As such a three.js project will typically always contain at least one of the fol
 * There will need to be a renderer such as with THREE.WebGLRenderer
 * A [Mesh](/2018/05/04/threejs-mesh/) that will contain a [Geometry](/2018/04/14/threejs-geometry/), and a [Material](/2018/04/30/threejs-materials/). Such as with THREE.Mesh, THREE.BoxGeometry, and THREE.MeshBasicMaterial.
 
-## HTML
+### 3.1 - HTML
 
 In any case you want to get three.js available in the browser one way or another, including the plain old simple way of having a script tag linking to the location of three.js. In addition you might want some kind of container element in your layout where you will inject the dom element created by the renderer that is used, unless you are okay with just appending to body.
 
@@ -94,7 +95,7 @@ As such the html of one of my demos looks like this for the moment.
 </html>
 ```
 
-## The basic three.js cube example
+### 3.2 - The basic three.js cube example
 
 A very typical example for getting started with three.js indeed, but still it works to cover the basics of everything if you are new to three.js. Every project will involve a scene, a camera, at least one Object to look at which will be a mesh composed of a geometry, and a material. Also in order to actually see anything you will also need a render as well. That may seem like a lot at first, but once you get into this it all starts to make sense. Trust be this is one of the easiest ways to get into working with 3d objects, and can become a whole lot of fun if you give it a chance.
 
@@ -148,7 +149,7 @@ A very typical example for getting started with three.js indeed, but still it wo
 
 This example will just draw a cube on the screen. So lets have a break down on everything that is going on here.
 
-## The Scene
+## 4 - The Scene
 
 Full post on [Scene](/2018/05/03/threejs-scene/)
 
@@ -167,7 +168,7 @@ scene.add(new THREE.Mesh( // Mesh
 ));
 ```
 
-## The Camera
+## 5 - The Camera
 
 Full post on [Camera](/2018/04/06/threejs-camera/)
 
@@ -191,32 +192,32 @@ camera.lookAT(0,0,0);
 
 There are then four camera types to choose from, in this post I am only briefly covering the [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera).
 
-## Geometry, Material, and Mesh.
+## 6 - Geometry, Material, and Mesh.
 
 To make some kind of object to look at I need it's geometry, I will also want to skin that geometry with some kind Of Material, and I will want to tie those two things together into a Mesh. In the example in this Post I used BoxGeometry to quickly create a Cube, and Just a [basic Material](/2018/05/05/threejs-basic-material/) with a [Mesh](/2018/05/04/threejs-mesh/).
 
-## Renderer
+## 7 - Renderer
 
 In order to see anything I will need to render it using something like Canvas, or webGL. In this post I just used the webGL renderer, but there are additional renderer's available in three.js, such as the canvas renderer that uses the 2d drawing context. That will be a lot slower, but it will give greater support on platforms that do not support webGL that well.
 
-## Whats next?
+## 8 - Whats next?
 
 Three.js is the kind of library where you really need to devote at least a solid month or more in order to start to get a little solid with it. I am still learning myself, but I think there are some additional aspects of this library that are very important, while others are kind of optional depending on the kind of projects you aim to make. For example if you want to make games you might want to know about the [lambert material](/2018/04/08/threejs-lambert-material/), as it is more efficient then the standard material. However if you aim to make something that does not need to run in real time you might choose to go with the standard material, as it gives a more realistic look.
 
 For now I will cover some additional corners of three.js that I think stand out...
 
-### Object3D
+## 9 - Object3D
 
 read my full [post on Object3D](/2018/04/23/threejs-object3d/)
 
 Yet another Class to mention is the [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) class, This is not something that you typically work with directly, but is a class that is used in many of the objects in three.js that helps to make working with three.js easy. It gives Objects like Camera, and Mesh methods like lookAT, and position.set.
 
-### Vector3
+## 10 - Vector3
 
 Read my full [post on Vector3](/2018/04/15/threejs-vector3/)
 
 Another class of interest that you should at least be aware of is [vector3](https://threejs.org/docs/index.html#api/math/Vector3), This is what you want to use when defining a point in 3d Space.
 
-## Conclusion
+## 11 - Conclusion
 
 There is a lot more to write about, but because this is just a getting started post, I thought I would just stick to writing about some of the most important aspects of three.js that one needs to be aware of in order to get anything done at all. I will likely update this post many times, as my content on three.js grows, and treat this as a good starting point to other posts of interest on three.js as I tinker with it more.
