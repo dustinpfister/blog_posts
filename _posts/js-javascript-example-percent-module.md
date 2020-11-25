@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-25 11:35:00
-version: 1.1
+updated: 2020-11-25 11:43:13
+version: 1.2
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a percent value, or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -19,6 +19,12 @@ These kinds of methods come into play when  it comes to writing logic that has t
 
 
 ## 1 - The per.js module as it stands thus far
+
+First off there is the percent module as it currently stands at this point I started off the module with three percent methods. One is just a basic base percent method that will just give the numerator over the denominator, and in addition there is just some basic code to clamp values when they go out of range.
+
+Another percent method I have come to call just bias, this will give a number that will start off at zero, but once a given numerator is one half that of the value of the denominator one will be returned. Once the numerator value goes over one half that of the denominator the returned value will start to go back to zero again.
+
+I also have another percent method that will give a log style percent value.
 
 ```js
 
