@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 748
-updated: 2020-11-24 20:27:14
-version: 1.9
+updated: 2020-11-24 20:29:00
+version: 1.10
 ---
 
 There is a massive world of editors to use in Linux, many of which need to be used in a desktop environment. However there are also a lot of editors that are used in a bash command shell. There is of course vim which is one well know such editor, however if you are new to editing text in a bash shell it might be best to start with the [Linux nano](https://linuxcommand.org/lc3_man_pages/nano1.html) command line based text editor. Also I still like nano over others when it comes to a command line interface style text editor, so it is something that is not just for beginners.
@@ -17,7 +17,7 @@ There is just the very basics of how to get started with nano, that is just open
 
 ## 1 - Just start nano, and create a file
 
-One way to use nano is to just go to a working path such as the home folder, and then just start nano in the command line
+One way to use nano is to just go to a working path such as the home folder, and then just start nano in the command line. Just like any other text editor I can just start the program if I want.
 
 ```
 $ cd ~
