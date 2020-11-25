@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 748
-updated: 2020-11-24 20:25:40
-version: 1.8
+updated: 2020-11-24 20:27:14
+version: 1.9
 ---
 
 There is a massive world of editors to use in Linux, many of which need to be used in a desktop environment. However there are also a lot of editors that are used in a bash command shell. There is of course vim which is one well know such editor, however if you are new to editing text in a bash shell it might be best to start with the [Linux nano](https://linuxcommand.org/lc3_man_pages/nano1.html) command line based text editor. Also I still like nano over others when it comes to a command line interface style text editor, so it is something that is not just for beginners.
@@ -49,7 +49,7 @@ $ nano hello.txt
 
 ## 3 - Starting with some text piped in from the standard input
 
-To pipe in some text from another command I just need to give a dash in place of what would otherwise be a file name.
+To pipe in some text from another command I just need to give a dash in place of what would otherwise be a file name. For example I can use the Linux ls command to get a list of all binaries in the main root bin folder, and then pipe that result into nano.
 
 ```
 $ ls /bin | nano -
