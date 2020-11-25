@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-25 11:33:04
-version: 1.0
+updated: 2020-11-25 11:35:00
+version: 1.1
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a percent value, or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -16,3 +16,125 @@ There is having a simple percent method that will take two arguments one would b
 These kinds of methods come into play when  it comes to writing logic that has to do with animations, but have a wide rang of other uses such as when creating an experience point system for example.
 
 <!-- more -->
+
+
+## 1 - The per.js module as it stands thus far
+
+```js
+
+var Percent = (function () {
+ 
+    // main api function
+    var api = function(n, d, methodKey, args){
+        n = n === undefined ? 0 : n;
+        d = d === undefined ? 100 : d;
+        methodKey = methodKey === undefined ? 'basePer' : methodKey;
+        args = args === undefined ? [] : args;
+        return api[methodKey].apply(null, [n,d].concat(args));
+    };
+ 
+    // base percent function
+    api.basePer = function(n, d){
+        if(n >= d){
+            return 1;
+        }
+        if(n < 0){
+            return 0;
+        }
+        return n / d;
+    };
+ 
+    // 'bias' percent function
+    api.bias = function(n, d){
+        var per = api.basePer(n, d);
+        return 1 - Math.abs(per - 0.5) / 0.5;
+    };
+ 
+    api.log1 = function(n, d){
+        var per = api.basePer(n, d);
+        return Math.log(1 + per) / Math.log(2);
+    };
+ 
+    return api;
+}
+    ());
+```
+
+## 2 - canvas example
+
+```js
+(function () {
+ 
+    var createPerGraph = function (sx, sy, w, h, perMethod) {
+        var d = 10,
+        points = [],
+        n = 0;
+        while (n <= d) {
+            points.push({
+                n: n,
+                x: Math.floor(sx + w / d * n),
+                y: Math.floor(sy + h - h * perMethod(n, d))
+            });
+            n += 1;
+        }
+        return {
+            points: points,
+            x: sx,
+            y: sy,
+            w: w,
+            h: h,
+            d: d
+        };
+    };
+ 
+    var drawGraph = function (ctx, graph) {
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(graph.x, graph.y, graph.w, graph.h);
+        ctx.beginPath();
+        graph.points.forEach(function (point) {
+            if (point.n === 0) {
+                ctx.moveTo(point.x, point.y);
+            } else {
+                ctx.lineTo(point.x, point.y);
+            }
+        });
+        ctx.strokeStyle = 'red';
+        ctx.stroke();
+    };
+ 
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    container = document.getElementById('canvas-app') || document.body;
+    container.appendChild(canvas);
+    canvas.width = 320;
+    canvas.height = 240;
+    ctx.translate(0.5, 0.5);
+ 
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+    var basePerGraph = createPerGraph(32, 10, 100, 100, Percent.basePer);
+    var biasPerGraph = createPerGraph(150, 10, 100, 100, Percent.bias);
+    var log1Graph = createPerGraph(32, 120, 100, 100, Percent.log1);
+ 
+    drawGraph(ctx, basePerGraph);
+    drawGraph(ctx, biasPerGraph);
+    drawGraph(ctx, log1Graph);
+ 
+}
+    ());
+```
+
+```html
+<html>
+    <head>
+        <title>percent</title>
+    </head>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script src="./per.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
