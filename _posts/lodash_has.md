@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 448
-updated: 2020-11-24 08:56:52
-version: 1.6
+updated: 2020-11-25 09:29:03
+version: 1.7
 ---
 
 This will be a quick post on the [lodash has](https://lodash.com/docs/4.17.11#has) method, a simple object method that can be used to check if an object has a certain path in it or not. That is you pass a string that contains property names separated with dots to a certain value that is in the object. In the event that it is there then the lodash has returns true otherwise it will return false. So it is just a way to go about testing for a property of an object by way of a string value rather than an actual javaScript property syntax.
@@ -42,3 +42,58 @@ console.log( _.has(obj, 'foo.bar.x') ); // true
 ```
 
 So this object method can be used as a way to feature test if a path exist in an object and if not can be used with another method like the lodash set method to set the path. If you are more interested in what lodash has to offer in general you might want to check out my main post on [lodash](/2019/02/15/lodash/).
+
+## 2 - AutoHeal example of lodash has
+
+### 2.1 - Te vanilla javaScript
+
+```js
+var dispObj1 = {
+    x: 10,
+    y: 45,
+    hp: {
+        current: 10
+    }
+};
+ 
+var dispObj2 = {
+    x: 10,
+    y: 45,
+    hp: {
+        current: 10
+    },
+    features: {
+        autoHeal: {
+            amount: 10
+        }
+    }
+};
+ 
+var applyAutoHeal = function (dispObj) {
+    if (dispObj.features) {
+        if (dispObj.features.autoHeal) {
+            if (dispObj.features.autoHeal.amount) {
+                dispObj.hp.current += dispObj.features.autoHeal.amount;
+            }
+        }
+    }
+};
+ 
+applyAutoHeal(dispObj1);
+applyAutoHeal(dispObj2);
+ 
+console.log(dispObj1.hp.current, dispObj2.hp.current); // 10 20
+```
+
+### 2.2 - Using lodash has in the apply auto heal method
+
+```
+var applyAutoHeal = function (dispObj) {
+    if (_.has(dispObj, 'features.autoHeal.amount')) {
+        dispObj.hp.current += dispObj.features.autoHeal.amount;
+    }
+};
+applyAutoHeal(dispObj1);
+applyAutoHeal(dispObj2);
+console.log(dispObj1.hp.current, dispObj2.hp.current); // 10 20
+```
