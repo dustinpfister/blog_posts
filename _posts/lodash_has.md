@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 448
-updated: 2020-11-25 09:40:44
-version: 1.9
+updated: 2020-11-25 09:45:35
+version: 1.10
 ---
 
 This will be a quick post on the [lodash has](https://lodash.com/docs/4.17.11#has) method, a simple object method that can be used to check if an object has a certain path in it or not. That is you pass a string that contains property names separated with dots to a certain value that is in the object. In the event that it is there then the lodash has returns true otherwise it will return false. So it is just a way to go about testing for a property of an object by way of a string value rather than an actual javaScript property syntax.
@@ -107,3 +107,5 @@ applyAutoHeal(dispObj1);
 applyAutoHeal(dispObj2);
 console.log(dispObj1.hp.current, dispObj2.hp.current); // 10 20
 ```
+
+There is the question of performance would take a hit or not, maybe it would, maybe not, it is true that more concise solutions to a problem are not always the best course of action. However for me the first and foremost thing is to get something up and running first, and worry about those details later. I also generally think that readability should take priority over performance at least when it comes to the alpha state of a project anyway. With that said I do like this solution better, it is a lot cleaner, and it is just nice to be able to make these kinds of checks like this.
