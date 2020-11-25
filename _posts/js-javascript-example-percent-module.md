@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-25 11:43:13
-version: 1.2
+updated: 2020-11-25 11:44:29
+version: 1.3
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a percent value, or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -67,6 +67,8 @@ var Percent = (function () {
 ```
 
 ## 2 - canvas example
+
+So there are many use case examples for a module such as this, but maybe it would be best to start with a canvas example. This way I can see visually what the deal is with these different percent methods.
 
 ```js
 (function () {
