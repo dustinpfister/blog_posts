@@ -49,6 +49,7 @@ app.get('/', [
                     cn = wc >= 500 ? 'wordcount_500' : cn;
                     cn = wc >= 1000 ? 'wordcount_1000' : cn;
                     cn = wc >= 1800 ? 'wordcount_1800' : cn;
+                    cn = wc >= 2400 ? 'wordcount_2400' : cn;
                     return cn;
                 }
             });

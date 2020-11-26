@@ -83,9 +83,12 @@ table, th, td {
 	color:orange;
 }
 .wordcount_1000{
-	color:green;
+	color:yellow;
 }
 .wordcount_1800{
+	color:green;
+}
+.wordcount_2400{
 	color:lime;
 }
 a:link{color:#00ff80;}
