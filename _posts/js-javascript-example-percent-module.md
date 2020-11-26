@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-25 16:11:04
-version: 1.9
+updated: 2020-11-26 06:36:32
+version: 1.10
 ---
 
-I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a percent value, or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
+I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a [percent value](https://thisinterestsme.com/calculate-percent-javascript/), or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
 
 There is having a simple percent method that will take two arguments one would be a [numerator](https://simple.wikipedia.org/wiki/Numerator) and another a [denominator](https://simple.wikipedia.org/wiki/Denominator) and the returned result will be a number between 0 and 1. So this can be thought of as a kind of [normalization](https://en.wikipedia.org/wiki/Normalization_%28statistics%29) in the sense that any two set of numbers will be a value between 0 and 1 so that they can be compared to each other. However there are all kinds of ways that one could go about making such a function other than just divining the numerator over the denominator.
 
