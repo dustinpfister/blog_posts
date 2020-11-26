@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-26 06:54:52
-version: 1.13
+updated: 2020-11-26 06:59:57
+version: 1.14
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a [percent value](https://thisinterestsme.com/calculate-percent-javascript/), or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -197,6 +197,8 @@ I then have a draw graph method that will just draw the points of a given graph 
     ());
 ```
 
+So now I just need a little HTML to link to the per.js module, and the javaScript I worked out for this canvas example that makes use of it that I placed in a file called main.js. I also have the container element that will contain the canvas element that will be generated in the main.js file.
+
 ```html
 <html>
     <head>
@@ -210,7 +212,7 @@ I then have a draw graph method that will just draw the points of a given graph 
 </html>
 ```
 
-The end result here is then a bunch of graphs that show how the percent values given can effect something. Using just the plain base percent method will result in a straight line from the bottom left corner to the top right corner of a graph when used this way.
+The end result here is then a bunch of graphs that show how the percent values given can effect something. Using just the plain base percent method will result in a straight line from the bottom left corner to the top right corner of a graph when used this way. However other percent methods will result in all kinds of different lines, and as such might be better choices depending on the kind of project that I would want to use one of these methods, or create an expression based of of what I have worked out with them.
 
 ## 3 - Conclusion
 
