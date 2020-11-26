@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 749
-updated: 2020-11-26 06:48:45
-version: 1.12
+updated: 2020-11-26 06:54:52
+version: 1.13
 ---
 
 I think it might be a good idea to work out some more basic javaScript examples that might lead to useful modules that I might use in an actual project or two. One thing that seems to come up a lot for me when working on projects is dealing with what I would often call a [percent value](https://thisinterestsme.com/calculate-percent-javascript/), or a value that can often be expressed as a percent value. That is having a method that will return a number between 0 and 100, or between 0 and 1 which could be multiplied by 100 or any other number for that matter.
@@ -123,6 +123,8 @@ So there are many use case examples for a module such as this, but maybe it woul
 
 The main method of interest when it comes to creating a main object model of sorts is the createPerGraph method. This method takes in some value for the position and size of the graph, but also a percent method to use as an argument. In to body of the method I am using a fixed value for a denominator to use for each call of the given percent method. I then create a point for the graph for each numerator from zero up to the set denominator by using the current numerator with the set denominator to get a percent value with the given percent function.  I then use the returned percent value in an expression with the given values for position and height to set a y value for a point where the x value is just stepped by another expression that will always be the same for any percent method. he result is a collection of points that will help to give a visual idea of the kinds of values that each of these percent methods return and why they might be useful in some situations.
 
+I then have a draw graph method that will just draw the points of a given graph object created with my createPerGraph method and a give 2d canvas drawing context. The rest of the javaScripr code is just creating the canvas element and injecting it into a div element that I have in some hard coded html, and making use of the create percent graph and draw graph methods.
+
 ```js
 (function () {
  
@@ -207,6 +209,8 @@ The main method of interest when it comes to creating a main object model of sor
     </body>
 </html>
 ```
+
+The end result here is then a bunch of graphs that show how the percent values given can effect something. Using just the plain base percent method will result in a straight line from the bottom left corner to the top right corner of a graph when used this way.
 
 ## 3 - Conclusion
 
