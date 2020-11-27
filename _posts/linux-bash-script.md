@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:48:14
-version: 1.17
+updated: 2020-11-27 15:52:07
+version: 1.18
 ---
 
 
@@ -22,7 +22,7 @@ In this post I will be going over the very basics of bash scripts though, and wi
 
 ## 1 - Basic bash script example
 
-In this section I will be going over a very basic example of a bash script that just makes use of the Linux echo command to log hello world to the console.
+In this section I will be going over a very basic example of a bash script that just makes use of the Linux echo command to log hello world to the console. This section is of course intended for people who are completely new to writing and editing bash scripts, if you have progress beyond the hello world of bash script files you might want to skip over this to get to the good stuff later on in this post.
 
 ### 1.1 - A hello.sh file
 
