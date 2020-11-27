@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 14:37:24
-version: 1.6
+updated: 2020-11-27 14:49:03
+version: 1.7
 ---
 
 
@@ -68,6 +68,10 @@ So in this section I will be going over some examples of piping and bash scripts
 
 ### 2.1 - Basic ls piping to grep example
 
+So for starters lets take into account the ls command. It is afairly fimple command that will list the contents of the current working folder, or any folder given as an argument. However there is also a number of options for the ls commnd such as the list all option, and an option that will appedn a slash to any and all items in a listing that are folders rather than files.
+
+So I can use the ls command to get a list of all files and folders in the home folder of the current user, with a slah for all folders like this.
+
 ```
 $ ls -ap ~
 ./                Desktop/          gPodder/     Public/
@@ -82,6 +86,8 @@ Bookshelf/        .gitconfig        .pki/        .xsession-errors.old
 .cache/           .git-credentials  .pp_backup/
 .config/          .gnupg/           .profile
 ```
+
+I can then pipe that result to grep to filter out all items that are folders then.
 
 ```
 $ ls -ap ~ | grep -v /
@@ -102,11 +108,14 @@ hello.txt
 .xsession-errors
 ```
 
+So say I want to have a way in which I can repeat this by just calling a single file. For this I just need to pull the command into a bash file.
 
 ```
 #!/bin/bash
 ls -ap ~ | grep -v /
 ```
+
+I can then save this as something like list-files.sh, and then do the ushual chmod 755 or call with bash to get this result each time by just calling the single file.
 
 ```
 $ chmod 755 list-files.sh
@@ -128,8 +137,11 @@ hello.txt
 .xsession-errors
 ```
 
+I could then pipe the result of this to yet even another command, to filter things even further. In any case the basic idea is there. Bash scripts do not have to just be instances where I am calling just a single command. Commands can be used togeather one after another to create a final result.
 
 ### 2.2 - Piping to yet another command ls to grep to wc to get a count of files
+
+So lets take the script that I worked out before, and just filter things threw yet another command. This next command is the wc command which stands for word count. This command can be used to get the word count of a file as one might suspect, howeher there are a few mopre useful options such as the -l optiont that will count the lines of a file, or the standard input.
 
 ```
 #!/bin/bash
@@ -137,8 +149,9 @@ ls -ap ~ | grep -v / | wc -l
 ```
 
 ```
-```
 $ chmod 755 count-files.sh
 $ ./count-files.sh
 16
 ```
+
+Even more examples might be call for when it comes to piping, but you should get the basic idea. The thing about this is to just read over what a command can do when it comes to what a command will take from the standard input, and how the output of a command can be formated.
