@@ -4,13 +4,13 @@ tags: [js, canvas]
 categories: canvas
 date: 2017-12-01 11:48:00
 id: 102
-updated: 2020-04-17 08:31:44
-version: 1.20
+updated: 2020-11-27 10:16:54
+version: 1.21
 ---
 
-These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great when  it comes to quickly getting up and running with basic charts. 
+These days I am working out some projects that have to do with analyzing text, and it would be nice to find a way to visualize that data with canvas elements. I was thinking of making my own solution, but I am glad that I have found [charts.js](http://www.chartjs.org/docs/latest/) as it is pretty much just what I had in mind, and seems to work great when it comes to quickly getting up and running with basic charts. 
 
-Still it is not to hard to work out a simple native javaScript solution as well, so in this post I will be taking a quick look at chartjs, and will also be writing about a vanilla js option that I slapped together for the sake of this post.
+Still it is not to hard to work out a simple native javaScript solution also, so in this post I will be taking a quick look at chartjs, and will also be writing about a vanilla js option that I slapped together for the sake of this post. Chartjs is a little more than the minimum that is required to create a basic chart, much of what is added on is flashy bulk that might not be needed really. Also it is true that some times I do just need to create my own ways to go about visualizing data. So maybe chartjs is not always the best option depending on the project of course.
 
 <!-- more -->
 
