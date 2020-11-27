@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:40:36
-version: 1.14
+updated: 2020-11-27 15:45:19
+version: 1.15
 ---
 
 
@@ -185,6 +185,44 @@ Every time I use a Linux command there is a way to make use of one or more optio
 
 When writing bash scripts I can make use of one or more positional arguments, and in this section I will be going over a few examples of how to go about making use of such arguments.
 
-## 5 - Conclusion
+```
+#!/bin/bash
+echo "Hello $1"
+```
+
+## 6 - [While loops](/2020/11/12/linux-bash-script-while-loop-examples/)
+
+```bash
+#!/bin/bash
+c=0
+while [ $c -le 5 ]
+do
+  echo "c=${c}"
+  c=$(( $c + 1 ))
+done
+```
+
+## 7 - [Functions in bash scripts](/2020/11/20/linux-bash-script-functions/)
+
+```
+#!/bin/bash
+ 
+# here I have a mess shell variable
+mess="hello bash functions"
+ 
+# I can create a function that will echo that
+# $mess variable each time it is called
+hw(){
+    echo -n " $mess - "
+}
+ 
+# Now I can call mess as many times as I like
+hw
+hw
+hw
+echo ""
+```
+
+## 8 - Conclusion
 
 There is a great deal more to write about when it comes to bash scripts in general with respect to all the little basic details there are needed to know how to go about writing them. In time I might get around to expanding this post more with additional examples that showcase everything that there is to work with when it comes to the bash script syntax at least.
