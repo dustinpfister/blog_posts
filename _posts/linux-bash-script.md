@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 12:51:32
-version: 1.2
+updated: 2020-11-27 13:00:29
+version: 1.3
 ---
 
 
@@ -22,12 +22,18 @@ In this post I will be going over the very basics of bash scripts though, and wi
 
 ## 1 - Basic bash script example
 
+In this section I will be going over a very basic example of a bash script that just makes use of the Linux echo command to log hello world to the console.
+
 ### 1.1 - A hello.sh file
+
+First off I will want to have a plain text file that I will be calling with the bash command. I start off these files with the shebang for the bash command. This is not needed if I intend to call bash first always, however if I want to make the script exacutabule I will want to have it there. After the shebang I just call the echo command, and place the string Hello world after that closed off in double quotes.
 
 ```
 #!/bin/bash
 echo "Hello World"
 ```
+
+So then I just need to save this text as something like hello.sh, and then I am ready to call the script from the command line.
 
 ### 1.2 - Call the file with bash
 
