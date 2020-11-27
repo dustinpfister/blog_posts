@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:52:07
-version: 1.18
+updated: 2020-11-27 15:55:16
+version: 1.19
 ---
 
 
@@ -192,7 +192,7 @@ echo "Hello $1"
 
 ## 6 - [While loops](/2020/11/12/linux-bash-script-while-loop-examples/)
 
-Like many other languages there are ways to go about writing loops, and one such kind of loop to work with is a while loop.
+Like many other languages there are ways to go about writing loops, and one such kind of loop to work with is a while loop. A while loop starts off with the the while beyond followed by an expression that will result in zero or one in square brackets. Then between do and done keywords one just needs to place whatever commands they want to run for each instances of the loop while the condition is true, and step any variables that might need to be updated.
 
 ```bash
 #!/bin/bash
