@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 13:00:29
-version: 1.3
+updated: 2020-11-27 13:13:00
+version: 1.4
 ---
 
 
@@ -37,15 +37,23 @@ So then I just need to save this text as something like hello.sh, and then I am 
 
 ### 1.2 - Call the file with bash
 
+One way to call the script would be to call the bash command and pass the path to the file as the first argument.
+
 ```
 $ bash hello.sh
 Hello world
 ```
 
+What is nice about this is that I do not have to bother with the shebang syntax at the top of the file if I do not want it there for whtever the reason becuase I am calling bash direcly. I also do not have to wory about permission settings for the file as long as I can read file file at least.
+
 ### 1.3 - Use chmod to make the file exacutabule
+
+Another way to call the script would be to make the script exacutbule with the chmod command. Once I do that I can call the script directly because of the shebang that I placed at the top of the file.
 
 ```
 $ chmod 755 hello.sh
 $ ./hello.sh
 Hello world
 ```
+
+I will not be getting into the chmod command in detail here as I have wrote a post on the chmod command before hand. However this is the basic idea, becuase a bash script is a plain text file there needs to be a way to tell bash with binary to use in order to run the script. So I just need to place the path to bash in the top of the bash script with the shebang syntax shown in the hello.sh file above. I can the use chmod to make the script and when calling the script directly that shebang will be used toi find the binary to run the script which in this case is bash. However this can be used with any langaueg that does not involve using a combinl;ar to create a binary, another lanague that comes to mind is javaScript, in that case the shebang should point to node.
