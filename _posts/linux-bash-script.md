@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:55:16
-version: 1.19
+updated: 2020-11-27 15:58:42
+version: 1.20
 ---
 
 
@@ -46,9 +46,9 @@ Hello world
 
 What is nice about this is that I do not have to bother with the shebang syntax at the top of the file if I do not want it there for whatever the reason because I am calling bash directly. I also do not have to worry about permission settings for the file as long as I can read file file at least.
 
-### 1.3 - Use chmod to make the file exacutabule
+### 1.3 - Use chmod to make the file executable
 
-Another way to call the script would be to make the script executable with the chmod command. Once I do that I can call the script directly because of the shebang that I placed at the top of the file.
+Another way to call the script would be to make the script executable with the chmod command. Once I do that I can call the script directly because of the shebang that I placed at the top of the file. there are several ways to go about doing this will chmod, but I have come to find that I like to use the octal syntax for it. I could get into detail about that here, but that would be off topic, for now maybe it is best to just know that the values 755 will make the file executable for the owner of the file, but not others, and that the value 777 wil make the script executable for everyone.
 
 ```
 $ chmod 755 hello.sh
