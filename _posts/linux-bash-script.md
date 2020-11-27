@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:32:53
-version: 1.11
+updated: 2020-11-27 15:36:33
+version: 1.12
 ---
 
 
@@ -56,7 +56,7 @@ $ ./hello.sh
 Hello world
 ```
 
-I will not be getting into the chmod command in detail here as I have wrote a post on the chmod command before hand. However this is the basic idea, because a bash script is a plain text file there needs to be a way to tell bash with binary to use in order to run the script. So I just need to place the path to bash in the top of the bash script with the shebang syntax shown in the hello.sh file above. I can the use chmod to make the script and when calling the script directly that shebang will be used toi find the binary to run the script which in this case is bash. However this can be used with any language that does not involve using a combination to create a binary, another language that comes to mind is javaScript, in that case the shebang should point to node.
+I will not be getting into the chmod command in detail here as I have wrote a post on the chmod command before hand. However this is the basic idea, because a bash script is a plain text file there needs to be a way to tell bash with binary to use in order to run the script. So I just need to place the path to bash in the top of the bash script with the shebang syntax shown in the hello.sh file above. I can the use chmod to make the script and when calling the script directly that shebang will be used to find the binary to run the script which in this case is bash. However this can be used with any language that does not involve using a combination to create a binary, another language that comes to mind is javaScript, in that case the shebang should point to node.
 
 ## 2 - Bash scripts and piping commands
 
@@ -179,6 +179,10 @@ $ ./basic.sh
 This is some text on the subject of bash and other stuff, which is prerrty cool.
 ```
 
-## 4 - Conclusion
+## 4 - Positional arguments
+
+Every time I use a Linux command there is a way to make use of one or more options. For example the ls command can just be called by itself, and when doing so it will display the contents of the current working folder. However I can pass a path to a folder other than where I currently am in the command line, and also some additional options that will for example show all items in a folder including hidden files.
+
+## 5 - Conclusion
 
 There is a great deal more to write about when it comes to bash scripts in general with respect to all the little basic details there are needed to know how to go about writing them. In time I might get around to expanding this post more with additional examples that showcase everything that there is to work with when it comes to the bash script syntax at least.
