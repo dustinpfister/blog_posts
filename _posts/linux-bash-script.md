@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:39:29
-version: 1.13
+updated: 2020-11-27 15:40:36
+version: 1.14
 ---
 
 
@@ -58,9 +58,9 @@ Hello world
 
 I will not be getting into the chmod command in detail here as I have wrote a post on the chmod command before hand. However this is the basic idea, because a bash script is a plain text file there needs to be a way to tell bash with binary to use in order to run the script. So I just need to place the path to bash in the top of the bash script with the shebang syntax shown in the hello.sh file above. I can the use chmod to make the script and when calling the script directly that shebang will be used to find the binary to run the script which in this case is bash. However this can be used with any language that does not involve using a combination to create a binary, another language that comes to mind is javaScript, in that case the shebang should point to node.
 
-## 2 - Bash scripts and piping commands
+## 2 - [Bash scripts and piping commands](/2020/10/09/linux-pipe/)
 
-One important thing to understand when getting started with bash scripts, and in Linux in general is to understand [piping](/2020/10/09/linux-pipe/). In Linux and post of not all other posixs systems it is possible to pipe the standard output of one command as the standard input of another command. 
+One important thing to understand when getting started with bash scripts, and in Linux in general is to understand piping. In Linux and post of not all other posixs systems it is possible to pipe the standard output of one command as the standard input of another command. 
 
 For example I can use the ls command with the all option to get a list of all files and directories in a folder. I can then pipe the result of the ls command as the standard input of grep and use that to filter out all results that do not meet a certain pattern such as not being a javaScript file. The result of grep could then be piped yet again to another command, and so forth, until I have a desired end result. That end result would then be spit out to the console, or it could be piped to a text editor, or used with redirection to create a file.
 
