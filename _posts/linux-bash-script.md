@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:46:25
-version: 1.16
+updated: 2020-11-27 15:48:14
+version: 1.17
 ---
 
 
@@ -205,6 +205,8 @@ done
 ```
 
 ## 7 - [Functions in bash scripts](/2020/11/20/linux-bash-script-functions/)
+
+Functions can also be defined in a bash script when I want to define a string of commands, or some kind of block of code that I want to repeat over and over again elsewhere in a script.
 
 ```
 #!/bin/bash
