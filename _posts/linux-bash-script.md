@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 14:49:03
-version: 1.7
+updated: 2020-11-27 15:01:49
+version: 1.8
 ---
 
 
@@ -155,3 +155,7 @@ $ ./count-files.sh
 ```
 
 Even more examples might be call for when it comes to piping, but you should get the basic idea. The thing about this is to just read over what a command can do when it comes to what a command will take from the standard input, and how the output of a command can be formated.
+
+## 3 - Conclusion
+
+There is a great deal more to write about when it comes to bash scripts in general with respect to all the little basic details there are needed to knwo how to go about writing them. In time I might get around to expanding this post more with additioinal examples that showcase everything that there is to work with when it comes to the bash script syntax at least.
