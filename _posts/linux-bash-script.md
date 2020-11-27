@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:36:33
-version: 1.12
+updated: 2020-11-27 15:39:29
+version: 1.13
 ---
 
 
@@ -156,9 +156,9 @@ $ ./count-files.sh
 
 Even more examples might be call for when it comes to piping, but you should get the basic idea. The thing about this is to just read over what a command can do when it comes to what a command will take from the standard input, and how the output of a command can be formated.
 
-## 3 - Bash scripts and variables
+## 3 - [Bash scripts and variables](/2020/10/29/linux-enviornment-variables/)
 
-When making a bash script [variables](/2020/10/29/linux-enviornment-variables/) can be used as a way to store values that can then be used again in a later part of a script one or more times. In this section I will be going over the basics of variables, and other related topics such as how to capture the output of a command as a value for a variable and how to do basic math operations.
+When making a bash script variables can be used as a way to store values that can then be used again in a later part of a script one or more times. In this section I will be going over the basics of variables, and other related topics such as how to capture the output of a command as a value for a variable and how to do basic math operations.
 
 ### 3.1 - A Basic bash script variable example
 
@@ -179,9 +179,11 @@ $ ./basic.sh
 This is some text on the subject of bash and other stuff, which is prerrty cool.
 ```
 
-## 4 - Positional arguments
+## 4 - [Positional parameters](/2020/11/16/linux-bash-script-parameters/)
 
 Every time I use a Linux command there is a way to make use of one or more options. For example the ls command can just be called by itself, and when doing so it will display the contents of the current working folder. However I can pass a path to a folder other than where I currently am in the command line, and also some additional options that will for example show all items in a folder including hidden files.
+
+When writing bash scripts I can make use of one or more positional arguments, and in this section I will be going over a few examples of how to go about making use of such arguments.
 
 ## 5 - Conclusion
 
