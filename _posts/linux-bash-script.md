@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 14:28:53
-version: 1.5
+updated: 2020-11-27 14:37:24
+version: 1.6
 ---
 
 
@@ -69,8 +69,76 @@ So in this section I will be going over some examples of piping and bash scripts
 ### 2.1 - Basic ls piping to grep example
 
 ```
+$ ls -ap ~
+./                Desktop/          gPodder/     Public/
+../               .dillo/           hello.txt    radio/
+.asoundrc         .dmrc             .lesshst     Templates/
+.aspell.en.prepl  Documents/        .local/      .thumbnails/
+.aspell.en.pws    Downloads/        .mozilla/    Videos/
+.bash_history     .elementary/      Music/       .Xauthority
+.bash_logout      .fltk/            .npm/        .xscreensaver
+.bashrc           foo/              Pictures/    .xsession-errors
+Bookshelf/        .gitconfig        .pki/        .xsession-errors.old
+.cache/           .git-credentials  .pp_backup/
+.config/          .gnupg/           .profile
+```
+
+```
+$ ls -ap ~ | grep -v /
+.asoundrc
+.aspell.en.prepl
+.aspell.en.pws
+.bash_history
+.bash_logout
+.bashrc
+.dmrc
+.gitconfig
+.git-credentials
+hello.txt
+.lesshst
+.profile
+.Xauthority
+.xscreensaver
+.xsession-errors
+```
+
+
+```
 #!/bin/bash
 ls -ap ~ | grep -v /
 ```
 
-### 2.2 - 
+```
+$ chmod 755 list-files.sh
+$ ./list-files.sh
+.asoundrc
+.aspell.en.prepl
+.aspell.en.pws
+.bash_history
+.bash_logout
+.bashrc
+.dmrc
+.gitconfig
+.git-credentials
+hello.txt
+.lesshst
+.profile
+.Xauthority
+.xscreensaver
+.xsession-errors
+```
+
+
+### 2.2 - Piping to yet another command ls to grep to wc to get a count of files
+
+```
+#!/bin/bash
+ls -ap ~ | grep -v / | wc -l
+```
+
+```
+```
+$ chmod 755 count-files.sh
+$ ./count-files.sh
+16
+```
