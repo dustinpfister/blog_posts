@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 732
-updated: 2020-10-29 17:18:00
-version: 1.22
+updated: 2020-11-27 15:32:54
+version: 1.23
 ---
 
 When taking the time to get a little more into how to work with Linux, and Bash, the topic of [environment variables](https://en.wikipedia.org/wiki/Environment_variable) will come up from time to time. These are bash values that can effect how programs work in Linux. For example there is a $HOME environment variable that is the home path for the current user, many programs will use this value to know where to place a hidden config file for user settings then. There are many other such environment variables, and there are also ways of creating ones own such variables when doing so is called for, often when working out some kind of bash script.
@@ -17,7 +17,7 @@ In this post I will be starting out with the basics when it comes to environment
 
 <!-- more -->
 
-## 1 - List current Linux Enviorement Variables
+## 1 - List current Linux Environment Variables
 
 First things first, how does one know what the current state of environment variables are on a system? One such command for getting such a list would be the [Linux printenv](https://man7.org/linux/man-pages/man1/printenv.1.html) command.
 
