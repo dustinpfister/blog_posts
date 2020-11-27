@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:01:49
-version: 1.8
+updated: 2020-11-27 15:15:42
+version: 1.9
 ---
 
 
@@ -156,6 +156,29 @@ $ ./count-files.sh
 
 Even more examples might be call for when it comes to piping, but you should get the basic idea. The thing about this is to just read over what a command can do when it comes to what a command will take from the standard input, and how the output of a command can be formated.
 
-## 3 - Conclusion
+## 3 - Bash scripts and variables
+
+When making a bash script variables can be used as a way to store values that can then be used again in a later part of a script one or more times. In this section I will be going over the basics of variables, and other related topics such as how to capture the output of a command as a value for a variable and how to do basic math operations.
+
+### 3.1 - A Basic bash script variable example
+
+One way to create a varible is to just type a name for the varibel followed by equals, and then the value as a string value.
+
+```
+#!/bin/bash
+ 
+start="This is some text on"
+subject="bash"
+end="which is prerrty cool"
+echo "$start the subject of $subject and other stuff, ${end}."
+```
+
+```
+$ chmod 755 basic.sh
+$ ./basic.sh
+This is some text on the subject of bash and other stuff, which is prerrty cool.
+```
+
+## 4 - Conclusion
 
 There is a great deal more to write about when it comes to bash scripts in general with respect to all the little basic details there are needed to knwo how to go about writing them. In time I might get around to expanding this post more with additioinal examples that showcase everything that there is to work with when it comes to the bash script syntax at least.
