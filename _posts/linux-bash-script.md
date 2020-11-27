@@ -5,16 +5,16 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:15:42
-version: 1.9
+updated: 2020-11-27 15:27:47
+version: 1.10
 ---
 
 
-In a Linux system it pays to know a thing or two about [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php). A bash script is a way to take a bunch of commands and place them in a text file, the text file can then be called with the bash command, or be made exacutabule by adding a bash shebang at the top of the file, and then using the chmod commnad to set the permissions of the file so that it is exacutabule, thus the script can be called dirrectly.
+In a Linux system it pays to know a thing or two about [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php). A bash script is a way to take a bunch of commands and place them in a text file, the text file can then be called with the bash command, or be made executable by adding a bash shebang at the top of the file, and then using the chmod command to set the permissions of the file so that it is executable, thus the script can be called directly.
 
-In any case bash scripts are a way to take a task consisiting of one or more commands that one might find themselfs repating often and pull the string of commands into a file that can then be called just once. There are then ways to edit various configuration files to make it so that the bach scripts can be called from a terminal window with just a single command name. Although it might be outside the scope of this post there is also the idea of making the script run each time a system starts, or to act as some kind of service.
+In any case bash scripts are a way to take a task consisting of one or more commands that one might find themselves repeating often and pull the string of commands into a file that can then be called just once. There are then ways to edit various configuration files to make it so that the bash scripts can be called from a terminal window with just a single command name. Although it might be outside the scope of this post there is also the idea of making the script run each time a system starts, or to act as some kind of service.
 
-Bash is not the most capabule langaue when it comes to programing, but it is a way to interact with Linux commands inclusing commands such as node which allows for running javaScript code. There is also wriring ones own commands with node, or any other perfered programing enviorment and using bash as a way to tied things togeather.
+Bash is not the most capable language when it comes to programing, but it is a way to interact with Linux commands including commands such as node which allows for running javaScript code. There is also writing ones own commands with node, or any other preferred programing environment and using bash as a way to tied things together.
 
 In this post I will be going over the very basics of bash scripts though, and will be linking off into other topics as needed. So this is a getting started post, but also a general index post on all things bash script related that I have written about thus far.
 
@@ -26,7 +26,7 @@ In this section I will be going over a very basic example of a bash script that 
 
 ### 1.1 - A hello.sh file
 
-First off I will want to have a plain text file that I will be calling with the bash command. I start off these files with the shebang for the bash command. This is not needed if I intend to call bash first always, however if I want to make the script exacutabule I will want to have it there. After the shebang I just call the echo command, and place the string Hello world after that closed off in double quotes.
+First off I will want to have a plain text file that I will be calling with the bash command. I start off these files with the shebang for the bash command. This is not needed if I intend to call bash first always, however if I want to make the script executable I will want to have it there. After the shebang I just call the echo command, and place the string Hello world after that closed off in double quotes.
 
 ```
 #!/bin/bash
@@ -44,11 +44,11 @@ $ bash hello.sh
 Hello world
 ```
 
-What is nice about this is that I do not have to bother with the shebang syntax at the top of the file if I do not want it there for whtever the reason becuase I am calling bash direcly. I also do not have to wory about permission settings for the file as long as I can read file file at least.
+What is nice about this is that I do not have to bother with the shebang syntax at the top of the file if I do not want it there for whatever the reason because I am calling bash directly. I also do not have to worry about permission settings for the file as long as I can read file file at least.
 
 ### 1.3 - Use chmod to make the file exacutabule
 
-Another way to call the script would be to make the script exacutbule with the chmod command. Once I do that I can call the script directly because of the shebang that I placed at the top of the file.
+Another way to call the script would be to make the script executable with the chmod command. Once I do that I can call the script directly because of the shebang that I placed at the top of the file.
 
 ```
 $ chmod 755 hello.sh
@@ -56,21 +56,21 @@ $ ./hello.sh
 Hello world
 ```
 
-I will not be getting into the chmod command in detail here as I have wrote a post on the chmod command before hand. However this is the basic idea, becuase a bash script is a plain text file there needs to be a way to tell bash with binary to use in order to run the script. So I just need to place the path to bash in the top of the bash script with the shebang syntax shown in the hello.sh file above. I can the use chmod to make the script and when calling the script directly that shebang will be used toi find the binary to run the script which in this case is bash. However this can be used with any langaueg that does not involve using a combinl;ar to create a binary, another lanague that comes to mind is javaScript, in that case the shebang should point to node.
+I will not be getting into the chmod command in detail here as I have wrote a post on the chmod command before hand. However this is the basic idea, because a bash script is a plain text file there needs to be a way to tell bash with binary to use in order to run the script. So I just need to place the path to bash in the top of the bash script with the shebang syntax shown in the hello.sh file above. I can the use chmod to make the script and when calling the script directly that shebang will be used toi find the binary to run the script which in this case is bash. However this can be used with any language that does not involve using a combination to create a binary, another language that comes to mind is javaScript, in that case the shebang should point to node.
 
 ## 2 - Bash scripts and piping commands
 
-One important thing to inderstand when getting started with bash scripts, and in Linux in general is to understand piping. In linux and post of not all other posixs systems it is possible to pipe the standard output of one command as the standard input of another command. 
+One important thing to understand when getting started with bash scripts, and in Linux in general is to understand piping. In Linux and post of not all other posixs systems it is possible to pipe the standard output of one command as the standard input of another command. 
 
-For example I can use the ls command with the all option to get a list of all files and diretories in a folder. I can then pipe the result of the kls command as the standard input of grep and use that to filter out all results that do not meet a certin pattern such as not being a javaScript file. The result of grep could then be piped yet again to another command, and so forth, until I have a desired end result. That end result would then be spit out to the console, or it could be piped to a text editor, or used with redirection to create a file.
+For example I can use the ls command with the all option to get a list of all files and directories in a folder. I can then pipe the result of the ls command as the standard input of grep and use that to filter out all results that do not meet a certain pattern such as not being a javaScript file. The result of grep could then be piped yet again to another command, and so forth, until I have a desired end result. That end result would then be spit out to the console, or it could be piped to a text editor, or used with redirection to create a file.
 
 So in this section I will be going over some examples of piping and bash scripts. I might also touch based on a lot of useful commands in the process also.
 
 ### 2.1 - Basic ls piping to grep example
 
-So for starters lets take into account the ls command. It is afairly fimple command that will list the contents of the current working folder, or any folder given as an argument. However there is also a number of options for the ls commnd such as the list all option, and an option that will appedn a slash to any and all items in a listing that are folders rather than files.
+So for starters lets take into account the ls command. It is fairly simple command that will list the contents of the current working folder, or any folder given as an argument. However there is also a number of options for the ls command such as the list all option, and an option that will append a slash to any and all items in a listing that are folders rather than files.
 
-So I can use the ls command to get a list of all files and folders in the home folder of the current user, with a slah for all folders like this.
+So I can use the ls command to get a list of all files and folders in the home folder of the current user, with a slash for all folders like this.
 
 ```
 $ ls -ap ~
@@ -115,7 +115,7 @@ So say I want to have a way in which I can repeat this by just calling a single 
 ls -ap ~ | grep -v /
 ```
 
-I can then save this as something like list-files.sh, and then do the ushual chmod 755 or call with bash to get this result each time by just calling the single file.
+I can then save this as something like list-files.sh, and then do the usual chmod 755 or call with bash to get this result each time by just calling the single file.
 
 ```
 $ chmod 755 list-files.sh
@@ -137,11 +137,11 @@ hello.txt
 .xsession-errors
 ```
 
-I could then pipe the result of this to yet even another command, to filter things even further. In any case the basic idea is there. Bash scripts do not have to just be instances where I am calling just a single command. Commands can be used togeather one after another to create a final result.
+I could then pipe the result of this to yet even another command, to filter things even further. In any case the basic idea is there. Bash scripts do not have to just be instances where I am calling just a single command. Commands can be used together one after another to create a final result.
 
 ### 2.2 - Piping to yet another command ls to grep to wc to get a count of files
 
-So lets take the script that I worked out before, and just filter things threw yet another command. This next command is the wc command which stands for word count. This command can be used to get the word count of a file as one might suspect, howeher there are a few mopre useful options such as the -l optiont that will count the lines of a file, or the standard input.
+So lets take the script that I worked out before, and just filter things threw yet another command. This next command is the wc command which stands for word count. This command can be used to get the word count of a file as one might suspect, however there are a few more useful options such as the -l option that will count the lines of a file, or the standard input.
 
 ```
 #!/bin/bash
@@ -162,7 +162,7 @@ When making a bash script variables can be used as a way to store values that ca
 
 ### 3.1 - A Basic bash script variable example
 
-One way to create a varible is to just type a name for the varibel followed by equals, and then the value as a string value.
+One way to create a variable is to just type a name for the variable followed by equals, and then the value as a string value.
 
 ```
 #!/bin/bash
@@ -181,4 +181,4 @@ This is some text on the subject of bash and other stuff, which is prerrty cool.
 
 ## 4 - Conclusion
 
-There is a great deal more to write about when it comes to bash scripts in general with respect to all the little basic details there are needed to knwo how to go about writing them. In time I might get around to expanding this post more with additioinal examples that showcase everything that there is to work with when it comes to the bash script syntax at least.
+There is a great deal more to write about when it comes to bash scripts in general with respect to all the little basic details there are needed to know how to go about writing them. In time I might get around to expanding this post more with additional examples that showcase everything that there is to work with when it comes to the bash script syntax at least.
