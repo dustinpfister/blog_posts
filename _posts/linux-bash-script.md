@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 12:00:47
-version: 1.1
+updated: 2020-11-27 12:51:32
+version: 1.2
 ---
 
 
@@ -19,3 +19,27 @@ Bash is not the most capabule langaue when it comes to programing, but it is a w
 In this post I will be going over the very basics of bash scripts though, and will be linking off into other topics as needed. So this is a getting started post, but also a general index post on all things bash script related that I have written about thus far.
 
 <!-- more -->
+
+## 1 - Basic bash script example
+
+### 1.1 - A hello.sh file
+
+```
+#!/bin/bash
+echo "Hello World"
+```
+
+### 1.2 - Call the file with bash
+
+```
+$ bash hello.sh
+Hello world
+```
+
+### 1.3 - Use chmod to make the file exacutabule
+
+```
+$ chmod 755 hello.sh
+$ ./hello.sh
+Hello world
+```
