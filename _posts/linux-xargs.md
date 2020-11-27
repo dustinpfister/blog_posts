@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 712
-updated: 2020-09-27 08:49:18
-version: 1.6
+updated: 2020-11-27 18:54:45
+version: 1.7
 ---
 
 So you have some standard output from one command, and you want to use that standard output to create values for arguments to another command rather than pipe it to the standard input of that command. In other words the standard input of many commands might expect content or some other kind of data stream from the standard input, not arguments. Take for example the Linux cat command, file names can be given via arguments, but not by way of the standard input, with cat the standard input is used as an alternative to opening files and works in a similar way to that of echo when used that way. 
@@ -48,3 +48,5 @@ $ echo -e 'f *.js\nd lib' | xargs -l bash -c 'find . -maxdepth 3 -type $0 -name 
 ## 4 - Conclusion
 
 So the Linux xargs command is there for these kinds of situations where I need to use the output of a command for arguments for another rather than just sending it to the standard input of another command. I did not cover every little use case, and also there are additional options for this kind of thing that many mind proves to be a better option for one reason or another. Still if you find yourself trying to find an option in a command for changing what the standard input of that command is used for, stop doing that right now. Often there is no such option in a command and for good reason these kinds of things are what commands like xargs are used for.
+
+In addition to xargs there are additional options for using the standard output of one ore more commands to create argumnets for another command. One such command as awk, which is more than just a command but also a whole lanague that can beused for this sort of thing, as well as a wide range of other simular tasks. If I wheer to get into that I would need to writ a lot of posts on it, and it would take a while to learn.
