@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:27:47
-version: 1.10
+updated: 2020-11-27 15:32:53
+version: 1.11
 ---
 
 
@@ -60,7 +60,7 @@ I will not be getting into the chmod command in detail here as I have wrote a po
 
 ## 2 - Bash scripts and piping commands
 
-One important thing to understand when getting started with bash scripts, and in Linux in general is to understand piping. In Linux and post of not all other posixs systems it is possible to pipe the standard output of one command as the standard input of another command. 
+One important thing to understand when getting started with bash scripts, and in Linux in general is to understand [piping](/2020/10/09/linux-pipe/). In Linux and post of not all other posixs systems it is possible to pipe the standard output of one command as the standard input of another command. 
 
 For example I can use the ls command with the all option to get a list of all files and directories in a folder. I can then pipe the result of the ls command as the standard input of grep and use that to filter out all results that do not meet a certain pattern such as not being a javaScript file. The result of grep could then be piped yet again to another command, and so forth, until I have a desired end result. That end result would then be spit out to the console, or it could be piped to a text editor, or used with redirection to create a file.
 
@@ -158,7 +158,7 @@ Even more examples might be call for when it comes to piping, but you should get
 
 ## 3 - Bash scripts and variables
 
-When making a bash script variables can be used as a way to store values that can then be used again in a later part of a script one or more times. In this section I will be going over the basics of variables, and other related topics such as how to capture the output of a command as a value for a variable and how to do basic math operations.
+When making a bash script [variables](/2020/10/29/linux-enviornment-variables/) can be used as a way to store values that can then be used again in a later part of a script one or more times. In this section I will be going over the basics of variables, and other related topics such as how to capture the output of a command as a value for a variable and how to do basic math operations.
 
 ### 3.1 - A Basic bash script variable example
 
