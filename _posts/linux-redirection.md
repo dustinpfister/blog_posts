@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 10:32:54
-version: 1.12
+updated: 2020-11-28 10:48:48
+version: 1.13
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -42,6 +42,23 @@ $ echo "I want to pipe this into nano ==> " | nano -
 
 This will result in the string value that I have cerated with the Linux Echo command to be the opening text in the nano text editor. In the editor I can make any changes that I want to the text, and then save the file at any location within the editor. So then this is one way to go about creating a file with some output from a Linux command, however there is another way that one might like better in most situstions and that is of course redirection which I will be getting to of course. First however I think that I should also touch base on standard input, and standard error a bit more before getting into some redurection examples.
 
+### 1.2 - Standard input
+
+```
+$ cat | grep -e ".js$" | xargs echo "javaScript files: $1"
+foo.js
+hello there
+bar.js
+I like the linux
+```
+
+When done press ctrl+d, and then the output should be soemthing like this.
+
+```
+javaScript files:  foo.js bar.js
+```
+
+Tne standard input does not always have to be from the keyboard though, it can also be from another command, or it can be feed infrom a file or some other kind of stream. Linux redirection can also be used as a way to redirect standard inoput to come into a command from a file rather than the keyboard or a command.
 
 ## 2 - Basic Linux redirection of standard output using echo
 
