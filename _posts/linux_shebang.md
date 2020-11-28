@@ -5,8 +5,8 @@ tags: [linux,js,node.js]
 layout: post
 categories: linux
 id: 6
-updated: 2020-11-28 13:20:12
-version: 1.7
+updated: 2020-11-28 13:32:25
+version: 1.8
 ---
 
 The definition of the word [shebang](https://en.wikipedia.org/wiki/Shebang_&#40;Unix&#41;) is "a matter, operation, or set of circumstances." so then the set of circumstances in the case of using Linux is what scripting language is being used when running a script file. In other words it is important for a program loader to know what interpreter should be used to run a script in question, in the case of server side JavaScript it is typically [node.js](https://nodejs.org/en/).
@@ -45,13 +45,38 @@ I have written a newer post that covers in greater detail [how to go about getti
 
 A Linux shebang should be placed on top of any script, or source code file that is to be called directly and the script is in a langauge that is not compiled. For example if I where to write a simple little projecty in the C langaue there is no need to place a shebang at the top of a source code file, becuase C lanague source is compiled to a binary, and that binary file is what I can then call directly.
 
-So in other words a shebang is a way of letting bash know what binary to use to call a script when the script is called directly from the command line. With javaScript files it makes sense to place a shebang pointing to the location of where the nodejs binary is in a system. However with other scripting langaues the shebang should point to whatever binary is used to call the script. For example when working out a bash script I would want to have a shebang point to bash.
+So in other words a shebang is a way of letting bash know what binary to use to call a script when the script is called directly from the command line. With javaScript files it makes sense to place a shebang pointing to the location of where the nodejs binary is in a system. However with other scripting langaues the shebang should point to whatever binary is used to call the script. 
+
+For example when working out a bash script I would want to have a shebang point to bash.
 
 ```
 #!/bin/bash
 echo "Hello Bash!"
 ```
 
-## 5 - Conclusion
+Whatever the scripting langaue is theer should be a binary that ise used to call it, the location of that binary should be the shebang.
+
+## 5 - Making a script exacutabule with chmod
+
+To make a script exacutabule by itself with chmod I just need to call chmod and use an octal code like 755 so that the file is exacuabule for at least the owner of the file, and still be able to read and write to it also.
+
+So say I have a simple hello world script like this:
+
+```js
+#!/usr/bin/node
+console.log('hello world');
+```
+
+If I save it as something like hello.js I can then use chmod to make is exacutabule, and once that is the case I can call the script by itself.
+
+```
+$ chmod 755 hello.js
+$ ./hello.js
+hello world
+```
+
+There are many other octal codes for setting file access permissions of a file, including scripts. Setting a coe such as 777 will make it so all users have full permisions for reading, writing, and calling the script for example. I will not be getting into detail about the chmod script and file permsions in detail here though of course. I have wrote a [post on chmod, and permsions](/2020/11/13/linux-chmod/) if you want to read more about this one.
+
+## 6 - Conclusion
 
 That's it, this is a short post aimed at a very specific topic of interest. It is a relevant part of getting into what is needed to be understood when it comes to developing CLI tools with node.js, but that is a whole other ball of wax as I see it. When it comes to it I will link and and expand this post accordingly.
