@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 11:32:33
-version: 1.14
+updated: 2020-11-28 11:52:46
+version: 1.15
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -93,6 +93,35 @@ $ cat < ~/post_id.txt | grep 'id: [0-9]*'
 ## 4 - redirection of standard error
 
 It is possible to also redirect standard error streams from commands in the same mannor as standard output. Just standard error can be redirected, or both the standard out and standard error togeather.
+
+### 4.1 - Redirect bolth standard error and standard output
+
+To both redirect the standard error, and standard output to a file there is \&\> and \&\>\> that can be used to do so.  Uisng just one pointly bracket will overwrite a file if it is there to begin with, and using two will append to a file that might be there.
+
+For example say I have this output in a folder then calling the ls command for the current folder.
+
+```
+$ ls .
+ls.log  stderr_stdout.sh
+```
+
+Then say I redirect the oputput of the log form of an ls command to a file called log.js. Agian for the current path, but also for an invaild path name which will result in an error.
+
+```
+$ ls -l . &>> ls.log
+$ ls -l % &>> ls.log
+```
+
+The content of sl.log then looks like this
+
+```
+total 4
+-rw-r--r-- 1 pi pi  0 Nov 28 11:43 ls.log
+-rwxr-xr-x 1 pi pi 49 Nov 28 11:42 stderr_stdout.sh
+ls: cannot access '%': No such file or directory
+```
+
+So then this is generaly the best way to redirect all output both error and exspected to a single file.
 
 ## 5 - Linux redirection example uisng grep to get a list of blog post id numbers
 
