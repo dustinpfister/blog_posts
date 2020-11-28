@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 11:52:46
-version: 1.15
+updated: 2020-11-28 12:14:45
+version: 1.16
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -84,10 +84,32 @@ $ echo 'foo' >> ~/foo.txt
 
 ## 3 - redirect standard input from a file
 
-I can also redirect the standard input just like I am doing with the standard output. The only thing I need to do is just use a less than symbol rather than a greater than symbol. So say I have a file with a list of id numbers I can use linux redirection to use the data in that file as the standard input of a command like cat, and then from there I can pipe the results of that to soemthing else.
+I can also redirect the standard input just like I am doing with the standard output. The only thing I need to do is just use a less than symbol rather than a greater than symbol. So Say I have a file that has some text and I want to use the base32 command to create a base32 encoding of that text file. There are a number of ways to do so with the base32 command and bash features.
+
+In any case I would start with a text file called hello.txt that will contain some text
 
 ```
-$ cat < ~/post_id.txt | grep 'id: [0-9]*'
+Hello World
+ 
+```
+
+```
+$ base32 hello.txt
+JBSWY3DPEBLW64TMMQFA====
+```
+
+```
+$ cat hello.txt | base32
+JBSWY3DPEBLW64TMMQFA====
+```
+
+```
+$ base32 < ./hello.txt
+JBSWY3DPEBLW64TMMQFA====
+```
+
+```
+$ base32 < ./hello.txt > hello.b32
 ```
 
 ## 4 - redirection of standard error
@@ -96,7 +118,7 @@ It is possible to also redirect standard error streams from commands in the same
 
 ### 4.1 - Redirect bolth standard error and standard output
 
-To both redirect the standard error, and standard output to a file there is \&\> and \&\>\> that can be used to do so.  Uisng just one pointly bracket will overwrite a file if it is there to begin with, and using two will append to a file that might be there.
+To both redirect the standard error, and standard output to a file there is uisng an andpersand and pointy brackets syntax that can be used to do so. Uisng just one pointly bracket will overwrite a file if it is there to begin with, and using two will append to a file that might be there.
 
 For example say I have this output in a folder then calling the ls command for the current folder.
 
