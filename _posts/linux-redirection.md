@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 10:15:41
-version: 1.10
+updated: 2020-11-28 10:25:21
+version: 1.11
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -22,6 +22,17 @@ So in this post I will be writing a thing or two about redirection in Linux. and
 There are maybe a few basic things to cover first before getting into redirection. That is before getting into how to go about redirecting standatd output of a command to a file it is first important to know a thing or two about what standard output is to begin with. There are also some related topics that I should at least touch base on before continuing on to redirection such as knowing what piping is, and how it can be used to pipe two or more commands togeather.
 
 So in this section I will be going over some quck basics of what to knwo before getting into redirection.
+
+### 1.1 - The basic idea of standard output
+
+One way to create standard output is to use the Linux Echo command, this command will just echo a string value given as an argument as standard output.
+
+```
+$ echo "hello world"
+hello world
+```
+
+There are all kinds of commnands that will produce standard output, it is the standard stream where the result of a command will be spit out to. With this simple hello world example of the Linux echo command the standard output of the command is ending up in the console, howeher that does not need to be the final place that it goes to. The standard output of this command could be piped to another command that would in turn place it somewhere other than the console depeding on the nature of the command.
 
 
 ## 2 - Basic Linux redirection of standard output using echo
