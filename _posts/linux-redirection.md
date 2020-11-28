@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 12:20:30
-version: 1.17
+updated: 2020-11-28 12:30:51
+version: 1.18
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -187,7 +187,19 @@ post1.md:id: 1
 
 I could then do additional checks to make sure that there are not any gaps, or more than one instance of the same id, but you get the basic idea. Linux redirection can be used in conjunction with the whole world of linux commands including grep to create usful lists and reports.
 
-## 6 - Conclusion
+## 6 - redirecting to the void with /dev/null
+
+I have a lof of javaScript apps that I like to start up as an indepedant process on a system now and then. To do so I call node followed by the name of the javaScript file if I am in the folder in which it is located. I then also pass a port that I would like for the script to listen on also as an argument to the script.
+
+To make it so the script will run as an indepedndant command I use it with the nohup command, but doing so will result in logs being created for the standard output and error of the script. To prevent this I can use redirection to send all the output of the script to /dev/null.
+
+```
+$ nohup node app 8000 &> /dev/null &
+```
+
+The effect of this is that all output from my script will end up just being discarded, which is not a problem as log as the script is working fine. If I wanted to debug the script I would not start the script this way. However yhr basic idea is there, if I just want to discard output from a command, it can be redirected to /dev/null. As such the terminakl window to which I start this will not have the output of that command in it, and when using the nohup command it will not end up in these files that will show up otherwise.
+
+## 7 - Conclusion
 
 [Linux redirection](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-i-o-redirection) is yet another one of those things in Linux that I feel that I just need to take a moment to write a post on it in order to get everything solid with it, and to also have a resource that I can revise from time to time as I continue to learn more about how to go about taking things to the next level when it comes to becoming Linux competent. 
 
