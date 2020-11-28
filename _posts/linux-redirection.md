@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 10:25:21
-version: 1.11
+updated: 2020-11-28 10:32:54
+version: 1.12
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -33,6 +33,14 @@ hello world
 ```
 
 There are all kinds of commnands that will produce standard output, it is the standard stream where the result of a command will be spit out to. With this simple hello world example of the Linux echo command the standard output of the command is ending up in the console, howeher that does not need to be the final place that it goes to. The standard output of this command could be piped to another command that would in turn place it somewhere other than the console depeding on the nature of the command.
+
+For example I can take the standard output of the echo command, and pipe it into the standard input of the nano text editor.
+
+```
+$ echo "I want to pipe this into nano ==> " | nano -
+```
+
+This will result in the string value that I have cerated with the Linux Echo command to be the opening text in the nano text editor. In the editor I can make any changes that I want to the text, and then save the file at any location within the editor. So then this is one way to go about creating a file with some output from a Linux command, however there is another way that one might like better in most situstions and that is of course redirection which I will be getting to of course. First however I think that I should also touch base on standard input, and standard error a bit more before getting into some redurection examples.
 
 
 ## 2 - Basic Linux redirection of standard output using echo
