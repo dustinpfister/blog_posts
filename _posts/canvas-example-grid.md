@@ -5,17 +5,17 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-11-28 17:17:00
-version: 1.33
+updated: 2020-11-28 18:13:15
+version: 1.34
 ---
 
-Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well such as drawing apps and so forth.
+Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking in terms of a decent starting point for a [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) module example. A grid is something that will come up all the time when it comes to all kinds of canvas games, but other projects as well such as drawing apps.
 
-When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid that is to be rendered to the canvas. I would say that it is very much a good idea to keep these things independent from each other by having one module that serves as a way to create a grid object, and another that is used to draw all of cells of this grid to a canvas element. So we will want at least three javaScriopt files, or modules if we have everything together as a single package. One module for creating a grid, another module for drawing the grid, and some additional code that will make use of these two other modules.
+When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid that is to be rendered to the canvas. I would say that it is very much a good idea to keep these things independent from each other by having one module that serves as a way to create a grid object, and another that is used to draw all of cells of this grid to a canvas element. So we will want at least three javaScriopt files. One module for creating and mutating a grid object, another module for drawing a grid object to a canvas element, and some additional code that will make use of these two other modules and provide the rest of the funcitionalty of the example.
 
-The state of the grid can be a state object that has a property that contains cell objects for each cell, tile, gird location, or whatever you call it for each such instance in the grid. Another approach is to just have a width and height for the count of cells, and a cell size value and think of all cell locations in an abstract sense. That is that there are only cell objects for certain locations sort of speak. Either way I would want a way to create some kind of state object, or module for this grid, and a way to render the grid to the canvas as two independent modules.
+The grid object can have an array of cell objects for each x and y position in the grid, tile, grid location, or whatever you call it for each such location in the grid. Another approach is to just have a width and height for the count of cells, a cell size value, and think of all cell locations in an abstract sense. That is that there are only cell objects for certain locations but they are snaped into a location that confroms to the nature of a grid. Either way I would want a way to create some kind of grid object, and have a module that will be used to create and mutate this grid object.
 
-In this example I will be starting out with a very simple Grid class example, and a single drawing method that just draws the grid lines of an instance of that grid class.
+There are a wide range of diferent ways to go about starting with a grid module, however in order to move forward one just has to make a choice and get going with a project. So for this canvas example I will be starting with a module example where I have a single array of objects for each cell.
 
 <!-- more -->
 
