@@ -5,17 +5,17 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-11-28 18:26:25
-version: 1.35
+updated: 2020-11-28 18:36:58
+version: 1.36
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking in terms of a decent starting point for a [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) module example. A grid is something that will come up all the time when it comes to all kinds of canvas games, but other projects as well such as drawing apps.
 
-When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid that is to be rendered to the canvas. I would say that it is very much a good idea to keep these things independent from each other by having one module that serves as a way to create a grid object, and another that is used to draw all of cells of this grid to a canvas element. So we will want at least three javaScriopt files. One module for creating and mutating a grid object, another module for drawing a grid object to a canvas element, and some additional code that will make use of these two other modules and provide the rest of the funcitionalty of the example.
+When it comes to grids there is drawing them, and then there is having a model of sorts that contains the values of the grid that is to be rendered to the canvas. I would say that it is very much a good idea to keep these things independent from each other by having one module that serves as a way to create a grid object, and another that is used to draw all of cells of this grid to a canvas element. So we will want at least three javaScriopt files. One module for creating and mutating a grid object, another module for drawing a grid object to a canvas element, and some additional code that will make use of these two other modules and provide the rest of the functionality of the example.
 
-The grid object can have an array of cell objects for each x and y position in the grid, tile, grid location, or whatever you call it for each such location in the grid. Another approach is to just have a width and height for the count of cells, a cell size value, and think of all cell locations in an abstract sense. That is that there are only cell objects for certain locations but they are snaped into a location that confroms to the nature of a grid. Either way I would want a way to create some kind of grid object, and have a module that will be used to create and mutate this grid object.
+The grid object can have an array of cell objects for each x and y position in the grid, tile, grid location, or whatever you call it for each such location in the grid. Another approach is to just have a width and height for the count of cells, a cell size value, and think of all cell locations in an abstract sense. That is that there are only cell objects for certain locations but they are snapped into a location that conforms to the nature of a grid. Either way I would want a way to create some kind of grid object, and have a module that will be used to create and mutate this grid object.
 
-There are a wide range of diferent ways to go about starting with a grid module, however in order to move forward one just has to make a choice and get going with a project. So for this canvas example I will be starting with a module example where I have a single array of objects for each cell.
+There are a wide range of different ways to go about starting with a grid module, however in order to move forward one just has to make a choice and get going with a project. So for this canvas example I will be starting with a module example where I have a single array of objects for each cell.
 
 <!-- more -->
 
@@ -26,7 +26,7 @@ There are a wide range of diferent ways to go about starting with a grid module,
 
 There are many ways to go about getting started with a grid module, and there are also a whole bunch of issues that will come up when getting into the depth of such a project. Still one has to start somewhere, and this canvas example is just that.
 
-This example will have three modules a grid-cells.js file a grid-cells-draw.js file and a main.js file. The grid-cells.js file is the file that will be used to just create, and mutate an object that will repersent the current state of the grid. The grid-cells-draw.js file will contain methods to draw the current state of a grid object as well as a few other things to a canvas element. In addition the main.js file will be used to create and inject a canvas element, create a grid object, and provide a main app loop in which the grid object will be updated and rendered to the canvas with the draw methods.
+This example will have three modules a grid-cells.js file a grid-cells-draw.js file and a main.js file. The grid-cells.js file is the file that will be used to just create, and mutate an object that will represent the current state of the grid. The grid-cells-draw.js file will contain methods to draw the current state of a grid object as well as a few other things to a canvas element. In addition the main.js file will be used to create and inject a canvas element, create a grid object, and provide a main app loop in which the grid object will be updated and rendered to the canvas with the draw methods.
 
 ### 1.1 - The grid module
 
@@ -34,9 +34,9 @@ First off I have a grid module that I can use to create and mutate a grid object
 
 There is a main create grid helper to which I make public to a global object called gridMod. Inside this create method I create the grid object, and append all basic properties I think the grid object should have. In addition I call another helper method in the module that wil create an array of cell objects. 
 
-This helper method that creates the cell objects just creates a single array, not an arary of arrays, and each object contains an index number as well as the x and y location in the grid. This info can be used in conjunction with the cell size and offset values of the grid object to get an actual pixle location of a cell.
+This helper method that creates the cell objects just creates a single array, not an array of arrays, and each object contains an index number as well as the x and y location in the grid. This info can be used in conjunction with the cell size and offset values of the grid object to get an actual pixel location of a cell.
 
-I then have additiional helps and methods to work with the grid object. For example a helper that will create a bound object for the gird that can be used to knwo if the offset values for the grid have gone out oif bounds or not. In addition there is also a method that can be used to move the offset values of the grid also.
+I then have additional helps and methods to work with the grid object. For example a helper that will create a bound object for the gird that can be used to know if the offset values for the grid have gone out of bounds or not. In addition there is also a method that can be used to move the offset values of the grid also.
 
 ```js
 var gridMod = (function(){
@@ -128,7 +128,7 @@ var gridMod = (function(){
 }());
 ```
 
-So the basic idea is there, but it is still missing a lot of methods that I think I might need for just about every project that I might use a module such as this in.
+So the basic idea is there, but it is still missing a lot of methods that I think I might need for just about every project that I might use a module such as this in. Still I might not want to go nuts with features with something like this, many things that I might add it it might only need to be there for one project but not another. So a starting point such as this would often end up geting hacked over a lot once I make it part of an actual project of some kind.
 
 ### 1.2 - The draw module
 
