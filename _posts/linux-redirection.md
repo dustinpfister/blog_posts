@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 12:14:45
-version: 1.16
+updated: 2020-11-28 12:20:30
+version: 1.17
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -93,20 +93,28 @@ Hello World
  
 ```
 
+One way to create a base32 encoding of the file would be to pass a path to the file as an argument to base32
+
 ```
 $ base32 hello.txt
 JBSWY3DPEBLW64TMMQFA====
 ```
+
+Another option would be to open the file with a command like cat, and then pipe the standard output of the cat command which would be the text of the file to the standard input of the base32 command.
 
 ```
 $ cat hello.txt | base32
 JBSWY3DPEBLW64TMMQFA====
 ```
 
+However I do not have to depend on a command like cat to open the file first when it comes to using the content of a file as a stanard input source for a comambnd like base32. Yet another option would be to use standard input redirection to redirect the content of the hello.txt file to the standard input of the base32 command.
+
 ```
 $ base32 < ./hello.txt
 JBSWY3DPEBLW64TMMQFA====
 ```
+
+I could then use a combination of redirection of standard input, as well as output to create a hello.b32 file using just the base32 command and redirection.
 
 ```
 $ base32 < ./hello.txt > hello.b32
