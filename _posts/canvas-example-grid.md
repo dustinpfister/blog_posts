@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-11-28 17:08:06
-version: 1.30
+updated: 2020-11-28 17:11:39
+version: 1.31
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well such as drawing apps and so forth.
@@ -122,6 +122,8 @@ var gridMod = (function(){
 
 ### 1.2 - The draw module
 
+I am then going to want to have a file that I can used to draw a grid object to a canvas element.
+
 ```js
 var draw = {};
 
@@ -165,6 +167,8 @@ draw.ver = function(ctx, grid){
 ```
 
 ### 1.3 - Main.js
+
+Now that I have my grid module, and another module that I can use to draw the grid to a canvas I am now just going to want a little additional code that will make use of these two modules. In this main.js file I will be creating and injecting a canvas element, and setting up a basic app loop.
 
 ```js
 var canvas = document.createElement('canvas'),
