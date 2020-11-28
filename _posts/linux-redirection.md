@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 10:48:48
-version: 1.13
+updated: 2020-11-28 11:32:33
+version: 1.14
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -91,6 +91,8 @@ $ cat < ~/post_id.txt | grep 'id: [0-9]*'
 ```
 
 ## 4 - redirection of standard error
+
+It is possible to also redirect standard error streams from commands in the same mannor as standard output. Just standard error can be redirected, or both the standard out and standard error togeather.
 
 ## 5 - Linux redirection example uisng grep to get a list of blog post id numbers
 
