@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-11-28 17:11:39
-version: 1.31
+updated: 2020-11-28 17:14:02
+version: 1.32
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well such as drawing apps and so forth.
@@ -212,6 +212,8 @@ var loop = function () {
 
 loop();
 ```
+
+So far so good, but there are at least a few more features I should pack on top of this in order to start to turn it into something that I could actually use in a project. However there might only be so much more to add to the grid module actually in terms of public methods. In a real project I would not just have a simple app loop, but a state machine that would contain a lot of the additional features that I would want in a project.
 
 ## 2 - Canvas grid example with draw grid lines method and basic Grid constructor
 
