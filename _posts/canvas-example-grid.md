@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-11-28 18:13:15
-version: 1.34
+updated: 2020-11-28 18:26:25
+version: 1.35
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking in terms of a decent starting point for a [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) module example. A grid is something that will come up all the time when it comes to all kinds of canvas games, but other projects as well such as drawing apps.
@@ -26,9 +26,17 @@ There are a wide range of diferent ways to go about starting with a grid module,
 
 There are many ways to go about getting started with a grid module, and there are also a whole bunch of issues that will come up when getting into the depth of such a project. Still one has to start somewhere, and this canvas example is just that.
 
+This example will have three modules a grid-cells.js file a grid-cells-draw.js file and a main.js file. The grid-cells.js file is the file that will be used to just create, and mutate an object that will repersent the current state of the grid. The grid-cells-draw.js file will contain methods to draw the current state of a grid object as well as a few other things to a canvas element. In addition the main.js file will be used to create and inject a canvas element, create a grid object, and provide a main app loop in which the grid object will be updated and rendered to the canvas with the draw methods.
+
 ### 1.1 - The grid module
 
 First off I have a grid module that I can use to create and mutate a grid object. This gird object will consist of an array of cell objects where each cell will contain and index property as well as an x and y value that is the position of the cell in the grid.
+
+There is a main create grid helper to which I make public to a global object called gridMod. Inside this create method I create the grid object, and append all basic properties I think the grid object should have. In addition I call another helper method in the module that wil create an array of cell objects. 
+
+This helper method that creates the cell objects just creates a single array, not an arary of arrays, and each object contains an index number as well as the x and y location in the grid. This info can be used in conjunction with the cell size and offset values of the grid object to get an actual pixle location of a cell.
+
+I then have additiional helps and methods to work with the grid object. For example a helper that will create a bound object for the gird that can be used to knwo if the offset values for the grid have gone out oif bounds or not. In addition there is also a method that can be used to move the offset values of the grid also.
 
 ```js
 var gridMod = (function(){
@@ -119,6 +127,8 @@ var gridMod = (function(){
  
 }());
 ```
+
+So the basic idea is there, but it is still missing a lot of methods that I think I might need for just about every project that I might use a module such as this in.
 
 ### 1.2 - The draw module
 
