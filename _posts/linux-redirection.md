@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 09:52:28
-version: 1.9
+updated: 2020-11-28 10:15:41
+version: 1.10
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -56,13 +56,39 @@ $ cat < ~/post_id.txt | grep 'id: [0-9]*'
 
 ## 4 - redirection of standard error
 
-## 5 - Linux grep example using redirection
+## 5 - Linux redirection example uisng grep to get a list of blog post id numbers
 
 Here is a real example that involves using [Linux grep](/2020/09/14/linux-grep/) to create a list of blog post id numbers. That is I have a whole bunch of markdown files that have id numbers at the top of each file, and I want a list of file names and id numbers. I use the Linux grep command to create the list that I want, but now I need a way to save that list to a file rather than just have it in the console window. So one way to go about doing this would be to use Linux redirection.
 
+So each markdown file has some info about the file at the top like this:
+
 ```
-$ grep '^id: [0-9]*' *.md > ~/post_id.txt
+---
+title: Post 0 here we go!
+id: 0
+---
+ 
+This is post id 0, this is just a demo post of a blog post mark down file.
+ 
+<!-- more -->
+ 
+Now lets get to the point here.
 ```
+
+I can use grep to get a list of each file name, and the id feild of each set of data at the top like this.
+
+```
+$ grep '^id: [0-9]*' *.md > ./post_id.txt
+```
+
+Which will result in the list that I want in post\_id.txt.
+
+```
+post0.md:id: 0
+post1.md:id: 1
+```
+
+I could then do additional checks to make sure that there are not any gaps, or more than one instance of the same id, but you get the basic idea. Linux redirection can be used in conjunction with the whole world of linux commands including grep to create usful lists and reports.
 
 ## 6 - Conclusion
 
