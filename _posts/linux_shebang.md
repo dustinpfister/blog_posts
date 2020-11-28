@@ -5,8 +5,8 @@ tags: [linux,js,node.js]
 layout: post
 categories: linux
 id: 6
-updated: 2020-10-02 14:52:29
-version: 1.6
+updated: 2020-11-28 13:20:12
+version: 1.7
 ---
 
 The definition of the word [shebang](https://en.wikipedia.org/wiki/Shebang_&#40;Unix&#41;) is "a matter, operation, or set of circumstances." so then the set of circumstances in the case of using Linux is what scripting language is being used when running a script file. In other words it is important for a program loader to know what interpreter should be used to run a script in question, in the case of server side JavaScript it is typically [node.js](https://nodejs.org/en/).
@@ -41,6 +41,17 @@ In major projects I often might take a moment to write a script that will act as
 
 I have written a newer post that covers in greater detail [how to go about getting started making a CLI tool in node.js](/2017/11/13/linux-nodejs-cli-tools-getting-started/). Be sure to check that out if you want to learn more about how to make global scripts that you can call from anywhere within the Command Line Interface.
 
-## 4 - Conclusion
+## 4 - Other examples of shebangs, the shebang should always point to the binary to use to call a script.
+
+A Linux shebang should be placed on top of any script, or source code file that is to be called directly and the script is in a langauge that is not compiled. For example if I where to write a simple little projecty in the C langaue there is no need to place a shebang at the top of a source code file, becuase C lanague source is compiled to a binary, and that binary file is what I can then call directly.
+
+So in other words a shebang is a way of letting bash know what binary to use to call a script when the script is called directly from the command line. With javaScript files it makes sense to place a shebang pointing to the location of where the nodejs binary is in a system. However with other scripting langaues the shebang should point to whatever binary is used to call the script. For example when working out a bash script I would want to have a shebang point to bash.
+
+```
+#!/bin/bash
+echo "Hello Bash!"
+```
+
+## 5 - Conclusion
 
 That's it, this is a short post aimed at a very specific topic of interest. It is a relevant part of getting into what is needed to be understood when it comes to developing CLI tools with node.js, but that is a whole other ball of wax as I see it. When it comes to it I will link and and expand this post accordingly.
