@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 714
-updated: 2020-11-28 12:30:51
-version: 1.18
+updated: 2020-11-28 12:37:21
+version: 1.19
 ---
 
 One thing that comes up for me often when working something out with one or more Linux commands is to have a way to write the standard output of what happens to a file rather than the console window. I guess if I wanted to I could just copy and paste the output to a text editor, but there must be a more professional way to do it in the command line right? 
@@ -19,9 +19,9 @@ So in this post I will be writing a thing or two about redirection in Linux. and
 
 ## 1 - Linux redirection and what to know first
 
-There are maybe a few basic things to cover first before getting into redirection. That is before getting into how to go about redirecting standatd output of a command to a file it is first important to know a thing or two about what standard output is to begin with. There are also some related topics that I should at least touch base on before continuing on to redirection such as knowing what piping is, and how it can be used to pipe two or more commands togeather.
+There are maybe a few basic things to cover first before getting into redirection. That is before getting into how to go about redirecting standard output of a command to a file it is first important to know a thing or two about what standard output is to begin with. There are also some related topics that I should at least touch base on before continuing on to redirection such as knowing what piping is, and how it can be used to pipe two or more commands together.
 
-So in this section I will be going over some quck basics of what to knwo before getting into redirection.
+So in this section I will be going over some quick basics of what to know before getting into redirection.
 
 ### 1.1 - The basic idea of standard output
 
@@ -32,7 +32,7 @@ $ echo "hello world"
 hello world
 ```
 
-There are all kinds of commnands that will produce standard output, it is the standard stream where the result of a command will be spit out to. With this simple hello world example of the Linux echo command the standard output of the command is ending up in the console, howeher that does not need to be the final place that it goes to. The standard output of this command could be piped to another command that would in turn place it somewhere other than the console depeding on the nature of the command.
+There are all kinds of commands that will produce standard output, it is the standard stream where the result of a command will be spit out to. With this simple hello world example of the Linux echo command the standard output of the command is ending up in the console, however that does not need to be the final place that it goes to. The standard output of this command could be piped to another command that would in turn place it somewhere other than the console depending on the nature of the command.
 
 For example I can take the standard output of the echo command, and pipe it into the standard input of the nano text editor.
 
@@ -40,7 +40,7 @@ For example I can take the standard output of the echo command, and pipe it into
 $ echo "I want to pipe this into nano ==> " | nano -
 ```
 
-This will result in the string value that I have cerated with the Linux Echo command to be the opening text in the nano text editor. In the editor I can make any changes that I want to the text, and then save the file at any location within the editor. So then this is one way to go about creating a file with some output from a Linux command, however there is another way that one might like better in most situstions and that is of course redirection which I will be getting to of course. First however I think that I should also touch base on standard input, and standard error a bit more before getting into some redurection examples.
+This will result in the string value that I have cerated with the Linux Echo command to be the opening text in the nano text editor. In the editor I can make any changes that I want to the text, and then save the file at any location within the editor. So then this is one way to go about creating a file with some output from a Linux command, however there is another way that one might like better in most situations and that is of course redirection which I will be getting to of course. First however I think that I should also touch base on standard input, and standard error a bit more before getting into some redirection examples.
 
 ### 1.2 - Standard input
 
@@ -52,13 +52,13 @@ bar.js
 I like the linux
 ```
 
-When done press ctrl+d, and then the output should be soemthing like this.
+When done press ctrl+d, and then the output should be something like this.
 
 ```
 javaScript files:  foo.js bar.js
 ```
 
-Tne standard input does not always have to be from the keyboard though, it can also be from another command, or it can be feed infrom a file or some other kind of stream. Linux redirection can also be used as a way to redirect standard inoput to come into a command from a file rather than the keyboard or a command.
+The standard input does not always have to be from the keyboard though, it can also be from another command, or it can be feed in from a file or some other kind of stream. Linux redirection can also be used as a way to redirect standard input to come into a command from a file rather than the keyboard or a command.
 
 ## 2 - Basic Linux redirection of standard output using echo
 
@@ -107,7 +107,7 @@ $ cat hello.txt | base32
 JBSWY3DPEBLW64TMMQFA====
 ```
 
-However I do not have to depend on a command like cat to open the file first when it comes to using the content of a file as a stanard input source for a comambnd like base32. Yet another option would be to use standard input redirection to redirect the content of the hello.txt file to the standard input of the base32 command.
+However I do not have to depend on a command like cat to open the file first when it comes to using the content of a file as a standard input source for a command like base32. Yet another option would be to use standard input redirection to redirect the content of the hello.txt file to the standard input of the base32 command.
 
 ```
 $ base32 < ./hello.txt
@@ -122,11 +122,11 @@ $ base32 < ./hello.txt > hello.b32
 
 ## 4 - redirection of standard error
 
-It is possible to also redirect standard error streams from commands in the same mannor as standard output. Just standard error can be redirected, or both the standard out and standard error togeather.
+It is possible to also redirect standard error streams from commands in the same manor as standard output. Just standard error can be redirected, or both the standard out and standard error together.
 
-### 4.1 - Redirect bolth standard error and standard output
+### 4.1 - Redirect both standard error and standard output
 
-To both redirect the standard error, and standard output to a file there is uisng an andpersand and pointy brackets syntax that can be used to do so. Uisng just one pointly bracket will overwrite a file if it is there to begin with, and using two will append to a file that might be there.
+To both redirect the standard error, and standard output to a file there is using an ampersand and pointy brackets syntax that can be used to do so. Using just one pointy bracket will overwrite a file if it is there to begin with, and using two will append to a file that might be there.
 
 For example say I have this output in a folder then calling the ls command for the current folder.
 
@@ -135,7 +135,7 @@ $ ls .
 ls.log  stderr_stdout.sh
 ```
 
-Then say I redirect the oputput of the log form of an ls command to a file called log.js. Agian for the current path, but also for an invaild path name which will result in an error.
+Then say I redirect the output of the log form of an ls command to a file called log.js. Again for the current path, but also for an invalid path name which will result in an error.
 
 ```
 $ ls -l . &>> ls.log
@@ -172,7 +172,7 @@ This is post id 0, this is just a demo post of a blog post mark down file.
 Now lets get to the point here.
 ```
 
-I can use grep to get a list of each file name, and the id feild of each set of data at the top like this.
+I can use grep to get a list of each file name, and the id field of each set of data at the top like this.
 
 ```
 $ grep '^id: [0-9]*' *.md > ./post_id.txt
@@ -185,19 +185,19 @@ post0.md:id: 0
 post1.md:id: 1
 ```
 
-I could then do additional checks to make sure that there are not any gaps, or more than one instance of the same id, but you get the basic idea. Linux redirection can be used in conjunction with the whole world of linux commands including grep to create usful lists and reports.
+I could then do additional checks to make sure that there are not any gaps, or more than one instance of the same id, but you get the basic idea. Linux redirection can be used in conjunction with the whole world of Linux commands including grep to create useful lists and reports.
 
 ## 6 - redirecting to the void with /dev/null
 
-I have a lof of javaScript apps that I like to start up as an indepedant process on a system now and then. To do so I call node followed by the name of the javaScript file if I am in the folder in which it is located. I then also pass a port that I would like for the script to listen on also as an argument to the script.
+I have a lof of javaScript apps that I like to start up as an independent process on a system now and then. To do so I call node followed by the name of the javaScript file if I am in the folder in which it is located. I then also pass a port that I would like for the script to listen on also as an argument to the script.
 
-To make it so the script will run as an indepedndant command I use it with the nohup command, but doing so will result in logs being created for the standard output and error of the script. To prevent this I can use redirection to send all the output of the script to /dev/null.
+To make it so the script will run as an independent command I use it with the nohup command, but doing so will result in logs being created for the standard output and error of the script. To prevent this I can use redirection to send all the output of the script to /dev/null.
 
 ```
 $ nohup node app 8000 &> /dev/null &
 ```
 
-The effect of this is that all output from my script will end up just being discarded, which is not a problem as log as the script is working fine. If I wanted to debug the script I would not start the script this way. However yhr basic idea is there, if I just want to discard output from a command, it can be redirected to /dev/null. As such the terminakl window to which I start this will not have the output of that command in it, and when using the nohup command it will not end up in these files that will show up otherwise.
+The effect of this is that all output from my script will end up just being discarded, which is not a problem as log as the script is working fine. If I wanted to debug the script I would not start the script this way. However the basic idea is there, if I just want to discard output from a command, it can be redirected to /dev/null. As such the terminal window to which I start this will not have the output of that command in it, and when using the nohup command it will not end up in these files that will show up otherwise.
 
 ## 7 - Conclusion
 
