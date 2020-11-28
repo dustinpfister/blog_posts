@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-11-28 16:46:41
-version: 1.29
+updated: 2020-11-28 17:08:06
+version: 1.30
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well such as drawing apps and so forth.
@@ -20,11 +20,15 @@ In this example I will be starting out with a very simple Grid class example, an
 <!-- more -->
 
 <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-<script src="/js/canvas-example/grid/0.0.0/pkg.js"></script>
+<script src="/js/canvas-examples/grid/0.0.0/pkg.js"></script>
 
 ## 1 - A good start for a grid module, maybe
 
+There are many ways to go about getting started with a grid module, and there are also a whole bunch of issues that will come up when getting into the depth of such a project. Still one has to start somewhere, and this canvas example is just that.
+
 ### 1.1 - The grid module
+
+First off I have a grid module that I can use to create and mutate a grid object. This gird object will consist of an array of cell objects where each cell will contain and index property as well as an x and y value that is the position of the cell in the grid.
 
 ```js
 var gridMod = (function(){
