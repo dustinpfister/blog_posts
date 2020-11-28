@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 558
-updated: 2020-07-23 14:34:08
-version: 1.28
+updated: 2020-11-28 16:46:41
+version: 1.29
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/), this time I am thinking just a basic [canvas grid](https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc) example. A grid is something that will come up all the time when it comes to all kinds of canvas projects, mainly games, but other projects as well such as drawing apps and so forth.
@@ -19,11 +19,197 @@ In this example I will be starting out with a very simple Grid class example, an
 
 <!-- more -->
 
-## 1 - Canvas grid basic example with draw grid lines method and basic Grid constructor
+<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<script src="/js/canvas-example/grid/0.0.0/pkg.js"></script>
+
+## 1 - A good start for a grid module, maybe
+
+### 1.1 - The grid module
+
+```js
+var gridMod = (function(){
+ 
+    var createGrid = function (opt) {
+        opt = opt || {};
+        var grid = {
+            ver : opt.ver || ''
+        };
+        grid.canvas = opt.canvas || {width: 640, height: 480};
+        grid.xOffset = opt.xOffset === undefined ? 5 : opt.xOffset;
+        grid.yOffset = opt.yOffset === undefined ? 5 : opt.yOffset;
+        grid.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;
+        grid.width = opt.width || 4;
+        grid.height = opt.height || 2;
+        // create cells
+        grid.cells = createBaseCellsArray(grid.width, grid.height);
+        grid.bounds = createBoundsObject(grid, grid.canvas);
+        return grid;
+    };
+ 
+    // set cell objects for each cell in the grid
+    var createBaseCellsArray = function (width, height) {
+        var cells = [],
+        i = 0,
+        len = width * height;
+        while (i < len) {
+            cells.push({
+                i: i,
+                y: Math.floor(i / width),
+                x: i % width
+            });
+            i += 1;
+        }
+        return cells;
+    };
+ 
+    // PUBLIC API
+    var api = {};
+ 
+    // create a grid object
+    api.create = createGrid;
+ 
+    // Bounds
+    var createBoundsObject = function(grid){
+        var xMax = grid.cellSize,
+        yMax = grid.cellSize;
+        return {
+            xMax: xMax,
+            yMax: yMax,
+            xMin: xMax + ((grid.cellSize * grid.width) - (grid.canvas.width - grid.cellSize * 2)) * -1,
+            yMin: yMax + ((grid.cellSize * grid.height) - (grid.canvas.height - grid.cellSize * 2)) * -1
+        };
+    };
+    api.applyBounds = function(grid, bounds){
+        bounds = bounds || grid.bounds;
+        grid.xOffset = grid.xOffset > bounds.xMax ? bounds.xMax : grid.xOffset;
+        grid.xOffset = grid.xOffset < bounds.xMin ? bounds.xMin : grid.xOffset;
+        grid.yOffset = grid.yOffset > bounds.yMax ? bounds.yMax : grid.yOffset;
+        grid.yOffset = grid.yOffset < bounds.yMin ? bounds.yMin : grid.yOffset;
+    };
+    api.onEdge = function(grid){
+        var bounds = createBoundsObject(grid);
+        if(grid.xOffset >= bounds.xMax || 
+        grid.xOffset <= bounds.xMin || 
+        grid.yOffset >= bounds.yMax || 
+        grid.yOffset <= bounds.yMin){
+            return true;
+        }
+        return false;
+    };
+ 
+    // move map method
+    api.moveMap = function(grid, secs, radian, pps){
+        secs = secs === undefined ? 0 : secs;
+        radian = radian === undefined ? 0 : radian;
+        pps = pps === undefined ? 0 : pps;
+ 
+        var deltaX = Math.cos(radian) * pps * secs;
+        var deltaY = Math.sin(radian) * pps * secs;
+ 
+        grid.xOffset += deltaX;
+        grid.yOffset += deltaY;
+ 
+    };
+ 
+    return api;
+ 
+}());
+```
+
+### 1.2 - The draw module
+
+```js
+var draw = {};
+
+// draw Cell Lines
+draw.cells = function (ctx, grid, style) {
+    var ci = 0,
+    cell,
+    cLen = grid.cells.length;
+    ctx.strokeStyle = style || 'red';
+    while (ci < cLen) {
+        cell = grid.cells[ci];
+        ctx.strokeRect(
+            cell.x * grid.cellSize + grid.xOffset + 0.5,
+            cell.y * grid.cellSize + grid.yOffset + 0.5,
+            grid.cellSize, grid.cellSize)
+        ci += 1;
+    }
+};
+ 
+// background
+draw.back = function(ctx, canvas){
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+// draw info
+draw.info = function(ctx, grid){
+    ctx.fillStyle = 'white';
+    ctx.textBaseline  = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('offset: ' + grid.xOffset.toFixed(2) + ' , ' + grid.yOffset.toFixed(2), 5, 5);
+};
+ 
+// version
+draw.ver = function(ctx, grid){
+    ctx.fillStyle = 'white';
+    ctx.textBaseline  = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + grid.ver, 5, grid.canvas.height - 15);
+};
+```
+
+### 1.3 - Main.js
+
+```js
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d'),
+container = document.getElementById('canvas-app') || document.body;
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ctx.translate(0.5, 0.5);
+ 
+var grid = gridMod.create({
+    ver: '0.0.0',
+    canvas: canvas,
+    width: 16,
+    height: 8
+});
+ 
+var lt = new Date(),
+radian = Math.PI * 1.75;
+var loop = function () {
+ 
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+ 
+    requestAnimationFrame(loop);
+ 
+    gridMod.moveMap(grid, secs, radian, -128);
+    gridMod.applyBounds(grid);
+    if(gridMod.onEdge(grid)){
+        radian = Math.PI * 2 * Math.random();
+    }
+ 
+    draw.back(ctx, canvas);
+    draw.cells(ctx, grid);
+    draw.info(ctx, grid);
+    draw.ver(ctx, grid);
+ 
+    lt = new Date();
+ 
+};
+
+loop();
+```
+
+## 2 - Canvas grid example with draw grid lines method and basic Grid constructor
 
 So in this section I will start out with a very basic Grid Constructor that will serve as a way to pull away the data state of the Grid away from the logic that is used to render that grid. In addition I will just have one draw method that will render the grid lines of the Grid. All other canvas examples in this post will just be improvements, additions, or just simply changes to this basic Canvas Grid example.
 
-### 1.1 - The html file
+### 2.1 - The html file
 
 Here I have the html file that I am using for the example. In the html I just have a single div element that I am using as a container for the canvas example where I will be creating a canvas element with javaScript and then injecting it.
 
@@ -41,7 +227,7 @@ Here I have the html file that I am using for the example. In the html I just ha
 
 The html file also has a single script tag that links to an external main.js file where I will have all the javaScript code for the example in this section. Any additional sections in this post will just be different renditions of this main.js file.
 
-### 1.2 - The Grid constructor in main.js
+### 2.2 - The Grid constructor in main.js
 
 So I start off my main javaScript file for this Canvas Grid example with a basic Grid constructor. This constructor does not have anything going on with the prototype object at least in this example at least.
 
@@ -59,7 +245,7 @@ var Grid = function (opt) {
 
 So for now the constructor just creates a standard object that just contains some values that outline the values of a grid such as the x and y offset values of the upper left corner of the gird in the canvas matrix. The cellSize of each grid cell or tile f you prefer, and the width and height of the gird in cell count rather than pixel size.
 
-### 1.3 - The Draw Grid Lines Method
+### 2.3 - The Draw Grid Lines Method
 
 After I define the Gird constructor I write my first draw method that can be used to draw the current state of an instance of my Grid constructor. For now this draw method just renders the lines of the gird, a method that I might want to have when ot comes to using something like this in an actual project.
 
@@ -99,7 +285,7 @@ var drawGridLines = function (ctx, grid, style) {
 The draw grid lines method seems to work okay, but there is the question of drawing more than just grid lines for the canvas Grid. Doing so might require some more work on the Grid constructor, and the introduction of cell objects though, and for now I would like to keep this basic example of a Canvas Grid clean and simple.
 
 
-### 1.4 - Setup
+### 2.4 - Setup
 
 So now for the setup of the canvas element, and to make use of what I worked out here. I start out by creating a canvas element and setting that to a variable that I also used to get a reference to the 2d drawing context. I then append that canvas element to the container element which in this case is a div element in the HTML.
 
@@ -139,7 +325,7 @@ When this example is up in running in my browser it results in a simple grid bei
 
 Not much to get excited over at this point, however in this section the aim is to just start out with a very simple canvas grid example. At this point the Grid constructor is just simply that a constructor function without any methods added to the prototype just yet. Also although my draw grid lines method is working okay I am not sure if I am happy with it, I might like replace that with something else. So lets look at some additional revisions of this in the additional sections in this post.
 
-## 2 - An attempt at a draw grid axis method
+## 3 - An attempt at a draw grid axis method
 
 So as I mentioned in the previous section on the basic canvas grid example it is of course possible to create a sort of draw grid axis lines method that would then be called twice. Just a method could be called twice in the body of the draw grid lines method.
 
@@ -186,7 +372,7 @@ var drawGridLines = function(ctx, grid, style){
 
 This satisfies a desire to find a way to keep from repeating the same code, but it also results in a more complicated way of doing the same thing. So maybe there is yet another way to go about doing this that will be a bit more concise, I hate making things more complicated than they need to be. I can get into adding some more features to my Grid constrictor such as cells, and then just loop threw that array of cells as a way of drawing grid lines, and also any additional drawing for the background of each cell.
 
-## 3 - Draw Canvas Grid Cells method and first Grid Constructor Prototype method
+## 4 - Draw Canvas Grid Cells method and first Grid Constructor Prototype method
 
 So now lets make a more advanced version of the Gird constructor that introduces at least one prototype method. In addition I think it is time to have a cells array as part of the Grid constructor as well. This gird cells array will be a collection of objects, and each object can contain values like the cell position in the grid, and also an index value for a type of background for the cell. So I can just loop over this array and use that data in the drawing method, to draw grid lines as well as backgrounds.
 
@@ -194,7 +380,7 @@ The single prototype method will be used to build the cells array, and will be c
 
 In addition to creating a prototype method for the Grid constructor in this section I will also be going over a draw Cell lines method that will be yet another way to draw the lines of a grid, however in some respects this might be a better way of doing so, and the other draw methods that I have outlined so far may not be necessary. There is more than one way to solve a problem, and if I am going to have a cells array for my Grid constructor this might be the preferred way to go about drawing canvas Grid lines.
 
-### 3.1 - The Canvas Grid Constructor
+### 4.1 - The Canvas Grid Constructor
 
 So here is the updated Grid constructor, things are more or less the same only now I am calling a set cells method in the body of the constructor, and of course I have that method in the prototype object of the Grid constructor.
 
@@ -236,7 +422,7 @@ Grid.prototype.setCells = function (forCell) {
 
 I have decided to go with a single linear array design rather than an array of arrays design. Having to choose between one or the other ends u being a rabbit hole of sorts for me that I wish to avoid by just simply choosing this kind of approach of that other general option that I see often.
 
-### 3.2 - The Draw Canvas Grid Cell Lines method
+### 4.2 - The Draw Canvas Grid Cell Lines method
 
 Here I have the draw canvas grid lines method that is yet another way of going about drawing grid lines in canvas with javaScript. This might be a better way though considering that I can do so with just a single loop without making things more complicated as I did the the previous sections.
 
@@ -260,7 +446,7 @@ var drawCellLines = function (ctx, grid, style) {
 
 This method should maybe be keep separate from any additional draw methods such as one that draws the backgrounds of each cell in the grid. This will help to keep things more fine grain, and also I might only want to draw grid lines alone for the grid, or I might want to draw the grid lines after drawing the backgrounds.
 
-### 3.3 - Draw the canvas grid cell backgrounds
+### 4.3 - Draw the canvas grid cell backgrounds
 
 So now on top of having a draw method that draws the grid lines I now have a methods that will draw the backgrounds also. This method works more or less the same way, only now I am using the draw image method, and I am passing a reference to a tile sheet in the from of an image or another canvas element. This of course makes use of the background index value that I added to the cell objects.
 
@@ -289,7 +475,7 @@ var drawCellBackgrounds = function (ctx, grid, sheet) {
 
 I will not be getting into the draw image method in depth here but the first argument is of course a reference to the sheet that I will be using to draw the backgrounds, and then there are values for the source position as well as width in height when it comes to getting the tile in the tile sheet, followed by the same set of values for drawing it to the canvas.
 
-### 3.4 - Using the new Grid Constructor and draw methods
+### 4.4 - Using the new Grid Constructor and draw methods
 
 So then once again I just need to use everything I worked out. This time I am still using the same options as before, but now I am also creating a sprite sheet as a canvas element rather than loading an extremal image, and using the canvas as the tile sheet when calling the draw cell backgrounds method. 
 
@@ -348,6 +534,6 @@ I also set some background index properties of cell objects to something other t
 
 When this example is working I see what I would expect I have orange tiles as the default background, and then green tiles for each one that I have set to a value of one. I then have gray grid lines over this.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 This is my no means the end all be all solution for creating a canvas grid there are many different ways of going about doing this, such is the nature of programing in general of course. I was considering making more of a functional approach to this for example where there would be a method that just creates a plain old object that can then be passed to all kinds f methods that act on that object. In any case I might use what is written here in additional posts on canvas examples that make used of a grid to do something interesting.
