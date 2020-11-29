@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 678
-updated: 2020-11-29 09:57:03
-version: 1.14
+updated: 2020-11-29 09:59:33
+version: 1.15
 ---
 
 The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string. There might be a number of other ways to go about doing this, however the use of exec might be the best way to go about doing so rather than working out a solution with the string match method.
@@ -84,7 +84,9 @@ So great that is the basic idea of what I would want, now it is just a matter of
 
 ### 2.2 - Making a get all index values with custom formated objects
 
-I would just need to make a single simple change to the basic get index values method to get a result that is a little cleaner.
+I would just need to make a single simple change to the basic get index values method to get a result that is a little cleaner. The only change really that I think helps right away is to just push a new object with my own set of properties rather than just pushing the raw result of the exec method. The result is a cleaner, eaiser to follow set of plain old objects where I have a text property for the text of the match, and not just an index value but and end index value also. This data can then be used to help with any search and replace options later.
+
+
 ```js
 var getIndexValues = function (str, regex) {
     var patt = new RegExp(regex), // creating a new regEx Object from the given one
