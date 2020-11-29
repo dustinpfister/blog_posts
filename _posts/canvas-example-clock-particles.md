@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-11-29 15:21:11
-version: 1.25
+updated: 2020-11-29 15:26:03
+version: 1.26
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -22,7 +22,9 @@ This is just one silly little idea that came to mind when it comes to be thing a
 
 ## 1 - The Utils.js for this particles clock example
 
-First off there are a few methods that I will be using in the clock.js file that creates the state object as well as the draw,js file also. So I will be wanting an general utility library to pack methods like this.
+I often have a general utility library in my canvas examples, this is just a place where I will park methods that I think that I will be using in two or more modules in the source code. Often that is not the case when I keep many of these fairly simple, however I do that anyway.
+
+For this canvas example I just have a distance method, and a method that helps me with padding a string.
 
 ```js
 // UTILS
@@ -37,6 +39,8 @@ u.pad = function (a) {
     return String('00' + a).slice(-2);
 };
 ```
+
+So now that I have that out of the way lets move on to the actual clock module.
 
 ## 2 - Clock.js
 
