@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 678
-updated: 2020-11-29 08:56:54
-version: 1.8
+updated: 2020-11-29 09:05:25
+version: 1.9
 ---
 
 The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string. There might be a number of other ways to go about doing this, however the use of exec might be the best way to go about doing so rather than working out a solution with the string match method.
@@ -20,7 +20,9 @@ So because each time the exec method is called an object with the index value of
 
 ## 1 - A Basic exec method example
 
-Lets start out with just a basic example of this exec method of the RehExp Class in javaScript. So the first thing is to have a pattern, I will not be getting into regular expressions in detail here as I have all ready [wrote a post on the basics or the RegExp class](/2019/03/20/js-regex/). So just create a new regular expression by one means or another by way of the RegExp constructor function called with the new keyword, or the literal syntax. Once we have a pattern of what to look for then it is just a matter of calling the exec method off of the regular expression instance and passing a string to which we are going to look for the pattern. The result will be a result array, or the null value if an instance of the pattern is not found.
+Lets start out with just a basic example of this exec method of the RegExp Class just to get the general idea of how it works. So the first thing is to have a pattern that will be used with a string value, I will not be getting into regular expressions in detail here as I have all ready [wrote a post on the basics or the RegExp class](/2019/03/20/js-regex/). So just create a new regular expression by one means or another by way of the RegExp constructor function called with the new keyword, or the literal syntax. 
+
+Once we have a pattern of what to look for then it is just a matter of calling the exec method off of the regular expression instance and passing a string to which we are going to look for the pattern. The result will be a result array, or the null value if an instance of the pattern is not found.
 
 ```js
 var pat = /foo/,
@@ -31,7 +33,7 @@ console.log(m.index) // 12
 console.log(m.input) // 'This is all foobar'
 ```
 
-The result array that is returned is a little weird. There is the instance of the text that was found that matched the given pattern as an element of the array, and then index and input values that are attached as named key values for the array. This sort of thing can be done with arrays in general, but that is a matter for another post as getting into that would be off topic.
+The result array that is returned might be a little weird as the text of the pattern match is attached via a numbed index value, but the index of the pattern and the full original string value is attached via named key values. This sort of thing can be done with arrays in general as an array if just a kind of object in javaScript, although I am not sure I can say doing so is always such a great idea. In any case that is a matter for another post as getting into that would be off topic.
 
 Anyway now that we have a basic example of exec out of the way we can get into something a little more involves that can be used as a way to get all instances of a pattern.
 
