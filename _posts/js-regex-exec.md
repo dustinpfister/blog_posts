@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 678
-updated: 2020-11-29 08:48:55
-version: 1.7
+updated: 2020-11-29 08:56:54
+version: 1.8
 ---
 
-The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string.
+The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string. There might be a number of other ways to go about doing this, however the use of exec might be the best way to go about doing so rather than working out a solution with the string match method.
 
-The RegExp exec method will execute a search for the pattern that it is call off of for the given string, and will return a result array if a match is found, or null if no match is found. In addition regular expressions have a [last index](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex) property that will be updated each time the exec method is called. So the exec method can be used with a loop of some kind along with the global flag to get all index values of the pattern in a string that is passed as the first argument when calling exec.
+The RegExp exec method will execute a search for the pattern that it is call off of for the given string, and will return a result array if a match is found, or null if no match is found. In addition regular expression Object instances have a [last index](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex) property that will be updated each time the exec method is called. So the exec method can be used with a loop of some kind along with the global flag to get all index values of the pattern in a string that is passed as the first argument when calling exec. 
+
+So because each time the exec method is called an object with the index value of the beginning of a pattern  match is obtained, the exec method is great for creating an array of Objects with detailed information with each pattern match. So this makes the exec method a great solution for projects that are parsers, or any kind of project where an array of detailed pattern matching data is needed.
 
 <!-- more -->
 
