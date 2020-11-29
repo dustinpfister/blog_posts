@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-11 08:00:05
-version: 1.67
+updated: 2020-11-28 19:01:06
+version: 1.68
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -130,11 +130,11 @@ So I wanted to have at least one canvas example that is a game spinner that is s
 
 ### 3.22 - [Grass blades](/2020/07/02/canvas-example-grass-blades/)
 
-just some grass blade type things.
+Just some grass blade type things.
 
 ### 3.23 - [Canvas Grid module](/2019/11/07/canvas-example-grid/)
 
-A grid module for canvas projects.
+This canvas example is of a starting point for a grid module that is an important part of most canvas projects. There is a lot to cover when it comes to this kind of module when it comes to how to go about create an object for a grid. There is how to go about creating an array of cell objects, or if such an array is even need to begin with.
 
 ### 3.24 - [grid defense](/2019/11/27/canvas-example-grid-defense/)
 
