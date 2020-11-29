@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 678
-updated: 2020-11-29 09:07:25
-version: 1.10
+updated: 2020-11-29 09:28:42
+version: 1.11
 ---
 
 The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string. There might be a number of other ways to go about doing this, however the use of exec might be the best way to go about doing so rather than working out a solution with the string match method.
@@ -39,39 +39,43 @@ Anyway now that we have a basic example of exec out of the way we can get into s
 
 ## 2 - Get all index values in a string
 
-So say I have a pattern with a global flag set, and a string that has two or more instances of that pattern. What I want is an array of objects that each have an index property for the starting index value for each instance of the pattern in the given string. The exec method can be used un conjunction with a loop such as a while loop to keep looping until a null value is reached. Each time a pattern is found the result can be pushed to an array, building this array of results for each match.
+So say I have a pattern with a global flag set, and a string that has two or more instances of that pattern. What I want is an array of objects that each have an index property for the starting index value for each instance of the pattern in the given string. The exec method can be used in conjunction with a loop such as a while loop to keep looping, calling exec each time until a null value is returned. Each time a pattern is found the result can be pushed to an array, building this array of results for each match.
 
 ```js
 var getIndexValues = function (str, regex) {
-    var r = new RegExp(regex),
-    m,
-    arr = [];
-    if (r.global) {
-        while (m = r.exec(str)) {
-            arr.push(m);
+    var patt = new RegExp(regex), // creating a new regEx Object from the given one
+    match,  // to hold a current match result
+    matchArray = []; // the array of matches
+    if (patt.global) {
+        while (match = patt.exec(str)) {
+            matchArray.push(match);
         }
     } else {
-        m = r.exec(str);
-        if (m) {
-            arr.push(m);
+        match = patt.exec(str);
+        if (match) {
+            matchArray.push(match);
         }
     }
-    return arr;
+    return matchArray;
 };
  
-var formated = function (str, regex) {
-    return getIndexValues(str, regex).map(function (m) {
-        return m + m.index;
-    }).join(',')
-}
+var str = 'so Then this is a only a tEst of String Things',
+patt = /[A-Z]/g; // pattern to match for Capital letters
  
-var str = 'so Then this is a only a tEst of String Things';
- 
-console.log(formated(str, /[A-Z]/));
-// T3
-console.log(formated(str, /[A-Z]/g));
-// T3,E26,S33,T40
+// using getIndexValues gives me an array of all pattern matches
+var matches = getIndexValues(str, patt);
+console.log(matches);
+/*
+[
+    ['T', index: 3, input: 'so Then this is a only a tEst of String Things'], 
+    ['E', index: 26, input: 'so Then this is a only a tEst of String Things'], 
+    ['S', index: 33, input: 'so Then this is a only a tEst of String Things'], 
+    ['T', index: 40, input: 'so Then this is a only a tEst of String Things']
+];
+*/
 ```
+
+So great that is the basic idea of what I would want, now it is just a matter of just making a few simple changes when it comes to the state of the Objects. There are certain additional values that I might want, such as the ending index of each pattern match. In this example it might not matter, but with other patterns that would be needed. In addition I might not want or even really need the original text for each object. Still this is a good start when it comes to making this kind of method.
 
 ## 5 - Conclusion
 
