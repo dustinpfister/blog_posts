@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 678
-updated: 2020-11-29 09:05:25
-version: 1.9
+updated: 2020-11-29 09:07:25
+version: 1.10
 ---
 
 The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string. There might be a number of other ways to go about doing this, however the use of exec might be the best way to go about doing so rather than working out a solution with the string match method.
@@ -35,7 +35,7 @@ console.log(m.input) // 'This is all foobar'
 
 The result array that is returned might be a little weird as the text of the pattern match is attached via a numbed index value, but the index of the pattern and the full original string value is attached via named key values. This sort of thing can be done with arrays in general as an array if just a kind of object in javaScript, although I am not sure I can say doing so is always such a great idea. In any case that is a matter for another post as getting into that would be off topic.
 
-Anyway now that we have a basic example of exec out of the way we can get into something a little more involves that can be used as a way to get all instances of a pattern.
+Anyway now that we have a basic example of exec out of the way we can get into something a little more involves that can be used as a way to get all instances of a pattern. The basic info that I would want is there with just one match, so now it is just a matter of getting the same set of info for all matches of a pattern in some given text.
 
 ## 2 - Get all index values in a string
 
