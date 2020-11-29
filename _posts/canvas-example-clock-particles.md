@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-05-21 14:53:23
-version: 1.24
+updated: 2020-11-29 15:21:11
+version: 1.25
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -16,6 +16,9 @@ This will be a clock that involves a pool of display objects or particles as the
 This is just one silly little idea that came to mind when it comes to be thing about making some additional canvas examples that are just basic clock like projects. Making clocks is a nice diversion from other canvas projects such as games that can become very complicated and time consuming endeavorers. My experience with making clocks thus far however has been a more rewarding, and therapeutic experience thus far. Just like with games there is a lot of room for originally and creativity, so lets take a look at this slightly more advanced canvas clock with particle objects.
 
 <!-- more -->
+
+<div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<script src="/js/canvas-examples/clock-particles/0.0.0/pkg.js"></script>
 
 ## 1 - The Utils.js for this particles clock example
 
