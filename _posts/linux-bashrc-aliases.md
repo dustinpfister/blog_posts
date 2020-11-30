@@ -5,21 +5,21 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 16:44:17
-version: 1.10
+updated: 2020-11-30 16:52:56
+version: 1.11
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
 
-Often there might be a command that I use with a bunch of options that take a long time to type over again. There are also a number of situstions in which I can produce a result that I want, but not with a single command, rather a long string of commands involving piping of standard output to the standard input of another. So with many of these it makes sense to create a line in a file where I assign a command with a long string of options, and or a buch of commands piped togeather that wull result in just one command with a short name. I can then just call that single short command name each time, rather than typeing the same long string of text each time.
+Often there might be a command that I use with a bunch of options that take a long time to type over again. There are also a number of situations in which I can produce a result that I want, but not with a single command, rather a long string of commands involving piping of standard output to the standard input of another. So with many of these it makes sense to create a line in a file where I assign a command with a long string of options, and or a bunch of commands piped together that will result in just one command with a short name. I can then just call that single short command name each time, rather than typing the same long string of text each time.
 
-I can also make it so an alias is a call to a bash script, and from there I can use positional argumnets, look at enviorment variables, and so forth in order to amek thing that look and work like real commands.
+I can also make it so an alias is a call to a bash script, and from there I can use positional arguments, look at environment variables, and so forth in order to make the thing look and work like a real Linux command.
 
 <!-- more -->
 
 ## 1 - First off the ~/.bashrc file
 
-First off in the home folder of the current user there should be a hidden .bashrc file, if not one should be written however at least some care shpuld be taken when doing so. having such a file will override any system wide files for what is going on so they should be looked at as a way to know how to get started with such a file at a user level.
+First off in the home folder of the current user there should be a hidden .bashrc file, if not one should be written however at least some care should be taken when doing so. having such a file will override any system wide files for what is going on so they should be looked at as a way to know how to get started with such a file at a user level.
 
 In any case if the file is there it would be a good idea to start out by taking a look at it.
 
@@ -28,7 +28,7 @@ $ cd ~
 $ cat .bashrc
 ```
 
-I could write aliases in the .bashrc file itself, however I think that it is a good idea to keep them in one or more indepedant files. So in the .bashrc file there should be something like this:
+I could write aliases in the .bashrc file itself, however I think that it is a good idea to keep them in one or more independent files. So in the .bashrc file there should be something like this:
 
 ```
 # Alias definitions.
@@ -74,11 +74,11 @@ Bookshelf         .gitconfig        .pki        .xsession-errors
 .config           .gnupg            .profile
 ```
 
-Maybe this is not the most compelling example of an alias, but the basic idea is there. If I am doing something that involves a lone string of commands using piping and redirection, and it is something that I find myself doing often, then maybe it is a good idea to turn that into an alias. So lets look at some more examples of linux aliases to get a better idea of why these can often help to save a lot of time typing.
+Maybe this is not the most compelling example of an alias, but the basic idea is there. If I am doing something that involves a lone string of commands using piping and redirection, and it is something that I find myself doing often, then maybe it is a good idea to turn that into an alias. So lets look at some more examples of Linux aliases to get a better idea of why these can often help to save a lot of time typing.
 
 ## 3 - Creating some for git
 
-I use the source control command git all the time, not just for projects, but also for maintaing the mark down files of these blog posts. So of course I take a moment to set up at least a few for common git tasks such as pushing and pulling. 
+I use the source control command git all the time, not just for projects, but also for maintaining the mark down files of these blog posts. So of course I take a moment to set up at least a few for common git tasks such as pushing and pulling. 
 
 I just need to make sure I am not taking any kind of command that is not taken all ready. For example when I am making an alias for git status, I can not use stat as that is a command for displaying file, and file system info at least for me on the system I am using. However it would seem that status is free, so it makes sense to take a look in the bin, sbin and usr/sbin, ect folders to make sure I am not taking a command that is in use.
 
@@ -94,7 +94,7 @@ alias gitl='git log -n 100 --format="%H : %s"'
 
 Another thing that I can do when it comes to setting up some aliases is to have a bash folder, and write a few scripts that I can then also turn into my own commands. When it comes to anything that I find myself doing over and over again in the command line as a long series of commands, chances are that is a good example of something that I can turn into a script. I can then place that script in a main folder in my home path, and set up some aliases so that I can call them from any location in a terminal window.
 
-For example say I have a whole bunch of git folders in a certian path and I find myself going threw each of them to do a git pull to make sure they are all up to date. Say I would also like to do the same for push, status, and maybe a few other git sub commands. I could just repeat that over and over again each time I starting workong on things, or I could write one or more scripts for a bash folder in my home path. I could also have a bash\_aliases file for the collection of scripts and make that something that I call from my main bash\_aliases file in the home folder.
+For example say I have a whole bunch of git folders in a certain path and I find myself going threw each of them to do a git pull to make sure they are all up to date. Say I would also like to do the same for push, status, and maybe a few other git sub commands. I could just repeat that over and over again each time I starting working on things, or I could write one or more scripts for a bash folder in my home path. I could also have a bash\_aliases file for the collection of scripts and make that something that I call from my main bash\_aliases file in the home folder.
 
 ### 4.1 - The main git-all.sh file
 
@@ -121,7 +121,7 @@ done
 cd $cpwd
 ```
 
-I can then save this file as something like git-all.sh in a bash folder in my home folder, and make it exacytabule with chmod.
+I can then save this file as something like git-all.sh in a bash folder in my home folder, and make it executable with chmod.
 
 ```
 $ cd ~/bash
@@ -195,7 +195,7 @@ I can now use my git-all-bash.sh script for each sub command if I want.
 ~/bash/git/git-all-base.sh pull
 ```
 
-This is just a simple example, but if need be I could add additioanl options for some of these.
+This is just a simple example, but if need be I could add additional options for some of these.
 
 ### 4.4 - bash aliases file
 
@@ -216,8 +216,8 @@ I can then just add, or comment out lines like this in my main bash\_aliases fil
 . ~/bash/git/bash_aliases
 ```
 
-So these seem to work great, and now something that used to take up a but of time is now nothing at all. pretty cool, I think I might want to make scripts like this for a wideramge of stuff that I use.
+So these seem to work great, and now something that used to take up a but of time is now nothing at all. pretty cool, I think I might want to make scripts like this for a a wide range of stuff that I use.
 
 ## 5 - Conclusion
 
-So I am sure that I will be fidning more to write about with Linux aliases as time goes by. However this really is something that should be fugured out on a per user basis. Whatever a single users work flow is that is what should be created in a bash script, or aliase type form. One user might use a diferent set of command line tools, or they might be using a sligtly diferent distarbution. However the basic idea of aliases should be more or less the same in most Linux systems where bash is used as the command line interafce shell.
+So I am sure that I will be finding more to write about with Linux aliases as time goes by. However this really is something that should be figured out on a per user basis. Whatever a single users work flow is that is what should be created in a bash script, or aliases type form. One user might use a different set of command line tools, or they might be using a slightly different distribution. However the basic idea of aliases should be more or less the same in most Linux systems where bash is used as the command line interface shell.
