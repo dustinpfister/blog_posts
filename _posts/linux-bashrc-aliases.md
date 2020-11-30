@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 14:31:06
-version: 1.5
+updated: 2020-11-30 14:32:23
+version: 1.6
 ---
 
-In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some aliases for commands.
+In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
 
 <!-- more -->
 
