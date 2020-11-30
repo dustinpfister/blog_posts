@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-11-30 10:38:30
-version: 1.16
+updated: 2020-11-30 10:47:06
+version: 1.17
 ---
 
 Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. 
@@ -105,7 +105,13 @@ To do so I just need to set the src attribute of the iframe to the url of the re
 
 ## 3 - Threading with an iframe will not result in a separate event loop, or 'true threading' as it is sometimes called
 
+Conventail wisdom might lead one to belive that it is possible to have more than one event loop when creating iframes. That is that each iframe will result in not just a new window object, but also a new event loop when it comes to running javaScript code in a page. However as of this writing it would seem that this is not true.
+
+I can define separate javaScript code in an iframe yes, but that javaScript code will share an event loop with the parent page also. So if I do something heavy in an iframe that can end up boging down what is going on in the main page also. However do not just take my word for it, prove it to yourself with just a little html and javaScript. In fact I will save you the trouble and go over something in this section that helps to prove this point.
+
 ### 3.1 - A thread.html file that will be loaded into an iFrame
+
+Here I have a page that is doing something that will take a little time. This page can be loaded up by itself, however I intend to load it up in an iframe. If an iframe where to get its own event loop, then loop taking a while to count to a large number would not interfere with something else going on in the main page.
 
 ```html
 <html>
@@ -134,6 +140,8 @@ loop();
 
 ### 3.2 - The main index.html file that will contain the iframe
 
+Here I have a main html file in which I am loading the page that I went over just before.
+
 ```html
 <html>
     <head>
@@ -157,6 +165,8 @@ loop();
     </body>
 </html>
 ```
+
+When I start this up the javaScript code in the thread.html file ends up causing the code in the main page to slow down also. If the iframe had its own event loop this would not be the case. So then the use of an iframe is not a replacement for web workers, or opening the separate html file in a whole other tab.
 
 ## 4 - Conclusion
 
