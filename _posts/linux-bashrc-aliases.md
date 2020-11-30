@@ -5,11 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 14:32:23
-version: 1.6
+updated: 2020-11-30 15:24:24
+version: 1.7
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
+
+Often there might be a command that I use with a bunch of options that take a long time to type over again. There are also a number of situstions in which I can produce a result that I want, but not with a single command, rather a long string of commands involving piping of standard output to the standard input of another. So with many of these it makes sense to create a line in a file where I assign a command with a long string of options, and or a buch of commands piped togeather that wull result in just one command with a short name. I can then just call that single short command name each time, rather than typeing the same long string of text each time.
+
+I can also make it so an alias is a call to a bash script, and from there I can use positional argumnets, look at enviorment variables, and so forth in order to amek thing that look and work like real commands.
 
 <!-- more -->
 
