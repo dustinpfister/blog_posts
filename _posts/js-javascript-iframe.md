@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-11-30 09:43:41
-version: 1.15
+updated: 2020-11-30 10:38:30
+version: 1.16
 ---
 
-Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. Thats is that I can have a completely separate window object, and with it an event loop also in the same page. So it can be used as a way to create a completely separate execution thread, and unlike with web worker I can also do DOM manipulation in it also because it is a whole separate page, within a page after all.
+Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. 
+
+Thats is that I can have a completely separate window object that will not collide with the what is going on in the parent window object. However doing so WILL NOT result in a separate event loop when it comes to running javaScript on the page as a whole. Both the javaScript code that runs in the parent window object, as well as any iframes will share a single event loop. So iframes are not an alternative to something such as web worker, and when it comes to rending in a page there is still one main thread for that.
 
 The subject of iframes can become a little complicated there is much to write about with them when it comes to more advanced topics involving hidden iframes, and security concerns when with things like [click jacking](https://en.wikipedia.org/wiki/Clickjacking) that ca be preformed with iframes. So in this post I will be sticking to just the basics for now as many of these other topics are matters for another post.
 
@@ -101,6 +103,61 @@ iFrame.setAttribute('src', './basic.html');
 
 To do so I just need to set the src attribute of the iframe to the url of the resource that I want to load and display in the iframe. If all goes well that alone should work, if not finding a solution to this is outside the scope of this post.
 
-## 3 - Conclusion
+## 3 - Threading with an iframe will not result in a separate event loop, or 'true threading' as it is sometimes called
+
+### 3.1 - A thread.html file that will be loaded into an iFrame
+
+```html
+<html>
+    <head>
+        <title>javascript iframe</title>
+    </head>
+    <body>
+        <script>
+let out = document.createElement('p');
+out.innerText = '';
+document.body.appendChild(out);
+var lt = new Date();
+var loop = function () {
+    setTimeout(loop, 100);
+    var i = 500000000;
+    while (i--) {};
+    var secs = (new Date() - lt) / 1000;
+    lt = new Date();
+    out.innerText = secs;
+};
+loop();
+        </script>
+    </body>
+</html>
+```
+
+### 3.2 - The main index.html file that will contain the iframe
+
+```html
+<html>
+    <head>
+        <title>javascript iframe</title>
+    </head>
+    <body>
+        <iframe id="theframe" width="640" height="480" src="thread.html"></iframe>
+        <script>
+let out = document.createElement('p');
+out.innerText = '';
+document.body.appendChild(out);
+var lt = new Date();
+var loop = function () {
+    setTimeout(loop, 100);
+    var secs = (new Date() - lt) / 1000;
+    lt = new Date();
+    out.innerText = secs;
+};
+loop();
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 The basics of iframes are not so hard but there is much more to write about them when it comes to sandboxing, hidden iframes, and cross domain issues. Hopefully thing post has served you well when it comes to the basics of iframes and javaScript for now.
