@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-11-30 10:47:06
-version: 1.17
+updated: 2020-11-30 10:52:40
+version: 1.18
 ---
 
 Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. 
@@ -166,7 +166,9 @@ loop();
 </html>
 ```
 
-When I start this up the javaScript code in the thread.html file ends up causing the code in the main page to slow down also. If the iframe had its own event loop this would not be the case. So then the use of an iframe is not a replacement for web workers, or opening the separate html file in a whole other tab.
+When I start this up the javaScript code in the thread.html file ends up causing the code in the main page to slow down also. If the iframe had its own event loop this would not be the case. So then the use of an iframe is not a replacement for web workers, or opening the separate html file in a whole other tab or window all together. That is that if I where to open the thread.html file op in its own window that will run independently from any additional windows, and have its own event loop it would seem.
+
+So no using an iframe is not an alternative to using web workers, if for some reason you want more than one event loop that is the way that it is done in a web browser.
 
 ## 4 - Conclusion
 
