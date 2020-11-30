@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-07-09 08:17:54
-version: 1.14
+updated: 2020-11-30 09:43:41
+version: 1.15
 ---
 
-Sometimes it is called for to do something that involves an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object.
+Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. Thats is that I can have a completely separate window object, and with it an event loop also in the same page. So it can be used as a way to create a completely separate execution thread, and unlike with web worker I can also do DOM manipulation in it also because it is a whole separate page, within a page after all.
 
 The subject of iframes can become a little complicated there is much to write about with them when it comes to more advanced topics involving hidden iframes, and security concerns when with things like [click jacking](https://en.wikipedia.org/wiki/Clickjacking) that ca be preformed with iframes. So in this post I will be sticking to just the basics for now as many of these other topics are matters for another post.
 
