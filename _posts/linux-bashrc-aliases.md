@@ -5,17 +5,19 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 14:05:06
-version: 1.3
+updated: 2020-11-30 14:18:23
+version: 1.4
 ---
 
-In the home folder of most Linuyx systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some aliases for commands.
+In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some aliases for commands.
 
 <!-- more -->
 
 ## 1 - First off the ~/.bashrc file
 
-First off in the home folder oof the current user there should be a hidden .bashrc file.
+First off in the home folder of the current user there should be a hidden .bashrc file, if not one should be written however at least some care shpuld be taken when doing so. having such a file will override any system wide files for what is going on so they should be looked at as a way to know how to get started with such a file at a user level.
+
+In any case if the file is there it would be a good idea to start out by taking a look at it.
 
 ```
 $ cd ~
@@ -35,9 +37,11 @@ if [ -f ~/.bash_aliases ]; then
 fi
 ```
 
-If this bash cdoe is there then I just need to create a .bash_aliases file, and in this file I will be setting up some aliases for commands that I find myself typing all the time.
+If this bash code is there then I just need to create a .bash\_aliases file, and in this file I will be setting up some aliases for commands that I find myself typing all the time. If the code is not there, or something like it at least, then place an if statement that will look for and call a .bash_aliases file.
 
-## 1 - Some .bash_aliases basics
+## 2 - Some .bash_aliases basic alias commands with ls
+
+So in the bash aliases file lets start out with at least a few basic commands that are just aliases for other Linux commands such as ls.
 
 ```
 # list dirs
@@ -49,6 +53,8 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 ```
+
+So now I can just type la for a quicker way to type ls -A.
 
 ```
 $ la
@@ -64,11 +70,13 @@ Bookshelf         .gitconfig        .pki        .xsession-errors
 .config           .gnupg            .profile
 ```
 
-## 2 - Making a bash folder and adding some bash scripts
+Maybe this is not the most compelling example of an alias, but the basic idea is there. If I am doing something that involves a lone string of commands using piping and redirection, and it is something that I find myself doing often, then maybe it is a good idea to turn that into an alias. So lets look at some more examples of linux aliases to get a better idea of why these can often help to save a lot of time typing.
+
+## 3 - Making a bash folder and adding some bash scripts
 
 Another thing that I can do when it comes to setting up some aliases is to have a bash folder, and write a few scripts that I can then also turn into my own commands. When it comes to anything that I find myself doing over and over again in the command line as a long series of commands, chances are that is a good example of something that I can turn into a script. I can then place that script in a main folder in my home path, and set up some aliases so that I can call them from any location in a terminal window.
 
-### 2.1 - Get pull all script
+### 3.1 - Get pull all script
 
 For example say I have a whole bunch of git folders in a certian path and I find myself going threw each of them to do a git pull to make sure they are all up to date. I could just repeat that over and over again each time I starting workong on things, or I could write a script like this.
 
