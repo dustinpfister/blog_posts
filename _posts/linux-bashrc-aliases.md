@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 15:31:07
-version: 1.8
+updated: 2020-11-30 16:33:35
+version: 1.9
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
@@ -94,48 +94,119 @@ alias gitl='git log -n 100 --format="%H : %s"'
 
 Another thing that I can do when it comes to setting up some aliases is to have a bash folder, and write a few scripts that I can then also turn into my own commands. When it comes to anything that I find myself doing over and over again in the command line as a long series of commands, chances are that is a good example of something that I can turn into a script. I can then place that script in a main folder in my home path, and set up some aliases so that I can call them from any location in a terminal window.
 
-### 4.1 - Get pull all script
+For example say I have a whole bunch of git folders in a certian path and I find myself going threw each of them to do a git pull to make sure they are all up to date. Say I would also like to do the same for push, status, and maybe a few other git sub commands. I could just repeat that over and over again each time I starting workong on things, or I could write one or more scripts for a bash folder in my home path. I could also have a bash\_aliases file for the collection of scripts and make that something that I call from my main bash\_aliases file in the home folder.
 
-For example say I have a whole bunch of git folders in a certian path and I find myself going threw each of them to do a git pull to make sure they are all up to date. I could just repeat that over and over again each time I starting workong on things, or I could write a script like this.
+### 4.1 - The main git-all.sh file
+
+The first script that I am going to want it one that will get the contents of a folder of git folders, and then for each folder switch to that folder as the current working path, and call a given git command for it.
 
 ```
 #!/bin/bash
-gitpath="/home/pi/Documents/github_dustinpfister"
+ 
+# path where git folders are ( "/home/pi/Documents/github_dustinpfister" )
+gitpath=$1
+ 
+# git sub command (pull push status)
+gitcomm=$2
+ 
 folders=$( ls -p $gitpath | grep -e / | cut -d / -f 1 )
+cpwd=$( pwd );
 for folder in $folders; do
   cd "${gitpath}/${folder}"
-  git pull
-  echo "----------"
+  echo -e "----------\n"
+  echo -e "running a git ${gitcomm} for ${folder} \n\n"
+  git $gitcomm
+  echo -e "----------\n"
 done
+cd $cpwd
 ```
 
-I can then save this file as something like git-pull-all.sh in a bash folder in my home folder, and make it exacytabule with chmod.
+I can then save this file as something like git-all.sh in a bash folder in my home folder, and make it exacytabule with chmod.
 
 ```
 $ cd ~/bash
 $ chmod 755 *.sh
 ```
 
-I can then add an alias for it like this:
+I can then call the script like this:
 
 ```
-alias pullall='~/bash/git-pull-all.sh'
-```
+$ ./git-all.sh "/home/pi/Documents/github_dustinpfister" pull 
+----------
 
-So now each time I want to start working, and make sure all the git folders that I am workiong on are up to date, I can just call gitpull once like this.
+running a git pull for blog_posts 
 
-```
-$ pullall
+
 Already up to date.
 ----------
+
+----------
+
+running a git pull for canvas-examples 
+
+
 Already up to date.
 ----------
+
+----------
+
+running a git pull for demos_linux 
+
+
 Already up to date.
 ----------
+
+----------
+
+running a git pull for test_vjs 
+
+
 Already up to date.
+----------
 ```
 
-turns out everything is up to date this far, but you get the idea. This saves me a lot of time from having to go to each folder and prefrom a git pull for each of them.
+Hey all right seems to work great.
+
+So then it is just a question of making additional scripts or aliases for this so I can just type a few keys into bash, and preform a pull request for all git folders in my github folder. Or any git command for that matter.
+
+### 4.2 - git-folder.sh, and git-base.sh
+
+git-folder.sh
+
+```
+#!/bin/bash
+echo -n "/home/pi/Documents/github_dustinpfister"
+```
+
+
+git-base.sh
+
+```
+#!/bin/bash
+~/bash/git/git-all.sh $(~/bash/git/git-folder.sh) $1
+```
+
+### 4.3 - git-all-push.sh, git-all-pull.sh, and git-all
+
+```
+#!/bin/bash
+~/bash/git/git-all-base.sh pull
+```
+
+### 4.4 - bash aliases file
+
+```
+# git script aliases
+alias pullall='~/bash/git/git-all-pull.sh'
+alias pushall='~/bash/git/git-all-push.sh'
+alias statall='~/bash/git/git-all-status.sh'
+alias gitall='~/bash/git/git-all-base.sh'
+```
+
+```
+# alias for pullall pushall, statall
+. ~/bash/git/bash_aliases
+```
 
 ## 5 - Conclusion
 
