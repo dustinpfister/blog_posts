@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 16:33:35
-version: 1.9
+updated: 2020-11-30 16:44:17
+version: 1.10
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
@@ -169,9 +169,9 @@ Hey all right seems to work great.
 
 So then it is just a question of making additional scripts or aliases for this so I can just type a few keys into bash, and preform a pull request for all git folders in my github folder. Or any git command for that matter.
 
-### 4.2 - git-folder.sh, and git-base.sh
+### 4.2 - git-folder.sh, and git-all-base.sh
 
-git-folder.sh
+So now I thought I might make a git-folder.sh that will just return the folder where I have my git folders. The idea here is that I have one script that will return this, so if I change the location I can update that in just one place.
 
 ```
 #!/bin/bash
@@ -179,7 +179,7 @@ echo -n "/home/pi/Documents/github_dustinpfister"
 ```
 
 
-git-base.sh
+I then thought I would use a git-all-base.sh file that will use the git-all.sh script, and use my git-folder.sh script each time for the first argument. I can then just call this script, and pass just one argument that is the git sub command that I want to use on all git fodlers.
 
 ```
 #!/bin/bash
@@ -188,12 +188,18 @@ git-base.sh
 
 ### 4.3 - git-all-push.sh, git-all-pull.sh, and git-all
 
+I can now use my git-all-bash.sh script for each sub command if I want.
+
 ```
 #!/bin/bash
 ~/bash/git/git-all-base.sh pull
 ```
 
+This is just a simple example, but if need be I could add additioanl options for some of these.
+
 ### 4.4 - bash aliases file
+
+So now it is just a question of making some bash aliases for these. I could just add them in at the main hidden bash\_aliases file in the home path. However I think I might end up making scripts like this for a few commands and tools that I make. I could have a bash_aliases fiel for each folder in a bash folder in my home folder and have it look like this:
 
 ```
 # git script aliases
@@ -203,10 +209,14 @@ alias statall='~/bash/git/git-all-status.sh'
 alias gitall='~/bash/git/git-all-base.sh'
 ```
 
+I can then just add, or comment out lines like this in my main bash\_aliases file.
+
 ```
 # alias for pullall pushall, statall
 . ~/bash/git/bash_aliases
 ```
+
+So these seem to work great, and now something that used to take up a but of time is now nothing at all. pretty cool, I think I might want to make scripts like this for a wideramge of stuff that I use.
 
 ## 5 - Conclusion
 
