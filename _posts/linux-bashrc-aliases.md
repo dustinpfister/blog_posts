@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 15:24:24
-version: 1.7
+updated: 2020-11-30 15:31:07
+version: 1.8
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
@@ -136,3 +136,7 @@ Already up to date.
 ```
 
 turns out everything is up to date this far, but you get the idea. This saves me a lot of time from having to go to each folder and prefrom a git pull for each of them.
+
+## 5 - Conclusion
+
+So I am sure that I will be fidning more to write about with Linux aliases as time goes by. However this really is something that should be fugured out on a per user basis. Whatever a single users work flow is that is what should be created in a bash script, or aliase type form. One user might use a diferent set of command line tools, or they might be using a sligtly diferent distarbution. However the basic idea of aliases should be more or less the same in most Linux systems where bash is used as the command line interafce shell.
