@@ -5,25 +5,27 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 09:44:39
-version: 1.14
+updated: 2020-12-01 09:53:24
+version: 1.15
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
 
-There are other ways of changing CSS values with javaScript such as changing the [className property](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) value of one or more elements with respect to a collection of hard coded CSS classes to work with. In some respects this might prove to be a better option, client side javaScript is not ment to be a replacement for HTML and CSS, if you are using javaScript to do everything in your site I would say that you might want to rethink your approach.
+There are other ways of changing CSS values with javaScript such as changing the [className property](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) value of one or more elements with respect to a collection of hard coded CSS classes to work with. In some respects this might prove to be a better option, client side javaScript is not meant to be a replacement for HTML and CSS, if you are using javaScript to do everything in your site I would say that you might want to rethink your approach.
 
 The style API is not the best choice for doing anything that might involve complex animations, or a great deal of rapid fast change, for those kinds of effects there are [canvas elements](/2017/05/17/canvas-getting-started/), [SVG](/2019/02/11/js-javascript-svg/), and CSS3 animations to work with all of which might prove to be better options. There are many tools to a web developer and the style API is not always the best tool for the job, but it is there, and in some cases the use of it may be called for. So lets take a look at the style API in javaScript today.
 
 <!-- more -->
 
-## 1 - JavaScript style overview
+## 1 - JavaScript style API overview
+
+I assume that you have at least some knowledge of how to work with javaScript in a front end environment, if not this is not a getting started post on javaScript let alone any of the subjects that are needed before hand. If you know at least the basics when it comes to adding script tags, and how to get references to an element, then you might be ready to learn a thing or two about the style API which can be a fun next step.
 
 The style API is a property of an HTML element reference that serves as a way to intact with the in-line CSS style of that element via JavaScript code. This is a more dynamic way of controlling CSS rather than the use of the hard coded HTML style attribute of the element, or an external CSS file loaded into the page via a link element. This differs from any additional style rules that may apply to the element via class names, ids and other selectors in the CSS of a project.
 
 In case you did not know style values set via the javaScript style API supersede all other style rules that may be in effect by way of hard coded CSS. This means that style API values will override CSS values that are defined by way of a style element, the in-line style attribute of an element, or an external CSS file. So in some cases where the style API is call for it can be used to overwrite anything that may be in effect via the hard coded CSS of a page.
 
-## 2 - Get inline javaScript style
+### 1.1 - Get in-line javaScript style
 
 To get a style value that was set via the style attribute in the html a reference to the element in question must be obtained first. Then once there is a reference the style property of that reference is where the value will exist.
 
@@ -41,7 +43,7 @@ console.log(document.getElementsByTagName('h1')[0].style.color); // red
 </html>
 ```
 
-## 3 - Set inline javaScript style
+### 1.2 - Set inline javaScript style
 
 Setting inline style is just a matter of using the assignment operator with the desired property once a reference to the style api is obtained. There is some variation with the property names compared to the equivalent to that is used in hard coded css, but that is just about it.
 
@@ -62,7 +64,7 @@ console.log(el.style.color); // 'red'
 </html>
 ```
 
-## 4 - Property names differ from CSS
+### 1.3 - Property names differ from CSS
 
 When setting the css property and value pairs for inline style via the html style attribute, the property names are the same as they would be in a style element or external css file. However when accessing those values via the javaScript style api, the property names follow a camel case pattern.
 
@@ -82,7 +84,7 @@ console.log(el.style.zIndex); // 1
 </html>
 ```
 
-## 5 - Get unknown inline style values
+## 2 - Get unknown inline style values
 
 So the CSS Style Declaration object that the style api is an instance of appears to have an array like nature to it when it comes to the styles that are set via the style attribute. In other words there is a collection of key value pairs and a length property that is consistent with the way that arrays are structured in JavaScript. This means that an Array method like Array.forEach can be used to loop over any and all css properties that are set via the style attribute in the event that the properties are not know. 
 
@@ -104,6 +106,6 @@ console.log(prop, el.style[prop]); // background-color red color white...
 </html>
 ```
 
-## 6 - Conclusion
+## 3 - Conclusion
 
 The javaScript style api might be fun to play with when it comes to just making quick examples that make use of the style api to move elements around the page. However when it comes to doing anything flashy there are better options for doing so such as the canvas element and javaScript SVG.
