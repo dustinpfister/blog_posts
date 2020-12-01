@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 10:08:02
-version: 1.17
+updated: 2020-12-01 10:11:38
+version: 1.18
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -49,9 +49,9 @@ el.innerText = 'This header is: ' + color;
 
 So then the Style API can be used as a way to pul what the current style values are for a given element. Setting the style values for an element is not all that much harder.
 
-### 1.2 - Set inline javaScript style
+### 1.2 - Set in-line javaScript style
 
-Setting inline style is just a matter of using the assignment operator with the desired property once a reference to the style api is obtained. There is some variation with the property names compared to the equivalent to that is used in hard coded css, but that is just about it.
+Setting in-line style is just a matter of using the assignment operator with the desired property once a reference to the style API is obtained. There is some variation with the property names compared to the equivalent names that are used in hard coded css, but that is just about it.
 
 ```html
 <html>
@@ -69,6 +69,8 @@ console.log(el.style.color); // 'red'
     </body>
 </html>
 ```
+
+So for the most part getting and setting CSS values is just a matter of getting a reference to an element to which one wants to mutate CSS values for, and then figure out what the property name is for the given CSS rule. The names are more or less the same only we are going with Camel case style with the names rather than dashes. That is about it when it comes to the basics of using the style API in client side javaScript. However maybe I should take a moment to cover at least a few more basic examples of this before moving on.
 
 ### 1.3 - Property names differ from CSS
 
