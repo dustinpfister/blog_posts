@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 16:23:02
-version: 1.9
+updated: 2020-12-01 16:28:09
+version: 1.10
 ---
 
 In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another array without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a reference to the native Array slice method.
@@ -111,18 +111,52 @@ One additional thing that is worth mentioning about lodash slice, as well as the
 
 If you are not familiar with what a shallow clone is, and how it might compare to a deep clone, the difference has to do with objects compared to primitive values like numbers and strings. If you have an array of primitive values then a shallow clone will work just fine in making a true independent copy of that array, and changes made to it will not effect the source array from which it is cloned. However if you are working with an array of objects then shallow clone will just create a new array, but the same objects will be referenced, and any change made to the object values in the copy of the array will effect the source array.
 
-So then the slice method will not work as excepted in all situations when it comes to cloning arrays, and as such it is not a replacement for methods like the lodash \_.deepClone method. For more on this topic check out my post on coping arrays, in that post I go over a few options for cloning arrays.
+So then the slice method will not work as excepted in all situations when it comes to cloning arrays, and as such it is not a replacement for methods like the lodash \_.deepClone method. For more on this topic check out my post on [copying arrays](/2020/09/03/js-array-copy/), in that post I go over a few options for cloning arrays. However for the sake of this section I will just be going over a few quick examples of shallow cloning of arrays using slice.
+
+### 4.1 - Using slice to copy an array of primitive values works just fine
 
 ```js
 let a = [1, 2, 3, 4];
 let b = _.slice(a, 0, a.length);
-
+ 
 b = _.map(b, (n)=> { return Math.pow(2, n); } );
-
+ 
 console.log(b); // [ 2, 4, 8, 16 ]
 // a is unchanged
 console.log(a); // [ 1, 2, 3, 4, ]
 ```
+
+### 4.2 - Using slice to copy an array of object values will result in a copy by reference situation
+
+```js
+let a = [{n:1}, {n:2}, {n:3}, {n:4}];
+let b = _.slice(a, 0, a.length);
+ 
+b = _.map(b, (obj)=> { obj.n = Math.pow(2, obj.n); return obj; } );
+ 
+console.log(b); // [ { n: 2 }, { n: 4 }, { n: 8 }, { n: 16 } ]
+// a is effected
+console.log(a); // [ { n: 2 }, { n: 4 }, { n: 8 }, { n: 16 } ]
+```
+
+### 4.2 - Using map, and creating a new object for each element can help
+
+```js
+let a = [{n:1}, {n:2}, {n:3}, {n:4}];
+let b = _.slice(a, 0, a.length);
+ 
+b = _.map(b, (source)=> { 
+    var newObj = {
+        n: Math.pow(2, source.n)
+    };
+    return newObj; 
+});
+ 
+console.log(b); // [ { n: 2 }, { n: 4 }, { n: 8 }, { n: 16 } ]
+// a is not effected
+console.log(a); // [ { n: 1 }, { n: 2 }, { n: 3 }, { n: 4 } ]
+```
+
 ## 5 - Conclusion
 
 So then when a 'sparse' array is returned, then certain methods like the map method might not work as expected. Often with many methods empty elements are skipped over completely. So when it comes to using the native Array slice method it still might be a good idea to check if one is dealing with a sparse array or not. Another option would be to just take care not to end up with a sparse array to begin with.
