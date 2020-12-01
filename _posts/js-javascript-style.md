@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 10:15:35
-version: 1.19
+updated: 2020-12-01 10:45:52
+version: 1.20
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -116,6 +116,65 @@ console.log(prop, el.style[prop]); // background-color red color white...
 </html>
 ```
 
-## 3 - Conclusion
+## 3 - A div grid example using the style API
+
+One quick fun little project is to create a grid of div elements using the style API, and a few other client side javaScript Element methods and properties. When it comes to making a grid in client side javaScript there are many other alternatives such as canvas that might prove to be better solutions. However taking a moment to make one or two examples such as this might prove to be some good exercise when it comes to getting familiar with not just the style API, but other helpful methods and properties such as document.createElement, el.scrollWidth, and el.appendChild.
+
+```html
+<html>
+    <head>
+        <title>javaScript style API example</title>
+        <style>
+#div-grid{
+  position: absolute;
+  width:640px;
+  height:240px;
+  background:gray;
+}
+.grid-div{
+  position: absolute;
+  background: black;
+}
+        </style>
+    </head>
+    <body>
+        <div id="div-grid">
+        </div>
+        <script>
+var el_grid = document.getElementById('div-grid'),
+gridDivCountWidth = 32,
+gridDivCountHeight = 12,
+// use scrollWidth and scrollHeight to get the pixel size
+divWidth = el_grid.scrollWidth / gridDivCountWidth,
+divHeight = el_grid.scrollHeight / gridDivCountHeight,
+x = 0, y = 0,
+g,
+div;
+while(y < gridDivCountHeight){
+  x = 0;
+  while(x < gridDivCountWidth){
+    // create a div
+    div = document.createElement('div');
+    div.className = 'grid-div';
+    div.style.width = divWidth + 'px';
+    div.style.height = divHeight + 'px';
+    div.style.left = (divWidth * x) + 'px';
+    div.style.top = (divHeight * y) + 'px';
+    // set random green color for each div
+    g = Math.floor(128 + 128 * Math.random());
+    div.style.backgroundColor = 'rgba(0,' + g + ',0,1)';
+    // append to the el_grid container
+    el_grid.appendChild(div);
+    x += 1;
+  }
+  y += 1;
+}
+ 
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 The javaScript style API might be fun to play with when it comes to just making quick examples that make use of the style api to move elements around the page. However when it comes to doing anything flashy there are better options for doing so such as the canvas element and javaScript SVG.
