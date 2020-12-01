@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 14:06:49
-version: 1.3
+updated: 2020-12-01 14:11:00
+version: 1.4
 ---
 
-In native jaavScript there is the Array slice method that will return a new array from another arary without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as Array slice only it will mutate the array in place. This however is a post on the array slice method in lodash that is not just a refernce to the native Array slice method.
+In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another arary without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a refernce to the native Array slice method.
+
+The Array slice method in plain old javaScript by itself will work more or less just as well as the lodash slice method, but there is at least one note worthy thing that is diferenet.
 
 <!-- more -->
 
