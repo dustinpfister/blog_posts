@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 16:28:09
-version: 1.10
+updated: 2020-12-01 16:39:44
+version: 1.11
 ---
 
 In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another array without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a reference to the native Array slice method.
@@ -114,6 +114,8 @@ If you are not familiar with what a shallow clone is, and how it might compare t
 So then the slice method will not work as excepted in all situations when it comes to cloning arrays, and as such it is not a replacement for methods like the lodash \_.deepClone method. For more on this topic check out my post on [copying arrays](/2020/09/03/js-array-copy/), in that post I go over a few options for cloning arrays. However for the sake of this section I will just be going over a few quick examples of shallow cloning of arrays using slice.
 
 ### 4.1 - Using slice to copy an array of primitive values works just fine
+
+If it is an array of primitive values that are being copied then the slice method will work just fine. The reason why is because in javaScript primitives values like numbers and strings are copied by value rather than reference. So each element will end up being a whole new independent number. So then if the values are changed in the resulting array that is returned by the slice method, such changes will not effect the number values in the source array.
 
 ```js
 let a = [1, 2, 3, 4];
