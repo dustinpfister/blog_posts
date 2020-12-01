@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 10:45:52
-version: 1.20
+updated: 2020-12-01 10:52:12
+version: 1.21
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -174,6 +174,12 @@ while(y < gridDivCountHeight){
     </body>
 </html>
 ```
+
+In this example I end up with a grid of div elements with random green colors for the background of each div element. Here I am setting some base style rules with a style element in the head of the HTML file. basically anything that will be fixed for the container element, as well as all the div elements should still be part of a set of static CSS rules. 
+
+However when creating div elements I do need to still set the class name that I want to use with each div element, and that can be done with the className property of the element object reference that is returned when using the cerateElement method. This can of course be used in conjunction with all the use case examples of the style API where I am setting values for width, height, top, and left on a per div bases.
+
+There is a great deal more than can be done with an example such as this. If I get some time to expand this post more at some point in the future I think I will add a few more examples of this div grid thing when it comes to adding events and so forth.
 
 ## 4 - Conclusion
 
