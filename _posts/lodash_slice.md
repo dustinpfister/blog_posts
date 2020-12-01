@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 14:18:09
-version: 1.5
+updated: 2020-12-01 14:24:20
+version: 1.6
 ---
 
 In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another array without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a reference to the native Array slice method.
@@ -51,9 +51,11 @@ One way to create a sparse array is to use the Array constructor and pass a leng
 
 The lodash array method will account for this, and the resulting array that is returned will have empty array elements filled with the value undefined. The native Array slice method will not do this for me.
 
+### 3.1 - Using Array map on two arrays that are the result of calling Lodash slice and Array slice with a sparse array
+
+This example should help give a basic idea as to why the lodash slice method is a tad more robust compared to the native counterpart. I involves using the Array map method on two arrays that are both the result of what is returned by lodash slice, and Array slice when used with the same sparse array. If you are not familiar with the map method it will return a new array by calling a function for each element in the array that it is called off of. Whatever is returned by the function that is passed to the map method will become the new element for the resulting array that is returned my the map method.
+
 ```
-let _ = require('lodash');
- 
 // a sparse array 'a'
 let a =  new Array(5);
  
@@ -63,12 +65,12 @@ let b = _.slice(a, 1, 3);
 let c = a.slice(1, 3);
  
 // simple map method
-let maper = (x, i)=>{
+let mapper = (x, i)=>{
   return i;
 }
 // using the same native Array.map on both results with the same mapper
-console.log(b.map(maper)); // [0, 1]
-console.log(c.map(maper)); // [ <2 empty items> ]
+console.log(b.map(mapper)); // [0, 1]
+console.log(c.map(mapper)); // [ <2 empty items> ]
 ```
 
 ## 4 - Conclusion
