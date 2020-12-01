@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 09:53:24
-version: 1.15
+updated: 2020-12-01 10:01:01
+version: 1.16
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -27,7 +27,9 @@ In case you did not know style values set via the javaScript style API supersede
 
 ### 1.1 - Get in-line javaScript style
 
-To get a style value that was set via the style attribute in the html a reference to the element in question must be obtained first. Then once there is a reference the style property of that reference is where the value will exist.
+To get a style value that was set via the style attribute in the HTML element first I will need to get a reference to that element. One tired yet true way to do so is to use the document.getElementById method. There are many more modern alternatives to this method of course, however part of the appeal to working with the style API is that it will work in really old browsers, so it makes sense to stick to older methods of doing things as a way to make sure that things will still work. 
+
+In any case once there is a reference to the element that I want to set the style for I can use the style API to both get and set CSS rules. For example I can use the color property of the style API to get the current text color of an element.
 
 ```html
 <html>
