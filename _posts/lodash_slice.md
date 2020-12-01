@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 14:39:31
-version: 1.8
+updated: 2020-12-01 16:23:02
+version: 1.9
 ---
 
 In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another array without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a reference to the native Array slice method.
@@ -27,7 +27,7 @@ console.log(a); // [ 1, 2, 3, 4 ]
 console.log(b); // [ 2, 3]
 ```
 
-That is all there is to it really when it comes to just the basics of how to use the method. However there is more to write about whe it comes to this of course. There is the question of why one should bother using this method at all when the native Array slice method will work just fine. There might be some additional talking points about that as it would seem that the lodash slice method is not just an abstraction of the native array slice method. So the rest of this post will be centered around the native Array slice method and how it compares to this lodash slice method in some situations.
+That is all there is to it really when it comes to just the basics of how to use the method. However there is more to write about when it comes to this of course. There is the question of why one should bother using this method at all when the native Array slice method will work just fine. There might be some additional talking points about that as it would seem that the lodash slice method is not just an abstraction of the native array slice method. So the rest of this post will be centered around the native Array slice method and how it compares to this lodash slice method in some situations.
 
 ## 2 - The native Array slice method
 
@@ -105,6 +105,24 @@ console.log(b); // [ <3 empty items> ]
 
 So that is the main difference the lodash slice method will fill in holes with the undefined value, and as such methods like map will not skip over what would otherwise be an empty element.
 
-## 4 - Conclusion
+## 4 - Shallow clone Arrays with lodash slice
 
-So then when a 'sparse' array is returned, then certain methods like the map method might not work as expected. Often with many methods empty elements are skipped over completely. So when it comes to using the native Array slice method it still might be a good idea to check if one is dealing with a sparce array or not. Another option would be to just take care not to end up with a sparse array to begin with.
+One additional thing that is worth mentioning about lodash slice, as well as the native array slice methods as that they can be used as a way to go about creating a shallow clone, or copy if you prefer, of an array. There is more than one way to go about doing this of course, but never the less the slice method is one way to skin this cat.
+
+If you are not familiar with what a shallow clone is, and how it might compare to a deep clone, the difference has to do with objects compared to primitive values like numbers and strings. If you have an array of primitive values then a shallow clone will work just fine in making a true independent copy of that array, and changes made to it will not effect the source array from which it is cloned. However if you are working with an array of objects then shallow clone will just create a new array, but the same objects will be referenced, and any change made to the object values in the copy of the array will effect the source array.
+
+So then the slice method will not work as excepted in all situations when it comes to cloning arrays, and as such it is not a replacement for methods like the lodash \_.deepClone method. For more on this topic check out my post on coping arrays, in that post I go over a few options for cloning arrays.
+
+```js
+let a = [1, 2, 3, 4];
+let b = _.slice(a, 0, a.length);
+
+b = _.map(b, (n)=> { return Math.pow(2, n); } );
+
+console.log(b); // [ 2, 4, 8, 16 ]
+// a is unchanged
+console.log(a); // [ 1, 2, 3, 4, ]
+```
+## 5 - Conclusion
+
+So then when a 'sparse' array is returned, then certain methods like the map method might not work as expected. Often with many methods empty elements are skipped over completely. So when it comes to using the native Array slice method it still might be a good idea to check if one is dealing with a sparse array or not. Another option would be to just take care not to end up with a sparse array to begin with.
