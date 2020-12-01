@@ -1,12 +1,12 @@
 ---
-title: Javascript style api for changing CSS values.
+title: The JavaScript style API, and CSS values.
 date: 2019-02-12 11:23:00
 tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 10:54:20
-version: 1.22
+updated: 2020-12-01 10:55:10
+version: 1.23
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
