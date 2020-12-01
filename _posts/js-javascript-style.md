@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 10:01:01
-version: 1.16
+updated: 2020-12-01 10:08:02
+version: 1.17
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -37,13 +37,17 @@ In any case once there is a reference to the element that I want to set the styl
         <title>javaScript get style example</title>
     </head>
     <body>
-        <h1 style="color:red">Red Header</h1>
+        <h1 id="header" style="color:red"></h1>
         <script>
-console.log(document.getElementsByTagName('h1')[0].style.color); // red
+var el = document.getElementById('header');
+color = el.style.color;
+el.innerText = 'This header is: ' + color;
         </script>
     </body>
 </html>
 ```
+
+So then the Style API can be used as a way to pul what the current style values are for a given element. Setting the style values for an element is not all that much harder.
 
 ### 1.2 - Set inline javaScript style
 
