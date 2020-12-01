@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 14:36:26
-version: 1.7
+updated: 2020-12-01 14:39:31
+version: 1.8
 ---
 
 In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another array without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a reference to the native Array slice method.
@@ -75,7 +75,7 @@ console.log(c.map(mapper)); // [ <2 empty items> ]
 
 ### 3.2 - Two Objects
 
-Another way to get a better idea of what is going on here when it comes to dense and sparse arrays is to take into account the diferences between these two objects.
+Another way to get a better idea of what is going on here when it comes to dense and sparse arrays is to take into account the differences between these two objects.
 
 ```
 let a = {
@@ -90,7 +90,7 @@ let b = {
 };
 ```
 
-The same result happens when the objects are use with map by way of the Function call method.
+These two objects can be though of as examples of array like objects. They might be plain javaScript Objects rather than arrays, but with respect of the own properties of each of the objects they are like arrays. Object a can be though of as a dense array like object, while object b would be a sparse array like object. The same result happens when the objects are use with map by way of the Function call method.
 
 ```
 let mapper = (x, i) => {
@@ -103,7 +103,7 @@ console.log(a); // [0, 1, 2]
 console.log(b); // [ <3 empty items> ]
 ```
 
-So that is the main diference the lodash slice method will fill in holes with the undefined value, and as such methods like map will not skip over what would otherwase be an empty element.
+So that is the main difference the lodash slice method will fill in holes with the undefined value, and as such methods like map will not skip over what would otherwise be an empty element.
 
 ## 4 - Conclusion
 
