@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 14:04:27
-version: 1.2
+updated: 2020-12-01 14:06:49
+version: 1.3
 ---
 
 In native jaavScript there is the Array slice method that will return a new array from another arary without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as Array slice only it will mutate the array in place. This however is a post on the array slice method in lodash that is not just a refernce to the native Array slice method.
@@ -42,6 +42,8 @@ console.log(b); // [ 2, 3]
 Same result when it comes to this simple array of numbers sure. However this basic arrays of numbers is often called a 'dense array', rather than a 'sparse array'. The diferenecs between these two kinds of arrays is where the lodash slice method is a little more robust.
 
 ## 3 - Sparse Arrays and the lodash slice vs Array slice methods
+
+So far the examples of the Array slice and lodash slice methods involved the use of [dense ararys rather than sprace arrays](https://2ality.com/2012/06/dense-arrays.html). The diferenec between the two has to do with the asbsense or presenese of empty elemenst in the array.
 
 One way to create a sprace array is to use the Array constructor and pass a length for the array that is say 3 elements. When doign so the resuting Array is a 'sparce array', that is that it is basicly just an object with a length propery whe it comes to the public key values. There are holes in the array sort of speak where there is not value at all, not even an undefined or null value, just no key at all.
 
