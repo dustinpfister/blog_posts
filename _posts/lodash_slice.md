@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 13:40:57
-version: 1.1
+updated: 2020-12-01 14:04:27
+version: 1.2
 ---
 
 In native jaavScript there is the Array slice method that will return a new array from another arary without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as Array slice only it will mutate the array in place. This however is a post on the array slice method in lodash that is not just a refernce to the native Array slice method.
@@ -27,3 +27,46 @@ console.log(b); // [ 2, 3]
 
 That is all there is to it really when it comes to just the basics of how to use the method. However there is more to write about whe it comes to this of course. There is the question of why one should bother using this method at all when the native Array slice method wil work just fine. There might be some additional talking points about that as it would seem that the lodash slice method is not just an abstraction of the native array slice method. So the rest of this post will be centered around the native Array slice method and how it compares to this lodash slice method in some situations.
 
+## 2 - The native Array slice method
+
+When it comes to kicking lodash to the curb there is the native array slice method that will work in almost the same way. I will be getting to one little point on that in the next section. However for now just a simple example on the native Array slice method just for the sake of touching base on it.
+
+```
+let a =  [1,2,3,4];
+let b = a.slice(1, 3);
+ 
+console.log(a); // [ 1, 2, 3, 4 ]
+console.log(b); // [ 2, 3]
+```
+
+Same result when it comes to this simple array of numbers sure. However this basic arrays of numbers is often called a 'dense array', rather than a 'sparse array'. The diferenecs between these two kinds of arrays is where the lodash slice method is a little more robust.
+
+## 3 - Sparse Arrays and the lodash slice vs Array slice methods
+
+One way to create a sprace array is to use the Array constructor and pass a length for the array that is say 3 elements. When doign so the resuting Array is a 'sparce array', that is that it is basicly just an object with a length propery whe it comes to the public key values. There are holes in the array sort of speak where there is not value at all, not even an undefined or null value, just no key at all.
+
+The lodash array method will account for this, and the resuting array that is returned will have empty arary elements filled with the value undefined. The native Array slice method will not do this for me.
+
+```
+let _ = require('lodash');
+ 
+// a sparse array 'a'
+let a =  new Array(5);
+ 
+// creating 'b' from 'a' with lodash slice
+// and creating 'c' from 'a' with Array slice
+let b = _.slice(a, 1, 3);
+let c = a.slice(1, 3);
+ 
+// simple map method
+let maper = (x, i)=>{
+  return i;
+}
+// using the same native Array.map on both results with the same mapper
+console.log(b.map(maper)); // [0, 1]
+console.log(c.map(maper)); // [ <2 empty items> ]
+```
+
+## 4 - Conclusion
+
+So then when a 'sparce' array is returned, then certain methods like the map method might not work as exspetced. Often with many methods empty elements are skiped over compleatly. So whe it comes to using the native Array slice method it still might be a good idea to check if one is dealing with a sparce array or not. Another option would be to just take care not to end up with a sparce arary to begin with.
