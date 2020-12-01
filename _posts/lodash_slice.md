@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 16:39:44
-version: 1.11
+updated: 2020-12-01 16:45:47
+version: 1.12
 ---
 
 In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another array without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a reference to the native Array slice method.
@@ -130,6 +130,8 @@ console.log(a); // [ 1, 2, 3, 4, ]
 
 ### 4.2 - Using slice to copy an array of object values will result in a copy by reference situation
 
+If slice is being used to copy an array of objects that is a whole other ball game, because in javaScript objects are copied by reference rather than by value. So then in that case it will be a new array, but it will still be the same references to the same objects in memory. So then in that case any change made to the objects in the new array returned n by slice will effect the source objects in the original array.
+
 ```js
 let a = [{n:1}, {n:2}, {n:3}, {n:4}];
 let b = _.slice(a, 0, a.length);
@@ -142,6 +144,8 @@ console.log(a); // [ { n: 2 }, { n: 4 }, { n: 8 }, { n: 16 } ]
 ```
 
 ### 4.2 - Using map, and creating a new object for each element can help
+
+However the map method by itself can be used as a way to deep clone an array objects, as long as it is just one level deep anyway. That is that things generally become a little complicated when it comes to nested objects. However even in those situations there are methods like the deep clone method in lodash that can be used to help with those kinds of situations in one wants complete copies of objects in an array.
 
 ```js
 let a = [{n:1}, {n:2}, {n:3}, {n:4}];
