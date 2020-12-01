@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 10:55:10
-version: 1.23
+updated: 2020-12-01 11:03:17
+version: 1.24
 ---
 
-The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
+The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing CSS values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
 
 There are other ways of changing CSS values with javaScript such as changing the [className property](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) value of one or more elements with respect to a collection of hard coded CSS classes to work with. In some respects this might prove to be a better option, client side javaScript is not meant to be a replacement for HTML and CSS, if you are using javaScript to do everything in your site I would say that you might want to rethink your approach.
 
@@ -183,4 +183,8 @@ There is a great deal more than can be done with an example such as this. If I g
 
 ## 4 - Conclusion
 
-The javaScript style API might be fun to play with when it comes to just making quick examples that make use of the style api to move elements around the page. However when it comes to doing anything flashy there are better options for doing so such as the canvas element and javaScript SVG.
+The javaScript style API might be fun to play with when it comes to just making quick examples that make use of the style API to move elements around the page. However when it comes to doing anything flashy there are better options for doing so such as the canvas element and also there is SVG that might also prove to be a better solution for anything that is going to be a bit animated.
+
+There is also knowing when not to make things so flashy also though. I would say that it is generally a good idea to avoid making anything that is just eye candy when it comes to making any kind of serious application. Also when it comes to making a Game or anything where I would say doing a thing or two that is a little flashy is called for, the style API is just not such a great way to go about doing it.
+
+Still the style API is there when it is needed. If for some reason I do want to set CSS values with javaScript it is the way to go about doing it. I just think that it is generally something that should be avoided when and where possible, and other alternatives should be explored.
