@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 752
-updated: 2020-12-01 14:24:20
-version: 1.6
+updated: 2020-12-01 14:36:26
+version: 1.7
 ---
 
 In native javScript there is the [Array slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method that will return a new array from another array without mutating the array in place. There is also yet another method in the core javaScript Array prototype object called splice that does more or less the same thing as [Array slice](/2018/12/08/js-array-slice/) only it will mutate the array in place. This however is a post on the [slice method in lodash](https://lodash.com/docs/4.17.15#slice) that is not just a reference to the native Array slice method.
@@ -72,6 +72,38 @@ let mapper = (x, i)=>{
 console.log(b.map(mapper)); // [0, 1]
 console.log(c.map(mapper)); // [ <2 empty items> ]
 ```
+
+### 3.2 - Two Objects
+
+Another way to get a better idea of what is going on here when it comes to dense and sparse arrays is to take into account the diferences between these two objects.
+
+```
+let a = {
+  0: undefined,
+  1: undefined,
+  2: undefined,
+  length: 3
+};
+ 
+let b = {
+  length: 3
+};
+```
+
+The same result happens when the objects are use with map by way of the Function call method.
+
+```
+let mapper = (x, i) => {
+   return i;
+};
+a = [].map.call(a, mapper);
+b = [].map.call(b, mapper);
+ 
+console.log(a); // [0, 1, 2]
+console.log(b); // [ <3 empty items> ]
+```
+
+So that is the main diference the lodash slice method will fill in holes with the undefined value, and as such methods like map will not skip over what would otherwase be an empty element.
 
 ## 4 - Conclusion
 
