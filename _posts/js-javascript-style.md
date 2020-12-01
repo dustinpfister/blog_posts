@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2020-12-01 10:52:12
-version: 1.21
+updated: 2020-12-01 10:54:20
+version: 1.22
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing css values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
 
 There are other ways of changing CSS values with javaScript such as changing the [className property](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) value of one or more elements with respect to a collection of hard coded CSS classes to work with. In some respects this might prove to be a better option, client side javaScript is not meant to be a replacement for HTML and CSS, if you are using javaScript to do everything in your site I would say that you might want to rethink your approach.
 
-The style API is not the best choice for doing anything that might involve complex animations, or a great deal of rapid fast change, for those kinds of effects there are [canvas elements](/2017/05/17/canvas-getting-started/), [SVG](/2019/02/11/js-javascript-svg/), and CSS3 animations to work with all of which might prove to be better options. There are many tools to a web developer and the style API is not always the best tool for the job, but it is there, and in some cases the use of it may be called for. So lets take a look at the style API in javaScript today.
+The style API is not the best choice for doing anything that might involve complex animations, or a great deal of rapid fast change, for those kinds of effects there are [canvas elements](/2017/05/17/canvas-getting-started/), [SVG](/2019/02/11/js-javascript-svg/), and CSS3 animations to work with all of which might prove to be better options. There are many tools to a web developer and the style API is not always the best tool for the job, but it is there, and in some cases the use of it may be called for. So lets take a look at the style API in javaScript today, and while I am at it I might touch base on a whole other little aspects of client side javaScript in general.
 
 <!-- more -->
 
