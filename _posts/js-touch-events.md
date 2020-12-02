@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-12-02 14:17:31
-version: 1.19
+updated: 2020-12-02 14:22:32
+version: 1.20
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -90,7 +90,7 @@ When working out event handers that will work well with both touch and mouse eve
         <title>touch events example</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <canvas id="the-canvas" width="320" height="240" style="margin:100px;"></canvas>
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
@@ -103,18 +103,24 @@ var drawCircle = function(ctx, x, y, r, style){
     ctx.arc(x,y,r,0,Math.PI*2);
     ctx.stroke();
 };
- 
+// pointer down event that will work with Touch AND Mouse events
 var pointerDown = function(e){
     e.preventDefault();
     var bx = e.target.getBoundingClientRect(),
+    // assuming mouse to begin with
     x = e.clientX,
     y = e.clientY,
     color = 'lime';
+    // checking for touch
     if(e.changedTouches){
         x = e.changedTouches[0].clientX,
         y = e.changedTouches[0].clientY;
         color = 'red'
     }
+    // adjust to make values relative to target element
+    // to which this hander is attached to rather than window
+    x -= bx.left;
+    y -= bx.top;
     drawCircle(ctx, x, y, 15, color);
 };
  
