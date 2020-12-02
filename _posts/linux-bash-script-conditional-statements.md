@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-02 11:48:37
-version: 1.5
+updated: 2020-12-02 12:00:16
+version: 1.6
 ---
 
 In [bash scripts](/2020/11/27/bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other langauges, however the syntax is of course a little diferent.
@@ -83,6 +83,23 @@ So the else statement is a way to close off two sets of code one set that will f
 
 ## 2 - The Test command
 
+In this post I think that it is important to at least mention a few things about the test command. The test command is what is used in if statements to evaluate an expression to find out if it is true or not. In the event that you take the time to just dirrectly play with the test command in a bash shell you will note that it will not spit out anything into the standard output. That is becuase the test command does not do anything then it comes to the standard output like many other commands, however what it will do is exit with a code of zero if the expression is true, and it will exit with a code of one if it is not. This exit code is then stored in a speshal variable that can then be used as a way to log what the result is. So starting to play around with the test command in the bash shell should actualy be a combination of two commands one of which is test, and the other is echoing the value of the varibel that will hold the result of the test.
+
+in other words something like this:
+
+```
+$ test 3 -gt 10; echo $?
+1
+$ test 12 -gt 10; echo $?
+0
+```
+
+When it comes to bash scripts, and programes in general an exit code of zero means that the programe ended without any kind of error happening. That is that the programe ran and everything when just fine, all is good. An exit code of a value that is anything other than zero means that something went wrong. So when it comes to using the test command it is all about what the exit code is.
+
+### 1.1 - A text command bash script
+
+After playing around with the test command in the bash shell manualy one might want to create a bash script that will echo out the results of a whole buch of diferent expressions.
+
 ```
 #!/bin/bash
  
@@ -93,7 +110,11 @@ c=$( test 10 -gt 5;echo $? )
 echo "${a} - ${b} - ${c}"
 ```
 
+When it comes to trasnlating anything worked out with the test command into an expression for an if statement, generatly it is just a process of lossing the test command and inclosing the expression into the square brackets.
+
+
 ## 3 - A Argumnets Defaults Example of an If Statement
+
 
 ```
 #!/bin/bash
