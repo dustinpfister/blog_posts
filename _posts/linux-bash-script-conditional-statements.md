@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-02 12:00:16
-version: 1.6
+updated: 2020-12-02 12:11:46
+version: 1.7
 ---
 
 In [bash scripts](/2020/11/27/bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other langauges, however the syntax is of course a little diferent.
@@ -115,6 +115,9 @@ When it comes to trasnlating anything worked out with the test command into an e
 
 ## 3 - A Argumnets Defaults Example of an If Statement
 
+Now for an actual example that might prove to be helpful. This example will not just make use of an if statement but also functions in bash also. Functions are another helpful aspect of bash scripts that allow for the creating of resuable blocks of code in a bash script.
+
+This if statement example will just look at some argumnets inside the body of a function. In the event that the first arguemnt is an empty value then a given default value as the second arguemnt will be echoed back. Otherwise the given value as the first arguemnt will be what is echoed back.
 
 ```
 #!/bin/bash
@@ -137,3 +140,18 @@ b=$( parse_opt $2 0 )
  
 echo $(( $a + $b ))
 ```
+
+So then this kind of function that makes use of an if satement can be helpful when it comes to working out a simple script that exspects some positional arguments. However will still give a default value of some kind if zero or just one of the two arguments is given.
+
+```
+$ chmod 755 option_defaults.sh
+$ ./option_defaults
+0
+$ ./option_defaults 2
+2
+$ ./option_defaults 5 3
+8
+```
+
+## 4 - Conclusion
+
