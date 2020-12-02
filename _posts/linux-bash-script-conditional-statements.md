@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-02 11:32:43
-version: 1.3
+updated: 2020-12-02 11:42:32
+version: 1.4
 ---
 
 In [bash scripts](/2020/11/27/bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other langauges, however the syntax is of course a little diferent.
@@ -28,13 +28,13 @@ After that I will be getting into a few other very basic if statement examples f
 
 First off I am going to start out with a very basic example of a bash script that just contains a single if statement. This if statement uses and expression with the -gt option to test if one variable is greater than another. If so a custom message will echo out to the standard output. In any case the message done will be ehcoed out to the command line.
 
-```
+```bash
 #!/bin/bash
  
 a="10"
 b="5"
 if [ $a -gt $b ]; then
-    echo "${a} is greater than ${b}"
+    echo "${a} IS greater than ${b}"
 fi
 echo "done"
 ```
@@ -44,7 +44,7 @@ If I then save this as something like gt.sh and then use chmod to make the file 
 ```
 $ chmod 755 gt.sh
 $ ./gt.sh
-10 is greater than 5
+10 IS greater than 5
 done
 ```
 
@@ -53,3 +53,60 @@ So that is the basic idea of an if statement. You start off with the if keyword 
 However there is much more to write about, even when it comes to a basic if statement example such as this. the square bracket syntax is a kind of shortcut for the use of the test command. The test command itself desirves a section in this post, and maybe even a whole post by itself actually.
 
 However for now there is just a bit more to write about when it comes to the very basics of if statements, such as the use of the else keyword. So lets look at a few simple examples of an if statement before moveing on to some more advanced topics.
+
+### 1.2 - Else
+
+```bash
+#!/bin/bash
+ 
+a="3"
+b="5"
+if [ $a -gt $b ]; then
+  echo "${a} IS greater than ${b}"
+else
+  echo "${a} IS NOT greater than ${b}"
+fi
+echo "done"
+```
+
+```
+$ ./gt-else.sh
+3 IS NOT greater than 5
+done
+```
+
+## 2 - The Test command
+
+```
+#!/bin/bash
+ 
+a=$( test;echo $? )
+b=$( test 1 -gt 5;echo $? )
+c=$( test 10 -gt 5;echo $? )
+ 
+echo "${a} - ${b} - ${c}"
+```
+
+## 3 - A Argumnets Defaults Example of an If Statement
+
+```
+#!/bin/bash
+ 
+# give a positional argument for first argument,
+# and a default value for the second, the function
+# will echo back the argument or default value
+opt_default(){
+  result=$1;
+  default=$2;
+  if [ -z $result ]; then
+    echo -n $default
+  else
+    echo -n $result
+  fi
+}
+ 
+a=$( parse_opt $1 0 )
+b=$( parse_opt $2 0 )
+ 
+echo $(( $a + $b ))
+```
