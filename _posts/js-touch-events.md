@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-12-02 13:27:16
-version: 1.11
+updated: 2020-12-02 13:44:38
+version: 1.12
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -17,9 +17,14 @@ Still if you have a large volume of traffic coming to a project that is from cli
 
 <!-- more -->
 
-## 1 - touch events basics, and touchstart
+## 1 - touch events basics, and touch start
 
-Touch events differ a little from mouse events, however there is also a great deal in common as well. With touch events there is the possibility of multi touch, and it is also true that there is not an equivalent to a mouse hover event. However both mouse events and touch events can be though of as pointers, and as such can be used to create an interface of some kind by way of pointing to locations of a screen or preforming some kind of gesture.
+Touch events differ a little from mouse events, for example with touch events there is the possibility of multi touch, rather than just a single mouse cursor position. In addition it is also true that there is not an equivalent to a mouse hover event. 
+
+however there is also a great deal in common with them as well, both mouse events and touch events can be though of as pointers. I can just not take into account the location of any of the additional touch objects that might be present when it comes to touch events and only look at the first touch object. I can also just use mouse down and touch start events to preform the same actions. However I still need to make slight adjustments to the event handers in order to get them to work with both touch and mouse events.
+In this section I will be going over some of the very basics of touch events. In these examples I am just going to stick with just one event at a time when it comes to touch support.
+
+### 1.1 - Just the touch start event.
 
 For a very basic example of touch events with plain vanilla javaScript, here is an example that involves a canvas element, and a single touch start event. The touch start event is an event that fires each time a touch starts the very moment that one or more fingers touch the surface of the touch device. So it only fires once during the duration of an action that involves touching the surface of the screen moving and then lifting.
 
@@ -39,24 +44,27 @@ ctx = canvas.getContext('2d');
 ctx.fillStyle='black';
 ctx.fillRect(0,0,canvas.width,canvas.height);
  
+var drawCircle = function(ctx, x, y, r, style){
+    // stroke a red circle
+    ctx.strokeStyle = style || 'red';
+    ctx.beginPath();
+    ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.stroke();
+};
+ 
 // attach a touch start event for the canvas
 canvas.addEventListener('touchstart', function(e){
- 
-    // get the canvas relative rather than window relative
-    // position of the first touch
-    var bx = e.target.getBoundingClientRect(),
-    x = e.touches[0].clientX,
-    y = e.touches[0].clientY;
- 
     // prevent any default action for touch events
     e.preventDefault();
- 
-    // stroke a red circle
-    ctx.strokeStyle = 'red';
-    ctx.beginPath();
-    ctx.arc(x,y,15,0,Math.PI*2);
-    ctx.stroke();
- 
+    // get the canvas relative rather than window relative
+    // position of the first touch by making use of the
+    // getBoundingClientRect method and the changedTouches array of
+    // the touch event
+    var bx = e.target.getBoundingClientRect(),
+    x = e.changedTouches[0].clientX,
+    y = e.changedTouches[0].clientY;
+    // draw a circle centered there
+    drawCircle(x,y,15,'red');
 });
         </script>
     </body>
