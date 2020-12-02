@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-02 11:42:32
-version: 1.4
+updated: 2020-12-02 11:48:37
+version: 1.5
 ---
 
 In [bash scripts](/2020/11/27/bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other langauges, however the syntax is of course a little diferent.
@@ -56,6 +56,8 @@ However for now there is just a bit more to write about when it comes to the ver
 
 ### 1.2 - Else
 
+Another Basic feature of an if statement is the use of else in the statement. This is a way of defining some additioanl code that will only fire in the event that the expression evaluates to false. So once again if I take above simple example of an if statement and just agust the value of the a varibel so that the value is now lower than b, then the code right after the opening if statement wil not fire. I can then use the else keyword between the code that would have fire if the expression is true and then ending inveted if statement that will only fire when the expression is false.
+
 ```bash
 #!/bin/bash
  
@@ -69,11 +71,15 @@ fi
 echo "done"
 ```
 
+So this works as exspetced.
+
 ```
 $ ./gt-else.sh
 3 IS NOT greater than 5
 done
 ```
+
+So the else statement is a way to close off two sets of code one set that will fore if the expression is true, and another set of code that wil run only when the expression is false. If I want some code to always fire no matter what I can just place that outside of the if statement.
 
 ## 2 - The Test command
 
