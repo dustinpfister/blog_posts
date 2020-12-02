@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-12-02 14:12:49
-version: 1.18
+updated: 2020-12-02 14:17:31
+version: 1.19
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -125,6 +125,8 @@ canvas.addEventListener('mousedown', pointerDown);
     </body>
 </html>
 ```
+
+So with this example I am getting lime circles when I click the canvas, and red circles when I touch it. I am just setting the values for the x and y values to e.clientX and e.cleintY for starters. In the event that the event is a mouse event these will be the starting window relative values. In the event that it is a touch event there should be a changed touches array, this is then what I am setting the starting values for x and y then. I can the adjust the values with the metrics from bounding box like before.
 
 ## 2 - touch start, move, and end events
 
