@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-12-02 13:56:51
-version: 1.15
+updated: 2020-12-02 13:58:42
+version: 1.16
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -26,7 +26,9 @@ In this section I will be going over some of the very basics of touch events. In
 
 ### 1.1 - Just the touch start event.
 
-For a very basic example of touch events with plain vanilla javaScript, here is an example that involves a canvas element, and a single touch start event. The touch start event is an event that fires each time a touch starts the very moment that one or more fingers touch the surface of the touch device. So it only fires once during the duration of an action that involves touching the surface of the screen moving and then lifting back up again.
+For a very basic example of touch events with plain vanilla javaScript, here is an example that involves a canvas element, and a single touch start event. The example will just draw a red circle to the canvas each time that the canvas is touched, but will do so only with the first finger, for now I am not going to do anything fancy with multi touch.
+
+The touch start event is an event that fires each time a touch starts the very moment that one or more fingers touch the surface of the touch device. So it only fires once during the duration of an action that involves touching the surface of the screen moving and then lifting back up again.
 
 ```js
 <html>
