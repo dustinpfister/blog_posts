@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-02 12:11:46
-version: 1.7
+updated: 2020-12-02 12:14:43
+version: 1.8
 ---
 
 In [bash scripts](/2020/11/27/bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other langauges, however the syntax is of course a little diferent.
@@ -155,3 +155,4 @@ $ ./option_defaults 5 3
 
 ## 4 - Conclusion
 
+So there might be a fare amount more to write about when it comes to if statements and bash scripts. I think that I was able to cover at least some of the basics to say the least, but there is much more to write about when it comes to some typical expressions. On top of that there is a whole world of examples that I could write about when it comes to practical applaction of if statements in bash when used with all the other little aspects of the scripting lanagues and the whole world of what is to work with with Linux commands. However maybe a great deal of all of that is called for in another post.
