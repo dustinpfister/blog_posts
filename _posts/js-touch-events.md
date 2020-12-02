@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-07-09 18:16:12
-version: 1.10
+updated: 2020-12-02 13:27:16
+version: 1.11
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -136,3 +136,7 @@ canvas.addEventListener('touchmove', touchMove);
  
 cls();
 ```
+
+## 4 - Conclusion
+
+So this was just a brief overview of touch events in a client side javaScript environment. In my experience thus fat touch events are just part of what needs to be taken into account when working out a user interface. More often then not when I use them it is just to define some additional way to do what can also be done with mouse events. That is that when I make a javaScript project I can not just write code for  touch events alone, I need to assume that I am always dealing with a desktop client. In fact more often than not that is what I am dealing with when I look at my sites statistics when it comes to that.
