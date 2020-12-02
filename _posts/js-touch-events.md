@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-12-02 14:05:51
-version: 1.17
+updated: 2020-12-02 14:12:49
+version: 1.18
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -78,6 +78,53 @@ In this example I am also using the [getBoundingClientRect method](https://devel
 
 When it comes to touch events there is also the [preventDefault method](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) as well that will cancel browser level type actions when a user interacts with the canvas. 
 
+### 1.2 - Making a hander that will work with both touch and mouse events
+
+One important thing to take into account is if I want to do something completely separate for touch events, or if I just want to make a single set of event handers that will work with both touch and mouse events. Often I just work out an interface that will work well with both pointer devices and just think in terms of a single pointer object.
+
+When working out event handers that will work well with both touch and mouse events there are just a few little conditions to look for. There is of course looking at the type property of the event object, but another way is to look for the presence or absence of a touch array, such as the changed touches event.
+
+```html
+<html>
+    <head>
+        <title>touch events example</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ 
+var drawCircle = function(ctx, x, y, r, style){
+    ctx.strokeStyle = style || 'red';
+    ctx.beginPath();
+    ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.stroke();
+};
+ 
+var pointerDown = function(e){
+    e.preventDefault();
+    var bx = e.target.getBoundingClientRect(),
+    x = e.clientX,
+    y = e.clientY,
+    color = 'lime';
+    if(e.changedTouches){
+        x = e.changedTouches[0].clientX,
+        y = e.changedTouches[0].clientY;
+        color = 'red'
+    }
+    drawCircle(ctx, x, y, 15, color);
+};
+ 
+canvas.addEventListener('touchstart', pointerDown);
+canvas.addEventListener('mousedown', pointerDown);
+ 
+        </script>
+    </body>
+</html>
+```
 
 ## 2 - touch start, move, and end events
 
