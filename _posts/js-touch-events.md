@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-12-02 13:44:38
-version: 1.12
+updated: 2020-12-02 13:47:37
+version: 1.13
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -26,7 +26,7 @@ In this section I will be going over some of the very basics of touch events. In
 
 ### 1.1 - Just the touch start event.
 
-For a very basic example of touch events with plain vanilla javaScript, here is an example that involves a canvas element, and a single touch start event. The touch start event is an event that fires each time a touch starts the very moment that one or more fingers touch the surface of the touch device. So it only fires once during the duration of an action that involves touching the surface of the screen moving and then lifting.
+For a very basic example of touch events with plain vanilla javaScript, here is an example that involves a canvas element, and a single touch start event. The touch start event is an event that fires each time a touch starts the very moment that one or more fingers touch the surface of the touch device. So it only fires once during the duration of an action that involves touching the surface of the screen moving and then lifting back up again.
 
 ```js
 <html>
@@ -71,7 +71,9 @@ canvas.addEventListener('touchstart', function(e){
 </html>
 ```
 
-In this example I am also using the getBoundingClientRect method to get a canvas rather than window relative position of the touch event. When it comes to touch events there is also the preventDefault method as well that will cancel browser level type actions when a user interacts with the canvas. One major difference from mouse events is that the clientX, and clientY values are gained from an array of touch objects, this is because unlike a mouse a touch screen can support multi touch.
+In this example I am also using the [getBoundingClientRect method](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) to get a canvas rather than window relative position of the touch event. This method will return a object that will contain metric for the position of the canvas element, I can then just use those values to adjust the values that are in the changed touches array that are relative to the window of the web page, and not the canvas element.
+
+When it comes to touch events there is also the preventDefault method as well that will cancel browser level type actions when a user interacts with the canvas. One major difference from mouse events is that the clientX, and clientY values are gained from an array of touch objects, this is because unlike a mouse a touch screen can support multi touch.
 
 ## 2 - touch start, move, and end events
 
