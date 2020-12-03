@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 17:33:45
-version: 1.9
+updated: 2020-12-03 17:37:02
+version: 1.10
 ---
 
 When it comes to [Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic operations can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing environment.
@@ -23,9 +23,11 @@ There are two ways that I find myself going about doing basic arithmetic in bash
 
 In this section I will just be going over some very basic examples of arithmetic using the various methods of doing so that I am familiar with.
 
-### 1.1 - Arithmetric Expansion
+### 1.1 - Arithmetic Expansion
 
 Arithmetic Expansion is thus far the way that I often go about creating basic expressions in bash. There are several forms of what us referred to as parameter expansion in the bash man page. It is a good idea to become familiar with the various other forms of expansion that are there to work with, but that might be a matter for another post.
+
+This kind of expansion works by typing a dollar sign followed by two sets of parentheses. Inside this set of double parentheses I write the expression that I want to have evaluated to a result. The result I can then save to a variable to be used with a command like echo.
 
 ```bash
 #!/bin/bash
