@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 16:32:35
-version: 1.2
+updated: 2020-12-03 16:38:43
+version: 1.3
 ---
 
 When it comes to [Atithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic opeartions can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing enviorment.
@@ -19,7 +19,13 @@ Still some basic Atithmetic is possible with bash alone, and in this post I will
 
 ## 1 - Bash script Arithmetric basics
 
+There are two ways that I find myself going about doing basic arithmetric in bash, one of which is the use of Arithmetric expansion. This I have found is the most robust form of doing basic math operations in bash, however there are a few other ways to create basic expressions.
+
+In this section I will just be going over some very basic examples of arithmetric using the various methods of doing so that I am familour with.
+
 ### 1.1 - Arithmetric Expansion
+
+Arithmetric Expansion is thus far the way that I often go about creating basic expressions in bash. There are several froms of what us refered to as paramater expansion in the bash man page. It is a good idea to become familout with the various other froms of expansion that are there to work with, but that might be a metter for another post.
 
 ```bash
 #!/bin/bash
