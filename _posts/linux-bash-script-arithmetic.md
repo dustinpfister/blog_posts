@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 17:28:35
-version: 1.8
+updated: 2020-12-03 17:33:45
+version: 1.9
 ---
 
 When it comes to [Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic operations can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing environment.
@@ -73,7 +73,7 @@ Bash has its limits when it comes to working out expressions. If I do need to do
 
 It would be best to make a completely separate program all together in javaScript when it comes to using node as a way to do some real expressions. However there are a few command line options with node that can be used to just evaluate a little javaScript by way of command arguments. In addition another option is to pipe in some javaScript code.
 
-### 2.1 - basic bash script that pipes an expression into node
+### 2.1 - basic bash script that pipes a javaScript expression into node
 
 One option is to have a very simple line of javaScript where I am just injecting a javaScript expression into a single call of console.log. If you are not familiar with node, and javaScript console.log is a way to spit something out to the standard output with a line break attached to the end.
 
@@ -99,3 +99,5 @@ Thankfully there is not much need to do any complicated math when it comes to ba
 ## 3 - Conclusion
 
 When working out bash scripts thus far the math involved is typically not that advanced. The bash arithmetic expansion syntax works okay when it comes to things like stepping a variable in a loop, and other basic tasks that is called for in a bash script.
+
+When it comes to doing some serious math it might be best to switch to another language. Maybe high level languages such as javaScript allow for piping some code in and have it run and spit out a result. However in the long run when it comes to getting into some advanced bash is just not the language to do it in. The main use case of bash scrips is to call and use applications, pipe the standard output of one to another, call a program a whole bunch of times for each file in a folder and so forth. I can not say that bash is a great language for writing applications though.
