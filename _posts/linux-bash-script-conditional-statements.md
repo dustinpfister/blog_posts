@@ -1,12 +1,12 @@
 ---
 title: Conditional Statements in Linux Bash scripts
-date: 2020-12-01 10:527:00
+date: 2020-12-02 10:27:00
 tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-02 13:21:32
-version: 1.9
+updated: 2020-12-03 13:44:17
+version: 1.10
 ---
 
 In [bash scripts](/2020/11/27/bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other languages, however the syntax is of course a little different.
