@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 16:39:38
-version: 1.4
+updated: 2020-12-03 17:12:36
+version: 1.5
 ---
 
 When it comes to [Atithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic opeartions can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing enviorment.
@@ -64,3 +64,32 @@ $ chmod 755 let.sh
 $ ./let.sh
  2 11 12 25
 ```
+
+## 2 - Doing some advanced expressions by piping javaScript code to node
+
+Bash has its limits when it comes to working out expressions. If I do need to do anything that is a little complex bash will just not cut it. However when it comes to bash scripts I do have a whole world of Linux commands to work with, and one such command is of course nodejs.
+
+It would be best to make a compleatly seperate programe all togerther in javaScript when it comes to usign node as a way to do some real espressions. However there are a few command line options with node that can be used to just evaluate a little javaScript by way of command argumnets. In addition another option is to pipe in some javaScript code.
+
+### 2.1 - basic bash script that pipes an expression into node
+
+One option is to have a very simple line of javaScript where I am just injecting a javaScript expression into a single call of console.log. If you are not familour with node, and javaScript console.log is a way to spit something out to the standard output with a line break attached to the end.
+
+So I could just create a simple bash function that will create a line of javaScript using console.log with a javaScript expression given as an argument injecting in as what will be log out to the standard output.
+
+```bash
+#!/bin/bash
+ 
+eval(){
+  js="console.log(${1})"
+  echo $( echo -en $js | node )
+}
+ 
+eval "5+5" # 10
+eval "\"5\"+5" # '55'
+eval "(Math.cos(Math.PI/180*45)*100).toFixed(2)" # 70.71
+```
+
+So then this is one way to go about doing some fairly complex expressions if I can just work out what the javaScritp code should be. However there is one draw back and that is that the results will happen real slow this way.
+
+Thankfully there is not much need to do any complacted math when it comes to bash scripts. If I ever do get into a sitsution in which I need to work soemthing out that is a little involves then I might need to ditch bash all otherger and just work in javaScript compleatly to work out the code.
