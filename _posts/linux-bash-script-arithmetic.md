@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 17:22:49
-version: 1.7
+updated: 2020-12-03 17:28:35
+version: 1.8
 ---
 
 When it comes to [Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic operations can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing environment.
@@ -43,7 +43,7 @@ $ chmod 755 arith_exp.sh
 
 ### 1.2 - The let command
 
-Another way to create basic expressions would be to use the let command.
+Another way to create basic expressions would be to use the let command. This might be a cleaner way of going about creating expressions as I do like the readability of this better.
 
 ```bash
 #!/bin/bash
@@ -64,6 +64,8 @@ $ chmod 755 let.sh
 $ ./let.sh
  2 11 12 25
 ```
+
+There might be a few other commands and tricks when it comes to basic expressions using just bash. However there are limits to what can be done when it comes to working something out that is a little advanced. When it comes to working out a complex expression there is a certain line where once crossed the only way to get it done is to just switch to another language that is a little more capable.
 
 ## 2 - Doing some advanced expressions by piping javaScript code to node
 
