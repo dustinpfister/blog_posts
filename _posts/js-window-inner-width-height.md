@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2020-12-03 10:17:50
-version: 1.7
+updated: 2020-12-03 10:25:33
+version: 1.8
 ---
 
 The [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object are a way to go about getting the current size of a window, but not the total size of a screen. That is that on mobile devices the innerWidth property might work okay go get an idea of what the width of the screen of the device is, however on desktop systems it might not because the user might not have there browser window maximized or in full screen. Even if that is not the case it might not be the best option to know what you are dealing with, there is the subject of zooming, and also logical pixels.
@@ -40,7 +40,10 @@ window.addEventListener('resize', function(e){
 </html>
 ```
 
-So that is the basic idea of inner width and height, but now the question is what it is that one would do with that information. There are also a number of other properties that a client side javaScript developer should be aware of that also come in handy when working with properties like this. So lets look at least a few examples of using the window inner width and height properties.
+
+So that is the basic idea of inner width and height, but now the question is what it is that one would do with that information. Also another thing to be aware of is if these numbers are always the case in every possible situation when it comes to things like zooming, and logical pixels in relation to actual pixels. In chrome and most other browsers for that matter there is pressing the ctrl and then the /+, /-, and /0 keys to zoom in and out and back to normal zoom level. When doing so the numbers will go down and up depending on the current zoom level. So it goes without saying that these values do not reflect actual pixels dimensions, but a kind of logical pixle length that can be effected by the zoom level of the browser.
+
+There are also a number of other properties that a client side javaScript developer should be aware of that also come in handy when working with properties like this. So lets look at least a few examples of using the window inner width and height properties.
 
 ## 2 - Center and element width window inner width and height
 
