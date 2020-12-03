@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 17:12:36
-version: 1.5
+updated: 2020-12-03 17:16:04
+version: 1.6
 ---
 
 When it comes to [Atithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic opeartions can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing enviorment.
@@ -93,3 +93,7 @@ eval "(Math.cos(Math.PI/180*45)*100).toFixed(2)" # 70.71
 So then this is one way to go about doing some fairly complex expressions if I can just work out what the javaScritp code should be. However there is one draw back and that is that the results will happen real slow this way.
 
 Thankfully there is not much need to do any complacted math when it comes to bash scripts. If I ever do get into a sitsution in which I need to work soemthing out that is a little involves then I might need to ditch bash all otherger and just work in javaScript compleatly to work out the code.
+
+## 3 - Conclusion
+
+When working out bash scripts thus far the math involved is typically not that advanced. The bash atirthmtic expansion syntax works okay when it comes to things like steping a variabe in a loop, and other basic tasks that is called for in a bash script.
