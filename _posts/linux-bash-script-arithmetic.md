@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 16:38:43
-version: 1.3
+updated: 2020-12-03 16:39:38
+version: 1.4
 ---
 
 When it comes to [Atithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic opeartions can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing enviorment.
@@ -42,6 +42,8 @@ $ chmod 755 arith_exp.sh
 ```
 
 ### 1.2 - The let command
+
+Another way to create basic expressions would be to use the let command.
 
 ```bash
 #!/bin/bash
