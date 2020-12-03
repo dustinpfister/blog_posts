@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 17:37:02
-version: 1.10
+updated: 2020-12-03 17:39:25
+version: 1.11
 ---
 
 When it comes to [Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic operations can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing environment.
@@ -37,11 +37,15 @@ n=$(( n + 1 ))
 echo $n
 ```
 
+So if I save the above bash script example as something like arith\_exp.sh, and then make it executable with chmod I can then call the script directly.
+
 ```
 $ chmod 755 arith_exp.sh
 ./arith_exp.sh
 6
 ```
+
+I then get the expected result in the standard output.
 
 ### 1.2 - The let command
 
