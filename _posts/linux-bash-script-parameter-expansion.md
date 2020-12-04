@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 15:44:24
-version: 1.5
+updated: 2020-12-04 15:45:08
+version: 1.6
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is Parameter Expansion. There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -60,12 +60,14 @@ a="5"
 b="10"
 currentVar="a"
  
-echo ${!currentVar}
+echo ${!currentVar} # 5
  
 currentVar="b"
  
-echo ${!currentVar}
+echo ${!currentVar} # 10
 ```
+
+This will come up now and then so it is a good one to keep in mind.
 
 ## 2 - Command substitution
 
