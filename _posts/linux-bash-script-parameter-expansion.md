@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 15:50:29
-version: 1.8
+updated: 2020-12-04 15:54:21
+version: 1.9
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is Parameter Expansion. There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -89,7 +89,9 @@ echo "The current user is \"${userName}\""
 
 ## 3 - Arithmetic Expansion
 
-There is then Arithmetic Expansion that is similar to that of command substitution in terms of the syntax.
+There is then Arithmetic Expansion that is similar to that of command substitution in terms of the syntax. In fact it is almost the same syntax the only note worth difference is that I just need to double up the parentheses. Inside this set of double parentheses I can so some basic arithmetic when it comes to things like stepping a counter variable.
+
+There are limits when it comes to the kind of math that can be done with bash, however when it comes to the typical kinds of tasks required for bash scripts Arithmetic Expansion works well enough. If I need to do something a little advanced then I would want to write the expression in another language though.
 
 ### 3.1 - Add to a variable
 
