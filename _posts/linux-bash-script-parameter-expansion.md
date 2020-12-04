@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 15:48:47
-version: 1.7
+updated: 2020-12-04 15:50:29
+version: 1.8
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is Parameter Expansion. There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -77,7 +77,7 @@ It should go without saying that this is a pretty central part of writing bash s
 
 ### 2.1 - Basic Command substitution example
 
-Here I have a basic example of Command substitution where I am using the result of the who am I command to set the value of a user name variable.
+Here I have a basic example of Command substitution where I am using the result of the who am I command to set the value of a user name variable. The standard output of the command can be saved to a variable with command substitution and then that result can be used with another command such as the echo command.
 
 ```bash
 #!/bin/bash
