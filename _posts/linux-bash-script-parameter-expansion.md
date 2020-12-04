@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 15:39:11
-version: 1.3
+updated: 2020-12-04 15:40:55
+version: 1.4
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is Parameter Expansion. There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -102,4 +102,4 @@ echo $a #6
 
 ## 4 - Conclusion
 
-Having a solid grasp on parameter expansion is pretty important when it comes to making even basic bash scripts. Much of what a bash script does is to work with Linux commands, and as such there needs to be a way to save the result of a Linux command as a value for a variable as is the case with command substitution.
+Having a solid grasp on parameter expansion is pretty important when it comes to making even basic bash scripts. Much of what a bash script does is to work with Linux commands, and as such there needs to be a way to save the result of a Linux command as a value for a variable as is the case with command substitution. There is also working with the result of a command once it has been set to a variable, as such many of the other aspects of Parameter expansion will come into play.
