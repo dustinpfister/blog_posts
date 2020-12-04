@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 15:45:08
-version: 1.6
+updated: 2020-12-04 15:48:47
+version: 1.7
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is Parameter Expansion. There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -21,7 +21,7 @@ To start off with I think the first form of Parameter expansion I should cover i
 
 ### 1.1 - Basic Braces example of Parameter Expansion in a bash script
 
-A Basic example of why braces are useful in bash would be to try to include the value of a variable in a new string value. When doing so how to you go about setting where the variable name ends, and the rest of the string begins? The awnser to that is to make use of braces which is one from of what is called parameter expansion in bash.
+A Basic example of why braces are useful in bash would be to try to include the value of a variable in a new string value. When doing so how to you go about setting where the variable name ends, and the rest of the string begins? The answer to that is to make use of braces which is one from of what is called parameter expansion in bash.
 
 
 ```bash
@@ -71,7 +71,9 @@ This will come up now and then so it is a good one to keep in mind.
 
 ## 2 - Command substitution
 
-So say you want the standard output of a command to be the value for a variable. The way to go about doing just that would be to use command substitution which is another form of parameter expansion.
+So say you want the standard output of a command to be the value for a variable. The way to go about doing just that would be to use command substitution which is another form of parameter expansion. This kind of parameter expansion is similar to that of the braces expansion only parentheses are used rather than braces.
+
+It should go without saying that this is a pretty central part of writing bash scripts. So at least a few examples might be called for when it comes to this subject.
 
 ### 2.1 - Basic Command substitution example
 
