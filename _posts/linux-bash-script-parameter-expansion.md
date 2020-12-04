@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 16:13:31
-version: 1.13
+updated: 2020-12-04 16:52:13
+version: 1.14
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is [Parameter Expansion](https://wiki.bash-hackers.org/syntax/pe). There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -103,6 +103,23 @@ Here I have a basic example of Command substitution where I am using the result 
 userName=$( whoami )
  
 echo "The current user is \"${userName}\""
+```
+
+### 2.2 - Can use variable when calling commands
+
+When calling a command with the command substitution paramater expansion syntax, variables can be used in place of the name of the command, as well as for other options when calling the command.
+
+```
+#!/bin/bash
+ 
+comname="ls"
+opt="-a"
+uri=$( echo ~ )
+i=0
+for item in $( ${comname} ${opt} ${uri} ); do
+    echo "${i} ${item}"
+    i=$(( i + 1 ))
+done
 ```
 
 ## 3 - Arithmetic Expansion
