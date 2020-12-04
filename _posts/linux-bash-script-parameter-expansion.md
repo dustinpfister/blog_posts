@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 15:56:46
-version: 1.11
+updated: 2020-12-04 16:08:20
+version: 1.12
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is [Parameter Expansion](https://wiki.bash-hackers.org/syntax/pe). There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -53,7 +53,7 @@ prefix_text
 
 Another important thing to cover when it comes to basic parameter expansion with braces is variable indirection. This is a way to make it so that the value of a variable is what is used for the name of a variable. A basic example of this one be that I have two variable one named a and the other b, I then have another variable that stores the name of one of these variables. The use of braces parameter expansion that starts off with an exclamation point can be used as a way to have it so the value of the current var variable is used as a reference to another variable rather than the name of the variable.
 
-```
+```bash
 #!/bin/bash
  
 a="5"
@@ -68,6 +68,24 @@ echo ${!currentVar} # 10
 ```
 
 This will come up now and then so it is a good one to keep in mind.
+
+### 1.3 - Arrays and braces
+
+The braces syntax is what will also need to be used in order to get a certain indexed element in an array, or the array as a whole. In bash there are a few ways to create an array, but in any case onced one has an array the braces form of parameter expansion can be used as a way to get an index value by just intrducing a set of square brackets after the varibel name inside the set of braces.
+
+The index of the desired element can then be given to get the value of that element, in addition the at symbol can be given in the square brackets as a way to get the array as a whole.
+
+```bash
+#!/bin/bash
+ 
+a=()
+a[0]="one"
+a[1]="two"
+a[2]="three"
+ 
+echo "${a} + ${a[1]} = ${a[2]}" # "one + two = three"
+echo "${a[@]}" # "one two tree"
+```
 
 ## 2 - Command substitution
 
