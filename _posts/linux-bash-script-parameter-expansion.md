@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-04 15:40:55
-version: 1.4
+updated: 2020-12-04 15:44:24
+version: 1.5
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/bash-scripts/) thus far is Parameter Expansion. There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -49,9 +49,9 @@ prefix_
 prefix_text
 ```
 
-### 1.2 - Uisng a variable value as a variable name with Braces
+### 1.2 - Using a variable value as a variable name with Braces
 
-Another important thing to cover when it comes to basic parameter expansion with braces is variable indirection.
+Another important thing to cover when it comes to basic parameter expansion with braces is variable indirection. This is a way to make it so that the value of a variable is what is used for the name of a variable. A basic example of this one be that I have two variable one named a and the other b, I then have another variable that stores the name of one of these variables. The use of braces parameter expansion that starts off with an exclamation point can be used as a way to have it so the value of the current var variable is used as a reference to another variable rather than the name of the variable.
 
 ```
 #!/bin/bash
