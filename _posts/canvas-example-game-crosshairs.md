@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-12-05 13:23:02
-version: 1.37
+updated: 2020-12-05 13:25:19
+version: 1.38
 ---
 
 <!-- edit bookmark -->
@@ -105,28 +105,8 @@ The module for now just has three public methods, one to create an object pool, 
 
 As of this writing I am using the pool module to create a pool of display objects for shots that the player can fire by clicking in the inner circle area of the cross object. So I need a way to have a pool of objects that can be reused for the display objects that will represent these shots, and this is for starters what the pool.js module is for.
 
-## 6 - The game.js file for creating a main game state object
 
-So I ending up working out a main game module that will serve as a way to create and set up a main game state module for this canvas example. This module will create a main game state object that will contain an instance of the cross module object, along with a map object, and at least a single object pool for shot objects. This module will also attach a whole bunch of event handers for the canvas element.
-
-```js
-```
-
-## 7 - generate sprite sheets
-
-I wanted to at east start some kind of system that will be used to create sprite sheets. For now I just work out this genSheets module that creates sheets just for map cells. I am not happy with it thus far, and will get around to making a lot of changes here at a point in the future so I do not want to write to much about it.
-
-```js
-```
-
-## 8 - The draw.js file
-
-So now that I have mt modules for creating state objects, I will now want a module with methods that are used to draw aspects of these state objects to a canvas element.
-
-```js
-```
-
-## 9 - Buttons
+## 6 - Buttons
 
 I have a module that helps me with creating button objects that I place in the canvas to preform certain actions. This way I can pull a lot of code that has to do with checking if a pointer position is over a button display object, or common button tasks like looping an index value for an option and so forth away from the main state machine and into its own module.
 
@@ -134,6 +114,28 @@ As of this writing I have just three button types, but in future releases I inte
 
 ```js
 ```
+
+## 7 - The game.js file for creating a main game state object
+
+So I ending up working out a main game module that will serve as a way to create and set up a main game state module for this canvas example. This module will create a main game state object that will contain an instance of the cross module object, along with a map object, and at least a single object pool for shot objects. This module will also attach a whole bunch of event handers for the canvas element.
+
+```js
+```
+
+## 8 - generate sprite sheets
+
+I wanted to at east start some kind of system that will be used to create sprite sheets. For now I just work out this genSheets module that creates sheets just for map cells. I am not happy with it thus far, and will get around to making a lot of changes here at a point in the future so I do not want to write to much about it.
+
+```js
+```
+
+## 9 - The draw.js file
+
+So now that I have mt modules for creating state objects, I will now want a module with methods that are used to draw aspects of these state objects to a canvas element.
+
+```js
+```
+
 
 ## 10 - Now for a Main.js file along with a main app loop
 
