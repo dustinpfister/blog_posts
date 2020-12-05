@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-11-28 19:01:06
-version: 1.68
+updated: 2020-12-05 13:10:10
+version: 1.69
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -18,6 +18,12 @@ The canvas examples I have made range form simple animations, to more complex ga
 I am going all over the board when it comes to playing around with canvas elements naturally because lets face it canvas is a great example of fun and exciting javaScript rather than boring yet practical javaScript. So of course I have to make a lot of them, and maybe if I get to it pour a little more time and effort into some of them. So lets get to the list of canvas examples here then as they currently stand.
 
 <!-- more -->
+
+
+<div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<script src="/js/canvas-examples/game-crosshairs/0.21.0/pkg.js"></script>
+
+Above is v0.21.0 of cross hairs one of many other works in process when  it comes to canvas examples.
 
 ## 1 - The github repo
 
