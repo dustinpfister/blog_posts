@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-12-05 13:21:00
-version: 1.36
+updated: 2020-12-05 13:23:02
+version: 1.37
 ---
 
 <!-- edit bookmark -->
@@ -34,8 +34,6 @@ To check out the latest state of the source code with this example there is of c
 For the canvas example just like with many of my other examples this one has a custom utility library. I end up using this kind of library as a dumping ground for methods that are being used, or might end up being used in two or more modules in the over all project. There always seems to be a need for this kind of utility library that can be described as a kind of application specific, custom tailored lodash of sorts. In other words it is a collection of utility methods that I am actually going to use in one or more of the modules that compose the over all project.
 
 One such method that I have here is a distance formula method that will just give me the distance between two points. This is a usual suspect that I have in many of these utility modules, and is often used in a number of expressions where and when needed. I am using the method in my cross module that I will be getting to later in this post that has to do with the major part of the user interface.
-
-Another method that I often end up parking here is the get canvas relative method that helps with getting a point that is relative to the canvas element rather than window. In this canvas example I am not doing anything with multi touch, so I went with a method that will just use the first touch object in the changed touches array of a touch event. I will not be getting into detail about this method here as I have [wrote a post on this topic of getting a canvas relative point in detail before hand](/2020/03/04/canvas-get-point-relative-to-canvas/).
 
 ```js
 // UTILS
@@ -142,6 +140,8 @@ As of this writing I have just three button types, but in future releases I inte
 So now I need some additional code to pull everything together here in a main.js file that will be used after everything else is in place to work with. Here I create and inject a canvas element into a hard coded container element that I have in my html. I create instances of a map and cross state objects, and attach a whole bunch of event handers for mouse and touch events using the create event method of the cross module.
 
 I then have an attack method that I will likely work into the map module, or some kind of future module that has to do with a weapons or something to that effect. I do not want to get into to much detail with that because at some point in the future I will just have to re write what I have to say about it when it comes to putting a little more time into this canvas example, because I think this one needs and deserve more work.
+
+Another method that I ended up parking here is the get canvas relative method that helps with getting a point that is relative to the canvas element rather than window. In this canvas example I am not doing anything with multi touch, so I went with a method that will just use the first touch object in the changed touches array of a touch event. I will not be getting into detail about this method here as I have [wrote a post on this topic of getting a canvas relative point in detail before hand](/2020/03/04/canvas-get-point-relative-to-canvas/).
 
 ```js
 ```
