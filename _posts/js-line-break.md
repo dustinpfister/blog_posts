@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2020-07-09 08:48:10
-version: 1.10
+updated: 2020-12-05 12:36:07
+version: 1.11
 ---
 
 When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen there is using the write method of the process stdout property.
@@ -84,3 +84,9 @@ const eol = {
  
 console.log(Buffer.from(eol.win).toString('hex')); // 0d0a
 ```
+
+## 4 - Conclusion
+
+having a way to find out if there is a line bake in a string is something that will come up from time to time when working out a script. In nodejs often the result of calling a command in a Linux environment will spit out results where each line is terminated with a line break, if I want to spit that output into an array I will need to know how to do that. In a Linux system the line break will typically be a single new line char, however in windows it might be a carriage return followed by a new line.
+
+Knowing how to find out if there is a line break is important however knowing how to go about creating a line break in a string is also something that I need to do also. If I want to create a script that will do s replace all for some text from one kind of line break to another, it will require that I I not just know how to find line breaks, but also how to go about injecting one of the options that I would want to replace them. This if often a feature in most text editors, however if I where to write my own text editor a feature such as this is one thing that I would want to have in such an application.
