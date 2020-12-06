@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2020-12-06 11:53:25
-version: 1.14
+updated: 2020-12-06 13:09:56
+version: 1.15
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or undefined is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -124,7 +124,50 @@ The delete operator will actually delete an object property which is very differ
 
 In this section I will be going over some Objects that are indexed objects. These objects should help to give you a better understanding over what the difference is between having elements of an object that are undefined, and elements that are truly empty.
 
-### 6.1 - Delete and an Sparse indexed object
+### 6.1 - Object with undefined keys, and an empty object
+
+Mayb the best way to understand the difference between empty and defiled but undefined is to take into account the following example involving two objects.
+
+```js
+// an object with three indexed keys each set to undefined
+// with a private length property of 3
+let obj = {
+    0: 'undefined',
+    1: 'undefined',
+    2: 'undefined',
+    length: 3
+};
+Object.defineProperty(obj, 'length', {
+    enumerable: false,
+    value: 3
+});
+// an empty object
+// with a private length property of 3
+let obj2 = {};
+Object.defineProperty(obj2, 'length', {
+    enumerable: false,
+    value: 3
+});
+ 
+// so then they both have the same 'length'
+console.log(obj.length); // 3
+console.log(obj2.length); // 3
+ 
+// but the public key count is different
+console.log(Object.keys(obj).length); // 3
+console.log(Object.keys(obj2).length); // 0
+ 
+// delete can make obj truly empty
+delete obj[0];
+delete obj[1];
+delete obj[2];
+console.log(Object.keys(obj).length); // 0
+console.log(Object.keys(obj2).length); // 0
+```
+
+### 6.2 - Delete and an Sparse indexed object
+
+In this example I am working with an object with indexed keys, but the index values are sparse.
 
 ```js
 let obj = {
@@ -157,6 +200,7 @@ delete obj[4];
 delete obj[5];
 console.log(Object.keys(obj).length); // 3 public (enumerable) keys
 ```
+
 
 ## 7 - Conclusion
 
