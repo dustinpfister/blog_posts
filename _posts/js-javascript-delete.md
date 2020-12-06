@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2020-12-06 13:09:56
-version: 1.15
+updated: 2020-12-06 13:13:35
+version: 1.16
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or undefined is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -167,7 +167,9 @@ console.log(Object.keys(obj2).length); // 0
 
 ### 6.2 - Delete and an Sparse indexed object
 
-In this example I am working with an object with indexed keys, but the index values are sparse.
+In this example I am working with an object with indexed keys, but the index values are sparse. This example should help to show what the difference is between setting elements to an undefined value, and actually removing them with the delete operator.
+
+If I just set keys that are all ready set to a value as something like undefined that will not effect the count of public key values. The key is still there it just holds a value that is undefined, however if I use the delete key it will actually remove the key completely. In addition if I set a key value that has not been defined yet that will increase the number of public keys, but if I call delete on a key that is all ready empty to begin with that will have no effect.
 
 ```js
 let obj = {
