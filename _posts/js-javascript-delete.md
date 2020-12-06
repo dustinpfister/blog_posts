@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2020-12-06 11:25:15
-version: 1.13
+updated: 2020-12-06 11:53:25
+version: 1.14
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or undefined is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -118,6 +118,46 @@ console.log(obj.x, obj.y); // 15 27
 
 In this example I am using the JSON trick to clone an object, maybe not the best way to go about doing it but one way or another the object will need to be cloned. Once I have a cloned object I can then delete properties and change the values of the properties that remain and not effect the original object from which the new object was cloned.
 
-## 6 - Conclusion
+## 6 - Indexed Objects, Sparse Arrays, and the delete operator
+
+The delete operator will actually delete an object property which is very different from setting it to a value such as undefined. When reading object properties that are empty the resulting value us undefined, however this is actually a little misleading, the true value is not even that, it is empty, it is not even there are all. That is because an object property can be defined, but with a value that is undefined. I know that might should a little confusing, and yes it is, but maybe there is something that can be done to help with that confusion.
+
+In this section I will be going over some Objects that are indexed objects. These objects should help to give you a better understanding over what the difference is between having elements of an object that are undefined, and elements that are truly empty.
+
+### 6.1 - Delete and an Sparse indexed object
+
+```js
+let obj = {
+    0: 5,
+    1: 7,
+    2: 1,
+    40: 3,
+    41: 7,
+    42: 12
+};
+ 
+console.log(Object.keys(obj).length); // 6 public (enumerable) keys
+ 
+// setting elements to undefined or null will not
+// effect the number of public keys
+obj[0] = undefined;
+obj[1] = null;
+console.log(Object.keys(obj).length); // 6 public (enumerable) keys
+ 
+// setting an empty key to undefined will count as a public key
+obj[3] = undefined;
+console.log(Object.keys(obj).length); // 7 public (enumerable) keys
+ 
+// The delete operator will actually delete a key
+delete obj[0];
+delete obj[1];
+delete obj[2];
+delete obj[3];
+delete obj[4];
+delete obj[5];
+console.log(Object.keys(obj).length); // 3 public (enumerable) keys
+```
+
+## 7 - Conclusion
 
 Hopefully you learned a thing or two about the delete operator in javaScript today. It can come in handy in some situations but is not always the best tool for the job. For the most part when I am working on projects I can not say that I use the delete operator often, but it is nice to know that it is there in the event that I do need it for some reason.
