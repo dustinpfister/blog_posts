@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 756
-updated: 2020-12-07 13:47:00
-version: 1.3
+updated: 2020-12-07 13:48:08
+version: 1.4
 ---
 
 Arrays in [bash scripts](/2020/11/27/bash-scripts/) can be indexed or associative. There is a simple syntax that can be used to create indexed arrays with ease, and the declare bash built in command that can be used to create associative arrays.
@@ -60,7 +60,7 @@ echo ${arr[@]} # "one two three"
 
 ## 2 - Create associative Arrays
 
-To create an associative array the declare bash built in command can be used with the -A option to do so. Once that is done the process of adding elements is the same as indexed ones, only I just give a named key value rather than a numbered one.
+To [create an associative](https://www.linuxjournal.com/content/bash-associative-arrays) array the declare bash built in command can be used with the -A option to do so. Once that is done the process of adding elements is the same as indexed ones, only I just give a named key value rather than a numbered one.
 
 ```bash
 #!/bin/bash
