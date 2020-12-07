@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 756
-updated: 2020-12-07 13:41:31
-version: 1.2
+updated: 2020-12-07 13:47:00
+version: 1.3
 ---
 
 Arrays in [bash scripts](/2020/11/27/bash-scripts/) can be indexed or associative. There is a simple syntax that can be used to create indexed arrays with ease, and the declare bash built in command that can be used to create associative arrays.
@@ -73,3 +73,9 @@ arr["two"]="2"
  
 echo ${arr[@]} "2 1"
 ```
+
+## 3 - Conclusion
+
+Of course the best source on Arrays in bash, and using bash in general might be to check out the [man page on bash](https://linux.die.net/man/1/bash). Of course the man page is one real long sucker and it can take a while to read through the whole thing, but if you really want to learn bash that will be the man source.
+
+There are a number of other [posts on Arrays in bash](https://opensource.com/article/18/5/you-dont-know-bash-intro-bash-arrays) on the open internet of course also where the topic is just on arrays alone though. Also it is ture that a man page does not always do the best job of convarying something, and it can never hurt to have more actaul examples of a certian something with bash.
