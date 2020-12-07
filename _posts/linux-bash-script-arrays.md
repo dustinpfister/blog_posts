@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 756
-updated: 2020-12-07 13:48:08
-version: 1.4
+updated: 2020-12-07 15:58:32
+version: 1.5
 ---
 
 Arrays in [bash scripts](/2020/11/27/bash-scripts/) can be indexed or associative. There is a simple syntax that can be used to create indexed arrays with ease, and the declare bash built in command that can be used to create associative arrays.
@@ -74,7 +74,61 @@ arr["two"]="2"
 echo ${arr[@]} "2 1"
 ```
 
-## 3 - Conclusion
+## 3 - For in loops and arrays in bash Scripts
+
+So now that I got the basics out of the way whe it comes to creating arrays, maybe not I should cover how to go about looping over the contents of them with for in loops.
+
+### 3.1 - Looping over an Indexed Array with a for in
+
+When it comes to looping over the values of an indexed array there is just using the curly bracket syntax with the at symbol when it comes to the value after typeing in.
+
+```bash
+#!/bin/bash
+ 
+files=('file1' 'file2' "file3")
+for fileName in ${files[@]}; do
+    echo ${fileName}
+done;
+```
+
+### 3.2 - Looping over an Associcative Arrays values with braces paramater expansion 
+
+To loop over the values of an an Associcative array I just need to do more or less the same thing as I would with an indexed Array.
+
+```bash
+#!/bin/bash
+ 
+declare -A files
+files["main"]="./main.js"
+files["state"]="./lib/state.js"
+files["draw"]="./lib/state.js"
+ 
+for fileName in ${files[@]}; do
+    echo ${fileName}
+done;
+```
+
+### 3.3 - Get key value pairs of an Associcative Array with braces paramater expansion and a little variable indirection 
+
+So the same bash code can be used to get values with any kind of array, but what if I want to get [bolth key values as well as the names](https://stackoverflow.com/questions/3112687/how-to-iterate-over-associative-arrays-in-bash). To get bolth key values as well as the key names a little variable indirection as it is called in the bash man page can be used.
+
+```
+#!/bin/bash
+
+declare -A files
+files["main"]="./main.js"
+files["state"]="./lib/state.js"
+files["draw"]="./lib/state.js"
+ 
+echo -e "\n"
+for keyName in ${!files[@]}; do
+    echo "key: ${keyName}"
+    echo "value: ${files[$keyName]}"
+    echo -e "\n"
+done;
+```
+
+## 4 - Conclusion
 
 Of course the best source on Arrays in bash, and using bash in general might be to check out the [man page on bash](https://linux.die.net/man/1/bash). Of course the man page is one real long sucker and it can take a while to read through the whole thing, but if you really want to learn bash that will be the man source.
 
