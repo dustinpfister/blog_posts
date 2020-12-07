@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 756
-updated: 2020-12-07 16:01:51
-version: 1.6
+updated: 2020-12-07 16:08:25
+version: 1.7
 ---
 
 Arrays in [bash scripts](/2020/11/27/bash-scripts/) can be indexed or associative. There is a simple syntax that can be used to create indexed arrays with ease, and the declare bash built in command can be used to create associative arrays. These are the two kinds of arrays that are supported in bash, and there is no support of multidimentional arrays in bash.
@@ -21,7 +21,7 @@ There are several ways to create indexed arrays where each element of the array 
 
 ### 1.1 - bracket syntax
 
-One pretty simple way to go about creating a basic indexed array is to just use a bracket syntax with the variable name.
+One pretty simple way to go about creating a basic indexed array is to just use a bracket syntax with a variable name. That is just create a simple variable as always, but just place an opening and closing set of square brackets at the end of the variable name and before equals. Then place the desired index value for the element that will be assignined for that index in between the square brackets.
 
 ```bash
 #!/bin/bash
@@ -42,9 +42,11 @@ echo ${arr[1]} # "two"
 echo ${arr[@]} # "one two three"
 ```
 
+Simple enough, but there are a few other ways to go about creating an array in the first place. Aslo this is just one example of how to create an indexed array, if I want to create an associtaive arary it can not be done this way.
+
 ### 1.2 - expression syntax
 
-Expressions are another way to create indexed Arrays.
+Expressions are another way to create indexed Arrays. This is just placing the desired values for each element in between a set of parentises with a space used as a way to seperate them.
 
 ```bash
 #!/bin/bash
@@ -76,7 +78,7 @@ echo ${arr[@]} "2 1"
 
 ## 3 - For in loops and arrays in bash Scripts
 
-So now that I got the basics out of the way whe it comes to creating arrays, maybe not I should cover how to go about looping over the contents of them with for in loops.
+So now that I got the basics out of the way whe it comes to creating arrays, maybe not I should cover how to go about looping over the contents of them with for in loops. There are just a few simple examples to cover whe it comes to the basics of using this kind of loop with arrays that mainly just have to do with looping values, and looping key names of Arrays.
 
 ### 3.1 - Looping over an Indexed Array with a for in
 
