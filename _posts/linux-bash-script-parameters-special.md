@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:29:49
-version: 1.8
+updated: 2020-12-08 13:33:04
+version: 1.9
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional parameters which might be the first thing most people will think of when it comes to parameters for a script. However it is important to refer to them as positional parameters rather than just simply parameters because yet there is more than one set of parameters at play when a script is called.
@@ -122,4 +122,4 @@ echo "path: $_"
 
 ## 10 - conclusion
 
-That concludes my general overview of all of the special parameters in bash.
+That concludes my general overview of all of the special parameters in bash. Thus far there are only a few of these that I find myself using when working out scripts. Mainly I just want to expand all the positional parameters or get a count of the number of parameters that where given. However it is still a good idea to take a moment to be ware of the full range of sectional parameters that there are to work with in bash.
