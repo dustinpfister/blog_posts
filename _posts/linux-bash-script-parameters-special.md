@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 14:01:55
-version: 1.13
+updated: 2020-12-08 14:03:51
+version: 1.14
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on parameters in bash, and with that positional parameters might be the first thing most people will think of when it comes to parameters for a script. However it is important to refer to positional parameters as positional parameters rather than just simply parameters, because there is more than one set of parameters at play when a script is called. Yes there are the positional parameters that are passed to a script, but there is also any and all parameters that might have been passed to the bash command itself, and in addition to this there are also a number of [Special parameters](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html) in bash to work with also.
@@ -23,14 +23,14 @@ The first Special parameter that comes to mind is the $\@ parameter that will ex
 
 ### 1.2 - A Very basic example of $@
 
-So for a very basic example of the \$\@ spechial paramater I would start off with a bash script example like this:
+So for a very basic example of the \$\@ special parameter I would start off with a bash script example like this:
 
 ```bash
 #!/bin/bash
 echo "positionals: $@"
 ```
 
-I can then save it as something like basic.sh and the use the chmod command to make the script exacutabule for the owner of the file. AFter doing that I can call the script directly, and pass some positional parameterst to it when callin it.
+I can then save it as something like basic.sh and the use the chmod command to make the script executable for the owner of the file. AFter doing that I can call the script directly, and pass some positional parameters to it when calling it.
 
 ```
 $ chmod 755 basic.sh
@@ -38,11 +38,11 @@ $ ./basic.sh foo bar baz
 positionals: foo bar baz
 ```
 
-So then this basic example of the $@ special paramater just shows that it is a way to go aboput getting at all of the positional argumnets that are gievn when the script is called.
+So then this basic example of the $@ special parameter just shows that it is a way to go about getting at all of the positional arguments that are given when the script is called.
 
 ### 1.2 - A Basic for in loop example the makes use of $@
 
-So now that I have the basic idea of the \$\@ special paramater out of the way maybe it is called for to writn at least one more example of this to help gain a bettre idea of why it is that this paramter is useful. Say I want to write just a simple sum script that wuill add up all the numbers that I pass to it as positionals. For that kind of script I can use the \$\@ paramter with afor in loop, and a from or parameter expansion that can be used to prefrom basic arithmetic in bash.
+So now that I have the basic idea of the \$\@ special parameter out of the way maybe it is called for to write at least one more example of this to help gain a better idea of why it is that this parameter is useful. Say I want to write just a simple sum script that will add up all the numbers that I pass to it as positionals. For that kind of script I can use the \$\@ parameter with a for in loop, and a from or parameter expansion that can be used to preform basic arithmetic in bash.
 
 ``` bash
 #!/bin/bash
@@ -60,7 +60,7 @@ $ ./for-in.sh 5 7 3
 15
 ```
 
-There are then a whole buch of other examples that come to mind, but just about all of them might involve the same basic idea when it comes to using a for in loop to go over them.
+There are then a whole bunch of other examples that come to mind, but just about all of them might involve the same basic idea when it comes to using a for in loop to go over them.
 
 ## 2 - Expand all positional parameters with IFS ( $* )
 
