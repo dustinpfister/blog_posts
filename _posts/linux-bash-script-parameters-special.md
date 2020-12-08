@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:11:43
-version: 1.4
+updated: 2020-12-08 13:16:20
+version: 1.5
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional paramaters which might be the first thing most people will think of when it comes to paramaters for a script. However it is imporant to refer to them as positional paramaters rather than just simply paramaters becuase yet there is more than one set of paramaters at play when a script is called.
@@ -70,6 +70,8 @@ echo "status: $?"
 ```
 
 ## 5 - option flags ( $- )
+
+So then there are the positional parameters of a script, and there are all of these special paramaters, and then there are the parameters that are given when bash is called. In many of these examples thus far I am calling a script directly, but there is also not bothering with that can calling bash in the command line folowed by the name of the script. When I call the bash script this way there are positional argumnets that I can give for the script, but then there are also all the options that I can set when calling bash. The $- special paramater is one way to expand the state of all of options of the bash command when it was called.
 
 ```bash
 #!/bin/bash
