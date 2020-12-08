@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:01:20
-version: 1.1
+updated: 2020-12-08 13:04:25
+version: 1.2
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional paramaters which might be the first thing most people will think of when it comes to paramaters for a script. However it is imporant to refer to them as positional paramaters rather than just simply paramaters becuase yet there is more than one set of paramaters at play when a script is called.
@@ -43,3 +43,17 @@ $ chmod 755 ifs.sh
 $ ./ifs.sh foo bar baz
 positionals: foo-bar-ba
 ```
+
+## 3 - get a count of positional paramaters ( $# )
+
+## 4 - Exit Status ( $? )
+
+## 5 - option flags ( $- )
+
+## 6 - process id ( $$ )
+
+## 7 - background process ( $! )
+
+## 8 - Shell name ( $0 )
+
+## 9 - path name ( $_ )
