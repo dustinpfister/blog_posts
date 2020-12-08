@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:04:25
-version: 1.2
+updated: 2020-12-08 13:08:34
+version: 1.3
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional paramaters which might be the first thing most people will think of when it comes to paramaters for a script. However it is imporant to refer to them as positional paramaters rather than just simply paramaters becuase yet there is more than one set of paramaters at play when a script is called.
@@ -45,6 +45,19 @@ positionals: foo-bar-ba
 ```
 
 ## 3 - get a count of positional paramaters ( $# )
+
+Another common task in bash scripts is to get a count of the number of positional argumnets that where given when the script is called. The $# paramater will given this numbre of positionakl argumnets minus the one that is the name of the command.
+
+```bash
+#!/bin/bash
+echo "positionals count: $#"
+```
+
+```
+$ chmod 755 count.sh
+$ ./count.sh foo bar baz
+positionals count: 3
+```
 
 ## 4 - Exit Status ( $? )
 
