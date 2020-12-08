@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:33:04
-version: 1.9
+updated: 2020-12-08 13:34:42
+version: 1.10
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional parameters which might be the first thing most people will think of when it comes to parameters for a script. However it is important to refer to them as positional parameters rather than just simply parameters because yet there is more than one set of parameters at play when a script is called.
 
-There are of course positional parameters such as $0, $1, $2, and so forth as covered on my post on positional parameters. these parameters refer to the name of the command called followed by each option that is separated by a space. However there is also a number of Special parameters in bash also such as $@ that is a way to quickly expand all of these positional parameters, and $\# that will give a count of these. So if I aim to write an comprehensive collection of posts on the features of bash scripts it is called for to write one on these special parameters. In this post I will be going over these with at least one basic example of each.
+There are of course positional parameters such as $0, $1, $2, and so forth as covered on my post on positional parameters. these parameters refer to the name of the command called followed by each option that is separated by a space. However there is also a number of [Special parameters](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html) in bash also such as $@ that is a way to quickly expand all of these positional parameters, and $\# that will give a count of these. So if I aim to write an comprehensive collection of posts on the features of bash scripts it is called for to write one on these special parameters. In this post I will be going over these with at least one basic example of each.
 
 <!-- more -->
 
