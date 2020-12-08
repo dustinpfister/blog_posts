@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:20:44
-version: 1.6
+updated: 2020-12-08 13:24:44
+version: 1.7
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional paramaters which might be the first thing most people will think of when it comes to paramaters for a script. However it is imporant to refer to them as positional paramaters rather than just simply paramaters becuase yet there is more than one set of paramaters at play when a script is called.
@@ -85,12 +85,16 @@ echo "flags: $-"
 
 ## 6 - process id ( $$ )
 
+The $$ special paramater is how one would go about getting the proces id of the current script.
+
 ```bash
 #!/bin/bash
 echo "pid: $$"
 ```
 
 ## 7 - background process ( $! )
+
+A $! special paramater is how one would go aboput getting the process id of a background process.
 
 ```bash
 #!/bin/bash
@@ -100,6 +104,8 @@ echo "background pid: $!"
 
 ## 8 - Shell name ( $0 )
 
+There are two special paramaters for getting the path of the current script, however one of them might return a diferent result in some situations. The $0 paramater might return the name of the current shell in some sitauons
+
 ```bash
 #!/bin/bash
 echo "shell name: $0"
@@ -107,7 +113,13 @@ echo "shell name: $0"
 
 ## 9 - path name ( $_ )
 
+If you just want to get the path to the current script, and only the current script in all situations then it would be best to stick to the $\_ paramater.
+
 ```bash
 #!/bin/bash
 echo "path: $_"
 ```
+
+## 10 - conclusion
+
+That concludes my general overview of all of the special paramaters in bash.
