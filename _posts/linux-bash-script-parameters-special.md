@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:08:34
-version: 1.3
+updated: 2020-12-08 13:11:43
+version: 1.4
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional paramaters which might be the first thing most people will think of when it comes to paramaters for a script. However it is imporant to refer to them as positional paramaters rather than just simply paramaters becuase yet there is more than one set of paramaters at play when a script is called.
@@ -61,12 +61,47 @@ positionals count: 3
 
 ## 4 - Exit Status ( $? )
 
+```bash
+#!/bin/bash
+test 1 -eq 1
+echo "status: $?"
+test 2 -eq 1
+echo "status: $?"
+```
+
 ## 5 - option flags ( $- )
+
+```bash
+#!/bin/bash
+echo "flags: $-"
+```
+
 
 ## 6 - process id ( $$ )
 
+```bash
+#!/bin/bash
+echo "pid: $$"
+```
+
 ## 7 - background process ( $! )
+
+```bash
+#!/bin/bash
+echo "pid: $$"
+echo "background pid: $!"
+```
 
 ## 8 - Shell name ( $0 )
 
+```bash
+#!/bin/bash
+echo "shell name: $0"
+```
+
 ## 9 - path name ( $_ )
+
+```bash
+#!/bin/bash
+echo "path: $_"
+```
