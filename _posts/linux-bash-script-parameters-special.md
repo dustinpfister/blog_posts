@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 13:16:20
-version: 1.5
+updated: 2020-12-08 13:20:44
+version: 1.6
 ---
 
 So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on positional paramaters which might be the first thing most people will think of when it comes to paramaters for a script. However it is imporant to refer to them as positional paramaters rather than just simply paramaters becuase yet there is more than one set of paramaters at play when a script is called.
@@ -60,6 +60,10 @@ positionals count: 3
 ```
 
 ## 4 - Exit Status ( $? )
+
+Any bash script or comand will typically exit or end at some point. When this happens there is an exit code that is set. An exit code of zero means that all went well and the script, comand, or test went as exspected with a posative result. Any number other than zero for an exit code means that something went wrong, a test has failed, or some kind of error or problem happened. The $? special paramater is one way to get at the status of this code, and is often useful when workiong something out with the test command.
+
+
 
 ```bash
 #!/bin/bash
