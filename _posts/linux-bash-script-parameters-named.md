@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-09 14:52:45
-version: 1.5
+updated: 2020-12-09 14:56:59
+version: 1.6
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -38,7 +38,7 @@ fi
 
 ## 2 - getopts and a while loop
 
-The getopts can be used in a while loop with a case statement.
+The getopts can be used in a while loop with a case statement. That is that there can be this while loop where I am looping calling the getopts command each time. On each loop the variable that I set with the getopts command will be updated with the current option name, and the /$OPTARG variable will be updated with the current argument for the current option if it is that kin d of option.
 
 ```bash
 #!/bin/bash
