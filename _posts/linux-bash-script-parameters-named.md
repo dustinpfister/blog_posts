@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-09 14:56:59
-version: 1.6
+updated: 2020-12-09 15:01:56
+version: 1.7
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -104,6 +104,10 @@ if [ $mode = "wc" ]; then
    catFiles | wc -w
 fi
 ```
+
+So then this script seems to work as expected then when I just give it a source folder without any additional options it will just concatenate the files into one big body of text. However if I do set the mode to wc then it will give a grand total word count of that large body if text thanks to the Linux wc command.
+
+The Linux wc command is a useful command for a wide range of reasons, as the name suggests it can be used to get a word count for a body of text. However it also has a number of other useful options that can be used to get a line count, or the size of the text in terms of bytes. However getting into the depth of the Linux wc command would be off topic.
 
 ## 4 - Conclusion
 
