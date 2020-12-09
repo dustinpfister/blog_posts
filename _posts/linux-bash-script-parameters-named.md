@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-09 15:06:23
-version: 1.9
+updated: 2020-12-09 15:17:20
+version: 1.10
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -21,7 +21,7 @@ The bash command comes with a bunch of built in commands to preform a number of 
 
 ### 1.1 - getopts parameters that expect an argument
 
-If I want to add options that will take an argument after it is used then I will want to use a colon in the option string.
+If I want to add options that will take an argument after it is used then I will want to use a colon in the option string. When doing so there will be the variable that I use with the getopts command that will store the value of the current option that is being parsed as always. On top of the usual variable that will home the named parameter that was used the argument that was passed for the named option will be stored in a variable called OPTARG
 
 ```bash
 #!/bin/bash
