@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-09 14:16:34
-version: 1.1
+updated: 2020-12-09 14:21:03
+version: 1.2
 ---
 
-There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add paramaters to bash scripts. However there should be a way to add named parameters to a script also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that prefroms some kind of task other then that of parsing options.
+There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add paramaters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that prefroms some kind of task other then that of parsing options.
 
 Well in bash there is a built in command that might prove to be the first solution that comes to midn when it comes to having named paramarters in a script. In this post I will be going over a few examples of that built in command, and also write about other topics that might come up in the process of doing so.
 
@@ -94,3 +94,7 @@ if [ $mode = "wc" ]; then
    catFiles | wc -w
 fi
 ```
+
+## 4 - Conclusion
+
+That is it for named parameters in bash shell scripts, when it comes to additional resources on bash the best option if of course the [manual page on bash](https://linux.die.net/man/1/bash). The manual is very long, and does not include a lot of examples, which warrents a need for posts like this. Still the man page will cover the topic of named parameters with the getopts built in bash command, and a whole lot more in great detail.
