@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-09 14:31:26
-version: 1.3
+updated: 2020-12-09 14:37:56
+version: 1.4
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add paramaters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that prefroms some kind of task other then that of parsing options.
@@ -63,6 +63,10 @@ echo " mode: ${mode}"
 ```
 
 ## 3 - getopts wc script example
+
+Now that I have covered the basics of the getopts bash built in command I should make at least one example that shows that this way of creating named parameters for bash scripts works okay. For this example I put togeather a simple script that will spit out the total word count for a collection of text files, or just concataname them all which is the default behaviour.
+
+So when it comes to writing this kind of script there are a few options that I would like to have for such a script. One option is to be able to given the source folder to look at to find text files. Then it would also be nice to have another options that will set the mode of the script. That is that I would like to have more than one mode where the default mode will just concatanate all the files and spit out the result to the standard output, and the other will return a total word count for the collection of content. So then when it comes to this script I will want to have at least two named options one that might be -s that will be used to set the source folder to look in, and the other would be -m to set the mode.
 
 ```bash
 #!/bin/bash
