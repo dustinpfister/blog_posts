@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-09 14:21:03
-version: 1.2
+updated: 2020-12-09 14:31:26
+version: 1.3
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add paramaters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that prefroms some kind of task other then that of parsing options.
@@ -15,9 +15,13 @@ Well in bash there is a built in command that might prove to be the first soluti
 
 <!-- more -->
 
-## 1 - basic getopts examples
+## 1 - Basic Named parameter examples using the getopts bash built in command
+
+The bash command comes with a bunch of built in commands to prefrom a number of tasks. One such built in command is the [getopts command](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#index-getopts) that can be used to create named paramater options for a bash script. There are limatations with this command such as being limited tio single charicter options for the script. However unless I am making a script that is fairly complex this option for named parameters should work okay in most situations.
 
 ### 1.1 - getopts parameters that exspect an argument
+
+If I want to add options that will take an argument after it is used then I will want to use a colen in the option string.
 
 ```bash
 #!/bin/bash
@@ -33,6 +37,8 @@ fi
 ```
 
 ## 2 - getopts and a while loop
+
+The getopts can be used in a while loop with a case statement.
 
 ```bash
 #!/bin/bash
