@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 756
-updated: 2020-12-08 09:59:08
-version: 1.8
+updated: 2020-12-10 12:31:19
+version: 1.9
 ---
 
-Arrays in [bash scripts](/2020/11/27/bash-scripts/) can be indexed or associative. There is a simple syntax that can be used to create indexed arrays with ease, and the declare bash built in command can be used to create associative arrays. These are the two kinds of arrays that are supported in bash, and there is no support of multidimensional arrays in bash.
+Arrays in [bash scripts](/2020/11/27/linux-bash-scripts/) can be indexed or associative. There is a simple syntax that can be used to create indexed arrays with ease, and the declare bash built in command can be used to create associative arrays. These are the two kinds of arrays that are supported in bash, and there is no support of multidimensional arrays in bash.
 
 There is not just the question of how to go about creating an array in bash, but there is also how to go about looping over them, and preform all kinds of various tasks that one might be familial with in other languages. Keep in mind that there is much that is lacking when it comes to things like class methods for example. However the basic functionality that one might expect in a language such as bash is very much there.
 
