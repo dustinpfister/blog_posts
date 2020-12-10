@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 app.set('port', process.env.PORT || process.argv[2] || 8080);
 
-app.set('days_back', process.argv[3] || 90);
+app.set('days_back', process.argv[3] || 1500);
 
 let dir_cli = path.join(__dirname, '../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
@@ -37,6 +37,7 @@ app.get('/', [
                 title: 'fresh by cat',
                 layout: 'report',
                 report: res.report,
+                daysBack: app.get('days_back'),
                 getFreshClassName: (fresh) => {
                     let cn = 'fresh_0';
                     cn = fresh >= 0.25 ? 'fresh_25' : cn;
