@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 746
-updated: 2020-11-20 19:38:11
-version: 1.9
+updated: 2020-12-10 12:31:19
+version: 1.10
 ---
 
-When working out a bash script there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more arguments, and then just call that function over and over again rather than repeating the whole block of code.
+When working out a [bash script](/2020/11/27/linux-bash-scripts/) there are some times situations in which I find myself repeating the same bash code over and over again in a script. So there should be a way to define a block of bash script code as part of a function that will take one or more arguments, and then just call that function over and over again rather than repeating the whole block of code.
 
 So in this post I will be going over some of the basics of [functions when writing bash scripts](https://linuxize.com/post/bash-functions/).
 
