@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-09 15:17:20
-version: 1.10
+updated: 2020-12-10 12:31:20
+version: 1.11
 ---
 
-There are basic positional parameters in [bash scripts](/2020/11/27/bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
+There are basic positional parameters in [bash scripts](/2020/11/27/linux-bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
 
 Well in bash there is a built in command that might prove to be the first solution that comes to mind when it comes to having named parameters in a script. In this post I will be going over a few examples of that built in command, and also write about other topics that might come up in the process of doing so.
 
