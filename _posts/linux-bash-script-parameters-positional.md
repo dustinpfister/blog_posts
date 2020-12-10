@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 15:01:15
-version: 1.5
+updated: 2020-12-10 15:06:57
+version: 1.6
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quikly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of paramerets that have to do with the bash command itself, there are a number of special paramerets to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameterst in general, however in this post the focus will be just on positioanls alone.
@@ -42,13 +42,28 @@ Although this is a post just on positional arguments alone I should take a momen
 
 So in this section I will be going over a few quick examples of special parameartes in bash.
 
-### 2.1 - Special arguments for geting all positionals and count of positionals
+### 2.1 - Special arguments for getting all positionals and count of positionals
+
+In this example I will be going over two special argumnets that are the first two that I think are the most imporantant when first starting out with writing basic bash scripts. One is the \$\# special parameter that will give me the total count of positionals that where passed and the other is the \$\@ special parameter that will give me the full collecton of positionals.
+
+
+So if I have a basic bash script like this:
+
+```
+#!/bin/bash
+echo "number of arguments: $#"
+echo "arguments: $@"
+```
+
+it will given me a count of argumnets, and all the arguments
 
 ```
 $ ./basic.sh foo bar baz
 number of arguments: 3
 arguments: foo bar baz
 ```
+
+So then these two values can be used to create basic loops that will loop over all of the positionals and do something for each.
 
 ## 3 - Positional Parameters and bash Parameters
 
