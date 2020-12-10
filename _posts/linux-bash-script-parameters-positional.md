@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 14:37:20
-version: 1.3
+updated: 2020-12-10 14:46:31
+version: 1.4
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quikly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of paramerets that have to do with the bash command itself, there are a number of special paramerets to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameterst in general, however in this post the focus will be just on positioanls alone.
@@ -15,6 +15,26 @@ So In this post I will be going over a few quick examples of Linux bash scripts 
 
 <!-- more -->
 
+## 1 - The basics of positional parameters
+
+So you want to learn what the deal is with paramerets when writing a bash script. Well you have to start somewhere and maybe a good starting point is to lean how to access and make use of positional argumnets. In this section I will be going over just a few quick examples of positionals.
+
+### 1.1 - Basic bash Positional argumnets example
+
+So a Basic positional argument example bash script might look somethiong like this:
+
+```bash
+#!/bin/bash
+echo "$0 - $1 - $2"
+```
+
+I can then save this as something like basic.sh, and then call it in the command line. When doing so I can pass argumnets to the script.
+
+```
+$ chmod 755 basic.sh
+$ ./basic.js foo bar
+./basic.sh - foo - bar
+```
 
 ## 2 - Positional argumnets and special arguments
 
@@ -28,4 +48,11 @@ So in this section I will be going over a few quick examples of special paramear
 $ ./basic.sh foo bar baz
 number of arguments: 3
 arguments: foo bar baz
+```
+
+## 3 - Positional Parameters and bash Parameters
+
+```
+$ bash -c "./basic.sh 1 2"
+./basic.sh - 1 - 2
 ```
