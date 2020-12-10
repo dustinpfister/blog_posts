@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-03 13:44:17
-version: 1.10
+updated: 2020-12-10 12:31:19
+version: 1.11
 ---
 
-In [bash scripts](/2020/11/27/bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other languages, however the syntax is of course a little different.
+In [bash scripts](/2020/11/27/linux-bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other languages, however the syntax is of course a little different.
 
 if statements are ways to go about making decisions in bash scripts by having some kind of expression that will result in a true of false value. If the expression is true then additional code in the if statement will run, if not it will not. In addition there is also the option of including and else statement where some code that will only run if an expression evaluates to false. 
 
