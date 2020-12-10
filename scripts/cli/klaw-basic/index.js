@@ -4,6 +4,7 @@ path = require('path'),
 
 opt_defaults = {
     dir_posts: '../../../_posts',
+    dir_posts: path.join(__dirname, '../../../_posts'),
     forPost: function (item, next) {
         console.log(item.path);
         next();
