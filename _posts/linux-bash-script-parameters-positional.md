@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 15:06:57
-version: 1.6
+updated: 2020-12-10 15:21:57
+version: 1.7
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quikly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of paramerets that have to do with the bash command itself, there are a number of special paramerets to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameterst in general, however in this post the focus will be just on positioanls alone.
@@ -67,22 +67,33 @@ So then these two values can be used to create basic loops that will loop over a
 
 ## 3 - Positional Parameters and bash Parameters
 
+Now that I have covered not just the basics of positional parameters and a few basic special parameters I should also take a moment to wrint about the bash command itself. That command too can be passed a few argumnets also that have to do with its own set of parameters. many of my bash scripts examples thus far involve making a bash script exacutabule, to which it can then be called dirrectly. However another options world be to call bash, then pass the script, and then pass some positionals for the script.
+
+In other words something like this:
+
 ```
 $ bash -c "./basic.sh 1 2"
 ./basic.sh - 1 - 2
 ```
 
+Here I am calling the bash command first and then using the c option that will make bash run the following string as a command. This then means that when a bash script is called there is yet another set of parameters to be aware of. There are the positionals, then the special paramaters, and then there are the parameters of the bash comamnd itself. This is why it is importantn to refer to positionals as such, to help elemnate confusion with all these other sets of parameterts that are at play.
+
+So then lets look at a few more examples of bash script parameters in general now.
+
 ### 3.1 - An all.sh file that will log the state of both positionals and bash parameters
+
+Here I have a shell script that will just log out the current state of bash paramaters, as well as positional paramaters, by making use of two special parameters. So then this script can be though of as a basic script that makes use of the three diferent types of parameters in bash.
 
 ```bash
 #!/bin/bash
 echo "bash: $-"
 echo "positionals: $@"
 ```
-
+Now that I have this basic script worked out the state of what is loged out will depedn on how it is called. So with that said lets now look at another script that will call this script in diferent ways. So lets save this above script as something like all.sh, and moive on to the next example.
 
 ### 3.2 - Just calling a script, and calling bash first
 
+There is calling a script directly if it has been set as exacutabule with chmod, and then there is calling bash frist and passing the script as an argument for the bash command. When callign bash a number of argumnets can be given to the bash command, and the all.sh script that I just covered will log out the state of these options.
 
 ```bash
 #!/bin/bash
@@ -96,6 +107,20 @@ echo ""
  
 # calling bash first with some options
 bash -v all.sh 1 2
+```
+
+```
+$ chmod 755 bash.sh
+$ ./bash.sh
+
+bash: hB
+positionals: 1 2
+
+#!/bin/bash
+echo "bash: $-"
+bash: hvB
+echo "positionals: $@"
+positionals: 1 2
 ```
 
 ## 4 - Conclusion
