@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 14:46:31
-version: 1.4
+updated: 2020-12-10 15:01:15
+version: 1.5
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quikly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of paramerets that have to do with the bash command itself, there are a number of special paramerets to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameterst in general, however in this post the focus will be just on positioanls alone.
@@ -56,3 +56,31 @@ arguments: foo bar baz
 $ bash -c "./basic.sh 1 2"
 ./basic.sh - 1 - 2
 ```
+
+### 3.1 - An all.sh file that will log the state of both positionals and bash parameters
+
+```bash
+#!/bin/bash
+echo "bash: $-"
+echo "positionals: $@"
+```
+
+
+### 3.2 - Just calling a script, and calling bash first
+
+
+```bash
+#!/bin/bash
+ 
+echo ""
+ 
+# just calling the script
+./all.sh 1 2
+ 
+echo ""
+ 
+# calling bash first with some options
+bash -v all.sh 1 2
+```
+
+## 4 - Conclusion
