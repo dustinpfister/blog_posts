@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 15:32:49
-version: 1.8
+updated: 2020-12-10 15:39:52
+version: 1.9
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quikly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of paramerets that have to do with the bash command itself, there are a number of special paramerets to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameterst in general, however in this post the focus will be just on positioanls alone.
@@ -126,3 +126,7 @@ positionals: 1 2
 ```
 
 ## 4 - Conclusion
+
+The positional parameters of a script are the first set of paramerets that I have become aware of while learniong bash. However there are of course a number of other sets of parameters that I should be aware of when writing bash scripts also. In addition there are other topics to write about when it comes to parameters in bash scripts. When it comes to basic scripts just working with positionals alone is okay, however what if I do make a bash script that can take up to say 10 argumnets? With that said theer should be a way to parse positional argumnets into named argumnets.
+
+So one next step from here that might come to mind is to read my post on [parsing positional argumnets into named options](/2020/12/09/linux-bash-script-parameters-named/)  by way of option parsing with the getopts bash built in command. There is also my [main post on bash paramters](/2020/11/16/linux-bash-parameters/) in general also.
