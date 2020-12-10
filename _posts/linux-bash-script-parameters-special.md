@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 757
-updated: 2020-12-08 14:03:51
-version: 1.14
+updated: 2020-12-10 12:31:20
+version: 1.15
 ---
 
-So I wrote a [bash scripts](/2020/11/27/bash-scripts/) post on parameters in bash, and with that positional parameters might be the first thing most people will think of when it comes to parameters for a script. However it is important to refer to positional parameters as positional parameters rather than just simply parameters, because there is more than one set of parameters at play when a script is called. Yes there are the positional parameters that are passed to a script, but there is also any and all parameters that might have been passed to the bash command itself, and in addition to this there are also a number of [Special parameters](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html) in bash to work with also.
+So I wrote a [bash scripts](/2020/11/27/linux-bash-scripts/) post on parameters in bash, and with that positional parameters might be the first thing most people will think of when it comes to parameters for a script. However it is important to refer to positional parameters as positional parameters rather than just simply parameters, because there is more than one set of parameters at play when a script is called. Yes there are the positional parameters that are passed to a script, but there is also any and all parameters that might have been passed to the bash command itself, and in addition to this there are also a number of [Special parameters](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html) in bash to work with also.
 
 So then in other words in bash there are positional parameters such as $0, $1, $2, and so fort these parameters refer to the name of the command called, followed by each option that was passed to the command that is separated by a space. However there is also a number of parameter for the bash command itself that is called before the command is called. In addition two two sets of parameters for the bash script and bash itself there is also parameters such as $@ that is a way to quickly expand all of these positional parameters, and $\# that will give a count of these. These two parameters are examples of special parameters and there is a number of them to cover in bash.
 
