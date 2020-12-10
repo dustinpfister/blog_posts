@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 15:21:57
-version: 1.7
+updated: 2020-12-10 15:32:49
+version: 1.8
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quikly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of paramerets that have to do with the bash command itself, there are a number of special paramerets to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameterst in general, however in this post the focus will be just on positioanls alone.
@@ -20,6 +20,8 @@ So In this post I will be going over a few quick examples of Linux bash scripts 
 So you want to learn what the deal is with paramerets when writing a bash script. Well you have to start somewhere and maybe a good starting point is to lean how to access and make use of positional argumnets. In this section I will be going over just a few quick examples of positionals.
 
 ### 1.1 - Basic bash Positional argumnets example
+
+When a bash script is called there might be one or more positional argumnets that where passed when it was called. In fact even if no additional positionals where given when the script was called there is always at least one that is the file name of the script, or the name of the command that was called. Positionals start with the \$0 variable that will be the name of the command or script to begin with, followed by \$1 that wil be the first argument, followed by \$2 that will be the second, and so on. These kinds of variabkles hold the state of the argumnets that where gievn in order of there position from left to right starting with the command name, as such they are often called positional parameters.
 
 So a Basic positional argument example bash script might look somethiong like this:
 
