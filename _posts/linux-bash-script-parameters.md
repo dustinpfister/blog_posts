@@ -5,17 +5,23 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-12-10 12:31:20
-version: 1.14
+updated: 2020-12-10 13:40:11
+version: 1.15
 ---
 
-When writing a [bash script in Linux](/2020/11/27/linux-bash-scripts/) there might come a time where I might want to pass one or more [arguments for some parameters for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). There is knowing how to access arguments for a call of a script, and there is also knowing how to find out how many arguments where given. There is also doing something for all arguments that are given like how the Linux cat command works when giving file names as arguments. So In this post I will be going over a few quick examples of Linux bash Scripts that make use of one or more arguments that are given at the command line, or wherever the script is called.
+When writing a [bash script in Linux](/2020/11/27/linux-bash-scripts/) there might come a time where I might want to pass one or more [arguments for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). With that said there is starting out with positional parameters, but it is important to refer to positional parameters as such. That is becuase parameters can refer to a number of things in bash scripts other than just simple basic positional parameters.
+
+There is knowing how to access arguments for a call of a script, and there is also knowing how to find out how many arguments where given when the script was called in total. There is also doing something for all arguments that are given like how the Linux cat command works when giving file names as arguments. So on top of positional parameters there are also a number of special paramaters for tasks such as getting all the paramaters, and the count of paramaters.
+
+There is also the bash command itself, and any argumnets that might be based to the bash command before the script or command that is called. So then there is yet another set of parameters or argumnets to be aware of. In addition there is also parsing the positional argumnets into a form that can be described as named parameters. That is making a script that will except arguments in a simular way to that of many of the Linux commands that one might be familour with.
+
+So then in this post I will be going over some bash script examples where I am going over each of the kinds of parameters to be aware of.
 
 <!-- more -->
 
-## 1 - Basic Linux Bash Script with a Single Parameter
+## 1 - Positional Parameters in bash scripts
 
-To start off with how about just a simple bash script that takes just one argument. A sort of Bash Script Parameter Hello world for what it is worth. With that said there are a few Variables to work with inside a bash script that are references to each argument that is passed when the script is called. They all start off with the dollar sign symbol for starters followed by a number from zero upwards. Zero will be a reference to the command or script that is called, and then one forwards will be all the arguments for the call of the script.
+To start off with how about just a simple bash script that takes just one argument that is an example of a positional parameter. A sort of Bash Script Parameter Hello world for what it is worth. With that said there are a few Variables to work with inside a bash script that are references to each argument that is passed when the script is called. They all start off with the dollar sign symbol for starters followed by a number from zero upwards. Zero will be a reference to the command or script that is called, and then one forwards will be all the arguments for the call of the script.
 
 So then Say I just want to make a simple hello world example of parameters in bash scripts. I would start off with the bash shebang as always for a script. Followed by just using the echo command to echo out hello followed by whatever is passed as the first argument by way of using $1.
 
@@ -36,7 +42,11 @@ Hello World
 
 So then there is a basic hello world example of a positioned rather than flagged parameter in bash. However there are at least a few more things to cover beyond this when it comes to finding out how many arguments are passed, how to loop over all arguments, and how to work with flags. There are a few other related topics that might come up in the process of working with parameters so lets look at a few more examples of these kinds of bash scripts.
 
-## 2 - Get a count of the number of arguments given
+## 2 - Special parameters
+
+On top of positional parameters there are a number of special parameters also.
+
+### 2.1 - Get a count of the number of arguments that where given
 
 What if I want to get a count of how many arguments there are when a script is called? For this there is the $# variable which will given the number of arguments given. This will not count the command or script itself, so if no arguments are given beyond just calling the script then the value will be zero.
 
@@ -104,6 +114,9 @@ $ ./sum_at.sh 5 10
 
 So then on top of using variable indirection This would prove to be another way to [loop over the arguments](https://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-a-bash-script) that are given when calling a bash script.
 
+
 ## 5 - Conclusion
 
 SO that is it for now when it comes to parameters in bash scripts. I am still fairly new to writing bash scripts though, and I still have a lot more to learn about until I can start to make some real solid examples of bash scripts. In the future I will want to edit this post to expand it with more examples as needed.
+
+
