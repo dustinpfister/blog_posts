@@ -3,7 +3,7 @@ path = require('path'),
 app = express();
 
 app.set('view engine', 'ejs');
-app.set('views', './views');
+app.set('views', path.join(__dirname, './views'));
 app.set('port', process.env.PORT || process.argv[2] || 8080);
 
 app.set('days_back', process.argv[3] || 90);
@@ -11,7 +11,7 @@ app.set('days_back', process.argv[3] || 90);
 let dir_cli = path.join(__dirname, '../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
-app.use('/css', express.static('./public/css'));
+app.use('/css', express.static( path.join( __dirname, './public/css') ) );
 
 app.get('*', (req, res, next) => {
 
