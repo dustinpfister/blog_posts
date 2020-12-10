@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 738
-updated: 2020-11-10 12:11:09
-version: 1.9
+updated: 2020-12-10 12:31:19
+version: 1.10
 ---
 
-I have started toying around with [bash scripts](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php) a little in place of just using nodejs as a way to automate work. I would normally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
+I have started toying around with [bash scripts](/2020/11/27/linux-bash-scripts/) a little in place of just using nodejs as a way to automate work. I would normally use nodejs and a little javaScript as a way to create scripts that will do so, the great thing about that is that when I make the scripts a certain way they will work on any system in which I can install nodejs on. However these days I find myself preferring to just work in a straight Linux environment, as such I can make use of bash, and all the little various Linux commands there are to play with, in order to make quick work of things that I would otherwise have to do manually.
 
 In my recent canvas example projects I worked out a basic bash script that has to do with automating the process of creating a package from javaScript source code files. The source code files are in development form, but I want them to all be combined together, and minified between some starting and ending html code to create a single final html file for the state of the canvas example. The bash script I worked out make use of shell level variables, and various Linux commands such as cat along with a single javaScript min script to create the final result that I want.
 
