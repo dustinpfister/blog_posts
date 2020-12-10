@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 754
-updated: 2020-12-03 17:39:25
-version: 1.11
+updated: 2020-12-10 12:31:19
+version: 1.12
 ---
 
-When it comes to [Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/bash-scripts/) it would seem that doing some basic operations can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing environment.
+When it comes to [Arithmetic](https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php) in [bash scripts](/2020/11/27/linux-bash-scripts/) it would seem that doing some basic operations can be done, however when it comes to doing anything a little advanced it might be best to wrap another programing environment.
 
 For the most part I would say that I do not need to do any advanced programing with bash scripts when it comes to working out some kind of complicated expression. The use case for bash scripts is that it just needs to work okay as a glue of sorts between applications, and to serve as a way to make it so I do not have to type a long string of commands in every time. So far I can not say that I need to do much beyond just simple addition and subtraction actually, and if I ever end up in a situation in which I need to do something a little advanced, it might be best to do that in another language such as javaScript, or python.
 
