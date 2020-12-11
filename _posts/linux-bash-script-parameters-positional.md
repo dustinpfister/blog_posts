@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 15:39:52
-version: 1.9
+updated: 2020-12-10 20:20:08
+version: 1.10
 ---
 
-This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quikly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of paramerets that have to do with the bash command itself, there are a number of special paramerets to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameterst in general, however in this post the focus will be just on positioanls alone.
+This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quickly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of parameters that have to do with the bash command itself, there are a number of special parameters to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameters in general, however in this post the focus will be just on positionals alone.
 
 So In this post I will be going over a few quick examples of Linux bash scripts that make use of one or more arguments in the form of positional parameters that are given at the command line, or wherever the script is called.
 
