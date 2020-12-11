@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2020-12-10 20:20:08
-version: 1.10
+updated: 2020-12-10 20:23:13
+version: 1.11
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quickly cover the topic of positional parameters. When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of parameters that have to do with the bash command itself, there are a number of special parameters to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameters in general, however in this post the focus will be just on positionals alone.
@@ -17,20 +17,20 @@ So In this post I will be going over a few quick examples of Linux bash scripts 
 
 ## 1 - The basics of positional parameters
 
-So you want to learn what the deal is with paramerets when writing a bash script. Well you have to start somewhere and maybe a good starting point is to lean how to access and make use of positional argumnets. In this section I will be going over just a few quick examples of positionals.
+So you want to learn what the deal is with parameters when writing a bash script. Well you have to start somewhere and maybe a good starting point is to lean how to access and make use of positional arguments. In this section I will be going over just a few quick examples of positionals.
 
-### 1.1 - Basic bash Positional argumnets example
+### 1.1 - Basic bash Positional arguments example
 
-When a bash script is called there might be one or more positional argumnets that where passed when it was called. In fact even if no additional positionals where given when the script was called there is always at least one that is the file name of the script, or the name of the command that was called. Positionals start with the \$0 variable that will be the name of the command or script to begin with, followed by \$1 that wil be the first argument, followed by \$2 that will be the second, and so on. These kinds of variabkles hold the state of the argumnets that where gievn in order of there position from left to right starting with the command name, as such they are often called positional parameters.
+When a bash script is called there might be one or more positional arguments that where passed when it was called. In fact even if no additional positionals where given when the script was called there is always at least one that is the file name of the script, or the name of the command that was called. Positionals start with the \$0 variable that will be the name of the command or script to begin with, followed by \$1 that will be the first argument, followed by \$2 that will be the second, and so on. These kinds of variables hold the state of the arguments that where given in order of there position from left to right starting with the command name, as such they are often called positional parameters.
 
-So a Basic positional argument example bash script might look somethiong like this:
+So a Basic positional argument example bash script might look something like this:
 
 ```bash
 #!/bin/bash
 echo "$0 - $1 - $2"
 ```
 
-I can then save this as something like basic.sh, and then call it in the command line. When doing so I can pass argumnets to the script.
+I can then save this as something like basic.sh, and then call it in the command line. When doing so I can pass arguments to the script.
 
 ```
 $ chmod 755 basic.sh
@@ -38,15 +38,15 @@ $ ./basic.js foo bar
 ./basic.sh - foo - bar
 ```
 
-## 2 - Positional argumnets and special arguments
+## 2 - Positional arguments and special arguments
 
-Although this is a post just on positional arguments alone I should take a moment to at least cover a few basic examples on special arguments in bash. There are a few special parameters in bash that can be used to get things like the name of the current script that is beging called, and so forth. However when it comes to positional parameters there are two special parameters that comes to mind that might be the most important. One of which helps with getting a count of how many argumnets where passed when the script is called, and the other is how to get a collection of all the argumnets that where given.
+Although this is a post just on positional arguments alone I should take a moment to at least cover a few basic examples on special arguments in bash. There are a few special parameters in bash that can be used to get things like the name of the current script that is being called, and so forth. However when it comes to positional parameters there are two special parameters that comes to mind that might be the most important. One of which helps with getting a count of how many arguments where passed when the script is called, and the other is how to get a collection of all the arguments that where given.
 
-So in this section I will be going over a few quick examples of special parameartes in bash.
+So in this section I will be going over a few quick examples of special parameters in bash.
 
 ### 2.1 - Special arguments for getting all positionals and count of positionals
 
-In this example I will be going over two special argumnets that are the first two that I think are the most imporantant when first starting out with writing basic bash scripts. One is the \$\# special parameter that will give me the total count of positionals that where passed and the other is the \$\@ special parameter that will give me the full collecton of positionals.
+In this example I will be going over two special arguments that are the first two that I think are the most important when first starting out with writing basic bash scripts. One is the \$\# special parameter that will give me the total count of positionals that where passed and the other is the \$\@ special parameter that will give me the full collection of positionals.
 
 
 So if I have a basic bash script like this:
@@ -57,7 +57,7 @@ echo "number of arguments: $#"
 echo "arguments: $@"
 ```
 
-it will given me a count of argumnets, and all the arguments
+it will given me a count of arguments, and all the arguments
 
 ```
 $ ./basic.sh foo bar baz
@@ -69,7 +69,7 @@ So then these two values can be used to create basic loops that will loop over a
 
 ## 3 - Positional Parameters and bash Parameters
 
-Now that I have covered not just the basics of positional parameters and a few basic special parameters I should also take a moment to wrint about the bash command itself. That command too can be passed a few argumnets also that have to do with its own set of parameters. many of my bash scripts examples thus far involve making a bash script exacutabule, to which it can then be called dirrectly. However another options world be to call bash, then pass the script, and then pass some positionals for the script.
+Now that I have covered not just the basics of positional parameters and a few basic special parameters I should also take a moment to write about the bash command itself. That command too can be passed a few arguments also that have to do with its own set of parameters. many of my bash scripts examples thus far involve making a bash script executable, to which it can then be called directly. However another options world be to call bash, then pass the script, and then pass some positionals for the script.
 
 In other words something like this:
 
