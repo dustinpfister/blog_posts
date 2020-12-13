@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2020-12-13 14:01:28
-version: 1.5
+updated: 2020-12-13 14:09:24
+version: 1.6
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I strated one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estamate as to how long it would take for the ship to reach Max Safe interger.
@@ -178,7 +178,9 @@ var poolMod = (function () {
     ());
 ```
 
-## 3 - game.js
+## 3 - The main game.js module
+
+I then have a main game module that will be used to create, and update the main game state object for the canvas example.
 
 ```js
 var gameMod = (function(){
@@ -516,7 +518,9 @@ var gameMod = (function(){
 }());
 ```
 
-## 4 - draw.js
+## 4 - The draw.js module as this is a canvas example
+
+So this is a canvas example after all, and just like every other canvas example I often end up with a darw module. This us where I park all my methods and code that has to do with drawing a view for a game state objkect to a canvas element.
 
 ```js
 var draw = (function(){
@@ -667,7 +671,11 @@ var draw = (function(){
 }());
 ```
 
-## 5 - main.js
+## 5 - The main.js file
+
+For this canvas example I have a utilty module, an Object pool module, a game module, and a draw module. There just needs to be a little more javaScript code that will make use of all of this. In many projects what is written here might often turn into a full blown state machine. However for this hyper casual style game I wanted to keep things simple, and to the point. 
+
+So for this canvas example in the main.js file I just create the canvas element, and the main state object that also included the main game object. Beyond that I just have a simple app loop, and attach some event handlers for keyboard and pointer support.
 
 ```js
 // CANVAS
