@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2020-12-13 14:09:24
-version: 1.6
+updated: 2020-12-13 14:23:12
+version: 1.7
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I strated one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estamate as to how long it would take for the ship to reach Max Safe interger.
@@ -840,3 +840,13 @@ canvas.addEventListener('mousedown', pointerEvent);
 canvas.addEventListener('mousemove', pointerEvent);
 canvas.addEventListener('mouseup', pointerEvent);
 ```
+
+## 6 - Conclusion
+
+I was able to get the basic idea of what I wanted togetaher with this fairly quickly. However now the question is how much more do I need to add to this in order to make a project that people are actaully going to want to play? I have a lot of this drafted out in my todo list for this one as of this writing, and I think at least some of it might prove to be interetsing.
+
+I think that maybe an imporatnt part of the process is to not just think of a canvas example as just another project that I need to get over with so I can move on to the next thing. I am guility of this kind of problem with many of my examples thus far, I work on something until I get the basic idea up and running, and then I stop working on it so I can move on to something else.
+
+I have a few canvas examples where I have tryed to put more time and effort into the example in an effor to break a cycle of sorts, but no matter how much time I put into an example I still always feel as though that example is lacking something. 
+
+This is why I have started this hyper casual series of canvas examples. I have some other examples where I have broke the cycle of not going beyond the basic core idea, only to end up stoping eventualy anyway. Ending with a project that is just starting to feel like a game, but not just there yet. So maybe if I start with a very basic idea for a game, try to limit the number of features, and focus on what really truly matters, I can break this cycle once and for all.
