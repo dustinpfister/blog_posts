@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-12-13 14:48:19
-version: 1.71
+updated: 2020-12-13 14:54:17
+version: 1.72
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -31,9 +31,13 @@ I have set up a [git repository at my git-hub account for these canvas examples]
 
 ## 2 - My top picks thus far
 
-Although I now have over 40 canvas examples, and I am still making more, only a handful of them thus far are examples of my best foot forward when it comes to javaScript and canvas. This is not to say that many others are not worth checking out, it is just that many of them are lacking the additional amount of polish that helps to make a canvas project stand out. So I thought I would take a moment to just write about my top pick from this list, and as time goes by I might update this section to reflect the current state of affairs when it comes to half way decent work.
+Although I now have over 40 canvas examples, and I am still making more, only a handful of them thus far are examples of my best foot forward when it comes to javaScript and canvas. This is not to say that many others are not worth checking out, it is just that many of them are lacking the additional amount of polish that helps to make a canvas project stand out. 
+
+So I thought I would take a moment to just write about my top pick from this list, and as time goes by I might update this section to reflect the current state of affairs when it comes to half way decent work. Also I think that I might just update this section to reflect what is currently getting more attention then the others when it comes to various improvements when it comes to additional features, graphics, performance, and code readability improvements.
 
 ### 2.1 - [Hyper casual space Shooter](/2020/12/11/canvas-example-hyper-casual-space-shooter/)
+
+This is a new one the I started in December of 2020 that is just a basic hyper casual style space shooter game in which the player just flys around and blasts blocks. I have some additional plans when it comes to continuing to work on this one, and might make this project the focal point for a while until getting back to work on one of the other canvas examples that need additional work.
 
 ### 2.2 - [Cross hairs](/2020/07/29/canvas-example-game-crosshairs/)
 
