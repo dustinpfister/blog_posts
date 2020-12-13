@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2020-12-13 13:57:02
-version: 1.4
+updated: 2020-12-13 14:01:28
+version: 1.5
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I strated one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estamate as to how long it would take for the ship to reach Max Safe interger.
@@ -82,6 +82,8 @@ utils.shortestDirection = function(from, to, scale) {
 ```
 
 ## 2 - The Pool.js module for creating and updating Object pools
+
+I have made another canvas example a while back in which I made a module that is an object pool type project. After many years of experence writing javaScript code for various projects such as this I have come to find that I like to have fixed object pools to work with when it comes to display objects, rather than to have a system in which these kinds of objects a created and purged as needed. This object pool module is only slightly modified from what I was working with in the objet pool canvas example. I of course made some revisions to the source code to make it more approperate for this specific project.
 
 ```
 var poolMod = (function () {
