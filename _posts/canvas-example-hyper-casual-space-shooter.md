@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2020-12-13 14:30:41
-version: 1.8
+updated: 2020-12-13 14:34:47
+version: 1.9
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer.
@@ -22,7 +22,7 @@ So then for this next hyper casual canvas example I had an idea to just make a s
 
 ## 1 - The utility library
 
-First off as with any of my other canvas example I start off with a main.js file and a utility library. This utiliyy libray is packed with methods that are often reused accross other canvas examples. However I always make a new utlity library for each example. The reason why is becuase I do not want to have this part of the canvas example packed with code that I am not actually going to use in the project. In addition although many of these might be ushual suspects such as a distance forumla, some of theme might be closly related to the nature of the example.
+First off as with any of my other canvas example I start off with a main.js file and a utility library. This utility library is packed with methods that are often reused across other canvas examples. However I always make a new utility library for each example. The reason why is because I do not want to have this part of the canvas example packed with code that I am not actually going to use in the project. In addition although many of these might be usual suspects such as a distance formula, some of theme might be closely related to the nature of the example.
 
 ```js
 var utils = {};
@@ -86,7 +86,7 @@ utils.shortestDirection = function(from, to, scale) {
 
 ## 2 - The Pool.js module for creating and updating Object pools
 
-I have made another canvas example a while back in which I made a module that is an object pool type project. After many years of experence writing javaScript code for various projects such as this I have come to find that I like to have fixed object pools to work with when it comes to display objects, rather than to have a system in which these kinds of objects a created and purged as needed. This object pool module is only slightly modified from what I was working with in the objet pool canvas example. I of course made some revisions to the source code to make it more approperate for this specific project.
+I have made another canvas example a while back in which I made a module that is an object pool type project. After many years of experience writing javaScript code for various projects such as this I have come to find that I like to have fixed object pools to work with when it comes to display objects, rather than to have a system in which these kinds of objects a created and purged as needed. This object pool module is only slightly modified from what I was working with in the object pool canvas example. I of course made some revisions to the source code to make it more appropriate for this specific project.
 
 ```
 var poolMod = (function () {
@@ -523,7 +523,7 @@ var gameMod = (function(){
 
 ## 4 - The draw.js module as this is a canvas example
 
-So this is a canvas example after all, and just like every other canvas example I often end up with a darw module. This us where I park all my methods and code that has to do with drawing a view for a game state objkect to a canvas element.
+So this is a canvas example after all, and just like every other canvas example I often end up with a draw module. This us where I park all my methods and code that has to do with drawing a view for a game state object to a canvas element.
 
 ```js
 var draw = (function(){
@@ -676,7 +676,7 @@ var draw = (function(){
 
 ## 5 - The main.js file
 
-For this canvas example I have a utilty module, an Object pool module, a game module, and a draw module. There just needs to be a little more javaScript code that will make use of all of this. In many projects what is written here might often turn into a full blown state machine. However for this hyper casual style game I wanted to keep things simple, and to the point. 
+For this canvas example I have a utility module, an Object pool module, a game module, and a draw module. There just needs to be a little more javaScript code that will make use of all of this. In many projects what is written here might often turn into a full blown state machine. However for this hyper casual style game I wanted to keep things simple, and to the point. 
 
 So for this canvas example in the main.js file I just create the canvas element, and the main state object that also included the main game object. Beyond that I just have a simple app loop, and attach some event handlers for keyboard and pointer support.
 
@@ -846,10 +846,10 @@ canvas.addEventListener('mouseup', pointerEvent);
 
 ## 6 - Conclusion
 
-I was able to get the basic idea of what I wanted togetaher with this fairly quickly. However now the question is how much more do I need to add to this in order to make a project that people are actaully going to want to play? I have a lot of this drafted out in my todo list for this one as of this writing, and I think at least some of it might prove to be interetsing.
+I was able to get the basic idea of what I wanted together with this fairly quickly. However now the question is how much more do I need to add to this in order to make a project that people are actually going to want to play? I have a lot of this drafted out in my todo list for this one as of this writing, and I think at least some of it might prove to be interesting.
 
-I think that maybe an imporatnt part of the process is to not just think of a canvas example as just another project that I need to get over with so I can move on to the next thing. I am guility of this kind of problem with many of my examples thus far, I work on something until I get the basic idea up and running, and then I stop working on it so I can move on to something else.
+I think that maybe an important part of the process is to not just think of a canvas example as just another project that I need to get over with so I can move on to the next thing. I am guilty of this kind of problem with many of my examples thus far, I work on something until I get the basic idea up and running, and then I stop working on it so I can move on to something else.
 
-I have a few canvas examples where I have tryed to put more time and effort into the example in an effor to break a cycle of sorts, but no matter how much time I put into an example I still always feel as though that example is lacking something. 
+I have a few canvas examples where I have tried to put more time and effort into the example in an effort to break a cycle of sorts, but no matter how much time I put into an example I still always feel as though that example is lacking something. 
 
-This is why I have started this hyper casual series of canvas examples. I have some other examples where I have broke the cycle of not going beyond the basic core idea, only to end up stoping eventualy anyway. Ending with a project that is just starting to feel like a game, but not just there yet. So maybe if I start with a very basic idea for a game, try to limit the number of features, and focus on what really truly matters, I can break this cycle once and for all.
+This is why I have started this hyper casual series of canvas examples. I have some other examples where I have broke the cycle of not going beyond the basic core idea, only to end up stopping eventually anyway. Ending with a project that is just starting to feel like a game, but not just there yet. So maybe if I start with a very basic idea for a game, try to limit the number of features, and focus on what really truly matters, I can break this cycle once and for all.
