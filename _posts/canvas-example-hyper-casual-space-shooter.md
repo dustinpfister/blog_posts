@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2020-12-13 13:51:48
-version: 1.3
+updated: 2020-12-13 13:57:02
+version: 1.4
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I strated one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estamate as to how long it would take for the ship to reach Max Safe interger.
@@ -18,6 +18,8 @@ So then for this next hyper casual canvas example I had an idea to just make a s
 <!-- more -->
 
 ## 1 - The utility library
+
+First off as with any of my other canvas example I start off with a main.js file and a utility library. This utiliyy libray is packed with methods that are often reused accross other canvas examples. However I always make a new utlity library for each example. The reason why is becuase I do not want to have this part of the canvas example packed with code that I am not actually going to use in the project. In addition although many of these might be ushual suspects such as a distance forumla, some of theme might be closly related to the nature of the example.
 
 ```js
 var utils = {};
@@ -79,7 +81,7 @@ utils.shortestDirection = function(from, to, scale) {
 };
 ```
 
-## 2 - Pool.js
+## 2 - The Pool.js module for creating and updating Object pools
 
 ```
 var poolMod = (function () {
