@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-12-13 14:47:05
-version: 1.70
+updated: 2020-12-13 14:48:19
+version: 1.71
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial). On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them. 
@@ -161,6 +161,8 @@ A canvas example of a grid where each cell changes color depending on the status
 A start with what might become a world simulator type canvas example thing like that of Sim Earth.
 
 ### 3.28 - [Hyper casual space Shooter](/2020/12/11/canvas-example-hyper-casual-space-shooter/)
+
+This is another hyper causal game where the player can just fly around and blast blocks.
 
 ### 3.29 - [Hyper casual to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/)
 
