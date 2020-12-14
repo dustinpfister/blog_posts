@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 15:43:20
-version: 1.8
+updated: 2020-12-14 15:51:45
+version: 1.9
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -121,4 +121,17 @@ print(y)
 
 Of course there is a whole lot more to write about when it comes to variables and python. I think that many subjects surrounding variables in python should be pulled into another post. However maybe there are at least a few more things that I should touch base on at least. So lets look at just a few more examples of variables in python.
 
+### 2.2 - The type built in function
 
+### 2.3 - Like javaScript it would seem that Python is a typeless language
+
+There are a few things held in common with javaScript, they are both high level lanagues that require and external binary in order to run the code as I have mentioned before hand. However another thing that the hold in common is that they are bolth examples of typless languges. This does not mean that python does not have data types, it sure does, however what it does mean is that a variable can be any type at any given moment. This can easily be confirmed with a little python code.
+
+```python
+a = 'a is a string'
+print(a, type(a)) # a is a string <class 'str'>
+a = 42
+print(a, type(a)) # 42 <class 'int'>
+```
+
+This is somthing that will cause an error in other lanuguaes that have string typeing. In those kinds of langues you can not just go from a string to some other data type such as an integer.
