@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 13:47:31
-version: 1.3
+updated: 2020-12-14 14:00:51
+version: 1.4
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -35,4 +35,21 @@ If you are not using a raspberry PI I strongly encurage that you look into them 
 
 Still I think that I sould just mnetion that I am uisng A Linux system, and I generaly prefer using Linux over Windows and MacOS. I will not be getting into installying python on systems that I do not use that much any more, or al all actually. If you are not using what I am using in terms of operating system tecknology and hardware I assume that you are still smart enough to know how to install the python binaries on your own by some guide outside of this post. Maybe one of the best sources would be the officakl python wiki that has a [page on installing python](https://wiki.python.org/moin/BeginnersGuide/Download).
 
+### 1.2 - Python hello world file
 
+So now for a very simple python hello world example. The python lanague has a number of built in functions, one of them is the [print function](https://docs.python.org/3.7/library/functions.html#print). The typical hello world of any lanague is to just simply print the text _Hello world_ in the standard out put. With that said just a single call of the print function with a string literal of the text passed as the first argument will work as a hello world example.
+
+So if you write somnething like this in a text editor:
+
+```python
+print("Hello World")
+```
+
+And then save it as something like hello.py then it can be used in the command line like this:
+
+```
+$ python hello.py
+Hello World
+```
+
+So then that would be one way to go about doing a hello world example of python. However maybe there are a number of other features and options that one should know about. So lets look at just a few more simple examples of puthon befomre moving on.
