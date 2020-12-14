@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 15:27:07
-version: 1.7
+updated: 2020-12-14 15:43:20
+version: 1.8
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -104,4 +104,21 @@ if x > 4:
 ```
 
 so returns and white space are important in python as it is a way to define blocks of code. There is not standard as to how many spaces you use to indent, just as long as you use at least one.
+
+## 2 - Variables
+
+So now that I have covered the very basics of getting started with python, maybe it is time to move on to something more beyond just printing hello world in the standard output. There are many different ways that I could go from that very basic starting point wheh it comes to leaning a new languge, but maybe a good choce would be getting into some of the basics when it comes to variables in python. In this section I will not be getting into everything and anything variable realted whe it comes to varibles, however at least some of the basics should be coverend when it comes to this getting started post.
+
+### 2.1 - Basic variable example
+
+In javaScript there is var, const, and let that needs to be type first followed by the variable name. However with python there is just simply typeing the variable name, then assigning a value to it, and that is it.
+
+```python
+x = 5
+y = x + 10
+print(y)
+```
+
+Of course there is a whole lot more to write about when it comes to variables and python. I think that many subjects surrounding variables in python should be pulled into another post. However maybe there are at least a few more things that I should touch base on at least. So lets look at just a few more examples of variables in python.
+
 
