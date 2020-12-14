@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 14:00:51
-version: 1.4
+updated: 2020-12-14 14:08:04
+version: 1.5
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -53,3 +53,21 @@ Hello World
 ```
 
 So then that would be one way to go about doing a hello world example of python. However maybe there are a number of other features and options that one should know about. So lets look at just a few more simple examples of puthon befomre moving on.
+
+### 1.3 - A word on shebangs
+
+When it comes to writing python scripts python is an example of a high level lanaguge such as bash and javaScript. In Linux and other systems that use bash as a shell, it is possible to place what is called a [shebang](https://en.wikipedia.org/wiki/Shebang_%28Unix%29) at the top of a script. This is a way to let bash know where a binary is to run a script that has been made exacutauble.
+
+
+
+```python
+#!/usr/bin/python
+ 
+print("hello world")
+
+```
+
+```
+$ python shebang.py
+hello world
+```
