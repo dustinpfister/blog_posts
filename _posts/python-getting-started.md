@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 15:17:19
-version: 1.6
+updated: 2020-12-14 15:27:07
+version: 1.7
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -58,7 +58,9 @@ So then that would be one way to go about doing a hello world example of python.
 
 When it comes to writing python scripts python is an example of a high level lanaguge such as bash and javaScript. In Linux and other systems that use bash as a shell, it is possible to place what is called a [shebang](https://en.wikipedia.org/wiki/Shebang_%28Unix%29) at the top of a script. This is a way to let bash know where a binary is to run a script that has been made exacutauble.
 
+When it comes to a shebang in python I just need to start off the first line of a script with a number sysmbol \# followed by an exlamation point. After that I just need to set the location of the python binary that I want to use to run the script, for me the python binaries are in the /use/bin folder.
 
+So if I take the hello world example that I worked out I can add a shebang like this.
 
 ```python
 #!/usr/bin/python
@@ -67,10 +69,17 @@ print("hello world")
 
 ```
 
+I can then make the script exacutabule with chmod, after that I can run the script directly without calling the python binary first.
+
 ```
-$ python shebang.py
+$ chmod 755 hello.py
+$ ./hello.py
 hello world
 ```
+
+This is something that does not just apply to python, but just about any high level languae in general actually. When it comes to using javaScript outside of a web browser with node for example I can add a shebang to the top of my javaScript files also. The only diferenec is that I just need to have it point to the node binary location rather than python.
+
+When it comes to any kind of low level language such as C, the use of a shebang is not required. The reason why is that C is an example of a langue in which the source code is compiled into a binary from with a compiler. In which case there is no engine, or interperter binary that must be called first, the compiled binary itself is what can be called directly. In that case the binary file just needs to be set exacuabule by using chmod to set the permisions to do so for it.
 
 ### 1.4 - Indentation
 
