@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 14:08:04
-version: 1.5
+updated: 2020-12-14 15:17:19
+version: 1.6
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -71,3 +71,28 @@ print("hello world")
 $ python shebang.py
 hello world
 ```
+
+### 1.4 - Indentation
+
+Another thing that I think I should point out with python is indentation in python. In many other langues such as javaScript indentaion might be used when it comes to making a devlopment form of source code, however when it comes to making that code ready for deployment it often makes sense to create another form of the source code where all the white space is removed. This might make sense when it comes to javaScript code, as fidnign ways to compact the size of source code files will often help to reduce the size of the files, and thus reduce the amount of bandwidth required to send it out to a client system. However when it comes to python this is not really a concern, in addition the removeal of white space can and will actually result in errors.
+
+The thing about python compared to lanbgues such as javaScript is that it is a totaly difrent syntax, javaScript uses a c like syntax that involves sets of curly brackets. This helps maintain the meaning of code when when whitespace charicters including spaces, tabs, and retuns are removed. However with python whitespace chariters are the equvalent of those curly brackets. This is something that I became aware of right away when it comes to just working out some very basic examples involving just a simple if statement.
+
+This WILL cause an error:
+
+```python
+x=5
+if x > 4:
+print('x is > 4') # works
+```
+
+This WILL NOT cause an error:
+
+```python
+x=5
+if x > 4:
+  print('x is > 4') # works
+```
+
+so returns and white space are important in python as it is a way to define blocks of code. There is not standard as to how many spaces you use to indent, just as long as you use at least one.
+
