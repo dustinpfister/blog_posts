@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 16:05:17
-version: 1.11
+updated: 2020-12-14 16:11:23
+version: 1.12
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -157,7 +157,30 @@ print(a, type(a)) # 42 <class 'int'>
 
 This is somthing that will cause an error in other lanuguaes that have string typeing. In those kinds of langues you can not just go from a string to some other data type such as an integer.
 
-## 3 - Conclusion
+## 3 - Comments in python
+
+Another topic that I think I should write about here is how to go about writing comments in python. The good news is that if you knwo how to create commnets in bash then you all ready know how to create them. The bad news is that you have come to like how commnets are done in languages such as javaScript there is to true multi-line comment syntax. However one trick to get a multi line effect is to have a multi like string litereal. This is not a comment mind you, but it is a string litereal that just does not do anything.
+
+```python
+#!/usr/bin/python
+
+# Real python commnets are like that of bash using the # symbol
+
+# There is no real multi-line comment syntax
+# For Python so one way to do it is to just
+# use the # symbol over and over again
+
+"""
+However another trick is to have a multi-line
+String literal or constant if you prefer
+This is not a real comment in python it is
+very much a string value. However by choosing to
+do nothing with it the string value will
+work like a multi-line comment
+"""
+```
+
+## 4 - Conclusion
 
 So that is it for my getting started post on python, as I continue working out additional examples I am sure that I will come around to edit this post and add even more additional sections and examples. I am still fairly new to python myself, so I need to keep workong on code examples before I can gain a batter sense of what should and should not be parked in this getting started post.
 
