@@ -5,13 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 16:11:23
-version: 1.12
+updated: 2020-12-14 16:15:13
+version: 1.13
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
 
-However I think that when it comes to starting another serious collection of content on another langue, maybe it would be best to start with python. I have took the time to start another personal collection of source code examples on python, and now I think that I should start writing some content on the subject.
+However I think that when it comes to starting another serious collection of content on another langue, maybe it would be best to start with [learning the very basics at least of python](https://docs.python.org/3/tutorial/). I have took the time to start another personal collection of source code examples on python, and now I think that I should start writing some content on the subject.
 
 So far there is a great deal that I like about python compared to a javaScript enviorment. I do like node still very much, but I can all ready see why a lot of people might prefer python when it comes to writing some kind of desktop applacation, of back end system. When it comes to built in modules there is just so much more to work with compared to node.
 
@@ -159,7 +159,7 @@ This is somthing that will cause an error in other lanuguaes that have string ty
 
 ## 3 - Comments in python
 
-Another topic that I think I should write about here is how to go about writing comments in python. The good news is that if you knwo how to create commnets in bash then you all ready know how to create them. The bad news is that you have come to like how commnets are done in languages such as javaScript there is to true multi-line comment syntax. However one trick to get a multi line effect is to have a multi like string litereal. This is not a comment mind you, but it is a string litereal that just does not do anything.
+Another topic that I think I should write about here is how to go about writing comments in python. The good news is that if you knwo how to create commnets in bash then you all ready know how to create them. The bad news is that you have come to like how commnets are done in languages such as javaScript there is to true multi-line comment syntax. However [one trick to get a multi line comment like effect in python](https://dbader.org/blog/python-multiline-comment) is to have a multi like string litereal. This is not a comment mind you, but it is a string litereal that just does not do anything.
 
 ```python
 #!/usr/bin/python
