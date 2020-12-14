@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 15:51:45
-version: 1.9
+updated: 2020-12-14 16:02:34
+version: 1.10
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional langauges beyonf just that of javaScript. I have staretd a collection of posts on bash scripts which I think can be thought of as another kind of lanague, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put togeather a few simple C language examples as I think that doind so is called for if I am going to write a post on gcc.
@@ -122,6 +122,27 @@ print(y)
 Of course there is a whole lot more to write about when it comes to variables and python. I think that many subjects surrounding variables in python should be pulled into another post. However maybe there are at least a few more things that I should touch base on at least. So lets look at just a few more examples of variables in python.
 
 ### 2.2 - The type built in function
+
+This is a getting strated python post, so I will not be getting into data types in depth here. However I think that I should at least mention the type built in function. This is how one will go about finding out what kind of data type one is dealing with when creating variables.
+
+```python
+a = 5
+print( type(a) ) # <class 'int'>
+ 
+b = 5.7
+print( type(b) ) # <class 'float'>
+ 
+c = 'string'
+print( type(c) ) # <class 'str'>
+ 
+d = ['one', 2, 3, 'four']
+print( type(d) ) # <class 'list'>
+ 
+e = bool(0)
+print( type(e) ) # <class 'bool'>
+```
+
+In javaScript there is just one data type for numbers, however in python there is more than one data type just for numbers. On top of that there are a number of options for data structures just when it comes to what there is to work with in python by itself without adding any additional module. If that is not enough there is a wide range of additional modules that add additional data types that have to do with a wide range of different tasks.
 
 ### 2.3 - Like javaScript it would seem that Python is a typeless language
 
