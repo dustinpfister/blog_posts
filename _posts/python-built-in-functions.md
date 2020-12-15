@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 12:13:11
-version: 1.5
+updated: 2020-12-15 12:21:31
+version: 1.6
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing enviorements there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collecion of functions that I should lookat are these built in functions, then what there is to work with when it comes to standard librarys, then user space libarrys, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -54,11 +54,73 @@ print(nums)
 
 The all function can be used to test if all the elements in a list are true.
 
-### 2.1 - Basic all example
-
 ```python
 l=[1,2,3]
 print( all(l) ) # true
 l=[0,2,3]
 print( all(l) ) # false
+```
+
+## 3 - any - tetsing if at least one element in a list is true
+
+```python
+print( any([0,1,0,0]) ) # True
+print( any([0,0,0,0]) ) # False
+```
+
+## 4 - ascii
+
+```python
+a = [1,2,3]
+ 
+s = ascii(a) + "foo"
+print(type(a)) # <class 'list'>
+print(type(s)) # <class 'str'>
+```
+
+## 5 - bytearray
+
+```python
+a = bytearray([255, 128])
+ 
+print(a[0]) # 255
+print(a) # bytearray(b'\xff\x80')
+print(type(a)) # <class 'bytearray'>
+```
+
+## 6 - bool
+
+```python
+print( bool(0) ) # False
+print( bool(1) ) # True
+```
+
+## 7 - range
+
+### 7.1 - Basic range example
+
+```python
+r = range(0,10)
+print( type (r) ) # <class 'range'>
+```
+
+### 7.2 - for loop range example
+
+```python
+import math
+base=2
+nums=[]
+for e in range(0,10):
+  nums.append(int(math.pow(base, e)))
+print(nums)
+# [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+```
+
+## 8 - type
+
+```python
+print( type(1) )         # <class 'int'>
+print( type(1.5) )       # <class 'float'>
+print( type([1,2,3]) )   # <class 'list'>
+print( type({1,2,3}) )   # <class 'set'>
 ```
