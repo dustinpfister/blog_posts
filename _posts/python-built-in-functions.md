@@ -5,11 +5,11 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 15:28:39
-version: 1.17
+updated: 2020-12-15 15:30:16
+version: 1.18
 ---
 
-I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
+I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
 
 This post will then be a general overview of all of the built in functions to work with in python. I might not get to covering all of them, but I will at least mention the ones that strike me as the most important thus far when it comes to getting started with python at least.
 
