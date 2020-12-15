@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 15:07:46
-version: 1.14
+updated: 2020-12-15 15:16:01
+version: 1.15
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing enviorements there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collecion of functions that I should lookat are these built in functions, then what there is to work with when it comes to standard librarys, then user space libarrys, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -111,11 +111,23 @@ print(type(a)) # <class 'bytearray'>
 
 ## 6 - bool
 
-The bool method is the way to go about creating a boolean value in python.
+The bool method is the way to go about creating a boolean value in python. I Just have to call the boolen function, and pass a value to which I want the equavelent boolean value. For example if I pass the int 0 I would exspect for that to result in a false boolen value, and if I pass the int 1 I would exspect a true boolean value.
 
 ```python
 print( bool(0) ) # False
 print( bool(1) ) # True
+```
+
+### 6.1 - Expressions can work out to booleans also
+
+The bool function can be used to convert a value to a boolean data type, but a boolean data type can also be the result of an expression.
+
+```python
+print( bool(0) ) # False
+print( bool(1) ) # True
+ 
+print( 1>1 ) # False
+print( 2>1 ) # True
 ```
 
 ## 7 - range
