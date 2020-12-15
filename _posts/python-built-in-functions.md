@@ -5,36 +5,36 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 15:16:01
-version: 1.15
+updated: 2020-12-15 15:24:06
+version: 1.16
 ---
 
-I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing enviorements there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collecion of functions that I should lookat are these built in functions, then what there is to work with when it comes to standard librarys, then user space libarrys, and then if all else fails look into what I need to do in order to come up with my own solution.
+I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
 
-This post will then be a general overview of all of the built in functions to work with in python. I might not get to covering all of them, but I will at least mention the ones that strike me as the most important thus far when it comes to getting started with byton at least.
+This post will then be a general overview of all of the built in functions to work with in python. I might not get to covering all of them, but I will at least mention the ones that strike me as the most important thus far when it comes to getting started with python at least.
 
 <!-- more -->
 
 ## 1 - abs - The built in python method for Absolute Value
 
-One method that every programing langaue should have built in might very well be an absolute value method. Maybe this find of method fould be pulled away into a Math module, but even then it should be part of a standard Math module. In python there is such a standard module, but when it comes to absolute value that is one of the built in functions in python for better or worse.
+One method that every programing language should have built in might very well be an absolute value method. Maybe this kind of method can be pulled away into a Math module, but even then it should be part of a standard Math module. In python there is such a standard module, but when it comes to absolute value that is one of the built in functions in python for better or worse.
 
 ### 1.1 - Basic example of abs
 
-A basic example of the abs method would be to just call it and pass a number value that is nagative, the returned result should be the posative counter part of that number.
+A basic example of the abs method would be to just call it and pass a number value that is negative, the returned result should be the positive counter part of that number.
 
 ```python
 print( abs(-5) ) # 5
 print( abs(-5.0) ) # 5.0
 ```
 
-That is the basic idea of absolut value, pass a number that may be nagative, but in any case return a posative number. However in order to truly understand and apresheate absolute value maybe at least a few more examples are in order.
+That is the basic idea of absolute value, pass a number that may be negative, but in any case return a positive number. However in order to truly understand and absolute absolute value maybe at least a few more examples are in order.
 
 ### 1.2 - A Bias percent method abs example
 
-When making games and various features of games such as an experence point system, animations and so forth I often find myself making what I would call a percent method. Maybe that is not always such a good name for such a method, but to expand on what I mean by that it is a method where I have a function a Numerator and a denomanator and what is returned is a value between and including 0 and 1.
+When making games and various features of games such as an experience point system, animations and so forth I often find myself making what I would call a percent method. Maybe that is not always such a good name for such a method, but to expand on what I mean by that it is a method where I have a function a numerator and a denominator and what is returned is a value between and including 0 and 1.
 
-One such percent method that I have made in the past is a bias method that might look something liek this.
+One such percent method that I have made in the past is a bias method that might look something like this.
 
 ```python
 def bias(n, d):
@@ -52,7 +52,7 @@ print(nums)
 
 ## 2 - all - Testing if all elements in a list are true
 
-The all function can be used to test if all the elements in a list are true. If an element is not a boolean value then whatever the truth value of the element is will be used. For example if I have an array of all posative numbers then that list will result in a true value being returned when I pass that list to the all method. Then it would also go without saying that if I pass an array that has even just one number that is zero or lower that will result in a false value being returned by the all method.
+The all function can be used to test if all the elements in a list are true. If an element is not a boolean value then whatever the truth value of the element is will be used. For example if I have an array of all positive numbers then that list will result in a true value being returned when I pass that list to the all method. Then it would also go without saying that if I pass an array that has even just one number that is zero or lower that will result in a false value being returned by the all method.
 
 ```python
 l=[1,2,3]
@@ -72,9 +72,9 @@ print( any([0,0,0,0]) ) # False
 
 ## 4 - ascii
 
-The ascii function is a way to go about creating a string value of an object. There are actually a few options when it comes to built in functions that convert an object value to a string value. The other built in functions of interets are the repr, and str functions that do more os less the same thing only with a few note worth diferences.
+The ascii function is a way to go about creating a string value of an object. There are actually a few options when it comes to built in functions that convert an object value to a string value. The other built in functions of interest are the repr, and str functions that do more os less the same thing only with a few note worth differences.
 
-With the ascii method the onw thing that stands out from the other options is that it will escape non ascii charicters. So as the name sugtests it will turn a non ascii friendly string into one that is composed of just ascii range charicters.
+With the ascii method the onw thing that stands out from the other options is that it will escape non ascii characters. So as the name suggests it will turn a non ascii friendly string into one that is composed of just ascii range characters.
 
 ```python
 a = [1,2,3]
@@ -86,7 +86,7 @@ print(type(s)) # <class 'str'>
 
 ### 4.1 - Compared to other functions ( str and repr )
 
-The ascii function is helpful for converting not just objects but also string values to ascii friendly strings. So in generl it is a good way to go about making sure the the returned string value will not have any charicters that go outside of the ascii code point range. Anything that goes above it will be replaced with an escape code sequence.
+The ascii function is helpful for converting not just objects but also string values to ascii friendly strings. So in general it is a good way to go about making sure the the returned string value will not have any characters that go outside of the ascii code point range. Anything that goes above it will be replaced with an escape code sequence.
 
 ```python
 a = [1,2,3]
@@ -99,7 +99,7 @@ print( repr(s) ) # 'ð'
 
 ## 5 - bytearray
 
-return an array of byte values.
+The bytearray will return an array of byte values.
 
 ```python
 a = bytearray([255, 128])
@@ -111,7 +111,7 @@ print(type(a)) # <class 'bytearray'>
 
 ## 6 - bool
 
-The bool method is the way to go about creating a boolean value in python. I Just have to call the boolen function, and pass a value to which I want the equavelent boolean value. For example if I pass the int 0 I would exspect for that to result in a false boolen value, and if I pass the int 1 I would exspect a true boolean value.
+The bool method is the way to go about creating a boolean value in python. I Just have to call the boolen function, and pass a value to which I want the equivalent boolean value. For example if I pass the int 0 I would expect for that to result in a false boolen value, and if I pass the int 1 I would expect a true boolean value.
 
 ```python
 print( bool(0) ) # False
@@ -132,11 +132,11 @@ print( 2>1 ) # True
 
 ## 7 - range
 
-The range method is a way to qucikly create a range of numbers.
+The range method is a way to quickly create a range of numbers.
 
 ### 7.1 - Basic range example
 
-For a basic example of the raneg function there is just calling the function and passing a starting value as the first argument, followed by another value that will be the end value.
+For a basic example of the range function there is just calling the function and passing a starting value as the first argument, followed by another value that will be the end value.
 
 ```python
 r = range(0,10)
@@ -159,11 +159,11 @@ print(nums)
 
 ## 8 - print - Printing something out to the standard output
 
-When it comes to starting even the most basic of python examples, often it is needed to have a way to print something out to the standard output. One way to go about doing so is with the print built in function, which would be the python equavelet to something like console.log in javaScript.
+When it comes to starting even the most basic of python examples, often it is needed to have a way to print something out to the standard output. One way to go about doing so is with the print built in function, which would be the python equivalent to something like console.log in javaScript.
 
 ### 8.1 - Basic print example
 
-A basic example of the print buit in function would be to just call it and pass it a value that you would like to print out to the standard output.
+A basic example of the print built in function would be to just call it and pass it a value that you would like to print out to the standard output.
 
 ```python
 # can pass a string value to print
@@ -176,7 +176,7 @@ print( 5 ) # 5
 
 ### 8.2 - Change what the end of line is
 
-By default the print built in method will add an end of line after each call of the print method in the form of a single line feed charicter. In some projects I might want to change what this is, such as a more windows friendly end of line string, or even nothing actually. To change what each line ends with I just need to use the end parameter when calling the print function. When doing so I can make what the end of line string is to anything that I want including an empty string.
+By default the print built in method will add an end of line after each call of the print method in the form of a single line feed character. In some projects I might want to change what this is, such as a more windows friendly end of line string, or even nothing actually. To change what each line ends with I just need to use the end parameter when calling the print function. When doing so I can make what the end of line string is to anything that I want including an empty string.
 
 ```
 mess='Hello'
@@ -217,4 +217,4 @@ print( type({1,2,3}) )   # <class 'set'>
 
 ## 10 - Conclusion
 
-That is all for built in functions for now, if I get around to editing this post I will see about expanding some of these sections with even more examples of built in python functions. As of this writing I am still fairly new to using python, so I will want to gain some more expernece working out some real python examples in order to gain a better sense of what built in functions are used the most often, and thus desirce some more detailed examples.
+That is all for built in functions for now, if I get around to editing this post I will see about expanding some of these sections with even more examples of built in python functions. As of this writing I am still fairly new to using python, so I will want to gain some more experience working out some real python examples in order to gain a better sense of what built in functions are used the most often. Once I have a better sense of what I am using the most I can then add more examples of the built in functions that are the most important.
