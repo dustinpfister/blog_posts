@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 15:24:06
-version: 1.16
+updated: 2020-12-15 15:28:39
+version: 1.17
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -206,7 +206,7 @@ print('')
 
 ## 9 - type - To check out what the current data type of a value is
 
-There is then also the type function that is often useful to get the type of a value.
+The python language has a few data types built into python itself. There is not just one but several data types for numbers, and then a whole bunch of different object types, and some additional other data types like strings and booleans. On top of that yet even more data types can be added into the mix when it comes to libraries, so then there should be a way to always know what kind of type one is dealing with when it comes to working with all the different kinds of primitives and objects in python itself as well as all the various additional libraries. So then there is then the type function that is often useful to get the type of a value so that I know what I am dealing with.
 
 ```python
 print( type(1) )         # <class 'int'>
