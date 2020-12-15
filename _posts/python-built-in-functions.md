@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 12:36:46
-version: 1.10
+updated: 2020-12-15 14:18:16
+version: 1.11
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing enviorements there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collecion of functions that I should lookat are these built in functions, then what there is to work with when it comes to standard librarys, then user space libarrys, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -130,7 +130,24 @@ print(nums)
 # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 ```
 
-## 8 - type - To check out what the current data type of a value is
+## 8 - print - Printing something out to the standard output
+
+When it comes to starting even the most basic of python examples, often it is needed to have a way to print something out to the standard output. One way to go about doing so is with the print built in function, which would be the python equavelet to something like console.log in javaScript.
+
+### 8.1 - Basic print example
+
+A basic example of the print buit in function would be to just call it and pass it a value that you would like to print out to the standard output.
+
+```python
+# can pass a string value to print
+print('Hello World') # 'Hello World'
+ 
+# can pass other data types to print
+# such as an init
+print( 5 ) # 5
+```
+
+## 9 - type - To check out what the current data type of a value is
 
 There is then also the type function that is often useful to get the type of a value.
 
@@ -141,6 +158,6 @@ print( type([1,2,3]) )   # <class 'list'>
 print( type({1,2,3}) )   # <class 'set'>
 ```
 
-## 9 - Conclusion
+## 10 - Conclusion
 
 That is all for built in functions for now, if I get around to editing this post I will see about expanding some of these sections with even more examples of built in python functions. As of this writing I am still fairly new to using python, so I will want to gain some more expernece working out some real python examples in order to gain a better sense of what built in functions are used the most often, and thus desirce some more detailed examples.
