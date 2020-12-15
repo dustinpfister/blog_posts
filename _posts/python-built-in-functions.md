@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 12:21:31
-version: 1.6
+updated: 2020-12-15 12:25:17
+version: 1.7
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing enviorements there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collecion of functions that I should lookat are these built in functions, then what there is to work with when it comes to standard librarys, then user space libarrys, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -52,7 +52,7 @@ print(nums)
 
 ## 2 - all - Testing if all elements in a list are true
 
-The all function can be used to test if all the elements in a list are true.
+The all function can be used to test if all the elements in a list are true. If an element is not a boolean value then whatever the truth value of the element is will be used. For example if I have an array of all posative numbers then that list will result in a true value being returned when I pass that list to the all method. Then it would also go without saying that if I pass an array that has even just one number that is zero or lower that will result in a false value being returned by the all method.
 
 ```python
 l=[1,2,3]
