@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 14:18:16
-version: 1.11
+updated: 2020-12-15 14:33:26
+version: 1.12
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing enviorements there are a number of built in functions. It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collecion of functions that I should lookat are these built in functions, then what there is to work with when it comes to standard librarys, then user space libarrys, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -145,6 +145,36 @@ print('Hello World') # 'Hello World'
 # can pass other data types to print
 # such as an init
 print( 5 ) # 5
+```
+
+### 8.2 - Change what the end of line is
+
+By default the print built in method will add an end of line after each call of the print method in the form of a single line feed charicter. In some projects I might want to change what this is, such as a more windows friendly end of line string, or even nothing actually. To change what each line ends with I just need to use the end parameter when calling the print function. When doing so I can make what the end of line string is to anything that I want including an empty string.
+
+```
+mess='Hello'
+ 
+# by default print will append a new line after each call
+i=0
+while i < 5:
+  print(mess);
+  i = i + 1;
+print('')
+# end can be used to change that
+i=0
+while i < 5:
+  print(mess, end="");
+  i = i + 1;
+print('')
+ 
+#Hello
+#Hello
+#Hello
+#Hello
+#Hello
+#
+#HelloHelloHelloHelloHello
+#
 ```
 
 ## 9 - type - To check out what the current data type of a value is
