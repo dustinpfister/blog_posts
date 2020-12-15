@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 15:56:25
-version: 1.19
+updated: 2020-12-15 16:00:31
+version: 1.20
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -130,7 +130,19 @@ print( 1>1 ) # False
 print( 2>1 ) # True
 ```
 
-## 7 - len
+## 7 - len - Find out how many items are in an object such as a list
+
+Often I might want to know how many items there are in an object such as a list. For this common task there is the len method that is fairly simple to use. I Just call the len function and pass the object to which I want to know the number of items. In this section I will be going over a few quick examples of the len function.
+
+### 7.1 - Basic example of len
+
+Say I have a simple list and I just want to know how many items are in the list. I can just call the len method and pass the list, the returned result will then be the number of items in the list
+
+```python
+l=[1,2,3,4]
+ 
+print( len(l) ) # 4
+```
 
 ## 8 - print - Printing something out to the standard output
 
