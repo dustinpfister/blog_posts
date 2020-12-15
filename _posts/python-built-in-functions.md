@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 16:00:31
-version: 1.20
+updated: 2020-12-15 16:06:35
+version: 1.21
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -142,6 +142,19 @@ Say I have a simple list and I just want to know how many items are in the list.
 l=[1,2,3,4]
  
 print( len(l) ) # 4
+```
+
+### 7.2 - A while loop example of len
+
+One typical use case of the len function would be to use it to set a starting index value for a while loop. Here I have a basic while loop example in which I am starting the index value for a list by setting it to the length of the list with the len function. I can then just subtract inside the body of the while loop before referenceing elements in the list. The result is an effet here I am looping backwards thre a list
+
+```python
+l=['a','b','c','d']
+i= len(l)
+ 
+while i > 0:
+  i = i - 1
+  print(i, l[i])
 ```
 
 ## 8 - print - Printing something out to the standard output
