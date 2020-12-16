@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 17:01:00
-version: 1.16
+updated: 2020-12-16 17:06:56
+version: 1.17
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking up another programing language other than javaScript that I have been working with for years. I do very much still like javaScript a lot, and thing that it is a great starting language for people who have zero experence programing, I just think that it is time to finnaly start trying out something else.
@@ -110,7 +110,11 @@ print(l) # [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 ## 3 - for loops
 
-Another kind of loop to work with in python is a for loop.
+Another kind of loop to work with in python is a for loop. Although it is possible to work with lists, with while loops it might be easier to just use a for loop. So far it would seem that a for loop might be a better option when it comes to working with lists, and sequences. So becuase this is a post on control flow in python I should go over some examples of for loops also, so lets look at a few examples.
+
+### 3.1 - Basic for loop example
+
+So here is a basic for loop example where I am just looping over a list.
 
 ```python
 nums = [3.5, 2, 3.5]
