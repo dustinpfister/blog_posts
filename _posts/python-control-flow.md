@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 15:21:31
-version: 1.5
+updated: 2020-12-16 16:01:13
+version: 1.6
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
@@ -38,8 +38,12 @@ print(d, type(d).__name__ ) # False bool
 
 ### 1.2 - A quick word on expressions
 
-Expressions are a topic that desirve a whole other post, and maybe even several posts actaully. Expressions can be very simple, however they can also get pretty complex.
+Expressions are a topic that desirve a whole other post, and maybe even several posts actaully. Expressions can be very simple, however they can also get pretty complex. However for the sake of this post on just control flow in python it might be called for to just stick to some basic expressions.
 
+Some basic expressions might just involve comparing two values to see if one is greater than another, the other way around, or if they are equal to each other. In any case the expressions will evaluate to a true, or false boolean value, and this is how expressions relate to the topic of a bool value that I touched base on.
+
+Here are some basic examples of python expressions to start off with when it comes to what I think is a good starting point for if statemenets.
+ 
 ```python
 x = 5
 y = 10
@@ -53,6 +57,8 @@ print( b, type(b).__name__ ) # False bool
 c = x == y
 print( c, type(c).__name__ ) # False bool
 ```
+
+So now that we have a basic idea of what a boolean value is and what an expression is we can now move on to some basic exmaples of if statements in python.
 
 ### 1.3 - Basic if statement example
 
