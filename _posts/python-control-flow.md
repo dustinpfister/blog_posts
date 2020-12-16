@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 17:21:30
-version: 1.19
+updated: 2020-12-16 17:23:25
+version: 1.20
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking up another programing language other than javaScript that I have been working with for years. I do very much still like javaScript a lot, and thing that it is a great starting language for people who have zero experence programing, I just think that it is time to finnaly start trying out something else.
@@ -133,6 +133,8 @@ for x in range(0,10):
 
 ### 3.3 - Loop over a string
 
+One interetsing thing about for loops in python is that they can be used to loop over each charicter in a string.
+
 ```python
 name="Dustin"
 for c in name:
@@ -140,6 +142,8 @@ for c in name:
 ```
 
 ### 3.4 - Nested for loop example
+
+There is also haveing nested for loops also, here is a quick example of using nested for loops to loop over the contents of a list of lists.
 
 ```python
 m=[[1,2,3],[4,5,6],[7,8,9]]
