@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:49:46
-version: 1.14
+updated: 2020-12-16 16:59:07
+version: 1.15
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking up another programing language other than javaScript that I have been working with for years. I do very much still like javaScript a lot, and thing that it is a great starting language for people who have zero experence programing, I just think that it is time to finnaly start trying out something else.
@@ -119,6 +119,18 @@ for n in nums:
 ## 4 - Functions
 
 It might be a gray area if a function is really a part of control flow or not, however in any case I should take a moment to write about a few quick function examples at least.
+
+### 4.1 - A Basic function example
+
+A function starts of with the def keyword followed by the name of the function. After the name of the function I then have a set of parenetetes in which I can have some parameters for the function. Then just liek if statementsm and loops I end the line with a colon, and define the body of code for the function my indenting each line afterwards. Inside the body of the function I can have an opion retrun value for the function, for this I just need to type return followed by the value that I want the return value of the function to be.
+
+```python
+def foo(x):
+    return x < 10
+ 
+print(foo(5)); # True
+print(foo(11)); # false
+```
 
 ## 5 - break continue
 
