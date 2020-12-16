@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:36:46
-version: 1.11
+updated: 2020-12-16 16:41:02
+version: 1.12
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking up another programing language other than javaScript that I have been working with for years. I do very much still like javaScript a lot, and thing that it is a great starting language for people who have zero experence programing, I just think that it is time to finnaly start trying out something else.
@@ -110,7 +110,28 @@ print(l) # [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 ## 3 - for loops
 
+```python
+nums = [3.5, 2, 3.5]
+for n in nums:
+  print(int(n * 2), end='') # 747
+```
+
 ## 4 - break continue
+
+```python
+def stronly(l):
+  i=len(l)
+  result=[]
+  while i > 0 :
+    i = i - 1;
+    if(ascii(type(l[i])) != '<class \'str\'>'):
+        continue
+    result.append(l[i])
+  return result
+
+l=[1, 'one', 2, 'two', 3.5, 4, 'three', []]  
+print( stronly(l) ) # ['three', 'two', 'one']
+```
 
 ## 5 - Conclusion
 
