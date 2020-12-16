@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:16:03
-version: 1.8
+updated: 2020-12-16 16:23:55
+version: 1.9
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
@@ -77,6 +77,10 @@ print('done')
 Another major part of control flow in a langauge is loops. There are several kinds of loops that come to mind when it comes to lanagues, however in this section I will be going over while loops in python. These work just like if statements, only they will keep runing what is in the block of code following the while statement until the expression is given will evaluate to a false value.
 
 ### 2.1 - Basic while loop example
+
+The basic idea of a while loop is then just like an if statement, only I start off by typeing while rather than if, however that is the only diferenec in terms of the syntax. It is imporatnt to do somethiong in the block of code that will potentialy chnage the value of the expression from false to true, if not then I might end up having an infinate loop.
+
+So a basic example of a while loop might be to set a variable to a starting value such as zero, and then compare the value to another value in the expression. Inside the block of code I would then just need to step the value in a way in which the expression will end up being true at some point.
 
 ```python
 i=0
