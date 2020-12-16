@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:01:13
-version: 1.6
+updated: 2020-12-16 16:07:49
+version: 1.7
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
@@ -73,6 +73,17 @@ print('done')
 ```
 
 ## 2 - While loops
+
+Another major part of control flow in a langauge is loops. There are several kinds of loops that come to mind when it comes to lanagues, however in this section I will be going over while loops in python. These work just like if statements, only they will keep runing what is in the block of code following the while statement until the expression is given will evaluate to a false value.
+
+### 2.1 - Basic while loop example
+
+```python
+i=0
+while i < 10:
+  print(i)
+  i = i + 1
+```
 
 ## 3 - for loops
 
