@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 13:54:50
-version: 1.3
+updated: 2020-12-16 15:19:44
+version: 1.4
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
@@ -23,6 +23,7 @@ So in this section I will be going over some very basics of python, and then a f
 
 ### 1.1 - First off a word on Booleans and the Bool built in
 
+The expression that is used with an expression should evaluate to a boolean value. It might be a little off topic to get into booleans and the bool built in function, but it might help to gain a batter understanding of if statements to start with this.
 
 ```python
 a = bool(1)
@@ -35,7 +36,12 @@ d = bool(0)
 print(d, type(d).__name__ ) # False bool
 ```
 
-### 1.1 - Basic if statement example
+### 1.2 - A quick word on expressions
+
+```python
+```
+
+### 1.3 - Basic if statement example
 
 To write an if statement, I just need to start with the if keyword, followed by an expression, and then finish with a colon. Then in the next line I just need to intendt to start a block of code that will run if the expression evaluates to true.
 
