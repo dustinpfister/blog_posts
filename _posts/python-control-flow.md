@@ -5,11 +5,15 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:23:55
-version: 1.9
+updated: 2020-12-16 16:33:29
+version: 1.10
 ---
 
-This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
+This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking up another programing language other than javaScript that I have been working with for years. I do very much still like javaScript a lot, and thing that it is a great starting language for people who have zero experence programing, I just think that it is time to finnaly start trying out something else.
+
+Anyway one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program. In python there are a number of features that are not all that different from what I am all ready familiur with in javaScript, there are of course if statements, while loops, and functions. So in this post I will be taking a look at these various control flow options.
+
+This post will be fairly basic as control flow is a basic aspect of laerning a langaue. However it is still never the less somethiong that I need to learn all over again even though I have years of programiong experence with control flow in javaScript. Also in order to really understand how to work with control flow statements in python I am also going to need to at least learn a little when it comes to other related topics like boolean values, and expressions.
 
 <!-- more -->
 
