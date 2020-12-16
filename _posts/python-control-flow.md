@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:43:35
-version: 1.13
+updated: 2020-12-16 16:49:46
+version: 1.14
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking up another programing language other than javaScript that I have been working with for years. I do very much still like javaScript a lot, and thing that it is a great starting language for people who have zero experence programing, I just think that it is time to finnaly start trying out something else.
@@ -116,7 +116,12 @@ for n in nums:
   print(int(n * 2), end='') # 747
 ```
 
-## 4 - break continue
+## 4 - Functions
+
+It might be a gray area if a function is really a part of control flow or not, however in any case I should take a moment to write about a few quick function examples at least.
+
+## 5 - break continue
+
 
 ```python
 def stronly(l):
@@ -133,6 +138,6 @@ l=[1, 'one', 2, 'two', 3.5, 4, 'three', []]
 print( stronly(l) ) # ['three', 'two', 'one']
 ```
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 Great so not I have the basics and beyond worked out when it comes to control flow, however I still have a lot more to learn about when it comes to python. This might be a borning part of learning a new langaue, however I am all ready starting to scratch the surface when it comes to more intersting aspects of programing with python. When I work out more examples I will of course come back around to this post and see about expanding what I have wrote here farther as needed.
