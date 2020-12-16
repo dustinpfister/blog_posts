@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:59:07
-version: 1.15
+updated: 2020-12-16 17:01:00
+version: 1.16
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking up another programing language other than javaScript that I have been working with for years. I do very much still like javaScript a lot, and thing that it is a great starting language for people who have zero experence programing, I just think that it is time to finnaly start trying out something else.
@@ -110,6 +110,8 @@ print(l) # [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 ## 3 - for loops
 
+Another kind of loop to work with in python is a for loop.
+
 ```python
 nums = [3.5, 2, 3.5]
 for n in nums:
@@ -134,6 +136,7 @@ print(foo(11)); # false
 
 ## 5 - break continue
 
+There is also the break and continue keywords that can be used in conjunction with loops.
 
 ```python
 def stronly(l):
