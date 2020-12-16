@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 13:28:27
-version: 1.2
+updated: 2020-12-16 13:54:50
+version: 1.3
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
@@ -16,6 +16,24 @@ This week I have started [learning python](https://docs.python.org/3/tutorial/) 
 ## 1 - if statements
 
 First off what it comes to control flow and python is if statements. This is one of the first things I would want to get solid not just with python, but any new langauge. They work more or less like if statements in any other lanague so maybe there is onyl so much to write about them, but never the less in this section I am going to go over everything that I think is important.
+
+I am not sure if it makes sense to start with studying built in functions first, or flow control. In any case when it comes to getting starte with if statements there are a few things that one needs to have at least a basic understanind of first. Such as the fack that the word _if_ in python is a keyword, and that in order to use an if statement you need to given it an _expression_. In addition an expression that is used with an if statement will evaluate to a _boolean_ data type, and that the _bool built in function_ us a way to create a boolean value from another value. I will not be getting intio all of this in detail here, however I do think that I should at least touch base on all of it, before even getting to some basic if statement examples.
+
+So in this section I will be going over some very basics of python, and then a few if statement examples.
+
+### 1.1 - First off a word on Booleans and the Bool built in
+
+
+```python
+a = bool(1)
+print(a, type(a).__name__ ) # True bool
+ 
+c = bool(-1)
+print(c, type(c).__name__ ) # True bool
+ 
+d = bool(0)
+print(d, type(d).__name__ ) # False bool
+```
 
 ### 1.1 - Basic if statement example
 
