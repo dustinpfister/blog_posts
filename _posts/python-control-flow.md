@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 15:19:44
-version: 1.4
+updated: 2020-12-16 15:21:31
+version: 1.5
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
@@ -38,7 +38,20 @@ print(d, type(d).__name__ ) # False bool
 
 ### 1.2 - A quick word on expressions
 
+Expressions are a topic that desirve a whole other post, and maybe even several posts actaully. Expressions can be very simple, however they can also get pretty complex.
+
 ```python
+x = 5
+y = 10
+ 
+a = x < y
+print( a, type(a).__name__ ) # True bool
+ 
+b = x > y
+print( b, type(b).__name__ ) # False bool
+ 
+c = x == y
+print( c, type(c).__name__ ) # False bool
 ```
 
 ### 1.3 - Basic if statement example
