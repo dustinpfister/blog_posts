@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 763
-updated: 2020-12-16 16:07:49
-version: 1.7
+updated: 2020-12-16 16:16:03
+version: 1.8
 ---
 
 This week I have started [learning python](https://docs.python.org/3/tutorial/) just for the sake of picking another programing language other than javaScript. So one big part of larning a new language is to learn what there is to work with when it comes to [control flow](https://en.wikipedia.org/wiki/Control_flow). That is how to go about writing basic elements of code such as if statements, while loops, and other elements of a langaue that control the flow of a program.
@@ -83,6 +83,21 @@ i=0
 while i < 10:
   print(i)
   i = i + 1
+```
+
+### 2.2 - Looping backward to 0 (flase)
+
+In the first section on if statements I mentioned that the numberical value of zero will evalute to a false boolean value when such a value is convered to a boolean type. This fact can be used to ones advantage when it comes to working out an expression for a while loop. 
+
+For example the expression for a while loop can just be a variable that holds an integer value, and inside the body of the while loop I am subtraction from that interger value by one. If the starting value of the variable is greater than zero, then one will keep getting subtracted from the variable until the value of zero is reached which evaluates to false, and thus the loop will stop.
+
+```python
+i=9
+l=[]
+while i:
+  l.append(i)
+  i = i - 1
+print(l) # [9, 8, 7, 6, 5, 4, 3, 2, 1]
 ```
 
 ## 3 - for loops
