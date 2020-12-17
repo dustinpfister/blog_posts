@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 12:51:59
-version: 1.1
+updated: 2020-12-17 13:11:30
+version: 1.2
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Coming from a javaScript background I have a lot of concerns, such as if python supports high order functions or not \( the anwser is yes \). Still I need to start somewhere, snd that means just staring out with some basic python function examples, and then move on more complex topics such as high order functions.
@@ -15,7 +15,7 @@ I am still in the process of [learning python](https://docs.python.org/3/tutoria
 
 ## 1 - Basic Python function examples
 
-First things first lets start out slow and just get a very basic function example.
+First things first lets start out slow and just get a very basic function example up and running. To create a function in python I just need to start out with the def keyword, followed by a name for the function. After the name of the function I am then going to want an opening and closing set of parentesese in which I can place one or more parameters for the function, and then I end the line with a colon. After the line in which I use the def keyword that is termanated with a colon I am then going to want to indent for each additional line afterwards when it comes to defining the block of code for the function.
 
 ```python
 def hello(name):
