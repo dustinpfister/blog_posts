@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 13:11:30
-version: 1.2
+updated: 2020-12-17 13:13:06
+version: 1.3
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Coming from a javaScript background I have a lot of concerns, such as if python supports high order functions or not \( the anwser is yes \). Still I need to start somewhere, snd that means just staring out with some basic python function examples, and then move on more complex topics such as high order functions.
@@ -26,6 +26,16 @@ hello('Paul') # 'Hello Paul'
 ```
 
 ## 2 - Setting a return value
+
+When it comes to defining the block of code for a function I can use the retrun keyword to set a return value for the function.
+
+```python
+def hello(name):
+    return 'Hello ' + name
+ 
+print( hello('Sam') )
+print( hello('Paul') )
+```
 
 ## 3 - Function parameters
 
