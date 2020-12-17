@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 13:16:11
-version: 1.5
+updated: 2020-12-17 13:19:23
+version: 1.6
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Coming from a javaScript background I have a lot of concerns, such as if python supports high order functions or not \( the anwser is yes \). Still I need to start somewhere, snd that means just staring out with some basic python function examples, and then move on more complex topics such as high order functions.
@@ -63,6 +63,34 @@ print( add(1,1) ) # 2
 
 ## 5 - passing a function as a parameter
 
-## 6 - scrope
+I think that an imporant feature of a langaige is that I have the option to pass functions as a value for a paramater. Well when it comes to python I am in luck, it would seem that I can pass functions as argumnets for other functions.
+
+```python
+def upper(text):  
+    return text.upper()  
+ 
+def lower(text):  
+    return text.lower()  
+ 
+def greet(mess, process):
+    print( process(mess) )
+ 
+greet('hElLo', upper)  
+greet('hElLo', lower) 
+```
+
+## 6 - scope
+
+```python
+a=40
+def foo():
+    print(a)
+def bar():
+    a=5
+    print(a)
+foo() # 40
+bar() # 5
+print(a) # 40
+```
 
 ## 7 - conclusion
