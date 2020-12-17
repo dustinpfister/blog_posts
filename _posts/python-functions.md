@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 14:38:18
-version: 1.12
+updated: 2020-12-17 14:56:41
+version: 1.13
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Functions are a great way to go about taking a block of code that I find myself repeating over and over again, and turn it into a function that I can just call each time I need to repeate that block of code. With functions often there is a way to pass a few argumnets that will be used in the body of the function, and there should also be a way to return a value from inside a function also. In python it is possible to do these basic things with functions, but there is also much more to them beyond that of course.
@@ -15,7 +15,7 @@ Coming from a javaScript background I have a lot of concerns, such as if python 
 
 <!-- more -->
 
-## 1 - Basic Python function examples
+## 1 - The basics of Python functions
 
 First things first lets start out slow and just get a very basic function example up and running. To create a function in python I just need to start out with the def keyword, followed by a name for the function. After the name of the function I am then going to want an opening and closing set of parentesese in which I can place one or more parameters for the function, and then I end the line with a colon. After the line in which I use the def keyword that is termanated with a colon I am then going to want to indent for each additional line afterwards when it comes to defining the block of code for the function.
 
@@ -31,7 +31,7 @@ hello('Sam') # 'Hello Sam'
 hello('Paul') # 'Hello Paul'
 ```
 
-## 2 - Setting a return value
+### 1.2 - Setting a return value
 
 When it comes to defining the block of code for a function I can use the retrun keyword to set a return value for the function. So when it comes to the basic example of just having a function log a message to the standard output I can have the function return the message rather than just use the print built in function inside the body of the function.
 
@@ -43,7 +43,7 @@ print( hello('Sam') )
 print( hello('Paul') )
 ```
 
-## 3 - Function parameters
+### 1.3 - Function parameters
 
 It is possible to define one or more parameters for a function, to do so I just need to give the names for the parameters in the opening and closing parenteses of the function when defining it with the def keyword. Then when I go to call the function I can pass some argumnets for the parameters that will then be used in the body of the function.
 
@@ -54,7 +54,7 @@ def add(a, b):
 print( add(1, 1) )
 ```
 
-## 4 - default arguments for function parameters
+### 1.4 - default arguments for function parameters
 
 It is often a good idea to set default argumnets for parameters.
 
@@ -67,7 +67,7 @@ print( add(1) )   # 1
 print( add(1,1) ) # 2
 ```
 
-## 5 - passing a function as a parameter
+## 2 - Passing a function as a parameter
 
 I think that an imporant feature of a langaige is that I have the option to pass functions as a value for a paramater. Well when it comes to python I am in luck, it would seem that I can pass functions as argumnets for other functions.
 
@@ -85,7 +85,7 @@ greet('hElLo', upper)
 greet('hElLo', lower) 
 ```
 
-## 6 - scope
+## 3 - variable scope and functions
 
 Another imporant thing to understand with functions is to know what is going on with variable scope.
 
