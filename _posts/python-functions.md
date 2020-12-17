@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 13:19:23
-version: 1.6
+updated: 2020-12-17 13:20:29
+version: 1.7
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Coming from a javaScript background I have a lot of concerns, such as if python supports high order functions or not \( the anwser is yes \). Still I need to start somewhere, snd that means just staring out with some basic python function examples, and then move on more complex topics such as high order functions.
@@ -80,6 +80,8 @@ greet('hElLo', lower)
 ```
 
 ## 6 - scope
+
+Another imporant thing to understand with functions is to know what is going on with variable scope.
 
 ```python
 a=40
