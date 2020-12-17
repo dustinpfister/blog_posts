@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 13:14:50
-version: 1.4
+updated: 2020-12-17 13:16:11
+version: 1.5
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Coming from a javaScript background I have a lot of concerns, such as if python supports high order functions or not \( the anwser is yes \). Still I need to start somewhere, snd that means just staring out with some basic python function examples, and then move on more complex topics such as high order functions.
@@ -49,6 +49,17 @@ print( add(1, 1) )
 ```
 
 ## 4 - default arguments for function parameters
+
+It is often a good idea to set default argumnets for parameters.
+
+```python
+def add(a=0, b=0):
+    return a + b
+ 
+print( add() )    # 0
+print( add(1) )   # 1
+print( add(1,1) ) # 2
+```
 
 ## 5 - passing a function as a parameter
 
