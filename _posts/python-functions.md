@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 14:35:32
-version: 1.11
+updated: 2020-12-17 14:38:18
+version: 1.12
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Functions are a great way to go about taking a block of code that I find myself repeating over and over again, and turn it into a function that I can just call each time I need to repeate that block of code. With functions often there is a way to pass a few argumnets that will be used in the body of the function, and there should also be a way to return a value from inside a function also. In python it is possible to do these basic things with functions, but there is also much more to them beyond that of course.
@@ -45,7 +45,7 @@ print( hello('Paul') )
 
 ## 3 - Function parameters
 
-It is possible to define one or more parameters for a function.
+It is possible to define one or more parameters for a function, to do so I just need to give the names for the parameters in the opening and closing parenteses of the function when defining it with the def keyword. Then when I go to call the function I can pass some argumnets for the parameters that will then be used in the body of the function.
 
 ```python
 def add(a, b):
