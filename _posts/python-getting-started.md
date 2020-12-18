@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 16:48:15
-version: 1.22
+updated: 2020-12-18 16:56:51
+version: 1.23
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -263,17 +263,38 @@ The subject of control flow can branch off into all kinds of other topics. For e
 
 ### 6.1 - if statements
 
+An if statement is a way to run a block of code only if a certian expression is true. For example say I have two variables and I want to have some code run only if they equal each other, such a task can be accomplised with an if statement.
+
 ```python
+x=1
+y=1
+if x == y:
+    print('equal') # equal
 ```
 
 ### 6.2 - while loops
 
+A while loop is like an if statement, only it will keep runing the block of code over and over again until an expression is not true anu more.
+
 ```python
+nums = [1,2,3,4,5]
+i = 0
+while i < len(nums):
+    n=nums[i]
+    print(pow(2, n), end='-')
+    i = i + 1
+# 2-4-8-16-32-
 ```
 
 ### 6.3 - for loops
 
+A for loop is another kind of loop to work with in pythion that might prove to be a better chocie when looping over the contents of a list.
+
 ```python
+nums = [1,2,3,4,5]
+for n in nums:
+    print(pow(2, n), end='-')
+# 2-4-8-16-32-
 ```
 
 ## 7 - Conclusion
