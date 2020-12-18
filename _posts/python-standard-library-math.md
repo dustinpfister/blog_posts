@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 13:03:31
-version: 1.7
+updated: 2020-12-18 13:13:51
+version: 1.8
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -39,6 +39,18 @@ print( math.e == e )  # true
 ```
 
 ### 1.2 - Math.log
+
+Another useful method that I might use now and then from the main libray is the math.log method. This is a useful method for working out any kind of expresion that works with logarithms. This maty.log method can take two argumnets the first of which is the number that I want a logarithm for and the second is a base argument. The default base for the math.log method is math.e, or Euler's constant if you prefer.
+
+```python
+import math
+ 
+a = math.log(2)
+b = math.log(2, math.e)
+ 
+print(a)      # 0.6931471805599453
+print(a == b) # True
+```
 
 ## 2 - Python Built in Math functions
 
