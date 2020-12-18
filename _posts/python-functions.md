@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-17 15:06:49
-version: 1.15
+updated: 2020-12-18 13:47:48
+version: 1.16
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Functions are a great way to go about taking a block of code that I find myself repeating over and over again, and turn it into a function that I can just call each time I need to repeate that block of code. With functions often there is a way to pass a few argumnets that will be used in the body of the function, and there should also be a way to return a value from inside a function also. In python it is possible to do these basic things with functions, but there is also much more to them beyond that of course.
@@ -107,5 +107,8 @@ print(a) # 40
 
 ## 7 - conclusion
 
-So that is what I have to say when it comes to the basics of functions in python thus far.
+So that is what I have to say when it comes to the basics of functions in python thus far. There might be a great deal more to write about them actually I know, but I am still in the procress of learing opython myself as I am still fairly new to the langaue.
+
+For the most part I have to say things are moving along pretty fast, python is a fairly easy lanague to learn. However it is true that I also have many years of experence with programing before hand when it comes to javaScript. So much of the process of learning python this far has been just re learning how to go about doing many things that I all ready know how to do only with python rather than javaScript.
+
 
