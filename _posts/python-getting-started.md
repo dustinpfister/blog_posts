@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 15:59:51
-version: 1.16
+updated: 2020-12-18 16:05:42
+version: 1.17
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -193,6 +193,19 @@ def foo():
     return 'bar'
  
 print( foo() ) # bar
+```
+
+In this example I am also using the retrun keyword to define a retur value for the function.
+
+### 4.2 - Parameters for functions
+
+It is possible to define a number of parameters for a function to do so I just need to place each name of a parameter in the set of paremnetetes for the function. I can then use those local parameterst in the logic of the function.
+
+```python
+def add(a, b):
+    return a + b
+ 
+print( add(1,1) ) # 2
 ```
 
 ## 5 - Conclusion
