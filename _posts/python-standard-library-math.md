@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 13:38:59
-version: 1.11
+updated: 2020-12-18 13:42:57
+version: 1.12
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -141,6 +141,25 @@ print( sum(nums) ) # 30
 
 So I have went over some of the basics of the math library, and also some of the python built in functions that have to do with math. However there is still a great deal missing when it comes to even just basic math methods. For example coming from a javaScript background there is the Math.random method that will return a random number between 0 and 1. No such method is there as one of the built in functions, and in addition there is not a random number method in the standard math librray also. There is however a random method in yet another standard library called random. So with that said in this section I will be going over some examples that have to do with other standard librrays that have to do with math that will help to compleate the set of basic functions to work with when it comes to creating some expressions in python.
 
+### 3.1 - The random method of the random library
+
+The [random librray](https://docs.python.org/3.7/library/random.html) is where I will find the equavanet of the Math.random function in the Math object of javaScript.
+
+```python
+import random
+ 
+print( random.random()) # random floating point number in the range [0.0, 1.0)
+```
+
+### 3.2 - The randinit method of the random library
+
+There is also a random function in the random module that will give me a random integer between and inclduing two numbers given as a range.
+
+```python
+import random
+print( random.randint(0, 1)) # random number 0-1
+print( random.randint(1, 6)) # random number 1-6
+```
 
 ## 4 - Conclusion
 
