@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 12:59:06
-version: 1.6
+updated: 2020-12-18 13:03:31
+version: 1.7
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -24,6 +24,19 @@ So this is mainly a post on the Standard Math Library in python, so of course I 
 So in this section I will be going over some of the methods that I will likley be using in real projects now and then
 
 ### 1.1 - Math.e
+
+The math.e property of the math librray stores [Euler's number](https://en.wikipedia.org/wiki/E_%28mathematical_constant%29). This is a property that I find myself using now and then when it comes to working out some expressions that have to do with logarithms, as this math.e constant is the base of the natural logarithm.
+
+```python
+import math
+ 
+print(math.e)         # 2.718281828459045
+ 
+n = math.pow(2, 52)
+e = math.pow( 1 + 1 / n, n)
+print(e)              # 2.718281828459045
+print( math.e == e )  # true
+```
 
 ### 1.2 - Math.log
 
