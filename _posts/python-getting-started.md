@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 16:05:42
-version: 1.17
+updated: 2020-12-18 16:12:59
+version: 1.18
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -206,6 +206,19 @@ def add(a, b):
     return a + b
  
 print( add(1,1) ) # 2
+```
+
+### 4.3 - Default Argumnets for function parameters
+
+One great thing about functions in python is that it is real easy to set some default argumnets for parameters. Just use the equal sign to assign default values for each parameter in the set of pareneteses.
+
+```python
+def per(a=90, scale=360):
+    return a / scale;
+ 
+print( per() ) # 0.25
+print( per(180) ) # 0.5
+print( per(1.57, 6.28) ) # 0.25
 ```
 
 ## 5 - Conclusion
