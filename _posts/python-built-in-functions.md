@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-15 16:16:38
-version: 1.22
+updated: 2020-12-18 17:32:26
+version: 1.23
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -159,11 +159,21 @@ while i > 0:
   print(i, l[i])
 ```
 
-## 8 - print - Printing something out to the standard output
+## 8 - map
+
+```python
+a=[0,1,2,3,4]
+def pow2(n):
+    return pow(2, n)
+b = list( map(pow2, a) )
+print(b) # [1, 2, 4, 8, 16]
+```
+
+## 9 - print - Printing something out to the standard output
 
 When it comes to starting even the most basic of python examples, often it is needed to have a way to print something out to the standard output. One way to go about doing so is with the print built in function, which would be the python equivalent to something like console.log in javaScript.
 
-### 8.1 - Basic print example
+### 9.1 - Basic print example
 
 A basic example of the print built in function would be to just call it and pass it a value that you would like to print out to the standard output.
 
@@ -176,7 +186,7 @@ print('Hello World') # 'Hello World'
 print( 5 ) # 5
 ```
 
-### 8.2 - Change what the end of line is
+### 9.2 - Change what the end of line is
 
 By default the print built in method will add an end of line after each call of the print method in the form of a single line feed character. In some projects I might want to change what this is, such as a more windows friendly end of line string, or even nothing actually. To change what each line ends with I just need to use the end parameter when calling the print function. When doing so I can make what the end of line string is to anything that I want including an empty string.
 
@@ -206,11 +216,11 @@ print('')
 #
 ```
 
-## 9 - range
+## 10 - range
 
 The range method is a way to quickly create a range of numbers.
 
-### 9.1 - Basic range example
+### 10.1 - Basic range example
 
 For a basic example of the range function there is just calling the function and passing a starting value as the first argument, followed by another value that will be the end value.
 
@@ -219,7 +229,7 @@ r = range(0,10)
 print( type (r) ) # <class 'range'>
 ```
 
-### 9.2 - for loop range example
+### 10.2 - for loop range example
 
 A range can often prove to be useful when it comes to working out something with a for loop.
 
@@ -233,7 +243,7 @@ print(nums)
 # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 ```
 
-## 10 - type - To check out what the current data type of a value is
+## 11 - type - To check out what the current data type of a value is
 
 The python language has a few data types built into python itself. There is not just one but several data types for numbers, and then a whole bunch of different object types, and some additional other data types like strings and booleans. On top of that yet even more data types can be added into the mix when it comes to libraries, so then there should be a way to always know what kind of type one is dealing with when it comes to working with all the different kinds of primitives and objects in python itself as well as all the various additional libraries. So then there is then the type function that is often useful to get the type of a value so that I know what I am dealing with.
 
@@ -244,6 +254,6 @@ print( type([1,2,3]) )   # <class 'list'>
 print( type({1,2,3}) )   # <class 'set'>
 ```
 
-## 11 - Conclusion
+## 12 - Conclusion
 
 That is all for built in functions for now, if I get around to editing this post I will see about expanding some of these sections with even more examples of built in python functions. As of this writing I am still fairly new to using python, so I will want to gain some more experience working out some real python examples in order to gain a better sense of what built in functions are used the most often. Once I have a better sense of what I am using the most I can then add more examples of the built in functions that are the most important.
