@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 12:50:13
-version: 1.4
+updated: 2020-12-18 12:54:36
+version: 1.5
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -32,5 +32,8 @@ So in this section I will be going over some of the methods that I will likley b
 So now that I have covered some basic examples of the Math library maybe now I should review some of the built in functions in python. Not all of them of course, but certainly all the ones that have to do with Math. In the math librray theer is for example a method that can eb used to get the absolute value of a number, and also another method to get a power. However when it comes to just working with the built in methods for python alone there is an absolute value method, and power method also. There are also a great deal of other basic math methods in the collection of python built in functions, so in this section I will be going over these.
 
 ## 3 - Other Math modules in python
+
+So I have went over some of the basics of the math library, and also some of the python built in functions that have to do with math. However there is still a great deal missing when it comes to even just basic math methods. For example coming from a javaScript background there is the Math.random method that will return a random number between 0 and 1. No such method is there as one of the built in functions, and in addition there is not a random number method in the standard math librray also. There is however a random method in yet another standard library called random. So with that said in this section I will be going over some examples that have to do with other standard librrays that have to do with math that will help to compleate the set of basic functions to work with when it comes to creating some expressions in python.
+
 
 ## 4 - Conclusion
