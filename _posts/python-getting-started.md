@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 16:23:27
-version: 1.20
+updated: 2020-12-18 16:34:51
+version: 1.21
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -224,6 +224,22 @@ print( per(1.57, 6.28) ) # 0.25
 ## 5 - Built in functions that are there without a module
 
 So I can write my own functions from scratch, and also it is possible to load in additional functions when it comes to startiong to look into the wide range of librarys there are to work with when it comes to python. However before I get into modules maybe I should mention that in python there are a number of built in functions. These are functions that are built into python itself and they can be used to prefrom a wide range of typical common programing tasks. In this section I will be quickly going over some of the most important ones that I think one should know about right away.
+
+### 5.1 - The print built in function
+
+I have covered the print built in function right at the begining of this post. It is ture after all that I need to at least make use of this built in function in order to write a python hello world programe. Howveer in this section I think I should take a moment to write about all of the features of the print built in function.
+
+When the print function is called the first argument that I given it is the value that I want to print to the standard output iof the console. I can als however give additional values to print in a single call of the function by just sepearting the values of a comma. However I can also set a sepeater value that is a string value to place between each value that I give when calling print.
+
+Also by default the print funciton will appedn a line feed char to the output each time I call it. If for some reason I do not want the print functon do do that I can set a value for end that is the string value that I want the print to end with. I can set it to somethiong other than a line feed, or an empty string if I want it to append nothing.
+
+```python
+print('hello world') # 'hello world'
+ 
+nums=[0,1,2]
+for i in nums:
+    print(i, pow(2,i), sep="-", end=';') # 0-1;1-2;2-4;
+```
 
 ### 5.2 - The type built in function
 
