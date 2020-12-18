@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 11:36:33
-version: 1.2
+updated: 2020-12-18 12:46:22
+version: 1.3
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -16,3 +16,19 @@ In javaScript there is the built in Math object that contains all kinds of usefu
 Anyway in todays post I am going to be looking at some of the methods that there are to work with whe it comes to the standard built in math libray in python. I will also be taking a look at some other features of python itself, and other librarys to work with in order to trutly get up and runinf with some math in python.
 
 <!-- more -->
+
+## 1 - The Math Standard Library in Python
+
+So this is mainly a post on the Standard Math Library in python, so of course I will be staring off with a few examples that make use of this Lubrary. However I will not be covering every little method and property in this section for several reasons. One reason would be that there is all ready comprehensive documnetaion on the math librray at the python.org website that will go over everything. The other reason why is that there are only a few methods that are trult needed here as there are other basic math methods that are some of the python built in functions. Also the main math module does not have everything outside of the built in functions.
+
+So in this section I will be going over some of the methods that I will likley be using in real projects now and then
+
+### 1.1 - Math.e
+
+### 1.2 - Math.log
+
+## 2 - Python Built in Math functions
+
+## 3 - Other Math modules in python
+
+## 4 - Conclusion
