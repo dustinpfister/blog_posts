@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-18 17:47:12
-version: 1.26
+updated: 2020-12-18 17:49:40
+version: 1.27
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -233,7 +233,7 @@ print( type (r) ) # <class 'range'>
 
 ### 10.2 - To list example
 
-One great thing about a range is that I can quickly turn it into a list by just passing the range to the list function.
+One great thing about a range is that I can quickly turn it into a list by just passing the range to the list function. Also on top of setting a strating and ending value I can also give a step rate as a thrid argument to the range function.
 
 ```python
 r = range(5, 25, 5)
