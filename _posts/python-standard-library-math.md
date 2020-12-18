@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 13:17:53
-version: 1.9
+updated: 2020-12-18 13:36:34
+version: 1.10
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -79,13 +79,62 @@ print( hex(255) ) # 0xff
 
 ### 1.3 - min and max
 
+If I want to get the lowest or highest number in a list of numbers there is the max and min functions.
+
+```python
+n=[1, -8, 32, 0, 1024, -3]
+ 
+print( max(n) ) # 1024
+print( min(n) ) # -8
+```
+
 ### 1.4 - oct
+
+There is the oct function that is just like hex only it will return a number as an octal rather than hex.
+
+```python
+print( oct(8) )  # 0o10
+print( oct(16) ) # 0o20
+print( oct(24) ) # 0o30
+print( oct(32) ) # 0o40
+print( oct(40) ) # 0o50
+ 
+print( oct(64) ) # 0o100
+```
 
 ### 1.5 - pow
 
+There is of course a math.pow function in the math librray, however there is also just uisng the pow built in function.
+
+```python
+n = pow(2,10)
+ 
+print(n) # 1024
+```
+
 ### 1.6 - round
 
+There might be more than one round function in the math library, such as floor and ceil. However if I just need a basic round function then there is the round function in python by itself.
+
+```python
+pi=3.14159
+print( round(pi) ) # 3
+print( round(pi, 3) ) # 3.142
+ 
+pi = pi * -1
+print( round(pi) ) # -3
+print( round(pi, 3) ) # -3.142
+```
+
 ### 1.7 - sum
+
+When it comes to built in functions in python there is also the sum function.
+
+```python
+nums=[1,2,3,4,5,5,10]
+ 
+print( sum(nums) ) # 30
+```
 
 
 ## 3 - Other Math modules in python
