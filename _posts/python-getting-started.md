@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 16:34:51
-version: 1.21
+updated: 2020-12-18 16:48:15
+version: 1.22
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -255,7 +255,28 @@ print( type(b).__name__ ) #float
 print( type(c).__name__ ) #list
 ```
 
-## 6 - Conclusion
+## 6 - Control flow
+
+Of course I have to have a section on control flow, how can I have a getting started post on a lanague without control flow? What I mean by control flow is things like if statements, while loops, and for loops. Some might say that functions are also a kind of control flow, but in any case I am not going to go over them again here.
+
+The subject of control flow can branch off into all kinds of other topics. For example in order to make use of control flow statements I need to know at least a little about expressions. Luckly many of the basic exmpressions in python are not so hard to udnerstand. So lets quickly look at a few control flow examples in python here in this section.
+
+### 6.1 - if statements
+
+```python
+```
+
+### 6.2 - while loops
+
+```python
+```
+
+### 6.3 - for loops
+
+```python
+```
+
+## 7 - Conclusion
 
 So that is it for my getting started post on python, as I continue working out additional examples I am sure that I will come around to edit this post and add even more additional sections and examples. I am still fairly new to python myself, so I need to keep working on code examples before I can gain a batter sense of what should and should not be parked in this getting started post.
 
