@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 16:12:59
-version: 1.18
+updated: 2020-12-18 16:19:14
+version: 1.19
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -221,7 +221,25 @@ print( per(180) ) # 0.5
 print( per(1.57, 6.28) ) # 0.25
 ```
 
-## 5 - Conclusion
+## 5 - Built in functions that are there without a module
+
+In python there are a number of built in functions.
+
+### 5.2 - The type built in function
+
+One thing that I think is imporant right away when it comes to learning a lanaguye is to know what the deal is when it comes to data types. In python there are a number of data types in the core of python itself, and on top of that many more can be added by way of modules. So it is imporatmt to have a way to find one what kind of data type a certian value is. For this there is the type built in function, and the \_\_name\_\_ property iof a type object.
+
+```python
+a = 5
+b = 0.5
+c = [1,2,3]
+ 
+print( type(a).__name__ ) #int
+print( type(b).__name__ ) #float
+print( type(c).__name__ ) #list
+```
+
+## 6 - Conclusion
 
 So that is it for my getting started post on python, as I continue working out additional examples I am sure that I will come around to edit this post and add even more additional sections and examples. I am still fairly new to python myself, so I need to keep working on code examples before I can gain a batter sense of what should and should not be parked in this getting started post.
 
