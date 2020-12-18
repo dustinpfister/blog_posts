@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 12:54:36
-version: 1.5
+updated: 2020-12-18 12:59:06
+version: 1.6
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -37,3 +37,5 @@ So I have went over some of the basics of the math library, and also some of the
 
 
 ## 4 - Conclusion
+
+Well that is it for now when it comes to the math standard library in python, along with some additional stuff that has to do with other related modules and features of python. I think the next step from here is to just start working out some real examples that have to do with math in order to really get the hang of how to work with the math library. For example in another project that I have been working on latley I have been working out a new experence point system that makes use of methods that use Math.log.
