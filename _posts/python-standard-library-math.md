@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 13:13:51
-version: 1.8
+updated: 2020-12-18 13:17:53
+version: 1.9
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -55,6 +55,38 @@ print(a == b) # True
 ## 2 - Python Built in Math functions
 
 So now that I have covered some basic examples of the Math library maybe now I should review some of the built in functions in python. Not all of them of course, but certainly all the ones that have to do with Math. In the math librray theer is for example a method that can eb used to get the absolute value of a number, and also another method to get a power. However when it comes to just working with the built in methods for python alone there is an absolute value method, and power method also. There are also a great deal of other basic math methods in the collection of python built in functions, so in this section I will be going over these.
+
+### 1.1 - The abs built in function
+
+There is an absolute value method in the math library, but why bother with that when there is an absolute value method that can just be used in python itself.
+
+```python
+print( abs(-5) ) # 5
+```
+
+### 1.2 - hex
+
+If I need to convert an integer value to a hex value then there is the hex function.
+
+```python
+print( hex(16) )  # 0x10
+print( hex(32) )  # 0x20
+print( hex(48) )  # 0x30
+print( hex(64) )  # 0x40
+ 
+print( hex(255) ) # 0xff
+```
+
+### 1.3 - min and max
+
+### 1.4 - oct
+
+### 1.5 - pow
+
+### 1.6 - round
+
+### 1.7 - sum
+
 
 ## 3 - Other Math modules in python
 
