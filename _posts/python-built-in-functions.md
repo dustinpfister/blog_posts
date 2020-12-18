@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-18 17:41:36
-version: 1.25
+updated: 2020-12-18 17:47:12
+version: 1.26
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -231,7 +231,17 @@ r = range(0,10)
 print( type (r) ) # <class 'range'>
 ```
 
-### 10.2 - for loop range example
+### 10.2 - To list example
+
+One great thing about a range is that I can quickly turn it into a list by just passing the range to the list function.
+
+```python
+r = range(5, 25, 5)
+l = list((r))
+print( l ) # [5, 10, 15, 20]
+```
+
+### 10.3 - for loop range example
 
 A range can often prove to be useful when it comes to working out something with a for loop. The range function can eb used to quickly create a range of numbers to wich I can then run over with a for loop and use with some additional logic to create a desired list of values.
 
