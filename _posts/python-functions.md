@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 764
-updated: 2020-12-18 13:51:48
-version: 1.17
+updated: 2020-12-18 13:59:12
+version: 1.18
 ---
 
 I am still in the process of [learning python](https://docs.python.org/3/tutorial/), and one imporant aspect of learniong python, or any langauge for that matter, is to know how to define functions. Functions are a great way to go about taking a block of code that I find myself repeating over and over again, and turn it into a function that I can just call each time I need to repeate that block of code. With functions often there is a way to pass a few argumnets that will be used in the body of the function, and there should also be a way to return a value from inside a function also. In python it is possible to do these basic things with functions, but there is also much more to them beyond that of course.
@@ -73,7 +73,9 @@ print( add(1,1) ) # 2
 
 ## 2 - Passing a function as a parameter
 
-I think that an imporant feature of a langaige is that I have the option to pass functions as a value for a paramater. Well when it comes to python I am in luck, it would seem that I can pass functions as argumnets for other functions.
+I think that an imporant feature of a langaige is that I have the option to pass functions as a value for a paramater. There are just so many things that come up in programing where that kind of feature helps. For example say I am making a function that returns a number between 0 and 1 based off a numberatior and denomator value that are passed as arguments. One way to return such a value is to just divide the numerator over the denomanator, which will given a number that will go up from zero to one in a string line kind of way. That might be okay in many situations, but it might be nice to pass a function as an argument for such a function that will effect the return value in diferent ways.
+
+ Well when it comes to python I am in luck, it would seem that I can pass functions as argumnets for other functions.
 
 ```python
 def upper(text):  
@@ -88,6 +90,8 @@ def greet(mess, process):
 greet('hElLo', upper)  
 greet('hElLo', lower) 
 ```
+
+This is just a basic example of what the deal is with passing functions as argumnets, however the basic idea is there. However there is not just thinking in terms of passing functions as argumnets, there is also having functions that return functions.
 
 ## 3 - variable scope and functions
 
@@ -112,5 +116,3 @@ print(a) # 40
 So that is what I have to say when it comes to the basics of functions in python thus far. There might be a great deal more to write about them actually I know, but I am still in the procress of learing opython myself as I am still fairly new to the langaue.
 
 For the most part I have to say things are moving along pretty fast, python is a fairly easy lanague to learn. However it is true that I also have many years of experence with programing before hand when it comes to javaScript. So much of the process of learning python this far has been just re learning how to go about doing many things that I all ready know how to do only with python rather than javaScript.
-
-
