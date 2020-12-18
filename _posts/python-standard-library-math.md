@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 765
-updated: 2020-12-18 13:36:34
-version: 1.10
+updated: 2020-12-18 13:38:59
+version: 1.11
 ---
 
 Time to wrap up this first week of [learning python](https://docs.python.org/3/tutorial/) on my own, today I think I will be taking a look at one of the many standard librarys to work with in python starting with the [math library](https://docs.python.org/3.7/library/math.html).
@@ -54,7 +54,7 @@ print(a == b) # True
 
 ## 2 - Python Built in Math functions
 
-So now that I have covered some basic examples of the Math library maybe now I should review some of the built in functions in python. Not all of them of course, but certainly all the ones that have to do with Math. In the math librray theer is for example a method that can eb used to get the absolute value of a number, and also another method to get a power. However when it comes to just working with the built in methods for python alone there is an absolute value method, and power method also. There are also a great deal of other basic math methods in the collection of python built in functions, so in this section I will be going over these.
+So now that I have covered some basic examples of the Math library maybe now I should review some of the [built in functions in python](/2020/12/15/python-built-in-functions/). Not all of them of course, but certainly all the ones that have to do with Math. In the math librray theer is for example a method that can eb used to get the absolute value of a number, and also another method to get a power. However when it comes to just working with the built in methods for python alone there is an absolute value method, and power method also. There are also a great deal of other basic math methods in the collection of python built in functions, so in this section I will be going over these.
 
 ### 1.1 - The abs built in function
 
