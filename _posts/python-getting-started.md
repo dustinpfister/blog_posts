@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 16:19:14
-version: 1.19
+updated: 2020-12-18 16:23:27
+version: 1.20
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -223,7 +223,7 @@ print( per(1.57, 6.28) ) # 0.25
 
 ## 5 - Built in functions that are there without a module
 
-In python there are a number of built in functions.
+So I can write my own functions from scratch, and also it is possible to load in additional functions when it comes to startiong to look into the wide range of librarys there are to work with when it comes to python. However before I get into modules maybe I should mention that in python there are a number of built in functions. These are functions that are built into python itself and they can be used to prefrom a wide range of typical common programing tasks. In this section I will be quickly going over some of the most important ones that I think one should know about right away.
 
 ### 5.2 - The type built in function
 
