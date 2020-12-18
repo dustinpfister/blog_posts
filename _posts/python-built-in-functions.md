@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-18 17:35:55
-version: 1.24
+updated: 2020-12-18 17:41:36
+version: 1.25
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -220,7 +220,7 @@ print('')
 
 ## 10 - range
 
-The range method is a way to quickly create a range of numbers.
+The range method is a way to quickly create a range of numbers. This function is then very usfule for quickly cretaing say a simple list of numbers in order. A range is lot a list mind you, but it can be eaily turned into a list, and more often then not it can be used in place of a list.
 
 ### 10.1 - Basic range example
 
@@ -233,7 +233,7 @@ print( type (r) ) # <class 'range'>
 
 ### 10.2 - for loop range example
 
-A range can often prove to be useful when it comes to working out something with a for loop.
+A range can often prove to be useful when it comes to working out something with a for loop. The range function can eb used to quickly create a range of numbers to wich I can then run over with a for loop and use with some additional logic to create a desired list of values.
 
 ```python
 import math
