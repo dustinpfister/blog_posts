@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-18 17:32:26
-version: 1.23
+updated: 2020-12-18 17:35:55
+version: 1.24
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -159,7 +159,9 @@ while i > 0:
   print(i, l[i])
 ```
 
-## 8 - map
+## 8 - The map function
+
+The map function will return a new iterator that is the action of applying a function to each element in an iteratable. In other words I can pass a function for the first parameter of map, and something like a list as the section argument. The function that I pass to map will be called for each element in the list, and the return value iof the function passed will be the new value for an element.
 
 ```python
 a=[0,1,2,3,4]
