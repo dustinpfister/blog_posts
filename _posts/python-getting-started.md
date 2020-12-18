@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-14 16:23:18
-version: 1.14
+updated: 2020-12-18 15:55:49
+version: 1.15
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -180,7 +180,20 @@ work like a multi-line comment
 """
 ```
 
-## 4 - Conclusion
+## 4 - Functions
+
+If I find myself repating the same block of code over and over again, I might want to take that block of code and pull it into a function, then each time I need to repeat the block of code I can just call the function each time. In this section I will be going over a few quick examples of fucntions in python without getting to deep into evey little detail about them.
+
+### 4.1 - Basic function example
+
+```python
+def foo():
+    return 'bar'
+ 
+print( foo() ) # bar
+```
+
+## 5 - Conclusion
 
 So that is it for my getting started post on python, as I continue working out additional examples I am sure that I will come around to edit this post and add even more additional sections and examples. I am still fairly new to python myself, so I need to keep working on code examples before I can gain a batter sense of what should and should not be parked in this getting started post.
 
