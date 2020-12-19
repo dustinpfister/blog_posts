@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-18 17:49:40
-version: 1.27
+updated: 2020-12-19 14:56:04
+version: 1.28
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -148,7 +148,7 @@ print( len(l) ) # 4
 
 ### 7.2 - A while loop example of len
 
-One typical use case of the len function would be to use it to set a starting index value for a while loop. Here I have a basic while loop example in which I am starting the index value for a list by setting it to the length of the list with the len function. I can then just subtract inside the body of the while loop before referenceing elements in the list. The result is an effet here I am looping backwards thre a list
+One typical use case of the len function would be to use it to set a starting index value for a while loop. Here I have a basic while loop example in which I am starting the index value for a list by setting it to the length of the list with the len function. I can then just subtract inside the body of the while loop before referencing elements in the list. The result is an effect where I am looping backwards threw a list
 
 ```python
 l=['a','b','c','d']
@@ -220,7 +220,7 @@ print('')
 
 ## 10 - range
 
-The range method is a way to quickly create a range of numbers. This function is then very usfule for quickly cretaing say a simple list of numbers in order. A range is lot a list mind you, but it can be eaily turned into a list, and more often then not it can be used in place of a list.
+The range method is a way to quickly create a range of numbers. This function is then very useful for quickly creating say a simple list of numbers in order. A range is lot a list mind you, but it can be easily turned into a list, and more often then not it can be used in place of a list.
 
 ### 10.1 - Basic range example
 
@@ -233,7 +233,7 @@ print( type (r) ) # <class 'range'>
 
 ### 10.2 - To list example
 
-One great thing about a range is that I can quickly turn it into a list by just passing the range to the list function. Also on top of setting a strating and ending value I can also give a step rate as a thrid argument to the range function.
+One great thing about a range is that I can quickly turn it into a list by just passing the range to the list function. Also on top of setting a starting and ending value I can also give a step rate as a third argument to the range function.
 
 ```python
 r = range(5, 25, 5)
@@ -243,7 +243,7 @@ print( l ) # [5, 10, 15, 20]
 
 ### 10.3 - for loop range example
 
-A range can often prove to be useful when it comes to working out something with a for loop. The range function can eb used to quickly create a range of numbers to wich I can then run over with a for loop and use with some additional logic to create a desired list of values.
+A range can often prove to be useful when it comes to working out something with a for loop. The range function can be used to quickly create a range of numbers to which I can then run over with a for loop and use with some additional logic to create a desired list of values.
 
 ```python
 import math
