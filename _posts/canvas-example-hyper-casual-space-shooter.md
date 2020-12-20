@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2020-12-13 15:20:05
-version: 1.12
+updated: 2020-12-20 16:40:49
+version: 1.13
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer.
@@ -20,11 +20,18 @@ So then for this next hyper casual canvas example I had an idea to just make a s
 <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
 <script src="/js/canvas-examples/hyper-casual-space-shooter/0.11.0/pkg.js"></script>
 
+## If you just want to play the game
+
 If you just want to play the game itself then so far the controls can involve just clicking and dragging the mouse around the canvas. For now I have an auto fire option just set to true, so it is basically just chaining the heading and speed of the ship to move around. There are a number of keyboard events also w, and s keys can be used to change the speed of the ship and the a and d keys can be used to change heading.
 
 As of 0.11.0 there is not much to talk about when it comes to game play beyond just moving around and shooting blocks. I aim to make this game at least a little more interesting though as I do aim to continue working on this one.
 
-When it comes to going over the source code below I do not care to get into much detail just yet. Because I aim to keep working on this at least a little while longer I do not want to have to wring about everything all over again when I come around to edit this post later. So for now I am going to keep things very general when it comes to writing about the code.
+## This example and many others are in my canvas-example github repo
+
+The version number in the [github repo](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-hyper-casual-space-shooter) might be higher than what I have deployed here. I will get around to editing this posy now and then, but for the lateset on what is going on with this, and all the other canvas examples that will be the latest that is going on with this.
+
+When it comes to going over the source code below I do not care to get into much detail just yet. Because I aim to keep working on this at least a little while longer so I do not want to have to wring about everything all over again when I come around to edit this post later. So for now I am going to keep things very general when it comes to writing about the code.
+
 
 ## 1 - The utility library
 
