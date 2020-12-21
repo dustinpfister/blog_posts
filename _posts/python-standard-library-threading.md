@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 14:50:29
-version: 1.4
+updated: 2020-12-21 14:52:02
+version: 1.5
 ---
 
 This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the langaie pretty fast. However now I am starting to scrtach the surface when it comes to the wide range of standard librarys that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
@@ -53,6 +53,8 @@ t=loop(printMess, 1)
 ```
 
 ## - The thread class
+
+Another major function in the threading library might be the Thread class. It would seem that this class can help when it comes to habing more than on Thread running at the same time.
 
 ```python
 import threading
