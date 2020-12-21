@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-18 16:56:51
-version: 1.23
+updated: 2020-12-21 16:07:27
+version: 1.24
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -144,7 +144,34 @@ print( type(e) ) # <class 'bool'>
 
 In javaScript there is just one data type for numbers, however in python there is more than one data type just for numbers. On top of that there are a number of options for data structures just when it comes to what there is to work with in python by itself without adding any additional module. If that is not enough there is a wide range of additional modules that add additional data types that have to do with a wide range of different tasks.
 
-### 2.3 - Like javaScript it would seem that Python is a typeless language
+### 2.3 - Global variables
+
+While I am writing about variables I think I should take a moment to work out the basic when it comes to working with global variables in python. I know that functional programing is all the rage, and I do tend to underestand and like the key reasons why that is. However I am sure that there might be a moment now and then where I will want to work with a variable that might be outside the scope of a function.
+
+If I want to just get the value of a global varible then I can just do that without any problem. That is assuming that there is not a local variable in the function with the same name anyway, in that case I would end up getting the value of the local variable.
+
+```python
+x = 40
+def func():
+  print(x)
+func() # 40
+```
+
+However if I want to mutate the value of a global variable that will cause and error, unless I use the global statement.
+
+```python
+x = 40
+def func():
+  global x
+  x = x + 2
+  print(x)
+func() # 42
+```
+
+Looks like I have covered the basics of gloabl variables in python, and also managed to provide a basic function example while I am at it, more on functions later in this post.
+
+
+### 2.4 - Like javaScript it would seem that Python is a typeless language
 
 There are a few things held in common with javaScript, they are both high level languages that require and external binary in order to run the code as I have mentioned before hand. However another thing that the hold in common is that they are both examples of typeless languages. This does not mean that python does not have data types, it sure does, however what it does mean is that a variable can be any type at any given moment. This can easily be confirmed with a little python code.
 
