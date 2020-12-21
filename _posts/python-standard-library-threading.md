@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 14:56:37
-version: 1.6
+updated: 2020-12-21 15:07:27
+version: 1.7
 ---
 
 This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the langaie pretty fast. However now I am starting to scrtach the surface when it comes to the wide range of standard librarys that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
@@ -54,7 +54,9 @@ t=loop(printMess, 1)
 
 ## 3 - The thread class
 
-Another major function in the threading library might be the Thread class. It would seem that this class can help when it comes to habing more than on Thread running at the same time.
+Another major function in the threading library might be the Thread class. It would seem that this class can help when it comes to having more than on Thread running at the same time. It is not to hard to confirm this, say I have a function called _heavy_ that just does something that might take a little while, such as prining something to the standard output a thousand times. If I just call this heavy function twice when will happen is that the first set of a thousand print calls will log to the conosle first, and then the second set will start. This is becuase I am calling the heavy function twice in the same thread, so the first call must compleate until the second set can then start.
+
+However if I use the Thread class of the threading library I can call my heavy function in a seperate thread. Then I can call the heavy function again in the main thread. The result is then having both calls happening at the same time.
 
 ```python
 import threading
@@ -72,6 +74,8 @@ x = threading.Thread(target=heavy, args=['three',1000])
 x.start()
 heavy('four', 1000)
 ```
+
+So then the Thread Class in the threading module is there to work with if I ever want to do real threading with python.
 
 ## 4 - Conclusion
 
