@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 15:13:44
-version: 1.8
+updated: 2020-12-21 15:17:43
+version: 1.9
 ---
 
 This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the langaie pretty fast. However now I am starting to scrtach the surface when it comes to the wide range of standard librarys that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
@@ -35,7 +35,7 @@ So then the Timer
 
 ## 2 - Basic app loop example
 
-One way that I might make a basic app loop in javaScript is to call the setTimeout method recursivly inside the body of a function that I might call something like loop. It would seem that I can do the same thing with the threading Timer method.
+One way that I might make a basic app loop in javaScript is to call the setTimeout method recursivly inside the body of a function that I might call something like loop. This kind of loop is needed when I just want to keep running the same main code over and over again. This main app loop might update some kind of main game object state in real time for example. So when it comes to making a basic app loop in python it would seem that I can do the same thing with the threading Timer Class.
 
 ```python
 import threading
@@ -53,6 +53,8 @@ def loop(func, sec):
  
 t=loop(printMess, 1)
 ```
+
+I am not sure if the Timer Class might be the best option to create this kind of loop though. It would seem that there are some more options in the therading library that I should take a quick look at least. However it would seem that something as simple as this might still work just fine when it comes to some basic applaction examples.
 
 ## 3 - The thread class
 
