@@ -5,11 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 14:14:06
-version: 1.1
+updated: 2020-12-21 14:44:24
+version: 1.2
 ---
 
-For now I think I should continue [learning python](https://docs.python.org/3/tutorial/) and as such the thought came to mind as to how it is that I can go about making an app loop in python.
+This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the langaie pretty fast. However now I am starting to scrtach the surface when it comes to the wide range of standard librarys that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
+
+In javaScript there are methods like setInterval, and setTimeout that can be used as a way to delay the calling of a function. These methods however will not result is a new event loop though, however in client side javaScript there is Webworker, and in node there is the cluster module that can be used as ways to go about creating a whole other event loop to work in. In python there must be ways of doing the same things, that is just delaying the calling of a function in the same thread, and also to create a whole seperate thread. This it would seem is what the threading standard libaray is all about when it comes to doing the same things in a python enviorment.
 
 <!-- more -->
 
@@ -44,4 +46,23 @@ def loop(func, sec):
   return t
  
 t=loop(printMess, 1)
+```
+
+## - The thread class
+
+```python
+import threading
+ 
+def heavy(id='none', count=100):
+  i=0;
+  while i < count:
+    print(id, i)
+    i = i + 1;
+ 
+heavy('one', 1000)
+heavy('two', 1000)
+ 
+x = threading.Thread(target=heavy, args=['three',1000])
+x.start()
+heavy('four', 1000)
 ```
