@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 15:17:43
-version: 1.9
+updated: 2020-12-21 15:38:11
+version: 1.10
 ---
 
 This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the langaie pretty fast. However now I am starting to scrtach the surface when it comes to the wide range of standard librarys that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
@@ -81,7 +81,28 @@ heavy('four', 1000)
 
 So then the Thread Class in the threading module is there to work with if I ever want to do real threading with python.
 
-## 4 - Conclusion
+## 4 - A simple counting example of a app loop in python
+
+I could take some time to see about making a real serious project of some kind with python that involves the use of a main app loop of one kind or another. In time maybe I will get around to doing just that, however for now maybe I can just quickly put togetaher a basic simple script that will just keep counting until the script is killed.
+
+This example makes use of the global keyword as a way to update a simple state outside the body of a function in the from of just a single variable. Inside the loop function I just keep steping that loop forward by one each time the loop is function is called.
+
+```python
+import threading
+ 
+d=0
+def loop():
+  global d
+  d = d + 1
+  print(d)
+  x = threading.Timer(1, loop)
+  x.start()
+loop()
+```
+
+When I call this script I just keep geting a number loged out to the console each second the just goes up by one each second. Nothing to write home about, however when it comes to starting to get the hand of this sort of thing in python I need to start somewhere.
+
+## 5 - Conclusion
 
 So that is all for my post on the python threading library for now at least. I think that I might need to start thinking in terms of what I might want to do with python in the long term moving forward though. That is that I should start thinking about what I might want to do when it comes to some actual real python examples that might make use of the threading library. In that event I am sure that I will end up coming back to what I have wrote here to expand the content more.
 
