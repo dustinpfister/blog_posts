@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 15:55:55
-version: 1.12
+updated: 2020-12-21 17:08:38
+version: 1.13
 ---
 
 This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the language pretty fast. However now I am starting to scratch the surface when it comes to the wide range of standard libraries that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
@@ -102,7 +102,43 @@ loop()
 
 When I call this script I just keep getting a number logged out to the console each second the just goes up by one each second. Nothing to write home about, however when it comes to starting to get the hand of this sort of thing in python I need to start somewhere.
 
-## 5 - Conclusion
+## 5 - Getting a secs value for each loop
+
+When it comes to making an app loop one way or another I like to have an about of time that has passed sense the last time the function was called. This value that is an amount of seconds that has when by can then be used as a way to update the value of a variable by a delta rate per second.
+
+```python
+import threading
+import datetime
+ 
+# state
+x=0
+ticks=0
+pps=256
+secRate=0.25
+lt=datetime.datetime.now()
+ 
+# main app loop
+def loop():
+  global lt, x, ticks
+  now = datetime.datetime.now()
+  timeDelta = now - lt
+  secs = timeDelta.total_seconds()
+  x = x + pps * secs
+  ticks = ticks + 1
+  t = threading.Timer(secRate, loop)
+  t.start()
+  lt=datetime.datetime.now()
+  
+  a = int(x)
+  b = int(ticks * (pps * secRate))
+  c = abs(a - b)
+  print(a, b, c)
+ 
+# start loop
+threading.Timer(secRate, loop).start()
+```
+
+## 6 - Conclusion
 
 So that is all for my post on the python threading library for now at least. I think that I might need to start thinking in terms of what I might want to do with python in the long term moving forward though. That is that I should start thinking about what I might want to do when it comes to some actual real python examples that might make use of the threading library. In that event I am sure that I will end up coming back to what I have wrote here to expand the content more.
 
