@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 15:07:27
-version: 1.7
+updated: 2020-12-21 15:13:44
+version: 1.8
 ---
 
 This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the langaie pretty fast. However now I am starting to scrtach the surface when it comes to the wide range of standard librarys that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
@@ -30,6 +30,8 @@ t = threading.Timer(3, printMess)
 t.start()
 print('end');
 ```
+
+So then the Timer
 
 ## 2 - Basic app loop example
 
@@ -81,4 +83,4 @@ So then the Thread Class in the threading module is there to work with if I ever
 
 So that is all for my post on the python threading library for now at least. I think that I might need to start thinking in terms of what I might want to do with python in the long term moving forward though. That is that I should start thinking about what I might want to do when it comes to some actual real python examples that might make use of the threading library. In that event I am sure that I will end up coming back to what I have wrote here to expand the content more.
 
-I just wanted to touch base on this libray at least though, as I might sometimes be in a situation in which I might want to have more than one thread running at the same time to help speed up the process of something.
+There is a whole lot more to write about when it comes to this library on threading in python, but I just wanted to touch base on this libray for now. The reason why is that I might sometimes be in a situation in which I might want to have more than one thread running at the same time to help speed up the process of something.
