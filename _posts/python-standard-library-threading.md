@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 766
-updated: 2020-12-21 15:38:11
-version: 1.10
+updated: 2020-12-21 15:50:17
+version: 1.11
 ---
 
 This month I wanted to start [learning python](https://docs.python.org/3/tutorial/), and I have went threw the basics of learning the langaie pretty fast. However now I am starting to scrtach the surface when it comes to the wide range of standard librarys that there are to work with. One library that I think I should at least write a few quick examples with at least would be the [threading library](https://docs.python.org/3.7/library/threading.html).
@@ -31,7 +31,7 @@ t.start()
 print('end');
 ```
 
-So then the Timer
+So then the Timer class is a good way to just delay the calling of a function for a few seconds. I should then also be able to use this to start a basic main app loop also. So lets look at just a few more examples of thei Timer class in action, and maybe even take a quick look at some other options to work with in the threading library.
 
 ## 2 - Basic app loop example
 
