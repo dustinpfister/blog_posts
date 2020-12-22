@@ -5,13 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:18:08
-version: 1.10
+updated: 2020-12-22 14:20:51
+version: 1.11
 ---
 
-When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this libray when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
+When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this library when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
 
-There are some additional features of the fileinput library also though, on top of reading from the standard input the fileinput library can be used as a way to read a collection of files. Also there are some realted topics that come to mind when using the fileinput library such as piping in a posix system, the open built in function when it comes to reading just one file, and also the subprocess library when it comes to getting a collection of file names. So in this post I will of course be going over a basic example of reading from the standard input with the fileinput library, but will also be going over some more examples that touch base on other related python topics.
+There are some additional features of the fileinput library also though, on top of reading from the standard input the fileinput library can be used as a way to read a collection of files. Also there are some related topics that come to mind when using the fileinput library such as piping in a posix system, the open built in function when it comes to reading just one file, and also the subprocess library when it comes to getting a collection of file names. So in this post I will of course be going over a basic example of reading from the standard input with the fileinput library, but will also be going over some more examples that touch base on other related python topics.
 
 <!-- more -->
 
@@ -19,9 +19,9 @@ There are some additional features of the fileinput library also though, on top 
 
 So first off I think I must go over some very basics when it comes to what the standard input is to begin with. In the process I might also have to at least mention some basic examples of piping also while I am at it, so lets get this out of the way.
 
-I like Linux, and I also like Bash, and one great thing about bash is that I can do this thing called piping. That is that I can take the output of one command and pipe that output as the input of another command. For examle I can use a command like cat to read the contents of a file and then pipe the output of that file as the input of another command such as grep where I can look for text patterns. However there is also the echo command that can be used as another way of creating some basic input in the command line, to which I can then pipe to something like grep so maybe I should start off with that.
+I like Linux, and I also like Bash, and one great thing about bash is that I can do this thing called piping. That is that I can take the output of one command and pipe that output as the input of another command. For example I can use a command like cat to read the contents of a file and then pipe the output of that file as the input of another command such as grep where I can look for text patterns. However there is also the echo command that can be used as another way of creating some basic input in the command line, to which I can then pipe to something like grep so maybe I should start off with that.
 
-So The echo command can be used to just echo some text to the stndard output of a console liek this:
+So The echo command can be used to just echo some text to the standard output of a console like this:
 
 ```
 $ echo "hello this is SOME text"
@@ -35,7 +35,7 @@ $ echo "hello this is SOME text" | grep -Eo '\b[[:upper:]]+\b'
 SOME
 ```
 
-So now that I have that out of the way there is the question of who to go about writitng my own commands in python where I can pipe things togethaer like this. When it comes to making something like echo in python that is simple enough as the print built in function is something that one will learn right away when getting started with python. However there is also knowing how to go about reading something that might have been passed by way of the standard input and for that theer is the fileinput library.
+So now that I have that out of the way there is the question of who to go about writing my own commands in python where I can pipe things togethaer like this. When it comes to making something like echo in python that is simple enough as the print built in function is something that one will learn right away when getting started with python. However there is also knowing how to go about reading something that might have been passed by way of the standard input and for that there is the fileinput library.
 
 ### 1.1 - Using print to create some standard output
 
@@ -65,7 +65,7 @@ $
 
 ### 1.2 - The is stdin method
 
-There are a number of functions that can be called off of an instnace of the input method. Some good examples of this would be the filename function, and the is stdin function.
+There are a number of functions that can be called off of an instance of the input method. Some good examples of this would be the filename function, and the is stdin function.
 
 ```python
 import fileinput
@@ -80,7 +80,7 @@ for line in f:
 
 ## 2 - The open built in function
 
-Another function of the input function of the fileinput standard library is to read the contents of a collectio of files. The function can also be used to read just one file, however it is always imporattnt to look at what there is to work with when it comes to built in functions in python first. One built in function that is of interest when it comes to reading a file is the open function. If I want to open and read the contents of just one file then this function works just fine, and the fileinput library is not really a replacement for this function.
+Another function of the input function of the fileinput standard library is to read the contents of a collection of files. The function can also be used to read just one file, however it is always important to look at what there is to work with when it comes to built in functions in python first. One built in function that is of interest when it comes to reading a file is the open function. If I want to open and read the contents of just one file then this function works just fine, and the fileinput library is not really a replacement for this function.
 
 ```python
 f=open('./hello.txt', 'r')
@@ -112,4 +112,4 @@ for line in files:
 
 ## 4 - Conclusion
 
-So the fileinput libraray is the libraray that I will want to use when it comes to wreading the contents of the stanadr inpuit in a python script. However the function has some other uses on top of just reading the standard input. Another common task that I find myself running into a lot is having to work with a large collection of files. Fort example this post that you are reading right now is just one of many that all exsist as markdown files. Often I might want to writign some kind of script that will loop over all of the files and do somethiong like add up a grand total website word count total for example. So on top of just being a libraray for reading the standard input this is also a good modules for working with a collection of files.
+So the fileinput library is the library that I will want to use when it comes to reading the contents of the standard input in a python script. However the function has some other uses on top of just reading the standard input. Another common task that I find myself running into a lot is having to work with a large collection of files. Fort example this post that you are reading right now is just one of many that all exist as markdown files. Often I might want to writing some kind of script that will loop over all of the files and do something like add up a grand total website word count total for example. So on top of just being a library for reading the standard input this is also a good modules for working with a collection of files.
