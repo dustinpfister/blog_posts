@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:14:26
-version: 1.9
+updated: 2020-12-22 14:18:08
+version: 1.10
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this libray when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -112,3 +112,4 @@ for line in files:
 
 ## 4 - Conclusion
 
+So the fileinput libraray is the libraray that I will want to use when it comes to wreading the contents of the stanadr inpuit in a python script. However the function has some other uses on top of just reading the standard input. Another common task that I find myself running into a lot is having to work with a large collection of files. Fort example this post that you are reading right now is just one of many that all exsist as markdown files. Often I might want to writign some kind of script that will loop over all of the files and do somethiong like add up a grand total website word count total for example. So on top of just being a libraray for reading the standard input this is also a good modules for working with a collection of files.
