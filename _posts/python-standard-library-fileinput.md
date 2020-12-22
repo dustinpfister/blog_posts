@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:24:12
-version: 1.12
+updated: 2020-12-22 14:27:01
+version: 1.13
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this library when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -63,9 +63,9 @@ foo
 $
 ```
 
-### 1.2 - The is stdin method
+### 1.2 - methods to work with off of an instnace of input
 
-There are a number of functions that can be called off of an instance of the input method. Some good examples of this would be the filename function, and the is stdin function.
+There are a number of functions that can be called off of an instance of the input method. Some good examples of this would be the filename function, and the is stdin function. When it comes to just reading from the standard input alone the is stdin function is not really needed, however in some situations I might need to find out of that is the case or not.
 
 ```python
 import fileinput
