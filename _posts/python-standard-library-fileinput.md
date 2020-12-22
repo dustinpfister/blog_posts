@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 13:28:02
-version: 1.3
+updated: 2020-12-22 13:57:49
+version: 1.4
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this libray when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -19,7 +19,23 @@ There are some additional features of the fileinput library also though, on top 
 
 So first off I think I must go over some very basics when it comes to what the standard input is to begin with. In the process I might also have to at least mention some basic examples of piping also while I am at it, so lets get this out of the way.
 
-I like Linux, and I also like Bash, and one great thing about bash is that I can do this thing called piping. That is that I can take the output of one command and pipe that output as the input of another command. For examle I can use a command like cat to read the contents of a file and then pipe the output of that file as the input of another command such as grep where I can look for text patterns.
+I like Linux, and I also like Bash, and one great thing about bash is that I can do this thing called piping. That is that I can take the output of one command and pipe that output as the input of another command. For examle I can use a command like cat to read the contents of a file and then pipe the output of that file as the input of another command such as grep where I can look for text patterns. However there is also the echo command that can be used as another way of creating some basic input in the command line, to which I can then pipe to something like grep so maybe I should start off with that.
+
+So The echo command can be used to just echo some text to the stndard output of a console liek this:
+
+```
+$ echo "hello this is SOME text"
+hello this is SOME text
+```
+
+However what if I just want to get the text that fits a given pattern such as the pattern in the example text that is in all uppercase letters? To do that I can pipe the standard output to the grep command, and give grep a regular expression that will match an all uppercase pattern.
+
+```
+$ echo "hello this is SOME text" | grep -Eo '\b[[:upper:]]+\b'
+SOME
+```
+
+So now that I have that out of the way there is the question of who to go about writitng my own commands in python where I can pipe things togethaer like this. When it comes to making something like echo in python that is simple enough as the print built in function is something that one will learn right away when getting started with python.
 
 ### 1.1 - Read the standard input in python with fileinput
 
