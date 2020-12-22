@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:20:51
-version: 1.11
+updated: 2020-12-22 14:24:12
+version: 1.12
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this library when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -92,6 +92,8 @@ print(type(s).__name__) # 'str'
 ## 3 - Read more then one file
 
 So when it comes to just working with one file there is the open function that will work just fine. However the other feature of the input function is that it is a good choice when it comes to working with a collection of files.
+
+I can set the value of a files parameter of the input function to a list of paths to files. I can then loop over all the lines of all of the files.
 
 ```python
 import fileinput
