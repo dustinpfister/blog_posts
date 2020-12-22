@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:27:01
-version: 1.13
+updated: 2020-12-22 14:29:36
+version: 1.14
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this library when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -35,15 +35,17 @@ $ echo "hello this is SOME text" | grep -Eo '\b[[:upper:]]+\b'
 SOME
 ```
 
-So now that I have that out of the way there is the question of who to go about writing my own commands in python where I can pipe things togethaer like this. When it comes to making something like echo in python that is simple enough as the print built in function is something that one will learn right away when getting started with python. However there is also knowing how to go about reading something that might have been passed by way of the standard input and for that there is the fileinput library.
+So now that I have that out of the way there is the question of who to go about writing my own commands in python where I can pipe things together like this. When it comes to making something like echo in python that is simple enough as the print built in function is something that one will learn right away when getting started with python. However there is also knowing how to go about reading something that might have been passed by way of the standard input and for that there is the fileinput library.
 
 ### 1.1 - Using print to create some standard output
 
-So when it comes to creating standard output in python there is just using the print built in function.
+So when it comes to creating standard output in python there is just using the print built in function. There might be a few things to pint out when it comes to using this method, but for the most part I just need to pass it a value and what is passed will become the standard output for a script.
 
 ```python
 print('1 2 3 4 5 6')
 ```
+
+So that is more or less the python equivalent of the echo command, however now I should move on to how to go about reading that from a python script when it comes to piping.
 
 ### 1.1 - Read the standard input in python with fileinput
 
