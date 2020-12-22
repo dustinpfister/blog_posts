@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:29:36
-version: 1.14
+updated: 2020-12-22 14:51:25
+version: 1.15
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this library when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -114,6 +114,32 @@ for line in files:
 # $
 ```
 
-## 4 - Conclusion
+## 4 - Basic piping example
+
+```python
+r=range(0,10)
+for n in r:
+  print(n, end=' ')
+```
+
+```python
+import fileinput
+ 
+f=fileinput.input()
+ 
+def powIt(n):
+  if(n == ''):
+      return 0
+  return pow(2, int(n))
+ 
+for line in f:
+  l=list(line.split(' '))
+  p=map(powIt, l)
+  print(list(p))
+  
+# $ python3 nums-gen.py | python3 nums-read.py
+```
+
+## 5 - Conclusion
 
 So the fileinput library is the library that I will want to use when it comes to reading the contents of the standard input in a python script. However the function has some other uses on top of just reading the standard input. Another common task that I find myself running into a lot is having to work with a large collection of files. Fort example this post that you are reading right now is just one of many that all exist as markdown files. Often I might want to writing some kind of script that will loop over all of the files and do something like add up a grand total website word count total for example. So on top of just being a library for reading the standard input this is also a good modules for working with a collection of files.
