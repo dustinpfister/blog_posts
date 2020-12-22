@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:00:18
-version: 1.5
+updated: 2020-12-22 14:03:34
+version: 1.6
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this libray when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -39,6 +39,8 @@ So now that I have that out of the way there is the question of who to go about 
 
 ### 1.1 - Read the standard input in python with fileinput
 
+To read from the standard input I just need to use the input method of the fileinput library. There are a number of parameters for this method, however if I just want to read from the standard input I can just call the method.
+
 ```python
 import fileinput
  
@@ -53,7 +55,9 @@ foo
 $
 ```
 
-### 1.2 - the is stdin method
+### 1.2 - The is stdin method
+
+There are a number of functions that can be called off of an instnace of the input method. Some good examples of this would be the filename function, and the is stdin function.
 
 ```python
 import fileinput
