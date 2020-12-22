@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:54:06
-version: 1.16
+updated: 2020-12-22 14:56:29
+version: 1.17
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this library when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -116,7 +116,11 @@ for line in files:
 
 ## 4 - Basic piping example
 
+So now that I have the very basics of generating standard output, as well as reading standard output in python, I should be able to come up with at least a basic example of why this is very usefule.
+
 ### 4.1 - The gen nums script
+
+So here I have a basic script that will just spit out a range of numbers.
 
 ```python
 r=range(0,10)
