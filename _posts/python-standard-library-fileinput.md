@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:51:25
-version: 1.15
+updated: 2020-12-22 14:54:06
+version: 1.16
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this library when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -116,11 +116,15 @@ for line in files:
 
 ## 4 - Basic piping example
 
+### 4.1 - The gen nums script
+
 ```python
 r=range(0,10)
 for n in r:
   print(n, end=' ')
 ```
+
+### 4.2 - The read nums script
 
 ```python
 import fileinput
@@ -136,8 +140,11 @@ for line in f:
   l=list(line.split(' '))
   p=map(powIt, l)
   print(list(p))
-  
-# $ python3 nums-gen.py | python3 nums-read.py
+```
+
+```
+$ python3 nums-gen.py | python3 nums-read.py
+[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 0]
 ```
 
 ## 5 - Conclusion
