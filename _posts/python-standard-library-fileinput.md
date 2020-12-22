@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 767
-updated: 2020-12-22 14:08:35
-version: 1.7
+updated: 2020-12-22 14:11:59
+version: 1.8
 ---
 
 When learning a new programing language such as Python one thing that comes to mind that I like to learn about right away os how to go about reading from the standard input. When it comes to Python there is the [fileinput library](https://docs.python.org/3.7/library/fileinput.html) that can be used to read from the standard input, but can also be used as a way to read a collection of files also. There is one main function of interest in this libray when it comes to reading standard input and that would be the input method, by default it will read from the standard input if no file list is given.
@@ -79,6 +79,8 @@ for line in f:
 ```
 
 ## 2 - The open built in function
+
+Another function of the input function of the fileinput standard library is to read the contents of a collectio of files. The function can also be used to read just one file, however it is always imporattnt to look at what there is to work with when it comes to built in functions in python first. One built in function that is of interest when it comes to reading a file is the open function. If I want to open and read the contents of just one file then this function works just fine, and the fileinput library is not really a replacement for this function.
 
 ```python
 f=open('./hello.txt', 'r')
