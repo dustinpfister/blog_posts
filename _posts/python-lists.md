@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:58:33
-version: 1.19
+updated: 2020-12-23 14:01:59
+version: 1.20
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -121,7 +121,7 @@ print(len(a)) # 4
 
 ## 5 - loops, control flow and lists
 
-So I think that I have covered many of the basic when it comes to lists, so now I think that I should get into at least a few control flow examples involving lists.
+So I think that I have covered many of the basic when it comes to lists, so now I think that I should get into at least a few control flow examples involving lists. There are two general types of loops in python for loops, and while loops. although I tent to like while loops when it comes to working with lists and sequenec types in general often it would seem that for loops are a betrter choice. However in any case in this section I will be going over loops and lists, and maybe touch base on some control flow examples in general in the process of doing so.
 
 ### 5.1 - Using a list with a for loop
 
