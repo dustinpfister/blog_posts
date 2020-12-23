@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:33:20
-version: 1.12
+updated: 2020-12-23 13:41:09
+version: 1.13
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -52,23 +52,14 @@ print(grid[0][2])  # 2
 print(grid)        # [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 ```
 
-## 2 - adding elements to a list
+## 2 - Adding elements to a list
 
 So there is creating a list, and when doing so it is possible to define some starting elements for a list also. However what if I want to add elements to a list that has been created to begin with. Or maybe just chnage the value of a given element that is in the range of the list.
 
-### 2.1 - The append method
 
-The apppend method of a list is one way to go about adding an element to the end of a list.
+### 2.1 - Change the value of an element
 
-```python
-a=[]
-a.append('foo')
-print(a)
-```
-
-### 2.2 - Change the value of an element
-
-There is using append to add and element to then end, and each time it is called the length of the list will increase. However what if I just want to add an element that is in range of the length of the list? For that there is just using square bracket notation and using assignment to just set a new value of an element index.
+If I just want to add an element that is in range of the length of the list then I can just use the bracket syntax to do so. That is that I can use a set of square brackets with an index value betwen them after the name of the list, and then use the equal symbol to set a new value for an element that is all ready there.
 
 ```python
 a=list(range(0,2))
@@ -76,6 +67,21 @@ a[0]='foo'
 a[1]='bar'
 print(a)
 ```
+
+However this is not really adding an element to a list, it is just changing the value of an element that is there to begin with. If I try to add an element to a list this way by giving an index that is out of range, then I will get an error. This isactaully a good thing to some extent, the reason why I say that is that lists are a kind of dense array. In javaScript it is possible to create what are called sparse arrays where there can be gaps in arrays. This sparse arary thing can casue some effects that might not be exspected when it comes to things like using a map function. However this is not really allowed in python, at least not with lists anyway.
+
+Still how does one go about adding elements to a list in python? Well lets look at somre more examples.
+
+### 2.2 - The append method
+
+The apppend method of a list is one way to go about adding an element to the end of a list. This way of adding and element to a liest will also increase the lnegth of the list. You might find that you can not just use the bracket
+
+```python
+a=[]
+a.append('foo')
+print(a)
+```
+
 
 Here in this example I am using ther range function to create a range that is another kind of sequence type in python.
 
