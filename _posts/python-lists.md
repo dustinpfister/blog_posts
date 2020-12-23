@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:05:46
-version: 1.5
+updated: 2020-12-23 13:07:12
+version: 1.6
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -104,6 +104,8 @@ print(a) # [1
 ```
 
 ## 4 - the len function and lists
+
+The len fuinction is anotgher built in function of interest when it comes to lists, as this is a function that will return the length of a list in terms of its elements.
 
 ```python
 a=[1,2,3,4]
