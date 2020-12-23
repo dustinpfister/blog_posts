@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:53:31
-version: 1.17
+updated: 2020-12-23 13:56:33
+version: 1.18
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -162,7 +162,7 @@ print(nums) # [9, 9, 7, 6, 5, 4, 3, 1, 0, 0]
 
 ### 6.3 - Use a key function
 
-I can also set a key functon which is one way to do about defining some custom logic for the sort.
+I can also set a key functon which is one way to do about defining some custom logic for the sort. For example say that I want to sort a list of elemenst not just by there over all value, but if they are a lultabule of 2 or not. I can create a function that will accept and element as a parameter and then return the result of an expression that prefroms a modulo operation with the element value and tests if the resuklt is equal to zero or not.
 
 ```python
 def mOf2(el):
@@ -192,7 +192,7 @@ print(c) # [1, 2, 4, 8, 16, 32]
 print(a) # [0, 1, 2, 3, 4, 5]
 ```
 
-## 8 - range
+## 8 - The range function and sequence type
 
 A range is another kind of sequece type to work with beyond that of just lists. A range is a great way to create, well a range of numbers by just giving for example a starting and ending value for the range. A therd argumen can also be given to define a steping value other than that of one. However one draw back of a range is that it is a kind of sequence type in python that can not be mutated, however this is eaily fixed by using the list built in function to convert a range to a list, and of course as we have establed in this post lists are toally mutabule.
 
