@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 12:53:04
-version: 1.3
+updated: 2020-12-23 12:59:24
+version: 1.4
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -51,6 +51,31 @@ print(grid)        # [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 ```
 
 ## 2 - adding elements to a list
+
+So there is creating a list, and when doing so it is possible to define some starting elements for a list also. However what if I want to add elements to a list that has been created to begin with. Or maybe just chnage the value of a given element that is in the range of the list.
+
+### 2.1 - The append method
+
+The apppend method of a list is one way to go about adding an element to the end of a list.
+
+```python
+a=[]
+a.append('foo')
+print(a)
+```
+
+### 2.2 - Change the value of an element
+
+There is using append to add and element to then end, and each time it is called the length of the list will increase. However what if I just want to add an element that is in range of the length of the list? For that there is just using square bracket notation and using assignment to just set a new value of an element index.
+
+```python
+a=list(range(0,2))
+a[0]='foo'
+a[1]='bar'
+print(a)
+```
+
+Here in this example I am using ther range function to create a range that is another kind of sequence type in python.
 
 ## 3 - removing elements from a list
 
