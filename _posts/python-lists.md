@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:28:57
-version: 1.11
+updated: 2020-12-23 13:33:20
+version: 1.12
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -33,7 +33,7 @@ print(nums)
 
 ### 1.2 - A list of strings
 
-A list can also be a collection of strings.
+A list can also be a collection of strings, in fact it would seem that there are not restrections when it comes to types. A list can be all iniegers, strings, or a mix of values.
 
 ```python
 strs = ['one', 'two', 'three']
@@ -43,7 +43,7 @@ print(strs)    # ['one', 'two', 'three']
 
 ### 1.3 - Nested lists
 
-Lists can also be nested.
+Lists can also be nested, that is that I can have a list of lists. The way of doing this is very simular to that of Arrays of Arrays in javaScript so if you know a thing or two about javaScript you should find the process of making these kinds of lists pretty easy.
 
 ```python
 grid = [[0,1,2],[3,4,5],[6,7,8]]
