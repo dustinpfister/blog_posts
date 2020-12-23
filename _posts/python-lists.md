@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 12:59:24
-version: 1.4
+updated: 2020-12-23 13:05:46
+version: 1.5
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -79,4 +79,63 @@ Here in this example I am using ther range function to create a range that is an
 
 ## 3 - removing elements from a list
 
-## 4 - sorting a list
+So there is adding elememnts to a list that might increase the range of a list, but then there is also removing elements from a list.
+
+### 3.1 - del
+
+The del keyword is one way to go about removing an element from a list
+
+```python
+a=list(range(0,2))
+print(a) # [0,1]
+del a[0]
+print(a) # [1]
+```
+
+### 3.2 - clear
+
+The clear funciton will clear out all elements from a list.
+
+```python
+a=list(range(0,4))
+print(a) # [0, 1, 2, 3]
+a.clear()
+print(a) # [1
+```
+
+## 4 - the len function and lists
+
+```python
+a=[1,2,3,4]
+print(len(a)) # 4
+```
+
+## 5 - loops and lists
+
+## 6 - sorting a list
+
+```python
+```
+
+## 7 - map
+
+```python
+def power(n):
+  return pow(2, n)
+ 
+a=[0,1,2,3,4,5]
+b=map(power, a)
+c=list(b)
+ 
+# the use of map will create a map type
+print(type(b).__name__) # map
+# the list function can turn it back into a list
+print(c) # [1, 2, 4, 8, 16, 32]
+# none of this will mutate the source list
+print(a) # [0, 1, 2, 3, 4, 5]
+```
+
+## 8 - range
+
+## 9 - conclusion
+
