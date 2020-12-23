@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:23:48
-version: 1.10
+updated: 2020-12-23 13:28:57
+version: 1.11
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -17,7 +17,9 @@ In this post I will be going over the basic of lists, how to create them to begi
 
 ## 1 - Basics of Lists in python
 
-So first off I guess I should start off with some very basic examples of lists in python. These arejust ways of how to go about creating a list to begin with, and maybe a few other realted topics that help when it comes to learniong how to work with lists and types in general in python.
+So first off I guess I should start off with some very basic examples of lists in python. These are just ways of how to go about creating a list to begin with, and maybe a few other realted topics that help when it comes to learniong how to work with lists and types in general in python.
+
+This might be a very basic post on lists in python, but I assume that you have at least some background when it comes to the very begining of getting stared with python. This post is very basic, but still only so basic, if you have no background at all with python it might be a good idea to start with my [getting started post on python](/2020/12/14/python-getting-started/). In that post I touch base on lists a little, but I also get into the very basic of getting started with python when it comes to runing code to begin with.
 
 ### 1.1 - Just a simple list of numbers
 
