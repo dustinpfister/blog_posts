@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:56:33
-version: 1.18
+updated: 2020-12-23 13:58:33
+version: 1.19
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -88,9 +88,9 @@ print(a)
 
 So there is adding elememnts to a list that might increase the range of a list, but then there is also removing elements from a list. When it comes to this there are a number of ways to go about doing so. There is a del keyword, but then also a number of sequence class methods that can also be used to remove elements from a list. So in this section I will be going over soem quick simple examples of removing elements from a list.
 
-### 3.1 - del
+### 3.1 - The del keyword
 
-The del keyword is one way to go about removing an element from a list
+The del keyword is one way to go about removing an element from a list, to use it I just need to type del followed by the element that I want to delete using the bracket syntax.
 
 ```python
 a=list(range(0,2))
@@ -99,7 +99,7 @@ del a[0]
 print(a) # [1]
 ```
 
-### 3.2 - clear
+### 3.2 - The clear function
 
 The clear funciton will clear out all elements from a list.
 
