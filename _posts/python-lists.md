@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:51:15
-version: 1.16
+updated: 2020-12-23 13:53:31
+version: 1.17
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -174,7 +174,7 @@ print(nums) # [9, 9, 7, 6, 5, 4, 3, 1, 0, 0]
 
 ## 7 - The map built in function and lists
 
-The map built in function usfule for creating a new list with some logic that is to be appled to all elements in a source list.
+The map built in function usfule for creating a new list with some logic that is to be appled to all elements in a source list. What is create about this built in function is that it will not mutate the source list that is used with it. The function will return a type of its on called map, however converting a map back to a list is as easy as just pasing the map to the list built in function.
 
 ```python
 def power(n):
