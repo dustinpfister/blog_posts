@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:18:42
-version: 1.9
+updated: 2020-12-23 13:23:48
+version: 1.10
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -165,7 +165,9 @@ nums.sort(key=mOf2, reverse=True)
 print(nums) # [9, 9, 7, 6, 5, 4, 3, 1, 0, 0]
 ```
 
-## 7 - map
+## 7 - The map built in function and lists
+
+The map built in function usfule for creating a new list with some logic that is to be appled to all elements in a source list.
 
 ```python
 def power(n):
@@ -185,5 +187,22 @@ print(a) # [0, 1, 2, 3, 4, 5]
 
 ## 8 - range
 
+A range is another kind of sequece type to work with beyond that of just lists.
+
+```python
+a=range(0,10)
+# use of range will return a range type
+# this is a kind of non mutabule sequence
+print(type(a).__name__) # range
+ 
+# The list function can qucikly turn a range
+# into a list which is mutabule
+b=list(a)
+b[2]="two"
+print(type(b).__name__) # list
+print(b) # [0, 1, 'two', 3, 4, 5, 6, 7, 8, 9]
+```
+
 ## 9 - conclusion
 
+So that is it for now when it comes to lists in python. I think that I have touched base on many of the basics at least when it somes to lists, but I am sure there is a great deal more to write about that I have not got to just yet. As of this writing I am still fairly new to python myself, so at some point in the future I am going to want to edit this post. Hopfully by then I will have somre more intersting examples worked out to expand this post more, and aslo cover some additioanl topics that are impoarant to be aware of when it comes to getting started with lists in python.
