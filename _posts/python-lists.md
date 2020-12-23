@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:41:09
-version: 1.13
+updated: 2020-12-23 13:44:52
+version: 1.14
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -195,7 +195,7 @@ print(a) # [0, 1, 2, 3, 4, 5]
 
 ## 8 - range
 
-A range is another kind of sequece type to work with beyond that of just lists.
+A range is another kind of sequece type to work with beyond that of just lists. A range is a great way to create, well a range of numbers by just giving for example a starting and ending value for the range. A therd argumen can also be given to define a steping value other than that of one. However one draw back of a range is that it is a kind of sequence type in python that can not be mutated, however this is eaily fixed by using the list built in function to convert a range to a list, and of course as we have establed in this post lists are toally mutabule.
 
 ```python
 a=range(0,10)
