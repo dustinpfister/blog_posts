@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 14:13:09
-version: 1.21
+updated: 2020-12-23 14:21:57
+version: 1.22
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -163,6 +163,26 @@ while i > 0:
   el = a[index]
   print(i, el, sep="-", end=" | ")
 # 3-1 | 2-2 | 1-3 | 0-4 |
+```
+
+### 5.4 - if statements
+
+Another major component of control flow is an if statement, so how about a quick example of that just for the sake of getting a little exercise in on how to do basic coding not just with lists, but control flow statements in general with python.
+
+```python
+a=[ ['pow', 2,4], ['div', 16,7], ['sum', 6, 7] ]
+b=[];
+for params in a:
+    what=params[0]
+    p1=params[1]
+    p2=params[2]
+    if(what == 'pow'):
+        b.append(pow(p1, p2))
+    if(what == 'div'):
+        b.append(p1 / p2)
+    if(what == 'sum'):
+        b.append(p1 + p2)
+print(b) # [16, 2.2857142857142856, 13]
 ```
 
 ## 6 - Sorting a list
