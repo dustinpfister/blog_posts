@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:09:49
-version: 1.7
+updated: 2020-12-23 13:12:08
+version: 1.8
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -131,7 +131,30 @@ for n in a:
 
 ## 6 - sorting a list
 
+### 6.1 - Just sort a list of numbers
+
 ```python
+nums = [7,3,5,6,1,0,0,4,9,9]
+nums.sort()
+print(nums) # [0, 0, 1, 3, 4, 5, 6, 7, 9, 9]
+```
+
+### 6.2 - Reverse
+
+```python
+nums = [7,3,5,6,1,0,0,4,9,9]
+nums.sort(reverse=True)
+print(nums) # [9, 9, 7, 6, 5, 4, 3, 1, 0, 0]
+```
+
+### 6.3 - Use a key function
+
+```python
+def mOf2(el):
+    return el % 2 == 0
+nums = [7,3,5,6,1,0,0,4,9,9]
+nums.sort(key=mOf2, reverse=True)
+print(nums) # [9, 9, 7, 6, 5, 4, 3, 1, 0, 0]
 ```
 
 ## 7 - map
