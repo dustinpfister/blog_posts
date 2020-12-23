@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 14:01:59
-version: 1.20
+updated: 2020-12-23 14:13:09
+version: 1.21
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -134,6 +134,35 @@ for n in a:
   p=pow(2,n)
   print(n,p, sep=",", end=" | ")
 # 1,2 | 2,4 | 3,8 | 4,16 |
+```
+
+### 5.2 - Basic while loop example
+
+For the most part it might be best to stick with for loops when it comes to lists. However another options is of course a while loop.
+
+```python
+a=[1,2,3,4]
+i=0
+while i < len(a):
+  print(i, a[i], sep="-", end=" | ")
+  i = i + 1
+# 0-1 | 1-2 | 2-3 | 3-4 |
+```
+
+### 5.3 - Looping backwards with a while loop
+
+With a while loop I can also loop backwards when it comes to a main index number, but I can still get elements from the begining forward by just subtracting from length.
+
+```python
+a=[1,2,3,4]
+length=len(a)
+i=length
+while i > 0:
+  i = i - 1
+  index = length - i - 1
+  el = a[index]
+  print(i, el, sep="-", end=" | ")
+# 3-1 | 2-2 | 1-3 | 0-4 |
 ```
 
 ## 6 - Sorting a list
