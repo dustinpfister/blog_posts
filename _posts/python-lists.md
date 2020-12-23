@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-23 13:44:52
-version: 1.14
+updated: 2020-12-23 13:49:23
+version: 1.15
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutabule kind of sequence data type. These lists might be somewhat simular to Arrays in javaScript, but with at least a few note worthy diferences such as beging a dense rather than sparce kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -70,7 +70,9 @@ print(a)
 
 However this is not really adding an element to a list, it is just changing the value of an element that is there to begin with. If I try to add an element to a list this way by giving an index that is out of range, then I will get an error. This isactaully a good thing to some extent, the reason why I say that is that lists are a kind of dense array. In javaScript it is possible to create what are called sparse arrays where there can be gaps in arrays. This sparse arary thing can casue some effects that might not be exspected when it comes to things like using a map function. However this is not really allowed in python, at least not with lists anyway.
 
-Still how does one go about adding elements to a list in python? Well lets look at somre more examples.
+Here in this example I am using ther range function to create a range that is another kind of sequence type in python. The range function will create and return another kind of sequence type called, you guessed it a range. This kind of sequece type is like a list, but with some note worthy diferences one of which is that they can not be mutated. I will be getting into the range function more in this post, but for now lets get back to lists.
+
+Still when it comes to a list, how does one go about adding elements to a list in python? Well lets look at some more examples of doing so that might prove to be better soltuons for adding elements.
 
 ### 2.2 - The append method
 
@@ -81,9 +83,6 @@ a=[]
 a.append('foo')
 print(a)
 ```
-
-
-Here in this example I am using ther range function to create a range that is another kind of sequence type in python.
 
 ## 3 - removing elements from a list
 
