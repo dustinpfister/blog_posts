@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-28 16:32:53
-version: 1.4
+updated: 2020-12-28 16:39:48
+version: 1.5
 ---
 
 Wehn learing a new programing lanague one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certian type, and can not just be changed to something else. Other lanagues have dynamic typing where a varaible can be any given type and any given moment. Some lanagues have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other lanagues simplify this by just going with one data type for all numners.
@@ -63,4 +63,13 @@ Of course there is a float data type in python.
 x = 1.25
 x = x + 0.25
 print(x, type(x)) # 1.5 <class 'float'>
+```
+
+## 3 - Complex Numbers
+
+There is a complex Number data type in python.
+
+```python
+c = 6j
+print(c, type(c)) # (6j) <class 'complex'>
 ```
