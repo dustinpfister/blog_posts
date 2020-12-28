@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-28 16:48:36
-version: 1.8
+updated: 2020-12-28 16:50:40
+version: 1.9
 ---
 
 Wehn learing a new programing lanague one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certian type, and can not just be changed to something else. Other lanagues have dynamic typing where a varaible can be any given type and any given moment. Some lanagues have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other lanagues simplify this by just going with one data type for all numners.
@@ -92,7 +92,16 @@ l = [1, 'two', 3]
 print(l, type(l)) # [1, 'two', 3] <class 'list'>
 ```
 
-## 6 - Conclusion
+## 6 - Sets
+
+Python also provides a set data type, this is a way to create a set of numbers.
+
+```python
+s = {1,0,0,0,1,1,0,1,0}
+print(s, type(s)) # {0, 1} <class 'set'>
+```
+
+## 7 - Conclusion
 
 So there are a number of built in data types in python, but there is also a great deal more that can be added by way of the various standard librarys. There are additional modules for dates, arrays, and many other additional types that might prove to be a better cohice for certain projects. In this post I was just mainly interetsing in covering the built in types only, and there is all ready a great deal of ground to cover when it comes to just working with what there is to work with right out of the gate with python.
 
