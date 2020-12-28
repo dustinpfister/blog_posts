@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-28 16:44:47
-version: 1.7
+updated: 2020-12-28 16:48:36
+version: 1.8
 ---
 
 Wehn learing a new programing lanague one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certian type, and can not just be changed to something else. Other lanagues have dynamic typing where a varaible can be any given type and any given moment. Some lanagues have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other lanagues simplify this by just going with one data type for all numners.
@@ -83,7 +83,16 @@ str = 'Hello World'
 print(str, type(str)) # Hello World <class 'str'>
 ```
 
-## 5 - Conclusion
+## 5 - Lists
+
+Lists are a kind of mutabule sequence type. They are kind of like Arrays in javaScript, but not really as there are some slight diferences such as the fact that a List is a dense rather than sparse array if you can get away with calling it one. The elements in a list can be just about anything, including additional lists.
+
+```python
+l = [1, 'two', 3]
+print(l, type(l)) # [1, 'two', 3] <class 'list'>
+```
+
+## 6 - Conclusion
 
 So there are a number of built in data types in python, but there is also a great deal more that can be added by way of the various standard librarys. There are additional modules for dates, arrays, and many other additional types that might prove to be a better cohice for certain projects. In this post I was just mainly interetsing in covering the built in types only, and there is all ready a great deal of ground to cover when it comes to just working with what there is to work with right out of the gate with python.
 
