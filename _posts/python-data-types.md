@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-28 16:25:12
-version: 1.2
+updated: 2020-12-28 16:30:04
+version: 1.3
 ---
 
 Wehn learing a new programing lanague one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certian type, and can not just be changed to something else. Other lanagues have dynamic typing where a varaible can be any given type and any given moment. Some lanagues have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other lanagues simplify this by just going with one data type for all numners.
@@ -16,6 +16,22 @@ So when it comes to python it would seem that there is dynamic typing, and there
 <!-- more -->
 
 ## Checking the type of a value
+
+So before I get into the various data types in python, maybe it is agood idea to start off with how to go about checking the type of a value to begin with. For this task there is the type built in function, this function is yet another one of the many puilt in functions in python such as print. Passing a value to type will return a type object, this object has a name propery that can be used as a way to get the name of the data type.
+
+```python
+a='hello'
+b=42
+ 
+# type will give a type object
+print( type(a) ) # <class 'str'>
+ 
+# if for some reson I just want the name of the type
+# I can use the .__name__ property
+print( type(a).__name__ ) # str
+```
+
+So the type function is a great tool to start to learn about what the deal is with data types python. Just start playing around with expressions and various code examples to start to become aware of what there is to work with. To help with this lets start to look at some examples of the various built in types.
 
 ## 1 - Integers
 
