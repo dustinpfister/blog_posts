@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-29 16:30:41
-version: 1.11
+updated: 2020-12-29 16:32:39
+version: 1.12
 ---
 
 Wehn learing a new programing lanague one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certian type, and can not just be changed to something else. Other lanagues have dynamic typing where a varaible can be any given type and any given moment. Some lanagues have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other lanagues simplify this by just going with one data type for all numners.
@@ -94,7 +94,7 @@ print(l, type(l)) # [1, 'two', 3] <class 'list'>
 
 ## 6 - Sets
 
-Python also provides a set data type, this is a way to create a set of numbers.
+Python also provides a set data type, this is a way to create a set of numbers. This differs a little form other options for creating a set of numbers with lists as numbers of the same value will not be dublacated.
 
 ```python
 s = {1,0,0,0,1,1,0,1,0}
