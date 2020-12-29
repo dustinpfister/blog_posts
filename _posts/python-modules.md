@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 770
-updated: 2020-12-29 14:39:25
-version: 1.4
+updated: 2020-12-29 14:41:10
+version: 1.5
 ---
 
 In the past few weeks I have been making an effor to start learning python, and as such I should start getting into how to star making some kind of real project with python at some point. With that said I should start to learn the basics of how to go about creating modules with python. So in this post I will be going over the basics and more when it comes to modules, and packages in python as I have come to know it thus far.
@@ -48,6 +48,8 @@ Hello World
 So that is the basic idea when it comes to a script.
 
 ## 2 - Creating my own module
+
+Now that I have covered the basic of makign what a script file is often called, it is time to create some basic modules of my own.
 
 ### 2.1 - Basic hello world module example
 
