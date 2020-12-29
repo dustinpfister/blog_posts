@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-28 16:50:40
-version: 1.9
+updated: 2020-12-29 16:26:39
+version: 1.10
 ---
 
 Wehn learing a new programing lanague one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certian type, and can not just be changed to something else. Other lanagues have dynamic typing where a varaible can be any given type and any given moment. Some lanagues have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other lanagues simplify this by just going with one data type for all numners.
@@ -57,7 +57,7 @@ print(x, type(x)) # 8 <class 'int'>
 
 ## 2 - Float number values
 
-Of course there is a float data type in python.
+Of course there is a float data type in python that can also be used as another option for repersenting a number on top of just ints. Making a float is as simple as just adding a decimal when creating such a value from a number literal. However ther can also end up being the result of an expression where a decimal is added to an integer value.
 
 ```python
 x = 1.25
