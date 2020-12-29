@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-29 16:26:39
-version: 1.10
+updated: 2020-12-29 16:30:41
+version: 1.11
 ---
 
 Wehn learing a new programing lanague one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certian type, and can not just be changed to something else. Other lanagues have dynamic typing where a varaible can be any given type and any given moment. Some lanagues have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other lanagues simplify this by just going with one data type for all numners.
@@ -76,7 +76,7 @@ print(c, type(c)) # (6j) <class 'complex'>
 
 ## 4 - Strings
 
-Just about any programing lanaguie has string values as a data type and python is no exception.
+Just about any programing lanaguie has string values as a data type and python is no exception. A string valuye can be created with single or double quotes just like in other high level lanagues like javaScript. At the time of this writing I am not sure if there is much of a diference between the two thus far.
 
 ```python
 str = 'Hello World'
