@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 770
-updated: 2020-12-29 14:59:13
-version: 1.9
+updated: 2020-12-29 16:19:02
+version: 1.10
 ---
 
 In the past few weeks I have been making an effort to start learning python, and as such I should start getting into how to go about making some kind of real project with python at some point. So far I have been just toyinh around with small snippits of code, and working out the very basic of python programing. However when it comes to the idea of getting into making something real I am going to want to knwo how to go about [making modules in python](https://docs.python.org/3.7/tutorial/modules.html). That is how to go about taking code and breaking it down into sepearte files to which I can then import into another file that will be the main python file or scirpt file that will be started with the python binary one way or another.
@@ -83,6 +83,53 @@ This is then a simpkle script file that will be called with python and will make
 $ python3 script_hello.py
 Hello World
 ```
+
+Okat greate so now I have the very basic idea of how to go about making a python module. So now that I have that out of the way i can start working on something that is a little more advanced.
+
+### 2.2 - Basic display object module example
+
+One thing that will come up often when making some kind of game for example will be to have a way to create some kind of display object. In other words and object that has properties that hold a current position, along with width and height properties that repersent some kind of object that will move around in a game world. So manye I shoul;d take a moment to work out a very simp,e example of that kind of modules as a way to attemot creating some kind of real modules example.
+
+```python
+# create a basic display object
+def createBasic(x=0, y=0, w=32, h=32):
+    disp={'x':x,'y':y,'w':w,'h':h}
+    return disp
+# create an enemy display object
+def createEnemy(x=0,y=0,w=32,h=32,hpMax=100,attack=1):
+    disp=createBasic(x, y, w, h)
+    disp['hpMax']=hpMax
+    disp['hp']=hpMax
+    disp['attack']=attack
+    return disp
+# create a pool of display objects
+def createPool(count=5, create=createBasic, x=0, y=0):
+    i=0
+    obj=[]
+    while i < count:
+        obj.append(create(x,y,32,32))
+        i = i + 1
+    return {'obj': obj}
+```
+
+So I can the use my display object module in a script like this.
+
+```python
+#!/usr/bin/python3
+import disp
+ 
+# I can create a single display object like this
+x=disp.createBasic(5,7)
+print(x) # {'x': 5, 'y': 7, 'w': 32, 'h': 32}
+ 
+# I can create a pool of display objects like this
+b=disp.createPool(3, x=50, y=25, create=disp.createEnemy)
+obj = b['obj']
+print(len(obj)) # 3
+print(obj[2])   # {'x': 50, 'y': 25, 'w': 32, 'h': 32, 'hpMax': 100, 'hp': 100, 'attack': 1}
+```
+
+Seems to work okay so far, but I would have to add and chnage a lot to make this something that will actually work as a real python example of some kind. Still this might be a good start when it comes to making this kind of module.
 
 ## 3 - Conclusion
 
