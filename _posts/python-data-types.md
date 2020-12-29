@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-29 16:36:01
-version: 1.13
+updated: 2020-12-29 16:48:48
+version: 1.14
 ---
 
 When learning a new programing language one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certain type, and can not just be changed to something else. Other languages have dynamic typing where a variable can be any given type and any given moment. Some languages have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other languages simplify this by just going with one data type for all numbers.
@@ -67,11 +67,13 @@ print(x, type(x)) # 1.5 <class 'float'>
 
 ## 3 - Complex Numbers
 
-There is a complex Number data type in python.
+There is a complex Number data type in python also to work with. I do not have much experence with these types of numbers so far, but it is never the less yet another built in data type for numbers in python. These kinds of numbers are compose of a real and imaganary number, and they can be created with a special syntax, or the complex built in function.
 
 ```python
-c = 6j
-print(c, type(c)) # (6j) <class 'complex'>
+c = 1.5+2j
+print(c, type(c)) # (3+6j) <class 'complex'>
+print(c.real) # 1.5
+print(c.imag) # 2.0
 ```
 
 ## 4 - Strings
