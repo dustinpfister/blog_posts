@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-29 17:00:18
-version: 1.18
+updated: 2020-12-29 17:03:50
+version: 1.19
 ---
 
 When learning a new programing language one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certain type, and can not just be changed to something else. Other languages have dynamic typing where a variable can be any given type and any given moment. Some languages have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other languages simplify this by just going with one data type for all numbers.
@@ -65,6 +65,8 @@ x = x + 0.25
 print(x, type(x)) # 1.5 <class 'float'>
 ```
 
+One thing that is interesting about integers in python is that there seems to be no limit as to how large they can be. I am not sure but it might be limited by only the about of memory that there is to work with.
+
 ## 3 - Complex Numbers
 
 There is a complex Number data type in python also to work with. I do not have much experience with these types of numbers so far, but it is never the less yet another built in data type for numbers in python. These kinds of numbers are compose of a real and imaginary number, and they can be created with a special syntax, or the complex built in function.
@@ -102,7 +104,7 @@ print(l, type(l)) # [1, 'two', 3] <class 'list'>
 
 ### 5.2 - Add to list example
 
-When working with lists for the first time you might run into errors when it comes to trying to add elements to them by using the bracket syntax after the list has been created like in javaScript. This will not work becuase lists in python are dense rather than sparse collections. Elements can be added after the list is creade though by just making use of the append function of a list.
+When working with lists for the first time you might run into errors when it comes to trying to add elements to them by using the bracket syntax after the list has been created like in javaScript. This will not work because lists in python are dense rather than sparse collections. Elements can be added after the list is created though by just making use of the append function of a list.
 
 ```python
 l=list();
