@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 769
-updated: 2020-12-29 16:48:48
-version: 1.14
+updated: 2020-12-29 16:51:52
+version: 1.15
 ---
 
 When learning a new programing language one of the first basic things to understand is to find out what the deal is with [data types](https://www.tutorialsteacher.com/python/python-data-types) in the language. Some languages have strict typing where each variable must be set to a certain type, and can not just be changed to something else. Other languages have dynamic typing where a variable can be any given type and any given moment. Some languages have many different data types for numbers that have to do with how many bytes are used to store the value, if it is signed or unsigned, if it is an integer or float value, and so forth. Other languages simplify this by just going with one data type for all numbers.
@@ -88,6 +88,10 @@ print(str, type(str)) # Hello World <class 'str'>
 ## 5 - Lists
 
 Lists are a kind of mutable sequence type. They are kind of like Arrays in javaScript, but not really as there are some slight differences such as the fact that a List is a dense rather than sparse array if you can get away with calling it one. The elements in a list can be just about anything, including additional lists.
+
+### 5.1 - Basic list example
+
+To create a list I can use a the list built in function, or a square bracket syntax like this.
 
 ```python
 l = [1, 'two', 3]
