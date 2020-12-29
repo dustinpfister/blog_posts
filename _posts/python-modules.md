@@ -5,11 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 770
-updated: 2020-12-29 14:47:13
-version: 1.7
+updated: 2020-12-29 14:52:57
+version: 1.8
 ---
 
-In the past few weeks I have been making an effor to start learning python, and as such I should start getting into how to star making some kind of real project with python at some point. With that said I should start to learn the basics of how to go about creating modules with python. So in this post I will be going over the basics and more when it comes to modules, and packages in python as I have come to know it thus far.
+In the past few weeks I have been making an effort to start learning python, and as such I should start getting into how to go about making some kind of real project with python at some point. So far I have been just toyinh around with small snippits of code, and working out the very basic of python programing. However when it comes to the idea of getting into making something real I am going to want to knwo how to go about making modules. That is how to go about taking code and breaking it down into sepearte files to which I can then import into another file that will be the main python file or scirpt file that will be started with the python binary one way or another.
+
+So in this post I will be going over the basics and more when it comes to modules and scripts in python as I have come to know it thus far. Such as the difrenec between a script and a module, how to go about using a module from a script file, and how to go about creating a module of my own.
 
 <!-- more -->
 
