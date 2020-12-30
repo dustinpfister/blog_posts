@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 753
-updated: 2020-12-10 12:31:19
-version: 1.11
+updated: 2020-12-30 09:55:13
+version: 1.12
 ---
 
 In [bash scripts](/2020/11/27/linux-bash-scripts/) it is possible to define [conditional statements](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php), or just simply if statements if you prefer. These statements work more or less the same as in many other languages, however the syntax is of course a little different.
@@ -112,8 +112,7 @@ echo "${a} - ${b} - ${c}"
 
 When it comes to translating anything worked out with the test command into an expression for an if statement, generally it is just a process of dropping the test command and enclosing the expression into the square brackets that are used in if statements.
 
-
-## 3 - A Argumnets Defaults Example of an If Statement
+## 3 - A Argumnets Defaults Example of an if Statement
 
 Now for an actual example that might prove to be helpful. This example will not just make use of an if statement but also functions in bash also. Functions are another helpful aspect of bash scripts that allow for the creating of reusable blocks of code in a bash script.
 
@@ -153,6 +152,36 @@ $ ./option_defaults 5 3
 8
 ```
 
-## 4 - Conclusion
+## 4 - Checking if a folder is there or not
+
+When working out a bash script I often need to do somethong that will involve checking if a folder has been created or not. After doing so I might prefrom some kind of action with the folder, or maybe create the folder with the mkdir -p command. For this kind of task there is the -d option of the test command. This -d option of test will cause a zero exit code status if a given gile is there and is a directory rather than a file.
+
+test it out dirrectly by calling test with the -d option and then using echo to print the status code of the last command. it will return 1 if the folder is not there and 0 if the folder is there.
+
+```
+$ test -d foo;echo $?
+1
+$ mkdir foo
+$ test -d foo;echo $?
+0
+```
+
+An if statement is a short hand for test so the same can be done in a bash script like this.
+
+```bash
+#!/bin/bash
+ 
+dir=~/js/canvas-examples
+if [ -d $dir ]; then
+  echo "dir IS there"
+  echo "listing contents of: ${dir}"
+  ls $dir
+else
+  echo "dir IS NOT there"
+  echo "given dir was: ${dir}"
+fi
+```
+
+## 5 - Conclusion
 
 So there might be a fare amount more to write about when it comes to if statements and bash scripts. I think that I was able to cover at least some of the basics to say the least, but there is much more to write about when it comes to some typical expressions. On top of that there is a whole world of examples that I could write about when it comes to practical application of if statements in bash when used with all the other little aspects of the scripting languages and the whole world of what is to work with with Linux commands. However maybe a great deal of all of that is called for in another post.
