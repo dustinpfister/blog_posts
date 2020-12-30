@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 12:38:40
-version: 1.2
+updated: 2020-12-30 12:43:08
+version: 1.3
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write classes in python. So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -18,6 +18,10 @@ I would like to start work on a real python project, and one of many things that
 In this section I will be starting out with some very basic examples of a class in python. There are just a few things to cover before getting into some more advanced topics around classes such as with inheritence when working with more then one class. The focus here will be just with that fery first MyClass example, and some other topics that I think I should point out in a section such as this for people that are tottaly new to classes in python.
 
 ### 1.1 - basic Class example
+
+So now for just a basic Class example to start off with. To crearte a class in python I just need to start off with the class keyword followed by the name that I want for the class, and then a colon. After that I indent in the next lines and start defining what I want the class to be. I can add properties for the class, and I can also define some functions for the class with the def keywrod as alwats when it comes to functions.
+
+However when it comes to adding a function for a class I will want the furst argument for the function to be called self. This argument will be a refernce to the class instance when making a function for the class. In addition I am going to want to have at least one function with a special name called \_\_init\_\_ as you might guess thsi function will be called when cretaing a new instnace of the class.
 
 ```python
 #!/usr/bin/python3
@@ -33,6 +37,8 @@ class MyClass:
 x=MyClass(2)
 x.out() # 40 2 42
 ```
+
+So there we have it a basic example of a class in python.
 
 ### 1.2 - Create a dictionary from a Class with .__dict__
 
