@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 12:50:08
-version: 1.5
+updated: 2020-12-30 13:30:39
+version: 1.6
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -64,4 +64,26 @@ print(type(x).__name__) # MyClass
 # if I want a plan dictionary there is the __dict__ property
 d = x.__dict__
 print(d) # {'b': 5, 'a': 40}
+```
+
+### 1.3 - Class properties and Class insatnce properties
+
+When it comes to a class there is the class itself, and then there is an object that is an instnace of that class.
+
+```python
+class MyClass:
+    a=40
+    def __init__(self, b):
+        self.b=b
+ 
+# when creating a class instance
+# that instnace will have properties for 'a' and 'b'
+x=MyClass(2)
+print(x.a) # 40
+print(x.b) # 2
+ 
+# however only the 'b' propery is an 'own property' of
+# the class instance
+d=x.__dict__
+print(d) # {'b': 2}
 ```
