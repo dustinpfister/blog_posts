@@ -5,11 +5,15 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 12:44:05
-version: 1.4
+updated: 2020-12-30 12:50:08
+version: 1.5
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
+
+I was able to get up and running with classes pretty quickly with python, but I think I should mention that I do have years of erperence programing in other lanagues manily javaScript. If you are pretty solid with how classes work in javaScript then you might also find this a quick painless procress also becuase what we are doing here is just learning how to do what we all ready know a slighly diferent way.
+
+However if you have no experence with classes to begin with then I guess I will need to mention some kind of defanation of what a class is. One way of doing so might be to say that a class is an object that is not just an object but a class of an object. There is the class itself that is used to create an instnace of a class, and then there is an object that is a said instnace of the class. There are properties of the Class and then there are properties of just an instance of a class.
 
 <!-- more -->
 
