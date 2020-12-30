@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 13:30:39
-version: 1.6
+updated: 2020-12-30 13:33:51
+version: 1.7
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -68,7 +68,7 @@ print(d) # {'b': 5, 'a': 40}
 
 ### 1.3 - Class properties and Class insatnce properties
 
-When it comes to a class there is the class itself, and then there is an object that is an instnace of that class.
+When it comes to a class there is the class itself, and then there is an object that is an instnace of that class. So then when it comes to an instance of a class there are properties of this instance that are what are often called an own property of that instnace. In other words it is a propery that is exclusive to a single instance of a class, rather than a property that is shared accrosss more than one instance of a class.
 
 ```python
 class MyClass:
