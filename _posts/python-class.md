@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 14:40:02
-version: 1.10
+updated: 2020-12-30 14:53:57
+version: 1.11
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -143,6 +143,38 @@ print(d) # 39.05124837953327
 
 There might be a lot more to add to a Collection of classes like this when it comes to making something that will work well in an actual project, but you should still get the basic idea.
 
-## 3 - Conclusion
+## 3 - Iterators and classes
+
+Many object in python can be looped over with something like a for loop, such as with lists for example. In some situations it might be nice to have that kind of functionaity for a Class. So in this section I will be outlining a few examples of how to go about making such a class.
+
+### 3.1 - Simple Index values example
+
+Lets start out with a simple example that makes use of a numbered index value as a way to loop over some elements of a property of a Class.
+
+```python
+class Numbered:
+    def __init__(self, data):
+        self.data = data
+        self.index = 0
+
+    def __iter__(self):
+        self.index = 0
+        return self
+
+    def __next__(self):
+        if self.index == len(self.data):
+            raise StopIteration
+        d={'value': self.data[self.index], 'index': self.index}
+        self.index = self.index + 1
+        return d
+    
+x = Numbered('foo')
+ 
+for prop in x:
+    print(prop)
+    
+```
+
+## 4 - Conclusion
 
 A Class is then a way to have a way to create an object that is not just an object but a kind of object. When it comes to having more than one kind of object there are properties that might be the same accross more than one instance of a Class, but there are often at least a few properties that need to be indepednant from all others.
