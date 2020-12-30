@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 14:31:14
-version: 1.9
+updated: 2020-12-30 14:40:02
+version: 1.10
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -92,6 +92,12 @@ print(d) # {'b': 2}
 
 Now that I have covered some of the basics when it comes to a class it is time to move on to some more advanced topics when it comes to writing classes. One advanced topic that comes to mind is the subject of Inheritance when it comes to working out a base class and then haveing one or more additional classes that work on top of that base class.
 
+### 2.1 - A Basic Box base Class and a Ship Class on top of it
+
+So one good example of Inheritance might be to work out some kind of base box class. This base box class will create just a simple Box object that has properties like x, y, and just a few additional properties maybe that have to do with the size of a boxed in area. In addition to this the Box class might have some methods to help work with these basic Box Classes such as a distance method that will return the distance between two box objects.
+
+So then say I want to have another Class that has all the properties of a Box Class, but has some additional properteis and methods on top of it that is a kind of Ship Class. That is that this Ship is like a box class, but with a few more properties that have to do with a heading, hit point values, and maybe something like an attack value. When it comes to making a Ship class I can have the Box class be a base clase that the Ship Class inherits from. As such I can then use all the methods of the Box class with ship class insatnces, and aly class level properties that I set in the Box class can function as default values for a Ship class insatnce.
+
 ```python
 import math
  
@@ -134,6 +140,8 @@ b=Box(25,30)
 d=a.distance(b)
 print(d) # 39.05124837953327
 ```
+
+There might be a lot more to add to a Collection of classes like this when it comes to making something that will work well in an actual project, but you should still get the basic idea.
 
 ## 3 - Conclusion
 
