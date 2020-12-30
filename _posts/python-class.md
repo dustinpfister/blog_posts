@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 13:36:47
-version: 1.8
+updated: 2020-12-30 14:31:14
+version: 1.9
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -88,6 +88,53 @@ d=x.__dict__
 print(d) # {'b': 2}
 ```
 
-## 2 - Conclusion
+## 2 - Inheritance
+
+Now that I have covered some of the basics when it comes to a class it is time to move on to some more advanced topics when it comes to writing classes. One advanced topic that comes to mind is the subject of Inheritance when it comes to working out a base class and then haveing one or more additional classes that work on top of that base class.
+
+```python
+import math
+ 
+class Box():
+    x=0
+    y=0
+    w=32
+    h=32
+    def __init__(self,x=0,y=0,w=32,h=32):
+        self.x=x
+        self.y=y
+        self.w=w
+        self.h=h
+    def distance(self, box2):
+        if(box2 is None):
+            return 0
+        a=math.pow(self.x - box2.x, 2)
+        b=math.pow(self.y - box2.y, 2)
+        return math.sqrt(a+b) 
+ 
+class Ship(Box):
+    def __init__(self, hpMax=100, damage=1):
+        self.hpMax = hpMax
+        self.hp = hpMax
+        self.heading = 0
+        self.damage = damage
+ 
+a=Ship()
+ 
+print(a.hp) # 100
+ 
+# no properties are set for x,y,w, and h in the Ship Class
+# however the Ship Class inherits from Box and as such the
+# Class level values of Box are used for these values
+print(a.x, a.y)  # 0 0
+ 
+# on top of Box properties functioning as a default for ship values
+# I can also use Box functions with a ship class instance
+b=Box(25,30)
+d=a.distance(b)
+print(d) # 39.05124837953327
+```
+
+## 3 - Conclusion
 
 A Class is then a way to have a way to create an object that is not just an object but a kind of object. When it comes to having more than one kind of object there are properties that might be the same accross more than one instance of a Class, but there are often at least a few properties that need to be indepednant from all others.
