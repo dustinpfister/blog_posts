@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 13:33:51
-version: 1.7
+updated: 2020-12-30 13:36:47
+version: 1.8
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -87,3 +87,7 @@ print(x.b) # 2
 d=x.__dict__
 print(d) # {'b': 2}
 ```
+
+## 2 - Conclusion
+
+A Class is then a way to have a way to create an object that is not just an object but a kind of object. When it comes to having more than one kind of object there are properties that might be the same accross more than one instance of a Class, but there are often at least a few properties that need to be indepednant from all others.
