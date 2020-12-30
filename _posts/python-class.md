@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 14:53:57
-version: 1.11
+updated: 2020-12-30 15:11:45
+version: 1.12
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -173,6 +173,38 @@ x = Numbered('foo')
 for prop in x:
     print(prop)
     
+```
+
+### 3.2 - Named keys example
+
+Looping over a property of a class that has index rather than named values is one thing. However what if I want to loop over properties of the class insatnce, and even then only certian properties of the class instance and maybe not all of them?
+
+```python
+class Foo:
+    loopKeys=['a','d']
+    def __init__(self, a=1, b=2, c=3, d=4):
+        self.a=a
+        self.b=b
+        self.c=c
+        self.d=d
+        self.index=0
+        
+    def __iter__(self):
+        self.index=0
+        return self
+    
+    def __next__(self):
+        if self.index == len(Foo.loopKeys):
+            raise StopIteration
+        prop=Foo.loopKeys[self.index]
+        self.index = self.index + 1
+        return self.__dict__[prop]
+ 
+x=Foo();
+for prop in x:
+    print(prop)
+# 1
+# 4
 ```
 
 ## 4 - Conclusion
