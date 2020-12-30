@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 12:35:08
-version: 1.1
+updated: 2020-12-30 12:38:40
+version: 1.2
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write classes in python. So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -35,6 +35,8 @@ x.out() # 40 2 42
 ```
 
 ### 1.2 - Create a dictionary from a Class with .__dict__
+
+There mioght be a few ways to go about creating a plain old doctionary object from a class instnace. One of the first things that I have come accross with this is to just use the \_\_dict\_\_ property of a class instnace. This property of a class always holds a dictionary of the own properties of the class instnace as i have often come to know them. That is that it will be a dictionatuy of the properties of self, but not the class itself. So if I want some class properties to be part of the dictiobnary I will need to make sure they are added somehow.
 
 ```python
 #!/usr/bin/python3
