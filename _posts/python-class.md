@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2020-12-30 15:11:45
-version: 1.12
+updated: 2020-12-30 15:19:38
+version: 1.13
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
@@ -149,7 +149,11 @@ Many object in python can be looped over with something like a for loop, such as
 
 ### 3.1 - Simple Index values example
 
-Lets start out with a simple example that makes use of a numbered index value as a way to loop over some elements of a property of a Class.
+Lets start out with a simple example that makes use of a numbered index value as a way to loop over some elements of a property of a Class. Say I have a list or a string as a the value of one of the properties of a class insatnce. When I loop over the class insatnce I want that to be more or less the same as looping over that property, but maybe I want some kind of custom result for each element in that list or string.
+
+There are two special additioanl methods that musrt be added to the class, one method is the \_\_iter\_\_ method that will be called once when a loop is started. This methoid would be a good place to set a index variable to zero or whatever needs to happen when it comes to starting a loop for the class. The next method of interest is the \_\_next\_\_ method that will be called over and over again until StopIteration is returned. Inside the body of this function I want to define the condition that is to be meet to retrun StopIteration, update any index values, and return the current value for an index value.
+
+However mayeb it would be best to just play around with some code to really get the idea here.
 
 ```python
 class Numbered:
@@ -172,7 +176,9 @@ x = Numbered('foo')
  
 for prop in x:
     print(prop)
-    
+#{'value': 'f', 'index': 0}
+#{'value': 'o', 'index': 1}
+#{'value': 'o', 'index': 2}
 ```
 
 ### 3.2 - Named keys example
