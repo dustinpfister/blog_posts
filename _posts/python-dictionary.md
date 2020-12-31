@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:01:50
-version: 1.3
+updated: 2020-12-31 14:04:53
+version: 1.4
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -30,7 +30,9 @@ print(type(d).__name__) # dict
 print(d['a']) # 0
 ```
 
-### 1.2 -
+### 1.2 - The dict built in function is another way to create a dictionary
+
+Another way to go about creating a dictionry value would be to use the dict built in function. All other built in types have such functions when it comes to lists, and integers, so of course a dictionary value is not an exception with this. When using the dict function as with the bracket syntax it is psooble to set some starting values for the dictionary, although with a slightly diferent syntax.
 
 ```python
 d=dict([('a', 0)])
