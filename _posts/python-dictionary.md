@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:34:13
-version: 1.12
+updated: 2020-12-31 14:43:43
+version: 1.13
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -145,6 +145,30 @@ for key in list(d):
 # subject
 ```
 
-## 3 - Conclusion
+## 3 - View objects of dictionaries
+
+Methods like the items method of an instance of a dictionary will not return just a plain old dumb list, but an instance of a special class that is actaully a view of the dictionary. So in other words as changes are made to a dictionry to which one of these views is created from that will reflect in the view. If I do truly create a list from a dictionry for example this kind of effect will be lost, and changes will of course not effect that list that is truly sepeate from the dictionary.
+
+```python
+# creating a dict
+d={}
+ 
+# creating a view of dict
+v=d.items()
+# creating a list from dict
+l=list(d)
+ 
+# adding key value pairs to the dict after creating view
+d['a']=40
+d['b']=2
+ 
+# the view reflects the current state of the dict
+print(list(v)) # [('a', 40), ('b', 2)]
+ 
+# the plain old list does not
+print(l) # []
+```
+
+## 4 - Conclusion
 
 That is it for now when it comes to dictionary values in python. I would write more about them, but I am still fairly new to python myself, so maybe I should log some more hourse coding examples before getting into expanding this post.
