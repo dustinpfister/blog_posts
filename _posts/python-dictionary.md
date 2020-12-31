@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:15:27
-version: 1.7
+updated: 2020-12-31 14:18:52
+version: 1.8
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -79,6 +79,12 @@ print(b) # ['a', 'b']
 print(c) # [0, 1]
 ```
 
-## 2 - Conclusion
+## 2 - Looping over the contents of a dictionary
+
+If you try to just go ahead and loop over a dictionary like you would a list you will run into errors. However this problem is easly remadued by converting the dictionary to another from that can be looped over with a for loop, or any other loop by creating a list from the dictionary.
+
+In this section I will be going over some code options when it comes to looping over the contents of a dictionary.
+
+## 3 - Conclusion
 
 That is it for now when it comes to dictionary values in python. I would write more about them, but I am still fairly new to python myself, so maybe I should log some more hourse coding examples before getting into expanding this post.
