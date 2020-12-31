@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:23:59
-version: 1.10
+updated: 2020-12-31 14:26:26
+version: 1.11
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -114,6 +114,18 @@ for value in d.values():
     print(value)
 # dustinpfister.github.io
 # python
+```
+
+### 2.3 - The list built in function
+
+Yet another option is the list built in function that will create a list of key names from a dictionary. So then that is also an option if I just want to loop over key names.
+
+```python
+d = {'site': 'dustinpfister.github.io', 'subject': 'python'}
+for key in list(d):
+    print(key)
+# site
+# subject
 ```
 
 ## 3 - Conclusion
