@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 15:05:58
-version: 1.16
+updated: 2020-12-31 15:09:41
+version: 1.17
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on [dictionaries](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) as a data type option to work with. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. 
@@ -121,6 +121,21 @@ print( d.pop('a', 0) ) # 1
 print( d.pop('a', 0) ) # 0
  
 print( len(d) ) # 2
+```
+
+### 1.7 - The clear method
+
+The clear method of a dictionry does just what the same would sugest. Calling the clearn method will remove all of the key value pairs from the dictionat from which it is called off of.
+
+```python
+# a blank dict
+d={'a': 1, 'b': 2, 'c': 3}
+ 
+print( len(d) ) # 3
+ 
+d.clear()
+ 
+print( len(d) ) # 0
 ```
 
 ## 2 - Looping over the contents of a dictionary
