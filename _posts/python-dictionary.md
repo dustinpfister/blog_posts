@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:46:58
-version: 1.14
+updated: 2020-12-31 14:56:58
+version: 1.15
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on [dictionaries](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) as a data type option to work with. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. 
@@ -69,17 +69,26 @@ print( d['b']) # Error
 
 ### 1.4 - Creating a list from a dictionary
 
-Another basic thing that I think is imporattn to know right away is how to go about creating a list from a dictionary. There are many reasons why I would want to convert a dictionary to a list, such as when it comes to creating a way to loop over the contents of a dictionary. However there are of course the key names, and the values, so there should be a way of creating a list of each. If I want a list of key names I can just pass the dictionary value to the list built in function, another option for this would be to use the keys method of the dictionary. If I want a list of value there is the values method of a dictionary.
+Another basic thing that I think is important to know right away is how to go about creating a list from a dictionary. There are many reasons why I would want to convert a dictionary to a list, such as when it comes to creating a way to loop over the contents of a dictionary. However there are other options when it comes to that beyond converting to a list, and in some situations it might be better to go with those options. I will be getting into the subject of looping over a dicitiopnty in the next section, but maybe it is a good idea to look over what the options are for getting started with that at least when it comes to creating other forms of a dicitiory that will work with loops.
+
+When creating something from a dicitionary to loop over there are the key names, and the values, so there should be a way of creating a list of each. If I want a list of key names I can just pass the dictionary value to the list built in function, the return result will be a list of key names. Howeve another option for this would be to use the keys method of the dictionary, this by itself will not return a list, but it can be easily converted to one. If I want a list of value there is the values method of a dictionary, but again I will want to pass the result to the list built in function.
 
 ```python
 a={'a': 0, 'b': 1}
 b=list(a)
-c=list(a.values())
+c=a.values()
+d=list(c)
  
 print(type(b).__name__) # list
 print(b) # ['a', 'b']
-print(c) # [0, 1]
+ 
+print(type(c).__name__) # dict_values
+ 
+print(type(d).__name__) # list
+print(d) # [0, 1]
 ```
+
+I will be  getting into the dict values class and why that is useful later in this post as I think that is a more advanced topic.
 
 ### 1.5 - Geting the length of a dictionary
 
