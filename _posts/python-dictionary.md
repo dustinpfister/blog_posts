@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 15:32:42
-version: 1.18
+updated: 2020-12-31 15:36:20
+version: 1.19
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on [dictionaries](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) as a data type option to work with. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. 
@@ -217,6 +217,8 @@ It is a good idea to learn a thing or two about the diferences between dictionar
 
 
 ### 4.1 - The use of dicts will make sure a key will always refer to the same value
+
+The thing about lists is not just that they consite of numberd rather than named index values, it is also that those index values are not really static. I guess if I am carfule they can be static, but there is of course things that come to mind like sorting a list, or creating a new list from a list that will result in index values refering to diferent elements. This is one of the reasons why I would want to use a list of course, but in some situstions I do not want this kind of effect. Using named keys then is a way to make sure that a given key will always refer to the saem value.
 
 ```python
 # a list
