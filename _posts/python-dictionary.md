@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:18:52
-version: 1.8
+updated: 2020-12-31 14:21:28
+version: 1.9
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -81,9 +81,21 @@ print(c) # [0, 1]
 
 ## 2 - Looping over the contents of a dictionary
 
-If you try to just go ahead and loop over a dictionary like you would a list you will run into errors. However this problem is easly remadued by converting the dictionary to another from that can be looped over with a for loop, or any other loop by creating a list from the dictionary.
+If you try to just go ahead and loop over a dictionary like you would a list you will run into errors. However this problem is easly remadued by converting the dictionary to another from that can be looped over with a for loop, or any other loop, such as by creating a list from the dictionary first.
 
 In this section I will be going over some code options when it comes to looping over the contents of a dictionary.
+
+### 2.1 - The items method of a dictionary
+
+The items method of a dictionary might be one of the best ways to go about looping over a dictionary, it will allow having both a key and value varaible to work with in the body of the loop like this:
+
+```
+d = {'site': 'dustinpfister.github.io', 'subject': 'python'}
+for key, value in d.items():
+    print(key, ' ==> ', value, sep="")
+# site ==> dustinpfister.github.io
+# subject ==> python
+```
 
 ## 3 - Conclusion
 
