@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 15:09:41
-version: 1.17
+updated: 2020-12-31 15:32:42
+version: 1.18
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on [dictionaries](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) as a data type option to work with. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. 
@@ -211,6 +211,37 @@ print(list(v)) # [('a', 40), ('b', 2)]
 print(l) # []
 ```
 
-## 4 - Conclusion
+## 4 - Lists and Dictionaries
+
+It is a good idea to learn a thing or two about the diferences between dictionaries and lists. I have all ready covered the fact that I can not just loop over a dictionary itself, I first need to create a sepearte list or vire object from the doctionary to do that. However maybe there are a few other things that I should point out when it comes to how dictionaries and lists differ.
+
+
+### 4.1 - The use of dicts will make sure a key will always refer to the same value
+
+```python
+# a list
+l=['zero','one','two','three']
+ 
+# creating another list that is a slice of a list
+b=l[1:3:1]
+ 
+# in the new slice of the list index values 0 and 1
+# are now different values
+print(b[0]) # one
+print(b[1]) # two
+ 
+# a dict
+d={0:'zero', 1:'one', 2:'two', 3:'three'}
+ 
+# deleting keys 0 and 3
+del d[0]
+del d[3]
+ 
+# key 0 is now None, and key 1 is still 'one'
+print(d.get(0)) # None
+print(d.get(1)) # one
+```
+
+## 5 - Conclusion
 
 That is it for now when it comes to dictionary values in python. I would write more about them, but I am still fairly new to python myself, so maybe I should log some more hourse coding examples before getting into expanding this post.
