@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:04:53
-version: 1.4
+updated: 2020-12-31 14:09:48
+version: 1.5
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -43,7 +43,9 @@ print(d['a']) # 0
 print(d['b']) # 1
 ```
 
-### 1.3 - 
+### 1.3 - Getting and setting key value pairs
+
+The process of getting and setting values with a dictionay is not as straght forward as it might be in other lanagues, at least when it comes to javaScript anyway. If I try to get a value of a key that is not defined for an object in javaScript i end up with the value undefined, however in python this will cause an error. So to get at key value pairs that might not be there in an error free way it might be best to use the get method of a dictionary. Also setting the key values is a little diferent from what I am used to with javaScript, I must use the bracket syntax and only that to set a key afetr it has been created.
 
 ```python
 # a blank dict
