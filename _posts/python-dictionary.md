@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:56:58
-version: 1.15
+updated: 2020-12-31 15:05:58
+version: 1.16
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on [dictionaries](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) as a data type option to work with. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. 
@@ -90,7 +90,7 @@ print(d) # [0, 1]
 
 I will be  getting into the dict values class and why that is useful later in this post as I think that is a more advanced topic.
 
-### 1.5 - Geting the length of a dictionary
+### 1.5 - Getting the length of a dictionary
 
 Getting the length of a dictionry is more or less the same as getting the length of a list. I just need to pass the dictionary to the len built in function and that seems to give the result I would exspect.
 
@@ -105,6 +105,22 @@ print( len(d) ) # 3
 print( len(d.keys()) )    # 3
 print( len(d.values()) )  # 3
 print( len(d.items()) )   # 3
+```
+
+### 1.6 - The pop method
+
+Another basic method of a dictionary that I think I should cover here is the pop method of an instnace of a dictionary. This method will remove and return the key value pair if found for the given key name as a first argument. When using it a default value should be given as the second argument in the event that the pair is not there, the reason why is becuase it will cause an Error otherwise rtaher than giveing some kind of default value like None
+
+```python
+# a blank dict
+d={'a': 1, 'b': 2, 'c': 3}
+ 
+print( len(d) ) # 3
+ 
+print( d.pop('a', 0) ) # 1
+print( d.pop('a', 0) ) # 0
+ 
+print( len(d) ) # 2
 ```
 
 ## 2 - Looping over the contents of a dictionary
