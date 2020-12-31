@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:26:26
-version: 1.11
+updated: 2020-12-31 14:34:13
+version: 1.12
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -77,6 +77,23 @@ c=list(a.values())
 print(type(b).__name__) # list
 print(b) # ['a', 'b']
 print(c) # [0, 1]
+```
+
+### 1.5 - Geting the length of a dictionary
+
+Getting the length of a dictionry is more or less the same as getting the length of a list. I just need to pass the dictionary to the len built in function and that seems to give the result I would exspect.
+
+```python
+# a blank dict
+d={'a': 1, 'b': 2, 'c': 3}
+ 
+# just using len seems to work okay
+print( len(d) ) # 3
+ 
+# some other ways that give the same result
+print( len(d.keys()) )    # 3
+print( len(d.values()) )  # 3
+print( len(d.items()) )   # 3
 ```
 
 ## 2 - Looping over the contents of a dictionary
