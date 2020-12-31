@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 14:09:48
-version: 1.5
+updated: 2020-12-31 14:13:46
+version: 1.6
 ---
 
 In an effert to continue learning the basic of python it was only a matter of time until I got around to writing a post on dictionaries. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python lanague itself. A dicitionary is somewhat simular to a list in some ways, but with a few very imporant diferences. First off unlike a list, a dictionary is a way to create a named collection of values rather than a numbered one. The other imporatant diference is that I can not just loop over a dicitionary, at least not a dictionary value by itself anyway.
@@ -65,7 +65,9 @@ print( d.get('b') )    # None
 print( d['b']) # Error
 ```
 
-### 1.4 - 
+### 1.4 - Creating a list from a dictionary
+
+Another basic thing that I think is imporattn to know right away is how to go about creating a list from a dictionary. There are many reasons why I would want to convert a dictionary to a list, such as when it comes to creating a way to loop over the contents of a dictionary. However there are of course the key names, and the values, so there should be a way of creating a list of each. If I want a list of key names I can just pass the dictionary value to the list built in function, another option for this would be to use the keys method of the dictionary. If I want a list of value there is the values method of a dictionary.
 
 ```python
 a={'a': 0, 'b': 1}
