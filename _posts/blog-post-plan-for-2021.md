@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 13:02:50
-version: 1.13
+updated: 2021-01-01 13:25:38
+version: 1.14
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -18,6 +18,18 @@ Some things will stay the same more or less this year then, but there are at lea
 <!-- more -->
 
 ## 1 - Of course I will continue writing blog posts
+
+As of this post I have written some 774 blog posts that adds up to well over half a million words. That might sound like a lot, and for one person I guess it might be, or at least I think so. However just a count of blog posts, total site word count, avarge word count per post, and so forth is just some factors of concern when it comes to writing a blog. What is far more imporatnt of course is what the actaully nature of the content is, and if it brings any real value to the table.
+
+This year I will of course continue writing, but I would like to start to change up some things when it comes to my stractagy as to what to write about in the first place. In addition I think I should rase the bar this year a little more amd not just when it comes to a target word count that I have in mind. So in this section I think I will outline what I will contin ue doing this year, as well as what I am going to do differenly this year when it comes to this blog.
+
+### 1.1 - Still write around 180+ posts a year
+
+Thus far it would seem that I am writing about 180 posts a year give or take. This is becuase I still think that I sould write about every day more or less. I do like the idea of pushing out just one post a week, or even per month, however I feel as though I still need to learn how to earn that right first. I am not sure what the best course of action is to get there, it seems like I think that I just need to write every day, and write a lot, to learn how to write not so often. On the surface that might sound like madness, but often there is a method behind what migth seem to be madness.
+
+### 1.2 - Focus more on the quality of the writing, not just meeting numbers with post and word count.
+
+What exsactly is good writing? That is indeed a good question? I have read one good book on the subject that I have enjoyed greatly that I think I might read again at some point, that book is "On Writing" By Stephen King. Of course Stephen King is a Novalist rather than a blogger, or course he writes fiction in the form of horror stories rather than blog posts on jigh level computer programing. Still I think much of what he wrote on the subject applys to writing in general.
 
 
 ## 2 - The canvas examples collection will continue to be the new long term project
