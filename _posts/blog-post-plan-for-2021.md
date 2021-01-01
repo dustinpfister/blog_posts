@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 12:59:03
-version: 1.12
+updated: 2021-01-01 13:02:50
+version: 1.13
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -26,7 +26,7 @@ Lots of devlopers end up with at least one long term project that they start wor
 
 However I would like to have at least one other long term project outside of just writing this content. I can only do so much as one person, but I still have enough time to add on at least one or two more projects like what I have done with these blog posts. However I think that it should be an actual code project, or collection of code projects. Last year I started such a project that I am just calling canvas examples, sorry I am not good at names.
 
-Last year in 2020 I wanted to start a new long term project, and I wanted for it to be something fun. Life is short and I should do whatever it is the I really want to do with programing. So on top of continuing this blog I started, and continued working on my canvas examples collection.
+Life is short and I should do whatever it is the I really want to do with programing. So on top of continuing this blog as I have for the past few years I also want to continue working on my canvas examples collection. In fact in time I think I will like to invest more time in that rather than this writing if it comes to that which I hope it does. Writing is great dont get me wrong, but I grow tired of it standing in the way of me inversting the time I would really like to invest working on actual projects.
 
 ### 2.1 - Improve the quality of older canvas examples
 
