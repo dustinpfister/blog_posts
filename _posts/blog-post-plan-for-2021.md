@@ -5,11 +5,15 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 11:54:16
-version: 1.10
+updated: 2021-01-01 12:50:53
+version: 1.11
 ---
 
-Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
+Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
+
+This year I am going to continue with writing new posts pretty often, however this might be the last year that I continue doing so. I just have this general idea in mind that as I start to get up to around a thousand posts or so I should start to focus more on the quality of just a single post a week or so rather than trying to write almost every day. I am starting to get to that point, but I do not think that I have to actually get there first in order to change things up a bit.
+
+Some things will stay the same more or less this year then, but there are at least a few things that I would like to do difefrently this year. I have been at this sense 2017, so it should go without saying that I am interested in continuing this for the long term no matter what. I just think that I should change what that the long term means now and then for this site. There is writing just about every day, but then there is working one something for a week, a month, or even longer, and writing just one long content peice on something that something. I have been writing a lot of posts, but mainly on quick simple code examples, and simple projects that I put togetaher in a few hours or a day or so. I am not sure going in the complate polar opposite direction of that is a good idea, I still want to put my eggs in a few baskets rather than just one still, but maybe going that way a little at least would be nice this year.
 
 <!-- more -->
 
