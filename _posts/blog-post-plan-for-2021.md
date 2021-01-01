@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 11:32:03
-version: 1.6
+updated: 2021-01-01 11:40:33
+version: 1.7
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -41,7 +41,15 @@ At the end of last year I started learning python, something that I have been me
 
 ### 2.1 - More posts on python alone, and the standard libraries
 
-So far I have a getting started post on python that is all ready in decent shape to begin with, and over the course of the year I think that I am only going to continue editing it as I learn more about the basics and beyond with python.
+So far I have a getting started post on python that is all ready in decent shape to begin with, and over the course of the year I think that I am only going to continue editing it as I learn more about the basics and beyond with python. In oreder to get a better idea of how I shoukld go about editing it I am just going to neeed to write more about the basics of pythion. When doing so I will have a better idea of what should and should not go into a getting started post in python.
+
+There is all ready a few posts on python in general, and I will of course keep working on that untill I have a nice set of content on the basic of python itself.
+
+### 2.2 - New Word Count standards with my python content
+
+Becuase I am starting a new collection of content I have a chance to do everything a little different from the very begining. When it comes to older content collections I have had not real minamum standards when it comes to the quality of the content. If I wanted to just write a few hudred words on something and move on I would. However this time around with python I would like to rise the bar a little to begin with. I am so far aiming for a minanum of one thousand words, and as i continue editing I think I would like to make each post close to at least some where in the ball pall park of eightween hundred words.
+
+However there is not just raw word count when it comes to blog post quality.
 
 ## 3 - Better planing, maybe on a monthly or even weekly basis
 
