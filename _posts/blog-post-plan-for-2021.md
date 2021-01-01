@@ -5,11 +5,11 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 13:52:22
-version: 1.16
+updated: 2021-01-01 13:55:14
+version: 1.17
 ---
 
-Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
+Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe. The reason why I think that is that is becuase one thing that one thing that needs to improve is to have a better plan to begin with, rather than putting in more time, or working hard. Also if I am all ready doing that then planning is the only thing that reamins to improve anayway.
 
 This year I am going to continue with writing new posts pretty often, however this might be the last year that I continue doing so. I just have this general idea in mind that as I start to get up to around a thousand posts or so I should start to focus more on the quality of just a single post a week or so rather than trying to write almost every day. I am starting to get to that point, but I do not think that I have to actually get there first in order to change things up a bit.
 
