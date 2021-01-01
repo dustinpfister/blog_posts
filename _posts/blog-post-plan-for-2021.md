@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 11:45:39
-version: 1.9
+updated: 2021-01-01 11:54:16
+version: 1.10
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -50,6 +50,10 @@ There is all ready a few posts on python in general, and I will of course keep w
 Becuase I am starting a new collection of content I have a chance to do everything a little different from the very begining. When it comes to older content collections I have had not real minamum standards when it comes to the quality of the content. If I wanted to just write a few hudred words on something and move on I would. However this time around with python I would like to rise the bar a little to begin with. I am so far aiming for a minanum of one thousand words, and as i continue editing I think I would like to make each post close to at least some where in the ball pall park of eightween hundred words.
 
 However there is not just raw word count when it comes to blog post quality. I should also do a better job of proof reading the posts, and make sure that I truly am writing decent content on python. This means fact checking things that I might manage to get wrong, and also just taking a moment to think about how I am converying things.
+
+### 2.3 - Some python examples
+
+After I get a good grasp on the basics of python there will then be the question of where it is that I go from there. So this year I think I should maybe work out a few python example projects in a simular way to that of my canvas examples collection. However maybe this time around I should focus more so on quality rather than quantliyu right away rtaher than later. With python I am not just learning a new lanague, I have an opertunity to do lots of other things diferently.
 
 ## 3 - Better planing, maybe on a monthly or even weekly basis
 
