@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 13:41:43
-version: 1.15
+updated: 2021-01-01 13:52:22
+version: 1.16
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -82,6 +82,12 @@ After I get a good grasp on the basics of python there will then be the question
 ## 4 - Better planing, maybe on a monthly or even weekly basis
 
 Last but not least I am going to want to try to do a better job of planing things out to beging with. This is something that has been borthing me for a long time. Writing a blog post such as this is a step in the right direction at least, but I think I should do more to draft out what I want to write about for each month, week, day, and maybe even down to the hour if I find that going that nuts actaully makes sense.
+
+### 4.1 - Work out a collection of draft folders for things I want to write about
+
+One thing that has been driving me nuts is this situation in which each day I need to figure out what I am writing abotu for the day, do the research, work out some code examples, and then finnaly start to write the post for the day. This can get pretty taxing after a while, and any additional stuff that happens outside of this is just more stress. So it is a good idea to draf out what I want to write about in advanced, and also have draft folders for each thing I want to write about on a per post basis.
+
+This is what I have been doing with my python content thus far, and I have to say that it has been helpoing me to reduce a great about of stress. Whenever I get some free time, I like to work on a canvas example, but not all the time. If I am not feeling liem working on a canvas example, a nice break from that is to work on a draft folder with my python examples. At any moment I have around five to ten draf folders, and each of thoses folders contains some current standing code examples for a blog post on a certin python realted topic. This way each day I can just pick a draft folder that is often all ready in good shape to begin with, maybe just add to it a little, and then write about that.
 
 ## 5 - Conclusion
 
