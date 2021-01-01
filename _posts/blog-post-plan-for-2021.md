@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 11:42:46
-version: 1.8
+updated: 2021-01-01 11:45:39
+version: 1.9
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -52,6 +52,8 @@ Becuase I am starting a new collection of content I have a chance to do everythi
 However there is not just raw word count when it comes to blog post quality. I should also do a better job of proof reading the posts, and make sure that I truly am writing decent content on python. This means fact checking things that I might manage to get wrong, and also just taking a moment to think about how I am converying things.
 
 ## 3 - Better planing, maybe on a monthly or even weekly basis
+
+Last but not least I am going to want to try to do a better job of planing things out to beging with. This is something that has been borthing me for a long time. Writing a blog post such as this is a step in the right direction at least, but I think I should do more to draft out what I want to write about for each month, week, day, and maybe even down to the hour if I find that going that nuts actaully makes sense.
 
 ## 4 - Conclusion
 
