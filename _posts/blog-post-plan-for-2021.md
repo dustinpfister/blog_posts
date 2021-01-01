@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 10:59:09
-version: 1.4
+updated: 2021-01-01 11:02:25
+version: 1.5
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -37,7 +37,11 @@ However it makes sense to not just add any feature that comes to mind, and it is
 
 I love canvas, there is so much about canvas realter projects that is fun. However in life not everything is fun and games. Outside of the canvas examples collection there is of course continuing to work on this blog, which is an example of something that I do not really want to do. However I still do it anyway becuase I want to expand outward into other areas outside of game devlopemt, and persue things that might not be all that fun, but might prove to be a more realistic path to take when it comes to getting a job, or making a little money on my own.
 
-At the end of last year I started learning python, something that I have been meaning to start teaching myself, but filany got around to doig before the year was out. This year I think that I should continue learning python, and maybe start out or two additional projects with it.
+At the end of last year I started learning python, something that I have been meaning to start teaching myself, but filany got around to doig before the year was out. This year I think that I should continue learning python, and maybe start out or two additional projects with it. However regardless of what I might do with python in the long run, there is not thing that is certain, there will be more content on it to say the least in the form of additional blog posts.
+
+### 2.1 - More posts on python alone, and the standard libraries
+
+So far I have a getting started post on python that is all ready in decent shape to begin with, and over the course of the year I think that I am only going to continue editing it as I learn more about the basics and beyond with python.
 
 ## 3 - Better planing, maybe on a monthly or even weekly basis
 
