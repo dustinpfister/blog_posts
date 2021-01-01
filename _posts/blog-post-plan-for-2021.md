@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 10:44:26
-version: 1.2
+updated: 2021-01-01 10:53:25
+version: 1.3
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -29,7 +29,9 @@ As of this writing I am working on a simple hyper casual style space shooter whe
 
 I wanted to break the pattern of starting a project, workong on it for a few hours, or at most a few days, and then move on to the next thing. I have broke that pattern with some of these canvas examples, witch is a good start, but just simply doing that alone is not enough I have found. This kind of typical pattern is just one habit to break, there are other bad habits that need to stop.
 
-However maybe it is not just about stoping bad habits, but also just starting and continuing good ones. Such as just starting the habit of continuing to work on one or more canvas examples that I I find to be fun, or just simple a little addictive maybe. If I find one of my canvas examples boring, or I loose interest in playing after a few minutes, then of course that should end up being the case when other people play one for a while.
+However maybe it is not just about stoping bad habits, but also just starting and continuing good ones. Such as just starting the habit of continuing to work on one or more canvas examples that I I find to be fun, or just simple a little addictive maybe. After all if I find one of my canvas examples boring, or I loose interest in playing after a few minutes, then of course that should end up being the case when other people play one for a while. So if that happens then of course it makes sense to play my own game, and if I find it boring take a moment to change something to make the game not so boring.
+
+However it makes sense to not just add any feature that comes to mind, and it is also a good idea to try to not rush things. Cretaing and maintaing a project at a slow steady rate, making features solid, and only working on features that truly add values to the experence of playing the game.
 
 ## 2 - Will continue learning Python
 
