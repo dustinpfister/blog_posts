@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 13:25:38
-version: 1.14
+updated: 2021-01-01 13:41:43
+version: 1.15
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -25,12 +25,15 @@ This year I will of course continue writing, but I would like to start to change
 
 ### 1.1 - Still write around 180+ posts a year
 
-Thus far it would seem that I am writing about 180 posts a year give or take. This is becuase I still think that I sould write about every day more or less. I do like the idea of pushing out just one post a week, or even per month, however I feel as though I still need to learn how to earn that right first. I am not sure what the best course of action is to get there, it seems like I think that I just need to write every day, and write a lot, to learn how to write not so often. On the surface that might sound like madness, but often there is a method behind what migth seem to be madness.
+Thus far it would seem that I am writing about 180 posts a year give or take. This is becuase I still think that I sould write about every day more or less. I do like the idea of pushing out just one post a week, or even per month, however I feel as though I still need to learn how to earn that right first. I am not sure what the best course of action is to get there, it seems like I think that I just need to write every day, and write a lot, to learn how to write not so often. On the surface that might sound like madness, but often there is a method behind what might seem to be madness.
 
 ### 1.2 - Focus more on the quality of the writing, not just meeting numbers with post and word count.
 
 What exsactly is good writing? That is indeed a good question? I have read one good book on the subject that I have enjoyed greatly that I think I might read again at some point, that book is "On Writing" By Stephen King. Of course Stephen King is a Novalist rather than a blogger, or course he writes fiction in the form of horror stories rather than blog posts on jigh level computer programing. Still I think much of what he wrote on the subject applys to writing in general.
 
+### 1.3 - Edit older posts that need some attention
+
+I do not intend to just write a post on something and move on. In fact I consider all of my post thus far, and any additional posts that I will be writing as works in progress. I never truly finish a post, everything might need a little revizment now and then. Still I need to take carse as to how much time I invest into editing older posts, I do not want to let this eat up the whole of my day. It seems like that is something that has been hapenning now and then thus far.
 
 ## 2 - The canvas examples collection will continue to be the new long term project
 
