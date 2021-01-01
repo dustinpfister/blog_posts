@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 11:02:25
-version: 1.5
+updated: 2021-01-01 11:32:03
+version: 1.6
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -46,3 +46,7 @@ So far I have a getting started post on python that is all ready in decent shape
 ## 3 - Better planing, maybe on a monthly or even weekly basis
 
 ## 4 - Conclusion
+
+There is a lot that I aim to do in the next year, things have all ready been shifting a little in terms of where i should be placing my time and energy with this blog. I do now want to let this writing eat up to much of my time as I want to work on some actauly code too, and not just quick simple code examples that I make purly for the sake of having somethiong to write about for a blog post. The canvas example colleciton is a good start whe it comes to having an actaul project, but even with that my attention is divided. So there is much more work to do, nut just when it comes to doign actual work, but when it comes to planing things out better.
+
+
