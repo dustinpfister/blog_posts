@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-01 10:53:25
-version: 1.3
+updated: 2021-01-01 10:59:09
+version: 1.4
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the begining or end of each month maybe.
@@ -34,6 +34,10 @@ However maybe it is not just about stoping bad habits, but also just starting an
 However it makes sense to not just add any feature that comes to mind, and it is also a good idea to try to not rush things. Cretaing and maintaing a project at a slow steady rate, making features solid, and only working on features that truly add values to the experence of playing the game.
 
 ## 2 - Will continue learning Python
+
+I love canvas, there is so much about canvas realter projects that is fun. However in life not everything is fun and games. Outside of the canvas examples collection there is of course continuing to work on this blog, which is an example of something that I do not really want to do. However I still do it anyway becuase I want to expand outward into other areas outside of game devlopemt, and persue things that might not be all that fun, but might prove to be a more realistic path to take when it comes to getting a job, or making a little money on my own.
+
+At the end of last year I started learning python, something that I have been meaning to start teaching myself, but filany got around to doig before the year was out. This year I think that I should continue learning python, and maybe start out or two additional projects with it.
 
 ## 3 - Better planing, maybe on a monthly or even weekly basis
 
