@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 14:23:25
-version: 1.7
+updated: 2021-01-04 14:26:22
+version: 1.8
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
@@ -76,6 +76,8 @@ d            double                 float
 ```
 
 ## 2 - Some of the basic functions of arrays
+
+Now that I have covered some of the very basics of arrays in python, I think that I should move on to some more examples of arrays. This time I will be focusing on what there is to work with when it comes to functions in the array library. I will not be getting to all of them here, but I think I should cover some of the most imporant ones at least real quick.
 
 ### 2.1 - The append method
 
