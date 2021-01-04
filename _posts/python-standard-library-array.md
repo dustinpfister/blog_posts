@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 13:39:13
-version: 1.5
+updated: 2021-01-04 13:43:20
+version: 1.6
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
@@ -31,7 +31,7 @@ print( a[1] ) # 2
 print(type(a).__name__, type(a[0]).__name__) # array int
 ```
 
-By using the type built in function and the name propery I can confirm the type of the array itself, and the data type of the elements. Becuase this is an integer array I can only add integer values to it.
+By using the type built in function and the name propery I can confirm the type of the array itself, and the data type of the elements. Becuase this is an integer array I can only add integer values to it. If I set an element to a value other than an integer that will result in an error. Also there is a limit when it comes to integer values, if I go over that value it will result in an error. Also this is not just an integer array, it is also an signed integher array, if I want unsigned integers I will want to use a capital I for the type code.
 
 ### 1.2 - Find the typecode of an array
 
