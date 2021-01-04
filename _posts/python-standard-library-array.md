@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 13:17:17
-version: 1.2
+updated: 2021-01-04 13:23:16
+version: 1.3
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
@@ -47,3 +47,7 @@ print(arr.typecodes) # bBuhHiIlLqQfd
 ```
 
 ## Conclusion
+
+I am not going to say that arrays should always be used over lists, or anything to that effect. There is no golden hammer when it comes to these types of things. In fact most of the time I am sure that I would prefer to use lists, it is just that in some situtsions I should probibnly use these arrays in place of lists. 
+
+When it comes to javaScript there is of course the nature of types arrays, and with some kinds of code projects the use of these kinds of arrays is a better choice as it will help enforce a kind of data type. If I am working out some code that manipulates binary data then useing a 8bit clamped array might prove to be a good choice. However more often than not I am just not writing that kind of code, and just plain old javaScript Arrays work find for the kind, and style of coding that I do. I guess I can say more or less the same when it comes to lists, and these kinds of arrays in python so far.
