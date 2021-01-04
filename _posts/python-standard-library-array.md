@@ -5,15 +5,15 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 14:42:32
-version: 1.12
+updated: 2021-01-04 16:39:00
+version: 1.13
 ---
 
-Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these wheh it comes to being aware at least of an alterative to lists, and the other sequence types that are built into python itself.
+Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these when it comes to being aware at least of an alternative to lists, and the other sequence types that are built into python itself.
 
 <!-- more -->
 
-The main difernce between arrays and lists would seem to be the data types of the elements. For example if you are familiur with javaScript in that lanague an Array, or at least the main built in Array class can be a collection of any data type in javaScript. You can have an array of numbers, strings, additional arrays, and so forth. There is also however in late specs of javaScript at least a collection of Typed Arrays where there is not this degreee of liberty as the the kinds of data types that one can use in an array. In python lists are somewhat like Arrays in javaScript, there are a few diferences such as the dense rather than sparse nature of lists, but for the most part I find them simular to jaavScript Ararys. So then there should be a way of creating the equavent of types arrays in python right? Well it would seem that the array standard library supplys just that. Again there are a few diferences though, but if you are familiout with typed arrays in javaScript the array standard module will proved something that is simular to thoese types of arrays.
+The main difference between arrays and lists would seem to be the data types of the elements. For example if you are familiar with javaScript in that language an Array, or at least the main built in Array class can be a collection of any data type in javaScript. You can have an array of numbers, strings, additional arrays, and so forth. There is also however in late specs of javaScript a collection of Typed Arrays where there is not this degree of liberty as the the kinds of data types that one can use in an array. In python lists are somewhat like Arrays in javaScript, there are a few differences such as the dense rather than sparse nature of lists, but for the most part I find them similar to jaavScript Arrays. So then there should be a way of creating the equivalent of types arrays in python right? Well it would seem that the array standard library supplies just that. Again there are a few differences though, but if you are aware of typed arrays in javaScript the array standard module will proved something that is similar to those types of arrays.
 
 ## 1 - Some basic examples of arrays
 
