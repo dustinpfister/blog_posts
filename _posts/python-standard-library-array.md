@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 14:26:22
-version: 1.8
+updated: 2021-01-04 14:29:47
+version: 1.9
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
@@ -96,6 +96,20 @@ a.append(3)
  
 print(a[2]) # 3
 print(len(a)) # 3
+```
+
+### 2.2 - The count method
+
+The count method of an array instnace os one way to get a count of a number of elements in an array that are of a given value.
+
+```python
+import array as arr
+ 
+a = arr.array('i', [1,0,0,1,1,1,0,1,1,1])
+ 
+print(a.count(0)) # 3
+print(a.count(1)) # 7
+print(a.count(2)) # 0
 ```
 
 ## 3 - Conclusion
