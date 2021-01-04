@@ -5,11 +5,11 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 14:29:47
-version: 1.9
+updated: 2021-01-04 14:32:09
+version: 1.10
 ---
 
-Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
+Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these wheh it comes to being aware at least of an alterative to lists, and the other sequence types that are built into python itself.
 
 <!-- more -->
 
