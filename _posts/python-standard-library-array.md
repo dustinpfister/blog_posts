@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 17:30:53
-version: 1.14
+updated: 2021-01-04 17:38:42
+version: 1.15
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these when it comes to being aware at least of an alternative to lists, and the other sequence types that are built into python itself.
@@ -141,7 +141,26 @@ b = a.tolist()
 print(type(a), type(b)) # <class 'array.array'> <class 'list'>
 ```
 
-## 3 - Conclusion
+## 3 - Looping over arrays
+
+Just with lists arrays to and be looped over with for a while loops. In this section I will just go over a few quick examples of looping and arrays.
+
+### 3.1 - For loop example
+
+One way to loop over the contents of an array is to use a for loop.
+
+```python
+import array
+ 
+a = array.array('i', [1,2,3,4])
+ 
+for x in a:
+    y = pow(2,x)
+    print(x, y, sep="-", end="; ")
+# 1-2; 2-4; 3-8; 4-16;
+```
+
+## 4 - Conclusion
 
 I am not going to say that arrays should always be used over lists, or anything to that effect. There is no golden hammer when it comes to these types of things. In fact most of the time I am sure that I would prefer to use lists, it is just that in some situations I should probably use these arrays in place of lists. 
 
