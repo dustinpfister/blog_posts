@@ -5,15 +5,19 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 13:05:13
-version: 1.1
+updated: 2021-01-04 13:17:17
+version: 1.2
 ---
 
-Built into python itself is the list data type, and for most situation this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
+Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
 
 <!-- more -->
 
+The main difernce between arrays and lists would seem to be the data types of the elements. For example if you are familiur with javaScript in that lanague an Array, or at least the main built in Array class can be a collection of any data type in javaScript. You can have an array of numbers, strings, additional arrays, and so forth. There is also however in late specs of javaScript at least a collection of Typed Arrays where there is not this degreee of liberty as the the kinds of data types that one can use in an array. In python lists are somewhat like Arrays in javaScript, there are a few diferences such as the dense rather than sparse nature of lists, but for the most part I find them simular to jaavScript Ararys. So then there should be a way of creating the equavent of types arrays in python right? Well it would seem that the array standard library supplys just that. Again there are a few diferences though, but if you are familiout with typed arrays in javaScript the array standard module will proved something that is simular to thoese types of arrays.
+
 ## 1 - Some basic examples of arrays
+
+In this section I will be going over just a few quick, simple, getting started examples of arrays with the array standard library. That is just creating a single array of a single type, and just a few other basic examples that have to do with getting the current type of the array if it is not know to begin with.
 
 ### 1.1 - A imple integer example of an array
 
@@ -41,3 +45,5 @@ print(b.typecode) # I
 import array as arr
 print(arr.typecodes) # bBuhHiIlLqQfd
 ```
+
+## Conclusion
